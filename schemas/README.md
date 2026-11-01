@@ -17,3 +17,5 @@ The calculation-lineage contract adds typed explicit dependency slots, scenario 
 Investor-return-bridge and return-metric-bridge compose existing cash/calendar, exact periodic isolation and explicit criterion records. All 26 schema documents pass 75 interface regression cases. Their 43/31 scoped bridge controls do not certify real timings, thresholds, scenarios or deal decisions.
 
 Operating-cash-bridge and settlement-bridge add explicit accrual/working-balance and reduced full-payoff closing contracts. All 28 schemas pass 75 interface cases. Their 26/43 scoped checks do not establish authentic inventories, accounting policy, bank approval, distribution rights or production.
+
+Financing-timeline adds explicit action groups, unresolved term records, capacity bases and maturity/restriction-claim diagnostics. All 29 candidate schemas pass 75 interface cases; 50 synthetic timeline checks do not approve bank terms, execution order or product readiness.

@@ -48,3 +48,7 @@ Cada escenario requiere paquete de entradas completo, calendario vigente, versio
 Validación actual: `references/validate_m5_algebra.py` y `m5-validation.json`. Sustitución exacta en ecuación original de cierre reducido, casos degenerados y contraste de recurrencia contra expansión de flujos con fracciones racionales. Datos abstractos sintéticos; no tasas/condiciones bancarias para un deal, no reproducción de referencias históricas ni auditoría independiente. No sumar sus controles a otros para atribuir porcentaje de producto terminado.
 
 Siguiente contrato: M6, deuda permanente y refi; tratar por separado sizing LTV/DSCR, amortización/vencimiento, payoff, reservas y distribución/cash-in netos.
+
+## Secuencia y factibilidad declarada
+
+[El contrato de secuencia financiera](financing-timeline.md) añade 50 controles sintéticos de saldos por acción, disponibilidad, límites y vencimiento. Preserva datos/convenciones ausentes; no infiere un solver, financiación o extensiones. Es diagnóstico condicionado, no cierre de M5.

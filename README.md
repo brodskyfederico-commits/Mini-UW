@@ -51,3 +51,5 @@ Continued integration references: [gross investor cash, return grid and interval
 First remote workflow success is recorded in [CI verification](docs/ci-verification.json), tied to its exact tested commit. It does not certify later commits or financial/model completeness.
 
 Further cash integration: [operating and settlement bridges](docs/operating-settlement-bridges.md) reconcile declared accrued NOI/working balances to cash and explicit gross-cash sale/refinance closings to debt/obligations/reserves. Net-withheld, partial-discharge and unsupported adjustments remain pending. The package checker now registers 20 scoped reference suites.
+
+Financing diagnostics: [explicit action timeline, capacity and maturity](docs/financing-timeline.md) retains transient deficits and declared cutoff/window violations that period totals can hide. No cash, permissions, loan history or extension is inferred. The package checker now registers 21 scoped suites.

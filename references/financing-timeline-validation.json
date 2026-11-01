@@ -1,0 +1,259 @@
+{
+  "status": "passed",
+  "total": 50,
+  "checks": [
+    "explicit_closing_timeline_reconciles",
+    "inclusive_maturity_paid_on_date",
+    "future_maturity_not_certified",
+    "balances_equal_period_ledger",
+    "source_records_not_mutated",
+    "not_authority_or_deal_approval",
+    "missing_sequence_is_pending_without_inferred_order",
+    "missing_assessment_date_not_selected_from_calendar",
+    "missing_boundary_not_filled_inclusively",
+    "end_period_balanced_but_payment_before_receipt_blocked",
+    "exclusive_maturity_not_repaired_by_same_day_payment",
+    "maturity_assessed_without_action_on_maturity_date",
+    "draw_at_excluded_start_blocked",
+    "draw_at_excluded_end_blocked",
+    "capacity_excess_not_covered_with_fictitious_loan",
+    "missing_terms_preserve_claim_and_block",
+    "release_rule_label_alone_not_sufficient",
+    "cumulative_history_not_assumed_zero",
+    "explicit_prior_draws_count_toward_limit",
+    "outstanding_basis_repay_then_redraw_under_explicit_cap",
+    "repayment_does_not_restore_cumulative_draw_capacity",
+    "payment_before_accrual_not_hidden_by_period_netting",
+    "restricted_distribution_not_allowed_by_cash_balance_alone",
+    "capitalized_interest_can_exceed_outstanding_cap_without_cash_draw",
+    "explicit_zero_capacity_is_known_limit",
+    "context_mismatch",
+    "duplicate_action_id",
+    "duplicate_sequence",
+    "missing_sequence",
+    "missing_recorded_action",
+    "unknown_cash_action",
+    "cash_event_in_two_actions",
+    "date_mismatch",
+    "action_after_assessment",
+    "assessment_outside_calendar",
+    "missing_loan_terms",
+    "duplicate_loan_terms",
+    "unknown_loan_terms",
+    "missing_restriction_record",
+    "restriction_reference_mismatch",
+    "wrong_cap_currency",
+    "wrong_capacity_basis_cutoff",
+    "inverted_window",
+    "draw_window_past_maturity",
+    "negative_capacity",
+    "unused_prior_draws_not_ignored",
+    "no_empty_atomic_evidence",
+    "no_two_cash_events_hide_transient_deficit",
+    "no_production_authorization",
+    "cash_principal_pair_cannot_split_actions"
+  ],
+  "schemas_checked": 29,
+  "synthetic_example": {
+    "decision": "PENDING",
+    "publication_authorized": false,
+    "contract_authority_verified": false,
+    "state": "internally_reconciled_reference",
+    "ledger_reference": {
+      "state": "internally_reconciled_reference",
+      "periods": [
+        {
+          "period_id": "P1",
+          "external_in": "100",
+          "external_out": "96",
+          "cash_total": "10",
+          "principal_total": "100",
+          "due_total": "0"
+        }
+      ],
+      "cash": {
+        "free": "5",
+        "restricted": "5"
+      },
+      "debt": {
+        "OLD": "0",
+        "NEW": "100"
+      },
+      "due": {
+        "OLD-I": "0",
+        "OLD-F": "0"
+      },
+      "recorded_principal_plus_due": "100",
+      "gross_equity_contributions": "0",
+      "gross_equity_distributions": "20",
+      "issues": []
+    },
+    "issues": [],
+    "action_snapshots": [
+      {
+        "action_id": "ACTION-PROCEEDS",
+        "iso_date": "2028-02-15",
+        "sequence": 0,
+        "cash": {
+          "free": "102",
+          "restricted": "4"
+        },
+        "principal": {
+          "OLD": "70",
+          "NEW": "100"
+        },
+        "due": {
+          "OLD-I": "2",
+          "OLD-F": "1"
+        }
+      },
+      {
+        "action_id": "ACTION-PRINCIPAL",
+        "iso_date": "2028-02-15",
+        "sequence": 1,
+        "cash": {
+          "free": "32",
+          "restricted": "4"
+        },
+        "principal": {
+          "OLD": "0",
+          "NEW": "100"
+        },
+        "due": {
+          "OLD-I": "2",
+          "OLD-F": "1"
+        }
+      },
+      {
+        "action_id": "ACTION-INTEREST",
+        "iso_date": "2028-02-15",
+        "sequence": 2,
+        "cash": {
+          "free": "30",
+          "restricted": "4"
+        },
+        "principal": {
+          "OLD": "0",
+          "NEW": "100"
+        },
+        "due": {
+          "OLD-I": "0",
+          "OLD-F": "1"
+        }
+      },
+      {
+        "action_id": "ACTION-FEE",
+        "iso_date": "2028-02-15",
+        "sequence": 3,
+        "cash": {
+          "free": "29",
+          "restricted": "4"
+        },
+        "principal": {
+          "OLD": "0",
+          "NEW": "100"
+        },
+        "due": {
+          "OLD-I": "0",
+          "OLD-F": "0"
+        }
+      },
+      {
+        "action_id": "ACTION-COST",
+        "iso_date": "2028-02-15",
+        "sequence": 4,
+        "cash": {
+          "free": "26",
+          "restricted": "4"
+        },
+        "principal": {
+          "OLD": "0",
+          "NEW": "100"
+        },
+        "due": {
+          "OLD-I": "0",
+          "OLD-F": "0"
+        }
+      },
+      {
+        "action_id": "ACTION-RELEASE",
+        "iso_date": "2028-02-15",
+        "sequence": 5,
+        "cash": {
+          "free": "30",
+          "restricted": "0"
+        },
+        "principal": {
+          "OLD": "0",
+          "NEW": "100"
+        },
+        "due": {
+          "OLD-I": "0",
+          "OLD-F": "0"
+        }
+      },
+      {
+        "action_id": "ACTION-RESERVE",
+        "iso_date": "2028-02-15",
+        "sequence": 6,
+        "cash": {
+          "free": "25",
+          "restricted": "5"
+        },
+        "principal": {
+          "OLD": "0",
+          "NEW": "100"
+        },
+        "due": {
+          "OLD-I": "0",
+          "OLD-F": "0"
+        }
+      },
+      {
+        "action_id": "ACTION-DIST",
+        "iso_date": "2028-02-15",
+        "sequence": 7,
+        "cash": {
+          "free": "5",
+          "restricted": "5"
+        },
+        "principal": {
+          "OLD": "0",
+          "NEW": "100"
+        },
+        "due": {
+          "OLD-I": "0",
+          "OLD-F": "0"
+        }
+      }
+    ],
+    "maturity_diagnostics": {
+      "OLD": {
+        "maturity_date": "2028-02-15",
+        "cutoff": "inclusive_end_of_date",
+        "principal": "0",
+        "recorded_unpaid_obligations": "0",
+        "state": "recorded_balances_zero_at_declared_cutoff"
+      },
+      "NEW": {
+        "state": "not_reached_within_assessed_horizon",
+        "maturity_date": "2028-03-15"
+      }
+    },
+    "capacity_claims": {
+      "OLD": {
+        "basis": "maximum_outstanding_principal",
+        "limit": "70",
+        "used_at_assessment": "0",
+        "unused_at_assessment": "70"
+      },
+      "NEW": {
+        "basis": "maximum_outstanding_principal",
+        "limit": "100",
+        "used_at_assessment": "100",
+        "unused_at_assessment": "0"
+      }
+    }
+  },
+  "scope": "Explicit synthetic ordered atomic-record groups, nonnegative cash/debt/due snapshots, declared capacity/window/maturity and restriction-claim diagnostics only. Not discovered bank terms, legal interpretation, authority of documents, real intraday execution, complete commitments/covenants, solver, independent audit or production."
+}

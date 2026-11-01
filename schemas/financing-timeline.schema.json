@@ -1,0 +1,252 @@
+{
+  "type": "object",
+  "properties": {
+    "purpose": {
+      "const": "design_or_synthetic_reference"
+    },
+    "authorization": {
+      "const": "not_granted"
+    },
+    "context": {
+      "$ref": "urn:miniuw:candidate:common:0.1#/$defs/context"
+    },
+    "event_ledger": {
+      "$ref": "urn:miniuw:candidate:event-ledger:0.1"
+    },
+    "assessment_date": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date"
+    },
+    "assessment_cutoff": {
+      "const": "end_of_date"
+    },
+    "timeline_state": {
+      "enum": [
+        "documented_claim",
+        "unresolved",
+        "conflict"
+      ]
+    },
+    "timeline": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "action_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sequence": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "iso_date": {
+            "type": "string",
+            "format": "date"
+          },
+          "cash_event_ids": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "maxItems": 1
+          },
+          "debt_event_ids": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "obligation_event_ids": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "atomic_group_evidence_ref": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "action_id",
+          "sequence",
+          "iso_date",
+          "cash_event_ids",
+          "debt_event_ids",
+          "obligation_event_ids",
+          "atomic_group_evidence_ref"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "loan_terms": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "debt_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "terms_state": {
+            "enum": [
+              "documented_claim",
+              "unresolved",
+              "conflict"
+            ]
+          },
+          "evidence_ref": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1
+          },
+          "draw_start_date": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date"
+          },
+          "draw_end_date": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date"
+          },
+          "draw_start_boundary": {
+            "enum": [
+              "inclusive",
+              "exclusive",
+              null
+            ]
+          },
+          "draw_end_boundary": {
+            "enum": [
+              "inclusive",
+              "exclusive",
+              null
+            ]
+          },
+          "maturity_date": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date"
+          },
+          "maturity_cutoff": {
+            "enum": [
+              "inclusive_end_of_date",
+              "exclusive_start_of_date",
+              null
+            ]
+          },
+          "capacity_basis": {
+            "enum": [
+              "maximum_outstanding_principal",
+              "cumulative_cash_draws",
+              null
+            ]
+          },
+          "capacity": {
+            "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+          },
+          "prior_cash_draws": {
+            "oneOf": [
+              {
+                "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "debt_id",
+          "terms_state",
+          "evidence_ref",
+          "draw_start_date",
+          "draw_end_date",
+          "draw_start_boundary",
+          "draw_end_boundary",
+          "maturity_date",
+          "maturity_cutoff",
+          "capacity_basis",
+          "capacity",
+          "prior_cash_draws"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "restricted_action_permissions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "cash_event_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "state": {
+            "enum": [
+              "documented_claim",
+              "unresolved",
+              "conflict"
+            ]
+          },
+          "rule_ref": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1
+          },
+          "evidence_ref": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1
+          }
+        },
+        "required": [
+          "cash_event_id",
+          "state",
+          "rule_ref",
+          "evidence_ref"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "purpose",
+    "authorization",
+    "context",
+    "event_ledger",
+    "assessment_date",
+    "assessment_cutoff",
+    "timeline_state",
+    "timeline",
+    "loan_terms",
+    "restricted_action_permissions"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:miniuw:candidate:financing-timeline:0.1",
+  "title": "Candidate explicit-action liquidity/capacity/maturity diagnostics; no term approval"
+}

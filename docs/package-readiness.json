@@ -116,6 +116,11 @@
       "path": "references/settlement-bridge-validation.json",
       "scope": "Explicit synthetic last-period gross-cash full-payoff settlement/ledger reconciliation only. Not actual obligation completeness, valuation/sizing approval, escrow/net-withheld counterpart inference, intraday order, distribution entitlement, tax/legal policy, independent audit or production.",
       "count": 43
+    },
+    {
+      "path": "references/financing-timeline-validation.json",
+      "scope": "Explicit synthetic ordered atomic-record groups, nonnegative cash/debt/due snapshots, declared capacity/window/maturity and restriction-claim diagnostics only. Not discovered bank terms, legal interpretation, authority of documents, real intraday execution, complete commitments/covenants, solver, independent audit or production.",
+      "count": 50
     }
   ],
   "independent_financial_audit": false,
@@ -137,23 +142,24 @@
     "calendar_ledger_schemas": 3,
     "cost_scope_schemas": 2,
     "evidence_locator_schemas": 1,
-    "total_schema_documents": 28,
+    "total_schema_documents": 29,
     "budget_payment_bridge_schemas": 1,
     "calculation_lineage_schemas": 1,
     "investor_return_bridge_schemas": 1,
     "return_metric_bridge_schemas": 1,
     "operating_cash_bridge_schemas": 1,
-    "settlement_bridge_schemas": 1
+    "settlement_bridge_schemas": 1,
+    "financing_timeline_schemas": 1
   },
   "reference_runner": {
-    "suites": 20,
+    "suites": 21,
     "isolated_temporary_copy": true,
     "github_workflow_prepared": true,
     "remote_evidence_rule": "Check the GitHub run for the exact current commit; previous successful runs do not certify descendants.",
     "last_recorded_prior_run": {
-      "commit_sha": "56b7c43493cd1b3fb855449408f5603b8e945d64",
-      "suites": 18,
-      "url": "https://github.com/brodskyfederico-commits/Mini-UW/actions/runs/41356375624"
+      "commit_sha": "4475834abeb8bc413f1000e58d915c889572c160",
+      "suites": 20,
+      "url": "https://github.com/brodskyfederico-commits/Mini-UW/actions/runs/41357437532"
     },
     "not_financial_certification": true
   }
