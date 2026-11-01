@@ -1,0 +1,908 @@
+{
+  "status": "passed",
+  "total": 42,
+  "checks": [
+    "derived_constraints_and_grid_support_agree",
+    "cash_cost_and_return_recomputed_at_candidate",
+    "root_certificate_exact_without_tolerance_or_annualization",
+    "next_grid_point_is_checked_not_rounded_into_pass",
+    "asking_evaluated_as_distinct_input",
+    "not_full_rlv_or_investment_decision",
+    "original_profile_criteria_not_mutated",
+    "strict_objective_excludes_exact_boundary",
+    "next_point_outside_domain_not_economic_failure",
+    "partial_search_cash_check_does_not_certify_maximum",
+    "asking_absent_not_zero",
+    "explicit_zero_asking_preserved",
+    "off_grid_asking_not_admitted",
+    "missing_required_scenario_parameter_blocks_price",
+    "formula_profile_assumptions_not_inferred",
+    "fail_condition_not_silently_reinterpreted_as_support_goal",
+    "missing_goal_not_historical_default",
+    "zero_slope_is_known_but_outside_reduced_profile",
+    "nonpositive_cost_domain_not_called_financially_infeasible",
+    "known_asking_not_relabelled_missing_when_domain_unknown",
+    "empty_reduced_grid_has_no_fabricated_quote",
+    "explicitly_excluded_scenario_not_completed_from_base",
+    "conflicting_profile_alternatives_preserved",
+    "derived_polynomials_match_direct_ratio_comparisons_all_operators",
+    "normalization_changes_polynomial_scale_not_economic_price",
+    "fractional_quote_and_next_increment_not_rounded",
+    "closed_form_return_agrees_with_general_periodic_root_isolation",
+    "scenario_context_mismatch",
+    "criterion_context_mismatch",
+    "metric_definition_mismatch",
+    "wrong_metric_id",
+    "missing_required_scenario",
+    "duplicate_scenario",
+    "currency_mismatch",
+    "cost_unit_mismatch",
+    "noi_period_mismatch",
+    "threshold_basis_mismatch",
+    "coefficient_dimensions_mismatch",
+    "asking_currency_mismatch",
+    "no_production_authorization",
+    "assumption_conflict_requires_alternatives",
+    "criterion_revision_not_inferred_from_input_revision"
+  ],
+  "operator_price_point_cases": 144,
+  "schemas_checked": 32,
+  "synthetic_example": {
+    "decision": "PENDING",
+    "publication_authorized": false,
+    "approved_rlv": false,
+    "profile": "reduced affine cost and two explicit objectives only",
+    "catalogue_reference": {
+      "decision": "PENDING",
+      "publication_authorized": false,
+      "financial_model_certified": false,
+      "global_continuous_optimum_claimed": false,
+      "classification": "maximum_attained_in_declared_grid_reference",
+      "issues": [],
+      "domain_grid_point_count": 9,
+      "evaluated_grid_point_count": 9,
+      "unvisited_grid_point_count": 0,
+      "complete_declared_domain_coverage": true,
+      "all_required_relations_resolved": true,
+      "best_known_grid_candidate": "4",
+      "maximum_price": "4",
+      "points": [
+        {
+          "grid_index": 0,
+          "price": "0",
+          "normalized_price": "0",
+          "state": "all_declared_conditions_satisfied",
+          "conditions": [
+            {
+              "scenario_id": "Base",
+              "constraint_id": "yoc",
+              "state": "evaluated_declared_relation",
+              "polynomial_value": "8",
+              "operator": ">=",
+              "condition_satisfied": true,
+              "criterion_revision": "SYNTHETIC-YOC-v1"
+            },
+            {
+              "scenario_id": "Base",
+              "constraint_id": "irr",
+              "state": "evaluated_declared_relation",
+              "polynomial_value": "10",
+              "operator": ">=",
+              "condition_satisfied": true,
+              "criterion_revision": "SYNTHETIC-IRR-v1"
+            },
+            {
+              "scenario_id": "Downside",
+              "constraint_id": "yoc",
+              "state": "evaluated_declared_relation",
+              "polynomial_value": "6",
+              "operator": ">=",
+              "condition_satisfied": true,
+              "criterion_revision": "SYNTHETIC-YOC-v1"
+            },
+            {
+              "scenario_id": "Downside",
+              "constraint_id": "irr",
+              "state": "evaluated_declared_relation",
+              "polynomial_value": "36/5",
+              "operator": ">=",
+              "condition_satisfied": true,
+              "criterion_revision": "SYNTHETIC-IRR-v1"
+            }
+          ]
+        },
+        {
+          "grid_index": 1,
+          "price": "1",
+          "normalized_price": "1",
+          "state": "all_declared_conditions_satisfied",
+          "conditions": [
+            {
+              "scenario_id": "Base",
+              "constraint_id": "yoc",
+              "state": "evaluated_declared_relation",
+              "polynomial_value": "6",
+              "operator": ">=",
+              "condition_satisfied": true,
+              "criterion_revision": "SYNTHETIC-YOC-v1"
+            },
+            {
+              "scenario_id": "Base",
+              "constraint_id": "irr",
+              "state": "evaluated_declared_relation",
+              "polynomial_value": "8",
+              "operator": ">=",
+              "condition_satisfied": true,
+              "criterion_revision": "SYNTHETIC-IRR-v1"
+            },
+            {
+              "scenario_id": "Downside",
+              "constraint_id": "yoc",
+              "state": "evaluated_declared_relation",
+              "polynomial_value": "5",
+              "operator": ">=",
+              "condition_satisfied": true,
+              "criterion_revision": "SYNTHETIC-YOC-v1"
+            },
+            {
+              "scenario_id": "Downside",
+              "constraint_id": "irr",
+              "state": "evaluated_declared_relation",
+              "polynomial_value": "6",
+              "operator": ">=",
+              "condition_satisfied": true,
+              "criterion_revision": "SYNTHETIC-IRR-v1"
+            }
+          ]
+        },
+        {
+          "grid_index": 2,
+          "price": "2",
+          "normalized_price": "2",
+          "state": "all_declared_conditions_satisfied",
+          "conditions": [
+            {
+              "scenario_id": "Base",
+              "constraint_id": "yoc",
+              "state": "evaluated_declared_relation",
+              "polynomial_value": "4",
+              "operator": ">=",
+              "condition_satisfied": true,
+              "criterion_revision": "SYNTHETIC-YOC-v1"
+            },
+            {
+              "scenario_id": "Base",
+              "constraint_id": "irr",
+              "state": "evaluated_declared_relation",
+              "polynomial_value": "6",
+              "operator": ">=",
+              "condition_satisfied": true,
+              "criterion_revision": "SYNTHETIC-IRR-v1"
+            },
+            {
+              "scenario_id": "Downside",
+              "constraint_id": "yoc",
+              "state": "evaluated_declared_relation",
+              "polynomial_value": "4",
+              "operator": ">=",
+              "condition_satisfied": true,
+              "criterion_revision": "SYNTHETIC-YOC-v1"
+            },
+            {
+              "scenario_id": "Downside",
+              "constraint_id": "irr",
+              "state": "evaluated_declared_relation",
+              "polynomial_value": "24/5",
+              "operator": ">=",
+              "condition_satisfied": true,
+              "criterion_revision": "SYNTHETIC-IRR-v1"
+            }
+          ]
+        },
+        {
+          "grid_index": 3,
+          "price": "3",
+          "normalized_price": "3",
+          "state": "all_declared_conditions_satisfied",
+          "conditions": [
+            {
+              "scenario_id": "Base",
+              "constraint_id": "yoc",
+              "state": "evaluated_declared_relation",
+              "polynomial_value": "2",
+              "operator": ">=",
+              "condition_satisfied": true,
+              "criterion_revision": "SYNTHETIC-YOC-v1"
+            },
+            {
+              "scenario_id": "Base",
+              "constraint_id": "irr",
+              "state": "evaluated_declared_relation",
+              "polynomial_value": "4",
+              "operator": ">=",
+              "condition_satisfied": true,
+              "criterion_revision": "SYNTHETIC-IRR-v1"
+            },
+            {
+              "scenario_id": "Downside",
+              "constraint_id": "yoc",
+              "state": "evaluated_declared_relation",
+              "polynomial_value": "3",
+              "operator": ">=",
+              "condition_satisfied": true,
+              "criterion_revision": "SYNTHETIC-YOC-v1"
+            },
+            {
+              "scenario_id": "Downside",
+              "constraint_id": "irr",
+              "state": "evaluated_declared_relation",
+              "polynomial_value": "18/5",
+              "operator": ">=",
+              "condition_satisfied": true,
+              "criterion_revision": "SYNTHETIC-IRR-v1"
+            }
+          ]
+        },
+        {
+          "grid_index": 4,
+          "price": "4",
+          "normalized_price": "4",
+          "state": "all_declared_conditions_satisfied",
+          "conditions": [
+            {
+              "scenario_id": "Base",
+              "constraint_id": "yoc",
+              "state": "evaluated_declared_relation",
+              "polynomial_value": "0",
+              "operator": ">=",
+              "condition_satisfied": true,
+              "criterion_revision": "SYNTHETIC-YOC-v1"
+            },
+            {
+              "scenario_id": "Base",
+              "constraint_id": "irr",
+              "state": "evaluated_declared_relation",
+              "polynomial_value": "2",
+              "operator": ">=",
+              "condition_satisfied": true,
+              "criterion_revision": "SYNTHETIC-IRR-v1"
+            },
+            {
+              "scenario_id": "Downside",
+              "constraint_id": "yoc",
+              "state": "evaluated_declared_relation",
+              "polynomial_value": "2",
+              "operator": ">=",
+              "condition_satisfied": true,
+              "criterion_revision": "SYNTHETIC-YOC-v1"
+            },
+            {
+              "scenario_id": "Downside",
+              "constraint_id": "irr",
+              "state": "evaluated_declared_relation",
+              "polynomial_value": "12/5",
+              "operator": ">=",
+              "condition_satisfied": true,
+              "criterion_revision": "SYNTHETIC-IRR-v1"
+            }
+          ]
+        },
+        {
+          "grid_index": 5,
+          "price": "5",
+          "normalized_price": "5",
+          "state": "declared_condition_not_satisfied",
+          "conditions": [
+            {
+              "scenario_id": "Base",
+              "constraint_id": "yoc",
+              "state": "evaluated_declared_relation",
+              "polynomial_value": "-2",
+              "operator": ">=",
+              "condition_satisfied": false,
+              "criterion_revision": "SYNTHETIC-YOC-v1"
+            },
+            {
+              "scenario_id": "Base",
+              "constraint_id": "irr",
+              "state": "evaluated_declared_relation",
+              "polynomial_value": "0",
+              "operator": ">=",
+              "condition_satisfied": true,
+              "criterion_revision": "SYNTHETIC-IRR-v1"
+            },
+            {
+              "scenario_id": "Downside",
+              "constraint_id": "yoc",
+              "state": "evaluated_declared_relation",
+              "polynomial_value": "1",
+              "operator": ">=",
+              "condition_satisfied": true,
+              "criterion_revision": "SYNTHETIC-YOC-v1"
+            },
+            {
+              "scenario_id": "Downside",
+              "constraint_id": "irr",
+              "state": "evaluated_declared_relation",
+              "polynomial_value": "6/5",
+              "operator": ">=",
+              "condition_satisfied": true,
+              "criterion_revision": "SYNTHETIC-IRR-v1"
+            }
+          ]
+        },
+        {
+          "grid_index": 6,
+          "price": "6",
+          "normalized_price": "6",
+          "state": "declared_condition_not_satisfied",
+          "conditions": [
+            {
+              "scenario_id": "Base",
+              "constraint_id": "yoc",
+              "state": "evaluated_declared_relation",
+              "polynomial_value": "-4",
+              "operator": ">=",
+              "condition_satisfied": false,
+              "criterion_revision": "SYNTHETIC-YOC-v1"
+            },
+            {
+              "scenario_id": "Base",
+              "constraint_id": "irr",
+              "state": "evaluated_declared_relation",
+              "polynomial_value": "-2",
+              "operator": ">=",
+              "condition_satisfied": false,
+              "criterion_revision": "SYNTHETIC-IRR-v1"
+            },
+            {
+              "scenario_id": "Downside",
+              "constraint_id": "yoc",
+              "state": "evaluated_declared_relation",
+              "polynomial_value": "0",
+              "operator": ">=",
+              "condition_satisfied": true,
+              "criterion_revision": "SYNTHETIC-YOC-v1"
+            },
+            {
+              "scenario_id": "Downside",
+              "constraint_id": "irr",
+              "state": "evaluated_declared_relation",
+              "polynomial_value": "0",
+              "operator": ">=",
+              "condition_satisfied": true,
+              "criterion_revision": "SYNTHETIC-IRR-v1"
+            }
+          ]
+        },
+        {
+          "grid_index": 7,
+          "price": "7",
+          "normalized_price": "7",
+          "state": "declared_condition_not_satisfied",
+          "conditions": [
+            {
+              "scenario_id": "Base",
+              "constraint_id": "yoc",
+              "state": "evaluated_declared_relation",
+              "polynomial_value": "-6",
+              "operator": ">=",
+              "condition_satisfied": false,
+              "criterion_revision": "SYNTHETIC-YOC-v1"
+            },
+            {
+              "scenario_id": "Base",
+              "constraint_id": "irr",
+              "state": "evaluated_declared_relation",
+              "polynomial_value": "-4",
+              "operator": ">=",
+              "condition_satisfied": false,
+              "criterion_revision": "SYNTHETIC-IRR-v1"
+            },
+            {
+              "scenario_id": "Downside",
+              "constraint_id": "yoc",
+              "state": "evaluated_declared_relation",
+              "polynomial_value": "-1",
+              "operator": ">=",
+              "condition_satisfied": false,
+              "criterion_revision": "SYNTHETIC-YOC-v1"
+            },
+            {
+              "scenario_id": "Downside",
+              "constraint_id": "irr",
+              "state": "evaluated_declared_relation",
+              "polynomial_value": "-6/5",
+              "operator": ">=",
+              "condition_satisfied": false,
+              "criterion_revision": "SYNTHETIC-IRR-v1"
+            }
+          ]
+        },
+        {
+          "grid_index": 8,
+          "price": "8",
+          "normalized_price": "8",
+          "state": "declared_condition_not_satisfied",
+          "conditions": [
+            {
+              "scenario_id": "Base",
+              "constraint_id": "yoc",
+              "state": "evaluated_declared_relation",
+              "polynomial_value": "-8",
+              "operator": ">=",
+              "condition_satisfied": false,
+              "criterion_revision": "SYNTHETIC-YOC-v1"
+            },
+            {
+              "scenario_id": "Base",
+              "constraint_id": "irr",
+              "state": "evaluated_declared_relation",
+              "polynomial_value": "-6",
+              "operator": ">=",
+              "condition_satisfied": false,
+              "criterion_revision": "SYNTHETIC-IRR-v1"
+            },
+            {
+              "scenario_id": "Downside",
+              "constraint_id": "yoc",
+              "state": "evaluated_declared_relation",
+              "polynomial_value": "-2",
+              "operator": ">=",
+              "condition_satisfied": false,
+              "criterion_revision": "SYNTHETIC-YOC-v1"
+            },
+            {
+              "scenario_id": "Downside",
+              "constraint_id": "irr",
+              "state": "evaluated_declared_relation",
+              "polynomial_value": "-12/5",
+              "operator": ">=",
+              "condition_satisfied": false,
+              "criterion_revision": "SYNTHETIC-IRR-v1"
+            }
+          ]
+        }
+      ],
+      "currency": "SYNTHETIC-CURRENCY",
+      "unit_id": "SYNTHETIC-MONEY",
+      "price_basis": "synthetic_project",
+      "scope": "Only the explicitly supplied normalized-polynomial relations and finite grid; no derived real-deal model or RLV approval."
+    },
+    "profile_issues": [],
+    "derived_catalogue_input": {
+      "purpose": "design_or_synthetic_reference",
+      "authorization": "not_granted",
+      "context": {
+        "deal_id": "SYNTHETIC-LEDGER-NO-DEAL",
+        "scenario_id": "explicit-grid-aggregate",
+        "run_id": "reference-1",
+        "input_revision": "v1",
+        "definition_set_revision": "v1"
+      },
+      "scope_definition_ref": "SYNTHETIC-AFFINE-PROFILE-NOT-HOUSE-RLV",
+      "domain": {
+        "kind": "finite_uniform_grid",
+        "lower": {
+          "state": "known",
+          "value": {
+            "numerator": 0,
+            "denominator": 1
+          },
+          "dimensions": {
+            "money": 1,
+            "area": 0,
+            "unit": 0,
+            "space": 0,
+            "time": 0
+          },
+          "unit_id": "SYNTHETIC-MONEY",
+          "currency": "SYNTHETIC-CURRENCY",
+          "measurement_role": "stock",
+          "basis": "synthetic_project",
+          "period_ref": "PRICE-DOMAIN",
+          "sources": [
+            {
+              "source_id": "SYNTHETIC-ONLY",
+              "locator": "fixture declaration",
+              "claim_kind": "synthetic_reference",
+              "verification_status": "synthetic_only"
+            }
+          ]
+        },
+        "upper": {
+          "state": "known",
+          "value": {
+            "numerator": 8,
+            "denominator": 1
+          },
+          "dimensions": {
+            "money": 1,
+            "area": 0,
+            "unit": 0,
+            "space": 0,
+            "time": 0
+          },
+          "unit_id": "SYNTHETIC-MONEY",
+          "currency": "SYNTHETIC-CURRENCY",
+          "measurement_role": "stock",
+          "basis": "synthetic_project",
+          "period_ref": "PRICE-DOMAIN",
+          "sources": [
+            {
+              "source_id": "SYNTHETIC-ONLY",
+              "locator": "fixture declaration",
+              "claim_kind": "synthetic_reference",
+              "verification_status": "synthetic_only"
+            }
+          ]
+        },
+        "lower_closed": true,
+        "upper_closed": true,
+        "anchor": {
+          "state": "known",
+          "value": {
+            "numerator": 0,
+            "denominator": 1
+          },
+          "dimensions": {
+            "money": 1,
+            "area": 0,
+            "unit": 0,
+            "space": 0,
+            "time": 0
+          },
+          "unit_id": "SYNTHETIC-MONEY",
+          "currency": "SYNTHETIC-CURRENCY",
+          "measurement_role": "stock",
+          "basis": "synthetic_project",
+          "period_ref": "PRICE-DOMAIN",
+          "sources": [
+            {
+              "source_id": "SYNTHETIC-ONLY",
+              "locator": "fixture declaration",
+              "claim_kind": "synthetic_reference",
+              "verification_status": "synthetic_only"
+            }
+          ]
+        },
+        "increment": {
+          "state": "known",
+          "value": {
+            "numerator": 1,
+            "denominator": 1
+          },
+          "dimensions": {
+            "money": 1,
+            "area": 0,
+            "unit": 0,
+            "space": 0,
+            "time": 0
+          },
+          "unit_id": "SYNTHETIC-MONEY",
+          "currency": "SYNTHETIC-CURRENCY",
+          "measurement_role": "stock",
+          "basis": "synthetic_project",
+          "period_ref": "PRICE-DOMAIN",
+          "sources": [
+            {
+              "source_id": "SYNTHETIC-ONLY",
+              "locator": "fixture declaration",
+              "claim_kind": "synthetic_reference",
+              "verification_status": "synthetic_only"
+            }
+          ]
+        },
+        "normalizing_price_unit": {
+          "state": "known",
+          "value": {
+            "numerator": 1,
+            "denominator": 1
+          },
+          "dimensions": {
+            "money": 1,
+            "area": 0,
+            "unit": 0,
+            "space": 0,
+            "time": 0
+          },
+          "unit_id": "SYNTHETIC-MONEY",
+          "currency": "SYNTHETIC-CURRENCY",
+          "measurement_role": "stock",
+          "basis": "synthetic_project",
+          "period_ref": "PRICE-DOMAIN",
+          "sources": [
+            {
+              "source_id": "SYNTHETIC-ONLY",
+              "locator": "fixture declaration",
+              "claim_kind": "synthetic_reference",
+              "verification_status": "synthetic_only"
+            }
+          ]
+        },
+        "domain_evidence_ref": "SYNTHETIC-NOT-APPROVED-QUOTE-GRID"
+      },
+      "expected_scenario_ids": [
+        "Base",
+        "Downside"
+      ],
+      "scenarios": [
+        {
+          "scenario_id": "Base",
+          "context": {
+            "deal_id": "SYNTHETIC-LEDGER-NO-DEAL",
+            "scenario_id": "Base",
+            "run_id": "reference-1",
+            "input_revision": "v1",
+            "definition_set_revision": "v1"
+          },
+          "required_status": "required",
+          "exclusion_reason": null,
+          "exclusion_rule_ref": null,
+          "scenario_evidence_ref": "SYNTHETIC-EXPLICIT-SCOPE",
+          "required_constraint_ids": [
+            "yoc",
+            "irr"
+          ],
+          "constraints": [
+            {
+              "constraint_id": "yoc",
+              "state": "defined_claim",
+              "criterion_revision": "SYNTHETIC-YOC-v1",
+              "normalized_relation_definition_ref": "SYNTHETIC-AFFINE-PROFILE-NOT-HOUSE-RLV::yoc",
+              "operator": ">=",
+              "coefficients": [
+                {
+                  "numerator": 8,
+                  "denominator": 1
+                },
+                {
+                  "numerator": -2,
+                  "denominator": 1
+                }
+              ],
+              "evidence_ref": "SYNTHETIC-REDUCED-PROFILE",
+              "original_claims": [
+                {
+                  "literal": "{\"aggregation_rule_ref\": null, \"applicability\": \"applicable\", \"applicability_reason\": null, \"applicability_rule_ref\": null, \"authorization\": \"not_granted\", \"condition_role\": \"pass_condition\", \"context\": {\"deal_id\": \"SYNTHETIC-LEDGER-NO-DEAL\", \"definition_set_revision\": \"v1\", \"input_revision\": \"v1\", \"run_id\": \"reference-1\", \"scenario_id\": \"Base\"}, \"criterion_id\": \"SYNTHETIC-yoc\", \"metric_definition_ref\": \"SYNTHETIC-yoc-definition\", \"metric_id\": \"declared_period_noi_over_affine_cost\", \"operator\": \">=\", \"purpose\": \"design_or_synthetic_reference\", \"sources\": [{\"claim_kind\": \"synthetic_reference\", \"locator\": \"fixture declaration\", \"source_id\": \"SYNTHETIC-ONLY\", \"verification_status\": \"synthetic_only\"}], \"threshold\": {\"basis\": \"declared_period_noi_over_affine_total_cost\", \"currency\": null, \"dimensions\": {\"area\": 0, \"money\": 0, \"space\": 0, \"time\": 0, \"unit\": 0}, \"measurement_role\": \"ratio\", \"period_ref\": \"NOI-PERIOD\", \"sources\": [{\"claim_kind\": \"synthetic_reference\", \"locator\": \"fixture declaration\", \"source_id\": \"SYNTHETIC-ONLY\", \"verification_status\": \"synthetic_only\"}], \"state\": \"known\", \"unit_id\": \"fraction\", \"value\": {\"denominator\": 1, \"numerator\": 1}}}",
+                  "evidence_ref": "SYNTHETIC-AFFINE-PROFILE-NOT-HOUSE-RLV"
+                }
+              ]
+            },
+            {
+              "constraint_id": "irr",
+              "state": "defined_claim",
+              "criterion_revision": "SYNTHETIC-IRR-v1",
+              "normalized_relation_definition_ref": "SYNTHETIC-AFFINE-PROFILE-NOT-HOUSE-RLV::irr",
+              "operator": ">=",
+              "coefficients": [
+                {
+                  "numerator": 10,
+                  "denominator": 1
+                },
+                {
+                  "numerator": -2,
+                  "denominator": 1
+                }
+              ],
+              "evidence_ref": "SYNTHETIC-REDUCED-PROFILE",
+              "original_claims": [
+                {
+                  "literal": "{\"aggregation_rule_ref\": null, \"applicability\": \"applicable\", \"applicability_reason\": null, \"applicability_rule_ref\": null, \"authorization\": \"not_granted\", \"condition_role\": \"pass_condition\", \"context\": {\"deal_id\": \"SYNTHETIC-LEDGER-NO-DEAL\", \"definition_set_revision\": \"v1\", \"input_revision\": \"v1\", \"run_id\": \"reference-1\", \"scenario_id\": \"Base\"}, \"criterion_id\": \"SYNTHETIC-irr\", \"metric_definition_ref\": \"SYNTHETIC-irr-definition\", \"metric_id\": \"single_period_project_equity_irr\", \"operator\": \">=\", \"purpose\": \"design_or_synthetic_reference\", \"sources\": [{\"claim_kind\": \"synthetic_reference\", \"locator\": \"fixture declaration\", \"source_id\": \"SYNTHETIC-ONLY\", \"verification_status\": \"synthetic_only\"}], \"threshold\": {\"basis\": \"one_interval_project_equity_effective_return\", \"currency\": null, \"dimensions\": {\"area\": 0, \"money\": 0, \"space\": 0, \"time\": 0, \"unit\": 0}, \"measurement_role\": \"ratio\", \"period_ref\": \"RETURN-INTERVAL\", \"sources\": [{\"claim_kind\": \"synthetic_reference\", \"locator\": \"fixture declaration\", \"source_id\": \"SYNTHETIC-ONLY\", \"verification_status\": \"synthetic_only\"}], \"state\": \"known\", \"unit_id\": \"fraction\", \"value\": {\"denominator\": 1, \"numerator\": 0}}}",
+                  "evidence_ref": "SYNTHETIC-AFFINE-PROFILE-NOT-HOUSE-RLV"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "scenario_id": "Downside",
+          "context": {
+            "deal_id": "SYNTHETIC-LEDGER-NO-DEAL",
+            "scenario_id": "Downside",
+            "run_id": "reference-1",
+            "input_revision": "v1",
+            "definition_set_revision": "v1"
+          },
+          "required_status": "required",
+          "exclusion_reason": null,
+          "exclusion_rule_ref": null,
+          "scenario_evidence_ref": "SYNTHETIC-EXPLICIT-SCOPE",
+          "required_constraint_ids": [
+            "yoc",
+            "irr"
+          ],
+          "constraints": [
+            {
+              "constraint_id": "yoc",
+              "state": "defined_claim",
+              "criterion_revision": "SYNTHETIC-YOC-v1",
+              "normalized_relation_definition_ref": "SYNTHETIC-AFFINE-PROFILE-NOT-HOUSE-RLV::yoc",
+              "operator": ">=",
+              "coefficients": [
+                {
+                  "numerator": 6,
+                  "denominator": 1
+                },
+                {
+                  "numerator": -1,
+                  "denominator": 1
+                }
+              ],
+              "evidence_ref": "SYNTHETIC-REDUCED-PROFILE",
+              "original_claims": [
+                {
+                  "literal": "{\"aggregation_rule_ref\": null, \"applicability\": \"applicable\", \"applicability_reason\": null, \"applicability_rule_ref\": null, \"authorization\": \"not_granted\", \"condition_role\": \"pass_condition\", \"context\": {\"deal_id\": \"SYNTHETIC-LEDGER-NO-DEAL\", \"definition_set_revision\": \"v1\", \"input_revision\": \"v1\", \"run_id\": \"reference-1\", \"scenario_id\": \"Downside\"}, \"criterion_id\": \"SYNTHETIC-yoc\", \"metric_definition_ref\": \"SYNTHETIC-yoc-definition\", \"metric_id\": \"declared_period_noi_over_affine_cost\", \"operator\": \">=\", \"purpose\": \"design_or_synthetic_reference\", \"sources\": [{\"claim_kind\": \"synthetic_reference\", \"locator\": \"fixture declaration\", \"source_id\": \"SYNTHETIC-ONLY\", \"verification_status\": \"synthetic_only\"}], \"threshold\": {\"basis\": \"declared_period_noi_over_affine_total_cost\", \"currency\": null, \"dimensions\": {\"area\": 0, \"money\": 0, \"space\": 0, \"time\": 0, \"unit\": 0}, \"measurement_role\": \"ratio\", \"period_ref\": \"NOI-PERIOD\", \"sources\": [{\"claim_kind\": \"synthetic_reference\", \"locator\": \"fixture declaration\", \"source_id\": \"SYNTHETIC-ONLY\", \"verification_status\": \"synthetic_only\"}], \"state\": \"known\", \"unit_id\": \"fraction\", \"value\": {\"denominator\": 1, \"numerator\": 1}}}",
+                  "evidence_ref": "SYNTHETIC-AFFINE-PROFILE-NOT-HOUSE-RLV"
+                }
+              ]
+            },
+            {
+              "constraint_id": "irr",
+              "state": "defined_claim",
+              "criterion_revision": "SYNTHETIC-IRR-v1",
+              "normalized_relation_definition_ref": "SYNTHETIC-AFFINE-PROFILE-NOT-HOUSE-RLV::irr",
+              "operator": ">=",
+              "coefficients": [
+                {
+                  "numerator": 36,
+                  "denominator": 5
+                },
+                {
+                  "numerator": -6,
+                  "denominator": 5
+                }
+              ],
+              "evidence_ref": "SYNTHETIC-REDUCED-PROFILE",
+              "original_claims": [
+                {
+                  "literal": "{\"aggregation_rule_ref\": null, \"applicability\": \"applicable\", \"applicability_reason\": null, \"applicability_rule_ref\": null, \"authorization\": \"not_granted\", \"condition_role\": \"pass_condition\", \"context\": {\"deal_id\": \"SYNTHETIC-LEDGER-NO-DEAL\", \"definition_set_revision\": \"v1\", \"input_revision\": \"v1\", \"run_id\": \"reference-1\", \"scenario_id\": \"Downside\"}, \"criterion_id\": \"SYNTHETIC-irr\", \"metric_definition_ref\": \"SYNTHETIC-irr-definition\", \"metric_id\": \"single_period_project_equity_irr\", \"operator\": \">=\", \"purpose\": \"design_or_synthetic_reference\", \"sources\": [{\"claim_kind\": \"synthetic_reference\", \"locator\": \"fixture declaration\", \"source_id\": \"SYNTHETIC-ONLY\", \"verification_status\": \"synthetic_only\"}], \"threshold\": {\"basis\": \"one_interval_project_equity_effective_return\", \"currency\": null, \"dimensions\": {\"area\": 0, \"money\": 0, \"space\": 0, \"time\": 0, \"unit\": 0}, \"measurement_role\": \"ratio\", \"period_ref\": \"RETURN-INTERVAL\", \"sources\": [{\"claim_kind\": \"synthetic_reference\", \"locator\": \"fixture declaration\", \"source_id\": \"SYNTHETIC-ONLY\", \"verification_status\": \"synthetic_only\"}], \"state\": \"known\", \"unit_id\": \"fraction\", \"value\": {\"denominator\": 5, \"numerator\": 1}}}",
+                  "evidence_ref": "SYNTHETIC-AFFINE-PROFILE-NOT-HOUSE-RLV"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "evaluation_budget_points": 20
+    },
+    "candidate_cash_return_checks": [
+      {
+        "scenario_id": "Base",
+        "cost": "10",
+        "noi_over_cost": "1",
+        "exact_periodic_irr": "1/5",
+        "equity_multiple": "6/5",
+        "gross_initial_contribution": "10",
+        "gross_terminal_distribution": "12",
+        "initial_cash_sources": "10",
+        "initial_cash_uses": "10",
+        "terminal_cash_receipt": "12",
+        "terminal_equity_cash_out": "12",
+        "linear_irr_root_certificate": {
+          "positive_discount_factor": "5/6",
+          "polynomial_residual": "0",
+          "degree": 1
+        },
+        "yoc_condition_satisfied": true,
+        "irr_condition_satisfied": true
+      },
+      {
+        "scenario_id": "Downside",
+        "cost": "8",
+        "noi_over_cost": "5/4",
+        "exact_periodic_irr": "1/2",
+        "equity_multiple": "3/2",
+        "gross_initial_contribution": "8",
+        "gross_terminal_distribution": "12",
+        "initial_cash_sources": "8",
+        "initial_cash_uses": "8",
+        "terminal_cash_receipt": "12",
+        "terminal_equity_cash_out": "12",
+        "linear_irr_root_certificate": {
+          "positive_discount_factor": "2/3",
+          "polynomial_residual": "0",
+          "degree": 1
+        },
+        "yoc_condition_satisfied": true,
+        "irr_condition_satisfied": true
+      }
+    ],
+    "candidate_is_maximum_of_declared_grid": true,
+    "next_grid_point_check": {
+      "price": "5",
+      "state": "inside_declared_grid",
+      "scenario_diagnostics": [
+        {
+          "scenario_id": "Base",
+          "cost": "12",
+          "noi_over_cost": "5/6",
+          "exact_periodic_irr": "0",
+          "equity_multiple": "1",
+          "gross_initial_contribution": "12",
+          "gross_terminal_distribution": "12",
+          "initial_cash_sources": "12",
+          "initial_cash_uses": "12",
+          "terminal_cash_receipt": "12",
+          "terminal_equity_cash_out": "12",
+          "linear_irr_root_certificate": {
+            "positive_discount_factor": "1",
+            "polynomial_residual": "0",
+            "degree": 1
+          },
+          "yoc_condition_satisfied": false,
+          "irr_condition_satisfied": true
+        },
+        {
+          "scenario_id": "Downside",
+          "cost": "9",
+          "noi_over_cost": "10/9",
+          "exact_periodic_irr": "1/3",
+          "equity_multiple": "4/3",
+          "gross_initial_contribution": "9",
+          "gross_terminal_distribution": "12",
+          "initial_cash_sources": "9",
+          "initial_cash_uses": "9",
+          "terminal_cash_receipt": "12",
+          "terminal_equity_cash_out": "12",
+          "linear_irr_root_certificate": {
+            "positive_discount_factor": "3/4",
+            "polynomial_residual": "0",
+            "degree": 1
+          },
+          "yoc_condition_satisfied": true,
+          "irr_condition_satisfied": true
+        }
+      ]
+    },
+    "asking_diagnostic": {
+      "state": "inside_declared_grid",
+      "evaluation_state": "evaluated_reduced_profile",
+      "price": "4",
+      "scenario_diagnostics": [
+        {
+          "scenario_id": "Base",
+          "cost": "10",
+          "noi_over_cost": "1",
+          "exact_periodic_irr": "1/5",
+          "equity_multiple": "6/5",
+          "gross_initial_contribution": "10",
+          "gross_terminal_distribution": "12",
+          "initial_cash_sources": "10",
+          "initial_cash_uses": "10",
+          "terminal_cash_receipt": "12",
+          "terminal_equity_cash_out": "12",
+          "linear_irr_root_certificate": {
+            "positive_discount_factor": "5/6",
+            "polynomial_residual": "0",
+            "degree": 1
+          },
+          "yoc_condition_satisfied": true,
+          "irr_condition_satisfied": true
+        },
+        {
+          "scenario_id": "Downside",
+          "cost": "8",
+          "noi_over_cost": "5/4",
+          "exact_periodic_irr": "1/2",
+          "equity_multiple": "3/2",
+          "gross_initial_contribution": "8",
+          "gross_terminal_distribution": "12",
+          "initial_cash_sources": "8",
+          "initial_cash_uses": "8",
+          "terminal_cash_receipt": "12",
+          "terminal_equity_cash_out": "12",
+          "linear_irr_root_certificate": {
+            "positive_discount_factor": "2/3",
+            "polynomial_residual": "0",
+            "degree": 1
+          },
+          "yoc_condition_satisfied": true,
+          "irr_condition_satisfied": true
+        }
+      ]
+    },
+    "annualization_applied": false
+  },
+  "scope": "Typed declared positive affine-cost/price-independent NOI/single-initial-contribution-single-terminal-distribution profile; derived finite-grid two-objective conditions and exact candidate cash/linear-root checks only. Not full M1\u2013M7 financial engine, approved price goals/Q3, calendar/annualization/bank/tax policy, general IRR selection, RLV, independent audit or production."
+}

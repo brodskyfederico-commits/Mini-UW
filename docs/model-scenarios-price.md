@@ -64,3 +64,7 @@ Faltan fuentes/valores de escenario, objetivos de Lorena y Q3, aplicabilidad, ci
 ## Ampliación independiente: grilla y ensayos declarados
 
 [Catálogo finito de precios](price-grid-catalogue.md): 52 controles y 324 casos de grilla para relaciones normalizadas recibidas, sin suponer monotonía o convertir búsqueda parcial en máximo. [Ranking con signo](sensitivity-ranking.md): 33 controles de entradas conservadas, métricas compatibles, empates y separación de ensayos conjuntos. No derivan las restricciones económicas ni reejecutan el motor financiero; Q3, criterios reales, fuentes y revisión siguen abiertos.
+
+## Derivación acotada desde costo y retorno
+
+[Soporte afín tipado](affine-price-support.md) liga la rama reducida N/C y H/C−1 al catálogo, con 42 controles y 144 casos de operadores/precios, prueba exacta de raíz lineal y contraste con aislamiento general. Mantiene asking y revisiones de criterios separados; no extiende la rama a M1–M7 completos ni cierra Q3.

@@ -92,6 +92,10 @@
     {
       "script": "references/validate_sensitivity_ranking.py",
       "report": "references/sensitivity-ranking-validation.json"
+    },
+    {
+      "script": "references/validate_affine_price_support.py",
+      "report": "references/affine-price-support-validation.json"
     }
   ]
 }

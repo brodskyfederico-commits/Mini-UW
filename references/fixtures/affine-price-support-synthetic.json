@@ -1,0 +1,672 @@
+{
+  "purpose": "design_or_synthetic_reference",
+  "authorization": "not_granted",
+  "context": {
+    "deal_id": "SYNTHETIC-LEDGER-NO-DEAL",
+    "scenario_id": "explicit-grid-aggregate",
+    "run_id": "reference-1",
+    "input_revision": "v1",
+    "definition_set_revision": "v1"
+  },
+  "profile": "affine_cost_one_initial_equity_one_terminal_distribution",
+  "profile_definition_ref": "SYNTHETIC-AFFINE-PROFILE-NOT-HOUSE-RLV",
+  "metric_definition_refs": {
+    "yoc": "SYNTHETIC-yoc-definition",
+    "irr": "SYNTHETIC-irr-definition"
+  },
+  "domain": {
+    "kind": "finite_uniform_grid",
+    "lower": {
+      "state": "known",
+      "value": {
+        "numerator": 0,
+        "denominator": 1
+      },
+      "dimensions": {
+        "money": 1,
+        "area": 0,
+        "unit": 0,
+        "space": 0,
+        "time": 0
+      },
+      "unit_id": "SYNTHETIC-MONEY",
+      "currency": "SYNTHETIC-CURRENCY",
+      "measurement_role": "stock",
+      "basis": "synthetic_project",
+      "period_ref": "PRICE-DOMAIN",
+      "sources": [
+        {
+          "source_id": "SYNTHETIC-ONLY",
+          "locator": "fixture declaration",
+          "claim_kind": "synthetic_reference",
+          "verification_status": "synthetic_only"
+        }
+      ]
+    },
+    "upper": {
+      "state": "known",
+      "value": {
+        "numerator": 8,
+        "denominator": 1
+      },
+      "dimensions": {
+        "money": 1,
+        "area": 0,
+        "unit": 0,
+        "space": 0,
+        "time": 0
+      },
+      "unit_id": "SYNTHETIC-MONEY",
+      "currency": "SYNTHETIC-CURRENCY",
+      "measurement_role": "stock",
+      "basis": "synthetic_project",
+      "period_ref": "PRICE-DOMAIN",
+      "sources": [
+        {
+          "source_id": "SYNTHETIC-ONLY",
+          "locator": "fixture declaration",
+          "claim_kind": "synthetic_reference",
+          "verification_status": "synthetic_only"
+        }
+      ]
+    },
+    "lower_closed": true,
+    "upper_closed": true,
+    "anchor": {
+      "state": "known",
+      "value": {
+        "numerator": 0,
+        "denominator": 1
+      },
+      "dimensions": {
+        "money": 1,
+        "area": 0,
+        "unit": 0,
+        "space": 0,
+        "time": 0
+      },
+      "unit_id": "SYNTHETIC-MONEY",
+      "currency": "SYNTHETIC-CURRENCY",
+      "measurement_role": "stock",
+      "basis": "synthetic_project",
+      "period_ref": "PRICE-DOMAIN",
+      "sources": [
+        {
+          "source_id": "SYNTHETIC-ONLY",
+          "locator": "fixture declaration",
+          "claim_kind": "synthetic_reference",
+          "verification_status": "synthetic_only"
+        }
+      ]
+    },
+    "increment": {
+      "state": "known",
+      "value": {
+        "numerator": 1,
+        "denominator": 1
+      },
+      "dimensions": {
+        "money": 1,
+        "area": 0,
+        "unit": 0,
+        "space": 0,
+        "time": 0
+      },
+      "unit_id": "SYNTHETIC-MONEY",
+      "currency": "SYNTHETIC-CURRENCY",
+      "measurement_role": "stock",
+      "basis": "synthetic_project",
+      "period_ref": "PRICE-DOMAIN",
+      "sources": [
+        {
+          "source_id": "SYNTHETIC-ONLY",
+          "locator": "fixture declaration",
+          "claim_kind": "synthetic_reference",
+          "verification_status": "synthetic_only"
+        }
+      ]
+    },
+    "normalizing_price_unit": {
+      "state": "known",
+      "value": {
+        "numerator": 1,
+        "denominator": 1
+      },
+      "dimensions": {
+        "money": 1,
+        "area": 0,
+        "unit": 0,
+        "space": 0,
+        "time": 0
+      },
+      "unit_id": "SYNTHETIC-MONEY",
+      "currency": "SYNTHETIC-CURRENCY",
+      "measurement_role": "stock",
+      "basis": "synthetic_project",
+      "period_ref": "PRICE-DOMAIN",
+      "sources": [
+        {
+          "source_id": "SYNTHETIC-ONLY",
+          "locator": "fixture declaration",
+          "claim_kind": "synthetic_reference",
+          "verification_status": "synthetic_only"
+        }
+      ]
+    },
+    "domain_evidence_ref": "SYNTHETIC-NOT-APPROVED-QUOTE-GRID"
+  },
+  "asking_price": {
+    "state": "known",
+    "value": {
+      "numerator": 4,
+      "denominator": 1
+    },
+    "dimensions": {
+      "money": 1,
+      "area": 0,
+      "unit": 0,
+      "space": 0,
+      "time": 0
+    },
+    "unit_id": "SYNTHETIC-MONEY",
+    "currency": "SYNTHETIC-CURRENCY",
+    "measurement_role": "stock",
+    "basis": "synthetic_project",
+    "period_ref": "PRICE-DOMAIN",
+    "sources": [
+      {
+        "source_id": "SYNTHETIC-ONLY",
+        "locator": "fixture declaration",
+        "claim_kind": "synthetic_reference",
+        "verification_status": "synthetic_only"
+      }
+    ]
+  },
+  "expected_scenario_ids": [
+    "Base",
+    "Downside"
+  ],
+  "scenarios": [
+    {
+      "scenario_id": "Base",
+      "context": {
+        "deal_id": "SYNTHETIC-LEDGER-NO-DEAL",
+        "scenario_id": "Base",
+        "run_id": "reference-1",
+        "input_revision": "v1",
+        "definition_set_revision": "v1"
+      },
+      "required_status": "required",
+      "exclusion_reason": null,
+      "exclusion_rule_ref": null,
+      "scenario_evidence_ref": "SYNTHETIC-EXPLICIT-SCOPE",
+      "assumptions_state": "declared_claim",
+      "assumption_claims": [],
+      "profile_evidence_ref": "SYNTHETIC-REDUCED-PROFILE",
+      "period_definition_ref": "SYNTHETIC-ONE-ABSTRACT-REGULAR-INTERVAL",
+      "cost_intercept": {
+        "state": "known",
+        "value": {
+          "numerator": 2,
+          "denominator": 1
+        },
+        "dimensions": {
+          "money": 1,
+          "area": 0,
+          "unit": 0,
+          "space": 0,
+          "time": 0
+        },
+        "unit_id": "SYNTHETIC-MONEY",
+        "currency": "SYNTHETIC-CURRENCY",
+        "measurement_role": "stock",
+        "basis": "synthetic_project",
+        "period_ref": "PRICE-DOMAIN",
+        "sources": [
+          {
+            "source_id": "SYNTHETIC-ONLY",
+            "locator": "fixture declaration",
+            "claim_kind": "synthetic_reference",
+            "verification_status": "synthetic_only"
+          }
+        ]
+      },
+      "cost_price_coefficient": {
+        "state": "known",
+        "value": {
+          "numerator": 2,
+          "denominator": 1
+        },
+        "dimensions": {
+          "money": 0,
+          "area": 0,
+          "unit": 0,
+          "space": 0,
+          "time": 0
+        },
+        "unit_id": "dimensionless_cost_multiplier",
+        "currency": null,
+        "measurement_role": "ratio",
+        "basis": "price_to_total_cost",
+        "period_ref": "PRICE-DOMAIN",
+        "sources": [
+          {
+            "source_id": "SYNTHETIC-ONLY",
+            "locator": "fixture declaration",
+            "claim_kind": "synthetic_reference",
+            "verification_status": "synthetic_only"
+          }
+        ]
+      },
+      "noi_for_declared_period": {
+        "state": "known",
+        "value": {
+          "numerator": 10,
+          "denominator": 1
+        },
+        "dimensions": {
+          "money": 1,
+          "area": 0,
+          "unit": 0,
+          "space": 0,
+          "time": 0
+        },
+        "unit_id": "SYNTHETIC-MONEY",
+        "currency": "SYNTHETIC-CURRENCY",
+        "measurement_role": "period_total",
+        "basis": "synthetic_project",
+        "period_ref": "NOI-PERIOD",
+        "sources": [
+          {
+            "source_id": "SYNTHETIC-ONLY",
+            "locator": "fixture declaration",
+            "claim_kind": "synthetic_reference",
+            "verification_status": "synthetic_only"
+          }
+        ]
+      },
+      "terminal_equity_distribution": {
+        "state": "known",
+        "value": {
+          "numerator": 12,
+          "denominator": 1
+        },
+        "dimensions": {
+          "money": 1,
+          "area": 0,
+          "unit": 0,
+          "space": 0,
+          "time": 0
+        },
+        "unit_id": "SYNTHETIC-MONEY",
+        "currency": "SYNTHETIC-CURRENCY",
+        "measurement_role": "period_total",
+        "basis": "synthetic_project",
+        "period_ref": "TERMINAL-RETURN-PERIOD",
+        "sources": [
+          {
+            "source_id": "SYNTHETIC-ONLY",
+            "locator": "fixture declaration",
+            "claim_kind": "synthetic_reference",
+            "verification_status": "synthetic_only"
+          }
+        ]
+      },
+      "yoc_criterion": {
+        "purpose": "design_or_synthetic_reference",
+        "authorization": "not_granted",
+        "context": {
+          "deal_id": "SYNTHETIC-LEDGER-NO-DEAL",
+          "scenario_id": "Base",
+          "run_id": "reference-1",
+          "input_revision": "v1",
+          "definition_set_revision": "v1"
+        },
+        "criterion_id": "SYNTHETIC-yoc",
+        "metric_id": "declared_period_noi_over_affine_cost",
+        "metric_definition_ref": "SYNTHETIC-yoc-definition",
+        "condition_role": "pass_condition",
+        "operator": ">=",
+        "threshold": {
+          "state": "known",
+          "value": {
+            "numerator": 1,
+            "denominator": 1
+          },
+          "dimensions": {
+            "money": 0,
+            "area": 0,
+            "unit": 0,
+            "space": 0,
+            "time": 0
+          },
+          "unit_id": "fraction",
+          "currency": null,
+          "measurement_role": "ratio",
+          "basis": "declared_period_noi_over_affine_total_cost",
+          "period_ref": "NOI-PERIOD",
+          "sources": [
+            {
+              "source_id": "SYNTHETIC-ONLY",
+              "locator": "fixture declaration",
+              "claim_kind": "synthetic_reference",
+              "verification_status": "synthetic_only"
+            }
+          ]
+        },
+        "applicability": "applicable",
+        "applicability_reason": null,
+        "applicability_rule_ref": null,
+        "aggregation_rule_ref": null,
+        "sources": [
+          {
+            "source_id": "SYNTHETIC-ONLY",
+            "locator": "fixture declaration",
+            "claim_kind": "synthetic_reference",
+            "verification_status": "synthetic_only"
+          }
+        ]
+      },
+      "irr_criterion": {
+        "purpose": "design_or_synthetic_reference",
+        "authorization": "not_granted",
+        "context": {
+          "deal_id": "SYNTHETIC-LEDGER-NO-DEAL",
+          "scenario_id": "Base",
+          "run_id": "reference-1",
+          "input_revision": "v1",
+          "definition_set_revision": "v1"
+        },
+        "criterion_id": "SYNTHETIC-irr",
+        "metric_id": "single_period_project_equity_irr",
+        "metric_definition_ref": "SYNTHETIC-irr-definition",
+        "condition_role": "pass_condition",
+        "operator": ">=",
+        "threshold": {
+          "state": "known",
+          "value": {
+            "numerator": 0,
+            "denominator": 1
+          },
+          "dimensions": {
+            "money": 0,
+            "area": 0,
+            "unit": 0,
+            "space": 0,
+            "time": 0
+          },
+          "unit_id": "fraction",
+          "currency": null,
+          "measurement_role": "ratio",
+          "basis": "one_interval_project_equity_effective_return",
+          "period_ref": "RETURN-INTERVAL",
+          "sources": [
+            {
+              "source_id": "SYNTHETIC-ONLY",
+              "locator": "fixture declaration",
+              "claim_kind": "synthetic_reference",
+              "verification_status": "synthetic_only"
+            }
+          ]
+        },
+        "applicability": "applicable",
+        "applicability_reason": null,
+        "applicability_rule_ref": null,
+        "aggregation_rule_ref": null,
+        "sources": [
+          {
+            "source_id": "SYNTHETIC-ONLY",
+            "locator": "fixture declaration",
+            "claim_kind": "synthetic_reference",
+            "verification_status": "synthetic_only"
+          }
+        ]
+      },
+      "criterion_revisions": {
+        "yoc": "SYNTHETIC-YOC-v1",
+        "irr": "SYNTHETIC-IRR-v1"
+      }
+    },
+    {
+      "scenario_id": "Downside",
+      "context": {
+        "deal_id": "SYNTHETIC-LEDGER-NO-DEAL",
+        "scenario_id": "Downside",
+        "run_id": "reference-1",
+        "input_revision": "v1",
+        "definition_set_revision": "v1"
+      },
+      "required_status": "required",
+      "exclusion_reason": null,
+      "exclusion_rule_ref": null,
+      "scenario_evidence_ref": "SYNTHETIC-EXPLICIT-SCOPE",
+      "assumptions_state": "declared_claim",
+      "assumption_claims": [],
+      "profile_evidence_ref": "SYNTHETIC-REDUCED-PROFILE",
+      "period_definition_ref": "SYNTHETIC-ONE-ABSTRACT-REGULAR-INTERVAL",
+      "cost_intercept": {
+        "state": "known",
+        "value": {
+          "numerator": 4,
+          "denominator": 1
+        },
+        "dimensions": {
+          "money": 1,
+          "area": 0,
+          "unit": 0,
+          "space": 0,
+          "time": 0
+        },
+        "unit_id": "SYNTHETIC-MONEY",
+        "currency": "SYNTHETIC-CURRENCY",
+        "measurement_role": "stock",
+        "basis": "synthetic_project",
+        "period_ref": "PRICE-DOMAIN",
+        "sources": [
+          {
+            "source_id": "SYNTHETIC-ONLY",
+            "locator": "fixture declaration",
+            "claim_kind": "synthetic_reference",
+            "verification_status": "synthetic_only"
+          }
+        ]
+      },
+      "cost_price_coefficient": {
+        "state": "known",
+        "value": {
+          "numerator": 1,
+          "denominator": 1
+        },
+        "dimensions": {
+          "money": 0,
+          "area": 0,
+          "unit": 0,
+          "space": 0,
+          "time": 0
+        },
+        "unit_id": "dimensionless_cost_multiplier",
+        "currency": null,
+        "measurement_role": "ratio",
+        "basis": "price_to_total_cost",
+        "period_ref": "PRICE-DOMAIN",
+        "sources": [
+          {
+            "source_id": "SYNTHETIC-ONLY",
+            "locator": "fixture declaration",
+            "claim_kind": "synthetic_reference",
+            "verification_status": "synthetic_only"
+          }
+        ]
+      },
+      "noi_for_declared_period": {
+        "state": "known",
+        "value": {
+          "numerator": 10,
+          "denominator": 1
+        },
+        "dimensions": {
+          "money": 1,
+          "area": 0,
+          "unit": 0,
+          "space": 0,
+          "time": 0
+        },
+        "unit_id": "SYNTHETIC-MONEY",
+        "currency": "SYNTHETIC-CURRENCY",
+        "measurement_role": "period_total",
+        "basis": "synthetic_project",
+        "period_ref": "NOI-PERIOD",
+        "sources": [
+          {
+            "source_id": "SYNTHETIC-ONLY",
+            "locator": "fixture declaration",
+            "claim_kind": "synthetic_reference",
+            "verification_status": "synthetic_only"
+          }
+        ]
+      },
+      "terminal_equity_distribution": {
+        "state": "known",
+        "value": {
+          "numerator": 12,
+          "denominator": 1
+        },
+        "dimensions": {
+          "money": 1,
+          "area": 0,
+          "unit": 0,
+          "space": 0,
+          "time": 0
+        },
+        "unit_id": "SYNTHETIC-MONEY",
+        "currency": "SYNTHETIC-CURRENCY",
+        "measurement_role": "period_total",
+        "basis": "synthetic_project",
+        "period_ref": "TERMINAL-RETURN-PERIOD",
+        "sources": [
+          {
+            "source_id": "SYNTHETIC-ONLY",
+            "locator": "fixture declaration",
+            "claim_kind": "synthetic_reference",
+            "verification_status": "synthetic_only"
+          }
+        ]
+      },
+      "yoc_criterion": {
+        "purpose": "design_or_synthetic_reference",
+        "authorization": "not_granted",
+        "context": {
+          "deal_id": "SYNTHETIC-LEDGER-NO-DEAL",
+          "scenario_id": "Downside",
+          "run_id": "reference-1",
+          "input_revision": "v1",
+          "definition_set_revision": "v1"
+        },
+        "criterion_id": "SYNTHETIC-yoc",
+        "metric_id": "declared_period_noi_over_affine_cost",
+        "metric_definition_ref": "SYNTHETIC-yoc-definition",
+        "condition_role": "pass_condition",
+        "operator": ">=",
+        "threshold": {
+          "state": "known",
+          "value": {
+            "numerator": 1,
+            "denominator": 1
+          },
+          "dimensions": {
+            "money": 0,
+            "area": 0,
+            "unit": 0,
+            "space": 0,
+            "time": 0
+          },
+          "unit_id": "fraction",
+          "currency": null,
+          "measurement_role": "ratio",
+          "basis": "declared_period_noi_over_affine_total_cost",
+          "period_ref": "NOI-PERIOD",
+          "sources": [
+            {
+              "source_id": "SYNTHETIC-ONLY",
+              "locator": "fixture declaration",
+              "claim_kind": "synthetic_reference",
+              "verification_status": "synthetic_only"
+            }
+          ]
+        },
+        "applicability": "applicable",
+        "applicability_reason": null,
+        "applicability_rule_ref": null,
+        "aggregation_rule_ref": null,
+        "sources": [
+          {
+            "source_id": "SYNTHETIC-ONLY",
+            "locator": "fixture declaration",
+            "claim_kind": "synthetic_reference",
+            "verification_status": "synthetic_only"
+          }
+        ]
+      },
+      "irr_criterion": {
+        "purpose": "design_or_synthetic_reference",
+        "authorization": "not_granted",
+        "context": {
+          "deal_id": "SYNTHETIC-LEDGER-NO-DEAL",
+          "scenario_id": "Downside",
+          "run_id": "reference-1",
+          "input_revision": "v1",
+          "definition_set_revision": "v1"
+        },
+        "criterion_id": "SYNTHETIC-irr",
+        "metric_id": "single_period_project_equity_irr",
+        "metric_definition_ref": "SYNTHETIC-irr-definition",
+        "condition_role": "pass_condition",
+        "operator": ">=",
+        "threshold": {
+          "state": "known",
+          "value": {
+            "numerator": 1,
+            "denominator": 5
+          },
+          "dimensions": {
+            "money": 0,
+            "area": 0,
+            "unit": 0,
+            "space": 0,
+            "time": 0
+          },
+          "unit_id": "fraction",
+          "currency": null,
+          "measurement_role": "ratio",
+          "basis": "one_interval_project_equity_effective_return",
+          "period_ref": "RETURN-INTERVAL",
+          "sources": [
+            {
+              "source_id": "SYNTHETIC-ONLY",
+              "locator": "fixture declaration",
+              "claim_kind": "synthetic_reference",
+              "verification_status": "synthetic_only"
+            }
+          ]
+        },
+        "applicability": "applicable",
+        "applicability_reason": null,
+        "applicability_rule_ref": null,
+        "aggregation_rule_ref": null,
+        "sources": [
+          {
+            "source_id": "SYNTHETIC-ONLY",
+            "locator": "fixture declaration",
+            "claim_kind": "synthetic_reference",
+            "verification_status": "synthetic_only"
+          }
+        ]
+      },
+      "criterion_revisions": {
+        "yoc": "SYNTHETIC-YOC-v1",
+        "irr": "SYNTHETIC-IRR-v1"
+      }
+    }
+  ],
+  "evaluation_budget_points": 20
+}

@@ -55,3 +55,5 @@ Further cash integration: [operating and settlement bridges](docs/operating-sett
 Financing diagnostics: [explicit action timeline, capacity and maturity](docs/financing-timeline.md) retains transient deficits and declared cutoff/window violations that period totals can hide. No cash, permissions, loan history or extension is inferred. The package checker now registers 21 scoped suites.
 
 Scenario diagnostics: [finite price-grid catalogue](docs/price-grid-catalogue.md) preserves nonmonotone components, unknown relations and partial searches. [Signed sensitivity ranking](docs/sensitivity-ranking.md) checks explicit numeric input preservation and ties while keeping joint experiments separate. These references do not reexecute the financial model or certify RLV. The package checker now registers 23 scoped suites.
+
+Reduced price/return support: [typed affine profile](docs/affine-price-support.md) derives two explicit objective relations, checks exact candidate cash/return arithmetic and the next grid increment, and keeps asking separate. It does not certify full RLV, financing, calendar or investment policy. Package checks now register 24 suites.

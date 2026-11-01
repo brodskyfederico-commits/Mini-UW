@@ -21,3 +21,5 @@ Operating-cash-bridge and settlement-bridge add explicit accrual/working-balance
 Financing-timeline adds explicit action groups, unresolved term records, capacity bases and maturity/restriction-claim diagnostics. All 29 candidate schemas pass 75 interface cases; 50 synthetic timeline checks do not approve bank terms, execution order or product readiness.
 
 Price-grid-catalogue and sensitivity-ranking add explicit finite-domain/scenario-condition and signed measured-effect contracts. All 31 candidate schemas pass 75 interface cases. Their 52/33 controls, including 324 grid properties, do not certify economic derivation, actual scenario execution, approved ranking or global price optimality.
+
+Affine-price-support binds positive affine-cost/single-return assumptions and separately versioned explicit objectives to the finite-grid catalogue. Thirty-two schema documents are available; its 42 scoped checks and 144 operator/price cases do not approve the financial profile or full RLV.

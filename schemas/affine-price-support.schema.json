@@ -1,0 +1,223 @@
+{
+  "type": "object",
+  "properties": {
+    "purpose": {
+      "const": "design_or_synthetic_reference"
+    },
+    "authorization": {
+      "const": "not_granted"
+    },
+    "context": {
+      "$ref": "urn:miniuw:candidate:common:0.1#/$defs/context"
+    },
+    "profile": {
+      "const": "affine_cost_one_initial_equity_one_terminal_distribution"
+    },
+    "profile_definition_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "metric_definition_refs": {
+      "type": "object",
+      "properties": {
+        "yoc": {
+          "type": "string",
+          "minLength": 1
+        },
+        "irr": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "yoc",
+        "irr"
+      ],
+      "additionalProperties": false
+    },
+    "domain": {
+      "$ref": "urn:miniuw:candidate:price-grid-catalogue:0.1#/properties/domain"
+    },
+    "asking_price": {
+      "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+    },
+    "expected_scenario_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "scenarios": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "scenario_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "context": {
+            "$ref": "urn:miniuw:candidate:common:0.1#/$defs/context"
+          },
+          "required_status": {
+            "enum": [
+              "required",
+              "excluded",
+              "unresolved"
+            ]
+          },
+          "exclusion_reason": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1
+          },
+          "exclusion_rule_ref": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1
+          },
+          "scenario_evidence_ref": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1
+          },
+          "assumptions_state": {
+            "enum": [
+              "declared_claim",
+              "unresolved",
+              "conflict"
+            ]
+          },
+          "assumption_claims": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "literal": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "evidence_ref": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "literal",
+                "evidence_ref"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "profile_evidence_ref": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1
+          },
+          "period_definition_ref": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1
+          },
+          "cost_intercept": {
+            "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+          },
+          "cost_price_coefficient": {
+            "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+          },
+          "noi_for_declared_period": {
+            "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+          },
+          "terminal_equity_distribution": {
+            "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+          },
+          "yoc_criterion": {
+            "$ref": "urn:miniuw:candidate:criterion:0.1"
+          },
+          "irr_criterion": {
+            "$ref": "urn:miniuw:candidate:criterion:0.1"
+          },
+          "criterion_revisions": {
+            "type": "object",
+            "properties": {
+              "yoc": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "minLength": 1
+              },
+              "irr": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "minLength": 1
+              }
+            },
+            "required": [
+              "yoc",
+              "irr"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "scenario_id",
+          "context",
+          "required_status",
+          "exclusion_reason",
+          "exclusion_rule_ref",
+          "scenario_evidence_ref",
+          "assumptions_state",
+          "assumption_claims",
+          "profile_evidence_ref",
+          "period_definition_ref",
+          "cost_intercept",
+          "cost_price_coefficient",
+          "noi_for_declared_period",
+          "terminal_equity_distribution",
+          "yoc_criterion",
+          "irr_criterion",
+          "criterion_revisions"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "evaluation_budget_points": {
+      "type": "integer",
+      "minimum": 0
+    }
+  },
+  "required": [
+    "purpose",
+    "authorization",
+    "context",
+    "profile",
+    "profile_definition_ref",
+    "metric_definition_refs",
+    "domain",
+    "asking_price",
+    "expected_scenario_ids",
+    "scenarios",
+    "evaluation_budget_points"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:miniuw:candidate:affine-price-support:0.1",
+  "title": "Candidate derived finite-grid support for a declared reduced affine/single-return profile; not RLV"
+}
