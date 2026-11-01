@@ -1,5 +1,5 @@
 {
-  "scope": "supplied sources, candidate model/review package and limited integrity references; not complete financial model or product/VPS recovery",
+  "scope": "supplied sources, candidate model/interface structure and limited references; not complete financial model, production release or full product/VPS recovery",
   "files": [
     {
       "path": ".gitignore",
@@ -13,13 +13,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 4135,
-      "sha256": "4da7986211f41c9804fe57b433a3eb065eed59053b268d943e22f3c6c5cb7199"
+      "bytes": 4511,
+      "sha256": "1c55960e348d04262a02f34d69ca5f842d01d770b2a7749bcc3bad9f9d9e3f29"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 10089,
-      "sha256": "9d756dc06f5676f2a6b6c12576c320ee38b6ef5a0b2ae240bcf9113a4f00d96e"
+      "bytes": 10978,
+      "sha256": "2cb0b9a9725e6f992bdd6300e7ab385c3255e3285234393f9ec0009a1c3acd7d"
     },
     {
       "path": "docs/acceptance-case-contracts.json",
@@ -38,13 +38,13 @@
     },
     {
       "path": "docs/coverage-matrix.csv",
-      "bytes": 333275,
-      "sha256": "12d6168356066fc557d75f0c6c2946c59036c334c3c51099b5d83faaa7be7e05"
+      "bytes": 335167,
+      "sha256": "2c90aa9023431a36d3d9733d60503d6a0f00a939d8a300536bf57b358fe52b34"
     },
     {
       "path": "docs/coverage-matrix.json",
-      "bytes": 517762,
-      "sha256": "2bc27fd4da7098bd0217afbe16dac44bf7959b470fe71e5dbd902264180db20d"
+      "bytes": 519654,
+      "sha256": "1b622f537de752bfcaab6c71c4b4331b2160f3bb5d7a3ac85b97a8ff20c1e3c0"
     },
     {
       "path": "docs/current-direction.txt",
@@ -55,6 +55,16 @@
       "path": "docs/decision-input-contract.md",
       "bytes": 2872,
       "sha256": "2d2637d6889b1dec3d92df42b789dda495f6f7c98f8ccf22839f46fb47a22981"
+    },
+    {
+      "path": "docs/execution-structure-guide.md",
+      "bytes": 2311,
+      "sha256": "0753e1d1f605611c5f5c1851a1e6aee38ab52f7cf7da2c80e09980fe6fcb4bdf"
+    },
+    {
+      "path": "docs/execution-template-validation.json",
+      "bytes": 482,
+      "sha256": "1b3f9af92a5064c6ae99d1201e559151ef276c03d1bf2f1eecd5c8bd80d0b3ae"
     },
     {
       "path": "docs/feedback-intake-protocol.md",
@@ -133,8 +143,8 @@
     },
     {
       "path": "docs/module-closure.json",
-      "bytes": 11105,
-      "sha256": "aa7e2de2578b17b04c24bdb39caa20236580625f1526d52a6967b098c817b229"
+      "bytes": 11816,
+      "sha256": "a709df1f75599d4f963eb26a0c1789062351cce6e0740f7df0e3e36a89dc2ab0"
     },
     {
       "path": "docs/module-closure.md",
@@ -142,14 +152,24 @@
       "sha256": "b5d5637bb456d163c69f6bbd1cd8bcb6ef90757a7de7347349dede95da0b7168"
     },
     {
+      "path": "docs/module-execution-design.json",
+      "bytes": 3541,
+      "sha256": "bad3cb4dfa80e7b5bb5cf67cdd124e6eb191739d3fa1150a4e657b89e02952db"
+    },
+    {
+      "path": "docs/module-interface-protocol.md",
+      "bytes": 3955,
+      "sha256": "5d4f135a117ddf80392f3fec37df32c30c1553844fb5f3e4ec5abc4052d47c1a"
+    },
+    {
       "path": "docs/package-consistency-validation.json",
-      "bytes": 464,
-      "sha256": "8f9fc6673b98fc0915fc3376aa7c9cc63b7a6ec43bac6cbd7f6e502789c94457"
+      "bytes": 635,
+      "sha256": "2590975a3071dabdbad4d6b9ad84ba2613ba03e5aa6953faaf9f67acaa7ae06d"
     },
     {
       "path": "docs/package-readiness.json",
-      "bytes": 3772,
-      "sha256": "b5faa3c8b69d883cb3c76590bea48a0e0bd8bb5bd5297cde9baf76b2192cda3d"
+      "bytes": 4363,
+      "sha256": "a205b6cf5fd1d82b626b01a64246f319d90e864d81f4676b544f3738ea9d8d1f"
     },
     {
       "path": "docs/professional-feedback-register.json",
@@ -160,6 +180,11 @@
       "path": "docs/professional-feedback-template.csv",
       "bytes": 7376,
       "sha256": "f2d986e3931ef70a9c91e9a326ab14bdc34346184dc3a9e28620902b4c024187"
+    },
+    {
+      "path": "docs/record-contracts.md",
+      "bytes": 2521,
+      "sha256": "d90375f005d5b0a759f3d435a6c2ba5982e982b4e018609f64bf8973a48cfe27"
     },
     {
       "path": "docs/recovery-status.md",
@@ -227,6 +252,11 @@
       "sha256": "45b218fd7c6803c188a75d204c77a572e904f321cccb30e48f4ff9c30c10639c"
     },
     {
+      "path": "references/interface-contracts-validation.json",
+      "bytes": 3055,
+      "sha256": "be0286424b6575daa801b5c0a1efbfe129a1758e7f4aedf538270b2b5c571923"
+    },
+    {
       "path": "references/m2-validation.json",
       "bytes": 336,
       "sha256": "bf3079ca4e6924ff7dca6f43ac575141a0744d09a44eba752672951a6c8b0d94"
@@ -272,6 +302,11 @@
       "sha256": "0b1a665d1466bc6138e095531adc4aadf48d047bbdd6aa3daff4da28ffbf53c2"
     },
     {
+      "path": "references/validate_interface_contracts.py",
+      "bytes": 15155,
+      "sha256": "51200cff4f04dab3806b69a93fc2af23f1721e67c735d41e6f0e1b36a01f2920"
+    },
+    {
       "path": "references/validate_m2_algebra.py",
       "bytes": 1289,
       "sha256": "6b82cea9197fd977d78f88dadbb36fb620114d5684054738183a88297e014f3f"
@@ -310,6 +345,96 @@
       "path": "references/validate_revision_integrity.py",
       "bytes": 6550,
       "sha256": "b723c19f2d5fff5f0a747035705e975364a1b15f6703ad9cf1eb4ed4757b6161"
+    },
+    {
+      "path": "schemas/M1.schema.json",
+      "bytes": 2057,
+      "sha256": "052b48d9036888ad8122631b2fd7b2a5156a35ff500b31607e14852e6c32ffc2"
+    },
+    {
+      "path": "schemas/M2.schema.json",
+      "bytes": 1914,
+      "sha256": "479fc2e9f3b3fbc8adeb781189772004483af7f2035002d6b5258dddceb7b355"
+    },
+    {
+      "path": "schemas/M3.schema.json",
+      "bytes": 1696,
+      "sha256": "e834dd1665d299758fd2aae5648be33de7f442f831b76e75d34ee1d32b80411f"
+    },
+    {
+      "path": "schemas/M4.schema.json",
+      "bytes": 1666,
+      "sha256": "5539ba4e673e7d04e2fea8612bfa9af5c89533127bfc38e698641bdeb0170f00"
+    },
+    {
+      "path": "schemas/M5.schema.json",
+      "bytes": 1934,
+      "sha256": "452137d97968043acd65280ea777d2d63a6cdeb8b05c6af9e53d1e55ff828cc2"
+    },
+    {
+      "path": "schemas/M6.schema.json",
+      "bytes": 2236,
+      "sha256": "6d02ecca4f606926ad5f54e3347a0bc0212ce49eae8f06e81e25e1fa591edd24"
+    },
+    {
+      "path": "schemas/M7.schema.json",
+      "bytes": 2075,
+      "sha256": "e436a1bdae114bf2328cbec24f9423ed6d69ccb4c8468c6a570a0726bd53ae40"
+    },
+    {
+      "path": "schemas/M8.schema.json",
+      "bytes": 1794,
+      "sha256": "322b2e63e298dddd766ec6f1cb24e4ceeff498cd2ba4fffede2b264bf70dc531"
+    },
+    {
+      "path": "schemas/M9.schema.json",
+      "bytes": 4128,
+      "sha256": "af186293e4d028139d8a3292a2f19b9ec4bb87e58d79e99901e766b62025dd8c"
+    },
+    {
+      "path": "schemas/README.md",
+      "bytes": 1071,
+      "sha256": "52737a28d3ee8bd7fd2ebfe16dc7325693524e24602a5e24604fca4989e6ea36"
+    },
+    {
+      "path": "schemas/cash-event.schema.json",
+      "bytes": 2616,
+      "sha256": "0b61b20c79942a05b6b93f29ae2ec01667f3f1f0f0c47885762a0ea4b3f5d601"
+    },
+    {
+      "path": "schemas/common.schema.json",
+      "bytes": 9215,
+      "sha256": "62867d5d20bf921e650e2e56c54eb79b53dd7815eb1dc9fe04114dc8892a941e"
+    },
+    {
+      "path": "schemas/cost-line.schema.json",
+      "bytes": 1813,
+      "sha256": "d52fd7cd090e0cac8c1fe1e82f0163204bb3de8f979c81540da7e44d54cfc72e"
+    },
+    {
+      "path": "schemas/criterion.schema.json",
+      "bytes": 2350,
+      "sha256": "e28921cc7f7cc8697c12e745ca809725a1fc79a97c4654df2652231fbedfa045"
+    },
+    {
+      "path": "schemas/debt-event.schema.json",
+      "bytes": 2138,
+      "sha256": "976c33d013eb6aad4f53d5e0ea9cd407de2f5e8c7345d5fcb2bfb6ddb07a5701"
+    },
+    {
+      "path": "schemas/execution-snapshot.schema.json",
+      "bytes": 3166,
+      "sha256": "86001ffa44b8527515520cebcf5b4f6ed52646c510bac4c939a89fbb6d4dff1d"
+    },
+    {
+      "path": "schemas/interface-index.json",
+      "bytes": 14610,
+      "sha256": "19e61936521f898e98f2a61f49853385398becc70e231938ca61034b4e684f88"
+    },
+    {
+      "path": "schemas/scenario.schema.json",
+      "bytes": 3261,
+      "sha256": "2ee073bb1f686c342c7676270869af9316af3be17be9927a20a59aa542ca4e6a"
     },
     {
       "path": "sources/extracted/09a0d1fa636b.txt",
@@ -465,6 +590,11 @@
       "path": "sources/originals/fbb44a320a46__Pasted text.txt",
       "bytes": 17144,
       "sha256": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791"
+    },
+    {
+      "path": "templates/project-draft-empty.json",
+      "bytes": 26694,
+      "sha256": "8cfc2915b9ee64bec53df3ea9041b7784f546200bdc676fcaf7b58679b88f16c"
     }
   ]
 }

@@ -1,0 +1,123 @@
+{
+  "purpose": "candidate_module_execution_design_only",
+  "authorization": "not_granted",
+  "production_execution": false,
+  "context_requirements": [
+    "deal",
+    "scenario",
+    "run",
+    "input_revision",
+    "definition_set_revision",
+    "source/definition/criterion/rule versions"
+  ],
+  "stages": [
+    {
+      "module": "M1",
+      "requires": [],
+      "responsibility": "normalize cited inputs/program; retain conflicts",
+      "emits": "schemas/M1.schema.json"
+    },
+    {
+      "module": "M2",
+      "requires": [
+        "M1",
+        "explicit operating/tax policies and parameters"
+      ],
+      "responsibility": "operating period results with units and blockers",
+      "emits": "schemas/M2.schema.json"
+    },
+    {
+      "module": "M3",
+      "requires": [
+        "M1",
+        "cost scope/inclusion evidence"
+      ],
+      "responsibility": "nonduplicated development budget",
+      "emits": "schemas/M3.schema.json"
+    },
+    {
+      "module": "M4",
+      "requires": [
+        "M1",
+        "M2",
+        "M3",
+        "explicit calendars/draw conventions"
+      ],
+      "responsibility": "dated/period use schedule and unallocated amounts",
+      "emits": "schemas/M4.schema.json"
+    },
+    {
+      "module": "M5",
+      "requires": [
+        "M3",
+        "M4",
+        "explicit financing terms and closure method"
+      ],
+      "responsibility": "financial-cycle block, cash/debt/equity reconciliation",
+      "emits": "schemas/M5.schema.json"
+    },
+    {
+      "module": "M6",
+      "requires": [
+        "M2",
+        "M5",
+        "refi applicability/terms"
+      ],
+      "responsibility": "capacity/payoff/reserves/contributions/distributions",
+      "emits": "schemas/M6.schema.json"
+    },
+    {
+      "module": "M7",
+      "requires": [
+        "M2",
+        "M5",
+        "M6 if applicable",
+        "hold/exit strategy and calendar"
+      ],
+      "responsibility": "gross investor ledger and defined returns",
+      "emits": "schemas/M7.schema.json"
+    },
+    {
+      "module": "M8",
+      "requires": [
+        "explicit scenarios/objectives/domain",
+        "affected M1–M7 results"
+      ],
+      "responsibility": "orchestrate re-evaluations, preserve validity and price-bound classification",
+      "emits": "schemas/M8.schema.json"
+    },
+    {
+      "module": "M9",
+      "requires": [
+        "all applicable required results",
+        "explicit deal criteria/aggregation",
+        "current revisions"
+      ],
+      "responsibility": "comparison/pending state and candidate report; no publish authorization",
+      "emits": "schemas/M9.schema.json"
+    }
+  ],
+  "financial_cycle": {
+    "members": [
+      "M3 cost base",
+      "M4 timing",
+      "M5 capitalized financing/TDC"
+    ],
+    "status": "method/conventions require explicit inputs; no solved engine supplied",
+    "rule": "Do not assume acyclic scheduling certifies the financial fixed point."
+  },
+  "failure_propagation": {
+    "local": "Retain all root causes; block only dependent quantities in diagnostics/reference design.",
+    "deal": "Required missing data/rules/scenarios prevent any complete PASS/FAIL. Do not publish partial economics as a deal conclusion.",
+    "independent_work": "Schema/evidence/calendar/interface design can continue even when financial choices are missing."
+  },
+  "publication": {
+    "implemented": false,
+    "requires": [
+      "real one-page PDF audit",
+      "authentic applicable review",
+      "atomic current-revision record",
+      "production authorization"
+    ]
+  }
+}

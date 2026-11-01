@@ -1,0 +1,377 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:miniuw:candidate:common:0.1",
+  "title": "Candidate structural vocabulary, not approved financial model",
+  "$defs": {
+    "context": {
+      "type": "object",
+      "properties": {
+        "deal_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scenario_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "run_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "input_revision": {
+          "type": "string",
+          "minLength": 1
+        },
+        "definition_set_revision": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "deal_id",
+        "scenario_id",
+        "run_id",
+        "input_revision",
+        "definition_set_revision"
+      ],
+      "additionalProperties": false
+    },
+    "cause": {
+      "type": "object",
+      "properties": {
+        "field_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "cause_kind": {
+          "enum": [
+            "missing",
+            "conflict",
+            "invalid",
+            "undefined",
+            "not_applicable_operand",
+            "context_mismatch",
+            "unit_mismatch"
+          ]
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "field_id",
+        "cause_kind",
+        "reason"
+      ],
+      "additionalProperties": false
+    },
+    "source": {
+      "type": "object",
+      "properties": {
+        "source_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "locator": {
+          "type": "string",
+          "minLength": 1
+        },
+        "claim_kind": {
+          "enum": [
+            "documented",
+            "official_claim",
+            "manual_input",
+            "house_claim",
+            "derived_candidate",
+            "synthetic_reference"
+          ]
+        },
+        "verification_status": {
+          "enum": [
+            "unverified",
+            "text_checked_in_copy",
+            "synthetic_only"
+          ]
+        }
+      },
+      "required": [
+        "source_id",
+        "locator",
+        "claim_kind",
+        "verification_status"
+      ],
+      "additionalProperties": false
+    },
+    "quantity": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "state": {
+              "const": "known"
+            },
+            "value": {
+              "type": "object",
+              "properties": {
+                "numerator": {
+                  "type": "integer"
+                },
+                "denominator": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              },
+              "required": [
+                "numerator",
+                "denominator"
+              ],
+              "additionalProperties": false
+            },
+            "dimensions": {
+              "type": "object",
+              "properties": {
+                "money": {
+                  "type": "integer"
+                },
+                "area": {
+                  "type": "integer"
+                },
+                "unit": {
+                  "type": "integer"
+                },
+                "space": {
+                  "type": "integer"
+                },
+                "time": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "money",
+                "area",
+                "unit",
+                "space",
+                "time"
+              ],
+              "additionalProperties": false
+            },
+            "unit_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "currency": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "minLength": 1
+            },
+            "measurement_role": {
+              "enum": [
+                "stock",
+                "period_total",
+                "unit_rate",
+                "ratio",
+                "count",
+                "area"
+              ]
+            },
+            "basis": {
+              "type": "string",
+              "minLength": 1
+            },
+            "period_ref": {
+              "type": "string",
+              "minLength": 1
+            },
+            "sources": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "$ref": "urn:miniuw:candidate:common:0.1#/$defs/source"
+              }
+            }
+          },
+          "required": [
+            "state",
+            "value",
+            "dimensions",
+            "unit_id",
+            "currency",
+            "measurement_role",
+            "basis",
+            "period_ref",
+            "sources"
+          ],
+          "additionalProperties": false,
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "dimensions": {
+                    "properties": {
+                      "money": {
+                        "not": {
+                          "const": 0
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "then": {
+                "properties": {
+                  "currency": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "state": {
+              "const": "missing"
+            },
+            "causes": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "$ref": "urn:miniuw:candidate:common:0.1#/$defs/cause"
+              }
+            }
+          },
+          "required": [
+            "state",
+            "causes"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "state": {
+              "const": "conflict"
+            },
+            "causes": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "$ref": "urn:miniuw:candidate:common:0.1#/$defs/cause"
+              }
+            },
+            "claims": {
+              "type": "array",
+              "minItems": 2,
+              "items": {
+                "type": "object",
+                "properties": {
+                  "literal": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "unit_literal": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "minLength": 1
+                  },
+                  "source": {
+                    "$ref": "urn:miniuw:candidate:common:0.1#/$defs/source"
+                  }
+                },
+                "required": [
+                  "literal",
+                  "unit_literal",
+                  "source"
+                ],
+                "additionalProperties": false
+              }
+            }
+          },
+          "required": [
+            "state",
+            "causes",
+            "claims"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "state": {
+              "const": "invalid"
+            },
+            "causes": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "$ref": "urn:miniuw:candidate:common:0.1#/$defs/cause"
+              }
+            }
+          },
+          "required": [
+            "state",
+            "causes"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "state": {
+              "const": "undefined"
+            },
+            "causes": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "$ref": "urn:miniuw:candidate:common:0.1#/$defs/cause"
+              }
+            }
+          },
+          "required": [
+            "state",
+            "causes"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "state": {
+              "const": "not_applicable"
+            },
+            "reason": {
+              "type": "string",
+              "minLength": 1
+            },
+            "rule_ref": {
+              "type": "string",
+              "minLength": 1
+            },
+            "sources": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "$ref": "urn:miniuw:candidate:common:0.1#/$defs/source"
+              }
+            }
+          },
+          "required": [
+            "state",
+            "reason",
+            "rule_ref",
+            "sources"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    }
+  }
+}

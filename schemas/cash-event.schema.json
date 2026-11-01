@@ -1,0 +1,132 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:miniuw:candidate:cash-event:0.1",
+  "title": "cash-event candidate record shape only",
+  "type": "object",
+  "properties": {
+    "event_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "context": {
+      "$ref": "urn:miniuw:candidate:common:0.1#/$defs/context"
+    },
+    "kind": {
+      "enum": [
+        "equity_contribution",
+        "equity_distribution",
+        "loan_cash_draw",
+        "principal_payment",
+        "interest_payment",
+        "fee_payment",
+        "operating_receipt",
+        "operating_payment",
+        "restricted_transfer",
+        "reserve_release",
+        "sale_receipt",
+        "sale_cost",
+        "other_documented"
+      ]
+    },
+    "from_account": {
+      "type": "string",
+      "minLength": 1
+    },
+    "to_account": {
+      "type": "string",
+      "minLength": 1
+    },
+    "amount": {
+      "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+    },
+    "calendar_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "period_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "date_ref": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "restriction_rule_ref": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "related_debt_ref": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "urn:miniuw:candidate:common:0.1#/$defs/source"
+      }
+    },
+    "purpose": {
+      "const": "design_or_synthetic_reference"
+    },
+    "authorization": {
+      "const": "not_granted"
+    }
+  },
+  "required": [
+    "event_id",
+    "context",
+    "kind",
+    "from_account",
+    "to_account",
+    "amount",
+    "calendar_ref",
+    "period_ref",
+    "date_ref",
+    "restriction_rule_ref",
+    "related_debt_ref",
+    "sources",
+    "purpose",
+    "authorization"
+  ],
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "amount": {
+            "properties": {
+              "state": {
+                "const": "known"
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "amount": {
+            "properties": {
+              "value": {
+                "properties": {
+                  "numerator": {
+                    "minimum": 0
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

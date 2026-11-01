@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:miniuw:candidate:cost-line:0.1",
+  "title": "cost-line candidate record shape only",
+  "type": "object",
+  "properties": {
+    "cost_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "context": {
+      "$ref": "urn:miniuw:candidate:common:0.1#/$defs/context"
+    },
+    "economic_scope_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "amount": {
+      "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+    },
+    "classification": {
+      "enum": [
+        "land",
+        "closing",
+        "vertical",
+        "parking",
+        "site",
+        "soft",
+        "contingency",
+        "financing",
+        "other_documented",
+        "unresolved"
+      ]
+    },
+    "inclusion_status": {
+      "enum": [
+        "included",
+        "excluded",
+        "unresolved"
+      ]
+    },
+    "parent_contract_ref": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "basis_ref": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "contingency_base_ref": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "urn:miniuw:candidate:common:0.1#/$defs/source"
+      }
+    },
+    "purpose": {
+      "const": "design_or_synthetic_reference"
+    },
+    "authorization": {
+      "const": "not_granted"
+    }
+  },
+  "required": [
+    "cost_id",
+    "context",
+    "economic_scope_id",
+    "amount",
+    "classification",
+    "inclusion_status",
+    "parent_contract_ref",
+    "basis_ref",
+    "contingency_base_ref",
+    "sources",
+    "purpose",
+    "authorization"
+  ],
+  "additionalProperties": false
+}

@@ -1,5 +1,5 @@
 {
-  "package_stage": "independent specification/review package prepared",
+  "package_stage": "candidate specification with continued independent structural development",
   "module_contracts": {
     "M1": 8,
     "M2": 8,
@@ -61,6 +61,11 @@
       "path": "references/revision-integrity-validation.json",
       "scope": "Pure in-memory synthetic graph, snapshot identity and input-slot checks. Not actual financial dependency discovery, database atomicity, race-condition proof, authentication, persistent review or production integration.",
       "count": 29
+    },
+    {
+      "path": "references/interface-contracts-validation.json",
+      "scope": "Candidate interface shapes and isolated arithmetic/block propagation. No financial defaults, full dependency/model integration, expert approval, authenticated identity or production release.",
+      "count": 75
     }
   ],
   "independent_financial_audit": false,
@@ -70,5 +75,14 @@
   "external_inputs_expert_review_and_future_product_work_required": true,
   "Full_UW": "deferred until final delivery; not prerequisite to current design",
   "scope": "No global readiness percentage, no recovered application claim and no real-deal underwriting.",
-  "post_R02_work": "29 controles sintéticos de integridad y 35 temas de feedback vacíos; sin política aprobada, firma simulada o producción."
+  "post_R02_work": "29 controles sintéticos de integridad y 35 temas de feedback vacíos; sin política aprobada, firma simulada o producción.",
+  "independent_structure": {
+    "module_interfaces": 9,
+    "shared_schema": 1,
+    "record_family_schemas": 6,
+    "empty_original_input_slots": 55,
+    "empty_metric_criterion_slots": 10,
+    "execution_plan_modules": 9,
+    "no_financial_defaults": true
+  }
 }

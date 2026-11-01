@@ -1,0 +1,160 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:miniuw:candidate:execution-snapshot:0.1",
+  "title": "execution-snapshot candidate record shape only",
+  "type": "object",
+  "properties": {
+    "snapshot_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "context": {
+      "$ref": "urn:miniuw:candidate:common:0.1#/$defs/context"
+    },
+    "source_revisions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "source_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "revision": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "source_id",
+          "revision"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "module_definition_revisions": {
+      "type": "object",
+      "properties": {
+        "M1": {
+          "type": "string",
+          "minLength": 1
+        },
+        "M2": {
+          "type": "string",
+          "minLength": 1
+        },
+        "M3": {
+          "type": "string",
+          "minLength": 1
+        },
+        "M4": {
+          "type": "string",
+          "minLength": 1
+        },
+        "M5": {
+          "type": "string",
+          "minLength": 1
+        },
+        "M6": {
+          "type": "string",
+          "minLength": 1
+        },
+        "M7": {
+          "type": "string",
+          "minLength": 1
+        },
+        "M8": {
+          "type": "string",
+          "minLength": 1
+        },
+        "M9": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5",
+        "M6",
+        "M7",
+        "M8",
+        "M9"
+      ],
+      "additionalProperties": false
+    },
+    "scenario_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "criteria_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "rule_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "completeness": {
+      "enum": [
+        "pending",
+        "candidate_structurally_complete"
+      ]
+    },
+    "pending_causes": {
+      "type": "array",
+      "items": {
+        "$ref": "urn:miniuw:candidate:common:0.1#/$defs/cause"
+      }
+    },
+    "purpose": {
+      "const": "design_or_synthetic_reference"
+    },
+    "authorization": {
+      "const": "not_granted"
+    }
+  },
+  "required": [
+    "snapshot_id",
+    "context",
+    "source_revisions",
+    "module_definition_revisions",
+    "scenario_refs",
+    "criteria_refs",
+    "rule_refs",
+    "completeness",
+    "pending_causes",
+    "purpose",
+    "authorization"
+  ],
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "completeness": {
+            "const": "pending"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "pending_causes": {
+            "minItems": 1
+          }
+        }
+      }
+    }
+  ]
+}

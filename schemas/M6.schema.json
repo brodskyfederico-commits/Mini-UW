@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:miniuw:candidate:M6:0.1",
+  "title": "M6 candidate interface (structure only)",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "0.1-candidate"
+    },
+    "purpose": {
+      "const": "design_or_synthetic_reference"
+    },
+    "module": {
+      "const": "M6"
+    },
+    "context": {
+      "$ref": "urn:miniuw:candidate:common:0.1#/$defs/context"
+    },
+    "status": {
+      "enum": [
+        "candidate_complete",
+        "blocked",
+        "not_applicable"
+      ]
+    },
+    "pending_causes": {
+      "type": "array",
+      "items": {
+        "$ref": "urn:miniuw:candidate:common:0.1#/$defs/cause"
+      }
+    },
+    "outputs": {
+      "type": "object",
+      "properties": {
+        "permanent_loan": {
+          "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+        },
+        "annual_debt_service": {
+          "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+        },
+        "construction_payoff": {
+          "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+        },
+        "restricted_reserves": {
+          "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+        },
+        "refi_distribution": {
+          "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+        },
+        "refi_contribution": {
+          "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+        }
+      },
+      "required": [
+        "permanent_loan",
+        "annual_debt_service",
+        "construction_payoff",
+        "restricted_reserves",
+        "refi_distribution",
+        "refi_contribution"
+      ],
+      "additionalProperties": false
+    },
+    "authorization": {
+      "const": "not_granted"
+    }
+  },
+  "required": [
+    "schema_version",
+    "purpose",
+    "module",
+    "context",
+    "status",
+    "pending_causes",
+    "outputs",
+    "authorization"
+  ],
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "blocked"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "pending_causes": {
+            "minItems": 1
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,532 @@
+{
+  "scope": "Nine draft interfaces plus shared value/context vocabulary. No financial defaults, schema validity is not business approval.",
+  "interfaces": [
+    {
+      "module": "M1",
+      "schema": "schemas/M1.schema.json",
+      "outputs": [
+        "program_units",
+        "building_gsf",
+        "residential_nrsf",
+        "commercial_sf",
+        "parking_spaces"
+      ],
+      "contract_status": "candidate structure only, not financial completeness or release",
+      "authorization": "not_granted",
+      "port_signatures": {
+        "program_units": {
+          "dimensions": {
+            "money": 0,
+            "area": 0,
+            "unit": 1,
+            "space": 0,
+            "time": 0
+          },
+          "measurement_role": "count",
+          "required_basis_if_known": null,
+          "financial_range": null,
+          "currency_default": null,
+          "period_default": null
+        },
+        "building_gsf": {
+          "dimensions": {
+            "money": 0,
+            "area": 1,
+            "unit": 0,
+            "space": 0,
+            "time": 0
+          },
+          "measurement_role": "area",
+          "required_basis_if_known": "GSF",
+          "financial_range": null,
+          "currency_default": null,
+          "period_default": null
+        },
+        "residential_nrsf": {
+          "dimensions": {
+            "money": 0,
+            "area": 1,
+            "unit": 0,
+            "space": 0,
+            "time": 0
+          },
+          "measurement_role": "area",
+          "required_basis_if_known": "NRSF",
+          "financial_range": null,
+          "currency_default": null,
+          "period_default": null
+        },
+        "commercial_sf": {
+          "dimensions": {
+            "money": 0,
+            "area": 1,
+            "unit": 0,
+            "space": 0,
+            "time": 0
+          },
+          "measurement_role": "area",
+          "required_basis_if_known": "commercial_SF",
+          "financial_range": null,
+          "currency_default": null,
+          "period_default": null
+        },
+        "parking_spaces": {
+          "dimensions": {
+            "money": 0,
+            "area": 0,
+            "unit": 0,
+            "space": 1,
+            "time": 0
+          },
+          "measurement_role": "count",
+          "required_basis_if_known": null,
+          "financial_range": null,
+          "currency_default": null,
+          "period_default": null
+        }
+      }
+    },
+    {
+      "module": "M2",
+      "schema": "schemas/M2.schema.json",
+      "outputs": [
+        "effective_income",
+        "operating_expenses",
+        "property_tax",
+        "noi"
+      ],
+      "contract_status": "candidate structure only, not financial completeness or release",
+      "authorization": "not_granted",
+      "port_signatures": {
+        "effective_income": {
+          "dimensions": {
+            "money": 1,
+            "area": 0,
+            "unit": 0,
+            "space": 0,
+            "time": 0
+          },
+          "measurement_role": "period_total",
+          "required_basis_if_known": null,
+          "financial_range": null,
+          "currency_default": null,
+          "period_default": null
+        },
+        "operating_expenses": {
+          "dimensions": {
+            "money": 1,
+            "area": 0,
+            "unit": 0,
+            "space": 0,
+            "time": 0
+          },
+          "measurement_role": "period_total",
+          "required_basis_if_known": null,
+          "financial_range": null,
+          "currency_default": null,
+          "period_default": null
+        },
+        "property_tax": {
+          "dimensions": {
+            "money": 1,
+            "area": 0,
+            "unit": 0,
+            "space": 0,
+            "time": 0
+          },
+          "measurement_role": "period_total",
+          "required_basis_if_known": null,
+          "financial_range": null,
+          "currency_default": null,
+          "period_default": null
+        },
+        "noi": {
+          "dimensions": {
+            "money": 1,
+            "area": 0,
+            "unit": 0,
+            "space": 0,
+            "time": 0
+          },
+          "measurement_role": "period_total",
+          "required_basis_if_known": null,
+          "financial_range": null,
+          "currency_default": null,
+          "period_default": null
+        }
+      }
+    },
+    {
+      "module": "M3",
+      "schema": "schemas/M3.schema.json",
+      "outputs": [
+        "budget_before_financing",
+        "unallocated_scope_cost"
+      ],
+      "contract_status": "candidate structure only, not financial completeness or release",
+      "authorization": "not_granted",
+      "port_signatures": {
+        "budget_before_financing": {
+          "dimensions": {
+            "money": 1,
+            "area": 0,
+            "unit": 0,
+            "space": 0,
+            "time": 0
+          },
+          "measurement_role": "stock",
+          "required_basis_if_known": null,
+          "financial_range": null,
+          "currency_default": null,
+          "period_default": null
+        },
+        "unallocated_scope_cost": {
+          "dimensions": {
+            "money": 1,
+            "area": 0,
+            "unit": 0,
+            "space": 0,
+            "time": 0
+          },
+          "measurement_role": "stock",
+          "required_basis_if_known": null,
+          "financial_range": null,
+          "currency_default": null,
+          "period_default": null
+        }
+      }
+    },
+    {
+      "module": "M4",
+      "schema": "schemas/M4.schema.json",
+      "outputs": [
+        "scheduled_uses",
+        "unscheduled_uses"
+      ],
+      "contract_status": "candidate structure only, not financial completeness or release",
+      "authorization": "not_granted",
+      "port_signatures": {
+        "scheduled_uses": {
+          "dimensions": {
+            "money": 1,
+            "area": 0,
+            "unit": 0,
+            "space": 0,
+            "time": 0
+          },
+          "measurement_role": "period_total",
+          "required_basis_if_known": null,
+          "financial_range": null,
+          "currency_default": null,
+          "period_default": null
+        },
+        "unscheduled_uses": {
+          "dimensions": {
+            "money": 1,
+            "area": 0,
+            "unit": 0,
+            "space": 0,
+            "time": 0
+          },
+          "measurement_role": "period_total",
+          "required_basis_if_known": null,
+          "financial_range": null,
+          "currency_default": null,
+          "period_default": null
+        }
+      }
+    },
+    {
+      "module": "M5",
+      "schema": "schemas/M5.schema.json",
+      "outputs": [
+        "tdc",
+        "construction_principal",
+        "construction_payoff",
+        "equity_required"
+      ],
+      "contract_status": "candidate structure only, not financial completeness or release",
+      "authorization": "not_granted",
+      "port_signatures": {
+        "tdc": {
+          "dimensions": {
+            "money": 1,
+            "area": 0,
+            "unit": 0,
+            "space": 0,
+            "time": 0
+          },
+          "measurement_role": "stock",
+          "required_basis_if_known": null,
+          "financial_range": null,
+          "currency_default": null,
+          "period_default": null
+        },
+        "construction_principal": {
+          "dimensions": {
+            "money": 1,
+            "area": 0,
+            "unit": 0,
+            "space": 0,
+            "time": 0
+          },
+          "measurement_role": "stock",
+          "required_basis_if_known": null,
+          "financial_range": null,
+          "currency_default": null,
+          "period_default": null
+        },
+        "construction_payoff": {
+          "dimensions": {
+            "money": 1,
+            "area": 0,
+            "unit": 0,
+            "space": 0,
+            "time": 0
+          },
+          "measurement_role": "stock",
+          "required_basis_if_known": null,
+          "financial_range": null,
+          "currency_default": null,
+          "period_default": null
+        },
+        "equity_required": {
+          "dimensions": {
+            "money": 1,
+            "area": 0,
+            "unit": 0,
+            "space": 0,
+            "time": 0
+          },
+          "measurement_role": "stock",
+          "required_basis_if_known": null,
+          "financial_range": null,
+          "currency_default": null,
+          "period_default": null
+        }
+      }
+    },
+    {
+      "module": "M6",
+      "schema": "schemas/M6.schema.json",
+      "outputs": [
+        "permanent_loan",
+        "annual_debt_service",
+        "construction_payoff",
+        "restricted_reserves",
+        "refi_distribution",
+        "refi_contribution"
+      ],
+      "contract_status": "candidate structure only, not financial completeness or release",
+      "authorization": "not_granted",
+      "port_signatures": {
+        "permanent_loan": {
+          "dimensions": {
+            "money": 1,
+            "area": 0,
+            "unit": 0,
+            "space": 0,
+            "time": 0
+          },
+          "measurement_role": "stock",
+          "required_basis_if_known": null,
+          "financial_range": null,
+          "currency_default": null,
+          "period_default": null
+        },
+        "annual_debt_service": {
+          "dimensions": {
+            "money": 1,
+            "area": 0,
+            "unit": 0,
+            "space": 0,
+            "time": 0
+          },
+          "measurement_role": "period_total",
+          "required_basis_if_known": null,
+          "financial_range": null,
+          "currency_default": null,
+          "period_default": null
+        },
+        "construction_payoff": {
+          "dimensions": {
+            "money": 1,
+            "area": 0,
+            "unit": 0,
+            "space": 0,
+            "time": 0
+          },
+          "measurement_role": "stock",
+          "required_basis_if_known": null,
+          "financial_range": null,
+          "currency_default": null,
+          "period_default": null
+        },
+        "restricted_reserves": {
+          "dimensions": {
+            "money": 1,
+            "area": 0,
+            "unit": 0,
+            "space": 0,
+            "time": 0
+          },
+          "measurement_role": "stock",
+          "required_basis_if_known": null,
+          "financial_range": null,
+          "currency_default": null,
+          "period_default": null
+        },
+        "refi_distribution": {
+          "dimensions": {
+            "money": 1,
+            "area": 0,
+            "unit": 0,
+            "space": 0,
+            "time": 0
+          },
+          "measurement_role": "period_total",
+          "required_basis_if_known": null,
+          "financial_range": null,
+          "currency_default": null,
+          "period_default": null
+        },
+        "refi_contribution": {
+          "dimensions": {
+            "money": 1,
+            "area": 0,
+            "unit": 0,
+            "space": 0,
+            "time": 0
+          },
+          "measurement_role": "period_total",
+          "required_basis_if_known": null,
+          "financial_range": null,
+          "currency_default": null,
+          "period_default": null
+        }
+      }
+    },
+    {
+      "module": "M7",
+      "schema": "schemas/M7.schema.json",
+      "outputs": [
+        "gross_contributions",
+        "gross_distributions",
+        "equity_multiple",
+        "irr",
+        "terminal_distribution"
+      ],
+      "contract_status": "candidate structure only, not financial completeness or release",
+      "authorization": "not_granted",
+      "port_signatures": {
+        "gross_contributions": {
+          "dimensions": {
+            "money": 1,
+            "area": 0,
+            "unit": 0,
+            "space": 0,
+            "time": 0
+          },
+          "measurement_role": "period_total",
+          "required_basis_if_known": null,
+          "financial_range": null,
+          "currency_default": null,
+          "period_default": null
+        },
+        "gross_distributions": {
+          "dimensions": {
+            "money": 1,
+            "area": 0,
+            "unit": 0,
+            "space": 0,
+            "time": 0
+          },
+          "measurement_role": "period_total",
+          "required_basis_if_known": null,
+          "financial_range": null,
+          "currency_default": null,
+          "period_default": null
+        },
+        "equity_multiple": {
+          "dimensions": {
+            "money": 0,
+            "area": 0,
+            "unit": 0,
+            "space": 0,
+            "time": 0
+          },
+          "measurement_role": "ratio",
+          "required_basis_if_known": null,
+          "financial_range": null,
+          "currency_default": null,
+          "period_default": null
+        },
+        "irr": {
+          "dimensions": {
+            "money": 0,
+            "area": 0,
+            "unit": 0,
+            "space": 0,
+            "time": 0
+          },
+          "measurement_role": "ratio",
+          "required_basis_if_known": null,
+          "financial_range": null,
+          "currency_default": null,
+          "period_default": null
+        },
+        "terminal_distribution": {
+          "dimensions": {
+            "money": 1,
+            "area": 0,
+            "unit": 0,
+            "space": 0,
+            "time": 0
+          },
+          "measurement_role": "period_total",
+          "required_basis_if_known": null,
+          "financial_range": null,
+          "currency_default": null,
+          "period_default": null
+        }
+      }
+    },
+    {
+      "module": "M8",
+      "schema": "schemas/M8.schema.json",
+      "outputs": [
+        "supported_price_bound"
+      ],
+      "contract_status": "candidate structure only, not financial completeness or release",
+      "authorization": "not_granted",
+      "port_signatures": {
+        "supported_price_bound": {
+          "dimensions": {
+            "money": 1,
+            "area": 0,
+            "unit": 0,
+            "space": 0,
+            "time": 0
+          },
+          "measurement_role": "stock",
+          "required_basis_if_known": null,
+          "financial_range": null,
+          "currency_default": null,
+          "period_default": null
+        }
+      }
+    },
+    {
+      "module": "M9",
+      "schema": "schemas/M9.schema.json",
+      "outputs": [
+        "decision",
+        "aggregation_rule_ref",
+        "comparisons"
+      ],
+      "contract_status": "candidate structure only, not financial completeness or release",
+      "authorization": "not_granted",
+      "port_signatures": {}
+    }
+  ]
+}

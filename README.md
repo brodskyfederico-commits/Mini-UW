@@ -35,3 +35,5 @@ Input/evidence contracts: [M1](docs/model-input-evidence.md), [55-field proposed
 Current professional review: [R02 PDF, 29 pages](docs/review/MiniUW_Estructura_para_Revision_Profesional_R02.pdf). R01 retained unchanged. R02 reflects the full candidate-contract specification, not a production-ready or expert-approved model.
 
 Post-R02 independent work: [revision/scenario integrity](docs/revision-scenario-integrity.md) and [feedback intake protocol](docs/feedback-intake-protocol.md). The [blank feedback template](docs/professional-feedback-template.csv) records no review responses; R02 remains unchanged.
+
+Continued independent structure: [module interface protocol](docs/module-interface-protocol.md), [record contracts](docs/record-contracts.md), [execution design](docs/execution-structure-guide.md), [draft schemas](schemas/README.md), and [intentionally empty project template](templates/project-draft-empty.json). Structural checks do not close financial/professional gates.

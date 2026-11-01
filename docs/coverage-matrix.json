@@ -6620,7 +6620,7 @@
       "definicion_vigente": "Contrato candidato M8-02 en docs/model-scenarios-price.md; configuración y políticas pendientes.",
       "modulo_o_calculo_afectado": "M8 orquesta M1–M7 y alimenta M9",
       "evidencia_documental": "sources/extracted/95a304fd3e53.txt ; extracción textual cotejada preliminarmente",
-      "evidencia_validacion": "references/m8-validation.json, sólo transformaciones y problemas reducidos sintéticos; sin solver global ni RLV aprobado. Referencia limitada adicional: references/revision-integrity-validation.json (grafo sintético/memoria, no transacción o autenticación real).",
+      "evidencia_validacion": "references/m8-validation.json, sólo transformaciones y problemas reducidos sintéticos; sin solver global ni RLV aprobado. Referencia limitada adicional: references/revision-integrity-validation.json (grafo sintético/memoria, no transacción o autenticación real). Evidencia adicional: schemas/ y references/interface-contracts-validation.json (75 controles de estructura/intercambio sintético; no validación financiera o productiva).",
       "estado": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
       "pendientes": "Cerrar objetivos, escenarios, dominio, dependencias y verificación independiente; no inferir Q3 de dos métricas.",
       "cobertura_financiera_extremo_a_extremo": false
@@ -6710,7 +6710,7 @@
       "definicion_vigente": "Contrato candidato M8-07 en docs/model-scenarios-price.md; configuración y políticas pendientes.",
       "modulo_o_calculo_afectado": "M8 orquesta M1–M7 y alimenta M9",
       "evidencia_documental": "sources/extracted/95a304fd3e53.txt ; extracción textual cotejada preliminarmente",
-      "evidencia_validacion": "references/m8-validation.json, sólo transformaciones y problemas reducidos sintéticos; sin solver global ni RLV aprobado. Referencia limitada adicional: references/revision-integrity-validation.json (grafo sintético/memoria, no transacción o autenticación real).",
+      "evidencia_validacion": "references/m8-validation.json, sólo transformaciones y problemas reducidos sintéticos; sin solver global ni RLV aprobado. Referencia limitada adicional: references/revision-integrity-validation.json (grafo sintético/memoria, no transacción o autenticación real). Evidencia adicional: schemas/ y references/interface-contracts-validation.json (75 controles de estructura/intercambio sintético; no validación financiera o productiva).",
       "estado": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
       "pendientes": "Cerrar objetivos, escenarios, dominio, dependencias y verificación independiente; no inferir Q3 de dos métricas.",
       "cobertura_financiera_extremo_a_extremo": false
@@ -6818,7 +6818,7 @@
       "definicion_vigente": "Contrato candidato M9-01 en docs/model-decision-audit.md; políticas/integración pendientes.",
       "modulo_o_calculo_afectado": "M9 y puerta al Full UW",
       "evidencia_documental": "sources/extracted/fbb44a320a46.txt ; extracción textual cotejada preliminarmente",
-      "evidencia_validacion": "references/m9-validation.json sólo comparadores y regla hipotética de referencia; no identidad real, transacciones o PDF decisorio.",
+      "evidencia_validacion": "references/m9-validation.json sólo comparadores y regla hipotética de referencia; no identidad real, transacciones o PDF decisorio. Evidencia adicional: schemas/ y references/interface-contracts-validation.json (75 controles de estructura/intercambio sintético; no validación financiera o productiva).",
       "estado": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
       "pendientes": "Cerrar regla aplicable, criterios, implementación futura e independencia; no inferir estados históricos ni autenticación.",
       "cobertura_financiera_extremo_a_extremo": false
@@ -6836,7 +6836,7 @@
       "definicion_vigente": "Contrato candidato M9-02 en docs/model-decision-audit.md; políticas/integración pendientes.",
       "modulo_o_calculo_afectado": "M9 y puerta al Full UW",
       "evidencia_documental": "sources/extracted/fbb44a320a46.txt ; extracción textual cotejada preliminarmente",
-      "evidencia_validacion": "references/m9-validation.json sólo comparadores y regla hipotética de referencia; no identidad real, transacciones o PDF decisorio.",
+      "evidencia_validacion": "references/m9-validation.json sólo comparadores y regla hipotética de referencia; no identidad real, transacciones o PDF decisorio. Evidencia adicional: schemas/ y references/interface-contracts-validation.json (75 controles de estructura/intercambio sintético; no validación financiera o productiva).",
       "estado": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
       "pendientes": "Cerrar regla aplicable, criterios, implementación futura e independencia; no inferir estados históricos ni autenticación.",
       "cobertura_financiera_extremo_a_extremo": false
@@ -6854,7 +6854,7 @@
       "definicion_vigente": "Contrato candidato M9-03 en docs/model-decision-audit.md; políticas/integración pendientes.",
       "modulo_o_calculo_afectado": "M9 y puerta al Full UW",
       "evidencia_documental": "sources/extracted/fbb44a320a46.txt ; extracción textual cotejada preliminarmente",
-      "evidencia_validacion": "references/m9-validation.json sólo comparadores y regla hipotética de referencia; no identidad real, transacciones o PDF decisorio.",
+      "evidencia_validacion": "references/m9-validation.json sólo comparadores y regla hipotética de referencia; no identidad real, transacciones o PDF decisorio. Evidencia adicional: schemas/ y references/interface-contracts-validation.json (75 controles de estructura/intercambio sintético; no validación financiera o productiva).",
       "estado": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
       "pendientes": "Cerrar regla aplicable, criterios, implementación futura e independencia; no inferir estados históricos ni autenticación.",
       "cobertura_financiera_extremo_a_extremo": false
@@ -6890,7 +6890,7 @@
       "definicion_vigente": "Contrato candidato M9-05 en docs/model-decision-audit.md; políticas/integración pendientes.",
       "modulo_o_calculo_afectado": "M9 y puerta al Full UW",
       "evidencia_documental": "sources/extracted/fbb44a320a46.txt ; extracción textual cotejada preliminarmente",
-      "evidencia_validacion": "references/m9-validation.json sólo comparadores y regla hipotética de referencia; no identidad real, transacciones o PDF decisorio. Referencia limitada adicional: references/revision-integrity-validation.json (grafo sintético/memoria, no transacción o autenticación real).",
+      "evidencia_validacion": "references/m9-validation.json sólo comparadores y regla hipotética de referencia; no identidad real, transacciones o PDF decisorio. Referencia limitada adicional: references/revision-integrity-validation.json (grafo sintético/memoria, no transacción o autenticación real). Evidencia adicional: schemas/ y references/interface-contracts-validation.json (75 controles de estructura/intercambio sintético; no validación financiera o productiva).",
       "estado": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
       "pendientes": "Cerrar regla aplicable, criterios, implementación futura e independencia; no inferir estados históricos ni autenticación.",
       "cobertura_financiera_extremo_a_extremo": false
@@ -6908,7 +6908,7 @@
       "definicion_vigente": "Contrato candidato M9-06 en docs/model-decision-audit.md; políticas/integración pendientes.",
       "modulo_o_calculo_afectado": "M9 y puerta al Full UW",
       "evidencia_documental": "sources/extracted/fbb44a320a46.txt ; extracción textual cotejada preliminarmente",
-      "evidencia_validacion": "references/m9-validation.json sólo comparadores y regla hipotética de referencia; no identidad real, transacciones o PDF decisorio. Referencia limitada adicional: references/revision-integrity-validation.json (grafo sintético/memoria, no transacción o autenticación real).",
+      "evidencia_validacion": "references/m9-validation.json sólo comparadores y regla hipotética de referencia; no identidad real, transacciones o PDF decisorio. Referencia limitada adicional: references/revision-integrity-validation.json (grafo sintético/memoria, no transacción o autenticación real). Evidencia adicional: schemas/ y references/interface-contracts-validation.json (75 controles de estructura/intercambio sintético; no validación financiera o productiva).",
       "estado": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
       "pendientes": "Cerrar regla aplicable, criterios, implementación futura e independencia; no inferir estados históricos ni autenticación.",
       "cobertura_financiera_extremo_a_extremo": false
@@ -6998,7 +6998,7 @@
       "definicion_vigente": "Contrato candidato M9-11 en docs/model-decision-audit.md; políticas/integración pendientes.",
       "modulo_o_calculo_afectado": "M9 y puerta al Full UW",
       "evidencia_documental": "sources/extracted/fbb44a320a46.txt ; extracción textual cotejada preliminarmente",
-      "evidencia_validacion": "references/m9-validation.json sólo comparadores y regla hipotética de referencia; no identidad real, transacciones o PDF decisorio.",
+      "evidencia_validacion": "references/m9-validation.json sólo comparadores y regla hipotética de referencia; no identidad real, transacciones o PDF decisorio. Evidencia adicional: schemas/ y references/interface-contracts-validation.json (75 controles de estructura/intercambio sintético; no validación financiera o productiva).",
       "estado": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
       "pendientes": "Cerrar regla aplicable, criterios, implementación futura e independencia; no inferir estados históricos ni autenticación.",
       "cobertura_financiera_extremo_a_extremo": false
@@ -7088,7 +7088,7 @@
       "definicion_vigente": "Contrato candidato M1-04 en docs/model-input-evidence.md; sin validación productiva.",
       "modulo_o_calculo_afectado": "M1 y todos los consumidores",
       "evidencia_documental": "sources/extracted/95a304fd3e53.txt ; extracción textual cotejada preliminarmente",
-      "evidencia_validacion": "Inventario/hash/XML originales y mapa de 55 filas; sin datos reales ni lectores independientes.",
+      "evidencia_validacion": "Inventario/hash/XML originales y mapa de 55 filas; sin datos reales ni lectores independientes. Evidencia adicional: schemas/ y references/interface-contracts-validation.json (75 controles de estructura/intercambio sintético; no validación financiera o productiva).",
       "estado": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
       "pendientes": "Cerrar semántica/rangos/aplicabilidad/fuentes y prueba integrada C1.",
       "cobertura_financiera_extremo_a_extremo": false
@@ -7106,7 +7106,7 @@
       "definicion_vigente": "Contrato candidato M1-05 en docs/model-input-evidence.md; sin validación productiva.",
       "modulo_o_calculo_afectado": "M1 y todos los consumidores",
       "evidencia_documental": "sources/extracted/95a304fd3e53.txt ; extracción textual cotejada preliminarmente",
-      "evidencia_validacion": "Inventario/hash/XML originales y mapa de 55 filas; sin datos reales ni lectores independientes.",
+      "evidencia_validacion": "Inventario/hash/XML originales y mapa de 55 filas; sin datos reales ni lectores independientes. Evidencia adicional: schemas/ y references/interface-contracts-validation.json (75 controles de estructura/intercambio sintético; no validación financiera o productiva).",
       "estado": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
       "pendientes": "Cerrar semántica/rangos/aplicabilidad/fuentes y prueba integrada C1.",
       "cobertura_financiera_extremo_a_extremo": false
@@ -7142,7 +7142,7 @@
       "definicion_vigente": "Contrato candidato M1-07 en docs/model-input-evidence.md; sin validación productiva.",
       "modulo_o_calculo_afectado": "M1 y todos los consumidores",
       "evidencia_documental": "sources/extracted/95a304fd3e53.txt ; extracción textual cotejada preliminarmente",
-      "evidencia_validacion": "Inventario/hash/XML originales y mapa de 55 filas; sin datos reales ni lectores independientes.",
+      "evidencia_validacion": "Inventario/hash/XML originales y mapa de 55 filas; sin datos reales ni lectores independientes. Evidencia adicional: schemas/ y references/interface-contracts-validation.json (75 controles de estructura/intercambio sintético; no validación financiera o productiva).",
       "estado": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
       "pendientes": "Cerrar semántica/rangos/aplicabilidad/fuentes y prueba integrada C1.",
       "cobertura_financiera_extremo_a_extremo": false

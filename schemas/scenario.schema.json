@@ -1,0 +1,154 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:miniuw:candidate:scenario:0.1",
+  "title": "scenario candidate record shape only",
+  "type": "object",
+  "properties": {
+    "scenario_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "context": {
+      "$ref": "urn:miniuw:candidate:common:0.1#/$defs/context"
+    },
+    "required_status": {
+      "enum": [
+        "required",
+        "excluded",
+        "unresolved"
+      ]
+    },
+    "exclusion_rule_ref": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "inherit_unspecified": {
+      "const": false
+    },
+    "input_bindings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "field_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_value_ref": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_revision": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "field_id",
+          "source_value_ref",
+          "source_revision"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "criteria_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "transformations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "field_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_revision": {
+            "type": "string",
+            "minLength": 1
+          },
+          "operator": {
+            "enum": [
+              "relative",
+              "percentage_points",
+              "basis_points",
+              "absolute_months",
+              "replace"
+            ]
+          },
+          "delta_or_replacement": {
+            "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+          },
+          "rule_ref": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1
+          }
+        },
+        "required": [
+          "field_id",
+          "source_revision",
+          "operator",
+          "delta_or_replacement",
+          "rule_ref"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "required_rule_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "purpose": {
+      "const": "design_or_synthetic_reference"
+    },
+    "authorization": {
+      "const": "not_granted"
+    }
+  },
+  "required": [
+    "scenario_id",
+    "context",
+    "required_status",
+    "exclusion_rule_ref",
+    "inherit_unspecified",
+    "input_bindings",
+    "criteria_refs",
+    "transformations",
+    "required_rule_refs",
+    "purpose",
+    "authorization"
+  ],
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "required_status": {
+            "const": "excluded"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "exclusion_rule_ref": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  ]
+}

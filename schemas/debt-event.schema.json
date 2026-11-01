@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:miniuw:candidate:debt-event:0.1",
+  "title": "debt-event candidate record shape only",
+  "type": "object",
+  "properties": {
+    "event_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "context": {
+      "$ref": "urn:miniuw:candidate:common:0.1#/$defs/context"
+    },
+    "debt_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "kind": {
+      "enum": [
+        "cash_draw",
+        "capitalized_interest",
+        "principal_repayment",
+        "documented_principal_adjustment"
+      ]
+    },
+    "principal_effect": {
+      "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+    },
+    "cash_event_ref": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "calendar_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "period_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "urn:miniuw:candidate:common:0.1#/$defs/source"
+      }
+    },
+    "purpose": {
+      "const": "design_or_synthetic_reference"
+    },
+    "authorization": {
+      "const": "not_granted"
+    }
+  },
+  "required": [
+    "event_id",
+    "context",
+    "debt_id",
+    "kind",
+    "principal_effect",
+    "cash_event_ref",
+    "calendar_ref",
+    "period_ref",
+    "sources",
+    "purpose",
+    "authorization"
+  ],
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "kind": {
+            "enum": [
+              "cash_draw",
+              "principal_repayment"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "cash_event_ref": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "kind": {
+            "const": "capitalized_interest"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "cash_event_ref": {
+            "type": "null"
+          }
+        }
+      }
+    }
+  ]
+}

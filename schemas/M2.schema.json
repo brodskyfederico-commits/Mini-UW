@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:miniuw:candidate:M2:0.1",
+  "title": "M2 candidate interface (structure only)",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "0.1-candidate"
+    },
+    "purpose": {
+      "const": "design_or_synthetic_reference"
+    },
+    "module": {
+      "const": "M2"
+    },
+    "context": {
+      "$ref": "urn:miniuw:candidate:common:0.1#/$defs/context"
+    },
+    "status": {
+      "enum": [
+        "candidate_complete",
+        "blocked",
+        "not_applicable"
+      ]
+    },
+    "pending_causes": {
+      "type": "array",
+      "items": {
+        "$ref": "urn:miniuw:candidate:common:0.1#/$defs/cause"
+      }
+    },
+    "outputs": {
+      "type": "object",
+      "properties": {
+        "effective_income": {
+          "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+        },
+        "operating_expenses": {
+          "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+        },
+        "property_tax": {
+          "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+        },
+        "noi": {
+          "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+        }
+      },
+      "required": [
+        "effective_income",
+        "operating_expenses",
+        "property_tax",
+        "noi"
+      ],
+      "additionalProperties": false
+    },
+    "authorization": {
+      "const": "not_granted"
+    }
+  },
+  "required": [
+    "schema_version",
+    "purpose",
+    "module",
+    "context",
+    "status",
+    "pending_causes",
+    "outputs",
+    "authorization"
+  ],
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "blocked"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "pending_causes": {
+            "minItems": 1
+          }
+        }
+      }
+    }
+  ]
+}
