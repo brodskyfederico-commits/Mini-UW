@@ -69,3 +69,7 @@ Se agregan M2-01 a M2-08: ahora 321 filas. Los conteos de las secciones anterior
 ## Extensión M3/M4 y decisión
 
 M3-01:M3-06 y M4-01:M4-06 más confirmación DEC-PENDING: total vigente 334 filas. Recuentos anteriores son históricos. Una instrucción directa en chat no tiene SHA de archivo original; se registra esa procedencia sin inventar un hash. Ver contratos de presupuesto/calendario, entrada de Lorena y cierre de módulos.
+
+## Extensión M5
+
+Se añaden M5-01:M5-10, total vigente 344 filas. Los conteos previos describen hitos históricos. La referencia de financiación sólo valida una ecuación reducida y una recurrencia bajo hipótesis explícitas; ninguna fila certifica cierre financiero de producto.

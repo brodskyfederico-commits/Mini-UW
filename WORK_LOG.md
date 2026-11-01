@@ -26,3 +26,7 @@ User deferred Full UW delivery until the end. Recorded it as a deferred dependen
 ## Budget/schedule and decision direction — 1 November 2026
 
 Added 12 proposed M3/M4 contracts, explicit cost inclusion/draw-timing boundaries and module closure gates (none closed). User confirmed missing data/rules leave PENDING without PASS/FAIL. Lorena criteria-sheet interpretation documented separately from confirmed instructions; historic economic HOLD band to binary mapping remains unresolved. Added isolated exact-rational allocation reference, not an approved construction curve or independent validation. Coverage now 334 rows. No production or real-deal underwriting.
+
+## Construction financing model — 1 November 2026
+
+Added ten M5 contracts covering eligible cost, commitment/draw/principal, interest/fee conventions, required versus available equity, capitalized interest, lease-up cash, TDC circularity, temporal feasibility and payoff. Kept all bank terms and expert policies unresolved where unsupported. Added exact-rational reduced financing reference with explicit domain/degenerate cases; not production, global convergence, restored historical code or independent audit. Coverage now 344; all modules remain open. No actual deal or production executed.
