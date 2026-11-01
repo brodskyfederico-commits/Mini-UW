@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "arithmetic": "exact rational",
+  "checks": {
+    "driver_units": 6,
+    "reduced_price_constraints": 64,
+    "discrete_quote_and_next": 16,
+    "domain_boundaries": 5,
+    "nonmonotone_example": 5,
+    "missing_inputs": 3
+  },
+  "total": 99,
+  "scope": "Isolated synthetic transformations, two-objective affine-cost/single-return branch, discrete/open domain examples and nonmonotone counterexample. Not production scenarios, global price solver, approved RLV, general IRR or independent audit."
+}

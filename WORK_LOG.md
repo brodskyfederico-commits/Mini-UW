@@ -42,3 +42,23 @@ Added ten M6 contracts: applicability/date, value, LTV, debt service, DSCR, bind
 ## Hold, exit and investor returns — 1 November 2026
 
 Added twelve M7 contracts covering horizon/growth, operating cash, gross capital events, forward NOI, sale costs/payoff and terminal distributions, EM, regular IRR/annualization, irregular-date limits, CoC and project versus LP/JV. Preserved unknown fiscal/calendar/equity policies. Added exact-rational synthetic tests and explicitly factored IRR examples with two roots, repeated/tangent roots, no-root and all-zero indeterminacy; no general IRR solver or XIRR claimed. Coverage now 366. Production, expert approval and independent/integrated validation remain open. Review PDF R01 preserved.
+
+## Scenarios and price support — 1 November 2026
+
+User requested uninterrupted continuation through the authorized model plan, excluding Lorena inputs. Added twelve M8 contracts with isolated scenario inputs, explicit transformations, required-scenario controls, ranking/interactions, objective-dependent price support and open/closed/discrete/nonmonotone domain handling. Exact synthetic reference does not certify global price solving, product integration, historical references or expert policy. Coverage now 378; all modules open. Proceeding to M9 and remaining source/acceptance reconciliation without production activation.
+
+## Decision and audit contracts — 1 November 2026
+
+Added twelve M9 contracts: completeness, fresh criteria, comparisons/bands/aggregation, revision/invalidation, immutable snapshots, atomic publication, one-page deal PDF, audit, authentic review and Full UW gate. Added comparator tests with explicitly hypothetical policy; no house-policy activation, authentication or transactional product claimed. Coverage now 390. All modules remain open pending the declared gates. Continuing documentary/input/acceptance reconciliation.
+
+## Source/input/acceptance reconciliation — 1 November 2026
+
+Added eight M1 contracts and enriched structural mapping of 55 original fields with unknown currency/ranges preserved. Reconciled 32 standards policy texts automatically under declared lexical normalization; visually verified manual pp.67–68 to resolve policy 2 reading-order contamination by an unrelated table. No original bytes changed and no financial authority approved. Other annex/table semantic audit remains independent-review work. Recorded 21 original plus 15 additional acceptance setups, none executed against product. Coverage now 398; final independent-work handoff separates deliverables from expert/integration gates.
+
+## Independent package boundary — 1 November 2026
+
+Checked all 84 M1–M9 contract IDs against 398 coverage rows, 55 original input mappings and 36 acceptance specifications. Added a single declared synthetic M2–M7 accounting bridge with 14 exact conservation/definition controls, not a golden case or full engine. Prepared consolidated review issues and readiness record: independent specification package prepared; full_model_complete=false, production_ready=false and all modules still open. User requested notification only when preparatory plan work is complete; no unsupported expert policies were invented to claim completion.
+
+## Professional review R02 — 1 November 2026
+
+Prepared updated 29-page non-code professional PDF with M1–M9 candidate structure, new scenario/decision contracts and explicit independent-package boundary. All pages rendered and text bounds checked; contact sheet reviewed. R01 remains unchanged. No external delivery, expert approval or production release.

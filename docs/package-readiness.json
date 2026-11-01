@@ -1,0 +1,68 @@
+{
+  "package_stage": "independent specification/review package prepared",
+  "module_contracts": {
+    "M1": 8,
+    "M2": 8,
+    "M3": 6,
+    "M4": 6,
+    "M5": 10,
+    "M6": 10,
+    "M7": 12,
+    "M8": 12,
+    "M9": 12
+  },
+  "coverage_rows": 398,
+  "original_input_fields_mapped": 55,
+  "acceptance_case_specs": 36,
+  "original_acceptance_cases_certified": 0,
+  "source_policy_text_reconciliation": "32 normalized matches plus 1 visually resolved extraction order artifact; not policy approval",
+  "reference_results": [
+    {
+      "path": "references/integrated-bridge-validation.json",
+      "scope": "One scoped M2-to-M7 cash/debt/equity bridge under declared synthetic assumptions. Not independent validation, original acceptance golden case, full circular-financing solver, production integration or product release.",
+      "count": 14
+    },
+    {
+      "path": "references/m2-validation.json",
+      "scope": "Isolated synthetic algebra; not approved tax policy, recovered product, historical reference reproduction, independent audit or deal validation.",
+      "count": 186
+    },
+    {
+      "path": "references/m34-validation.json",
+      "scope": "Isolated synthetic allocation algebra, not approved sin-squared schedule, actual construction scope, production or independent audit.",
+      "count": 22
+    },
+    {
+      "path": "references/m5-validation.json",
+      "scope": "Reduced synthetic algebra and explicitly assumed opening-balance capitalization; not production finance, actual loan terms, independent audit, global convergence or recovery of historical references.",
+      "count": 36
+    },
+    {
+      "path": "references/m6-validation.json",
+      "scope": "Synthetic regular end-period fixed-rate amortization, isolated loan sizing and unconstrained distributable cash. Not approved bank terms, independent audit, stable floating-point implementation, production or real-deal validation.",
+      "count": 128
+    },
+    {
+      "path": "references/m7-validation.json",
+      "scope": "Synthetic exit cash, gross equity ledgers, regular compounding and factored IRR examples only. No general root-isolation solver, XIRR, real-deal validation, independent audit, production or recovery of historical application.",
+      "count": 65
+    },
+    {
+      "path": "references/m8-validation.json",
+      "scope": "Isolated synthetic transformations, two-objective affine-cost/single-return branch, discrete/open domain examples and nonmonotone counterexample. Not production scenarios, global price solver, approved RLV, general IRR or independent audit.",
+      "count": 99
+    },
+    {
+      "path": "references/m9-validation.json",
+      "scope": "Isolated comparator truth tables and hypothetical explicit aggregation; not activated house decision policy, authentication, transactional publication, independent audit or production.",
+      "count": 46
+    }
+  ],
+  "independent_financial_audit": false,
+  "production_ready": false,
+  "full_model_complete": false,
+  "all_module_gates_closed": false,
+  "external_inputs_expert_review_and_future_product_work_required": true,
+  "Full_UW": "deferred until final delivery; not prerequisite to current design",
+  "scope": "No global readiness percentage, no recovered application claim and no real-deal underwriting."
+}

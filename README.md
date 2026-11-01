@@ -10,7 +10,7 @@ The current product requirement is exactly one external decision PDF page. Inves
 
 GitHub records reviewed milestone files and infrastructure definitions. Runtime services, databases, credentials and live deal data are not automatically backed up by this repository. No deployment or scheduled synchronization is configured.
 
-Latest model review: [coverage matrix and evidence guide](docs/coverage-guide.md), [full CSV](docs/coverage-matrix.csv), and [cash/capital contracts](docs/model-cash-contracts.md). The matrix inventories 366 items and certifies no end-to-end product coverage.
+Latest model review: [coverage matrix and evidence guide](docs/coverage-guide.md), [full CSV](docs/coverage-matrix.csv), and [cash/capital contracts](docs/model-cash-contracts.md). The matrix inventories 398 items and certifies no end-to-end product coverage.
 
 Continued Mini-UW model: [M2 operations/NOI contracts](docs/model-operations-contract.md). Full UW is deferred until the end per current user direction.
 
@@ -23,3 +23,13 @@ Professional review: [Spanish structure PDF, R01, 26 pages](docs/review/MiniUW_E
 Refinancing: [M6 permanent debt, sizing, payoff and cash contracts](docs/model-refinance-contract.md). This expands the preliminary M6 structure after the preserved professional PDF R01 cutoff; it is not expert approval.
 
 Hold, exit and returns: [M7 operating cash, sale and investor-return contracts](docs/model-hold-exit-returns.md). The professional PDF R01 remains the earlier snapshot.
+
+Scenarios and price: [M8 explicit scenario configuration and price-domain contracts](docs/model-scenarios-price.md). No historical shocks/criteria or global optimum are activated/certified.
+
+Decision and audit: [M9 comparison, pending-state, authenticated-review and publication contracts](docs/model-decision-audit.md). Hypothetical reference aggregation is not house policy.
+
+Input/evidence contracts: [M1](docs/model-input-evidence.md), [55-field proposed contract map](docs/input-contract-map.json), [source reconciliation limits](docs/source-review-limits.md), and [36 acceptance specifications](docs/acceptance-case-contracts.json). None implies product certification.
+
+[Independent specification package status](docs/integration-and-readiness.md) separates prepared design deliverables from still-open expert, financial-validation and production gates. No model-complete or production-ready claim is made.
+
+Current professional review: [R02 PDF, 29 pages](docs/review/MiniUW_Estructura_para_Revision_Profesional_R02.pdf). R01 retained unchanged. R02 reflects the full candidate-contract specification, not a production-ready or expert-approved model.

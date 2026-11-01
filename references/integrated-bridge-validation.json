@@ -1,0 +1,46 @@
+{
+  "status": "passed",
+  "fixture": "SYNTHETIC-BRIDGE-01",
+  "arithmetic": "exact rational",
+  "checks": [
+    "NOI_tax_residual",
+    "construction_sources_cash_uses",
+    "construction_capitalization_no_extra_cash",
+    "explicit_synthetic_debt_limit",
+    "DSCR_binding",
+    "refi_cash_in_and_restricted_reserve",
+    "holding_month_3",
+    "holding_month_4",
+    "holding_month_5",
+    "maturity_vs_amortization_balloon",
+    "terminal_cash_no_double_count",
+    "gross_equity_multiple",
+    "whole_life_cash_sources_uses",
+    "investor_net_vs_gross"
+  ],
+  "total": 14,
+  "assumptions": [
+    "Abstract synthetic amounts; no project/market/legal inputs",
+    "Declared affine tax proxy/floor only, not verified tax policy",
+    "Construction costs funded by explicit equity/draw; opening debt carries one period interest capitalized; explicit limit 21",
+    "Refi uses explicit zero-rate permanent loan, six monthly amortizing payments, monthly cash NOI and 3-month hold",
+    "Fees/reserve/sale cost explicit synthetic fractions; reserves released once at sale",
+    "No cash accrual differences, growth or extra restrictions; sale at end of last operating period",
+    "Three-month maturity has remaining principal; payoff at exit, no fictional extension"
+  ],
+  "results": {
+    "NOI_annual": "12",
+    "construction_payoff": "101/5",
+    "permanent_loan": "3",
+    "refi_equity_cash_in": "37/2",
+    "balloon_at_exit": "3/2",
+    "gross_sale": "120",
+    "terminal_distribution": "215/2",
+    "gross_contributions": "57/2",
+    "gross_distributions": "109",
+    "equity_multiple": "218/57"
+  },
+  "IRR": "not calculated; no general root solver certified",
+  "decision": "not evaluated; no Lorena criteria or house policy entered",
+  "scope": "One scoped M2-to-M7 cash/debt/equity bridge under declared synthetic assumptions. Not independent validation, original acceptance golden case, full circular-financing solver, production integration or product release."
+}

@@ -1,0 +1,289 @@
+{
+  "scope": "Automated extracted-text comparison only. Equality is not original authenticity, semantic audit, table/visual audit, house approval or product validation. Differences are retained, not resolved by ratio.",
+  "normalizations": [
+    "PDF page labels/footer and DOCX paragraph markers removed",
+    "NFKC Unicode normalization",
+    "dash/quote typography unified",
+    "lexical token sequence compared with punctuation/numeric tokens preserved; whitespace ignored"
+  ],
+  "source_sha256": "38b78d40013b9338511d2917de6c4347be1ec812712b4b4b18e7308bb6c28ab9",
+  "manual_sha256": "2ebf308942aea7aff4b02b6ff79d1b3da87d8fcb0351f67cc7ab648be15a19bb",
+  "policies": [
+    {
+      "policy": 1,
+      "source_location": "Standards §4, policy 1",
+      "manual_location": "Manual physical pp.67–73, Annex E, policy 1",
+      "exact_after_declared_text_normalization": true,
+      "status": "normalized-text-match-only",
+      "difference_preview": null
+    },
+    {
+      "policy": 2,
+      "source_location": "Standards §4, policy 2",
+      "manual_location": "Manual physical pp.67–73, Annex E, policy 2",
+      "exact_after_declared_text_normalization": false,
+      "status": "text-match-after-documented-segmentation; visual evidence checked",
+      "difference_preview": {
+        "original_end": "cific returns after fees , promote , preferred return or waterfall are calculated only when the applicable JV / equity structure is documented and are shown separately from project - level economics .",
+        "annex_end": " loan max LTV ( ± points ) - 5.0 pts + 5.0 pts Exit cap rate ( bps ) * + 50 bps - 25 bps Rent growth ( ± points per year ) * - 1.0 pt / year + 0.5 pt / year separately from project - level economics ."
+      },
+      "resolution": "Visual review of original manual physical pp.67–68 confirms the Driver table belongs above Annex D/E. Policy 2 continues across pages. The extracted table insertion is reading-order contamination, not alternative policy text.",
+      "semantic_or_policy_approval": false
+    },
+    {
+      "policy": 3,
+      "source_location": "Standards §4, policy 3",
+      "manual_location": "Manual physical pp.67–73, Annex E, policy 3",
+      "exact_after_declared_text_normalization": true,
+      "status": "normalized-text-match-only",
+      "difference_preview": null
+    },
+    {
+      "policy": 4,
+      "source_location": "Standards §4, policy 4",
+      "manual_location": "Manual physical pp.67–73, Annex E, policy 4",
+      "exact_after_declared_text_normalization": true,
+      "status": "normalized-text-match-only",
+      "difference_preview": null
+    },
+    {
+      "policy": 5,
+      "source_location": "Standards §4, policy 5",
+      "manual_location": "Manual physical pp.67–73, Annex E, policy 5",
+      "exact_after_declared_text_normalization": true,
+      "status": "normalized-text-match-only",
+      "difference_preview": null
+    },
+    {
+      "policy": 6,
+      "source_location": "Standards §4, policy 6",
+      "manual_location": "Manual physical pp.67–73, Annex E, policy 6",
+      "exact_after_declared_text_normalization": true,
+      "status": "normalized-text-match-only",
+      "difference_preview": null
+    },
+    {
+      "policy": 7,
+      "source_location": "Standards §4, policy 7",
+      "manual_location": "Manual physical pp.67–73, Annex E, policy 7",
+      "exact_after_declared_text_normalization": true,
+      "status": "normalized-text-match-only",
+      "difference_preview": null
+    },
+    {
+      "policy": 8,
+      "source_location": "Standards §4, policy 8",
+      "manual_location": "Manual physical pp.67–73, Annex E, policy 8",
+      "exact_after_declared_text_normalization": true,
+      "status": "normalized-text-match-only",
+      "difference_preview": null
+    },
+    {
+      "policy": 9,
+      "source_location": "Standards §4, policy 9",
+      "manual_location": "Manual physical pp.67–73, Annex E, policy 9",
+      "exact_after_declared_text_normalization": true,
+      "status": "normalized-text-match-only",
+      "difference_preview": null
+    },
+    {
+      "policy": 10,
+      "source_location": "Standards §4, policy 10",
+      "manual_location": "Manual physical pp.67–73, Annex E, policy 10",
+      "exact_after_declared_text_normalization": true,
+      "status": "normalized-text-match-only",
+      "difference_preview": null
+    },
+    {
+      "policy": 11,
+      "source_location": "Standards §4, policy 11",
+      "manual_location": "Manual physical pp.67–73, Annex E, policy 11",
+      "exact_after_declared_text_normalization": true,
+      "status": "normalized-text-match-only",
+      "difference_preview": null
+    },
+    {
+      "policy": 12,
+      "source_location": "Standards §4, policy 12",
+      "manual_location": "Manual physical pp.67–73, Annex E, policy 12",
+      "exact_after_declared_text_normalization": true,
+      "status": "normalized-text-match-only",
+      "difference_preview": null
+    },
+    {
+      "policy": 13,
+      "source_location": "Standards §4, policy 13",
+      "manual_location": "Manual physical pp.67–73, Annex E, policy 13",
+      "exact_after_declared_text_normalization": true,
+      "status": "normalized-text-match-only",
+      "difference_preview": null
+    },
+    {
+      "policy": 14,
+      "source_location": "Standards §4, policy 14",
+      "manual_location": "Manual physical pp.67–73, Annex E, policy 14",
+      "exact_after_declared_text_normalization": true,
+      "status": "normalized-text-match-only",
+      "difference_preview": null
+    },
+    {
+      "policy": 15,
+      "source_location": "Standards §4, policy 15",
+      "manual_location": "Manual physical pp.67–73, Annex E, policy 15",
+      "exact_after_declared_text_normalization": true,
+      "status": "normalized-text-match-only",
+      "difference_preview": null
+    },
+    {
+      "policy": 16,
+      "source_location": "Standards §4, policy 16",
+      "manual_location": "Manual physical pp.67–73, Annex E, policy 16",
+      "exact_after_declared_text_normalization": true,
+      "status": "normalized-text-match-only",
+      "difference_preview": null
+    },
+    {
+      "policy": 17,
+      "source_location": "Standards §4, policy 17",
+      "manual_location": "Manual physical pp.67–73, Annex E, policy 17",
+      "exact_after_declared_text_normalization": true,
+      "status": "normalized-text-match-only",
+      "difference_preview": null
+    },
+    {
+      "policy": 18,
+      "source_location": "Standards §4, policy 18",
+      "manual_location": "Manual physical pp.67–73, Annex E, policy 18",
+      "exact_after_declared_text_normalization": true,
+      "status": "normalized-text-match-only",
+      "difference_preview": null
+    },
+    {
+      "policy": 19,
+      "source_location": "Standards §4, policy 19",
+      "manual_location": "Manual physical pp.67–73, Annex E, policy 19",
+      "exact_after_declared_text_normalization": true,
+      "status": "normalized-text-match-only",
+      "difference_preview": null
+    },
+    {
+      "policy": 20,
+      "source_location": "Standards §4, policy 20",
+      "manual_location": "Manual physical pp.67–73, Annex E, policy 20",
+      "exact_after_declared_text_normalization": true,
+      "status": "normalized-text-match-only",
+      "difference_preview": null
+    },
+    {
+      "policy": 21,
+      "source_location": "Standards §4, policy 21",
+      "manual_location": "Manual physical pp.67–73, Annex E, policy 21",
+      "exact_after_declared_text_normalization": true,
+      "status": "normalized-text-match-only",
+      "difference_preview": null
+    },
+    {
+      "policy": 22,
+      "source_location": "Standards §4, policy 22",
+      "manual_location": "Manual physical pp.67–73, Annex E, policy 22",
+      "exact_after_declared_text_normalization": true,
+      "status": "normalized-text-match-only",
+      "difference_preview": null
+    },
+    {
+      "policy": 23,
+      "source_location": "Standards §4, policy 23",
+      "manual_location": "Manual physical pp.67–73, Annex E, policy 23",
+      "exact_after_declared_text_normalization": true,
+      "status": "normalized-text-match-only",
+      "difference_preview": null
+    },
+    {
+      "policy": 24,
+      "source_location": "Standards §4, policy 24",
+      "manual_location": "Manual physical pp.67–73, Annex E, policy 24",
+      "exact_after_declared_text_normalization": true,
+      "status": "normalized-text-match-only",
+      "difference_preview": null
+    },
+    {
+      "policy": 25,
+      "source_location": "Standards §4, policy 25",
+      "manual_location": "Manual physical pp.67–73, Annex E, policy 25",
+      "exact_after_declared_text_normalization": true,
+      "status": "normalized-text-match-only",
+      "difference_preview": null
+    },
+    {
+      "policy": 26,
+      "source_location": "Standards §4, policy 26",
+      "manual_location": "Manual physical pp.67–73, Annex E, policy 26",
+      "exact_after_declared_text_normalization": true,
+      "status": "normalized-text-match-only",
+      "difference_preview": null
+    },
+    {
+      "policy": 27,
+      "source_location": "Standards §4, policy 27",
+      "manual_location": "Manual physical pp.67–73, Annex E, policy 27",
+      "exact_after_declared_text_normalization": true,
+      "status": "normalized-text-match-only",
+      "difference_preview": null
+    },
+    {
+      "policy": 28,
+      "source_location": "Standards §4, policy 28",
+      "manual_location": "Manual physical pp.67–73, Annex E, policy 28",
+      "exact_after_declared_text_normalization": true,
+      "status": "normalized-text-match-only",
+      "difference_preview": null
+    },
+    {
+      "policy": 29,
+      "source_location": "Standards §4, policy 29",
+      "manual_location": "Manual physical pp.67–73, Annex E, policy 29",
+      "exact_after_declared_text_normalization": true,
+      "status": "normalized-text-match-only",
+      "difference_preview": null
+    },
+    {
+      "policy": 30,
+      "source_location": "Standards §4, policy 30",
+      "manual_location": "Manual physical pp.67–73, Annex E, policy 30",
+      "exact_after_declared_text_normalization": true,
+      "status": "normalized-text-match-only",
+      "difference_preview": null
+    },
+    {
+      "policy": 31,
+      "source_location": "Standards §4, policy 31",
+      "manual_location": "Manual physical pp.67–73, Annex E, policy 31",
+      "exact_after_declared_text_normalization": true,
+      "status": "normalized-text-match-only",
+      "difference_preview": null
+    },
+    {
+      "policy": 32,
+      "source_location": "Standards §4, policy 32",
+      "manual_location": "Manual physical pp.67–73, Annex E, policy 32",
+      "exact_after_declared_text_normalization": true,
+      "status": "normalized-text-match-only",
+      "difference_preview": null
+    },
+    {
+      "policy": 33,
+      "source_location": "Standards §4, policy 33",
+      "manual_location": "Manual physical pp.67–73, Annex E, policy 33",
+      "exact_after_declared_text_normalization": true,
+      "status": "normalized-text-match-only",
+      "difference_preview": null
+    }
+  ],
+  "summary": {
+    "direct_normalized_matches": 32,
+    "documented_extraction_order_resolution": 1,
+    "all_33_policy_texts_reconciled_with_stated_limits": true,
+    "financial_authority_approved": false,
+    "other_annex_tables_independently_audited": false
+  }
+}

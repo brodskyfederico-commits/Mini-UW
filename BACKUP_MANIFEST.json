@@ -1,5 +1,5 @@
 {
-  "scope": "sources, Mini-UW model/reference review and preserved internal professional PDF; not full product/VPS recovery",
+  "scope": "supplied sources, candidate model specification, limited references and internal review PDFs; not full product/VPS recovery or model certification",
   "files": [
     {
       "path": ".gitignore",
@@ -13,13 +13,18 @@
     },
     {
       "path": "README.md",
-      "bytes": 2692,
-      "sha256": "f63db58c2734c121d73165fb156ee405c164638853cea5f446d595740187fd80"
+      "bytes": 3851,
+      "sha256": "43c65cc900c1c3083e0e3ee4b74b844ea7ee803e3e6bea86aab2933aa7dc3651"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 6743,
-      "sha256": "30619a3ff4cf6edcacda7b6b26854b6dfcba2d903a24d4164d99b56da3db3fc1"
+      "bytes": 9607,
+      "sha256": "123d02c3d052bf4ef46aab9dbe3ce31e6aa268222ce70f75d22fed02b340d7ec"
+    },
+    {
+      "path": "docs/acceptance-case-contracts.json",
+      "bytes": 26538,
+      "sha256": "a8655d5e7d39c2dd387af27b230d36fa981a847d6d989a78b1fc446e31b811bd"
     },
     {
       "path": "docs/acceptance-plan.md",
@@ -28,18 +33,18 @@
     },
     {
       "path": "docs/coverage-guide.md",
-      "bytes": 6003,
-      "sha256": "005426a4dbc94e75362641d29aec8a3281213a25f2bf5d0651deca2f12670926"
+      "bytes": 6707,
+      "sha256": "d5773349012fef9b461bc8b3cf6043543e479b625c411d719581506e70bb71f1"
     },
     {
       "path": "docs/coverage-matrix.csv",
-      "bytes": 305279,
-      "sha256": "9ce0abfb71a7517cd104b13e8906ae971e26adaa67384551ba74e0aa0a3e2711"
+      "bytes": 332699,
+      "sha256": "6c89df9097a4b53396f8f9a9f973ff38f2110cddbd13ef2a80e9c51a6b6b3b28"
     },
     {
       "path": "docs/coverage-matrix.json",
-      "bytes": 474840,
-      "sha256": "0c6f946162b56ac21eda30a2b6f77e3ae256ceea68fc2ea2583a6f97cd0b03ea"
+      "bytes": 517186,
+      "sha256": "3e6f384459ab66e6c90da8284c33a99257dc561b0129f29f8566628892bae260"
     },
     {
       "path": "docs/current-direction.txt",
@@ -52,6 +57,11 @@
       "sha256": "2d2637d6889b1dec3d92df42b789dda495f6f7c98f8ccf22839f46fb47a22981"
     },
     {
+      "path": "docs/input-contract-map.json",
+      "bytes": 44283,
+      "sha256": "793b0075f10ed8a39b839ebda819a70dc53125c2d2013a15520e2681c69b9f94"
+    },
+    {
       "path": "docs/input-dictionary.csv",
       "bytes": 5599,
       "sha256": "8ced9d6e098eef12e19d3af76af9065e8c3145213aec680d56388d3f5aadc67d"
@@ -60,6 +70,11 @@
       "path": "docs/input-dictionary.json",
       "bytes": 29587,
       "sha256": "c26720e78b12fddbc522a31fb97aa32c961e3dbe20ccf9477dcefed33583af8e"
+    },
+    {
+      "path": "docs/integration-and-readiness.md",
+      "bytes": 5103,
+      "sha256": "49396f332376a9a80d7b3ba3afbd4add13a647db622d3049d19837894e0be615"
     },
     {
       "path": "docs/model-budget-schedule.md",
@@ -77,6 +92,11 @@
       "sha256": "2b3ec04c761f29cf736851c9db1de71321984d2dbfee0cd837c76b93544ca888"
     },
     {
+      "path": "docs/model-decision-audit.md",
+      "bytes": 8352,
+      "sha256": "a10ca283b98524780037544b0c00b76d0b7e0421f1d788fb57ad9c610ed9f28c"
+    },
+    {
       "path": "docs/model-design.md",
       "bytes": 7676,
       "sha256": "23797945b05af4aad08bb6225ab56e2288211254eca7d8434a9efa689e383515"
@@ -85,6 +105,11 @@
       "path": "docs/model-hold-exit-returns.md",
       "bytes": 11255,
       "sha256": "2c1a4853c81261c0047e747fe3de3e84bc2fb28f129e60c3b88d1e5b0387624f"
+    },
+    {
+      "path": "docs/model-input-evidence.md",
+      "bytes": 3561,
+      "sha256": "dea3546c8da4d01c6a137d5fcaf66893e3156f30a2fa7a6e80eaf83ee3361ed8"
     },
     {
       "path": "docs/model-operations-contract.md",
@@ -97,14 +122,29 @@
       "sha256": "4419bbc502df7aa853fdc1824fbedca781e099d796e6479efc46a7162bdd5fbb"
     },
     {
+      "path": "docs/model-scenarios-price.md",
+      "bytes": 9600,
+      "sha256": "49cef6b75daadf9f179cbe020cbfbcf66fccd1a323dc63b397a7f4d23c8476d8"
+    },
+    {
       "path": "docs/module-closure.json",
-      "bytes": 10825,
-      "sha256": "dc12ee42c7ff978a293febacf1c2078a1bd451482b4ea0424d80d549a8af950d"
+      "bytes": 11105,
+      "sha256": "aa7e2de2578b17b04c24bdb39caa20236580625f1526d52a6967b098c817b229"
     },
     {
       "path": "docs/module-closure.md",
-      "bytes": 1625,
-      "sha256": "6c7932549f83c0d7decb18d3933b9893ce70f6c37a9701891a34d8326e282d17"
+      "bytes": 1973,
+      "sha256": "b5d5637bb456d163c69f6bbd1cd8bcb6ef90757a7de7347349dede95da0b7168"
+    },
+    {
+      "path": "docs/package-consistency-validation.json",
+      "bytes": 363,
+      "sha256": "25a2746797271b9193575862b7f13bb5c7ad3e608c79d1825e5ddb5c96d4995b"
+    },
+    {
+      "path": "docs/package-readiness.json",
+      "bytes": 3294,
+      "sha256": "374c4d5ccd99e9a93724f0b66dc5eb09d05c35dc0ea5c7767613f259b54fb9ce"
     },
     {
       "path": "docs/recovery-status.md",
@@ -122,9 +162,24 @@
       "sha256": "ad41aa11c517f25878d06a3378e5ce684f50f846bdf2e82ef9b135913444e253"
     },
     {
+      "path": "docs/review/MiniUW_Estructura_para_Revision_Profesional_R02.pdf",
+      "bytes": 113205,
+      "sha256": "b16e2a56e21e5d9880b319d9c97a40ba566927d4bc9eb2076321ff6af714beb3"
+    },
+    {
+      "path": "docs/review/pdf-review-validation-R02.json",
+      "bytes": 268,
+      "sha256": "50dbbe4a559ff06eb03eda76f05b437a800358c89b5aa46dc36b02fd835f9f8a"
+    },
+    {
       "path": "docs/review/pdf-review-validation.json",
       "bytes": 367,
       "sha256": "d76008398e1324b0709f0df8220d92fa249863f41c664188a2bbc624d6866fd6"
+    },
+    {
+      "path": "docs/source-annex-reconciliation.json",
+      "bytes": 11446,
+      "sha256": "7c3df18ed341353fd0c93b8b186f03cd1bd0bcdbf62eaca697527fb205f66f67"
     },
     {
       "path": "docs/source-register.json",
@@ -132,9 +187,19 @@
       "sha256": "c9f38716146f01334d191b407f342e8ae45b9ba6cf5becc803f2f6370362b1e7"
     },
     {
+      "path": "docs/source-review-limits.md",
+      "bytes": 1398,
+      "sha256": "d7582df54f957a1c5f97690bdcffafde3e701d23da5bc4515a3502ee13590d12"
+    },
+    {
       "path": "infra/README.md",
       "bytes": 1418,
       "sha256": "a55c787b386d9bac7d19f50669282fff55fe448090c9c84df8f8202a78f8935e"
+    },
+    {
+      "path": "references/integrated-bridge-validation.json",
+      "bytes": 1976,
+      "sha256": "45b218fd7c6803c188a75d204c77a572e904f321cccb30e48f4ff9c30c10639c"
     },
     {
       "path": "references/m2-validation.json",
@@ -162,6 +227,21 @@
       "sha256": "c19940d4dc059a35b9a0bfb440166589217811b1ac8532ffe9518ae26867d386"
     },
     {
+      "path": "references/m8-validation.json",
+      "bytes": 525,
+      "sha256": "96de36a5b140536796830a1ad363cebe7b9159c45139f18557fc6db9ef41e951"
+    },
+    {
+      "path": "references/m9-validation.json",
+      "bytes": 457,
+      "sha256": "502e52600058218d4e9d679e6aa805bec1dae0345bb9092a9aa8785241446449"
+    },
+    {
+      "path": "references/validate_integrated_bridge.py",
+      "bytes": 4726,
+      "sha256": "0b1a665d1466bc6138e095531adc4aadf48d047bbdd6aa3daff4da28ffbf53c2"
+    },
+    {
       "path": "references/validate_m2_algebra.py",
       "bytes": 1289,
       "sha256": "6b82cea9197fd977d78f88dadbb36fb620114d5684054738183a88297e014f3f"
@@ -185,6 +265,16 @@
       "path": "references/validate_m7_returns.py",
       "bytes": 2898,
       "sha256": "92a813e8a92060a9fe09246ba7bf7d0df37393e128b8b9a10fcefe0c22b6e1c1"
+    },
+    {
+      "path": "references/validate_m8_scenarios_price.py",
+      "bytes": 2769,
+      "sha256": "4f10701c26e776dff311bfde8680fc76431ec13ae26a19d64cde80400ef939cc"
+    },
+    {
+      "path": "references/validate_m9_comparisons.py",
+      "bytes": 2535,
+      "sha256": "a47d50c320558cbca2e7b0bd2543368446b7fab298f8dac840d9b2bda0fbe3bb"
     },
     {
       "path": "sources/extracted/09a0d1fa636b.txt",

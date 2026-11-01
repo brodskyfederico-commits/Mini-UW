@@ -81,3 +81,15 @@ M6-01:M6-10 amplían refinanciación; total vigente 354 filas. La validación pr
 ## Extensión M7
 
 M7-01:M7-12 amplían tenencia, venta y retornos; total vigente 366 filas. Los casos factorizables de IRR no certifican un solver general, XIRR o auditoría independiente. Ninguna fila acredita cobertura de producto extremo a extremo.
+
+## Extensión M8
+
+M8-01:M8-12 amplían escenarios y precio soportado; total vigente 378 filas. Pruebas reducidas no acreditan monotonía global, RLV de la casa ni producción.
+
+## Extensión M9
+
+M9-01:M9-12 amplían decisión y auditoría: 390 filas vigentes. Reglas hipotéticas de prueba no se activan como política del producto.
+
+## Conciliación M1 y aceptación
+
+M1-01:M1-08 completan el índice de contratos candidatos; total vigente 398 filas. Mapa enriquecido de 55 campos, 21 casos originales y 15 adicionales especificados; ninguno certificado contra producto. Políticas 1–33 conciliadas textualmente con límites documentados, sin aprobación de autoridad ni auditoría tabular integral.
