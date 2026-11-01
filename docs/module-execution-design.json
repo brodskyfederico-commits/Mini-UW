@@ -192,5 +192,51 @@
       ],
       "status": "declared fixed-rate/annualized-payment-equivalent sizing to selected principal/gross closing only; not credit approval or dated amortization integration"
     }
+  ],
+  "stage_interpretation": "Baseline stage summary, not a complete acyclic financial graph; see control loops and post-M6 breakeven pass.",
+  "control_loops_and_secondary_passes": [
+    {
+      "id": "LOOP-FINANCE",
+      "members": [
+        "M3",
+        "M4",
+        "M5"
+      ],
+      "description": "Costo/base, calendario y financiación capitalizada/TDC: bloque circular explícito.",
+      "handling": "No certifica convergencia un grafo de etapas; método y tolerancias quedan explícitos/pending, solver futuro."
+    },
+    {
+      "id": "PASS-BREAKEVEN",
+      "members": [
+        "M2",
+        "M6"
+      ],
+      "description": "M2-08 ocupación de equilibrio utiliza servicio de deuda de M6 después de su cálculo.",
+      "handling": "Pasada diagnóstica posterior a M6, separada de outputs base de M2. No retroalimentar NOI base sin dependencia y fórmula expresas."
+    },
+    {
+      "id": "LOOP-SCENARIO-PRICE",
+      "members": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5",
+        "M6",
+        "M7",
+        "M8"
+      ],
+      "description": "M8 reevalúa dependencias bajo escenario/precio.",
+      "handling": "Contextos aislados y cierre transitivo; no sumar sensibilidades ni inferir monotonía global."
+    },
+    {
+      "id": "PASS-CRITERIA",
+      "members": [
+        "M8",
+        "M9"
+      ],
+      "description": "Cambio de criterios altera comparaciones y precio dependiente.",
+      "handling": "Invalidar dependientes. Conservar caja sólo si su independencia se acredita; publicación/registro atómico futuro."
+    }
   ]
 }

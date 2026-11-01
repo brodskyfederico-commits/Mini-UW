@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "faults_rejected": [
+    "omitted_contract",
+    "wrong_module_port_index",
+    "missing_pending_disposition",
+    "user_direction_reopened_as_external_choice",
+    "financial_release_flag",
+    "unresolved_schema_target",
+    "criterion_value_inserted",
+    "wrong_contract_locator"
+  ],
+  "total": 8,
+  "source_package_mutated": false,
+  "scope": "Deliberate disposable-copy structural defects rejected; not financial model fault injection or independent audit."
+}

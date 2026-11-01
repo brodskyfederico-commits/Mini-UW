@@ -1,0 +1,95 @@
+{
+  "version": "I01",
+  "scope": "Independent structural design consolidation explicitly requested by user; excludes production coding, real inputs, expert decisions and independent financial certification.",
+  "status": "locally_verified_pending_exact_commit_remote_receipt",
+  "completion_rule": "All eight design deliverables plus successful structural/package checks and a verified remote commit/CI receipt. Test counts are not a completion percentage.",
+  "deliverables": [
+    {
+      "id": "D01",
+      "title": "Fuentes y entradas",
+      "criterion": "16 originales preservados, 19 ocurrencias, 55 campos y 10 criterios vacíos indexados.",
+      "evidence_paths": [
+        "docs/source-register.json",
+        "docs/input-contract-map.json",
+        "templates/project-draft-empty.json"
+      ],
+      "local_structural_evidence_status": "verified_in_defined_scope"
+    },
+    {
+      "id": "D02",
+      "title": "Contratos M1–M9",
+      "criterion": "84 contratos con documento/línea y fuente original/ubicación; nueve envelopes candidatos.",
+      "evidence_paths": [
+        "docs/structural-integration-register.json"
+      ],
+      "local_structural_evidence_status": "verified_in_defined_scope"
+    },
+    {
+      "id": "D03",
+      "title": "Rutas y dependencias",
+      "criterion": "33 puertos agregados con consumidor, requisitos de transporte y cuatro bucles/pasadas explícitos.",
+      "evidence_paths": [
+        "docs/structural-integration-register.json",
+        "docs/module-execution-design.json"
+      ],
+      "local_structural_evidence_status": "verified_in_defined_scope"
+    },
+    {
+      "id": "D04",
+      "title": "Tipos y referencias acotadas",
+      "criterion": "33 schemas y 25 suites previas inventariadas con sus límites; ningún perfil reducido certifica el modelo general.",
+      "evidence_paths": [
+        "schemas/README.md",
+        "docs/reference-runner-map.json",
+        "docs/package-readiness.json"
+      ],
+      "local_structural_evidence_status": "verified_in_defined_scope"
+    },
+    {
+      "id": "D05",
+      "title": "Decisión y salida",
+      "criterion": "Contrato M9 conserva PENDING, revisión auténtica, PDF externo de una página y puertas futuras.",
+      "evidence_paths": [
+        "docs/model-decision-audit.md",
+        "docs/decision-input-contract.md"
+      ],
+      "local_structural_evidence_status": "verified_in_defined_scope"
+    },
+    {
+      "id": "D06",
+      "title": "Pendientes y aceptación",
+      "criterion": "35 temas y 398 filas indexados, 36 setups sin certificar y nueve entregables de implementación futura.",
+      "evidence_paths": [
+        "docs/final-dependency-register.json",
+        "docs/acceptance-case-contracts.json"
+      ],
+      "local_structural_evidence_status": "verified_in_defined_scope"
+    },
+    {
+      "id": "D07",
+      "title": "Especificación integral I01",
+      "criterion": "Documento español y PDF nuevos; R01/R02 preservados sin atribuir revisión profesional.",
+      "evidence_paths": [
+        "docs/Especificacion_Integral_Armado_I01.md",
+        "docs/review/MiniUW_Especificacion_Integral_Armado_I01.pdf"
+      ],
+      "local_structural_evidence_status": "verified_in_defined_scope"
+    },
+    {
+      "id": "D08",
+      "title": "Verificación y respaldo",
+      "criterion": "Validador de consistencia, suites en copia temporal, workflow y comprobante externo de commit/CI/ZIP.",
+      "evidence_paths": [
+        "references/structure-closeout-validation.json",
+        "tools/check_reference_package.py",
+        ".github/workflows/model-reference-checks.yml"
+      ],
+      "local_structural_evidence_status": "verified_in_defined_scope"
+    }
+  ],
+  "financial_model_complete": false,
+  "professional_review_received": false,
+  "production_authorized": false,
+  "R02_sha256": "b16e2a56e21e5d9880b319d9c97a40ba566927d4bc9eb2076321ff6af714beb3",
+  "local_structural_check": "references/structure-closeout-validation.json"
+}

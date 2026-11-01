@@ -1,5 +1,5 @@
 {
-  "package_stage": "candidate specification with continued independent structural development",
+  "package_stage": "Independent design consolidated I01; financial and product gates remain open",
   "module_contracts": {
     "M1": 8,
     "M2": 8,
@@ -141,6 +141,11 @@
       "path": "references/refinance-capacity-bridge-validation.json",
       "scope": "Declared synthetic annual-NOI/cap valuation, regular fixed nonnegative-rate arrears amortization, explicit capacity inventory and full selected-principal gross-closing comparison only. Not authentic bank underwriting/commitments, annual-rate conversion, dated debt service, funding/distribution rights, tax/valuation approval, complete financial integration, independent audit or production.",
       "count": 46
+    },
+    {
+      "path": "references/structure-closeout-validation.json",
+      "scope": "Cross-file consistency of the eight defined independent design deliverables; not financial certification or executable product integration.",
+      "count": 31
     }
   ],
   "independent_financial_audit": false,
@@ -176,15 +181,24 @@
     "refinance_capacity_bridge_schemas": 1
   },
   "reference_runner": {
-    "suites": 25,
+    "suites": 26,
     "isolated_temporary_copy": true,
     "github_workflow_prepared": true,
     "remote_evidence_rule": "Check the GitHub run for the exact current commit; previous successful runs do not certify descendants.",
     "last_recorded_prior_run": {
-      "commit_sha": "b1bc731e782be3b6e0c26bbfd3709a97c46b78a9",
-      "suites": 24,
-      "url": "https://github.com/brodskyfederico-commits/Mini-UW/actions/runs/41360657060"
+      "commit_sha": "2707305c673b1800ce2165b1fb574780cf9a497e",
+      "suites": 25,
+      "url": "https://github.com/brodskyfederico-commits/Mini-UW/actions/runs/41361485792"
     },
     "not_financial_certification": true
+  },
+  "independent_structure_phase": {
+    "version": "I01",
+    "status": "locally_verified_consolidated_scope",
+    "defined_deliverables": 8,
+    "closeout_record": "docs/independent-structure-closeout.json",
+    "integral_spec": "docs/Especificacion_Integral_Armado_I01.md",
+    "financial_model_certification": false,
+    "remote_completion_evidence": "External BACKUP_VERIFICATION.json must verify exact published commit and hosted run."
   }
 }

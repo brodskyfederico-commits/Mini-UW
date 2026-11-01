@@ -1,0 +1,2586 @@
+{
+  "version": "I01",
+  "scope": "Consolidated independent design inventory; not full financial integration, approved formulas or executable product wiring.",
+  "modules": [
+    {
+      "id": "M1",
+      "name": "Entradas y evidencia",
+      "candidate_document": "docs/model-input-evidence.md",
+      "schema": "schemas/M1.schema.json",
+      "contract_ids": [
+        "M1-01",
+        "M1-02",
+        "M1-03",
+        "M1-04",
+        "M1-05",
+        "M1-06",
+        "M1-07",
+        "M1-08"
+      ],
+      "aggregate_output_ports": [
+        "program_units",
+        "building_gsf",
+        "residential_nrsf",
+        "commercial_sf",
+        "parking_spaces"
+      ],
+      "financial_gate_closed": false
+    },
+    {
+      "id": "M2",
+      "name": "Operación y NOI",
+      "candidate_document": "docs/model-operations-contract.md",
+      "schema": "schemas/M2.schema.json",
+      "contract_ids": [
+        "M2-01",
+        "M2-02",
+        "M2-03",
+        "M2-04",
+        "M2-05",
+        "M2-06",
+        "M2-07",
+        "M2-08"
+      ],
+      "aggregate_output_ports": [
+        "effective_income",
+        "operating_expenses",
+        "property_tax",
+        "noi"
+      ],
+      "financial_gate_closed": false
+    },
+    {
+      "id": "M3",
+      "name": "Presupuesto y alcance",
+      "candidate_document": "docs/model-budget-schedule.md",
+      "schema": "schemas/M3.schema.json",
+      "contract_ids": [
+        "M3-01",
+        "M3-02",
+        "M3-03",
+        "M3-04",
+        "M3-05",
+        "M3-06"
+      ],
+      "aggregate_output_ports": [
+        "budget_before_financing",
+        "unallocated_scope_cost"
+      ],
+      "financial_gate_closed": false
+    },
+    {
+      "id": "M4",
+      "name": "Calendario",
+      "candidate_document": "docs/model-budget-schedule.md",
+      "schema": "schemas/M4.schema.json",
+      "contract_ids": [
+        "M4-01",
+        "M4-02",
+        "M4-03",
+        "M4-04",
+        "M4-05",
+        "M4-06"
+      ],
+      "aggregate_output_ports": [
+        "scheduled_uses",
+        "unscheduled_uses"
+      ],
+      "financial_gate_closed": false
+    },
+    {
+      "id": "M5",
+      "name": "Capital y construcción",
+      "candidate_document": "docs/model-construction-finance.md",
+      "schema": "schemas/M5.schema.json",
+      "contract_ids": [
+        "M5-01",
+        "M5-02",
+        "M5-03",
+        "M5-04",
+        "M5-05",
+        "M5-06",
+        "M5-07",
+        "M5-08",
+        "M5-09",
+        "M5-10"
+      ],
+      "aggregate_output_ports": [
+        "tdc",
+        "construction_principal",
+        "construction_payoff",
+        "equity_required"
+      ],
+      "financial_gate_closed": false
+    },
+    {
+      "id": "M6",
+      "name": "Refinanciación",
+      "candidate_document": "docs/model-refinance-contract.md",
+      "schema": "schemas/M6.schema.json",
+      "contract_ids": [
+        "M6-01",
+        "M6-02",
+        "M6-03",
+        "M6-04",
+        "M6-05",
+        "M6-06",
+        "M6-07",
+        "M6-08",
+        "M6-09",
+        "M6-10"
+      ],
+      "aggregate_output_ports": [
+        "permanent_loan",
+        "annual_debt_service",
+        "construction_payoff",
+        "restricted_reserves",
+        "refi_distribution",
+        "refi_contribution"
+      ],
+      "financial_gate_closed": false
+    },
+    {
+      "id": "M7",
+      "name": "Tenencia, venta y retornos",
+      "candidate_document": "docs/model-hold-exit-returns.md",
+      "schema": "schemas/M7.schema.json",
+      "contract_ids": [
+        "M7-01",
+        "M7-02",
+        "M7-03",
+        "M7-04",
+        "M7-05",
+        "M7-06",
+        "M7-07",
+        "M7-08",
+        "M7-09",
+        "M7-10",
+        "M7-11",
+        "M7-12"
+      ],
+      "aggregate_output_ports": [
+        "gross_contributions",
+        "gross_distributions",
+        "equity_multiple",
+        "irr",
+        "terminal_distribution"
+      ],
+      "financial_gate_closed": false
+    },
+    {
+      "id": "M8",
+      "name": "Escenarios y precio",
+      "candidate_document": "docs/model-scenarios-price.md",
+      "schema": "schemas/M8.schema.json",
+      "contract_ids": [
+        "M8-01",
+        "M8-02",
+        "M8-03",
+        "M8-04",
+        "M8-05",
+        "M8-06",
+        "M8-07",
+        "M8-08",
+        "M8-09",
+        "M8-10",
+        "M8-11",
+        "M8-12"
+      ],
+      "aggregate_output_ports": [
+        "supported_price_bound",
+        "bound_kind"
+      ],
+      "financial_gate_closed": false
+    },
+    {
+      "id": "M9",
+      "name": "Decisión, revisión y salida",
+      "candidate_document": "docs/model-decision-audit.md",
+      "schema": "schemas/M9.schema.json",
+      "contract_ids": [
+        "M9-01",
+        "M9-02",
+        "M9-03",
+        "M9-04",
+        "M9-05",
+        "M9-06",
+        "M9-07",
+        "M9-08",
+        "M9-09",
+        "M9-10",
+        "M9-11",
+        "M9-12"
+      ],
+      "aggregate_output_ports": [
+        "decision",
+        "aggregation_rule_ref",
+        "comparisons"
+      ],
+      "financial_gate_closed": false
+    }
+  ],
+  "contracts": [
+    {
+      "id": "M1-01",
+      "module": "M1",
+      "summary": "Recepción y procedencia",
+      "candidate_details": [
+        "Master §1; Manual p.16/p.38. Conservar original/hash, nombre, versión declarada, tipo, páginas y ubicación; extracción no prueba autenticidad."
+      ],
+      "candidate_document": "docs/model-input-evidence.md",
+      "candidate_line": 7,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "Master §§1–3; Master §1; Manual p.16/p.38",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M1-02",
+      "module": "M1",
+      "summary": "Programa y grupos de unidades",
+      "candidate_details": [
+        "Master §2; Manual p.7. Conteos explícitos por unit type/dormitorio, mercado/asequible; reconciliar totales sin contar etiquetas."
+      ],
+      "candidate_document": "docs/model-input-evidence.md",
+      "candidate_line": 8,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "Master §§1–3; Master §2; Manual p.7",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M1-03",
+      "module": "M1",
+      "summary": "Áreas y unidades físicas",
+      "candidate_details": [
+        "Master §3 Areas; Manual p.7. GSF, NRSF, áreas unitarias/comerciales, parking y sitio separados; no usar ratios de eficiencia inventados."
+      ],
+      "candidate_document": "docs/model-input-evidence.md",
+      "candidate_line": 9,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "Master §§1–3; Master §3 Areas; Manual p.7",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M1-04",
+      "module": "M1",
+      "summary": "Input Sheet original",
+      "candidate_details": [
+        "Inputs A/B/C/D/E/F, 55 filas. Literal, valor normalizado, unidad/base, obligatoriedad, nota y fuente preservados. Rangos y semántica pendientes donde no aprobados."
+      ],
+      "candidate_document": "docs/model-input-evidence.md",
+      "candidate_line": 10,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "Master §§1–3; Inputs A/B/C/D/E/F, 55 filas",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M1-05",
+      "module": "M1",
+      "summary": "Estados y aplicabilidad",
+      "candidate_details": [
+        "Manual p.15; traspaso §3. Cero explícito, faltante, inválido, conflicto y no aplicable justificado distintos; sin default financiero."
+      ],
+      "candidate_document": "docs/model-input-evidence.md",
+      "candidate_line": 11,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "Master §§1–3; Manual p.15; traspaso §3",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M1-06",
+      "module": "M1",
+      "summary": "Lecturas y conciliación",
+      "candidate_details": [
+        "Manual pp.38–39; traspaso §7. Citas y afirmaciones alternativas, correcciones enlazadas; coincidencia no demuestra independencia de lectores ni verdad."
+      ],
+      "candidate_document": "docs/model-input-evidence.md",
+      "candidate_line": 12,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "Master §§1–3; Manual pp.38–39; traspaso §7",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M1-07",
+      "module": "M1",
+      "summary": "Normalización y consumidores",
+      "candidate_details": [
+        "Manual pp.7–14; traspaso §§3/5. Contrato por campo con tipo/currency/unit/período/base y módulos; no asumir moneda o formato porcentual de un símbolo."
+      ],
+      "candidate_document": "docs/model-input-evidence.md",
+      "candidate_line": 13,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "Master §§1–3; Manual pp.7–14; traspaso §§3/5",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M1-08",
+      "module": "M1",
+      "summary": "Cierre de paquete y revisiones",
+      "candidate_details": [
+        "C1; traspaso §§6–7. Mapear dependencias/faltantes por alcance; cada revisión invalida descendientes y preserva historia sin mezclar runs."
+      ],
+      "candidate_document": "docs/model-input-evidence.md",
+      "candidate_line": 14,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "Master §§1–3; C1; traspaso §§6–7",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M2-01",
+      "module": "M2",
+      "summary": "Renta mensual de tipo i: r_i por unidad o s_i × área_i por SF",
+      "candidate_details": [
+        "C7, C8:C11; área y conteos explícitos de planos",
+        "Q11; dormitorio no equivale a unit type; no convertir GSF a NRSF"
+      ],
+      "candidate_document": "docs/model-operations-contract.md",
+      "candidate_line": 15,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "§3, Revenue",
+      "coverage_state": "PROPUESTA_CON_ALGEBRA_CONDICIONADA",
+      "financially_closed": false
+    },
+    {
+      "id": "M2-02",
+      "module": "M2",
+      "summary": "Renta residencial potencial mensual = Σ n_i × r_i",
+      "candidate_details": [
+        "M2-01, unidades mercado/asequibles documentadas",
+        "No duplicar las unidades asequibles dentro del conteo de mercado"
+      ],
+      "candidate_document": "docs/model-operations-contract.md",
+      "candidate_line": 16,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "§3, Revenue",
+      "coverage_state": "PROPUESTA_NO_VALIDADA",
+      "financially_closed": false
+    },
+    {
+      "id": "M2-03",
+      "module": "M2",
+      "summary": "Ingreso residencial efectivo: potencial menos pérdidas/concesiones más otros ingresos definidos",
+      "candidate_details": [
+        "C13:C15; perfiles por período y reglas de base",
+        "No decidir si vacancia afecta other income; no aplicar concesión otra vez si renta ya es neta"
+      ],
+      "candidate_document": "docs/model-operations-contract.md",
+      "candidate_line": 17,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "§3, Revenue",
+      "coverage_state": "PROPUESTA_NO_VALIDADA",
+      "financially_closed": false
+    },
+    {
+      "id": "M2-04",
+      "module": "M2",
+      "summary": "Comercial histórico: SF × renta NNN anual × (1−vacancia) × (1−no recuperable)",
+      "candidate_details": [
+        "C16:C21, usos y áreas documentados",
+        "Definir inicio pos-TCO y si no recuperable reduce ingreso o es gasto; no descontarlo por ambos lados"
+      ],
+      "candidate_document": "docs/model-operations-contract.md",
+      "candidate_line": 18,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "§3, Revenue",
+      "coverage_state": "PROPUESTA_NO_VALIDADA",
+      "financially_closed": false
+    },
+    {
+      "id": "M2-05",
+      "module": "M2",
+      "summary": "Gastos sin impuesto = controlables + management + seguro + reservas según inclusión aprobada",
+      "candidate_details": [
+        "C57:C60; management histórico sobre EGI residencial C58",
+        "No aplicar fee al ingreso comercial sin regla; distinguir reserva como gasto NOI y movimiento de caja"
+      ],
+      "candidate_document": "docs/model-operations-contract.md",
+      "candidate_line": 19,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "§3, Expenses",
+      "coverage_state": "PROPUESTA_NO_VALIDADA",
+      "financially_closed": false
+    },
+    {
+      "id": "M2-06",
+      "module": "M2",
+      "summary": "A = ingresos efectivos − gastos operativos sin impuesto",
+      "candidate_details": [
+        "M2-03:M2-05 con mismo período",
+        "A no equivale a caja distribuible, ni incluye deuda por defecto"
+      ],
+      "candidate_document": "docs/model-operations-contract.md",
+      "candidate_line": 20,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "§3, Expenses",
+      "coverage_state": "PROPUESTA_NO_VALIDADA",
+      "financially_closed": false
+    },
+    {
+      "id": "M2-07",
+      "module": "M2",
+      "summary": "NOI e impuesto simultáneos bajo ecuación documentada",
+      "candidate_details": [
+        "A; comparables C62 × unidades si procede; C61; millage, exención, cap y sus fuentes",
+        "Q2, ley/coeficientes/valoración no aprobados; comparar montos totales del mismo período"
+      ],
+      "candidate_document": "docs/model-operations-contract.md",
+      "candidate_line": 21,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "§3, Expenses",
+      "coverage_state": "PROPUESTA_CON_ALGEBRA_CONDICIONADA",
+      "financially_closed": false
+    },
+    {
+      "id": "M2-08",
+      "module": "M2",
+      "summary": "Ocupación de equilibrio como conjunto de q factibles con NOI(q) ≥ servicio de deuda aplicable",
+      "candidate_details": [
+        "Ingresos/costos dependientes de q; reglas fiscales; deuda M6",
+        "Q12; definición de ocupación física/económica; no elegir ratio bruto/efectivo del conflicto SRC-02"
+      ],
+      "candidate_document": "docs/model-operations-contract.md",
+      "candidate_line": 22,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "§3, Refinance and metrics, Break-even occupancy",
+      "coverage_state": "PROPUESTA_CON_ALGEBRA_CONDICIONADA",
+      "financially_closed": false
+    },
+    {
+      "id": "M3-01",
+      "module": "M3",
+      "summary": "Normalizar hard vertical según base: GSF×precio/GSF, unidades×precio/unidad o total explícito",
+      "candidate_details": [
+        "C34/C35 y programa. Tres bases alternativas, no sumables. No sustituir GSF por NRSF."
+      ],
+      "candidate_document": "docs/model-budget-schedule.md",
+      "candidate_line": 9,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "§3 Costs and TDC",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M3-02",
+      "module": "M3",
+      "summary": "Registro de inclusiones: cada alcance económico tiene ID, fuente, monto/base, categoría, incluido/excluido/no determinado y vínculo a contrato",
+      "candidate_details": [
+        "Manual p.58 exige definición C35; R1–R4 pp.59. Parking, site, fee, seguros, GC/general conditions y contingencia pueden venir dentro del precio. No sumarlos de nuevo."
+      ],
+      "candidate_document": "docs/model-budget-schedule.md",
+      "candidate_line": 10,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "§3 Costs and TDC",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M3-03",
+      "module": "M3",
+      "summary": "Contingencias: separar dueño/contratista/escalamiento, base de aplicación, inclusión en precio, control y uso",
+      "candidate_details": [
+        "C39; GC pp.56/58/59. Un porcentaje sin base no determina monto. Una contingencia es presupuesto, no gasto desembolsado automáticamente."
+      ],
+      "candidate_document": "docs/model-budget-schedule.md",
+      "candidate_line": 11,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "§3 Costs and TDC",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M3-04",
+      "module": "M3",
+      "summary": "Soft y TI/LC: porcentaje por base hard aprobada más TI/LC comercial si corresponde",
+      "candidate_details": [
+        "C40/C41. Definir si base incluye contingencia, parking/site y fees. Un monto GC excluido debe tener cobertura documentada; no se inventa precio."
+      ],
+      "candidate_document": "docs/model-budget-schedule.md",
+      "candidate_line": 12,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "§3 Costs and TDC",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M3-05",
+      "module": "M3",
+      "summary": "Compra evaluada más gastos de cierre explícitos",
+      "candidate_details": [
+        "C32/C33. Asking y precio evaluado son variables separadas. Precio ausente no se convierte en cero; precio de búsqueda M8 no es dato aportado."
+      ],
+      "candidate_document": "docs/model-budget-schedule.md",
+      "candidate_line": 13,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "§3 Costs and TDC",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M3-06",
+      "module": "M3",
+      "summary": "Presupuesto antes de financiación = suma de alcances exclusivos, incluyendo ajustes documentados",
+      "candidate_details": [
+        "M3-01:M3-05. Mantener presupuesto, devengo, pago y saldo pendiente separados. TDC all-in requiere financiación M5; no cerrarlo antes."
+      ],
+      "candidate_document": "docs/model-budget-schedule.md",
+      "candidate_line": 14,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "§3 Costs and TDC",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M4-01",
+      "module": "M4",
+      "summary": "Hitos con fechas/índices separados: compra, inicio obra, TCO, fin obra, estabilización, refi y venta",
+      "candidate_details": [
+        "C46/C47; PAR-04. No asumir equivalencia TCO/estabilización ni adoptar obra+lease-up+1 como fecha aprobada."
+      ],
+      "candidate_document": "docs/model-budget-schedule.md",
+      "candidate_line": 24,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "§3 Timing",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M4-02",
+      "module": "M4",
+      "summary": "Pesos explícitos por partida y período w_jt: pago asignado B_j×w_jt",
+      "candidate_details": [
+        "Para presupuesto totalmente programado, Σw_jt=1 y pesos no negativos; no normalizar una curva incompleta silenciosamente. Para programación parcial se conserva saldo sin asignar y bloqueo de financiación."
+      ],
+      "candidate_document": "docs/model-budget-schedule.md",
+      "candidate_line": 25,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "§3 Timing",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M4-03",
+      "module": "M4",
+      "summary": "Perfil histórico sin² y soft upfront meses 1–3",
+      "candidate_details": [
+        "C42; Master Timing. Pendientes discretización, fase, denominador, pesos primeros meses, obra menor a tres meses y calendario de pagos; no elegir una curva por conveniencia."
+      ],
+      "candidate_document": "docs/model-budget-schedule.md",
+      "candidate_line": 26,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "§3 Timing",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M4-04",
+      "module": "M4",
+      "summary": "Devengo y caja separados; cuentas por pagar y anticipos conciliados",
+      "candidate_details": [
+        "Un costo incurrido no es necesariamente draw del banco ni aporte de equity; M5 financia eventos de caja bajo reglas propias. Retainage, anticipos y liberaciones necesitan condiciones explícitas."
+      ],
+      "candidate_document": "docs/model-budget-schedule.md",
+      "candidate_line": 27,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "§3 Timing",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M4-05",
+      "module": "M4",
+      "summary": "Escenario de retraso modifica fechas, curva y costos sólo mediante políticas explícitas",
+      "candidate_details": [
+        "Q4/Q5, Manual pp.22–23; política 23. Repartir costo fijo en más meses no crea por sí solo costo adicional; costos mensuales requieren importe y período. No inventar shocks."
+      ],
+      "candidate_document": "docs/model-budget-schedule.md",
+      "candidate_line": 28,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "§3 Timing",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M4-06",
+      "module": "M4",
+      "summary": "Puente hacia M5: usos por período y saldo no programado, fuentes y versiones",
+      "candidate_details": [
+        "Si Σ pagos≠presupuesto, la diferencia se explica (reserva/saldo/alcance/ajuste) o bloquea C2. No forzar caja final a cero. Cambios de calendario invalidan interés/deuda/retornos aunque total de costo no cambie."
+      ],
+      "candidate_document": "docs/model-budget-schedule.md",
+      "candidate_line": 29,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "§3 Timing",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M5-01",
+      "module": "M5",
+      "summary": "Base elegible de costo y capacidad del préstamo",
+      "candidate_details": [
+        "C51 es LTC; Master §3 Timing relaciona LTC/TDC. Falta alcance de costo elegible y base contractual; no equiparar automáticamente elegible con TDC."
+      ],
+      "candidate_document": "docs/model-construction-finance.md",
+      "candidate_line": 9,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "§3 Costs and TDC / Timing / Refinance and metrics",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M5-02",
+      "module": "M5",
+      "summary": "Compromiso, monto disponible, draws acumulados y saldo de deuda separados",
+      "candidate_details": [
+        "Manual p.32 term sheet pendiente; ledger de caja actual. No suponer que todo préstamo comprometido se desembolsa."
+      ],
+      "candidate_document": "docs/model-construction-finance.md",
+      "candidate_line": 10,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "§3 Costs and TDC / Timing / Refinance and metrics",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M5-03",
+      "module": "M5",
+      "summary": "Interés por período según saldo y convención documentados",
+      "candidate_details": [
+        "C52; PAR-03/04, Manual p.53. Fecha, tasa nominal/efectiva, día-base, saldo inicial/promedio/final, floor y cambios de tasa requieren definición. No dividir siempre la tasa anual por doce."
+      ],
+      "candidate_document": "docs/model-construction-finance.md",
+      "candidate_line": 11,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "§3 Costs and TDC / Timing / Refinance and metrics",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M5-04",
+      "module": "M5",
+      "summary": "Fee de originación: porcentaje por base y fecha explícitos",
+      "candidate_details": [
+        "C53; Master Costs and TDC. Compromiso, saldo, draw y préstamo aprobado son bases diferentes; fee pagado, retenido o financiado necesita contrapartida."
+      ],
+      "candidate_document": "docs/model-construction-finance.md",
+      "candidate_line": 12,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "§3 Costs and TDC / Timing / Refinance and metrics",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M5-05",
+      "module": "M5",
+      "summary": "Aplicación de capital: equity requerido y aportes reales por fecha",
+      "candidate_details": [
+        "Master Timing equity-first; Q7/Q8 Manual p.23. No confundir requerido, comprometido, disponible y aportado. Equity-first no fija el origen de cada déficit posterior."
+      ],
+      "candidate_document": "docs/model-construction-finance.md",
+      "candidate_line": 13,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "§3 Costs and TDC / Timing / Refinance and metrics",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M5-06",
+      "module": "M5",
+      "summary": "Conciliación por préstamo: saldo inicial + principal recibido + interés capitalizado + ajustes documentados − principal repagado",
+      "candidate_details": [
+        "Contrato DEBT-01 y Master §3 financiación. Separar caja prestada de capitalización sin caja; no contar ambos como cobros de deuda."
+      ],
+      "candidate_document": "docs/model-construction-finance.md",
+      "candidate_line": 14,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "§3 Costs and TDC / Timing / Refinance and metrics",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M5-07",
+      "module": "M5",
+      "summary": "Uso de NOI/caja operativa durante lease-up",
+      "candidate_details": [
+        "Master Timing: NOI paga interés primero; Q6 abierto Manual p.23. NOI devengado no prueba cobro. Destino del excedente y déficits no se inventa."
+      ],
+      "candidate_document": "docs/model-construction-finance.md",
+      "candidate_line": 15,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "§3 Costs and TDC / Timing / Refinance and metrics",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M5-08",
+      "module": "M5",
+      "summary": "TDC y costo financiero circular",
+      "candidate_details": [
+        "Master Costs and TDC / Manual p.13. Cerrar fórmula, bases, perfiles, convergencia, residuales y dominio; solución algebraica reducida no certifica motor mensual."
+      ],
+      "candidate_document": "docs/model-construction-finance.md",
+      "candidate_line": 16,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "§3 Costs and TDC / Timing / Refinance and metrics",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M5-09",
+      "module": "M5",
+      "summary": "Control de factibilidad por fecha",
+      "candidate_details": [
+        "Contratos M4/M5 y C2. Capacidad contractual excedida, vencimiento sin financiación o faltante de caja no se cubren con draws/aportes ficticios. Clasificación queda PENDIENTE por información/reglas ausentes; no convertir en FAIL automáticamente."
+      ],
+      "candidate_document": "docs/model-construction-finance.md",
+      "candidate_line": 17,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "§3 Costs and TDC / Timing / Refinance and metrics",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M5-10",
+      "module": "M5",
+      "summary": "Estado de salida para M6",
+      "candidate_details": [
+        "Master Refinance: payoff de construcción; Q13 otra deuda. Entregar saldo, interés devengado pendiente, fees, reservas restringidas, vencimiento y alcance del payoff; no asumir saldo = liquidación total."
+      ],
+      "candidate_document": "docs/model-construction-finance.md",
+      "candidate_line": 18,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "§3 Costs and TDC / Timing / Refinance and metrics",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M6-01",
+      "module": "M6",
+      "summary": "Estrategia y fecha del refi",
+      "candidate_details": [
+        "Master §3 Timing/Refinance; Manual p.20 y Q12 p.24. La aplicabilidad y el calendario son entradas expresas. Si la estrategia no requiere refi, justificar no aplicable; no inventar un préstamo."
+      ],
+      "candidate_document": "docs/model-refinance-contract.md",
+      "candidate_line": 9,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "§3 Refinance and metrics; Master §3 Timing/Refinance; Manual p.20 y Q12 p.24",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M6-02",
+      "module": "M6",
+      "summary": "NOI y valor para sizing",
+      "candidate_details": [
+        "Master §3, Value = NOI / refi cap; Inputs C66. Usar NOI admisible y cap de mismo período/alcance; definir si difiere del NOI del inversor. Cap cero o dato faltante bloquea; NOI negativo no produce por sí solo un préstamo negativo."
+      ],
+      "candidate_document": "docs/model-refinance-contract.md",
+      "candidate_line": 10,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "§3 Refinance and metrics; Master §3, Value = NOI / refi cap; Inputs C66",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M6-03",
+      "module": "M6",
+      "summary": "Límite bancario por LTV",
+      "candidate_details": [
+        "Master §3; Inputs C71. Valor admisible × LTV explícito. No confundir con LTC ni tratar límite como desembolso aprobado."
+      ],
+      "candidate_document": "docs/model-refinance-contract.md",
+      "candidate_line": 11,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "§3 Refinance and metrics; Master §3; Inputs C71",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M6-04",
+      "module": "M6",
+      "summary": "Constante de deuda y servicio",
+      "candidate_details": [
+        "Master §3 annual constant; Inputs C69/C70. Especificar tasa periódica, capitalización, pagos/año, amortización, pagos vencidos/anticipados e interest-only si existe. No inferir términos del dato tasa."
+      ],
+      "candidate_document": "docs/model-refinance-contract.md",
+      "candidate_line": 12,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "§3 Refinance and metrics; Master §3 annual constant; Inputs C69/C70",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M6-05",
+      "module": "M6",
+      "summary": "Límite bancario por DSCR",
+      "candidate_details": [
+        "Master §3, min DSCR; Inputs C72. NOI bancario / (DSCR mínimo × constante anual) bajo denominadores positivos. No confundir DSCR bancario con criterio de inversión de Lorena."
+      ],
+      "candidate_document": "docs/model-refinance-contract.md",
+      "candidate_line": 13,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "§3 Refinance and metrics; Master §3, min DSCR; Inputs C72",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M6-06",
+      "module": "M6",
+      "summary": "Préstamo seleccionado y restricciones activas",
+      "candidate_details": [
+        "Master §3 MIN LTV/DSCR; Estándares políticas 26/30. Menor capacidad de restricciones aplicables y documentadas. Empate conserva ambas como vinculantes; otras restricciones contractuales pueden limitar. Capacidad no equivale a aprobación."
+      ],
+      "candidate_document": "docs/model-refinance-contract.md",
+      "candidate_line": 14,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "§3 Refinance and metrics; Master §3 MIN LTV/DSCR; Estándares políticas 26/30",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M6-07",
+      "module": "M6",
+      "summary": "Amortización, vencimiento y balloon",
+      "candidate_details": [
+        "Inputs C70; traspaso §5 distinciones de préstamo. Saldo posterior a pagos depende del calendario. Vencimiento menor a amortización exige saldo residual exigible; no inventar refinanciación futura ni extensión."
+      ],
+      "candidate_document": "docs/model-refinance-contract.md",
+      "candidate_line": 15,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "§3 Refinance and metrics; Inputs C70; traspaso §5 distinciones de préstamo",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M6-08",
+      "module": "M6",
+      "summary": "Liquidación de construcción y otras deudas",
+      "candidate_details": [
+        "Master §3 net cash-out; M5-10; Q13 Manual p.24. Payoff = obligaciones expresas a fecha: principal, interés pendiente, fees y otras partidas aplicables, sin duplicar capitalización. Ausencia de campo otra deuda no demuestra monto cero."
+      ],
+      "candidate_document": "docs/model-refinance-contract.md",
+      "candidate_line": 16,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "§3 Refinance and metrics; Master §3 net cash-out; M5-10; Q13 Manual p.24",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M6-09",
+      "module": "M6",
+      "summary": "Costos y reservas de refinanciación",
+      "candidate_details": [
+        "Inputs C73/C74; Estándares políticas 9/10. Costo porcentual requiere base y fecha. Reservas nuevas y liberación de reservas previas se registran por separado; fondos restringidos no son distribución."
+      ],
+      "candidate_document": "docs/model-refinance-contract.md",
+      "candidate_line": 17,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "§3 Refinance and metrics; Inputs C73/C74; Estándares políticas 9/10",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M6-10",
+      "module": "M6",
+      "summary": "Caja neta, cash-out/cash-in y estado para M7",
+      "candidate_details": [
+        "Master §3; Estándares políticas 9/10/12; Q7/Q8. Distribución posible y aporte adicional se determinan después de liquidación, costos y fondos restringidos. Equity recuperado, equity remanente y valor patrimonial son conceptos distintos; bases pendientes."
+      ],
+      "candidate_document": "docs/model-refinance-contract.md",
+      "candidate_line": 18,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "§3 Refinance and metrics; Master §3; Estándares políticas 9/10/12; Q7/Q8",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M7-01",
+      "module": "M7",
+      "summary": "Estrategia, horizonte y fechas",
+      "candidate_details": [
+        "Master §3 Hold; Estándares política 16; Manual p.20/Q12 p.24. Horizon explícito por deal; distinguir TCO, estabilización, refi y venta. Cinco años es referencia histórica, no valor activo por defecto."
+      ],
+      "candidate_document": "docs/model-hold-exit-returns.md",
+      "candidate_line": 11,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "§3 Refinance and metrics / Hold; Master §3 Hold; Estándares política 16; Manual p.20/Q12 p.24",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M7-02",
+      "module": "M7",
+      "summary": "Operación y crecimiento durante tenencia",
+      "candidate_details": [
+        "Inputs C75:C76; Master §3 Hold; Manual pp.11/14. Rentas y gastos crecen por componentes y fechas expresos. No aplicar crecimiento de rentas a todo el NOI ni suponer impuesto constante."
+      ],
+      "candidate_document": "docs/model-hold-exit-returns.md",
+      "candidate_line": 12,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "§3 Refinance and metrics / Hold; Inputs C75:C76; Master §3 Hold; Manual pp.11/14",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M7-03",
+      "module": "M7",
+      "summary": "Caja operativa, deuda y fondos restringidos",
+      "candidate_details": [
+        "Master §3 CoC/Hold; Estándares política 12. Cobros/pagos, devengo, servicio de deuda y reservas separados; no distribuir NOI automáticamente ni usar caja restringida."
+      ],
+      "candidate_document": "docs/model-hold-exit-returns.md",
+      "candidate_line": 13,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "§3 Refinance and metrics / Hold; Master §3 CoC/Hold; Estándares política 12",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M7-04",
+      "module": "M7",
+      "summary": "Capital adicional y distribuciones brutas",
+      "candidate_details": [
+        "Estándares políticas 9/10/15/16; traspaso §5. Registrar aportes/distribuciones de cada evento, aunque ocurran en el mismo período. Requerimiento de equity no prueba capital disponible."
+      ],
+      "candidate_document": "docs/model-hold-exit-returns.md",
+      "candidate_line": 14,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "§3 Refinance and metrics / Hold; Estándares políticas 9/10/15/16; traspaso §5",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M7-05",
+      "module": "M7",
+      "summary": "NOI forward y valor de salida",
+      "candidate_details": [
+        "Master §3 Hold; Estándares política 31; Inputs C67. NOI del período forward y exit cap compatibles. Definir ventana, estabilización, impuestos y fecha; valoración no es cobro realizado."
+      ],
+      "candidate_document": "docs/model-hold-exit-returns.md",
+      "candidate_line": 15,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "§3 Refinance and metrics / Hold; Master §3 Hold; Estándares política 31; Inputs C67",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M7-06",
+      "module": "M7",
+      "summary": "Costos y liquidación de venta",
+      "candidate_details": [
+        "Master §3 Hold; Inputs C68; Q16. Precio bruto, costos, impuestos aplicables documentados, ajustes, liberación de reservas y caja previa sin doble cuenta. No presumir reglas fiscales."
+      ],
+      "candidate_document": "docs/model-hold-exit-returns.md",
+      "candidate_line": 16,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "§3 Refinance and metrics / Hold; Master §3 Hold; Inputs C68; Q16",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M7-07",
+      "module": "M7",
+      "summary": "Deuda y obligaciones pendientes a salida",
+      "candidate_details": [
+        "Master §3 Hold, loan balance; contrato M6-07/M6-08. Usar saldo a fecha de venta y obligaciones adicionales. No descontar otra vez principal ya amortizado ni inventar extensión/refi para cubrir maturity."
+      ],
+      "candidate_document": "docs/model-hold-exit-returns.md",
+      "candidate_line": 17,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "§3 Refinance and metrics / Hold; Master §3 Hold, loan balance; contrato M6-07/M6-08",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M7-08",
+      "module": "M7",
+      "summary": "Proceeds al inversor y caja terminal",
+      "candidate_details": [
+        "Estándares políticas 15/16; traspaso §5. Separar venta neta, distribución, aporte y caja retenida. Un residual negativo exige clasificación y fuente, no una distribución negativa encubierta."
+      ],
+      "candidate_document": "docs/model-hold-exit-returns.md",
+      "candidate_line": 18,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "§3 Refinance and metrics / Hold; Estándares políticas 15/16; traspaso §5",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M7-09",
+      "module": "M7",
+      "summary": "Equity Multiple",
+      "candidate_details": [
+        "Estándares política 16; Master §3 Equity Multiple. Distribuciones/proceeds incluidos sobre aportes brutos incluidos. Definir alcance y excluir doble cuenta de valor terminal/venta."
+      ],
+      "candidate_document": "docs/model-hold-exit-returns.md",
+      "candidate_line": 19,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "§3 Refinance and metrics / Hold; Estándares política 16; Master §3 Equity Multiple",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M7-10",
+      "module": "M7",
+      "summary": "IRR regular y anualización",
+      "candidate_details": [
+        "Estándares política 15; Master §3 monthly IRR annualized. Calendario, frecuencia, dominio y raíces explícitos. No seleccionar una raíz conveniente; no inferir raíces del número de cambios de signo."
+      ],
+      "candidate_document": "docs/model-hold-exit-returns.md",
+      "candidate_line": 20,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "§3 Refinance and metrics / Hold; Estándares política 15; Master §3 monthly IRR annualized",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M7-11",
+      "module": "M7",
+      "summary": "Fechas irregulares y retorno corriente",
+      "candidate_details": [
+        "Traspaso §5; Estándares políticas 12/15. XIRR requiere fechas y fracción de año aprobada. CoC requiere período/base de capital remanente; denominador cero permanece indefinido."
+      ],
+      "candidate_document": "docs/model-hold-exit-returns.md",
+      "candidate_line": 21,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "§3 Refinance and metrics / Hold; Traspaso §5; Estándares políticas 12/15",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M7-12",
+      "module": "M7",
+      "summary": "Nivel proyecto, LP/JV y salida a M8/M9",
+      "candidate_details": [
+        "Estándares políticas 2/15/16; Manual p.20. Mantener retornos agregados del equity del proyecto. LP, fees/promote/waterfall sólo con estructura documentada y ledger conciliable separado."
+      ],
+      "candidate_document": "docs/model-hold-exit-returns.md",
+      "candidate_line": 22,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "§3 Refinance and metrics / Hold; Estándares políticas 2/15/16; Manual p.20",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M8-01",
+      "module": "M8",
+      "summary": "Inventario de escenarios requeridos",
+      "candidate_details": [
+        "Traspaso §6; Master §4. ID, propósito, aplicabilidad, escenarios requeridos/excluidos y regla de agregación explícitos; nada requerido se omite silenciosamente."
+      ],
+      "candidate_document": "docs/model-scenarios-price.md",
+      "candidate_line": 11,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "Master §§3–6; Traspaso §6; Master §4",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M8-02",
+      "module": "M8",
+      "summary": "Entradas completas y aisladas",
+      "candidate_details": [
+        "Traspaso §6; Master §4 change vs Base. Compartir hechos de fuente sólo mediante referencia explícita a la misma versión; sin herencia automática de supuestos o criterios."
+      ],
+      "candidate_document": "docs/model-scenarios-price.md",
+      "candidate_line": 12,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "Master §§3–6; Traspaso §6; Master §4 change vs Base",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M8-03",
+      "module": "M8",
+      "summary": "Transformación y unidad de cada driver",
+      "candidate_details": [
+        "Master §4 tabla; Estándares políticas 18–33. Distinguir cambio relativo, puntos porcentuales, bps, meses y reemplazo absoluto. Base, delta, unidad, orden y fuente explícitos."
+      ],
+      "candidate_document": "docs/model-scenarios-price.md",
+      "candidate_line": 13,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "Master §§3–6; Master §4 tabla; Estándares políticas 18–33",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M8-04",
+      "module": "M8",
+      "summary": "Downside integrado y dependencias",
+      "candidate_details": [
+        "Estándares política 3/33; Manual p.17. Aplicar drivers autorizados conjuntamente y recalcular dependientes, no sumar sensibilidades individuales como resultado integrado."
+      ],
+      "candidate_document": "docs/model-scenarios-price.md",
+      "candidate_line": 14,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "Master §§3–6; Estándares política 3/33; Manual p.17",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M8-05",
+      "module": "M8",
+      "summary": "Sensibilidad individual y ranking",
+      "candidate_details": [
+        "Master §4 Single-driver; Manual p.14. Mantener iguales los hechos/políticas no afectados con referencias explícitas; reportar métrica de ranking, signo, empate y aplicabilidad."
+      ],
+      "candidate_document": "docs/model-scenarios-price.md",
+      "candidate_line": 15,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "Master §§3–6; Master §4 Single-driver; Manual p.14",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M8-06",
+      "module": "M8",
+      "summary": "Overrides y condicionales",
+      "candidate_details": [
+        "Estándares políticas 5/33; Manual pp.20/27. Fuente, justificación, alcance, vigencia y autorización; no resolver con confianza de OCR o papel nominal del autor."
+      ],
+      "candidate_document": "docs/model-scenarios-price.md",
+      "candidate_line": 16,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "Master §§3–6; Estándares políticas 5/33; Manual pp.20/27",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M8-07",
+      "module": "M8",
+      "summary": "Controles y vigencia por escenario",
+      "candidate_details": [
+        "Manual pp.17/29; traspaso §§6–7. C1/C2 completos por escenario requerido; versiones de fuentes/fórmulas/criterios coherentes y comparación sólo con resultados vigentes."
+      ],
+      "candidate_document": "docs/model-scenarios-price.md",
+      "candidate_line": 17,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "Master §§3–6; Manual pp.17/29; traspaso §§6–7",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M8-08",
+      "module": "M8",
+      "summary": "Robustez y Upside",
+      "candidate_details": [
+        "Master §4 Robustness; política 17/33. Upside no rescata Base. Ensayo histórico de terreno cero requiere configuración expresa; no llamar robusto a un FAIL sin prueba pertinente válida."
+      ],
+      "candidate_document": "docs/model-scenarios-price.md",
+      "candidate_line": 18,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "Master §§3–6; Master §4 Robustness; política 17/33",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M8-09",
+      "module": "M8",
+      "summary": "Precio evaluado, asking y objetivos",
+      "candidate_details": [
+        "Master §3 RLV; Estándares política 13; Q3 p.22. Definir conjunto de restricciones de precio; soporte bajo dos objetivos no es RLV completo aprobado de la casa."
+      ],
+      "candidate_document": "docs/model-scenarios-price.md",
+      "candidate_line": 19,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "Master §§3–6; Master §3 RLV; Estándares política 13; Q3 p.22",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M8-10",
+      "module": "M8",
+      "summary": "Dominio, factibilidad y extremos",
+      "candidate_details": [
+        "Traspaso §5; PRICE-01. Distinguir máximo alcanzado, supremo no alcanzado, conjunto vacío, no acotado o indeterminado. Tramos/discontinuidades y desigualdades explícitos."
+      ],
+      "candidate_document": "docs/model-scenarios-price.md",
+      "candidate_line": 20,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "Master §§3–6; Traspaso §5; PRICE-01",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M8-11",
+      "module": "M8",
+      "summary": "Método y cotización discreta",
+      "candidate_details": [
+        "Traspaso §§5/8; Master §3 RLV. No asumir monotonía global; verificar candidato y siguiente incremento permitido si hay grilla explícita; ni tick ni tolerancia inventados."
+      ],
+      "candidate_document": "docs/model-scenarios-price.md",
+      "candidate_line": 21,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "Master §§3–6; Traspaso §§5/8; Master §3 RLV",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M8-12",
+      "module": "M8",
+      "summary": "Entrega y comparaciones dependientes",
+      "candidate_details": [
+        "Traspaso §6; Master §§5–7. Entregar estado de soporte, restricciones activas, alcance validado y pendientes. Cambiar criterios recalcula objetivos dependientes; asking/RLV exige fórmula vigente."
+      ],
+      "candidate_document": "docs/model-scenarios-price.md",
+      "candidate_line": 22,
+      "original_document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+      "original_sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+      "original_locator": "Master §§3–6; Traspaso §6; Master §§5–7",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M9-01",
+      "module": "M9",
+      "summary": "Paquete vigente y completo",
+      "candidate_details": [
+        "Traspaso §§6–7; C1/C2 Manual pp.17–18. Datos, aplicabilidad, fuentes, reglas y escenarios requeridos deben estar completos; sin dictamen parcial ante bloqueos."
+      ],
+      "candidate_document": "docs/model-decision-audit.md",
+      "candidate_line": 11,
+      "original_document": "Pasted text.txt",
+      "original_sha256": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+      "original_locator": "Traspaso §§2/3/6/7; Traspaso §§6–7; C1/C2 Manual pp.17–18",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M9-02",
+      "module": "M9",
+      "summary": "Criterios de Lorena por deal",
+      "candidate_details": [
+        "Master §5/Estándares §2; instrucción actual. Valores expresos, definición/unidad/período/escenario, operador, igualdad y revisión separados de términos bancarios. No heredar umbrales."
+      ],
+      "candidate_document": "docs/model-decision-audit.md",
+      "candidate_line": 12,
+      "original_document": "Pasted text.txt",
+      "original_sha256": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+      "original_locator": "Traspaso §§2/3/6/7; Master §5/Estándares §2; instrucción actual",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M9-03",
+      "module": "M9",
+      "summary": "Comparación de cada métrica",
+      "candidate_details": [
+        "Estándares §2; traspaso §3. Comparar valor válido sin redondeo decisorio; preservar no aplicable justificado, indefinido, faltante y conflicto como estados diferentes."
+      ],
+      "candidate_document": "docs/model-decision-audit.md",
+      "candidate_line": 13,
+      "original_document": "Pasted text.txt",
+      "original_sha256": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+      "original_locator": "Traspaso §§2/3/6/7; Estándares §2; traspaso §3",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M9-04",
+      "module": "M9",
+      "summary": "Bandas y agregación",
+      "candidate_details": [
+        "Master §6/política 17; confirmaciones del usuario. El objetivo binario no resuelve la banda entre PASS y FAIL histórica. Agregación y prioridades requieren regla explícita; si falta, PENDIENTE."
+      ],
+      "candidate_document": "docs/model-decision-audit.md",
+      "candidate_line": 14,
+      "original_document": "Pasted text.txt",
+      "original_sha256": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+      "original_locator": "Traspaso §§2/3/6/7; Master §6/política 17; confirmaciones del usuario",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M9-05",
+      "module": "M9",
+      "summary": "Invalidación y reutilización",
+      "candidate_details": [
+        "Traspaso §§6–7; Manual prueba 14 p.29. Cambios de fuentes/datos/fórmulas invalidan descendientes; criterio solo permite conservar caja independiente pero recalcula comparaciones y precio objetivo."
+      ],
+      "candidate_document": "docs/model-decision-audit.md",
+      "candidate_line": 15,
+      "original_document": "Pasted text.txt",
+      "original_sha256": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+      "original_locator": "Traspaso §§2/3/6/7; Traspaso §§6–7; Manual prueba 14 p.29",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M9-06",
+      "module": "M9",
+      "summary": "Instantánea y concurrencia",
+      "candidate_details": [
+        "Traspaso §7. Resultados y decisión vinculados a una revisión inmutable, con registro atómico de vigencia; evitar mezcla entre corridas, reintentos y guardados interrumpidos."
+      ],
+      "candidate_document": "docs/model-decision-audit.md",
+      "candidate_line": 16,
+      "original_document": "Pasted text.txt",
+      "original_sha256": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+      "original_locator": "Traspaso §§2/3/6/7; Traspaso §7",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M9-07",
+      "module": "M9",
+      "summary": "Hoja externa de una página",
+      "candidate_details": [
+        "Traspaso §2; D1 p.1; Master §7. Render desde resultados enlazados; cifras, unidades, limitaciones y criterios legibles; exactamente una página PDF por deal."
+      ],
+      "candidate_document": "docs/model-decision-audit.md",
+      "candidate_line": 17,
+      "original_document": "Pasted text.txt",
+      "original_sha256": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+      "original_locator": "Traspaso §§2/3/6/7; Traspaso §2; D1 p.1; Master §7",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M9-08",
+      "module": "M9",
+      "summary": "Auditoría y discrepancias",
+      "candidate_details": [
+        "C4 Manual p.18/pp.39/50; PAR-08. Independencia de revisión y diferencias persistentes requieren evidencia; corregir render o escalar sin publicar; no afirmar auditoría sólo por cotejo de texto."
+      ],
+      "candidate_document": "docs/model-decision-audit.md",
+      "candidate_line": 18,
+      "original_document": "Pasted text.txt",
+      "original_sha256": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+      "original_locator": "Traspaso §§2/3/6/7; C4 Manual p.18/pp.39/50; PAR-08",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M9-09",
+      "module": "M9",
+      "summary": "Revisión humana auténtica",
+      "candidate_details": [
+        "Traspaso §§2/3/7. Identidad acreditada, alcance, versión, vigencia, decisión y revocación; nombre/casilla/approved:true insuficientes."
+      ],
+      "candidate_document": "docs/model-decision-audit.md",
+      "candidate_line": 19,
+      "original_document": "Pasted text.txt",
+      "original_sha256": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+      "original_locator": "Traspaso §§2/3/6/7; Traspaso §§2/3/7",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M9-10",
+      "module": "M9",
+      "summary": "Puerta al Full UW",
+      "candidate_details": [
+        "Traspaso §2; política 17. PASS aplicable y vigente más aprobación final auténtica. No significa aprobación final de inversión; Full UW diferido al final."
+      ],
+      "candidate_document": "docs/model-decision-audit.md",
+      "candidate_line": 20,
+      "original_document": "Pasted text.txt",
+      "original_sha256": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+      "original_locator": "Traspaso §§2/3/6/7; Traspaso §2; política 17",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M9-11",
+      "module": "M9",
+      "summary": "Registros internos separados",
+      "candidate_details": [
+        "Traspaso §7. Preservar originales/lecturas, entradas/supuestos, cálculo, comparaciones, revisión y PDF con relaciones claras; hash no prueba autenticidad."
+      ],
+      "candidate_document": "docs/model-decision-audit.md",
+      "candidate_line": 21,
+      "original_document": "Pasted text.txt",
+      "original_sha256": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+      "original_locator": "Traspaso §§2/3/6/7; Traspaso §7",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    },
+    {
+      "id": "M9-12",
+      "module": "M9",
+      "summary": "Hito/release y límites",
+      "candidate_details": [
+        "Traspaso §§8/10/11. Versionar, verificar SHA remoto completo y exclusiones; no liberar producción por conteo de pruebas, prototipo o referencias sintéticas."
+      ],
+      "candidate_document": "docs/model-decision-audit.md",
+      "candidate_line": 22,
+      "original_document": "Pasted text.txt",
+      "original_sha256": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+      "original_locator": "Traspaso §§2/3/6/7; Traspaso §§8/10/11",
+      "coverage_state": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
+      "financially_closed": false
+    }
+  ],
+  "aggregate_port_routes": [
+    {
+      "id": "M1.program_units",
+      "producer": "M1",
+      "producer_port": "program_units",
+      "consumers": [
+        "M2",
+        "M3",
+        "M4"
+      ],
+      "contract_ids": [
+        "M1-01",
+        "M1-02",
+        "M1-03",
+        "M1-04",
+        "M1-05",
+        "M1-06",
+        "M1-07",
+        "M1-08"
+      ],
+      "implicit_conversion_allowed": false,
+      "transport_requirements": [
+        "deal/scenario/run/input/definition/criterion/rule revisions",
+        "typed payload and any quantity states/claims/causes",
+        "dimensions/unit/currency/basis/period",
+        "source and detailed-record evidence refs"
+      ],
+      "consumer_rule": "Exigir misma definición y contexto, unidad/base/período compatibles y evidencia de cálculo vigente; adapter explícito si difieren.",
+      "machine_executable_wiring": false,
+      "payload_kind": "typed_quantity"
+    },
+    {
+      "id": "M1.building_gsf",
+      "producer": "M1",
+      "producer_port": "building_gsf",
+      "consumers": [
+        "M3"
+      ],
+      "contract_ids": [
+        "M1-01",
+        "M1-02",
+        "M1-03",
+        "M1-04",
+        "M1-05",
+        "M1-06",
+        "M1-07",
+        "M1-08"
+      ],
+      "implicit_conversion_allowed": false,
+      "transport_requirements": [
+        "deal/scenario/run/input/definition/criterion/rule revisions",
+        "typed payload and any quantity states/claims/causes",
+        "dimensions/unit/currency/basis/period",
+        "source and detailed-record evidence refs"
+      ],
+      "consumer_rule": "GSF no se convierte en NRSF ni se reconstruye con ratio supuesto.",
+      "machine_executable_wiring": false,
+      "payload_kind": "typed_quantity"
+    },
+    {
+      "id": "M1.residential_nrsf",
+      "producer": "M1",
+      "producer_port": "residential_nrsf",
+      "consumers": [
+        "M2"
+      ],
+      "contract_ids": [
+        "M1-01",
+        "M1-02",
+        "M1-03",
+        "M1-04",
+        "M1-05",
+        "M1-06",
+        "M1-07",
+        "M1-08"
+      ],
+      "implicit_conversion_allowed": false,
+      "transport_requirements": [
+        "deal/scenario/run/input/definition/criterion/rule revisions",
+        "typed payload and any quantity states/claims/causes",
+        "dimensions/unit/currency/basis/period",
+        "source and detailed-record evidence refs"
+      ],
+      "consumer_rule": "NRSF y GSF son bases distintas aun compartiendo dimensión física.",
+      "machine_executable_wiring": false,
+      "payload_kind": "typed_quantity"
+    },
+    {
+      "id": "M1.commercial_sf",
+      "producer": "M1",
+      "producer_port": "commercial_sf",
+      "consumers": [
+        "M2",
+        "M3"
+      ],
+      "contract_ids": [
+        "M1-01",
+        "M1-02",
+        "M1-03",
+        "M1-04",
+        "M1-05",
+        "M1-06",
+        "M1-07",
+        "M1-08"
+      ],
+      "implicit_conversion_allowed": false,
+      "transport_requirements": [
+        "deal/scenario/run/input/definition/criterion/rule revisions",
+        "typed payload and any quantity states/claims/causes",
+        "dimensions/unit/currency/basis/period",
+        "source and detailed-record evidence refs"
+      ],
+      "consumer_rule": "Exigir misma definición y contexto, unidad/base/período compatibles y evidencia de cálculo vigente; adapter explícito si difieren.",
+      "machine_executable_wiring": false,
+      "payload_kind": "typed_quantity"
+    },
+    {
+      "id": "M1.parking_spaces",
+      "producer": "M1",
+      "producer_port": "parking_spaces",
+      "consumers": [
+        "M2",
+        "M3"
+      ],
+      "contract_ids": [
+        "M1-01",
+        "M1-02",
+        "M1-03",
+        "M1-04",
+        "M1-05",
+        "M1-06",
+        "M1-07",
+        "M1-08"
+      ],
+      "implicit_conversion_allowed": false,
+      "transport_requirements": [
+        "deal/scenario/run/input/definition/criterion/rule revisions",
+        "typed payload and any quantity states/claims/causes",
+        "dimensions/unit/currency/basis/period",
+        "source and detailed-record evidence refs"
+      ],
+      "consumer_rule": "Exigir misma definición y contexto, unidad/base/período compatibles y evidencia de cálculo vigente; adapter explícito si difieren.",
+      "machine_executable_wiring": false,
+      "payload_kind": "typed_quantity"
+    },
+    {
+      "id": "M2.effective_income",
+      "producer": "M2",
+      "producer_port": "effective_income",
+      "consumers": [
+        "M4",
+        "M7",
+        "M9"
+      ],
+      "contract_ids": [
+        "M2-01",
+        "M2-02",
+        "M2-03",
+        "M2-04",
+        "M2-05",
+        "M2-06",
+        "M2-07",
+        "M2-08"
+      ],
+      "implicit_conversion_allowed": false,
+      "transport_requirements": [
+        "deal/scenario/run/input/definition/criterion/rule revisions",
+        "typed payload and any quantity states/claims/causes",
+        "dimensions/unit/currency/basis/period",
+        "source and detailed-record evidence refs"
+      ],
+      "consumer_rule": "Exigir misma definición y contexto, unidad/base/período compatibles y evidencia de cálculo vigente; adapter explícito si difieren.",
+      "machine_executable_wiring": false,
+      "payload_kind": "typed_quantity"
+    },
+    {
+      "id": "M2.operating_expenses",
+      "producer": "M2",
+      "producer_port": "operating_expenses",
+      "consumers": [
+        "M4",
+        "M7",
+        "M9"
+      ],
+      "contract_ids": [
+        "M2-01",
+        "M2-02",
+        "M2-03",
+        "M2-04",
+        "M2-05",
+        "M2-06",
+        "M2-07",
+        "M2-08"
+      ],
+      "implicit_conversion_allowed": false,
+      "transport_requirements": [
+        "deal/scenario/run/input/definition/criterion/rule revisions",
+        "typed payload and any quantity states/claims/causes",
+        "dimensions/unit/currency/basis/period",
+        "source and detailed-record evidence refs"
+      ],
+      "consumer_rule": "Exigir misma definición y contexto, unidad/base/período compatibles y evidencia de cálculo vigente; adapter explícito si difieren.",
+      "machine_executable_wiring": false,
+      "payload_kind": "typed_quantity"
+    },
+    {
+      "id": "M2.property_tax",
+      "producer": "M2",
+      "producer_port": "property_tax",
+      "consumers": [
+        "M4",
+        "M7",
+        "M9"
+      ],
+      "contract_ids": [
+        "M2-01",
+        "M2-02",
+        "M2-03",
+        "M2-04",
+        "M2-05",
+        "M2-06",
+        "M2-07",
+        "M2-08"
+      ],
+      "implicit_conversion_allowed": false,
+      "transport_requirements": [
+        "deal/scenario/run/input/definition/criterion/rule revisions",
+        "typed payload and any quantity states/claims/causes",
+        "dimensions/unit/currency/basis/period",
+        "source and detailed-record evidence refs"
+      ],
+      "consumer_rule": "Exigir misma definición y contexto, unidad/base/período compatibles y evidencia de cálculo vigente; adapter explícito si difieren.",
+      "machine_executable_wiring": false,
+      "payload_kind": "typed_quantity"
+    },
+    {
+      "id": "M2.noi",
+      "producer": "M2",
+      "producer_port": "noi",
+      "consumers": [
+        "M6",
+        "M7",
+        "M8",
+        "M9"
+      ],
+      "contract_ids": [
+        "M2-01",
+        "M2-02",
+        "M2-03",
+        "M2-04",
+        "M2-05",
+        "M2-06",
+        "M2-07",
+        "M2-08"
+      ],
+      "implicit_conversion_allowed": false,
+      "transport_requirements": [
+        "deal/scenario/run/input/definition/criterion/rule revisions",
+        "typed payload and any quantity states/claims/causes",
+        "dimensions/unit/currency/basis/period",
+        "source and detailed-record evidence refs"
+      ],
+      "consumer_rule": "NOI devengado no es cobro, caja distribuible ni NOI bancario por defecto; exigir período/base y ajustes expresos.",
+      "machine_executable_wiring": false,
+      "payload_kind": "typed_quantity"
+    },
+    {
+      "id": "M3.budget_before_financing",
+      "producer": "M3",
+      "producer_port": "budget_before_financing",
+      "consumers": [
+        "M4",
+        "M5"
+      ],
+      "contract_ids": [
+        "M3-01",
+        "M3-02",
+        "M3-03",
+        "M3-04",
+        "M3-05",
+        "M3-06"
+      ],
+      "implicit_conversion_allowed": false,
+      "transport_requirements": [
+        "deal/scenario/run/input/definition/criterion/rule revisions",
+        "typed payload and any quantity states/claims/causes",
+        "dimensions/unit/currency/basis/period",
+        "source and detailed-record evidence refs"
+      ],
+      "consumer_rule": "Exigir misma definición y contexto, unidad/base/período compatibles y evidencia de cálculo vigente; adapter explícito si difieren.",
+      "machine_executable_wiring": false,
+      "payload_kind": "typed_quantity"
+    },
+    {
+      "id": "M3.unallocated_scope_cost",
+      "producer": "M3",
+      "producer_port": "unallocated_scope_cost",
+      "consumers": [
+        "M4",
+        "M5",
+        "M9"
+      ],
+      "contract_ids": [
+        "M3-01",
+        "M3-02",
+        "M3-03",
+        "M3-04",
+        "M3-05",
+        "M3-06"
+      ],
+      "implicit_conversion_allowed": false,
+      "transport_requirements": [
+        "deal/scenario/run/input/definition/criterion/rule revisions",
+        "typed payload and any quantity states/claims/causes",
+        "dimensions/unit/currency/basis/period",
+        "source and detailed-record evidence refs"
+      ],
+      "consumer_rule": "Residual no asignado, incluso conocido distinto de cero, bloquea completitud del presupuesto afectado.",
+      "machine_executable_wiring": false,
+      "payload_kind": "typed_quantity"
+    },
+    {
+      "id": "M4.scheduled_uses",
+      "producer": "M4",
+      "producer_port": "scheduled_uses",
+      "consumers": [
+        "M5"
+      ],
+      "contract_ids": [
+        "M4-01",
+        "M4-02",
+        "M4-03",
+        "M4-04",
+        "M4-05",
+        "M4-06"
+      ],
+      "implicit_conversion_allowed": false,
+      "transport_requirements": [
+        "deal/scenario/run/input/definition/criterion/rule revisions",
+        "typed payload and any quantity states/claims/causes",
+        "dimensions/unit/currency/basis/period",
+        "source and detailed-record evidence refs"
+      ],
+      "consumer_rule": "Exigir misma definición y contexto, unidad/base/período compatibles y evidencia de cálculo vigente; adapter explícito si difieren.",
+      "machine_executable_wiring": false,
+      "payload_kind": "typed_quantity"
+    },
+    {
+      "id": "M4.unscheduled_uses",
+      "producer": "M4",
+      "producer_port": "unscheduled_uses",
+      "consumers": [
+        "M5",
+        "M9"
+      ],
+      "contract_ids": [
+        "M4-01",
+        "M4-02",
+        "M4-03",
+        "M4-04",
+        "M4-05",
+        "M4-06"
+      ],
+      "implicit_conversion_allowed": false,
+      "transport_requirements": [
+        "deal/scenario/run/input/definition/criterion/rule revisions",
+        "typed payload and any quantity states/claims/causes",
+        "dimensions/unit/currency/basis/period",
+        "source and detailed-record evidence refs"
+      ],
+      "consumer_rule": "Saldo no programado no se reparte ni convierte en cero; bloquear la financiación dependiente.",
+      "machine_executable_wiring": false,
+      "payload_kind": "typed_quantity"
+    },
+    {
+      "id": "M5.tdc",
+      "producer": "M5",
+      "producer_port": "tdc",
+      "consumers": [
+        "M8",
+        "M9"
+      ],
+      "contract_ids": [
+        "M5-01",
+        "M5-02",
+        "M5-03",
+        "M5-04",
+        "M5-05",
+        "M5-06",
+        "M5-07",
+        "M5-08",
+        "M5-09",
+        "M5-10"
+      ],
+      "implicit_conversion_allowed": false,
+      "transport_requirements": [
+        "deal/scenario/run/input/definition/criterion/rule revisions",
+        "typed payload and any quantity states/claims/causes",
+        "dimensions/unit/currency/basis/period",
+        "source and detailed-record evidence refs"
+      ],
+      "consumer_rule": "Exigir misma definición y contexto, unidad/base/período compatibles y evidencia de cálculo vigente; adapter explícito si difieren.",
+      "machine_executable_wiring": false,
+      "payload_kind": "typed_quantity"
+    },
+    {
+      "id": "M5.construction_principal",
+      "producer": "M5",
+      "producer_port": "construction_principal",
+      "consumers": [
+        "M6",
+        "M7"
+      ],
+      "contract_ids": [
+        "M5-01",
+        "M5-02",
+        "M5-03",
+        "M5-04",
+        "M5-05",
+        "M5-06",
+        "M5-07",
+        "M5-08",
+        "M5-09",
+        "M5-10"
+      ],
+      "implicit_conversion_allowed": false,
+      "transport_requirements": [
+        "deal/scenario/run/input/definition/criterion/rule revisions",
+        "typed payload and any quantity states/claims/causes",
+        "dimensions/unit/currency/basis/period",
+        "source and detailed-record evidence refs"
+      ],
+      "consumer_rule": "Principal no es payoff total; intereses/fees/otras obligaciones y corte requieren registros propios.",
+      "machine_executable_wiring": false,
+      "payload_kind": "typed_quantity"
+    },
+    {
+      "id": "M5.construction_payoff",
+      "producer": "M5",
+      "producer_port": "construction_payoff",
+      "consumers": [
+        "M6",
+        "M7"
+      ],
+      "contract_ids": [
+        "M5-01",
+        "M5-02",
+        "M5-03",
+        "M5-04",
+        "M5-05",
+        "M5-06",
+        "M5-07",
+        "M5-08",
+        "M5-09",
+        "M5-10"
+      ],
+      "implicit_conversion_allowed": false,
+      "transport_requirements": [
+        "deal/scenario/run/input/definition/criterion/rule revisions",
+        "typed payload and any quantity states/claims/causes",
+        "dimensions/unit/currency/basis/period",
+        "source and detailed-record evidence refs"
+      ],
+      "consumer_rule": "Exigir desglose, fecha, completitud y contrapartidas; no sumar de nuevo capitalización ya en principal.",
+      "machine_executable_wiring": false,
+      "payload_kind": "typed_quantity"
+    },
+    {
+      "id": "M5.equity_required",
+      "producer": "M5",
+      "producer_port": "equity_required",
+      "consumers": [
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "contract_ids": [
+        "M5-01",
+        "M5-02",
+        "M5-03",
+        "M5-04",
+        "M5-05",
+        "M5-06",
+        "M5-07",
+        "M5-08",
+        "M5-09",
+        "M5-10"
+      ],
+      "implicit_conversion_allowed": false,
+      "transport_requirements": [
+        "deal/scenario/run/input/definition/criterion/rule revisions",
+        "typed payload and any quantity states/claims/causes",
+        "dimensions/unit/currency/basis/period",
+        "source and detailed-record evidence refs"
+      ],
+      "consumer_rule": "Necesidad de capital no acredita aporte recibido o capital disponible; M7 requiere movimientos brutos.",
+      "machine_executable_wiring": false,
+      "payload_kind": "typed_quantity"
+    },
+    {
+      "id": "M6.permanent_loan",
+      "producer": "M6",
+      "producer_port": "permanent_loan",
+      "consumers": [
+        "M7"
+      ],
+      "contract_ids": [
+        "M6-01",
+        "M6-02",
+        "M6-03",
+        "M6-04",
+        "M6-05",
+        "M6-06",
+        "M6-07",
+        "M6-08",
+        "M6-09",
+        "M6-10"
+      ],
+      "implicit_conversion_allowed": false,
+      "transport_requirements": [
+        "deal/scenario/run/input/definition/criterion/rule revisions",
+        "typed payload and any quantity states/claims/causes",
+        "dimensions/unit/currency/basis/period",
+        "source and detailed-record evidence refs"
+      ],
+      "consumer_rule": "Exigir misma definición y contexto, unidad/base/período compatibles y evidencia de cálculo vigente; adapter explícito si difieren.",
+      "machine_executable_wiring": false,
+      "payload_kind": "typed_quantity"
+    },
+    {
+      "id": "M6.annual_debt_service",
+      "producer": "M6",
+      "producer_port": "annual_debt_service",
+      "consumers": [
+        "M7",
+        "M9"
+      ],
+      "contract_ids": [
+        "M6-01",
+        "M6-02",
+        "M6-03",
+        "M6-04",
+        "M6-05",
+        "M6-06",
+        "M6-07",
+        "M6-08",
+        "M6-09",
+        "M6-10"
+      ],
+      "implicit_conversion_allowed": false,
+      "transport_requirements": [
+        "deal/scenario/run/input/definition/criterion/rule revisions",
+        "typed payload and any quantity states/claims/causes",
+        "dimensions/unit/currency/basis/period",
+        "source and detailed-record evidence refs"
+      ],
+      "consumer_rule": "Distinguir cuota equivalente anualizada y servicio efectivamente fechado. El equivalente de sizing no alimenta caja M7 sin calendario/amortización; tampoco se divide por 12 implícitamente.",
+      "machine_executable_wiring": false,
+      "payload_kind": "typed_quantity"
+    },
+    {
+      "id": "M6.construction_payoff",
+      "producer": "M6",
+      "producer_port": "construction_payoff",
+      "consumers": [
+        "M7"
+      ],
+      "contract_ids": [
+        "M6-01",
+        "M6-02",
+        "M6-03",
+        "M6-04",
+        "M6-05",
+        "M6-06",
+        "M6-07",
+        "M6-08",
+        "M6-09",
+        "M6-10"
+      ],
+      "implicit_conversion_allowed": false,
+      "transport_requirements": [
+        "deal/scenario/run/input/definition/criterion/rule revisions",
+        "typed payload and any quantity states/claims/causes",
+        "dimensions/unit/currency/basis/period",
+        "source and detailed-record evidence refs"
+      ],
+      "consumer_rule": "Exigir misma definición y contexto, unidad/base/período compatibles y evidencia de cálculo vigente; adapter explícito si difieren.",
+      "machine_executable_wiring": false,
+      "payload_kind": "typed_quantity"
+    },
+    {
+      "id": "M6.restricted_reserves",
+      "producer": "M6",
+      "producer_port": "restricted_reserves",
+      "consumers": [
+        "M7"
+      ],
+      "contract_ids": [
+        "M6-01",
+        "M6-02",
+        "M6-03",
+        "M6-04",
+        "M6-05",
+        "M6-06",
+        "M6-07",
+        "M6-08",
+        "M6-09",
+        "M6-10"
+      ],
+      "implicit_conversion_allowed": false,
+      "transport_requirements": [
+        "deal/scenario/run/input/definition/criterion/rule revisions",
+        "typed payload and any quantity states/claims/causes",
+        "dimensions/unit/currency/basis/period",
+        "source and detailed-record evidence refs"
+      ],
+      "consumer_rule": "Fondos restringidos no son distribución; exigir liberación/regla y movimientos separados.",
+      "machine_executable_wiring": false,
+      "payload_kind": "typed_quantity"
+    },
+    {
+      "id": "M6.refi_distribution",
+      "producer": "M6",
+      "producer_port": "refi_distribution",
+      "consumers": [
+        "M7"
+      ],
+      "contract_ids": [
+        "M6-01",
+        "M6-02",
+        "M6-03",
+        "M6-04",
+        "M6-05",
+        "M6-06",
+        "M6-07",
+        "M6-08",
+        "M6-09",
+        "M6-10"
+      ],
+      "implicit_conversion_allowed": false,
+      "transport_requirements": [
+        "deal/scenario/run/input/definition/criterion/rule revisions",
+        "typed payload and any quantity states/claims/causes",
+        "dimensions/unit/currency/basis/period",
+        "source and detailed-record evidence refs"
+      ],
+      "consumer_rule": "M7 recibe distribución bruta registrada; no sumar otra vez valor o proceeds del mismo refi.",
+      "machine_executable_wiring": false,
+      "payload_kind": "typed_quantity"
+    },
+    {
+      "id": "M6.refi_contribution",
+      "producer": "M6",
+      "producer_port": "refi_contribution",
+      "consumers": [
+        "M7"
+      ],
+      "contract_ids": [
+        "M6-01",
+        "M6-02",
+        "M6-03",
+        "M6-04",
+        "M6-05",
+        "M6-06",
+        "M6-07",
+        "M6-08",
+        "M6-09",
+        "M6-10"
+      ],
+      "implicit_conversion_allowed": false,
+      "transport_requirements": [
+        "deal/scenario/run/input/definition/criterion/rule revisions",
+        "typed payload and any quantity states/claims/causes",
+        "dimensions/unit/currency/basis/period",
+        "source and detailed-record evidence refs"
+      ],
+      "consumer_rule": "M7 conserva aporte bruto aunque coincida con distribución en el período.",
+      "machine_executable_wiring": false,
+      "payload_kind": "typed_quantity"
+    },
+    {
+      "id": "M7.gross_contributions",
+      "producer": "M7",
+      "producer_port": "gross_contributions",
+      "consumers": [
+        "M8",
+        "M9"
+      ],
+      "contract_ids": [
+        "M7-01",
+        "M7-02",
+        "M7-03",
+        "M7-04",
+        "M7-05",
+        "M7-06",
+        "M7-07",
+        "M7-08",
+        "M7-09",
+        "M7-10",
+        "M7-11",
+        "M7-12"
+      ],
+      "implicit_conversion_allowed": false,
+      "transport_requirements": [
+        "deal/scenario/run/input/definition/criterion/rule revisions",
+        "typed payload and any quantity states/claims/causes",
+        "dimensions/unit/currency/basis/period",
+        "source and detailed-record evidence refs"
+      ],
+      "consumer_rule": "Exigir misma definición y contexto, unidad/base/período compatibles y evidencia de cálculo vigente; adapter explícito si difieren.",
+      "machine_executable_wiring": false,
+      "payload_kind": "typed_quantity"
+    },
+    {
+      "id": "M7.gross_distributions",
+      "producer": "M7",
+      "producer_port": "gross_distributions",
+      "consumers": [
+        "M8",
+        "M9"
+      ],
+      "contract_ids": [
+        "M7-01",
+        "M7-02",
+        "M7-03",
+        "M7-04",
+        "M7-05",
+        "M7-06",
+        "M7-07",
+        "M7-08",
+        "M7-09",
+        "M7-10",
+        "M7-11",
+        "M7-12"
+      ],
+      "implicit_conversion_allowed": false,
+      "transport_requirements": [
+        "deal/scenario/run/input/definition/criterion/rule revisions",
+        "typed payload and any quantity states/claims/causes",
+        "dimensions/unit/currency/basis/period",
+        "source and detailed-record evidence refs"
+      ],
+      "consumer_rule": "Exigir misma definición y contexto, unidad/base/período compatibles y evidencia de cálculo vigente; adapter explícito si difieren.",
+      "machine_executable_wiring": false,
+      "payload_kind": "typed_quantity"
+    },
+    {
+      "id": "M7.equity_multiple",
+      "producer": "M7",
+      "producer_port": "equity_multiple",
+      "consumers": [
+        "M8",
+        "M9"
+      ],
+      "contract_ids": [
+        "M7-01",
+        "M7-02",
+        "M7-03",
+        "M7-04",
+        "M7-05",
+        "M7-06",
+        "M7-07",
+        "M7-08",
+        "M7-09",
+        "M7-10",
+        "M7-11",
+        "M7-12"
+      ],
+      "implicit_conversion_allowed": false,
+      "transport_requirements": [
+        "deal/scenario/run/input/definition/criterion/rule revisions",
+        "typed payload and any quantity states/claims/causes",
+        "dimensions/unit/currency/basis/period",
+        "source and detailed-record evidence refs"
+      ],
+      "consumer_rule": "Exigir misma definición y contexto, unidad/base/período compatibles y evidencia de cálculo vigente; adapter explícito si difieren.",
+      "machine_executable_wiring": false,
+      "payload_kind": "typed_quantity"
+    },
+    {
+      "id": "M7.irr",
+      "producer": "M7",
+      "producer_port": "irr",
+      "consumers": [
+        "M8",
+        "M9"
+      ],
+      "contract_ids": [
+        "M7-01",
+        "M7-02",
+        "M7-03",
+        "M7-04",
+        "M7-05",
+        "M7-06",
+        "M7-07",
+        "M7-08",
+        "M7-09",
+        "M7-10",
+        "M7-11",
+        "M7-12"
+      ],
+      "implicit_conversion_allowed": false,
+      "transport_requirements": [
+        "deal/scenario/run/input/definition/criterion/rule revisions",
+        "typed payload and any quantity states/claims/causes",
+        "dimensions/unit/currency/basis/period",
+        "source and detailed-record evidence refs"
+      ],
+      "consumer_rule": "Si hay raíces múltiples/sin raíz/indeterminación, el agregado queda indefinido o bloqueado con causa y evidencia del conjunto de raíces; nunca exportar primera raíz como cantidad conocida sin política aplicable.",
+      "machine_executable_wiring": false,
+      "payload_kind": "typed_quantity"
+    },
+    {
+      "id": "M7.terminal_distribution",
+      "producer": "M7",
+      "producer_port": "terminal_distribution",
+      "consumers": [
+        "M8",
+        "M9"
+      ],
+      "contract_ids": [
+        "M7-01",
+        "M7-02",
+        "M7-03",
+        "M7-04",
+        "M7-05",
+        "M7-06",
+        "M7-07",
+        "M7-08",
+        "M7-09",
+        "M7-10",
+        "M7-11",
+        "M7-12"
+      ],
+      "implicit_conversion_allowed": false,
+      "transport_requirements": [
+        "deal/scenario/run/input/definition/criterion/rule revisions",
+        "typed payload and any quantity states/claims/causes",
+        "dimensions/unit/currency/basis/period",
+        "source and detailed-record evidence refs"
+      ],
+      "consumer_rule": "Distinguir distribución realizada, valoración y escenario de liquidación; no duplicar valor terminal y venta.",
+      "machine_executable_wiring": false,
+      "payload_kind": "typed_quantity"
+    },
+    {
+      "id": "M8.supported_price_bound",
+      "producer": "M8",
+      "producer_port": "supported_price_bound",
+      "consumers": [
+        "M9"
+      ],
+      "contract_ids": [
+        "M8-01",
+        "M8-02",
+        "M8-03",
+        "M8-04",
+        "M8-05",
+        "M8-06",
+        "M8-07",
+        "M8-08",
+        "M8-09",
+        "M8-10",
+        "M8-11",
+        "M8-12"
+      ],
+      "implicit_conversion_allowed": false,
+      "transport_requirements": [
+        "deal/scenario/run/input/definition/criterion/rule revisions",
+        "typed payload and any quantity states/claims/causes",
+        "dimensions/unit/currency/basis/period",
+        "source and detailed-record evidence refs"
+      ],
+      "consumer_rule": "Transportar dominio, objetivos, escenario, revisión y evidencia junto al importe. Soporte reducido no es RLV completo.",
+      "machine_executable_wiring": false,
+      "payload_kind": "typed_quantity"
+    },
+    {
+      "id": "M8.bound_kind",
+      "producer": "M8",
+      "producer_port": "bound_kind",
+      "consumers": [
+        "M9"
+      ],
+      "contract_ids": [
+        "M8-01",
+        "M8-02",
+        "M8-03",
+        "M8-04",
+        "M8-05",
+        "M8-06",
+        "M8-07",
+        "M8-08",
+        "M8-09",
+        "M8-10",
+        "M8-11",
+        "M8-12"
+      ],
+      "implicit_conversion_allowed": false,
+      "transport_requirements": [
+        "deal/scenario/run/input/definition/criterion/rule revisions",
+        "typed payload and any quantity states/claims/causes",
+        "dimensions/unit/currency/basis/period",
+        "source and detailed-record evidence refs"
+      ],
+      "consumer_rule": "Máximo alcanzado, supremo no alcanzado, vacío probado, no acotado e indeterminado no son intercambiables; búsqueda parcial conserva indeterminación.",
+      "machine_executable_wiring": false,
+      "payload_kind": "enum"
+    },
+    {
+      "id": "M9.decision",
+      "producer": "M9",
+      "producer_port": "decision",
+      "consumers": [
+        "external_one_page_report_design"
+      ],
+      "contract_ids": [
+        "M9-01",
+        "M9-02",
+        "M9-03",
+        "M9-04",
+        "M9-05",
+        "M9-06",
+        "M9-07",
+        "M9-08",
+        "M9-09",
+        "M9-10",
+        "M9-11",
+        "M9-12"
+      ],
+      "implicit_conversion_allowed": false,
+      "transport_requirements": [
+        "deal/scenario/run/input/definition/criterion/rule revisions",
+        "typed payload and any quantity states/claims/causes",
+        "dimensions/unit/currency/basis/period",
+        "source and detailed-record evidence refs"
+      ],
+      "consumer_rule": "Faltantes/reglas/conflictos requeridos mantienen PENDING sin PASS/FAIL; faltan política completa y aprobación auténtica para uso real.",
+      "machine_executable_wiring": false,
+      "payload_kind": "enum"
+    },
+    {
+      "id": "M9.aggregation_rule_ref",
+      "producer": "M9",
+      "producer_port": "aggregation_rule_ref",
+      "consumers": [
+        "internal_audit_design",
+        "external_one_page_report_design"
+      ],
+      "contract_ids": [
+        "M9-01",
+        "M9-02",
+        "M9-03",
+        "M9-04",
+        "M9-05",
+        "M9-06",
+        "M9-07",
+        "M9-08",
+        "M9-09",
+        "M9-10",
+        "M9-11",
+        "M9-12"
+      ],
+      "implicit_conversion_allowed": false,
+      "transport_requirements": [
+        "deal/scenario/run/input/definition/criterion/rule revisions",
+        "typed payload and any quantity states/claims/causes",
+        "dimensions/unit/currency/basis/period",
+        "source and detailed-record evidence refs"
+      ],
+      "consumer_rule": "Exigir misma definición y contexto, unidad/base/período compatibles y evidencia de cálculo vigente; adapter explícito si difieren.",
+      "machine_executable_wiring": false,
+      "payload_kind": [
+        "string",
+        "null"
+      ]
+    },
+    {
+      "id": "M9.comparisons",
+      "producer": "M9",
+      "producer_port": "comparisons",
+      "consumers": [
+        "internal_audit_design",
+        "external_one_page_report_design"
+      ],
+      "contract_ids": [
+        "M9-01",
+        "M9-02",
+        "M9-03",
+        "M9-04",
+        "M9-05",
+        "M9-06",
+        "M9-07",
+        "M9-08",
+        "M9-09",
+        "M9-10",
+        "M9-11",
+        "M9-12"
+      ],
+      "implicit_conversion_allowed": false,
+      "transport_requirements": [
+        "deal/scenario/run/input/definition/criterion/rule revisions",
+        "typed payload and any quantity states/claims/causes",
+        "dimensions/unit/currency/basis/period",
+        "source and detailed-record evidence refs"
+      ],
+      "consumer_rule": "Exigir misma definición y contexto, unidad/base/período compatibles y evidencia de cálculo vigente; adapter explícito si difieren.",
+      "machine_executable_wiring": false,
+      "payload_kind": "array"
+    }
+  ],
+  "control_loops_and_secondary_passes": [
+    {
+      "id": "LOOP-FINANCE",
+      "members": [
+        "M3",
+        "M4",
+        "M5"
+      ],
+      "description": "Costo/base, calendario y financiación capitalizada/TDC: bloque circular explícito.",
+      "handling": "No certifica convergencia un grafo de etapas; método y tolerancias quedan explícitos/pending, solver futuro."
+    },
+    {
+      "id": "PASS-BREAKEVEN",
+      "members": [
+        "M2",
+        "M6"
+      ],
+      "description": "M2-08 ocupación de equilibrio utiliza servicio de deuda de M6 después de su cálculo.",
+      "handling": "Pasada diagnóstica posterior a M6, separada de outputs base de M2. No retroalimentar NOI base sin dependencia y fórmula expresas."
+    },
+    {
+      "id": "LOOP-SCENARIO-PRICE",
+      "members": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5",
+        "M6",
+        "M7",
+        "M8"
+      ],
+      "description": "M8 reevalúa dependencias bajo escenario/precio.",
+      "handling": "Contextos aislados y cierre transitivo; no sumar sensibilidades ni inferir monotonía global."
+    },
+    {
+      "id": "PASS-CRITERIA",
+      "members": [
+        "M8",
+        "M9"
+      ],
+      "description": "Cambio de criterios altera comparaciones y precio dependiente.",
+      "handling": "Invalidar dependientes. Conservar caja sólo si su independencia se acredita; publicación/registro atómico futuro."
+    }
+  ],
+  "schemas": [
+    "schemas/M1.schema.json",
+    "schemas/M2.schema.json",
+    "schemas/M3.schema.json",
+    "schemas/M4.schema.json",
+    "schemas/M5.schema.json",
+    "schemas/M6.schema.json",
+    "schemas/M7.schema.json",
+    "schemas/M8.schema.json",
+    "schemas/M9.schema.json",
+    "schemas/affine-price-support.schema.json",
+    "schemas/budget-payment-bridge.schema.json",
+    "schemas/calculation-lineage.schema.json",
+    "schemas/calendar.schema.json",
+    "schemas/cash-event.schema.json",
+    "schemas/common.schema.json",
+    "schemas/cost-line.schema.json",
+    "schemas/cost-scope-package.schema.json",
+    "schemas/criterion.schema.json",
+    "schemas/debt-event.schema.json",
+    "schemas/event-ledger.schema.json",
+    "schemas/evidence-claim.schema.json",
+    "schemas/execution-snapshot.schema.json",
+    "schemas/financing-timeline.schema.json",
+    "schemas/investor-return-bridge.schema.json",
+    "schemas/obligation-event.schema.json",
+    "schemas/operating-cash-bridge.schema.json",
+    "schemas/price-grid-catalogue.schema.json",
+    "schemas/refinance-capacity-bridge.schema.json",
+    "schemas/return-metric-bridge.schema.json",
+    "schemas/scenario.schema.json",
+    "schemas/scope-representation.schema.json",
+    "schemas/sensitivity-ranking.schema.json",
+    "schemas/settlement-bridge.schema.json"
+  ],
+  "reference_registry": "docs/reference-runner-map.json",
+  "external_register": "docs/final-dependency-register.json",
+  "acceptance_specifications": "docs/acceptance-case-contracts.json"
+}

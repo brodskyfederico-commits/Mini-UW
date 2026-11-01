@@ -71,3 +71,7 @@ Review record needs authenticated identity, exact run/revision and formula/crite
 ## One-page content proposal
 
 D1 p. 1 suggests identity/conclusion/reason, the $10 story, key project amounts, ten-metric comparisons, sensitivities/price support, principal risks and provenance/conditions. Reconcile density and material-blocker display with exactly one readable PDF page. Historical thresholds, generic five-year defaults and sample deal facts must not carry into a new deal. Test actual rendered PDFs at the chosen page size; a text mock-up is insufficient.
+
+## Consolidación del armado I01
+
+Entrada integral vigente: docs/Especificacion_Integral_Armado_I01.md. Este documento conserva la propuesta inicial; el registro integral y el acta I01 determinan el alcance consolidado, sin aprobación financiera.

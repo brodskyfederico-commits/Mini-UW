@@ -84,6 +84,14 @@
           "currency_default": null,
           "period_default": null
         }
+      },
+      "integration_routes_ref": "docs/structural-integration-register.json",
+      "semantic_consumer_guards": {
+        "program_units": "Exigir misma definición y contexto, unidad/base/período compatibles y evidencia de cálculo vigente; adapter explícito si difieren.",
+        "building_gsf": "GSF no se convierte en NRSF ni se reconstruye con ratio supuesto.",
+        "residential_nrsf": "NRSF y GSF son bases distintas aun compartiendo dimensión física.",
+        "commercial_sf": "Exigir misma definición y contexto, unidad/base/período compatibles y evidencia de cálculo vigente; adapter explícito si difieren.",
+        "parking_spaces": "Exigir misma definición y contexto, unidad/base/período compatibles y evidencia de cálculo vigente; adapter explícito si difieren."
       }
     },
     {
@@ -154,6 +162,13 @@
           "currency_default": null,
           "period_default": null
         }
+      },
+      "integration_routes_ref": "docs/structural-integration-register.json",
+      "semantic_consumer_guards": {
+        "effective_income": "Exigir misma definición y contexto, unidad/base/período compatibles y evidencia de cálculo vigente; adapter explícito si difieren.",
+        "operating_expenses": "Exigir misma definición y contexto, unidad/base/período compatibles y evidencia de cálculo vigente; adapter explícito si difieren.",
+        "property_tax": "Exigir misma definición y contexto, unidad/base/período compatibles y evidencia de cálculo vigente; adapter explícito si difieren.",
+        "noi": "NOI devengado no es cobro, caja distribuible ni NOI bancario por defecto; exigir período/base y ajustes expresos."
       }
     },
     {
@@ -194,6 +209,11 @@
           "currency_default": null,
           "period_default": null
         }
+      },
+      "integration_routes_ref": "docs/structural-integration-register.json",
+      "semantic_consumer_guards": {
+        "budget_before_financing": "Exigir misma definición y contexto, unidad/base/período compatibles y evidencia de cálculo vigente; adapter explícito si difieren.",
+        "unallocated_scope_cost": "Residual no asignado, incluso conocido distinto de cero, bloquea completitud del presupuesto afectado."
       }
     },
     {
@@ -234,6 +254,11 @@
           "currency_default": null,
           "period_default": null
         }
+      },
+      "integration_routes_ref": "docs/structural-integration-register.json",
+      "semantic_consumer_guards": {
+        "scheduled_uses": "Exigir misma definición y contexto, unidad/base/período compatibles y evidencia de cálculo vigente; adapter explícito si difieren.",
+        "unscheduled_uses": "Saldo no programado no se reparte ni convierte en cero; bloquear la financiación dependiente."
       }
     },
     {
@@ -304,6 +329,13 @@
           "currency_default": null,
           "period_default": null
         }
+      },
+      "integration_routes_ref": "docs/structural-integration-register.json",
+      "semantic_consumer_guards": {
+        "tdc": "Exigir misma definición y contexto, unidad/base/período compatibles y evidencia de cálculo vigente; adapter explícito si difieren.",
+        "construction_principal": "Principal no es payoff total; intereses/fees/otras obligaciones y corte requieren registros propios.",
+        "construction_payoff": "Exigir desglose, fecha, completitud y contrapartidas; no sumar de nuevo capitalización ya en principal.",
+        "equity_required": "Necesidad de capital no acredita aporte recibido o capital disponible; M7 requiere movimientos brutos."
       }
     },
     {
@@ -404,6 +436,15 @@
           "currency_default": null,
           "period_default": null
         }
+      },
+      "integration_routes_ref": "docs/structural-integration-register.json",
+      "semantic_consumer_guards": {
+        "permanent_loan": "Exigir misma definición y contexto, unidad/base/período compatibles y evidencia de cálculo vigente; adapter explícito si difieren.",
+        "annual_debt_service": "Distinguir cuota equivalente anualizada y servicio efectivamente fechado. El equivalente de sizing no alimenta caja M7 sin calendario/amortización; tampoco se divide por 12 implícitamente.",
+        "construction_payoff": "Exigir misma definición y contexto, unidad/base/período compatibles y evidencia de cálculo vigente; adapter explícito si difieren.",
+        "restricted_reserves": "Fondos restringidos no son distribución; exigir liberación/regla y movimientos separados.",
+        "refi_distribution": "M7 recibe distribución bruta registrada; no sumar otra vez valor o proceeds del mismo refi.",
+        "refi_contribution": "M7 conserva aporte bruto aunque coincida con distribución en el período."
       }
     },
     {
@@ -489,6 +530,14 @@
           "currency_default": null,
           "period_default": null
         }
+      },
+      "integration_routes_ref": "docs/structural-integration-register.json",
+      "semantic_consumer_guards": {
+        "gross_contributions": "Exigir misma definición y contexto, unidad/base/período compatibles y evidencia de cálculo vigente; adapter explícito si difieren.",
+        "gross_distributions": "Exigir misma definición y contexto, unidad/base/período compatibles y evidencia de cálculo vigente; adapter explícito si difieren.",
+        "equity_multiple": "Exigir misma definición y contexto, unidad/base/período compatibles y evidencia de cálculo vigente; adapter explícito si difieren.",
+        "irr": "Si hay raíces múltiples/sin raíz/indeterminación, el agregado queda indefinido o bloqueado con causa y evidencia del conjunto de raíces; nunca exportar primera raíz como cantidad conocida sin política aplicable.",
+        "terminal_distribution": "Distinguir distribución realizada, valoración y escenario de liquidación; no duplicar valor terminal y venta."
       }
     },
     {
@@ -514,6 +563,11 @@
           "currency_default": null,
           "period_default": null
         }
+      },
+      "integration_routes_ref": "docs/structural-integration-register.json",
+      "semantic_consumer_guards": {
+        "supported_price_bound": "Transportar dominio, objetivos, escenario, revisión y evidencia junto al importe. Soporte reducido no es RLV completo.",
+        "bound_kind": "Máximo alcanzado, supremo no alcanzado, vacío probado, no acotado e indeterminado no son intercambiables; búsqueda parcial conserva indeterminación."
       }
     },
     {
@@ -526,7 +580,13 @@
       ],
       "contract_status": "candidate structure only, not financial completeness or release",
       "authorization": "not_granted",
-      "port_signatures": {}
+      "port_signatures": {},
+      "integration_routes_ref": "docs/structural-integration-register.json",
+      "semantic_consumer_guards": {
+        "decision": "Faltantes/reglas/conflictos requeridos mantienen PENDING sin PASS/FAIL; faltan política completa y aprobación auténtica para uso real.",
+        "aggregation_rule_ref": "Exigir misma definición y contexto, unidad/base/período compatibles y evidencia de cálculo vigente; adapter explícito si difieren.",
+        "comparisons": "Exigir misma definición y contexto, unidad/base/período compatibles y evidencia de cálculo vigente; adapter explícito si difieren."
+      }
     }
   ]
 }

@@ -93,3 +93,7 @@ M9-01:M9-12 amplían decisión y auditoría: 390 filas vigentes. Reglas hipotét
 ## Conciliación M1 y aceptación
 
 M1-01:M1-08 completan el índice de contratos candidatos; total vigente 398 filas. Mapa enriquecido de 55 campos, 21 casos originales y 15 adicionales especificados; ninguno certificado contra producto. Políticas 1–33 conciliadas textualmente con límites documentados, sin aprobación de autoridad ni auditoría tabular integral.
+
+## Consolidación del armado I01
+
+Consolidación I01: el registro estructural enlaza los 84 contratos a sus filas/fuentes y el registro final conserva una disposición por cada fila. Esa comprobación de trazabilidad no cambia sus estados financieros abiertos.

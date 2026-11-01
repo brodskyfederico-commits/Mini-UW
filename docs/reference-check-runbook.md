@@ -1,6 +1,6 @@
 # Verificación reproducible del paquete de referencia
 
-`python tools/check_reference_package.py` comprueba inventario SHA-256/tamaños, originales, R02, matriz, plantilla vacía y guardas de la fase actual. Ejecuta las 25 referencias registradas en `reference-runner-map.json` dentro de una copia temporal; no reescribe los resultados ni los originales de la carpeta verificada. Las bibliotecas necesarias están fijadas en `requirements-reference.txt`.
+`python tools/check_reference_package.py` comprueba inventario SHA-256/tamaños, originales, R02, matriz, plantilla vacía y guardas de la fase actual. Ejecuta las 26 verificaciones registradas (25 referencias acotadas y una consolidación estructural) en `reference-runner-map.json` dentro de una copia temporal; no reescribe los resultados ni los originales de la carpeta verificada. Las bibliotecas necesarias están fijadas en `requirements-reference.txt`.
 
 En un entorno Python 3.11 preparado con esas dependencias, ejecutar desde la raíz del repositorio. Si se suministra PYTHONPATH para bibliotecas locales, debe contener rutas absolutas porque las referencias se ejecutan en otra carpeta. Los paquetes se instalan en el entorno elegido; el verificador no instala nada, no se conecta a servicios, no interpreta fórmulas de Excel y no publica resultados financieros.
 
@@ -11,3 +11,5 @@ Las guardas son específicas de esta fase: entradas/criterios reales vacíos, de
 El manifiesto se actualiza sólo al preparar un hito con inventario revisado. Un archivo cambiado, ausente o no listado hace fallar la comprobación. Los reportes/fixtures sintéticos se regeneran en la copia y se comprueban sus resultados/cantidades declaradas; no se exigen bytes idénticos de esos reportes entre plataformas. Las fuentes y los demás registros se mantienen intactos. El inventario detecta alteraciones respecto del manifiesto suministrado; no autentica a su autor ni detecta una falsificación coordinada de archivos y manifiesto.
 
 El resultado local del verificador se conserva fuera del paquete. Un workflow guardado en GitHub no prueba que haya corrido allí: la evidencia de ejecución remota y las posibles restricciones de GitHub Actions se consultan por separado. No se declara CI remoto exitoso a partir de una ejecución en el VPS.
+
+Comprobación negativa reproducible: `python tools/check_structure_faults.py` prueba ocho defectos deliberados en una copia temporal y no modifica el paquete fuente. GitHub Actions ejecuta también este paso; no son casos de aceptación financiera del producto.

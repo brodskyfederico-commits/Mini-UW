@@ -1,27 +1,43 @@
-# Candidate interface/record schemas 0.1
+# Interfaces y registros candidatos — corte integral I01
 
-Ten schema documents define shared quantity/context vocabulary and module envelopes M1–M9; six additional documents define cost/cash/debt/criterion/scenario/snapshot records. `interface-index.json` lists aggregate module ports and proposed dimensional roles.
+El inventario vigente contiene 33 JSON Schemas 2020-12: vocabulario común, nueve envelopes M1–M9 y registros/perfiles específicos. [Registro integral](../docs/structural-integration-register.json) y [especificación](../docs/Especificacion_Integral_Armado_I01.md) son la entrada de lectura; el historial de ampliaciones se conserva en WORK_LOG.md.
 
-Validated with installed jsonschema 4.10.3 Draft202012Validator, offline local schema resolution. Structural conformance is distinct from semantic compatibility, financial validity, independent audit and authorization. References use exact rational quantities with units/context. The reference purpose and `authorization=not_granted` do not permit production or authenticate any author.
+`interface-index.json` indexa firmas propuestas y guardas de consumidor. Los 33 puertos agregados no representan todas las variables económicas o wiring ejecutable. Toda conversión de dimensión/unidad/moneda/base/período necesita adapter expreso. En particular, cuota anualizada de sizing no es caja fechada, y un conjunto de raíces no se reduce a una TIR única sin regla aplicable.
 
-The reference validator adds scoped semantic checks and synthetic arithmetic/block-propagation examples; it is not a full implementation of every financial contract, schedule, equation, solver or persistence layer. The empty project template is intentionally incomplete and not a valid execution with real deal context. No financial defaults or historical thresholds are loaded.
+Los validadores resuelven referencias localmente. Conformidad estructural y álgebra sintética no acreditan fuente auténtica, política financiera, revisión independiente, producto o autorización. Los registros mantienen autorización no concedida; la plantilla real continúa vacía.
 
-Additional candidate records: calendar, event ledger and interest/fee obligation events. The calendar/ledger reference checks all 19 current schema documents and 60 explicit-calendar/accounting cases, not bank conventions or actual obligation completeness.
+## Inventario completo
 
-Additional candidate records: explicit cost-scope representations/packages and hash-bound literal evidence claims. There are now 22 schema documents; the interface regression checks all 22 with 75 cases. Cost-scope reconciliation has 29 synthetic checks; evidence locators have 21 literal/integrity checks. These do not establish financial completeness or source authority.
-
-The budget-payment-bridge schema composes explicit cost-scope and ledger records with period/payment allocations. All 23 current schema documents pass interface regression; 41 bridge cases exercise structural links, not expert policy or a full financial engine.
-
-The calculation-lineage contract adds typed explicit dependency slots, scenario scope and content digests. All 24 candidate schema documents pass the 75 interface regression cases. Forty-eight lineage cases are separate from financial correctness, authentication or persistence.
-
-Investor-return-bridge and return-metric-bridge compose existing cash/calendar, exact periodic isolation and explicit criterion records. All 26 schema documents pass 75 interface regression cases. Their 43/31 scoped bridge controls do not certify real timings, thresholds, scenarios or deal decisions.
-
-Operating-cash-bridge and settlement-bridge add explicit accrual/working-balance and reduced full-payoff closing contracts. All 28 schemas pass 75 interface cases. Their 26/43 scoped checks do not establish authentic inventories, accounting policy, bank approval, distribution rights or production.
-
-Financing-timeline adds explicit action groups, unresolved term records, capacity bases and maturity/restriction-claim diagnostics. All 29 candidate schemas pass 75 interface cases; 50 synthetic timeline checks do not approve bank terms, execution order or product readiness.
-
-Price-grid-catalogue and sensitivity-ranking add explicit finite-domain/scenario-condition and signed measured-effect contracts. All 31 candidate schemas pass 75 interface cases. Their 52/33 controls, including 324 grid properties, do not certify economic derivation, actual scenario execution, approved ranking or global price optimality.
-
-Affine-price-support binds positive affine-cost/single-return assumptions and separately versioned explicit objectives to the finite-grid catalogue. Thirty-two schema documents are available; its 42 scoped checks and 144 operator/price cases do not approve the financial profile or full RLV.
-
-Refinance-capacity-bridge adds declared fixed-rate/annualized-payment-equivalent capacities and selected-principal versus gross-closing checks. Thirty-three schema documents are available. Its 46 scoped cases do not certify authentic bank terms, complete covenants, dated debt service, valuation or credit approval.
+- `schemas/M1.schema.json`
+- `schemas/M2.schema.json`
+- `schemas/M3.schema.json`
+- `schemas/M4.schema.json`
+- `schemas/M5.schema.json`
+- `schemas/M6.schema.json`
+- `schemas/M7.schema.json`
+- `schemas/M8.schema.json`
+- `schemas/M9.schema.json`
+- `schemas/affine-price-support.schema.json`
+- `schemas/budget-payment-bridge.schema.json`
+- `schemas/calculation-lineage.schema.json`
+- `schemas/calendar.schema.json`
+- `schemas/cash-event.schema.json`
+- `schemas/common.schema.json`
+- `schemas/cost-line.schema.json`
+- `schemas/cost-scope-package.schema.json`
+- `schemas/criterion.schema.json`
+- `schemas/debt-event.schema.json`
+- `schemas/event-ledger.schema.json`
+- `schemas/evidence-claim.schema.json`
+- `schemas/execution-snapshot.schema.json`
+- `schemas/financing-timeline.schema.json`
+- `schemas/investor-return-bridge.schema.json`
+- `schemas/obligation-event.schema.json`
+- `schemas/operating-cash-bridge.schema.json`
+- `schemas/price-grid-catalogue.schema.json`
+- `schemas/refinance-capacity-bridge.schema.json`
+- `schemas/return-metric-bridge.schema.json`
+- `schemas/scenario.schema.json`
+- `schemas/scope-representation.schema.json`
+- `schemas/sensitivity-ranking.schema.json`
+- `schemas/settlement-bridge.schema.json`

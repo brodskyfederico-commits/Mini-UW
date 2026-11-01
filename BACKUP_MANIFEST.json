@@ -1,10 +1,10 @@
 {
-  "scope": "Supplied originals, candidate model structure and scoped references; not production, financial certification or complete system recovery.",
+  "scope": "I01 independent structural design and supplied originals/scoped references only. Financial/product gates remain open; not complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 780,
-      "sha256": "0459e73a608e700c3a43c0e9b070ca6653286c2a4738c6409150791c29468dd4"
+      "bytes": 891,
+      "sha256": "fc6ec767a41f5ad441234b2bf1d9e942abe2ec00dd13076bef6c0b7490c370aa"
     },
     {
       "path": ".gitignore",
@@ -18,13 +18,18 @@
     },
     {
       "path": "README.md",
-      "bytes": 8217,
-      "sha256": "99d84da6de85bdd8c31eb66bcb52c547c7d611b624dc91d240540d821e5a3cc5"
+      "bytes": 2756,
+      "sha256": "e73804886930702cd6cad1b6ce70bbd170ba3a05ea3d06c036cd6f322ad019cf"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 20040,
-      "sha256": "9a3239c2f48b8493644daa598ab7313e95e0631d6328916ebfb5d81d5aec1ed9"
+      "bytes": 21884,
+      "sha256": "d72994598b6b94177f47e08b8a23dd2a06c3813c6033809df1f0c114977551fb"
+    },
+    {
+      "path": "docs/Especificacion_Integral_Armado_I01.md",
+      "bytes": 82945,
+      "sha256": "71c8b5c677383abd6ba49aabe69b9464cd2e1ca223155ceb26cf12c13e25c4ab"
     },
     {
       "path": "docs/acceptance-case-contracts.json",
@@ -68,18 +73,18 @@
     },
     {
       "path": "docs/coverage-guide.md",
-      "bytes": 6707,
-      "sha256": "d5773349012fef9b461bc8b3cf6043543e479b625c411d719581506e70bb71f1"
+      "bytes": 6969,
+      "sha256": "c858ab16740d4700baa5f3121c3fca0e04f7797e4b470e83b65dc3c5a6977dbb"
     },
     {
       "path": "docs/coverage-matrix.csv",
-      "bytes": 353816,
-      "sha256": "2fae043a8ffa24c66ca3f72d3e2cfb46711cb9799907fb6b319981388c404856"
+      "bytes": 369974,
+      "sha256": "bdd235fa78d0241466f8564af34f462eb721c2bf2146ac5cab6d3c6f89861c5e"
     },
     {
       "path": "docs/coverage-matrix.json",
-      "bytes": 538281,
-      "sha256": "490d846b725d103a8d71c3a807a337f248a6090a623f9b2ebb0aa714d53b353a"
+      "bytes": 554409,
+      "sha256": "ebda00d273690bc64975b6a77b11aa0152a4381861af41493f234dd54070f1f1"
     },
     {
       "path": "docs/current-direction.txt",
@@ -112,9 +117,19 @@
       "sha256": "8a723fe459878551a0bdf60500cc9918d7de80fd951be9ef392ea1e332630bb8"
     },
     {
+      "path": "docs/final-dependency-register.json",
+      "bytes": 181708,
+      "sha256": "214e9968bab387afd88a76c32ee50c0c507d952c1ae5eebd33317023684e239b"
+    },
+    {
       "path": "docs/financing-timeline.md",
       "bytes": 5256,
       "sha256": "bef609cbdc15cea94943d33f49c8db8912fb4d910673970481ba8129505a7f68"
+    },
+    {
+      "path": "docs/independent-structure-closeout.json",
+      "bytes": 3978,
+      "sha256": "d3e4950e356fd0ec53e48ad7dd88487ea6ca148ac5f56a697cca9402a80ffa16"
     },
     {
       "path": "docs/input-contract-map.json",
@@ -133,8 +148,8 @@
     },
     {
       "path": "docs/integration-and-readiness.md",
-      "bytes": 5103,
-      "sha256": "49396f332376a9a80d7b3ba3afbd4add13a647db622d3049d19837894e0be615"
+      "bytes": 2006,
+      "sha256": "bf1ccdf21ce84a3c4d149dff5b39f8a0e7ace68c7d9994ed44024cc7f2e5031e"
     },
     {
       "path": "docs/investor-return-bridges.md",
@@ -163,8 +178,8 @@
     },
     {
       "path": "docs/model-design.md",
-      "bytes": 7676,
-      "sha256": "23797945b05af4aad08bb6225ab56e2288211254eca7d8434a9efa689e383515"
+      "bytes": 7925,
+      "sha256": "6a4cbc33dd7b0ab6a5383daba6b33a5ed5039ed2715bf7a395a57a7660a73c23"
     },
     {
       "path": "docs/model-hold-exit-returns.md",
@@ -203,8 +218,8 @@
     },
     {
       "path": "docs/module-execution-design.json",
-      "bytes": 5712,
-      "sha256": "e589f3a20e76ee572e589280e64cf2d39b8d3aac2d2f15da3637eb3742a736de"
+      "bytes": 7304,
+      "sha256": "90a5e518b826f88396212cf2f2b703acc4e29c760efeedd9578f27bf49d0f194"
     },
     {
       "path": "docs/module-interface-protocol.md",
@@ -218,13 +233,13 @@
     },
     {
       "path": "docs/package-consistency-validation.json",
-      "bytes": 1435,
-      "sha256": "6756df75628e254f41d6830f6f2b7e99e35c8ff4a38a19e919e32371bf3c18bd"
+      "bytes": 1613,
+      "sha256": "e396f28d0070750a10fd8a771db00a79053e7cd148a175cba72379d2c2f9c1da"
     },
     {
       "path": "docs/package-readiness.json",
-      "bytes": 11552,
-      "sha256": "aec249d90f8abe8e3e6fd41cb618bf6b8cb75cd2cb6586161607d34cdd7d0f46"
+      "bytes": 12252,
+      "sha256": "827aafc20a8b75e713ac74d92188530483fb384e292fa89a4c7f295b21ab8f78"
     },
     {
       "path": "docs/periodic-irr-root-isolation.md",
@@ -253,18 +268,18 @@
     },
     {
       "path": "docs/recovery-status.md",
-      "bytes": 4736,
-      "sha256": "3ef2c63053dd10684055006337431dd9d07b077898486c10c7ab57171e31e1ce"
+      "bytes": 5030,
+      "sha256": "c2ab70f0e27edd64e58779f35d3dfc21d722f385b49899fe9d5e99ed67586891"
     },
     {
       "path": "docs/reference-check-runbook.md",
-      "bytes": 2809,
-      "sha256": "56b6c0d39e21583ca1fa17efd225a610d8340d7d5be7b9020085c1f110ac45bd"
+      "bytes": 3134,
+      "sha256": "a076c45df91b4a58e74a24c0afeca4e721408425644b848f348ddae575c32865"
     },
     {
       "path": "docs/reference-runner-map.json",
-      "bytes": 3445,
-      "sha256": "e0335179438ed8e86775bad9d96787c913a1b640896497ca41c8a07879e32a33"
+      "bytes": 3583,
+      "sha256": "3fce457929f045780dfac8eed97f4f30f9e7cf5230df8cf2f74149e42e3c2f28"
     },
     {
       "path": "docs/refinance-capacity-bridge.md",
@@ -277,6 +292,11 @@
       "sha256": "f17fc713a011cb286970b04d5c40f08298c0e611e2400324d6598fc9168761e7"
     },
     {
+      "path": "docs/review/MiniUW_Especificacion_Integral_Armado_I01.pdf",
+      "bytes": 119243,
+      "sha256": "e1b395d83b800c5eab6a1787c4a2a4ac87919c3076921b7d1fc96fca74cb5241"
+    },
+    {
       "path": "docs/review/MiniUW_Estructura_para_Revision_Profesional.pdf",
       "bytes": 105966,
       "sha256": "ad41aa11c517f25878d06a3378e5ce684f50f846bdf2e82ef9b135913444e253"
@@ -285,6 +305,11 @@
       "path": "docs/review/MiniUW_Estructura_para_Revision_Profesional_R02.pdf",
       "bytes": 113205,
       "sha256": "b16e2a56e21e5d9880b319d9c97a40ba566927d4bc9eb2076321ff6af714beb3"
+    },
+    {
+      "path": "docs/review/integral-spec-I01-validation.json",
+      "bytes": 433,
+      "sha256": "9f42b7ec27e13e6adba7b32653254090b9e11b0408d3a87cec337642f2d461f6"
     },
     {
       "path": "docs/review/pdf-review-validation-R02.json",
@@ -320,6 +345,16 @@
       "path": "docs/source-review-limits.md",
       "bytes": 1398,
       "sha256": "d7582df54f957a1c5f97690bdcffafde3e701d23da5bc4515a3502ee13590d12"
+    },
+    {
+      "path": "docs/structural-fault-injection-validation.json",
+      "bytes": 493,
+      "sha256": "d47679c9acafe64e5660b593a5b08b3fb7c00d0a1c7a667c6a1f7b91ed4ad36e"
+    },
+    {
+      "path": "docs/structural-integration-register.json",
+      "bytes": 104780,
+      "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc"
     },
     {
       "path": "infra/README.md",
@@ -517,6 +552,11 @@
       "sha256": "4833fc98def3eec66f4a6dd8b509f55c134009f5625866af0b2f715f51a24cea"
     },
     {
+      "path": "references/structure-closeout-validation.json",
+      "bytes": 2441,
+      "sha256": "1d47bc23e56dd75109af8cbf7cfe0cb6ea2a8dc07c8fbe505485a2a31a13f10f"
+    },
+    {
       "path": "references/validate_affine_price_support.py",
       "bytes": 23053,
       "sha256": "f94d1dfde24b5dadf315cc3fa559ce8e5b5d186e2f6190859d6b7237047f448a"
@@ -642,6 +682,11 @@
       "sha256": "9130a7575205b2cda4dc34eb4d3d6095c5c1d569dd90dfb477f6beee36f224ac"
     },
     {
+      "path": "references/validate_structure_closeout.py",
+      "bytes": 13201,
+      "sha256": "384455bd2742a64eb0932d1c2604a86416093d5ee3ccb0eccbd1dfbd143b4c6e"
+    },
+    {
       "path": "requirements-reference.txt",
       "bytes": 139,
       "sha256": "173457d010bbe8a2cea404ee0107df50dcb82eb2e96bac4773c55f06b01aea47"
@@ -693,8 +738,8 @@
     },
     {
       "path": "schemas/README.md",
-      "bytes": 4078,
-      "sha256": "58350cd7412e7557c59fe9f8912c3a0286fe287afb5f4e79c1052d1b4a3bb288"
+      "bytes": 2340,
+      "sha256": "43389a300b71fe054616756024d5cd7178d35b18fc104ca9ddb6c910e3b728e1"
     },
     {
       "path": "schemas/affine-price-support.schema.json",
@@ -768,8 +813,8 @@
     },
     {
       "path": "schemas/interface-index.json",
-      "bytes": 14610,
-      "sha256": "19e61936521f898e98f2a61f49853385398becc70e231938ca61034b4e684f88"
+      "bytes": 20807,
+      "sha256": "6289abf1db85476ccb54db98ed4d8ff0fec22f753b4cd373ee8e0aa2638170ad"
     },
     {
       "path": "schemas/investor-return-bridge.schema.json",
@@ -985,6 +1030,11 @@
       "path": "tools/check_reference_package.py",
       "bytes": 6320,
       "sha256": "85fa024e6718f2adae6e4dba2f23a0568dfcacc28bdc14c8e668f79ca3bbb148"
+    },
+    {
+      "path": "tools/check_structure_faults.py",
+      "bytes": 2201,
+      "sha256": "ef657ee6d978353dbbdaadd306ec4134835b911665e05a6935eae4e956b85775"
     }
   ]
 }
