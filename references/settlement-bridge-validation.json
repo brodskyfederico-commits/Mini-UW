@@ -1,0 +1,328 @@
+{
+  "status": "passed",
+  "total": 43,
+  "checks": [
+    "refi_gross_cash_sources_uses_retained_reconcile",
+    "valuation_not_cash_proceeds_or_distribution",
+    "released_and_new_reserves_are_not_gross_equity",
+    "principal_interest_fee_settled_separately",
+    "new_debt_not_equity_recovery",
+    "no_automatic_distribution_of_retained_cash",
+    "source_records_unchanged",
+    "balanced_statement_not_pass_or_publish",
+    "sale_uses_actual_receipt_not_valuation",
+    "valuation_absence_does_not_invent_cash",
+    "statement_discrepancy_retained_not_adjusted",
+    "missing_other_use_not_assumed_zero",
+    "net_statement_no_fabricated_gross_cash",
+    "partial_payoff_not_silently_closed",
+    "unknown_obligations_not_closed",
+    "ledger_discrepancy_blocks_statement",
+    "balanced_cash_does_not_prove_old_principal_paid_off",
+    "unpaid_fee_blocks_full_payoff_despite_zero_principal",
+    "capitalized_interest_paid_once_inside_principal",
+    "documented_fee_adjustment_does_not_prove_cash_payment",
+    "prior_period_cash_not_duplicated_or_ignored",
+    "new_noncash_principal_not_assumed_loan_cash",
+    "old_principal_adjustment_not_cash_payoff_proof",
+    "explicit_contribution_and_distribution_not_netted",
+    "mixed_dates_not_assumed_same_closing",
+    "context_mismatch",
+    "cash_event_omitted",
+    "duplicate_cash_role",
+    "unknown_cash_role_ref",
+    "reserve_release_not_proceeds",
+    "bank_loan_not_equity_contribution",
+    "debt_not_omitted",
+    "new_and_old_loan_not_same",
+    "unknown_new_loan",
+    "wrong_closing_period",
+    "missing_closing_date",
+    "no_implicit_zero_role_claim",
+    "no_empty_completeness_evidence",
+    "wrong_statement_currency",
+    "wrong_statement_period",
+    "valuation_wrong_cutoff",
+    "negative_gross_claim",
+    "no_production_authorization"
+  ],
+  "schemas_checked": 28,
+  "synthetic_examples": {
+    "refinance": {
+      "decision": "PENDING",
+      "publication_authorized": false,
+      "valuation_is_cash": false,
+      "state": "internally_reconciled_reference",
+      "statement_reconciliation": [
+        {
+          "role": "proceeds",
+          "claimed": "100",
+          "ledger": "100",
+          "residual": "0"
+        },
+        {
+          "role": "principal_payoff",
+          "claimed": "70",
+          "ledger": "70",
+          "residual": "0"
+        },
+        {
+          "role": "interest_payoff",
+          "claimed": "2",
+          "ledger": "2",
+          "residual": "0"
+        },
+        {
+          "role": "fee_payoff",
+          "claimed": "1",
+          "ledger": "1",
+          "residual": "0"
+        },
+        {
+          "role": "closing_cost",
+          "claimed": "3",
+          "ledger": "3",
+          "residual": "0"
+        },
+        {
+          "role": "reserve_release",
+          "claimed": "4",
+          "ledger": "4",
+          "residual": "0"
+        },
+        {
+          "role": "new_reserve",
+          "claimed": "5",
+          "ledger": "5",
+          "residual": "0"
+        },
+        {
+          "role": "equity_contribution",
+          "claimed": "0",
+          "ledger": "0",
+          "residual": "0"
+        },
+        {
+          "role": "equity_distribution",
+          "claimed": "20",
+          "ledger": "20",
+          "residual": "0"
+        },
+        {
+          "role": "other_source",
+          "claimed": "0",
+          "ledger": "0",
+          "residual": "0"
+        },
+        {
+          "role": "other_use",
+          "claimed": "0",
+          "ledger": "0",
+          "residual": "0"
+        }
+      ],
+      "ledger_reference": {
+        "state": "internally_reconciled_reference",
+        "periods": [
+          {
+            "period_id": "P1",
+            "external_in": "100",
+            "external_out": "96",
+            "cash_total": "10",
+            "principal_total": "100",
+            "due_total": "0"
+          }
+        ],
+        "cash": {
+          "free": "5",
+          "restricted": "5"
+        },
+        "debt": {
+          "OLD": "0",
+          "NEW": "100"
+        },
+        "due": {
+          "OLD-I": "0",
+          "OLD-F": "0"
+        },
+        "recorded_principal_plus_due": "100",
+        "gross_equity_contributions": "0",
+        "gross_equity_distributions": "20",
+        "issues": []
+      },
+      "issues": [],
+      "free_cash_before": "2",
+      "sources_including_free_cash": "106",
+      "cash_uses": "101",
+      "retained_free_cash": "5",
+      "distribution_recorded": "20",
+      "new_restricted_cash": "5",
+      "valuation_claim": {
+        "state": "known",
+        "value": {
+          "numerator": 120,
+          "denominator": 1
+        },
+        "dimensions": {
+          "money": 1,
+          "area": 0,
+          "unit": 0,
+          "space": 0,
+          "time": 0
+        },
+        "unit_id": "SYNTHETIC-MONEY",
+        "currency": "SYNTHETIC-CURRENCY",
+        "measurement_role": "stock",
+        "basis": "synthetic_project",
+        "period_ref": "VALUATION:2028-02-15",
+        "sources": [
+          {
+            "source_id": "SYNTHETIC-ONLY",
+            "locator": "fixture declaration",
+            "claim_kind": "synthetic_reference",
+            "verification_status": "synthetic_only"
+          }
+        ]
+      },
+      "obligation_completeness": "declared, not independently verified"
+    },
+    "sale": {
+      "decision": "PENDING",
+      "publication_authorized": false,
+      "valuation_is_cash": false,
+      "state": "internally_reconciled_reference",
+      "statement_reconciliation": [
+        {
+          "role": "proceeds",
+          "claimed": "100",
+          "ledger": "100",
+          "residual": "0"
+        },
+        {
+          "role": "principal_payoff",
+          "claimed": "70",
+          "ledger": "70",
+          "residual": "0"
+        },
+        {
+          "role": "interest_payoff",
+          "claimed": "2",
+          "ledger": "2",
+          "residual": "0"
+        },
+        {
+          "role": "fee_payoff",
+          "claimed": "1",
+          "ledger": "1",
+          "residual": "0"
+        },
+        {
+          "role": "closing_cost",
+          "claimed": "3",
+          "ledger": "3",
+          "residual": "0"
+        },
+        {
+          "role": "reserve_release",
+          "claimed": "4",
+          "ledger": "4",
+          "residual": "0"
+        },
+        {
+          "role": "new_reserve",
+          "claimed": "5",
+          "ledger": "5",
+          "residual": "0"
+        },
+        {
+          "role": "equity_contribution",
+          "claimed": "0",
+          "ledger": "0",
+          "residual": "0"
+        },
+        {
+          "role": "equity_distribution",
+          "claimed": "20",
+          "ledger": "20",
+          "residual": "0"
+        },
+        {
+          "role": "other_source",
+          "claimed": "0",
+          "ledger": "0",
+          "residual": "0"
+        },
+        {
+          "role": "other_use",
+          "claimed": "0",
+          "ledger": "0",
+          "residual": "0"
+        }
+      ],
+      "ledger_reference": {
+        "state": "internally_reconciled_reference",
+        "periods": [
+          {
+            "period_id": "P1",
+            "external_in": "100",
+            "external_out": "96",
+            "cash_total": "10",
+            "principal_total": "0",
+            "due_total": "0"
+          }
+        ],
+        "cash": {
+          "free": "5",
+          "restricted": "5"
+        },
+        "debt": {
+          "OLD": "0"
+        },
+        "due": {
+          "OLD-I": "0",
+          "OLD-F": "0"
+        },
+        "recorded_principal_plus_due": "0",
+        "gross_equity_contributions": "0",
+        "gross_equity_distributions": "20",
+        "issues": []
+      },
+      "issues": [],
+      "free_cash_before": "2",
+      "sources_including_free_cash": "106",
+      "cash_uses": "101",
+      "retained_free_cash": "5",
+      "distribution_recorded": "20",
+      "new_restricted_cash": "5",
+      "valuation_claim": {
+        "state": "known",
+        "value": {
+          "numerator": 120,
+          "denominator": 1
+        },
+        "dimensions": {
+          "money": 1,
+          "area": 0,
+          "unit": 0,
+          "space": 0,
+          "time": 0
+        },
+        "unit_id": "SYNTHETIC-MONEY",
+        "currency": "SYNTHETIC-CURRENCY",
+        "measurement_role": "stock",
+        "basis": "synthetic_project",
+        "period_ref": "VALUATION:2028-02-15",
+        "sources": [
+          {
+            "source_id": "SYNTHETIC-ONLY",
+            "locator": "fixture declaration",
+            "claim_kind": "synthetic_reference",
+            "verification_status": "synthetic_only"
+          }
+        ]
+      },
+      "obligation_completeness": "declared, not independently verified"
+    }
+  },
+  "scope": "Explicit synthetic last-period gross-cash full-payoff settlement/ledger reconciliation only. Not actual obligation completeness, valuation/sizing approval, escrow/net-withheld counterpart inference, intraday order, distribution entitlement, tax/legal policy, independent audit or production."
+}

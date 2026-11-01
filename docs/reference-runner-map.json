@@ -72,6 +72,14 @@
     {
       "script": "references/validate_return_metric_bridge.py",
       "report": "references/return-metric-bridge-validation.json"
+    },
+    {
+      "script": "references/validate_operating_cash_bridge.py",
+      "report": "references/operating-cash-bridge-validation.json"
+    },
+    {
+      "script": "references/validate_settlement_bridge.py",
+      "report": "references/settlement-bridge-validation.json"
     }
   ]
 }

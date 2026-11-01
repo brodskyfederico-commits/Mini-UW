@@ -106,6 +106,16 @@
       "path": "references/return-metric-bridge-validation.json",
       "scope": "Synthetic ledger-to-IRR interval/condition and declared calendar-month compounding only. Not root-selection/aggregation policy, threshold authority, actual frequency approval, XIRR, financial audit, publication or real-deal PASS/FAIL.",
       "count": 31
+    },
+    {
+      "path": "references/operating-cash-bridge-validation.json",
+      "scope": "Declared synthetic M2 accrued-income/expense/working-balance to recorded operating cash reconciliation only. Not approved NOI/reserve/accounting/tax definitions, authentic balance inventory, automatic cash distribution, independent audit or production.",
+      "count": 26
+    },
+    {
+      "path": "references/settlement-bridge-validation.json",
+      "scope": "Explicit synthetic last-period gross-cash full-payoff settlement/ledger reconciliation only. Not actual obligation completeness, valuation/sizing approval, escrow/net-withheld counterpart inference, intraday order, distribution entitlement, tax/legal policy, independent audit or production.",
+      "count": 43
     }
   ],
   "independent_financial_audit": false,
@@ -127,19 +137,24 @@
     "calendar_ledger_schemas": 3,
     "cost_scope_schemas": 2,
     "evidence_locator_schemas": 1,
-    "total_schema_documents": 26,
+    "total_schema_documents": 28,
     "budget_payment_bridge_schemas": 1,
     "calculation_lineage_schemas": 1,
     "investor_return_bridge_schemas": 1,
-    "return_metric_bridge_schemas": 1
+    "return_metric_bridge_schemas": 1,
+    "operating_cash_bridge_schemas": 1,
+    "settlement_bridge_schemas": 1
   },
   "reference_runner": {
-    "suites": 18,
+    "suites": 20,
     "isolated_temporary_copy": true,
     "github_workflow_prepared": true,
-    "remote_run_verified": true,
-    "not_financial_certification": true,
-    "verified_commit_sha": "56b7c43493cd1b3fb855449408f5603b8e945d64",
-    "verified_run_url": "https://github.com/brodskyfederico-commits/Mini-UW/actions/runs/41356375624"
+    "remote_evidence_rule": "Check the GitHub run for the exact current commit; previous successful runs do not certify descendants.",
+    "last_recorded_prior_run": {
+      "commit_sha": "56b7c43493cd1b3fb855449408f5603b8e945d64",
+      "suites": 18,
+      "url": "https://github.com/brodskyfederico-commits/Mini-UW/actions/runs/41356375624"
+    },
+    "not_financial_certification": true
   }
 }

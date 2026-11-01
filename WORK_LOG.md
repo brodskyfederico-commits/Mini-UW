@@ -94,3 +94,7 @@ Continued independent construction without expert inputs. Added investor cash/gr
 ## First remote reference-check execution verified — 1 November 2026
 
 GitHub Actions run 41356375624/job 124997186733 completed successfully for commit 56b7c43493cd1b3fb855449408f5603b8e945d64. Verified installation and package/reference steps from GitHub API summaries; all 18 registered suites run by the checker. The VPS guard also rejected four deliberate integrity faults (changed, missing, unlisted and escaping paths). Evidence is tied to that exact commit; descendant commits require their own run. This is repository/reference validation, not model certification or production.
+
+## Operating cash and closing reconciliation bridges — 1 November 2026
+
+Continued independent structural work without Lorena/professional inputs. Added two candidate schemas and scoped references: 26 operating controls preserve accrued income/NOI, working-balance continuity and recorded cash; 43 gross-cash closing controls preserve full-payoff profile, principal/interest/fees, capitalized interest once, previous cash, reserves and explicit contributions/distributions. Net-withheld, partial discharge and unsupported adjustments remain blocked rather than reconstructed. All 28 schemas pass 75 interface cases; the temporary-copy package checker now registers 20 suites. Kept 398 coverage rows, all blank real inputs/criteria/choices, open financial gates, original bytes and R02. No approval, accounting policy, complete integration, independent audit or production claimed.

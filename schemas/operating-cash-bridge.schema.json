@@ -1,0 +1,148 @@
+{
+  "type": "object",
+  "properties": {
+    "purpose": {
+      "const": "design_or_synthetic_reference"
+    },
+    "authorization": {
+      "const": "not_granted"
+    },
+    "context": {
+      "$ref": "urn:miniuw:candidate:common:0.1#/$defs/context"
+    },
+    "event_ledger": {
+      "$ref": "urn:miniuw:candidate:event-ledger:0.1"
+    },
+    "profile": {
+      "const": "explicit_accrual_cash_reconciliation"
+    },
+    "profile_evidence_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "period_records": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "period_ref": {
+            "type": "string",
+            "minLength": 1
+          },
+          "m2_result": {
+            "$ref": "urn:miniuw:candidate:M2:0.1"
+          },
+          "working_balances": {
+            "type": "object",
+            "properties": {
+              "receivables": {
+                "type": "object",
+                "properties": {
+                  "opening": {
+                    "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+                  },
+                  "closing": {
+                    "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+                  }
+                },
+                "required": [
+                  "opening",
+                  "closing"
+                ],
+                "additionalProperties": false
+              },
+              "deferred_revenue": {
+                "type": "object",
+                "properties": {
+                  "opening": {
+                    "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+                  },
+                  "closing": {
+                    "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+                  }
+                },
+                "required": [
+                  "opening",
+                  "closing"
+                ],
+                "additionalProperties": false
+              },
+              "payables": {
+                "type": "object",
+                "properties": {
+                  "opening": {
+                    "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+                  },
+                  "closing": {
+                    "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+                  }
+                },
+                "required": [
+                  "opening",
+                  "closing"
+                ],
+                "additionalProperties": false
+              },
+              "prepaid_expenses": {
+                "type": "object",
+                "properties": {
+                  "opening": {
+                    "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+                  },
+                  "closing": {
+                    "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+                  }
+                },
+                "required": [
+                  "opening",
+                  "closing"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "receivables",
+              "deferred_revenue",
+              "payables",
+              "prepaid_expenses"
+            ],
+            "additionalProperties": false
+          },
+          "noncash_revenue": {
+            "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+          },
+          "noncash_expense": {
+            "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+          },
+          "adjustment_evidence_ref": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "period_ref",
+          "m2_result",
+          "working_balances",
+          "noncash_revenue",
+          "noncash_expense",
+          "adjustment_evidence_ref"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "purpose",
+    "authorization",
+    "context",
+    "event_ledger",
+    "profile",
+    "profile_evidence_ref",
+    "period_records"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:miniuw:candidate:operating-cash-bridge:0.1",
+  "title": "Explicit accrued-operation/working-balances/cash reference; no accounting or reserve policy approval"
+}

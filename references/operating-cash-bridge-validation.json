@@ -1,0 +1,82 @@
+{
+  "status": "passed",
+  "total": 26,
+  "checks": [
+    "declared_accrual_cash_identity_reconciles",
+    "noi_is_not_net_cash",
+    "net_operating_cash_is_not_distribution",
+    "restricted_transfer_not_duplicate_operating_expense",
+    "source_claims_not_mutated",
+    "balanced_bridge_not_decision_or_release",
+    "noi_mismatch_not_silently_fixed",
+    "balanced_ledger_does_not_override_accrual_bridge",
+    "missing_noncash_not_zero",
+    "known_outputs_do_not_erase_m2_blocker",
+    "underlying_cash_claim_mismatch_blocks",
+    "empty_period_and_working_balance_continuity_preserved",
+    "working_balance_cannot_reset_between_periods",
+    "context_mismatch",
+    "m2_context_mismatch",
+    "duplicate_period_record",
+    "unknown_period_record",
+    "no_empty_period_records",
+    "no_default_profile",
+    "no_missing_adjustment_evidence",
+    "currency_mismatch",
+    "flow_not_stock",
+    "wrong_stock_cutoff",
+    "negative_gross_working_balance",
+    "no_default_zero_balance",
+    "no_production_authorization"
+  ],
+  "schemas_checked": 28,
+  "synthetic_example": {
+    "decision": "PENDING",
+    "publication_authorized": false,
+    "state": "internally_reconciled_reference",
+    "ledger_reference": {
+      "state": "internally_reconciled_reference",
+      "periods": [
+        {
+          "period_id": "P1",
+          "external_in": "46",
+          "external_out": "30",
+          "cash_total": "16",
+          "principal_total": "0",
+          "due_total": "0"
+        }
+      ],
+      "cash": {
+        "free": "11",
+        "restricted": "5"
+      },
+      "debt": {},
+      "due": {},
+      "recorded_principal_plus_due": "0",
+      "gross_equity_contributions": "0",
+      "gross_equity_distributions": "10",
+      "issues": []
+    },
+    "issues": [],
+    "periods": [
+      {
+        "period_ref": "P1",
+        "state": "internally_reconciled_reference",
+        "claimed_noi": "25",
+        "noi_definition_residual": "0",
+        "expected_receipts": "46",
+        "ledger_receipts": "46",
+        "expected_payments": "20",
+        "ledger_payments": "20",
+        "net_operating_cash": "26",
+        "working_balance_deltas": {
+          "receivables": "5",
+          "deferred_revenue": "2",
+          "payables": "5",
+          "prepaid_expenses": "2"
+        }
+      }
+    ]
+  },
+  "scope": "Declared synthetic M2 accrued-income/expense/working-balance to recorded operating cash reconciliation only. Not approved NOI/reserve/accounting/tax definitions, authentic balance inventory, automatic cash distribution, independent audit or production."
+}

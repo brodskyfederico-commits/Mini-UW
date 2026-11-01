@@ -67,3 +67,7 @@ Referencia propia `references/validate_m6_refinance.py`; resultado `m6-validatio
 Pendientes de cierre: contraste con un modelo independiente, tasas/frecuencias y reglas bancarias aprobadas, term sheet con costos/reservas y límites, fechas y aplicaciones de payoff, no-aplicabilidad, pruebas de integración M2/M5/M7, casos con service parcial/interest-only/tasa flotante y reglas de decisión. M6 permanece abierto.
 
 El PDF profesional R01 es un corte anterior a este contrato detallado: se conserva intacto para trazabilidad. Este documento amplía su sección preliminar M6 sin atribuir aprobación al profesional.
+
+## Conciliación de un perfil de cierre bruto
+
+[El puente de cierre](operating-settlement-bridges.md) incorpora 43 controles sintéticos de fuentes/usos, capitalización y payoff/reservas. El perfil exige cancelación completa declarada; no es regla general de refinanciación. Estados netos, ajustes de deuda y payoffs parciales requieren contratos/evidencia separados. No habilita aprobación crediticia o caja distribuible.

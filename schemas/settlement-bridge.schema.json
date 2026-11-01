@@ -1,0 +1,194 @@
+{
+  "type": "object",
+  "properties": {
+    "purpose": {
+      "const": "design_or_synthetic_reference"
+    },
+    "authorization": {
+      "const": "not_granted"
+    },
+    "context": {
+      "$ref": "urn:miniuw:candidate:common:0.1#/$defs/context"
+    },
+    "event_ledger": {
+      "$ref": "urn:miniuw:candidate:event-ledger:0.1"
+    },
+    "settlement_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "kind": {
+      "enum": [
+        "sale",
+        "refinance"
+      ]
+    },
+    "closing_period_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "closing_date_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "representation": {
+      "enum": [
+        "explicit_gross_cash_movements",
+        "net_receipt_with_withholdings"
+      ]
+    },
+    "payoff_profile": {
+      "enum": [
+        "all_preexisting_debts_closed",
+        "partial_or_unresolved"
+      ]
+    },
+    "new_debt_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "debt_ids_to_close": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "obligation_inventory_state": {
+      "enum": [
+        "declared_complete",
+        "unresolved"
+      ]
+    },
+    "completeness_evidence_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "valuation_claim": {
+      "oneOf": [
+        {
+          "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "role_claims": {
+      "type": "object",
+      "properties": {
+        "proceeds": {
+          "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+        },
+        "principal_payoff": {
+          "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+        },
+        "interest_payoff": {
+          "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+        },
+        "fee_payoff": {
+          "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+        },
+        "closing_cost": {
+          "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+        },
+        "reserve_release": {
+          "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+        },
+        "new_reserve": {
+          "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+        },
+        "equity_contribution": {
+          "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+        },
+        "equity_distribution": {
+          "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+        },
+        "other_source": {
+          "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+        },
+        "other_use": {
+          "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+        }
+      },
+      "required": [
+        "proceeds",
+        "principal_payoff",
+        "interest_payoff",
+        "fee_payoff",
+        "closing_cost",
+        "reserve_release",
+        "new_reserve",
+        "equity_contribution",
+        "equity_distribution",
+        "other_source",
+        "other_use"
+      ],
+      "additionalProperties": false
+    },
+    "cash_classifications": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "cash_event_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "role": {
+            "enum": [
+              "proceeds",
+              "principal_payoff",
+              "interest_payoff",
+              "fee_payoff",
+              "closing_cost",
+              "reserve_release",
+              "new_reserve",
+              "equity_contribution",
+              "equity_distribution",
+              "other_source",
+              "other_use"
+            ]
+          },
+          "evidence_ref": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "cash_event_id",
+          "role",
+          "evidence_ref"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "purpose",
+    "authorization",
+    "context",
+    "event_ledger",
+    "settlement_id",
+    "kind",
+    "closing_period_ref",
+    "closing_date_ref",
+    "representation",
+    "payoff_profile",
+    "new_debt_id",
+    "debt_ids_to_close",
+    "obligation_inventory_state",
+    "completeness_evidence_ref",
+    "valuation_claim",
+    "role_claims",
+    "cash_classifications"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:miniuw:candidate:settlement-bridge:0.1",
+  "title": "Candidate full-payoff gross-cash settlement reference; no approval or source inference"
+}

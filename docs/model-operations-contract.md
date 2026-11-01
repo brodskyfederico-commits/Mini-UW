@@ -54,3 +54,7 @@ Cambios de mix, renta, área, ocupación, concesiones o gasto invalidan A y desc
 Validación aislada: script `references/validate_m2_algebra.py`, resultado `references/m2-validation.json`. Utiliza fracciones exactas y perfiles sintéticos sin datos reales ni criterios de inversión. Comprueba sustitución en la ecuación original, igualdad de ramas, preservación de NOI negativo/cero, conversión dimensional de renta y equivalencia de la desigualdad de equilibrio. No reproduce referencias históricas, no valida elegibilidad fiscal, no prueba extracción de documentos ni certifica un producto. La validación usa el mismo desarrollo algebraico; no es auditoría independiente.
 
 Pendientes que no requieren Full UW: resolver base de other income/concesiones, clasificación de reservas y NNN, contrato de estabilización y calendario, definición de ocupación y política fiscal aplicable. Agrupar preguntas expertas sin contactar a Lorena. El próximo módulo de diseño es presupuesto y calendario M3/M4, con inclusiones C35, contingencias y desembolsos.
+
+## Puente explícito de devengo a caja
+
+[Operación y cierres](operating-settlement-bridges.md) incorpora 26 controles de M2, saldos inicial/final y movimientos operativos del ledger. Conserva discrepancias y bloqueos; no adopta inclusiones de NOI, impuestos o reservas ni convierte NOI en distribución.

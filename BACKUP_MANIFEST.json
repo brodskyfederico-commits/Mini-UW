@@ -1,5 +1,5 @@
 {
-  "scope": "Supplied originals, candidate model structure and scoped references; not production or financial certification.",
+  "scope": "Supplied originals, candidate model structure and scoped references; not production, financial certification or complete system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 6411,
-      "sha256": "da2160281fa9552edc835a9435b1c23fade9f6c516e7cfcabec33c2d57958907"
+      "bytes": 6783,
+      "sha256": "bf5e3346e35d63df29a651ac3dd1c542149cd2712cd9acb1215c18e12b601d3b"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 15522,
-      "sha256": "83749c6709ed26b2387cf5c6e670b085cb04bd47724f45bb60fb519620e57136"
+      "bytes": 16405,
+      "sha256": "8049119b4e0e92cbff6b2b115ccf628895d65f32a09caedd2137e22c9835679f"
     },
     {
       "path": "docs/acceptance-case-contracts.json",
@@ -68,13 +68,13 @@
     },
     {
       "path": "docs/coverage-matrix.csv",
-      "bytes": 343533,
-      "sha256": "19453dfcdd7e5ba4ccb2d055e8810fb7631f3544873f0f84333c73f061852f9d"
+      "bytes": 345806,
+      "sha256": "93dbaec323b74ecbc73fd15bd3d69b6ff54820d472476cd2c05a36063b031bfe"
     },
     {
       "path": "docs/coverage-matrix.json",
-      "bytes": 528008,
-      "sha256": "7cde5040d5442f5d78b0a00c93f3ba5b30c47189c0de538416d94ab1d0d550a4"
+      "bytes": 530277,
+      "sha256": "3449a0b71ee315a5834b4b053aade2ae827543fc793551a382e86204a574e78a"
     },
     {
       "path": "docs/current-direction.txt",
@@ -168,13 +168,13 @@
     },
     {
       "path": "docs/model-operations-contract.md",
-      "bytes": 7131,
-      "sha256": "066cf12407504c6913e3b869f5c71505c1f5e520e85c0c224a269315edd91642"
+      "bytes": 7437,
+      "sha256": "71c052b3833cf1553be584fd5aa328fa20b2d4531168ece05417ca91ccf73af6"
     },
     {
       "path": "docs/model-refinance-contract.md",
-      "bytes": 9116,
-      "sha256": "4419bbc502df7aa853fdc1824fbedca781e099d796e6479efc46a7162bdd5fbb"
+      "bytes": 9544,
+      "sha256": "0653a8e2483ff06d286127fe9c670c020d67432fd1ad72661fe73d91ab4fc273"
     },
     {
       "path": "docs/model-scenarios-price.md",
@@ -193,8 +193,8 @@
     },
     {
       "path": "docs/module-execution-design.json",
-      "bytes": 3859,
-      "sha256": "897913530894ca3d11bfb677b18b91ba23d22738e72b71cf4d38327f0bced6bc"
+      "bytes": 4356,
+      "sha256": "fbe23eb646a7672170561d7fe36344e8177657c26bf13cc8ea906c32eb6f57ed"
     },
     {
       "path": "docs/module-interface-protocol.md",
@@ -202,14 +202,19 @@
       "sha256": "5d4f135a117ddf80392f3fec37df32c30c1553844fb5f3e4ec5abc4052d47c1a"
     },
     {
+      "path": "docs/operating-settlement-bridges.md",
+      "bytes": 6300,
+      "sha256": "defb05e619f39a1f413491bf5ff20b6cf8e0119d6de4941870988eaacab27bd4"
+    },
+    {
       "path": "docs/package-consistency-validation.json",
-      "bytes": 1086,
-      "sha256": "9d78d69c874778155a3e5019cd186fe3550d90a7e2d648f28e1759a537e5a04b"
+      "bytes": 1158,
+      "sha256": "f56d5f0473974226a6112f4eeb48e9f6b84d55ec40c5d11647af2686c8a3baa7"
     },
     {
       "path": "docs/package-readiness.json",
-      "bytes": 8042,
-      "sha256": "ed1207bb28a8e2850eca60a9a2dab4dbfc48aa44d6df71377c27d2edb54b6a53"
+      "bytes": 9032,
+      "sha256": "d1c8506487c1446d8526f3773d811a6c8ea6a0094a42d192c268daf758cf45a1"
     },
     {
       "path": "docs/periodic-irr-root-isolation.md",
@@ -239,12 +244,12 @@
     {
       "path": "docs/reference-check-runbook.md",
       "bytes": 2809,
-      "sha256": "4edb5b98bc9041dc42adb31e41d8bbea7227e4b6537626a19790041bea23d113"
+      "sha256": "37057763348d52c142e8b09b42e8779412faeb598ba7fae261b9351e8ed40e81"
     },
     {
       "path": "docs/reference-runner-map.json",
-      "bytes": 2451,
-      "sha256": "ef50092c0d0a36e3b2f2bc768ba158386ddd24cc1b92ea8e503b43abca021c5f"
+      "bytes": 2731,
+      "sha256": "6fdb31cc334e005be7ef39f9b68e13c649f51296178945cfff8ecffb8ba62f26"
     },
     {
       "path": "docs/requirements-conflicts.md",
@@ -352,6 +357,16 @@
       "sha256": "5db22431d46301631f80b6b182a18e970ca47963ab91aca1db2233370a22aa6a"
     },
     {
+      "path": "references/fixtures/operating-cash-bridge-synthetic.json",
+      "bytes": 24666,
+      "sha256": "79cfed78d1e944898f73f81c571fc46eb32a5f5a2827ba9c6a1c564ab0b9e573"
+    },
+    {
+      "path": "references/fixtures/settlement-bridge-synthetic.json",
+      "bytes": 41642,
+      "sha256": "ee3d871d960797fe5308cb070c415f3ad982227f10a2feff65bbb091492efbf2"
+    },
+    {
       "path": "references/integrated-bridge-validation.json",
       "bytes": 1976,
       "sha256": "45b218fd7c6803c188a75d204c77a572e904f321cccb30e48f4ff9c30c10639c"
@@ -359,7 +374,7 @@
     {
       "path": "references/interface-contracts-validation.json",
       "bytes": 3055,
-      "sha256": "2097c9313f7bc49e0288fd0a80d6ef5757d95bbf86da582c404f70be0f7ba9da"
+      "sha256": "ed50012e9247b443585721fa51c392266a9c4cad305cb78d09fe8dd53d756ba8"
     },
     {
       "path": "references/investor-return-bridge-validation.json",
@@ -402,6 +417,11 @@
       "sha256": "502e52600058218d4e9d679e6aa805bec1dae0345bb9092a9aa8785241446449"
     },
     {
+      "path": "references/operating-cash-bridge-validation.json",
+      "bytes": 2582,
+      "sha256": "cfb1ea2d4d6e04aa3613a3fe7ba678fea1493a15be05cdc657585625d6d08c07"
+    },
+    {
       "path": "references/periodic-irr-isolation-validation.json",
       "bytes": 12240,
       "sha256": "cf4cdbbd3f7b8ac24be8e5c5a3927365acfa3de096235c116672c747512b35b4"
@@ -415,6 +435,11 @@
       "path": "references/revision-integrity-validation.json",
       "bytes": 1508,
       "sha256": "5b49fbc6a5b7e623e96e7121211919aaebf33cc154cc65500de80d08610f9aa8"
+    },
+    {
+      "path": "references/settlement-bridge-validation.json",
+      "bytes": 9059,
+      "sha256": "4833fc98def3eec66f4a6dd8b509f55c134009f5625866af0b2f715f51a24cea"
     },
     {
       "path": "references/validate_budget_payment_bridge.py",
@@ -492,6 +517,11 @@
       "sha256": "a47d50c320558cbca2e7b0bd2543368446b7fab298f8dac840d9b2bda0fbe3bb"
     },
     {
+      "path": "references/validate_operating_cash_bridge.py",
+      "bytes": 12436,
+      "sha256": "b995ec196b580d03293e9b0ee730d1990e847d16c676a9e9d0ee6c2e0f2639bd"
+    },
+    {
       "path": "references/validate_periodic_irr_isolation.py",
       "bytes": 10954,
       "sha256": "b7f62f866581f25bfa7be23073d862e739c13fa92eabf1a9cce82f6f76897692"
@@ -505,6 +535,11 @@
       "path": "references/validate_revision_integrity.py",
       "bytes": 6550,
       "sha256": "b723c19f2d5fff5f0a747035705e975364a1b15f6703ad9cf1eb4ed4757b6161"
+    },
+    {
+      "path": "references/validate_settlement_bridge.py",
+      "bytes": 23977,
+      "sha256": "9130a7575205b2cda4dc34eb4d3d6095c5c1d569dd90dfb477f6beee36f224ac"
     },
     {
       "path": "requirements-reference.txt",
@@ -558,8 +593,8 @@
     },
     {
       "path": "schemas/README.md",
-      "bytes": 2550,
-      "sha256": "8c1b753ae1870e64aaf672fff3aa86da1fc676e5dec76e593a8a217ee044e2e3"
+      "bytes": 2850,
+      "sha256": "e2ccd944d462aa671119aedba07f721ce7094b0b9ea641b98b8b50c9e52055d2"
     },
     {
       "path": "schemas/budget-payment-bridge.schema.json",
@@ -637,6 +672,11 @@
       "sha256": "978d82fa6cbe2073cf6853cbc738ca8c564deff63198e10fab8485f30aeb473f"
     },
     {
+      "path": "schemas/operating-cash-bridge.schema.json",
+      "bytes": 4357,
+      "sha256": "f1b0bd6b92b5f0bc9c904a2bc1a510e956b869c4ca544feb143af77b85cb134b"
+    },
+    {
       "path": "schemas/return-metric-bridge.schema.json",
       "bytes": 1993,
       "sha256": "298778f6722a7091e03bd64e264175ab4bbf810607be962daf5d20146774efcc"
@@ -650,6 +690,11 @@
       "path": "schemas/scope-representation.schema.json",
       "bytes": 1884,
       "sha256": "4d82ab64f54d3483bcd5d642c991702b08ab8e20a406dd7497fbfe6f6775d3d0"
+    },
+    {
+      "path": "schemas/settlement-bridge.schema.json",
+      "bytes": 4719,
+      "sha256": "7e14f2aec30b58fc77e26a4c2ddcd1c6cd070708d38450daba9add954d0595be"
     },
     {
       "path": "sources/extracted/09a0d1fa636b.txt",
