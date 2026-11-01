@@ -1,0 +1,205 @@
+{
+  "type": "object",
+  "properties": {
+    "purpose": {
+      "const": "design_or_synthetic_reference"
+    },
+    "authorization": {
+      "const": "not_granted"
+    },
+    "context": {
+      "$ref": "urn:miniuw:candidate:common:0.1#/$defs/context"
+    },
+    "settlement_bridge": {
+      "$ref": "urn:miniuw:candidate:settlement-bridge:0.1"
+    },
+    "loan_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sizing_asof_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "profile": {
+      "enum": [
+        "regular_fixed_rate_equal_payments_in_arrears",
+        "other_or_unresolved"
+      ]
+    },
+    "terms_state": {
+      "enum": [
+        "documented_claim",
+        "unresolved",
+        "conflict"
+      ]
+    },
+    "term_claims": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "literal": {
+            "type": "string",
+            "minLength": 1
+          },
+          "evidence_ref": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "literal",
+          "evidence_ref"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "terms_evidence_ref": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "limit_inventory_state": {
+      "enum": [
+        "declared_complete",
+        "unresolved"
+      ]
+    },
+    "limit_inventory_evidence_ref": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "disbursement_profile": {
+      "enum": [
+        "full_selected_principal_cash_disbursement",
+        "partial_or_noncash_unresolved"
+      ]
+    },
+    "valuation_noi": {
+      "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+    },
+    "valuation_cap_rate": {
+      "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+    },
+    "bank_underwriting_noi": {
+      "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+    },
+    "maximum_ltv": {
+      "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+    },
+    "minimum_bank_dscr": {
+      "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+    },
+    "periodic_effective_rate": {
+      "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+    },
+    "amortization_payment_count": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 1
+    },
+    "payments_per_year": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 1
+    },
+    "maturity_after_payment_count": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "selected_principal": {
+      "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+    },
+    "other_capacity_limits": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "limit_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "amount": {
+            "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+          },
+          "evidence_ref": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1
+          }
+        },
+        "required": [
+          "limit_id",
+          "amount",
+          "evidence_ref"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "calculation_budget_payments": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "annual_service_convention": {
+      "enum": [
+        "m_times_regular_payment_equivalent",
+        "dated_or_unresolved"
+      ]
+    },
+    "annual_service_evidence_ref": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    }
+  },
+  "required": [
+    "purpose",
+    "authorization",
+    "context",
+    "settlement_bridge",
+    "loan_id",
+    "sizing_asof_date",
+    "profile",
+    "terms_state",
+    "term_claims",
+    "terms_evidence_ref",
+    "limit_inventory_state",
+    "limit_inventory_evidence_ref",
+    "disbursement_profile",
+    "valuation_noi",
+    "valuation_cap_rate",
+    "bank_underwriting_noi",
+    "maximum_ltv",
+    "minimum_bank_dscr",
+    "periodic_effective_rate",
+    "amortization_payment_count",
+    "payments_per_year",
+    "maturity_after_payment_count",
+    "selected_principal",
+    "other_capacity_limits",
+    "calculation_budget_payments",
+    "annual_service_convention",
+    "annual_service_evidence_ref"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:miniuw:candidate:refinance-capacity-bridge:0.1",
+  "title": "Declared valuation/fixed-amortization/bank-capacity/selected-principal/closing reference; not credit approval"
+}

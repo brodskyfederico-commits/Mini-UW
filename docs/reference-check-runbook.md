@@ -1,6 +1,6 @@
 # Verificación reproducible del paquete de referencia
 
-`python tools/check_reference_package.py` comprueba inventario SHA-256/tamaños, originales, R02, matriz, plantilla vacía y guardas de la fase actual. Ejecuta las 24 referencias registradas en `reference-runner-map.json` dentro de una copia temporal; no reescribe los resultados ni los originales de la carpeta verificada. Las bibliotecas necesarias están fijadas en `requirements-reference.txt`.
+`python tools/check_reference_package.py` comprueba inventario SHA-256/tamaños, originales, R02, matriz, plantilla vacía y guardas de la fase actual. Ejecuta las 25 referencias registradas en `reference-runner-map.json` dentro de una copia temporal; no reescribe los resultados ni los originales de la carpeta verificada. Las bibliotecas necesarias están fijadas en `requirements-reference.txt`.
 
 En un entorno Python 3.11 preparado con esas dependencias, ejecutar desde la raíz del repositorio. Si se suministra PYTHONPATH para bibliotecas locales, debe contener rutas absolutas porque las referencias se ejecutan en otra carpeta. Los paquetes se instalan en el entorno elegido; el verificador no instala nada, no se conecta a servicios, no interpreta fórmulas de Excel y no publica resultados financieros.
 

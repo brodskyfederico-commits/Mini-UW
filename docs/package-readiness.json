@@ -136,6 +136,11 @@
       "path": "references/affine-price-support-validation.json",
       "scope": "Typed declared positive affine-cost/price-independent NOI/single-initial-contribution-single-terminal-distribution profile; derived finite-grid two-objective conditions and exact candidate cash/linear-root checks only. Not full M1–M7 financial engine, approved price goals/Q3, calendar/annualization/bank/tax policy, general IRR selection, RLV, independent audit or production.",
       "count": 42
+    },
+    {
+      "path": "references/refinance-capacity-bridge-validation.json",
+      "scope": "Declared synthetic annual-NOI/cap valuation, regular fixed nonnegative-rate arrears amortization, explicit capacity inventory and full selected-principal gross-closing comparison only. Not authentic bank underwriting/commitments, annual-rate conversion, dated debt service, funding/distribution rights, tax/valuation approval, complete financial integration, independent audit or production.",
+      "count": 46
     }
   ],
   "independent_financial_audit": false,
@@ -157,7 +162,7 @@
     "calendar_ledger_schemas": 3,
     "cost_scope_schemas": 2,
     "evidence_locator_schemas": 1,
-    "total_schema_documents": 32,
+    "total_schema_documents": 33,
     "budget_payment_bridge_schemas": 1,
     "calculation_lineage_schemas": 1,
     "investor_return_bridge_schemas": 1,
@@ -167,17 +172,18 @@
     "financing_timeline_schemas": 1,
     "price_grid_catalogue_schemas": 1,
     "sensitivity_ranking_schemas": 1,
-    "affine_price_support_schemas": 1
+    "affine_price_support_schemas": 1,
+    "refinance_capacity_bridge_schemas": 1
   },
   "reference_runner": {
-    "suites": 24,
+    "suites": 25,
     "isolated_temporary_copy": true,
     "github_workflow_prepared": true,
     "remote_evidence_rule": "Check the GitHub run for the exact current commit; previous successful runs do not certify descendants.",
     "last_recorded_prior_run": {
-      "commit_sha": "a84df6583a8364b1a1dbb5108b27f8f3e8a166b8",
-      "suites": 23,
-      "url": "https://github.com/brodskyfederico-commits/Mini-UW/actions/runs/41359551579"
+      "commit_sha": "b1bc731e782be3b6e0c26bbfd3709a97c46b78a9",
+      "suites": 24,
+      "url": "https://github.com/brodskyfederico-commits/Mini-UW/actions/runs/41360657060"
     },
     "not_financial_certification": true
   }

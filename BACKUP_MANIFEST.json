@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 7862,
-      "sha256": "cd7eea9fb10c3488707c7db2cd160623ed1c6ad74f1f59d62314647718ac898a"
+      "bytes": 8217,
+      "sha256": "99d84da6de85bdd8c31eb66bcb52c547c7d611b624dc91d240540d821e5a3cc5"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 19129,
-      "sha256": "54f9054617ed79a33aad8ef5b1ca326c330932291a5a0b15b4d39758fc03ada1"
+      "bytes": 20040,
+      "sha256": "9a3239c2f48b8493644daa598ab7313e95e0631d6328916ebfb5d81d5aec1ed9"
     },
     {
       "path": "docs/acceptance-case-contracts.json",
@@ -73,13 +73,13 @@
     },
     {
       "path": "docs/coverage-matrix.csv",
-      "bytes": 352101,
-      "sha256": "e7c967e3edcf998731ba509267173db66a80a26b98c3d2be2481b2fde2b3390a"
+      "bytes": 353816,
+      "sha256": "2fae043a8ffa24c66ca3f72d3e2cfb46711cb9799907fb6b319981388c404856"
     },
     {
       "path": "docs/coverage-matrix.json",
-      "bytes": 536566,
-      "sha256": "b99ebe30f7ab186500e34a5f488d2ab0999dc1e3bfbb50d8e511297d525f472a"
+      "bytes": 538281,
+      "sha256": "490d846b725d103a8d71c3a807a337f248a6090a623f9b2ebb0aa714d53b353a"
     },
     {
       "path": "docs/current-direction.txt",
@@ -183,8 +183,8 @@
     },
     {
       "path": "docs/model-refinance-contract.md",
-      "bytes": 9544,
-      "sha256": "0653a8e2483ff06d286127fe9c670c020d67432fd1ad72661fe73d91ab4fc273"
+      "bytes": 9939,
+      "sha256": "9e51606a66a3d938e5c433eb77b625fb3638af0e7ab334dd53544a2cb7f9db46"
     },
     {
       "path": "docs/model-scenarios-price.md",
@@ -203,8 +203,8 @@
     },
     {
       "path": "docs/module-execution-design.json",
-      "bytes": 5408,
-      "sha256": "12725292001977f0ce879f848919493f7a35f40e61e50b966e013dc0d6ebb5ce"
+      "bytes": 5712,
+      "sha256": "e589f3a20e76ee572e589280e64cf2d39b8d3aac2d2f15da3637eb3742a736de"
     },
     {
       "path": "docs/module-interface-protocol.md",
@@ -218,13 +218,13 @@
     },
     {
       "path": "docs/package-consistency-validation.json",
-      "bytes": 1393,
-      "sha256": "b7bde0fd8872c3e79a1842d7bd216c14e624d255ac15de5230614b5e9ec90958"
+      "bytes": 1435,
+      "sha256": "6756df75628e254f41d6830f6f2b7e99e35c8ff4a38a19e919e32371bf3c18bd"
     },
     {
       "path": "docs/package-readiness.json",
-      "bytes": 10997,
-      "sha256": "716387de5b609f35931db1a7bc742303e94c85f4daf97539d5a211bdc2d48467"
+      "bytes": 11552,
+      "sha256": "aec249d90f8abe8e3e6fd41cb618bf6b8cb75cd2cb6586161607d34cdd7d0f46"
     },
     {
       "path": "docs/periodic-irr-root-isolation.md",
@@ -259,12 +259,17 @@
     {
       "path": "docs/reference-check-runbook.md",
       "bytes": 2809,
-      "sha256": "e4396ece604a3f9146d106867b8bc34a7cc6fe7c15d008de00755c7f793a8158"
+      "sha256": "56b6c0d39e21583ca1fa17efd225a610d8340d7d5be7b9020085c1f110ac45bd"
     },
     {
       "path": "docs/reference-runner-map.json",
-      "bytes": 3293,
-      "sha256": "efe5f3118fc1193c0b2b58433152bcec0f8f3a58e19221fb82ed46ab1e43368a"
+      "bytes": 3445,
+      "sha256": "e0335179438ed8e86775bad9d96787c913a1b640896497ca41c8a07879e32a33"
+    },
+    {
+      "path": "docs/refinance-capacity-bridge.md",
+      "bytes": 5025,
+      "sha256": "869aaa70c97550f111efffc92a886fd76679d09282c32dc7219e5cd43154d962"
     },
     {
       "path": "docs/requirements-conflicts.md",
@@ -407,6 +412,11 @@
       "sha256": "4849ac521ebf66c1d9a5a11ddd716e6b914118d13fb8f29842e20b6deeb34a41"
     },
     {
+      "path": "references/fixtures/refinance-capacity-bridge-synthetic.json",
+      "bytes": 50069,
+      "sha256": "95fc54e6225e0bcaa0e64a793dc845401e45a587b2c31f2d87b5b91aee2fce69"
+    },
+    {
       "path": "references/fixtures/sensitivity-ranking-synthetic.json",
       "bytes": 16033,
       "sha256": "b1cca43fd481442d1ef5f46846c1265185c6d43e9fd1807ebaf73c6f93b35515"
@@ -424,7 +434,7 @@
     {
       "path": "references/interface-contracts-validation.json",
       "bytes": 3055,
-      "sha256": "298cf66a30ec05e16f42e3e3f28c6f5f7b8705bbfb5fbaa1350a63fa4be576a1"
+      "sha256": "ecfe4035c72a0988661c3c2f4579292e843b975effe9a5206f111a93b9d2beac"
     },
     {
       "path": "references/investor-return-bridge-validation.json",
@@ -480,6 +490,11 @@
       "path": "references/price-grid-catalogue-validation.json",
       "bytes": 7448,
       "sha256": "59522b7bf4d71708e21009569bf5f1942915d3766db77447bfcb07da874effb3"
+    },
+    {
+      "path": "references/refinance-capacity-bridge-validation.json",
+      "bytes": 7170,
+      "sha256": "0cc4d71b1c4427f578413999ef5503331d3ccf605189b4b7419605a66a99dae5"
     },
     {
       "path": "references/return-metric-bridge-validation.json",
@@ -602,6 +617,11 @@
       "sha256": "21966585f42ad73d106e603a0760bd3405ef6759b5c4fd288d17c509395f2bd0"
     },
     {
+      "path": "references/validate_refinance_capacity_bridge.py",
+      "bytes": 21469,
+      "sha256": "c140509d924229b6e4687d3c79b08e46b4060e111b0d3d8072bbbbebd37a63ee"
+    },
+    {
       "path": "references/validate_return_metric_bridge.py",
       "bytes": 13457,
       "sha256": "74090ec3723b8f21b3a5bd1c784e9b1b0389fe0c057683c78f998b55f293d8d9"
@@ -673,8 +693,8 @@
     },
     {
       "path": "schemas/README.md",
-      "bytes": 3761,
-      "sha256": "b840de267c177e09a6939d63028bbeb644c8d0ad5730411c85ca157840c6c260"
+      "bytes": 4078,
+      "sha256": "58350cd7412e7557c59fe9f8912c3a0286fe287afb5f4e79c1052d1b4a3bb288"
     },
     {
       "path": "schemas/affine-price-support.schema.json",
@@ -770,6 +790,11 @@
       "path": "schemas/price-grid-catalogue.schema.json",
       "bytes": 7126,
       "sha256": "cd32b952304869dda53dbaa21b2e0b3b7417861205ae18fdd71f364a3cb5ec54"
+    },
+    {
+      "path": "schemas/refinance-capacity-bridge.schema.json",
+      "bytes": 4729,
+      "sha256": "023da3c4b9068f05ef2488d426a5e6503454da259a2491952750544d2ce6bfc2"
     },
     {
       "path": "schemas/return-metric-bridge.schema.json",

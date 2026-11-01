@@ -71,3 +71,7 @@ El PDF profesional R01 es un corte anterior a este contrato detallado: se conser
 ## Conciliación de un perfil de cierre bruto
 
 [El puente de cierre](operating-settlement-bridges.md) incorpora 43 controles sintéticos de fuentes/usos, capitalización y payoff/reservas. El perfil exige cancelación completa declarada; no es regla general de refinanciación. Estados netos, ajustes de deuda y payoffs parciales requieren contratos/evidencia separados. No habilita aprobación crediticia o caja distribuible.
+
+## Puente tipado de capacidad y desembolso
+
+[Valoración/capacidad/selección/cierre](refinance-capacity-bridge.md) añade 46 controles sintéticos con NOI distintos, límites adicionales y empates, cuota equivalente anual expresa, amortización/balloon y comparación con proceeds. No sustituye capacidad por aprobación, ni cuota anualizada por caja de un año fechado; M6 permanece abierto.

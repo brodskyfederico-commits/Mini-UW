@@ -23,3 +23,5 @@ Financing-timeline adds explicit action groups, unresolved term records, capacit
 Price-grid-catalogue and sensitivity-ranking add explicit finite-domain/scenario-condition and signed measured-effect contracts. All 31 candidate schemas pass 75 interface cases. Their 52/33 controls, including 324 grid properties, do not certify economic derivation, actual scenario execution, approved ranking or global price optimality.
 
 Affine-price-support binds positive affine-cost/single-return assumptions and separately versioned explicit objectives to the finite-grid catalogue. Thirty-two schema documents are available; its 42 scoped checks and 144 operator/price cases do not approve the financial profile or full RLV.
+
+Refinance-capacity-bridge adds declared fixed-rate/annualized-payment-equivalent capacities and selected-principal versus gross-closing checks. Thirty-three schema documents are available. Its 46 scoped cases do not certify authentic bank terms, complete covenants, dated debt service, valuation or credit approval.
