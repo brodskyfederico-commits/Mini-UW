@@ -33,3 +33,5 @@ Input/evidence contracts: [M1](docs/model-input-evidence.md), [55-field proposed
 [Independent specification package status](docs/integration-and-readiness.md) separates prepared design deliverables from still-open expert, financial-validation and production gates. No model-complete or production-ready claim is made.
 
 Current professional review: [R02 PDF, 29 pages](docs/review/MiniUW_Estructura_para_Revision_Profesional_R02.pdf). R01 retained unchanged. R02 reflects the full candidate-contract specification, not a production-ready or expert-approved model.
+
+Post-R02 independent work: [revision/scenario integrity](docs/revision-scenario-integrity.md) and [feedback intake protocol](docs/feedback-intake-protocol.md). The [blank feedback template](docs/professional-feedback-template.csv) records no review responses; R02 remains unchanged.

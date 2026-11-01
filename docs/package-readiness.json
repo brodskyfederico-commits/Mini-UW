@@ -56,6 +56,11 @@
       "path": "references/m9-validation.json",
       "scope": "Isolated comparator truth tables and hypothetical explicit aggregation; not activated house decision policy, authentication, transactional publication, independent audit or production.",
       "count": 46
+    },
+    {
+      "path": "references/revision-integrity-validation.json",
+      "scope": "Pure in-memory synthetic graph, snapshot identity and input-slot checks. Not actual financial dependency discovery, database atomicity, race-condition proof, authentication, persistent review or production integration.",
+      "count": 29
     }
   ],
   "independent_financial_audit": false,
@@ -64,5 +69,6 @@
   "all_module_gates_closed": false,
   "external_inputs_expert_review_and_future_product_work_required": true,
   "Full_UW": "deferred until final delivery; not prerequisite to current design",
-  "scope": "No global readiness percentage, no recovered application claim and no real-deal underwriting."
+  "scope": "No global readiness percentage, no recovered application claim and no real-deal underwriting.",
+  "post_R02_work": "29 controles sintéticos de integridad y 35 temas de feedback vacíos; sin política aprobada, firma simulada o producción."
 }

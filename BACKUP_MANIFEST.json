@@ -1,5 +1,5 @@
 {
-  "scope": "supplied sources, candidate model specification, limited references and internal review PDFs; not full product/VPS recovery or model certification",
+  "scope": "supplied sources, candidate model/review package and limited integrity references; not complete financial model or product/VPS recovery",
   "files": [
     {
       "path": ".gitignore",
@@ -13,18 +13,18 @@
     },
     {
       "path": "README.md",
-      "bytes": 3851,
-      "sha256": "43c65cc900c1c3083e0e3ee4b74b844ea7ee803e3e6bea86aab2933aa7dc3651"
+      "bytes": 4135,
+      "sha256": "4da7986211f41c9804fe57b433a3eb065eed59053b268d943e22f3c6c5cb7199"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 9607,
-      "sha256": "123d02c3d052bf4ef46aab9dbe3ce31e6aa268222ce70f75d22fed02b340d7ec"
+      "bytes": 10089,
+      "sha256": "9d756dc06f5676f2a6b6c12576c320ee38b6ef5a0b2ae240bcf9113a4f00d96e"
     },
     {
       "path": "docs/acceptance-case-contracts.json",
-      "bytes": 26538,
-      "sha256": "a8655d5e7d39c2dd387af27b230d36fa981a847d6d989a78b1fc446e31b811bd"
+      "bytes": 27334,
+      "sha256": "6535654a65ec3624ce8f2e1dff1d6fdabb179bac0737b9c2506e67f534fc8314"
     },
     {
       "path": "docs/acceptance-plan.md",
@@ -38,13 +38,13 @@
     },
     {
       "path": "docs/coverage-matrix.csv",
-      "bytes": 332699,
-      "sha256": "6c89df9097a4b53396f8f9a9f973ff38f2110cddbd13ef2a80e9c51a6b6b3b28"
+      "bytes": 333275,
+      "sha256": "12d6168356066fc557d75f0c6c2946c59036c334c3c51099b5d83faaa7be7e05"
     },
     {
       "path": "docs/coverage-matrix.json",
-      "bytes": 517186,
-      "sha256": "3e6f384459ab66e6c90da8284c33a99257dc561b0129f29f8566628892bae260"
+      "bytes": 517762,
+      "sha256": "2bc27fd4da7098bd0217afbe16dac44bf7959b470fe71e5dbd902264180db20d"
     },
     {
       "path": "docs/current-direction.txt",
@@ -55,6 +55,11 @@
       "path": "docs/decision-input-contract.md",
       "bytes": 2872,
       "sha256": "2d2637d6889b1dec3d92df42b789dda495f6f7c98f8ccf22839f46fb47a22981"
+    },
+    {
+      "path": "docs/feedback-intake-protocol.md",
+      "bytes": 1886,
+      "sha256": "8a723fe459878551a0bdf60500cc9918d7de80fd951be9ef392ea1e332630bb8"
     },
     {
       "path": "docs/input-contract-map.json",
@@ -138,13 +143,23 @@
     },
     {
       "path": "docs/package-consistency-validation.json",
-      "bytes": 363,
-      "sha256": "25a2746797271b9193575862b7f13bb5c7ad3e608c79d1825e5ddb5c96d4995b"
+      "bytes": 464,
+      "sha256": "8f9fc6673b98fc0915fc3376aa7c9cc63b7a6ec43bac6cbd7f6e502789c94457"
     },
     {
       "path": "docs/package-readiness.json",
-      "bytes": 3294,
-      "sha256": "374c4d5ccd99e9a93724f0b66dc5eb09d05c35dc0ea5c7767613f259b54fb9ce"
+      "bytes": 3772,
+      "sha256": "b5faa3c8b69d883cb3c76590bea48a0e0bd8bb5bd5297cde9baf76b2192cda3d"
+    },
+    {
+      "path": "docs/professional-feedback-register.json",
+      "bytes": 20537,
+      "sha256": "79d65e756a3f9cfc8eef02bb0a34ada7e25181dec8ee34b4b2b3377cdb13803c"
+    },
+    {
+      "path": "docs/professional-feedback-template.csv",
+      "bytes": 7376,
+      "sha256": "f2d986e3931ef70a9c91e9a326ab14bdc34346184dc3a9e28620902b4c024187"
     },
     {
       "path": "docs/recovery-status.md",
@@ -177,6 +192,11 @@
       "sha256": "d76008398e1324b0709f0df8220d92fa249863f41c664188a2bbc624d6866fd6"
     },
     {
+      "path": "docs/revision-scenario-integrity.md",
+      "bytes": 2868,
+      "sha256": "7a3949a45a2d270bee6a24c9fba0692cb48f0516ef0e5beaff0729462a338ba1"
+    },
+    {
       "path": "docs/source-annex-reconciliation.json",
       "bytes": 11446,
       "sha256": "7c3df18ed341353fd0c93b8b186f03cd1bd0bcdbf62eaca697527fb205f66f67"
@@ -195,6 +215,11 @@
       "path": "infra/README.md",
       "bytes": 1418,
       "sha256": "a55c787b386d9bac7d19f50669282fff55fe448090c9c84df8f8202a78f8935e"
+    },
+    {
+      "path": "references/dependency-graph-reference.json",
+      "bytes": 1781,
+      "sha256": "22d877bf8aeeed2b1275c09080e5efbdd36b2eecaf96cf3f1cab1e805fdf136f"
     },
     {
       "path": "references/integrated-bridge-validation.json",
@@ -237,6 +262,11 @@
       "sha256": "502e52600058218d4e9d679e6aa805bec1dae0345bb9092a9aa8785241446449"
     },
     {
+      "path": "references/revision-integrity-validation.json",
+      "bytes": 1508,
+      "sha256": "5b49fbc6a5b7e623e96e7121211919aaebf33cc154cc65500de80d08610f9aa8"
+    },
+    {
       "path": "references/validate_integrated_bridge.py",
       "bytes": 4726,
       "sha256": "0b1a665d1466bc6138e095531adc4aadf48d047bbdd6aa3daff4da28ffbf53c2"
@@ -275,6 +305,11 @@
       "path": "references/validate_m9_comparisons.py",
       "bytes": 2535,
       "sha256": "a47d50c320558cbca2e7b0bd2543368446b7fab298f8dac840d9b2bda0fbe3bb"
+    },
+    {
+      "path": "references/validate_revision_integrity.py",
+      "bytes": 6550,
+      "sha256": "b723c19f2d5fff5f0a747035705e975364a1b15f6703ad9cf1eb4ed4757b6161"
     },
     {
       "path": "sources/extracted/09a0d1fa636b.txt",

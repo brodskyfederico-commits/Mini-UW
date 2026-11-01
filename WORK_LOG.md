@@ -62,3 +62,7 @@ Checked all 84 M1–M9 contract IDs against 398 coverage rows, 55 original input
 ## Professional review R02 — 1 November 2026
 
 Prepared updated 29-page non-code professional PDF with M1–M9 candidate structure, new scenario/decision contracts and explicit independent-package boundary. All pages rendered and text bounds checked; contact sheet reviewed. R01 remains unchanged. No external delivery, expert approval or production release.
+
+## Integrity work while awaiting professional review — 1 November 2026
+
+User authorized continued independent construction while feedback is pending. Added a pure synthetic dependency/version/isolation reference and an explicit feedback-intake protocol/template tied to unchanged R02 bytes. No financial policy chosen, feedback fabricated, expert contacted or production enabled. Atomic persistence/authentication remain future product gates, not asserted from in-memory checks.

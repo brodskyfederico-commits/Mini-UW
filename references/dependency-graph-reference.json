@@ -1,0 +1,95 @@
+{
+  "scope": "Illustrative node graph; financial iteration is a single explicitly unresolved block.",
+  "dependencies": {
+    "source.program": [],
+    "source.shared_fact": [],
+    "base.inputs": [
+      "source.program",
+      "source.shared_fact"
+    ],
+    "base.bank": [],
+    "base.criteria": [],
+    "base.operation": [
+      "base.inputs"
+    ],
+    "base.budget": [
+      "base.inputs"
+    ],
+    "base.calendar": [
+      "base.inputs"
+    ],
+    "base.finance_closed": [
+      "base.budget",
+      "base.calendar",
+      "base.bank"
+    ],
+    "base.refi": [
+      "base.operation",
+      "base.finance_closed",
+      "base.bank"
+    ],
+    "base.hold": [
+      "base.operation",
+      "base.refi"
+    ],
+    "base.price": [
+      "base.inputs",
+      "base.hold",
+      "base.criteria"
+    ],
+    "base.compare": [
+      "base.hold",
+      "base.criteria"
+    ],
+    "down.inputs": [
+      "source.program",
+      "source.shared_fact"
+    ],
+    "down.bank": [],
+    "down.criteria": [],
+    "down.operation": [
+      "down.inputs"
+    ],
+    "down.budget": [
+      "down.inputs"
+    ],
+    "down.calendar": [
+      "down.inputs"
+    ],
+    "down.finance_closed": [
+      "down.budget",
+      "down.calendar",
+      "down.bank"
+    ],
+    "down.refi": [
+      "down.operation",
+      "down.finance_closed",
+      "down.bank"
+    ],
+    "down.hold": [
+      "down.operation",
+      "down.refi"
+    ],
+    "down.price": [
+      "down.inputs",
+      "down.hold",
+      "down.criteria"
+    ],
+    "down.compare": [
+      "down.hold",
+      "down.criteria"
+    ],
+    "decision": [
+      "base.compare",
+      "down.compare",
+      "base.price",
+      "down.price"
+    ],
+    "pdf_candidate": [
+      "decision"
+    ],
+    "render_audit": [
+      "pdf_candidate"
+    ]
+  }
+}
