@@ -1,0 +1,174 @@
+{
+  "type": "object",
+  "properties": {
+    "purpose": {
+      "const": "design_or_synthetic_reference"
+    },
+    "authorization": {
+      "const": "not_granted"
+    },
+    "context": {
+      "$ref": "urn:miniuw:candidate:common:0.1#/$defs/context"
+    },
+    "declared_scenarios": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "artifacts": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "artifact_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "revision": {
+            "type": "string",
+            "minLength": 1
+          },
+          "kind": {
+            "enum": [
+              "source_literal",
+              "normalized_input",
+              "definition",
+              "criterion",
+              "rule",
+              "derived_candidate"
+            ]
+          },
+          "scope": {
+            "type": "object",
+            "properties": {
+              "sharing": {
+                "enum": [
+                  "scenario_private",
+                  "explicit_shared_deal"
+                ]
+              },
+              "scenario_id": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "minLength": 1
+              }
+            },
+            "required": [
+              "sharing",
+              "scenario_id"
+            ],
+            "additionalProperties": false
+          },
+          "availability": {
+            "enum": [
+              "known",
+              "missing",
+              "conflict",
+              "invalid",
+              "undefined",
+              "not_applicable"
+            ]
+          },
+          "payload": {
+            "type": "object"
+          },
+          "content_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        },
+        "required": [
+          "artifact_id",
+          "revision",
+          "kind",
+          "scope",
+          "availability",
+          "payload",
+          "content_sha256"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "calculation_contracts": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "result_artifact_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "definition_artifact_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "slots": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "slot_id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "artifact_id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "expected_kind": {
+                  "enum": [
+                    "source_literal",
+                    "normalized_input",
+                    "definition",
+                    "criterion",
+                    "rule",
+                    "derived_candidate"
+                  ]
+                },
+                "sharing_permission": {
+                  "enum": [
+                    "same_scenario",
+                    "explicit_shared_deal"
+                  ]
+                }
+              },
+              "required": [
+                "slot_id",
+                "artifact_id",
+                "expected_kind",
+                "sharing_permission"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "result_artifact_id",
+          "definition_artifact_id",
+          "slots"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "purpose",
+    "authorization",
+    "context",
+    "declared_scenarios",
+    "artifacts",
+    "calculation_contracts"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:miniuw:candidate:calculation-lineage:0.1",
+  "title": "Candidate content-bound calculation lineage, not authenticated or financially certified"
+}

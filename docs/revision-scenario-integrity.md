@@ -24,3 +24,7 @@ Si un criterio afecta realmente la operación o el sizing, el grafo deberá incl
 La referencia es en memoria, inmutable en sus registros y sin servicios externos. No implementa transacciones de base de datos, autenticación, persistencia, aprobación experta ni publicación. Un chequeo correcto seguido de una edición puede quedar obsoleto; sigue siendo indispensable un registro atómico de vigencia en el producto futuro. No se denomina a estas pruebas “aprobación autenticada” ni prueba de carreras reales.
 
 Evidencia: `references/validate_revision_integrity.py`, `revision-integrity-validation.json` y `dependency-graph-reference.json`. Es un refuerzo de diseño y prueba sintética, no producción. El PDF profesional R02 se mantiene idéntico; las observaciones se referirán a ese corte y después se evaluará su impacto en documentos/cálculos posteriores.
+
+## Ampliación de contenido y slots
+
+[El contrato de trazabilidad de cálculos](calculation-lineage.md) incorpora contenido y bindings al cierre transitivo, además de etiquetas de revisión. Sus 48 controles separados conservan bloqueos y detectan cambios con igual revisión. No descubren dependencias económicas omitidas ni sustituyen autenticación, cálculo financiero o registro transaccional.

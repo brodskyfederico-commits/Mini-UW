@@ -1,0 +1,109 @@
+{
+  "status": "passed",
+  "total": 48,
+  "checks": [
+    "same_content_is_current_only_as_reference",
+    "transitive_input_and_source_are_bound",
+    "explicit_zero_is_not_missing",
+    "original_records_not_mutated",
+    "current_is_never_pass_or_publication",
+    "changed_bytes_same_revision_stale",
+    "changed_formula_same_revision_stale",
+    "criterion_invalidates_comparison",
+    "criterion_preserves_declared_independent_cash",
+    "unrelated_scenario_does_not_rewrite_base_closure",
+    "shared_source_invalidates_both_explicit_dependents",
+    "removed_dependency_changes_contract_digest",
+    "missing_input_blocks_known_result",
+    "unchanged_blocked_receipt_remains_blocked",
+    "conflict_claims_survive_without_winner",
+    "invalid_does_not_become_zero_or_silent_exclusion",
+    "undefined_does_not_become_zero_or_silent_exclusion",
+    "not_applicable_does_not_become_zero_or_silent_exclusion",
+    "missing_definition_blocks",
+    "registry_order_does_not_change_closure",
+    "json_object_key_order_not_value_change",
+    "list_order_preserved",
+    "capture_context_change_deal_id",
+    "capture_context_change_run_id",
+    "capture_context_change_input_revision",
+    "capture_context_change_definition_set_revision",
+    "capture_context_change_scenario_id",
+    "artifact_changed_without_resealing",
+    "duplicate_artifact_id",
+    "duplicate_contract_result",
+    "duplicate_slot_id",
+    "unknown_dependency",
+    "wrong_dependency_kind",
+    "down_cannot_fallback_to_base_input",
+    "shared_source_not_implicit_private_input",
+    "private_input_not_claimed_shared",
+    "criterion_not_shared_default",
+    "private_scenario_must_be_declared",
+    "shared_scope_has_no_private_scenario",
+    "definition_cannot_be_input",
+    "unknown_definition",
+    "derived_artifact_needs_contract",
+    "leaf_cannot_get_result_contract",
+    "unresolved_cycle_not_solved_by_digest",
+    "floating_payload_not_silently_rounded",
+    "nonfinite_payload_rejected",
+    "no_production_authorization",
+    "altered_receipt_rejected"
+  ],
+  "schemas_checked": 24,
+  "synthetic_receipt": {
+    "context": {
+      "deal_id": "SYNTHETIC-LINEAGE-NO-DEAL",
+      "scenario_id": "explicit-multi-scenario-reference",
+      "run_id": "reference-1",
+      "input_revision": "capture-1",
+      "definition_set_revision": "definitions-1"
+    },
+    "target": "base.compare",
+    "closure": [
+      {
+        "artifact_id": "base.cash",
+        "revision": "v1",
+        "content_sha256": "c0f5aac7e314e55b9b701430e1f32859278c1a6b1a5b5959878326e0e0046e06",
+        "contract_sha256": "a69a638d5229d6317d3c865fa941fed4e02eb16b0d55707565322e2bad88a081"
+      },
+      {
+        "artifact_id": "base.compare",
+        "revision": "v1",
+        "content_sha256": "7c0bfba692f2cf8a6f3f58d0baa159f432e6da1a08ef80a8096b6c6bb99790c5",
+        "contract_sha256": "a7abedba2dafdd384e58a51820abf991c6f5aab90a524c60defd476416e6f5de"
+      },
+      {
+        "artifact_id": "base.criterion",
+        "revision": "v1",
+        "content_sha256": "6838be787df97ef943cfca7841ad02c9bee54c68643865a0702f81a9cb0d8b81",
+        "contract_sha256": null
+      },
+      {
+        "artifact_id": "base.input",
+        "revision": "v1",
+        "content_sha256": "0f12fdaae9e86ddd250062c313512df1880f805ac1f9a1615fbea5d3074d8a1f",
+        "contract_sha256": null
+      },
+      {
+        "artifact_id": "formula",
+        "revision": "v1",
+        "content_sha256": "e230a39e17a8b946f3cdd4003ed8d322de62fb8d05de7eac65a7050db433c6c7",
+        "contract_sha256": null
+      },
+      {
+        "artifact_id": "source",
+        "revision": "v1",
+        "content_sha256": "812a97853a3c9da11b4782d44237da554dcefc75d3c10c1f6f72d87370df919d",
+        "contract_sha256": null
+      }
+    ],
+    "blockers": [],
+    "state": "content_bound_reference",
+    "authorization": "not_granted",
+    "decision": "PENDING",
+    "receipt_sha256": "389b865a6c5a947e7c9718dbe9dd8def4673b3fb90a200a29743a8a37e781bbc"
+  },
+  "scope": "Explicit synthetic dependency slots, local deterministic JSON digests, transitive content freshness and blocker preservation only. Not completeness of actual economic dependencies, recomputation of outputs, external-file validation, authentication, persistent immutability, concurrency/atomic publication or production."
+}

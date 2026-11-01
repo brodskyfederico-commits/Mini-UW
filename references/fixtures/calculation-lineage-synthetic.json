@@ -1,0 +1,237 @@
+{
+  "purpose": "design_or_synthetic_reference",
+  "authorization": "not_granted",
+  "context": {
+    "deal_id": "SYNTHETIC-LINEAGE-NO-DEAL",
+    "scenario_id": "explicit-multi-scenario-reference",
+    "run_id": "reference-1",
+    "input_revision": "capture-1",
+    "definition_set_revision": "definitions-1"
+  },
+  "declared_scenarios": [
+    "base",
+    "down"
+  ],
+  "artifacts": [
+    {
+      "artifact_id": "source",
+      "revision": "v1",
+      "kind": "source_literal",
+      "scope": {
+        "sharing": "explicit_shared_deal",
+        "scenario_id": null
+      },
+      "availability": "known",
+      "payload": {
+        "literal": "SYNTHETIC ONLY; not financial evidence"
+      },
+      "content_sha256": "812a97853a3c9da11b4782d44237da554dcefc75d3c10c1f6f72d87370df919d"
+    },
+    {
+      "artifact_id": "formula",
+      "revision": "v1",
+      "kind": "definition",
+      "scope": {
+        "sharing": "explicit_shared_deal",
+        "scenario_id": null
+      },
+      "availability": "known",
+      "payload": {
+        "expression": "synthetic f(x); definition only, not executed"
+      },
+      "content_sha256": "e230a39e17a8b946f3cdd4003ed8d322de62fb8d05de7eac65a7050db433c6c7"
+    },
+    {
+      "artifact_id": "base.input",
+      "revision": "v1",
+      "kind": "normalized_input",
+      "scope": {
+        "sharing": "scenario_private",
+        "scenario_id": "base"
+      },
+      "availability": "known",
+      "payload": {
+        "value": {
+          "numerator": 0,
+          "denominator": 1
+        }
+      },
+      "content_sha256": "0f12fdaae9e86ddd250062c313512df1880f805ac1f9a1615fbea5d3074d8a1f"
+    },
+    {
+      "artifact_id": "base.criterion",
+      "revision": "v1",
+      "kind": "criterion",
+      "scope": {
+        "sharing": "scenario_private",
+        "scenario_id": "base"
+      },
+      "availability": "known",
+      "payload": {
+        "literal": "SYNTHETIC EXPLICIT CRITERION; never a deal default"
+      },
+      "content_sha256": "6838be787df97ef943cfca7841ad02c9bee54c68643865a0702f81a9cb0d8b81"
+    },
+    {
+      "artifact_id": "base.cash",
+      "revision": "v1",
+      "kind": "derived_candidate",
+      "scope": {
+        "sharing": "scenario_private",
+        "scenario_id": "base"
+      },
+      "availability": "known",
+      "payload": {
+        "reference": "SYNTHETIC CASH PLACEHOLDER"
+      },
+      "content_sha256": "c0f5aac7e314e55b9b701430e1f32859278c1a6b1a5b5959878326e0e0046e06"
+    },
+    {
+      "artifact_id": "base.compare",
+      "revision": "v1",
+      "kind": "derived_candidate",
+      "scope": {
+        "sharing": "scenario_private",
+        "scenario_id": "base"
+      },
+      "availability": "known",
+      "payload": {
+        "reference": "SYNTHETIC COMPARISON PLACEHOLDER"
+      },
+      "content_sha256": "7c0bfba692f2cf8a6f3f58d0baa159f432e6da1a08ef80a8096b6c6bb99790c5"
+    },
+    {
+      "artifact_id": "down.input",
+      "revision": "v1",
+      "kind": "normalized_input",
+      "scope": {
+        "sharing": "scenario_private",
+        "scenario_id": "down"
+      },
+      "availability": "known",
+      "payload": {
+        "value": {
+          "numerator": 0,
+          "denominator": 1
+        }
+      },
+      "content_sha256": "300554fc76d2f9f55db10e154211fd5b2d6903ef93ebad0c4a08d5315eba3b0f"
+    },
+    {
+      "artifact_id": "down.criterion",
+      "revision": "v1",
+      "kind": "criterion",
+      "scope": {
+        "sharing": "scenario_private",
+        "scenario_id": "down"
+      },
+      "availability": "known",
+      "payload": {
+        "literal": "SYNTHETIC EXPLICIT CRITERION; never a deal default"
+      },
+      "content_sha256": "5c504f19d0a1a162a366d73bedb158a8cca1ee22153bbbbd20900b2887cd17e6"
+    },
+    {
+      "artifact_id": "down.cash",
+      "revision": "v1",
+      "kind": "derived_candidate",
+      "scope": {
+        "sharing": "scenario_private",
+        "scenario_id": "down"
+      },
+      "availability": "known",
+      "payload": {
+        "reference": "SYNTHETIC CASH PLACEHOLDER"
+      },
+      "content_sha256": "019371286118d2076fe44f8769fec90c428419fb9662a6483e2eddfb844d64dd"
+    },
+    {
+      "artifact_id": "down.compare",
+      "revision": "v1",
+      "kind": "derived_candidate",
+      "scope": {
+        "sharing": "scenario_private",
+        "scenario_id": "down"
+      },
+      "availability": "known",
+      "payload": {
+        "reference": "SYNTHETIC COMPARISON PLACEHOLDER"
+      },
+      "content_sha256": "972c52695c3b802896f6f2d53aee62b010a439fda721f00423294cb37c794958"
+    }
+  ],
+  "calculation_contracts": [
+    {
+      "result_artifact_id": "base.cash",
+      "definition_artifact_id": "formula",
+      "slots": [
+        {
+          "slot_id": "input",
+          "artifact_id": "base.input",
+          "expected_kind": "normalized_input",
+          "sharing_permission": "same_scenario"
+        },
+        {
+          "slot_id": "source",
+          "artifact_id": "source",
+          "expected_kind": "source_literal",
+          "sharing_permission": "explicit_shared_deal"
+        }
+      ]
+    },
+    {
+      "result_artifact_id": "base.compare",
+      "definition_artifact_id": "formula",
+      "slots": [
+        {
+          "slot_id": "cash",
+          "artifact_id": "base.cash",
+          "expected_kind": "derived_candidate",
+          "sharing_permission": "same_scenario"
+        },
+        {
+          "slot_id": "criterion",
+          "artifact_id": "base.criterion",
+          "expected_kind": "criterion",
+          "sharing_permission": "same_scenario"
+        }
+      ]
+    },
+    {
+      "result_artifact_id": "down.cash",
+      "definition_artifact_id": "formula",
+      "slots": [
+        {
+          "slot_id": "input",
+          "artifact_id": "down.input",
+          "expected_kind": "normalized_input",
+          "sharing_permission": "same_scenario"
+        },
+        {
+          "slot_id": "source",
+          "artifact_id": "source",
+          "expected_kind": "source_literal",
+          "sharing_permission": "explicit_shared_deal"
+        }
+      ]
+    },
+    {
+      "result_artifact_id": "down.compare",
+      "definition_artifact_id": "formula",
+      "slots": [
+        {
+          "slot_id": "cash",
+          "artifact_id": "down.cash",
+          "expected_kind": "derived_candidate",
+          "sharing_permission": "same_scenario"
+        },
+        {
+          "slot_id": "criterion",
+          "artifact_id": "down.criterion",
+          "expected_kind": "criterion",
+          "sharing_permission": "same_scenario"
+        }
+      ]
+    }
+  ]
+}

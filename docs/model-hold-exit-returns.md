@@ -70,3 +70,7 @@ Cambios de NOI/cap/crecimiento o calendario invalidan operación/salida/retornos
 Prueba propia: `references/validate_m7_returns.py`, resultado `m7-validation.json`. Fracciones exactas para conservación de salida, preservación de brutos, casos indefinidos y polinomios factorizables de IRR; tasa anual equivalente regular. No ejecuta solver general, XIRR, reglas fiscales, operaciones reales ni auditoría independiente. No reproduce la aplicación original ni referencias históricas perdidas.
 
 M7 sigue abierto: faltan cierre de estrategia/fechas, denominadores de capital, taxonomía de terminal, documentos reales y validación independiente/integrada M2/M5/M6/M8. El PDF profesional R01 conserva su corte previo; este contrato amplía su M7 preliminar sin atribuir aprobación al revisor. Siguiente bloque: M8 escenarios, sensibilidad y precio soportado, con objetivos expresos y dominio verificable.
+
+## Ampliación matemática posterior al corte de R02
+
+Ver [aislamiento de raíces de TIR periódica](periodic-irr-root-isolation.md) y `references/periodic-irr-isolation-validation.json`: 64 controles sintéticos de conteo/aislamiento racional y multiplicidad con precisión y trabajo expresos. Esta evidencia separada amplía los ejemplos factorizados anteriores; no resuelve XIRR, elección de raíz, políticas de anualización, integración del calendario ni revisión independiente. M7 permanece abierto.

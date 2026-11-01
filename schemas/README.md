@@ -11,3 +11,5 @@ Additional candidate records: calendar, event ledger and interest/fee obligation
 Additional candidate records: explicit cost-scope representations/packages and hash-bound literal evidence claims. There are now 22 schema documents; the interface regression checks all 22 with 75 cases. Cost-scope reconciliation has 29 synthetic checks; evidence locators have 21 literal/integrity checks. These do not establish financial completeness or source authority.
 
 The budget-payment-bridge schema composes explicit cost-scope and ledger records with period/payment allocations. All 23 current schema documents pass interface regression; 41 bridge cases exercise structural links, not expert policy or a full financial engine.
+
+The calculation-lineage contract adds typed explicit dependency slots, scenario scope and content digests. All 24 candidate schema documents pass the 75 interface regression cases. Forty-eight lineage cases are separate from financial correctness, authentication or persistence.

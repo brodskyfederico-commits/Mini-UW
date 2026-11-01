@@ -1,0 +1,356 @@
+{
+  "status": "passed",
+  "total": 64,
+  "checks": [
+    "one_positive_root_count",
+    "one_positive_root_10/11",
+    "one_positive_explicit_rate_width_2621451/2883584",
+    "negative_root_count",
+    "negative_root_2",
+    "negative_explicit_rate_width_131073/65536",
+    "two_root_count",
+    "two_root_5/6",
+    "two_root_10/11",
+    "two_explicit_rate_width_9612005/11534336",
+    "two_explicit_rate_width_15728719/17301504",
+    "double_root_count",
+    "double_root_1",
+    "double_explicit_rate_width_524289/524288",
+    "triple_root_count",
+    "triple_root_1",
+    "complex_no_real_root_count",
+    "negative_discount_root_root_count",
+    "all_inflows_root_count",
+    "all_outflows_root_count",
+    "constant_nonzero_root_count",
+    "initial_zero_delay_root_count",
+    "initial_zero_delay_root_1",
+    "zero_discount_factor_excluded_not_finite_irr",
+    "trailing_zero_periods_preserve_roots_root_count",
+    "trailing_zero_periods_preserve_roots_root_10/11",
+    "trailing_zero_periods_preserve_roots_explicit_rate_width_2621451/2883584",
+    "all_zero_is_indeterminate_not_zero_irr",
+    "higher_degree_known_factors_root_count",
+    "higher_degree_known_factors_root_1/2",
+    "higher_degree_known_factors_root_1",
+    "higher_degree_known_factors_root_2",
+    "higher_degree_known_factors_root_3",
+    "higher_degree_known_factors_explicit_rate_width_4194309/8388608",
+    "higher_degree_known_factors_explicit_rate_width_4194309/4194304",
+    "higher_degree_known_factors_explicit_rate_width_2097165/1048576",
+    "higher_degree_known_factors_explicit_rate_width_393225/131072",
+    "irrational_root_is_certified_interval_not_fake_exact_decimal",
+    "repeated_irrational_root_multiplicity_retained",
+    "closely_spaced_roots_root_count",
+    "closely_spaced_roots_root_1",
+    "closely_spaced_roots_root_1000001/1000000",
+    "closely_spaced_roots_explicit_rate_width_2097153699051/2097152000000",
+    "closely_spaced_roots_explicit_rate_width_524289174763/524288000000",
+    "work_budget_exhaustion_is_incomplete",
+    "no_first_root_selection",
+    "double_root_found_without_sign_crossing",
+    "multiplicity_not_reported_as_two_distinct_rates",
+    "one_positive_no_annualization_or_decision",
+    "negative_no_annualization_or_decision",
+    "two_no_annualization_or_decision",
+    "double_no_annualization_or_decision",
+    "triple_no_annualization_or_decision",
+    "higher_degree_no_annualization_or_decision",
+    "flows_not_mutated",
+    "missing_flow_rejected",
+    "floating_flow_rejected",
+    "boolean_flow_rejected",
+    "empty_flows_rejected",
+    "zero_precision_rejected",
+    "floating_precision_rejected",
+    "negative_work_budget_rejected",
+    "noninteger_work_budget_rejected",
+    "exact_split_endpoint_root_counted_once"
+  ],
+  "arithmetic": "exact rational polynomial division/gcd/Sturm isolation",
+  "synthetic_settings": {
+    "max_periodic_rate_interval_width": "1/100000",
+    "split_budget": 2000,
+    "financial_default": false
+  },
+  "examples": {
+    "one_positive": {
+      "reference_only": true,
+      "publication_authorized": false,
+      "decision": "PENDING",
+      "rate_domain": "r > -1; equally spaced periods explicitly assumed",
+      "annualized": false,
+      "roots": [
+        {
+          "discount_factor_interval": {
+            "lower": "1310715/1441792",
+            "upper": "2621451/2883584",
+            "lower_closed": false,
+            "upper_closed": true
+          },
+          "distinct_roots": 1,
+          "multiplicity": 1,
+          "exact_discount_factor": null,
+          "exact_periodic_rate": null,
+          "periodic_rate_interval": {
+            "lower": "262133/2621451",
+            "upper": "131077/1310715",
+            "lower_closed": true,
+            "upper_closed": false
+          }
+        }
+      ],
+      "unresolved_intervals": [],
+      "splits": 18,
+      "requested_rate_interval_width": "1/100000",
+      "excluded_zero_discount_factor_multiplicity": 0,
+      "distinct_positive_discount_roots": 1,
+      "discount_factor_search_upper_bound": "21/11",
+      "root_classification": "one_distinct_root",
+      "status": "complete_reference"
+    },
+    "negative": {
+      "reference_only": true,
+      "publication_authorized": false,
+      "decision": "PENDING",
+      "rate_domain": "r > -1; equally spaced periods explicitly assumed",
+      "annualized": false,
+      "roots": [
+        {
+          "discount_factor_interval": {
+            "lower": "262143/131072",
+            "upper": "131073/65536",
+            "lower_closed": false,
+            "upper_closed": true
+          },
+          "distinct_roots": 1,
+          "multiplicity": 1,
+          "exact_discount_factor": null,
+          "exact_periodic_rate": null,
+          "periodic_rate_interval": {
+            "lower": "-65537/131073",
+            "upper": "-131071/262143",
+            "lower_closed": true,
+            "upper_closed": false
+          }
+        }
+      ],
+      "unresolved_intervals": [],
+      "splits": 17,
+      "requested_rate_interval_width": "1/100000",
+      "excluded_zero_discount_factor_multiplicity": 0,
+      "distinct_positive_discount_roots": 1,
+      "discount_factor_search_upper_bound": "3",
+      "root_classification": "one_distinct_root",
+      "status": "complete_reference"
+    },
+    "two": {
+      "reference_only": true,
+      "publication_authorized": false,
+      "decision": "PENDING",
+      "rate_domain": "r > -1; equally spaced periods explicitly assumed",
+      "annualized": false,
+      "roots": [
+        {
+          "discount_factor_interval": {
+            "lower": "14417917/17301504",
+            "upper": "9612005/11534336",
+            "lower_closed": false,
+            "upper_closed": true
+          },
+          "distinct_roots": 1,
+          "multiplicity": 1,
+          "exact_discount_factor": null,
+          "exact_periodic_rate": null,
+          "periodic_rate_interval": {
+            "lower": "1922331/9612005",
+            "upper": "2883587/14417917",
+            "lower_closed": true,
+            "upper_closed": false
+          }
+        },
+        {
+          "discount_factor_interval": {
+            "lower": "31457257/34603008",
+            "upper": "15728719/17301504",
+            "lower_closed": false,
+            "upper_closed": true
+          },
+          "distinct_roots": 1,
+          "multiplicity": 1,
+          "exact_discount_factor": null,
+          "exact_periodic_rate": null,
+          "periodic_rate_interval": {
+            "lower": "1572785/15728719",
+            "upper": "3145751/31457257",
+            "lower_closed": true,
+            "upper_closed": false
+          }
+        }
+      ],
+      "unresolved_intervals": [],
+      "splits": 34,
+      "requested_rate_interval_width": "1/100000",
+      "excluded_zero_discount_factor_multiplicity": 0,
+      "distinct_positive_discount_roots": 2,
+      "discount_factor_search_upper_bound": "181/66",
+      "root_classification": "multiple_distinct_roots",
+      "status": "complete_reference"
+    },
+    "double": {
+      "reference_only": true,
+      "publication_authorized": false,
+      "decision": "PENDING",
+      "rate_domain": "r > -1; equally spaced periods explicitly assumed",
+      "annualized": false,
+      "roots": [
+        {
+          "discount_factor_interval": {
+            "lower": "262143/262144",
+            "upper": "524289/524288",
+            "lower_closed": false,
+            "upper_closed": true
+          },
+          "distinct_roots": 1,
+          "multiplicity": 2,
+          "exact_discount_factor": null,
+          "exact_periodic_rate": null,
+          "periodic_rate_interval": {
+            "lower": "-1/524289",
+            "upper": "1/262143",
+            "lower_closed": true,
+            "upper_closed": false
+          }
+        }
+      ],
+      "unresolved_intervals": [],
+      "splits": 19,
+      "requested_rate_interval_width": "1/100000",
+      "excluded_zero_discount_factor_multiplicity": 0,
+      "distinct_positive_discount_roots": 1,
+      "discount_factor_search_upper_bound": "3",
+      "root_classification": "one_distinct_root",
+      "status": "complete_reference"
+    },
+    "triple": {
+      "reference_only": true,
+      "publication_authorized": false,
+      "decision": "PENDING",
+      "rate_domain": "r > -1; equally spaced periods explicitly assumed",
+      "annualized": false,
+      "roots": [
+        {
+          "discount_factor_interval": {
+            "lower": "0",
+            "upper": "1",
+            "lower_closed": false,
+            "upper_closed": true
+          },
+          "distinct_roots": 1,
+          "multiplicity": 3,
+          "exact_discount_factor": "1",
+          "exact_periodic_rate": "0",
+          "periodic_rate_interval": null
+        }
+      ],
+      "unresolved_intervals": [],
+      "splits": 2,
+      "requested_rate_interval_width": "1/100000",
+      "excluded_zero_discount_factor_multiplicity": 0,
+      "distinct_positive_discount_roots": 1,
+      "discount_factor_search_upper_bound": "4",
+      "root_classification": "one_distinct_root",
+      "status": "complete_reference"
+    },
+    "higher_degree": {
+      "reference_only": true,
+      "publication_authorized": false,
+      "decision": "PENDING",
+      "rate_domain": "r > -1; equally spaced periods explicitly assumed",
+      "annualized": false,
+      "roots": [
+        {
+          "discount_factor_interval": {
+            "lower": "8388597/16777216",
+            "upper": "4194309/8388608",
+            "lower_closed": false,
+            "upper_closed": true
+          },
+          "distinct_roots": 1,
+          "multiplicity": 1,
+          "exact_discount_factor": null,
+          "exact_periodic_rate": null,
+          "periodic_rate_interval": {
+            "lower": "4194299/4194309",
+            "upper": "8388619/8388597",
+            "lower_closed": true,
+            "upper_closed": false
+          }
+        },
+        {
+          "discount_factor_interval": {
+            "lower": "262143/262144",
+            "upper": "4194309/4194304",
+            "lower_closed": false,
+            "upper_closed": true
+          },
+          "distinct_roots": 1,
+          "multiplicity": 1,
+          "exact_discount_factor": null,
+          "exact_periodic_rate": null,
+          "periodic_rate_interval": {
+            "lower": "-5/4194309",
+            "upper": "1/262143",
+            "lower_closed": true,
+            "upper_closed": false
+          }
+        },
+        {
+          "discount_factor_interval": {
+            "lower": "262143/131072",
+            "upper": "2097165/1048576",
+            "lower_closed": false,
+            "upper_closed": true
+          },
+          "distinct_roots": 1,
+          "multiplicity": 2,
+          "exact_discount_factor": null,
+          "exact_periodic_rate": null,
+          "periodic_rate_interval": {
+            "lower": "-1048589/2097165",
+            "upper": "-131071/262143",
+            "lower_closed": true,
+            "upper_closed": false
+          }
+        },
+        {
+          "discount_factor_interval": {
+            "lower": "786429/262144",
+            "upper": "393225/131072",
+            "lower_closed": false,
+            "upper_closed": true
+          },
+          "distinct_roots": 1,
+          "multiplicity": 1,
+          "exact_discount_factor": null,
+          "exact_periodic_rate": null,
+          "periodic_rate_interval": {
+            "lower": "-262153/393225",
+            "upper": "-524285/786429",
+            "lower_closed": true,
+            "upper_closed": false
+          }
+        }
+      ],
+      "unresolved_intervals": [],
+      "splits": 72,
+      "requested_rate_interval_width": "1/100000",
+      "excluded_zero_discount_factor_multiplicity": 0,
+      "distinct_positive_discount_roots": 4,
+      "discount_factor_search_upper_bound": "21",
+      "root_classification": "multiple_distinct_roots",
+      "status": "complete_reference"
+    }
+  },
+  "scope": "Isolated periodic rational-net-flow polynomial root counting/isolation on declared synthetic cases. Not XIRR, calendar-to-return integration, root-selection policy, annualization convention, global price optimization, independent financial audit, real-deal screening or production."
+}
