@@ -60,3 +60,7 @@ Un contraejemplo factorizable con factibilidad (P−1)(P−3)≥0 dentro de [0,4
 `references/validate_m8_scenarios_price.py` y `m8-validation.json` verifican transformaciones dimensionales aisladas, intersección de objetivos reducidos, máximos abiertos/cerrados/discretos y un contraejemplo no monótono. Son casos exactos sintéticos; no solver global, ejecución de escenarios productivos, evidencia de monotonía de todo M1–M7, RLV aprobado ni auditoría independiente.
 
 Faltan fuentes/valores de escenario, objetivos de Lorena y Q3, aplicabilidad, cierres de M1–M7, validación independiente y prueba completa de dominio/método. M8 permanece abierto. El siguiente bloque M9 formalizará comparación, estados pendientes, revisión y publicación de la página sin habilitar producción.
+
+## Ampliación independiente: grilla y ensayos declarados
+
+[Catálogo finito de precios](price-grid-catalogue.md): 52 controles y 324 casos de grilla para relaciones normalizadas recibidas, sin suponer monotonía o convertir búsqueda parcial en máximo. [Ranking con signo](sensitivity-ranking.md): 33 controles de entradas conservadas, métricas compatibles, empates y separación de ensayos conjuntos. No derivan las restricciones económicas ni reejecutan el motor financiero; Q3, criterios reales, fuentes y revisión siguen abiertos.

@@ -84,6 +84,14 @@
     {
       "script": "references/validate_financing_timeline.py",
       "report": "references/financing-timeline-validation.json"
+    },
+    {
+      "script": "references/validate_price_grid_catalogue.py",
+      "report": "references/price-grid-catalogue-validation.json"
+    },
+    {
+      "script": "references/validate_sensitivity_ranking.py",
+      "report": "references/sensitivity-ranking-validation.json"
     }
   ]
 }

@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 7092,
-      "sha256": "2427e13e8739f4ec4b1679115be161e937f5b7591b3fe84d2cdd13cd009f6e53"
+      "bytes": 7523,
+      "sha256": "cb8b8d4c61797fa5cb90b877c5f7860c3d97be538f4128ee65788aa8af453044"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 17294,
-      "sha256": "932921ed01832a7cf08f8386adb4b047dd89075efcb9b953bf344298817d4b19"
+      "bytes": 18219,
+      "sha256": "a04b150d769753eaac234768cfe9655af7485dd924eeef348518c3e8c3de8ba9"
     },
     {
       "path": "docs/acceptance-case-contracts.json",
@@ -68,13 +68,13 @@
     },
     {
       "path": "docs/coverage-matrix.csv",
-      "bytes": 348362,
-      "sha256": "83f90f5ead309a209bca8cfe449b2a7253544c42b83b4ca69820d3060d7c118d"
+      "bytes": 350891,
+      "sha256": "7ac65da566bd1d0ae9f739c5928cfc1346b9186350e7e5f5ab387044d763cb47"
     },
     {
       "path": "docs/coverage-matrix.json",
-      "bytes": 532827,
-      "sha256": "77fb9ec9ca0ccab080dfea560d76562f3be12dfffb66fd3244c2f349f583d199"
+      "bytes": 535356,
+      "sha256": "6b00d6d14a71e3558a898824e4481f0688e22f3cd2f2ff9f82a448a5f265f4ec"
     },
     {
       "path": "docs/current-direction.txt",
@@ -183,8 +183,8 @@
     },
     {
       "path": "docs/model-scenarios-price.md",
-      "bytes": 9600,
-      "sha256": "49cef6b75daadf9f179cbe020cbfbcf66fccd1a323dc63b397a7f4d23c8476d8"
+      "bytes": 10141,
+      "sha256": "27689a183080d03201c6d5fa6d28235afb8ed1d2506c789121ef2bc354e9668d"
     },
     {
       "path": "docs/module-closure.json",
@@ -198,8 +198,8 @@
     },
     {
       "path": "docs/module-execution-design.json",
-      "bytes": 4637,
-      "sha256": "bc1da226e594d2cca12fa1e8ad35b556c487dc26b2a88e7a95c65573bb96f724"
+      "bytes": 5107,
+      "sha256": "69ca51b1c9a9671c3cfd3924393bc33ea4c184636049fef61c82763977e5abde"
     },
     {
       "path": "docs/module-interface-protocol.md",
@@ -213,18 +213,23 @@
     },
     {
       "path": "docs/package-consistency-validation.json",
-      "bytes": 1203,
-      "sha256": "0b0a713592d7735583c6ab59be8382cbc4632670b7628cd5bd70c9e8f2c58b08"
+      "bytes": 1312,
+      "sha256": "3ff129600f33024d6c8c607a9cd5de7d7641d71f7661ae87220ddf8d2ffd7958"
     },
     {
       "path": "docs/package-readiness.json",
-      "bytes": 9512,
-      "sha256": "23a4861be8a07f450e4754cfd8f41cf59c8627d01d3c28e86486f74192b3d5eb"
+      "bytes": 10464,
+      "sha256": "741cb431fbfd4223fd9fc728aba5a1322c55974b09ffdeb45b2d9dd9cfd5dfdf"
     },
     {
       "path": "docs/periodic-irr-root-isolation.md",
       "bytes": 4254,
       "sha256": "be4145684a968d6ffeafe9d47360fee3b7a83528be3f05e4876f9d8ce9ddaaf6"
+    },
+    {
+      "path": "docs/price-grid-catalogue.md",
+      "bytes": 4814,
+      "sha256": "819e36e2ae5f660463c230876de029e5ffae15f3feed4cd802186e53aa5882b4"
     },
     {
       "path": "docs/professional-feedback-register.json",
@@ -249,12 +254,12 @@
     {
       "path": "docs/reference-check-runbook.md",
       "bytes": 2809,
-      "sha256": "3ca9d53b04012a986b7f233f7aee29112c7e009306f01bee45d86c3f38988ee7"
+      "sha256": "845e069e8c0d896d8375f9386295747247511447edb6865b425678733c9cce40"
     },
     {
       "path": "docs/reference-runner-map.json",
-      "bytes": 2869,
-      "sha256": "7b546b15086ed4f95717946c161bbc2135d2f8a7ee82b42bc9dcb92dce014d63"
+      "bytes": 3151,
+      "sha256": "baf9202a40218f8085ea13cce39a2d05d9f3dfc70d8489e9d3fc3506cc2b8eba"
     },
     {
       "path": "docs/requirements-conflicts.md",
@@ -285,6 +290,11 @@
       "path": "docs/revision-scenario-integrity.md",
       "bytes": 3270,
       "sha256": "a5f8d09f59ea81e1466f07b0302d1f094f439bbb10110e7036a327d8b139e4fb"
+    },
+    {
+      "path": "docs/sensitivity-ranking.md",
+      "bytes": 4024,
+      "sha256": "ace476dfa79506eff7e9d541a93523cd84db2b5cd12cdb3cd2abec871aaf6c52"
     },
     {
       "path": "docs/source-annex-reconciliation.json",
@@ -377,6 +387,16 @@
       "sha256": "79cfed78d1e944898f73f81c571fc46eb32a5f5a2827ba9c6a1c564ab0b9e573"
     },
     {
+      "path": "references/fixtures/price-grid-catalogue-synthetic.json",
+      "bytes": 6218,
+      "sha256": "4849ac521ebf66c1d9a5a11ddd716e6b914118d13fb8f29842e20b6deeb34a41"
+    },
+    {
+      "path": "references/fixtures/sensitivity-ranking-synthetic.json",
+      "bytes": 16033,
+      "sha256": "b1cca43fd481442d1ef5f46846c1265185c6d43e9fd1807ebaf73c6f93b35515"
+    },
+    {
       "path": "references/fixtures/settlement-bridge-synthetic.json",
       "bytes": 41642,
       "sha256": "ee3d871d960797fe5308cb070c415f3ad982227f10a2feff65bbb091492efbf2"
@@ -389,7 +409,7 @@
     {
       "path": "references/interface-contracts-validation.json",
       "bytes": 3055,
-      "sha256": "13db78980fb26184f10731d23d181d6f49e9b6664aebc2f0e9a915c79f3ac69b"
+      "sha256": "6d4d8d78c003fc26f80981a0bbf1342ac9974e8c8ce385b32a91988fdf302965"
     },
     {
       "path": "references/investor-return-bridge-validation.json",
@@ -442,6 +462,11 @@
       "sha256": "cf4cdbbd3f7b8ac24be8e5c5a3927365acfa3de096235c116672c747512b35b4"
     },
     {
+      "path": "references/price-grid-catalogue-validation.json",
+      "bytes": 7448,
+      "sha256": "59522b7bf4d71708e21009569bf5f1942915d3766db77447bfcb07da874effb3"
+    },
+    {
       "path": "references/return-metric-bridge-validation.json",
       "bytes": 5260,
       "sha256": "45ef1839453afaace34c56db0362511c9b5ff69a19021c5b6561d68a509d7772"
@@ -450,6 +475,11 @@
       "path": "references/revision-integrity-validation.json",
       "bytes": 1508,
       "sha256": "5b49fbc6a5b7e623e96e7121211919aaebf33cc154cc65500de80d08610f9aa8"
+    },
+    {
+      "path": "references/sensitivity-ranking-validation.json",
+      "bytes": 6422,
+      "sha256": "3062292e1c04edc45f63a2bf807418a2247334049592d2d4ce159c0df1f59e61"
     },
     {
       "path": "references/settlement-bridge-validation.json",
@@ -547,6 +577,11 @@
       "sha256": "b7f62f866581f25bfa7be23073d862e739c13fa92eabf1a9cce82f6f76897692"
     },
     {
+      "path": "references/validate_price_grid_catalogue.py",
+      "bytes": 18029,
+      "sha256": "21966585f42ad73d106e603a0760bd3405ef6759b5c4fd288d17c509395f2bd0"
+    },
+    {
       "path": "references/validate_return_metric_bridge.py",
       "bytes": 13457,
       "sha256": "74090ec3723b8f21b3a5bd1c784e9b1b0389fe0c057683c78f998b55f293d8d9"
@@ -555,6 +590,11 @@
       "path": "references/validate_revision_integrity.py",
       "bytes": 6550,
       "sha256": "b723c19f2d5fff5f0a747035705e975364a1b15f6703ad9cf1eb4ed4757b6161"
+    },
+    {
+      "path": "references/validate_sensitivity_ranking.py",
+      "bytes": 12318,
+      "sha256": "72056c5fea4767468131fed146df3e077ad9226ce595726f91bee068afff9f56"
     },
     {
       "path": "references/validate_settlement_bridge.py",
@@ -613,8 +653,8 @@
     },
     {
       "path": "schemas/README.md",
-      "bytes": 3127,
-      "sha256": "df7cb282e194ccf90f55f4418d8e5154b4b13a65d94a5328c95f37cd3995f341"
+      "bytes": 3468,
+      "sha256": "90ddfde30e4a47d290a6b621c8927f033176f96c41dcd0e0744b59856bd5b19a"
     },
     {
       "path": "schemas/budget-payment-bridge.schema.json",
@@ -702,6 +742,11 @@
       "sha256": "f1b0bd6b92b5f0bc9c904a2bc1a510e956b869c4ca544feb143af77b85cb134b"
     },
     {
+      "path": "schemas/price-grid-catalogue.schema.json",
+      "bytes": 7126,
+      "sha256": "cd32b952304869dda53dbaa21b2e0b3b7417861205ae18fdd71f364a3cb5ec54"
+    },
+    {
       "path": "schemas/return-metric-bridge.schema.json",
       "bytes": 1993,
       "sha256": "298778f6722a7091e03bd64e264175ab4bbf810607be962daf5d20146774efcc"
@@ -715,6 +760,11 @@
       "path": "schemas/scope-representation.schema.json",
       "bytes": 1884,
       "sha256": "4d82ab64f54d3483bcd5d642c991702b08ab8e20a406dd7497fbfe6f6775d3d0"
+    },
+    {
+      "path": "schemas/sensitivity-ranking.schema.json",
+      "bytes": 5174,
+      "sha256": "8ca4e2393a07a1c5c415a0613308c8b3cbebffc7f13860b6664df84f678571a3"
     },
     {
       "path": "schemas/settlement-bridge.schema.json",

@@ -1,0 +1,265 @@
+{
+  "type": "object",
+  "properties": {
+    "purpose": {
+      "const": "design_or_synthetic_reference"
+    },
+    "authorization": {
+      "const": "not_granted"
+    },
+    "context": {
+      "$ref": "urn:miniuw:candidate:common:0.1#/$defs/context"
+    },
+    "scope_definition_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "domain": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "const": "finite_uniform_grid"
+        },
+        "lower": {
+          "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+        },
+        "upper": {
+          "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+        },
+        "lower_closed": {
+          "type": "boolean"
+        },
+        "upper_closed": {
+          "type": "boolean"
+        },
+        "anchor": {
+          "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+        },
+        "increment": {
+          "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+        },
+        "normalizing_price_unit": {
+          "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+        },
+        "domain_evidence_ref": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "kind",
+        "lower",
+        "upper",
+        "lower_closed",
+        "upper_closed",
+        "anchor",
+        "increment",
+        "normalizing_price_unit",
+        "domain_evidence_ref"
+      ],
+      "additionalProperties": false
+    },
+    "expected_scenario_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "scenarios": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "scenario_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "context": {
+            "$ref": "urn:miniuw:candidate:common:0.1#/$defs/context"
+          },
+          "required_status": {
+            "enum": [
+              "required",
+              "excluded",
+              "unresolved"
+            ]
+          },
+          "exclusion_reason": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1
+          },
+          "exclusion_rule_ref": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1
+          },
+          "scenario_evidence_ref": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1
+          },
+          "required_constraint_ids": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "constraints": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "properties": {
+                "constraint_id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "state": {
+                  "enum": [
+                    "defined_claim",
+                    "missing",
+                    "conflict",
+                    "undefined"
+                  ]
+                },
+                "criterion_revision": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "minLength": 1
+                },
+                "normalized_relation_definition_ref": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "minLength": 1
+                },
+                "operator": {
+                  "enum": [
+                    ">=",
+                    ">",
+                    "<=",
+                    "<",
+                    null
+                  ]
+                },
+                "coefficients": {
+                  "oneOf": [
+                    {
+                      "type": "array",
+                      "minItems": 1,
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "numerator": {
+                            "type": "integer"
+                          },
+                          "denominator": {
+                            "type": "integer",
+                            "minimum": 1
+                          }
+                        },
+                        "required": [
+                          "numerator",
+                          "denominator"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "evidence_ref": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "minLength": 1
+                },
+                "original_claims": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "literal": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "evidence_ref": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    },
+                    "required": [
+                      "literal",
+                      "evidence_ref"
+                    ],
+                    "additionalProperties": false
+                  }
+                }
+              },
+              "required": [
+                "constraint_id",
+                "state",
+                "criterion_revision",
+                "normalized_relation_definition_ref",
+                "operator",
+                "coefficients",
+                "evidence_ref",
+                "original_claims"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "scenario_id",
+          "context",
+          "required_status",
+          "exclusion_reason",
+          "exclusion_rule_ref",
+          "scenario_evidence_ref",
+          "required_constraint_ids",
+          "constraints"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "evaluation_budget_points": {
+      "type": "integer",
+      "minimum": 0
+    }
+  },
+  "required": [
+    "purpose",
+    "authorization",
+    "context",
+    "scope_definition_ref",
+    "domain",
+    "expected_scenario_ids",
+    "scenarios",
+    "evaluation_budget_points"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:miniuw:candidate:price-grid-catalogue:0.1",
+  "title": "Explicit finite-price-grid normalized-polynomial reference, not underwriting RLV"
+}

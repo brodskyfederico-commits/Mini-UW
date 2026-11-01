@@ -1,0 +1,580 @@
+{
+  "purpose": "design_or_synthetic_reference",
+  "authorization": "not_granted",
+  "context": {
+    "deal_id": "SYNTHETIC-LEDGER-NO-DEAL",
+    "scenario_id": "sensitivity-aggregate",
+    "run_id": "reference-1",
+    "input_revision": "v1",
+    "definition_set_revision": "v1"
+  },
+  "metric_id": "SYNTHETIC-SIGNED-METRIC",
+  "metric_definition_ref": "SYNTHETIC-METRIC-v1",
+  "ranking_direction": "larger_signed_delta_first",
+  "tie_policy": "shared_dense_ranks",
+  "ranking_rule_ref": "SYNTHETIC-NOT-AUTHENTICATED-RANKING-RULE",
+  "baseline_bindings": [
+    {
+      "field_id": "rent",
+      "quantity": {
+        "state": "known",
+        "value": {
+          "numerator": 10,
+          "denominator": 1
+        },
+        "dimensions": {
+          "money": 1,
+          "area": 0,
+          "unit": 0,
+          "space": 0,
+          "time": 0
+        },
+        "unit_id": "SYNTHETIC-MONEY",
+        "currency": "SYNTHETIC-CURRENCY",
+        "measurement_role": "period_total",
+        "basis": "synthetic_project",
+        "period_ref": "SYNTHETIC-RANKING-PERIOD",
+        "sources": [
+          {
+            "source_id": "SYNTHETIC-ONLY",
+            "locator": "fixture declaration",
+            "claim_kind": "synthetic_reference",
+            "verification_status": "synthetic_only"
+          }
+        ]
+      }
+    },
+    {
+      "field_id": "expense",
+      "quantity": {
+        "state": "known",
+        "value": {
+          "numerator": 5,
+          "denominator": 1
+        },
+        "dimensions": {
+          "money": 1,
+          "area": 0,
+          "unit": 0,
+          "space": 0,
+          "time": 0
+        },
+        "unit_id": "SYNTHETIC-MONEY",
+        "currency": "SYNTHETIC-CURRENCY",
+        "measurement_role": "period_total",
+        "basis": "synthetic_project",
+        "period_ref": "SYNTHETIC-RANKING-PERIOD",
+        "sources": [
+          {
+            "source_id": "SYNTHETIC-ONLY",
+            "locator": "fixture declaration",
+            "claim_kind": "synthetic_reference",
+            "verification_status": "synthetic_only"
+          }
+        ]
+      }
+    }
+  ],
+  "baseline_metric": {
+    "state": "known",
+    "value": {
+      "numerator": 100,
+      "denominator": 1
+    },
+    "dimensions": {
+      "money": 1,
+      "area": 0,
+      "unit": 0,
+      "space": 0,
+      "time": 0
+    },
+    "unit_id": "SYNTHETIC-MONEY",
+    "currency": "SYNTHETIC-CURRENCY",
+    "measurement_role": "period_total",
+    "basis": "synthetic_project",
+    "period_ref": "SYNTHETIC-RANKING-PERIOD",
+    "sources": [
+      {
+        "source_id": "SYNTHETIC-ONLY",
+        "locator": "fixture declaration",
+        "claim_kind": "synthetic_reference",
+        "verification_status": "synthetic_only"
+      }
+    ]
+  },
+  "drivers": [
+    {
+      "driver_id": "rent",
+      "permitted_target_field_ids": [
+        "rent"
+      ],
+      "definition_ref": "SYNTHETIC-DRIVER-DEFINITION"
+    },
+    {
+      "driver_id": "expense",
+      "permitted_target_field_ids": [
+        "expense"
+      ],
+      "definition_ref": "SYNTHETIC-DRIVER-DEFINITION"
+    },
+    {
+      "driver_id": "zero",
+      "permitted_target_field_ids": [
+        "rent"
+      ],
+      "definition_ref": "SYNTHETIC-DRIVER-DEFINITION"
+    }
+  ],
+  "expected_trial_ids": [
+    "rent-trial",
+    "expense-trial",
+    "zero-trial",
+    "joint-trial"
+  ],
+  "trials": [
+    {
+      "trial_id": "rent-trial",
+      "context": {
+        "deal_id": "SYNTHETIC-LEDGER-NO-DEAL",
+        "scenario_id": "rent-trial",
+        "run_id": "reference-1",
+        "input_revision": "v1",
+        "definition_set_revision": "v1"
+      },
+      "experiment_kind": "single_driver",
+      "driver_ids": [
+        "rent"
+      ],
+      "target_field_ids": [
+        "rent"
+      ],
+      "unchanged_field_ids": [
+        "expense"
+      ],
+      "input_bindings": [
+        {
+          "field_id": "rent",
+          "quantity": {
+            "state": "known",
+            "value": {
+              "numerator": 12,
+              "denominator": 1
+            },
+            "dimensions": {
+              "money": 1,
+              "area": 0,
+              "unit": 0,
+              "space": 0,
+              "time": 0
+            },
+            "unit_id": "SYNTHETIC-MONEY",
+            "currency": "SYNTHETIC-CURRENCY",
+            "measurement_role": "period_total",
+            "basis": "synthetic_project",
+            "period_ref": "SYNTHETIC-RANKING-PERIOD",
+            "sources": [
+              {
+                "source_id": "SYNTHETIC-ONLY",
+                "locator": "fixture declaration",
+                "claim_kind": "synthetic_reference",
+                "verification_status": "synthetic_only"
+              }
+            ]
+          }
+        },
+        {
+          "field_id": "expense",
+          "quantity": {
+            "state": "known",
+            "value": {
+              "numerator": 5,
+              "denominator": 1
+            },
+            "dimensions": {
+              "money": 1,
+              "area": 0,
+              "unit": 0,
+              "space": 0,
+              "time": 0
+            },
+            "unit_id": "SYNTHETIC-MONEY",
+            "currency": "SYNTHETIC-CURRENCY",
+            "measurement_role": "period_total",
+            "basis": "synthetic_project",
+            "period_ref": "SYNTHETIC-RANKING-PERIOD",
+            "sources": [
+              {
+                "source_id": "SYNTHETIC-ONLY",
+                "locator": "fixture declaration",
+                "claim_kind": "synthetic_reference",
+                "verification_status": "synthetic_only"
+              }
+            ]
+          }
+        }
+      ],
+      "metric_definition_ref": "SYNTHETIC-METRIC-v1",
+      "metric_value": {
+        "state": "known",
+        "value": {
+          "numerator": 110,
+          "denominator": 1
+        },
+        "dimensions": {
+          "money": 1,
+          "area": 0,
+          "unit": 0,
+          "space": 0,
+          "time": 0
+        },
+        "unit_id": "SYNTHETIC-MONEY",
+        "currency": "SYNTHETIC-CURRENCY",
+        "measurement_role": "period_total",
+        "basis": "synthetic_project",
+        "period_ref": "SYNTHETIC-RANKING-PERIOD",
+        "sources": [
+          {
+            "source_id": "SYNTHETIC-ONLY",
+            "locator": "fixture declaration",
+            "claim_kind": "synthetic_reference",
+            "verification_status": "synthetic_only"
+          }
+        ]
+      },
+      "experiment_evidence_ref": "SYNTHETIC-MEASUREMENTS-NOT-CALCULATED-PRODUCT"
+    },
+    {
+      "trial_id": "expense-trial",
+      "context": {
+        "deal_id": "SYNTHETIC-LEDGER-NO-DEAL",
+        "scenario_id": "expense-trial",
+        "run_id": "reference-1",
+        "input_revision": "v1",
+        "definition_set_revision": "v1"
+      },
+      "experiment_kind": "single_driver",
+      "driver_ids": [
+        "expense"
+      ],
+      "target_field_ids": [
+        "expense"
+      ],
+      "unchanged_field_ids": [
+        "rent"
+      ],
+      "input_bindings": [
+        {
+          "field_id": "rent",
+          "quantity": {
+            "state": "known",
+            "value": {
+              "numerator": 10,
+              "denominator": 1
+            },
+            "dimensions": {
+              "money": 1,
+              "area": 0,
+              "unit": 0,
+              "space": 0,
+              "time": 0
+            },
+            "unit_id": "SYNTHETIC-MONEY",
+            "currency": "SYNTHETIC-CURRENCY",
+            "measurement_role": "period_total",
+            "basis": "synthetic_project",
+            "period_ref": "SYNTHETIC-RANKING-PERIOD",
+            "sources": [
+              {
+                "source_id": "SYNTHETIC-ONLY",
+                "locator": "fixture declaration",
+                "claim_kind": "synthetic_reference",
+                "verification_status": "synthetic_only"
+              }
+            ]
+          }
+        },
+        {
+          "field_id": "expense",
+          "quantity": {
+            "state": "known",
+            "value": {
+              "numerator": 6,
+              "denominator": 1
+            },
+            "dimensions": {
+              "money": 1,
+              "area": 0,
+              "unit": 0,
+              "space": 0,
+              "time": 0
+            },
+            "unit_id": "SYNTHETIC-MONEY",
+            "currency": "SYNTHETIC-CURRENCY",
+            "measurement_role": "period_total",
+            "basis": "synthetic_project",
+            "period_ref": "SYNTHETIC-RANKING-PERIOD",
+            "sources": [
+              {
+                "source_id": "SYNTHETIC-ONLY",
+                "locator": "fixture declaration",
+                "claim_kind": "synthetic_reference",
+                "verification_status": "synthetic_only"
+              }
+            ]
+          }
+        }
+      ],
+      "metric_definition_ref": "SYNTHETIC-METRIC-v1",
+      "metric_value": {
+        "state": "known",
+        "value": {
+          "numerator": 90,
+          "denominator": 1
+        },
+        "dimensions": {
+          "money": 1,
+          "area": 0,
+          "unit": 0,
+          "space": 0,
+          "time": 0
+        },
+        "unit_id": "SYNTHETIC-MONEY",
+        "currency": "SYNTHETIC-CURRENCY",
+        "measurement_role": "period_total",
+        "basis": "synthetic_project",
+        "period_ref": "SYNTHETIC-RANKING-PERIOD",
+        "sources": [
+          {
+            "source_id": "SYNTHETIC-ONLY",
+            "locator": "fixture declaration",
+            "claim_kind": "synthetic_reference",
+            "verification_status": "synthetic_only"
+          }
+        ]
+      },
+      "experiment_evidence_ref": "SYNTHETIC-MEASUREMENTS-NOT-CALCULATED-PRODUCT"
+    },
+    {
+      "trial_id": "zero-trial",
+      "context": {
+        "deal_id": "SYNTHETIC-LEDGER-NO-DEAL",
+        "scenario_id": "zero-trial",
+        "run_id": "reference-1",
+        "input_revision": "v1",
+        "definition_set_revision": "v1"
+      },
+      "experiment_kind": "single_driver",
+      "driver_ids": [
+        "zero"
+      ],
+      "target_field_ids": [
+        "rent"
+      ],
+      "unchanged_field_ids": [
+        "expense"
+      ],
+      "input_bindings": [
+        {
+          "field_id": "rent",
+          "quantity": {
+            "state": "known",
+            "value": {
+              "numerator": 10,
+              "denominator": 1
+            },
+            "dimensions": {
+              "money": 1,
+              "area": 0,
+              "unit": 0,
+              "space": 0,
+              "time": 0
+            },
+            "unit_id": "SYNTHETIC-MONEY",
+            "currency": "SYNTHETIC-CURRENCY",
+            "measurement_role": "period_total",
+            "basis": "synthetic_project",
+            "period_ref": "SYNTHETIC-RANKING-PERIOD",
+            "sources": [
+              {
+                "source_id": "SYNTHETIC-ONLY",
+                "locator": "fixture declaration",
+                "claim_kind": "synthetic_reference",
+                "verification_status": "synthetic_only"
+              }
+            ]
+          }
+        },
+        {
+          "field_id": "expense",
+          "quantity": {
+            "state": "known",
+            "value": {
+              "numerator": 5,
+              "denominator": 1
+            },
+            "dimensions": {
+              "money": 1,
+              "area": 0,
+              "unit": 0,
+              "space": 0,
+              "time": 0
+            },
+            "unit_id": "SYNTHETIC-MONEY",
+            "currency": "SYNTHETIC-CURRENCY",
+            "measurement_role": "period_total",
+            "basis": "synthetic_project",
+            "period_ref": "SYNTHETIC-RANKING-PERIOD",
+            "sources": [
+              {
+                "source_id": "SYNTHETIC-ONLY",
+                "locator": "fixture declaration",
+                "claim_kind": "synthetic_reference",
+                "verification_status": "synthetic_only"
+              }
+            ]
+          }
+        }
+      ],
+      "metric_definition_ref": "SYNTHETIC-METRIC-v1",
+      "metric_value": {
+        "state": "known",
+        "value": {
+          "numerator": 100,
+          "denominator": 1
+        },
+        "dimensions": {
+          "money": 1,
+          "area": 0,
+          "unit": 0,
+          "space": 0,
+          "time": 0
+        },
+        "unit_id": "SYNTHETIC-MONEY",
+        "currency": "SYNTHETIC-CURRENCY",
+        "measurement_role": "period_total",
+        "basis": "synthetic_project",
+        "period_ref": "SYNTHETIC-RANKING-PERIOD",
+        "sources": [
+          {
+            "source_id": "SYNTHETIC-ONLY",
+            "locator": "fixture declaration",
+            "claim_kind": "synthetic_reference",
+            "verification_status": "synthetic_only"
+          }
+        ]
+      },
+      "experiment_evidence_ref": "SYNTHETIC-MEASUREMENTS-NOT-CALCULATED-PRODUCT"
+    },
+    {
+      "trial_id": "joint-trial",
+      "context": {
+        "deal_id": "SYNTHETIC-LEDGER-NO-DEAL",
+        "scenario_id": "joint-trial",
+        "run_id": "reference-1",
+        "input_revision": "v1",
+        "definition_set_revision": "v1"
+      },
+      "experiment_kind": "joint",
+      "driver_ids": [
+        "rent",
+        "expense"
+      ],
+      "target_field_ids": [
+        "rent",
+        "expense"
+      ],
+      "unchanged_field_ids": [],
+      "input_bindings": [
+        {
+          "field_id": "rent",
+          "quantity": {
+            "state": "known",
+            "value": {
+              "numerator": 12,
+              "denominator": 1
+            },
+            "dimensions": {
+              "money": 1,
+              "area": 0,
+              "unit": 0,
+              "space": 0,
+              "time": 0
+            },
+            "unit_id": "SYNTHETIC-MONEY",
+            "currency": "SYNTHETIC-CURRENCY",
+            "measurement_role": "period_total",
+            "basis": "synthetic_project",
+            "period_ref": "SYNTHETIC-RANKING-PERIOD",
+            "sources": [
+              {
+                "source_id": "SYNTHETIC-ONLY",
+                "locator": "fixture declaration",
+                "claim_kind": "synthetic_reference",
+                "verification_status": "synthetic_only"
+              }
+            ]
+          }
+        },
+        {
+          "field_id": "expense",
+          "quantity": {
+            "state": "known",
+            "value": {
+              "numerator": 6,
+              "denominator": 1
+            },
+            "dimensions": {
+              "money": 1,
+              "area": 0,
+              "unit": 0,
+              "space": 0,
+              "time": 0
+            },
+            "unit_id": "SYNTHETIC-MONEY",
+            "currency": "SYNTHETIC-CURRENCY",
+            "measurement_role": "period_total",
+            "basis": "synthetic_project",
+            "period_ref": "SYNTHETIC-RANKING-PERIOD",
+            "sources": [
+              {
+                "source_id": "SYNTHETIC-ONLY",
+                "locator": "fixture declaration",
+                "claim_kind": "synthetic_reference",
+                "verification_status": "synthetic_only"
+              }
+            ]
+          }
+        }
+      ],
+      "metric_definition_ref": "SYNTHETIC-METRIC-v1",
+      "metric_value": {
+        "state": "known",
+        "value": {
+          "numerator": 120,
+          "denominator": 1
+        },
+        "dimensions": {
+          "money": 1,
+          "area": 0,
+          "unit": 0,
+          "space": 0,
+          "time": 0
+        },
+        "unit_id": "SYNTHETIC-MONEY",
+        "currency": "SYNTHETIC-CURRENCY",
+        "measurement_role": "period_total",
+        "basis": "synthetic_project",
+        "period_ref": "SYNTHETIC-RANKING-PERIOD",
+        "sources": [
+          {
+            "source_id": "SYNTHETIC-ONLY",
+            "locator": "fixture declaration",
+            "claim_kind": "synthetic_reference",
+            "verification_status": "synthetic_only"
+          }
+        ]
+      },
+      "experiment_evidence_ref": "SYNTHETIC-MEASUREMENTS-NOT-CALCULATED-PRODUCT"
+    }
+  ]
+}

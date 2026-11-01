@@ -19,3 +19,5 @@ Investor-return-bridge and return-metric-bridge compose existing cash/calendar, 
 Operating-cash-bridge and settlement-bridge add explicit accrual/working-balance and reduced full-payoff closing contracts. All 28 schemas pass 75 interface cases. Their 26/43 scoped checks do not establish authentic inventories, accounting policy, bank approval, distribution rights or production.
 
 Financing-timeline adds explicit action groups, unresolved term records, capacity bases and maturity/restriction-claim diagnostics. All 29 candidate schemas pass 75 interface cases; 50 synthetic timeline checks do not approve bank terms, execution order or product readiness.
+
+Price-grid-catalogue and sensitivity-ranking add explicit finite-domain/scenario-condition and signed measured-effect contracts. All 31 candidate schemas pass 75 interface cases. Their 52/33 controls, including 324 grid properties, do not certify economic derivation, actual scenario execution, approved ranking or global price optimality.

@@ -1,0 +1,212 @@
+{
+  "type": "object",
+  "properties": {
+    "purpose": {
+      "const": "design_or_synthetic_reference"
+    },
+    "authorization": {
+      "const": "not_granted"
+    },
+    "context": {
+      "$ref": "urn:miniuw:candidate:common:0.1#/$defs/context"
+    },
+    "metric_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "metric_definition_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "ranking_direction": {
+      "enum": [
+        "larger_signed_delta_first",
+        "smaller_signed_delta_first"
+      ]
+    },
+    "tie_policy": {
+      "const": "shared_dense_ranks"
+    },
+    "ranking_rule_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "baseline_bindings": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "field_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "quantity": {
+            "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+          }
+        },
+        "required": [
+          "field_id",
+          "quantity"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "baseline_metric": {
+      "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+    },
+    "drivers": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "driver_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "permitted_target_field_ids": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1
+          },
+          "definition_ref": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "driver_id",
+          "permitted_target_field_ids",
+          "definition_ref"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "expected_trial_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1
+    },
+    "trials": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "trial_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "context": {
+            "$ref": "urn:miniuw:candidate:common:0.1#/$defs/context"
+          },
+          "experiment_kind": {
+            "enum": [
+              "single_driver",
+              "joint"
+            ]
+          },
+          "driver_ids": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1
+          },
+          "target_field_ids": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1
+          },
+          "unchanged_field_ids": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "input_bindings": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "properties": {
+                "field_id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "quantity": {
+                  "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+                }
+              },
+              "required": [
+                "field_id",
+                "quantity"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "metric_definition_ref": {
+            "type": "string",
+            "minLength": 1
+          },
+          "metric_value": {
+            "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+          },
+          "experiment_evidence_ref": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "trial_id",
+          "context",
+          "experiment_kind",
+          "driver_ids",
+          "target_field_ids",
+          "unchanged_field_ids",
+          "input_bindings",
+          "metric_definition_ref",
+          "metric_value",
+          "experiment_evidence_ref"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "purpose",
+    "authorization",
+    "context",
+    "metric_id",
+    "metric_definition_ref",
+    "ranking_direction",
+    "tie_policy",
+    "ranking_rule_ref",
+    "baseline_bindings",
+    "baseline_metric",
+    "drivers",
+    "expected_trial_ids",
+    "trials"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:miniuw:candidate:sensitivity-ranking:0.1",
+  "title": "Explicit input-preservation and signed sensitivity-ranking reference; no financial reexecution"
+}

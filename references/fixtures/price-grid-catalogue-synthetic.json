@@ -1,0 +1,240 @@
+{
+  "purpose": "design_or_synthetic_reference",
+  "authorization": "not_granted",
+  "context": {
+    "deal_id": "SYNTHETIC-LEDGER-NO-DEAL",
+    "scenario_id": "explicit-grid-aggregate",
+    "run_id": "reference-1",
+    "input_revision": "v1",
+    "definition_set_revision": "v1"
+  },
+  "scope_definition_ref": "SYNTHETIC-FINITE-CATALOGUE-NOT-RLV",
+  "domain": {
+    "kind": "finite_uniform_grid",
+    "lower": {
+      "state": "known",
+      "value": {
+        "numerator": 0,
+        "denominator": 1
+      },
+      "dimensions": {
+        "money": 1,
+        "area": 0,
+        "unit": 0,
+        "space": 0,
+        "time": 0
+      },
+      "unit_id": "SYNTHETIC-MONEY",
+      "currency": "SYNTHETIC-CURRENCY",
+      "measurement_role": "stock",
+      "basis": "synthetic_project",
+      "period_ref": "PRICE-DOMAIN",
+      "sources": [
+        {
+          "source_id": "SYNTHETIC-ONLY",
+          "locator": "fixture declaration",
+          "claim_kind": "synthetic_reference",
+          "verification_status": "synthetic_only"
+        }
+      ]
+    },
+    "upper": {
+      "state": "known",
+      "value": {
+        "numerator": 4,
+        "denominator": 1
+      },
+      "dimensions": {
+        "money": 1,
+        "area": 0,
+        "unit": 0,
+        "space": 0,
+        "time": 0
+      },
+      "unit_id": "SYNTHETIC-MONEY",
+      "currency": "SYNTHETIC-CURRENCY",
+      "measurement_role": "stock",
+      "basis": "synthetic_project",
+      "period_ref": "PRICE-DOMAIN",
+      "sources": [
+        {
+          "source_id": "SYNTHETIC-ONLY",
+          "locator": "fixture declaration",
+          "claim_kind": "synthetic_reference",
+          "verification_status": "synthetic_only"
+        }
+      ]
+    },
+    "lower_closed": true,
+    "upper_closed": true,
+    "anchor": {
+      "state": "known",
+      "value": {
+        "numerator": 0,
+        "denominator": 1
+      },
+      "dimensions": {
+        "money": 1,
+        "area": 0,
+        "unit": 0,
+        "space": 0,
+        "time": 0
+      },
+      "unit_id": "SYNTHETIC-MONEY",
+      "currency": "SYNTHETIC-CURRENCY",
+      "measurement_role": "stock",
+      "basis": "synthetic_project",
+      "period_ref": "PRICE-DOMAIN",
+      "sources": [
+        {
+          "source_id": "SYNTHETIC-ONLY",
+          "locator": "fixture declaration",
+          "claim_kind": "synthetic_reference",
+          "verification_status": "synthetic_only"
+        }
+      ]
+    },
+    "increment": {
+      "state": "known",
+      "value": {
+        "numerator": 1,
+        "denominator": 1
+      },
+      "dimensions": {
+        "money": 1,
+        "area": 0,
+        "unit": 0,
+        "space": 0,
+        "time": 0
+      },
+      "unit_id": "SYNTHETIC-MONEY",
+      "currency": "SYNTHETIC-CURRENCY",
+      "measurement_role": "stock",
+      "basis": "synthetic_project",
+      "period_ref": "PRICE-DOMAIN",
+      "sources": [
+        {
+          "source_id": "SYNTHETIC-ONLY",
+          "locator": "fixture declaration",
+          "claim_kind": "synthetic_reference",
+          "verification_status": "synthetic_only"
+        }
+      ]
+    },
+    "normalizing_price_unit": {
+      "state": "known",
+      "value": {
+        "numerator": 1,
+        "denominator": 1
+      },
+      "dimensions": {
+        "money": 1,
+        "area": 0,
+        "unit": 0,
+        "space": 0,
+        "time": 0
+      },
+      "unit_id": "SYNTHETIC-MONEY",
+      "currency": "SYNTHETIC-CURRENCY",
+      "measurement_role": "stock",
+      "basis": "synthetic_project",
+      "period_ref": "PRICE-DOMAIN",
+      "sources": [
+        {
+          "source_id": "SYNTHETIC-ONLY",
+          "locator": "fixture declaration",
+          "claim_kind": "synthetic_reference",
+          "verification_status": "synthetic_only"
+        }
+      ]
+    },
+    "domain_evidence_ref": "SYNTHETIC-NOT-APPROVED-QUOTE-GRID"
+  },
+  "expected_scenario_ids": [
+    "Base",
+    "Downside"
+  ],
+  "scenarios": [
+    {
+      "scenario_id": "Base",
+      "context": {
+        "deal_id": "SYNTHETIC-LEDGER-NO-DEAL",
+        "scenario_id": "Base",
+        "run_id": "reference-1",
+        "input_revision": "v1",
+        "definition_set_revision": "v1"
+      },
+      "required_status": "required",
+      "exclusion_reason": null,
+      "exclusion_rule_ref": null,
+      "scenario_evidence_ref": "SYNTHETIC-EXPLICIT-SCENARIO",
+      "required_constraint_ids": [
+        "nonmonotone"
+      ],
+      "constraints": [
+        {
+          "constraint_id": "nonmonotone",
+          "state": "defined_claim",
+          "criterion_revision": "SYNTHETIC-CRITERIA-v1",
+          "normalized_relation_definition_ref": "SYNTHETIC-POLYNOMIAL-NOT-REAL-MODEL",
+          "operator": ">=",
+          "coefficients": [
+            {
+              "numerator": 3,
+              "denominator": 1
+            },
+            {
+              "numerator": -4,
+              "denominator": 1
+            },
+            {
+              "numerator": 1,
+              "denominator": 1
+            }
+          ],
+          "evidence_ref": "SYNTHETIC-ONLY",
+          "original_claims": []
+        }
+      ]
+    },
+    {
+      "scenario_id": "Downside",
+      "context": {
+        "deal_id": "SYNTHETIC-LEDGER-NO-DEAL",
+        "scenario_id": "Downside",
+        "run_id": "reference-1",
+        "input_revision": "v1",
+        "definition_set_revision": "v1"
+      },
+      "required_status": "required",
+      "exclusion_reason": null,
+      "exclusion_rule_ref": null,
+      "scenario_evidence_ref": "SYNTHETIC-EXPLICIT-SCENARIO",
+      "required_constraint_ids": [
+        "upper-limit"
+      ],
+      "constraints": [
+        {
+          "constraint_id": "upper-limit",
+          "state": "defined_claim",
+          "criterion_revision": "SYNTHETIC-CRITERIA-v1",
+          "normalized_relation_definition_ref": "SYNTHETIC-POLYNOMIAL-NOT-REAL-MODEL",
+          "operator": "<=",
+          "coefficients": [
+            {
+              "numerator": -2,
+              "denominator": 1
+            },
+            {
+              "numerator": 1,
+              "denominator": 1
+            }
+          ],
+          "evidence_ref": "SYNTHETIC-ONLY",
+          "original_claims": []
+        }
+      ]
+    }
+  ],
+  "evaluation_budget_points": 10
+}

@@ -121,6 +121,16 @@
       "path": "references/financing-timeline-validation.json",
       "scope": "Explicit synthetic ordered atomic-record groups, nonnegative cash/debt/due snapshots, declared capacity/window/maturity and restriction-claim diagnostics only. Not discovered bank terms, legal interpretation, authority of documents, real intraday execution, complete commitments/covenants, solver, independent audit or production.",
       "count": 50
+    },
+    {
+      "path": "references/price-grid-catalogue-validation.json",
+      "scope": "Exact finite uniform grid enumeration/intersection of explicitly supplied scenario-specific normalized-polynomial claims only. Not actual financial dependency recalculation, authenticated criteria/exclusions, continuous/global price optimization, approved RLV, economic feasibility, independent audit or production.",
+      "count": 52
+    },
+    {
+      "path": "references/sensitivity-ranking-validation.json",
+      "scope": "Declared synthetic numeric-input preservation, compatible measured-metric signed deltas, explicit direction/ties and separation of joint experiments only. Not actual perturbation generation, financial recomputation, authenticated ranking policy, causal/probabilistic inference, real-deal screening, independent audit or production.",
+      "count": 33
     }
   ],
   "independent_financial_audit": false,
@@ -142,24 +152,26 @@
     "calendar_ledger_schemas": 3,
     "cost_scope_schemas": 2,
     "evidence_locator_schemas": 1,
-    "total_schema_documents": 29,
+    "total_schema_documents": 31,
     "budget_payment_bridge_schemas": 1,
     "calculation_lineage_schemas": 1,
     "investor_return_bridge_schemas": 1,
     "return_metric_bridge_schemas": 1,
     "operating_cash_bridge_schemas": 1,
     "settlement_bridge_schemas": 1,
-    "financing_timeline_schemas": 1
+    "financing_timeline_schemas": 1,
+    "price_grid_catalogue_schemas": 1,
+    "sensitivity_ranking_schemas": 1
   },
   "reference_runner": {
-    "suites": 21,
+    "suites": 23,
     "isolated_temporary_copy": true,
     "github_workflow_prepared": true,
     "remote_evidence_rule": "Check the GitHub run for the exact current commit; previous successful runs do not certify descendants.",
     "last_recorded_prior_run": {
-      "commit_sha": "4475834abeb8bc413f1000e58d915c889572c160",
-      "suites": 20,
-      "url": "https://github.com/brodskyfederico-commits/Mini-UW/actions/runs/41357437532"
+      "commit_sha": "86e45277b72f93e858f7120e83e099f2abde5867",
+      "suites": 21,
+      "url": "https://github.com/brodskyfederico-commits/Mini-UW/actions/runs/41358217009"
     },
     "not_financial_certification": true
   }

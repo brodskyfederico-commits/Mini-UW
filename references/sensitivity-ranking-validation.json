@@ -1,0 +1,218 @@
+{
+  "status": "passed",
+  "total": 33,
+  "checks": [
+    "signed_direction_preserved_not_absolute_delta",
+    "joint_result_not_ranked_as_individual",
+    "joint_result_not_sum_of_individual_changes",
+    "no_financial_reexecution_or_decision_claim",
+    "original_packets_unchanged",
+    "opposite_direction_requires_explicit_rule",
+    "ties_share_dense_rank_without_arbitrary_top_driver",
+    "all_zero_changes_keep_metric_and_full_tie",
+    "missing_trial_not_dropped_from_ranking",
+    "missing_baseline_not_assumed_zero",
+    "known_metric_does_not_erase_unknown_shocked_input",
+    "joint_only_cannot_generate_individual_ranking",
+    "trial_context_mismatch",
+    "trial_scenario_context_not_base_fallback",
+    "metric_definition_mismatch",
+    "metric_currency_mismatch",
+    "metric_period_mismatch",
+    "metric_basis_mismatch",
+    "unknown_driver",
+    "single_driver_cannot_hide_two_drivers",
+    "joint_needs_multiple_drivers",
+    "target_outside_driver_definition",
+    "unchanged_input_altered",
+    "missing_unchanged_binding_not_inherited",
+    "duplicate_input_binding",
+    "target_unchanged_overlap",
+    "unclassified_input_field",
+    "shock_unit_changed",
+    "missing_trial_record",
+    "duplicate_trial_id",
+    "no_default_direction",
+    "no_empty_evidence",
+    "no_production_authorization"
+  ],
+  "schemas_checked": 31,
+  "synthetic_example": {
+    "state": "complete_declared_ranking_reference",
+    "decision": "PENDING",
+    "publication_authorized": false,
+    "ranking": [
+      {
+        "dense_rank": 1,
+        "signed_delta": "10",
+        "trial_ids": [
+          "rent-trial"
+        ]
+      },
+      {
+        "dense_rank": 2,
+        "signed_delta": "0",
+        "trial_ids": [
+          "zero-trial"
+        ]
+      },
+      {
+        "dense_rank": 3,
+        "signed_delta": "-10",
+        "trial_ids": [
+          "expense-trial"
+        ]
+      }
+    ],
+    "single_driver_diagnostics": [
+      {
+        "trial_id": "rent-trial",
+        "driver_ids": [
+          "rent"
+        ],
+        "signed_delta": "10",
+        "original_metric": {
+          "state": "known",
+          "value": {
+            "numerator": 110,
+            "denominator": 1
+          },
+          "dimensions": {
+            "money": 1,
+            "area": 0,
+            "unit": 0,
+            "space": 0,
+            "time": 0
+          },
+          "unit_id": "SYNTHETIC-MONEY",
+          "currency": "SYNTHETIC-CURRENCY",
+          "measurement_role": "period_total",
+          "basis": "synthetic_project",
+          "period_ref": "SYNTHETIC-RANKING-PERIOD",
+          "sources": [
+            {
+              "source_id": "SYNTHETIC-ONLY",
+              "locator": "fixture declaration",
+              "claim_kind": "synthetic_reference",
+              "verification_status": "synthetic_only"
+            }
+          ]
+        },
+        "state": "measured_relation_reference"
+      },
+      {
+        "trial_id": "expense-trial",
+        "driver_ids": [
+          "expense"
+        ],
+        "signed_delta": "-10",
+        "original_metric": {
+          "state": "known",
+          "value": {
+            "numerator": 90,
+            "denominator": 1
+          },
+          "dimensions": {
+            "money": 1,
+            "area": 0,
+            "unit": 0,
+            "space": 0,
+            "time": 0
+          },
+          "unit_id": "SYNTHETIC-MONEY",
+          "currency": "SYNTHETIC-CURRENCY",
+          "measurement_role": "period_total",
+          "basis": "synthetic_project",
+          "period_ref": "SYNTHETIC-RANKING-PERIOD",
+          "sources": [
+            {
+              "source_id": "SYNTHETIC-ONLY",
+              "locator": "fixture declaration",
+              "claim_kind": "synthetic_reference",
+              "verification_status": "synthetic_only"
+            }
+          ]
+        },
+        "state": "measured_relation_reference"
+      },
+      {
+        "trial_id": "zero-trial",
+        "driver_ids": [
+          "zero"
+        ],
+        "signed_delta": "0",
+        "original_metric": {
+          "state": "known",
+          "value": {
+            "numerator": 100,
+            "denominator": 1
+          },
+          "dimensions": {
+            "money": 1,
+            "area": 0,
+            "unit": 0,
+            "space": 0,
+            "time": 0
+          },
+          "unit_id": "SYNTHETIC-MONEY",
+          "currency": "SYNTHETIC-CURRENCY",
+          "measurement_role": "period_total",
+          "basis": "synthetic_project",
+          "period_ref": "SYNTHETIC-RANKING-PERIOD",
+          "sources": [
+            {
+              "source_id": "SYNTHETIC-ONLY",
+              "locator": "fixture declaration",
+              "claim_kind": "synthetic_reference",
+              "verification_status": "synthetic_only"
+            }
+          ]
+        },
+        "state": "measured_relation_reference"
+      }
+    ],
+    "joint_diagnostics": [
+      {
+        "trial_id": "joint-trial",
+        "driver_ids": [
+          "rent",
+          "expense"
+        ],
+        "signed_delta": "20",
+        "original_metric": {
+          "state": "known",
+          "value": {
+            "numerator": 120,
+            "denominator": 1
+          },
+          "dimensions": {
+            "money": 1,
+            "area": 0,
+            "unit": 0,
+            "space": 0,
+            "time": 0
+          },
+          "unit_id": "SYNTHETIC-MONEY",
+          "currency": "SYNTHETIC-CURRENCY",
+          "measurement_role": "period_total",
+          "basis": "synthetic_project",
+          "period_ref": "SYNTHETIC-RANKING-PERIOD",
+          "sources": [
+            {
+              "source_id": "SYNTHETIC-ONLY",
+              "locator": "fixture declaration",
+              "claim_kind": "synthetic_reference",
+              "verification_status": "synthetic_only"
+            }
+          ]
+        },
+        "state": "measured_relation_reference"
+      }
+    ],
+    "issues": [],
+    "all_single_trials_tied": false,
+    "financial_reexecution_verified": false,
+    "joint_result_inferred_from_singles": false
+  },
+  "scope": "Declared synthetic numeric-input preservation, compatible measured-metric signed deltas, explicit direction/ties and separation of joint experiments only. Not actual perturbation generation, financial recomputation, authenticated ranking policy, causal/probabilistic inference, real-deal screening, independent audit or production."
+}
