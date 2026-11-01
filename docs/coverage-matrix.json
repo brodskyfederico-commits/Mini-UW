@@ -6386,7 +6386,7 @@
       "definicion_vigente": "Contrato candidato M7-01 en docs/model-hold-exit-returns.md; alcance y convenciones pendientes.",
       "modulo_o_calculo_afectado": "M7 → M8/M9",
       "evidencia_documental": "sources/extracted/95a304fd3e53.txt ; extracción textual cotejada preliminarmente",
-      "evidencia_validacion": "references/m7-validation.json: casos algebraicos sintéticos condicionados; sin solver IRR general, XIRR ni auditoría independiente.",
+      "evidencia_validacion": "references/m7-validation.json: casos algebraicos sintéticos condicionados; sin solver IRR general, XIRR ni auditoría independiente. Referencia adicional: references/investor-return-bridge-validation.json, 43 controles de vínculos explícitos ledger/grid/brutos/TIR sintéticos; sin elección temporal aprobada, terminal o XIRR.",
       "estado": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
       "pendientes": "Cerrar fuentes/calendario/denominadores/terminal/estrategia y validación independiente; ver contrato M7.",
       "cobertura_financiera_extremo_a_extremo": false
@@ -6440,7 +6440,7 @@
       "definicion_vigente": "Contrato candidato M7-04 en docs/model-hold-exit-returns.md; alcance y convenciones pendientes.",
       "modulo_o_calculo_afectado": "M7 → M8/M9",
       "evidencia_documental": "sources/extracted/95a304fd3e53.txt ; extracción textual cotejada preliminarmente",
-      "evidencia_validacion": "references/m7-validation.json: casos algebraicos sintéticos condicionados; sin solver IRR general, XIRR ni auditoría independiente. Referencia adicional: references/calendar-ledger-validation.json, 60 controles de calendario/ledgers sintéticos; sin convención bancaria ni auditoría independiente.",
+      "evidencia_validacion": "references/m7-validation.json: casos algebraicos sintéticos condicionados; sin solver IRR general, XIRR ni auditoría independiente. Referencia adicional: references/calendar-ledger-validation.json, 60 controles de calendario/ledgers sintéticos; sin convención bancaria ni auditoría independiente. Referencia adicional: references/investor-return-bridge-validation.json, 43 controles de vínculos explícitos ledger/grid/brutos/TIR sintéticos; sin elección temporal aprobada, terminal o XIRR.",
       "estado": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
       "pendientes": "Cerrar fuentes/calendario/denominadores/terminal/estrategia y validación independiente; ver contrato M7.",
       "cobertura_financiera_extremo_a_extremo": false
@@ -6530,7 +6530,7 @@
       "definicion_vigente": "Contrato candidato M7-09 en docs/model-hold-exit-returns.md; alcance y convenciones pendientes.",
       "modulo_o_calculo_afectado": "M7 → M8/M9",
       "evidencia_documental": "sources/extracted/95a304fd3e53.txt ; extracción textual cotejada preliminarmente",
-      "evidencia_validacion": "references/m7-validation.json: casos algebraicos sintéticos condicionados; sin solver IRR general, XIRR ni auditoría independiente.",
+      "evidencia_validacion": "references/m7-validation.json: casos algebraicos sintéticos condicionados; sin solver IRR general, XIRR ni auditoría independiente. Referencia adicional: references/investor-return-bridge-validation.json, 43 controles de vínculos explícitos ledger/grid/brutos/TIR sintéticos; sin elección temporal aprobada, terminal o XIRR.",
       "estado": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
       "pendientes": "Cerrar fuentes/calendario/denominadores/terminal/estrategia y validación independiente; ver contrato M7.",
       "cobertura_financiera_extremo_a_extremo": false
@@ -6548,7 +6548,7 @@
       "definicion_vigente": "Contrato candidato M7-10 en docs/model-hold-exit-returns.md; alcance y convenciones pendientes.",
       "modulo_o_calculo_afectado": "M7 → M8/M9",
       "evidencia_documental": "sources/extracted/95a304fd3e53.txt ; extracción textual cotejada preliminarmente",
-      "evidencia_validacion": "references/m7-validation.json: casos algebraicos sintéticos condicionados; sin solver IRR general, XIRR ni auditoría independiente. Ampliación matemática: references/periodic-irr-isolation-validation.json, 64 controles de conteo/aislamiento racional de raíces periódicas; sin XIRR, elección de raíz, convención de anualización o integración de deal.",
+      "evidencia_validacion": "references/m7-validation.json: casos algebraicos sintéticos condicionados; sin solver IRR general, XIRR ni auditoría independiente. Ampliación matemática: references/periodic-irr-isolation-validation.json, 64 controles de conteo/aislamiento racional de raíces periódicas; sin XIRR, elección de raíz, convención de anualización o integración de deal. Referencia adicional: references/investor-return-bridge-validation.json, 43 controles de vínculos explícitos ledger/grid/brutos/TIR sintéticos; sin elección temporal aprobada, terminal o XIRR. Referencia adicional: references/return-metric-bridge-validation.json, 31 controles más tabla de 180 casos de extremos; comparación sin redondeo y compounding declarado, sin criterio auténtico ni decisión del deal.",
       "estado": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
       "pendientes": "Cerrar fuentes/calendario/denominadores/terminal/estrategia y validación independiente; ver contrato M7.",
       "cobertura_financiera_extremo_a_extremo": false
@@ -6836,7 +6836,7 @@
       "definicion_vigente": "Contrato candidato M9-02 en docs/model-decision-audit.md; políticas/integración pendientes.",
       "modulo_o_calculo_afectado": "M9 y puerta al Full UW",
       "evidencia_documental": "sources/extracted/fbb44a320a46.txt ; extracción textual cotejada preliminarmente",
-      "evidencia_validacion": "references/m9-validation.json sólo comparadores y regla hipotética de referencia; no identidad real, transacciones o PDF decisorio. Evidencia adicional: schemas/ y references/interface-contracts-validation.json (75 controles de estructura/intercambio sintético; no validación financiera o productiva).",
+      "evidencia_validacion": "references/m9-validation.json sólo comparadores y regla hipotética de referencia; no identidad real, transacciones o PDF decisorio. Evidencia adicional: schemas/ y references/interface-contracts-validation.json (75 controles de estructura/intercambio sintético; no validación financiera o productiva). Referencia adicional: references/return-metric-bridge-validation.json, 31 controles más tabla de 180 casos de extremos; comparación sin redondeo y compounding declarado, sin criterio auténtico ni decisión del deal.",
       "estado": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
       "pendientes": "Cerrar regla aplicable, criterios, implementación futura e independencia; no inferir estados históricos ni autenticación.",
       "cobertura_financiera_extremo_a_extremo": false
@@ -6854,7 +6854,7 @@
       "definicion_vigente": "Contrato candidato M9-03 en docs/model-decision-audit.md; políticas/integración pendientes.",
       "modulo_o_calculo_afectado": "M9 y puerta al Full UW",
       "evidencia_documental": "sources/extracted/fbb44a320a46.txt ; extracción textual cotejada preliminarmente",
-      "evidencia_validacion": "references/m9-validation.json sólo comparadores y regla hipotética de referencia; no identidad real, transacciones o PDF decisorio. Evidencia adicional: schemas/ y references/interface-contracts-validation.json (75 controles de estructura/intercambio sintético; no validación financiera o productiva).",
+      "evidencia_validacion": "references/m9-validation.json sólo comparadores y regla hipotética de referencia; no identidad real, transacciones o PDF decisorio. Evidencia adicional: schemas/ y references/interface-contracts-validation.json (75 controles de estructura/intercambio sintético; no validación financiera o productiva). Referencia adicional: references/return-metric-bridge-validation.json, 31 controles más tabla de 180 casos de extremos; comparación sin redondeo y compounding declarado, sin criterio auténtico ni decisión del deal.",
       "estado": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
       "pendientes": "Cerrar regla aplicable, criterios, implementación futura e independencia; no inferir estados históricos ni autenticación.",
       "cobertura_financiera_extremo_a_extremo": false

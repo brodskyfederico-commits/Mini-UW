@@ -13,3 +13,5 @@ Additional candidate records: explicit cost-scope representations/packages and h
 The budget-payment-bridge schema composes explicit cost-scope and ledger records with period/payment allocations. All 23 current schema documents pass interface regression; 41 bridge cases exercise structural links, not expert policy or a full financial engine.
 
 The calculation-lineage contract adds typed explicit dependency slots, scenario scope and content digests. All 24 candidate schema documents pass the 75 interface regression cases. Forty-eight lineage cases are separate from financial correctness, authentication or persistence.
+
+Investor-return-bridge and return-metric-bridge compose existing cash/calendar, exact periodic isolation and explicit criterion records. All 26 schema documents pass 75 interface regression cases. Their 43/31 scoped bridge controls do not certify real timings, thresholds, scenarios or deal decisions.

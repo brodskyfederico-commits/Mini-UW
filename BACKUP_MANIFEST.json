@@ -2,6 +2,11 @@
   "scope": "Supplied originals, candidate model structure and scoped references; not production, financial certification or complete system recovery.",
   "files": [
     {
+      "path": ".github/workflows/model-reference-checks.yml",
+      "bytes": 780,
+      "sha256": "0459e73a608e700c3a43c0e9b070ca6653286c2a4738c6409150791c29468dd4"
+    },
+    {
       "path": ".gitignore",
       "bytes": 261,
       "sha256": "fafa62bcd913da33600c2c72ba041400df5f444f65d8b0bad3d5e0ac95b50dbe"
@@ -13,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 5798,
-      "sha256": "5b52075005fefbc835b1929b0d3c60a2c2403dedcd8bf62abcf8f3e3a9d77ce5"
+      "bytes": 6219,
+      "sha256": "7ac9599a2a9e3f3c6a849f22b685979a92eda32279709627d41a68a2280270ea"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 14013,
-      "sha256": "5152726291db11cd7e694061a114a251d98f339e6ce44e0a44a9dbeb4467ef67"
+      "bytes": 14932,
+      "sha256": "0577f10ca2e904a9470acded1768605179c06a0fe8c0b111605bc8f4af866a3d"
     },
     {
       "path": "docs/acceptance-case-contracts.json",
@@ -58,13 +63,13 @@
     },
     {
       "path": "docs/coverage-matrix.csv",
-      "bytes": 342088,
-      "sha256": "b9c90a167240837fa47b098d7043ce66d9d2c6afaf8cc66885d936c665261365"
+      "bytes": 343533,
+      "sha256": "19453dfcdd7e5ba4ccb2d055e8810fb7631f3544873f0f84333c73f061852f9d"
     },
     {
       "path": "docs/coverage-matrix.json",
-      "bytes": 526563,
-      "sha256": "57576dc65ab8fc545850420186dd9503841f595241715a87193724ed6661cba7"
+      "bytes": 528008,
+      "sha256": "7cde5040d5442f5d78b0a00c93f3ba5b30c47189c0de538416d94ab1d0d550a4"
     },
     {
       "path": "docs/current-direction.txt",
@@ -117,6 +122,11 @@
       "sha256": "49396f332376a9a80d7b3ba3afbd4add13a647db622d3049d19837894e0be615"
     },
     {
+      "path": "docs/investor-return-bridges.md",
+      "bytes": 5109,
+      "sha256": "88e751a2d7070eb00852c8d634814758e5a413364d3898c68f7f9bf2e606bb4f"
+    },
+    {
       "path": "docs/model-budget-schedule.md",
       "bytes": 6293,
       "sha256": "fd255eaa63fcde640f63b5604821bb08c799a92bf93ae8a54dedd01085a67297"
@@ -143,8 +153,8 @@
     },
     {
       "path": "docs/model-hold-exit-returns.md",
-      "bytes": 11766,
-      "sha256": "47b8f868be886de586dbf3f65ac13a14adaa08ca992524298d11f81bb75687a4"
+      "bytes": 12122,
+      "sha256": "053746a0b7c72da941b40e9ff1251704367c50317f4dfa5a8803ce9f6981eccc"
     },
     {
       "path": "docs/model-input-evidence.md",
@@ -188,13 +198,13 @@
     },
     {
       "path": "docs/package-consistency-validation.json",
-      "bytes": 936,
-      "sha256": "447916fdf3ad481daaaf36f703713e0c99f4a71f45593b4884b079ea89a64ca7"
+      "bytes": 1086,
+      "sha256": "9d78d69c874778155a3e5019cd186fe3550d90a7e2d648f28e1759a537e5a04b"
     },
     {
       "path": "docs/package-readiness.json",
-      "bytes": 6866,
-      "sha256": "53fb16e942cee40ca8da367b5d8d070aeb19769eb643a39287998619abd268f6"
+      "bytes": 7869,
+      "sha256": "6a4b4e61bc5d1b32ec08d3247847c7078d98add5ee45060215ab28113185b514"
     },
     {
       "path": "docs/periodic-irr-root-isolation.md",
@@ -220,6 +230,16 @@
       "path": "docs/recovery-status.md",
       "bytes": 4736,
       "sha256": "3ef2c63053dd10684055006337431dd9d07b077898486c10c7ab57171e31e1ce"
+    },
+    {
+      "path": "docs/reference-check-runbook.md",
+      "bytes": 2809,
+      "sha256": "4edb5b98bc9041dc42adb31e41d8bbea7227e4b6537626a19790041bea23d113"
+    },
+    {
+      "path": "docs/reference-runner-map.json",
+      "bytes": 2451,
+      "sha256": "ef50092c0d0a36e3b2f2bc768ba158386ddd24cc1b92ea8e503b43abca021c5f"
     },
     {
       "path": "docs/requirements-conflicts.md",
@@ -322,6 +342,11 @@
       "sha256": "751bec323a018585c98e8c45129043da58fe5a3ad6cf6d1f976e692c0004da41"
     },
     {
+      "path": "references/fixtures/investor-return-bridge-synthetic.json",
+      "bytes": 44498,
+      "sha256": "5db22431d46301631f80b6b182a18e970ca47963ab91aca1db2233370a22aa6a"
+    },
+    {
       "path": "references/integrated-bridge-validation.json",
       "bytes": 1976,
       "sha256": "45b218fd7c6803c188a75d204c77a572e904f321cccb30e48f4ff9c30c10639c"
@@ -329,7 +354,12 @@
     {
       "path": "references/interface-contracts-validation.json",
       "bytes": 3055,
-      "sha256": "5ed6f539d73d55902e71275f5079265d736e6dcf2d33518b9b3f6c4a9ed0591b"
+      "sha256": "2097c9313f7bc49e0288fd0a80d6ef5757d95bbf86da582c404f70be0f7ba9da"
+    },
+    {
+      "path": "references/investor-return-bridge-validation.json",
+      "bytes": 8416,
+      "sha256": "6129b44d7036aeecf5fcd218047a3887c71113dde3c621fb78a95f3ea8234f35"
     },
     {
       "path": "references/m2-validation.json",
@@ -372,6 +402,11 @@
       "sha256": "cf4cdbbd3f7b8ac24be8e5c5a3927365acfa3de096235c116672c747512b35b4"
     },
     {
+      "path": "references/return-metric-bridge-validation.json",
+      "bytes": 5260,
+      "sha256": "45ef1839453afaace34c56db0362511c9b5ff69a19021c5b6561d68a509d7772"
+    },
+    {
       "path": "references/revision-integrity-validation.json",
       "bytes": 1508,
       "sha256": "5b49fbc6a5b7e623e96e7121211919aaebf33cc154cc65500de80d08610f9aa8"
@@ -410,6 +445,11 @@
       "path": "references/validate_interface_contracts.py",
       "bytes": 15155,
       "sha256": "51200cff4f04dab3806b69a93fc2af23f1721e67c735d41e6f0e1b36a01f2920"
+    },
+    {
+      "path": "references/validate_investor_return_bridge.py",
+      "bytes": 14470,
+      "sha256": "0535e95918f042f996671fa916b4b769b3554740dd01745a510ea2f49b67f657"
     },
     {
       "path": "references/validate_m2_algebra.py",
@@ -452,9 +492,19 @@
       "sha256": "b7f62f866581f25bfa7be23073d862e739c13fa92eabf1a9cce82f6f76897692"
     },
     {
+      "path": "references/validate_return_metric_bridge.py",
+      "bytes": 13457,
+      "sha256": "74090ec3723b8f21b3a5bd1c784e9b1b0389fe0c057683c78f998b55f293d8d9"
+    },
+    {
       "path": "references/validate_revision_integrity.py",
       "bytes": 6550,
       "sha256": "b723c19f2d5fff5f0a747035705e975364a1b15f6703ad9cf1eb4ed4757b6161"
+    },
+    {
+      "path": "requirements-reference.txt",
+      "bytes": 139,
+      "sha256": "173457d010bbe8a2cea404ee0107df50dcb82eb2e96bac4773c55f06b01aea47"
     },
     {
       "path": "schemas/M1.schema.json",
@@ -503,8 +553,8 @@
     },
     {
       "path": "schemas/README.md",
-      "bytes": 2247,
-      "sha256": "ea49928841ca9c45b8a8b4da22a340817fb273f3f63c21377ae787866a7eb9e7"
+      "bytes": 2550,
+      "sha256": "8c1b753ae1870e64aaf672fff3aa86da1fc676e5dec76e593a8a217ee044e2e3"
     },
     {
       "path": "schemas/budget-payment-bridge.schema.json",
@@ -572,9 +622,19 @@
       "sha256": "19e61936521f898e98f2a61f49853385398becc70e231938ca61034b4e684f88"
     },
     {
+      "path": "schemas/investor-return-bridge.schema.json",
+      "bytes": 3613,
+      "sha256": "6c20196ac1a1e178ab23d8ee68d68d846bb16ec47653aa6d8cbb2ea75ac2cb73"
+    },
+    {
       "path": "schemas/obligation-event.schema.json",
       "bytes": 2686,
       "sha256": "978d82fa6cbe2073cf6853cbc738ca8c564deff63198e10fab8485f30aeb473f"
+    },
+    {
+      "path": "schemas/return-metric-bridge.schema.json",
+      "bytes": 1993,
+      "sha256": "298778f6722a7091e03bd64e264175ab4bbf810607be962daf5d20146774efcc"
     },
     {
       "path": "schemas/scenario.schema.json",
@@ -745,6 +805,11 @@
       "path": "templates/project-draft-empty.json",
       "bytes": 26694,
       "sha256": "8cfc2915b9ee64bec53df3ea9041b7784f546200bdc676fcaf7b58679b88f16c"
+    },
+    {
+      "path": "tools/check_reference_package.py",
+      "bytes": 6320,
+      "sha256": "85fa024e6718f2adae6e4dba2f23a0568dfcacc28bdc14c8e668f79ca3bbb148"
     }
   ]
 }

@@ -1,0 +1,167 @@
+{
+  "status": "passed",
+  "total": 31,
+  "checks": [
+    "all_endpoint_and_open_closed_truth_tables",
+    "linked_periodic_condition_true_without_deal_pass",
+    "source_inputs_unchanged",
+    "condition_false_not_whole_deal_fail",
+    "intersected_interval_remains_pending_no_midpoint_guess",
+    "explicit_monthly_to_annual_compounding",
+    "annualization_is_not_rate_times_twelve",
+    "missing_annualization_convention_pending",
+    "day_grid_does_not_invent_365_year",
+    "incomplete_isolation_cannot_compare",
+    "no_root_is_not_false_condition",
+    "multiple_ledger_irr_roots_do_not_choose_favorable_rate",
+    "missing_threshold_preserves_cause",
+    "unknown_applicability_not_silent_exclusion",
+    "exact_equal_>=",
+    "exact_equal_>",
+    "exact_equal_<=",
+    "exact_equal_<",
+    "monotonic_annualization_preserves_closures_and_negative_rates",
+    "metric_definition_mismatch",
+    "metric_id_mismatch",
+    "context_mismatch",
+    "unit_mismatch",
+    "basis_mismatch",
+    "horizon_mismatch",
+    "not_dimensionless",
+    "monetary_threshold_not_return",
+    "wrong_measurement_role",
+    "wrong_annualization_exponent",
+    "no_unused_annualization_config",
+    "no_production_authorization"
+  ],
+  "endpoint_truth_table_cases": 180,
+  "schemas_checked": 26,
+  "synthetic_example": {
+    "decision": "PENDING",
+    "publication_authorized": false,
+    "condition_role": "pass_condition",
+    "condition_satisfied": true,
+    "metric_frequency": "periodic",
+    "state": "condition_relation_reference",
+    "reason": "all values in interval have same criterion relation",
+    "compared_interval": {
+      "lower": "524285/2621443",
+      "upper": "65537/327679",
+      "lower_closed": true,
+      "upper_closed": false
+    },
+    "threshold": "1/10",
+    "operator": ">=",
+    "source_reference": {
+      "decision": "PENDING",
+      "publication_authorized": false,
+      "annualized": false,
+      "equity_level": "aggregate project equity only",
+      "state": "internally_reconciled_reference",
+      "ledger_reference": {
+        "state": "internally_reconciled_reference",
+        "periods": [
+          {
+            "period_id": "P1",
+            "external_in": "10",
+            "external_out": "0",
+            "cash_total": "10",
+            "principal_total": "0",
+            "due_total": "0"
+          },
+          {
+            "period_id": "P2",
+            "external_in": "2",
+            "external_out": "12",
+            "cash_total": "0",
+            "principal_total": "0",
+            "due_total": "0"
+          }
+        ],
+        "cash": {
+          "free": "0",
+          "restricted": "0"
+        },
+        "debt": {},
+        "due": {},
+        "recorded_principal_plus_due": "0",
+        "gross_equity_contributions": "10",
+        "gross_equity_distributions": "12",
+        "issues": []
+      },
+      "periods": [
+        {
+          "point_id": "R0",
+          "index": 0,
+          "iso_date": "2028-02-15",
+          "period_ref": "P1",
+          "contributions": "10",
+          "distributions": "0",
+          "contribution_event_ids": [
+            "START"
+          ],
+          "distribution_event_ids": [],
+          "net": "-10"
+        },
+        {
+          "point_id": "R1",
+          "index": 1,
+          "iso_date": "2028-03-15",
+          "period_ref": "P2",
+          "contributions": "0",
+          "distributions": "12",
+          "contribution_event_ids": [],
+          "distribution_event_ids": [
+            "END"
+          ],
+          "net": "12"
+        }
+      ],
+      "gross_contributions": "10",
+      "gross_distributions": "12",
+      "net_vector": [
+        "-10",
+        "12"
+      ],
+      "equity_multiple": "6/5",
+      "equity_multiple_state": "defined_reference",
+      "periodic_irr": {
+        "reference_only": true,
+        "publication_authorized": false,
+        "decision": "PENDING",
+        "rate_domain": "r > -1; equally spaced periods explicitly assumed",
+        "annualized": false,
+        "roots": [
+          {
+            "discount_factor_interval": {
+              "lower": "327679/393216",
+              "upper": "2621443/3145728",
+              "lower_closed": false,
+              "upper_closed": true
+            },
+            "distinct_roots": 1,
+            "multiplicity": 1,
+            "exact_discount_factor": null,
+            "exact_periodic_rate": null,
+            "periodic_rate_interval": {
+              "lower": "524285/2621443",
+              "upper": "65537/327679",
+              "lower_closed": true,
+              "upper_closed": false
+            }
+          }
+        ],
+        "unresolved_intervals": [],
+        "splits": 19,
+        "requested_rate_interval_width": "1/100000",
+        "excluded_zero_discount_factor_multiplicity": 0,
+        "distinct_positive_discount_roots": 1,
+        "discount_factor_search_upper_bound": "11/6",
+        "root_classification": "one_distinct_root",
+        "status": "complete_reference"
+      },
+      "issues": []
+    }
+  },
+  "scope": "Synthetic ledger-to-IRR interval/condition and declared calendar-month compounding only. Not root-selection/aggregation policy, threshold authority, actual frequency approval, XIRR, financial audit, publication or real-deal PASS/FAIL."
+}

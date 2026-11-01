@@ -1,0 +1,280 @@
+{
+  "status": "passed",
+  "total": 43,
+  "checks": [
+    "ledger_gross_flows_reconcile",
+    "simultaneous_gross_not_cancelled_for_multiple",
+    "bank_reserve_and_operating_flows_not_equity",
+    "no_root_does_not_mean_deal_fail",
+    "original_ledger_unmodified",
+    "project_cash_not_automatically_distributed",
+    "same_net_distinct_gross_multiple",
+    "ledger_to_positive_periodic_irr",
+    "known_return_inside_isolated_interval",
+    "empty_intermediate_point_preserved",
+    "zero_period_not_compressed_into_one_period_return",
+    "monthly_grid_not_assumed_equal_actual_day_count",
+    "explicit_fixed_day_grid_supported",
+    "documented_same_period_bucket_supported",
+    "irr_incomplete_preserved_despite_balanced_ledger",
+    "closing_discrepancy_blocks_return_calculation",
+    "zero_contributions_multiple_undefined",
+    "all_zero_net_is_indeterminate",
+    "mixed_context",
+    "duplicate_return_point",
+    "duplicate_return_index",
+    "missing_zero_index",
+    "skipped_return_index",
+    "irregular_month_grid",
+    "month_end_not_clamped",
+    "wrong_fixed_day_spacing",
+    "wrong_point_period",
+    "unbound_equity_event",
+    "no_base_fallback_when_bindings_empty",
+    "duplicate_equity_binding",
+    "bank_draw_not_investor_contribution",
+    "unknown_point_binding",
+    "no_implicit_timing_policy",
+    "no_implicit_event_assignment",
+    "empty_timing_evidence",
+    "cross_period_bucket_unsupported",
+    "exact_date_mismatch",
+    "negative_cash_event",
+    "missing_equity_not_zero",
+    "currency_mismatch",
+    "no_default_irr_parameters",
+    "invalid_rate_width",
+    "no_production_authorization"
+  ],
+  "schemas_checked": 26,
+  "synthetic_examples": {
+    "existing_ledger": {
+      "decision": "PENDING",
+      "publication_authorized": false,
+      "annualized": false,
+      "equity_level": "aggregate project equity only",
+      "state": "internally_reconciled_reference",
+      "ledger_reference": {
+        "state": "internally_reconciled_reference",
+        "periods": [
+          {
+            "period_id": "P1",
+            "external_in": "30",
+            "external_out": "27",
+            "cash_total": "3",
+            "principal_total": "20",
+            "due_total": "0"
+          },
+          {
+            "period_id": "P2",
+            "external_in": "9",
+            "external_out": "10",
+            "cash_total": "2",
+            "principal_total": "16",
+            "due_total": "1"
+          }
+        ],
+        "cash": {
+          "free": "0",
+          "restricted": "2"
+        },
+        "debt": {
+          "LOAN-1": "16"
+        },
+        "due": {
+          "INTEREST-DUE": "0",
+          "FEE-DUE": "1"
+        },
+        "recorded_principal_plus_due": "17",
+        "gross_equity_contributions": "15",
+        "gross_equity_distributions": "5",
+        "issues": []
+      },
+      "periods": [
+        {
+          "point_id": "R0",
+          "index": 0,
+          "iso_date": "2028-02-15",
+          "period_ref": "P1",
+          "contributions": "10",
+          "distributions": "0",
+          "contribution_event_ids": [
+            "A1"
+          ],
+          "distribution_event_ids": [],
+          "net": "-10"
+        },
+        {
+          "point_id": "R1",
+          "index": 1,
+          "iso_date": "2028-03-15",
+          "period_ref": "P2",
+          "contributions": "5",
+          "distributions": "5",
+          "contribution_event_ids": [
+            "A2"
+          ],
+          "distribution_event_ids": [
+            "DIST"
+          ],
+          "net": "0"
+        }
+      ],
+      "gross_contributions": "15",
+      "gross_distributions": "5",
+      "net_vector": [
+        "-10",
+        "0"
+      ],
+      "equity_multiple": "1/3",
+      "equity_multiple_state": "defined_reference",
+      "periodic_irr": {
+        "reference_only": true,
+        "publication_authorized": false,
+        "decision": "PENDING",
+        "rate_domain": "r > -1; equally spaced periods explicitly assumed",
+        "annualized": false,
+        "roots": [],
+        "unresolved_intervals": [],
+        "splits": 0,
+        "requested_rate_interval_width": "1/100000",
+        "excluded_zero_discount_factor_multiplicity": 0,
+        "status": "complete_reference",
+        "root_classification": "no_admissible_root",
+        "distinct_positive_discount_roots": 0
+      },
+      "issues": []
+    },
+    "positive_return_with_zero_period": {
+      "decision": "PENDING",
+      "publication_authorized": false,
+      "annualized": false,
+      "equity_level": "aggregate project equity only",
+      "state": "internally_reconciled_reference",
+      "ledger_reference": {
+        "state": "internally_reconciled_reference",
+        "periods": [
+          {
+            "period_id": "P1",
+            "external_in": "10",
+            "external_out": "0",
+            "cash_total": "10",
+            "principal_total": "0",
+            "due_total": "0"
+          },
+          {
+            "period_id": "P2",
+            "external_in": "0",
+            "external_out": "0",
+            "cash_total": "10",
+            "principal_total": "0",
+            "due_total": "0"
+          },
+          {
+            "period_id": "P3",
+            "external_in": "2",
+            "external_out": "12",
+            "cash_total": "0",
+            "principal_total": "0",
+            "due_total": "0"
+          }
+        ],
+        "cash": {
+          "free": "0",
+          "restricted": "0"
+        },
+        "debt": {},
+        "due": {},
+        "recorded_principal_plus_due": "0",
+        "gross_equity_contributions": "10",
+        "gross_equity_distributions": "12",
+        "issues": []
+      },
+      "periods": [
+        {
+          "point_id": "R0",
+          "index": 0,
+          "iso_date": "2028-02-15",
+          "period_ref": "P1",
+          "contributions": "10",
+          "distributions": "0",
+          "contribution_event_ids": [
+            "START"
+          ],
+          "distribution_event_ids": [],
+          "net": "-10"
+        },
+        {
+          "point_id": "R1",
+          "index": 1,
+          "iso_date": "2028-03-15",
+          "period_ref": "P2",
+          "contributions": "0",
+          "distributions": "0",
+          "contribution_event_ids": [],
+          "distribution_event_ids": [],
+          "net": "0"
+        },
+        {
+          "point_id": "R2",
+          "index": 2,
+          "iso_date": "2028-04-15",
+          "period_ref": "P3",
+          "contributions": "0",
+          "distributions": "12",
+          "contribution_event_ids": [],
+          "distribution_event_ids": [
+            "END"
+          ],
+          "net": "12"
+        }
+      ],
+      "gross_contributions": "10",
+      "gross_distributions": "12",
+      "net_vector": [
+        "-10",
+        "0",
+        "12"
+      ],
+      "equity_multiple": "6/5",
+      "equity_multiple_state": "defined_reference",
+      "periodic_irr": {
+        "reference_only": true,
+        "publication_authorized": false,
+        "decision": "PENDING",
+        "rate_domain": "r > -1; equally spaced periods explicitly assumed",
+        "annualized": false,
+        "roots": [
+          {
+            "discount_factor_interval": {
+              "lower": "1435819/1572864",
+              "upper": "239305/262144",
+              "lower_closed": false,
+              "upper_closed": true
+            },
+            "distinct_roots": 1,
+            "multiplicity": 1,
+            "exact_discount_factor": null,
+            "exact_periodic_rate": null,
+            "periodic_rate_interval": {
+              "lower": "22839/239305",
+              "upper": "137045/1435819",
+              "lower_closed": true,
+              "upper_closed": false
+            }
+          }
+        ],
+        "unresolved_intervals": [],
+        "splits": 18,
+        "requested_rate_interval_width": "1/100000",
+        "excluded_zero_discount_factor_multiplicity": 0,
+        "distinct_positive_discount_roots": 1,
+        "discount_factor_search_upper_bound": "11/6",
+        "root_classification": "one_distinct_root",
+        "status": "complete_reference"
+      },
+      "issues": []
+    }
+  },
+  "scope": "Explicit synthetic aggregate-equity event/grid/gross-multiple/periodic-root bridge only. Not ledger completeness, real-deal economics, terminal valuation, LP/JV waterfall, automatic timing/annualization, XIRR, root-selection policy, expert review or production."
+}

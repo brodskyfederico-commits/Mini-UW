@@ -96,6 +96,16 @@
       "path": "references/periodic-irr-isolation-validation.json",
       "scope": "Isolated periodic rational-net-flow polynomial root counting/isolation on declared synthetic cases. Not XIRR, calendar-to-return integration, root-selection policy, annualization convention, global price optimization, independent financial audit, real-deal screening or production.",
       "count": 64
+    },
+    {
+      "path": "references/investor-return-bridge-validation.json",
+      "scope": "Explicit synthetic aggregate-equity event/grid/gross-multiple/periodic-root bridge only. Not ledger completeness, real-deal economics, terminal valuation, LP/JV waterfall, automatic timing/annualization, XIRR, root-selection policy, expert review or production.",
+      "count": 43
+    },
+    {
+      "path": "references/return-metric-bridge-validation.json",
+      "scope": "Synthetic ledger-to-IRR interval/condition and declared calendar-month compounding only. Not root-selection/aggregation policy, threshold authority, actual frequency approval, XIRR, financial audit, publication or real-deal PASS/FAIL.",
+      "count": 31
     }
   ],
   "independent_financial_audit": false,
@@ -117,8 +127,17 @@
     "calendar_ledger_schemas": 3,
     "cost_scope_schemas": 2,
     "evidence_locator_schemas": 1,
-    "total_schema_documents": 24,
+    "total_schema_documents": 26,
     "budget_payment_bridge_schemas": 1,
-    "calculation_lineage_schemas": 1
+    "calculation_lineage_schemas": 1,
+    "investor_return_bridge_schemas": 1,
+    "return_metric_bridge_schemas": 1
+  },
+  "reference_runner": {
+    "suites": 18,
+    "isolated_temporary_copy": true,
+    "github_workflow_prepared": true,
+    "remote_run_verified": false,
+    "not_financial_certification": true
   }
 }

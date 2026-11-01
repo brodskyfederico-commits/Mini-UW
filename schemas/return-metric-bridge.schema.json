@@ -1,0 +1,88 @@
+{
+  "type": "object",
+  "properties": {
+    "purpose": {
+      "const": "design_or_synthetic_reference"
+    },
+    "authorization": {
+      "const": "not_granted"
+    },
+    "context": {
+      "$ref": "urn:miniuw:candidate:common:0.1#/$defs/context"
+    },
+    "investor_return_bridge": {
+      "$ref": "urn:miniuw:candidate:investor-return-bridge:0.1"
+    },
+    "criterion": {
+      "$ref": "urn:miniuw:candidate:criterion:0.1"
+    },
+    "metric_contract": {
+      "type": "object",
+      "properties": {
+        "metric_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "definition_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "unit_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "basis": {
+          "type": "string",
+          "minLength": 1
+        },
+        "period_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "frequency": {
+          "enum": [
+            "periodic",
+            "annual"
+          ]
+        },
+        "periods_per_year": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "annualization_rule_ref": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        }
+      },
+      "required": [
+        "metric_id",
+        "definition_ref",
+        "unit_id",
+        "basis",
+        "period_ref",
+        "frequency",
+        "periods_per_year",
+        "annualization_rule_ref"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "purpose",
+    "authorization",
+    "context",
+    "investor_return_bridge",
+    "criterion",
+    "metric_contract"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:miniuw:candidate:return-metric-bridge:0.1",
+  "title": "Candidate unrounded return-interval/criterion comparison; no deal decision"
+}

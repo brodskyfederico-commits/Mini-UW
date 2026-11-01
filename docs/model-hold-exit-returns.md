@@ -74,3 +74,7 @@ M7 sigue abierto: faltan cierre de estrategia/fechas, denominadores de capital, 
 ## Ampliación matemática posterior al corte de R02
 
 Ver [aislamiento de raíces de TIR periódica](periodic-irr-root-isolation.md) y `references/periodic-irr-isolation-validation.json`: 64 controles sintéticos de conteo/aislamiento racional y multiplicidad con precisión y trabajo expresos. Esta evidencia separada amplía los ejemplos factorizados anteriores; no resuelve XIRR, elección de raíz, políticas de anualización, integración del calendario ni revisión independiente. M7 permanece abierto.
+
+## Puentes de ledger y comparación
+
+Ver [retornos y comparación por intervalos](investor-return-bridges.md): 43 controles de ledger/brutos/grid/TIR y 31 de comparación, con 180 combinaciones de extremos. Los parámetros temporales/anualización son expresos; no se elige raíz ni se decide por redondeo. Ningún control cierra M7 o aprueba políticas.

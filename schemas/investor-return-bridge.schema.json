@@ -1,0 +1,153 @@
+{
+  "type": "object",
+  "properties": {
+    "purpose": {
+      "const": "design_or_synthetic_reference"
+    },
+    "authorization": {
+      "const": "not_granted"
+    },
+    "context": {
+      "$ref": "urn:miniuw:candidate:common:0.1#/$defs/context"
+    },
+    "event_ledger": {
+      "$ref": "urn:miniuw:candidate:event-ledger:0.1"
+    },
+    "return_grid": {
+      "type": "object",
+      "properties": {
+        "spacing": {
+          "enum": [
+            "fixed_days",
+            "calendar_months_same_day"
+          ]
+        },
+        "step": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "timing_rule_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "points": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "properties": {
+              "point_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "index": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "iso_date": {
+                "type": "string",
+                "format": "date"
+              },
+              "period_ref": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "point_id",
+              "index",
+              "iso_date",
+              "period_ref"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "spacing",
+        "step",
+        "timing_rule_ref",
+        "points"
+      ],
+      "additionalProperties": false
+    },
+    "equity_event_bindings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "event_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "point_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "timing_mode": {
+            "enum": [
+              "exact_event_date",
+              "explicit_bucket_assignment"
+            ]
+          },
+          "timing_evidence_ref": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "event_id",
+          "point_id",
+          "timing_mode",
+          "timing_evidence_ref"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "irr_parameters": {
+      "type": "object",
+      "properties": {
+        "max_periodic_rate_interval_width": {
+          "type": "object",
+          "properties": {
+            "numerator": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "denominator": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          "required": [
+            "numerator",
+            "denominator"
+          ],
+          "additionalProperties": false
+        },
+        "split_budget": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "max_periodic_rate_interval_width",
+        "split_budget"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "purpose",
+    "authorization",
+    "context",
+    "event_ledger",
+    "return_grid",
+    "equity_event_bindings",
+    "irr_parameters"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:miniuw:candidate:investor-return-bridge:0.1",
+  "title": "Explicit project-equity cash/grid/periodic-return candidate reference"
+}

@@ -1,0 +1,77 @@
+{
+  "scope": "Explicit scoped reference scripts; not original product acceptance cases",
+  "references": [
+    {
+      "script": "references/validate_m2_algebra.py",
+      "report": "references/m2-validation.json"
+    },
+    {
+      "script": "references/validate_m34_allocation.py",
+      "report": "references/m34-validation.json"
+    },
+    {
+      "script": "references/validate_m5_algebra.py",
+      "report": "references/m5-validation.json"
+    },
+    {
+      "script": "references/validate_m6_refinance.py",
+      "report": "references/m6-validation.json"
+    },
+    {
+      "script": "references/validate_m7_returns.py",
+      "report": "references/m7-validation.json"
+    },
+    {
+      "script": "references/validate_m8_scenarios_price.py",
+      "report": "references/m8-validation.json"
+    },
+    {
+      "script": "references/validate_m9_comparisons.py",
+      "report": "references/m9-validation.json"
+    },
+    {
+      "script": "references/validate_integrated_bridge.py",
+      "report": "references/integrated-bridge-validation.json"
+    },
+    {
+      "script": "references/validate_revision_integrity.py",
+      "report": "references/revision-integrity-validation.json"
+    },
+    {
+      "script": "references/validate_interface_contracts.py",
+      "report": "references/interface-contracts-validation.json"
+    },
+    {
+      "script": "references/validate_calendar_ledger.py",
+      "report": "references/calendar-ledger-validation.json"
+    },
+    {
+      "script": "references/validate_cost_scope.py",
+      "report": "references/cost-scope-validation.json"
+    },
+    {
+      "script": "references/validate_evidence_locators.py",
+      "report": "references/evidence-locators-validation.json"
+    },
+    {
+      "script": "references/validate_budget_payment_bridge.py",
+      "report": "references/budget-payment-bridge-validation.json"
+    },
+    {
+      "script": "references/validate_calculation_lineage.py",
+      "report": "references/calculation-lineage-validation.json"
+    },
+    {
+      "script": "references/validate_periodic_irr_isolation.py",
+      "report": "references/periodic-irr-isolation-validation.json"
+    },
+    {
+      "script": "references/validate_investor_return_bridge.py",
+      "report": "references/investor-return-bridge-validation.json"
+    },
+    {
+      "script": "references/validate_return_metric_bridge.py",
+      "report": "references/return-metric-bridge-validation.json"
+    }
+  ]
+}
