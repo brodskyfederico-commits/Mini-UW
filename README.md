@@ -47,3 +47,5 @@ Cross-module structure: [budget-period-payment bridge](docs/budget-payment-bridg
 Further independent references: [content-bound calculation lineage](docs/calculation-lineage.md) detects changes beyond revision labels and preserves transitive blockers. [Periodic IRR root isolation](docs/periodic-irr-root-isolation.md) counts and bounds all positive discount-factor roots with explicit work/precision inputs; it selects no rate and does not activate financial screening.
 
 Continued integration references: [gross investor cash, return grid and interval comparison](docs/investor-return-bridges.md) preserve empty points, multiple roots and pending refinements. [Package check runbook](docs/reference-check-runbook.md) provides a read-only integrity check and temporary-copy execution of 18 synthetic suites, with a GitHub Actions workflow. A saved workflow is not evidence of remote success.
+
+First remote workflow success is recorded in [CI verification](docs/ci-verification.json), tied to its exact tested commit. It does not certify later commits or financial/model completeness.

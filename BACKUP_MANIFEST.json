@@ -1,5 +1,5 @@
 {
-  "scope": "Supplied originals, candidate model structure and scoped references; not production, financial certification or complete system recovery.",
+  "scope": "Supplied originals, candidate model structure and scoped references; not production or financial certification.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 6219,
-      "sha256": "7ac9599a2a9e3f3c6a849f22b685979a92eda32279709627d41a68a2280270ea"
+      "bytes": 6411,
+      "sha256": "da2160281fa9552edc835a9435b1c23fade9f6c516e7cfcabec33c2d57958907"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 14932,
-      "sha256": "0577f10ca2e904a9470acded1768605179c06a0fe8c0b111605bc8f4af866a3d"
+      "bytes": 15522,
+      "sha256": "83749c6709ed26b2387cf5c6e670b085cb04bd47724f45bb60fb519620e57136"
     },
     {
       "path": "docs/acceptance-case-contracts.json",
@@ -50,6 +50,11 @@
       "path": "docs/calendar-ledger-contracts.md",
       "bytes": 6664,
       "sha256": "acdabeed7343a074bcc9eec58c6b8021165ad7d3ef7a736d50b3c8bfc587a6a8"
+    },
+    {
+      "path": "docs/ci-verification.json",
+      "bytes": 668,
+      "sha256": "e884ff1e41e1fc9332ddde94128b25850dd2cc5d4166601830485a9618a2fa89"
     },
     {
       "path": "docs/cost-scope-reconciliation.md",
@@ -203,8 +208,8 @@
     },
     {
       "path": "docs/package-readiness.json",
-      "bytes": 7869,
-      "sha256": "6a4b4e61bc5d1b32ec08d3247847c7078d98add5ee45060215ab28113185b514"
+      "bytes": 8042,
+      "sha256": "ed1207bb28a8e2850eca60a9a2dab4dbfc48aa44d6df71377c27d2edb54b6a53"
     },
     {
       "path": "docs/periodic-irr-root-isolation.md",
