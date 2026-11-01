@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:miniuw:candidate:evidence-claim:0.1",
+  "title": "Candidate literal-source locator only",
+  "type": "object",
+  "properties": {
+    "purpose": {
+      "const": "design_or_synthetic_reference"
+    },
+    "authorization": {
+      "const": "not_granted"
+    },
+    "claim_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "locator": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "pdf_page_text"
+            },
+            "page": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          "required": [
+            "kind",
+            "page"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "docx_paragraph"
+            },
+            "paragraph": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          "required": [
+            "kind",
+            "paragraph"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "xlsx_cell"
+            },
+            "sheet": {
+              "type": "string",
+              "minLength": 1
+            },
+            "cell": {
+              "type": "string",
+              "pattern": "^[A-Z]{1,3}[1-9][0-9]*$"
+            }
+          },
+          "required": [
+            "kind",
+            "sheet",
+            "cell"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "expected_literal": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "semantic_meaning_verified": {
+      "const": false
+    }
+  },
+  "required": [
+    "purpose",
+    "authorization",
+    "claim_id",
+    "source_sha256",
+    "locator",
+    "expected_literal",
+    "semantic_meaning_verified"
+  ],
+  "additionalProperties": false
+}

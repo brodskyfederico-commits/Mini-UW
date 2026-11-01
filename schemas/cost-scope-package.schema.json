@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:miniuw:candidate:cost-scope-package:0.1",
+  "title": "Candidate cost coverage package",
+  "type": "object",
+  "properties": {
+    "purpose": {
+      "const": "design_or_synthetic_reference"
+    },
+    "authorization": {
+      "const": "not_granted"
+    },
+    "context": {
+      "$ref": "urn:miniuw:candidate:common:0.1#/$defs/context"
+    },
+    "package_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "required_scope_ids": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "representations": {
+      "type": "array",
+      "items": {
+        "$ref": "urn:miniuw:candidate:scope-representation:0.1"
+      }
+    }
+  },
+  "required": [
+    "purpose",
+    "authorization",
+    "context",
+    "package_id",
+    "required_scope_ids",
+    "representations"
+  ],
+  "additionalProperties": false
+}

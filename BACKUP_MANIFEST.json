@@ -1,5 +1,5 @@
 {
-  "scope": "supplied sources, candidate model/interfaces and limited synthetic references; not production, financial certification or complete recovery",
+  "scope": "Supplied originals, candidate model structure and scoped references; not production, financial certification or complete system recovery.",
   "files": [
     {
       "path": ".gitignore",
@@ -13,13 +13,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 4749,
-      "sha256": "89b04005a978b62ccfaf856bbcc445ef2c3a1a5a8959ff4b4a4486cd0f043106"
+      "bytes": 5125,
+      "sha256": "6d32aa472c98d7a209a7ae65ff29badcd67d241f5cb80344770169c2acadddd1"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 11589,
-      "sha256": "9b9f0cf09405a9012604d334f83ef2a6abc5423ed06e656b5db2a492f28eabc3"
+      "bytes": 12338,
+      "sha256": "5337a3b9b382e19e0a14e3eb8f6d940bfce132289f60f44923dc376885262518"
     },
     {
       "path": "docs/acceptance-case-contracts.json",
@@ -37,19 +37,24 @@
       "sha256": "acdabeed7343a074bcc9eec58c6b8021165ad7d3ef7a736d50b3c8bfc587a6a8"
     },
     {
+      "path": "docs/cost-scope-reconciliation.md",
+      "bytes": 3405,
+      "sha256": "12946f66b307cc8b89a69c8c97af52b98ed2922e05828508dc8f66ad925ff5db"
+    },
+    {
       "path": "docs/coverage-guide.md",
       "bytes": 6707,
       "sha256": "d5773349012fef9b461bc8b3cf6043543e479b625c411d719581506e70bb71f1"
     },
     {
       "path": "docs/coverage-matrix.csv",
-      "bytes": 336851,
-      "sha256": "7784547a3cc74695776133a192820cd3ac978ab440a92a0d3c4ce93a430b42b7"
+      "bytes": 338936,
+      "sha256": "ea9bd72b77e87b4674c839631806b29ac286598ebe51543cf33e9e51924526ab"
     },
     {
       "path": "docs/coverage-matrix.json",
-      "bytes": 521334,
-      "sha256": "7d48e0abe328e55a8705c4db65c347bd1072f386d5ef6eb0b291edc922a42d25"
+      "bytes": 523411,
+      "sha256": "17a84f7a1339675ca9e1cc0b500540042aecf5fafe8d2e460f88bd227920c071"
     },
     {
       "path": "docs/current-direction.txt",
@@ -60,6 +65,11 @@
       "path": "docs/decision-input-contract.md",
       "bytes": 2872,
       "sha256": "2d2637d6889b1dec3d92df42b789dda495f6f7c98f8ccf22839f46fb47a22981"
+    },
+    {
+      "path": "docs/evidence-locator-contract.md",
+      "bytes": 1952,
+      "sha256": "100f340893584bf9484ee4565c9ac7de33ca821a6c864b75a2dd413cf8a6035d"
     },
     {
       "path": "docs/execution-structure-guide.md",
@@ -168,13 +178,13 @@
     },
     {
       "path": "docs/package-consistency-validation.json",
-      "bytes": 713,
-      "sha256": "9657e054f86201d4f6fe956dcda6ddbbbc82f585ee1da2ed96b8e3fcc2a3d24f"
+      "bytes": 793,
+      "sha256": "b69b4d2d74b8d77f6a9ad4389ca91d868d2d2ee15131714d95d699177cbe73eb"
     },
     {
       "path": "docs/package-readiness.json",
-      "bytes": 4744,
-      "sha256": "97fd5516535bf09b2db02358323e6e13fec278d8740c67f99ae4f7d12aa4a0e4"
+      "bytes": 5487,
+      "sha256": "07b05e5526a13bb3e1429bd87a3bb82b15879787f58a0889c480217c316c79dd"
     },
     {
       "path": "docs/professional-feedback-register.json",
@@ -252,14 +262,29 @@
       "sha256": "e0616d079578af1746f3469561f644453c51073e1b383e32c4d21dbc5834ce05"
     },
     {
+      "path": "references/cost-scope-validation.json",
+      "bytes": 2924,
+      "sha256": "51743f706bf8d68fdacd9b8e2979d1f73b2acf16e24ad38ca04cf6b7b5d4950a"
+    },
+    {
       "path": "references/dependency-graph-reference.json",
       "bytes": 1781,
       "sha256": "22d877bf8aeeed2b1275c09080e5efbdd36b2eecaf96cf3f1cab1e805fdf136f"
     },
     {
+      "path": "references/evidence-locators-validation.json",
+      "bytes": 1151,
+      "sha256": "25089c18654578f9bc61ff3a8a74dbd44667137712870f5407c2e12d17008d07"
+    },
+    {
       "path": "references/fixtures/calendar-ledger-synthetic.json",
       "bytes": 40166,
       "sha256": "b14f1fe004b144cb38819de9e766216735363c1eef59dc36defeed43275883dd"
+    },
+    {
+      "path": "references/fixtures/cost-scope-synthetic.json",
+      "bytes": 9749,
+      "sha256": "751bec323a018585c98e8c45129043da58fe5a3ad6cf6d1f976e692c0004da41"
     },
     {
       "path": "references/integrated-bridge-validation.json",
@@ -269,7 +294,7 @@
     {
       "path": "references/interface-contracts-validation.json",
       "bytes": 3055,
-      "sha256": "be0286424b6575daa801b5c0a1efbfe129a1758e7f4aedf538270b2b5c571923"
+      "sha256": "8d9d87653063182f76a24b456c2d191eb978b4adb697de5cd366f453db5ebf37"
     },
     {
       "path": "references/m2-validation.json",
@@ -315,6 +340,16 @@
       "path": "references/validate_calendar_ledger.py",
       "bytes": 23939,
       "sha256": "009aa55d55910634ef59b6ad3eadbb97023f8087c1d29d0d1afb5a1b08326ab1"
+    },
+    {
+      "path": "references/validate_cost_scope.py",
+      "bytes": 10684,
+      "sha256": "9ccddc235fc27143409dad7756caf3e69939107c35aaf6be247dd9867f3cb49e"
+    },
+    {
+      "path": "references/validate_evidence_locators.py",
+      "bytes": 8768,
+      "sha256": "482b8c3fa0c61dbb0ac13706ac12de69cb5b63dfdede5e3ed547195e52cad9e8"
     },
     {
       "path": "references/validate_integrated_bridge.py",
@@ -413,8 +448,8 @@
     },
     {
       "path": "schemas/README.md",
-      "bytes": 1329,
-      "sha256": "a43acb055a7f3146d1d068e1f91d5437ab945bb50b3bbc4104bae28752d21e7d"
+      "bytes": 1704,
+      "sha256": "5b6fe1d5d43bce86f64bd593914616f8b6f811b8c46e1a892985324cb210a849"
     },
     {
       "path": "schemas/calendar.schema.json",
@@ -437,6 +472,11 @@
       "sha256": "d52fd7cd090e0cac8c1fe1e82f0163204bb3de8f979c81540da7e44d54cfc72e"
     },
     {
+      "path": "schemas/cost-scope-package.schema.json",
+      "bytes": 965,
+      "sha256": "729a0f8f574f39f06fe86c464925c9f7f96cfe358fdd64719a2f3fe184ff3109"
+    },
+    {
       "path": "schemas/criterion.schema.json",
       "bytes": 2350,
       "sha256": "e28921cc7f7cc8697c12e745ca809725a1fc79a97c4654df2652231fbedfa045"
@@ -450,6 +490,11 @@
       "path": "schemas/event-ledger.schema.json",
       "bytes": 5221,
       "sha256": "e67595cb184dd770581086310f66f91a3dfb48286e116dea7d854d0ca98871b8"
+    },
+    {
+      "path": "schemas/evidence-claim.schema.json",
+      "bytes": 2175,
+      "sha256": "dabd133940362944c348ff4f1ba1d05d36aebe76c22a36b8aaff6199dc1ba80e"
     },
     {
       "path": "schemas/execution-snapshot.schema.json",
@@ -470,6 +515,11 @@
       "path": "schemas/scenario.schema.json",
       "bytes": 3261,
       "sha256": "2ee073bb1f686c342c7676270869af9316af3be17be9927a20a59aa542ca4e6a"
+    },
+    {
+      "path": "schemas/scope-representation.schema.json",
+      "bytes": 1884,
+      "sha256": "4d82ab64f54d3483bcd5d642c991702b08ab8e20a406dd7497fbfe6f6775d3d0"
     },
     {
       "path": "sources/extracted/09a0d1fa636b.txt",

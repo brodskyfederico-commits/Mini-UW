@@ -71,6 +71,16 @@
       "path": "references/calendar-ledger-validation.json",
       "scope": "Explicit-date period-aggregate synthetic cash/principal/declared-interest-fee/gross-equity reference. Not bank conventions, intraday liquidity proof, complete bank/legal obligations, authentic statements, independent audit or production.",
       "count": 60
+    },
+    {
+      "path": "references/cost-scope-validation.json",
+      "count": 29,
+      "scope": "Declared synthetic economic-scope allocation and document-claim consistency only; no inferred inclusions, source authority, actual construction completeness, expert policy, TDC financing or production."
+    },
+    {
+      "path": "references/evidence-locators-validation.json",
+      "count": 21,
+      "scope": "Literal location/byte-integrity only on supplied originals and explicitly synthetic workbook fixtures. Not semantic extraction, independent readers, legal/official authenticity, financial interpretation, approval or production."
     }
   ],
   "independent_financial_audit": false,
@@ -89,6 +99,9 @@
     "empty_metric_criterion_slots": 10,
     "execution_plan_modules": 9,
     "no_financial_defaults": true,
-    "calendar_ledger_schemas": 3
+    "calendar_ledger_schemas": 3,
+    "cost_scope_schemas": 2,
+    "evidence_locator_schemas": 1,
+    "total_schema_documents": 22
   }
 }

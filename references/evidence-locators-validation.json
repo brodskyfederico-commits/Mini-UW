@@ -1,0 +1,33 @@
+{
+  "status": "passed",
+  "checks": [
+    "original_xlsx_label_matches",
+    "original_blank_preserved",
+    "original_blank_not_numeric_zero",
+    "original_pdf_title_found",
+    "invented_pdf_citation_rejected",
+    "original_docx_title_found",
+    "invented_docx_citation_rejected",
+    "unknown_source_not_arbitrary_path",
+    "out_of_bounds_page",
+    "out_of_bounds_paragraph",
+    "missing_sheet",
+    "bad_cell_reference",
+    "wrong_source_type",
+    "claim_cannot_self_authenticate_meaning",
+    "path_injection_not_schema_field",
+    "explicit_synthetic_zero_preserved",
+    "explicit_zero_not_blank",
+    "cached_formula_not_execution",
+    "percentage_literal_not_silently_normalized",
+    "changed_source_bytes_rejected",
+    "all_inventoried_originals_unchanged"
+  ],
+  "total": 21,
+  "original_formats_exercised": [
+    "PDF text page",
+    "DOCX paragraph",
+    "XLSX label/blank cell"
+  ],
+  "scope": "Literal location/byte-integrity only on supplied originals and explicitly synthetic workbook fixtures. Not semantic extraction, independent readers, legal/official authenticity, financial interpretation, approval or production."
+}

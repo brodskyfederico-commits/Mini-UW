@@ -1,0 +1,104 @@
+{
+  "status": "passed",
+  "arithmetic": "exact rational",
+  "schemas_checked": 21,
+  "checks": [
+    "duplicate_representation_not_added_twice",
+    "supporting_claims_preserved",
+    "same_amount_distinct_scopes_not_collapsed",
+    "original_claims_not_mutated",
+    "conflict_retains_all_without_source_choice",
+    "required_exclusion_not_zero",
+    "quote_residual_not_assigned_by_estimate",
+    "partial_mapping_blocks_even_if_sum_matches",
+    "known_source_not_silent_override_for_missing_claim",
+    "documented_credit_retains_sign",
+    "explicit_zero_is_known_not_missing",
+    "equal_price_additional_scope_added",
+    "unexpected_scope_needs_treatment",
+    "representation_id_duplicate",
+    "required_scope_duplicate",
+    "duplicate_scope_inside_quote",
+    "no_scope_list_default",
+    "no_empty_scope_completeness",
+    "missing_mapping_evidence",
+    "context_mixed",
+    "wrong_currency",
+    "wrong_unit",
+    "wrong_base",
+    "wrong_period",
+    "price_per_area_not_total",
+    "wrong_measurement_role",
+    "missing_currency",
+    "negative_expense_without_credit_class",
+    "bad_exact_denominator"
+  ],
+  "total": 29,
+  "synthetic_example": {
+    "state": "internally_reconciled_scope_reference",
+    "scope_values": {
+      "vertical": "20",
+      "parking": "5",
+      "site": "5",
+      "soft": "7"
+    },
+    "canonical_scope_total": "37",
+    "quote_residuals": [
+      {
+        "representation_id": "GC-total",
+        "quoted": "30",
+        "allocated": "30",
+        "residual": "0"
+      },
+      {
+        "representation_id": "Parking-support",
+        "quoted": "5",
+        "allocated": "5",
+        "residual": "0"
+      },
+      {
+        "representation_id": "Soft-quote",
+        "quoted": "7",
+        "allocated": "7",
+        "residual": "0"
+      }
+    ],
+    "scope_claims": {
+      "vertical": [
+        {
+          "representation_id": "GC-total",
+          "amount": "20",
+          "mapping_evidence_ref": "SYNTHETIC-EXPLICIT-MAP"
+        }
+      ],
+      "parking": [
+        {
+          "representation_id": "GC-total",
+          "amount": "5",
+          "mapping_evidence_ref": "SYNTHETIC-EXPLICIT-MAP"
+        },
+        {
+          "representation_id": "Parking-support",
+          "amount": "5",
+          "mapping_evidence_ref": "SYNTHETIC-EXPLICIT-MAP"
+        }
+      ],
+      "site": [
+        {
+          "representation_id": "GC-total",
+          "amount": "5",
+          "mapping_evidence_ref": "SYNTHETIC-EXPLICIT-MAP"
+        }
+      ],
+      "soft": [
+        {
+          "representation_id": "Soft-quote",
+          "amount": "7",
+          "mapping_evidence_ref": "SYNTHETIC-EXPLICIT-MAP"
+        }
+      ]
+    },
+    "issues": []
+  },
+  "scope": "Declared synthetic economic-scope allocation and document-claim consistency only; no inferred inclusions, source authority, actual construction completeness, expert policy, TDC financing or production."
+}

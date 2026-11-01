@@ -39,3 +39,5 @@ Post-R02 independent work: [revision/scenario integrity](docs/revision-scenario-
 Continued independent structure: [module interface protocol](docs/module-interface-protocol.md), [record contracts](docs/record-contracts.md), [execution design](docs/execution-structure-guide.md), [draft schemas](schemas/README.md), and [intentionally empty project template](templates/project-draft-empty.json). Structural checks do not close financial/professional gates.
 
 Calendar/accounting structure: [calendar and cash/debt/accrual ledger contracts](docs/calendar-ledger-contracts.md), with an explicitly synthetic fixture and retained balance discrepancies. No bank timing/interest policies are selected.
+
+Scope/evidence structure: [cost-scope reconciliation](docs/cost-scope-reconciliation.md) prevents counting the same explicitly mapped economic scope twice and preserves conflicting claims. [Evidence locators](docs/evidence-locator-contract.md) bind literal PDF/Word/Excel citations to inventoried source bytes; matching a citation does not validate its meaning or authority.

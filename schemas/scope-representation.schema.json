@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:miniuw:candidate:scope-representation:0.1",
+  "title": "Candidate document-to-economic-scope allocation",
+  "type": "object",
+  "properties": {
+    "purpose": {
+      "const": "design_or_synthetic_reference"
+    },
+    "authorization": {
+      "const": "not_granted"
+    },
+    "context": {
+      "$ref": "urn:miniuw:candidate:common:0.1#/$defs/context"
+    },
+    "representation_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "quoted_total": {
+      "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+    },
+    "coverage_state": {
+      "enum": [
+        "full_explicit_mapping",
+        "partial_mapping",
+        "unresolved"
+      ]
+    },
+    "allocations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "scope_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "signed_cost_effect": {
+            "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+          },
+          "effect_type": {
+            "enum": [
+              "expense",
+              "documented_credit"
+            ]
+          },
+          "mapping_evidence_ref": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "scope_id",
+          "signed_cost_effect",
+          "effect_type",
+          "mapping_evidence_ref"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "urn:miniuw:candidate:common:0.1#/$defs/source"
+      }
+    }
+  },
+  "required": [
+    "purpose",
+    "authorization",
+    "context",
+    "representation_id",
+    "quoted_total",
+    "coverage_state",
+    "allocations",
+    "sources"
+  ],
+  "additionalProperties": false
+}

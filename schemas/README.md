@@ -7,3 +7,5 @@ Validated with installed jsonschema 4.10.3 Draft202012Validator, offline local s
 The reference validator adds scoped semantic checks and synthetic arithmetic/block-propagation examples; it is not a full implementation of every financial contract, schedule, equation, solver or persistence layer. The empty project template is intentionally incomplete and not a valid execution with real deal context. No financial defaults or historical thresholds are loaded.
 
 Additional candidate records: calendar, event ledger and interest/fee obligation events. The calendar/ledger reference checks all 19 current schema documents and 60 explicit-calendar/accounting cases, not bank conventions or actual obligation completeness.
+
+Additional candidate records: explicit cost-scope representations/packages and hash-bound literal evidence claims. There are now 22 schema documents; the interface regression checks all 22 with 75 cases. Cost-scope reconciliation has 29 synthetic checks; evidence locators have 21 literal/integrity checks. These do not establish financial completeness or source authority.

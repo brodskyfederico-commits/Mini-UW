@@ -74,3 +74,7 @@ User requested independent construction without waiting for professional input. 
 ## Explicit calendar and cash/debt/accrual ledgers — 1 November 2026
 
 Continued authorized independent structure. Added three candidate schemas (calendar, event ledger, obligation event), an exact-rational synthetic reference and declared fixture. Sixty checks cover boundaries/leap dates, duplicate events, cash/principal linkage, accrued versus paid/capitalized interest, unpaid fees, closing discrepancies and missing/context/unit inputs. No banking convention or extra funding invented; principal is not treated as total payoff. No production or review gate closed. Continuing cost-scope structure next.
+
+## Cost-scope reconciliation and literal evidence — 1 November 2026
+
+Added two explicit scope schemas and a literal evidence-claim schema. Twenty-nine exact synthetic cost controls preserve duplicate representations, credits, missing scope and conflicting amounts without selecting a source or inventing an inclusion. Twenty-one evidence controls exercise original PDF/DOCX/XLSX locators, fabricated citations, blank/zero distinctions, unexecuted cached formulas and altered-source rejection. All 22 schema documents pass interface regression (75 cases). Coverage remains 398; no expert answer, financial default, module closure, feedback or product release has been supplied. Preserved R02 and all 16 unique original source files byte-for-byte.
