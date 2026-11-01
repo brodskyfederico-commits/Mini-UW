@@ -61,3 +61,7 @@ Las ubicaciones del manual usan páginas físicas del PDF (1–74), no la numera
 No se contacta a Lorena. Preguntas de política que no puedan resolverse documentalmente se consolidan para revisión posterior. La recuperación de app original, referencias matemáticas, Excel Full UW y paquete cloud sigue pendiente.
 
 Ampliación: F0-01–F0-05 separadas, alternativas Q1–Q20 explícitas y seis contratos nuevos propuestos. Q8 opción A mezcla monto con ratio en el texto original: requiere aclaración, no corrección silenciosa. Ver [contratos de caja](model-cash-contracts.md).
+
+## Extensión M2
+
+Se agregan M2-01 a M2-08: ahora 321 filas. Los conteos de las secciones anteriores corresponden al hito inicial de 313; esta extensión no certifica cobertura de producto. Ver contrato de operación y prueba algebraica condicionada. Full UW se entregará al final según instrucción actual.

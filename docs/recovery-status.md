@@ -31,3 +31,5 @@
 This milestone backs up the attached documents, extracted reading aids, their hashes and initial review/specification records. It excludes the missing original application, inaccessible root files, cloud recovery payload, missing Full UW workbook, historical Git objects, live deal data, credentials, running services, database snapshots and external storage. GitHub preservation is therefore a document/model-review backup, not a complete product or VPS recovery.
 
 The local delivery directory is a prepared milestone bundle, not a Git-authenticated VPS deployment checkout. No service, deployment pipeline, scheduled push or automatic infrastructure backup has been enabled.
+
+Current user direction (1 November 2026): Full UW will be delivered at the end. Its workbook is deferred, not a prerequisite for independent Mini-UW model design; later reconciliation remains open. This does not certify the model or resume production.

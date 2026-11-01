@@ -18,3 +18,7 @@
 - Identified an additional dimensional ambiguity: Q8 option A writes an equity amount while asking for Equity/TDC. Preserved rather than silently corrected.
 - Developed proposed contracts for dimensions, gross cash events, restricted cash, construction/permanent debt, investor flows and price support. Accounting identities are design proposals, not executed financial validation.
 - Validated matrix ID uniqueness, evidence-file existence, policy extraction boundaries and field/policy/acceptance counts. No numerical financial tests, source-authority certification, expert approval or production activation.
+
+## Continued M2 model design — 1 November 2026
+
+User deferred Full UW delivery until the end. Recorded it as a deferred dependency, not a blocker for independent Mini-UW model design. Added eight operations contracts, algebraic tax/NOI branch closure and conditional break-even feasible-set derivation. Exact-rational synthetic validation is stored with runnable reference; it does not approve tax assumptions or certify production. Coverage now has 321 items. No real deal or production underwriting executed.
