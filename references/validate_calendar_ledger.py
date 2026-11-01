@@ -173,89 +173,93 @@ def fixture():
  obe=[oe('I1','INTEREST-DUE','accrual',2,'P1'),oe('I2','INTEREST-DUE','capitalization',-2,'P1',debtref='CAP'),oe('I3','INTEREST-DUE','accrual',1,'P2'),oe('I4','INTEREST-DUE','cash_settlement',-1,'P2',cashref='INTEREST'),oe('F1','FEE-DUE','accrual',1,'P2')]
  return dict(env(),ledger_id='SYNTHETIC-LEDGER-01',calendar=cal,accounts=accounts,debts=[{'debt_id':'LOAN-1','opening_principal':money(0,'stock','OPENING:P1')}],date_bindings=[{'date_ref':'DATE-P1','iso_date':'2028-02-15'},{'date_ref':'DATE-P2','iso_date':'2028-03-15'}],cash_events=cash,debt_events=de,closing_cash_claims=[{'account_id':'free','amount':money(0,'stock','CLOSING:P2')},{'account_id':'restricted','amount':money(2,'stock','CLOSING:P2')}],closing_debt_claims=[{'debt_id':'LOAN-1','amount':money(16,'stock','CLOSING:P2')}],obligations=ob,obligation_events=obe,closing_due_claims=[{'obligation_id':'INTEREST-DUE','amount':money(0,'stock','CLOSING:P2')},{'obligation_id':'FEE-DUE','amount':money(1,'stock','CLOSING:P2')}])
 
-checks=[]
-def ok(name,condition):
- assert condition,name;checks.append(name)
-def reject(name,x):
- try:reconcile(x)
- except (ValueError,ValidationError):checks.append(name)
- else:raise AssertionError('invalid ledger accepted: '+name)
-base=fixture();before=deepcopy(base);result=reconcile(base)
-ok('exact_closing_cash_and_principal',result['state']=='internally_reconciled_reference' and result['cash']=={'free':'0','restricted':'2'} and result['debt']=={'LOAN-1':'16'})
-ok('gross_equity_not_bank_or_reserve_flows',result['gross_equity_contributions']=='15' and result['gross_equity_distributions']=='5')
-ok('internal_reserves_cancel_in_total',result['periods'][0]['cash_total']=='3' and result['periods'][1]['cash_total']=='2')
-ok('input_ledger_not_mutated',base==before)
-ok('leap_year_actual_days',explicit_actual_day_fraction('2028-02-01','2028-03-01',360)==F(29,360))
-ok('nonleap_actual_days',explicit_actual_day_fraction('2027-02-01','2027-03-01',365)==F(28,365))
-ok('explicit_zero_duration',explicit_actual_day_fraction('2028-02-01','2028-02-01',360)==0)
-ok('boundary_left_configuration',assign(base['calendar'],'2028-03-01')=='P2')
-right=deepcopy(base['calendar']);right['boundary_convention']='left_open_right_closed';ok('boundary_right_configuration',assign(right,'2028-03-01')=='P1')
-mutations=[
-('duplicate_cash_id',lambda x:x['cash_events'].append(deepcopy(x['cash_events'][0]))),
-('duplicate_debt_id',lambda x:x['debt_events'].append(deepcopy(x['debt_events'][0]))),
-('duplicate_account',lambda x:x['accounts'].append(deepcopy(x['accounts'][0]))),
-('duplicate_date_binding',lambda x:x['date_bindings'].append(deepcopy(x['date_bindings'][0]))),
-('duplicate_principal_cash_link',lambda x:x['debt_events'].append(dict(deepcopy(x['debt_events'][0]),event_id='NEW-ID'))),
-('orphan_draw_cash',lambda x:x['debt_events'].pop(0)),
-('debt_link_amount_disagrees',lambda x:x['debt_events'][0]['principal_effect']['value'].update(numerator=19)),
-('debt_wrong_sign',lambda x:x['debt_events'][2]['principal_effect']['value'].update(numerator=2)),
-('wrong_related_loan',lambda x:x['cash_events'][1].update(related_debt_ref='OTHER-LOAN')),
-('cash_context_mixed',lambda x:x['cash_events'][0]['context'].update(scenario_id='OTHER')),
-('debt_context_mixed',lambda x:x['debt_events'][0]['context'].update(run_id='OTHER')),
-('wrong_currency',lambda x:x['cash_events'][0]['amount'].update(currency='OTHER')),
-('wrong_unit',lambda x:x['cash_events'][0]['amount'].update(unit_id='OTHER')),
-('wrong_basis',lambda x:x['cash_events'][0]['amount'].update(basis='OTHER')),
-('wrong_amount_period',lambda x:x['cash_events'][0]['amount'].update(period_ref='P2')),
-('date_period_disagrees',lambda x:x['date_bindings'][0].update(iso_date='2028-03-01')),
-('unbound_date_ref',lambda x:x['cash_events'][0].update(date_ref='MISSING')),
-('invalid_calendar_date',lambda x:x['date_bindings'][0].update(iso_date='2028-02-30')),
-('overlapping_periods',lambda x:x['calendar']['periods'][1].update(start_date='2028-02-29')),
-('gap_in_continuous_calendar',lambda x:x['calendar']['periods'][1].update(start_date='2028-03-02')),
-('period_id_duplicate',lambda x:x['calendar']['periods'][1].update(period_id='P1')),
-('no_boundary_default',lambda x:x['calendar'].pop('boundary_convention')),
-('opening_balance_missing',lambda x:x['accounts'][0].update(opening_balance=None)),
-('closing_claims_incomplete',lambda x:x['closing_cash_claims'].pop()),
-('restriction_without_rule',lambda x:x['cash_events'][3].update(restriction_rule_ref=None)),
-('capitalization_fake_cash',lambda x:x['debt_events'][1].update(cash_event_ref='DRAW')),
-('negative_gross_cash',lambda x:x['cash_events'][0]['amount']['value'].update(numerator=-10)),
-('same_cash_account',lambda x:x['cash_events'][0].update(from_account='free')),
-('missing_amount_state',lambda x:x['cash_events'][0].update(amount={'state':'missing','causes':[{'field_id':'A1','cause_kind':'missing','reason':'No supplied amount'}]})),
-('end_period_shortfall_not_invented_equity',lambda x:x['cash_events'][0]['amount']['value'].update(numerator=9))]
-for name,mutate in mutations:
- x=fixture();mutate(x);reject(name,x)
-x=fixture();x['closing_debt_claims'][0]['amount']['value']['numerator']=17;old=deepcopy(x);z=reconcile(x)
-ok('closing_discrepancy_retains_both_values',z['state']=='blocked' and z['issues'][0]['claimed']=='17' and z['issues'][0]['derived']=='16' and z['issues'][0]['residual']=='1' and x==old)
-x=fixture();x['closing_cash_claims'][0]['amount']={'state':'missing','causes':[{'field_id':'closing','cause_kind':'missing','reason':'Missing statement'}]};z=reconcile(x);ok('missing_closing_never_becomes_zero',z['state']=='blocked' and z['issues'][0]['cause']=='closing amount unresolved')
-# Equal amounts with distinct source events remain distinct; split contribution is not deduplicated.
-x=fixture();x['cash_events'][0]['amount']['value']['numerator']=5;x['cash_events'].insert(1,dict(deepcopy(x['cash_events'][0]),event_id='A1-SPLIT'))
-z=reconcile(x);ok('same_amount_different_events_preserved',z['state']=='internally_reconciled_reference' and z['gross_equity_contributions']=='15')
+def main():
+    checks=[]
+    def ok(name,condition):
+     assert condition,name;checks.append(name)
+    def reject(name,x):
+     try:reconcile(x)
+     except (ValueError,ValidationError):checks.append(name)
+     else:raise AssertionError('invalid ledger accepted: '+name)
+    base=fixture();before=deepcopy(base);result=reconcile(base)
+    ok('exact_closing_cash_and_principal',result['state']=='internally_reconciled_reference' and result['cash']=={'free':'0','restricted':'2'} and result['debt']=={'LOAN-1':'16'})
+    ok('gross_equity_not_bank_or_reserve_flows',result['gross_equity_contributions']=='15' and result['gross_equity_distributions']=='5')
+    ok('internal_reserves_cancel_in_total',result['periods'][0]['cash_total']=='3' and result['periods'][1]['cash_total']=='2')
+    ok('input_ledger_not_mutated',base==before)
+    ok('leap_year_actual_days',explicit_actual_day_fraction('2028-02-01','2028-03-01',360)==F(29,360))
+    ok('nonleap_actual_days',explicit_actual_day_fraction('2027-02-01','2027-03-01',365)==F(28,365))
+    ok('explicit_zero_duration',explicit_actual_day_fraction('2028-02-01','2028-02-01',360)==0)
+    ok('boundary_left_configuration',assign(base['calendar'],'2028-03-01')=='P2')
+    right=deepcopy(base['calendar']);right['boundary_convention']='left_open_right_closed';ok('boundary_right_configuration',assign(right,'2028-03-01')=='P1')
+    mutations=[
+    ('duplicate_cash_id',lambda x:x['cash_events'].append(deepcopy(x['cash_events'][0]))),
+    ('duplicate_debt_id',lambda x:x['debt_events'].append(deepcopy(x['debt_events'][0]))),
+    ('duplicate_account',lambda x:x['accounts'].append(deepcopy(x['accounts'][0]))),
+    ('duplicate_date_binding',lambda x:x['date_bindings'].append(deepcopy(x['date_bindings'][0]))),
+    ('duplicate_principal_cash_link',lambda x:x['debt_events'].append(dict(deepcopy(x['debt_events'][0]),event_id='NEW-ID'))),
+    ('orphan_draw_cash',lambda x:x['debt_events'].pop(0)),
+    ('debt_link_amount_disagrees',lambda x:x['debt_events'][0]['principal_effect']['value'].update(numerator=19)),
+    ('debt_wrong_sign',lambda x:x['debt_events'][2]['principal_effect']['value'].update(numerator=2)),
+    ('wrong_related_loan',lambda x:x['cash_events'][1].update(related_debt_ref='OTHER-LOAN')),
+    ('cash_context_mixed',lambda x:x['cash_events'][0]['context'].update(scenario_id='OTHER')),
+    ('debt_context_mixed',lambda x:x['debt_events'][0]['context'].update(run_id='OTHER')),
+    ('wrong_currency',lambda x:x['cash_events'][0]['amount'].update(currency='OTHER')),
+    ('wrong_unit',lambda x:x['cash_events'][0]['amount'].update(unit_id='OTHER')),
+    ('wrong_basis',lambda x:x['cash_events'][0]['amount'].update(basis='OTHER')),
+    ('wrong_amount_period',lambda x:x['cash_events'][0]['amount'].update(period_ref='P2')),
+    ('date_period_disagrees',lambda x:x['date_bindings'][0].update(iso_date='2028-03-01')),
+    ('unbound_date_ref',lambda x:x['cash_events'][0].update(date_ref='MISSING')),
+    ('invalid_calendar_date',lambda x:x['date_bindings'][0].update(iso_date='2028-02-30')),
+    ('overlapping_periods',lambda x:x['calendar']['periods'][1].update(start_date='2028-02-29')),
+    ('gap_in_continuous_calendar',lambda x:x['calendar']['periods'][1].update(start_date='2028-03-02')),
+    ('period_id_duplicate',lambda x:x['calendar']['periods'][1].update(period_id='P1')),
+    ('no_boundary_default',lambda x:x['calendar'].pop('boundary_convention')),
+    ('opening_balance_missing',lambda x:x['accounts'][0].update(opening_balance=None)),
+    ('closing_claims_incomplete',lambda x:x['closing_cash_claims'].pop()),
+    ('restriction_without_rule',lambda x:x['cash_events'][3].update(restriction_rule_ref=None)),
+    ('capitalization_fake_cash',lambda x:x['debt_events'][1].update(cash_event_ref='DRAW')),
+    ('negative_gross_cash',lambda x:x['cash_events'][0]['amount']['value'].update(numerator=-10)),
+    ('same_cash_account',lambda x:x['cash_events'][0].update(from_account='free')),
+    ('missing_amount_state',lambda x:x['cash_events'][0].update(amount={'state':'missing','causes':[{'field_id':'A1','cause_kind':'missing','reason':'No supplied amount'}]})),
+    ('end_period_shortfall_not_invented_equity',lambda x:x['cash_events'][0]['amount']['value'].update(numerator=9))]
+    for name,mutate in mutations:
+     x=fixture();mutate(x);reject(name,x)
+    x=fixture();x['closing_debt_claims'][0]['amount']['value']['numerator']=17;old=deepcopy(x);z=reconcile(x)
+    ok('closing_discrepancy_retains_both_values',z['state']=='blocked' and z['issues'][0]['claimed']=='17' and z['issues'][0]['derived']=='16' and z['issues'][0]['residual']=='1' and x==old)
+    x=fixture();x['closing_cash_claims'][0]['amount']={'state':'missing','causes':[{'field_id':'closing','cause_kind':'missing','reason':'Missing statement'}]};z=reconcile(x);ok('missing_closing_never_becomes_zero',z['state']=='blocked' and z['issues'][0]['cause']=='closing amount unresolved')
+    # Equal amounts with distinct source events remain distinct; split contribution is not deduplicated.
+    x=fixture();x['cash_events'][0]['amount']['value']['numerator']=5;x['cash_events'].insert(1,dict(deepcopy(x['cash_events'][0]),event_id='A1-SPLIT'))
+    z=reconcile(x);ok('same_amount_different_events_preserved',z['state']=='internally_reconciled_reference' and z['gross_equity_contributions']=='15')
+    
+    ok('accrual_payment_capitalization_separate',result['due']=={'INTEREST-DUE':'0','FEE-DUE':'1'} and result['recorded_principal_plus_due']=='17' and result['debt']['LOAN-1']=='16')
+    extra_mutations=[
+    ('duplicate_obligation_event',lambda x:x['obligation_events'].append(deepcopy(x['obligation_events'][0]))),
+    ('orphan_capitalization',lambda x:x['obligation_events'].pop(1)),
+    ('orphan_interest_payment',lambda x:x['obligation_events'].pop(3)),
+    ('capitalization_counterpart_wrong_amount',lambda x:x['obligation_events'][1]['due_effect']['value'].update(numerator=-1)),
+    ('obligation_cash_link_reused',lambda x:x['obligation_events'].append(dict(deepcopy(x['obligation_events'][3]),event_id='EXTRA-I4'))),
+    ('obligation_cap_link_reused',lambda x:x['obligation_events'].append(dict(deepcopy(x['obligation_events'][1]),event_id='EXTRA-I2'))),
+    ('obligation_context_mixed',lambda x:x['obligation_events'][0]['context'].update(scenario_id='OTHER')),
+    ('opening_due_missing',lambda x:x['obligations'][0].update(opening_due={'state':'missing','causes':[{'field_id':'opening_due','cause_kind':'missing','reason':'No supplied amount'}]})),
+    ('closing_due_claims_missing',lambda x:x['closing_due_claims'].pop()),
+    ('invalid_calendar_zero_length',lambda x:x['calendar']['periods'][0].update(end_date='2028-02-01')),
+    ('event_outside_calendar',lambda x:x['date_bindings'][0].update(iso_date='2028-01-31'))]
+    for name,mutate in extra_mutations:
+     x=fixture();mutate(x);reject(name,x)
+    x=fixture();x['closing_due_claims'][1]['amount']['value']['numerator']=0;z=reconcile(x)
+    ok('unpaid_fee_not_hidden_in_principal',z['state']=='blocked' and z['issues'][0]['kind']=='due' and z['issues'][0]['derived']=='1' and z['debt']['LOAN-1']=='16')
+    x=fixture();x['calendar']['continuous_coverage']=False;x['calendar']['periods'][1]['start_date']='2028-03-02';ok('explicit_gap_allowed_without_event',reconcile(x)['state']=='internally_reconciled_reference')
+    x['date_bindings'][1]['iso_date']='2028-03-01';reject('event_in_gap_not_moved',x)
+    for name,start,end,denom in [('missing_day_denominator','2028-02-01','2028-03-01',None),('zero_day_denominator','2028-02-01','2028-03-01',0),('inverted_day_range','2028-03-01','2028-02-01',360)]:
+     try:explicit_actual_day_fraction(start,end,denom)
+     except ValueError:checks.append(name)
+     else:raise AssertionError('Invalid day convention accepted')
+    
+    fixtures=ROOT/'references/fixtures';fixtures.mkdir(exist_ok=True)
+    (fixtures/'calendar-ledger-synthetic.json').write_text(json.dumps(base,indent=2)+'\n')
+    report={'status':'passed','arithmetic':'exact rational','schemas_checked':len(STORE),'checks':checks,'total':len(checks),'synthetic_example':result,'scope':'Explicit-date period-aggregate synthetic cash/principal/declared-interest-fee/gross-equity reference. Not bank conventions, intraday liquidity proof, complete bank/legal obligations, authentic statements, independent audit or production.'}
+    Path(__file__).with_name('calendar-ledger-validation.json').write_text(json.dumps(report,indent=2)+'\n')
+    print(json.dumps(report))
 
-ok('accrual_payment_capitalization_separate',result['due']=={'INTEREST-DUE':'0','FEE-DUE':'1'} and result['recorded_principal_plus_due']=='17' and result['debt']['LOAN-1']=='16')
-extra_mutations=[
-('duplicate_obligation_event',lambda x:x['obligation_events'].append(deepcopy(x['obligation_events'][0]))),
-('orphan_capitalization',lambda x:x['obligation_events'].pop(1)),
-('orphan_interest_payment',lambda x:x['obligation_events'].pop(3)),
-('capitalization_counterpart_wrong_amount',lambda x:x['obligation_events'][1]['due_effect']['value'].update(numerator=-1)),
-('obligation_cash_link_reused',lambda x:x['obligation_events'].append(dict(deepcopy(x['obligation_events'][3]),event_id='EXTRA-I4'))),
-('obligation_cap_link_reused',lambda x:x['obligation_events'].append(dict(deepcopy(x['obligation_events'][1]),event_id='EXTRA-I2'))),
-('obligation_context_mixed',lambda x:x['obligation_events'][0]['context'].update(scenario_id='OTHER')),
-('opening_due_missing',lambda x:x['obligations'][0].update(opening_due={'state':'missing','causes':[{'field_id':'opening_due','cause_kind':'missing','reason':'No supplied amount'}]})),
-('closing_due_claims_missing',lambda x:x['closing_due_claims'].pop()),
-('invalid_calendar_zero_length',lambda x:x['calendar']['periods'][0].update(end_date='2028-02-01')),
-('event_outside_calendar',lambda x:x['date_bindings'][0].update(iso_date='2028-01-31'))]
-for name,mutate in extra_mutations:
- x=fixture();mutate(x);reject(name,x)
-x=fixture();x['closing_due_claims'][1]['amount']['value']['numerator']=0;z=reconcile(x)
-ok('unpaid_fee_not_hidden_in_principal',z['state']=='blocked' and z['issues'][0]['kind']=='due' and z['issues'][0]['derived']=='1' and z['debt']['LOAN-1']=='16')
-x=fixture();x['calendar']['continuous_coverage']=False;x['calendar']['periods'][1]['start_date']='2028-03-02';ok('explicit_gap_allowed_without_event',reconcile(x)['state']=='internally_reconciled_reference')
-x['date_bindings'][1]['iso_date']='2028-03-01';reject('event_in_gap_not_moved',x)
-for name,start,end,denom in [('missing_day_denominator','2028-02-01','2028-03-01',None),('zero_day_denominator','2028-02-01','2028-03-01',0),('inverted_day_range','2028-03-01','2028-02-01',360)]:
- try:explicit_actual_day_fraction(start,end,denom)
- except ValueError:checks.append(name)
- else:raise AssertionError('Invalid day convention accepted')
-
-fixtures=ROOT/'references/fixtures';fixtures.mkdir(exist_ok=True)
-(fixtures/'calendar-ledger-synthetic.json').write_text(json.dumps(base,indent=2)+'\n')
-report={'status':'passed','arithmetic':'exact rational','schemas_checked':len(STORE),'checks':checks,'total':len(checks),'synthetic_example':result,'scope':'Explicit-date period-aggregate synthetic cash/principal/declared-interest-fee/gross-equity reference. Not bank conventions, intraday liquidity proof, complete bank/legal obligations, authentic statements, independent audit or production.'}
-Path(__file__).with_name('calendar-ledger-validation.json').write_text(json.dumps(report,indent=2)+'\n')
-print(json.dumps(report))
+if __name__ == "__main__":
+    main()

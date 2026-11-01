@@ -59,31 +59,35 @@ def money(n):
  n=F(n);return {'state':'known','value':{'numerator':n.numerator,'denominator':n.denominator},'dimensions':{'money':1,'area':0,'unit':0,'space':0,'time':0},'unit_id':'SYNTHETIC-MONEY','currency':'SYNTHETIC-CURRENCY','measurement_role':'stock','basis':'synthetic_project','period_ref':'EXPLICIT-BUDGET-CUTOFF','sources':[src()]}
 def rep(id,total,allocs):return {'purpose':'design_or_synthetic_reference','authorization':'not_granted','context':deepcopy(CTX),'representation_id':id,'quoted_total':money(total),'coverage_state':'full_explicit_mapping','allocations':[{'scope_id':scope,'signed_cost_effect':money(n),'effect_type':'expense' if n>=0 else 'documented_credit','mapping_evidence_ref':'SYNTHETIC-EXPLICIT-MAP'} for scope,n in allocs],'sources':[src()]}
 def fixture():return {'purpose':'design_or_synthetic_reference','authorization':'not_granted','context':deepcopy(CTX),'package_id':'SYNTHETIC-SCOPE-01','required_scope_ids':['vertical','parking','site','soft'],'representations':[rep('GC-total',30,[('vertical',20),('parking',5),('site',5)]),rep('Parking-support',5,[('parking',5)]),rep('Soft-quote',7,[('soft',7)])]}
-checks=[]
-def ok(name,condition):
- assert condition,name;checks.append(name)
-def reject(name,x):
- try:reconcile(x)
- except (ValidationError,ValueError):checks.append(name)
- else:raise AssertionError('invalid package accepted: '+name)
-base=fixture();before=deepcopy(base);z=reconcile(base)
-ok('duplicate_representation_not_added_twice',z['canonical_scope_total']=='37' and sum(F(r['quoted_total']['value']['numerator'],r['quoted_total']['value']['denominator']) for r in base['representations'])==42)
-ok('supporting_claims_preserved',len(z['scope_claims']['parking'])==2)
-ok('same_amount_distinct_scopes_not_collapsed',z['scope_values']['parking']=='5' and z['scope_values']['site']=='5')
-ok('original_claims_not_mutated',base==before)
-x=fixture();x['representations'][1]=rep('Parking-support',6,[('parking',6)]);old=deepcopy(x);z=reconcile(x)
-ok('conflict_retains_all_without_source_choice',z['state']=='blocked' and z['canonical_scope_total'] is None and {c['amount'] for c in z['scope_claims']['parking']}=={'5','6'} and x==old)
-x=fixture();x['required_scope_ids'].append('owner-unpriced');z=reconcile(x);ok('required_exclusion_not_zero',z['state']=='blocked' and z['scope_values']['owner-unpriced'] is None)
-x=fixture();x['representations'][0]['allocations'].pop();z=reconcile(x);ok('quote_residual_not_assigned_by_estimate',z['state']=='blocked' and z['quote_residuals'][0]['residual']=='5' and z['scope_values']['site'] is None)
-x=fixture();x['representations'][0]['coverage_state']='partial_mapping';z=reconcile(x);ok('partial_mapping_blocks_even_if_sum_matches',z['state']=='blocked' and z['quote_residuals'][0]['residual']=='0')
-x=fixture();x['representations'][1]['allocations'][0]['signed_cost_effect']={'state':'missing','causes':[{'field_id':'parking','cause_kind':'missing','reason':'No supplied amount'}]};z=reconcile(x);ok('known_source_not_silent_override_for_missing_claim',z['state']=='blocked' and z['scope_values']['parking'] is None)
-x=fixture();x['required_scope_ids'].append('credit');x['representations'].append(rep('Credit',-2,[('credit',-2)]));z=reconcile(x);ok('documented_credit_retains_sign',z['canonical_scope_total']=='35')
-x=fixture();x['required_scope_ids'].append('explicit-zero');x['representations'].append(rep('Zero',0,[('explicit-zero',0)]));z=reconcile(x);ok('explicit_zero_is_known_not_missing',z['canonical_scope_total']=='37' and z['scope_values']['explicit-zero']=='0')
-x=fixture();x['required_scope_ids'].append('land');x['representations'].append(rep('Land',5,[('land',5)]));z=reconcile(x);ok('equal_price_additional_scope_added',z['canonical_scope_total']=='42')
-x=fixture();x['representations'].append(rep('Unexpected',1,[('extra',1)]));z=reconcile(x);ok('unexpected_scope_needs_treatment',z['state']=='blocked')
-mutations=[('representation_id_duplicate',lambda x:x['representations'].append(deepcopy(x['representations'][0]))),('required_scope_duplicate',lambda x:x['required_scope_ids'].append('vertical')),('duplicate_scope_inside_quote',lambda x:x['representations'][0]['allocations'].append(deepcopy(x['representations'][0]['allocations'][0]))),('no_scope_list_default',lambda x:x.pop('required_scope_ids')),('no_empty_scope_completeness',lambda x:x.update(required_scope_ids=[])),('missing_mapping_evidence',lambda x:x['representations'][0]['allocations'][0].update(mapping_evidence_ref='')),('context_mixed',lambda x:x['representations'][0]['context'].update(run_id='OTHER')),('wrong_currency',lambda x:x['representations'][1]['quoted_total'].update(currency='OTHER')),('wrong_unit',lambda x:x['representations'][1]['quoted_total'].update(unit_id='OTHER')),('wrong_base',lambda x:x['representations'][1]['quoted_total'].update(basis='OTHER')),('wrong_period',lambda x:x['representations'][1]['quoted_total'].update(period_ref='OTHER')),('price_per_area_not_total',lambda x:x['representations'][1]['quoted_total']['dimensions'].update(area=-1)),('wrong_measurement_role',lambda x:x['representations'][1]['quoted_total'].update(measurement_role='unit_rate')),('missing_currency',lambda x:x['representations'][1]['quoted_total'].update(currency=None)),('negative_expense_without_credit_class',lambda x:x['representations'][1]['allocations'][0]['signed_cost_effect']['value'].update(numerator=-5)),('bad_exact_denominator',lambda x:x['representations'][1]['quoted_total']['value'].update(denominator=0))]
-for name,mutate in mutations:
- x=fixture();mutate(x);reject(name,x)
-fixtures=ROOT/'references/fixtures';fixtures.mkdir(exist_ok=True);(fixtures/'cost-scope-synthetic.json').write_text(json.dumps(base,indent=2)+'\n')
-report={'status':'passed','arithmetic':'exact rational','schemas_checked':len(STORE),'checks':checks,'total':len(checks),'synthetic_example':reconcile(base),'scope':'Declared synthetic economic-scope allocation and document-claim consistency only; no inferred inclusions, source authority, actual construction completeness, expert policy, TDC financing or production.'}
-Path(__file__).with_name('cost-scope-validation.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report))
+def main():
+    checks=[]
+    def ok(name,condition):
+     assert condition,name;checks.append(name)
+    def reject(name,x):
+     try:reconcile(x)
+     except (ValidationError,ValueError):checks.append(name)
+     else:raise AssertionError('invalid package accepted: '+name)
+    base=fixture();before=deepcopy(base);z=reconcile(base)
+    ok('duplicate_representation_not_added_twice',z['canonical_scope_total']=='37' and sum(F(r['quoted_total']['value']['numerator'],r['quoted_total']['value']['denominator']) for r in base['representations'])==42)
+    ok('supporting_claims_preserved',len(z['scope_claims']['parking'])==2)
+    ok('same_amount_distinct_scopes_not_collapsed',z['scope_values']['parking']=='5' and z['scope_values']['site']=='5')
+    ok('original_claims_not_mutated',base==before)
+    x=fixture();x['representations'][1]=rep('Parking-support',6,[('parking',6)]);old=deepcopy(x);z=reconcile(x)
+    ok('conflict_retains_all_without_source_choice',z['state']=='blocked' and z['canonical_scope_total'] is None and {c['amount'] for c in z['scope_claims']['parking']}=={'5','6'} and x==old)
+    x=fixture();x['required_scope_ids'].append('owner-unpriced');z=reconcile(x);ok('required_exclusion_not_zero',z['state']=='blocked' and z['scope_values']['owner-unpriced'] is None)
+    x=fixture();x['representations'][0]['allocations'].pop();z=reconcile(x);ok('quote_residual_not_assigned_by_estimate',z['state']=='blocked' and z['quote_residuals'][0]['residual']=='5' and z['scope_values']['site'] is None)
+    x=fixture();x['representations'][0]['coverage_state']='partial_mapping';z=reconcile(x);ok('partial_mapping_blocks_even_if_sum_matches',z['state']=='blocked' and z['quote_residuals'][0]['residual']=='0')
+    x=fixture();x['representations'][1]['allocations'][0]['signed_cost_effect']={'state':'missing','causes':[{'field_id':'parking','cause_kind':'missing','reason':'No supplied amount'}]};z=reconcile(x);ok('known_source_not_silent_override_for_missing_claim',z['state']=='blocked' and z['scope_values']['parking'] is None)
+    x=fixture();x['required_scope_ids'].append('credit');x['representations'].append(rep('Credit',-2,[('credit',-2)]));z=reconcile(x);ok('documented_credit_retains_sign',z['canonical_scope_total']=='35')
+    x=fixture();x['required_scope_ids'].append('explicit-zero');x['representations'].append(rep('Zero',0,[('explicit-zero',0)]));z=reconcile(x);ok('explicit_zero_is_known_not_missing',z['canonical_scope_total']=='37' and z['scope_values']['explicit-zero']=='0')
+    x=fixture();x['required_scope_ids'].append('land');x['representations'].append(rep('Land',5,[('land',5)]));z=reconcile(x);ok('equal_price_additional_scope_added',z['canonical_scope_total']=='42')
+    x=fixture();x['representations'].append(rep('Unexpected',1,[('extra',1)]));z=reconcile(x);ok('unexpected_scope_needs_treatment',z['state']=='blocked')
+    mutations=[('representation_id_duplicate',lambda x:x['representations'].append(deepcopy(x['representations'][0]))),('required_scope_duplicate',lambda x:x['required_scope_ids'].append('vertical')),('duplicate_scope_inside_quote',lambda x:x['representations'][0]['allocations'].append(deepcopy(x['representations'][0]['allocations'][0]))),('no_scope_list_default',lambda x:x.pop('required_scope_ids')),('no_empty_scope_completeness',lambda x:x.update(required_scope_ids=[])),('missing_mapping_evidence',lambda x:x['representations'][0]['allocations'][0].update(mapping_evidence_ref='')),('context_mixed',lambda x:x['representations'][0]['context'].update(run_id='OTHER')),('wrong_currency',lambda x:x['representations'][1]['quoted_total'].update(currency='OTHER')),('wrong_unit',lambda x:x['representations'][1]['quoted_total'].update(unit_id='OTHER')),('wrong_base',lambda x:x['representations'][1]['quoted_total'].update(basis='OTHER')),('wrong_period',lambda x:x['representations'][1]['quoted_total'].update(period_ref='OTHER')),('price_per_area_not_total',lambda x:x['representations'][1]['quoted_total']['dimensions'].update(area=-1)),('wrong_measurement_role',lambda x:x['representations'][1]['quoted_total'].update(measurement_role='unit_rate')),('missing_currency',lambda x:x['representations'][1]['quoted_total'].update(currency=None)),('negative_expense_without_credit_class',lambda x:x['representations'][1]['allocations'][0]['signed_cost_effect']['value'].update(numerator=-5)),('bad_exact_denominator',lambda x:x['representations'][1]['quoted_total']['value'].update(denominator=0))]
+    for name,mutate in mutations:
+     x=fixture();mutate(x);reject(name,x)
+    fixtures=ROOT/'references/fixtures';fixtures.mkdir(exist_ok=True);(fixtures/'cost-scope-synthetic.json').write_text(json.dumps(base,indent=2)+'\n')
+    report={'status':'passed','arithmetic':'exact rational','schemas_checked':len(STORE),'checks':checks,'total':len(checks),'synthetic_example':reconcile(base),'scope':'Declared synthetic economic-scope allocation and document-claim consistency only; no inferred inclusions, source authority, actual construction completeness, expert policy, TDC financing or production.'}
+    Path(__file__).with_name('cost-scope-validation.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report))
+
+if __name__ == "__main__":
+    main()

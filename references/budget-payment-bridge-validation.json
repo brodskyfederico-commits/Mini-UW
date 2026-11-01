@@ -1,0 +1,228 @@
+{
+  "status": "passed",
+  "total": 41,
+  "checks": [
+    "explicit_scope_schedule_cash_bridge_reconciles",
+    "supporting_parking_quote_not_second_cost",
+    "one_payment_can_cover_multiple_cost_scopes",
+    "scheduled_unpaid_is_not_cash_outflow",
+    "no_accrual_or_payable_claim_inferred",
+    "no_real_deal_decision_or_publish",
+    "inputs_and_original_claims_not_mutated",
+    "one_schedule_slice_can_have_several_actual_payments",
+    "budget_timing_residual_retained",
+    "unallocated_payment_not_invented",
+    "missing_scope_schedule_not_zero",
+    "empty_links_do_not_certify_payment_coverage",
+    "unresolved_schedule_preserves_cause",
+    "unknown_link_not_zero_or_residual_assignment",
+    "source_cost_conflict_blocks_bridge",
+    "underlying_ledger_discrepancy_blocks_bridge",
+    "overallocated_slice_needs_explicit_treatment",
+    "different_schedule_cash_periods_require_explicit_link_not_same_month_default",
+    "explicit_zero_scope_retained",
+    "credit_not_silently_cash_netted",
+    "context_mismatch",
+    "duplicate_allocation_id",
+    "duplicate_payment_link_id",
+    "same_pair_cannot_be_double_counted",
+    "unknown_scope",
+    "unknown_period",
+    "unknown_schedule_link",
+    "principal_cash_not_development_cost",
+    "reserve_transfer_not_development_cost",
+    "unknown_cash_event",
+    "missing_schedule_mapping_evidence",
+    "missing_cash_mapping_evidence",
+    "currency_mismatch",
+    "unit_mismatch",
+    "basis_mismatch",
+    "amount_period_mismatch",
+    "stock_not_period_allocation",
+    "wrong_dimensions",
+    "negative_payment_allocation",
+    "no_implicit_production_authorization",
+    "no_zero_denominator"
+  ],
+  "schemas_checked": 23,
+  "synthetic_example": {
+    "state": "internally_reconciled_reference",
+    "scope_reconciliation": [
+      {
+        "scope_id": "vertical",
+        "budget": "20",
+        "scheduled": "20",
+        "residual": "0"
+      },
+      {
+        "scope_id": "parking",
+        "budget": "5",
+        "scheduled": "5",
+        "residual": "0"
+      },
+      {
+        "scope_id": "site",
+        "budget": "5",
+        "scheduled": "5",
+        "residual": "0"
+      },
+      {
+        "scope_id": "soft",
+        "budget": "7",
+        "scheduled": "7",
+        "residual": "0"
+      }
+    ],
+    "cash_reconciliation": [
+      {
+        "event_id": "COST",
+        "cash": "25",
+        "allocated": "25",
+        "residual": "0"
+      }
+    ],
+    "schedule_reconciliation": [
+      {
+        "allocation_id": "V1",
+        "scheduled_period": "P1",
+        "scheduled": "15",
+        "linked_cash": "15",
+        "not_cash_linked": "0"
+      },
+      {
+        "allocation_id": "V2",
+        "scheduled_period": "P2",
+        "scheduled": "5",
+        "linked_cash": "0",
+        "not_cash_linked": "5"
+      },
+      {
+        "allocation_id": "PK",
+        "scheduled_period": "P1",
+        "scheduled": "5",
+        "linked_cash": "5",
+        "not_cash_linked": "0"
+      },
+      {
+        "allocation_id": "SITE",
+        "scheduled_period": "P1",
+        "scheduled": "5",
+        "linked_cash": "5",
+        "not_cash_linked": "0"
+      },
+      {
+        "allocation_id": "SOFT",
+        "scheduled_period": "P2",
+        "scheduled": "7",
+        "linked_cash": "0",
+        "not_cash_linked": "7"
+      }
+    ],
+    "cost_reference": {
+      "state": "internally_reconciled_scope_reference",
+      "scope_values": {
+        "vertical": "20",
+        "parking": "5",
+        "site": "5",
+        "soft": "7"
+      },
+      "canonical_scope_total": "37",
+      "quote_residuals": [
+        {
+          "representation_id": "GC-total",
+          "quoted": "30",
+          "allocated": "30",
+          "residual": "0"
+        },
+        {
+          "representation_id": "Parking-support",
+          "quoted": "5",
+          "allocated": "5",
+          "residual": "0"
+        },
+        {
+          "representation_id": "Soft-quote",
+          "quoted": "7",
+          "allocated": "7",
+          "residual": "0"
+        }
+      ],
+      "scope_claims": {
+        "vertical": [
+          {
+            "representation_id": "GC-total",
+            "amount": "20",
+            "mapping_evidence_ref": "SYNTHETIC-EXPLICIT-MAP"
+          }
+        ],
+        "parking": [
+          {
+            "representation_id": "GC-total",
+            "amount": "5",
+            "mapping_evidence_ref": "SYNTHETIC-EXPLICIT-MAP"
+          },
+          {
+            "representation_id": "Parking-support",
+            "amount": "5",
+            "mapping_evidence_ref": "SYNTHETIC-EXPLICIT-MAP"
+          }
+        ],
+        "site": [
+          {
+            "representation_id": "GC-total",
+            "amount": "5",
+            "mapping_evidence_ref": "SYNTHETIC-EXPLICIT-MAP"
+          }
+        ],
+        "soft": [
+          {
+            "representation_id": "Soft-quote",
+            "amount": "7",
+            "mapping_evidence_ref": "SYNTHETIC-EXPLICIT-MAP"
+          }
+        ]
+      },
+      "issues": []
+    },
+    "ledger_reference": {
+      "state": "internally_reconciled_reference",
+      "periods": [
+        {
+          "period_id": "P1",
+          "external_in": "30",
+          "external_out": "27",
+          "cash_total": "3",
+          "principal_total": "20",
+          "due_total": "0"
+        },
+        {
+          "period_id": "P2",
+          "external_in": "9",
+          "external_out": "10",
+          "cash_total": "2",
+          "principal_total": "16",
+          "due_total": "1"
+        }
+      ],
+      "cash": {
+        "free": "0",
+        "restricted": "2"
+      },
+      "debt": {
+        "LOAN-1": "16"
+      },
+      "due": {
+        "INTEREST-DUE": "0",
+        "FEE-DUE": "1"
+      },
+      "recorded_principal_plus_due": "17",
+      "gross_equity_contributions": "15",
+      "gross_equity_distributions": "5",
+      "issues": []
+    },
+    "issues": [],
+    "decision": "PENDING",
+    "publication_authorized": false
+  },
+  "scope": "Exact explicit synthetic budget-schedule-payment linkage and underlying scoped references only. Not incurred-cost accounting, payable/retention certification, schedule-curve choice, bank eligibility, complete financial integration, real deal, independent audit or production."
+}

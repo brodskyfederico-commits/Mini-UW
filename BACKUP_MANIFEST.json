@@ -13,13 +13,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 5125,
-      "sha256": "6d32aa472c98d7a209a7ae65ff29badcd67d241f5cb80344770169c2acadddd1"
+      "bytes": 5407,
+      "sha256": "71c67b528647bd9d017f3c8f1281ca0b8815581495898d7748e71656201deb2b"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 12338,
-      "sha256": "5337a3b9b382e19e0a14e3eb8f6d940bfce132289f60f44923dc376885262518"
+      "bytes": 13173,
+      "sha256": "b4af75c322f7266451fdb993acba4c30f206c1a5eb49cc1ed2961d1babc60ac1"
     },
     {
       "path": "docs/acceptance-case-contracts.json",
@@ -30,6 +30,11 @@
       "path": "docs/acceptance-plan.md",
       "bytes": 3531,
       "sha256": "c5d57e5581d628f1fd0eea5bda8eba8e4e545cfd433fa65967496e4dd9a7f12a"
+    },
+    {
+      "path": "docs/budget-payment-bridge.md",
+      "bytes": 4258,
+      "sha256": "108703208bf8208385d219ebc60680548402f071fd2d7e60653850096d81ffaf"
     },
     {
       "path": "docs/calendar-ledger-contracts.md",
@@ -48,13 +53,13 @@
     },
     {
       "path": "docs/coverage-matrix.csv",
-      "bytes": 338936,
-      "sha256": "ea9bd72b77e87b4674c839631806b29ac286598ebe51543cf33e9e51924526ab"
+      "bytes": 340469,
+      "sha256": "07aff5be5a3f0a70b6385d349957c406cbde16101b89b64017c5d7f946b18ac8"
     },
     {
       "path": "docs/coverage-matrix.json",
-      "bytes": 523411,
-      "sha256": "17a84f7a1339675ca9e1cc0b500540042aecf5fafe8d2e460f88bd227920c071"
+      "bytes": 524944,
+      "sha256": "84559d73055b690cb20705165e5fcbba1e97ec778c3383a6af75a6ec35b32bb9"
     },
     {
       "path": "docs/current-direction.txt",
@@ -168,8 +173,8 @@
     },
     {
       "path": "docs/module-execution-design.json",
-      "bytes": 3541,
-      "sha256": "bad3cb4dfa80e7b5bb5cf67cdd124e6eb191739d3fa1150a4e657b89e02952db"
+      "bytes": 3859,
+      "sha256": "897913530894ca3d11bfb677b18b91ba23d22738e72b71cf4d38327f0bced6bc"
     },
     {
       "path": "docs/module-interface-protocol.md",
@@ -178,13 +183,13 @@
     },
     {
       "path": "docs/package-consistency-validation.json",
-      "bytes": 793,
-      "sha256": "b69b4d2d74b8d77f6a9ad4389ca91d868d2d2ee15131714d95d699177cbe73eb"
+      "bytes": 841,
+      "sha256": "9f92b96a665738343269514f5d8e24233c851891fb283a62532fd81b1d0974fd"
     },
     {
       "path": "docs/package-readiness.json",
-      "bytes": 5487,
-      "sha256": "07b05e5526a13bb3e1429bd87a3bb82b15879787f58a0889c480217c316c79dd"
+      "bytes": 5918,
+      "sha256": "0c7ad96bf282194707e8c75fdf4c01f563e9e665d847ceb4fba8ca3f05784f7f"
     },
     {
       "path": "docs/professional-feedback-register.json",
@@ -257,14 +262,19 @@
       "sha256": "a55c787b386d9bac7d19f50669282fff55fe448090c9c84df8f8202a78f8935e"
     },
     {
+      "path": "references/budget-payment-bridge-validation.json",
+      "bytes": 6243,
+      "sha256": "ae7cfebf3de978b63790ecaa2c2538df09234f02a83139a1219449d704f375f0"
+    },
+    {
       "path": "references/calendar-ledger-validation.json",
       "bytes": 3062,
-      "sha256": "e0616d079578af1746f3469561f644453c51073e1b383e32c4d21dbc5834ce05"
+      "sha256": "45de053a93f9f677082252737b84ad9d7f3ff65a9effb0157a087ce9e49dc0e5"
     },
     {
       "path": "references/cost-scope-validation.json",
       "bytes": 2924,
-      "sha256": "51743f706bf8d68fdacd9b8e2979d1f73b2acf16e24ad38ca04cf6b7b5d4950a"
+      "sha256": "3c389e9b9acf4a6058cf0948070a7650ed6adbcc5ceb807d7b90369ac734855d"
     },
     {
       "path": "references/dependency-graph-reference.json",
@@ -275,6 +285,11 @@
       "path": "references/evidence-locators-validation.json",
       "bytes": 1151,
       "sha256": "25089c18654578f9bc61ff3a8a74dbd44667137712870f5407c2e12d17008d07"
+    },
+    {
+      "path": "references/fixtures/budget-payment-bridge-synthetic.json",
+      "bytes": 60988,
+      "sha256": "dd43f521ea95f00343b3b2683070292777487d24b54ecb23a64299d6b73567a2"
     },
     {
       "path": "references/fixtures/calendar-ledger-synthetic.json",
@@ -294,7 +309,7 @@
     {
       "path": "references/interface-contracts-validation.json",
       "bytes": 3055,
-      "sha256": "8d9d87653063182f76a24b456c2d191eb978b4adb697de5cd366f453db5ebf37"
+      "sha256": "8ef5f38e5696b7a907257f3ebed22ff90860532ae77ea1e11706f30d8ab6ffc4"
     },
     {
       "path": "references/m2-validation.json",
@@ -337,14 +352,19 @@
       "sha256": "5b49fbc6a5b7e623e96e7121211919aaebf33cc154cc65500de80d08610f9aa8"
     },
     {
+      "path": "references/validate_budget_payment_bridge.py",
+      "bytes": 15418,
+      "sha256": "34a5e0f68b9e78d465b220b461084816b0b7a2a6d7d85e9315a97f2954b9278b"
+    },
+    {
       "path": "references/validate_calendar_ledger.py",
-      "bytes": 23939,
-      "sha256": "009aa55d55910634ef59b6ad3eadbb97023f8087c1d29d0d1afb5a1b08326ab1"
+      "bytes": 24334,
+      "sha256": "d19f06c0ef8ccdb2c55d8f8a68d14dbbd2c9d8e2cc69b1950acbd928f81faf27"
     },
     {
       "path": "references/validate_cost_scope.py",
-      "bytes": 10684,
-      "sha256": "9ccddc235fc27143409dad7756caf3e69939107c35aaf6be247dd9867f3cb49e"
+      "bytes": 10847,
+      "sha256": "6cf8187f5aca8849c857c5c11723d23a33d37a8ed5c2d99aadf860c2c896901c"
     },
     {
       "path": "references/validate_evidence_locators.py",
@@ -448,8 +468,13 @@
     },
     {
       "path": "schemas/README.md",
-      "bytes": 1704,
-      "sha256": "5b6fe1d5d43bce86f64bd593914616f8b6f811b8c46e1a892985324cb210a849"
+      "bytes": 1967,
+      "sha256": "6a670d89961e15c8fbd603ca4ac30d8ba98fc6da95dd860d2ea111400e7a11d6"
+    },
+    {
+      "path": "schemas/budget-payment-bridge.schema.json",
+      "bytes": 2662,
+      "sha256": "cfeda293fccdd22e3f7e7daa693f2bf681f83c5b2c517ef617c5fa704c2c6825"
     },
     {
       "path": "schemas/calendar.schema.json",

@@ -41,3 +41,5 @@ Continued independent structure: [module interface protocol](docs/module-interfa
 Calendar/accounting structure: [calendar and cash/debt/accrual ledger contracts](docs/calendar-ledger-contracts.md), with an explicitly synthetic fixture and retained balance discrepancies. No bank timing/interest policies are selected.
 
 Scope/evidence structure: [cost-scope reconciliation](docs/cost-scope-reconciliation.md) prevents counting the same explicitly mapped economic scope twice and preserves conflicting claims. [Evidence locators](docs/evidence-locator-contract.md) bind literal PDF/Word/Excel citations to inventoried source bytes; matching a citation does not validate its meaning or authority.
+
+Cross-module structure: [budget-period-payment bridge](docs/budget-payment-bridge.md) links explicit M3 scopes, M4 allocations and M5 cash records. Forty-one synthetic controls retain discrepancies and unmapped amounts; no schedule, accrual policy or actual financing is inferred.

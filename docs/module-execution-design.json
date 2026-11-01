@@ -119,5 +119,16 @@
       "atomic current-revision record",
       "production authorization"
     ]
-  }
+  },
+  "explicit_cross_module_references": [
+    {
+      "path": "docs/budget-payment-bridge.md",
+      "modules": [
+        "M3",
+        "M4",
+        "M5"
+      ],
+      "status": "candidate structural linkage with explicit synthetic schedule/payment evidence; not a complete integration or financing solver"
+    }
+  ]
 }

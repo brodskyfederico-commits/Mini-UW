@@ -9,3 +9,5 @@ The reference validator adds scoped semantic checks and synthetic arithmetic/blo
 Additional candidate records: calendar, event ledger and interest/fee obligation events. The calendar/ledger reference checks all 19 current schema documents and 60 explicit-calendar/accounting cases, not bank conventions or actual obligation completeness.
 
 Additional candidate records: explicit cost-scope representations/packages and hash-bound literal evidence claims. There are now 22 schema documents; the interface regression checks all 22 with 75 cases. Cost-scope reconciliation has 29 synthetic checks; evidence locators have 21 literal/integrity checks. These do not establish financial completeness or source authority.
+
+The budget-payment-bridge schema composes explicit cost-scope and ledger records with period/payment allocations. All 23 current schema documents pass interface regression; 41 bridge cases exercise structural links, not expert policy or a full financial engine.

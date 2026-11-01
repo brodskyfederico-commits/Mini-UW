@@ -1,0 +1,109 @@
+{
+  "type": "object",
+  "properties": {
+    "purpose": {
+      "const": "design_or_synthetic_reference"
+    },
+    "authorization": {
+      "const": "not_granted"
+    },
+    "context": {
+      "$ref": "urn:miniuw:candidate:common:0.1#/$defs/context"
+    },
+    "bridge_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "cost_package": {
+      "$ref": "urn:miniuw:candidate:cost-scope-package:0.1"
+    },
+    "event_ledger": {
+      "$ref": "urn:miniuw:candidate:event-ledger:0.1"
+    },
+    "schedule_allocations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "allocation_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "period_ref": {
+            "type": "string",
+            "minLength": 1
+          },
+          "amount": {
+            "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+          },
+          "mapping_evidence_ref": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "allocation_id",
+          "scope_id",
+          "period_ref",
+          "amount",
+          "mapping_evidence_ref"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "payment_allocations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "link_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "cash_event_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "schedule_allocation_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "amount": {
+            "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+          },
+          "mapping_evidence_ref": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "link_id",
+          "cash_event_id",
+          "schedule_allocation_id",
+          "amount",
+          "mapping_evidence_ref"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "purpose",
+    "authorization",
+    "context",
+    "bridge_id",
+    "cost_package",
+    "event_ledger",
+    "schedule_allocations",
+    "payment_allocations"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:miniuw:candidate:budget-payment-bridge:0.1",
+  "title": "Explicit budget-period-cash reference bindings; no schedule or accounting policy"
+}
