@@ -1,0 +1,141 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:miniuw:candidate:obligation-event:0.1",
+  "title": "Candidate interest/fee payable event",
+  "type": "object",
+  "properties": {
+    "purpose": {
+      "const": "design_or_synthetic_reference"
+    },
+    "authorization": {
+      "const": "not_granted"
+    },
+    "context": {
+      "$ref": "urn:miniuw:candidate:common:0.1#/$defs/context"
+    },
+    "event_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "obligation_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "kind": {
+      "enum": [
+        "accrual",
+        "cash_settlement",
+        "capitalization",
+        "documented_adjustment"
+      ]
+    },
+    "due_effect": {
+      "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+    },
+    "cash_event_ref": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "debt_event_ref": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "calendar_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "period_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "urn:miniuw:candidate:common:0.1#/$defs/source"
+      }
+    }
+  },
+  "required": [
+    "purpose",
+    "authorization",
+    "context",
+    "event_id",
+    "obligation_id",
+    "kind",
+    "due_effect",
+    "cash_event_ref",
+    "debt_event_ref",
+    "calendar_ref",
+    "period_ref",
+    "sources"
+  ],
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "kind": {
+            "const": "cash_settlement"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "cash_event_ref": {
+            "type": "string",
+            "minLength": 1
+          },
+          "debt_event_ref": {
+            "type": "null"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "kind": {
+            "const": "capitalization"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "debt_event_ref": {
+            "type": "string",
+            "minLength": 1
+          },
+          "cash_event_ref": {
+            "type": "null"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "kind": {
+            "const": "accrual"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "cash_event_ref": {
+            "type": "null"
+          },
+          "debt_event_ref": {
+            "type": "null"
+          }
+        }
+      }
+    }
+  ]
+}

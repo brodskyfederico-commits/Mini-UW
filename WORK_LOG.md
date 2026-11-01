@@ -70,3 +70,7 @@ User authorized continued independent construction while feedback is pending. Ad
 ## Module/record interfaces and empty execution structure — 1 November 2026
 
 User requested independent construction without waiting for professional input. Added M1–M9 aggregate interfaces, common typed quantities/context/blocked causes, and six cost/cash/debt/criterion/scenario/snapshot record families. Validated 16 schemas plus 75 meaningful structural/exchange cases offline with jsonschema 4.10.3. Preserved conflict alternatives, explicit zero, units/contexts and pending/no-applicability distinctions; no real financial equations/ranges/policies or publication authorized. Added stage execution design and 55 empty input slots (43 project, 9 financing, 3 alternatives) separate from 10 empty criterion slots and all-empty expert/technical choices. R02 and blank feedback register unchanged. Coverage remains 398; module gates remain open, while independent design continues.
+
+## Explicit calendar and cash/debt/accrual ledgers — 1 November 2026
+
+Continued authorized independent structure. Added three candidate schemas (calendar, event ledger, obligation event), an exact-rational synthetic reference and declared fixture. Sixty checks cover boundaries/leap dates, duplicate events, cash/principal linkage, accrued versus paid/capitalized interest, unpaid fees, closing discrepancies and missing/context/unit inputs. No banking convention or extra funding invented; principal is not treated as total payoff. No production or review gate closed. Continuing cost-scope structure next.

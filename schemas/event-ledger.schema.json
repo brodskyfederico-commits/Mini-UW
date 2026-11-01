@@ -1,0 +1,230 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:miniuw:candidate:event-ledger:0.1",
+  "title": "event-ledger candidate reference structure",
+  "type": "object",
+  "properties": {
+    "purpose": {
+      "const": "design_or_synthetic_reference"
+    },
+    "authorization": {
+      "const": "not_granted"
+    },
+    "ledger_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "context": {
+      "$ref": "urn:miniuw:candidate:common:0.1#/$defs/context"
+    },
+    "calendar": {
+      "$ref": "urn:miniuw:candidate:calendar:0.1"
+    },
+    "accounts": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "account_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "account_class": {
+            "enum": [
+              "free_project_cash",
+              "restricted_project_cash",
+              "external_counterparty"
+            ]
+          },
+          "opening_balance": {
+            "oneOf": [
+              {
+                "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "account_id",
+          "account_class",
+          "opening_balance"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "debts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "debt_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "opening_principal": {
+            "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+          }
+        },
+        "required": [
+          "debt_id",
+          "opening_principal"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "date_bindings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "date_ref": {
+            "type": "string",
+            "minLength": 1
+          },
+          "iso_date": {
+            "type": "string",
+            "format": "date"
+          }
+        },
+        "required": [
+          "date_ref",
+          "iso_date"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "cash_events": {
+      "type": "array",
+      "items": {
+        "$ref": "urn:miniuw:candidate:cash-event:0.1"
+      }
+    },
+    "debt_events": {
+      "type": "array",
+      "items": {
+        "$ref": "urn:miniuw:candidate:debt-event:0.1"
+      }
+    },
+    "closing_cash_claims": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "account_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "amount": {
+            "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+          }
+        },
+        "required": [
+          "account_id",
+          "amount"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "closing_debt_claims": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "debt_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "amount": {
+            "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+          }
+        },
+        "required": [
+          "debt_id",
+          "amount"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "obligations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "obligation_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "debt_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "obligation_class": {
+            "enum": [
+              "interest",
+              "fee",
+              "other_documented"
+            ]
+          },
+          "opening_due": {
+            "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+          }
+        },
+        "required": [
+          "obligation_id",
+          "debt_id",
+          "obligation_class",
+          "opening_due"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "obligation_events": {
+      "type": "array",
+      "items": {
+        "$ref": "urn:miniuw:candidate:obligation-event:0.1"
+      }
+    },
+    "closing_due_claims": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "obligation_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "amount": {
+            "$ref": "urn:miniuw:candidate:common:0.1#/$defs/quantity"
+          }
+        },
+        "required": [
+          "obligation_id",
+          "amount"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "purpose",
+    "authorization",
+    "ledger_id",
+    "context",
+    "calendar",
+    "accounts",
+    "debts",
+    "date_bindings",
+    "cash_events",
+    "debt_events",
+    "closing_cash_claims",
+    "closing_debt_claims",
+    "obligations",
+    "obligation_events",
+    "closing_due_claims"
+  ],
+  "additionalProperties": false
+}

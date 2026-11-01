@@ -66,6 +66,11 @@
       "path": "references/interface-contracts-validation.json",
       "scope": "Candidate interface shapes and isolated arithmetic/block propagation. No financial defaults, full dependency/model integration, expert approval, authenticated identity or production release.",
       "count": 75
+    },
+    {
+      "path": "references/calendar-ledger-validation.json",
+      "scope": "Explicit-date period-aggregate synthetic cash/principal/declared-interest-fee/gross-equity reference. Not bank conventions, intraday liquidity proof, complete bank/legal obligations, authentic statements, independent audit or production.",
+      "count": 60
     }
   ],
   "independent_financial_audit": false,
@@ -83,6 +88,7 @@
     "empty_original_input_slots": 55,
     "empty_metric_criterion_slots": 10,
     "execution_plan_modules": 9,
-    "no_financial_defaults": true
+    "no_financial_defaults": true,
+    "calendar_ledger_schemas": 3
   }
 }

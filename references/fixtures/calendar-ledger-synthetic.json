@@ -1,0 +1,1478 @@
+{
+  "purpose": "design_or_synthetic_reference",
+  "authorization": "not_granted",
+  "context": {
+    "deal_id": "SYNTHETIC-LEDGER-NO-DEAL",
+    "scenario_id": "explicit-reference",
+    "run_id": "reference-1",
+    "input_revision": "v1",
+    "definition_set_revision": "v1"
+  },
+  "ledger_id": "SYNTHETIC-LEDGER-01",
+  "calendar": {
+    "purpose": "design_or_synthetic_reference",
+    "authorization": "not_granted",
+    "context": {
+      "deal_id": "SYNTHETIC-LEDGER-NO-DEAL",
+      "scenario_id": "explicit-reference",
+      "run_id": "reference-1",
+      "input_revision": "v1",
+      "definition_set_revision": "v1"
+    },
+    "calendar_id": "CAL-1",
+    "boundary_convention": "left_closed_right_open",
+    "continuous_coverage": true,
+    "periods": [
+      {
+        "period_id": "P1",
+        "start_date": "2028-02-01",
+        "end_date": "2028-03-01"
+      },
+      {
+        "period_id": "P2",
+        "start_date": "2028-03-01",
+        "end_date": "2028-04-01"
+      }
+    ],
+    "sources": [
+      {
+        "source_id": "SYNTHETIC-ONLY",
+        "locator": "fixture declaration",
+        "claim_kind": "synthetic_reference",
+        "verification_status": "synthetic_only"
+      }
+    ]
+  },
+  "accounts": [
+    {
+      "account_id": "free",
+      "account_class": "free_project_cash",
+      "opening_balance": {
+        "state": "known",
+        "value": {
+          "numerator": 0,
+          "denominator": 1
+        },
+        "dimensions": {
+          "money": 1,
+          "area": 0,
+          "unit": 0,
+          "space": 0,
+          "time": 0
+        },
+        "unit_id": "SYNTHETIC-MONEY",
+        "currency": "SYNTHETIC-CURRENCY",
+        "measurement_role": "stock",
+        "basis": "synthetic_project",
+        "period_ref": "OPENING:P1",
+        "sources": [
+          {
+            "source_id": "SYNTHETIC-ONLY",
+            "locator": "fixture declaration",
+            "claim_kind": "synthetic_reference",
+            "verification_status": "synthetic_only"
+          }
+        ]
+      }
+    },
+    {
+      "account_id": "restricted",
+      "account_class": "restricted_project_cash",
+      "opening_balance": {
+        "state": "known",
+        "value": {
+          "numerator": 0,
+          "denominator": 1
+        },
+        "dimensions": {
+          "money": 1,
+          "area": 0,
+          "unit": 0,
+          "space": 0,
+          "time": 0
+        },
+        "unit_id": "SYNTHETIC-MONEY",
+        "currency": "SYNTHETIC-CURRENCY",
+        "measurement_role": "stock",
+        "basis": "synthetic_project",
+        "period_ref": "OPENING:P1",
+        "sources": [
+          {
+            "source_id": "SYNTHETIC-ONLY",
+            "locator": "fixture declaration",
+            "claim_kind": "synthetic_reference",
+            "verification_status": "synthetic_only"
+          }
+        ]
+      }
+    },
+    {
+      "account_id": "investor",
+      "account_class": "external_counterparty",
+      "opening_balance": null
+    },
+    {
+      "account_id": "bank",
+      "account_class": "external_counterparty",
+      "opening_balance": null
+    },
+    {
+      "account_id": "vendor",
+      "account_class": "external_counterparty",
+      "opening_balance": null
+    },
+    {
+      "account_id": "tenant",
+      "account_class": "external_counterparty",
+      "opening_balance": null
+    }
+  ],
+  "debts": [
+    {
+      "debt_id": "LOAN-1",
+      "opening_principal": {
+        "state": "known",
+        "value": {
+          "numerator": 0,
+          "denominator": 1
+        },
+        "dimensions": {
+          "money": 1,
+          "area": 0,
+          "unit": 0,
+          "space": 0,
+          "time": 0
+        },
+        "unit_id": "SYNTHETIC-MONEY",
+        "currency": "SYNTHETIC-CURRENCY",
+        "measurement_role": "stock",
+        "basis": "synthetic_project",
+        "period_ref": "OPENING:P1",
+        "sources": [
+          {
+            "source_id": "SYNTHETIC-ONLY",
+            "locator": "fixture declaration",
+            "claim_kind": "synthetic_reference",
+            "verification_status": "synthetic_only"
+          }
+        ]
+      }
+    }
+  ],
+  "date_bindings": [
+    {
+      "date_ref": "DATE-P1",
+      "iso_date": "2028-02-15"
+    },
+    {
+      "date_ref": "DATE-P2",
+      "iso_date": "2028-03-15"
+    }
+  ],
+  "cash_events": [
+    {
+      "purpose": "design_or_synthetic_reference",
+      "authorization": "not_granted",
+      "context": {
+        "deal_id": "SYNTHETIC-LEDGER-NO-DEAL",
+        "scenario_id": "explicit-reference",
+        "run_id": "reference-1",
+        "input_revision": "v1",
+        "definition_set_revision": "v1"
+      },
+      "event_id": "A1",
+      "kind": "equity_contribution",
+      "from_account": "investor",
+      "to_account": "free",
+      "amount": {
+        "state": "known",
+        "value": {
+          "numerator": 10,
+          "denominator": 1
+        },
+        "dimensions": {
+          "money": 1,
+          "area": 0,
+          "unit": 0,
+          "space": 0,
+          "time": 0
+        },
+        "unit_id": "SYNTHETIC-MONEY",
+        "currency": "SYNTHETIC-CURRENCY",
+        "measurement_role": "period_total",
+        "basis": "synthetic_project",
+        "period_ref": "P1",
+        "sources": [
+          {
+            "source_id": "SYNTHETIC-ONLY",
+            "locator": "fixture declaration",
+            "claim_kind": "synthetic_reference",
+            "verification_status": "synthetic_only"
+          }
+        ]
+      },
+      "calendar_ref": "CAL-1",
+      "period_ref": "P1",
+      "date_ref": "DATE-P1",
+      "restriction_rule_ref": null,
+      "related_debt_ref": null,
+      "sources": [
+        {
+          "source_id": "SYNTHETIC-ONLY",
+          "locator": "fixture declaration",
+          "claim_kind": "synthetic_reference",
+          "verification_status": "synthetic_only"
+        }
+      ]
+    },
+    {
+      "purpose": "design_or_synthetic_reference",
+      "authorization": "not_granted",
+      "context": {
+        "deal_id": "SYNTHETIC-LEDGER-NO-DEAL",
+        "scenario_id": "explicit-reference",
+        "run_id": "reference-1",
+        "input_revision": "v1",
+        "definition_set_revision": "v1"
+      },
+      "event_id": "DRAW",
+      "kind": "loan_cash_draw",
+      "from_account": "bank",
+      "to_account": "free",
+      "amount": {
+        "state": "known",
+        "value": {
+          "numerator": 20,
+          "denominator": 1
+        },
+        "dimensions": {
+          "money": 1,
+          "area": 0,
+          "unit": 0,
+          "space": 0,
+          "time": 0
+        },
+        "unit_id": "SYNTHETIC-MONEY",
+        "currency": "SYNTHETIC-CURRENCY",
+        "measurement_role": "period_total",
+        "basis": "synthetic_project",
+        "period_ref": "P1",
+        "sources": [
+          {
+            "source_id": "SYNTHETIC-ONLY",
+            "locator": "fixture declaration",
+            "claim_kind": "synthetic_reference",
+            "verification_status": "synthetic_only"
+          }
+        ]
+      },
+      "calendar_ref": "CAL-1",
+      "period_ref": "P1",
+      "date_ref": "DATE-P1",
+      "restriction_rule_ref": null,
+      "related_debt_ref": "LOAN-1",
+      "sources": [
+        {
+          "source_id": "SYNTHETIC-ONLY",
+          "locator": "fixture declaration",
+          "claim_kind": "synthetic_reference",
+          "verification_status": "synthetic_only"
+        }
+      ]
+    },
+    {
+      "purpose": "design_or_synthetic_reference",
+      "authorization": "not_granted",
+      "context": {
+        "deal_id": "SYNTHETIC-LEDGER-NO-DEAL",
+        "scenario_id": "explicit-reference",
+        "run_id": "reference-1",
+        "input_revision": "v1",
+        "definition_set_revision": "v1"
+      },
+      "event_id": "COST",
+      "kind": "development_payment",
+      "from_account": "free",
+      "to_account": "vendor",
+      "amount": {
+        "state": "known",
+        "value": {
+          "numerator": 25,
+          "denominator": 1
+        },
+        "dimensions": {
+          "money": 1,
+          "area": 0,
+          "unit": 0,
+          "space": 0,
+          "time": 0
+        },
+        "unit_id": "SYNTHETIC-MONEY",
+        "currency": "SYNTHETIC-CURRENCY",
+        "measurement_role": "period_total",
+        "basis": "synthetic_project",
+        "period_ref": "P1",
+        "sources": [
+          {
+            "source_id": "SYNTHETIC-ONLY",
+            "locator": "fixture declaration",
+            "claim_kind": "synthetic_reference",
+            "verification_status": "synthetic_only"
+          }
+        ]
+      },
+      "calendar_ref": "CAL-1",
+      "period_ref": "P1",
+      "date_ref": "DATE-P1",
+      "restriction_rule_ref": null,
+      "related_debt_ref": null,
+      "sources": [
+        {
+          "source_id": "SYNTHETIC-ONLY",
+          "locator": "fixture declaration",
+          "claim_kind": "synthetic_reference",
+          "verification_status": "synthetic_only"
+        }
+      ]
+    },
+    {
+      "purpose": "design_or_synthetic_reference",
+      "authorization": "not_granted",
+      "context": {
+        "deal_id": "SYNTHETIC-LEDGER-NO-DEAL",
+        "scenario_id": "explicit-reference",
+        "run_id": "reference-1",
+        "input_revision": "v1",
+        "definition_set_revision": "v1"
+      },
+      "event_id": "RESERVE",
+      "kind": "restricted_transfer",
+      "from_account": "free",
+      "to_account": "restricted",
+      "amount": {
+        "state": "known",
+        "value": {
+          "numerator": 3,
+          "denominator": 1
+        },
+        "dimensions": {
+          "money": 1,
+          "area": 0,
+          "unit": 0,
+          "space": 0,
+          "time": 0
+        },
+        "unit_id": "SYNTHETIC-MONEY",
+        "currency": "SYNTHETIC-CURRENCY",
+        "measurement_role": "period_total",
+        "basis": "synthetic_project",
+        "period_ref": "P1",
+        "sources": [
+          {
+            "source_id": "SYNTHETIC-ONLY",
+            "locator": "fixture declaration",
+            "claim_kind": "synthetic_reference",
+            "verification_status": "synthetic_only"
+          }
+        ]
+      },
+      "calendar_ref": "CAL-1",
+      "period_ref": "P1",
+      "date_ref": "DATE-P1",
+      "restriction_rule_ref": "SYNTHETIC-RESTRICTION",
+      "related_debt_ref": null,
+      "sources": [
+        {
+          "source_id": "SYNTHETIC-ONLY",
+          "locator": "fixture declaration",
+          "claim_kind": "synthetic_reference",
+          "verification_status": "synthetic_only"
+        }
+      ]
+    },
+    {
+      "purpose": "design_or_synthetic_reference",
+      "authorization": "not_granted",
+      "context": {
+        "deal_id": "SYNTHETIC-LEDGER-NO-DEAL",
+        "scenario_id": "explicit-reference",
+        "run_id": "reference-1",
+        "input_revision": "v1",
+        "definition_set_revision": "v1"
+      },
+      "event_id": "PAY1",
+      "kind": "principal_payment",
+      "from_account": "free",
+      "to_account": "bank",
+      "amount": {
+        "state": "known",
+        "value": {
+          "numerator": 2,
+          "denominator": 1
+        },
+        "dimensions": {
+          "money": 1,
+          "area": 0,
+          "unit": 0,
+          "space": 0,
+          "time": 0
+        },
+        "unit_id": "SYNTHETIC-MONEY",
+        "currency": "SYNTHETIC-CURRENCY",
+        "measurement_role": "period_total",
+        "basis": "synthetic_project",
+        "period_ref": "P1",
+        "sources": [
+          {
+            "source_id": "SYNTHETIC-ONLY",
+            "locator": "fixture declaration",
+            "claim_kind": "synthetic_reference",
+            "verification_status": "synthetic_only"
+          }
+        ]
+      },
+      "calendar_ref": "CAL-1",
+      "period_ref": "P1",
+      "date_ref": "DATE-P1",
+      "restriction_rule_ref": null,
+      "related_debt_ref": "LOAN-1",
+      "sources": [
+        {
+          "source_id": "SYNTHETIC-ONLY",
+          "locator": "fixture declaration",
+          "claim_kind": "synthetic_reference",
+          "verification_status": "synthetic_only"
+        }
+      ]
+    },
+    {
+      "purpose": "design_or_synthetic_reference",
+      "authorization": "not_granted",
+      "context": {
+        "deal_id": "SYNTHETIC-LEDGER-NO-DEAL",
+        "scenario_id": "explicit-reference",
+        "run_id": "reference-1",
+        "input_revision": "v1",
+        "definition_set_revision": "v1"
+      },
+      "event_id": "A2",
+      "kind": "equity_contribution",
+      "from_account": "investor",
+      "to_account": "free",
+      "amount": {
+        "state": "known",
+        "value": {
+          "numerator": 5,
+          "denominator": 1
+        },
+        "dimensions": {
+          "money": 1,
+          "area": 0,
+          "unit": 0,
+          "space": 0,
+          "time": 0
+        },
+        "unit_id": "SYNTHETIC-MONEY",
+        "currency": "SYNTHETIC-CURRENCY",
+        "measurement_role": "period_total",
+        "basis": "synthetic_project",
+        "period_ref": "P2",
+        "sources": [
+          {
+            "source_id": "SYNTHETIC-ONLY",
+            "locator": "fixture declaration",
+            "claim_kind": "synthetic_reference",
+            "verification_status": "synthetic_only"
+          }
+        ]
+      },
+      "calendar_ref": "CAL-1",
+      "period_ref": "P2",
+      "date_ref": "DATE-P2",
+      "restriction_rule_ref": null,
+      "related_debt_ref": null,
+      "sources": [
+        {
+          "source_id": "SYNTHETIC-ONLY",
+          "locator": "fixture declaration",
+          "claim_kind": "synthetic_reference",
+          "verification_status": "synthetic_only"
+        }
+      ]
+    },
+    {
+      "purpose": "design_or_synthetic_reference",
+      "authorization": "not_granted",
+      "context": {
+        "deal_id": "SYNTHETIC-LEDGER-NO-DEAL",
+        "scenario_id": "explicit-reference",
+        "run_id": "reference-1",
+        "input_revision": "v1",
+        "definition_set_revision": "v1"
+      },
+      "event_id": "INCOME",
+      "kind": "operating_receipt",
+      "from_account": "tenant",
+      "to_account": "free",
+      "amount": {
+        "state": "known",
+        "value": {
+          "numerator": 4,
+          "denominator": 1
+        },
+        "dimensions": {
+          "money": 1,
+          "area": 0,
+          "unit": 0,
+          "space": 0,
+          "time": 0
+        },
+        "unit_id": "SYNTHETIC-MONEY",
+        "currency": "SYNTHETIC-CURRENCY",
+        "measurement_role": "period_total",
+        "basis": "synthetic_project",
+        "period_ref": "P2",
+        "sources": [
+          {
+            "source_id": "SYNTHETIC-ONLY",
+            "locator": "fixture declaration",
+            "claim_kind": "synthetic_reference",
+            "verification_status": "synthetic_only"
+          }
+        ]
+      },
+      "calendar_ref": "CAL-1",
+      "period_ref": "P2",
+      "date_ref": "DATE-P2",
+      "restriction_rule_ref": null,
+      "related_debt_ref": null,
+      "sources": [
+        {
+          "source_id": "SYNTHETIC-ONLY",
+          "locator": "fixture declaration",
+          "claim_kind": "synthetic_reference",
+          "verification_status": "synthetic_only"
+        }
+      ]
+    },
+    {
+      "purpose": "design_or_synthetic_reference",
+      "authorization": "not_granted",
+      "context": {
+        "deal_id": "SYNTHETIC-LEDGER-NO-DEAL",
+        "scenario_id": "explicit-reference",
+        "run_id": "reference-1",
+        "input_revision": "v1",
+        "definition_set_revision": "v1"
+      },
+      "event_id": "RELEASE",
+      "kind": "reserve_release",
+      "from_account": "restricted",
+      "to_account": "free",
+      "amount": {
+        "state": "known",
+        "value": {
+          "numerator": 1,
+          "denominator": 1
+        },
+        "dimensions": {
+          "money": 1,
+          "area": 0,
+          "unit": 0,
+          "space": 0,
+          "time": 0
+        },
+        "unit_id": "SYNTHETIC-MONEY",
+        "currency": "SYNTHETIC-CURRENCY",
+        "measurement_role": "period_total",
+        "basis": "synthetic_project",
+        "period_ref": "P2",
+        "sources": [
+          {
+            "source_id": "SYNTHETIC-ONLY",
+            "locator": "fixture declaration",
+            "claim_kind": "synthetic_reference",
+            "verification_status": "synthetic_only"
+          }
+        ]
+      },
+      "calendar_ref": "CAL-1",
+      "period_ref": "P2",
+      "date_ref": "DATE-P2",
+      "restriction_rule_ref": "SYNTHETIC-RELEASE",
+      "related_debt_ref": null,
+      "sources": [
+        {
+          "source_id": "SYNTHETIC-ONLY",
+          "locator": "fixture declaration",
+          "claim_kind": "synthetic_reference",
+          "verification_status": "synthetic_only"
+        }
+      ]
+    },
+    {
+      "purpose": "design_or_synthetic_reference",
+      "authorization": "not_granted",
+      "context": {
+        "deal_id": "SYNTHETIC-LEDGER-NO-DEAL",
+        "scenario_id": "explicit-reference",
+        "run_id": "reference-1",
+        "input_revision": "v1",
+        "definition_set_revision": "v1"
+      },
+      "event_id": "INTEREST",
+      "kind": "interest_payment",
+      "from_account": "free",
+      "to_account": "bank",
+      "amount": {
+        "state": "known",
+        "value": {
+          "numerator": 1,
+          "denominator": 1
+        },
+        "dimensions": {
+          "money": 1,
+          "area": 0,
+          "unit": 0,
+          "space": 0,
+          "time": 0
+        },
+        "unit_id": "SYNTHETIC-MONEY",
+        "currency": "SYNTHETIC-CURRENCY",
+        "measurement_role": "period_total",
+        "basis": "synthetic_project",
+        "period_ref": "P2",
+        "sources": [
+          {
+            "source_id": "SYNTHETIC-ONLY",
+            "locator": "fixture declaration",
+            "claim_kind": "synthetic_reference",
+            "verification_status": "synthetic_only"
+          }
+        ]
+      },
+      "calendar_ref": "CAL-1",
+      "period_ref": "P2",
+      "date_ref": "DATE-P2",
+      "restriction_rule_ref": null,
+      "related_debt_ref": "LOAN-1",
+      "sources": [
+        {
+          "source_id": "SYNTHETIC-ONLY",
+          "locator": "fixture declaration",
+          "claim_kind": "synthetic_reference",
+          "verification_status": "synthetic_only"
+        }
+      ]
+    },
+    {
+      "purpose": "design_or_synthetic_reference",
+      "authorization": "not_granted",
+      "context": {
+        "deal_id": "SYNTHETIC-LEDGER-NO-DEAL",
+        "scenario_id": "explicit-reference",
+        "run_id": "reference-1",
+        "input_revision": "v1",
+        "definition_set_revision": "v1"
+      },
+      "event_id": "DIST",
+      "kind": "equity_distribution",
+      "from_account": "free",
+      "to_account": "investor",
+      "amount": {
+        "state": "known",
+        "value": {
+          "numerator": 5,
+          "denominator": 1
+        },
+        "dimensions": {
+          "money": 1,
+          "area": 0,
+          "unit": 0,
+          "space": 0,
+          "time": 0
+        },
+        "unit_id": "SYNTHETIC-MONEY",
+        "currency": "SYNTHETIC-CURRENCY",
+        "measurement_role": "period_total",
+        "basis": "synthetic_project",
+        "period_ref": "P2",
+        "sources": [
+          {
+            "source_id": "SYNTHETIC-ONLY",
+            "locator": "fixture declaration",
+            "claim_kind": "synthetic_reference",
+            "verification_status": "synthetic_only"
+          }
+        ]
+      },
+      "calendar_ref": "CAL-1",
+      "period_ref": "P2",
+      "date_ref": "DATE-P2",
+      "restriction_rule_ref": null,
+      "related_debt_ref": null,
+      "sources": [
+        {
+          "source_id": "SYNTHETIC-ONLY",
+          "locator": "fixture declaration",
+          "claim_kind": "synthetic_reference",
+          "verification_status": "synthetic_only"
+        }
+      ]
+    },
+    {
+      "purpose": "design_or_synthetic_reference",
+      "authorization": "not_granted",
+      "context": {
+        "deal_id": "SYNTHETIC-LEDGER-NO-DEAL",
+        "scenario_id": "explicit-reference",
+        "run_id": "reference-1",
+        "input_revision": "v1",
+        "definition_set_revision": "v1"
+      },
+      "event_id": "PAY2",
+      "kind": "principal_payment",
+      "from_account": "free",
+      "to_account": "bank",
+      "amount": {
+        "state": "known",
+        "value": {
+          "numerator": 4,
+          "denominator": 1
+        },
+        "dimensions": {
+          "money": 1,
+          "area": 0,
+          "unit": 0,
+          "space": 0,
+          "time": 0
+        },
+        "unit_id": "SYNTHETIC-MONEY",
+        "currency": "SYNTHETIC-CURRENCY",
+        "measurement_role": "period_total",
+        "basis": "synthetic_project",
+        "period_ref": "P2",
+        "sources": [
+          {
+            "source_id": "SYNTHETIC-ONLY",
+            "locator": "fixture declaration",
+            "claim_kind": "synthetic_reference",
+            "verification_status": "synthetic_only"
+          }
+        ]
+      },
+      "calendar_ref": "CAL-1",
+      "period_ref": "P2",
+      "date_ref": "DATE-P2",
+      "restriction_rule_ref": null,
+      "related_debt_ref": "LOAN-1",
+      "sources": [
+        {
+          "source_id": "SYNTHETIC-ONLY",
+          "locator": "fixture declaration",
+          "claim_kind": "synthetic_reference",
+          "verification_status": "synthetic_only"
+        }
+      ]
+    }
+  ],
+  "debt_events": [
+    {
+      "purpose": "design_or_synthetic_reference",
+      "authorization": "not_granted",
+      "context": {
+        "deal_id": "SYNTHETIC-LEDGER-NO-DEAL",
+        "scenario_id": "explicit-reference",
+        "run_id": "reference-1",
+        "input_revision": "v1",
+        "definition_set_revision": "v1"
+      },
+      "event_id": "D1",
+      "debt_id": "LOAN-1",
+      "kind": "cash_draw",
+      "principal_effect": {
+        "state": "known",
+        "value": {
+          "numerator": 20,
+          "denominator": 1
+        },
+        "dimensions": {
+          "money": 1,
+          "area": 0,
+          "unit": 0,
+          "space": 0,
+          "time": 0
+        },
+        "unit_id": "SYNTHETIC-MONEY",
+        "currency": "SYNTHETIC-CURRENCY",
+        "measurement_role": "period_total",
+        "basis": "synthetic_project",
+        "period_ref": "P1",
+        "sources": [
+          {
+            "source_id": "SYNTHETIC-ONLY",
+            "locator": "fixture declaration",
+            "claim_kind": "synthetic_reference",
+            "verification_status": "synthetic_only"
+          }
+        ]
+      },
+      "cash_event_ref": "DRAW",
+      "calendar_ref": "CAL-1",
+      "period_ref": "P1",
+      "sources": [
+        {
+          "source_id": "SYNTHETIC-ONLY",
+          "locator": "fixture declaration",
+          "claim_kind": "synthetic_reference",
+          "verification_status": "synthetic_only"
+        }
+      ]
+    },
+    {
+      "purpose": "design_or_synthetic_reference",
+      "authorization": "not_granted",
+      "context": {
+        "deal_id": "SYNTHETIC-LEDGER-NO-DEAL",
+        "scenario_id": "explicit-reference",
+        "run_id": "reference-1",
+        "input_revision": "v1",
+        "definition_set_revision": "v1"
+      },
+      "event_id": "CAP",
+      "debt_id": "LOAN-1",
+      "kind": "capitalized_interest",
+      "principal_effect": {
+        "state": "known",
+        "value": {
+          "numerator": 2,
+          "denominator": 1
+        },
+        "dimensions": {
+          "money": 1,
+          "area": 0,
+          "unit": 0,
+          "space": 0,
+          "time": 0
+        },
+        "unit_id": "SYNTHETIC-MONEY",
+        "currency": "SYNTHETIC-CURRENCY",
+        "measurement_role": "period_total",
+        "basis": "synthetic_project",
+        "period_ref": "P1",
+        "sources": [
+          {
+            "source_id": "SYNTHETIC-ONLY",
+            "locator": "fixture declaration",
+            "claim_kind": "synthetic_reference",
+            "verification_status": "synthetic_only"
+          }
+        ]
+      },
+      "cash_event_ref": null,
+      "calendar_ref": "CAL-1",
+      "period_ref": "P1",
+      "sources": [
+        {
+          "source_id": "SYNTHETIC-ONLY",
+          "locator": "fixture declaration",
+          "claim_kind": "synthetic_reference",
+          "verification_status": "synthetic_only"
+        }
+      ]
+    },
+    {
+      "purpose": "design_or_synthetic_reference",
+      "authorization": "not_granted",
+      "context": {
+        "deal_id": "SYNTHETIC-LEDGER-NO-DEAL",
+        "scenario_id": "explicit-reference",
+        "run_id": "reference-1",
+        "input_revision": "v1",
+        "definition_set_revision": "v1"
+      },
+      "event_id": "D2",
+      "debt_id": "LOAN-1",
+      "kind": "principal_repayment",
+      "principal_effect": {
+        "state": "known",
+        "value": {
+          "numerator": -2,
+          "denominator": 1
+        },
+        "dimensions": {
+          "money": 1,
+          "area": 0,
+          "unit": 0,
+          "space": 0,
+          "time": 0
+        },
+        "unit_id": "SYNTHETIC-MONEY",
+        "currency": "SYNTHETIC-CURRENCY",
+        "measurement_role": "period_total",
+        "basis": "synthetic_project",
+        "period_ref": "P1",
+        "sources": [
+          {
+            "source_id": "SYNTHETIC-ONLY",
+            "locator": "fixture declaration",
+            "claim_kind": "synthetic_reference",
+            "verification_status": "synthetic_only"
+          }
+        ]
+      },
+      "cash_event_ref": "PAY1",
+      "calendar_ref": "CAL-1",
+      "period_ref": "P1",
+      "sources": [
+        {
+          "source_id": "SYNTHETIC-ONLY",
+          "locator": "fixture declaration",
+          "claim_kind": "synthetic_reference",
+          "verification_status": "synthetic_only"
+        }
+      ]
+    },
+    {
+      "purpose": "design_or_synthetic_reference",
+      "authorization": "not_granted",
+      "context": {
+        "deal_id": "SYNTHETIC-LEDGER-NO-DEAL",
+        "scenario_id": "explicit-reference",
+        "run_id": "reference-1",
+        "input_revision": "v1",
+        "definition_set_revision": "v1"
+      },
+      "event_id": "D3",
+      "debt_id": "LOAN-1",
+      "kind": "principal_repayment",
+      "principal_effect": {
+        "state": "known",
+        "value": {
+          "numerator": -4,
+          "denominator": 1
+        },
+        "dimensions": {
+          "money": 1,
+          "area": 0,
+          "unit": 0,
+          "space": 0,
+          "time": 0
+        },
+        "unit_id": "SYNTHETIC-MONEY",
+        "currency": "SYNTHETIC-CURRENCY",
+        "measurement_role": "period_total",
+        "basis": "synthetic_project",
+        "period_ref": "P2",
+        "sources": [
+          {
+            "source_id": "SYNTHETIC-ONLY",
+            "locator": "fixture declaration",
+            "claim_kind": "synthetic_reference",
+            "verification_status": "synthetic_only"
+          }
+        ]
+      },
+      "cash_event_ref": "PAY2",
+      "calendar_ref": "CAL-1",
+      "period_ref": "P2",
+      "sources": [
+        {
+          "source_id": "SYNTHETIC-ONLY",
+          "locator": "fixture declaration",
+          "claim_kind": "synthetic_reference",
+          "verification_status": "synthetic_only"
+        }
+      ]
+    }
+  ],
+  "closing_cash_claims": [
+    {
+      "account_id": "free",
+      "amount": {
+        "state": "known",
+        "value": {
+          "numerator": 0,
+          "denominator": 1
+        },
+        "dimensions": {
+          "money": 1,
+          "area": 0,
+          "unit": 0,
+          "space": 0,
+          "time": 0
+        },
+        "unit_id": "SYNTHETIC-MONEY",
+        "currency": "SYNTHETIC-CURRENCY",
+        "measurement_role": "stock",
+        "basis": "synthetic_project",
+        "period_ref": "CLOSING:P2",
+        "sources": [
+          {
+            "source_id": "SYNTHETIC-ONLY",
+            "locator": "fixture declaration",
+            "claim_kind": "synthetic_reference",
+            "verification_status": "synthetic_only"
+          }
+        ]
+      }
+    },
+    {
+      "account_id": "restricted",
+      "amount": {
+        "state": "known",
+        "value": {
+          "numerator": 2,
+          "denominator": 1
+        },
+        "dimensions": {
+          "money": 1,
+          "area": 0,
+          "unit": 0,
+          "space": 0,
+          "time": 0
+        },
+        "unit_id": "SYNTHETIC-MONEY",
+        "currency": "SYNTHETIC-CURRENCY",
+        "measurement_role": "stock",
+        "basis": "synthetic_project",
+        "period_ref": "CLOSING:P2",
+        "sources": [
+          {
+            "source_id": "SYNTHETIC-ONLY",
+            "locator": "fixture declaration",
+            "claim_kind": "synthetic_reference",
+            "verification_status": "synthetic_only"
+          }
+        ]
+      }
+    }
+  ],
+  "closing_debt_claims": [
+    {
+      "debt_id": "LOAN-1",
+      "amount": {
+        "state": "known",
+        "value": {
+          "numerator": 16,
+          "denominator": 1
+        },
+        "dimensions": {
+          "money": 1,
+          "area": 0,
+          "unit": 0,
+          "space": 0,
+          "time": 0
+        },
+        "unit_id": "SYNTHETIC-MONEY",
+        "currency": "SYNTHETIC-CURRENCY",
+        "measurement_role": "stock",
+        "basis": "synthetic_project",
+        "period_ref": "CLOSING:P2",
+        "sources": [
+          {
+            "source_id": "SYNTHETIC-ONLY",
+            "locator": "fixture declaration",
+            "claim_kind": "synthetic_reference",
+            "verification_status": "synthetic_only"
+          }
+        ]
+      }
+    }
+  ],
+  "obligations": [
+    {
+      "obligation_id": "INTEREST-DUE",
+      "debt_id": "LOAN-1",
+      "obligation_class": "interest",
+      "opening_due": {
+        "state": "known",
+        "value": {
+          "numerator": 0,
+          "denominator": 1
+        },
+        "dimensions": {
+          "money": 1,
+          "area": 0,
+          "unit": 0,
+          "space": 0,
+          "time": 0
+        },
+        "unit_id": "SYNTHETIC-MONEY",
+        "currency": "SYNTHETIC-CURRENCY",
+        "measurement_role": "stock",
+        "basis": "synthetic_project",
+        "period_ref": "OPENING:P1",
+        "sources": [
+          {
+            "source_id": "SYNTHETIC-ONLY",
+            "locator": "fixture declaration",
+            "claim_kind": "synthetic_reference",
+            "verification_status": "synthetic_only"
+          }
+        ]
+      }
+    },
+    {
+      "obligation_id": "FEE-DUE",
+      "debt_id": "LOAN-1",
+      "obligation_class": "fee",
+      "opening_due": {
+        "state": "known",
+        "value": {
+          "numerator": 0,
+          "denominator": 1
+        },
+        "dimensions": {
+          "money": 1,
+          "area": 0,
+          "unit": 0,
+          "space": 0,
+          "time": 0
+        },
+        "unit_id": "SYNTHETIC-MONEY",
+        "currency": "SYNTHETIC-CURRENCY",
+        "measurement_role": "stock",
+        "basis": "synthetic_project",
+        "period_ref": "OPENING:P1",
+        "sources": [
+          {
+            "source_id": "SYNTHETIC-ONLY",
+            "locator": "fixture declaration",
+            "claim_kind": "synthetic_reference",
+            "verification_status": "synthetic_only"
+          }
+        ]
+      }
+    }
+  ],
+  "obligation_events": [
+    {
+      "purpose": "design_or_synthetic_reference",
+      "authorization": "not_granted",
+      "context": {
+        "deal_id": "SYNTHETIC-LEDGER-NO-DEAL",
+        "scenario_id": "explicit-reference",
+        "run_id": "reference-1",
+        "input_revision": "v1",
+        "definition_set_revision": "v1"
+      },
+      "event_id": "I1",
+      "obligation_id": "INTEREST-DUE",
+      "kind": "accrual",
+      "due_effect": {
+        "state": "known",
+        "value": {
+          "numerator": 2,
+          "denominator": 1
+        },
+        "dimensions": {
+          "money": 1,
+          "area": 0,
+          "unit": 0,
+          "space": 0,
+          "time": 0
+        },
+        "unit_id": "SYNTHETIC-MONEY",
+        "currency": "SYNTHETIC-CURRENCY",
+        "measurement_role": "period_total",
+        "basis": "synthetic_project",
+        "period_ref": "P1",
+        "sources": [
+          {
+            "source_id": "SYNTHETIC-ONLY",
+            "locator": "fixture declaration",
+            "claim_kind": "synthetic_reference",
+            "verification_status": "synthetic_only"
+          }
+        ]
+      },
+      "cash_event_ref": null,
+      "debt_event_ref": null,
+      "calendar_ref": "CAL-1",
+      "period_ref": "P1",
+      "sources": [
+        {
+          "source_id": "SYNTHETIC-ONLY",
+          "locator": "fixture declaration",
+          "claim_kind": "synthetic_reference",
+          "verification_status": "synthetic_only"
+        }
+      ]
+    },
+    {
+      "purpose": "design_or_synthetic_reference",
+      "authorization": "not_granted",
+      "context": {
+        "deal_id": "SYNTHETIC-LEDGER-NO-DEAL",
+        "scenario_id": "explicit-reference",
+        "run_id": "reference-1",
+        "input_revision": "v1",
+        "definition_set_revision": "v1"
+      },
+      "event_id": "I2",
+      "obligation_id": "INTEREST-DUE",
+      "kind": "capitalization",
+      "due_effect": {
+        "state": "known",
+        "value": {
+          "numerator": -2,
+          "denominator": 1
+        },
+        "dimensions": {
+          "money": 1,
+          "area": 0,
+          "unit": 0,
+          "space": 0,
+          "time": 0
+        },
+        "unit_id": "SYNTHETIC-MONEY",
+        "currency": "SYNTHETIC-CURRENCY",
+        "measurement_role": "period_total",
+        "basis": "synthetic_project",
+        "period_ref": "P1",
+        "sources": [
+          {
+            "source_id": "SYNTHETIC-ONLY",
+            "locator": "fixture declaration",
+            "claim_kind": "synthetic_reference",
+            "verification_status": "synthetic_only"
+          }
+        ]
+      },
+      "cash_event_ref": null,
+      "debt_event_ref": "CAP",
+      "calendar_ref": "CAL-1",
+      "period_ref": "P1",
+      "sources": [
+        {
+          "source_id": "SYNTHETIC-ONLY",
+          "locator": "fixture declaration",
+          "claim_kind": "synthetic_reference",
+          "verification_status": "synthetic_only"
+        }
+      ]
+    },
+    {
+      "purpose": "design_or_synthetic_reference",
+      "authorization": "not_granted",
+      "context": {
+        "deal_id": "SYNTHETIC-LEDGER-NO-DEAL",
+        "scenario_id": "explicit-reference",
+        "run_id": "reference-1",
+        "input_revision": "v1",
+        "definition_set_revision": "v1"
+      },
+      "event_id": "I3",
+      "obligation_id": "INTEREST-DUE",
+      "kind": "accrual",
+      "due_effect": {
+        "state": "known",
+        "value": {
+          "numerator": 1,
+          "denominator": 1
+        },
+        "dimensions": {
+          "money": 1,
+          "area": 0,
+          "unit": 0,
+          "space": 0,
+          "time": 0
+        },
+        "unit_id": "SYNTHETIC-MONEY",
+        "currency": "SYNTHETIC-CURRENCY",
+        "measurement_role": "period_total",
+        "basis": "synthetic_project",
+        "period_ref": "P2",
+        "sources": [
+          {
+            "source_id": "SYNTHETIC-ONLY",
+            "locator": "fixture declaration",
+            "claim_kind": "synthetic_reference",
+            "verification_status": "synthetic_only"
+          }
+        ]
+      },
+      "cash_event_ref": null,
+      "debt_event_ref": null,
+      "calendar_ref": "CAL-1",
+      "period_ref": "P2",
+      "sources": [
+        {
+          "source_id": "SYNTHETIC-ONLY",
+          "locator": "fixture declaration",
+          "claim_kind": "synthetic_reference",
+          "verification_status": "synthetic_only"
+        }
+      ]
+    },
+    {
+      "purpose": "design_or_synthetic_reference",
+      "authorization": "not_granted",
+      "context": {
+        "deal_id": "SYNTHETIC-LEDGER-NO-DEAL",
+        "scenario_id": "explicit-reference",
+        "run_id": "reference-1",
+        "input_revision": "v1",
+        "definition_set_revision": "v1"
+      },
+      "event_id": "I4",
+      "obligation_id": "INTEREST-DUE",
+      "kind": "cash_settlement",
+      "due_effect": {
+        "state": "known",
+        "value": {
+          "numerator": -1,
+          "denominator": 1
+        },
+        "dimensions": {
+          "money": 1,
+          "area": 0,
+          "unit": 0,
+          "space": 0,
+          "time": 0
+        },
+        "unit_id": "SYNTHETIC-MONEY",
+        "currency": "SYNTHETIC-CURRENCY",
+        "measurement_role": "period_total",
+        "basis": "synthetic_project",
+        "period_ref": "P2",
+        "sources": [
+          {
+            "source_id": "SYNTHETIC-ONLY",
+            "locator": "fixture declaration",
+            "claim_kind": "synthetic_reference",
+            "verification_status": "synthetic_only"
+          }
+        ]
+      },
+      "cash_event_ref": "INTEREST",
+      "debt_event_ref": null,
+      "calendar_ref": "CAL-1",
+      "period_ref": "P2",
+      "sources": [
+        {
+          "source_id": "SYNTHETIC-ONLY",
+          "locator": "fixture declaration",
+          "claim_kind": "synthetic_reference",
+          "verification_status": "synthetic_only"
+        }
+      ]
+    },
+    {
+      "purpose": "design_or_synthetic_reference",
+      "authorization": "not_granted",
+      "context": {
+        "deal_id": "SYNTHETIC-LEDGER-NO-DEAL",
+        "scenario_id": "explicit-reference",
+        "run_id": "reference-1",
+        "input_revision": "v1",
+        "definition_set_revision": "v1"
+      },
+      "event_id": "F1",
+      "obligation_id": "FEE-DUE",
+      "kind": "accrual",
+      "due_effect": {
+        "state": "known",
+        "value": {
+          "numerator": 1,
+          "denominator": 1
+        },
+        "dimensions": {
+          "money": 1,
+          "area": 0,
+          "unit": 0,
+          "space": 0,
+          "time": 0
+        },
+        "unit_id": "SYNTHETIC-MONEY",
+        "currency": "SYNTHETIC-CURRENCY",
+        "measurement_role": "period_total",
+        "basis": "synthetic_project",
+        "period_ref": "P2",
+        "sources": [
+          {
+            "source_id": "SYNTHETIC-ONLY",
+            "locator": "fixture declaration",
+            "claim_kind": "synthetic_reference",
+            "verification_status": "synthetic_only"
+          }
+        ]
+      },
+      "cash_event_ref": null,
+      "debt_event_ref": null,
+      "calendar_ref": "CAL-1",
+      "period_ref": "P2",
+      "sources": [
+        {
+          "source_id": "SYNTHETIC-ONLY",
+          "locator": "fixture declaration",
+          "claim_kind": "synthetic_reference",
+          "verification_status": "synthetic_only"
+        }
+      ]
+    }
+  ],
+  "closing_due_claims": [
+    {
+      "obligation_id": "INTEREST-DUE",
+      "amount": {
+        "state": "known",
+        "value": {
+          "numerator": 0,
+          "denominator": 1
+        },
+        "dimensions": {
+          "money": 1,
+          "area": 0,
+          "unit": 0,
+          "space": 0,
+          "time": 0
+        },
+        "unit_id": "SYNTHETIC-MONEY",
+        "currency": "SYNTHETIC-CURRENCY",
+        "measurement_role": "stock",
+        "basis": "synthetic_project",
+        "period_ref": "CLOSING:P2",
+        "sources": [
+          {
+            "source_id": "SYNTHETIC-ONLY",
+            "locator": "fixture declaration",
+            "claim_kind": "synthetic_reference",
+            "verification_status": "synthetic_only"
+          }
+        ]
+      }
+    },
+    {
+      "obligation_id": "FEE-DUE",
+      "amount": {
+        "state": "known",
+        "value": {
+          "numerator": 1,
+          "denominator": 1
+        },
+        "dimensions": {
+          "money": 1,
+          "area": 0,
+          "unit": 0,
+          "space": 0,
+          "time": 0
+        },
+        "unit_id": "SYNTHETIC-MONEY",
+        "currency": "SYNTHETIC-CURRENCY",
+        "measurement_role": "stock",
+        "basis": "synthetic_project",
+        "period_ref": "CLOSING:P2",
+        "sources": [
+          {
+            "source_id": "SYNTHETIC-ONLY",
+            "locator": "fixture declaration",
+            "claim_kind": "synthetic_reference",
+            "verification_status": "synthetic_only"
+          }
+        ]
+      }
+    }
+  ]
+}

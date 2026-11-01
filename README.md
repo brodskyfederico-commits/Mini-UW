@@ -37,3 +37,5 @@ Current professional review: [R02 PDF, 29 pages](docs/review/MiniUW_Estructura_p
 Post-R02 independent work: [revision/scenario integrity](docs/revision-scenario-integrity.md) and [feedback intake protocol](docs/feedback-intake-protocol.md). The [blank feedback template](docs/professional-feedback-template.csv) records no review responses; R02 remains unchanged.
 
 Continued independent structure: [module interface protocol](docs/module-interface-protocol.md), [record contracts](docs/record-contracts.md), [execution design](docs/execution-structure-guide.md), [draft schemas](schemas/README.md), and [intentionally empty project template](templates/project-draft-empty.json). Structural checks do not close financial/professional gates.
+
+Calendar/accounting structure: [calendar and cash/debt/accrual ledger contracts](docs/calendar-ledger-contracts.md), with an explicitly synthetic fixture and retained balance discrepancies. No bank timing/interest policies are selected.

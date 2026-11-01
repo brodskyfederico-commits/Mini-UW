@@ -1,5 +1,5 @@
 {
-  "scope": "supplied sources, candidate model/interface structure and limited references; not complete financial model, production release or full product/VPS recovery",
+  "scope": "supplied sources, candidate model/interfaces and limited synthetic references; not production, financial certification or complete recovery",
   "files": [
     {
       "path": ".gitignore",
@@ -13,13 +13,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 4511,
-      "sha256": "1c55960e348d04262a02f34d69ca5f842d01d770b2a7749bcc3bad9f9d9e3f29"
+      "bytes": 4749,
+      "sha256": "89b04005a978b62ccfaf856bbcc445ef2c3a1a5a8959ff4b4a4486cd0f043106"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 10978,
-      "sha256": "2cb0b9a9725e6f992bdd6300e7ab385c3255e3285234393f9ec0009a1c3acd7d"
+      "bytes": 11589,
+      "sha256": "9b9f0cf09405a9012604d334f83ef2a6abc5423ed06e656b5db2a492f28eabc3"
     },
     {
       "path": "docs/acceptance-case-contracts.json",
@@ -32,19 +32,24 @@
       "sha256": "c5d57e5581d628f1fd0eea5bda8eba8e4e545cfd433fa65967496e4dd9a7f12a"
     },
     {
+      "path": "docs/calendar-ledger-contracts.md",
+      "bytes": 6664,
+      "sha256": "acdabeed7343a074bcc9eec58c6b8021165ad7d3ef7a736d50b3c8bfc587a6a8"
+    },
+    {
       "path": "docs/coverage-guide.md",
       "bytes": 6707,
       "sha256": "d5773349012fef9b461bc8b3cf6043543e479b625c411d719581506e70bb71f1"
     },
     {
       "path": "docs/coverage-matrix.csv",
-      "bytes": 335167,
-      "sha256": "2c90aa9023431a36d3d9733d60503d6a0f00a939d8a300536bf57b358fe52b34"
+      "bytes": 336851,
+      "sha256": "7784547a3cc74695776133a192820cd3ac978ab440a92a0d3c4ce93a430b42b7"
     },
     {
       "path": "docs/coverage-matrix.json",
-      "bytes": 519654,
-      "sha256": "1b622f537de752bfcaab6c71c4b4331b2160f3bb5d7a3ac85b97a8ff20c1e3c0"
+      "bytes": 521334,
+      "sha256": "7d48e0abe328e55a8705c4db65c347bd1072f386d5ef6eb0b291edc922a42d25"
     },
     {
       "path": "docs/current-direction.txt",
@@ -163,13 +168,13 @@
     },
     {
       "path": "docs/package-consistency-validation.json",
-      "bytes": 635,
-      "sha256": "2590975a3071dabdbad4d6b9ad84ba2613ba03e5aa6953faaf9f67acaa7ae06d"
+      "bytes": 713,
+      "sha256": "9657e054f86201d4f6fe956dcda6ddbbbc82f585ee1da2ed96b8e3fcc2a3d24f"
     },
     {
       "path": "docs/package-readiness.json",
-      "bytes": 4363,
-      "sha256": "a205b6cf5fd1d82b626b01a64246f319d90e864d81f4676b544f3738ea9d8d1f"
+      "bytes": 4744,
+      "sha256": "97fd5516535bf09b2db02358323e6e13fec278d8740c67f99ae4f7d12aa4a0e4"
     },
     {
       "path": "docs/professional-feedback-register.json",
@@ -242,9 +247,19 @@
       "sha256": "a55c787b386d9bac7d19f50669282fff55fe448090c9c84df8f8202a78f8935e"
     },
     {
+      "path": "references/calendar-ledger-validation.json",
+      "bytes": 3062,
+      "sha256": "e0616d079578af1746f3469561f644453c51073e1b383e32c4d21dbc5834ce05"
+    },
+    {
       "path": "references/dependency-graph-reference.json",
       "bytes": 1781,
       "sha256": "22d877bf8aeeed2b1275c09080e5efbdd36b2eecaf96cf3f1cab1e805fdf136f"
+    },
+    {
+      "path": "references/fixtures/calendar-ledger-synthetic.json",
+      "bytes": 40166,
+      "sha256": "b14f1fe004b144cb38819de9e766216735363c1eef59dc36defeed43275883dd"
     },
     {
       "path": "references/integrated-bridge-validation.json",
@@ -295,6 +310,11 @@
       "path": "references/revision-integrity-validation.json",
       "bytes": 1508,
       "sha256": "5b49fbc6a5b7e623e96e7121211919aaebf33cc154cc65500de80d08610f9aa8"
+    },
+    {
+      "path": "references/validate_calendar_ledger.py",
+      "bytes": 23939,
+      "sha256": "009aa55d55910634ef59b6ad3eadbb97023f8087c1d29d0d1afb5a1b08326ab1"
     },
     {
       "path": "references/validate_integrated_bridge.py",
@@ -393,13 +413,18 @@
     },
     {
       "path": "schemas/README.md",
-      "bytes": 1071,
-      "sha256": "52737a28d3ee8bd7fd2ebfe16dc7325693524e24602a5e24604fca4989e6ea36"
+      "bytes": 1329,
+      "sha256": "a43acb055a7f3146d1d068e1f91d5437ab945bb50b3bbc4104bae28752d21e7d"
+    },
+    {
+      "path": "schemas/calendar.schema.json",
+      "bytes": 1627,
+      "sha256": "9774597a7fea442396561f5e2777545baef131df7559a61ee07aa65f5e243a9b"
     },
     {
       "path": "schemas/cash-event.schema.json",
-      "bytes": 2616,
-      "sha256": "0b61b20c79942a05b6b93f29ae2ec01667f3f1f0f0c47885762a0ea4b3f5d601"
+      "bytes": 2647,
+      "sha256": "08523a6325d48fe2417dbf5e7cdc66bb3fdbb5bcc1dab06b1ad96d42ae7fccb0"
     },
     {
       "path": "schemas/common.schema.json",
@@ -422,6 +447,11 @@
       "sha256": "976c33d013eb6aad4f53d5e0ea9cd407de2f5e8c7345d5fcb2bfb6ddb07a5701"
     },
     {
+      "path": "schemas/event-ledger.schema.json",
+      "bytes": 5221,
+      "sha256": "e67595cb184dd770581086310f66f91a3dfb48286e116dea7d854d0ca98871b8"
+    },
+    {
       "path": "schemas/execution-snapshot.schema.json",
       "bytes": 3166,
       "sha256": "86001ffa44b8527515520cebcf5b4f6ed52646c510bac4c939a89fbb6d4dff1d"
@@ -430,6 +460,11 @@
       "path": "schemas/interface-index.json",
       "bytes": 14610,
       "sha256": "19e61936521f898e98f2a61f49853385398becc70e231938ca61034b4e684f88"
+    },
+    {
+      "path": "schemas/obligation-event.schema.json",
+      "bytes": 2686,
+      "sha256": "978d82fa6cbe2073cf6853cbc738ca8c564deff63198e10fab8485f30aeb473f"
     },
     {
       "path": "schemas/scenario.schema.json",

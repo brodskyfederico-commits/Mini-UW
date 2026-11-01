@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:miniuw:candidate:calendar:0.1",
+  "title": "calendar candidate reference structure",
+  "type": "object",
+  "properties": {
+    "purpose": {
+      "const": "design_or_synthetic_reference"
+    },
+    "authorization": {
+      "const": "not_granted"
+    },
+    "calendar_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "context": {
+      "$ref": "urn:miniuw:candidate:common:0.1#/$defs/context"
+    },
+    "boundary_convention": {
+      "enum": [
+        "left_closed_right_open",
+        "left_open_right_closed"
+      ]
+    },
+    "continuous_coverage": {
+      "type": "boolean"
+    },
+    "periods": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "period_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "start_date": {
+            "type": "string",
+            "format": "date"
+          },
+          "end_date": {
+            "type": "string",
+            "format": "date"
+          }
+        },
+        "required": [
+          "period_id",
+          "start_date",
+          "end_date"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "urn:miniuw:candidate:common:0.1#/$defs/source"
+      }
+    }
+  },
+  "required": [
+    "purpose",
+    "authorization",
+    "calendar_id",
+    "context",
+    "boundary_convention",
+    "continuous_coverage",
+    "periods",
+    "sources"
+  ],
+  "additionalProperties": false
+}
