@@ -17,3 +17,5 @@ Continued Mini-UW model: [M2 operations/NOI contracts](docs/model-operations-con
 New review: [budget and schedule](docs/model-budget-schedule.md), [Lorena input/decision contract](docs/decision-input-contract.md), [module closure gates](docs/module-closure.md).
 
 Construction finance: [M5 debt/interest/equity contracts](docs/model-construction-finance.md), with bounded isolated algebraic evidence.
+
+Professional review: [Spanish structure PDF, R01, 26 pages](docs/review/MiniUW_Estructura_para_Revision_Profesional.pdf). Conceptual model review with sources/open decisions; no implementation code or real-deal evaluation.

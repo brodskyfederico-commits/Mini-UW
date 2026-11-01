@@ -30,3 +30,7 @@ Added 12 proposed M3/M4 contracts, explicit cost inclusion/draw-timing boundarie
 ## Construction financing model — 1 November 2026
 
 Added ten M5 contracts covering eligible cost, commitment/draw/principal, interest/fee conventions, required versus available equity, capitalized interest, lease-up cash, TDC circularity, temporal feasibility and payoff. Kept all bank terms and expert policies unresolved where unsupported. Added exact-rational reduced financing reference with explicit domain/degenerate cases; not production, global convergence, restored historical code or independent audit. Coverage now 344; all modules remain open. No actual deal or production executed.
+
+## Professional review PDF — 1 November 2026
+
+User requested the complete non-code structure to send to a professional. Produced a 26-page Spanish internal review PDF covering nine modules, all 55 Input Sheet fields, ten metrics, scenarios/decision, Q1–Q20, nine parameters, GC controls, acceptance descriptions, sources and honest state. Distinguished M2–M5 detailed contracts from preliminary M6–M9. All pages rendered; text-bound checks and contact-sheet/detail inspection completed; corrected header contrast. This is a review document, not the one-page deliverable per deal, model approval or production activation. No document sent to third parties.
