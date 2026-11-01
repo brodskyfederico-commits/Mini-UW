@@ -1,0 +1,22 @@
+# Credentials and local runtime state
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.ssh/
+.aws/
+.codex/
+credentials*
+secrets/
+# Local execution, environment and live deal records
+work/
+.venv/
+__pycache__/
+*.py[cod]
+node_modules/
+cache/
+runs/
+live-deals/
+*.sqlite*
+*.db

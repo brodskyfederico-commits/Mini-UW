@@ -1,0 +1,144 @@
+
+=== PAGE 1 ===
+Mini-UW automatizado: resumen para
+revisión
+Oct 29, 2026  ·  @wherever
+Qué es y qué necesitamos de ti
+El Mini-UW es un filtro automatizado que decide, en una sola página, si un deal de nueva
+construcción de alquiler en el sur de Florida merece un full UW. Tú revisas cada página, y
+solo un PASS que tú apruebes pasa al full UW, que también usará IA.
+El sistema ya está diseñado, pero no puede correr deals reales hasta que tomes 14
+decisiones que ninguna fuente resuelve. La prueba con 1101 N Federal se detuvo justo ahí,
+que es lo que debe hacer. Te pedimos:
+1. Elegir una opción en las preguntas 1 a 14 (bloquean) y, si quieres, en las 15 a 20 (no
+bloquean).
+2. Fijar los parámetros técnicos de la lista al final.
+3. Validar el flujo y las reglas de este resumen.
+El detalle completo está en el manual v2 adjunto.
+Mini-UW automatizado: resumen para revisión
+Page 1 of 5
+
+=== PAGE 2 ===
+Flujo
+Cuatro controles pueden detener el proceso: el 1 si falta un dato, el 2 si el cálculo no cierra,
+el 3 deja el veredicto en HOLD si hay dudas materiales, y el 4 devuelve la página si una
+cifra no cuadra. Solo un PASS que tú apruebes pasa al full UW.
+Cómo protege el resultado
+La IA nunca calcula. Solo clasifica documentos, extrae datos con su cita, busca fuentes
+oficiales y redacta. Los números y el veredicto salen de código.
+Vacío no es cero. Cada celda tiene uno de cinco estados (OK, CERO EXPLÍCITO, FALTA,
+TEXTO INVÁLIDO, FUERA DE RANGO). Lo que falta sale "n/a", nunca 0.
+Todo número lleva etiqueta y fuente: INPUT, DOCUMENTED, OFFICIAL, HOUSE,
+CONDITIONAL o UNDERWRITING ASSUMPTION.
+Cero supuestos. No hay takeoff ni datos de mercado de terceros: rentas, cap rates y
+costos vienen del Input Sheet.
+flujo del Mini-UW · 10 pasos, 4 controles y tu revisión
+Mini-UW automatizado: resumen para revisión
+Page 2 of 5
+
+=== PAGE 3 ===
+Doble lectura. Cada dato de los planos lo leen dos bots por caminos distintos; si no
+coinciden, se pregunta mostrando ambos valores.
+Una sola pregunta. Todo lo que falta se pide en una sola tabla.
+Tus reglas son configuración. Umbrales, escenarios y tus decisiones viven en un
+archivo versionado; cambiarlas no requiere tocar el código.
+Auditor independiente. Un bot distinto al que armó la página verifica cada cifra antes
+de que llegue a ti.
+Antes de usarlo en deals reales, el sistema debe pasar 21 pruebas, incluido un caso dorado
+ficticio validado contra un modelo en Excel armado aparte, con la tolerancia que tú fijes.
+Tus decisiones pendientes
+Responde con el número y la letra (por ejemplo, 1B). Las opciones son alternativas, no
+recomendaciones. Mientras una pregunta de la 1 a la 14 no tenga respuesta, el sistema no
+corre los deals que dependen de ella.
+# Pregunta Opciones
+1 ¿Qué pasa cuando falta un dato? A) Detener siempre. B) Calcular y dar
+HOLD – MORE DD. C) Dos niveles, con
+lista de campos que detienen
+2 ¿Qué % de exención Live Local se usa? A) 75 % fijo. B) Según el tramo legal,
+verificando la exclusión de la jurisdicción
+y la fecha del permiso (ley 2026)
+3 ¿Qué umbrales debe cumplir el RLV? A) YoC 6.5 % y TIR 15 %. B) Todas las
+métricas PASS del Base
+4 Downside: ¿qué suma cada mes extra de
+obra?
+A) Solo intereses. B) Intereses + costo
+mensual. C) B + escalamiento de hard
+costs
+5 Downside: ¿el hard cost se reparte en
+más meses?
+A) Sí, curva más larga. B) No, meses al
+final
+6 ¿A dónde va el NOI del lease-up que
+sobra?
+A) Reduce el préstamo. B) Al equity. C)
+Reserva
+7 ¿Qué es el equity invertido hasta la
+estabilización?
+A) Hasta el TCO. B) A + déficits del lease-
+up. C) B + cash-in del refi
+Mini-UW automatizado: resumen para revisión
+Page 3 of 5
+
+=== PAGE 4 ===
+Las preguntas 15 a 20 no bloquean: mientras no las decidas, rige la opción A, que es lo que
+hoy dicen tus reglas de la casa v5.1.
+Parámetros a fijar: rangos válidos por campo, reglas del control cruzado con el GC y el
+banco, dominios oficiales aprobados, tolerancia de convergencia, convención de intereses
+(actual/360 o 30/360), momento de los flujos y mes del TCO, y formato de los porcentajes.
+# Pregunta Opciones
+8 ¿Cómo se mide Equity/TDC? A) (1 − LTC) × TDC. B) Todo el equity
+hasta la estabilización ÷ TDC
+9 Equity < 25 %: ¿cómo se verifica? A) Contra LTC de mercado, con HOLD. B)
+Contra term sheet, solo nota
+10 ¿Impuesto predial durante la obra? A) No. B) Sí, monto cargado
+11 ¿Renta por dormitorio o por unit type? A) Por dormitorio. B) Por unit type
+12 ¿La estrategia es un campo? A) No, siempre refinanciar y mantener.
+B) Sí, obligatorio
+13 ¿Se pregunta por "otra deuda"? A) No. B) Sí, con monto y tasa
+14 ¿Tolerancia del caso dorado? Un monto en $ y un %
+15 ¿El motor calcula doc stamps e intangible
+tax de Florida?
+A) No, siguen en los inputs. B) Sí, según
+el condado
+16 ¿El NOI de salida usa el impuesto
+reavaluado a la venta?
+A) No. B) Sí
+17 ¿Seguro en un campo o desglosado? A) Un campo. B) Desglosado. C) A en
+Mini-UW, B en full UW
+18 ¿Tasa de construcción fija o SOFR +
+spread?
+A) Fija. B) Flotante con shock. C) A en
+Mini-UW, B en full UW
+19 ¿Se incluyen assessments no ad
+valorem?
+A) No. B) Sí
+20 ¿Se siguen entregando el Excel y el
+Backup que pide la sección 0 de tus
+reglas v5.1?
+A) Sí: página en PDF, Excel (página y
+Backup) y resumen. B) Solo la página y el
+resumen; el Backup queda en
+results.json
+Mini-UW automatizado: resumen para revisión
+Page 4 of 5
+
+=== PAGE 5 ===
+Fichas de dominio: GC, banco y developer
+El sistema no necesita entender de construcción o finanzas como una persona: los
+expertos dejan su criterio en una ficha por tipo de documento (qué extraer, qué calcular,
+qué reglas de control aplicar y ejemplos reales anotados), y el sistema la aplica siempre
+igual.
+Presupuesto del GC (borrador listo): tipo de contrato, contingencias, allowances,
+exclusiones, cronograma y fórmula polinómica de ajuste, con 17 reglas de control. La
+revisa un estimador; tú fijas sus parámetros, empezando por qué incluye el valor del
+hard cost (C35).
+Term sheet del banco y pro forma del developer: pendientes.
+El Mini-UW usa solo los datos básicos de cada ficha; el análisis completo del contrato y del
+préstamo queda para el full UW.
+Siguiente paso
+Para que no decidas en abstracto, armamos primero el motor con un deal ficticio. Te
+mostrará cuánto cambia cada métrica según la opción de cada pregunta. Con tus
+respuestas cerramos el Input Sheet v5.2 y el prompt v5.2, corremos las 21 pruebas y te
+presentamos el caso dorado para tu aprobación antes del primer deal real.
+Mini-UW automatizado: resumen para revisión
+Page 5 of 5

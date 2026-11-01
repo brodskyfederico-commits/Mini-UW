@@ -1,0 +1,62 @@
+PAQUETE MINI-UW — VERSIÓN ÚNICA COHERENTE
+Underwriten · 30/10/2026 · Borrador para revisión de Lorena Muzo
+
+ORDEN DE LECTURA
+----------------
+01_Framework_Roadmap_MiniUW_3.1.pdf
+    Plan de trabajo del proyecto (fases, bots, decisiones, Definition of Done).
+    Reemplaza a "MiniUW_3.0_Framework_Roadmap.pdf".
+
+02_Manual_MiniUW_v2.2.pdf
+    Manual completo: Procedimiento, Bots y herramientas, Especificación técnica,
+    Ficha del presupuesto del GC y Anexos textuales A a F.
+    Reemplaza al "MiniUW_Manual_v2.1.pdf".
+
+03_Prompt_de_ejecucion_MiniUW_v2.2.pdf
+    El prompt que se pega para correr cada deal (configuración, pasos 4.1 a 4.10,
+    controles y formatos de respuesta). Reemplaza al "Prompt_MiniUW_v2.pdf".
+
+04_Resumen_para_revision_Lorena.pdf
+    Versión corta para que Lorena decida las preguntas 1 a 20.
+
+05_Vista_previa_one-pager_1101_N_Federal.pdf
+    Formato de la página, sin números calculados (veredicto: NOT CALCULATED).
+
+Fuentes de Lorena/   (originales, sin cambios)
+    Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt   (MINI-UW SCREEN — MASTER PROMPT v5.1)
+    Estandares_de_underwriting_Lorena.docx            (políticas 1 a 33)
+    Input_Sheet_vigente_original.xlsx                  (plantilla de 55 campos, vacía)
+
+NOMBRES ÚNICOS
+--------------
+Reglas de la casa v5.1 .... prompt maestro de Lorena; fuente de toda regla de underwriting.
+Estándares ................ políticas 1 a 33 de Lorena.
+Manual v2.2 ............... cómo funciona el sistema.
+Prompt de ejecución v2.2 .. cómo se corre un deal.
+Reglas de la casa v5.2 .... NO EXISTE TODAVÍA: se escribe con las decisiones de Lorena.
+
+REGLAS QUE RIGEN TODO
+---------------------
+- Una celda vacía nunca es 0. Cinco estados por celda; lo que depende de un faltante sale n/a.
+- Cero supuestos: sin takeoff, sin conteo de tags, sin datos de mercado de terceros.
+- Sin reglas provisorias: si un deal depende de una pregunta 1 a 14 sin decidir, se detiene.
+- Preguntas 15 a 20: mientras Lorena no decida, rige la opción A, que es lo que hoy
+  dicen sus reglas v5.1.
+- Lorena recibe la página de todo veredicto y aprueba solo los PASS para el full UW.
+
+DOCUMENTOS RETIRADOS (NO USAR)
+------------------------------
+- MINI-UW_MASTER_PROMPT_v5.2.md (29/10/2026): aplicaba reglas provisorias.
+- MiniUW_Flujo_Comandos_Resultados.pdf (29/10/2026): describía reglas provisorias.
+- "Mini-UW automatizado: pasos y procedimientos" y su PDF de 41 páginas: era la v1.
+- MiniUW_Manual_v2.1.pdf, Prompt_MiniUW_v2.pdf y MiniUW_3.0_Framework_Roadmap.pdf:
+  reemplazados por las versiones de este paquete.
+
+PENDIENTE
+---------
+- Decisiones de Lorena: preguntas 1 a 14 (bloquean) y 15 a 20 (no bloquean).
+- Parámetros técnicos PAR-01 a PAR-09.
+- El workbook "MiniUW_Input_Sheet_v5.2_DRAFT.xlsx" que cita el framework 3.0 no está
+  en este paquete; si existe, hay que conciliarlo con el Manual v2.2.
+- Deal 1101 N Federal: unidades por unit type y Building GSF (estimador), áreas de los
+  tipos A-4 y D (arquitecto), millage de los 5 folios e Input Sheet lleno.

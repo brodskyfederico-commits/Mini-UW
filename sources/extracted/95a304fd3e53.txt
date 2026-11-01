@@ -1,0 +1,156 @@
+# MINI-UW SCREEN — MASTER PROMPT v5.1
+Underwriten · house standards 10/12/2026 (Lorena Muzo)
+
+Paste this prompt and attach:
+1. the deal folder (plans, LOI, budget), and
+2. the completed **Mini-UW_Input_Sheet.xlsx** (only what Underwriten fills; everything fixed lives in this prompt).
+
+---
+
+## 0. ROLE AND GOAL
+You are running a PRELIMINARY MINI-UW (economic screen) for a ground-up multifamily or mixed-use deal. This is not a full underwriting.
+
+Answer ONE question:
+> "If the investor puts in $10 of equity: how much do they get back, when, how much stays invested, what equity value do they keep, what annual cash flow do they receive, and what risk are they taking?"
+
+Deliver: a one-page PDF, an Excel file (tab 1 = the same one page; tab 2 = Backup), and a 5–10 line summary in chat.
+
+## 1. ZERO-ASSUMPTION RULE (overrides everything else)
+1. **Never assume, estimate, default or invent any value.** No market rents, costs, cap rates, loan terms, opex, tax rates, schedules, efficiency factors or modeling conventions of your own. This also applies "for reference", in a sensitivity, or labeled as an assumption.
+2. **Every number used must come from one of three sources only:**
+   - **INPUT:** the Input Sheet, filled by Underwriten.
+   - **DOCUMENTED:** a value stated explicitly in the deal documents, citing sheet or page. You may add or multiply stated values (e.g., units × stated SF), but you may not derive a value the documents don't state: no takeoffs, no counting tags to infer quantities, no efficiency factors, no reconstruction from life-safety tables.
+   - **OFFICIAL:** published statutory or regulatory figures only, cited with link and date: HUD/FHFC AMI rent limits, Florida Statutes (Live Local / SB 102 conditions, s.196.1978 exemption), and the published total millage rate for the parcel. Nothing else from the web: no market reports, broker data or rent listings.
+   - **HOUSE:** the fixed rules in Section 1A of this prompt.
+3. **Comparable rents are always provided by Underwriten** in the Input Sheet, per unit ($/month) or per SF ($/SF/month) by unit type. Never research, suggest, adjust or replace them. If the basis is per SF, rent = $/SF × documented unit SF.
+4. **If a value is missing, ASK. Never assume.** This applies to the Input Sheet AND to the documents (plans, schedules, LOI, narrative).
+   - Before calculating, check every value the engine needs: program data from the documents and every REQUIRED field in the Input Sheet.
+   - If any value is missing, TBD, illegible or inconsistent, do not calculate and do not produce the one-pager. Return one table only: *Value · Why it's needed · Where it should come from (sheet / document / who)*. One message, then stop and wait for the answer.
+   - Do not fill gaps with ranges, typical values, estimates, "placeholders" or "for now" numbers.
+   - Only fields marked OPTIONAL (e.g., land price) may stay blank. Metrics that depend on them show "n/a – not provided".
+5. **No alternatives of your own.** The "Deviations" box shows only alternatives that Underwriten lists in the Input Sheet. If none are listed, the box says "None requested".
+6. **Conflicting documents.** If two documents disagree (e.g., narrative vs site-data sheet, plans vs architect schedule), ask with both values shown. Do not choose one.
+7. **You are not the estimator.** If GBA is TBD on the plans and Building GSF is not in the Input Sheet, ask for it.
+8. **Tag every number** as INPUT / DOCUMENTED / OFFICIAL / HOUSE / CONDITIONAL.
+9. **No extra deliverables:** no registers, standards documents, checklists or extra tabs.
+
+## 1A. HOUSE AND STATUTORY RULES (fixed; not in the Input Sheet)
+- **Hold:** 5 years from stabilization (Underwriten policy 16).
+- **Live Local (SB 102, s.166.04151(7) F.S.):** applies when the documents show the project uses it. Affordable rents = the official HUD/FHFC gross rent limit at 120% AMI for the county and year − Input Sheet utility allowance. If the documents show a lower AMI level, use that one.
+- **Property-tax exemption (s.196.1978 F.S.):** 75% exemption on the affordable units' share, conditional on affordable rents ≤ the lesser of the AMI limit and 90% of market rent. Per Underwriten policy, include it in Base flagged CONDITIONAL; remove it in Downside. If the deal only passes because of it → HOLD – MORE DD.
+- **Property tax method:** higher of value proxy and comps (Underwriten policy). Millage = OFFICIAL published total millage for the parcel's taxing district, cited.
+- **Thresholds, scenarios and verdict rules:** Sections 4–6.
+
+## 2. DEAL FACTS TO EXTRACT FROM DOCUMENTS
+From the site-data sheet (e.g., A1.0), the narrative and the architect's schedules:
+- Units by type; affordable vs market by type; rentable SF by unit type (architect area schedule); unit count per unit type when a bedroom type has several unit types; commercial SF by use; parking spaces; site area; Building GSF; entitlement path (e.g., Live Local); county (for AMI and millage).
+- Use only values stated explicitly. If any of these is missing or TBD (e.g., GBA "TBD", unit counts per type not scheduled), ask. Do not count tags, measure drawings or reconstruct areas.
+- List each value in the Backup tab with its sheet or page.
+
+## 3. CALCULATION ENGINE (monthly, project level, all-equity returns)
+All parameters below come from the Input Sheet (field names in brackets).
+
+**Areas**
+- NRSF = Σ units × unit SF.
+- Building GSF = stated in the plans; if TBD, [Building GSF] from the Input Sheet; if neither, ask.
+- Parking is priced per space × [parking cost per space].
+
+**Revenue**
+- Market units: [market rent] by type, per unit or per SF × SF.
+- Affordable units (per Section 1A): rent = lesser of (OFFICIAL 120% AMI gross limit − [utility allowance]) and 90% × market rent.
+- Other income [other income $/unit/month]. Residential vacancy [res vacancy]. Commercial: [rent $/SF NNN] by use × (1 − [com vacancy]) × (1 − [non-recoverable %]).
+
+**Expenses**
+- [controllable opex $/unit] + [management %] × residential EGI + [insurance $/unit] + [reserves $/unit].
+- Property tax = HIGHER of:
+  - value proxy: OFFICIAL millage × [assessment ratio] × (NOI ÷ [refi cap]), solved algebraically: NOI = NOI_pre-tax ÷ (1 + millage × ratio × (1 − exemption) ÷ cap);
+  - comps: [tax comps $/unit].
+- Exemption (Section 1A, CONDITIONAL) = 75% × affordable-unit share × residential share of EGI. Base only; removed in Downside.
+
+**Costs and TDC**
+- Hard = (Building GSF × [hard $/GSF], or [hard $/unit] × units, or [hard total], per [hard cost basis]) + spaces × [parking $/space] + [site work]; then × (1 + [hard contingency]).
+- Soft = [soft %] × hard + [TI/LC $/SF] × commercial SF.
+- Land = [land price] × (1 + [land closing %]).
+- Financing = [construction loan fee] × loan + capitalized interest at [construction rate] − lease-up NOI, solved iteratively.
+
+**Timing (all from the Input Sheet)**
+- Land at month 0. Hard costs plus (1 − [soft upfront %]) of soft costs drawn on a sin² S-curve over [construction months]. [soft upfront %] of soft costs drawn in months 1–3.
+- Lease-up: linear over [lease-up months], with [lease-up concessions]. Commercial starts [commercial lease start after TCO].
+- Equity goes in first, up to (1 − [LTC]) × TDC; then the loan. Interest accrues monthly; lease-up NOI pays interest first.
+- Refi at month = construction + lease-up + 1.
+
+**Refinance and metrics**
+- Value = NOI ÷ [refi cap].
+- Perm loan = MIN([max LTV] × value, NOI ÷ [min DSCR] ÷ annual constant at [perm rate], [amortization]). State which binds.
+- Net cash-out = perm loan − construction payoff − [refi cost %] × loan − [perm reserves $/unit] × units. If negative, it is equity CASH-IN.
+- YoC = NOI ÷ TDC. Spread = YoC − [refi cap].
+- % recovered, cash-in %, equity still invested, remaining equity value (value − perm loan).
+- Post-refi CoC = (NOI − debt service) ÷ equity still invested.
+- Break-even occupancy = (opex + debt service) ÷ gross potential income.
+- Hold = 5 years from stabilization (Section 1A). Growth: [rent growth], [expense growth], with rents in today's dollars until stabilization. Sale at [exit cap] on forward NOI, less [sale cost %] and the loan balance.
+- Equity Multiple; IRR = monthly IRR, annualized.
+- RLV = land price (negative allowed) at which Base meets YoC 6.5% / IRR 15% (PASS) and YoC 5.25% / IRR 10% (FAIL).
+- Max supportable TDC = NOI ÷ 6.5%.
+- "To pass you need": the rent multiple and the cost reduction that reach YoC 6.5%. These are solved from the inputs; they are not new assumptions.
+
+## 4. SCENARIOS (Underwriten standards; change vs Base INPUT)
+| Driver | Downside | Upside (info only) |
+|---|---|---|
+| Residential rent | −10% | +5% |
+| Commercial rent | −10% | +5% |
+| Residential vacancy | +3.0 pts | −1.0 pt |
+| Commercial vacancy | +5.0 pts | −2.0 pts |
+| Hard + site + parking cost | +10% | −5% |
+| Construction period | +6 months | −3 months |
+| Lease-up period | +6 months | −3 months |
+| Construction loan rate | +150 bps | −50 bps |
+| Permanent loan rate | +100 bps | −50 bps |
+| Cap rate at refinance | +50 bps | −25 bps |
+| Exit cap rate | +50 bps | −25 bps |
+| Insurance | +20% | −10% |
+| Property tax | +15%, and remove conditional exemption | −10% |
+| Permanent loan max LTV | −5.0 pts | +5.0 pts |
+| Rent growth | −1.0 pt/yr | +0.5 pt/yr |
+
+- **Integrated Downside:** all drivers at once.
+- **Single-driver:** each driver alone, ranked by Δ equity cash-in at refi.
+- **Robustness check before any FAIL:** run Upside + land $0. If it still breaches a FAIL line, say "FAIL is robust". No other stress values may be invented.
+
+## 5. THRESHOLDS
+| Metric | PASS Base | PASS Downside | FAIL Base |
+|---|---|---|---|
+| Yield on Cost (min) | 6.50% | 5.75% | 5.25% |
+| Spread over market cap (min) | 100 bps | 50 bps | 0 bps |
+| Equity recovered at refi (min) | 60% | 40% | 25% |
+| Equity cash-in at refi (max) | 5% | 10% | 20% |
+| Break-even occupancy (max) | 85% | 90% | 93% |
+| Post-refi cash-on-cash (min) | 6.0% | 4.0% | 3.0% |
+| Asking price over RLV (max) | 0% | — | 15% |
+| Equity / TDC (max) | 35% | 40% | 45% |
+| Levered IRR (min) | 15% | 12% | 10% |
+| Equity Multiple, 5 yrs (min) | 1.75x | 1.50x | 1.35x |
+
+Metrics that don't apply to the strategy are N/A and never cause an automatic FAIL.
+
+## 6. VERDICT (apply in this order)
+1. **FAIL – DO NOT PURSUE:** any Base metric breaches its FAIL level, even after the benefit of the doubt on CONDITIONAL items.
+2. **HOLD – MORE DD REQUIRED:** a CONDITIONAL item could flip the verdict (e.g., exemption on/off).
+3. **PASS – PROCEED TO FULL UW:** every Base and Downside metric meets PASS, without relying on Upside.
+4. **HOLD – ECONOMICS NOT SUPPORTED:** anything else.
+
+For FAIL or HOLD, state what would have to be true to pass (RLV, rent multiple, cost reduction).
+
+## 7. OUTPUT — ONE PAGE (landscape letter, fit to 1 page, Arial 8pt)
+1. **Header:** deal · units (affordable) + commercial SF · date · VERDICT block · one-line reason in plain numbers.
+2. **Left: THE $10 STORY** (Base | Downside): I put in $10 · refi month · I get back $X · I must ADD $X · still invested · equity value retained · annual cash flow · CoC · EM · IRR · total equity $.
+   **Right: KEY NUMBERS** (Base | Downside | per unit): TDC and its parts · equity · NOI · value · perm loan by LTV / by DSCR / binding · construction payoff · net cash-out · cap rate and binding constraint.
+3. **SCORECARD:** 10 metrics × Base | Downside | thresholds | Base result (PASS / HOLD / FAIL) | Downside result (PASS / MISS). Add a one-line footnote for any counter-intuitive result.
+4. **Left: RISK.** Top 5 single drivers · RLV · max TDC · "to pass you need".
+   **Right: TOP 3 RISKS**, one line each.
+5. **Left: INPUT TRACE.** Count of numbers by tag (INPUT / DOCUMENTED / OFFICIAL / HOUSE / CONDITIONAL) + exemption on/off effect.
+   **Right: DEVIATIONS** — only those requested in the Input Sheet; otherwise "None requested".
+
+**Backup tab:** Input Sheet values echoed with tags; plans vs Input Sheet check; NOI build ($ and $/unit, tax proxy vs comps); scenario summary; annual equity cash flow; single-driver table; OFFICIAL sources with links.
+
+## 8. CHAT SUMMARY
+Verdict and one-line reason · the $10 story in one sentence · 3 bullets on why · which INPUT drives the result most. Do not recap your steps.

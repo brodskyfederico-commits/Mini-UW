@@ -1,0 +1,56 @@
+id,sheet,cell,source_cell,label,unit_format,required_as_written,notes,raw_value,raw_source,proposed_consumers
+INPUT_C7,Inputs,C7,F7,Rent basis,PER UNIT / PER SF,REQUIRED,Per unit = $/month; per SF = $/SF/month,,,M2 revenue/operations
+INPUT_C8,Inputs,C8,F8,Market rent – Studio,$,REQUIRED,,,,M2 revenue/operations
+INPUT_C9,Inputs,C9,F9,Market rent – 1BR,$,REQUIRED,,,,M2 revenue/operations
+INPUT_C10,Inputs,C10,F10,Market rent – 2BR,$,REQUIRED,,,,M2 revenue/operations
+INPUT_C11,Inputs,C11,F11,Market rent – 3BR,$,REQUIRED,Add rows for other unit types,,,M2 revenue/operations
+INPUT_C12,Inputs,C12,F12,Rent comps reference,text,REQUIRED,Comp names / survey date,,,M2 revenue/operations
+INPUT_C13,Inputs,C13,F13,Other income,$/unit/month,REQUIRED,,,,M2 revenue/operations
+INPUT_C14,Inputs,C14,F14,Residential vacancy & credit loss,decimal,REQUIRED,,,,M2 revenue/operations
+INPUT_C15,Inputs,C15,F15,Lease-up concessions,decimal of rent,REQUIRED,,,,M2 revenue/operations
+INPUT_C16,Inputs,C16,F16,Retail rent NNN,$/SF/yr,IF APPLIES,Only if the plans show retail,,,M2 revenue/operations
+INPUT_C17,Inputs,C17,F17,Restaurant rent NNN,$/SF/yr,IF APPLIES,Only if the plans show restaurant,,,M2 revenue/operations
+INPUT_C18,Inputs,C18,F18,Office rent NNN,$/SF/yr,IF APPLIES,Only if the plans show office,,,M2 revenue/operations
+INPUT_C19,Inputs,C19,F19,Commercial vacancy,decimal,IF APPLIES,Only if commercial,,,M2 revenue/operations
+INPUT_C20,Inputs,C20,F20,Commercial non-recoverable,decimal,IF APPLIES,Only if commercial,,,M2 revenue/operations
+INPUT_C21,Inputs,C21,F21,Commercial lease start after TCO,months,IF APPLIES,Only if commercial,,,M2 revenue/operations
+INPUT_C25,Inputs,C25,F25,Utility allowance – Studio,$/month,IF APPLIES,,,,M2 revenue/operations
+INPUT_C26,Inputs,C26,F26,Utility allowance – 1BR,$/month,IF APPLIES,,,,M2 revenue/operations
+INPUT_C27,Inputs,C27,F27,Utility allowance – 2BR,$/month,IF APPLIES,,,,M2 revenue/operations
+INPUT_C28,Inputs,C28,F28,Utility allowance – 3BR,$/month,IF APPLIES,,,,M2 revenue/operations
+INPUT_C32,Inputs,C32,F32,Land / asking price,$,OPTIONAL,Blank = screen reports land value (RLV) only,,,M3 development budget; M5 capital/debt
+INPUT_C33,Inputs,C33,F33,Land closing costs,decimal,REQUIRED,,,,M3 development budget; M5 capital/debt
+INPUT_C34,Inputs,C34,F34,Hard cost basis,$/GSF / $/UNIT / TOTAL,REQUIRED,,,,M3 development budget; M5 capital/debt
+INPUT_C35,Inputs,C35,F35,Hard cost value,per basis,REQUIRED,"Vertical building, excl. parking & site",,,M3 development budget; M5 capital/debt
+INPUT_C36,Inputs,C36,F36,Building GSF,SF,IF APPLIES,Only if basis = $/GSF and the plans show GBA as TBD,,,M3 development budget; M5 capital/debt
+INPUT_C37,Inputs,C37,F37,Parking cost,$/space,REQUIRED,,,,M3 development budget; M5 capital/debt
+INPUT_C38,Inputs,C38,F38,Site work,$,REQUIRED,,,,M3 development budget; M5 capital/debt
+INPUT_C39,Inputs,C39,F39,Hard contingency,decimal,REQUIRED,,,,M3 development budget; M5 capital/debt
+INPUT_C40,Inputs,C40,F40,Soft costs (incl. dev fee),decimal of hard,REQUIRED,,,,M3 development budget; M5 capital/debt
+INPUT_C41,Inputs,C41,F41,TI / LC,$/commercial SF,IF APPLIES,Only if commercial,,,M3 development budget; M5 capital/debt
+INPUT_C42,Inputs,C42,F42,Soft costs drawn up front (months 1–3),decimal,REQUIRED,,,,M3 development budget; M5 capital/debt
+INPUT_C46,Inputs,C46,F46,Construction period,months,REQUIRED,,,,M4 monthly schedule
+INPUT_C47,Inputs,C47,F47,Lease-up period,months,REQUIRED,,,,M4 monthly schedule
+INPUT_C51,Inputs,C51,F51,LTC,decimal,REQUIRED,,,,M5 capital/debt
+INPUT_C52,Inputs,C52,F52,Interest rate,decimal,REQUIRED,,,,M5 capital/debt
+INPUT_C53,Inputs,C53,F53,Origination fee,decimal,REQUIRED,,,,M5 capital/debt
+INPUT_C57,Inputs,C57,F57,Controllable opex,$/unit/yr,REQUIRED,"Payroll, R&M, utilities, admin, marketing, contracts",,,M2 revenue/operations
+INPUT_C58,Inputs,C58,F58,Management fee,decimal of res. EGI,REQUIRED,,,,M2 revenue/operations
+INPUT_C59,Inputs,C59,F59,Insurance,$/unit/yr,REQUIRED,,,,M2 revenue/operations
+INPUT_C60,Inputs,C60,F60,Replacement reserves,$/unit/yr,REQUIRED,,,,M2 revenue/operations
+INPUT_C61,Inputs,C61,F61,Assessment ratio (assessed ÷ market value),decimal,REQUIRED,,,,M2 revenue/operations
+INPUT_C62,Inputs,C62,F62,Property tax comps,$/unit/yr,REQUIRED,,,,M2 revenue/operations
+INPUT_C66,Inputs,C66,F66,Market cap rate at refinance,decimal,REQUIRED,,,,M6 refinance; M7 hold/exit
+INPUT_C67,Inputs,C67,F67,Exit cap rate,decimal,REQUIRED,,,,M6 refinance; M7 hold/exit
+INPUT_C68,Inputs,C68,F68,Sale costs,decimal,REQUIRED,,,,M6 refinance; M7 hold/exit
+INPUT_C69,Inputs,C69,F69,Perm loan rate,decimal,REQUIRED,,,,M6 refinance; M7 hold/exit
+INPUT_C70,Inputs,C70,F70,Amortization,years,REQUIRED,,,,M6 refinance; M7 hold/exit
+INPUT_C71,Inputs,C71,F71,Max LTV,decimal,REQUIRED,,,,M6 refinance; M7 hold/exit
+INPUT_C72,Inputs,C72,F72,Min DSCR,x,REQUIRED,,,,M6 refinance; M7 hold/exit
+INPUT_C73,Inputs,C73,F73,Refi costs,decimal of loan,REQUIRED,,,,M6 refinance; M7 hold/exit
+INPUT_C74,Inputs,C74,F74,Perm reserves,$/unit,REQUIRED,,,,M6 refinance; M7 hold/exit
+INPUT_C75,Inputs,C75,F75,Rent growth,decimal / yr,REQUIRED,,,,M6 refinance; M7 hold/exit
+INPUT_C76,Inputs,C76,F76,Expense growth,decimal / yr,REQUIRED,,,,M6 refinance; M7 hold/exit
+INPUT_C80,Inputs,C80,F80,Alternative 1,input = value,OPTIONAL,"e.g., Market cap rate = …",,,M8 scenarios
+INPUT_C81,Inputs,C81,F81,Alternative 2,input = value,OPTIONAL,,,,M8 scenarios
+INPUT_C82,Inputs,C82,F82,Alternative 3,input = value,OPTIONAL,,,,M8 scenarios

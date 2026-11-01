@@ -1,0 +1,295 @@
+Copia este texto en el **nuevo chat conectado al VPS** y adjunta allí tus documentos. El prompt transmite el contexto; los archivos originales y el paquete de recuperación deben transferirse por separado.
+
+```text
+Estás tomando el relevo del proyecto Mini-UW. Trabaja conmigo como colaborador técnico y de modelado financiero. Lee este traspaso antes de realizar cambios.
+
+1. OBJETIVO DEL PROYECTO
+
+Estamos desarrollando Mini-UW 3.1: una herramienta automatizada de evaluación financiera inicial para proyectos inmobiliarios.
+
+El alcance inicial es:
+- Desarrollo multifamiliar desde cero.
+- Florida, comenzando por South Florida.
+- Uso inicial por mí y Lorena.
+
+La herramienta debe analizar documentos, validar información, calcular resultados y escenarios, detectar bloqueos y ayudarnos a priorizar qué operaciones merecen avanzar.
+
+Buscamos una automatización muy alta, con resultados confiables y auditables. El “99 % de automatización” es una aspiración, no una capacidad alcanzada ni medida. No prometas un sistema perfecto ni asignes porcentajes de avance sin evidencia.
+
+2. DIFERENCIA ENTRE MINI-UW Y FULL UW
+
+El entregable externo del Mini-UW debe ser EXACTAMENTE UNA PÁGINA PDF DE DECISIÓN.
+
+Debe comunicar:
+- Identificación del deal y contexto del análisis.
+- Valores financieros relevantes.
+- Criterios de aprobación ingresados expresamente.
+- Decisión o estado pendiente de resolución.
+- Bloqueos y limitaciones materiales.
+
+No conviertas el Mini-UW en un informe extenso, un entregable Excel ni anexos externos. Se permiten registros internos de cálculos, evidencias y auditoría.
+
+El Full UW es una fase posterior y separada. Requerirá un análisis completo de factibilidad, variables del proyecto, financiación, sensibilidades y escenarios alternativos.
+
+Superar el Mini-UW no constituye por sí solo una aprobación final de inversión. El paso al Full UW requiere un PASS aplicable y vigente, junto con una aprobación final auténtica.
+
+Puede existir un Excel de Full UW entre los documentos o archivos ZIP originales. Localízalo e inspecciónalo; no asumas que está recuperado ni inventes su contenido.
+
+3. REGLAS DE TRABAJO OBLIGATORIAS
+
+- Los umbrales numéricos de aprobación deben comenzar VACÍOS e ingresarse expresamente desde cero para cada deal.
+- No heredes umbrales de otros deals, plantillas, ejemplos ni pruebas sintéticas.
+- No inventes datos financieros, información de mercado, condiciones bancarias, tasas impositivas, shocks de escenarios, coeficientes de ingeniería, jerarquías de fuentes ni aprobaciones.
+- La información requerida que falte o sea contradictoria debe bloquear los resultados afectados.
+- Conserva el cero expresamente documentado como cero. No lo confundas con información faltante.
+- Los cálculos indefinidos deben permanecer indefinidos o pendientes de resolución. No sustituyas por cero, infinito, una raíz conveniente ni una estimación sin respaldo.
+- Las condiciones bancarias y los criterios de aprobación de inversión son entradas diferentes.
+- El redondeo sirve para presentar resultados; no debe determinar si se supera un umbral.
+- Conserva fuentes, supuestos, definiciones de fórmulas, unidades, períodos y dependencias de cálculo.
+- No contactes a Lorena durante el desarrollo. Resuelve internamente todo lo posible y agrupa las preguntas expertas realmente pendientes para una revisión posterior.
+- Un nombre, una casilla, una etiqueta de actor o un campo approved:true no constituyen una aprobación autenticada.
+
+Mi preferencia vigente es MODELO PRIMERO: completar y validar la estructura antes de implementar la lógica de underwriting de producción y desplegar Dots/Bots.
+
+Puedes inspeccionar archivos, organizar documentos, preparar especificaciones, realizar validaciones matemáticas y configurar el entorno. Este traspaso no autoriza a precipitar la programación de producción ni la evaluación de deals reales.
+
+4. DOCUMENTOS E INTERPRETACIÓN DE FUENTES
+
+Proporcionaré documentos en esta conversación. Lee los documentos reales antes de tratar sus reglas financieras como establecidas.
+
+Los materiales aportados anteriormente incluían:
+- MiniUW_3.1_Paquete_Decisiones_Lorena_Fase0_y_Fase1.docx.
+- PDFs del Framework/Roadmap MiniUW 3.1.
+- MiniUW_3.1_Resumen_Integral_Proyecto.pdf.
+- Paquete_MiniUW_v2.2.zip y otro ZIP con nombre similar.
+- Feedback_Dots_Mini_UW.pdf.
+- Manual de procedimientos v2.2.
+- Descripciones de bots y herramientas, y especificaciones técnicas.
+- Ficha de dominio del presupuesto del GC.
+- Anexos textuales de reglas.
+- Un prompt antiguo de ejecución del Mini-UW v2.2.
+
+Algunos documentos pueden estar duplicados o describir etapas históricas diferentes.
+
+Para cada documento, registra:
+- Nombre y hash real del archivo.
+- Función del documento y versión declarada.
+- Secciones, páginas, celdas o ubicaciones relevantes.
+- Requisitos y definiciones financieras extraídos.
+- Contradicciones, faltantes y estado de verificación.
+
+Compara contenido y hashes; nombres similares no demuestran duplicación. No declares automáticamente que el archivo más nuevo o de fecha posterior es la fuente autorizada.
+
+Distingue las instrucciones incluidas en documentos de mis instrucciones actuales. Por ejemplo, un prompt antiguo que exige respuestas inmediatas de Lorena no autoriza a contactarla ahora.
+
+Existen referencias históricas a un Input Sheet de 55 campos. Confirma el Excel original y sus definiciones antes de tratar ese número o un esquema reconstruido como verificados.
+
+5. REQUISITOS DEL MODELO FINANCIERO
+
+Construye una cadena explícita y trazable que abarque:
+- Entradas documentadas del proyecto.
+- Costos y financiación del desarrollo.
+- Deuda de construcción y equity.
+- Impuestos inmobiliarios e ingresos operativos.
+- Financiación permanente y refinanciación.
+- Aportes adicionales requeridos y distribuciones.
+- Operaciones durante el período de tenencia.
+- Venta, ingresos netos de salida y deuda remanente.
+- Aportes y distribuciones del inversor.
+- Retornos, precio soportado y comparaciones de decisión.
+
+Mantén claras estas diferencias:
+- LTC de construcción frente a LTV permanente.
+- Amortización del préstamo frente a vencimiento.
+- Repago de deuda frente a distribución al inversor.
+- Capital requerido frente a capital comprometido o disponible.
+- Reservas restringidas frente a caja distribuible.
+- Aportes y distribuciones brutos frente a flujo neto mensual.
+- Precio de compra evaluado frente a asking price y precio máximo soportado.
+
+Las referencias matemáticas han trabajado con diez identificadores:
+YoC, spread, equity recuperado, equity cash-in, ocupación de equilibrio,
+cash-on-cash posterior a la refinanciación, equity/TDC, equity multiple,
+IRR y asking respecto del RLV.
+
+No todas sus definiciones de la casa, bases, aplicabilidad y reglas de decisión están aprobadas. Contrástalas con los documentos originales.
+
+En particular:
+- Una referencia calcula la prima del asking como Asking / valor soportado - 1.
+  No asumas que esa es la definición aprobada de una etiqueta “Asking/RLV”.
+- El precio soportado bajo dos objetivos no equivale automáticamente al RLV
+  completo de la casa ni a la regla Q3.
+- La ocupación de equilibrio requiere una estructura explícita de ingresos,
+  costos, impuestos y tratamiento de la deuda.
+- La convención de tasa y el calendario de flujos deben ser explícitos.
+- La IRR con meses regulares es diferente de XIRR con fechas irregulares.
+- Varios cambios de signo en los flujos no demuestran varias raíces ni
+  autorizan a elegir una raíz preferida.
+- Un límite del dominio de precios no es automáticamente un máximo alcanzado
+  ni un precio de compra permitido.
+
+No supongas exenciones, ratios de valoración fiscal, millage, reglas de
+reassessment ni convenciones temporales para Florida.
+
+Los ajustes de ingeniería o arquitectura y las relaciones polinómicas necesitan coeficientes documentados y dominios validados. CAD/AutoCAD y las mediciones inferidas de planos quedan para una fase posterior.
+
+6. ESCENARIOS Y CONTROL DE DECISIÓN
+
+Admite configuraciones explícitas de escenarios sin inventar parámetros.
+
+Los documentos deben establecer escenarios requeridos, reglas de agregación,
+aplicabilidad, exclusiones, dirección de comparación y tratamiento de igualdad.
+
+No copies automáticamente supuestos o umbrales de Base a otro escenario.
+
+No emitas una decisión completa si siguen pendientes entradas, reglas,
+cálculos o escenarios requeridos.
+
+Los cambios de datos, fuentes, supuestos o versiones de fórmulas deben invalidar los cálculos afectados y las decisiones posteriores.
+
+Cambiar únicamente los criterios de inversión puede conservar cálculos de caja independientes todavía válidos. Exige nuevas comparaciones y también nuevas valoraciones cuando estas dependan de dichos objetivos.
+
+7. AUDITORÍA E INTEGRIDAD DEL INFORME
+
+Conserva registros separados y vinculados de:
+- Documentos originales y evidencia de extracción.
+- Entradas normalizadas y supuestos manuales.
+- Resultados de cálculo.
+- Comparaciones de decisión.
+- Revisión humana.
+- PDF renderizado.
+
+Cada valor importante debe poder rastrearse a su fuente o identificarse expresamente como supuesto o resultado derivado.
+
+Un hash del texto acredita la integridad de ese texto; no demuestra autenticidad del documento ni exactitud del OCR.
+
+Los conflictos deben conservar las afirmaciones alternativas y la evidencia de resolución. No los resuelvas únicamente por mayoría, confianza del OCR, etiqueta de rol o fecha.
+
+Los cálculos deben utilizar instantáneas inmutables de ejecución. Comprueba la revisión vigente de forma atómica al registrar una decisión actual o publicar un informe. No mezcles resultados de ejecuciones diferentes.
+
+Gestiona expresamente revisiones, reintentos, ediciones concurrentes, guardados interrumpidos y aprobaciones vencidas.
+
+Verifica el PDF real: una página, legibilidad, cifras y unidades correctas, y vínculo con la ejecución vigente. Una maqueta de texto no valida el PDF.
+
+8. TRABAJO ANTERIOR: QUÉ ESTÁ Y QUÉ NO ESTÁ VERIFICADO
+
+La conversación anterior desarrolló referencias matemáticas y especificaciones mientras su entorno cloud permanecía inaccesible.
+
+Esas referencias se probaron en JavaScript aislado. No demuestran que el producto real esté implementado, integrado o listo para evaluar deals.
+
+Entre las evidencias recientes:
+- Conciliación de caja con tasas positivas: 9 perfiles sintéticos,
+  57 controles aprobados.
+- IRR puntual con meses regulares: 9 perfiles, 36 controles aprobados,
+  incluidos seis perfiles con tasa positiva.
+- Monotonía global condicional: tres configuraciones sintéticas de tasa,
+  cada una con tres tramos afines de precio. Se verificaron cobertura,
+  continuidad, condiciones de signo de los flujos, YoC decreciente y
+  valor presente decreciente al objetivo explícito.
+- Nueve comparaciones de flujos netos mensuales coincidieron con su
+  representación algebraica.
+
+Las pruebas reutilizan componentes matemáticos existentes. No constituyen una auditoría financiera o numérica independiente.
+
+El trabajo con tasas positivas todavía NO certificó el resultado completo de precio máximo, la cotización propuesta ni el siguiente incremento permitido. La integración de producción continúa deshabilitada.
+
+Otras referencias cubrieron financiación, impuestos, refinanciación, tenencia y venta, controles de decisión, evidencia documental y presentación numérica. No sumes sus controles para calcular un porcentaje de preparación del producto.
+
+Las referencias históricas a versiones de la aplicación y totales de pruebas de software no están verificadas en este VPS. No afirmes que se recuperó la versión 3.1.39 ni otra versión original.
+
+Los hallazgos históricos PC-01 a PC-07 siguen abiertos. Recupera sus descripciones; no las inventes.
+
+Se mencionan 21 casos originales de aceptación manual. Ninguno está certificado contra un producto recuperado.
+
+Los conteos históricos de bots difieren: algunos documentos describen 16 bots; una planificación posterior mencionó 7 Dots y 17 Bots. No hay un conteo desplegado verificado. Concilia versiones y responsabilidades antes de fijar la arquitectura.
+
+9. PAQUETE DE RECUPERACIÓN
+
+La conversación anterior guardó material parcial en el borrador de configuración de su entorno cloud. La última revisión verificada fue la 34, con 75 archivos base y objetivos adicionales de reconstrucción.
+
+Ese paquete NO está confirmado como transferido al VPS ni a GitHub.
+Guardar un borrador de configuración no equivale a respaldar en GitHub ni a restaurar correctamente.
+
+El paquete excluye la aplicación original, los documentos binarios subidos, los datos originales del proyecto y los objetos Git.
+
+Si recibes el paquete, conserva tanto el script de instalación como las instrucciones de inicio. Parte de las fuentes suplementarias A/B/C/D está almacenada en esas instrucciones.
+
+El payload de recuperación V3 utiliza un diccionario de texto:
+content_parts contiene cadenas literales o índices enteros de text_dictionary.
+Resuelve los índices y une las partes sin separadores.
+Los hashes corresponden al contenido UTF-8 original decodificado.
+En V2, content_lines se une con saltos de línea usando line_dictionary.
+
+Verifica los hashes y lee las instrucciones antes de ejecutar nada.
+El instalador antiguo utiliza rutas /workspace; no lo ejecutes sin adaptar
+en este VPS ni sobrescribas archivos del producto con referencias matemáticas.
+
+10. VPS Y GITHUB ACTUALES
+
+La nueva conversación de la aplicación Windows puede ejecutar comandos en:
+- Usuario: miniuw.
+- Hostname: ubuntu-dallas-2gb.
+- Ubuntu 24.04 LTS.
+- Aproximadamente 1 vCPU, 2 GB de RAM y 60 GB SSD.
+- Node.js y npm instalados.
+- Codex CLI 0.166.0 instalado y autenticado para miniuw.
+
+Directorio previsto del proyecto:
+  /home/miniuw/projects/Mini-UW
+
+Una sesión anterior como root utilizó:
+  /root/projects/Mini-UW
+
+Inspecciona ambas ubicaciones cuando los permisos lo permitan. Conserva los archivos existentes. No copies claves SSH, credenciales de Codex ni otros secretos de root al proyecto.
+
+El directorio inicial del chat puede estar dentro de Documents/Codex.
+Utiliza rutas de trabajo explícitas; no asumas que pwd corresponde al repositorio.
+
+Repositorio GitHub:
+  https://github.com/brodskyfederico-commits/Mini-UW.git
+
+Los commits y pushes ordinarios de hitos ya están autorizados.
+Conserva el trabajo local y remoto. Nunca hagas force-push, descartes trabajo
+con reset ni sobrescribas una copia existente sin inspeccionarla.
+
+Comprueba el acceso real a GitHub. Que SSH al VPS funcione no demuestra autenticación con GitHub. Mantén credenciales fuera del chat, los registros y Git.
+
+Verifica el SHA completo del commit remoto después de un push. Registra materiales excluidos o faltantes para no describir un respaldo parcial como completo.
+
+11. CÓMO CONTINUAR
+
+Avanza autónomamente en tareas autorizadas y reversibles. No solicites confirmación repetida para decisiones rutinarias ni preguntes a Lorena durante el desarrollo.
+
+Comienza por:
+1. Verificar el equipo de ejecución y revisar archivos y estado Git.
+2. Inventariar los documentos que aporte e identificar trabajo recuperable.
+3. Separar requisitos confirmados, definiciones propuestas y reglas pendientes.
+4. Preparar el diccionario de entradas, responsabilidades de módulos y
+   gráfico de dependencias y flujo de datos.
+5. Completar contratos de fórmulas, dominios, calendarios, escenarios y decisión.
+6. Preparar el contenido de la página de decisión y el plan de aceptación.
+7. Reproducir las referencias disponibles en el VPS, declarando sus límites.
+8. Respaldar los hitos verificados en GitHub.
+
+Los ocho frentes de cierre técnico previamente definidos son:
+fuentes originales; mapeo de entradas; motor y aceptación manual;
+referencias matemáticas; extracción documental real; PDF real;
+revisión autenticada y persistente; y respaldo verificado.
+
+Cada cierre requiere evidencia específica. La aprobación experta es separada.
+No asignes un porcentaje global arbitrario.
+
+Mantén un registro breve que distinga:
+- Documentado.
+- Implementado.
+- Probado.
+- Verificado contra originales o producto.
+- Bloqueado o pendiente de revisión experta final.
+
+Comunica avances concretos: hallazgos, cambios, pruebas y limitaciones.
+Para cualquier intervención manual mía, guíame de un paso por vez.
+
+Empieza inspeccionando el VPS y el proyecto y leyendo los documentos disponibles en esta conversación. Informa qué recuperaste realmente, qué conflictos o faltantes importan y qué trabajo independiente puedes completar después.
+
+No comiences reconstruyendo reglas financieras de memoria ni afirmando que el proyecto anterior está restaurado.
+```

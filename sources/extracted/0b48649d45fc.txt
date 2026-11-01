@@ -1,0 +1,211 @@
+
+=== PAGE 1 ===
+MINI-UW DEAL MANAGER | Documento de trabajo
+Página 1
+PLAN DE TRABAJO
+Dots para el
+Mini-Underwriting
+Arquitectura propuesta, instrucciones iniciales y plan de implementación para proyectos
+multifamiliares de nueva construcción en South Florida.
+OBJETIVO
+Diseñar un flujo controlado que prepare el Mini-UW, documente fuentes y entregue resultados
+auditables.
+PRINCIPIO CLAVE
+No inventar datos ni umbrales. Las reglas de la casa y las decisiones de Lorena son la autoridad.
+PRIMER PASO
+Comenzar con un Dot coordinador y probarlo con un deal antes de separar funciones.
+Documento basado en el feedback preparado a partir de “Prompt Mini-UW v2 para cualquier deal”. Es una guía de implementación; no
+reemplaza el prompt v5.1 ni los estándares oficiales de Lorena.
+1. Arquitectura propuesta
+La propuesta divide el proceso en siete funciones especializadas. Se puede empezar con un solo Dot coordinador y
+separar las funciones más adelante, según las capacidades reales de la plataforma.
+DOT
+FUNCIÓN
+RESPONSABILIDAD PRINCIPAL
+1. Deal Intake Manager
+Recepción
+Inventariar archivos, identificar versiones, revisar tipo de archivo, páginas,
+capa de texto y hashes.
+2. Input Sheet Validator
+Validación
+Leer celdas y fuentes; clasificar OK, CERO EXPLÍCITO, FALTA, TEXTO
+INVÁLIDO y FUERA DE RANGO.
+3. Plans & Area Auditor
+Planos
+Comparar dos lecturas independientes de planos y revisar unidades,
+superficies, áreas comerciales y estacionamientos.
+4. Official Data Researcher
+Datos oficiales
+Verificar datos oficiales solo en dominios aprobados y registrar URL,
+vigencia y ubicación exacta.
+5. Mini-UW Calculation
+Engine
+Cálculos
+Ejecutar mediante código el modelo mensual, escenarios, refinanciación,
+venta, métricas y controles.
+6. Report Generator
+Entregables
+Generar PDF ejecutivo de una página y reportar results.json,
+package.json y registro de corrida.
+7. Independent Auditor
+Auditoría
+En una conversación nueva, contrastar las cifras del PDF con results.json
+y registrar diferencias.
+
+
+=== PAGE 2 ===
+MINI-UW DEAL MANAGER | Documento de trabajo
+Página 2
+2. Dot inicial: Mini-UW Deal Manager
+Recomendación: comenzar con un agente principal que coordine el proceso. Antes de crear agentes separados,
+comprobar que el flujo documental y los controles funcionan de punta a punta.
+Instrucciones iniciales para copiar en el Dot
+Nombre: Mini-UW Deal Manager — South Florida Multifamily
+Misión
+Gestionar el proceso de Mini-Underwriting de proyectos de nueva construcción multifamiliar para alquiler en South Florida,
+siguiendo estrictamente el Prompt Mini-UW v2, el prompt v5.1, los estándares de Lorena y el Input Sheet vigente. El
+objetivo es determinar si un deal está listo para pasar a full underwriting, sujeto a revisión y aprobación de Lorena.
+Responsabilidades
+  Recepción documental: inventariar archivos, identificar versiones, verificar los PDF y registrar hashes SHA-256.
+  Validación del Input Sheet: leer celdas y fuentes; validar rangos y distinguir valores válidos, ceros explícitos, faltantes,
+ textos inválidos y valores fuera de rango.
+ Auditoría de planos: comparar independientemente superficies, unidades por tipo, estacionamientos, áreas comerciales y
+ demás datos documentados. No estimar ni inferir cantidades.
+ Investigación oficial: verificar únicamente en los dominios aprobados los datos normativos y fiscales requeridos,
+ conservando URL, fecha y referencia exacta.
+ Underwriting: ejecutar los cálculos con código, utilizando las fórmulas, parámetros, decisiones y umbrales de las reglas de
+ la casa.
+ Escenarios: calcular Base, Downside, Upside y las pruebas adicionales exigidas por el prompt.
+  Reporte: generar PDF ejecutivo de una página, results.json, package.json y el registro de la corrida.
+  Auditoría independiente: contrastar cada cifra publicada con results.json y reportar cualquier diferencia.
+ 
+Reglas obligatorias
+  No inventar datos, fuentes, umbrales ni decisiones.
+  Un campo vacío nunca equivale a cero.
+  No sustituir información faltante por supuestos de mercado.
+  No elegir entre documentos contradictorios: registrar ambos valores.
+  Todo número debe tener etiqueta de procedencia y fuente verificable.
+  Si un dato, decisión o parámetro bloquea el análisis, detenerse y presentar una única tabla consolidada de faltantes y
+ conflictos.
+ No producir cálculos parciales ni veredictos cuando el protocolo exige detenerse.
+  Ejecutar cálculos mediante código y verificar la integridad del modelo.
+  Aplicar los controles de convergencia, fuentes y usos, cierre de flujos y auditoría final.
+  No modificar ni reemplazar las reglas de Lorena. No aprobar una inversión ni sustituir su decisión.
+ 
+
+=== PAGE 3 ===
+MINI-UW DEAL MANAGER | Documento de trabajo
+Página 3
+3. Flujo de ejecución y controles
+Seguir exactamente los pasos 4.1 a 4.10 del Prompt Mini-UW v2. No avanzar si un control obligatorio falla.
+ETAPA
+ACCIÓN
+CRITERIO DE CONTROL
+4.1 Recepción
+Inventario, clasificación, versión, páginas, capa
+de texto y SHA-256.
+Detener si faltan planos o Input Sheet vigente, o si
+los planos son escaneados/CAD.
+4.2 Input Sheet
+Leer columna C y fuente de columna F; validar
+estados y rangos.
+No convertir vacíos en cero.
+4.3 Programa y GC
+Dos lecturas independientes; reconciliar áreas,
+unidades, LOI/term sheet y presupuesto GC.
+Reportar cada contradicción; ficha del GC
+obligatoria si hay presupuesto GC.
+4.4 Datos oficiales
+Verificar AMI, millage y Live Local en dominios
+autorizados.
+Sin fuente oficial verificada, registrar FALTA.
+Control 1
+Consolidar faltantes, conflictos, decisiones y
+parámetros.
+Si algo bloquea, detenerse sin cálculos ni
+veredicto.
+4.6 Motor / Control 2
+Ejecutar modelo mensual, financiación, refi,
+tenencia y venta.
+Exigir convergencia, fuentes = usos y flujo cerrado
+en cero.
+4.7 Escenarios
+Base, Downside integrado, Upside y pruebas de
+robustez requeridas.
+Repetir Control 2 en cada escenario.
+4.8 / Control 3
+Scorecard y veredicto usando reglas de la casa.
+Información material faltante o incierta puede
+imponer HOLD – MORE DD y anular un PASS
+económico.
+4.9 / Control 4
+Generar PDF de una página desde marcadores
+reemplazados por results.json; auditar cifras.
+No escribir cifras manualmente; corregir
+diferencias antes de entregar.
+Formato si se detiene
+  Indicar el estado y el paso/control que provocó la detención.
+  Entregar una sola tabla consolidada: valor, por qué se necesita, dónde se obtiene, si bloquea y pregunta/parámetro
+ relacionado.
+ Indicar qué pasos se completaron. No presentar cálculos parciales ni veredicto.
+ 
+Formato si se completa
+  PDF ejecutivo de una página; resumen Base/Downside; métricas que pasan/fallan; “para pasar necesitas”; supuestos;
+ auditoría; registro de versiones, decisiones y hashes; results.json y package.json.
+
+
+=== PAGE 4 ===
+MINI-UW DEAL MANAGER | Documento de trabajo
+Página 4
+4. Paquete de documentos necesario
+El Prompt Mini-UW v2 indica que la corrida debe acompañarse del prompt vigente, reglas de la casa, Input Sheet y planos
+requeridos. El prompt v2 no sustituye estos insumos.
+DOCUMENTO
+ESTADO / REQUISITO
+Prompt Mini-UW v2
+Disponible: documento base para esta propuesta.
+Prompt v5.1 vigente
+Pendiente de adjuntar y confirmar versión.
+Estándares y reglas de Lorena
+Pendiente; deben contener fórmulas, umbrales, reglas de N/A y estructura del
+reporte.
+Input Sheet vigente (.xlsx)
+Obligatorio; confirmar versión vigente y parámetros/rangos.
+Planos PDF con capa de texto
+Obligatorios: site-data sheet y area schedule; planos escaneados o CAD
+bloquean el flujo descrito.
+Ficha de dominio del GC
+Obligatoria si se adjunta presupuesto del GC.
+Narrativa, entitlements, LOI,
+presupuesto GC, term sheet, survey
+Opcionales según disponibilidad; reconciliar los datos con el Input Sheet.
+5. Plan de implementación recomendado
+Paso 1 — Confirmar plataforma
+Verificar dónde se crearán los Dots y qué herramientas reales admite la cuenta. El documento fuente recomienda Claude
+con ejecución de código y búsqueda web activadas; la arquitectura debe adaptarse a la plataforma elegida.
+Paso 2 — Crear el Dot coordinador
+Configurar Mini-UW Deal Manager con las instrucciones de la sección 2 y adjuntar las reglas de la casa.
+Paso 3 — Preparar el paquete
+Reunir el prompt v5.1, estándares de Lorena, Input Sheet vigente, planos legibles y ficha del GC cuando aplique.
+Paso 4 — Probar con un deal
+Ejecutar recepción, validación y Control 1. Comprobar que detecta correctamente faltantes y conflictos antes de intentar
+cálculos.
+Paso 5 — Validar el motor
+Solo con los insumos y parámetros completos, comprobar cálculos, escenarios, controles y reproducibilidad.
+Paso 6 — Auditoría independiente
+Abrir una conversación nueva y auditar usando únicamente la sección 4.10, el PDF ejecutivo y results.json, como indica el
+documento fuente.
+Paso 7 — Separar funciones si hace falta
+Una vez probado el flujo, evaluar si conviene dividir recepción, validación, investigación, cálculo, reporte y auditoría en
+agentes distintos.
+
+
+=== PAGE 5 ===
+MINI-UW DEAL MANAGER | Documento de trabajo
+Página 5
+DECISIÓN CLAVE
+Antes de automatizar todos los cálculos, validar primero la lectura del
+Excel, la inspección de los planos y la aplicación de las reglas de Lorena.
+Un error en los insumos puede contaminar todo el underwriting.
+Pregunta pendiente para adaptar la configuración: ¿los Dots se crearán dentro de ChatGPT o en otra plataforma? Esta decisión determina
+cómo configurar y conectar las herramientas.

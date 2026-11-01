@@ -1,0 +1,143 @@
+
+=== PAGE 1 ===
+MINI-UW · DISEÑO FUNCIONAL D1 · BORRADOR
+Documento interno de diseño · sin datos de un deal · no aprueba políticas ni inversión · fuentes: Master v5.1 / paquete v2.2 1 / 4
+B1 · IDENTIDAD / CONCLUSIÓN / MOTIVO
+[Deal y dirección] · [unidades y asequibles] · [SF comercial] · [fecha de corrida]
+Conclusión: [resultado validado] · Motivo: [métrica, umbral y explicación] · Referencia: [corrida / versión]
+Maqueta sin cifras: no es la salida de un deal ni una aprobación. Si C1 bloquea, se entrega la tabla de faltantes.
+B2 · HISTORIA DE LOS $10
+Base Downside
+Mes del refi — —
+Recibo al refi por $10 — —
+Aporto adicional por $10 — —
+Sigue invertido por $10 — —
+Patrimonio retenido por $10 — —
+Flujo anual por $10 — —
+CoC posterior al refi — —
+Equity Multiple — —
+IRR anualizada — —
+Equity total real del proyecto — —
+Base de equity y momento: según definición aprobada.
+B3 · CIFRAS DEL PROYECTO
+Concepto Base Downside Por unidad
+TDC total — — —
+Terreno y cierre / hard / soft — — —
+Costo financiero — — —
+Equity requerido — — —
+NOI estabilizado — — —
+Valor estabilizado — — —
+Préstamo por LTV / por DSCR — — —
+Préstamo seleccionado / restricción — — —
+Payoff de construcción — — —
+Cash-out o cash-in neto / cap de refi — — —
+Unidades, períodos y denominadores explícitos; costos, flujos y saldos se distinguen.
+B4 · SCORECARD / DIEZ MÉTRICAS
+Métrica Base Downside PASS Base PASS Down FAIL Base Resultado / nota de N/A
+Yield on Cost — — — — — —
+Spread sobre cap — — — — — —
+Equity recuperado al refi — — — — — —
+Cash-in al refi — — — — — —
+Ocupación de equilibrio — — — — — —
+CoC posterior al refi — — — — — —
+Asking sobre RLV — — — — — —
+Equity / TDC — — — — — —
+IRR apalancada — — — — — —
+Equity Multiple — — — — — —
+B5 · SENSIBILIDADES / CONDICIONES PARA PASAR
+Top 5 drivers: [driver + Δ cash-in + orden]
+RLV PASS / FAIL: [valores y objetivo definido]
+TDC máximo / múltiplo de renta / reducción de costo: [condiciones]
+B6 · TRES RIESGOS PRINCIPALES
+[Riesgo respaldado + impacto + diligencia necesaria]
+[Riesgo respaldado + impacto + diligencia necesaria]
+[Riesgo respaldado + impacto + diligencia necesaria]
+B7 · TRAZABILIDAD / CONDICIONALES / DESVIACIONES
+Etiquetas: INPUT / DOCUMENTED / OFFICIAL / HOUSE / CONDITIONAL
+Conteos y derivación: [criterio pendiente de diseño]
+Exención on/off: [efecto y dependencia de la conclusión]
+Desviaciones: [solo las pedidas en el Input Sheet]
+Si no se solicitan: None requested.
+Requiere revisión de Lorena. No es un Full UW.
+El guion de esta maqueta es un lugar de diseño: no significa cero ni N/A. Las cifras finales deben provenir de resultados trazables.
+
+=== PAGE 2 ===
+MINI-UW · DISEÑO FUNCIONAL D1 · BORRADOR
+De la hoja hacia el modelo
+Cada salida debe tener definición, unidad, período, cálculo e insumos verificables.
+Documento interno de diseño · sin datos de un deal · no aprueba políticas ni inversión · fuentes: Master v5.1 / paquete v2.2 2 / 4
+Hoja
+Pregunta de inversión
+Resultado
+Qué debe resolverse
+Regla / fórmula
+Método y controles
+Variables
+Unidad y período
+Fuente
+Celda / documento
+RUTA DE DISEÑO: de la salida hacia sus dependencias. El flujo operativo se ejecuta desde las fuentes.
+ID Módulo Resultado principal Dependencias
+M1 Proyecto / programa Cantidades y evidencia Planos, Input Sheet, narrativa; citas y versiones.
+M2 Ingresos / operación EGI, impuesto y NOI M1, rentas/OPEX e información oficial aplicable.
+M3 Presupuesto Costos antes de financiamiento M1, presupuesto GC, inclusiones y contratos.
+M4 Cronograma mensual Usos y operación por período M2/M3, obra, lease-up, TCO y convenciones.
+M5 Capital / deuda TDC, equity, interés y payoff M4, condiciones bancarias; costo financiero iterativo.
+M6 Refinanciamiento Sizing, cash-out/in y remanente NOI, valor, deuda, costos, reservas y estrategia.
+M7 Tenencia / venta Flujos de equity, EM e IRR M2/M5/M6, crecimiento, deuda y salida.
+M8 Escenarios / soporte Drivers, RLV y condiciones M1–M7, deltas autorizados y alternativas solicitadas.
+M9 Conclusión / auditoría Scorecard, hoja y respaldo Resultados cerrados, reglas, condicionales y C1–C4.
+CICLOS QUE DEBEN CERRAR
+Costo financiero y TDC se resuelven juntos; deuda y caja por mes; cada escenario reejecuta los módulos y repite C2.
+Misma base para Mini y Full UW. El Full agrega detalle y validación; no mantiene otra verdad económica paralela.
+Las fichas completas están en 03_modulos_y_dependencias.md. Las convenciones sintéticas del prototipo no son requisitos aprobados.
+
+=== PAGE 3 ===
+MINI-UW · DISEÑO FUNCIONAL D1 · BORRADOR
+Scorecard y reglas de conclusión
+Niveles transcritos del Master v5.1 §5; no son una aprobación nueva ni datos de un deal.
+Documento interno de diseño · sin datos de un deal · no aprueba políticas ni inversión · fuentes: Master v5.1 / paquete v2.2 3 / 4
+Métrica Sentido PASS Base PASS Downside FAIL Base
+Yield on Cost Mínimo 6.50% 5.75% 5.25%
+Spread sobre cap Mínimo 100 bps 50 bps 0 bps
+Equity recuperado al refi Mínimo 60% 40% 25%
+Cash-in al refi Máximo 5% 10% 20%
+Ocupación de equilibrio Máximo 85% 90% 93%
+CoC posterior al refi Mínimo 6.0% 4.0% 3.0%
+Asking sobre RLV Máximo 0% — 15%
+Equity / TDC Máximo 35% 40% 45%
+IRR apalancada Mínimo 15% 12% 10%
+Equity Multiple (5 años) Mínimo 1.75x 1.50x 1.35x
+PASS: mínimo igual o mayor; máximo igual o menor. FAIL: Base estrictamente peor que su nivel FAIL.
+El guion de Asking/RLV en Downside indica que no hay umbral definido, no un nivel de cero.
+DESPUÉS DE SUPERAR LOS CONTROLES PREVIOS
+1. FAIL – DO NOT PURSUE: alguna métrica aplicable del Base cruza su línea FAIL.
+2. HOLD – MORE DD REQUIRED: un condicional puede cambiar la conclusión; política 17 anula un PASS con DD material pendiente.
+3. PASS – PROCEED TO FULL UW: todas las métricas aplicables de Base y Downside cumplen PASS, sin rescate por Upside.
+4. HOLD – ECONOMICS NOT SUPPORTED: los restantes casos conforme a las reglas.
+Falta de información no es N/A. C1 puede detener antes del motor; Q1, Q3, Q7/Q8 y tolerancias permanecen pendientes donde apliquen.
+Orden: Master §6; materialidad: estándares política 17. No se aplica el scorecard a un expediente bloqueado por este borrador.
+
+=== PAGE 4 ===
+MINI-UW · DISEÑO FUNCIONAL D1 · BORRADOR
+Qué debe cerrar el diseño antes de programar
+Un mismo núcleo de datos; distinta profundidad de análisis y verificación.
+Documento interno de diseño · sin datos de un deal · no aprueba políticas ni inversión · fuentes: Master v5.1 / paquete v2.2 4 / 4
+Área Mini-UW Detalle Full UW propuesto
+Programa Cantidades expresas y conciliadas Factibilidad del programa, permisos y revisiones expertas.
+Operación NOI y componentes del screening Detalle por componente, contratos, cumplimiento y evidencia.
+Costos Hard/soft, inclusiones y banderas Divisiones, contratos, allowances, pagos y contingencias.
+Cronograma Hitos y flujo mensual del filtro Actividades y dependencias contractuales de ejecución.
+Financiamiento Equity, deuda, refi y restricciones Covenants, reservas, extensiones, garantías y términos.
+Retornos Proyecto, refi/hold/venta aplicables Estructuras particulares y LP/JV solo documentadas.
+Escenarios Deltas y pruebas de las reglas vigentes Variaciones adicionales definidas y autorizadas.
+Conclusión Hoja preliminar y respaldo Análisis integral de factibilidad y decisión profesional.
+DEFINICIONES QUE NO SE COMPLETAN POR INTUICIÓN
+• Capital: denominadores y períodos de equity, cash-in, capital remanente y normalización por $10.
+• Terreno: asking opcional, Base sin precio aportado y dominio de RLV (negativo, cero, objetivo inviable o raíz no resuelta).
+• Presentación: bases por unidad, etiquetado de derivados, conteo de cifras y prioridad de los tres riesgos.
+• Aplicabilidad: refi ausente, equity remanente cero, N/A por estrategia/escenario y métricas sin umbral.
+Registro consolidado: Q1–Q20, PAR-01–09, controles de fuentes, conflictos y cuestiones de diseño. Sin respuestas nuevas.
+Archivos recibidos: Input Sheet original de 55 campos. No se encontró el modelo Excel Full UW; no se inventan sus destinos.
+Secuencia: hoja > diccionario completo > fichas financieras > escenarios/controles > casos en papel > revisión final > código.
+Los límites de investigación de mercado y supuestos siguen sujetos a las fuentes rectoras; ampliar a Full UW no los levanta por sí solo.

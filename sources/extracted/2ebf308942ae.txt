@@ -1,0 +1,3521 @@
+
+=== PAGE 1 ===
+Mini-UW automatizado: manual de
+procedimientos v2.2
+Oct 29, 2026  ·  @wherever
+Control del documento
+Esta es la versión 2 del manual, en borrador para la revisión de Lorena. Corrige las
+contradicciones de la v1, fija que Lorena es la underwriter y redefine el Mini-UW como un
+filtro de una página antes del full UW.
+Roles
+Campo Valor
+Versión 2.2 (borrador)
+Reemplaza a v2.1 del 29/10/2026
+Aprueba Lorena
+Fuentes de las reglas Reglas de la casa v5.1 (prompt maestro de Lorena),
+estándares de Lorena y decisiones de Underwriten
+del 29/10/2026
+Nombres de los documentos Reglas de la casa v5.1 y Estándares (de Lorena) ·
+Manual v2.2 (este documento) · Prompt de
+ejecución v2.2 · Resumen para revisión · Input
+Sheet en su versión vigente. Cuando este manual
+dice "prompt v5.1" se refiere a las reglas de la casa
+v5.1; "prompt v5.2" es la futura versión de esas
+reglas, con las decisiones de Lorena
+Rol Quién Qué hace
+Underwriter Lorena Define las reglas de la casa, responde las
+preguntas abiertas, revisa la página de cada deal y
+decide si pasa al full UW
+Procedimiento
+Page 1 of 33
+
+=== PAGE 2 ===
+Cambios respecto de la v1
+Rol Quién Qué hace
+Equipo del deal Underwriten Arma la carpeta del deal, llena el Input Sheet y
+responde la tabla de faltantes
+Equipo técnico Por definir Opera los bots, mantiene config.yaml  con las
+decisiones de Lorena y corre las pruebas en cada
+versión
+# Cambio Dónde
+1 El Mini-UW es un filtro: entrega una sola
+página, y solo un PASS aprobado por
+Lorena pasa al full UW. Se propone que el
+Excel y el Backup dejen de ser
+entregables de esta etapa; como cambia
+la sección 0 de las reglas de la casa v5.1,
+queda pendiente de Lorena (pregunta
+20)
+Alcance, pasos 9 y 10, bot 15
+2 Lorena es la underwriter. Su "firma" pasa
+a ser la aprobación para entrar al full UW
+Roles, cierre del procedimiento
+3 Se corrige qué pasos usan IA: también la
+clasificación del paso 1 y la relectura del
+auditor del paso 10
+Flujo, procedimiento
+4 Los cinco estados de celda son los
+mismos en todas las pestañas
+Reglas de diseño, bot 4, Input Sheet
+5 Una pregunta abierta sin decidir no tiene
+regla provisoria: el motor no corre los
+deals que dependen de ella. Se elimina la
+referencia a la sección 1B
+Especificación técnica
+6 Conteos unificados: 16 bots por deal más
+un bot de pruebas; las 17 resoluciones del
+prompt v5.2 son las 3 decisiones del
+29/10/2026 más las 14 respuestas de
+Lorena
+Bots, siguiente paso
+Procedimiento
+Page 2 of 33
+
+=== PAGE 3 ===
+Cambios de la v2.2
+# Cambio Dónde
+7 El control del paso 1 exige la versión
+vigente del Input Sheet, no la v5.2 que
+aún no existe
+Paso 1
+8 1101 N Federal queda como prueba de
+regresión de los lectores, separada del
+caso dorado
+Pruebas
+9 Las pruebas pasan de 9 a 21 y cubren los
+cuatro controles
+Pruebas
+10 Se agregan las preguntas de mejora 15 a
+19, que no bloquean, y se actualiza la
+pregunta 2 con la ley de 2026
+Preguntas abiertas
+11 Se agregan parámetros de convenciones
+de cálculo y el máximo de vueltas entre
+redactor y auditor
+Especificación técnica
+12 Se agregan glosario, anexos pendientes y
+fuentes
+Final del documento
+13 Se agregan las fichas de dominio (GC,
+banco, developer) y la primera ficha, la
+del presupuesto del GC, con la fórmula
+polinómica de ajuste
+Fichas de dominio, pestaña Ficha:
+presupuesto del GC
+# Cambio Dónde
+1 Los anexos A a F quedan transcritos
+textuales, sin resumir ni traducir
+Pestaña "Anexos textuales"
+2 Dejar el Excel y el Backup pasa a ser la
+pregunta 20. Mientras Lorena no la decida,
+rige la sección 0 de las reglas de la casa v5.1:
+PDF, Excel con la página y el Backup, y
+resumen
+Alcance, preguntas de mejora,
+Prompt de ejecución v2.2
+Procedimiento
+Page 3 of 33
+
+=== PAGE 4 ===
+Alcance
+El Mini-UW decide en una página si un deal merece un full UW. Si la página da PASS y
+Lorena lo aprueba, el deal pasa al full UW, que también usa IA y tendrá su propio manual.
+Qué cubre. Nueva construcción de alquiler residencial en el sur de Florida, con o sin
+comercial y con o sin unidades asequibles (Live Local).
+Qué entrega. Una sola página en PDF con los 7 bloques de la sección 7 de las reglas de la
+casa. Mientras Lorena no decida la pregunta 20, también se entregan el Excel (la página y
+el Backup) y el resumen, como pide la sección 0 de las reglas v5.1. Detrás de la página
+queda el archivo de resultados ( results.json ), que no se entrega: sirve para la auditoría
+y como punto de partida del full UW.
+Qué pasa según el veredicto.
+# Cambio Dónde
+3 Nombres únicos para cada documento y su
+versión
+Control del documento
+4 El paso 4.4 del Prompt de ejecución verifica
+la versión de la ley según la fecha del permiso
+de obra, igual que la pregunta 2
+Prompt de ejecución v2.2
+5 Se retira el borrador "MINI-
+UW_MASTER_PROMPT_v5.2.md" del
+29/10/2026, porque aplicaba reglas
+provisorias que la v2 eliminó
+Control del documento
+Veredicto Qué recibe Lorena Qué sigue
+PASS La página auditada Si Lorena lo aprueba, pasa al full UW
+con el paquete cerrado y los
+resultados
+FAIL La página, con "para pasar
+necesitas"
+No pasa. Se entrega sin aprobación
+HOLD – MORE
+DD
+La página, con la lista de lo que
+falta resolver
+No pasa hasta que se resuelva y se
+vuelva a correr
+Procedimiento
+Page 4 of 33
+
+=== PAGE 5 ===
+Los cuatro veredictos y su orden están en la sección 6 del prompt; el anexo A los
+transcribe.
+Qué queda para el full UW. Este filtro no reemplaza la diligencia completa. Quedan fuera
+del Mini-UW y pasan al full UW: Phase I ambiental, geotecnia, título, survey, carta de
+zoning y estado de los permisos, evaluación del sponsor y del GC (experiencia,
+patrimonio, bonding, tipo de contrato), desglose de seguros, términos completos de los
+préstamos (interest reserve, extensiones, garantías, rate cap) y debt yield.
+Qué recibe el full UW. El paquete cerrado ( package.json ), los resultados y el log de la
+corrida. El full UW no vuelve a extraer un dato si el documento no cambió; la huella de cada
+archivo lo indica.
+Flujo
+El Mini-UW corre en 10 pasos y cierra con la revisión de Lorena. Cuatro controles pueden
+detener el proceso antes de que un error llegue a la página.
+Procedimiento
+Page 5 of 33
+
+=== PAGE 6 ===
+Qué usa IA. Cinco pasos, y solo para leer o redactar: la clasificación de documentos del
+paso 1, la extracción del paso 3, la búsqueda oficial del paso 4, la redacción del paso 9 y la
+relectura del auditor en el paso 10. Todo número, escenario y veredicto sale de código.
+Flujo de información. Cuatro fuentes alimentan el motor, cada una con una sola etiqueta:
+el Input Sheet (INPUT), los documentos del deal (DOCUMENTED, con cita), las fuentes
+oficiales (OFFICIAL, con link) y las reglas de la casa (HOUSE, en config.yaml ). Se juntan
+en el paquete cerrado del paso 5, y el motor no lee nada fuera de ese paquete. El NOI
+estabilizado alimenta el refinanciamiento y la venta; el NOI del lease-up entra al flujo
+mensual.
+flujo del Mini-UW · 10 pasos, 4 controles y la revisión de Lorena
+Procedimiento
+Page 6 of 33
+
+=== PAGE 7 ===
+Mapa de datos
+Estos son los datos que necesita el motor del prompt v5.1, uno por fila. Las celdas son de la
+columna C del Input Sheet vigente. En "Si falta" se aplica la sección 1.4 del prompt: el
+sistema pregunta y se detiene, salvo en los campos OPTIONAL.
+Módulo Dato Etiqueta Dónde está Si falta
+Áreas Unidades por tipo DOCUMENTED Site-data
+sheet (p. ej.
+A1.0)
+Pregunta y
+se detiene
+Áreas SF rentable por
+unit type
+DOCUMENTED Area
+schedule del
+arquitecto
+Pregunta y
+se detiene
+Áreas Cantidad de
+unidades por unit
+type
+DOCUMENTED Schedules del
+arquitecto
+Pregunta y
+se detiene;
+no se
+cuentan
+tags
+Áreas SF comercial por
+uso
+DOCUMENTED Site-data
+sheet o
+narrativa
+Pregunta y
+se detiene,
+si los planos
+muestran
+comercial
+Áreas Estacionamientos DOCUMENTED Site-data
+sheet
+Pregunta y
+se detiene
+Áreas Superficie del sitio DOCUMENTED Site-data
+sheet
+Pregunta y
+se detiene
+Áreas Building GSF DOCUMENTED,
+o INPUT si los
+planos dicen
+TBD
+Planos; si no,
+C36
+Pregunta y
+se detiene;
+no se hace
+takeoff
+Ingresos Base de renta (por
+unidad o por SF)
+INPUT C7 Pregunta y
+se detiene
+Ingresos Renta de mercado
+por tipo
+INPUT C8 a C11 Pregunta y
+se detiene
+Procedimiento
+Page 7 of 33
+
+=== PAGE 8 ===
+Módulo Dato Etiqueta Dónde está Si falta
+Ingresos Referencia de
+comparables
+INPUT C12 Pregunta y
+se detiene
+Ingresos Other income INPUT C13 Pregunta y
+se detiene
+Ingresos Vacancia y
+pérdida de crédito
+residencial
+INPUT C14 Pregunta y
+se detiene
+Ingresos Concesiones del
+lease-up
+INPUT C15 Pregunta y
+se detiene
+Asequibles Unidades
+asequibles por
+tipo y nivel AMI
+DOCUMENTED Planos o
+narrativa
+Pregunta y
+se detiene
+Asequibles Uso de Live Local DOCUMENTED Narrativa o
+entitlements
+Pregunta y
+se detiene
+Asequibles Condado DOCUMENTED Site-data
+sheet
+Pregunta y
+se detiene
+Asequibles Renta bruta límite
+al 120 % AMI,
+condado y año
+OFFICIAL Tablas de
+FHFC o HUD,
+con link y
+fecha
+Se detiene;
+no hay dato
+sin fuente
+oficial
+Asequibles Utility allowance
+por tipo
+INPUT C25 a C28 Pregunta y
+se detiene,
+si hay
+asequibles
+Comercial Renta NNN de
+retail, restaurante
+y oficina
+INPUT C16 a C18 Pregunta y
+se detiene,
+si los planos
+muestran
+ese uso
+Comercial Vacancia
+comercial
+INPUT C19 Pregunta y
+se detiene,
+si hay
+comercial
+Procedimiento
+Page 8 of 33
+
+=== PAGE 9 ===
+Módulo Dato Etiqueta Dónde está Si falta
+Comercial Porcentaje no
+recuperable
+INPUT C20 Pregunta y
+se detiene,
+si hay
+comercial
+Comercial Inicio del arriendo
+después del TCO
+INPUT C21 Pregunta y
+se detiene,
+si hay
+comercial
+Gastos Opex controlable INPUT C57 Pregunta y
+se detiene
+Gastos Management fee INPUT C58 Pregunta y
+se detiene
+Gastos Seguro INPUT C59 Pregunta y
+se detiene
+Gastos Reservas de
+reemplazo
+INPUT C60 Pregunta y
+se detiene
+Gastos Assessment ratio INPUT C61 Pregunta y
+se detiene
+Gastos Comparables de
+impuesto predial
+INPUT C62 Pregunta y
+se detiene
+Gastos Millage total de la
+parcela
+OFFICIAL Tasador del
+condado, con
+link y fecha
+Se detiene;
+no hay dato
+sin fuente
+oficial
+Gastos Exención
+s.196.1978
+OFFICIAL y
+HOUSE,
+marcada
+CONDITIONAL
+Ley y sección
+1A del prompt
+Ver la
+pregunta
+abierta 2
+Procedimiento
+Page 9 of 33
+
+=== PAGE 10 ===
+Módulo Dato Etiqueta Dónde está Si falta
+Costos Precio del terreno INPUT C32 OPTIONAL:
+las métricas
+de terreno
+quedan en
+n/a y el RLV
+se reporta
+igual
+Costos Gastos de cierre
+del terreno
+INPUT C33 Pregunta y
+se detiene
+Costos Base del hard cost INPUT C34 Pregunta y
+se detiene
+Costos Valor del hard cost INPUT C35 Pregunta y
+se detiene
+Costos Costo por
+estacionamiento
+INPUT C37 Pregunta y
+se detiene
+Costos Site work INPUT C38 Pregunta y
+se detiene
+Costos Contingencia de
+hard cost
+INPUT C39 Pregunta y
+se detiene
+Costos Soft costs (incluye
+developer fee)
+INPUT C40 Pregunta y
+se detiene
+Costos TI/LC INPUT C41 Pregunta y
+se detiene,
+si hay
+comercial
+Costos Soft costs
+desembolsados en
+los meses 1 a 3
+INPUT C42 Pregunta y
+se detiene
+Cronograma Meses de obra INPUT C46 Pregunta y
+se detiene
+Cronograma Meses de lease-
+up
+INPUT C47 Pregunta y
+se detiene
+Procedimiento
+Page 10 of 33
+
+=== PAGE 11 ===
+Módulo Dato Etiqueta Dónde está Si falta
+Préstamo de
+construcción
+LTC INPUT C51 Pregunta y
+se detiene
+Préstamo de
+construcción
+Tasa de interés INPUT C52 Pregunta y
+se detiene
+Préstamo de
+construcción
+Comisión de
+originación
+INPUT C53 Pregunta y
+se detiene
+Refinanciamiento Cap rate de
+mercado al
+refinanciar
+INPUT C66 Pregunta y
+se detiene
+Refinanciamiento Tasa del préstamo
+permanente
+INPUT C69 Pregunta y
+se detiene
+Refinanciamiento Amortización INPUT C70 Pregunta y
+se detiene
+Refinanciamiento LTV máximo INPUT C71 Pregunta y
+se detiene
+Refinanciamiento DSCR mínimo INPUT C72 Pregunta y
+se detiene
+Refinanciamiento Costos del
+refinanciamiento
+INPUT C73 Pregunta y
+se detiene
+Refinanciamiento Reservas del
+préstamo
+permanente
+INPUT C74 Pregunta y
+se detiene
+Tenencia y venta Periodo de
+tenencia: 5 años
+HOUSE Sección 1A
+del prompt y
+política 16
+No aplica, es
+una regla
+fija
+Tenencia y venta Crecimiento de
+rentas
+INPUT C75 Pregunta y
+se detiene
+Tenencia y venta Crecimiento de
+gastos
+INPUT C76 Pregunta y
+se detiene
+Tenencia y venta Exit cap rate INPUT C67 Pregunta y
+se detiene
+Procedimiento
+Page 11 of 33
+
+=== PAGE 12 ===
+Qué produce cada módulo
+Cada módulo usa solo lo que recibe de los anteriores y del mapa de datos. Las fórmulas
+son las de la sección 3 del prompt v5.1.
+Módulo Dato Etiqueta Dónde está Si falta
+Tenencia y venta Costos de venta INPUT C68 Pregunta y
+se detiene
+Escenarios Deltas de
+Downside y
+Upside
+HOUSE Sección 4 del
+prompt y
+sección 3 de
+los
+estándares
+No aplica, es
+una regla
+fija
+Escenarios Alternativas a
+probar
+INPUT C80 a C82 OPTIONAL:
+la página
+dice "None
+requested"
+Veredicto Umbrales de las 10
+métricas
+HOUSE Sección 5 del
+prompt y
+sección 2 de
+los
+estándares
+No aplica, es
+una regla
+fija
+Veredicto Orden y reglas del
+veredicto
+HOUSE Sección 6 del
+prompt y
+política 17
+Ver la
+pregunta
+abierta 1
+Módulo Produce Va a
+Áreas NRSF = Σ  unidades × SF por
+unidad; Building GSF; SF
+comercial; estacionamientos
+Ingresos y Costos
+Procedimiento
+Page 12 of 33
+
+=== PAGE 13 ===
+Módulo Produce Va a
+Ingresos Renta de mercado por tipo. Renta
+asequible = la menor entre (límite
+al 120 % AMI − utility allowance) y
+90 % de la renta de mercado.
+Other income, vacancia, EGI
+residencial y EGI comercial
+Gastos y NOI
+Gastos Opex controlable, management
+fee sobre el EGI residencial,
+seguro, reservas. Impuesto = el
+mayor entre el proxy de valor
+(resuelto en forma algebraica) y
+los comparables. Exención
+CONDITIONAL
+NOI
+NOI NOI estabilizado Refinanciamiento, métricas y
+Terreno
+Costos Hard (con estacionamiento, site
+work y contingencia), soft (con
+TI/LC), terreno con gastos de
+cierre
+Flujo mensual
+Flujo mensual Terreno en el mes 0. Curva sin² de
+hard costs y soft costs, equity
+first hasta (1 − LTC) × TDC, luego
+desembolsos del préstamo.
+Intereses mensuales; el NOI del
+lease-up paga intereses primero.
+Costo financiero resuelto por
+iteración
+TDC final, saldo del préstamo de
+construcción, equity total
+Refinanciamiento En el mes de obra + lease-up + 1:
+valor = NOI ÷ cap de
+refinanciamiento. Préstamo
+permanente = el menor entre el
+de LTV y el de DSCR, indicando
+cuál limita. Cash-out neto o cash-
+in, % recuperado, equity que
+sigue invertido, valor del equity
+retenido, CoC post-refi
+Scorecard y "la historia de los $10"
+Procedimiento
+Page 13 of 33
+
+=== PAGE 14 ===
+Reglas de diseño
+Estas siete reglas valen para todos los pasos. Si un paso las rompe, el proceso se detiene.
+Módulo Produce Va a
+Tenencia y venta Flujo anual de 5 años con
+crecimiento de rentas y gastos
+(rentas en dólares de hoy hasta la
+estabilización). Venta al exit cap
+sobre el NOI del año siguiente,
+menos costos de venta y saldo del
+préstamo
+TIR (mensual, anualizada) y Equity
+Multiple
+Terreno RLV al nivel PASS y al nivel FAIL,
+TDC máximo soportable = NOI ÷
+6.5 %, y "para pasar necesitas": el
+múltiplo de renta y la reducción
+de costo que llevan el YoC a 6.5 %
+Scorecard y bloque de riesgo
+Escenarios Todo lo anterior para el Downside
+integrado, los 15 drivers uno por
+uno (ordenados por Δ  de cash-in
+al refinanciar), el Upside, la
+exención prendida y apagada, y la
+prueba de robustez (Upside con
+terreno en $0) antes de un FAIL
+Scorecard y bloque de riesgo
+Scorecard 10 métricas × Base y Downside
+contra los umbrales, con el
+resultado de cada una
+Veredicto
+Veredicto Uno de los cuatro veredictos y el
+motivo, en números
+Página
+Página Una página con los 7 bloques de la
+sección 7 del prompt
+Auditoría
+Auditoría Conteo de números por etiqueta,
+conciliación de cada cifra de la
+página con los resultados, y lista
+de diferencias
+Revisión de Lorena
+Procedimiento
+Page 14 of 33
+
+=== PAGE 15 ===
+1. La IA nunca calcula. Clasifica documentos, extrae datos con su cita, busca las fuentes
+oficiales y redacta textos. El pro forma, los escenarios, el scorecard y el veredicto los
+hace código.
+2. Vacío no es cero. Cada campo tiene uno de cinco estados: OK, CERO EXPLÍCITO,
+FALTA, TEXTO INVÁLIDO o FUERA DE RANGO. Ningún vacío se convierte en 0, y
+cualquier resultado que dependa de un dato que falta sale como "n/a".
+3. Todo número lleva etiqueta y fuente. Las etiquetas son INPUT, DOCUMENTED,
+OFFICIAL, HOUSE, CONDITIONAL y UNDERWRITING ASSUMPTION. Un número sin
+etiqueta bloquea la página.
+4. Las reglas de la casa son configuración, no texto. Umbrales, escenarios y políticas
+viven en config.yaml , versionado. Cambiarlos no requiere tocar el código.
+5. Una sola pregunta. Si falta algo, el sistema reúne todos los faltantes en una sola tabla y
+se detiene. Nunca pregunta de a uno.
+6. Determinismo. Los mismos inputs dan siempre el mismo resultado. Cada corrida
+guarda los inputs, la versión de las reglas y la versión del motor.
+7. Un auditor independiente. Un agente distinto al que armó la página verifica las
+etiquetas y que cada cifra coincida con los resultados.
+Procedimiento paso a paso
+Cada paso recibe la salida del anterior. Los controles 1 a 4 son los únicos puntos donde el
+proceso puede detenerse o quedar en HOLD.
+Procedimiento
+Page 15 of 33
+
+=== PAGE 16 ===
+Paso Responsable Qué hace Control Salida
+1. Recepción Código, e IA
+para clasificar
+Registra la carpeta
+del deal y el Input
+Sheet, lista los
+documentos,
+guarda una huella
+de cada archivo y
+clasifica cada
+documento por tipo
+Faltan los
+planos o el Input
+Sheet, o el sheet
+no está en la
+versión vigente
+aprobada (v5.1
+hasta que
+Lorena apruebe
+la v5.2) → se
+detiene. Planos
+sin capa de
+texto,
+escaneados o
+en CAD → lo
+informa y se
+detiene
+mientras no
+exista la
+herramienta de
+fase 2
+Inventario y
+mapa de
+documentos
+2. Lectura
+del Input
+Sheet
+Código Lee cada celda sin
+convertir vacíos, le
+asigna uno de los
+cinco estados y
+valida los rangos
+Se acumula para
+el control 1
+Inputs con su
+estado
+3. Extracción
+del
+programa
+IA, dos pasadas
+independientes
+Extrae unidades por
+tipo, SF por unidad,
+unidades
+asequibles, SF
+comercial,
+estacionamientos,
+superficie del sitio,
+GSF, entitlements y
+condado, cada dato
+con hoja o página
+Las dos pasadas
+tienen que
+coincidir. Si
+difieren, o si dos
+documentos se
+contradicen, se
+pregunta
+mostrando
+ambos valores
+Programa con
+sus citas
+Procedimiento
+Page 16 of 33
+
+=== PAGE 17 ===
+Paso Responsable Qué hace Control Salida
+4. Datos
+oficiales
+IA con
+búsqueda
+Busca la renta límite
+al 120 % AMI
+(FHFC) del condado
+y el año, la millage
+total de la parcela y
+la elegibilidad para
+Live Local
+Cada dato
+necesita link y
+fecha; sin
+fuente oficial
+queda como
+FALTA
+Datos
+OFFICIAL
+con link
+5. Control de
+completitud
+Código Reúne lo que falta
+de los pasos 2 a 4.
+Mientras Lorena no
+decida la pregunta
+1, todo faltante
+detiene la corrida
+(sección 1.4 del
+prompt)
+Control 1. Si
+falta algo,
+devuelve una
+sola tabla (Valor
+· Por qué se
+necesita ·
+Dónde se
+obtiene) y se
+detiene
+Paquete de
+inputs
+cerrado
+6. Motor de
+cálculo
+Código Corre el modelo
+mensual: áreas,
+ingresos, gastos,
+impuesto por la vía
+algebraica, costos,
+curva S, equity first,
+intereses iterativos,
+refinanciamiento,
+tenencia, venta, TIR,
+RLV y "para pasar
+necesitas"
+Control 2.
+Revisa que la
+iteración
+converja, que
+las fuentes
+igualen los usos
+y que el flujo
+cierre en cero.
+Si falla, se
+detiene
+Resultados
+del Base
+7.
+Escenarios
+Código Corre el Downside
+integrado, los 15
+drivers uno por uno
+(ordenados por Δ
+de cash-in), el
+Upside, la exención
+prendida y apagada,
+y la prueba de
+robustez antes de
+un FAIL
+El mismo
+control del paso
+6 en cada
+escenario
+Tabla de
+escenarios
+Procedimiento
+Page 17 of 33
+
+=== PAGE 18 ===
+Paso Responsable Qué hace Control Salida
+8. Scorecard
+y veredicto
+Código Compara las 10
+métricas con los
+umbrales, aplica la
+regla de borde y la
+regla de N/A, y
+emite el veredicto
+en el orden fijo
+Control 3. Si hay
+incertidumbre
+material que
+puede cambiar
+el resultado, el
+veredicto queda
+en HOLD –
+MORE DD
+Veredicto y
+motivo
+9. Página Plantilla, y la IA
+redacta
+Arma la página en
+PDF. La IA solo
+escribe textos con
+marcadores; el
+programa pone
+cada cifra desde el
+archivo de
+resultados
+Ninguno propio Borrador de
+la página
+10. Auditoría Programa + IA
+independiente
+Verifica que no haya
+números sin
+etiqueta, que cada
+cifra de la página
+coincida con los
+resultados y que no
+haya cifras escritas
+a mano
+Control 4. Si
+una sola cifra no
+cuadra, vuelve
+al paso 9.
+Después del
+máximo de
+vueltas que fije
+el equipo, pasa a
+una persona
+Página
+auditada
+Procedimiento
+Page 18 of 33
+
+=== PAGE 19 ===
+Reglas resueltas con fuente
+Estas reglas no llevan ningún supuesto: cada una sale de una decisión de Underwriten o
+del texto de los estándares.
+Paso Responsable Qué hace Control Salida
+Cierre.
+Revisión de
+Lorena
+Lorena Revisa la página. Si
+el veredicto es
+PASS y está de
+acuerdo, aprueba el
+paso al full UW. Los
+FAIL y HOLD se
+entregan sin
+aprobación. Si no
+está de acuerdo
+con el veredicto, lo
+registra con su
+justificación en el
+log de la corrida; el
+veredicto del
+sistema no se
+modifica
+— Deal
+aprobado
+para full UW,
+o cerrado
+Tema Regla Fuente
+GBA en "TBD" La IA no hace takeoff; el GSF se
+pide como INPUT
+Decisión de Underwriten
+(29/10/2026) y prompt,
+secciones 1.7 y 2
+Break-even (Opex + servicio de deuda) ÷
+ingreso efectivo
+Decisión de Underwriten
+(29/10/2026) y estándares,
+política 11
+Alcance de HOLD –
+MORE DD
+Información material faltante,
+sin resolver o muy incierta que
+pueda afectar costo, ingreso,
+financiamiento, valuación o
+retornos. Anula un PASS
+económico
+Estándares, política 17
+Procedimiento
+Page 19 of 33
+
+=== PAGE 20 ===
+Tema Regla Fuente
+Regla de borde Mínimo: pasa si es igual o
+mayor. Máximo: pasa si es igual
+o menor. FAIL si el Base es peor
+que el nivel FAIL
+Estándares, sección 2
+Préstamo permanente Siempre el menor entre el de
+LTV y el de DSCR
+Prompt, sección 3, y
+estándares, políticas 26 y 30
+Exención en el Downside Se elimina Prompt, sección 1A;
+compatible con la política 5
+Overrides de escenarios Se aceptan solo con fuente y
+justificación, y se etiquetan
+UNDERWRITING ASSUMPTION
+Estándares, política 33
+Seguro en el Downside +20 %, salvo que haya un
+override con evidencia del
+proyecto
+Estándares, políticas 28 y 33
+Métricas de
+refinanciamiento y CoC
+Aplican solo si el plan incluye
+refinanciar y mantener; si no,
+quedan en N/A
+Estándares, políticas 9, 10 y
+12, y prompt, sección 5
+Periodo de tenencia 5 años desde la estabilización,
+salvo que la estrategia
+documente otro
+Estándares, política 16
+Upside Nunca rescata un Base débil Estándares, políticas 17 y 33
+Retornos LP Solo si el JV está documentado,
+y separados del nivel proyecto
+Estándares, política 2
+Umbrales y deltas Los del prompt, que coinciden
+con los estándares
+Prompt, secciones 4 y 5, y
+estándares, secciones 2 y 3
+Aprobación de Lorena Solo un Mini-UW con PASS
+puede pasar al full UW, y solo
+con su aprobación. Los FAIL y
+HOLD se entregan sin
+aprobación
+Decisión de Underwriten
+(29/10/2026) y alcance de la
+v2
+Procedimiento
+Page 20 of 33
+
+=== PAGE 21 ===
+El prompt v5.2 tendrá 17 resoluciones: las 3 decisiones de Underwriten del 29/10/2026 de
+esta tabla (GBA, break-even y aprobación de Lorena) y las respuestas de Lorena a las
+preguntas 1 a 14.
+Preguntas abiertas para Lorena
+Ninguna fuente resuelve las preguntas 1 a 14. Hasta que Lorena las decida, el motor no las
+implementa y no hay regla provisoria: si un deal depende de alguna, el sistema lo informa y
+se detiene. Así se detuvo 1101 N Federal. Las opciones son las alternativas posibles, no
+recomendaciones.
+# Pregunta Por qué importa Opciones Decisión
+de Lorena
+1 ¿Qué pasa cuando
+falta un dato?
+El prompt (sección
+1.4) se detiene sin
+calcular; los
+estándares (política
+17) emiten el
+veredicto HOLD –
+MORE DD
+A) Detener siempre.
+B) Calcular y dar
+HOLD – MORE DD. C)
+Dos niveles, con la
+lista de campos que
+detienen
+Procedimiento
+Page 21 of 33
+
+=== PAGE 22 ===
+# Pregunta Por qué importa Opciones Decisión
+de Lorena
+2 ¿Qué porcentaje de
+exención se usa, y
+bajo qué versión de la
+ley?
+El prompt fija 75 %; la
+ley da 100 % bajo 80
+% AMI y 75 % entre
+80 y 120 % AMI, con
+más de 70 unidades
+asequibles. Desde
+2025 la jurisdicción
+puede excluirse del 75
+%. La ley de 2026 (HB
+1389) limita esa
+exclusión a
+jurisdicciones con
+superávit de vivienda
+en el estudio
+Shimberg de los tres
+años anteriores, y
+mantiene la exención
+si el proyecto la pide
+dentro de los cuatro
+años desde el
+permiso de obra
+A) 75 % fijo. B) Según
+el tramo legal,
+verificando la
+exclusión y la fecha
+del permiso
+3 ¿Qué umbrales debe
+cumplir el RLV?
+El prompt usa YoC y
+TIR; la política 13
+habla de umbrales de
+desarrollo,
+financiamiento y
+retorno
+A) YoC 6.5 % y TIR 15
+%. B) Todas las
+métricas PASS del
+Base
+4 En el Downside, ¿qué
+costos suma cada
+mes extra de obra?
+La política 23 pide
+incluir impuestos,
+seguro, general
+conditions y otros
+costos que dependen
+del tiempo; el Input
+Sheet no tiene esos
+datos
+A) Solo intereses. B)
+Intereses más un
+costo mensual
+cargado. C) B más
+escalamiento de hard
+costs
+Procedimiento
+Page 22 of 33
+
+=== PAGE 23 ===
+# Pregunta Por qué importa Opciones Decisión
+de Lorena
+5 En el Downside, ¿el
+mismo hard cost se
+reparte en más
+meses?
+Cambia la curva S y
+los intereses
+A) Sí, el mismo costo
+en la curva más larga.
+B) No, se mantiene la
+curva y se agregan los
+meses al final
+6 ¿A dónde va el NOI
+del lease-up que
+sobra después de
+pagar intereses?
+El prompt no lo dice;
+cambia el saldo del
+préstamo, el equity y
+la TIR
+A) Reduce el saldo
+del préstamo. B) Se
+distribuye al equity.
+C) Queda como
+reserva
+7 ¿Qué incluye el
+"equity invertido
+hasta la
+estabilización"?
+Es el denominador de
+% recuperado y de
+cash-in (políticas 9 y
+10)
+A) Solo el equity
+hasta el TCO. B) A
+más los déficits del
+lease-up. C) B más el
+cash-in del
+refinanciamiento
+8 ¿Cómo se mide
+Equity/TDC?
+Con equity first = (1 −
+LTC), si el LTC es
+menor a 65 % el Base
+nunca alcanza el PASS
+de 35 %
+A) (1 − LTC) × TDC. B)
+Todo el equity
+aportado hasta la
+estabilización ÷ TDC
+9 Cuando el equity es
+menor a 25 %, ¿cómo
+se verifica el
+apalancamiento?
+La política 14 exige
+verificar que tenga
+respaldo de mercado,
+pero no dice contra
+qué ni qué
+consecuencia tiene
+A) Contra un LTC de
+mercado cargado, con
+resultado HOLD –
+MORE DD. B) Contra
+un term sheet, solo
+como nota
+10 ¿Se incluye el
+impuesto predial
+durante la obra?
+No está en el TDC del
+prompt
+A) No. B) Sí, con un
+monto cargado en el
+Input Sheet
+Procedimiento
+Page 23 of 33
+
+=== PAGE 24 ===
+Preguntas de mejora (no bloquean)
+Estas seis no detienen ningún deal: mientras Lorena no las decida, el motor sigue la regla
+actual del prompt v5.1 (la opción A). Cubren costos y riesgos propios del sur de Florida
+que hoy no tienen campo propio.
+# Pregunta Por qué importa Opciones Decisión
+de Lorena
+11 ¿La renta es por unit
+type o por
+dormitorio?
+Si un dormitorio tiene
+varios tipos con
+distinto SF y la base
+es por unidad, todos
+reciben la misma
+renta
+A) Por dormitorio,
+como hoy. B) Por unit
+type
+12 ¿Se agrega la
+estrategia como
+campo?
+Sin ese dato, el
+sistema no sabe si
+aplican las métricas
+de refinanciamiento
+(políticas 9, 10 y 12)
+A) No: siempre
+refinanciar y
+mantener. B) Sí,
+campo obligatorio
+13 ¿Se agrega la
+pregunta "otra
+deuda"?
+Las políticas 9 y 10
+descuentan otra
+deuda, y no hay
+campo para ella
+A) No. B) Sí: Sí/No
+obligatorio, y monto y
+tasa si es Sí
+14 ¿Con qué tolerancia
+tiene que cuadrar el
+caso dorado?
+Define cuándo el
+motor está bien
+Un monto en $ y un
+porcentaje que fije
+Lorena
+Procedimiento
+Page 24 of 33
+
+=== PAGE 25 ===
+# Pregunta Por qué importa Opciones Decisión
+de Lorena
+15 ¿El motor calcula los
+impuestos de cierre
+de Florida?
+Cada préstamo paga
+doc stamps sobre el
+pagaré ($0.35 por
+$100) e intangible tax
+($0.20 por $100). La
+venta paga doc stamps
+sobre la escritura:
+$0.70 por $100, o $0.60
+más $0.45 de surtax en
+Miami-Dade para lo
+que no es single-
+family. Hoy dependen
+de C33, C68 y C73, y el
+préstamo de
+construcción no tiene
+campo para ellos
+A) Siguen dentro de
+los inputs actuales.
+B) El motor los
+calcula como
+OFFICIAL según el
+condado, en los dos
+préstamos y en la
+venta
+16 ¿El NOI de salida usa
+el impuesto
+reavaluado al precio
+de venta?
+Un comprador en
+Florida suscribe con el
+impuesto recalculado
+sobre su precio. Si no
+se ajusta, el valor de
+salida queda inflado
+A) El NOI del año
+siguiente como lo
+calcula hoy el motor.
+B) Recalcular el
+impuesto al precio
+de venta
+17 ¿El seguro va en un
+solo campo o
+desglosado?
+Es el gasto más volátil
+del sur de Florida:
+property/wind, flood
+(según zona FEMA),
+general liability,
+builder's risk durante
+la obra y el deducible
+de named storm
+A) Un campo (C59).
+B) Desglosado. C) A
+en el Mini-UW y B en
+el full UW
+Procedimiento
+Page 25 of 33
+
+=== PAGE 26 ===
+Campos nuevos del Input Sheet v5.2
+El sheet vigente ya tiene todos los campos que usa el prompt v5.1. Estos campos son una
+propuesta: cada uno depende de una pregunta y solo se agrega si Lorena lo aprueba. Si un
+campo REQUIRED vale cero de verdad, se escribe 0; vacío significa que falta.
+# Pregunta Por qué importa Opciones Decisión
+de Lorena
+18 ¿La tasa del
+préstamo de
+construcción es fija o
+flotante?
+Casi todos los
+préstamos de
+construcción van a
+SOFR más spread; C52
+es una tasa fija
+A) Fija (C52). B)
+SOFR más spread,
+con costo del rate
+cap y un shock de
+tasa en el Downside.
+C) A en el Mini-UW y
+B en el full UW
+19 ¿Se incluyen los
+assessments no ad
+valorem?
+La millage no incluye
+special assessments,
+CDD ni cargos de
+stormwater o basura
+A) No. B) Sí, con un
+campo en $/año
+20 ¿Se siguen
+entregando el Excel y
+el Backup?
+La sección 0 de las
+reglas de la casa v5.1
+pide PDF, Excel (la
+página y el Backup) y
+resumen. El manual v2
+propone entregar solo
+la página y dejar
+results.json como
+respaldo interno
+A) Sí, como en el
+v5.1. B) Solo la
+página y el resumen;
+el Backup queda en
+results.json
+Campo Unidad Requerido Para qué se usa Depende
+de
+Estrategia Lista: refinanciar
+y mantener,
+construir y
+vender, vender al
+completar
+REQUIRED Define qué métricas
+aplican
+Pregunta
+12
+Procedimiento
+Page 26 of 33
+
+=== PAGE 27 ===
+Campo Unidad Requerido Para qué se usa Depende
+de
+Periodo de
+tenencia
+Años OPTIONAL Si está vacío, 5 años
+(política 16)
+Política
+16
+Costo por mes
+adicional de obra
+$/mes REQUIRED Retraso del Downside
+(política 23)
+Pregunta
+4
+Escalamiento de
+hard costs
+%/año o índice REQUIRED Retraso del Downside
+(política 23)
+Pregunta
+4
+Impuesto predial
+durante la obra
+$/año REQUIRED TDC Pregunta
+10
+LTC de mercado Decimal y fuente REQUIRED Control de
+apalancamiento
+(política 14)
+Pregunta
+9
+¿Hay otra deuda? Sí/No REQUIRED Cash-out neto
+(políticas 9 y 10)
+Pregunta
+13
+Monto y tasa de la
+otra deuda
+$ y decimal IF APPLIES Solo si la respuesta
+anterior es Sí
+Pregunta
+13
+Renta por unit
+type
+$ o $/SF REQUIRED Reemplaza la renta
+por dormitorio
+Pregunta
+11
+Overrides de
+escenarios
+Driver, valor,
+fuente y
+justificación
+OPTIONAL Se etiquetan
+UNDERWRITING
+ASSUMPTION
+Política
+33
+Fecha del permiso
+de obra y de la
+solicitud de
+exención
+Fechas IF APPLIES Versión de Live Local
+y plazo de cuatro
+años de la exención
+Pregunta
+2
+Seguro desglosado $/año por
+cobertura y
+deducible de
+named storm
+REQUIRED Reemplaza C59 Pregunta
+17
+Índice y spread del
+préstamo de
+construcción
+SOFR, spread y
+costo del rate cap
+REQUIRED Reemplaza C52 Pregunta
+18
+Procedimiento
+Page 27 of 33
+
+=== PAGE 28 ===
+Además, todo el sheet tendrá validación de rangos, listas desplegables para las opciones
+fijas y una columna de estado que muestra en vivo los cinco estados.
+Pruebas antes de usarlo en un deal real
+El sistema solo se usa en deals reales si pasa las 21 pruebas, y se vuelven a correr con cada
+cambio de versión. El caso dorado se valida con dos implementaciones independientes (el
+motor en Python y un modelo en fórmulas de Excel armado aparte) y Lorena revisa el
+resultado.
+Campo Unidad Requerido Para qué se usa Depende
+de
+Assessments no
+ad valorem
+$/año REQUIRED Gastos Pregunta
+19
+# Prueba Qué se espera Control
+1 Caso dorado: un deal ficticio
+marcado como tal
+El motor y el Excel coinciden en
+cada métrica, dentro de la
+tolerancia de la pregunta 14
+2
+2 Celda REQUIRED vacía Se detiene y la tabla nombra el
+campo; no calcula
+1
+3 Cero explícito en site work Calcula con 0 y lo etiqueta CERO
+EXPLÍCITO
+1
+4 "TBD" en una celda numérica Lo marca TEXTO INVÁLIDO, lo trata
+como faltante y nunca como 0
+1
+5 5 en lugar de 0.05 en vacancia Lo marca FUERA DE RANGO y se
+detiene
+1
+6 Dos documentos que se
+contradicen
+Pregunta mostrando ambos
+valores, sin elegir uno
+1
+7 Métrica exactamente en el umbral Aplica la regla de borde: pasa 3
+8 Un deal que solo pasa gracias a la
+exención
+Veredicto HOLD – MORE DD 3
+9 La misma corrida dos veces Resultados idénticos al centavo 2
+Procedimiento
+Page 28 of 33
+
+=== PAGE 29 ===
+# Prueba Qué se espera Control
+10 Regresión de los lectores con un
+deal real (1101 N Federal)
+Los bots 3 a 11 extraen lo mismo que
+en la corrida de referencia. Sus
+resultados nunca salen como
+página de Mini-UW
+1
+11 Deal que depende de una pregunta
+sin decidir
+El motor no corre e informa qué
+pregunta lo bloquea
+1
+12 Una cita de la IA que no está en el
+documento
+Se descarta y el dato queda FALTA 1
+13 Cifra oficial que no aparece en la
+copia guardada
+El verificador la deja como FALTA 1
+14 Cambia la huella de un archivo La corrida queda vieja y solo se
+vuelve a correr lo que depende de
+él
+1
+15 La iteración del costo financiero no
+converge
+Se detiene sin reportar 2
+16 Fuentes distintas de usos en un
+escenario
+Se detiene sin reportar 2
+17 Préstamo permanente limitado por
+el DSCR
+Toma el menor e indica que limita el
+DSCR
+2
+18 Base débil con un Upside fuerte El Upside no cambia el veredicto 3
+19 Deal que daría FAIL Corre la prueba de robustez antes
+de emitir el FAIL
+3
+20 Cifra escrita a mano en la página El auditor la detecta y vuelve al
+paso 9
+4
+21 Diferencia que no se corrige en el
+máximo de vueltas
+Pasa a una persona; la página no
+llega a Lorena
+4
+Procedimiento
+Page 29 of 33
+
+=== PAGE 30 ===
+Anexos
+El manual cita reglas que viven en el prompt v5.1 y en los estándares. Para que se pueda
+revisar sin esos archivos al lado, están transcritas textuales, sin resumir ni traducir, en la
+pestaña "Anexos textuales".
+Glosario
+Anexo Contenido Fuente
+A Los cuatro veredictos y su orden Prompt, sección 6, y política 17
+B Las 10 métricas: fórmula, nivel PASS y nivel
+FAIL
+Prompt, sección 5, y estándares,
+sección 2
+C Deltas del Downside y el Upside, y los 15
+drivers
+Prompt, sección 4, y estándares,
+sección 3
+D La regla de N/A Prompt, sección 5
+E Las políticas citadas en este manual Estándares, políticas 1 a 33
+F Los 7 bloques de la página Prompt, sección 7
+Término Significado
+AMI Area Median Income: ingreso medio del área, base
+de las rentas asequibles
+CoC Cash-on-cash: flujo anual ÷ equity invertido
+DSCR Debt Service Coverage Ratio: NOI ÷ servicio de
+deuda
+EGI Effective Gross Income: ingreso bruto menos
+vacancia y pérdida de crédito
+Full UW Underwriting completo, posterior al Mini-UW, solo
+para deals con PASS aprobado
+GSF / NRSF Superficie bruta del edificio / superficie rentable
+neta
+Procedimiento
+Page 30 of 33
+
+=== PAGE 31 ===
+Fichas de dominio
+El sistema no tiene que entender de construcción, bancos o finanzas como una persona.
+Ese conocimiento lo aportan expertos una sola vez, en una ficha por tipo de documento, y
+el sistema lo aplica siempre igual. La IA solo llena la ficha; el criterio viene de quien la
+firma.
+Cada ficha tiene cinco partes: qué extraer (un esquema fijo, con cita), cómo se mapea al
+Input Sheet, qué calcula el motor, qué reglas de control cruzado aplica y dos o tres
+ejemplos reales anotados por el experto. Vive en config.yaml  junto con las demás reglas
+de la casa, versionada, y sus umbrales quedan como parámetros sin valor hasta que
+Lorena los fije.
+Término Significado
+LTC / LTV Préstamo ÷ costo total / préstamo ÷ valor
+NOI Net Operating Income: EGI menos gastos
+operativos
+RLV Residual Land Value: precio máximo del terreno
+que cumple los umbrales
+TCO Temporary Certificate of Occupancy
+TDC Total Development Cost
+TI/LC Tenant improvements y comisiones de arriendo del
+comercial
+YoC Yield on Cost: NOI estabilizado ÷ TDC
+Ficha Documento Qué cubre La arma Estado
+Presupuesto
+del GC
+Presupuesto,
+GMP o
+contrato
+Tipo de contrato,
+general
+conditions, fee,
+contingencias,
+allowances,
+exclusiones,
+cronograma y
+fórmula
+polinómica de
+ajuste
+Estimador o cost
+consultant, con
+Lorena
+Borrador:
+ Ficha: presupuesto del GC
+Procedimiento
+Page 31 of 33
+
+=== PAGE 32 ===
+Fórmulas polinómicas y variables de ajuste. La IA extrae la fórmula y los coeficientes del
+contrato (DOCUMENTED), los índices salen del publicador que nombra el contrato
+(OFFICIAL) y el ajuste lo calcula el motor, en el Base con el último índice y en el Downside
+con el alza que fije Lorena. Si falta el índice, la fecha base o el tope, se pregunta como
+cualquier faltante.
+Qué va en cada etapa. El Mini-UW usa solo los datos marcados "Mini" en cada ficha (hard
+cost, contingencia, exclusiones grandes, LTC y tasa). El análisis completo del contrato del
+GC, las cláusulas del banco y el detalle por división son del full UW.
+Quién participa. Lorena es dueña de los parámetros. Un estimador arma la ficha del GC,
+alguien de financiamiento valida la del term sheet, y un abogado revisa garantías y
+recourse en el full UW. Ninguna ficha se usa en deals reales sin sus ejemplos resueltos,
+que entran a las pruebas de regresión.
+Herramientas y siguiente paso
+El motor va en Python. Las reglas de la casa van en config.yaml , versionado. La IA extrae
+datos con un esquema JSON fijo, y la página sale de una plantilla.
+Orden de construcción:
+Ficha Documento Qué cubre La arma Estado
+Term sheet
+del banco
+Term sheet o
+carta
+compromiso
+LTC, índice y
+spread, floor, rate
+cap, fees,
+interest reserve,
+extensiones,
+DSCR o debt
+yield, recourse
+Alguien de
+financiamiento,
+con Lorena
+Pendiente
+Pro forma del
+developer
+Pro forma del
+sponsor
+Conciliación línea
+por línea contra
+el modelo propio;
+el sistema nunca
+toma sus
+números, solo
+muestra
+diferencias
+Lorena Pendiente
+Planos y
+programa
+Site-data
+sheet, area
+schedule
+Ya cubierta por la
+sección 2 del
+prompt; sin
+takeoff
+— Vigente
+Procedimiento
+Page 32 of 33
+
+=== PAGE 33 ===
+1. Paquete de decisión para Lorena. Las 14 preguntas ordenadas por cuántos deals
+bloquean, y para cada opción cuánto cambia cada métrica en el caso ficticio. Va
+primero porque su respuesta es lo que hoy detiene los deals.
+2. Input Sheet v5.2 con los campos aprobados, las validaciones y la columna de estado.
+3. Reglas de la casa v5.2 con las 17 resoluciones, las decisiones de las preguntas 15 a 20 y
+los anexos A a F.
+4. Motor de cálculo y escenarios (pasos 6 a 8).
+5. Caso dorado ficticio y las 21 pruebas.
+6. Extracción y datos oficiales (pasos 3 y 4).
+7. Página y auditor (pasos 9 y 10).
+8. Revisión y aprobación de Lorena de la v5.2 y el caso dorado.
+Fuentes
+Florida Department of Revenue: Documentary Stamp Tax
+Florida Department of Revenue: formulario DR-228
+Stearns Weaver: Live Local 4.0, HB 1389 (2026)
+Becker: Florida HB 1389 (2026)
+Multi-Housing News: exclusión del 75 % desde 2025
+Procedimiento
+Page 33 of 33
+
+=== PAGE 34 ===
+Bots y herramientas
+El Mini-UW usa 16 bots por deal: 7 con IA y 9 programas sin IA, más un bot de pruebas que
+no corre en los deals. Cada dato que entra lo leen dos bots por caminos distintos, y ningún
+bot revisa su propio trabajo. Las herramientas externas solo leen valores que ya están
+escritos en los documentos; ninguna mide planos, porque el prompt prohíbe el takeoff.
+Equipo de bots
+Cuatro carriles corren al mismo tiempo y se juntan en el guardián: el Input Sheet (bot 4),
+los planos (bots 5 a 7), los documentos financieros (bots 8 y 9) y los datos oficiales (bots
+10 y 11). Nada pasa al motor hasta que el guardián confirma que no falta ningún dato.
+Después siguen el motor (Control 2), el juez (Control 3), el redactor y el auditor (Control
+4), y la revisión de Lorena.
+Los 16 bots
+La columna "No puede" es la que vuelve al sistema a prueba de errores: cada bot tiene
+prohibido justo lo que podría contaminar el resultado.
+# Bot Tipo Qué hace Recibe Entrega No puede
+1 Orquestador Programa Lleva el estado
+de cada deal,
+lanza los bots en
+orden, registra
+versiones y
+tiempos
+El deal Log de la corrida Cambiar
+datos
+2 Recepción Programa Lista los
+archivos, calcula
+su huella y
+rechaza
+formatos que no
+se leen
+Carpeta del
+deal
+Inventario Abrir el
+contenido
+Bots y herramientas
+Page 1 of 10
+
+=== PAGE 35 ===
+# Bot Tipo Qué hace Recibe Entrega No puede
+3 Clasificador IA Identifica qué es
+cada archivo:
+site-data sheet,
+area schedule,
+narrativa, LOI,
+presupuesto del
+GC, term sheet
+Inventario Mapa de
+documentos
+Extraer
+valores
+4 Validador del
+Input Sheet
+Programa Lee cada celda
+sin convertir
+vacíos, le asigna
+uno de los cinco
+estados y valida
+rangos y listas
+Input Sheet Inputs con su
+estado
+Corregir o
+completar
+celdas
+5 Lector de
+planos A
+IA +
+herramienta
+Extrae los datos
+del programa
+desde la capa de
+texto, las tablas
+del PDF o las
+entidades del
+CAD, con hoja y
+ubicación
+Planos Programa A con
+citas
+Medir, contar
+tags o inferir
+áreas
+6 Lector de
+planos B
+IA de visión Extrae los
+mismos datos
+desde la imagen
+de cada hoja, sin
+ver el resultado
+de A
+Planos
+rasterizados
+Programa B con
+citas
+Lo mismo que
+A, y ver el
+resultado de
+A
+7 Conciliador Programa Compara A con
+B dato por dato,
+y los planos con
+la narrativa
+Programas A
+y B
+Programa único
+o lista de
+conflictos
+Elegir entre
+dos valores
+Bots y herramientas
+Page 2 of 10
+
+=== PAGE 36 ===
+# Bot Tipo Qué hace Recibe Entrega No puede
+8 Lector
+financiero
+IA Extrae del LOI, el
+presupuesto del
+GC y el term
+sheet los valores
+que también
+están en el Input
+Sheet: precio del
+terreno, hard
+cost,
+contingencia,
+allowances,
+exclusiones,
+LTC, tasa
+Documentos
+financieros
+Valores
+documentados
+con cita
+Reemplazar
+un valor del
+Input Sheet
+9 Control
+cruzado
+Programa Compara el
+Input Sheet con
+los documentos
+financieros y
+detecta, por
+ejemplo,
+exclusiones del
+GC que no
+aparecen en
+soft costs
+Bots 4 y 8 Lista de
+conflictos
+Resolver
+conflictos
+10 Investigador
+oficial
+IA + web Busca la renta
+límite al 120 %
+AMI de FHFC, la
+millage de la
+parcela y los
+requisitos de
+Live Local;
+guarda una
+copia del
+documento
+fuente
+Condado,
+año, parcela
+Datos OFFICIAL
+con link, fecha y
+copia
+Usar fuentes
+no oficiales
+11 Verificador
+oficial
+Programa Vuelve a leer la
+copia guardada
+y confirma que
+cada número
+esté en el
+documento
+fuente
+Bot 10 Datos OFFICIAL
+verificados
+Buscar en la
+web
+Bots y herramientas
+Page 3 of 10
+
+=== PAGE 37 ===
+Aparte de los 16 hay un bot de pruebas (el 17 de la especificación técnica) que no corre en
+los deals: corre las 21 pruebas cada vez que cambia una versión.
+# Bot Tipo Qué hace Recibe Entrega No puede
+12 Guardián de
+completitud
+Programa Reúne los
+faltantes y los
+conflictos de los
+bots 4, 7, 9 y 11
+en una sola tabla
+(Control 1)
+Bots 4, 7, 9 y
+11
+Paquete cerrado
+o tabla de
+faltantes
+Dejar pasar
+un dato sin
+etiqueta
+13 Motor Programa Calcula el Base y
+todos los
+escenarios
+(Control 2)
+Paquete
+cerrado
+Archivo de
+resultados
+Leer algo
+fuera del
+paquete
+14 Juez Programa Arma el
+scorecard y
+emite el
+veredicto con
+las reglas
+configuradas
+(Control 3)
+Resultados Scorecard y
+veredicto
+Cambiar
+umbrales
+15 Redactor y
+maquetador
+IA +
+programa
+La IA redacta los
+textos con
+marcadores; el
+programa pone
+cada cifra desde
+los resultados y
+arma la página
+en PDF y,
+mientras Lorena
+no decida la
+pregunta 20, el
+Excel con la
+página y el
+Backup
+Resultados y
+veredicto
+Borrador de la
+página
+Escribir una
+cifra a mano
+16 Auditor IA +
+programa
+Verifica
+etiquetas y que
+cada cifra de la
+página coincida
+con los
+resultados
+(Control 4)
+Página y
+resultados
+Aprobado o lista
+de diferencias
+Ver los
+prompts del
+redactor;
+corregir
+Bots y herramientas
+Page 4 of 10
+
+=== PAGE 38 ===
+Procedimiento de cada bot
+Cada bot entrega un archivo JSON con un esquema fijo. Si el archivo no cumple el
+esquema, el orquestador lo rechaza y no sigue.
+Entrada: bots 1 a 4
+1. El orquestador abre una corrida con un número único y registra la versión del prompt,
+de la configuración y del motor.
+2. Recepción lista los archivos y guarda la huella (hash) de cada uno. Si un archivo cambia,
+la corrida queda vieja.
+3. El clasificador asigna un tipo a cada documento. Si un documento no se puede
+clasificar, queda como "sin tipo" y se pregunta qué es.
+4. El validador lee el Input Sheet celda por celda. Cada celda sale con su valor (o sin
+valor), su estado y la fuente que escribió Underwriten en la columna F.
+Planos: bots 5 a 7
+1. Para cada dato de la sección 2 del prompt, el lector A busca la tabla o el texto que lo
+dice explícitamente y anota la hoja, la tabla y la fila.
+2. El lector B hace lo mismo con la imagen de la hoja, sin acceso al resultado de A.
+3. Ninguno de los dos mide, cuenta tags ni reconstruye áreas. Si un dato no está escrito, lo
+informa como "no está".
+4. El conciliador compara los dos resultados. Si coinciden, el dato pasa como
+DOCUMENTED con ambas citas. Si difieren, o si un plano contradice a la narrativa, va a
+la tabla de conflictos con los dos valores.
+Documentos financieros: bots 8 y 9
+1. El lector financiero extrae del LOI, el presupuesto del GC y el term sheet solo los
+valores que tienen un campo en el Input Sheet, con su página.
+2. Del presupuesto del GC extrae además el tipo de contrato, las allowances, las
+exclusiones y la contingencia del contratista.
+3. El control cruzado compara cada valor con su celda. Si hay diferencia, la pregunta
+muestra ambos valores. Ejemplos: una exclusión del GC que no está en soft costs, una
+contingencia que aparece dos veces, un LTC del term sheet distinto al de C51.
+Bots y herramientas
+Page 5 of 10
+
+=== PAGE 39 ===
+Datos oficiales: bots 10 y 11
+1. El investigador busca solo en las fuentes de la sección 1 del prompt y guarda una copia
+(PDF) de cada documento con su fecha.
+2. El verificador abre la copia guardada y confirma que el número esté en la tabla
+correcta: condado, año, nivel de AMI y tamaño de unidad. Si no lo encuentra, el dato
+queda como FALTA.
+Cierre, cálculo y veredicto: bots 12 a 14
+1. El guardián junta los faltantes y conflictos de todos los carriles y emite una sola tabla.
+Si la tabla tiene filas, la corrida se detiene.
+2. Con el paquete cerrado, el motor corre el Base y los escenarios y verifica que todo
+cierre (Control 2).
+3. El juez compara las métricas con los umbrales de config.yaml  y aplica el orden del
+veredicto.
+Salida: bots 15 y 16
+1. El redactor escribe los textos con marcadores (por ejemplo, {yoc_base} ); el
+maquetador los reemplaza con las cifras del archivo de resultados y arma la página.
+2. El auditor recibe solo la página y los resultados. Verifica que cada número tenga
+etiqueta y que cada cifra coincida.
+3. Si encuentra una diferencia, la corrida vuelve al bot 15. Después del máximo de vueltas,
+pasa a una persona. Si no hay ninguna diferencia, pasa a revisión de Lorena.
+Cómo se hace eficiente
+Son seis medidas, y ninguna afloja un control.
+1. Cuatro carriles en paralelo. Input Sheet (bot 4), planos (bots 5 a 7), documentos
+financieros (bots 8 y 9) y datos oficiales (bots 10 y 11) corren al mismo tiempo y solo se
+esperan en el guardián.
+2. Una sola ronda de preguntas. El guardián junta todos los faltantes y conflictos en una
+tabla, en lugar de preguntar carril por carril.
+3. Re-corridas parciales. Cuando Underwriten responde, solo se vuelve a correr lo que
+depende del dato nuevo. La huella de cada archivo indica qué cambió.
+Bots y herramientas
+Page 6 of 10
+
+=== PAGE 40 ===
+4. Datos oficiales en caché. La renta límite FHFC de un condado y año, y la millage de un
+distrito y año, se guardan con su copia y se reutilizan en otros deals. Se vencen cuando
+cambia el año o se publica una nueva tabla.
+5. Las preguntas abiertas como interruptores. Cada una de las preguntas 1 a 14 es una
+opción de config.yaml  sin valor por defecto: mientras Lorena no la elija, el motor no
+corre los deals que dependen de ella. Las preguntas 15 a 20 llevan cargada la opción A,
+que es la regla actual. Cuando Lorena elige, la opción se activa sin tocar el código.
+6. Escenarios en lote. Los 15 drivers, el Downside, el Upside, la exención prendida y
+apagada y la prueba de robustez salen del mismo motor en una sola corrida.
+Programas externos propuestos
+Estas herramientas le dan a los bots acceso a cada formato. Todas leen; ninguna mide. Los
+costos y las licencias se verifican antes de contratar cualquiera de ellas.
+Para leer Programa Tipo Qué extrae Límite por la regla
+de cero
+supuestos
+Fase
+PDF de planos
+con capa de
+texto
+PyMuPDF
+( find_tables  y
+texto)
+Código abierto,
+Python
+Tablas de áreas,
+matriz de unidades
+y rótulo de cada
+hoja, con su
+ubicación
+Solo tablas y
+textos escritos
+1
+PDF
+escaneado o
+imagen
+Azure AI
+Document
+Intelligence,
+modelo layout
+Servicio en la
+nube, pago por
+uso
+Texto, tablas y
+figuras de PDF,
+JPG, PNG o TIFF,
+también
+escaneados
+Las hojas grandes
+se rasterizan en
+alta resolución: el
+modelo pide texto
+de al menos 12
+píxeles de alto
+2
+Imagen de
+cada hoja
+(lector B)
+Modelo de IA con
+visión
+Servicio de IA Los mismos datos,
+por un camino
+independiente
+Mismas
+prohibiciones que
+el lector A
+1
+DWG ODA File
+Converter + ezdxf
+Conversor
+gratuito de la
+Open Design
+Alliance
+(licencia a
+verificar) y
+biblioteca
+Python
+Tablas, textos y
+atributos de
+bloques (rótulos)
+del dibujo
+No se cuentan
+bloques ni se
+miden polígonos;
+solo valores
+escritos
+2
+Bots y herramientas
+Page 7 of 10
+
+=== PAGE 41 ===
+Herramienta de lectura de planos (fase 2, pendiente)
+Queda registrada para no olvidarla. Su alcance: leer planos escaneados y archivos CAD
+(DWG, y RVT o IFC si hace falta) con las herramientas de fase 2 de la tabla. Su límite: igual
+que los lectores A y B, solo puede leer valores escritos en los planos y nunca medir ni
+contar. Mientras no exista, los planos tienen que llegar en PDF con capa de texto; si llegan
+escaneados o en CAD, el sistema lo informa y se detiene en el paso 1.
+Herramientas que no se usan
+Todas estas quedan fuera porque producirían un número que el prompt no permite.
+Para leer Programa Tipo Qué extrae Límite por la regla
+de cero
+supuestos
+Fase
+DWG, RVT o
+IFC en la nube
+Autodesk Platform
+Services, Model
+Derivative API
+Servicio en la
+nube
+Propiedades y
+metadatos del
+modelo
+Verificar formatos
+compatibles y
+costo antes de
+usarlo
+2,
+opcional
+Input Sheet y
+presupuesto
+en Excel
+openpyxl Código abierto,
+Python
+Cada celda tal
+cual: una celda
+vacía llega como
+"sin valor", no
+como 0
+Ninguno 1
+Renta límite al
+120 % AMI
+Tablas anuales de
+FHFC (PDF) +
+PyMuPDF
+Fuente oficial Renta por
+condado, año y
+tamaño de unidad
+Se usa la tabla del
+año vigente, con
+copia guardada
+1
+Cruce de AMI HUD USER API API oficial
+gratuita, con
+registro
+Límites de ingreso
+del FY 2026,
+vigentes desde el 1
+de mayo de 2026
+Solo como
+control: la renta
+del modelo sale
+de FHFC
+1
+Millage Tasador del
+condado y portal
+del Florida
+Department of
+Revenue (PDF)
+Fuente oficial Millage total por
+distrito
+Se usa la del
+distrito de la
+parcela, con copia
+guardada
+1
+Bots y herramientas
+Page 8 of 10
+
+=== PAGE 42 ===
+Siguiente paso
+Para ver los ajustes cuanto antes, se construye primero el núcleo de cálculo con un deal
+ficticio. Eso no requiere planos ni las respuestas de Lorena: las 14 preguntas quedan como
+interruptores sin valor, y el motor muestra cómo cambia el resultado con cada opción. Ese
+resultado es el paquete de decisión para Lorena.
+Fase 1: núcleo y carriles de texto
+1. config.yaml  con umbrales, escenarios y los interruptores de las preguntas.
+2. Motor y juez (bots 13 y 14), con un deal ficticio marcado como tal.
+3. Paquete de decisión: cuánto cambia cada métrica según la opción de cada pregunta.
+4. Validador del Input Sheet (bot 4) y propuesta de Input Sheet v5.2.
+5. Bot de pruebas con las 21 pruebas.
+6. Lectores A y B para PDF con capa de texto, el conciliador y los bots financieros y
+oficiales.
+7. Redactor, maquetador y auditor (bots 15 y 16).
+Fase 2: herramienta de lectura de planos
+1. Planos escaneados (Document Intelligence).
+2. DWG (ODA File Converter + ezdxf).
+Herramienta Por qué no
+Software de takeoff (medición de planos,
+como las funciones de medición de
+Bluebeam Revu, PlanSwift u On-Screen
+Takeoff)
+El prompt prohíbe takeoffs y mediciones
+(secciones 1.2 y 2), y la decisión de
+Underwriten del 29/10/2026 lo confirma. El
+takeoff lo hace el arquitecto o el estimador y
+entra como INPUT
+Bases de datos de mercado (rentas, cap
+rates o costos de terceros)
+El prompt solo acepta datos oficiales de la
+web; las rentas comparables las da
+Underwriten (secciones 1.2 y 1.3)
+IA que estime áreas, unidades o costos Viola la regla de cero supuestos (sección 1.1)
+Hojas de cálculo con fórmulas que toman
+vacíos como 0
+Viola la regla de vacío ≠ 0; la página solo
+muestra valores que vienen del motor
+Bots y herramientas
+Page 9 of 10
+
+=== PAGE 43 ===
+3. RVT o IFC, si hace falta.
+Fuentes consultadas en la v1
+ezdxf: ODA File Converter Support · Azure AI Document Intelligence: layout model ·
+Artifex: Extracting tables from PDFs with PyMuPDF · Autodesk Platform Services: Model
+Derivative API · HUD USER: Income Limits · Bilzin Sumberg: 2026 Live Local Act update to
+rent limits
+Bots y herramientas
+Page 10 of 10
+
+=== PAGE 44 ===
+Especificación técnica de los bots
+Cada bot es un módulo de Python con una sola tarea, recibe y entrega archivos JSON con
+un esquema fijo, y deja todo guardado por corrida. Los bots con IA solo clasifican, leen y
+redactan; los números los calculan programas determinísticos.
+Base común
+Lenguaje: Python 3. Cada bot es un módulo con una función de entrada y una de salida.
+Contratos de datos: cada archivo JSON tiene un esquema validado (pydantic). Si un
+archivo no cumple su esquema, el orquestador lo rechaza y la corrida se detiene.
+Carpeta por corrida: runs/{run_id}/ , con una subcarpeta por bot. Nada se
+sobrescribe: una corrección genera una corrida nueva.
+Huella de cada archivo: SHA-256 de cada documento recibido. Si un archivo cambia,
+solo se vuelve a correr lo que depende de él.
+Configuración versionada: config.yaml , con umbrales, escenarios, las preguntas 1 a
+14 (sin valor por defecto), las preguntas 15 a 20 (con la opción A cargada), rangos de
+validación, reglas del control cruzado y convenciones de cálculo. Cada cambio guarda
+quién lo autorizó.
+Vacío no es cero en el código: un valor faltante se representa como null  con su
+estado, nunca como 0 . Cualquier operación con un null  da null , y el resultado sale
+como "n/a".
+Estados de celda: OK, CERO EXPLÍCITO, FALTA, TEXTO INVÁLIDO y FUERA DE
+RANGO, iguales en el bot 4, en inputs.json  y en la columna de estado del Input
+Sheet.
+Bots con IA: siempre con salida en JSON con esquema fijo y cita obligatoria por dato.
+Una respuesta sin cita se descarta.
+Caché oficial: cache/official/{publicador}/{año}/ , con la copia del documento
+fuente, su link y la fecha de descarga.
+Confidencialidad: los documentos del deal que se envían a servicios en la nube
+(Document Intelligence y el modelo de visión) siguen la política de retención y acceso
+que defina el equipo, compatible con los NDA de cada deal.
+Especiﬁcación técnica
+Page 1 of 11
+
+=== PAGE 45 ===
+Los 17 bots
+Los bots 1 a 16 corren en cada deal; el 17 solo corre las pruebas.
+# Bot Qué hace Programación Recibe Entrega
+1 Orquestador Abre la
+corrida, lanza
+los bots en
+orden (los
+cuatro
+carriles en
+paralelo),
+registra
+versiones y
+tiempos, y
+decide qué se
+vuelve a
+correr cuando
+algo cambia
+Python;
+máquina de
+estados propia
+o un
+orquestador de
+flujos
+Carpeta del deal,
+versión del prompt,
+config.yaml
+run_manifest.json , log
+2 Recepción Lista cada
+archivo,
+calcula su
+huella y
+detecta si
+cada página
+tiene capa de
+texto
+Python:
+hashlib,
+PyMuPDF
+Archivos del deal inventory.json
+3 Clasificador Asigna un tipo
+a cada
+documento y
+a cada hoja:
+site-data
+sheet, area
+schedule,
+planta,
+narrativa,
+survey, LOI,
+presupuesto
+del GC, term
+sheet, otro o
+"sin tipo"
+IA con salida
+JSON; lee el
+índice de la
+portada y los
+rótulos
+inventory.json ,
+texto de los rótulos
+doc_map.json
+Especiﬁcación técnica
+Page 2 of 11
+
+=== PAGE 46 ===
+# Bot Qué hace Programación Recibe Entrega
+4 Validador
+del Input
+Sheet
+Lee cada
+celda tal cual
+y le asigna
+uno de los
+cinco estados
+Python:
+openpyxl (la
+celda vacía
+llega como
+None );
+esquema de
+campos en
+YAML
+Input Sheet (.xlsx),
+esquema de campos
+inputs.json
+5 Lector de
+planos A
+Busca en
+tablas y
+textos cada
+dato de la
+sección 2 del
+prompt y lo
+extrae con
+hoja, tabla,
+fila y recorte
+de evidencia
+Python:
+PyMuPDF
+( find_tables ,
+texto con
+coordenadas)
++ IA con salida
+JSON para
+asignar filas a
+campos. Fase
+2: OCR
+(Document
+Intelligence) y
+DWG (ODA
+File Converter
++ ezdxf)
+Páginas clasificadas program_A.json ,
+recortes PNG
+6 Lector de
+planos B
+Lee los
+mismos datos
+desde la
+imagen de
+cada hoja, sin
+acceso al
+resultado de
+A
+Python:
+rasterización
+con PyMuPDF
++ IA con visión
+y salida JSON
+Imágenes de las
+páginas clasificadas
+program_B.json
+Especiﬁcación técnica
+Page 3 of 11
+
+=== PAGE 47 ===
+# Bot Qué hace Programación Recibe Entrega
+7 Conciliador Compara A
+con B dato
+por dato;
+verifica
+sumas
+internas,
+portada
+contra A1.0
+contra
+narrativa, y
+tipos de las
+plantas
+contra el
+schedule
+Python, reglas
+fijas
+program_A.json ,
+program_B.json
+program.json ,
+conflicts_program.json
+8 Lector
+financiero
+Extrae del
+LOI, el
+presupuesto
+del GC y el
+term sheet
+los valores
+que también
+están en el
+Input Sheet,
+más el tipo de
+contrato,
+allowances,
+exclusiones y
+contingencia
+del
+contratista
+Python:
+PyMuPDF + IA
+con salida
+JSON
+Documentos
+financieros, mapa de
+campos
+fin_docs.json
+9 Control
+cruzado
+Compara
+cada valor
+documentado
+con su celda y
+aplica las
+reglas del
+control
+cruzado
+Python, reglas
+en
+config.yaml
+inputs.json ,
+fin_docs.json
+conflicts_fin.json
+Especiﬁcación técnica
+Page 4 of 11
+
+=== PAGE 48 ===
+# Bot Qué hace Programación Recibe Entrega
+10 Investigador
+oficial
+Busca la renta
+límite FHFC al
+120 % AMI
+(condado y
+año), la
+millage de
+cada folio y
+los requisitos
+de Live Local;
+descarga y
+guarda cada
+documento
+fuente
+IA con
+búsqueda web
+limitada a los
+dominios
+oficiales
+aprobados
+Condado, año, folios official_raw.json ,
+copias en caché
+11 Verificador
+oficial
+Abre cada
+copia
+guardada y
+confirma que
+la cifra esté
+en la tabla
+correcta
+(condado,
+año, AMI,
+tamaño de
+unidad; folio y
+código de
+distrito)
+Python:
+PyMuPDF, sin
+acceso a la
+web
+official_raw.json ,
+copias en caché
+official.json
+12 Guardián de
+completitud
+Junta todo lo
+faltante,
+inválido o en
+conflicto y lo
+clasifica
+según
+bloquee o no
+la corrida
+Python, reglas
+del prompt
+inputs.json ,
+program.json ,
+conflictos,
+official.json
+package.json  (paquete
+cerrado) o
+missing_table.json
+Especiﬁcación técnica
+Page 5 of 11
+
+=== PAGE 49 ===
+# Bot Qué hace Programación Recibe Entrega
+13 Motor Calcula el
+modelo
+mensual de la
+sección 3 del
+prompt y
+todos los
+escenarios de
+la sección 4, y
+verifica que
+fuentes =
+usos, que la
+iteración
+converja y
+que el flujo
+cierre
+Python: numpy,
+numpy-
+financial (TIR);
+impuesto
+resuelto en
+forma
+algebraica
+package.json ,
+config.yaml
+results.json
+14 Juez Compara las
+10 métricas
+con los
+umbrales,
+aplica la regla
+de borde y la
+de N/A, y
+emite el
+veredicto en
+el orden de la
+sección 6
+Python,
+umbrales en
+config.yaml
+results.json ,
+config.yaml
+scorecard.json ,
+verdict.json
+15 Redactor y
+maquetador
+La IA redacta
+los textos con
+marcadores
+(por ejemplo,
+{yoc_base} );
+el programa
+reemplaza
+cada
+marcador por
+la cifra de los
+resultados y
+arma la
+página
+IA con salida
+de texto;
+Python: Jinja2
++ Chromium
+para el PDF
+results.json ,
+scorecard.json ,
+verdict.json ,
+package.json
+onepager.pdf
+miniuw.xlsx  (página y
+Backup), mientras Lorena
+no decida la pregunta 20
+Especiﬁcación técnica
+Page 6 of 11
+
+=== PAGE 50 ===
+Archivos de datos
+Cada archivo lo escribe un solo bot y lo leen solo los bots indicados. Los campos son los
+mínimos de cada esquema.
+# Bot Qué hace Programación Recibe Entrega
+16 Auditor Verifica que
+cada número
+tenga
+etiqueta, que
+cada cifra de
+la página
+coincida con
+los resultados
+y que no haya
+cifras escritas
+a mano
+Python (lee el
+PDF) + IA
+independiente
+que relee el
+texto; sin
+acceso a los
+prompts del
+redactor
+onepager.pdf ,
+results.json
+audit.json
+17 Bot de
+pruebas
+Corre las 21
+pruebas,
+incluida la
+regresión de
+los lectores
+con 1101 N
+Federal, antes
+de cada
+versión nueva
+Python: pytest Caso dorado ficticio,
+corrida de referencia
+de 1101 N Federal,
+resultados
+esperados
+test_report.json
+Archivo Lo
+produce
+Lo usa Campos principales
+run_manifest.json 1 Todos run_id, versión del
+prompt, de la
+configuración y del motor,
+estado y hora de cada bot
+inventory.json 2 3, 5, 6, 8 archivo, SHA-256, tamaño,
+páginas, capa de texto por
+página (sí/no)
+doc_map.json 3 5, 6, 8 archivo, página, tipo,
+número y nombre de hoja,
+fecha o revisión
+Especiﬁcación técnica
+Page 7 of 11
+
+=== PAGE 51 ===
+Archivo Lo
+produce
+Lo usa Campos principales
+inputs.json 4 9, 12 campo, celda, valor
+original, valor, estado,
+fuente escrita en la
+columna F
+program_A.json  /
+program_B.json
+5 / 6 7 dato, valor, unidad, cita
+(archivo, hoja, tabla, fila,
+coordenadas), recorte de
+evidencia
+program.json 7 12 dato, valor, etiqueta
+DOCUMENTED, ambas
+citas
+conflicts_program.json 7 12 dato, valor A, valor B o
+valor de otro documento,
+citas, tipo de conflicto
+fin_docs.json 8 9 campo del Input Sheet,
+valor, documento, página;
+tipo de contrato,
+allowances, exclusiones
+conflicts_fin.json 9 12 campo, valor del Input
+Sheet, valor del
+documento, regla aplicada
+official_raw.json 10 11 cifra, valor, publicador,
+link, fecha de vigencia,
+fecha de descarga, ruta de
+la copia
+official.json 11 12 lo mismo, más verificado
+(sí/no) y la ubicación
+exacta en el documento
+missing_table.json 12 Underwriten valor, por qué se necesita,
+de dónde sale, ¿bloquea?,
+pregunta abierta de la que
+depende
+Especiﬁcación técnica
+Page 8 of 11
+
+=== PAGE 52 ===
+Parámetros que deben definirse
+El código los necesita, pero ninguna fuente los fija. Para no asumirlos, quedan vacíos en
+config.yaml  y el bot que los usa no corre hasta que se carguen.
+Archivo Lo
+produce
+Lo usa Campos principales
+package.json 12 13, 15, full UW todos los datos cerrados,
+cada uno con etiqueta y
+fuente
+results.json 13 14, 15, 16, full
+UW
+por escenario: flujo
+mensual, fuentes y usos,
+métricas, controles del
+motor; opciones de las
+preguntas
+scorecard.json  /
+verdict.json
+14 15, 16 métrica, valor, umbral,
+resultado; veredicto,
+motivo, qué haría falta
+para pasar
+onepager.pdf
+miniuw.xlsx  (página y Backup),
+mientras Lorena no decida la
+pregunta 20
+15 16, Lorena la página de la sección 7
+del prompt
+audit.json 16 1, Lorena control, resultado,
+diferencias encontradas,
+número de vuelta
+review.json Lorena 1, full UW aprobación para full UW
+(sí/no), desacuerdo con el
+veredicto y su
+justificación, fecha
+test_report.json 17 Equipo prueba, esperado,
+obtenido, aprobado
+(sí/no)
+Especiﬁcación técnica
+Page 9 of 11
+
+=== PAGE 53 ===
+Parámetro Lo define Lo usa Por qué hace falta
+Rango válido de cada
+campo del Input Sheet (por
+ejemplo, vacancia, cap rate,
+LTC)
+Lorena Bot 4 Detectar un 5 donde va
+0.05 sin inventar límites
+Reglas del control cruzado
+(qué diferencias entre
+documentos e Input Sheet
+se reportan)
+Lorena Bot 9 Definir qué cuenta como
+conflicto en el lenguaje del
+GC y del banco
+Dominios oficiales
+aprobados para buscar
+Lorena Bot 10 Limitar la búsqueda a los
+publicadores que acepta el
+prompt
+Tolerancia de convergencia
+del cálculo iterativo del
+costo financiero
+Lorena Bot 13 El prompt pide resolverlo
+por iteración, pero no dice
+cuándo parar
+Convención de intereses
+(actual/360 o 30/360)
+Lorena Bot 13 Cambia los intereses y el
+costo financiero; los
+préstamos sobre SOFR
+suelen usar actual/360
+Momento de los flujos
+(inicio o fin de mes) y qué
+mes es el del TCO
+Lorena Bot 13 Sin esto, el motor en
+Python y el Excel del caso
+dorado no cuadran
+Formato de porcentajes en
+el Input Sheet (decimal o
+porcentaje)
+Lorena Bot 4 La prueba 5 depende de
+que sea explícito
+Redondeo: decimales del
+motor y de la página, y
+cómo compara el auditor
+una cifra formateada
+Equipo, con
+aprobación de
+Lorena
+Bots 13,
+15 y 16
+Evita que el Control 4 y la
+prueba 9 fallen por formato
+y no por error
+Máximo de vueltas entre
+redactor y auditor antes de
+pasar a una persona
+Equipo Bots 1,
+15 y 16
+Evita un ciclo sin fin en el
+Control 4
+Tolerancia del caso dorado
+(pregunta 14)
+Lorena Bot 17 Decidir cuándo el motor
+está bien
+Especiﬁcación técnica
+Page 10 of 11
+
+=== PAGE 54 ===
+Parámetro Lo define Lo usa Por qué hace falta
+Preguntas 1 a 13 Lorena Bots 12,
+13 y 14
+Mientras no se definan, no
+hay regla provisoria: el
+motor no corre los deals
+que dependen de ellas
+Preguntas 15 a 20 Lorena Bots 4 y
+13
+Mientras no se definan,
+rige la opción A, que es la
+regla actual del prompt v5.1
+Especiﬁcación técnica
+Page 11 of 11
+
+=== PAGE 55 ===
+Ficha de dominio: presupuesto del GC
+Borrador para revisión de un estimador o cost consultant y aprobación de Lorena. Define
+qué extraen los bots 8 y 9 del presupuesto del GC, qué calcula el motor y qué se reporta
+como conflicto. Todo umbral queda como parámetro sin valor hasta que Lorena lo fije.
+1. Alcance
+Aplica a cualquier documento de precio del contratista general: presupuesto preliminar
+(ROM o schematic), propuesta GMP, o contrato firmado (GMP, cost-plus o lump sum). La
+columna "Etapa" de cada tabla indica si el dato se usa en el Mini-UW o solo en el full UW. El
+Mini-UW usa pocos datos; el análisis completo del contrato es del full UW.
+2. Qué extraer
+La IA llena solo estos campos, con cita de archivo y página. Un campo que el documento
+no dice queda como "no está"; nunca se estima.
+2.1 Identificación y contrato
+Campo Definición Tipo Etapa
+Tipo de
+documento
+Presupuesto preliminar, propuesta GMP o
+contrato firmado
+Lista Mini
+Fecha y revisión Fecha del documento y número de revisión Fecha y texto Mini
+Validez de la
+oferta
+Fecha hasta la que el GC sostiene el precio Fecha Mini
+GC Razón social y número de licencia Texto Full
+Tipo de contrato GMP, cost-plus con GMP, cost-plus sin tope o
+lump sum
+Lista Mini
+Planos de base Set y fecha de los planos sobre los que se
+cotizó
+Texto y fecha Mini
+Base de
+superficie
+SF que el GC usa para su costo por SF, y si es
+GSF o NRSF
+Número y
+lista
+Mini
+Ficha: presupuesto del GC
+Page 1 of 8
+
+=== PAGE 56 ===
+2.2 Montos
+Campo Definición Tipo Etapa
+Total del contrato Precio total del GC, con fee y
+contingencia si las incluye
+$ Mini
+Partidas por división CSI Monto de cada división MasterFormat
+(01 a 49)
+$ por
+división
+Full
+Estacionamiento Monto del estacionamiento
+estructurado, si está separado
+$ Mini
+Site work Monto de trabajos de sitio y servicios $ Mini
+General conditions Monto, o costo mensual × meses $ o $/mes Full
+General requirements Monto $ Full
+Fee del GC Porcentaje y base sobre la que se aplica % y texto Full
+Seguros del GC General liability, builder's risk, y si cada
+uno está incluido
+$ y sí/no Mini
+Bonding Payment & performance bond o
+subcontractor default insurance,
+incluido o no
+$ y sí/no Mini
+Contingencia del
+contratista
+Monto o %, quién la controla y si hay
+shared savings
+$, % y
+texto
+Mini
+Contingencia de
+escalamiento
+Monto separado para alzas de precio, si
+existe
+$ Mini
+Allowances Cada allowance: partida y monto Lista de $ Mini
+Alternates Cada alternate: descripción y monto Lista de $ Full
+Unit prices Precios unitarios pactados (roca, suelos
+no aptos, etc.)
+Lista Full
+Ficha: presupuesto del GC
+Page 2 of 8
+
+=== PAGE 57 ===
+2.3 Alcance y condiciones
+2.4 Cláusula de ajuste o fórmula polinómica
+Campo Definición Tipo Etapa
+Exclusiones Lista literal, una por línea Lista de
+texto
+Mini
+Calificaciones Supuestos y aclaraciones del GC Lista de
+texto
+Full
+Partidas "by owner" o
+"TBD"
+Toda partida sin precio o a cargo del
+dueño
+Lista Mini
+Duración de obra Meses desde el notice to proceed hasta
+substantial completion
+Meses Mini
+Liquidated damages Monto por día de atraso $/día Full
+Retainage Porcentaje retenido y cuándo baja % y texto Full
+Permisos e impact fees Si están incluidos en el precio Sí/no Mini
+Campo Definición Tipo Etapa
+Existe cláusula Si el precio se ajusta por índices o materiales Sí/no Mini
+Partidas
+afectadas
+Todo el contrato o solo algunas (acero, concreto,
+cobre, etc.)
+Lista Mini
+Fórmula Texto literal de la fórmula Texto Mini
+Coeficientes Peso de cada componente y parte fija Decimales Mini
+Índices Nombre y publicador de cada índice (por
+ejemplo, PPI del BLS o ENR)
+Texto Mini
+Fecha base Mes del valor base de cada índice Fecha Mini
+Tope y banda Tope del ajuste, y si hay umbral mínimo antes de
+ajustar
+% Mini
+Ficha: presupuesto del GC
+Page 3 of 8
+
+=== PAGE 58 ===
+3. Mapa al Input Sheet
+Lorena debe definir qué incluye C35 (con o sin fee, general conditions, contingencia,
+estacionamiento y site work). Sin esa definición el control cruzado R1 no puede correr.
+4. Qué calcula el motor
+Todo con código, sobre los datos extraídos:
+Costo por SF sobre GSF y sobre NRSF.
+Peso de cada división CSI sobre el total (full UW).
+General conditions + general requirements + fee, como % del costo directo.
+Contingencia total = contingencia del contratista + contingencia del dueño (C39),
+como % del hard cost.
+Allowances totales, como % del hard cost.
+Costo de las exclusiones que no están cubiertas en otra celda (si el documento les da
+monto).
+Ajuste por fórmula polinómica, si existe:
+P = P_0 \left( a + \sum_i b_i \frac{I_i}{I_{i,0}} \right), \quad a + \sum_i 
+b_i = 1
+Dato del presupuesto Celda Uso
+Base de superficie C34 Control: debe coincidir con la base del
+hard cost
+Total del contrato (según la definición
+de C35)
+C35 Control cruzado con el valor del hard cost
+Estacionamiento C37 Control: costo por estacionamiento
+Site work C38 Control cruzado
+Contingencia del contratista C39 Control: evitar doble contingencia
+Exclusiones con costo para el proyecto C40 Control: deben estar en soft costs o en
+otra celda
+Duración de obra C46 Control cruzado
+Ficha: presupuesto del GC
+Page 4 of 8
+
+=== PAGE 59 ===
+P₀ es el precio base, a la parte fija, b ᵢ  el peso de cada componente e I ᵢ  / I ᵢ ,₀ el índice actual
+sobre el de la fecha base. Los coeficientes son DOCUMENTED (del contrato) y los índices
+son OFFICIAL (del publicador que nombra el contrato). En el Base se usa el último índice
+publicado; en el Downside, el alza de índices que fije Lorena como delta de escenario. Si
+hay tope, el ajuste no lo supera.
+5. Reglas de control
+Cada regla produce una fila en la tabla de faltantes o una bandera en la página. Los valores
+entre corchetes son parámetros que fija Lorena.
+# Regla Resultado Etapa
+R1 El total del GC difiere de C35 en más
+de [tolerancia]
+Conflicto: muestra ambos valores Mini
+R2 La base de superficie del GC difiere
+del GSF documentado
+Conflicto Mini
+R3 Una exclusión con costo para el
+proyecto no aparece en soft costs ni
+en otra celda
+Conflicto, con la exclusión literal Mini
+R4 La contingencia del GC está dentro
+del total y C39 se aplica sobre un
+hard cost que ya la incluye
+Conflicto: posible doble
+contingencia
+Mini
+R5 Contingencia total por debajo de
+[mínimo según tipo de documento]
+Bandera Mini
+R6 Allowances por encima de [%] del
+hard cost
+Bandera: costo no cerrado Mini
+R7 Partidas "by owner", "TBD" o en
+blanco
+FALTA, una fila por partida Mini
+R8 Contrato cost-plus sin tope Bandera de costo abierto; la
+consecuencia la define Lorena
+Mini
+R9 Oferta vencida o con más de
+[meses] de antigüedad
+Bandera Mini
+Ficha: presupuesto del GC
+Page 5 of 8
+
+=== PAGE 60 ===
+6. Exclusiones a vigilar
+El lector compara cada exclusión con esta lista. Si coincide y no está cubierta en otra
+celda, aplica R3. El estimador debe completar y ajustar la lista.
+Permisos, impact fees (escuelas, movilidad, parques) y fees de revisión.
+Cargos de las empresas de servicios: conexión de agua y alcantarillado, electricidad y
+gas.
+Testing, inspecciones especiales e inspector de threshold.
+Builder's risk, payment & performance bond o subcontractor default insurance.
+Dewatering, roca, suelos no aptos y remediación de suelos.
+Demolición y servicios temporales.
+Trabajos fuera del sitio exigidos por la ciudad o el condado.
+Low voltage, seguridad, control de acceso y señalética.
+FF&E, amenidades y equipamiento de áreas comunes.
+Paisajismo e irrigación fuera del sitio.
+# Regla Resultado Etapa
+R10 Planos de base distintos o anteriores
+al set vigente
+Conflicto Mini
+R11 Duración del GC distinta de C46 Conflicto Mini
+R12 Builder's risk o bond excluidos y no
+presentes en soft costs
+Conflicto Mini
+R13 Cláusula de ajuste sin tope Bandera Mini
+R14 Los coeficientes de la fórmula no
+suman 1
+Error de lectura: se pregunta Mini
+R15 No hay cláusula de ajuste y el
+documento no es un GMP firmado
+Pregunta: ¿quién absorbe el
+escalamiento?
+Mini
+R16 Costo por SF fuera de la banda de
+los deals propios de Lorena
+Bandera (banda HOUSE, no de
+mercado)
+Mini
+R17 Una división CSI pesa fuera de
+[rango] del total
+Bandera Full
+Ficha: presupuesto del GC
+Page 6 of 8
+
+=== PAGE 61 ===
+Arte público u otros aportes que exija la jurisdicción.
+7. Parámetros que deben fijarse
+8. Ejemplos resueltos (pendiente)
+Antes de usar la ficha, el estimador anota dos o tres presupuestos reales: los campos
+correctos, los conflictos que deberían salir y las exclusiones que deberían detectarse.
+Con esos ejemplos se prueba el lector financiero (bot 8) y el control cruzado (bot 9), y se
+agregan a las pruebas de regresión.
+Parámetro Lo fija Regla
+Definición de C35 (qué incluye el valor del hard
+cost)
+Lorena R1, R4
+Tolerancia entre el total del GC y C35 Lorena R1
+Contingencia mínima por tipo de documento Lorena con el estimador R5
+Allowances máximas como % del hard cost Lorena con el estimador R6
+Antigüedad máxima del presupuesto Lorena R9
+Banda de costo por SF por tipo de producto Lorena, con sus deals
+propios
+R16
+Rangos por división CSI Estimador R17
+Consecuencia de cost-plus sin tope (bandera,
+HOLD o FAIL)
+Lorena R8
+Alza de índices para el Downside Lorena Sección
+4
+Ficha: presupuesto del GC
+Page 7 of 8
+
+=== PAGE 62 ===
+9. Revisión
+Rol Qué revisa Estado
+Estimador o cost
+consultant
+Campos, exclusiones, rangos por división y
+ejemplos
+Pendiente
+Lorena Parámetros, definición de C35 y consecuencias
+de cada bandera
+Pendiente
+Ficha: presupuesto del GC
+Page 8 of 8
+
+=== PAGE 63 ===
+Anexos textuales
+Estos anexos copian, sin resumir ni traducir, las reglas que el manual cita. Vienen de dos
+documentos de Lorena Muzo: las Reglas de la casa v5.1 (MINI-UW SCREEN — MASTER
+PROMPT v5.1, 12/10/2026) y los Estándares de underwriting (Underwriting Standards –
+Input Request, 12/10/2026). Si un anexo y el original difieren, vale el original.
+Anexo A. Los cuatro veredictos y su orden
+Reglas de la casa v5.1, sección 6:
+1. FAIL – DO NOT PURSUE: any Base metric breaches its FAIL level, even after the benefit
+of the doubt on CONDITIONAL items.
+2. HOLD – MORE DD REQUIRED: a CONDITIONAL item could flip the verdict (e.g.,
+exemption on/off).
+3. PASS – PROCEED TO FULL UW: every Base and Downside metric meets PASS, without
+relying on Upside.
+4. HOLD – ECONOMICS NOT SUPPORTED: anything else.
+For FAIL or HOLD, state what would have to be true to pass (RLV, rent multiple, cost
+reduction).
+Estándares, cuadro de reglas del veredicto:
+Verdict rules: ☐  Agree ☒  Edit (see section 4).
+Verdict Rule
+HOLD – More DD required Critical data missing (e.g., unreconciled unit count,
+unknown GBA, undocumented AMI).
+FAIL – Do not pursue Any Base metric is worse than its FAIL level.
+PASS – Proceed to Full UW Every Base and Downside metric meets its PASS
+level.
+HOLD – Economics not supported Anything in between; the memo also shows the
+land price at which the deal would pass.
+Anexos textuales
+Page 1 of 12
+
+=== PAGE 64 ===
+17. Verdict Rules Policy: HOLD – MORE DD REQUIRED: Material information required to
+support the investment conclusion is missing, unresolved or materially uncertain. This
+classification overrides an economic PASS when the missing information could materially
+affect cost, revenue, financing, valuation or equity returns. FAIL – DO NOT PURSUE: Any
+applicable Base Case metric breaches its defined FAIL threshold, or the project cannot
+support the required economics at the current purchase price / JV structure. The Mini-
+UW must still identify the Maximum Supportable Purchase Price or the economic
+condition required to make the project potentially investable. PASS – PROCEED TO FULL
+UW: Every applicable Base and Downside metric meets its PASS threshold, no material DD
+deficiency capable of changing the conclusion remains unresolved, and the project does
+not depend on Upside assumptions to pass. HOLD – ECONOMICS NOT SUPPORTED: The
+project does not breach a FAIL threshold but one or more applicable Base or Downside
+PASS thresholds are not met. The Mini-UW must identify the principal economic
+deficiency and the purchase price, cost, revenue, financing or structural condition
+required for the project to pass. General rule: Only metrics applicable to the project
+strategy may trigger PASS / HOLD / FAIL. A metric that is not applicable to the strategy
+must be treated as N/A and must not cause an automatic failure. Upside assumptions may
+never rescue a weak Base Case.
+Anexo B. Las 10 métricas: niveles PASS y FAIL
+Reglas de la casa v5.1, sección 5:
+Metric PASS Base PASS Downside FAIL Base
+Yield on Cost (min) 6.50% 5.75% 5.25%
+Spread over market cap (min) 100 bps 50 bps 0 bps
+Equity recovered at refi (min) 60% 40% 25%
+Equity cash-in at refi (max) 5% 10% 20%
+Break-even occupancy (max) 85% 90% 93%
+Post-refi cash-on-cash (min) 6.0% 4.0% 3.0%
+Asking price over RLV (max) 0% — 15%
+Equity / TDC (max) 35% 40% 45%
+Levered IRR (min) 15% 12% 10%
+Anexos textuales
+Page 2 of 12
+
+=== PAGE 65 ===
+Metrics that don't apply to the strategy are N/A and never cause an automatic FAIL.
+Estándares, sección 2:
+Min = pass at or above; max = pass at or below; FAIL when Base is worse than the FAIL
+level. Yield on Cost = stabilized NOI ÷ total development cost (TDC). RLV = residual land
+value. * Only if IRR is in scope.
+Anexo C. Deltas del Downside y el Upside, y los 15 drivers
+Reglas de la casa v5.1, sección 4:
+Metric PASS Base PASS Downside FAIL Base
+Equity Multiple, 5 yrs (min) 1.75x 1.50x 1.35x
+Metric (unit) PASS – Base PASS – Downside FAIL – Base
+Yield on Cost, min (%) 6.50% 5.75% 5.25%
+Spread over market cap rate, min (bps) 100 bps 50 bps 0 bps
+Equity recovered at refinance, min (%) 60% 40% 25%
+Equity cash-in at refinance, max (%) 5% 10% 20%
+Break-even occupancy, max (%) 85% 90% 93%
+Post-refi cash-on-cash, min (%) 6.0% 4.0% 3.0%
+Asking price over RLV, max (%) 0% — 15%
+Equity ÷ TDC, max (%) 35% 40% 45%
+Levered IRR, min (%) * 15% 12% 10%
+Equity Multiple over the hold, min (x) * 1.75x 1.50x 1.35x
+Driver Downside Upside (info only)
+Residential rent −10% +5%
+Commercial rent −10% +5%
+Anexos textuales
+Page 3 of 12
+
+=== PAGE 66 ===
+Integrated Downside: all drivers at once.
+Single-driver: each driver alone, ranked by Δ  equity cash-in at refi.
+Robustness check before any FAIL: run Upside + land $0. If it still breaches a FAIL line,
+say "FAIL is robust". No other stress values may be invented.
+Estándares, sección 3 (cambio contra el Base; signo menos para las bajas; * solo si aplica;
+el original está en dos columnas y aquí va en una):
+Driver Downside Upside (info only)
+Residential vacancy +3.0 pts −1.0 pt
+Commercial vacancy +5.0 pts −2.0 pts
+Hard + site + parking cost +10% −5%
+Construction period +6 months −3 months
+Lease-up period +6 months −3 months
+Construction loan rate +150 bps −50 bps
+Permanent loan rate +100 bps −50 bps
+Cap rate at refinance +50 bps −25 bps
+Exit cap rate +50 bps −25 bps
+Insurance +20% −10%
+Property tax +15%, and remove conditional exemption −10%
+Permanent loan max LTV −5.0 pts +5.0 pts
+Rent growth −1.0 pt/yr +0.5 pt/yr
+Driver (unit) Down Up
+Residential rent (% change) -10% +5%
+Commercial rent (% change) -10% +5%
+Residential vacancy (± points) +3.0 pts -1.0 pt
+Commercial vacancy (± points) +5.0 pts -2.0 pts
+Hard + site + parking cost (% change) +10% -5%
+Anexos textuales
+Page 4 of 12
+
+=== PAGE 67 ===
+Anexo D. La regla de N/A
+Reglas de la casa v5.1, sección 5: "Metrics that don't apply to the strategy are N/A and
+never cause an automatic FAIL."
+Estándares, política 17 (regla general): "Only metrics applicable to the project strategy
+may trigger PASS / HOLD / FAIL. A metric that is not applicable to the strategy must be
+treated as N/A and must not cause an automatic failure. Upside assumptions may never
+rescue a weak Base Case."
+Anexo E. Las políticas 1 a 33 de los estándares
+Nota: la política 4 permite un GBA de trabajo por takeoff; por decisión de Underwriten del
+29/10/2026, el sistema no hace takeoffs y pide el GSF como INPUT (C36).
+1. IRR / Equity Multiple Policy: Mini-UW must calculate project-level Equity Multiple and
+Levered IRR using a simplified but auditable cash-flow model. Full UW may later refine
+timing, waterfall, promote and investor-specific distributions.
+2. Return Level Policy: Mini-UW return metrics are calculated at project level on total
+equity invested. LP-specific returns after fees, promote, preferred return or waterfall are
+calculated only when the applicable JV/equity structure is documented and are shown
+Driver (unit) Down Up
+Construction period (± months) +6 months -3 months
+Lease-up period (± months) +6 months -3 months
+Construction loan rate (bps) +150 bps -50 bps
+Permanent loan rate (bps) +100 bps -50 bps
+Cap rate at refinance (bps) +50 bps -25 bps
+Insurance (% change) +20% -10%
+Property tax (% change) +15% -10%
+Permanent loan max LTV (± points) -5.0 pts +5.0 pts
+Exit cap rate (bps) * +50 bps -25 bps
+Rent growth (± points per year) * -1.0 pt/year +0.5 pt/year
+Anexos textuales
+Page 5 of 12
+
+=== PAGE 68 ===
+separately from project-level economics.
+3. Downside Case Policy: Mini-UW must run both one-driver-at-a-time sensitivities and
+an integrated downside case. Single-driver sensitivities identify the variables to which the
+project is most exposed; the integrated downside case determines whether the
+investment remains supportable under simultaneous adverse assumptions.
+4. GBA Policy: When the current plans show GBA as ‘TBD,’ Mini-UW may use a plan-
+derived working GBA from an auditable area takeoff, clearly flagged as PLAN-DERIVED /
+UNDERWRITING ASSUMPTION. The source sheets, takeoff method and reconciliation
+must be retained. If the area cannot be measured reliably or the uncertainty could
+materially change TDC or investment economics, the project must remain HOLD – MORE
+DD REQUIRED.
+5. Tax Exemption Policy: A tax exemption or statutory incentive may be included in the
+Mini-UW Base Case only when there is credible project-specific evidence that the project
+is reasonably expected to qualify. If the benefit is not fully documented, it must be clearly
+flagged as CONDITIONAL / POTENTIAL and the Downside Case must remove or
+materially reduce the benefit. No project may receive a clean PASS if the economics
+depend materially on an undocumented exemption.
+6. Property Tax Policy: For new construction, Mini-UW must estimate stabilized property
+taxes using both an income/value-based proxy and current assessor/comparable
+evidence where available. The Base Case should use the higher supportable tax estimate
+unless a documented statutory exemption or project-specific assessment treatment
+justifies a different result. Any material uncertainty must be flagged and sensitized in
+Downside.
+7. Yield on Cost Policy: Yield on Cost is calculated as stabilized NOI divided by true all-in
+TDC. The house thresholds are default screening gates for ground-up multifamily and
+mixed-use projects and must be evaluated together with the development spread over
+market cap rate. A project cannot receive a clean PASS solely because it meets the
+absolute Yield on Cost threshold if the spread to market cap is insufficient.
+8. Development Spread Policy: Development spread is calculated as stabilized Yield on
+Cost minus the applicable market capitalization rate. The Base Case should maintain a
+minimum positive spread sufficient to compensate for development, lease-up, financing
+and execution risk. A project with a Base Case spread at or below 0 bps cannot receive a
+PASS, regardless of absolute Yield on Cost.
+Anexos textuales
+Page 6 of 12
+
+=== PAGE 69 ===
+9. Equity Recovery at Refinance Policy: Equity recovered at refinance is calculated as net
+cash-out available to equity after construction/bridge debt payoff, refinance costs,
+required reserves and other debt, divided by total equity invested through stabilization.
+The metric applies only to strategies where refinance is part of the business plan. A clean
+PASS requires material capital recycling without relying on unsupported appraisal
+leverage.
+10. Equity Cash-In at Refinance Policy: Equity cash-in at refinance is calculated as
+additional equity required to complete the refinance after applying permanent-loan
+proceeds against construction/bridge debt payoff, refinance costs, required reserves and
+other debt, divided by total equity invested through stabilization. The metric applies only
+when refinance is part of the business plan. A clean PASS should not depend on a material
+second equity injection at stabilization.
+11. Break-Even Occupancy Policy: Break-even occupancy is the minimum stabilized
+occupancy required for effective revenue to cover operating expenses and required debt
+service without additional equity support. Lower is better. A clean PASS requires
+sufficient occupancy cushion to absorb normal vacancy, concessions and operating
+volatility; projects with Base Case break-even occupancy above 93% are considered
+structurally fragile.
+12. Post-Refi Cash-on-Cash Policy: Post-refi cash-on-cash is calculated as annual cash
+flow available to equity after permanent debt service divided by the equity capital still
+invested after refinance. The metric applies only to hold strategies where equity remains
+invested after refinance. A clean PASS requires that the residual equity continue to
+generate an acceptable current return and not rely solely on future appreciation.
+13. Asking Price vs. Residual Land Value Policy: Residual Land Value is the maximum
+land/purchase basis supported by project economics after satisfying required
+development, financing and equity-return thresholds. Asking price is a commercial
+reference only. A clean PASS requires asking price at or below Base Case RLV. If asking
+price exceeds Base Case RLV by more than 15%, the deal is classified as FAIL – DO NOT
+PURSUE at the current asking price, while the Mini-UW must still report the maximum
+supportable purchase price.
+14. Equity-to-TDC Policy: Equity-to-TDC is calculated as total equity required through
+stabilization divided by true all-in TDC. The metric is used to test capital efficiency and
+financing support. For Underwriten, a preferred equity requirement is generally in the
+20%–25% range when supported by market debt and sustainable refinance economics;
+however, lower equity does not automatically improve the underwriting classification
+because it may simply reflect excessive leverage. A clean PASS should generally require
+Anexos textuales
+Page 7 of 12
+
+=== PAGE 70 ===
+Equity-to-TDC at or below 35% in Base and 40% in Downside. A Base Case above 45% is
+considered economically unattractive for the strategy and should be classified as FAIL –
+DO NOT PURSUE unless an explicitly documented alternative capitalization structure
+changes the economics. Equity below 25% of TDC must not be treated as automatically
+superior. The model must verify that the resulting construction leverage is market-
+supported and that permanent refinancing remains supportable under both LTV and
+DSCR.
+15. Levered IRR Policy: Levered IRR is calculated on project-level equity cash flows using
+the actual timing of equity contributions, operating distributions, refinance proceeds and
+exit or terminal value assumptions applicable to the strategy. The Base Case minimum is
+15% and the Downside minimum is 12%. A Base Case below 10% is considered insufficient
+for ground-up development risk. Levered IRR must not be improved through unsupported
+leverage, optimistic refinance proceeds, aggressive exit valuation or delayed recognition
+of equity requirements. IRR must be evaluated together with Equity Multiple, equity
+recovery, Equity-to-TDC and Downside performance.
+16. Equity Multiple Policy: Equity Multiple is calculated as total cash distributions and
+realized equity proceeds divided by total equity invested. For Mini-UW screening, the
+default measurement horizon is five years from stabilization unless a different hold period
+is explicitly documented for the strategy. The Base Case minimum is 1.75x and the
+Downside minimum is 1.50x. A Base Case below 1.35x is considered insufficient for
+ground-up development risk. Equity Multiple must be evaluated together with Levered
+IRR because Equity Multiple does not reflect the timing of cash flows.
+17. Verdict Rules Policy: HOLD – MORE DD REQUIRED: Material information required to
+support the investment conclusion is missing, unresolved or materially uncertain. This
+classification overrides an economic PASS when the missing information could materially
+affect cost, revenue, financing, valuation or equity returns. FAIL – DO NOT PURSUE: Any
+applicable Base Case metric breaches its defined FAIL threshold, or the project cannot
+support the required economics at the current purchase price / JV structure. The Mini-
+UW must still identify the Maximum Supportable Purchase Price or the economic
+condition required to make the project potentially investable. PASS – PROCEED TO FULL
+UW: Every applicable Base and Downside metric meets its PASS threshold, no material DD
+deficiency capable of changing the conclusion remains unresolved, and the project does
+not depend on Upside assumptions to pass. HOLD – ECONOMICS NOT SUPPORTED: The
+project does not breach a FAIL threshold but one or more applicable Base or Downside
+PASS thresholds are not met. The Mini-UW must identify the principal economic
+deficiency and the purchase price, cost, revenue, financing or structural condition
+Anexos textuales
+Page 8 of 12
+
+=== PAGE 71 ===
+required for the project to pass. General rule: Only metrics applicable to the project
+strategy may trigger PASS / HOLD / FAIL. A metric that is not applicable to the strategy
+must be treated as N/A and must not cause an automatic failure. Upside assumptions may
+never rescue a weak Base Case.
+18. Residential Rent Sensitivity Policy: Residential rent sensitivities are applied to
+achievable market rents, not seller or developer asking rents. The standard Mini-UW
+stress is -10% in Downside and +5% in Upside unless stronger project-specific market
+evidence supports a different range. Upside rents may never be used to rescue a weak
+Base Case.
+19. Commercial Rent Sensitivity Policy: Commercial rent sensitivities are applied to
+achievable market rents supported by current comparable evidence, not broker asking
+rents or unsupported pro forma assumptions. The standard Mini-UW stress is -10% in
+Downside and +5% in Upside unless project-specific leasing conditions, tenant quality,
+absorption risk or market evidence justify a different range. For mixed-use projects,
+commercial rent risk must be evaluated separately from residential rent risk. Upside
+commercial rent assumptions may never be used to rescue a weak Base Case.
+20. Residential Vacancy Sensitivity Policy: Residential vacancy sensitivities are applied
+as percentage-point changes to the Base Case stabilized vacancy assumption, not as
+percentage changes to vacancy itself. The standard Mini-UW stress is +3.0 percentage
+points in Downside and -1.0 percentage point in Upside unless project-specific market
+evidence supports a different range. Vacancy assumptions must reflect achievable
+stabilized occupancy, concessions and lease-up conditions. Upside vacancy assumptions
+may never be used to rescue a weak Base Case.
+21. Commercial Vacancy Sensitivity Policy: Commercial vacancy sensitivities are applied
+as percentage-point changes to the Base Case stabilized commercial vacancy
+assumption. The standard Mini-UW stress is +5.0 percentage points in Downside and -2.0
+percentage points in Upside unless project-specific lease, tenant, market or absorption
+evidence supports a different range. Commercial vacancy must be evaluated separately
+from residential vacancy and must reflect realistic lease-up and tenant-retention risk.
+22. Hard Cost Sensitivity Policy: Hard construction, sitework and parking costs are
+stressed together for Mini-UW screening unless a more detailed cost breakdown
+supports separate sensitivities. The standard stress is +10% in Downside and -5% in
+Upside. Cost reductions in Upside must not rely on unsupported value engineering,
+omitted scope or exclusions required to deliver the completed project.
+Anexos textuales
+Page 9 of 12
+
+=== PAGE 72 ===
+23. Construction Period Sensitivity Policy: The standard Mini-UW construction-period
+stress is +6 months in Downside and -3 months in Upside. The change must flow through
+interest carry, taxes, insurance, general conditions, financing costs and other time-
+dependent development costs where applicable. An accelerated schedule may be used in
+Upside only when operationally supportable.
+24. Lease-Up Period Sensitivity Policy: The standard Mini-UW lease-up stress is +6
+months in Downside and -3 months in Upside. The sensitivity must affect the timing of
+stabilization, operating cash flow, interest carry, refinance timing and equity recovery
+where applicable. Lease-up assumptions must be supported by achievable absorption
+rather than developer targets.
+25. Construction Loan Rate Sensitivity Policy: The standard Mini-UW construction-loan-
+rate stress is +150 bps in Downside and -50 bps in Upside relative to the Base Case rate.
+Interest expense must be calculated using the applicable construction draw profile and
+development timing. The model must not reduce equity requirements through
+unsupported construction leverage.
+26. Permanent Loan Rate Sensitivity Policy: The standard Mini-UW permanent-loan-rate
+stress is +100 bps in Downside and -50 bps in Upside relative to the Base Case rate. The
+permanent loan must always be constrained by the lower of the LTV-supported loan and
+the DSCR-supported loan. Lower interest rates in Upside may not be used to override
+leverage or debt-service constraints.
+27. Refinance Cap Rate Sensitivity Policy: The standard Mini-UW refinance
+capitalization-rate stress is +50 bps in Downside and -25 bps in Upside relative to the
+Base Case market cap rate. Stabilized value must be calculated from supportable NOI and
+a market-supported capitalization rate. Cap-rate compression in Upside must not be used
+to rescue a weak Base Case.
+28. Insurance Sensitivity Policy: The standard Mini-UW insurance stress is +20% in
+Downside and -10% in Upside relative to the Base Case annual insurance expense. For
+markets with elevated catastrophe, coastal, flood, wind or replacement-cost exposure, a
+more severe Downside assumption may be required based on project-specific evidence.
+29. Property Tax Sensitivity Policy: The standard Mini-UW property-tax stress is +15% in
+Downside and -10% in Upside relative to the Base Case stabilized property-tax expense.
+Any statutory exemption, abatement or incentive must follow the Tax Exemption Policy.
+The Downside Case must reduce or eliminate benefits that are conditional,
+undocumented or exposed to qualification risk.
+Anexos textuales
+Page 10 of 12
+
+=== PAGE 73 ===
+30. Permanent LTV Sensitivity Policy: The standard Mini-UW permanent-loan maximum-
+LTV stress is -5.0 percentage points in Downside and +5.0 percentage points in Upside
+relative to the Base Case maximum LTV. Permanent loan proceeds must always equal the
+lower of the LTV-constrained loan and the DSCR-constrained loan. Higher LTV in Upside
+may not exceed credible market financing terms and may never be used to rescue a weak
+Base Case.
+31. Exit Cap Rate Sensitivity Policy: When a terminal sale or exit value is included in the
+Mini-UW, the standard exit-cap-rate stress is +50 bps in Downside and -25 bps in Upside
+relative to the Base Case exit cap rate. Exit valuation must be based on supportable
+forward NOI and a defensible market capitalization rate. Cap-rate compression may not
+be assumed solely to achieve the required IRR or Equity Multiple.
+32. Rent Growth Sensitivity Policy: When rent growth is included in the project-level
+cash-flow model, the standard Mini-UW stress is -1.0 percentage point per year in
+Downside and +0.5 percentage point per year in Upside relative to the Base Case annual
+rent-growth assumption. Rent growth must remain consistent with market evidence and
+the applicable hold period. Upside rent growth may not be used to rescue a weak Base
+Case.
+33. Scenario Override and Application Policy: The Section 3 assumptions are
+Underwriten default screening sensitivities and serve as fallback assumptions when
+stronger project-specific evidence is not available. Project-specific market, construction,
+financing, operating or legal evidence may justify a different sensitivity, but every
+override must be explicitly identified as an UNDERWRITING ASSUMPTION, state its
+source and explain why it differs from the Underwriten default. The integrated Downside
+Case must apply all applicable Downside drivers simultaneously. One-driver-at-a-time
+sensitivities must also be reported separately to identify the variables with the greatest
+impact on project economics. Upside assumptions are informational only and may never
+convert a project that fails Base Case requirements into PASS – PROCEED TO FULL UW.
+Anexo F. Los 7 bloques de la página
+Reglas de la casa v5.1, sección 7:
+1. Header: deal · units (affordable) + commercial SF · date · VERDICT block · one-line
+reason in plain numbers.
+2. Left: THE $10 STORY (Base | Downside): I put in $10 · refi month · I get back $X · I must
+ADD $X · still invested · equity value retained · annual cash flow · CoC · EM · IRR · total
+equity $. Right: KEY NUMBERS (Base | Downside | per unit): TDC and its parts · equity ·
+Anexos textuales
+Page 11 of 12
+
+=== PAGE 74 ===
+NOI · value · perm loan by LTV / by DSCR / binding · construction payoff · net cash-out ·
+cap rate and binding constraint.
+3. SCORECARD: 10 metrics × Base | Downside | thresholds | Base result (PASS / HOLD /
+FAIL) | Downside result (PASS / MISS). Add a one-line footnote for any counter-intuitive
+result.
+4. Left: RISK. Top 5 single drivers · RLV · max TDC · "to pass you need". Right: TOP 3 RISKS,
+one line each.
+5. Left: INPUT TRACE. Count of numbers by tag (INPUT / DOCUMENTED / OFFICIAL /
+HOUSE / CONDITIONAL) + exemption on/off effect. Right: DEVIATIONS — only those
+requested in the Input Sheet; otherwise "None requested".
+Backup tab: Input Sheet values echoed with tags; plans vs Input Sheet check; NOI build ($
+and $/unit, tax proxy vs comps); scenario summary; annual equity cash flow; single-driver
+table; OFFICIAL sources with links.
+Anexos textuales
+Page 12 of 12

@@ -1,0 +1,393 @@
+=== SHEET Inputs ===
+A1 | MINI-UW INPUT SHEET — only what Underwriten fills, one per deal (Master Prompt v5.1)
+A2 | Fill the yellow cells. REQUIRED blanks stop the screen; Claude never fills them. Program data comes from the plans; thresholds, scenarios, hold period and Live Local rules are in the prompt.
+A3 | Deal:
+B3 | 
+D3 | Date:
+E3 | 
+A5 | A. RENTS — COMPARABLES
+A6 | Field
+B6 | Unit / format
+C6 | Value
+D6 | Req.
+E6 | Notes
+F6 | Source (who / document)
+A7 | Rent basis
+B7 | PER UNIT / PER SF
+C7 | 
+D7 | REQUIRED
+E7 | Per unit = $/month; per SF = $/SF/month
+F7 | 
+A8 | Market rent – Studio
+B8 | $
+C8 | 
+D8 | REQUIRED
+E8 | 
+F8 | 
+A9 | Market rent – 1BR
+B9 | $
+C9 | 
+D9 | REQUIRED
+E9 | 
+F9 | 
+A10 | Market rent – 2BR
+B10 | $
+C10 | 
+D10 | REQUIRED
+E10 | 
+F10 | 
+A11 | Market rent – 3BR
+B11 | $
+C11 | 
+D11 | REQUIRED
+E11 | Add rows for other unit types
+F11 | 
+A12 | Rent comps reference
+B12 | text
+C12 | 
+D12 | REQUIRED
+E12 | Comp names / survey date
+F12 | 
+A13 | Other income
+B13 | $/unit/month
+C13 | 
+D13 | REQUIRED
+E13 | 
+F13 | 
+A14 | Residential vacancy & credit loss
+B14 | decimal
+C14 | 
+D14 | REQUIRED
+E14 | 
+F14 | 
+A15 | Lease-up concessions
+B15 | decimal of rent
+C15 | 
+D15 | REQUIRED
+E15 | 
+F15 | 
+A16 | Retail rent NNN
+B16 | $/SF/yr
+C16 | 
+D16 | IF APPLIES
+E16 | Only if the plans show retail
+F16 | 
+A17 | Restaurant rent NNN
+B17 | $/SF/yr
+C17 | 
+D17 | IF APPLIES
+E17 | Only if the plans show restaurant
+F17 | 
+A18 | Office rent NNN
+B18 | $/SF/yr
+C18 | 
+D18 | IF APPLIES
+E18 | Only if the plans show office
+F18 | 
+A19 | Commercial vacancy
+B19 | decimal
+C19 | 
+D19 | IF APPLIES
+E19 | Only if commercial
+F19 | 
+A20 | Commercial non-recoverable
+B20 | decimal
+C20 | 
+D20 | IF APPLIES
+E20 | Only if commercial
+F20 | 
+A21 | Commercial lease start after TCO
+B21 | months
+C21 | 
+D21 | IF APPLIES
+E21 | Only if commercial
+F21 | 
+A23 | B. AFFORDABLE UNITS (only if the plans show affordable units)
+A24 | Field
+B24 | Unit / format
+C24 | Value
+D24 | Req.
+E24 | Notes
+F24 | Source (who / document)
+A25 | Utility allowance – Studio
+B25 | $/month
+C25 | 
+D25 | IF APPLIES
+E25 | 
+F25 | 
+A26 | Utility allowance – 1BR
+B26 | $/month
+C26 | 
+D26 | IF APPLIES
+E26 | 
+F26 | 
+A27 | Utility allowance – 2BR
+B27 | $/month
+C27 | 
+D27 | IF APPLIES
+E27 | 
+F27 | 
+A28 | Utility allowance – 3BR
+B28 | $/month
+C28 | 
+D28 | IF APPLIES
+E28 | 
+F28 | 
+A30 | C. COSTS
+A31 | Field
+B31 | Unit / format
+C31 | Value
+D31 | Req.
+E31 | Notes
+F31 | Source (who / document)
+A32 | Land / asking price
+B32 | $
+C32 | 
+D32 | OPTIONAL
+E32 | Blank = screen reports land value (RLV) only
+F32 | 
+A33 | Land closing costs
+B33 | decimal
+C33 | 
+D33 | REQUIRED
+E33 | 
+F33 | 
+A34 | Hard cost basis
+B34 | $/GSF / $/UNIT / TOTAL
+C34 | 
+D34 | REQUIRED
+E34 | 
+F34 | 
+A35 | Hard cost value
+B35 | per basis
+C35 | 
+D35 | REQUIRED
+E35 | Vertical building, excl. parking & site
+F35 | 
+A36 | Building GSF
+B36 | SF
+C36 | 
+D36 | IF APPLIES
+E36 | Only if basis = $/GSF and the plans show GBA as TBD
+F36 | 
+A37 | Parking cost
+B37 | $/space
+C37 | 
+D37 | REQUIRED
+E37 | 
+F37 | 
+A38 | Site work
+B38 | $
+C38 | 
+D38 | REQUIRED
+E38 | 
+F38 | 
+A39 | Hard contingency
+B39 | decimal
+C39 | 
+D39 | REQUIRED
+E39 | 
+F39 | 
+A40 | Soft costs (incl. dev fee)
+B40 | decimal of hard
+C40 | 
+D40 | REQUIRED
+E40 | 
+F40 | 
+A41 | TI / LC
+B41 | $/commercial SF
+C41 | 
+D41 | IF APPLIES
+E41 | Only if commercial
+F41 | 
+A42 | Soft costs drawn up front (months 1–3)
+B42 | decimal
+C42 | 
+D42 | REQUIRED
+E42 | 
+F42 | 
+A44 | D. SCHEDULE
+A45 | Field
+B45 | Unit / format
+C45 | Value
+D45 | Req.
+E45 | Notes
+F45 | Source (who / document)
+A46 | Construction period
+B46 | months
+C46 | 
+D46 | REQUIRED
+E46 | 
+F46 | 
+A47 | Lease-up period
+B47 | months
+C47 | 
+D47 | REQUIRED
+E47 | 
+F47 | 
+A49 | E. CONSTRUCTION LOAN
+A50 | Field
+B50 | Unit / format
+C50 | Value
+D50 | Req.
+E50 | Notes
+F50 | Source (who / document)
+A51 | LTC
+B51 | decimal
+C51 | 
+D51 | REQUIRED
+E51 | 
+F51 | 
+A52 | Interest rate
+B52 | decimal
+C52 | 
+D52 | REQUIRED
+E52 | 
+F52 | 
+A53 | Origination fee
+B53 | decimal
+C53 | 
+D53 | REQUIRED
+E53 | 
+F53 | 
+A55 | F. OPERATING EXPENSES
+A56 | Field
+B56 | Unit / format
+C56 | Value
+D56 | Req.
+E56 | Notes
+F56 | Source (who / document)
+A57 | Controllable opex
+B57 | $/unit/yr
+C57 | 
+D57 | REQUIRED
+E57 | Payroll, R&M, utilities, admin, marketing, contracts
+F57 | 
+A58 | Management fee
+B58 | decimal of res. EGI
+C58 | 
+D58 | REQUIRED
+E58 | 
+F58 | 
+A59 | Insurance
+B59 | $/unit/yr
+C59 | 
+D59 | REQUIRED
+E59 | 
+F59 | 
+A60 | Replacement reserves
+B60 | $/unit/yr
+C60 | 
+D60 | REQUIRED
+E60 | 
+F60 | 
+A61 | Assessment ratio (assessed ÷ market value)
+B61 | decimal
+C61 | 
+D61 | REQUIRED
+E61 | 
+F61 | 
+A62 | Property tax comps
+B62 | $/unit/yr
+C62 | 
+D62 | REQUIRED
+E62 | 
+F62 | 
+A64 | G. PERMANENT LOAN, VALUE AND EXIT
+A65 | Field
+B65 | Unit / format
+C65 | Value
+D65 | Req.
+E65 | Notes
+F65 | Source (who / document)
+A66 | Market cap rate at refinance
+B66 | decimal
+C66 | 
+D66 | REQUIRED
+E66 | 
+F66 | 
+A67 | Exit cap rate
+B67 | decimal
+C67 | 
+D67 | REQUIRED
+E67 | 
+F67 | 
+A68 | Sale costs
+B68 | decimal
+C68 | 
+D68 | REQUIRED
+E68 | 
+F68 | 
+A69 | Perm loan rate
+B69 | decimal
+C69 | 
+D69 | REQUIRED
+E69 | 
+F69 | 
+A70 | Amortization
+B70 | years
+C70 | 
+D70 | REQUIRED
+E70 | 
+F70 | 
+A71 | Max LTV
+B71 | decimal
+C71 | 
+D71 | REQUIRED
+E71 | 
+F71 | 
+A72 | Min DSCR
+B72 | x
+C72 | 
+D72 | REQUIRED
+E72 | 
+F72 | 
+A73 | Refi costs
+B73 | decimal of loan
+C73 | 
+D73 | REQUIRED
+E73 | 
+F73 | 
+A74 | Perm reserves
+B74 | $/unit
+C74 | 
+D74 | REQUIRED
+E74 | 
+F74 | 
+A75 | Rent growth
+B75 | decimal / yr
+C75 | 
+D75 | REQUIRED
+E75 | 
+F75 | 
+A76 | Expense growth
+B76 | decimal / yr
+C76 | 
+D76 | REQUIRED
+E76 | 
+F76 | 
+A78 | H. ALTERNATIVES TO TEST (optional)
+A79 | Field
+B79 | Unit / format
+C79 | Value
+D79 | Req.
+E79 | Notes
+F79 | Source (who / document)
+A80 | Alternative 1
+B80 | input = value
+C80 | 
+D80 | OPTIONAL
+E80 | e.g., Market cap rate = …
+F80 | 
+A81 | Alternative 2
+B81 | input = value
+C81 | 
+D81 | OPTIONAL
+E81 | 
+F81 | 
+A82 | Alternative 3
+B82 | input = value
+C82 | 
+D82 | OPTIONAL
+E82 | 
+F82 | 

@@ -1,0 +1,308 @@
+
+=== PAGE 1 ===
+MINI-UW / REVISIÓN DE PROCESOS Y DATOS
+Del documento a la decisión
+Mapa maestro: estado actual, controles pendientes y salida esperada.
+Corte: reconstrucción 0.3.0 · 31 oct 2026 · Esquema de revisión, no aprobación de underwriting. 1 / 7
+Implementado Prueba sintética Pendiente de habilitar Detiene el proceso
+A. FLUJO DOCUMENTAL DISPONIBLE
+IMPLEMENTADO
+1 Originales
+PDF, Input Sheet, GC,
+banco y developer.
+IMPLEMENTADO
+2 Recepción
+Archivo, tipo declarado,
+páginas, texto y SHA-256.
+IMPLEMENTADO
+3 Lecturas citadas
+Registro manual o JSON;
+página, literal y unidad.
+IMPLEMENTADO
+4 Conciliación
+Coincidencias, conflictos,
+versiones y sumas.
+IMPLEMENTADO
+5 Candidato
+Valores + fuentes +
+transformaciones +
+bloqueos.
+CONEXIÓN AL MOTOR REAL: CERRADA
+Un candidato no ejecuta finanzas. Faltan controles de evidencia, reglas y parámetros aprobados. Si hay faltantes o conflictos, se detiene la corrida.
+B. FLUJO OBJETIVO PARA UN DEAL REAL
+FLUJO OBJETIVO
+C1
+Datos completos
+FLUJO OBJETIVO
+Motor + C2
+Modelo cerrado
+FLUJO OBJETIVO
+Escenarios
+15 drivers y C2
+FLUJO OBJETIVO
+C3
+Scorecard
+FLUJO OBJETIVO
+Hoja + C4
+Reporte auditado
+FLUJO OBJETIVO
+Lorena
+Aprueba el PASS
+FLUJO OBJETIVO
+Full UW
+Análisis integral
+RUTA DE DESARROLLO SEPARADA
+Caso ficticio + perfil explícito > motor y escenarios > PDF / Excel / JSON de prueba. No habilita un deal real.
+
+=== PAGE 2 ===
+MINI-UW / REVISIÓN DE PROCESOS Y DATOS
+Qué entra, qué se conserva y qué se compara
+Los originales permanecen intactos; cada dato candidato conserva su origen.
+Corte: reconstrucción 0.3.0 · 31 oct 2026 · Esquema de revisión, no aprobación de underwriting. 2 / 7
+IMPLEMENTADO
+Input Sheet original
+55 campos. Valor de C, fuente de F, celda
+y estado.
+IMPLEMENTADO
+Planos y documentos PDF
+Programa, GC, banco, developer y copias
+oficiales.
+OBJETIVO / PENDIENTE
+Reglas y configuración
+v5.1, estándares, decisiones, parámetros y
+conflictos.
+IMPLEMENTADO
+Lectura de celdas
+Vacío, cero y texto se distinguen. Fórmulas no
+se ejecutan.
+IMPLEMENTADO
+Página y lectura citada
+Hash + página + cita + literal + unidad + lector
+declarado.
+OBJETIVO / PENDIENTE
+Control de autoridad
+Decisión pendiente permanece pendiente. No
+se activa por copia.
+IMPLEMENTADO
+Conciliar y mapear
+Comparar lecturas y celdas. Revisar unidades,
+GSF y totales. Una discrepancia conserva las
+dos fuentes; no se vota ni se sobrescribe.
+IMPLEMENTADO
+Paquete candidato
+Valores, trazabilidad, opciones y bloqueos. Sin
+veredicto.
+snapshot nuevo
+TRAZA DE CADA DATO
+Documento + SHA-256 > página / celda > literal > formato y unidad > transformación > campo del motor.
+Corrección: lectura nueva con referencia a la anterior. Cambio de fuente o código: candidato desactualizado.
+Una cita coincidente no acredita el significado del campo, autenticidad oficial ni independencia de lectores A/B.
+
+=== PAGE 3 ===
+MINI-UW / REVISIÓN DE PROCESOS Y DATOS
+Los cuatro controles de salida
+Una falla no se arregla eligiendo otro número: detiene, documenta y vuelve al origen pertinente.
+Corte: reconstrucción 0.3.0 · 31 oct 2026 · Esquema de revisión, no aprobación de underwriting. 3 / 7
+PARCIAL: PRODUCCIÓN CERRADA
+C1 · Completitud
+Entradas, programa, fuentes,
+conflictos, aplicabilidad, decisiones y
+parámetros.
+Si falla
+DETENER / DOCUMENTAR
+Corrección de entradas
+Tabla única de faltantes y conflictos.
+Nueva lectura / documento.
+Si cumple > siguiente etapa
+PROBADO CON CASO FICTICIO
+C2 · Finanzas
+Convergencia, fuentes = usos,
+deuda y cierre del flujo en cada
+escenario.
+Si falla
+DETENER / DOCUMENTAR
+Corrección del modelo
+No publicar cifras. Revisar datos,
+convenciones e integridad.
+Si cumple > siguiente etapa
+JUEZ SINTÉTICO DISPONIBLE
+C3 · Conclusión
+10 métricas, límites inclusivos, N/A
+justificado y dependencia de
+condicionales.
+Si falla
+DETENER / DOCUMENTAR
+Bloqueo de conclusión
+Upside no rescata Base.
+Incertidumbre material puede anular
+un PASS económico.
+Si cumple > siguiente etapa
+CONTROL DE RENDER DISPONIBLE
+C4 · Auditoría
+Cifras de PDF / Excel contra JSON,
+etiquetas y revisión independiente.
+Si falla
+DETENER / DOCUMENTAR
+Rehacer y auditar
+Corregir el reporte; respetar el límite
+de iteraciones aprobado.
+Si cumple > siguiente etapa
+PUNTO DE REVISIÓN
+Hoy C1 no libera deals reales. C2/C3 se ejercitan en el laboratorio. C4 coteja el render; la auditoría financiera independiente sigue pendiente.
+
+=== PAGE 4 ===
+MINI-UW / REVISIÓN DE PROCESOS Y DATOS
+Cómo circulan los datos financieros
+Módulos disponibles en laboratorio; el perfil de prueba no constituye una política aprobada.
+Corte: reconstrucción 0.3.0 · 31 oct 2026 · Esquema de revisión, no aprobación de underwriting. 4 / 7
+PROBADO EN SINTÉTICO
+1 Programa e inputs
+Unidades, SF, rentas, vacancia, costos
+y datos oficiales suministrados.
+PROBADO EN SINTÉTICO
+2 Ingresos y gastos
+GPR > EGI > OPEX e impuesto por
+proxy / comparables > NOI.
+PROBADO EN SINTÉTICO
+3 Desarrollo mensual
+Hard, soft, terreno y cronograma;
+equity-first, deuda e intereses.
+PROBADO EN SINTÉTICO
+4 Control C2
+Iteración convergente, fuentes/usos y
+rollforward de deuda.
+PROBADO EN SINTÉTICO
+8 Escenarios y juez
+Base / Downside / Upside, 15 drivers,
+robustez, exención y C3.
+PROBADO EN SINTÉTICO
+7 Retornos y RLV
+Flujos de equity > IRR / EM; YoC, CoC
+y RLV experimental.
+PROBADO EN SINTÉTICO
+6 Tenencia y venta
+Crecimiento, servicio de deuda, NOI
+forward y salida.
+PROBADO EN SINTÉTICO
+5 Refinanciamiento
+Menor préstamo LTV / DSCR >
+cash-out o cash-in; equity remanente.
+C2 se repite en cada escenario
+OBJETIVO / PENDIENTE
+Ajustes contractuales
+Polinómica del GC, coeficientes, índices y cap; tasas variables, fechas y calendario
+hábil. Componentes probados; enlace completo a la deuda / presupuesto aún
+pendiente.
+PROBADO EN SINTÉTICO
+Resultados y artefactos
+results.json > preview PDF de una página + Excel con Backup + control de render.
+Caso ficticio: sin aprobación ni veredicto de inversión real.
+Las convenciones elegidas quedan guardadas por corrida.
+
+=== PAGE 5 ===
+MINI-UW / REVISIÓN DE PROCESOS Y DATOS
+La hoja Mini-UW y el paso al Full UW
+El screening entrega una conclusión preliminar; el Full UW profundiza variables y factibilidad.
+Corte: reconstrucción 0.3.0 · 31 oct 2026 · Esquema de revisión, no aprobación de underwriting. 5 / 7
+HOJA EJECUTIVA OBJETIVO · 1 PÁGINA
+Deal · fecha · conclusión · motivo principal
+Relato de $10
+Retorno, plazo, capital y flujo.
+Cifras clave
+Base / Downside y por unidad.
+Scorecard · 10 métricas
+Valores, umbrales, N/A y resultado por escenario.
+Sensibilidades y RLV
+Drivers y condiciones para pasar.
+Riesgos principales
+DD y factores condicionantes.
+Trazabilidad · condicionales · desviaciones solicitadas
+CONCLUSIÓN PRELIMINAR
+OBJETIVO
+PASS
+Avanzar a Full UW.
+OBJETIVO
+HOLD
+Más DD o economía no
+soportada.
+OBJETIVO
+FAIL
+No continuar bajo
+estas condiciones.
+OBJETIVO / PENDIENTE
+Revisión de Lorena
+Solo el PASS aprobado habilita el
+Full UW.
+OBJETIVO / PENDIENTE
+Volver o descartar
+HOLD: resolver / revisar. FAIL: no
+avanzar.
+ETAPA POSTERIOR AL SCREENING
+Full UW · análisis integral
+Arquitectura e ingeniería, construcción, cronograma, finanzas, operación, salida y
+riesgos. Variaciones, escenarios y factibilidad del proyecto.
+PASS aprobado
+Además de la hoja: Excel (página + Backup) y resumen mientras Q20 conserve la
+opción A del paquete vigente.
+Estado de archivos: recibido Input Sheet de 55 campos y preview PDF; no se encontró un Excel maestro Full UW.
+Para revisar: ¿se ve el origen de cada dato, dónde se detiene el flujo y qué debe cumplirse antes de avanzar?
+Referencias: Master v5.1 · Manual / Prompt v2.2 · avance 0.3.0 · contrato de producto. Los 117 tests son técnicos.
+
+=== PAGE 6 ===
+MINI-UW / REVISIÓN DE PROCESOS Y DATOS
+Cuántos Dots y bots estamos construyendo
+Arquitectura objetivo y agrupación funcional propuesta; no equivale a agentes de IA desplegados.
+Corte: reconstrucción 0.3.0 · 31 oct 2026 · Esquema de revisión, no aprobación de underwriting. 6 / 7
+7 Dots funcionales propuestos 17 bots: 16 por deal + pruebas 0 agentes IA autónomos activados
+AGRUPACIÓN FUNCIONAL PROPUESTA
+Dot 1 · Deal Intake Manager
+Bots 1, 2 y 3: coordinación, recepción y clasificación. El feedback propone comenzar con un coordinador.
+OBJETIVO / PENDIENTE
+Dot 2 · Input Sheet Validator
+Bot 4: lectura de celdas, estados y validaciones.
+OBJETIVO / PENDIENTE
+Dot 3 · Plans & Area Auditor
+Bots 5, 6 y 7: lectores A/B y conciliador de
+programa.
+OBJETIVO / PENDIENTE
+Dot 4 · Official Data Researcher
+Bots 10 y 11: investigación y verificación oficial.
+OBJETIVO / PENDIENTE
+Dot 5 · Calculation Engine
+Bots 8, 9, 12, 13 y 14: documentos financieros,
+controles, motor y juez.
+OBJETIVO / PENDIENTE
+Dot 6 · Report Generator
+Bot 15: hoja de una página, Excel de respaldo y
+resumen.
+OBJETIVO / PENDIENTE
+Dot 7 · Independent Auditor
+Bot 16: auditoría independiente de cifras y
+entregables.
+Bot 17 · Pruebas transversales. Hoy: 117 tests. Las 21 pruebas de aceptación del manual siguen pendientes.
+
+=== PAGE 7 ===
+MINI-UW / REVISIÓN DE PROCESOS Y DATOS
+Los 17 bots: función y estado real
+Objetivo por deal: 7 bots con IA y 9 determinísticos. El bot 17 es de pruebas, fuera de la corrida del deal.
+Corte: reconstrucción 0.3.0 · 31 oct 2026 · Esquema de revisión, no aprobación de underwriting. 7 / 7
+# FUNCIÓN DOT TIPO OBJETIVO ESTADO ACTUAL · 0.3.0
+1 Orquestador 1 Python Parcial: corridas/versiones; orquestación pendiente.
+2 Recepción 1 Python Parcial: inventario, hashes, páginas y texto.
+3 Clasificador 1 IA Pendiente: el usuario declara el tipo del documento.
+4 Validador Input Sheet 2 Python Parcial: 55 campos; rangos aprobados pendientes.
+5 Lector de planos A 3 IA + Python Parcial: texto y citas; semántica automática pendiente.
+6 Lector de planos B 3 IA visión Pendiente: sin lector visual independiente.
+7 Conciliador 3 Python Parcial: comparación exacta; independencia pendiente.
+8 Lector financiero 5 IA + Python Parcial: citas/JSON; sin extracción automática.
+9 Control cruzado 5 Python Parcial: celdas, GSF, unidades y algunas diferencias.
+10 Investigador oficial 4 IA + web Pendiente: sin investigación oficial automatizada.
+11 Verificador oficial 4 Python Parcial: copia/hash/ubicación; autenticidad pendiente.
+12 Guardián de completitud 5 Python Parcial: consolida bloqueos; no libera deals reales.
+13 Motor financiero 5 Python Sintético: modelo mensual, escenarios y métricas.
+14 Juez / scorecard 5 Python Sintético: diez métricas y reglas de conclusión.
+15 Redactor y maquetador 6 IA + Python Sintético: preview PDF/Excel; hoja final pendiente.
+16 Auditor 7 IA + Python Parcial: render; auditoría independiente pendiente.
+17 Bot de pruebas Todos Python Suite actual: 117 tests; aceptación manual pendiente.
+Los bots son responsabilidades de software. No existe hoy una ejecución autónoma completa de los 17.
+Fuentes: Feedback Dots (7 funciones), Bots y herramientas y Especificación técnica del Manual v2.2; estado según código 0.3.0.

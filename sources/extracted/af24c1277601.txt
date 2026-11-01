@@ -1,0 +1,273 @@
+
+=== PAGE 1 ===
+U N D E RW R I T E N  ·  W O R K I N G  B L U E P R I N T ·  3 0  O C T 2 0 2 6  ·  V E R S I Ó N  3 . 1  ( C O R R I G E  L A 3 . 0 )
+MINI-UW 3.1
+Framework & Roadmap
+Plan de trabajo para construir un Mini-Underwriting automatizado, repetible y trazable, sujeto a la aprobación final de Lorena. Esta
+versión unifica las fuentes: las reglas salen de los documentos de Lorena, y el manual, el prompt de ejecución y este roadmap
+quedan alineados.
+Operación repetible
+Automatizar inventario, extracción, validaciones
+formalizadas, cálculos, escenarios y reportes.
+Sin supuestos
+Los vacíos siguen siendo null, los conflictos se muestran
+y ninguna regla se inventa.
+Control humano
+Lorena decide las políticas y es la única que aprueba un
+PASS para pasar al full UW.
+Principios no negociables
+01 Todo número tiene etiqueta, fuente y traza hasta el origen.
+02 La IA lee, clasifica o redacta; Python valida, reconcilia y calcula.
+03 No se elige en silencio entre documentos o lecturas que se contradicen.
+04 Un dato faltante no se convierte en cero; lo que depende de él queda n/a.
+05 Si hay un bloqueo, el proceso se detiene antes de calcular o emitir veredicto. No hay reglas provisorias (Manual v2.2, cambio 5).
+06 Cada corrida conserva archivos, hashes, versiones, configuración y logs.
+Fuentes rectoras y nombres únicos CORREGIDO
+DOCUMENTO AUTOR ESTADO QUÉ RIGE
+Reglas de la casa v5.1 (MINI-UW
+SCREEN — MASTER PROMPT v5.1,
+12/10/2026)
+Lorena Muzo Vigente Umbrales, escenarios, motor, veredicto, página y Backup. Es la fuente de toda regla de
+underwriting
+Estándares de underwriting (Input
+Request, políticas 1 a 33, 12/10/2026)
+Lorena Muzo Vigente Definiciones y políticas que acompañan a las reglas v5.1
+Manual v2.2 Underwriten Borrador para Lorena Procedimiento, bots, especificación técnica, ficha del GC y anexos A a F transcritos
+textuales de los dos documentos anteriores
+Prompt de ejecución v2.2 Underwriten Borrador para Lorena Cómo se corre cada deal: configuración, pasos 4.1 a 4.10, controles y formatos de
+respuesta
+Resumen para revisión Underwriten Borrador para Lorena La versión corta para que Lorena decida las preguntas 1 a 20
+Input Sheet (versión vigente) Underwriten / Lorena Vigente: el original de
+55 campos
+Los valores de cada deal. El workbook "v5.2 DRAFT" es una propuesta y no rige hasta
+que Lorena apruebe sus campos
+"Reglas de la casa v5.2" es la versión futura de las reglas, con las decisiones de Lorena. No existe todavía. Draft for project planning – not approved for live underwriting · 1
+
+=== PAGE 2 ===
+01 Roadmap maestro
+Las fases pueden tener tareas técnicas en paralelo, pero las puertas de control no se omiten. No se asignan duraciones: el esfuerzo depende de las decisiones de Lorena y del alcance de
+la infraestructura.
+FASE WORKSTREAM TRABAJO ENTREGABLES CRITERIO DE SALIDA
+0 Control de fuentes Congelar inventario y nombres; registrar divergencias
+entre documentos. Las reglas v5.1 y los estándares
+ya están incorporados como anexos A a F del Manual
+v2.2
+Source Register, Conflict Register Ninguna contradicción resuelta por inferencia
+1 Paquete de decisiones
+para Lorena
+Preparar Q1 a Q20 y los parámetros pendientes con
+contexto, alternativas, módulos afectados e impacto
+en el caso ficticio; no elegir por ella
+Decision Package; matriz de
+configuración
+Cada decisión tiene ID, fuente, impacto y dueño
+2 Input Sheet + contratos
+de datos
+Diccionario de los 55 campos, IDs estables, cinco
+estados, formatos, aplicabilidad, validaciones;
+conservar el original
+Input Sheet v5.2 (propuesta), Variable
+Dictionary, JSON schemas, config
+skeleton
+Cada campo trazable; las reglas no aprobadas
+siguen desactivadas
+3 Motor financiero y
+escenarios
+Implementar en Python las fórmulas de las reglas
+v5.1, incluida la polinómica de ajuste; bloquear lo que
+dependa de decisiones ausentes
+Engine modules, results.json, scenario
+engine
+Casos controlados; fuentes = usos; convergencia;
+el flujo cierra
+4 Extracción y datos
+oficiales
+Clasificación, lectura A/B independiente de PDF con
+texto, reconciliación, extracción financiera, búsqueda
+oficial solo en dominios aprobados
+inventory, doc_map, program,
+fin_docs, official
+Cada dato tiene evidencia; los desacuerdos no se
+resuelven solos
+5 Página, auditoría y
+pruebas
+Página de una hoja y, según Q20, el Excel con
+Backup; auditor independiente; caso dorado y 21
+pruebas
+onepager.pdf, miniuw.xlsx (Q20),
+audit.json, test_report.json
+Pasan los controles y la auditoría no deja
+diferencias abiertas
+6 Lectura de planos, fase
+2 AGREGADO
+Ampliar los lectores A y B a planos escaneados
+(OCR) y a DWG (y RVT o IFC si hace falta). Solo
+valores escritos: nunca medir ni contar
+Lectores ampliados; pruebas con los
+surveys de 1101 N Federal
+Mismas 21 pruebas; hasta entonces el sistema se
+detiene ante planos escaneados o en CAD
+7 Piloto controlado y
+aprobación
+Casos de prueba y luego un piloto paralelo
+supervisado; paquete final para Lorena
+Release candidate, runbook, review
+package
+Lorena aprueba la configuración
+Dependencias críticas
+ANTES DE SE NECESITA
+Reglas definitivas Decisiones Q1 a Q14 de Lorena (Q15 a Q20 tienen la opción A = reglas v5.1 mientras no decida)
+Activar validaciones Rangos por campo, formato de porcentajes, aplicabilidad de OPTIONAL e IF APPLIES
+Cerrar el dominio del GC Ficha aprobada por estimador y Lorena; reglas R1 a R16 marcadas "Mini"
+Producción financiera Convenciones del motor (PAR-03 a PAR-06), tolerancias y golden case aceptado
+Draft for project planning – not approved for live underwriting · 2
+
+=== PAGE 3 ===
+02 Flujo operativo por deal
+Ciclo de producción del Prompt de ejecución v2.2: pasos 4.1 a 4.10 y cuatro controles.
+PASO ETAPA / CONTROL CONDICIÓN / ACCIÓN
+4.1 Recepción e inventario Lista archivos, tipo, páginas, capa de texto y SHA-256. Se detiene si faltan planos o Input Sheet, si el sheet no es la versión
+vigente o si los planos están escaneados o en CAD (hasta la fase 6)
+4.2 Lectura del Input Sheet Celdas tal cual, null preservado y uno de cinco estados; rangos solo con parámetros aprobados
+4.3 Extracción del programa Lecturas A/B independientes; sumas, portada, site-data sheet y narrativa; ficha del GC si hay presupuesto
+4.4 Datos oficiales Renta FHFC al 120 % AMI, millage por folio y Live Local según la fecha del permiso de obra (HB 1389, 2026); link, vigencia y
+copia
+C1 Completitud Faltantes, inválidos, conflictos, preguntas Q1 a Q14 sin decidir y parámetros vacíos. Si bloquean: una tabla y se detiene
+4.6 Motor Modelo mensual de las reglas v5.1: áreas, ingresos, gastos, costos (con polinómica si el contrato la trae), flujo, refinanciamiento,
+tenencia y venta, RLV
+C2 Integridad financiera Convergencia, fuentes = usos y cierre del flujo. Si falla, no reporta
+4.7 Escenarios Downside integrado, 15 drivers, Upside, exención prendida y apagada, prueba de robustez; C2 en cada uno
+4.8 Scorecard y veredicto 10 métricas, regla de borde, N/A y orden fijo (anexos A, B y D)
+C3 Integridad del veredicto HOLD – MORE DD anula un PASS económico; el Upside no rescata un Base débil
+4.9 Entregables Página con los 7 bloques (anexo F). Si Q20 es A o está vacía, también el Excel con la página y el Backup
+4.10 / C4 Auditoría independiente En una conversación nueva: cifras contra results.json, etiquetas, nada escrito a mano; máximo de vueltas (PAR-08)
+FINAL Lorena CORREGIDO Recibe la página de todo veredicto. Solo un PASS que ella aprueba pasa al full UW; FAIL y HOLD se entregan sin su aprobación
+CONTROL 1
+Completitud
+CONTROL 2
+Convergencia y balance
+CONTROL 3
+Integridad del veredicto
+CONTROL 4
+Auditoría independiente
+Draft for project planning – not approved for live underwriting · 3
+
+=== PAGE 4 ===
+03 Arquitectura de los 17 bots
+Los bots 1 a 16 corren en cada deal; el 17 corre la suite de pruebas. La asignación de herramientas de desarrollo y modelos es una propuesta sujeta a benchmark de precisión, evidencia,
+costo y privacidad.
+BOT NOMBRE TIPO DESARROLLO / EJECUCIÓN VERIFICACIÓN GUARDRAIL
+1 Orquestador Python Codex desarrolla; Python ejecuta Claude Code + Pytest Estado, dependencias, versiones, re-
+corridas y logs; sin decisiones de estado por
+LLM
+2 Recepción Python Codex Pruebas de hash e inventario Metadatos, páginas, capa de texto y SHA-
+256
+3 Clasificador IA asistida Codex; API OpenAI Esquema + muestra revisada Lo ambiguo queda "sin tipo"
+4 Validador Input Sheet Python Codex; openpyxl Pytest + fixtures null queda null; rangos solo tras aprobación
+5 Lector A IA + texto/tablas Codex; PyMuPDF + OpenAI. Fase 6:
+OCR y DWG
+Lector B + citas Sin takeoff, medición ni conteo
+6 Lector B IA visión Codex; API Anthropic sobre imágenes.
+Fase 6: escaneados
+Python compara con A No ve A; no arbitra
+7 Conciliador Python Codex Fixtures de conflicto Muestra ambos valores
+8 Lector financiero IA asistida Codex; extracción estructurada Muestra independiente + citas La ausencia no se estima
+9 Control cruzado Python Codex Fixtures de borde Sin tolerancias aprobadas no corre
+10 Investigador oficial IA + allowlist Codex; workflow aprobado Copia, URL, fecha, publicador Sin fuente verificada no hay dato
+11 Verificador oficial Python Codex; PyMuPDF sobre la copia Pruebas de ubicación Valor exacto en la copia guardada
+12 Guardián Python Codex; motor de reglas Paquetes con faltantes Un bloqueo detiene cálculo y veredicto
+13 Motor Python Codex; NumPy / numpy-financial Golden case + Pytest Solo fórmulas y configuración aprobadas
+14 Juez Python Codex Límites, N/A y orden Umbrales solo de las reglas v5.1
+15 Redactor y maquetador IA texto + render Codex; Jinja2/Chromium; openpyxl
+para el Excel (Q20)
+PDF/Excel contra JSON Cifras solo desde results.json
+16 Auditor Python + IA separada Codex; Python + API independiente audit.json Sin acceso a prompts del redactor
+17 Bot de pruebas Python Codex; Pytest Golden case + regresión 1101 N
+Federal
+21 pruebas antes de cada versión
+Codex y Claude Code son asistentes de desarrollo; en producción se usan APIs en un entorno controlado. Draft for project planning – not approved for live underwriting · 4
+
+=== PAGE 5 ===
+04 Infraestructura técnica
+COMPONENTE PROPUESTA
+Lenguaje y reglas Python 3; módulos pequeños de una sola tarea; config.yaml versionado
+Contratos de datos JSON con esquemas Pydantic; rechazo automático de salidas inválidas
+Archivos PyMuPDF para PDF; openpyxl para XLSX; originales y copias oficiales guardados. Fase 6: OCR (por ejemplo, Azure AI Document Intelligence) y
+DWG (ODA File Converter + ezdxf)
+Persistencia AJUSTADO Piloto: carpeta por corrida (runs/{run_id}). Producción: PostgreSQL para deals, corridas, estados y aprobaciones; almacenamiento compatible con
+S3 para documentos
+Orquestación Máquina de estados en Python; evaluar un orquestador durable si hacen falta reintentos complejos
+Reportes Jinja2 + Chromium para el PDF; openpyxl para el Excel si Q20 = A
+Calidad Pytest, fixtures, golden case, regresión, integración y auditoría de release
+Seguridad Accesos por rol, aislamiento por deal, retención y uso de APIs compatibles con NDA, definidos antes de cargar datos reales
+05 Lo que queda reservado a Lorena
+ID DECISIÓN ALCANCE
+Q1 Dato faltante A detener siempre; B HOLD – MORE DD; C dos niveles. Sin decisión: todo faltante bloquea
+Q2 Exención s.196.1978 75 % fijo o tramo legal, con la exclusión de la jurisdicción y la fecha del permiso (HB 1389, 2026)
+Q3 Umbrales del RLV YoC y TIR, o todas las métricas PASS del Base
+Q4–Q5 Downside de obra Costos de cada mes extra y desplazamiento de la curva
+Q6–Q8 NOI del lease-up y equity NOI sobrante; equity invertido; Equity/TDC
+Q9–Q10 Apalancamiento e impuesto en obra Equity < 25 %; impuesto predial durante la obra
+Q11–Q13 Renta, estrategia, otra deuda Base de renta; estrategia; si se modela otra deuda
+Q14 Tolerancia del golden case Monto en $ y porcentaje
+Q15–Q19 Mejoras del sur de Florida Impuestos de cierre, impuesto a la salida, seguro, tasa flotante, assessments. Vacío = A = reglas v5.1
+Q20
+NUEVO
+Entregables A como el v5.1 (PDF, Excel con Backup y resumen); B solo página y resumen. Vacío = A
+Draft for project planning – not approved for live underwriting · 5
+
+=== PAGE 6 ===
+06 Parámetros técnicos y fichas de dominio
+PARÁMETRO DEFINICIÓN QUE FALTA
+PAR-01 Rangos válidos por campo y reglas de aceptación
+PAR-02 Formato decimal o porcentaje en los campos porcentuales
+PAR-03 Convención de intereses: actual/360 o 30/360
+PAR-04 Momento de los flujos (inicio o fin de mes) y mes del TCO
+PAR-05 Tolerancia de convergencia del costo financiero
+PAR-06 Redondeo del motor y de la página; comparación del auditor
+PAR-07 Dominios oficiales aprobados
+PAR-08 Máximo de vueltas entre redactor y auditor, y escalamiento a una persona
+PAR-09 Reglas del control cruzado y diferencias toleradas (ficha del GC)
+FICHA CONTENIDO QUIÉN
+GC / construcción Qué incluye C35, tolerancia contra el presupuesto, contingencia mínima, allowances, antigüedad, banda
+$/SF, cost-plus sin tope, polinómica de ajuste e índices; reglas R1 a R16 "Mini"
+Estimador + Lorena
+Banco / term sheet Campos, mapeo al Input Sheet, controles y ejemplos anotados Experto en financiamiento + Lorena
+Developer / sponsor Pro forma contra el modelo propio; el sistema muestra diferencias y no adopta los números del sponsor Lorena
+07 Definition of Done
+ÁREA CRITERIO
+Fuentes Cada documento identificado por nombre único, versión, fecha, hash y autoridad; divergencias registradas
+Reglas Cada regla vinculada a una sección de las reglas v5.1 o de los estándares (anexos A a F); sin valores inventados
+Variables Los 55 campos del Input Sheet mapeados con celda, tipo, unidad, obligatoriedad, fuente y consumidor
+Bots y motor Cada bot con propósito único, entradas, salidas, errores y pruebas; fórmulas transcritas y casos independientes que las reproducen
+Pruebas Las 21 pruebas del manual; golden case ficticio y regresión de 1101 N Federal como fixtures separados
+Lorena Decision Package completo (Q1 a Q20); review.json con decisión, justificación, identidad, fecha y versión
+Regla de release. Ningún deal real se procesa con el release productivo hasta que las reglas que usa estén aprobadas, las pruebas pasen y Lorena defina el flujo de aprobación. Un
+PASS del sistema no es aprobación de inversión ni entrada automática al full UW.
+Draft for project planning – not approved for live underwriting · 6
+
+=== PAGE 7 ===
+08 Qué corrige esta versión y qué se retira
+# CORRECCIÓN RESPECTO DE LA 3.0 MOTIVO
+1 Las reglas v5.1 y los estándares 1 a 33 pasan de "pendientes" a "incorporados" Existen y están transcritos textuales en los anexos A a F del Manual v2.2
+2 Nombres únicos: Reglas de la casa v5.1, Estándares, Manual v2.2, Prompt de ejecución
+v2.2, Resumen para revisión
+Convivían "v2", "v2.1", "v5.1" y "v5.2" para cosas distintas
+3 Se agrega la fase 6, lectura de planos escaneados y CAD Estaba en el manual y faltaba en el roadmap; 1101 N Federal ya la necesita para sus
+surveys
+4 Se agrega Q20 (entregables) y el Excel con Backup vuelve como entregable mientras
+Lorena no decida
+El manual v2 los quitaba, y eso cambia la sección 0 de las reglas v5.1 de Lorena
+5 Lorena recibe la página de todo veredicto y aprueba solo los PASS Decisión de Underwriten del 29/10/2026 y tabla de veredictos del manual
+6 Q15 a Q19 (y Q20): vacío = opción A = reglas v5.1 No es un default inventado: es la regla vigente de Lorena
+7 Persistencia simple en el piloto Carpetas por corrida alcanzan; la base de datos se suma en producción
+Documentos retirados (no usar)
+DOCUMENTO POR QUÉ
+MINI-UW_MASTER_PROMPT_v5.2.md (29/10/2026) Aplicaba reglas provisorias que el Manual v2 eliminó. Las "Reglas de la casa v5.2" se escriben después de
+las decisiones de Lorena
+MiniUW_Flujo_Comandos_Resultados.pdf (29/10/2026) Su sección 6 describe reglas provisorias; reemplazado por el Manual v2.2 y el Prompt de ejecución v2.2
+"Mini-UW automatizado: pasos y procedimientos" y su PDF de 41 páginas Es la v1 del manual; reemplazada por el Manual v2.2
+MINI-UW 3.0 Framework & Roadmap Reemplazado por esta versión 3.1
+Pendiente de recibir: el workbook "MiniUW_Input_Sheet_v5.2_DRAFT.xlsx" que cita la versión 3.0 no está en el paquete. Si existe, hay que conciliarlo con los campos nuevos
+propuestos en el Manual v2.2 antes de presentarlo.
+Este roadmap es un marco de trabajo. No reemplaza las reglas de la casa, los estándares, asesoría legal o técnica ni la aprobación de Lorena. Draft for project planning – not approved for live underwriting · 7
