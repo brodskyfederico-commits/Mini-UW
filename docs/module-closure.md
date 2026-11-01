@@ -7,3 +7,5 @@ Los nueve módulos M1–M9 permanecen abiertos. M2 tiene validación algebraica 
 Siguiente cierre técnico: M5, ciclo de deuda/interés/TDC con calendario explícito y capital requerido separado de capital disponible. Los límites de inversión seguirán vacíos hasta la hoja correspondiente de Lorena. Faltantes de datos o reglas dejan clasificación PENDIENTE.
 
 Extensión M5: diez contratos y referencia algebraica reducida incorporados. M5 permanece abierto; el siguiente desarrollo de contrato es M6 refinanciación.
+
+Extensión M6: diez contratos candidatos, amortización regular, sizing LTV/DSCR y caja de refi con hipótesis explícitas. M6 continúa abierto. Siguiente bloque: M7 tenencia, venta y retornos.

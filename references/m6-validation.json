@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "arithmetic": "exact rational",
+  "checks": {
+    "payment_vs_present_value": 9,
+    "balance_recurrence_vs_closed_form": 78,
+    "sizing_constraints_and_ties": 12,
+    "cash_conservation": 12,
+    "reserve_delta": 12,
+    "invalid_domain": 5
+  },
+  "total": 128,
+  "scope": "Synthetic regular end-period fixed-rate amortization, isolated loan sizing and unconstrained distributable cash. Not approved bank terms, independent audit, stable floating-point implementation, production or real-deal validation."
+}

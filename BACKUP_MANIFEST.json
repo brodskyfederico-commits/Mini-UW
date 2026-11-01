@@ -1,5 +1,5 @@
 {
-  "scope": "sources, model specifications and internal professional-review PDF; not full product/VPS recovery",
+  "scope": "sources, Mini-UW design/references and internal review PDF; not full product/VPS recovery",
   "files": [
     {
       "path": ".gitignore",
@@ -13,13 +13,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 2300,
-      "sha256": "c45741a956b79727218dc43277c5a2040b0e74e77a1d1fe8a4e20859d3b99c92"
+      "bytes": 2522,
+      "sha256": "2f26f18793fc695ba1b1c1ebebb794e55151c9e48a0989ff8ba9d8f2a3d383df"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 5504,
-      "sha256": "bc3633b585e73a7fa09aa7b0595ec0e49aee31189dafb50ec235ca2d738ac1f0"
+      "bytes": 6091,
+      "sha256": "4233b73d6a599b317ca15614ba83235d285e5e2af72caaff1fbdc50ad0f7f0b0"
     },
     {
       "path": "docs/acceptance-plan.md",
@@ -28,18 +28,18 @@
     },
     {
       "path": "docs/coverage-guide.md",
-      "bytes": 5513,
-      "sha256": "d0b3d41226a696ec2ddea59af40a47d32e2ddd66daa8035972906699987d1ed4"
+      "bytes": 5750,
+      "sha256": "2dd8bdb333f26322f406694ddffeba390566740a4a31a9ef68ea8a8e1ef28b1b"
     },
     {
       "path": "docs/coverage-matrix.csv",
-      "bytes": 284775,
-      "sha256": "bba03a41599fe7fb278728c302c1bfb685b93b734312a8c542e565ded95e8171"
+      "bytes": 294224,
+      "sha256": "e06f117b69492aaf3aa3b3157a6b391bb406ecc72e232cc1e47223e4bd4d7273"
     },
     {
       "path": "docs/coverage-matrix.json",
-      "bytes": 444078,
-      "sha256": "f1c5774270478e49121bfe26429a8206bfa9e7f8bfe84bea3810059c641b1fea"
+      "bytes": 458181,
+      "sha256": "2c5b368175d1ea1fd32ec8629cda5ab0bd83b933476b8201422890fc7a10e5dd"
     },
     {
       "path": "docs/current-direction.txt",
@@ -87,14 +87,19 @@
       "sha256": "066cf12407504c6913e3b869f5c71505c1f5e520e85c0c224a269315edd91642"
     },
     {
+      "path": "docs/model-refinance-contract.md",
+      "bytes": 9116,
+      "sha256": "4419bbc502df7aa853fdc1824fbedca781e099d796e6479efc46a7162bdd5fbb"
+    },
+    {
       "path": "docs/module-closure.json",
-      "bytes": 10630,
-      "sha256": "8702c69e051c0127e48c6d8c6a4d5a4a47de14858ab26007d2ff0c1191d891e7"
+      "bytes": 10726,
+      "sha256": "0634ff742a16fce52413414966f092223e5fbd374950ac6cf0e0cce9e179968b"
     },
     {
       "path": "docs/module-closure.md",
-      "bytes": 1259,
-      "sha256": "92a7d8028ae8237b9b118e2747c9f9fb1542a8b7a2f86809f50e4eae5af46138"
+      "bytes": 1455,
+      "sha256": "0b58ec7b3dd12b15360032eb75413016aed5826a14f21fecb7100f2f3ea98d77"
     },
     {
       "path": "docs/recovery-status.md",
@@ -142,6 +147,11 @@
       "sha256": "490b9080a69d54f9ae465995f4d8a506e02827a8c215545dd95e1c29285f9341"
     },
     {
+      "path": "references/m6-validation.json",
+      "bytes": 536,
+      "sha256": "53d9bf14de768fde993fb2ed74ff19d5e8f765aa016489af174944c727625672"
+    },
+    {
       "path": "references/validate_m2_algebra.py",
       "bytes": 1289,
       "sha256": "6b82cea9197fd977d78f88dadbb36fb620114d5684054738183a88297e014f3f"
@@ -155,6 +165,11 @@
       "path": "references/validate_m5_algebra.py",
       "bytes": 1762,
       "sha256": "6999083a40fab8ad9d269b158f1c4f673c35ba62c21554f66315d9eb0f7eb2fb"
+    },
+    {
+      "path": "references/validate_m6_refinance.py",
+      "bytes": 2221,
+      "sha256": "eaac79d9e23aec13d9e29c73a1be4a5d40d8c2d692bb08f2dbde1b2fde7731d8"
     },
     {
       "path": "sources/extracted/09a0d1fa636b.txt",

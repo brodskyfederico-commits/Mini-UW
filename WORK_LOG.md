@@ -34,3 +34,7 @@ Added ten M5 contracts covering eligible cost, commitment/draw/principal, intere
 ## Professional review PDF — 1 November 2026
 
 User requested the complete non-code structure to send to a professional. Produced a 26-page Spanish internal review PDF covering nine modules, all 55 Input Sheet fields, ten metrics, scenarios/decision, Q1–Q20, nine parameters, GC controls, acceptance descriptions, sources and honest state. Distinguished M2–M5 detailed contracts from preliminary M6–M9. All pages rendered; text-bound checks and contact-sheet/detail inspection completed; corrected header contrast. This is a review document, not the one-page deliverable per deal, model approval or production activation. No document sent to third parties.
+
+## Refinancing model — 1 November 2026
+
+Added ten M6 contracts: applicability/date, value, LTV, debt service, DSCR, binding constraints including ties, maturity versus amortization, construction/other debt payoff, fees/reserves and cash-out/cash-in. Added exact-rational synthetic checks of annuity present value, debt balance, capacity constraints and cash conservation. No live banking terms, expert approval, production implementation or independent audit. Coverage now 354; M6 and all other modules remain open. Existing professional PDF R01 preserved as earlier review snapshot.

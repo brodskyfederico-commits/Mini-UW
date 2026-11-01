@@ -73,3 +73,7 @@ M3-01:M3-06 y M4-01:M4-06 más confirmación DEC-PENDING: total vigente 334 fila
 ## Extensión M5
 
 Se añaden M5-01:M5-10, total vigente 344 filas. Los conteos previos describen hitos históricos. La referencia de financiación sólo valida una ecuación reducida y una recurrencia bajo hipótesis explícitas; ninguna fila certifica cierre financiero de producto.
+
+## Extensión M6
+
+M6-01:M6-10 amplían refinanciación; total vigente 354 filas. La validación propia es algebraica y condicionada; no acredita cierre bancario ni producto integrado. Conteos anteriores describen sus hitos históricos.
