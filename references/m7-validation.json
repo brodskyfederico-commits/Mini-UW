@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "arithmetic": "exact rational",
+  "checks": {
+    "exit_cash_conservation": 24,
+    "gross_vs_net_ledger": 1,
+    "equity_multiple": 3,
+    "irr_factored_cases": 24,
+    "regular_annualization": 9,
+    "undefined_and_invalid_cases": 4
+  },
+  "total": 65,
+  "scope": "Synthetic exit cash, gross equity ledgers, regular compounding and factored IRR examples only. No general root-isolation solver, XIRR, real-deal validation, independent audit, production or recovery of historical application."
+}

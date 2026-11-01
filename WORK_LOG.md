@@ -38,3 +38,7 @@ User requested the complete non-code structure to send to a professional. Produc
 ## Refinancing model — 1 November 2026
 
 Added ten M6 contracts: applicability/date, value, LTV, debt service, DSCR, binding constraints including ties, maturity versus amortization, construction/other debt payoff, fees/reserves and cash-out/cash-in. Added exact-rational synthetic checks of annuity present value, debt balance, capacity constraints and cash conservation. No live banking terms, expert approval, production implementation or independent audit. Coverage now 354; M6 and all other modules remain open. Existing professional PDF R01 preserved as earlier review snapshot.
+
+## Hold, exit and investor returns — 1 November 2026
+
+Added twelve M7 contracts covering horizon/growth, operating cash, gross capital events, forward NOI, sale costs/payoff and terminal distributions, EM, regular IRR/annualization, irregular-date limits, CoC and project versus LP/JV. Preserved unknown fiscal/calendar/equity policies. Added exact-rational synthetic tests and explicitly factored IRR examples with two roots, repeated/tangent roots, no-root and all-zero indeterminacy; no general IRR solver or XIRR claimed. Coverage now 366. Production, expert approval and independent/integrated validation remain open. Review PDF R01 preserved.

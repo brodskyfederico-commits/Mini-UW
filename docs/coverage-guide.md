@@ -77,3 +77,7 @@ Se añaden M5-01:M5-10, total vigente 344 filas. Los conteos previos describen h
 ## Extensión M6
 
 M6-01:M6-10 amplían refinanciación; total vigente 354 filas. La validación propia es algebraica y condicionada; no acredita cierre bancario ni producto integrado. Conteos anteriores describen sus hitos históricos.
+
+## Extensión M7
+
+M7-01:M7-12 amplían tenencia, venta y retornos; total vigente 366 filas. Los casos factorizables de IRR no certifican un solver general, XIRR o auditoría independiente. Ninguna fila acredita cobertura de producto extremo a extremo.

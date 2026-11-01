@@ -1,5 +1,5 @@
 {
-  "scope": "sources, Mini-UW design/references and internal review PDF; not full product/VPS recovery",
+  "scope": "sources, Mini-UW model/reference review and preserved internal professional PDF; not full product/VPS recovery",
   "files": [
     {
       "path": ".gitignore",
@@ -13,13 +13,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 2522,
-      "sha256": "2f26f18793fc695ba1b1c1ebebb794e55151c9e48a0989ff8ba9d8f2a3d383df"
+      "bytes": 2692,
+      "sha256": "f63db58c2734c121d73165fb156ee405c164638853cea5f446d595740187fd80"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 6091,
-      "sha256": "4233b73d6a599b317ca15614ba83235d285e5e2af72caaff1fbdc50ad0f7f0b0"
+      "bytes": 6743,
+      "sha256": "30619a3ff4cf6edcacda7b6b26854b6dfcba2d903a24d4164d99b56da3db3fc1"
     },
     {
       "path": "docs/acceptance-plan.md",
@@ -28,18 +28,18 @@
     },
     {
       "path": "docs/coverage-guide.md",
-      "bytes": 5750,
-      "sha256": "2dd8bdb333f26322f406694ddffeba390566740a4a31a9ef68ea8a8e1ef28b1b"
+      "bytes": 6003,
+      "sha256": "005426a4dbc94e75362641d29aec8a3281213a25f2bf5d0651deca2f12670926"
     },
     {
       "path": "docs/coverage-matrix.csv",
-      "bytes": 294224,
-      "sha256": "e06f117b69492aaf3aa3b3157a6b391bb406ecc72e232cc1e47223e4bd4d7273"
+      "bytes": 305279,
+      "sha256": "9ce0abfb71a7517cd104b13e8906ae971e26adaa67384551ba74e0aa0a3e2711"
     },
     {
       "path": "docs/coverage-matrix.json",
-      "bytes": 458181,
-      "sha256": "2c5b368175d1ea1fd32ec8629cda5ab0bd83b933476b8201422890fc7a10e5dd"
+      "bytes": 474840,
+      "sha256": "0c6f946162b56ac21eda30a2b6f77e3ae256ceea68fc2ea2583a6f97cd0b03ea"
     },
     {
       "path": "docs/current-direction.txt",
@@ -82,6 +82,11 @@
       "sha256": "23797945b05af4aad08bb6225ab56e2288211254eca7d8434a9efa689e383515"
     },
     {
+      "path": "docs/model-hold-exit-returns.md",
+      "bytes": 11255,
+      "sha256": "2c1a4853c81261c0047e747fe3de3e84bc2fb28f129e60c3b88d1e5b0387624f"
+    },
+    {
       "path": "docs/model-operations-contract.md",
       "bytes": 7131,
       "sha256": "066cf12407504c6913e3b869f5c71505c1f5e520e85c0c224a269315edd91642"
@@ -93,13 +98,13 @@
     },
     {
       "path": "docs/module-closure.json",
-      "bytes": 10726,
-      "sha256": "0634ff742a16fce52413414966f092223e5fbd374950ac6cf0e0cce9e179968b"
+      "bytes": 10825,
+      "sha256": "dc12ee42c7ff978a293febacf1c2078a1bd451482b4ea0424d80d549a8af950d"
     },
     {
       "path": "docs/module-closure.md",
-      "bytes": 1455,
-      "sha256": "0b58ec7b3dd12b15360032eb75413016aed5826a14f21fecb7100f2f3ea98d77"
+      "bytes": 1625,
+      "sha256": "6c7932549f83c0d7decb18d3933b9893ce70f6c37a9701891a34d8326e282d17"
     },
     {
       "path": "docs/recovery-status.md",
@@ -152,6 +157,11 @@
       "sha256": "53d9bf14de768fde993fb2ed74ff19d5e8f765aa016489af174944c727625672"
     },
     {
+      "path": "references/m7-validation.json",
+      "bytes": 522,
+      "sha256": "c19940d4dc059a35b9a0bfb440166589217811b1ac8532ffe9518ae26867d386"
+    },
+    {
       "path": "references/validate_m2_algebra.py",
       "bytes": 1289,
       "sha256": "6b82cea9197fd977d78f88dadbb36fb620114d5684054738183a88297e014f3f"
@@ -170,6 +180,11 @@
       "path": "references/validate_m6_refinance.py",
       "bytes": 2221,
       "sha256": "eaac79d9e23aec13d9e29c73a1be4a5d40d8c2d692bb08f2dbde1b2fde7731d8"
+    },
+    {
+      "path": "references/validate_m7_returns.py",
+      "bytes": 2898,
+      "sha256": "92a813e8a92060a9fe09246ba7bf7d0df37393e128b8b9a10fcefe0c22b6e1c1"
     },
     {
       "path": "sources/extracted/09a0d1fa636b.txt",

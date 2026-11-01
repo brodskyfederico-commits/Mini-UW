@@ -10,7 +10,7 @@ The current product requirement is exactly one external decision PDF page. Inves
 
 GitHub records reviewed milestone files and infrastructure definitions. Runtime services, databases, credentials and live deal data are not automatically backed up by this repository. No deployment or scheduled synchronization is configured.
 
-Latest model review: [coverage matrix and evidence guide](docs/coverage-guide.md), [full CSV](docs/coverage-matrix.csv), and [cash/capital contracts](docs/model-cash-contracts.md). The matrix inventories 354 items and certifies no end-to-end product coverage.
+Latest model review: [coverage matrix and evidence guide](docs/coverage-guide.md), [full CSV](docs/coverage-matrix.csv), and [cash/capital contracts](docs/model-cash-contracts.md). The matrix inventories 366 items and certifies no end-to-end product coverage.
 
 Continued Mini-UW model: [M2 operations/NOI contracts](docs/model-operations-contract.md). Full UW is deferred until the end per current user direction.
 
@@ -21,3 +21,5 @@ Construction finance: [M5 debt/interest/equity contracts](docs/model-constructio
 Professional review: [Spanish structure PDF, R01, 26 pages](docs/review/MiniUW_Estructura_para_Revision_Profesional.pdf). Conceptual model review with sources/open decisions; no implementation code or real-deal evaluation.
 
 Refinancing: [M6 permanent debt, sizing, payoff and cash contracts](docs/model-refinance-contract.md). This expands the preliminary M6 structure after the preserved professional PDF R01 cutoff; it is not expert approval.
+
+Hold, exit and returns: [M7 operating cash, sale and investor-return contracts](docs/model-hold-exit-returns.md). The professional PDF R01 remains the earlier snapshot.

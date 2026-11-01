@@ -9,3 +9,5 @@ Siguiente cierre técnico: M5, ciclo de deuda/interés/TDC con calendario explí
 Extensión M5: diez contratos y referencia algebraica reducida incorporados. M5 permanece abierto; el siguiente desarrollo de contrato es M6 refinanciación.
 
 Extensión M6: diez contratos candidatos, amortización regular, sizing LTV/DSCR y caja de refi con hipótesis explícitas. M6 continúa abierto. Siguiente bloque: M7 tenencia, venta y retornos.
+
+Extensión M7: doce contratos de tenencia/salida/retornos y evidencia algebraica limitada. M7 permanece abierto. Siguiente desarrollo: M8 escenarios y precio soportado.
