@@ -65,3 +65,7 @@ Ampliación: F0-01–F0-05 separadas, alternativas Q1–Q20 explícitas y seis c
 ## Extensión M2
 
 Se agregan M2-01 a M2-08: ahora 321 filas. Los conteos de las secciones anteriores corresponden al hito inicial de 313; esta extensión no certifica cobertura de producto. Ver contrato de operación y prueba algebraica condicionada. Full UW se entregará al final según instrucción actual.
+
+## Extensión M3/M4 y decisión
+
+M3-01:M3-06 y M4-01:M4-06 más confirmación DEC-PENDING: total vigente 334 filas. Recuentos anteriores son históricos. Una instrucción directa en chat no tiene SHA de archivo original; se registra esa procedencia sin inventar un hash. Ver contratos de presupuesto/calendario, entrada de Lorena y cierre de módulos.

@@ -10,6 +10,8 @@ The current product requirement is exactly one external decision PDF page. Inves
 
 GitHub records reviewed milestone files and infrastructure definitions. Runtime services, databases, credentials and live deal data are not automatically backed up by this repository. No deployment or scheduled synchronization is configured.
 
-Latest model review: [coverage matrix and evidence guide](docs/coverage-guide.md), [full CSV](docs/coverage-matrix.csv), and [cash/capital contracts](docs/model-cash-contracts.md). The matrix inventories 321 items and certifies no end-to-end product coverage.
+Latest model review: [coverage matrix and evidence guide](docs/coverage-guide.md), [full CSV](docs/coverage-matrix.csv), and [cash/capital contracts](docs/model-cash-contracts.md). The matrix inventories 334 items and certifies no end-to-end product coverage.
 
 Continued Mini-UW model: [M2 operations/NOI contracts](docs/model-operations-contract.md). Full UW is deferred until the end per current user direction.
+
+New review: [budget and schedule](docs/model-budget-schedule.md), [Lorena input/decision contract](docs/decision-input-contract.md), [module closure gates](docs/module-closure.md).

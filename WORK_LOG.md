@@ -22,3 +22,7 @@
 ## Continued M2 model design — 1 November 2026
 
 User deferred Full UW delivery until the end. Recorded it as a deferred dependency, not a blocker for independent Mini-UW model design. Added eight operations contracts, algebraic tax/NOI branch closure and conditional break-even feasible-set derivation. Exact-rational synthetic validation is stored with runnable reference; it does not approve tax assumptions or certify production. Coverage now has 321 items. No real deal or production underwriting executed.
+
+## Budget/schedule and decision direction — 1 November 2026
+
+Added 12 proposed M3/M4 contracts, explicit cost inclusion/draw-timing boundaries and module closure gates (none closed). User confirmed missing data/rules leave PENDING without PASS/FAIL. Lorena criteria-sheet interpretation documented separately from confirmed instructions; historic economic HOLD band to binary mapping remains unresolved. Added isolated exact-rational allocation reference, not an approved construction curve or independent validation. Coverage now 334 rows. No production or real-deal underwriting.

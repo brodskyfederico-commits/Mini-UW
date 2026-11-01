@@ -1,0 +1,310 @@
+{
+  "rule": "Cerrar sólo con evidencia por criterio; no calcular porcentaje por contar documentos o tests. Full UW diferido.",
+  "gates": [
+    "definicion_y_fuentes",
+    "dominio_y_convenciones",
+    "conflictos_resueltos",
+    "validacion_independiente",
+    "integracion_dependencias",
+    "revision_aplicable"
+  ],
+  "modules": [
+    {
+      "id": "M1",
+      "nombre": "Programa y entradas",
+      "cerrado": false,
+      "estado": "abierto",
+      "evidencia_actual": "Mapa preliminar; fuentes y contratos parciales",
+      "gates": {
+        "definicion_y_fuentes": {
+          "cumplido": false,
+          "pendiente": "Falta acreditar cierre; revisar contratos y matriz."
+        },
+        "dominio_y_convenciones": {
+          "cumplido": false,
+          "pendiente": "Falta acreditar cierre; revisar contratos y matriz."
+        },
+        "conflictos_resueltos": {
+          "cumplido": false,
+          "pendiente": "Falta acreditar cierre; revisar contratos y matriz."
+        },
+        "validacion_independiente": {
+          "cumplido": false,
+          "pendiente": "Falta acreditar cierre; revisar contratos y matriz."
+        },
+        "integracion_dependencias": {
+          "cumplido": false,
+          "pendiente": "Falta acreditar cierre; revisar contratos y matriz."
+        },
+        "revision_aplicable": {
+          "cumplido": false,
+          "pendiente": "Falta acreditar cierre; revisar contratos y matriz."
+        }
+      }
+    },
+    {
+      "id": "M2",
+      "nombre": "Ingresos/gastos/NOI",
+      "cerrado": false,
+      "estado": "abierto",
+      "evidencia_actual": "Contrato y 186 controles algebraicos condicionados",
+      "gates": {
+        "definicion_y_fuentes": {
+          "cumplido": false,
+          "pendiente": "Falta acreditar cierre; revisar contratos y matriz."
+        },
+        "dominio_y_convenciones": {
+          "cumplido": false,
+          "pendiente": "Falta acreditar cierre; revisar contratos y matriz."
+        },
+        "conflictos_resueltos": {
+          "cumplido": false,
+          "pendiente": "Falta acreditar cierre; revisar contratos y matriz."
+        },
+        "validacion_independiente": {
+          "cumplido": false,
+          "pendiente": "Falta acreditar cierre; revisar contratos y matriz."
+        },
+        "integracion_dependencias": {
+          "cumplido": false,
+          "pendiente": "Falta acreditar cierre; revisar contratos y matriz."
+        },
+        "revision_aplicable": {
+          "cumplido": false,
+          "pendiente": "Falta acreditar cierre; revisar contratos y matriz."
+        }
+      }
+    },
+    {
+      "id": "M3",
+      "nombre": "Presupuesto",
+      "cerrado": false,
+      "estado": "abierto",
+      "evidencia_actual": "Contrato y referencia de normalización/asignación",
+      "gates": {
+        "definicion_y_fuentes": {
+          "cumplido": false,
+          "pendiente": "Falta acreditar cierre; revisar contratos y matriz."
+        },
+        "dominio_y_convenciones": {
+          "cumplido": false,
+          "pendiente": "Falta acreditar cierre; revisar contratos y matriz."
+        },
+        "conflictos_resueltos": {
+          "cumplido": false,
+          "pendiente": "Falta acreditar cierre; revisar contratos y matriz."
+        },
+        "validacion_independiente": {
+          "cumplido": false,
+          "pendiente": "Falta acreditar cierre; revisar contratos y matriz."
+        },
+        "integracion_dependencias": {
+          "cumplido": false,
+          "pendiente": "Falta acreditar cierre; revisar contratos y matriz."
+        },
+        "revision_aplicable": {
+          "cumplido": false,
+          "pendiente": "Falta acreditar cierre; revisar contratos y matriz."
+        }
+      }
+    },
+    {
+      "id": "M4",
+      "nombre": "Calendario",
+      "cerrado": false,
+      "estado": "abierto",
+      "evidencia_actual": "Contrato y referencia de asignación sin curva aprobada",
+      "gates": {
+        "definicion_y_fuentes": {
+          "cumplido": false,
+          "pendiente": "Falta acreditar cierre; revisar contratos y matriz."
+        },
+        "dominio_y_convenciones": {
+          "cumplido": false,
+          "pendiente": "Falta acreditar cierre; revisar contratos y matriz."
+        },
+        "conflictos_resueltos": {
+          "cumplido": false,
+          "pendiente": "Falta acreditar cierre; revisar contratos y matriz."
+        },
+        "validacion_independiente": {
+          "cumplido": false,
+          "pendiente": "Falta acreditar cierre; revisar contratos y matriz."
+        },
+        "integracion_dependencias": {
+          "cumplido": false,
+          "pendiente": "Falta acreditar cierre; revisar contratos y matriz."
+        },
+        "revision_aplicable": {
+          "cumplido": false,
+          "pendiente": "Falta acreditar cierre; revisar contratos y matriz."
+        }
+      }
+    },
+    {
+      "id": "M5",
+      "nombre": "Capital/deuda",
+      "cerrado": false,
+      "estado": "abierto",
+      "evidencia_actual": "Mapa preliminar; fuentes y contratos parciales",
+      "gates": {
+        "definicion_y_fuentes": {
+          "cumplido": false,
+          "pendiente": "Falta acreditar cierre; revisar contratos y matriz."
+        },
+        "dominio_y_convenciones": {
+          "cumplido": false,
+          "pendiente": "Falta acreditar cierre; revisar contratos y matriz."
+        },
+        "conflictos_resueltos": {
+          "cumplido": false,
+          "pendiente": "Falta acreditar cierre; revisar contratos y matriz."
+        },
+        "validacion_independiente": {
+          "cumplido": false,
+          "pendiente": "Falta acreditar cierre; revisar contratos y matriz."
+        },
+        "integracion_dependencias": {
+          "cumplido": false,
+          "pendiente": "Falta acreditar cierre; revisar contratos y matriz."
+        },
+        "revision_aplicable": {
+          "cumplido": false,
+          "pendiente": "Falta acreditar cierre; revisar contratos y matriz."
+        }
+      }
+    },
+    {
+      "id": "M6",
+      "nombre": "Refinanciación",
+      "cerrado": false,
+      "estado": "abierto",
+      "evidencia_actual": "Mapa preliminar; fuentes y contratos parciales",
+      "gates": {
+        "definicion_y_fuentes": {
+          "cumplido": false,
+          "pendiente": "Falta acreditar cierre; revisar contratos y matriz."
+        },
+        "dominio_y_convenciones": {
+          "cumplido": false,
+          "pendiente": "Falta acreditar cierre; revisar contratos y matriz."
+        },
+        "conflictos_resueltos": {
+          "cumplido": false,
+          "pendiente": "Falta acreditar cierre; revisar contratos y matriz."
+        },
+        "validacion_independiente": {
+          "cumplido": false,
+          "pendiente": "Falta acreditar cierre; revisar contratos y matriz."
+        },
+        "integracion_dependencias": {
+          "cumplido": false,
+          "pendiente": "Falta acreditar cierre; revisar contratos y matriz."
+        },
+        "revision_aplicable": {
+          "cumplido": false,
+          "pendiente": "Falta acreditar cierre; revisar contratos y matriz."
+        }
+      }
+    },
+    {
+      "id": "M7",
+      "nombre": "Tenencia/salida/retornos",
+      "cerrado": false,
+      "estado": "abierto",
+      "evidencia_actual": "Mapa preliminar; fuentes y contratos parciales",
+      "gates": {
+        "definicion_y_fuentes": {
+          "cumplido": false,
+          "pendiente": "Falta acreditar cierre; revisar contratos y matriz."
+        },
+        "dominio_y_convenciones": {
+          "cumplido": false,
+          "pendiente": "Falta acreditar cierre; revisar contratos y matriz."
+        },
+        "conflictos_resueltos": {
+          "cumplido": false,
+          "pendiente": "Falta acreditar cierre; revisar contratos y matriz."
+        },
+        "validacion_independiente": {
+          "cumplido": false,
+          "pendiente": "Falta acreditar cierre; revisar contratos y matriz."
+        },
+        "integracion_dependencias": {
+          "cumplido": false,
+          "pendiente": "Falta acreditar cierre; revisar contratos y matriz."
+        },
+        "revision_aplicable": {
+          "cumplido": false,
+          "pendiente": "Falta acreditar cierre; revisar contratos y matriz."
+        }
+      }
+    },
+    {
+      "id": "M8",
+      "nombre": "Escenarios/precio",
+      "cerrado": false,
+      "estado": "abierto",
+      "evidencia_actual": "Mapa preliminar; fuentes y contratos parciales",
+      "gates": {
+        "definicion_y_fuentes": {
+          "cumplido": false,
+          "pendiente": "Falta acreditar cierre; revisar contratos y matriz."
+        },
+        "dominio_y_convenciones": {
+          "cumplido": false,
+          "pendiente": "Falta acreditar cierre; revisar contratos y matriz."
+        },
+        "conflictos_resueltos": {
+          "cumplido": false,
+          "pendiente": "Falta acreditar cierre; revisar contratos y matriz."
+        },
+        "validacion_independiente": {
+          "cumplido": false,
+          "pendiente": "Falta acreditar cierre; revisar contratos y matriz."
+        },
+        "integracion_dependencias": {
+          "cumplido": false,
+          "pendiente": "Falta acreditar cierre; revisar contratos y matriz."
+        },
+        "revision_aplicable": {
+          "cumplido": false,
+          "pendiente": "Falta acreditar cierre; revisar contratos y matriz."
+        }
+      }
+    },
+    {
+      "id": "M9",
+      "nombre": "Decisión/PDF/auditoría",
+      "cerrado": false,
+      "estado": "abierto",
+      "evidencia_actual": "Mapa preliminar; fuentes y contratos parciales",
+      "gates": {
+        "definicion_y_fuentes": {
+          "cumplido": false,
+          "pendiente": "Falta acreditar cierre; revisar contratos y matriz."
+        },
+        "dominio_y_convenciones": {
+          "cumplido": false,
+          "pendiente": "Falta acreditar cierre; revisar contratos y matriz."
+        },
+        "conflictos_resueltos": {
+          "cumplido": false,
+          "pendiente": "Falta acreditar cierre; revisar contratos y matriz."
+        },
+        "validacion_independiente": {
+          "cumplido": false,
+          "pendiente": "Falta acreditar cierre; revisar contratos y matriz."
+        },
+        "integracion_dependencias": {
+          "cumplido": false,
+          "pendiente": "Falta acreditar cierre; revisar contratos y matriz."
+        },
+        "revision_aplicable": {
+          "cumplido": false,
+          "pendiente": "Falta acreditar cierre; revisar contratos y matriz."
+        }
+      }
+    }
+  ]
+}
