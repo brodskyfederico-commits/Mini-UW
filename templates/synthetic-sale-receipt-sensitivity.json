@@ -1,0 +1,52 @@
+{
+  "schema": "miniuw.synthetic-net-sale-receipt-sensitivity.v1",
+  "context": {
+    "deal_id": "SYNTHETIC-investor-cash-demo",
+    "definition_set_revision": "SYNTHETIC-explicit-gross-cash-return-v1",
+    "run_id": "SYNTHETIC-investor-cash-run",
+    "scenario_id": "SYNTHETIC-Base"
+  },
+  "base_source_sha256": "46f6b1f4deff4410273a9943ac5b18bdb809351be35e2b53054e5ba009c762ed",
+  "base_run_sha256": "95b5dc11b8548fbac16e02c1ea0b01f2b5a2316901f22eb1b1c02288245f13d8",
+  "target_event_id": "sale",
+  "frozen_cash_assumption_ref": "SYNTHETIC-isolated-net-receipt-only-all-other-cash-frozen-not-a-project-scenario",
+  "case_inventory_declared_complete": true,
+  "cases": [
+    {
+      "case_id": "receipt-0",
+      "scenario_id": "SYNTHETIC-isolated-receipt-0",
+      "run_id": "SYNTHETIC-isolated-run-0",
+      "net_sale_distribution": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "date": "2029-01-01",
+      "source_ref": "SYNTHETIC-explicit-isolated-net-receipt-0"
+    },
+    {
+      "case_id": "receipt-300",
+      "scenario_id": "SYNTHETIC-isolated-receipt-300",
+      "run_id": "SYNTHETIC-isolated-run-300",
+      "net_sale_distribution": {
+        "numerator": "300",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "date": "2029-01-01",
+      "source_ref": "SYNTHETIC-explicit-isolated-net-receipt-300"
+    },
+    {
+      "case_id": "receipt-600",
+      "scenario_id": "SYNTHETIC-isolated-receipt-600",
+      "run_id": "SYNTHETIC-isolated-run-600",
+      "net_sale_distribution": {
+        "numerator": "600",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "date": "2029-01-01",
+      "source_ref": "SYNTHETIC-explicit-isolated-net-receipt-600"
+    }
+  ]
+}

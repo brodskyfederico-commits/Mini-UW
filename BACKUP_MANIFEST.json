@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D03 review and metric-intake design extensions and T01–T37 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D03 review and metric-intake design extensions and T01–T38 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 17806,
-      "sha256": "76595fa7778ae250d03f2975accce875b0aff71842885394f9b0d663972d2e72"
+      "bytes": 18392,
+      "sha256": "4f1c13da86f645e270032428ab207df8aa8dc8dbc040190199f5461f60498062"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 73636,
-      "sha256": "35f5527d4a5e935f9335aaa7fc500e6db299382bf7f649da18fbc01e26322f83"
+      "bytes": 75412,
+      "sha256": "ddd29ec712512243c839ac62c62d5e00f9e17d7cfa22cde9fe373bfaa2af140d"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -198,8 +198,8 @@
     },
     {
       "path": "docs/miniuw-improvement-scope.json",
-      "bytes": 4700,
-      "sha256": "38ca173963a0ef714e7c74f96ad67a6bd1559bfa331f468c37af56f833809a38"
+      "bytes": 5479,
+      "sha256": "fb4b39d6cd23574d34dced460bcef3e670a237de3ee2c39f73f8ed78fb446d2d"
     },
     {
       "path": "docs/model-budget-schedule.md",
@@ -457,6 +457,11 @@
       "sha256": "57be6b33c3ac3003830da8451e3fc61caf8a95a4a29ca7a67cd01efe4416183d"
     },
     {
+      "path": "docs/review/synthetic-sale-sensitivity-demo.json",
+      "bytes": 25559,
+      "sha256": "889e3cac5de90b18cfe68d8256af52b09bc16558f6f25f81e4924a0137fc35da"
+    },
+    {
       "path": "docs/review-lifecycle-acceptance-cases.json",
       "bytes": 8050,
       "sha256": "ede583b02cc2a71967eea2fd1295efeff9d3c265e0495d6ef08c0b60ea514cb9"
@@ -545,6 +550,11 @@
       "path": "docs/technical-coverage-T37.json",
       "bytes": 4179,
       "sha256": "cd239d034661eff3d8f60b696f5269150559af98f232febf1409120147d2baba"
+    },
+    {
+      "path": "docs/technical-coverage-T38.json",
+      "bytes": 5839,
+      "sha256": "e75d660cb57cc3d54e910cfc56b005af482a19101af826034928e3f0d55fa094"
     },
     {
       "path": "docs/technical-implementation-T01.md",
@@ -697,9 +707,14 @@
       "sha256": "59156d0426975880e428b3abe54bc0b79d8929700835703cb896a2017a3246ad"
     },
     {
+      "path": "docs/technical-implementation-T38.md",
+      "bytes": 4308,
+      "sha256": "b54a277679285e9fcee5be6d39d7a88a633f33fc9f3c6b70afed47f895d33a5d"
+    },
+    {
       "path": "docs/technical-implementation-status.json",
-      "bytes": 13784,
-      "sha256": "6a7e3c5e2e6adcb11a577e18f7697bbb536b8ccc92248f8f9f2fc17ca0864f26"
+      "bytes": 14093,
+      "sha256": "65e10d7ccc7b70fa3dd83d10dd7d7c5992b74b67bf2beb19752fe0894b28d80c"
     },
     {
       "path": "infra/README.md",
@@ -1532,6 +1547,11 @@
       "sha256": "b232c7caa62aaf1b70a59fbf9e4c3afa47e62483547c9a9a064e9c829a994e9f"
     },
     {
+      "path": "src/miniuw_foundation/sale_sensitivity.py",
+      "bytes": 11404,
+      "sha256": "3f92ce8af5f3722a8a74186967216dc4bf9d05ae25ca84322d934006a60bfd78"
+    },
+    {
       "path": "src/miniuw_foundation/scenario_review.py",
       "bytes": 6261,
       "sha256": "dbb6054b1e4d9e13ba842caf3dd57fca30585decd62f78f35d9524596ae35ed4"
@@ -1882,6 +1902,11 @@
       "sha256": "503028ba6311093a0e4e1e9a8766b02a2d9170b521d2815ba2adad984ea65203"
     },
     {
+      "path": "templates/synthetic-sale-receipt-sensitivity.json",
+      "bytes": 1752,
+      "sha256": "d0f8474366feb3187133834081468c37c2f4a163acea846f285d769a24ace77c"
+    },
+    {
       "path": "templates/synthetic-screening-band-case.json",
       "bytes": 4673,
       "sha256": "59493c78fd72ee6a2daedcf74ccc914a3dea81d74f7b5a8302e4ee56868f40b2"
@@ -2077,6 +2102,11 @@
       "sha256": "4be12acde9cd49db6fb601b6bc69f5af67d57d94088e073c69b7b2627ac10f3d"
     },
     {
+      "path": "tests/test_sale_sensitivity.py",
+      "bytes": 14109,
+      "sha256": "89834ad70c5f84e2488f94c50155d02aaf8114385eadc54a07a4998d3aa53bbd"
+    },
+    {
       "path": "tests/test_scenario_review.py",
       "bytes": 11063,
       "sha256": "1ef74bb63148932150384c64ebfca48bf37ea665bcfc43f9abb2800b80ac205e"
@@ -2185,6 +2215,11 @@
       "path": "tools/demo_residential_noi_chain.py",
       "bytes": 3701,
       "sha256": "57ea254f74e7c132e237d924843c11a60587497610a061aa01852b0675e842db"
+    },
+    {
+      "path": "tools/demo_sale_sensitivity.py",
+      "bytes": 1990,
+      "sha256": "3a912940fb31721707041d83476686c75737ee00cd3d4816c4bbf66f7546c8ff"
     },
     {
       "path": "tools/demo_scenario_threshold_rehearsal.py",

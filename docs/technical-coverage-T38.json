@@ -1,0 +1,136 @@
+{
+  "scope": "Isolated net receipt sensitivity; original 398-row matrix and financial gates preserved",
+  "rows": [
+    {
+      "requirement_or_variable": "isolated_net_sale_cases",
+      "source": {
+        "path": "docs/technical-implementation-T38.md",
+        "line": 7,
+        "sha256": "b54a277679285e9fcee5be6d39d7a88a633f33fc9f3c6b70afed47f895d33a5d"
+      },
+      "current_definition": "Explicit 1-12 source-bound cases; selected net sale event only, frozen other flows",
+      "affected_modules": [
+        "M7",
+        "T23",
+        "T37",
+        "T38"
+      ],
+      "validation_evidence": [
+        "tests/test_sale_sensitivity.py:SaleSensitivityTests.test_independent_cash_and_multiple_recomputation",
+        "tests/test_sale_sensitivity.py:SaleSensitivityTests.test_frozen_other_events_stocks_dates_and_original_unchanged"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Full producer-consistent project scenarios and actual sale terms"
+    },
+    {
+      "requirement_or_variable": "conditional_net_receipt_recovery_floor",
+      "source": {
+        "path": "docs/technical-implementation-T38.md",
+        "line": 11,
+        "sha256": "b54a277679285e9fcee5be6d39d7a88a633f33fc9f3c6b70afed47f895d33a5d"
+      },
+      "current_definition": "max(0,A-(D-s)); not gross price/exit-cap break-even or a PASS target",
+      "affected_modules": [
+        "M7",
+        "T23",
+        "T37",
+        "T38"
+      ],
+      "validation_evidence": [
+        "tests/test_sale_sensitivity.py:SaleSensitivityTests.test_break_even_case_exactly_recovers_cash_without_pass",
+        "tests/test_sale_sensitivity.py:SaleSensitivityTests.test_target_is_one_of_multiple_sales_not_all_sales",
+        "tests/test_sale_sensitivity.py:SaleSensitivityTests.test_already_recovered_floor_zero_does_not_imply_em_exactly_one",
+        "tests/test_sale_sensitivity.py:SaleSensitivityTests.test_zero_contributions_does_not_invent_em"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Gross sale/cost/tax/debt response and adopted criteria"
+    },
+    {
+      "requirement_or_variable": "case_missing_and_global_blockers",
+      "source": {
+        "path": "docs/technical-implementation-T38.md",
+        "line": 13,
+        "sha256": "b54a277679285e9fcee5be6d39d7a88a633f33fc9f3c6b70afed47f895d33a5d"
+      },
+      "current_definition": "Preserve incomplete cases with blockers; global incompatibility blocks all; explicit zero and no clipping",
+      "affected_modules": [
+        "M7",
+        "T23",
+        "T37",
+        "T38"
+      ],
+      "validation_evidence": [
+        "tests/test_sale_sensitivity.py:SaleSensitivityTests.test_missing_case_preserved_with_valid_siblings",
+        "tests/test_sale_sensitivity.py:SaleSensitivityTests.test_negative_receipt_not_clipped_or_converted_to_contribution",
+        "tests/test_sale_sensitivity.py:SaleSensitivityTests.test_global_context_hash_and_assumption_failures_block_all"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Authentic completeness, amounts and evidence applicability"
+    },
+    {
+      "requirement_or_variable": "cash_return_and_IRR_replay",
+      "source": {
+        "path": "docs/technical-implementation-T38.md",
+        "line": 9,
+        "sha256": "b54a277679285e9fcee5be6d39d7a88a633f33fc9f3c6b70afed47f895d33a5d"
+      },
+      "current_definition": "Recompute gross cash, EM and all IRR roots; retain story blockers and no personal allocation",
+      "affected_modules": [
+        "M7",
+        "T23",
+        "T37",
+        "T38"
+      ],
+      "validation_evidence": [
+        "tests/test_sale_sensitivity.py:SaleSensitivityTests.test_multiple_irr_roots_retained_without_selected_rate",
+        "tests/test_sale_sensitivity.py:SaleSensitivityTests.test_zero_sale_recomputes_irr_not_copies_base_rate"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Personal distribution terms and full investor story"
+    },
+    {
+      "requirement_or_variable": "source_and_report_integrity",
+      "source": {
+        "path": "docs/technical-implementation-T38.md",
+        "line": 23,
+        "sha256": "b54a277679285e9fcee5be6d39d7a88a633f33fc9f3c6b70afed47f895d33a5d"
+      },
+      "current_definition": "Exact base and report replay with immutable original source and case source/run identities",
+      "affected_modules": [
+        "M7",
+        "T23",
+        "T37",
+        "T38"
+      ],
+      "validation_evidence": [
+        "tests/test_sale_sensitivity.py:SaleSensitivityTests.test_rehashed_base_forgery_and_stale_source_rejected",
+        "tests/test_sale_sensitivity.py:SaleSensitivityTests.test_result_replay_rejects_updated_hash_forgery",
+        "tests/test_sale_sensitivity.py:SaleSensitivityTests.test_changed_spec_invalidates_saved_report"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "No new SQLite runtime archive profile"
+    },
+    {
+      "requirement_or_variable": "scenario_scope_and_bank_guard",
+      "source": {
+        "path": "docs/technical-implementation-T38.md",
+        "line": 17,
+        "sha256": "b54a277679285e9fcee5be6d39d7a88a633f33fc9f3c6b70afed47f895d33a5d"
+      },
+      "current_definition": "Isolated net receipt edit does not retain bank/closing producer link or recompute whole project",
+      "affected_modules": [
+        "M7",
+        "T23",
+        "T37",
+        "T38"
+      ],
+      "validation_evidence": [
+        "tests/test_sale_sensitivity.py:SaleSensitivityTests.test_isolated_analysis_never_claims_full_scenario_or_investor_return"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Full cash/financing scenario assembly; prior T36 blocker preserved"
+    }
+  ],
+  "project_scenario_recomputed": false,
+  "real_decisions_enabled": false
+}
