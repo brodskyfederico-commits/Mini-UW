@@ -33,6 +33,8 @@ from .scenario_threshold_rehearsal import ScenarioThresholdRun,simulate_scenario
 from .scenario_threshold_rehearsal import ENGINE_SHA256 as SCENARIO_THRESHOLD_ENGINE_SHA256
 from .threshold_rehearsal import read_documented_thresholds,parse_rehearsal
 from .threshold_rehearsal import ENGINE_SHA256 as THRESHOLD_SOURCE_ENGINE_SHA256
+from .scenario_review import ScenarioReviewRun,parse_scenario_proposal,evaluate_scenario_proposal
+from .scenario_review import ENGINE_SHA256 as SCENARIO_REVIEW_ENGINE_SHA256
 
 
 class MissingEvidence(KeyError):
@@ -57,6 +59,18 @@ class ScenarioThresholdBundle:
 
     @property
     def run(self):return ScenarioThresholdRun(**self.payload['run'])
+
+
+@dataclass(frozen=True)
+class ScenarioReviewBundle:
+    payload_json: str
+    sha256: str
+    @property
+    def payload(self):return json.loads(self.payload_json)
+    @property
+    def base_run(self):return ScenarioThresholdRun(**self.payload['base_run'])
+    @property
+    def run(self):return ScenarioReviewRun(**self.payload['run'])
 
 
 def _sha(raw):
@@ -585,6 +599,45 @@ COMMIT;''')
                 raise CorruptArchive('invalid screening evidence') from error
         return bundle
 
+
+    def get_scenario_proposal_source(self, sha):
+        raw=self._read('source',sha);parse_scenario_proposal(raw);return raw
+
+    def save_scenario_review(self, document_raw, base_raw, base_run, proposal_raw, run):
+        if type(run) is not ScenarioReviewRun or evaluate_scenario_proposal(document_raw,base_raw,base_run,proposal_raw)!=run:
+            raise ValidationError('scenario review result does not reproduce')
+        with self._transaction():
+            document=self._put('source',document_raw);base=self._put('source',base_raw)
+            proposal=self._put('source',proposal_raw);candidate=self._put('source',run.candidate_raw)
+            p={'schema':'miniuw.synthetic-scenario-review-bundle.v1','purpose':'synthetic_development_only',
+                'document_source_sha256':document,'base_case_sha256':base,'base_run':asdict(base_run),
+                'proposal_source_sha256':proposal,'candidate_case_sha256':candidate,'run':asdict(run),
+                'versions':[SCENARIO_REVIEW_ENGINE_SHA256,SCENARIO_THRESHOLD_ENGINE_SHA256,THRESHOLD_SOURCE_ENGINE_SHA256,SCREEN_ENGINE_SHA256],
+                'definition_sources':screening_definition_sources(),'user_policy_reference':user_policy_reference()}
+            return self._put('bundle',canonical(p).encode())
+
+    def load_scenario_review(self, sha):
+        with self._transaction():
+            raw=self.read_bundle_bytes(sha)
+            try:
+                p=json.loads(raw)
+                if set(p)!={'schema','purpose','document_source_sha256','base_case_sha256','base_run','proposal_source_sha256','candidate_case_sha256','run','versions','definition_sources','user_policy_reference'}:
+                    raise CorruptArchive('scenario review fields changed')
+                if p['schema']!='miniuw.synthetic-scenario-review-bundle.v1':raise UnsupportedArchive('unsupported scenario review schema')
+                if p['purpose']!='synthetic_development_only':raise CorruptArchive('scenario review purpose changed')
+                if p['versions']!=[SCENARIO_REVIEW_ENGINE_SHA256,SCENARIO_THRESHOLD_ENGINE_SHA256,THRESHOLD_SOURCE_ENGINE_SHA256,SCREEN_ENGINE_SHA256] or p['definition_sources']!=screening_definition_sources() or p['user_policy_reference']!=user_policy_reference():
+                    raise UnsupportedArchive('review replay requires compatible code/documents/policy')
+                bundle=ScenarioReviewBundle(raw.decode(),sha)
+                document=self.get_documented_threshold_source(p['document_source_sha256'])
+                base=self.get_scenario_threshold_case(p['base_case_sha256'])
+                proposal=self.get_scenario_proposal_source(p['proposal_source_sha256'])
+                candidate=self.get_scenario_threshold_case(p['candidate_case_sha256'])
+                if evaluate_scenario_proposal(document,base,bundle.base_run,proposal)!=bundle.run or candidate!=bundle.run.candidate_raw:
+                    raise CorruptArchive('scenario review does not reproduce')
+            except MissingEvidence:raise
+            except(KeyError,TypeError,UnicodeError,json.JSONDecodeError,ValidationError)as error:
+                raise CorruptArchive('invalid scenario review evidence')from error
+        return bundle
 
     def get_documented_threshold_source(self, sha):
         raw=self._read('source',sha);read_documented_thresholds(raw);return raw

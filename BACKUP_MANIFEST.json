@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D03 review and metric-intake design extensions and T01–T15 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D03 review and metric-intake design extensions and T01–T18 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 10236,
-      "sha256": "c102557903c907a7af2ddcfbcd56f2758c78861efaaa687ca6425f5506750b07"
+      "bytes": 10853,
+      "sha256": "6e410c102407c80f16b80fa92b79ec0ce0ac93f449f89aabc16330db60676242"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 49186,
-      "sha256": "26eedbf7442324d3e63bc3b80c4bbbd4f545d7e6960c06834244caa9bed03430"
+      "bytes": 51224,
+      "sha256": "486d3e6b78305541c6f3cb1deab93677999e9c00bb857352e9b2a5802bda3a1f"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -160,6 +160,11 @@
       "path": "docs/input-dictionary.json",
       "bytes": 29587,
       "sha256": "c26720e78b12fddbc522a31fb97aa32c961e3dbe20ccf9477dcefed33583af8e"
+    },
+    {
+      "path": "docs/integrated-synthetic-review-validation.json",
+      "bytes": 3154,
+      "sha256": "f3baaa3540d0865403ef8325a67b15bf22c5d606e5fc1b43be5f0d4673595548"
     },
     {
       "path": "docs/integration-and-readiness.md",
@@ -342,6 +347,11 @@
       "sha256": "b16e2a56e21e5d9880b319d9c97a40ba566927d4bc9eb2076321ff6af714beb3"
     },
     {
+      "path": "docs/review/MiniUW_Vista_Sintetica_Interna_T18.pdf",
+      "bytes": 6569,
+      "sha256": "153eb40179116a29b10a4882db5025b499063bbc45315e953b0c93aa529d3c5b"
+    },
+    {
       "path": "docs/review/integral-spec-I01-validation.json",
       "bytes": 433,
       "sha256": "9f42b7ec27e13e6adba7b32653254090b9e11b0408d3a87cec337642f2d461f6"
@@ -355,6 +365,11 @@
       "path": "docs/review/pdf-review-validation.json",
       "bytes": 367,
       "sha256": "d76008398e1324b0709f0df8220d92fa249863f41c664188a2bbc624d6866fd6"
+    },
+    {
+      "path": "docs/review/synthetic-onepager-T18-manifest.json",
+      "bytes": 4871,
+      "sha256": "c962ae5c54d7db96ac38d956d815b10e57cc7874de71503022db67f6b1c935de"
     },
     {
       "path": "docs/review-lifecycle-acceptance-cases.json",
@@ -487,9 +502,24 @@
       "sha256": "5c0e5fb153080a775c47bffc728ddb9e7941a1953921838956a6b512bf56b7c0"
     },
     {
+      "path": "docs/technical-implementation-T16.md",
+      "bytes": 2626,
+      "sha256": "d9373e5b10bcba9b40b301251a2882fd24a271322530187577e4ee1b602a68d9"
+    },
+    {
+      "path": "docs/technical-implementation-T17.md",
+      "bytes": 2995,
+      "sha256": "8d85a01f6be969e76ae05f8fcdc3900a8753e62ddf483599392be223eae5f72e"
+    },
+    {
+      "path": "docs/technical-implementation-T18.md",
+      "bytes": 3819,
+      "sha256": "737b9e6b8377a0531bab2c9af703fb6c3425ea8de664d60e8b40537c305c1d68"
+    },
+    {
       "path": "docs/technical-implementation-status.json",
-      "bytes": 7009,
-      "sha256": "c3f80f11775ffb1e9267940eff8422cd081e14c2d769f6feafe3dc5105609b4d"
+      "bytes": 7706,
+      "sha256": "f650e444b4a8e432907b43001545db71dd8428a459115195c865b53fd97ba7d8"
     },
     {
       "path": "infra/README.md",
@@ -1163,8 +1193,8 @@
     },
     {
       "path": "src/miniuw_foundation/archive.py",
-      "bytes": 35376,
-      "sha256": "43ee5654c6975aba5b9853d8b3c0617b1794299b6177e8fecee3b53fa1860669"
+      "bytes": 39128,
+      "sha256": "fa673b9ebf0a2920008be04ebc1df614557039b380b299fa5ca418face3e72cd"
     },
     {
       "path": "src/miniuw_foundation/calculations.py",
@@ -1217,9 +1247,19 @@
       "sha256": "582f318182971e79cd48fbcd43a00c3e4ecc8505450eab87762782ed8af70c0a"
     },
     {
+      "path": "src/miniuw_foundation/proposal_queue.py",
+      "bytes": 10175,
+      "sha256": "3a0af7fd5b74f88762f16a2be8acc25dae9ed4e4e0d07e7354f605b6ca7f6763"
+    },
+    {
       "path": "src/miniuw_foundation/review_proposals.py",
       "bytes": 7817,
       "sha256": "b232c7caa62aaf1b70a59fbf9e4c3afa47e62483547c9a9a064e9c829a994e9f"
+    },
+    {
+      "path": "src/miniuw_foundation/scenario_review.py",
+      "bytes": 6261,
+      "sha256": "dbb6054b1e4d9e13ba842caf3dd57fca30585decd62f78f35d9524596ae35ed4"
     },
     {
       "path": "src/miniuw_foundation/scenario_threshold_rehearsal.py",
@@ -1250,6 +1290,11 @@
       "path": "src/miniuw_foundation/store.py",
       "bytes": 6009,
       "sha256": "b054aaef2c69e9b42eb57e1a8bc330d9c00008c22abd88e4971bb39f040141bf"
+    },
+    {
+      "path": "src/miniuw_foundation/synthetic_onepager.py",
+      "bytes": 8997,
+      "sha256": "d1e388ffc7c848157971e9c58c8745b858af21d1e52fb7093d9ba65ba2dd6753"
     },
     {
       "path": "src/miniuw_foundation/threshold_rehearsal.py",
@@ -1407,9 +1452,19 @@
       "sha256": "1131920b5d665b32d269fd28f664279d4050dd33ed5d1ec71312f1d3d40d9acb"
     },
     {
+      "path": "tests/test_proposal_queue.py",
+      "bytes": 10444,
+      "sha256": "0dfb5476aec14c09914ac1ca4fd1598cd97dde2700fd61ea688ac304b1f0988d"
+    },
+    {
       "path": "tests/test_review_proposals.py",
       "bytes": 12756,
       "sha256": "4be12acde9cd49db6fb601b6bc69f5af67d57d94088e073c69b7b2627ac10f3d"
+    },
+    {
+      "path": "tests/test_scenario_review.py",
+      "bytes": 11063,
+      "sha256": "1ef74bb63148932150384c64ebfca48bf37ea665bcfc43f9abb2800b80ac205e"
     },
     {
       "path": "tests/test_scenario_threshold_rehearsal.py",
@@ -1430,6 +1485,11 @@
       "path": "tests/test_sheets.py",
       "bytes": 10876,
       "sha256": "272634c6f8e9cbe2e32b98684b2ca101cdc0e60a53c2a6983fb43ef3eb18a3ae"
+    },
+    {
+      "path": "tests/test_synthetic_onepager.py",
+      "bytes": 5273,
+      "sha256": "98a9625007bbe67e1e80b75fbd785132ecdb6fda20458f29faa0938959894401"
     },
     {
       "path": "tests/test_threshold_rehearsal.py",
@@ -1460,6 +1520,11 @@
       "path": "tools/demo_documented_threshold_rehearsal.py",
       "bytes": 1478,
       "sha256": "903ced684c4276ca4fe741bc92feb49ea6616fae8525d60cdfdc84248b14590e"
+    },
+    {
+      "path": "tools/demo_integrated_synthetic_review.py",
+      "bytes": 5191,
+      "sha256": "6df552431042f73a6840cf79b0e745921fe1a468220922f27e8e0fd0165befa9"
     },
     {
       "path": "tools/demo_scenario_threshold_rehearsal.py",

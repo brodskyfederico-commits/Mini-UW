@@ -1,0 +1,74 @@
+{
+  "purpose": "synthetic_integrated_components_only",
+  "original_preserved": true,
+  "original_simulation_result": "PENDING",
+  "first_candidate_simulation_result": "PASS",
+  "second_candidate_simulation_result": "FAIL",
+  "source_and_proposal_chain_replayed_after_reopen": true,
+  "queue": {
+    "revision": 3,
+    "entries": [
+      {
+        "proposal_id": "SYNTHETIC-integrated-first",
+        "bundle_sha": "e575e885c121d37a4244afa1b172193f4433ad05bee82cdaea25c1e7c5c52f46",
+        "state": "superseded",
+        "parent_proposal_id": null,
+        "candidate_case_sha": "5dd8b0e80b7ae996d7d6a382a3cf9898621cb4858e03e265f92486800418f5d7",
+        "candidate_run_sha": "e0c90ce5210b0096d9546fd3e5e331cc3e6333089c2a72c25f5b36eb30e70980",
+        "base_case_sha": "b17e91d93b639633d03b48d27c2acd855f1f7850a7d9218866a083aef7b5189c",
+        "document_sha": "38b78d40013b9338511d2917de6c4347be1ec812712b4b4b18e7308bb6c28ab9",
+        "deal_id": "SYNTHETIC-documented-thresholds"
+      },
+      {
+        "proposal_id": "SYNTHETIC-integrated-second",
+        "bundle_sha": "544797c3e12634bb178b419efc3851d60f35677a733bd91430b27c1ad9ce3ffe",
+        "state": "withdrawn",
+        "parent_proposal_id": "SYNTHETIC-integrated-first",
+        "candidate_case_sha": "80e56b5257465a2741482c2e12b4975038cf2a9fe4012f0e7881af05412d1b17",
+        "candidate_run_sha": "45f5ea42d33abb84f64f95d7ffb9c712a0982878457bf846d293f909219d4cd7",
+        "base_case_sha": "5dd8b0e80b7ae996d7d6a382a3cf9898621cb4858e03e265f92486800418f5d7",
+        "document_sha": "38b78d40013b9338511d2917de6c4347be1ec812712b4b4b18e7308bb6c28ab9",
+        "deal_id": "SYNTHETIC-documented-thresholds"
+      }
+    ],
+    "purpose": "synthetic_queue_projection_only",
+    "evidence_replayed": false,
+    "decision": "PENDING",
+    "professional_review_authenticated": false,
+    "production_authorized": false
+  },
+  "events": [
+    {
+      "bundle_sha": "e575e885c121d37a4244afa1b172193f4433ad05bee82cdaea25c1e7c5c52f46",
+      "proposal_id": "SYNTHETIC-integrated-first",
+      "state": "recorded"
+    },
+    {
+      "proposal_id": "SYNTHETIC-integrated-first",
+      "replacement_bundle_sha": "544797c3e12634bb178b419efc3851d60f35677a733bd91430b27c1ad9ce3ffe",
+      "replacement_proposal_id": "SYNTHETIC-integrated-second",
+      "state": "superseded"
+    },
+    {
+      "bundle_sha": "544797c3e12634bb178b419efc3851d60f35677a733bd91430b27c1ad9ce3ffe",
+      "proposal_id": "SYNTHETIC-integrated-second",
+      "state": "withdrawn"
+    }
+  ],
+  "full_scenario_simulation_result": "PENDING",
+  "full_scenario_blockers": [
+    "asking_relative_to_supported_price:Downside:pass_condition_and_applicability_unresolved"
+  ],
+  "runtime_databases_retained": false,
+  "proposal_accepted": false,
+  "decision": "PENDING",
+  "professional_review_authenticated": false,
+  "production_authorized": false,
+  "full_miniuw_completed": false,
+  "technical_tests": 354,
+  "new_technical_tests": 46,
+  "pdf_pages_independently_verified": 1,
+  "pdf_text_bounds_checked": true,
+  "pdf_visual_review": "rendered and inspected; bounded synthetic scorecard only",
+  "runtime_databases_in_git_backup": false
+}
