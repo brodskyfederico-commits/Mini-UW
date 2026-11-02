@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D03 review and metric-intake design extensions and T01–T14 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D03 review and metric-intake design extensions and T01–T15 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 9748,
-      "sha256": "42a4da04e757633edde62d558d7cba57a2e38a28f2eb95f378e3dba0d6d76928"
+      "bytes": 10236,
+      "sha256": "c102557903c907a7af2ddcfbcd56f2758c78861efaaa687ca6425f5506750b07"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 47608,
-      "sha256": "371cea0713cce66996744573af3af5786b7625e3707a253a94d3707866eb6ebf"
+      "bytes": 49186,
+      "sha256": "26eedbf7442324d3e63bc3b80c4bbbd4f545d7e6960c06834244caa9bed03430"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -377,6 +377,11 @@
       "sha256": "a5f8d09f59ea81e1466f07b0302d1f094f439bbb10110e7036a327d8b139e4fb"
     },
     {
+      "path": "docs/scenario-threshold-rehearsal-validation.json",
+      "bytes": 3259,
+      "sha256": "a4e0f8e5cdffc1f7f5916636e1aa1a1fe770480f179d834706a16419be5f622c"
+    },
+    {
       "path": "docs/sensitivity-ranking.md",
       "bytes": 4024,
       "sha256": "ace476dfa79506eff7e9d541a93523cd84db2b5cd12cdb3cd2abec871aaf6c52"
@@ -477,9 +482,14 @@
       "sha256": "40e573b4c2af3528bd036ee4a1683cfa96ac9879d54cbcd8eba83cc36e977e48"
     },
     {
+      "path": "docs/technical-implementation-T15.md",
+      "bytes": 5924,
+      "sha256": "5c0e5fb153080a775c47bffc728ddb9e7941a1953921838956a6b512bf56b7c0"
+    },
+    {
       "path": "docs/technical-implementation-status.json",
-      "bytes": 6732,
-      "sha256": "fd2d2942fe9849556acfd8d894b6b6544367a313328430fd3ee4c501f178a754"
+      "bytes": 7009,
+      "sha256": "c3f80f11775ffb1e9267940eff8422cd081e14c2d769f6feafe3dc5105609b4d"
     },
     {
       "path": "infra/README.md",
@@ -1153,8 +1163,8 @@
     },
     {
       "path": "src/miniuw_foundation/archive.py",
-      "bytes": 31932,
-      "sha256": "ce798d1da1a265a4e2d499afed65b6969aada7b22ded8143c3b23f5bae5c71f3"
+      "bytes": 35376,
+      "sha256": "43ee5654c6975aba5b9853d8b3c0617b1794299b6177e8fecee3b53fa1860669"
     },
     {
       "path": "src/miniuw_foundation/calculations.py",
@@ -1210,6 +1220,11 @@
       "path": "src/miniuw_foundation/review_proposals.py",
       "bytes": 7817,
       "sha256": "b232c7caa62aaf1b70a59fbf9e4c3afa47e62483547c9a9a064e9c829a994e9f"
+    },
+    {
+      "path": "src/miniuw_foundation/scenario_threshold_rehearsal.py",
+      "bytes": 5113,
+      "sha256": "0f0e4fee3d0d6c34c93634c24a4a1c5f19d7a8bf43a65a5a25e0be396c47d7f1"
     },
     {
       "path": "src/miniuw_foundation/scoped_profiles.py",
@@ -1397,6 +1412,11 @@
       "sha256": "4be12acde9cd49db6fb601b6bc69f5af67d57d94088e073c69b7b2627ac10f3d"
     },
     {
+      "path": "tests/test_scenario_threshold_rehearsal.py",
+      "bytes": 9860,
+      "sha256": "365c9350ffec9e39bf4eb9051e206abab9944061959738a7cabd06c3ed6dc2ff"
+    },
+    {
       "path": "tests/test_scoped_profiles.py",
       "bytes": 12853,
       "sha256": "74239a326ae849be664dae7fe298e1cc859c94e858c23f2b5b6c877651433fbc"
@@ -1440,6 +1460,11 @@
       "path": "tools/demo_documented_threshold_rehearsal.py",
       "bytes": 1478,
       "sha256": "903ced684c4276ca4fe741bc92feb49ea6616fae8525d60cdfdc84248b14590e"
+    },
+    {
+      "path": "tools/demo_scenario_threshold_rehearsal.py",
+      "bytes": 1838,
+      "sha256": "ecddcb31a5484762fcbde5cb7f1fecf9b2bba40107bd54b047c57dc465cc6fcb"
     },
     {
       "path": "tools/demo_synthetic_archive.py",

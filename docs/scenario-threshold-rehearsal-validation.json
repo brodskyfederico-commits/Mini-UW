@@ -1,0 +1,121 @@
+{
+  "purpose": "synthetic_source_specific_conditions_only",
+  "cases": {
+    "source_conditions": {
+      "scope": "Base/Downside experiment",
+      "simulation_result": "PENDING",
+      "simulation_blockers": [
+        "asking_relative_to_supported_price:Downside:pass_condition_and_applicability_unresolved"
+      ],
+      "decision": "PENDING",
+      "full_miniuw_completed": false,
+      "downside_states": [
+        {
+          "metric_id": "YoC",
+          "state": "PASS_CONDITION"
+        },
+        {
+          "metric_id": "spread",
+          "state": "PASS_CONDITION"
+        },
+        {
+          "metric_id": "equity_recovered",
+          "state": "PASS_CONDITION"
+        },
+        {
+          "metric_id": "equity_cash_in",
+          "state": "PASS_CONDITION"
+        },
+        {
+          "metric_id": "breakeven_occupancy",
+          "state": "PASS_CONDITION"
+        },
+        {
+          "metric_id": "post_refi_CoC",
+          "state": "PASS_CONDITION"
+        },
+        {
+          "metric_id": "asking_relative_to_supported_price",
+          "state": "PENDING"
+        },
+        {
+          "metric_id": "equity_TDC",
+          "state": "PASS_CONDITION"
+        },
+        {
+          "metric_id": "IRR",
+          "state": "PASS_CONDITION"
+        },
+        {
+          "metric_id": "equity_multiple",
+          "state": "PASS_CONDITION"
+        }
+      ]
+    },
+    "downside_below_pass": {
+      "scope": "Base/Downside experiment",
+      "simulation_result": "PENDING",
+      "simulation_blockers": [
+        "YoC:Downside:downside_pass_not_met_pending_review",
+        "asking_relative_to_supported_price:Downside:pass_condition_and_applicability_unresolved"
+      ],
+      "decision": "PENDING",
+      "full_miniuw_completed": false,
+      "downside_states": [
+        {
+          "metric_id": "YoC",
+          "state": "PASS_MISS_PENDING"
+        },
+        {
+          "metric_id": "spread",
+          "state": "PASS_CONDITION"
+        },
+        {
+          "metric_id": "equity_recovered",
+          "state": "PASS_CONDITION"
+        },
+        {
+          "metric_id": "equity_cash_in",
+          "state": "PASS_CONDITION"
+        },
+        {
+          "metric_id": "breakeven_occupancy",
+          "state": "PASS_CONDITION"
+        },
+        {
+          "metric_id": "post_refi_CoC",
+          "state": "PASS_CONDITION"
+        },
+        {
+          "metric_id": "asking_relative_to_supported_price",
+          "state": "PENDING"
+        },
+        {
+          "metric_id": "equity_TDC",
+          "state": "PASS_CONDITION"
+        },
+        {
+          "metric_id": "IRR",
+          "state": "PASS_CONDITION"
+        },
+        {
+          "metric_id": "equity_multiple",
+          "state": "PASS_CONDITION"
+        }
+      ]
+    },
+    "base_only": {
+      "scope": "Base-only experiment",
+      "simulation_result": "PASS",
+      "simulation_blockers": [],
+      "decision": "PENDING",
+      "full_miniuw_completed": false,
+      "downside_states": []
+    }
+  },
+  "archive_source_case_and_result_replayed": true,
+  "production_authorized": false,
+  "technical_tests": 308,
+  "new_technical_tests": 18,
+  "scope": "executed synthetic comparator and local archive replay; not independent financial acceptance"
+}

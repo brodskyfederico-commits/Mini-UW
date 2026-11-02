@@ -29,6 +29,10 @@ from .screening import ENGINE_SHA256 as SCREEN_ENGINE_SHA256
 from .screening import definition_sources as screening_definition_sources
 from .review_proposals import ReviewProposalRun,parse_review_proposal,evaluate_review_proposal
 from .review_proposals import ENGINE_SHA256 as REVIEW_PROPOSAL_ENGINE_SHA256
+from .scenario_threshold_rehearsal import ScenarioThresholdRun,simulate_scenario_thresholds
+from .scenario_threshold_rehearsal import ENGINE_SHA256 as SCENARIO_THRESHOLD_ENGINE_SHA256
+from .threshold_rehearsal import read_documented_thresholds,parse_rehearsal
+from .threshold_rehearsal import ENGINE_SHA256 as THRESHOLD_SOURCE_ENGINE_SHA256
 
 
 class MissingEvidence(KeyError):
@@ -41,6 +45,18 @@ class CorruptArchive(ValueError):
 
 class UnsupportedArchive(ValueError):
     pass
+
+
+@dataclass(frozen=True)
+class ScenarioThresholdBundle:
+    payload_json: str
+    sha256: str
+
+    @property
+    def payload(self):return json.loads(self.payload_json)
+
+    @property
+    def run(self):return ScenarioThresholdRun(**self.payload['run'])
 
 
 def _sha(raw):
@@ -569,6 +585,44 @@ COMMIT;''')
                 raise CorruptArchive('invalid screening evidence') from error
         return bundle
 
+
+    def get_documented_threshold_source(self, sha):
+        raw=self._read('source',sha);read_documented_thresholds(raw);return raw
+
+    def get_scenario_threshold_case(self, sha):
+        raw=self._read('source',sha);parse_rehearsal(raw);return raw
+
+    def save_scenario_thresholds(self, source_raw, case_raw, run):
+        if type(run) is not ScenarioThresholdRun or simulate_scenario_thresholds(source_raw,case_raw)!=run:
+            raise ValidationError('scenario threshold result does not reproduce from exact source and fixture')
+        with self._transaction():
+            source=self._put('source',source_raw);case=self._put('source',case_raw)
+            p={'schema':'miniuw.synthetic-scenario-threshold-bundle.v1','purpose':'synthetic_development_only',
+                'document_source_sha256':source,'case_source_sha256':case,'run':asdict(run),
+                'versions':[SCENARIO_THRESHOLD_ENGINE_SHA256,THRESHOLD_SOURCE_ENGINE_SHA256,SCREEN_ENGINE_SHA256],
+                'definition_sources':screening_definition_sources(),'user_policy_reference':user_policy_reference()}
+            return self._put('bundle',canonical(p).encode('utf-8'))
+
+    def load_scenario_thresholds(self, sha):
+        with self._transaction():
+            raw=self.read_bundle_bytes(sha)
+            try:
+                p=json.loads(raw)
+                if set(p)!={'schema','purpose','document_source_sha256','case_source_sha256','run','versions','definition_sources','user_policy_reference'}:
+                    raise CorruptArchive('scenario threshold bundle fields changed')
+                if p['schema']!='miniuw.synthetic-scenario-threshold-bundle.v1':raise UnsupportedArchive('unsupported scenario threshold schema')
+                if p['purpose']!='synthetic_development_only':raise CorruptArchive('scenario threshold purpose changed')
+                if p['versions']!=[SCENARIO_THRESHOLD_ENGINE_SHA256,THRESHOLD_SOURCE_ENGINE_SHA256,SCREEN_ENGINE_SHA256] or p['definition_sources']!=screening_definition_sources() or p['user_policy_reference']!=user_policy_reference():
+                    raise UnsupportedArchive('scenario threshold replay requires compatible code/documents/policy')
+                bundle=ScenarioThresholdBundle(raw.decode('utf-8'),sha)
+                source=self.get_documented_threshold_source(p['document_source_sha256'])
+                case=self.get_scenario_threshold_case(p['case_source_sha256'])
+                if simulate_scenario_thresholds(source,case)!=bundle.run:
+                    raise CorruptArchive('scenario threshold evidence does not reproduce')
+            except MissingEvidence:raise
+            except(KeyError,TypeError,UnicodeError,json.JSONDecodeError,ValidationError)as error:
+                raise CorruptArchive('invalid scenario threshold evidence')from error
+        return bundle
 
     def get_review_proposal_source(self, sha):
         raw=self._read('source',sha);parse_review_proposal(raw);return raw
