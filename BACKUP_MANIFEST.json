@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D03 review and metric-intake design extensions and T01–T42 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D03 review and metric-intake design extensions and T01–T45 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 19559,
-      "sha256": "808d7eee91ee51ccd4395c742c5a22105b36675e0f3d951a82a18d316252783d"
+      "bytes": 20313,
+      "sha256": "d4bb60a211cc5cbb1daae0e82a0d8ad881dc258c7a853bc6a2846a46f7ca998b"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 80341,
-      "sha256": "a1294a1cf3c1c2906ea3ed23346f7694305916b6a8471d0586d2380d0a955fc2"
+      "bytes": 82994,
+      "sha256": "33776be28d111ee0ad5f5c722b1b086f96a1814e16abcf23a8245c5c1beccedd"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -198,8 +198,8 @@
     },
     {
       "path": "docs/miniuw-improvement-scope.json",
-      "bytes": 5962,
-      "sha256": "61bd2ff23a41f1e112c87ee794c1e846a5858e8fc2019deb2d9148dcac5d689b"
+      "bytes": 6309,
+      "sha256": "2d0a604646a9af855abd1e04f051407e6b86b201de3e944be8815cf4badf0e5e"
     },
     {
       "path": "docs/model-budget-schedule.md",
@@ -377,6 +377,11 @@
       "sha256": "153eb40179116a29b10a4882db5025b499063bbc45315e953b0c93aa529d3c5b"
     },
     {
+      "path": "docs/review/Resumen_Costos_Recuperacion_T43_T45.md",
+      "bytes": 1608,
+      "sha256": "ebea84568c938777c232df545e4f697ad1f23b427875b3984cd33c7a567914df"
+    },
+    {
       "path": "docs/review/Resumen_Revision_Venta_T39_T40.md",
       "bytes": 1731,
       "sha256": "052f04fe3dad0336a3465b2f20fb6f0492b59f98439829cea4a9893029955c76"
@@ -427,6 +432,11 @@
       "sha256": "52d0559bf23169a2ffe1280f4708dd0bb29361c176de8631ee6320ce871640f8"
     },
     {
+      "path": "docs/review/synthetic-costed-exit-sale-demo.json",
+      "bytes": 23001,
+      "sha256": "a08cbfef8641e0c26de9bdde839096ce24fd03de35dacaeccedd03930d188ca9"
+    },
+    {
       "path": "docs/review/synthetic-debt-checked-closing-returns-demo.json",
       "bytes": 9788,
       "sha256": "28c44b9cb5f4005884dd7af367b27f031592b018e5617cbbc2712c3e19543a8d"
@@ -470,6 +480,11 @@
       "path": "docs/review/synthetic-refinance-capacity-demo.json",
       "bytes": 13068,
       "sha256": "57be6b33c3ac3003830da8451e3fc61caf8a95a4a29ca7a67cd01efe4416183d"
+    },
+    {
+      "path": "docs/review/synthetic-sale-recovery-demo.json",
+      "bytes": 11259,
+      "sha256": "23d412b879c34a41119ab83af0d926c3cbb9bf0d38e9b7915cd4d82de8755765"
     },
     {
       "path": "docs/review/synthetic-sale-sensitivity-demo.json",
@@ -580,6 +595,11 @@
       "path": "docs/technical-coverage-T41-T42.json",
       "bytes": 6689,
       "sha256": "0731e68fc4436e0977e8fd2bb2b779d075a508134f097fd337d2fc58db61a4e8"
+    },
+    {
+      "path": "docs/technical-coverage-T43-T45.json",
+      "bytes": 8408,
+      "sha256": "345b2dc54df9d52eb7eaeef1c8272e97a97a57760ce68d370c9dd1e58e66391a"
     },
     {
       "path": "docs/technical-implementation-T01.md",
@@ -747,9 +767,19 @@
       "sha256": "9c21dcd171a12c913636a7fbcade70f2a094fa4bab30625f42e1184e3c27e0c4"
     },
     {
+      "path": "docs/technical-implementation-T43-T44.md",
+      "bytes": 4452,
+      "sha256": "b3320f17db5f5391ed18e83346e9a59da168676b9d5fe46e87cef5f2de56ae84"
+    },
+    {
+      "path": "docs/technical-implementation-T45.md",
+      "bytes": 3701,
+      "sha256": "0faed01be0a3be20ee5d5e2f9d9fcbcf59d5b12f61ff4ebabefcdca4f393b8c2"
+    },
+    {
       "path": "docs/technical-implementation-status.json",
-      "bytes": 15079,
-      "sha256": "7fbb47a34e3d7192e8dbeb8e13cadc2fdafdf2af24610b48dc4797de733b0147"
+      "bytes": 15881,
+      "sha256": "75208092bb5cbab112b87cd4b313dcda429c0a2855af01435b314e0e82f0eba4"
     },
     {
       "path": "infra/README.md",
@@ -1452,6 +1482,11 @@
       "sha256": "59c090460087d46f82fd9930c004a12dcc4368dc521fae7959c802587fc1df64"
     },
     {
+      "path": "src/miniuw_foundation/costed_exit_sale.py",
+      "bytes": 6284,
+      "sha256": "0281d9221745ad3e474e39926822b9027062ddfe67acaea015c0226ef5730f2e"
+    },
+    {
       "path": "src/miniuw_foundation/data/input-sheet-layout-v1.json",
       "bytes": 24773,
       "sha256": "359ad81af6d20547b91c303b661c596254bfc7dde73c1eca5528d247ff2382f3"
@@ -1600,6 +1635,16 @@
       "path": "src/miniuw_foundation/review_proposals.py",
       "bytes": 7817,
       "sha256": "b232c7caa62aaf1b70a59fbf9e4c3afa47e62483547c9a9a064e9c829a994e9f"
+    },
+    {
+      "path": "src/miniuw_foundation/sale_costs.py",
+      "bytes": 6828,
+      "sha256": "5da82d3838b56b869c0392b2c7ccfb57e7dcb1b2720c2270e8103491019802fe"
+    },
+    {
+      "path": "src/miniuw_foundation/sale_recovery.py",
+      "bytes": 8588,
+      "sha256": "ccc13f85c216874e45376657dc4fd7c37a3451854e3182195f3bf3d4b9a8bc60"
     },
     {
       "path": "src/miniuw_foundation/sale_sensitivity.py",
@@ -1972,6 +2017,11 @@
       "sha256": "503028ba6311093a0e4e1e9a8766b02a2d9170b521d2815ba2adad984ea65203"
     },
     {
+      "path": "templates/synthetic-sale-cost-inventory.json",
+      "bytes": 1779,
+      "sha256": "d6648af97b58ae648034938ac82c02c6c65965b2450c3a4286786665417410f4"
+    },
+    {
       "path": "templates/synthetic-sale-receipt-sensitivity.json",
       "bytes": 1752,
       "sha256": "d0f8474366feb3187133834081468c37c2f4a163acea846f285d769a24ace77c"
@@ -2037,6 +2087,11 @@
       "sha256": "692dd62ff7a1402771b0a2d61312a42823e3cbee3fc861c3c4756437be037eaf"
     },
     {
+      "path": "tests/sale_cost_test_support.py",
+      "bytes": 2492,
+      "sha256": "c2da593c481e89ff23825398f6d358ecec8f8d0350c3d3c4464cdecd687426c5"
+    },
+    {
       "path": "tests/sale_revision_test_support.py",
       "bytes": 3900,
       "sha256": "f8ac660428694de9118fcf8ef7890c89aea62b2111938007ba2457e3107b386d"
@@ -2070,6 +2125,11 @@
       "path": "tests/test_closing_returns.py",
       "bytes": 10494,
       "sha256": "c728ffb018bd74772060569172c6bfdd241bebb1f341bd8207a01a76ed3ec514"
+    },
+    {
+      "path": "tests/test_costed_exit_sale.py",
+      "bytes": 6341,
+      "sha256": "a137ac9b78eb2f59216b0b8ef258d4ef5e9134173398addf4bdc7c55fce94c5c"
     },
     {
       "path": "tests/test_debt_closing.py",
@@ -2207,6 +2267,16 @@
       "sha256": "4be12acde9cd49db6fb601b6bc69f5af67d57d94088e073c69b7b2627ac10f3d"
     },
     {
+      "path": "tests/test_sale_costs.py",
+      "bytes": 6322,
+      "sha256": "8ecda618799d6f64e5127ee84a5d6d79a901d6dbdd6b230ee1716882c5726a26"
+    },
+    {
+      "path": "tests/test_sale_recovery.py",
+      "bytes": 9907,
+      "sha256": "a2e122a30e5c8ae3ffe59571d8418dc48b42ca888043455dae587364e6d80d80"
+    },
+    {
       "path": "tests/test_sale_sensitivity.py",
       "bytes": 14109,
       "sha256": "89834ad70c5f84e2488f94c50155d02aaf8114385eadc54a07a4998d3aa53bbd"
@@ -2282,6 +2352,11 @@
       "sha256": "21edb66a306f74270a19f08ed1d3490d175cba18d58c4b9943cad1b6d747a150"
     },
     {
+      "path": "tools/demo_costed_exit_sale.py",
+      "bytes": 5228,
+      "sha256": "03cadcaa98605fe43c12625474f973e5af0007e1fceeff0cf54a183be75f134d"
+    },
+    {
       "path": "tools/demo_debt_checked_closing_returns.py",
       "bytes": 4709,
       "sha256": "100da551b4da9271aa1dd2c79b4b8e55c219633eb2c7d4d2e17323e78d57f826"
@@ -2330,6 +2405,11 @@
       "path": "tools/demo_residential_noi_chain.py",
       "bytes": 3701,
       "sha256": "57ea254f74e7c132e237d924843c11a60587497610a061aa01852b0675e842db"
+    },
+    {
+      "path": "tools/demo_sale_recovery.py",
+      "bytes": 3217,
+      "sha256": "47a9e47ca4fe42792130a6062e9ebb5b58df904c2b8bea3fbd3a6326b176a677"
     },
     {
       "path": "tools/demo_sale_sensitivity.py",

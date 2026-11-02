@@ -1,0 +1,199 @@
+{
+  "scope": "Declared sale cost and conditional cash recovery domains only; original 398-row matrix and financial gates preserved",
+  "rows": [
+    {
+      "requirement_or_variable": "fixed_and_gross_fraction_sale_cost",
+      "source": {
+        "path": "docs/technical-implementation-T43-T44.md",
+        "line": 9,
+        "sha256": "b3320f17db5f5391ed18e83346e9a59da168676b9d5fe46e87cef5f2de56ae84"
+      },
+      "current_definition": "Cost F+rP from explicit included rows; no percent conversion or net-price basis",
+      "affected_modules": [
+        "M7",
+        "T41",
+        "T42",
+        "T43",
+        "T44",
+        "T45"
+      ],
+      "validation_evidence": [
+        "tests/test_sale_costs.py:SaleCostsTests.test_independent_fixed_plus_gross_fraction",
+        "tests/test_sale_costs.py:SaleCostsTests.test_exact_fractional_price_and_multiple_percentage_rows",
+        "tests/test_costed_exit_sale.py:CostedExitSaleTests.test_price_revision_recomputes_cost_then_cash_return"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Applicable contracts, authentic rates, nonlinear and monetary rounding rules"
+    },
+    {
+      "requirement_or_variable": "cost_applicability_and_complete_inventory",
+      "source": {
+        "path": "docs/technical-implementation-T43-T44.md",
+        "line": 11,
+        "sha256": "b3320f17db5f5391ed18e83346e9a59da168676b9d5fe46e87cef5f2de56ae84"
+      },
+      "current_definition": "Absent/unresolved cost, incomplete inventory or missing metadata blocks total; explicit justified not-applicable preserves absence",
+      "affected_modules": [
+        "M7",
+        "T41",
+        "T42",
+        "T43",
+        "T44",
+        "T45"
+      ],
+      "validation_evidence": [
+        "tests/test_sale_costs.py:SaleCostsTests.test_unresolved_tax_blocks_complete_total",
+        "tests/test_sale_costs.py:SaleCostsTests.test_not_applicable_requires_basis_and_absent_amount",
+        "tests/test_sale_costs.py:SaleCostsTests.test_inventory_complete_basis_and_nonoverlap_all_required"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Actual tax law/applicability and economic nonoverlap with payoff fees"
+    },
+    {
+      "requirement_or_variable": "computed_cost_guarded_exit_sale",
+      "source": {
+        "path": "docs/technical-implementation-T43-T44.md",
+        "line": 17,
+        "sha256": "b3320f17db5f5391ed18e83346e9a59da168676b9d5fe46e87cef5f2de56ae84"
+      },
+      "current_definition": "Exact price/run/source/context bindings before replacing closing cost once through existing T42/T39/T36",
+      "affected_modules": [
+        "M7",
+        "T41",
+        "T42",
+        "T43",
+        "T44",
+        "T45"
+      ],
+      "validation_evidence": [
+        "tests/test_costed_exit_sale.py:CostedExitSaleTests.test_independent_cost_replaces_previous_cost_not_added_twice",
+        "tests/test_costed_exit_sale.py:CostedExitSaleTests.test_stale_price_value_or_lineage_blocks",
+        "tests/test_costed_exit_sale.py:CostedExitSaleTests.test_bank_blocker_and_no_sale_hypothesis_preserved"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Actual payments, financing approval and funds"
+    },
+    {
+      "requirement_or_variable": "cost_replay_and_limits",
+      "source": {
+        "path": "docs/technical-implementation-T43-T44.md",
+        "line": 25,
+        "sha256": "b3320f17db5f5391ed18e83346e9a59da168676b9d5fe46e87cef5f2de56ae84"
+      },
+      "current_definition": "Full cost/result replay and arithmetic budget fault rejection; no new authority",
+      "affected_modules": [
+        "M7",
+        "T41",
+        "T42",
+        "T43",
+        "T44",
+        "T45"
+      ],
+      "validation_evidence": [
+        "tests/test_sale_costs.py:SaleCostsTests.test_arithmetic_budget_fault_fails_without_partial_total",
+        "tests/test_costed_exit_sale.py:CostedExitSaleTests.test_rehashed_cost_forgery_rejected",
+        "tests/test_costed_exit_sale.py:CostedExitSaleTests.test_report_replay_forgery_and_changed_spec"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Runtime archive profile and independent financial acceptance"
+    },
+    {
+      "requirement_or_variable": "conditional_cash_recovery_price_domain",
+      "source": {
+        "path": "docs/technical-implementation-T45.md",
+        "line": 13,
+        "sha256": "0faed01be0a3be20ee5d5e2f9d9fcbcf59d5b12f61ff4ebabefcdca4f393b8c2"
+      },
+      "current_definition": "G(P)=(1-r)P+b with fixed other sources; solve >=0 in explicitly bounded closed price domain",
+      "affected_modules": [
+        "M7",
+        "T41",
+        "T42",
+        "T43",
+        "T44",
+        "T45"
+      ],
+      "validation_evidence": [
+        "tests/test_sale_recovery.py:SaleRecoveryTests.test_independent_cash_profit_identity_and_boundary",
+        "tests/test_sale_recovery.py:SaleRecoveryTests.test_recovery_boundary_invariant_after_full_price_and_cost_replay",
+        "tests/test_sale_recovery.py:SaleRecoveryTests.test_negative_slope_not_misreported_as_price_floor",
+        "tests/test_sale_recovery.py:SaleRecoveryTests.test_slope_zero_no_division_and_no_recovery"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Financial validity over domain, changing other variables and full project scope"
+    },
+    {
+      "requirement_or_variable": "conditional_exit_cap_domain",
+      "source": {
+        "path": "docs/technical-implementation-T45.md",
+        "line": 17,
+        "sha256": "0faed01be0a3be20ee5d5e2f9d9fcbcf59d5b12f61ff4ebabefcdca4f393b8c2"
+      },
+      "current_definition": "Invert P=N/c for c>0 preserving endpoints and zero-NOI/zero-price cases",
+      "affected_modules": [
+        "M7",
+        "T41",
+        "T42",
+        "T43",
+        "T44",
+        "T45"
+      ],
+      "validation_evidence": [
+        "tests/test_sale_recovery.py:SaleRecoveryTests.test_exit_cap_interval_inverts_price_endpoints_exactly",
+        "tests/test_sale_recovery.py:SaleRecoveryTests.test_cap_zero_noi_and_zero_price_endpoint_semantics"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Applicable forward scope/market caps, nonlinear cost rules and authentic sources"
+    },
+    {
+      "requirement_or_variable": "recovery_domain_guards_and_honesty",
+      "source": {
+        "path": "docs/technical-implementation-T45.md",
+        "line": 7,
+        "sha256": "0faed01be0a3be20ee5d5e2f9d9fcbcf59d5b12f61ff4ebabefcdca4f393b8c2"
+      },
+      "current_definition": "Blocked base, absent domain basis or present valuation consistency blocks; no generated case, adopted criterion or personal return",
+      "affected_modules": [
+        "M7",
+        "T41",
+        "T42",
+        "T43",
+        "T44",
+        "T45"
+      ],
+      "validation_evidence": [
+        "tests/test_sale_recovery.py:SaleRecoveryTests.test_blocked_bank_or_tax_never_produces_recovery_range",
+        "tests/test_sale_recovery.py:SaleRecoveryTests.test_existing_valuation_prevents_range_extrapolation",
+        "tests/test_sale_recovery.py:SaleRecoveryTests.test_no_new_ledger_policy_funding_or_loss_claim"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Funding/targets per new case, personal LP allocation and final economic loss"
+    },
+    {
+      "requirement_or_variable": "recovery_replay_and_budget",
+      "source": {
+        "path": "docs/technical-implementation-T45.md",
+        "line": 25,
+        "sha256": "0faed01be0a3be20ee5d5e2f9d9fcbcf59d5b12f61ff4ebabefcdca4f393b8c2"
+      },
+      "current_definition": "Full compatible base/report replay, domain freshness and exact budget guard",
+      "affected_modules": [
+        "M7",
+        "T41",
+        "T42",
+        "T43",
+        "T44",
+        "T45"
+      ],
+      "validation_evidence": [
+        "tests/test_sale_recovery.py:SaleRecoveryTests.test_rehashed_base_and_report_forgery_rejected",
+        "tests/test_sale_recovery.py:SaleRecoveryTests.test_changed_domain_invalidates_report",
+        "tests/test_sale_recovery.py:SaleRecoveryTests.test_arithmetic_budget_fault_blocks_without_partial_analysis"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Independent financial review; no new runtime SQLite bundle"
+    }
+  ],
+  "financial_model_closed": false,
+  "real_decisions_enabled": false
+}

@@ -1,0 +1,272 @@
+{
+  "purpose": "conditional_synthetic_affine_price_cap_cash_recovery_demo",
+  "base_sources_and_specs": "docs/review/synthetic-costed-exit-sale-demo.json",
+  "cases": [
+    {
+      "case_id": "original-bank-blocked",
+      "independent_software_fixture": false,
+      "recovery_spec_json": "{\"base_costed_run_sha256\":\"12de770c3815b45e9888159b1a6150cc2d7ff975e2efb1755fb21ec12df1ef95\",\"cost_profile_domain_basis_ref\":\"SYNTHETIC-fixed-plus-gross-fraction-profile-assumed-only-on-explicit-domain\",\"gross_price_domain\":{\"lower\":{\"denominator\":\"1\",\"numerator\":\"0\"},\"upper\":{\"denominator\":\"1\",\"numerator\":\"1000\"}},\"other_sources_fixed_basis_ref\":\"SYNTHETIC-fixed-cash-debt-dates-not-independent-market-scenarios\",\"schema\":\"miniuw.synthetic-affine-sale-cash-recovery.v1\"}",
+      "base_costed_run_sha256": "12de770c3815b45e9888159b1a6150cc2d7ff975e2efb1755fb21ec12df1ef95",
+      "recovery_run_sha256": "c059f5eba82f32f353b9d8e65b722d5d82733b295cff27d2f79eba97033266d0",
+      "state": "blocked",
+      "blockers": [
+        "existing_valuation_claim_requires_separate_domain_consistency",
+        "guarded_base_return_unavailable"
+      ],
+      "analysis": null,
+      "report_serialization_roundtrip_replayed": true,
+      "decision": "PENDING"
+    },
+    {
+      "case_id": "price-800",
+      "independent_software_fixture": true,
+      "recovery_spec_json": "{\"base_costed_run_sha256\":\"fc59a3d5658e8a3c13ade48810e94df81b0ce95303684cd820094835b90d9439\",\"cost_profile_domain_basis_ref\":\"SYNTHETIC-fixed-plus-gross-fraction-profile-assumed-only-on-explicit-domain\",\"gross_price_domain\":{\"lower\":{\"denominator\":\"1\",\"numerator\":\"0\"},\"upper\":{\"denominator\":\"1\",\"numerator\":\"1000\"}},\"other_sources_fixed_basis_ref\":\"SYNTHETIC-fixed-cash-debt-dates-not-independent-market-scenarios\",\"schema\":\"miniuw.synthetic-affine-sale-cash-recovery.v1\"}",
+      "base_costed_run_sha256": "fc59a3d5658e8a3c13ade48810e94df81b0ce95303684cd820094835b90d9439",
+      "recovery_run_sha256": "7fd29884c32be8e92d3f41169981431b6fb2990e797fcc3523fb35c78be11ae0",
+      "state": "computed_synthetic_recovery_domain",
+      "blockers": [],
+      "analysis": {
+        "EM_ge_one_equivalence_defined_over_price_domain": true,
+        "base_gross_price": {
+          "denominator": "1",
+          "numerator": "800"
+        },
+        "base_net_cash_profit": {
+          "denominator": "10000",
+          "numerator": "6689197"
+        },
+        "cash_profit_identically_zero_over_domain": false,
+        "cash_profit_zero_price": {
+          "denominator": "500",
+          "numerator": "47937"
+        },
+        "declared_fixed_cost": {
+          "denominator": "1",
+          "numerator": "10"
+        },
+        "declared_gross_price_cost_fraction": {
+          "denominator": "20",
+          "numerator": "1"
+        },
+        "fixed_forward_noi": {
+          "denominator": "1",
+          "numerator": "40"
+        },
+        "non_sale_gross_contributions": {
+          "denominator": "1",
+          "numerator": "1000"
+        },
+        "profit_intercept": {
+          "denominator": "10000",
+          "numerator": "-910803"
+        },
+        "profit_slope_per_unit_gross_price": {
+          "denominator": "20",
+          "numerator": "19"
+        },
+        "recovering_exit_cap_interval": {
+          "lower": {
+            "denominator": "25",
+            "numerator": "1"
+          },
+          "lower_closed": true,
+          "upper": {
+            "denominator": "47937",
+            "numerator": "20000"
+          },
+          "upper_closed": true
+        },
+        "recovering_price_interval": {
+          "lower": {
+            "denominator": "500",
+            "numerator": "47937"
+          },
+          "lower_closed": true,
+          "upper": {
+            "denominator": "1",
+            "numerator": "1000"
+          },
+          "upper_closed": true
+        },
+        "recovery_possible_in_declared_price_domain": true,
+        "recovery_possible_via_positive_exit_cap": true
+      },
+      "report_serialization_roundtrip_replayed": true,
+      "decision": "PENDING"
+    },
+    {
+      "case_id": "price-400",
+      "independent_software_fixture": true,
+      "recovery_spec_json": "{\"base_costed_run_sha256\":\"43849cfe3179529f8c96e3601d95d037007de3bdd6700ebe10c48fabace74b7b\",\"cost_profile_domain_basis_ref\":\"SYNTHETIC-fixed-plus-gross-fraction-profile-assumed-only-on-explicit-domain\",\"gross_price_domain\":{\"lower\":{\"denominator\":\"1\",\"numerator\":\"0\"},\"upper\":{\"denominator\":\"1\",\"numerator\":\"1000\"}},\"other_sources_fixed_basis_ref\":\"SYNTHETIC-fixed-cash-debt-dates-not-independent-market-scenarios\",\"schema\":\"miniuw.synthetic-affine-sale-cash-recovery.v1\"}",
+      "base_costed_run_sha256": "43849cfe3179529f8c96e3601d95d037007de3bdd6700ebe10c48fabace74b7b",
+      "recovery_run_sha256": "b9c294575290de3a53859b30338f7d67e9427b2da559a5b2c55ad2df308b09dd",
+      "state": "computed_synthetic_recovery_domain",
+      "blockers": [],
+      "analysis": {
+        "EM_ge_one_equivalence_defined_over_price_domain": true,
+        "base_gross_price": {
+          "denominator": "1",
+          "numerator": "400"
+        },
+        "base_net_cash_profit": {
+          "denominator": "10000",
+          "numerator": "2889197"
+        },
+        "cash_profit_identically_zero_over_domain": false,
+        "cash_profit_zero_price": {
+          "denominator": "500",
+          "numerator": "47937"
+        },
+        "declared_fixed_cost": {
+          "denominator": "1",
+          "numerator": "10"
+        },
+        "declared_gross_price_cost_fraction": {
+          "denominator": "20",
+          "numerator": "1"
+        },
+        "fixed_forward_noi": {
+          "denominator": "1",
+          "numerator": "40"
+        },
+        "non_sale_gross_contributions": {
+          "denominator": "1",
+          "numerator": "1000"
+        },
+        "profit_intercept": {
+          "denominator": "10000",
+          "numerator": "-910803"
+        },
+        "profit_slope_per_unit_gross_price": {
+          "denominator": "20",
+          "numerator": "19"
+        },
+        "recovering_exit_cap_interval": {
+          "lower": {
+            "denominator": "25",
+            "numerator": "1"
+          },
+          "lower_closed": true,
+          "upper": {
+            "denominator": "47937",
+            "numerator": "20000"
+          },
+          "upper_closed": true
+        },
+        "recovering_price_interval": {
+          "lower": {
+            "denominator": "500",
+            "numerator": "47937"
+          },
+          "lower_closed": true,
+          "upper": {
+            "denominator": "1",
+            "numerator": "1000"
+          },
+          "upper_closed": true
+        },
+        "recovery_possible_in_declared_price_domain": true,
+        "recovery_possible_via_positive_exit_cap": true
+      },
+      "report_serialization_roundtrip_replayed": true,
+      "decision": "PENDING"
+    },
+    {
+      "case_id": "price-200",
+      "independent_software_fixture": true,
+      "recovery_spec_json": "{\"base_costed_run_sha256\":\"b2cf80c8f7cfafb773ceb2f1967808a257001e4cf9d13fc7397e93b893394406\",\"cost_profile_domain_basis_ref\":\"SYNTHETIC-fixed-plus-gross-fraction-profile-assumed-only-on-explicit-domain\",\"gross_price_domain\":{\"lower\":{\"denominator\":\"1\",\"numerator\":\"0\"},\"upper\":{\"denominator\":\"1\",\"numerator\":\"1000\"}},\"other_sources_fixed_basis_ref\":\"SYNTHETIC-fixed-cash-debt-dates-not-independent-market-scenarios\",\"schema\":\"miniuw.synthetic-affine-sale-cash-recovery.v1\"}",
+      "base_costed_run_sha256": "b2cf80c8f7cfafb773ceb2f1967808a257001e4cf9d13fc7397e93b893394406",
+      "recovery_run_sha256": "0419a542f55c1d4faa524f86ca508f29711421cea15d13d133bd888d14d97b9d",
+      "state": "computed_synthetic_recovery_domain",
+      "blockers": [],
+      "analysis": {
+        "EM_ge_one_equivalence_defined_over_price_domain": true,
+        "base_gross_price": {
+          "denominator": "1",
+          "numerator": "200"
+        },
+        "base_net_cash_profit": {
+          "denominator": "10000",
+          "numerator": "989197"
+        },
+        "cash_profit_identically_zero_over_domain": false,
+        "cash_profit_zero_price": {
+          "denominator": "500",
+          "numerator": "47937"
+        },
+        "declared_fixed_cost": {
+          "denominator": "1",
+          "numerator": "10"
+        },
+        "declared_gross_price_cost_fraction": {
+          "denominator": "20",
+          "numerator": "1"
+        },
+        "fixed_forward_noi": {
+          "denominator": "1",
+          "numerator": "40"
+        },
+        "non_sale_gross_contributions": {
+          "denominator": "1",
+          "numerator": "1000"
+        },
+        "profit_intercept": {
+          "denominator": "10000",
+          "numerator": "-910803"
+        },
+        "profit_slope_per_unit_gross_price": {
+          "denominator": "20",
+          "numerator": "19"
+        },
+        "recovering_exit_cap_interval": {
+          "lower": {
+            "denominator": "25",
+            "numerator": "1"
+          },
+          "lower_closed": true,
+          "upper": {
+            "denominator": "47937",
+            "numerator": "20000"
+          },
+          "upper_closed": true
+        },
+        "recovering_price_interval": {
+          "lower": {
+            "denominator": "500",
+            "numerator": "47937"
+          },
+          "lower_closed": true,
+          "upper": {
+            "denominator": "1",
+            "numerator": "1000"
+          },
+          "upper_closed": true
+        },
+        "recovery_possible_in_declared_price_domain": true,
+        "recovery_possible_via_positive_exit_cap": true
+      },
+      "report_serialization_roundtrip_replayed": true,
+      "decision": "PENDING"
+    },
+    {
+      "case_id": "tax-pending",
+      "independent_software_fixture": true,
+      "recovery_spec_json": "{\"base_costed_run_sha256\":\"ee6cd0b043a9b09185d3945e63a3ca18b1266862db26dfe1beaed61d7164d856\",\"cost_profile_domain_basis_ref\":\"SYNTHETIC-fixed-plus-gross-fraction-profile-assumed-only-on-explicit-domain\",\"gross_price_domain\":{\"lower\":{\"denominator\":\"1\",\"numerator\":\"0\"},\"upper\":{\"denominator\":\"1\",\"numerator\":\"1000\"}},\"other_sources_fixed_basis_ref\":\"SYNTHETIC-fixed-cash-debt-dates-not-independent-market-scenarios\",\"schema\":\"miniuw.synthetic-affine-sale-cash-recovery.v1\"}",
+      "base_costed_run_sha256": "ee6cd0b043a9b09185d3945e63a3ca18b1266862db26dfe1beaed61d7164d856",
+      "recovery_run_sha256": "f96b05fa7d06a3fdef8a187ba312e91183ca5250bf6178ba1971e1fda0904d1f",
+      "state": "blocked",
+      "blockers": [
+        "guarded_base_return_unavailable"
+      ],
+      "analysis": null,
+      "report_serialization_roundtrip_replayed": true,
+      "decision": "PENDING"
+    }
+  ],
+  "same_boundary_reproduced_from_three_full_price_cost_return_revisions": true,
+  "scope": "Fixed date/debt/other cash with explicit affine charges on [0,1000]; not market/financing/tax approval or a personal return",
+  "no_new_scenarios_generated": true,
+  "investment_criterion_adopted": false,
+  "decision": "PENDING",
+  "production_authorized": false
+}

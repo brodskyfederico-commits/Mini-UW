@@ -1,0 +1,170 @@
+{
+  "purpose": "synthetic_price_dependent_sale_cost_to_guarded_returns",
+  "cases": [
+    {
+      "case_id": "original-bank-blocked",
+      "independent_software_fixture": false,
+      "exit_spec_json": "{\"cap_rate\":{\"period_ref\":\"SYNTHETIC-forward-sale-year\",\"source_ref\":\"SYNTHETIC-explicit-exit-cap-not-market-data\",\"unit\":\"annual_cap_fraction\",\"value\":{\"denominator\":\"25\",\"numerator\":\"2\"}},\"context\":{\"deal_id\":\"SYNTHETIC-integrated-cash-demo\",\"definition_set_revision\":\"SYNTHETIC-cash-window-assumptions-v1\",\"run_id\":\"SYNTHETIC-integrated-cash-run\",\"scenario_id\":\"SYNTHETIC-Base\"},\"currency\":\"USD\",\"forward_window\":{\"basis_ref\":\"SYNTHETIC-declared-forward-twelve-month-accrual-scope\",\"end\":\"2028-07-01\",\"period_ref\":\"SYNTHETIC-forward-sale-year\",\"start\":\"2027-07-01\"},\"noi_run_sha256\":\"0350b8153c3b5fcad0f024e8acb17a220422fc70eca30c85b3dee11b91b4353e\",\"noi_source_sha256\":\"0abf035e9389eb5c22e2cca0834be9a1dbc4c7a2575f03a312f4e0bbdc0134d4\",\"schema\":\"miniuw.synthetic-exit-value.v1\",\"valuation_basis_ref\":\"SYNTHETIC-conditional-NOI-divided-by-cap-not-adopted\",\"valuation_date\":\"2027-07-01\"}",
+      "cost_source_json": "{\"context\":{\"deal_id\":\"SYNTHETIC-integrated-cash-demo\",\"definition_set_revision\":\"SYNTHETIC-cash-window-assumptions-v1\",\"run_id\":\"SYNTHETIC-integrated-cash-run\",\"scenario_id\":\"SYNTHETIC-Base\"},\"costs\":[{\"applicability\":\"included\",\"applicability_basis_ref\":\"SYNTHETIC-explicit-charge-not-adopted\",\"as_of_date\":\"2027-07-01\",\"classification\":\"transaction_cost\",\"cost_id\":\"fixed\",\"currency\":\"USD\",\"kind\":\"fixed\",\"source_ref\":\"SYNTHETIC-explicit-cost:fixed\",\"unit\":\"currency\",\"value\":{\"denominator\":\"1\",\"numerator\":\"10\"}},{\"applicability\":\"included\",\"applicability_basis_ref\":\"SYNTHETIC-explicit-charge-not-adopted\",\"as_of_date\":\"2027-07-01\",\"classification\":\"transaction_cost\",\"cost_id\":\"fee\",\"currency\":\"USD\",\"kind\":\"percent_of_gross\",\"source_ref\":\"SYNTHETIC-explicit-cost:fee\",\"unit\":\"fraction_of_gross_price\",\"value\":{\"denominator\":\"20\",\"numerator\":\"1\"}}],\"currency\":\"USD\",\"gross_price\":{\"as_of_date\":\"2027-07-01\",\"basis\":\"projected_gross_sale_price\",\"currency\":\"USD\",\"source_ref\":\"miniuw:synthetic-exit-value:be934691bf2dad27aae79a10ed7910e928590a8fb5578b41632e469655f861c8#/candidate_value\",\"value\":{\"denominator\":\"1\",\"numerator\":\"500\"}},\"inventory_basis_ref\":\"SYNTHETIC-selected-cost-inventory-not-real-completeness\",\"inventory_declared_complete\":true,\"nonoverlap_basis_ref\":\"SYNTHETIC-no-overlap-with-each-other-or-bank-payoffs\",\"sale_date\":\"2027-07-01\",\"schema\":\"miniuw.synthetic-fixed-and-gross-percent-sale-costs.v1\"}",
+      "bridge_spec_json": "{\"base_evidence_sha256\":\"57098b323fe50dbc8393b7e4966df2273bc54ae16fb82b01e6a73bdff8a9f804\",\"cost_run_sha256\":\"71a6cf0497529a0973f65e69f7f4c9fea7a7d0c83bd96d5e49720a14d1311339\",\"cost_source_sha256\":\"8297eede361cfe5fa3ab70382d46281ca92cbae09e5e901b428c6569afb30746\",\"equity_funding_assumption_ref\":null,\"exit_run_sha256\":\"be934691bf2dad27aae79a10ed7910e928590a8fb5578b41632e469655f861c8\",\"exit_spec_sha256\":\"77ce1f580be8a53dec53f5521ece5c664e6eec10462506abb61258ae06a9da50\",\"revision_id\":\"SYNTHETIC-costed-original-bank-blocked\",\"sale_at_value_hypothesis_ref\":\"SYNTHETIC-explicit-sale-at-value-not-real-collection\",\"sale_node_id\":\"SYNTHETIC-project-sale\",\"schema\":\"miniuw.synthetic-costed-exit-sale.v1\",\"unchanged_other_sources_basis_ref\":\"SYNTHETIC-other-cash-debt-dates-fixed\"}",
+      "candidate_value": {
+        "denominator": "1",
+        "numerator": "500"
+      },
+      "computed_closing_cost": {
+        "denominator": "1",
+        "numerator": "35"
+      },
+      "state": "blocked",
+      "blockers": [
+        "refinance_capacity_or_selection_blocked"
+      ],
+      "cost_blockers": [],
+      "cost_run_sha256": "71a6cf0497529a0973f65e69f7f4c9fea7a7d0c83bd96d5e49720a14d1311339",
+      "bridge_run_sha256": "12de770c3815b45e9888159b1a6150cc2d7ff975e2efb1755fb21ec12df1ef95",
+      "net_cash_profit": null,
+      "equity_multiple": null,
+      "upstream_story_blockers": null,
+      "report_serialization_roundtrip_replayed": true,
+      "decision": "PENDING"
+    },
+    {
+      "case_id": "price-800",
+      "independent_software_fixture": true,
+      "exit_spec_json": "{\"cap_rate\":{\"period_ref\":\"SYNTHETIC-forward-sale-year\",\"source_ref\":\"SYNTHETIC-explicit-exit-cap-not-market-data\",\"unit\":\"annual_cap_fraction\",\"value\":{\"denominator\":\"20\",\"numerator\":\"1\"}},\"context\":{\"deal_id\":\"SYNTHETIC-integrated-cash-demo\",\"definition_set_revision\":\"SYNTHETIC-cash-window-assumptions-v1\",\"run_id\":\"SYNTHETIC-integrated-cash-run\",\"scenario_id\":\"SYNTHETIC-Base\"},\"currency\":\"USD\",\"forward_window\":{\"basis_ref\":\"SYNTHETIC-declared-forward-twelve-month-accrual-scope\",\"end\":\"2028-07-01\",\"period_ref\":\"SYNTHETIC-forward-sale-year\",\"start\":\"2027-07-01\"},\"noi_run_sha256\":\"0350b8153c3b5fcad0f024e8acb17a220422fc70eca30c85b3dee11b91b4353e\",\"noi_source_sha256\":\"0abf035e9389eb5c22e2cca0834be9a1dbc4c7a2575f03a312f4e0bbdc0134d4\",\"schema\":\"miniuw.synthetic-exit-value.v1\",\"valuation_basis_ref\":\"SYNTHETIC-conditional-NOI-divided-by-cap-not-adopted\",\"valuation_date\":\"2027-07-01\"}",
+      "cost_source_json": "{\"context\":{\"deal_id\":\"SYNTHETIC-integrated-cash-demo\",\"definition_set_revision\":\"SYNTHETIC-cash-window-assumptions-v1\",\"run_id\":\"SYNTHETIC-integrated-cash-run\",\"scenario_id\":\"SYNTHETIC-Base\"},\"costs\":[{\"applicability\":\"included\",\"applicability_basis_ref\":\"SYNTHETIC-explicit-charge-not-adopted\",\"as_of_date\":\"2027-07-01\",\"classification\":\"transaction_cost\",\"cost_id\":\"fixed\",\"currency\":\"USD\",\"kind\":\"fixed\",\"source_ref\":\"SYNTHETIC-explicit-cost:fixed\",\"unit\":\"currency\",\"value\":{\"denominator\":\"1\",\"numerator\":\"10\"}},{\"applicability\":\"included\",\"applicability_basis_ref\":\"SYNTHETIC-explicit-charge-not-adopted\",\"as_of_date\":\"2027-07-01\",\"classification\":\"transaction_cost\",\"cost_id\":\"fee\",\"currency\":\"USD\",\"kind\":\"percent_of_gross\",\"source_ref\":\"SYNTHETIC-explicit-cost:fee\",\"unit\":\"fraction_of_gross_price\",\"value\":{\"denominator\":\"20\",\"numerator\":\"1\"}}],\"currency\":\"USD\",\"gross_price\":{\"as_of_date\":\"2027-07-01\",\"basis\":\"projected_gross_sale_price\",\"currency\":\"USD\",\"source_ref\":\"miniuw:synthetic-exit-value:3e93da76c07aa50d86b45d504aa5c531df725571a5a253f911fd40c58ee2327d#/candidate_value\",\"value\":{\"denominator\":\"1\",\"numerator\":\"800\"}},\"inventory_basis_ref\":\"SYNTHETIC-selected-cost-inventory-not-real-completeness\",\"inventory_declared_complete\":true,\"nonoverlap_basis_ref\":\"SYNTHETIC-no-overlap-with-each-other-or-bank-payoffs\",\"sale_date\":\"2027-07-01\",\"schema\":\"miniuw.synthetic-fixed-and-gross-percent-sale-costs.v1\"}",
+      "bridge_spec_json": "{\"base_evidence_sha256\":\"07937b81d58eb7e12673884d9846fcec63840451aefd5427013c66dba2459c07\",\"cost_run_sha256\":\"8f5914c00d69af81bab79ad3c6f8021a16ac945ded96a10d91fbb3b68126b35f\",\"cost_source_sha256\":\"351bd8ba581a37e3ebcd9009ec5c088cdad7be906038c26a5ce569aaf8324e67\",\"equity_funding_assumption_ref\":null,\"exit_run_sha256\":\"3e93da76c07aa50d86b45d504aa5c531df725571a5a253f911fd40c58ee2327d\",\"exit_spec_sha256\":\"520d31385e6748bc0d79d62e846cfb1001de17715dee15059109a01ae77eb773\",\"revision_id\":\"SYNTHETIC-costed-price-800\",\"sale_at_value_hypothesis_ref\":\"SYNTHETIC-explicit-sale-at-value-not-real-collection\",\"sale_node_id\":\"SYNTHETIC-project-sale\",\"schema\":\"miniuw.synthetic-costed-exit-sale.v1\",\"unchanged_other_sources_basis_ref\":\"SYNTHETIC-other-cash-debt-dates-fixed\"}",
+      "candidate_value": {
+        "denominator": "1",
+        "numerator": "800"
+      },
+      "computed_closing_cost": {
+        "denominator": "1",
+        "numerator": "50"
+      },
+      "state": "compiled_synthetic",
+      "blockers": [],
+      "cost_blockers": [],
+      "cost_run_sha256": "8f5914c00d69af81bab79ad3c6f8021a16ac945ded96a10d91fbb3b68126b35f",
+      "bridge_run_sha256": "fc59a3d5658e8a3c13ade48810e94df81b0ce95303684cd820094835b90d9439",
+      "net_cash_profit": {
+        "denominator": "10000",
+        "numerator": "6689197"
+      },
+      "equity_multiple": {
+        "denominator": "10000000",
+        "numerator": "16689197"
+      },
+      "upstream_story_blockers": [
+        "snapshot:2027-04-01:capital_still_invested_missing_or_negative",
+        "snapshot:2027-04-01:retained_equity_value_missing",
+        "snapshot:2027-04-01:snapshot_metadata_missing_or_mismatch"
+      ],
+      "report_serialization_roundtrip_replayed": true,
+      "decision": "PENDING"
+    },
+    {
+      "case_id": "price-400",
+      "independent_software_fixture": true,
+      "exit_spec_json": "{\"cap_rate\":{\"period_ref\":\"SYNTHETIC-forward-sale-year\",\"source_ref\":\"SYNTHETIC-explicit-exit-cap-not-market-data\",\"unit\":\"annual_cap_fraction\",\"value\":{\"denominator\":\"10\",\"numerator\":\"1\"}},\"context\":{\"deal_id\":\"SYNTHETIC-integrated-cash-demo\",\"definition_set_revision\":\"SYNTHETIC-cash-window-assumptions-v1\",\"run_id\":\"SYNTHETIC-integrated-cash-run\",\"scenario_id\":\"SYNTHETIC-Base\"},\"currency\":\"USD\",\"forward_window\":{\"basis_ref\":\"SYNTHETIC-declared-forward-twelve-month-accrual-scope\",\"end\":\"2028-07-01\",\"period_ref\":\"SYNTHETIC-forward-sale-year\",\"start\":\"2027-07-01\"},\"noi_run_sha256\":\"0350b8153c3b5fcad0f024e8acb17a220422fc70eca30c85b3dee11b91b4353e\",\"noi_source_sha256\":\"0abf035e9389eb5c22e2cca0834be9a1dbc4c7a2575f03a312f4e0bbdc0134d4\",\"schema\":\"miniuw.synthetic-exit-value.v1\",\"valuation_basis_ref\":\"SYNTHETIC-conditional-NOI-divided-by-cap-not-adopted\",\"valuation_date\":\"2027-07-01\"}",
+      "cost_source_json": "{\"context\":{\"deal_id\":\"SYNTHETIC-integrated-cash-demo\",\"definition_set_revision\":\"SYNTHETIC-cash-window-assumptions-v1\",\"run_id\":\"SYNTHETIC-integrated-cash-run\",\"scenario_id\":\"SYNTHETIC-Base\"},\"costs\":[{\"applicability\":\"included\",\"applicability_basis_ref\":\"SYNTHETIC-explicit-charge-not-adopted\",\"as_of_date\":\"2027-07-01\",\"classification\":\"transaction_cost\",\"cost_id\":\"fixed\",\"currency\":\"USD\",\"kind\":\"fixed\",\"source_ref\":\"SYNTHETIC-explicit-cost:fixed\",\"unit\":\"currency\",\"value\":{\"denominator\":\"1\",\"numerator\":\"10\"}},{\"applicability\":\"included\",\"applicability_basis_ref\":\"SYNTHETIC-explicit-charge-not-adopted\",\"as_of_date\":\"2027-07-01\",\"classification\":\"transaction_cost\",\"cost_id\":\"fee\",\"currency\":\"USD\",\"kind\":\"percent_of_gross\",\"source_ref\":\"SYNTHETIC-explicit-cost:fee\",\"unit\":\"fraction_of_gross_price\",\"value\":{\"denominator\":\"20\",\"numerator\":\"1\"}}],\"currency\":\"USD\",\"gross_price\":{\"as_of_date\":\"2027-07-01\",\"basis\":\"projected_gross_sale_price\",\"currency\":\"USD\",\"source_ref\":\"miniuw:synthetic-exit-value:c1efce2bd2baa631015fbdd8c09c73142fcc0eff554b5b4807f167fa69703355#/candidate_value\",\"value\":{\"denominator\":\"1\",\"numerator\":\"400\"}},\"inventory_basis_ref\":\"SYNTHETIC-selected-cost-inventory-not-real-completeness\",\"inventory_declared_complete\":true,\"nonoverlap_basis_ref\":\"SYNTHETIC-no-overlap-with-each-other-or-bank-payoffs\",\"sale_date\":\"2027-07-01\",\"schema\":\"miniuw.synthetic-fixed-and-gross-percent-sale-costs.v1\"}",
+      "bridge_spec_json": "{\"base_evidence_sha256\":\"07937b81d58eb7e12673884d9846fcec63840451aefd5427013c66dba2459c07\",\"cost_run_sha256\":\"5db85ed77b9331cd96f8102d35b8de5f54cd58c87365b4840999be3c3ef9c7c5\",\"cost_source_sha256\":\"7e15ff1ce95d8b4dda0f77e61afb9a7815a172396a4b01002b7425b5e2032be9\",\"equity_funding_assumption_ref\":null,\"exit_run_sha256\":\"c1efce2bd2baa631015fbdd8c09c73142fcc0eff554b5b4807f167fa69703355\",\"exit_spec_sha256\":\"79ab8858b7785fdb68a53880253273f9cdd1060a8e1e72b3eb4600aa629978e3\",\"revision_id\":\"SYNTHETIC-costed-price-400\",\"sale_at_value_hypothesis_ref\":\"SYNTHETIC-explicit-sale-at-value-not-real-collection\",\"sale_node_id\":\"SYNTHETIC-project-sale\",\"schema\":\"miniuw.synthetic-costed-exit-sale.v1\",\"unchanged_other_sources_basis_ref\":\"SYNTHETIC-other-cash-debt-dates-fixed\"}",
+      "candidate_value": {
+        "denominator": "1",
+        "numerator": "400"
+      },
+      "computed_closing_cost": {
+        "denominator": "1",
+        "numerator": "30"
+      },
+      "state": "compiled_synthetic",
+      "blockers": [],
+      "cost_blockers": [],
+      "cost_run_sha256": "5db85ed77b9331cd96f8102d35b8de5f54cd58c87365b4840999be3c3ef9c7c5",
+      "bridge_run_sha256": "43849cfe3179529f8c96e3601d95d037007de3bdd6700ebe10c48fabace74b7b",
+      "net_cash_profit": {
+        "denominator": "10000",
+        "numerator": "2889197"
+      },
+      "equity_multiple": {
+        "denominator": "10000000",
+        "numerator": "12889197"
+      },
+      "upstream_story_blockers": [
+        "snapshot:2027-04-01:capital_still_invested_missing_or_negative",
+        "snapshot:2027-04-01:retained_equity_value_missing",
+        "snapshot:2027-04-01:snapshot_metadata_missing_or_mismatch"
+      ],
+      "report_serialization_roundtrip_replayed": true,
+      "decision": "PENDING"
+    },
+    {
+      "case_id": "price-200",
+      "independent_software_fixture": true,
+      "exit_spec_json": "{\"cap_rate\":{\"period_ref\":\"SYNTHETIC-forward-sale-year\",\"source_ref\":\"SYNTHETIC-explicit-exit-cap-not-market-data\",\"unit\":\"annual_cap_fraction\",\"value\":{\"denominator\":\"5\",\"numerator\":\"1\"}},\"context\":{\"deal_id\":\"SYNTHETIC-integrated-cash-demo\",\"definition_set_revision\":\"SYNTHETIC-cash-window-assumptions-v1\",\"run_id\":\"SYNTHETIC-integrated-cash-run\",\"scenario_id\":\"SYNTHETIC-Base\"},\"currency\":\"USD\",\"forward_window\":{\"basis_ref\":\"SYNTHETIC-declared-forward-twelve-month-accrual-scope\",\"end\":\"2028-07-01\",\"period_ref\":\"SYNTHETIC-forward-sale-year\",\"start\":\"2027-07-01\"},\"noi_run_sha256\":\"0350b8153c3b5fcad0f024e8acb17a220422fc70eca30c85b3dee11b91b4353e\",\"noi_source_sha256\":\"0abf035e9389eb5c22e2cca0834be9a1dbc4c7a2575f03a312f4e0bbdc0134d4\",\"schema\":\"miniuw.synthetic-exit-value.v1\",\"valuation_basis_ref\":\"SYNTHETIC-conditional-NOI-divided-by-cap-not-adopted\",\"valuation_date\":\"2027-07-01\"}",
+      "cost_source_json": "{\"context\":{\"deal_id\":\"SYNTHETIC-integrated-cash-demo\",\"definition_set_revision\":\"SYNTHETIC-cash-window-assumptions-v1\",\"run_id\":\"SYNTHETIC-integrated-cash-run\",\"scenario_id\":\"SYNTHETIC-Base\"},\"costs\":[{\"applicability\":\"included\",\"applicability_basis_ref\":\"SYNTHETIC-explicit-charge-not-adopted\",\"as_of_date\":\"2027-07-01\",\"classification\":\"transaction_cost\",\"cost_id\":\"fixed\",\"currency\":\"USD\",\"kind\":\"fixed\",\"source_ref\":\"SYNTHETIC-explicit-cost:fixed\",\"unit\":\"currency\",\"value\":{\"denominator\":\"1\",\"numerator\":\"10\"}},{\"applicability\":\"included\",\"applicability_basis_ref\":\"SYNTHETIC-explicit-charge-not-adopted\",\"as_of_date\":\"2027-07-01\",\"classification\":\"transaction_cost\",\"cost_id\":\"fee\",\"currency\":\"USD\",\"kind\":\"percent_of_gross\",\"source_ref\":\"SYNTHETIC-explicit-cost:fee\",\"unit\":\"fraction_of_gross_price\",\"value\":{\"denominator\":\"20\",\"numerator\":\"1\"}}],\"currency\":\"USD\",\"gross_price\":{\"as_of_date\":\"2027-07-01\",\"basis\":\"projected_gross_sale_price\",\"currency\":\"USD\",\"source_ref\":\"miniuw:synthetic-exit-value:0f2b4566e6ebfb4460a4fd62a92b330eb6a0e622c5c9d5bb68f2a8a67f268dd1#/candidate_value\",\"value\":{\"denominator\":\"1\",\"numerator\":\"200\"}},\"inventory_basis_ref\":\"SYNTHETIC-selected-cost-inventory-not-real-completeness\",\"inventory_declared_complete\":true,\"nonoverlap_basis_ref\":\"SYNTHETIC-no-overlap-with-each-other-or-bank-payoffs\",\"sale_date\":\"2027-07-01\",\"schema\":\"miniuw.synthetic-fixed-and-gross-percent-sale-costs.v1\"}",
+      "bridge_spec_json": "{\"base_evidence_sha256\":\"07937b81d58eb7e12673884d9846fcec63840451aefd5427013c66dba2459c07\",\"cost_run_sha256\":\"57822bb6880aa470f0c9b7bdc94a660f4585bf03ab3a473897f16832b6dfb988\",\"cost_source_sha256\":\"dd8825cc4b632e98651340289e47002b580d982175e1329751170cafa42fe0b0\",\"equity_funding_assumption_ref\":null,\"exit_run_sha256\":\"0f2b4566e6ebfb4460a4fd62a92b330eb6a0e622c5c9d5bb68f2a8a67f268dd1\",\"exit_spec_sha256\":\"600e54194703f94b66343386fcdc787f9ea3a1c8b50f1a7271e0a244a813a00a\",\"revision_id\":\"SYNTHETIC-costed-price-200\",\"sale_at_value_hypothesis_ref\":\"SYNTHETIC-explicit-sale-at-value-not-real-collection\",\"sale_node_id\":\"SYNTHETIC-project-sale\",\"schema\":\"miniuw.synthetic-costed-exit-sale.v1\",\"unchanged_other_sources_basis_ref\":\"SYNTHETIC-other-cash-debt-dates-fixed\"}",
+      "candidate_value": {
+        "denominator": "1",
+        "numerator": "200"
+      },
+      "computed_closing_cost": {
+        "denominator": "1",
+        "numerator": "20"
+      },
+      "state": "compiled_synthetic",
+      "blockers": [],
+      "cost_blockers": [],
+      "cost_run_sha256": "57822bb6880aa470f0c9b7bdc94a660f4585bf03ab3a473897f16832b6dfb988",
+      "bridge_run_sha256": "b2cf80c8f7cfafb773ceb2f1967808a257001e4cf9d13fc7397e93b893394406",
+      "net_cash_profit": {
+        "denominator": "10000",
+        "numerator": "989197"
+      },
+      "equity_multiple": {
+        "denominator": "10000000",
+        "numerator": "10989197"
+      },
+      "upstream_story_blockers": [
+        "snapshot:2027-04-01:capital_still_invested_missing_or_negative",
+        "snapshot:2027-04-01:retained_equity_value_missing",
+        "snapshot:2027-04-01:snapshot_metadata_missing_or_mismatch"
+      ],
+      "report_serialization_roundtrip_replayed": true,
+      "decision": "PENDING"
+    },
+    {
+      "case_id": "tax-pending",
+      "independent_software_fixture": true,
+      "exit_spec_json": "{\"cap_rate\":{\"period_ref\":\"SYNTHETIC-forward-sale-year\",\"source_ref\":\"SYNTHETIC-explicit-exit-cap-not-market-data\",\"unit\":\"annual_cap_fraction\",\"value\":{\"denominator\":\"10\",\"numerator\":\"1\"}},\"context\":{\"deal_id\":\"SYNTHETIC-integrated-cash-demo\",\"definition_set_revision\":\"SYNTHETIC-cash-window-assumptions-v1\",\"run_id\":\"SYNTHETIC-integrated-cash-run\",\"scenario_id\":\"SYNTHETIC-Base\"},\"currency\":\"USD\",\"forward_window\":{\"basis_ref\":\"SYNTHETIC-declared-forward-twelve-month-accrual-scope\",\"end\":\"2028-07-01\",\"period_ref\":\"SYNTHETIC-forward-sale-year\",\"start\":\"2027-07-01\"},\"noi_run_sha256\":\"0350b8153c3b5fcad0f024e8acb17a220422fc70eca30c85b3dee11b91b4353e\",\"noi_source_sha256\":\"0abf035e9389eb5c22e2cca0834be9a1dbc4c7a2575f03a312f4e0bbdc0134d4\",\"schema\":\"miniuw.synthetic-exit-value.v1\",\"valuation_basis_ref\":\"SYNTHETIC-conditional-NOI-divided-by-cap-not-adopted\",\"valuation_date\":\"2027-07-01\"}",
+      "cost_source_json": "{\"context\":{\"deal_id\":\"SYNTHETIC-integrated-cash-demo\",\"definition_set_revision\":\"SYNTHETIC-cash-window-assumptions-v1\",\"run_id\":\"SYNTHETIC-integrated-cash-run\",\"scenario_id\":\"SYNTHETIC-Base\"},\"costs\":[{\"applicability\":\"included\",\"applicability_basis_ref\":\"SYNTHETIC-explicit-charge-not-adopted\",\"as_of_date\":\"2027-07-01\",\"classification\":\"transaction_cost\",\"cost_id\":\"fixed\",\"currency\":\"USD\",\"kind\":\"fixed\",\"source_ref\":\"SYNTHETIC-explicit-cost:fixed\",\"unit\":\"currency\",\"value\":{\"denominator\":\"1\",\"numerator\":\"10\"}},{\"applicability\":\"included\",\"applicability_basis_ref\":\"SYNTHETIC-explicit-charge-not-adopted\",\"as_of_date\":\"2027-07-01\",\"classification\":\"transaction_cost\",\"cost_id\":\"fee\",\"currency\":\"USD\",\"kind\":\"percent_of_gross\",\"source_ref\":\"SYNTHETIC-explicit-cost:fee\",\"unit\":\"fraction_of_gross_price\",\"value\":{\"denominator\":\"20\",\"numerator\":\"1\"}},{\"applicability\":\"unresolved\",\"applicability_basis_ref\":null,\"as_of_date\":\"2027-07-01\",\"classification\":\"tax\",\"cost_id\":\"tax-unresolved\",\"currency\":\"USD\",\"kind\":\"fixed\",\"source_ref\":\"SYNTHETIC-pending-tax-scope-not-zero\",\"unit\":\"currency\",\"value\":null}],\"currency\":\"USD\",\"gross_price\":{\"as_of_date\":\"2027-07-01\",\"basis\":\"projected_gross_sale_price\",\"currency\":\"USD\",\"source_ref\":\"miniuw:synthetic-exit-value:c1efce2bd2baa631015fbdd8c09c73142fcc0eff554b5b4807f167fa69703355#/candidate_value\",\"value\":{\"denominator\":\"1\",\"numerator\":\"400\"}},\"inventory_basis_ref\":\"SYNTHETIC-selected-cost-inventory-not-real-completeness\",\"inventory_declared_complete\":true,\"nonoverlap_basis_ref\":\"SYNTHETIC-no-overlap-with-each-other-or-bank-payoffs\",\"sale_date\":\"2027-07-01\",\"schema\":\"miniuw.synthetic-fixed-and-gross-percent-sale-costs.v1\"}",
+      "bridge_spec_json": "{\"base_evidence_sha256\":\"07937b81d58eb7e12673884d9846fcec63840451aefd5427013c66dba2459c07\",\"cost_run_sha256\":\"e8063108cbc2d74ebf2a1597392006865411dc857a1df8904442680c73ce52b1\",\"cost_source_sha256\":\"ecfe524773766f61dd90dfe5d369ab8de041cb9bd8ba8339e8a1d1f5348221a4\",\"equity_funding_assumption_ref\":null,\"exit_run_sha256\":\"c1efce2bd2baa631015fbdd8c09c73142fcc0eff554b5b4807f167fa69703355\",\"exit_spec_sha256\":\"79ab8858b7785fdb68a53880253273f9cdd1060a8e1e72b3eb4600aa629978e3\",\"revision_id\":\"SYNTHETIC-costed-tax-pending\",\"sale_at_value_hypothesis_ref\":\"SYNTHETIC-explicit-sale-at-value-not-real-collection\",\"sale_node_id\":\"SYNTHETIC-project-sale\",\"schema\":\"miniuw.synthetic-costed-exit-sale.v1\",\"unchanged_other_sources_basis_ref\":\"SYNTHETIC-other-cash-debt-dates-fixed\"}",
+      "candidate_value": {
+        "denominator": "1",
+        "numerator": "400"
+      },
+      "computed_closing_cost": null,
+      "state": "blocked",
+      "blockers": [
+        "computed_complete_sale_costs_unavailable"
+      ],
+      "cost_blockers": [
+        "tax-unresolved:cost_applicability_unresolved",
+        "tax-unresolved:cost_metadata_or_applicability_basis_missing_or_mismatch"
+      ],
+      "cost_run_sha256": "e8063108cbc2d74ebf2a1597392006865411dc857a1df8904442680c73ce52b1",
+      "bridge_run_sha256": "ee6cd0b043a9b09185d3945e63a3ca18b1266862db26dfe1beaed61d7164d856",
+      "net_cash_profit": null,
+      "equity_multiple": null,
+      "upstream_story_blockers": null,
+      "report_serialization_roundtrip_replayed": true,
+      "decision": "PENDING"
+    }
+  ],
+  "separate_fixture_note": "Compatible software branch uses separate bank NOI 2000, explicit empty sale contribution slot and separate closing source without valuation claim. Original bank NOI 50, valuation 500 and blocker remain unchanged.",
+  "rates_are_explicit_synthetic_hypotheses_not_market_or_tax_defaults": true,
+  "tax_rule_verified": false,
+  "personal_investor_return": null,
+  "decision": "PENDING",
+  "production_authorized": false
+}

@@ -25,7 +25,7 @@
       "location": "review p.1, item 2",
       "definition": "cash shortfall at declared horizon differs from final economic capital loss",
       "affected": "T23/T37",
-      "evidence": "tests/test_cash_risk.py; docs/technical-implementation-T38.md (isolated net receipt recovery floor only); docs/technical-implementation-T39-T40.md (fixed-date gross sale/cost revision only)",
+      "evidence": "tests/test_cash_risk.py; docs/technical-implementation-T38.md (isolated net receipt recovery floor only); docs/technical-implementation-T39-T40.md (fixed-date gross sale/cost revision only); docs/technical-coverage-T43-T45.json (conditional affine cash-recovery domain only)",
       "state": "partial",
       "pending": "independent Downside inputs, terminal economic inventory, break-even sensitivities"
     },
@@ -110,5 +110,6 @@
   "deployment_enabled": false,
   "isolated_net_sale_sensitivity": "implemented_synthetic_T38; full Downside, exit-cap break-even and no-refinance projections remain pending",
   "guarded_gross_sale_source_revisions": "T39/T40: explicit proceeds/cost revisions through debt/cash/capacity guard; market/cap/tax/no-refinance responses remain pending",
-  "conditional_exit_value_to_sale": "T41/T42: forward NOI/cap with explicit calendar/source and hypothetical-sale guards; present conflicting valuation blocks; price-dependent costs and full market scenarios remain pending"
+  "conditional_exit_value_to_sale": "T41/T42: forward NOI/cap with explicit calendar/source and hypothetical-sale guards; present conflicting valuation blocks; price-dependent costs and full market scenarios remain pending",
+  "price_dependent_cost_and_recovery_scope": "T43-T45: declared fixed/gross-fraction costs and bounded price/cap cash-recovery domains, blocked by unresolved tax/bank/value; actual tax law, nonlinear costs, market/funding and full economic loss remain pending"
 }

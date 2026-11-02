@@ -1,0 +1,56 @@
+{
+  "schema": "miniuw.synthetic-fixed-and-gross-percent-sale-costs.v1",
+  "context": {
+    "deal_id": "SYNTHETIC-integrated-cash-demo",
+    "definition_set_revision": "SYNTHETIC-cash-window-assumptions-v1",
+    "run_id": "SYNTHETIC-integrated-cash-run",
+    "scenario_id": "SYNTHETIC-Base"
+  },
+  "currency": "USD",
+  "sale_date": "2027-07-01",
+  "gross_price": {
+    "value": {
+      "denominator": "1",
+      "numerator": "400"
+    },
+    "currency": "USD",
+    "as_of_date": "2027-07-01",
+    "basis": "projected_gross_sale_price",
+    "source_ref": "miniuw:synthetic-exit-value:41c47df194e93ac9044f0d5112b3d1faa323d877fbc153bc2dced04a5fec60a8#/candidate_value"
+  },
+  "inventory_declared_complete": true,
+  "inventory_basis_ref": "SYNTHETIC-selected-cost-inventory-not-real-completeness",
+  "nonoverlap_basis_ref": "SYNTHETIC-no-overlap-with-each-other-or-bank-payoffs",
+  "costs": [
+    {
+      "cost_id": "fixed",
+      "classification": "transaction_cost",
+      "kind": "fixed",
+      "applicability": "included",
+      "applicability_basis_ref": "SYNTHETIC-explicit-charge-not-adopted",
+      "value": {
+        "numerator": "10",
+        "denominator": "1"
+      },
+      "unit": "currency",
+      "currency": "USD",
+      "as_of_date": "2027-07-01",
+      "source_ref": "SYNTHETIC-explicit-cost:fixed"
+    },
+    {
+      "cost_id": "fee",
+      "classification": "transaction_cost",
+      "kind": "percent_of_gross",
+      "applicability": "included",
+      "applicability_basis_ref": "SYNTHETIC-explicit-charge-not-adopted",
+      "value": {
+        "numerator": "1",
+        "denominator": "20"
+      },
+      "unit": "fraction_of_gross_price",
+      "currency": "USD",
+      "as_of_date": "2027-07-01",
+      "source_ref": "SYNTHETIC-explicit-cost:fee"
+    }
+  ]
+}
