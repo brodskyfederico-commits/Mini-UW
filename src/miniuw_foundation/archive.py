@@ -63,6 +63,12 @@ from .holding_returns import HoldingReturnRun,HoldingReturnBinding,assemble_hold
 from .holding_returns import ENGINE_SHA256 as HOLDING_RETURN_ENGINE_SHA256
 from .holding_returns import binding_from_record as holding_binding_from_record
 
+from .closing_cash import ClosingCashRun,parse_closing_cash,produce_closing_cash
+from .closing_cash import ENGINE_SHA256 as CLOSING_ENGINE_SHA256
+from .closing_cash import definition_sources as closing_definition_sources
+from .closing_returns import ClosingReturnRun,ClosingReturnBinding,assemble_closing_returns
+from .closing_returns import ENGINE_SHA256 as CLOSING_RETURN_ENGINE_SHA256
+
 
 class MissingEvidence(KeyError):
     pass
@@ -198,6 +204,31 @@ class HoldingReturnBundle:
 
 def _holding_cash_versions():return [HOLDING_CASH_ENGINE_SHA256]+_cash_versions()
 def _holding_return_versions():return [HOLDING_RETURN_ENGINE_SHA256]+_holding_cash_versions()+[ROOT_ENGINE_SHA256]
+
+
+@dataclass(frozen=True)
+class ClosingCashBundle:
+    payload_json:str
+    sha256:str
+    @property
+    def payload(self):return json.loads(self.payload_json)
+    @property
+    def run(self):return ClosingCashRun(**self.payload['run'])
+
+
+@dataclass(frozen=True)
+class ClosingReturnBundle:
+    payload_json:str
+    sha256:str
+    @property
+    def payload(self):return json.loads(self.payload_json)
+    @property
+    def run(self):return ClosingReturnRun(**self.payload['run'])
+
+
+def _closing_versions():return [CLOSING_ENGINE_SHA256,DEBT_ENGINE_SHA256,OPERATING_NOI_ENGINE_SHA256,INVESTOR_ENGINE_SHA256]
+def _closing_return_versions():return [CLOSING_RETURN_ENGINE_SHA256]+_closing_versions()+[ROOT_ENGINE_SHA256]
+def _closing_return_definitions():return {'closing':closing_definition_sources(),'investor':investor_definition_sources()}
 
 
 def _sha(raw):
@@ -726,6 +757,60 @@ COMMIT;''')
                 raise CorruptArchive('invalid screening evidence') from error
         return bundle
 
+
+    def get_closing_cash_source(self, sha):
+        raw=self._read('source',sha);parse_closing_cash(raw);return raw
+
+    def save_closing_cash(self, source_raw, run):
+        if type(run)is not ClosingCashRun or produce_closing_cash(source_raw)!=run:raise ValidationError('closing cash does not reproduce')
+        with self._transaction():
+            source=self._put('source',source_raw)
+            p={'schema':'miniuw.synthetic-closing-cash-bundle.v1','purpose':'synthetic_development_only','source_sha256':source,
+                'run':asdict(run),'versions':_closing_versions(),'definitions':closing_definition_sources()}
+            return self._put('bundle',canonical(p).encode())
+
+    def load_closing_cash(self, sha):
+        with self._transaction():
+            raw=self.read_bundle_bytes(sha)
+            try:
+                p=json.loads(raw)
+                if set(p)!={'schema','purpose','source_sha256','run','versions','definitions'}:raise CorruptArchive('closing cash fields changed')
+                if p['schema']!='miniuw.synthetic-closing-cash-bundle.v1':raise UnsupportedArchive('unsupported closing cash schema')
+                if p['purpose']!='synthetic_development_only':raise CorruptArchive('closing purpose changed')
+                if p['versions']!=_closing_versions()or p['definitions']!=closing_definition_sources():raise UnsupportedArchive('closing replay requires compatible code/documents')
+                bundle=ClosingCashBundle(raw.decode(),sha)
+                if produce_closing_cash(self.get_closing_cash_source(p['source_sha256']))!=bundle.run:raise CorruptArchive('closing cash evidence does not reproduce')
+            except MissingEvidence:raise
+            except(KeyError,TypeError,UnicodeError,json.JSONDecodeError,ValidationError)as error:raise CorruptArchive('invalid closing cash evidence')from error
+        return bundle
+
+    def save_closing_returns(self, closing_raw, closing_run, investor_raw, binding, run):
+        if type(run)is not ClosingReturnRun or assemble_closing_returns(closing_raw,closing_run,investor_raw,binding)!=run:raise ValidationError('closing return assembly does not reproduce')
+        with self._transaction():
+            closing=self._put('source',closing_raw);investor=self._put('source',investor_raw)
+            compiled=None if run.compiled_raw is None else self._put('source',run.compiled_raw)
+            p={'schema':'miniuw.synthetic-closing-return-bundle.v1','purpose':'synthetic_development_only',
+                'closing_source_sha256':closing,'investor_source_sha256':investor,'compiled_source_sha256':compiled,
+                'closing_run':asdict(closing_run),'binding':asdict(binding),'run':asdict(run),
+                'versions':_closing_return_versions(),'definitions':_closing_return_definitions()}
+            return self._put('bundle',canonical(p).encode())
+
+    def load_closing_returns(self, sha):
+        with self._transaction():
+            raw=self.read_bundle_bytes(sha)
+            try:
+                p=json.loads(raw)
+                if set(p)!={'schema','purpose','closing_source_sha256','investor_source_sha256','compiled_source_sha256','closing_run','binding','run','versions','definitions'}:raise CorruptArchive('closing return fields changed')
+                if p['schema']!='miniuw.synthetic-closing-return-bundle.v1':raise UnsupportedArchive('unsupported closing return schema')
+                if p['purpose']!='synthetic_development_only':raise CorruptArchive('closing return purpose changed')
+                if p['versions']!=_closing_return_versions()or p['definitions']!=_closing_return_definitions():raise UnsupportedArchive('closing return replay requires compatible code/documents')
+                bundle=ClosingReturnBundle(raw.decode(),sha);closing=self.get_closing_cash_source(p['closing_source_sha256']);investor=self.get_investor_returns_source(p['investor_source_sha256'])
+                if assemble_closing_returns(closing,ClosingCashRun(**p['closing_run']),investor,ClosingReturnBinding(**p['binding']))!=bundle.run:raise CorruptArchive('closing return does not reproduce')
+                compiled=None if p['compiled_source_sha256']is None else self._read('source',p['compiled_source_sha256'])
+                if compiled!=bundle.run.compiled_raw:raise CorruptArchive('compiled closing investor source changed')
+            except MissingEvidence:raise
+            except(KeyError,TypeError,UnicodeError,json.JSONDecodeError,ValidationError)as error:raise CorruptArchive('invalid closing return evidence')from error
+        return bundle
 
     def get_holding_cash_manifest(self, sha):
         raw=self._read('source',sha);parse_holding_cash(raw);return raw

@@ -1,0 +1,110 @@
+{
+  "scope": "Incremental synthetic implementation coverage; preserves original 398-row matrix and unresolved financial evidence",
+  "rows": [
+    {
+      "requirement_or_variable": "dated_payoff_inventory",
+      "source": {
+        "path": "docs/model-refinance-contract.md",
+        "line": 16,
+        "sha256": "9e51606a66a3d938e5c433eb77b625fb3638af0e7ab334dd53544a2cb7f9db46"
+      },
+      "current_definition": "Require dated principal/interest/fees/other obligations and equal projected payments for every declared old loan",
+      "affected_modules": [
+        "M6",
+        "M7",
+        "T29",
+        "T30"
+      ],
+      "validation_evidence": [
+        "ClosingCashTests.test_every_old_obligation_must_be_exactly_settled_in_the_projection",
+        "ClosingCashTests.test_missing_due_or_payment_never_assumed_zero"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Obligations supplied, not generated from amortization, verified bank balances or evidence of actual discharge"
+    },
+    {
+      "requirement_or_variable": "closing_reserves_and_costs",
+      "source": {
+        "path": "docs/model-refinance-contract.md",
+        "line": 17,
+        "sha256": "9e51606a66a3d938e5c433eb77b625fb3638af0e7ab334dd53544a2cb7f9db46"
+      },
+      "current_definition": "Gross costs, reserve release/deposit and explicit free retention remain separate; restricted closing claim must reconcile",
+      "affected_modules": [
+        "M6",
+        "M7",
+        "T29",
+        "T30"
+      ],
+      "validation_evidence": [
+        "ClosingCashTests.test_retention_and_restricted_transfer_not_double_counted_as_returns",
+        "ClosingCashTests.test_net_withheld_escrow_representation_never_invents_gross_movements"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "No bank policy, authentic scope/completeness, escrow/net counterpart or actual distribution rights"
+    },
+    {
+      "requirement_or_variable": "conditional_cash_out_cash_in",
+      "source": {
+        "path": "docs/model-refinance-contract.md",
+        "line": 45,
+        "sha256": "9e51606a66a3d938e5c433eb77b625fb3638af0e7ab334dd53544a2cb7f9db46"
+      },
+      "current_definition": "Explicit residual-after-retention hypothesis yields projected D=max(Z,0) and required A=max(-Z,0); positive A needs a funding hypothesis to export",
+      "affected_modules": [
+        "M6",
+        "M7",
+        "T29",
+        "T30"
+      ],
+      "validation_evidence": [
+        "ClosingCashTests.test_shortfall_is_requirement_and_blocks_without_explicit_funding_assumption",
+        "ClosingReturnsTests.test_cash_in_requires_separate_refinance_contribution_slot"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Rule not adopted; funding requirement is not available or committed funding"
+    },
+    {
+      "requirement_or_variable": "sale_proceeds_and_valuation",
+      "source": {
+        "path": "docs/model-hold-exit-returns.md",
+        "line": 18,
+        "sha256": "053746a0b7c72da941b40e9ff1251704367c50317f4dfa5a8803ce9f6981eccc"
+      },
+      "current_definition": "Supply gross sale receipt, cancel supplied obligations, subtract costs/reserves/retention; never add valuation to cash",
+      "affected_modules": [
+        "M6",
+        "M7",
+        "T29",
+        "T30"
+      ],
+      "validation_evidence": [
+        "ClosingCashTests.test_sale_net_receipt_after_all_supplied_payoffs",
+        "ClosingCashTests.test_property_value_never_becomes_cash_proceeds"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "No computed exit valuation/price, payoff generation, tax/legal rules or operating-to-closing continuity"
+    },
+    {
+      "requirement_or_variable": "immutable_gross_investor_return_events",
+      "source": {
+        "path": "AGENTS.md",
+        "line": 17,
+        "sha256": "7cccf8b6e9fa3f45685e2e04afc43c7a3bd0ac5dd15f6b5b4eee4ae397e6f0df"
+      },
+      "current_definition": "Compile only matching empty closing equity slots; preserve original source, separate contribution/distribution, replay full cash profit/EM/IRR",
+      "affected_modules": [
+        "M6",
+        "M7",
+        "T29",
+        "T30"
+      ],
+      "validation_evidence": [
+        "ClosingReturnsTests.test_refinance_and_sale_compose_net_receipts_into_return",
+        "ClosingReturnsTests.test_reopened_two_closing_bundles_preserve_intermediate_source_link"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Other supplied data, complete project reconciliation, risk/waterfall and final PDF remain open"
+    }
+  ]
+}
