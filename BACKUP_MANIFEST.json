@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design plus T01/T02/T03/T04/T05/T06/T07/T08/T09 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design plus T01–T10 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 6826,
-      "sha256": "ca9e74cdf7a140e01052f1e4124cae3a854d68563af5a8e324518e2380e8be1d"
+      "bytes": 7253,
+      "sha256": "e841ff74e94d59bd4124ddb06a5a841713f50178f0b751faf10a5431523d0235"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 37582,
-      "sha256": "0527a2d894b002d893795c4357746604b70a0ed1c3161c6aed0b899e404454fb"
+      "bytes": 39161,
+      "sha256": "1f9fdc071d538a86fa866cd2901f5a9e955feeda95a360100d69429971cd819d"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -407,9 +407,14 @@
       "sha256": "6251cd6f47eac6d8e66ffa84f2c6d03e293d6936c6f053a7b07d6919f417ef26"
     },
     {
+      "path": "docs/technical-implementation-T10.md",
+      "bytes": 5611,
+      "sha256": "c5cbfebd7782ce2c6b414cc9542d763231fc7b34d9bfd3a4037853fa712fe63d"
+    },
+    {
       "path": "docs/technical-implementation-status.json",
-      "bytes": 4651,
-      "sha256": "1fcae6c75de45722ce6cb0e9fe47d33480cf24e316f0f3e5d181035b25a17141"
+      "bytes": 5092,
+      "sha256": "f99c4d1821735309b5fce37e15bc796bab97401b5dd222d963f8e7cfc7f23a01"
     },
     {
       "path": "infra/README.md",
@@ -1083,8 +1088,8 @@
     },
     {
       "path": "src/miniuw_foundation/archive.py",
-      "bytes": 18908,
-      "sha256": "564b860a4d0f6d7dc0c375e91b8cfd8901c8929c6a79e12d39705fd594287b55"
+      "bytes": 25859,
+      "sha256": "1b2e273ea97a03cbe48d957b3651bfab54ff4adf01871dd69c916ffe8ee5ed75"
     },
     {
       "path": "src/miniuw_foundation/calculations.py",
@@ -1100,6 +1105,16 @@
       "path": "src/miniuw_foundation/data/project-draft-empty.json",
       "bytes": 26694,
       "sha256": "8cfc2915b9ee64bec53df3ea9041b7784f546200bdc676fcaf7b58679b88f16c"
+    },
+    {
+      "path": "src/miniuw_foundation/debt_dscr.py",
+      "bytes": 6151,
+      "sha256": "5a6557352fa2871afd6b25dbd54407be0b263cd2fb4617d8d48ec5a07364b83c"
+    },
+    {
+      "path": "src/miniuw_foundation/debt_service.py",
+      "bytes": 12452,
+      "sha256": "04d34f9479ebc802bc255d3a47c267469bdaadfee61871d174b2d0eee43d170f"
     },
     {
       "path": "src/miniuw_foundation/drafts.py",
@@ -1162,6 +1177,11 @@
       "sha256": "d815de6309c1c7003f114e6ab8abf3d8020cb6d3fb7b333eee9eee0ae758d936"
     },
     {
+      "path": "templates/synthetic-debt-dscr-case.json",
+      "bytes": 1929,
+      "sha256": "78a1443d4c718a6f2b01b2dda962e4d0ece2829d2bac6c1d7a100125beff4429"
+    },
+    {
       "path": "templates/synthetic-dscr-binding.json",
       "bytes": 613,
       "sha256": "a1f6e9d9b3aa47490deceb089be311758b39b341b8d97df7a5a17471ed83aab7"
@@ -1180,6 +1200,16 @@
       "path": "templates/synthetic-dscr-upstream-graph.json",
       "bytes": 610,
       "sha256": "805785e827ed097db5b35d2271ac8d48c2c9ee3e9ea0b65a842f1f32260d3a22"
+    },
+    {
+      "path": "templates/synthetic-loan-terms.json",
+      "bytes": 917,
+      "sha256": "741eb5971387953e68afbc56d4577e3913bd043da64aa5ace1d9e785afe9156b"
+    },
+    {
+      "path": "templates/synthetic-loan-windows.json",
+      "bytes": 168,
+      "sha256": "7f3a5004226900954ab4b32ffb614d3c845f5047aaf5328ed614605fce4ac0ff"
     },
     {
       "path": "templates/synthetic-native-inputs-example.xlsx",
@@ -1212,6 +1242,11 @@
       "sha256": "d441222d44195c1339bf9183b464f1fc4f3d30c1d43e99d340983a2bf0f8b896"
     },
     {
+      "path": "tests/loan_fixture.py",
+      "bytes": 994,
+      "sha256": "7e566a56a690f98fc65e952bbb8f9c01a9fb62e97bc9c24391b8028143eb6a29"
+    },
+    {
       "path": "tests/test_archive.py",
       "bytes": 13264,
       "sha256": "eae6a3f355fbe3e3358932fd1407d88f9159b0ce8a5bc1a0b9cc6db05e8ede6c"
@@ -1220,6 +1255,11 @@
       "path": "tests/test_calculations.py",
       "bytes": 17837,
       "sha256": "7e93ec2a88323ef8864d1404c630c3c360ac43da85d3d60a9d9364e6696e0bbc"
+    },
+    {
+      "path": "tests/test_debt_service.py",
+      "bytes": 16689,
+      "sha256": "a0072fda153fe3b38b6f077f5454fa1a808ac7e2d4a6de7d5b3acd96e97cfbdc"
     },
     {
       "path": "tests/test_execution.py",
@@ -1285,6 +1325,11 @@
       "path": "tools/demo_synthetic_calculation.py",
       "bytes": 2076,
       "sha256": "985c9a43baa162d4a9485c9ca464cb981c648761cfb28f2f7fe74cc8873c74cf"
+    },
+    {
+      "path": "tools/demo_synthetic_debt_service.py",
+      "bytes": 2585,
+      "sha256": "f558539c73a04ac8d3e0a7a03bd2166d7b3e34e4d500e4a87e447249a2763bd6"
     },
     {
       "path": "tools/demo_synthetic_dependencies.py",

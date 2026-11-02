@@ -19,6 +19,11 @@ from .calculations import CalculationRun, calculate_synthetic, graph_from_record
 from .calculations import ENGINE_SHA256 as CALCULATOR_SHA256
 from .scoped_profiles import DscrBinding, ScopedProfileRun, dispatch_scoped_profile, definition_sources
 from .scoped_profiles import ENGINE_SHA256 as PROFILE_ENGINE_SHA256
+from .debt_service import DebtServiceRun,DateWindow,parse_loan_terms,produce_debt_service
+from .debt_service import ENGINE_SHA256 as DEBT_ENGINE_SHA256
+from .debt_service import definition_sources as debt_definition_sources
+from .debt_dscr import DebtDscrBinding,DebtDscrRun,calculate_debt_dscr
+from .debt_dscr import ENGINE_SHA256 as DEBT_DSCR_ENGINE_SHA256
 
 
 class MissingEvidence(KeyError):
@@ -142,6 +147,44 @@ class ScopedProfileBundle:
     def binding(self):return DscrBinding(**self.payload['binding'])
     @property
     def run(self):return ScopedProfileRun(**self.payload['run'])
+
+
+@dataclass(frozen=True)
+class DebtServiceBundle:
+    payload_json:str
+    sha256:str
+    @property
+    def payload(self):return json.loads(self.payload_json)
+    @property
+    def windows(self):return tuple(DateWindow(**w) for w in self.payload['windows'])
+    @property
+    def run(self):return DebtServiceRun(**self.payload['run'])
+
+
+@dataclass(frozen=True)
+class DebtDscrBundle:
+    payload_json:str
+    sha256:str
+    @property
+    def payload(self):return json.loads(self.payload_json)
+    @property
+    def snapshot(self):return Snapshot(**self.payload['snapshot'])
+    @property
+    def profiles(self):return tuple(NumericProfile(**p) for p in self.payload['profiles'])
+    @property
+    def normalization(self):return NormalizationRun(**self.payload['normalization'])
+    @property
+    def graph(self):return graph_from_record(self.payload['graph'])
+    @property
+    def upstream(self):return CalculationRun(**self.payload['upstream'])
+    @property
+    def windows(self):return tuple(DateWindow(**w) for w in self.payload['windows'])
+    @property
+    def debt_run(self):return DebtServiceRun(**self.payload['debt_run'])
+    @property
+    def binding(self):return DebtDscrBinding(**self.payload['binding'])
+    @property
+    def run(self):return DebtDscrRun(**self.payload['run'])
 
 
 class EvidenceArchive:
@@ -392,6 +435,78 @@ COMMIT;''')
                 raise
             except (KeyError, TypeError, UnicodeError, json.JSONDecodeError, ValidationError) as error:
                 raise CorruptArchive('invalid scoped profile evidence structure/content') from error
+        return bundle
+
+
+    def put_loan_source(self, raw):
+        parse_loan_terms(raw)
+        with self._transaction():return self._put('source',raw)
+
+    def get_loan_source(self, sha):
+        raw=self._read('source',sha);parse_loan_terms(raw);return raw
+
+    def save_debt_service(self, raw, windows, run):
+        if type(run) is not DebtServiceRun or produce_debt_service(raw,windows)!=run:
+            raise ValidationError('debt service does not reproduce from loan terms/windows')
+        with self._transaction():
+            source=self._put('source',raw)
+            payload={'schema':'miniuw.synthetic-debt-service-bundle.v1','purpose':'synthetic_development_only',
+                'loan_source_sha256':source,'windows':[asdict(w) for w in sorted(windows,key=lambda w:w.window_id)],
+                'run':asdict(run),'engine_sha256':DEBT_ENGINE_SHA256,'definition_sources':debt_definition_sources()}
+            return self._put('bundle',canonical(payload).encode())
+
+    def load_debt_service(self, sha):
+        with self._transaction():
+            raw=self.read_bundle_bytes(sha)
+            try:
+                p=json.loads(raw)
+                if set(p)!={'schema','purpose','loan_source_sha256','windows','run','engine_sha256','definition_sources'}:
+                    raise CorruptArchive('debt service bundle fields changed')
+                if p['schema']!='miniuw.synthetic-debt-service-bundle.v1':raise UnsupportedArchive('unsupported debt service schema')
+                if p['purpose']!='synthetic_development_only':raise CorruptArchive('debt purpose changed')
+                if p['engine_sha256']!=DEBT_ENGINE_SHA256 or p['definition_sources']!=debt_definition_sources():
+                    raise UnsupportedArchive('debt replay requires compatible code/documents')
+                bundle=DebtServiceBundle(raw.decode(),sha)
+                loan=self.get_loan_source(p['loan_source_sha256'])
+                if produce_debt_service(loan,bundle.windows)!=bundle.run:raise CorruptArchive('debt result does not reproduce')
+            except MissingEvidence:raise
+            except (KeyError,TypeError,UnicodeError,json.JSONDecodeError,ValidationError) as error:
+                raise CorruptArchive('invalid debt evidence') from error
+        return bundle
+
+    def save_debt_dscr(self, snapshot, profiles, normalization, graph, upstream, loan_raw, windows, debt_run, binding, run):
+        if type(run) is not DebtDscrRun or calculate_debt_dscr(snapshot,profiles,normalization,graph,upstream,loan_raw,windows,debt_run,binding)!=run:
+            raise ValidationError('debt DSCR does not reproduce')
+        with self._transaction():
+            sources=self._verify_sources(snapshot);loan_source=self._put('source',loan_raw)
+            p={'schema':'miniuw.synthetic-debt-dscr-bundle.v1','purpose':'synthetic_development_only',
+                'snapshot':asdict(snapshot),'profiles':[asdict(p) for p in sorted(profiles,key=lambda p:p.slot_id)],
+                'normalization':asdict(normalization),'graph':graph.record(),'upstream':asdict(upstream),
+                'loan_source_sha256':loan_source,'windows':[asdict(w) for w in sorted(windows,key=lambda w:w.window_id)],
+                'debt_run':asdict(debt_run),'binding':asdict(binding),'run':asdict(run),'source_hashes':sources,
+                'versions':[DEBT_ENGINE_SHA256,DEBT_DSCR_ENGINE_SHA256,NORMALIZER_SHA256,CALCULATOR_SHA256],
+                'definition_sources':debt_definition_sources()+definition_sources()}
+            return self._put('bundle',canonical(p).encode())
+
+    def load_debt_dscr(self, sha):
+        with self._transaction():
+            raw=self.read_bundle_bytes(sha)
+            try:
+                p=json.loads(raw)
+                if set(p)!={'schema','purpose','snapshot','profiles','normalization','graph','upstream','loan_source_sha256','windows','debt_run','binding','run','source_hashes','versions','definition_sources'}:
+                    raise CorruptArchive('debt DSCR bundle fields changed')
+                if p['schema']!='miniuw.synthetic-debt-dscr-bundle.v1':raise UnsupportedArchive('unsupported debt DSCR schema')
+                if p['purpose']!='synthetic_development_only':raise CorruptArchive('debt DSCR purpose changed')
+                if p['versions']!=[DEBT_ENGINE_SHA256,DEBT_DSCR_ENGINE_SHA256,NORMALIZER_SHA256,CALCULATOR_SHA256] or p['definition_sources']!=debt_definition_sources()+definition_sources():
+                    raise UnsupportedArchive('debt DSCR replay requires compatible code/documents')
+                bundle=DebtDscrBundle(raw.decode(),sha)
+                if self._verify_sources(bundle.snapshot)!=p['source_hashes']:raise CorruptArchive('NOI source inventory changed')
+                loan=self.get_loan_source(p['loan_source_sha256'])
+                if calculate_debt_dscr(bundle.snapshot,bundle.profiles,bundle.normalization,bundle.graph,bundle.upstream,loan,bundle.windows,bundle.debt_run,bundle.binding)!=bundle.run:
+                    raise CorruptArchive('debt DSCR result does not reproduce')
+            except MissingEvidence:raise
+            except (KeyError,TypeError,UnicodeError,json.JSONDecodeError,ValidationError) as error:
+                raise CorruptArchive('invalid debt DSCR evidence') from error
         return bundle
 
 

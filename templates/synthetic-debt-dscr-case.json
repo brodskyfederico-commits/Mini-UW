@@ -1,0 +1,64 @@
+{
+  "source": {
+    "schema": "miniuw.synthetic-claims.v1",
+    "claims": [
+      {
+        "claim_id": "SYNTHETIC-declared-NOI",
+        "slot_kind": "input",
+        "slot_id": "INPUT_C8",
+        "literal": "300",
+        "unit_literal": "currency/declared-period",
+        "currency_literal": "USD",
+        "period_literal": "SYNTHETIC-maturity-window",
+        "definition_ref": "SYNTHETIC-declared-NOI-v1"
+      }
+    ]
+  },
+  "profiles": [
+    {
+      "profile_id": "SYNTHETIC-noi",
+      "definition_revision": "v1",
+      "slot_id": "INPUT_C8",
+      "source_definition_ref": "SYNTHETIC-declared-NOI-v1",
+      "decimal_mark": ".",
+      "notation": "decimal",
+      "trim_outer_whitespace": false,
+      "source_unit_literal": "currency/declared-period",
+      "target_unit": "currency/declared-period",
+      "quantity_kind": "money_per_period",
+      "currency_literal": "USD",
+      "period_literal": "SYNTHETIC-maturity-window"
+    }
+  ],
+  "graph": {
+    "graph_id": "SYNTHETIC-declared-noi",
+    "definition_revision": "v1",
+    "nodes": [
+      {
+        "node_id": "declared_noi",
+        "definition_revision": "SYNTHETIC-declared-NOI-v1",
+        "operation": "identity",
+        "operands": [
+          {
+            "kind": "input",
+            "ref": "INPUT_C8"
+          }
+        ]
+      }
+    ]
+  },
+  "binding": {
+    "profile_id": "SYNTHETIC-COMPUTED-SERVICE-DSCR-v1",
+    "definition_revision": "v1",
+    "noi_node": "declared_noi",
+    "noi_producer_revision": "SYNTHETIC-declared-NOI-v1",
+    "noi_basis_ref": "SYNTHETIC-declared-not-derived-NOI",
+    "loan_source_sha256": "741eb5971387953e68afbc56d4577e3913bd043da64aa5ace1d9e785afe9156b",
+    "service_basis_ref": "SYNTHETIC-modeled-due-not-paid",
+    "service_mode": "dated_contractual_due",
+    "window_id": "SYNTHETIC-maturity-window",
+    "include_balloon": false,
+    "currency": "USD",
+    "period_ref": "SYNTHETIC-maturity-window"
+  }
+}
