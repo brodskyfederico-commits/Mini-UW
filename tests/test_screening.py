@@ -6,7 +6,7 @@ import unittest
 from unittest.mock import patch
 from miniuw_foundation import ValidationError
 from miniuw_foundation.archive import EvidenceArchive,CorruptArchive,UnsupportedArchive
-from miniuw_foundation.screening import SCHEMA,AGGREGATION,simulate_screening,parse_screening_case
+from miniuw_foundation.screening import SCHEMA,AGGREGATION,simulate_screening,parse_screening_case,simulate_policy_whatif
 from miniuw_foundation.drafts import canonical,digest
 from test_foundation import seed
 
@@ -58,7 +58,10 @@ class ScreeningTests(unittest.TestCase):
         self.assertEqual(a['comparisons'][1]['state'],'BAND');self.assertEqual(a['simulation_result'],'PENDING')
         p['hypothetical_band_policy']='pending'
         self.assertEqual(simulate_screening(encoded(p)).payload['simulation_result'],'PENDING')
-        p['hypothetical_band_policy']='fail';b=simulate_screening(encoded(p)).payload
+        p['hypothetical_band_policy']='fail';canonical_result=simulate_screening(encoded(p)).payload
+        self.assertEqual(canonical_result['simulation_result'],'PENDING')
+        self.assertEqual(canonical_result['band_policy_applied'],'pending_professional_review')
+        b=simulate_policy_whatif(encoded(p)).payload
         self.assertEqual(b['comparisons'][1]['state'],'BAND');self.assertEqual(b['simulation_result'],'FAIL')
         self.assertFalse(b['criteria_adopted']);self.assertEqual(b['decision'],'PENDING')
 
@@ -166,5 +169,52 @@ class ScreeningTests(unittest.TestCase):
             key=archive.save_screening(raw,run);bundle=json.loads(archive.read_bundle_bytes(key));bundle['engine_sha256']='0'*64
             with archive._transaction():bad=archive._put('bundle',canonical(bundle).encode())
             with self.assertRaises(UnsupportedArchive):archive.load_screening(bad)
+
+    def test_user_band_rule_applies_without_reading_a_case_default(self):
+        p=case();p['metric_values'][1]['value']=q(45,1000)
+        for requested in [None,'pending','fail']:
+            p['hypothetical_band_policy']=requested
+            run=simulate_screening(encoded(p)).payload
+            self.assertEqual(run['simulation_result'],'PENDING')
+            self.assertIn('intermediate_band_pending_professional_review',run['simulation_blockers'])
+            self.assertEqual(run['pending_review_metrics'][0]['metric_id'],'YoC')
+            self.assertFalse(run['variables_automatically_adjusted'])
+
+    def test_whatif_rejection_cannot_be_archived_as_canonical_policy(self):
+        p=case();p['metric_values'][1]['value']=q(45,1000);p['hypothetical_band_policy']='fail'
+        raw=encoded(p);preview=simulate_policy_whatif(raw)
+        self.assertEqual(preview.payload['simulation_result'],'FAIL')
+        self.assertTrue(preview.payload['what_if_only'])
+        with EvidenceArchive(':memory:') as archive:
+            with self.assertRaises(ValidationError):archive.save_screening(raw,preview)
+            archive.load_screening(archive.save_screening(raw,simulate_screening(raw)))
+
+    def test_reviewed_new_value_can_change_result_without_erasing_history(self):
+        p=case();p['metric_values'][1]['value']=q(45,1000)
+        original=encoded(p);pending=simulate_screening(original)
+        with EvidenceArchive(':memory:') as archive:
+            old_key=archive.save_screening(original,pending)
+            for label,value,expected in [('pass',q(55,1000),'PASS'),('fail',q(35,1000),'FAIL')]:
+                import copy
+                changed=copy.deepcopy(p);changed['case_id']='SYNTHETIC-review-'+label;changed['context']['run_id']='review-'+label
+                changed['metric_values'][1]['value']=value
+                raw=encoded(changed);run=simulate_screening(raw)
+                self.assertEqual(run.payload['simulation_result'],expected)
+                self.assertFalse(run.payload['review_authenticated'])
+                self.assertNotEqual(run.sha256,pending.sha256)
+                archive.load_screening(archive.save_screening(raw,run))
+            self.assertEqual(archive.load_screening(old_key).run,pending)
+            self.assertEqual(archive.get_screening_source(pending.payload['source_sha256']),original)
+
+    def test_changed_criteria_need_new_evidence_not_numeric_autotuning(self):
+        p=case();p['metric_values'][1]['value']=q(45,1000);original=encoded(p)
+        before=simulate_screening(original)
+        p['criteria_revision']='SYNTHETIC-professional-proposal-v2';p['criteria'][1]['pass_condition']['threshold']=q(45,1000)
+        after=simulate_screening(encoded(p))
+        self.assertEqual(after.payload['simulation_result'],'PASS')
+        self.assertEqual(before.payload['simulation_result'],'PENDING')
+        self.assertNotEqual(after.payload['source_sha256'],before.payload['source_sha256'])
+        self.assertEqual(after.payload['comparisons'][1]['metric_record']['value'],before.payload['comparisons'][1]['metric_record']['value'])
+        self.assertFalse(after.payload['criteria_adopted']);self.assertFalse(after.payload['variables_automatically_adjusted'])
 
 if __name__=='__main__':unittest.main()

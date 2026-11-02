@@ -1,6 +1,6 @@
 {
   "decision_id": "M9-04-band-policy",
-  "status": "awaiting_explicit_user_direction",
+  "status": "selected_by_user",
   "scope": "design rule for complete screening cases only",
   "example_is_fictitious": true,
   "example": {
@@ -12,9 +12,13 @@
     "retain_pending_in_band",
     "fail_if_pass_not_met_in_band"
   ],
-  "current_adopted_option": null,
+  "current_adopted_option": "retain_pending_in_band",
   "missing_data_or_required_rules_always_pending": true,
   "real_decisions_authorized": false,
   "deployment_authorized": false,
-  "professional_review_received": false
+  "professional_review_received": false,
+  "user_direction": "marcarlos como pendiente porque el profesional puede llegar a modificar una variable y convertirlo en pass o fail",
+  "design_rule": "Complete cases in the intermediate band remain PENDING for professional review; never auto-adjust variables.",
+  "professional_changes_require_recalculation_and_new_evidence_version": true,
+  "auto_adjust_variables_for_pass": false
 }

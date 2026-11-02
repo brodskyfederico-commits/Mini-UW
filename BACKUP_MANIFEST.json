@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design plus T01–T11 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design plus T01–T12 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
@@ -13,18 +13,18 @@
     },
     {
       "path": "AGENTS.md",
-      "bytes": 2576,
-      "sha256": "ff4a5f6af0f4f7b7c2485e1b42790e0970be6bcfbef9fe17d835c0beb129d1cd"
+      "bytes": 3042,
+      "sha256": "7cde108b1bc169608fa96a2fbed688544b9a8e91285ddc54a7962e144d878961"
     },
     {
       "path": "README.md",
-      "bytes": 7658,
-      "sha256": "970aee2f66cd206b091ad0e3b96c9b6b22ad7d5d0186fec66f1de08a261e4f52"
+      "bytes": 8035,
+      "sha256": "59d5db49789793ab4b2ebd36c400afe85ce65bf77385fe8f99126af47014a355"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 40891,
-      "sha256": "f6e81bbcad8229718078e54513ec92dd35ec035caf1f11030690e9b9ae5cb02c"
+      "bytes": 42467,
+      "sha256": "504527fd1ab71c834c561e8932aa7bcb9d0e2c4404b70a35dc303776490a5b03"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -248,8 +248,8 @@
     },
     {
       "path": "docs/pending-band-policy-decision.json",
-      "bytes": 559,
-      "sha256": "d6ac0d1b1ba2491882dfe3d280c132392ac71c4427d88b7814584a84a81b71e3"
+      "bytes": 951,
+      "sha256": "cb5553cc523ab061fd4068b6da55d78421be45bed0330b708bcf911c28b34ee9"
     },
     {
       "path": "docs/periodic-irr-root-isolation.md",
@@ -422,9 +422,14 @@
       "sha256": "7fcff82f9760ccd95f28f7ecc784aff735cd03f56225f936716eb5a87eef4e58"
     },
     {
+      "path": "docs/technical-implementation-T12.md",
+      "bytes": 4090,
+      "sha256": "fca791860e803a53df10bf62d553b505f12e7981e3ff8f781a858e08e8d515c4"
+    },
+    {
       "path": "docs/technical-implementation-status.json",
-      "bytes": 5593,
-      "sha256": "b941ae60325c5f8cf7788ad1b974654951c824d16b15b5393113a9bf9240b9a3"
+      "bytes": 5925,
+      "sha256": "b8b60d1cc90fff0f1658d8558807cc995cb65cfd5d9c5e935938d20c1c6ca0c3"
     },
     {
       "path": "infra/README.md",
@@ -1098,8 +1103,8 @@
     },
     {
       "path": "src/miniuw_foundation/archive.py",
-      "bytes": 28343,
-      "sha256": "569e461e03b08fdd106e58f1b91956e3171bd191a303954365f5d1f0449d61cd"
+      "bytes": 28492,
+      "sha256": "2eee2fd099076b42203749e51d0906092117b3d1f31142a953ce4456dbeb39b2"
     },
     {
       "path": "src/miniuw_foundation/calculations.py",
@@ -1158,8 +1163,8 @@
     },
     {
       "path": "src/miniuw_foundation/screening.py",
-      "bytes": 10517,
-      "sha256": "5768ddbc080ea87db99e0d0af23a0f84f25fd8923d8dfa0ed924dffb4e7747b0"
+      "bytes": 12020,
+      "sha256": "52701de576e82c52d0d156ecc8b5801132250427ef5b02dc2393bbdcc6538137"
     },
     {
       "path": "src/miniuw_foundation/sheets.py",
@@ -1313,8 +1318,8 @@
     },
     {
       "path": "tests/test_screening.py",
-      "bytes": 11547,
-      "sha256": "bef46b2ae112e40be73f00af003e3dcc76ac24a1299d2449daf87ba55277c357"
+      "bytes": 15040,
+      "sha256": "a8217759cb0ad47723e05e3a11233c718eb7b6534214e46b362c8e7c08f6cc7c"
     },
     {
       "path": "tests/test_sheets.py",
@@ -1378,8 +1383,8 @@
     },
     {
       "path": "tools/demo_synthetic_screening.py",
-      "bytes": 1604,
-      "sha256": "d747f39dbbf64f6ec69d6b27b6c21c34b1d5a40c74b02494d734393f9a1965ce"
+      "bytes": 1795,
+      "sha256": "7413f781453c5dfce7f94aa5bb87fa4bc58b215ad54e1fd9c26e7061912a20e0"
     },
     {
       "path": "tools/demo_synthetic_sheet.py",

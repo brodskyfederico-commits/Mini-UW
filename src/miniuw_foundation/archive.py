@@ -24,7 +24,7 @@ from .debt_service import ENGINE_SHA256 as DEBT_ENGINE_SHA256
 from .debt_service import definition_sources as debt_definition_sources
 from .debt_dscr import DebtDscrBinding,DebtDscrRun,calculate_debt_dscr
 from .debt_dscr import ENGINE_SHA256 as DEBT_DSCR_ENGINE_SHA256
-from .screening import ScreeningRun,parse_screening_case,simulate_screening
+from .screening import ScreeningRun,parse_screening_case,simulate_screening,user_policy_reference
 from .screening import ENGINE_SHA256 as SCREEN_ENGINE_SHA256
 from .screening import definition_sources as screening_definition_sources
 
@@ -531,9 +531,9 @@ COMMIT;''')
             raise ValidationError('screening simulation does not reproduce from explicit case/criteria')
         with self._transaction():
             source=self._put('source',raw)
-            p={'schema':'miniuw.synthetic-screening-bundle.v1','purpose':'synthetic_development_only',
+            p={'schema':'miniuw.synthetic-screening-bundle.v2','purpose':'synthetic_development_only',
                 'source_sha256':source,'run':asdict(run),'engine_sha256':SCREEN_ENGINE_SHA256,
-                'definition_sources':screening_definition_sources()}
+                'definition_sources':screening_definition_sources(),'user_policy_reference':user_policy_reference()}
             return self._put('bundle',canonical(p).encode())
 
     def load_screening(self, sha):
@@ -541,11 +541,11 @@ COMMIT;''')
             raw=self.read_bundle_bytes(sha)
             try:
                 p=json.loads(raw)
-                if set(p)!={'schema','purpose','source_sha256','run','engine_sha256','definition_sources'}:
+                if set(p)!={'schema','purpose','source_sha256','run','engine_sha256','definition_sources','user_policy_reference'}:
                     raise CorruptArchive('screening bundle fields changed')
-                if p['schema']!='miniuw.synthetic-screening-bundle.v1':raise UnsupportedArchive('unsupported screening schema')
+                if p['schema']!='miniuw.synthetic-screening-bundle.v2':raise UnsupportedArchive('unsupported screening schema')
                 if p['purpose']!='synthetic_development_only':raise CorruptArchive('screening purpose changed')
-                if p['engine_sha256']!=SCREEN_ENGINE_SHA256 or p['definition_sources']!=screening_definition_sources():
+                if p['engine_sha256']!=SCREEN_ENGINE_SHA256 or p['definition_sources']!=screening_definition_sources() or p['user_policy_reference']!=user_policy_reference():
                     raise UnsupportedArchive('screening replay requires compatible code/documents')
                 bundle=ScreeningBundle(raw.decode(),sha)
                 source=self.get_screening_source(p['source_sha256'])

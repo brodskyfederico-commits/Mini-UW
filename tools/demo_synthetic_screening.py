@@ -10,7 +10,7 @@ def main():
     cases={}
     for policy in [None,'pending','fail']:
         p=copy.deepcopy(source);p['hypothetical_band_policy']=policy
-        cases['band_'+str(policy)]=p
+        cases['band_requested_'+str(policy)]=p
     p=copy.deepcopy(source);p['metric_values'][1]['value']={'numerator':'5','denominator':'100'};cases['complete_pass']=p
     p=copy.deepcopy(source);p['metric_values'][0]['value']={'numerator':'3','denominator':'100'};p['metric_values'][1]['value']=None;cases['known_fail_plus_missing']=p
     results={}
@@ -21,7 +21,8 @@ def main():
             results[name]={'simulation_result':restored.run.payload['simulation_result'],
                 'comparison_states':[r['state'] for r in restored.run.payload['comparisons']],
                 'blockers':restored.run.payload['simulation_blockers'],
-                'operational_decision':restored.run.payload['decision'],'criteria_adopted':False}
+                'operational_decision':restored.run.payload['decision'],'criteria_adopted':False,'band_policy_applied':restored.run.payload['band_policy_applied'],
+                'professional_review_needed_for_band':restored.run.payload['professional_review_needed_for_band']}
     return {'purpose':'synthetic_screening_policy_preview_only','cases':results,'production_authorized':False}
 
 

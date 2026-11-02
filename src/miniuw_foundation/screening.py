@@ -71,6 +71,14 @@ def definition_sources():
     return result
 
 
+def user_policy_reference():
+    path=Path(__file__).resolve().parents[2]/'docs/pending-band-policy-decision.json'
+    raw=path.read_bytes();policy=json.loads(raw)
+    if policy.get('status')!='selected_by_user' or policy.get('current_adopted_option')!='retain_pending_in_band':
+        raise ValidationError('explicit user band-policy direction unavailable or changed')
+    return {'path':'docs/pending-band-policy-decision.json','sha256':hashlib.sha256(raw).hexdigest(),'decision_id':policy['decision_id']}
+
+
 def _compare(value,threshold,operator):
     return {'>':value>threshold,'>=':value>=threshold,'<':value<threshold,'<=':value<=threshold}[operator]
 
@@ -91,8 +99,9 @@ class ScreeningRun:
     def payload(self):return json.loads(self.payload_json)
 
 
-def simulate_screening(raw):
+def _simulate_screening(raw,what_if_only):
     p=parse_screening_case(raw)
+    policy_ref=user_policy_reference()
     values={(r['metric_id'],r['scenario_id']):(i,r) for i,r in enumerate(p['metric_values'])}
     criteria={(r['metric_id'],r['scenario_id']):(i,r) for i,r in enumerate(p['criteria'])}
     results=[];global_blockers=[]
@@ -131,7 +140,9 @@ def simulate_screening(raw):
                 'metric_record':None if not v else v[1],'criterion_record':None if not c else c[1]})
     states=[r['state'] for r in results]
     if p['aggregation_rule'] is None:global_blockers.append('aggregation_rule_missing')
-    if 'BAND' in states and p['hypothetical_band_policy']!='fail':global_blockers.append('band_is_pending_by_explicit_fixture_policy' if p['hypothetical_band_policy']=='pending' else 'band_policy_missing')
+    if 'BAND' in states:
+        if not what_if_only:global_blockers.append('intermediate_band_pending_professional_review')
+        elif p['hypothetical_band_policy']!='fail':global_blockers.append('band_is_pending_by_explicit_fixture_policy' if p['hypothetical_band_policy']=='pending' else 'band_policy_missing')
     applicable=[s for s in states if s!='NOT_APPLICABLE_DECLARED']
     if not applicable:global_blockers.append('no_applicable_comparisons')
     result='PENDING'
@@ -142,7 +153,22 @@ def simulate_screening(raw):
         'criteria_revision':p['criteria_revision'],'required_metrics':p['required_metrics'],
         'required_scenarios':p['required_scenarios'],'aggregation_rule':p['aggregation_rule'],
         'hypothetical_band_policy':p['hypothetical_band_policy'],'comparisons':results,
+        'what_if_only':what_if_only,'band_policy_applied':'hypothetical_preview' if what_if_only else 'pending_professional_review',
+        'user_policy_reference':policy_ref,
+        'professional_review_needed_for_band':('BAND' in states),
+        'pending_review_metrics':[{'metric_id':r['metric_id'],'scenario_id':r['scenario_id'],'metric_locator':r['metric_locator'],'criterion_locator':r['criterion_locator']} for r in results if r['state']=='BAND'],
+        'variables_automatically_adjusted':False,
         'simulation_result':result,'simulation_blockers':sorted(set(global_blockers)),
         'criteria_adopted':False,'metric_values_financially_verified':False,'declared_inventory_verified':False,
         'review_authenticated':False,'decision':'PENDING','run_ready':False,'production_authorized':False}
     encoded=canonical(payload);return ScreeningRun(encoded,digest(encoded))
+
+
+def simulate_screening(raw):
+    """Canonical synthetic screening follows the explicit user band decision."""
+    return _simulate_screening(raw,False)
+
+
+def simulate_policy_whatif(raw):
+    """Explicit research preview only; cannot be saved as canonical screening evidence."""
+    return _simulate_screening(raw,True)
