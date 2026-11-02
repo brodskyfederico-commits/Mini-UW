@@ -24,6 +24,9 @@ from .debt_service import ENGINE_SHA256 as DEBT_ENGINE_SHA256
 from .debt_service import definition_sources as debt_definition_sources
 from .debt_dscr import DebtDscrBinding,DebtDscrRun,calculate_debt_dscr
 from .debt_dscr import ENGINE_SHA256 as DEBT_DSCR_ENGINE_SHA256
+from .screening import ScreeningRun,parse_screening_case,simulate_screening
+from .screening import ENGINE_SHA256 as SCREEN_ENGINE_SHA256
+from .screening import definition_sources as screening_definition_sources
 
 
 class MissingEvidence(KeyError):
@@ -185,6 +188,16 @@ class DebtDscrBundle:
     def binding(self):return DebtDscrBinding(**self.payload['binding'])
     @property
     def run(self):return DebtDscrRun(**self.payload['run'])
+
+
+@dataclass(frozen=True)
+class ScreeningBundle:
+    payload_json:str
+    sha256:str
+    @property
+    def payload(self):return json.loads(self.payload_json)
+    @property
+    def run(self):return ScreeningRun(**self.payload['run'])
 
 
 class EvidenceArchive:
@@ -507,6 +520,39 @@ COMMIT;''')
             except MissingEvidence:raise
             except (KeyError,TypeError,UnicodeError,json.JSONDecodeError,ValidationError) as error:
                 raise CorruptArchive('invalid debt DSCR evidence') from error
+        return bundle
+
+
+    def get_screening_source(self, sha):
+        raw=self._read('source',sha);parse_screening_case(raw);return raw
+
+    def save_screening(self, raw, run):
+        if type(run) is not ScreeningRun or simulate_screening(raw)!=run:
+            raise ValidationError('screening simulation does not reproduce from explicit case/criteria')
+        with self._transaction():
+            source=self._put('source',raw)
+            p={'schema':'miniuw.synthetic-screening-bundle.v1','purpose':'synthetic_development_only',
+                'source_sha256':source,'run':asdict(run),'engine_sha256':SCREEN_ENGINE_SHA256,
+                'definition_sources':screening_definition_sources()}
+            return self._put('bundle',canonical(p).encode())
+
+    def load_screening(self, sha):
+        with self._transaction():
+            raw=self.read_bundle_bytes(sha)
+            try:
+                p=json.loads(raw)
+                if set(p)!={'schema','purpose','source_sha256','run','engine_sha256','definition_sources'}:
+                    raise CorruptArchive('screening bundle fields changed')
+                if p['schema']!='miniuw.synthetic-screening-bundle.v1':raise UnsupportedArchive('unsupported screening schema')
+                if p['purpose']!='synthetic_development_only':raise CorruptArchive('screening purpose changed')
+                if p['engine_sha256']!=SCREEN_ENGINE_SHA256 or p['definition_sources']!=screening_definition_sources():
+                    raise UnsupportedArchive('screening replay requires compatible code/documents')
+                bundle=ScreeningBundle(raw.decode(),sha)
+                source=self.get_screening_source(p['source_sha256'])
+                if simulate_screening(source)!=bundle.run:raise CorruptArchive('screening simulation does not reproduce')
+            except MissingEvidence:raise
+            except (KeyError,TypeError,UnicodeError,json.JSONDecodeError,ValidationError) as error:
+                raise CorruptArchive('invalid screening evidence') from error
         return bundle
 
 

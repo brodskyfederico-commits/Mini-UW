@@ -1,0 +1,186 @@
+{
+  "schema": "miniuw.synthetic-screening-case.v1",
+  "context": {
+    "deal_id": "SYNTHETIC-test",
+    "scenario_id": "scenario-test",
+    "run_id": "run-test",
+    "definition_set_revision": "unadopted-test"
+  },
+  "case_id": "SYNTHETIC-screen-1",
+  "criteria_revision": "SYNTHETIC-criteria-v1",
+  "criteria_status": "synthetic_fixture_only",
+  "required_metrics": [
+    "YoC",
+    "IRR"
+  ],
+  "required_scenarios": [
+    "Base",
+    "Downside"
+  ],
+  "metric_values": [
+    {
+      "metric_id": "YoC",
+      "scenario_id": "Base",
+      "definition_ref": "SYNTHETIC-YoC-v1",
+      "unit": "fraction",
+      "quantity_kind": "scalar",
+      "currency": null,
+      "period_ref": "SYNTHETIC-scope-1",
+      "applicability": "applicable",
+      "applicability_evidence_ref": null,
+      "value": {
+        "numerator": "6",
+        "denominator": "100"
+      }
+    },
+    {
+      "metric_id": "YoC",
+      "scenario_id": "Downside",
+      "definition_ref": "SYNTHETIC-YoC-v1",
+      "unit": "fraction",
+      "quantity_kind": "scalar",
+      "currency": null,
+      "period_ref": "SYNTHETIC-scope-1",
+      "applicability": "applicable",
+      "applicability_evidence_ref": null,
+      "value": {
+        "numerator": "45",
+        "denominator": "1000"
+      }
+    },
+    {
+      "metric_id": "IRR",
+      "scenario_id": "Base",
+      "definition_ref": "SYNTHETIC-IRR-v1",
+      "unit": "fraction",
+      "quantity_kind": "scalar",
+      "currency": null,
+      "period_ref": "SYNTHETIC-scope-1",
+      "applicability": "applicable",
+      "applicability_evidence_ref": null,
+      "value": {
+        "numerator": "18",
+        "denominator": "100"
+      }
+    },
+    {
+      "metric_id": "IRR",
+      "scenario_id": "Downside",
+      "definition_ref": "SYNTHETIC-IRR-v1",
+      "unit": "fraction",
+      "quantity_kind": "scalar",
+      "currency": null,
+      "period_ref": "SYNTHETIC-scope-1",
+      "applicability": "applicable",
+      "applicability_evidence_ref": null,
+      "value": {
+        "numerator": "18",
+        "denominator": "100"
+      }
+    }
+  ],
+  "criteria": [
+    {
+      "metric_id": "YoC",
+      "scenario_id": "Base",
+      "definition_ref": "SYNTHETIC-YoC-v1",
+      "unit": "fraction",
+      "quantity_kind": "scalar",
+      "currency": null,
+      "period_ref": "SYNTHETIC-scope-1",
+      "applicability": "applicable",
+      "applicability_evidence_ref": null,
+      "pass_condition": {
+        "operator": ">=",
+        "threshold": {
+          "numerator": "5",
+          "denominator": "100"
+        }
+      },
+      "fail_condition": {
+        "operator": "<",
+        "threshold": {
+          "numerator": "4",
+          "denominator": "100"
+        }
+      }
+    },
+    {
+      "metric_id": "YoC",
+      "scenario_id": "Downside",
+      "definition_ref": "SYNTHETIC-YoC-v1",
+      "unit": "fraction",
+      "quantity_kind": "scalar",
+      "currency": null,
+      "period_ref": "SYNTHETIC-scope-1",
+      "applicability": "applicable",
+      "applicability_evidence_ref": null,
+      "pass_condition": {
+        "operator": ">=",
+        "threshold": {
+          "numerator": "5",
+          "denominator": "100"
+        }
+      },
+      "fail_condition": {
+        "operator": "<",
+        "threshold": {
+          "numerator": "4",
+          "denominator": "100"
+        }
+      }
+    },
+    {
+      "metric_id": "IRR",
+      "scenario_id": "Base",
+      "definition_ref": "SYNTHETIC-IRR-v1",
+      "unit": "fraction",
+      "quantity_kind": "scalar",
+      "currency": null,
+      "period_ref": "SYNTHETIC-scope-1",
+      "applicability": "applicable",
+      "applicability_evidence_ref": null,
+      "pass_condition": {
+        "operator": ">=",
+        "threshold": {
+          "numerator": "15",
+          "denominator": "100"
+        }
+      },
+      "fail_condition": {
+        "operator": "<",
+        "threshold": {
+          "numerator": "10",
+          "denominator": "100"
+        }
+      }
+    },
+    {
+      "metric_id": "IRR",
+      "scenario_id": "Downside",
+      "definition_ref": "SYNTHETIC-IRR-v1",
+      "unit": "fraction",
+      "quantity_kind": "scalar",
+      "currency": null,
+      "period_ref": "SYNTHETIC-scope-1",
+      "applicability": "applicable",
+      "applicability_evidence_ref": null,
+      "pass_condition": {
+        "operator": ">=",
+        "threshold": {
+          "numerator": "15",
+          "denominator": "100"
+        }
+      },
+      "fail_condition": {
+        "operator": "<",
+        "threshold": {
+          "numerator": "10",
+          "denominator": "100"
+        }
+      }
+    }
+  ],
+  "aggregation_rule": "all_pass_any_fail_pending_blocks",
+  "hypothetical_band_policy": null
+}

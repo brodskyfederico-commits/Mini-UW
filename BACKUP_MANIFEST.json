@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design plus T01–T10 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design plus T01–T11 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 7253,
-      "sha256": "e841ff74e94d59bd4124ddb06a5a841713f50178f0b751faf10a5431523d0235"
+      "bytes": 7658,
+      "sha256": "970aee2f66cd206b091ad0e3b96c9b6b22ad7d5d0186fec66f1de08a261e4f52"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 39161,
-      "sha256": "1f9fdc071d538a86fa866cd2901f5a9e955feeda95a360100d69429971cd819d"
+      "bytes": 40891,
+      "sha256": "f6e81bbcad8229718078e54513ec92dd35ec035caf1f11030690e9b9ae5cb02c"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -247,6 +247,11 @@
       "sha256": "827aafc20a8b75e713ac74d92188530483fb384e292fa89a4c7f295b21ab8f78"
     },
     {
+      "path": "docs/pending-band-policy-decision.json",
+      "bytes": 559,
+      "sha256": "d6ac0d1b1ba2491882dfe3d280c132392ac71c4427d88b7814584a84a81b71e3"
+    },
+    {
       "path": "docs/periodic-irr-root-isolation.md",
       "bytes": 4254,
       "sha256": "be4145684a968d6ffeafe9d47360fee3b7a83528be3f05e4876f9d8ce9ddaaf6"
@@ -412,9 +417,14 @@
       "sha256": "c5cbfebd7782ce2c6b414cc9542d763231fc7b34d9bfd3a4037853fa712fe63d"
     },
     {
+      "path": "docs/technical-implementation-T11.md",
+      "bytes": 5491,
+      "sha256": "7fcff82f9760ccd95f28f7ecc784aff735cd03f56225f936716eb5a87eef4e58"
+    },
+    {
       "path": "docs/technical-implementation-status.json",
-      "bytes": 5092,
-      "sha256": "f99c4d1821735309b5fce37e15bc796bab97401b5dd222d963f8e7cfc7f23a01"
+      "bytes": 5593,
+      "sha256": "b941ae60325c5f8cf7788ad1b974654951c824d16b15b5393113a9bf9240b9a3"
     },
     {
       "path": "infra/README.md",
@@ -1088,8 +1098,8 @@
     },
     {
       "path": "src/miniuw_foundation/archive.py",
-      "bytes": 25859,
-      "sha256": "1b2e273ea97a03cbe48d957b3651bfab54ff4adf01871dd69c916ffe8ee5ed75"
+      "bytes": 28343,
+      "sha256": "569e461e03b08fdd106e58f1b91956e3171bd191a303954365f5d1f0449d61cd"
     },
     {
       "path": "src/miniuw_foundation/calculations.py",
@@ -1145,6 +1155,11 @@
       "path": "src/miniuw_foundation/scoped_profiles.py",
       "bytes": 6775,
       "sha256": "09ae05bd0ed27649b6182bf6138707a2dd31c1fcb27ace30bcc674bcd28a8d69"
+    },
+    {
+      "path": "src/miniuw_foundation/screening.py",
+      "bytes": 10517,
+      "sha256": "5768ddbc080ea87db99e0d0af23a0f84f25fd8923d8dfa0ed924dffb4e7747b0"
     },
     {
       "path": "src/miniuw_foundation/sheets.py",
@@ -1227,6 +1242,11 @@
       "sha256": "194ab0271c125f2e033dddd5a544d6f3b0276756e039be7c3b13545929350b7d"
     },
     {
+      "path": "templates/synthetic-screening-band-case.json",
+      "bytes": 4673,
+      "sha256": "59493c78fd72ee6a2daedcf74ccc914a3dea81d74f7b5a8302e4ee56868f40b2"
+    },
+    {
       "path": "templates/synthetic-sheet-example.csv",
       "bytes": 190,
       "sha256": "c4c5fa44683498fe7628d8d2c49d35d5031cfa99ed51fd8aa83c1f2485b91646"
@@ -1292,6 +1312,11 @@
       "sha256": "74239a326ae849be664dae7fe298e1cc859c94e858c23f2b5b6c877651433fbc"
     },
     {
+      "path": "tests/test_screening.py",
+      "bytes": 11547,
+      "sha256": "bef46b2ae112e40be73f00af003e3dcc76ac24a1299d2449daf87ba55277c357"
+    },
+    {
       "path": "tests/test_sheets.py",
       "bytes": 10876,
       "sha256": "272634c6f8e9cbe2e32b98684b2ca101cdc0e60a53c2a6983fb43ef3eb18a3ae"
@@ -1350,6 +1375,11 @@
       "path": "tools/demo_synthetic_normalization.py",
       "bytes": 1834,
       "sha256": "dca23d87027854ed05ba210fe845d2187654678009c56131af0768bb299f02a4"
+    },
+    {
+      "path": "tools/demo_synthetic_screening.py",
+      "bytes": 1604,
+      "sha256": "d747f39dbbf64f6ec69d6b27b6c21c34b1d5a40c74b02494d734393f9a1965ce"
     },
     {
       "path": "tools/demo_synthetic_sheet.py",

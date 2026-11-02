@@ -1,0 +1,20 @@
+{
+  "decision_id": "M9-04-band-policy",
+  "status": "awaiting_explicit_user_direction",
+  "scope": "design rule for complete screening cases only",
+  "example_is_fictitious": true,
+  "example": {
+    "pass": ">=5%",
+    "fail": "<4%",
+    "value": "4.5%"
+  },
+  "prepared_options": [
+    "retain_pending_in_band",
+    "fail_if_pass_not_met_in_band"
+  ],
+  "current_adopted_option": null,
+  "missing_data_or_required_rules_always_pending": true,
+  "real_decisions_authorized": false,
+  "deployment_authorized": false,
+  "professional_review_received": false
+}

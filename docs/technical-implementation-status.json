@@ -1,7 +1,7 @@
 {
   "phase": "post-I01 synthetic technical implementation",
   "user_authorized": true,
-  "component": "T10",
+  "component": "T11",
   "status": "local_implementation_verified_pending_remote_receipt",
   "implemented": [
     "fresh raw-claim drafts from unchanged 55-input/10-criterion template",
@@ -37,14 +37,18 @@
     "explicit synthetic fixed-rate arrears loan-source contract and exact service producer",
     "maturity/balloon separation and supplied-date contractual-due windows",
     "DSCR bridge consuming computed service with explicit balloon inclusion",
-    "typed debt-source/service/bridge archive replay"
+    "typed debt-source/service/bridge archive replay",
+    "per-case direct metric/criterion screening simulation with explicit inventories and metadata",
+    "exact comparator boundaries, global criterion conflicts and pending-first completeness",
+    "band policy what-if preview without adoption and typed screening archive replay"
   ],
-  "unit_tests": 229,
+  "unit_tests": 250,
   "plan_packages_partially_addressed": [
     "IMP-01",
     "IMP-06",
     "IMP-02",
-    "IMP-03"
+    "IMP-03",
+    "IMP-05"
   ],
   "full_plan_packages_completed": 0,
   "financial_engine_implemented": false,
@@ -54,9 +58,9 @@
   "deployment_enabled": false,
   "production_ready": false,
   "next_independent_work": [
-    "direct metric-sheet screening simulation with explicit synthetic criteria",
-    "financial NOI producer contracts and general calendars",
-    "atomic evidence/currentness recording without publishing real decisions"
+    "resolve user design choice for complete-case intermediate band",
+    "remaining financial producers/general calendars",
+    "authentic input/criteria integration and atomic publication safeguards"
   ],
   "I01_snapshot_preserved": true,
   "components_implemented": [
@@ -69,7 +73,8 @@
     "T07",
     "T08",
     "T09",
-    "T10"
+    "T10",
+    "T11"
   ],
   "tests_by_component": {
     "T01": 31,
@@ -81,7 +86,8 @@
     "T07": 26,
     "T08": 25,
     "T09": 18,
-    "T10": 24
+    "T10": 24,
+    "T11": 21
   },
   "not_yet_implemented": [
     "complete financial graph and its designed cycles",
@@ -109,5 +115,9 @@
   "upstream_financial_contracts_verified": false,
   "financial_profiles_adopted": false,
   "synthetic_debt_service_producer_implemented": true,
-  "actual_cash_payment_verified": false
+  "actual_cash_payment_verified": false,
+  "synthetic_screening_simulator_implemented": true,
+  "operational_screening_decisions_enabled": false,
+  "user_band_policy_decision": "pending",
+  "simulation_results_can_include_pass_fail": true
 }
