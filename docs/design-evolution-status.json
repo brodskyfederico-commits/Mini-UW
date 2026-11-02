@@ -1,7 +1,7 @@
 {
-  "design_id": "D02",
+  "design_id": "D03",
   "status": "specified_not_implemented",
-  "title": "Ciclo de revisión y vigencia",
+  "title": "Entrada de métricas criterios y conciliación",
   "technical_baseline": "T13",
   "new_runtime_components": 0,
   "technical_unit_tests_unchanged": 273,
@@ -13,13 +13,23 @@
   "professional_review_received": false,
   "production_authorized": false,
   "documents": [
-    "docs/review-lifecycle-design.md",
-    "docs/review-lifecycle-design.json",
-    "docs/review-lifecycle-acceptance-cases.json"
+    "docs/metric-intake-design.md",
+    "docs/metric-intake-design.json",
+    "docs/metric-intake-acceptance-cases.json",
+    "templates/metric-intake-draft-empty.json"
   ],
   "next_independent_design": [
-    "Mapping of the supplied metric sheet and criterion evidence as separate records",
     "One-page decision artifact content and legibility specification",
     "Dependency-complete manifests and transaction boundaries under synthetic failures"
-  ]
+  ],
+  "design_history": [
+    {
+      "design_id": "D02",
+      "status": "specified_not_implemented",
+      "design_acceptance_cases_specified": 28,
+      "design_acceptance_cases_executed": 0,
+      "verified_package_commit": "5c3cac2675c31f3ed2036649eedf35ea7cd707cd"
+    }
+  ],
+  "total_design_acceptance_cases_specified": 56
 }

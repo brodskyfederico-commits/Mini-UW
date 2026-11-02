@@ -54,3 +54,5 @@ T13 registra propuestas sintéticas de revisión, conserva el caso original y vu
 ## Ampliación del diseño de revisión
 
 [Propuestas, revisión y vigencia](docs/review-lifecycle-design.md) desarrolla M9 después de T13: estados separados, revisión del contexto, revocación, concurrencia y entrega externa. Incluye 15 reglas trazables y 28 casos de aceptación especificados, aún sin ejecutar. Es diseño documental; no añade código runtime ni habilita decisiones reales. [Estado de ampliaciones de diseño](docs/design-evolution-status.json).
+
+[Entrada de métricas y criterios D03](docs/metric-intake-design.md) especifica la hoja aportada, metadatos, conciliación y bloqueos sin inventar su layout. Conserva diez IDs del catálogo y agrega una plantilla vacía y 28 casos futuros, sin código runtime. D02/D03 suman 56 casos de diseño especificados, no ejecutados.

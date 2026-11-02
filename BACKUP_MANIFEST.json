@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02 review lifecycle extension and T01–T13 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D03 review and metric-intake design extensions and T01–T13 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 8859,
-      "sha256": "4983189cc118d0d1bbefc88fb8241e34715eb57d34e268e4cc6b3dcc569f694a"
+      "bytes": 9185,
+      "sha256": "7343a06b84fa38491038d5070d655ea47976c9d49b90b83217906e09bcd3ec59"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 44859,
-      "sha256": "bf12dc7d0a899917bd0d08240b306fd8d378cd3b6d11a9c54b2bfb3197bb6123"
+      "bytes": 45962,
+      "sha256": "31a56be4195ac5c013b63069076723ba4b86c9b718c8aa0fd1f14d5c52e6520e"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -103,8 +103,8 @@
     },
     {
       "path": "docs/design-evolution-status.json",
-      "bytes": 904,
-      "sha256": "6af39c603ca1661f19d741751f135bf8a7fc6c356984a2f8b6108c659a0be389"
+      "bytes": 1200,
+      "sha256": "41a0dc9c4fd30f1e5a48e8c63e8a9905d14972517054f8ff362caad826fa8180"
     },
     {
       "path": "docs/evidence-locator-contract.md",
@@ -165,6 +165,21 @@
       "path": "docs/investor-return-bridges.md",
       "bytes": 5109,
       "sha256": "88e751a2d7070eb00852c8d634814758e5a413364d3898c68f7f9bf2e606bb4f"
+    },
+    {
+      "path": "docs/metric-intake-acceptance-cases.json",
+      "bytes": 7731,
+      "sha256": "1057d0093cafc5b2cd088b17677150247533880bbf23a332aaa91523e89e3c4c"
+    },
+    {
+      "path": "docs/metric-intake-design.json",
+      "bytes": 11226,
+      "sha256": "08f16086e2a49089c89634f502ee93346feab72fcf17437facf73f8df6236bd6"
+    },
+    {
+      "path": "docs/metric-intake-design.md",
+      "bytes": 10876,
+      "sha256": "6f7a26880f06c1058e1dbea641fc44dda4221167a8646e5a63195d25fe67b387"
     },
     {
       "path": "docs/model-budget-schedule.md",
@@ -1215,6 +1230,11 @@
       "path": "src/miniuw_foundation/workbooks.py",
       "bytes": 12543,
       "sha256": "cd301d7b4758b5c80628f0e6515e01da81671ecccf0d36c9c7c4ec670f470529"
+    },
+    {
+      "path": "templates/metric-intake-draft-empty.json",
+      "bytes": 3492,
+      "sha256": "3fa96c7556ee0b206e3213ad1d91c475bbebe2ab4aebb489db0a3eed034e68a7"
     },
     {
       "path": "templates/project-draft-empty.json",

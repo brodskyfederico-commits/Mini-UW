@@ -1,0 +1,371 @@
+{
+  "design_id": "D03",
+  "status": "design_only_not_implemented",
+  "baseline_package_commit": "5c3cac2675c31f3ed2036649eedf35ea7cd707cd",
+  "technical_baseline": "T13",
+  "sources": [
+    {
+      "id": "INPUT-FIELDS",
+      "path": "docs/decision-input-contract.md",
+      "line": 15,
+      "marker": "Cada fila debe identificar",
+      "sha256": "2d2637d6889b1dec3d92df42b789dda495f6f7c98f8ccf22839f46fb47a22981"
+    },
+    {
+      "id": "INPUT-COMPLETE",
+      "path": "docs/decision-input-contract.md",
+      "line": 17,
+      "marker": "Antes de clasificar",
+      "sha256": "2d2637d6889b1dec3d92df42b789dda495f6f7c98f8ccf22839f46fb47a22981"
+    },
+    {
+      "id": "M1-STATES",
+      "path": "docs/model-input-evidence.md",
+      "line": 11,
+      "marker": "| M1-05 |",
+      "sha256": "dea3546c8da4d01c6a137d5fcaf66893e3156f30a2fa7a6e80eaf83ee3361ed8"
+    },
+    {
+      "id": "M1-NORMALIZE",
+      "path": "docs/model-input-evidence.md",
+      "line": 13,
+      "marker": "| M1-07 |",
+      "sha256": "dea3546c8da4d01c6a137d5fcaf66893e3156f30a2fa7a6e80eaf83ee3361ed8"
+    },
+    {
+      "id": "M9-COMPARE",
+      "path": "docs/model-decision-audit.md",
+      "line": 26,
+      "marker": "Una comparación individual necesita",
+      "sha256": "a10ca283b98524780037544b0c00b76d0b7e0421f1d788fb57ad9c610ed9f28c"
+    },
+    {
+      "id": "M9-COMPLETE",
+      "path": "docs/model-decision-audit.md",
+      "line": 30,
+      "marker": "La confirmación del usuario impone",
+      "sha256": "a10ca283b98524780037544b0c00b76d0b7e0421f1d788fb57ad9c610ed9f28c"
+    },
+    {
+      "id": "D02-VALUES",
+      "path": "docs/review-lifecycle-design.md",
+      "line": 7,
+      "marker": "Lorena aportará una hoja",
+      "sha256": "9d89b538de4c8f15fa7a61a4db87d9196b5691c68d5233ed7c5951cd2a2efa04"
+    },
+    {
+      "id": "D02-REVISIONS",
+      "path": "docs/review-lifecycle-design.md",
+      "line": 64,
+      "marker": "La comparación debe comprobar",
+      "sha256": "9d89b538de4c8f15fa7a61a4db87d9196b5691c68d5233ed7c5951cd2a2efa04"
+    },
+    {
+      "id": "METRIC-CATALOG",
+      "path": "templates/project-draft-empty.json",
+      "location": "investment_criteria[*].metric_id",
+      "sha256": "8cfc2915b9ee64bec53df3ea9041b7784f546200bdc676fcaf7b58679b88f16c"
+    },
+    {
+      "id": "USER-BAND",
+      "path": "docs/pending-band-policy-decision.json",
+      "location": "current_adopted_option and user_direction",
+      "sha256": "cb5553cc523ab061fd4068b6da55d78421be45bed0330b708bcf911c28b34ee9"
+    }
+  ],
+  "rules": [
+    {
+      "id": "MI-01",
+      "definition": "Separar valor de métrica aportado, criterio de inversión, condición bancaria y resultado calculado propio.",
+      "sources": [
+        "D02-VALUES",
+        "INPUT-FIELDS"
+      ]
+    },
+    {
+      "id": "MI-02",
+      "definition": "Vincular cada afirmación a archivo original/hash, revisión, hoja/celda o ubicación, literal y rol explícito.",
+      "sources": [
+        "M1-NORMALIZE"
+      ]
+    },
+    {
+      "id": "MI-03",
+      "definition": "Mapear etiquetas a IDs sólo mediante perfil de mapeo versionado y explícito; duplicados no se sobrescriben.",
+      "sources": [
+        "M1-STATES",
+        "METRIC-CATALOG"
+      ]
+    },
+    {
+      "id": "MI-04",
+      "definition": "Exigir definición, unidad, escala, moneda si aplica, período/cutoff, escenario y alcance compatibles.",
+      "sources": [
+        "M9-COMPARE"
+      ]
+    },
+    {
+      "id": "MI-05",
+      "definition": "Un perfil de interpretación explícito distingue fracción, porcentaje, puntos porcentuales y bps; ni símbolo ni rango típico deciden.",
+      "sources": [
+        "M1-NORMALIZE"
+      ]
+    },
+    {
+      "id": "MI-06",
+      "definition": "Conservar cero, vacío, inválido, conflicto, indefinido y no aplicable justificado como estados distintos.",
+      "sources": [
+        "M1-STATES"
+      ]
+    },
+    {
+      "id": "MI-07",
+      "definition": "Inventariar métricas/escenarios requeridos y aplicabilidad con evidencia; vacíos no heredan otro deal o escenario.",
+      "sources": [
+        "INPUT-COMPLETE",
+        "INPUT-FIELDS"
+      ]
+    },
+    {
+      "id": "MI-08",
+      "definition": "Criterios nuevos por deal sin números históricos; cada condición incluye operador, umbral, igualdad y fuente.",
+      "sources": [
+        "INPUT-FIELDS"
+      ]
+    },
+    {
+      "id": "MI-09",
+      "definition": "Registrar y resolver discrepancias sin preferencia por autor, nombre de archivo o última fecha; igualdad no acredita independencia.",
+      "sources": [
+        "M1-STATES",
+        "D02-VALUES"
+      ]
+    },
+    {
+      "id": "MI-10",
+      "definition": "Fórmula, error o enlace externo en la entrada no es un literal utilizable por su caché; no ejecutar fórmulas ni macros.",
+      "sources": [
+        "M1-NORMALIZE"
+      ]
+    },
+    {
+      "id": "MI-11",
+      "definition": "Recalcular versiones afectadas y comparaciones bajo una misma instantánea; correcciones conservan la afirmación original.",
+      "sources": [
+        "D02-REVISIONS"
+      ]
+    },
+    {
+      "id": "MI-12",
+      "definition": "Faltantes/conflictos requeridos o banda intermedia conservan PENDING antes de emitir dictamen completo.",
+      "sources": [
+        "M9-COMPLETE",
+        "USER-BAND"
+      ]
+    },
+    {
+      "id": "MI-13",
+      "definition": "Conservar cada bloqueo con afirmación, ubicación, dependencia y evidencia necesaria para resolverlo.",
+      "sources": [
+        "INPUT-COMPLETE",
+        "M1-STATES"
+      ]
+    },
+    {
+      "id": "MI-14",
+      "definition": "Completar la entrada no autentica al revisor ni habilita publicación o decisiones reales.",
+      "sources": [
+        "D02-VALUES",
+        "D02-REVISIONS"
+      ]
+    }
+  ],
+  "candidate_records": {
+    "source_document": [
+      "source_id",
+      "original_sha256",
+      "declared_revision",
+      "format",
+      "received_at",
+      "declared_author",
+      "identity_verification_ref"
+    ],
+    "mapping_profile": [
+      "mapping_profile_id",
+      "revision",
+      "source_layout_fingerprint",
+      "explicit_field_bindings",
+      "label_aliases",
+      "numeric_profiles",
+      "review_evidence_refs"
+    ],
+    "claim": [
+      "claim_id",
+      "role",
+      "deal_id",
+      "scenario_id",
+      "metric_id",
+      "definition_ref",
+      "source_id",
+      "source_locator",
+      "raw_literal",
+      "cell_kind",
+      "raw_unit",
+      "numeric_profile_ref",
+      "quantity_kind",
+      "currency",
+      "period_ref",
+      "basis_ref",
+      "cutoff_ref",
+      "applicability",
+      "applicability_evidence_refs",
+      "supersedes_claim_id"
+    ],
+    "criterion_condition": [
+      "criterion_id",
+      "deal_id",
+      "scenario_id",
+      "metric_id",
+      "definition_ref",
+      "condition_role",
+      "operator",
+      "threshold_claim_id",
+      "equality_rule",
+      "criteria_revision",
+      "source_refs"
+    ],
+    "computed_metric": [
+      "metric_id",
+      "scenario_id",
+      "value_ref",
+      "definition_revision",
+      "producer_run_id",
+      "dependency_manifest_sha256"
+    ],
+    "reconciliation": [
+      "provided_claim_ids",
+      "computed_metric_ref",
+      "compatibility_result",
+      "difference_exact",
+      "tolerance_policy_ref",
+      "resolution_evidence_refs",
+      "resolution_status"
+    ],
+    "blocker": [
+      "blocker_id",
+      "reason_code",
+      "claim_refs",
+      "source_locators",
+      "affected_dependencies",
+      "required_resolution_evidence",
+      "status"
+    ]
+  },
+  "metric_catalog": [
+    {
+      "metric_id": "YoC",
+      "label": "YoC",
+      "compatibility_basis_to_resolve": "NOI estabilizado, TDC all-in y período compatibles",
+      "approved_definition_ref": null,
+      "approved_unit": null,
+      "criterion_default": null,
+      "real_source_locator": null
+    },
+    {
+      "metric_id": "spread",
+      "label": "Spread",
+      "compatibility_basis_to_resolve": "YoC y cap de referencia; fracción frente a bps",
+      "approved_definition_ref": null,
+      "approved_unit": null,
+      "criterion_default": null,
+      "real_source_locator": null
+    },
+    {
+      "metric_id": "equity_recovered",
+      "label": "Equity recuperado",
+      "compatibility_basis_to_resolve": "Proceeds distribuibles y base/cutoff de equity",
+      "approved_definition_ref": null,
+      "approved_unit": null,
+      "criterion_default": null,
+      "real_source_locator": null
+    },
+    {
+      "metric_id": "equity_cash_in",
+      "label": "Equity cash-in",
+      "compatibility_basis_to_resolve": "Aporte adicional de refi y base/cutoff de equity",
+      "approved_definition_ref": null,
+      "approved_unit": null,
+      "criterion_default": null,
+      "real_source_locator": null
+    },
+    {
+      "metric_id": "breakeven_occupancy",
+      "label": "Ocupación de equilibrio",
+      "compatibility_basis_to_resolve": "Función de ocupación, ingresos, costos, impuesto y servicio aplicables",
+      "approved_definition_ref": null,
+      "approved_unit": null,
+      "criterion_default": null,
+      "real_source_locator": null
+    },
+    {
+      "metric_id": "post_refi_CoC",
+      "label": "CoC pos-refi",
+      "compatibility_basis_to_resolve": "Caja anual disponible y capital remanente definido",
+      "approved_definition_ref": null,
+      "approved_unit": null,
+      "criterion_default": null,
+      "real_source_locator": null
+    },
+    {
+      "metric_id": "equity_TDC",
+      "label": "Equity/TDC",
+      "compatibility_basis_to_resolve": "Capital requerido al cutoff y TDC compatible",
+      "approved_definition_ref": null,
+      "approved_unit": null,
+      "criterion_default": null,
+      "real_source_locator": null
+    },
+    {
+      "metric_id": "equity_multiple",
+      "label": "Equity Multiple",
+      "compatibility_basis_to_resolve": "Distribuciones/proceeds y aportes brutos bajo mismo alcance",
+      "approved_definition_ref": null,
+      "approved_unit": null,
+      "criterion_default": null,
+      "real_source_locator": null
+    },
+    {
+      "metric_id": "IRR",
+      "label": "IRR apalancada",
+      "compatibility_basis_to_resolve": "Serie de flujos, calendario, dominio y tratamiento de raíces",
+      "approved_definition_ref": null,
+      "approved_unit": null,
+      "criterion_default": null,
+      "real_source_locator": null
+    },
+    {
+      "metric_id": "asking_relative_to_supported_price",
+      "label": "Asking frente a precio soportado",
+      "compatibility_basis_to_resolve": "Definición de RLV/objetivos, dominio, asking y operador de comparación",
+      "approved_definition_ref": null,
+      "approved_unit": null,
+      "criterion_default": null,
+      "real_source_locator": null
+    }
+  ],
+  "claim_roles": [
+    "provided_metric",
+    "investment_criterion_threshold",
+    "bank_condition",
+    "underlying_input"
+  ],
+  "required_inventory_default": null,
+  "source_precedence_default": null,
+  "reconciliation_tolerance_default": null,
+  "actual_lorena_layout_verified": false,
+  "new_runtime_code": false,
+  "real_decisions_enabled": false,
+  "professional_review_received": false,
+  "design_cases_specified": 28,
+  "design_cases_executed": 0
+}

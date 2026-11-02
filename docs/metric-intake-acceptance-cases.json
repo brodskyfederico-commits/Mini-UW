@@ -1,0 +1,267 @@
+{
+  "design_id": "D03",
+  "execution_status": "specified_not_executed",
+  "scope": "Future intake acceptance; separate from existing runtime and product tests",
+  "cases": [
+    {
+      "id": "D03-AC-01",
+      "name": "metric_not_criterion",
+      "rules": [
+        "MI-01"
+      ],
+      "given": "Una celda contiene YoC aportado",
+      "expected": "Registrar como valor; no usar el mismo número como umbral sin un criterio expreso."
+    },
+    {
+      "id": "D03-AC-02",
+      "name": "bank_not_investment",
+      "rules": [
+        "MI-01",
+        "MI-08"
+      ],
+      "given": "Mínimo DSCR bancario adjunto",
+      "expected": "Conservar condición de financiación separada; no crear un undécimo criterio de inversión."
+    },
+    {
+      "id": "D03-AC-03",
+      "name": "source_bound",
+      "rules": [
+        "MI-02"
+      ],
+      "given": "Valor recibido con archivo/celda identificados",
+      "expected": "Conservar literal y bytes del original; hash identifica archivo sin autenticar autor."
+    },
+    {
+      "id": "D03-AC-04",
+      "name": "unknown_alias",
+      "rules": [
+        "MI-03"
+      ],
+      "given": "Etiqueta no mapeada o abreviatura ambigua",
+      "expected": "Bloqueo de mapeo; no elegir por similitud textual."
+    },
+    {
+      "id": "D03-AC-05",
+      "name": "duplicate_conflict",
+      "rules": [
+        "MI-03",
+        "MI-09"
+      ],
+      "given": "Dos filas del mismo rol/métrica/escenario difieren",
+      "expected": "Retener ambas; conflicto requerido mantiene PENDING."
+    },
+    {
+      "id": "D03-AC-06",
+      "name": "equal_duplicates",
+      "rules": [
+        "MI-03",
+        "MI-09"
+      ],
+      "given": "Dos celdas con valor igual",
+      "expected": "Conservar ambas procedencias; no inferir fuentes independientes ni aplicar última fila."
+    },
+    {
+      "id": "D03-AC-07",
+      "name": "percent_profile",
+      "rules": [
+        "MI-04",
+        "MI-05"
+      ],
+      "given": "Literal 5 con símbolo porcentual y perfil ausente",
+      "expected": "No asumir 5/100 ni fracción 5; mantener interpretación pendiente."
+    },
+    {
+      "id": "D03-AC-08",
+      "name": "bps_profile",
+      "rules": [
+        "MI-05"
+      ],
+      "given": "Spread informado en bps con escala documentada",
+      "expected": "Conversión exacta enlazada al perfil; criterio sólo compara si su unidad/definición son compatibles."
+    },
+    {
+      "id": "D03-AC-09",
+      "name": "decimal_ambiguity",
+      "rules": [
+        "MI-05"
+      ],
+      "given": "Literal 1,250 sin convención decimal/millares",
+      "expected": "Bloqueo hasta perfil explícito; no inferir por locale del servidor."
+    },
+    {
+      "id": "D03-AC-10",
+      "name": "zero_value",
+      "rules": [
+        "MI-06"
+      ],
+      "given": "Literal cero con perfil y metadatos válidos",
+      "expected": "Conservar cero como dato; no tratar como vacío ni garantizar que la métrica admita ese dominio."
+    },
+    {
+      "id": "D03-AC-11",
+      "name": "missing_value",
+      "rules": [
+        "MI-06",
+        "MI-12"
+      ],
+      "given": "Celda requerida vacía",
+      "expected": "PENDING; no copiar último valor ni producir FAIL económico por ausencia."
+    },
+    {
+      "id": "D03-AC-12",
+      "name": "formula_cache",
+      "rules": [
+        "MI-10"
+      ],
+      "given": "Fórmula con caché numérica",
+      "expected": "Preservar fórmula/caché como evidencia; no ejecutar ni adoptar el caché como valor literal."
+    },
+    {
+      "id": "D03-AC-13",
+      "name": "external_link",
+      "rules": [
+        "MI-10"
+      ],
+      "given": "Fórmula con enlace externo o macro",
+      "expected": "No acceder ni ejecutar; conservar bloqueo y referencia."
+    },
+    {
+      "id": "D03-AC-14",
+      "name": "period_mismatch",
+      "rules": [
+        "MI-04"
+      ],
+      "given": "CoC aportado mensual frente a criterio anual",
+      "expected": "Bloqueo de compatibilidad; no anualizar implícitamente."
+    },
+    {
+      "id": "D03-AC-15",
+      "name": "cutoff_mismatch",
+      "rules": [
+        "MI-04"
+      ],
+      "given": "Equity recuperado usa cutoff diferente del criterio",
+      "expected": "No comparar hasta definición/base compatibles."
+    },
+    {
+      "id": "D03-AC-16",
+      "name": "currency_mismatch",
+      "rules": [
+        "MI-04"
+      ],
+      "given": "Cantidades monetarias de monedas distintas",
+      "expected": "Bloqueo; sin tipo de cambio inferido."
+    },
+    {
+      "id": "D03-AC-17",
+      "name": "inventory_absent",
+      "rules": [
+        "MI-07"
+      ],
+      "given": "Hay filas pero no inventario requerido definido",
+      "expected": "Completitud desconocida; no declarar entrada completa."
+    },
+    {
+      "id": "D03-AC-18",
+      "name": "scenario_missing",
+      "rules": [
+        "MI-07",
+        "MI-12"
+      ],
+      "given": "Base completo y Downside requerido ausente",
+      "expected": "PENDING global; no copiar Base."
+    },
+    {
+      "id": "D03-AC-19",
+      "name": "na_without_rule",
+      "rules": [
+        "MI-06",
+        "MI-07"
+      ],
+      "given": "Fila marcada N/A sin evidencia",
+      "expected": "Aplicabilidad sin resolver; no excluir requisito."
+    },
+    {
+      "id": "D03-AC-20",
+      "name": "old_threshold",
+      "rules": [
+        "MI-08"
+      ],
+      "given": "Documento histórico tiene umbrales pero el deal nuevo no",
+      "expected": "Criterios permanecen vacíos; PENDING hasta fuente vigente."
+    },
+    {
+      "id": "D03-AC-21",
+      "name": "criterion_equality",
+      "rules": [
+        "MI-08"
+      ],
+      "given": "Umbral sin operador o igualdad",
+      "expected": "No inferir dirección por nombre de métrica; PENDING de regla."
+    },
+    {
+      "id": "D03-AC-22",
+      "name": "computed_vs_supplied",
+      "rules": [
+        "MI-09"
+      ],
+      "given": "Métrica propia y aportada difieren",
+      "expected": "Preservar ambas y revisión causal; no elegir autor preferido ni aplicar tolerancia inventada."
+    },
+    {
+      "id": "D03-AC-23",
+      "name": "equal_not_verified",
+      "rules": [
+        "MI-09",
+        "MI-14"
+      ],
+      "given": "Valor propio y aportado coinciden",
+      "expected": "Registrar concordancia exacta bajo alcance compatible; no afirmar auditoría independiente."
+    },
+    {
+      "id": "D03-AC-24",
+      "name": "correction_revision",
+      "rules": [
+        "MI-11"
+      ],
+      "given": "Se corrige cifra o perfil de mapeo",
+      "expected": "Nueva revisión y dependencias invalidadas; original intacto."
+    },
+    {
+      "id": "D03-AC-25",
+      "name": "known_fail_and_missing",
+      "rules": [
+        "MI-12"
+      ],
+      "given": "Un criterio incumplido más otro dato requerido ausente",
+      "expected": "PENDING con causas de incumplimiento y ausencia conservadas."
+    },
+    {
+      "id": "D03-AC-26",
+      "name": "complete_band",
+      "rules": [
+        "MI-12"
+      ],
+      "given": "Paquete completo y una métrica entre líneas",
+      "expected": "PENDING para revisión profesional, sin ajuste automático de variable."
+    },
+    {
+      "id": "D03-AC-27",
+      "name": "actionable_blocker",
+      "rules": [
+        "MI-13"
+      ],
+      "given": "Unidad y fuente del denominador faltantes",
+      "expected": "Bloqueo identifica fila, dependencia y evidencia necesaria; no mensaje genérico sin ubicación."
+    },
+    {
+      "id": "D03-AC-28",
+      "name": "complete_not_approved",
+      "rules": [
+        "MI-14"
+      ],
+      "given": "Hoja y criterios completos con identidad sólo declarada",
+      "expected": "Completitud no habilita decisión real ni publicación; revisión auténtica sigue aparte."
+    }
+  ]
+}
