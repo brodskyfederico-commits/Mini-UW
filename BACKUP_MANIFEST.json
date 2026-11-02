@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D03 review and metric-intake design extensions and T01–T24 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D03 review and metric-intake design extensions and T01–T26 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 13295,
-      "sha256": "77b3b90ab9cfcda6ff5ed49081dafcbb35e6a783ac5b555ee6384bf39c574507"
+      "bytes": 13918,
+      "sha256": "89e7fcbba398dee1e2b92b2b2a690336e308691a7bf7904443652ac300f9e184"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 59328,
-      "sha256": "fc35dc0dc9fcc037264547b322d27f182ed744f0413c9e1e7989f18203d4c868"
+      "bytes": 61257,
+      "sha256": "bef0b8156ce948dc1d38421862c5c2c9f41ccdb63b661353036c4933b658010e"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -417,6 +417,11 @@
       "sha256": "c962ae5c54d7db96ac38d956d815b10e57cc7874de71503022db67f6b1c935de"
     },
     {
+      "path": "docs/review/synthetic-operating-cash-returns-demo.json",
+      "bytes": 4659,
+      "sha256": "767a9e214ac2d23f27fefc21a01d033beb82e9c68d21e98d7895d0e44b54e016"
+    },
+    {
       "path": "docs/review-lifecycle-acceptance-cases.json",
       "bytes": 8050,
       "sha256": "ede583b02cc2a71967eea2fd1295efeff9d3c265e0495d6ef08c0b60ea514cb9"
@@ -470,6 +475,11 @@
       "path": "docs/structural-integration-register.json",
       "bytes": 104780,
       "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc"
+    },
+    {
+      "path": "docs/technical-coverage-T25-T26.json",
+      "bytes": 5292,
+      "sha256": "473abaa121fb0c348dbf5f9dd494c5ac03c92a2b5ecddbd1f28fac42338d7fe3"
     },
     {
       "path": "docs/technical-implementation-T01.md",
@@ -587,9 +597,14 @@
       "sha256": "83fef90a3df2572a0e39197ad7e3b73bf37653a3ec7e64ba8d3951ce66989f4d"
     },
     {
+      "path": "docs/technical-implementation-T25-T26.md",
+      "bytes": 7165,
+      "sha256": "4323e69e4380f1dedb5a27c52da19cbab36f5ede5d496683fe376fba07ca2174"
+    },
+    {
       "path": "docs/technical-implementation-status.json",
-      "bytes": 9319,
-      "sha256": "865aaa49fa3d0b0d2877302b6a3c07cadc33b2786968039f4ccbd3285cc31325"
+      "bytes": 10104,
+      "sha256": "edcef4b3e760f4697b43dd545f56b8037b967a5bca582542b6817bfadf2334f5"
     },
     {
       "path": "infra/README.md",
@@ -1263,8 +1278,8 @@
     },
     {
       "path": "src/miniuw_foundation/archive.py",
-      "bytes": 53750,
-      "sha256": "971db1c0c207fab8e4b94d2b014aaf3c6f37b2b5c83cc76044b3d71389eda2ee"
+      "bytes": 60163,
+      "sha256": "148729be1d50d59ae8b019e130e9945f561b8c0b467ffc48362f04c3a5172190"
     },
     {
       "path": "src/miniuw_foundation/calculations.py",
@@ -1322,6 +1337,11 @@
       "sha256": "582f318182971e79cd48fbcd43a00c3e4ecc8505450eab87762782ed8af70c0a"
     },
     {
+      "path": "src/miniuw_foundation/operating_cash.py",
+      "bytes": 12744,
+      "sha256": "1c23d1c6d629e98eb2448f2ab697bf2970dda501275c072ac64109d4f36ef6f1"
+    },
+    {
       "path": "src/miniuw_foundation/operating_dscr.py",
       "bytes": 5001,
       "sha256": "a3df43cf92b8a3fac0465f8a5e4db9c420fc3b44f5587c50a9048b9a8f8be0bd"
@@ -1330,6 +1350,11 @@
       "path": "src/miniuw_foundation/operating_noi.py",
       "bytes": 8646,
       "sha256": "034fda6791ce3386d2345fa7015d9a9ca6f2003e0e71664216d3939d268eaafd"
+    },
+    {
+      "path": "src/miniuw_foundation/operating_returns.py",
+      "bytes": 5805,
+      "sha256": "c0e62855b6bbcf91fe19f454535c6aae1eca0d965ad7002c9b721d977bb40547"
     },
     {
       "path": "src/miniuw_foundation/periodic_returns.py",
@@ -1487,6 +1512,11 @@
       "sha256": "194ab0271c125f2e033dddd5a544d6f3b0276756e039be7c3b13545929350b7d"
     },
     {
+      "path": "templates/synthetic-operating-cash.json",
+      "bytes": 7930,
+      "sha256": "0a3526d0f495172d289e28c4208cf11678c2c7e1ef25a78f9de6c4dc18c889e7"
+    },
+    {
       "path": "templates/synthetic-operating-dscr-binding.json",
       "bytes": 707,
       "sha256": "21908dd63b785e05f8255ebb6f30f976e6024ed11e6cda49d21b380c243519a9"
@@ -1495,6 +1525,11 @@
       "path": "templates/synthetic-operating-dscr-loan.json",
       "bytes": 1068,
       "sha256": "bf7a288f043c1443f8b4f707c9b54fee24ab637e016e7c7d160d42dd030d8cfa"
+    },
+    {
+      "path": "templates/synthetic-operating-investor-slots.json",
+      "bytes": 3718,
+      "sha256": "3a4471d20b0bee46400faf28bb75401dcdfca081af7b84a624345ae596b4a94a"
     },
     {
       "path": "templates/synthetic-operating-noi.json",
@@ -1587,6 +1622,11 @@
       "sha256": "1131920b5d665b32d269fd28f664279d4050dd33ed5d1ec71312f1d3d40d9acb"
     },
     {
+      "path": "tests/test_operating_cash.py",
+      "bytes": 13426,
+      "sha256": "618061c38e48c912090cf2d1033bca59ea3d1c05d2fbcbc6742c4dba0f9facae"
+    },
+    {
       "path": "tests/test_operating_dscr.py",
       "bytes": 8839,
       "sha256": "333814f8fe5ba2a1f8cc1a9f9acb265ef824a7c3335e016ad766fe2821130b94"
@@ -1595,6 +1635,11 @@
       "path": "tests/test_operating_noi.py",
       "bytes": 10845,
       "sha256": "31d4122c43a2369ffeef503cf4a23c5433466025cd7fb0ba4906b94badd29a9f"
+    },
+    {
+      "path": "tests/test_operating_returns.py",
+      "bytes": 13335,
+      "sha256": "dec2f648b906c1c843e4aeffb30dfea8a68b6cb97a3e51586d1485eab6eae243"
     },
     {
       "path": "tests/test_periodic_returns.py",
@@ -1690,6 +1735,11 @@
       "path": "tools/demo_integrated_synthetic_review.py",
       "bytes": 5191,
       "sha256": "6df552431042f73a6840cf79b0e745921fe1a468220922f27e8e0fd0165befa9"
+    },
+    {
+      "path": "tools/demo_operating_cash_returns.py",
+      "bytes": 4108,
+      "sha256": "a474026134e8b372c505008f0b21a06f32ab50f2b27553709e393868cf88cc16"
     },
     {
       "path": "tools/demo_residential_noi_chain.py",

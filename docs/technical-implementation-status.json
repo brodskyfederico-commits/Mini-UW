@@ -1,7 +1,7 @@
 {
   "phase": "post-I01 synthetic technical implementation",
   "user_authorized": true,
-  "component": "T24",
+  "component": "T26",
   "status": "local_implementation_verified_pending_remote_receipt",
   "implemented": [
     "fresh raw-claim drafts from unchanged 55-input/10-criterion template",
@@ -60,9 +60,12 @@
     "source-bound residential/expense to conditional NOI assembly and verified two-bundle DSCR chain",
     "explicit gross project-equity contribution/distribution cash ledger with dated $10 normalization and declared capital stocks separate from receipts",
     "bounded all-root exact periodic IRR isolation with multiplicity and explicit conditional annualization",
-    "typed investor cash-return source/archive replay after reopening"
+    "typed investor cash-return source/archive replay after reopening",
+    "replayed accrued-NOI to explicit working-balance/noncash operating cash reconciliation",
+    "single-period free/restricted cash allocation reconciliation before exporting proposed equity movements",
+    "explicit empty-slot-only operating cash to investor-return assembly with immutable originals and complete compatible replay"
   ],
-  "unit_tests": 460,
+  "unit_tests": 502,
   "plan_packages_partially_addressed": [
     "IMP-01",
     "IMP-06",
@@ -78,10 +81,10 @@
   "deployment_enabled": false,
   "production_ready": false,
   "next_independent_work": [
-    "cost-budget and construction cash producers under explicit synthetic profiles",
-    "explicit refinance and exit distribution producers and project-cash reconciliation",
-    "commercial-income, lease-up and general calendars",
-    "investor return/risk presentation integrated with guarded final decision PDF"
+    "multi-period operating cash and working-balance continuity with explicit source inventories",
+    "refinance and sale cash settlement producers and debt obligation reconciliation",
+    "cost-budget and construction funding producers under explicit synthetic profiles",
+    "investor risk presentation and final PDF integration"
   ],
   "I01_snapshot_preserved": true,
   "components_implemented": [
@@ -108,7 +111,9 @@
     "T21",
     "T22",
     "T23",
-    "T24"
+    "T24",
+    "T25",
+    "T26"
   ],
   "tests_by_component": {
     "T01": 31,
@@ -134,7 +139,9 @@
     "T21": 16,
     "T22": 13,
     "T23": 25,
-    "T24": 16
+    "T24": 16,
+    "T25": 24,
+    "T26": 18
   },
   "not_yet_implemented": [
     "complete financial graph and its designed cycles",
@@ -191,5 +198,10 @@
   "bounded_periodic_IRR_implemented": true,
   "durable_investor_return_bundles_implemented": true,
   "investor_cash_projection_producers_connected": false,
-  "investor_return_story_complete": false
+  "investor_return_story_complete": false,
+  "synthetic_single_period_operating_cash_implemented": true,
+  "operating_cash_to_return_assembly_implemented": true,
+  "durable_operating_cash_bundles_implemented": true,
+  "durable_operating_return_bundles_implemented": true,
+  "investor_cash_producer_connection_scope": "one explicit operating period and proposed distribution only; full projection producers not connected"
 }

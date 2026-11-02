@@ -1,0 +1,125 @@
+{
+  "scope": "Incremental implementation evidence; preserves original 398-row design matrix, not a complete financial coverage certification",
+  "rows": [
+    {
+      "requirement_or_variable": "accrual_to_cash",
+      "source": {
+        "path": "docs/operating-settlement-bridges.md",
+        "line": 5,
+        "sha256": "defb05e619f39a1f413491bf5ff20b6cf8e0119d6de4941870988eaacab27bd4"
+      },
+      "current_definition": "Receipts = income - noncash revenue - delta AR + delta advance income; payments = expenses + tax - noncash expense - delta AP + delta prepaid",
+      "affected_modules": [
+        "M2",
+        "M7",
+        "T25"
+      ],
+      "validation_evidence": [
+        "OperatingCashTests.test_independent_accrual_cash_and_allocation_identities",
+        "OperatingCashTests.test_unchanged_noi_can_have_different_cash_and_distribution_not_noi"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Actual classifications, balances, completeness and full-period continuity unverified"
+    },
+    {
+      "requirement_or_variable": "free_and_restricted_cash",
+      "source": {
+        "path": "docs/operating-settlement-bridges.md",
+        "line": 21,
+        "sha256": "defb05e619f39a1f413491bf5ff20b6cf8e0119d6de4941870988eaacab27bd4"
+      },
+      "current_definition": "Preserve gross transfers; independently reconcile free/restricted and total cash. Positive free cash does not authorize distribution.",
+      "affected_modules": [
+        "M7",
+        "T25"
+      ],
+      "validation_evidence": [
+        "OperatingCashTests.test_offsetting_stock_claim_errors_not_hidden_by_total_conservation",
+        "OperatingCashTests.test_restricted_cash_cannot_fund_distribution_without_explicit_release"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Only an operating-period plan; closing/refi/sale profiles and actual distribution rights not implemented"
+    },
+    {
+      "requirement_or_variable": "gross_additional_capital_and_distribution",
+      "source": {
+        "path": "docs/investor-return-bridges.md",
+        "line": 5,
+        "sha256": "88e751a2d7070eb00852c8d634814758e5a413364d3898c68f7f9bf2e606bb4f"
+      },
+      "current_definition": "Keep contributions and distributions separate even at the same cash date; no netting to compute EM",
+      "affected_modules": [
+        "M7",
+        "T26",
+        "T23"
+      ],
+      "validation_evidence": [
+        "OperatingReturnsTests.test_positive_additional_equity_requires_explicit_empty_slot"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "No LP allocation, funding availability, bank proof or full investor story"
+    },
+    {
+      "requirement_or_variable": "cash_event_timing",
+      "source": {
+        "path": "docs/investor-return-bridges.md",
+        "line": 13,
+        "sha256": "88e751a2d7070eb00852c8d634814758e5a413364d3898c68f7f9bf2e606bb4f"
+      },
+      "current_definition": "Require exact point/date binding; zero points and other events remain intact",
+      "affected_modules": [
+        "M7",
+        "T26",
+        "T23",
+        "T24"
+      ],
+      "validation_evidence": [
+        "OperatingReturnsTests.test_context_mismatch_and_off_grid_date_do_not_shift_event"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "No XIRR, off-grid bucketing, intraday order or general calendar producer"
+    },
+    {
+      "requirement_or_variable": "source_immutability_and_missing_data",
+      "source": {
+        "path": "AGENTS.md",
+        "line": 7,
+        "sha256": "7cccf8b6e9fa3f45685e2e04afc43c7a3bd0ac5dd15f6b5b4eee4ae397e6f0df"
+      },
+      "current_definition": "Preserve source inputs; missing/blocked required evidence keeps PENDING; criteria remain external to cash assembly",
+      "affected_modules": [
+        "T25",
+        "T26",
+        "archive"
+      ],
+      "validation_evidence": [
+        "OperatingReturnsTests.test_populated_target_is_never_silently_replaced",
+        "OperatingReturnsTests.test_other_missing_investor_event_still_blocks_complete_return",
+        "OperatingReturnsTests.test_reopened_archive_replays_noi_cash_compilation_and_returns"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "No real-deal data, review authentication or decision/publication authority"
+    },
+    {
+      "requirement_or_variable": "central_investor_return_story",
+      "source": {
+        "path": "AGENTS.md",
+        "line": 17,
+        "sha256": "7cccf8b6e9fa3f45685e2e04afc43c7a3bd0ac5dd15f6b5b4eee4ae397e6f0df"
+      },
+      "current_definition": "Only reconciled projected operating payout fills an empty equity slot and flows into cash profit/EM/IRR; retained cash remains separate",
+      "affected_modules": [
+        "M7",
+        "T26",
+        "T23",
+        "T24"
+      ],
+      "validation_evidence": [
+        "OperatingReturnsTests.test_operating_distribution_composes_into_ten_dollar_return_without_overwrite",
+        "OperatingReturnsTests.test_computed_residential_noi_can_feed_cash_then_investor_returns"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Refi/sale and other-period distributions still supplied; risk/tax/waterfall/full final PDF incomplete"
+    }
+  ]
+}

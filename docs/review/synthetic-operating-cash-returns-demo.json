@@ -1,0 +1,158 @@
+{
+  "purpose": "synthetic_NOI_cash_allocation_investor_return_chain",
+  "context": {
+    "deal_id": "SYNTHETIC-NOI-demo",
+    "definition_set_revision": "SYNTHETIC-unadopted-M2-profile-v1",
+    "run_id": "SYNTHETIC-NOI-run",
+    "scenario_id": "SYNTHETIC-Base"
+  },
+  "cash_date": "2027-12-31",
+  "NOI": {
+    "denominator": "1",
+    "numerator": "1000"
+  },
+  "operating_receipts": {
+    "denominator": "1",
+    "numerator": "1390"
+  },
+  "operating_payments": {
+    "denominator": "1",
+    "numerator": "435"
+  },
+  "net_operating_cash": {
+    "denominator": "1",
+    "numerator": "955"
+  },
+  "cash_before_distribution": {
+    "denominator": "1",
+    "numerator": "510"
+  },
+  "planned_operating_distribution": {
+    "denominator": "1",
+    "numerator": "100"
+  },
+  "closing_free_cash": {
+    "denominator": "1",
+    "numerator": "410"
+  },
+  "closing_restricted_cash": {
+    "denominator": "1",
+    "numerator": "230"
+  },
+  "cash_conservation_residual": {
+    "denominator": "1",
+    "numerator": "0"
+  },
+  "normalized_investor_events": [
+    {
+      "amount": {
+        "denominator": "1",
+        "numerator": "10"
+      },
+      "category": "initial_capital",
+      "currency": "USD",
+      "date": "2026-12-31",
+      "event_id": "initial",
+      "kind": "contribution",
+      "source_ref": "SYNTHETIC-cash-ledger:initial"
+    },
+    {
+      "amount": {
+        "denominator": "1",
+        "numerator": "5"
+      },
+      "category": "net_refinance_distribution",
+      "currency": "USD",
+      "date": "2027-12-31",
+      "event_id": "refi",
+      "kind": "distribution",
+      "source_ref": "SYNTHETIC-cash-ledger:refi"
+    },
+    {
+      "amount": {
+        "denominator": "1",
+        "numerator": "1"
+      },
+      "category": "operating_distribution",
+      "currency": "USD",
+      "date": "2027-12-31",
+      "event_id": "op1",
+      "kind": "distribution",
+      "source_ref": "miniuw:operating-cash:8d3c2e20133f825623870d9aa895f07cee1e76a4c9b4de26629f62a1ab078eac#/exportable_operating_distribution"
+    },
+    {
+      "amount": {
+        "denominator": "1",
+        "numerator": "1"
+      },
+      "category": "operating_distribution",
+      "currency": "USD",
+      "date": "2028-12-31",
+      "event_id": "op2",
+      "kind": "distribution",
+      "source_ref": "SYNTHETIC-cash-ledger:op2"
+    },
+    {
+      "amount": {
+        "denominator": "1",
+        "numerator": "9"
+      },
+      "category": "net_sale_distribution",
+      "currency": "USD",
+      "date": "2028-12-31",
+      "event_id": "sale",
+      "kind": "distribution",
+      "source_ref": "SYNTHETIC-cash-ledger:sale"
+    }
+  ],
+  "normalized_cash_profit": {
+    "denominator": "1",
+    "numerator": "6"
+  },
+  "equity_multiple": {
+    "denominator": "5",
+    "numerator": "8"
+  },
+  "annual_irr_roots": [
+    {
+      "annual_rate_interval": {
+        "lower": {
+          "denominator": "780173",
+          "numerator": "268403"
+        },
+        "lower_closed": true,
+        "upper": {
+          "denominator": "1560345",
+          "numerator": "536807"
+        },
+        "upper_closed": false
+      },
+      "exact_annual_rate": null
+    }
+  ],
+  "binding": {
+    "profile_id": "SYNTHETIC-EMPTY-OPERATING-EQUITY-SLOTS-v1",
+    "investor_source_sha256": "3a4471d20b0bee46400faf28bb75401dcdfca081af7b84a624345ae596b4a94a",
+    "cash_spec_sha256": "0a3526d0f495172d289e28c4208cf11678c2c7e1ef25a78f9de6c4dc18c889e7",
+    "cash_run_sha256": "8d3c2e20133f825623870d9aa895f07cee1e76a4c9b4de26629f62a1ab078eac",
+    "distribution_event_id": "op1",
+    "contribution_event_id": null
+  },
+  "cash_source_sha256": "0a3526d0f495172d289e28c4208cf11678c2c7e1ef25a78f9de6c4dc18c889e7",
+  "cash_run_sha256": "8d3c2e20133f825623870d9aa895f07cee1e76a4c9b4de26629f62a1ab078eac",
+  "compiled_investor_source_sha256": "4be2dc04d2c25a2c10bf3fe0635e17ee6cd561e2b3efb1f244f4ee081471bd48",
+  "investor_return_run_sha256": "1a1f900aedd72a5050caa09e6dee6181cee35baed84fa1f00af6d067490ab178",
+  "cash_bundle_sha256": "441d3e13a57dc15e90ea9aa7990467140b8c4f1c5fda63564a813932de76d710",
+  "assembly_bundle_sha256": "ee1593eb683ab8d76100c87445db93e1de89b4c9ff1a5f895fd7af07e97349b9",
+  "both_bundles_replayed_after_reopen": true,
+  "NOI_cash_event_return_chain_replayed": true,
+  "original_source_preserved": true,
+  "only_first_operating_distribution_connected_to_cash_producer": true,
+  "refinance_sale_and_second_operating_distribution_still_supplied": true,
+  "runtime_database_retained": false,
+  "multi_period_cash_continuity_verified": false,
+  "debt_paid_or_distribution_authorized": false,
+  "financially_validated": false,
+  "decision": "PENDING",
+  "production_authorized": false
+}

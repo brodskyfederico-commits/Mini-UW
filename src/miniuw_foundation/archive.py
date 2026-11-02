@@ -51,6 +51,12 @@ from .investor_returns import ENGINE_SHA256 as INVESTOR_ENGINE_SHA256
 from .investor_returns import definition_sources as investor_definition_sources
 from .periodic_returns import ENGINE_SHA256 as ROOT_ENGINE_SHA256
 
+from .operating_cash import OperatingCashRun,parse_operating_cash,reconcile_operating_cash
+from .operating_cash import ENGINE_SHA256 as CASH_ENGINE_SHA256
+from .operating_cash import definition_sources as cash_definition_sources
+from .operating_returns import OperatingReturnRun,OperatingReturnBinding,assemble_operating_returns
+from .operating_returns import ENGINE_SHA256 as OPERATING_RETURN_ENGINE_SHA256
+
 
 class MissingEvidence(KeyError):
     pass
@@ -136,6 +142,32 @@ class InvestorReturnsBundle:
     def payload(self):return json.loads(self.payload_json)
     @property
     def run(self):return InvestorReturnsRun(**self.payload['run'])
+
+
+@dataclass(frozen=True)
+class OperatingCashBundle:
+    payload_json:str
+    sha256:str
+    @property
+    def payload(self):return json.loads(self.payload_json)
+    @property
+    def run(self):return OperatingCashRun(**self.payload['run'])
+
+
+@dataclass(frozen=True)
+class OperatingReturnBundle:
+    payload_json:str
+    sha256:str
+    @property
+    def payload(self):return json.loads(self.payload_json)
+    @property
+    def run(self):return OperatingReturnRun(**self.payload['run'])
+
+
+def _cash_versions():return [CASH_ENGINE_SHA256,OPERATING_NOI_ENGINE_SHA256,DEBT_ENGINE_SHA256,INVESTOR_ENGINE_SHA256]
+def _cash_definitions():return {'cash':cash_definition_sources(),'noi':operating_noi_definition_sources()}
+def _operating_return_versions():return [OPERATING_RETURN_ENGINE_SHA256]+_cash_versions()+[ROOT_ENGINE_SHA256]
+def _operating_return_definitions():return dict(_cash_definitions(),investor=investor_definition_sources())
 
 
 def _sha(raw):
@@ -664,6 +696,62 @@ COMMIT;''')
                 raise CorruptArchive('invalid screening evidence') from error
         return bundle
 
+
+    def get_operating_cash_spec(self, sha):
+        raw=self._read('source',sha);parse_operating_cash(raw);return raw
+
+    def save_operating_cash(self, noi_raw, noi_run, spec_raw, run):
+        if type(run)is not OperatingCashRun or reconcile_operating_cash(noi_raw,noi_run,spec_raw)!=run:raise ValidationError('operating cash does not reproduce')
+        with self._transaction():
+            noi=self._put('source',noi_raw);spec=self._put('source',spec_raw)
+            p={'schema':'miniuw.synthetic-operating-cash-bundle.v1','purpose':'synthetic_development_only',
+                'noi_source_sha256':noi,'spec_source_sha256':spec,'noi_run':asdict(noi_run),'run':asdict(run),
+                'versions':_cash_versions(),'definitions':_cash_definitions()}
+            return self._put('bundle',canonical(p).encode())
+
+    def load_operating_cash(self, sha):
+        with self._transaction():
+            raw=self.read_bundle_bytes(sha)
+            try:
+                p=json.loads(raw)
+                if set(p)!={'schema','purpose','noi_source_sha256','spec_source_sha256','noi_run','run','versions','definitions'}:raise CorruptArchive('cash bundle fields changed')
+                if p['schema']!='miniuw.synthetic-operating-cash-bundle.v1':raise UnsupportedArchive('unsupported cash schema')
+                if p['purpose']!='synthetic_development_only':raise CorruptArchive('cash purpose changed')
+                if p['versions']!=_cash_versions() or p['definitions']!=_cash_definitions():raise UnsupportedArchive('cash replay requires compatible code/documents')
+                bundle=OperatingCashBundle(raw.decode(),sha)
+                if reconcile_operating_cash(self.get_operating_noi_source(p['noi_source_sha256']),OperatingNoiRun(**p['noi_run']),self.get_operating_cash_spec(p['spec_source_sha256']))!=bundle.run:raise CorruptArchive('cash evidence does not reproduce')
+            except MissingEvidence:raise
+            except(KeyError,TypeError,UnicodeError,json.JSONDecodeError,ValidationError)as error:raise CorruptArchive('invalid cash evidence')from error
+        return bundle
+
+    def save_operating_returns(self, noi_raw, noi_run, cash_spec_raw, cash_run, investor_raw, binding, run):
+        if type(run)is not OperatingReturnRun or assemble_operating_returns(noi_raw,noi_run,cash_spec_raw,cash_run,investor_raw,binding)!=run:raise ValidationError('operating return assembly does not reproduce')
+        with self._transaction():
+            noi=self._put('source',noi_raw);spec=self._put('source',cash_spec_raw);investor=self._put('source',investor_raw)
+            compiled=None if run.compiled_raw is None else self._put('source',run.compiled_raw)
+            p={'schema':'miniuw.synthetic-operating-return-bundle.v1','purpose':'synthetic_development_only',
+                'noi_source_sha256':noi,'spec_source_sha256':spec,'investor_source_sha256':investor,'compiled_source_sha256':compiled,
+                'noi_run':asdict(noi_run),'cash_run':asdict(cash_run),'binding':asdict(binding),'run':asdict(run),
+                'versions':_operating_return_versions(),'definitions':_operating_return_definitions()}
+            return self._put('bundle',canonical(p).encode())
+
+    def load_operating_returns(self, sha):
+        with self._transaction():
+            raw=self.read_bundle_bytes(sha)
+            try:
+                p=json.loads(raw)
+                if set(p)!={'schema','purpose','noi_source_sha256','spec_source_sha256','investor_source_sha256','compiled_source_sha256','noi_run','cash_run','binding','run','versions','definitions'}:raise CorruptArchive('operating return fields changed')
+                if p['schema']!='miniuw.synthetic-operating-return-bundle.v1':raise UnsupportedArchive('unsupported operating return schema')
+                if p['purpose']!='synthetic_development_only':raise CorruptArchive('operating return purpose changed')
+                if p['versions']!=_operating_return_versions() or p['definitions']!=_operating_return_definitions():raise UnsupportedArchive('operating return replay requires compatible code/documents')
+                bundle=OperatingReturnBundle(raw.decode(),sha)
+                noi=self.get_operating_noi_source(p['noi_source_sha256']);spec=self.get_operating_cash_spec(p['spec_source_sha256']);investor=self.get_investor_returns_source(p['investor_source_sha256'])
+                if assemble_operating_returns(noi,OperatingNoiRun(**p['noi_run']),spec,OperatingCashRun(**p['cash_run']),investor,OperatingReturnBinding(**p['binding']))!=bundle.run:raise CorruptArchive('operating return does not reproduce')
+                compiled=None if p['compiled_source_sha256']is None else self._read('source',p['compiled_source_sha256'])
+                if compiled!=bundle.run.compiled_raw:raise CorruptArchive('compiled investor evidence changed')
+            except MissingEvidence:raise
+            except(KeyError,TypeError,UnicodeError,json.JSONDecodeError,ValidationError)as error:raise CorruptArchive('invalid operating return evidence')from error
+        return bundle
 
     def get_investor_returns_source(self, sha):
         raw=self._read('source',sha);parse_investor_returns(raw);return raw
