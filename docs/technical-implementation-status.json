@@ -1,7 +1,7 @@
 {
   "phase": "post-I01 synthetic technical implementation",
   "user_authorized": true,
-  "component": "T07",
+  "component": "T08",
   "status": "local_implementation_verified_pending_remote_receipt",
   "implemented": [
     "fresh raw-claim drafts from unchanged 55-input/10-criterion template",
@@ -26,9 +26,13 @@
     "native Inputs cell provenance and mixed-format archived execution replay",
     "explicit synthetic numeric decoding into exact rational values",
     "literal metadata/profile checks and blank/conflict blocking without financial adoption",
-    "durable numeric evidence bundles with source verification and same-version replay"
+    "durable numeric evidence bundles with source verification and same-version replay",
+    "typed exact synthetic arithmetic over replay-verified numeric inputs",
+    "unit/currency/period compatibility and undefined-operation blocking",
+    "calculation dependency lineage and selective/global freshness observation",
+    "durable calculation bundles with full numeric/source/graph replay"
   ],
-  "unit_tests": 162,
+  "unit_tests": 187,
   "plan_packages_partially_addressed": [
     "IMP-01",
     "IMP-06"
@@ -41,8 +45,8 @@
   "deployment_enabled": false,
   "production_ready": false,
   "next_independent_work": [
-    "integration of defined scoped calculation profiles with typed synthetic numeric values",
-    "explicit unit/calendar contracts without adopting unresolved policies",
+    "dispatcher of explicitly defined scoped calculation profiles with complete input/unit contracts",
+    "explicit calendar profiles for dated synthetic cash",
     "atomic evidence/currentness recording without publishing real decisions"
   ],
   "I01_snapshot_preserved": true,
@@ -53,7 +57,8 @@
     "T04",
     "T05",
     "T06",
-    "T07"
+    "T07",
+    "T08"
   ],
   "tests_by_component": {
     "T01": 31,
@@ -62,7 +67,8 @@
     "T04": 22,
     "T05": 22,
     "T06": 18,
-    "T07": 26
+    "T07": 26,
+    "T08": 25
   },
   "not_yet_implemented": [
     "complete financial graph and its designed cycles",
@@ -80,5 +86,7 @@
   "native_input_sheet_layout_adapter_implemented": true,
   "native_input_sheet_scope": "marked synthetic copy of supplied blank layout only",
   "synthetic_numeric_decoder_implemented": true,
-  "normalization_results_eligible_for_financial_decisions": false
+  "normalization_results_eligible_for_financial_decisions": false,
+  "synthetic_typed_arithmetic_implemented": true,
+  "arithmetic_scaffold_for_IMP02": true
 }

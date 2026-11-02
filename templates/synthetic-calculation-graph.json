@@ -1,0 +1,99 @@
+{
+  "graph_id": "SYNTHETIC-arithmetic-example",
+  "definition_revision": "synthetic-arithmetic-v1",
+  "nodes": [
+    {
+      "node_id": "amount",
+      "definition_revision": "synthetic-arithmetic-v1",
+      "operation": "identity",
+      "operands": [
+        {
+          "kind": "input",
+          "ref": "INPUT_C8"
+        }
+      ]
+    },
+    {
+      "node_id": "missing_currency",
+      "definition_revision": "synthetic-arithmetic-v1",
+      "operation": "identity",
+      "operands": [
+        {
+          "kind": "input",
+          "ref": "INPUT_C9"
+        }
+      ]
+    },
+    {
+      "node_id": "blocked_child",
+      "definition_revision": "synthetic-arithmetic-v1",
+      "operation": "identity",
+      "operands": [
+        {
+          "kind": "node",
+          "ref": "missing_currency"
+        }
+      ]
+    },
+    {
+      "node_id": "incompatible_factor",
+      "definition_revision": "synthetic-arithmetic-v1",
+      "operation": "scale",
+      "operands": [
+        {
+          "kind": "node",
+          "ref": "amount"
+        },
+        {
+          "kind": "input",
+          "ref": "INPUT_C52"
+        }
+      ]
+    },
+    {
+      "node_id": "scaled",
+      "definition_revision": "synthetic-arithmetic-v1",
+      "operation": "scale",
+      "operands": [
+        {
+          "kind": "node",
+          "ref": "amount"
+        },
+        {
+          "kind": "input",
+          "ref": "INPUT_C14"
+        }
+      ]
+    },
+    {
+      "node_id": "difference",
+      "definition_revision": "synthetic-arithmetic-v1",
+      "operation": "difference",
+      "operands": [
+        {
+          "kind": "node",
+          "ref": "amount"
+        },
+        {
+          "kind": "node",
+          "ref": "scaled"
+        }
+      ]
+    },
+    {
+      "node_id": "ratio",
+      "definition_revision": "synthetic-arithmetic-v1",
+      "operation": "ratio",
+      "operands": [
+        {
+          "kind": "node",
+          "ref": "difference"
+        },
+        {
+          "kind": "node",
+          "ref": "amount"
+        }
+      ]
+    }
+  ]
+}

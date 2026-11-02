@@ -15,6 +15,8 @@ from .execution import (ENGINE_SHA256, Execution, Graph, Node, SlotRef,
 from .sources import parse_source_claims, import_synthetic_source
 from .normalization import NumericProfile, NormalizationRun, normalize_synthetic
 from .normalization import ENGINE_SHA256 as NORMALIZER_SHA256
+from .calculations import CalculationRun, calculate_synthetic, graph_from_record
+from .calculations import ENGINE_SHA256 as CALCULATOR_SHA256
 
 
 class MissingEvidence(KeyError):
@@ -85,6 +87,36 @@ class NormalizationBundle:
     @property
     def profiles(self):
         return tuple(NumericProfile(**p) for p in self.payload['profiles'])
+
+
+@dataclass(frozen=True)
+class CalculationBundle:
+    payload_json: str
+    sha256: str
+
+    @property
+    def payload(self):
+        return json.loads(self.payload_json)
+
+    @property
+    def snapshot(self):
+        return Snapshot(**self.payload['snapshot'])
+
+    @property
+    def profiles(self):
+        return tuple(NumericProfile(**p) for p in self.payload['profiles'])
+
+    @property
+    def normalization(self):
+        return NormalizationRun(**self.payload['normalization'])
+
+    @property
+    def graph(self):
+        return graph_from_record(self.payload['graph'])
+
+    @property
+    def run(self):
+        return CalculationRun(**self.payload['run'])
 
 
 class EvidenceArchive:
@@ -258,6 +290,44 @@ COMMIT;''')
                 raise
             except (KeyError, TypeError, UnicodeError, json.JSONDecodeError, ValidationError) as error:
                 raise CorruptArchive('invalid normalization evidence structure/content') from error
+        return bundle
+
+
+    def save_calculation(self, snapshot, profiles, normalization, graph, run):
+        if type(run) is not CalculationRun or calculate_synthetic(snapshot,profiles,normalization,graph) != run:
+            raise ValidationError('calculation does not reproduce from exact numeric evidence/graph')
+        with self._transaction():
+            hashes = self._verify_sources(snapshot)
+            payload = {'schema':'miniuw.synthetic-calculation-bundle.v1',
+                'purpose':'synthetic_development_only','snapshot':asdict(snapshot),
+                'profiles':[asdict(p) for p in sorted(profiles,key=lambda p:p.slot_id)],
+                'normalization':asdict(normalization),'graph':graph.record(),'run':asdict(run),
+                'calculator_sha256':CALCULATOR_SHA256,'normalizer_sha256':NORMALIZER_SHA256,
+                'source_hashes':hashes}
+            return self._put('bundle',canonical(payload).encode('utf-8'))
+
+    def load_calculation(self, sha):
+        with self._transaction():
+            raw = self.read_bundle_bytes(sha)
+            try:
+                payload = json.loads(raw)
+                if set(payload) != {'schema','purpose','snapshot','profiles','normalization','graph','run','calculator_sha256','normalizer_sha256','source_hashes'}:
+                    raise CorruptArchive('calculation bundle fields changed')
+                if payload['schema'] != 'miniuw.synthetic-calculation-bundle.v1':
+                    raise UnsupportedArchive('unsupported calculation evidence schema')
+                if payload['purpose'] != 'synthetic_development_only':
+                    raise CorruptArchive('calculation purpose changed')
+                if payload['calculator_sha256'] != CALCULATOR_SHA256 or payload['normalizer_sha256'] != NORMALIZER_SHA256:
+                    raise UnsupportedArchive('replay requires compatible calculator and decoder code')
+                bundle = CalculationBundle(raw.decode('utf-8'),sha)
+                if self._verify_sources(bundle.snapshot) != payload['source_hashes']:
+                    raise CorruptArchive('calculation source inventory changed')
+                if calculate_synthetic(bundle.snapshot,bundle.profiles,bundle.normalization,bundle.graph) != bundle.run:
+                    raise CorruptArchive('calculation result does not reproduce from archived evidence')
+            except MissingEvidence:
+                raise
+            except (KeyError, TypeError, UnicodeError, json.JSONDecodeError, ValidationError) as error:
+                raise CorruptArchive('invalid calculation evidence structure/content') from error
         return bundle
 
 
