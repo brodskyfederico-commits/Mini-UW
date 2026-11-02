@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D03 review and metric-intake design extensions and T01–T13 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D03 review and metric-intake design extensions and T01–T14 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 9185,
-      "sha256": "7343a06b84fa38491038d5070d655ea47976c9d49b90b83217906e09bcd3ec59"
+      "bytes": 9748,
+      "sha256": "42a4da04e757633edde62d558d7cba57a2e38a28f2eb95f378e3dba0d6d76928"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 45962,
-      "sha256": "31a56be4195ac5c013b63069076723ba4b86c9b718c8aa0fd1f14d5c52e6520e"
+      "bytes": 47608,
+      "sha256": "371cea0713cce66996744573af3af5786b7625e3707a253a94d3707866eb6ebf"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -105,6 +105,11 @@
       "path": "docs/design-evolution-status.json",
       "bytes": 1200,
       "sha256": "41a0dc9c4fd30f1e5a48e8c63e8a9905d14972517054f8ff362caad826fa8180"
+    },
+    {
+      "path": "docs/documented-threshold-rehearsal-validation.json",
+      "bytes": 4530,
+      "sha256": "701bdf7cd2c08095335a84ea3215954e3bc5bb94f2eb33bcaa2dd76e9bc2c053"
     },
     {
       "path": "docs/evidence-locator-contract.md",
@@ -467,9 +472,14 @@
       "sha256": "4afc529875cd1666c87bb172184480e162864803fd7810ab06f92ad7ff59361e"
     },
     {
+      "path": "docs/technical-implementation-T14.md",
+      "bytes": 5149,
+      "sha256": "40e573b4c2af3528bd036ee4a1683cfa96ac9879d54cbcd8eba83cc36e977e48"
+    },
+    {
       "path": "docs/technical-implementation-status.json",
-      "bytes": 6258,
-      "sha256": "26bf0c9d9ef18c04a133537d37aa3124c03ab8bf4de11a143d0c415cab42da66"
+      "bytes": 6732,
+      "sha256": "fd2d2942fe9849556acfd8d894b6b6544367a313328430fd3ee4c501f178a754"
     },
     {
       "path": "infra/README.md",
@@ -1227,6 +1237,11 @@
       "sha256": "b054aaef2c69e9b42eb57e1a8bc330d9c00008c22abd88e4971bb39f040141bf"
     },
     {
+      "path": "src/miniuw_foundation/threshold_rehearsal.py",
+      "bytes": 9569,
+      "sha256": "a3de520e268867e0247583d0047209ff89b7e0f8cb347a9cccbeba646b81425e"
+    },
+    {
       "path": "src/miniuw_foundation/workbooks.py",
       "bytes": 12543,
       "sha256": "cd301d7b4758b5c80628f0e6515e01da81671ecccf0d36c9c7c4ec670f470529"
@@ -1250,6 +1265,16 @@
       "path": "templates/synthetic-debt-dscr-case.json",
       "bytes": 1929,
       "sha256": "78a1443d4c718a6f2b01b2dda962e4d0ece2829d2bac6c1d7a100125beff4429"
+    },
+    {
+      "path": "templates/synthetic-documented-threshold-base.json",
+      "bytes": 1858,
+      "sha256": "f7ee0c4b8451b336028d6491c0e142dbd2f3113b31e1015867451ab5b8d097c7"
+    },
+    {
+      "path": "templates/synthetic-documented-threshold-full.json",
+      "bytes": 3514,
+      "sha256": "8db1c523dd9410906fc119c9df2fd243da5d4f8ef7f128902a276bd37b3f5d9b"
     },
     {
       "path": "templates/synthetic-dscr-binding.json",
@@ -1387,6 +1412,11 @@
       "sha256": "272634c6f8e9cbe2e32b98684b2ca101cdc0e60a53c2a6983fb43ef3eb18a3ae"
     },
     {
+      "path": "tests/test_threshold_rehearsal.py",
+      "bytes": 8845,
+      "sha256": "30884ff04769ba5c8e5df1de4d7161a966e2e6e181ce46672b80f9a8d4fda35e"
+    },
+    {
       "path": "tests/test_workbooks.py",
       "bytes": 11689,
       "sha256": "58efdeb4e8f3535f8a55a1a09f802dc873c0e6f06011ffa5b5abb59d04a3a85c"
@@ -1405,6 +1435,11 @@
       "path": "tools/check_structure_faults.py",
       "bytes": 2201,
       "sha256": "ef657ee6d978353dbbdaadd306ec4134835b911665e05a6935eae4e956b85775"
+    },
+    {
+      "path": "tools/demo_documented_threshold_rehearsal.py",
+      "bytes": 1478,
+      "sha256": "903ced684c4276ca4fe741bc92feb49ea6616fae8525d60cdfdc84248b14590e"
     },
     {
       "path": "tools/demo_synthetic_archive.py",

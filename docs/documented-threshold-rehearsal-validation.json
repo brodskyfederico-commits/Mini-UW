@@ -1,0 +1,86 @@
+{
+  "component": "T14",
+  "scope": "documented threshold comparator experiment; source criteria not adopted",
+  "source_sha256": "38b78d40013b9338511d2917de6c4347be1ec812712b4b4b18e7308bb6c28ab9",
+  "experiment_engine_sha256": "a3de520e268867e0247583d0047209ff89b7e0f8cb347a9cccbeba646b81425e",
+  "technical_tests": 290,
+  "new_technical_tests": 17,
+  "financial_independent_validation": false,
+  "cases": {
+    "base_only_pass": {
+      "simulation_result": "PASS",
+      "scope": "Base-only comparator experiment",
+      "operational_decision": "PENDING",
+      "simulation_blockers": [],
+      "rehearsal_source_sha256": "cb4685c3efe01ae05e90722a6ef054456a2aeb8fea4f4285c79ed748e9d6032e",
+      "screening_source_sha256": "17c508b82a5b800f4f55f036dad38eb46d7dec4dfe08d639311151003e3cd9aa",
+      "screening_run_sha256": "930f47aa72ace4ca762cc690a6a3958174e7d5c5e131ffd9d3d4a3215d6019e6"
+    },
+    "base_only_fail": {
+      "simulation_result": "FAIL",
+      "scope": "Base-only comparator experiment",
+      "operational_decision": "PENDING",
+      "simulation_blockers": [],
+      "rehearsal_source_sha256": "d1f5f9bb08bb3c9aa1faa53a55e50974355ea6492c75cc7a8c26d5ea38b3d179",
+      "screening_source_sha256": "851fb94c5d784dcf5e360946ff5fea8206368fde26dbe030073457e23f2b816d",
+      "screening_run_sha256": "6ac0e89ba9485e2021f666cf963ce2f950e20e3822e452afbf0fa572380889bf"
+    },
+    "base_only_band": {
+      "simulation_result": "PENDING",
+      "scope": "Base-only comparator experiment",
+      "operational_decision": "PENDING",
+      "simulation_blockers": [
+        "intermediate_band_pending_professional_review"
+      ],
+      "rehearsal_source_sha256": "a22690191be0f12d0029ce1755cb30993839b3fd03ad5db569cd51039f9a482d",
+      "screening_source_sha256": "a2bcba0369fe848b63a1b84a0662615e6c7074266a72d44e53e3661db0211b71",
+      "screening_run_sha256": "b51622459feb6b8336abe0ea6b049d80b0277c74f06920c010ac471bf91b02b0"
+    },
+    "base_fail_boundary": {
+      "simulation_result": "PENDING",
+      "scope": "Base-only comparator experiment",
+      "operational_decision": "PENDING",
+      "simulation_blockers": [
+        "intermediate_band_pending_professional_review"
+      ],
+      "rehearsal_source_sha256": "95349fa1a620c4861c57d36113e628ba94f2ca35362d98e5f067ae77b39963aa",
+      "screening_source_sha256": "129bd81b3986cd16493628c1eeddf7a906e93561f54b2354868d020c3ba194d3",
+      "screening_run_sha256": "af5a0c91a3e2865ea7e51a66f1e3a465473cbf0e52ec2f6454310adf6fc5362b"
+    },
+    "base_fail_plus_missing": {
+      "simulation_result": "PENDING",
+      "scope": "Base-only comparator experiment",
+      "operational_decision": "PENDING",
+      "simulation_blockers": [
+        "IRR:Base:metric_record_missing"
+      ],
+      "rehearsal_source_sha256": "fc0e90b3a4c27940f48486a0c94a1c064840992524128ba8c87ea17c78eebe69",
+      "screening_source_sha256": "02061ae080dfc4ca0ff2264062986f8dcfc86ade082a08d4aff81949884bec4a",
+      "screening_run_sha256": "638c9ad9569e785f7eddb34190b0255cc24249cb5579c444f1fe0169f69b876d"
+    },
+    "full_source_gaps": {
+      "simulation_result": "PENDING",
+      "scope": "Base/Downside compatibility experiment",
+      "operational_decision": "PENDING",
+      "simulation_blockers": [
+        "IRR:Downside:fail_condition_rule_missing_or_unsupported",
+        "YoC:Downside:fail_condition_rule_missing_or_unsupported",
+        "asking_relative_to_supported_price:Downside:fail_condition_rule_missing_or_unsupported",
+        "asking_relative_to_supported_price:Downside:pass_condition_rule_missing_or_unsupported",
+        "breakeven_occupancy:Downside:fail_condition_rule_missing_or_unsupported",
+        "equity_TDC:Downside:fail_condition_rule_missing_or_unsupported",
+        "equity_cash_in:Downside:fail_condition_rule_missing_or_unsupported",
+        "equity_multiple:Downside:fail_condition_rule_missing_or_unsupported",
+        "equity_recovered:Downside:fail_condition_rule_missing_or_unsupported",
+        "post_refi_CoC:Downside:fail_condition_rule_missing_or_unsupported",
+        "spread:Downside:fail_condition_rule_missing_or_unsupported"
+      ],
+      "rehearsal_source_sha256": "bfbda01a2d888683ed8ff3412d610a468f745ac0f27f5f8f0bfb4fc91c300258",
+      "screening_source_sha256": "ef8a77efe2df78430d54942a33c564d4bed68e0c8a31a645e6b145ccb46e8bb3",
+      "screening_run_sha256": "02591f21fd634d7b9526ab2bfaf42b9e283ee364fa4daec35a4ae34b1c95c366"
+    }
+  },
+  "full_miniuw_completed": false,
+  "thresholds_adopted": false,
+  "production_authorized": false
+}

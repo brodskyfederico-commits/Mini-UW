@@ -1,0 +1,172 @@
+{
+  "schema": "miniuw.synthetic-documented-threshold-rehearsal.v1",
+  "deal_id": "SYNTHETIC-documented-thresholds",
+  "case_id": "SYNTHETIC-Base-Downside-source-gaps",
+  "run_id": "SYNTHETIC-rehearsal-source-gaps",
+  "required_scenarios": [
+    "Base",
+    "Downside"
+  ],
+  "metric_values": [
+    {
+      "metric_id": "YoC",
+      "scenario_id": "Base",
+      "value": {
+        "numerator": "7",
+        "denominator": "100"
+      }
+    },
+    {
+      "metric_id": "spread",
+      "scenario_id": "Base",
+      "value": {
+        "numerator": "150",
+        "denominator": "10000"
+      }
+    },
+    {
+      "metric_id": "equity_recovered",
+      "scenario_id": "Base",
+      "value": {
+        "numerator": "70",
+        "denominator": "100"
+      }
+    },
+    {
+      "metric_id": "equity_cash_in",
+      "scenario_id": "Base",
+      "value": {
+        "numerator": "1",
+        "denominator": "100"
+      }
+    },
+    {
+      "metric_id": "breakeven_occupancy",
+      "scenario_id": "Base",
+      "value": {
+        "numerator": "80",
+        "denominator": "100"
+      }
+    },
+    {
+      "metric_id": "post_refi_CoC",
+      "scenario_id": "Base",
+      "value": {
+        "numerator": "7",
+        "denominator": "100"
+      }
+    },
+    {
+      "metric_id": "asking_relative_to_supported_price",
+      "scenario_id": "Base",
+      "value": {
+        "numerator": "0",
+        "denominator": "1"
+      }
+    },
+    {
+      "metric_id": "equity_TDC",
+      "scenario_id": "Base",
+      "value": {
+        "numerator": "30",
+        "denominator": "100"
+      }
+    },
+    {
+      "metric_id": "IRR",
+      "scenario_id": "Base",
+      "value": {
+        "numerator": "18",
+        "denominator": "100"
+      }
+    },
+    {
+      "metric_id": "equity_multiple",
+      "scenario_id": "Base",
+      "value": {
+        "numerator": "2",
+        "denominator": "1"
+      }
+    },
+    {
+      "metric_id": "YoC",
+      "scenario_id": "Downside",
+      "value": {
+        "numerator": "6",
+        "denominator": "100"
+      }
+    },
+    {
+      "metric_id": "spread",
+      "scenario_id": "Downside",
+      "value": {
+        "numerator": "75",
+        "denominator": "10000"
+      }
+    },
+    {
+      "metric_id": "equity_recovered",
+      "scenario_id": "Downside",
+      "value": {
+        "numerator": "50",
+        "denominator": "100"
+      }
+    },
+    {
+      "metric_id": "equity_cash_in",
+      "scenario_id": "Downside",
+      "value": {
+        "numerator": "5",
+        "denominator": "100"
+      }
+    },
+    {
+      "metric_id": "breakeven_occupancy",
+      "scenario_id": "Downside",
+      "value": {
+        "numerator": "85",
+        "denominator": "100"
+      }
+    },
+    {
+      "metric_id": "post_refi_CoC",
+      "scenario_id": "Downside",
+      "value": {
+        "numerator": "5",
+        "denominator": "100"
+      }
+    },
+    {
+      "metric_id": "asking_relative_to_supported_price",
+      "scenario_id": "Downside",
+      "value": {
+        "numerator": "0",
+        "denominator": "1"
+      }
+    },
+    {
+      "metric_id": "equity_TDC",
+      "scenario_id": "Downside",
+      "value": {
+        "numerator": "35",
+        "denominator": "100"
+      }
+    },
+    {
+      "metric_id": "IRR",
+      "scenario_id": "Downside",
+      "value": {
+        "numerator": "13",
+        "denominator": "100"
+      }
+    },
+    {
+      "metric_id": "equity_multiple",
+      "scenario_id": "Downside",
+      "value": {
+        "numerator": "16",
+        "denominator": "10"
+      }
+    }
+  ]
+}
