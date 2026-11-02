@@ -1,10 +1,10 @@
 {
-  "scope": "I01 independent structural design and supplied originals/scoped references only. Financial/product gates remain open; not complete runtime/system recovery.",
+  "scope": "I01 preserved design plus T01 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 891,
-      "sha256": "fc6ec767a41f5ad441234b2bf1d9e942abe2ec00dd13076bef6c0b7490c370aa"
+      "bytes": 1009,
+      "sha256": "a9564e81212b647f3656a891f12fb44c6fe18171c679b8514c9b0ecce47a2236"
     },
     {
       "path": ".gitignore",
@@ -13,18 +13,18 @@
     },
     {
       "path": "AGENTS.md",
-      "bytes": 2391,
-      "sha256": "ad2f173ee84b03634c14e0dbfe1b1724066e359ca85d590b356c3af2d3984f0f"
+      "bytes": 2576,
+      "sha256": "ff4a5f6af0f4f7b7c2485e1b42790e0970be6bcfbef9fe17d835c0beb129d1cd"
     },
     {
       "path": "README.md",
-      "bytes": 2756,
-      "sha256": "e73804886930702cd6cad1b6ce70bbd170ba3a05ea3d06c036cd6f322ad019cf"
+      "bytes": 3376,
+      "sha256": "fb56d57cbe309d2d62638b7c4b4209de4f5fc2536448225bfcd0e6c7b1f430e0"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 21884,
-      "sha256": "d72994598b6b94177f47e08b8a23dd2a06c3813c6033809df1f0c114977551fb"
+      "bytes": 24072,
+      "sha256": "83695add4c6456931e3bfe742601559564ebc09bd4511176190bade3dc69989d"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -45,6 +45,11 @@
       "path": "docs/affine-price-support.md",
       "bytes": 5006,
       "sha256": "3c5bfe54840743e702728b3045e29a03dedbb6af5206efd3a4c7b7c9f0ef8542"
+    },
+    {
+      "path": "docs/backup-restoration-I01.json",
+      "bytes": 578,
+      "sha256": "eb97d183d07c298187ee266f6762ab3ad4a4693f6e10290ab5a1cc3a63c70a4c"
     },
     {
       "path": "docs/budget-payment-bridge.md",
@@ -355,6 +360,16 @@
       "path": "docs/structural-integration-register.json",
       "bytes": 104780,
       "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc"
+    },
+    {
+      "path": "docs/technical-implementation-T01.md",
+      "bytes": 5308,
+      "sha256": "c740cc5cb50583b48bdb6368132ad90b70aea5336e3c9bca06068ffa588920d7"
+    },
+    {
+      "path": "docs/technical-implementation-status.json",
+      "bytes": 1167,
+      "sha256": "41d156505edeeeac8f542dce61a7af2bd634b6572cf59aa8812b0971b797f07e"
     },
     {
       "path": "infra/README.md",
@@ -1022,9 +1037,44 @@
       "sha256": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791"
     },
     {
+      "path": "src/miniuw_foundation/__init__.py",
+      "bytes": 469,
+      "sha256": "fd28e9e74d4ed9b6554b1bf87e20b9b9e5e317f8ddb796ca9e50a13962d2eb8c"
+    },
+    {
+      "path": "src/miniuw_foundation/data/project-draft-empty.json",
+      "bytes": 26694,
+      "sha256": "8cfc2915b9ee64bec53df3ea9041b7784f546200bdc676fcaf7b58679b88f16c"
+    },
+    {
+      "path": "src/miniuw_foundation/drafts.py",
+      "bytes": 5233,
+      "sha256": "babe6de12ad98ecbde5585dd7b46dceadd3f447cde790757585ab4ba0e4592d6"
+    },
+    {
+      "path": "src/miniuw_foundation/intake.py",
+      "bytes": 2462,
+      "sha256": "65c81e7916f28d2c8429b4bfce293cbc7046f232fa2c9dbdb895b6fed8885a5f"
+    },
+    {
+      "path": "src/miniuw_foundation/store.py",
+      "bytes": 6009,
+      "sha256": "b054aaef2c69e9b42eb57e1a8bc330d9c00008c22abd88e4971bb39f040141bf"
+    },
+    {
       "path": "templates/project-draft-empty.json",
       "bytes": 26694,
       "sha256": "8cfc2915b9ee64bec53df3ea9041b7784f546200bdc676fcaf7b58679b88f16c"
+    },
+    {
+      "path": "tests/test_foundation.py",
+      "bytes": 11020,
+      "sha256": "52c74047a9f6f18aaf912ece0afb6012ba831cd8aad45bd53252e248e9036621"
+    },
+    {
+      "path": "tests/test_intake.py",
+      "bytes": 3862,
+      "sha256": "fe18fefdc9a9002f67fd4bb9b0eab7ef9883fd92bcf5098bc34209256b65dabe"
     },
     {
       "path": "tools/check_reference_package.py",

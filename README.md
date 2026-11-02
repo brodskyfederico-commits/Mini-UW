@@ -1,6 +1,6 @@
 # Mini-UW — estructura integral de armado I01
 
-Repositorio privado de fuentes, diseño y referencias. La consolidación del armado independiente se verifica por ocho entregables explícitos; la validación financiera, los datos reales, las decisiones expertas y la implementación conservan sus puertas abiertas. Producción, evaluación de deals y despliegue siguen pausados.
+Repositorio privado de fuentes, diseño y referencias. La consolidación del armado independiente se verifica por ocho entregables explícitos; la validación financiera, los datos reales, las decisiones expertas y la implementación completa conservan sus puertas abiertas. Producción, evaluación de deals y despliegue siguen pausados.
 
 ## Leer el paquete consolidado
 
@@ -22,3 +22,7 @@ El PDF externo futuro del deal será exactamente una página; I01 es documentaci
 El paquete registra 25 suites de referencias acotadas y una de consolidación estructural. [Cómo ejecutar el control](docs/reference-check-runbook.md). GitHub Actions comprueba el commit exacto; su resultado no certifica otros commits ni el modelo completo. El comprobante externo de respaldo conserva SHA remoto, blobs verificados, resultado CI y exclusiones.
 
 GitHub preserva los materiales publicados; runtime, bases de datos, secretos, documentos de deals reales y la aplicación original no recuperada quedan fuera de este backup. No hay despliegue o sincronización de servicios configurados. [Historial de hitos y límites](WORK_LOG.md).
+
+## Implementación técnica posterior a I01
+
+El usuario autorizó implementar con datos sintéticos, sin despliegue ni decisiones reales. El primer componente T01 conserva declaraciones literales, fuentes declaradas y versiones transaccionales locales; no calcula ni emite PASS/FAIL. [Alcance, uso y pruebas T01](docs/technical-implementation-T01.md), [estado técnico vigente](docs/technical-implementation-status.json) y [restauración comprobada del respaldo I01](docs/backup-restoration-I01.json). Los registros I01 permanecen como fotografía del diseño; el estado técnico posterior se registra aparte.

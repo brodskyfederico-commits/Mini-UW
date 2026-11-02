@@ -25,3 +25,5 @@ jobs:
         run: python tools/check_reference_package.py
       - name: Reject deliberate structural inconsistencies
         run: python tools/check_structure_faults.py
+      - name: Test synthetic technical foundation
+        run: PYTHONPATH=src python -m unittest discover -s tests -v
