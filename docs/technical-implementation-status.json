@@ -1,7 +1,7 @@
 {
   "phase": "post-I01 synthetic technical implementation",
   "user_authorized": true,
-  "component": "T02",
+  "component": "T03",
   "status": "local_implementation_verified_pending_remote_receipt",
   "implemented": [
     "fresh raw-claim drafts from unchanged 55-input/10-criterion template",
@@ -11,9 +11,13 @@
     "strict synthetic JSON byte adapter with computed content hash and JSON Pointers",
     "explicit synthetic DAG execution with downstream blocking",
     "immutable in-memory execution evidence bound to source snapshot and node definitions",
-    "selective dependency fingerprints and exact whole-run freshness observation"
+    "selective dependency fingerprints and exact whole-run freshness observation",
+    "content-addressed SQLite archive of exact synthetic source bytes",
+    "durable execution bundles with complete input snapshot and graph",
+    "source-locator verification and same-engine reproduction on capture/recovery",
+    "source-first archive/import with explicit cross-database failure semantics"
   ],
-  "unit_tests": 52,
+  "unit_tests": 74,
   "plan_packages_partially_addressed": [
     "IMP-01",
     "IMP-06"
@@ -26,23 +30,28 @@
   "deployment_enabled": false,
   "production_ready": false,
   "next_independent_work": [
-    "durable source and execution archives with integrity checks",
     "additional synthetic sheet adapters",
-    "integration of defined scoped calculation profiles without policy adoption"
+    "integration of defined scoped calculation profiles without policy adoption",
+    "atomic evidence/currentness recording without publishing real decisions"
   ],
   "I01_snapshot_preserved": true,
   "components_implemented": [
     "T01",
-    "T02"
+    "T02",
+    "T03"
   ],
   "tests_by_component": {
     "T01": 31,
-    "T02": 21
+    "T02": 21,
+    "T03": 22
   },
   "not_yet_implemented": [
     "complete financial graph and its designed cycles",
     "atomic publication/freshness guard",
     "verified professional review",
     "financial normalization and policy adoption"
-  ]
+  ],
+  "durable_source_archive_implemented": true,
+  "durable_execution_archive_implemented": true,
+  "runtime_archives_included_in_git_backup": false
 }
