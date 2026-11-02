@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D03 review and metric-intake design extensions and T01–T18 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D03 review and metric-intake design extensions and T01–T20 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 10853,
-      "sha256": "6e410c102407c80f16b80fa92b79ec0ce0ac93f449f89aabc16330db60676242"
+      "bytes": 11366,
+      "sha256": "a545cc4dce6f4466d91e825789088860fa6f8fa7287dc278c682b00b4d010b9f"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 51224,
-      "sha256": "486d3e6b78305541c6f3cb1deab93677999e9c00bb857352e9b2a5802bda3a1f"
+      "bytes": 53051,
+      "sha256": "3091b9362e4529a98c02a20160c27b6947626ce954957f514fa897316776adc7"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -70,6 +70,11 @@
       "path": "docs/ci-verification.json",
       "bytes": 668,
       "sha256": "e884ff1e41e1fc9332ddde94128b25850dd2cc5d4166601830485a9618a2fa89"
+    },
+    {
+      "path": "docs/computed-noi-dscr-validation.json",
+      "bytes": 2757,
+      "sha256": "8267755afe293ec167856e37ad7e4e3897346f46f4bd9eeba78337d53773fab8"
     },
     {
       "path": "docs/cost-scope-reconciliation.md",
@@ -517,9 +522,19 @@
       "sha256": "737b9e6b8377a0531bab2c9af703fb6c3425ea8de664d60e8b40537c305c1d68"
     },
     {
+      "path": "docs/technical-implementation-T19.md",
+      "bytes": 3661,
+      "sha256": "9b4192e6281118d2a4bac07c34c7657a44015b67dd23f459671e66c7b47eb6f8"
+    },
+    {
+      "path": "docs/technical-implementation-T20.md",
+      "bytes": 3242,
+      "sha256": "88d8a626a0e319ffb57142d3a663632f9f829f0a09cd1248f009295576b94f12"
+    },
+    {
       "path": "docs/technical-implementation-status.json",
-      "bytes": 7706,
-      "sha256": "f650e444b4a8e432907b43001545db71dd8428a459115195c865b53fd97ba7d8"
+      "bytes": 8207,
+      "sha256": "acb81b9d215185aff69afd2bc914c832feb2f97894166f805739d71053b9e7c0"
     },
     {
       "path": "infra/README.md",
@@ -1193,8 +1208,8 @@
     },
     {
       "path": "src/miniuw_foundation/archive.py",
-      "bytes": 39128,
-      "sha256": "fa673b9ebf0a2920008be04ebc1df614557039b380b299fa5ca418face3e72cd"
+      "bytes": 45162,
+      "sha256": "e02081c638119c73fe401e8ff21857f1d7a9a65e2542266e29f81b5061c9ce39"
     },
     {
       "path": "src/miniuw_foundation/calculations.py",
@@ -1245,6 +1260,16 @@
       "path": "src/miniuw_foundation/normalization.py",
       "bytes": 7683,
       "sha256": "582f318182971e79cd48fbcd43a00c3e4ecc8505450eab87762782ed8af70c0a"
+    },
+    {
+      "path": "src/miniuw_foundation/operating_dscr.py",
+      "bytes": 5001,
+      "sha256": "a3df43cf92b8a3fac0465f8a5e4db9c420fc3b44f5587c50a9048b9a8f8be0bd"
+    },
+    {
+      "path": "src/miniuw_foundation/operating_noi.py",
+      "bytes": 8646,
+      "sha256": "034fda6791ce3386d2345fa7015d9a9ca6f2003e0e71664216d3939d268eaafd"
     },
     {
       "path": "src/miniuw_foundation/proposal_queue.py",
@@ -1382,6 +1407,21 @@
       "sha256": "194ab0271c125f2e033dddd5a544d6f3b0276756e039be7c3b13545929350b7d"
     },
     {
+      "path": "templates/synthetic-operating-dscr-binding.json",
+      "bytes": 707,
+      "sha256": "21908dd63b785e05f8255ebb6f30f976e6024ed11e6cda49d21b380c243519a9"
+    },
+    {
+      "path": "templates/synthetic-operating-dscr-loan.json",
+      "bytes": 1068,
+      "sha256": "bf7a288f043c1443f8b4f707c9b54fee24ab637e016e7c7d160d42dd030d8cfa"
+    },
+    {
+      "path": "templates/synthetic-operating-noi.json",
+      "bytes": 2115,
+      "sha256": "83fd1e316f46a3f42a41e9a5d3b3e5b56688ce64fa1728ee2bdc59e75db583f8"
+    },
+    {
       "path": "templates/synthetic-screening-band-case.json",
       "bytes": 4673,
       "sha256": "59493c78fd72ee6a2daedcf74ccc914a3dea81d74f7b5a8302e4ee56868f40b2"
@@ -1452,6 +1492,16 @@
       "sha256": "1131920b5d665b32d269fd28f664279d4050dd33ed5d1ec71312f1d3d40d9acb"
     },
     {
+      "path": "tests/test_operating_dscr.py",
+      "bytes": 8839,
+      "sha256": "333814f8fe5ba2a1f8cc1a9f9acb265ef824a7c3335e016ad766fe2821130b94"
+    },
+    {
+      "path": "tests/test_operating_noi.py",
+      "bytes": 10845,
+      "sha256": "31d4122c43a2369ffeef503cf4a23c5433466025cd7fb0ba4906b94badd29a9f"
+    },
+    {
       "path": "tests/test_proposal_queue.py",
       "bytes": 10444,
       "sha256": "0dfb5476aec14c09914ac1ca4fd1598cd97dde2700fd61ea688ac304b1f0988d"
@@ -1517,6 +1567,11 @@
       "sha256": "ef657ee6d978353dbbdaadd306ec4134835b911665e05a6935eae4e956b85775"
     },
     {
+      "path": "tools/demo_computed_noi_dscr.py",
+      "bytes": 1748,
+      "sha256": "21edb66a306f74270a19f08ed1d3490d175cba18d58c4b9943cad1b6d747a150"
+    },
+    {
       "path": "tools/demo_documented_threshold_rehearsal.py",
       "bytes": 1478,
       "sha256": "903ced684c4276ca4fe741bc92feb49ea6616fae8525d60cdfdc84248b14590e"
@@ -1565,6 +1620,11 @@
       "path": "tools/demo_synthetic_normalization.py",
       "bytes": 1834,
       "sha256": "dca23d87027854ed05ba210fe845d2187654678009c56131af0768bb299f02a4"
+    },
+    {
+      "path": "tools/demo_synthetic_operating_noi.py",
+      "bytes": 1687,
+      "sha256": "058c1ca2d60666ad23b5434a7294631eaa840dbfe02f8cd920fa868f2e66608a"
     },
     {
       "path": "tools/demo_synthetic_review_proposals.py",

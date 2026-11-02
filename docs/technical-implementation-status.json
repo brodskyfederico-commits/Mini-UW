@@ -1,7 +1,7 @@
 {
   "phase": "post-I01 synthetic technical implementation",
   "user_authorized": true,
-  "component": "T18",
+  "component": "T20",
   "status": "local_implementation_verified_pending_remote_receipt",
   "implemented": [
     "fresh raw-claim drafts from unchanged 55-input/10-criterion template",
@@ -53,9 +53,11 @@
     "atomic local capture and replay of preserved standards DOCX, fictional case and scenario result",
     "explicit source-specific scenario metric revision branches with compatible replay",
     "synthetic lifecycle queue with monotonic revision guards, exact retry and concurrent writer exclusion",
-    "bounded deterministic one-page internal synthetic scorecard bound to replayed evidence"
+    "bounded deterministic one-page internal synthetic scorecard bound to replayed evidence",
+    "conditional same-period accrued NOI producer with exact max-tax equation and replay",
+    "computed NOI to regular annual debt-service equivalent DSCR bridge with source/run/context/period binding"
   ],
-  "unit_tests": 354,
+  "unit_tests": 390,
   "plan_packages_partially_addressed": [
     "IMP-01",
     "IMP-06",
@@ -71,8 +73,8 @@
   "deployment_enabled": false,
   "production_ready": false,
   "next_independent_work": [
+    "remaining revenue, budget and general-calendar producers with explicit policies",
     "explicit metric/scenario applicability evidence without treating a dash as approval",
-    "remaining financial producers/general calendars",
     "complete financial publication and review authority safeguards",
     "broader input mapping and scenario evidence integration"
   ],
@@ -95,7 +97,9 @@
     "T15",
     "T16",
     "T17",
-    "T18"
+    "T18",
+    "T19",
+    "T20"
   ],
   "tests_by_component": {
     "T01": 31,
@@ -115,7 +119,9 @@
     "T15": 18,
     "T16": 17,
     "T17": 17,
-    "T18": 12
+    "T18": 12,
+    "T19": 21,
+    "T20": 15
   },
   "not_yet_implemented": [
     "complete financial graph and its designed cycles",
@@ -159,5 +165,9 @@
   "durable_scenario_review_bundles_implemented": true,
   "synthetic_proposal_lifecycle_queue_implemented": true,
   "synthetic_internal_onepager_implemented": true,
-  "production_decision_onepager_completed": false
+  "production_decision_onepager_completed": false,
+  "conditional_operating_noi_producer_implemented": true,
+  "computed_noi_dscr_bridge_implemented": true,
+  "durable_operating_noi_bundles_implemented": true,
+  "durable_operating_dscr_bundles_implemented": true
 }

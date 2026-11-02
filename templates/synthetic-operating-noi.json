@@ -1,0 +1,78 @@
+{
+  "schema": "miniuw.synthetic-operating-noi.v1",
+  "profile_id": "SYNTHETIC-M2-MAX-TAX-v1",
+  "context": {
+    "deal_id": "SYNTHETIC-NOI-demo",
+    "scenario_id": "SYNTHETIC-Base",
+    "run_id": "SYNTHETIC-NOI-run",
+    "definition_set_revision": "SYNTHETIC-unadopted-M2-profile-v1"
+  },
+  "currency": "USD",
+  "period_ref": "SYNTHETIC-operating-year-1",
+  "income_rows": [
+    {
+      "value": {
+        "numerator": "1200",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "period_ref": "SYNTHETIC-operating-year-1",
+      "unit": "currency_per_declared_period",
+      "basis": "accrual",
+      "source_ref": "SYNTHETIC-evidence:amount",
+      "item_id": "SYNTHETIC-income-residential"
+    },
+    {
+      "value": {
+        "numerator": "250",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "period_ref": "SYNTHETIC-operating-year-1",
+      "unit": "currency_per_declared_period",
+      "basis": "accrual",
+      "source_ref": "SYNTHETIC-evidence:amount",
+      "item_id": "SYNTHETIC-income-commercial"
+    }
+  ],
+  "expense_rows": [
+    {
+      "value": {
+        "numerator": "250",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "period_ref": "SYNTHETIC-operating-year-1",
+      "unit": "currency_per_declared_period",
+      "basis": "accrual",
+      "source_ref": "SYNTHETIC-evidence:amount",
+      "item_id": "SYNTHETIC-expenses-excluding-tax"
+    }
+  ],
+  "tax_floor": {
+    "value": {
+      "numerator": "100",
+      "denominator": "1"
+    },
+    "currency": "USD",
+    "period_ref": "SYNTHETIC-operating-year-1",
+    "unit": "currency_per_declared_period",
+    "basis": "accrual",
+    "source_ref": "SYNTHETIC-evidence:amount"
+  },
+  "tax_coefficient": {
+    "value": {
+      "numerator": "1",
+      "denominator": "5"
+    },
+    "unit": "scalar",
+    "source_ref": "SYNTHETIC-evidence:fixed-k-not-legal-rule"
+  },
+  "modelling_assumptions": {
+    "same_period_accrual": true,
+    "tax_model": "max_floor_or_fixed_coefficient_times_noi",
+    "coefficient_fixed": true,
+    "additional_tax_adjustments": false,
+    "rounding": "none_exact"
+  }
+}

@@ -35,6 +35,11 @@ from .threshold_rehearsal import read_documented_thresholds,parse_rehearsal
 from .threshold_rehearsal import ENGINE_SHA256 as THRESHOLD_SOURCE_ENGINE_SHA256
 from .scenario_review import ScenarioReviewRun,parse_scenario_proposal,evaluate_scenario_proposal
 from .scenario_review import ENGINE_SHA256 as SCENARIO_REVIEW_ENGINE_SHA256
+from .operating_noi import OperatingNoiRun,parse_operating_noi,produce_operating_noi
+from .operating_noi import ENGINE_SHA256 as OPERATING_NOI_ENGINE_SHA256
+from .operating_noi import definition_sources as operating_noi_definition_sources
+from .operating_dscr import OperatingDscrBinding,OperatingDscrRun,calculate_operating_dscr
+from .operating_dscr import ENGINE_SHA256 as OPERATING_DSCR_ENGINE_SHA256
 
 
 class MissingEvidence(KeyError):
@@ -71,6 +76,26 @@ class ScenarioReviewBundle:
     def base_run(self):return ScenarioThresholdRun(**self.payload['base_run'])
     @property
     def run(self):return ScenarioReviewRun(**self.payload['run'])
+
+
+@dataclass(frozen=True)
+class OperatingNoiBundle:
+    payload_json:str
+    sha256:str
+    @property
+    def payload(self):return json.loads(self.payload_json)
+    @property
+    def run(self):return OperatingNoiRun(**self.payload['run'])
+
+
+@dataclass(frozen=True)
+class OperatingDscrBundle:
+    payload_json:str
+    sha256:str
+    @property
+    def payload(self):return json.loads(self.payload_json)
+    @property
+    def run(self):return OperatingDscrRun(**self.payload['run'])
 
 
 def _sha(raw):
@@ -599,6 +624,73 @@ COMMIT;''')
                 raise CorruptArchive('invalid screening evidence') from error
         return bundle
 
+
+    def save_operating_dscr(self, noi_raw, noi_run, loan_raw, windows, debt_run, binding, run):
+        if type(run) is not OperatingDscrRun or calculate_operating_dscr(noi_raw,noi_run,loan_raw,windows,debt_run,binding)!=run:
+            raise ValidationError('computed NOI/DSCR result does not reproduce')
+        with self._transaction():
+            noi=self._put('source',noi_raw);loan=self._put('source',loan_raw)
+            p={'schema':'miniuw.synthetic-operating-dscr-bundle.v1','purpose':'synthetic_development_only',
+                'noi_source_sha256':noi,'loan_source_sha256':loan,'windows':[asdict(w)for w in windows],
+                'noi_run':asdict(noi_run),'debt_run':asdict(debt_run),'binding':asdict(binding),'run':asdict(run),
+                'versions':[OPERATING_DSCR_ENGINE_SHA256,OPERATING_NOI_ENGINE_SHA256,DEBT_ENGINE_SHA256],
+                'definition_sources':definition_sources(),'noi_definition_sources':operating_noi_definition_sources(),
+                'debt_definition_sources':debt_definition_sources()}
+            return self._put('bundle',canonical(p).encode())
+
+    def load_operating_dscr(self, sha):
+        with self._transaction():
+            raw=self.read_bundle_bytes(sha)
+            try:
+                p=json.loads(raw)
+                if set(p)!={'schema','purpose','noi_source_sha256','loan_source_sha256','windows','noi_run','debt_run','binding','run','versions','definition_sources','noi_definition_sources','debt_definition_sources'}:
+                    raise CorruptArchive('operating DSCR fields changed')
+                if p['schema']!='miniuw.synthetic-operating-dscr-bundle.v1':raise UnsupportedArchive('unsupported operating DSCR schema')
+                if p['purpose']!='synthetic_development_only':raise CorruptArchive('operating DSCR purpose changed')
+                if p['versions']!=[OPERATING_DSCR_ENGINE_SHA256,OPERATING_NOI_ENGINE_SHA256,DEBT_ENGINE_SHA256] or p['definition_sources']!=definition_sources() or p['noi_definition_sources']!=operating_noi_definition_sources() or p['debt_definition_sources']!=debt_definition_sources():
+                    raise UnsupportedArchive('operating DSCR replay requires compatible code/documents')
+                bundle=OperatingDscrBundle(raw.decode(),sha)
+                noi=self.get_operating_noi_source(p['noi_source_sha256']);loan=self.get_loan_source(p['loan_source_sha256'])
+                windows=tuple(DateWindow(**w)for w in p['windows'])
+                binding=OperatingDscrBinding(**p['binding']);noi_run=OperatingNoiRun(**p['noi_run']);debt_run=DebtServiceRun(**p['debt_run'])
+                if calculate_operating_dscr(noi,noi_run,loan,windows,debt_run,binding)!=bundle.run:
+                    raise CorruptArchive('operating DSCR evidence does not reproduce')
+            except MissingEvidence:raise
+            except(KeyError,TypeError,UnicodeError,json.JSONDecodeError,ValidationError)as error:
+                raise CorruptArchive('invalid operating DSCR evidence')from error
+        return bundle
+
+    def get_operating_noi_source(self, sha):
+        raw=self._read('source',sha);parse_operating_noi(raw);return raw
+
+    def save_operating_noi(self, source_raw, run):
+        if type(run) is not OperatingNoiRun or produce_operating_noi(source_raw)!=run:
+            raise ValidationError('operating NOI result does not reproduce')
+        with self._transaction():
+            source=self._put('source',source_raw)
+            p={'schema':'miniuw.synthetic-operating-noi-bundle.v1','purpose':'synthetic_development_only',
+                'source_sha256':source,'run':asdict(run),'versions':[OPERATING_NOI_ENGINE_SHA256,DEBT_ENGINE_SHA256],
+                'definition_sources':operating_noi_definition_sources()}
+            return self._put('bundle',canonical(p).encode())
+
+    def load_operating_noi(self, sha):
+        with self._transaction():
+            raw=self.read_bundle_bytes(sha)
+            try:
+                p=json.loads(raw)
+                if set(p)!={'schema','purpose','source_sha256','run','versions','definition_sources'}:
+                    raise CorruptArchive('operating NOI fields changed')
+                if p['schema']!='miniuw.synthetic-operating-noi-bundle.v1':raise UnsupportedArchive('unsupported operating NOI schema')
+                if p['purpose']!='synthetic_development_only':raise CorruptArchive('operating NOI purpose changed')
+                if p['versions']!=[OPERATING_NOI_ENGINE_SHA256,DEBT_ENGINE_SHA256] or p['definition_sources']!=operating_noi_definition_sources():
+                    raise UnsupportedArchive('NOI replay requires compatible code/documents')
+                bundle=OperatingNoiBundle(raw.decode(),sha)
+                if produce_operating_noi(self.get_operating_noi_source(p['source_sha256']))!=bundle.run:
+                    raise CorruptArchive('operating NOI evidence does not reproduce')
+            except MissingEvidence:raise
+            except(KeyError,TypeError,UnicodeError,json.JSONDecodeError,ValidationError)as error:
+                raise CorruptArchive('invalid operating NOI evidence')from error
+        return bundle
 
     def get_scenario_proposal_source(self, sha):
         raw=self._read('source',sha);parse_scenario_proposal(raw);return raw

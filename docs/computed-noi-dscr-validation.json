@@ -1,0 +1,103 @@
+{
+  "scope": "executed conditional synthetic producer chain; not independent financial acceptance",
+  "technical_tests": 390,
+  "T19_new_tests": 21,
+  "T20_new_tests": 15,
+  "NOI_examples": {
+    "purpose": "conditional_synthetic_NOI_only",
+    "cases": {
+      "proxy_branch": {
+        "operating_before_tax": {
+          "denominator": "1",
+          "numerator": "1200"
+        },
+        "noi": {
+          "denominator": "1",
+          "numerator": "1000"
+        },
+        "property_tax": {
+          "denominator": "1",
+          "numerator": "200"
+        },
+        "tax_branch": "proxy",
+        "equation_residual": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "blockers": [],
+        "decision": "PENDING",
+        "tax_policy_adopted": false
+      },
+      "floor_branch": {
+        "operating_before_tax": {
+          "denominator": "1",
+          "numerator": "1200"
+        },
+        "noi": {
+          "denominator": "1",
+          "numerator": "900"
+        },
+        "property_tax": {
+          "denominator": "1",
+          "numerator": "300"
+        },
+        "tax_branch": "floor",
+        "equation_residual": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "blockers": [],
+        "decision": "PENDING",
+        "tax_policy_adopted": false
+      },
+      "missing_coefficient": {
+        "operating_before_tax": {
+          "denominator": "1",
+          "numerator": "1200"
+        },
+        "noi": null,
+        "property_tax": null,
+        "tax_branch": null,
+        "equation_residual": null,
+        "blockers": [
+          "/tax_coefficient:coefficient_missing"
+        ],
+        "decision": "PENDING",
+        "tax_policy_adopted": false
+      }
+    },
+    "reopened_archive_replayed": true,
+    "runtime_database_retained": false,
+    "tax_law_verified": false,
+    "financial_module_closed": false,
+    "production_authorized": false
+  },
+  "computed_DSCR_chain": {
+    "purpose": "computed_conditional_NOI_and_annual_service_only",
+    "noi": {
+      "denominator": "1",
+      "numerator": "1000"
+    },
+    "property_tax": {
+      "denominator": "1",
+      "numerator": "200"
+    },
+    "annual_service_equivalent": {
+      "denominator": "1",
+      "numerator": "1200"
+    },
+    "dscr": {
+      "denominator": "6",
+      "numerator": "5"
+    },
+    "blockers": [],
+    "interpretation": "conditional_NOI_over_regular_annual_sizing_equivalent_not_dated_cash_or_balloon",
+    "both_producers_and_bridge_replayed_after_reopen": true,
+    "bank_minimum_applied": false,
+    "financially_validated": false,
+    "decision": "PENDING",
+    "production_authorized": false
+  },
+  "financial_engine_complete": false,
+  "professional_review_received": false
+}
