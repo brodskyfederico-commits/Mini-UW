@@ -1,0 +1,118 @@
+{
+  "scope": "Incremental synthetic valuation/capacity/selection coverage; original 398-row matrix and financial evidence gates preserved",
+  "rows": [
+    {
+      "requirement_or_variable": "distinct_valuation_and_bank_noi",
+      "source": {
+        "path": "docs/refinance-capacity-bridge.md",
+        "line": 5,
+        "sha256": "869aaa70c97550f111efffc92a886fd76679d09282c32dc7219e5cd43154d962"
+      },
+      "current_definition": "Explicit separate source/run/period/annual-basis bindings for valuation NOI and bank sizing NOI; no substitution",
+      "affected_modules": [
+        "M2",
+        "M6",
+        "M7",
+        "T35",
+        "T36"
+      ],
+      "validation_evidence": [
+        "RefinanceCapacityTests.test_distinct_bank_and_valuation_noi_never_substituted",
+        "RefinanceCapacityTests.test_annual_scope_frequency_and_producer_missing_data_preserved"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "No actual comparability, appraisal, bank terms or scope authentication"
+    },
+    {
+      "requirement_or_variable": "valuation_ltv_dscr_other_limits",
+      "source": {
+        "path": "docs/refinance-capacity-bridge.md",
+        "line": 17,
+        "sha256": "869aaa70c97550f111efffc92a886fd76679d09282c32dc7219e5cd43154d962"
+      },
+      "current_definition": "Value=NOI/cap; explicit LTV and bank DSCR capacities plus complete declared other limits participate in minimum; retain all ties",
+      "affected_modules": [
+        "M2",
+        "M6",
+        "M7",
+        "T35",
+        "T36"
+      ],
+      "validation_evidence": [
+        "RefinanceCapacityTests.test_independent_valuation_and_tied_ltv_dscr_capacity",
+        "RefinanceCapacityTests.test_additional_limits_and_ties_are_all_retained",
+        "RefinanceCapacityTests.test_missing_other_limit_inventory_or_amount_never_assumed_unlimited"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "No market cap/LTV/DSCR adoption, real covenant completeness or bank approval"
+    },
+    {
+      "requirement_or_variable": "annual_equivalent_not_dated_paid_cash",
+      "source": {
+        "path": "docs/refinance-capacity-bridge.md",
+        "line": 11,
+        "sha256": "869aaa70c97550f111efffc92a886fd76679d09282c32dc7219e5cd43154d962"
+      },
+      "current_definition": "K comes from replayed payment-per-unit times explicit frequency, labeled sizing only; zero selected service leaves achieved DSCR undefined",
+      "affected_modules": [
+        "M2",
+        "M6",
+        "M7",
+        "T35",
+        "T36"
+      ],
+      "validation_evidence": [
+        "RefinanceCapacityTests.test_explicit_zero_capacity_and_loan_keep_dscr_undefined",
+        "RefinanceCapacityTests.test_no_bank_policy_or_financial_authority_follows_from_compatibility"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "No authenticated service cash, partial periods, loan-rate conversion or contractual maturity extension"
+    },
+    {
+      "requirement_or_variable": "selected_principal_not_automatic_capacity_or_draw",
+      "source": {
+        "path": "docs/refinance-capacity-bridge.md",
+        "line": 23,
+        "sha256": "869aaa70c97550f111efffc92a886fd76679d09282c32dc7219e5cd43154d962"
+      },
+      "current_definition": "Selected principal remains supplied, may be below capacity, must match full gross draw/new loan and cannot exceed complete computed capacity",
+      "affected_modules": [
+        "M2",
+        "M6",
+        "M7",
+        "T35",
+        "T36"
+      ],
+      "validation_evidence": [
+        "RefinanceCapacityTests.test_selected_principal_can_stay_below_capacity_without_increase",
+        "RefinanceCapacityTests.test_original_integrated_project_is_blocked_by_declared_bank_capacity",
+        "RefinanceCapacityTests.test_gross_draw_principal_origin_and_date_are_separate_claims"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "No proceeds availability/commitment, partial/net funding or real financing decision"
+    },
+    {
+      "requirement_or_variable": "funding_guard_before_investor_return",
+      "source": {
+        "path": "AGENTS.md",
+        "line": 17,
+        "sha256": "7cccf8b6e9fa3f45685e2e04afc43c7a3bd0ac5dd15f6b5b4eee4ae397e6f0df"
+      },
+      "current_definition": "Replay and link exact sizing closure/permanent terms to cash project before compiling investor events; balanced cash does not bypass capacity blockers",
+      "affected_modules": [
+        "M2",
+        "M6",
+        "M7",
+        "T35",
+        "T36"
+      ],
+      "validation_evidence": [
+        "CapacityProjectTests.test_balanced_legacy_cash_window_cannot_bypass_bank_capacity",
+        "CapacityProjectTests.test_same_id_principal_with_different_permanent_terms_is_not_same_loan",
+        "CapacityProjectTests.test_reopened_archive_restores_blocked_and_compatible_paths"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Legacy synthetic components remain isolated, with full economic scope, bank authenticity, investor policy/risk/PDF still open"
+    }
+  ]
+}

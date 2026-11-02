@@ -1,0 +1,67 @@
+{
+  "schema": "miniuw.synthetic-refinance-capacity.v1",
+  "profile": "SYNTHETIC-NOI-CAP-LTV-DSCR-FULL-DRAW-v1",
+  "context": {
+    "deal_id": "SYNTHETIC-integrated-cash-demo",
+    "scenario_id": "SYNTHETIC-Base",
+    "run_id": "SYNTHETIC-integrated-cash-run",
+    "definition_set_revision": "SYNTHETIC-cash-window-assumptions-v1"
+  },
+  "currency": "USD",
+  "as_of_date": "2027-04-01",
+  "valuation_noi_source_sha256": "103d95e41f3a6e860d8b8fe9b2ea4c54a671bf88f179aa91bc552330ca6d9ef5",
+  "valuation_noi_run_sha256": "7366647192e2e2c58ceb20d68ede485a9e48bbf4e4d87ffb241f40b5f9fbcba4",
+  "bank_noi_source_sha256": "8a344cdd388ccc1af7564cc6e23b6a8810144abe98cc31f89f22e9e5016f6000",
+  "bank_noi_run_sha256": "c1543edb040bfbbb6a00d0b4ea5a088011d8030e4f1daf94f6402b1a92ddad02",
+  "new_loan_source_sha256": "40b77f5a21511c0810abe6cbeec066875b8eb0d61a77b211d134b4b2547a16af",
+  "new_loan_run_sha256": "17a0703fb36bd04c224d9f127f0d73ab4e1ee923c49c0f725cadb76b5b10138b",
+  "closing_source_sha256": "9ea8bfcd1d335059bcb71cc0c75700b9befa9ef8f8e474fe6251a96b5a27c085",
+  "closing_run_sha256": "fe46bb7a60ec0aea800993cfe3b0c2c266cb50625e31f9eaa30d7c18f26caf96",
+  "valuation_noi_period_ref": "SYNTHETIC-valuation-forward-year",
+  "bank_noi_period_ref": "SYNTHETIC-annual-equivalent-1",
+  "valuation_annual_basis_ref": "SYNTHETIC-explicit-forward-annual-valuation-NOI-basis",
+  "bank_annual_basis_ref": "SYNTHETIC-explicit-bank-annual-sizing-NOI-basis",
+  "scope_comparability_basis_ref": "SYNTHETIC-provided-scope-comparison-not-authenticated",
+  "parameters": {
+    "cap_rate": {
+      "value": {
+        "numerator": "1",
+        "denominator": "10"
+      },
+      "unit": "annual_cap_fraction",
+      "period_ref": "SYNTHETIC-valuation-forward-year",
+      "source_ref": "SYNTHETIC-independent-sizing-parameter-not-investment-criterion"
+    },
+    "maximum_ltv": {
+      "value": {
+        "numerator": "4",
+        "denominator": "5"
+      },
+      "unit": "scalar",
+      "period_ref": "SYNTHETIC-sizing-at-date",
+      "source_ref": "SYNTHETIC-independent-sizing-parameter-not-investment-criterion"
+    },
+    "minimum_dscr": {
+      "value": {
+        "numerator": "5",
+        "denominator": "4"
+      },
+      "unit": "x",
+      "period_ref": "SYNTHETIC-annual-equivalent-1",
+      "source_ref": "SYNTHETIC-independent-sizing-parameter-not-investment-criterion"
+    }
+  },
+  "selected_principal": {
+    "value": {
+      "numerator": "30301",
+      "denominator": "100"
+    },
+    "currency": "USD",
+    "as_of_date": "2027-04-01",
+    "basis": "selected_new_loan_principal",
+    "source_ref": "SYNTHETIC-explicit-closing-source:refinance"
+  },
+  "other_limits_declared_complete": true,
+  "other_limits_basis_ref": "SYNTHETIC-declared-empty-additional-limit-inventory-not-audit",
+  "other_limits": []
+}

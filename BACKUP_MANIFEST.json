@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D03 review and metric-intake design extensions and T01–T34 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D03 review and metric-intake design extensions and T01–T36 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 16615,
-      "sha256": "7e3e253e165fc1ace19560ceda8aab22f251fe76aed3a3ac4ef879884be10948"
+      "bytes": 17284,
+      "sha256": "086d6334bf80ebbc82c26ea89574e9da32f914a95fd66e7bde8236330f1f792e"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 69899,
-      "sha256": "7adc33d4d14c8ac02feb85a2f9c85f2ca4957c4bf2d840ac36a50e7c59fc60d7"
+      "bytes": 72015,
+      "sha256": "d453af844c3351dc8f84134fed016df05b4f881b7fcf3ea7991e95408df02187"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -442,6 +442,11 @@
       "sha256": "767a9e214ac2d23f27fefc21a01d033beb82e9c68d21e98d7895d0e44b54e016"
     },
     {
+      "path": "docs/review/synthetic-refinance-capacity-demo.json",
+      "bytes": 13068,
+      "sha256": "57be6b33c3ac3003830da8451e3fc61caf8a95a4a29ca7a67cd01efe4416183d"
+    },
+    {
       "path": "docs/review-lifecycle-acceptance-cases.json",
       "bytes": 8050,
       "sha256": "ede583b02cc2a71967eea2fd1295efeff9d3c265e0495d6ef08c0b60ea514cb9"
@@ -520,6 +525,11 @@
       "path": "docs/technical-coverage-T33-T34.json",
       "bytes": 5387,
       "sha256": "b5b5d0f284d3c18eb7cf58faf9b7979debe336c4c037bc8cb3a1c0c310b68f59"
+    },
+    {
+      "path": "docs/technical-coverage-T35-T36.json",
+      "bytes": 5108,
+      "sha256": "ead2dd2d8ceabef009ac7a22b05c5914e01274ce7f5e85f93d94468840c0a52e"
     },
     {
       "path": "docs/technical-implementation-T01.md",
@@ -662,9 +672,14 @@
       "sha256": "a31834cc1b435a4324df45d6ff402107d45a944fab91b62542ad1c3e8badf395"
     },
     {
+      "path": "docs/technical-implementation-T35-T36.md",
+      "bytes": 7868,
+      "sha256": "68dd474bf802fdd37551b2a4e403394ab350b24fb9efb0f4c0dbb05a3a58394d"
+    },
+    {
       "path": "docs/technical-implementation-status.json",
-      "bytes": 12691,
-      "sha256": "477c1cc1a8ffdb882f84c1224d8123c9042b11e36181bf466f998cf427461e4d"
+      "bytes": 13419,
+      "sha256": "0922ed3a6d36ede141124bfc1cd48014625b0c199014731d56e81bb63624f909"
     },
     {
       "path": "infra/README.md",
@@ -1338,13 +1353,18 @@
     },
     {
       "path": "src/miniuw_foundation/archive.py",
-      "bytes": 88934,
-      "sha256": "5907812bcacc8c39e0fa95bba7d41a14da32807edd905535bffd7b316946f296"
+      "bytes": 97151,
+      "sha256": "54bf3b65c28a784d56944c87ecd60ec36edd558a5a2e58bfdf5aebb85a755a41"
     },
     {
       "path": "src/miniuw_foundation/calculations.py",
       "bytes": 10181,
       "sha256": "ee79e0683eb9c5c5dc2ce740ab1ca4e1c2e17c3e94145b2aabfa9b2abf599e99"
+    },
+    {
+      "path": "src/miniuw_foundation/capacity_project_returns.py",
+      "bytes": 6050,
+      "sha256": "6004b8146431c235abc05677a7ecc2906a73e1439f16794040895e7554f50c21"
     },
     {
       "path": "src/miniuw_foundation/closing_cash.py",
@@ -1467,6 +1487,11 @@
       "sha256": "3a0af7fd5b74f88762f16a2be8acc25dae9ed4e4e0d07e7354f605b6ca7f6763"
     },
     {
+      "path": "src/miniuw_foundation/refinance_capacity.py",
+      "bytes": 14678,
+      "sha256": "b3250d05ecf4af5c15596d271770bb5f2ec99b73acb022efe96ea5e40be977bf"
+    },
+    {
       "path": "src/miniuw_foundation/rental_noi.py",
       "bytes": 6240,
       "sha256": "873f0687ab622d3a48c06e14446cc79374f1e5da63df7881348301f394f28ab3"
@@ -1545,6 +1570,46 @@
       "path": "templates/synthetic-calculation-graph.json",
       "bytes": 2053,
       "sha256": "d815de6309c1c7003f114e6ab8abf3d8020cb6d3fb7b333eee9eee0ae758d936"
+    },
+    {
+      "path": "templates/synthetic-capacity-project-bank-noi.json",
+      "bytes": 2285,
+      "sha256": "8a344cdd388ccc1af7564cc6e23b6a8810144abe98cc31f89f22e9e5016f6000"
+    },
+    {
+      "path": "templates/synthetic-capacity-project-spec.json",
+      "bytes": 2799,
+      "sha256": "3cc3e68b4704b6b77450448ce755fba7b1698d436ca5ff2118ee4a6c5e62a843"
+    },
+    {
+      "path": "templates/synthetic-capacity-project-valuation-noi.json",
+      "bytes": 2300,
+      "sha256": "103d95e41f3a6e860d8b8fe9b2ea4c54a671bf88f179aa91bc552330ca6d9ef5"
+    },
+    {
+      "path": "templates/synthetic-capacity-tie-bank-noi.json",
+      "bytes": 2276,
+      "sha256": "e477afe732b078de1a573251162d88f2c05111e7a5d61923e0aad3c722f66b78"
+    },
+    {
+      "path": "templates/synthetic-capacity-tie-closing.json",
+      "bytes": 6626,
+      "sha256": "45f8e3b6c774661a0436fedf48073779bf49ef029a30978d768b4429dedd2268"
+    },
+    {
+      "path": "templates/synthetic-capacity-tie-loan.json",
+      "bytes": 1081,
+      "sha256": "c1c4503bc2fb8c047d787b607a0042cc64b130fad92b88e0b3408ce0abb3d0f5"
+    },
+    {
+      "path": "templates/synthetic-capacity-tie-spec.json",
+      "bytes": 2786,
+      "sha256": "22f990d43e97a1bd220a914cb7a6228a8dacc17590ea42e1e06cde5fe751ebe0"
+    },
+    {
+      "path": "templates/synthetic-capacity-tie-valuation-noi.json",
+      "bytes": 2291,
+      "sha256": "5a96eab744c6b15f5c825c4e9c065dfc4c37ce53ddbc1e2f5ded40baf0e839c2"
     },
     {
       "path": "templates/synthetic-closing-investor-slots.json",
@@ -1812,6 +1877,11 @@
       "sha256": "d7acbf6cd7eefd921b183c89e9ac987a33dc5105f2c8be886969f05d22b36042"
     },
     {
+      "path": "tests/capacity_test_support.py",
+      "bytes": 1869,
+      "sha256": "95059aeec17193e7df12363dc579a3670bc0f452a689dbd1eea395ed41328532"
+    },
+    {
       "path": "tests/debt_closing_test_support.py",
       "bytes": 1470,
       "sha256": "a16dac035959a383b2baf73adf391b12fd15db00ac3da4a9039ef3e660214d7e"
@@ -1845,6 +1915,11 @@
       "path": "tests/test_calculations.py",
       "bytes": 17837,
       "sha256": "7e93ec2a88323ef8864d1404c630c3c360ac43da85d3d60a9d9364e6696e0bbc"
+    },
+    {
+      "path": "tests/test_capacity_project_returns.py",
+      "bytes": 10094,
+      "sha256": "d3ccb8bddc43faaf42dab7de367b055e2c4f647686c2b9e461a79be4073dd959"
     },
     {
       "path": "tests/test_closing_cash.py",
@@ -1950,6 +2025,11 @@
       "path": "tests/test_proposal_queue.py",
       "bytes": 10444,
       "sha256": "0dfb5476aec14c09914ac1ca4fd1598cd97dde2700fd61ea688ac304b1f0988d"
+    },
+    {
+      "path": "tests/test_refinance_capacity.py",
+      "bytes": 14027,
+      "sha256": "5acd331f7670def390ad33246b7989cb1a7afbce34053653f94829c8e2402b9b"
     },
     {
       "path": "tests/test_rental_noi.py",
@@ -2060,6 +2140,11 @@
       "path": "tools/demo_operating_cash_returns.py",
       "bytes": 4108,
       "sha256": "a474026134e8b372c505008f0b21a06f32ab50f2b27553709e393868cf88cc16"
+    },
+    {
+      "path": "tools/demo_refinance_capacity.py",
+      "bytes": 5451,
+      "sha256": "f20060a436cefe18df5c5ee029c489c225bfd6cc73b422a2ba83d1fc5e902f20"
     },
     {
       "path": "tools/demo_residential_noi_chain.py",

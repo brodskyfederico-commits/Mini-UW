@@ -83,6 +83,13 @@ from .project_returns import ProjectReturnRun,ProjectReturnBinding,assemble_proj
 from .project_returns import ENGINE_SHA256 as PROJECT_RETURN_ENGINE_SHA256
 from .project_returns import binding_from_record as project_return_binding_from_record
 
+from .refinance_capacity import RefinanceInputs,RefinanceCapacityRun,parse_refinance_capacity,size_refinance
+from .refinance_capacity import ENGINE_SHA256 as CAPACITY_ENGINE_SHA256
+from .refinance_capacity import definition_sources as capacity_definition_sources
+from .capacity_project_returns import CapacityProjectBinding,CapacityProjectReturnRun,assemble_capacity_checked_returns
+from .capacity_project_returns import ENGINE_SHA256 as CAPACITY_PROJECT_ENGINE_SHA256
+from .capacity_project_returns import binding_from_record as capacity_project_binding_from_record
+
 
 class MissingEvidence(KeyError):
     pass
@@ -295,6 +302,32 @@ def _project_versions():return [PROJECT_CASH_ENGINE_SHA256,CASH_ENGINE_SHA256,HO
 def _project_definitions():return dict(_debt_closing_definitions(),operating=cash_definition_sources(),noi=operating_noi_definition_sources(),project=project_definition_sources())
 def _project_return_versions():return [PROJECT_RETURN_ENGINE_SHA256]+_project_versions()+[ROOT_ENGINE_SHA256]
 def _project_return_definitions():return dict(_project_definitions(),investor=investor_definition_sources())
+
+
+@dataclass(frozen=True)
+class RefinanceCapacityBundle:
+    payload_json:str
+    sha256:str
+    @property
+    def payload(self):return json.loads(self.payload_json)
+    @property
+    def run(self):return RefinanceCapacityRun(**self.payload['run'])
+
+
+@dataclass(frozen=True)
+class CapacityProjectBundle:
+    payload_json:str
+    sha256:str
+    @property
+    def payload(self):return json.loads(self.payload_json)
+    @property
+    def run(self):return CapacityProjectReturnRun(**self.payload['run'])
+
+
+def _capacity_versions():return [CAPACITY_ENGINE_SHA256]+_closing_versions()
+def _capacity_definitions():return dict(_debt_closing_definitions(),noi=operating_noi_definition_sources(),capacity=capacity_definition_sources())
+def _capacity_project_versions():return [CAPACITY_PROJECT_ENGINE_SHA256,PROJECT_RETURN_ENGINE_SHA256]+_capacity_versions()+_project_versions()+[ROOT_ENGINE_SHA256]
+def _capacity_project_definitions():return dict(_project_return_definitions(),capacity=capacity_definition_sources())
 
 
 def _sha(raw):
@@ -823,6 +856,64 @@ COMMIT;''')
                 raise CorruptArchive('invalid screening evidence') from error
         return bundle
 
+
+    def get_refinance_capacity_spec(self, sha):
+        raw=self._read('source',sha);parse_refinance_capacity(raw);return raw
+
+    def _capture_refinance_inputs(self, inputs):
+        return {'valuation_source_sha256':self._put('source',inputs.valuation_noi_raw),'valuation_run':asdict(inputs.valuation_noi_run),
+            'bank_source_sha256':self._put('source',inputs.bank_noi_raw),'bank_run':asdict(inputs.bank_noi_run),'new_loan':self._capture_dated_loans((inputs.new_loan,))[0],
+            'closing_source_sha256':self._put('source',inputs.closing_raw),'closing_run':asdict(inputs.closing_run)}
+
+    def _restore_refinance_inputs(self, p):
+        if type(p)is not dict or set(p)!={'valuation_source_sha256','valuation_run','bank_source_sha256','bank_run','new_loan','closing_source_sha256','closing_run'}:raise CorruptArchive('capacity input fields changed')
+        return RefinanceInputs(valuation_noi_raw=self.get_operating_noi_source(p['valuation_source_sha256']),valuation_noi_run=OperatingNoiRun(**p['valuation_run']),bank_noi_raw=self.get_operating_noi_source(p['bank_source_sha256']),bank_noi_run=OperatingNoiRun(**p['bank_run']),new_loan=self._restore_dated_loans([p['new_loan']])[0],closing_raw=self.get_closing_cash_source(p['closing_source_sha256']),closing_run=ClosingCashRun(**p['closing_run']))
+
+    def save_refinance_capacity(self, inputs, spec_raw, run):
+        if type(run)is not RefinanceCapacityRun or size_refinance(inputs,spec_raw)!=run:raise ValidationError('capacity branch does not reproduce')
+        with self._transaction():
+            spec=self._put('source',spec_raw);records=self._capture_refinance_inputs(inputs)
+            p={'schema':'miniuw.synthetic-refinance-capacity-bundle.v1','purpose':'synthetic_development_only','inputs':records,'spec_source_sha256':spec,'run':asdict(run),'versions':_capacity_versions(),'definitions':_capacity_definitions()}
+            return self._put('bundle',canonical(p).encode())
+
+    def load_refinance_capacity(self, sha):
+        with self._transaction():
+            raw=self.read_bundle_bytes(sha)
+            try:
+                p=json.loads(raw)
+                if set(p)!={'schema','purpose','inputs','spec_source_sha256','run','versions','definitions'}:raise CorruptArchive('capacity bundle fields changed')
+                if p['schema']!='miniuw.synthetic-refinance-capacity-bundle.v1':raise UnsupportedArchive('unsupported capacity schema')
+                if p['purpose']!='synthetic_development_only':raise CorruptArchive('capacity purpose changed')
+                if p['versions']!=_capacity_versions()or p['definitions']!=_capacity_definitions():raise UnsupportedArchive('capacity replay requires compatible code/documents')
+                bundle=RefinanceCapacityBundle(raw.decode(),sha)
+                if size_refinance(self._restore_refinance_inputs(p['inputs']),self.get_refinance_capacity_spec(p['spec_source_sha256']))!=bundle.run:raise CorruptArchive('capacity evidence does not reproduce')
+            except MissingEvidence:raise
+            except(KeyError,TypeError,UnicodeError,json.JSONDecodeError,ValidationError)as error:raise CorruptArchive('invalid capacity evidence')from error
+        return bundle
+
+    def save_capacity_project_returns(self, periods, closings, manifest_raw, project_run, inputs, spec_raw, capacity_run, investor_raw, binding, run):
+        if type(run)is not CapacityProjectReturnRun or assemble_capacity_checked_returns(periods,closings,manifest_raw,project_run,inputs,spec_raw,capacity_run,investor_raw,binding)!=run:raise ValidationError('capacity-checked project does not reproduce')
+        with self._transaction():
+            manifest=self._put('source',manifest_raw);ops=self._capture_holding_periods(periods);closes=self._capture_project_closings(closings);capinputs=self._capture_refinance_inputs(inputs);spec=self._put('source',spec_raw);investor=self._put('source',investor_raw);compiled=None if run.compiled_raw is None else self._put('source',run.compiled_raw)
+            p={'schema':'miniuw.synthetic-capacity-project-bundle.v1','purpose':'synthetic_development_only','manifest_source_sha256':manifest,'periods':ops,'closings':closes,'project_run':asdict(project_run),'capacity_inputs':capinputs,'capacity_spec_sha256':spec,'capacity_run':asdict(capacity_run),'investor_source_sha256':investor,'compiled_source_sha256':compiled,'binding':asdict(binding),'run':asdict(run),'versions':_capacity_project_versions(),'definitions':_capacity_project_definitions()}
+            return self._put('bundle',canonical(p).encode())
+
+    def load_capacity_project_returns(self, sha):
+        with self._transaction():
+            raw=self.read_bundle_bytes(sha)
+            try:
+                p=json.loads(raw)
+                if set(p)!={'schema','purpose','manifest_source_sha256','periods','closings','project_run','capacity_inputs','capacity_spec_sha256','capacity_run','investor_source_sha256','compiled_source_sha256','binding','run','versions','definitions'}:raise CorruptArchive('capacity project fields changed')
+                if p['schema']!='miniuw.synthetic-capacity-project-bundle.v1':raise UnsupportedArchive('unsupported capacity project schema')
+                if p['purpose']!='synthetic_development_only':raise CorruptArchive('capacity project purpose changed')
+                if p['versions']!=_capacity_project_versions()or p['definitions']!=_capacity_project_definitions():raise UnsupportedArchive('capacity project replay requires compatible code/documents')
+                bundle=CapacityProjectBundle(raw.decode(),sha)
+                if assemble_capacity_checked_returns(self._restore_holding_periods(p['periods']),self._restore_project_closings(p['closings']),self.get_project_cash_manifest(p['manifest_source_sha256']),ProjectCashRun(**p['project_run']),self._restore_refinance_inputs(p['capacity_inputs']),self.get_refinance_capacity_spec(p['capacity_spec_sha256']),RefinanceCapacityRun(**p['capacity_run']),self.get_investor_returns_source(p['investor_source_sha256']),capacity_project_binding_from_record(p['binding']))!=bundle.run:raise CorruptArchive('capacity project does not reproduce')
+                compiled=None if p['compiled_source_sha256']is None else self._read('source',p['compiled_source_sha256'])
+                if compiled!=bundle.run.compiled_raw:raise CorruptArchive('compiled capacity project source changed')
+            except MissingEvidence:raise
+            except(KeyError,TypeError,UnicodeError,json.JSONDecodeError,ValidationError)as error:raise CorruptArchive('invalid capacity project evidence')from error
+        return bundle
 
     def get_project_cash_manifest(self, sha):
         raw=self._read('source',sha);parse_project_cash(raw);return raw
