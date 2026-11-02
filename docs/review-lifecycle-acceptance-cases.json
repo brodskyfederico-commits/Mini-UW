@@ -1,0 +1,267 @@
+{
+  "design_id": "D02",
+  "scope": "Future implementation acceptance scenarios, separate from 36 original product cases and 273 technical unit tests",
+  "execution_status": "specified_not_executed",
+  "cases": [
+    {
+      "id": "D02-AC-01",
+      "name": "original_intact",
+      "rules": [
+        "RD-01"
+      ],
+      "given": "Cambio explícito de métrica sobre base vigente",
+      "expected": "Se crea candidato distinto con padre, diff y motivo; original conserva sus bytes."
+    },
+    {
+      "id": "D02-AC-02",
+      "name": "cross_deal",
+      "rules": [
+        "RD-02"
+      ],
+      "given": "Propuesta de otro deal o escenario",
+      "expected": "Rechazo de vínculo; no cambia el candidato seleccionado."
+    },
+    {
+      "id": "D02-AC-03",
+      "name": "stale_revision",
+      "rules": [
+        "RD-02",
+        "RD-03"
+      ],
+      "given": "Cambió la fuente desde la preparación",
+      "expected": "Candidato histórico conservado; promoción bloqueada por revisión obsoleta."
+    },
+    {
+      "id": "D02-AC-04",
+      "name": "aba_revision",
+      "rules": [
+        "RD-03"
+      ],
+      "given": "Contexto A cambia a B y vuelve a los mismos bytes A",
+      "expected": "La revisión monotónica cambió; el ticket anterior se rechaza aunque el hash coincida."
+    },
+    {
+      "id": "D02-AC-05",
+      "name": "missing_plus_fail",
+      "rules": [
+        "RD-04"
+      ],
+      "given": "Una métrica falla y otra requerida está ausente",
+      "expected": "PENDING con ambas causas; sin dictamen completo PASS/FAIL."
+    },
+    {
+      "id": "D02-AC-06",
+      "name": "approval_cannot_fill_blank",
+      "rules": [
+        "RD-04",
+        "RD-06"
+      ],
+      "given": "Revisor expresa aprobación pero sigue faltando regla requerida",
+      "expected": "PENDING; aprobación no fabrica la regla ni el dato."
+    },
+    {
+      "id": "D02-AC-07",
+      "name": "band_complete",
+      "rules": [
+        "RD-05"
+      ],
+      "given": "Datos y criterios completos con valor en banda",
+      "expected": "PENDING para revisión; no búsqueda automática del valor que pase."
+    },
+    {
+      "id": "D02-AC-08",
+      "name": "label_only",
+      "rules": [
+        "RD-06"
+      ],
+      "given": "Nombre profesional o approved:true sin prueba de identidad",
+      "expected": "Revisión declarada no utilizable; ninguna promoción."
+    },
+    {
+      "id": "D02-AC-09",
+      "name": "wrong_scope",
+      "rules": [
+        "RD-06"
+      ],
+      "given": "Revisión auténtica de otra ejecución o alcance parcial",
+      "expected": "No autoriza el candidato completo; conservar alcance acreditado."
+    },
+    {
+      "id": "D02-AC-10",
+      "name": "no_authority",
+      "rules": [
+        "RD-06"
+      ],
+      "given": "Identidad autenticada sin autoridad para el alcance",
+      "expected": "Bloqueo hasta evidencia aplicable; no asignar autoridad por nombre."
+    },
+    {
+      "id": "D02-AC-11",
+      "name": "expired",
+      "rules": [
+        "RD-07"
+      ],
+      "given": "Expira revisión antes del commit",
+      "expected": "No promoción; conservar intento y causa."
+    },
+    {
+      "id": "D02-AC-12",
+      "name": "revoked_before_commit",
+      "rules": [
+        "RD-07",
+        "RD-08"
+      ],
+      "given": "Revocación concurrente antes de finalizar",
+      "expected": "Serializar con versión de autorización o bloquear si no existe garantía; no publicar como vigente."
+    },
+    {
+      "id": "D02-AC-13",
+      "name": "auth_unavailable",
+      "rules": [
+        "RD-15"
+      ],
+      "given": "No se puede acreditar vigencia actual del permiso",
+      "expected": "Bloqueo explícito; no utilizar caché positiva como autorización."
+    },
+    {
+      "id": "D02-AC-14",
+      "name": "edit_while_rendering",
+      "rules": [
+        "RD-08"
+      ],
+      "given": "Cambian criterios mientras se genera el PDF",
+      "expected": "Conservar PDF histórico; fallo de compare-and-swap, sin recibo vigente."
+    },
+    {
+      "id": "D02-AC-15",
+      "name": "half_commit",
+      "rules": [
+        "RD-08"
+      ],
+      "given": "Fallo antes de confirmar decisión y recibo",
+      "expected": "Rollback de ambos; ningún estado parcial presentado como completo."
+    },
+    {
+      "id": "D02-AC-16",
+      "name": "exact_retry",
+      "rules": [
+        "RD-09"
+      ],
+      "given": "Se repite identidad de operación y solicitud idéntica",
+      "expected": "Un mismo recibo; no duplicar decisión ni efecto externo."
+    },
+    {
+      "id": "D02-AC-17",
+      "name": "different_retry",
+      "rules": [
+        "RD-09"
+      ],
+      "given": "Misma identidad de operación con otro hash de PDF",
+      "expected": "Conflicto explícito; conservar recibo previo."
+    },
+    {
+      "id": "D02-AC-18",
+      "name": "delivery_gap",
+      "rules": [
+        "RD-10"
+      ],
+      "given": "Commit local confirmado y entrega remota interrumpida",
+      "expected": "Estado local confirmado y entrega pendiente/indeterminada por separado; no afirmar entregado."
+    },
+    {
+      "id": "D02-AC-19",
+      "name": "stale_outbox",
+      "rules": [
+        "RD-10",
+        "RD-15"
+      ],
+      "given": "Revocación o nueva revisión mientras espera entrega",
+      "expected": "No promover enlace actual sin vigencia cercada en destino; mantener histórico y motivo."
+    },
+    {
+      "id": "D02-AC-20",
+      "name": "withdraw_after_delivery",
+      "rules": [
+        "RD-11"
+      ],
+      "given": "Se retira propuesta que ya tiene artefacto entregado",
+      "expected": "Conservar historial; retirada no equivale a retirar bytes externos ni revocar revisión."
+    },
+    {
+      "id": "D02-AC-21",
+      "name": "two_candidates",
+      "rules": [
+        "RD-01",
+        "RD-08"
+      ],
+      "given": "Dos candidatos intentan sustituir la misma revisión actual",
+      "expected": "Sólo uno confirma la revisión esperada; el otro queda en conflicto, sin sobrescritura silenciosa."
+    },
+    {
+      "id": "D02-AC-22",
+      "name": "full_uw_gate",
+      "rules": [
+        "RD-12"
+      ],
+      "given": "Simulación PASS sin revisión final aplicable",
+      "expected": "No se habilita Full UW ni inversión."
+    },
+    {
+      "id": "D02-AC-23",
+      "name": "criteria_only",
+      "rules": [
+        "RD-13"
+      ],
+      "given": "Cambio de umbral con caja independiente demostrada",
+      "expected": "Reusar caja acreditada; recalcular comparaciones y precio dependiente."
+    },
+    {
+      "id": "D02-AC-24",
+      "name": "formula_changed",
+      "rules": [
+        "RD-02",
+        "RD-13"
+      ],
+      "given": "Cambió fórmula productora de un valor",
+      "expected": "Invalidar cierre transitivo; no mezclar runs ni reutilizar valor por ser numéricamente igual."
+    },
+    {
+      "id": "D02-AC-25",
+      "name": "provided_metric",
+      "rules": [
+        "RD-14"
+      ],
+      "given": "Nueva cifra aportada en hoja sin productor financiero ejecutado",
+      "expected": "Registrar aportada, fuente y revisión; no afirmar cálculo propio ni recalcular M2–M8 por ficción."
+    },
+    {
+      "id": "D02-AC-26",
+      "name": "bad_pdf",
+      "rules": [
+        "RD-08"
+      ],
+      "given": "PDF de dos páginas, ilegible o con cifra/unidad no enlazada",
+      "expected": "Bloqueo de publicación; corregir render sin alterar cálculo para encajar."
+    },
+    {
+      "id": "D02-AC-27",
+      "name": "restore_history",
+      "rules": [
+        "RD-01",
+        "RD-11"
+      ],
+      "given": "Restauración de candidatos, retiradas y recibos",
+      "expected": "Recuperar historia y vínculos; la restauración no renueva revisiones ni convierte histórico en vigente."
+    },
+    {
+      "id": "D02-AC-28",
+      "name": "no_real_permission",
+      "rules": [
+        "RD-12",
+        "RD-15"
+      ],
+      "given": "Paquete sintético completo pero sin autorización operativa",
+      "expected": "Sin despliegue, decisión real, contacto externo ni envío de artefactos."
+    }
+  ]
+}

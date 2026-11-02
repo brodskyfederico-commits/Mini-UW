@@ -1,0 +1,318 @@
+{
+  "design_id": "D02",
+  "title": "Ciclo de propuestas revisión y vigencia",
+  "status": "design_only_not_implemented",
+  "baseline_technical_component": "T13",
+  "baseline_commit": "fca1ac489cd1797bb8778d991a9ced560b4a7418",
+  "scope": "Proposed architecture; no production capability or financial policy adoption",
+  "sources": [
+    {
+      "id": "M9-COMPLETE",
+      "path": "docs/model-decision-audit.md",
+      "line": 30,
+      "marker": "La confirmación",
+      "sha256": "a10ca283b98524780037544b0c00b76d0b7e0421f1d788fb57ad9c610ed9f28c"
+    },
+    {
+      "id": "M9-REVISION",
+      "path": "docs/model-decision-audit.md",
+      "line": 38,
+      "marker": "Las revisiones",
+      "sha256": "a10ca283b98524780037544b0c00b76d0b7e0421f1d788fb57ad9c610ed9f28c"
+    },
+    {
+      "id": "M9-ATOMIC",
+      "path": "docs/model-decision-audit.md",
+      "line": 42,
+      "marker": "Preparar resultados",
+      "sha256": "a10ca283b98524780037544b0c00b76d0b7e0421f1d788fb57ad9c610ed9f28c"
+    },
+    {
+      "id": "M9-RETRY",
+      "path": "docs/model-decision-audit.md",
+      "line": 44,
+      "marker": "Reintentos",
+      "sha256": "a10ca283b98524780037544b0c00b76d0b7e0421f1d788fb57ad9c610ed9f28c"
+    },
+    {
+      "id": "M9-AUTH",
+      "path": "docs/model-decision-audit.md",
+      "line": 48,
+      "marker": "Cotejar cifras",
+      "sha256": "a10ca283b98524780037544b0c00b76d0b7e0421f1d788fb57ad9c610ed9f28c"
+    },
+    {
+      "id": "M9-FULL",
+      "path": "docs/model-decision-audit.md",
+      "line": 50,
+      "marker": "Un PASS",
+      "sha256": "a10ca283b98524780037544b0c00b76d0b7e0421f1d788fb57ad9c610ed9f28c"
+    },
+    {
+      "id": "M9-PDF",
+      "path": "docs/model-decision-audit.md",
+      "line": 56,
+      "marker": "Verificar el PDF",
+      "sha256": "a10ca283b98524780037544b0c00b76d0b7e0421f1d788fb57ad9c610ed9f28c"
+    },
+    {
+      "id": "T13-BRANCH",
+      "path": "docs/technical-implementation-T13.md",
+      "line": 3,
+      "marker": "Cada propuesta",
+      "sha256": "4afc529875cd1666c87bb172184480e162864803fd7810ab06f92ad7ff59361e"
+    },
+    {
+      "id": "T13-LIMIT",
+      "path": "docs/technical-implementation-T13.md",
+      "line": 7,
+      "marker": "Se vuelve a ejecutar",
+      "sha256": "4afc529875cd1666c87bb172184480e162864803fd7810ab06f92ad7ff59361e"
+    },
+    {
+      "id": "USER-BAND",
+      "path": "docs/pending-band-policy-decision.json",
+      "location": "current_adopted_option and user_direction",
+      "sha256": "cb5553cc523ab061fd4068b6da55d78421be45bed0330b708bcf911c28b34ee9"
+    }
+  ],
+  "rules": [
+    {
+      "id": "RD-01",
+      "definition": "Conservar la fuente y el candidato originales; cada cambio produce otro candidato con padre y diff explícitos.",
+      "sources": [
+        "T13-BRANCH"
+      ]
+    },
+    {
+      "id": "RD-02",
+      "definition": "Vincular el candidato a deal, run, escenarios y revisiones de fuentes, definiciones, criterios, reglas y manifiesto de dependencias.",
+      "sources": [
+        "M9-REVISION"
+      ]
+    },
+    {
+      "id": "RD-03",
+      "definition": "Comprobar revisión monotónica del contexto además de hashes para rechazar A→B→A y contexto obsoleto.",
+      "sources": [
+        "M9-ATOMIC"
+      ]
+    },
+    {
+      "id": "RD-04",
+      "definition": "Evaluar completitud de todo lo requerido antes de clasificar; ningún aprobado:true ni incumplimiento conocido elimina faltantes.",
+      "sources": [
+        "M9-COMPLETE"
+      ]
+    },
+    {
+      "id": "RD-05",
+      "definition": "Conservar banda intermedia PENDING; no optimizar variables para cambiar el resultado.",
+      "sources": [
+        "USER-BAND",
+        "T13-BRANCH"
+      ]
+    },
+    {
+      "id": "RD-06",
+      "definition": "Una revisión sólo puede usarse con identidad autenticada, autoridad acreditada, alcance exacto, evidencia y vigencia verificables.",
+      "sources": [
+        "M9-AUTH"
+      ]
+    },
+    {
+      "id": "RD-07",
+      "definition": "Expiración, revocación o cambio de alcance impiden usar la revisión en una nueva publicación; una renovación crea evidencia nueva.",
+      "sources": [
+        "M9-RETRY"
+      ]
+    },
+    {
+      "id": "RD-08",
+      "definition": "Preparar PDF y resultados sobre un manifiesto inmutable; el registro de decisión vigente, control de revisión y recibo local deben ser una única transacción.",
+      "sources": [
+        "M9-ATOMIC",
+        "M9-PDF"
+      ]
+    },
+    {
+      "id": "RD-09",
+      "definition": "Reintento con misma identidad y contenido devuelve mismo recibo; misma identidad con contenido diferente se rechaza.",
+      "sources": [
+        "M9-RETRY"
+      ]
+    },
+    {
+      "id": "RD-10",
+      "definition": "La entrega externa es un efecto distinto del commit local. Sin garantías de vigencia en el destino, no afirmar publicación distribuida atómica.",
+      "sources": [
+        "M9-ATOMIC"
+      ]
+    },
+    {
+      "id": "RD-11",
+      "definition": "Retirar o sustituir una propuesta no borra evidencia ni retira por sí solo una publicación ya entregada.",
+      "sources": [
+        "T13-BRANCH",
+        "M9-RETRY"
+      ]
+    },
+    {
+      "id": "RD-12",
+      "definition": "PASS de screening no autoriza inversión ni acceso automático a Full UW; conservar puerta de revisión final aplicable y vigente.",
+      "sources": [
+        "M9-FULL"
+      ]
+    },
+    {
+      "id": "RD-13",
+      "definition": "Reusar caja sólo con independencia acreditada; cambios de criterios invalidan comparaciones y precios dependientes.",
+      "sources": [
+        "M9-REVISION"
+      ]
+    },
+    {
+      "id": "RD-14",
+      "definition": "Mantener fuente de métricas aportadas separada de productor financiero propio; T13 sólo reevalúa comparaciones.",
+      "sources": [
+        "T13-LIMIT"
+      ]
+    },
+    {
+      "id": "RD-15",
+      "definition": "Fallo o incertidumbre al consultar vigencia/identidad/revocación bloquea promoción; no se usa una última respuesta positiva como permiso.",
+      "sources": [
+        "M9-AUTH",
+        "M9-ATOMIC"
+      ]
+    }
+  ],
+  "candidate_record_fields": {
+    "candidate_manifest": [
+      "candidate_id",
+      "parent_candidate_id",
+      "deal_id",
+      "scenario_inventory",
+      "run_id",
+      "source_revisions",
+      "definition_revisions",
+      "criteria_revision",
+      "rule_revisions",
+      "dependency_manifest_sha256",
+      "context_epoch",
+      "candidate_sha256",
+      "proposed_diff",
+      "reason",
+      "declared_evidence_refs"
+    ],
+    "lifecycle_event": [
+      "event_id",
+      "aggregate_id",
+      "expected_event_revision",
+      "new_event_revision",
+      "operation_id",
+      "request_sha256",
+      "event_type",
+      "actor_evidence_ref",
+      "observed_at",
+      "reason",
+      "prior_event_sha256"
+    ],
+    "review_assessment": [
+      "assessment_id",
+      "candidate_sha256",
+      "review_scope",
+      "reviewer_identity_evidence_ref",
+      "authority_evidence_ref",
+      "verification_policy_revision",
+      "decision",
+      "verified_at",
+      "validity_interval",
+      "revocation_epoch",
+      "evidence_refs"
+    ],
+    "publication_request": [
+      "operation_id",
+      "request_sha256",
+      "candidate_sha256",
+      "expected_context_epoch",
+      "assessment_ids",
+      "expected_revocation_epochs",
+      "pdf_sha256",
+      "render_audit_ref",
+      "requested_effect"
+    ],
+    "local_commit_receipt": [
+      "receipt_id",
+      "operation_id",
+      "request_sha256",
+      "candidate_sha256",
+      "context_epoch",
+      "decision_record_ref",
+      "pdf_sha256",
+      "authorization_evidence_refs",
+      "committed_at",
+      "delivery_state"
+    ],
+    "delivery_observation": [
+      "receipt_id",
+      "destination_ref",
+      "attempt_id",
+      "observed_at",
+      "status",
+      "destination_receipt_ref",
+      "freshness_fence_ref",
+      "failure_reason"
+    ]
+  },
+  "independent_state_dimensions": {
+    "proposal": [
+      "recorded",
+      "withdrawn",
+      "superseded"
+    ],
+    "calculation": [
+      "not_evaluated",
+      "blocked",
+      "reproduced",
+      "stale"
+    ],
+    "review": [
+      "not_requested",
+      "requested",
+      "evidence_unverified",
+      "scope_verified",
+      "rejected",
+      "expired",
+      "revoked"
+    ],
+    "local_publication": [
+      "not_prepared",
+      "prepared",
+      "committed",
+      "superseded"
+    ],
+    "external_delivery": [
+      "not_requested",
+      "queued",
+      "confirmed",
+      "failed",
+      "indeterminate"
+    ]
+  },
+  "operational_decision_current": "PENDING",
+  "authority_matrix_adopted": false,
+  "review_authenticated": false,
+  "publication_implemented": false,
+  "external_delivery_authorized": false,
+  "new_runtime_code": false,
+  "financial_modules_closed": 0,
+  "open_integration_choices": [
+    "Identity/authority verification mechanism and approved review scope",
+    "Transactional boundary and revocation freshness service",
+    "Destination fencing and external delivery guarantees",
+    "Render materiality and independently validated financial inputs"
+  ],
+  "design_acceptance_case_count": 28,
+  "case_execution_status": "specified_not_executed"
+}

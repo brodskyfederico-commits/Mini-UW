@@ -50,3 +50,7 @@ T11 compara métricas y criterios sintéticos expresos, preserva bandas/conflict
 T12 aplica la decisión del usuario de conservar bandas intermedias PENDIENTES y prepara su revisión sin alterar variables automáticamente. Nuevos valores/criterios requieren nueva evidencia y recalculación; las versiones previas se conservan. [Regla, alcance y pruebas T12](docs/technical-implementation-T12.md). Total: 254 pruebas técnicas. No habilita decisiones reales ni despliegue.
 
 T13 registra propuestas sintéticas de revisión, conserva el caso original y vuelve a comparar una versión candidata con cambios explícitos y evidencia declarada. [Contrato y demostración T13](docs/technical-implementation-T13.md). Total: 273 pruebas técnicas. Las propuestas no equivalen a revisión profesional autenticada ni a decisiones reales.
+
+## Ampliación del diseño de revisión
+
+[Propuestas, revisión y vigencia](docs/review-lifecycle-design.md) desarrolla M9 después de T13: estados separados, revisión del contexto, revocación, concurrencia y entrega externa. Incluye 15 reglas trazables y 28 casos de aceptación especificados, aún sin ejecutar. Es diseño documental; no añade código runtime ni habilita decisiones reales. [Estado de ampliaciones de diseño](docs/design-evolution-status.json).

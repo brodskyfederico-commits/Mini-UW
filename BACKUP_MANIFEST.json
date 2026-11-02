@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design plus T01–T13 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02 review lifecycle extension and T01–T13 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 8390,
-      "sha256": "b1c8b03a9ccac286aa7b8b1fd8b96adef7524ee96f568bb130c42379dc5a035f"
+      "bytes": 8859,
+      "sha256": "4983189cc118d0d1bbefc88fb8241e34715eb57d34e268e4cc6b3dcc569f694a"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 43801,
-      "sha256": "d000bdfa65a7cc30df9b9294d12789b6e43915284829cf8d2619e46fcea9ef77"
+      "bytes": 44859,
+      "sha256": "bf12dc7d0a899917bd0d08240b306fd8d378cd3b6d11a9c54b2bfb3197bb6123"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -100,6 +100,11 @@
       "path": "docs/decision-input-contract.md",
       "bytes": 2872,
       "sha256": "2d2637d6889b1dec3d92df42b789dda495f6f7c98f8ccf22839f46fb47a22981"
+    },
+    {
+      "path": "docs/design-evolution-status.json",
+      "bytes": 904,
+      "sha256": "6af39c603ca1661f19d741751f135bf8a7fc6c356984a2f8b6108c659a0be389"
     },
     {
       "path": "docs/evidence-locator-contract.md",
@@ -330,6 +335,21 @@
       "path": "docs/review/pdf-review-validation.json",
       "bytes": 367,
       "sha256": "d76008398e1324b0709f0df8220d92fa249863f41c664188a2bbc624d6866fd6"
+    },
+    {
+      "path": "docs/review-lifecycle-acceptance-cases.json",
+      "bytes": 8050,
+      "sha256": "ede583b02cc2a71967eea2fd1295efeff9d3c265e0495d6ef08c0b60ea514cb9"
+    },
+    {
+      "path": "docs/review-lifecycle-design.json",
+      "bytes": 9224,
+      "sha256": "0cde061ffd60302a87bc87db39d6e85ae6b3249610057f692765f8381525a41a"
+    },
+    {
+      "path": "docs/review-lifecycle-design.md",
+      "bytes": 10875,
+      "sha256": "9d89b538de4c8f15fa7a61a4db87d9196b5691c68d5233ed7c5951cd2a2efa04"
     },
     {
       "path": "docs/revision-scenario-integrity.md",
