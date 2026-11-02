@@ -1,7 +1,7 @@
 {
   "phase": "post-I01 synthetic technical implementation",
   "user_authorized": true,
-  "component": "T04",
+  "component": "T05",
   "status": "local_implementation_verified_pending_remote_receipt",
   "implemented": [
     "fresh raw-claim drafts from unchanged 55-input/10-criterion template",
@@ -17,9 +17,12 @@
     "source-locator verification and same-engine reproduction on capture/recovery",
     "source-first archive/import with explicit cross-database failure semantics",
     "explicit UTF-8 synthetic CSV sheet adapter with logical-record/column locators",
-    "mixed JSON/CSV source archive verification and execution recovery"
+    "mixed JSON/CSV source archive verification and execution recovery",
+    "bounded synthetic XLSX table reader with exact worksheet/cell provenance",
+    "explicit formula/cache/error inspection without formula execution or cached-input adoption",
+    "XLSX source archive verification and recovery with JSON/CSV compatibility"
   ],
-  "unit_tests": 96,
+  "unit_tests": 118,
   "plan_packages_partially_addressed": [
     "IMP-01",
     "IMP-06"
@@ -32,7 +35,7 @@
   "deployment_enabled": false,
   "production_ready": false,
   "next_independent_work": [
-    "synthetic XLSX adapter with explicit formula/cache handling",
+    "adaptation of explicit input-sheet formats using synthetic data",
     "integration of defined scoped calculation profiles without policy adoption",
     "atomic evidence/currentness recording without publishing real decisions"
   ],
@@ -41,13 +44,15 @@
     "T01",
     "T02",
     "T03",
-    "T04"
+    "T04",
+    "T05"
   ],
   "tests_by_component": {
     "T01": 31,
     "T02": 21,
     "T03": 22,
-    "T04": 22
+    "T04": 22,
+    "T05": 22
   },
   "not_yet_implemented": [
     "complete financial graph and its designed cycles",
@@ -59,5 +64,7 @@
   "durable_execution_archive_implemented": true,
   "runtime_archives_included_in_git_backup": false,
   "synthetic_csv_sheet_adapter_implemented": true,
-  "xlsx_adapter_implemented": false
+  "xlsx_adapter_implemented": true,
+  "xlsx_adapter_scope": "explicit single Synthetic worksheet profile only",
+  "lorena_real_workbook_adapter_completed": false
 }
