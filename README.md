@@ -26,3 +26,5 @@ GitHub preserva los materiales publicados; runtime, bases de datos, secretos, do
 ## Implementación técnica posterior a I01
 
 El usuario autorizó implementar con datos sintéticos, sin despliegue ni decisiones reales. El primer componente T01 conserva declaraciones literales, fuentes declaradas y versiones transaccionales locales; no calcula ni emite PASS/FAIL. [Alcance, uso y pruebas T01](docs/technical-implementation-T01.md), [estado técnico vigente](docs/technical-implementation-status.json) y [restauración comprobada del respaldo I01](docs/backup-restoration-I01.json). Los registros I01 permanecen como fotografía del diseño; el estado técnico posterior se registra aparte.
+
+T02 agrega ejecución de dependencias sintéticas y detección de resultados afectados por cambios de fuente, definición o contexto. Mantiene por separado la vigencia del snapshot completo y las huellas de ramas independientes. [Alcance y demostración T02](docs/technical-implementation-T02.md). Total actual: 52 pruebas técnicas; la ejecución financiera integrada y publicación siguen pendientes.
