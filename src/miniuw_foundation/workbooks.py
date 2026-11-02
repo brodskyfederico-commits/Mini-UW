@@ -88,6 +88,48 @@ def _text(element):
     return ''.join(t.text or '' for t in element.iter('{'+MAIN+'}t'))
 
 
+def _read_cell(cell, strings, sheet_part):
+    formulas = cell.findall('{'+MAIN+'}f')
+    values = cell.findall('{'+MAIN+'}v')
+    inlines = cell.findall('{'+MAIN+'}is')
+    if len(inlines) > 1 or (inlines and (formulas or values or cell.get('t') != 'inlineStr')):
+        raise ValidationError('ambiguous inline/formula/value cell')
+    if any(child.tag not in ('{'+MAIN+'}f','{'+MAIN+'}v','{'+MAIN+'}is') for child in cell):
+        raise ValidationError('unsupported cell element')
+    if len(formulas) > 1 or len(values) > 1:
+        raise ValidationError('ambiguous cell formula/value')
+    value = values[0].text if values else None
+    kind, literal = 'blank', None
+    cell_type = cell.get('t','n')
+    if formulas:
+        kind = 'formula'
+    elif cell_type == 'inlineStr':
+        inline = cell.find('{'+MAIN+'}is')
+        if values:
+            raise ValidationError('invalid inline string cell')
+        kind, literal = 'text', _text(inline) if inline is not None else ''
+    elif cell_type == 's':
+        if value is None or len(value) > 7 or not value.isascii() or not value.isdigit() or int(value) >= len(strings):
+            raise ValidationError('invalid shared string index')
+        kind, literal = 'text', strings[int(value)]
+    elif cell_type == 'n' and value is not None:
+        if not re.fullmatch(r'[-+]?(?:[0-9]+(?:\.[0-9]*)?|\.[0-9]+)(?:[eE][-+]?[0-9]+)?',value):
+            raise ValidationError('invalid numeric lexeme')
+        kind, literal = 'numeric_lexeme', value
+    elif cell_type == 'e':
+        kind = 'excel_error'
+    elif cell_type != 'n':
+        raise ValidationError('unsupported XLSX cell type; no coercion')
+    if any(len(x or '') > MAX_FIELD_CHARS for x in (literal,value,formulas[0].text if formulas else None)):
+        raise ValidationError('cell exceeds technical text bound')
+    return {'kind':kind,'literal':literal,'cell_type':cell_type,
+        'formula':formulas[0].text if formulas else None,
+        'formula_attributes':dict(formulas[0].attrib) if formulas else None,
+        'cached_value':value if formulas else None,
+        'error_value':value if kind == 'excel_error' else None,
+        'style_id':cell.get('s'), 'sheet_part':sheet_part}
+
+
 @dataclass(frozen=True)
 class WorkbookInspection:
     source_sha256: str
@@ -160,45 +202,7 @@ def inspect_synthetic_xlsx(raw):
             match = re.fullmatch('([A-H])([1-9][0-9]*)',reference)
             if cell.tag != '{'+MAIN+'}c' or not match or match[2] != number or reference in cells:
                 raise ValidationError('invalid, out-of-profile or duplicate cell coordinate')
-            formulas = cell.findall('{'+MAIN+'}f')
-            values = cell.findall('{'+MAIN+'}v')
-            inlines = cell.findall('{'+MAIN+'}is')
-            if len(inlines) > 1 or (inlines and (formulas or values or cell.get('t') != 'inlineStr')):
-                raise ValidationError('ambiguous inline/formula/value cell')
-            if any(child.tag not in ('{'+MAIN+'}f','{'+MAIN+'}v','{'+MAIN+'}is') for child in cell):
-                raise ValidationError('unsupported cell element')
-            if len(formulas) > 1 or len(values) > 1:
-                raise ValidationError('ambiguous cell formula/value')
-            value = values[0].text if values else None
-            kind, literal = 'blank', None
-            cell_type = cell.get('t','n')
-            if formulas:
-                kind = 'formula'
-            elif cell_type == 'inlineStr':
-                inline = cell.find('{'+MAIN+'}is')
-                if inline is None or values:
-                    raise ValidationError('invalid inline string cell')
-                kind, literal = 'text', _text(inline)
-            elif cell_type == 's':
-                if value is None or len(value) > 7 or not value.isascii() or not value.isdigit() or int(value) >= len(strings):
-                    raise ValidationError('invalid shared string index')
-                kind, literal = 'text', strings[int(value)]
-            elif cell_type == 'n' and value is not None:
-                if not re.fullmatch(r'[-+]?(?:[0-9]+(?:\.[0-9]*)?|\.[0-9]+)(?:[eE][-+]?[0-9]+)?',value):
-                    raise ValidationError('invalid numeric lexeme')
-                kind, literal = 'numeric_lexeme', value
-            elif cell_type == 'e':
-                kind = 'excel_error'
-            elif cell_type != 'n':
-                raise ValidationError('unsupported XLSX cell type; no coercion')
-            if any(len(x or '') > MAX_FIELD_CHARS for x in (literal,value,formulas[0].text if formulas else None)):
-                raise ValidationError('cell exceeds technical text bound')
-            cells[reference] = {'kind':kind,'literal':literal,'cell_type':cell_type,
-                'formula':formulas[0].text if formulas else None,
-                'formula_attributes':dict(formulas[0].attrib) if formulas else None,
-                'cached_value':value if formulas else None,
-                'error_value':value if kind == 'excel_error' else None,
-                'style_id':cell.get('s'), 'sheet_part':sheet_part}
+            cells[reference] = _read_cell(cell, strings, sheet_part)
     def text_at(reference):
         record = cells.get(reference,{})
         if record.get('kind') != 'text':

@@ -2,7 +2,7 @@
 from .drafts import ValidationError
 from .intake import MAX_BYTES, parse_synthetic_claims
 from .sheets import parse_synthetic_sheet
-from .workbooks import parse_synthetic_xlsx
+from .inputsheet import parse_workbook_source
 
 
 def parse_source_claims(raw):
@@ -10,7 +10,7 @@ def parse_source_claims(raw):
         raise ValidationError('bounded nonempty synthetic source bytes required')
     # No dialect/header/locale guessing: each parser requires its own explicit schema.
     if raw.startswith(b'PK'):
-        return parse_synthetic_xlsx(raw)
+        return parse_workbook_source(raw)
     if raw.lstrip().startswith(b'{'):
         return parse_synthetic_claims(raw)
     return parse_synthetic_sheet(raw)
