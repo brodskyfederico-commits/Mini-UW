@@ -1,0 +1,233 @@
+{
+  "document_id": "FLOW02",
+  "title": "Mini-UW Flujo y retorno del inversor",
+  "date": "2026-11-02",
+  "purpose": "two-page design summary, not a deal decision",
+  "technical_cutoff": "T22",
+  "baseline_commit": "8172125aebbfb01c155fb37dcd9a03d4ea435f39",
+  "supersedes_document_id": "FLOW01",
+  "investor_return_questions": [
+    "Aporte inicial y adicionales: monto y fecha.",
+    "Refi: cobro neto y mes de recuperación.",
+    "Cash-in: aporte extra necesario.",
+    "Capital que sigue invertido.",
+    "Equity retenido: valor, no dinero cobrado.",
+    "Caja neta anual al inversor y CoC.",
+    "Venta: fecha y cobro neto al inversor.",
+    "Cobros/ganancia ($), EM (x) y TIR anual (%).",
+    "Riesgo: menor retorno o más aportes."
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "title": "Recibir el proyecto",
+      "description": "Originales, planos/programa, presupuesto del constructor, términos bancarios y hoja de Lorena con valores de métricas. Identificar documentos disponibles."
+    },
+    {
+      "step": 2,
+      "title": "Separar y trazar la información",
+      "description": "Distinguir datos del proyecto, métricas aportadas, supuestos, criterios de inversión y condiciones bancarias. Registrar fuente, versión, unidad, moneda y período."
+    },
+    {
+      "step": 3,
+      "title": "Comprobar que se puede evaluar",
+      "description": "Verificar cantidades, definiciones, escenarios, aplicabilidad y reglas requeridas. Faltante o contradicción → PENDIENTE y nueva revisión de la entrada."
+    },
+    {
+      "step": 4,
+      "title": "Construir la economía y el flujo del inversor",
+      "description": "Validar métricas aportadas. Calcular lo necesario: renta/gastos/NOI; costo/calendario/deuda; refinanciación/venta. Construir aportes y cobros del inversor con fechas, capital remanente y retornos. Conciliar aportado vs. calculado."
+    },
+    {
+      "step": 5,
+      "title": "Probar el retorno y el riesgo por escenario",
+      "description": "Mostrar aportes, cobros, fechas y retornos en Base y Downside. Aplicar sólo cambios expresos y conciliar caja, deuda y capital en cada escenario requerido."
+    },
+    {
+      "step": 6,
+      "title": "Comparar retornos y clasificar",
+      "description": "Mostrar ganancia, múltiplo, IRR/TIR y caja del inversor; contrastar las 10 métricas con sus criterios. PASS/FAIL sólo con evaluación completa; banda → PENDIENTE."
+    },
+    {
+      "step": 7,
+      "title": "Revisar la versión final",
+      "description": "Revisión financiera aplicable, discrepancias resueltas y revisión humana auténtica vinculada a esa versión. Si cambian datos o reglas, recalcular y revisar."
+    },
+    {
+      "step": 8,
+      "title": "Entregar en una página: cuánto recibo y cuándo",
+      "description": "«Aporto $10; cobro $X en el mes M; quedan $Y invertidos; recibo $Z/año; al vender cobro $V. Ganancia $G; EM nx; TIR anual r%.» Mostrar aportes extra, equity retenido (no cobrado), riesgos y dictamen."
+    }
+  ],
+  "metric_names": [
+    "YoC (NOI / costo total)",
+    "Spread frente al cap",
+    "Capital recuperado en refinanciación",
+    "Capital adicional en refinanciación",
+    "Ocupación de equilibrio",
+    "Rendimiento de caja pos-refi (CoC)",
+    "Capital propio / costo total",
+    "Múltiplo del capital (EM)",
+    "IRR / TIR apalancada",
+    "Precio pedido frente a RLV"
+  ],
+  "variables": [
+    {
+      "group": "Proyecto y programa",
+      "summary": "Identidad, ubicación/jurisdicción y estrategia; unidades por tipo y condición mercado/asequible, nivel AMI; áreas rentables/brutas (NRSF/GSF), áreas comerciales por uso, estacionamientos y superficie del sitio.",
+      "original_input_cells": []
+    },
+    {
+      "group": "Rentas e ingresos",
+      "summary": "Base por unidad o SF; rentas mensuales por tipo (Studio/1BR/2BR/3BR); comparables/fecha; otros ingresos, vacancia/pérdidas, concesiones y deducción por servicios (utility allowance). Comercial: renta NNN anual por uso, vacancia, no recuperable e inicio después de TCO.",
+      "original_input_cells": [
+        "C7",
+        "C8",
+        "C9",
+        "C10",
+        "C11",
+        "C12",
+        "C13",
+        "C14",
+        "C15",
+        "C16",
+        "C17",
+        "C18",
+        "C19",
+        "C20",
+        "C21",
+        "C25",
+        "C26",
+        "C27",
+        "C28"
+      ]
+    },
+    {
+      "group": "Gastos e impuestos",
+      "summary": "Gastos controlables, administración y su base, seguro y reservas de reposición; impuesto comparable y assessment ratio; millage, valoración y exención/elegibilidad documentadas, si corresponden.",
+      "original_input_cells": [
+        "C57",
+        "C58",
+        "C59",
+        "C60",
+        "C61",
+        "C62"
+      ]
+    },
+    {
+      "group": "Presupuesto",
+      "summary": "Precio pedido (asking), compra evaluada y cierre; base/valor de obra, GSF, estacionamientos y sitio; inclusiones/exclusiones del constructor; contingencias; costos indirectos y honorarios del desarrollador; TI/LC comercial; porcentaje de indirectos adelantado.",
+      "original_input_cells": [
+        "C32",
+        "C33",
+        "C34",
+        "C35",
+        "C36",
+        "C37",
+        "C38",
+        "C39",
+        "C40",
+        "C41",
+        "C42"
+      ]
+    },
+    {
+      "group": "Calendario, obra y capital",
+      "summary": "Fechas de compra/inicio/TCO/fin/estabilización; duración de obra y ocupación inicial (lease-up); curvas de pagos, anticipos y retenciones. LTC/costo elegible; tasa/convención/comisiones de obra; desembolsos, intereses, capital requerido/disponible/aportado, saldo y liquidación.",
+      "original_input_cells": [
+        "C46",
+        "C47",
+        "C51",
+        "C52",
+        "C53"
+      ]
+    },
+    {
+      "group": "Refinanciación",
+      "summary": "NOI/cap de refinanciación y valor; LTV máximo, DSCR mínimo, tasa, amortización y vencimiento; costos, reservas permanentes y otras deudas; fondos netos, distribución/aporte adicional, fondos restringidos y capital remanente.",
+      "original_input_cells": [
+        "C66",
+        "C69",
+        "C70",
+        "C71",
+        "C72",
+        "C73",
+        "C74"
+      ]
+    },
+    {
+      "group": "Tenencia, venta y retornos",
+      "summary": "Horizonte/fechas; aportes y cobros brutos; refi, caja anual y venta neta; capital remanente y equity retenido; ganancia neta, EM, IRR y CoC; crecimientos de renta/gasto, NOI futuro, cap de salida, costos/impuestos y deuda/balloon. LP/JV sólo con términos.",
+      "original_input_cells": [
+        "C67",
+        "C68",
+        "C75",
+        "C76"
+      ]
+    },
+    {
+      "group": "Escenarios, precio y criterios",
+      "summary": "Escenarios exigidos, cambios y aplicabilidad; sensibilidades y alternativas solicitadas; objetivos/dominio del precio soportado (RLV). Cada métrica: valor, definición, unidad, período, escenario, umbral, operador, igualdad y fuente.",
+      "original_input_cells": [
+        "C80",
+        "C81",
+        "C82"
+      ]
+    }
+  ],
+  "unbreakable_rules": [
+    {
+      "number": 1,
+      "rule": "Nada inventado",
+      "definition": "En un proyecto real, cada dato y regla debe tener fuente. No usar valores por defecto históricos o de otro proyecto. Separar las pruebas sintéticas."
+    },
+    {
+      "number": 2,
+      "rule": "Bloqueos antes del dictamen",
+      "definition": "Faltantes, contradicciones, reglas indefinidas o banda intermedia → PENDIENTE, aun con otro incumplimiento conocido. Cero, vacío e indefinido son distintos."
+    },
+    {
+      "number": 3,
+      "rule": "Valores y criterios separados",
+      "definition": "Criterios nuevos y expresos por proyecto; condiciones bancarias aparte. No inventar umbrales ni convertir una raya en N/A sin aplicabilidad resuelta."
+    },
+    {
+      "number": 4,
+      "rule": "Comparación compatible",
+      "definition": "Misma definición, base, moneda, unidad, período y escenario. Operadores, igualdad y tolerancias expresos. Comparar antes de redondear; no sustituir un denominador cero."
+    },
+    {
+      "number": 5,
+      "rule": "Sin doble cuenta",
+      "definition": "No duplicar costos, concesiones, reservas o cobros. Conservar aportes/distribuciones brutos. El valor de equity retenido no es caja recibida."
+    },
+    {
+      "number": 6,
+      "rule": "Economía y caja distintas",
+      "definition": "NOI no equivale a caja distribuible; crédito comprometido no es desembolso; saldo no es liquidación total. Separar amortización, vencimiento y balloon."
+    },
+    {
+      "number": 7,
+      "rule": "Escenarios completos",
+      "definition": "No copiar vacíos de Base ni omitir escenarios requeridos. Sólo cambios expresos; Upside no rescata Base. No sumar sensibilidades como Downside integrado."
+    },
+    {
+      "number": 8,
+      "rule": "Cambios con historia",
+      "definition": "Preservar originales y versiones. Recalcular dependientes, comparaciones y precio afectado. No mezclar ejecuciones ni ajustar variables automáticamente para conseguir PASS."
+    },
+    {
+      "number": 9,
+      "rule": "Revisión auténtica y vigente",
+      "definition": "Vincular identidad, autoridad, alcance y decisión a la versión revisada. Un nombre, casilla o hash no aprueba; una revisión vencida o revocada no habilita uso posterior."
+    },
+    {
+      "number": 10,
+      "rule": "Entrega controlada",
+      "definition": "Un PDF externo de una página, legible y ligado a la versión vigente; detalle interno preservado. PASS no es aprobación de inversión ni entrada automática al Full UW."
+    }
+  ],
+  "financial_model_complete": false,
+  "real_decisions_enabled": false,
+  "professional_review_received": false
+}
