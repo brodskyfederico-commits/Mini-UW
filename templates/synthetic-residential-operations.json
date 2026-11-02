@@ -1,0 +1,76 @@
+{
+  "schema": "miniuw.synthetic-residential-operations.v1",
+  "context": {
+    "deal_id": "SYNTHETIC-residential-demo",
+    "scenario_id": "SYNTHETIC-Base",
+    "run_id": "SYNTHETIC-residential-run",
+    "definition_set_revision": "SYNTHETIC-explicit-residential-tax-contracts-v1"
+  },
+  "currency": "USD",
+  "period_ref": "SYNTHETIC-regular-year-1",
+  "months_in_period": 12,
+  "months_per_year": 12,
+  "residential_groups": [
+    {
+      "group_id": "SYNTHETIC-market-1",
+      "units": {
+        "numerator": "10",
+        "denominator": "1"
+      },
+      "unit_rentable_sf": null,
+      "rent": {
+        "numerator": "100",
+        "denominator": "1"
+      },
+      "rent_basis": "per_unit_per_month",
+      "rent_definition": "gross_before_losses_and_concessions",
+      "loss_fraction": {
+        "numerator": "1",
+        "denominator": "10"
+      },
+      "concession_fraction": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "concession_basis": "after_vacancy_rent",
+      "currency": "USD",
+      "source_ref": "SYNTHETIC-provided-rent-and-unit-count",
+      "policy_ref": "SYNTHETIC-explicit-loss-and-concession-basis"
+    }
+  ],
+  "expense_items": [
+    {
+      "item_id": "SYNTHETIC-management",
+      "kind": "fraction_of_residential_effective_rent",
+      "rate": {
+        "numerator": "1",
+        "denominator": "20"
+      },
+      "currency": "USD",
+      "source_ref": "SYNTHETIC-expense-source:SYNTHETIC-management",
+      "policy_ref": "SYNTHETIC-explicit-expense-base:SYNTHETIC-management"
+    },
+    {
+      "item_id": "SYNTHETIC-per-unit-opex",
+      "kind": "per_unit_per_regular_year",
+      "rate": {
+        "numerator": "12",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "source_ref": "SYNTHETIC-expense-source:SYNTHETIC-per-unit-opex",
+      "policy_ref": "SYNTHETIC-explicit-expense-base:SYNTHETIC-per-unit-opex"
+    },
+    {
+      "item_id": "SYNTHETIC-fixed-opex",
+      "kind": "fixed_per_declared_period",
+      "rate": {
+        "numerator": "140",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "source_ref": "SYNTHETIC-expense-source:SYNTHETIC-fixed-opex",
+      "policy_ref": "SYNTHETIC-explicit-expense-base:SYNTHETIC-fixed-opex"
+    }
+  ]
+}

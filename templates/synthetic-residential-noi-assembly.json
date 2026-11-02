@@ -1,0 +1,52 @@
+{
+  "schema": "miniuw.synthetic-residential-noi-assembly.v1",
+  "context": {
+    "deal_id": "SYNTHETIC-residential-demo",
+    "scenario_id": "SYNTHETIC-Base",
+    "run_id": "SYNTHETIC-residential-run",
+    "definition_set_revision": "SYNTHETIC-explicit-residential-tax-contracts-v1"
+  },
+  "rental_source_sha256": "1704c496be7e60afcebd68af91fef87d24418d41629fe1df969e59eb6eade356",
+  "rental_run_sha256": "793ee66975faf789a08de3e5193d724a5c5663dd7d7cfb875ba2c6afa5f6e57f",
+  "additional_income_inventory_declared_complete": true,
+  "additional_income_rows": [
+    {
+      "value": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "period_ref": "SYNTHETIC-regular-year-1",
+      "unit": "currency_per_declared_period",
+      "basis": "accrual",
+      "source_ref": "SYNTHETIC-explicit-additional-income-or-tax-input",
+      "item_id": "SYNTHETIC-other-commercial-income-explicit-zero"
+    }
+  ],
+  "tax_floor": {
+    "value": {
+      "numerator": "100",
+      "denominator": "1"
+    },
+    "currency": "USD",
+    "period_ref": "SYNTHETIC-regular-year-1",
+    "unit": "currency_per_declared_period",
+    "basis": "accrual",
+    "source_ref": "SYNTHETIC-explicit-additional-income-or-tax-input"
+  },
+  "tax_coefficient": {
+    "value": {
+      "numerator": "1",
+      "denominator": "4"
+    },
+    "unit": "scalar",
+    "source_ref": "SYNTHETIC-explicit-fixed-coefficient-not-legal-rule"
+  },
+  "noi_modelling_assumptions": {
+    "same_period_accrual": true,
+    "tax_model": "max_floor_or_fixed_coefficient_times_noi",
+    "coefficient_fixed": true,
+    "additional_tax_adjustments": false,
+    "rounding": "none_exact"
+  }
+}

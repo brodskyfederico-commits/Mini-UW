@@ -1,7 +1,7 @@
 {
   "phase": "post-I01 synthetic technical implementation",
   "user_authorized": true,
-  "component": "T20",
+  "component": "T22",
   "status": "local_implementation_verified_pending_remote_receipt",
   "implemented": [
     "fresh raw-claim drafts from unchanged 55-input/10-criterion template",
@@ -55,9 +55,11 @@
     "synthetic lifecycle queue with monotonic revision guards, exact retry and concurrent writer exclusion",
     "bounded deterministic one-page internal synthetic scorecard bound to replayed evidence",
     "conditional same-period accrued NOI producer with exact max-tax equation and replay",
-    "computed NOI to regular annual debt-service equivalent DSCR bridge with source/run/context/period binding"
+    "computed NOI to regular annual debt-service equivalent DSCR bridge with source/run/context/period binding",
+    "explicit residential rent basis, loss/concession and selected expense producers",
+    "source-bound residential/expense to conditional NOI assembly and verified two-bundle DSCR chain"
   ],
-  "unit_tests": 390,
+  "unit_tests": 419,
   "plan_packages_partially_addressed": [
     "IMP-01",
     "IMP-06",
@@ -73,10 +75,10 @@
   "deployment_enabled": false,
   "production_ready": false,
   "next_independent_work": [
-    "remaining revenue, budget and general-calendar producers with explicit policies",
-    "explicit metric/scenario applicability evidence without treating a dash as approval",
-    "complete financial publication and review authority safeguards",
-    "broader input mapping and scenario evidence integration"
+    "commercial-income and cost-budget producers under explicit profiles",
+    "general calendars, lease-up and cash reconciliation",
+    "explicit metric/scenario applicability evidence",
+    "complete financial publication and review authority safeguards"
   ],
   "I01_snapshot_preserved": true,
   "components_implemented": [
@@ -99,7 +101,9 @@
     "T17",
     "T18",
     "T19",
-    "T20"
+    "T20",
+    "T21",
+    "T22"
   ],
   "tests_by_component": {
     "T01": 31,
@@ -121,7 +125,9 @@
     "T17": 17,
     "T18": 12,
     "T19": 21,
-    "T20": 15
+    "T20": 15,
+    "T21": 16,
+    "T22": 13
   },
   "not_yet_implemented": [
     "complete financial graph and its designed cycles",
@@ -169,5 +175,9 @@
   "conditional_operating_noi_producer_implemented": true,
   "computed_noi_dscr_bridge_implemented": true,
   "durable_operating_noi_bundles_implemented": true,
-  "durable_operating_dscr_bundles_implemented": true
+  "durable_operating_dscr_bundles_implemented": true,
+  "synthetic_residential_operations_producer_implemented": true,
+  "residential_to_noi_assembly_implemented": true,
+  "durable_residential_bundles_implemented": true,
+  "durable_residential_noi_bundles_implemented": true
 }

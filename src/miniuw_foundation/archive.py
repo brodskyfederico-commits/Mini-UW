@@ -40,6 +40,11 @@ from .operating_noi import ENGINE_SHA256 as OPERATING_NOI_ENGINE_SHA256
 from .operating_noi import definition_sources as operating_noi_definition_sources
 from .operating_dscr import OperatingDscrBinding,OperatingDscrRun,calculate_operating_dscr
 from .operating_dscr import ENGINE_SHA256 as OPERATING_DSCR_ENGINE_SHA256
+from .rental_operations import RentalOperationsRun,parse_rental_operations,produce_rental_operations
+from .rental_operations import ENGINE_SHA256 as RENTAL_ENGINE_SHA256
+from .rental_operations import definition_sources as rental_definition_sources
+from .rental_noi import RentalNoiRun,parse_rental_noi_spec,assemble_rental_noi
+from .rental_noi import ENGINE_SHA256 as RENTAL_NOI_ENGINE_SHA256
 
 
 class MissingEvidence(KeyError):
@@ -96,6 +101,26 @@ class OperatingDscrBundle:
     def payload(self):return json.loads(self.payload_json)
     @property
     def run(self):return OperatingDscrRun(**self.payload['run'])
+
+
+@dataclass(frozen=True)
+class RentalOperationsBundle:
+    payload_json:str
+    sha256:str
+    @property
+    def payload(self):return json.loads(self.payload_json)
+    @property
+    def run(self):return RentalOperationsRun(**self.payload['run'])
+
+
+@dataclass(frozen=True)
+class RentalNoiBundle:
+    payload_json:str
+    sha256:str
+    @property
+    def payload(self):return json.loads(self.payload_json)
+    @property
+    def run(self):return RentalNoiRun(**self.payload['run'])
 
 
 def _sha(raw):
@@ -624,6 +649,66 @@ COMMIT;''')
                 raise CorruptArchive('invalid screening evidence') from error
         return bundle
 
+
+    def get_rental_source(self, sha):
+        raw=self._read('source',sha);parse_rental_operations(raw);return raw
+
+    def get_rental_noi_spec(self, sha):
+        raw=self._read('source',sha);parse_rental_noi_spec(raw);return raw
+
+    def save_rental_operations(self, source_raw, run):
+        if type(run) is not RentalOperationsRun or produce_rental_operations(source_raw)!=run:
+            raise ValidationError('residential result does not reproduce')
+        with self._transaction():
+            source=self._put('source',source_raw)
+            p={'schema':'miniuw.synthetic-rental-bundle.v1','source_sha256':source,'run':asdict(run),
+                'versions':[RENTAL_ENGINE_SHA256,OPERATING_NOI_ENGINE_SHA256,DEBT_ENGINE_SHA256],
+                'definition_sources':rental_definition_sources(),'purpose':'synthetic_development_only'}
+            return self._put('bundle',canonical(p).encode())
+
+    def load_rental_operations(self, sha):
+        with self._transaction():
+            raw=self.read_bundle_bytes(sha)
+            try:
+                p=json.loads(raw)
+                if set(p)!={'schema','source_sha256','run','versions','definition_sources','purpose'}:raise CorruptArchive('residential bundle fields changed')
+                if p['schema']!='miniuw.synthetic-rental-bundle.v1':raise UnsupportedArchive('unsupported residential schema')
+                if p['purpose']!='synthetic_development_only':raise CorruptArchive('residential purpose changed')
+                if p['versions']!=[RENTAL_ENGINE_SHA256,OPERATING_NOI_ENGINE_SHA256,DEBT_ENGINE_SHA256] or p['definition_sources']!=rental_definition_sources():raise UnsupportedArchive('residential replay requires compatible code/documents')
+                bundle=RentalOperationsBundle(raw.decode(),sha)
+                if produce_rental_operations(self.get_rental_source(p['source_sha256']))!=bundle.run:raise CorruptArchive('residential result does not reproduce')
+            except MissingEvidence:raise
+            except(KeyError,TypeError,UnicodeError,json.JSONDecodeError,ValidationError)as error:raise CorruptArchive('invalid residential evidence')from error
+        return bundle
+
+    def save_rental_noi(self, rental_raw, rental_run, spec_raw, run):
+        if type(run) is not RentalNoiRun or assemble_rental_noi(rental_raw,rental_run,spec_raw)!=run:raise ValidationError('residential NOI assembly does not reproduce')
+        with self._transaction():
+            source=self._put('source',rental_raw);spec=self._put('source',spec_raw)
+            compiled=None if run.compiled_raw is None else self._put('source',run.compiled_raw)
+            p={'schema':'miniuw.synthetic-rental-noi-bundle.v1','purpose':'synthetic_development_only',
+                'rental_source_sha256':source,'rental_run':asdict(rental_run),'spec_source_sha256':spec,
+                'compiled_noi_source_sha256':compiled,'run':asdict(run),
+                'versions':[RENTAL_NOI_ENGINE_SHA256,RENTAL_ENGINE_SHA256,OPERATING_NOI_ENGINE_SHA256,DEBT_ENGINE_SHA256],
+                'rental_definition_sources':rental_definition_sources(),'noi_definition_sources':operating_noi_definition_sources()}
+            return self._put('bundle',canonical(p).encode())
+
+    def load_rental_noi(self, sha):
+        with self._transaction():
+            raw=self.read_bundle_bytes(sha)
+            try:
+                p=json.loads(raw)
+                if set(p)!={'schema','purpose','rental_source_sha256','rental_run','spec_source_sha256','compiled_noi_source_sha256','run','versions','rental_definition_sources','noi_definition_sources'}:raise CorruptArchive('residential NOI fields changed')
+                if p['schema']!='miniuw.synthetic-rental-noi-bundle.v1':raise UnsupportedArchive('unsupported residential NOI schema')
+                if p['purpose']!='synthetic_development_only':raise CorruptArchive('residential NOI purpose changed')
+                if p['versions']!=[RENTAL_NOI_ENGINE_SHA256,RENTAL_ENGINE_SHA256,OPERATING_NOI_ENGINE_SHA256,DEBT_ENGINE_SHA256] or p['rental_definition_sources']!=rental_definition_sources() or p['noi_definition_sources']!=operating_noi_definition_sources():raise UnsupportedArchive('assembly replay requires compatible code/documents')
+                bundle=RentalNoiBundle(raw.decode(),sha);source=self.get_rental_source(p['rental_source_sha256']);spec=self.get_rental_noi_spec(p['spec_source_sha256'])
+                if assemble_rental_noi(source,RentalOperationsRun(**p['rental_run']),spec)!=bundle.run:raise CorruptArchive('assembly evidence does not reproduce')
+                compiled=None if p['compiled_noi_source_sha256'] is None else self._read('source',p['compiled_noi_source_sha256'])
+                if compiled!=bundle.run.compiled_raw:raise CorruptArchive('compiled source changed')
+            except MissingEvidence:raise
+            except(KeyError,TypeError,UnicodeError,json.JSONDecodeError,ValidationError)as error:raise CorruptArchive('invalid assembly evidence')from error
+        return bundle
 
     def save_operating_dscr(self, noi_raw, noi_run, loan_raw, windows, debt_run, binding, run):
         if type(run) is not OperatingDscrRun or calculate_operating_dscr(noi_raw,noi_run,loan_raw,windows,debt_run,binding)!=run:

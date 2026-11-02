@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D03 review and metric-intake design extensions and T01–T20 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D03 review and metric-intake design extensions and T01–T22 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 11366,
-      "sha256": "a545cc4dce6f4466d91e825789088860fa6f8fa7287dc278c682b00b4d010b9f"
+      "bytes": 11876,
+      "sha256": "5f399c9257e1ee240a2920ae0a3731960fcc697826f5242e2afc6f0446f3d298"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 53051,
-      "sha256": "3091b9362e4529a98c02a20160c27b6947626ce954957f514fa897316776adc7"
+      "bytes": 55248,
+      "sha256": "b8bc8878b39948a6971c8978ab3297f71f77f2d6bdc49c7a39c1dc8bd8afd073"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -337,6 +337,11 @@
       "sha256": "f17fc713a011cb286970b04d5c40f08298c0e611e2400324d6598fc9168761e7"
     },
     {
+      "path": "docs/residential-noi-chain-validation.json",
+      "bytes": 2141,
+      "sha256": "18f29ce5be51e646612740f615bd10a3725783b6b45b8e0d0b2b72bec82a153b"
+    },
+    {
       "path": "docs/review/MiniUW_Especificacion_Integral_Armado_I01.pdf",
       "bytes": 119243,
       "sha256": "e1b395d83b800c5eab6a1787c4a2a4ac87919c3076921b7d1fc96fca74cb5241"
@@ -532,9 +537,19 @@
       "sha256": "88d8a626a0e319ffb57142d3a663632f9f829f0a09cd1248f009295576b94f12"
     },
     {
+      "path": "docs/technical-implementation-T21.md",
+      "bytes": 3727,
+      "sha256": "c34ff956e3dc0f51ffc0d037311dbb31b806879ef8059c38154520d6b05df4d6"
+    },
+    {
+      "path": "docs/technical-implementation-T22.md",
+      "bytes": 4350,
+      "sha256": "ab224567f5e68828516b100ee339002d43ca570ef84c8c89d51116883ea5f842"
+    },
+    {
       "path": "docs/technical-implementation-status.json",
-      "bytes": 8207,
-      "sha256": "acb81b9d215185aff69afd2bc914c832feb2f97894166f805739d71053b9e7c0"
+      "bytes": 8619,
+      "sha256": "9114ebcbc772a914ffd1ed2cf773db06986a875731aa8119cf3f0decaf6bdca8"
     },
     {
       "path": "infra/README.md",
@@ -1208,8 +1223,8 @@
     },
     {
       "path": "src/miniuw_foundation/archive.py",
-      "bytes": 45162,
-      "sha256": "e02081c638119c73fe401e8ff21857f1d7a9a65e2542266e29f81b5061c9ce39"
+      "bytes": 51065,
+      "sha256": "389fd4d40c6f8d5409b9d173954897717160c96017aad8a29b15ce5e49f1223b"
     },
     {
       "path": "src/miniuw_foundation/calculations.py",
@@ -1275,6 +1290,16 @@
       "path": "src/miniuw_foundation/proposal_queue.py",
       "bytes": 10175,
       "sha256": "3a0af7fd5b74f88762f16a2be8acc25dae9ed4e4e0d07e7354f605b6ca7f6763"
+    },
+    {
+      "path": "src/miniuw_foundation/rental_noi.py",
+      "bytes": 6240,
+      "sha256": "873f0687ab622d3a48c06e14446cc79374f1e5da63df7881348301f394f28ab3"
+    },
+    {
+      "path": "src/miniuw_foundation/rental_operations.py",
+      "bytes": 11039,
+      "sha256": "b1df13991edfe8a3b22988a70611d308eed76635cef88eb5aecff53e219d3085"
     },
     {
       "path": "src/miniuw_foundation/review_proposals.py",
@@ -1422,6 +1447,16 @@
       "sha256": "83fd1e316f46a3f42a41e9a5d3b3e5b56688ce64fa1728ee2bdc59e75db583f8"
     },
     {
+      "path": "templates/synthetic-residential-noi-assembly.json",
+      "bytes": 1670,
+      "sha256": "310de1851f275f4ba5c914e47ea4b67b9da66658a06f9a0824315fa997a3b62c"
+    },
+    {
+      "path": "templates/synthetic-residential-operations.json",
+      "bytes": 2250,
+      "sha256": "1704c496be7e60afcebd68af91fef87d24418d41629fe1df969e59eb6eade356"
+    },
+    {
       "path": "templates/synthetic-screening-band-case.json",
       "bytes": 4673,
       "sha256": "59493c78fd72ee6a2daedcf74ccc914a3dea81d74f7b5a8302e4ee56868f40b2"
@@ -1507,6 +1542,16 @@
       "sha256": "0dfb5476aec14c09914ac1ca4fd1598cd97dde2700fd61ea688ac304b1f0988d"
     },
     {
+      "path": "tests/test_rental_noi.py",
+      "bytes": 9430,
+      "sha256": "5823473d6e76f26f4021d24f4565b582e92b8d35a9752b9aef2e88ee6ee01349"
+    },
+    {
+      "path": "tests/test_rental_operations.py",
+      "bytes": 8585,
+      "sha256": "292d01bcd6701034e629ff89626e038f63a9a4690066ea743e19935b17831148"
+    },
+    {
       "path": "tests/test_review_proposals.py",
       "bytes": 12756,
       "sha256": "4be12acde9cd49db6fb601b6bc69f5af67d57d94088e073c69b7b2627ac10f3d"
@@ -1580,6 +1625,11 @@
       "path": "tools/demo_integrated_synthetic_review.py",
       "bytes": 5191,
       "sha256": "6df552431042f73a6840cf79b0e745921fe1a468220922f27e8e0fd0165befa9"
+    },
+    {
+      "path": "tools/demo_residential_noi_chain.py",
+      "bytes": 3701,
+      "sha256": "57ea254f74e7c132e237d924843c11a60587497610a061aa01852b0675e842db"
     },
     {
       "path": "tools/demo_scenario_threshold_rehearsal.py",

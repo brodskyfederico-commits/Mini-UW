@@ -1,0 +1,60 @@
+{
+  "purpose": "conditional_synthetic_residential_producer_chain",
+  "gross_residential_rent": {
+    "denominator": "1",
+    "numerator": "12000"
+  },
+  "effective_residential_rent": {
+    "denominator": "1",
+    "numerator": "10800"
+  },
+  "operating_expenses_excluding_tax": {
+    "denominator": "1",
+    "numerator": "800"
+  },
+  "operating_before_tax": {
+    "denominator": "1",
+    "numerator": "10000"
+  },
+  "property_tax": {
+    "denominator": "1",
+    "numerator": "2000"
+  },
+  "noi": {
+    "denominator": "1",
+    "numerator": "8000"
+  },
+  "annual_service_equivalent": {
+    "denominator": "1",
+    "numerator": "1200"
+  },
+  "dscr": {
+    "denominator": "3",
+    "numerator": "20"
+  },
+  "binding": {
+    "profile_id": "SYNTHETIC-COMPUTED-NOI-ANNUAL-DSCR-v1",
+    "definition_revision": "SYNTHETIC-residential-NOI-DSCR-chain-v1",
+    "noi_source_sha256": "34f03fac66789571ae57950beef344dbae6cc77619ef22c0ff282233a87791f8",
+    "loan_source_sha256": "30148d852ef79324fe36d132700f8689c887ce423425fd829cd728071abef403",
+    "noi_run_sha256": "c8df5785c01cc7cb51940baef4ed790600b86675c52717ff769df9d4ac1343d2",
+    "debt_run_sha256": "78717cd2b7ef4c41029ce36e4ce7b5100b4a2954584c1a35caa57755d122240c",
+    "currency": "USD",
+    "noi_period_ref": "SYNTHETIC-regular-year-1",
+    "annual_equivalent_ref": "SYNTHETIC-regular-year-1",
+    "declared_annual_noi_basis_ref": "SYNTHETIC-explicit-regular-year-basis-not-financially-verified"
+  },
+  "assembly_bundle_sha256": "a7fa1c6623df99a40f32755906a4b7277078c742913cecab13238babdbcfd182",
+  "dscr_bundle_sha256": "44fd0eafe02eabfa7e4b6a62aa06b94226996fda2e653133e833fbcea3cc4d2c",
+  "both_stage_bundles_replayed_after_reopen": true,
+  "NOI_source_and_run_links_verified_between_stages": true,
+  "runtime_database_retained": false,
+  "financially_validated": false,
+  "tax_policy_adopted": false,
+  "cash_collected_or_paid_verified": false,
+  "decision": "PENDING",
+  "production_authorized": false,
+  "technical_tests": 419,
+  "new_technical_tests": 29,
+  "scope": "executed synthetic residential/expense/conditional-NOI/annual-equivalent chain; not independent financial acceptance"
+}
