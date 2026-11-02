@@ -1,7 +1,7 @@
 {
   "phase": "post-I01 synthetic technical implementation",
   "user_authorized": true,
-  "component": "T40",
+  "component": "T42",
   "status": "local_implementation_verified_pending_remote_receipt",
   "implemented": [
     "fresh raw-claim drafts from unchanged 55-input/10-criterion template",
@@ -77,9 +77,11 @@
     "source/run-replayed cash shortfall, dated net equity funding peak bounds and net sale receipt share with project versus personal return labels",
     "explicit isolated net sale receipt case comparison with replayed T23/T37, gross cash/EM/all-root IRR and conditional net receipt recovery floor",
     "explicit gross sale proceeds/closing-cost source revision through replayed closing, dated debt, integrated cash and capacity-checked investor assembly",
-    "source-bound complete revision inventory comparison preserving intermediate blockers and separate required gross contributions"
+    "source-bound complete revision inventory comparison preserving intermediate blockers and separate required gross contributions",
+    "replayed forward NOI and explicitly declared annual exit cap valuation with calendar/source/period guards",
+    "explicit hypothetical sale-at-value source bridge through closing/debt/cash/capacity guard with preexisting valuation conflict blocking"
   ],
-  "unit_tests": 765,
+  "unit_tests": 795,
   "plan_packages_partially_addressed": [
     "IMP-01",
     "IMP-06",
@@ -95,10 +97,10 @@
   "deployment_enabled": false,
   "production_ready": false,
   "next_independent_work": [
-    "source-bound exit NOI/cap valuation and explicitly declared sale-cost profiles",
+    "explicit price-dependent sale-cost profiles and their applicability",
     "source-specific tax/insurance/lease-up refinements within rental scope",
-    "full independent no-refinance and revised timing scenarios",
-    "investor presentation preserving capacity, funding and personal-allocation blockers",
+    "independent no-refinance and revised timing scenarios",
+    "investor presentation preserving valuation, capacity, funding and personal-allocation blockers",
     "construction funding history before opening operating state"
   ],
   "I01_snapshot_preserved": true,
@@ -142,7 +144,9 @@
     "T37",
     "T38",
     "T39",
-    "T40"
+    "T40",
+    "T41",
+    "T42"
   ],
   "tests_by_component": {
     "T01": 31,
@@ -184,7 +188,9 @@
     "T37": 23,
     "T38": 23,
     "T39": 19,
-    "T40": 12
+    "T40": 12,
+    "T41": 14,
+    "T42": 16
   },
   "not_yet_implemented": [
     "complete financial graph and its designed cycles",
@@ -278,5 +284,8 @@
   "synthetic_net_sale_receipt_sensitivity_implemented": true,
   "full_project_scenario_sensitivity_implemented": false,
   "synthetic_sale_source_revision_implemented": true,
-  "guarded_sale_revision_comparison_implemented": true
+  "guarded_sale_revision_comparison_implemented": true,
+  "synthetic_forward_noi_exit_value_implemented": true,
+  "explicit_hypothetical_exit_value_to_guarded_sale_implemented": true,
+  "price_dependent_sale_costs_implemented": false
 }

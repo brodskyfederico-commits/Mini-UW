@@ -25,7 +25,7 @@ def sha(raw):return hashlib.sha256(raw).hexdigest()
 def raw(value):return canonical(value).encode()
 
 
-def load_evidence(independent_test_fixture=False):
+def load_evidence(independent_test_fixture=False, sale_closing_source_name=None):
     root=Path(__file__).resolve().parents[1]
     def read(name):return (root/'templates'/name).read_bytes()
     periods=[];closings=[]
@@ -36,12 +36,23 @@ def load_evidence(independent_test_fixture=False):
     for kind in ['refinance','sale']:
         lr=read('synthetic-project-'+kind+'-loan.json');cr=read('synthetic-project-'+kind+'-closing.json')
         br=read('synthetic-project-'+kind+'-debt-binding.json')
+        if kind=='sale' and sale_closing_source_name is not None:
+            cr=read(sale_closing_source_name)
         loans=(DatedLoanEvidence(loan_raw=lr,windows=(),run=produce_debt_service(lr,())),)
         closing=produce_closing_cash(cr)
+        if kind=='sale' and sale_closing_source_name is not None:
+            bound=json.loads(br);bound.update(closing_source_sha256=sha(cr),closing_run_sha256=closing.sha256);br=raw(bound)
         closings.append(CheckedClosingEvidence(closing_id='SYNTHETIC-project-'+kind,closing_raw=cr,
             closing_run=closing,loans=loans,debt_spec_raw=br,debt_run=reconcile_debt_closing(loans,cr,closing,br)))
     periods=tuple(periods);closings=tuple(closings)
-    manifest=read('synthetic-project-cash-manifest.json');project=reconcile_project_cash(periods,closings,manifest)
+    manifest=read('synthetic-project-cash-manifest.json')
+    if sale_closing_source_name is not None:
+        m=json.loads(manifest);c=closings[1]
+        node=next(n for n in m['nodes']if n['node_id']==c.closing_id)
+        node.update(source_sha256=sha(c.closing_raw),run_sha256=c.closing_run.sha256,
+            upstream_source_sha256=sha(c.debt_spec_raw),upstream_run_sha256=c.debt_run.sha256)
+        manifest=raw(m)
+    project=reconcile_project_cash(periods,closings,manifest)
     vr=read('synthetic-capacity-project-valuation-noi.json')
     bank_name='synthetic-sale-revision-test-bank-noi.json' if independent_test_fixture else 'synthetic-capacity-project-bank-noi.json'
     br=read(bank_name);loan=closings[1].loans[0];refi=closings[0]

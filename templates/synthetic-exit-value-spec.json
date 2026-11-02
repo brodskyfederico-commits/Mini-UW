@@ -1,0 +1,29 @@
+{
+  "schema": "miniuw.synthetic-exit-value.v1",
+  "context": {
+    "deal_id": "SYNTHETIC-integrated-cash-demo",
+    "scenario_id": "SYNTHETIC-Base",
+    "run_id": "SYNTHETIC-integrated-cash-run",
+    "definition_set_revision": "SYNTHETIC-cash-window-assumptions-v1"
+  },
+  "currency": "USD",
+  "valuation_date": "2027-07-01",
+  "noi_source_sha256": "0abf035e9389eb5c22e2cca0834be9a1dbc4c7a2575f03a312f4e0bbdc0134d4",
+  "noi_run_sha256": "0350b8153c3b5fcad0f024e8acb17a220422fc70eca30c85b3dee11b91b4353e",
+  "forward_window": {
+    "start": "2027-07-01",
+    "end": "2028-07-01",
+    "period_ref": "SYNTHETIC-forward-sale-year",
+    "basis_ref": "SYNTHETIC-declared-forward-twelve-month-accrual-scope"
+  },
+  "cap_rate": {
+    "value": {
+      "numerator": "1",
+      "denominator": "10"
+    },
+    "unit": "annual_cap_fraction",
+    "period_ref": "SYNTHETIC-forward-sale-year",
+    "source_ref": "SYNTHETIC-explicit-exit-cap-not-market-data"
+  },
+  "valuation_basis_ref": "SYNTHETIC-conditional-NOI-divided-by-cap-not-adopted"
+}

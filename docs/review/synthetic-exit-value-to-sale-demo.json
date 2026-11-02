@@ -1,0 +1,336 @@
+{
+  "purpose": "synthetic_forward_noi_exit_value_to_guarded_sale_demo",
+  "noi_source_path": "templates/synthetic-exit-forward-noi.json",
+  "noi_source_sha256": "0abf035e9389eb5c22e2cca0834be9a1dbc4c7a2575f03a312f4e0bbdc0134d4",
+  "noi_run_sha256": "0350b8153c3b5fcad0f024e8acb17a220422fc70eca30c85b3dee11b91b4353e",
+  "forward_noi": {
+    "denominator": "1",
+    "numerator": "40"
+  },
+  "branches": [
+    {
+      "independent_software_fixture": false,
+      "fixture_note": "Original bank NOI 50, valuation claim 500 and financing blocker preserved",
+      "base_evidence_sha256": "57098b323fe50dbc8393b7e4966df2273bc54ae16fb82b01e6a73bdff8a9f804",
+      "cases": [
+        {
+          "exit_spec_json": "{\"cap_rate\":{\"period_ref\":\"SYNTHETIC-forward-sale-year\",\"source_ref\":\"SYNTHETIC-explicit-demo-cap-1-over-20-not-market-policy\",\"unit\":\"annual_cap_fraction\",\"value\":{\"denominator\":\"20\",\"numerator\":\"1\"}},\"context\":{\"deal_id\":\"SYNTHETIC-integrated-cash-demo\",\"definition_set_revision\":\"SYNTHETIC-cash-window-assumptions-v1\",\"run_id\":\"SYNTHETIC-integrated-cash-run\",\"scenario_id\":\"SYNTHETIC-Base\"},\"currency\":\"USD\",\"forward_window\":{\"basis_ref\":\"SYNTHETIC-declared-forward-twelve-month-accrual-scope\",\"end\":\"2028-07-01\",\"period_ref\":\"SYNTHETIC-forward-sale-year\",\"start\":\"2027-07-01\"},\"noi_run_sha256\":\"0350b8153c3b5fcad0f024e8acb17a220422fc70eca30c85b3dee11b91b4353e\",\"noi_source_sha256\":\"0abf035e9389eb5c22e2cca0834be9a1dbc4c7a2575f03a312f4e0bbdc0134d4\",\"schema\":\"miniuw.synthetic-exit-value.v1\",\"valuation_basis_ref\":\"SYNTHETIC-conditional-NOI-divided-by-cap-not-adopted\",\"valuation_date\":\"2027-07-01\"}",
+          "bridge_spec_json": "{\"base_evidence_sha256\":\"57098b323fe50dbc8393b7e4966df2273bc54ae16fb82b01e6a73bdff8a9f804\",\"closing_cost_claim\":{\"as_of_date\":\"2027-07-01\",\"basis\":\"cash_flow_at_closing\",\"currency\":\"USD\",\"source_ref\":\"SYNTHETIC-explicit-closing-source:sale\",\"value\":{\"denominator\":\"1\",\"numerator\":\"20\"}},\"equity_funding_assumption_ref\":null,\"exit_run_sha256\":\"e57aea208b063a1ddb97d4e8f0234299ca33d01181c918d16b08d90036715dca\",\"exit_spec_sha256\":\"6d671e075524bea317be0fd6e941b60f4aaf19cb3e046a381aacbef9271886fe\",\"revision_id\":\"SYNTHETIC-cap-1-over-20\",\"sale_at_value_hypothesis_ref\":\"SYNTHETIC-sell-at-conditional-value-not-market-evidence\",\"sale_node_id\":\"SYNTHETIC-project-sale\",\"schema\":\"miniuw.synthetic-exit-value-to-sale.v1\",\"unchanged_other_sources_basis_ref\":\"SYNTHETIC-fixed-dates-other-inputs-and-supplied-cost-not-price-function\"}",
+          "exit_value_run_sha256": "e57aea208b063a1ddb97d4e8f0234299ca33d01181c918d16b08d90036715dca",
+          "exit_sale_run_sha256": "db52583d253da6b97e88354bc397aa4d9c8695ad83145025309e4ca10d14067b",
+          "sale_revision_run_sha256": null,
+          "state": "blocked",
+          "candidate_value": {
+            "denominator": "1",
+            "numerator": "800"
+          },
+          "blockers": [
+            "existing_sale_valuation_claim_conflicts_with_computed_value"
+          ],
+          "gross_contributions": null,
+          "gross_distributions": null,
+          "net_cash_profit": null,
+          "equity_multiple": null,
+          "annual_irr_roots": null,
+          "upstream_story_blockers": null,
+          "decision": "PENDING",
+          "report_serialization_roundtrip_replayed": true
+        },
+        {
+          "exit_spec_json": "{\"cap_rate\":{\"period_ref\":\"SYNTHETIC-forward-sale-year\",\"source_ref\":\"SYNTHETIC-explicit-demo-cap-2-over-25-not-market-policy\",\"unit\":\"annual_cap_fraction\",\"value\":{\"denominator\":\"25\",\"numerator\":\"2\"}},\"context\":{\"deal_id\":\"SYNTHETIC-integrated-cash-demo\",\"definition_set_revision\":\"SYNTHETIC-cash-window-assumptions-v1\",\"run_id\":\"SYNTHETIC-integrated-cash-run\",\"scenario_id\":\"SYNTHETIC-Base\"},\"currency\":\"USD\",\"forward_window\":{\"basis_ref\":\"SYNTHETIC-declared-forward-twelve-month-accrual-scope\",\"end\":\"2028-07-01\",\"period_ref\":\"SYNTHETIC-forward-sale-year\",\"start\":\"2027-07-01\"},\"noi_run_sha256\":\"0350b8153c3b5fcad0f024e8acb17a220422fc70eca30c85b3dee11b91b4353e\",\"noi_source_sha256\":\"0abf035e9389eb5c22e2cca0834be9a1dbc4c7a2575f03a312f4e0bbdc0134d4\",\"schema\":\"miniuw.synthetic-exit-value.v1\",\"valuation_basis_ref\":\"SYNTHETIC-conditional-NOI-divided-by-cap-not-adopted\",\"valuation_date\":\"2027-07-01\"}",
+          "bridge_spec_json": "{\"base_evidence_sha256\":\"57098b323fe50dbc8393b7e4966df2273bc54ae16fb82b01e6a73bdff8a9f804\",\"closing_cost_claim\":{\"as_of_date\":\"2027-07-01\",\"basis\":\"cash_flow_at_closing\",\"currency\":\"USD\",\"source_ref\":\"SYNTHETIC-explicit-closing-source:sale\",\"value\":{\"denominator\":\"1\",\"numerator\":\"20\"}},\"equity_funding_assumption_ref\":null,\"exit_run_sha256\":\"6af60cf0d1e0d3046f02790512625952650345e3098c37f7c3aeebc5d5c847ee\",\"exit_spec_sha256\":\"318bd59406ceaf6894202df6ead2e9ec5e1d922c0017aafd37a95311fbcad343\",\"revision_id\":\"SYNTHETIC-cap-2-over-25\",\"sale_at_value_hypothesis_ref\":\"SYNTHETIC-sell-at-conditional-value-not-market-evidence\",\"sale_node_id\":\"SYNTHETIC-project-sale\",\"schema\":\"miniuw.synthetic-exit-value-to-sale.v1\",\"unchanged_other_sources_basis_ref\":\"SYNTHETIC-fixed-dates-other-inputs-and-supplied-cost-not-price-function\"}",
+          "exit_value_run_sha256": "6af60cf0d1e0d3046f02790512625952650345e3098c37f7c3aeebc5d5c847ee",
+          "exit_sale_run_sha256": "810dc1bd6221dc20ddff578577c2a25f6ea2def8223195173927a91e8f71f0e7",
+          "sale_revision_run_sha256": "ab7c4bfe80fd13b004e72f476e9f1707987ecbb8f0fe05240b1a4a33a0f2eb2c",
+          "state": "blocked",
+          "candidate_value": {
+            "denominator": "1",
+            "numerator": "500"
+          },
+          "blockers": [
+            "refinance_capacity_or_selection_blocked"
+          ],
+          "gross_contributions": null,
+          "gross_distributions": null,
+          "net_cash_profit": null,
+          "equity_multiple": null,
+          "annual_irr_roots": null,
+          "upstream_story_blockers": null,
+          "decision": "PENDING",
+          "report_serialization_roundtrip_replayed": true
+        },
+        {
+          "exit_spec_json": "{\"cap_rate\":{\"period_ref\":\"SYNTHETIC-forward-sale-year\",\"source_ref\":\"SYNTHETIC-explicit-demo-cap-1-over-10-not-market-policy\",\"unit\":\"annual_cap_fraction\",\"value\":{\"denominator\":\"10\",\"numerator\":\"1\"}},\"context\":{\"deal_id\":\"SYNTHETIC-integrated-cash-demo\",\"definition_set_revision\":\"SYNTHETIC-cash-window-assumptions-v1\",\"run_id\":\"SYNTHETIC-integrated-cash-run\",\"scenario_id\":\"SYNTHETIC-Base\"},\"currency\":\"USD\",\"forward_window\":{\"basis_ref\":\"SYNTHETIC-declared-forward-twelve-month-accrual-scope\",\"end\":\"2028-07-01\",\"period_ref\":\"SYNTHETIC-forward-sale-year\",\"start\":\"2027-07-01\"},\"noi_run_sha256\":\"0350b8153c3b5fcad0f024e8acb17a220422fc70eca30c85b3dee11b91b4353e\",\"noi_source_sha256\":\"0abf035e9389eb5c22e2cca0834be9a1dbc4c7a2575f03a312f4e0bbdc0134d4\",\"schema\":\"miniuw.synthetic-exit-value.v1\",\"valuation_basis_ref\":\"SYNTHETIC-conditional-NOI-divided-by-cap-not-adopted\",\"valuation_date\":\"2027-07-01\"}",
+          "bridge_spec_json": "{\"base_evidence_sha256\":\"57098b323fe50dbc8393b7e4966df2273bc54ae16fb82b01e6a73bdff8a9f804\",\"closing_cost_claim\":{\"as_of_date\":\"2027-07-01\",\"basis\":\"cash_flow_at_closing\",\"currency\":\"USD\",\"source_ref\":\"SYNTHETIC-explicit-closing-source:sale\",\"value\":{\"denominator\":\"1\",\"numerator\":\"20\"}},\"equity_funding_assumption_ref\":null,\"exit_run_sha256\":\"9f6b0b6aade46af6fca2b1013f6efebdf5ff46648ceaad11dee0065997578444\",\"exit_spec_sha256\":\"447b7b660c3a1bbc1709eb197b89873d235fd983b7c8160bc9e225ebea4f74d2\",\"revision_id\":\"SYNTHETIC-cap-1-over-10\",\"sale_at_value_hypothesis_ref\":\"SYNTHETIC-sell-at-conditional-value-not-market-evidence\",\"sale_node_id\":\"SYNTHETIC-project-sale\",\"schema\":\"miniuw.synthetic-exit-value-to-sale.v1\",\"unchanged_other_sources_basis_ref\":\"SYNTHETIC-fixed-dates-other-inputs-and-supplied-cost-not-price-function\"}",
+          "exit_value_run_sha256": "9f6b0b6aade46af6fca2b1013f6efebdf5ff46648ceaad11dee0065997578444",
+          "exit_sale_run_sha256": "567e6b9f51e09b233ac1be87d891c421a3959a6c9d9257fab4f20dbb6e84fb7a",
+          "sale_revision_run_sha256": null,
+          "state": "blocked",
+          "candidate_value": {
+            "denominator": "1",
+            "numerator": "400"
+          },
+          "blockers": [
+            "existing_sale_valuation_claim_conflicts_with_computed_value"
+          ],
+          "gross_contributions": null,
+          "gross_distributions": null,
+          "net_cash_profit": null,
+          "equity_multiple": null,
+          "annual_irr_roots": null,
+          "upstream_story_blockers": null,
+          "decision": "PENDING",
+          "report_serialization_roundtrip_replayed": true
+        },
+        {
+          "exit_spec_json": "{\"cap_rate\":{\"period_ref\":\"SYNTHETIC-forward-sale-year\",\"source_ref\":\"SYNTHETIC-explicit-demo-cap-1-over-5-not-market-policy\",\"unit\":\"annual_cap_fraction\",\"value\":{\"denominator\":\"5\",\"numerator\":\"1\"}},\"context\":{\"deal_id\":\"SYNTHETIC-integrated-cash-demo\",\"definition_set_revision\":\"SYNTHETIC-cash-window-assumptions-v1\",\"run_id\":\"SYNTHETIC-integrated-cash-run\",\"scenario_id\":\"SYNTHETIC-Base\"},\"currency\":\"USD\",\"forward_window\":{\"basis_ref\":\"SYNTHETIC-declared-forward-twelve-month-accrual-scope\",\"end\":\"2028-07-01\",\"period_ref\":\"SYNTHETIC-forward-sale-year\",\"start\":\"2027-07-01\"},\"noi_run_sha256\":\"0350b8153c3b5fcad0f024e8acb17a220422fc70eca30c85b3dee11b91b4353e\",\"noi_source_sha256\":\"0abf035e9389eb5c22e2cca0834be9a1dbc4c7a2575f03a312f4e0bbdc0134d4\",\"schema\":\"miniuw.synthetic-exit-value.v1\",\"valuation_basis_ref\":\"SYNTHETIC-conditional-NOI-divided-by-cap-not-adopted\",\"valuation_date\":\"2027-07-01\"}",
+          "bridge_spec_json": "{\"base_evidence_sha256\":\"57098b323fe50dbc8393b7e4966df2273bc54ae16fb82b01e6a73bdff8a9f804\",\"closing_cost_claim\":{\"as_of_date\":\"2027-07-01\",\"basis\":\"cash_flow_at_closing\",\"currency\":\"USD\",\"source_ref\":\"SYNTHETIC-explicit-closing-source:sale\",\"value\":{\"denominator\":\"1\",\"numerator\":\"20\"}},\"equity_funding_assumption_ref\":null,\"exit_run_sha256\":\"ec4cf2321e2057d38a7951fe494c7ad9e48c74063c4e76a87b14ca2c46902fd6\",\"exit_spec_sha256\":\"96e99e258ebb3c97b1ee4c77b0b4be3f4036a27a1619ae4a34dd09ae15cb59f5\",\"revision_id\":\"SYNTHETIC-cap-1-over-5\",\"sale_at_value_hypothesis_ref\":\"SYNTHETIC-sell-at-conditional-value-not-market-evidence\",\"sale_node_id\":\"SYNTHETIC-project-sale\",\"schema\":\"miniuw.synthetic-exit-value-to-sale.v1\",\"unchanged_other_sources_basis_ref\":\"SYNTHETIC-fixed-dates-other-inputs-and-supplied-cost-not-price-function\"}",
+          "exit_value_run_sha256": "ec4cf2321e2057d38a7951fe494c7ad9e48c74063c4e76a87b14ca2c46902fd6",
+          "exit_sale_run_sha256": "c8f188094dbaa13b8a70758ce30031df89d7a453e0cf20309db4924cefb557f1",
+          "sale_revision_run_sha256": null,
+          "state": "blocked",
+          "candidate_value": {
+            "denominator": "1",
+            "numerator": "200"
+          },
+          "blockers": [
+            "existing_sale_valuation_claim_conflicts_with_computed_value"
+          ],
+          "gross_contributions": null,
+          "gross_distributions": null,
+          "net_cash_profit": null,
+          "equity_multiple": null,
+          "annual_irr_roots": null,
+          "upstream_story_blockers": null,
+          "decision": "PENDING",
+          "report_serialization_roundtrip_replayed": true
+        }
+      ]
+    },
+    {
+      "independent_software_fixture": true,
+      "fixture_note": "Separate explicit bank NOI 2000, empty sale contribution slot and separate closing source without a valuation claim; not original project repair",
+      "base_evidence_sha256": "07937b81d58eb7e12673884d9846fcec63840451aefd5427013c66dba2459c07",
+      "cases": [
+        {
+          "exit_spec_json": "{\"cap_rate\":{\"period_ref\":\"SYNTHETIC-forward-sale-year\",\"source_ref\":\"SYNTHETIC-explicit-demo-cap-1-over-20-not-market-policy\",\"unit\":\"annual_cap_fraction\",\"value\":{\"denominator\":\"20\",\"numerator\":\"1\"}},\"context\":{\"deal_id\":\"SYNTHETIC-integrated-cash-demo\",\"definition_set_revision\":\"SYNTHETIC-cash-window-assumptions-v1\",\"run_id\":\"SYNTHETIC-integrated-cash-run\",\"scenario_id\":\"SYNTHETIC-Base\"},\"currency\":\"USD\",\"forward_window\":{\"basis_ref\":\"SYNTHETIC-declared-forward-twelve-month-accrual-scope\",\"end\":\"2028-07-01\",\"period_ref\":\"SYNTHETIC-forward-sale-year\",\"start\":\"2027-07-01\"},\"noi_run_sha256\":\"0350b8153c3b5fcad0f024e8acb17a220422fc70eca30c85b3dee11b91b4353e\",\"noi_source_sha256\":\"0abf035e9389eb5c22e2cca0834be9a1dbc4c7a2575f03a312f4e0bbdc0134d4\",\"schema\":\"miniuw.synthetic-exit-value.v1\",\"valuation_basis_ref\":\"SYNTHETIC-conditional-NOI-divided-by-cap-not-adopted\",\"valuation_date\":\"2027-07-01\"}",
+          "bridge_spec_json": "{\"base_evidence_sha256\":\"07937b81d58eb7e12673884d9846fcec63840451aefd5427013c66dba2459c07\",\"closing_cost_claim\":{\"as_of_date\":\"2027-07-01\",\"basis\":\"cash_flow_at_closing\",\"currency\":\"USD\",\"source_ref\":\"SYNTHETIC-explicit-closing-source:sale\",\"value\":{\"denominator\":\"1\",\"numerator\":\"20\"}},\"equity_funding_assumption_ref\":null,\"exit_run_sha256\":\"e57aea208b063a1ddb97d4e8f0234299ca33d01181c918d16b08d90036715dca\",\"exit_spec_sha256\":\"6d671e075524bea317be0fd6e941b60f4aaf19cb3e046a381aacbef9271886fe\",\"revision_id\":\"SYNTHETIC-cap-1-over-20\",\"sale_at_value_hypothesis_ref\":\"SYNTHETIC-sell-at-conditional-value-not-market-evidence\",\"sale_node_id\":\"SYNTHETIC-project-sale\",\"schema\":\"miniuw.synthetic-exit-value-to-sale.v1\",\"unchanged_other_sources_basis_ref\":\"SYNTHETIC-fixed-dates-other-inputs-and-supplied-cost-not-price-function\"}",
+          "exit_value_run_sha256": "e57aea208b063a1ddb97d4e8f0234299ca33d01181c918d16b08d90036715dca",
+          "exit_sale_run_sha256": "ee367ab069b33f7e2edd5f09ad9600456423bbb6288958c42a4f061fb404db11",
+          "sale_revision_run_sha256": "8bd109798dc20fe3826de244bc85bcf9c15940a3d395ed39d6968ae26c12d691",
+          "state": "compiled_synthetic",
+          "candidate_value": {
+            "denominator": "1",
+            "numerator": "800"
+          },
+          "blockers": [],
+          "gross_contributions": {
+            "denominator": "1",
+            "numerator": "1000"
+          },
+          "gross_distributions": {
+            "denominator": "10000",
+            "numerator": "16989197"
+          },
+          "net_cash_profit": {
+            "denominator": "10000",
+            "numerator": "6989197"
+          },
+          "equity_multiple": {
+            "denominator": "10000000",
+            "numerator": "16989197"
+          },
+          "annual_irr_roots": [
+            {
+              "annual_rate_interval": {
+                "lower": {
+                  "denominator": "42248075509329613259907475985220023636968974823002999871461163716063750272486323240702709964747644707223960571276102691276366841526607710682896338943020619345310801",
+                  "numerator": "109709936637153176723336566269887800486150442574351568379583333630870382657597171683377528457531260036386389541300697203309129757788548039773176117280288053376961455"
+                },
+                "lower_closed": true,
+                "upper": {
+                  "denominator": "4738374575344919068057910784722416866360522442132392484202892456213942624781465265982878716165234591380205992903755782186972697054072829453479157982561",
+                  "numerator": "12304727734724497030995246914039997945796631847191102669064999775107131935511027732705841329826624159361005292335798957917293407984817332180343271430815"
+                },
+                "upper_closed": false
+              },
+              "exact_annual_rate": null
+            }
+          ],
+          "upstream_story_blockers": [
+            "snapshot:2027-04-01:capital_still_invested_missing_or_negative",
+            "snapshot:2027-04-01:retained_equity_value_missing",
+            "snapshot:2027-04-01:snapshot_metadata_missing_or_mismatch"
+          ],
+          "decision": "PENDING",
+          "report_serialization_roundtrip_replayed": true
+        },
+        {
+          "exit_spec_json": "{\"cap_rate\":{\"period_ref\":\"SYNTHETIC-forward-sale-year\",\"source_ref\":\"SYNTHETIC-explicit-demo-cap-2-over-25-not-market-policy\",\"unit\":\"annual_cap_fraction\",\"value\":{\"denominator\":\"25\",\"numerator\":\"2\"}},\"context\":{\"deal_id\":\"SYNTHETIC-integrated-cash-demo\",\"definition_set_revision\":\"SYNTHETIC-cash-window-assumptions-v1\",\"run_id\":\"SYNTHETIC-integrated-cash-run\",\"scenario_id\":\"SYNTHETIC-Base\"},\"currency\":\"USD\",\"forward_window\":{\"basis_ref\":\"SYNTHETIC-declared-forward-twelve-month-accrual-scope\",\"end\":\"2028-07-01\",\"period_ref\":\"SYNTHETIC-forward-sale-year\",\"start\":\"2027-07-01\"},\"noi_run_sha256\":\"0350b8153c3b5fcad0f024e8acb17a220422fc70eca30c85b3dee11b91b4353e\",\"noi_source_sha256\":\"0abf035e9389eb5c22e2cca0834be9a1dbc4c7a2575f03a312f4e0bbdc0134d4\",\"schema\":\"miniuw.synthetic-exit-value.v1\",\"valuation_basis_ref\":\"SYNTHETIC-conditional-NOI-divided-by-cap-not-adopted\",\"valuation_date\":\"2027-07-01\"}",
+          "bridge_spec_json": "{\"base_evidence_sha256\":\"07937b81d58eb7e12673884d9846fcec63840451aefd5427013c66dba2459c07\",\"closing_cost_claim\":{\"as_of_date\":\"2027-07-01\",\"basis\":\"cash_flow_at_closing\",\"currency\":\"USD\",\"source_ref\":\"SYNTHETIC-explicit-closing-source:sale\",\"value\":{\"denominator\":\"1\",\"numerator\":\"20\"}},\"equity_funding_assumption_ref\":null,\"exit_run_sha256\":\"6af60cf0d1e0d3046f02790512625952650345e3098c37f7c3aeebc5d5c847ee\",\"exit_spec_sha256\":\"318bd59406ceaf6894202df6ead2e9ec5e1d922c0017aafd37a95311fbcad343\",\"revision_id\":\"SYNTHETIC-cap-2-over-25\",\"sale_at_value_hypothesis_ref\":\"SYNTHETIC-sell-at-conditional-value-not-market-evidence\",\"sale_node_id\":\"SYNTHETIC-project-sale\",\"schema\":\"miniuw.synthetic-exit-value-to-sale.v1\",\"unchanged_other_sources_basis_ref\":\"SYNTHETIC-fixed-dates-other-inputs-and-supplied-cost-not-price-function\"}",
+          "exit_value_run_sha256": "6af60cf0d1e0d3046f02790512625952650345e3098c37f7c3aeebc5d5c847ee",
+          "exit_sale_run_sha256": "efc164409f91e05b750d199530ef6f9293e5a53ab59bdae2d41b53519243a1ef",
+          "sale_revision_run_sha256": "3f260f6e4b6e4c679b46d3ffb3cff01a2232ee57775bab6d072b44def2e97e81",
+          "state": "compiled_synthetic",
+          "candidate_value": {
+            "denominator": "1",
+            "numerator": "500"
+          },
+          "blockers": [],
+          "gross_contributions": {
+            "denominator": "1",
+            "numerator": "1000"
+          },
+          "gross_distributions": {
+            "denominator": "10000",
+            "numerator": "13989197"
+          },
+          "net_cash_profit": {
+            "denominator": "10000",
+            "numerator": "3989197"
+          },
+          "equity_multiple": {
+            "denominator": "10000000",
+            "numerator": "13989197"
+          },
+          "annual_irr_roots": [
+            {
+              "annual_rate_interval": {
+                "lower": {
+                  "denominator": "1720752773907536045165374594664516565671069252301974322338452356233314820497653261263362500274161036822453440193941876043410603821836485100648121930927616903267521",
+                  "numerator": "2258549366646433021962980478141206054127626437594167627985803569118994667844768607863859101287872506602526868309180055902890466457699575347317307227247721291004735"
+                },
+                "lower_closed": true,
+                "upper": {
+                  "denominator": "420102845107056232311469216299503017182458381845603565514787481227432245039998340505337215092505394303349856757371864963133875544008518288798868315078369140625",
+                  "numerator": "551406466551627621967914346397206606791832558070446715326095313048033938637350748637050871226350451259389476373273137953443534192206340219005191537991781785711"
+                },
+                "upper_closed": false
+              },
+              "exact_annual_rate": null
+            }
+          ],
+          "upstream_story_blockers": [
+            "snapshot:2027-04-01:capital_still_invested_missing_or_negative",
+            "snapshot:2027-04-01:retained_equity_value_missing",
+            "snapshot:2027-04-01:snapshot_metadata_missing_or_mismatch"
+          ],
+          "decision": "PENDING",
+          "report_serialization_roundtrip_replayed": true
+        },
+        {
+          "exit_spec_json": "{\"cap_rate\":{\"period_ref\":\"SYNTHETIC-forward-sale-year\",\"source_ref\":\"SYNTHETIC-explicit-demo-cap-1-over-10-not-market-policy\",\"unit\":\"annual_cap_fraction\",\"value\":{\"denominator\":\"10\",\"numerator\":\"1\"}},\"context\":{\"deal_id\":\"SYNTHETIC-integrated-cash-demo\",\"definition_set_revision\":\"SYNTHETIC-cash-window-assumptions-v1\",\"run_id\":\"SYNTHETIC-integrated-cash-run\",\"scenario_id\":\"SYNTHETIC-Base\"},\"currency\":\"USD\",\"forward_window\":{\"basis_ref\":\"SYNTHETIC-declared-forward-twelve-month-accrual-scope\",\"end\":\"2028-07-01\",\"period_ref\":\"SYNTHETIC-forward-sale-year\",\"start\":\"2027-07-01\"},\"noi_run_sha256\":\"0350b8153c3b5fcad0f024e8acb17a220422fc70eca30c85b3dee11b91b4353e\",\"noi_source_sha256\":\"0abf035e9389eb5c22e2cca0834be9a1dbc4c7a2575f03a312f4e0bbdc0134d4\",\"schema\":\"miniuw.synthetic-exit-value.v1\",\"valuation_basis_ref\":\"SYNTHETIC-conditional-NOI-divided-by-cap-not-adopted\",\"valuation_date\":\"2027-07-01\"}",
+          "bridge_spec_json": "{\"base_evidence_sha256\":\"07937b81d58eb7e12673884d9846fcec63840451aefd5427013c66dba2459c07\",\"closing_cost_claim\":{\"as_of_date\":\"2027-07-01\",\"basis\":\"cash_flow_at_closing\",\"currency\":\"USD\",\"source_ref\":\"SYNTHETIC-explicit-closing-source:sale\",\"value\":{\"denominator\":\"1\",\"numerator\":\"20\"}},\"equity_funding_assumption_ref\":null,\"exit_run_sha256\":\"9f6b0b6aade46af6fca2b1013f6efebdf5ff46648ceaad11dee0065997578444\",\"exit_spec_sha256\":\"447b7b660c3a1bbc1709eb197b89873d235fd983b7c8160bc9e225ebea4f74d2\",\"revision_id\":\"SYNTHETIC-cap-1-over-10\",\"sale_at_value_hypothesis_ref\":\"SYNTHETIC-sell-at-conditional-value-not-market-evidence\",\"sale_node_id\":\"SYNTHETIC-project-sale\",\"schema\":\"miniuw.synthetic-exit-value-to-sale.v1\",\"unchanged_other_sources_basis_ref\":\"SYNTHETIC-fixed-dates-other-inputs-and-supplied-cost-not-price-function\"}",
+          "exit_value_run_sha256": "9f6b0b6aade46af6fca2b1013f6efebdf5ff46648ceaad11dee0065997578444",
+          "exit_sale_run_sha256": "5001360bd1350f94e5fd62059b25f89c47c79aaf4b8e512728572df4bb606cb2",
+          "sale_revision_run_sha256": "d5c1d8d569e21ae7db1ef2532826200b9df495f381acac48571ae2e2ad7aedde",
+          "state": "compiled_synthetic",
+          "candidate_value": {
+            "denominator": "1",
+            "numerator": "400"
+          },
+          "blockers": [],
+          "gross_contributions": {
+            "denominator": "1",
+            "numerator": "1000"
+          },
+          "gross_distributions": {
+            "denominator": "10000",
+            "numerator": "12989197"
+          },
+          "net_cash_profit": {
+            "denominator": "10000",
+            "numerator": "2989197"
+          },
+          "equity_multiple": {
+            "denominator": "10000000",
+            "numerator": "12989197"
+          },
+          "annual_irr_roots": [
+            {
+              "annual_rate_interval": {
+                "lower": {
+                  "denominator": "453196643265411572639327098694066107626316046069291365756346680453319330926397312834278682559097735247374782829256748631741553590499092191328454642912800917992481",
+                  "numerator": "426137453757203325912792056450623750977071820189515859001844320483303436188570176255699824014883940704106248138859212765817126756545902436354575267460759100279775"
+                },
+                "lower_closed": true,
+                "upper": {
+                  "denominator": "110642928717833313780192624001325861072875594650862907460247926175000292799197092380586866591204681004870964778946058430398641247149723471048347753118309307361",
+                  "numerator": "104038247313078526686633341610170686437717146134978700146732298663042374953480517260521167240333814100471083797254127457677208446953058420475829471093985618975"
+                },
+                "upper_closed": false
+              },
+              "exact_annual_rate": null
+            }
+          ],
+          "upstream_story_blockers": [
+            "snapshot:2027-04-01:capital_still_invested_missing_or_negative",
+            "snapshot:2027-04-01:retained_equity_value_missing",
+            "snapshot:2027-04-01:snapshot_metadata_missing_or_mismatch"
+          ],
+          "decision": "PENDING",
+          "report_serialization_roundtrip_replayed": true
+        },
+        {
+          "exit_spec_json": "{\"cap_rate\":{\"period_ref\":\"SYNTHETIC-forward-sale-year\",\"source_ref\":\"SYNTHETIC-explicit-demo-cap-1-over-5-not-market-policy\",\"unit\":\"annual_cap_fraction\",\"value\":{\"denominator\":\"5\",\"numerator\":\"1\"}},\"context\":{\"deal_id\":\"SYNTHETIC-integrated-cash-demo\",\"definition_set_revision\":\"SYNTHETIC-cash-window-assumptions-v1\",\"run_id\":\"SYNTHETIC-integrated-cash-run\",\"scenario_id\":\"SYNTHETIC-Base\"},\"currency\":\"USD\",\"forward_window\":{\"basis_ref\":\"SYNTHETIC-declared-forward-twelve-month-accrual-scope\",\"end\":\"2028-07-01\",\"period_ref\":\"SYNTHETIC-forward-sale-year\",\"start\":\"2027-07-01\"},\"noi_run_sha256\":\"0350b8153c3b5fcad0f024e8acb17a220422fc70eca30c85b3dee11b91b4353e\",\"noi_source_sha256\":\"0abf035e9389eb5c22e2cca0834be9a1dbc4c7a2575f03a312f4e0bbdc0134d4\",\"schema\":\"miniuw.synthetic-exit-value.v1\",\"valuation_basis_ref\":\"SYNTHETIC-conditional-NOI-divided-by-cap-not-adopted\",\"valuation_date\":\"2027-07-01\"}",
+          "bridge_spec_json": "{\"base_evidence_sha256\":\"07937b81d58eb7e12673884d9846fcec63840451aefd5427013c66dba2459c07\",\"closing_cost_claim\":{\"as_of_date\":\"2027-07-01\",\"basis\":\"cash_flow_at_closing\",\"currency\":\"USD\",\"source_ref\":\"SYNTHETIC-explicit-closing-source:sale\",\"value\":{\"denominator\":\"1\",\"numerator\":\"20\"}},\"equity_funding_assumption_ref\":null,\"exit_run_sha256\":\"ec4cf2321e2057d38a7951fe494c7ad9e48c74063c4e76a87b14ca2c46902fd6\",\"exit_spec_sha256\":\"96e99e258ebb3c97b1ee4c77b0b4be3f4036a27a1619ae4a34dd09ae15cb59f5\",\"revision_id\":\"SYNTHETIC-cap-1-over-5\",\"sale_at_value_hypothesis_ref\":\"SYNTHETIC-sell-at-conditional-value-not-market-evidence\",\"sale_node_id\":\"SYNTHETIC-project-sale\",\"schema\":\"miniuw.synthetic-exit-value-to-sale.v1\",\"unchanged_other_sources_basis_ref\":\"SYNTHETIC-fixed-dates-other-inputs-and-supplied-cost-not-price-function\"}",
+          "exit_value_run_sha256": "ec4cf2321e2057d38a7951fe494c7ad9e48c74063c4e76a87b14ca2c46902fd6",
+          "exit_sale_run_sha256": "63968eaaf5721dd7abd6afe22b506c53037a4460ee30366fa0ed73665154d494",
+          "sale_revision_run_sha256": "9eb7ba4d4b5d1218ed55090b99b6e08571c3d4f2ba2b1358e7ac7e3406dcad1f",
+          "state": "compiled_synthetic",
+          "candidate_value": {
+            "denominator": "1",
+            "numerator": "200"
+          },
+          "blockers": [],
+          "gross_contributions": {
+            "denominator": "1",
+            "numerator": "1000"
+          },
+          "gross_distributions": {
+            "denominator": "10000",
+            "numerator": "10989197"
+          },
+          "net_cash_profit": {
+            "denominator": "10000",
+            "numerator": "989197"
+          },
+          "equity_multiple": {
+            "denominator": "10000000",
+            "numerator": "10989197"
+          },
+          "annual_irr_roots": [
+            {
+              "annual_rate_interval": {
+                "lower": {
+                  "denominator": "17030012549313959329363902304833494667729448425289115470505253632355215255962428079729172239105392611763504788666800360112089696477736834641",
+                  "numerator": "4802929643144257026184072041341383398016661846456079831181358140232628516850478676535487343249030067442735481447864737095094442635513063855"
+                },
+                "lower_closed": true,
+                "upper": {
+                  "denominator": "30479837215811867116503587858299261327758841281253754016052518729284744074855945310672907267294850447063958247981527998349164063979744786369676177147321681",
+                  "numerator": "8596471527481403151018025141464676427398299111597081939384482902623797386948303947865637530722611931600429612142570139233753694140387354405887009799119535"
+                },
+                "upper_closed": false
+              },
+              "exact_annual_rate": null
+            }
+          ],
+          "upstream_story_blockers": [
+            "snapshot:2027-04-01:capital_still_invested_missing_or_negative",
+            "snapshot:2027-04-01:retained_equity_value_missing",
+            "snapshot:2027-04-01:snapshot_metadata_missing_or_mismatch"
+          ],
+          "decision": "PENDING",
+          "report_serialization_roundtrip_replayed": true
+        }
+      ]
+    }
+  ],
+  "caps_are_explicit_synthetic_inputs_not_market_defaults": true,
+  "price_dependent_costs_implemented": false,
+  "actual_sale_or_funding_verified": false,
+  "personal_investor_return": null,
+  "decision": "PENDING",
+  "production_authorized": false
+}

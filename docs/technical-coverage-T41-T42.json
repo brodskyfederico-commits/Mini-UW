@@ -1,0 +1,165 @@
+{
+  "scope": "Conditional exit valuation and explicit sale projection; original matrix and financial gates preserved",
+  "rows": [
+    {
+      "requirement_or_variable": "forward_noi_annual_exit_cap",
+      "source": {
+        "path": "docs/technical-implementation-T41-T42.md",
+        "line": 9,
+        "sha256": "9c21dcd171a12c913636a7fbcade70f2a094fa4bab30625f42e1184e3c27e0c4"
+      },
+      "current_definition": "Exact N/c with N>=0 and c>0; value is not cash",
+      "affected_modules": [
+        "M2",
+        "M6",
+        "M7",
+        "T19",
+        "T36",
+        "T39",
+        "T41",
+        "T42"
+      ],
+      "validation_evidence": [
+        "tests/test_exit_value.py:ExitValueTests.test_exact_independent_forward_noi_cap_value",
+        "tests/test_exit_value.py:ExitValueTests.test_zero_noi_known_zero_value_not_cash",
+        "tests/test_exit_value.py:ExitValueTests.test_negative_noi_blocks_without_clipping",
+        "tests/test_exit_value.py:ExitValueTests.test_missing_zero_negative_cap_block"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Actual forward NOI, adopted valuation profile and market sources"
+    },
+    {
+      "requirement_or_variable": "forward_calendar_and_scope",
+      "source": {
+        "path": "docs/technical-implementation-T41-T42.md",
+        "line": 7,
+        "sha256": "9c21dcd171a12c913636a7fbcade70f2a094fa4bab30625f42e1184e3c27e0c4"
+      },
+      "current_definition": "Explicit next calendar-year window at valuation date, no quarter annualization or leap adjustment",
+      "affected_modules": [
+        "M2",
+        "M6",
+        "M7",
+        "T19",
+        "T36",
+        "T39",
+        "T41",
+        "T42"
+      ],
+      "validation_evidence": [
+        "tests/test_exit_value.py:ExitValueTests.test_forward_calendar_dates_explicit_no_quarter_annualization",
+        "tests/test_exit_value.py:ExitValueTests.test_leap_day_window_not_silently_adjusted",
+        "tests/test_exit_value.py:ExitValueTests.test_noi_window_period_basis_context_currency_and_hash_bindings"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Actual forecast scope and alternate calendar profiles"
+    },
+    {
+      "requirement_or_variable": "explicit_sale_at_value_hypothesis",
+      "source": {
+        "path": "docs/technical-implementation-T41-T42.md",
+        "line": 15,
+        "sha256": "9c21dcd171a12c913636a7fbcade70f2a094fa4bab30625f42e1184e3c27e0c4"
+      },
+      "current_definition": "Full source/run binding and explicit sale-at-value hypothesis before generating gross cash projection",
+      "affected_modules": [
+        "M2",
+        "M6",
+        "M7",
+        "T19",
+        "T36",
+        "T39",
+        "T41",
+        "T42"
+      ],
+      "validation_evidence": [
+        "tests/test_exit_sale_bridge.py:ExitSaleBridgeTests.test_sale_at_value_hypothesis_required_not_inferred",
+        "tests/test_exit_sale_bridge.py:ExitSaleBridgeTests.test_generated_proceeds_have_explicit_value_and_hypothesis_lineage",
+        "tests/test_exit_sale_bridge.py:ExitSaleBridgeTests.test_computable_value_from_other_context_or_currency_cannot_join_project"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Actual sale contract, cash collection and applicability"
+    },
+    {
+      "requirement_or_variable": "existing_valuation_conflict",
+      "source": {
+        "path": "docs/technical-implementation-T41-T42.md",
+        "line": 17,
+        "sha256": "9c21dcd171a12c913636a7fbcade70f2a094fa4bab30625f42e1184e3c27e0c4"
+      },
+      "current_definition": "Present valuation must be complete, compatible and equal; conflict blocks without overwrite",
+      "affected_modules": [
+        "M2",
+        "M6",
+        "M7",
+        "T19",
+        "T36",
+        "T39",
+        "T41",
+        "T42"
+      ],
+      "validation_evidence": [
+        "tests/test_exit_sale_bridge.py:ExitSaleBridgeTests.test_existing_valuation_conflict_preserved_not_silently_replaced"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Evidence revision resolving conflicting valuation; no source hierarchy inferred"
+    },
+    {
+      "requirement_or_variable": "guarded_sale_cash_and_no_double_count",
+      "source": {
+        "path": "docs/technical-implementation-T41-T42.md",
+        "line": 21,
+        "sha256": "9c21dcd171a12c913636a7fbcade70f2a094fa4bab30625f42e1184e3c27e0c4"
+      },
+      "current_definition": "Generated proceeds through T39/T36; fixed costs supplied separately, no duplicate value/forward-NOI receipts",
+      "affected_modules": [
+        "M2",
+        "M6",
+        "M7",
+        "T19",
+        "T36",
+        "T39",
+        "T41",
+        "T42"
+      ],
+      "validation_evidence": [
+        "tests/test_exit_sale_bridge.py:ExitSaleBridgeTests.test_independent_value_to_guarded_cash_return",
+        "tests/test_exit_sale_bridge.py:ExitSaleBridgeTests.test_exit_cap_change_recalculates_gross_sale_then_net_return",
+        "tests/test_exit_sale_bridge.py:ExitSaleBridgeTests.test_no_separate_value_or_forward_noi_distribution",
+        "tests/test_exit_sale_bridge.py:ExitSaleBridgeTests.test_missing_cost_no_auto_zero_or_default_percentage",
+        "tests/test_exit_sale_bridge.py:ExitSaleBridgeTests.test_bank_blocker_not_removed_by_positive_value"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Price-dependent tax/fee responses, credit approval and funds"
+    },
+    {
+      "requirement_or_variable": "compatible_replay_and_bounds",
+      "source": {
+        "path": "docs/technical-implementation-T41-T42.md",
+        "line": 27,
+        "sha256": "9c21dcd171a12c913636a7fbcade70f2a094fa4bab30625f42e1184e3c27e0c4"
+      },
+      "current_definition": "Full same-version source/report replay and fail-closed exact budget handling",
+      "affected_modules": [
+        "M2",
+        "M6",
+        "M7",
+        "T19",
+        "T36",
+        "T39",
+        "T41",
+        "T42"
+      ],
+      "validation_evidence": [
+        "tests/test_exit_value.py:ExitValueTests.test_rehashed_noi_forgery_rejected",
+        "tests/test_exit_value.py:ExitValueTests.test_budget_fault_fails_closed",
+        "tests/test_exit_sale_bridge.py:ExitSaleBridgeTests.test_value_result_forgery_rejected_even_with_updated_hash",
+        "tests/test_exit_sale_bridge.py:ExitSaleBridgeTests.test_full_report_replay_rejects_forgery_and_changed_bridge"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "No new SQLite runtime archive; original financial acceptance remains open"
+    }
+  ],
+  "actual_sale_or_funding_verified": false,
+  "real_decisions_enabled": false
+}
