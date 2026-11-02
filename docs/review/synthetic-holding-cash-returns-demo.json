@@ -1,0 +1,399 @@
+{
+  "purpose": "synthetic_three_period_operating_continuity_and_investor_returns",
+  "context": {
+    "deal_id": "SYNTHETIC-NOI-demo",
+    "definition_set_revision": "SYNTHETIC-unadopted-M2-profile-v1",
+    "run_id": "SYNTHETIC-NOI-run",
+    "scenario_id": "SYNTHETIC-Base"
+  },
+  "declared_horizon": {
+    "start": "2027-01-01",
+    "end": "2030-01-01"
+  },
+  "periods": [
+    {
+      "binding_blockers": [],
+      "cash_blockers": [],
+      "cash_run_sha256": "d9651c87ffaf853df06aec7a068bc21c876514fe331fa0a48f2507c4cae06e25",
+      "cash_state": "reconciled_synthetic_plan",
+      "equity_contribution": {
+        "denominator": "1",
+        "numerator": "0"
+      },
+      "manifest_entry": {
+        "cash_date": "2027-12-31",
+        "cash_run_sha256": "d9651c87ffaf853df06aec7a068bc21c876514fe331fa0a48f2507c4cae06e25",
+        "end_date": "2028-01-01",
+        "noi_run_sha256": "1165a380adcbe7f346259eebb63146642a8b345ea30d15372724cff6cfd0532b",
+        "noi_source_sha256": "1d8324f3c109f30d6c6285bdde82802290dc783c3fa83d1bc26191997d17da3f",
+        "period_ref": "SYNTHETIC-hold-year-1",
+        "spec_source_sha256": "05d4b71539d7dcc7f2c012ac66e18460fd1700bf82fda14d191757bb51f5bc3b",
+        "start_date": "2027-01-01"
+      },
+      "net_operating_cash": {
+        "denominator": "1",
+        "numerator": "955"
+      },
+      "period_ref": "SYNTHETIC-hold-year-1",
+      "proposed_distribution": {
+        "denominator": "1",
+        "numerator": "100"
+      }
+    },
+    {
+      "binding_blockers": [],
+      "cash_blockers": [],
+      "cash_run_sha256": "57db7954d9ef0c940c612539649143e3e1104a5432620380492d9cea7a57081a",
+      "cash_state": "reconciled_synthetic_plan",
+      "equity_contribution": {
+        "denominator": "1",
+        "numerator": "0"
+      },
+      "manifest_entry": {
+        "cash_date": "2028-12-31",
+        "cash_run_sha256": "57db7954d9ef0c940c612539649143e3e1104a5432620380492d9cea7a57081a",
+        "end_date": "2029-01-01",
+        "noi_run_sha256": "b3c8bcfc10b4673d7b6bd3fa942532961c8581b0eef9166e96861b680915c1cf",
+        "noi_source_sha256": "3cf50205bd3f35a3df51b47683fa8e9eb43b301b77d7c1302ba98ffa2d1e21a5",
+        "period_ref": "SYNTHETIC-hold-year-2",
+        "spec_source_sha256": "a80689ba9b54d33c5c59c3bdd5e64f7293f09220a06be11e126b456ed9f6b088",
+        "start_date": "2028-01-01"
+      },
+      "net_operating_cash": {
+        "denominator": "1",
+        "numerator": "0"
+      },
+      "period_ref": "SYNTHETIC-hold-year-2",
+      "proposed_distribution": {
+        "denominator": "1",
+        "numerator": "0"
+      }
+    },
+    {
+      "binding_blockers": [],
+      "cash_blockers": [],
+      "cash_run_sha256": "fdfedb2a1ee9b7684cdbecf9049bb06a823bd96cbe457ec1804e7002d345303c",
+      "cash_state": "reconciled_synthetic_plan",
+      "equity_contribution": {
+        "denominator": "1",
+        "numerator": "0"
+      },
+      "manifest_entry": {
+        "cash_date": "2029-12-31",
+        "cash_run_sha256": "fdfedb2a1ee9b7684cdbecf9049bb06a823bd96cbe457ec1804e7002d345303c",
+        "end_date": "2030-01-01",
+        "noi_run_sha256": "54d2cfb025eee11c17ebfd5f9bc63c8cddff68682501d4187d0b069df6edd7d0",
+        "noi_source_sha256": "b2911136051acaf00efe86dc58488b9919ba251447ccc0f6e397d708cb810573",
+        "period_ref": "SYNTHETIC-hold-year-3",
+        "spec_source_sha256": "337daff6f55e8c55afeb3255cea226ec36f9a12a25433e7e387f94d23f24a27d",
+        "start_date": "2029-01-01"
+      },
+      "net_operating_cash": {
+        "denominator": "1",
+        "numerator": "1280"
+      },
+      "period_ref": "SYNTHETIC-hold-year-3",
+      "proposed_distribution": {
+        "denominator": "1",
+        "numerator": "200"
+      }
+    }
+  ],
+  "continuity_checks": 12,
+  "all_twelve_continuity_checks_equal": true,
+  "totals": {
+    "capital_expenditure": {
+      "denominator": "1",
+      "numerator": "100"
+    },
+    "closing_free_cash_claim": {
+      "denominator": "1",
+      "numerator": "995"
+    },
+    "closing_restricted_cash_claim": {
+      "denominator": "1",
+      "numerator": "360"
+    },
+    "debt_fee_payment": {
+      "denominator": "1",
+      "numerator": "10"
+    },
+    "debt_interest_payment": {
+      "denominator": "1",
+      "numerator": "200"
+    },
+    "debt_principal_payment": {
+      "denominator": "1",
+      "numerator": "400"
+    },
+    "equity_contribution": {
+      "denominator": "1",
+      "numerator": "0"
+    },
+    "net_operating_cash": {
+      "denominator": "1",
+      "numerator": "2235"
+    },
+    "nonfinancing_other_cash_receipt": {
+      "denominator": "1",
+      "numerator": "0"
+    },
+    "opening_free_cash": {
+      "denominator": "1",
+      "numerator": "50"
+    },
+    "opening_restricted_cash": {
+      "denominator": "1",
+      "numerator": "100"
+    },
+    "operating_payments": {
+      "denominator": "1",
+      "numerator": "855"
+    },
+    "operating_receipts": {
+      "denominator": "1",
+      "numerator": "3090"
+    },
+    "other_cash_payment": {
+      "denominator": "1",
+      "numerator": "20"
+    },
+    "planned_operating_distribution": {
+      "denominator": "1",
+      "numerator": "300"
+    },
+    "reserve_deposit": {
+      "denominator": "1",
+      "numerator": "300"
+    },
+    "reserve_release": {
+      "denominator": "1",
+      "numerator": "40"
+    }
+  },
+  "cash_conservation_residual": {
+    "denominator": "1",
+    "numerator": "0"
+  },
+  "operating_movements": [
+    {
+      "cash_date": "2027-12-31",
+      "cash_run_sha256": "d9651c87ffaf853df06aec7a068bc21c876514fe331fa0a48f2507c4cae06e25",
+      "contribution": {
+        "denominator": "1",
+        "numerator": "0"
+      },
+      "distribution": {
+        "denominator": "1",
+        "numerator": "100"
+      },
+      "period_ref": "SYNTHETIC-hold-year-1"
+    },
+    {
+      "cash_date": "2028-12-31",
+      "cash_run_sha256": "57db7954d9ef0c940c612539649143e3e1104a5432620380492d9cea7a57081a",
+      "contribution": {
+        "denominator": "1",
+        "numerator": "0"
+      },
+      "distribution": {
+        "denominator": "1",
+        "numerator": "0"
+      },
+      "period_ref": "SYNTHETIC-hold-year-2"
+    },
+    {
+      "cash_date": "2029-12-31",
+      "cash_run_sha256": "fdfedb2a1ee9b7684cdbecf9049bb06a823bd96cbe457ec1804e7002d345303c",
+      "contribution": {
+        "denominator": "1",
+        "numerator": "0"
+      },
+      "distribution": {
+        "denominator": "1",
+        "numerator": "200"
+      },
+      "period_ref": "SYNTHETIC-hold-year-3"
+    }
+  ],
+  "normalized_equity_events": [
+    {
+      "amount": {
+        "denominator": "1",
+        "numerator": "10"
+      },
+      "category": "initial_capital",
+      "currency": "USD",
+      "date": "2026-12-31",
+      "event_id": "initial",
+      "kind": "contribution",
+      "source_ref": "SYNTHETIC-cash-ledger:initial"
+    },
+    {
+      "amount": {
+        "denominator": "1",
+        "numerator": "5"
+      },
+      "category": "net_refinance_distribution",
+      "currency": "USD",
+      "date": "2027-12-31",
+      "event_id": "refi",
+      "kind": "distribution",
+      "source_ref": "SYNTHETIC-cash-ledger:refi"
+    },
+    {
+      "amount": {
+        "denominator": "1",
+        "numerator": "1"
+      },
+      "category": "operating_distribution",
+      "currency": "USD",
+      "date": "2027-12-31",
+      "event_id": "op1",
+      "kind": "distribution",
+      "source_ref": "miniuw:operating-cash:d9651c87ffaf853df06aec7a068bc21c876514fe331fa0a48f2507c4cae06e25#/exportable_operating_distribution"
+    },
+    {
+      "amount": {
+        "denominator": "1",
+        "numerator": "9"
+      },
+      "category": "net_sale_distribution",
+      "currency": "USD",
+      "date": "2029-12-31",
+      "event_id": "sale",
+      "kind": "distribution",
+      "source_ref": "SYNTHETIC-cash-ledger:sale"
+    },
+    {
+      "amount": {
+        "denominator": "1",
+        "numerator": "0"
+      },
+      "category": "operating_distribution",
+      "currency": "USD",
+      "date": "2028-12-31",
+      "event_id": "op-zero",
+      "kind": "distribution",
+      "source_ref": "miniuw:operating-cash:57db7954d9ef0c940c612539649143e3e1104a5432620380492d9cea7a57081a#/exportable_operating_distribution"
+    },
+    {
+      "amount": {
+        "denominator": "1",
+        "numerator": "2"
+      },
+      "category": "operating_distribution",
+      "currency": "USD",
+      "date": "2029-12-31",
+      "event_id": "op3",
+      "kind": "distribution",
+      "source_ref": "miniuw:operating-cash:fdfedb2a1ee9b7684cdbecf9049bb06a823bd96cbe457ec1804e7002d345303c#/exportable_operating_distribution"
+    }
+  ],
+  "dated_net_flows": [
+    {
+      "date": "2026-12-31",
+      "net": {
+        "denominator": "1",
+        "numerator": "-1000"
+      }
+    },
+    {
+      "date": "2027-12-31",
+      "net": {
+        "denominator": "1",
+        "numerator": "600"
+      }
+    },
+    {
+      "date": "2028-12-31",
+      "net": {
+        "denominator": "1",
+        "numerator": "0"
+      }
+    },
+    {
+      "date": "2029-12-31",
+      "net": {
+        "denominator": "1",
+        "numerator": "1100"
+      }
+    }
+  ],
+  "normalized_total_contributions": {
+    "denominator": "1",
+    "numerator": "10"
+  },
+  "normalized_total_receipts": {
+    "denominator": "1",
+    "numerator": "17"
+  },
+  "normalized_cash_profit": {
+    "denominator": "1",
+    "numerator": "7"
+  },
+  "equity_multiple": {
+    "denominator": "10",
+    "numerator": "17"
+  },
+  "annual_irr_roots": [
+    {
+      "annual_rate_interval": {
+        "lower": {
+          "denominator": "3287571",
+          "numerator": "906733"
+        },
+        "lower_closed": true,
+        "upper": {
+          "denominator": "9040815",
+          "numerator": "2493521"
+        },
+        "upper_closed": false
+      },
+      "exact_annual_rate": null
+    }
+  ],
+  "selected_IRR": null,
+  "unreconciled_events_outside_operating_binding": [
+    "initial",
+    "refi",
+    "sale"
+  ],
+  "binding": {
+    "profile_id": "SYNTHETIC-HOLDING-EMPTY-EQUITY-SLOTS-v1",
+    "manifest_source_sha256": "d66014472c43534f967738e9d35e2e10280332f3337db0f733243d5769fc7e20",
+    "holding_run_sha256": "7b8d6f6994ab56697241df0a2ac29ce419fbbfe1c7a3e99a6da12b4b9a970a1e",
+    "investor_source_sha256": "65839cd2ba2e94fd01e5f6faa9c264a19cdfa39483f0094dd716f220672743a0",
+    "slots": [
+      {
+        "period_ref": "SYNTHETIC-hold-year-1",
+        "distribution_event_id": "op1",
+        "contribution_event_id": null
+      },
+      {
+        "period_ref": "SYNTHETIC-hold-year-2",
+        "distribution_event_id": "op-zero",
+        "contribution_event_id": null
+      },
+      {
+        "period_ref": "SYNTHETIC-hold-year-3",
+        "distribution_event_id": "op3",
+        "contribution_event_id": null
+      }
+    ]
+  },
+  "holding_run_sha256": "7b8d6f6994ab56697241df0a2ac29ce419fbbfe1c7a3e99a6da12b4b9a970a1e",
+  "investor_run_sha256": "bf5c42aa9411ae27fb4cd996b758cb350013f93b3faafea1354905e73e436991",
+  "holding_bundle_sha256": "9176b88109d06365ccafa626764672af345ccb24f6226cd6533d041d54008be3",
+  "return_bundle_sha256": "7921bf2ea78988df4b96719f9d8e8cf3de58caccf66c220dc0ab8906276a3579",
+  "both_bundles_replayed_after_reopen": true,
+  "all_period_sources_recovered_byte_exactly": true,
+  "original_investor_source_preserved": true,
+  "zero_period_included_not_compressed": true,
+  "runtime_database_retained": false,
+  "refinance_and_sale_still_supplied": true,
+  "whole_project_cash_reconciled": false,
+  "distribution_authorized": false,
+  "decision": "PENDING",
+  "production_authorized": false
+}

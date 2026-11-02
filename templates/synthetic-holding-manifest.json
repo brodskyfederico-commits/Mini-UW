@@ -1,0 +1,47 @@
+{
+  "schema": "miniuw.synthetic-holding-cash.v1",
+  "profile": "contiguous_operating_plans_only",
+  "context": {
+    "deal_id": "SYNTHETIC-NOI-demo",
+    "scenario_id": "SYNTHETIC-Base",
+    "run_id": "SYNTHETIC-NOI-run",
+    "definition_set_revision": "SYNTHETIC-unadopted-M2-profile-v1"
+  },
+  "currency": "USD",
+  "start_date": "2027-01-01",
+  "end_date": "2030-01-01",
+  "calendar_basis_ref": "SYNTHETIC-three-explicit-contiguous-calendar-years",
+  "scope_inventory_declared_complete": true,
+  "periods": [
+    {
+      "period_ref": "SYNTHETIC-hold-year-1",
+      "start_date": "2027-01-01",
+      "end_date": "2028-01-01",
+      "cash_date": "2027-12-31",
+      "noi_source_sha256": "1d8324f3c109f30d6c6285bdde82802290dc783c3fa83d1bc26191997d17da3f",
+      "noi_run_sha256": "1165a380adcbe7f346259eebb63146642a8b345ea30d15372724cff6cfd0532b",
+      "spec_source_sha256": "05d4b71539d7dcc7f2c012ac66e18460fd1700bf82fda14d191757bb51f5bc3b",
+      "cash_run_sha256": "d9651c87ffaf853df06aec7a068bc21c876514fe331fa0a48f2507c4cae06e25"
+    },
+    {
+      "period_ref": "SYNTHETIC-hold-year-2",
+      "start_date": "2028-01-01",
+      "end_date": "2029-01-01",
+      "cash_date": "2028-12-31",
+      "noi_source_sha256": "3cf50205bd3f35a3df51b47683fa8e9eb43b301b77d7c1302ba98ffa2d1e21a5",
+      "noi_run_sha256": "b3c8bcfc10b4673d7b6bd3fa942532961c8581b0eef9166e96861b680915c1cf",
+      "spec_source_sha256": "a80689ba9b54d33c5c59c3bdd5e64f7293f09220a06be11e126b456ed9f6b088",
+      "cash_run_sha256": "57db7954d9ef0c940c612539649143e3e1104a5432620380492d9cea7a57081a"
+    },
+    {
+      "period_ref": "SYNTHETIC-hold-year-3",
+      "start_date": "2029-01-01",
+      "end_date": "2030-01-01",
+      "cash_date": "2029-12-31",
+      "noi_source_sha256": "b2911136051acaf00efe86dc58488b9919ba251447ccc0f6e397d708cb810573",
+      "noi_run_sha256": "54d2cfb025eee11c17ebfd5f9bc63c8cddff68682501d4187d0b069df6edd7d0",
+      "spec_source_sha256": "337daff6f55e8c55afeb3255cea226ec36f9a12a25433e7e387f94d23f24a27d",
+      "cash_run_sha256": "fdfedb2a1ee9b7684cdbecf9049bb06a823bd96cbe457ec1804e7002d345303c"
+    }
+  ]
+}

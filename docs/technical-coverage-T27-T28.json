@@ -1,0 +1,109 @@
+{
+  "scope": "Incremental synthetic implementation coverage; original 398-row matrix preserved, not financial coverage certification",
+  "rows": [
+    {
+      "requirement_or_variable": "working_balance_and_cash_continuity",
+      "source": {
+        "path": "docs/operating-settlement-bridges.md",
+        "line": 15,
+        "sha256": "defb05e619f39a1f413491bf5ff20b6cf8e0119d6de4941870988eaacab27bd4"
+      },
+      "current_definition": "Previous close must equal next opening; preserve all periods and original claims for all four working balances and free/restricted cash",
+      "affected_modules": [
+        "M2",
+        "M7",
+        "T27"
+      ],
+      "validation_evidence": [
+        "HoldingCashTests.test_all_six_balance_families_checked_at_every_boundary",
+        "HoldingCashTests.test_each_working_balance_reset_blocks_even_individually_valid_periods",
+        "HoldingCashTests.test_free_and_restricted_cash_cannot_restart_from_zero"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Declared operating plan only; authentic sources, real completeness and intraperiod liquidity not verified"
+    },
+    {
+      "requirement_or_variable": "all_periods_including_zero",
+      "source": {
+        "path": "docs/investor-return-bridges.md",
+        "line": 15,
+        "sha256": "88e751a2d7070eb00852c8d634814758e5a413364d3898c68f7f9bf2e606bb4f"
+      },
+      "current_definition": "Keep zero periods and their timing; explicit ordered horizon has no missing/extra evidence, gap or overlap",
+      "affected_modules": [
+        "M7",
+        "T27",
+        "T28",
+        "T23",
+        "T24"
+      ],
+      "validation_evidence": [
+        "HoldingCashTests.test_omitted_zero_period_is_detected_by_calendar_gap",
+        "HoldingReturnsTests.test_zero_year_remains_in_cash_vector_and_annual_distributions"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Not a general calendar/lease-up producer or approved temporal convention"
+    },
+    {
+      "requirement_or_variable": "free_restricted_and_total_conservation",
+      "source": {
+        "path": "docs/operating-settlement-bridges.md",
+        "line": 29,
+        "sha256": "defb05e619f39a1f413491bf5ff20b6cf8e0119d6de4941870988eaacab27bd4"
+      },
+      "current_definition": "Reserve transfers remain internal; compare all balances then aggregate period flows with first opening and last close, never sum stocks as receipts",
+      "affected_modules": [
+        "M7",
+        "T27"
+      ],
+      "validation_evidence": [
+        "HoldingCashTests.test_three_period_conservation_matches_independent_sources_and_uses",
+        "HoldingCashTests.test_holding_arithmetic_budget_can_block_valid_individual_periods"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Refinance/sale/construction cash and debt obligations not reconciled by operating-only profile"
+    },
+    {
+      "requirement_or_variable": "gross_equity_all_period_compilation",
+      "source": {
+        "path": "docs/investor-return-bridges.md",
+        "line": 9,
+        "sha256": "88e751a2d7070eb00852c8d634814758e5a413364d3898c68f7f9bf2e606bb4f"
+      },
+      "current_definition": "Bind distinct gross contribution/distribution slots, preserve zero and prohibit implicit overrides or partial compilation",
+      "affected_modules": [
+        "M7",
+        "T28"
+      ],
+      "validation_evidence": [
+        "HoldingReturnsTests.test_one_bad_target_prevents_entire_compilation_without_partial_changes",
+        "HoldingReturnsTests.test_positive_gross_additional_capital_cannot_be_netted_out",
+        "HoldingReturnsTests.test_unbound_operating_or_additional_event_in_horizon_blocks"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "No source authority, LP allocation, entitlement to distribution or full project cash closure"
+    },
+    {
+      "requirement_or_variable": "return_story_with_evidence",
+      "source": {
+        "path": "AGENTS.md",
+        "line": 17,
+        "sha256": "7cccf8b6e9fa3f45685e2e04afc43c7a3bd0ac5dd15f6b5b4eee4ae397e6f0df"
+      },
+      "current_definition": "Recalculate dated investor cash profit/EM/IRR from compiled operating events while keeping retained stocks separate and identifying supplied events outside the binding",
+      "affected_modules": [
+        "M7",
+        "T28",
+        "T23",
+        "T24"
+      ],
+      "validation_evidence": [
+        "HoldingReturnsTests.test_complete_operating_chain_compiles_into_dated_ten_dollar_return",
+        "HoldingReturnsTests.test_preserves_unbound_refinance_sale_capital_stocks_and_criteria",
+        "HoldingReturnsTests.test_reopened_bundle_replays_all_periods_and_final_return"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Refi/sale producers, authenticated professional review, risks, final PDF and original financial acceptance remain open"
+    }
+  ]
+}

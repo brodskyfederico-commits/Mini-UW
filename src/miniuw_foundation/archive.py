@@ -57,6 +57,12 @@ from .operating_cash import definition_sources as cash_definition_sources
 from .operating_returns import OperatingReturnRun,OperatingReturnBinding,assemble_operating_returns
 from .operating_returns import ENGINE_SHA256 as OPERATING_RETURN_ENGINE_SHA256
 
+from .holding_cash import OperatingPeriodEvidence,HoldingCashRun,parse_holding_cash,reconcile_holding_cash
+from .holding_cash import ENGINE_SHA256 as HOLDING_CASH_ENGINE_SHA256
+from .holding_returns import HoldingReturnRun,HoldingReturnBinding,assemble_holding_returns
+from .holding_returns import ENGINE_SHA256 as HOLDING_RETURN_ENGINE_SHA256
+from .holding_returns import binding_from_record as holding_binding_from_record
+
 
 class MissingEvidence(KeyError):
     pass
@@ -168,6 +174,30 @@ def _cash_versions():return [CASH_ENGINE_SHA256,OPERATING_NOI_ENGINE_SHA256,DEBT
 def _cash_definitions():return {'cash':cash_definition_sources(),'noi':operating_noi_definition_sources()}
 def _operating_return_versions():return [OPERATING_RETURN_ENGINE_SHA256]+_cash_versions()+[ROOT_ENGINE_SHA256]
 def _operating_return_definitions():return dict(_cash_definitions(),investor=investor_definition_sources())
+
+
+@dataclass(frozen=True)
+class HoldingCashBundle:
+    payload_json:str
+    sha256:str
+    @property
+    def payload(self):return json.loads(self.payload_json)
+    @property
+    def run(self):return HoldingCashRun(**self.payload['run'])
+
+
+@dataclass(frozen=True)
+class HoldingReturnBundle:
+    payload_json:str
+    sha256:str
+    @property
+    def payload(self):return json.loads(self.payload_json)
+    @property
+    def run(self):return HoldingReturnRun(**self.payload['run'])
+
+
+def _holding_cash_versions():return [HOLDING_CASH_ENGINE_SHA256]+_cash_versions()
+def _holding_return_versions():return [HOLDING_RETURN_ENGINE_SHA256]+_holding_cash_versions()+[ROOT_ENGINE_SHA256]
 
 
 def _sha(raw):
@@ -696,6 +726,78 @@ COMMIT;''')
                 raise CorruptArchive('invalid screening evidence') from error
         return bundle
 
+
+    def get_holding_cash_manifest(self, sha):
+        raw=self._read('source',sha);parse_holding_cash(raw);return raw
+
+    def _capture_holding_periods(self, periods):
+        return [{'noi_source_sha256':self._put('source',e.noi_raw),'spec_source_sha256':self._put('source',e.spec_raw),
+            'noi_run':asdict(e.noi_run),'cash_run':asdict(e.cash_run)}for e in periods]
+
+    def _restore_holding_periods(self, records):
+        if type(records)is not list or len(records)>65:raise CorruptArchive('invalid archived period inventory')
+        periods=[]
+        for row in records:
+            if type(row)is not dict or set(row)!={'noi_source_sha256','spec_source_sha256','noi_run','cash_run'}:raise CorruptArchive('period evidence fields changed')
+            periods.append(OperatingPeriodEvidence(noi_raw=self.get_operating_noi_source(row['noi_source_sha256']),noi_run=OperatingNoiRun(**row['noi_run']),spec_raw=self.get_operating_cash_spec(row['spec_source_sha256']),cash_run=OperatingCashRun(**row['cash_run'])))
+        return tuple(periods)
+
+    def get_holding_periods(self, sha):
+        # Public recovery always verifies the enclosing bundle before returning inputs.
+        bundle=self.load_holding_cash(sha)
+        return self._restore_holding_periods(bundle.payload['periods'])
+
+    def save_holding_cash(self, periods, manifest_raw, run):
+        if type(run)is not HoldingCashRun or reconcile_holding_cash(periods,manifest_raw)!=run:raise ValidationError('holding cash does not reproduce')
+        with self._transaction():
+            manifest=self._put('source',manifest_raw);records=self._capture_holding_periods(periods)
+            p={'schema':'miniuw.synthetic-holding-cash-bundle.v1','purpose':'synthetic_development_only','manifest_source_sha256':manifest,
+                'periods':records,'run':asdict(run),'versions':_holding_cash_versions(),'definitions':_cash_definitions()}
+            return self._put('bundle',canonical(p).encode())
+
+    def load_holding_cash(self, sha):
+        with self._transaction():
+            raw=self.read_bundle_bytes(sha)
+            try:
+                p=json.loads(raw)
+                if set(p)!={'schema','purpose','manifest_source_sha256','periods','run','versions','definitions'}:raise CorruptArchive('holding cash fields changed')
+                if p['schema']!='miniuw.synthetic-holding-cash-bundle.v1':raise UnsupportedArchive('unsupported holding cash schema')
+                if p['purpose']!='synthetic_development_only':raise CorruptArchive('holding purpose changed')
+                if p['versions']!=_holding_cash_versions()or p['definitions']!=_cash_definitions():raise UnsupportedArchive('holding replay requires compatible code/documents')
+                bundle=HoldingCashBundle(raw.decode(),sha)
+                if reconcile_holding_cash(self._restore_holding_periods(p['periods']),self.get_holding_cash_manifest(p['manifest_source_sha256']))!=bundle.run:raise CorruptArchive('holding cash evidence does not reproduce')
+            except MissingEvidence:raise
+            except(KeyError,TypeError,UnicodeError,json.JSONDecodeError,ValidationError)as error:raise CorruptArchive('invalid holding cash evidence')from error
+        return bundle
+
+    def save_holding_returns(self, periods, manifest_raw, holding_run, investor_raw, binding, run):
+        if type(run)is not HoldingReturnRun or assemble_holding_returns(periods,manifest_raw,holding_run,investor_raw,binding)!=run:raise ValidationError('holding return assembly does not reproduce')
+        with self._transaction():
+            manifest=self._put('source',manifest_raw);records=self._capture_holding_periods(periods);investor=self._put('source',investor_raw)
+            compiled=None if run.compiled_raw is None else self._put('source',run.compiled_raw)
+            p={'schema':'miniuw.synthetic-holding-return-bundle.v1','purpose':'synthetic_development_only',
+                'manifest_source_sha256':manifest,'periods':records,'holding_run':asdict(holding_run),
+                'investor_source_sha256':investor,'compiled_source_sha256':compiled,'binding':asdict(binding),'run':asdict(run),
+                'versions':_holding_return_versions(),'definitions':_operating_return_definitions()}
+            return self._put('bundle',canonical(p).encode())
+
+    def load_holding_returns(self, sha):
+        with self._transaction():
+            raw=self.read_bundle_bytes(sha)
+            try:
+                p=json.loads(raw)
+                if set(p)!={'schema','purpose','manifest_source_sha256','periods','holding_run','investor_source_sha256','compiled_source_sha256','binding','run','versions','definitions'}:raise CorruptArchive('holding return fields changed')
+                if p['schema']!='miniuw.synthetic-holding-return-bundle.v1':raise UnsupportedArchive('unsupported holding return schema')
+                if p['purpose']!='synthetic_development_only':raise CorruptArchive('holding return purpose changed')
+                if p['versions']!=_holding_return_versions()or p['definitions']!=_operating_return_definitions():raise UnsupportedArchive('holding return replay requires compatible code/documents')
+                bundle=HoldingReturnBundle(raw.decode(),sha);periods=self._restore_holding_periods(p['periods'])
+                manifest=self.get_holding_cash_manifest(p['manifest_source_sha256']);investor=self.get_investor_returns_source(p['investor_source_sha256'])
+                if assemble_holding_returns(periods,manifest,HoldingCashRun(**p['holding_run']),investor,holding_binding_from_record(p['binding']))!=bundle.run:raise CorruptArchive('holding return assembly does not reproduce')
+                compiled=None if p['compiled_source_sha256']is None else self._read('source',p['compiled_source_sha256'])
+                if compiled!=bundle.run.compiled_raw:raise CorruptArchive('compiled holding investor source changed')
+            except MissingEvidence:raise
+            except(KeyError,TypeError,UnicodeError,json.JSONDecodeError,ValidationError)as error:raise CorruptArchive('invalid holding return evidence')from error
+        return bundle
 
     def get_operating_cash_spec(self, sha):
         raw=self._read('source',sha);parse_operating_cash(raw);return raw

@@ -1,0 +1,267 @@
+{
+  "schema": "miniuw.synthetic-operating-cash.v1",
+  "context": {
+    "deal_id": "SYNTHETIC-NOI-demo",
+    "definition_set_revision": "SYNTHETIC-unadopted-M2-profile-v1",
+    "run_id": "SYNTHETIC-NOI-run",
+    "scenario_id": "SYNTHETIC-Base"
+  },
+  "currency": "USD",
+  "period_ref": "SYNTHETIC-hold-year-2",
+  "start_date": "2028-01-01",
+  "end_date": "2029-01-01",
+  "cash_date": "2028-12-31",
+  "period_basis_ref": "SYNTHETIC-declared-accrual-and-cash-period-binding",
+  "noi_source_sha256": "3cf50205bd3f35a3df51b47683fa8e9eb43b301b77d7c1302ba98ffa2d1e21a5",
+  "noi_run_sha256": "b3c8bcfc10b4673d7b6bd3fa942532961c8581b0eef9166e96861b680915c1cf",
+  "scope_inventory_declared_complete": true,
+  "distribution_basis_ref": "SYNTHETIC-proposed-fixed-distribution-not-authorized",
+  "profile": "explicit_accrual_cash_and_planned_allocation_operations_only",
+  "working_balances": {
+    "receivables": {
+      "opening": {
+        "value": {
+          "numerator": "200",
+          "denominator": "1"
+        },
+        "currency": "USD",
+        "period_ref": "OPENING:SYNTHETIC-hold-year-2",
+        "source_ref": "SYNTHETIC-declared-cash-plan-and-balance"
+      },
+      "closing": {
+        "value": {
+          "numerator": "200",
+          "denominator": "1"
+        },
+        "currency": "USD",
+        "period_ref": "CLOSING:SYNTHETIC-hold-year-2",
+        "source_ref": "SYNTHETIC-declared-cash-plan-and-balance"
+      }
+    },
+    "advance_income": {
+      "opening": {
+        "value": {
+          "numerator": "150",
+          "denominator": "1"
+        },
+        "currency": "USD",
+        "period_ref": "OPENING:SYNTHETIC-hold-year-2",
+        "source_ref": "SYNTHETIC-declared-cash-plan-and-balance"
+      },
+      "closing": {
+        "value": {
+          "numerator": "150",
+          "denominator": "1"
+        },
+        "currency": "USD",
+        "period_ref": "CLOSING:SYNTHETIC-hold-year-2",
+        "source_ref": "SYNTHETIC-declared-cash-plan-and-balance"
+      }
+    },
+    "payables": {
+      "opening": {
+        "value": {
+          "numerator": "130",
+          "denominator": "1"
+        },
+        "currency": "USD",
+        "period_ref": "OPENING:SYNTHETIC-hold-year-2",
+        "source_ref": "SYNTHETIC-declared-cash-plan-and-balance"
+      },
+      "closing": {
+        "value": {
+          "numerator": "130",
+          "denominator": "1"
+        },
+        "currency": "USD",
+        "period_ref": "CLOSING:SYNTHETIC-hold-year-2",
+        "source_ref": "SYNTHETIC-declared-cash-plan-and-balance"
+      }
+    },
+    "prepaid_expenses": {
+      "opening": {
+        "value": {
+          "numerator": "60",
+          "denominator": "1"
+        },
+        "currency": "USD",
+        "period_ref": "OPENING:SYNTHETIC-hold-year-2",
+        "source_ref": "SYNTHETIC-declared-cash-plan-and-balance"
+      },
+      "closing": {
+        "value": {
+          "numerator": "60",
+          "denominator": "1"
+        },
+        "currency": "USD",
+        "period_ref": "CLOSING:SYNTHETIC-hold-year-2",
+        "source_ref": "SYNTHETIC-declared-cash-plan-and-balance"
+      }
+    }
+  },
+  "amounts": {
+    "noncash_revenue": {
+      "value": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "period_ref": "SYNTHETIC-hold-year-2",
+      "source_ref": "SYNTHETIC-declared-cash-plan-and-balance"
+    },
+    "noncash_expense": {
+      "value": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "period_ref": "SYNTHETIC-hold-year-2",
+      "source_ref": "SYNTHETIC-declared-cash-plan-and-balance"
+    },
+    "operating_receipts_claim": {
+      "value": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "period_ref": "SYNTHETIC-hold-year-2",
+      "source_ref": "SYNTHETIC-declared-cash-plan-and-balance"
+    },
+    "operating_payments_claim": {
+      "value": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "period_ref": "SYNTHETIC-hold-year-2",
+      "source_ref": "SYNTHETIC-declared-cash-plan-and-balance"
+    },
+    "debt_principal_payment": {
+      "value": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "period_ref": "SYNTHETIC-hold-year-2",
+      "source_ref": "SYNTHETIC-declared-cash-plan-and-balance"
+    },
+    "debt_interest_payment": {
+      "value": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "period_ref": "SYNTHETIC-hold-year-2",
+      "source_ref": "SYNTHETIC-declared-cash-plan-and-balance"
+    },
+    "debt_fee_payment": {
+      "value": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "period_ref": "SYNTHETIC-hold-year-2",
+      "source_ref": "SYNTHETIC-declared-cash-plan-and-balance"
+    },
+    "capital_expenditure": {
+      "value": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "period_ref": "SYNTHETIC-hold-year-2",
+      "source_ref": "SYNTHETIC-declared-cash-plan-and-balance"
+    },
+    "other_cash_payment": {
+      "value": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "period_ref": "SYNTHETIC-hold-year-2",
+      "source_ref": "SYNTHETIC-declared-cash-plan-and-balance"
+    },
+    "nonfinancing_other_cash_receipt": {
+      "value": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "period_ref": "SYNTHETIC-hold-year-2",
+      "source_ref": "SYNTHETIC-declared-cash-plan-and-balance"
+    },
+    "reserve_deposit": {
+      "value": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "period_ref": "SYNTHETIC-hold-year-2",
+      "source_ref": "SYNTHETIC-declared-cash-plan-and-balance"
+    },
+    "reserve_release": {
+      "value": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "period_ref": "SYNTHETIC-hold-year-2",
+      "source_ref": "SYNTHETIC-declared-cash-plan-and-balance"
+    },
+    "equity_contribution": {
+      "value": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "period_ref": "SYNTHETIC-hold-year-2",
+      "source_ref": "SYNTHETIC-declared-cash-plan-and-balance"
+    },
+    "planned_operating_distribution": {
+      "value": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "period_ref": "SYNTHETIC-hold-year-2",
+      "source_ref": "SYNTHETIC-declared-cash-plan-and-balance"
+    },
+    "opening_free_cash": {
+      "value": {
+        "numerator": "410",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "period_ref": "OPENING:SYNTHETIC-hold-year-2",
+      "source_ref": "SYNTHETIC-declared-cash-plan-and-balance"
+    },
+    "opening_restricted_cash": {
+      "value": {
+        "numerator": "230",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "period_ref": "OPENING:SYNTHETIC-hold-year-2",
+      "source_ref": "SYNTHETIC-declared-cash-plan-and-balance"
+    },
+    "closing_free_cash_claim": {
+      "value": {
+        "numerator": "410",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "period_ref": "CLOSING:SYNTHETIC-hold-year-2",
+      "source_ref": "SYNTHETIC-declared-cash-plan-and-balance"
+    },
+    "closing_restricted_cash_claim": {
+      "value": {
+        "numerator": "230",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "period_ref": "CLOSING:SYNTHETIC-hold-year-2",
+      "source_ref": "SYNTHETIC-declared-cash-plan-and-balance"
+    }
+  },
+  "classification_basis_ref": "SYNTHETIC-declared-nonoverlapping-operating-and-financing-uses-no-refi-or-sale"
+}

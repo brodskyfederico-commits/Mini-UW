@@ -1,0 +1,166 @@
+{
+  "schema": "miniuw.synthetic-investor-returns.v1",
+  "context": {
+    "deal_id": "SYNTHETIC-NOI-demo",
+    "definition_set_revision": "SYNTHETIC-unadopted-M2-profile-v1",
+    "run_id": "SYNTHETIC-NOI-run",
+    "scenario_id": "SYNTHETIC-Base"
+  },
+  "currency": "USD",
+  "equity_level": "aggregate_project_equity",
+  "event_inventory_declared_complete": true,
+  "grid": {
+    "spacing": "calendar_months_same_day",
+    "step_months": 12,
+    "dates": [
+      "2026-12-31",
+      "2027-12-31",
+      "2028-12-31",
+      "2029-12-31"
+    ],
+    "timing_basis_ref": "SYNTHETIC-provided-annual-grid"
+  },
+  "events": [
+    {
+      "event_id": "initial",
+      "date": "2026-12-31",
+      "kind": "contribution",
+      "category": "initial_capital",
+      "amount": {
+        "numerator": "1000",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "source_ref": "SYNTHETIC-cash-ledger:initial"
+    },
+    {
+      "event_id": "refi",
+      "date": "2027-12-31",
+      "kind": "distribution",
+      "category": "net_refinance_distribution",
+      "amount": {
+        "numerator": "500",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "source_ref": "SYNTHETIC-cash-ledger:refi"
+    },
+    {
+      "event_id": "op1",
+      "date": "2027-12-31",
+      "kind": "distribution",
+      "category": "operating_distribution",
+      "amount": null,
+      "currency": "USD",
+      "source_ref": null
+    },
+    {
+      "event_id": "sale",
+      "date": "2029-12-31",
+      "kind": "distribution",
+      "category": "net_sale_distribution",
+      "amount": {
+        "numerator": "900",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "source_ref": "SYNTHETIC-cash-ledger:sale"
+    },
+    {
+      "event_id": "op-zero",
+      "date": "2028-12-31",
+      "kind": "distribution",
+      "category": "operating_distribution",
+      "amount": null,
+      "currency": "USD",
+      "source_ref": null
+    },
+    {
+      "event_id": "op3",
+      "date": "2029-12-31",
+      "kind": "distribution",
+      "category": "operating_distribution",
+      "amount": null,
+      "currency": "USD",
+      "source_ref": null
+    }
+  ],
+  "normalization": {
+    "reference_amount": {
+      "numerator": "10",
+      "denominator": "1"
+    },
+    "contribution_event_ids": [
+      "initial"
+    ],
+    "basis_ref": "SYNTHETIC-initial-contribution-only"
+  },
+  "capital_snapshots": [
+    {
+      "as_of_date": "2027-12-31",
+      "capital_still_invested": {
+        "numerator": "500",
+        "denominator": "1"
+      },
+      "retained_equity_value": {
+        "numerator": "800",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "basis_ref": "SYNTHETIC-declared-after-refi-stock",
+      "source_ref": "SYNTHETIC-independent-stock-declaration"
+    }
+  ],
+  "annual_cash_bases": [
+    {
+      "year": 2026,
+      "capital_base": {
+        "numerator": "1000",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "basis_ref": "SYNTHETIC-declared-cash-on-cash-denominator",
+      "source_ref": "SYNTHETIC-capital-basis"
+    },
+    {
+      "year": 2027,
+      "capital_base": {
+        "numerator": "500",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "basis_ref": "SYNTHETIC-declared-cash-on-cash-denominator",
+      "source_ref": "SYNTHETIC-capital-basis"
+    },
+    {
+      "year": 2028,
+      "capital_base": {
+        "numerator": "500",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "basis_ref": "SYNTHETIC-declared-cash-on-cash-denominator",
+      "source_ref": "SYNTHETIC-capital-basis"
+    },
+    {
+      "year": 2029,
+      "capital_base": {
+        "numerator": "500",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "basis_ref": "SYNTHETIC-declared-cash-on-cash-denominator",
+      "source_ref": "SYNTHETIC-capital-basis"
+    }
+  ],
+  "irr_parameters": {
+    "rate_domain": "r_gt_minus_one_positive_discount_factor",
+    "max_periodic_rate_interval_width": {
+      "numerator": "1",
+      "denominator": "1000000"
+    },
+    "split_budget": 256,
+    "operation_budget": 200000,
+    "periods_per_year": 1
+  }
+}
