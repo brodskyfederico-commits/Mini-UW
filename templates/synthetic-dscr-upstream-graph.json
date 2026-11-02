@@ -1,0 +1,28 @@
+{
+  "graph_id": "SYNTHETIC-provided-dscr-amounts",
+  "definition_revision": "fixture-v1",
+  "nodes": [
+    {
+      "node_id": "declared_noi",
+      "definition_revision": "SYNTHETIC-provided-declared_noi-v1",
+      "operation": "identity",
+      "operands": [
+        {
+          "kind": "input",
+          "ref": "INPUT_C8"
+        }
+      ]
+    },
+    {
+      "node_id": "declared_service",
+      "definition_revision": "SYNTHETIC-provided-declared_service-v1",
+      "operation": "identity",
+      "operands": [
+        {
+          "kind": "input",
+          "ref": "INPUT_C9"
+        }
+      ]
+    }
+  ]
+}

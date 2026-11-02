@@ -17,6 +17,8 @@ from .normalization import NumericProfile, NormalizationRun, normalize_synthetic
 from .normalization import ENGINE_SHA256 as NORMALIZER_SHA256
 from .calculations import CalculationRun, calculate_synthetic, graph_from_record
 from .calculations import ENGINE_SHA256 as CALCULATOR_SHA256
+from .scoped_profiles import DscrBinding, ScopedProfileRun, dispatch_scoped_profile, definition_sources
+from .scoped_profiles import ENGINE_SHA256 as PROFILE_ENGINE_SHA256
 
 
 class MissingEvidence(KeyError):
@@ -117,6 +119,29 @@ class CalculationBundle:
     @property
     def run(self):
         return CalculationRun(**self.payload['run'])
+
+
+@dataclass(frozen=True)
+class ScopedProfileBundle:
+    payload_json: str
+    sha256: str
+
+    @property
+    def payload(self):return json.loads(self.payload_json)
+    @property
+    def snapshot(self):return Snapshot(**self.payload['snapshot'])
+    @property
+    def profiles(self):return tuple(NumericProfile(**p) for p in self.payload['profiles'])
+    @property
+    def normalization(self):return NormalizationRun(**self.payload['normalization'])
+    @property
+    def graph(self):return graph_from_record(self.payload['graph'])
+    @property
+    def upstream(self):return CalculationRun(**self.payload['upstream'])
+    @property
+    def binding(self):return DscrBinding(**self.payload['binding'])
+    @property
+    def run(self):return ScopedProfileRun(**self.payload['run'])
 
 
 class EvidenceArchive:
@@ -328,6 +353,45 @@ COMMIT;''')
                 raise
             except (KeyError, TypeError, UnicodeError, json.JSONDecodeError, ValidationError) as error:
                 raise CorruptArchive('invalid calculation evidence structure/content') from error
+        return bundle
+
+
+    def save_scoped_profile(self, snapshot, profiles, normalization, graph, upstream, binding, run):
+        if type(run) is not ScopedProfileRun or dispatch_scoped_profile(snapshot,profiles,normalization,graph,upstream,binding) != run:
+            raise ValidationError('scoped profile does not reproduce from full upstream evidence')
+        with self._transaction():
+            hashes=self._verify_sources(snapshot)
+            payload={'schema':'miniuw.synthetic-scoped-profile-bundle.v1','purpose':'synthetic_development_only',
+                'snapshot':asdict(snapshot),'profiles':[asdict(p) for p in sorted(profiles,key=lambda p:p.slot_id)],
+                'normalization':asdict(normalization),'graph':graph.record(),'upstream':asdict(upstream),
+                'binding':asdict(binding),'run':asdict(run),'source_hashes':hashes,
+                'profile_engine_sha256':PROFILE_ENGINE_SHA256,'calculator_sha256':CALCULATOR_SHA256,
+                'normalizer_sha256':NORMALIZER_SHA256,'definition_sources':definition_sources()}
+            return self._put('bundle',canonical(payload).encode('utf-8'))
+
+    def load_scoped_profile(self, sha):
+        with self._transaction():
+            raw=self.read_bundle_bytes(sha)
+            try:
+                payload=json.loads(raw)
+                if set(payload) != {'schema','purpose','snapshot','profiles','normalization','graph','upstream','binding','run','source_hashes','profile_engine_sha256','calculator_sha256','normalizer_sha256','definition_sources'}:
+                    raise CorruptArchive('scoped profile bundle fields changed')
+                if payload['schema'] != 'miniuw.synthetic-scoped-profile-bundle.v1':
+                    raise UnsupportedArchive('unsupported scoped profile schema')
+                if payload['purpose'] != 'synthetic_development_only':
+                    raise CorruptArchive('scoped profile purpose changed')
+                if (payload['profile_engine_sha256'] != PROFILE_ENGINE_SHA256 or payload['calculator_sha256'] != CALCULATOR_SHA256
+                    or payload['normalizer_sha256'] != NORMALIZER_SHA256 or payload['definition_sources'] != definition_sources()):
+                    raise UnsupportedArchive('scoped replay requires compatible code and definition documents')
+                bundle=ScopedProfileBundle(raw.decode('utf-8'),sha)
+                if self._verify_sources(bundle.snapshot) != payload['source_hashes']:
+                    raise CorruptArchive('scoped profile source inventory changed')
+                if dispatch_scoped_profile(bundle.snapshot,bundle.profiles,bundle.normalization,bundle.graph,bundle.upstream,bundle.binding) != bundle.run:
+                    raise CorruptArchive('scoped profile result does not reproduce')
+            except MissingEvidence:
+                raise
+            except (KeyError, TypeError, UnicodeError, json.JSONDecodeError, ValidationError) as error:
+                raise CorruptArchive('invalid scoped profile evidence structure/content') from error
         return bundle
 
 

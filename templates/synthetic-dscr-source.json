@@ -1,0 +1,25 @@
+{
+  "schema": "miniuw.synthetic-claims.v1",
+  "claims": [
+    {
+      "claim_id": "SYNTHETIC-declared_noi",
+      "slot_kind": "input",
+      "slot_id": "INPUT_C8",
+      "literal": "1250",
+      "unit_literal": "currency/declared-period",
+      "currency_literal": "USD",
+      "period_literal": "SYNTHETIC-period-1",
+      "definition_ref": "SYNTHETIC-provided-declared_noi-v1"
+    },
+    {
+      "claim_id": "SYNTHETIC-declared_service",
+      "slot_kind": "input",
+      "slot_id": "INPUT_C9",
+      "literal": "1000",
+      "unit_literal": "currency/declared-period",
+      "currency_literal": "USD",
+      "period_literal": "SYNTHETIC-period-1",
+      "definition_ref": "SYNTHETIC-provided-declared_service-v1"
+    }
+  ]
+}

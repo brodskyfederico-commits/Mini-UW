@@ -1,0 +1,30 @@
+[
+  {
+    "profile_id": "SYNTHETIC-declared_noi",
+    "definition_revision": "fixture-v1",
+    "slot_id": "INPUT_C8",
+    "source_definition_ref": "SYNTHETIC-provided-declared_noi-v1",
+    "decimal_mark": ".",
+    "notation": "decimal",
+    "trim_outer_whitespace": false,
+    "source_unit_literal": "currency/declared-period",
+    "target_unit": "currency/declared-period",
+    "quantity_kind": "money_per_period",
+    "currency_literal": "USD",
+    "period_literal": "SYNTHETIC-period-1"
+  },
+  {
+    "profile_id": "SYNTHETIC-declared_service",
+    "definition_revision": "fixture-v1",
+    "slot_id": "INPUT_C9",
+    "source_definition_ref": "SYNTHETIC-provided-declared_service-v1",
+    "decimal_mark": ".",
+    "notation": "decimal",
+    "trim_outer_whitespace": false,
+    "source_unit_literal": "currency/declared-period",
+    "target_unit": "currency/declared-period",
+    "quantity_kind": "money_per_period",
+    "currency_literal": "USD",
+    "period_literal": "SYNTHETIC-period-1"
+  }
+]

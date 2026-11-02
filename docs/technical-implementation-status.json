@@ -1,7 +1,7 @@
 {
   "phase": "post-I01 synthetic technical implementation",
   "user_authorized": true,
-  "component": "T08",
+  "component": "T09",
   "status": "local_implementation_verified_pending_remote_receipt",
   "implemented": [
     "fresh raw-claim drafts from unchanged 55-input/10-criterion template",
@@ -30,12 +30,16 @@
     "typed exact synthetic arithmetic over replay-verified numeric inputs",
     "unit/currency/period compatibility and undefined-operation blocking",
     "calculation dependency lineage and selective/global freshness observation",
-    "durable calculation bundles with full numeric/source/graph replay"
+    "durable calculation bundles with full numeric/source/graph replay",
+    "explicit candidate DSCR dispatcher over declared replay-verified upstream amounts",
+    "producer revision/basis/quantity guards and sizing-versus-dated-period labels",
+    "document-location/hash evidence and full scoped-profile archive replay"
   ],
-  "unit_tests": 187,
+  "unit_tests": 205,
   "plan_packages_partially_addressed": [
     "IMP-01",
-    "IMP-06"
+    "IMP-06",
+    "IMP-02"
   ],
   "full_plan_packages_completed": 0,
   "financial_engine_implemented": false,
@@ -45,7 +49,7 @@
   "deployment_enabled": false,
   "production_ready": false,
   "next_independent_work": [
-    "dispatcher of explicitly defined scoped calculation profiles with complete input/unit contracts",
+    "financial producer contracts with distinct NOI and debt-service provenance",
     "explicit calendar profiles for dated synthetic cash",
     "atomic evidence/currentness recording without publishing real decisions"
   ],
@@ -58,7 +62,8 @@
     "T05",
     "T06",
     "T07",
-    "T08"
+    "T08",
+    "T09"
   ],
   "tests_by_component": {
     "T01": 31,
@@ -68,7 +73,8 @@
     "T05": 22,
     "T06": 18,
     "T07": 26,
-    "T08": 25
+    "T08": 25,
+    "T09": 18
   },
   "not_yet_implemented": [
     "complete financial graph and its designed cycles",
@@ -88,5 +94,11 @@
   "synthetic_numeric_decoder_implemented": true,
   "normalization_results_eligible_for_financial_decisions": false,
   "synthetic_typed_arithmetic_implemented": true,
-  "arithmetic_scaffold_for_IMP02": true
+  "arithmetic_scaffold_for_IMP02": true,
+  "scoped_profile_dispatcher_implemented": true,
+  "supported_scoped_profiles": [
+    "SYNTHETIC-DECLARED-DSCR-v1"
+  ],
+  "upstream_financial_contracts_verified": false,
+  "financial_profiles_adopted": false
 }
