@@ -1,7 +1,7 @@
 {
   "phase": "post-I01 synthetic technical implementation",
   "user_authorized": true,
-  "component": "T12",
+  "component": "T13",
   "status": "local_implementation_verified_pending_remote_receipt",
   "implemented": [
     "fresh raw-claim drafts from unchanged 55-input/10-criterion template",
@@ -43,9 +43,12 @@
     "band policy what-if preview without adoption and typed screening archive replay",
     "canonical intermediate-band PENDING under explicit user direction",
     "review queue locators and immutable reclassification evidence",
-    "screening archive bound to user policy revision; what-if excluded from canonical storage"
+    "screening archive bound to user policy revision; what-if excluded from canonical storage",
+    "explicit synthetic screening review proposals with base source/run revision guards",
+    "immutable candidate branches and before/after/reason evidence without acceptance",
+    "transactional archival and compatible-version replay of base/proposal/candidate"
   ],
-  "unit_tests": 254,
+  "unit_tests": 273,
   "plan_packages_partially_addressed": [
     "IMP-01",
     "IMP-06",
@@ -61,9 +64,9 @@
   "deployment_enabled": false,
   "production_ready": false,
   "next_independent_work": [
-    "professional-review proposal records without pretending authentication",
     "remaining financial producers/general calendars",
-    "authentic input integration and atomic publication safeguards"
+    "synthetic proposal lifecycle and publication freshness guards",
+    "authentic input integration without unverified policy adoption"
   ],
   "I01_snapshot_preserved": true,
   "components_implemented": [
@@ -78,7 +81,8 @@
     "T09",
     "T10",
     "T11",
-    "T12"
+    "T12",
+    "T13"
   ],
   "tests_by_component": {
     "T01": 31,
@@ -92,7 +96,8 @@
     "T09": 18,
     "T10": 24,
     "T11": 21,
-    "T12": 4
+    "T12": 4,
+    "T13": 19
   },
   "not_yet_implemented": [
     "complete financial graph and its designed cycles",
@@ -125,5 +130,6 @@
   "operational_screening_decisions_enabled": false,
   "user_band_policy_decision": "resolved_pending_for_professional_review",
   "simulation_results_can_include_pass_fail": true,
-  "user_band_policy_resolved": true
+  "user_band_policy_resolved": true,
+  "synthetic_review_proposals_implemented": true
 }

@@ -27,6 +27,8 @@ from .debt_dscr import ENGINE_SHA256 as DEBT_DSCR_ENGINE_SHA256
 from .screening import ScreeningRun,parse_screening_case,simulate_screening,user_policy_reference
 from .screening import ENGINE_SHA256 as SCREEN_ENGINE_SHA256
 from .screening import definition_sources as screening_definition_sources
+from .review_proposals import ReviewProposalRun,parse_review_proposal,evaluate_review_proposal
+from .review_proposals import ENGINE_SHA256 as REVIEW_PROPOSAL_ENGINE_SHA256
 
 
 class MissingEvidence(KeyError):
@@ -198,6 +200,18 @@ class ScreeningBundle:
     def payload(self):return json.loads(self.payload_json)
     @property
     def run(self):return ScreeningRun(**self.payload['run'])
+
+
+@dataclass(frozen=True)
+class ReviewProposalBundle:
+    payload_json:str
+    sha256:str
+    @property
+    def payload(self):return json.loads(self.payload_json)
+    @property
+    def base_run(self):return ScreeningRun(**self.payload['base_run'])
+    @property
+    def run(self):return ReviewProposalRun(**self.payload['run'])
 
 
 class EvidenceArchive:
@@ -553,6 +567,45 @@ COMMIT;''')
             except MissingEvidence:raise
             except (KeyError,TypeError,UnicodeError,json.JSONDecodeError,ValidationError) as error:
                 raise CorruptArchive('invalid screening evidence') from error
+        return bundle
+
+
+    def get_review_proposal_source(self, sha):
+        raw=self._read('source',sha);parse_review_proposal(raw);return raw
+
+    def save_review_proposal(self, base_raw, base_run, proposal_raw, run):
+        if type(run) is not ReviewProposalRun or evaluate_review_proposal(base_raw,base_run,proposal_raw)!=run:
+            raise ValidationError('review proposal result does not reproduce from exact base/patches')
+        with self._transaction():
+            base=self._put('source',base_raw);proposal=self._put('source',proposal_raw)
+            candidate=self._put('source',run.candidate_raw)
+            p={'schema':'miniuw.synthetic-review-proposal-bundle.v1','purpose':'synthetic_development_only',
+                'base_source_sha256':base,'base_run':asdict(base_run),'proposal_source_sha256':proposal,
+                'candidate_source_sha256':candidate,'run':asdict(run),
+                'versions':[REVIEW_PROPOSAL_ENGINE_SHA256,SCREEN_ENGINE_SHA256],
+                'definition_sources':screening_definition_sources(),'user_policy_reference':user_policy_reference()}
+            return self._put('bundle',canonical(p).encode('utf-8'))
+
+    def load_review_proposal(self, sha):
+        with self._transaction():
+            raw=self.read_bundle_bytes(sha)
+            try:
+                p=json.loads(raw)
+                if set(p)!={'schema','purpose','base_source_sha256','base_run','proposal_source_sha256','candidate_source_sha256','run','versions','definition_sources','user_policy_reference'}:
+                    raise CorruptArchive('review proposal bundle fields changed')
+                if p['schema']!='miniuw.synthetic-review-proposal-bundle.v1':raise UnsupportedArchive('unsupported review proposal schema')
+                if p['purpose']!='synthetic_development_only':raise CorruptArchive('review proposal purpose changed')
+                if p['versions']!=[REVIEW_PROPOSAL_ENGINE_SHA256,SCREEN_ENGINE_SHA256] or p['definition_sources']!=screening_definition_sources() or p['user_policy_reference']!=user_policy_reference():
+                    raise UnsupportedArchive('review replay requires compatible code/documents/policy')
+                bundle=ReviewProposalBundle(raw.decode('utf-8'),sha)
+                base=self.get_screening_source(p['base_source_sha256'])
+                proposal=self.get_review_proposal_source(p['proposal_source_sha256'])
+                candidate=self.get_screening_source(p['candidate_source_sha256'])
+                if evaluate_review_proposal(base,bundle.base_run,proposal)!=bundle.run or candidate!=bundle.run.candidate_raw:
+                    raise CorruptArchive('review proposal/candidate evidence does not reproduce')
+            except MissingEvidence:raise
+            except (KeyError,TypeError,UnicodeError,json.JSONDecodeError,ValidationError) as error:
+                raise CorruptArchive('invalid review proposal evidence') from error
         return bundle
 
 

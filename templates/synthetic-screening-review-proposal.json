@@ -1,0 +1,32 @@
+{
+  "schema": "miniuw.synthetic-screening-review-proposal.v1",
+  "proposal_id": "SYNTHETIC-review-example-1",
+  "base_source_sha256": "59493c78fd72ee6a2daedcf74ccc914a3dea81d74f7b5a8302e4ee56868f40b2",
+  "base_run_sha256": "cbff6ab2e32a9692e129323ba6b86e4dcec1b9371eb0df5672385d57f39025f5",
+  "new_case_id": "SYNTHETIC-review-candidate-1",
+  "new_run_id": "SYNTHETIC-review-run-1",
+  "new_criteria_revision": null,
+  "author_label": "SYNTHETIC reviewer label; identity unverified",
+  "proposal_reason": "Synthetic replacement measurement supplied explicitly for testing",
+  "evidence_refs": [
+    "SYNTHETIC-evidence:measurement-v2"
+  ],
+  "patches": [
+    {
+      "table": "metric_values",
+      "metric_id": "YoC",
+      "scenario_id": "Downside",
+      "field": "value",
+      "expected_before": {
+        "numerator": "45",
+        "denominator": "1000"
+      },
+      "proposed_after": {
+        "numerator": "55",
+        "denominator": "1000"
+      },
+      "reason": "Explicit synthetic measurement revision, not an optimization"
+    }
+  ],
+  "status": "proposal_only"
+}

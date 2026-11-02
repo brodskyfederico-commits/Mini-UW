@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design plus T01–T12 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design plus T01–T13 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 8035,
-      "sha256": "59d5db49789793ab4b2ebd36c400afe85ce65bf77385fe8f99126af47014a355"
+      "bytes": 8390,
+      "sha256": "b1c8b03a9ccac286aa7b8b1fd8b96adef7524ee96f568bb130c42379dc5a035f"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 42467,
-      "sha256": "504527fd1ab71c834c561e8932aa7bcb9d0e2c4404b70a35dc303776490a5b03"
+      "bytes": 43801,
+      "sha256": "d000bdfa65a7cc30df9b9294d12789b6e43915284829cf8d2619e46fcea9ef77"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -427,9 +427,14 @@
       "sha256": "fca791860e803a53df10bf62d553b505f12e7981e3ff8f781a858e08e8d515c4"
     },
     {
+      "path": "docs/technical-implementation-T13.md",
+      "bytes": 2961,
+      "sha256": "4afc529875cd1666c87bb172184480e162864803fd7810ab06f92ad7ff59361e"
+    },
+    {
       "path": "docs/technical-implementation-status.json",
-      "bytes": 5925,
-      "sha256": "b8b60d1cc90fff0f1658d8558807cc995cb65cfd5d9c5e935938d20c1c6ca0c3"
+      "bytes": 6258,
+      "sha256": "26bf0c9d9ef18c04a133537d37aa3124c03ab8bf4de11a143d0c415cab42da66"
     },
     {
       "path": "infra/README.md",
@@ -1103,8 +1108,8 @@
     },
     {
       "path": "src/miniuw_foundation/archive.py",
-      "bytes": 28492,
-      "sha256": "2eee2fd099076b42203749e51d0906092117b3d1f31142a953ce4456dbeb39b2"
+      "bytes": 31932,
+      "sha256": "ce798d1da1a265a4e2d499afed65b6969aada7b22ded8143c3b23f5bae5c71f3"
     },
     {
       "path": "src/miniuw_foundation/calculations.py",
@@ -1155,6 +1160,11 @@
       "path": "src/miniuw_foundation/normalization.py",
       "bytes": 7683,
       "sha256": "582f318182971e79cd48fbcd43a00c3e4ecc8505450eab87762782ed8af70c0a"
+    },
+    {
+      "path": "src/miniuw_foundation/review_proposals.py",
+      "bytes": 7817,
+      "sha256": "b232c7caa62aaf1b70a59fbf9e4c3afa47e62483547c9a9a064e9c829a994e9f"
     },
     {
       "path": "src/miniuw_foundation/scoped_profiles.py",
@@ -1252,6 +1262,11 @@
       "sha256": "59493c78fd72ee6a2daedcf74ccc914a3dea81d74f7b5a8302e4ee56868f40b2"
     },
     {
+      "path": "templates/synthetic-screening-review-proposal.json",
+      "bytes": 1079,
+      "sha256": "6d84182a06ce69b9e6a9c0c2705f83d4ac5709703e4ff21f333b30b9f2153c54"
+    },
+    {
       "path": "templates/synthetic-sheet-example.csv",
       "bytes": 190,
       "sha256": "c4c5fa44683498fe7628d8d2c49d35d5031cfa99ed51fd8aa83c1f2485b91646"
@@ -1310,6 +1325,11 @@
       "path": "tests/test_normalization.py",
       "bytes": 15481,
       "sha256": "1131920b5d665b32d269fd28f664279d4050dd33ed5d1ec71312f1d3d40d9acb"
+    },
+    {
+      "path": "tests/test_review_proposals.py",
+      "bytes": 12756,
+      "sha256": "4be12acde9cd49db6fb601b6bc69f5af67d57d94088e073c69b7b2627ac10f3d"
     },
     {
       "path": "tests/test_scoped_profiles.py",
@@ -1380,6 +1400,11 @@
       "path": "tools/demo_synthetic_normalization.py",
       "bytes": 1834,
       "sha256": "dca23d87027854ed05ba210fe845d2187654678009c56131af0768bb299f02a4"
+    },
+    {
+      "path": "tools/demo_synthetic_review_proposals.py",
+      "bytes": 1867,
+      "sha256": "f1d31e2c1d68c02b64d0195ffb8483128d743f742734d7ceacfac8bbcafbda68"
     },
     {
       "path": "tools/demo_synthetic_screening.py",
