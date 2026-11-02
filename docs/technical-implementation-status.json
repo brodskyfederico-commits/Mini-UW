@@ -1,7 +1,7 @@
 {
   "phase": "post-I01 synthetic technical implementation",
   "user_authorized": true,
-  "component": "T38",
+  "component": "T40",
   "status": "local_implementation_verified_pending_remote_receipt",
   "implemented": [
     "fresh raw-claim drafts from unchanged 55-input/10-criterion template",
@@ -75,9 +75,11 @@
     "conditional NOI/cap valuation and explicit LTV/DSCR/additional-limit capacity with separate selected principal/full-draw reconciliation",
     "capacity-checked complete cash-window investor path requiring exact refinance and permanent loan source/run identities",
     "source/run-replayed cash shortfall, dated net equity funding peak bounds and net sale receipt share with project versus personal return labels",
-    "explicit isolated net sale receipt case comparison with replayed T23/T37, gross cash/EM/all-root IRR and conditional net receipt recovery floor"
+    "explicit isolated net sale receipt case comparison with replayed T23/T37, gross cash/EM/all-root IRR and conditional net receipt recovery floor",
+    "explicit gross sale proceeds/closing-cost source revision through replayed closing, dated debt, integrated cash and capacity-checked investor assembly",
+    "source-bound complete revision inventory comparison preserving intermediate blockers and separate required gross contributions"
   ],
-  "unit_tests": 734,
+  "unit_tests": 765,
   "plan_packages_partially_addressed": [
     "IMP-01",
     "IMP-06",
@@ -93,9 +95,10 @@
   "deployment_enabled": false,
   "production_ready": false,
   "next_independent_work": [
-    "source-specific tax/insurance/lease-up and closing cost refinements within rental scope",
-    "full source-consistent sale/exit-cap and independent no-refinance scenario paths",
-    "final investor PDF integration preserving financing and personal-return blockers",
+    "source-bound exit NOI/cap valuation and explicitly declared sale-cost profiles",
+    "source-specific tax/insurance/lease-up refinements within rental scope",
+    "full independent no-refinance and revised timing scenarios",
+    "investor presentation preserving capacity, funding and personal-allocation blockers",
     "construction funding history before opening operating state"
   ],
   "I01_snapshot_preserved": true,
@@ -137,7 +140,9 @@
     "T35",
     "T36",
     "T37",
-    "T38"
+    "T38",
+    "T39",
+    "T40"
   ],
   "tests_by_component": {
     "T01": 31,
@@ -177,7 +182,9 @@
     "T35": 23,
     "T36": 13,
     "T37": 23,
-    "T38": 23
+    "T38": 23,
+    "T39": 19,
+    "T40": 12
   },
   "not_yet_implemented": [
     "complete financial graph and its designed cycles",
@@ -269,5 +276,7 @@
   "final_economic_capital_loss_implemented": false,
   "condominium_expansion": "deferred_to_Full_UW",
   "synthetic_net_sale_receipt_sensitivity_implemented": true,
-  "full_project_scenario_sensitivity_implemented": false
+  "full_project_scenario_sensitivity_implemented": false,
+  "synthetic_sale_source_revision_implemented": true,
+  "guarded_sale_revision_comparison_implemented": true
 }

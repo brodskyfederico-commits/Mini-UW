@@ -1,0 +1,161 @@
+{
+  "scope": "Gross sale source revisions through guarded cash/return chain; original matrix and gates preserved",
+  "rows": [
+    {
+      "requirement_or_variable": "gross_sale_proceeds_and_cost_claims",
+      "source": {
+        "path": "docs/technical-implementation-T39-T40.md",
+        "line": 7,
+        "sha256": "ac282c37fc3a12b34da52915bc8e50b9bbe71cf6f3d032f5aadf62dff03f4eb9"
+      },
+      "current_definition": "Explicit complete monetary claims replace proceeds/costs only; dates/debt/other sources frozen by referenced assumption",
+      "affected_modules": [
+        "M6",
+        "M7",
+        "T29",
+        "T31",
+        "T33",
+        "T36",
+        "T39",
+        "T40"
+      ],
+      "validation_evidence": [
+        "tests/test_project_sale_revision.py:ProjectSaleRevisionTests.test_gross_sale_change_propagates_through_closing_and_investor",
+        "tests/test_project_sale_revision.py:ProjectSaleRevisionTests.test_cost_change_is_independent_of_proceeds",
+        "tests/test_project_sale_revision.py:ProjectSaleRevisionTests.test_missing_claim_and_metadata_block_returns"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Price-dependent tax/fee producers, authentic settlement evidence and scope"
+    },
+    {
+      "requirement_or_variable": "full_guarded_chain_after_sale_revision",
+      "source": {
+        "path": "docs/technical-implementation-T39-T40.md",
+        "line": 11,
+        "sha256": "ac282c37fc3a12b34da52915bc8e50b9bbe71cf6f3d032f5aadf62dff03f4eb9"
+      },
+      "current_definition": "Rebuild closing/debt binding/manifest/return binding and replay T29/T31/T33/T36; capacity unchanged",
+      "affected_modules": [
+        "M6",
+        "M7",
+        "T29",
+        "T31",
+        "T33",
+        "T36",
+        "T39",
+        "T40"
+      ],
+      "validation_evidence": [
+        "tests/test_project_sale_revision.py:ProjectSaleRevisionTests.test_bank_blocker_preserved_even_if_sale_cash_is_high",
+        "tests/test_project_sale_revision.py:ProjectSaleRevisionTests.test_only_sale_node_hashes_change_in_manifest",
+        "tests/test_project_sale_revision.py:ProjectSaleRevisionTests.test_blocked_base_cash_boundary_not_repaired_by_sale_revision"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Bank credit, funding availability and complete economic project scope"
+    },
+    {
+      "requirement_or_variable": "separate_gross_sale_cash_in",
+      "source": {
+        "path": "docs/technical-implementation-T39-T40.md",
+        "line": 13,
+        "sha256": "ac282c37fc3a12b34da52915bc8e50b9bbe71cf6f3d032f5aadf62dff03f4eb9"
+      },
+      "current_definition": "Required cash-in never a negative distribution; explicit funding hypothesis and empty contribution slot required",
+      "affected_modules": [
+        "M6",
+        "M7",
+        "T29",
+        "T31",
+        "T33",
+        "T36",
+        "T39",
+        "T40"
+      ],
+      "validation_evidence": [
+        "tests/test_project_sale_revision.py:ProjectSaleRevisionTests.test_cash_in_needs_explicit_assumption_and_gross_slot",
+        "tests/test_project_sale_revision.py:ProjectSaleRevisionTests.test_cash_in_separate_from_distribution_with_explicit_slot"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Actual funds, investor allocation and rights/obligations"
+    },
+    {
+      "requirement_or_variable": "complete_revision_inventory",
+      "source": {
+        "path": "docs/technical-implementation-T39-T40.md",
+        "line": 19,
+        "sha256": "ac282c37fc3a12b34da52915bc8e50b9bbe71cf6f3d032f5aadf62dff03f4eb9"
+      },
+      "current_definition": "Bounded ordered source-hash inventory; retain all blocked rows without zero/best-case substitution",
+      "affected_modules": [
+        "M6",
+        "M7",
+        "T29",
+        "T31",
+        "T33",
+        "T36",
+        "T39",
+        "T40"
+      ],
+      "validation_evidence": [
+        "tests/test_project_sale_comparison.py:ProjectSaleComparisonTests.test_declared_hash_order_count_and_base_mismatch_block_all",
+        "tests/test_project_sale_comparison.py:ProjectSaleComparisonTests.test_missing_claim_row_preserved_with_computable_siblings",
+        "tests/test_project_sale_comparison.py:ProjectSaleComparisonTests.test_capacity_blocker_preserved_and_no_return_zero_substitution"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Independent complete market scenarios and adopted risk criteria"
+    },
+    {
+      "requirement_or_variable": "originals_and_recovery",
+      "source": {
+        "path": "docs/technical-implementation-T39-T40.md",
+        "line": 27,
+        "sha256": "ac282c37fc3a12b34da52915bc8e50b9bbe71cf6f3d032f5aadf62dff03f4eb9"
+      },
+      "current_definition": "Complete base/source/run reproduction and revised typed evidence recovery; no hash-only trust",
+      "affected_modules": [
+        "M6",
+        "M7",
+        "T29",
+        "T31",
+        "T33",
+        "T36",
+        "T39",
+        "T40"
+      ],
+      "validation_evidence": [
+        "tests/test_project_sale_revision.py:ProjectSaleRevisionTests.test_no_debt_operation_reserve_valuation_or_refinance_edits",
+        "tests/test_project_sale_revision.py:ProjectSaleRevisionTests.test_recovery_reproduces_then_rejects_rehashed_report_forgery",
+        "tests/test_project_sale_comparison.py:ProjectSaleComparisonTests.test_replay_rejects_updated_hash_forgery_and_stale_inventory"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "No new SQLite bundle or runtime backup; source preservation still required"
+    },
+    {
+      "requirement_or_variable": "scope_and_return_honesty",
+      "source": {
+        "path": "docs/technical-implementation-T39-T40.md",
+        "line": 25,
+        "sha256": "ac282c37fc3a12b34da52915bc8e50b9bbe71cf6f3d032f5aadf62dff03f4eb9"
+      },
+      "current_definition": "Source revision with fixed dated debt/operations, not full market/downside/personal-return model",
+      "affected_modules": [
+        "M6",
+        "M7",
+        "T29",
+        "T31",
+        "T33",
+        "T36",
+        "T39",
+        "T40"
+      ],
+      "validation_evidence": [
+        "tests/test_project_sale_revision.py:ProjectSaleRevisionTests.test_personal_return_and_authority_never_inferred",
+        "tests/test_project_sale_comparison.py:ProjectSaleComparisonTests.test_no_best_case_authority_or_full_scenario_inference"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Personal LP/JV terms, final economic closure, exit-cap and gross-price producers"
+    }
+  ],
+  "financial_model_closed": false,
+  "real_decisions_enabled": false
+}

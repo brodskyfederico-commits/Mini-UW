@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D03 review and metric-intake design extensions and T01–T38 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D03 review and metric-intake design extensions and T01–T40 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 18392,
-      "sha256": "4f1c13da86f645e270032428ab207df8aa8dc8dbc040190199f5461f60498062"
+      "bytes": 19020,
+      "sha256": "4eb2116371dd995f6c47f660310ca7a8a862d4b19f6d6c57a8c0b67eff7fd02a"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 75412,
-      "sha256": "ddd29ec712512243c839ac62c62d5e00f9e17d7cfa22cde9fe373bfaa2af140d"
+      "bytes": 77852,
+      "sha256": "fb09258c8e62336feb83f3222ccdce873bf08d95dae8dddfa7ae5a4c7be3e6af"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -198,8 +198,8 @@
     },
     {
       "path": "docs/miniuw-improvement-scope.json",
-      "bytes": 5479,
-      "sha256": "fb4b39d6cd23574d34dced460bcef3e670a237de3ee2c39f73f8ed78fb446d2d"
+      "bytes": 5737,
+      "sha256": "0222349b243638fc3575a06bf2ebac0b41a6b506d8547df9fc7c1fca9eabf4e3"
     },
     {
       "path": "docs/model-budget-schedule.md",
@@ -377,6 +377,11 @@
       "sha256": "153eb40179116a29b10a4882db5025b499063bbc45315e953b0c93aa529d3c5b"
     },
     {
+      "path": "docs/review/Resumen_Revision_Venta_T39_T40.md",
+      "bytes": 1731,
+      "sha256": "052f04fe3dad0336a3465b2f20fb6f0492b59f98439829cea4a9893029955c76"
+    },
+    {
       "path": "docs/review/information-flow-summary-FLOW01-validation.json",
       "bytes": 625,
       "sha256": "185d70bf14bfac3379dba8ed127a58520fce51e62afafdcadc9a16a498767c8f"
@@ -450,6 +455,11 @@
       "path": "docs/review/synthetic-operating-cash-returns-demo.json",
       "bytes": 4659,
       "sha256": "767a9e214ac2d23f27fefc21a01d033beb82e9c68d21e98d7895d0e44b54e016"
+    },
+    {
+      "path": "docs/review/synthetic-project-sale-revisions-demo.json",
+      "bytes": 45785,
+      "sha256": "ad771921406cb119611e43431ca56577c69a030cdc8c419161e88ebf539b7402"
     },
     {
       "path": "docs/review/synthetic-refinance-capacity-demo.json",
@@ -555,6 +565,11 @@
       "path": "docs/technical-coverage-T38.json",
       "bytes": 5839,
       "sha256": "e75d660cb57cc3d54e910cfc56b005af482a19101af826034928e3f0d55fa094"
+    },
+    {
+      "path": "docs/technical-coverage-T39-T40.json",
+      "bytes": 6704,
+      "sha256": "843079823eef1030dbc8dae36c55daec6350bed1806089b2c39cba02635a6df7"
     },
     {
       "path": "docs/technical-implementation-T01.md",
@@ -712,9 +727,14 @@
       "sha256": "b54a277679285e9fcee5be6d39d7a88a633f33fc9f3c6b70afed47f895d33a5d"
     },
     {
+      "path": "docs/technical-implementation-T39-T40.md",
+      "bytes": 5034,
+      "sha256": "ac282c37fc3a12b34da52915bc8e50b9bbe71cf6f3d032f5aadf62dff03f4eb9"
+    },
+    {
       "path": "docs/technical-implementation-status.json",
-      "bytes": 14093,
-      "sha256": "65e10d7ccc7b70fa3dd83d10dd7d7c5992b74b67bf2beb19752fe0894b28d80c"
+      "bytes": 14597,
+      "sha256": "c7e2f62514a791e846a1fb4bd6cde5c157674d62ec6b2b8b4c3ea3511741c00b"
     },
     {
       "path": "infra/README.md",
@@ -1522,6 +1542,16 @@
       "sha256": "761a34c27c3b7b79283283ac682520a317e2ac443d1d51fcc2d297e3e8518a65"
     },
     {
+      "path": "src/miniuw_foundation/project_sale_comparison.py",
+      "bytes": 8183,
+      "sha256": "9c609ab47f466124b7257a7e8c0447828c193bb68be9fc91d90c946ad1e6e198"
+    },
+    {
+      "path": "src/miniuw_foundation/project_sale_revision.py",
+      "bytes": 11844,
+      "sha256": "087ed71dd0217cdedd0ef478ffcad6369bb643dde223f7c0164ca43f01ad28c7"
+    },
+    {
       "path": "src/miniuw_foundation/proposal_queue.py",
       "bytes": 10175,
       "sha256": "3a0af7fd5b74f88762f16a2be8acc25dae9ed4e4e0d07e7354f605b6ca7f6763"
@@ -1907,6 +1937,16 @@
       "sha256": "d0f8474366feb3187133834081468c37c2f4a163acea846f285d769a24ace77c"
     },
     {
+      "path": "templates/synthetic-sale-revision-test-bank-noi.json",
+      "bytes": 2300,
+      "sha256": "c562c184f28fe372532070160c186177c2bd313fd26615ae03739ed57a5d2cdb"
+    },
+    {
+      "path": "templates/synthetic-sale-revision-test-investor-slots.json",
+      "bytes": 3156,
+      "sha256": "d6ba2d197fa473118d67f7590f484db899797ebb882d6e72264752c21542fe54"
+    },
+    {
       "path": "templates/synthetic-screening-band-case.json",
       "bytes": 4673,
       "sha256": "59493c78fd72ee6a2daedcf74ccc914a3dea81d74f7b5a8302e4ee56868f40b2"
@@ -1955,6 +1995,11 @@
       "path": "tests/project_test_support.py",
       "bytes": 2967,
       "sha256": "692dd62ff7a1402771b0a2d61312a42823e3cbee3fc861c3c4756437be037eaf"
+    },
+    {
+      "path": "tests/sale_revision_test_support.py",
+      "bytes": 3900,
+      "sha256": "f8ac660428694de9118fcf8ef7890c89aea62b2111938007ba2457e3107b386d"
     },
     {
       "path": "tests/test_archive.py",
@@ -2075,6 +2120,16 @@
       "path": "tests/test_project_returns.py",
       "bytes": 13498,
       "sha256": "bcc11ddcc31ebac913c1d42cc6526e322f517872816b55ca9e2d7a402de64ff9"
+    },
+    {
+      "path": "tests/test_project_sale_comparison.py",
+      "bytes": 7456,
+      "sha256": "1ef3245d385c74580b856bcfe5f7cf4f4105136a196d032c6cafbbdd54fac72c"
+    },
+    {
+      "path": "tests/test_project_sale_revision.py",
+      "bytes": 9882,
+      "sha256": "2624c73a35bc8049fe01b539ab47857f7e636dbb526239d2605b4fb4b6e3a385"
     },
     {
       "path": "tests/test_proposal_queue.py",
@@ -2205,6 +2260,11 @@
       "path": "tools/demo_operating_cash_returns.py",
       "bytes": 4108,
       "sha256": "a474026134e8b372c505008f0b21a06f32ab50f2b27553709e393868cf88cc16"
+    },
+    {
+      "path": "tools/demo_project_sale_revisions.py",
+      "bytes": 8537,
+      "sha256": "456805f00502c863d4538bfe9f8a568219cdb74569c4df6834e4b9e6dbd7f441"
     },
     {
       "path": "tools/demo_refinance_capacity.py",

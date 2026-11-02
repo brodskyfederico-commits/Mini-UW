@@ -1,0 +1,78 @@
+{
+  "schema": "miniuw.synthetic-operating-noi.v1",
+  "profile_id": "SYNTHETIC-M2-MAX-TAX-v1",
+  "context": {
+    "deal_id": "SYNTHETIC-integrated-cash-demo",
+    "scenario_id": "SYNTHETIC-Base",
+    "run_id": "SYNTHETIC-integrated-cash-run",
+    "definition_set_revision": "SYNTHETIC-cash-window-assumptions-v1"
+  },
+  "currency": "USD",
+  "period_ref": "SYNTHETIC-annual-equivalent-1",
+  "income_rows": [
+    {
+      "value": {
+        "numerator": "2000",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "period_ref": "SYNTHETIC-annual-equivalent-1",
+      "unit": "currency_per_declared_period",
+      "basis": "accrual",
+      "source_ref": "SYNTHETIC-independent-software-test-bank-NOI-not-original-project-repair",
+      "item_id": "SYNTHETIC-income-residential"
+    },
+    {
+      "value": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "period_ref": "SYNTHETIC-annual-equivalent-1",
+      "unit": "currency_per_declared_period",
+      "basis": "accrual",
+      "source_ref": "SYNTHETIC-independent-annual-projection-not-real-bank-scope",
+      "item_id": "SYNTHETIC-income-commercial"
+    }
+  ],
+  "expense_rows": [
+    {
+      "value": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "period_ref": "SYNTHETIC-annual-equivalent-1",
+      "unit": "currency_per_declared_period",
+      "basis": "accrual",
+      "source_ref": "SYNTHETIC-independent-annual-projection-not-real-bank-scope",
+      "item_id": "SYNTHETIC-expenses-excluding-tax"
+    }
+  ],
+  "tax_floor": {
+    "value": {
+      "numerator": "0",
+      "denominator": "1"
+    },
+    "currency": "USD",
+    "period_ref": "SYNTHETIC-annual-equivalent-1",
+    "unit": "currency_per_declared_period",
+    "basis": "accrual",
+    "source_ref": "SYNTHETIC-independent-annual-projection-not-real-bank-scope"
+  },
+  "tax_coefficient": {
+    "value": {
+      "numerator": "0",
+      "denominator": "1"
+    },
+    "unit": "scalar",
+    "source_ref": "SYNTHETIC-evidence:fixed-k-not-legal-rule"
+  },
+  "modelling_assumptions": {
+    "same_period_accrual": true,
+    "tax_model": "max_floor_or_fixed_coefficient_times_noi",
+    "coefficient_fixed": true,
+    "additional_tax_adjustments": false,
+    "rounding": "none_exact"
+  }
+}
