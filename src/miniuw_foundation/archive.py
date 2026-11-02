@@ -46,6 +46,11 @@ from .rental_operations import definition_sources as rental_definition_sources
 from .rental_noi import RentalNoiRun,parse_rental_noi_spec,assemble_rental_noi
 from .rental_noi import ENGINE_SHA256 as RENTAL_NOI_ENGINE_SHA256
 
+from .investor_returns import InvestorReturnsRun,parse_investor_returns,produce_investor_returns
+from .investor_returns import ENGINE_SHA256 as INVESTOR_ENGINE_SHA256
+from .investor_returns import definition_sources as investor_definition_sources
+from .periodic_returns import ENGINE_SHA256 as ROOT_ENGINE_SHA256
+
 
 class MissingEvidence(KeyError):
     pass
@@ -121,6 +126,16 @@ class RentalNoiBundle:
     def payload(self):return json.loads(self.payload_json)
     @property
     def run(self):return RentalNoiRun(**self.payload['run'])
+
+
+@dataclass(frozen=True)
+class InvestorReturnsBundle:
+    payload_json:str
+    sha256:str
+    @property
+    def payload(self):return json.loads(self.payload_json)
+    @property
+    def run(self):return InvestorReturnsRun(**self.payload['run'])
 
 
 def _sha(raw):
@@ -649,6 +664,34 @@ COMMIT;''')
                 raise CorruptArchive('invalid screening evidence') from error
         return bundle
 
+
+    def get_investor_returns_source(self, sha):
+        raw=self._read('source',sha);parse_investor_returns(raw);return raw
+
+    def save_investor_returns(self, source_raw, run):
+        if type(run) is not InvestorReturnsRun or produce_investor_returns(source_raw)!=run:
+            raise ValidationError('investor cash result does not reproduce')
+        with self._transaction():
+            source=self._put('source',source_raw)
+            p={'schema':'miniuw.synthetic-investor-returns-bundle.v1','source_sha256':source,'run':asdict(run),
+                'versions':[INVESTOR_ENGINE_SHA256,ROOT_ENGINE_SHA256,OPERATING_NOI_ENGINE_SHA256,DEBT_ENGINE_SHA256],
+                'definition_sources':investor_definition_sources(),'purpose':'synthetic_development_only'}
+            return self._put('bundle',canonical(p).encode())
+
+    def load_investor_returns(self, sha):
+        with self._transaction():
+            raw=self.read_bundle_bytes(sha)
+            try:
+                p=json.loads(raw)
+                if set(p)!={'schema','source_sha256','run','versions','definition_sources','purpose'}:raise CorruptArchive('investor bundle fields changed')
+                if p['schema']!='miniuw.synthetic-investor-returns-bundle.v1':raise UnsupportedArchive('unsupported investor schema')
+                if p['purpose']!='synthetic_development_only':raise CorruptArchive('investor purpose changed')
+                if p['versions']!=[INVESTOR_ENGINE_SHA256,ROOT_ENGINE_SHA256,OPERATING_NOI_ENGINE_SHA256,DEBT_ENGINE_SHA256] or p['definition_sources']!=investor_definition_sources():raise UnsupportedArchive('investor replay requires compatible code/documents')
+                bundle=InvestorReturnsBundle(raw.decode(),sha)
+                if produce_investor_returns(self.get_investor_returns_source(p['source_sha256']))!=bundle.run:raise CorruptArchive('investor cash result does not reproduce')
+            except MissingEvidence:raise
+            except(KeyError,TypeError,UnicodeError,json.JSONDecodeError,ValidationError)as error:raise CorruptArchive('invalid investor evidence')from error
+        return bundle
 
     def get_rental_source(self, sha):
         raw=self._read('source',sha);parse_rental_operations(raw);return raw

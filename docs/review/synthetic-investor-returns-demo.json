@@ -1,0 +1,495 @@
+{
+  "purpose": "declared_synthetic_investor_cash_return_demonstration",
+  "human_readable_story": [
+    "EJEMPLO SINTETICO: equity agregado del proyecto, no retorno contractual de un LP.",
+    "Normalizacion sobre los aportes expresamente elegidos: initial.",
+    "2027-01-01 | contribution | initial_capital | USD 10",
+    "2028-01-01 | distribution | net_refinance_distribution | USD 5",
+    "2028-01-01 | distribution | operating_distribution | USD 1",
+    "2029-01-01 | distribution | operating_distribution | USD 1",
+    "2029-01-01 | distribution | net_sale_distribution | USD 9",
+    "Aportes totales: USD 10; cobros totales: USD 16; ganancia de caja: USD 6; EM: 8/5x.",
+    "2028-01-01 | Capital aun invertido declarado: USD 5; valor retenido declarado: USD 8 (no sumado a los cobros).",
+    "2027 | Distribucion operativa normalizada: USD 0; CoC condicionado: 0.",
+    "2028 | Distribucion operativa normalizada: USD 1; CoC condicionado: 1/5.",
+    "2029 | Distribucion operativa normalizada: USD 1; CoC condicionado: 1/5.",
+    "TIR anual, solucion 1: contenida entre 34.403010% y 34.403097% (limites de presentacion ampliados hacia afuera).",
+    "Se conservan los intervalos certificados exactos en annual_irr_roots; no se selecciona una tasa para decidir.",
+    "Proyecciones suministradas, no producidas desde costos/NOI/banco. Pendientes: conciliacion financiera, riesgos, impuestos y waterfall/LP si corresponde; PDF final y decisiones reales no habilitados."
+  ],
+  "source_sha256": "46f6b1f4deff4410273a9943ac5b18bdb809351be35e2b53054e5ba009c762ed",
+  "run_sha256": "95b5dc11b8548fbac16e02c1ea0b01f2b5a2316901f22eb1b1c02288245f13d8",
+  "bundle_sha256": "23feea70a2d90d06d3845c3ea4d334665bd5e40da62496ddc5f6bdfb0239ee46",
+  "replayed_after_reopen": true,
+  "source_bytes_preserved": true,
+  "runtime_database_retained": false,
+  "result": {
+    "LP_allocation_applied": false,
+    "annual_cash_receipts": [
+      {
+        "blocker": null,
+        "calendar_cash_receipt_year": 2027,
+        "conditional_coc": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "declared_capital_base": {
+          "denominator": "1",
+          "numerator": "1000"
+        },
+        "gross_contributions": {
+          "denominator": "1",
+          "numerator": "1000"
+        },
+        "gross_distributions": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "net_equity_cash": {
+          "denominator": "1",
+          "numerator": "-1000"
+        },
+        "normalized_operating_distributions": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "operating_distributions_only": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "operating_year_coverage_financially_verified": false
+      },
+      {
+        "blocker": null,
+        "calendar_cash_receipt_year": 2028,
+        "conditional_coc": {
+          "denominator": "5",
+          "numerator": "1"
+        },
+        "declared_capital_base": {
+          "denominator": "1",
+          "numerator": "500"
+        },
+        "gross_contributions": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "gross_distributions": {
+          "denominator": "1",
+          "numerator": "600"
+        },
+        "net_equity_cash": {
+          "denominator": "1",
+          "numerator": "600"
+        },
+        "normalized_operating_distributions": {
+          "denominator": "1",
+          "numerator": "1"
+        },
+        "operating_distributions_only": {
+          "denominator": "1",
+          "numerator": "100"
+        },
+        "operating_year_coverage_financially_verified": false
+      },
+      {
+        "blocker": null,
+        "calendar_cash_receipt_year": 2029,
+        "conditional_coc": {
+          "denominator": "5",
+          "numerator": "1"
+        },
+        "declared_capital_base": {
+          "denominator": "1",
+          "numerator": "500"
+        },
+        "gross_contributions": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "gross_distributions": {
+          "denominator": "1",
+          "numerator": "1000"
+        },
+        "net_equity_cash": {
+          "denominator": "1",
+          "numerator": "1000"
+        },
+        "normalized_operating_distributions": {
+          "denominator": "1",
+          "numerator": "1"
+        },
+        "operating_distributions_only": {
+          "denominator": "1",
+          "numerator": "100"
+        },
+        "operating_year_coverage_financially_verified": false
+      }
+    ],
+    "annual_irr_roots": [
+      {
+        "annual_rate_interval": {
+          "lower": {
+            "denominator": "780173",
+            "numerator": "268403"
+          },
+          "lower_closed": true,
+          "upper": {
+            "denominator": "1560345",
+            "numerator": "536807"
+          },
+          "upper_closed": false
+        },
+        "exact_annual_rate": null
+      }
+    ],
+    "capital_snapshots": [
+      {
+        "as_of_date": "2028-01-01",
+        "basis_ref": "SYNTHETIC-declared-after-refi-stock",
+        "capital_still_invested": {
+          "denominator": "1",
+          "numerator": "500"
+        },
+        "currency": "USD",
+        "normalized_capital_still_invested": {
+          "denominator": "1",
+          "numerator": "5"
+        },
+        "normalized_retained_equity_value": {
+          "denominator": "1",
+          "numerator": "8"
+        },
+        "retained_equity_value": {
+          "denominator": "1",
+          "numerator": "800"
+        },
+        "retained_value_included_in_receipts": false,
+        "source_ref": "SYNTHETIC-independent-stock-declaration"
+      }
+    ],
+    "capital_snapshots_are_declared_not_derived": true,
+    "cash_blockers": [],
+    "cash_by_category": {
+      "additional_capital": {
+        "denominator": "1",
+        "numerator": "0"
+      },
+      "initial_capital": {
+        "denominator": "1",
+        "numerator": "1000"
+      },
+      "net_refinance_distribution": {
+        "denominator": "1",
+        "numerator": "500"
+      },
+      "net_sale_distribution": {
+        "denominator": "1",
+        "numerator": "900"
+      },
+      "operating_distribution": {
+        "denominator": "1",
+        "numerator": "200"
+      },
+      "other_distribution": {
+        "denominator": "1",
+        "numerator": "0"
+      },
+      "refinance_cash_in": {
+        "denominator": "1",
+        "numerator": "0"
+      }
+    },
+    "cash_horizon": {
+      "end": "2029-01-01",
+      "future_cash_after_horizon_included": false,
+      "start": "2027-01-01"
+    },
+    "cash_metrics_state": "computed_synthetic",
+    "cash_projection_producers_connected": false,
+    "cash_source_and_scope_financially_verified": false,
+    "component": "T23-T24",
+    "context": {
+      "deal_id": "SYNTHETIC-investor-cash-demo",
+      "definition_set_revision": "SYNTHETIC-explicit-gross-cash-return-v1",
+      "run_id": "SYNTHETIC-investor-cash-run",
+      "scenario_id": "SYNTHETIC-Base"
+    },
+    "currency": "USD",
+    "dated_net_flows": [
+      {
+        "date": "2027-01-01",
+        "net": {
+          "denominator": "1",
+          "numerator": "-1000"
+        }
+      },
+      {
+        "date": "2028-01-01",
+        "net": {
+          "denominator": "1",
+          "numerator": "600"
+        }
+      },
+      {
+        "date": "2029-01-01",
+        "net": {
+          "denominator": "1",
+          "numerator": "1000"
+        }
+      }
+    ],
+    "decision": "PENDING",
+    "declared_cash_story_computable": true,
+    "definition_sources": [
+      {
+        "line": 42,
+        "path": "docs/model-hold-exit-returns.md",
+        "sha256": "053746a0b7c72da941b40e9ff1251704367c50317f4dfa5a8803ce9f6981eccc"
+      },
+      {
+        "line": 5,
+        "path": "docs/investor-return-bridges.md",
+        "sha256": "88e751a2d7070eb00852c8d634814758e5a413364d3898c68f7f9bf2e606bb4f"
+      },
+      {
+        "line": 29,
+        "path": "docs/investor-return-bridges.md",
+        "sha256": "88e751a2d7070eb00852c8d634814758e5a413364d3898c68f7f9bf2e606bb4f"
+      },
+      {
+        "line": 11,
+        "path": "docs/periodic-irr-root-isolation.md",
+        "sha256": "be4145684a968d6ffeafe9d47360fee3b7a83528be3f05e4876f9d8ce9ddaaf6"
+      }
+    ],
+    "engine_sha256": "b64f5bae914ce97edebc4a86849935952eea4a25e271068d92b0f2197843b036",
+    "equity_level": "aggregate_project_equity",
+    "equity_multiple": {
+      "denominator": "5",
+      "numerator": "8"
+    },
+    "events": [
+      {
+        "amount": {
+          "denominator": "1",
+          "numerator": "1000"
+        },
+        "category": "initial_capital",
+        "currency": "USD",
+        "date": "2027-01-01",
+        "event_id": "initial",
+        "kind": "contribution",
+        "source_ref": "SYNTHETIC-cash-ledger:initial"
+      },
+      {
+        "amount": {
+          "denominator": "1",
+          "numerator": "500"
+        },
+        "category": "net_refinance_distribution",
+        "currency": "USD",
+        "date": "2028-01-01",
+        "event_id": "refi",
+        "kind": "distribution",
+        "source_ref": "SYNTHETIC-cash-ledger:refi"
+      },
+      {
+        "amount": {
+          "denominator": "1",
+          "numerator": "100"
+        },
+        "category": "operating_distribution",
+        "currency": "USD",
+        "date": "2028-01-01",
+        "event_id": "op1",
+        "kind": "distribution",
+        "source_ref": "SYNTHETIC-cash-ledger:op1"
+      },
+      {
+        "amount": {
+          "denominator": "1",
+          "numerator": "100"
+        },
+        "category": "operating_distribution",
+        "currency": "USD",
+        "date": "2029-01-01",
+        "event_id": "op2",
+        "kind": "distribution",
+        "source_ref": "SYNTHETIC-cash-ledger:op2"
+      },
+      {
+        "amount": {
+          "denominator": "1",
+          "numerator": "900"
+        },
+        "category": "net_sale_distribution",
+        "currency": "USD",
+        "date": "2029-01-01",
+        "event_id": "sale",
+        "kind": "distribution",
+        "source_ref": "SYNTHETIC-cash-ledger:sale"
+      }
+    ],
+    "financial_module_closed": false,
+    "gross_contributions": {
+      "denominator": "1",
+      "numerator": "1000"
+    },
+    "gross_distributions": {
+      "denominator": "1",
+      "numerator": "1600"
+    },
+    "investment_criteria_applied": false,
+    "investor_story_complete": false,
+    "net_cash_profit": {
+      "denominator": "1",
+      "numerator": "600"
+    },
+    "normalized_story": {
+      "basis_amount": {
+        "denominator": "1",
+        "numerator": "1000"
+      },
+      "basis_event_ids": [
+        "initial"
+      ],
+      "basis_ref": "SYNTHETIC-initial-contribution-only",
+      "equity_multiple": {
+        "denominator": "5",
+        "numerator": "8"
+      },
+      "events": [
+        {
+          "amount": {
+            "denominator": "1",
+            "numerator": "10"
+          },
+          "category": "initial_capital",
+          "currency": "USD",
+          "date": "2027-01-01",
+          "event_id": "initial",
+          "kind": "contribution",
+          "source_ref": "SYNTHETIC-cash-ledger:initial"
+        },
+        {
+          "amount": {
+            "denominator": "1",
+            "numerator": "5"
+          },
+          "category": "net_refinance_distribution",
+          "currency": "USD",
+          "date": "2028-01-01",
+          "event_id": "refi",
+          "kind": "distribution",
+          "source_ref": "SYNTHETIC-cash-ledger:refi"
+        },
+        {
+          "amount": {
+            "denominator": "1",
+            "numerator": "1"
+          },
+          "category": "operating_distribution",
+          "currency": "USD",
+          "date": "2028-01-01",
+          "event_id": "op1",
+          "kind": "distribution",
+          "source_ref": "SYNTHETIC-cash-ledger:op1"
+        },
+        {
+          "amount": {
+            "denominator": "1",
+            "numerator": "1"
+          },
+          "category": "operating_distribution",
+          "currency": "USD",
+          "date": "2029-01-01",
+          "event_id": "op2",
+          "kind": "distribution",
+          "source_ref": "SYNTHETIC-cash-ledger:op2"
+        },
+        {
+          "amount": {
+            "denominator": "1",
+            "numerator": "9"
+          },
+          "category": "net_sale_distribution",
+          "currency": "USD",
+          "date": "2029-01-01",
+          "event_id": "sale",
+          "kind": "distribution",
+          "source_ref": "SYNTHETIC-cash-ledger:sale"
+        }
+      ],
+      "net_cash_profit": {
+        "denominator": "1",
+        "numerator": "6"
+      },
+      "reference_amount": {
+        "denominator": "1",
+        "numerator": "10"
+      },
+      "scale_factor": {
+        "denominator": "100",
+        "numerator": "1"
+      },
+      "total_contributions": {
+        "denominator": "1",
+        "numerator": "10"
+      },
+      "total_distributions": {
+        "denominator": "1",
+        "numerator": "16"
+      }
+    },
+    "periodic_irr": {
+      "annualized": false,
+      "arithmetic_operations": 1411,
+      "decision": "PENDING",
+      "discount_factor_search_upper_bound": "2",
+      "distinct_positive_discount_roots": 1,
+      "engine_sha256": "eac518ac1fe44b196ba047965a28aef1e60067c48f8b7876963bab857257e4e2",
+      "excluded_zero_discount_factor_multiplicity": 0,
+      "operation_budget": 200000,
+      "publication_authorized": false,
+      "rate_domain": "r > -1; equally spaced periods explicitly assumed",
+      "requested_rate_interval_width": "1/1000000",
+      "root_classification": "one_distinct_root",
+      "roots": [
+        {
+          "discount_factor_interval": {
+            "lower": "1560345/2097152",
+            "lower_closed": false,
+            "upper": "780173/1048576",
+            "upper_closed": true
+          },
+          "distinct_roots": 1,
+          "exact_discount_factor": null,
+          "exact_periodic_rate": null,
+          "multiplicity": 1,
+          "periodic_rate_interval": {
+            "lower": "268403/780173",
+            "lower_closed": true,
+            "upper": "536807/1560345",
+            "upper_closed": false
+          }
+        }
+      ],
+      "selected_rate": null,
+      "splits": 22,
+      "status": "complete_synthetic",
+      "synthetic_profile_only": true,
+      "unresolved_intervals": []
+    },
+    "production_authorized": false,
+    "purpose": "synthetic_project_equity_cash_return_story",
+    "retained_equity_included_in_cash_receipts": false,
+    "review_authenticated": false,
+    "risk_analysis_completed": false,
+    "root_engine_sha256": "eac518ac1fe44b196ba047965a28aef1e60067c48f8b7876963bab857257e4e2",
+    "run_ready": false,
+    "selected_IRR": null,
+    "source_sha256": "46f6b1f4deff4410273a9943ac5b18bdb809351be35e2b53054e5ba009c762ed",
+    "story_blockers": []
+  }
+}
