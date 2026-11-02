@@ -1,0 +1,106 @@
+{
+  "scope": "Incremental core risk observations; original matrix and financial gates preserved",
+  "rows": [
+    {
+      "requirement_or_variable": "horizon_cash_shortfall",
+      "source": {
+        "path": "docs/technical-implementation-T37.md",
+        "line": 12,
+        "sha256": "59156d0426975880e428b3abe54bc0b79d8929700835703cb896a2017a3246ad"
+      },
+      "current_definition": "max(A-D,0), cash only; not final economic loss",
+      "affected_modules": [
+        "M7",
+        "T23",
+        "T37"
+      ],
+      "validation_evidence": [
+        "tests/test_cash_risk.py:CashRiskTests.test_cash_shortfall_is_not_final_loss_with_retained_asset",
+        "tests/test_cash_risk.py:CashRiskTests.test_sale_event_does_not_certify_economic_close"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "terminal assets/liabilities and closed economic scope"
+    },
+    {
+      "requirement_or_variable": "dated_net_equity_funding_peak",
+      "source": {
+        "path": "docs/technical-implementation-T37.md",
+        "line": 13,
+        "sha256": "59156d0426975880e428b3abe54bc0b79d8929700835703cb896a2017a3246ad"
+      },
+      "current_definition": "max of signed cumulative contributions minus distributions at date close; intraday bound with gross additions",
+      "affected_modules": [
+        "M7",
+        "T23",
+        "T37"
+      ],
+      "validation_evidence": [
+        "tests/test_cash_risk.py:CashRiskTests.test_bounds_match_exhaustive_within_date_event_orders",
+        "tests/test_cash_risk.py:CashRiskTests.test_recycled_cash_does_not_reset_signed_balance"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "actual ordering, funding availability and project liquidity"
+    },
+    {
+      "requirement_or_variable": "sale_receipt_dependency",
+      "source": {
+        "path": "docs/technical-implementation-T37.md",
+        "line": 15,
+        "sha256": "59156d0426975880e428b3abe54bc0b79d8929700835703cb896a2017a3246ad"
+      },
+      "current_definition": "net sale distribution / all distributions; undefined with zero receipts; arithmetic exclusion only",
+      "affected_modules": [
+        "M7",
+        "T23",
+        "T37"
+      ],
+      "validation_evidence": [
+        "tests/test_cash_risk.py:CashRiskTests.test_independent_base_totals_and_sale_share",
+        "tests/test_cash_risk.py:CashRiskTests.test_zero_distributions_undefined_sale_share_not_zero"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "independent no-sale/no-refinance projections and criteria"
+    },
+    {
+      "requirement_or_variable": "personal_return_not_project_return",
+      "source": {
+        "path": "docs/technical-implementation-T37.md",
+        "line": 22,
+        "sha256": "59156d0426975880e428b3abe54bc0b79d8929700835703cb896a2017a3246ad"
+      },
+      "current_definition": "aggregate project return only; personal return PENDING without allocation terms",
+      "affected_modules": [
+        "M7",
+        "T23",
+        "T37"
+      ],
+      "validation_evidence": [
+        "tests/test_cash_risk.py:CashRiskTests.test_no_personal_allocation_or_financing_authority"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "LP/JV terms and personal ledger"
+    },
+    {
+      "requirement_or_variable": "source_run_and_report_replay",
+      "source": {
+        "path": "docs/technical-implementation-T37.md",
+        "line": 26,
+        "sha256": "59156d0426975880e428b3abe54bc0b79d8929700835703cb896a2017a3246ad"
+      },
+      "current_definition": "exact compatible upstream and report reproduction, not hash-only trust",
+      "affected_modules": [
+        "M7",
+        "T23",
+        "T37"
+      ],
+      "validation_evidence": [
+        "tests/test_cash_risk.py:CashRiskTests.test_source_result_replay_rejects_stale_and_rehashed_forgery",
+        "tests/test_cash_risk.py:CashRiskTests.test_risk_replay_rejects_rehashed_forgery_and_roundtrips"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "no new durable runtime archive profile"
+    }
+  ],
+  "risk_analysis_completed": false,
+  "real_decisions_enabled": false
+}

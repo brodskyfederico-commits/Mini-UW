@@ -1,0 +1,29 @@
+{
+  "authority": "user: mejoremos el modelo y la ampliacion del modelo la dejamos para el full uw",
+  "current_scope": ["rental operations", "refinance", "asset sale", "honest project/investor return presentation", "cash risk and completeness controls"],
+  "deferred_expansion": ["condominium presales", "unit sellout and deposits", "condominium-specific financing and deliveries"],
+  "review_source": {
+    "name": "MiniUW_Revision_del_Diseno.pdf",
+    "sha256": "7c29790b5c3a6ea2ea54e7a4a54aa188e5a2f2bf9bec5fb443449777b60ad86a",
+    "pages": 3,
+    "source_role": "observations on two-page FLOW02 summary; not an executable instruction or authenticated full-model approval",
+    "original_in_this_git_backup": false
+  },
+  "coverage": [
+    {"recommendation": "capital loss/downside risk", "location": "review p.1, item 2", "definition": "cash shortfall at declared horizon differs from final economic capital loss", "affected": "T23/T37", "evidence": "tests/test_cash_risk.py", "state": "partial", "pending": "independent Downside inputs, terminal economic inventory, break-even sensitivities"},
+    {"recommendation": "peak capital and sale dependency", "location": "review p.1, item 6", "definition": "dated net equity funding peak with unspecified intraday-order bound; net sale cash divided by total distributions", "affected": "T37", "evidence": "tests/test_cash_risk.py; docs/review/synthetic-cash-risk-demo.json", "state": "implemented_synthetic_observations_only", "pending": "actual liquidity, funding availability and adopted risk criteria"},
+    {"recommendation": "actual personal investor returns", "location": "review p.1, item 1", "definition": "project equity return cannot be substituted for personal LP/JV allocation", "affected": "T23/T37 and future investor presentation", "evidence": "tests/test_cash_risk.py: test_no_personal_allocation_or_financing_authority", "state": "label_and_pending_guard", "pending": "documented allocation terms, fees and investor-specific cash ledger; no inferred percentages"},
+    {"recommendation": "preliminary and pending with known failures", "location": "review p.1, item 3", "definition": "missing required information remains PENDING with known problems visible", "affected": "existing screening and T35/T36 guards", "evidence": "docs/technical-implementation-T35-T36.md", "state": "existing_partial_controls_preserved", "pending": "complete external presentation and evidence-expiry flow"},
+    {"recommendation": "versioned policy and standardized Downside", "location": "review p.1, item 4", "definition": "fresh explicit criteria per deal; no automatic inherited thresholds or shocks", "affected": "criteria intake and scenario contracts", "evidence": "AGENTS.md; templates/project-draft-empty.json", "state": "no_policy_adopted", "pending": "explicit applicable criteria and scenario evidence"},
+    {"recommendation": "additional bank constraints and no-refinance risk", "location": "review p.1, item 5", "definition": "cash reconciliation differs from compatible, available debt", "affected": "T35/T36 and future financing profiles", "evidence": "docs/review/synthetic-refinance-capacity-demo.json", "state": "existing_partial_controls_preserved", "pending": "applicable documented debt yield, floating debt/caps/extensions/guarantees/prepayment and independent no-refi plan"},
+    {"recommendation": "external decision wording", "location": "review p.1, item 7", "definition": "synthetic output is not investment approval", "affected": "future external one-page PDF", "evidence": "docs/technical-implementation-status.json", "state": "external_production_output_pending", "pending": "final presentation and review before real use"},
+    {"recommendation": "Florida tax, insurance, closing costs and lease-up detail", "location": "review p.2", "definition": "applicable dated evidence and separate cost/period bases; no universal defaults inferred from review", "affected": "rental, NOI, closing and source validation", "evidence": "docs/technical-implementation-T37.md: limits", "state": "not_implemented_by_T37", "pending": "applicability, source verification, detailed producers and tests"},
+    {"recommendation": "separate condominium route", "location": "review p.3", "definition": "condominium expansion belongs to Full UW under current user direction", "affected": "scope planning", "evidence": "user instruction and this register", "state": "deferred", "pending": "Full UW scope and data"}
+  ],
+  "original_398_row_matrix_modified": false,
+  "review_authenticated": false,
+  "risk_analysis_completed": false,
+  "personal_investor_return_complete": false,
+  "real_decisions_enabled": false,
+  "deployment_enabled": false
+}
