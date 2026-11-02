@@ -1,7 +1,7 @@
 {
   "phase": "post-I01 synthetic technical implementation",
   "user_authorized": true,
-  "component": "T03",
+  "component": "T04",
   "status": "local_implementation_verified_pending_remote_receipt",
   "implemented": [
     "fresh raw-claim drafts from unchanged 55-input/10-criterion template",
@@ -15,9 +15,11 @@
     "content-addressed SQLite archive of exact synthetic source bytes",
     "durable execution bundles with complete input snapshot and graph",
     "source-locator verification and same-engine reproduction on capture/recovery",
-    "source-first archive/import with explicit cross-database failure semantics"
+    "source-first archive/import with explicit cross-database failure semantics",
+    "explicit UTF-8 synthetic CSV sheet adapter with logical-record/column locators",
+    "mixed JSON/CSV source archive verification and execution recovery"
   ],
-  "unit_tests": 74,
+  "unit_tests": 96,
   "plan_packages_partially_addressed": [
     "IMP-01",
     "IMP-06"
@@ -30,7 +32,7 @@
   "deployment_enabled": false,
   "production_ready": false,
   "next_independent_work": [
-    "additional synthetic sheet adapters",
+    "synthetic XLSX adapter with explicit formula/cache handling",
     "integration of defined scoped calculation profiles without policy adoption",
     "atomic evidence/currentness recording without publishing real decisions"
   ],
@@ -38,12 +40,14 @@
   "components_implemented": [
     "T01",
     "T02",
-    "T03"
+    "T03",
+    "T04"
   ],
   "tests_by_component": {
     "T01": 31,
     "T02": 21,
-    "T03": 22
+    "T03": 22,
+    "T04": 22
   },
   "not_yet_implemented": [
     "complete financial graph and its designed cycles",
@@ -53,5 +57,7 @@
   ],
   "durable_source_archive_implemented": true,
   "durable_execution_archive_implemented": true,
-  "runtime_archives_included_in_git_backup": false
+  "runtime_archives_included_in_git_backup": false,
+  "synthetic_csv_sheet_adapter_implemented": true,
+  "xlsx_adapter_implemented": false
 }

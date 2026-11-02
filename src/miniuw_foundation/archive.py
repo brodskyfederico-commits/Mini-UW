@@ -12,7 +12,7 @@ import sqlite3
 from .drafts import Snapshot, ValidationError, canonical
 from .execution import (ENGINE_SHA256, Execution, Graph, Node, SlotRef,
     _snapshot_payload, execute_synthetic)
-from .intake import parse_synthetic_claims, import_synthetic_claims
+from .sources import parse_source_claims, import_synthetic_source
 
 
 class MissingEvidence(KeyError):
@@ -126,13 +126,13 @@ COMMIT;''')
         return sha
 
     def put_source(self, raw):
-        parse_synthetic_claims(raw)  # Archive only explicitly marked synthetic envelopes.
+        parse_source_claims(raw)  # Archive only explicitly marked synthetic envelopes.
         with self._transaction():
             return self._put('source', raw)
 
     def get_source(self, sha):
         raw = self._read('source', sha)
-        parse_synthetic_claims(raw)
+        parse_source_claims(raw)
         return raw
 
     def _verify_sources(self, snapshot):
@@ -140,7 +140,7 @@ COMMIT;''')
         claims = [c for family in ('input_claims', 'criterion_claims')
             for records in payload[family].values() for c in records]
         hashes = sorted({c['source_sha256'] for c in claims})
-        available = {sha: {canonical(c.record()) for c in parse_synthetic_claims(self.get_source(sha))}
+        available = {sha: {canonical(c.record()) for c in parse_source_claims(self.get_source(sha))}
             for sha in hashes}
         for record in claims:
             if canonical(record) not in available[record['source_sha256']]:
@@ -206,5 +206,5 @@ def archive_and_import(archive, store, draft_id, *, expected_revision, operation
     This deliberately does not claim atomicity across the two databases.
     """
     archive.put_source(raw)
-    return import_synthetic_claims(store, draft_id, expected_revision=expected_revision,
+    return import_synthetic_source(store, draft_id, expected_revision=expected_revision,
         operation_id=operation_id, raw=raw)
