@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D03 review and metric-intake design extensions and T01–T30 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D03 review and metric-intake design extensions and T01–T32 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 15280,
-      "sha256": "0857cc0263f90019589d8d06b57d75c55aabadd54c80f3573cf6be261152298c"
+      "bytes": 15928,
+      "sha256": "e45bac4563983425faba3b2c91ee389405d9ff981964c477810d94d12447fe33"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 65471,
-      "sha256": "708d3c7c82da6f470d61bd1aa3b51223560cfbd7e5c8d8cf27ba67ef9c040bd1"
+      "bytes": 67719,
+      "sha256": "0f6464df6490fbbb70a547b77a2ad6b9da134c8f9a86ea1a58bdc475a7ff19a3"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -412,6 +412,11 @@
       "sha256": "52d0559bf23169a2ffe1280f4708dd0bb29361c176de8631ee6320ce871640f8"
     },
     {
+      "path": "docs/review/synthetic-debt-checked-closing-returns-demo.json",
+      "bytes": 9788,
+      "sha256": "28c44b9cb5f4005884dd7af367b27f031592b018e5617cbbc2712c3e19543a8d"
+    },
+    {
       "path": "docs/review/synthetic-holding-cash-returns-demo.json",
       "bytes": 11508,
       "sha256": "1f1184eac05ab0917bd333965e57936ad4c01a7ee82a5ab115782a81b81065ab"
@@ -500,6 +505,11 @@
       "path": "docs/technical-coverage-T29-T30.json",
       "bytes": 4634,
       "sha256": "fc491954964588c2f9d5978633898892bc7d529636d5b12fb64f5460cb906d29"
+    },
+    {
+      "path": "docs/technical-coverage-T31-T32.json",
+      "bytes": 4969,
+      "sha256": "e1bacac13588ada650836009317c3370d4af1c006160b9c6738c1f4cf15e96d0"
     },
     {
       "path": "docs/technical-implementation-T01.md",
@@ -632,9 +642,14 @@
       "sha256": "f070e899eb3e87a22cd4ea7d01f8e253944085aa5feaf0ac98ae93d9d4d335b2"
     },
     {
+      "path": "docs/technical-implementation-T31-T32.md",
+      "bytes": 7545,
+      "sha256": "ebaea3a54296d1fa51240f36a8afbc169e8b2b905178736b19743b9924a8045f"
+    },
+    {
       "path": "docs/technical-implementation-status.json",
-      "bytes": 11320,
-      "sha256": "728f2815346f871a291e1d074b2cf1743810ffdf4e3160274476e7c6e3d8ca3b"
+      "bytes": 12046,
+      "sha256": "04f5a5e81de44fb079cf698ae5b98c9318bc9a7a685f095ca527881df4f899d7"
     },
     {
       "path": "infra/README.md",
@@ -1308,8 +1323,8 @@
     },
     {
       "path": "src/miniuw_foundation/archive.py",
-      "bytes": 73216,
-      "sha256": "0a4e9e52d290104b905f2f60fe195eac655edc7b2736ce6bda11aec45f0f45b7"
+      "bytes": 81105,
+      "sha256": "5cee6f19f881e76cf4ae343e230acf88f50cc7bfbe58939ecba033b45a4f9b0b"
     },
     {
       "path": "src/miniuw_foundation/calculations.py",
@@ -1335,6 +1350,16 @@
       "path": "src/miniuw_foundation/data/project-draft-empty.json",
       "bytes": 26694,
       "sha256": "8cfc2915b9ee64bec53df3ea9041b7784f546200bdc676fcaf7b58679b88f16c"
+    },
+    {
+      "path": "src/miniuw_foundation/debt_closing.py",
+      "bytes": 12321,
+      "sha256": "1cba940c460b048132c57668ff893e2f4bdc68ab93f286be20a0f81b163f1947"
+    },
+    {
+      "path": "src/miniuw_foundation/debt_closing_returns.py",
+      "bytes": 4524,
+      "sha256": "e1468355b29c00f7304e34a6ecb356e7dfd27201329a1c3d8e1459dc408df76d"
     },
     {
       "path": "src/miniuw_foundation/debt_dscr.py",
@@ -1500,6 +1525,36 @@
       "path": "templates/synthetic-closing-investor-slots.json",
       "bytes": 3659,
       "sha256": "c910340f3baa667c8f077787f9e476724cd34a909e154996b10ee67c739cc849"
+    },
+    {
+      "path": "templates/synthetic-debt-checked-refinance-binding.json",
+      "bytes": 1244,
+      "sha256": "6c5b3d9857e892d7cccda2fabd032f0467dfa5e53359b3d9812d941ac3954b12"
+    },
+    {
+      "path": "templates/synthetic-debt-checked-refinance-closing.json",
+      "bytes": 6653,
+      "sha256": "5dcd2332fb16ad048617d15a103cdc7d7e92a87d44edb05e0b562e001dff59ce"
+    },
+    {
+      "path": "templates/synthetic-debt-checked-refinance-loan.json",
+      "bytes": 1092,
+      "sha256": "823f749e6fec3662ab4f011fdd8fa4830ff9cef595846403243058c62c0afd21"
+    },
+    {
+      "path": "templates/synthetic-debt-checked-sale-binding.json",
+      "bytes": 1241,
+      "sha256": "edd8ab24d2ed8d2ccf9f5e5161882951c3a5474915a1230239ef65988c8ab048"
+    },
+    {
+      "path": "templates/synthetic-debt-checked-sale-closing.json",
+      "bytes": 6211,
+      "sha256": "503028ba6311093a0e4e1e9a8766b02a2d9170b521d2815ba2adad984ea65203"
+    },
+    {
+      "path": "templates/synthetic-debt-checked-sale-loan.json",
+      "bytes": 1053,
+      "sha256": "a1d1cf3b97e9f60e14cbb991fdabec38fd31da20fa859e6d357efce4617e211d"
     },
     {
       "path": "templates/synthetic-debt-dscr-case.json",
@@ -1672,6 +1727,11 @@
       "sha256": "d7acbf6cd7eefd921b183c89e9ac987a33dc5105f2c8be886969f05d22b36042"
     },
     {
+      "path": "tests/debt_closing_test_support.py",
+      "bytes": 1470,
+      "sha256": "a16dac035959a383b2baf73adf391b12fd15db00ac3da4a9039ef3e660214d7e"
+    },
+    {
       "path": "tests/holding_test_support.py",
       "bytes": 1658,
       "sha256": "88448d26f461a19f74a6f61edd987a85821a23e95133d4efb9f4e2b331d66260"
@@ -1705,6 +1765,16 @@
       "path": "tests/test_closing_returns.py",
       "bytes": 10494,
       "sha256": "c728ffb018bd74772060569172c6bfdd241bebb1f341bd8207a01a76ed3ec514"
+    },
+    {
+      "path": "tests/test_debt_closing.py",
+      "bytes": 13842,
+      "sha256": "9194a7ab39b4ec1929d3545728c46c9a64927e9635ef4c3f197e805e8917d8d6"
+    },
+    {
+      "path": "tests/test_debt_closing_returns.py",
+      "bytes": 10498,
+      "sha256": "6cccc875bd66d83978795036a22b9e05a41ef0f117dbde2c85fbfa8fc239cb12"
     },
     {
       "path": "tests/test_debt_service.py",
@@ -1860,6 +1930,11 @@
       "path": "tools/demo_computed_noi_dscr.py",
       "bytes": 1748,
       "sha256": "21edb66a306f74270a19f08ed1d3490d175cba18d58c4b9943cad1b6d747a150"
+    },
+    {
+      "path": "tools/demo_debt_checked_closing_returns.py",
+      "bytes": 4709,
+      "sha256": "100da551b4da9271aa1dd2c79b4b8e55c219633eb2c7d4d2e17323e78d57f826"
     },
     {
       "path": "tools/demo_documented_threshold_rehearsal.py",

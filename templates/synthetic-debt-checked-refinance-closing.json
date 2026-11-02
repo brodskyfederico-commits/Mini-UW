@@ -1,0 +1,228 @@
+{
+  "schema": "miniuw.synthetic-closing-cash.v1",
+  "profile": "SYNTHETIC-RESIDUAL-AFTER-EXPLICIT-RETENTION-v1",
+  "context": {
+    "deal_id": "SYNTHETIC-investor-cash-demo",
+    "scenario_id": "SYNTHETIC-Base",
+    "run_id": "SYNTHETIC-investor-cash-run",
+    "definition_set_revision": "SYNTHETIC-explicit-gross-cash-return-v1"
+  },
+  "currency": "USD",
+  "closing_date": "2028-01-01",
+  "kind": "refinance",
+  "representation": "explicit_gross_cash_movements",
+  "debt_inventory_declared_complete": true,
+  "classification_basis_ref": "SYNTHETIC-explicit-nonoverlapping-gross-cash-and-due-inventory",
+  "equity_residual_basis_ref": "SYNTHETIC-project-residual-after-stated-retention-only-not-adopted",
+  "equity_funding_assumption_ref": null,
+  "amounts": {
+    "gross_proceeds": {
+      "value": {
+        "numerator": "1600",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "as_of_date": "2028-01-01",
+      "basis": "cash_flow_at_closing",
+      "source_ref": "SYNTHETIC-explicit-closing-source:refinance"
+    },
+    "opening_free_cash": {
+      "value": {
+        "numerator": "100",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "as_of_date": "2028-01-01",
+      "basis": "project_cash_before_closing",
+      "source_ref": "SYNTHETIC-explicit-closing-source:refinance"
+    },
+    "opening_restricted_cash": {
+      "value": {
+        "numerator": "50",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "as_of_date": "2028-01-01",
+      "basis": "project_cash_before_closing",
+      "source_ref": "SYNTHETIC-explicit-closing-source:refinance"
+    },
+    "reserve_release": {
+      "value": {
+        "numerator": "50",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "as_of_date": "2028-01-01",
+      "basis": "cash_flow_at_closing",
+      "source_ref": "SYNTHETIC-explicit-closing-source:refinance"
+    },
+    "new_reserve": {
+      "value": {
+        "numerator": "100",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "as_of_date": "2028-01-01",
+      "basis": "cash_flow_at_closing",
+      "source_ref": "SYNTHETIC-explicit-closing-source:refinance"
+    },
+    "closing_costs_paid": {
+      "value": {
+        "numerator": "20",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "as_of_date": "2028-01-01",
+      "basis": "cash_flow_at_closing",
+      "source_ref": "SYNTHETIC-explicit-closing-source:refinance"
+    },
+    "other_cash_sources": {
+      "value": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "as_of_date": "2028-01-01",
+      "basis": "cash_flow_at_closing",
+      "source_ref": "SYNTHETIC-explicit-closing-source:refinance"
+    },
+    "other_cash_uses": {
+      "value": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "as_of_date": "2028-01-01",
+      "basis": "cash_flow_at_closing",
+      "source_ref": "SYNTHETIC-explicit-closing-source:refinance"
+    },
+    "retained_free_cash": {
+      "value": {
+        "numerator": "70",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "as_of_date": "2028-01-01",
+      "basis": "project_cash_after_closing",
+      "source_ref": "SYNTHETIC-explicit-closing-source:refinance"
+    },
+    "closing_restricted_cash_claim": {
+      "value": {
+        "numerator": "100",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "as_of_date": "2028-01-01",
+      "basis": "project_cash_after_closing",
+      "source_ref": "SYNTHETIC-explicit-closing-source:refinance"
+    }
+  },
+  "old_debts": [
+    {
+      "loan_id": "SYNTHETIC-construction-loan",
+      "principal_due": {
+        "value": {
+          "numerator": "1000",
+          "denominator": "1"
+        },
+        "currency": "USD",
+        "as_of_date": "2028-01-01",
+        "basis": "debt_obligation_before_closing",
+        "source_ref": "SYNTHETIC-explicit-closing-source:refinance"
+      },
+      "principal_paid": {
+        "value": {
+          "numerator": "1000",
+          "denominator": "1"
+        },
+        "currency": "USD",
+        "as_of_date": "2028-01-01",
+        "basis": "cash_flow_at_closing",
+        "source_ref": "SYNTHETIC-explicit-closing-source:refinance"
+      },
+      "interest_due": {
+        "value": {
+          "numerator": "0",
+          "denominator": "1"
+        },
+        "currency": "USD",
+        "as_of_date": "2028-01-01",
+        "basis": "debt_obligation_before_closing",
+        "source_ref": "SYNTHETIC-explicit-closing-source:refinance"
+      },
+      "interest_paid": {
+        "value": {
+          "numerator": "0",
+          "denominator": "1"
+        },
+        "currency": "USD",
+        "as_of_date": "2028-01-01",
+        "basis": "cash_flow_at_closing",
+        "source_ref": "SYNTHETIC-explicit-closing-source:refinance"
+      },
+      "fees_due": {
+        "value": {
+          "numerator": "10",
+          "denominator": "1"
+        },
+        "currency": "USD",
+        "as_of_date": "2028-01-01",
+        "basis": "debt_obligation_before_closing",
+        "source_ref": "SYNTHETIC-explicit-closing-source:refinance"
+      },
+      "fees_paid": {
+        "value": {
+          "numerator": "10",
+          "denominator": "1"
+        },
+        "currency": "USD",
+        "as_of_date": "2028-01-01",
+        "basis": "cash_flow_at_closing",
+        "source_ref": "SYNTHETIC-explicit-closing-source:refinance"
+      },
+      "other_due": {
+        "value": {
+          "numerator": "0",
+          "denominator": "1"
+        },
+        "currency": "USD",
+        "as_of_date": "2028-01-01",
+        "basis": "debt_obligation_before_closing",
+        "source_ref": "SYNTHETIC-explicit-closing-source:refinance"
+      },
+      "other_paid": {
+        "value": {
+          "numerator": "0",
+          "denominator": "1"
+        },
+        "currency": "USD",
+        "as_of_date": "2028-01-01",
+        "basis": "cash_flow_at_closing",
+        "source_ref": "SYNTHETIC-explicit-closing-source:refinance"
+      }
+    }
+  ],
+  "new_loan": {
+    "loan_id": "SYNTHETIC-refinance-loan",
+    "principal_after_closing": {
+      "value": {
+        "numerator": "1600",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "as_of_date": "2028-01-01",
+      "basis": "debt_principal_after_closing",
+      "source_ref": "SYNTHETIC-explicit-closing-source:refinance"
+    }
+  },
+  "valuation_claim": {
+    "value": {
+      "numerator": "3000",
+      "denominator": "1"
+    },
+    "currency": "USD",
+    "as_of_date": "2028-01-01",
+    "basis": "valuation_not_cash",
+    "source_ref": "SYNTHETIC-explicit-closing-source:refinance"
+  }
+}

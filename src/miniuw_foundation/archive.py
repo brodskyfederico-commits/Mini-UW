@@ -69,6 +69,13 @@ from .closing_cash import definition_sources as closing_definition_sources
 from .closing_returns import ClosingReturnRun,ClosingReturnBinding,assemble_closing_returns
 from .closing_returns import ENGINE_SHA256 as CLOSING_RETURN_ENGINE_SHA256
 
+from .debt_closing import DatedLoanEvidence,DebtClosingRun,parse_debt_closing,reconcile_debt_closing
+from .debt_closing import ENGINE_SHA256 as DEBT_CLOSING_ENGINE_SHA256
+from .debt_closing import definition_sources as debt_closing_definition_sources
+from .debt_closing_returns import DebtClosingReturnRun,DebtClosingReturnBinding,assemble_debt_checked_returns
+from .debt_closing_returns import ENGINE_SHA256 as DEBT_CLOSING_RETURN_ENGINE_SHA256
+from .debt_closing_returns import binding_from_record as debt_closing_return_binding_from_record
+
 
 class MissingEvidence(KeyError):
     pass
@@ -229,6 +236,32 @@ class ClosingReturnBundle:
 def _closing_versions():return [CLOSING_ENGINE_SHA256,DEBT_ENGINE_SHA256,OPERATING_NOI_ENGINE_SHA256,INVESTOR_ENGINE_SHA256]
 def _closing_return_versions():return [CLOSING_RETURN_ENGINE_SHA256]+_closing_versions()+[ROOT_ENGINE_SHA256]
 def _closing_return_definitions():return {'closing':closing_definition_sources(),'investor':investor_definition_sources()}
+
+
+@dataclass(frozen=True)
+class DebtClosingBundle:
+    payload_json:str
+    sha256:str
+    @property
+    def payload(self):return json.loads(self.payload_json)
+    @property
+    def run(self):return DebtClosingRun(**self.payload['run'])
+
+
+@dataclass(frozen=True)
+class DebtClosingReturnBundle:
+    payload_json:str
+    sha256:str
+    @property
+    def payload(self):return json.loads(self.payload_json)
+    @property
+    def run(self):return DebtClosingReturnRun(**self.payload['run'])
+
+
+def _debt_closing_versions():return [DEBT_CLOSING_ENGINE_SHA256]+_closing_versions()
+def _debt_closing_definitions():return {'debt':debt_definition_sources(),'closing':closing_definition_sources(),'comparison':debt_closing_definition_sources()}
+def _debt_checked_versions():return [DEBT_CLOSING_RETURN_ENGINE_SHA256,CLOSING_RETURN_ENGINE_SHA256]+_debt_closing_versions()+[ROOT_ENGINE_SHA256]
+def _debt_checked_definitions():return dict(_debt_closing_definitions(),investor=investor_definition_sources())
 
 
 def _sha(raw):
@@ -757,6 +790,72 @@ COMMIT;''')
                 raise CorruptArchive('invalid screening evidence') from error
         return bundle
 
+
+    def get_debt_closing_spec(self, sha):
+        raw=self._read('source',sha);parse_debt_closing(raw);return raw
+
+    def _capture_dated_loans(self, loans):
+        return [{'loan_source_sha256':self._put('source',e.loan_raw),'windows':[asdict(w)for w in e.windows],'run':asdict(e.run)}for e in loans]
+
+    def _restore_dated_loans(self, records):
+        if type(records)is not list or len(records)>64:raise CorruptArchive('invalid archived old-loan inventory')
+        loans=[]
+        for row in records:
+            if type(row)is not dict or set(row)!={'loan_source_sha256','windows','run'}or type(row['windows'])is not list or len(row['windows'])>128:raise CorruptArchive('invalid archived dated-loan evidence')
+            loans.append(DatedLoanEvidence(loan_raw=self.get_loan_source(row['loan_source_sha256']),windows=tuple(DateWindow(**w)for w in row['windows']),run=DebtServiceRun(**row['run'])))
+        return tuple(loans)
+
+    def save_debt_closing(self, loans, closing_raw, closing_run, spec_raw, run):
+        if type(run)is not DebtClosingRun or reconcile_debt_closing(loans,closing_raw,closing_run,spec_raw)!=run:raise ValidationError('dated debt/closing comparison does not reproduce')
+        with self._transaction():
+            closing=self._put('source',closing_raw);spec=self._put('source',spec_raw);records=self._capture_dated_loans(loans)
+            p={'schema':'miniuw.synthetic-debt-closing-bundle.v1','purpose':'synthetic_development_only',
+                'loans':records,'closing_source_sha256':closing,'spec_source_sha256':spec,'closing_run':asdict(closing_run),'run':asdict(run),
+                'versions':_debt_closing_versions(),'definitions':_debt_closing_definitions()}
+            return self._put('bundle',canonical(p).encode())
+
+    def load_debt_closing(self, sha):
+        with self._transaction():
+            raw=self.read_bundle_bytes(sha)
+            try:
+                p=json.loads(raw)
+                if set(p)!={'schema','purpose','loans','closing_source_sha256','spec_source_sha256','closing_run','run','versions','definitions'}:raise CorruptArchive('debt/closing fields changed')
+                if p['schema']!='miniuw.synthetic-debt-closing-bundle.v1':raise UnsupportedArchive('unsupported debt/closing schema')
+                if p['purpose']!='synthetic_development_only':raise CorruptArchive('debt/closing purpose changed')
+                if p['versions']!=_debt_closing_versions()or p['definitions']!=_debt_closing_definitions():raise UnsupportedArchive('debt/closing replay requires compatible code/documents')
+                bundle=DebtClosingBundle(raw.decode(),sha);loans=self._restore_dated_loans(p['loans'])
+                if reconcile_debt_closing(loans,self.get_closing_cash_source(p['closing_source_sha256']),ClosingCashRun(**p['closing_run']),self.get_debt_closing_spec(p['spec_source_sha256']))!=bundle.run:raise CorruptArchive('debt/closing comparison does not reproduce')
+            except MissingEvidence:raise
+            except(KeyError,TypeError,UnicodeError,json.JSONDecodeError,ValidationError)as error:raise CorruptArchive('invalid debt/closing evidence')from error
+        return bundle
+
+    def save_debt_checked_returns(self, loans, closing_raw, closing_run, spec_raw, reconciliation_run, investor_raw, binding, run):
+        if type(run)is not DebtClosingReturnRun or assemble_debt_checked_returns(loans,closing_raw,closing_run,spec_raw,reconciliation_run,investor_raw,binding)!=run:raise ValidationError('debt-checked investor return does not reproduce')
+        with self._transaction():
+            closing=self._put('source',closing_raw);spec=self._put('source',spec_raw);investor=self._put('source',investor_raw);records=self._capture_dated_loans(loans)
+            compiled=None if run.compiled_raw is None else self._put('source',run.compiled_raw)
+            p={'schema':'miniuw.synthetic-debt-checked-return-bundle.v1','purpose':'synthetic_development_only',
+                'loans':records,'closing_source_sha256':closing,'spec_source_sha256':spec,'closing_run':asdict(closing_run),
+                'reconciliation_run':asdict(reconciliation_run),'investor_source_sha256':investor,'compiled_source_sha256':compiled,
+                'binding':asdict(binding),'run':asdict(run),'versions':_debt_checked_versions(),'definitions':_debt_checked_definitions()}
+            return self._put('bundle',canonical(p).encode())
+
+    def load_debt_checked_returns(self, sha):
+        with self._transaction():
+            raw=self.read_bundle_bytes(sha)
+            try:
+                p=json.loads(raw)
+                if set(p)!={'schema','purpose','loans','closing_source_sha256','spec_source_sha256','closing_run','reconciliation_run','investor_source_sha256','compiled_source_sha256','binding','run','versions','definitions'}:raise CorruptArchive('debt-checked return fields changed')
+                if p['schema']!='miniuw.synthetic-debt-checked-return-bundle.v1':raise UnsupportedArchive('unsupported debt-checked return schema')
+                if p['purpose']!='synthetic_development_only':raise CorruptArchive('debt-checked return purpose changed')
+                if p['versions']!=_debt_checked_versions()or p['definitions']!=_debt_checked_definitions():raise UnsupportedArchive('debt-checked return replay requires compatible code/documents')
+                bundle=DebtClosingReturnBundle(raw.decode(),sha)
+                if assemble_debt_checked_returns(self._restore_dated_loans(p['loans']),self.get_closing_cash_source(p['closing_source_sha256']),ClosingCashRun(**p['closing_run']),self.get_debt_closing_spec(p['spec_source_sha256']),DebtClosingRun(**p['reconciliation_run']),self.get_investor_returns_source(p['investor_source_sha256']),debt_closing_return_binding_from_record(p['binding']))!=bundle.run:raise CorruptArchive('debt-checked return does not reproduce')
+                compiled=None if p['compiled_source_sha256']is None else self._read('source',p['compiled_source_sha256'])
+                if compiled!=bundle.run.compiled_raw:raise CorruptArchive('compiled debt-checked investor source changed')
+            except MissingEvidence:raise
+            except(KeyError,TypeError,UnicodeError,json.JSONDecodeError,ValidationError)as error:raise CorruptArchive('invalid debt-checked return evidence')from error
+        return bundle
 
     def get_closing_cash_source(self, sha):
         raw=self._read('source',sha);parse_closing_cash(raw);return raw

@@ -1,0 +1,117 @@
+{
+  "scope": "Incremental synthetic implementation coverage; original 398-row matrix and financial evidence gates preserved",
+  "rows": [
+    {
+      "requirement_or_variable": "dated_balance_maturity_balloon",
+      "source": {
+        "path": "docs/model-refinance-contract.md",
+        "line": 15,
+        "sha256": "9e51606a66a3d938e5c433eb77b625fb3638af0e7ab334dd53544a2cb7f9db46"
+      },
+      "current_definition": "Compare explicit before/after scheduled payment cutoff against computed opening/closing principal; never add balloon twice or extend maturity",
+      "affected_modules": [
+        "M6",
+        "M7",
+        "T10",
+        "T31",
+        "T32"
+      ],
+      "validation_evidence": [
+        "DebtClosingTests.test_before_third_payment_uses_opening_balance_not_balloon_plus_principal",
+        "DebtClosingTests.test_after_third_regular_payment_uses_remaining_balloon_once",
+        "DebtClosingTests.test_between_payment_and_after_maturity_dates_do_not_infer_stub_or_extension"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Actual paid history, bank conventions/quote, stub accrual and changed debt not verified"
+    },
+    {
+      "requirement_or_variable": "all_obligations_at_closing",
+      "source": {
+        "path": "docs/model-refinance-contract.md",
+        "line": 16,
+        "sha256": "9e51606a66a3d938e5c433eb77b625fb3638af0e7ab334dd53544a2cb7f9db46"
+      },
+      "current_definition": "All old debt sources/bindings required; compare principal/regular interval interest exactly, retain fees/other unknown blockers",
+      "affected_modules": [
+        "M6",
+        "M7",
+        "T10",
+        "T31",
+        "T32"
+      ],
+      "validation_evidence": [
+        "DebtClosingTests.test_complete_old_loan_inventory_required_in_bindings_and_evidence",
+        "DebtClosingTests.test_fees_and_other_unknown_still_block_even_with_known_principal"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Fees/other supplied, no completeness/authenticity of bank obligations or real discharge evidence"
+    },
+    {
+      "requirement_or_variable": "interest_already_paid_and_payment_assumptions",
+      "source": {
+        "path": "docs/model-refinance-contract.md",
+        "line": 22,
+        "sha256": "9e51606a66a3d938e5c433eb77b625fb3638af0e7ab334dd53544a2cb7f9db46"
+      },
+      "current_definition": "Regular-service payment history is a stated hypothesis; after-payment cutoff does not charge the interval interest again",
+      "affected_modules": [
+        "M6",
+        "M7",
+        "T10",
+        "T31",
+        "T32"
+      ],
+      "validation_evidence": [
+        "DebtClosingTests.test_positive_interest_cutoff_before_and_after_known_annuity_payment",
+        "DebtClosingTests.test_interest_already_in_assumed_paid_regular_service_not_charged_again",
+        "DebtClosingTests.test_all_payment_and_change_assumptions_and_basis_refs_required"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "No real payment evidence, capitalization/arrears treatment or adopted assumptions"
+    },
+    {
+      "requirement_or_variable": "annual_equivalent_not_dated_cash",
+      "source": {
+        "path": "docs/refinance-capacity-bridge.md",
+        "line": 11,
+        "sha256": "869aaa70c97550f111efffc92a886fd76679d09282c32dc7219e5cd43154d962"
+      },
+      "current_definition": "Use dated amortization row, not annual sizing equivalent, to compare closing payoff",
+      "affected_modules": [
+        "M6",
+        "M7",
+        "T10",
+        "T31",
+        "T32"
+      ],
+      "validation_evidence": [
+        "DebtClosingTests.test_annual_sizing_frequency_not_used_to_infer_dated_payoff"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "No annual cash calendar, bank DSCR policy or actual paid service reconciliation"
+    },
+    {
+      "requirement_or_variable": "pending_on_debt_difference_before_return",
+      "source": {
+        "path": "AGENTS.md",
+        "line": 7,
+        "sha256": "7cccf8b6e9fa3f45685e2e04afc43c7a3bd0ac5dd15f6b5b4eee4ae397e6f0df"
+      },
+      "current_definition": "Preserve original claims and block this optional investor path on missing assumptions or difference even if closing conservation holds",
+      "affected_modules": [
+        "M6",
+        "M7",
+        "T10",
+        "T31",
+        "T32"
+      ],
+      "validation_evidence": [
+        "DebtCheckedReturnsTests.test_arithmetically_balanced_closing_still_blocked_if_debt_claim_differs",
+        "DebtCheckedReturnsTests.test_missing_paid_history_assumption_does_not_become_implied_approval",
+        "DebtCheckedReturnsTests.test_reopened_archive_replays_comparison_then_compilation"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Legacy isolated synthetic components are not claimed to verify debt; full project cash/authority/final financial acceptance remain open"
+    }
+  ]
+}
