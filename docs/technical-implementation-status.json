@@ -1,7 +1,7 @@
 {
   "phase": "post-I01 synthetic technical implementation",
   "user_authorized": true,
-  "component": "T32",
+  "component": "T34",
   "status": "local_implementation_verified_pending_remote_receipt",
   "implemented": [
     "fresh raw-claim drafts from unchanged 55-input/10-criterion template",
@@ -69,9 +69,11 @@
     "conditional gross refinance/sale closing residual after explicit debt payoffs/costs/reserves/retention with projected cash-in requirement distinguished from funding",
     "replayed closing residual to explicit gross investor-event slots with local source/run recovery",
     "exact provided scheduled-date and origination debt payoff comparison under explicit prior-payment/no-unmodeled-change assumptions",
-    "closing investor compilation gated by full replayed debt/closing reconciliation with typed archival recovery"
+    "closing investor compilation gated by full replayed debt/closing reconciliation with typed archival recovery",
+    "integrated operating/refinance/operating/sale cash-window continuity, working balance carry, dated regular debt cash matching and refinance-to-sale loan identity",
+    "all-or-none investor ledger compilation from exact initial opening cash equity and every declared cash node with complete local replay recovery"
   ],
-  "unit_tests": 614,
+  "unit_tests": 652,
   "plan_packages_partially_addressed": [
     "IMP-01",
     "IMP-06",
@@ -87,10 +89,10 @@
   "deployment_enabled": false,
   "production_ready": false,
   "next_independent_work": [
-    "operating-to-closing balance continuity and full project cash reconciliation",
-    "conditional valuation and bank capacity to gross proceeds verification",
-    "projected regular debt service in operating cash versus contractual due",
-    "construction budget/funding and investor risks/final PDF integration"
+    "conditional valuation and bank capacity versus gross refinancing proceeds",
+    "construction budget and funding history before opening operating state",
+    "risk/scenario presentation and final investor PDF integration",
+    "additional cash/debt/working-balance profiles outside the reduced synthetic window"
   ],
   "I01_snapshot_preserved": true,
   "components_implemented": [
@@ -125,7 +127,9 @@
     "T29",
     "T30",
     "T31",
-    "T32"
+    "T32",
+    "T33",
+    "T34"
   ],
   "tests_by_component": {
     "T01": 31,
@@ -159,7 +163,9 @@
     "T29": 22,
     "T30": 15,
     "T31": 21,
-    "T32": 15
+    "T32": 15,
+    "T33": 21,
+    "T34": 17
   },
   "not_yet_implemented": [
     "complete financial graph and its designed cycles",
@@ -221,7 +227,7 @@
   "operating_cash_to_return_assembly_implemented": true,
   "durable_operating_cash_bundles_implemented": true,
   "durable_operating_return_bundles_implemented": true,
-  "investor_cash_producer_connection_scope": "declared operating chain and conditional refinance/sale residuals can feed investor events; full project balances, debt payoff/proceeds production and construction not connected",
+  "investor_cash_producer_connection_scope": "declared operating/refinance/sale window with exact free/restricted boundaries, regular debt/payoff matching and unified investor events; historical construction/assets, authentic bank payments and full economic scope remain open",
   "synthetic_operating_holding_continuity_implemented": true,
   "holding_cash_to_return_assembly_implemented": true,
   "durable_holding_cash_bundles_implemented": true,
@@ -235,5 +241,9 @@
   "debt_checked_closing_return_assembly_implemented": true,
   "durable_debt_closing_bundles_implemented": true,
   "durable_debt_checked_return_bundles_implemented": true,
-  "debt_payoff_comparison_scope": "exact supplied scheduled or origination dates with stated regular-payment assumptions; no actual payment history, bank payoff quote or stub accrual"
+  "debt_payoff_comparison_scope": "exact supplied scheduled or origination dates with stated regular-payment assumptions; no actual payment history, bank payoff quote or stub accrual",
+  "synthetic_integrated_cash_window_implemented": true,
+  "integrated_project_return_assembly_implemented": true,
+  "durable_project_cash_bundles_implemented": true,
+  "durable_project_return_bundles_implemented": true
 }

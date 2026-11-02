@@ -1,0 +1,51 @@
+{
+  "schema": "miniuw.synthetic-project-cash.v1",
+  "profile": "SYNTHETIC-OPERATIONS-REFINANCE-SALE-CONTINUITY-v1",
+  "context": {
+    "deal_id": "SYNTHETIC-integrated-cash-demo",
+    "scenario_id": "SYNTHETIC-Base",
+    "run_id": "SYNTHETIC-integrated-cash-run",
+    "definition_set_revision": "SYNTHETIC-cash-window-assumptions-v1"
+  },
+  "currency": "USD",
+  "opening_date": "2027-01-01",
+  "terminal_date": "2027-07-01",
+  "scope_inventory_declared_complete": true,
+  "opening_state_basis_ref": "SYNTHETIC-declared-opening-cash-and-existing-debt-not-construction-history",
+  "timeline_basis_ref": "SYNTHETIC-closing-after-previous-period-before-next-period-on-same-boundary",
+  "refinance_working_balance_carry_basis_ref": "SYNTHETIC-refinance-does-not-change-the-four-working-balances",
+  "nodes": [
+    {
+      "node_id": "SYNTHETIC-pre-refi",
+      "kind": "operation",
+      "source_sha256": "57e1b1545598140a2f00c91563d4c8f54933ec62789651fbb56f48aae5952b65",
+      "run_sha256": "215435a88e425c62f4a34abfa7f30496bc4acf5aea806f964ed086cadd7d5b03",
+      "upstream_source_sha256": "7e747429f231547fb23c813fe704da445857d96a37a6b04a96c536eca1b30f1e",
+      "upstream_run_sha256": "0dfcf13b0181e5f483149f0dade3017c8df8131e4944c0a2857189a382cea7c3"
+    },
+    {
+      "node_id": "SYNTHETIC-project-refinance",
+      "kind": "refinance",
+      "source_sha256": "9ea8bfcd1d335059bcb71cc0c75700b9befa9ef8f8e474fe6251a96b5a27c085",
+      "run_sha256": "fe46bb7a60ec0aea800993cfe3b0c2c266cb50625e31f9eaa30d7c18f26caf96",
+      "upstream_source_sha256": "530f7021ef4e07b0433e04a27a8f5112f2dc45d7db17bf745a5057c7c583e38e",
+      "upstream_run_sha256": "d613fa91d5bf72eacb328e44caae774b632bfb2e7c19d3a09a9d11610659902d"
+    },
+    {
+      "node_id": "SYNTHETIC-post-refi",
+      "kind": "operation",
+      "source_sha256": "bbe299a3eeca4b212a6eabf1f4258675870d6a61b0ed86ac7c5c9ee35686aa7e",
+      "run_sha256": "ac9d9ecec516e7722d72f0f38694e6f5d38a280ac6e0b8869cbe26964937ddf0",
+      "upstream_source_sha256": "5b524be20c1df284f4429d5e1452a520f9a4bda61cd65eef5eebe66b97a452fb",
+      "upstream_run_sha256": "ce228e5dedf3b476518d9bacef1811c38452dc3d44ea655b7c873f4a19483c79"
+    },
+    {
+      "node_id": "SYNTHETIC-project-sale",
+      "kind": "sale",
+      "source_sha256": "6cf216faef578d7078b2650d99fe0644611951be817d6785a719675214bd8512",
+      "run_sha256": "867793bd76a6b6ba06abc995902594152ee1e46798493d046628b0600d9019c8",
+      "upstream_source_sha256": "58d3501808f7cfbcdff0862711d41890268dddbf62a5dca5fd0612d9b807d2be",
+      "upstream_run_sha256": "9aa5ecf66f47e619c4897139589ac8363246dde3b0a35ffae525909814b480b9"
+    }
+  ]
+}

@@ -1,0 +1,267 @@
+{
+  "schema": "miniuw.synthetic-operating-cash.v1",
+  "context": {
+    "deal_id": "SYNTHETIC-integrated-cash-demo",
+    "scenario_id": "SYNTHETIC-Base",
+    "run_id": "SYNTHETIC-integrated-cash-run",
+    "definition_set_revision": "SYNTHETIC-cash-window-assumptions-v1"
+  },
+  "currency": "USD",
+  "period_ref": "SYNTHETIC-pre-refi",
+  "start_date": "2027-01-01",
+  "end_date": "2027-04-01",
+  "cash_date": "2027-03-01",
+  "period_basis_ref": "SYNTHETIC-period-totals-and-projected-distribution-date-not-intraperiod-proof",
+  "noi_source_sha256": "7e747429f231547fb23c813fe704da445857d96a37a6b04a96c536eca1b30f1e",
+  "noi_run_sha256": "0dfcf13b0181e5f483149f0dade3017c8df8131e4944c0a2857189a382cea7c3",
+  "scope_inventory_declared_complete": true,
+  "distribution_basis_ref": "SYNTHETIC-proposed-fixed-distribution-not-authorized",
+  "profile": "explicit_accrual_cash_and_planned_allocation_operations_only",
+  "working_balances": {
+    "receivables": {
+      "opening": {
+        "value": {
+          "numerator": "0",
+          "denominator": "1"
+        },
+        "currency": "USD",
+        "period_ref": "OPENING:SYNTHETIC-pre-refi",
+        "source_ref": "SYNTHETIC-declared-cash-plan-and-balance"
+      },
+      "closing": {
+        "value": {
+          "numerator": "0",
+          "denominator": "1"
+        },
+        "currency": "USD",
+        "period_ref": "CLOSING:SYNTHETIC-pre-refi",
+        "source_ref": "SYNTHETIC-declared-cash-plan-and-balance"
+      }
+    },
+    "advance_income": {
+      "opening": {
+        "value": {
+          "numerator": "0",
+          "denominator": "1"
+        },
+        "currency": "USD",
+        "period_ref": "OPENING:SYNTHETIC-pre-refi",
+        "source_ref": "SYNTHETIC-declared-cash-plan-and-balance"
+      },
+      "closing": {
+        "value": {
+          "numerator": "0",
+          "denominator": "1"
+        },
+        "currency": "USD",
+        "period_ref": "CLOSING:SYNTHETIC-pre-refi",
+        "source_ref": "SYNTHETIC-declared-cash-plan-and-balance"
+      }
+    },
+    "payables": {
+      "opening": {
+        "value": {
+          "numerator": "0",
+          "denominator": "1"
+        },
+        "currency": "USD",
+        "period_ref": "OPENING:SYNTHETIC-pre-refi",
+        "source_ref": "SYNTHETIC-declared-cash-plan-and-balance"
+      },
+      "closing": {
+        "value": {
+          "numerator": "0",
+          "denominator": "1"
+        },
+        "currency": "USD",
+        "period_ref": "CLOSING:SYNTHETIC-pre-refi",
+        "source_ref": "SYNTHETIC-declared-cash-plan-and-balance"
+      }
+    },
+    "prepaid_expenses": {
+      "opening": {
+        "value": {
+          "numerator": "0",
+          "denominator": "1"
+        },
+        "currency": "USD",
+        "period_ref": "OPENING:SYNTHETIC-pre-refi",
+        "source_ref": "SYNTHETIC-declared-cash-plan-and-balance"
+      },
+      "closing": {
+        "value": {
+          "numerator": "0",
+          "denominator": "1"
+        },
+        "currency": "USD",
+        "period_ref": "CLOSING:SYNTHETIC-pre-refi",
+        "source_ref": "SYNTHETIC-declared-cash-plan-and-balance"
+      }
+    }
+  },
+  "amounts": {
+    "noncash_revenue": {
+      "value": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "period_ref": "SYNTHETIC-pre-refi",
+      "source_ref": "SYNTHETIC-declared-cash-plan-and-balance"
+    },
+    "noncash_expense": {
+      "value": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "period_ref": "SYNTHETIC-pre-refi",
+      "source_ref": "SYNTHETIC-declared-cash-plan-and-balance"
+    },
+    "operating_receipts_claim": {
+      "value": {
+        "numerator": "60",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "period_ref": "SYNTHETIC-pre-refi",
+      "source_ref": "SYNTHETIC-declared-cash-plan-and-balance"
+    },
+    "operating_payments_claim": {
+      "value": {
+        "numerator": "10",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "period_ref": "SYNTHETIC-pre-refi",
+      "source_ref": "SYNTHETIC-declared-cash-plan-and-balance"
+    },
+    "debt_principal_payment": {
+      "value": {
+        "numerator": "30",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "period_ref": "SYNTHETIC-pre-refi",
+      "source_ref": "SYNTHETIC-declared-cash-plan-and-balance"
+    },
+    "debt_interest_payment": {
+      "value": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "period_ref": "SYNTHETIC-pre-refi",
+      "source_ref": "SYNTHETIC-declared-cash-plan-and-balance"
+    },
+    "debt_fee_payment": {
+      "value": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "period_ref": "SYNTHETIC-pre-refi",
+      "source_ref": "SYNTHETIC-declared-cash-plan-and-balance"
+    },
+    "capital_expenditure": {
+      "value": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "period_ref": "SYNTHETIC-pre-refi",
+      "source_ref": "SYNTHETIC-declared-cash-plan-and-balance"
+    },
+    "other_cash_payment": {
+      "value": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "period_ref": "SYNTHETIC-pre-refi",
+      "source_ref": "SYNTHETIC-declared-cash-plan-and-balance"
+    },
+    "nonfinancing_other_cash_receipt": {
+      "value": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "period_ref": "SYNTHETIC-pre-refi",
+      "source_ref": "SYNTHETIC-declared-cash-plan-and-balance"
+    },
+    "reserve_deposit": {
+      "value": {
+        "numerator": "100",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "period_ref": "SYNTHETIC-pre-refi",
+      "source_ref": "SYNTHETIC-declared-cash-plan-and-balance"
+    },
+    "reserve_release": {
+      "value": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "period_ref": "SYNTHETIC-pre-refi",
+      "source_ref": "SYNTHETIC-declared-cash-plan-and-balance"
+    },
+    "equity_contribution": {
+      "value": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "period_ref": "SYNTHETIC-pre-refi",
+      "source_ref": "SYNTHETIC-declared-cash-plan-and-balance"
+    },
+    "planned_operating_distribution": {
+      "value": {
+        "numerator": "100",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "period_ref": "SYNTHETIC-pre-refi",
+      "source_ref": "SYNTHETIC-declared-cash-plan-and-balance"
+    },
+    "opening_free_cash": {
+      "value": {
+        "numerator": "1000",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "period_ref": "OPENING:SYNTHETIC-pre-refi",
+      "source_ref": "SYNTHETIC-declared-cash-plan-and-balance"
+    },
+    "opening_restricted_cash": {
+      "value": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "period_ref": "OPENING:SYNTHETIC-pre-refi",
+      "source_ref": "SYNTHETIC-declared-cash-plan-and-balance"
+    },
+    "closing_free_cash_claim": {
+      "value": {
+        "numerator": "820",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "period_ref": "CLOSING:SYNTHETIC-pre-refi",
+      "source_ref": "SYNTHETIC-declared-cash-plan-and-balance"
+    },
+    "closing_restricted_cash_claim": {
+      "value": {
+        "numerator": "100",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "period_ref": "CLOSING:SYNTHETIC-pre-refi",
+      "source_ref": "SYNTHETIC-declared-cash-plan-and-balance"
+    }
+  },
+  "classification_basis_ref": "SYNTHETIC-declared-nonoverlapping-operating-and-financing-uses-no-refi-or-sale"
+}

@@ -1,0 +1,1023 @@
+{
+  "purpose": "synthetic_operations_refinance_operations_sale_cash_and_return_demo",
+  "context": {
+    "deal_id": "SYNTHETIC-integrated-cash-demo",
+    "definition_set_revision": "SYNTHETIC-cash-window-assumptions-v1",
+    "run_id": "SYNTHETIC-integrated-cash-run",
+    "scenario_id": "SYNTHETIC-Base"
+  },
+  "cash_nodes": [
+    {
+      "binding_blockers": [],
+      "closing": {
+        "free": {
+          "as_of_date": "2027-04-01",
+          "claim": {
+            "currency": "USD",
+            "period_ref": "CLOSING:SYNTHETIC-pre-refi",
+            "source_ref": "SYNTHETIC-declared-cash-plan-and-balance",
+            "value": {
+              "denominator": "1",
+              "numerator": "820"
+            }
+          },
+          "pointer": "/amounts/closing_free_cash_claim",
+          "source_sha256": "57e1b1545598140a2f00c91563d4c8f54933ec62789651fbb56f48aae5952b65"
+        },
+        "restricted": {
+          "as_of_date": "2027-04-01",
+          "claim": {
+            "currency": "USD",
+            "period_ref": "CLOSING:SYNTHETIC-pre-refi",
+            "source_ref": "SYNTHETIC-declared-cash-plan-and-balance",
+            "value": {
+              "denominator": "1",
+              "numerator": "100"
+            }
+          },
+          "pointer": "/amounts/closing_restricted_cash_claim",
+          "source_sha256": "57e1b1545598140a2f00c91563d4c8f54933ec62789651fbb56f48aae5952b65"
+        }
+      },
+      "contribution": {
+        "denominator": "1",
+        "numerator": "0"
+      },
+      "distribution": {
+        "denominator": "1",
+        "numerator": "100"
+      },
+      "end_date": "2027-04-01",
+      "equity_cash_date": "2027-03-01",
+      "kind": "operation",
+      "node_id": "SYNTHETIC-pre-refi",
+      "opening": {
+        "free": {
+          "as_of_date": "2027-01-01",
+          "claim": {
+            "currency": "USD",
+            "period_ref": "OPENING:SYNTHETIC-pre-refi",
+            "source_ref": "SYNTHETIC-declared-cash-plan-and-balance",
+            "value": {
+              "denominator": "1",
+              "numerator": "1000"
+            }
+          },
+          "pointer": "/amounts/opening_free_cash",
+          "source_sha256": "57e1b1545598140a2f00c91563d4c8f54933ec62789651fbb56f48aae5952b65"
+        },
+        "restricted": {
+          "as_of_date": "2027-01-01",
+          "claim": {
+            "currency": "USD",
+            "period_ref": "OPENING:SYNTHETIC-pre-refi",
+            "source_ref": "SYNTHETIC-declared-cash-plan-and-balance",
+            "value": {
+              "denominator": "1",
+              "numerator": "0"
+            }
+          },
+          "pointer": "/amounts/opening_restricted_cash",
+          "source_sha256": "57e1b1545598140a2f00c91563d4c8f54933ec62789651fbb56f48aae5952b65"
+        }
+      },
+      "producer_blockers": [],
+      "run_sha256": "215435a88e425c62f4a34abfa7f30496bc4acf5aea806f964ed086cadd7d5b03",
+      "source_sha256": "57e1b1545598140a2f00c91563d4c8f54933ec62789651fbb56f48aae5952b65",
+      "start_date": "2027-01-01",
+      "upstream_run_sha256": "0dfcf13b0181e5f483149f0dade3017c8df8131e4944c0a2857189a382cea7c3",
+      "valid": true
+    },
+    {
+      "binding_blockers": [],
+      "closing": {
+        "free": {
+          "as_of_date": "2027-04-01",
+          "claim": {
+            "as_of_date": "2027-04-01",
+            "basis": "project_cash_after_closing",
+            "currency": "USD",
+            "source_ref": "SYNTHETIC-explicit-closing-source:refinance",
+            "value": {
+              "denominator": "1",
+              "numerator": "600"
+            }
+          },
+          "pointer": "/amounts/retained_free_cash",
+          "source_sha256": "9ea8bfcd1d335059bcb71cc0c75700b9befa9ef8f8e474fe6251a96b5a27c085"
+        },
+        "restricted": {
+          "as_of_date": "2027-04-01",
+          "claim": {
+            "as_of_date": "2027-04-01",
+            "basis": "project_cash_after_closing",
+            "currency": "USD",
+            "source_ref": "SYNTHETIC-explicit-closing-source:refinance",
+            "value": {
+              "denominator": "1",
+              "numerator": "150"
+            }
+          },
+          "pointer": "/amounts/closing_restricted_cash_claim",
+          "source_sha256": "9ea8bfcd1d335059bcb71cc0c75700b9befa9ef8f8e474fe6251a96b5a27c085"
+        }
+      },
+      "contribution": {
+        "denominator": "1",
+        "numerator": "0"
+      },
+      "distribution": {
+        "denominator": "100",
+        "numerator": "35301"
+      },
+      "end_date": "2027-04-01",
+      "equity_cash_date": "2027-04-01",
+      "kind": "refinance",
+      "node_id": "SYNTHETIC-project-refinance",
+      "opening": {
+        "free": {
+          "as_of_date": "2027-04-01",
+          "claim": {
+            "as_of_date": "2027-04-01",
+            "basis": "project_cash_before_closing",
+            "currency": "USD",
+            "source_ref": "SYNTHETIC-explicit-closing-source:refinance",
+            "value": {
+              "denominator": "1",
+              "numerator": "820"
+            }
+          },
+          "pointer": "/amounts/opening_free_cash",
+          "source_sha256": "9ea8bfcd1d335059bcb71cc0c75700b9befa9ef8f8e474fe6251a96b5a27c085"
+        },
+        "restricted": {
+          "as_of_date": "2027-04-01",
+          "claim": {
+            "as_of_date": "2027-04-01",
+            "basis": "project_cash_before_closing",
+            "currency": "USD",
+            "source_ref": "SYNTHETIC-explicit-closing-source:refinance",
+            "value": {
+              "denominator": "1",
+              "numerator": "100"
+            }
+          },
+          "pointer": "/amounts/opening_restricted_cash",
+          "source_sha256": "9ea8bfcd1d335059bcb71cc0c75700b9befa9ef8f8e474fe6251a96b5a27c085"
+        }
+      },
+      "producer_blockers": [],
+      "run_sha256": "fe46bb7a60ec0aea800993cfe3b0c2c266cb50625e31f9eaa30d7c18f26caf96",
+      "source_sha256": "9ea8bfcd1d335059bcb71cc0c75700b9befa9ef8f8e474fe6251a96b5a27c085",
+      "start_date": "2027-04-01",
+      "upstream_run_sha256": "d613fa91d5bf72eacb328e44caae774b632bfb2e7c19d3a09a9d11610659902d",
+      "valid": true
+    },
+    {
+      "binding_blockers": [],
+      "closing": {
+        "free": {
+          "as_of_date": "2027-07-01",
+          "claim": {
+            "currency": "USD",
+            "period_ref": "CLOSING:SYNTHETIC-post-refi",
+            "source_ref": "SYNTHETIC-declared-cash-plan-and-balance",
+            "value": {
+              "denominator": "5000",
+              "numerator": "1369699"
+            }
+          },
+          "pointer": "/amounts/closing_free_cash_claim",
+          "source_sha256": "bbe299a3eeca4b212a6eabf1f4258675870d6a61b0ed86ac7c5c9ee35686aa7e"
+        },
+        "restricted": {
+          "as_of_date": "2027-07-01",
+          "claim": {
+            "currency": "USD",
+            "period_ref": "CLOSING:SYNTHETIC-post-refi",
+            "source_ref": "SYNTHETIC-declared-cash-plan-and-balance",
+            "value": {
+              "denominator": "1",
+              "numerator": "200"
+            }
+          },
+          "pointer": "/amounts/closing_restricted_cash_claim",
+          "source_sha256": "bbe299a3eeca4b212a6eabf1f4258675870d6a61b0ed86ac7c5c9ee35686aa7e"
+        }
+      },
+      "contribution": {
+        "denominator": "1",
+        "numerator": "0"
+      },
+      "distribution": {
+        "denominator": "1",
+        "numerator": "100"
+      },
+      "end_date": "2027-07-01",
+      "equity_cash_date": "2027-06-01",
+      "kind": "operation",
+      "node_id": "SYNTHETIC-post-refi",
+      "opening": {
+        "free": {
+          "as_of_date": "2027-04-01",
+          "claim": {
+            "currency": "USD",
+            "period_ref": "OPENING:SYNTHETIC-post-refi",
+            "source_ref": "SYNTHETIC-declared-cash-plan-and-balance",
+            "value": {
+              "denominator": "1",
+              "numerator": "600"
+            }
+          },
+          "pointer": "/amounts/opening_free_cash",
+          "source_sha256": "bbe299a3eeca4b212a6eabf1f4258675870d6a61b0ed86ac7c5c9ee35686aa7e"
+        },
+        "restricted": {
+          "as_of_date": "2027-04-01",
+          "claim": {
+            "currency": "USD",
+            "period_ref": "OPENING:SYNTHETIC-post-refi",
+            "source_ref": "SYNTHETIC-declared-cash-plan-and-balance",
+            "value": {
+              "denominator": "1",
+              "numerator": "150"
+            }
+          },
+          "pointer": "/amounts/opening_restricted_cash",
+          "source_sha256": "bbe299a3eeca4b212a6eabf1f4258675870d6a61b0ed86ac7c5c9ee35686aa7e"
+        }
+      },
+      "producer_blockers": [],
+      "run_sha256": "ac9d9ecec516e7722d72f0f38694e6f5d38a280ac6e0b8869cbe26964937ddf0",
+      "source_sha256": "bbe299a3eeca4b212a6eabf1f4258675870d6a61b0ed86ac7c5c9ee35686aa7e",
+      "start_date": "2027-04-01",
+      "upstream_run_sha256": "ce228e5dedf3b476518d9bacef1811c38452dc3d44ea655b7c873f4a19483c79",
+      "valid": true
+    },
+    {
+      "binding_blockers": [],
+      "closing": {
+        "free": {
+          "as_of_date": "2027-07-01",
+          "claim": {
+            "as_of_date": "2027-07-01",
+            "basis": "project_cash_after_closing",
+            "currency": "USD",
+            "source_ref": "SYNTHETIC-explicit-closing-source:sale",
+            "value": {
+              "denominator": "1",
+              "numerator": "0"
+            }
+          },
+          "pointer": "/amounts/retained_free_cash",
+          "source_sha256": "6cf216faef578d7078b2650d99fe0644611951be817d6785a719675214bd8512"
+        },
+        "restricted": {
+          "as_of_date": "2027-07-01",
+          "claim": {
+            "as_of_date": "2027-07-01",
+            "basis": "project_cash_after_closing",
+            "currency": "USD",
+            "source_ref": "SYNTHETIC-explicit-closing-source:sale",
+            "value": {
+              "denominator": "1",
+              "numerator": "0"
+            }
+          },
+          "pointer": "/amounts/closing_restricted_cash_claim",
+          "source_sha256": "6cf216faef578d7078b2650d99fe0644611951be817d6785a719675214bd8512"
+        }
+      },
+      "contribution": {
+        "denominator": "1",
+        "numerator": "0"
+      },
+      "distribution": {
+        "denominator": "10000",
+        "numerator": "7459097"
+      },
+      "end_date": "2027-07-01",
+      "equity_cash_date": "2027-07-01",
+      "kind": "sale",
+      "node_id": "SYNTHETIC-project-sale",
+      "opening": {
+        "free": {
+          "as_of_date": "2027-07-01",
+          "claim": {
+            "as_of_date": "2027-07-01",
+            "basis": "project_cash_before_closing",
+            "currency": "USD",
+            "source_ref": "SYNTHETIC-explicit-closing-source:sale",
+            "value": {
+              "denominator": "5000",
+              "numerator": "1369699"
+            }
+          },
+          "pointer": "/amounts/opening_free_cash",
+          "source_sha256": "6cf216faef578d7078b2650d99fe0644611951be817d6785a719675214bd8512"
+        },
+        "restricted": {
+          "as_of_date": "2027-07-01",
+          "claim": {
+            "as_of_date": "2027-07-01",
+            "basis": "project_cash_before_closing",
+            "currency": "USD",
+            "source_ref": "SYNTHETIC-explicit-closing-source:sale",
+            "value": {
+              "denominator": "1",
+              "numerator": "200"
+            }
+          },
+          "pointer": "/amounts/opening_restricted_cash",
+          "source_sha256": "6cf216faef578d7078b2650d99fe0644611951be817d6785a719675214bd8512"
+        }
+      },
+      "producer_blockers": [],
+      "run_sha256": "867793bd76a6b6ba06abc995902594152ee1e46798493d046628b0600d9019c8",
+      "source_sha256": "6cf216faef578d7078b2650d99fe0644611951be817d6785a719675214bd8512",
+      "start_date": "2027-07-01",
+      "upstream_run_sha256": "9aa5ecf66f47e619c4897139589ac8363246dde3b0a35ffae525909814b480b9",
+      "valid": true
+    }
+  ],
+  "cash_boundaries": [
+    {
+      "account": "free",
+      "closing_claim": {
+        "as_of_date": "2027-04-01",
+        "claim": {
+          "currency": "USD",
+          "period_ref": "CLOSING:SYNTHETIC-pre-refi",
+          "source_ref": "SYNTHETIC-declared-cash-plan-and-balance",
+          "value": {
+            "denominator": "1",
+            "numerator": "820"
+          }
+        },
+        "pointer": "/amounts/closing_free_cash_claim",
+        "source_sha256": "57e1b1545598140a2f00c91563d4c8f54933ec62789651fbb56f48aae5952b65"
+      },
+      "equal_exact_value": true,
+      "from_node": "SYNTHETIC-pre-refi",
+      "opening_claim": {
+        "as_of_date": "2027-04-01",
+        "claim": {
+          "as_of_date": "2027-04-01",
+          "basis": "project_cash_before_closing",
+          "currency": "USD",
+          "source_ref": "SYNTHETIC-explicit-closing-source:refinance",
+          "value": {
+            "denominator": "1",
+            "numerator": "820"
+          }
+        },
+        "pointer": "/amounts/opening_free_cash",
+        "source_sha256": "9ea8bfcd1d335059bcb71cc0c75700b9befa9ef8f8e474fe6251a96b5a27c085"
+      },
+      "to_node": "SYNTHETIC-project-refinance"
+    },
+    {
+      "account": "restricted",
+      "closing_claim": {
+        "as_of_date": "2027-04-01",
+        "claim": {
+          "currency": "USD",
+          "period_ref": "CLOSING:SYNTHETIC-pre-refi",
+          "source_ref": "SYNTHETIC-declared-cash-plan-and-balance",
+          "value": {
+            "denominator": "1",
+            "numerator": "100"
+          }
+        },
+        "pointer": "/amounts/closing_restricted_cash_claim",
+        "source_sha256": "57e1b1545598140a2f00c91563d4c8f54933ec62789651fbb56f48aae5952b65"
+      },
+      "equal_exact_value": true,
+      "from_node": "SYNTHETIC-pre-refi",
+      "opening_claim": {
+        "as_of_date": "2027-04-01",
+        "claim": {
+          "as_of_date": "2027-04-01",
+          "basis": "project_cash_before_closing",
+          "currency": "USD",
+          "source_ref": "SYNTHETIC-explicit-closing-source:refinance",
+          "value": {
+            "denominator": "1",
+            "numerator": "100"
+          }
+        },
+        "pointer": "/amounts/opening_restricted_cash",
+        "source_sha256": "9ea8bfcd1d335059bcb71cc0c75700b9befa9ef8f8e474fe6251a96b5a27c085"
+      },
+      "to_node": "SYNTHETIC-project-refinance"
+    },
+    {
+      "account": "free",
+      "closing_claim": {
+        "as_of_date": "2027-04-01",
+        "claim": {
+          "as_of_date": "2027-04-01",
+          "basis": "project_cash_after_closing",
+          "currency": "USD",
+          "source_ref": "SYNTHETIC-explicit-closing-source:refinance",
+          "value": {
+            "denominator": "1",
+            "numerator": "600"
+          }
+        },
+        "pointer": "/amounts/retained_free_cash",
+        "source_sha256": "9ea8bfcd1d335059bcb71cc0c75700b9befa9ef8f8e474fe6251a96b5a27c085"
+      },
+      "equal_exact_value": true,
+      "from_node": "SYNTHETIC-project-refinance",
+      "opening_claim": {
+        "as_of_date": "2027-04-01",
+        "claim": {
+          "currency": "USD",
+          "period_ref": "OPENING:SYNTHETIC-post-refi",
+          "source_ref": "SYNTHETIC-declared-cash-plan-and-balance",
+          "value": {
+            "denominator": "1",
+            "numerator": "600"
+          }
+        },
+        "pointer": "/amounts/opening_free_cash",
+        "source_sha256": "bbe299a3eeca4b212a6eabf1f4258675870d6a61b0ed86ac7c5c9ee35686aa7e"
+      },
+      "to_node": "SYNTHETIC-post-refi"
+    },
+    {
+      "account": "restricted",
+      "closing_claim": {
+        "as_of_date": "2027-04-01",
+        "claim": {
+          "as_of_date": "2027-04-01",
+          "basis": "project_cash_after_closing",
+          "currency": "USD",
+          "source_ref": "SYNTHETIC-explicit-closing-source:refinance",
+          "value": {
+            "denominator": "1",
+            "numerator": "150"
+          }
+        },
+        "pointer": "/amounts/closing_restricted_cash_claim",
+        "source_sha256": "9ea8bfcd1d335059bcb71cc0c75700b9befa9ef8f8e474fe6251a96b5a27c085"
+      },
+      "equal_exact_value": true,
+      "from_node": "SYNTHETIC-project-refinance",
+      "opening_claim": {
+        "as_of_date": "2027-04-01",
+        "claim": {
+          "currency": "USD",
+          "period_ref": "OPENING:SYNTHETIC-post-refi",
+          "source_ref": "SYNTHETIC-declared-cash-plan-and-balance",
+          "value": {
+            "denominator": "1",
+            "numerator": "150"
+          }
+        },
+        "pointer": "/amounts/opening_restricted_cash",
+        "source_sha256": "bbe299a3eeca4b212a6eabf1f4258675870d6a61b0ed86ac7c5c9ee35686aa7e"
+      },
+      "to_node": "SYNTHETIC-post-refi"
+    },
+    {
+      "account": "free",
+      "closing_claim": {
+        "as_of_date": "2027-07-01",
+        "claim": {
+          "currency": "USD",
+          "period_ref": "CLOSING:SYNTHETIC-post-refi",
+          "source_ref": "SYNTHETIC-declared-cash-plan-and-balance",
+          "value": {
+            "denominator": "5000",
+            "numerator": "1369699"
+          }
+        },
+        "pointer": "/amounts/closing_free_cash_claim",
+        "source_sha256": "bbe299a3eeca4b212a6eabf1f4258675870d6a61b0ed86ac7c5c9ee35686aa7e"
+      },
+      "equal_exact_value": true,
+      "from_node": "SYNTHETIC-post-refi",
+      "opening_claim": {
+        "as_of_date": "2027-07-01",
+        "claim": {
+          "as_of_date": "2027-07-01",
+          "basis": "project_cash_before_closing",
+          "currency": "USD",
+          "source_ref": "SYNTHETIC-explicit-closing-source:sale",
+          "value": {
+            "denominator": "5000",
+            "numerator": "1369699"
+          }
+        },
+        "pointer": "/amounts/opening_free_cash",
+        "source_sha256": "6cf216faef578d7078b2650d99fe0644611951be817d6785a719675214bd8512"
+      },
+      "to_node": "SYNTHETIC-project-sale"
+    },
+    {
+      "account": "restricted",
+      "closing_claim": {
+        "as_of_date": "2027-07-01",
+        "claim": {
+          "currency": "USD",
+          "period_ref": "CLOSING:SYNTHETIC-post-refi",
+          "source_ref": "SYNTHETIC-declared-cash-plan-and-balance",
+          "value": {
+            "denominator": "1",
+            "numerator": "200"
+          }
+        },
+        "pointer": "/amounts/closing_restricted_cash_claim",
+        "source_sha256": "bbe299a3eeca4b212a6eabf1f4258675870d6a61b0ed86ac7c5c9ee35686aa7e"
+      },
+      "equal_exact_value": true,
+      "from_node": "SYNTHETIC-post-refi",
+      "opening_claim": {
+        "as_of_date": "2027-07-01",
+        "claim": {
+          "as_of_date": "2027-07-01",
+          "basis": "project_cash_before_closing",
+          "currency": "USD",
+          "source_ref": "SYNTHETIC-explicit-closing-source:sale",
+          "value": {
+            "denominator": "1",
+            "numerator": "200"
+          }
+        },
+        "pointer": "/amounts/opening_restricted_cash",
+        "source_sha256": "6cf216faef578d7078b2650d99fe0644611951be817d6785a719675214bd8512"
+      },
+      "to_node": "SYNTHETIC-project-sale"
+    }
+  ],
+  "working_balance_checks": [
+    {
+      "balance": "receivables",
+      "closing_claim": {
+        "currency": "USD",
+        "period_ref": "CLOSING:SYNTHETIC-pre-refi",
+        "source_ref": "SYNTHETIC-declared-cash-plan-and-balance",
+        "value": {
+          "denominator": "1",
+          "numerator": "0"
+        }
+      },
+      "equal_exact_value": true,
+      "next_operating_source_sha256": "bbe299a3eeca4b212a6eabf1f4258675870d6a61b0ed86ac7c5c9ee35686aa7e",
+      "opening_claim": {
+        "currency": "USD",
+        "period_ref": "OPENING:SYNTHETIC-post-refi",
+        "source_ref": "SYNTHETIC-declared-cash-plan-and-balance",
+        "value": {
+          "denominator": "1",
+          "numerator": "0"
+        }
+      },
+      "previous_operating_source_sha256": "57e1b1545598140a2f00c91563d4c8f54933ec62789651fbb56f48aae5952b65"
+    },
+    {
+      "balance": "advance_income",
+      "closing_claim": {
+        "currency": "USD",
+        "period_ref": "CLOSING:SYNTHETIC-pre-refi",
+        "source_ref": "SYNTHETIC-declared-cash-plan-and-balance",
+        "value": {
+          "denominator": "1",
+          "numerator": "0"
+        }
+      },
+      "equal_exact_value": true,
+      "next_operating_source_sha256": "bbe299a3eeca4b212a6eabf1f4258675870d6a61b0ed86ac7c5c9ee35686aa7e",
+      "opening_claim": {
+        "currency": "USD",
+        "period_ref": "OPENING:SYNTHETIC-post-refi",
+        "source_ref": "SYNTHETIC-declared-cash-plan-and-balance",
+        "value": {
+          "denominator": "1",
+          "numerator": "0"
+        }
+      },
+      "previous_operating_source_sha256": "57e1b1545598140a2f00c91563d4c8f54933ec62789651fbb56f48aae5952b65"
+    },
+    {
+      "balance": "payables",
+      "closing_claim": {
+        "currency": "USD",
+        "period_ref": "CLOSING:SYNTHETIC-pre-refi",
+        "source_ref": "SYNTHETIC-declared-cash-plan-and-balance",
+        "value": {
+          "denominator": "1",
+          "numerator": "0"
+        }
+      },
+      "equal_exact_value": true,
+      "next_operating_source_sha256": "bbe299a3eeca4b212a6eabf1f4258675870d6a61b0ed86ac7c5c9ee35686aa7e",
+      "opening_claim": {
+        "currency": "USD",
+        "period_ref": "OPENING:SYNTHETIC-post-refi",
+        "source_ref": "SYNTHETIC-declared-cash-plan-and-balance",
+        "value": {
+          "denominator": "1",
+          "numerator": "0"
+        }
+      },
+      "previous_operating_source_sha256": "57e1b1545598140a2f00c91563d4c8f54933ec62789651fbb56f48aae5952b65"
+    },
+    {
+      "balance": "prepaid_expenses",
+      "closing_claim": {
+        "currency": "USD",
+        "period_ref": "CLOSING:SYNTHETIC-pre-refi",
+        "source_ref": "SYNTHETIC-declared-cash-plan-and-balance",
+        "value": {
+          "denominator": "1",
+          "numerator": "0"
+        }
+      },
+      "equal_exact_value": true,
+      "next_operating_source_sha256": "bbe299a3eeca4b212a6eabf1f4258675870d6a61b0ed86ac7c5c9ee35686aa7e",
+      "opening_claim": {
+        "currency": "USD",
+        "period_ref": "OPENING:SYNTHETIC-post-refi",
+        "source_ref": "SYNTHETIC-declared-cash-plan-and-balance",
+        "value": {
+          "denominator": "1",
+          "numerator": "0"
+        }
+      },
+      "previous_operating_source_sha256": "57e1b1545598140a2f00c91563d4c8f54933ec62789651fbb56f48aae5952b65"
+    }
+  ],
+  "operating_debt_checks": [
+    {
+      "claimed_fee": {
+        "currency": "USD",
+        "period_ref": "SYNTHETIC-pre-refi",
+        "source_ref": "SYNTHETIC-declared-cash-plan-and-balance",
+        "value": {
+          "denominator": "1",
+          "numerator": "0"
+        }
+      },
+      "claimed_interest": {
+        "currency": "USD",
+        "period_ref": "SYNTHETIC-pre-refi",
+        "source_ref": "SYNTHETIC-declared-cash-plan-and-balance",
+        "value": {
+          "denominator": "1",
+          "numerator": "0"
+        }
+      },
+      "claimed_principal": {
+        "currency": "USD",
+        "period_ref": "SYNTHETIC-pre-refi",
+        "source_ref": "SYNTHETIC-declared-cash-plan-and-balance",
+        "value": {
+          "denominator": "1",
+          "numerator": "30"
+        }
+      },
+      "closing_node": "SYNTHETIC-project-refinance",
+      "computed_interest": {
+        "denominator": "1",
+        "numerator": "0"
+      },
+      "computed_principal": {
+        "denominator": "1",
+        "numerator": "30"
+      },
+      "equal_with_zero_unmodeled_fee": true,
+      "operating_node": "SYNTHETIC-pre-refi",
+      "selected_regular_payments": [
+        {
+          "date": "2027-01-01",
+          "loan_id": "SYNTHETIC-project-old-loan",
+          "payment_index": 1
+        },
+        {
+          "date": "2027-02-01",
+          "loan_id": "SYNTHETIC-project-old-loan",
+          "payment_index": 2
+        },
+        {
+          "date": "2027-03-01",
+          "loan_id": "SYNTHETIC-project-old-loan",
+          "payment_index": 3
+        }
+      ]
+    },
+    {
+      "claimed_fee": {
+        "currency": "USD",
+        "period_ref": "SYNTHETIC-post-refi",
+        "source_ref": "SYNTHETIC-declared-cash-plan-and-balance",
+        "value": {
+          "denominator": "1",
+          "numerator": "0"
+        }
+      },
+      "claimed_interest": {
+        "currency": "USD",
+        "period_ref": "SYNTHETIC-post-refi",
+        "source_ref": "SYNTHETIC-declared-cash-plan-and-balance",
+        "value": {
+          "denominator": "5000",
+          "numerator": "25301"
+        }
+      },
+      "claimed_principal": {
+        "currency": "USD",
+        "period_ref": "SYNTHETIC-post-refi",
+        "source_ref": "SYNTHETIC-declared-cash-plan-and-balance",
+        "value": {
+          "denominator": "1",
+          "numerator": "201"
+        }
+      },
+      "closing_node": "SYNTHETIC-project-sale",
+      "computed_interest": {
+        "denominator": "5000",
+        "numerator": "25301"
+      },
+      "computed_principal": {
+        "denominator": "1",
+        "numerator": "201"
+      },
+      "equal_with_zero_unmodeled_fee": true,
+      "operating_node": "SYNTHETIC-post-refi",
+      "selected_regular_payments": [
+        {
+          "date": "2027-05-01",
+          "loan_id": "SYNTHETIC-project-new-loan",
+          "payment_index": 1
+        },
+        {
+          "date": "2027-06-01",
+          "loan_id": "SYNTHETIC-project-new-loan",
+          "payment_index": 2
+        }
+      ]
+    }
+  ],
+  "refinance_to_sale_loan_links": [
+    {
+      "new_loan_id": "SYNTHETIC-project-new-loan",
+      "refinance_node": "SYNTHETIC-project-refinance",
+      "sale_loan_inventory_matches_refinance_origin_principal": true
+    }
+  ],
+  "totals": {
+    "capex": {
+      "denominator": "1",
+      "numerator": "40"
+    },
+    "closing_costs": {
+      "denominator": "1",
+      "numerator": "40"
+    },
+    "debt_fees": {
+      "denominator": "1",
+      "numerator": "15"
+    },
+    "debt_interest": {
+      "denominator": "10000",
+      "numerator": "60803"
+    },
+    "debt_other": {
+      "denominator": "1",
+      "numerator": "0"
+    },
+    "debt_principal": {
+      "denominator": "100",
+      "numerator": "42301"
+    },
+    "equity_contributions": {
+      "denominator": "1",
+      "numerator": "0"
+    },
+    "equity_distributions": {
+      "denominator": "10000",
+      "numerator": "12989197"
+    },
+    "loan_draws": {
+      "denominator": "100",
+      "numerator": "30301"
+    },
+    "opening_free_cash": {
+      "denominator": "1",
+      "numerator": "1000"
+    },
+    "opening_restricted_cash": {
+      "denominator": "1",
+      "numerator": "0"
+    },
+    "operating_payments": {
+      "denominator": "1",
+      "numerator": "30"
+    },
+    "operating_receipts": {
+      "denominator": "1",
+      "numerator": "150"
+    },
+    "other_sources": {
+      "denominator": "1",
+      "numerator": "0"
+    },
+    "other_uses": {
+      "denominator": "1",
+      "numerator": "0"
+    },
+    "reserve_deposits": {
+      "denominator": "1",
+      "numerator": "300"
+    },
+    "reserve_releases": {
+      "denominator": "1",
+      "numerator": "300"
+    },
+    "sale_proceeds": {
+      "denominator": "1",
+      "numerator": "400"
+    },
+    "terminal_free_cash": {
+      "denominator": "1",
+      "numerator": "0"
+    },
+    "terminal_restricted_cash": {
+      "denominator": "1",
+      "numerator": "0"
+    }
+  },
+  "cash_conservation_residual": {
+    "denominator": "1",
+    "numerator": "0"
+  },
+  "normalized_equity_events": [
+    {
+      "amount": {
+        "denominator": "1",
+        "numerator": "10"
+      },
+      "category": "initial_capital",
+      "currency": "USD",
+      "date": "2027-01-01",
+      "event_id": "initial",
+      "kind": "contribution",
+      "source_ref": "SYNTHETIC-opening-equity-contribution"
+    },
+    {
+      "amount": {
+        "denominator": "1",
+        "numerator": "1"
+      },
+      "category": "operating_distribution",
+      "currency": "USD",
+      "date": "2027-03-01",
+      "event_id": "op-before",
+      "kind": "distribution",
+      "source_ref": "miniuw:operating-cash:215435a88e425c62f4a34abfa7f30496bc4acf5aea806f964ed086cadd7d5b03#/exportable_operating_distribution"
+    },
+    {
+      "amount": {
+        "denominator": "10000",
+        "numerator": "35301"
+      },
+      "category": "net_refinance_distribution",
+      "currency": "USD",
+      "date": "2027-04-01",
+      "event_id": "refi",
+      "kind": "distribution",
+      "source_ref": "miniuw:closing-cash:fe46bb7a60ec0aea800993cfe3b0c2c266cb50625e31f9eaa30d7c18f26caf96#/exportable_equity_distribution"
+    },
+    {
+      "amount": {
+        "denominator": "1",
+        "numerator": "1"
+      },
+      "category": "operating_distribution",
+      "currency": "USD",
+      "date": "2027-06-01",
+      "event_id": "op-after",
+      "kind": "distribution",
+      "source_ref": "miniuw:operating-cash:ac9d9ecec516e7722d72f0f38694e6f5d38a280ac6e0b8869cbe26964937ddf0#/exportable_operating_distribution"
+    },
+    {
+      "amount": {
+        "denominator": "1000000",
+        "numerator": "7459097"
+      },
+      "category": "net_sale_distribution",
+      "currency": "USD",
+      "date": "2027-07-01",
+      "event_id": "sale",
+      "kind": "distribution",
+      "source_ref": "miniuw:closing-cash:867793bd76a6b6ba06abc995902594152ee1e46798493d046628b0600d9019c8#/exportable_equity_distribution"
+    }
+  ],
+  "normalized_total_contributions": {
+    "denominator": "1",
+    "numerator": "10"
+  },
+  "normalized_total_receipts": {
+    "denominator": "1000000",
+    "numerator": "12989197"
+  },
+  "normalized_cash_profit": {
+    "denominator": "1000000",
+    "numerator": "2989197"
+  },
+  "equity_multiple": {
+    "denominator": "10000000",
+    "numerator": "12989197"
+  },
+  "dated_net_flows": [
+    {
+      "date": "2027-01-01",
+      "net": {
+        "denominator": "1",
+        "numerator": "-1000"
+      }
+    },
+    {
+      "date": "2027-02-01",
+      "net": {
+        "denominator": "1",
+        "numerator": "0"
+      }
+    },
+    {
+      "date": "2027-03-01",
+      "net": {
+        "denominator": "1",
+        "numerator": "100"
+      }
+    },
+    {
+      "date": "2027-04-01",
+      "net": {
+        "denominator": "100",
+        "numerator": "35301"
+      }
+    },
+    {
+      "date": "2027-05-01",
+      "net": {
+        "denominator": "1",
+        "numerator": "0"
+      }
+    },
+    {
+      "date": "2027-06-01",
+      "net": {
+        "denominator": "1",
+        "numerator": "100"
+      }
+    },
+    {
+      "date": "2027-07-01",
+      "net": {
+        "denominator": "10000",
+        "numerator": "7459097"
+      }
+    }
+  ],
+  "annual_irr_roots": [
+    {
+      "annual_rate_interval": {
+        "lower": {
+          "denominator": "453196643265411572639327098694066107626316046069291365756346680453319330926397312834278682559097735247374782829256748631741553590499092191328454642912800917992481",
+          "numerator": "426137453757203325912792056450623750977071820189515859001844320483303436188570176255699824014883940704106248138859212765817126756545902436354575267460759100279775"
+        },
+        "lower_closed": true,
+        "upper": {
+          "denominator": "110642928717833313780192624001325861072875594650862907460247926175000292799197092380586866591204681004870964778946058430398641247149723471048347753118309307361",
+          "numerator": "104038247313078526686633341610170686437717146134978700146732298663042374953480517260521167240333814100471083797254127457677208446953058420475829471093985618975"
+        },
+        "upper_closed": false
+      },
+      "exact_annual_rate": null
+    }
+  ],
+  "selected_IRR": null,
+  "investor_story_blockers": [
+    "snapshot:2027-04-01:capital_still_invested_missing_or_negative",
+    "snapshot:2027-04-01:retained_equity_value_missing",
+    "snapshot:2027-04-01:snapshot_metadata_missing_or_mismatch"
+  ],
+  "cash_bundle_sha256": "c59c65b46418da90da22f6bd853fc1192f060b4d4184afbf18815620d32607f0",
+  "return_bundle_sha256": "fc0530b121e34dfa5e123b6c848b05ad7b7400c67d7080744161b0acef97c9bf",
+  "both_bundles_replayed_after_reopen": true,
+  "source_investor_ledger_preserved": true,
+  "complete_declared_cash_window_reconciled": true,
+  "runtime_database_retained": false,
+  "whole_project_cash_reconciled": false,
+  "whole_investor_story_complete": false,
+  "opening_asset_and_construction_funding_history_verified": false,
+  "bank_payment_history_verified": false,
+  "intraperiod_liquidity_verified": false,
+  "distribution_authorized": false,
+  "decision": "PENDING",
+  "production_authorized": false
+}

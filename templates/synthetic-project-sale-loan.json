@@ -1,0 +1,39 @@
+{
+  "schema": "miniuw.synthetic-loan-terms.v1",
+  "loan_id": "SYNTHETIC-project-new-loan",
+  "regular_intervals_assumed": true,
+  "context": {
+    "deal_id": "SYNTHETIC-integrated-cash-demo",
+    "scenario_id": "SYNTHETIC-Base",
+    "run_id": "SYNTHETIC-integrated-cash-run",
+    "definition_set_revision": "SYNTHETIC-cash-window-assumptions-v1"
+  },
+  "principal": {
+    "numerator": "30301",
+    "denominator": "100"
+  },
+  "currency": "USD",
+  "periodic_rate": {
+    "numerator": "1",
+    "denominator": "100"
+  },
+  "amortization_payments": 3,
+  "maturity_payment": 3,
+  "payments_per_year": 12,
+  "rate_interval_ref": "SYNTHETIC-payment-interval",
+  "annual_equivalent_ref": "SYNTHETIC-annual-equivalent-1",
+  "rate_basis": "effective_per_payment_interval",
+  "payment_timing": "arrears",
+  "fixed_rate": true,
+  "new_draws": false,
+  "capitalized_fees": false,
+  "interest_only": false,
+  "rounding": "none_exact",
+  "balloon_treatment": "due_after_last_scheduled_payment",
+  "origination_date": "2027-04-01",
+  "payment_dates": [
+    "2027-05-01",
+    "2027-06-01",
+    "2027-07-01"
+  ]
+}

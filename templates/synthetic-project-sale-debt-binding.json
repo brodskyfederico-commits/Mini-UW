@@ -1,0 +1,26 @@
+{
+  "schema": "miniuw.synthetic-debt-closing.v1",
+  "profile": "SYNTHETIC-EXACT-SCHEDULED-CUTOFF-FULL-PAYOFF-v1",
+  "context": {
+    "deal_id": "SYNTHETIC-integrated-cash-demo",
+    "scenario_id": "SYNTHETIC-Base",
+    "run_id": "SYNTHETIC-integrated-cash-run",
+    "definition_set_revision": "SYNTHETIC-cash-window-assumptions-v1"
+  },
+  "currency": "USD",
+  "closing_source_sha256": "6cf216faef578d7078b2650d99fe0644611951be817d6785a719675214bd8512",
+  "closing_run_sha256": "867793bd76a6b6ba06abc995902594152ee1e46798493d046628b0600d9019c8",
+  "loans": [
+    {
+      "loan_id": "SYNTHETIC-project-new-loan",
+      "loan_source_sha256": "40b77f5a21511c0810abe6cbeec066875b8eb0d61a77b211d134b4b2547a16af",
+      "loan_run_sha256": "17a0703fb36bd04c224d9f127f0d73ab4e1ee923c49c0f725cadb76b5b10138b",
+      "payment_cutoff": "before_regular_payment",
+      "prior_regular_service_assumed_paid": true,
+      "unmodeled_debt_changes_declared_absent": true,
+      "payment_assumption_basis_ref": "SYNTHETIC-prior-regular-service-paid-assumption-not-proof",
+      "cutoff_basis_ref": "SYNTHETIC-closing-before-the-dated-regular-payment",
+      "fees_and_other_scope_basis_ref": "SYNTHETIC-fees-and-other-from-explicit-closing-inventory"
+    }
+  ]
+}

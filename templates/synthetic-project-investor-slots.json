@@ -1,0 +1,118 @@
+{
+  "schema": "miniuw.synthetic-investor-returns.v1",
+  "context": {
+    "deal_id": "SYNTHETIC-integrated-cash-demo",
+    "scenario_id": "SYNTHETIC-Base",
+    "run_id": "SYNTHETIC-integrated-cash-run",
+    "definition_set_revision": "SYNTHETIC-cash-window-assumptions-v1"
+  },
+  "currency": "USD",
+  "equity_level": "aggregate_project_equity",
+  "event_inventory_declared_complete": true,
+  "grid": {
+    "spacing": "calendar_months_same_day",
+    "step_months": 1,
+    "dates": [
+      "2027-01-01",
+      "2027-02-01",
+      "2027-03-01",
+      "2027-04-01",
+      "2027-05-01",
+      "2027-06-01",
+      "2027-07-01"
+    ],
+    "timing_basis_ref": "SYNTHETIC-explicit-monthly-cash-points"
+  },
+  "events": [
+    {
+      "event_id": "initial",
+      "date": "2027-01-01",
+      "kind": "contribution",
+      "category": "initial_capital",
+      "amount": {
+        "numerator": "1000",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "source_ref": "SYNTHETIC-opening-equity-contribution"
+    },
+    {
+      "event_id": "op-before",
+      "date": "2027-03-01",
+      "kind": "distribution",
+      "category": "operating_distribution",
+      "amount": null,
+      "currency": "USD",
+      "source_ref": null
+    },
+    {
+      "event_id": "refi",
+      "date": "2027-04-01",
+      "kind": "distribution",
+      "category": "net_refinance_distribution",
+      "amount": null,
+      "currency": "USD",
+      "source_ref": null
+    },
+    {
+      "event_id": "op-after",
+      "date": "2027-06-01",
+      "kind": "distribution",
+      "category": "operating_distribution",
+      "amount": null,
+      "currency": "USD",
+      "source_ref": null
+    },
+    {
+      "event_id": "sale",
+      "date": "2027-07-01",
+      "kind": "distribution",
+      "category": "net_sale_distribution",
+      "amount": null,
+      "currency": "USD",
+      "source_ref": null
+    }
+  ],
+  "normalization": {
+    "reference_amount": {
+      "numerator": "10",
+      "denominator": "1"
+    },
+    "contribution_event_ids": [
+      "initial"
+    ],
+    "basis_ref": "SYNTHETIC-initial-contribution-only"
+  },
+  "capital_snapshots": [
+    {
+      "as_of_date": "2027-04-01",
+      "capital_still_invested": null,
+      "retained_equity_value": null,
+      "currency": "USD",
+      "basis_ref": null,
+      "source_ref": null
+    }
+  ],
+  "annual_cash_bases": [
+    {
+      "year": 2027,
+      "capital_base": {
+        "numerator": "1000",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "basis_ref": "SYNTHETIC-declared-initial-capital-base-for-calendar-cash-only",
+      "source_ref": "SYNTHETIC-partial-year-scope-not-full-year-yield"
+    }
+  ],
+  "irr_parameters": {
+    "rate_domain": "r_gt_minus_one_positive_discount_factor",
+    "max_periodic_rate_interval_width": {
+      "numerator": "1",
+      "denominator": "1000000"
+    },
+    "split_budget": 256,
+    "operation_budget": 200000,
+    "periods_per_year": 12
+  }
+}

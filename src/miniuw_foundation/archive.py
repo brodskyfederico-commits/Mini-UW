@@ -76,6 +76,13 @@ from .debt_closing_returns import DebtClosingReturnRun,DebtClosingReturnBinding,
 from .debt_closing_returns import ENGINE_SHA256 as DEBT_CLOSING_RETURN_ENGINE_SHA256
 from .debt_closing_returns import binding_from_record as debt_closing_return_binding_from_record
 
+from .project_cash import CheckedClosingEvidence,ProjectCashRun,parse_project_cash,reconcile_project_cash
+from .project_cash import ENGINE_SHA256 as PROJECT_CASH_ENGINE_SHA256
+from .project_cash import definition_sources as project_definition_sources
+from .project_returns import ProjectReturnRun,ProjectReturnBinding,assemble_project_returns
+from .project_returns import ENGINE_SHA256 as PROJECT_RETURN_ENGINE_SHA256
+from .project_returns import binding_from_record as project_return_binding_from_record
+
 
 class MissingEvidence(KeyError):
     pass
@@ -262,6 +269,32 @@ def _debt_closing_versions():return [DEBT_CLOSING_ENGINE_SHA256]+_closing_versio
 def _debt_closing_definitions():return {'debt':debt_definition_sources(),'closing':closing_definition_sources(),'comparison':debt_closing_definition_sources()}
 def _debt_checked_versions():return [DEBT_CLOSING_RETURN_ENGINE_SHA256,CLOSING_RETURN_ENGINE_SHA256]+_debt_closing_versions()+[ROOT_ENGINE_SHA256]
 def _debt_checked_definitions():return dict(_debt_closing_definitions(),investor=investor_definition_sources())
+
+
+@dataclass(frozen=True)
+class ProjectCashBundle:
+    payload_json:str
+    sha256:str
+    @property
+    def payload(self):return json.loads(self.payload_json)
+    @property
+    def run(self):return ProjectCashRun(**self.payload['run'])
+
+
+@dataclass(frozen=True)
+class ProjectReturnBundle:
+    payload_json:str
+    sha256:str
+    @property
+    def payload(self):return json.loads(self.payload_json)
+    @property
+    def run(self):return ProjectReturnRun(**self.payload['run'])
+
+
+def _project_versions():return [PROJECT_CASH_ENGINE_SHA256,CASH_ENGINE_SHA256,HOLDING_CASH_ENGINE_SHA256]+_debt_closing_versions()
+def _project_definitions():return dict(_debt_closing_definitions(),operating=cash_definition_sources(),noi=operating_noi_definition_sources(),project=project_definition_sources())
+def _project_return_versions():return [PROJECT_RETURN_ENGINE_SHA256]+_project_versions()+[ROOT_ENGINE_SHA256]
+def _project_return_definitions():return dict(_project_definitions(),investor=investor_definition_sources())
 
 
 def _sha(raw):
@@ -790,6 +823,71 @@ COMMIT;''')
                 raise CorruptArchive('invalid screening evidence') from error
         return bundle
 
+
+    def get_project_cash_manifest(self, sha):
+        raw=self._read('source',sha);parse_project_cash(raw);return raw
+
+    def _capture_project_closings(self, closings):
+        return [{'closing_id':c.closing_id,'closing_source_sha256':self._put('source',c.closing_raw),'debt_spec_source_sha256':self._put('source',c.debt_spec_raw),
+            'loans':self._capture_dated_loans(c.loans),'closing_run':asdict(c.closing_run),'debt_run':asdict(c.debt_run)}for c in closings]
+
+    def _restore_project_closings(self, records):
+        if type(records)is not list or len(records)>64:raise CorruptArchive('invalid project closing inventory')
+        result=[]
+        for row in records:
+            if type(row)is not dict or set(row)!={'closing_id','closing_source_sha256','debt_spec_source_sha256','loans','closing_run','debt_run'}:raise CorruptArchive('project closing fields changed')
+            result.append(CheckedClosingEvidence(closing_id=row['closing_id'],closing_raw=self.get_closing_cash_source(row['closing_source_sha256']),closing_run=ClosingCashRun(**row['closing_run']),loans=self._restore_dated_loans(row['loans']),debt_spec_raw=self.get_debt_closing_spec(row['debt_spec_source_sha256']),debt_run=DebtClosingRun(**row['debt_run'])))
+        return tuple(result)
+
+    def save_project_cash(self, periods, closings, manifest_raw, run):
+        if type(run)is not ProjectCashRun or reconcile_project_cash(periods,closings,manifest_raw)!=run:raise ValidationError('integrated cash window does not reproduce')
+        with self._transaction():
+            manifest=self._put('source',manifest_raw);ops=self._capture_holding_periods(periods);closes=self._capture_project_closings(closings)
+            p={'schema':'miniuw.synthetic-project-cash-bundle.v1','purpose':'synthetic_development_only','manifest_source_sha256':manifest,
+                'periods':ops,'closings':closes,'run':asdict(run),'versions':_project_versions(),'definitions':_project_definitions()}
+            return self._put('bundle',canonical(p).encode())
+
+    def load_project_cash(self, sha):
+        with self._transaction():
+            raw=self.read_bundle_bytes(sha)
+            try:
+                p=json.loads(raw)
+                if set(p)!={'schema','purpose','manifest_source_sha256','periods','closings','run','versions','definitions'}:raise CorruptArchive('project cash fields changed')
+                if p['schema']!='miniuw.synthetic-project-cash-bundle.v1':raise UnsupportedArchive('unsupported project cash schema')
+                if p['purpose']!='synthetic_development_only':raise CorruptArchive('project cash purpose changed')
+                if p['versions']!=_project_versions()or p['definitions']!=_project_definitions():raise UnsupportedArchive('project replay requires compatible code/documents')
+                bundle=ProjectCashBundle(raw.decode(),sha)
+                if reconcile_project_cash(self._restore_holding_periods(p['periods']),self._restore_project_closings(p['closings']),self.get_project_cash_manifest(p['manifest_source_sha256']))!=bundle.run:raise CorruptArchive('project cash evidence does not reproduce')
+            except MissingEvidence:raise
+            except(KeyError,TypeError,UnicodeError,json.JSONDecodeError,ValidationError)as error:raise CorruptArchive('invalid project cash evidence')from error
+        return bundle
+
+    def save_project_returns(self, periods, closings, manifest_raw, project_run, investor_raw, binding, run):
+        if type(run)is not ProjectReturnRun or assemble_project_returns(periods,closings,manifest_raw,project_run,investor_raw,binding)!=run:raise ValidationError('integrated cash return does not reproduce')
+        with self._transaction():
+            manifest=self._put('source',manifest_raw);ops=self._capture_holding_periods(periods);closes=self._capture_project_closings(closings);investor=self._put('source',investor_raw)
+            compiled=None if run.compiled_raw is None else self._put('source',run.compiled_raw)
+            p={'schema':'miniuw.synthetic-project-return-bundle.v1','purpose':'synthetic_development_only','manifest_source_sha256':manifest,
+                'periods':ops,'closings':closes,'project_run':asdict(project_run),'investor_source_sha256':investor,'compiled_source_sha256':compiled,
+                'binding':asdict(binding),'run':asdict(run),'versions':_project_return_versions(),'definitions':_project_return_definitions()}
+            return self._put('bundle',canonical(p).encode())
+
+    def load_project_returns(self, sha):
+        with self._transaction():
+            raw=self.read_bundle_bytes(sha)
+            try:
+                p=json.loads(raw)
+                if set(p)!={'schema','purpose','manifest_source_sha256','periods','closings','project_run','investor_source_sha256','compiled_source_sha256','binding','run','versions','definitions'}:raise CorruptArchive('project return fields changed')
+                if p['schema']!='miniuw.synthetic-project-return-bundle.v1':raise UnsupportedArchive('unsupported project return schema')
+                if p['purpose']!='synthetic_development_only':raise CorruptArchive('project return purpose changed')
+                if p['versions']!=_project_return_versions()or p['definitions']!=_project_return_definitions():raise UnsupportedArchive('project return replay requires compatible code/documents')
+                bundle=ProjectReturnBundle(raw.decode(),sha)
+                if assemble_project_returns(self._restore_holding_periods(p['periods']),self._restore_project_closings(p['closings']),self.get_project_cash_manifest(p['manifest_source_sha256']),ProjectCashRun(**p['project_run']),self.get_investor_returns_source(p['investor_source_sha256']),project_return_binding_from_record(p['binding']))!=bundle.run:raise CorruptArchive('project return evidence does not reproduce')
+                compiled=None if p['compiled_source_sha256']is None else self._read('source',p['compiled_source_sha256'])
+                if compiled!=bundle.run.compiled_raw:raise CorruptArchive('compiled project investor source changed')
+            except MissingEvidence:raise
+            except(KeyError,TypeError,UnicodeError,json.JSONDecodeError,ValidationError)as error:raise CorruptArchive('invalid project return evidence')from error
+        return bundle
 
     def get_debt_closing_spec(self, sha):
         raw=self._read('source',sha);parse_debt_closing(raw);return raw

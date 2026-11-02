@@ -1,0 +1,120 @@
+{
+  "scope": "Incremental synthetic operating/refinance/sale cash linkage coverage; original 398-row matrix and financial evidence gates preserved",
+  "rows": [
+    {
+      "requirement_or_variable": "operation_closing_cash_continuity",
+      "source": {
+        "path": "docs/operating-settlement-bridges.md",
+        "line": 21,
+        "sha256": "defb05e619f39a1f413491bf5ff20b6cf8e0119d6de4941870988eaacab27bd4"
+      },
+      "current_definition": "Every closing/opening free and restricted cash pair matches at the same explicit boundary; sum only external flows and horizon endpoints",
+      "affected_modules": [
+        "M2",
+        "M6",
+        "M7",
+        "T33",
+        "T34"
+      ],
+      "validation_evidence": [
+        "ProjectCashTests.test_all_six_cash_boundaries_and_working_balances_match",
+        "ProjectCashTests.test_each_cash_boundary_rejects_individually_balanced_reset",
+        "ProjectCashTests.test_full_declared_window_conserves_external_cash_without_reserve_double_count"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Declared operating window only; historical construction/assets, actual funds and intraperiod liquidity unverified"
+    },
+    {
+      "requirement_or_variable": "working_balance_carry_and_terminal_treatment",
+      "source": {
+        "path": "docs/operating-settlement-bridges.md",
+        "line": 15,
+        "sha256": "defb05e619f39a1f413491bf5ff20b6cf8e0119d6de4941870988eaacab27bd4"
+      },
+      "current_definition": "Carry four working balances unchanged across refi; terminal nonzero balances need explicit treatment outside this reduced profile",
+      "affected_modules": [
+        "M2",
+        "M6",
+        "M7",
+        "T33",
+        "T34"
+      ],
+      "validation_evidence": [
+        "ProjectCashTests.test_working_balances_must_carry_across_refinance",
+        "ProjectCashTests.test_nonzero_receivable_can_carry_then_be_collected_before_sale",
+        "ProjectCashTests.test_terminal_working_balances_need_explicit_settlement_not_silent_zero"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "No automatic transfer/writeoff, buyer adjustment or scope completeness verification"
+    },
+    {
+      "requirement_or_variable": "regular_debt_service_not_paid_twice_at_payoff",
+      "source": {
+        "path": "docs/model-refinance-contract.md",
+        "line": 15,
+        "sha256": "9e51606a66a3d938e5c433eb77b625fb3638af0e7ab334dd53544a2cb7f9db46"
+      },
+      "current_definition": "Match operating regular principal/interest rows before exact closing cutoff; prohibit hidden same-date payment or balloon duplication",
+      "affected_modules": [
+        "M2",
+        "M6",
+        "M7",
+        "T33",
+        "T34"
+      ],
+      "validation_evidence": [
+        "ProjectCashTests.test_operating_debt_cash_matches_regular_rows_before_closing_cutoff",
+        "ProjectCashTests.test_double_charged_or_unmodeled_operating_debt_blocks_even_balanced_cash",
+        "ProjectCashTests.test_after_regular_payment_closing_is_not_allowed_to_hide_unbooked_cash"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "No actual payment history, nonzero operating fee profile, partial payment/stub/mora/adjustments"
+    },
+    {
+      "requirement_or_variable": "refinance_new_debt_carried_to_sale",
+      "source": {
+        "path": "docs/model-hold-exit-returns.md",
+        "line": 17,
+        "sha256": "053746a0b7c72da941b40e9ff1251704367c50317f4dfa5a8803ce9f6981eccc"
+      },
+      "current_definition": "Sale loan inventory, original principal and origination date must match the new refinance loan before its dated payoff",
+      "affected_modules": [
+        "M2",
+        "M6",
+        "M7",
+        "T33",
+        "T34"
+      ],
+      "validation_evidence": [
+        "ProjectCashTests.test_refinance_draw_and_sale_loan_must_match_principal_and_origin"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "No bank capacity/commitment, actual funding or refinancing strategy approval"
+    },
+    {
+      "requirement_or_variable": "complete_gross_investor_cash_ledger",
+      "source": {
+        "path": "AGENTS.md",
+        "line": 17,
+        "sha256": "7cccf8b6e9fa3f45685e2e04afc43c7a3bd0ac5dd15f6b5b4eee4ae397e6f0df"
+      },
+      "current_definition": "Count opening equity once and compile unique dated gross node contributions/distributions into cash profit/EM/IRR; keep retained cash distinct from missing capital/equity",
+      "affected_modules": [
+        "M2",
+        "M6",
+        "M7",
+        "T33",
+        "T34"
+      ],
+      "validation_evidence": [
+        "ProjectReturnTests.test_entire_window_compiles_once_into_investor_cash_profit_multiple_and_timing",
+        "ProjectReturnTests.test_seed_is_counted_once_and_must_match_declared_opening_cash",
+        "ProjectReturnTests.test_refinance_cash_in_needs_separate_gross_event_and_never_fake_funding",
+        "ProjectReturnTests.test_missing_capital_or_retained_value_not_reconstructed_from_cash",
+        "ProjectReturnTests.test_irr_bounds_certify_full_monthly_vector_and_conditional_annualization"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Not complete economic/historical underwriting, capital/equity policy, authentic review, full financial acceptance or final PDF"
+    }
+  ]
+}

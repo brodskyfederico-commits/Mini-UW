@@ -1,0 +1,78 @@
+{
+  "schema": "miniuw.synthetic-operating-noi.v1",
+  "profile_id": "SYNTHETIC-M2-MAX-TAX-v1",
+  "context": {
+    "deal_id": "SYNTHETIC-integrated-cash-demo",
+    "scenario_id": "SYNTHETIC-Base",
+    "run_id": "SYNTHETIC-integrated-cash-run",
+    "definition_set_revision": "SYNTHETIC-cash-window-assumptions-v1"
+  },
+  "currency": "USD",
+  "period_ref": "SYNTHETIC-pre-refi",
+  "income_rows": [
+    {
+      "value": {
+        "numerator": "60",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "period_ref": "SYNTHETIC-pre-refi",
+      "unit": "currency_per_declared_period",
+      "basis": "accrual",
+      "source_ref": "SYNTHETIC-explicit-period-total:pre-refi",
+      "item_id": "SYNTHETIC-income-residential"
+    },
+    {
+      "value": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "period_ref": "SYNTHETIC-pre-refi",
+      "unit": "currency_per_declared_period",
+      "basis": "accrual",
+      "source_ref": "SYNTHETIC-explicit-period-total:pre-refi",
+      "item_id": "SYNTHETIC-income-commercial"
+    }
+  ],
+  "expense_rows": [
+    {
+      "value": {
+        "numerator": "10",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "period_ref": "SYNTHETIC-pre-refi",
+      "unit": "currency_per_declared_period",
+      "basis": "accrual",
+      "source_ref": "SYNTHETIC-explicit-period-total:pre-refi",
+      "item_id": "SYNTHETIC-expenses-excluding-tax"
+    }
+  ],
+  "tax_floor": {
+    "value": {
+      "numerator": "0",
+      "denominator": "1"
+    },
+    "currency": "USD",
+    "period_ref": "SYNTHETIC-pre-refi",
+    "unit": "currency_per_declared_period",
+    "basis": "accrual",
+    "source_ref": "SYNTHETIC-explicit-period-total:pre-refi"
+  },
+  "tax_coefficient": {
+    "value": {
+      "numerator": "0",
+      "denominator": "1"
+    },
+    "unit": "scalar",
+    "source_ref": "SYNTHETIC-evidence:fixed-k-not-legal-rule"
+  },
+  "modelling_assumptions": {
+    "same_period_accrual": true,
+    "tax_model": "max_floor_or_fixed_coefficient_times_noi",
+    "coefficient_fixed": true,
+    "additional_tax_adjustments": false,
+    "rounding": "none_exact"
+  }
+}

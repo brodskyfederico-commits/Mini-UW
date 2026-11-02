@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D03 review and metric-intake design extensions and T01–T32 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D03 review and metric-intake design extensions and T01–T34 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 15928,
-      "sha256": "e45bac4563983425faba3b2c91ee389405d9ff981964c477810d94d12447fe33"
+      "bytes": 16615,
+      "sha256": "7e3e253e165fc1ace19560ceda8aab22f251fe76aed3a3ac4ef879884be10948"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 67719,
-      "sha256": "0f6464df6490fbbb70a547b77a2ad6b9da134c8f9a86ea1a58bdc475a7ff19a3"
+      "bytes": 69899,
+      "sha256": "7adc33d4d14c8ac02feb85a2f9c85f2ca4957c4bf2d840ac36a50e7c59fc60d7"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -422,6 +422,11 @@
       "sha256": "1f1184eac05ab0917bd333965e57936ad4c01a7ee82a5ab115782a81b81065ab"
     },
     {
+      "path": "docs/review/synthetic-integrated-project-cash-returns-demo.json",
+      "bytes": 32582,
+      "sha256": "39e4de454cc6375a5b4a1911a7047894e07b07a3900bdf199c9dd3189023da0c"
+    },
+    {
       "path": "docs/review/synthetic-investor-returns-demo.json",
       "bytes": 14875,
       "sha256": "f505acc730f52843dc1c059b3e59123ace4ce8b739746603169159f1ce6ce7c5"
@@ -510,6 +515,11 @@
       "path": "docs/technical-coverage-T31-T32.json",
       "bytes": 4969,
       "sha256": "e1bacac13588ada650836009317c3370d4af1c006160b9c6738c1f4cf15e96d0"
+    },
+    {
+      "path": "docs/technical-coverage-T33-T34.json",
+      "bytes": 5387,
+      "sha256": "b5b5d0f284d3c18eb7cf58faf9b7979debe336c4c037bc8cb3a1c0c310b68f59"
     },
     {
       "path": "docs/technical-implementation-T01.md",
@@ -647,9 +657,14 @@
       "sha256": "ebaea3a54296d1fa51240f36a8afbc169e8b2b905178736b19743b9924a8045f"
     },
     {
+      "path": "docs/technical-implementation-T33-T34.md",
+      "bytes": 8780,
+      "sha256": "a31834cc1b435a4324df45d6ff402107d45a944fab91b62542ad1c3e8badf395"
+    },
+    {
       "path": "docs/technical-implementation-status.json",
-      "bytes": 12046,
-      "sha256": "04f5a5e81de44fb079cf698ae5b98c9318bc9a7a685f095ca527881df4f899d7"
+      "bytes": 12691,
+      "sha256": "477c1cc1a8ffdb882f84c1224d8123c9042b11e36181bf466f998cf427461e4d"
     },
     {
       "path": "infra/README.md",
@@ -1323,8 +1338,8 @@
     },
     {
       "path": "src/miniuw_foundation/archive.py",
-      "bytes": 81105,
-      "sha256": "5cee6f19f881e76cf4ae343e230acf88f50cc7bfbe58939ecba033b45a4f9b0b"
+      "bytes": 88934,
+      "sha256": "5907812bcacc8c39e0fa95bba7d41a14da32807edd905535bffd7b316946f296"
     },
     {
       "path": "src/miniuw_foundation/calculations.py",
@@ -1435,6 +1450,16 @@
       "path": "src/miniuw_foundation/periodic_returns.py",
       "bytes": 7592,
       "sha256": "eac518ac1fe44b196ba047965a28aef1e60067c48f8b7876963bab857257e4e2"
+    },
+    {
+      "path": "src/miniuw_foundation/project_cash.py",
+      "bytes": 20273,
+      "sha256": "ed906e56cb9a59fb5b28a3693b44bc993bdd8bb1da80b2e361fd5b2399d243d2"
+    },
+    {
+      "path": "src/miniuw_foundation/project_returns.py",
+      "bytes": 9924,
+      "sha256": "761a34c27c3b7b79283283ac682520a317e2ac443d1d51fcc2d297e3e8518a65"
     },
     {
       "path": "src/miniuw_foundation/proposal_queue.py",
@@ -1687,6 +1712,66 @@
       "sha256": "83fd1e316f46a3f42a41e9a5d3b3e5b56688ce64fa1728ee2bdc59e75db583f8"
     },
     {
+      "path": "templates/synthetic-project-cash-manifest.json",
+      "bytes": 2635,
+      "sha256": "6d0a6c9525a446bb9955b1d2304e1a7708c24c5f9935d9926f383bf49dc63d3c"
+    },
+    {
+      "path": "templates/synthetic-project-investor-slots.json",
+      "bytes": 2939,
+      "sha256": "f949c83a444f641c07a990eaafc3380ccafc29690c02fe6683f1c89098b2f4b7"
+    },
+    {
+      "path": "templates/synthetic-project-post-refi-noi.json",
+      "bytes": 2164,
+      "sha256": "5b524be20c1df284f4429d5e1452a520f9a4bda61cd65eef5eebe66b97a452fb"
+    },
+    {
+      "path": "templates/synthetic-project-post-refi-operation.json",
+      "bytes": 7787,
+      "sha256": "bbe299a3eeca4b212a6eabf1f4258675870d6a61b0ed86ac7c5c9ee35686aa7e"
+    },
+    {
+      "path": "templates/synthetic-project-pre-refi-noi.json",
+      "bytes": 2155,
+      "sha256": "7e747429f231547fb23c813fe704da445857d96a37a6b04a96c536eca1b30f1e"
+    },
+    {
+      "path": "templates/synthetic-project-pre-refi-operation.json",
+      "bytes": 7744,
+      "sha256": "57e1b1545598140a2f00c91563d4c8f54933ec62789651fbb56f48aae5952b65"
+    },
+    {
+      "path": "templates/synthetic-project-refinance-closing.json",
+      "bytes": 6659,
+      "sha256": "9ea8bfcd1d335059bcb71cc0c75700b9befa9ef8f8e474fe6251a96b5a27c085"
+    },
+    {
+      "path": "templates/synthetic-project-refinance-debt-binding.json",
+      "bytes": 1244,
+      "sha256": "530f7021ef4e07b0433e04a27a8f5112f2dc45d7db17bf745a5057c7c583e38e"
+    },
+    {
+      "path": "templates/synthetic-project-refinance-loan.json",
+      "bytes": 1109,
+      "sha256": "baf3bdfe180377ac879522ca11e1b0b128fee4f4114e5c518c33d3f738f9cefd"
+    },
+    {
+      "path": "templates/synthetic-project-sale-closing.json",
+      "bytes": 6238,
+      "sha256": "6cf216faef578d7078b2650d99fe0644611951be817d6785a719675214bd8512"
+    },
+    {
+      "path": "templates/synthetic-project-sale-debt-binding.json",
+      "bytes": 1244,
+      "sha256": "58d3501808f7cfbcdff0862711d41890268dddbf62a5dca5fd0612d9b807d2be"
+    },
+    {
+      "path": "templates/synthetic-project-sale-loan.json",
+      "bytes": 1096,
+      "sha256": "40b77f5a21511c0810abe6cbeec066875b8eb0d61a77b211d134b4b2547a16af"
+    },
+    {
       "path": "templates/synthetic-refinance-closing.json",
       "bytes": 6655,
       "sha256": "9fadf9da5238deafd65be0508f5aceebf649bb11f0524d2717abdffb6ac8acb4"
@@ -1745,6 +1830,11 @@
       "path": "tests/loan_fixture.py",
       "bytes": 994,
       "sha256": "7e566a56a690f98fc65e952bbb8f9c01a9fb62e97bc9c24391b8028143eb6a29"
+    },
+    {
+      "path": "tests/project_test_support.py",
+      "bytes": 2967,
+      "sha256": "692dd62ff7a1402771b0a2d61312a42823e3cbee3fc861c3c4756437be037eaf"
     },
     {
       "path": "tests/test_archive.py",
@@ -1847,6 +1937,16 @@
       "sha256": "9cab563a872fc9ad4336785d6ff6745987ff8467b4740c7ebdb2dbc065a62e38"
     },
     {
+      "path": "tests/test_project_cash.py",
+      "bytes": 16267,
+      "sha256": "02d48c610e87b2a31c4cb42c85952f75f59849158bb01d51032593298b6637c0"
+    },
+    {
+      "path": "tests/test_project_returns.py",
+      "bytes": 13498,
+      "sha256": "bcc11ddcc31ebac913c1d42cc6526e322f517872816b55ca9e2d7a402de64ff9"
+    },
+    {
       "path": "tests/test_proposal_queue.py",
       "bytes": 10444,
       "sha256": "0dfb5476aec14c09914ac1ca4fd1598cd97dde2700fd61ea688ac304b1f0988d"
@@ -1945,6 +2045,11 @@
       "path": "tools/demo_holding_cash_returns.py",
       "bytes": 4408,
       "sha256": "341167c3380e3de194b5ad456d104ac42ca79df6289bdf912596f1e3551c9a19"
+    },
+    {
+      "path": "tools/demo_integrated_project_cash_returns.py",
+      "bytes": 5367,
+      "sha256": "8e009c77a2b43c465efcf61971ccc83b614d31b110c1e6aa6ce48bc8a3698f97"
     },
     {
       "path": "tools/demo_integrated_synthetic_review.py",
