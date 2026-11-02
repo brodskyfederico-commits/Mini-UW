@@ -1,0 +1,45 @@
+{
+  "schema": "miniuw.synthetic-claims.v1",
+  "claims": [
+    {
+      "claim_id": "SYNTHETIC-INPUT_C8",
+      "slot_kind": "input",
+      "slot_id": "INPUT_C8",
+      "literal": "1250.00",
+      "unit_literal": "USD/month",
+      "currency_literal": "USD",
+      "period_literal": "SYNTHETIC-period:month-1",
+      "definition_ref": "SYNTHETIC-decoder-example-v1"
+    },
+    {
+      "claim_id": "SYNTHETIC-INPUT_C14",
+      "slot_kind": "input",
+      "slot_id": "INPUT_C14",
+      "literal": "5%",
+      "unit_literal": "%",
+      "currency_literal": null,
+      "period_literal": null,
+      "definition_ref": "SYNTHETIC-decoder-example-v1"
+    },
+    {
+      "claim_id": "SYNTHETIC-INPUT_C52",
+      "slot_kind": "input",
+      "slot_id": "INPUT_C52",
+      "literal": "0,0525",
+      "unit_literal": "decimal",
+      "currency_literal": null,
+      "period_literal": null,
+      "definition_ref": "SYNTHETIC-decoder-example-v1"
+    },
+    {
+      "claim_id": "SYNTHETIC-INPUT_C9",
+      "slot_kind": "input",
+      "slot_id": "INPUT_C9",
+      "literal": "1000",
+      "unit_literal": "$",
+      "currency_literal": null,
+      "period_literal": null,
+      "definition_ref": "SYNTHETIC-decoder-example-v1"
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design plus T01/T02/T03/T04/T05/T06 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design plus T01/T02/T03/T04/T05/T06/T07 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 5532,
-      "sha256": "c852bcbcf21d3c3148c55983d08b43756147f603085451117c26694098bb4318"
+      "bytes": 5969,
+      "sha256": "5da6d6587562b17569ffc0594c129e9cfe8af0ec6287b4d31dcef2345d67be3e"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 32145,
-      "sha256": "1c253dbdf334ec322b8770cb58d0b4beb9b34ed27c84460a13331a3fcc1da451"
+      "bytes": 33875,
+      "sha256": "1cd5252030a818c742f6bf6034a8f26ea26f978e36d9e1acabe1c0355495f5af"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -392,9 +392,14 @@
       "sha256": "a90567229ac20e1a313bd582a9d1687b92fd7705a3ef46fa89af89c79774ae68"
     },
     {
+      "path": "docs/technical-implementation-T07.md",
+      "bytes": 7198,
+      "sha256": "4d0963df5b277153fcff069537fdc157845318159dd06433860e1f854234cec7"
+    },
+    {
       "path": "docs/technical-implementation-status.json",
-      "bytes": 3345,
-      "sha256": "c2ad9ac1b842697e7c3da255fc782a1aebc95186ba6f414e6d7bced037af71e4"
+      "bytes": 3758,
+      "sha256": "12d805f034379e70644393c2eb7326674375bcbb1ae554aa2a4ac56342e3fa1e"
     },
     {
       "path": "infra/README.md",
@@ -1068,8 +1073,8 @@
     },
     {
       "path": "src/miniuw_foundation/archive.py",
-      "bytes": 8481,
-      "sha256": "d975edf20ccd2576b843c32200192de1e14a5dd24cfec51ce665eacc1b166a58"
+      "bytes": 11459,
+      "sha256": "fc09238198043a84a982fdd19f45ed5f14a5f9df3a8516c8611baf49593d5e1e"
     },
     {
       "path": "src/miniuw_foundation/data/input-sheet-layout-v1.json",
@@ -1102,6 +1107,11 @@
       "sha256": "65c81e7916f28d2c8429b4bfce293cbc7046f232fa2c9dbdb895b6fed8885a5f"
     },
     {
+      "path": "src/miniuw_foundation/normalization.py",
+      "bytes": 7683,
+      "sha256": "582f318182971e79cd48fbcd43a00c3e4ecc8505450eab87762782ed8af70c0a"
+    },
+    {
       "path": "src/miniuw_foundation/sheets.py",
       "bytes": 2146,
       "sha256": "b3ef61d0bbef33652572c0caf3095931c3c157154c21780b962058f458f367af"
@@ -1130,6 +1140,16 @@
       "path": "templates/synthetic-native-inputs-example.xlsx",
       "bytes": 8680,
       "sha256": "9213f5c8f9b7b656f0a3332ea90cb6734e1b112eb45a787617f4b0e7531b2aa0"
+    },
+    {
+      "path": "templates/synthetic-normalization-profiles.json",
+      "bytes": 1762,
+      "sha256": "ebed45d7a3e814b81f75508c397478e8cafe2f57396e6e887bc4731a2fe6c394"
+    },
+    {
+      "path": "templates/synthetic-normalization-source.json",
+      "bytes": 1223,
+      "sha256": "194ab0271c125f2e033dddd5a544d6f3b0276756e039be7c3b13545929350b7d"
     },
     {
       "path": "templates/synthetic-sheet-example.csv",
@@ -1172,6 +1192,11 @@
       "sha256": "fe18fefdc9a9002f67fd4bb9b0eab7ef9883fd92bcf5098bc34209256b65dabe"
     },
     {
+      "path": "tests/test_normalization.py",
+      "bytes": 15481,
+      "sha256": "1131920b5d665b32d269fd28f664279d4050dd33ed5d1ec71312f1d3d40d9acb"
+    },
+    {
       "path": "tests/test_sheets.py",
       "bytes": 10876,
       "sha256": "272634c6f8e9cbe2e32b98684b2ca101cdc0e60a53c2a6983fb43ef3eb18a3ae"
@@ -1210,6 +1235,11 @@
       "path": "tools/demo_synthetic_input_sheet.py",
       "bytes": 2397,
       "sha256": "a25606d618c18f31671b63f6f1917777ecee7e9e25e9a4fa152fd3db914eeebb"
+    },
+    {
+      "path": "tools/demo_synthetic_normalization.py",
+      "bytes": 1834,
+      "sha256": "dca23d87027854ed05ba210fe845d2187654678009c56131af0768bb299f02a4"
     },
     {
       "path": "tools/demo_synthetic_sheet.py",

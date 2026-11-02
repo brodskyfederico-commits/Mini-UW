@@ -1,0 +1,58 @@
+[
+  {
+    "profile_id": "SYNTHETIC-INPUT_C8",
+    "definition_revision": "synthetic-decoder-v1",
+    "slot_id": "INPUT_C8",
+    "source_definition_ref": "SYNTHETIC-decoder-example-v1",
+    "decimal_mark": ".",
+    "notation": "decimal",
+    "trim_outer_whitespace": false,
+    "source_unit_literal": "USD/month",
+    "target_unit": "USD/month",
+    "quantity_kind": "money_per_period",
+    "currency_literal": "USD",
+    "period_literal": "SYNTHETIC-period:month-1"
+  },
+  {
+    "profile_id": "SYNTHETIC-INPUT_C14",
+    "definition_revision": "synthetic-decoder-v1",
+    "slot_id": "INPUT_C14",
+    "source_definition_ref": "SYNTHETIC-decoder-example-v1",
+    "decimal_mark": ".",
+    "notation": "percent_suffix",
+    "trim_outer_whitespace": false,
+    "source_unit_literal": "%",
+    "target_unit": "fraction",
+    "quantity_kind": "scalar",
+    "currency_literal": null,
+    "period_literal": null
+  },
+  {
+    "profile_id": "SYNTHETIC-INPUT_C52",
+    "definition_revision": "synthetic-decoder-v1",
+    "slot_id": "INPUT_C52",
+    "source_definition_ref": "SYNTHETIC-decoder-example-v1",
+    "decimal_mark": ",",
+    "notation": "decimal",
+    "trim_outer_whitespace": false,
+    "source_unit_literal": "decimal",
+    "target_unit": "decimal",
+    "quantity_kind": "scalar",
+    "currency_literal": null,
+    "period_literal": null
+  },
+  {
+    "profile_id": "SYNTHETIC-INPUT_C9",
+    "definition_revision": "synthetic-decoder-v1",
+    "slot_id": "INPUT_C9",
+    "source_definition_ref": "SYNTHETIC-decoder-example-v1",
+    "decimal_mark": ".",
+    "notation": "decimal",
+    "trim_outer_whitespace": false,
+    "source_unit_literal": "$",
+    "target_unit": "$",
+    "quantity_kind": "money",
+    "currency_literal": "USD",
+    "period_literal": null
+  }
+]

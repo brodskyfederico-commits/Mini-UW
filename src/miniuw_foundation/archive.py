@@ -13,6 +13,8 @@ from .drafts import Snapshot, ValidationError, canonical
 from .execution import (ENGINE_SHA256, Execution, Graph, Node, SlotRef,
     _snapshot_payload, execute_synthetic)
 from .sources import parse_source_claims, import_synthetic_source
+from .normalization import NumericProfile, NormalizationRun, normalize_synthetic
+from .normalization import ENGINE_SHA256 as NORMALIZER_SHA256
 
 
 class MissingEvidence(KeyError):
@@ -61,6 +63,28 @@ class EvidenceBundle:
     @property
     def graph(self):
         return _graph(self.payload['graph']['nodes'])
+
+
+@dataclass(frozen=True)
+class NormalizationBundle:
+    payload_json: str
+    sha256: str
+
+    @property
+    def payload(self):
+        return json.loads(self.payload_json)
+
+    @property
+    def snapshot(self):
+        return Snapshot(**self.payload['snapshot'])
+
+    @property
+    def run(self):
+        return NormalizationRun(**self.payload['run'])
+
+    @property
+    def profiles(self):
+        return tuple(NumericProfile(**p) for p in self.payload['profiles'])
 
 
 class EvidenceArchive:
@@ -197,6 +221,43 @@ COMMIT;''')
                 raise
             except (KeyError, TypeError, UnicodeError, json.JSONDecodeError, ValidationError) as error:
                 raise CorruptArchive('invalid archived evidence structure or content') from error
+        return bundle
+
+
+    def save_normalization(self, snapshot, profiles, run):
+        if type(run) is not NormalizationRun or normalize_synthetic(snapshot,profiles) != run:
+            raise ValidationError('numeric run does not reproduce from exact source/profiles')
+        with self._transaction():
+            hashes = self._verify_sources(snapshot)
+            payload = {'schema':'miniuw.synthetic-normalization-bundle.v1',
+                'purpose':'synthetic_development_only','snapshot':asdict(snapshot),
+                'profiles':[asdict(p) for p in sorted(profiles,key=lambda p:p.slot_id)],
+                'run':asdict(run),'normalizer_sha256':NORMALIZER_SHA256,
+                'source_hashes':hashes}
+            return self._put('bundle',canonical(payload).encode('utf-8'))
+
+    def load_normalization(self, sha):
+        with self._transaction():
+            raw = self.read_bundle_bytes(sha)
+            try:
+                payload = json.loads(raw)
+                if set(payload) != {'schema','purpose','snapshot','profiles','run','normalizer_sha256','source_hashes'}:
+                    raise CorruptArchive('normalization bundle fields changed')
+                if payload['schema'] != 'miniuw.synthetic-normalization-bundle.v1':
+                    raise UnsupportedArchive('unsupported normalization evidence schema')
+                if payload['purpose'] != 'synthetic_development_only':
+                    raise CorruptArchive('normalization development purpose changed')
+                if payload['normalizer_sha256'] != NORMALIZER_SHA256:
+                    raise UnsupportedArchive('replay requires the archived numeric decoder version')
+                bundle = NormalizationBundle(raw.decode('utf-8'),sha)
+                if self._verify_sources(bundle.snapshot) != payload['source_hashes']:
+                    raise CorruptArchive('normalization source inventory changed')
+                if normalize_synthetic(bundle.snapshot,bundle.profiles) != bundle.run:
+                    raise CorruptArchive('numeric result does not reproduce from archived evidence')
+            except MissingEvidence:
+                raise
+            except (KeyError, TypeError, UnicodeError, json.JSONDecodeError, ValidationError) as error:
+                raise CorruptArchive('invalid normalization evidence structure/content') from error
         return bundle
 
 
