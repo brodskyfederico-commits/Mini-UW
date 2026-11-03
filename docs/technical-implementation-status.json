@@ -1,7 +1,7 @@
 {
   "phase": "post-I01 synthetic technical implementation",
   "user_authorized": true,
-  "component": "T54",
+  "component": "T55",
   "status": "local_implementation_verified_pending_remote_receipt",
   "implemented": [
     "fresh raw-claim drafts from unchanged 55-input/10-criterion template",
@@ -91,9 +91,10 @@
     "exact conditional piecewise price/exit-cap cash recovery domains for explicit per-item monetary cost clamps, retaining disconnected/flat/point/empty sets and continuity evidence",
     "explicit-time full-source current piecewise recovery gate including independent domain/assumption/segment-budget source binding",
     "exact comparison of separately supplied full bounded-sale replay against fixed-assumption recovery curve, preserving altered-profile and finance blockers",
-    "same-time joint gate on replayed full-case match, 23 reference-domain bindings and 22 candidate bindings, preserving historical math and individual blockers"
+    "same-time joint gate on replayed full-case match, 23 reference-domain bindings and 22 candidate bindings, preserving historical math and individual blockers",
+    "complete ordered source-bound review case inventory with common reference/evidence/time guards, preserving pending rows without averaging or best-case selection"
   ],
-  "unit_tests": 962,
+  "unit_tests": 970,
   "plan_packages_partially_addressed": [
     "IMP-01",
     "IMP-06",
@@ -169,7 +170,8 @@
     "T51",
     "T52",
     "T53",
-    "T54"
+    "T54",
+    "T55"
   ],
   "tests_by_component": {
     "T01": 31,
@@ -225,7 +227,8 @@
     "T51": 20,
     "T52": 11,
     "T53": 12,
-    "T54": 10
+    "T54": 10,
+    "T55": 8
   },
   "not_yet_implemented": [
     "complete financial graph and its designed cycles",
@@ -337,5 +340,6 @@
   "piecewise_bounded_cost_recovery_domain_implemented": true,
   "opt_in_current_piecewise_recovery_gate_implemented": true,
   "supplied_full_case_recovery_curve_check_implemented": true,
-  "opt_in_joint_current_reference_candidate_check_implemented": true
+  "opt_in_joint_current_reference_candidate_check_implemented": true,
+  "declared_current_case_review_inventory_implemented": true
 }

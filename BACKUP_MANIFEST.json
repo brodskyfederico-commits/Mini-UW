@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D03 review and metric-intake design extensions and T01–T54 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D03 review and metric-intake design extensions and T01–T55 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 23419,
-      "sha256": "8caebef518bdfbc411c98e4a2fe2f7007e0a76a2bc46cc46ed9255c97af45648"
+      "bytes": 23876,
+      "sha256": "601a240f90f609f5305597bcfc2ef59f0b65689d0e124caa3b4fd0edd42b3de5"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 94769,
-      "sha256": "5e716cefa7ede9fe96668ceba53a78a144763a5fe59d4d6f9d80a227a11fb6c9"
+      "bytes": 96675,
+      "sha256": "c4ed5c2b97697b6489ac07f81832f63cf66a03f19c7977fb857d5c0f913ca7be"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -517,6 +517,11 @@
       "sha256": "2fc8ea44e7a6373e180864623dc8d7451975f604d1056d2e5d259fb2c1f50fee"
     },
     {
+      "path": "docs/review/synthetic-recovery-case-inventory-demo.json",
+      "bytes": 7021,
+      "sha256": "0cb6bdd8d122e857a18d900addc4700d0ef11817edbfd3bcdceb84d8921cf856"
+    },
+    {
       "path": "docs/review/synthetic-refinance-capacity-demo.json",
       "bytes": 13068,
       "sha256": "57be6b33c3ac3003830da8451e3fc61caf8a95a4a29ca7a67cd01efe4416183d"
@@ -665,6 +670,11 @@
       "path": "docs/technical-coverage-T54.json",
       "bytes": 4208,
       "sha256": "577a5050ad9a1b0e50aa2dcf709110c722225a3d462ac0167a70509437ba7074"
+    },
+    {
+      "path": "docs/technical-coverage-T55.json",
+      "bytes": 4034,
+      "sha256": "0b903f670fe3f5a5847cec27093e78f627655897e97ccef5ea0374097bb806ae"
     },
     {
       "path": "docs/technical-implementation-T01.md",
@@ -867,9 +877,14 @@
       "sha256": "b63b76a9aa2c1a59c1a266d8fd740bc3b296e4091769440990181e53e0843a61"
     },
     {
+      "path": "docs/technical-implementation-T55.md",
+      "bytes": 2257,
+      "sha256": "c3c10ee96a0cad530df83005a3d674ed1848092c69902b49babf34ebf3c43bf3"
+    },
+    {
       "path": "docs/technical-implementation-status.json",
-      "bytes": 18038,
-      "sha256": "258137ebd9b5d57a59f2ad594adf30382ce9e33ac4bff1be79c3e6e7bee89c75"
+      "bytes": 18293,
+      "sha256": "5225b400d5f61401838ef08ca26609f7b3b42f9d79801a19b818dc7ee93338d5"
     },
     {
       "path": "infra/README.md",
@@ -1752,6 +1767,11 @@
       "sha256": "6a95ac57f16bfadd167527c7132d4bcbd26b05dbec44e559295afcad3e5138dc"
     },
     {
+      "path": "src/miniuw_foundation/recovery_case_inventory.py",
+      "bytes": 7415,
+      "sha256": "4ce1e377d42dfa841beb5305ec378235cd400f6b8cee07324175401c8200af95"
+    },
+    {
       "path": "src/miniuw_foundation/refinance_capacity.py",
       "bytes": 14678,
       "sha256": "b3250d05ecf4af5c15596d271770bb5f2ec99b73acb022efe96ea5e40be977bf"
@@ -2472,6 +2492,11 @@
       "sha256": "9ba31e0d73bcaf44da3a71538eda3261f480ad3706f660f710a18b9e16c79ef0"
     },
     {
+      "path": "tests/test_recovery_case_inventory.py",
+      "bytes": 6425,
+      "sha256": "a8a885fe336387634ac223949f350c3dd1f06bdce74c9b07c22aec6448b7f986"
+    },
+    {
       "path": "tests/test_refinance_capacity.py",
       "bytes": 14027,
       "sha256": "5acd331f7670def390ad33246b7989cb1a7afbce34053653f94829c8e2402b9b"
@@ -2645,6 +2670,11 @@
       "path": "tools/demo_recovery_case_check.py",
       "bytes": 3775,
       "sha256": "4c9b446a12e7b3377b9d33f0d6c4a8ad087e783166964551dde2a80a33df154e"
+    },
+    {
+      "path": "tools/demo_recovery_case_inventory.py",
+      "bytes": 4328,
+      "sha256": "045541b5439c26df36ff6c06f4b00b93317cc79ebc2f74216de358241b128bca"
     },
     {
       "path": "tools/demo_refinance_capacity.py",

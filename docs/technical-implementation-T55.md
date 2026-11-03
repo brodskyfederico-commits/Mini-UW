@@ -1,0 +1,11 @@
+# T55 — inventario explícito de casos para revisión
+
+Se recibe un conjunto inmutable de 1–12 casos T54 completos, cada uno con ID y resultado, junto con un inventario JSON de IDs/hashes en el orden declarado. Se reproduce cada caso íntegro, incluso si está pendiente. No se generan shocks, probabilidades, umbrales o escenarios Downside por defecto.
+
+Todos los casos deben compartir la referencia, su análisis de recuperación, la misma versión del registro de evidencia de referencia y el instante UTC evaluado. Cada candidato conserva su propio registro de evidencia. Una mezcla de referencias, tiempos, contextos o revisiones deja el inventario pendiente sin seleccionar cuál fuente prevalece. Faltantes, extras, duplicados o hashes distintos no se omiten silenciosamente.
+
+La tabla conserva todas las filas y motivos específicos. Si la estructura común es válida, cada caso vigente/matemáticamente compatible puede mostrar su comparación, conjunto de recuperación e historia de equity del proyecto. Un caso vencido, sin revisar, fuera de dominio o con hipótesis incompatibles permanece pendiente y sin resultados actuales; no se representa como retorno cero. Si el inventario común es inconsistente, se retiran las vistas actuales de todas las filas, conservando sus motivos y hashes para auditoría.
+
+La afirmación de inventario actual completo requiere todas las filas compatibles/vigentes y el inventario completo con base explícita. Una sola fila pendiente conserva PENDING para el conjunto. Aun con todas las filas actuales el estado decisorio sigue PENDING: no se calcula un promedio, no se elige el mejor escenario y no se emite aprobación de inversión.
+
+Los resultados siguen siendo sintéticos bajo las hipótesis declaradas. No se autentican originales, contratos, impuestos, mercado, funding o revisión profesional; no se calcula retorno personal ni se autoriza publicación financiera. La prueba de varios precios no constituye un plan Downside completo ni financiación alternativa. El replay liga fuentes/cálculos/resultados/inventario y rechaza falsificaciones con hash actualizado. No hay bundle SQLite runtime, despliegue, monitor o decisiones reales; las implementaciones y originales anteriores se preservan.

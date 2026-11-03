@@ -1,0 +1,130 @@
+{
+  "purpose": "synthetic_declared_price_case_inventory_review",
+  "reviews": [
+    {
+      "label": "all-current",
+      "inventory_json": "{\"as_of_UTC\":\"2027-07-01T12:00:00Z\",\"cases\":[{\"case_id\":\"lower-price\",\"current_case_run_sha256\":\"88f2f311812c2b34bcf7ba933ebe77671fc7c4868ea38be0c36d838ae7b101c3\"},{\"case_id\":\"cash-recovery-point\",\"current_case_run_sha256\":\"4d9d155abd6dcfd4c1f4a54afa6f66238ab9ace98ea7de8ba2bb4fe61f6ce2cf\"},{\"case_id\":\"higher-price\",\"current_case_run_sha256\":\"8a6f0d774aa0183fc480dbfc983b2a09bf801fdc6df4888fcbff3a178cb2e28e\"}],\"inventory_basis_ref\":\"SYNTHETIC-three-explicit-price-tests-not-market-scenarios\",\"inventory_declared_complete\":true,\"recovery_run_sha256\":\"3c39f4463d7dd6d1ea8322dfd6603e340dfdc12c1e2e335f8c6a4fb6d969158e\",\"reference_bounded_run_sha256\":\"5f8ec33ee136212f36d16b150addcf1ca2e01304f96dd345e51617d6c4da9008\",\"reference_registry_source_sha256\":\"6a29817206f16d9da786c40a258d407cbb8a6c7c19b1027f47414111c090066e\",\"schema\":\"miniuw.synthetic-recovery-case-inventory.v1\"}",
+      "inventory_run_sha256": "0ecb3201ef19b2bd571a3e8b2b95c92f9f99d416721c1a591fe0b4afeaf45bf3",
+      "state": "complete_synthetic_current_case_inventory",
+      "all_declared_cases_current_and_matched": true,
+      "blockers": [],
+      "case_rows": [
+        {
+          "case_id": "lower-price",
+          "state": "current_synthetic_matched_case_at_declared_time",
+          "current_case_run_sha256": "88f2f311812c2b34bcf7ba933ebe77671fc7c4868ea38be0c36d838ae7b101c3",
+          "current_net_cash_profit": {
+            "denominator": "10000",
+            "numerator": "-160803"
+          },
+          "current_equity_multiple": {
+            "denominator": "10000000",
+            "numerator": "9839197"
+          },
+          "blockers": [],
+          "candidate_evidence_blockers": [],
+          "decision": "PENDING"
+        },
+        {
+          "case_id": "cash-recovery-point",
+          "state": "current_synthetic_matched_case_at_declared_time",
+          "current_case_run_sha256": "4d9d155abd6dcfd4c1f4a54afa6f66238ab9ace98ea7de8ba2bb4fe61f6ce2cf",
+          "current_net_cash_profit": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "current_equity_multiple": {
+            "denominator": "1",
+            "numerator": "1"
+          },
+          "blockers": [],
+          "candidate_evidence_blockers": [],
+          "decision": "PENDING"
+        },
+        {
+          "case_id": "higher-price",
+          "state": "current_synthetic_matched_case_at_declared_time",
+          "current_case_run_sha256": "8a6f0d774aa0183fc480dbfc983b2a09bf801fdc6df4888fcbff3a178cb2e28e",
+          "current_net_cash_profit": {
+            "denominator": "10000",
+            "numerator": "839197"
+          },
+          "current_equity_multiple": {
+            "denominator": "10000000",
+            "numerator": "10839197"
+          },
+          "blockers": [],
+          "candidate_evidence_blockers": [],
+          "decision": "PENDING"
+        }
+      ],
+      "report_serialization_roundtrip_replayed": true,
+      "decision": "PENDING"
+    },
+    {
+      "label": "one-candidate-evidence-expired",
+      "inventory_json": "{\"as_of_UTC\":\"2027-07-01T12:00:00Z\",\"cases\":[{\"case_id\":\"lower-price\",\"current_case_run_sha256\":\"88f2f311812c2b34bcf7ba933ebe77671fc7c4868ea38be0c36d838ae7b101c3\"},{\"case_id\":\"cash-recovery-point\",\"current_case_run_sha256\":\"b82ab237ddf606743b7b0a48b0e85ca21a41161c339d8a732a9575612bd75356\"},{\"case_id\":\"higher-price\",\"current_case_run_sha256\":\"8a6f0d774aa0183fc480dbfc983b2a09bf801fdc6df4888fcbff3a178cb2e28e\"}],\"inventory_basis_ref\":\"SYNTHETIC-three-explicit-price-tests-not-market-scenarios\",\"inventory_declared_complete\":true,\"recovery_run_sha256\":\"3c39f4463d7dd6d1ea8322dfd6603e340dfdc12c1e2e335f8c6a4fb6d969158e\",\"reference_bounded_run_sha256\":\"5f8ec33ee136212f36d16b150addcf1ca2e01304f96dd345e51617d6c4da9008\",\"reference_registry_source_sha256\":\"6a29817206f16d9da786c40a258d407cbb8a6c7c19b1027f47414111c090066e\",\"schema\":\"miniuw.synthetic-recovery-case-inventory.v1\"}",
+      "inventory_run_sha256": "1fe3abd77bbe5f4082ffca6ebac63ecc3d5cdd14b819d4a9f89cd14078fcdadd",
+      "state": "PENDING",
+      "all_declared_cases_current_and_matched": false,
+      "blockers": [],
+      "case_rows": [
+        {
+          "case_id": "lower-price",
+          "state": "current_synthetic_matched_case_at_declared_time",
+          "current_case_run_sha256": "88f2f311812c2b34bcf7ba933ebe77671fc7c4868ea38be0c36d838ae7b101c3",
+          "current_net_cash_profit": {
+            "denominator": "10000",
+            "numerator": "-160803"
+          },
+          "current_equity_multiple": {
+            "denominator": "10000000",
+            "numerator": "9839197"
+          },
+          "blockers": [],
+          "candidate_evidence_blockers": [],
+          "decision": "PENDING"
+        },
+        {
+          "case_id": "cash-recovery-point",
+          "state": "PENDING",
+          "current_case_run_sha256": "b82ab237ddf606743b7b0a48b0e85ca21a41161c339d8a732a9575612bd75356",
+          "current_net_cash_profit": null,
+          "current_equity_multiple": null,
+          "blockers": [
+            "candidate_story_not_current"
+          ],
+          "candidate_evidence_blockers": [
+            "/exit/cost_bounds:evidence_expired"
+          ],
+          "decision": "PENDING"
+        },
+        {
+          "case_id": "higher-price",
+          "state": "current_synthetic_matched_case_at_declared_time",
+          "current_case_run_sha256": "8a6f0d774aa0183fc480dbfc983b2a09bf801fdc6df4888fcbff3a178cb2e28e",
+          "current_net_cash_profit": {
+            "denominator": "10000",
+            "numerator": "839197"
+          },
+          "current_equity_multiple": {
+            "denominator": "10000000",
+            "numerator": "10839197"
+          },
+          "blockers": [],
+          "candidate_evidence_blockers": [],
+          "decision": "PENDING"
+        }
+      ],
+      "report_serialization_roundtrip_replayed": true,
+      "decision": "PENDING"
+    }
+  ],
+  "reference_recovery_spec_json": "{\"base_bounded_run_sha256\":\"5f8ec33ee136212f36d16b150addcf1ca2e01304f96dd345e51617d6c4da9008\",\"cost_profile_domain_basis_ref\":\"SYNTHETIC-per-item-clamp-assumed-only-over-explicit-domain\",\"gross_price_domain\":{\"lower\":{\"denominator\":\"1\",\"numerator\":\"0\"},\"upper\":{\"denominator\":\"1\",\"numerator\":\"2000\"}},\"other_sources_fixed_basis_ref\":\"SYNTHETIC-fixed-dated-cash-debt-not-market-scenarios\",\"schema\":\"miniuw.synthetic-piecewise-bounded-sale-recovery.v1\",\"segment_budget\":129}",
+  "fixture_note": "Separate bank NOI 2000/closing without valuation software fixture; original bank NOI 50/value 500 preserved.",
+  "no_downside_policy_or_approval_inferred": true,
+  "best_case_selected": false,
+  "personal_investor_return": null,
+  "decision": "PENDING",
+  "production_authorized": false
+}

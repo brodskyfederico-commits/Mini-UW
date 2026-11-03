@@ -1,0 +1,91 @@
+{
+  "scope": "Declared current case review inventory; not adopted market scenarios or financial approval; original matrix/gates preserved",
+  "rows": [
+    {
+      "requirement_or_variable": "complete_declared_case_inventory",
+      "source": {
+        "path": "docs/technical-implementation-T55.md",
+        "line": 3,
+        "sha256": "c3c10ee96a0cad530df83005a3d674ed1848092c69902b49babf34ebf3c43bf3"
+      },
+      "current_definition": "1-12 supplied full current-case proofs with exact ordered IDs/hashes and explicit completeness/basis",
+      "affected_modules": [
+        "M7",
+        "M8",
+        "T54",
+        "T55"
+      ],
+      "validation_evidence": [
+        "tests/test_recovery_case_inventory.py:RecoveryCaseInventoryTests.test_all_cases_current_including_negative_profit_without_pass",
+        "tests/test_recovery_case_inventory.py:RecoveryCaseInventoryTests.test_incomplete_missing_order_and_hash_inventory_block_all_views",
+        "tests/test_recovery_case_inventory.py:RecoveryCaseInventoryTests.test_duplicate_ids_empty_sources_and_strict_syntax"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Actual scenario design and data/criteria; no default downside policy"
+    },
+    {
+      "requirement_or_variable": "shared_reference_and_time",
+      "source": {
+        "path": "docs/technical-implementation-T55.md",
+        "line": 5,
+        "sha256": "c3c10ee96a0cad530df83005a3d674ed1848092c69902b49babf34ebf3c43bf3"
+      },
+      "current_definition": "Shared reference/recovery/evidence revision and evaluation instant required",
+      "affected_modules": [
+        "M7",
+        "M8",
+        "T54",
+        "T55"
+      ],
+      "validation_evidence": [
+        "tests/test_recovery_case_inventory.py:RecoveryCaseInventoryTests.test_different_time_cannot_join_same_review",
+        "tests/test_recovery_case_inventory.py:RecoveryCaseInventoryTests.test_reference_registry_revisions_not_silently_mixed"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Authenticated source/review authority and production use"
+    },
+    {
+      "requirement_or_variable": "pending_rows_no_hidden_failure",
+      "source": {
+        "path": "docs/technical-implementation-T55.md",
+        "line": 7,
+        "sha256": "c3c10ee96a0cad530df83005a3d674ed1848092c69902b49babf34ebf3c43bf3"
+      },
+      "current_definition": "Retain every row; expired row has no current numbers, valid siblings can remain; global inconsistency suppresses whole view",
+      "affected_modules": [
+        "M7",
+        "M8",
+        "T54",
+        "T55"
+      ],
+      "validation_evidence": [
+        "tests/test_recovery_case_inventory.py:RecoveryCaseInventoryTests.test_expired_case_preserved_without_zero_or_hiding_valid_sibling",
+        "tests/test_recovery_case_inventory.py:RecoveryCaseInventoryTests.test_incomplete_missing_order_and_hash_inventory_block_all_views"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Real investment decision, personal allocation and final financial acceptance"
+    },
+    {
+      "requirement_or_variable": "replay_and_no_ranking",
+      "source": {
+        "path": "docs/technical-implementation-T55.md",
+        "line": 11,
+        "sha256": "c3c10ee96a0cad530df83005a3d674ed1848092c69902b49babf34ebf3c43bf3"
+      },
+      "current_definition": "Full case/inventory/report replay; no best/average/automatic scenarios or approval",
+      "affected_modules": [
+        "M7",
+        "M8",
+        "T54",
+        "T55"
+      ],
+      "validation_evidence": [
+        "tests/test_recovery_case_inventory.py:RecoveryCaseInventoryTests.test_case_and_report_replay_reject_updated_hash_forgery",
+        "tests/test_recovery_case_inventory.py:RecoveryCaseInventoryTests.test_no_best_average_policy_or_personal_return_claim"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "No runtime archive or full downside/alternative financing model"
+    }
+  ],
+  "real_decisions_enabled": false
+}
