@@ -1,7 +1,7 @@
 {
   "phase": "post-I01 synthetic technical implementation",
   "user_authorized": true,
-  "component": "T52",
+  "component": "T53",
   "status": "local_implementation_verified_pending_remote_receipt",
   "implemented": [
     "fresh raw-claim drafts from unchanged 55-input/10-criterion template",
@@ -89,9 +89,10 @@
     "distinct bounded-cost result to unchanged guarded exit-sale/debt/cash/return path, excluded from old global-affine analysis",
     "explicit-time full-source current bounded-exit output gate including additional limit-rule source and unchanged bank blockers",
     "exact conditional piecewise price/exit-cap cash recovery domains for explicit per-item monetary cost clamps, retaining disconnected/flat/point/empty sets and continuity evidence",
-    "explicit-time full-source current piecewise recovery gate including independent domain/assumption/segment-budget source binding"
+    "explicit-time full-source current piecewise recovery gate including independent domain/assumption/segment-budget source binding",
+    "exact comparison of separately supplied full bounded-sale replay against fixed-assumption recovery curve, preserving altered-profile and finance blockers"
   ],
-  "unit_tests": 940,
+  "unit_tests": 952,
   "plan_packages_partially_addressed": [
     "IMP-01",
     "IMP-06",
@@ -165,7 +166,8 @@
     "T49",
     "T50",
     "T51",
-    "T52"
+    "T52",
+    "T53"
   ],
   "tests_by_component": {
     "T01": 31,
@@ -219,7 +221,8 @@
     "T49": 12,
     "T50": 11,
     "T51": 20,
-    "T52": 11
+    "T52": 11,
+    "T53": 12
   },
   "not_yet_implemented": [
     "complete financial graph and its designed cycles",
@@ -329,5 +332,6 @@
   "bounded_cost_to_guarded_sale_implemented": true,
   "opt_in_current_bounded_exit_output_gate_implemented": true,
   "piecewise_bounded_cost_recovery_domain_implemented": true,
-  "opt_in_current_piecewise_recovery_gate_implemented": true
+  "opt_in_current_piecewise_recovery_gate_implemented": true,
+  "supplied_full_case_recovery_curve_check_implemented": true
 }

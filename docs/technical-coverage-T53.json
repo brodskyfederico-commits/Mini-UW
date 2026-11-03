@@ -1,0 +1,118 @@
+{
+  "scope": "Supplied candidate full replay versus conditional curve; original coverage matrix and financial gates preserved",
+  "rows": [
+    {
+      "requirement_or_variable": "fixed_assumption_compatibility",
+      "source": {
+        "path": "docs/technical-implementation-T53.md",
+        "line": 7,
+        "sha256": "cea0e9e8c860d0311cf31590bc54a34ba5fac4c0be72645a225e6fe5f3b14353"
+      },
+      "current_definition": "Only declared price/cap/lineage/revision changes allowed; other sources must match",
+      "affected_modules": [
+        "M7",
+        "M8",
+        "T49",
+        "T51",
+        "T53"
+      ],
+      "validation_evidence": [
+        "tests/test_recovery_case_check.py:RecoveryCaseCheckTests.test_changed_fee_even_if_replayed_valid_requires_new_curve",
+        "tests/test_recovery_case_check.py:RecoveryCaseCheckTests.test_changed_funding_assumption_not_ignored"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Authentic source applicability and a new analysis when fixed assumptions change"
+    },
+    {
+      "requirement_or_variable": "full_case_and_curve_match",
+      "source": {
+        "path": "docs/technical-implementation-T53.md",
+        "line": 13,
+        "sha256": "cea0e9e8c860d0311cf31590bc54a34ba5fac4c0be72645a225e6fe5f3b14353"
+      },
+      "current_definition": "All matching segment predictions equal each other and full replay costs/profit, exact differences",
+      "affected_modules": [
+        "M7",
+        "M8",
+        "T49",
+        "T51",
+        "T53"
+      ],
+      "validation_evidence": [
+        "tests/test_recovery_case_check.py:RecoveryCaseCheckTests.test_before_at_after_boundary_matches_full_cash",
+        "tests/test_recovery_case_check.py:RecoveryCaseCheckTests.test_shared_breakpoints_use_all_matching_segments",
+        "tests/test_recovery_case_check.py:RecoveryCaseCheckTests.test_each_regime_matches_independent_cost_and_profit"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Actual payments, capital availability and financial acceptance"
+    },
+    {
+      "requirement_or_variable": "candidate_domain_and_financing",
+      "source": {
+        "path": "docs/technical-implementation-T53.md",
+        "line": 9,
+        "sha256": "cea0e9e8c860d0311cf31590bc54a34ba5fac4c0be72645a225e6fe5f3b14353"
+      },
+      "current_definition": "Candidate must lie inside domain and pass own full valuation/debt/cash/capacity/target chain",
+      "affected_modules": [
+        "M7",
+        "M8",
+        "T49",
+        "T51",
+        "T53"
+      ],
+      "validation_evidence": [
+        "tests/test_recovery_case_check.py:RecoveryCaseCheckTests.test_out_of_domain_not_extrapolated",
+        "tests/test_recovery_case_check.py:RecoveryCaseCheckTests.test_different_project_and_bank_failure_stay_visible",
+        "tests/test_recovery_case_check.py:RecoveryCaseCheckTests.test_blocked_reference_curve_does_not_certify_candidate"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Real financing/market and personal LP return"
+    },
+    {
+      "requirement_or_variable": "result_replay_and_bounds",
+      "source": {
+        "path": "docs/technical-implementation-T53.md",
+        "line": 21,
+        "sha256": "cea0e9e8c860d0311cf31590bc54a34ba5fac4c0be72645a225e6fe5f3b14353"
+      },
+      "current_definition": "Full compatible reference/candidate/report reproduction; exact budget fail closed",
+      "affected_modules": [
+        "M7",
+        "M8",
+        "T49",
+        "T51",
+        "T53"
+      ],
+      "validation_evidence": [
+        "tests/test_recovery_case_check.py:RecoveryCaseCheckTests.test_updated_hash_candidate_forgery_rejected",
+        "tests/test_recovery_case_check.py:RecoveryCaseCheckTests.test_report_replay_and_updated_hash_forgery",
+        "tests/test_recovery_case_check.py:RecoveryCaseCheckTests.test_budget_fault_no_partial_comparison"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "No new runtime archive or authenticated review"
+    },
+    {
+      "requirement_or_variable": "scope_no_target_adoption",
+      "source": {
+        "path": "docs/technical-implementation-T53.md",
+        "line": 19,
+        "sha256": "cea0e9e8c860d0311cf31590bc54a34ba5fac4c0be72645a225e6fe5f3b14353"
+      },
+      "current_definition": "Match is technical only, no generated investment target, freshness/approval or personal return",
+      "affected_modules": [
+        "M7",
+        "M8",
+        "T49",
+        "T51",
+        "T53"
+      ],
+      "validation_evidence": [
+        "tests/test_recovery_case_check.py:RecoveryCaseCheckTests.test_no_freshness_personal_return_or_adoption_claim"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Independent evidence-currency evaluation and production publication"
+    }
+  ],
+  "real_decisions_enabled": false
+}
