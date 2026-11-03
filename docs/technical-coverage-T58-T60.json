@@ -1,0 +1,371 @@
+{
+  "scope": "Reduced fully replayed synthetic purchase-to-sale cash/debt/return path and portable recovery; original 398-row matrix and financial gates unchanged",
+  "rows": [
+    {
+      "requirement_or_variable": "opening_loan_inventory_and_full_draw",
+      "source": {
+        "path": "docs/technical-implementation-T58.md",
+        "line": 5,
+        "sha256": "cc6fcce2b369fc9d1ea662e9ca1705ac8f0d94568b3d3a004a4e1c63eff52daf"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 amortización/vencimiento y repago/distribución",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "DEBT-01"
+        },
+        {
+          "documento": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+          "sha256_documento": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+          "ubicacion_exacta": "§3 Costs and TDC / Timing / Refinance and metrics",
+          "definicion_documentada": "Reglas históricas de financiación y flujo mensual; Manual pp.11/13/23/32/53 y C51:C53 precisan campos y pendientes.",
+          "matrix_id": "M5-06"
+        }
+      ],
+      "current_definition": "Replay preopening and entire cash window; exact loan source/run inventories and single full draw at origin, matching cash boundary and opening principal",
+      "affected_modules": [
+        "M5",
+        "M6",
+        "M7",
+        "T58"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_lifecycle_returns.py",
+          "line": 24,
+          "test": "OpeningDebtTests.test_full_draw_matches_first_operating_loan_and_cash"
+        },
+        {
+          "path": "tests/test_lifecycle_returns.py",
+          "line": 28,
+          "test": "OpeningDebtTests.test_previous_unmatched_cash_example_is_not_repaired"
+        },
+        {
+          "path": "tests/test_lifecycle_returns.py",
+          "line": 32,
+          "test": "OpeningDebtTests.test_same_cash_with_wrong_principal_or_origination_is_rejected"
+        },
+        {
+          "path": "tests/test_lifecycle_returns.py",
+          "line": 39,
+          "test": "OpeningDebtTests.test_split_draw_not_accepted_as_no_new_draw_schedule"
+        },
+        {
+          "path": "tests/test_lifecycle_returns.py",
+          "line": 62,
+          "test": "OpeningDebtTests.test_every_binding_and_basis_checked"
+        }
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Actual bank funding, multiple draws/capitalization, asset basis/TDC and authentic loan documents"
+    },
+    {
+      "requirement_or_variable": "preopening_service_and_cutoff",
+      "source": {
+        "path": "docs/technical-implementation-T58.md",
+        "line": 5,
+        "sha256": "cc6fcce2b369fc9d1ea662e9ca1705ac8f0d94568b3d3a004a4e1c63eff52daf"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 amortización/vencimiento y repago/distribución",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "DEBT-01"
+        },
+        {
+          "documento": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+          "sha256_documento": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+          "ubicacion_exacta": "§3 Costs and TDC / Timing / Refinance and metrics",
+          "definicion_documentada": "Reglas históricas de financiación y flujo mensual; Manual pp.11/13/23/32/53 y C51:C53 precisan campos y pendientes.",
+          "matrix_id": "M5-06"
+        }
+      ],
+      "current_definition": "Match all regular principal/interest by loan/date strictly before opening; opening-date payment belongs to operations; retain earlier cash and arithmetic blockers",
+      "affected_modules": [
+        "M5",
+        "M6",
+        "M7",
+        "T58"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_lifecycle_returns.py",
+          "line": 43,
+          "test": "OpeningDebtTests.test_prior_scheduled_principal_is_checked_and_opening_day_left_to_operation"
+        },
+        {
+          "path": "tests/test_lifecycle_returns.py",
+          "line": 53,
+          "test": "OpeningDebtTests.test_off_schedule_payment_not_hidden_by_later_total"
+        },
+        {
+          "path": "tests/test_lifecycle_returns.py",
+          "line": 58,
+          "test": "OpeningDebtTests.test_cash_interest_is_matched_separately_from_principal"
+        },
+        {
+          "path": "tests/test_lifecycle_returns.py",
+          "line": 78,
+          "test": "OpeningDebtTests.test_math_budget_and_underlying_cash_blocker_remain_pending"
+        },
+        {
+          "path": "tests/test_lifecycle_returns.py",
+          "line": 73,
+          "test": "OpeningDebtTests.test_source_and_rehashed_project_forgery_rejected"
+        }
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Actual paid/accrued/capitalized interest, bank statements, maturity extensions and independent financial acceptance"
+    },
+    {
+      "requirement_or_variable": "purchase_to_sale_gross_equity_without_duplicate_seed",
+      "source": {
+        "path": "docs/technical-implementation-T59.md",
+        "line": 5,
+        "sha256": "8dd5ebfa1e3a41fdc07fc9fb38a8ecf4975654027d87433ee6393de36333b14d"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 cadena financiera y diferencias; §7",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "CASH-01"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 costos, financiación, operaciones y salida",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "CASH-02"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 aportes/distribuciones brutos frente a neto",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "RETURN-01"
+        }
+      ],
+      "current_definition": "Complete history and operating-event mappings into empty new ledger; omit technical opening-cash seed, preserve dates/gross amounts and all contribution categories",
+      "affected_modules": [
+        "M5",
+        "M6",
+        "M7",
+        "T59"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_lifecycle_returns.py",
+          "line": 92,
+          "test": "LifecycleReturnTests.test_hand_full_cash_and_seed_exclusion_changes_return"
+        },
+        {
+          "path": "tests/test_lifecycle_returns.py",
+          "line": 121,
+          "test": "LifecycleReturnTests.test_mapping_requires_all_history_and_operating_events"
+        },
+        {
+          "path": "tests/test_lifecycle_returns.py",
+          "line": 124,
+          "test": "LifecycleReturnTests.test_extra_opening_seed_is_not_another_contribution"
+        },
+        {
+          "path": "tests/test_lifecycle_returns.py",
+          "line": 127,
+          "test": "LifecycleReturnTests.test_prefilled_or_wrong_date_and_classification_targets_never_overridden"
+        },
+        {
+          "path": "tests/test_lifecycle_returns.py",
+          "line": 110,
+          "test": "LifecycleReturnTests.test_positive_refinance_cash_in_preserved_as_gross_contribution"
+        },
+        {
+          "path": "tests/test_lifecycle_returns.py",
+          "line": 150,
+          "test": "LifecycleReturnTests.test_exact_input_lineage_and_immutable_results"
+        }
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Complete assets/liabilities/accrual scope, economic close, professional approval and personal allocation"
+    },
+    {
+      "requirement_or_variable": "extended_calendar_return_and_risk",
+      "source": {
+        "path": "docs/technical-implementation-T59.md",
+        "line": 9,
+        "sha256": "8dd5ebfa1e3a41fdc07fc9fb38a8ecf4975654027d87433ee6393de36333b14d"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 aportes/distribuciones brutos frente a neto",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "RETURN-01"
+        }
+      ],
+      "current_definition": "T23/T24 and T37 recompute full historical contribution basis, receipts, profit, EM, every IRR root/interval and cash risk; no inferred CoC/capital/equity stock",
+      "affected_modules": [
+        "M5",
+        "M6",
+        "M7",
+        "T59"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_lifecycle_returns.py",
+          "line": 98,
+          "test": "LifecycleReturnTests.test_all_categories_and_normalization_keep_historical_basis"
+        },
+        {
+          "path": "tests/test_lifecycle_returns.py",
+          "line": 102,
+          "test": "LifecycleReturnTests.test_irr_horizon_and_risks_use_full_history"
+        },
+        {
+          "path": "tests/test_lifecycle_returns.py",
+          "line": 147,
+          "test": "LifecycleReturnTests.test_no_implicit_basis_capital_or_personal_return"
+        }
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Verified CoC/capital bases, retained equity, personal return and final economic capital loss"
+    },
+    {
+      "requirement_or_variable": "same_project_bank_and_funding_guards",
+      "source": {
+        "path": "docs/technical-implementation-T59.md",
+        "line": 3,
+        "sha256": "8dd5ebfa1e3a41fdc07fc9fb38a8ecf4975654027d87433ee6393de36333b14d"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+          "sha256_documento": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+          "ubicacion_exacta": "§3 Costs and TDC / Timing / Refinance and metrics",
+          "definicion_documentada": "Reglas históricas de financiación y flujo mensual; Manual pp.11/13/23/32/53 y C51:C53 precisan campos y pendientes.",
+          "matrix_id": "M5-09"
+        },
+        {
+          "documento": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+          "sha256_documento": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+          "ubicacion_exacta": "§3 Refinance and metrics; Inputs C70; traspaso §5 distinciones de préstamo",
+          "definicion_documentada": "Saldo posterior a pagos depende del calendario. Vencimiento menor a amortización exige saldo residual exigible; no inventar refinanciación futura ni extensión.",
+          "matrix_id": "M6-07"
+        }
+      ],
+      "current_definition": "Both proofs must use exact same window; existing bank/cash/funding blockers preserved, no automatic extra equity or retuning",
+      "affected_modules": [
+        "M5",
+        "M6",
+        "M7",
+        "T59"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_lifecycle_returns.py",
+          "line": 107,
+          "test": "LifecycleReturnTests.test_bank_failure_not_bypassed_by_lifecycle"
+        },
+        {
+          "path": "tests/test_lifecycle_returns.py",
+          "line": 118,
+          "test": "LifecycleReturnTests.test_cash_in_without_funding_assumption_remains_blocked"
+        },
+        {
+          "path": "tests/test_lifecycle_returns.py",
+          "line": 137,
+          "test": "LifecycleReturnTests.test_opening_and_capacity_sources_cannot_be_grafted"
+        },
+        {
+          "path": "tests/test_lifecycle_returns.py",
+          "line": 142,
+          "test": "LifecycleReturnTests.test_rehashed_opening_and_capacity_forgery_rejected"
+        },
+        {
+          "path": "tests/test_lifecycle_returns.py",
+          "line": 130,
+          "test": "LifecycleReturnTests.test_source_hash_basis_context_currency_and_horizon_guards"
+        }
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Authentic credit approval, availability, current evidence gate for expanded scope and production decisions"
+    },
+    {
+      "requirement_or_variable": "portable_exact_source_recovery",
+      "source": {
+        "path": "docs/technical-implementation-T60.md",
+        "line": 5,
+        "sha256": "32ca11ca830c731a452c80198c1102b6dda8a19620bfa5f0d2894410c9e1c41c"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§§3, 5 y 7",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "DAT-01"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 aportes/distribuciones brutos frente a neto",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "RETURN-01"
+        }
+      ],
+      "current_definition": "Strict bounded source transport/version check, complete producer reconstruction and full stored result/hash comparison; blocked histories stay blocked",
+      "affected_modules": [
+        "M5",
+        "M6",
+        "M7",
+        "T60"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_lifecycle_returns.py",
+          "line": 161,
+          "test": "LifecycleBundleTests.test_exact_roundtrip_and_repeat_export"
+        },
+        {
+          "path": "tests/test_lifecycle_returns.py",
+          "line": 164,
+          "test": "LifecycleBundleTests.test_blocked_bank_case_stays_blocked_on_recovery"
+        },
+        {
+          "path": "tests/test_lifecycle_returns.py",
+          "line": 166,
+          "test": "LifecycleBundleTests.test_rehashed_stored_results_rejected"
+        },
+        {
+          "path": "tests/test_lifecycle_returns.py",
+          "line": 170,
+          "test": "LifecycleBundleTests.test_changed_source_or_missing_source_never_accepted"
+        },
+        {
+          "path": "tests/test_lifecycle_returns.py",
+          "line": 175,
+          "test": "LifecycleBundleTests.test_version_and_strict_transport_guards"
+        },
+        {
+          "path": "tests/test_lifecycle_returns.py",
+          "line": 182,
+          "test": "LifecycleBundleTests.test_forged_export_never_becomes_valid_bundle"
+        },
+        {
+          "path": "tests/test_lifecycle_returns.py",
+          "line": 185,
+          "test": "LifecycleBundleTests.test_dated_window_metadata_survives_transport"
+        }
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Runtime DB/VPS backup, authentic evidence/review and financial release"
+    }
+  ],
+  "real_decisions_enabled": false
+}

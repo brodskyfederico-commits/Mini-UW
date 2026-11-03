@@ -1,0 +1,9 @@
+# T59 — retorno de caja desde compra hasta venta
+
+Se reproducen el vínculo T58 y una ventana operativa T36 con capacidad de refi comprobada bajo hipótesis sintéticas expresas. Deben coincidir exactamente períodos, cierres, manifiesto y corrida T33 entre ambos. Un bloqueo de caja/deuda/capacidad permanece PENDING sin exportar otro retorno.
+
+Un ledger nuevo declara horizonte desde el inicio preoperativo hasta la venta, calendario regular, criterio de normalización y bases anuales/de capital. Se vinculan todos y sólo los movimientos de equity T57 y los eventos de nodos operativos/refi/venta T34. La contribución semilla de la ventana T34 queda excluida: la caja de apertura es un saldo interno ya financiado. Se preservan los aportes iniciales/adicionales, cash-in, cobros operativos/refi/venta, ceros y fechas. No se infieren participaciones LP/JV.
+
+El vínculo requiere hashes, contexto, moneda, alcance y calendario expresos. Cada evento destino debe existir, estar vacío y tener fecha/tipo/categoría/moneda compatibles. Inventarios parciales, repetidos, eventos extra, una segunda contribución por caja inicial o valores ya llenos bloquean el compilado completo. El ledger anterior y sus fuentes permanecen intactos. Fechas fuera de la grilla no se desplazan ni se agrupan automáticamente.
+
+El productor T23/T24 calcula aportes/cobros brutos, ganancia de caja, EM, escala explícita y todas las raíces/intervalos de IRR sobre el calendario ampliado. T37 observa necesidad de equity, caja no recuperada y dependencia de venta sin equiparar caja con pérdida económica final. Bases ausentes de CoC/capital/equity retenido siguen pendientes. La caja del alcance declarado queda conciliada bajo los perfiles reducidos; no se certifica base de activos/TDC, documentos, disponibilidad real, calendario intradía, escenario completo Downside, retorno personal, aprobación o producción.

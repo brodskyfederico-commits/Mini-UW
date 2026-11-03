@@ -1,0 +1,9 @@
+# T58 — deuda de apertura entre compra y operación
+
+Perfil sintético reducido de desembolso completo único en origen y servicio amortizante fechado. Reproduce T57, su vínculo de caja al primer período de la ventana T33 y toda esa ventana (operación/refi/operación/venta). Identifica el primer período y los préstamos previos al refi desde el manifiesto; no acepta fuentes de otro proyecto ni una selección parcial de préstamos.
+
+Cada préstamo debe aparecer exactamente en el inventario preoperativo y en la primera liquidación de deuda. Se exigen hashes de fuente/resultado, contexto, moneda, origen dentro del historial y calendario calculable. El draw único debe coincidir con fecha/principal de origen. Principal e interés pagados antes de la apertura deben coincidir por préstamo y fecha con todas las cuotas regulares anteriores; la cuota en la fecha de apertura pertenece a la operación. Pagos fuera del calendario no se compensan con faltantes de otra fecha. Un balloon previo a la apertura necesita otro perfil.
+
+El principal final preoperativo debe coincidir con principal inicial menos principal regular anterior a la apertura. Se conserva por separado la igualdad de caja libre/restringida. Interés y fees pagados no reducen principal. Los fees siguen siendo pagos suministrados; no se derivan obligaciones contractuales. Bases ausentes, préstamo desconocido, draw fraccionado, fecha incompatible, pago omitido o diferencia exacta mantienen PENDING sin inventar financiación o saldos.
+
+Este vínculo reconcilia movimientos sintéticos declarados con un calendario contractual supuesto; no verifica pagos bancarios, compromiso/disponibilidad, devengo entre fechas, documentos/activos/TDC, condiciones precedentes, tasas variables, capitalización o amortización no modelada. Conserva bloqueos de T57 y T33, no sustituye ejemplos anteriores y no autoriza decisiones o despliegue.
