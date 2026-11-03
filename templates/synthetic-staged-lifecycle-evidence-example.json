@@ -1,0 +1,411 @@
+{
+  "schema": "miniuw.synthetic-evidence-currency.v1",
+  "context": {
+    "deal_id": "SYNTHETIC-construction-draw-demo",
+    "definition_set_revision": "SYNTHETIC-simple-interval-factors",
+    "run_id": "SYNTHETIC-construction-draw-run",
+    "scenario_id": "SYNTHETIC-draw-plan"
+  },
+  "inventory_declared_complete": true,
+  "inventory_basis_ref": "SYNTHETIC-complete-staged-operating-source-inventory-not-original-authority",
+  "requirements": [
+    {
+      "requirement_id": "/transport/lifecycle_bundle",
+      "source_sha256": "f8f197a48513b12895b1b1b7b2bc58d0691bf43823659809f98c09781cd99643",
+      "source_locator": "/transport/lifecycle_bundle"
+    },
+    {
+      "requirement_id": "/construction/bundle",
+      "source_sha256": "2fcd3b12d50ed985346a4f6c5ed33311415c1ce7d6902065cccb87127642bd04",
+      "source_locator": "/construction/bundle"
+    },
+    {
+      "requirement_id": "/construction/preopening_draft",
+      "source_sha256": "5840fc93b1e0aaf3c27c9dd21730ca5d1a30de648560f7ab472d1a11c4c7b4c5",
+      "source_locator": "/construction/preopening_draft"
+    },
+    {
+      "requirement_id": "/construction/binding",
+      "source_sha256": "58f2f6702a345ce0459f997bd7e958785cd324c66db71442a9a2475ba6f8aa41",
+      "source_locator": "/construction/binding"
+    },
+    {
+      "requirement_id": "/transition/phase_contract",
+      "source_sha256": "91cab74563bec95cbc59f22dbde09777ba60de83df9f51f2e460b9b870d3074f",
+      "source_locator": "/transition/phase_contract"
+    },
+    {
+      "requirement_id": "/boundary/cash_binding",
+      "source_sha256": "2d1f98ada1a3665a40ff5910c5c178449c7308f471784431e18cd8651b53d1cf",
+      "source_locator": "/boundary/cash_binding"
+    },
+    {
+      "requirement_id": "/boundary/window_binding",
+      "source_sha256": "9675fe495b26cc966e63c0511eb030c589f39c7573c9af8c378d569b282c4090",
+      "source_locator": "/boundary/window_binding"
+    },
+    {
+      "requirement_id": "/investor/source",
+      "source_sha256": "8683371c1514eae7ea9455a1643036294ccbdc7efa45831f2f9bcbb60b91d144",
+      "source_locator": "/investor/source"
+    },
+    {
+      "requirement_id": "/investor/binding",
+      "source_sha256": "8a42824e280d3c38a560a969666768431113d0c5592643045900e540037a180a",
+      "source_locator": "/investor/binding"
+    },
+    {
+      "requirement_id": "/construction/loans/0",
+      "source_sha256": "e0821c3453dd2911a1b761c1245504bffb9c980e8f52ead134e5938152adb64b",
+      "source_locator": "/construction/loans/0"
+    },
+    {
+      "requirement_id": "/transition/loans/0/schedule",
+      "source_sha256": "99758e708f3cd454088bd0bda66531a2787a3ba5b704e0c5428e64ba0a340784",
+      "source_locator": "/transition/loans/0/schedule"
+    },
+    {
+      "requirement_id": "/transition/loans/0/windows_record",
+      "source_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "source_locator": "/transition/loans/0/windows_record"
+    },
+    {
+      "requirement_id": "/operation/periods/0/noi",
+      "source_sha256": "158ffa9b191b277c83537d758c62af28d01518d2940e2e4b74a4418ca8566c92",
+      "source_locator": "/operation/periods/0/noi"
+    },
+    {
+      "requirement_id": "/operation/periods/0/cash",
+      "source_sha256": "71372c398d95af22784144ff540e4d20db1db93e2db20b05791cac1d1edcc3ce",
+      "source_locator": "/operation/periods/0/cash"
+    },
+    {
+      "requirement_id": "/operation/periods/1/noi",
+      "source_sha256": "f6dc361a6308d9f3650d6559ad89c360c56340bb8fad45264aeba793588984bf",
+      "source_locator": "/operation/periods/1/noi"
+    },
+    {
+      "requirement_id": "/operation/periods/1/cash",
+      "source_sha256": "df5a5e7fc22e0105179ed9a14f71eef39d4c3c5030cb23f09d974bc87dbb904d",
+      "source_locator": "/operation/periods/1/cash"
+    },
+    {
+      "requirement_id": "/operation/manifest",
+      "source_sha256": "2d8d6f78181d3e3f1d920d7ec3673f0fabd54b1a4746c521558ce2bdf8473149",
+      "source_locator": "/operation/manifest"
+    },
+    {
+      "requirement_id": "/operation/sale_binding",
+      "source_sha256": "2d40f26ea17a6341ad54c8a6b3bebb8cb02b9c510b7b3673d8033f7d9d401209",
+      "source_locator": "/operation/sale_binding"
+    },
+    {
+      "requirement_id": "/sale/cash",
+      "source_sha256": "4fe2ab9835f1f294cc6d92ace96c76bf2d1a48d3d2b9c00a9a3b2b2a4200e71d",
+      "source_locator": "/sale/cash"
+    },
+    {
+      "requirement_id": "/sale/debt_binding",
+      "source_sha256": "3e20b7d0eb03a50ac2bdc2e558c35c26e29767c3e82c59c2862348fd7d0eef26",
+      "source_locator": "/sale/debt_binding"
+    },
+    {
+      "requirement_id": "/sale/loans/0/terms",
+      "source_sha256": "99758e708f3cd454088bd0bda66531a2787a3ba5b704e0c5428e64ba0a340784",
+      "source_locator": "/sale/loans/0/terms"
+    },
+    {
+      "requirement_id": "/sale/loans/0/windows_record",
+      "source_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "source_locator": "/sale/loans/0/windows_record"
+    }
+  ],
+  "evidence": [
+    {
+      "evidence_id": "SYNTHETIC-staged-operating-0",
+      "requirement_id": "/transport/lifecycle_bundle",
+      "source_sha256": "f8f197a48513b12895b1b1b7b2bc58d0691bf43823659809f98c09781cd99643",
+      "source_locator": "/transport/lifecycle_bundle",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-new-test-validity-not-real-renewal-or-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-staged-operating-1",
+      "requirement_id": "/construction/bundle",
+      "source_sha256": "2fcd3b12d50ed985346a4f6c5ed33311415c1ce7d6902065cccb87127642bd04",
+      "source_locator": "/construction/bundle",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-new-test-validity-not-real-renewal-or-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-staged-operating-2",
+      "requirement_id": "/construction/preopening_draft",
+      "source_sha256": "5840fc93b1e0aaf3c27c9dd21730ca5d1a30de648560f7ab472d1a11c4c7b4c5",
+      "source_locator": "/construction/preopening_draft",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-new-test-validity-not-real-renewal-or-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-staged-operating-3",
+      "requirement_id": "/construction/binding",
+      "source_sha256": "58f2f6702a345ce0459f997bd7e958785cd324c66db71442a9a2475ba6f8aa41",
+      "source_locator": "/construction/binding",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-new-test-validity-not-real-renewal-or-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-staged-operating-4",
+      "requirement_id": "/transition/phase_contract",
+      "source_sha256": "91cab74563bec95cbc59f22dbde09777ba60de83df9f51f2e460b9b870d3074f",
+      "source_locator": "/transition/phase_contract",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-new-test-validity-not-real-renewal-or-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-staged-operating-5",
+      "requirement_id": "/boundary/cash_binding",
+      "source_sha256": "2d1f98ada1a3665a40ff5910c5c178449c7308f471784431e18cd8651b53d1cf",
+      "source_locator": "/boundary/cash_binding",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-new-test-validity-not-real-renewal-or-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-staged-operating-6",
+      "requirement_id": "/boundary/window_binding",
+      "source_sha256": "9675fe495b26cc966e63c0511eb030c589f39c7573c9af8c378d569b282c4090",
+      "source_locator": "/boundary/window_binding",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-new-test-validity-not-real-renewal-or-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-staged-operating-7",
+      "requirement_id": "/investor/source",
+      "source_sha256": "8683371c1514eae7ea9455a1643036294ccbdc7efa45831f2f9bcbb60b91d144",
+      "source_locator": "/investor/source",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-new-test-validity-not-real-renewal-or-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-staged-operating-8",
+      "requirement_id": "/investor/binding",
+      "source_sha256": "8a42824e280d3c38a560a969666768431113d0c5592643045900e540037a180a",
+      "source_locator": "/investor/binding",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-new-test-validity-not-real-renewal-or-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-staged-operating-9",
+      "requirement_id": "/construction/loans/0",
+      "source_sha256": "e0821c3453dd2911a1b761c1245504bffb9c980e8f52ead134e5938152adb64b",
+      "source_locator": "/construction/loans/0",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-new-test-validity-not-real-renewal-or-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-staged-operating-10",
+      "requirement_id": "/transition/loans/0/schedule",
+      "source_sha256": "99758e708f3cd454088bd0bda66531a2787a3ba5b704e0c5428e64ba0a340784",
+      "source_locator": "/transition/loans/0/schedule",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-new-test-validity-not-real-renewal-or-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-staged-operating-11",
+      "requirement_id": "/transition/loans/0/windows_record",
+      "source_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "source_locator": "/transition/loans/0/windows_record",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-new-test-validity-not-real-renewal-or-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-staged-operating-12",
+      "requirement_id": "/operation/periods/0/noi",
+      "source_sha256": "158ffa9b191b277c83537d758c62af28d01518d2940e2e4b74a4418ca8566c92",
+      "source_locator": "/operation/periods/0/noi",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-new-test-validity-not-real-renewal-or-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-staged-operating-13",
+      "requirement_id": "/operation/periods/0/cash",
+      "source_sha256": "71372c398d95af22784144ff540e4d20db1db93e2db20b05791cac1d1edcc3ce",
+      "source_locator": "/operation/periods/0/cash",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-new-test-validity-not-real-renewal-or-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-staged-operating-14",
+      "requirement_id": "/operation/periods/1/noi",
+      "source_sha256": "f6dc361a6308d9f3650d6559ad89c360c56340bb8fad45264aeba793588984bf",
+      "source_locator": "/operation/periods/1/noi",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-new-test-validity-not-real-renewal-or-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-staged-operating-15",
+      "requirement_id": "/operation/periods/1/cash",
+      "source_sha256": "df5a5e7fc22e0105179ed9a14f71eef39d4c3c5030cb23f09d974bc87dbb904d",
+      "source_locator": "/operation/periods/1/cash",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-new-test-validity-not-real-renewal-or-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-staged-operating-16",
+      "requirement_id": "/operation/manifest",
+      "source_sha256": "2d8d6f78181d3e3f1d920d7ec3673f0fabd54b1a4746c521558ce2bdf8473149",
+      "source_locator": "/operation/manifest",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-new-test-validity-not-real-renewal-or-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-staged-operating-17",
+      "requirement_id": "/operation/sale_binding",
+      "source_sha256": "2d40f26ea17a6341ad54c8a6b3bebb8cb02b9c510b7b3673d8033f7d9d401209",
+      "source_locator": "/operation/sale_binding",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-new-test-validity-not-real-renewal-or-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-staged-operating-18",
+      "requirement_id": "/sale/cash",
+      "source_sha256": "4fe2ab9835f1f294cc6d92ace96c76bf2d1a48d3d2b9c00a9a3b2b2a4200e71d",
+      "source_locator": "/sale/cash",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-new-test-validity-not-real-renewal-or-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-staged-operating-19",
+      "requirement_id": "/sale/debt_binding",
+      "source_sha256": "3e20b7d0eb03a50ac2bdc2e558c35c26e29767c3e82c59c2862348fd7d0eef26",
+      "source_locator": "/sale/debt_binding",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-new-test-validity-not-real-renewal-or-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-staged-operating-20",
+      "requirement_id": "/sale/loans/0/terms",
+      "source_sha256": "99758e708f3cd454088bd0bda66531a2787a3ba5b704e0c5428e64ba0a340784",
+      "source_locator": "/sale/loans/0/terms",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-new-test-validity-not-real-renewal-or-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-staged-operating-21",
+      "requirement_id": "/sale/loans/0/windows_record",
+      "source_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "source_locator": "/sale/loans/0/windows_record",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-new-test-validity-not-real-renewal-or-approval"
+    }
+  ]
+}

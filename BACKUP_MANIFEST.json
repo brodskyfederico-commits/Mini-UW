@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D03 review and metric-intake design extensions and T01–T71 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D03 review and metric-intake design extensions and T01–T75 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 28616,
-      "sha256": "b735118bfaae89e5378b21639a8f0b3af446f8ffb77188fc66b1063a9335d8b3"
+      "bytes": 29426,
+      "sha256": "c628793661f50d5f0ef2d3237118f5ed0df343287a42360a2976206847874dd3"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 112319,
-      "sha256": "2caa61c51e5808e4f04c0703b819abed9fdd9fbaa3ea3f4bc06c705427fd7da2"
+      "bytes": 115911,
+      "sha256": "381e3365330e49702bae66dec44f30e6ea1f6487ffb0331361330da6a09da73e"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -352,6 +352,11 @@
       "sha256": "42da9b301f4116de0d73c91b0240caaa69b08631dfd7423e8f3f3fb9a02adb08"
     },
     {
+      "path": "docs/review/Deuda_Obra_a_Operacion_y_Retorno_T72_T75.md",
+      "bytes": 4352,
+      "sha256": "aad15570128e8a18f4c7027b3f14264e045c7ea976bcb290d34ed3e178a0765b"
+    },
+    {
       "path": "docs/review/Intereses_Obra_y_Caja_T68_T71.md",
       "bytes": 2776,
       "sha256": "914abdc75e94dfd058351e062e4e7ed00dfc3a024b43fd09446a546f92f46923"
@@ -437,6 +442,11 @@
       "sha256": "debdaf215dc8de9b68f777d36135f1ac96cc6fe5432477063c002ea6c0c33879"
     },
     {
+      "path": "docs/review/Revision_Pendiente_Obra_Operacion_T75.md",
+      "bytes": 1019,
+      "sha256": "b7e1aa9a1a198e217eef477deed2871dddf742fee49fd7681677145c484d6215"
+    },
+    {
       "path": "docs/review/Revision_Pendiente_Sin_Refi_T67.md",
       "bytes": 1011,
       "sha256": "8b4888bfa08c5c99dbcd8af992e26b7af181fc54b46ef51a7020264df69017af"
@@ -450,6 +460,11 @@
       "path": "docs/review/Revision_Vigente_Deuda_Obra_T71.md",
       "bytes": 1533,
       "sha256": "fb61105fad20568d40da94d272e051e5ac601232991c8bfb9cb258ce7fb27749"
+    },
+    {
+      "path": "docs/review/Revision_Vigente_Obra_Operacion_T75.md",
+      "bytes": 4677,
+      "sha256": "ce02eb37ea989a1b3126e48bc88e87c7acf2cc8fe293a084ac1f9ba5acb8ecd6"
     },
     {
       "path": "docs/review/Revision_Vigente_Sin_Refi_T67.md",
@@ -622,6 +637,11 @@
       "sha256": "889e3cac5de90b18cfe68d8256af52b09bc16558f6f25f81e4924a0137fc35da"
     },
     {
+      "path": "docs/review/synthetic-staged-operating-demo.json",
+      "bytes": 25681,
+      "sha256": "85112a66370a04bff4b85b050fea0f03625ddb98cbfba82103732e17632ee6c9"
+    },
+    {
       "path": "docs/review-lifecycle-acceptance-cases.json",
       "bytes": 8050,
       "sha256": "ede583b02cc2a71967eea2fd1295efeff9d3c265e0495d6ef08c0b60ea514cb9"
@@ -790,6 +810,11 @@
       "path": "docs/technical-coverage-T68-T71.json",
       "bytes": 16132,
       "sha256": "9f983ab782041b11f9868d3991d3754aab4e74c460353b2ccac90418d3882467"
+    },
+    {
+      "path": "docs/technical-coverage-T72-T75.json",
+      "bytes": 15799,
+      "sha256": "0d5c718ed6db1d5e0aa7bfcce1532c18f8a4b524008ce1a1be3f0e71a5dd95ba"
     },
     {
       "path": "docs/technical-implementation-T01.md",
@@ -1047,9 +1072,14 @@
       "sha256": "dbd81ab446562eb0eea9fb6147e3a6ab2c21c4c3909d2553b6465791436c3c59"
     },
     {
+      "path": "docs/technical-implementation-T72-T75.md",
+      "bytes": 2947,
+      "sha256": "eec2cf386b8c73f3e2895ba13ce548ccd482c7b2ec170f1e60ae1af63e51899a"
+    },
+    {
       "path": "docs/technical-implementation-status.json",
-      "bytes": 22501,
-      "sha256": "8004b11fb1123071f359dc79c8b30a7e7e4c4475bd3b2064d8cc58177080b02f"
+      "bytes": 23726,
+      "sha256": "2612f8483f03068bb8e0ea5119fc6e328117f7f7b570129bf958d81267478cb5"
     },
     {
       "path": "infra/README.md",
@@ -1957,6 +1987,11 @@
       "sha256": "1c23d1c6d629e98eb2448f2ab697bf2970dda501275c072ac64109d4f36ef6f1"
     },
     {
+      "path": "src/miniuw_foundation/operating_debt_phase.py",
+      "bytes": 8155,
+      "sha256": "7f875a0f0fbe3ffe8003f9963f4474f45cb257bfab87b22b0af11d2630faff6b"
+    },
+    {
       "path": "src/miniuw_foundation/operating_dscr.py",
       "bytes": 5001,
       "sha256": "a3df43cf92b8a3fac0465f8a5e4db9c420fc3b44f5587c50a9048b9a8f8be0bd"
@@ -2080,6 +2115,21 @@
       "path": "src/miniuw_foundation/sources.py",
       "bytes": 965,
       "sha256": "4a9747a6623f20b5528f836fdc63c083750d727693d533bdbe796cd9a114a370"
+    },
+    {
+      "path": "src/miniuw_foundation/staged_lifecycle_bundle.py",
+      "bytes": 12089,
+      "sha256": "49b658b5cc7de1c1a70ebb1af47afed77a30ad58dd198584017f295734f67892"
+    },
+    {
+      "path": "src/miniuw_foundation/staged_lifecycle_returns.py",
+      "bytes": 7551,
+      "sha256": "2dd366642eb025e358418115e017bdf774ac70160f9517b618f76745e18c4353"
+    },
+    {
+      "path": "src/miniuw_foundation/staged_operating_window.py",
+      "bytes": 6061,
+      "sha256": "20b394cc8dab2d4c78d719d0572b38025c474d3e3c97ff3e0bc6cf8044e3b731"
     },
     {
       "path": "src/miniuw_foundation/store.py",
@@ -2517,6 +2567,16 @@
       "sha256": "c4c5fa44683498fe7628d8d2c49d35d5031cfa99ed51fd8aa83c1f2485b91646"
     },
     {
+      "path": "templates/synthetic-staged-lifecycle-bundle-example.json",
+      "bytes": 128183,
+      "sha256": "f8f197a48513b12895b1b1b7b2bc58d0691bf43823659809f98c09781cd99643"
+    },
+    {
+      "path": "templates/synthetic-staged-lifecycle-evidence-example.json",
+      "bytes": 18042,
+      "sha256": "d12b89c18c4c791a1767583fad9e83d32041f3ad43f87ee842d263050cf29562"
+    },
+    {
       "path": "templates/synthetic-workbook-example.xlsx",
       "bytes": 1661,
       "sha256": "d7acbf6cd7eefd921b183c89e9ac987a33dc5105f2c8be886969f05d22b36042"
@@ -2750,6 +2810,11 @@
       "path": "tests/test_operating_cash.py",
       "bytes": 13426,
       "sha256": "618061c38e48c912090cf2d1033bca59ea3d1c05d2fbcbc6742c4dba0f9facae"
+    },
+    {
+      "path": "tests/test_operating_debt_phase.py",
+      "bytes": 18121,
+      "sha256": "22f34b418a1cc500b16c5e74fe96243237ad11e5992895313768041203962c24"
     },
     {
       "path": "tests/test_operating_dscr.py",
@@ -3052,6 +3117,11 @@
       "sha256": "ecddcb31a5484762fcbde5cb7f1fecf9b2bba40107bd54b047c57dc465cc6fcb"
     },
     {
+      "path": "tools/demo_staged_operating_debt.py",
+      "bytes": 9714,
+      "sha256": "ab266e3ad81f702ae8463b8eb7af7a790e9667a3d134797d33b7bd4f04c7d335"
+    },
+    {
       "path": "tools/demo_synthetic_archive.py",
       "bytes": 2800,
       "sha256": "54347de7ff5f45a7b7aee7530474be8fafd19c0589e0c96154c290cf70a9f8fb"
@@ -3125,6 +3195,11 @@
       "path": "tools/lifecycle_demo_support.py",
       "bytes": 9819,
       "sha256": "36072b52ab4a8f981c34b658ccca73b55093327d7ee469d2c250dd62ae32604b"
+    },
+    {
+      "path": "tools/staged_phase_demo_support.py",
+      "bytes": 8912,
+      "sha256": "98f46cf846638a537f7313d1a22242054fc6dcffe13fbedfcf5317c9ac8f6415"
     }
   ]
 }

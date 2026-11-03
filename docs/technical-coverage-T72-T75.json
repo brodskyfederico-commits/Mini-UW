@@ -1,0 +1,333 @@
+{
+  "scope": "Explicit same-liability synthetic staged construction-to-operating schedule and declared hold/sale cash returns; no actual contract adoption or original financial gate closure",
+  "rows": [
+    {
+      "requirement_or_variable": "same_liability_staged_principal_to_operating_schedule",
+      "source": {
+        "path": "docs/technical-implementation-T72-T75.md",
+        "line": 5,
+        "sha256": "eec2cf386b8c73f3e2895ba13ce548ccd482c7b2ec170f1e60ae1af63e51899a"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 amortización/vencimiento y repago/distribución",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "DEBT-01"
+        },
+        {
+          "documento": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+          "sha256_documento": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+          "ubicacion_exacta": "§3 Costs and TDC / Timing / Refinance and metrics",
+          "definicion_documentada": "Reglas históricas de financiación y flujo mensual; Manual pp.11/13/23/32/53 y C51:C53 precisan campos y pendientes.",
+          "matrix_id": "M5-06"
+        },
+        {
+          "documento": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+          "sha256_documento": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+          "ubicacion_exacta": "§3 Costs and TDC / Timing / Refinance and metrics",
+          "definicion_documentada": "Reglas históricas de financiación y flujo mensual; Manual pp.11/13/23/32/53 y C51:C53 precisan campos y pendientes.",
+          "matrix_id": "M5-09"
+        }
+      ],
+      "current_definition": "Replayed staged cash/principal carry must equal separately supplied operating schedule principal, ID/context/currency, exact phase boundary and original maturity; T10 origination field is expressly a schedule anchor only inside this adapter, never new cash",
+      "affected_modules": [
+        "M5",
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_operating_debt_phase.py",
+          "line": 28,
+          "test": "OperatingDebtPhaseTests.test_carry_matches_same_liability_schedule_without_funding_again"
+        },
+        {
+          "path": "tests/test_operating_debt_phase.py",
+          "line": 32,
+          "test": "OperatingDebtPhaseTests.test_capitalized_or_changed_principal_not_inferred"
+        },
+        {
+          "path": "tests/test_operating_debt_phase.py",
+          "line": 35,
+          "test": "OperatingDebtPhaseTests.test_original_maturity_not_extended_by_new_calendar"
+        },
+        {
+          "path": "tests/test_operating_debt_phase.py",
+          "line": 37,
+          "test": "OperatingDebtPhaseTests.test_anchor_must_be_exact_construction_cutoff"
+        },
+        {
+          "path": "tests/test_operating_debt_phase.py",
+          "line": 39,
+          "test": "OperatingDebtPhaseTests.test_explicit_same_liability_no_cash_and_settlement_declarations_required"
+        },
+        {
+          "path": "tests/test_operating_debt_phase.py",
+          "line": 43,
+          "test": "OperatingDebtPhaseTests.test_inventory_source_hash_context_and_rate_availability_guards"
+        },
+        {
+          "path": "tests/test_operating_debt_phase.py",
+          "line": 48,
+          "test": "OperatingDebtPhaseTests.test_preceding_cash_deficit_not_repaired_by_valid_phase_terms"
+        }
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Authentic continuity/settlement contract, variable/other phase conventions, actual credit authority, novation/capitalization and independent financial acceptance"
+    },
+    {
+      "requirement_or_variable": "construction_cash_and_operating_window_identity",
+      "source": {
+        "path": "docs/technical-implementation-T72-T75.md",
+        "line": 7,
+        "sha256": "eec2cf386b8c73f3e2895ba13ce548ccd482c7b2ec170f1e60ae1af63e51899a"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 costos, financiación, operaciones y salida",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "CASH-02"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 amortización/vencimiento y repago/distribución",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "DEBT-01"
+        }
+      ],
+      "current_definition": "Both parent proofs replay; exact operating loan raw bytes/windows/run must equal phase evidence; free/restricted construction cash boundary cannot reset or fund again; downstream service/payoff follows existing guarded holding/sale profile",
+      "affected_modules": [
+        "M5",
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_operating_debt_phase.py",
+          "line": 64,
+          "test": "StagedOperatingWindowTests.test_cash_and_dated_principal_continue_through_sale"
+        },
+        {
+          "path": "tests/test_operating_debt_phase.py",
+          "line": 67,
+          "test": "StagedOperatingWindowTests.test_balanced_operating_cash_reset_does_not_match_construction"
+        },
+        {
+          "path": "tests/test_operating_debt_phase.py",
+          "line": 72,
+          "test": "StagedOperatingWindowTests.test_different_but_cash_equivalent_operating_loan_source_cannot_be_grafted"
+        },
+        {
+          "path": "tests/test_operating_debt_phase.py",
+          "line": 75,
+          "test": "StagedOperatingWindowTests.test_all_window_source_hashes_and_basis_checked"
+        },
+        {
+          "path": "tests/test_operating_debt_phase.py",
+          "line": 80,
+          "test": "StagedOperatingWindowTests.test_underlying_operating_defect_not_bypassed"
+        },
+        {
+          "path": "tests/test_operating_debt_phase.py",
+          "line": 82,
+          "test": "StagedOperatingWindowTests.test_rehashed_phase_and_holding_proofs_not_accepted"
+        }
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Actual bank events, noncash/accrual/asset carry, alternative refinancing/novation contracts and complete economic close"
+    },
+    {
+      "requirement_or_variable": "staged_purchase_to_sale_gross_equity_return",
+      "source": {
+        "path": "docs/technical-implementation-T72-T75.md",
+        "line": 9,
+        "sha256": "eec2cf386b8c73f3e2895ba13ce548ccd482c7b2ec170f1e60ae1af63e51899a"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 cadena financiera y diferencias; §7",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "CASH-01"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 aportes/distribuciones brutos frente a neto",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "RETURN-01"
+        }
+      ],
+      "current_definition": "All historical equity and operational/sale gross events map into empty date/currency-compatible new investor targets; neither boundary cash nor carried debt becomes another equity flow; recalculate full-calendar totals, normalization, EM/all IRR roots and cash risk",
+      "affected_modules": [
+        "M5",
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_operating_debt_phase.py",
+          "line": 92,
+          "test": "StagedLifecycleReturnTests.test_full_history_hand_cash_result_and_multiple"
+        },
+        {
+          "path": "tests/test_operating_debt_phase.py",
+          "line": 95,
+          "test": "StagedLifecycleReturnTests.test_no_second_draw_principal_receipt_or_opening_equity"
+        },
+        {
+          "path": "tests/test_operating_debt_phase.py",
+          "line": 98,
+          "test": "StagedLifecycleReturnTests.test_all_historical_interest_costs_and_grid_survive_to_cash_risk"
+        },
+        {
+          "path": "tests/test_operating_debt_phase.py",
+          "line": 103,
+          "test": "StagedLifecycleReturnTests.test_extra_boundary_seed_and_missing_mapping_block_without_override"
+        },
+        {
+          "path": "tests/test_operating_debt_phase.py",
+          "line": 107,
+          "test": "StagedLifecycleReturnTests.test_prefilled_wrong_date_and_scope_basis_not_adopted"
+        },
+        {
+          "path": "tests/test_operating_debt_phase.py",
+          "line": 111,
+          "test": "StagedLifecycleReturnTests.test_additional_operating_equity_is_gross_not_a_balance_reset"
+        },
+        {
+          "path": "tests/test_operating_debt_phase.py",
+          "line": 114,
+          "test": "StagedLifecycleReturnTests.test_capital_coc_personal_and_actual_approval_stay_pending"
+        },
+        {
+          "path": "tests/test_operating_debt_phase.py",
+          "line": 116,
+          "test": "StagedLifecycleReturnTests.test_exact_source_pointers_and_rehashed_window_forgery"
+        }
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "CoC/capital/retained equity bases, personal allocation, actual asset/liability/tax scope and financial acceptance"
+    },
+    {
+      "requirement_or_variable": "portable_staged_lifecycle_replay",
+      "source": {
+        "path": "docs/technical-implementation-T72-T75.md",
+        "line": 11,
+        "sha256": "eec2cf386b8c73f3e2895ba13ce548ccd482c7b2ec170f1e60ae1af63e51899a"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§§3, 5 y 7",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "DAT-01"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 aportes/distribuciones brutos frente a neto",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "RETURN-01"
+        }
+      ],
+      "current_definition": "Bounded compatible exact-source transport reconstructs phase, NOI/cash/holding/sale/debt and full investor result; altered/rehashed or missing sources reject, and blocked phase stays blocked",
+      "affected_modules": [
+        "M5",
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_operating_debt_phase.py",
+          "line": 134,
+          "test": "StagedLifecycleRecoveryTests.test_full_exact_recovery_and_deterministic_repeat_export"
+        },
+        {
+          "path": "tests/test_operating_debt_phase.py",
+          "line": 136,
+          "test": "StagedLifecycleRecoveryTests.test_incompatible_phase_stays_blocked_after_recovery"
+        },
+        {
+          "path": "tests/test_operating_debt_phase.py",
+          "line": 138,
+          "test": "StagedLifecycleRecoveryTests.test_rehashed_result_changed_phase_and_forged_export_rejected"
+        },
+        {
+          "path": "tests/test_operating_debt_phase.py",
+          "line": 145,
+          "test": "StagedLifecycleRecoveryTests.test_wrong_version_omitted_source_and_duplicate_json_rejected"
+        }
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Runtime DB/VPS recovery, authentic source/review authority and real decisions"
+    },
+    {
+      "requirement_or_variable": "current_staged_lifecycle_complete_source_review",
+      "source": {
+        "path": "docs/technical-implementation-T72-T75.md",
+        "line": 11,
+        "sha256": "eec2cf386b8c73f3e2895ba13ce548ccd482c7b2ec170f1e60ae1af63e51899a"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§§3, 5 y 7",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "DAT-01"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 aportes/distribuciones brutos frente a neto",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "RETURN-01"
+        }
+      ],
+      "current_definition": "Exact explicit-time evidence binding of construction, phase contract/schedules, operations, sale, boundary and investor sources (22 in example) before numeric internal view; source expiry or math failure withdraws current figures without deleting historical proof",
+      "affected_modules": [
+        "M5",
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_operating_debt_phase.py",
+          "line": 151,
+          "test": "StagedLifecycleRecoveryTests.test_current_complete_review_and_phase_principal_not_cash"
+        },
+        {
+          "path": "tests/test_operating_debt_phase.py",
+          "line": 155,
+          "test": "StagedLifecycleRecoveryTests.test_expired_construction_phase_boundary_or_investor_withdraws_current_numbers"
+        },
+        {
+          "path": "tests/test_operating_debt_phase.py",
+          "line": 159,
+          "test": "StagedLifecycleRecoveryTests.test_incomplete_pending_estimated_context_or_rehashed_inventory_not_accepted"
+        },
+        {
+          "path": "tests/test_operating_debt_phase.py",
+          "line": 164,
+          "test": "StagedLifecycleRecoveryTests.test_current_evidence_cannot_repair_phase_and_wrong_evaluation_time_rejects"
+        }
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Actual evidence validity/authority, professional approval, external decision PDF, live monitor and production"
+    }
+  ],
+  "real_decisions_enabled": false
+}
