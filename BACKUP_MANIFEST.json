@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D03 review and metric-intake design extensions and T01–T89 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D03 review and metric-intake design extensions and T01–T92 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 34297,
-      "sha256": "f99a97c8de1550950bdffc52c22cea4142a5fd07539021fa231328729967c14c"
+      "bytes": 35147,
+      "sha256": "0e20e096f50ee2fe924636d68e30926aef13dd03a468f96b966616a348892aad"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 136571,
-      "sha256": "9097eb8887dbaa7b72b3fb18031cea37784e4125c15c50177eba53d625efeb12"
+      "bytes": 140006,
+      "sha256": "b62b4c90006adccaf5e73925a01f1e8d460bd6629519fcc0dd8ee9a9c734acef"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -627,6 +627,46 @@
       "sha256": "46045b5d06316b7f1b4fb8bb53d95fa7dc6ce63911058b964382149709ef3df9"
     },
     {
+      "path": "docs/review/miniuw-v1-scheduled-expense-example/MiniUW_v1_Resumen.pdf",
+      "bytes": 6558,
+      "sha256": "b68c3d7920f0cb444b3c51557dd9edba288bd9c8891b076592241f0646faf013"
+    },
+    {
+      "path": "docs/review/miniuw-v1-scheduled-expense-example/audit.json",
+      "bytes": 622,
+      "sha256": "bac98074f8e3d614cf5f5a97649f0e81e308a3845b2647b8f486c3c29618e766"
+    },
+    {
+      "path": "docs/review/miniuw-v1-scheduled-expense-example/case.json",
+      "bytes": 135068,
+      "sha256": "3fc6d231393b96db74fd1d3f713537722a39f34755c7e48ba25e468b629707ab"
+    },
+    {
+      "path": "docs/review/miniuw-v1-scheduled-expense-example/execution-evidence.json",
+      "bytes": 228742,
+      "sha256": "c87b67ef88bea164bf7bdc35787038db50ad8b39af171cccfa0b01269519ca84"
+    },
+    {
+      "path": "docs/review/miniuw-v1-scheduled-expense-example/package.json",
+      "bytes": 1217,
+      "sha256": "f4012d588587fdc14d9c03bc02ac99208511065771dd7e36f3c03577f39012f4"
+    },
+    {
+      "path": "docs/review/miniuw-v1-scheduled-expense-example/report-manifest.json",
+      "bytes": 12058,
+      "sha256": "58b994913d1e65a46016a0bf3511a131e99a892dd142d3a8e60e68329fb60726"
+    },
+    {
+      "path": "docs/review/miniuw-v1-scheduled-expense-example/results.json",
+      "bytes": 62270,
+      "sha256": "1b73b77ae6d60a1abf7684995582109aa4e6fd18881148d1fb1643e916d8655f"
+    },
+    {
+      "path": "docs/review/miniuw-v1-scheduled-expense-example/schedule-review.txt",
+      "bytes": 11075,
+      "sha256": "7679ef83ff4940109adecc7156773d51c5fb3a0a316949681c5907cf3493cc54"
+    },
+    {
       "path": "docs/review/pdf-review-validation-R02.json",
       "bytes": 268,
       "sha256": "50dbbe4a559ff06eb03eda76f05b437a800358c89b5aa46dc36b02fd835f9f8a"
@@ -635,6 +675,11 @@
       "path": "docs/review/pdf-review-validation.json",
       "bytes": 367,
       "sha256": "d76008398e1324b0709f0df8220d92fa249863f41c664188a2bbc624d6866fd6"
+    },
+    {
+      "path": "docs/review/scheduled-tax-four-summary.json",
+      "bytes": 11714,
+      "sha256": "1aedba3e87e5b94fa3ccf7e16d8ba6fc977c058cca2dc87d7e7f6dd628145a98"
     },
     {
       "path": "docs/review/synthetic-bounded-exit-sale-demo.json",
@@ -817,6 +862,11 @@
       "sha256": "a4e0f8e5cdffc1f7f5916636e1aa1a1fe770480f179d834706a16419be5f622c"
     },
     {
+      "path": "docs/scheduled-expense-v1-runbook.md",
+      "bytes": 3565,
+      "sha256": "2607967a2666855d219e1c589aca427d64ac1e91451548759b7c091eb8752ba0"
+    },
+    {
       "path": "docs/sensitivity-ranking.md",
       "bytes": 4024,
       "sha256": "ace476dfa79506eff7e9d541a93523cd84db2b5cd12cdb3cd2abec871aaf6c52"
@@ -995,6 +1045,11 @@
       "path": "docs/technical-coverage-T88-T89.json",
       "bytes": 10798,
       "sha256": "56c329bae7ee8e9c728def2ed8bdd08bc3b3b2ea37d0f2d85ba03f379e393767"
+    },
+    {
+      "path": "docs/technical-coverage-T90-T92.json",
+      "bytes": 15173,
+      "sha256": "416bbc61ec146af16f34a46a9420c7b65533a93aa33a027d324a1cfaf7b2bd61"
     },
     {
       "path": "docs/technical-implementation-T01.md",
@@ -1287,9 +1342,14 @@
       "sha256": "462b087fc07f551afe94fb58b4b008fd38717fd02bb79d886cbb256191589491"
     },
     {
+      "path": "docs/technical-implementation-T90-T92.md",
+      "bytes": 5911,
+      "sha256": "36560e6086187abcddac7def5c37f067af66741f4da76597a56fff62c5a85c8b"
+    },
+    {
       "path": "docs/technical-implementation-status.json",
-      "bytes": 30918,
-      "sha256": "b09a0d87b419a1da05f4c1bde072b8b0ecf228aabf6f7257c79fa1b87e5dc375"
+      "bytes": 32434,
+      "sha256": "4ffc9f158bb8740a48287ea00a08c87870a967257b5ef63a59319bf385314193"
     },
     {
       "path": "infra/README.md",
@@ -2142,6 +2202,11 @@
       "sha256": "3f81f3b297968910a2c553957c40ec8408daed22aef1c45d9ac4c51ace14e42e"
     },
     {
+      "path": "src/miniuw_foundation/expense_schedule.py",
+      "bytes": 7616,
+      "sha256": "0ccb1428ab2cfac66493466b58014a6ca20dde0cecbd08fd37c765d450378dc4"
+    },
+    {
       "path": "src/miniuw_foundation/hold_sale_bundle.py",
       "bytes": 5083,
       "sha256": "f56db8b5a008c35ddbaa1fb89233b0b7d7e16a0c7b757d3df6c84bc539d41f0e"
@@ -2352,6 +2417,16 @@
       "sha256": "0f0e4fee3d0d6c34c93634c24a4a1c5f19d7a8bf43a65a5a25e0be396c47d7f1"
     },
     {
+      "path": "src/miniuw_foundation/scheduled_expense_artifacts.py",
+      "bytes": 8951,
+      "sha256": "21c085adba184f902955570a3d54bf49ba6e145c0da7f181a69fbac7a74eb7ef"
+    },
+    {
+      "path": "src/miniuw_foundation/scheduled_expense_case.py",
+      "bytes": 13463,
+      "sha256": "39d1130aa1b424c7ec333389718279b3ba8974a182194620fa25a069a4baa647"
+    },
+    {
       "path": "src/miniuw_foundation/scoped_profiles.py",
       "bytes": 6775,
       "sha256": "09ae05bd0ed27649b6182bf6138707a2dd31c1fcb27ace30bcc674bcd28a8d69"
@@ -2455,6 +2530,16 @@
       "path": "templates/miniuw-v1-sale-500-candidate.json",
       "bytes": 90781,
       "sha256": "8786bf339f8fb202254c8dffb33f600cabcafa5d09d2cd64b56124f3ef5f18d2"
+    },
+    {
+      "path": "templates/miniuw-v1-scheduled-expense-case.json",
+      "bytes": 135068,
+      "sha256": "3fc6d231393b96db74fd1d3f713537722a39f34755c7e48ba25e468b629707ab"
+    },
+    {
+      "path": "templates/miniuw-v1-scheduled-tax-four-case.json",
+      "bytes": 136466,
+      "sha256": "a6ee892beff038299736992c74391a2ff9407bc0557caed3ea5b134c1d5b7cdb"
     },
     {
       "path": "templates/miniuw-v1-synthetic-case.json",
@@ -2705,6 +2790,11 @@
       "path": "templates/synthetic-holding-period-3.json",
       "bytes": 7795,
       "sha256": "337daff6f55e8c55afeb3255cea226ec36f9a12a25433e7e387f94d23f24a27d"
+    },
+    {
+      "path": "templates/synthetic-insurance-schedule.json",
+      "bytes": 1694,
+      "sha256": "936217b6b0cb4a4d52e9e7f8ec5782d7b1ec412e550c5b1f9e118cbb46b55f49"
     },
     {
       "path": "templates/synthetic-investor-returns.json",
@@ -2970,6 +3060,11 @@
       "path": "templates/synthetic-workbook-example.xlsx",
       "bytes": 1661,
       "sha256": "d7acbf6cd7eefd921b183c89e9ac987a33dc5105f2c8be886969f05d22b36042"
+    },
+    {
+      "path": "templates/synthetic-zero-tax-schedule.json",
+      "bytes": 1348,
+      "sha256": "4a590bd08b8aea42f555c6bfe167aec1a0f607f082e422e9be854cf276af6448"
     },
     {
       "path": "tests/bounded_cost_test_support.py",
@@ -3347,6 +3442,11 @@
       "sha256": "365c9350ffec9e39bf4eb9051e206abab9944061959738a7cabd06c3ed6dc2ff"
     },
     {
+      "path": "tests/test_scheduled_expenses.py",
+      "bytes": 21272,
+      "sha256": "b27600cb8d7a3189309823de525f1bc63b76599872d4e319eaa4f224a22aa203"
+    },
+    {
       "path": "tests/test_scoped_profiles.py",
       "bytes": 12853,
       "sha256": "74239a326ae849be664dae7fe298e1cc859c94e858c23f2b5b6c877651433fbc"
@@ -3670,6 +3770,11 @@
       "path": "tools/rental_lifecycle_demo_support.py",
       "bytes": 7048,
       "sha256": "bd5cde6a714adffa99e2151c55d4d957d2011d3a493f0af51a8ee1f1b4417ee9"
+    },
+    {
+      "path": "tools/scheduled_miniuw_v1.py",
+      "bytes": 1276,
+      "sha256": "57f00bf482afbce443e8d44ebb931d3fb22743f37966daf31f55f6196ac86791"
     },
     {
       "path": "tools/staged_phase_demo_support.py",

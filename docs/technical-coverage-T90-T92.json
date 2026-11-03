@@ -1,0 +1,327 @@
+{
+  "scope": "Supplied insurance/tax full-window cost schedules linked to complete v1 cash/return/current-source gate and one-page replay; no financial/legal authority closure",
+  "rows": [
+    {
+      "requirement_or_variable": "supplied_full_window_cost_fractions_and_due_installments",
+      "source": {
+        "path": "docs/technical-implementation-T90-T92.md",
+        "line": 5,
+        "sha256": "36560e6086187abcddac7def5c37f067af66741f4da76597a56fff62c5a85c8b"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+          "sha256_documento": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+          "ubicacion_exacta": "§3, Expenses",
+          "definicion_documentada": "Fuente histórica de Gastos sin impuesto; desarrollo nuevo localizado por ID en docs/model-operations-contract.md. No demuestra adopción aprobada.",
+          "matrix_id": "M2-05"
+        },
+        {
+          "documento": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+          "sha256_documento": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+          "ubicacion_exacta": "§3, Expenses",
+          "definicion_documentada": "Fuente histórica de NOI/impuesto simultáneos; desarrollo nuevo localizado por ID en docs/model-operations-contract.md. No demuestra adopción aprobada.",
+          "matrix_id": "M2-07"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§§3, 5 y 7",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "DAT-01"
+        }
+      ],
+      "current_definition": "Exact supplied fractions, cost and due installments with full window/settlement, explicit zero/completeness, metadata/source identities and guarded arithmetic",
+      "affected_modules": [
+        "M2",
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_scheduled_expenses.py",
+          "line": 47,
+          "test": "ExpenseScheduleTests.test_explicit_insurance_cost_fractions_and_installments"
+        },
+        {
+          "path": "tests/test_scheduled_expenses.py",
+          "line": 53,
+          "test": "ExpenseScheduleTests.test_explicit_zero_tax_keeps_complete_empty_installment_inventory"
+        },
+        {
+          "path": "tests/test_scheduled_expenses.py",
+          "line": 57,
+          "test": "ExpenseScheduleTests.test_missing_fraction_blocks_even_with_zero_cost"
+        },
+        {
+          "path": "tests/test_scheduled_expenses.py",
+          "line": 61,
+          "test": "ExpenseScheduleTests.test_gaps_overlaps_order_and_incomplete_window_block"
+        },
+        {
+          "path": "tests/test_scheduled_expenses.py",
+          "line": 65,
+          "test": "ExpenseScheduleTests.test_supplied_half_fractions_are_not_derived_from_unequal_day_counts"
+        },
+        {
+          "path": "tests/test_scheduled_expenses.py",
+          "line": 70,
+          "test": "ExpenseScheduleTests.test_fraction_domain_and_complete_sum_required"
+        },
+        {
+          "path": "tests/test_scheduled_expenses.py",
+          "line": 74,
+          "test": "ExpenseScheduleTests.test_missing_incomplete_and_wrong_total_installments_withhold_all_totals"
+        },
+        {
+          "path": "tests/test_scheduled_expenses.py",
+          "line": 78,
+          "test": "ExpenseScheduleTests.test_installment_dates_obey_half_open_service_window"
+        },
+        {
+          "path": "tests/test_scheduled_expenses.py",
+          "line": 82,
+          "test": "ExpenseScheduleTests.test_required_source_and_allocation_basis_references"
+        },
+        {
+          "path": "tests/test_scheduled_expenses.py",
+          "line": 86,
+          "test": "ExpenseScheduleTests.test_strict_schema_context_exact_rationals_and_assumptions"
+        },
+        {
+          "path": "tests/test_scheduled_expenses.py",
+          "line": 93,
+          "test": "ExpenseScheduleTests.test_duplicate_period_installment_or_source_identity_rejected"
+        },
+        {
+          "path": "tests/test_scheduled_expenses.py",
+          "line": 98,
+          "test": "ExpenseScheduleTests.test_injected_and_real_arithmetic_budget_withholds_every_allocated_number"
+        },
+        {
+          "path": "tests/test_scheduled_expenses.py",
+          "line": 104,
+          "test": "ExpenseScheduleTests.test_repeated_immutable_result_and_input"
+        },
+        {
+          "path": "tests/test_scheduled_expenses.py",
+          "line": 107,
+          "test": "ExpenseScheduleTests.test_zero_does_not_allow_missing_periods_and_explicit_zero_installment_is_retained"
+        }
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Real insurance adequacy/authority, tax law/deadlines, accounting allocation, partial windows/renewals/refunds/credits"
+    },
+    {
+      "requirement_or_variable": "all_insurance_tax_expense_and_payment_binding_to_returns",
+      "source": {
+        "path": "docs/technical-implementation-T90-T92.md",
+        "line": 13,
+        "sha256": "36560e6086187abcddac7def5c37f067af66741f4da76597a56fff62c5a85c8b"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+          "sha256_documento": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+          "ubicacion_exacta": "§3, Expenses",
+          "definicion_documentada": "Fuente histórica de Gastos sin impuesto; desarrollo nuevo localizado por ID en docs/model-operations-contract.md. No demuestra adopción aprobada.",
+          "matrix_id": "M2-05"
+        },
+        {
+          "documento": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+          "sha256_documento": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+          "ubicacion_exacta": "§3, Expenses",
+          "definicion_documentada": "Fuente histórica de NOI/impuesto simultáneos; desarrollo nuevo localizado por ID en docs/model-operations-contract.md. No demuestra adopción aprobada.",
+          "matrix_id": "M2-07"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 costos, financiación, operaciones y salida",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "CASH-02"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 aportes/distribuciones brutos frente a neto",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "RETURN-01"
+        }
+      ],
+      "current_definition": "Every target and period, exact T76/NOI expense, installment-to-payment date/amount/ID, unchanged original cash return or conditional supplied tax revision counted once",
+      "affected_modules": [
+        "M2",
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_scheduled_expenses.py",
+          "line": 117,
+          "test": "ScheduledExpenseCaseTests.test_all_41_sources_and_existing_cash_return_are_preserved_without_new_flows"
+        },
+        {
+          "path": "tests/test_scheduled_expenses.py",
+          "line": 122,
+          "test": "ScheduledExpenseCaseTests.test_independently_supplied_tax_four_reaches_sale_and_return_once"
+        },
+        {
+          "path": "tests/test_scheduled_expenses.py",
+          "line": 127,
+          "test": "ScheduledExpenseCaseTests.test_missing_schedule_or_unbound_target_cannot_hide_other_compatible_totals"
+        },
+        {
+          "path": "tests/test_scheduled_expenses.py",
+          "line": 131,
+          "test": "ScheduledExpenseCaseTests.test_equal_total_with_different_insurance_allocations_is_not_same_NOI"
+        },
+        {
+          "path": "tests/test_scheduled_expenses.py",
+          "line": 135,
+          "test": "ScheduledExpenseCaseTests.test_due_date_change_needs_resolution_even_when_amounts_match"
+        },
+        {
+          "path": "tests/test_scheduled_expenses.py",
+          "line": 139,
+          "test": "ScheduledExpenseCaseTests.test_installment_amounts_cannot_offset_each_other"
+        },
+        {
+          "path": "tests/test_scheduled_expenses.py",
+          "line": 152,
+          "test": "ScheduledExpenseCaseTests.test_currency_item_class_and_unchanged_amount_different_periods_block"
+        },
+        {
+          "path": "tests/test_scheduled_expenses.py",
+          "line": 157,
+          "test": "ScheduledExpenseCaseTests.test_missing_base_cash_value_withholds_new_profile_without_repair_or_crash"
+        }
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Authentic sources, acceptable late/early/partial payment policy, personal/capital/CoC and financial acceptance"
+    },
+    {
+      "requirement_or_variable": "complete_41_source_current_gate",
+      "source": {
+        "path": "docs/technical-implementation-T90-T92.md",
+        "line": 17,
+        "sha256": "36560e6086187abcddac7def5c37f067af66741f4da76597a56fff62c5a85c8b"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§§3, 5 y 7",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "DAT-01"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 aportes/distribuciones brutos frente a neto",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "RETURN-01"
+        }
+      ],
+      "current_definition": "Base and new full source declarations at same UTC with exact hashes/localizers/context; expiry on either gate withdraws all current return and metric figures",
+      "affected_modules": [
+        "M2",
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_scheduled_expenses.py",
+          "line": 143,
+          "test": "ScheduledExpenseCaseTests.test_old_and_new_evidence_gates_cannot_substitute_for_each_other"
+        },
+        {
+          "path": "tests/test_scheduled_expenses.py",
+          "line": 162,
+          "test": "ScheduledExpenseCaseTests.test_exact_case_source_binding_and_common_time_required"
+        }
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Real authority, live monitors, independent professional approval"
+    },
+    {
+      "requirement_or_variable": "source_first_one_page_scheduled_expense_recovery_and_artifacts",
+      "source": {
+        "path": "docs/technical-implementation-T90-T92.md",
+        "line": 21,
+        "sha256": "36560e6086187abcddac7def5c37f067af66741f4da76597a56fff62c5a85c8b"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§§3, 5 y 7",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "DAT-01"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 aportes/distribuciones brutos frente a neto",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "RETURN-01"
+        }
+      ],
+      "current_definition": "Exact same-version full source/result replay for matched/blocked cases, one-page guarded PDF/span validation, strict artifact inventory/hash/replay and no different overwrite",
+      "affected_modules": [
+        "M2",
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_scheduled_expenses.py",
+          "line": 171,
+          "test": "ScheduledExpenseArtifactTests.test_one_page_41_source_current_story_and_exact_manifest_text"
+        },
+        {
+          "path": "tests/test_scheduled_expenses.py",
+          "line": 178,
+          "test": "ScheduledExpenseArtifactTests.test_expired_schedule_withdraws_page_numbers_and_blocked_bundle_still_replays"
+        },
+        {
+          "path": "tests/test_scheduled_expenses.py",
+          "line": 184,
+          "test": "ScheduledExpenseArtifactTests.test_exact_source_portable_positive_replay_and_changed_version_rejection"
+        },
+        {
+          "path": "tests/test_scheduled_expenses.py",
+          "line": 192,
+          "test": "ScheduledExpenseArtifactTests.test_rehashed_result_forgery_does_not_bypass_report_export_or_recovery"
+        },
+        {
+          "path": "tests/test_scheduled_expenses.py",
+          "line": 199,
+          "test": "ScheduledExpenseArtifactTests.test_materialization_exact_retry_audit_and_different_input_not_overwritten"
+        },
+        {
+          "path": "tests/test_scheduled_expenses.py",
+          "line": 206,
+          "test": "ScheduledExpenseArtifactTests.test_altered_rehashed_artifacts_unsafe_inventory_and_symlink_rejected"
+        },
+        {
+          "path": "tests/test_scheduled_expenses.py",
+          "line": 218,
+          "test": "ScheduledExpenseArtifactTests.test_failed_rename_leaves_no_partial_final_output"
+        },
+        {
+          "path": "tests/test_scheduled_expenses.py",
+          "line": 225,
+          "test": "ScheduledExpenseArtifactTests.test_strict_wrapper_binding_and_unsupported_pdf_glyph_prevent_output"
+        }
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Concurrent production publication, independent financial audit, final external financial authorization and VPS/runtime DB recovery"
+    }
+  ],
+  "real_decisions_enabled": false
+}
