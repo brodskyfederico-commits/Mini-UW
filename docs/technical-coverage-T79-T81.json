@@ -1,0 +1,399 @@
+{
+  "scope": "Explicit supplied full-month residential rental income linked to expense-checked staged lifecycle/current view; no market rules or financial closure",
+  "rows": [
+    {
+      "requirement_or_variable": "complete_supplied_monthly_rental_calendar",
+      "source": {
+        "path": "docs/technical-implementation-T79-T81.md",
+        "line": 5,
+        "sha256": "cedc2a27c4d0211de2ede2f90132a184b78b9f0beaa2bd144a7bd3935bbd0c7e"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+          "sha256_documento": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+          "ubicacion_exacta": "§3, Revenue",
+          "definicion_documentada": "Fuente histórica de Renta por tipo; desarrollo nuevo localizado por ID en docs/model-operations-contract.md. No demuestra adopción aprobada.",
+          "matrix_id": "M2-01"
+        },
+        {
+          "documento": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+          "sha256_documento": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+          "ubicacion_exacta": "§3, Revenue",
+          "definicion_documentada": "Fuente histórica de Renta potencial; desarrollo nuevo localizado por ID en docs/model-operations-contract.md. No demuestra adopción aprobada.",
+          "matrix_id": "M2-02"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§§3, 5 y 7",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "DAT-01"
+        }
+      ],
+      "current_definition": "Full explicit one-month T21 calendar, fixed physical inventory and metadata; missing/partial/reordered months never interpolate or become zero",
+      "affected_modules": [
+        "M2",
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_rental_calendar.py",
+          "line": 27,
+          "test": "RentalCalendarTests.test_independent_monthly_potential_vacancy_concession_and_effective_totals"
+        },
+        {
+          "path": "tests/test_rental_calendar.py",
+          "line": 34,
+          "test": "RentalCalendarTests.test_missing_or_reordered_month_is_not_interpolated_or_zero_filled"
+        },
+        {
+          "path": "tests/test_rental_calendar.py",
+          "line": 43,
+          "test": "RentalCalendarTests.test_partial_overlap_and_non_first_day_periods_need_another_profile"
+        },
+        {
+          "path": "tests/test_rental_calendar.py",
+          "line": 51,
+          "test": "RentalCalendarTests.test_month_source_must_be_one_month_and_match_context_currency_period"
+        },
+        {
+          "path": "tests/test_rental_calendar.py",
+          "line": 60,
+          "test": "RentalCalendarTests.test_physical_group_inventory_cannot_change_silently"
+        },
+        {
+          "path": "tests/test_rental_calendar.py",
+          "line": 66,
+          "test": "RentalCalendarTests.test_unknown_rent_is_not_explicit_zero_or_prior_month_rent"
+        }
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Actual inventory, leases, absorption/availability/partial-month profiles and calendar authority"
+    },
+    {
+      "requirement_or_variable": "explicit_loss_concession_and_income_only_scope",
+      "source": {
+        "path": "docs/technical-implementation-T79-T81.md",
+        "line": 7,
+        "sha256": "cedc2a27c4d0211de2ede2f90132a184b78b9f0beaa2bd144a7bd3935bbd0c7e"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+          "sha256_documento": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+          "ubicacion_exacta": "§3, Revenue",
+          "definicion_documentada": "Fuente histórica de Renta potencial; desarrollo nuevo localizado por ID en docs/model-operations-contract.md. No demuestra adopción aprobada.",
+          "matrix_id": "M2-02"
+        },
+        {
+          "documento": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+          "sha256_documento": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+          "ubicacion_exacta": "§3, Revenue",
+          "definicion_documentada": "Fuente histórica de Ingreso residencial efectivo; desarrollo nuevo localizado por ID en docs/model-operations-contract.md. No demuestra adopción aprobada.",
+          "matrix_id": "M2-03"
+        },
+        {
+          "documento": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+          "sha256_documento": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+          "ubicacion_exacta": "§3, Expenses",
+          "definicion_documentada": "Fuente histórica de Gastos sin impuesto; desarrollo nuevo localizado por ID en docs/model-operations-contract.md. No demuestra adopción aprobada.",
+          "matrix_id": "M2-05"
+        }
+      ],
+      "current_definition": "Preserve separate potential/loss/concession/effective results, zero/negative arithmetic; only zero monthly expense placeholders and exact guarded sum, no occupancy/market rule inferred",
+      "affected_modules": [
+        "M2",
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_rental_calendar.py",
+          "line": 74,
+          "test": "RentalCalendarTests.test_concession_base_and_net_rent_never_double_count"
+        },
+        {
+          "path": "tests/test_rental_calendar.py",
+          "line": 87,
+          "test": "RentalCalendarTests.test_nonzero_monthly_expense_is_not_silently_ignored_or_recounted"
+        },
+        {
+          "path": "tests/test_rental_calendar.py",
+          "line": 94,
+          "test": "RentalCalendarTests.test_missing_inventory_and_bases_withhold_all_totals"
+        },
+        {
+          "path": "tests/test_rental_calendar.py",
+          "line": 100,
+          "test": "RentalCalendarTests.test_negative_mathematical_rent_is_preserved_without_clamping"
+        },
+        {
+          "path": "tests/test_rental_calendar.py",
+          "line": 109,
+          "test": "RentalCalendarTests.test_injected_and_real_denominator_growth_budget_withhold_partial_export"
+        },
+        {
+          "path": "tests/test_rental_calendar.py",
+          "line": 130,
+          "test": "RentalCalendarTests.test_strict_json_synthetic_context_and_bounded_inventory"
+        },
+        {
+          "path": "tests/test_rental_calendar.py",
+          "line": 141,
+          "test": "RentalCalendarTests.test_deterministic_immutable_source_and_unverified_flags"
+        }
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Physical occupancy interpretation, collections, true concessions and actual expense policy"
+    },
+    {
+      "requirement_or_variable": "monthly_rental_exact_NOI_and_cash_binding",
+      "source": {
+        "path": "docs/technical-implementation-T79-T81.md",
+        "line": 13,
+        "sha256": "cedc2a27c4d0211de2ede2f90132a184b78b9f0beaa2bd144a7bd3935bbd0c7e"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+          "sha256_documento": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+          "ubicacion_exacta": "§3, Revenue",
+          "definicion_documentada": "Fuente histórica de Renta por tipo; desarrollo nuevo localizado por ID en docs/model-operations-contract.md. No demuestra adopción aprobada.",
+          "matrix_id": "M2-01"
+        },
+        {
+          "documento": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+          "sha256_documento": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+          "ubicacion_exacta": "§3, Revenue",
+          "definicion_documentada": "Fuente histórica de Renta potencial; desarrollo nuevo localizado por ID en docs/model-operations-contract.md. No demuestra adopción aprobada.",
+          "matrix_id": "M2-02"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 costos, financiación, operaciones y salida",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "CASH-02"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§§3, 5 y 7",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "DAT-01"
+        }
+      ],
+      "current_definition": "Every operating period calendar matches exact residential NOI item, dates/context/currency/source hashes, other income inventory zero and physical inventory across periods; no implicit NOI override",
+      "affected_modules": [
+        "M2",
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_rental_checked_lifecycle.py",
+          "line": 52,
+          "test": "RentalCheckedLifecycleTests.test_valid_changed_monthly_rent_cannot_patch_existing_NOI_or_return"
+        },
+        {
+          "path": "tests/test_rental_checked_lifecycle.py",
+          "line": 60,
+          "test": "RentalCheckedLifecycleTests.test_missing_month_or_period_cannot_be_ignored"
+        },
+        {
+          "path": "tests/test_rental_checked_lifecycle.py",
+          "line": 69,
+          "test": "RentalCheckedLifecycleTests.test_same_rent_total_does_not_allow_changed_physical_inventory"
+        },
+        {
+          "path": "tests/test_rental_checked_lifecycle.py",
+          "line": 78,
+          "test": "RentalCheckedLifecycleTests.test_exact_income_target_and_explicit_other_zero_inventory"
+        },
+        {
+          "path": "tests/test_rental_checked_lifecycle.py",
+          "line": 88,
+          "test": "RentalCheckedLifecycleTests.test_source_context_currency_scope_and_date_binding_guards"
+        }
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Mixed/commercial income profiles, partial months, actual cash timing and authority"
+    },
+    {
+      "requirement_or_variable": "monthly_rental_checked_full_gross_return",
+      "source": {
+        "path": "docs/technical-implementation-T79-T81.md",
+        "line": 17,
+        "sha256": "cedc2a27c4d0211de2ede2f90132a184b78b9f0beaa2bd144a7bd3935bbd0c7e"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 aportes/distribuciones brutos frente a neto",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "RETURN-01"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 costos, financiación, operaciones y salida",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "CASH-02"
+        }
+      ],
+      "current_definition": "Only compatible full expense/debt/cash chain exposes identical investor ledger with no second rent/expense/funding; preserve negative results and all roots",
+      "affected_modules": [
+        "M2",
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_rental_checked_lifecycle.py",
+          "line": 29,
+          "test": "RentalCheckedLifecycleTests.test_full_cash_return_hand_totals_from_monthly_rent"
+        },
+        {
+          "path": "tests/test_rental_checked_lifecycle.py",
+          "line": 40,
+          "test": "RentalCheckedLifecycleTests.test_exact_existing_ledger_reused_without_second_rent_or_expense"
+        },
+        {
+          "path": "tests/test_rental_checked_lifecycle.py",
+          "line": 103,
+          "test": "RentalCheckedLifecycleTests.test_expense_blocker_survives_correct_monthly_rental_and_recovery"
+        }
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Capital/CoC/retained equity/personal allocation, actual finance/payments and full financial acceptance"
+    },
+    {
+      "requirement_or_variable": "rental_checked_portable_recovery",
+      "source": {
+        "path": "docs/technical-implementation-T79-T81.md",
+        "line": 19,
+        "sha256": "cedc2a27c4d0211de2ede2f90132a184b78b9f0beaa2bd144a7bd3935bbd0c7e"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§§3, 5 y 7",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "DAT-01"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 aportes/distribuciones brutos frente a neto",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "RETURN-01"
+        }
+      ],
+      "current_definition": "Bounded exact-source versions and full reconstruction, including blocked cases; altered/rehashed source or result rejected",
+      "affected_modules": [
+        "M2",
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_rental_checked_lifecycle.py",
+          "line": 119,
+          "test": "RentalCheckedLifecycleTests.test_rehashed_calendar_proof_and_changed_exact_source_are_rejected"
+        },
+        {
+          "path": "tests/test_rental_checked_lifecycle.py",
+          "line": 130,
+          "test": "RentalCheckedLifecycleTests.test_portable_deterministic_replay_and_forged_result_source_versions"
+        },
+        {
+          "path": "tests/test_rental_checked_lifecycle.py",
+          "line": 151,
+          "test": "RentalCheckedLifecycleTests.test_strict_manifest_and_immutable_pending_scope"
+        }
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Runtime DB and authentic source/review authority"
+    },
+    {
+      "requirement_or_variable": "every_month_current_source_internal_review",
+      "source": {
+        "path": "docs/technical-implementation-T79-T81.md",
+        "line": 23,
+        "sha256": "cedc2a27c4d0211de2ede2f90132a184b78b9f0beaa2bd144a7bd3935bbd0c7e"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§§3, 5 y 7",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "DAT-01"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 aportes/distribuciones brutos frente a neto",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "RETURN-01"
+        }
+      ],
+      "current_definition": "Exact full source inventory and same explicit UTC required before investor/rental/expense numeric view; expiry/pending/calc failures suppress current figures without deleting history",
+      "affected_modules": [
+        "M2",
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_rental_checked_lifecycle.py",
+          "line": 176,
+          "test": "CurrentRentalLifecycleTests.test_complete_current_return_months_and_existing_expense_bridge"
+        },
+        {
+          "path": "tests/test_rental_checked_lifecycle.py",
+          "line": 187,
+          "test": "CurrentRentalLifecycleTests.test_expired_month_calendar_old_expense_or_loan_withdraws_all_current_numbers"
+        },
+        {
+          "path": "tests/test_rental_checked_lifecycle.py",
+          "line": 198,
+          "test": "CurrentRentalLifecycleTests.test_current_old_inventory_cannot_replace_missing_monthly_source"
+        },
+        {
+          "path": "tests/test_rental_checked_lifecycle.py",
+          "line": 206,
+          "test": "CurrentRentalLifecycleTests.test_altered_hash_locator_and_context_cannot_make_view_current"
+        },
+        {
+          "path": "tests/test_rental_checked_lifecycle.py",
+          "line": 216,
+          "test": "CurrentRentalLifecycleTests.test_pending_estimated_superseded_month_remains_pending"
+        },
+        {
+          "path": "tests/test_rental_checked_lifecycle.py",
+          "line": 222,
+          "test": "CurrentRentalLifecycleTests.test_current_evidence_cannot_repair_incompatible_rental_NOI"
+        },
+        {
+          "path": "tests/test_rental_checked_lifecycle.py",
+          "line": 235,
+          "test": "CurrentRentalLifecycleTests.test_exact_time_forged_registry_and_immutable_unverified_flags"
+        }
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Actual freshness/authority, live monitoring, professional approval, external decision PDF and deployment"
+    }
+  ],
+  "real_decisions_enabled": false
+}

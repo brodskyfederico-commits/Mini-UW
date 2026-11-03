@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D03 review and metric-intake design extensions and T01–T78 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D03 review and metric-intake design extensions and T01–T81 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 31083,
-      "sha256": "89eae381f074db50e03025183dc24f68a1db47066ecd4f55f30ade37a921fb2f"
+      "bytes": 31977,
+      "sha256": "3124b9ebf57e73051a40db2a456e4ae4e26d0c5aa4d5dcba0e0602224e0f174b"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 121969,
-      "sha256": "e146ba9a77dd5bfbb63389d52eb5865ea30f102e3115270900851ed6b090fc1e"
+      "bytes": 126346,
+      "sha256": "387bdd1269099f13adacc6c59353882f4a3a6391b005ad92d5afccbf5e09f267"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -407,6 +407,11 @@
       "sha256": "153eb40179116a29b10a4882db5025b499063bbc45315e953b0c93aa529d3c5b"
     },
     {
+      "path": "docs/review/Renta_Mensual_y_Retorno_T79_T81.md",
+      "bytes": 4307,
+      "sha256": "ff495728acd10b91798634d5b105bd5637713719e201c9d71cdf02b68ba87a62"
+    },
+    {
       "path": "docs/review/Resumen_Costos_Recuperacion_T43_T45.md",
       "bytes": 1608,
       "sha256": "ebea84568c938777c232df545e4f697ad1f23b427875b3984cd33c7a567914df"
@@ -462,6 +467,11 @@
       "sha256": "b7e1aa9a1a198e217eef477deed2871dddf742fee49fd7681677145c484d6215"
     },
     {
+      "path": "docs/review/Revision_Pendiente_Renta_Mensual_T81.md",
+      "bytes": 1011,
+      "sha256": "b5785e2c2545aa406ad6aab7cd2fdab085442e02a2c91844092fd74f3e824926"
+    },
+    {
       "path": "docs/review/Revision_Pendiente_Sin_Refi_T67.md",
       "bytes": 1011,
       "sha256": "8b4888bfa08c5c99dbcd8af992e26b7af181fc54b46ef51a7020264df69017af"
@@ -485,6 +495,11 @@
       "path": "docs/review/Revision_Vigente_Obra_Operacion_T75.md",
       "bytes": 4677,
       "sha256": "ce02eb37ea989a1b3126e48bc88e87c7acf2cc8fe293a084ac1f9ba5acb8ecd6"
+    },
+    {
+      "path": "docs/review/Revision_Vigente_Renta_Mensual_T81.md",
+      "bytes": 5232,
+      "sha256": "a10fc9eb1cebbf3163f7748215121a1f56263724b3ad4ab24194501579a8578b"
     },
     {
       "path": "docs/review/Revision_Vigente_Sin_Refi_T67.md",
@@ -655,6 +670,11 @@
       "path": "docs/review/synthetic-refinance-capacity-demo.json",
       "bytes": 13068,
       "sha256": "57be6b33c3ac3003830da8451e3fc61caf8a95a4a29ca7a67cd01efe4416183d"
+    },
+    {
+      "path": "docs/review/synthetic-rental-checked-lifecycle-demo.json",
+      "bytes": 91299,
+      "sha256": "b7026f8d509fc0583b7149ddfdb62f1304ead00c6b283ec1a289dfb96d2e5f7f"
     },
     {
       "path": "docs/review/synthetic-sale-recovery-demo.json",
@@ -855,6 +875,11 @@
       "path": "docs/technical-coverage-T77-T78.json",
       "bytes": 14349,
       "sha256": "b0017369e2ccf4b3096cba192fb5f8b9cc72e3f36120476d4339039874e10515"
+    },
+    {
+      "path": "docs/technical-coverage-T79-T81.json",
+      "bytes": 18721,
+      "sha256": "5ec36417a950c6d5e00e097e8702b2aef127ec425ac358c78cda1df9a340fec9"
     },
     {
       "path": "docs/technical-implementation-T01.md",
@@ -1127,9 +1152,14 @@
       "sha256": "328ca3868a0566e9815e51f1be508132ef3fe8f702c9bc2c675eb96ffcd8eb80"
     },
     {
+      "path": "docs/technical-implementation-T79-T81.md",
+      "bytes": 4917,
+      "sha256": "cedc2a27c4d0211de2ede2f90132a184b78b9f0beaa2bd144a7bd3935bbd0c7e"
+    },
+    {
       "path": "docs/technical-implementation-status.json",
-      "bytes": 25515,
-      "sha256": "f02bfd67fae83ed297b219c60d8093e602e4c7bcc6702bbe4c9398aed3705fb8"
+      "bytes": 26919,
+      "sha256": "21d6721d9f4a78432ab09a2a9faa1fe7348c4ac211845968bb75c5148f8dba36"
     },
     {
       "path": "infra/README.md",
@@ -1907,6 +1937,11 @@
       "sha256": "f4db6a03b8910bed7f1521d07998deb9807f6c918c07c4cd167dd5521f9e3061"
     },
     {
+      "path": "src/miniuw_foundation/current_rental_lifecycle.py",
+      "bytes": 7871,
+      "sha256": "de9a1d79706be3ecfef5affb16c241d2fcfa10f4b1d2cb92518df2a725380da4"
+    },
+    {
       "path": "src/miniuw_foundation/data/input-sheet-layout-v1.json",
       "bytes": 24773,
       "sha256": "359ad81af6d20547b91c303b661c596254bfc7dde73c1eca5528d247ff2382f3"
@@ -2120,6 +2155,16 @@
       "path": "src/miniuw_foundation/refinance_capacity.py",
       "bytes": 14678,
       "sha256": "b3250d05ecf4af5c15596d271770bb5f2ec99b73acb022efe96ea5e40be977bf"
+    },
+    {
+      "path": "src/miniuw_foundation/rental_calendar.py",
+      "bytes": 8025,
+      "sha256": "0339c2d4fb3e223e03265eaa95255e30b636246e80b85595ad102e93c78de974"
+    },
+    {
+      "path": "src/miniuw_foundation/rental_checked_lifecycle.py",
+      "bytes": 11110,
+      "sha256": "39ff3281768799afdb7cd1b756e080d2c65bf78108eb668e6d4d81432b40e714"
     },
     {
       "path": "src/miniuw_foundation/rental_noi.py",
@@ -2617,6 +2662,26 @@
       "sha256": "9fadf9da5238deafd65be0508f5aceebf649bb11f0524d2717abdffb6ac8acb4"
     },
     {
+      "path": "templates/synthetic-rental-checked-lifecycle-bundle.json",
+      "bytes": 455951,
+      "sha256": "d2cae23c01afc5d733168037490926ee11050d5283b24411059860cb989aed93"
+    },
+    {
+      "path": "templates/synthetic-rental-expense-base.json",
+      "bytes": 233852,
+      "sha256": "f36eefe7bdc4d029b8ba533cef5792ab340acbe4c1e238f2e069dbc605ad91c1"
+    },
+    {
+      "path": "templates/synthetic-rental-lifecycle-evidence.json",
+      "bytes": 24405,
+      "sha256": "d3f37e2874a12bc33e55fecb3c108fbeac43cf1c856ed110a664e9d8629801ed"
+    },
+    {
+      "path": "templates/synthetic-rental-lifecycle-manifest.json",
+      "bytes": 39487,
+      "sha256": "13e1b9bee230bb6bd73a9917782dbe9c90c3af3f49b7f26c47436065a4738585"
+    },
+    {
       "path": "templates/synthetic-residential-noi-assembly.json",
       "bytes": 1670,
       "sha256": "310de1851f275f4ba5c914e47ea4b67b9da66658a06f9a0824315fa997a3b62c"
@@ -2997,6 +3062,16 @@
       "sha256": "5acd331f7670def390ad33246b7989cb1a7afbce34053653f94829c8e2402b9b"
     },
     {
+      "path": "tests/test_rental_calendar.py",
+      "bytes": 8881,
+      "sha256": "8cb6d2ee3bf36967b1362e0f665dc63c3c7645eb421ac85f223b9ffa8b7a7ceb"
+    },
+    {
+      "path": "tests/test_rental_checked_lifecycle.py",
+      "bytes": 16224,
+      "sha256": "42ef7040904a5d44caa98fe654ea4bf83ef1b12309ced60a9edb5d73ab0577eb"
+    },
+    {
       "path": "tests/test_rental_noi.py",
       "bytes": 9430,
       "sha256": "5823473d6e76f26f4021d24f4565b582e92b8d35a9752b9aef2e88ee6ee01349"
@@ -3222,6 +3297,11 @@
       "sha256": "f20060a436cefe18df5c5ee029c489c225bfd6cc73b422a2ba83d1fc5e902f20"
     },
     {
+      "path": "tools/demo_rental_checked_lifecycle.py",
+      "bytes": 4061,
+      "sha256": "cdee15ab83cb108c7bb2cc17a04126a99d3b2536381ed47803b6ae996ecb6ca1"
+    },
+    {
       "path": "tools/demo_residential_noi_chain.py",
       "bytes": 3701,
       "sha256": "57ea254f74e7c132e237d924843c11a60587497610a061aa01852b0675e842db"
@@ -3325,6 +3405,11 @@
       "path": "tools/lifecycle_demo_support.py",
       "bytes": 9819,
       "sha256": "36072b52ab4a8f981c34b658ccca73b55093327d7ee469d2c250dd62ae32604b"
+    },
+    {
+      "path": "tools/rental_lifecycle_demo_support.py",
+      "bytes": 7048,
+      "sha256": "bd5cde6a714adffa99e2151c55d4d957d2011d3a493f0af51a8ee1f1b4417ee9"
     },
     {
       "path": "tools/staged_phase_demo_support.py",

@@ -1,7 +1,7 @@
 {
   "phase": "post-I01 synthetic technical implementation",
   "user_authorized": true,
-  "component": "T78",
+  "component": "T81",
   "status": "local_implementation_verified_pending_remote_receipt",
   "implemented": [
     "fresh raw-claim drafts from unchanged 55-input/10-criterion template",
@@ -115,9 +115,12 @@
     "exact-source portable staged lifecycle recovery and complete explicit-time evidence gate with internal current/pending review",
     "complete per-item synthetic insurance/other operating expense/computed property tax accrued-to-cash detail, with exact T19/T25 replay, gross dated payments, payable/prepaid checks and portable blocked-or-matched recovery",
     "complete ordered per-period expense detail replay and stable economic item payable/prepaid continuity gating the reproduced staged purchase-to-sale return, with portable matched/blocked recovery",
-    "explicit-time exact full-source expense-checked lifecycle current gate and internal investor/gross expense-payment review, suppressing current numbers on expiry or calculation failure"
+    "explicit-time exact full-source expense-checked lifecycle current gate and internal investor/gross expense-payment review, suppressing current numbers on expiry or calculation failure",
+    "complete supplied one-month T21 residential source calendar with exact potential/loss/concession/effective aggregation and fixed physical group inventory, no missing-month or market inference",
+    "full per-period monthly rental-to-exact-NOI income match gating the expense-checked purchase-to-sale cash return; zero other-income reduced profile and portable blocked/matched replay",
+    "complete explicit-time source gate including every original monthly rental source, with current investor/monthly-rent/expense views withdrawn on expiry or calculation blockers"
   ],
-  "unit_tests": 1184,
+  "unit_tests": 1215,
   "plan_packages_partially_addressed": [
     "IMP-01",
     "IMP-06",
@@ -133,7 +136,7 @@
   "deployment_enabled": false,
   "production_ready": false,
   "next_independent_work": [
-    "source-specific insurance coverage, supplied tax timing and lease-up refinements within rental scope; per-item accrued/cash balance check available in T76",
+    "source-specific insurance coverage and supplied tax timing; explicit contract-specific partial-month/variable physical availability rental profiles remain outside T79",
     "independently supplied revised operating/exit timing cases without deriving scenario shocks",
     "noncash asset/accrual opening carry and independently supplied staged-loan refinance/novation profiles"
   ],
@@ -216,7 +219,10 @@
     "T75",
     "T76",
     "T77",
-    "T78"
+    "T78",
+    "T79",
+    "T80",
+    "T81"
   ],
   "tests_by_component": {
     "T01": 31,
@@ -296,7 +302,10 @@
     "T75": 8,
     "T76": 20,
     "T77": 15,
-    "T78": 7
+    "T78": 7,
+    "T79": 13,
+    "T80": 11,
+    "T81": 7
   },
   "not_yet_implemented": [
     "complete financial graph and its designed cycles",
@@ -440,5 +449,11 @@
   "expense_detail_to_staged_lifecycle_returns_connected": true,
   "expense_checked_lifecycle_portable_bundle_implemented": true,
   "opt_in_current_expense_lifecycle_review_implemented": true,
-  "expense_checked_lifecycle_scope": "Fixed economic item inventory across every declared operating period of saved staged same-liability holding/sale chain. T76 accrual/cash checks and per-item working-balance continuity; no second expense or funding; complete source-time current gate. No original source authority, real payments, tax law, personal allocation or full asset/accrual/TDC scope authenticated."
+  "expense_checked_lifecycle_scope": "Fixed economic item inventory across every declared operating period of saved staged same-liability holding/sale chain. T76 accrual/cash checks and per-item working-balance continuity; no second expense or funding; complete source-time current gate. No original source authority, real payments, tax law, personal allocation or full asset/accrual/TDC scope authenticated.",
+  "synthetic_monthly_residential_rental_calendar_implemented": true,
+  "monthly_rental_to_staged_lifecycle_returns_connected": true,
+  "rental_checked_lifecycle_portable_bundle_implemented": true,
+  "opt_in_current_monthly_rental_lifecycle_review_implemented": true,
+  "rental_absorption_or_physical_occupancy_verified": false,
+  "monthly_rental_lifecycle_scope": "Supplied complete calendar months, fixed group/unit/area/basis inventory, explicit monthly rent/loss/concession and zero monthly expense placeholders. Exact residential NOI target, every other income explicit zero, same operating/debt/expense/return chain. No market/absorption, actual lease/collection, intramonth liquidity, personal terms or financial scope authenticated."
 }
