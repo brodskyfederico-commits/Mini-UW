@@ -1,0 +1,100 @@
+{
+  "scope": "Joint explicit-time source currency for supplied matched case and reference; original matrix and financial gates preserved",
+  "rows": [
+    {
+      "requirement_or_variable": "joint_reference_candidate_currency",
+      "source": {
+        "path": "docs/technical-implementation-T54.md",
+        "line": 3,
+        "sha256": "b63b76a9aa2c1a59c1a266d8fd740bc3b296e4091769440990181e53e0843a61"
+      },
+      "current_definition": "Both full-source registries at same explicit UTC instant, 23 reference / 22 candidate bindings",
+      "affected_modules": [
+        "M7",
+        "M8",
+        "T50",
+        "T52",
+        "T53",
+        "T54"
+      ],
+      "validation_evidence": [
+        "tests/test_current_recovery_case.py:CurrentRecoveryCaseTests.test_both_current_expose_exact_boundary_without_pass",
+        "tests/test_current_recovery_case.py:CurrentRecoveryCaseTests.test_missing_domain_cannot_be_covered_by_candidate_registry"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Original-document/review authentication and applicable real expiry rules"
+    },
+    {
+      "requirement_or_variable": "independent_expiry_and_history",
+      "source": {
+        "path": "docs/technical-implementation-T54.md",
+        "line": 7,
+        "sha256": "b63b76a9aa2c1a59c1a266d8fd740bc3b296e4091769440990181e53e0843a61"
+      },
+      "current_definition": "Either side can withdraw new current view; history and side-specific blockers remain",
+      "affected_modules": [
+        "M7",
+        "M8",
+        "T50",
+        "T52",
+        "T53",
+        "T54"
+      ],
+      "validation_evidence": [
+        "tests/test_current_recovery_case.py:CurrentRecoveryCaseTests.test_only_reference_domain_expired_blocks_preserving_history",
+        "tests/test_current_recovery_case.py:CurrentRecoveryCaseTests.test_only_candidate_bounds_expired_blocks",
+        "tests/test_current_recovery_case.py:CurrentRecoveryCaseTests.test_candidate_estimate_or_pending_review_blocks"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Live monitoring, authenticated renewal and production publication"
+    },
+    {
+      "requirement_or_variable": "match_not_overridden_by_current_evidence",
+      "source": {
+        "path": "docs/technical-implementation-T54.md",
+        "line": 5,
+        "sha256": "b63b76a9aa2c1a59c1a266d8fd740bc3b296e4091769440990181e53e0843a61"
+      },
+      "current_definition": "Only matched full case plus current curve/story expose view; changed fixed fee remains blocked",
+      "affected_modules": [
+        "M7",
+        "M8",
+        "T50",
+        "T52",
+        "T53",
+        "T54"
+      ],
+      "validation_evidence": [
+        "tests/test_current_recovery_case.py:CurrentRecoveryCaseTests.test_changed_candidate_fee_remains_blocked_despite_current_sources",
+        "tests/test_current_recovery_case.py:CurrentRecoveryCaseTests.test_registry_context_mismatch_not_overridden"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Real funding/market, personal return and investment approval"
+    },
+    {
+      "requirement_or_variable": "same_time_replay_and_authority",
+      "source": {
+        "path": "docs/technical-implementation-T54.md",
+        "line": 9,
+        "sha256": "b63b76a9aa2c1a59c1a266d8fd740bc3b296e4091769440990181e53e0843a61"
+      },
+      "current_definition": "Exact comparison/source/registry/report replay; reject stale-time and updated-hash forgeries",
+      "affected_modules": [
+        "M7",
+        "M8",
+        "T50",
+        "T52",
+        "T53",
+        "T54"
+      ],
+      "validation_evidence": [
+        "tests/test_current_recovery_case.py:CurrentRecoveryCaseTests.test_wrong_time_registry_and_rehashed_comparison_rejected",
+        "tests/test_current_recovery_case.py:CurrentRecoveryCaseTests.test_full_report_replay_and_updated_hash_forgery",
+        "tests/test_current_recovery_case.py:CurrentRecoveryCaseTests.test_no_authentication_live_clock_or_financial_release"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "No runtime archive or financial acceptance closure"
+    }
+  ],
+  "real_decisions_enabled": false
+}

@@ -1,0 +1,135 @@
+{
+  "purpose": "synthetic_current_reference_candidate_recovery_match",
+  "cases": [
+    {
+      "case_id": "both-current",
+      "evaluated_as_of_UTC": "2027-07-01T12:00:00Z",
+      "state": "current_synthetic_matched_case_at_declared_time",
+      "blockers": [],
+      "comparison_blockers": [],
+      "reference_blockers": [],
+      "candidate_blockers": [],
+      "reference_evidence_blockers": [],
+      "candidate_evidence_blockers": [],
+      "exposed_net_cash_profit": {
+        "denominator": "1",
+        "numerator": "0"
+      },
+      "comparison_run_sha256": "d7347dbd66be80d6b6724f213d422b8f6a7a474cc9b7637ac656ebcb77aed31e",
+      "current_run_sha256": "4d9d155abd6dcfd4c1f4a54afa6f66238ab9ace98ea7de8ba2bb4fe61f6ce2cf",
+      "reference_registry_source_sha256": "6a29817206f16d9da786c40a258d407cbb8a6c7c19b1027f47414111c090066e",
+      "candidate_registry_source_sha256": "3ddda558b8e586f66e350173652f7dbfda9789e225ad72e792474dd058ebc3e7",
+      "reference_binding_count": 23,
+      "candidate_binding_count": 22,
+      "report_serialization_roundtrip_replayed": true,
+      "decision": "PENDING"
+    },
+    {
+      "case_id": "reference-domain-expired",
+      "evaluated_as_of_UTC": "2027-07-01T12:00:00Z",
+      "state": "PENDING",
+      "blockers": [
+        "reference_curve_not_current"
+      ],
+      "comparison_blockers": [],
+      "reference_blockers": [
+        "required_evidence_not_current"
+      ],
+      "candidate_blockers": [],
+      "reference_evidence_blockers": [
+        "/recovery/piecewise_spec:evidence_expired"
+      ],
+      "candidate_evidence_blockers": [],
+      "exposed_net_cash_profit": null,
+      "comparison_run_sha256": "d7347dbd66be80d6b6724f213d422b8f6a7a474cc9b7637ac656ebcb77aed31e",
+      "current_run_sha256": "b4c345ea4d982eb18bdcdd6a4b8e093d29e4536a3d9de8d51c5e4bd1d7a27c49",
+      "reference_registry_source_sha256": "eba78cb5f27b0552fa60c257b157b506ed390273802df65a60063d0d695c7fd7",
+      "candidate_registry_source_sha256": "3ddda558b8e586f66e350173652f7dbfda9789e225ad72e792474dd058ebc3e7",
+      "reference_binding_count": 23,
+      "candidate_binding_count": 22,
+      "report_serialization_roundtrip_replayed": true,
+      "decision": "PENDING"
+    },
+    {
+      "case_id": "candidate-bounds-expired",
+      "evaluated_as_of_UTC": "2027-07-01T12:00:00Z",
+      "state": "PENDING",
+      "blockers": [
+        "candidate_story_not_current"
+      ],
+      "comparison_blockers": [],
+      "reference_blockers": [],
+      "candidate_blockers": [
+        "required_evidence_not_current"
+      ],
+      "reference_evidence_blockers": [],
+      "candidate_evidence_blockers": [
+        "/exit/cost_bounds:evidence_expired"
+      ],
+      "exposed_net_cash_profit": null,
+      "comparison_run_sha256": "d7347dbd66be80d6b6724f213d422b8f6a7a474cc9b7637ac656ebcb77aed31e",
+      "current_run_sha256": "b82ab237ddf606743b7b0a48b0e85ca21a41161c339d8a732a9575612bd75356",
+      "reference_registry_source_sha256": "6a29817206f16d9da786c40a258d407cbb8a6c7c19b1027f47414111c090066e",
+      "candidate_registry_source_sha256": "b697576f4519295186b96b45c3303aef84d6ff75e989266a41304037e9e1be67",
+      "reference_binding_count": 23,
+      "candidate_binding_count": 22,
+      "report_serialization_roundtrip_replayed": true,
+      "decision": "PENDING"
+    },
+    {
+      "case_id": "reference-review-pending",
+      "evaluated_as_of_UTC": "2027-07-01T12:00:00Z",
+      "state": "PENDING",
+      "blockers": [
+        "reference_curve_not_current"
+      ],
+      "comparison_blockers": [],
+      "reference_blockers": [
+        "required_evidence_not_current"
+      ],
+      "candidate_blockers": [],
+      "reference_evidence_blockers": [
+        "/project/periods/0/noi:synthetic_review_pending"
+      ],
+      "candidate_evidence_blockers": [],
+      "exposed_net_cash_profit": null,
+      "comparison_run_sha256": "d7347dbd66be80d6b6724f213d422b8f6a7a474cc9b7637ac656ebcb77aed31e",
+      "current_run_sha256": "cd6151e65186f17adf07e0dc0e9672727bb6e7b2cc399689dbffc1bc4b47bd20",
+      "reference_registry_source_sha256": "7ff2772c98cd15376d5483aa76a557c7918aec6311f316dd7468d6bd552b0605",
+      "candidate_registry_source_sha256": "3ddda558b8e586f66e350173652f7dbfda9789e225ad72e792474dd058ebc3e7",
+      "reference_binding_count": 23,
+      "candidate_binding_count": 22,
+      "report_serialization_roundtrip_replayed": true,
+      "decision": "PENDING"
+    },
+    {
+      "case_id": "candidate-fee-changed",
+      "evaluated_as_of_UTC": "2027-07-01T12:00:00Z",
+      "state": "PENDING",
+      "blockers": [
+        "full_case_comparison_not_matched"
+      ],
+      "comparison_blockers": [
+        "fixed_profile_source_changed_at_argument_5"
+      ],
+      "reference_blockers": [],
+      "candidate_blockers": [],
+      "reference_evidence_blockers": [],
+      "candidate_evidence_blockers": [],
+      "exposed_net_cash_profit": null,
+      "comparison_run_sha256": "34811d5de764c8ad8549d3e49592a01e3d1fe76dfe99df71dc7b98dfef207e1f",
+      "current_run_sha256": "de6892625d3be8f711dff88a2476221e4f4514864e0c8bce8dd9bd2467416dd6",
+      "reference_registry_source_sha256": "6a29817206f16d9da786c40a258d407cbb8a6c7c19b1027f47414111c090066e",
+      "candidate_registry_source_sha256": "48e96ce5e6e36e7eafa311c97ed1e45fb06a08a132dee5de074d3fe9a5da6d32",
+      "reference_binding_count": 23,
+      "candidate_binding_count": 22,
+      "report_serialization_roundtrip_replayed": true,
+      "decision": "PENDING"
+    }
+  ],
+  "fixture_note": "Separate synthetic bank NOI 2000 / closing without valuation fixture; original bank NOI 50/value 500 remain unchanged.",
+  "actual_review_or_contract_authenticated": false,
+  "live_monitor_enabled": false,
+  "decision": "PENDING",
+  "production_authorized": false
+}

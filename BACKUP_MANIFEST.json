@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D03 review and metric-intake design extensions and T01–T53 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D03 review and metric-intake design extensions and T01–T54 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 22853,
-      "sha256": "5a3384d8d5eddae5accb8c3975e29e9746ffd2822200e95ee38b4e199a5aee3f"
+      "bytes": 23419,
+      "sha256": "8caebef518bdfbc411c98e4a2fe2f7007e0a76a2bc46cc46ed9255c97af45648"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 93107,
-      "sha256": "7521615f5b2636d84609f3cc783b8884ba3348379a03816d22bd5a642b2adf43"
+      "bytes": 94769,
+      "sha256": "5e716cefa7ede9fe96668ceba53a78a144763a5fe59d4d6f9d80a227a11fb6c9"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -462,6 +462,11 @@
       "sha256": "a08cbfef8641e0c26de9bdde839096ce24fd03de35dacaeccedd03930d188ca9"
     },
     {
+      "path": "docs/review/synthetic-current-recovery-case-demo.json",
+      "bytes": 5763,
+      "sha256": "9db09d6595d810fba0bf55dc7afd689b3bfd414b10c2a26b8c7d74b9e329a9a3"
+    },
+    {
       "path": "docs/review/synthetic-debt-checked-closing-returns-demo.json",
       "bytes": 9788,
       "sha256": "28c44b9cb5f4005884dd7af367b27f031592b018e5617cbbc2712c3e19543a8d"
@@ -655,6 +660,11 @@
       "path": "docs/technical-coverage-T53.json",
       "bytes": 4896,
       "sha256": "1f5430929af0995c2bc6b9569a04b4e7f1c8764e1f90dd7fde3bee9cf2630ac1"
+    },
+    {
+      "path": "docs/technical-coverage-T54.json",
+      "bytes": 4208,
+      "sha256": "577a5050ad9a1b0e50aa2dcf709110c722225a3d462ac0167a70509437ba7074"
     },
     {
       "path": "docs/technical-implementation-T01.md",
@@ -852,9 +862,14 @@
       "sha256": "cea0e9e8c860d0311cf31590bc54a34ba5fac4c0be72645a225e6fe5f3b14353"
     },
     {
+      "path": "docs/technical-implementation-T54.md",
+      "bytes": 1940,
+      "sha256": "b63b76a9aa2c1a59c1a266d8fd740bc3b296e4091769440990181e53e0843a61"
+    },
+    {
       "path": "docs/technical-implementation-status.json",
-      "bytes": 17778,
-      "sha256": "e0d53709122ceac23907cf3ca3915be98c2e6f6aae12f49b48437c3a5b59e5c0"
+      "bytes": 18038,
+      "sha256": "258137ebd9b5d57a59f2ad594adf30382ce9e33ac4bff1be79c3e6e7bee89c75"
     },
     {
       "path": "infra/README.md",
@@ -1592,6 +1607,11 @@
       "sha256": "1bdd108274fe9022d7eafefd5b4f64dc3aa533eec8d0b76bb342729f3303511b"
     },
     {
+      "path": "src/miniuw_foundation/current_recovery_case.py",
+      "bytes": 4686,
+      "sha256": "f4db6a03b8910bed7f1521d07998deb9807f6c918c07c4cd167dd5521f9e3061"
+    },
+    {
       "path": "src/miniuw_foundation/data/input-sheet-layout-v1.json",
       "bytes": 24773,
       "sha256": "359ad81af6d20547b91c303b661c596254bfc7dde73c1eca5528d247ff2382f3"
@@ -2322,6 +2342,11 @@
       "sha256": "cb66b80b35609628dbac3c30e692396f0f738073ff10023a3c00ad351788b00e"
     },
     {
+      "path": "tests/test_current_recovery_case.py",
+      "bytes": 5849,
+      "sha256": "5b9f30be3c6f8cd2f07030b84999b58e554002f1efe198fffcce5ba69c9e3f7e"
+    },
+    {
       "path": "tests/test_debt_closing.py",
       "bytes": 13842,
       "sha256": "9194a7ab39b4ec1929d3545728c46c9a64927e9635ef4c3f197e805e8917d8d6"
@@ -2565,6 +2590,11 @@
       "path": "tools/demo_costed_exit_sale.py",
       "bytes": 5228,
       "sha256": "03cadcaa98605fe43c12625474f973e5af0007e1fceeff0cf54a183be75f134d"
+    },
+    {
+      "path": "tools/demo_current_recovery_case.py",
+      "bytes": 3674,
+      "sha256": "7a400ce3be554426523007ba72adab9231df1612737605cb94007b85be313fc5"
     },
     {
       "path": "tools/demo_debt_checked_closing_returns.py",
