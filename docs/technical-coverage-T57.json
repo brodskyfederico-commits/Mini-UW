@@ -1,0 +1,294 @@
+{
+  "scope": "Supplied zero-opening synthetic preoperating cash and cash-only operating boundary; original 398-row coverage and financial gates unchanged",
+  "rows": [
+    {
+      "requirement_or_variable": "dated_gross_construction_and_equity_cash",
+      "source": {
+        "path": "docs/technical-implementation-T57.md",
+        "line": 5,
+        "sha256": "26aadee59580ba668c36425e1dd9364d5500b0e1739af2a6e5836c8909a9f027"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 cadena financiera y diferencias; §7",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "CASH-01"
+        },
+        {
+          "documento": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+          "sha256_documento": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+          "ubicacion_exacta": "§3 Costs and TDC / Timing / Refinance and metrics",
+          "definicion_documentada": "Reglas históricas de financiación y flujo mensual; Manual pp.11/13/23/32/53 y C51:C53 precisan campos y pendientes.",
+          "matrix_id": "M5-05"
+        }
+      ],
+      "related_definition_sources": [
+        {
+          "path": "docs/model-cash-contracts.md",
+          "line": 38,
+          "sha256": "91c6b04102992d875eab2cc36f34f4e4ace412a899fb082b0862a12342715002"
+        },
+        {
+          "path": "docs/model-construction-finance.md",
+          "line": 26,
+          "sha256": "04472a5fd8926907c8976dc88297917fc3de4aca6011ddcdb2dfd6706278d1eb"
+        }
+      ],
+      "current_definition": "Dated gross supplied purchase/construction/funding events with exact claims, currency, loan identity and provenance; preserve same-day equity contributions/distributions and explicit zero",
+      "affected_modules": [
+        "M4",
+        "M5",
+        "M7",
+        "T57"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_preopening_cash.py",
+          "line": 28,
+          "test": "PreopeningCashTests.test_gross_same_day_equity_and_explicit_zero_preserved"
+        },
+        {
+          "path": "tests/test_preopening_cash.py",
+          "line": 36,
+          "test": "PreopeningCashTests.test_missing_zero_negative_currency_and_provenance_are_distinct"
+        },
+        {
+          "path": "tests/test_preopening_cash.py",
+          "line": 40,
+          "test": "PreopeningCashTests.test_scope_and_all_basis_declarations_required"
+        },
+        {
+          "path": "tests/test_preopening_cash.py",
+          "line": 74,
+          "test": "PreopeningCashTests.test_strict_schema_date_order_duplicates_and_unsupported_non_cash"
+        }
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Authentic complete invoices/funding, accruals, payment/commitment conditions and documented economic classification"
+    },
+    {
+      "requirement_or_variable": "free_restricted_cash_and_per_loan_principal",
+      "source": {
+        "path": "docs/technical-implementation-T57.md",
+        "line": 9,
+        "sha256": "26aadee59580ba668c36425e1dd9364d5500b0e1739af2a6e5836c8909a9f027"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 costos, financiación, operaciones y salida",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "CASH-02"
+        },
+        {
+          "documento": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+          "sha256_documento": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+          "ubicacion_exacta": "§3 Costs and TDC / Timing / Refinance and metrics",
+          "definicion_documentada": "Reglas históricas de financiación y flujo mensual; Manual pp.11/13/23/32/53 y C51:C53 precisan campos y pendientes.",
+          "matrix_id": "M5-02"
+        },
+        {
+          "documento": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+          "sha256_documento": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+          "ubicacion_exacta": "§3 Costs and TDC / Timing / Refinance and metrics",
+          "definicion_documentada": "Reglas históricas de financiación y flujo mensual; Manual pp.11/13/23/32/53 y C51:C53 precisan campos y pendientes.",
+          "matrix_id": "M5-06"
+        }
+      ],
+      "related_definition_sources": [
+        {
+          "path": "docs/model-cash-contracts.md",
+          "line": 38,
+          "sha256": "91c6b04102992d875eab2cc36f34f4e4ace412a899fb082b0862a12342715002"
+        },
+        {
+          "path": "docs/model-construction-finance.md",
+          "line": 26,
+          "sha256": "04472a5fd8926907c8976dc88297917fc3de4aca6011ddcdb2dfd6706278d1eb"
+        }
+      ],
+      "current_definition": "Zero-opening date-close cash/principal identities; reserve transfers cancel globally, paid interest/fees never reduce principal; compare all closing claims exactly",
+      "affected_modules": [
+        "M4",
+        "M5",
+        "M7",
+        "T57"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_preopening_cash.py",
+          "line": 21,
+          "test": "PreopeningCashTests.test_hand_cash_principal_and_reserve_conservation"
+        },
+        {
+          "path": "tests/test_preopening_cash.py",
+          "line": 33,
+          "test": "PreopeningCashTests.test_paid_interest_and_fee_do_not_reduce_principal"
+        },
+        {
+          "path": "tests/test_preopening_cash.py",
+          "line": 43,
+          "test": "PreopeningCashTests.test_terminal_cash_and_each_loan_claim_must_match"
+        },
+        {
+          "path": "tests/test_preopening_cash.py",
+          "line": 97,
+          "test": "PreopeningCashTests.test_each_loan_balance_kept_separate_including_unused_zero"
+        },
+        {
+          "path": "tests/test_preopening_cash.py",
+          "line": 60,
+          "test": "PreopeningCashTests.test_restricted_cash_cannot_be_spent_as_free_or_released_without_deposit"
+        }
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Capitalization/noncash adjustments, actual commitment/availability, bank schedules, maturity, accrued interest, TDC and asset basis"
+    },
+    {
+      "requirement_or_variable": "early_cash_shortfall_and_bounded_math",
+      "source": {
+        "path": "docs/technical-implementation-T57.md",
+        "line": 9,
+        "sha256": "26aadee59580ba668c36425e1dd9364d5500b0e1739af2a6e5836c8909a9f027"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+          "sha256_documento": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+          "ubicacion_exacta": "§3 Costs and TDC / Timing / Refinance and metrics",
+          "definicion_documentada": "Reglas históricas de financiación y flujo mensual; Manual pp.11/13/23/32/53 y C51:C53 precisan campos y pendientes.",
+          "matrix_id": "M5-09"
+        }
+      ],
+      "related_definition_sources": [
+        {
+          "path": "docs/model-cash-contracts.md",
+          "line": 38,
+          "sha256": "91c6b04102992d875eab2cc36f34f4e4ace412a899fb082b0862a12342715002"
+        },
+        {
+          "path": "docs/model-construction-finance.md",
+          "line": 26,
+          "sha256": "04472a5fd8926907c8976dc88297917fc3de4aca6011ddcdb2dfd6706278d1eb"
+        }
+      ],
+      "current_definition": "A negative date-close cash/principal balance remains a blocker despite later replenishment; no intraday order claim or automatic funding; exact arithmetic budget blocks partial exports",
+      "affected_modules": [
+        "M4",
+        "M5",
+        "M7",
+        "T57"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_preopening_cash.py",
+          "line": 56,
+          "test": "PreopeningCashTests.test_early_cash_deficit_not_repaired_by_later_contribution"
+        },
+        {
+          "path": "tests/test_preopening_cash.py",
+          "line": 63,
+          "test": "PreopeningCashTests.test_principal_overpayment_blocks_even_with_enough_cash"
+        },
+        {
+          "path": "tests/test_preopening_cash.py",
+          "line": 66,
+          "test": "PreopeningCashTests.test_same_date_order_is_not_intraday_liquidity_proof"
+        },
+        {
+          "path": "tests/test_preopening_cash.py",
+          "line": 89,
+          "test": "PreopeningCashTests.test_arithmetic_failure_never_exports_partial_equity"
+        },
+        {
+          "path": "tests/test_preopening_cash.py",
+          "line": 92,
+          "test": "PreopeningCashTests.test_real_denominator_growth_budget_stops_without_approximation"
+        }
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Contractual feasibility, authentic liquidity/order, investment classification and financial tolerances"
+    },
+    {
+      "requirement_or_variable": "cash_only_preopening_operating_boundary",
+      "source": {
+        "path": "docs/technical-implementation-T57.md",
+        "line": 11,
+        "sha256": "26aadee59580ba668c36425e1dd9364d5500b0e1739af2a6e5836c8909a9f027"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 costos, financiación, operaciones y salida",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "CASH-02"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 aportes/distribuciones brutos frente a neto",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "RETURN-01"
+        }
+      ],
+      "related_definition_sources": [
+        {
+          "path": "docs/model-cash-contracts.md",
+          "line": 38,
+          "sha256": "91c6b04102992d875eab2cc36f34f4e4ace412a899fb082b0862a12342715002"
+        },
+        {
+          "path": "docs/model-construction-finance.md",
+          "line": 26,
+          "sha256": "04472a5fd8926907c8976dc88297917fc3de4aca6011ddcdb2dfd6706278d1eb"
+        }
+      ],
+      "current_definition": "Reproduce both producers and verify source/run/context/currency/date/basis and separate free/restricted boundary; nonzero opening accruals require another profile; do not duplicate opening cash as contribution",
+      "affected_modules": [
+        "M4",
+        "M5",
+        "M7",
+        "T57"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_preopening_cash.py",
+          "line": 111,
+          "test": "PreopeningCashTests.test_full_cash_only_link_and_no_double_counted_seed"
+        },
+        {
+          "path": "tests/test_preopening_cash.py",
+          "line": 115,
+          "test": "PreopeningCashTests.test_balanced_preopening_free_and_restricted_reset_not_accepted"
+        },
+        {
+          "path": "tests/test_preopening_cash.py",
+          "line": 119,
+          "test": "PreopeningCashTests.test_link_hashes_time_context_currency_and_basis_guards"
+        },
+        {
+          "path": "tests/test_preopening_cash.py",
+          "line": 129,
+          "test": "PreopeningCashTests.test_preopening_blocker_and_operating_blocker_remain_visible"
+        },
+        {
+          "path": "tests/test_preopening_cash.py",
+          "line": 134,
+          "test": "PreopeningCashTests.test_nonzero_opening_accruals_need_separate_profile"
+        },
+        {
+          "path": "tests/test_preopening_cash.py",
+          "line": 139,
+          "test": "PreopeningCashTests.test_rehashed_preopening_and_operating_forgery_rejected"
+        }
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Opening debt and assets not yet reconciled; no all-project investor ledger/EM/IRR, personal allocation, financial acceptance, deployment or real decisions"
+    }
+  ],
+  "real_decisions_enabled": false
+}

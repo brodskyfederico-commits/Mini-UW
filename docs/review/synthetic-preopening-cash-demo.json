@@ -1,0 +1,243 @@
+{
+  "purpose": "synthetic_preopening_cash_only_demo",
+  "source_sha256": "3efd32687f3c42caaaeade638e04cd9ef4ca34030a42985fc74684046c9ab027",
+  "run_sha256": "a2044597ff4ff08f301be143ba8d503237c0b6a0028a6fd151a819336a0cf3b2",
+  "link_binding_source_sha256": "b7a7508696733e6c31cc413144fda58e6916c4ac1b40eb5b1063474822ea1797",
+  "link_run_sha256": "13760e5407951c590e84075d389a82293e1f6e78db7d3ffbfe5f54d73aa44a2c",
+  "state": "reconciled_synthetic_preopening_cash",
+  "cash_only_link_state": "matched_synthetic_cash_only",
+  "totals": {
+    "acquisition_payment": {
+      "denominator": "1",
+      "numerator": "400"
+    },
+    "additional_equity_contribution": {
+      "denominator": "1",
+      "numerator": "300"
+    },
+    "construction_payment": {
+      "denominator": "1",
+      "numerator": "800"
+    },
+    "debt_fee_payment": {
+      "denominator": "1",
+      "numerator": "5"
+    },
+    "debt_interest_payment": {
+      "denominator": "1",
+      "numerator": "20"
+    },
+    "equity_distribution": {
+      "denominator": "1",
+      "numerator": "25"
+    },
+    "initial_equity_contribution": {
+      "denominator": "1",
+      "numerator": "1500"
+    },
+    "loan_draw": {
+      "denominator": "1",
+      "numerator": "600"
+    },
+    "loan_principal_repayment": {
+      "denominator": "1",
+      "numerator": "100"
+    },
+    "other_cash_payment": {
+      "denominator": "1",
+      "numerator": "50"
+    },
+    "other_cash_receipt": {
+      "denominator": "1",
+      "numerator": "100"
+    },
+    "reserve_deposit": {
+      "denominator": "1",
+      "numerator": "200"
+    },
+    "reserve_release": {
+      "denominator": "1",
+      "numerator": "200"
+    },
+    "soft_cost_payment": {
+      "denominator": "1",
+      "numerator": "100"
+    }
+  },
+  "date_close_balances": [
+    {
+      "date": "2026-10-01",
+      "free_cash": {
+        "denominator": "1",
+        "numerator": "1100"
+      },
+      "loan_principal": {
+        "SYNTHETIC-preopening-loan": {
+          "denominator": "1",
+          "numerator": "0"
+        }
+      },
+      "restricted_cash": {
+        "denominator": "1",
+        "numerator": "0"
+      }
+    },
+    {
+      "date": "2026-11-01",
+      "free_cash": {
+        "denominator": "1",
+        "numerator": "600"
+      },
+      "loan_principal": {
+        "SYNTHETIC-preopening-loan": {
+          "denominator": "1",
+          "numerator": "600"
+        }
+      },
+      "restricted_cash": {
+        "denominator": "1",
+        "numerator": "200"
+      }
+    },
+    {
+      "date": "2026-12-01",
+      "free_cash": {
+        "denominator": "1",
+        "numerator": "1000"
+      },
+      "loan_principal": {
+        "SYNTHETIC-preopening-loan": {
+          "denominator": "1",
+          "numerator": "500"
+        }
+      },
+      "restricted_cash": {
+        "denominator": "1",
+        "numerator": "0"
+      }
+    },
+    {
+      "date": "2027-01-01",
+      "free_cash": {
+        "denominator": "1",
+        "numerator": "1000"
+      },
+      "loan_principal": {
+        "SYNTHETIC-preopening-loan": {
+          "denominator": "1",
+          "numerator": "500"
+        }
+      },
+      "restricted_cash": {
+        "denominator": "1",
+        "numerator": "0"
+      }
+    }
+  ],
+  "cash_conservation_residual": {
+    "denominator": "1",
+    "numerator": "0"
+  },
+  "equity_movements": [
+    {
+      "amount": {
+        "denominator": "1",
+        "numerator": "1500"
+      },
+      "category": "initial_capital",
+      "currency": "USD",
+      "date": "2026-10-01",
+      "event_id": "SYNTHETIC-preopening-event-0",
+      "kind": "contribution",
+      "source_pointer": "/events/0/amount",
+      "source_sha256": "3efd32687f3c42caaaeade638e04cd9ef4ca34030a42985fc74684046c9ab027"
+    },
+    {
+      "amount": {
+        "denominator": "1",
+        "numerator": "300"
+      },
+      "category": "additional_capital",
+      "currency": "USD",
+      "date": "2026-12-01",
+      "event_id": "SYNTHETIC-preopening-event-6",
+      "kind": "contribution",
+      "source_pointer": "/events/6/amount",
+      "source_sha256": "3efd32687f3c42caaaeade638e04cd9ef4ca34030a42985fc74684046c9ab027"
+    },
+    {
+      "amount": {
+        "denominator": "1",
+        "numerator": "25"
+      },
+      "category": "other_distribution",
+      "currency": "USD",
+      "date": "2026-12-01",
+      "event_id": "SYNTHETIC-preopening-event-10",
+      "kind": "distribution",
+      "source_pointer": "/events/10/amount",
+      "source_sha256": "3efd32687f3c42caaaeade638e04cd9ef4ca34030a42985fc74684046c9ab027"
+    },
+    {
+      "amount": {
+        "denominator": "1",
+        "numerator": "0"
+      },
+      "category": "additional_capital",
+      "currency": "USD",
+      "date": "2027-01-01",
+      "event_id": "SYNTHETIC-preopening-event-14",
+      "kind": "contribution",
+      "source_pointer": "/events/14/amount",
+      "source_sha256": "3efd32687f3c42caaaeade638e04cd9ef4ca34030a42985fc74684046c9ab027"
+    }
+  ],
+  "cash_boundary_checks": [
+    {
+      "account": "free_cash",
+      "equal_exact_value": true,
+      "operating_opening_claim": {
+        "currency": "USD",
+        "period_ref": "OPENING:SYNTHETIC-pre-refi",
+        "source_ref": "SYNTHETIC-declared-cash-plan-and-balance",
+        "value": {
+          "denominator": "1",
+          "numerator": "1000"
+        }
+      },
+      "preopening_terminal_amount": {
+        "denominator": "1",
+        "numerator": "1000"
+      }
+    },
+    {
+      "account": "restricted_cash",
+      "equal_exact_value": true,
+      "operating_opening_claim": {
+        "currency": "USD",
+        "period_ref": "OPENING:SYNTHETIC-pre-refi",
+        "source_ref": "SYNTHETIC-declared-cash-plan-and-balance",
+        "value": {
+          "denominator": "1",
+          "numerator": "0"
+        }
+      },
+      "preopening_terminal_amount": {
+        "denominator": "1",
+        "numerator": "0"
+      }
+    }
+  ],
+  "missing_amount_case": {
+    "state": "blocked",
+    "blockers": [
+      "/events/0/amount:amount_missing"
+    ],
+    "exportable_equity_movements": null
+  },
+  "debt_carry_reconciliation_pending": true,
+  "fixture_note": "Preopening closing principal 500 is not matched to any operating loan. Cash-only link leaves original T34 and all past investor-return examples unchanged; no whole-project return inferred.",
+  "whole_project_investor_returns_connected": false,
+  "decision": "PENDING",
+  "production_authorized": false
+}

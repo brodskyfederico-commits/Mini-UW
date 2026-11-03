@@ -1,7 +1,7 @@
 {
   "phase": "post-I01 synthetic technical implementation",
   "user_authorized": true,
-  "component": "T56",
+  "component": "T57",
   "status": "local_implementation_verified_pending_remote_receipt",
   "implemented": [
     "fresh raw-claim drafts from unchanged 55-input/10-criterion template",
@@ -93,9 +93,10 @@
     "exact comparison of separately supplied full bounded-sale replay against fixed-assumption recovery curve, preserving altered-profile and finance blockers",
     "same-time joint gate on replayed full-case match, 23 reference-domain bindings and 22 candidate bindings, preserving historical math and individual blockers",
     "complete ordered source-bound review case inventory with common reference/evidence/time guards, preserving pending rows without averaging or best-case selection",
-    "deterministic internal investor review from fully replayed current-case inventory, with dated gross cash, explicit basis normalization and pending-value suppression"
+    "deterministic internal investor review from fully replayed current-case inventory, with dated gross cash, explicit basis normalization and pending-value suppression",
+    "explicit zero-opening preoperating gross cash events with date-close free/restricted/principal reconciliation and separately replayed cash-only operating boundary"
   ],
-  "unit_tests": 976,
+  "unit_tests": 1002,
   "plan_packages_partially_addressed": [
     "IMP-01",
     "IMP-06",
@@ -113,7 +114,7 @@
   "next_independent_work": [
     "source-specific insurance/tax/lease-up refinements within rental scope",
     "independent no-refinance and revised timing scenarios",
-    "construction funding history before opening operating state"
+    "connect preopening debt/asset carry and dated equity history to whole-project return without duplicating opening cash"
   ],
   "I01_snapshot_preserved": true,
   "components_implemented": [
@@ -172,7 +173,8 @@
     "T53",
     "T54",
     "T55",
-    "T56"
+    "T56",
+    "T57"
   ],
   "tests_by_component": {
     "T01": 31,
@@ -230,7 +232,8 @@
     "T53": 12,
     "T54": 10,
     "T55": 8,
-    "T56": 6
+    "T56": 6,
+    "T57": 26
   },
   "not_yet_implemented": [
     "complete financial graph and its designed cycles",
@@ -344,5 +347,9 @@
   "supplied_full_case_recovery_curve_check_implemented": true,
   "opt_in_joint_current_reference_candidate_check_implemented": true,
   "declared_current_case_review_inventory_implemented": true,
-  "internal_current_case_investor_review_implemented": true
+  "internal_current_case_investor_review_implemented": true,
+  "synthetic_preopening_cash_reconciliation_implemented": true,
+  "preopening_to_operating_cash_only_link_implemented": true,
+  "preopening_debt_schedule_and_asset_carry_connected": false,
+  "preopening_to_whole_project_investor_returns_connected": false
 }
