@@ -1,7 +1,7 @@
 {
   "phase": "post-I01 synthetic technical implementation",
   "user_authorized": true,
-  "component": "T60",
+  "component": "T62",
   "status": "local_implementation_verified_pending_remote_receipt",
   "implemented": [
     "fresh raw-claim drafts from unchanged 55-input/10-criterion template",
@@ -97,9 +97,11 @@
     "explicit zero-opening preoperating gross cash events with date-close free/restricted/principal reconciliation and separately replayed cash-only operating boundary",
     "replayed full-draw scheduled opening debt with per-date prior payment and separate cash boundary checks",
     "capacity-checked declared purchase-to-sale gross equity history without duplicated operating opening seed; extended calendar EM/IRR/normalization and cash risk",
-    "bounded deterministic portable synthetic lifecycle bundle with exact source bytes, compatible versions and complete recovery/replay of pending or computed results"
+    "bounded deterministic portable synthetic lifecycle bundle with exact source bytes, compatible versions and complete recovery/replay of pending or computed results",
+    "explicit-time complete 39-binding lifecycle source currency gate, including preopening, debt windows, typed bindings and extended investor source",
+    "fully replayed current lifecycle internal review withdrawing current numbers on expiry or underlying financial blockers while preserving historical proof"
   ],
-  "unit_tests": 1035,
+  "unit_tests": 1047,
   "plan_packages_partially_addressed": [
     "IMP-01",
     "IMP-06",
@@ -180,7 +182,9 @@
     "T57",
     "T58",
     "T59",
-    "T60"
+    "T60",
+    "T61",
+    "T62"
   ],
   "tests_by_component": {
     "T01": 31,
@@ -242,7 +246,9 @@
     "T57": 26,
     "T58": 12,
     "T59": 14,
-    "T60": 7
+    "T60": 7,
+    "T61": 9,
+    "T62": 3
   },
   "not_yet_implemented": [
     "complete financial graph and its designed cycles",
@@ -364,5 +370,7 @@
   "preopening_scheduled_debt_carry_connected": true,
   "preopening_to_declared_purchase_to_sale_cash_returns_connected": true,
   "synthetic_lifecycle_portable_bundle_implemented": true,
-  "preopening_asset_and_accrual_carry_verified": false
+  "preopening_asset_and_accrual_carry_verified": false,
+  "opt_in_current_lifecycle_output_gate_implemented": true,
+  "internal_current_lifecycle_review_implemented": true
 }

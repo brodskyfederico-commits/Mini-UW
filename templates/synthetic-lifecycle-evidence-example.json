@@ -1,0 +1,717 @@
+{
+  "schema": "miniuw.synthetic-evidence-currency.v1",
+  "context": {
+    "deal_id": "SYNTHETIC-integrated-cash-demo",
+    "definition_set_revision": "SYNTHETIC-cash-window-assumptions-v1",
+    "run_id": "SYNTHETIC-integrated-cash-run",
+    "scenario_id": "SYNTHETIC-Base"
+  },
+  "inventory_declared_complete": true,
+  "inventory_basis_ref": "SYNTHETIC-complete-lifecycle-transport-not-original-evidence-authentication",
+  "requirements": [
+    {
+      "requirement_id": "/opening/preopening_cash",
+      "source_sha256": "4e694693af89a1b4c6bf8b3966e223f0201ae97b8b058868c976326927e5f6d2",
+      "source_locator": "/opening/preopening_cash"
+    },
+    {
+      "requirement_id": "/opening/cash_boundary_binding",
+      "source_sha256": "5a49f7d3f472364bead636d58bd148f251479e80eea620db7d010311fb27a628",
+      "source_locator": "/opening/cash_boundary_binding"
+    },
+    {
+      "requirement_id": "/opening/debt_spec",
+      "source_sha256": "35640bb57a3673fb5a6b601bc4572f9517a3e59fa985d8b65e408a8cd89102ef",
+      "source_locator": "/opening/debt_spec"
+    },
+    {
+      "requirement_id": "/opening/project/periods/0/noi",
+      "source_sha256": "284d3f9a62415ce23890d2a6b56d6467df29186f09886067c9054036dceae7f4",
+      "source_locator": "/opening/project/periods/0/noi"
+    },
+    {
+      "requirement_id": "/opening/project/periods/0/cash",
+      "source_sha256": "e439e57f2e5857450a8b40ce0acac40574c1b71a44a0e4bb7f849d7695801ec9",
+      "source_locator": "/opening/project/periods/0/cash"
+    },
+    {
+      "requirement_id": "/opening/project/periods/1/noi",
+      "source_sha256": "7ec7395581ed8a468ffecb7d61139a23478631f5d26d4efc93a56ea31705fda1",
+      "source_locator": "/opening/project/periods/1/noi"
+    },
+    {
+      "requirement_id": "/opening/project/periods/1/cash",
+      "source_sha256": "f0d1174d6fc7f80dacce3c552fce1f926fe93b303db565d15c8a97a982dc0593",
+      "source_locator": "/opening/project/periods/1/cash"
+    },
+    {
+      "requirement_id": "/opening/project/closings/0/cash",
+      "source_sha256": "efb9612228fd3a5d4c0a035d32e0fcb9c9e62fd8d4d1f5609ee8c8e73b3b4ee6",
+      "source_locator": "/opening/project/closings/0/cash"
+    },
+    {
+      "requirement_id": "/opening/project/closings/0/debt_spec",
+      "source_sha256": "3febe17198a1aed557c45115f284724701d07a1fd17c8d5ad30db97b2b0de2ed",
+      "source_locator": "/opening/project/closings/0/debt_spec"
+    },
+    {
+      "requirement_id": "/opening/project/closings/0/loans/0/terms",
+      "source_sha256": "5290a6db1e7aa37b9c25d8183473c297b74ac87f61993e1320a7a0cdf6bf5872",
+      "source_locator": "/opening/project/closings/0/loans/0/terms"
+    },
+    {
+      "requirement_id": "/opening/project/closings/0/loans/0/windows_record",
+      "source_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "source_locator": "/opening/project/closings/0/loans/0/windows_record"
+    },
+    {
+      "requirement_id": "/opening/project/closings/1/cash",
+      "source_sha256": "d579f1a52e5f6840059757c628a5dd8b24e9389802564ea64456b3465dc68fea",
+      "source_locator": "/opening/project/closings/1/cash"
+    },
+    {
+      "requirement_id": "/opening/project/closings/1/debt_spec",
+      "source_sha256": "6046c9e8cec014c2d70009ee3a0322f6413432412f462a4dbf21d61a7aa80d2b",
+      "source_locator": "/opening/project/closings/1/debt_spec"
+    },
+    {
+      "requirement_id": "/opening/project/closings/1/loans/0/terms",
+      "source_sha256": "fe60d5603fca9f51105b704e097d8541411e34416157e8034c3b33c831e31750",
+      "source_locator": "/opening/project/closings/1/loans/0/terms"
+    },
+    {
+      "requirement_id": "/opening/project/closings/1/loans/0/windows_record",
+      "source_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "source_locator": "/opening/project/closings/1/loans/0/windows_record"
+    },
+    {
+      "requirement_id": "/opening/project/manifest",
+      "source_sha256": "0d30406f62b83c5989413ea931342b1ed171363ae947052e0d11b4fcdff84338",
+      "source_locator": "/opening/project/manifest"
+    },
+    {
+      "requirement_id": "/window/project/periods/0/noi",
+      "source_sha256": "284d3f9a62415ce23890d2a6b56d6467df29186f09886067c9054036dceae7f4",
+      "source_locator": "/window/project/periods/0/noi"
+    },
+    {
+      "requirement_id": "/window/project/periods/0/cash",
+      "source_sha256": "e439e57f2e5857450a8b40ce0acac40574c1b71a44a0e4bb7f849d7695801ec9",
+      "source_locator": "/window/project/periods/0/cash"
+    },
+    {
+      "requirement_id": "/window/project/periods/1/noi",
+      "source_sha256": "7ec7395581ed8a468ffecb7d61139a23478631f5d26d4efc93a56ea31705fda1",
+      "source_locator": "/window/project/periods/1/noi"
+    },
+    {
+      "requirement_id": "/window/project/periods/1/cash",
+      "source_sha256": "f0d1174d6fc7f80dacce3c552fce1f926fe93b303db565d15c8a97a982dc0593",
+      "source_locator": "/window/project/periods/1/cash"
+    },
+    {
+      "requirement_id": "/window/project/closings/0/cash",
+      "source_sha256": "efb9612228fd3a5d4c0a035d32e0fcb9c9e62fd8d4d1f5609ee8c8e73b3b4ee6",
+      "source_locator": "/window/project/closings/0/cash"
+    },
+    {
+      "requirement_id": "/window/project/closings/0/debt_spec",
+      "source_sha256": "3febe17198a1aed557c45115f284724701d07a1fd17c8d5ad30db97b2b0de2ed",
+      "source_locator": "/window/project/closings/0/debt_spec"
+    },
+    {
+      "requirement_id": "/window/project/closings/0/loans/0/terms",
+      "source_sha256": "5290a6db1e7aa37b9c25d8183473c297b74ac87f61993e1320a7a0cdf6bf5872",
+      "source_locator": "/window/project/closings/0/loans/0/terms"
+    },
+    {
+      "requirement_id": "/window/project/closings/0/loans/0/windows_record",
+      "source_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "source_locator": "/window/project/closings/0/loans/0/windows_record"
+    },
+    {
+      "requirement_id": "/window/project/closings/1/cash",
+      "source_sha256": "d579f1a52e5f6840059757c628a5dd8b24e9389802564ea64456b3465dc68fea",
+      "source_locator": "/window/project/closings/1/cash"
+    },
+    {
+      "requirement_id": "/window/project/closings/1/debt_spec",
+      "source_sha256": "6046c9e8cec014c2d70009ee3a0322f6413432412f462a4dbf21d61a7aa80d2b",
+      "source_locator": "/window/project/closings/1/debt_spec"
+    },
+    {
+      "requirement_id": "/window/project/closings/1/loans/0/terms",
+      "source_sha256": "fe60d5603fca9f51105b704e097d8541411e34416157e8034c3b33c831e31750",
+      "source_locator": "/window/project/closings/1/loans/0/terms"
+    },
+    {
+      "requirement_id": "/window/project/closings/1/loans/0/windows_record",
+      "source_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "source_locator": "/window/project/closings/1/loans/0/windows_record"
+    },
+    {
+      "requirement_id": "/window/project/manifest",
+      "source_sha256": "0d30406f62b83c5989413ea931342b1ed171363ae947052e0d11b4fcdff84338",
+      "source_locator": "/window/project/manifest"
+    },
+    {
+      "requirement_id": "/capacity/valuation_noi",
+      "source_sha256": "43f29cc70d292dadf9de0271d686dcc930b7f6a6c44a5cf027eee8a71ac10a5a",
+      "source_locator": "/capacity/valuation_noi"
+    },
+    {
+      "requirement_id": "/capacity/bank_noi",
+      "source_sha256": "b63580d6b379e55da1d605a2f22cddd081db81996d3fba77bb1c727d8f64fec2",
+      "source_locator": "/capacity/bank_noi"
+    },
+    {
+      "requirement_id": "/capacity/closing",
+      "source_sha256": "efb9612228fd3a5d4c0a035d32e0fcb9c9e62fd8d4d1f5609ee8c8e73b3b4ee6",
+      "source_locator": "/capacity/closing"
+    },
+    {
+      "requirement_id": "/capacity/spec",
+      "source_sha256": "11db8f278b5a6e65f83f321dafe8c72627474537cdabf41db70a34c2df94fa51",
+      "source_locator": "/capacity/spec"
+    },
+    {
+      "requirement_id": "/capacity/new_loan/terms",
+      "source_sha256": "fe60d5603fca9f51105b704e097d8541411e34416157e8034c3b33c831e31750",
+      "source_locator": "/capacity/new_loan/terms"
+    },
+    {
+      "requirement_id": "/capacity/new_loan/windows_record",
+      "source_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "source_locator": "/capacity/new_loan/windows_record"
+    },
+    {
+      "requirement_id": "/window/investor",
+      "source_sha256": "6a72111b76403f47ae36f06a11f6abdc848d36e0aa6459da2f7c89040852a8d3",
+      "source_locator": "/window/investor"
+    },
+    {
+      "requirement_id": "/window/binding_record",
+      "source_sha256": "30bc925aa37a27a4ad29ab2e309fc15a6ba2b4d2e0eb44cf0a37830e76562892",
+      "source_locator": "/window/binding_record"
+    },
+    {
+      "requirement_id": "/lifecycle/investor",
+      "source_sha256": "1a7df861dfc4d123c50d150bdc148291936d7c665d553ca7ff9e6da1fcd757f3",
+      "source_locator": "/lifecycle/investor"
+    },
+    {
+      "requirement_id": "/lifecycle/binding",
+      "source_sha256": "0d6c1f12a83fc9b89a7d4a4bd683b6bd9677cd356415fa57389ade5ac6f33da6",
+      "source_locator": "/lifecycle/binding"
+    }
+  ],
+  "evidence": [
+    {
+      "evidence_id": "SYNTHETIC-lifecycle-evidence-0",
+      "requirement_id": "/opening/preopening_cash",
+      "source_sha256": "4e694693af89a1b4c6bf8b3966e223f0201ae97b8b058868c976326927e5f6d2",
+      "source_locator": "/opening/preopening_cash",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-express-test-validity-not-market-TTL-or-professional-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-lifecycle-evidence-1",
+      "requirement_id": "/opening/cash_boundary_binding",
+      "source_sha256": "5a49f7d3f472364bead636d58bd148f251479e80eea620db7d010311fb27a628",
+      "source_locator": "/opening/cash_boundary_binding",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-express-test-validity-not-market-TTL-or-professional-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-lifecycle-evidence-2",
+      "requirement_id": "/opening/debt_spec",
+      "source_sha256": "35640bb57a3673fb5a6b601bc4572f9517a3e59fa985d8b65e408a8cd89102ef",
+      "source_locator": "/opening/debt_spec",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-express-test-validity-not-market-TTL-or-professional-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-lifecycle-evidence-3",
+      "requirement_id": "/opening/project/periods/0/noi",
+      "source_sha256": "284d3f9a62415ce23890d2a6b56d6467df29186f09886067c9054036dceae7f4",
+      "source_locator": "/opening/project/periods/0/noi",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-express-test-validity-not-market-TTL-or-professional-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-lifecycle-evidence-4",
+      "requirement_id": "/opening/project/periods/0/cash",
+      "source_sha256": "e439e57f2e5857450a8b40ce0acac40574c1b71a44a0e4bb7f849d7695801ec9",
+      "source_locator": "/opening/project/periods/0/cash",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-express-test-validity-not-market-TTL-or-professional-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-lifecycle-evidence-5",
+      "requirement_id": "/opening/project/periods/1/noi",
+      "source_sha256": "7ec7395581ed8a468ffecb7d61139a23478631f5d26d4efc93a56ea31705fda1",
+      "source_locator": "/opening/project/periods/1/noi",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-express-test-validity-not-market-TTL-or-professional-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-lifecycle-evidence-6",
+      "requirement_id": "/opening/project/periods/1/cash",
+      "source_sha256": "f0d1174d6fc7f80dacce3c552fce1f926fe93b303db565d15c8a97a982dc0593",
+      "source_locator": "/opening/project/periods/1/cash",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-express-test-validity-not-market-TTL-or-professional-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-lifecycle-evidence-7",
+      "requirement_id": "/opening/project/closings/0/cash",
+      "source_sha256": "efb9612228fd3a5d4c0a035d32e0fcb9c9e62fd8d4d1f5609ee8c8e73b3b4ee6",
+      "source_locator": "/opening/project/closings/0/cash",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-express-test-validity-not-market-TTL-or-professional-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-lifecycle-evidence-8",
+      "requirement_id": "/opening/project/closings/0/debt_spec",
+      "source_sha256": "3febe17198a1aed557c45115f284724701d07a1fd17c8d5ad30db97b2b0de2ed",
+      "source_locator": "/opening/project/closings/0/debt_spec",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-express-test-validity-not-market-TTL-or-professional-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-lifecycle-evidence-9",
+      "requirement_id": "/opening/project/closings/0/loans/0/terms",
+      "source_sha256": "5290a6db1e7aa37b9c25d8183473c297b74ac87f61993e1320a7a0cdf6bf5872",
+      "source_locator": "/opening/project/closings/0/loans/0/terms",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-express-test-validity-not-market-TTL-or-professional-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-lifecycle-evidence-10",
+      "requirement_id": "/opening/project/closings/0/loans/0/windows_record",
+      "source_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "source_locator": "/opening/project/closings/0/loans/0/windows_record",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-express-test-validity-not-market-TTL-or-professional-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-lifecycle-evidence-11",
+      "requirement_id": "/opening/project/closings/1/cash",
+      "source_sha256": "d579f1a52e5f6840059757c628a5dd8b24e9389802564ea64456b3465dc68fea",
+      "source_locator": "/opening/project/closings/1/cash",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-express-test-validity-not-market-TTL-or-professional-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-lifecycle-evidence-12",
+      "requirement_id": "/opening/project/closings/1/debt_spec",
+      "source_sha256": "6046c9e8cec014c2d70009ee3a0322f6413432412f462a4dbf21d61a7aa80d2b",
+      "source_locator": "/opening/project/closings/1/debt_spec",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-express-test-validity-not-market-TTL-or-professional-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-lifecycle-evidence-13",
+      "requirement_id": "/opening/project/closings/1/loans/0/terms",
+      "source_sha256": "fe60d5603fca9f51105b704e097d8541411e34416157e8034c3b33c831e31750",
+      "source_locator": "/opening/project/closings/1/loans/0/terms",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-express-test-validity-not-market-TTL-or-professional-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-lifecycle-evidence-14",
+      "requirement_id": "/opening/project/closings/1/loans/0/windows_record",
+      "source_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "source_locator": "/opening/project/closings/1/loans/0/windows_record",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-express-test-validity-not-market-TTL-or-professional-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-lifecycle-evidence-15",
+      "requirement_id": "/opening/project/manifest",
+      "source_sha256": "0d30406f62b83c5989413ea931342b1ed171363ae947052e0d11b4fcdff84338",
+      "source_locator": "/opening/project/manifest",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-express-test-validity-not-market-TTL-or-professional-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-lifecycle-evidence-16",
+      "requirement_id": "/window/project/periods/0/noi",
+      "source_sha256": "284d3f9a62415ce23890d2a6b56d6467df29186f09886067c9054036dceae7f4",
+      "source_locator": "/window/project/periods/0/noi",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-express-test-validity-not-market-TTL-or-professional-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-lifecycle-evidence-17",
+      "requirement_id": "/window/project/periods/0/cash",
+      "source_sha256": "e439e57f2e5857450a8b40ce0acac40574c1b71a44a0e4bb7f849d7695801ec9",
+      "source_locator": "/window/project/periods/0/cash",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-express-test-validity-not-market-TTL-or-professional-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-lifecycle-evidence-18",
+      "requirement_id": "/window/project/periods/1/noi",
+      "source_sha256": "7ec7395581ed8a468ffecb7d61139a23478631f5d26d4efc93a56ea31705fda1",
+      "source_locator": "/window/project/periods/1/noi",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-express-test-validity-not-market-TTL-or-professional-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-lifecycle-evidence-19",
+      "requirement_id": "/window/project/periods/1/cash",
+      "source_sha256": "f0d1174d6fc7f80dacce3c552fce1f926fe93b303db565d15c8a97a982dc0593",
+      "source_locator": "/window/project/periods/1/cash",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-express-test-validity-not-market-TTL-or-professional-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-lifecycle-evidence-20",
+      "requirement_id": "/window/project/closings/0/cash",
+      "source_sha256": "efb9612228fd3a5d4c0a035d32e0fcb9c9e62fd8d4d1f5609ee8c8e73b3b4ee6",
+      "source_locator": "/window/project/closings/0/cash",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-express-test-validity-not-market-TTL-or-professional-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-lifecycle-evidence-21",
+      "requirement_id": "/window/project/closings/0/debt_spec",
+      "source_sha256": "3febe17198a1aed557c45115f284724701d07a1fd17c8d5ad30db97b2b0de2ed",
+      "source_locator": "/window/project/closings/0/debt_spec",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-express-test-validity-not-market-TTL-or-professional-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-lifecycle-evidence-22",
+      "requirement_id": "/window/project/closings/0/loans/0/terms",
+      "source_sha256": "5290a6db1e7aa37b9c25d8183473c297b74ac87f61993e1320a7a0cdf6bf5872",
+      "source_locator": "/window/project/closings/0/loans/0/terms",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-express-test-validity-not-market-TTL-or-professional-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-lifecycle-evidence-23",
+      "requirement_id": "/window/project/closings/0/loans/0/windows_record",
+      "source_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "source_locator": "/window/project/closings/0/loans/0/windows_record",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-express-test-validity-not-market-TTL-or-professional-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-lifecycle-evidence-24",
+      "requirement_id": "/window/project/closings/1/cash",
+      "source_sha256": "d579f1a52e5f6840059757c628a5dd8b24e9389802564ea64456b3465dc68fea",
+      "source_locator": "/window/project/closings/1/cash",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-express-test-validity-not-market-TTL-or-professional-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-lifecycle-evidence-25",
+      "requirement_id": "/window/project/closings/1/debt_spec",
+      "source_sha256": "6046c9e8cec014c2d70009ee3a0322f6413432412f462a4dbf21d61a7aa80d2b",
+      "source_locator": "/window/project/closings/1/debt_spec",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-express-test-validity-not-market-TTL-or-professional-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-lifecycle-evidence-26",
+      "requirement_id": "/window/project/closings/1/loans/0/terms",
+      "source_sha256": "fe60d5603fca9f51105b704e097d8541411e34416157e8034c3b33c831e31750",
+      "source_locator": "/window/project/closings/1/loans/0/terms",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-express-test-validity-not-market-TTL-or-professional-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-lifecycle-evidence-27",
+      "requirement_id": "/window/project/closings/1/loans/0/windows_record",
+      "source_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "source_locator": "/window/project/closings/1/loans/0/windows_record",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-express-test-validity-not-market-TTL-or-professional-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-lifecycle-evidence-28",
+      "requirement_id": "/window/project/manifest",
+      "source_sha256": "0d30406f62b83c5989413ea931342b1ed171363ae947052e0d11b4fcdff84338",
+      "source_locator": "/window/project/manifest",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-express-test-validity-not-market-TTL-or-professional-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-lifecycle-evidence-29",
+      "requirement_id": "/capacity/valuation_noi",
+      "source_sha256": "43f29cc70d292dadf9de0271d686dcc930b7f6a6c44a5cf027eee8a71ac10a5a",
+      "source_locator": "/capacity/valuation_noi",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-express-test-validity-not-market-TTL-or-professional-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-lifecycle-evidence-30",
+      "requirement_id": "/capacity/bank_noi",
+      "source_sha256": "b63580d6b379e55da1d605a2f22cddd081db81996d3fba77bb1c727d8f64fec2",
+      "source_locator": "/capacity/bank_noi",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-express-test-validity-not-market-TTL-or-professional-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-lifecycle-evidence-31",
+      "requirement_id": "/capacity/closing",
+      "source_sha256": "efb9612228fd3a5d4c0a035d32e0fcb9c9e62fd8d4d1f5609ee8c8e73b3b4ee6",
+      "source_locator": "/capacity/closing",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-express-test-validity-not-market-TTL-or-professional-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-lifecycle-evidence-32",
+      "requirement_id": "/capacity/spec",
+      "source_sha256": "11db8f278b5a6e65f83f321dafe8c72627474537cdabf41db70a34c2df94fa51",
+      "source_locator": "/capacity/spec",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-express-test-validity-not-market-TTL-or-professional-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-lifecycle-evidence-33",
+      "requirement_id": "/capacity/new_loan/terms",
+      "source_sha256": "fe60d5603fca9f51105b704e097d8541411e34416157e8034c3b33c831e31750",
+      "source_locator": "/capacity/new_loan/terms",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-express-test-validity-not-market-TTL-or-professional-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-lifecycle-evidence-34",
+      "requirement_id": "/capacity/new_loan/windows_record",
+      "source_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "source_locator": "/capacity/new_loan/windows_record",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-express-test-validity-not-market-TTL-or-professional-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-lifecycle-evidence-35",
+      "requirement_id": "/window/investor",
+      "source_sha256": "6a72111b76403f47ae36f06a11f6abdc848d36e0aa6459da2f7c89040852a8d3",
+      "source_locator": "/window/investor",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-express-test-validity-not-market-TTL-or-professional-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-lifecycle-evidence-36",
+      "requirement_id": "/window/binding_record",
+      "source_sha256": "30bc925aa37a27a4ad29ab2e309fc15a6ba2b4d2e0eb44cf0a37830e76562892",
+      "source_locator": "/window/binding_record",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-express-test-validity-not-market-TTL-or-professional-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-lifecycle-evidence-37",
+      "requirement_id": "/lifecycle/investor",
+      "source_sha256": "1a7df861dfc4d123c50d150bdc148291936d7c665d553ca7ff9e6da1fcd757f3",
+      "source_locator": "/lifecycle/investor",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-express-test-validity-not-market-TTL-or-professional-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-lifecycle-evidence-38",
+      "requirement_id": "/lifecycle/binding",
+      "source_sha256": "0d6c1f12a83fc9b89a7d4a4bd683b6bd9677cd356415fa57389ade5ac6f33da6",
+      "source_locator": "/lifecycle/binding",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-express-test-validity-not-market-TTL-or-professional-approval"
+    }
+  ]
+}

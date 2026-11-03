@@ -1,0 +1,171 @@
+{
+  "scope": "Synthetic explicit-time lifecycle source currency and internal presentation only; original 398-row financial coverage unchanged",
+  "rows": [
+    {
+      "requirement_or_variable": "complete_extended_source_inventory",
+      "source": {
+        "path": "docs/technical-implementation-T61-T62.md",
+        "line": 3,
+        "sha256": "41ef9a01220467f76213762705faa09a8ce83cc4b429ffe63e43be27808c1b3f"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§§3, 5 y 7",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "DAT-01"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 aportes/distribuciones brutos frente a neto",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "RETURN-01"
+        }
+      ],
+      "current_definition": "Replay complete lifecycle and bind all exact source transports including both project views, loan windows, typed window binding, preopening and extended investor sources; exact identities/hashes/locators, 256 binding limit",
+      "affected_modules": [
+        "M5",
+        "M7",
+        "M9",
+        "T61"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_current_lifecycle.py",
+          "line": 23,
+          "test": "CurrentLifecycleTests.test_exact_sources_current_story_still_pending"
+        },
+        {
+          "path": "tests/test_current_lifecycle.py",
+          "line": 33,
+          "test": "CurrentLifecycleTests.test_incomplete_or_rehashed_source_inventory_cannot_hide_missing_binding"
+        },
+        {
+          "path": "tests/test_current_lifecycle.py",
+          "line": 58,
+          "test": "CurrentLifecycleTests.test_reordered_bindings_valid_extra_identity_rejected"
+        }
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Original-document scope/authentication, actual source authority and real financing"
+    },
+    {
+      "requirement_or_variable": "expiry_and_underlying_financial_blockers",
+      "source": {
+        "path": "docs/technical-implementation-T61-T62.md",
+        "line": 5,
+        "sha256": "41ef9a01220467f76213762705faa09a8ce83cc4b429ffe63e43be27808c1b3f"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§§3, 5 y 7",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "DAT-01"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 aportes/distribuciones brutos frente a neto",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "RETURN-01"
+        }
+      ],
+      "current_definition": "Require same explicit UTC evidence evaluation, no inferred TTL or review authority; expiry/pending/estimate/supersession/context mismatch withdraws current story; valid evidence never repairs original bank or opening-debt failure",
+      "affected_modules": [
+        "M5",
+        "M7",
+        "M9",
+        "T61"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_current_lifecycle.py",
+          "line": 27,
+          "test": "CurrentLifecycleTests.test_expiry_of_any_new_or_existing_source_withdraws_current_numbers"
+        },
+        {
+          "path": "tests/test_current_lifecycle.py",
+          "line": 39,
+          "test": "CurrentLifecycleTests.test_review_estimate_supersession_and_context_preserved"
+        },
+        {
+          "path": "tests/test_current_lifecycle.py",
+          "line": 43,
+          "test": "CurrentLifecycleTests.test_validity_cutoff_and_exact_evaluation_time"
+        },
+        {
+          "path": "tests/test_current_lifecycle.py",
+          "line": 47,
+          "test": "CurrentLifecycleTests.test_current_registry_does_not_repair_original_bank_failure"
+        },
+        {
+          "path": "tests/test_current_lifecycle.py",
+          "line": 50,
+          "test": "CurrentLifecycleTests.test_current_registry_does_not_repair_unmatched_opening_debt"
+        },
+        {
+          "path": "tests/test_current_lifecycle.py",
+          "line": 53,
+          "test": "CurrentLifecycleTests.test_rehashed_base_and_registry_forgery_rejected"
+        }
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Authenticated review/documents, live monitoring, investment criteria and decisions remain open"
+    },
+    {
+      "requirement_or_variable": "replayed_internal_current_or_pending_review",
+      "source": {
+        "path": "docs/technical-implementation-T61-T62.md",
+        "line": 7,
+        "sha256": "41ef9a01220467f76213762705faa09a8ce83cc4b429ffe63e43be27808c1b3f"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§§3, 5 y 7",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "DAT-01"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 aportes/distribuciones brutos frente a neto",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "RETURN-01"
+        }
+      ],
+      "current_definition": "Replay current gate before formatting gross return story, dates, explicit normalization, capital/CoC/IRR/risk and opening principal; pending output suppresses all current financial values and retains causes/history",
+      "affected_modules": [
+        "M5",
+        "M7",
+        "M9",
+        "T62"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_current_lifecycle.py",
+          "line": 69,
+          "test": "LifecycleReviewTests.test_replayed_current_report_preserves_returns_and_debt_without_approval"
+        },
+        {
+          "path": "tests/test_current_lifecycle.py",
+          "line": 73,
+          "test": "LifecycleReviewTests.test_expired_report_withdraws_numbers_without_deleting_history"
+        },
+        {
+          "path": "tests/test_current_lifecycle.py",
+          "line": 77,
+          "test": "LifecycleReviewTests.test_rehashed_current_report_forgery_not_rendered"
+        }
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Final external one-page decision PDF, personal allocation, economic close, financial acceptance and production"
+    }
+  ],
+  "real_decisions_enabled": false
+}
