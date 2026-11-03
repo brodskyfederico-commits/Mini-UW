@@ -1,0 +1,303 @@
+{
+  "schema": "miniuw.synthetic-evidence-currency.v1",
+  "context": {
+    "deal_id": "SYNTHETIC-hold-sale-demo",
+    "definition_set_revision": "SYNTHETIC-hold-sale-v1",
+    "run_id": "SYNTHETIC-hold-sale-run",
+    "scenario_id": "SYNTHETIC-no-refinance-independent-case"
+  },
+  "inventory_declared_complete": true,
+  "inventory_basis_ref": "SYNTHETIC-complete-hold-sale-transport-not-original-document-authentication",
+  "requirements": [
+    {
+      "requirement_id": "/transport/bundle",
+      "source_sha256": "24de946773f51a6e780ed94ed2910c1d98ae8a839b2d88a08559a5dda8b72fca",
+      "source_locator": "/transport/bundle"
+    },
+    {
+      "requirement_id": "/preopening/cash",
+      "source_sha256": "171d74fda5267056bb265305c1d9f4d309088807f9c6a2fdca775ecec298acd2",
+      "source_locator": "/preopening/cash"
+    },
+    {
+      "requirement_id": "/holding/manifest",
+      "source_sha256": "95ae4f66c7ffb3b9af634586a30c80cda956aacbd9fe30c521a3c1d91597ab9e",
+      "source_locator": "/holding/manifest"
+    },
+    {
+      "requirement_id": "/holding/sale_binding",
+      "source_sha256": "699f1c5ab1cb8d2dac060141ee391f580400ba508bdca21d214354dd313bee7c",
+      "source_locator": "/holding/sale_binding"
+    },
+    {
+      "requirement_id": "/opening/cash_binding",
+      "source_sha256": "05f84468c5ce5f3e1b9a54689e0ae712f662ae61fc9b9f9e3066d35adac24726",
+      "source_locator": "/opening/cash_binding"
+    },
+    {
+      "requirement_id": "/opening/debt_binding",
+      "source_sha256": "5c503ac8bd79e5a642a5b5abae1238bf70d5aabad72f26eb5edc3543c9d5d92f",
+      "source_locator": "/opening/debt_binding"
+    },
+    {
+      "requirement_id": "/investor/source",
+      "source_sha256": "903d5533b7524bc0976d06345bb35cfefb07d4d8ffca74b2dd069017aa71d20c",
+      "source_locator": "/investor/source"
+    },
+    {
+      "requirement_id": "/investor/binding",
+      "source_sha256": "8b1b1eb9fe841091f0fba53f73b967ef8bf0803b9f54c9eebb7acc1e39f5d3e7",
+      "source_locator": "/investor/binding"
+    },
+    {
+      "requirement_id": "/holding/periods/0/noi",
+      "source_sha256": "859a004934bad5de108d5ef4ed06bfc65df0a4ce7047ff0b5f5db8f17209a6d8",
+      "source_locator": "/holding/periods/0/noi"
+    },
+    {
+      "requirement_id": "/holding/periods/0/cash",
+      "source_sha256": "4d05681c44c27f137b9f957f86d385b1d8b394171e7b4a0262abffadf6156109",
+      "source_locator": "/holding/periods/0/cash"
+    },
+    {
+      "requirement_id": "/holding/periods/1/noi",
+      "source_sha256": "2309acb40d848557a43e7f67cb93dee835f02de16633a70a18dfc8612bccc472",
+      "source_locator": "/holding/periods/1/noi"
+    },
+    {
+      "requirement_id": "/holding/periods/1/cash",
+      "source_sha256": "7a3c507a92b630135cad14abb1c5ec3198b02edc31fa08a6509411eac2995372",
+      "source_locator": "/holding/periods/1/cash"
+    },
+    {
+      "requirement_id": "/sale/cash",
+      "source_sha256": "bd962790de22c11e39b8561f996511c249bf0b3fdacd1992b06b398adcaca466",
+      "source_locator": "/sale/cash"
+    },
+    {
+      "requirement_id": "/sale/debt_binding",
+      "source_sha256": "ee5b7d75f3c116729ca576a80430c83dbaf89a91b2475282705efddf5ef6963f",
+      "source_locator": "/sale/debt_binding"
+    },
+    {
+      "requirement_id": "/sale/loans/0/terms",
+      "source_sha256": "e8cf397618e53ad2b25fe06c0a2187c8fbb30851ee9b50aa3d02be3d79decb9f",
+      "source_locator": "/sale/loans/0/terms"
+    },
+    {
+      "requirement_id": "/sale/loans/0/windows_record",
+      "source_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "source_locator": "/sale/loans/0/windows_record"
+    }
+  ],
+  "evidence": [
+    {
+      "evidence_id": "SYNTHETIC-hold-sale-evidence-0",
+      "requirement_id": "/transport/bundle",
+      "source_sha256": "24de946773f51a6e780ed94ed2910c1d98ae8a839b2d88a08559a5dda8b72fca",
+      "source_locator": "/transport/bundle",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-explicit-software-test-validity-not-professional-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-hold-sale-evidence-1",
+      "requirement_id": "/preopening/cash",
+      "source_sha256": "171d74fda5267056bb265305c1d9f4d309088807f9c6a2fdca775ecec298acd2",
+      "source_locator": "/preopening/cash",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-explicit-software-test-validity-not-professional-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-hold-sale-evidence-2",
+      "requirement_id": "/holding/manifest",
+      "source_sha256": "95ae4f66c7ffb3b9af634586a30c80cda956aacbd9fe30c521a3c1d91597ab9e",
+      "source_locator": "/holding/manifest",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-explicit-software-test-validity-not-professional-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-hold-sale-evidence-3",
+      "requirement_id": "/holding/sale_binding",
+      "source_sha256": "699f1c5ab1cb8d2dac060141ee391f580400ba508bdca21d214354dd313bee7c",
+      "source_locator": "/holding/sale_binding",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-explicit-software-test-validity-not-professional-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-hold-sale-evidence-4",
+      "requirement_id": "/opening/cash_binding",
+      "source_sha256": "05f84468c5ce5f3e1b9a54689e0ae712f662ae61fc9b9f9e3066d35adac24726",
+      "source_locator": "/opening/cash_binding",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-explicit-software-test-validity-not-professional-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-hold-sale-evidence-5",
+      "requirement_id": "/opening/debt_binding",
+      "source_sha256": "5c503ac8bd79e5a642a5b5abae1238bf70d5aabad72f26eb5edc3543c9d5d92f",
+      "source_locator": "/opening/debt_binding",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-explicit-software-test-validity-not-professional-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-hold-sale-evidence-6",
+      "requirement_id": "/investor/source",
+      "source_sha256": "903d5533b7524bc0976d06345bb35cfefb07d4d8ffca74b2dd069017aa71d20c",
+      "source_locator": "/investor/source",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-explicit-software-test-validity-not-professional-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-hold-sale-evidence-7",
+      "requirement_id": "/investor/binding",
+      "source_sha256": "8b1b1eb9fe841091f0fba53f73b967ef8bf0803b9f54c9eebb7acc1e39f5d3e7",
+      "source_locator": "/investor/binding",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-explicit-software-test-validity-not-professional-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-hold-sale-evidence-8",
+      "requirement_id": "/holding/periods/0/noi",
+      "source_sha256": "859a004934bad5de108d5ef4ed06bfc65df0a4ce7047ff0b5f5db8f17209a6d8",
+      "source_locator": "/holding/periods/0/noi",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-explicit-software-test-validity-not-professional-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-hold-sale-evidence-9",
+      "requirement_id": "/holding/periods/0/cash",
+      "source_sha256": "4d05681c44c27f137b9f957f86d385b1d8b394171e7b4a0262abffadf6156109",
+      "source_locator": "/holding/periods/0/cash",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-explicit-software-test-validity-not-professional-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-hold-sale-evidence-10",
+      "requirement_id": "/holding/periods/1/noi",
+      "source_sha256": "2309acb40d848557a43e7f67cb93dee835f02de16633a70a18dfc8612bccc472",
+      "source_locator": "/holding/periods/1/noi",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-explicit-software-test-validity-not-professional-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-hold-sale-evidence-11",
+      "requirement_id": "/holding/periods/1/cash",
+      "source_sha256": "7a3c507a92b630135cad14abb1c5ec3198b02edc31fa08a6509411eac2995372",
+      "source_locator": "/holding/periods/1/cash",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-explicit-software-test-validity-not-professional-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-hold-sale-evidence-12",
+      "requirement_id": "/sale/cash",
+      "source_sha256": "bd962790de22c11e39b8561f996511c249bf0b3fdacd1992b06b398adcaca466",
+      "source_locator": "/sale/cash",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-explicit-software-test-validity-not-professional-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-hold-sale-evidence-13",
+      "requirement_id": "/sale/debt_binding",
+      "source_sha256": "ee5b7d75f3c116729ca576a80430c83dbaf89a91b2475282705efddf5ef6963f",
+      "source_locator": "/sale/debt_binding",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-explicit-software-test-validity-not-professional-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-hold-sale-evidence-14",
+      "requirement_id": "/sale/loans/0/terms",
+      "source_sha256": "e8cf397618e53ad2b25fe06c0a2187c8fbb30851ee9b50aa3d02be3d79decb9f",
+      "source_locator": "/sale/loans/0/terms",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-explicit-software-test-validity-not-professional-approval"
+    },
+    {
+      "evidence_id": "SYNTHETIC-hold-sale-evidence-15",
+      "requirement_id": "/sale/loans/0/windows_record",
+      "source_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "source_locator": "/sale/loans/0/windows_record",
+      "issued_at": "2027-01-01T00:00:00Z",
+      "valid_from": "2027-01-01T00:00:00Z",
+      "valid_until": "2027-07-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-explicit-software-test-validity-not-professional-approval"
+    }
+  ]
+}

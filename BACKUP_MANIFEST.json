@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D03 review and metric-intake design extensions and T01–T62 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D03 review and metric-intake design extensions and T01–T67 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 26937,
-      "sha256": "a4f9f537d99bcd1494d9570c76e4c7d2c78a11c91a7e11d01ec7b5a34388af5f"
+      "bytes": 27791,
+      "sha256": "8ffa5096514986fb88e41c24bfc6bf950a61b4f0133c54e89656bd4cfa4478fc"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 106238,
-      "sha256": "351b67d3e4b3394fd9673d05db49b9edcbc6307c027a1db864fdc0a41b85b6ba"
+      "bytes": 109271,
+      "sha256": "541416b9919e797116427047f1908034e26d2ed1fc3d871a18410128549d3379"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -347,6 +347,11 @@
       "sha256": "18f29ce5be51e646612740f615bd10a3725783b6b45b8e0d0b2b72bec82a153b"
     },
     {
+      "path": "docs/review/Compra_Tenencia_Venta_Sin_Refi_T63_T67.md",
+      "bytes": 3901,
+      "sha256": "42da9b301f4116de0d73c91b0240caaa69b08631dfd7423e8f3f3fb9a02adb08"
+    },
+    {
       "path": "docs/review/MiniUW_Especificacion_Integral_Armado_I01.pdf",
       "bytes": 119243,
       "sha256": "e1b395d83b800c5eab6a1787c4a2a4ac87919c3076921b7d1fc96fca74cb5241"
@@ -422,9 +427,19 @@
       "sha256": "3763f3fae913b4438cb975ba7c024bbbd265baae02ee7385b9235e490f2fd973"
     },
     {
+      "path": "docs/review/Revision_Pendiente_Sin_Refi_T67.md",
+      "bytes": 1011,
+      "sha256": "8b4888bfa08c5c99dbcd8af992e26b7af181fc54b46ef51a7020264df69017af"
+    },
+    {
       "path": "docs/review/Revision_Vigente_Compra_Venta_T62.md",
       "bytes": 4784,
       "sha256": "481331328800af8e99a86868a27cf2a8a8da254cdfb044a655c39cb2e8d76441"
+    },
+    {
+      "path": "docs/review/Revision_Vigente_Sin_Refi_T67.md",
+      "bytes": 4234,
+      "sha256": "8764803a065f5ebae9ff50c552b2b768ecbc4d5eb9a8bfcd2b8c3ed60bcd18dd"
     },
     {
       "path": "docs/review/information-flow-summary-FLOW01-validation.json",
@@ -510,6 +525,11 @@
       "path": "docs/review/synthetic-exit-value-to-sale-demo.json",
       "bytes": 29908,
       "sha256": "0ece174572199e5876278d16151862634aea1014b7862c79c7676c621c1ab08b"
+    },
+    {
+      "path": "docs/review/synthetic-hold-sale-demo.json",
+      "bytes": 21273,
+      "sha256": "e3e0a66e6a64aa25dc0dc6d3f1aaab1993f1d81f02694cae87041a704a3e251d"
     },
     {
       "path": "docs/review/synthetic-holding-cash-returns-demo.json",
@@ -740,6 +760,11 @@
       "path": "docs/technical-coverage-T61-T62.json",
       "bytes": 7779,
       "sha256": "48ad599316597bc7b13b579a158ca2a53ff1153105c8ac7095289a6c92bcd77d"
+    },
+    {
+      "path": "docs/technical-coverage-T63-T67.json",
+      "bytes": 14778,
+      "sha256": "30890e33cf49168743a9f316ff265717387f0a2b5aa67c5c27a2dfbcffb77794"
     },
     {
       "path": "docs/technical-implementation-T01.md",
@@ -977,9 +1002,19 @@
       "sha256": "41ef9a01220467f76213762705faa09a8ce83cc4b429ffe63e43be27808c1b3f"
     },
     {
+      "path": "docs/technical-implementation-T63-T65.md",
+      "bytes": 2600,
+      "sha256": "c6031a38aa8272faf9a0bd194c77235818da578ad364ea22ebc09092fdbb4339"
+    },
+    {
+      "path": "docs/technical-implementation-T66-T67.md",
+      "bytes": 1628,
+      "sha256": "6a71e45735811c51b4e6667d4a6a867bea368abd1a179ae3fef004edccc09232"
+    },
+    {
       "path": "docs/technical-implementation-status.json",
-      "bytes": 20182,
-      "sha256": "a3c558c25e61f731c23cdeb6c839085b9dbd7d2642072b00ff032bcfb3b62609"
+      "bytes": 21390,
+      "sha256": "abda3eea95a233722249b717b5eaf93fe1903c31b0e3b8e7f5fbb96dee448b52"
     },
     {
       "path": "infra/README.md",
@@ -1717,6 +1752,11 @@
       "sha256": "1bdd108274fe9022d7eafefd5b4f64dc3aa533eec8d0b76bb342729f3303511b"
     },
     {
+      "path": "src/miniuw_foundation/current_hold_sale.py",
+      "bytes": 5475,
+      "sha256": "b04420d84aa41fbf495604a349294fc1d8320d77974c605bff430a7f5c38c2b5"
+    },
+    {
       "path": "src/miniuw_foundation/current_lifecycle.py",
       "bytes": 5803,
       "sha256": "a0efea0a9520bc5a4776fab7c73849bc53b4ef7c3a8b2ca9dfcab0f7e0fe6490"
@@ -1780,6 +1820,26 @@
       "path": "src/miniuw_foundation/exit_value.py",
       "bytes": 6089,
       "sha256": "4885e792dc30dc2846bb66abdc98582f3ac45256d66db4ceba23f35b4038f9b4"
+    },
+    {
+      "path": "src/miniuw_foundation/hold_sale_bundle.py",
+      "bytes": 5083,
+      "sha256": "f56db8b5a008c35ddbaa1fb89233b0b7d7e16a0c7b757d3df6c84bc539d41f0e"
+    },
+    {
+      "path": "src/miniuw_foundation/hold_sale_cash.py",
+      "bytes": 10498,
+      "sha256": "d49f94f77edceef7b3cedf132ec0cc2b5d8c937d78ebe554f27b924758f76b13"
+    },
+    {
+      "path": "src/miniuw_foundation/hold_sale_opening.py",
+      "bytes": 8566,
+      "sha256": "e5df87d2709d8eb504ae2087874a2aad610d74832cdba26caa4b85a698cde61c"
+    },
+    {
+      "path": "src/miniuw_foundation/hold_sale_returns.py",
+      "bytes": 7853,
+      "sha256": "bea9889b68c9b5b70b2be923d520406f4441b7b16e7a3d83ed75a8cc2e3cdcb5"
     },
     {
       "path": "src/miniuw_foundation/holding_cash.py",
@@ -2135,6 +2195,16 @@
       "path": "templates/synthetic-exit-value-spec.json",
       "bytes": 1029,
       "sha256": "4fb0e19b1e980402230b04dd2baf474eea5e63efeec2fadd8c515b2cb644f763"
+    },
+    {
+      "path": "templates/synthetic-hold-sale-bundle-example.json",
+      "bytes": 71327,
+      "sha256": "24de946773f51a6e780ed94ed2910c1d98ae8a839b2d88a08559a5dda8b72fca"
+    },
+    {
+      "path": "templates/synthetic-hold-sale-evidence-example.json",
+      "bytes": 13235,
+      "sha256": "8d794772cd8297bf777958d54b9f859242efb66e98d58cbc96decded68c363e3"
     },
     {
       "path": "templates/synthetic-holding-investor-slots.json",
@@ -2562,6 +2632,11 @@
       "sha256": "52c74047a9f6f18aaf912ece0afb6012ba831cd8aad45bd53252e248e9036621"
     },
     {
+      "path": "tests/test_hold_sale.py",
+      "bytes": 18740,
+      "sha256": "386ff28c79a32eb67ded1ff0ddef2697a8633ce75c5e18e2499f9f74b5e55576"
+    },
+    {
       "path": "tests/test_holding_cash.py",
       "bytes": 13490,
       "sha256": "8fac7145a77a36ac6a5fcfd362be387026ca1505be4c387c77f60ab903592883"
@@ -2817,6 +2892,11 @@
       "sha256": "597f9ee5eac2026b1c833e657f23fb45f297979d2da2e585c4002a8709cd8260"
     },
     {
+      "path": "tools/demo_hold_sale.py",
+      "bytes": 9178,
+      "sha256": "f8cf43e34a27b5addecde6cead60a3818e3896fed3db40d2ccd0498bab245dbc"
+    },
+    {
       "path": "tools/demo_holding_cash_returns.py",
       "bytes": 4408,
       "sha256": "341167c3380e3de194b5ad456d104ac42ca79df6289bdf912596f1e3551c9a19"
@@ -2955,6 +3035,11 @@
       "path": "tools/demo_synthetic_workbook.py",
       "bytes": 2054,
       "sha256": "531bfdab248c6ac8b46b01393632dccaf96ab177a3fc21a7f0bcbc230ba9d5f5"
+    },
+    {
+      "path": "tools/hold_sale_demo_support.py",
+      "bytes": 9932,
+      "sha256": "c9f0f618a169d63c9290b9d7c1abd28c5c17adfde788567eeeef5f0d86c25396"
     },
     {
       "path": "tools/lifecycle_demo_support.py",

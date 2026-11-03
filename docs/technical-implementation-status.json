@@ -1,7 +1,7 @@
 {
   "phase": "post-I01 synthetic technical implementation",
   "user_authorized": true,
-  "component": "T62",
+  "component": "T67",
   "status": "local_implementation_verified_pending_remote_receipt",
   "implemented": [
     "fresh raw-claim drafts from unchanged 55-input/10-criterion template",
@@ -99,9 +99,14 @@
     "capacity-checked declared purchase-to-sale gross equity history without duplicated operating opening seed; extended calendar EM/IRR/normalization and cash risk",
     "bounded deterministic portable synthetic lifecycle bundle with exact source bytes, compatible versions and complete recovery/replay of pending or computed results",
     "explicit-time complete 39-binding lifecycle source currency gate, including preopening, debt windows, typed bindings and extended investor source",
-    "fully replayed current lifecycle internal review withdrawing current numbers on expiry or underlying financial blockers while preserving historical proof"
+    "fully replayed current lifecycle internal review withdrawing current numbers on expiry or underlying financial blockers while preserving historical proof",
+    "independently supplied no-refinance operating holding and terminal sale cash continuity, complete dated debt-service/payoff and reserve conservation",
+    "preopening single-full-draw loan/cash carry into a no-refinance holding path without generating maturity extension",
+    "complete gross purchase-to-sale investor ledger for no-refinance profile, retaining zero/additional contributions and omitting an opening cash seed",
+    "exact-source portable no-refinance bundle with full compatible producer reconstruction and blocked-case recovery",
+    "explicit-time full-source no-refinance current output and internal view; expired sources withdraw current figures and preserve history"
   ],
-  "unit_tests": 1047,
+  "unit_tests": 1081,
   "plan_packages_partially_addressed": [
     "IMP-01",
     "IMP-06",
@@ -118,7 +123,7 @@
   "production_ready": false,
   "next_independent_work": [
     "source-specific insurance/tax/lease-up refinements within rental scope",
-    "independent no-refinance and revised timing scenarios",
+    "independently supplied revised operating/exit timing cases without deriving scenario shocks",
     "explicit noncash asset/accrual opening carry and multi-draw construction funding profiles"
   ],
   "I01_snapshot_preserved": true,
@@ -184,7 +189,12 @@
     "T59",
     "T60",
     "T61",
-    "T62"
+    "T62",
+    "T63",
+    "T64",
+    "T65",
+    "T66",
+    "T67"
   ],
   "tests_by_component": {
     "T01": 31,
@@ -248,7 +258,12 @@
     "T59": 14,
     "T60": 7,
     "T61": 9,
-    "T62": 3
+    "T62": 3,
+    "T63": 10,
+    "T64": 6,
+    "T65": 8,
+    "T66": 5,
+    "T67": 5
   },
   "not_yet_implemented": [
     "complete financial graph and its designed cycles",
@@ -310,7 +325,7 @@
   "operating_cash_to_return_assembly_implemented": true,
   "durable_operating_cash_bundles_implemented": true,
   "durable_operating_return_bundles_implemented": true,
-  "investor_cash_producer_connection_scope": "explicit zero-opening preoperating cash and single-full-draw scheduled debt linked to capacity-checked declared operating/refinance/sale window; whole-project asset/accrual/TDC completeness, actual funding and personal allocation remain open",
+  "investor_cash_producer_connection_scope": "explicit zero-opening preoperating cash and single-full-draw scheduled debt linked to separately supplied capacity-checked refinance/sale or no-refinance hold/sale paths; no financial strategy ranking, verified asset/accrual/TDC completeness, actual funding or personal allocation",
   "synthetic_operating_holding_continuity_implemented": true,
   "holding_cash_to_return_assembly_implemented": true,
   "durable_holding_cash_bundles_implemented": true,
@@ -372,5 +387,10 @@
   "synthetic_lifecycle_portable_bundle_implemented": true,
   "preopening_asset_and_accrual_carry_verified": false,
   "opt_in_current_lifecycle_output_gate_implemented": true,
-  "internal_current_lifecycle_review_implemented": true
+  "internal_current_lifecycle_review_implemented": true,
+  "synthetic_no_refinance_hold_sale_cash_implemented": true,
+  "synthetic_no_refinance_opening_debt_carry_implemented": true,
+  "synthetic_no_refinance_lifecycle_returns_implemented": true,
+  "synthetic_no_refinance_portable_bundle_implemented": true,
+  "opt_in_current_no_refinance_review_implemented": true
 }

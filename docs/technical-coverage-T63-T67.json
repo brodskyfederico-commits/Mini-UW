@@ -1,0 +1,333 @@
+{
+  "scope": "Separately supplied synthetic no-refinance cash/debt/return/recovery and explicit-time evidence profile; not comparable-strategy ranking or complete financial validation",
+  "rows": [
+    {
+      "requirement_or_variable": "no_refinance_cash_and_debt_to_sale",
+      "source": {
+        "path": "docs/technical-implementation-T63-T65.md",
+        "line": 3,
+        "sha256": "c6031a38aa8272faf9a0bd194c77235818da578ad364ea22ebc09092fdbb4339"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 costos, financiación, operaciones y salida",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "CASH-02"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 amortización/vencimiento y repago/distribución",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "DEBT-01"
+        },
+        {
+          "documento": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+          "sha256_documento": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+          "ubicacion_exacta": "§3 Costs and TDC / Timing / Refinance and metrics",
+          "definicion_documentada": "Reglas históricas de financiación y flujo mensual; Manual pp.11/13/23/32/53 y C51:C53 precisan campos y pendientes.",
+          "matrix_id": "M5-09"
+        }
+      ],
+      "current_definition": "Complete replay of holding periods and debt-checked sale; separate cash accounts/working balances, per-period scheduled service, terminal payoff and global reserve-neutral cash conservation; never extend maturity",
+      "affected_modules": [
+        "M5",
+        "M7",
+        "M9"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_hold_sale.py",
+          "line": 34,
+          "test": "HoldSaleCashTests.test_hand_cash_conservation_debt_and_reserves"
+        },
+        {
+          "path": "tests/test_hold_sale.py",
+          "line": 39,
+          "test": "HoldSaleCashTests.test_original_april_maturity_is_not_extended_to_sale"
+        },
+        {
+          "path": "tests/test_hold_sale.py",
+          "line": 42,
+          "test": "HoldSaleCashTests.test_balanced_sale_cash_reset_is_rejected"
+        },
+        {
+          "path": "tests/test_hold_sale.py",
+          "line": 45,
+          "test": "HoldSaleCashTests.test_restricted_account_checked_separately"
+        },
+        {
+          "path": "tests/test_hold_sale.py",
+          "line": 49,
+          "test": "HoldSaleCashTests.test_individually_balanced_wrong_principal_cash_not_accepted"
+        },
+        {
+          "path": "tests/test_hold_sale.py",
+          "line": 54,
+          "test": "HoldSaleCashTests.test_terminal_working_balances_not_silently_zeroed"
+        },
+        {
+          "path": "tests/test_hold_sale.py",
+          "line": 72,
+          "test": "HoldSaleCashTests.test_arithmetic_budget_cannot_export_partial_equity"
+        }
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Authentic financing/maturity/payments, unsettled asset/accrual scope and intraperiod liquidity"
+    },
+    {
+      "requirement_or_variable": "no_refinance_opening_debt_and_preoperating_cash",
+      "source": {
+        "path": "docs/technical-implementation-T63-T65.md",
+        "line": 7,
+        "sha256": "c6031a38aa8272faf9a0bd194c77235818da578ad364ea22ebc09092fdbb4339"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 amortización/vencimiento y repago/distribución",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "DEBT-01"
+        },
+        {
+          "documento": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+          "sha256_documento": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+          "ubicacion_exacta": "§3 Costs and TDC / Timing / Refinance and metrics",
+          "definicion_documentada": "Reglas históricas de financiación y flujo mensual; Manual pp.11/13/23/32/53 y C51:C53 precisan campos y pendientes.",
+          "matrix_id": "M5-06"
+        }
+      ],
+      "current_definition": "Replayed preopening cash boundary and exact loan inventory; one full draw at origin, prior dated service and remaining principal; explicit empty loan inventory supported",
+      "affected_modules": [
+        "M5",
+        "M7",
+        "M9"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_hold_sale.py",
+          "line": 81,
+          "test": "HoldSaleOpeningTests.test_full_preopening_cash_and_loan_reconcile"
+        },
+        {
+          "path": "tests/test_hold_sale.py",
+          "line": 84,
+          "test": "HoldSaleOpeningTests.test_explicit_empty_loan_inventory_supported"
+        },
+        {
+          "path": "tests/test_hold_sale.py",
+          "line": 86,
+          "test": "HoldSaleOpeningTests.test_wrong_opening_principal_with_same_cash_does_not_match"
+        },
+        {
+          "path": "tests/test_hold_sale.py",
+          "line": 90,
+          "test": "HoldSaleOpeningTests.test_prior_service_checked_before_operation"
+        },
+        {
+          "path": "tests/test_hold_sale.py",
+          "line": 99,
+          "test": "HoldSaleOpeningTests.test_loan_inventory_and_binding_basis_are_exact"
+        },
+        {
+          "path": "tests/test_hold_sale.py",
+          "line": 104,
+          "test": "HoldSaleOpeningTests.test_rehashed_upstream_proof_rejected"
+        }
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Bank authority/funds availability, construction multi-draw/capitalization and asset basis"
+    },
+    {
+      "requirement_or_variable": "gross_equity_without_phantom_refinance_or_seed",
+      "source": {
+        "path": "docs/technical-implementation-T63-T65.md",
+        "line": 9,
+        "sha256": "c6031a38aa8272faf9a0bd194c77235818da578ad364ea22ebc09092fdbb4339"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 cadena financiera y diferencias; §7",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "CASH-01"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 aportes/distribuciones brutos frente a neto",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "RETURN-01"
+        }
+      ],
+      "current_definition": "Bind every preopening and operation/sale gross event to empty compatible dated targets; no new opening-cash contribution or refinance; recompute explicit basis, EM/all IRR/risk; keep extra equity/cash-in separate",
+      "affected_modules": [
+        "M5",
+        "M7",
+        "M9"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_hold_sale.py",
+          "line": 112,
+          "test": "HoldSaleReturnTests.test_full_return_hand_totals_and_normalization"
+        },
+        {
+          "path": "tests/test_hold_sale.py",
+          "line": 115,
+          "test": "HoldSaleReturnTests.test_refinance_receipts_not_invented_and_zero_contributions_retained"
+        },
+        {
+          "path": "tests/test_hold_sale.py",
+          "line": 118,
+          "test": "HoldSaleReturnTests.test_explicit_additional_operation_contribution_is_gross"
+        },
+        {
+          "path": "tests/test_hold_sale.py",
+          "line": 121,
+          "test": "HoldSaleReturnTests.test_sale_cash_in_requires_express_funding_and_separate_contribution"
+        },
+        {
+          "path": "tests/test_hold_sale.py",
+          "line": 126,
+          "test": "HoldSaleReturnTests.test_extra_opening_cash_seed_or_missing_mapping_cannot_compile"
+        },
+        {
+          "path": "tests/test_hold_sale.py",
+          "line": 133,
+          "test": "HoldSaleReturnTests.test_source_lineage_points_to_exact_gross_values"
+        },
+        {
+          "path": "tests/test_hold_sale.py",
+          "line": 140,
+          "test": "HoldSaleReturnTests.test_no_financial_scenario_ranking_personal_return_or_implicit_capital_base"
+        }
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Actual complete economic scope, CoC/capital/retained equity bases, personal return, comparable strategy scenarios and investment criteria"
+    },
+    {
+      "requirement_or_variable": "portable_no_refinance_recovery",
+      "source": {
+        "path": "docs/technical-implementation-T66-T67.md",
+        "line": 3,
+        "sha256": "6a71e45735811c51b4e6667d4a6a867bea368abd1a179ae3fef004edccc09232"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§§3, 5 y 7",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "DAT-01"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 aportes/distribuciones brutos frente a neto",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "RETURN-01"
+        }
+      ],
+      "current_definition": "Exact UTF-8 source transport, compatible engine/definition versions and full producer reconstruction/result comparison; preserve blocked maturity",
+      "affected_modules": [
+        "M5",
+        "M7",
+        "M9"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_hold_sale.py",
+          "line": 148,
+          "test": "HoldSaleRecoveryTests.test_exact_recovery_and_repeat_export"
+        },
+        {
+          "path": "tests/test_hold_sale.py",
+          "line": 150,
+          "test": "HoldSaleRecoveryTests.test_explicit_no_debt_case_recovers"
+        },
+        {
+          "path": "tests/test_hold_sale.py",
+          "line": 152,
+          "test": "HoldSaleRecoveryTests.test_expired_maturity_stays_blocked_after_recovery"
+        },
+        {
+          "path": "tests/test_hold_sale.py",
+          "line": 154,
+          "test": "HoldSaleRecoveryTests.test_rehashed_forged_result_or_changed_source_rejected"
+        },
+        {
+          "path": "tests/test_hold_sale.py",
+          "line": 159,
+          "test": "HoldSaleRecoveryTests.test_versions_missing_source_duplicate_json_and_transport_guards"
+        }
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Runtime DB/VPS recovery, authentic source/review authority and financial acceptance"
+    },
+    {
+      "requirement_or_variable": "current_no_refinance_evidence_and_internal_view",
+      "source": {
+        "path": "docs/technical-implementation-T66-T67.md",
+        "line": 5,
+        "sha256": "6a71e45735811c51b4e6667d4a6a867bea368abd1a179ae3fef004edccc09232"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§§3, 5 y 7",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "DAT-01"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 aportes/distribuciones brutos frente a neto",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "RETURN-01"
+        }
+      ],
+      "current_definition": "Full source/bundle binding at exact explicit UTC, evidence and math gates before internal presentation; withdraw all current numeric story on expiry without deleting history",
+      "affected_modules": [
+        "M5",
+        "M7",
+        "M9"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_hold_sale.py",
+          "line": 174,
+          "test": "CurrentHoldSaleTests.test_current_full_source_view_and_numeric_story"
+        },
+        {
+          "path": "tests/test_hold_sale.py",
+          "line": 176,
+          "test": "CurrentHoldSaleTests.test_expiry_withdraws_all_current_numbers_preserving_history"
+        },
+        {
+          "path": "tests/test_hold_sale.py",
+          "line": 180,
+          "test": "CurrentHoldSaleTests.test_source_inventory_and_pending_review_not_hidden"
+        },
+        {
+          "path": "tests/test_hold_sale.py",
+          "line": 184,
+          "test": "CurrentHoldSaleTests.test_current_evidence_never_repairs_early_maturity"
+        },
+        {
+          "path": "tests/test_hold_sale.py",
+          "line": 187,
+          "test": "CurrentHoldSaleTests.test_wrong_time_or_rehashed_registry_run_rejected"
+        }
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "No automatic monitor/TTL, real approval, final external one-page decision PDF, deployment or real decisions"
+    }
+  ],
+  "real_decisions_enabled": false
+}
