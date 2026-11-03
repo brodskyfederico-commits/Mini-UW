@@ -1,7 +1,7 @@
 {
   "phase": "post-I01 synthetic technical implementation",
   "user_authorized": true,
-  "component": "T50",
+  "component": "T52",
   "status": "local_implementation_verified_pending_remote_receipt",
   "implemented": [
     "fresh raw-claim drafts from unchanged 55-input/10-criterion template",
@@ -87,9 +87,11 @@
     "opt-in complete T44 transport-source binding currency gate preserving historical calculations and underlying financial blockers",
     "explicit complete per-item monetary floor/cap rules over replayed sale cost inventory with tie/conflict/unknown guards",
     "distinct bounded-cost result to unchanged guarded exit-sale/debt/cash/return path, excluded from old global-affine analysis",
-    "explicit-time full-source current bounded-exit output gate including additional limit-rule source and unchanged bank blockers"
+    "explicit-time full-source current bounded-exit output gate including additional limit-rule source and unchanged bank blockers",
+    "exact conditional piecewise price/exit-cap cash recovery domains for explicit per-item monetary cost clamps, retaining disconnected/flat/point/empty sets and continuity evidence",
+    "explicit-time full-source current piecewise recovery gate including independent domain/assumption/segment-budget source binding"
   ],
-  "unit_tests": 909,
+  "unit_tests": 940,
   "plan_packages_partially_addressed": [
     "IMP-01",
     "IMP-06",
@@ -105,7 +107,6 @@
   "deployment_enabled": false,
   "production_ready": false,
   "next_independent_work": [
-    "piecewise recovery analysis for explicitly declared bounded-cost domains",
     "source-specific insurance/tax/lease-up refinements within rental scope",
     "independent no-refinance and revised timing scenarios",
     "investor presentation preserving source currency/valuation/capacity/funding/personal-allocation blockers",
@@ -162,7 +163,9 @@
     "T47",
     "T48",
     "T49",
-    "T50"
+    "T50",
+    "T51",
+    "T52"
   ],
   "tests_by_component": {
     "T01": 31,
@@ -214,7 +217,9 @@
     "T47": 13,
     "T48": 16,
     "T49": 12,
-    "T50": 11
+    "T50": 11,
+    "T51": 20,
+    "T52": 11
   },
   "not_yet_implemented": [
     "complete financial graph and its designed cycles",
@@ -323,5 +328,6 @@
   "synthetic_per_item_monetary_cost_bounds_implemented": true,
   "bounded_cost_to_guarded_sale_implemented": true,
   "opt_in_current_bounded_exit_output_gate_implemented": true,
-  "piecewise_bounded_cost_recovery_domain_implemented": false
+  "piecewise_bounded_cost_recovery_domain_implemented": true,
+  "opt_in_current_piecewise_recovery_gate_implemented": true
 }

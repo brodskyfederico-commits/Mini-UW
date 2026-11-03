@@ -1,0 +1,2653 @@
+{
+  "purpose": "synthetic_piecewise_bounded_cost_cash_recovery_and_current_domain_gate",
+  "cases": [
+    {
+      "case_id": "base-price-400",
+      "independent_software_fixture": true,
+      "base_bounded_exit_run_sha256": "5f8ec33ee136212f36d16b150addcf1ca2e01304f96dd345e51617d6c4da9008",
+      "exit_spec_json": "{\"cap_rate\":{\"period_ref\":\"SYNTHETIC-forward-sale-year\",\"source_ref\":\"SYNTHETIC-explicit-exit-cap-not-market-data\",\"unit\":\"annual_cap_fraction\",\"value\":{\"denominator\":\"10\",\"numerator\":\"1\"}},\"context\":{\"deal_id\":\"SYNTHETIC-integrated-cash-demo\",\"definition_set_revision\":\"SYNTHETIC-cash-window-assumptions-v1\",\"run_id\":\"SYNTHETIC-integrated-cash-run\",\"scenario_id\":\"SYNTHETIC-Base\"},\"currency\":\"USD\",\"forward_window\":{\"basis_ref\":\"SYNTHETIC-declared-forward-twelve-month-accrual-scope\",\"end\":\"2028-07-01\",\"period_ref\":\"SYNTHETIC-forward-sale-year\",\"start\":\"2027-07-01\"},\"noi_run_sha256\":\"0350b8153c3b5fcad0f024e8acb17a220422fc70eca30c85b3dee11b91b4353e\",\"noi_source_sha256\":\"0abf035e9389eb5c22e2cca0834be9a1dbc4c7a2575f03a312f4e0bbdc0134d4\",\"schema\":\"miniuw.synthetic-exit-value.v1\",\"valuation_basis_ref\":\"SYNTHETIC-conditional-NOI-divided-by-cap-not-adopted\",\"valuation_date\":\"2027-07-01\"}",
+      "cost_source_json": "{\"context\":{\"deal_id\":\"SYNTHETIC-integrated-cash-demo\",\"definition_set_revision\":\"SYNTHETIC-cash-window-assumptions-v1\",\"run_id\":\"SYNTHETIC-integrated-cash-run\",\"scenario_id\":\"SYNTHETIC-Base\"},\"costs\":[{\"applicability\":\"included\",\"applicability_basis_ref\":\"SYNTHETIC-explicit-charge-not-adopted\",\"as_of_date\":\"2027-07-01\",\"classification\":\"transaction_cost\",\"cost_id\":\"fixed\",\"currency\":\"USD\",\"kind\":\"fixed\",\"source_ref\":\"SYNTHETIC-explicit-cost:fixed\",\"unit\":\"currency\",\"value\":{\"denominator\":\"1\",\"numerator\":\"10\"}},{\"applicability\":\"included\",\"applicability_basis_ref\":\"SYNTHETIC-explicit-charge-not-adopted\",\"as_of_date\":\"2027-07-01\",\"classification\":\"transaction_cost\",\"cost_id\":\"fee\",\"currency\":\"USD\",\"kind\":\"percent_of_gross\",\"source_ref\":\"SYNTHETIC-explicit-cost:fee\",\"unit\":\"fraction_of_gross_price\",\"value\":{\"denominator\":\"20\",\"numerator\":\"1\"}}],\"currency\":\"USD\",\"gross_price\":{\"as_of_date\":\"2027-07-01\",\"basis\":\"projected_gross_sale_price\",\"currency\":\"USD\",\"source_ref\":\"miniuw:synthetic-exit-value:c1efce2bd2baa631015fbdd8c09c73142fcc0eff554b5b4807f167fa69703355#/candidate_value\",\"value\":{\"denominator\":\"1\",\"numerator\":\"400\"}},\"inventory_basis_ref\":\"SYNTHETIC-selected-cost-inventory-not-real-completeness\",\"inventory_declared_complete\":true,\"nonoverlap_basis_ref\":\"SYNTHETIC-no-overlap-with-each-other-or-bank-payoffs\",\"sale_date\":\"2027-07-01\",\"schema\":\"miniuw.synthetic-fixed-and-gross-percent-sale-costs.v1\"}",
+      "bounds_spec_json": "{\"cost_run_sha256\":\"5db85ed77b9331cd96f8102d35b8de5f54cd58c87365b4840999be3c3ef9c7c5\",\"cost_source_sha256\":\"7e15ff1ce95d8b4dda0f77e61afb9a7815a172396a4b01002b7425b5e2032be9\",\"profile\":\"SYNTHETIC-PER-ITEM-CLAMP-TO-EXPLICIT-MONEY-LIMITS-v1\",\"rule_inventory_basis_ref\":\"SYNTHETIC-all-included-items-have-explicit-limit-status\",\"rule_inventory_declared_complete\":true,\"rules\":[{\"cost_id\":\"fixed\",\"maximum\":{\"as_of_date\":\"2027-07-01\",\"currency\":\"USD\",\"enabled\":false,\"source_ref\":\"SYNTHETIC-explicit-fixed-maximum\",\"value\":null},\"minimum\":{\"as_of_date\":\"2027-07-01\",\"currency\":\"USD\",\"enabled\":false,\"source_ref\":\"SYNTHETIC-explicit-fixed-minimum\",\"value\":null},\"rule_basis_ref\":\"SYNTHETIC-per-item-money-clamp-not-contract-authentication\"},{\"cost_id\":\"fee\",\"maximum\":{\"as_of_date\":\"2027-07-01\",\"currency\":\"USD\",\"enabled\":true,\"source_ref\":\"SYNTHETIC-explicit-fee-maximum\",\"value\":{\"denominator\":\"1\",\"numerator\":\"40\"}},\"minimum\":{\"as_of_date\":\"2027-07-01\",\"currency\":\"USD\",\"enabled\":true,\"source_ref\":\"SYNTHETIC-explicit-fee-minimum\",\"value\":{\"denominator\":\"1\",\"numerator\":\"25\"}},\"rule_basis_ref\":\"SYNTHETIC-per-item-money-clamp-not-contract-authentication\"}],\"schema\":\"miniuw.synthetic-per-item-sale-cost-bounds.v1\"}",
+      "bounded_exit_spec_json": "{\"base_evidence_sha256\":\"07937b81d58eb7e12673884d9846fcec63840451aefd5427013c66dba2459c07\",\"bounded_run_sha256\":\"cdfde812920879c1fad0afe7cc8126568874d04746f483d7a06210d8e62e7381\",\"bounds_source_sha256\":\"712208023030fee32f29f7480ed323c9dff189792c7158d5a233712c2ec8e8c9\",\"cost_run_sha256\":\"5db85ed77b9331cd96f8102d35b8de5f54cd58c87365b4840999be3c3ef9c7c5\",\"cost_source_sha256\":\"7e15ff1ce95d8b4dda0f77e61afb9a7815a172396a4b01002b7425b5e2032be9\",\"equity_funding_assumption_ref\":null,\"exit_run_sha256\":\"c1efce2bd2baa631015fbdd8c09c73142fcc0eff554b5b4807f167fa69703355\",\"exit_spec_sha256\":\"79ab8858b7785fdb68a53880253273f9cdd1060a8e1e72b3eb4600aa629978e3\",\"revision_id\":\"SYNTHETIC-bounded-cost-demo-400\",\"sale_at_value_hypothesis_ref\":\"SYNTHETIC-explicit-sale-hypothesis-not-actual-receipt\",\"sale_node_id\":\"SYNTHETIC-project-sale\",\"schema\":\"miniuw.synthetic-bounded-exit-sale.v1\",\"unchanged_other_sources_basis_ref\":\"SYNTHETIC-other-sources-frozen\"}",
+      "recovery_spec_json": "{\"base_bounded_run_sha256\":\"5f8ec33ee136212f36d16b150addcf1ca2e01304f96dd345e51617d6c4da9008\",\"cost_profile_domain_basis_ref\":\"SYNTHETIC-per-item-clamp-assumed-only-over-explicit-domain\",\"gross_price_domain\":{\"lower\":{\"denominator\":\"1\",\"numerator\":\"0\"},\"upper\":{\"denominator\":\"1\",\"numerator\":\"2000\"}},\"other_sources_fixed_basis_ref\":\"SYNTHETIC-fixed-dated-cash-debt-not-market-scenarios\",\"schema\":\"miniuw.synthetic-piecewise-bounded-sale-recovery.v1\",\"segment_budget\":129}",
+      "recovery_run_sha256": "3c39f4463d7dd6d1ea8322dfd6603e340dfdc12c1e2e335f8c6a4fb6d969158e",
+      "current_recovery_run_sha256": "a930e0f51587bc94f0716efe966a8c4565e0f9c0d3d574490fe1e67fa9f55389",
+      "registry_source_sha256": "6a29817206f16d9da786c40a258d407cbb8a6c7c19b1027f47414111c090066e",
+      "registry_run_sha256": "bebbddc3275640fc92b0100853e0a5e8a2287edb3fd25dedc10bf24eb689977c",
+      "state": "current_synthetic_piecewise_recovery_at_declared_time",
+      "blockers": [],
+      "calculation_analysis_state": "computed_synthetic_piecewise_recovery",
+      "calculation_analysis": {
+        "EM_ge_one_equivalence_defined_over_domain": true,
+        "base_bounded_cost": {
+          "denominator": "1",
+          "numerator": "35"
+        },
+        "base_gross_price": {
+          "denominator": "1",
+          "numerator": "400"
+        },
+        "base_net_cash_profit": {
+          "denominator": "10000",
+          "numerator": "2839197"
+        },
+        "breakpoint_observations": [
+          {
+            "net_cash_profit": {
+              "denominator": "10000",
+              "numerator": "-1160803"
+            },
+            "price": {
+              "denominator": "1",
+              "numerator": "0"
+            },
+            "total_cost": {
+              "denominator": "1",
+              "numerator": "35"
+            }
+          },
+          {
+            "net_cash_profit": {
+              "denominator": "10000",
+              "numerator": "3839197"
+            },
+            "price": {
+              "denominator": "1",
+              "numerator": "500"
+            },
+            "total_cost": {
+              "denominator": "1",
+              "numerator": "35"
+            }
+          },
+          {
+            "net_cash_profit": {
+              "denominator": "10000",
+              "numerator": "6689197"
+            },
+            "price": {
+              "denominator": "1",
+              "numerator": "800"
+            },
+            "total_cost": {
+              "denominator": "1",
+              "numerator": "50"
+            }
+          },
+          {
+            "net_cash_profit": {
+              "denominator": "10000",
+              "numerator": "18689197"
+            },
+            "price": {
+              "denominator": "1",
+              "numerator": "2000"
+            },
+            "total_cost": {
+              "denominator": "1",
+              "numerator": "50"
+            }
+          }
+        ],
+        "fixed_forward_noi": {
+          "denominator": "1",
+          "numerator": "40"
+        },
+        "fixed_other_cash_constant": {
+          "denominator": "10000",
+          "numerator": "-810803"
+        },
+        "non_sale_gross_contributions": {
+          "denominator": "1",
+          "numerator": "1000"
+        },
+        "recovering_exit_cap_intervals": [
+          {
+            "lower": {
+              "denominator": "50",
+              "numerator": "1"
+            },
+            "lower_closed": true,
+            "upper": {
+              "denominator": "1160803",
+              "numerator": "400000"
+            },
+            "upper_closed": true
+          }
+        ],
+        "recovering_price_intervals": [
+          {
+            "lower": {
+              "denominator": "10000",
+              "numerator": "1160803"
+            },
+            "lower_closed": true,
+            "upper": {
+              "denominator": "1",
+              "numerator": "2000"
+            },
+            "upper_closed": true
+          }
+        ],
+        "recovery_possible_in_price_domain": true,
+        "recovery_possible_via_positive_exit_cap": true,
+        "segment_count": 3,
+        "segments": [
+          {
+            "cash_profit_intercept": {
+              "denominator": "10000",
+              "numerator": "-1160803"
+            },
+            "cash_profit_slope": {
+              "denominator": "1",
+              "numerator": "1"
+            },
+            "cost_intercept": {
+              "denominator": "1",
+              "numerator": "35"
+            },
+            "cost_regimes": [
+              {
+                "cost_id": "fixed",
+                "regime_at_sample": "original_formula"
+              },
+              {
+                "cost_id": "fee",
+                "regime_at_sample": "minimum"
+              }
+            ],
+            "cost_slope": {
+              "denominator": "1",
+              "numerator": "0"
+            },
+            "price_interval": {
+              "lower": {
+                "denominator": "1",
+                "numerator": "0"
+              },
+              "lower_closed": true,
+              "upper": {
+                "denominator": "1",
+                "numerator": "500"
+              },
+              "upper_closed": true
+            },
+            "recovering_price_interval": {
+              "lower": {
+                "denominator": "10000",
+                "numerator": "1160803"
+              },
+              "lower_closed": true,
+              "upper": {
+                "denominator": "1",
+                "numerator": "500"
+              },
+              "upper_closed": true
+            },
+            "sample_price": {
+              "denominator": "1",
+              "numerator": "250"
+            },
+            "segment_kind": "interval"
+          },
+          {
+            "cash_profit_intercept": {
+              "denominator": "10000",
+              "numerator": "-910803"
+            },
+            "cash_profit_slope": {
+              "denominator": "20",
+              "numerator": "19"
+            },
+            "cost_intercept": {
+              "denominator": "1",
+              "numerator": "10"
+            },
+            "cost_regimes": [
+              {
+                "cost_id": "fixed",
+                "regime_at_sample": "original_formula"
+              },
+              {
+                "cost_id": "fee",
+                "regime_at_sample": "original_formula"
+              }
+            ],
+            "cost_slope": {
+              "denominator": "20",
+              "numerator": "1"
+            },
+            "price_interval": {
+              "lower": {
+                "denominator": "1",
+                "numerator": "500"
+              },
+              "lower_closed": true,
+              "upper": {
+                "denominator": "1",
+                "numerator": "800"
+              },
+              "upper_closed": true
+            },
+            "recovering_price_interval": {
+              "lower": {
+                "denominator": "1",
+                "numerator": "500"
+              },
+              "lower_closed": true,
+              "upper": {
+                "denominator": "1",
+                "numerator": "800"
+              },
+              "upper_closed": true
+            },
+            "sample_price": {
+              "denominator": "1",
+              "numerator": "650"
+            },
+            "segment_kind": "interval"
+          },
+          {
+            "cash_profit_intercept": {
+              "denominator": "10000",
+              "numerator": "-1310803"
+            },
+            "cash_profit_slope": {
+              "denominator": "1",
+              "numerator": "1"
+            },
+            "cost_intercept": {
+              "denominator": "1",
+              "numerator": "50"
+            },
+            "cost_regimes": [
+              {
+                "cost_id": "fixed",
+                "regime_at_sample": "original_formula"
+              },
+              {
+                "cost_id": "fee",
+                "regime_at_sample": "maximum"
+              }
+            ],
+            "cost_slope": {
+              "denominator": "1",
+              "numerator": "0"
+            },
+            "price_interval": {
+              "lower": {
+                "denominator": "1",
+                "numerator": "800"
+              },
+              "lower_closed": true,
+              "upper": {
+                "denominator": "1",
+                "numerator": "2000"
+              },
+              "upper_closed": true
+            },
+            "recovering_price_interval": {
+              "lower": {
+                "denominator": "1",
+                "numerator": "800"
+              },
+              "lower_closed": true,
+              "upper": {
+                "denominator": "1",
+                "numerator": "2000"
+              },
+              "upper_closed": true
+            },
+            "sample_price": {
+              "denominator": "1",
+              "numerator": "1400"
+            },
+            "segment_kind": "interval"
+          }
+        ],
+        "zero_cash_profit_price_intervals": [
+          {
+            "lower": {
+              "denominator": "10000",
+              "numerator": "1160803"
+            },
+            "lower_closed": true,
+            "upper": {
+              "denominator": "10000",
+              "numerator": "1160803"
+            },
+            "upper_closed": true
+          }
+        ]
+      },
+      "current_recovery_analysis": {
+        "EM_ge_one_equivalence_defined_over_domain": true,
+        "base_bounded_cost": {
+          "denominator": "1",
+          "numerator": "35"
+        },
+        "base_gross_price": {
+          "denominator": "1",
+          "numerator": "400"
+        },
+        "base_net_cash_profit": {
+          "denominator": "10000",
+          "numerator": "2839197"
+        },
+        "breakpoint_observations": [
+          {
+            "net_cash_profit": {
+              "denominator": "10000",
+              "numerator": "-1160803"
+            },
+            "price": {
+              "denominator": "1",
+              "numerator": "0"
+            },
+            "total_cost": {
+              "denominator": "1",
+              "numerator": "35"
+            }
+          },
+          {
+            "net_cash_profit": {
+              "denominator": "10000",
+              "numerator": "3839197"
+            },
+            "price": {
+              "denominator": "1",
+              "numerator": "500"
+            },
+            "total_cost": {
+              "denominator": "1",
+              "numerator": "35"
+            }
+          },
+          {
+            "net_cash_profit": {
+              "denominator": "10000",
+              "numerator": "6689197"
+            },
+            "price": {
+              "denominator": "1",
+              "numerator": "800"
+            },
+            "total_cost": {
+              "denominator": "1",
+              "numerator": "50"
+            }
+          },
+          {
+            "net_cash_profit": {
+              "denominator": "10000",
+              "numerator": "18689197"
+            },
+            "price": {
+              "denominator": "1",
+              "numerator": "2000"
+            },
+            "total_cost": {
+              "denominator": "1",
+              "numerator": "50"
+            }
+          }
+        ],
+        "fixed_forward_noi": {
+          "denominator": "1",
+          "numerator": "40"
+        },
+        "fixed_other_cash_constant": {
+          "denominator": "10000",
+          "numerator": "-810803"
+        },
+        "non_sale_gross_contributions": {
+          "denominator": "1",
+          "numerator": "1000"
+        },
+        "recovering_exit_cap_intervals": [
+          {
+            "lower": {
+              "denominator": "50",
+              "numerator": "1"
+            },
+            "lower_closed": true,
+            "upper": {
+              "denominator": "1160803",
+              "numerator": "400000"
+            },
+            "upper_closed": true
+          }
+        ],
+        "recovering_price_intervals": [
+          {
+            "lower": {
+              "denominator": "10000",
+              "numerator": "1160803"
+            },
+            "lower_closed": true,
+            "upper": {
+              "denominator": "1",
+              "numerator": "2000"
+            },
+            "upper_closed": true
+          }
+        ],
+        "recovery_possible_in_price_domain": true,
+        "recovery_possible_via_positive_exit_cap": true,
+        "segment_count": 3,
+        "segments": [
+          {
+            "cash_profit_intercept": {
+              "denominator": "10000",
+              "numerator": "-1160803"
+            },
+            "cash_profit_slope": {
+              "denominator": "1",
+              "numerator": "1"
+            },
+            "cost_intercept": {
+              "denominator": "1",
+              "numerator": "35"
+            },
+            "cost_regimes": [
+              {
+                "cost_id": "fixed",
+                "regime_at_sample": "original_formula"
+              },
+              {
+                "cost_id": "fee",
+                "regime_at_sample": "minimum"
+              }
+            ],
+            "cost_slope": {
+              "denominator": "1",
+              "numerator": "0"
+            },
+            "price_interval": {
+              "lower": {
+                "denominator": "1",
+                "numerator": "0"
+              },
+              "lower_closed": true,
+              "upper": {
+                "denominator": "1",
+                "numerator": "500"
+              },
+              "upper_closed": true
+            },
+            "recovering_price_interval": {
+              "lower": {
+                "denominator": "10000",
+                "numerator": "1160803"
+              },
+              "lower_closed": true,
+              "upper": {
+                "denominator": "1",
+                "numerator": "500"
+              },
+              "upper_closed": true
+            },
+            "sample_price": {
+              "denominator": "1",
+              "numerator": "250"
+            },
+            "segment_kind": "interval"
+          },
+          {
+            "cash_profit_intercept": {
+              "denominator": "10000",
+              "numerator": "-910803"
+            },
+            "cash_profit_slope": {
+              "denominator": "20",
+              "numerator": "19"
+            },
+            "cost_intercept": {
+              "denominator": "1",
+              "numerator": "10"
+            },
+            "cost_regimes": [
+              {
+                "cost_id": "fixed",
+                "regime_at_sample": "original_formula"
+              },
+              {
+                "cost_id": "fee",
+                "regime_at_sample": "original_formula"
+              }
+            ],
+            "cost_slope": {
+              "denominator": "20",
+              "numerator": "1"
+            },
+            "price_interval": {
+              "lower": {
+                "denominator": "1",
+                "numerator": "500"
+              },
+              "lower_closed": true,
+              "upper": {
+                "denominator": "1",
+                "numerator": "800"
+              },
+              "upper_closed": true
+            },
+            "recovering_price_interval": {
+              "lower": {
+                "denominator": "1",
+                "numerator": "500"
+              },
+              "lower_closed": true,
+              "upper": {
+                "denominator": "1",
+                "numerator": "800"
+              },
+              "upper_closed": true
+            },
+            "sample_price": {
+              "denominator": "1",
+              "numerator": "650"
+            },
+            "segment_kind": "interval"
+          },
+          {
+            "cash_profit_intercept": {
+              "denominator": "10000",
+              "numerator": "-1310803"
+            },
+            "cash_profit_slope": {
+              "denominator": "1",
+              "numerator": "1"
+            },
+            "cost_intercept": {
+              "denominator": "1",
+              "numerator": "50"
+            },
+            "cost_regimes": [
+              {
+                "cost_id": "fixed",
+                "regime_at_sample": "original_formula"
+              },
+              {
+                "cost_id": "fee",
+                "regime_at_sample": "maximum"
+              }
+            ],
+            "cost_slope": {
+              "denominator": "1",
+              "numerator": "0"
+            },
+            "price_interval": {
+              "lower": {
+                "denominator": "1",
+                "numerator": "800"
+              },
+              "lower_closed": true,
+              "upper": {
+                "denominator": "1",
+                "numerator": "2000"
+              },
+              "upper_closed": true
+            },
+            "recovering_price_interval": {
+              "lower": {
+                "denominator": "1",
+                "numerator": "800"
+              },
+              "lower_closed": true,
+              "upper": {
+                "denominator": "1",
+                "numerator": "2000"
+              },
+              "upper_closed": true
+            },
+            "sample_price": {
+              "denominator": "1",
+              "numerator": "1400"
+            },
+            "segment_kind": "interval"
+          }
+        ],
+        "zero_cash_profit_price_intervals": [
+          {
+            "lower": {
+              "denominator": "10000",
+              "numerator": "1160803"
+            },
+            "lower_closed": true,
+            "upper": {
+              "denominator": "10000",
+              "numerator": "1160803"
+            },
+            "upper_closed": true
+          }
+        ]
+      },
+      "recovery_blockers": [],
+      "underlying_calculation_blockers": [],
+      "evidence_blockers": [],
+      "source_binding_count": 23,
+      "every_report_serialization_roundtrip_replayed": true,
+      "decision": "PENDING"
+    },
+    {
+      "case_id": "repriced-base-200",
+      "independent_software_fixture": true,
+      "base_bounded_exit_run_sha256": "440eb95b0de185909bfe7139da6e6dd86ff05c060f035bb038f55aca1ae076ed",
+      "exit_spec_json": "{\"cap_rate\":{\"period_ref\":\"SYNTHETIC-forward-sale-year\",\"source_ref\":\"SYNTHETIC-explicit-price-point-cap-not-market-default\",\"unit\":\"annual_cap_fraction\",\"value\":{\"denominator\":\"5\",\"numerator\":\"1\"}},\"context\":{\"deal_id\":\"SYNTHETIC-integrated-cash-demo\",\"definition_set_revision\":\"SYNTHETIC-cash-window-assumptions-v1\",\"run_id\":\"SYNTHETIC-integrated-cash-run\",\"scenario_id\":\"SYNTHETIC-Base\"},\"currency\":\"USD\",\"forward_window\":{\"basis_ref\":\"SYNTHETIC-declared-forward-twelve-month-accrual-scope\",\"end\":\"2028-07-01\",\"period_ref\":\"SYNTHETIC-forward-sale-year\",\"start\":\"2027-07-01\"},\"noi_run_sha256\":\"0350b8153c3b5fcad0f024e8acb17a220422fc70eca30c85b3dee11b91b4353e\",\"noi_source_sha256\":\"0abf035e9389eb5c22e2cca0834be9a1dbc4c7a2575f03a312f4e0bbdc0134d4\",\"schema\":\"miniuw.synthetic-exit-value.v1\",\"valuation_basis_ref\":\"SYNTHETIC-conditional-NOI-divided-by-cap-not-adopted\",\"valuation_date\":\"2027-07-01\"}",
+      "cost_source_json": "{\"context\":{\"deal_id\":\"SYNTHETIC-integrated-cash-demo\",\"definition_set_revision\":\"SYNTHETIC-cash-window-assumptions-v1\",\"run_id\":\"SYNTHETIC-integrated-cash-run\",\"scenario_id\":\"SYNTHETIC-Base\"},\"costs\":[{\"applicability\":\"included\",\"applicability_basis_ref\":\"SYNTHETIC-explicit-charge-not-adopted\",\"as_of_date\":\"2027-07-01\",\"classification\":\"transaction_cost\",\"cost_id\":\"fixed\",\"currency\":\"USD\",\"kind\":\"fixed\",\"source_ref\":\"SYNTHETIC-explicit-cost:fixed\",\"unit\":\"currency\",\"value\":{\"denominator\":\"1\",\"numerator\":\"10\"}},{\"applicability\":\"included\",\"applicability_basis_ref\":\"SYNTHETIC-explicit-charge-not-adopted\",\"as_of_date\":\"2027-07-01\",\"classification\":\"transaction_cost\",\"cost_id\":\"fee\",\"currency\":\"USD\",\"kind\":\"percent_of_gross\",\"source_ref\":\"SYNTHETIC-explicit-cost:fee\",\"unit\":\"fraction_of_gross_price\",\"value\":{\"denominator\":\"20\",\"numerator\":\"1\"}}],\"currency\":\"USD\",\"gross_price\":{\"as_of_date\":\"2027-07-01\",\"basis\":\"projected_gross_sale_price\",\"currency\":\"USD\",\"source_ref\":\"miniuw:synthetic-exit-value:103f1f9cd13e00a4b8af746bd5e87427a98e7ee1249b9d4fc950b8402e69157c#/candidate_value\",\"value\":{\"denominator\":\"1\",\"numerator\":\"200\"}},\"inventory_basis_ref\":\"SYNTHETIC-selected-cost-inventory-not-real-completeness\",\"inventory_declared_complete\":true,\"nonoverlap_basis_ref\":\"SYNTHETIC-no-overlap-with-each-other-or-bank-payoffs\",\"sale_date\":\"2027-07-01\",\"schema\":\"miniuw.synthetic-fixed-and-gross-percent-sale-costs.v1\"}",
+      "bounds_spec_json": "{\"cost_run_sha256\":\"ed43080ca4da216600fec8e8bf5f37431405ffe45f13e88b799bd8d175793e4f\",\"cost_source_sha256\":\"5b8f8d05a5d23828b3631b400b13b9fa892dbe4fb13e7ec4aab1a803ad50a286\",\"profile\":\"SYNTHETIC-PER-ITEM-CLAMP-TO-EXPLICIT-MONEY-LIMITS-v1\",\"rule_inventory_basis_ref\":\"SYNTHETIC-all-included-items-have-explicit-limit-status\",\"rule_inventory_declared_complete\":true,\"rules\":[{\"cost_id\":\"fixed\",\"maximum\":{\"as_of_date\":\"2027-07-01\",\"currency\":\"USD\",\"enabled\":false,\"source_ref\":\"SYNTHETIC-explicit-fixed-maximum\",\"value\":null},\"minimum\":{\"as_of_date\":\"2027-07-01\",\"currency\":\"USD\",\"enabled\":false,\"source_ref\":\"SYNTHETIC-explicit-fixed-minimum\",\"value\":null},\"rule_basis_ref\":\"SYNTHETIC-per-item-money-clamp-not-contract-authentication\"},{\"cost_id\":\"fee\",\"maximum\":{\"as_of_date\":\"2027-07-01\",\"currency\":\"USD\",\"enabled\":true,\"source_ref\":\"SYNTHETIC-explicit-fee-maximum\",\"value\":{\"denominator\":\"1\",\"numerator\":\"40\"}},\"minimum\":{\"as_of_date\":\"2027-07-01\",\"currency\":\"USD\",\"enabled\":true,\"source_ref\":\"SYNTHETIC-explicit-fee-minimum\",\"value\":{\"denominator\":\"1\",\"numerator\":\"25\"}},\"rule_basis_ref\":\"SYNTHETIC-per-item-money-clamp-not-contract-authentication\"}],\"schema\":\"miniuw.synthetic-per-item-sale-cost-bounds.v1\"}",
+      "bounded_exit_spec_json": "{\"base_evidence_sha256\":\"07937b81d58eb7e12673884d9846fcec63840451aefd5427013c66dba2459c07\",\"bounded_run_sha256\":\"9cee93b7d04c6c37410fb402416d068ed10579828260d1e307a1c648870cb77c\",\"bounds_source_sha256\":\"f4909c06289f328f8bbc5bab977ebf71bf6c8b0e581bbe113be5a520c97a7677\",\"cost_run_sha256\":\"ed43080ca4da216600fec8e8bf5f37431405ffe45f13e88b799bd8d175793e4f\",\"cost_source_sha256\":\"5b8f8d05a5d23828b3631b400b13b9fa892dbe4fb13e7ec4aab1a803ad50a286\",\"equity_funding_assumption_ref\":null,\"exit_run_sha256\":\"103f1f9cd13e00a4b8af746bd5e87427a98e7ee1249b9d4fc950b8402e69157c\",\"exit_spec_sha256\":\"8b7bc330d3496c4d0c56a695d233cf8a5ece56fb7999deeef447f0741e184dc5\",\"revision_id\":\"SYNTHETIC-bounded-cost-demo-200\",\"sale_at_value_hypothesis_ref\":\"SYNTHETIC-explicit-sale-hypothesis-not-actual-receipt\",\"sale_node_id\":\"SYNTHETIC-project-sale\",\"schema\":\"miniuw.synthetic-bounded-exit-sale.v1\",\"unchanged_other_sources_basis_ref\":\"SYNTHETIC-other-sources-frozen\"}",
+      "recovery_spec_json": "{\"base_bounded_run_sha256\":\"440eb95b0de185909bfe7139da6e6dd86ff05c060f035bb038f55aca1ae076ed\",\"cost_profile_domain_basis_ref\":\"SYNTHETIC-per-item-clamp-assumed-only-over-explicit-domain\",\"gross_price_domain\":{\"lower\":{\"denominator\":\"1\",\"numerator\":\"0\"},\"upper\":{\"denominator\":\"1\",\"numerator\":\"2000\"}},\"other_sources_fixed_basis_ref\":\"SYNTHETIC-fixed-dated-cash-debt-not-market-scenarios\",\"schema\":\"miniuw.synthetic-piecewise-bounded-sale-recovery.v1\",\"segment_budget\":129}",
+      "recovery_run_sha256": "e087e0c3db5b60f4b2eee181f2acb604e4f713ef8081bf4ba9ec3c07545099b3",
+      "current_recovery_run_sha256": "8a27453569e2be21360c49437664c45084dbd76a45e0613adfe17e84fa6670f9",
+      "registry_source_sha256": "57ff022ad78b69a5537e219f6c83c5d278c889e8dcb4cb3fe9aab02bb227c4d2",
+      "registry_run_sha256": "918922f1cf20bd207b934bee151f00bd6e318c1506812d85f27f182149f074e0",
+      "state": "current_synthetic_piecewise_recovery_at_declared_time",
+      "blockers": [],
+      "calculation_analysis_state": "computed_synthetic_piecewise_recovery",
+      "calculation_analysis": {
+        "EM_ge_one_equivalence_defined_over_domain": true,
+        "base_bounded_cost": {
+          "denominator": "1",
+          "numerator": "35"
+        },
+        "base_gross_price": {
+          "denominator": "1",
+          "numerator": "200"
+        },
+        "base_net_cash_profit": {
+          "denominator": "10000",
+          "numerator": "839197"
+        },
+        "breakpoint_observations": [
+          {
+            "net_cash_profit": {
+              "denominator": "10000",
+              "numerator": "-1160803"
+            },
+            "price": {
+              "denominator": "1",
+              "numerator": "0"
+            },
+            "total_cost": {
+              "denominator": "1",
+              "numerator": "35"
+            }
+          },
+          {
+            "net_cash_profit": {
+              "denominator": "10000",
+              "numerator": "3839197"
+            },
+            "price": {
+              "denominator": "1",
+              "numerator": "500"
+            },
+            "total_cost": {
+              "denominator": "1",
+              "numerator": "35"
+            }
+          },
+          {
+            "net_cash_profit": {
+              "denominator": "10000",
+              "numerator": "6689197"
+            },
+            "price": {
+              "denominator": "1",
+              "numerator": "800"
+            },
+            "total_cost": {
+              "denominator": "1",
+              "numerator": "50"
+            }
+          },
+          {
+            "net_cash_profit": {
+              "denominator": "10000",
+              "numerator": "18689197"
+            },
+            "price": {
+              "denominator": "1",
+              "numerator": "2000"
+            },
+            "total_cost": {
+              "denominator": "1",
+              "numerator": "50"
+            }
+          }
+        ],
+        "fixed_forward_noi": {
+          "denominator": "1",
+          "numerator": "40"
+        },
+        "fixed_other_cash_constant": {
+          "denominator": "10000",
+          "numerator": "-810803"
+        },
+        "non_sale_gross_contributions": {
+          "denominator": "1",
+          "numerator": "1000"
+        },
+        "recovering_exit_cap_intervals": [
+          {
+            "lower": {
+              "denominator": "50",
+              "numerator": "1"
+            },
+            "lower_closed": true,
+            "upper": {
+              "denominator": "1160803",
+              "numerator": "400000"
+            },
+            "upper_closed": true
+          }
+        ],
+        "recovering_price_intervals": [
+          {
+            "lower": {
+              "denominator": "10000",
+              "numerator": "1160803"
+            },
+            "lower_closed": true,
+            "upper": {
+              "denominator": "1",
+              "numerator": "2000"
+            },
+            "upper_closed": true
+          }
+        ],
+        "recovery_possible_in_price_domain": true,
+        "recovery_possible_via_positive_exit_cap": true,
+        "segment_count": 3,
+        "segments": [
+          {
+            "cash_profit_intercept": {
+              "denominator": "10000",
+              "numerator": "-1160803"
+            },
+            "cash_profit_slope": {
+              "denominator": "1",
+              "numerator": "1"
+            },
+            "cost_intercept": {
+              "denominator": "1",
+              "numerator": "35"
+            },
+            "cost_regimes": [
+              {
+                "cost_id": "fixed",
+                "regime_at_sample": "original_formula"
+              },
+              {
+                "cost_id": "fee",
+                "regime_at_sample": "minimum"
+              }
+            ],
+            "cost_slope": {
+              "denominator": "1",
+              "numerator": "0"
+            },
+            "price_interval": {
+              "lower": {
+                "denominator": "1",
+                "numerator": "0"
+              },
+              "lower_closed": true,
+              "upper": {
+                "denominator": "1",
+                "numerator": "500"
+              },
+              "upper_closed": true
+            },
+            "recovering_price_interval": {
+              "lower": {
+                "denominator": "10000",
+                "numerator": "1160803"
+              },
+              "lower_closed": true,
+              "upper": {
+                "denominator": "1",
+                "numerator": "500"
+              },
+              "upper_closed": true
+            },
+            "sample_price": {
+              "denominator": "1",
+              "numerator": "250"
+            },
+            "segment_kind": "interval"
+          },
+          {
+            "cash_profit_intercept": {
+              "denominator": "10000",
+              "numerator": "-910803"
+            },
+            "cash_profit_slope": {
+              "denominator": "20",
+              "numerator": "19"
+            },
+            "cost_intercept": {
+              "denominator": "1",
+              "numerator": "10"
+            },
+            "cost_regimes": [
+              {
+                "cost_id": "fixed",
+                "regime_at_sample": "original_formula"
+              },
+              {
+                "cost_id": "fee",
+                "regime_at_sample": "original_formula"
+              }
+            ],
+            "cost_slope": {
+              "denominator": "20",
+              "numerator": "1"
+            },
+            "price_interval": {
+              "lower": {
+                "denominator": "1",
+                "numerator": "500"
+              },
+              "lower_closed": true,
+              "upper": {
+                "denominator": "1",
+                "numerator": "800"
+              },
+              "upper_closed": true
+            },
+            "recovering_price_interval": {
+              "lower": {
+                "denominator": "1",
+                "numerator": "500"
+              },
+              "lower_closed": true,
+              "upper": {
+                "denominator": "1",
+                "numerator": "800"
+              },
+              "upper_closed": true
+            },
+            "sample_price": {
+              "denominator": "1",
+              "numerator": "650"
+            },
+            "segment_kind": "interval"
+          },
+          {
+            "cash_profit_intercept": {
+              "denominator": "10000",
+              "numerator": "-1310803"
+            },
+            "cash_profit_slope": {
+              "denominator": "1",
+              "numerator": "1"
+            },
+            "cost_intercept": {
+              "denominator": "1",
+              "numerator": "50"
+            },
+            "cost_regimes": [
+              {
+                "cost_id": "fixed",
+                "regime_at_sample": "original_formula"
+              },
+              {
+                "cost_id": "fee",
+                "regime_at_sample": "maximum"
+              }
+            ],
+            "cost_slope": {
+              "denominator": "1",
+              "numerator": "0"
+            },
+            "price_interval": {
+              "lower": {
+                "denominator": "1",
+                "numerator": "800"
+              },
+              "lower_closed": true,
+              "upper": {
+                "denominator": "1",
+                "numerator": "2000"
+              },
+              "upper_closed": true
+            },
+            "recovering_price_interval": {
+              "lower": {
+                "denominator": "1",
+                "numerator": "800"
+              },
+              "lower_closed": true,
+              "upper": {
+                "denominator": "1",
+                "numerator": "2000"
+              },
+              "upper_closed": true
+            },
+            "sample_price": {
+              "denominator": "1",
+              "numerator": "1400"
+            },
+            "segment_kind": "interval"
+          }
+        ],
+        "zero_cash_profit_price_intervals": [
+          {
+            "lower": {
+              "denominator": "10000",
+              "numerator": "1160803"
+            },
+            "lower_closed": true,
+            "upper": {
+              "denominator": "10000",
+              "numerator": "1160803"
+            },
+            "upper_closed": true
+          }
+        ]
+      },
+      "current_recovery_analysis": {
+        "EM_ge_one_equivalence_defined_over_domain": true,
+        "base_bounded_cost": {
+          "denominator": "1",
+          "numerator": "35"
+        },
+        "base_gross_price": {
+          "denominator": "1",
+          "numerator": "200"
+        },
+        "base_net_cash_profit": {
+          "denominator": "10000",
+          "numerator": "839197"
+        },
+        "breakpoint_observations": [
+          {
+            "net_cash_profit": {
+              "denominator": "10000",
+              "numerator": "-1160803"
+            },
+            "price": {
+              "denominator": "1",
+              "numerator": "0"
+            },
+            "total_cost": {
+              "denominator": "1",
+              "numerator": "35"
+            }
+          },
+          {
+            "net_cash_profit": {
+              "denominator": "10000",
+              "numerator": "3839197"
+            },
+            "price": {
+              "denominator": "1",
+              "numerator": "500"
+            },
+            "total_cost": {
+              "denominator": "1",
+              "numerator": "35"
+            }
+          },
+          {
+            "net_cash_profit": {
+              "denominator": "10000",
+              "numerator": "6689197"
+            },
+            "price": {
+              "denominator": "1",
+              "numerator": "800"
+            },
+            "total_cost": {
+              "denominator": "1",
+              "numerator": "50"
+            }
+          },
+          {
+            "net_cash_profit": {
+              "denominator": "10000",
+              "numerator": "18689197"
+            },
+            "price": {
+              "denominator": "1",
+              "numerator": "2000"
+            },
+            "total_cost": {
+              "denominator": "1",
+              "numerator": "50"
+            }
+          }
+        ],
+        "fixed_forward_noi": {
+          "denominator": "1",
+          "numerator": "40"
+        },
+        "fixed_other_cash_constant": {
+          "denominator": "10000",
+          "numerator": "-810803"
+        },
+        "non_sale_gross_contributions": {
+          "denominator": "1",
+          "numerator": "1000"
+        },
+        "recovering_exit_cap_intervals": [
+          {
+            "lower": {
+              "denominator": "50",
+              "numerator": "1"
+            },
+            "lower_closed": true,
+            "upper": {
+              "denominator": "1160803",
+              "numerator": "400000"
+            },
+            "upper_closed": true
+          }
+        ],
+        "recovering_price_intervals": [
+          {
+            "lower": {
+              "denominator": "10000",
+              "numerator": "1160803"
+            },
+            "lower_closed": true,
+            "upper": {
+              "denominator": "1",
+              "numerator": "2000"
+            },
+            "upper_closed": true
+          }
+        ],
+        "recovery_possible_in_price_domain": true,
+        "recovery_possible_via_positive_exit_cap": true,
+        "segment_count": 3,
+        "segments": [
+          {
+            "cash_profit_intercept": {
+              "denominator": "10000",
+              "numerator": "-1160803"
+            },
+            "cash_profit_slope": {
+              "denominator": "1",
+              "numerator": "1"
+            },
+            "cost_intercept": {
+              "denominator": "1",
+              "numerator": "35"
+            },
+            "cost_regimes": [
+              {
+                "cost_id": "fixed",
+                "regime_at_sample": "original_formula"
+              },
+              {
+                "cost_id": "fee",
+                "regime_at_sample": "minimum"
+              }
+            ],
+            "cost_slope": {
+              "denominator": "1",
+              "numerator": "0"
+            },
+            "price_interval": {
+              "lower": {
+                "denominator": "1",
+                "numerator": "0"
+              },
+              "lower_closed": true,
+              "upper": {
+                "denominator": "1",
+                "numerator": "500"
+              },
+              "upper_closed": true
+            },
+            "recovering_price_interval": {
+              "lower": {
+                "denominator": "10000",
+                "numerator": "1160803"
+              },
+              "lower_closed": true,
+              "upper": {
+                "denominator": "1",
+                "numerator": "500"
+              },
+              "upper_closed": true
+            },
+            "sample_price": {
+              "denominator": "1",
+              "numerator": "250"
+            },
+            "segment_kind": "interval"
+          },
+          {
+            "cash_profit_intercept": {
+              "denominator": "10000",
+              "numerator": "-910803"
+            },
+            "cash_profit_slope": {
+              "denominator": "20",
+              "numerator": "19"
+            },
+            "cost_intercept": {
+              "denominator": "1",
+              "numerator": "10"
+            },
+            "cost_regimes": [
+              {
+                "cost_id": "fixed",
+                "regime_at_sample": "original_formula"
+              },
+              {
+                "cost_id": "fee",
+                "regime_at_sample": "original_formula"
+              }
+            ],
+            "cost_slope": {
+              "denominator": "20",
+              "numerator": "1"
+            },
+            "price_interval": {
+              "lower": {
+                "denominator": "1",
+                "numerator": "500"
+              },
+              "lower_closed": true,
+              "upper": {
+                "denominator": "1",
+                "numerator": "800"
+              },
+              "upper_closed": true
+            },
+            "recovering_price_interval": {
+              "lower": {
+                "denominator": "1",
+                "numerator": "500"
+              },
+              "lower_closed": true,
+              "upper": {
+                "denominator": "1",
+                "numerator": "800"
+              },
+              "upper_closed": true
+            },
+            "sample_price": {
+              "denominator": "1",
+              "numerator": "650"
+            },
+            "segment_kind": "interval"
+          },
+          {
+            "cash_profit_intercept": {
+              "denominator": "10000",
+              "numerator": "-1310803"
+            },
+            "cash_profit_slope": {
+              "denominator": "1",
+              "numerator": "1"
+            },
+            "cost_intercept": {
+              "denominator": "1",
+              "numerator": "50"
+            },
+            "cost_regimes": [
+              {
+                "cost_id": "fixed",
+                "regime_at_sample": "original_formula"
+              },
+              {
+                "cost_id": "fee",
+                "regime_at_sample": "maximum"
+              }
+            ],
+            "cost_slope": {
+              "denominator": "1",
+              "numerator": "0"
+            },
+            "price_interval": {
+              "lower": {
+                "denominator": "1",
+                "numerator": "800"
+              },
+              "lower_closed": true,
+              "upper": {
+                "denominator": "1",
+                "numerator": "2000"
+              },
+              "upper_closed": true
+            },
+            "recovering_price_interval": {
+              "lower": {
+                "denominator": "1",
+                "numerator": "800"
+              },
+              "lower_closed": true,
+              "upper": {
+                "denominator": "1",
+                "numerator": "2000"
+              },
+              "upper_closed": true
+            },
+            "sample_price": {
+              "denominator": "1",
+              "numerator": "1400"
+            },
+            "segment_kind": "interval"
+          }
+        ],
+        "zero_cash_profit_price_intervals": [
+          {
+            "lower": {
+              "denominator": "10000",
+              "numerator": "1160803"
+            },
+            "lower_closed": true,
+            "upper": {
+              "denominator": "10000",
+              "numerator": "1160803"
+            },
+            "upper_closed": true
+          }
+        ]
+      },
+      "recovery_blockers": [],
+      "underlying_calculation_blockers": [],
+      "evidence_blockers": [],
+      "source_binding_count": 23,
+      "every_report_serialization_roundtrip_replayed": true,
+      "decision": "PENDING"
+    },
+    {
+      "case_id": "only-domain-expired",
+      "independent_software_fixture": true,
+      "base_bounded_exit_run_sha256": "5f8ec33ee136212f36d16b150addcf1ca2e01304f96dd345e51617d6c4da9008",
+      "exit_spec_json": "{\"cap_rate\":{\"period_ref\":\"SYNTHETIC-forward-sale-year\",\"source_ref\":\"SYNTHETIC-explicit-exit-cap-not-market-data\",\"unit\":\"annual_cap_fraction\",\"value\":{\"denominator\":\"10\",\"numerator\":\"1\"}},\"context\":{\"deal_id\":\"SYNTHETIC-integrated-cash-demo\",\"definition_set_revision\":\"SYNTHETIC-cash-window-assumptions-v1\",\"run_id\":\"SYNTHETIC-integrated-cash-run\",\"scenario_id\":\"SYNTHETIC-Base\"},\"currency\":\"USD\",\"forward_window\":{\"basis_ref\":\"SYNTHETIC-declared-forward-twelve-month-accrual-scope\",\"end\":\"2028-07-01\",\"period_ref\":\"SYNTHETIC-forward-sale-year\",\"start\":\"2027-07-01\"},\"noi_run_sha256\":\"0350b8153c3b5fcad0f024e8acb17a220422fc70eca30c85b3dee11b91b4353e\",\"noi_source_sha256\":\"0abf035e9389eb5c22e2cca0834be9a1dbc4c7a2575f03a312f4e0bbdc0134d4\",\"schema\":\"miniuw.synthetic-exit-value.v1\",\"valuation_basis_ref\":\"SYNTHETIC-conditional-NOI-divided-by-cap-not-adopted\",\"valuation_date\":\"2027-07-01\"}",
+      "cost_source_json": "{\"context\":{\"deal_id\":\"SYNTHETIC-integrated-cash-demo\",\"definition_set_revision\":\"SYNTHETIC-cash-window-assumptions-v1\",\"run_id\":\"SYNTHETIC-integrated-cash-run\",\"scenario_id\":\"SYNTHETIC-Base\"},\"costs\":[{\"applicability\":\"included\",\"applicability_basis_ref\":\"SYNTHETIC-explicit-charge-not-adopted\",\"as_of_date\":\"2027-07-01\",\"classification\":\"transaction_cost\",\"cost_id\":\"fixed\",\"currency\":\"USD\",\"kind\":\"fixed\",\"source_ref\":\"SYNTHETIC-explicit-cost:fixed\",\"unit\":\"currency\",\"value\":{\"denominator\":\"1\",\"numerator\":\"10\"}},{\"applicability\":\"included\",\"applicability_basis_ref\":\"SYNTHETIC-explicit-charge-not-adopted\",\"as_of_date\":\"2027-07-01\",\"classification\":\"transaction_cost\",\"cost_id\":\"fee\",\"currency\":\"USD\",\"kind\":\"percent_of_gross\",\"source_ref\":\"SYNTHETIC-explicit-cost:fee\",\"unit\":\"fraction_of_gross_price\",\"value\":{\"denominator\":\"20\",\"numerator\":\"1\"}}],\"currency\":\"USD\",\"gross_price\":{\"as_of_date\":\"2027-07-01\",\"basis\":\"projected_gross_sale_price\",\"currency\":\"USD\",\"source_ref\":\"miniuw:synthetic-exit-value:c1efce2bd2baa631015fbdd8c09c73142fcc0eff554b5b4807f167fa69703355#/candidate_value\",\"value\":{\"denominator\":\"1\",\"numerator\":\"400\"}},\"inventory_basis_ref\":\"SYNTHETIC-selected-cost-inventory-not-real-completeness\",\"inventory_declared_complete\":true,\"nonoverlap_basis_ref\":\"SYNTHETIC-no-overlap-with-each-other-or-bank-payoffs\",\"sale_date\":\"2027-07-01\",\"schema\":\"miniuw.synthetic-fixed-and-gross-percent-sale-costs.v1\"}",
+      "bounds_spec_json": "{\"cost_run_sha256\":\"5db85ed77b9331cd96f8102d35b8de5f54cd58c87365b4840999be3c3ef9c7c5\",\"cost_source_sha256\":\"7e15ff1ce95d8b4dda0f77e61afb9a7815a172396a4b01002b7425b5e2032be9\",\"profile\":\"SYNTHETIC-PER-ITEM-CLAMP-TO-EXPLICIT-MONEY-LIMITS-v1\",\"rule_inventory_basis_ref\":\"SYNTHETIC-all-included-items-have-explicit-limit-status\",\"rule_inventory_declared_complete\":true,\"rules\":[{\"cost_id\":\"fixed\",\"maximum\":{\"as_of_date\":\"2027-07-01\",\"currency\":\"USD\",\"enabled\":false,\"source_ref\":\"SYNTHETIC-explicit-fixed-maximum\",\"value\":null},\"minimum\":{\"as_of_date\":\"2027-07-01\",\"currency\":\"USD\",\"enabled\":false,\"source_ref\":\"SYNTHETIC-explicit-fixed-minimum\",\"value\":null},\"rule_basis_ref\":\"SYNTHETIC-per-item-money-clamp-not-contract-authentication\"},{\"cost_id\":\"fee\",\"maximum\":{\"as_of_date\":\"2027-07-01\",\"currency\":\"USD\",\"enabled\":true,\"source_ref\":\"SYNTHETIC-explicit-fee-maximum\",\"value\":{\"denominator\":\"1\",\"numerator\":\"40\"}},\"minimum\":{\"as_of_date\":\"2027-07-01\",\"currency\":\"USD\",\"enabled\":true,\"source_ref\":\"SYNTHETIC-explicit-fee-minimum\",\"value\":{\"denominator\":\"1\",\"numerator\":\"25\"}},\"rule_basis_ref\":\"SYNTHETIC-per-item-money-clamp-not-contract-authentication\"}],\"schema\":\"miniuw.synthetic-per-item-sale-cost-bounds.v1\"}",
+      "bounded_exit_spec_json": "{\"base_evidence_sha256\":\"07937b81d58eb7e12673884d9846fcec63840451aefd5427013c66dba2459c07\",\"bounded_run_sha256\":\"cdfde812920879c1fad0afe7cc8126568874d04746f483d7a06210d8e62e7381\",\"bounds_source_sha256\":\"712208023030fee32f29f7480ed323c9dff189792c7158d5a233712c2ec8e8c9\",\"cost_run_sha256\":\"5db85ed77b9331cd96f8102d35b8de5f54cd58c87365b4840999be3c3ef9c7c5\",\"cost_source_sha256\":\"7e15ff1ce95d8b4dda0f77e61afb9a7815a172396a4b01002b7425b5e2032be9\",\"equity_funding_assumption_ref\":null,\"exit_run_sha256\":\"c1efce2bd2baa631015fbdd8c09c73142fcc0eff554b5b4807f167fa69703355\",\"exit_spec_sha256\":\"79ab8858b7785fdb68a53880253273f9cdd1060a8e1e72b3eb4600aa629978e3\",\"revision_id\":\"SYNTHETIC-bounded-cost-demo-400\",\"sale_at_value_hypothesis_ref\":\"SYNTHETIC-explicit-sale-hypothesis-not-actual-receipt\",\"sale_node_id\":\"SYNTHETIC-project-sale\",\"schema\":\"miniuw.synthetic-bounded-exit-sale.v1\",\"unchanged_other_sources_basis_ref\":\"SYNTHETIC-other-sources-frozen\"}",
+      "recovery_spec_json": "{\"base_bounded_run_sha256\":\"5f8ec33ee136212f36d16b150addcf1ca2e01304f96dd345e51617d6c4da9008\",\"cost_profile_domain_basis_ref\":\"SYNTHETIC-per-item-clamp-assumed-only-over-explicit-domain\",\"gross_price_domain\":{\"lower\":{\"denominator\":\"1\",\"numerator\":\"0\"},\"upper\":{\"denominator\":\"1\",\"numerator\":\"2000\"}},\"other_sources_fixed_basis_ref\":\"SYNTHETIC-fixed-dated-cash-debt-not-market-scenarios\",\"schema\":\"miniuw.synthetic-piecewise-bounded-sale-recovery.v1\",\"segment_budget\":129}",
+      "recovery_run_sha256": "3c39f4463d7dd6d1ea8322dfd6603e340dfdc12c1e2e335f8c6a4fb6d969158e",
+      "current_recovery_run_sha256": "6237cfa56dfec3360a10982b231872995b34765634b148a1c54316a839ace65f",
+      "registry_source_sha256": "eba78cb5f27b0552fa60c257b157b506ed390273802df65a60063d0d695c7fd7",
+      "registry_run_sha256": "4efb83de63e37c807cc70700f29612ea0f24d318d506fd636c69df273120d5ee",
+      "state": "PENDING",
+      "blockers": [
+        "required_evidence_not_current"
+      ],
+      "calculation_analysis_state": "computed_synthetic_piecewise_recovery",
+      "calculation_analysis": {
+        "EM_ge_one_equivalence_defined_over_domain": true,
+        "base_bounded_cost": {
+          "denominator": "1",
+          "numerator": "35"
+        },
+        "base_gross_price": {
+          "denominator": "1",
+          "numerator": "400"
+        },
+        "base_net_cash_profit": {
+          "denominator": "10000",
+          "numerator": "2839197"
+        },
+        "breakpoint_observations": [
+          {
+            "net_cash_profit": {
+              "denominator": "10000",
+              "numerator": "-1160803"
+            },
+            "price": {
+              "denominator": "1",
+              "numerator": "0"
+            },
+            "total_cost": {
+              "denominator": "1",
+              "numerator": "35"
+            }
+          },
+          {
+            "net_cash_profit": {
+              "denominator": "10000",
+              "numerator": "3839197"
+            },
+            "price": {
+              "denominator": "1",
+              "numerator": "500"
+            },
+            "total_cost": {
+              "denominator": "1",
+              "numerator": "35"
+            }
+          },
+          {
+            "net_cash_profit": {
+              "denominator": "10000",
+              "numerator": "6689197"
+            },
+            "price": {
+              "denominator": "1",
+              "numerator": "800"
+            },
+            "total_cost": {
+              "denominator": "1",
+              "numerator": "50"
+            }
+          },
+          {
+            "net_cash_profit": {
+              "denominator": "10000",
+              "numerator": "18689197"
+            },
+            "price": {
+              "denominator": "1",
+              "numerator": "2000"
+            },
+            "total_cost": {
+              "denominator": "1",
+              "numerator": "50"
+            }
+          }
+        ],
+        "fixed_forward_noi": {
+          "denominator": "1",
+          "numerator": "40"
+        },
+        "fixed_other_cash_constant": {
+          "denominator": "10000",
+          "numerator": "-810803"
+        },
+        "non_sale_gross_contributions": {
+          "denominator": "1",
+          "numerator": "1000"
+        },
+        "recovering_exit_cap_intervals": [
+          {
+            "lower": {
+              "denominator": "50",
+              "numerator": "1"
+            },
+            "lower_closed": true,
+            "upper": {
+              "denominator": "1160803",
+              "numerator": "400000"
+            },
+            "upper_closed": true
+          }
+        ],
+        "recovering_price_intervals": [
+          {
+            "lower": {
+              "denominator": "10000",
+              "numerator": "1160803"
+            },
+            "lower_closed": true,
+            "upper": {
+              "denominator": "1",
+              "numerator": "2000"
+            },
+            "upper_closed": true
+          }
+        ],
+        "recovery_possible_in_price_domain": true,
+        "recovery_possible_via_positive_exit_cap": true,
+        "segment_count": 3,
+        "segments": [
+          {
+            "cash_profit_intercept": {
+              "denominator": "10000",
+              "numerator": "-1160803"
+            },
+            "cash_profit_slope": {
+              "denominator": "1",
+              "numerator": "1"
+            },
+            "cost_intercept": {
+              "denominator": "1",
+              "numerator": "35"
+            },
+            "cost_regimes": [
+              {
+                "cost_id": "fixed",
+                "regime_at_sample": "original_formula"
+              },
+              {
+                "cost_id": "fee",
+                "regime_at_sample": "minimum"
+              }
+            ],
+            "cost_slope": {
+              "denominator": "1",
+              "numerator": "0"
+            },
+            "price_interval": {
+              "lower": {
+                "denominator": "1",
+                "numerator": "0"
+              },
+              "lower_closed": true,
+              "upper": {
+                "denominator": "1",
+                "numerator": "500"
+              },
+              "upper_closed": true
+            },
+            "recovering_price_interval": {
+              "lower": {
+                "denominator": "10000",
+                "numerator": "1160803"
+              },
+              "lower_closed": true,
+              "upper": {
+                "denominator": "1",
+                "numerator": "500"
+              },
+              "upper_closed": true
+            },
+            "sample_price": {
+              "denominator": "1",
+              "numerator": "250"
+            },
+            "segment_kind": "interval"
+          },
+          {
+            "cash_profit_intercept": {
+              "denominator": "10000",
+              "numerator": "-910803"
+            },
+            "cash_profit_slope": {
+              "denominator": "20",
+              "numerator": "19"
+            },
+            "cost_intercept": {
+              "denominator": "1",
+              "numerator": "10"
+            },
+            "cost_regimes": [
+              {
+                "cost_id": "fixed",
+                "regime_at_sample": "original_formula"
+              },
+              {
+                "cost_id": "fee",
+                "regime_at_sample": "original_formula"
+              }
+            ],
+            "cost_slope": {
+              "denominator": "20",
+              "numerator": "1"
+            },
+            "price_interval": {
+              "lower": {
+                "denominator": "1",
+                "numerator": "500"
+              },
+              "lower_closed": true,
+              "upper": {
+                "denominator": "1",
+                "numerator": "800"
+              },
+              "upper_closed": true
+            },
+            "recovering_price_interval": {
+              "lower": {
+                "denominator": "1",
+                "numerator": "500"
+              },
+              "lower_closed": true,
+              "upper": {
+                "denominator": "1",
+                "numerator": "800"
+              },
+              "upper_closed": true
+            },
+            "sample_price": {
+              "denominator": "1",
+              "numerator": "650"
+            },
+            "segment_kind": "interval"
+          },
+          {
+            "cash_profit_intercept": {
+              "denominator": "10000",
+              "numerator": "-1310803"
+            },
+            "cash_profit_slope": {
+              "denominator": "1",
+              "numerator": "1"
+            },
+            "cost_intercept": {
+              "denominator": "1",
+              "numerator": "50"
+            },
+            "cost_regimes": [
+              {
+                "cost_id": "fixed",
+                "regime_at_sample": "original_formula"
+              },
+              {
+                "cost_id": "fee",
+                "regime_at_sample": "maximum"
+              }
+            ],
+            "cost_slope": {
+              "denominator": "1",
+              "numerator": "0"
+            },
+            "price_interval": {
+              "lower": {
+                "denominator": "1",
+                "numerator": "800"
+              },
+              "lower_closed": true,
+              "upper": {
+                "denominator": "1",
+                "numerator": "2000"
+              },
+              "upper_closed": true
+            },
+            "recovering_price_interval": {
+              "lower": {
+                "denominator": "1",
+                "numerator": "800"
+              },
+              "lower_closed": true,
+              "upper": {
+                "denominator": "1",
+                "numerator": "2000"
+              },
+              "upper_closed": true
+            },
+            "sample_price": {
+              "denominator": "1",
+              "numerator": "1400"
+            },
+            "segment_kind": "interval"
+          }
+        ],
+        "zero_cash_profit_price_intervals": [
+          {
+            "lower": {
+              "denominator": "10000",
+              "numerator": "1160803"
+            },
+            "lower_closed": true,
+            "upper": {
+              "denominator": "10000",
+              "numerator": "1160803"
+            },
+            "upper_closed": true
+          }
+        ]
+      },
+      "current_recovery_analysis": null,
+      "recovery_blockers": [],
+      "underlying_calculation_blockers": [],
+      "evidence_blockers": [
+        "/recovery/piecewise_spec:evidence_expired"
+      ],
+      "source_binding_count": 23,
+      "every_report_serialization_roundtrip_replayed": true,
+      "decision": "PENDING"
+    },
+    {
+      "case_id": "only-domain-review-pending",
+      "independent_software_fixture": true,
+      "base_bounded_exit_run_sha256": "5f8ec33ee136212f36d16b150addcf1ca2e01304f96dd345e51617d6c4da9008",
+      "exit_spec_json": "{\"cap_rate\":{\"period_ref\":\"SYNTHETIC-forward-sale-year\",\"source_ref\":\"SYNTHETIC-explicit-exit-cap-not-market-data\",\"unit\":\"annual_cap_fraction\",\"value\":{\"denominator\":\"10\",\"numerator\":\"1\"}},\"context\":{\"deal_id\":\"SYNTHETIC-integrated-cash-demo\",\"definition_set_revision\":\"SYNTHETIC-cash-window-assumptions-v1\",\"run_id\":\"SYNTHETIC-integrated-cash-run\",\"scenario_id\":\"SYNTHETIC-Base\"},\"currency\":\"USD\",\"forward_window\":{\"basis_ref\":\"SYNTHETIC-declared-forward-twelve-month-accrual-scope\",\"end\":\"2028-07-01\",\"period_ref\":\"SYNTHETIC-forward-sale-year\",\"start\":\"2027-07-01\"},\"noi_run_sha256\":\"0350b8153c3b5fcad0f024e8acb17a220422fc70eca30c85b3dee11b91b4353e\",\"noi_source_sha256\":\"0abf035e9389eb5c22e2cca0834be9a1dbc4c7a2575f03a312f4e0bbdc0134d4\",\"schema\":\"miniuw.synthetic-exit-value.v1\",\"valuation_basis_ref\":\"SYNTHETIC-conditional-NOI-divided-by-cap-not-adopted\",\"valuation_date\":\"2027-07-01\"}",
+      "cost_source_json": "{\"context\":{\"deal_id\":\"SYNTHETIC-integrated-cash-demo\",\"definition_set_revision\":\"SYNTHETIC-cash-window-assumptions-v1\",\"run_id\":\"SYNTHETIC-integrated-cash-run\",\"scenario_id\":\"SYNTHETIC-Base\"},\"costs\":[{\"applicability\":\"included\",\"applicability_basis_ref\":\"SYNTHETIC-explicit-charge-not-adopted\",\"as_of_date\":\"2027-07-01\",\"classification\":\"transaction_cost\",\"cost_id\":\"fixed\",\"currency\":\"USD\",\"kind\":\"fixed\",\"source_ref\":\"SYNTHETIC-explicit-cost:fixed\",\"unit\":\"currency\",\"value\":{\"denominator\":\"1\",\"numerator\":\"10\"}},{\"applicability\":\"included\",\"applicability_basis_ref\":\"SYNTHETIC-explicit-charge-not-adopted\",\"as_of_date\":\"2027-07-01\",\"classification\":\"transaction_cost\",\"cost_id\":\"fee\",\"currency\":\"USD\",\"kind\":\"percent_of_gross\",\"source_ref\":\"SYNTHETIC-explicit-cost:fee\",\"unit\":\"fraction_of_gross_price\",\"value\":{\"denominator\":\"20\",\"numerator\":\"1\"}}],\"currency\":\"USD\",\"gross_price\":{\"as_of_date\":\"2027-07-01\",\"basis\":\"projected_gross_sale_price\",\"currency\":\"USD\",\"source_ref\":\"miniuw:synthetic-exit-value:c1efce2bd2baa631015fbdd8c09c73142fcc0eff554b5b4807f167fa69703355#/candidate_value\",\"value\":{\"denominator\":\"1\",\"numerator\":\"400\"}},\"inventory_basis_ref\":\"SYNTHETIC-selected-cost-inventory-not-real-completeness\",\"inventory_declared_complete\":true,\"nonoverlap_basis_ref\":\"SYNTHETIC-no-overlap-with-each-other-or-bank-payoffs\",\"sale_date\":\"2027-07-01\",\"schema\":\"miniuw.synthetic-fixed-and-gross-percent-sale-costs.v1\"}",
+      "bounds_spec_json": "{\"cost_run_sha256\":\"5db85ed77b9331cd96f8102d35b8de5f54cd58c87365b4840999be3c3ef9c7c5\",\"cost_source_sha256\":\"7e15ff1ce95d8b4dda0f77e61afb9a7815a172396a4b01002b7425b5e2032be9\",\"profile\":\"SYNTHETIC-PER-ITEM-CLAMP-TO-EXPLICIT-MONEY-LIMITS-v1\",\"rule_inventory_basis_ref\":\"SYNTHETIC-all-included-items-have-explicit-limit-status\",\"rule_inventory_declared_complete\":true,\"rules\":[{\"cost_id\":\"fixed\",\"maximum\":{\"as_of_date\":\"2027-07-01\",\"currency\":\"USD\",\"enabled\":false,\"source_ref\":\"SYNTHETIC-explicit-fixed-maximum\",\"value\":null},\"minimum\":{\"as_of_date\":\"2027-07-01\",\"currency\":\"USD\",\"enabled\":false,\"source_ref\":\"SYNTHETIC-explicit-fixed-minimum\",\"value\":null},\"rule_basis_ref\":\"SYNTHETIC-per-item-money-clamp-not-contract-authentication\"},{\"cost_id\":\"fee\",\"maximum\":{\"as_of_date\":\"2027-07-01\",\"currency\":\"USD\",\"enabled\":true,\"source_ref\":\"SYNTHETIC-explicit-fee-maximum\",\"value\":{\"denominator\":\"1\",\"numerator\":\"40\"}},\"minimum\":{\"as_of_date\":\"2027-07-01\",\"currency\":\"USD\",\"enabled\":true,\"source_ref\":\"SYNTHETIC-explicit-fee-minimum\",\"value\":{\"denominator\":\"1\",\"numerator\":\"25\"}},\"rule_basis_ref\":\"SYNTHETIC-per-item-money-clamp-not-contract-authentication\"}],\"schema\":\"miniuw.synthetic-per-item-sale-cost-bounds.v1\"}",
+      "bounded_exit_spec_json": "{\"base_evidence_sha256\":\"07937b81d58eb7e12673884d9846fcec63840451aefd5427013c66dba2459c07\",\"bounded_run_sha256\":\"cdfde812920879c1fad0afe7cc8126568874d04746f483d7a06210d8e62e7381\",\"bounds_source_sha256\":\"712208023030fee32f29f7480ed323c9dff189792c7158d5a233712c2ec8e8c9\",\"cost_run_sha256\":\"5db85ed77b9331cd96f8102d35b8de5f54cd58c87365b4840999be3c3ef9c7c5\",\"cost_source_sha256\":\"7e15ff1ce95d8b4dda0f77e61afb9a7815a172396a4b01002b7425b5e2032be9\",\"equity_funding_assumption_ref\":null,\"exit_run_sha256\":\"c1efce2bd2baa631015fbdd8c09c73142fcc0eff554b5b4807f167fa69703355\",\"exit_spec_sha256\":\"79ab8858b7785fdb68a53880253273f9cdd1060a8e1e72b3eb4600aa629978e3\",\"revision_id\":\"SYNTHETIC-bounded-cost-demo-400\",\"sale_at_value_hypothesis_ref\":\"SYNTHETIC-explicit-sale-hypothesis-not-actual-receipt\",\"sale_node_id\":\"SYNTHETIC-project-sale\",\"schema\":\"miniuw.synthetic-bounded-exit-sale.v1\",\"unchanged_other_sources_basis_ref\":\"SYNTHETIC-other-sources-frozen\"}",
+      "recovery_spec_json": "{\"base_bounded_run_sha256\":\"5f8ec33ee136212f36d16b150addcf1ca2e01304f96dd345e51617d6c4da9008\",\"cost_profile_domain_basis_ref\":\"SYNTHETIC-per-item-clamp-assumed-only-over-explicit-domain\",\"gross_price_domain\":{\"lower\":{\"denominator\":\"1\",\"numerator\":\"0\"},\"upper\":{\"denominator\":\"1\",\"numerator\":\"2000\"}},\"other_sources_fixed_basis_ref\":\"SYNTHETIC-fixed-dated-cash-debt-not-market-scenarios\",\"schema\":\"miniuw.synthetic-piecewise-bounded-sale-recovery.v1\",\"segment_budget\":129}",
+      "recovery_run_sha256": "3c39f4463d7dd6d1ea8322dfd6603e340dfdc12c1e2e335f8c6a4fb6d969158e",
+      "current_recovery_run_sha256": "7ffdfeed6623b3e6c4053f564f8f95e09e1d8d334da6c2427d43424e498a8604",
+      "registry_source_sha256": "125d6bfdce55e260f27588109e2bee0d9bba085fc87daa5dedc8eeec52679d6f",
+      "registry_run_sha256": "c054421720f6d7f7bc347db817eee5e16f27b3112bc80ea098b308f9860e81eb",
+      "state": "PENDING",
+      "blockers": [
+        "required_evidence_not_current"
+      ],
+      "calculation_analysis_state": "computed_synthetic_piecewise_recovery",
+      "calculation_analysis": {
+        "EM_ge_one_equivalence_defined_over_domain": true,
+        "base_bounded_cost": {
+          "denominator": "1",
+          "numerator": "35"
+        },
+        "base_gross_price": {
+          "denominator": "1",
+          "numerator": "400"
+        },
+        "base_net_cash_profit": {
+          "denominator": "10000",
+          "numerator": "2839197"
+        },
+        "breakpoint_observations": [
+          {
+            "net_cash_profit": {
+              "denominator": "10000",
+              "numerator": "-1160803"
+            },
+            "price": {
+              "denominator": "1",
+              "numerator": "0"
+            },
+            "total_cost": {
+              "denominator": "1",
+              "numerator": "35"
+            }
+          },
+          {
+            "net_cash_profit": {
+              "denominator": "10000",
+              "numerator": "3839197"
+            },
+            "price": {
+              "denominator": "1",
+              "numerator": "500"
+            },
+            "total_cost": {
+              "denominator": "1",
+              "numerator": "35"
+            }
+          },
+          {
+            "net_cash_profit": {
+              "denominator": "10000",
+              "numerator": "6689197"
+            },
+            "price": {
+              "denominator": "1",
+              "numerator": "800"
+            },
+            "total_cost": {
+              "denominator": "1",
+              "numerator": "50"
+            }
+          },
+          {
+            "net_cash_profit": {
+              "denominator": "10000",
+              "numerator": "18689197"
+            },
+            "price": {
+              "denominator": "1",
+              "numerator": "2000"
+            },
+            "total_cost": {
+              "denominator": "1",
+              "numerator": "50"
+            }
+          }
+        ],
+        "fixed_forward_noi": {
+          "denominator": "1",
+          "numerator": "40"
+        },
+        "fixed_other_cash_constant": {
+          "denominator": "10000",
+          "numerator": "-810803"
+        },
+        "non_sale_gross_contributions": {
+          "denominator": "1",
+          "numerator": "1000"
+        },
+        "recovering_exit_cap_intervals": [
+          {
+            "lower": {
+              "denominator": "50",
+              "numerator": "1"
+            },
+            "lower_closed": true,
+            "upper": {
+              "denominator": "1160803",
+              "numerator": "400000"
+            },
+            "upper_closed": true
+          }
+        ],
+        "recovering_price_intervals": [
+          {
+            "lower": {
+              "denominator": "10000",
+              "numerator": "1160803"
+            },
+            "lower_closed": true,
+            "upper": {
+              "denominator": "1",
+              "numerator": "2000"
+            },
+            "upper_closed": true
+          }
+        ],
+        "recovery_possible_in_price_domain": true,
+        "recovery_possible_via_positive_exit_cap": true,
+        "segment_count": 3,
+        "segments": [
+          {
+            "cash_profit_intercept": {
+              "denominator": "10000",
+              "numerator": "-1160803"
+            },
+            "cash_profit_slope": {
+              "denominator": "1",
+              "numerator": "1"
+            },
+            "cost_intercept": {
+              "denominator": "1",
+              "numerator": "35"
+            },
+            "cost_regimes": [
+              {
+                "cost_id": "fixed",
+                "regime_at_sample": "original_formula"
+              },
+              {
+                "cost_id": "fee",
+                "regime_at_sample": "minimum"
+              }
+            ],
+            "cost_slope": {
+              "denominator": "1",
+              "numerator": "0"
+            },
+            "price_interval": {
+              "lower": {
+                "denominator": "1",
+                "numerator": "0"
+              },
+              "lower_closed": true,
+              "upper": {
+                "denominator": "1",
+                "numerator": "500"
+              },
+              "upper_closed": true
+            },
+            "recovering_price_interval": {
+              "lower": {
+                "denominator": "10000",
+                "numerator": "1160803"
+              },
+              "lower_closed": true,
+              "upper": {
+                "denominator": "1",
+                "numerator": "500"
+              },
+              "upper_closed": true
+            },
+            "sample_price": {
+              "denominator": "1",
+              "numerator": "250"
+            },
+            "segment_kind": "interval"
+          },
+          {
+            "cash_profit_intercept": {
+              "denominator": "10000",
+              "numerator": "-910803"
+            },
+            "cash_profit_slope": {
+              "denominator": "20",
+              "numerator": "19"
+            },
+            "cost_intercept": {
+              "denominator": "1",
+              "numerator": "10"
+            },
+            "cost_regimes": [
+              {
+                "cost_id": "fixed",
+                "regime_at_sample": "original_formula"
+              },
+              {
+                "cost_id": "fee",
+                "regime_at_sample": "original_formula"
+              }
+            ],
+            "cost_slope": {
+              "denominator": "20",
+              "numerator": "1"
+            },
+            "price_interval": {
+              "lower": {
+                "denominator": "1",
+                "numerator": "500"
+              },
+              "lower_closed": true,
+              "upper": {
+                "denominator": "1",
+                "numerator": "800"
+              },
+              "upper_closed": true
+            },
+            "recovering_price_interval": {
+              "lower": {
+                "denominator": "1",
+                "numerator": "500"
+              },
+              "lower_closed": true,
+              "upper": {
+                "denominator": "1",
+                "numerator": "800"
+              },
+              "upper_closed": true
+            },
+            "sample_price": {
+              "denominator": "1",
+              "numerator": "650"
+            },
+            "segment_kind": "interval"
+          },
+          {
+            "cash_profit_intercept": {
+              "denominator": "10000",
+              "numerator": "-1310803"
+            },
+            "cash_profit_slope": {
+              "denominator": "1",
+              "numerator": "1"
+            },
+            "cost_intercept": {
+              "denominator": "1",
+              "numerator": "50"
+            },
+            "cost_regimes": [
+              {
+                "cost_id": "fixed",
+                "regime_at_sample": "original_formula"
+              },
+              {
+                "cost_id": "fee",
+                "regime_at_sample": "maximum"
+              }
+            ],
+            "cost_slope": {
+              "denominator": "1",
+              "numerator": "0"
+            },
+            "price_interval": {
+              "lower": {
+                "denominator": "1",
+                "numerator": "800"
+              },
+              "lower_closed": true,
+              "upper": {
+                "denominator": "1",
+                "numerator": "2000"
+              },
+              "upper_closed": true
+            },
+            "recovering_price_interval": {
+              "lower": {
+                "denominator": "1",
+                "numerator": "800"
+              },
+              "lower_closed": true,
+              "upper": {
+                "denominator": "1",
+                "numerator": "2000"
+              },
+              "upper_closed": true
+            },
+            "sample_price": {
+              "denominator": "1",
+              "numerator": "1400"
+            },
+            "segment_kind": "interval"
+          }
+        ],
+        "zero_cash_profit_price_intervals": [
+          {
+            "lower": {
+              "denominator": "10000",
+              "numerator": "1160803"
+            },
+            "lower_closed": true,
+            "upper": {
+              "denominator": "10000",
+              "numerator": "1160803"
+            },
+            "upper_closed": true
+          }
+        ]
+      },
+      "current_recovery_analysis": null,
+      "recovery_blockers": [],
+      "underlying_calculation_blockers": [],
+      "evidence_blockers": [
+        "/recovery/piecewise_spec:synthetic_review_pending"
+      ],
+      "source_binding_count": 23,
+      "every_report_serialization_roundtrip_replayed": true,
+      "decision": "PENDING"
+    },
+    {
+      "case_id": "domain-binding-missing",
+      "independent_software_fixture": true,
+      "base_bounded_exit_run_sha256": "5f8ec33ee136212f36d16b150addcf1ca2e01304f96dd345e51617d6c4da9008",
+      "exit_spec_json": "{\"cap_rate\":{\"period_ref\":\"SYNTHETIC-forward-sale-year\",\"source_ref\":\"SYNTHETIC-explicit-exit-cap-not-market-data\",\"unit\":\"annual_cap_fraction\",\"value\":{\"denominator\":\"10\",\"numerator\":\"1\"}},\"context\":{\"deal_id\":\"SYNTHETIC-integrated-cash-demo\",\"definition_set_revision\":\"SYNTHETIC-cash-window-assumptions-v1\",\"run_id\":\"SYNTHETIC-integrated-cash-run\",\"scenario_id\":\"SYNTHETIC-Base\"},\"currency\":\"USD\",\"forward_window\":{\"basis_ref\":\"SYNTHETIC-declared-forward-twelve-month-accrual-scope\",\"end\":\"2028-07-01\",\"period_ref\":\"SYNTHETIC-forward-sale-year\",\"start\":\"2027-07-01\"},\"noi_run_sha256\":\"0350b8153c3b5fcad0f024e8acb17a220422fc70eca30c85b3dee11b91b4353e\",\"noi_source_sha256\":\"0abf035e9389eb5c22e2cca0834be9a1dbc4c7a2575f03a312f4e0bbdc0134d4\",\"schema\":\"miniuw.synthetic-exit-value.v1\",\"valuation_basis_ref\":\"SYNTHETIC-conditional-NOI-divided-by-cap-not-adopted\",\"valuation_date\":\"2027-07-01\"}",
+      "cost_source_json": "{\"context\":{\"deal_id\":\"SYNTHETIC-integrated-cash-demo\",\"definition_set_revision\":\"SYNTHETIC-cash-window-assumptions-v1\",\"run_id\":\"SYNTHETIC-integrated-cash-run\",\"scenario_id\":\"SYNTHETIC-Base\"},\"costs\":[{\"applicability\":\"included\",\"applicability_basis_ref\":\"SYNTHETIC-explicit-charge-not-adopted\",\"as_of_date\":\"2027-07-01\",\"classification\":\"transaction_cost\",\"cost_id\":\"fixed\",\"currency\":\"USD\",\"kind\":\"fixed\",\"source_ref\":\"SYNTHETIC-explicit-cost:fixed\",\"unit\":\"currency\",\"value\":{\"denominator\":\"1\",\"numerator\":\"10\"}},{\"applicability\":\"included\",\"applicability_basis_ref\":\"SYNTHETIC-explicit-charge-not-adopted\",\"as_of_date\":\"2027-07-01\",\"classification\":\"transaction_cost\",\"cost_id\":\"fee\",\"currency\":\"USD\",\"kind\":\"percent_of_gross\",\"source_ref\":\"SYNTHETIC-explicit-cost:fee\",\"unit\":\"fraction_of_gross_price\",\"value\":{\"denominator\":\"20\",\"numerator\":\"1\"}}],\"currency\":\"USD\",\"gross_price\":{\"as_of_date\":\"2027-07-01\",\"basis\":\"projected_gross_sale_price\",\"currency\":\"USD\",\"source_ref\":\"miniuw:synthetic-exit-value:c1efce2bd2baa631015fbdd8c09c73142fcc0eff554b5b4807f167fa69703355#/candidate_value\",\"value\":{\"denominator\":\"1\",\"numerator\":\"400\"}},\"inventory_basis_ref\":\"SYNTHETIC-selected-cost-inventory-not-real-completeness\",\"inventory_declared_complete\":true,\"nonoverlap_basis_ref\":\"SYNTHETIC-no-overlap-with-each-other-or-bank-payoffs\",\"sale_date\":\"2027-07-01\",\"schema\":\"miniuw.synthetic-fixed-and-gross-percent-sale-costs.v1\"}",
+      "bounds_spec_json": "{\"cost_run_sha256\":\"5db85ed77b9331cd96f8102d35b8de5f54cd58c87365b4840999be3c3ef9c7c5\",\"cost_source_sha256\":\"7e15ff1ce95d8b4dda0f77e61afb9a7815a172396a4b01002b7425b5e2032be9\",\"profile\":\"SYNTHETIC-PER-ITEM-CLAMP-TO-EXPLICIT-MONEY-LIMITS-v1\",\"rule_inventory_basis_ref\":\"SYNTHETIC-all-included-items-have-explicit-limit-status\",\"rule_inventory_declared_complete\":true,\"rules\":[{\"cost_id\":\"fixed\",\"maximum\":{\"as_of_date\":\"2027-07-01\",\"currency\":\"USD\",\"enabled\":false,\"source_ref\":\"SYNTHETIC-explicit-fixed-maximum\",\"value\":null},\"minimum\":{\"as_of_date\":\"2027-07-01\",\"currency\":\"USD\",\"enabled\":false,\"source_ref\":\"SYNTHETIC-explicit-fixed-minimum\",\"value\":null},\"rule_basis_ref\":\"SYNTHETIC-per-item-money-clamp-not-contract-authentication\"},{\"cost_id\":\"fee\",\"maximum\":{\"as_of_date\":\"2027-07-01\",\"currency\":\"USD\",\"enabled\":true,\"source_ref\":\"SYNTHETIC-explicit-fee-maximum\",\"value\":{\"denominator\":\"1\",\"numerator\":\"40\"}},\"minimum\":{\"as_of_date\":\"2027-07-01\",\"currency\":\"USD\",\"enabled\":true,\"source_ref\":\"SYNTHETIC-explicit-fee-minimum\",\"value\":{\"denominator\":\"1\",\"numerator\":\"25\"}},\"rule_basis_ref\":\"SYNTHETIC-per-item-money-clamp-not-contract-authentication\"}],\"schema\":\"miniuw.synthetic-per-item-sale-cost-bounds.v1\"}",
+      "bounded_exit_spec_json": "{\"base_evidence_sha256\":\"07937b81d58eb7e12673884d9846fcec63840451aefd5427013c66dba2459c07\",\"bounded_run_sha256\":\"cdfde812920879c1fad0afe7cc8126568874d04746f483d7a06210d8e62e7381\",\"bounds_source_sha256\":\"712208023030fee32f29f7480ed323c9dff189792c7158d5a233712c2ec8e8c9\",\"cost_run_sha256\":\"5db85ed77b9331cd96f8102d35b8de5f54cd58c87365b4840999be3c3ef9c7c5\",\"cost_source_sha256\":\"7e15ff1ce95d8b4dda0f77e61afb9a7815a172396a4b01002b7425b5e2032be9\",\"equity_funding_assumption_ref\":null,\"exit_run_sha256\":\"c1efce2bd2baa631015fbdd8c09c73142fcc0eff554b5b4807f167fa69703355\",\"exit_spec_sha256\":\"79ab8858b7785fdb68a53880253273f9cdd1060a8e1e72b3eb4600aa629978e3\",\"revision_id\":\"SYNTHETIC-bounded-cost-demo-400\",\"sale_at_value_hypothesis_ref\":\"SYNTHETIC-explicit-sale-hypothesis-not-actual-receipt\",\"sale_node_id\":\"SYNTHETIC-project-sale\",\"schema\":\"miniuw.synthetic-bounded-exit-sale.v1\",\"unchanged_other_sources_basis_ref\":\"SYNTHETIC-other-sources-frozen\"}",
+      "recovery_spec_json": "{\"base_bounded_run_sha256\":\"5f8ec33ee136212f36d16b150addcf1ca2e01304f96dd345e51617d6c4da9008\",\"cost_profile_domain_basis_ref\":\"SYNTHETIC-per-item-clamp-assumed-only-over-explicit-domain\",\"gross_price_domain\":{\"lower\":{\"denominator\":\"1\",\"numerator\":\"0\"},\"upper\":{\"denominator\":\"1\",\"numerator\":\"2000\"}},\"other_sources_fixed_basis_ref\":\"SYNTHETIC-fixed-dated-cash-debt-not-market-scenarios\",\"schema\":\"miniuw.synthetic-piecewise-bounded-sale-recovery.v1\",\"segment_budget\":129}",
+      "recovery_run_sha256": "3c39f4463d7dd6d1ea8322dfd6603e340dfdc12c1e2e335f8c6a4fb6d969158e",
+      "current_recovery_run_sha256": "848d69de4dfff0029e976799e8743289cfb5eab9b1e50c31c2f4849288b589a4",
+      "registry_source_sha256": "91fc4bde3e29ee65064790a24e55b9fbfc5d1630f5871a24208d2c182b26fb78",
+      "registry_run_sha256": "c5d14e7eaaf117cfad79b77cf6d63df552b815aee7dcdf942762719c17a6020c",
+      "state": "PENDING",
+      "blockers": [
+        "complete_piecewise_recovery_source_inventory_mismatch"
+      ],
+      "calculation_analysis_state": "computed_synthetic_piecewise_recovery",
+      "calculation_analysis": {
+        "EM_ge_one_equivalence_defined_over_domain": true,
+        "base_bounded_cost": {
+          "denominator": "1",
+          "numerator": "35"
+        },
+        "base_gross_price": {
+          "denominator": "1",
+          "numerator": "400"
+        },
+        "base_net_cash_profit": {
+          "denominator": "10000",
+          "numerator": "2839197"
+        },
+        "breakpoint_observations": [
+          {
+            "net_cash_profit": {
+              "denominator": "10000",
+              "numerator": "-1160803"
+            },
+            "price": {
+              "denominator": "1",
+              "numerator": "0"
+            },
+            "total_cost": {
+              "denominator": "1",
+              "numerator": "35"
+            }
+          },
+          {
+            "net_cash_profit": {
+              "denominator": "10000",
+              "numerator": "3839197"
+            },
+            "price": {
+              "denominator": "1",
+              "numerator": "500"
+            },
+            "total_cost": {
+              "denominator": "1",
+              "numerator": "35"
+            }
+          },
+          {
+            "net_cash_profit": {
+              "denominator": "10000",
+              "numerator": "6689197"
+            },
+            "price": {
+              "denominator": "1",
+              "numerator": "800"
+            },
+            "total_cost": {
+              "denominator": "1",
+              "numerator": "50"
+            }
+          },
+          {
+            "net_cash_profit": {
+              "denominator": "10000",
+              "numerator": "18689197"
+            },
+            "price": {
+              "denominator": "1",
+              "numerator": "2000"
+            },
+            "total_cost": {
+              "denominator": "1",
+              "numerator": "50"
+            }
+          }
+        ],
+        "fixed_forward_noi": {
+          "denominator": "1",
+          "numerator": "40"
+        },
+        "fixed_other_cash_constant": {
+          "denominator": "10000",
+          "numerator": "-810803"
+        },
+        "non_sale_gross_contributions": {
+          "denominator": "1",
+          "numerator": "1000"
+        },
+        "recovering_exit_cap_intervals": [
+          {
+            "lower": {
+              "denominator": "50",
+              "numerator": "1"
+            },
+            "lower_closed": true,
+            "upper": {
+              "denominator": "1160803",
+              "numerator": "400000"
+            },
+            "upper_closed": true
+          }
+        ],
+        "recovering_price_intervals": [
+          {
+            "lower": {
+              "denominator": "10000",
+              "numerator": "1160803"
+            },
+            "lower_closed": true,
+            "upper": {
+              "denominator": "1",
+              "numerator": "2000"
+            },
+            "upper_closed": true
+          }
+        ],
+        "recovery_possible_in_price_domain": true,
+        "recovery_possible_via_positive_exit_cap": true,
+        "segment_count": 3,
+        "segments": [
+          {
+            "cash_profit_intercept": {
+              "denominator": "10000",
+              "numerator": "-1160803"
+            },
+            "cash_profit_slope": {
+              "denominator": "1",
+              "numerator": "1"
+            },
+            "cost_intercept": {
+              "denominator": "1",
+              "numerator": "35"
+            },
+            "cost_regimes": [
+              {
+                "cost_id": "fixed",
+                "regime_at_sample": "original_formula"
+              },
+              {
+                "cost_id": "fee",
+                "regime_at_sample": "minimum"
+              }
+            ],
+            "cost_slope": {
+              "denominator": "1",
+              "numerator": "0"
+            },
+            "price_interval": {
+              "lower": {
+                "denominator": "1",
+                "numerator": "0"
+              },
+              "lower_closed": true,
+              "upper": {
+                "denominator": "1",
+                "numerator": "500"
+              },
+              "upper_closed": true
+            },
+            "recovering_price_interval": {
+              "lower": {
+                "denominator": "10000",
+                "numerator": "1160803"
+              },
+              "lower_closed": true,
+              "upper": {
+                "denominator": "1",
+                "numerator": "500"
+              },
+              "upper_closed": true
+            },
+            "sample_price": {
+              "denominator": "1",
+              "numerator": "250"
+            },
+            "segment_kind": "interval"
+          },
+          {
+            "cash_profit_intercept": {
+              "denominator": "10000",
+              "numerator": "-910803"
+            },
+            "cash_profit_slope": {
+              "denominator": "20",
+              "numerator": "19"
+            },
+            "cost_intercept": {
+              "denominator": "1",
+              "numerator": "10"
+            },
+            "cost_regimes": [
+              {
+                "cost_id": "fixed",
+                "regime_at_sample": "original_formula"
+              },
+              {
+                "cost_id": "fee",
+                "regime_at_sample": "original_formula"
+              }
+            ],
+            "cost_slope": {
+              "denominator": "20",
+              "numerator": "1"
+            },
+            "price_interval": {
+              "lower": {
+                "denominator": "1",
+                "numerator": "500"
+              },
+              "lower_closed": true,
+              "upper": {
+                "denominator": "1",
+                "numerator": "800"
+              },
+              "upper_closed": true
+            },
+            "recovering_price_interval": {
+              "lower": {
+                "denominator": "1",
+                "numerator": "500"
+              },
+              "lower_closed": true,
+              "upper": {
+                "denominator": "1",
+                "numerator": "800"
+              },
+              "upper_closed": true
+            },
+            "sample_price": {
+              "denominator": "1",
+              "numerator": "650"
+            },
+            "segment_kind": "interval"
+          },
+          {
+            "cash_profit_intercept": {
+              "denominator": "10000",
+              "numerator": "-1310803"
+            },
+            "cash_profit_slope": {
+              "denominator": "1",
+              "numerator": "1"
+            },
+            "cost_intercept": {
+              "denominator": "1",
+              "numerator": "50"
+            },
+            "cost_regimes": [
+              {
+                "cost_id": "fixed",
+                "regime_at_sample": "original_formula"
+              },
+              {
+                "cost_id": "fee",
+                "regime_at_sample": "maximum"
+              }
+            ],
+            "cost_slope": {
+              "denominator": "1",
+              "numerator": "0"
+            },
+            "price_interval": {
+              "lower": {
+                "denominator": "1",
+                "numerator": "800"
+              },
+              "lower_closed": true,
+              "upper": {
+                "denominator": "1",
+                "numerator": "2000"
+              },
+              "upper_closed": true
+            },
+            "recovering_price_interval": {
+              "lower": {
+                "denominator": "1",
+                "numerator": "800"
+              },
+              "lower_closed": true,
+              "upper": {
+                "denominator": "1",
+                "numerator": "2000"
+              },
+              "upper_closed": true
+            },
+            "sample_price": {
+              "denominator": "1",
+              "numerator": "1400"
+            },
+            "segment_kind": "interval"
+          }
+        ],
+        "zero_cash_profit_price_intervals": [
+          {
+            "lower": {
+              "denominator": "10000",
+              "numerator": "1160803"
+            },
+            "lower_closed": true,
+            "upper": {
+              "denominator": "10000",
+              "numerator": "1160803"
+            },
+            "upper_closed": true
+          }
+        ]
+      },
+      "current_recovery_analysis": null,
+      "recovery_blockers": [],
+      "underlying_calculation_blockers": [],
+      "evidence_blockers": [],
+      "source_binding_count": 23,
+      "every_report_serialization_roundtrip_replayed": true,
+      "decision": "PENDING"
+    },
+    {
+      "case_id": "changed-domain-with-stale-evidence",
+      "independent_software_fixture": true,
+      "base_bounded_exit_run_sha256": "5f8ec33ee136212f36d16b150addcf1ca2e01304f96dd345e51617d6c4da9008",
+      "exit_spec_json": "{\"cap_rate\":{\"period_ref\":\"SYNTHETIC-forward-sale-year\",\"source_ref\":\"SYNTHETIC-explicit-exit-cap-not-market-data\",\"unit\":\"annual_cap_fraction\",\"value\":{\"denominator\":\"10\",\"numerator\":\"1\"}},\"context\":{\"deal_id\":\"SYNTHETIC-integrated-cash-demo\",\"definition_set_revision\":\"SYNTHETIC-cash-window-assumptions-v1\",\"run_id\":\"SYNTHETIC-integrated-cash-run\",\"scenario_id\":\"SYNTHETIC-Base\"},\"currency\":\"USD\",\"forward_window\":{\"basis_ref\":\"SYNTHETIC-declared-forward-twelve-month-accrual-scope\",\"end\":\"2028-07-01\",\"period_ref\":\"SYNTHETIC-forward-sale-year\",\"start\":\"2027-07-01\"},\"noi_run_sha256\":\"0350b8153c3b5fcad0f024e8acb17a220422fc70eca30c85b3dee11b91b4353e\",\"noi_source_sha256\":\"0abf035e9389eb5c22e2cca0834be9a1dbc4c7a2575f03a312f4e0bbdc0134d4\",\"schema\":\"miniuw.synthetic-exit-value.v1\",\"valuation_basis_ref\":\"SYNTHETIC-conditional-NOI-divided-by-cap-not-adopted\",\"valuation_date\":\"2027-07-01\"}",
+      "cost_source_json": "{\"context\":{\"deal_id\":\"SYNTHETIC-integrated-cash-demo\",\"definition_set_revision\":\"SYNTHETIC-cash-window-assumptions-v1\",\"run_id\":\"SYNTHETIC-integrated-cash-run\",\"scenario_id\":\"SYNTHETIC-Base\"},\"costs\":[{\"applicability\":\"included\",\"applicability_basis_ref\":\"SYNTHETIC-explicit-charge-not-adopted\",\"as_of_date\":\"2027-07-01\",\"classification\":\"transaction_cost\",\"cost_id\":\"fixed\",\"currency\":\"USD\",\"kind\":\"fixed\",\"source_ref\":\"SYNTHETIC-explicit-cost:fixed\",\"unit\":\"currency\",\"value\":{\"denominator\":\"1\",\"numerator\":\"10\"}},{\"applicability\":\"included\",\"applicability_basis_ref\":\"SYNTHETIC-explicit-charge-not-adopted\",\"as_of_date\":\"2027-07-01\",\"classification\":\"transaction_cost\",\"cost_id\":\"fee\",\"currency\":\"USD\",\"kind\":\"percent_of_gross\",\"source_ref\":\"SYNTHETIC-explicit-cost:fee\",\"unit\":\"fraction_of_gross_price\",\"value\":{\"denominator\":\"20\",\"numerator\":\"1\"}}],\"currency\":\"USD\",\"gross_price\":{\"as_of_date\":\"2027-07-01\",\"basis\":\"projected_gross_sale_price\",\"currency\":\"USD\",\"source_ref\":\"miniuw:synthetic-exit-value:c1efce2bd2baa631015fbdd8c09c73142fcc0eff554b5b4807f167fa69703355#/candidate_value\",\"value\":{\"denominator\":\"1\",\"numerator\":\"400\"}},\"inventory_basis_ref\":\"SYNTHETIC-selected-cost-inventory-not-real-completeness\",\"inventory_declared_complete\":true,\"nonoverlap_basis_ref\":\"SYNTHETIC-no-overlap-with-each-other-or-bank-payoffs\",\"sale_date\":\"2027-07-01\",\"schema\":\"miniuw.synthetic-fixed-and-gross-percent-sale-costs.v1\"}",
+      "bounds_spec_json": "{\"cost_run_sha256\":\"5db85ed77b9331cd96f8102d35b8de5f54cd58c87365b4840999be3c3ef9c7c5\",\"cost_source_sha256\":\"7e15ff1ce95d8b4dda0f77e61afb9a7815a172396a4b01002b7425b5e2032be9\",\"profile\":\"SYNTHETIC-PER-ITEM-CLAMP-TO-EXPLICIT-MONEY-LIMITS-v1\",\"rule_inventory_basis_ref\":\"SYNTHETIC-all-included-items-have-explicit-limit-status\",\"rule_inventory_declared_complete\":true,\"rules\":[{\"cost_id\":\"fixed\",\"maximum\":{\"as_of_date\":\"2027-07-01\",\"currency\":\"USD\",\"enabled\":false,\"source_ref\":\"SYNTHETIC-explicit-fixed-maximum\",\"value\":null},\"minimum\":{\"as_of_date\":\"2027-07-01\",\"currency\":\"USD\",\"enabled\":false,\"source_ref\":\"SYNTHETIC-explicit-fixed-minimum\",\"value\":null},\"rule_basis_ref\":\"SYNTHETIC-per-item-money-clamp-not-contract-authentication\"},{\"cost_id\":\"fee\",\"maximum\":{\"as_of_date\":\"2027-07-01\",\"currency\":\"USD\",\"enabled\":true,\"source_ref\":\"SYNTHETIC-explicit-fee-maximum\",\"value\":{\"denominator\":\"1\",\"numerator\":\"40\"}},\"minimum\":{\"as_of_date\":\"2027-07-01\",\"currency\":\"USD\",\"enabled\":true,\"source_ref\":\"SYNTHETIC-explicit-fee-minimum\",\"value\":{\"denominator\":\"1\",\"numerator\":\"25\"}},\"rule_basis_ref\":\"SYNTHETIC-per-item-money-clamp-not-contract-authentication\"}],\"schema\":\"miniuw.synthetic-per-item-sale-cost-bounds.v1\"}",
+      "bounded_exit_spec_json": "{\"base_evidence_sha256\":\"07937b81d58eb7e12673884d9846fcec63840451aefd5427013c66dba2459c07\",\"bounded_run_sha256\":\"cdfde812920879c1fad0afe7cc8126568874d04746f483d7a06210d8e62e7381\",\"bounds_source_sha256\":\"712208023030fee32f29f7480ed323c9dff189792c7158d5a233712c2ec8e8c9\",\"cost_run_sha256\":\"5db85ed77b9331cd96f8102d35b8de5f54cd58c87365b4840999be3c3ef9c7c5\",\"cost_source_sha256\":\"7e15ff1ce95d8b4dda0f77e61afb9a7815a172396a4b01002b7425b5e2032be9\",\"equity_funding_assumption_ref\":null,\"exit_run_sha256\":\"c1efce2bd2baa631015fbdd8c09c73142fcc0eff554b5b4807f167fa69703355\",\"exit_spec_sha256\":\"79ab8858b7785fdb68a53880253273f9cdd1060a8e1e72b3eb4600aa629978e3\",\"revision_id\":\"SYNTHETIC-bounded-cost-demo-400\",\"sale_at_value_hypothesis_ref\":\"SYNTHETIC-explicit-sale-hypothesis-not-actual-receipt\",\"sale_node_id\":\"SYNTHETIC-project-sale\",\"schema\":\"miniuw.synthetic-bounded-exit-sale.v1\",\"unchanged_other_sources_basis_ref\":\"SYNTHETIC-other-sources-frozen\"}",
+      "recovery_spec_json": "{\"base_bounded_run_sha256\":\"5f8ec33ee136212f36d16b150addcf1ca2e01304f96dd345e51617d6c4da9008\",\"cost_profile_domain_basis_ref\":\"SYNTHETIC-per-item-clamp-assumed-only-over-explicit-domain\",\"gross_price_domain\":{\"lower\":{\"denominator\":\"1\",\"numerator\":\"0\"},\"upper\":{\"denominator\":\"1\",\"numerator\":\"1800\"}},\"other_sources_fixed_basis_ref\":\"SYNTHETIC-fixed-dated-cash-debt-not-market-scenarios\",\"schema\":\"miniuw.synthetic-piecewise-bounded-sale-recovery.v1\",\"segment_budget\":129}",
+      "recovery_run_sha256": "73be9229b196d7e5a869c563e529b72e5502daab8bb34d50820dea084af39f2e",
+      "current_recovery_run_sha256": "045c68b633d221b97c668018caee6bcb042d65dae63922f70c93d9fad75a0b19",
+      "registry_source_sha256": "6a29817206f16d9da786c40a258d407cbb8a6c7c19b1027f47414111c090066e",
+      "registry_run_sha256": "bebbddc3275640fc92b0100853e0a5e8a2287edb3fd25dedc10bf24eb689977c",
+      "state": "PENDING",
+      "blockers": [
+        "complete_piecewise_recovery_source_inventory_mismatch"
+      ],
+      "calculation_analysis_state": "computed_synthetic_piecewise_recovery",
+      "calculation_analysis": {
+        "EM_ge_one_equivalence_defined_over_domain": true,
+        "base_bounded_cost": {
+          "denominator": "1",
+          "numerator": "35"
+        },
+        "base_gross_price": {
+          "denominator": "1",
+          "numerator": "400"
+        },
+        "base_net_cash_profit": {
+          "denominator": "10000",
+          "numerator": "2839197"
+        },
+        "breakpoint_observations": [
+          {
+            "net_cash_profit": {
+              "denominator": "10000",
+              "numerator": "-1160803"
+            },
+            "price": {
+              "denominator": "1",
+              "numerator": "0"
+            },
+            "total_cost": {
+              "denominator": "1",
+              "numerator": "35"
+            }
+          },
+          {
+            "net_cash_profit": {
+              "denominator": "10000",
+              "numerator": "3839197"
+            },
+            "price": {
+              "denominator": "1",
+              "numerator": "500"
+            },
+            "total_cost": {
+              "denominator": "1",
+              "numerator": "35"
+            }
+          },
+          {
+            "net_cash_profit": {
+              "denominator": "10000",
+              "numerator": "6689197"
+            },
+            "price": {
+              "denominator": "1",
+              "numerator": "800"
+            },
+            "total_cost": {
+              "denominator": "1",
+              "numerator": "50"
+            }
+          },
+          {
+            "net_cash_profit": {
+              "denominator": "10000",
+              "numerator": "16689197"
+            },
+            "price": {
+              "denominator": "1",
+              "numerator": "1800"
+            },
+            "total_cost": {
+              "denominator": "1",
+              "numerator": "50"
+            }
+          }
+        ],
+        "fixed_forward_noi": {
+          "denominator": "1",
+          "numerator": "40"
+        },
+        "fixed_other_cash_constant": {
+          "denominator": "10000",
+          "numerator": "-810803"
+        },
+        "non_sale_gross_contributions": {
+          "denominator": "1",
+          "numerator": "1000"
+        },
+        "recovering_exit_cap_intervals": [
+          {
+            "lower": {
+              "denominator": "45",
+              "numerator": "1"
+            },
+            "lower_closed": true,
+            "upper": {
+              "denominator": "1160803",
+              "numerator": "400000"
+            },
+            "upper_closed": true
+          }
+        ],
+        "recovering_price_intervals": [
+          {
+            "lower": {
+              "denominator": "10000",
+              "numerator": "1160803"
+            },
+            "lower_closed": true,
+            "upper": {
+              "denominator": "1",
+              "numerator": "1800"
+            },
+            "upper_closed": true
+          }
+        ],
+        "recovery_possible_in_price_domain": true,
+        "recovery_possible_via_positive_exit_cap": true,
+        "segment_count": 3,
+        "segments": [
+          {
+            "cash_profit_intercept": {
+              "denominator": "10000",
+              "numerator": "-1160803"
+            },
+            "cash_profit_slope": {
+              "denominator": "1",
+              "numerator": "1"
+            },
+            "cost_intercept": {
+              "denominator": "1",
+              "numerator": "35"
+            },
+            "cost_regimes": [
+              {
+                "cost_id": "fixed",
+                "regime_at_sample": "original_formula"
+              },
+              {
+                "cost_id": "fee",
+                "regime_at_sample": "minimum"
+              }
+            ],
+            "cost_slope": {
+              "denominator": "1",
+              "numerator": "0"
+            },
+            "price_interval": {
+              "lower": {
+                "denominator": "1",
+                "numerator": "0"
+              },
+              "lower_closed": true,
+              "upper": {
+                "denominator": "1",
+                "numerator": "500"
+              },
+              "upper_closed": true
+            },
+            "recovering_price_interval": {
+              "lower": {
+                "denominator": "10000",
+                "numerator": "1160803"
+              },
+              "lower_closed": true,
+              "upper": {
+                "denominator": "1",
+                "numerator": "500"
+              },
+              "upper_closed": true
+            },
+            "sample_price": {
+              "denominator": "1",
+              "numerator": "250"
+            },
+            "segment_kind": "interval"
+          },
+          {
+            "cash_profit_intercept": {
+              "denominator": "10000",
+              "numerator": "-910803"
+            },
+            "cash_profit_slope": {
+              "denominator": "20",
+              "numerator": "19"
+            },
+            "cost_intercept": {
+              "denominator": "1",
+              "numerator": "10"
+            },
+            "cost_regimes": [
+              {
+                "cost_id": "fixed",
+                "regime_at_sample": "original_formula"
+              },
+              {
+                "cost_id": "fee",
+                "regime_at_sample": "original_formula"
+              }
+            ],
+            "cost_slope": {
+              "denominator": "20",
+              "numerator": "1"
+            },
+            "price_interval": {
+              "lower": {
+                "denominator": "1",
+                "numerator": "500"
+              },
+              "lower_closed": true,
+              "upper": {
+                "denominator": "1",
+                "numerator": "800"
+              },
+              "upper_closed": true
+            },
+            "recovering_price_interval": {
+              "lower": {
+                "denominator": "1",
+                "numerator": "500"
+              },
+              "lower_closed": true,
+              "upper": {
+                "denominator": "1",
+                "numerator": "800"
+              },
+              "upper_closed": true
+            },
+            "sample_price": {
+              "denominator": "1",
+              "numerator": "650"
+            },
+            "segment_kind": "interval"
+          },
+          {
+            "cash_profit_intercept": {
+              "denominator": "10000",
+              "numerator": "-1310803"
+            },
+            "cash_profit_slope": {
+              "denominator": "1",
+              "numerator": "1"
+            },
+            "cost_intercept": {
+              "denominator": "1",
+              "numerator": "50"
+            },
+            "cost_regimes": [
+              {
+                "cost_id": "fixed",
+                "regime_at_sample": "original_formula"
+              },
+              {
+                "cost_id": "fee",
+                "regime_at_sample": "maximum"
+              }
+            ],
+            "cost_slope": {
+              "denominator": "1",
+              "numerator": "0"
+            },
+            "price_interval": {
+              "lower": {
+                "denominator": "1",
+                "numerator": "800"
+              },
+              "lower_closed": true,
+              "upper": {
+                "denominator": "1",
+                "numerator": "1800"
+              },
+              "upper_closed": true
+            },
+            "recovering_price_interval": {
+              "lower": {
+                "denominator": "1",
+                "numerator": "800"
+              },
+              "lower_closed": true,
+              "upper": {
+                "denominator": "1",
+                "numerator": "1800"
+              },
+              "upper_closed": true
+            },
+            "sample_price": {
+              "denominator": "1",
+              "numerator": "1300"
+            },
+            "segment_kind": "interval"
+          }
+        ],
+        "zero_cash_profit_price_intervals": [
+          {
+            "lower": {
+              "denominator": "10000",
+              "numerator": "1160803"
+            },
+            "lower_closed": true,
+            "upper": {
+              "denominator": "10000",
+              "numerator": "1160803"
+            },
+            "upper_closed": true
+          }
+        ]
+      },
+      "current_recovery_analysis": null,
+      "recovery_blockers": [],
+      "underlying_calculation_blockers": [],
+      "evidence_blockers": [],
+      "source_binding_count": 23,
+      "every_report_serialization_roundtrip_replayed": true,
+      "decision": "PENDING"
+    },
+    {
+      "case_id": "segment-budget-insufficient",
+      "independent_software_fixture": true,
+      "base_bounded_exit_run_sha256": "5f8ec33ee136212f36d16b150addcf1ca2e01304f96dd345e51617d6c4da9008",
+      "exit_spec_json": "{\"cap_rate\":{\"period_ref\":\"SYNTHETIC-forward-sale-year\",\"source_ref\":\"SYNTHETIC-explicit-exit-cap-not-market-data\",\"unit\":\"annual_cap_fraction\",\"value\":{\"denominator\":\"10\",\"numerator\":\"1\"}},\"context\":{\"deal_id\":\"SYNTHETIC-integrated-cash-demo\",\"definition_set_revision\":\"SYNTHETIC-cash-window-assumptions-v1\",\"run_id\":\"SYNTHETIC-integrated-cash-run\",\"scenario_id\":\"SYNTHETIC-Base\"},\"currency\":\"USD\",\"forward_window\":{\"basis_ref\":\"SYNTHETIC-declared-forward-twelve-month-accrual-scope\",\"end\":\"2028-07-01\",\"period_ref\":\"SYNTHETIC-forward-sale-year\",\"start\":\"2027-07-01\"},\"noi_run_sha256\":\"0350b8153c3b5fcad0f024e8acb17a220422fc70eca30c85b3dee11b91b4353e\",\"noi_source_sha256\":\"0abf035e9389eb5c22e2cca0834be9a1dbc4c7a2575f03a312f4e0bbdc0134d4\",\"schema\":\"miniuw.synthetic-exit-value.v1\",\"valuation_basis_ref\":\"SYNTHETIC-conditional-NOI-divided-by-cap-not-adopted\",\"valuation_date\":\"2027-07-01\"}",
+      "cost_source_json": "{\"context\":{\"deal_id\":\"SYNTHETIC-integrated-cash-demo\",\"definition_set_revision\":\"SYNTHETIC-cash-window-assumptions-v1\",\"run_id\":\"SYNTHETIC-integrated-cash-run\",\"scenario_id\":\"SYNTHETIC-Base\"},\"costs\":[{\"applicability\":\"included\",\"applicability_basis_ref\":\"SYNTHETIC-explicit-charge-not-adopted\",\"as_of_date\":\"2027-07-01\",\"classification\":\"transaction_cost\",\"cost_id\":\"fixed\",\"currency\":\"USD\",\"kind\":\"fixed\",\"source_ref\":\"SYNTHETIC-explicit-cost:fixed\",\"unit\":\"currency\",\"value\":{\"denominator\":\"1\",\"numerator\":\"10\"}},{\"applicability\":\"included\",\"applicability_basis_ref\":\"SYNTHETIC-explicit-charge-not-adopted\",\"as_of_date\":\"2027-07-01\",\"classification\":\"transaction_cost\",\"cost_id\":\"fee\",\"currency\":\"USD\",\"kind\":\"percent_of_gross\",\"source_ref\":\"SYNTHETIC-explicit-cost:fee\",\"unit\":\"fraction_of_gross_price\",\"value\":{\"denominator\":\"20\",\"numerator\":\"1\"}}],\"currency\":\"USD\",\"gross_price\":{\"as_of_date\":\"2027-07-01\",\"basis\":\"projected_gross_sale_price\",\"currency\":\"USD\",\"source_ref\":\"miniuw:synthetic-exit-value:c1efce2bd2baa631015fbdd8c09c73142fcc0eff554b5b4807f167fa69703355#/candidate_value\",\"value\":{\"denominator\":\"1\",\"numerator\":\"400\"}},\"inventory_basis_ref\":\"SYNTHETIC-selected-cost-inventory-not-real-completeness\",\"inventory_declared_complete\":true,\"nonoverlap_basis_ref\":\"SYNTHETIC-no-overlap-with-each-other-or-bank-payoffs\",\"sale_date\":\"2027-07-01\",\"schema\":\"miniuw.synthetic-fixed-and-gross-percent-sale-costs.v1\"}",
+      "bounds_spec_json": "{\"cost_run_sha256\":\"5db85ed77b9331cd96f8102d35b8de5f54cd58c87365b4840999be3c3ef9c7c5\",\"cost_source_sha256\":\"7e15ff1ce95d8b4dda0f77e61afb9a7815a172396a4b01002b7425b5e2032be9\",\"profile\":\"SYNTHETIC-PER-ITEM-CLAMP-TO-EXPLICIT-MONEY-LIMITS-v1\",\"rule_inventory_basis_ref\":\"SYNTHETIC-all-included-items-have-explicit-limit-status\",\"rule_inventory_declared_complete\":true,\"rules\":[{\"cost_id\":\"fixed\",\"maximum\":{\"as_of_date\":\"2027-07-01\",\"currency\":\"USD\",\"enabled\":false,\"source_ref\":\"SYNTHETIC-explicit-fixed-maximum\",\"value\":null},\"minimum\":{\"as_of_date\":\"2027-07-01\",\"currency\":\"USD\",\"enabled\":false,\"source_ref\":\"SYNTHETIC-explicit-fixed-minimum\",\"value\":null},\"rule_basis_ref\":\"SYNTHETIC-per-item-money-clamp-not-contract-authentication\"},{\"cost_id\":\"fee\",\"maximum\":{\"as_of_date\":\"2027-07-01\",\"currency\":\"USD\",\"enabled\":true,\"source_ref\":\"SYNTHETIC-explicit-fee-maximum\",\"value\":{\"denominator\":\"1\",\"numerator\":\"40\"}},\"minimum\":{\"as_of_date\":\"2027-07-01\",\"currency\":\"USD\",\"enabled\":true,\"source_ref\":\"SYNTHETIC-explicit-fee-minimum\",\"value\":{\"denominator\":\"1\",\"numerator\":\"25\"}},\"rule_basis_ref\":\"SYNTHETIC-per-item-money-clamp-not-contract-authentication\"}],\"schema\":\"miniuw.synthetic-per-item-sale-cost-bounds.v1\"}",
+      "bounded_exit_spec_json": "{\"base_evidence_sha256\":\"07937b81d58eb7e12673884d9846fcec63840451aefd5427013c66dba2459c07\",\"bounded_run_sha256\":\"cdfde812920879c1fad0afe7cc8126568874d04746f483d7a06210d8e62e7381\",\"bounds_source_sha256\":\"712208023030fee32f29f7480ed323c9dff189792c7158d5a233712c2ec8e8c9\",\"cost_run_sha256\":\"5db85ed77b9331cd96f8102d35b8de5f54cd58c87365b4840999be3c3ef9c7c5\",\"cost_source_sha256\":\"7e15ff1ce95d8b4dda0f77e61afb9a7815a172396a4b01002b7425b5e2032be9\",\"equity_funding_assumption_ref\":null,\"exit_run_sha256\":\"c1efce2bd2baa631015fbdd8c09c73142fcc0eff554b5b4807f167fa69703355\",\"exit_spec_sha256\":\"79ab8858b7785fdb68a53880253273f9cdd1060a8e1e72b3eb4600aa629978e3\",\"revision_id\":\"SYNTHETIC-bounded-cost-demo-400\",\"sale_at_value_hypothesis_ref\":\"SYNTHETIC-explicit-sale-hypothesis-not-actual-receipt\",\"sale_node_id\":\"SYNTHETIC-project-sale\",\"schema\":\"miniuw.synthetic-bounded-exit-sale.v1\",\"unchanged_other_sources_basis_ref\":\"SYNTHETIC-other-sources-frozen\"}",
+      "recovery_spec_json": "{\"base_bounded_run_sha256\":\"5f8ec33ee136212f36d16b150addcf1ca2e01304f96dd345e51617d6c4da9008\",\"cost_profile_domain_basis_ref\":\"SYNTHETIC-per-item-clamp-assumed-only-over-explicit-domain\",\"gross_price_domain\":{\"lower\":{\"denominator\":\"1\",\"numerator\":\"0\"},\"upper\":{\"denominator\":\"1\",\"numerator\":\"2000\"}},\"other_sources_fixed_basis_ref\":\"SYNTHETIC-fixed-dated-cash-debt-not-market-scenarios\",\"schema\":\"miniuw.synthetic-piecewise-bounded-sale-recovery.v1\",\"segment_budget\":2}",
+      "recovery_run_sha256": "dd611b6828f10ce4c1f187c3185d2221fa951a8af4f25f3592769956107c8e8f",
+      "current_recovery_run_sha256": "8822999063779deaf7634b62320b951ddf3fb53f096165b5fad8b8944a874f28",
+      "registry_source_sha256": "4c4172558ac1e1128dfbd19fbd1307bb1587ef822a6765572f87cc379def46bb",
+      "registry_run_sha256": "de97e1ce825eb3119731170a60bc5f6235d2b1982c4d4d98817db2321f0b5e04",
+      "state": "PENDING",
+      "blockers": [
+        "piecewise_recovery_calculation_blocked"
+      ],
+      "calculation_analysis_state": "blocked",
+      "calculation_analysis": null,
+      "current_recovery_analysis": null,
+      "recovery_blockers": [
+        "piecewise_segment_budget_exceeded"
+      ],
+      "underlying_calculation_blockers": [],
+      "evidence_blockers": [],
+      "source_binding_count": 23,
+      "every_report_serialization_roundtrip_replayed": true,
+      "decision": "PENDING"
+    },
+    {
+      "case_id": "original-bank-blocked",
+      "independent_software_fixture": false,
+      "base_bounded_exit_run_sha256": "935eb96c4762ad7622a6e96ee4a4114a3eb4ed573e3078d2e81213d393bcb13f",
+      "exit_spec_json": "{\"cap_rate\":{\"period_ref\":\"SYNTHETIC-forward-sale-year\",\"source_ref\":\"SYNTHETIC-explicit-exit-cap-not-market-data\",\"unit\":\"annual_cap_fraction\",\"value\":{\"denominator\":\"25\",\"numerator\":\"2\"}},\"context\":{\"deal_id\":\"SYNTHETIC-integrated-cash-demo\",\"definition_set_revision\":\"SYNTHETIC-cash-window-assumptions-v1\",\"run_id\":\"SYNTHETIC-integrated-cash-run\",\"scenario_id\":\"SYNTHETIC-Base\"},\"currency\":\"USD\",\"forward_window\":{\"basis_ref\":\"SYNTHETIC-declared-forward-twelve-month-accrual-scope\",\"end\":\"2028-07-01\",\"period_ref\":\"SYNTHETIC-forward-sale-year\",\"start\":\"2027-07-01\"},\"noi_run_sha256\":\"0350b8153c3b5fcad0f024e8acb17a220422fc70eca30c85b3dee11b91b4353e\",\"noi_source_sha256\":\"0abf035e9389eb5c22e2cca0834be9a1dbc4c7a2575f03a312f4e0bbdc0134d4\",\"schema\":\"miniuw.synthetic-exit-value.v1\",\"valuation_basis_ref\":\"SYNTHETIC-conditional-NOI-divided-by-cap-not-adopted\",\"valuation_date\":\"2027-07-01\"}",
+      "cost_source_json": "{\"context\":{\"deal_id\":\"SYNTHETIC-integrated-cash-demo\",\"definition_set_revision\":\"SYNTHETIC-cash-window-assumptions-v1\",\"run_id\":\"SYNTHETIC-integrated-cash-run\",\"scenario_id\":\"SYNTHETIC-Base\"},\"costs\":[{\"applicability\":\"included\",\"applicability_basis_ref\":\"SYNTHETIC-explicit-charge-not-adopted\",\"as_of_date\":\"2027-07-01\",\"classification\":\"transaction_cost\",\"cost_id\":\"fixed\",\"currency\":\"USD\",\"kind\":\"fixed\",\"source_ref\":\"SYNTHETIC-explicit-cost:fixed\",\"unit\":\"currency\",\"value\":{\"denominator\":\"1\",\"numerator\":\"10\"}},{\"applicability\":\"included\",\"applicability_basis_ref\":\"SYNTHETIC-explicit-charge-not-adopted\",\"as_of_date\":\"2027-07-01\",\"classification\":\"transaction_cost\",\"cost_id\":\"fee\",\"currency\":\"USD\",\"kind\":\"percent_of_gross\",\"source_ref\":\"SYNTHETIC-explicit-cost:fee\",\"unit\":\"fraction_of_gross_price\",\"value\":{\"denominator\":\"20\",\"numerator\":\"1\"}}],\"currency\":\"USD\",\"gross_price\":{\"as_of_date\":\"2027-07-01\",\"basis\":\"projected_gross_sale_price\",\"currency\":\"USD\",\"source_ref\":\"miniuw:synthetic-exit-value:be934691bf2dad27aae79a10ed7910e928590a8fb5578b41632e469655f861c8#/candidate_value\",\"value\":{\"denominator\":\"1\",\"numerator\":\"500\"}},\"inventory_basis_ref\":\"SYNTHETIC-selected-cost-inventory-not-real-completeness\",\"inventory_declared_complete\":true,\"nonoverlap_basis_ref\":\"SYNTHETIC-no-overlap-with-each-other-or-bank-payoffs\",\"sale_date\":\"2027-07-01\",\"schema\":\"miniuw.synthetic-fixed-and-gross-percent-sale-costs.v1\"}",
+      "bounds_spec_json": "{\"cost_run_sha256\":\"71a6cf0497529a0973f65e69f7f4c9fea7a7d0c83bd96d5e49720a14d1311339\",\"cost_source_sha256\":\"8297eede361cfe5fa3ab70382d46281ca92cbae09e5e901b428c6569afb30746\",\"profile\":\"SYNTHETIC-PER-ITEM-CLAMP-TO-EXPLICIT-MONEY-LIMITS-v1\",\"rule_inventory_basis_ref\":\"SYNTHETIC-all-included-items-have-explicit-limit-status\",\"rule_inventory_declared_complete\":true,\"rules\":[{\"cost_id\":\"fixed\",\"maximum\":{\"as_of_date\":\"2027-07-01\",\"currency\":\"USD\",\"enabled\":false,\"source_ref\":\"SYNTHETIC-explicit-fixed-maximum\",\"value\":null},\"minimum\":{\"as_of_date\":\"2027-07-01\",\"currency\":\"USD\",\"enabled\":false,\"source_ref\":\"SYNTHETIC-explicit-fixed-minimum\",\"value\":null},\"rule_basis_ref\":\"SYNTHETIC-per-item-money-clamp-not-contract-authentication\"},{\"cost_id\":\"fee\",\"maximum\":{\"as_of_date\":\"2027-07-01\",\"currency\":\"USD\",\"enabled\":true,\"source_ref\":\"SYNTHETIC-explicit-fee-maximum\",\"value\":{\"denominator\":\"1\",\"numerator\":\"40\"}},\"minimum\":{\"as_of_date\":\"2027-07-01\",\"currency\":\"USD\",\"enabled\":true,\"source_ref\":\"SYNTHETIC-explicit-fee-minimum\",\"value\":{\"denominator\":\"1\",\"numerator\":\"25\"}},\"rule_basis_ref\":\"SYNTHETIC-per-item-money-clamp-not-contract-authentication\"}],\"schema\":\"miniuw.synthetic-per-item-sale-cost-bounds.v1\"}",
+      "bounded_exit_spec_json": "{\"base_evidence_sha256\":\"57098b323fe50dbc8393b7e4966df2273bc54ae16fb82b01e6a73bdff8a9f804\",\"bounded_run_sha256\":\"36053e8aba7e7046bda0678fc0ef013961638570e7128aea290c7f265737e07d\",\"bounds_source_sha256\":\"605010a8b2bd96eccc2405fb917caa373de08f73697942dd86b81734e27cbbbe\",\"cost_run_sha256\":\"71a6cf0497529a0973f65e69f7f4c9fea7a7d0c83bd96d5e49720a14d1311339\",\"cost_source_sha256\":\"8297eede361cfe5fa3ab70382d46281ca92cbae09e5e901b428c6569afb30746\",\"equity_funding_assumption_ref\":null,\"exit_run_sha256\":\"be934691bf2dad27aae79a10ed7910e928590a8fb5578b41632e469655f861c8\",\"exit_spec_sha256\":\"77ce1f580be8a53dec53f5521ece5c664e6eec10462506abb61258ae06a9da50\",\"revision_id\":\"SYNTHETIC-bounded-cost-demo-500\",\"sale_at_value_hypothesis_ref\":\"SYNTHETIC-explicit-sale-hypothesis-not-actual-receipt\",\"sale_node_id\":\"SYNTHETIC-project-sale\",\"schema\":\"miniuw.synthetic-bounded-exit-sale.v1\",\"unchanged_other_sources_basis_ref\":\"SYNTHETIC-other-sources-frozen\"}",
+      "recovery_spec_json": "{\"base_bounded_run_sha256\":\"935eb96c4762ad7622a6e96ee4a4114a3eb4ed573e3078d2e81213d393bcb13f\",\"cost_profile_domain_basis_ref\":\"SYNTHETIC-per-item-clamp-assumed-only-over-explicit-domain\",\"gross_price_domain\":{\"lower\":{\"denominator\":\"1\",\"numerator\":\"0\"},\"upper\":{\"denominator\":\"1\",\"numerator\":\"2000\"}},\"other_sources_fixed_basis_ref\":\"SYNTHETIC-fixed-dated-cash-debt-not-market-scenarios\",\"schema\":\"miniuw.synthetic-piecewise-bounded-sale-recovery.v1\",\"segment_budget\":129}",
+      "recovery_run_sha256": "150d40f45cb42789a41eb9f04a3fbd5f2fd139709bf821bf638432d0df7913a5",
+      "current_recovery_run_sha256": "385d1a247fb899c286071778b02863202f84ac2bc0a02aa1249ff9d2056ad82f",
+      "registry_source_sha256": "5da2ad9bffffd120da6f6880ed22e75406513c28b9e9639297203221bf0da45d",
+      "registry_run_sha256": "05a16d869c89fb65c1c3ffabbc6bc6dc1312143dd04d7ca50b0ef416e05ef15e",
+      "state": "PENDING",
+      "blockers": [
+        "piecewise_recovery_calculation_blocked"
+      ],
+      "calculation_analysis_state": "blocked",
+      "calculation_analysis": null,
+      "current_recovery_analysis": null,
+      "recovery_blockers": [
+        "existing_valuation_requires_separate_domain_consistency",
+        "guarded_base_return_unavailable"
+      ],
+      "underlying_calculation_blockers": [
+        "refinance_capacity_or_selection_blocked"
+      ],
+      "evidence_blockers": [],
+      "source_binding_count": 23,
+      "every_report_serialization_roundtrip_replayed": true,
+      "decision": "PENDING"
+    }
+  ],
+  "same_recovery_set_from_two_fully_replayed_price_cost_return_bases": true,
+  "fixture_note": "Compatible separate software fixture has bank NOI 2000 and no closing valuation claim. Original bank NOI 50/value 500 and all their blockers remain unchanged.",
+  "synthetic_charge_hypothesis": "fixed 10 plus 5% gross with monetary minimum 25 / maximum 40, fixed other cash/debt/dates and explicit price domain [0,2000]",
+  "new_scenario_or_investor_ledger_generated": false,
+  "investment_criterion_adopted": false,
+  "personal_investor_return": null,
+  "final_economic_capital_loss": null,
+  "decision": "PENDING",
+  "production_authorized": false
+}

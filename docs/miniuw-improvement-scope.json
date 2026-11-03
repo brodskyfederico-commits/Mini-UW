@@ -25,7 +25,7 @@
       "location": "review p.1, item 2",
       "definition": "cash shortfall at declared horizon differs from final economic capital loss",
       "affected": "T23/T37",
-      "evidence": "tests/test_cash_risk.py; docs/technical-implementation-T38.md (isolated net receipt recovery floor only); docs/technical-implementation-T39-T40.md (fixed-date gross sale/cost revision only); docs/technical-coverage-T43-T45.json (conditional affine cash-recovery domain only)",
+      "evidence": "tests/test_cash_risk.py; docs/technical-implementation-T38.md (isolated net receipt recovery floor only); docs/technical-implementation-T39-T40.md (fixed-date gross sale/cost revision only); docs/technical-coverage-T43-T45.json (conditional affine cash-recovery domain only); docs/technical-coverage-T51-T52.json (conditional piecewise bounded-cost recovery only)",
       "state": "partial",
       "pending": "independent Downside inputs, terminal economic inventory, break-even sensitivities"
     },
@@ -113,5 +113,6 @@
   "conditional_exit_value_to_sale": "T41/T42: forward NOI/cap with explicit calendar/source and hypothetical-sale guards; present conflicting valuation blocks; price-dependent costs and full market scenarios remain pending",
   "price_dependent_cost_and_recovery_scope": "T43-T45: declared fixed/gross-fraction costs and bounded price/cap cash-recovery domains, blocked by unresolved tax/bank/value; actual tax law, nonlinear costs, market/funding and full economic loss remain pending",
   "explicit_evidence_currency_scope": "T46/T47: complete technical byte bindings and UTC as-of checks; no authenticated real evidence/review, TTL policy, monitor or investment approval",
-  "bounded_cost_scope": "T48-T50: explicitly supplied per-item monetary floors/caps and full-source current output; no verified contracts/tax, global-affine extrapolation, piecewise recovery or real decisions"
+  "bounded_cost_scope": "T48-T50: explicitly supplied per-item monetary floors/caps and full-source current output; no verified contracts/tax, global-affine extrapolation, piecewise recovery or real decisions",
+  "piecewise_recovery_scope": "T51/T52: bounded finite-domain exact price/cap recovery sets and source-current gate; no actual contract/market/funding validation, personal return or final loss"
 }

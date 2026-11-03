@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D03 review and metric-intake design extensions and T01–T50 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D03 review and metric-intake design extensions and T01–T52 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 21635,
-      "sha256": "0769dbe65c1600210e0520736fca6120a5949058c0904a58a43fd39a78122f69"
+      "bytes": 22330,
+      "sha256": "6e9271706d33c6589ceb9d2cb7c362bc3b8b7ca810a21e62c4fb2cf8b5a330cc"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 88352,
-      "sha256": "5953c53549c598fbe122ef184e802b61933c566271bc18e36ef14315f88232e1"
+      "bytes": 91397,
+      "sha256": "fbd1c3acaa45d465b6ae06500d958d5041b7ecf6bea444fd4231359a70eddcd9"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -198,8 +198,8 @@
     },
     {
       "path": "docs/miniuw-improvement-scope.json",
-      "bytes": 6847,
-      "sha256": "39a1c624ddf51e95f22de11610bab81a6d428e58cac80a0e01903f8363a18003"
+      "bytes": 7131,
+      "sha256": "50dfc2ef903bc7a9d7bca789bf8320151f87fd92bece72c98243dde59a1a6169"
     },
     {
       "path": "docs/model-budget-schedule.md",
@@ -387,6 +387,11 @@
       "sha256": "900acbf1ad72cc7709a2f85c40151f92408c53ef362dde96fcc051bad6bb67c9"
     },
     {
+      "path": "docs/review/Resumen_Recuperacion_Tramos_T51_T52.md",
+      "bytes": 2198,
+      "sha256": "165d9b1bdeaf37ae874a3c50cd420f5ff74cbfc5150c0881ebbdcd169e1d677d"
+    },
+    {
       "path": "docs/review/Resumen_Revision_Venta_T39_T40.md",
       "bytes": 1731,
       "sha256": "052f04fe3dad0336a3465b2f20fb6f0492b59f98439829cea4a9893029955c76"
@@ -435,6 +440,11 @@
       "path": "docs/review/synthetic-bounded-exit-sale-demo.json",
       "bytes": 78209,
       "sha256": "5e76ef76913f05992e0ca02d2a288d96d79a9058cccfefd82c1f7e50f22b8708"
+    },
+    {
+      "path": "docs/review/synthetic-bounded-sale-recovery-demo.json",
+      "bytes": 121046,
+      "sha256": "88cf4221ed9a1e56450e00d04dec32fc23b844a44d18972cb9b44a18556bf9a2"
     },
     {
       "path": "docs/review/synthetic-cash-risk-demo.json",
@@ -632,6 +642,11 @@
       "sha256": "41813af33861154ee30f12dd97a6b7ed2128a7eb1046ca542886a172ae8d0184"
     },
     {
+      "path": "docs/technical-coverage-T51-T52.json",
+      "bytes": 7538,
+      "sha256": "bc3d9ef6a83768a5aa1de22016168660e77042f4c2d5efdbf11dc77b47b2d02c"
+    },
+    {
       "path": "docs/technical-implementation-T01.md",
       "bytes": 5308,
       "sha256": "c740cc5cb50583b48bdb6368132ad90b70aea5336e3c9bca06068ffa588920d7"
@@ -817,9 +832,14 @@
       "sha256": "083b421a816d72ceeddb783ca0913ba6d6b99304d71c9c57683527affcc85019"
     },
     {
+      "path": "docs/technical-implementation-T51-T52.md",
+      "bytes": 4509,
+      "sha256": "d5e1d88db5d595288c99e0ac8eaafe1dd70f264a2bc49877a1265658fea06545"
+    },
+    {
       "path": "docs/technical-implementation-status.json",
-      "bytes": 17175,
-      "sha256": "ef8077386515d0fe62782efb0d6da827d1190729fa36895eeed82b5dab3479bc"
+      "bytes": 17528,
+      "sha256": "73066ff341ddadeb304a47390bb802002d27e77ce58cf3a5d59e48441f3a4a75"
     },
     {
       "path": "infra/README.md",
@@ -1507,6 +1527,11 @@
       "sha256": "1bf80e111a2dfbea8144d9fa27a779227c507a339a1a41e6bcbdd564aecd879e"
     },
     {
+      "path": "src/miniuw_foundation/bounded_sale_recovery.py",
+      "bytes": 11684,
+      "sha256": "d7308d51262d2e68d327c59066582d67c54ba20889d668e9c4ad653d9b941f6a"
+    },
+    {
       "path": "src/miniuw_foundation/calculations.py",
       "bytes": 10181,
       "sha256": "ee79e0683eb9c5c5dc2ce740ab1ca4e1c2e17c3e94145b2aabfa9b2abf599e99"
@@ -1540,6 +1565,11 @@
       "path": "src/miniuw_foundation/current_bounded_exit_output.py",
       "bytes": 5241,
       "sha256": "ca7a01d43867430a1525bc8dc86a5fba88e58b979edfed4d7d827bf2bbdc2cc2"
+    },
+    {
+      "path": "src/miniuw_foundation/current_bounded_recovery.py",
+      "bytes": 4552,
+      "sha256": "a668e00153ea3888a4bf07377ced975671c90ebab2add3ed7eec08972796d331"
     },
     {
       "path": "src/miniuw_foundation/current_exit_output.py",
@@ -2012,6 +2042,16 @@
       "sha256": "83fd1e316f46a3f42a41e9a5d3b3e5b56688ce64fa1728ee2bdc59e75db583f8"
     },
     {
+      "path": "templates/synthetic-piecewise-recovery-currency-example.json",
+      "bytes": 18776,
+      "sha256": "cae1c35d270fec3c1e2a22bd9d804d8181d38180d82a3a6a0b3035c3f0458560"
+    },
+    {
+      "path": "templates/synthetic-piecewise-recovery-spec.json",
+      "bytes": 472,
+      "sha256": "1cc492ca7a927e8776486e4488fa02af2838f33ed019b9fb8f80e0515e6b4065"
+    },
+    {
       "path": "templates/synthetic-project-cash-manifest.json",
       "bytes": 2635,
       "sha256": "6d0a6c9525a446bb9955b1d2304e1a7708c24c5f9935d9926f383bf49dc63d3c"
@@ -2172,6 +2212,11 @@
       "sha256": "7e566a56a690f98fc65e952bbb8f9c01a9fb62e97bc9c24391b8028143eb6a29"
     },
     {
+      "path": "tests/piecewise_recovery_test_support.py",
+      "bytes": 2738,
+      "sha256": "82395913370c3d050a985567923e0d2917bc81e47ba849602b2b0eabcdfcf602"
+    },
+    {
       "path": "tests/project_test_support.py",
       "bytes": 2967,
       "sha256": "692dd62ff7a1402771b0a2d61312a42823e3cbee3fc861c3c4756437be037eaf"
@@ -2200,6 +2245,11 @@
       "path": "tests/test_bounded_sale_costs.py",
       "bytes": 6635,
       "sha256": "ed3be8189e0328b24cd5b692fc75d1ae638bb71cc72178baf950cf4e6fc2ce83"
+    },
+    {
+      "path": "tests/test_bounded_sale_recovery.py",
+      "bytes": 12461,
+      "sha256": "d51a30eb52b9c9be5df1eb675f42eb9f6fb438cc7369964a055d6729e8568e8a"
     },
     {
       "path": "tests/test_calculations.py",
@@ -2235,6 +2285,11 @@
       "path": "tests/test_current_bounded_exit_output.py",
       "bytes": 7195,
       "sha256": "5386e7daaefed9a9e526fea37e389f643712841a1c096301127e118aead85fa7"
+    },
+    {
+      "path": "tests/test_current_bounded_recovery.py",
+      "bytes": 6371,
+      "sha256": "08ccc55f9e23cb177270d4d797b766b0dca7770323a7cd0b62078a34eebb8bb6"
     },
     {
       "path": "tests/test_current_exit_output.py",
@@ -2455,6 +2510,11 @@
       "path": "tools/demo_bounded_exit_sale.py",
       "bytes": 7013,
       "sha256": "26fced7d10849c07cb8608480213a97b578a080b5d66b42b17993e529bd18a8d"
+    },
+    {
+      "path": "tools/demo_bounded_sale_recovery.py",
+      "bytes": 6014,
+      "sha256": "d4e6fba3792ffb7d69f87e8aa8bbab751443248d727c651c8ab2649bd9344c1b"
     },
     {
       "path": "tools/demo_cash_risk.py",

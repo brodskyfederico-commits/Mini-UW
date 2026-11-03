@@ -1,0 +1,155 @@
+{
+  "scope": "Conditional exact piecewise bounded-cost cash recovery and domain-source currency, not financial approval; original matrix and financial gates preserved",
+  "rows": [
+    {
+      "requirement_or_variable": "piecewise_domain_and_breakpoints",
+      "source": {
+        "path": "docs/technical-implementation-T51-T52.md",
+        "line": 9,
+        "sha256": "d5e1d88db5d595288c99e0ac8eaafe1dd70f264a2bc49877a1265658fea06545"
+      },
+      "current_definition": "All exact per-item limit/formula intersections in declared finite domain, deduplicated; explicit segment budget and point domains",
+      "affected_modules": [
+        "M7",
+        "M8",
+        "T46",
+        "T49",
+        "T51",
+        "T52"
+      ],
+      "validation_evidence": [
+        "tests/test_bounded_sale_recovery.py:BoundedSaleRecoveryTests.test_independent_three_segments_and_exact_recovery",
+        "tests/test_bounded_sale_recovery.py:BoundedSaleRecoveryTests.test_coincident_limits_deduplicate_and_zero_rate_avoids_division",
+        "tests/test_bounded_sale_recovery.py:BoundedSaleRecoveryTests.test_segment_budget_exhaustion_never_publishes_partial_solution",
+        "tests/test_bounded_sale_recovery.py:BoundedSaleRecoveryTests.test_point_domain_supported_and_prior_valuation_not_ignored"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Authentic applicability over domain, unrelated contracts/tax profiles and actual valuation evidence"
+    },
+    {
+      "requirement_or_variable": "piecewise_cash_identity",
+      "source": {
+        "path": "docs/technical-implementation-T51-T52.md",
+        "line": 11,
+        "sha256": "d5e1d88db5d595288c99e0ac8eaafe1dd70f264a2bc49877a1265658fea06545"
+      },
+      "current_definition": "G(P)=P-C(P)+K from replayed base; exact clamp formula continuity at each endpoint",
+      "affected_modules": [
+        "M7",
+        "M8",
+        "T46",
+        "T49",
+        "T51",
+        "T52"
+      ],
+      "validation_evidence": [
+        "tests/test_bounded_sale_recovery.py:BoundedSaleRecoveryTests.test_independent_direct_clamp_costs_at_boundaries_and_base",
+        "tests/test_bounded_sale_recovery.py:BoundedSaleRecoveryTests.test_boundary_invariant_after_full_repriced_bounded_cash_replay"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Real cash/funding and changed debt/dates/other-source responses"
+    },
+    {
+      "requirement_or_variable": "all_recovery_components_and_zeros",
+      "source": {
+        "path": "docs/technical-implementation-T51-T52.md",
+        "line": 13,
+        "sha256": "d5e1d88db5d595288c99e0ac8eaafe1dd70f264a2bc49877a1265658fea06545"
+      },
+      "current_definition": "All closed recovering intervals and zero sets, with flat/empty/isolated/shared-boundary/disconnected cases; no unique floor assumption",
+      "affected_modules": [
+        "M7",
+        "M8",
+        "T46",
+        "T49",
+        "T51",
+        "T52"
+      ],
+      "validation_evidence": [
+        "tests/test_bounded_sale_recovery.py:BoundedSaleRecoveryTests.test_disconnected_recovery_sets_not_collapsed_to_one_floor",
+        "tests/test_bounded_sale_recovery.py:BoundedSaleRecoveryTests.test_flat_zero_interval_and_adjacent_recovery_merge",
+        "tests/test_bounded_sale_recovery.py:BoundedSaleRecoveryTests.test_root_at_shared_breakpoint_deduplicated",
+        "tests/test_bounded_sale_recovery.py:BoundedSaleRecoveryTests.test_isolated_recovery_point_at_local_maximum",
+        "tests/test_bounded_sale_recovery.py:BoundedSaleRecoveryTests.test_empty_recovery_domain_is_valid_not_a_calculation_failure"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "No adopted investment criterion or final economic-loss interpretation"
+    },
+    {
+      "requirement_or_variable": "piecewise_exit_cap_sets",
+      "source": {
+        "path": "docs/technical-implementation-T51-T52.md",
+        "line": 15,
+        "sha256": "d5e1d88db5d595288c99e0ac8eaafe1dd70f264a2bc49877a1265658fea06545"
+      },
+      "current_definition": "Invert each P=N/c component for fixed forward NOI and positive annual cap; exclude zero-price infinite-cap inference",
+      "affected_modules": [
+        "M7",
+        "M8",
+        "T46",
+        "T49",
+        "T51",
+        "T52"
+      ],
+      "validation_evidence": [
+        "tests/test_bounded_sale_recovery.py:BoundedSaleRecoveryTests.test_exit_cap_inverts_true_piecewise_recovery_boundary",
+        "tests/test_bounded_sale_recovery.py:BoundedSaleRecoveryTests.test_zero_noi_distinguishes_price_recovery_from_attainable_caps"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Actual forward scope/market relationship and personal investor return"
+    },
+    {
+      "requirement_or_variable": "new_domain_binding_currency",
+      "source": {
+        "path": "docs/technical-implementation-T51-T52.md",
+        "line": 19,
+        "sha256": "d5e1d88db5d595288c99e0ac8eaafe1dd70f264a2bc49877a1265658fea06545"
+      },
+      "current_definition": "23 exact technical bindings; old 22 do not cover domain source; changed/expired/unreviewed spec blocks current analysis",
+      "affected_modules": [
+        "M7",
+        "M8",
+        "T46",
+        "T49",
+        "T51",
+        "T52"
+      ],
+      "validation_evidence": [
+        "tests/test_current_bounded_recovery.py:CurrentBoundedRecoveryTests.test_current_domain_and_full_23_binding_inventory",
+        "tests/test_current_bounded_recovery.py:CurrentBoundedRecoveryTests.test_22_old_bindings_do_not_cover_new_domain_spec",
+        "tests/test_current_bounded_recovery.py:CurrentBoundedRecoveryTests.test_changed_domain_or_budget_needs_new_evidence_binding",
+        "tests/test_current_bounded_recovery.py:CurrentBoundedRecoveryTests.test_only_domain_expiry_withdraws_current_analysis_not_history"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Real original-document authentication, applicable expiry policy, monitor and financial publication"
+    },
+    {
+      "requirement_or_variable": "source_and_result_replay",
+      "source": {
+        "path": "docs/technical-implementation-T51-T52.md",
+        "line": 25,
+        "sha256": "d5e1d88db5d595288c99e0ac8eaafe1dd70f264a2bc49877a1265658fea06545"
+      },
+      "current_definition": "Complete base/profile/report replay; known bank/conflict/budget blockers remain and tampering fails even with updated hashes",
+      "affected_modules": [
+        "M7",
+        "M8",
+        "T46",
+        "T49",
+        "T51",
+        "T52"
+      ],
+      "validation_evidence": [
+        "tests/test_bounded_sale_recovery.py:BoundedSaleRecoveryTests.test_bank_blocker_and_limit_conflict_preserved",
+        "tests/test_bounded_sale_recovery.py:BoundedSaleRecoveryTests.test_replay_rejects_rehashed_base_and_report_forgeries",
+        "tests/test_bounded_sale_recovery.py:BoundedSaleRecoveryTests.test_changed_domain_invalidates_result_and_arithmetic_fault_blocks",
+        "tests/test_current_bounded_recovery.py:CurrentBoundedRecoveryTests.test_same_time_full_report_replay_and_updated_hash_forgeries",
+        "tests/test_current_bounded_recovery.py:CurrentBoundedRecoveryTests.test_bank_failure_and_budget_failure_remain_visible"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "No runtime SQLite bundle, production release or original financial acceptance closure"
+    }
+  ],
+  "cost_profile_financially_valid_over_domain": false,
+  "real_decisions_enabled": false
+}
