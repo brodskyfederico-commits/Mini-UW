@@ -1,0 +1,299 @@
+{
+  "scope": "Consolidated scoped synthetic v1 entry/run/one-page and seven Dot/seventeen bot contracts; no full financial closure",
+  "rows": [
+    {
+      "requirement_or_variable": "single_entry_and_fresh_criteria",
+      "source": {
+        "path": "docs/technical-implementation-T85-T87.md",
+        "line": 5,
+        "sha256": "dab6d254d11622ab4de9ca767cb6ca42f33566fe77bfd5856f2f286a74cdb4c4"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§§3, 5 y 7",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "DAT-01"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 aportes/distribuciones brutos frente a neto",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "RETURN-01"
+        }
+      ],
+      "current_definition": "All 55 original field states and ten new criteria in one explicit synthetic case; no complete sheet-to-calculation claim",
+      "affected_modules": [
+        "M1",
+        "M2",
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_miniuw_v1.py",
+          "line": 43,
+          "test": "V1CaseTests.test_all_55_fields_ten_fresh_criteria_and_scope_pending_visible"
+        },
+        {
+          "path": "tests/test_miniuw_v1.py",
+          "line": 68,
+          "test": "V1CaseTests.test_original_mapping_conflict_blocks_projection_and_keeps_both_values"
+        },
+        {
+          "path": "tests/test_miniuw_v1.py",
+          "line": 73,
+          "test": "V1CaseTests.test_zero_is_not_blank_and_pointer_escapes_are_literal"
+        },
+        {
+          "path": "tests/test_miniuw_v1.py",
+          "line": 80,
+          "test": "V1CaseTests.test_criteria_bands_or_known_failure_stay_globally_pending_when_incomplete"
+        },
+        {
+          "path": "tests/test_miniuw_v1.py",
+          "line": 86,
+          "test": "V1CaseTests.test_no_historical_defaults_or_selected_IRR_or_personal_return"
+        },
+        {
+          "path": "tests/test_miniuw_v1.py",
+          "line": 110,
+          "test": "V1CaseTests.test_strict_root_and_complete_catalogue_and_synthetic_context"
+        }
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Full 55 semantic mapping, financial metric definitions, authentic criteria and personal allocation"
+    },
+    {
+      "requirement_or_variable": "declarative_full_supported_route_and_freshness",
+      "source": {
+        "path": "docs/technical-implementation-T85-T87.md",
+        "line": 9,
+        "sha256": "dab6d254d11622ab4de9ca767cb6ca42f33566fe77bfd5856f2f286a74cdb4c4"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 costos, financiación, operaciones y salida",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "CASH-02"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§§3, 5 y 7",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "DAT-01"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 aportes/distribuciones brutos frente a neto",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "RETURN-01"
+        }
+      ],
+      "current_definition": "Explicit source reconstruction and exact old bundle, no supplied results or funding/date repair; missing/conflicts/unsupported scenario and source changes withhold current projection",
+      "affected_modules": [
+        "M1",
+        "M2",
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_miniuw_v1.py",
+          "line": 36,
+          "test": "V1CaseTests.test_one_declarative_entry_rebuilds_exact_previous_financial_chain"
+        },
+        {
+          "path": "tests/test_miniuw_v1.py",
+          "line": 51,
+          "test": "V1CaseTests.test_missing_cash_value_stops_dependencies_without_zero_or_old_numbers"
+        },
+        {
+          "path": "tests/test_miniuw_v1.py",
+          "line": 57,
+          "test": "V1CaseTests.test_earlier_cash_deficit_not_repaired_with_generated_equity"
+        },
+        {
+          "path": "tests/test_miniuw_v1.py",
+          "line": 62,
+          "test": "V1CaseTests.test_expired_source_withdraws_current_story_but_preserves_recovery_bundle"
+        },
+        {
+          "path": "tests/test_miniuw_v1.py",
+          "line": 91,
+          "test": "V1CaseTests.test_extra_requested_scenario_and_cross_case_context_cannot_use_existing_story"
+        },
+        {
+          "path": "tests/test_miniuw_v1.py",
+          "line": 95,
+          "test": "V1CaseTests.test_changed_data_requires_new_explicit_evidence_no_automatic_renewal"
+        },
+        {
+          "path": "tests/test_miniuw_v1.py",
+          "line": 106,
+          "test": "V1CaseTests.test_computed_linkages_and_expected_results_cannot_be_supplied_or_silently_ignored"
+        },
+        {
+          "path": "tests/test_miniuw_v1.py",
+          "line": 117,
+          "test": "V1CaseTests.test_immutable_repeatable_input_and_result_versions"
+        }
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Intermediate refi integration, full financial graph, source authority and financial acceptance"
+    },
+    {
+      "requirement_or_variable": "one_page_verified_investor_output",
+      "source": {
+        "path": "docs/technical-implementation-T85-T87.md",
+        "line": 15,
+        "sha256": "dab6d254d11622ab4de9ca767cb6ca42f33566fe77bfd5856f2f286a74cdb4c4"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 aportes/distribuciones brutos frente a neto",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "RETURN-01"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§§3, 5 y 7",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "DAT-01"
+        }
+      ],
+      "current_definition": "One-page project equity story and all ten metric slots, expired current figures withheld, exact source/result replay and glyph/layout limits",
+      "affected_modules": [
+        "M1",
+        "M2",
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_miniuw_v1.py",
+          "line": 127,
+          "test": "V1ReportArtifactTests.test_exactly_one_readable_page_with_investor_story_and_ten_metrics"
+        },
+        {
+          "path": "tests/test_miniuw_v1.py",
+          "line": 134,
+          "test": "V1ReportArtifactTests.test_expired_case_gets_one_page_pending_without_old_financial_numbers"
+        },
+        {
+          "path": "tests/test_miniuw_v1.py",
+          "line": 140,
+          "test": "V1ReportArtifactTests.test_rehashed_results_and_report_forgery_rejected"
+        },
+        {
+          "path": "tests/test_miniuw_v1.py",
+          "line": 146,
+          "test": "V1ReportArtifactTests.test_layout_and_unsupported_glyphs_fail_without_clipping_or_extra_page"
+        }
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Capital/equity/CoC/personal returns, final external financial decision PDF and independent audit"
+    },
+    {
+      "requirement_or_variable": "durable_local_output_inventory_and_audit",
+      "source": {
+        "path": "docs/technical-implementation-T85-T87.md",
+        "line": 19,
+        "sha256": "dab6d254d11622ab4de9ca767cb6ca42f33566fe77bfd5856f2f286a74cdb4c4"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§§3, 5 y 7",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "DAT-01"
+        }
+      ],
+      "current_definition": "Exactly eight reproducible artifacts; different output refused, hashes plus full replay, failed materialization leaves no final partial directory",
+      "affected_modules": [
+        "M1",
+        "M2",
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_miniuw_v1.py",
+          "line": 152,
+          "test": "V1ReportArtifactTests.test_atomic_local_output_retries_and_full_directory_audit"
+        },
+        {
+          "path": "tests/test_miniuw_v1.py",
+          "line": 161,
+          "test": "V1ReportArtifactTests.test_altered_bytes_rehashed_package_extra_file_and_unsafe_path_rejected"
+        },
+        {
+          "path": "tests/test_miniuw_v1.py",
+          "line": 176,
+          "test": "V1ReportArtifactTests.test_failed_local_materialization_leaves_no_partial_final_directory"
+        }
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Concurrent production publication, runtime database recovery and financial independence"
+    },
+    {
+      "requirement_or_variable": "dot_bot_inputs_outputs_blockers_and_scope",
+      "source": {
+        "path": "docs/technical-implementation-T85-T87.md",
+        "line": 23,
+        "sha256": "dab6d254d11622ab4de9ca767cb6ca42f33566fe77bfd5856f2f286a74cdb4c4"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§§3, 5 y 7",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "DAT-01"
+        }
+      ],
+      "current_definition": "Seven Dots and seventeen roles with source locators, complete membership, acyclic dependencies and truthful pending extractor/researcher/test/audit status",
+      "affected_modules": [
+        "M1",
+        "M2",
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_miniuw_v1.py",
+          "line": 185,
+          "test": "V1DotBotContractTests.test_all_seven_dots_and_seventeen_bots_have_io_blockers_and_dependencies"
+        },
+        {
+          "path": "tests/test_miniuw_v1.py",
+          "line": 190,
+          "test": "V1DotBotContractTests.test_unimplemented_extractors_and_independent_audit_not_claimed_active"
+        },
+        {
+          "path": "tests/test_miniuw_v1.py",
+          "line": 195,
+          "test": "V1DotBotContractTests.test_contract_cycle_and_unimplemented_role_promotion_rejected"
+        }
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "External plan/finance readers, official research, independent audit, orchestration infrastructure and deployment"
+    }
+  ],
+  "real_decisions_enabled": false
+}

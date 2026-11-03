@@ -1,0 +1,534 @@
+{
+  "schema": "miniuw.synthetic-v1-dot-bot-contracts.v1",
+  "sources": [
+    {
+      "path": "sources/originals/0b48649d45fc__Feedback_Dots_Mini_UW (1).pdf",
+      "sha256": "0b48649d45fcd57a086f0fb000ba7ab914a7309c62841f3241927c825df88ddf",
+      "physical_page": 1,
+      "meaning": "Seven proposed functional Dots"
+    },
+    {
+      "path": "sources/originals/3cafc67e2ae0__01_Framework_Roadmap_MiniUW_3.1 (1) (1).pdf",
+      "sha256": "3cafc67e2ae0af678b8cd03f604dc14184ede984bf8d455a7847d2390d4dff43",
+      "physical_page": 4,
+      "meaning": "Seventeen historical proposed bot roles"
+    }
+  ],
+  "mapping_status": "new_functional_mapping_of_preserved_proposals",
+  "dots": [
+    {
+      "dot_id": "D01",
+      "name": "Recepcion y coordinacion",
+      "bot_ids": [
+        "B01",
+        "B02",
+        "B03"
+      ],
+      "inputs": [
+        "Caso/archivos declarados/revision"
+      ],
+      "outputs": [
+        "Inventario de fuentes y plan de ejecucion"
+      ],
+      "blockers": [
+        "Formato/contexto ambiguo",
+        "Fuente o revision incompatible"
+      ],
+      "status": "partial_synthetic_runtime"
+    },
+    {
+      "dot_id": "D02",
+      "name": "Validacion de entrada",
+      "bot_ids": [
+        "B04"
+      ],
+      "inputs": [
+        "55 campos originales",
+        "Criterios por deal",
+        "Fuentes complementarias"
+      ],
+      "outputs": [
+        "Valores/index y pendientes por campo"
+      ],
+      "blockers": [
+        "Faltante o conflicto",
+        "Unidad/base/mapeo sin definir"
+      ],
+      "status": "partial_synthetic_runtime"
+    },
+    {
+      "dot_id": "D03",
+      "name": "Planos y conciliacion",
+      "bot_ids": [
+        "B05",
+        "B06",
+        "B07",
+        "B09"
+      ],
+      "inputs": [
+        "Planos originales",
+        "Dos lecturas independientes",
+        "Fuentes GC y politica de tolerancia"
+      ],
+      "outputs": [
+        "Lecturas citadas",
+        "Discrepancias sin sobrescribir"
+      ],
+      "blockers": [
+        "Sin planos o lectura independiente",
+        "Sin tolerancia aplicable"
+      ],
+      "status": "contract_only_pending"
+    },
+    {
+      "dot_id": "D04",
+      "name": "Datos oficiales",
+      "bot_ids": [
+        "B10",
+        "B11"
+      ],
+      "inputs": [
+        "Pregunta/documento/allowlist aprobada"
+      ],
+      "outputs": [
+        "Copia y cita con fecha",
+        "Valor verificado en copia"
+      ],
+      "blockers": [
+        "Dominio no autorizado",
+        "Sin copia/cita vigente"
+      ],
+      "status": "contract_only_pending"
+    },
+    {
+      "dot_id": "D05",
+      "name": "Calculo y screening",
+      "bot_ids": [
+        "B08",
+        "B12",
+        "B13",
+        "B14"
+      ],
+      "inputs": [
+        "Fuentes financieras declaradas",
+        "Calendarios/deuda/renta/gastos",
+        "Criterios"
+      ],
+      "outputs": [
+        "Resultados reproducibles",
+        "Retorno y matriz de comparacion"
+      ],
+      "blockers": [
+        "Fuente/fecha incompatible",
+        "Regla o criterio faltante",
+        "Perfil no soportado"
+      ],
+      "status": "partial_synthetic_runtime"
+    },
+    {
+      "dot_id": "D06",
+      "name": "Informe",
+      "bot_ids": [
+        "B15"
+      ],
+      "inputs": [
+        "Resultados actuales y snapshot de fuente"
+      ],
+      "outputs": [
+        "PDF de una pagina",
+        "Manifiesto de cifras"
+      ],
+      "blockers": [
+        "Datos vencidos retiran cifras",
+        "Desborde o glifo no representable impide PDF"
+      ],
+      "status": "synthetic_callable"
+    },
+    {
+      "dot_id": "D07",
+      "name": "Comprobacion y pruebas",
+      "bot_ids": [
+        "B16",
+        "B17"
+      ],
+      "inputs": [
+        "Entrada/resultados/PDF/huellas",
+        "Casos de prueba de version"
+      ],
+      "outputs": [
+        "Audit tecnico",
+        "Evidencia de pruebas y pendientes independientes"
+      ],
+      "blockers": [
+        "Diferencia de archivo/cifra/pagina",
+        "Falta auditoria financiera independiente"
+      ],
+      "status": "deterministic_check_only"
+    }
+  ],
+  "bots": [
+    {
+      "bot_id": "B01",
+      "name": "Orquestador",
+      "dot_id": "D01",
+      "inputs": [
+        "case.json"
+      ],
+      "outputs": [
+        "stages/results/package"
+      ],
+      "blockers": [
+        "Perfil/contexto no soportado; dependencia bloqueada"
+      ],
+      "depends_on": [],
+      "status": "synthetic_callable",
+      "external_actions_enabled": false,
+      "real_decisions_enabled": false
+    },
+    {
+      "bot_id": "B02",
+      "name": "Recepcion",
+      "dot_id": "D01",
+      "inputs": [
+        "case.json y fuentes declarativas"
+      ],
+      "outputs": [
+        "Inventario SHA/revision"
+      ],
+      "blockers": [
+        "JSON invalido o fuente duplicada/inventario incompleto"
+      ],
+      "depends_on": [
+        "B01"
+      ],
+      "status": "synthetic_callable",
+      "external_actions_enabled": false,
+      "real_decisions_enabled": false
+    },
+    {
+      "bot_id": "B03",
+      "name": "Clasificador",
+      "dot_id": "D01",
+      "inputs": [
+        "Archivos originales ambiguos"
+      ],
+      "outputs": [
+        "Tipo y confianza con evidencia"
+      ],
+      "blockers": [
+        "Ambiguedad conserva sin tipo; sin extractor implementado"
+      ],
+      "depends_on": [
+        "B02"
+      ],
+      "status": "contract_only_pending",
+      "external_actions_enabled": false,
+      "real_decisions_enabled": false
+    },
+    {
+      "bot_id": "B04",
+      "name": "Validador Input Sheet",
+      "dot_id": "D02",
+      "inputs": [
+        "Catalogo 55",
+        "criterios",
+        "mapas"
+      ],
+      "outputs": [
+        "Estado por campo y discrepancias"
+      ],
+      "blockers": [
+        "Null/valor contradictorio/mapeo o semantica pendiente"
+      ],
+      "depends_on": [
+        "B02"
+      ],
+      "status": "partial_synthetic_callable",
+      "external_actions_enabled": false,
+      "real_decisions_enabled": false
+    },
+    {
+      "bot_id": "B05",
+      "name": "Lector A",
+      "dot_id": "D03",
+      "inputs": [
+        "Planos originales"
+      ],
+      "outputs": [
+        "Lectura A con citas"
+      ],
+      "blockers": [
+        "Sin planos; prohibido takeoff o inferir medidas"
+      ],
+      "depends_on": [
+        "B02"
+      ],
+      "status": "contract_only_pending",
+      "external_actions_enabled": false,
+      "real_decisions_enabled": false
+    },
+    {
+      "bot_id": "B06",
+      "name": "Lector B",
+      "dot_id": "D03",
+      "inputs": [
+        "Planos originales aislados de A"
+      ],
+      "outputs": [
+        "Lectura B con citas"
+      ],
+      "blockers": [
+        "Sin originales/independencia; no ve A"
+      ],
+      "depends_on": [
+        "B02"
+      ],
+      "status": "contract_only_pending",
+      "external_actions_enabled": false,
+      "real_decisions_enabled": false
+    },
+    {
+      "bot_id": "B07",
+      "name": "Conciliador",
+      "dot_id": "D03",
+      "inputs": [
+        "Lecturas A",
+        "B y fuentes"
+      ],
+      "outputs": [
+        "Ambos valores y conflicto"
+      ],
+      "blockers": [
+        "Falta lectura o autoridad para resolver diferencia"
+      ],
+      "depends_on": [
+        "B05",
+        "B06"
+      ],
+      "status": "contract_only_pending",
+      "external_actions_enabled": false,
+      "real_decisions_enabled": false
+    },
+    {
+      "bot_id": "B08",
+      "name": "Lector financiero",
+      "dot_id": "D05",
+      "inputs": [
+        "Documentos financieros originales"
+      ],
+      "outputs": [
+        "Afirmaciones con pagina/celda"
+      ],
+      "blockers": [
+        "No extraer o estimar ausencia; v1 recibe fuentes ya estructuradas"
+      ],
+      "depends_on": [
+        "B02"
+      ],
+      "status": "contract_only_pending",
+      "external_actions_enabled": false,
+      "real_decisions_enabled": false
+    },
+    {
+      "bot_id": "B09",
+      "name": "Control cruzado GC",
+      "dot_id": "D03",
+      "inputs": [
+        "Lecturas conciliadas",
+        "GC y regla"
+      ],
+      "outputs": [
+        "Conciliacion y diferencias"
+      ],
+      "blockers": [
+        "Sin tolerancia aprobada o fuente independiente"
+      ],
+      "depends_on": [
+        "B07",
+        "B08"
+      ],
+      "status": "contract_only_pending",
+      "external_actions_enabled": false,
+      "real_decisions_enabled": false
+    },
+    {
+      "bot_id": "B10",
+      "name": "Investigador oficial",
+      "dot_id": "D04",
+      "inputs": [
+        "Pregunta y dominios aprobados"
+      ],
+      "outputs": [
+        "Copia/URL/fecha/publicador"
+      ],
+      "blockers": [
+        "Sin allowlist o permiso; ninguna consulta externa en v1"
+      ],
+      "depends_on": [
+        "B02"
+      ],
+      "status": "contract_only_pending",
+      "external_actions_enabled": false,
+      "real_decisions_enabled": false
+    },
+    {
+      "bot_id": "B11",
+      "name": "Verificador oficial",
+      "dot_id": "D04",
+      "inputs": [
+        "Copia y cita de bot 10"
+      ],
+      "outputs": [
+        "Valor exacto verificado"
+      ],
+      "blockers": [
+        "Sin copia/ubicacion o evidencia vencida"
+      ],
+      "depends_on": [
+        "B10"
+      ],
+      "status": "contract_only_pending",
+      "external_actions_enabled": false,
+      "real_decisions_enabled": false
+    },
+    {
+      "bot_id": "B12",
+      "name": "Guardian",
+      "dot_id": "D05",
+      "inputs": [
+        "Inventarios",
+        "estado de entrada",
+        "cadena"
+      ],
+      "outputs": [
+        "Gates de calculo y decision separados"
+      ],
+      "blockers": [
+        "Faltantes/conflictos/reglas: PENDING; nunca arreglar para PASS"
+      ],
+      "depends_on": [
+        "B04",
+        "B07",
+        "B09",
+        "B11"
+      ],
+      "status": "partial_synthetic_callable",
+      "external_actions_enabled": false,
+      "real_decisions_enabled": false
+    },
+    {
+      "bot_id": "B13",
+      "name": "Motor",
+      "dot_id": "D05",
+      "inputs": [
+        "Fuentes tipadas",
+        "calendarios",
+        "definiciones"
+      ],
+      "outputs": [
+        "NOI/caja/deuda/retorno con hashes"
+      ],
+      "blockers": [
+        "Solo perfil suministrado; presupuesto/exactitud/continuidad incompatibles"
+      ],
+      "depends_on": [
+        "B12"
+      ],
+      "status": "synthetic_callable",
+      "external_actions_enabled": false,
+      "real_decisions_enabled": false
+    },
+    {
+      "bot_id": "B14",
+      "name": "Juez",
+      "dot_id": "D05",
+      "inputs": [
+        "Metricas propias y criterios explicitos"
+      ],
+      "outputs": [
+        "Comparaciones y PENDING operacional"
+      ],
+      "blockers": [
+        "Faltantes/banda: PENDING; sin umbrales historicos por defecto"
+      ],
+      "depends_on": [
+        "B13"
+      ],
+      "status": "partial_synthetic_callable",
+      "external_actions_enabled": false,
+      "real_decisions_enabled": false
+    },
+    {
+      "bot_id": "B15",
+      "name": "Redactor y maquetador",
+      "dot_id": "D06",
+      "inputs": [
+        "results.json reproducido"
+      ],
+      "outputs": [
+        "Resumen PDF/manifest de una pagina"
+      ],
+      "blockers": [
+        "Sin cifras manuales; sin clipping/seleccion conveniente de IRR"
+      ],
+      "depends_on": [
+        "B14"
+      ],
+      "status": "synthetic_callable",
+      "external_actions_enabled": false,
+      "real_decisions_enabled": false
+    },
+    {
+      "bot_id": "B16",
+      "name": "Auditor",
+      "dot_id": "D07",
+      "inputs": [
+        "Entrada",
+        "results",
+        "PDF manifiestos"
+      ],
+      "outputs": [
+        "audit.json tecnico"
+      ],
+      "blockers": [
+        "Una diferencia bloquea artefacto; no certifica auditoria independiente"
+      ],
+      "depends_on": [
+        "B15"
+      ],
+      "status": "deterministic_check_only",
+      "external_actions_enabled": false,
+      "real_decisions_enabled": false
+    },
+    {
+      "bot_id": "B17",
+      "name": "Pruebas de version",
+      "dot_id": "D07",
+      "inputs": [
+        "Casos y codigo versionado"
+      ],
+      "outputs": [
+        "Logs y CI del commit exacto"
+      ],
+      "blockers": [
+        "Sin expected financiero independiente no cerrar aceptacion; no corre en cada deal"
+      ],
+      "depends_on": [],
+      "status": "release_test_contract",
+      "external_actions_enabled": false,
+      "real_decisions_enabled": false
+    }
+  ],
+  "protocol": [
+    "case_source_sha256",
+    "dependency_sha256s",
+    "status",
+    "produced_artifacts",
+    "blockers"
+  ],
+  "runtime_scope": "Local deterministic synthetic coordinator; no external agents, model/provider adoption or deployment",
+  "independent_financial_audit_implemented": false,
+  "platform_selection": "deferred_until_external_runtime_requested",
+  "external_actions_enabled": false,
+  "real_decisions_enabled": false
+}

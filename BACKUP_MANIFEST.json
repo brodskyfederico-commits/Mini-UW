@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D03 review and metric-intake design extensions and T01–T84 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D03 review and metric-intake design extensions and T01–T87 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
@@ -18,18 +18,28 @@
     },
     {
       "path": "README.md",
-      "bytes": 32811,
-      "sha256": "0125e6a72a54f7d2118738921fd68db8650b8ad5ed2d42131d950ee7f720bb90"
+      "bytes": 33671,
+      "sha256": "d9c752f50dc83706bbf6c960fa51538839a2184cd2c68d554a3dfa030060dedb"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 131138,
-      "sha256": "1ae9abb4f5c027c7889e6e261f2ef5a36ecd9397479b33623eedcc3303a90b9f"
+      "bytes": 134021,
+      "sha256": "d324f3043d25d3b1bbf97f0d489d25257d7270440c1ad4dbefcc893cef1620f5"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
       "bytes": 82945,
       "sha256": "71c8b5c677383abd6ba49aabe69b9464cd2e1ca223155ceb26cf12c13e25c4ab"
+    },
+    {
+      "path": "docs/MiniUW_v1_Consolidado.md",
+      "bytes": 10482,
+      "sha256": "c621ebabed2195db043f741f30f3b1ba9ac36ef79797336e914e074b1cdf3e05"
+    },
+    {
+      "path": "docs/MiniUW_v1_Dots_y_Bots.md",
+      "bytes": 5767,
+      "sha256": "69e6c633b8dd13862488a9fde143ac074b040fcbe1e9a243daacd448b379ceb0"
     },
     {
       "path": "docs/acceptance-case-contracts.json",
@@ -200,6 +210,11 @@
       "path": "docs/miniuw-improvement-scope.json",
       "bytes": 7131,
       "sha256": "50dfc2ef903bc7a9d7bca789bf8320151f87fd92bece72c98243dde59a1a6169"
+    },
+    {
+      "path": "docs/miniuw-v1-dot-bot-contracts.json",
+      "bytes": 12935,
+      "sha256": "42a074934b1c2abcbb8c20f61a335906499c0c0f06c362167da62cb41f8fbdc5"
     },
     {
       "path": "docs/model-budget-schedule.md",
@@ -545,6 +560,46 @@
       "path": "docs/review/integral-spec-I01-validation.json",
       "bytes": 433,
       "sha256": "9f42b7ec27e13e6adba7b32653254090b9e11b0408d3a87cec337642f2d461f6"
+    },
+    {
+      "path": "docs/review/miniuw-v1-example/MiniUW_v1_Resumen.pdf",
+      "bytes": 6560,
+      "sha256": "b9c93c7fa1a9e0a30f85980bda67dab221e8c577481e4c2c7754d7ec313f9f0f"
+    },
+    {
+      "path": "docs/review/miniuw-v1-example/audit.json",
+      "bytes": 693,
+      "sha256": "0fd97ba4659ea9a5a07434a74c25c6b4eb32b11713b8b7646c84af12d330a727"
+    },
+    {
+      "path": "docs/review/miniuw-v1-example/bot-execution.json",
+      "bytes": 4220,
+      "sha256": "9938ff62671d7724292cd5b8fa289c83cc41c80c142b5bb4f4b47d0f71a9d3c2"
+    },
+    {
+      "path": "docs/review/miniuw-v1-example/case.json",
+      "bytes": 90115,
+      "sha256": "c0c8a0f065c07013cb79a0fc2b56752e235dcae6c618eb5f0dc72ca1909472be"
+    },
+    {
+      "path": "docs/review/miniuw-v1-example/execution-evidence.json",
+      "bytes": 478280,
+      "sha256": "efbadadeb0dbc420899780fae3473e10c5176966ed7380dc09c468cb0f7b317f"
+    },
+    {
+      "path": "docs/review/miniuw-v1-example/package.json",
+      "bytes": 1167,
+      "sha256": "c5e0957518accac4d505a1a7d7aab40f48374a09258ce0791de0c51a8b90d318"
+    },
+    {
+      "path": "docs/review/miniuw-v1-example/report-manifest.json",
+      "bytes": 11664,
+      "sha256": "3aeeb836fcae7a348ecc94d5dda21d73b14e7a1b299299d53a2cf145c1446b2e"
+    },
+    {
+      "path": "docs/review/miniuw-v1-example/results.json",
+      "bytes": 54560,
+      "sha256": "0e979a8c97b308d65ff08caf300692e66bbb4200ac4e0ae61458e62ca5e70575"
     },
     {
       "path": "docs/review/pdf-review-validation-R02.json",
@@ -907,6 +962,11 @@
       "sha256": "27e42fac7f6ec7d352cc0433011e6b18d5a64b5390c030873b71e3908d942509"
     },
     {
+      "path": "docs/technical-coverage-T85-T87.json",
+      "bytes": 12758,
+      "sha256": "76e68d2909c4a430364aabd3c2b9600003c8ca2e673ec2a62b1195e0057cebd7"
+    },
+    {
       "path": "docs/technical-implementation-T01.md",
       "bytes": 5308,
       "sha256": "c740cc5cb50583b48bdb6368132ad90b70aea5336e3c9bca06068ffa588920d7"
@@ -1187,9 +1247,14 @@
       "sha256": "ebb4b02c4819c20f20525c3bc3cc869f35a51d33c5864300e0774418ed210945"
     },
     {
+      "path": "docs/technical-implementation-T85-T87.md",
+      "bytes": 4987,
+      "sha256": "dab6d254d11622ab4de9ca767cb6ca42f33566fe77bfd5856f2f286a74cdb4c4"
+    },
+    {
       "path": "docs/technical-implementation-status.json",
-      "bytes": 28349,
-      "sha256": "b823b72cdb70080c426f505cd5be64dbc7fc27caeee66256fec043f05ee3dc58"
+      "bytes": 29653,
+      "sha256": "441dd178a96c268a8efd90a91864b8a66780b6519514dcf431454d0a271d8a63"
     },
     {
       "path": "infra/README.md",
@@ -2302,6 +2367,31 @@
       "sha256": "a3de520e268867e0247583d0047209ff89b7e0f8cb347a9cccbeba646b81425e"
     },
     {
+      "path": "src/miniuw_foundation/v1_artifacts.py",
+      "bytes": 6745,
+      "sha256": "65f375bbfe450e6fff8c08befd4e57337c082cfef59e44ec026fc1ae9dd2998d"
+    },
+    {
+      "path": "src/miniuw_foundation/v1_case.py",
+      "bytes": 12588,
+      "sha256": "490add260ae8d2314030c7e36ebb00ff3fd8d3edf9c69f839a86ba6c15269f93"
+    },
+    {
+      "path": "src/miniuw_foundation/v1_contracts.py",
+      "bytes": 2483,
+      "sha256": "cbd584f93bef7222df6b98cdc6ea0ab7eda11ba3ffa1876643495e27baf76f2f"
+    },
+    {
+      "path": "src/miniuw_foundation/v1_projection.py",
+      "bytes": 11912,
+      "sha256": "16e4574b1c18feb1b53d2579287fc2262310e42eabd970621d42cec152a99aef"
+    },
+    {
+      "path": "src/miniuw_foundation/v1_report.py",
+      "bytes": 10970,
+      "sha256": "3b63ad76e5c7f818523dad51ad4c1e9ab196ad993a0cce1d246d60bd4df4b907"
+    },
+    {
       "path": "src/miniuw_foundation/workbooks.py",
       "bytes": 12543,
       "sha256": "cd301d7b4758b5c80628f0e6515e01da81671ecccf0d36c9c7c4ec670f470529"
@@ -2310,6 +2400,11 @@
       "path": "templates/metric-intake-draft-empty.json",
       "bytes": 3492,
       "sha256": "3fa96c7556ee0b206e3213ad1d91c475bbebe2ab4aebb489db0a3eed034e68a7"
+    },
+    {
+      "path": "templates/miniuw-v1-synthetic-case.json",
+      "bytes": 90115,
+      "sha256": "c0c8a0f065c07013cb79a0fc2b56752e235dcae6c618eb5f0dc72ca1909472be"
     },
     {
       "path": "templates/project-draft-empty.json",
@@ -3052,6 +3147,11 @@
       "sha256": "4273e2f1ef2e5d887f51ee0f11ba77e967374dbda9bcd20e010a99ef6455ad23"
     },
     {
+      "path": "tests/test_miniuw_v1.py",
+      "bytes": 16503,
+      "sha256": "0b0c17a06418d971e08100c9b6d5ae2ea224e16119dcff451167295f8090a8c9"
+    },
+    {
       "path": "tests/test_normalization.py",
       "bytes": 15481,
       "sha256": "1131920b5d665b32d269fd28f664279d4050dd33ed5d1ec71312f1d3d40d9acb"
@@ -3490,6 +3590,11 @@
       "path": "tools/lifecycle_demo_support.py",
       "bytes": 9819,
       "sha256": "36072b52ab4a8f981c34b658ccca73b55093327d7ee469d2c250dd62ae32604b"
+    },
+    {
+      "path": "tools/miniuw_v1.py",
+      "bytes": 1216,
+      "sha256": "0fbb233d201940630388854f34169bbafc4e1f5780121bbdd3bcbef6a70c9b48"
     },
     {
       "path": "tools/phased_rental_demo_support.py",
