@@ -1,7 +1,7 @@
 {
   "phase": "post-I01 synthetic technical implementation",
   "user_authorized": true,
-  "component": "T81",
+  "component": "T84",
   "status": "local_implementation_verified_pending_remote_receipt",
   "implemented": [
     "fresh raw-claim drafts from unchanged 55-input/10-criterion template",
@@ -118,9 +118,12 @@
     "explicit-time exact full-source expense-checked lifecycle current gate and internal investor/gross expense-payment review, suppressing current numbers on expiry or calculation failure",
     "complete supplied one-month T21 residential source calendar with exact potential/loss/concession/effective aggregation and fixed physical group inventory, no missing-month or market inference",
     "full per-period monthly rental-to-exact-NOI income match gating the expense-checked purchase-to-sale cash return; zero other-income reduced profile and portable blocked/matched replay",
-    "complete explicit-time source gate including every original monthly rental source, with current investor/monthly-rent/expense views withdrawn on expiry or calculation blockers"
+    "complete explicit-time source gate including every original monthly rental source, with current investor/monthly-rent/expense views withdrawn on expiry or calculation blockers",
+    "explicit physical capacity and supplied changing availability with dated T21 reference-month segments and supplied fractional-month weights, separate rent components and guarded full/partial month coverage",
+    "phased rental to exact operating NOI source and expense-checked full cash returns, fixed capacity across periods and portable matched/blocked complete replay",
+    "explicit-time all-source phased rental current view with availability/proration/capacity, investor story and expense tables withheld together on source or calculation blockers"
   ],
-  "unit_tests": 1215,
+  "unit_tests": 1246,
   "plan_packages_partially_addressed": [
     "IMP-01",
     "IMP-06",
@@ -136,7 +139,7 @@
   "deployment_enabled": false,
   "production_ready": false,
   "next_independent_work": [
-    "source-specific insurance coverage and supplied tax timing; explicit contract-specific partial-month/variable physical availability rental profiles remain outside T79",
+    "source-specific insurance coverage and supplied tax timing; authentic contractual day-count/proration and delivery authority remain outside the reduced T82 supplied-fraction profile",
     "independently supplied revised operating/exit timing cases without deriving scenario shocks",
     "noncash asset/accrual opening carry and independently supplied staged-loan refinance/novation profiles"
   ],
@@ -222,7 +225,10 @@
     "T78",
     "T79",
     "T80",
-    "T81"
+    "T81",
+    "T82",
+    "T83",
+    "T84"
   ],
   "tests_by_component": {
     "T01": 31,
@@ -305,7 +311,10 @@
     "T78": 7,
     "T79": 13,
     "T80": 11,
-    "T81": 7
+    "T81": 7,
+    "T82": 15,
+    "T83": 9,
+    "T84": 7
   },
   "not_yet_implemented": [
     "complete financial graph and its designed cycles",
@@ -455,5 +464,11 @@
   "rental_checked_lifecycle_portable_bundle_implemented": true,
   "opt_in_current_monthly_rental_lifecycle_review_implemented": true,
   "rental_absorption_or_physical_occupancy_verified": false,
-  "monthly_rental_lifecycle_scope": "Supplied complete calendar months, fixed group/unit/area/basis inventory, explicit monthly rent/loss/concession and zero monthly expense placeholders. Exact residential NOI target, every other income explicit zero, same operating/debt/expense/return chain. No market/absorption, actual lease/collection, intramonth liquidity, personal terms or financial scope authenticated."
+  "monthly_rental_lifecycle_scope": "Supplied complete calendar months, fixed group/unit/area/basis inventory, explicit monthly rent/loss/concession and zero monthly expense placeholders. Exact residential NOI target, every other income explicit zero, same operating/debt/expense/return chain. No market/absorption, actual lease/collection, intramonth liquidity, personal terms or financial scope authenticated.",
+  "synthetic_phased_availability_rental_implemented": true,
+  "supplied_partial_month_fraction_rental_implemented": true,
+  "phased_rental_to_staged_lifecycle_returns_connected": true,
+  "phased_rental_portable_bundle_and_current_review_implemented": true,
+  "phased_rental_scope": "Explicit unchanged physical capacity, supplied available units and dated within-month segments; independently supplied fraction of reference month, no day-count or delivery inference. Exact rental NOI/operating date and cash source binding, reduced other-income-zero profile and full existing expense/debt/cash return. No authentic contract, capacity, availability, occupancy, collection, liquidity or financial scope verified.",
+  "contractual_day_count_or_delivery_authority_verified": false
 }

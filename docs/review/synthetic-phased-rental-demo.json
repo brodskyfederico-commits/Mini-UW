@@ -1,0 +1,641 @@
+{
+  "components": [
+    "T82",
+    "T83",
+    "T84"
+  ],
+  "purpose": "synthetic_supplied_availability_proration_and_full_cash_return",
+  "expense_base_sha256": "5bf69c8f852f6a6bb53be9ad1d93266bf73eadb8b8f52f296510c20e5c88c72a",
+  "manifest_sha256": "7046ce53ae241ebbe86f85d5f0b42b3b533d95828dc2969ab314bb01e288921a",
+  "return_run_sha256": "ded000eabc039e4d2eaaecc476aab16d3ff1406869842d601ef36663e70648f7",
+  "bundle_sha256": "efbadadeb0dbc420899780fae3473e10c5176966ed7380dc09c468cb0f7b317f",
+  "full_recovery_passed": true,
+  "evaluated_as_of_UTC": "2027-07-01T12:00:00Z",
+  "required_source_bindings": 37,
+  "current_run_sha256": "c4365a421b031de3e8c4ddd5c9a1407febd23ba5a4c8f34b92a78f3ded99608a",
+  "current_markdown_sha256": "5319d701f6a23f1af155f35b01f6ae3b1f8e0d9acb8e7b4a12526c12ae3d1e9d",
+  "pending_run_sha256": "2836dc17f62fe74d3de53f5e0be4d8cab174a1398f391d4d0fb8e8fcb95f41aa",
+  "pending_markdown_sha256": "928b3a2fa9a63e7140be428ed16ad28fc1c1a0a4807032e0eb514ed2ee55f7b0",
+  "expired_registry_source_utf8": "{\"context\":{\"deal_id\":\"SYNTHETIC-construction-draw-demo\",\"definition_set_revision\":\"SYNTHETIC-simple-interval-factors\",\"run_id\":\"SYNTHETIC-construction-draw-run\",\"scenario_id\":\"SYNTHETIC-draw-plan\"},\"evidence\":[{\"basis_ref\":\"SYNTHETIC-supplied-test-validity-not-authority\",\"evidence_id\":\"SYNTHETIC-phased-evidence-0\",\"issued_at\":\"2027-01-01T00:00:00Z\",\"requirement_id\":\"/transport/lifecycle_bundle\",\"review_status\":\"accepted_synthetic\",\"source_locator\":\"/transport/lifecycle_bundle\",\"source_sha256\":\"f8de07bd04d7ba19ab81538fba680ff2139bd60ebb559f588e526a4428d64dbf\",\"superseded_by_sha256\":null,\"valid_from\":\"2027-01-01T00:00:00Z\",\"valid_until\":\"2027-07-02T00:00:00Z\",\"value_status\":\"declared_synthetic\"},{\"basis_ref\":\"SYNTHETIC-supplied-test-validity-not-authority\",\"evidence_id\":\"SYNTHETIC-phased-evidence-1\",\"issued_at\":\"2027-01-01T00:00:00Z\",\"requirement_id\":\"/construction/bundle\",\"review_status\":\"accepted_synthetic\",\"source_locator\":\"/construction/bundle\",\"source_sha256\":\"2fcd3b12d50ed985346a4f6c5ed33311415c1ce7d6902065cccb87127642bd04\",\"superseded_by_sha256\":null,\"valid_from\":\"2027-01-01T00:00:00Z\",\"valid_until\":\"2027-07-02T00:00:00Z\",\"value_status\":\"declared_synthetic\"},{\"basis_ref\":\"SYNTHETIC-supplied-test-validity-not-authority\",\"evidence_id\":\"SYNTHETIC-phased-evidence-2\",\"issued_at\":\"2027-01-01T00:00:00Z\",\"requirement_id\":\"/construction/preopening_draft\",\"review_status\":\"accepted_synthetic\",\"source_locator\":\"/construction/preopening_draft\",\"source_sha256\":\"5840fc93b1e0aaf3c27c9dd21730ca5d1a30de648560f7ab472d1a11c4c7b4c5\",\"superseded_by_sha256\":null,\"valid_from\":\"2027-01-01T00:00:00Z\",\"valid_until\":\"2027-07-02T00:00:00Z\",\"value_status\":\"declared_synthetic\"},{\"basis_ref\":\"SYNTHETIC-supplied-test-validity-not-authority\",\"evidence_id\":\"SYNTHETIC-phased-evidence-3\",\"issued_at\":\"2027-01-01T00:00:00Z\",\"requirement_id\":\"/construction/binding\",\"review_status\":\"accepted_synthetic\",\"source_locator\":\"/construction/binding\",\"source_sha256\":\"58f2f6702a345ce0459f997bd7e958785cd324c66db71442a9a2475ba6f8aa41\",\"superseded_by_sha256\":null,\"valid_from\":\"2027-01-01T00:00:00Z\",\"valid_until\":\"2027-07-02T00:00:00Z\",\"value_status\":\"declared_synthetic\"},{\"basis_ref\":\"SYNTHETIC-supplied-test-validity-not-authority\",\"evidence_id\":\"SYNTHETIC-phased-evidence-4\",\"issued_at\":\"2027-01-01T00:00:00Z\",\"requirement_id\":\"/transition/phase_contract\",\"review_status\":\"accepted_synthetic\",\"source_locator\":\"/transition/phase_contract\",\"source_sha256\":\"91cab74563bec95cbc59f22dbde09777ba60de83df9f51f2e460b9b870d3074f\",\"superseded_by_sha256\":null,\"valid_from\":\"2027-01-01T00:00:00Z\",\"valid_until\":\"2027-07-02T00:00:00Z\",\"value_status\":\"declared_synthetic\"},{\"basis_ref\":\"SYNTHETIC-supplied-test-validity-not-authority\",\"evidence_id\":\"SYNTHETIC-phased-evidence-5\",\"issued_at\":\"2027-01-01T00:00:00Z\",\"requirement_id\":\"/boundary/cash_binding\",\"review_status\":\"accepted_synthetic\",\"source_locator\":\"/boundary/cash_binding\",\"source_sha256\":\"d62057bd30f8772ffc8e1cb22bae87caf9a5748f4ac0af9de26c9b7eaa49a89a\",\"superseded_by_sha256\":null,\"valid_from\":\"2027-01-01T00:00:00Z\",\"valid_until\":\"2027-07-02T00:00:00Z\",\"value_status\":\"declared_synthetic\"},{\"basis_ref\":\"SYNTHETIC-supplied-test-validity-not-authority\",\"evidence_id\":\"SYNTHETIC-phased-evidence-6\",\"issued_at\":\"2027-01-01T00:00:00Z\",\"requirement_id\":\"/boundary/window_binding\",\"review_status\":\"accepted_synthetic\",\"source_locator\":\"/boundary/window_binding\",\"source_sha256\":\"b0964d9a75197c4ffed5048184146e2554de7781c4e56eed07dbf19edf0caba0\",\"superseded_by_sha256\":null,\"valid_from\":\"2027-01-01T00:00:00Z\",\"valid_until\":\"2027-07-02T00:00:00Z\",\"value_status\":\"declared_synthetic\"},{\"basis_ref\":\"SYNTHETIC-supplied-test-validity-not-authority\",\"evidence_id\":\"SYNTHETIC-phased-evidence-7\",\"issued_at\":\"2027-01-01T00:00:00Z\",\"requirement_id\":\"/investor/source\",\"review_status\":\"accepted_synthetic\",\"source_locator\":\"/investor/source\",\"source_sha256\":\"8683371c1514eae7ea9455a1643036294ccbdc7efa45831f2f9bcbb60b91d144\",\"superseded_by_sha256\":null,\"valid_from\":\"2027-01-01T00:00:00Z\",\"valid_until\":\"2027-07-02T00:00:00Z\",\"value_status\":\"declared_synthetic\"},{\"basis_ref\":\"SYNTHETIC-supplied-test-validity-not-authority\",\"evidence_id\":\"SYNTHETIC-phased-evidence-8\",\"issued_at\":\"2027-01-01T00:00:00Z\",\"requirement_id\":\"/investor/binding\",\"review_status\":\"accepted_synthetic\",\"source_locator\":\"/investor/binding\",\"source_sha256\":\"21fd703103a344597669742a3bcd14d120c8f7d46f917679f91471931173b084\",\"superseded_by_sha256\":null,\"valid_from\":\"2027-01-01T00:00:00Z\",\"valid_until\":\"2027-07-02T00:00:00Z\",\"value_status\":\"declared_synthetic\"},{\"basis_ref\":\"SYNTHETIC-supplied-test-validity-not-authority\",\"evidence_id\":\"SYNTHETIC-phased-evidence-9\",\"issued_at\":\"2027-01-01T00:00:00Z\",\"requirement_id\":\"/construction/loans/0\",\"review_status\":\"accepted_synthetic\",\"source_locator\":\"/construction/loans/0\",\"source_sha256\":\"e0821c3453dd2911a1b761c1245504bffb9c980e8f52ead134e5938152adb64b\",\"superseded_by_sha256\":null,\"valid_from\":\"2027-01-01T00:00:00Z\",\"valid_until\":\"2027-07-02T00:00:00Z\",\"value_status\":\"declared_synthetic\"},{\"basis_ref\":\"SYNTHETIC-supplied-test-validity-not-authority\",\"evidence_id\":\"SYNTHETIC-phased-evidence-10\",\"issued_at\":\"2027-01-01T00:00:00Z\",\"requirement_id\":\"/transition/loans/0/schedule\",\"review_status\":\"accepted_synthetic\",\"source_locator\":\"/transition/loans/0/schedule\",\"source_sha256\":\"99758e708f3cd454088bd0bda66531a2787a3ba5b704e0c5428e64ba0a340784\",\"superseded_by_sha256\":null,\"valid_from\":\"2027-01-01T00:00:00Z\",\"valid_until\":\"2027-07-02T00:00:00Z\",\"value_status\":\"declared_synthetic\"},{\"basis_ref\":\"SYNTHETIC-supplied-test-validity-not-authority\",\"evidence_id\":\"SYNTHETIC-phased-evidence-11\",\"issued_at\":\"2027-01-01T00:00:00Z\",\"requirement_id\":\"/transition/loans/0/windows_record\",\"review_status\":\"accepted_synthetic\",\"source_locator\":\"/transition/loans/0/windows_record\",\"source_sha256\":\"4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945\",\"superseded_by_sha256\":null,\"valid_from\":\"2027-01-01T00:00:00Z\",\"valid_until\":\"2027-07-02T00:00:00Z\",\"value_status\":\"declared_synthetic\"},{\"basis_ref\":\"SYNTHETIC-supplied-test-validity-not-authority\",\"evidence_id\":\"SYNTHETIC-phased-evidence-12\",\"issued_at\":\"2027-01-01T00:00:00Z\",\"requirement_id\":\"/operation/periods/0/noi\",\"review_status\":\"accepted_synthetic\",\"source_locator\":\"/operation/periods/0/noi\",\"source_sha256\":\"fa687c32209540f5ab73ec2a5f8c0be303f057373ed3f40137fa20470465bcdf\",\"superseded_by_sha256\":null,\"valid_from\":\"2027-01-01T00:00:00Z\",\"valid_until\":\"2027-07-02T00:00:00Z\",\"value_status\":\"declared_synthetic\"},{\"basis_ref\":\"SYNTHETIC-supplied-test-validity-not-authority\",\"evidence_id\":\"SYNTHETIC-phased-evidence-13\",\"issued_at\":\"2027-01-01T00:00:00Z\",\"requirement_id\":\"/operation/periods/0/cash\",\"review_status\":\"accepted_synthetic\",\"source_locator\":\"/operation/periods/0/cash\",\"source_sha256\":\"d86ba1b3f8b35879f4f4fb457556dc899c1ddcd385af8c1be9a4e829e86205e6\",\"superseded_by_sha256\":null,\"valid_from\":\"2027-01-01T00:00:00Z\",\"valid_until\":\"2027-07-02T00:00:00Z\",\"value_status\":\"declared_synthetic\"},{\"basis_ref\":\"SYNTHETIC-supplied-test-validity-not-authority\",\"evidence_id\":\"SYNTHETIC-phased-evidence-14\",\"issued_at\":\"2027-01-01T00:00:00Z\",\"requirement_id\":\"/operation/periods/1/noi\",\"review_status\":\"accepted_synthetic\",\"source_locator\":\"/operation/periods/1/noi\",\"source_sha256\":\"9a345856b1045b81938f6c85cc08ce03d31716cc46a200d8336d8492263d0b6b\",\"superseded_by_sha256\":null,\"valid_from\":\"2027-01-01T00:00:00Z\",\"valid_until\":\"2027-07-02T00:00:00Z\",\"value_status\":\"declared_synthetic\"},{\"basis_ref\":\"SYNTHETIC-supplied-test-validity-not-authority\",\"evidence_id\":\"SYNTHETIC-phased-evidence-15\",\"issued_at\":\"2027-01-01T00:00:00Z\",\"requirement_id\":\"/operation/periods/1/cash\",\"review_status\":\"accepted_synthetic\",\"source_locator\":\"/operation/periods/1/cash\",\"source_sha256\":\"a5f21a2a91b0acd2d4009eec6c7ba0d8b657968ce72930cce4e1a0e0161de71f\",\"superseded_by_sha256\":null,\"valid_from\":\"2027-01-01T00:00:00Z\",\"valid_until\":\"2027-07-02T00:00:00Z\",\"value_status\":\"declared_synthetic\"},{\"basis_ref\":\"SYNTHETIC-supplied-test-validity-not-authority\",\"evidence_id\":\"SYNTHETIC-phased-evidence-16\",\"issued_at\":\"2027-01-01T00:00:00Z\",\"requirement_id\":\"/operation/manifest\",\"review_status\":\"accepted_synthetic\",\"source_locator\":\"/operation/manifest\",\"source_sha256\":\"d473fce2c882e1dbafd7dd74fb9575c4a9fabc9a98aca6ab31da6a60a7cb9fc9\",\"superseded_by_sha256\":null,\"valid_from\":\"2027-01-01T00:00:00Z\",\"valid_until\":\"2027-07-02T00:00:00Z\",\"value_status\":\"declared_synthetic\"},{\"basis_ref\":\"SYNTHETIC-supplied-test-validity-not-authority\",\"evidence_id\":\"SYNTHETIC-phased-evidence-17\",\"issued_at\":\"2027-01-01T00:00:00Z\",\"requirement_id\":\"/operation/sale_binding\",\"review_status\":\"accepted_synthetic\",\"source_locator\":\"/operation/sale_binding\",\"source_sha256\":\"60c59231ea5ad917bc6c3561649e9c7f9552740d1985fcf53ab31b2511b3a780\",\"superseded_by_sha256\":null,\"valid_from\":\"2027-01-01T00:00:00Z\",\"valid_until\":\"2027-07-02T00:00:00Z\",\"value_status\":\"declared_synthetic\"},{\"basis_ref\":\"SYNTHETIC-supplied-test-validity-not-authority\",\"evidence_id\":\"SYNTHETIC-phased-evidence-18\",\"issued_at\":\"2027-01-01T00:00:00Z\",\"requirement_id\":\"/sale/cash\",\"review_status\":\"accepted_synthetic\",\"source_locator\":\"/sale/cash\",\"source_sha256\":\"52ce30fd9cb2066a67fdac9ca8937a19d57e2e48000b8a8f1fe27e24a6bcefd2\",\"superseded_by_sha256\":null,\"valid_from\":\"2027-01-01T00:00:00Z\",\"valid_until\":\"2027-07-02T00:00:00Z\",\"value_status\":\"declared_synthetic\"},{\"basis_ref\":\"SYNTHETIC-supplied-test-validity-not-authority\",\"evidence_id\":\"SYNTHETIC-phased-evidence-19\",\"issued_at\":\"2027-01-01T00:00:00Z\",\"requirement_id\":\"/sale/debt_binding\",\"review_status\":\"accepted_synthetic\",\"source_locator\":\"/sale/debt_binding\",\"source_sha256\":\"ec19db738feff631fa35efacb084268b82f0227ce2a922d68c9b08e4ea10bac8\",\"superseded_by_sha256\":null,\"valid_from\":\"2027-01-01T00:00:00Z\",\"valid_until\":\"2027-07-02T00:00:00Z\",\"value_status\":\"declared_synthetic\"},{\"basis_ref\":\"SYNTHETIC-supplied-test-validity-not-authority\",\"evidence_id\":\"SYNTHETIC-phased-evidence-20\",\"issued_at\":\"2027-01-01T00:00:00Z\",\"requirement_id\":\"/sale/loans/0/terms\",\"review_status\":\"accepted_synthetic\",\"source_locator\":\"/sale/loans/0/terms\",\"source_sha256\":\"99758e708f3cd454088bd0bda66531a2787a3ba5b704e0c5428e64ba0a340784\",\"superseded_by_sha256\":null,\"valid_from\":\"2027-01-01T00:00:00Z\",\"valid_until\":\"2027-07-02T00:00:00Z\",\"value_status\":\"declared_synthetic\"},{\"basis_ref\":\"SYNTHETIC-supplied-test-validity-not-authority\",\"evidence_id\":\"SYNTHETIC-phased-evidence-21\",\"issued_at\":\"2027-01-01T00:00:00Z\",\"requirement_id\":\"/sale/loans/0/windows_record\",\"review_status\":\"accepted_synthetic\",\"source_locator\":\"/sale/loans/0/windows_record\",\"source_sha256\":\"4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945\",\"superseded_by_sha256\":null,\"valid_from\":\"2027-01-01T00:00:00Z\",\"valid_until\":\"2027-07-02T00:00:00Z\",\"value_status\":\"declared_synthetic\"},{\"basis_ref\":\"SYNTHETIC-supplied-test-validity-not-authority\",\"evidence_id\":\"SYNTHETIC-phased-evidence-22\",\"issued_at\":\"2027-01-01T00:00:00Z\",\"requirement_id\":\"/expense/manifest\",\"review_status\":\"accepted_synthetic\",\"source_locator\":\"/expense/manifest\",\"source_sha256\":\"6113de3c3d48a5421ac86864c0e74c32df58e9f8c29f38788c2bfabac1aaff32\",\"superseded_by_sha256\":null,\"valid_from\":\"2027-01-01T00:00:00Z\",\"valid_until\":\"2027-07-02T00:00:00Z\",\"value_status\":\"declared_synthetic\"},{\"basis_ref\":\"SYNTHETIC-supplied-test-validity-not-authority\",\"evidence_id\":\"SYNTHETIC-phased-evidence-23\",\"issued_at\":\"2027-01-01T00:00:00Z\",\"requirement_id\":\"/transport/expense_checked_bundle\",\"review_status\":\"accepted_synthetic\",\"source_locator\":\"/transport/expense_checked_bundle\",\"source_sha256\":\"5bf69c8f852f6a6bb53be9ad1d93266bf73eadb8b8f52f296510c20e5c88c72a\",\"superseded_by_sha256\":null,\"valid_from\":\"2027-01-01T00:00:00Z\",\"valid_until\":\"2027-07-02T00:00:00Z\",\"value_status\":\"declared_synthetic\"},{\"basis_ref\":\"SYNTHETIC-supplied-test-validity-not-authority\",\"evidence_id\":\"SYNTHETIC-phased-evidence-24\",\"issued_at\":\"2027-01-01T00:00:00Z\",\"requirement_id\":\"/expense/periods/0/detail\",\"review_status\":\"accepted_synthetic\",\"source_locator\":\"/expense/periods/0/detail\",\"source_sha256\":\"849a3be71bde36b127dff7b86319efeb20f7e8d20593087094e84771672c58f7\",\"superseded_by_sha256\":null,\"valid_from\":\"2027-01-01T00:00:00Z\",\"valid_until\":\"2027-07-02T00:00:00Z\",\"value_status\":\"declared_synthetic\"},{\"basis_ref\":\"SYNTHETIC-supplied-test-validity-not-authority\",\"evidence_id\":\"SYNTHETIC-phased-evidence-25\",\"issued_at\":\"2027-01-01T00:00:00Z\",\"requirement_id\":\"/expense/periods/1/detail\",\"review_status\":\"accepted_synthetic\",\"source_locator\":\"/expense/periods/1/detail\",\"source_sha256\":\"a139fca6053922df78ee2459e1c923e491e06869ce8dc06c3e341941d0c12767\",\"superseded_by_sha256\":null,\"valid_from\":\"2027-01-01T00:00:00Z\",\"valid_until\":\"2027-07-02T00:00:00Z\",\"value_status\":\"declared_synthetic\"},{\"basis_ref\":\"SYNTHETIC-supplied-test-validity-not-authority\",\"evidence_id\":\"SYNTHETIC-phased-evidence-26\",\"issued_at\":\"2027-01-01T00:00:00Z\",\"requirement_id\":\"/phased/manifest\",\"review_status\":\"accepted_synthetic\",\"source_locator\":\"/phased/manifest\",\"source_sha256\":\"7046ce53ae241ebbe86f85d5f0b42b3b533d95828dc2969ab314bb01e288921a\",\"superseded_by_sha256\":null,\"valid_from\":\"2027-01-01T00:00:00Z\",\"valid_until\":\"2027-07-02T00:00:00Z\",\"value_status\":\"declared_synthetic\"},{\"basis_ref\":\"SYNTHETIC-supplied-test-validity-not-authority\",\"evidence_id\":\"SYNTHETIC-phased-evidence-27\",\"issued_at\":\"2027-01-01T00:00:00Z\",\"requirement_id\":\"/transport/phased_rental_bundle\",\"review_status\":\"accepted_synthetic\",\"source_locator\":\"/transport/phased_rental_bundle\",\"source_sha256\":\"efbadadeb0dbc420899780fae3473e10c5176966ed7380dc09c468cb0f7b317f\",\"superseded_by_sha256\":null,\"valid_from\":\"2027-01-01T00:00:00Z\",\"valid_until\":\"2027-07-02T00:00:00Z\",\"value_status\":\"declared_synthetic\"},{\"basis_ref\":\"SYNTHETIC-supplied-test-validity-not-authority\",\"evidence_id\":\"SYNTHETIC-phased-evidence-28\",\"issued_at\":\"2027-01-01T00:00:00Z\",\"requirement_id\":\"/phased/periods/0/calendar\",\"review_status\":\"accepted_synthetic\",\"source_locator\":\"/phased/periods/0/calendar\",\"source_sha256\":\"54dfdfb2470ff57b977321eabd5047cf4ac8aec655c1cfae0f8e25b64bd75fae\",\"superseded_by_sha256\":null,\"valid_from\":\"2027-01-01T00:00:00Z\",\"valid_until\":\"2027-07-01T12:00:00Z\",\"value_status\":\"declared_synthetic\"},{\"basis_ref\":\"SYNTHETIC-supplied-test-validity-not-authority\",\"evidence_id\":\"SYNTHETIC-phased-evidence-29\",\"issued_at\":\"2027-01-01T00:00:00Z\",\"requirement_id\":\"/phased/periods/0/segments/0\",\"review_status\":\"accepted_synthetic\",\"source_locator\":\"/phased/periods/0/segments/0\",\"source_sha256\":\"cbc867bf0b7bd6cc880b33366a2fd42b483d3ca379c98a25635a9e3973aef432\",\"superseded_by_sha256\":null,\"valid_from\":\"2027-01-01T00:00:00Z\",\"valid_until\":\"2027-07-02T00:00:00Z\",\"value_status\":\"declared_synthetic\"},{\"basis_ref\":\"SYNTHETIC-supplied-test-validity-not-authority\",\"evidence_id\":\"SYNTHETIC-phased-evidence-30\",\"issued_at\":\"2027-01-01T00:00:00Z\",\"requirement_id\":\"/phased/periods/0/segments/1\",\"review_status\":\"accepted_synthetic\",\"source_locator\":\"/phased/periods/0/segments/1\",\"source_sha256\":\"e149462b41930feda9d4c29146df39438c1e8579717e4b2fc887dea8eaabd28f\",\"superseded_by_sha256\":null,\"valid_from\":\"2027-01-01T00:00:00Z\",\"valid_until\":\"2027-07-02T00:00:00Z\",\"value_status\":\"declared_synthetic\"},{\"basis_ref\":\"SYNTHETIC-supplied-test-validity-not-authority\",\"evidence_id\":\"SYNTHETIC-phased-evidence-31\",\"issued_at\":\"2027-01-01T00:00:00Z\",\"requirement_id\":\"/phased/periods/0/segments/2\",\"review_status\":\"accepted_synthetic\",\"source_locator\":\"/phased/periods/0/segments/2\",\"source_sha256\":\"17e11c355e3fb4ac7541480898632ef8048516f9f8b5bc68c6931957abe9ca4f\",\"superseded_by_sha256\":null,\"valid_from\":\"2027-01-01T00:00:00Z\",\"valid_until\":\"2027-07-02T00:00:00Z\",\"value_status\":\"declared_synthetic\"},{\"basis_ref\":\"SYNTHETIC-supplied-test-validity-not-authority\",\"evidence_id\":\"SYNTHETIC-phased-evidence-32\",\"issued_at\":\"2027-01-01T00:00:00Z\",\"requirement_id\":\"/phased/periods/0/segments/3\",\"review_status\":\"accepted_synthetic\",\"source_locator\":\"/phased/periods/0/segments/3\",\"source_sha256\":\"cb69b37f721e07abb06884895f488f9d3db4fe158dfbc20e3272969b9ba2cf2a\",\"superseded_by_sha256\":null,\"valid_from\":\"2027-01-01T00:00:00Z\",\"valid_until\":\"2027-07-02T00:00:00Z\",\"value_status\":\"declared_synthetic\"},{\"basis_ref\":\"SYNTHETIC-supplied-test-validity-not-authority\",\"evidence_id\":\"SYNTHETIC-phased-evidence-33\",\"issued_at\":\"2027-01-01T00:00:00Z\",\"requirement_id\":\"/phased/periods/1/calendar\",\"review_status\":\"accepted_synthetic\",\"source_locator\":\"/phased/periods/1/calendar\",\"source_sha256\":\"65d0fcbc6e58036c5096929f4ed5f8b228e6acb81439ee7911bfb36274f2c35c\",\"superseded_by_sha256\":null,\"valid_from\":\"2027-01-01T00:00:00Z\",\"valid_until\":\"2027-07-02T00:00:00Z\",\"value_status\":\"declared_synthetic\"},{\"basis_ref\":\"SYNTHETIC-supplied-test-validity-not-authority\",\"evidence_id\":\"SYNTHETIC-phased-evidence-34\",\"issued_at\":\"2027-01-01T00:00:00Z\",\"requirement_id\":\"/phased/periods/1/segments/0\",\"review_status\":\"accepted_synthetic\",\"source_locator\":\"/phased/periods/1/segments/0\",\"source_sha256\":\"83a8e298b26eaac5e883fe819a67b7db5d025fe65a1461a8f604c2323c3aa019\",\"superseded_by_sha256\":null,\"valid_from\":\"2027-01-01T00:00:00Z\",\"valid_until\":\"2027-07-02T00:00:00Z\",\"value_status\":\"declared_synthetic\"},{\"basis_ref\":\"SYNTHETIC-supplied-test-validity-not-authority\",\"evidence_id\":\"SYNTHETIC-phased-evidence-35\",\"issued_at\":\"2027-01-01T00:00:00Z\",\"requirement_id\":\"/phased/periods/1/segments/1\",\"review_status\":\"accepted_synthetic\",\"source_locator\":\"/phased/periods/1/segments/1\",\"source_sha256\":\"b5f9f13acc77ea9666d18ca2dfbc328e2649f8df18d775fe2b9a61ede8866beb\",\"superseded_by_sha256\":null,\"valid_from\":\"2027-01-01T00:00:00Z\",\"valid_until\":\"2027-07-02T00:00:00Z\",\"value_status\":\"declared_synthetic\"},{\"basis_ref\":\"SYNTHETIC-supplied-test-validity-not-authority\",\"evidence_id\":\"SYNTHETIC-phased-evidence-36\",\"issued_at\":\"2027-01-01T00:00:00Z\",\"requirement_id\":\"/phased/periods/1/segments/2\",\"review_status\":\"accepted_synthetic\",\"source_locator\":\"/phased/periods/1/segments/2\",\"source_sha256\":\"d34e123cf7f5610aff61024339558750aefb088f66462910914806407eec316f\",\"superseded_by_sha256\":null,\"valid_from\":\"2027-01-01T00:00:00Z\",\"valid_until\":\"2027-07-02T00:00:00Z\",\"value_status\":\"declared_synthetic\"}],\"inventory_basis_ref\":\"SYNTHETIC-all-phased-and-underlying-exact-sources\",\"inventory_declared_complete\":true,\"requirements\":[{\"requirement_id\":\"/transport/lifecycle_bundle\",\"source_locator\":\"/transport/lifecycle_bundle\",\"source_sha256\":\"f8de07bd04d7ba19ab81538fba680ff2139bd60ebb559f588e526a4428d64dbf\"},{\"requirement_id\":\"/construction/bundle\",\"source_locator\":\"/construction/bundle\",\"source_sha256\":\"2fcd3b12d50ed985346a4f6c5ed33311415c1ce7d6902065cccb87127642bd04\"},{\"requirement_id\":\"/construction/preopening_draft\",\"source_locator\":\"/construction/preopening_draft\",\"source_sha256\":\"5840fc93b1e0aaf3c27c9dd21730ca5d1a30de648560f7ab472d1a11c4c7b4c5\"},{\"requirement_id\":\"/construction/binding\",\"source_locator\":\"/construction/binding\",\"source_sha256\":\"58f2f6702a345ce0459f997bd7e958785cd324c66db71442a9a2475ba6f8aa41\"},{\"requirement_id\":\"/transition/phase_contract\",\"source_locator\":\"/transition/phase_contract\",\"source_sha256\":\"91cab74563bec95cbc59f22dbde09777ba60de83df9f51f2e460b9b870d3074f\"},{\"requirement_id\":\"/boundary/cash_binding\",\"source_locator\":\"/boundary/cash_binding\",\"source_sha256\":\"d62057bd30f8772ffc8e1cb22bae87caf9a5748f4ac0af9de26c9b7eaa49a89a\"},{\"requirement_id\":\"/boundary/window_binding\",\"source_locator\":\"/boundary/window_binding\",\"source_sha256\":\"b0964d9a75197c4ffed5048184146e2554de7781c4e56eed07dbf19edf0caba0\"},{\"requirement_id\":\"/investor/source\",\"source_locator\":\"/investor/source\",\"source_sha256\":\"8683371c1514eae7ea9455a1643036294ccbdc7efa45831f2f9bcbb60b91d144\"},{\"requirement_id\":\"/investor/binding\",\"source_locator\":\"/investor/binding\",\"source_sha256\":\"21fd703103a344597669742a3bcd14d120c8f7d46f917679f91471931173b084\"},{\"requirement_id\":\"/construction/loans/0\",\"source_locator\":\"/construction/loans/0\",\"source_sha256\":\"e0821c3453dd2911a1b761c1245504bffb9c980e8f52ead134e5938152adb64b\"},{\"requirement_id\":\"/transition/loans/0/schedule\",\"source_locator\":\"/transition/loans/0/schedule\",\"source_sha256\":\"99758e708f3cd454088bd0bda66531a2787a3ba5b704e0c5428e64ba0a340784\"},{\"requirement_id\":\"/transition/loans/0/windows_record\",\"source_locator\":\"/transition/loans/0/windows_record\",\"source_sha256\":\"4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945\"},{\"requirement_id\":\"/operation/periods/0/noi\",\"source_locator\":\"/operation/periods/0/noi\",\"source_sha256\":\"fa687c32209540f5ab73ec2a5f8c0be303f057373ed3f40137fa20470465bcdf\"},{\"requirement_id\":\"/operation/periods/0/cash\",\"source_locator\":\"/operation/periods/0/cash\",\"source_sha256\":\"d86ba1b3f8b35879f4f4fb457556dc899c1ddcd385af8c1be9a4e829e86205e6\"},{\"requirement_id\":\"/operation/periods/1/noi\",\"source_locator\":\"/operation/periods/1/noi\",\"source_sha256\":\"9a345856b1045b81938f6c85cc08ce03d31716cc46a200d8336d8492263d0b6b\"},{\"requirement_id\":\"/operation/periods/1/cash\",\"source_locator\":\"/operation/periods/1/cash\",\"source_sha256\":\"a5f21a2a91b0acd2d4009eec6c7ba0d8b657968ce72930cce4e1a0e0161de71f\"},{\"requirement_id\":\"/operation/manifest\",\"source_locator\":\"/operation/manifest\",\"source_sha256\":\"d473fce2c882e1dbafd7dd74fb9575c4a9fabc9a98aca6ab31da6a60a7cb9fc9\"},{\"requirement_id\":\"/operation/sale_binding\",\"source_locator\":\"/operation/sale_binding\",\"source_sha256\":\"60c59231ea5ad917bc6c3561649e9c7f9552740d1985fcf53ab31b2511b3a780\"},{\"requirement_id\":\"/sale/cash\",\"source_locator\":\"/sale/cash\",\"source_sha256\":\"52ce30fd9cb2066a67fdac9ca8937a19d57e2e48000b8a8f1fe27e24a6bcefd2\"},{\"requirement_id\":\"/sale/debt_binding\",\"source_locator\":\"/sale/debt_binding\",\"source_sha256\":\"ec19db738feff631fa35efacb084268b82f0227ce2a922d68c9b08e4ea10bac8\"},{\"requirement_id\":\"/sale/loans/0/terms\",\"source_locator\":\"/sale/loans/0/terms\",\"source_sha256\":\"99758e708f3cd454088bd0bda66531a2787a3ba5b704e0c5428e64ba0a340784\"},{\"requirement_id\":\"/sale/loans/0/windows_record\",\"source_locator\":\"/sale/loans/0/windows_record\",\"source_sha256\":\"4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945\"},{\"requirement_id\":\"/expense/manifest\",\"source_locator\":\"/expense/manifest\",\"source_sha256\":\"6113de3c3d48a5421ac86864c0e74c32df58e9f8c29f38788c2bfabac1aaff32\"},{\"requirement_id\":\"/transport/expense_checked_bundle\",\"source_locator\":\"/transport/expense_checked_bundle\",\"source_sha256\":\"5bf69c8f852f6a6bb53be9ad1d93266bf73eadb8b8f52f296510c20e5c88c72a\"},{\"requirement_id\":\"/expense/periods/0/detail\",\"source_locator\":\"/expense/periods/0/detail\",\"source_sha256\":\"849a3be71bde36b127dff7b86319efeb20f7e8d20593087094e84771672c58f7\"},{\"requirement_id\":\"/expense/periods/1/detail\",\"source_locator\":\"/expense/periods/1/detail\",\"source_sha256\":\"a139fca6053922df78ee2459e1c923e491e06869ce8dc06c3e341941d0c12767\"},{\"requirement_id\":\"/phased/manifest\",\"source_locator\":\"/phased/manifest\",\"source_sha256\":\"7046ce53ae241ebbe86f85d5f0b42b3b533d95828dc2969ab314bb01e288921a\"},{\"requirement_id\":\"/transport/phased_rental_bundle\",\"source_locator\":\"/transport/phased_rental_bundle\",\"source_sha256\":\"efbadadeb0dbc420899780fae3473e10c5176966ed7380dc09c468cb0f7b317f\"},{\"requirement_id\":\"/phased/periods/0/calendar\",\"source_locator\":\"/phased/periods/0/calendar\",\"source_sha256\":\"54dfdfb2470ff57b977321eabd5047cf4ac8aec655c1cfae0f8e25b64bd75fae\"},{\"requirement_id\":\"/phased/periods/0/segments/0\",\"source_locator\":\"/phased/periods/0/segments/0\",\"source_sha256\":\"cbc867bf0b7bd6cc880b33366a2fd42b483d3ca379c98a25635a9e3973aef432\"},{\"requirement_id\":\"/phased/periods/0/segments/1\",\"source_locator\":\"/phased/periods/0/segments/1\",\"source_sha256\":\"e149462b41930feda9d4c29146df39438c1e8579717e4b2fc887dea8eaabd28f\"},{\"requirement_id\":\"/phased/periods/0/segments/2\",\"source_locator\":\"/phased/periods/0/segments/2\",\"source_sha256\":\"17e11c355e3fb4ac7541480898632ef8048516f9f8b5bc68c6931957abe9ca4f\"},{\"requirement_id\":\"/phased/periods/0/segments/3\",\"source_locator\":\"/phased/periods/0/segments/3\",\"source_sha256\":\"cb69b37f721e07abb06884895f488f9d3db4fe158dfbc20e3272969b9ba2cf2a\"},{\"requirement_id\":\"/phased/periods/1/calendar\",\"source_locator\":\"/phased/periods/1/calendar\",\"source_sha256\":\"65d0fcbc6e58036c5096929f4ed5f8b228e6acb81439ee7911bfb36274f2c35c\"},{\"requirement_id\":\"/phased/periods/1/segments/0\",\"source_locator\":\"/phased/periods/1/segments/0\",\"source_sha256\":\"83a8e298b26eaac5e883fe819a67b7db5d025fe65a1461a8f604c2323c3aa019\"},{\"requirement_id\":\"/phased/periods/1/segments/1\",\"source_locator\":\"/phased/periods/1/segments/1\",\"source_sha256\":\"b5f9f13acc77ea9666d18ca2dfbc328e2649f8df18d775fe2b9a61ede8866beb\"},{\"requirement_id\":\"/phased/periods/1/segments/2\",\"source_locator\":\"/phased/periods/1/segments/2\",\"source_sha256\":\"d34e123cf7f5610aff61024339558750aefb088f66462910914806407eec316f\"}],\"schema\":\"miniuw.synthetic-evidence-currency.v1\"}",
+  "segment_amounts": [
+    {
+      "amounts": {
+        "available_unit_months": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "concession_loss": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "effective_rent": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "gross_potential_rent": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "vacancy_loss": {
+          "denominator": "1",
+          "numerator": "0"
+        }
+      },
+      "available_units": {
+        "denominator": "1",
+        "numerator": "0"
+      },
+      "end_date": "2027-01-16",
+      "period_ref": "SYNTHETIC-hold-1",
+      "proration_fraction": {
+        "denominator": "2",
+        "numerator": "1"
+      },
+      "segment_id": "SYNTHETIC-phased-0-0",
+      "start_date": "2027-01-01"
+    },
+    {
+      "amounts": {
+        "available_unit_months": {
+          "denominator": "2",
+          "numerator": "5"
+        },
+        "concession_loss": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "effective_rent": {
+          "denominator": "1",
+          "numerator": "5"
+        },
+        "gross_potential_rent": {
+          "denominator": "1",
+          "numerator": "5"
+        },
+        "vacancy_loss": {
+          "denominator": "1",
+          "numerator": "0"
+        }
+      },
+      "available_units": {
+        "denominator": "1",
+        "numerator": "5"
+      },
+      "end_date": "2027-02-01",
+      "period_ref": "SYNTHETIC-hold-1",
+      "proration_fraction": {
+        "denominator": "2",
+        "numerator": "1"
+      },
+      "segment_id": "SYNTHETIC-phased-0-1",
+      "start_date": "2027-01-16"
+    },
+    {
+      "amounts": {
+        "available_unit_months": {
+          "denominator": "1",
+          "numerator": "5"
+        },
+        "concession_loss": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "effective_rent": {
+          "denominator": "1",
+          "numerator": "8"
+        },
+        "gross_potential_rent": {
+          "denominator": "1",
+          "numerator": "10"
+        },
+        "vacancy_loss": {
+          "denominator": "1",
+          "numerator": "2"
+        }
+      },
+      "available_units": {
+        "denominator": "1",
+        "numerator": "5"
+      },
+      "end_date": "2027-03-01",
+      "period_ref": "SYNTHETIC-hold-1",
+      "proration_fraction": {
+        "denominator": "1",
+        "numerator": "1"
+      },
+      "segment_id": "SYNTHETIC-phased-0-2",
+      "start_date": "2027-02-01"
+    },
+    {
+      "amounts": {
+        "available_unit_months": {
+          "denominator": "1",
+          "numerator": "10"
+        },
+        "concession_loss": {
+          "denominator": "1",
+          "numerator": "5"
+        },
+        "effective_rent": {
+          "denominator": "1",
+          "numerator": "15"
+        },
+        "gross_potential_rent": {
+          "denominator": "1",
+          "numerator": "20"
+        },
+        "vacancy_loss": {
+          "denominator": "1",
+          "numerator": "0"
+        }
+      },
+      "available_units": {
+        "denominator": "1",
+        "numerator": "10"
+      },
+      "end_date": "2027-04-01",
+      "period_ref": "SYNTHETIC-hold-1",
+      "proration_fraction": {
+        "denominator": "1",
+        "numerator": "1"
+      },
+      "segment_id": "SYNTHETIC-phased-0-3",
+      "start_date": "2027-03-01"
+    },
+    {
+      "amounts": {
+        "available_unit_months": {
+          "denominator": "1",
+          "numerator": "10"
+        },
+        "concession_loss": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "effective_rent": {
+          "denominator": "1",
+          "numerator": "20"
+        },
+        "gross_potential_rent": {
+          "denominator": "1",
+          "numerator": "20"
+        },
+        "vacancy_loss": {
+          "denominator": "1",
+          "numerator": "0"
+        }
+      },
+      "available_units": {
+        "denominator": "1",
+        "numerator": "10"
+      },
+      "end_date": "2027-05-01",
+      "period_ref": "SYNTHETIC-hold-2",
+      "proration_fraction": {
+        "denominator": "1",
+        "numerator": "1"
+      },
+      "segment_id": "SYNTHETIC-phased-1-0",
+      "start_date": "2027-04-01"
+    },
+    {
+      "amounts": {
+        "available_unit_months": {
+          "denominator": "1",
+          "numerator": "10"
+        },
+        "concession_loss": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "effective_rent": {
+          "denominator": "1",
+          "numerator": "20"
+        },
+        "gross_potential_rent": {
+          "denominator": "1",
+          "numerator": "20"
+        },
+        "vacancy_loss": {
+          "denominator": "1",
+          "numerator": "0"
+        }
+      },
+      "available_units": {
+        "denominator": "1",
+        "numerator": "10"
+      },
+      "end_date": "2027-06-01",
+      "period_ref": "SYNTHETIC-hold-2",
+      "proration_fraction": {
+        "denominator": "1",
+        "numerator": "1"
+      },
+      "segment_id": "SYNTHETIC-phased-1-1",
+      "start_date": "2027-05-01"
+    },
+    {
+      "amounts": {
+        "available_unit_months": {
+          "denominator": "1",
+          "numerator": "10"
+        },
+        "concession_loss": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "effective_rent": {
+          "denominator": "1",
+          "numerator": "20"
+        },
+        "gross_potential_rent": {
+          "denominator": "1",
+          "numerator": "20"
+        },
+        "vacancy_loss": {
+          "denominator": "1",
+          "numerator": "0"
+        }
+      },
+      "available_units": {
+        "denominator": "1",
+        "numerator": "10"
+      },
+      "end_date": "2027-07-01",
+      "period_ref": "SYNTHETIC-hold-2",
+      "proration_fraction": {
+        "denominator": "1",
+        "numerator": "1"
+      },
+      "segment_id": "SYNTHETIC-phased-1-2",
+      "start_date": "2027-06-01"
+    }
+  ],
+  "capacity_inventories": [
+    {
+      "capacity": [
+        {
+          "group_id": "SYNTHETIC-market-1",
+          "rent_basis": "per_unit_per_month",
+          "source_ref": "SYNTHETIC-capacity-claim",
+          "total_units": {
+            "denominator": "1",
+            "numerator": "10"
+          },
+          "unit_rentable_sf": null
+        }
+      ],
+      "period_ref": "SYNTHETIC-hold-1"
+    },
+    {
+      "capacity": [
+        {
+          "group_id": "SYNTHETIC-market-1",
+          "rent_basis": "per_unit_per_month",
+          "source_ref": "SYNTHETIC-capacity-claim",
+          "total_units": {
+            "denominator": "1",
+            "numerator": "10"
+          },
+          "unit_rentable_sf": null
+        }
+      ],
+      "period_ref": "SYNTHETIC-hold-2"
+    }
+  ],
+  "expense_period_totals": [
+    {
+      "period_ref": "SYNTHETIC-hold-1",
+      "totals": {
+        "cash_payments": {
+          "denominator": "1",
+          "numerator": "10"
+        },
+        "closing_payables": {
+          "denominator": "1",
+          "numerator": "5"
+        },
+        "closing_prepaid": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "expense_amount": {
+          "denominator": "1",
+          "numerator": "15"
+        },
+        "opening_payables": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "opening_prepaid": {
+          "denominator": "1",
+          "numerator": "0"
+        }
+      }
+    },
+    {
+      "period_ref": "SYNTHETIC-hold-2",
+      "totals": {
+        "cash_payments": {
+          "denominator": "1",
+          "numerator": "20"
+        },
+        "closing_payables": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "closing_prepaid": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "expense_amount": {
+          "denominator": "1",
+          "numerator": "15"
+        },
+        "opening_payables": {
+          "denominator": "1",
+          "numerator": "5"
+        },
+        "opening_prepaid": {
+          "denominator": "1",
+          "numerator": "0"
+        }
+      }
+    }
+  ],
+  "base_case": {
+    "gross_contributions": {
+      "denominator": "1",
+      "numerator": "1400"
+    },
+    "gross_distributions": {
+      "denominator": "1",
+      "numerator": "778"
+    },
+    "net_cash_profit": {
+      "denominator": "1",
+      "numerator": "-622"
+    },
+    "equity_multiple": {
+      "denominator": "700",
+      "numerator": "389"
+    },
+    "normalized_story": {
+      "basis_amount": {
+        "denominator": "1",
+        "numerator": "1400"
+      },
+      "basis_event_ids": [
+        "preopening_slots-0",
+        "preopening_slots-1",
+        "operating_slots-1",
+        "operating_slots-3",
+        "operating_slots-5"
+      ],
+      "basis_ref": "SYNTHETIC-all-declared-gross-equity",
+      "equity_multiple": {
+        "denominator": "700",
+        "numerator": "389"
+      },
+      "events": [
+        {
+          "amount": {
+            "denominator": "7",
+            "numerator": "50"
+          },
+          "category": "initial_capital",
+          "currency": "USD",
+          "date": "2026-10-01",
+          "event_id": "preopening_slots-0",
+          "kind": "contribution",
+          "source_ref": "miniuw:staged-lifecycle:ff52b6a2c7fe114fc99f058fe71fd73d8a2302a2505dcfb5689cd547c4be0344#/exportable_equity_movements/0"
+        },
+        {
+          "amount": {
+            "denominator": "7",
+            "numerator": "20"
+          },
+          "category": "additional_capital",
+          "currency": "USD",
+          "date": "2026-11-01",
+          "event_id": "preopening_slots-1",
+          "kind": "contribution",
+          "source_ref": "miniuw:staged-lifecycle:ff52b6a2c7fe114fc99f058fe71fd73d8a2302a2505dcfb5689cd547c4be0344#/exportable_equity_movements/1"
+        },
+        {
+          "amount": {
+            "denominator": "7",
+            "numerator": "5"
+          },
+          "category": "operating_distribution",
+          "currency": "USD",
+          "date": "2027-03-01",
+          "event_id": "operating_slots-0",
+          "kind": "distribution",
+          "source_ref": "miniuw:staged-lifecycle:4861183eee474b5e9e8df058393a5349d710261ca4d1b63421d55f518a4f02dc#/exportable_equity_movements/0/distribution"
+        },
+        {
+          "amount": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "category": "additional_capital",
+          "currency": "USD",
+          "date": "2027-03-01",
+          "event_id": "operating_slots-1",
+          "kind": "contribution",
+          "source_ref": "miniuw:staged-lifecycle:4861183eee474b5e9e8df058393a5349d710261ca4d1b63421d55f518a4f02dc#/exportable_equity_movements/0/contribution"
+        },
+        {
+          "amount": {
+            "denominator": "7",
+            "numerator": "5"
+          },
+          "category": "operating_distribution",
+          "currency": "USD",
+          "date": "2027-06-01",
+          "event_id": "operating_slots-2",
+          "kind": "distribution",
+          "source_ref": "miniuw:staged-lifecycle:4861183eee474b5e9e8df058393a5349d710261ca4d1b63421d55f518a4f02dc#/exportable_equity_movements/1/distribution"
+        },
+        {
+          "amount": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "category": "additional_capital",
+          "currency": "USD",
+          "date": "2027-06-01",
+          "event_id": "operating_slots-3",
+          "kind": "contribution",
+          "source_ref": "miniuw:staged-lifecycle:4861183eee474b5e9e8df058393a5349d710261ca4d1b63421d55f518a4f02dc#/exportable_equity_movements/1/contribution"
+        },
+        {
+          "amount": {
+            "denominator": "70",
+            "numerator": "289"
+          },
+          "category": "net_sale_distribution",
+          "currency": "USD",
+          "date": "2027-07-01",
+          "event_id": "operating_slots-4",
+          "kind": "distribution",
+          "source_ref": "miniuw:staged-lifecycle:4861183eee474b5e9e8df058393a5349d710261ca4d1b63421d55f518a4f02dc#/exportable_equity_movements/2/distribution"
+        },
+        {
+          "amount": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "category": "additional_capital",
+          "currency": "USD",
+          "date": "2027-07-01",
+          "event_id": "operating_slots-5",
+          "kind": "contribution",
+          "source_ref": "miniuw:staged-lifecycle:4861183eee474b5e9e8df058393a5349d710261ca4d1b63421d55f518a4f02dc#/exportable_equity_movements/2/contribution"
+        }
+      ],
+      "net_cash_profit": {
+        "denominator": "70",
+        "numerator": "-311"
+      },
+      "reference_amount": {
+        "denominator": "1",
+        "numerator": "10"
+      },
+      "scale_factor": {
+        "denominator": "140",
+        "numerator": "1"
+      },
+      "total_contributions": {
+        "denominator": "1",
+        "numerator": "10"
+      },
+      "total_distributions": {
+        "denominator": "70",
+        "numerator": "389"
+      }
+    },
+    "annual_cash_receipts": [
+      {
+        "blocker": "positive_declared_annual_capital_base_missing",
+        "calendar_cash_receipt_year": 2026,
+        "conditional_coc": null,
+        "declared_capital_base": null,
+        "gross_contributions": {
+          "denominator": "1",
+          "numerator": "1400"
+        },
+        "gross_distributions": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "net_equity_cash": {
+          "denominator": "1",
+          "numerator": "-1400"
+        },
+        "normalized_operating_distributions": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "operating_distributions_only": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "operating_year_coverage_financially_verified": false
+      },
+      {
+        "blocker": "positive_declared_annual_capital_base_missing",
+        "calendar_cash_receipt_year": 2027,
+        "conditional_coc": null,
+        "declared_capital_base": null,
+        "gross_contributions": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "gross_distributions": {
+          "denominator": "1",
+          "numerator": "778"
+        },
+        "net_equity_cash": {
+          "denominator": "1",
+          "numerator": "778"
+        },
+        "normalized_operating_distributions": {
+          "denominator": "7",
+          "numerator": "10"
+        },
+        "operating_distributions_only": {
+          "denominator": "1",
+          "numerator": "200"
+        },
+        "operating_year_coverage_financially_verified": false
+      }
+    ],
+    "annual_irr_roots": [
+      {
+        "annual_rate_interval": {
+          "lower": {
+            "denominator": "5850617355225199657604996833758752474027602254899856384259257635881584895228540568164741661813222900390625",
+            "numerator": "-3394025427703327415048115884892440447098760637929610760113048037159279487864034411138808751516033381456609"
+          },
+          "lower_closed": true,
+          "upper": {
+            "denominator": "23963954564469633747418188176842481781816536676122043460447456970259670618101115218419977449926407436151806961",
+            "numerator": "-13901754029340045041905203810286067719516001413011917383944582453893107669536097999241756249349119166598077425"
+          },
+          "upper_closed": false
+        },
+        "exact_annual_rate": null
+      }
+    ],
+    "story_blockers": [
+      "2026:positive_declared_annual_capital_base_missing",
+      "2027:positive_declared_annual_capital_base_missing",
+      "capital_and_retained_equity_snapshots_missing"
+    ]
+  },
+  "changed_availability_but_unchanged_NOI": {
+    "manifest_source_utf8": "{\"context\":{\"deal_id\":\"SYNTHETIC-construction-draw-demo\",\"definition_set_revision\":\"SYNTHETIC-simple-interval-factors\",\"run_id\":\"SYNTHETIC-construction-draw-run\",\"scenario_id\":\"SYNTHETIC-draw-plan\"},\"currency\":\"USD\",\"expense_bundle_sha256\":\"5bf69c8f852f6a6bb53be9ad1d93266bf73eadb8b8f52f296510c20e5c88c72a\",\"inventory_declared_complete\":true,\"period_recognition_basis_ref\":\"SYNTHETIC-declared-segment-rent-in-operating-period-not-verified-cash-timing\",\"periods\":[{\"calendar_run\":{\"payload_json\":\"{\\\"actual_capacity_availability_or_occupancy_verified\\\":false,\\\"actual_collection_or_intraperiod_liquidity_verified\\\":false,\\\"blockers\\\":[],\\\"capacity\\\":[{\\\"group_id\\\":\\\"SYNTHETIC-market-1\\\",\\\"rent_basis\\\":\\\"per_unit_per_month\\\",\\\"source_ref\\\":\\\"SYNTHETIC-capacity-claim\\\",\\\"total_units\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"10\\\"},\\\"unit_rentable_sf\\\":null}],\\\"component\\\":\\\"T82\\\",\\\"context\\\":{\\\"deal_id\\\":\\\"SYNTHETIC-construction-draw-demo\\\",\\\"definition_set_revision\\\":\\\"SYNTHETIC-simple-interval-factors\\\",\\\"run_id\\\":\\\"SYNTHETIC-construction-draw-run\\\",\\\"scenario_id\\\":\\\"SYNTHETIC-draw-plan\\\"},\\\"currency\\\":\\\"USD\\\",\\\"day_count_or_delivery_rule_generated\\\":false,\\\"decision\\\":\\\"PENDING\\\",\\\"definition_sha256\\\":\\\"ebb4b02c4819c20f20525c3bc3cc869f35a51d33c5864300e0774418ed210945\\\",\\\"end_date\\\":\\\"2027-04-01\\\",\\\"engine_sha256\\\":\\\"3fba8e990dc417ddf53dda7d6e3dd8065e5efc3dbc5f842f58fdf23010076e9d\\\",\\\"month_fraction_checks\\\":[{\\\"all_fractions_known\\\":true,\\\"fraction\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"1\\\"},\\\"month_anchor\\\":\\\"2027-01-01\\\"},{\\\"all_fractions_known\\\":true,\\\"fraction\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"1\\\"},\\\"month_anchor\\\":\\\"2027-02-01\\\"},{\\\"all_fractions_known\\\":true,\\\"fraction\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"1\\\"},\\\"month_anchor\\\":\\\"2027-03-01\\\"}],\\\"period_ref\\\":\\\"SYNTHETIC-hold-1\\\",\\\"production_authorized\\\":false,\\\"proration_contract_authenticated\\\":false,\\\"purpose\\\":\\\"synthetic_supplied_availability_and_month_fractions\\\",\\\"real_decisions_enabled\\\":false,\\\"segments\\\":[{\\\"amounts\\\":{\\\"available_unit_months\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"},\\\"concession_loss\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"},\\\"effective_rent\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"},\\\"gross_potential_rent\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"},\\\"vacancy_loss\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"}},\\\"availability_source_ref\\\":\\\"SYNTHETIC-availability-proposal-SYNTHETIC-phased-0-0\\\",\\\"blockers\\\":[],\\\"end_date\\\":\\\"2027-01-16\\\",\\\"month_anchor\\\":\\\"2027-01-01\\\",\\\"proration_fraction\\\":{\\\"denominator\\\":\\\"2\\\",\\\"numerator\\\":\\\"1\\\"},\\\"reference_blockers\\\":[],\\\"reference_rental_run\\\":{\\\"payload_json\\\":\\\"{\\\\\\\"blockers\\\\\\\":[],\\\\\\\"calendar_verified\\\\\\\":false,\\\\\\\"cash_collected_verified\\\\\\\":false,\\\\\\\"component\\\\\\\":\\\\\\\"T21\\\\\\\",\\\\\\\"context\\\\\\\":{\\\\\\\"deal_id\\\\\\\":\\\\\\\"SYNTHETIC-construction-draw-demo\\\\\\\",\\\\\\\"definition_set_revision\\\\\\\":\\\\\\\"SYNTHETIC-simple-interval-factors\\\\\\\",\\\\\\\"run_id\\\\\\\":\\\\\\\"SYNTHETIC-construction-draw-run\\\\\\\",\\\\\\\"scenario_id\\\\\\\":\\\\\\\"SYNTHETIC-draw-plan\\\\\\\"},\\\\\\\"currency\\\\\\\":\\\\\\\"USD\\\\\\\",\\\\\\\"decision\\\\\\\":\\\\\\\"PENDING\\\\\\\",\\\\\\\"definition_sources\\\\\\\":[{\\\\\\\"line\\\\\\\":15,\\\\\\\"path\\\\\\\":\\\\\\\"docs/model-operations-contract.md\\\\\\\",\\\\\\\"sha256\\\\\\\":\\\\\\\"71c052b3833cf1553be584fd5aa328fa20b2d4531168ece05417ca91ccf73af6\\\\\\\"},{\\\\\\\"line\\\\\\\":16,\\\\\\\"path\\\\\\\":\\\\\\\"docs/model-operations-contract.md\\\\\\\",\\\\\\\"sha256\\\\\\\":\\\\\\\"71c052b3833cf1553be584fd5aa328fa20b2d4531168ece05417ca91ccf73af6\\\\\\\"},{\\\\\\\"line\\\\\\\":17,\\\\\\\"path\\\\\\\":\\\\\\\"docs/model-operations-contract.md\\\\\\\",\\\\\\\"sha256\\\\\\\":\\\\\\\"71c052b3833cf1553be584fd5aa328fa20b2d4531168ece05417ca91ccf73af6\\\\\\\"},{\\\\\\\"line\\\\\\\":19,\\\\\\\"path\\\\\\\":\\\\\\\"docs/model-operations-contract.md\\\\\\\",\\\\\\\"sha256\\\\\\\":\\\\\\\"71c052b3833cf1553be584fd5aa328fa20b2d4531168ece05417ca91ccf73af6\\\\\\\"}],\\\\\\\"economic_scope_verified\\\\\\\":false,\\\\\\\"engine_sha256\\\\\\\":\\\\\\\"b1df13991edfe8a3b22988a70611d308eed76635cef88eb5aecff53e219d3085\\\\\\\",\\\\\\\"expense_scope\\\\\\\":\\\\\\\"explicit_items_only_excludes_property_tax\\\\\\\",\\\\\\\"expenses\\\\\\\":[{\\\\\\\"amount\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"0\\\\\\\"},\\\\\\\"blockers\\\\\\\":[],\\\\\\\"item_id\\\\\\\":\\\\\\\"SYNTHETIC-income-only-zero\\\\\\\",\\\\\\\"kind\\\\\\\":\\\\\\\"fixed_per_declared_period\\\\\\\",\\\\\\\"locator\\\\\\\":\\\\\\\"/expense_items/0\\\\\\\",\\\\\\\"policy_ref\\\\\\\":\\\\\\\"SYNTHETIC-income-only-reference\\\\\\\",\\\\\\\"source_ref\\\\\\\":\\\\\\\"SYNTHETIC-explicit-zero-placeholder-not-period-opex\\\\\\\"}],\\\\\\\"gross_potential_total\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"0\\\\\\\"},\\\\\\\"groups\\\\\\\":[{\\\\\\\"blockers\\\\\\\":[],\\\\\\\"group_id\\\\\\\":\\\\\\\"SYNTHETIC-market-1\\\\\\\",\\\\\\\"locator\\\\\\\":\\\\\\\"/residential_groups/0\\\\\\\",\\\\\\\"policy_ref\\\\\\\":\\\\\\\"SYNTHETIC-explicit-loss-and-concession-SYNTHETIC-phased-0-0\\\\\\\",\\\\\\\"results\\\\\\\":{\\\\\\\"concession_loss\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"0\\\\\\\"},\\\\\\\"effective_rent\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"0\\\\\\\"},\\\\\\\"gross_potential\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"0\\\\\\\"},\\\\\\\"vacancy_loss\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"0\\\\\\\"}},\\\\\\\"source_ref\\\\\\\":\\\\\\\"SYNTHETIC-reference-rent-SYNTHETIC-phased-0-0\\\\\\\"}],\\\\\\\"income_scope\\\\\\\":\\\\\\\"residential_rent_only_excludes_other_and_commercial_income\\\\\\\",\\\\\\\"months_in_period\\\\\\\":1,\\\\\\\"months_per_year\\\\\\\":12,\\\\\\\"operating_expenses_excluding_tax\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"0\\\\\\\"},\\\\\\\"period_ref\\\\\\\":\\\\\\\"SYNTHETIC-phased-0-0\\\\\\\",\\\\\\\"production_authorized\\\\\\\":false,\\\\\\\"purpose\\\\\\\":\\\\\\\"synthetic_residential_operations_only\\\\\\\",\\\\\\\"rental_policy_adopted\\\\\\\":false,\\\\\\\"residential_effective_rent\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"0\\\\\\\"},\\\\\\\"review_authenticated\\\\\\\":false,\\\\\\\"run_ready\\\\\\\":false,\\\\\\\"source_sha256\\\\\\\":\\\\\\\"cbc867bf0b7bd6cc880b33366a2fd42b483d3ca379c98a25635a9e3973aef432\\\\\\\",\\\\\\\"state\\\\\\\":\\\\\\\"computed_synthetic\\\\\\\",\\\\\\\"unit_total\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"0\\\\\\\"}}\\\",\\\"sha256\\\":\\\"971f374054a1fec5f8760b6e24cb112c747658465b1d8534a7d34df42b3c235b\\\"},\\\"reference_source_sha256\\\":\\\"cbc867bf0b7bd6cc880b33366a2fd42b483d3ca379c98a25635a9e3973aef432\\\",\\\"segment_id\\\":\\\"SYNTHETIC-phased-0-0\\\",\\\"start_date\\\":\\\"2027-01-01\\\"},{\\\"amounts\\\":{\\\"available_unit_months\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"3\\\"},\\\"concession_loss\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"},\\\"effective_rent\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"6\\\"},\\\"gross_potential_rent\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"6\\\"},\\\"vacancy_loss\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"}},\\\"availability_source_ref\\\":\\\"SYNTHETIC-availability-proposal-SYNTHETIC-phased-0-1\\\",\\\"blockers\\\":[],\\\"end_date\\\":\\\"2027-02-01\\\",\\\"month_anchor\\\":\\\"2027-01-01\\\",\\\"proration_fraction\\\":{\\\"denominator\\\":\\\"2\\\",\\\"numerator\\\":\\\"1\\\"},\\\"reference_blockers\\\":[],\\\"reference_rental_run\\\":{\\\"payload_json\\\":\\\"{\\\\\\\"blockers\\\\\\\":[],\\\\\\\"calendar_verified\\\\\\\":false,\\\\\\\"cash_collected_verified\\\\\\\":false,\\\\\\\"component\\\\\\\":\\\\\\\"T21\\\\\\\",\\\\\\\"context\\\\\\\":{\\\\\\\"deal_id\\\\\\\":\\\\\\\"SYNTHETIC-construction-draw-demo\\\\\\\",\\\\\\\"definition_set_revision\\\\\\\":\\\\\\\"SYNTHETIC-simple-interval-factors\\\\\\\",\\\\\\\"run_id\\\\\\\":\\\\\\\"SYNTHETIC-construction-draw-run\\\\\\\",\\\\\\\"scenario_id\\\\\\\":\\\\\\\"SYNTHETIC-draw-plan\\\\\\\"},\\\\\\\"currency\\\\\\\":\\\\\\\"USD\\\\\\\",\\\\\\\"decision\\\\\\\":\\\\\\\"PENDING\\\\\\\",\\\\\\\"definition_sources\\\\\\\":[{\\\\\\\"line\\\\\\\":15,\\\\\\\"path\\\\\\\":\\\\\\\"docs/model-operations-contract.md\\\\\\\",\\\\\\\"sha256\\\\\\\":\\\\\\\"71c052b3833cf1553be584fd5aa328fa20b2d4531168ece05417ca91ccf73af6\\\\\\\"},{\\\\\\\"line\\\\\\\":16,\\\\\\\"path\\\\\\\":\\\\\\\"docs/model-operations-contract.md\\\\\\\",\\\\\\\"sha256\\\\\\\":\\\\\\\"71c052b3833cf1553be584fd5aa328fa20b2d4531168ece05417ca91ccf73af6\\\\\\\"},{\\\\\\\"line\\\\\\\":17,\\\\\\\"path\\\\\\\":\\\\\\\"docs/model-operations-contract.md\\\\\\\",\\\\\\\"sha256\\\\\\\":\\\\\\\"71c052b3833cf1553be584fd5aa328fa20b2d4531168ece05417ca91ccf73af6\\\\\\\"},{\\\\\\\"line\\\\\\\":19,\\\\\\\"path\\\\\\\":\\\\\\\"docs/model-operations-contract.md\\\\\\\",\\\\\\\"sha256\\\\\\\":\\\\\\\"71c052b3833cf1553be584fd5aa328fa20b2d4531168ece05417ca91ccf73af6\\\\\\\"}],\\\\\\\"economic_scope_verified\\\\\\\":false,\\\\\\\"engine_sha256\\\\\\\":\\\\\\\"b1df13991edfe8a3b22988a70611d308eed76635cef88eb5aecff53e219d3085\\\\\\\",\\\\\\\"expense_scope\\\\\\\":\\\\\\\"explicit_items_only_excludes_property_tax\\\\\\\",\\\\\\\"expenses\\\\\\\":[{\\\\\\\"amount\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"0\\\\\\\"},\\\\\\\"blockers\\\\\\\":[],\\\\\\\"item_id\\\\\\\":\\\\\\\"SYNTHETIC-income-only-zero\\\\\\\",\\\\\\\"kind\\\\\\\":\\\\\\\"fixed_per_declared_period\\\\\\\",\\\\\\\"locator\\\\\\\":\\\\\\\"/expense_items/0\\\\\\\",\\\\\\\"policy_ref\\\\\\\":\\\\\\\"SYNTHETIC-income-only-reference\\\\\\\",\\\\\\\"source_ref\\\\\\\":\\\\\\\"SYNTHETIC-explicit-zero-placeholder-not-period-opex\\\\\\\"}],\\\\\\\"gross_potential_total\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"12\\\\\\\"},\\\\\\\"groups\\\\\\\":[{\\\\\\\"blockers\\\\\\\":[],\\\\\\\"group_id\\\\\\\":\\\\\\\"SYNTHETIC-market-1\\\\\\\",\\\\\\\"locator\\\\\\\":\\\\\\\"/residential_groups/0\\\\\\\",\\\\\\\"policy_ref\\\\\\\":\\\\\\\"SYNTHETIC-explicit-loss-and-concession-SYNTHETIC-phased-0-1\\\\\\\",\\\\\\\"results\\\\\\\":{\\\\\\\"concession_loss\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"0\\\\\\\"},\\\\\\\"effective_rent\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"12\\\\\\\"},\\\\\\\"gross_potential\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"12\\\\\\\"},\\\\\\\"vacancy_loss\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"0\\\\\\\"}},\\\\\\\"source_ref\\\\\\\":\\\\\\\"SYNTHETIC-reference-rent-SYNTHETIC-phased-0-1\\\\\\\"}],\\\\\\\"income_scope\\\\\\\":\\\\\\\"residential_rent_only_excludes_other_and_commercial_income\\\\\\\",\\\\\\\"months_in_period\\\\\\\":1,\\\\\\\"months_per_year\\\\\\\":12,\\\\\\\"operating_expenses_excluding_tax\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"0\\\\\\\"},\\\\\\\"period_ref\\\\\\\":\\\\\\\"SYNTHETIC-phased-0-1\\\\\\\",\\\\\\\"production_authorized\\\\\\\":false,\\\\\\\"purpose\\\\\\\":\\\\\\\"synthetic_residential_operations_only\\\\\\\",\\\\\\\"rental_policy_adopted\\\\\\\":false,\\\\\\\"residential_effective_rent\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"12\\\\\\\"},\\\\\\\"review_authenticated\\\\\\\":false,\\\\\\\"run_ready\\\\\\\":false,\\\\\\\"source_sha256\\\\\\\":\\\\\\\"050971168caf5f9091f123bab4194a822f39963ba59823aee2fcf0ef82250342\\\\\\\",\\\\\\\"state\\\\\\\":\\\\\\\"computed_synthetic\\\\\\\",\\\\\\\"unit_total\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"6\\\\\\\"}}\\\",\\\"sha256\\\":\\\"b7bf03c1ba6f113f81fb9d3a3ae2aaa0b8d3e9c2622691fd3c9a65f7201f3a86\\\"},\\\"reference_source_sha256\\\":\\\"050971168caf5f9091f123bab4194a822f39963ba59823aee2fcf0ef82250342\\\",\\\"segment_id\\\":\\\"SYNTHETIC-phased-0-1\\\",\\\"start_date\\\":\\\"2027-01-16\\\"},{\\\"amounts\\\":{\\\"available_unit_months\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"5\\\"},\\\"concession_loss\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"},\\\"effective_rent\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"8\\\"},\\\"gross_potential_rent\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"10\\\"},\\\"vacancy_loss\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"2\\\"}},\\\"availability_source_ref\\\":\\\"SYNTHETIC-availability-proposal-SYNTHETIC-phased-0-2\\\",\\\"blockers\\\":[],\\\"end_date\\\":\\\"2027-03-01\\\",\\\"month_anchor\\\":\\\"2027-02-01\\\",\\\"proration_fraction\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"1\\\"},\\\"reference_blockers\\\":[],\\\"reference_rental_run\\\":{\\\"payload_json\\\":\\\"{\\\\\\\"blockers\\\\\\\":[],\\\\\\\"calendar_verified\\\\\\\":false,\\\\\\\"cash_collected_verified\\\\\\\":false,\\\\\\\"component\\\\\\\":\\\\\\\"T21\\\\\\\",\\\\\\\"context\\\\\\\":{\\\\\\\"deal_id\\\\\\\":\\\\\\\"SYNTHETIC-construction-draw-demo\\\\\\\",\\\\\\\"definition_set_revision\\\\\\\":\\\\\\\"SYNTHETIC-simple-interval-factors\\\\\\\",\\\\\\\"run_id\\\\\\\":\\\\\\\"SYNTHETIC-construction-draw-run\\\\\\\",\\\\\\\"scenario_id\\\\\\\":\\\\\\\"SYNTHETIC-draw-plan\\\\\\\"},\\\\\\\"currency\\\\\\\":\\\\\\\"USD\\\\\\\",\\\\\\\"decision\\\\\\\":\\\\\\\"PENDING\\\\\\\",\\\\\\\"definition_sources\\\\\\\":[{\\\\\\\"line\\\\\\\":15,\\\\\\\"path\\\\\\\":\\\\\\\"docs/model-operations-contract.md\\\\\\\",\\\\\\\"sha256\\\\\\\":\\\\\\\"71c052b3833cf1553be584fd5aa328fa20b2d4531168ece05417ca91ccf73af6\\\\\\\"},{\\\\\\\"line\\\\\\\":16,\\\\\\\"path\\\\\\\":\\\\\\\"docs/model-operations-contract.md\\\\\\\",\\\\\\\"sha256\\\\\\\":\\\\\\\"71c052b3833cf1553be584fd5aa328fa20b2d4531168ece05417ca91ccf73af6\\\\\\\"},{\\\\\\\"line\\\\\\\":17,\\\\\\\"path\\\\\\\":\\\\\\\"docs/model-operations-contract.md\\\\\\\",\\\\\\\"sha256\\\\\\\":\\\\\\\"71c052b3833cf1553be584fd5aa328fa20b2d4531168ece05417ca91ccf73af6\\\\\\\"},{\\\\\\\"line\\\\\\\":19,\\\\\\\"path\\\\\\\":\\\\\\\"docs/model-operations-contract.md\\\\\\\",\\\\\\\"sha256\\\\\\\":\\\\\\\"71c052b3833cf1553be584fd5aa328fa20b2d4531168ece05417ca91ccf73af6\\\\\\\"}],\\\\\\\"economic_scope_verified\\\\\\\":false,\\\\\\\"engine_sha256\\\\\\\":\\\\\\\"b1df13991edfe8a3b22988a70611d308eed76635cef88eb5aecff53e219d3085\\\\\\\",\\\\\\\"expense_scope\\\\\\\":\\\\\\\"explicit_items_only_excludes_property_tax\\\\\\\",\\\\\\\"expenses\\\\\\\":[{\\\\\\\"amount\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"0\\\\\\\"},\\\\\\\"blockers\\\\\\\":[],\\\\\\\"item_id\\\\\\\":\\\\\\\"SYNTHETIC-income-only-zero\\\\\\\",\\\\\\\"kind\\\\\\\":\\\\\\\"fixed_per_declared_period\\\\\\\",\\\\\\\"locator\\\\\\\":\\\\\\\"/expense_items/0\\\\\\\",\\\\\\\"policy_ref\\\\\\\":\\\\\\\"SYNTHETIC-income-only-reference\\\\\\\",\\\\\\\"source_ref\\\\\\\":\\\\\\\"SYNTHETIC-explicit-zero-placeholder-not-period-opex\\\\\\\"}],\\\\\\\"gross_potential_total\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"10\\\\\\\"},\\\\\\\"groups\\\\\\\":[{\\\\\\\"blockers\\\\\\\":[],\\\\\\\"group_id\\\\\\\":\\\\\\\"SYNTHETIC-market-1\\\\\\\",\\\\\\\"locator\\\\\\\":\\\\\\\"/residential_groups/0\\\\\\\",\\\\\\\"policy_ref\\\\\\\":\\\\\\\"SYNTHETIC-explicit-loss-and-concession-SYNTHETIC-phased-0-2\\\\\\\",\\\\\\\"results\\\\\\\":{\\\\\\\"concession_loss\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"0\\\\\\\"},\\\\\\\"effective_rent\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"8\\\\\\\"},\\\\\\\"gross_potential\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"10\\\\\\\"},\\\\\\\"vacancy_loss\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"2\\\\\\\"}},\\\\\\\"source_ref\\\\\\\":\\\\\\\"SYNTHETIC-reference-rent-SYNTHETIC-phased-0-2\\\\\\\"}],\\\\\\\"income_scope\\\\\\\":\\\\\\\"residential_rent_only_excludes_other_and_commercial_income\\\\\\\",\\\\\\\"months_in_period\\\\\\\":1,\\\\\\\"months_per_year\\\\\\\":12,\\\\\\\"operating_expenses_excluding_tax\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"0\\\\\\\"},\\\\\\\"period_ref\\\\\\\":\\\\\\\"SYNTHETIC-phased-0-2\\\\\\\",\\\\\\\"production_authorized\\\\\\\":false,\\\\\\\"purpose\\\\\\\":\\\\\\\"synthetic_residential_operations_only\\\\\\\",\\\\\\\"rental_policy_adopted\\\\\\\":false,\\\\\\\"residential_effective_rent\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"8\\\\\\\"},\\\\\\\"review_authenticated\\\\\\\":false,\\\\\\\"run_ready\\\\\\\":false,\\\\\\\"source_sha256\\\\\\\":\\\\\\\"17e11c355e3fb4ac7541480898632ef8048516f9f8b5bc68c6931957abe9ca4f\\\\\\\",\\\\\\\"state\\\\\\\":\\\\\\\"computed_synthetic\\\\\\\",\\\\\\\"unit_total\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"5\\\\\\\"}}\\\",\\\"sha256\\\":\\\"7364137c686151e6803bae86eceaa96f60fbae4fc40d4e8056cdd5c0ca3448e8\\\"},\\\"reference_source_sha256\\\":\\\"17e11c355e3fb4ac7541480898632ef8048516f9f8b5bc68c6931957abe9ca4f\\\",\\\"segment_id\\\":\\\"SYNTHETIC-phased-0-2\\\",\\\"start_date\\\":\\\"2027-02-01\\\"},{\\\"amounts\\\":{\\\"available_unit_months\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"10\\\"},\\\"concession_loss\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"5\\\"},\\\"effective_rent\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"15\\\"},\\\"gross_potential_rent\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"20\\\"},\\\"vacancy_loss\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"}},\\\"availability_source_ref\\\":\\\"SYNTHETIC-availability-proposal-SYNTHETIC-phased-0-3\\\",\\\"blockers\\\":[],\\\"end_date\\\":\\\"2027-04-01\\\",\\\"month_anchor\\\":\\\"2027-03-01\\\",\\\"proration_fraction\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"1\\\"},\\\"reference_blockers\\\":[],\\\"reference_rental_run\\\":{\\\"payload_json\\\":\\\"{\\\\\\\"blockers\\\\\\\":[],\\\\\\\"calendar_verified\\\\\\\":false,\\\\\\\"cash_collected_verified\\\\\\\":false,\\\\\\\"component\\\\\\\":\\\\\\\"T21\\\\\\\",\\\\\\\"context\\\\\\\":{\\\\\\\"deal_id\\\\\\\":\\\\\\\"SYNTHETIC-construction-draw-demo\\\\\\\",\\\\\\\"definition_set_revision\\\\\\\":\\\\\\\"SYNTHETIC-simple-interval-factors\\\\\\\",\\\\\\\"run_id\\\\\\\":\\\\\\\"SYNTHETIC-construction-draw-run\\\\\\\",\\\\\\\"scenario_id\\\\\\\":\\\\\\\"SYNTHETIC-draw-plan\\\\\\\"},\\\\\\\"currency\\\\\\\":\\\\\\\"USD\\\\\\\",\\\\\\\"decision\\\\\\\":\\\\\\\"PENDING\\\\\\\",\\\\\\\"definition_sources\\\\\\\":[{\\\\\\\"line\\\\\\\":15,\\\\\\\"path\\\\\\\":\\\\\\\"docs/model-operations-contract.md\\\\\\\",\\\\\\\"sha256\\\\\\\":\\\\\\\"71c052b3833cf1553be584fd5aa328fa20b2d4531168ece05417ca91ccf73af6\\\\\\\"},{\\\\\\\"line\\\\\\\":16,\\\\\\\"path\\\\\\\":\\\\\\\"docs/model-operations-contract.md\\\\\\\",\\\\\\\"sha256\\\\\\\":\\\\\\\"71c052b3833cf1553be584fd5aa328fa20b2d4531168ece05417ca91ccf73af6\\\\\\\"},{\\\\\\\"line\\\\\\\":17,\\\\\\\"path\\\\\\\":\\\\\\\"docs/model-operations-contract.md\\\\\\\",\\\\\\\"sha256\\\\\\\":\\\\\\\"71c052b3833cf1553be584fd5aa328fa20b2d4531168ece05417ca91ccf73af6\\\\\\\"},{\\\\\\\"line\\\\\\\":19,\\\\\\\"path\\\\\\\":\\\\\\\"docs/model-operations-contract.md\\\\\\\",\\\\\\\"sha256\\\\\\\":\\\\\\\"71c052b3833cf1553be584fd5aa328fa20b2d4531168ece05417ca91ccf73af6\\\\\\\"}],\\\\\\\"economic_scope_verified\\\\\\\":false,\\\\\\\"engine_sha256\\\\\\\":\\\\\\\"b1df13991edfe8a3b22988a70611d308eed76635cef88eb5aecff53e219d3085\\\\\\\",\\\\\\\"expense_scope\\\\\\\":\\\\\\\"explicit_items_only_excludes_property_tax\\\\\\\",\\\\\\\"expenses\\\\\\\":[{\\\\\\\"amount\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"0\\\\\\\"},\\\\\\\"blockers\\\\\\\":[],\\\\\\\"item_id\\\\\\\":\\\\\\\"SYNTHETIC-income-only-zero\\\\\\\",\\\\\\\"kind\\\\\\\":\\\\\\\"fixed_per_declared_period\\\\\\\",\\\\\\\"locator\\\\\\\":\\\\\\\"/expense_items/0\\\\\\\",\\\\\\\"policy_ref\\\\\\\":\\\\\\\"SYNTHETIC-income-only-reference\\\\\\\",\\\\\\\"source_ref\\\\\\\":\\\\\\\"SYNTHETIC-explicit-zero-placeholder-not-period-opex\\\\\\\"}],\\\\\\\"gross_potential_total\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"20\\\\\\\"},\\\\\\\"groups\\\\\\\":[{\\\\\\\"blockers\\\\\\\":[],\\\\\\\"group_id\\\\\\\":\\\\\\\"SYNTHETIC-market-1\\\\\\\",\\\\\\\"locator\\\\\\\":\\\\\\\"/residential_groups/0\\\\\\\",\\\\\\\"policy_ref\\\\\\\":\\\\\\\"SYNTHETIC-explicit-loss-and-concession-SYNTHETIC-phased-0-3\\\\\\\",\\\\\\\"results\\\\\\\":{\\\\\\\"concession_loss\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"5\\\\\\\"},\\\\\\\"effective_rent\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"15\\\\\\\"},\\\\\\\"gross_potential\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"20\\\\\\\"},\\\\\\\"vacancy_loss\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"0\\\\\\\"}},\\\\\\\"source_ref\\\\\\\":\\\\\\\"SYNTHETIC-reference-rent-SYNTHETIC-phased-0-3\\\\\\\"}],\\\\\\\"income_scope\\\\\\\":\\\\\\\"residential_rent_only_excludes_other_and_commercial_income\\\\\\\",\\\\\\\"months_in_period\\\\\\\":1,\\\\\\\"months_per_year\\\\\\\":12,\\\\\\\"operating_expenses_excluding_tax\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"0\\\\\\\"},\\\\\\\"period_ref\\\\\\\":\\\\\\\"SYNTHETIC-phased-0-3\\\\\\\",\\\\\\\"production_authorized\\\\\\\":false,\\\\\\\"purpose\\\\\\\":\\\\\\\"synthetic_residential_operations_only\\\\\\\",\\\\\\\"rental_policy_adopted\\\\\\\":false,\\\\\\\"residential_effective_rent\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"15\\\\\\\"},\\\\\\\"review_authenticated\\\\\\\":false,\\\\\\\"run_ready\\\\\\\":false,\\\\\\\"source_sha256\\\\\\\":\\\\\\\"cb69b37f721e07abb06884895f488f9d3db4fe158dfbc20e3272969b9ba2cf2a\\\\\\\",\\\\\\\"state\\\\\\\":\\\\\\\"computed_synthetic\\\\\\\",\\\\\\\"unit_total\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"10\\\\\\\"}}\\\",\\\"sha256\\\":\\\"19819030552abc905aa72bf05e2acf924e0bec1c11c377347d960ea8b1739164\\\"},\\\"reference_source_sha256\\\":\\\"cb69b37f721e07abb06884895f488f9d3db4fe158dfbc20e3272969b9ba2cf2a\\\",\\\"segment_id\\\":\\\"SYNTHETIC-phased-0-3\\\",\\\"start_date\\\":\\\"2027-03-01\\\"}],\\\"source_sha256\\\":\\\"ac2cbf84c60b481a4ec205870c74d41ea890d084c92a3777b1b6e97b20ca7b79\\\",\\\"start_date\\\":\\\"2027-01-01\\\",\\\"state\\\":\\\"computed_synthetic_phased_rental\\\",\\\"totals\\\":{\\\"available_unit_months\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"18\\\"},\\\"concession_loss\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"5\\\"},\\\"effective_rent\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"29\\\"},\\\"gross_potential_rent\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"36\\\"},\\\"vacancy_loss\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"2\\\"}}}\",\"sha256\":\"fb9e184a5ad5123efdbcd1e111070a52d4b3a4550d03059dd6dbf54f7a43198c\"},\"calendar_source_utf8\":\"{\\\"calendar_basis_ref\\\":\\\"SYNTHETIC-contiguous-segments-with-supplied-month-fractions\\\",\\\"capacity\\\":[{\\\"group_id\\\":\\\"SYNTHETIC-market-1\\\",\\\"rent_basis\\\":\\\"per_unit_per_month\\\",\\\"source_ref\\\":\\\"SYNTHETIC-capacity-claim\\\",\\\"total_units\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"10\\\"},\\\"unit_rentable_sf\\\":null}],\\\"capacity_basis_ref\\\":\\\"SYNTHETIC-supplied-fixed-capacity-not-delivery-approval\\\",\\\"context\\\":{\\\"deal_id\\\":\\\"SYNTHETIC-construction-draw-demo\\\",\\\"definition_set_revision\\\":\\\"SYNTHETIC-simple-interval-factors\\\",\\\"run_id\\\":\\\"SYNTHETIC-construction-draw-run\\\",\\\"scenario_id\\\":\\\"SYNTHETIC-draw-plan\\\"},\\\"currency\\\":\\\"USD\\\",\\\"end_date\\\":\\\"2027-04-01\\\",\\\"inventory_declared_complete\\\":true,\\\"period_ref\\\":\\\"SYNTHETIC-hold-1\\\",\\\"schema\\\":\\\"miniuw.synthetic-phased-rental.v1\\\",\\\"segments\\\":[{\\\"availability_source_ref\\\":\\\"SYNTHETIC-availability-proposal-SYNTHETIC-phased-0-0\\\",\\\"end_date\\\":\\\"2027-01-16\\\",\\\"month_anchor\\\":\\\"2027-01-01\\\",\\\"proration_basis_ref\\\":\\\"SYNTHETIC-supplied-half-or-full-month-not-inferred-from-days\\\",\\\"proration_fraction\\\":{\\\"denominator\\\":\\\"2\\\",\\\"numerator\\\":\\\"1\\\"},\\\"rental_source_utf8\\\":\\\"{\\\\\\\"context\\\\\\\":{\\\\\\\"deal_id\\\\\\\":\\\\\\\"SYNTHETIC-construction-draw-demo\\\\\\\",\\\\\\\"definition_set_revision\\\\\\\":\\\\\\\"SYNTHETIC-simple-interval-factors\\\\\\\",\\\\\\\"run_id\\\\\\\":\\\\\\\"SYNTHETIC-construction-draw-run\\\\\\\",\\\\\\\"scenario_id\\\\\\\":\\\\\\\"SYNTHETIC-draw-plan\\\\\\\"},\\\\\\\"currency\\\\\\\":\\\\\\\"USD\\\\\\\",\\\\\\\"expense_items\\\\\\\":[{\\\\\\\"currency\\\\\\\":\\\\\\\"USD\\\\\\\",\\\\\\\"item_id\\\\\\\":\\\\\\\"SYNTHETIC-income-only-zero\\\\\\\",\\\\\\\"kind\\\\\\\":\\\\\\\"fixed_per_declared_period\\\\\\\",\\\\\\\"policy_ref\\\\\\\":\\\\\\\"SYNTHETIC-income-only-reference\\\\\\\",\\\\\\\"rate\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"0\\\\\\\"},\\\\\\\"source_ref\\\\\\\":\\\\\\\"SYNTHETIC-explicit-zero-placeholder-not-period-opex\\\\\\\"}],\\\\\\\"months_in_period\\\\\\\":1,\\\\\\\"months_per_year\\\\\\\":12,\\\\\\\"period_ref\\\\\\\":\\\\\\\"SYNTHETIC-phased-0-0\\\\\\\",\\\\\\\"residential_groups\\\\\\\":[{\\\\\\\"concession_basis\\\\\\\":\\\\\\\"after_vacancy_rent\\\\\\\",\\\\\\\"concession_fraction\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"0\\\\\\\"},\\\\\\\"currency\\\\\\\":\\\\\\\"USD\\\\\\\",\\\\\\\"group_id\\\\\\\":\\\\\\\"SYNTHETIC-market-1\\\\\\\",\\\\\\\"loss_fraction\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"0\\\\\\\"},\\\\\\\"policy_ref\\\\\\\":\\\\\\\"SYNTHETIC-explicit-loss-and-concession-SYNTHETIC-phased-0-0\\\\\\\",\\\\\\\"rent\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"2\\\\\\\"},\\\\\\\"rent_basis\\\\\\\":\\\\\\\"per_unit_per_month\\\\\\\",\\\\\\\"rent_definition\\\\\\\":\\\\\\\"gross_before_losses_and_concessions\\\\\\\",\\\\\\\"source_ref\\\\\\\":\\\\\\\"SYNTHETIC-reference-rent-SYNTHETIC-phased-0-0\\\\\\\",\\\\\\\"unit_rentable_sf\\\\\\\":null,\\\\\\\"units\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"0\\\\\\\"}}],\\\\\\\"schema\\\\\\\":\\\\\\\"miniuw.synthetic-residential-operations.v1\\\\\\\"}\\\",\\\"segment_id\\\":\\\"SYNTHETIC-phased-0-0\\\",\\\"start_date\\\":\\\"2027-01-01\\\"},{\\\"availability_source_ref\\\":\\\"SYNTHETIC-availability-proposal-SYNTHETIC-phased-0-1\\\",\\\"end_date\\\":\\\"2027-02-01\\\",\\\"month_anchor\\\":\\\"2027-01-01\\\",\\\"proration_basis_ref\\\":\\\"SYNTHETIC-supplied-half-or-full-month-not-inferred-from-days\\\",\\\"proration_fraction\\\":{\\\"denominator\\\":\\\"2\\\",\\\"numerator\\\":\\\"1\\\"},\\\"rental_source_utf8\\\":\\\"{\\\\\\\"context\\\\\\\":{\\\\\\\"deal_id\\\\\\\":\\\\\\\"SYNTHETIC-construction-draw-demo\\\\\\\",\\\\\\\"definition_set_revision\\\\\\\":\\\\\\\"SYNTHETIC-simple-interval-factors\\\\\\\",\\\\\\\"run_id\\\\\\\":\\\\\\\"SYNTHETIC-construction-draw-run\\\\\\\",\\\\\\\"scenario_id\\\\\\\":\\\\\\\"SYNTHETIC-draw-plan\\\\\\\"},\\\\\\\"currency\\\\\\\":\\\\\\\"USD\\\\\\\",\\\\\\\"expense_items\\\\\\\":[{\\\\\\\"currency\\\\\\\":\\\\\\\"USD\\\\\\\",\\\\\\\"item_id\\\\\\\":\\\\\\\"SYNTHETIC-income-only-zero\\\\\\\",\\\\\\\"kind\\\\\\\":\\\\\\\"fixed_per_declared_period\\\\\\\",\\\\\\\"policy_ref\\\\\\\":\\\\\\\"SYNTHETIC-income-only-reference\\\\\\\",\\\\\\\"rate\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"0\\\\\\\"},\\\\\\\"source_ref\\\\\\\":\\\\\\\"SYNTHETIC-explicit-zero-placeholder-not-period-opex\\\\\\\"}],\\\\\\\"months_in_period\\\\\\\":1,\\\\\\\"months_per_year\\\\\\\":12,\\\\\\\"period_ref\\\\\\\":\\\\\\\"SYNTHETIC-phased-0-1\\\\\\\",\\\\\\\"residential_groups\\\\\\\":[{\\\\\\\"concession_basis\\\\\\\":\\\\\\\"after_vacancy_rent\\\\\\\",\\\\\\\"concession_fraction\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"0\\\\\\\"},\\\\\\\"currency\\\\\\\":\\\\\\\"USD\\\\\\\",\\\\\\\"group_id\\\\\\\":\\\\\\\"SYNTHETIC-market-1\\\\\\\",\\\\\\\"loss_fraction\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"0\\\\\\\"},\\\\\\\"policy_ref\\\\\\\":\\\\\\\"SYNTHETIC-explicit-loss-and-concession-SYNTHETIC-phased-0-1\\\\\\\",\\\\\\\"rent\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"2\\\\\\\"},\\\\\\\"rent_basis\\\\\\\":\\\\\\\"per_unit_per_month\\\\\\\",\\\\\\\"rent_definition\\\\\\\":\\\\\\\"gross_before_losses_and_concessions\\\\\\\",\\\\\\\"source_ref\\\\\\\":\\\\\\\"SYNTHETIC-reference-rent-SYNTHETIC-phased-0-1\\\\\\\",\\\\\\\"unit_rentable_sf\\\\\\\":null,\\\\\\\"units\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"6\\\\\\\"}}],\\\\\\\"schema\\\\\\\":\\\\\\\"miniuw.synthetic-residential-operations.v1\\\\\\\"}\\\",\\\"segment_id\\\":\\\"SYNTHETIC-phased-0-1\\\",\\\"start_date\\\":\\\"2027-01-16\\\"},{\\\"availability_source_ref\\\":\\\"SYNTHETIC-availability-proposal-SYNTHETIC-phased-0-2\\\",\\\"end_date\\\":\\\"2027-03-01\\\",\\\"month_anchor\\\":\\\"2027-02-01\\\",\\\"proration_basis_ref\\\":\\\"SYNTHETIC-supplied-half-or-full-month-not-inferred-from-days\\\",\\\"proration_fraction\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"1\\\"},\\\"rental_source_utf8\\\":\\\"{\\\\\\\"context\\\\\\\":{\\\\\\\"deal_id\\\\\\\":\\\\\\\"SYNTHETIC-construction-draw-demo\\\\\\\",\\\\\\\"definition_set_revision\\\\\\\":\\\\\\\"SYNTHETIC-simple-interval-factors\\\\\\\",\\\\\\\"run_id\\\\\\\":\\\\\\\"SYNTHETIC-construction-draw-run\\\\\\\",\\\\\\\"scenario_id\\\\\\\":\\\\\\\"SYNTHETIC-draw-plan\\\\\\\"},\\\\\\\"currency\\\\\\\":\\\\\\\"USD\\\\\\\",\\\\\\\"expense_items\\\\\\\":[{\\\\\\\"currency\\\\\\\":\\\\\\\"USD\\\\\\\",\\\\\\\"item_id\\\\\\\":\\\\\\\"SYNTHETIC-income-only-zero\\\\\\\",\\\\\\\"kind\\\\\\\":\\\\\\\"fixed_per_declared_period\\\\\\\",\\\\\\\"policy_ref\\\\\\\":\\\\\\\"SYNTHETIC-income-only-reference\\\\\\\",\\\\\\\"rate\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"0\\\\\\\"},\\\\\\\"source_ref\\\\\\\":\\\\\\\"SYNTHETIC-explicit-zero-placeholder-not-period-opex\\\\\\\"}],\\\\\\\"months_in_period\\\\\\\":1,\\\\\\\"months_per_year\\\\\\\":12,\\\\\\\"period_ref\\\\\\\":\\\\\\\"SYNTHETIC-phased-0-2\\\\\\\",\\\\\\\"residential_groups\\\\\\\":[{\\\\\\\"concession_basis\\\\\\\":\\\\\\\"after_vacancy_rent\\\\\\\",\\\\\\\"concession_fraction\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"0\\\\\\\"},\\\\\\\"currency\\\\\\\":\\\\\\\"USD\\\\\\\",\\\\\\\"group_id\\\\\\\":\\\\\\\"SYNTHETIC-market-1\\\\\\\",\\\\\\\"loss_fraction\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"5\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"1\\\\\\\"},\\\\\\\"policy_ref\\\\\\\":\\\\\\\"SYNTHETIC-explicit-loss-and-concession-SYNTHETIC-phased-0-2\\\\\\\",\\\\\\\"rent\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"2\\\\\\\"},\\\\\\\"rent_basis\\\\\\\":\\\\\\\"per_unit_per_month\\\\\\\",\\\\\\\"rent_definition\\\\\\\":\\\\\\\"gross_before_losses_and_concessions\\\\\\\",\\\\\\\"source_ref\\\\\\\":\\\\\\\"SYNTHETIC-reference-rent-SYNTHETIC-phased-0-2\\\\\\\",\\\\\\\"unit_rentable_sf\\\\\\\":null,\\\\\\\"units\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"5\\\\\\\"}}],\\\\\\\"schema\\\\\\\":\\\\\\\"miniuw.synthetic-residential-operations.v1\\\\\\\"}\\\",\\\"segment_id\\\":\\\"SYNTHETIC-phased-0-2\\\",\\\"start_date\\\":\\\"2027-02-01\\\"},{\\\"availability_source_ref\\\":\\\"SYNTHETIC-availability-proposal-SYNTHETIC-phased-0-3\\\",\\\"end_date\\\":\\\"2027-04-01\\\",\\\"month_anchor\\\":\\\"2027-03-01\\\",\\\"proration_basis_ref\\\":\\\"SYNTHETIC-supplied-half-or-full-month-not-inferred-from-days\\\",\\\"proration_fraction\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"1\\\"},\\\"rental_source_utf8\\\":\\\"{\\\\\\\"context\\\\\\\":{\\\\\\\"deal_id\\\\\\\":\\\\\\\"SYNTHETIC-construction-draw-demo\\\\\\\",\\\\\\\"definition_set_revision\\\\\\\":\\\\\\\"SYNTHETIC-simple-interval-factors\\\\\\\",\\\\\\\"run_id\\\\\\\":\\\\\\\"SYNTHETIC-construction-draw-run\\\\\\\",\\\\\\\"scenario_id\\\\\\\":\\\\\\\"SYNTHETIC-draw-plan\\\\\\\"},\\\\\\\"currency\\\\\\\":\\\\\\\"USD\\\\\\\",\\\\\\\"expense_items\\\\\\\":[{\\\\\\\"currency\\\\\\\":\\\\\\\"USD\\\\\\\",\\\\\\\"item_id\\\\\\\":\\\\\\\"SYNTHETIC-income-only-zero\\\\\\\",\\\\\\\"kind\\\\\\\":\\\\\\\"fixed_per_declared_period\\\\\\\",\\\\\\\"policy_ref\\\\\\\":\\\\\\\"SYNTHETIC-income-only-reference\\\\\\\",\\\\\\\"rate\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"0\\\\\\\"},\\\\\\\"source_ref\\\\\\\":\\\\\\\"SYNTHETIC-explicit-zero-placeholder-not-period-opex\\\\\\\"}],\\\\\\\"months_in_period\\\\\\\":1,\\\\\\\"months_per_year\\\\\\\":12,\\\\\\\"period_ref\\\\\\\":\\\\\\\"SYNTHETIC-phased-0-3\\\\\\\",\\\\\\\"residential_groups\\\\\\\":[{\\\\\\\"concession_basis\\\\\\\":\\\\\\\"after_vacancy_rent\\\\\\\",\\\\\\\"concession_fraction\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"4\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"1\\\\\\\"},\\\\\\\"currency\\\\\\\":\\\\\\\"USD\\\\\\\",\\\\\\\"group_id\\\\\\\":\\\\\\\"SYNTHETIC-market-1\\\\\\\",\\\\\\\"loss_fraction\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"0\\\\\\\"},\\\\\\\"policy_ref\\\\\\\":\\\\\\\"SYNTHETIC-explicit-loss-and-concession-SYNTHETIC-phased-0-3\\\\\\\",\\\\\\\"rent\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"2\\\\\\\"},\\\\\\\"rent_basis\\\\\\\":\\\\\\\"per_unit_per_month\\\\\\\",\\\\\\\"rent_definition\\\\\\\":\\\\\\\"gross_before_losses_and_concessions\\\\\\\",\\\\\\\"source_ref\\\\\\\":\\\\\\\"SYNTHETIC-reference-rent-SYNTHETIC-phased-0-3\\\\\\\",\\\\\\\"unit_rentable_sf\\\\\\\":null,\\\\\\\"units\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"10\\\\\\\"}}],\\\\\\\"schema\\\\\\\":\\\\\\\"miniuw.synthetic-residential-operations.v1\\\\\\\"}\\\",\\\"segment_id\\\":\\\"SYNTHETIC-phased-0-3\\\",\\\"start_date\\\":\\\"2027-03-01\\\"}],\\\"start_date\\\":\\\"2027-01-01\\\"}\",\"cash_source_sha256\":\"d86ba1b3f8b35879f4f4fb457556dc899c1ddcd385af8c1be9a4e829e86205e6\",\"noi_source_sha256\":\"fa687c32209540f5ab73ec2a5f8c0be303f057373ed3f40137fa20470465bcdf\",\"other_zero_income_item_ids\":[\"SYNTHETIC-income-commercial\"],\"period_ref\":\"SYNTHETIC-hold-1\",\"rental_income_item_id\":\"SYNTHETIC-income-residential\"},{\"calendar_run\":{\"payload_json\":\"{\\\"actual_capacity_availability_or_occupancy_verified\\\":false,\\\"actual_collection_or_intraperiod_liquidity_verified\\\":false,\\\"blockers\\\":[],\\\"capacity\\\":[{\\\"group_id\\\":\\\"SYNTHETIC-market-1\\\",\\\"rent_basis\\\":\\\"per_unit_per_month\\\",\\\"source_ref\\\":\\\"SYNTHETIC-capacity-claim\\\",\\\"total_units\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"10\\\"},\\\"unit_rentable_sf\\\":null}],\\\"component\\\":\\\"T82\\\",\\\"context\\\":{\\\"deal_id\\\":\\\"SYNTHETIC-construction-draw-demo\\\",\\\"definition_set_revision\\\":\\\"SYNTHETIC-simple-interval-factors\\\",\\\"run_id\\\":\\\"SYNTHETIC-construction-draw-run\\\",\\\"scenario_id\\\":\\\"SYNTHETIC-draw-plan\\\"},\\\"currency\\\":\\\"USD\\\",\\\"day_count_or_delivery_rule_generated\\\":false,\\\"decision\\\":\\\"PENDING\\\",\\\"definition_sha256\\\":\\\"ebb4b02c4819c20f20525c3bc3cc869f35a51d33c5864300e0774418ed210945\\\",\\\"end_date\\\":\\\"2027-07-01\\\",\\\"engine_sha256\\\":\\\"3fba8e990dc417ddf53dda7d6e3dd8065e5efc3dbc5f842f58fdf23010076e9d\\\",\\\"month_fraction_checks\\\":[{\\\"all_fractions_known\\\":true,\\\"fraction\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"1\\\"},\\\"month_anchor\\\":\\\"2027-04-01\\\"},{\\\"all_fractions_known\\\":true,\\\"fraction\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"1\\\"},\\\"month_anchor\\\":\\\"2027-05-01\\\"},{\\\"all_fractions_known\\\":true,\\\"fraction\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"1\\\"},\\\"month_anchor\\\":\\\"2027-06-01\\\"}],\\\"period_ref\\\":\\\"SYNTHETIC-hold-2\\\",\\\"production_authorized\\\":false,\\\"proration_contract_authenticated\\\":false,\\\"purpose\\\":\\\"synthetic_supplied_availability_and_month_fractions\\\",\\\"real_decisions_enabled\\\":false,\\\"segments\\\":[{\\\"amounts\\\":{\\\"available_unit_months\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"10\\\"},\\\"concession_loss\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"},\\\"effective_rent\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"20\\\"},\\\"gross_potential_rent\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"20\\\"},\\\"vacancy_loss\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"}},\\\"availability_source_ref\\\":\\\"SYNTHETIC-availability-proposal-SYNTHETIC-phased-1-0\\\",\\\"blockers\\\":[],\\\"end_date\\\":\\\"2027-05-01\\\",\\\"month_anchor\\\":\\\"2027-04-01\\\",\\\"proration_fraction\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"1\\\"},\\\"reference_blockers\\\":[],\\\"reference_rental_run\\\":{\\\"payload_json\\\":\\\"{\\\\\\\"blockers\\\\\\\":[],\\\\\\\"calendar_verified\\\\\\\":false,\\\\\\\"cash_collected_verified\\\\\\\":false,\\\\\\\"component\\\\\\\":\\\\\\\"T21\\\\\\\",\\\\\\\"context\\\\\\\":{\\\\\\\"deal_id\\\\\\\":\\\\\\\"SYNTHETIC-construction-draw-demo\\\\\\\",\\\\\\\"definition_set_revision\\\\\\\":\\\\\\\"SYNTHETIC-simple-interval-factors\\\\\\\",\\\\\\\"run_id\\\\\\\":\\\\\\\"SYNTHETIC-construction-draw-run\\\\\\\",\\\\\\\"scenario_id\\\\\\\":\\\\\\\"SYNTHETIC-draw-plan\\\\\\\"},\\\\\\\"currency\\\\\\\":\\\\\\\"USD\\\\\\\",\\\\\\\"decision\\\\\\\":\\\\\\\"PENDING\\\\\\\",\\\\\\\"definition_sources\\\\\\\":[{\\\\\\\"line\\\\\\\":15,\\\\\\\"path\\\\\\\":\\\\\\\"docs/model-operations-contract.md\\\\\\\",\\\\\\\"sha256\\\\\\\":\\\\\\\"71c052b3833cf1553be584fd5aa328fa20b2d4531168ece05417ca91ccf73af6\\\\\\\"},{\\\\\\\"line\\\\\\\":16,\\\\\\\"path\\\\\\\":\\\\\\\"docs/model-operations-contract.md\\\\\\\",\\\\\\\"sha256\\\\\\\":\\\\\\\"71c052b3833cf1553be584fd5aa328fa20b2d4531168ece05417ca91ccf73af6\\\\\\\"},{\\\\\\\"line\\\\\\\":17,\\\\\\\"path\\\\\\\":\\\\\\\"docs/model-operations-contract.md\\\\\\\",\\\\\\\"sha256\\\\\\\":\\\\\\\"71c052b3833cf1553be584fd5aa328fa20b2d4531168ece05417ca91ccf73af6\\\\\\\"},{\\\\\\\"line\\\\\\\":19,\\\\\\\"path\\\\\\\":\\\\\\\"docs/model-operations-contract.md\\\\\\\",\\\\\\\"sha256\\\\\\\":\\\\\\\"71c052b3833cf1553be584fd5aa328fa20b2d4531168ece05417ca91ccf73af6\\\\\\\"}],\\\\\\\"economic_scope_verified\\\\\\\":false,\\\\\\\"engine_sha256\\\\\\\":\\\\\\\"b1df13991edfe8a3b22988a70611d308eed76635cef88eb5aecff53e219d3085\\\\\\\",\\\\\\\"expense_scope\\\\\\\":\\\\\\\"explicit_items_only_excludes_property_tax\\\\\\\",\\\\\\\"expenses\\\\\\\":[{\\\\\\\"amount\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"0\\\\\\\"},\\\\\\\"blockers\\\\\\\":[],\\\\\\\"item_id\\\\\\\":\\\\\\\"SYNTHETIC-income-only-zero\\\\\\\",\\\\\\\"kind\\\\\\\":\\\\\\\"fixed_per_declared_period\\\\\\\",\\\\\\\"locator\\\\\\\":\\\\\\\"/expense_items/0\\\\\\\",\\\\\\\"policy_ref\\\\\\\":\\\\\\\"SYNTHETIC-income-only-reference\\\\\\\",\\\\\\\"source_ref\\\\\\\":\\\\\\\"SYNTHETIC-explicit-zero-placeholder-not-period-opex\\\\\\\"}],\\\\\\\"gross_potential_total\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"20\\\\\\\"},\\\\\\\"groups\\\\\\\":[{\\\\\\\"blockers\\\\\\\":[],\\\\\\\"group_id\\\\\\\":\\\\\\\"SYNTHETIC-market-1\\\\\\\",\\\\\\\"locator\\\\\\\":\\\\\\\"/residential_groups/0\\\\\\\",\\\\\\\"policy_ref\\\\\\\":\\\\\\\"SYNTHETIC-explicit-loss-and-concession-SYNTHETIC-phased-1-0\\\\\\\",\\\\\\\"results\\\\\\\":{\\\\\\\"concession_loss\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"0\\\\\\\"},\\\\\\\"effective_rent\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"20\\\\\\\"},\\\\\\\"gross_potential\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"20\\\\\\\"},\\\\\\\"vacancy_loss\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"0\\\\\\\"}},\\\\\\\"source_ref\\\\\\\":\\\\\\\"SYNTHETIC-reference-rent-SYNTHETIC-phased-1-0\\\\\\\"}],\\\\\\\"income_scope\\\\\\\":\\\\\\\"residential_rent_only_excludes_other_and_commercial_income\\\\\\\",\\\\\\\"months_in_period\\\\\\\":1,\\\\\\\"months_per_year\\\\\\\":12,\\\\\\\"operating_expenses_excluding_tax\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"0\\\\\\\"},\\\\\\\"period_ref\\\\\\\":\\\\\\\"SYNTHETIC-phased-1-0\\\\\\\",\\\\\\\"production_authorized\\\\\\\":false,\\\\\\\"purpose\\\\\\\":\\\\\\\"synthetic_residential_operations_only\\\\\\\",\\\\\\\"rental_policy_adopted\\\\\\\":false,\\\\\\\"residential_effective_rent\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"20\\\\\\\"},\\\\\\\"review_authenticated\\\\\\\":false,\\\\\\\"run_ready\\\\\\\":false,\\\\\\\"source_sha256\\\\\\\":\\\\\\\"83a8e298b26eaac5e883fe819a67b7db5d025fe65a1461a8f604c2323c3aa019\\\\\\\",\\\\\\\"state\\\\\\\":\\\\\\\"computed_synthetic\\\\\\\",\\\\\\\"unit_total\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"10\\\\\\\"}}\\\",\\\"sha256\\\":\\\"3067c37e2b9b7e9e55505cbbf07f131f4cfa135292654963fbf0beb2f1655245\\\"},\\\"reference_source_sha256\\\":\\\"83a8e298b26eaac5e883fe819a67b7db5d025fe65a1461a8f604c2323c3aa019\\\",\\\"segment_id\\\":\\\"SYNTHETIC-phased-1-0\\\",\\\"start_date\\\":\\\"2027-04-01\\\"},{\\\"amounts\\\":{\\\"available_unit_months\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"10\\\"},\\\"concession_loss\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"},\\\"effective_rent\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"20\\\"},\\\"gross_potential_rent\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"20\\\"},\\\"vacancy_loss\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"}},\\\"availability_source_ref\\\":\\\"SYNTHETIC-availability-proposal-SYNTHETIC-phased-1-1\\\",\\\"blockers\\\":[],\\\"end_date\\\":\\\"2027-06-01\\\",\\\"month_anchor\\\":\\\"2027-05-01\\\",\\\"proration_fraction\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"1\\\"},\\\"reference_blockers\\\":[],\\\"reference_rental_run\\\":{\\\"payload_json\\\":\\\"{\\\\\\\"blockers\\\\\\\":[],\\\\\\\"calendar_verified\\\\\\\":false,\\\\\\\"cash_collected_verified\\\\\\\":false,\\\\\\\"component\\\\\\\":\\\\\\\"T21\\\\\\\",\\\\\\\"context\\\\\\\":{\\\\\\\"deal_id\\\\\\\":\\\\\\\"SYNTHETIC-construction-draw-demo\\\\\\\",\\\\\\\"definition_set_revision\\\\\\\":\\\\\\\"SYNTHETIC-simple-interval-factors\\\\\\\",\\\\\\\"run_id\\\\\\\":\\\\\\\"SYNTHETIC-construction-draw-run\\\\\\\",\\\\\\\"scenario_id\\\\\\\":\\\\\\\"SYNTHETIC-draw-plan\\\\\\\"},\\\\\\\"currency\\\\\\\":\\\\\\\"USD\\\\\\\",\\\\\\\"decision\\\\\\\":\\\\\\\"PENDING\\\\\\\",\\\\\\\"definition_sources\\\\\\\":[{\\\\\\\"line\\\\\\\":15,\\\\\\\"path\\\\\\\":\\\\\\\"docs/model-operations-contract.md\\\\\\\",\\\\\\\"sha256\\\\\\\":\\\\\\\"71c052b3833cf1553be584fd5aa328fa20b2d4531168ece05417ca91ccf73af6\\\\\\\"},{\\\\\\\"line\\\\\\\":16,\\\\\\\"path\\\\\\\":\\\\\\\"docs/model-operations-contract.md\\\\\\\",\\\\\\\"sha256\\\\\\\":\\\\\\\"71c052b3833cf1553be584fd5aa328fa20b2d4531168ece05417ca91ccf73af6\\\\\\\"},{\\\\\\\"line\\\\\\\":17,\\\\\\\"path\\\\\\\":\\\\\\\"docs/model-operations-contract.md\\\\\\\",\\\\\\\"sha256\\\\\\\":\\\\\\\"71c052b3833cf1553be584fd5aa328fa20b2d4531168ece05417ca91ccf73af6\\\\\\\"},{\\\\\\\"line\\\\\\\":19,\\\\\\\"path\\\\\\\":\\\\\\\"docs/model-operations-contract.md\\\\\\\",\\\\\\\"sha256\\\\\\\":\\\\\\\"71c052b3833cf1553be584fd5aa328fa20b2d4531168ece05417ca91ccf73af6\\\\\\\"}],\\\\\\\"economic_scope_verified\\\\\\\":false,\\\\\\\"engine_sha256\\\\\\\":\\\\\\\"b1df13991edfe8a3b22988a70611d308eed76635cef88eb5aecff53e219d3085\\\\\\\",\\\\\\\"expense_scope\\\\\\\":\\\\\\\"explicit_items_only_excludes_property_tax\\\\\\\",\\\\\\\"expenses\\\\\\\":[{\\\\\\\"amount\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"0\\\\\\\"},\\\\\\\"blockers\\\\\\\":[],\\\\\\\"item_id\\\\\\\":\\\\\\\"SYNTHETIC-income-only-zero\\\\\\\",\\\\\\\"kind\\\\\\\":\\\\\\\"fixed_per_declared_period\\\\\\\",\\\\\\\"locator\\\\\\\":\\\\\\\"/expense_items/0\\\\\\\",\\\\\\\"policy_ref\\\\\\\":\\\\\\\"SYNTHETIC-income-only-reference\\\\\\\",\\\\\\\"source_ref\\\\\\\":\\\\\\\"SYNTHETIC-explicit-zero-placeholder-not-period-opex\\\\\\\"}],\\\\\\\"gross_potential_total\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"20\\\\\\\"},\\\\\\\"groups\\\\\\\":[{\\\\\\\"blockers\\\\\\\":[],\\\\\\\"group_id\\\\\\\":\\\\\\\"SYNTHETIC-market-1\\\\\\\",\\\\\\\"locator\\\\\\\":\\\\\\\"/residential_groups/0\\\\\\\",\\\\\\\"policy_ref\\\\\\\":\\\\\\\"SYNTHETIC-explicit-loss-and-concession-SYNTHETIC-phased-1-1\\\\\\\",\\\\\\\"results\\\\\\\":{\\\\\\\"concession_loss\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"0\\\\\\\"},\\\\\\\"effective_rent\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"20\\\\\\\"},\\\\\\\"gross_potential\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"20\\\\\\\"},\\\\\\\"vacancy_loss\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"0\\\\\\\"}},\\\\\\\"source_ref\\\\\\\":\\\\\\\"SYNTHETIC-reference-rent-SYNTHETIC-phased-1-1\\\\\\\"}],\\\\\\\"income_scope\\\\\\\":\\\\\\\"residential_rent_only_excludes_other_and_commercial_income\\\\\\\",\\\\\\\"months_in_period\\\\\\\":1,\\\\\\\"months_per_year\\\\\\\":12,\\\\\\\"operating_expenses_excluding_tax\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"0\\\\\\\"},\\\\\\\"period_ref\\\\\\\":\\\\\\\"SYNTHETIC-phased-1-1\\\\\\\",\\\\\\\"production_authorized\\\\\\\":false,\\\\\\\"purpose\\\\\\\":\\\\\\\"synthetic_residential_operations_only\\\\\\\",\\\\\\\"rental_policy_adopted\\\\\\\":false,\\\\\\\"residential_effective_rent\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"20\\\\\\\"},\\\\\\\"review_authenticated\\\\\\\":false,\\\\\\\"run_ready\\\\\\\":false,\\\\\\\"source_sha256\\\\\\\":\\\\\\\"b5f9f13acc77ea9666d18ca2dfbc328e2649f8df18d775fe2b9a61ede8866beb\\\\\\\",\\\\\\\"state\\\\\\\":\\\\\\\"computed_synthetic\\\\\\\",\\\\\\\"unit_total\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"10\\\\\\\"}}\\\",\\\"sha256\\\":\\\"3cd3e9f92c63d8c05a9ee327c5d839c6d5a19dcde77706bc3ce10cd58153a330\\\"},\\\"reference_source_sha256\\\":\\\"b5f9f13acc77ea9666d18ca2dfbc328e2649f8df18d775fe2b9a61ede8866beb\\\",\\\"segment_id\\\":\\\"SYNTHETIC-phased-1-1\\\",\\\"start_date\\\":\\\"2027-05-01\\\"},{\\\"amounts\\\":{\\\"available_unit_months\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"10\\\"},\\\"concession_loss\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"},\\\"effective_rent\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"20\\\"},\\\"gross_potential_rent\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"20\\\"},\\\"vacancy_loss\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"}},\\\"availability_source_ref\\\":\\\"SYNTHETIC-availability-proposal-SYNTHETIC-phased-1-2\\\",\\\"blockers\\\":[],\\\"end_date\\\":\\\"2027-07-01\\\",\\\"month_anchor\\\":\\\"2027-06-01\\\",\\\"proration_fraction\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"1\\\"},\\\"reference_blockers\\\":[],\\\"reference_rental_run\\\":{\\\"payload_json\\\":\\\"{\\\\\\\"blockers\\\\\\\":[],\\\\\\\"calendar_verified\\\\\\\":false,\\\\\\\"cash_collected_verified\\\\\\\":false,\\\\\\\"component\\\\\\\":\\\\\\\"T21\\\\\\\",\\\\\\\"context\\\\\\\":{\\\\\\\"deal_id\\\\\\\":\\\\\\\"SYNTHETIC-construction-draw-demo\\\\\\\",\\\\\\\"definition_set_revision\\\\\\\":\\\\\\\"SYNTHETIC-simple-interval-factors\\\\\\\",\\\\\\\"run_id\\\\\\\":\\\\\\\"SYNTHETIC-construction-draw-run\\\\\\\",\\\\\\\"scenario_id\\\\\\\":\\\\\\\"SYNTHETIC-draw-plan\\\\\\\"},\\\\\\\"currency\\\\\\\":\\\\\\\"USD\\\\\\\",\\\\\\\"decision\\\\\\\":\\\\\\\"PENDING\\\\\\\",\\\\\\\"definition_sources\\\\\\\":[{\\\\\\\"line\\\\\\\":15,\\\\\\\"path\\\\\\\":\\\\\\\"docs/model-operations-contract.md\\\\\\\",\\\\\\\"sha256\\\\\\\":\\\\\\\"71c052b3833cf1553be584fd5aa328fa20b2d4531168ece05417ca91ccf73af6\\\\\\\"},{\\\\\\\"line\\\\\\\":16,\\\\\\\"path\\\\\\\":\\\\\\\"docs/model-operations-contract.md\\\\\\\",\\\\\\\"sha256\\\\\\\":\\\\\\\"71c052b3833cf1553be584fd5aa328fa20b2d4531168ece05417ca91ccf73af6\\\\\\\"},{\\\\\\\"line\\\\\\\":17,\\\\\\\"path\\\\\\\":\\\\\\\"docs/model-operations-contract.md\\\\\\\",\\\\\\\"sha256\\\\\\\":\\\\\\\"71c052b3833cf1553be584fd5aa328fa20b2d4531168ece05417ca91ccf73af6\\\\\\\"},{\\\\\\\"line\\\\\\\":19,\\\\\\\"path\\\\\\\":\\\\\\\"docs/model-operations-contract.md\\\\\\\",\\\\\\\"sha256\\\\\\\":\\\\\\\"71c052b3833cf1553be584fd5aa328fa20b2d4531168ece05417ca91ccf73af6\\\\\\\"}],\\\\\\\"economic_scope_verified\\\\\\\":false,\\\\\\\"engine_sha256\\\\\\\":\\\\\\\"b1df13991edfe8a3b22988a70611d308eed76635cef88eb5aecff53e219d3085\\\\\\\",\\\\\\\"expense_scope\\\\\\\":\\\\\\\"explicit_items_only_excludes_property_tax\\\\\\\",\\\\\\\"expenses\\\\\\\":[{\\\\\\\"amount\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"0\\\\\\\"},\\\\\\\"blockers\\\\\\\":[],\\\\\\\"item_id\\\\\\\":\\\\\\\"SYNTHETIC-income-only-zero\\\\\\\",\\\\\\\"kind\\\\\\\":\\\\\\\"fixed_per_declared_period\\\\\\\",\\\\\\\"locator\\\\\\\":\\\\\\\"/expense_items/0\\\\\\\",\\\\\\\"policy_ref\\\\\\\":\\\\\\\"SYNTHETIC-income-only-reference\\\\\\\",\\\\\\\"source_ref\\\\\\\":\\\\\\\"SYNTHETIC-explicit-zero-placeholder-not-period-opex\\\\\\\"}],\\\\\\\"gross_potential_total\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"20\\\\\\\"},\\\\\\\"groups\\\\\\\":[{\\\\\\\"blockers\\\\\\\":[],\\\\\\\"group_id\\\\\\\":\\\\\\\"SYNTHETIC-market-1\\\\\\\",\\\\\\\"locator\\\\\\\":\\\\\\\"/residential_groups/0\\\\\\\",\\\\\\\"policy_ref\\\\\\\":\\\\\\\"SYNTHETIC-explicit-loss-and-concession-SYNTHETIC-phased-1-2\\\\\\\",\\\\\\\"results\\\\\\\":{\\\\\\\"concession_loss\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"0\\\\\\\"},\\\\\\\"effective_rent\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"20\\\\\\\"},\\\\\\\"gross_potential\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"20\\\\\\\"},\\\\\\\"vacancy_loss\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"0\\\\\\\"}},\\\\\\\"source_ref\\\\\\\":\\\\\\\"SYNTHETIC-reference-rent-SYNTHETIC-phased-1-2\\\\\\\"}],\\\\\\\"income_scope\\\\\\\":\\\\\\\"residential_rent_only_excludes_other_and_commercial_income\\\\\\\",\\\\\\\"months_in_period\\\\\\\":1,\\\\\\\"months_per_year\\\\\\\":12,\\\\\\\"operating_expenses_excluding_tax\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"0\\\\\\\"},\\\\\\\"period_ref\\\\\\\":\\\\\\\"SYNTHETIC-phased-1-2\\\\\\\",\\\\\\\"production_authorized\\\\\\\":false,\\\\\\\"purpose\\\\\\\":\\\\\\\"synthetic_residential_operations_only\\\\\\\",\\\\\\\"rental_policy_adopted\\\\\\\":false,\\\\\\\"residential_effective_rent\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"20\\\\\\\"},\\\\\\\"review_authenticated\\\\\\\":false,\\\\\\\"run_ready\\\\\\\":false,\\\\\\\"source_sha256\\\\\\\":\\\\\\\"d34e123cf7f5610aff61024339558750aefb088f66462910914806407eec316f\\\\\\\",\\\\\\\"state\\\\\\\":\\\\\\\"computed_synthetic\\\\\\\",\\\\\\\"unit_total\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"10\\\\\\\"}}\\\",\\\"sha256\\\":\\\"d51af14b5dae1a354d094b11b25a22cd002dc579fe51959907c74a0fb75f2284\\\"},\\\"reference_source_sha256\\\":\\\"d34e123cf7f5610aff61024339558750aefb088f66462910914806407eec316f\\\",\\\"segment_id\\\":\\\"SYNTHETIC-phased-1-2\\\",\\\"start_date\\\":\\\"2027-06-01\\\"}],\\\"source_sha256\\\":\\\"65d0fcbc6e58036c5096929f4ed5f8b228e6acb81439ee7911bfb36274f2c35c\\\",\\\"start_date\\\":\\\"2027-04-01\\\",\\\"state\\\":\\\"computed_synthetic_phased_rental\\\",\\\"totals\\\":{\\\"available_unit_months\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"30\\\"},\\\"concession_loss\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"},\\\"effective_rent\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"60\\\"},\\\"gross_potential_rent\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"60\\\"},\\\"vacancy_loss\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"}}}\",\"sha256\":\"07b90d3bba88ab33682c209449eca3a7d68a3fb82f48c8306efab1db2e9ffe99\"},\"calendar_source_utf8\":\"{\\\"calendar_basis_ref\\\":\\\"SYNTHETIC-contiguous-segments-with-supplied-month-fractions\\\",\\\"capacity\\\":[{\\\"group_id\\\":\\\"SYNTHETIC-market-1\\\",\\\"rent_basis\\\":\\\"per_unit_per_month\\\",\\\"source_ref\\\":\\\"SYNTHETIC-capacity-claim\\\",\\\"total_units\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"10\\\"},\\\"unit_rentable_sf\\\":null}],\\\"capacity_basis_ref\\\":\\\"SYNTHETIC-supplied-fixed-capacity-not-delivery-approval\\\",\\\"context\\\":{\\\"deal_id\\\":\\\"SYNTHETIC-construction-draw-demo\\\",\\\"definition_set_revision\\\":\\\"SYNTHETIC-simple-interval-factors\\\",\\\"run_id\\\":\\\"SYNTHETIC-construction-draw-run\\\",\\\"scenario_id\\\":\\\"SYNTHETIC-draw-plan\\\"},\\\"currency\\\":\\\"USD\\\",\\\"end_date\\\":\\\"2027-07-01\\\",\\\"inventory_declared_complete\\\":true,\\\"period_ref\\\":\\\"SYNTHETIC-hold-2\\\",\\\"schema\\\":\\\"miniuw.synthetic-phased-rental.v1\\\",\\\"segments\\\":[{\\\"availability_source_ref\\\":\\\"SYNTHETIC-availability-proposal-SYNTHETIC-phased-1-0\\\",\\\"end_date\\\":\\\"2027-05-01\\\",\\\"month_anchor\\\":\\\"2027-04-01\\\",\\\"proration_basis_ref\\\":\\\"SYNTHETIC-supplied-half-or-full-month-not-inferred-from-days\\\",\\\"proration_fraction\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"1\\\"},\\\"rental_source_utf8\\\":\\\"{\\\\\\\"context\\\\\\\":{\\\\\\\"deal_id\\\\\\\":\\\\\\\"SYNTHETIC-construction-draw-demo\\\\\\\",\\\\\\\"definition_set_revision\\\\\\\":\\\\\\\"SYNTHETIC-simple-interval-factors\\\\\\\",\\\\\\\"run_id\\\\\\\":\\\\\\\"SYNTHETIC-construction-draw-run\\\\\\\",\\\\\\\"scenario_id\\\\\\\":\\\\\\\"SYNTHETIC-draw-plan\\\\\\\"},\\\\\\\"currency\\\\\\\":\\\\\\\"USD\\\\\\\",\\\\\\\"expense_items\\\\\\\":[{\\\\\\\"currency\\\\\\\":\\\\\\\"USD\\\\\\\",\\\\\\\"item_id\\\\\\\":\\\\\\\"SYNTHETIC-income-only-zero\\\\\\\",\\\\\\\"kind\\\\\\\":\\\\\\\"fixed_per_declared_period\\\\\\\",\\\\\\\"policy_ref\\\\\\\":\\\\\\\"SYNTHETIC-income-only-reference\\\\\\\",\\\\\\\"rate\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"0\\\\\\\"},\\\\\\\"source_ref\\\\\\\":\\\\\\\"SYNTHETIC-explicit-zero-placeholder-not-period-opex\\\\\\\"}],\\\\\\\"months_in_period\\\\\\\":1,\\\\\\\"months_per_year\\\\\\\":12,\\\\\\\"period_ref\\\\\\\":\\\\\\\"SYNTHETIC-phased-1-0\\\\\\\",\\\\\\\"residential_groups\\\\\\\":[{\\\\\\\"concession_basis\\\\\\\":\\\\\\\"after_vacancy_rent\\\\\\\",\\\\\\\"concession_fraction\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"0\\\\\\\"},\\\\\\\"currency\\\\\\\":\\\\\\\"USD\\\\\\\",\\\\\\\"group_id\\\\\\\":\\\\\\\"SYNTHETIC-market-1\\\\\\\",\\\\\\\"loss_fraction\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"0\\\\\\\"},\\\\\\\"policy_ref\\\\\\\":\\\\\\\"SYNTHETIC-explicit-loss-and-concession-SYNTHETIC-phased-1-0\\\\\\\",\\\\\\\"rent\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"2\\\\\\\"},\\\\\\\"rent_basis\\\\\\\":\\\\\\\"per_unit_per_month\\\\\\\",\\\\\\\"rent_definition\\\\\\\":\\\\\\\"gross_before_losses_and_concessions\\\\\\\",\\\\\\\"source_ref\\\\\\\":\\\\\\\"SYNTHETIC-reference-rent-SYNTHETIC-phased-1-0\\\\\\\",\\\\\\\"unit_rentable_sf\\\\\\\":null,\\\\\\\"units\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"10\\\\\\\"}}],\\\\\\\"schema\\\\\\\":\\\\\\\"miniuw.synthetic-residential-operations.v1\\\\\\\"}\\\",\\\"segment_id\\\":\\\"SYNTHETIC-phased-1-0\\\",\\\"start_date\\\":\\\"2027-04-01\\\"},{\\\"availability_source_ref\\\":\\\"SYNTHETIC-availability-proposal-SYNTHETIC-phased-1-1\\\",\\\"end_date\\\":\\\"2027-06-01\\\",\\\"month_anchor\\\":\\\"2027-05-01\\\",\\\"proration_basis_ref\\\":\\\"SYNTHETIC-supplied-half-or-full-month-not-inferred-from-days\\\",\\\"proration_fraction\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"1\\\"},\\\"rental_source_utf8\\\":\\\"{\\\\\\\"context\\\\\\\":{\\\\\\\"deal_id\\\\\\\":\\\\\\\"SYNTHETIC-construction-draw-demo\\\\\\\",\\\\\\\"definition_set_revision\\\\\\\":\\\\\\\"SYNTHETIC-simple-interval-factors\\\\\\\",\\\\\\\"run_id\\\\\\\":\\\\\\\"SYNTHETIC-construction-draw-run\\\\\\\",\\\\\\\"scenario_id\\\\\\\":\\\\\\\"SYNTHETIC-draw-plan\\\\\\\"},\\\\\\\"currency\\\\\\\":\\\\\\\"USD\\\\\\\",\\\\\\\"expense_items\\\\\\\":[{\\\\\\\"currency\\\\\\\":\\\\\\\"USD\\\\\\\",\\\\\\\"item_id\\\\\\\":\\\\\\\"SYNTHETIC-income-only-zero\\\\\\\",\\\\\\\"kind\\\\\\\":\\\\\\\"fixed_per_declared_period\\\\\\\",\\\\\\\"policy_ref\\\\\\\":\\\\\\\"SYNTHETIC-income-only-reference\\\\\\\",\\\\\\\"rate\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"0\\\\\\\"},\\\\\\\"source_ref\\\\\\\":\\\\\\\"SYNTHETIC-explicit-zero-placeholder-not-period-opex\\\\\\\"}],\\\\\\\"months_in_period\\\\\\\":1,\\\\\\\"months_per_year\\\\\\\":12,\\\\\\\"period_ref\\\\\\\":\\\\\\\"SYNTHETIC-phased-1-1\\\\\\\",\\\\\\\"residential_groups\\\\\\\":[{\\\\\\\"concession_basis\\\\\\\":\\\\\\\"after_vacancy_rent\\\\\\\",\\\\\\\"concession_fraction\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"0\\\\\\\"},\\\\\\\"currency\\\\\\\":\\\\\\\"USD\\\\\\\",\\\\\\\"group_id\\\\\\\":\\\\\\\"SYNTHETIC-market-1\\\\\\\",\\\\\\\"loss_fraction\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"0\\\\\\\"},\\\\\\\"policy_ref\\\\\\\":\\\\\\\"SYNTHETIC-explicit-loss-and-concession-SYNTHETIC-phased-1-1\\\\\\\",\\\\\\\"rent\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"2\\\\\\\"},\\\\\\\"rent_basis\\\\\\\":\\\\\\\"per_unit_per_month\\\\\\\",\\\\\\\"rent_definition\\\\\\\":\\\\\\\"gross_before_losses_and_concessions\\\\\\\",\\\\\\\"source_ref\\\\\\\":\\\\\\\"SYNTHETIC-reference-rent-SYNTHETIC-phased-1-1\\\\\\\",\\\\\\\"unit_rentable_sf\\\\\\\":null,\\\\\\\"units\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"10\\\\\\\"}}],\\\\\\\"schema\\\\\\\":\\\\\\\"miniuw.synthetic-residential-operations.v1\\\\\\\"}\\\",\\\"segment_id\\\":\\\"SYNTHETIC-phased-1-1\\\",\\\"start_date\\\":\\\"2027-05-01\\\"},{\\\"availability_source_ref\\\":\\\"SYNTHETIC-availability-proposal-SYNTHETIC-phased-1-2\\\",\\\"end_date\\\":\\\"2027-07-01\\\",\\\"month_anchor\\\":\\\"2027-06-01\\\",\\\"proration_basis_ref\\\":\\\"SYNTHETIC-supplied-half-or-full-month-not-inferred-from-days\\\",\\\"proration_fraction\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"1\\\"},\\\"rental_source_utf8\\\":\\\"{\\\\\\\"context\\\\\\\":{\\\\\\\"deal_id\\\\\\\":\\\\\\\"SYNTHETIC-construction-draw-demo\\\\\\\",\\\\\\\"definition_set_revision\\\\\\\":\\\\\\\"SYNTHETIC-simple-interval-factors\\\\\\\",\\\\\\\"run_id\\\\\\\":\\\\\\\"SYNTHETIC-construction-draw-run\\\\\\\",\\\\\\\"scenario_id\\\\\\\":\\\\\\\"SYNTHETIC-draw-plan\\\\\\\"},\\\\\\\"currency\\\\\\\":\\\\\\\"USD\\\\\\\",\\\\\\\"expense_items\\\\\\\":[{\\\\\\\"currency\\\\\\\":\\\\\\\"USD\\\\\\\",\\\\\\\"item_id\\\\\\\":\\\\\\\"SYNTHETIC-income-only-zero\\\\\\\",\\\\\\\"kind\\\\\\\":\\\\\\\"fixed_per_declared_period\\\\\\\",\\\\\\\"policy_ref\\\\\\\":\\\\\\\"SYNTHETIC-income-only-reference\\\\\\\",\\\\\\\"rate\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"0\\\\\\\"},\\\\\\\"source_ref\\\\\\\":\\\\\\\"SYNTHETIC-explicit-zero-placeholder-not-period-opex\\\\\\\"}],\\\\\\\"months_in_period\\\\\\\":1,\\\\\\\"months_per_year\\\\\\\":12,\\\\\\\"period_ref\\\\\\\":\\\\\\\"SYNTHETIC-phased-1-2\\\\\\\",\\\\\\\"residential_groups\\\\\\\":[{\\\\\\\"concession_basis\\\\\\\":\\\\\\\"after_vacancy_rent\\\\\\\",\\\\\\\"concession_fraction\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"0\\\\\\\"},\\\\\\\"currency\\\\\\\":\\\\\\\"USD\\\\\\\",\\\\\\\"group_id\\\\\\\":\\\\\\\"SYNTHETIC-market-1\\\\\\\",\\\\\\\"loss_fraction\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"0\\\\\\\"},\\\\\\\"policy_ref\\\\\\\":\\\\\\\"SYNTHETIC-explicit-loss-and-concession-SYNTHETIC-phased-1-2\\\\\\\",\\\\\\\"rent\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"2\\\\\\\"},\\\\\\\"rent_basis\\\\\\\":\\\\\\\"per_unit_per_month\\\\\\\",\\\\\\\"rent_definition\\\\\\\":\\\\\\\"gross_before_losses_and_concessions\\\\\\\",\\\\\\\"source_ref\\\\\\\":\\\\\\\"SYNTHETIC-reference-rent-SYNTHETIC-phased-1-2\\\\\\\",\\\\\\\"unit_rentable_sf\\\\\\\":null,\\\\\\\"units\\\\\\\":{\\\\\\\"denominator\\\\\\\":\\\\\\\"1\\\\\\\",\\\\\\\"numerator\\\\\\\":\\\\\\\"10\\\\\\\"}}],\\\\\\\"schema\\\\\\\":\\\\\\\"miniuw.synthetic-residential-operations.v1\\\\\\\"}\\\",\\\"segment_id\\\":\\\"SYNTHETIC-phased-1-2\\\",\\\"start_date\\\":\\\"2027-06-01\\\"}],\\\"start_date\\\":\\\"2027-04-01\\\"}\",\"cash_source_sha256\":\"a5f21a2a91b0acd2d4009eec6c7ba0d8b657968ce72930cce4e1a0e0161de71f\",\"noi_source_sha256\":\"9a345856b1045b81938f6c85cc08ce03d31716cc46a200d8336d8492263d0b6b\",\"other_zero_income_item_ids\":[\"SYNTHETIC-income-commercial\"],\"period_ref\":\"SYNTHETIC-hold-2\",\"rental_income_item_id\":\"SYNTHETIC-income-residential\"}],\"rental_scope_and_no_overlap_basis_ref\":\"SYNTHETIC-residential-only-other-income-zero-explicit\",\"schema\":\"miniuw.synthetic-phased-rental-lifecycle-manifest.v1\"}",
+    "blockers": [
+      "SYNTHETIC-hold-1:rental_income_does_not_equal_exact_NOI_row"
+    ],
+    "full_return_withheld": true,
+    "recovered_still_blocked": true
+  },
+  "standalone_partial_period": {
+    "source_sha256": "0af827855b0b39d652d8fd16d1819e2988f367b9552e468236ef86e5b73aa030",
+    "run_sha256": "cc158c37722eefbed6c73d43b9b60cd2e2a2831264bff34e23fde41f0844ff34",
+    "start_date": "2027-01-16",
+    "end_date": "2027-02-01",
+    "totals": {
+      "available_unit_months": {
+        "denominator": "2",
+        "numerator": "5"
+      },
+      "concession_loss": {
+        "denominator": "1",
+        "numerator": "0"
+      },
+      "effective_rent": {
+        "denominator": "1",
+        "numerator": "5"
+      },
+      "gross_potential_rent": {
+        "denominator": "1",
+        "numerator": "5"
+      },
+      "vacancy_loss": {
+        "denominator": "1",
+        "numerator": "0"
+      }
+    },
+    "not_automatically_extended_to_operating_window": true
+  },
+  "delivery_or_day_count_rule_generated": false,
+  "rental_income_double_counted": false,
+  "financial_model_complete": false,
+  "personal_investor_return": null,
+  "decision": "PENDING",
+  "production_authorized": false
+}

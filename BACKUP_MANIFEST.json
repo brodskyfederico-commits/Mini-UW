@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D03 review and metric-intake design extensions and T01–T81 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D03 review and metric-intake design extensions and T01–T84 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 31977,
-      "sha256": "3124b9ebf57e73051a40db2a456e4ae4e26d0c5aa4d5dcba0e0602224e0f174b"
+      "bytes": 32811,
+      "sha256": "0125e6a72a54f7d2118738921fd68db8650b8ad5ed2d42131d950ee7f720bb90"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 126346,
-      "sha256": "387bdd1269099f13adacc6c59353882f4a3a6391b005ad92d5afccbf5e09f267"
+      "bytes": 131138,
+      "sha256": "1ae9abb4f5c027c7889e6e261f2ef5a36ecd9397479b33623eedcc3303a90b9f"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -357,6 +357,11 @@
       "sha256": "aad15570128e8a18f4c7027b3f14264e045c7ea976bcb290d34ed3e178a0765b"
     },
     {
+      "path": "docs/review/Disponibilidad_Prorrateo_y_Retorno_T82_T84.md",
+      "bytes": 4510,
+      "sha256": "b5fbd1d5afae466a8e81660c58e298f0021e2bcd8dfe471b1f013f9f59b192b0"
+    },
+    {
       "path": "docs/review/Gastos_Impuestos_Seguros_y_Caja_T76.md",
       "bytes": 2740,
       "sha256": "036e5ec0b8a738bd84a9ac32fa466a0adbcf8ae44af748fa8cde31fb8585eced"
@@ -457,6 +462,11 @@
       "sha256": "debdaf215dc8de9b68f777d36135f1ac96cc6fe5432477063c002ea6c0c33879"
     },
     {
+      "path": "docs/review/Revision_Pendiente_Disponibilidad_y_Retorno_T84.md",
+      "bytes": 1023,
+      "sha256": "928b3a2fa9a63e7140be428ed16ad28fc1c1a0a4807032e0eb514ed2ee55f7b0"
+    },
+    {
       "path": "docs/review/Revision_Pendiente_Gastos_y_Retorno_T78.md",
       "bytes": 1015,
       "sha256": "21fdceebefc9e06c7573d61152d82e25d119b0c7eb757fb580791f35b128ef4c"
@@ -485,6 +495,11 @@
       "path": "docs/review/Revision_Vigente_Deuda_Obra_T71.md",
       "bytes": 1533,
       "sha256": "fb61105fad20568d40da94d272e051e5ac601232991c8bfb9cb258ce7fb27749"
+    },
+    {
+      "path": "docs/review/Revision_Vigente_Disponibilidad_y_Retorno_T84.md",
+      "bytes": 5650,
+      "sha256": "5319d701f6a23f1af155f35b01f6ae3b1f8e0d9acb8e7b4a12526c12ae3d1e9d"
     },
     {
       "path": "docs/review/Revision_Vigente_Gastos_y_Retorno_T78.md",
@@ -645,6 +660,11 @@
       "path": "docs/review/synthetic-operating-cash-returns-demo.json",
       "bytes": 4659,
       "sha256": "767a9e214ac2d23f27fefc21a01d033beb82e9c68d21e98d7895d0e44b54e016"
+    },
+    {
+      "path": "docs/review/synthetic-phased-rental-demo.json",
+      "bytes": 109311,
+      "sha256": "f2014734b4676467a252e119004c26b1488064bacd9f623f70bd41c6c0a9d187"
     },
     {
       "path": "docs/review/synthetic-preopening-cash-demo.json",
@@ -880,6 +900,11 @@
       "path": "docs/technical-coverage-T79-T81.json",
       "bytes": 18721,
       "sha256": "5ec36417a950c6d5e00e097e8702b2aef127ec425ac358c78cda1df9a340fec9"
+    },
+    {
+      "path": "docs/technical-coverage-T82-T84.json",
+      "bytes": 19512,
+      "sha256": "27e42fac7f6ec7d352cc0433011e6b18d5a64b5390c030873b71e3908d942509"
     },
     {
       "path": "docs/technical-implementation-T01.md",
@@ -1157,9 +1182,14 @@
       "sha256": "cedc2a27c4d0211de2ede2f90132a184b78b9f0beaa2bd144a7bd3935bbd0c7e"
     },
     {
+      "path": "docs/technical-implementation-T82-T84.md",
+      "bytes": 5024,
+      "sha256": "ebb4b02c4819c20f20525c3bc3cc869f35a51d33c5864300e0774418ed210945"
+    },
+    {
       "path": "docs/technical-implementation-status.json",
-      "bytes": 26919,
-      "sha256": "21d6721d9f4a78432ab09a2a9faa1fe7348c4ac211845968bb75c5148f8dba36"
+      "bytes": 28349,
+      "sha256": "b823b72cdb70080c426f505cd5be64dbc7fc27caeee66256fec043f05ee3dc58"
     },
     {
       "path": "infra/README.md",
@@ -1932,6 +1962,11 @@
       "sha256": "a0efea0a9520bc5a4776fab7c73849bc53b4ef7c3a8b2ca9dfcab0f7e0fe6490"
     },
     {
+      "path": "src/miniuw_foundation/current_phased_rental.py",
+      "bytes": 8500,
+      "sha256": "0ff27b2e2ebe1785f717cd20c0e51dec07e4f26f99358fb439c5e3bd5a8fb21f"
+    },
+    {
       "path": "src/miniuw_foundation/current_recovery_case.py",
       "bytes": 4686,
       "sha256": "f4db6a03b8910bed7f1521d07998deb9807f6c918c07c4cd167dd5521f9e3061"
@@ -2110,6 +2145,16 @@
       "path": "src/miniuw_foundation/periodic_returns.py",
       "bytes": 7592,
       "sha256": "eac518ac1fe44b196ba047965a28aef1e60067c48f8b7876963bab857257e4e2"
+    },
+    {
+      "path": "src/miniuw_foundation/phased_rental.py",
+      "bytes": 11768,
+      "sha256": "3fba8e990dc417ddf53dda7d6e3dd8065e5efc3dbc5f842f58fdf23010076e9d"
+    },
+    {
+      "path": "src/miniuw_foundation/phased_rental_lifecycle.py",
+      "bytes": 9582,
+      "sha256": "f46dde3d968f2cb70e54b6ebdd065ffc2bb5d2382cdb4dafaeef2c88cdc66ec9"
     },
     {
       "path": "src/miniuw_foundation/preopening_cash.py",
@@ -2577,6 +2622,31 @@
       "sha256": "83fd1e316f46a3f42a41e9a5d3b3e5b56688ce64fa1728ee2bdc59e75db583f8"
     },
     {
+      "path": "templates/synthetic-partial-rental-period.json",
+      "bytes": 2436,
+      "sha256": "0af827855b0b39d652d8fd16d1819e2988f367b9552e468236ef86e5b73aa030"
+    },
+    {
+      "path": "templates/synthetic-phased-expense-base.json",
+      "bytes": 234008,
+      "sha256": "5bf69c8f852f6a6bb53be9ad1d93266bf73eadb8b8f52f296510c20e5c88c72a"
+    },
+    {
+      "path": "templates/synthetic-phased-lifecycle-manifest.json",
+      "bytes": 50081,
+      "sha256": "7046ce53ae241ebbe86f85d5f0b42b3b533d95828dc2969ab314bb01e288921a"
+    },
+    {
+      "path": "templates/synthetic-phased-rental-bundle.json",
+      "bytes": 478280,
+      "sha256": "efbadadeb0dbc420899780fae3473e10c5176966ed7380dc09c468cb0f7b317f"
+    },
+    {
+      "path": "templates/synthetic-phased-rental-evidence.json",
+      "bytes": 24866,
+      "sha256": "9cfdb0b8e9d0694c998df8e0c72d03745a4d1cfeae2cec9f8603a9e431a847fc"
+    },
+    {
       "path": "templates/synthetic-piecewise-recovery-currency-example.json",
       "bytes": 18776,
       "sha256": "cae1c35d270fec3c1e2a22bd9d804d8181d38180d82a3a6a0b3035c3f0458560"
@@ -3017,6 +3087,16 @@
       "sha256": "9cab563a872fc9ad4336785d6ff6745987ff8467b4740c7ebdb2dbc065a62e38"
     },
     {
+      "path": "tests/test_phased_rental.py",
+      "bytes": 10511,
+      "sha256": "f9093b00f63650b665e132a212a3dd4218aaa4d64976563aef899f43825bd8c6"
+    },
+    {
+      "path": "tests/test_phased_rental_lifecycle.py",
+      "bytes": 14459,
+      "sha256": "955498af879b5dcf371feb5900fc3be00a4a59045f38e0faee7ebab3c26e8131"
+    },
+    {
       "path": "tests/test_preopening_cash.py",
       "bytes": 14825,
       "sha256": "1c45e0db2e8f835b7b388a0317a8184b7f5d671fd439531fd31dec4914aa6749"
@@ -3272,6 +3352,11 @@
       "sha256": "a474026134e8b372c505008f0b21a06f32ab50f2b27553709e393868cf88cc16"
     },
     {
+      "path": "tools/demo_phased_rental.py",
+      "bytes": 4451,
+      "sha256": "7136f74465959eea43b74bf5ce109521c740755c1f5d706ce357603ce81e645b"
+    },
+    {
       "path": "tools/demo_preopening_cash.py",
       "bytes": 5966,
       "sha256": "d8dfd9ca01f991ab1efc583d0b1cf6de156a2b72cd51c9095823d846b7c2bb90"
@@ -3405,6 +3490,11 @@
       "path": "tools/lifecycle_demo_support.py",
       "bytes": 9819,
       "sha256": "36072b52ab4a8f981c34b658ccca73b55093327d7ee469d2c250dd62ae32604b"
+    },
+    {
+      "path": "tools/phased_rental_demo_support.py",
+      "bytes": 7727,
+      "sha256": "b8a5dcab0c7756c3f8a6ec9adcab24c3cb239d3ff755bca4afaf4d72530f5231"
     },
     {
       "path": "tools/rental_lifecycle_demo_support.py",
