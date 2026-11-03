@@ -1,0 +1,247 @@
+{
+  "scope": "Two explicit complete v1 synthetic revisions; current-only cash/EM/event comparison and portable internal review, no financial closure",
+  "rows": [
+    {
+      "requirement_or_variable": "full_case_change_inventory_and_comparison_pins",
+      "source": {
+        "path": "docs/technical-implementation-T88-T89.md",
+        "line": 5,
+        "sha256": "462b087fc07f551afe94fb58b4b008fd38717fd02bb79d886cbb256191589491"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§§3, 5 y 7",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "DAT-01"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 aportes/distribuciones brutos frente a neto",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "RETURN-01"
+        }
+      ],
+      "current_definition": "Full explicit case changes and source pins; same economic context/time, strict structural limits and new-revision comparison",
+      "affected_modules": [
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_v1_revision.py",
+          "line": 46,
+          "test": "V1RevisionTests.test_rebuild_both_full_cases_and_exact_deltas_without_choosing_candidate"
+        },
+        {
+          "path": "tests/test_v1_revision.py",
+          "line": 65,
+          "test": "V1RevisionTests.test_exact_case_pins_and_missing_comparison_basis_block"
+        },
+        {
+          "path": "tests/test_v1_revision.py",
+          "line": 69,
+          "test": "V1RevisionTests.test_case_identity_and_revision_order_are_required"
+        },
+        {
+          "path": "tests/test_v1_revision.py",
+          "line": 73,
+          "test": "V1RevisionTests.test_common_time_economic_context_and_scenario_inventory_required"
+        },
+        {
+          "path": "tests/test_v1_revision.py",
+          "line": 81,
+          "test": "V1RevisionTests.test_strict_specification_and_invalid_bytes_rejected"
+        },
+        {
+          "path": "tests/test_v1_revision.py",
+          "line": 88,
+          "test": "V1RevisionTests.test_differences_preserve_presence_null_zero_types_escapes_and_budget"
+        }
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Authentic revision authority, real scenarios and complete 55-field semantic mapping"
+    },
+    {
+      "requirement_or_variable": "current_cash_EM_events_normalization_and_IRR",
+      "source": {
+        "path": "docs/technical-implementation-T88-T89.md",
+        "line": 11,
+        "sha256": "462b087fc07f551afe94fb58b4b008fd38717fd02bb79d886cbb256191589491"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§§3, 5 y 7",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "DAT-01"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 aportes/distribuciones brutos frente a neto",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "RETURN-01"
+        }
+      ],
+      "current_definition": "Withdraw deltas on either stale/missing/conflicting case or different horizon/event identity; separate bases and all IRR interval roots without chosen rate",
+      "affected_modules": [
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_v1_revision.py",
+          "line": 54,
+          "test": "V1RevisionTests.test_stale_either_case_withdraws_all_deltas_and_keeps_source_blockers"
+        },
+        {
+          "path": "tests/test_v1_revision.py",
+          "line": 60,
+          "test": "V1RevisionTests.test_missing_or_conflicting_candidate_is_pending_without_repair"
+        },
+        {
+          "path": "tests/test_v1_revision.py",
+          "line": 99,
+          "test": "V1RevisionTests.test_all_irr_roots_policy_pending_and_immutable_repeated_result"
+        },
+        {
+          "path": "tests/test_v1_revision.py",
+          "line": 106,
+          "test": "V1RevisionTests.test_normalization_different_reference_is_not_same_investment_delta"
+        },
+        {
+          "path": "tests/test_v1_revision.py",
+          "line": 111,
+          "test": "V1RevisionTests.test_different_finite_cash_horizon_withdraws_cash_and_EM_deltas"
+        },
+        {
+          "path": "tests/test_v1_revision.py",
+          "line": 123,
+          "test": "V1RevisionTests.test_renamed_gross_event_even_with_same_cash_requires_explicit_reconciliation"
+        }
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Different-horizon/scenario comparisons, financial definitions/acceptance, capital/CoC/personal allocation"
+    },
+    {
+      "requirement_or_variable": "portable_comparison_source_and_version_replay",
+      "source": {
+        "path": "docs/technical-implementation-T88-T89.md",
+        "line": 17,
+        "sha256": "462b087fc07f551afe94fb58b4b008fd38717fd02bb79d886cbb256191589491"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§§3, 5 y 7",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "DAT-01"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 aportes/distribuciones brutos frente a neto",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "RETURN-01"
+        }
+      ],
+      "current_definition": "Portable exact source/spec/result/engine reconstruction including blocked results; edited source/proof/version cannot pass by rehashing",
+      "affected_modules": [
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_v1_revision.py",
+          "line": 136,
+          "test": "V1RevisionBundleTests.test_portable_exact_sources_results_and_every_change_in_internal_review"
+        },
+        {
+          "path": "tests/test_v1_revision.py",
+          "line": 143,
+          "test": "V1RevisionBundleTests.test_rehashed_forged_result_does_not_bypass_export_or_recovery"
+        },
+        {
+          "path": "tests/test_v1_revision.py",
+          "line": 149,
+          "test": "V1RevisionBundleTests.test_changed_exact_source_versions_and_malformed_bundles_rejected"
+        },
+        {
+          "path": "tests/test_v1_revision.py",
+          "line": 202,
+          "test": "V1RevisionBundleTests.test_blocked_candidate_bundle_recovery_and_review_never_restore_old_numbers"
+        }
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Runtime DB/system recovery and independent audit"
+    },
+    {
+      "requirement_or_variable": "complete_internal_comparison_artifacts_and_audit",
+      "source": {
+        "path": "docs/technical-implementation-T88-T89.md",
+        "line": 19,
+        "sha256": "462b087fc07f551afe94fb58b4b008fd38717fd02bb79d886cbb256191589491"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§§3, 5 y 7",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "DAT-01"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 aportes/distribuciones brutos frente a neto",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "RETURN-01"
+        }
+      ],
+      "current_definition": "Four complete bounded local artifacts, exact inventory/hash plus replay, no different overwrite or partial final output",
+      "affected_modules": [
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_v1_revision.py",
+          "line": 158,
+          "test": "V1RevisionBundleTests.test_real_local_output_idempotent_retry_and_full_directory_replay"
+        },
+        {
+          "path": "tests/test_v1_revision.py",
+          "line": 164,
+          "test": "V1RevisionBundleTests.test_different_existing_output_and_symlink_are_not_overwritten"
+        },
+        {
+          "path": "tests/test_v1_revision.py",
+          "line": 174,
+          "test": "V1RevisionBundleTests.test_altered_result_and_rehashed_package_still_rejected"
+        },
+        {
+          "path": "tests/test_v1_revision.py",
+          "line": 183,
+          "test": "V1RevisionBundleTests.test_exact_inventory_malformed_unsafe_paths_and_symlink_file_rejected"
+        },
+        {
+          "path": "tests/test_v1_revision.py",
+          "line": 195,
+          "test": "V1RevisionBundleTests.test_failed_final_rename_leaves_no_partial_final_output"
+        }
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Concurrent production publication, source authentication and real decisions"
+    }
+  ],
+  "real_decisions_enabled": false
+}

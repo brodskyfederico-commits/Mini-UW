@@ -1,7 +1,7 @@
 {
   "phase": "post-I01 synthetic technical implementation",
   "user_authorized": true,
-  "component": "T87",
+  "component": "T89",
   "status": "local_implementation_verified_pending_remote_receipt",
   "implemented": [
     "fresh raw-claim drafts from unchanged 55-input/10-criterion template",
@@ -124,9 +124,11 @@
     "explicit-time all-source phased rental current view with availability/proration/capacity, investor story and expense tables withheld together on source or calculation blockers",
     "single declarative synthetic v1 case with all 55 original field states, ten fresh explicit criteria and a supported staged-rental purchase-to-sale source reconstruction",
     "replay-verified one-page synthetic v1 summary plus eight local artifacts, exact directory audit and different-output overwrite refusal",
-    "seven Dot and seventeen bot role contracts with inputs, outputs, dependencies, blockers and honest implemented-versus-contract-only states"
+    "seven Dot and seventeen bot role contracts with inputs, outputs, dependencies, blockers and honest implemented-versus-contract-only states",
+    "full declarative synthetic v1 reference/candidate source reconstruction and complete bounded JSON Pointer change inventory with current-only conditional cash/EM/event deltas",
+    "portable exact-source synthetic v1 revision comparison replay and four-file local internal review with strict inventory, hash/replay audit and no different-output overwrite"
   ],
-  "unit_tests": 1270,
+  "unit_tests": 1291,
   "plan_packages_partially_addressed": [
     "IMP-01",
     "IMP-06",
@@ -234,7 +236,9 @@
     "T84",
     "T85",
     "T86",
-    "T87"
+    "T87",
+    "T88",
+    "T89"
   ],
   "tests_by_component": {
     "T01": 31,
@@ -323,7 +327,9 @@
     "T84": 7,
     "T85": 14,
     "T86": 7,
-    "T87": 3
+    "T87": 3,
+    "T88": 12,
+    "T89": 9
   },
   "not_yet_implemented": [
     "complete financial graph and its designed cycles",
@@ -490,5 +496,12 @@
   },
   "external_agents_deployed": false,
   "all_55_fields_connected_to_v1_calculation": false,
-  "synthetic_v1_scope": "Single explicit staged same-liability phased residential hold/sale profile; no intermediate refinance; conditional projection from typed supplemental sources, 54/55 original fields pending in demo. Only EM offered to point comparator; IRR intervals retained, eight metrics pending. No financial closure, real workbook completion, independent audit or deployment."
+  "synthetic_v1_scope": "Single explicit staged same-liability phased residential hold/sale profile; no intermediate refinance; conditional projection from typed supplemental sources, 54/55 original fields pending in demo. Only EM offered to point comparator; IRR intervals retained, eight metrics pending. No financial closure, real workbook completion, independent audit or deployment.",
+  "synthetic_v1_full_revision_comparison_implemented": true,
+  "synthetic_v1_revision_portable_replay_implemented": true,
+  "synthetic_v1_revision_internal_review_implemented": true,
+  "automatic_candidate_generation_enabled": false,
+  "automatic_evidence_renewal_enabled": false,
+  "automatic_candidate_selection_enabled": false,
+  "synthetic_v1_revision_scope": "Two explicitly supplied full same-case, later-revision, same economic context/scenario/UTC sources. Monetary/EM/event deltas only for both-current projections with same currency/horizon/event identities. Exact full difference inventory, not isolated causal attribution. Separate normalization bases and all IRR intervals, no chosen IRR/delta/real decision or automatic evidence renewal. Does not complete 55-field mapping, financial model, refinance integration or personal allocation."
 }
