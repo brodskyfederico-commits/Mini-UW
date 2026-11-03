@@ -1,0 +1,354 @@
+{
+  "components": [
+    "T77",
+    "T78"
+  ],
+  "purpose": "synthetic_expense_detail_continuity_and_full_cash_return",
+  "lifecycle_source_sha256": "a314159fe0b1d71b1bbcf90167846e9ea072c5da89edd735466ff492f7c17eea",
+  "manifest_source_sha256": "ab8cb1cdbb8c4789bf7a1bef87003ee54e8eb1a87c9f29238c261c358ea8a7ed",
+  "return_run_sha256": "566ebb1b574590e4ea35a820c437fedfa01e8d35e256bf7c897c665105aac7dd",
+  "bundle_sha256": "186933036d4834b56e76a66c49bca3d52b90af58c42ceb3e0d08c6920d55a37e",
+  "full_recovery_passed": true,
+  "evaluated_as_of_UTC": "2027-07-01T12:00:00Z",
+  "required_source_bindings": 26,
+  "current_run_sha256": "35d1cec92a2a84241a378ad43326ad887750a5d588ed5f3f7ede9f11a66879fb",
+  "current_markdown_sha256": "822c264c7ca5f181eda6816c918246da1a2fce127becd61e698a66d95274e429",
+  "expired_registry_source_utf8": "{\"context\":{\"deal_id\":\"SYNTHETIC-construction-draw-demo\",\"definition_set_revision\":\"SYNTHETIC-simple-interval-factors\",\"run_id\":\"SYNTHETIC-construction-draw-run\",\"scenario_id\":\"SYNTHETIC-draw-plan\"},\"evidence\":[{\"basis_ref\":\"SYNTHETIC-supplied-test-validity-not-authentic-review\",\"evidence_id\":\"SYNTHETIC-expense-evidence-0\",\"issued_at\":\"2027-01-01T00:00:00Z\",\"requirement_id\":\"/transport/lifecycle_bundle\",\"review_status\":\"accepted_synthetic\",\"source_locator\":\"/transport/lifecycle_bundle\",\"source_sha256\":\"a314159fe0b1d71b1bbcf90167846e9ea072c5da89edd735466ff492f7c17eea\",\"superseded_by_sha256\":null,\"valid_from\":\"2027-01-01T00:00:00Z\",\"valid_until\":\"2027-07-02T00:00:00Z\",\"value_status\":\"declared_synthetic\"},{\"basis_ref\":\"SYNTHETIC-supplied-test-validity-not-authentic-review\",\"evidence_id\":\"SYNTHETIC-expense-evidence-1\",\"issued_at\":\"2027-01-01T00:00:00Z\",\"requirement_id\":\"/construction/bundle\",\"review_status\":\"accepted_synthetic\",\"source_locator\":\"/construction/bundle\",\"source_sha256\":\"2fcd3b12d50ed985346a4f6c5ed33311415c1ce7d6902065cccb87127642bd04\",\"superseded_by_sha256\":null,\"valid_from\":\"2027-01-01T00:00:00Z\",\"valid_until\":\"2027-07-02T00:00:00Z\",\"value_status\":\"declared_synthetic\"},{\"basis_ref\":\"SYNTHETIC-supplied-test-validity-not-authentic-review\",\"evidence_id\":\"SYNTHETIC-expense-evidence-2\",\"issued_at\":\"2027-01-01T00:00:00Z\",\"requirement_id\":\"/construction/preopening_draft\",\"review_status\":\"accepted_synthetic\",\"source_locator\":\"/construction/preopening_draft\",\"source_sha256\":\"5840fc93b1e0aaf3c27c9dd21730ca5d1a30de648560f7ab472d1a11c4c7b4c5\",\"superseded_by_sha256\":null,\"valid_from\":\"2027-01-01T00:00:00Z\",\"valid_until\":\"2027-07-02T00:00:00Z\",\"value_status\":\"declared_synthetic\"},{\"basis_ref\":\"SYNTHETIC-supplied-test-validity-not-authentic-review\",\"evidence_id\":\"SYNTHETIC-expense-evidence-3\",\"issued_at\":\"2027-01-01T00:00:00Z\",\"requirement_id\":\"/construction/binding\",\"review_status\":\"accepted_synthetic\",\"source_locator\":\"/construction/binding\",\"source_sha256\":\"58f2f6702a345ce0459f997bd7e958785cd324c66db71442a9a2475ba6f8aa41\",\"superseded_by_sha256\":null,\"valid_from\":\"2027-01-01T00:00:00Z\",\"valid_until\":\"2027-07-02T00:00:00Z\",\"value_status\":\"declared_synthetic\"},{\"basis_ref\":\"SYNTHETIC-supplied-test-validity-not-authentic-review\",\"evidence_id\":\"SYNTHETIC-expense-evidence-4\",\"issued_at\":\"2027-01-01T00:00:00Z\",\"requirement_id\":\"/transition/phase_contract\",\"review_status\":\"accepted_synthetic\",\"source_locator\":\"/transition/phase_contract\",\"source_sha256\":\"91cab74563bec95cbc59f22dbde09777ba60de83df9f51f2e460b9b870d3074f\",\"superseded_by_sha256\":null,\"valid_from\":\"2027-01-01T00:00:00Z\",\"valid_until\":\"2027-07-02T00:00:00Z\",\"value_status\":\"declared_synthetic\"},{\"basis_ref\":\"SYNTHETIC-supplied-test-validity-not-authentic-review\",\"evidence_id\":\"SYNTHETIC-expense-evidence-5\",\"issued_at\":\"2027-01-01T00:00:00Z\",\"requirement_id\":\"/boundary/cash_binding\",\"review_status\":\"accepted_synthetic\",\"source_locator\":\"/boundary/cash_binding\",\"source_sha256\":\"06fd251a8a3ae824035959dcadb6ddb9a2c2bcde1658f3b059f3c355c29ee983\",\"superseded_by_sha256\":null,\"valid_from\":\"2027-01-01T00:00:00Z\",\"valid_until\":\"2027-07-02T00:00:00Z\",\"value_status\":\"declared_synthetic\"},{\"basis_ref\":\"SYNTHETIC-supplied-test-validity-not-authentic-review\",\"evidence_id\":\"SYNTHETIC-expense-evidence-6\",\"issued_at\":\"2027-01-01T00:00:00Z\",\"requirement_id\":\"/boundary/window_binding\",\"review_status\":\"accepted_synthetic\",\"source_locator\":\"/boundary/window_binding\",\"source_sha256\":\"74daa27eba56f0bcf8301c4b5ec64a71f3f1e8a853d6879aff4792b01e0770ee\",\"superseded_by_sha256\":null,\"valid_from\":\"2027-01-01T00:00:00Z\",\"valid_until\":\"2027-07-02T00:00:00Z\",\"value_status\":\"declared_synthetic\"},{\"basis_ref\":\"SYNTHETIC-supplied-test-validity-not-authentic-review\",\"evidence_id\":\"SYNTHETIC-expense-evidence-7\",\"issued_at\":\"2027-01-01T00:00:00Z\",\"requirement_id\":\"/investor/source\",\"review_status\":\"accepted_synthetic\",\"source_locator\":\"/investor/source\",\"source_sha256\":\"8683371c1514eae7ea9455a1643036294ccbdc7efa45831f2f9bcbb60b91d144\",\"superseded_by_sha256\":null,\"valid_from\":\"2027-01-01T00:00:00Z\",\"valid_until\":\"2027-07-02T00:00:00Z\",\"value_status\":\"declared_synthetic\"},{\"basis_ref\":\"SYNTHETIC-supplied-test-validity-not-authentic-review\",\"evidence_id\":\"SYNTHETIC-expense-evidence-8\",\"issued_at\":\"2027-01-01T00:00:00Z\",\"requirement_id\":\"/investor/binding\",\"review_status\":\"accepted_synthetic\",\"source_locator\":\"/investor/binding\",\"source_sha256\":\"c9e1eb40090c696353125ee81d3efb26ff78c84fc6e8aab53c1beb5e81c3ea7c\",\"superseded_by_sha256\":null,\"valid_from\":\"2027-01-01T00:00:00Z\",\"valid_until\":\"2027-07-02T00:00:00Z\",\"value_status\":\"declared_synthetic\"},{\"basis_ref\":\"SYNTHETIC-supplied-test-validity-not-authentic-review\",\"evidence_id\":\"SYNTHETIC-expense-evidence-9\",\"issued_at\":\"2027-01-01T00:00:00Z\",\"requirement_id\":\"/construction/loans/0\",\"review_status\":\"accepted_synthetic\",\"source_locator\":\"/construction/loans/0\",\"source_sha256\":\"e0821c3453dd2911a1b761c1245504bffb9c980e8f52ead134e5938152adb64b\",\"superseded_by_sha256\":null,\"valid_from\":\"2027-01-01T00:00:00Z\",\"valid_until\":\"2027-07-02T00:00:00Z\",\"value_status\":\"declared_synthetic\"},{\"basis_ref\":\"SYNTHETIC-supplied-test-validity-not-authentic-review\",\"evidence_id\":\"SYNTHETIC-expense-evidence-10\",\"issued_at\":\"2027-01-01T00:00:00Z\",\"requirement_id\":\"/transition/loans/0/schedule\",\"review_status\":\"accepted_synthetic\",\"source_locator\":\"/transition/loans/0/schedule\",\"source_sha256\":\"99758e708f3cd454088bd0bda66531a2787a3ba5b704e0c5428e64ba0a340784\",\"superseded_by_sha256\":null,\"valid_from\":\"2027-01-01T00:00:00Z\",\"valid_until\":\"2027-07-02T00:00:00Z\",\"value_status\":\"declared_synthetic\"},{\"basis_ref\":\"SYNTHETIC-supplied-test-validity-not-authentic-review\",\"evidence_id\":\"SYNTHETIC-expense-evidence-11\",\"issued_at\":\"2027-01-01T00:00:00Z\",\"requirement_id\":\"/transition/loans/0/windows_record\",\"review_status\":\"accepted_synthetic\",\"source_locator\":\"/transition/loans/0/windows_record\",\"source_sha256\":\"4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945\",\"superseded_by_sha256\":null,\"valid_from\":\"2027-01-01T00:00:00Z\",\"valid_until\":\"2027-07-02T00:00:00Z\",\"value_status\":\"declared_synthetic\"},{\"basis_ref\":\"SYNTHETIC-supplied-test-validity-not-authentic-review\",\"evidence_id\":\"SYNTHETIC-expense-evidence-12\",\"issued_at\":\"2027-01-01T00:00:00Z\",\"requirement_id\":\"/operation/periods/0/noi\",\"review_status\":\"accepted_synthetic\",\"source_locator\":\"/operation/periods/0/noi\",\"source_sha256\":\"e9111b611a4c3fdab664dd7a1f77f7347cda63f90ebca7059d7b4c284ca26f62\",\"superseded_by_sha256\":null,\"valid_from\":\"2027-01-01T00:00:00Z\",\"valid_until\":\"2027-07-02T00:00:00Z\",\"value_status\":\"declared_synthetic\"},{\"basis_ref\":\"SYNTHETIC-supplied-test-validity-not-authentic-review\",\"evidence_id\":\"SYNTHETIC-expense-evidence-13\",\"issued_at\":\"2027-01-01T00:00:00Z\",\"requirement_id\":\"/operation/periods/0/cash\",\"review_status\":\"accepted_synthetic\",\"source_locator\":\"/operation/periods/0/cash\",\"source_sha256\":\"6b14261e22aa2cccb40fe950d40c9cb9943f5fc33002447d14d839dadc104f59\",\"superseded_by_sha256\":null,\"valid_from\":\"2027-01-01T00:00:00Z\",\"valid_until\":\"2027-07-02T00:00:00Z\",\"value_status\":\"declared_synthetic\"},{\"basis_ref\":\"SYNTHETIC-supplied-test-validity-not-authentic-review\",\"evidence_id\":\"SYNTHETIC-expense-evidence-14\",\"issued_at\":\"2027-01-01T00:00:00Z\",\"requirement_id\":\"/operation/periods/1/noi\",\"review_status\":\"accepted_synthetic\",\"source_locator\":\"/operation/periods/1/noi\",\"source_sha256\":\"18f6b590101f62317608a112db3226d7a0509b4d7ccbba6d8f5938b7bc27cd2c\",\"superseded_by_sha256\":null,\"valid_from\":\"2027-01-01T00:00:00Z\",\"valid_until\":\"2027-07-02T00:00:00Z\",\"value_status\":\"declared_synthetic\"},{\"basis_ref\":\"SYNTHETIC-supplied-test-validity-not-authentic-review\",\"evidence_id\":\"SYNTHETIC-expense-evidence-15\",\"issued_at\":\"2027-01-01T00:00:00Z\",\"requirement_id\":\"/operation/periods/1/cash\",\"review_status\":\"accepted_synthetic\",\"source_locator\":\"/operation/periods/1/cash\",\"source_sha256\":\"640f71c31fef8673077d5af8e107c69a400a9e138b56fa7a464f997501583656\",\"superseded_by_sha256\":null,\"valid_from\":\"2027-01-01T00:00:00Z\",\"valid_until\":\"2027-07-02T00:00:00Z\",\"value_status\":\"declared_synthetic\"},{\"basis_ref\":\"SYNTHETIC-supplied-test-validity-not-authentic-review\",\"evidence_id\":\"SYNTHETIC-expense-evidence-16\",\"issued_at\":\"2027-01-01T00:00:00Z\",\"requirement_id\":\"/operation/manifest\",\"review_status\":\"accepted_synthetic\",\"source_locator\":\"/operation/manifest\",\"source_sha256\":\"199062811119f395ad71e1da644d3bfed350f739115f23d18f4e94450fdcf21c\",\"superseded_by_sha256\":null,\"valid_from\":\"2027-01-01T00:00:00Z\",\"valid_until\":\"2027-07-02T00:00:00Z\",\"value_status\":\"declared_synthetic\"},{\"basis_ref\":\"SYNTHETIC-supplied-test-validity-not-authentic-review\",\"evidence_id\":\"SYNTHETIC-expense-evidence-17\",\"issued_at\":\"2027-01-01T00:00:00Z\",\"requirement_id\":\"/operation/sale_binding\",\"review_status\":\"accepted_synthetic\",\"source_locator\":\"/operation/sale_binding\",\"source_sha256\":\"5311009c64f3d9e50e5c47147a8cc075270f435395e46c4054f47b9aded9ca1b\",\"superseded_by_sha256\":null,\"valid_from\":\"2027-01-01T00:00:00Z\",\"valid_until\":\"2027-07-02T00:00:00Z\",\"value_status\":\"declared_synthetic\"},{\"basis_ref\":\"SYNTHETIC-supplied-test-validity-not-authentic-review\",\"evidence_id\":\"SYNTHETIC-expense-evidence-18\",\"issued_at\":\"2027-01-01T00:00:00Z\",\"requirement_id\":\"/sale/cash\",\"review_status\":\"accepted_synthetic\",\"source_locator\":\"/sale/cash\",\"source_sha256\":\"224193a389302c6a79b6e0f720faf30845f5813b2af3e5e14247572af4d6e8b4\",\"superseded_by_sha256\":null,\"valid_from\":\"2027-01-01T00:00:00Z\",\"valid_until\":\"2027-07-02T00:00:00Z\",\"value_status\":\"declared_synthetic\"},{\"basis_ref\":\"SYNTHETIC-supplied-test-validity-not-authentic-review\",\"evidence_id\":\"SYNTHETIC-expense-evidence-19\",\"issued_at\":\"2027-01-01T00:00:00Z\",\"requirement_id\":\"/sale/debt_binding\",\"review_status\":\"accepted_synthetic\",\"source_locator\":\"/sale/debt_binding\",\"source_sha256\":\"59e00d2162c92e3d209332d83da93229eb167986ff845f04f8f98c5748a03cff\",\"superseded_by_sha256\":null,\"valid_from\":\"2027-01-01T00:00:00Z\",\"valid_until\":\"2027-07-02T00:00:00Z\",\"value_status\":\"declared_synthetic\"},{\"basis_ref\":\"SYNTHETIC-supplied-test-validity-not-authentic-review\",\"evidence_id\":\"SYNTHETIC-expense-evidence-20\",\"issued_at\":\"2027-01-01T00:00:00Z\",\"requirement_id\":\"/sale/loans/0/terms\",\"review_status\":\"accepted_synthetic\",\"source_locator\":\"/sale/loans/0/terms\",\"source_sha256\":\"99758e708f3cd454088bd0bda66531a2787a3ba5b704e0c5428e64ba0a340784\",\"superseded_by_sha256\":null,\"valid_from\":\"2027-01-01T00:00:00Z\",\"valid_until\":\"2027-07-02T00:00:00Z\",\"value_status\":\"declared_synthetic\"},{\"basis_ref\":\"SYNTHETIC-supplied-test-validity-not-authentic-review\",\"evidence_id\":\"SYNTHETIC-expense-evidence-21\",\"issued_at\":\"2027-01-01T00:00:00Z\",\"requirement_id\":\"/sale/loans/0/windows_record\",\"review_status\":\"accepted_synthetic\",\"source_locator\":\"/sale/loans/0/windows_record\",\"source_sha256\":\"4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945\",\"superseded_by_sha256\":null,\"valid_from\":\"2027-01-01T00:00:00Z\",\"valid_until\":\"2027-07-02T00:00:00Z\",\"value_status\":\"declared_synthetic\"},{\"basis_ref\":\"SYNTHETIC-supplied-test-validity-not-authentic-review\",\"evidence_id\":\"SYNTHETIC-expense-evidence-22\",\"issued_at\":\"2027-01-01T00:00:00Z\",\"requirement_id\":\"/expense/manifest\",\"review_status\":\"accepted_synthetic\",\"source_locator\":\"/expense/manifest\",\"source_sha256\":\"ab8cb1cdbb8c4789bf7a1bef87003ee54e8eb1a87c9f29238c261c358ea8a7ed\",\"superseded_by_sha256\":null,\"valid_from\":\"2027-01-01T00:00:00Z\",\"valid_until\":\"2027-07-02T00:00:00Z\",\"value_status\":\"declared_synthetic\"},{\"basis_ref\":\"SYNTHETIC-supplied-test-validity-not-authentic-review\",\"evidence_id\":\"SYNTHETIC-expense-evidence-23\",\"issued_at\":\"2027-01-01T00:00:00Z\",\"requirement_id\":\"/transport/expense_checked_bundle\",\"review_status\":\"accepted_synthetic\",\"source_locator\":\"/transport/expense_checked_bundle\",\"source_sha256\":\"186933036d4834b56e76a66c49bca3d52b90af58c42ceb3e0d08c6920d55a37e\",\"superseded_by_sha256\":null,\"valid_from\":\"2027-01-01T00:00:00Z\",\"valid_until\":\"2027-07-02T00:00:00Z\",\"value_status\":\"declared_synthetic\"},{\"basis_ref\":\"SYNTHETIC-supplied-test-validity-not-authentic-review\",\"evidence_id\":\"SYNTHETIC-expense-evidence-24\",\"issued_at\":\"2027-01-01T00:00:00Z\",\"requirement_id\":\"/expense/periods/0/detail\",\"review_status\":\"accepted_synthetic\",\"source_locator\":\"/expense/periods/0/detail\",\"source_sha256\":\"43f73479f66df41e87a0e73931174580ac670dd096b387d341f509438f17ed93\",\"superseded_by_sha256\":null,\"valid_from\":\"2027-01-01T00:00:00Z\",\"valid_until\":\"2027-07-01T12:00:00Z\",\"value_status\":\"declared_synthetic\"},{\"basis_ref\":\"SYNTHETIC-supplied-test-validity-not-authentic-review\",\"evidence_id\":\"SYNTHETIC-expense-evidence-25\",\"issued_at\":\"2027-01-01T00:00:00Z\",\"requirement_id\":\"/expense/periods/1/detail\",\"review_status\":\"accepted_synthetic\",\"source_locator\":\"/expense/periods/1/detail\",\"source_sha256\":\"0eda5632234b6953de32071f044e191a08eb436184513459cd0d0dc2d5a8c684\",\"superseded_by_sha256\":null,\"valid_from\":\"2027-01-01T00:00:00Z\",\"valid_until\":\"2027-07-02T00:00:00Z\",\"value_status\":\"declared_synthetic\"}],\"inventory_basis_ref\":\"SYNTHETIC-all-underlying-and-expense-sources\",\"inventory_declared_complete\":true,\"requirements\":[{\"requirement_id\":\"/transport/lifecycle_bundle\",\"source_locator\":\"/transport/lifecycle_bundle\",\"source_sha256\":\"a314159fe0b1d71b1bbcf90167846e9ea072c5da89edd735466ff492f7c17eea\"},{\"requirement_id\":\"/construction/bundle\",\"source_locator\":\"/construction/bundle\",\"source_sha256\":\"2fcd3b12d50ed985346a4f6c5ed33311415c1ce7d6902065cccb87127642bd04\"},{\"requirement_id\":\"/construction/preopening_draft\",\"source_locator\":\"/construction/preopening_draft\",\"source_sha256\":\"5840fc93b1e0aaf3c27c9dd21730ca5d1a30de648560f7ab472d1a11c4c7b4c5\"},{\"requirement_id\":\"/construction/binding\",\"source_locator\":\"/construction/binding\",\"source_sha256\":\"58f2f6702a345ce0459f997bd7e958785cd324c66db71442a9a2475ba6f8aa41\"},{\"requirement_id\":\"/transition/phase_contract\",\"source_locator\":\"/transition/phase_contract\",\"source_sha256\":\"91cab74563bec95cbc59f22dbde09777ba60de83df9f51f2e460b9b870d3074f\"},{\"requirement_id\":\"/boundary/cash_binding\",\"source_locator\":\"/boundary/cash_binding\",\"source_sha256\":\"06fd251a8a3ae824035959dcadb6ddb9a2c2bcde1658f3b059f3c355c29ee983\"},{\"requirement_id\":\"/boundary/window_binding\",\"source_locator\":\"/boundary/window_binding\",\"source_sha256\":\"74daa27eba56f0bcf8301c4b5ec64a71f3f1e8a853d6879aff4792b01e0770ee\"},{\"requirement_id\":\"/investor/source\",\"source_locator\":\"/investor/source\",\"source_sha256\":\"8683371c1514eae7ea9455a1643036294ccbdc7efa45831f2f9bcbb60b91d144\"},{\"requirement_id\":\"/investor/binding\",\"source_locator\":\"/investor/binding\",\"source_sha256\":\"c9e1eb40090c696353125ee81d3efb26ff78c84fc6e8aab53c1beb5e81c3ea7c\"},{\"requirement_id\":\"/construction/loans/0\",\"source_locator\":\"/construction/loans/0\",\"source_sha256\":\"e0821c3453dd2911a1b761c1245504bffb9c980e8f52ead134e5938152adb64b\"},{\"requirement_id\":\"/transition/loans/0/schedule\",\"source_locator\":\"/transition/loans/0/schedule\",\"source_sha256\":\"99758e708f3cd454088bd0bda66531a2787a3ba5b704e0c5428e64ba0a340784\"},{\"requirement_id\":\"/transition/loans/0/windows_record\",\"source_locator\":\"/transition/loans/0/windows_record\",\"source_sha256\":\"4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945\"},{\"requirement_id\":\"/operation/periods/0/noi\",\"source_locator\":\"/operation/periods/0/noi\",\"source_sha256\":\"e9111b611a4c3fdab664dd7a1f77f7347cda63f90ebca7059d7b4c284ca26f62\"},{\"requirement_id\":\"/operation/periods/0/cash\",\"source_locator\":\"/operation/periods/0/cash\",\"source_sha256\":\"6b14261e22aa2cccb40fe950d40c9cb9943f5fc33002447d14d839dadc104f59\"},{\"requirement_id\":\"/operation/periods/1/noi\",\"source_locator\":\"/operation/periods/1/noi\",\"source_sha256\":\"18f6b590101f62317608a112db3226d7a0509b4d7ccbba6d8f5938b7bc27cd2c\"},{\"requirement_id\":\"/operation/periods/1/cash\",\"source_locator\":\"/operation/periods/1/cash\",\"source_sha256\":\"640f71c31fef8673077d5af8e107c69a400a9e138b56fa7a464f997501583656\"},{\"requirement_id\":\"/operation/manifest\",\"source_locator\":\"/operation/manifest\",\"source_sha256\":\"199062811119f395ad71e1da644d3bfed350f739115f23d18f4e94450fdcf21c\"},{\"requirement_id\":\"/operation/sale_binding\",\"source_locator\":\"/operation/sale_binding\",\"source_sha256\":\"5311009c64f3d9e50e5c47147a8cc075270f435395e46c4054f47b9aded9ca1b\"},{\"requirement_id\":\"/sale/cash\",\"source_locator\":\"/sale/cash\",\"source_sha256\":\"224193a389302c6a79b6e0f720faf30845f5813b2af3e5e14247572af4d6e8b4\"},{\"requirement_id\":\"/sale/debt_binding\",\"source_locator\":\"/sale/debt_binding\",\"source_sha256\":\"59e00d2162c92e3d209332d83da93229eb167986ff845f04f8f98c5748a03cff\"},{\"requirement_id\":\"/sale/loans/0/terms\",\"source_locator\":\"/sale/loans/0/terms\",\"source_sha256\":\"99758e708f3cd454088bd0bda66531a2787a3ba5b704e0c5428e64ba0a340784\"},{\"requirement_id\":\"/sale/loans/0/windows_record\",\"source_locator\":\"/sale/loans/0/windows_record\",\"source_sha256\":\"4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945\"},{\"requirement_id\":\"/expense/manifest\",\"source_locator\":\"/expense/manifest\",\"source_sha256\":\"ab8cb1cdbb8c4789bf7a1bef87003ee54e8eb1a87c9f29238c261c358ea8a7ed\"},{\"requirement_id\":\"/transport/expense_checked_bundle\",\"source_locator\":\"/transport/expense_checked_bundle\",\"source_sha256\":\"186933036d4834b56e76a66c49bca3d52b90af58c42ceb3e0d08c6920d55a37e\"},{\"requirement_id\":\"/expense/periods/0/detail\",\"source_locator\":\"/expense/periods/0/detail\",\"source_sha256\":\"43f73479f66df41e87a0e73931174580ac670dd096b387d341f509438f17ed93\"},{\"requirement_id\":\"/expense/periods/1/detail\",\"source_locator\":\"/expense/periods/1/detail\",\"source_sha256\":\"0eda5632234b6953de32071f044e191a08eb436184513459cd0d0dc2d5a8c684\"}],\"schema\":\"miniuw.synthetic-evidence-currency.v1\"}",
+  "pending_run_sha256": "9754c9461bce26e662280fa528403404435cfb2bc54a75175ad2ea4b90160e15",
+  "pending_markdown_sha256": "21fdceebefc9e06c7573d61152d82e25d119b0c7eb757fb580791f35b128ef4c",
+  "current_story": {
+    "gross_contributions": {
+      "denominator": "1",
+      "numerator": "1400"
+    },
+    "gross_distributions": {
+      "denominator": "1",
+      "numerator": "840"
+    },
+    "net_cash_profit": {
+      "denominator": "1",
+      "numerator": "-560"
+    },
+    "equity_multiple": {
+      "denominator": "5",
+      "numerator": "3"
+    },
+    "normalized_story": {
+      "basis_amount": {
+        "denominator": "1",
+        "numerator": "1400"
+      },
+      "basis_event_ids": [
+        "preopening_slots-0",
+        "preopening_slots-1",
+        "operating_slots-1",
+        "operating_slots-3",
+        "operating_slots-5"
+      ],
+      "basis_ref": "SYNTHETIC-all-declared-gross-equity",
+      "equity_multiple": {
+        "denominator": "5",
+        "numerator": "3"
+      },
+      "events": [
+        {
+          "amount": {
+            "denominator": "7",
+            "numerator": "50"
+          },
+          "category": "initial_capital",
+          "currency": "USD",
+          "date": "2026-10-01",
+          "event_id": "preopening_slots-0",
+          "kind": "contribution",
+          "source_ref": "miniuw:staged-lifecycle:ff52b6a2c7fe114fc99f058fe71fd73d8a2302a2505dcfb5689cd547c4be0344#/exportable_equity_movements/0"
+        },
+        {
+          "amount": {
+            "denominator": "7",
+            "numerator": "20"
+          },
+          "category": "additional_capital",
+          "currency": "USD",
+          "date": "2026-11-01",
+          "event_id": "preopening_slots-1",
+          "kind": "contribution",
+          "source_ref": "miniuw:staged-lifecycle:ff52b6a2c7fe114fc99f058fe71fd73d8a2302a2505dcfb5689cd547c4be0344#/exportable_equity_movements/1"
+        },
+        {
+          "amount": {
+            "denominator": "7",
+            "numerator": "5"
+          },
+          "category": "operating_distribution",
+          "currency": "USD",
+          "date": "2027-03-01",
+          "event_id": "operating_slots-0",
+          "kind": "distribution",
+          "source_ref": "miniuw:staged-lifecycle:540cae1c4a7549b6bc046d556cf651e86d982c7a2369b1947d6c636e10e7ed24#/exportable_equity_movements/0/distribution"
+        },
+        {
+          "amount": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "category": "additional_capital",
+          "currency": "USD",
+          "date": "2027-03-01",
+          "event_id": "operating_slots-1",
+          "kind": "contribution",
+          "source_ref": "miniuw:staged-lifecycle:540cae1c4a7549b6bc046d556cf651e86d982c7a2369b1947d6c636e10e7ed24#/exportable_equity_movements/0/contribution"
+        },
+        {
+          "amount": {
+            "denominator": "7",
+            "numerator": "5"
+          },
+          "category": "operating_distribution",
+          "currency": "USD",
+          "date": "2027-06-01",
+          "event_id": "operating_slots-2",
+          "kind": "distribution",
+          "source_ref": "miniuw:staged-lifecycle:540cae1c4a7549b6bc046d556cf651e86d982c7a2369b1947d6c636e10e7ed24#/exportable_equity_movements/1/distribution"
+        },
+        {
+          "amount": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "category": "additional_capital",
+          "currency": "USD",
+          "date": "2027-06-01",
+          "event_id": "operating_slots-3",
+          "kind": "contribution",
+          "source_ref": "miniuw:staged-lifecycle:540cae1c4a7549b6bc046d556cf651e86d982c7a2369b1947d6c636e10e7ed24#/exportable_equity_movements/1/contribution"
+        },
+        {
+          "amount": {
+            "denominator": "7",
+            "numerator": "32"
+          },
+          "category": "net_sale_distribution",
+          "currency": "USD",
+          "date": "2027-07-01",
+          "event_id": "operating_slots-4",
+          "kind": "distribution",
+          "source_ref": "miniuw:staged-lifecycle:540cae1c4a7549b6bc046d556cf651e86d982c7a2369b1947d6c636e10e7ed24#/exportable_equity_movements/2/distribution"
+        },
+        {
+          "amount": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "category": "additional_capital",
+          "currency": "USD",
+          "date": "2027-07-01",
+          "event_id": "operating_slots-5",
+          "kind": "contribution",
+          "source_ref": "miniuw:staged-lifecycle:540cae1c4a7549b6bc046d556cf651e86d982c7a2369b1947d6c636e10e7ed24#/exportable_equity_movements/2/contribution"
+        }
+      ],
+      "net_cash_profit": {
+        "denominator": "1",
+        "numerator": "-4"
+      },
+      "reference_amount": {
+        "denominator": "1",
+        "numerator": "10"
+      },
+      "scale_factor": {
+        "denominator": "140",
+        "numerator": "1"
+      },
+      "total_contributions": {
+        "denominator": "1",
+        "numerator": "10"
+      },
+      "total_distributions": {
+        "denominator": "1",
+        "numerator": "6"
+      }
+    },
+    "annual_cash_receipts": [
+      {
+        "blocker": "positive_declared_annual_capital_base_missing",
+        "calendar_cash_receipt_year": 2026,
+        "conditional_coc": null,
+        "declared_capital_base": null,
+        "gross_contributions": {
+          "denominator": "1",
+          "numerator": "1400"
+        },
+        "gross_distributions": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "net_equity_cash": {
+          "denominator": "1",
+          "numerator": "-1400"
+        },
+        "normalized_operating_distributions": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "operating_distributions_only": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "operating_year_coverage_financially_verified": false
+      },
+      {
+        "blocker": "positive_declared_annual_capital_base_missing",
+        "calendar_cash_receipt_year": 2027,
+        "conditional_coc": null,
+        "declared_capital_base": null,
+        "gross_contributions": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "gross_distributions": {
+          "denominator": "1",
+          "numerator": "840"
+        },
+        "net_equity_cash": {
+          "denominator": "1",
+          "numerator": "840"
+        },
+        "normalized_operating_distributions": {
+          "denominator": "7",
+          "numerator": "10"
+        },
+        "operating_distributions_only": {
+          "denominator": "1",
+          "numerator": "200"
+        },
+        "operating_year_coverage_financially_verified": false
+      }
+    ],
+    "annual_irr_roots": [
+      {
+        "annual_rate_interval": {
+          "lower": {
+            "denominator": "17681966599145027406332053115053234999758922722984614415646244506385043796178504631023558086641",
+            "numerator": "-9338267240078972396976499575328422052092108182528939533040613225829497992347877482496362434545"
+          },
+          "lower_closed": true,
+          "upper": {
+            "denominator": "1053920080129891690078862828910922536351508101669554977638282998314369341846623163231121",
+            "numerator": "-556596843720105047923480580764101696251051950872207260197819021421209844834089787698065"
+          },
+          "upper_closed": false
+        },
+        "exact_annual_rate": null
+      }
+    ],
+    "story_blockers": [
+      "2026:positive_declared_annual_capital_base_missing",
+      "2027:positive_declared_annual_capital_base_missing",
+      "capital_and_retained_equity_snapshots_missing"
+    ]
+  },
+  "item_continuity_checks": [
+    {
+      "item_id": "SYNTHETIC-insurance",
+      "next_period_ref": "SYNTHETIC-hold-2",
+      "payables_match": true,
+      "prepaid_match": true,
+      "prior_period_ref": "SYNTHETIC-hold-1",
+      "same_economic_item": true
+    },
+    {
+      "item_id": "SYNTHETIC-other",
+      "next_period_ref": "SYNTHETIC-hold-2",
+      "payables_match": true,
+      "prepaid_match": true,
+      "prior_period_ref": "SYNTHETIC-hold-1",
+      "same_economic_item": true
+    },
+    {
+      "item_id": "SYNTHETIC-tax",
+      "next_period_ref": "SYNTHETIC-hold-2",
+      "payables_match": true,
+      "prepaid_match": true,
+      "prior_period_ref": "SYNTHETIC-hold-1",
+      "same_economic_item": true
+    }
+  ],
+  "expense_period_totals": [
+    {
+      "period_ref": "SYNTHETIC-hold-1",
+      "totals": {
+        "cash_payments": {
+          "denominator": "1",
+          "numerator": "10"
+        },
+        "closing_payables": {
+          "denominator": "1",
+          "numerator": "5"
+        },
+        "closing_prepaid": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "expense_amount": {
+          "denominator": "1",
+          "numerator": "15"
+        },
+        "opening_payables": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "opening_prepaid": {
+          "denominator": "1",
+          "numerator": "0"
+        }
+      }
+    },
+    {
+      "period_ref": "SYNTHETIC-hold-2",
+      "totals": {
+        "cash_payments": {
+          "denominator": "1",
+          "numerator": "20"
+        },
+        "closing_payables": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "closing_prepaid": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "expense_amount": {
+          "denominator": "1",
+          "numerator": "15"
+        },
+        "opening_payables": {
+          "denominator": "1",
+          "numerator": "5"
+        },
+        "opening_prepaid": {
+          "denominator": "1",
+          "numerator": "0"
+        }
+      }
+    }
+  ],
+  "aggregate_balanced_but_wrong_item": {
+    "manifest_source_utf8": "{\"context\":{\"deal_id\":\"SYNTHETIC-construction-draw-demo\",\"definition_set_revision\":\"SYNTHETIC-simple-interval-factors\",\"run_id\":\"SYNTHETIC-construction-draw-run\",\"scenario_id\":\"SYNTHETIC-draw-plan\"},\"continuity_basis_ref\":\"SYNTHETIC-explicit-fixed-concept-payable-prepaid-continuity\",\"currency\":\"USD\",\"inventory_declared_complete\":true,\"item_inventory_basis_ref\":\"SYNTHETIC-complete-fixed-insurance-other-tax-inventory\",\"lifecycle_bundle_sha256\":\"a314159fe0b1d71b1bbcf90167846e9ea072c5da89edd735466ff492f7c17eea\",\"periods\":[{\"detail_run\":{\"payload_json\":\"{\\\"bank_payment_history_verified\\\":false,\\\"blockers\\\":[],\\\"cash_run_sha256\\\":\\\"03917fe028a6eb141a6eb160b7e98e43d8f7ede63d65844e1e07757b9ac4d901\\\",\\\"cash_source_sha256\\\":\\\"6b14261e22aa2cccb40fe950d40c9cb9943f5fc33002447d14d839dadc104f59\\\",\\\"component\\\":\\\"T76\\\",\\\"context\\\":{\\\"deal_id\\\":\\\"SYNTHETIC-construction-draw-demo\\\",\\\"definition_set_revision\\\":\\\"SYNTHETIC-simple-interval-factors\\\",\\\"run_id\\\":\\\"SYNTHETIC-construction-draw-run\\\",\\\"scenario_id\\\":\\\"SYNTHETIC-draw-plan\\\"},\\\"currency\\\":\\\"USD\\\",\\\"current_source_authority_verified\\\":false,\\\"decision\\\":\\\"PENDING\\\",\\\"definition_sha256\\\":\\\"15b1ad5902b3f44f7085b3bf215d02cf40384177dc12a88e6fcf5ae8afd60bfa\\\",\\\"detail_source_sha256\\\":\\\"33daa6d9bec1450e06b094dcdf02ebdd9961f3ad691a8bfd68e2c5f4974e6159\\\",\\\"end_date\\\":\\\"2027-04-01\\\",\\\"engine_sha256\\\":\\\"78bf5aaafcf20c257436284cd2d4d968845fd49dbe9a60d117e52527eda136e5\\\",\\\"intraperiod_liquidity_verified\\\":false,\\\"items\\\":[{\\\"balances\\\":{\\\"closing_payables\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"},\\\"closing_prepaid\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"},\\\"opening_payables\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"},\\\"opening_prepaid\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"}},\\\"blockers\\\":[],\\\"cash_identity_residual\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"},\\\"cash_payments\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"10\\\"},\\\"declared_expense\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"10\\\"},\\\"expected_cash_payments\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"10\\\"},\\\"item_id\\\":\\\"SYNTHETIC-insurance\\\",\\\"kind\\\":\\\"insurance\\\",\\\"noi_pointer\\\":\\\"/expense_rows/0\\\",\\\"payments\\\":[{\\\"amount\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"10\\\"},\\\"date\\\":\\\"2027-03-01\\\",\\\"payment_id\\\":\\\"SYNTHETIC-payment-0-insurance\\\",\\\"source_ref\\\":\\\"SYNTHETIC-payment-line-0-insurance\\\"}],\\\"source_ref\\\":\\\"SYNTHETIC-expense-detail-0-insurance\\\"},{\\\"balances\\\":{\\\"closing_payables\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"5\\\"},\\\"closing_prepaid\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"},\\\"opening_payables\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"},\\\"opening_prepaid\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"}},\\\"blockers\\\":[],\\\"cash_identity_residual\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"},\\\"cash_payments\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"},\\\"declared_expense\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"5\\\"},\\\"expected_cash_payments\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"},\\\"item_id\\\":\\\"SYNTHETIC-other\\\",\\\"kind\\\":\\\"other_operating_expense\\\",\\\"noi_pointer\\\":\\\"/expense_rows/1\\\",\\\"payments\\\":[{\\\"amount\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"},\\\"date\\\":\\\"2027-03-01\\\",\\\"payment_id\\\":\\\"SYNTHETIC-payment-0-other\\\",\\\"source_ref\\\":\\\"SYNTHETIC-payment-line-0-other\\\"}],\\\"source_ref\\\":\\\"SYNTHETIC-expense-detail-0-other\\\"},{\\\"balances\\\":{\\\"closing_payables\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"},\\\"closing_prepaid\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"},\\\"opening_payables\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"},\\\"opening_prepaid\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"}},\\\"blockers\\\":[],\\\"cash_identity_residual\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"},\\\"cash_payments\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"},\\\"declared_expense\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"},\\\"expected_cash_payments\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"},\\\"item_id\\\":\\\"SYNTHETIC-tax\\\",\\\"kind\\\":\\\"property_tax\\\",\\\"noi_pointer\\\":\\\"/property_tax\\\",\\\"payments\\\":[],\\\"source_ref\\\":\\\"SYNTHETIC-expense-detail-0-tax\\\"}],\\\"new_expense_or_payment_generated\\\":false,\\\"noi_run_sha256\\\":\\\"ef7ac18b502c7e5e54d82a6b84446908d901a18c2f561bc8b05cd6e29304029e\\\",\\\"noi_source_sha256\\\":\\\"e9111b611a4c3fdab664dd7a1f77f7347cda63f90ebca7059d7b4c284ca26f62\\\",\\\"period_ref\\\":\\\"SYNTHETIC-hold-1\\\",\\\"production_authorized\\\":false,\\\"purpose\\\":\\\"synthetic_per_item_expense_cash_reconciliation\\\",\\\"real_decisions_enabled\\\":false,\\\"start_date\\\":\\\"2027-01-01\\\",\\\"state\\\":\\\"matched_synthetic_expense_cash_detail\\\",\\\"tax_or_insurance_policy_adopted\\\":false,\\\"totals\\\":{\\\"cash_payments\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"10\\\"},\\\"closing_payables\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"5\\\"},\\\"closing_prepaid\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"},\\\"expense_amount\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"15\\\"},\\\"opening_payables\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"},\\\"opening_prepaid\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"}},\\\"upstream_NOI_blockers\\\":[],\\\"upstream_cash_blockers\\\":[]}\",\"sha256\":\"a497c0a09d71420ed5239c151fe86991cb3e4cdbc2491cb6f5359bb786ef22eb\"},\"detail_source_utf8\":\"{\\\"assumptions\\\":{\\\"interitem_transfers\\\":false,\\\"noncash_expenses\\\":false,\\\"payment_dates_are\\\":\\\"supplied_plan_not_verified_bank_history\\\",\\\"refunds_or_offsets\\\":false,\\\"rounding\\\":\\\"none_exact\\\"},\\\"cash_run_sha256\\\":\\\"03917fe028a6eb141a6eb160b7e98e43d8f7ede63d65844e1e07757b9ac4d901\\\",\\\"cash_source_sha256\\\":\\\"6b14261e22aa2cccb40fe950d40c9cb9943f5fc33002447d14d839dadc104f59\\\",\\\"classification_basis_ref\\\":\\\"SYNTHETIC-no-overlap-supplied-expense-items\\\",\\\"context\\\":{\\\"deal_id\\\":\\\"SYNTHETIC-construction-draw-demo\\\",\\\"definition_set_revision\\\":\\\"SYNTHETIC-simple-interval-factors\\\",\\\"run_id\\\":\\\"SYNTHETIC-construction-draw-run\\\",\\\"scenario_id\\\":\\\"SYNTHETIC-draw-plan\\\"},\\\"currency\\\":\\\"USD\\\",\\\"end_date\\\":\\\"2027-04-01\\\",\\\"inventory_declared_complete\\\":true,\\\"items\\\":[{\\\"closing_payables\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"},\\\"closing_prepaid\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"},\\\"currency\\\":\\\"USD\\\",\\\"expense_amount\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"10\\\"},\\\"item_id\\\":\\\"SYNTHETIC-insurance\\\",\\\"kind\\\":\\\"insurance\\\",\\\"noi_pointer\\\":\\\"/expense_rows/0\\\",\\\"opening_payables\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"},\\\"opening_prepaid\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"},\\\"payments\\\":[{\\\"amount\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"10\\\"},\\\"date\\\":\\\"2027-03-01\\\",\\\"payment_id\\\":\\\"SYNTHETIC-payment-0-insurance\\\",\\\"source_ref\\\":\\\"SYNTHETIC-payment-line-0-insurance\\\"}],\\\"payments_inventory_declared_complete\\\":true,\\\"period_ref\\\":\\\"SYNTHETIC-hold-1\\\",\\\"settlement_basis_ref\\\":\\\"SYNTHETIC-supplied-accrual-payment-and-balances-0-insurance\\\",\\\"source_ref\\\":\\\"SYNTHETIC-expense-detail-0-insurance\\\"},{\\\"closing_payables\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"5\\\"},\\\"closing_prepaid\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"},\\\"currency\\\":\\\"USD\\\",\\\"expense_amount\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"5\\\"},\\\"item_id\\\":\\\"SYNTHETIC-other\\\",\\\"kind\\\":\\\"other_operating_expense\\\",\\\"noi_pointer\\\":\\\"/expense_rows/1\\\",\\\"opening_payables\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"},\\\"opening_prepaid\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"},\\\"payments\\\":[{\\\"amount\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"},\\\"date\\\":\\\"2027-03-01\\\",\\\"payment_id\\\":\\\"SYNTHETIC-payment-0-other\\\",\\\"source_ref\\\":\\\"SYNTHETIC-payment-line-0-other\\\"}],\\\"payments_inventory_declared_complete\\\":true,\\\"period_ref\\\":\\\"SYNTHETIC-hold-1\\\",\\\"settlement_basis_ref\\\":\\\"SYNTHETIC-supplied-accrual-payment-and-balances-0-other\\\",\\\"source_ref\\\":\\\"SYNTHETIC-expense-detail-0-other\\\"},{\\\"closing_payables\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"},\\\"closing_prepaid\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"},\\\"currency\\\":\\\"USD\\\",\\\"expense_amount\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"},\\\"item_id\\\":\\\"SYNTHETIC-tax\\\",\\\"kind\\\":\\\"property_tax\\\",\\\"noi_pointer\\\":\\\"/property_tax\\\",\\\"opening_payables\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"},\\\"opening_prepaid\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"},\\\"payments\\\":[],\\\"payments_inventory_declared_complete\\\":true,\\\"period_ref\\\":\\\"SYNTHETIC-hold-1\\\",\\\"settlement_basis_ref\\\":\\\"SYNTHETIC-supplied-accrual-payment-and-balances-0-tax\\\",\\\"source_ref\\\":\\\"SYNTHETIC-expense-detail-0-tax\\\"}],\\\"noi_run_sha256\\\":\\\"ef7ac18b502c7e5e54d82a6b84446908d901a18c2f561bc8b05cd6e29304029e\\\",\\\"noi_source_sha256\\\":\\\"e9111b611a4c3fdab664dd7a1f77f7347cda63f90ebca7059d7b4c284ca26f62\\\",\\\"period_ref\\\":\\\"SYNTHETIC-hold-1\\\",\\\"schema\\\":\\\"miniuw.synthetic-expense-cash-detail.v1\\\",\\\"start_date\\\":\\\"2027-01-01\\\"}\",\"period_ref\":\"SYNTHETIC-hold-1\"},{\"detail_run\":{\"payload_json\":\"{\\\"bank_payment_history_verified\\\":false,\\\"blockers\\\":[],\\\"cash_run_sha256\\\":\\\"9fa892fe7f9e9727a805b971bbc31fbc26da98a7b7448cc6e22515326bb07db6\\\",\\\"cash_source_sha256\\\":\\\"640f71c31fef8673077d5af8e107c69a400a9e138b56fa7a464f997501583656\\\",\\\"component\\\":\\\"T76\\\",\\\"context\\\":{\\\"deal_id\\\":\\\"SYNTHETIC-construction-draw-demo\\\",\\\"definition_set_revision\\\":\\\"SYNTHETIC-simple-interval-factors\\\",\\\"run_id\\\":\\\"SYNTHETIC-construction-draw-run\\\",\\\"scenario_id\\\":\\\"SYNTHETIC-draw-plan\\\"},\\\"currency\\\":\\\"USD\\\",\\\"current_source_authority_verified\\\":false,\\\"decision\\\":\\\"PENDING\\\",\\\"definition_sha256\\\":\\\"15b1ad5902b3f44f7085b3bf215d02cf40384177dc12a88e6fcf5ae8afd60bfa\\\",\\\"detail_source_sha256\\\":\\\"0eda5632234b6953de32071f044e191a08eb436184513459cd0d0dc2d5a8c684\\\",\\\"end_date\\\":\\\"2027-07-01\\\",\\\"engine_sha256\\\":\\\"78bf5aaafcf20c257436284cd2d4d968845fd49dbe9a60d117e52527eda136e5\\\",\\\"intraperiod_liquidity_verified\\\":false,\\\"items\\\":[{\\\"balances\\\":{\\\"closing_payables\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"},\\\"closing_prepaid\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"},\\\"opening_payables\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"5\\\"},\\\"opening_prepaid\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"}},\\\"blockers\\\":[],\\\"cash_identity_residual\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"},\\\"cash_payments\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"15\\\"},\\\"declared_expense\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"10\\\"},\\\"expected_cash_payments\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"15\\\"},\\\"item_id\\\":\\\"SYNTHETIC-insurance\\\",\\\"kind\\\":\\\"insurance\\\",\\\"noi_pointer\\\":\\\"/expense_rows/0\\\",\\\"payments\\\":[{\\\"amount\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"15\\\"},\\\"date\\\":\\\"2027-06-01\\\",\\\"payment_id\\\":\\\"SYNTHETIC-payment-1-insurance\\\",\\\"source_ref\\\":\\\"SYNTHETIC-payment-line-1-insurance\\\"}],\\\"source_ref\\\":\\\"SYNTHETIC-expense-detail-1-insurance\\\"},{\\\"balances\\\":{\\\"closing_payables\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"},\\\"closing_prepaid\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"},\\\"opening_payables\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"},\\\"opening_prepaid\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"}},\\\"blockers\\\":[],\\\"cash_identity_residual\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"},\\\"cash_payments\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"5\\\"},\\\"declared_expense\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"5\\\"},\\\"expected_cash_payments\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"5\\\"},\\\"item_id\\\":\\\"SYNTHETIC-other\\\",\\\"kind\\\":\\\"other_operating_expense\\\",\\\"noi_pointer\\\":\\\"/expense_rows/1\\\",\\\"payments\\\":[{\\\"amount\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"5\\\"},\\\"date\\\":\\\"2027-06-01\\\",\\\"payment_id\\\":\\\"SYNTHETIC-payment-1-other\\\",\\\"source_ref\\\":\\\"SYNTHETIC-payment-line-1-other\\\"}],\\\"source_ref\\\":\\\"SYNTHETIC-expense-detail-1-other\\\"},{\\\"balances\\\":{\\\"closing_payables\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"},\\\"closing_prepaid\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"},\\\"opening_payables\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"},\\\"opening_prepaid\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"}},\\\"blockers\\\":[],\\\"cash_identity_residual\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"},\\\"cash_payments\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"},\\\"declared_expense\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"},\\\"expected_cash_payments\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"},\\\"item_id\\\":\\\"SYNTHETIC-tax\\\",\\\"kind\\\":\\\"property_tax\\\",\\\"noi_pointer\\\":\\\"/property_tax\\\",\\\"payments\\\":[],\\\"source_ref\\\":\\\"SYNTHETIC-expense-detail-1-tax\\\"}],\\\"new_expense_or_payment_generated\\\":false,\\\"noi_run_sha256\\\":\\\"562327ddc963328439cfa22d3a5db596e364ce2cb1f375c3f3681267e643fc56\\\",\\\"noi_source_sha256\\\":\\\"18f6b590101f62317608a112db3226d7a0509b4d7ccbba6d8f5938b7bc27cd2c\\\",\\\"period_ref\\\":\\\"SYNTHETIC-hold-2\\\",\\\"production_authorized\\\":false,\\\"purpose\\\":\\\"synthetic_per_item_expense_cash_reconciliation\\\",\\\"real_decisions_enabled\\\":false,\\\"start_date\\\":\\\"2027-04-01\\\",\\\"state\\\":\\\"matched_synthetic_expense_cash_detail\\\",\\\"tax_or_insurance_policy_adopted\\\":false,\\\"totals\\\":{\\\"cash_payments\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"20\\\"},\\\"closing_payables\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"},\\\"closing_prepaid\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"},\\\"expense_amount\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"15\\\"},\\\"opening_payables\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"5\\\"},\\\"opening_prepaid\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"}},\\\"upstream_NOI_blockers\\\":[],\\\"upstream_cash_blockers\\\":[]}\",\"sha256\":\"22e737befc8a844871dac8655e97358d6efeec47d69f534be96ebc615841830b\"},\"detail_source_utf8\":\"{\\\"assumptions\\\":{\\\"interitem_transfers\\\":false,\\\"noncash_expenses\\\":false,\\\"payment_dates_are\\\":\\\"supplied_plan_not_verified_bank_history\\\",\\\"refunds_or_offsets\\\":false,\\\"rounding\\\":\\\"none_exact\\\"},\\\"cash_run_sha256\\\":\\\"9fa892fe7f9e9727a805b971bbc31fbc26da98a7b7448cc6e22515326bb07db6\\\",\\\"cash_source_sha256\\\":\\\"640f71c31fef8673077d5af8e107c69a400a9e138b56fa7a464f997501583656\\\",\\\"classification_basis_ref\\\":\\\"SYNTHETIC-no-overlap-supplied-expense-items\\\",\\\"context\\\":{\\\"deal_id\\\":\\\"SYNTHETIC-construction-draw-demo\\\",\\\"definition_set_revision\\\":\\\"SYNTHETIC-simple-interval-factors\\\",\\\"run_id\\\":\\\"SYNTHETIC-construction-draw-run\\\",\\\"scenario_id\\\":\\\"SYNTHETIC-draw-plan\\\"},\\\"currency\\\":\\\"USD\\\",\\\"end_date\\\":\\\"2027-07-01\\\",\\\"inventory_declared_complete\\\":true,\\\"items\\\":[{\\\"closing_payables\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"},\\\"closing_prepaid\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"},\\\"currency\\\":\\\"USD\\\",\\\"expense_amount\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"10\\\"},\\\"item_id\\\":\\\"SYNTHETIC-insurance\\\",\\\"kind\\\":\\\"insurance\\\",\\\"noi_pointer\\\":\\\"/expense_rows/0\\\",\\\"opening_payables\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"5\\\"},\\\"opening_prepaid\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"},\\\"payments\\\":[{\\\"amount\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"15\\\"},\\\"date\\\":\\\"2027-06-01\\\",\\\"payment_id\\\":\\\"SYNTHETIC-payment-1-insurance\\\",\\\"source_ref\\\":\\\"SYNTHETIC-payment-line-1-insurance\\\"}],\\\"payments_inventory_declared_complete\\\":true,\\\"period_ref\\\":\\\"SYNTHETIC-hold-2\\\",\\\"settlement_basis_ref\\\":\\\"SYNTHETIC-supplied-accrual-payment-and-balances-1-insurance\\\",\\\"source_ref\\\":\\\"SYNTHETIC-expense-detail-1-insurance\\\"},{\\\"closing_payables\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"},\\\"closing_prepaid\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"},\\\"currency\\\":\\\"USD\\\",\\\"expense_amount\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"5\\\"},\\\"item_id\\\":\\\"SYNTHETIC-other\\\",\\\"kind\\\":\\\"other_operating_expense\\\",\\\"noi_pointer\\\":\\\"/expense_rows/1\\\",\\\"opening_payables\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"},\\\"opening_prepaid\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"},\\\"payments\\\":[{\\\"amount\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"5\\\"},\\\"date\\\":\\\"2027-06-01\\\",\\\"payment_id\\\":\\\"SYNTHETIC-payment-1-other\\\",\\\"source_ref\\\":\\\"SYNTHETIC-payment-line-1-other\\\"}],\\\"payments_inventory_declared_complete\\\":true,\\\"period_ref\\\":\\\"SYNTHETIC-hold-2\\\",\\\"settlement_basis_ref\\\":\\\"SYNTHETIC-supplied-accrual-payment-and-balances-1-other\\\",\\\"source_ref\\\":\\\"SYNTHETIC-expense-detail-1-other\\\"},{\\\"closing_payables\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"},\\\"closing_prepaid\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"},\\\"currency\\\":\\\"USD\\\",\\\"expense_amount\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"},\\\"item_id\\\":\\\"SYNTHETIC-tax\\\",\\\"kind\\\":\\\"property_tax\\\",\\\"noi_pointer\\\":\\\"/property_tax\\\",\\\"opening_payables\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"},\\\"opening_prepaid\\\":{\\\"denominator\\\":\\\"1\\\",\\\"numerator\\\":\\\"0\\\"},\\\"payments\\\":[],\\\"payments_inventory_declared_complete\\\":true,\\\"period_ref\\\":\\\"SYNTHETIC-hold-2\\\",\\\"settlement_basis_ref\\\":\\\"SYNTHETIC-supplied-accrual-payment-and-balances-1-tax\\\",\\\"source_ref\\\":\\\"SYNTHETIC-expense-detail-1-tax\\\"}],\\\"noi_run_sha256\\\":\\\"562327ddc963328439cfa22d3a5db596e364ce2cb1f375c3f3681267e643fc56\\\",\\\"noi_source_sha256\\\":\\\"18f6b590101f62317608a112db3226d7a0509b4d7ccbba6d8f5938b7bc27cd2c\\\",\\\"period_ref\\\":\\\"SYNTHETIC-hold-2\\\",\\\"schema\\\":\\\"miniuw.synthetic-expense-cash-detail.v1\\\",\\\"start_date\\\":\\\"2027-04-01\\\"}\",\"period_ref\":\"SYNTHETIC-hold-2\"}],\"schema\":\"miniuw.synthetic-expense-lifecycle-manifest.v1\"}",
+    "blockers": [
+      "SYNTHETIC-hold-2:SYNTHETIC-insurance:item_working_balance_discontinuity",
+      "SYNTHETIC-hold-2:SYNTHETIC-other:item_working_balance_discontinuity"
+    ],
+    "all_period_details_individually_compatible": true,
+    "full_return_withheld": true,
+    "blocked_recovery_passed": true,
+    "bundle_sha256": "1d8497880146bef6ab85105e1707fa352b2fc949b9a1a89018dac81585a87359"
+  },
+  "historical_negative_result_preserved": true,
+  "additional_expense_payment_or_equity_generated": false,
+  "personal_investor_return": null,
+  "financial_model_complete": false,
+  "decision": "PENDING",
+  "production_authorized": false
+}

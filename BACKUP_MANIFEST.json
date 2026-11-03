@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D03 review and metric-intake design extensions and T01–T76 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D03 review and metric-intake design extensions and T01–T78 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 30191,
-      "sha256": "751995110cd41aef7fd9922709901a88a2a4438cc3b3918662830b90631b9040"
+      "bytes": 31083,
+      "sha256": "89eae381f074db50e03025183dc24f68a1db47066ecd4f55f30ade37a921fb2f"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 118333,
-      "sha256": "6eb4e4039a585955c43d6165ec5e39df26f8d4d6f40a0e67f879aa22fa055701"
+      "bytes": 121969,
+      "sha256": "e146ba9a77dd5bfbb63389d52eb5865ea30f102e3115270900851ed6b090fc1e"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -362,6 +362,11 @@
       "sha256": "036e5ec0b8a738bd84a9ac32fa466a0adbcf8ae44af748fa8cde31fb8585eced"
     },
     {
+      "path": "docs/review/Gastos_Tenencia_y_Retorno_T77_T78.md",
+      "bytes": 3933,
+      "sha256": "84f13c0f105a54b2a827625621adf9f3970d19b1651b24f8283854b1217428cb"
+    },
+    {
       "path": "docs/review/Intereses_Obra_y_Caja_T68_T71.md",
       "bytes": 2776,
       "sha256": "914abdc75e94dfd058351e062e4e7ed00dfc3a024b43fd09446a546f92f46923"
@@ -447,6 +452,11 @@
       "sha256": "debdaf215dc8de9b68f777d36135f1ac96cc6fe5432477063c002ea6c0c33879"
     },
     {
+      "path": "docs/review/Revision_Pendiente_Gastos_y_Retorno_T78.md",
+      "bytes": 1015,
+      "sha256": "21fdceebefc9e06c7573d61152d82e25d119b0c7eb757fb580791f35b128ef4c"
+    },
+    {
       "path": "docs/review/Revision_Pendiente_Obra_Operacion_T75.md",
       "bytes": 1019,
       "sha256": "b7e1aa9a1a198e217eef477deed2871dddf742fee49fd7681677145c484d6215"
@@ -465,6 +475,11 @@
       "path": "docs/review/Revision_Vigente_Deuda_Obra_T71.md",
       "bytes": 1533,
       "sha256": "fb61105fad20568d40da94d272e051e5ac601232991c8bfb9cb258ce7fb27749"
+    },
+    {
+      "path": "docs/review/Revision_Vigente_Gastos_y_Retorno_T78.md",
+      "bytes": 4796,
+      "sha256": "822c264c7ca5f181eda6816c918246da1a2fce127becd61e698a66d95274e429"
     },
     {
       "path": "docs/review/Revision_Vigente_Obra_Operacion_T75.md",
@@ -570,6 +585,11 @@
       "path": "docs/review/synthetic-expense-cash-demo.json",
       "bytes": 7311,
       "sha256": "51828f5bf2630f8429c26c1f2a5556266531accac3b0d0d3ecc46bb267d4acf7"
+    },
+    {
+      "path": "docs/review/synthetic-expense-checked-lifecycle-demo.json",
+      "bytes": 50743,
+      "sha256": "392ca074d2946dfdd6252eba0c524a860b2d20d62c15d535c5802adb4b615146"
     },
     {
       "path": "docs/review/synthetic-hold-sale-demo.json",
@@ -830,6 +850,11 @@
       "path": "docs/technical-coverage-T76.json",
       "bytes": 11349,
       "sha256": "8085dd434c28fba325d495c23e3c495638b7ddcb2d7001bba9a87bf886fa9f97"
+    },
+    {
+      "path": "docs/technical-coverage-T77-T78.json",
+      "bytes": 14349,
+      "sha256": "b0017369e2ccf4b3096cba192fb5f8b9cc72e3f36120476d4339039874e10515"
     },
     {
       "path": "docs/technical-implementation-T01.md",
@@ -1097,9 +1122,14 @@
       "sha256": "15b1ad5902b3f44f7085b3bf215d02cf40384177dc12a88e6fcf5ae8afd60bfa"
     },
     {
+      "path": "docs/technical-implementation-T77-T78.md",
+      "bytes": 3915,
+      "sha256": "328ca3868a0566e9815e51f1be508132ef3fe8f702c9bc2c675eb96ffcd8eb80"
+    },
+    {
       "path": "docs/technical-implementation-status.json",
-      "bytes": 24468,
-      "sha256": "b55bfc9ff699fdab2d0eecefd19d82aca2f45b55f76e1a85c486ab8264b11c0d"
+      "bytes": 25515,
+      "sha256": "f02bfd67fae83ed297b219c60d8093e602e4c7bcc6702bbe4c9398aed3705fb8"
     },
     {
       "path": "infra/README.md",
@@ -1857,6 +1887,11 @@
       "sha256": "1bdd108274fe9022d7eafefd5b4f64dc3aa533eec8d0b76bb342729f3303511b"
     },
     {
+      "path": "src/miniuw_foundation/current_expense_lifecycle.py",
+      "bytes": 6858,
+      "sha256": "82fee3c9344127fdfbcfcb9b38492234695375558f4f4b16e9a915faa4323fb7"
+    },
+    {
       "path": "src/miniuw_foundation/current_hold_sale.py",
       "bytes": 5475,
       "sha256": "b04420d84aa41fbf495604a349294fc1d8320d77974c605bff430a7f5c38c2b5"
@@ -1930,6 +1965,11 @@
       "path": "src/miniuw_foundation/expense_cash_detail.py",
       "bytes": 15554,
       "sha256": "78bf5aaafcf20c257436284cd2d4d968845fd49dbe9a60d117e52527eda136e5"
+    },
+    {
+      "path": "src/miniuw_foundation/expense_checked_lifecycle.py",
+      "bytes": 11377,
+      "sha256": "3f81f3b297968910a2c553957c40ec8408daed22aef1c45d9ac4c51ace14e42e"
     },
     {
       "path": "src/miniuw_foundation/hold_sale_bundle.py",
@@ -2347,6 +2387,11 @@
       "sha256": "3b97a43db3bc80fe024e509f4431858bb578f914160c7954ac8e96c78af483f3"
     },
     {
+      "path": "templates/synthetic-expense-checked-lifecycle-bundle.json",
+      "bytes": 233810,
+      "sha256": "186933036d4834b56e76a66c49bca3d52b90af58c42ceb3e0d08c6920d55a37e"
+    },
+    {
       "path": "templates/synthetic-expense-detail-cash.json",
       "bytes": 7930,
       "sha256": "5585a3e65da8ad62cfda1ff1ba1db43a640f9179a3daeec7801831752f34d17d"
@@ -2355,6 +2400,21 @@
       "path": "templates/synthetic-expense-detail-noi.json",
       "bytes": 2450,
       "sha256": "ee2740d7f2e6437cce6529c8950342436ea4214020ceea1cffc21a4332687d55"
+    },
+    {
+      "path": "templates/synthetic-expense-lifecycle-base.json",
+      "bytes": 128610,
+      "sha256": "a314159fe0b1d71b1bbcf90167846e9ea072c5da89edd735466ff492f7c17eea"
+    },
+    {
+      "path": "templates/synthetic-expense-lifecycle-evidence.json",
+      "bytes": 17674,
+      "sha256": "2c7fe0b8b63cc242d11fc90063f81aa5c4d80436b987a2908606af714774f6d2"
+    },
+    {
+      "path": "templates/synthetic-expense-lifecycle-manifest.json",
+      "bytes": 16685,
+      "sha256": "ab8cb1cdbb8c4789bf7a1bef87003ee54e8eb1a87c9f29238c261c358ea8a7ed"
     },
     {
       "path": "templates/synthetic-hold-sale-bundle-example.json",
@@ -2807,6 +2867,11 @@
       "sha256": "d74ccce48c2792eeb800c9ba15a84c0dd6a40f2f707d9c87defa01448a8db96c"
     },
     {
+      "path": "tests/test_expense_checked_lifecycle.py",
+      "bytes": 17612,
+      "sha256": "f599cfe1312dc5e70189bfdf3eb2a8628895118b82a35fcac8abb73260d00a44"
+    },
+    {
       "path": "tests/test_foundation.py",
       "bytes": 11020,
       "sha256": "52c74047a9f6f18aaf912ece0afb6012ba831cd8aad45bd53252e248e9036621"
@@ -3092,6 +3157,11 @@
       "sha256": "efb642ebe7dcdf2948bc4b870aad8595759abe803de7f7bd4cd1b871035597e5"
     },
     {
+      "path": "tools/demo_expense_checked_lifecycle.py",
+      "bytes": 4483,
+      "sha256": "50b88392a016eb6018ddd5d29109717a2bc2a78e6d58e97627be6ad494ade13e"
+    },
+    {
       "path": "tools/demo_hold_sale.py",
       "bytes": 9178,
       "sha256": "f8cf43e34a27b5addecde6cead60a3818e3896fed3db40d2ccd0498bab245dbc"
@@ -3240,6 +3310,11 @@
       "path": "tools/demo_synthetic_workbook.py",
       "bytes": 2054,
       "sha256": "531bfdab248c6ac8b46b01393632dccaf96ab177a3fc21a7f0bcbc230ba9d5f5"
+    },
+    {
+      "path": "tools/expense_lifecycle_demo_support.py",
+      "bytes": 6213,
+      "sha256": "01b458d45c7a778d3b4de180a587dbcd79c5be18c45ae6f56bdc854d34e83ce4"
     },
     {
       "path": "tools/hold_sale_demo_support.py",

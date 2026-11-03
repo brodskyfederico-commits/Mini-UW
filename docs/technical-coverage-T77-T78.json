@@ -1,0 +1,305 @@
+{
+  "scope": "Opt-in expense-checked synthetic staged lifecycle full cash return/current view; no financial policy or original acceptance closure",
+  "rows": [
+    {
+      "requirement_or_variable": "exact_all_period_expense_and_cash_replay",
+      "source": {
+        "path": "docs/technical-implementation-T77-T78.md",
+        "line": 5,
+        "sha256": "328ca3868a0566e9815e51f1be508132ef3fe8f702c9bc2c675eb96ffcd8eb80"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§§3, 5 y 7",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "DAT-01"
+        },
+        {
+          "documento": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+          "sha256_documento": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+          "ubicacion_exacta": "§3, Expenses",
+          "definicion_documentada": "Fuente histórica de Gastos sin impuesto; desarrollo nuevo localizado por ID en docs/model-operations-contract.md. No demuestra adopción aprobada.",
+          "matrix_id": "M2-05"
+        },
+        {
+          "documento": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+          "sha256_documento": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+          "ubicacion_exacta": "§3, Expenses",
+          "definicion_documentada": "Fuente histórica de Operación antes de impuesto; desarrollo nuevo localizado por ID en docs/model-operations-contract.md. No demuestra adopción aprobada.",
+          "matrix_id": "M2-06"
+        }
+      ],
+      "current_definition": "Exact source-bound complete ordered expense inventory for every holding period; replay T76 against same NOI/cash, preserving nulls and all upstream blockers",
+      "affected_modules": [
+        "M2",
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_expense_checked_lifecycle.py",
+          "line": 85,
+          "test": "ExpenseCheckedLifecycleTests.test_missing_extra_reordered_or_unknown_period_cannot_be_skipped"
+        },
+        {
+          "path": "tests/test_expense_checked_lifecycle.py",
+          "line": 107,
+          "test": "ExpenseCheckedLifecycleTests.test_manifest_source_context_currency_and_basis_guards"
+        },
+        {
+          "path": "tests/test_expense_checked_lifecycle.py",
+          "line": 118,
+          "test": "ExpenseCheckedLifecycleTests.test_rehashed_detail_proof_cannot_be_grafted"
+        },
+        {
+          "path": "tests/test_expense_checked_lifecycle.py",
+          "line": 93,
+          "test": "ExpenseCheckedLifecycleTests.test_per_period_expense_blocker_withdraws_full_return"
+        },
+        {
+          "path": "tests/test_expense_checked_lifecycle.py",
+          "line": 138,
+          "test": "ExpenseCheckedLifecycleTests.test_strict_manifest_and_source_budget"
+        }
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Original authority/classification, insurance coverage and actual tax/accrual/payment conventions"
+    },
+    {
+      "requirement_or_variable": "economic_item_working_balance_continuity",
+      "source": {
+        "path": "docs/technical-implementation-T77-T78.md",
+        "line": 7,
+        "sha256": "328ca3868a0566e9815e51f1be508132ef3fe8f702c9bc2c675eb96ffcd8eb80"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 cadena financiera y diferencias; §7",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "CASH-01"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 costos, financiación, operaciones y salida",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "CASH-02"
+        },
+        {
+          "documento": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+          "sha256_documento": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+          "ubicacion_exacta": "§3, Expenses",
+          "definicion_documentada": "Fuente histórica de Gastos sin impuesto; desarrollo nuevo localizado por ID en docs/model-operations-contract.md. No demuestra adopción aprobada.",
+          "matrix_id": "M2-05"
+        }
+      ],
+      "current_definition": "Stable economic item inventories across periods with exact closing/opening payable/prepaid and no repeat payment identities; aggregate continuity cannot hide cross-item shifts",
+      "affected_modules": [
+        "M2",
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_expense_checked_lifecycle.py",
+          "line": 55,
+          "test": "ExpenseCheckedLifecycleTests.test_all_items_match_period_end_to_next_opening"
+        },
+        {
+          "path": "tests/test_expense_checked_lifecycle.py",
+          "line": 64,
+          "test": "ExpenseCheckedLifecycleTests.test_aggregate_balance_continuity_cannot_hide_changed_item_debt"
+        },
+        {
+          "path": "tests/test_expense_checked_lifecycle.py",
+          "line": 79,
+          "test": "ExpenseCheckedLifecycleTests.test_reclassification_or_changed_item_inventory_requires_revision"
+        },
+        {
+          "path": "tests/test_expense_checked_lifecycle.py",
+          "line": 100,
+          "test": "ExpenseCheckedLifecycleTests.test_payment_id_or_source_cannot_be_reused_across_periods"
+        }
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Other transfer/split profiles and actual historical working capital scope"
+    },
+    {
+      "requirement_or_variable": "expense_checked_purchase_to_sale_return",
+      "source": {
+        "path": "docs/technical-implementation-T77-T78.md",
+        "line": 11,
+        "sha256": "328ca3868a0566e9815e51f1be508132ef3fe8f702c9bc2c675eb96ffcd8eb80"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 aportes/distribuciones brutos frente a neto",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "RETURN-01"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 costos, financiación, operaciones y salida",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "CASH-02"
+        }
+      ],
+      "current_definition": "Expose exactly reproduced historical investor ledger only if base lifecycle and all expense/carry checks match, with no second payment/expense/funding and no approval inference",
+      "affected_modules": [
+        "M2",
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_expense_checked_lifecycle.py",
+          "line": 33,
+          "test": "ExpenseCheckedLifecycleTests.test_full_history_return_and_independent_cash_identity"
+        },
+        {
+          "path": "tests/test_expense_checked_lifecycle.py",
+          "line": 44,
+          "test": "ExpenseCheckedLifecycleTests.test_no_second_expense_payment_or_equity_and_all_prior_sources_preserved"
+        },
+        {
+          "path": "tests/test_expense_checked_lifecycle.py",
+          "line": 129,
+          "test": "ExpenseCheckedLifecycleTests.test_upstream_debt_blocker_survives_valid_expense_details_and_recovery"
+        }
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Capital/CoC/retained equity/personal allocation bases, full assets/accrual/TDC and independent financial acceptance"
+    },
+    {
+      "requirement_or_variable": "portable_expense_checked_lifecycle",
+      "source": {
+        "path": "docs/technical-implementation-T77-T78.md",
+        "line": 13,
+        "sha256": "328ca3868a0566e9815e51f1be508132ef3fe8f702c9bc2c675eb96ffcd8eb80"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§§3, 5 y 7",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "DAT-01"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 aportes/distribuciones brutos frente a neto",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "RETURN-01"
+        }
+      ],
+      "current_definition": "Strict bounded exact-source versions and complete result reconstruction, including blocked cases; rehashed forged evidence cannot pass",
+      "affected_modules": [
+        "M2",
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_expense_checked_lifecycle.py",
+          "line": 149,
+          "test": "ExpenseCheckedLifecycleTests.test_exact_deterministic_recovery_and_immutable_proof"
+        },
+        {
+          "path": "tests/test_expense_checked_lifecycle.py",
+          "line": 161,
+          "test": "ExpenseCheckedLifecycleTests.test_blocked_manifest_recovery_preserves_all_reasons"
+        },
+        {
+          "path": "tests/test_expense_checked_lifecycle.py",
+          "line": 172,
+          "test": "ExpenseCheckedLifecycleTests.test_rehashed_result_source_and_version_forgery_rejected"
+        }
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Runtime databases and authentic source/review authority"
+    },
+    {
+      "requirement_or_variable": "full_current_source_gate_and_internal_return_view",
+      "source": {
+        "path": "docs/technical-implementation-T77-T78.md",
+        "line": 17,
+        "sha256": "328ca3868a0566e9815e51f1be508132ef3fe8f702c9bc2c675eb96ffcd8eb80"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§§3, 5 y 7",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "DAT-01"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 aportes/distribuciones brutos frente a neto",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "RETURN-01"
+        }
+      ],
+      "current_definition": "At same explicit UTC require complete prior source set plus all expense sources and transport; suppress story and expense table on expiry/pending/failure while preserving history",
+      "affected_modules": [
+        "M2",
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_expense_checked_lifecycle.py",
+          "line": 200,
+          "test": "CurrentExpenseLifecycleTests.test_full_source_current_story_and_expense_table_preserve_negative_return"
+        },
+        {
+          "path": "tests/test_expense_checked_lifecycle.py",
+          "line": 214,
+          "test": "CurrentExpenseLifecycleTests.test_expired_detail_manifest_original_loan_or_transport_withdraw_all_numbers"
+        },
+        {
+          "path": "tests/test_expense_checked_lifecycle.py",
+          "line": 226,
+          "test": "CurrentExpenseLifecycleTests.test_only_old_current_inventory_cannot_substitute_for_new_expense_sources"
+        },
+        {
+          "path": "tests/test_expense_checked_lifecycle.py",
+          "line": 236,
+          "test": "CurrentExpenseLifecycleTests.test_rehashed_inventory_context_and_pending_review_cannot_make_current"
+        },
+        {
+          "path": "tests/test_expense_checked_lifecycle.py",
+          "line": 250,
+          "test": "CurrentExpenseLifecycleTests.test_wrong_evaluation_time_or_rehashed_registry_proof_rejected"
+        },
+        {
+          "path": "tests/test_expense_checked_lifecycle.py",
+          "line": 259,
+          "test": "CurrentExpenseLifecycleTests.test_fresh_sources_do_not_repair_calculation_blocker"
+        },
+        {
+          "path": "tests/test_expense_checked_lifecycle.py",
+          "line": 272,
+          "test": "CurrentExpenseLifecycleTests.test_current_proof_is_repeatable_isolated_and_never_real_approval"
+        }
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Authentic current evidence/review, live monitor, actual funding and external decision PDF"
+    }
+  ],
+  "real_decisions_enabled": false
+}

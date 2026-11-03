@@ -1,7 +1,7 @@
 {
   "phase": "post-I01 synthetic technical implementation",
   "user_authorized": true,
-  "component": "T76",
+  "component": "T78",
   "status": "local_implementation_verified_pending_remote_receipt",
   "implemented": [
     "fresh raw-claim drafts from unchanged 55-input/10-criterion template",
@@ -113,9 +113,11 @@
     "full source-bound staged construction cash and loan phase to holding/sale window with exact cash boundary and operating loan source/window/run equality",
     "purchase-through-staged-construction-to-sale gross equity returns and cash risk without counting phase principal or opening cash as another funding event",
     "exact-source portable staged lifecycle recovery and complete explicit-time evidence gate with internal current/pending review",
-    "complete per-item synthetic insurance/other operating expense/computed property tax accrued-to-cash detail, with exact T19/T25 replay, gross dated payments, payable/prepaid checks and portable blocked-or-matched recovery"
+    "complete per-item synthetic insurance/other operating expense/computed property tax accrued-to-cash detail, with exact T19/T25 replay, gross dated payments, payable/prepaid checks and portable blocked-or-matched recovery",
+    "complete ordered per-period expense detail replay and stable economic item payable/prepaid continuity gating the reproduced staged purchase-to-sale return, with portable matched/blocked recovery",
+    "explicit-time exact full-source expense-checked lifecycle current gate and internal investor/gross expense-payment review, suppressing current numbers on expiry or calculation failure"
   ],
-  "unit_tests": 1162,
+  "unit_tests": 1184,
   "plan_packages_partially_addressed": [
     "IMP-01",
     "IMP-06",
@@ -212,7 +214,9 @@
     "T73",
     "T74",
     "T75",
-    "T76"
+    "T76",
+    "T77",
+    "T78"
   ],
   "tests_by_component": {
     "T01": 31,
@@ -290,7 +294,9 @@
     "T73": 6,
     "T74": 8,
     "T75": 8,
-    "T76": 20
+    "T76": 20,
+    "T77": 15,
+    "T78": 7
   },
   "not_yet_implemented": [
     "complete financial graph and its designed cycles",
@@ -430,5 +436,9 @@
   "staged_construction_to_declared_lifecycle_cash_return_connected": true,
   "staged_lifecycle_portable_recovery_and_current_review_implemented": true,
   "synthetic_per_item_expense_cash_detail_implemented": true,
-  "expense_cash_detail_scope": "Explicit single-period nonnegative gross supplied expense/payments and payable/prepaid identity for every NOI expense plus calculated property tax; zero noncash expense, no refunds/offsets/transfers. No legal rule, insurance coverage, real payment, source authority or complete economic scope authenticated."
+  "expense_cash_detail_scope": "Explicit single-period nonnegative gross supplied expense/payments and payable/prepaid identity for every NOI expense plus calculated property tax; zero noncash expense, no refunds/offsets/transfers. No legal rule, insurance coverage, real payment, source authority or complete economic scope authenticated.",
+  "expense_detail_to_staged_lifecycle_returns_connected": true,
+  "expense_checked_lifecycle_portable_bundle_implemented": true,
+  "opt_in_current_expense_lifecycle_review_implemented": true,
+  "expense_checked_lifecycle_scope": "Fixed economic item inventory across every declared operating period of saved staged same-liability holding/sale chain. T76 accrual/cash checks and per-item working-balance continuity; no second expense or funding; complete source-time current gate. No original source authority, real payments, tax law, personal allocation or full asset/accrual/TDC scope authenticated."
 }
