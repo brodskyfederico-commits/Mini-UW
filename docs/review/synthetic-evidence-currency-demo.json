@@ -1,0 +1,170 @@
+{
+  "purpose": "explicit_time_synthetic_evidence_currency_and_return_gate",
+  "base_registry_example_path": "templates/synthetic-evidence-currency-example.json",
+  "cases": [
+    {
+      "case_id": "current",
+      "evaluated_as_of_UTC": "2027-07-01T12:00:00Z",
+      "registry_source_sha256": "999881af61f319632fb79257976c6b479007696850fed68074da60a07a9b746c",
+      "registry_run_sha256": "d0a2f5f14068ec92f23a2b7760aaddacaf236dcd605eefcc28898c75155bcb8e",
+      "base_costed_run_sha256": "75e314141e3acfdba32522983681e305e46edb31b8d341bdb589ea0707b05183",
+      "current_output_run_sha256": "7b82ad7a6c31f9508f76202fa2bb5e6ecc2bf26de681813b7b469585eaf1bdac",
+      "state": "current_synthetic_output_at_declared_time",
+      "exposed_project_net_cash_profit": {
+        "denominator": "10000",
+        "numerator": "2889197"
+      },
+      "blockers": [],
+      "calculation_blockers": [],
+      "evidence_blockers": [],
+      "required_source_binding_count": 21,
+      "report_serialization_roundtrip_replayed": true,
+      "decision": "PENDING"
+    },
+    {
+      "case_id": "expired",
+      "evaluated_as_of_UTC": "2027-08-01T00:00:00Z",
+      "registry_source_sha256": "999881af61f319632fb79257976c6b479007696850fed68074da60a07a9b746c",
+      "registry_run_sha256": "b3dc43d105886c3d1a091664227c410ebbc857d0d09f517585090d242717967f",
+      "base_costed_run_sha256": "75e314141e3acfdba32522983681e305e46edb31b8d341bdb589ea0707b05183",
+      "current_output_run_sha256": "057ab5ef5dc6b001f1c968629b7a5a89e3edfb3756e3975dc455e5f782606a8b",
+      "state": "PENDING",
+      "exposed_project_net_cash_profit": null,
+      "blockers": [
+        "required_evidence_not_current"
+      ],
+      "calculation_blockers": [],
+      "evidence_blockers": [
+        "/capacity/bank_noi:evidence_expired",
+        "/capacity/closing:evidence_expired",
+        "/capacity/new_loan:evidence_expired",
+        "/capacity/spec:evidence_expired",
+        "/capacity/valuation_noi:evidence_expired",
+        "/exit/bridge_spec:evidence_expired",
+        "/exit/cost_inventory:evidence_expired",
+        "/exit/forward_noi:evidence_expired",
+        "/exit/value_spec:evidence_expired",
+        "/project/closings/0/cash:evidence_expired",
+        "/project/closings/0/debt_binding:evidence_expired",
+        "/project/closings/0/loans/0:evidence_expired",
+        "/project/closings/1/cash:evidence_expired",
+        "/project/closings/1/debt_binding:evidence_expired",
+        "/project/closings/1/loans/0:evidence_expired",
+        "/project/investor_slots:evidence_expired",
+        "/project/manifest:evidence_expired",
+        "/project/periods/0/cash:evidence_expired",
+        "/project/periods/0/noi:evidence_expired",
+        "/project/periods/1/cash:evidence_expired",
+        "/project/periods/1/noi:evidence_expired"
+      ],
+      "required_source_binding_count": 21,
+      "report_serialization_roundtrip_replayed": true,
+      "decision": "PENDING"
+    },
+    {
+      "case_id": "pending-review",
+      "evaluated_as_of_UTC": "2027-07-01T12:00:00Z",
+      "registry_source_sha256": "1ded07afce71070c03c0ae9616c34f69fe955e805ce5f09459738777babc6c2c",
+      "registry_run_sha256": "139b133b3f2e32842b301dbdb4bd4ab468e8847feec3eaeb990fea26aed3c0b3",
+      "base_costed_run_sha256": "75e314141e3acfdba32522983681e305e46edb31b8d341bdb589ea0707b05183",
+      "current_output_run_sha256": "64340b6a956aaaa6bd9f105bf858382aa51f3c65d38c7c925a2fc761c2035605",
+      "state": "PENDING",
+      "exposed_project_net_cash_profit": null,
+      "blockers": [
+        "required_evidence_not_current"
+      ],
+      "calculation_blockers": [],
+      "evidence_blockers": [
+        "/project/periods/0/noi:synthetic_review_pending"
+      ],
+      "required_source_binding_count": 21,
+      "report_serialization_roundtrip_replayed": true,
+      "decision": "PENDING"
+    },
+    {
+      "case_id": "estimated-value",
+      "evaluated_as_of_UTC": "2027-07-01T12:00:00Z",
+      "registry_source_sha256": "286f7b6aebdbd692a91869a856cb3dcf5a3aa44948cb720184ea256b5c9a67fa",
+      "registry_run_sha256": "f39e868b27a252ba1edfd7372d5d7677eec90fe219e58498c2507b50bde30364",
+      "base_costed_run_sha256": "75e314141e3acfdba32522983681e305e46edb31b8d341bdb589ea0707b05183",
+      "current_output_run_sha256": "d4ac04d477da4f7e31af9967edbfb5858c4e905da62eac06d654cdcddce4455d",
+      "state": "PENDING",
+      "exposed_project_net_cash_profit": null,
+      "blockers": [
+        "required_evidence_not_current"
+      ],
+      "calculation_blockers": [],
+      "evidence_blockers": [
+        "/project/periods/0/noi:value_estimate"
+      ],
+      "required_source_binding_count": 21,
+      "report_serialization_roundtrip_replayed": true,
+      "decision": "PENDING"
+    },
+    {
+      "case_id": "superseded",
+      "evaluated_as_of_UTC": "2027-07-01T12:00:00Z",
+      "registry_source_sha256": "fa366c24eb7164b8cbd8c94b5fd792f5f340c60d6de5b6cde790da2640ab8c14",
+      "registry_run_sha256": "e4580d98dfa825f2c64ce6bf651132574e6a8755efbfb92b3dd0f38e321e15cf",
+      "base_costed_run_sha256": "75e314141e3acfdba32522983681e305e46edb31b8d341bdb589ea0707b05183",
+      "current_output_run_sha256": "4bfd4c25ff14c1c765ab1a6c6eb95fa7d3e9188edde2e0e136255d968812c90d",
+      "state": "PENDING",
+      "exposed_project_net_cash_profit": null,
+      "blockers": [
+        "required_evidence_not_current"
+      ],
+      "calculation_blockers": [],
+      "evidence_blockers": [
+        "/project/periods/0/noi:evidence_superseded"
+      ],
+      "required_source_binding_count": 21,
+      "report_serialization_roundtrip_replayed": true,
+      "decision": "PENDING"
+    },
+    {
+      "case_id": "explicit-renewed-test",
+      "evaluated_as_of_UTC": "2027-08-01T00:00:00Z",
+      "registry_source_sha256": "f658c4ce2e9e202bbf8d8a6732b189abc83a25cb5c60c40b7990a9e46ad148c6",
+      "registry_run_sha256": "d9bbae1d3b6bd043ba18d02e16da9be8658f7bbf14df38edb7289eab99d44916",
+      "base_costed_run_sha256": "75e314141e3acfdba32522983681e305e46edb31b8d341bdb589ea0707b05183",
+      "current_output_run_sha256": "994e4cde351e0cd3e3973a26e638ddc9be62bac91e47367f8962ea3e3aa01aaa",
+      "state": "current_synthetic_output_at_declared_time",
+      "exposed_project_net_cash_profit": {
+        "denominator": "10000",
+        "numerator": "2889197"
+      },
+      "blockers": [],
+      "calculation_blockers": [],
+      "evidence_blockers": [],
+      "required_source_binding_count": 21,
+      "report_serialization_roundtrip_replayed": true,
+      "decision": "PENDING"
+    },
+    {
+      "case_id": "known-bank-blocker",
+      "evaluated_as_of_UTC": "2027-07-01T12:00:00Z",
+      "registry_source_sha256": "62ec1efbac0a41339f5d7de98495156ccbdcc8ff7f1c808cb2c190c0f5595a6d",
+      "registry_run_sha256": "f22fb91d71d9297e9ff4fb03d5c16dd84a94f8f2496e0c6b1b2cae41a086e735",
+      "base_costed_run_sha256": "390b41cf9ad4b4a3cbbbc44695b4b5c4bae4a60e1a7eb33f8d9a40d4c9ba73a4",
+      "current_output_run_sha256": "f30d5de6ec4f67a6a139da90356499134791f0fc1a301b8b83aaa1fb9ad8cd7f",
+      "state": "PENDING",
+      "exposed_project_net_cash_profit": null,
+      "blockers": [
+        "guarded_calculation_blocked"
+      ],
+      "calculation_blockers": [
+        "refinance_capacity_or_selection_blocked"
+      ],
+      "evidence_blockers": [],
+      "required_source_binding_count": 21,
+      "report_serialization_roundtrip_replayed": true,
+      "decision": "PENDING"
+    }
+  ],
+  "independent_software_fixture_note": "Compatible branch is the separate declared bank NOI 2000/closing-without-valuation fixture. Original bank NOI 50 and its blocker remain unchanged.",
+  "historic_math_preserved_across_expiry_and_explicit_test_renewal": true,
+  "review_or_source_authentication_claimed": false,
+  "live_monitor_enabled": false,
+  "decision": "PENDING",
+  "production_authorized": false
+}

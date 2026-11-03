@@ -1,0 +1,144 @@
+{
+  "scope": "Explicit-time synthetic technical source currency and optional current exit output; original matrix and financial gates preserved",
+  "rows": [
+    {
+      "requirement_or_variable": "explicit_evidence_time_and_validity",
+      "source": {
+        "path": "docs/technical-implementation-T46-T47.md",
+        "line": 9,
+        "sha256": "1b77970e900dd7ac3807a4628fb0a2e5cc9a8d36912eddbfd46b7e7aeb806010"
+      },
+      "current_definition": "Explicit UTC instant and [start,end), no missing-date TTL or unlimited default",
+      "affected_modules": [
+        "M7",
+        "M8",
+        "T44",
+        "T46",
+        "T47"
+      ],
+      "validation_evidence": [
+        "tests/test_evidence_currency.py:EvidenceCurrencyTests.test_exact_start_included_and_expiry_excluded",
+        "tests/test_evidence_currency.py:EvidenceCurrencyTests.test_no_missing_date_becomes_unlimited_or_default_TTL",
+        "tests/test_evidence_currency.py:EvidenceCurrencyTests.test_invalid_interval_order_blocks"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Actual contractual validity/applicability and evidence authority"
+    },
+    {
+      "requirement_or_variable": "review_estimate_supersession_conflicts",
+      "source": {
+        "path": "docs/technical-implementation-T46-T47.md",
+        "line": 7,
+        "sha256": "1b77970e900dd7ac3807a4628fb0a2e5cc9a8d36912eddbfd46b7e7aeb806010"
+      },
+      "current_definition": "Synthetic pending/rejected/estimate/replacement/multiple records block without automatic source hierarchy",
+      "affected_modules": [
+        "M7",
+        "M8",
+        "T44",
+        "T46",
+        "T47"
+      ],
+      "validation_evidence": [
+        "tests/test_evidence_currency.py:EvidenceCurrencyTests.test_estimate_and_unresolved_remain_pending",
+        "tests/test_evidence_currency.py:EvidenceCurrencyTests.test_superseded_record_not_replaced_automatically",
+        "tests/test_evidence_currency.py:EvidenceCurrencyTests.test_missing_evidence_and_multiple_records_no_latest_wins"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Authenticated real review, source revision resolution and full original-document chain"
+    },
+    {
+      "requirement_or_variable": "all_exit_transport_bindings",
+      "source": {
+        "path": "docs/technical-implementation-T46-T47.md",
+        "line": 15,
+        "sha256": "1b77970e900dd7ac3807a4628fb0a2e5cc9a8d36912eddbfd46b7e7aeb806010"
+      },
+      "current_definition": "Exact complete 21 bindings in current fixture, preserving duplicate-byte aliases and ignoring row order only",
+      "affected_modules": [
+        "M7",
+        "M8",
+        "T44",
+        "T46",
+        "T47"
+      ],
+      "validation_evidence": [
+        "tests/test_current_exit_output.py:CurrentExitOutputTests.test_every_leaf_binding_and_alias_required",
+        "tests/test_current_exit_output.py:CurrentExitOutputTests.test_wrong_hash_or_locator_in_coherent_registry_still_blocked",
+        "tests/test_current_exit_output.py:CurrentExitOutputTests.test_row_order_has_no_semantic_effect"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Other profile source inventories and real financial source completeness"
+    },
+    {
+      "requirement_or_variable": "current_return_withdrawal_historic_preservation",
+      "source": {
+        "path": "docs/technical-implementation-T46-T47.md",
+        "line": 19,
+        "sha256": "1b77970e900dd7ac3807a4628fb0a2e5cc9a8d36912eddbfd46b7e7aeb806010"
+      },
+      "current_definition": "Current output omitted after expiry while historical T44 result/hash and financial blockers remain",
+      "affected_modules": [
+        "M7",
+        "M8",
+        "T44",
+        "T46",
+        "T47"
+      ],
+      "validation_evidence": [
+        "tests/test_current_exit_output.py:CurrentExitOutputTests.test_expiry_withdraws_current_summary_preserves_history",
+        "tests/test_current_exit_output.py:CurrentExitOutputTests.test_renewal_changes_registry_and_result_without_altering_math",
+        "tests/test_current_exit_output.py:CurrentExitOutputTests.test_current_evidence_cannot_hide_bank_blocker"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Real-time clock/monitor, authenticated renewal and production publication"
+    },
+    {
+      "requirement_or_variable": "return_story_and_scope_honesty",
+      "source": {
+        "path": "docs/technical-implementation-T46-T47.md",
+        "line": 17,
+        "sha256": "1b77970e900dd7ac3807a4628fb0a2e5cc9a8d36912eddbfd46b7e7aeb806010"
+      },
+      "current_definition": "Project cash/dated events/normalization/stocks/risk/IRR preserved only as synthetic at declared instant, no personal approval",
+      "affected_modules": [
+        "M7",
+        "M8",
+        "T44",
+        "T46",
+        "T47"
+      ],
+      "validation_evidence": [
+        "tests/test_current_exit_output.py:CurrentExitOutputTests.test_all_bindings_current_exposes_project_story_with_original_math",
+        "tests/test_current_exit_output.py:CurrentExitOutputTests.test_no_live_clock_financial_publication_or_real_authority"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Personal LP terms, authentic review, actual data and final PDF"
+    },
+    {
+      "requirement_or_variable": "same_time_replay_and_tamper",
+      "source": {
+        "path": "docs/technical-implementation-T46-T47.md",
+        "line": 25,
+        "sha256": "1b77970e900dd7ac3807a4628fb0a2e5cc9a8d36912eddbfd46b7e7aeb806010"
+      },
+      "current_definition": "Full source/calculation/registry/report replay bound to exact evaluation time, rejects updated-hash forgeries",
+      "affected_modules": [
+        "M7",
+        "M8",
+        "T44",
+        "T46",
+        "T47"
+      ],
+      "validation_evidence": [
+        "tests/test_current_exit_output.py:CurrentExitOutputTests.test_wrong_time_replayed_result_is_rejected",
+        "tests/test_current_exit_output.py:CurrentExitOutputTests.test_rehashed_registry_and_base_result_forgeries_rejected",
+        "tests/test_current_exit_output.py:CurrentExitOutputTests.test_full_report_replay_rejects_hash_updated_forgery"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "No new runtime archive or atomic distributed publication claim"
+    }
+  ],
+  "source_review_authenticated": false,
+  "real_decisions_enabled": false
+}

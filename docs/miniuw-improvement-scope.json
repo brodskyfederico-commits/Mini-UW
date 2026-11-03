@@ -52,9 +52,9 @@
       "location": "review p.1, item 3",
       "definition": "missing required information remains PENDING with known problems visible",
       "affected": "existing screening and T35/T36 guards",
-      "evidence": "docs/technical-implementation-T35-T36.md",
-      "state": "existing_partial_controls_preserved",
-      "pending": "complete external presentation and evidence-expiry flow"
+      "evidence": "docs/technical-implementation-T35-T36.md; docs/technical-coverage-T46-T47.json; docs/review/synthetic-evidence-currency-demo.json",
+      "state": "partial_synthetic_source_currency_gate",
+      "pending": "Authenticated source/review chain, real expiry policy, live reevaluation and full external presentation"
     },
     {
       "recommendation": "versioned policy and standardized Downside",
@@ -111,5 +111,6 @@
   "isolated_net_sale_sensitivity": "implemented_synthetic_T38; full Downside, exit-cap break-even and no-refinance projections remain pending",
   "guarded_gross_sale_source_revisions": "T39/T40: explicit proceeds/cost revisions through debt/cash/capacity guard; market/cap/tax/no-refinance responses remain pending",
   "conditional_exit_value_to_sale": "T41/T42: forward NOI/cap with explicit calendar/source and hypothetical-sale guards; present conflicting valuation blocks; price-dependent costs and full market scenarios remain pending",
-  "price_dependent_cost_and_recovery_scope": "T43-T45: declared fixed/gross-fraction costs and bounded price/cap cash-recovery domains, blocked by unresolved tax/bank/value; actual tax law, nonlinear costs, market/funding and full economic loss remain pending"
+  "price_dependent_cost_and_recovery_scope": "T43-T45: declared fixed/gross-fraction costs and bounded price/cap cash-recovery domains, blocked by unresolved tax/bank/value; actual tax law, nonlinear costs, market/funding and full economic loss remain pending",
+  "explicit_evidence_currency_scope": "T46/T47: complete technical byte bindings and UTC as-of checks; no authenticated real evidence/review, TTL policy, monitor or investment approval"
 }
