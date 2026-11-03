@@ -1,0 +1,127 @@
+{
+  "scope": "Internal synthetic investor presentation only; original 398-row coverage matrix and financial gates preserved",
+  "rows": [
+    {
+      "requirement_or_variable": "replayed_internal_return_story",
+      "source": {
+        "path": "docs/technical-implementation-T56.md",
+        "line": 3,
+        "sha256": "cb0d92fc5ded2fc679bbc1a313dbee53feed57742f1721783e6cf12b080e7bef",
+        "related_lines": [
+          5
+        ]
+      },
+      "current_definition": "Fully replay T55 inventory before rendering project-level gross cash, dates, explicit basis normalization, EM and all IRR roots/intervals; personal allocation stays pending",
+      "affected_modules": [
+        "M7",
+        "M8",
+        "T55",
+        "T56"
+      ],
+      "validation_evidence": [
+        "tests/test_investor_review.py:InvestorReviewTests.test_public_report_replay_and_project_story_not_personal_promise",
+        "tests/test_investor_review.py:InvestorReviewTests.test_updated_hash_inventory_forgery_not_rendered"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Authenticated financial inputs, complete model acceptance and personal allocation terms",
+      "design_requirement_source": {
+        "path": "docs/review/information-flow-summary-FLOW02.json",
+        "lines": [
+          9,
+          59,
+          160
+        ],
+        "sha256": "a59964d5422de6bdd89ee842e5d451411088e729e7cefdc4eae1fc994ddb96f2",
+        "authority": "Preserved user-facing design summary; not professional approval"
+      }
+    },
+    {
+      "requirement_or_variable": "presentation_rounding_preserves_missing_and_nonzero",
+      "source": {
+        "path": "docs/technical-implementation-T56.md",
+        "line": 7,
+        "sha256": "cb0d92fc5ded2fc679bbc1a313dbee53feed57742f1721783e6cf12b080e7bef"
+      },
+      "current_definition": "Four decimals half-even is presentation only; exact IRR and rational source evidence retained; small nonzero explicitly identified",
+      "affected_modules": [
+        "M7",
+        "M8",
+        "T55",
+        "T56"
+      ],
+      "validation_evidence": [
+        "tests/test_investor_review.py:InvestorReviewTests.test_small_nonzero_never_misrepresented_as_exact_zero"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Financial rounding policies and acceptance tolerances remain unadopted",
+      "design_requirement_source": {
+        "path": "docs/review/information-flow-summary-FLOW02.json",
+        "lines": [
+          197
+        ],
+        "sha256": "a59964d5422de6bdd89ee842e5d451411088e729e7cefdc4eae1fc994ddb96f2",
+        "authority": "Preserved user-facing design summary; not professional approval"
+      }
+    },
+    {
+      "requirement_or_variable": "pending_cases_and_stock_basis",
+      "source": {
+        "path": "docs/technical-implementation-T56.md",
+        "line": 9,
+        "sha256": "cb0d92fc5ded2fc679bbc1a313dbee53feed57742f1721783e6cf12b080e7bef"
+      },
+      "current_definition": "Pending rows show causes without current numbers; unknown normalization and invalid capital/equity snapshots stay pending, never zero or inferred cash",
+      "affected_modules": [
+        "M7",
+        "M8",
+        "T55",
+        "T56"
+      ],
+      "validation_evidence": [
+        "tests/test_investor_review.py:InvestorReviewTests.test_pending_row_withdraws_all_numbers",
+        "tests/test_investor_review.py:InvestorReviewTests.test_unknown_normalization_and_blocked_stock_not_filled"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Verified capital/equity stock metadata, actual evidence and review",
+      "design_requirement_source": {
+        "path": "docs/review/information-flow-summary-FLOW02.json",
+        "lines": [
+          187,
+          202
+        ],
+        "sha256": "a59964d5422de6bdd89ee842e5d451411088e729e7cefdc4eae1fc994ddb96f2",
+        "authority": "Preserved user-facing design summary; not professional approval"
+      }
+    },
+    {
+      "requirement_or_variable": "literal_internal_report_no_external_authority",
+      "source": {
+        "path": "docs/technical-implementation-T56.md",
+        "line": 11,
+        "sha256": "cb0d92fc5ded2fc679bbc1a313dbee53feed57742f1721783e6cf12b080e7bef"
+      },
+      "current_definition": "Escape supplied text and bind inventory/code/definition/document hashes; internal synthetic report never authorizes external PDF or decisions",
+      "affected_modules": [
+        "M7",
+        "M8",
+        "T55",
+        "T56"
+      ],
+      "validation_evidence": [
+        "tests/test_investor_review.py:InvestorReviewTests.test_untrusted_markup_and_controls_are_literal",
+        "tests/test_investor_review.py:InvestorReviewTests.test_public_report_replay_and_project_story_not_personal_promise"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Final external one-page decision PDF, publication gate, production and real decisions",
+      "design_requirement_source": {
+        "path": "docs/review/information-flow-summary-FLOW02.json",
+        "lines": [
+          227
+        ],
+        "sha256": "a59964d5422de6bdd89ee842e5d451411088e729e7cefdc4eae1fc994ddb96f2",
+        "authority": "Preserved user-facing design summary; not professional approval"
+      }
+    }
+  ],
+  "real_decisions_enabled": false
+}

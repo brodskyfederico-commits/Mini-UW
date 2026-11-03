@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D03 review and metric-intake design extensions and T01–T55 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D03 review and metric-intake design extensions and T01–T56 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 23876,
-      "sha256": "601a240f90f609f5305597bcfc2ef59f0b65689d0e124caa3b4fd0edd42b3de5"
+      "bytes": 24579,
+      "sha256": "6fb4008f782fd7a4c7bd7fa91f290c5fe4c367dc3a4ae5e8c15991c1544bca04"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 96675,
-      "sha256": "c4ed5c2b97697b6489ac07f81832f63cf66a03f19c7977fb857d5c0f913ca7be"
+      "bytes": 98244,
+      "sha256": "cfaf7a4b8cbc47a90545d938771b4ce26ff67596b2001e5e1287dd6ede9a2e0f"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -372,6 +372,11 @@
       "sha256": "07d48b0ef234c29deb78a75f202fa1ade250da1f2a2d77589d02409015ee1ca1"
     },
     {
+      "path": "docs/review/MiniUW_Revision_Interna_Retorno_T56.md",
+      "bytes": 4577,
+      "sha256": "6b861c6ceba5d89f42d77a4854043e16ae4c44c8417b0c413979df0924a00723"
+    },
+    {
       "path": "docs/review/MiniUW_Vista_Sintetica_Interna_T18.pdf",
       "bytes": 6569,
       "sha256": "153eb40179116a29b10a4882db5025b499063bbc45315e953b0c93aa529d3c5b"
@@ -495,6 +500,11 @@
       "path": "docs/review/synthetic-investor-returns-demo.json",
       "bytes": 14875,
       "sha256": "f505acc730f52843dc1c059b3e59123ace4ce8b739746603169159f1ce6ce7c5"
+    },
+    {
+      "path": "docs/review/synthetic-investor-review-demo.json",
+      "bytes": 1528,
+      "sha256": "2a7ec3004683de113d34a634996bf8145854ca439aa6be57dd72327762aeb28c"
     },
     {
       "path": "docs/review/synthetic-onepager-T18-manifest.json",
@@ -675,6 +685,11 @@
       "path": "docs/technical-coverage-T55.json",
       "bytes": 4034,
       "sha256": "0b903f670fe3f5a5847cec27093e78f627655897e97ccef5ea0374097bb806ae"
+    },
+    {
+      "path": "docs/technical-coverage-T56.json",
+      "bytes": 5345,
+      "sha256": "06bd5897da6b76684567d12b6346615f7442fb3599b0474d4401b21d8aef8b65"
     },
     {
       "path": "docs/technical-implementation-T01.md",
@@ -882,9 +897,14 @@
       "sha256": "c3c10ee96a0cad530df83005a3d674ed1848092c69902b49babf34ebf3c43bf3"
     },
     {
+      "path": "docs/technical-implementation-T56.md",
+      "bytes": 2013,
+      "sha256": "cb0d92fc5ded2fc679bbc1a313dbee53feed57742f1721783e6cf12b080e7bef"
+    },
+    {
       "path": "docs/technical-implementation-status.json",
-      "bytes": 18293,
-      "sha256": "5225b400d5f61401838ef08ca26609f7b3b42f9d79801a19b818dc7ee93338d5"
+      "bytes": 18439,
+      "sha256": "27e8ae2b266de1e18c7ad18d6bb192cb3e67d91b9a662f0be6df40e59ddc8b81"
     },
     {
       "path": "infra/README.md",
@@ -1707,6 +1727,11 @@
       "sha256": "b64f5bae914ce97edebc4a86849935952eea4a25e271068d92b0f2197843b036"
     },
     {
+      "path": "src/miniuw_foundation/investor_review.py",
+      "bytes": 8734,
+      "sha256": "49b4be61631ce86e7aa026906ad0972711fd7711968cc2417ae19ea16bde8b12"
+    },
+    {
       "path": "src/miniuw_foundation/normalization.py",
       "bytes": 7683,
       "sha256": "582f318182971e79cd48fbcd43a00c3e4ecc8505450eab87762782ed8af70c0a"
@@ -2432,6 +2457,11 @@
       "sha256": "7e92a428575c7fe45fa0dc09d86557bd6b49047bede8fdedcccd163b4fa10573"
     },
     {
+      "path": "tests/test_investor_review.py",
+      "bytes": 3234,
+      "sha256": "a984c2aa9a92d9c22ec59cef90787a03a96d0e38edbc79347e0be25d8dbd297a"
+    },
+    {
       "path": "tests/test_normalization.py",
       "bytes": 15481,
       "sha256": "1131920b5d665b32d269fd28f664279d4050dd33ed5d1ec71312f1d3d40d9acb"
@@ -2655,6 +2685,11 @@
       "path": "tools/demo_integrated_synthetic_review.py",
       "bytes": 5191,
       "sha256": "6df552431042f73a6840cf79b0e745921fe1a468220922f27e8e0fd0165befa9"
+    },
+    {
+      "path": "tools/demo_investor_review.py",
+      "bytes": 3245,
+      "sha256": "f93675e3701e14b65e9e6e2b655f822f0155fadc7dcbe6c848483fb437d7ed6d"
     },
     {
       "path": "tools/demo_operating_cash_returns.py",
