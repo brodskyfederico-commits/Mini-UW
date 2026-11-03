@@ -1,0 +1,151 @@
+{
+  "schema": "miniuw.synthetic-expense-cash-detail.v1",
+  "context": {
+    "deal_id": "SYNTHETIC-NOI-demo",
+    "scenario_id": "SYNTHETIC-Base",
+    "run_id": "SYNTHETIC-NOI-run",
+    "definition_set_revision": "SYNTHETIC-unadopted-M2-profile-v1"
+  },
+  "currency": "USD",
+  "period_ref": "SYNTHETIC-operating-year-1",
+  "start_date": "2027-01-01",
+  "end_date": "2028-01-01",
+  "noi_source_sha256": "ee2740d7f2e6437cce6529c8950342436ea4214020ceea1cffc21a4332687d55",
+  "noi_run_sha256": "f770c5314aa18a376ab14d8e9c02ac166175f88e501fbc5c1a03b4e71bc66612",
+  "cash_source_sha256": "5585a3e65da8ad62cfda1ff1ba1db43a640f9179a3daeec7801831752f34d17d",
+  "cash_run_sha256": "38a80437efe9538d5d1293c9c5218b3bd9df5b0f9bb17d5a163e17a606c1aca4",
+  "inventory_declared_complete": true,
+  "classification_basis_ref": "SYNTHETIC-declared-all-NOI-items-tax-and-no-payment-overlap",
+  "assumptions": {
+    "noncash_expenses": false,
+    "refunds_or_offsets": false,
+    "interitem_transfers": false,
+    "payment_dates_are": "supplied_plan_not_verified_bank_history",
+    "rounding": "none_exact"
+  },
+  "items": [
+    {
+      "item_id": "SYNTHETIC-insurance",
+      "kind": "insurance",
+      "noi_pointer": "/expense_rows/0",
+      "expense_amount": {
+        "numerator": "120",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "period_ref": "SYNTHETIC-operating-year-1",
+      "source_ref": "SYNTHETIC-declared-expense-and-balances-insurance",
+      "settlement_basis_ref": "SYNTHETIC-supplied-settlement-no-other-adjustments-insurance",
+      "payments_inventory_declared_complete": true,
+      "opening_payables": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "closing_payables": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "opening_prepaid": {
+        "numerator": "40",
+        "denominator": "1"
+      },
+      "closing_prepaid": {
+        "numerator": "60",
+        "denominator": "1"
+      },
+      "payments": [
+        {
+          "payment_id": "SYNTHETIC-payment-insurance",
+          "date": "2027-01-01",
+          "amount": {
+            "numerator": "140",
+            "denominator": "1"
+          },
+          "source_ref": "SYNTHETIC-payment-plan-line-insurance"
+        }
+      ]
+    },
+    {
+      "item_id": "SYNTHETIC-other",
+      "kind": "other_operating_expense",
+      "noi_pointer": "/expense_rows/1",
+      "expense_amount": {
+        "numerator": "130",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "period_ref": "SYNTHETIC-operating-year-1",
+      "source_ref": "SYNTHETIC-declared-expense-and-balances-other",
+      "settlement_basis_ref": "SYNTHETIC-supplied-settlement-no-other-adjustments-other",
+      "payments_inventory_declared_complete": true,
+      "opening_payables": {
+        "numerator": "20",
+        "denominator": "1"
+      },
+      "closing_payables": {
+        "numerator": "30",
+        "denominator": "1"
+      },
+      "opening_prepaid": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "closing_prepaid": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "payments": [
+        {
+          "payment_id": "SYNTHETIC-payment-other",
+          "date": "2027-06-01",
+          "amount": {
+            "numerator": "120",
+            "denominator": "1"
+          },
+          "source_ref": "SYNTHETIC-payment-plan-line-other"
+        }
+      ]
+    },
+    {
+      "item_id": "SYNTHETIC-tax",
+      "kind": "property_tax",
+      "noi_pointer": "/property_tax",
+      "expense_amount": {
+        "numerator": "200",
+        "denominator": "1"
+      },
+      "currency": "USD",
+      "period_ref": "SYNTHETIC-operating-year-1",
+      "source_ref": "SYNTHETIC-declared-expense-and-balances-tax",
+      "settlement_basis_ref": "SYNTHETIC-supplied-settlement-no-other-adjustments-tax",
+      "payments_inventory_declared_complete": true,
+      "opening_payables": {
+        "numerator": "80",
+        "denominator": "1"
+      },
+      "closing_payables": {
+        "numerator": "100",
+        "denominator": "1"
+      },
+      "opening_prepaid": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "closing_prepaid": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "payments": [
+        {
+          "payment_id": "SYNTHETIC-payment-tax",
+          "date": "2027-12-31",
+          "amount": {
+            "numerator": "180",
+            "denominator": "1"
+          },
+          "source_ref": "SYNTHETIC-payment-plan-line-tax"
+        }
+      ]
+    }
+  ]
+}

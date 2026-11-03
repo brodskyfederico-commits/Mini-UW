@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D03 review and metric-intake design extensions and T01–T75 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D03 review and metric-intake design extensions and T01–T76 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 29426,
-      "sha256": "c628793661f50d5f0ef2d3237118f5ed0df343287a42360a2976206847874dd3"
+      "bytes": 30191,
+      "sha256": "751995110cd41aef7fd9922709901a88a2a4438cc3b3918662830b90631b9040"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 115911,
-      "sha256": "381e3365330e49702bae66dec44f30e6ea1f6487ffb0331361330da6a09da73e"
+      "bytes": 118333,
+      "sha256": "6eb4e4039a585955c43d6165ec5e39df26f8d4d6f40a0e67f879aa22fa055701"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -357,6 +357,11 @@
       "sha256": "aad15570128e8a18f4c7027b3f14264e045c7ea976bcb290d34ed3e178a0765b"
     },
     {
+      "path": "docs/review/Gastos_Impuestos_Seguros_y_Caja_T76.md",
+      "bytes": 2740,
+      "sha256": "036e5ec0b8a738bd84a9ac32fa466a0adbcf8ae44af748fa8cde31fb8585eced"
+    },
+    {
       "path": "docs/review/Intereses_Obra_y_Caja_T68_T71.md",
       "bytes": 2776,
       "sha256": "914abdc75e94dfd058351e062e4e7ed00dfc3a024b43fd09446a546f92f46923"
@@ -560,6 +565,11 @@
       "path": "docs/review/synthetic-exit-value-to-sale-demo.json",
       "bytes": 29908,
       "sha256": "0ece174572199e5876278d16151862634aea1014b7862c79c7676c621c1ab08b"
+    },
+    {
+      "path": "docs/review/synthetic-expense-cash-demo.json",
+      "bytes": 7311,
+      "sha256": "51828f5bf2630f8429c26c1f2a5556266531accac3b0d0d3ecc46bb267d4acf7"
     },
     {
       "path": "docs/review/synthetic-hold-sale-demo.json",
@@ -815,6 +825,11 @@
       "path": "docs/technical-coverage-T72-T75.json",
       "bytes": 15799,
       "sha256": "0d5c718ed6db1d5e0aa7bfcce1532c18f8a4b524008ce1a1be3f0e71a5dd95ba"
+    },
+    {
+      "path": "docs/technical-coverage-T76.json",
+      "bytes": 11349,
+      "sha256": "8085dd434c28fba325d495c23e3c495638b7ddcb2d7001bba9a87bf886fa9f97"
     },
     {
       "path": "docs/technical-implementation-T01.md",
@@ -1077,9 +1092,14 @@
       "sha256": "eec2cf386b8c73f3e2895ba13ce548ccd482c7b2ec170f1e60ae1af63e51899a"
     },
     {
+      "path": "docs/technical-implementation-T76.md",
+      "bytes": 3046,
+      "sha256": "15b1ad5902b3f44f7085b3bf215d02cf40384177dc12a88e6fcf5ae8afd60bfa"
+    },
+    {
       "path": "docs/technical-implementation-status.json",
-      "bytes": 23726,
-      "sha256": "2612f8483f03068bb8e0ea5119fc6e328117f7f7b570129bf958d81267478cb5"
+      "bytes": 24468,
+      "sha256": "b55bfc9ff699fdab2d0eecefd19d82aca2f45b55f76e1a85c486ab8264b11c0d"
     },
     {
       "path": "infra/README.md",
@@ -1907,6 +1927,11 @@
       "sha256": "4885e792dc30dc2846bb66abdc98582f3ac45256d66db4ceba23f35b4038f9b4"
     },
     {
+      "path": "src/miniuw_foundation/expense_cash_detail.py",
+      "bytes": 15554,
+      "sha256": "78bf5aaafcf20c257436284cd2d4d968845fd49dbe9a60d117e52527eda136e5"
+    },
+    {
       "path": "src/miniuw_foundation/hold_sale_bundle.py",
       "bytes": 5083,
       "sha256": "f56db8b5a008c35ddbaa1fb89233b0b7d7e16a0c7b757d3df6c84bc539d41f0e"
@@ -2310,6 +2335,26 @@
       "path": "templates/synthetic-exit-value-spec.json",
       "bytes": 1029,
       "sha256": "4fb0e19b1e980402230b04dd2baf474eea5e63efeec2fadd8c515b2cb644f763"
+    },
+    {
+      "path": "templates/synthetic-expense-cash-bundle.json",
+      "bytes": 22055,
+      "sha256": "9e629f817d8f484451d7877e398b3d023c9da27417ff3c3a526037939e43e03b"
+    },
+    {
+      "path": "templates/synthetic-expense-cash-detail.json",
+      "bytes": 4556,
+      "sha256": "3b97a43db3bc80fe024e509f4431858bb578f914160c7954ac8e96c78af483f3"
+    },
+    {
+      "path": "templates/synthetic-expense-detail-cash.json",
+      "bytes": 7930,
+      "sha256": "5585a3e65da8ad62cfda1ff1ba1db43a640f9179a3daeec7801831752f34d17d"
+    },
+    {
+      "path": "templates/synthetic-expense-detail-noi.json",
+      "bytes": 2450,
+      "sha256": "ee2740d7f2e6437cce6529c8950342436ea4214020ceea1cffc21a4332687d55"
     },
     {
       "path": "templates/synthetic-hold-sale-bundle-example.json",
@@ -2757,6 +2802,11 @@
       "sha256": "4dde5e9e9866364a482a6bec601049cffe28540f76e30cb36025777ae38c8b6d"
     },
     {
+      "path": "tests/test_expense_cash_detail.py",
+      "bytes": 14813,
+      "sha256": "d74ccce48c2792eeb800c9ba15a84c0dd6a40f2f707d9c87defa01448a8db96c"
+    },
+    {
       "path": "tests/test_foundation.py",
       "bytes": 11020,
       "sha256": "52c74047a9f6f18aaf912ece0afb6012ba831cd8aad45bd53252e248e9036621"
@@ -3035,6 +3085,11 @@
       "path": "tools/demo_exit_value_to_sale.py",
       "bytes": 4707,
       "sha256": "597f9ee5eac2026b1c833e657f23fb45f297979d2da2e585c4002a8709cd8260"
+    },
+    {
+      "path": "tools/demo_expense_cash_detail.py",
+      "bytes": 2673,
+      "sha256": "efb642ebe7dcdf2948bc4b870aad8595759abe803de7f7bd4cd1b871035597e5"
     },
     {
       "path": "tools/demo_hold_sale.py",

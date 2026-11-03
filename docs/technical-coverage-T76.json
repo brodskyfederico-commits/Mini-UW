@@ -1,0 +1,249 @@
+{
+  "scope": "Exact supplied synthetic per-item accrued expense/payment/balance check, not authenticated accounting/tax or full financial closure",
+  "rows": [
+    {
+      "requirement_or_variable": "per_item_expense_and_computed_tax_inventory",
+      "source": {
+        "path": "docs/technical-implementation-T76.md",
+        "line": 5,
+        "sha256": "15b1ad5902b3f44f7085b3bf215d02cf40384177dc12a88e6fcf5ae8afd60bfa"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+          "sha256_documento": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+          "ubicacion_exacta": "§3, Expenses",
+          "definicion_documentada": "Fuente histórica de Gastos sin impuesto; desarrollo nuevo localizado por ID en docs/model-operations-contract.md. No demuestra adopción aprobada.",
+          "matrix_id": "M2-05"
+        },
+        {
+          "documento": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+          "sha256_documento": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+          "ubicacion_exacta": "§3, Expenses",
+          "definicion_documentada": "Fuente histórica de Operación antes de impuesto; desarrollo nuevo localizado por ID en docs/model-operations-contract.md. No demuestra adopción aprobada.",
+          "matrix_id": "M2-06"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§§3, 5 y 7",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "DAT-01"
+        }
+      ],
+      "current_definition": "Each NOI expense plus computed property tax exactly once; exact raw/run/context/currency/period binding; tax cannot be relabeled as another expense",
+      "affected_modules": [
+        "M2",
+        "M6",
+        "M7"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_expense_cash_detail.py",
+          "line": 43,
+          "test": "ExpenseCashDetailTests.test_independent_item_and_aggregate_hand_identities"
+        },
+        {
+          "path": "tests/test_expense_cash_detail.py",
+          "line": 94,
+          "test": "ExpenseCashDetailTests.test_missing_or_extra_item_cannot_claim_complete_inventory"
+        },
+        {
+          "path": "tests/test_expense_cash_detail.py",
+          "line": 100,
+          "test": "ExpenseCashDetailTests.test_duplicate_target_and_tax_misclassification_are_blocked"
+        },
+        {
+          "path": "tests/test_expense_cash_detail.py",
+          "line": 108,
+          "test": "ExpenseCashDetailTests.test_each_expense_must_match_NOI_not_just_payment_identity"
+        },
+        {
+          "path": "tests/test_expense_cash_detail.py",
+          "line": 131,
+          "test": "ExpenseCashDetailTests.test_complete_source_context_period_currency_and_date_binding"
+        }
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Source-specific coverage, fiscal basis and independent classification/scope verification"
+    },
+    {
+      "requirement_or_variable": "gross_payments_and_payable_prepaid_cash_bridge",
+      "source": {
+        "path": "docs/technical-implementation-T76.md",
+        "line": 9,
+        "sha256": "15b1ad5902b3f44f7085b3bf215d02cf40384177dc12a88e6fcf5ae8afd60bfa"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 cadena financiera y diferencias; §7",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "CASH-01"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 costos, financiación, operaciones y salida",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "CASH-02"
+        },
+        {
+          "documento": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+          "sha256_documento": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+          "ubicacion_exacta": "§3, Expenses",
+          "definicion_documentada": "Fuente histórica de Gastos sin impuesto; desarrollo nuevo localizado por ID en docs/model-operations-contract.md. No demuestra adopción aprobada.",
+          "matrix_id": "M2-05"
+        }
+      ],
+      "current_definition": "Per-item exact payment identity plus all four aggregate balances and T25 payment sum; no compensating cross-item errors or duplicate expense/payment",
+      "affected_modules": [
+        "M2",
+        "M6",
+        "M7"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_expense_cash_detail.py",
+          "line": 53,
+          "test": "ExpenseCashDetailTests.test_more_prepaid_cash_does_not_change_NOI_or_invent_distribution"
+        },
+        {
+          "path": "tests/test_expense_cash_detail.py",
+          "line": 70,
+          "test": "ExpenseCashDetailTests.test_offsetting_item_errors_cannot_hide_in_matching_total"
+        },
+        {
+          "path": "tests/test_expense_cash_detail.py",
+          "line": 78,
+          "test": "ExpenseCashDetailTests.test_explicit_zero_payment_and_unpaid_accrual_are_distinct"
+        },
+        {
+          "path": "tests/test_expense_cash_detail.py",
+          "line": 114,
+          "test": "ExpenseCashDetailTests.test_balanced_item_stocks_must_match_aggregate_cash_stocks"
+        },
+        {
+          "path": "tests/test_expense_cash_detail.py",
+          "line": 144,
+          "test": "ExpenseCashDetailTests.test_payment_boundaries_sources_and_duplicate_identities"
+        }
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Real payments, coverage/vencimientos, timing of accruals, intra-period liquidity and other cash profiles"
+    },
+    {
+      "requirement_or_variable": "strict_pending_and_arithmetic_guards",
+      "source": {
+        "path": "docs/technical-implementation-T76.md",
+        "line": 15,
+        "sha256": "15b1ad5902b3f44f7085b3bf215d02cf40384177dc12a88e6fcf5ae8afd60bfa"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§§3, 5 y 7",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "DAT-01"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 costos, financiación, operaciones y salida",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "CASH-02"
+        }
+      ],
+      "current_definition": "Missing bases/amounts, unsupported profiles, upstream blockers and arithmetic budgets withhold exportable totals; never infer zero or approval",
+      "affected_modules": [
+        "M2",
+        "M6",
+        "M7"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_expense_cash_detail.py",
+          "line": 121,
+          "test": "ExpenseCashDetailTests.test_null_negative_values_and_missing_basis_never_become_zero"
+        },
+        {
+          "path": "tests/test_expense_cash_detail.py",
+          "line": 158,
+          "test": "ExpenseCashDetailTests.test_strict_syntax_inventory_bounds_and_synthetic_only_context"
+        },
+        {
+          "path": "tests/test_expense_cash_detail.py",
+          "line": 166,
+          "test": "ExpenseCashDetailTests.test_noncash_expense_needs_another_explicit_profile"
+        },
+        {
+          "path": "tests/test_expense_cash_detail.py",
+          "line": 175,
+          "test": "ExpenseCashDetailTests.test_underlying_cash_failure_is_not_repaired_by_matching_items"
+        },
+        {
+          "path": "tests/test_expense_cash_detail.py",
+          "line": 184,
+          "test": "ExpenseCashDetailTests.test_rehashed_NOI_or_cash_proof_forgery_is_rejected"
+        },
+        {
+          "path": "tests/test_expense_cash_detail.py",
+          "line": 194,
+          "test": "ExpenseCashDetailTests.test_arithmetic_budget_never_exports_partial_totals"
+        }
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Adopted financial/accounting policy, professional review, current authority and original acceptance cases"
+    },
+    {
+      "requirement_or_variable": "portable_complete_expense_recovery",
+      "source": {
+        "path": "docs/technical-implementation-T76.md",
+        "line": 17,
+        "sha256": "15b1ad5902b3f44f7085b3bf215d02cf40384177dc12a88e6fcf5ae8afd60bfa"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§§3, 5 y 7",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "DAT-01"
+        }
+      ],
+      "current_definition": "Bounded exact source/version transport replays full NOI/cash/detail and compares all results, including blocked plans",
+      "affected_modules": [
+        "M2",
+        "M6",
+        "M7"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_expense_cash_detail.py",
+          "line": 203,
+          "test": "ExpenseCashDetailTests.test_immutable_payload_exact_sources_and_recovery_are_deterministic"
+        },
+        {
+          "path": "tests/test_expense_cash_detail.py",
+          "line": 217,
+          "test": "ExpenseCashDetailTests.test_blocked_recovery_preserves_reasons_and_never_approves"
+        },
+        {
+          "path": "tests/test_expense_cash_detail.py",
+          "line": 225,
+          "test": "ExpenseCashDetailTests.test_rehashed_result_and_changed_rehashed_source_cannot_forge_recovery"
+        },
+        {
+          "path": "tests/test_expense_cash_detail.py",
+          "line": 242,
+          "test": "ExpenseCashDetailTests.test_recovery_versions_missing_sources_and_source_hash_guards"
+        }
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Runtime DB recovery, real source authentication and current-source gate"
+    }
+  ],
+  "real_decisions_enabled": false
+}

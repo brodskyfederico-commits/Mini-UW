@@ -1,0 +1,249 @@
+{
+  "purpose": "synthetic_expense_accrual_payment_balance_demo",
+  "component": "T76",
+  "NOI": {
+    "denominator": "1",
+    "numerator": "1000"
+  },
+  "baseline": {
+    "bank_payment_history_verified": false,
+    "blockers": [],
+    "cash_run_sha256": "38a80437efe9538d5d1293c9c5218b3bd9df5b0f9bb17d5a163e17a606c1aca4",
+    "cash_source_sha256": "5585a3e65da8ad62cfda1ff1ba1db43a640f9179a3daeec7801831752f34d17d",
+    "component": "T76",
+    "context": {
+      "deal_id": "SYNTHETIC-NOI-demo",
+      "definition_set_revision": "SYNTHETIC-unadopted-M2-profile-v1",
+      "run_id": "SYNTHETIC-NOI-run",
+      "scenario_id": "SYNTHETIC-Base"
+    },
+    "currency": "USD",
+    "current_source_authority_verified": false,
+    "decision": "PENDING",
+    "definition_sha256": "15b1ad5902b3f44f7085b3bf215d02cf40384177dc12a88e6fcf5ae8afd60bfa",
+    "detail_source_sha256": "3b97a43db3bc80fe024e509f4431858bb578f914160c7954ac8e96c78af483f3",
+    "end_date": "2028-01-01",
+    "engine_sha256": "78bf5aaafcf20c257436284cd2d4d968845fd49dbe9a60d117e52527eda136e5",
+    "intraperiod_liquidity_verified": false,
+    "items": [
+      {
+        "balances": {
+          "closing_payables": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "closing_prepaid": {
+            "denominator": "1",
+            "numerator": "60"
+          },
+          "opening_payables": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "opening_prepaid": {
+            "denominator": "1",
+            "numerator": "40"
+          }
+        },
+        "blockers": [],
+        "cash_identity_residual": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "cash_payments": {
+          "denominator": "1",
+          "numerator": "140"
+        },
+        "declared_expense": {
+          "denominator": "1",
+          "numerator": "120"
+        },
+        "expected_cash_payments": {
+          "denominator": "1",
+          "numerator": "140"
+        },
+        "item_id": "SYNTHETIC-insurance",
+        "kind": "insurance",
+        "noi_pointer": "/expense_rows/0",
+        "payments": [
+          {
+            "amount": {
+              "denominator": "1",
+              "numerator": "140"
+            },
+            "date": "2027-01-01",
+            "payment_id": "SYNTHETIC-payment-insurance",
+            "source_ref": "SYNTHETIC-payment-plan-line-insurance"
+          }
+        ],
+        "source_ref": "SYNTHETIC-declared-expense-and-balances-insurance"
+      },
+      {
+        "balances": {
+          "closing_payables": {
+            "denominator": "1",
+            "numerator": "30"
+          },
+          "closing_prepaid": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "opening_payables": {
+            "denominator": "1",
+            "numerator": "20"
+          },
+          "opening_prepaid": {
+            "denominator": "1",
+            "numerator": "0"
+          }
+        },
+        "blockers": [],
+        "cash_identity_residual": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "cash_payments": {
+          "denominator": "1",
+          "numerator": "120"
+        },
+        "declared_expense": {
+          "denominator": "1",
+          "numerator": "130"
+        },
+        "expected_cash_payments": {
+          "denominator": "1",
+          "numerator": "120"
+        },
+        "item_id": "SYNTHETIC-other",
+        "kind": "other_operating_expense",
+        "noi_pointer": "/expense_rows/1",
+        "payments": [
+          {
+            "amount": {
+              "denominator": "1",
+              "numerator": "120"
+            },
+            "date": "2027-06-01",
+            "payment_id": "SYNTHETIC-payment-other",
+            "source_ref": "SYNTHETIC-payment-plan-line-other"
+          }
+        ],
+        "source_ref": "SYNTHETIC-declared-expense-and-balances-other"
+      },
+      {
+        "balances": {
+          "closing_payables": {
+            "denominator": "1",
+            "numerator": "100"
+          },
+          "closing_prepaid": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "opening_payables": {
+            "denominator": "1",
+            "numerator": "80"
+          },
+          "opening_prepaid": {
+            "denominator": "1",
+            "numerator": "0"
+          }
+        },
+        "blockers": [],
+        "cash_identity_residual": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "cash_payments": {
+          "denominator": "1",
+          "numerator": "180"
+        },
+        "declared_expense": {
+          "denominator": "1",
+          "numerator": "200"
+        },
+        "expected_cash_payments": {
+          "denominator": "1",
+          "numerator": "180"
+        },
+        "item_id": "SYNTHETIC-tax",
+        "kind": "property_tax",
+        "noi_pointer": "/property_tax",
+        "payments": [
+          {
+            "amount": {
+              "denominator": "1",
+              "numerator": "180"
+            },
+            "date": "2027-12-31",
+            "payment_id": "SYNTHETIC-payment-tax",
+            "source_ref": "SYNTHETIC-payment-plan-line-tax"
+          }
+        ],
+        "source_ref": "SYNTHETIC-declared-expense-and-balances-tax"
+      }
+    ],
+    "new_expense_or_payment_generated": false,
+    "noi_run_sha256": "f770c5314aa18a376ab14d8e9c02ac166175f88e501fbc5c1a03b4e71bc66612",
+    "noi_source_sha256": "ee2740d7f2e6437cce6529c8950342436ea4214020ceea1cffc21a4332687d55",
+    "period_ref": "SYNTHETIC-operating-year-1",
+    "production_authorized": false,
+    "purpose": "synthetic_per_item_expense_cash_reconciliation",
+    "real_decisions_enabled": false,
+    "start_date": "2027-01-01",
+    "state": "matched_synthetic_expense_cash_detail",
+    "tax_or_insurance_policy_adopted": false,
+    "totals": {
+      "cash_payments": {
+        "denominator": "1",
+        "numerator": "440"
+      },
+      "closing_payables": {
+        "denominator": "1",
+        "numerator": "130"
+      },
+      "closing_prepaid": {
+        "denominator": "1",
+        "numerator": "60"
+      },
+      "expense_amount": {
+        "denominator": "1",
+        "numerator": "450"
+      },
+      "opening_payables": {
+        "denominator": "1",
+        "numerator": "100"
+      },
+      "opening_prepaid": {
+        "denominator": "1",
+        "numerator": "40"
+      }
+    },
+    "upstream_NOI_blockers": [],
+    "upstream_cash_blockers": []
+  },
+  "result_sha256": "3e5cac1a18b1aef21a052fd0e98b4318a7649e46038a65308de039dc5300305c",
+  "net_operating_cash": {
+    "denominator": "1",
+    "numerator": "950"
+  },
+  "planned_distribution": {
+    "denominator": "1",
+    "numerator": "100"
+  },
+  "closing_free_cash": {
+    "denominator": "1",
+    "numerator": "405"
+  },
+  "offsetting_errors_blocked": [
+    "SYNTHETIC-insurance:item_expense_cash_identity_mismatch",
+    "SYNTHETIC-tax:item_expense_cash_identity_mismatch"
+  ],
+  "offsetting_errors_totals_withheld": true,
+  "bundle_sha256": "9e629f817d8f484451d7877e398b3d023c9da27417ff3c3a526037939e43e03b",
+  "exact_source_recovery_passed": true,
+  "additional_expense_or_payment_generated": false,
+  "decision": "PENDING",
+  "real_decisions_enabled": false,
+  "production_authorized": false
+}
