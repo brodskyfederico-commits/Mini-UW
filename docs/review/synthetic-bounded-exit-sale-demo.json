@@ -1,0 +1,1150 @@
+{
+  "purpose": "synthetic_bounded_sale_costs_and_current_exit_output_demo",
+  "cases": [
+    {
+      "case_id": "floor-price-200",
+      "independent_software_fixture": true,
+      "exit_spec_json": "{\"cap_rate\":{\"period_ref\":\"SYNTHETIC-forward-sale-year\",\"source_ref\":\"SYNTHETIC-explicit-price-point-cap-not-market-default\",\"unit\":\"annual_cap_fraction\",\"value\":{\"denominator\":\"5\",\"numerator\":\"1\"}},\"context\":{\"deal_id\":\"SYNTHETIC-integrated-cash-demo\",\"definition_set_revision\":\"SYNTHETIC-cash-window-assumptions-v1\",\"run_id\":\"SYNTHETIC-integrated-cash-run\",\"scenario_id\":\"SYNTHETIC-Base\"},\"currency\":\"USD\",\"forward_window\":{\"basis_ref\":\"SYNTHETIC-declared-forward-twelve-month-accrual-scope\",\"end\":\"2028-07-01\",\"period_ref\":\"SYNTHETIC-forward-sale-year\",\"start\":\"2027-07-01\"},\"noi_run_sha256\":\"0350b8153c3b5fcad0f024e8acb17a220422fc70eca30c85b3dee11b91b4353e\",\"noi_source_sha256\":\"0abf035e9389eb5c22e2cca0834be9a1dbc4c7a2575f03a312f4e0bbdc0134d4\",\"schema\":\"miniuw.synthetic-exit-value.v1\",\"valuation_basis_ref\":\"SYNTHETIC-conditional-NOI-divided-by-cap-not-adopted\",\"valuation_date\":\"2027-07-01\"}",
+      "original_cost_source_json": "{\"context\":{\"deal_id\":\"SYNTHETIC-integrated-cash-demo\",\"definition_set_revision\":\"SYNTHETIC-cash-window-assumptions-v1\",\"run_id\":\"SYNTHETIC-integrated-cash-run\",\"scenario_id\":\"SYNTHETIC-Base\"},\"costs\":[{\"applicability\":\"included\",\"applicability_basis_ref\":\"SYNTHETIC-explicit-charge-not-adopted\",\"as_of_date\":\"2027-07-01\",\"classification\":\"transaction_cost\",\"cost_id\":\"fixed\",\"currency\":\"USD\",\"kind\":\"fixed\",\"source_ref\":\"SYNTHETIC-explicit-cost:fixed\",\"unit\":\"currency\",\"value\":{\"denominator\":\"1\",\"numerator\":\"10\"}},{\"applicability\":\"included\",\"applicability_basis_ref\":\"SYNTHETIC-explicit-charge-not-adopted\",\"as_of_date\":\"2027-07-01\",\"classification\":\"transaction_cost\",\"cost_id\":\"fee\",\"currency\":\"USD\",\"kind\":\"percent_of_gross\",\"source_ref\":\"SYNTHETIC-explicit-cost:fee\",\"unit\":\"fraction_of_gross_price\",\"value\":{\"denominator\":\"20\",\"numerator\":\"1\"}}],\"currency\":\"USD\",\"gross_price\":{\"as_of_date\":\"2027-07-01\",\"basis\":\"projected_gross_sale_price\",\"currency\":\"USD\",\"source_ref\":\"miniuw:synthetic-exit-value:103f1f9cd13e00a4b8af746bd5e87427a98e7ee1249b9d4fc950b8402e69157c#/candidate_value\",\"value\":{\"denominator\":\"1\",\"numerator\":\"200\"}},\"inventory_basis_ref\":\"SYNTHETIC-selected-cost-inventory-not-real-completeness\",\"inventory_declared_complete\":true,\"nonoverlap_basis_ref\":\"SYNTHETIC-no-overlap-with-each-other-or-bank-payoffs\",\"sale_date\":\"2027-07-01\",\"schema\":\"miniuw.synthetic-fixed-and-gross-percent-sale-costs.v1\"}",
+      "bounds_spec_json": "{\"cost_run_sha256\":\"ed43080ca4da216600fec8e8bf5f37431405ffe45f13e88b799bd8d175793e4f\",\"cost_source_sha256\":\"5b8f8d05a5d23828b3631b400b13b9fa892dbe4fb13e7ec4aab1a803ad50a286\",\"profile\":\"SYNTHETIC-PER-ITEM-CLAMP-TO-EXPLICIT-MONEY-LIMITS-v1\",\"rule_inventory_basis_ref\":\"SYNTHETIC-all-included-items-have-explicit-limit-status\",\"rule_inventory_declared_complete\":true,\"rules\":[{\"cost_id\":\"fixed\",\"maximum\":{\"as_of_date\":\"2027-07-01\",\"currency\":\"USD\",\"enabled\":false,\"source_ref\":\"SYNTHETIC-explicit-fixed-maximum\",\"value\":null},\"minimum\":{\"as_of_date\":\"2027-07-01\",\"currency\":\"USD\",\"enabled\":false,\"source_ref\":\"SYNTHETIC-explicit-fixed-minimum\",\"value\":null},\"rule_basis_ref\":\"SYNTHETIC-per-item-money-clamp-not-contract-authentication\"},{\"cost_id\":\"fee\",\"maximum\":{\"as_of_date\":\"2027-07-01\",\"currency\":\"USD\",\"enabled\":true,\"source_ref\":\"SYNTHETIC-explicit-fee-maximum\",\"value\":{\"denominator\":\"1\",\"numerator\":\"40\"}},\"minimum\":{\"as_of_date\":\"2027-07-01\",\"currency\":\"USD\",\"enabled\":true,\"source_ref\":\"SYNTHETIC-explicit-fee-minimum\",\"value\":{\"denominator\":\"1\",\"numerator\":\"25\"}},\"rule_basis_ref\":\"SYNTHETIC-per-item-money-clamp-not-contract-authentication\"}],\"schema\":\"miniuw.synthetic-per-item-sale-cost-bounds.v1\"}",
+      "bounded_exit_spec_json": "{\"base_evidence_sha256\":\"07937b81d58eb7e12673884d9846fcec63840451aefd5427013c66dba2459c07\",\"bounded_run_sha256\":\"9cee93b7d04c6c37410fb402416d068ed10579828260d1e307a1c648870cb77c\",\"bounds_source_sha256\":\"f4909c06289f328f8bbc5bab977ebf71bf6c8b0e581bbe113be5a520c97a7677\",\"cost_run_sha256\":\"ed43080ca4da216600fec8e8bf5f37431405ffe45f13e88b799bd8d175793e4f\",\"cost_source_sha256\":\"5b8f8d05a5d23828b3631b400b13b9fa892dbe4fb13e7ec4aab1a803ad50a286\",\"equity_funding_assumption_ref\":null,\"exit_run_sha256\":\"103f1f9cd13e00a4b8af746bd5e87427a98e7ee1249b9d4fc950b8402e69157c\",\"exit_spec_sha256\":\"8b7bc330d3496c4d0c56a695d233cf8a5ece56fb7999deeef447f0741e184dc5\",\"revision_id\":\"SYNTHETIC-bounded-cost-demo-200\",\"sale_at_value_hypothesis_ref\":\"SYNTHETIC-explicit-sale-hypothesis-not-actual-receipt\",\"sale_node_id\":\"SYNTHETIC-project-sale\",\"schema\":\"miniuw.synthetic-bounded-exit-sale.v1\",\"unchanged_other_sources_basis_ref\":\"SYNTHETIC-other-sources-frozen\"}",
+      "gross_price": {
+        "denominator": "1",
+        "numerator": "200"
+      },
+      "original_formula_cost": {
+        "denominator": "1",
+        "numerator": "20"
+      },
+      "bounded_closing_cost": {
+        "denominator": "1",
+        "numerator": "35"
+      },
+      "adjusted_cost_rows": [
+        {
+          "binding_constraints": [
+            "original_formula"
+          ],
+          "blockers": [],
+          "bounded_cost": {
+            "denominator": "1",
+            "numerator": "10"
+          },
+          "cost_id": "fixed",
+          "original_computed_cost": {
+            "denominator": "1",
+            "numerator": "10"
+          },
+          "rule": {
+            "cost_id": "fixed",
+            "maximum": {
+              "as_of_date": "2027-07-01",
+              "currency": "USD",
+              "enabled": false,
+              "source_ref": "SYNTHETIC-explicit-fixed-maximum",
+              "value": null
+            },
+            "minimum": {
+              "as_of_date": "2027-07-01",
+              "currency": "USD",
+              "enabled": false,
+              "source_ref": "SYNTHETIC-explicit-fixed-minimum",
+              "value": null
+            },
+            "rule_basis_ref": "SYNTHETIC-per-item-money-clamp-not-contract-authentication"
+          },
+          "source_cost_claim": {
+            "applicability": "included",
+            "applicability_basis_ref": "SYNTHETIC-explicit-charge-not-adopted",
+            "as_of_date": "2027-07-01",
+            "classification": "transaction_cost",
+            "cost_id": "fixed",
+            "currency": "USD",
+            "kind": "fixed",
+            "source_ref": "SYNTHETIC-explicit-cost:fixed",
+            "unit": "currency",
+            "value": {
+              "denominator": "1",
+              "numerator": "10"
+            }
+          }
+        },
+        {
+          "binding_constraints": [
+            "minimum"
+          ],
+          "blockers": [],
+          "bounded_cost": {
+            "denominator": "1",
+            "numerator": "25"
+          },
+          "cost_id": "fee",
+          "original_computed_cost": {
+            "denominator": "1",
+            "numerator": "10"
+          },
+          "rule": {
+            "cost_id": "fee",
+            "maximum": {
+              "as_of_date": "2027-07-01",
+              "currency": "USD",
+              "enabled": true,
+              "source_ref": "SYNTHETIC-explicit-fee-maximum",
+              "value": {
+                "denominator": "1",
+                "numerator": "40"
+              }
+            },
+            "minimum": {
+              "as_of_date": "2027-07-01",
+              "currency": "USD",
+              "enabled": true,
+              "source_ref": "SYNTHETIC-explicit-fee-minimum",
+              "value": {
+                "denominator": "1",
+                "numerator": "25"
+              }
+            },
+            "rule_basis_ref": "SYNTHETIC-per-item-money-clamp-not-contract-authentication"
+          },
+          "source_cost_claim": {
+            "applicability": "included",
+            "applicability_basis_ref": "SYNTHETIC-explicit-charge-not-adopted",
+            "as_of_date": "2027-07-01",
+            "classification": "transaction_cost",
+            "cost_id": "fee",
+            "currency": "USD",
+            "kind": "percent_of_gross",
+            "source_ref": "SYNTHETIC-explicit-cost:fee",
+            "unit": "fraction_of_gross_price",
+            "value": {
+              "denominator": "20",
+              "numerator": "1"
+            }
+          }
+        }
+      ],
+      "calculation_state": "compiled_synthetic",
+      "calculation_blockers": [],
+      "bounds_blockers": [],
+      "current_state": "current_synthetic_bounded_output_at_declared_time",
+      "current_blockers": [],
+      "evidence_blockers": [],
+      "current_project_net_cash_profit": {
+        "denominator": "10000",
+        "numerator": "839197"
+      },
+      "bounded_cost_run_sha256": "9cee93b7d04c6c37410fb402416d068ed10579828260d1e307a1c648870cb77c",
+      "bounded_exit_run_sha256": "440eb95b0de185909bfe7139da6e6dd86ff05c060f035bb038f55aca1ae076ed",
+      "current_output_run_sha256": "dfa35dc88ae927359cafde6201af138c61b8f785eed7022f75789fcc7bc6c2d5",
+      "registry_source_sha256": "f4aa376d46588b37a25d6f6587738751001b96ef8a6c21282fc0f92ebb976b91",
+      "registry_run_sha256": "ce1b4ebdb476b99d9ca4ed524513669b1c1dfbd4e616e0bcfff5eabdc38af9b6",
+      "required_source_bindings": 22,
+      "every_report_serialization_roundtrip_replayed": true,
+      "decision": "PENDING"
+    },
+    {
+      "case_id": "floor-price-400",
+      "independent_software_fixture": true,
+      "exit_spec_json": "{\"cap_rate\":{\"period_ref\":\"SYNTHETIC-forward-sale-year\",\"source_ref\":\"SYNTHETIC-explicit-exit-cap-not-market-data\",\"unit\":\"annual_cap_fraction\",\"value\":{\"denominator\":\"10\",\"numerator\":\"1\"}},\"context\":{\"deal_id\":\"SYNTHETIC-integrated-cash-demo\",\"definition_set_revision\":\"SYNTHETIC-cash-window-assumptions-v1\",\"run_id\":\"SYNTHETIC-integrated-cash-run\",\"scenario_id\":\"SYNTHETIC-Base\"},\"currency\":\"USD\",\"forward_window\":{\"basis_ref\":\"SYNTHETIC-declared-forward-twelve-month-accrual-scope\",\"end\":\"2028-07-01\",\"period_ref\":\"SYNTHETIC-forward-sale-year\",\"start\":\"2027-07-01\"},\"noi_run_sha256\":\"0350b8153c3b5fcad0f024e8acb17a220422fc70eca30c85b3dee11b91b4353e\",\"noi_source_sha256\":\"0abf035e9389eb5c22e2cca0834be9a1dbc4c7a2575f03a312f4e0bbdc0134d4\",\"schema\":\"miniuw.synthetic-exit-value.v1\",\"valuation_basis_ref\":\"SYNTHETIC-conditional-NOI-divided-by-cap-not-adopted\",\"valuation_date\":\"2027-07-01\"}",
+      "original_cost_source_json": "{\"context\":{\"deal_id\":\"SYNTHETIC-integrated-cash-demo\",\"definition_set_revision\":\"SYNTHETIC-cash-window-assumptions-v1\",\"run_id\":\"SYNTHETIC-integrated-cash-run\",\"scenario_id\":\"SYNTHETIC-Base\"},\"costs\":[{\"applicability\":\"included\",\"applicability_basis_ref\":\"SYNTHETIC-explicit-charge-not-adopted\",\"as_of_date\":\"2027-07-01\",\"classification\":\"transaction_cost\",\"cost_id\":\"fixed\",\"currency\":\"USD\",\"kind\":\"fixed\",\"source_ref\":\"SYNTHETIC-explicit-cost:fixed\",\"unit\":\"currency\",\"value\":{\"denominator\":\"1\",\"numerator\":\"10\"}},{\"applicability\":\"included\",\"applicability_basis_ref\":\"SYNTHETIC-explicit-charge-not-adopted\",\"as_of_date\":\"2027-07-01\",\"classification\":\"transaction_cost\",\"cost_id\":\"fee\",\"currency\":\"USD\",\"kind\":\"percent_of_gross\",\"source_ref\":\"SYNTHETIC-explicit-cost:fee\",\"unit\":\"fraction_of_gross_price\",\"value\":{\"denominator\":\"20\",\"numerator\":\"1\"}}],\"currency\":\"USD\",\"gross_price\":{\"as_of_date\":\"2027-07-01\",\"basis\":\"projected_gross_sale_price\",\"currency\":\"USD\",\"source_ref\":\"miniuw:synthetic-exit-value:c1efce2bd2baa631015fbdd8c09c73142fcc0eff554b5b4807f167fa69703355#/candidate_value\",\"value\":{\"denominator\":\"1\",\"numerator\":\"400\"}},\"inventory_basis_ref\":\"SYNTHETIC-selected-cost-inventory-not-real-completeness\",\"inventory_declared_complete\":true,\"nonoverlap_basis_ref\":\"SYNTHETIC-no-overlap-with-each-other-or-bank-payoffs\",\"sale_date\":\"2027-07-01\",\"schema\":\"miniuw.synthetic-fixed-and-gross-percent-sale-costs.v1\"}",
+      "bounds_spec_json": "{\"cost_run_sha256\":\"5db85ed77b9331cd96f8102d35b8de5f54cd58c87365b4840999be3c3ef9c7c5\",\"cost_source_sha256\":\"7e15ff1ce95d8b4dda0f77e61afb9a7815a172396a4b01002b7425b5e2032be9\",\"profile\":\"SYNTHETIC-PER-ITEM-CLAMP-TO-EXPLICIT-MONEY-LIMITS-v1\",\"rule_inventory_basis_ref\":\"SYNTHETIC-all-included-items-have-explicit-limit-status\",\"rule_inventory_declared_complete\":true,\"rules\":[{\"cost_id\":\"fixed\",\"maximum\":{\"as_of_date\":\"2027-07-01\",\"currency\":\"USD\",\"enabled\":false,\"source_ref\":\"SYNTHETIC-explicit-fixed-maximum\",\"value\":null},\"minimum\":{\"as_of_date\":\"2027-07-01\",\"currency\":\"USD\",\"enabled\":false,\"source_ref\":\"SYNTHETIC-explicit-fixed-minimum\",\"value\":null},\"rule_basis_ref\":\"SYNTHETIC-per-item-money-clamp-not-contract-authentication\"},{\"cost_id\":\"fee\",\"maximum\":{\"as_of_date\":\"2027-07-01\",\"currency\":\"USD\",\"enabled\":true,\"source_ref\":\"SYNTHETIC-explicit-fee-maximum\",\"value\":{\"denominator\":\"1\",\"numerator\":\"40\"}},\"minimum\":{\"as_of_date\":\"2027-07-01\",\"currency\":\"USD\",\"enabled\":true,\"source_ref\":\"SYNTHETIC-explicit-fee-minimum\",\"value\":{\"denominator\":\"1\",\"numerator\":\"25\"}},\"rule_basis_ref\":\"SYNTHETIC-per-item-money-clamp-not-contract-authentication\"}],\"schema\":\"miniuw.synthetic-per-item-sale-cost-bounds.v1\"}",
+      "bounded_exit_spec_json": "{\"base_evidence_sha256\":\"07937b81d58eb7e12673884d9846fcec63840451aefd5427013c66dba2459c07\",\"bounded_run_sha256\":\"cdfde812920879c1fad0afe7cc8126568874d04746f483d7a06210d8e62e7381\",\"bounds_source_sha256\":\"712208023030fee32f29f7480ed323c9dff189792c7158d5a233712c2ec8e8c9\",\"cost_run_sha256\":\"5db85ed77b9331cd96f8102d35b8de5f54cd58c87365b4840999be3c3ef9c7c5\",\"cost_source_sha256\":\"7e15ff1ce95d8b4dda0f77e61afb9a7815a172396a4b01002b7425b5e2032be9\",\"equity_funding_assumption_ref\":null,\"exit_run_sha256\":\"c1efce2bd2baa631015fbdd8c09c73142fcc0eff554b5b4807f167fa69703355\",\"exit_spec_sha256\":\"79ab8858b7785fdb68a53880253273f9cdd1060a8e1e72b3eb4600aa629978e3\",\"revision_id\":\"SYNTHETIC-bounded-cost-demo-400\",\"sale_at_value_hypothesis_ref\":\"SYNTHETIC-explicit-sale-hypothesis-not-actual-receipt\",\"sale_node_id\":\"SYNTHETIC-project-sale\",\"schema\":\"miniuw.synthetic-bounded-exit-sale.v1\",\"unchanged_other_sources_basis_ref\":\"SYNTHETIC-other-sources-frozen\"}",
+      "gross_price": {
+        "denominator": "1",
+        "numerator": "400"
+      },
+      "original_formula_cost": {
+        "denominator": "1",
+        "numerator": "30"
+      },
+      "bounded_closing_cost": {
+        "denominator": "1",
+        "numerator": "35"
+      },
+      "adjusted_cost_rows": [
+        {
+          "binding_constraints": [
+            "original_formula"
+          ],
+          "blockers": [],
+          "bounded_cost": {
+            "denominator": "1",
+            "numerator": "10"
+          },
+          "cost_id": "fixed",
+          "original_computed_cost": {
+            "denominator": "1",
+            "numerator": "10"
+          },
+          "rule": {
+            "cost_id": "fixed",
+            "maximum": {
+              "as_of_date": "2027-07-01",
+              "currency": "USD",
+              "enabled": false,
+              "source_ref": "SYNTHETIC-explicit-fixed-maximum",
+              "value": null
+            },
+            "minimum": {
+              "as_of_date": "2027-07-01",
+              "currency": "USD",
+              "enabled": false,
+              "source_ref": "SYNTHETIC-explicit-fixed-minimum",
+              "value": null
+            },
+            "rule_basis_ref": "SYNTHETIC-per-item-money-clamp-not-contract-authentication"
+          },
+          "source_cost_claim": {
+            "applicability": "included",
+            "applicability_basis_ref": "SYNTHETIC-explicit-charge-not-adopted",
+            "as_of_date": "2027-07-01",
+            "classification": "transaction_cost",
+            "cost_id": "fixed",
+            "currency": "USD",
+            "kind": "fixed",
+            "source_ref": "SYNTHETIC-explicit-cost:fixed",
+            "unit": "currency",
+            "value": {
+              "denominator": "1",
+              "numerator": "10"
+            }
+          }
+        },
+        {
+          "binding_constraints": [
+            "minimum"
+          ],
+          "blockers": [],
+          "bounded_cost": {
+            "denominator": "1",
+            "numerator": "25"
+          },
+          "cost_id": "fee",
+          "original_computed_cost": {
+            "denominator": "1",
+            "numerator": "20"
+          },
+          "rule": {
+            "cost_id": "fee",
+            "maximum": {
+              "as_of_date": "2027-07-01",
+              "currency": "USD",
+              "enabled": true,
+              "source_ref": "SYNTHETIC-explicit-fee-maximum",
+              "value": {
+                "denominator": "1",
+                "numerator": "40"
+              }
+            },
+            "minimum": {
+              "as_of_date": "2027-07-01",
+              "currency": "USD",
+              "enabled": true,
+              "source_ref": "SYNTHETIC-explicit-fee-minimum",
+              "value": {
+                "denominator": "1",
+                "numerator": "25"
+              }
+            },
+            "rule_basis_ref": "SYNTHETIC-per-item-money-clamp-not-contract-authentication"
+          },
+          "source_cost_claim": {
+            "applicability": "included",
+            "applicability_basis_ref": "SYNTHETIC-explicit-charge-not-adopted",
+            "as_of_date": "2027-07-01",
+            "classification": "transaction_cost",
+            "cost_id": "fee",
+            "currency": "USD",
+            "kind": "percent_of_gross",
+            "source_ref": "SYNTHETIC-explicit-cost:fee",
+            "unit": "fraction_of_gross_price",
+            "value": {
+              "denominator": "20",
+              "numerator": "1"
+            }
+          }
+        }
+      ],
+      "calculation_state": "compiled_synthetic",
+      "calculation_blockers": [],
+      "bounds_blockers": [],
+      "current_state": "current_synthetic_bounded_output_at_declared_time",
+      "current_blockers": [],
+      "evidence_blockers": [],
+      "current_project_net_cash_profit": {
+        "denominator": "10000",
+        "numerator": "2839197"
+      },
+      "bounded_cost_run_sha256": "cdfde812920879c1fad0afe7cc8126568874d04746f483d7a06210d8e62e7381",
+      "bounded_exit_run_sha256": "5f8ec33ee136212f36d16b150addcf1ca2e01304f96dd345e51617d6c4da9008",
+      "current_output_run_sha256": "e8ac2f7dcd72f2f9a9799be628f3a0b69fb201f195d96e5ce1f261e7b9d456c1",
+      "registry_source_sha256": "066193a69073890c15e01cdc609920a2a9c2de430893c22b6c570d5c7dffbfed",
+      "registry_run_sha256": "c5d374e44b98c9a44c26a72b3e1693c165cb3e40af04314e6899d68a53909dff",
+      "required_source_bindings": 22,
+      "every_report_serialization_roundtrip_replayed": true,
+      "decision": "PENDING"
+    },
+    {
+      "case_id": "cap-tie-price-800",
+      "independent_software_fixture": true,
+      "exit_spec_json": "{\"cap_rate\":{\"period_ref\":\"SYNTHETIC-forward-sale-year\",\"source_ref\":\"SYNTHETIC-explicit-price-point-cap-not-market-default\",\"unit\":\"annual_cap_fraction\",\"value\":{\"denominator\":\"20\",\"numerator\":\"1\"}},\"context\":{\"deal_id\":\"SYNTHETIC-integrated-cash-demo\",\"definition_set_revision\":\"SYNTHETIC-cash-window-assumptions-v1\",\"run_id\":\"SYNTHETIC-integrated-cash-run\",\"scenario_id\":\"SYNTHETIC-Base\"},\"currency\":\"USD\",\"forward_window\":{\"basis_ref\":\"SYNTHETIC-declared-forward-twelve-month-accrual-scope\",\"end\":\"2028-07-01\",\"period_ref\":\"SYNTHETIC-forward-sale-year\",\"start\":\"2027-07-01\"},\"noi_run_sha256\":\"0350b8153c3b5fcad0f024e8acb17a220422fc70eca30c85b3dee11b91b4353e\",\"noi_source_sha256\":\"0abf035e9389eb5c22e2cca0834be9a1dbc4c7a2575f03a312f4e0bbdc0134d4\",\"schema\":\"miniuw.synthetic-exit-value.v1\",\"valuation_basis_ref\":\"SYNTHETIC-conditional-NOI-divided-by-cap-not-adopted\",\"valuation_date\":\"2027-07-01\"}",
+      "original_cost_source_json": "{\"context\":{\"deal_id\":\"SYNTHETIC-integrated-cash-demo\",\"definition_set_revision\":\"SYNTHETIC-cash-window-assumptions-v1\",\"run_id\":\"SYNTHETIC-integrated-cash-run\",\"scenario_id\":\"SYNTHETIC-Base\"},\"costs\":[{\"applicability\":\"included\",\"applicability_basis_ref\":\"SYNTHETIC-explicit-charge-not-adopted\",\"as_of_date\":\"2027-07-01\",\"classification\":\"transaction_cost\",\"cost_id\":\"fixed\",\"currency\":\"USD\",\"kind\":\"fixed\",\"source_ref\":\"SYNTHETIC-explicit-cost:fixed\",\"unit\":\"currency\",\"value\":{\"denominator\":\"1\",\"numerator\":\"10\"}},{\"applicability\":\"included\",\"applicability_basis_ref\":\"SYNTHETIC-explicit-charge-not-adopted\",\"as_of_date\":\"2027-07-01\",\"classification\":\"transaction_cost\",\"cost_id\":\"fee\",\"currency\":\"USD\",\"kind\":\"percent_of_gross\",\"source_ref\":\"SYNTHETIC-explicit-cost:fee\",\"unit\":\"fraction_of_gross_price\",\"value\":{\"denominator\":\"20\",\"numerator\":\"1\"}}],\"currency\":\"USD\",\"gross_price\":{\"as_of_date\":\"2027-07-01\",\"basis\":\"projected_gross_sale_price\",\"currency\":\"USD\",\"source_ref\":\"miniuw:synthetic-exit-value:7242b17b12c61445cce79688179da2af2f3d67e029c1ae79846e4533dcfedafd#/candidate_value\",\"value\":{\"denominator\":\"1\",\"numerator\":\"800\"}},\"inventory_basis_ref\":\"SYNTHETIC-selected-cost-inventory-not-real-completeness\",\"inventory_declared_complete\":true,\"nonoverlap_basis_ref\":\"SYNTHETIC-no-overlap-with-each-other-or-bank-payoffs\",\"sale_date\":\"2027-07-01\",\"schema\":\"miniuw.synthetic-fixed-and-gross-percent-sale-costs.v1\"}",
+      "bounds_spec_json": "{\"cost_run_sha256\":\"5f2965e6d604a3ab1d26f514f6b751da43a0dccabcd00b8a5f08602802564ca9\",\"cost_source_sha256\":\"d86de90e834c56bf186c67f14da70bda22b843175d4e915fa2c91f5485df933e\",\"profile\":\"SYNTHETIC-PER-ITEM-CLAMP-TO-EXPLICIT-MONEY-LIMITS-v1\",\"rule_inventory_basis_ref\":\"SYNTHETIC-all-included-items-have-explicit-limit-status\",\"rule_inventory_declared_complete\":true,\"rules\":[{\"cost_id\":\"fixed\",\"maximum\":{\"as_of_date\":\"2027-07-01\",\"currency\":\"USD\",\"enabled\":false,\"source_ref\":\"SYNTHETIC-explicit-fixed-maximum\",\"value\":null},\"minimum\":{\"as_of_date\":\"2027-07-01\",\"currency\":\"USD\",\"enabled\":false,\"source_ref\":\"SYNTHETIC-explicit-fixed-minimum\",\"value\":null},\"rule_basis_ref\":\"SYNTHETIC-per-item-money-clamp-not-contract-authentication\"},{\"cost_id\":\"fee\",\"maximum\":{\"as_of_date\":\"2027-07-01\",\"currency\":\"USD\",\"enabled\":true,\"source_ref\":\"SYNTHETIC-explicit-fee-maximum\",\"value\":{\"denominator\":\"1\",\"numerator\":\"40\"}},\"minimum\":{\"as_of_date\":\"2027-07-01\",\"currency\":\"USD\",\"enabled\":true,\"source_ref\":\"SYNTHETIC-explicit-fee-minimum\",\"value\":{\"denominator\":\"1\",\"numerator\":\"25\"}},\"rule_basis_ref\":\"SYNTHETIC-per-item-money-clamp-not-contract-authentication\"}],\"schema\":\"miniuw.synthetic-per-item-sale-cost-bounds.v1\"}",
+      "bounded_exit_spec_json": "{\"base_evidence_sha256\":\"07937b81d58eb7e12673884d9846fcec63840451aefd5427013c66dba2459c07\",\"bounded_run_sha256\":\"bf85cd3ca14026e5d97b30125e41c7fc681ffe1980dd2afa3d29f3784e32e4e0\",\"bounds_source_sha256\":\"37921875a4d44d26b34961b7f1c802d5408e8b80df664086b1a5934254faba5d\",\"cost_run_sha256\":\"5f2965e6d604a3ab1d26f514f6b751da43a0dccabcd00b8a5f08602802564ca9\",\"cost_source_sha256\":\"d86de90e834c56bf186c67f14da70bda22b843175d4e915fa2c91f5485df933e\",\"equity_funding_assumption_ref\":null,\"exit_run_sha256\":\"7242b17b12c61445cce79688179da2af2f3d67e029c1ae79846e4533dcfedafd\",\"exit_spec_sha256\":\"0c3dcc50629c3c6e5a0c87f47bfc6c0167d70462eaac14f17b8a6b3920850e69\",\"revision_id\":\"SYNTHETIC-bounded-cost-demo-800\",\"sale_at_value_hypothesis_ref\":\"SYNTHETIC-explicit-sale-hypothesis-not-actual-receipt\",\"sale_node_id\":\"SYNTHETIC-project-sale\",\"schema\":\"miniuw.synthetic-bounded-exit-sale.v1\",\"unchanged_other_sources_basis_ref\":\"SYNTHETIC-other-sources-frozen\"}",
+      "gross_price": {
+        "denominator": "1",
+        "numerator": "800"
+      },
+      "original_formula_cost": {
+        "denominator": "1",
+        "numerator": "50"
+      },
+      "bounded_closing_cost": {
+        "denominator": "1",
+        "numerator": "50"
+      },
+      "adjusted_cost_rows": [
+        {
+          "binding_constraints": [
+            "original_formula"
+          ],
+          "blockers": [],
+          "bounded_cost": {
+            "denominator": "1",
+            "numerator": "10"
+          },
+          "cost_id": "fixed",
+          "original_computed_cost": {
+            "denominator": "1",
+            "numerator": "10"
+          },
+          "rule": {
+            "cost_id": "fixed",
+            "maximum": {
+              "as_of_date": "2027-07-01",
+              "currency": "USD",
+              "enabled": false,
+              "source_ref": "SYNTHETIC-explicit-fixed-maximum",
+              "value": null
+            },
+            "minimum": {
+              "as_of_date": "2027-07-01",
+              "currency": "USD",
+              "enabled": false,
+              "source_ref": "SYNTHETIC-explicit-fixed-minimum",
+              "value": null
+            },
+            "rule_basis_ref": "SYNTHETIC-per-item-money-clamp-not-contract-authentication"
+          },
+          "source_cost_claim": {
+            "applicability": "included",
+            "applicability_basis_ref": "SYNTHETIC-explicit-charge-not-adopted",
+            "as_of_date": "2027-07-01",
+            "classification": "transaction_cost",
+            "cost_id": "fixed",
+            "currency": "USD",
+            "kind": "fixed",
+            "source_ref": "SYNTHETIC-explicit-cost:fixed",
+            "unit": "currency",
+            "value": {
+              "denominator": "1",
+              "numerator": "10"
+            }
+          }
+        },
+        {
+          "binding_constraints": [
+            "original_formula",
+            "maximum"
+          ],
+          "blockers": [],
+          "bounded_cost": {
+            "denominator": "1",
+            "numerator": "40"
+          },
+          "cost_id": "fee",
+          "original_computed_cost": {
+            "denominator": "1",
+            "numerator": "40"
+          },
+          "rule": {
+            "cost_id": "fee",
+            "maximum": {
+              "as_of_date": "2027-07-01",
+              "currency": "USD",
+              "enabled": true,
+              "source_ref": "SYNTHETIC-explicit-fee-maximum",
+              "value": {
+                "denominator": "1",
+                "numerator": "40"
+              }
+            },
+            "minimum": {
+              "as_of_date": "2027-07-01",
+              "currency": "USD",
+              "enabled": true,
+              "source_ref": "SYNTHETIC-explicit-fee-minimum",
+              "value": {
+                "denominator": "1",
+                "numerator": "25"
+              }
+            },
+            "rule_basis_ref": "SYNTHETIC-per-item-money-clamp-not-contract-authentication"
+          },
+          "source_cost_claim": {
+            "applicability": "included",
+            "applicability_basis_ref": "SYNTHETIC-explicit-charge-not-adopted",
+            "as_of_date": "2027-07-01",
+            "classification": "transaction_cost",
+            "cost_id": "fee",
+            "currency": "USD",
+            "kind": "percent_of_gross",
+            "source_ref": "SYNTHETIC-explicit-cost:fee",
+            "unit": "fraction_of_gross_price",
+            "value": {
+              "denominator": "20",
+              "numerator": "1"
+            }
+          }
+        }
+      ],
+      "calculation_state": "compiled_synthetic",
+      "calculation_blockers": [],
+      "bounds_blockers": [],
+      "current_state": "current_synthetic_bounded_output_at_declared_time",
+      "current_blockers": [],
+      "evidence_blockers": [],
+      "current_project_net_cash_profit": {
+        "denominator": "10000",
+        "numerator": "6689197"
+      },
+      "bounded_cost_run_sha256": "bf85cd3ca14026e5d97b30125e41c7fc681ffe1980dd2afa3d29f3784e32e4e0",
+      "bounded_exit_run_sha256": "af57ceaa3af94ab45d2d633acbd714b4014c0319fab5038ba0ff65f165519d09",
+      "current_output_run_sha256": "7ce52738acacd0489dc69f789469ddaf13efec9dbe52bc49e9551204354079dd",
+      "registry_source_sha256": "c9ceecd6d93f8fbb3ce6a4a4b25241cad35f1698732aab451847a5fe0ea91887",
+      "registry_run_sha256": "12f77171a61b88aeae91fb227a91f8b45125012e599fc203c5efc770b7bdd356",
+      "required_source_bindings": 22,
+      "every_report_serialization_roundtrip_replayed": true,
+      "decision": "PENDING"
+    },
+    {
+      "case_id": "cap-price-2000",
+      "independent_software_fixture": true,
+      "exit_spec_json": "{\"cap_rate\":{\"period_ref\":\"SYNTHETIC-forward-sale-year\",\"source_ref\":\"SYNTHETIC-explicit-price-point-cap-not-market-default\",\"unit\":\"annual_cap_fraction\",\"value\":{\"denominator\":\"50\",\"numerator\":\"1\"}},\"context\":{\"deal_id\":\"SYNTHETIC-integrated-cash-demo\",\"definition_set_revision\":\"SYNTHETIC-cash-window-assumptions-v1\",\"run_id\":\"SYNTHETIC-integrated-cash-run\",\"scenario_id\":\"SYNTHETIC-Base\"},\"currency\":\"USD\",\"forward_window\":{\"basis_ref\":\"SYNTHETIC-declared-forward-twelve-month-accrual-scope\",\"end\":\"2028-07-01\",\"period_ref\":\"SYNTHETIC-forward-sale-year\",\"start\":\"2027-07-01\"},\"noi_run_sha256\":\"0350b8153c3b5fcad0f024e8acb17a220422fc70eca30c85b3dee11b91b4353e\",\"noi_source_sha256\":\"0abf035e9389eb5c22e2cca0834be9a1dbc4c7a2575f03a312f4e0bbdc0134d4\",\"schema\":\"miniuw.synthetic-exit-value.v1\",\"valuation_basis_ref\":\"SYNTHETIC-conditional-NOI-divided-by-cap-not-adopted\",\"valuation_date\":\"2027-07-01\"}",
+      "original_cost_source_json": "{\"context\":{\"deal_id\":\"SYNTHETIC-integrated-cash-demo\",\"definition_set_revision\":\"SYNTHETIC-cash-window-assumptions-v1\",\"run_id\":\"SYNTHETIC-integrated-cash-run\",\"scenario_id\":\"SYNTHETIC-Base\"},\"costs\":[{\"applicability\":\"included\",\"applicability_basis_ref\":\"SYNTHETIC-explicit-charge-not-adopted\",\"as_of_date\":\"2027-07-01\",\"classification\":\"transaction_cost\",\"cost_id\":\"fixed\",\"currency\":\"USD\",\"kind\":\"fixed\",\"source_ref\":\"SYNTHETIC-explicit-cost:fixed\",\"unit\":\"currency\",\"value\":{\"denominator\":\"1\",\"numerator\":\"10\"}},{\"applicability\":\"included\",\"applicability_basis_ref\":\"SYNTHETIC-explicit-charge-not-adopted\",\"as_of_date\":\"2027-07-01\",\"classification\":\"transaction_cost\",\"cost_id\":\"fee\",\"currency\":\"USD\",\"kind\":\"percent_of_gross\",\"source_ref\":\"SYNTHETIC-explicit-cost:fee\",\"unit\":\"fraction_of_gross_price\",\"value\":{\"denominator\":\"20\",\"numerator\":\"1\"}}],\"currency\":\"USD\",\"gross_price\":{\"as_of_date\":\"2027-07-01\",\"basis\":\"projected_gross_sale_price\",\"currency\":\"USD\",\"source_ref\":\"miniuw:synthetic-exit-value:383a8f95940782349c4893a5369dd4fe386457700601262bbfdd2607d233882a#/candidate_value\",\"value\":{\"denominator\":\"1\",\"numerator\":\"2000\"}},\"inventory_basis_ref\":\"SYNTHETIC-selected-cost-inventory-not-real-completeness\",\"inventory_declared_complete\":true,\"nonoverlap_basis_ref\":\"SYNTHETIC-no-overlap-with-each-other-or-bank-payoffs\",\"sale_date\":\"2027-07-01\",\"schema\":\"miniuw.synthetic-fixed-and-gross-percent-sale-costs.v1\"}",
+      "bounds_spec_json": "{\"cost_run_sha256\":\"f7fd476ad79a0afc3d1173405b2dcfc231e5955092939aeff2eab4afdc692362\",\"cost_source_sha256\":\"a7909fb5337807acccf3577682830dd3d3a1856dcc755f84ca0c864aa1c50734\",\"profile\":\"SYNTHETIC-PER-ITEM-CLAMP-TO-EXPLICIT-MONEY-LIMITS-v1\",\"rule_inventory_basis_ref\":\"SYNTHETIC-all-included-items-have-explicit-limit-status\",\"rule_inventory_declared_complete\":true,\"rules\":[{\"cost_id\":\"fixed\",\"maximum\":{\"as_of_date\":\"2027-07-01\",\"currency\":\"USD\",\"enabled\":false,\"source_ref\":\"SYNTHETIC-explicit-fixed-maximum\",\"value\":null},\"minimum\":{\"as_of_date\":\"2027-07-01\",\"currency\":\"USD\",\"enabled\":false,\"source_ref\":\"SYNTHETIC-explicit-fixed-minimum\",\"value\":null},\"rule_basis_ref\":\"SYNTHETIC-per-item-money-clamp-not-contract-authentication\"},{\"cost_id\":\"fee\",\"maximum\":{\"as_of_date\":\"2027-07-01\",\"currency\":\"USD\",\"enabled\":true,\"source_ref\":\"SYNTHETIC-explicit-fee-maximum\",\"value\":{\"denominator\":\"1\",\"numerator\":\"40\"}},\"minimum\":{\"as_of_date\":\"2027-07-01\",\"currency\":\"USD\",\"enabled\":true,\"source_ref\":\"SYNTHETIC-explicit-fee-minimum\",\"value\":{\"denominator\":\"1\",\"numerator\":\"25\"}},\"rule_basis_ref\":\"SYNTHETIC-per-item-money-clamp-not-contract-authentication\"}],\"schema\":\"miniuw.synthetic-per-item-sale-cost-bounds.v1\"}",
+      "bounded_exit_spec_json": "{\"base_evidence_sha256\":\"07937b81d58eb7e12673884d9846fcec63840451aefd5427013c66dba2459c07\",\"bounded_run_sha256\":\"a36320821aace91bacd14b89199c0a675b7d3ba3c0adfbe184489337c04db21e\",\"bounds_source_sha256\":\"7c34fd210082ba59d3768d3c32a318c6af5b925da0e2b79dc1c9d44b4529a4b6\",\"cost_run_sha256\":\"f7fd476ad79a0afc3d1173405b2dcfc231e5955092939aeff2eab4afdc692362\",\"cost_source_sha256\":\"a7909fb5337807acccf3577682830dd3d3a1856dcc755f84ca0c864aa1c50734\",\"equity_funding_assumption_ref\":null,\"exit_run_sha256\":\"383a8f95940782349c4893a5369dd4fe386457700601262bbfdd2607d233882a\",\"exit_spec_sha256\":\"a68dc4e1d8a1996f70c44514f1d13d6196fef09afa083edebd16a6f230a2e432\",\"revision_id\":\"SYNTHETIC-bounded-cost-demo-2000\",\"sale_at_value_hypothesis_ref\":\"SYNTHETIC-explicit-sale-hypothesis-not-actual-receipt\",\"sale_node_id\":\"SYNTHETIC-project-sale\",\"schema\":\"miniuw.synthetic-bounded-exit-sale.v1\",\"unchanged_other_sources_basis_ref\":\"SYNTHETIC-other-sources-frozen\"}",
+      "gross_price": {
+        "denominator": "1",
+        "numerator": "2000"
+      },
+      "original_formula_cost": {
+        "denominator": "1",
+        "numerator": "110"
+      },
+      "bounded_closing_cost": {
+        "denominator": "1",
+        "numerator": "50"
+      },
+      "adjusted_cost_rows": [
+        {
+          "binding_constraints": [
+            "original_formula"
+          ],
+          "blockers": [],
+          "bounded_cost": {
+            "denominator": "1",
+            "numerator": "10"
+          },
+          "cost_id": "fixed",
+          "original_computed_cost": {
+            "denominator": "1",
+            "numerator": "10"
+          },
+          "rule": {
+            "cost_id": "fixed",
+            "maximum": {
+              "as_of_date": "2027-07-01",
+              "currency": "USD",
+              "enabled": false,
+              "source_ref": "SYNTHETIC-explicit-fixed-maximum",
+              "value": null
+            },
+            "minimum": {
+              "as_of_date": "2027-07-01",
+              "currency": "USD",
+              "enabled": false,
+              "source_ref": "SYNTHETIC-explicit-fixed-minimum",
+              "value": null
+            },
+            "rule_basis_ref": "SYNTHETIC-per-item-money-clamp-not-contract-authentication"
+          },
+          "source_cost_claim": {
+            "applicability": "included",
+            "applicability_basis_ref": "SYNTHETIC-explicit-charge-not-adopted",
+            "as_of_date": "2027-07-01",
+            "classification": "transaction_cost",
+            "cost_id": "fixed",
+            "currency": "USD",
+            "kind": "fixed",
+            "source_ref": "SYNTHETIC-explicit-cost:fixed",
+            "unit": "currency",
+            "value": {
+              "denominator": "1",
+              "numerator": "10"
+            }
+          }
+        },
+        {
+          "binding_constraints": [
+            "maximum"
+          ],
+          "blockers": [],
+          "bounded_cost": {
+            "denominator": "1",
+            "numerator": "40"
+          },
+          "cost_id": "fee",
+          "original_computed_cost": {
+            "denominator": "1",
+            "numerator": "100"
+          },
+          "rule": {
+            "cost_id": "fee",
+            "maximum": {
+              "as_of_date": "2027-07-01",
+              "currency": "USD",
+              "enabled": true,
+              "source_ref": "SYNTHETIC-explicit-fee-maximum",
+              "value": {
+                "denominator": "1",
+                "numerator": "40"
+              }
+            },
+            "minimum": {
+              "as_of_date": "2027-07-01",
+              "currency": "USD",
+              "enabled": true,
+              "source_ref": "SYNTHETIC-explicit-fee-minimum",
+              "value": {
+                "denominator": "1",
+                "numerator": "25"
+              }
+            },
+            "rule_basis_ref": "SYNTHETIC-per-item-money-clamp-not-contract-authentication"
+          },
+          "source_cost_claim": {
+            "applicability": "included",
+            "applicability_basis_ref": "SYNTHETIC-explicit-charge-not-adopted",
+            "as_of_date": "2027-07-01",
+            "classification": "transaction_cost",
+            "cost_id": "fee",
+            "currency": "USD",
+            "kind": "percent_of_gross",
+            "source_ref": "SYNTHETIC-explicit-cost:fee",
+            "unit": "fraction_of_gross_price",
+            "value": {
+              "denominator": "20",
+              "numerator": "1"
+            }
+          }
+        }
+      ],
+      "calculation_state": "compiled_synthetic",
+      "calculation_blockers": [],
+      "bounds_blockers": [],
+      "current_state": "current_synthetic_bounded_output_at_declared_time",
+      "current_blockers": [],
+      "evidence_blockers": [],
+      "current_project_net_cash_profit": {
+        "denominator": "10000",
+        "numerator": "18689197"
+      },
+      "bounded_cost_run_sha256": "a36320821aace91bacd14b89199c0a675b7d3ba3c0adfbe184489337c04db21e",
+      "bounded_exit_run_sha256": "caadd84e4adbd33df074b878a9db484530deb1923671d2e00116aace128d2496",
+      "current_output_run_sha256": "9ce1498e75a9ad27d2ee196dc49ad84a2fd67a4c95970cc355639cd510cbcae0",
+      "registry_source_sha256": "35d56a8f017ed381ea0c0f24c44fc053740928cd6b7bacbfd96306835d43cc32",
+      "registry_run_sha256": "b8d127054246f8f649edadcc06432d4fa2fe93084484d51c81c54a008824697f",
+      "required_source_bindings": 22,
+      "every_report_serialization_roundtrip_replayed": true,
+      "decision": "PENDING"
+    },
+    {
+      "case_id": "minimum-maximum-conflict",
+      "independent_software_fixture": true,
+      "exit_spec_json": "{\"cap_rate\":{\"period_ref\":\"SYNTHETIC-forward-sale-year\",\"source_ref\":\"SYNTHETIC-explicit-exit-cap-not-market-data\",\"unit\":\"annual_cap_fraction\",\"value\":{\"denominator\":\"10\",\"numerator\":\"1\"}},\"context\":{\"deal_id\":\"SYNTHETIC-integrated-cash-demo\",\"definition_set_revision\":\"SYNTHETIC-cash-window-assumptions-v1\",\"run_id\":\"SYNTHETIC-integrated-cash-run\",\"scenario_id\":\"SYNTHETIC-Base\"},\"currency\":\"USD\",\"forward_window\":{\"basis_ref\":\"SYNTHETIC-declared-forward-twelve-month-accrual-scope\",\"end\":\"2028-07-01\",\"period_ref\":\"SYNTHETIC-forward-sale-year\",\"start\":\"2027-07-01\"},\"noi_run_sha256\":\"0350b8153c3b5fcad0f024e8acb17a220422fc70eca30c85b3dee11b91b4353e\",\"noi_source_sha256\":\"0abf035e9389eb5c22e2cca0834be9a1dbc4c7a2575f03a312f4e0bbdc0134d4\",\"schema\":\"miniuw.synthetic-exit-value.v1\",\"valuation_basis_ref\":\"SYNTHETIC-conditional-NOI-divided-by-cap-not-adopted\",\"valuation_date\":\"2027-07-01\"}",
+      "original_cost_source_json": "{\"context\":{\"deal_id\":\"SYNTHETIC-integrated-cash-demo\",\"definition_set_revision\":\"SYNTHETIC-cash-window-assumptions-v1\",\"run_id\":\"SYNTHETIC-integrated-cash-run\",\"scenario_id\":\"SYNTHETIC-Base\"},\"costs\":[{\"applicability\":\"included\",\"applicability_basis_ref\":\"SYNTHETIC-explicit-charge-not-adopted\",\"as_of_date\":\"2027-07-01\",\"classification\":\"transaction_cost\",\"cost_id\":\"fixed\",\"currency\":\"USD\",\"kind\":\"fixed\",\"source_ref\":\"SYNTHETIC-explicit-cost:fixed\",\"unit\":\"currency\",\"value\":{\"denominator\":\"1\",\"numerator\":\"10\"}},{\"applicability\":\"included\",\"applicability_basis_ref\":\"SYNTHETIC-explicit-charge-not-adopted\",\"as_of_date\":\"2027-07-01\",\"classification\":\"transaction_cost\",\"cost_id\":\"fee\",\"currency\":\"USD\",\"kind\":\"percent_of_gross\",\"source_ref\":\"SYNTHETIC-explicit-cost:fee\",\"unit\":\"fraction_of_gross_price\",\"value\":{\"denominator\":\"20\",\"numerator\":\"1\"}}],\"currency\":\"USD\",\"gross_price\":{\"as_of_date\":\"2027-07-01\",\"basis\":\"projected_gross_sale_price\",\"currency\":\"USD\",\"source_ref\":\"miniuw:synthetic-exit-value:c1efce2bd2baa631015fbdd8c09c73142fcc0eff554b5b4807f167fa69703355#/candidate_value\",\"value\":{\"denominator\":\"1\",\"numerator\":\"400\"}},\"inventory_basis_ref\":\"SYNTHETIC-selected-cost-inventory-not-real-completeness\",\"inventory_declared_complete\":true,\"nonoverlap_basis_ref\":\"SYNTHETIC-no-overlap-with-each-other-or-bank-payoffs\",\"sale_date\":\"2027-07-01\",\"schema\":\"miniuw.synthetic-fixed-and-gross-percent-sale-costs.v1\"}",
+      "bounds_spec_json": "{\"cost_run_sha256\":\"5db85ed77b9331cd96f8102d35b8de5f54cd58c87365b4840999be3c3ef9c7c5\",\"cost_source_sha256\":\"7e15ff1ce95d8b4dda0f77e61afb9a7815a172396a4b01002b7425b5e2032be9\",\"profile\":\"SYNTHETIC-PER-ITEM-CLAMP-TO-EXPLICIT-MONEY-LIMITS-v1\",\"rule_inventory_basis_ref\":\"SYNTHETIC-all-included-items-have-explicit-limit-status\",\"rule_inventory_declared_complete\":true,\"rules\":[{\"cost_id\":\"fixed\",\"maximum\":{\"as_of_date\":\"2027-07-01\",\"currency\":\"USD\",\"enabled\":false,\"source_ref\":\"SYNTHETIC-explicit-fixed-maximum\",\"value\":null},\"minimum\":{\"as_of_date\":\"2027-07-01\",\"currency\":\"USD\",\"enabled\":false,\"source_ref\":\"SYNTHETIC-explicit-fixed-minimum\",\"value\":null},\"rule_basis_ref\":\"SYNTHETIC-per-item-money-clamp-not-contract-authentication\"},{\"cost_id\":\"fee\",\"maximum\":{\"as_of_date\":\"2027-07-01\",\"currency\":\"USD\",\"enabled\":true,\"source_ref\":\"SYNTHETIC-explicit-fee-maximum\",\"value\":{\"denominator\":\"1\",\"numerator\":\"40\"}},\"minimum\":{\"as_of_date\":\"2027-07-01\",\"currency\":\"USD\",\"enabled\":true,\"source_ref\":\"SYNTHETIC-explicit-fee-minimum\",\"value\":{\"denominator\":\"1\",\"numerator\":\"50\"}},\"rule_basis_ref\":\"SYNTHETIC-per-item-money-clamp-not-contract-authentication\"}],\"schema\":\"miniuw.synthetic-per-item-sale-cost-bounds.v1\"}",
+      "bounded_exit_spec_json": "{\"base_evidence_sha256\":\"07937b81d58eb7e12673884d9846fcec63840451aefd5427013c66dba2459c07\",\"bounded_run_sha256\":\"fda934acfde55fc3aad11d90477b47129ee756329675b01fe4fcd1c39e1fdc44\",\"bounds_source_sha256\":\"9b546714d18811565515bdf1ce8325fca910e59ce43d32fa9686d8b8f1461360\",\"cost_run_sha256\":\"5db85ed77b9331cd96f8102d35b8de5f54cd58c87365b4840999be3c3ef9c7c5\",\"cost_source_sha256\":\"7e15ff1ce95d8b4dda0f77e61afb9a7815a172396a4b01002b7425b5e2032be9\",\"equity_funding_assumption_ref\":null,\"exit_run_sha256\":\"c1efce2bd2baa631015fbdd8c09c73142fcc0eff554b5b4807f167fa69703355\",\"exit_spec_sha256\":\"79ab8858b7785fdb68a53880253273f9cdd1060a8e1e72b3eb4600aa629978e3\",\"revision_id\":\"SYNTHETIC-bounded-cost-demo-400\",\"sale_at_value_hypothesis_ref\":\"SYNTHETIC-explicit-sale-hypothesis-not-actual-receipt\",\"sale_node_id\":\"SYNTHETIC-project-sale\",\"schema\":\"miniuw.synthetic-bounded-exit-sale.v1\",\"unchanged_other_sources_basis_ref\":\"SYNTHETIC-other-sources-frozen\"}",
+      "gross_price": {
+        "denominator": "1",
+        "numerator": "400"
+      },
+      "original_formula_cost": {
+        "denominator": "1",
+        "numerator": "30"
+      },
+      "bounded_closing_cost": null,
+      "adjusted_cost_rows": [
+        {
+          "binding_constraints": [
+            "original_formula"
+          ],
+          "blockers": [],
+          "bounded_cost": {
+            "denominator": "1",
+            "numerator": "10"
+          },
+          "cost_id": "fixed",
+          "original_computed_cost": {
+            "denominator": "1",
+            "numerator": "10"
+          },
+          "rule": {
+            "cost_id": "fixed",
+            "maximum": {
+              "as_of_date": "2027-07-01",
+              "currency": "USD",
+              "enabled": false,
+              "source_ref": "SYNTHETIC-explicit-fixed-maximum",
+              "value": null
+            },
+            "minimum": {
+              "as_of_date": "2027-07-01",
+              "currency": "USD",
+              "enabled": false,
+              "source_ref": "SYNTHETIC-explicit-fixed-minimum",
+              "value": null
+            },
+            "rule_basis_ref": "SYNTHETIC-per-item-money-clamp-not-contract-authentication"
+          },
+          "source_cost_claim": {
+            "applicability": "included",
+            "applicability_basis_ref": "SYNTHETIC-explicit-charge-not-adopted",
+            "as_of_date": "2027-07-01",
+            "classification": "transaction_cost",
+            "cost_id": "fixed",
+            "currency": "USD",
+            "kind": "fixed",
+            "source_ref": "SYNTHETIC-explicit-cost:fixed",
+            "unit": "currency",
+            "value": {
+              "denominator": "1",
+              "numerator": "10"
+            }
+          }
+        },
+        {
+          "binding_constraints": [],
+          "blockers": [
+            "minimum_exceeds_maximum"
+          ],
+          "bounded_cost": null,
+          "cost_id": "fee",
+          "original_computed_cost": {
+            "denominator": "1",
+            "numerator": "20"
+          },
+          "rule": {
+            "cost_id": "fee",
+            "maximum": {
+              "as_of_date": "2027-07-01",
+              "currency": "USD",
+              "enabled": true,
+              "source_ref": "SYNTHETIC-explicit-fee-maximum",
+              "value": {
+                "denominator": "1",
+                "numerator": "40"
+              }
+            },
+            "minimum": {
+              "as_of_date": "2027-07-01",
+              "currency": "USD",
+              "enabled": true,
+              "source_ref": "SYNTHETIC-explicit-fee-minimum",
+              "value": {
+                "denominator": "1",
+                "numerator": "50"
+              }
+            },
+            "rule_basis_ref": "SYNTHETIC-per-item-money-clamp-not-contract-authentication"
+          },
+          "source_cost_claim": {
+            "applicability": "included",
+            "applicability_basis_ref": "SYNTHETIC-explicit-charge-not-adopted",
+            "as_of_date": "2027-07-01",
+            "classification": "transaction_cost",
+            "cost_id": "fee",
+            "currency": "USD",
+            "kind": "percent_of_gross",
+            "source_ref": "SYNTHETIC-explicit-cost:fee",
+            "unit": "fraction_of_gross_price",
+            "value": {
+              "denominator": "20",
+              "numerator": "1"
+            }
+          }
+        }
+      ],
+      "calculation_state": "blocked",
+      "calculation_blockers": [
+        "computed_complete_bounded_costs_unavailable"
+      ],
+      "bounds_blockers": [
+        "fee:minimum_exceeds_maximum"
+      ],
+      "current_state": "PENDING",
+      "current_blockers": [
+        "guarded_bounded_calculation_blocked"
+      ],
+      "evidence_blockers": [],
+      "current_project_net_cash_profit": null,
+      "bounded_cost_run_sha256": "fda934acfde55fc3aad11d90477b47129ee756329675b01fe4fcd1c39e1fdc44",
+      "bounded_exit_run_sha256": "a33eb4faf8817bcc5c79942aff36ea5a8695614333f420035d6e1dc4ad93295e",
+      "current_output_run_sha256": "24f2aebdae4dc533730d09ed24310ba3ab5c386e6e9f05b1a4d512bdaedd85d1",
+      "registry_source_sha256": "07d508f067de2a68a4c9e7665537f090d0e274f5d4982247f0918105eb1504ef",
+      "registry_run_sha256": "7c69ccc2f7fa6302b201cb6de084eb54cf7661a39ce72fe513292f14ae295dd2",
+      "required_source_bindings": 22,
+      "every_report_serialization_roundtrip_replayed": true,
+      "decision": "PENDING"
+    },
+    {
+      "case_id": "original-bank-blocked",
+      "independent_software_fixture": false,
+      "exit_spec_json": "{\"cap_rate\":{\"period_ref\":\"SYNTHETIC-forward-sale-year\",\"source_ref\":\"SYNTHETIC-explicit-exit-cap-not-market-data\",\"unit\":\"annual_cap_fraction\",\"value\":{\"denominator\":\"25\",\"numerator\":\"2\"}},\"context\":{\"deal_id\":\"SYNTHETIC-integrated-cash-demo\",\"definition_set_revision\":\"SYNTHETIC-cash-window-assumptions-v1\",\"run_id\":\"SYNTHETIC-integrated-cash-run\",\"scenario_id\":\"SYNTHETIC-Base\"},\"currency\":\"USD\",\"forward_window\":{\"basis_ref\":\"SYNTHETIC-declared-forward-twelve-month-accrual-scope\",\"end\":\"2028-07-01\",\"period_ref\":\"SYNTHETIC-forward-sale-year\",\"start\":\"2027-07-01\"},\"noi_run_sha256\":\"0350b8153c3b5fcad0f024e8acb17a220422fc70eca30c85b3dee11b91b4353e\",\"noi_source_sha256\":\"0abf035e9389eb5c22e2cca0834be9a1dbc4c7a2575f03a312f4e0bbdc0134d4\",\"schema\":\"miniuw.synthetic-exit-value.v1\",\"valuation_basis_ref\":\"SYNTHETIC-conditional-NOI-divided-by-cap-not-adopted\",\"valuation_date\":\"2027-07-01\"}",
+      "original_cost_source_json": "{\"context\":{\"deal_id\":\"SYNTHETIC-integrated-cash-demo\",\"definition_set_revision\":\"SYNTHETIC-cash-window-assumptions-v1\",\"run_id\":\"SYNTHETIC-integrated-cash-run\",\"scenario_id\":\"SYNTHETIC-Base\"},\"costs\":[{\"applicability\":\"included\",\"applicability_basis_ref\":\"SYNTHETIC-explicit-charge-not-adopted\",\"as_of_date\":\"2027-07-01\",\"classification\":\"transaction_cost\",\"cost_id\":\"fixed\",\"currency\":\"USD\",\"kind\":\"fixed\",\"source_ref\":\"SYNTHETIC-explicit-cost:fixed\",\"unit\":\"currency\",\"value\":{\"denominator\":\"1\",\"numerator\":\"10\"}},{\"applicability\":\"included\",\"applicability_basis_ref\":\"SYNTHETIC-explicit-charge-not-adopted\",\"as_of_date\":\"2027-07-01\",\"classification\":\"transaction_cost\",\"cost_id\":\"fee\",\"currency\":\"USD\",\"kind\":\"percent_of_gross\",\"source_ref\":\"SYNTHETIC-explicit-cost:fee\",\"unit\":\"fraction_of_gross_price\",\"value\":{\"denominator\":\"20\",\"numerator\":\"1\"}}],\"currency\":\"USD\",\"gross_price\":{\"as_of_date\":\"2027-07-01\",\"basis\":\"projected_gross_sale_price\",\"currency\":\"USD\",\"source_ref\":\"miniuw:synthetic-exit-value:be934691bf2dad27aae79a10ed7910e928590a8fb5578b41632e469655f861c8#/candidate_value\",\"value\":{\"denominator\":\"1\",\"numerator\":\"500\"}},\"inventory_basis_ref\":\"SYNTHETIC-selected-cost-inventory-not-real-completeness\",\"inventory_declared_complete\":true,\"nonoverlap_basis_ref\":\"SYNTHETIC-no-overlap-with-each-other-or-bank-payoffs\",\"sale_date\":\"2027-07-01\",\"schema\":\"miniuw.synthetic-fixed-and-gross-percent-sale-costs.v1\"}",
+      "bounds_spec_json": "{\"cost_run_sha256\":\"71a6cf0497529a0973f65e69f7f4c9fea7a7d0c83bd96d5e49720a14d1311339\",\"cost_source_sha256\":\"8297eede361cfe5fa3ab70382d46281ca92cbae09e5e901b428c6569afb30746\",\"profile\":\"SYNTHETIC-PER-ITEM-CLAMP-TO-EXPLICIT-MONEY-LIMITS-v1\",\"rule_inventory_basis_ref\":\"SYNTHETIC-all-included-items-have-explicit-limit-status\",\"rule_inventory_declared_complete\":true,\"rules\":[{\"cost_id\":\"fixed\",\"maximum\":{\"as_of_date\":\"2027-07-01\",\"currency\":\"USD\",\"enabled\":false,\"source_ref\":\"SYNTHETIC-explicit-fixed-maximum\",\"value\":null},\"minimum\":{\"as_of_date\":\"2027-07-01\",\"currency\":\"USD\",\"enabled\":false,\"source_ref\":\"SYNTHETIC-explicit-fixed-minimum\",\"value\":null},\"rule_basis_ref\":\"SYNTHETIC-per-item-money-clamp-not-contract-authentication\"},{\"cost_id\":\"fee\",\"maximum\":{\"as_of_date\":\"2027-07-01\",\"currency\":\"USD\",\"enabled\":true,\"source_ref\":\"SYNTHETIC-explicit-fee-maximum\",\"value\":{\"denominator\":\"1\",\"numerator\":\"40\"}},\"minimum\":{\"as_of_date\":\"2027-07-01\",\"currency\":\"USD\",\"enabled\":true,\"source_ref\":\"SYNTHETIC-explicit-fee-minimum\",\"value\":{\"denominator\":\"1\",\"numerator\":\"25\"}},\"rule_basis_ref\":\"SYNTHETIC-per-item-money-clamp-not-contract-authentication\"}],\"schema\":\"miniuw.synthetic-per-item-sale-cost-bounds.v1\"}",
+      "bounded_exit_spec_json": "{\"base_evidence_sha256\":\"57098b323fe50dbc8393b7e4966df2273bc54ae16fb82b01e6a73bdff8a9f804\",\"bounded_run_sha256\":\"36053e8aba7e7046bda0678fc0ef013961638570e7128aea290c7f265737e07d\",\"bounds_source_sha256\":\"605010a8b2bd96eccc2405fb917caa373de08f73697942dd86b81734e27cbbbe\",\"cost_run_sha256\":\"71a6cf0497529a0973f65e69f7f4c9fea7a7d0c83bd96d5e49720a14d1311339\",\"cost_source_sha256\":\"8297eede361cfe5fa3ab70382d46281ca92cbae09e5e901b428c6569afb30746\",\"equity_funding_assumption_ref\":null,\"exit_run_sha256\":\"be934691bf2dad27aae79a10ed7910e928590a8fb5578b41632e469655f861c8\",\"exit_spec_sha256\":\"77ce1f580be8a53dec53f5521ece5c664e6eec10462506abb61258ae06a9da50\",\"revision_id\":\"SYNTHETIC-bounded-cost-demo-500\",\"sale_at_value_hypothesis_ref\":\"SYNTHETIC-explicit-sale-hypothesis-not-actual-receipt\",\"sale_node_id\":\"SYNTHETIC-project-sale\",\"schema\":\"miniuw.synthetic-bounded-exit-sale.v1\",\"unchanged_other_sources_basis_ref\":\"SYNTHETIC-other-sources-frozen\"}",
+      "gross_price": {
+        "denominator": "1",
+        "numerator": "500"
+      },
+      "original_formula_cost": {
+        "denominator": "1",
+        "numerator": "35"
+      },
+      "bounded_closing_cost": {
+        "denominator": "1",
+        "numerator": "35"
+      },
+      "adjusted_cost_rows": [
+        {
+          "binding_constraints": [
+            "original_formula"
+          ],
+          "blockers": [],
+          "bounded_cost": {
+            "denominator": "1",
+            "numerator": "10"
+          },
+          "cost_id": "fixed",
+          "original_computed_cost": {
+            "denominator": "1",
+            "numerator": "10"
+          },
+          "rule": {
+            "cost_id": "fixed",
+            "maximum": {
+              "as_of_date": "2027-07-01",
+              "currency": "USD",
+              "enabled": false,
+              "source_ref": "SYNTHETIC-explicit-fixed-maximum",
+              "value": null
+            },
+            "minimum": {
+              "as_of_date": "2027-07-01",
+              "currency": "USD",
+              "enabled": false,
+              "source_ref": "SYNTHETIC-explicit-fixed-minimum",
+              "value": null
+            },
+            "rule_basis_ref": "SYNTHETIC-per-item-money-clamp-not-contract-authentication"
+          },
+          "source_cost_claim": {
+            "applicability": "included",
+            "applicability_basis_ref": "SYNTHETIC-explicit-charge-not-adopted",
+            "as_of_date": "2027-07-01",
+            "classification": "transaction_cost",
+            "cost_id": "fixed",
+            "currency": "USD",
+            "kind": "fixed",
+            "source_ref": "SYNTHETIC-explicit-cost:fixed",
+            "unit": "currency",
+            "value": {
+              "denominator": "1",
+              "numerator": "10"
+            }
+          }
+        },
+        {
+          "binding_constraints": [
+            "original_formula",
+            "minimum"
+          ],
+          "blockers": [],
+          "bounded_cost": {
+            "denominator": "1",
+            "numerator": "25"
+          },
+          "cost_id": "fee",
+          "original_computed_cost": {
+            "denominator": "1",
+            "numerator": "25"
+          },
+          "rule": {
+            "cost_id": "fee",
+            "maximum": {
+              "as_of_date": "2027-07-01",
+              "currency": "USD",
+              "enabled": true,
+              "source_ref": "SYNTHETIC-explicit-fee-maximum",
+              "value": {
+                "denominator": "1",
+                "numerator": "40"
+              }
+            },
+            "minimum": {
+              "as_of_date": "2027-07-01",
+              "currency": "USD",
+              "enabled": true,
+              "source_ref": "SYNTHETIC-explicit-fee-minimum",
+              "value": {
+                "denominator": "1",
+                "numerator": "25"
+              }
+            },
+            "rule_basis_ref": "SYNTHETIC-per-item-money-clamp-not-contract-authentication"
+          },
+          "source_cost_claim": {
+            "applicability": "included",
+            "applicability_basis_ref": "SYNTHETIC-explicit-charge-not-adopted",
+            "as_of_date": "2027-07-01",
+            "classification": "transaction_cost",
+            "cost_id": "fee",
+            "currency": "USD",
+            "kind": "percent_of_gross",
+            "source_ref": "SYNTHETIC-explicit-cost:fee",
+            "unit": "fraction_of_gross_price",
+            "value": {
+              "denominator": "20",
+              "numerator": "1"
+            }
+          }
+        }
+      ],
+      "calculation_state": "blocked",
+      "calculation_blockers": [
+        "refinance_capacity_or_selection_blocked"
+      ],
+      "bounds_blockers": [],
+      "current_state": "PENDING",
+      "current_blockers": [
+        "guarded_bounded_calculation_blocked"
+      ],
+      "evidence_blockers": [],
+      "current_project_net_cash_profit": null,
+      "bounded_cost_run_sha256": "36053e8aba7e7046bda0678fc0ef013961638570e7128aea290c7f265737e07d",
+      "bounded_exit_run_sha256": "935eb96c4762ad7622a6e96ee4a4114a3eb4ed573e3078d2e81213d393bcb13f",
+      "current_output_run_sha256": "3bd14977b7755df8146af1ca264438f1cbad4acdf14490708bc5e10aceecfe5a",
+      "registry_source_sha256": "48314f97d15d4f24e10d0bcfa1032dfb2fcf90bf9c07d7bbaf4bce84e0fa50df",
+      "registry_run_sha256": "f2d2b2af54071c3635c02d1147c2088b44f00836f95b16edfba21ccd153ab58d",
+      "required_source_bindings": 22,
+      "every_report_serialization_roundtrip_replayed": true,
+      "decision": "PENDING"
+    },
+    {
+      "case_id": "only-bounds-expired",
+      "independent_software_fixture": true,
+      "exit_spec_json": "{\"cap_rate\":{\"period_ref\":\"SYNTHETIC-forward-sale-year\",\"source_ref\":\"SYNTHETIC-explicit-exit-cap-not-market-data\",\"unit\":\"annual_cap_fraction\",\"value\":{\"denominator\":\"10\",\"numerator\":\"1\"}},\"context\":{\"deal_id\":\"SYNTHETIC-integrated-cash-demo\",\"definition_set_revision\":\"SYNTHETIC-cash-window-assumptions-v1\",\"run_id\":\"SYNTHETIC-integrated-cash-run\",\"scenario_id\":\"SYNTHETIC-Base\"},\"currency\":\"USD\",\"forward_window\":{\"basis_ref\":\"SYNTHETIC-declared-forward-twelve-month-accrual-scope\",\"end\":\"2028-07-01\",\"period_ref\":\"SYNTHETIC-forward-sale-year\",\"start\":\"2027-07-01\"},\"noi_run_sha256\":\"0350b8153c3b5fcad0f024e8acb17a220422fc70eca30c85b3dee11b91b4353e\",\"noi_source_sha256\":\"0abf035e9389eb5c22e2cca0834be9a1dbc4c7a2575f03a312f4e0bbdc0134d4\",\"schema\":\"miniuw.synthetic-exit-value.v1\",\"valuation_basis_ref\":\"SYNTHETIC-conditional-NOI-divided-by-cap-not-adopted\",\"valuation_date\":\"2027-07-01\"}",
+      "original_cost_source_json": "{\"context\":{\"deal_id\":\"SYNTHETIC-integrated-cash-demo\",\"definition_set_revision\":\"SYNTHETIC-cash-window-assumptions-v1\",\"run_id\":\"SYNTHETIC-integrated-cash-run\",\"scenario_id\":\"SYNTHETIC-Base\"},\"costs\":[{\"applicability\":\"included\",\"applicability_basis_ref\":\"SYNTHETIC-explicit-charge-not-adopted\",\"as_of_date\":\"2027-07-01\",\"classification\":\"transaction_cost\",\"cost_id\":\"fixed\",\"currency\":\"USD\",\"kind\":\"fixed\",\"source_ref\":\"SYNTHETIC-explicit-cost:fixed\",\"unit\":\"currency\",\"value\":{\"denominator\":\"1\",\"numerator\":\"10\"}},{\"applicability\":\"included\",\"applicability_basis_ref\":\"SYNTHETIC-explicit-charge-not-adopted\",\"as_of_date\":\"2027-07-01\",\"classification\":\"transaction_cost\",\"cost_id\":\"fee\",\"currency\":\"USD\",\"kind\":\"percent_of_gross\",\"source_ref\":\"SYNTHETIC-explicit-cost:fee\",\"unit\":\"fraction_of_gross_price\",\"value\":{\"denominator\":\"20\",\"numerator\":\"1\"}}],\"currency\":\"USD\",\"gross_price\":{\"as_of_date\":\"2027-07-01\",\"basis\":\"projected_gross_sale_price\",\"currency\":\"USD\",\"source_ref\":\"miniuw:synthetic-exit-value:c1efce2bd2baa631015fbdd8c09c73142fcc0eff554b5b4807f167fa69703355#/candidate_value\",\"value\":{\"denominator\":\"1\",\"numerator\":\"400\"}},\"inventory_basis_ref\":\"SYNTHETIC-selected-cost-inventory-not-real-completeness\",\"inventory_declared_complete\":true,\"nonoverlap_basis_ref\":\"SYNTHETIC-no-overlap-with-each-other-or-bank-payoffs\",\"sale_date\":\"2027-07-01\",\"schema\":\"miniuw.synthetic-fixed-and-gross-percent-sale-costs.v1\"}",
+      "bounds_spec_json": "{\"cost_run_sha256\":\"5db85ed77b9331cd96f8102d35b8de5f54cd58c87365b4840999be3c3ef9c7c5\",\"cost_source_sha256\":\"7e15ff1ce95d8b4dda0f77e61afb9a7815a172396a4b01002b7425b5e2032be9\",\"profile\":\"SYNTHETIC-PER-ITEM-CLAMP-TO-EXPLICIT-MONEY-LIMITS-v1\",\"rule_inventory_basis_ref\":\"SYNTHETIC-all-included-items-have-explicit-limit-status\",\"rule_inventory_declared_complete\":true,\"rules\":[{\"cost_id\":\"fixed\",\"maximum\":{\"as_of_date\":\"2027-07-01\",\"currency\":\"USD\",\"enabled\":false,\"source_ref\":\"SYNTHETIC-explicit-fixed-maximum\",\"value\":null},\"minimum\":{\"as_of_date\":\"2027-07-01\",\"currency\":\"USD\",\"enabled\":false,\"source_ref\":\"SYNTHETIC-explicit-fixed-minimum\",\"value\":null},\"rule_basis_ref\":\"SYNTHETIC-per-item-money-clamp-not-contract-authentication\"},{\"cost_id\":\"fee\",\"maximum\":{\"as_of_date\":\"2027-07-01\",\"currency\":\"USD\",\"enabled\":true,\"source_ref\":\"SYNTHETIC-explicit-fee-maximum\",\"value\":{\"denominator\":\"1\",\"numerator\":\"40\"}},\"minimum\":{\"as_of_date\":\"2027-07-01\",\"currency\":\"USD\",\"enabled\":true,\"source_ref\":\"SYNTHETIC-explicit-fee-minimum\",\"value\":{\"denominator\":\"1\",\"numerator\":\"25\"}},\"rule_basis_ref\":\"SYNTHETIC-per-item-money-clamp-not-contract-authentication\"}],\"schema\":\"miniuw.synthetic-per-item-sale-cost-bounds.v1\"}",
+      "bounded_exit_spec_json": "{\"base_evidence_sha256\":\"07937b81d58eb7e12673884d9846fcec63840451aefd5427013c66dba2459c07\",\"bounded_run_sha256\":\"cdfde812920879c1fad0afe7cc8126568874d04746f483d7a06210d8e62e7381\",\"bounds_source_sha256\":\"712208023030fee32f29f7480ed323c9dff189792c7158d5a233712c2ec8e8c9\",\"cost_run_sha256\":\"5db85ed77b9331cd96f8102d35b8de5f54cd58c87365b4840999be3c3ef9c7c5\",\"cost_source_sha256\":\"7e15ff1ce95d8b4dda0f77e61afb9a7815a172396a4b01002b7425b5e2032be9\",\"equity_funding_assumption_ref\":null,\"exit_run_sha256\":\"c1efce2bd2baa631015fbdd8c09c73142fcc0eff554b5b4807f167fa69703355\",\"exit_spec_sha256\":\"79ab8858b7785fdb68a53880253273f9cdd1060a8e1e72b3eb4600aa629978e3\",\"revision_id\":\"SYNTHETIC-bounded-cost-demo-400\",\"sale_at_value_hypothesis_ref\":\"SYNTHETIC-explicit-sale-hypothesis-not-actual-receipt\",\"sale_node_id\":\"SYNTHETIC-project-sale\",\"schema\":\"miniuw.synthetic-bounded-exit-sale.v1\",\"unchanged_other_sources_basis_ref\":\"SYNTHETIC-other-sources-frozen\"}",
+      "gross_price": {
+        "denominator": "1",
+        "numerator": "400"
+      },
+      "original_formula_cost": {
+        "denominator": "1",
+        "numerator": "30"
+      },
+      "bounded_closing_cost": {
+        "denominator": "1",
+        "numerator": "35"
+      },
+      "adjusted_cost_rows": [
+        {
+          "binding_constraints": [
+            "original_formula"
+          ],
+          "blockers": [],
+          "bounded_cost": {
+            "denominator": "1",
+            "numerator": "10"
+          },
+          "cost_id": "fixed",
+          "original_computed_cost": {
+            "denominator": "1",
+            "numerator": "10"
+          },
+          "rule": {
+            "cost_id": "fixed",
+            "maximum": {
+              "as_of_date": "2027-07-01",
+              "currency": "USD",
+              "enabled": false,
+              "source_ref": "SYNTHETIC-explicit-fixed-maximum",
+              "value": null
+            },
+            "minimum": {
+              "as_of_date": "2027-07-01",
+              "currency": "USD",
+              "enabled": false,
+              "source_ref": "SYNTHETIC-explicit-fixed-minimum",
+              "value": null
+            },
+            "rule_basis_ref": "SYNTHETIC-per-item-money-clamp-not-contract-authentication"
+          },
+          "source_cost_claim": {
+            "applicability": "included",
+            "applicability_basis_ref": "SYNTHETIC-explicit-charge-not-adopted",
+            "as_of_date": "2027-07-01",
+            "classification": "transaction_cost",
+            "cost_id": "fixed",
+            "currency": "USD",
+            "kind": "fixed",
+            "source_ref": "SYNTHETIC-explicit-cost:fixed",
+            "unit": "currency",
+            "value": {
+              "denominator": "1",
+              "numerator": "10"
+            }
+          }
+        },
+        {
+          "binding_constraints": [
+            "minimum"
+          ],
+          "blockers": [],
+          "bounded_cost": {
+            "denominator": "1",
+            "numerator": "25"
+          },
+          "cost_id": "fee",
+          "original_computed_cost": {
+            "denominator": "1",
+            "numerator": "20"
+          },
+          "rule": {
+            "cost_id": "fee",
+            "maximum": {
+              "as_of_date": "2027-07-01",
+              "currency": "USD",
+              "enabled": true,
+              "source_ref": "SYNTHETIC-explicit-fee-maximum",
+              "value": {
+                "denominator": "1",
+                "numerator": "40"
+              }
+            },
+            "minimum": {
+              "as_of_date": "2027-07-01",
+              "currency": "USD",
+              "enabled": true,
+              "source_ref": "SYNTHETIC-explicit-fee-minimum",
+              "value": {
+                "denominator": "1",
+                "numerator": "25"
+              }
+            },
+            "rule_basis_ref": "SYNTHETIC-per-item-money-clamp-not-contract-authentication"
+          },
+          "source_cost_claim": {
+            "applicability": "included",
+            "applicability_basis_ref": "SYNTHETIC-explicit-charge-not-adopted",
+            "as_of_date": "2027-07-01",
+            "classification": "transaction_cost",
+            "cost_id": "fee",
+            "currency": "USD",
+            "kind": "percent_of_gross",
+            "source_ref": "SYNTHETIC-explicit-cost:fee",
+            "unit": "fraction_of_gross_price",
+            "value": {
+              "denominator": "20",
+              "numerator": "1"
+            }
+          }
+        }
+      ],
+      "calculation_state": "compiled_synthetic",
+      "calculation_blockers": [],
+      "bounds_blockers": [],
+      "current_state": "PENDING",
+      "current_blockers": [
+        "required_evidence_not_current"
+      ],
+      "evidence_blockers": [
+        "/exit/cost_bounds:evidence_expired"
+      ],
+      "current_project_net_cash_profit": null,
+      "bounded_cost_run_sha256": "cdfde812920879c1fad0afe7cc8126568874d04746f483d7a06210d8e62e7381",
+      "bounded_exit_run_sha256": "5f8ec33ee136212f36d16b150addcf1ca2e01304f96dd345e51617d6c4da9008",
+      "current_output_run_sha256": "11c50b516b9c6c22289f45ed7359e086d30a5ef7447134fc6e4130cd89f4f440",
+      "registry_source_sha256": "313d9a6f29a7a69bd1516a0f3e49471a3129220c17d51eb2e1770b47dc34eb6e",
+      "registry_run_sha256": "7c1650036d3e601893517af2335314df1fdf4eda2e165da1f427f1e230a940ac",
+      "required_source_bindings": 22,
+      "every_report_serialization_roundtrip_replayed": true,
+      "decision": "PENDING"
+    },
+    {
+      "case_id": "only-bounds-review-pending",
+      "independent_software_fixture": true,
+      "exit_spec_json": "{\"cap_rate\":{\"period_ref\":\"SYNTHETIC-forward-sale-year\",\"source_ref\":\"SYNTHETIC-explicit-exit-cap-not-market-data\",\"unit\":\"annual_cap_fraction\",\"value\":{\"denominator\":\"10\",\"numerator\":\"1\"}},\"context\":{\"deal_id\":\"SYNTHETIC-integrated-cash-demo\",\"definition_set_revision\":\"SYNTHETIC-cash-window-assumptions-v1\",\"run_id\":\"SYNTHETIC-integrated-cash-run\",\"scenario_id\":\"SYNTHETIC-Base\"},\"currency\":\"USD\",\"forward_window\":{\"basis_ref\":\"SYNTHETIC-declared-forward-twelve-month-accrual-scope\",\"end\":\"2028-07-01\",\"period_ref\":\"SYNTHETIC-forward-sale-year\",\"start\":\"2027-07-01\"},\"noi_run_sha256\":\"0350b8153c3b5fcad0f024e8acb17a220422fc70eca30c85b3dee11b91b4353e\",\"noi_source_sha256\":\"0abf035e9389eb5c22e2cca0834be9a1dbc4c7a2575f03a312f4e0bbdc0134d4\",\"schema\":\"miniuw.synthetic-exit-value.v1\",\"valuation_basis_ref\":\"SYNTHETIC-conditional-NOI-divided-by-cap-not-adopted\",\"valuation_date\":\"2027-07-01\"}",
+      "original_cost_source_json": "{\"context\":{\"deal_id\":\"SYNTHETIC-integrated-cash-demo\",\"definition_set_revision\":\"SYNTHETIC-cash-window-assumptions-v1\",\"run_id\":\"SYNTHETIC-integrated-cash-run\",\"scenario_id\":\"SYNTHETIC-Base\"},\"costs\":[{\"applicability\":\"included\",\"applicability_basis_ref\":\"SYNTHETIC-explicit-charge-not-adopted\",\"as_of_date\":\"2027-07-01\",\"classification\":\"transaction_cost\",\"cost_id\":\"fixed\",\"currency\":\"USD\",\"kind\":\"fixed\",\"source_ref\":\"SYNTHETIC-explicit-cost:fixed\",\"unit\":\"currency\",\"value\":{\"denominator\":\"1\",\"numerator\":\"10\"}},{\"applicability\":\"included\",\"applicability_basis_ref\":\"SYNTHETIC-explicit-charge-not-adopted\",\"as_of_date\":\"2027-07-01\",\"classification\":\"transaction_cost\",\"cost_id\":\"fee\",\"currency\":\"USD\",\"kind\":\"percent_of_gross\",\"source_ref\":\"SYNTHETIC-explicit-cost:fee\",\"unit\":\"fraction_of_gross_price\",\"value\":{\"denominator\":\"20\",\"numerator\":\"1\"}}],\"currency\":\"USD\",\"gross_price\":{\"as_of_date\":\"2027-07-01\",\"basis\":\"projected_gross_sale_price\",\"currency\":\"USD\",\"source_ref\":\"miniuw:synthetic-exit-value:c1efce2bd2baa631015fbdd8c09c73142fcc0eff554b5b4807f167fa69703355#/candidate_value\",\"value\":{\"denominator\":\"1\",\"numerator\":\"400\"}},\"inventory_basis_ref\":\"SYNTHETIC-selected-cost-inventory-not-real-completeness\",\"inventory_declared_complete\":true,\"nonoverlap_basis_ref\":\"SYNTHETIC-no-overlap-with-each-other-or-bank-payoffs\",\"sale_date\":\"2027-07-01\",\"schema\":\"miniuw.synthetic-fixed-and-gross-percent-sale-costs.v1\"}",
+      "bounds_spec_json": "{\"cost_run_sha256\":\"5db85ed77b9331cd96f8102d35b8de5f54cd58c87365b4840999be3c3ef9c7c5\",\"cost_source_sha256\":\"7e15ff1ce95d8b4dda0f77e61afb9a7815a172396a4b01002b7425b5e2032be9\",\"profile\":\"SYNTHETIC-PER-ITEM-CLAMP-TO-EXPLICIT-MONEY-LIMITS-v1\",\"rule_inventory_basis_ref\":\"SYNTHETIC-all-included-items-have-explicit-limit-status\",\"rule_inventory_declared_complete\":true,\"rules\":[{\"cost_id\":\"fixed\",\"maximum\":{\"as_of_date\":\"2027-07-01\",\"currency\":\"USD\",\"enabled\":false,\"source_ref\":\"SYNTHETIC-explicit-fixed-maximum\",\"value\":null},\"minimum\":{\"as_of_date\":\"2027-07-01\",\"currency\":\"USD\",\"enabled\":false,\"source_ref\":\"SYNTHETIC-explicit-fixed-minimum\",\"value\":null},\"rule_basis_ref\":\"SYNTHETIC-per-item-money-clamp-not-contract-authentication\"},{\"cost_id\":\"fee\",\"maximum\":{\"as_of_date\":\"2027-07-01\",\"currency\":\"USD\",\"enabled\":true,\"source_ref\":\"SYNTHETIC-explicit-fee-maximum\",\"value\":{\"denominator\":\"1\",\"numerator\":\"40\"}},\"minimum\":{\"as_of_date\":\"2027-07-01\",\"currency\":\"USD\",\"enabled\":true,\"source_ref\":\"SYNTHETIC-explicit-fee-minimum\",\"value\":{\"denominator\":\"1\",\"numerator\":\"25\"}},\"rule_basis_ref\":\"SYNTHETIC-per-item-money-clamp-not-contract-authentication\"}],\"schema\":\"miniuw.synthetic-per-item-sale-cost-bounds.v1\"}",
+      "bounded_exit_spec_json": "{\"base_evidence_sha256\":\"07937b81d58eb7e12673884d9846fcec63840451aefd5427013c66dba2459c07\",\"bounded_run_sha256\":\"cdfde812920879c1fad0afe7cc8126568874d04746f483d7a06210d8e62e7381\",\"bounds_source_sha256\":\"712208023030fee32f29f7480ed323c9dff189792c7158d5a233712c2ec8e8c9\",\"cost_run_sha256\":\"5db85ed77b9331cd96f8102d35b8de5f54cd58c87365b4840999be3c3ef9c7c5\",\"cost_source_sha256\":\"7e15ff1ce95d8b4dda0f77e61afb9a7815a172396a4b01002b7425b5e2032be9\",\"equity_funding_assumption_ref\":null,\"exit_run_sha256\":\"c1efce2bd2baa631015fbdd8c09c73142fcc0eff554b5b4807f167fa69703355\",\"exit_spec_sha256\":\"79ab8858b7785fdb68a53880253273f9cdd1060a8e1e72b3eb4600aa629978e3\",\"revision_id\":\"SYNTHETIC-bounded-cost-demo-400\",\"sale_at_value_hypothesis_ref\":\"SYNTHETIC-explicit-sale-hypothesis-not-actual-receipt\",\"sale_node_id\":\"SYNTHETIC-project-sale\",\"schema\":\"miniuw.synthetic-bounded-exit-sale.v1\",\"unchanged_other_sources_basis_ref\":\"SYNTHETIC-other-sources-frozen\"}",
+      "gross_price": {
+        "denominator": "1",
+        "numerator": "400"
+      },
+      "original_formula_cost": {
+        "denominator": "1",
+        "numerator": "30"
+      },
+      "bounded_closing_cost": {
+        "denominator": "1",
+        "numerator": "35"
+      },
+      "adjusted_cost_rows": [
+        {
+          "binding_constraints": [
+            "original_formula"
+          ],
+          "blockers": [],
+          "bounded_cost": {
+            "denominator": "1",
+            "numerator": "10"
+          },
+          "cost_id": "fixed",
+          "original_computed_cost": {
+            "denominator": "1",
+            "numerator": "10"
+          },
+          "rule": {
+            "cost_id": "fixed",
+            "maximum": {
+              "as_of_date": "2027-07-01",
+              "currency": "USD",
+              "enabled": false,
+              "source_ref": "SYNTHETIC-explicit-fixed-maximum",
+              "value": null
+            },
+            "minimum": {
+              "as_of_date": "2027-07-01",
+              "currency": "USD",
+              "enabled": false,
+              "source_ref": "SYNTHETIC-explicit-fixed-minimum",
+              "value": null
+            },
+            "rule_basis_ref": "SYNTHETIC-per-item-money-clamp-not-contract-authentication"
+          },
+          "source_cost_claim": {
+            "applicability": "included",
+            "applicability_basis_ref": "SYNTHETIC-explicit-charge-not-adopted",
+            "as_of_date": "2027-07-01",
+            "classification": "transaction_cost",
+            "cost_id": "fixed",
+            "currency": "USD",
+            "kind": "fixed",
+            "source_ref": "SYNTHETIC-explicit-cost:fixed",
+            "unit": "currency",
+            "value": {
+              "denominator": "1",
+              "numerator": "10"
+            }
+          }
+        },
+        {
+          "binding_constraints": [
+            "minimum"
+          ],
+          "blockers": [],
+          "bounded_cost": {
+            "denominator": "1",
+            "numerator": "25"
+          },
+          "cost_id": "fee",
+          "original_computed_cost": {
+            "denominator": "1",
+            "numerator": "20"
+          },
+          "rule": {
+            "cost_id": "fee",
+            "maximum": {
+              "as_of_date": "2027-07-01",
+              "currency": "USD",
+              "enabled": true,
+              "source_ref": "SYNTHETIC-explicit-fee-maximum",
+              "value": {
+                "denominator": "1",
+                "numerator": "40"
+              }
+            },
+            "minimum": {
+              "as_of_date": "2027-07-01",
+              "currency": "USD",
+              "enabled": true,
+              "source_ref": "SYNTHETIC-explicit-fee-minimum",
+              "value": {
+                "denominator": "1",
+                "numerator": "25"
+              }
+            },
+            "rule_basis_ref": "SYNTHETIC-per-item-money-clamp-not-contract-authentication"
+          },
+          "source_cost_claim": {
+            "applicability": "included",
+            "applicability_basis_ref": "SYNTHETIC-explicit-charge-not-adopted",
+            "as_of_date": "2027-07-01",
+            "classification": "transaction_cost",
+            "cost_id": "fee",
+            "currency": "USD",
+            "kind": "percent_of_gross",
+            "source_ref": "SYNTHETIC-explicit-cost:fee",
+            "unit": "fraction_of_gross_price",
+            "value": {
+              "denominator": "20",
+              "numerator": "1"
+            }
+          }
+        }
+      ],
+      "calculation_state": "compiled_synthetic",
+      "calculation_blockers": [],
+      "bounds_blockers": [],
+      "current_state": "PENDING",
+      "current_blockers": [
+        "required_evidence_not_current"
+      ],
+      "evidence_blockers": [
+        "/exit/cost_bounds:synthetic_review_pending"
+      ],
+      "current_project_net_cash_profit": null,
+      "bounded_cost_run_sha256": "cdfde812920879c1fad0afe7cc8126568874d04746f483d7a06210d8e62e7381",
+      "bounded_exit_run_sha256": "5f8ec33ee136212f36d16b150addcf1ca2e01304f96dd345e51617d6c4da9008",
+      "current_output_run_sha256": "b5030ce3847a23c8be047cadf1248e6dcc0110056ed9f75b7cfc5c09f82b5c0c",
+      "registry_source_sha256": "892c3067f0f637a7d39704ad8f3f6f4d19def58c6871c32a7b271db116237654",
+      "registry_run_sha256": "cbba9c5503556f02bde66791ee75ee7a0c514d9a1a91dacda48122996d49df4e",
+      "required_source_bindings": 22,
+      "every_report_serialization_roundtrip_replayed": true,
+      "decision": "PENDING"
+    }
+  ],
+  "independent_fixture_note": "Compatible branch uses separate declared bank NOI 2000, empty contribution target and closing without valuation claim. Original bank NOI 50 and valuation 500 remain unchanged.",
+  "explicit_fee_hypothesis": "5% of gross sale price, minimum 25, maximum 40, plus separate fixed cost 10; synthetic software values only",
+  "all_limits_are_supplied_hypotheses_not_verified_contracts": true,
+  "global_affine_recovery_analysis_produced": false,
+  "personal_investor_return": null,
+  "decision": "PENDING",
+  "production_authorized": false
+}

@@ -1,0 +1,186 @@
+{
+  "scope": "Declared per-item monetary floor/cap costs, guarded return and explicit-time transport-source gate; original matrix and financial gates preserved",
+  "rows": [
+    {
+      "requirement_or_variable": "per_item_money_minimum_maximum",
+      "source": {
+        "path": "docs/technical-implementation-T48-T50.md",
+        "line": 11,
+        "sha256": "083b421a816d72ceeddb783ca0913ba6d6b99304d71c9c57683527affcc85019"
+      },
+      "current_definition": "Original fixed/percent amount then enabled monetary floor/cap per item, all binding ties retained",
+      "affected_modules": [
+        "M7",
+        "T42",
+        "T43",
+        "T46",
+        "T48",
+        "T49",
+        "T50"
+      ],
+      "validation_evidence": [
+        "tests/test_bounded_sale_costs.py:BoundedSaleCostsTests.test_independent_floor_total_and_original_preserved",
+        "tests/test_bounded_sale_costs.py:BoundedSaleCostsTests.test_cap_total_from_higher_price",
+        "tests/test_bounded_sale_costs.py:BoundedSaleCostsTests.test_all_tied_binding_limits_retained",
+        "tests/test_bounded_sale_costs.py:BoundedSaleCostsTests.test_rational_floor_and_cap_no_cent_rounding"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Applicable authentic contract/tax, rounding and other fee profiles"
+    },
+    {
+      "requirement_or_variable": "explicit_bound_state_and_conflict",
+      "source": {
+        "path": "docs/technical-implementation-T48-T50.md",
+        "line": 9,
+        "sha256": "083b421a816d72ceeddb783ca0913ba6d6b99304d71c9c57683527affcc85019"
+      },
+      "current_definition": "Disabled requires no value; unresolved/missing/negative/mismatched limit or min>max blocks full total",
+      "affected_modules": [
+        "M7",
+        "T42",
+        "T43",
+        "T46",
+        "T48",
+        "T49",
+        "T50"
+      ],
+      "validation_evidence": [
+        "tests/test_bounded_sale_costs.py:BoundedSaleCostsTests.test_disabled_bounds_require_absent_values",
+        "tests/test_bounded_sale_costs.py:BoundedSaleCostsTests.test_zero_cap_is_known_without_floor",
+        "tests/test_bounded_sale_costs.py:BoundedSaleCostsTests.test_floor_above_cap_blocks_without_reordering",
+        "tests/test_bounded_sale_costs.py:BoundedSaleCostsTests.test_missing_enabled_value_rule_basis_or_metadata_block"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Actual source authority and economic classification"
+    },
+    {
+      "requirement_or_variable": "complete_original_and_rules_inventory",
+      "source": {
+        "path": "docs/technical-implementation-T48-T50.md",
+        "line": 7,
+        "sha256": "083b421a816d72ceeddb783ca0913ba6d6b99304d71c9c57683527affcc85019"
+      },
+      "current_definition": "Replay complete T43 and bound rule ID/source/run inventory; unresolved original tax remains pending",
+      "affected_modules": [
+        "M7",
+        "T42",
+        "T43",
+        "T46",
+        "T48",
+        "T49",
+        "T50"
+      ],
+      "validation_evidence": [
+        "tests/test_bounded_sale_costs.py:BoundedSaleCostsTests.test_exact_included_inventory_hash_and_complete_declaration_required",
+        "tests/test_bounded_sale_costs.py:BoundedSaleCostsTests.test_unresolved_tax_cannot_be_fixed_by_limits",
+        "tests/test_bounded_sale_costs.py:BoundedSaleCostsTests.test_rehashed_original_cost_run_forgery_rejected"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Authentic completeness/nonoverlap and source review"
+    },
+    {
+      "requirement_or_variable": "bounded_cost_to_cash_return",
+      "source": {
+        "path": "docs/technical-implementation-T48-T50.md",
+        "line": 17,
+        "sha256": "083b421a816d72ceeddb783ca0913ba6d6b99304d71c9c57683527affcc85019"
+      },
+      "current_definition": "Seven exact bindings and price lineage before cost replacement once in T42 and capacity-checked chain",
+      "affected_modules": [
+        "M7",
+        "T42",
+        "T43",
+        "T46",
+        "T48",
+        "T49",
+        "T50"
+      ],
+      "validation_evidence": [
+        "tests/test_bounded_exit_sale.py:BoundedExitSaleTests.test_independent_cash_return_cost_replaced_once",
+        "tests/test_bounded_exit_sale.py:BoundedExitSaleTests.test_new_price_replays_cost_and_limit_and_returns",
+        "tests/test_bounded_exit_sale.py:BoundedExitSaleTests.test_all_seven_binding_hashes_required",
+        "tests/test_bounded_exit_sale.py:BoundedExitSaleTests.test_bank_blocker_preserved"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Real funding/contract/payment, date alternatives, personal return"
+    },
+    {
+      "requirement_or_variable": "non_affine_type_isolation",
+      "source": {
+        "path": "docs/technical-implementation-T48-T50.md",
+        "line": 21,
+        "sha256": "083b421a816d72ceeddb783ca0913ba6d6b99304d71c9c57683527affcc85019"
+      },
+      "current_definition": "Bounded profile never converted to globally affine fixed charges; T45/T47 reject distinct T49 type",
+      "affected_modules": [
+        "M7",
+        "T42",
+        "T43",
+        "T46",
+        "T48",
+        "T49",
+        "T50"
+      ],
+      "validation_evidence": [
+        "tests/test_bounded_exit_sale.py:BoundedExitSaleTests.test_old_affine_and_freshness_paths_reject_new_result_type",
+        "tests/test_bounded_exit_sale.py:BoundedExitSaleTests.test_syntax_shape_budget_and_authority"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Piecewise recovery domain and real use approval"
+    },
+    {
+      "requirement_or_variable": "bounded_source_currency",
+      "source": {
+        "path": "docs/technical-implementation-T48-T50.md",
+        "line": 25,
+        "sha256": "083b421a816d72ceeddb783ca0913ba6d6b99304d71c9c57683527affcc85019"
+      },
+      "current_definition": "22 explicit transport bindings including cost limits; expired/unreviewed bound source blocks current story",
+      "affected_modules": [
+        "M7",
+        "T42",
+        "T43",
+        "T46",
+        "T48",
+        "T49",
+        "T50"
+      ],
+      "validation_evidence": [
+        "tests/test_current_bounded_exit_output.py:CurrentBoundedExitOutputTests.test_full_current_story_and_limit_details",
+        "tests/test_current_bounded_exit_output.py:CurrentBoundedExitOutputTests.test_missing_only_new_bounds_binding_blocks_even_if_others_current",
+        "tests/test_current_bounded_exit_output.py:CurrentBoundedExitOutputTests.test_new_bounds_record_pending_estimate_or_superseded_blocks",
+        "tests/test_current_bounded_exit_output.py:CurrentBoundedExitOutputTests.test_unresolved_tax_details_visible_with_current_evidence"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Authenticated original documents/review, live monitor and financial publication"
+    },
+    {
+      "requirement_or_variable": "history_replay_and_bounds_failures",
+      "source": {
+        "path": "docs/technical-implementation-T48-T50.md",
+        "line": 31,
+        "sha256": "083b421a816d72ceeddb783ca0913ba6d6b99304d71c9c57683527affcc85019"
+      },
+      "current_definition": "Preserve prior math, full same-time report replay and fail-closed budget/source forgeries",
+      "affected_modules": [
+        "M7",
+        "T42",
+        "T43",
+        "T46",
+        "T48",
+        "T49",
+        "T50"
+      ],
+      "validation_evidence": [
+        "tests/test_current_bounded_exit_output.py:CurrentBoundedExitOutputTests.test_expiry_omits_current_story_but_preserves_historical_math",
+        "tests/test_current_bounded_exit_output.py:CurrentBoundedExitOutputTests.test_full_report_replay_and_forgery",
+        "tests/test_bounded_exit_sale.py:BoundedExitSaleTests.test_full_report_replay_forgery_and_stale_spec_rejected",
+        "tests/test_bounded_sale_costs.py:BoundedSaleCostsTests.test_budget_fault_no_partial_total"
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "No new SQLite runtime bundle or original financial acceptance closure"
+    }
+  ],
+  "contract_or_tax_rule_verified": false,
+  "real_decisions_enabled": false
+}

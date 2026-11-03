@@ -1,0 +1,52 @@
+{
+  "cost_run_sha256": "5db85ed77b9331cd96f8102d35b8de5f54cd58c87365b4840999be3c3ef9c7c5",
+  "cost_source_sha256": "7e15ff1ce95d8b4dda0f77e61afb9a7815a172396a4b01002b7425b5e2032be9",
+  "profile": "SYNTHETIC-PER-ITEM-CLAMP-TO-EXPLICIT-MONEY-LIMITS-v1",
+  "rule_inventory_basis_ref": "SYNTHETIC-all-included-items-have-explicit-limit-status",
+  "rule_inventory_declared_complete": true,
+  "rules": [
+    {
+      "cost_id": "fixed",
+      "maximum": {
+        "as_of_date": "2027-07-01",
+        "currency": "USD",
+        "enabled": false,
+        "source_ref": "SYNTHETIC-explicit-fixed-maximum",
+        "value": null
+      },
+      "minimum": {
+        "as_of_date": "2027-07-01",
+        "currency": "USD",
+        "enabled": false,
+        "source_ref": "SYNTHETIC-explicit-fixed-minimum",
+        "value": null
+      },
+      "rule_basis_ref": "SYNTHETIC-per-item-money-clamp-not-contract-authentication"
+    },
+    {
+      "cost_id": "fee",
+      "maximum": {
+        "as_of_date": "2027-07-01",
+        "currency": "USD",
+        "enabled": true,
+        "source_ref": "SYNTHETIC-explicit-fee-maximum",
+        "value": {
+          "denominator": "1",
+          "numerator": "40"
+        }
+      },
+      "minimum": {
+        "as_of_date": "2027-07-01",
+        "currency": "USD",
+        "enabled": true,
+        "source_ref": "SYNTHETIC-explicit-fee-minimum",
+        "value": {
+          "denominator": "1",
+          "numerator": "25"
+        }
+      },
+      "rule_basis_ref": "SYNTHETIC-per-item-money-clamp-not-contract-authentication"
+    }
+  ],
+  "schema": "miniuw.synthetic-per-item-sale-cost-bounds.v1"
+}
