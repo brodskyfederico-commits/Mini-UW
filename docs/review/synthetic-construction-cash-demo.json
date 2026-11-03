@@ -1,0 +1,147 @@
+{
+  "purpose": "synthetic_staged_construction_interest_cash_recovery_and_evidence",
+  "components": [
+    "T68",
+    "T69",
+    "T70",
+    "T71"
+  ],
+  "loan_run_sha256s": [
+    "1b1818eef97774c4fd54292ca59b6748d2e274b127d04fd19375280a4ecae1ac"
+  ],
+  "cash_run_sha256": "6aece73dfa1c9c984e0dc0dcac821e02293d419374fe87b1ba8a8516c766657f",
+  "bundle_sha256": "2fcd3b12d50ed985346a4f6c5ed33311415c1ce7d6902065cccb87127642bd04",
+  "full_recovery": true,
+  "registry_source_sha256": "6637023f88ab800d504ed72fd5e1d0993b978f1fc076522416122ae19d295d9a",
+  "required_source_bindings": 4,
+  "evaluated_as_of_UTC": "2027-01-01T12:00:00Z",
+  "current_run_sha256": "57f3db5e631cca9bcd809c643c3cfaf9dba13bdccb3a23c52d0a397dc9034a12",
+  "current_report_sha256": "fb61105fad20568d40da94d272e051e5ac601232991c8bfb9cb258ce7fb27749",
+  "pending_report_sha256": "debdaf215dc8de9b68f777d36135f1ac96cc6fe5432477063c002ea6c0c33879",
+  "guide_sha256": "914abdc75e94dfd058351e062e4e7ed00dfc3a024b43fd09446a546f92f46923",
+  "expired_registry_json": "{\"context\":{\"deal_id\":\"SYNTHETIC-construction-draw-demo\",\"definition_set_revision\":\"SYNTHETIC-simple-interval-factors\",\"run_id\":\"SYNTHETIC-construction-draw-run\",\"scenario_id\":\"SYNTHETIC-draw-plan\"},\"evidence\":[{\"basis_ref\":\"SYNTHETIC-express-software-validity-not-professional-review\",\"evidence_id\":\"SYNTHETIC-staged-evidence-0\",\"issued_at\":\"2026-10-01T00:00:00Z\",\"requirement_id\":\"/transport/bundle\",\"review_status\":\"accepted_synthetic\",\"source_locator\":\"/transport/bundle\",\"source_sha256\":\"2fcd3b12d50ed985346a4f6c5ed33311415c1ce7d6902065cccb87127642bd04\",\"superseded_by_sha256\":null,\"valid_from\":\"2026-10-01T00:00:00Z\",\"valid_until\":\"2027-01-02T00:00:00Z\",\"value_status\":\"declared_synthetic\"},{\"basis_ref\":\"SYNTHETIC-express-software-validity-not-professional-review\",\"evidence_id\":\"SYNTHETIC-staged-evidence-1\",\"issued_at\":\"2026-10-01T00:00:00Z\",\"requirement_id\":\"/preopening/draft\",\"review_status\":\"accepted_synthetic\",\"source_locator\":\"/preopening/draft\",\"source_sha256\":\"5840fc93b1e0aaf3c27c9dd21730ca5d1a30de648560f7ab472d1a11c4c7b4c5\",\"superseded_by_sha256\":null,\"valid_from\":\"2026-10-01T00:00:00Z\",\"valid_until\":\"2027-01-02T00:00:00Z\",\"value_status\":\"declared_synthetic\"},{\"basis_ref\":\"SYNTHETIC-express-software-validity-not-professional-review\",\"evidence_id\":\"SYNTHETIC-staged-evidence-2\",\"issued_at\":\"2026-10-01T00:00:00Z\",\"requirement_id\":\"/preopening/binding\",\"review_status\":\"accepted_synthetic\",\"source_locator\":\"/preopening/binding\",\"source_sha256\":\"58f2f6702a345ce0459f997bd7e958785cd324c66db71442a9a2475ba6f8aa41\",\"superseded_by_sha256\":null,\"valid_from\":\"2026-10-01T00:00:00Z\",\"valid_until\":\"2027-01-02T00:00:00Z\",\"value_status\":\"declared_synthetic\"},{\"basis_ref\":\"SYNTHETIC-express-software-validity-not-professional-review\",\"evidence_id\":\"SYNTHETIC-staged-evidence-3\",\"issued_at\":\"2026-10-01T00:00:00Z\",\"requirement_id\":\"/construction/loans/0\",\"review_status\":\"accepted_synthetic\",\"source_locator\":\"/construction/loans/0\",\"source_sha256\":\"e0821c3453dd2911a1b761c1245504bffb9c980e8f52ead134e5938152adb64b\",\"superseded_by_sha256\":null,\"valid_from\":\"2026-10-01T00:00:00Z\",\"valid_until\":\"2027-01-01T12:00:00Z\",\"value_status\":\"declared_synthetic\"}],\"inventory_basis_ref\":\"SYNTHETIC-complete-staged-construction-transport-not-original-documents\",\"inventory_declared_complete\":true,\"requirements\":[{\"requirement_id\":\"/transport/bundle\",\"source_locator\":\"/transport/bundle\",\"source_sha256\":\"2fcd3b12d50ed985346a4f6c5ed33311415c1ce7d6902065cccb87127642bd04\"},{\"requirement_id\":\"/preopening/draft\",\"source_locator\":\"/preopening/draft\",\"source_sha256\":\"5840fc93b1e0aaf3c27c9dd21730ca5d1a30de648560f7ab472d1a11c4c7b4c5\"},{\"requirement_id\":\"/preopening/binding\",\"source_locator\":\"/preopening/binding\",\"source_sha256\":\"58f2f6702a345ce0459f997bd7e958785cd324c66db71442a9a2475ba6f8aa41\"},{\"requirement_id\":\"/construction/loans/0\",\"source_locator\":\"/construction/loans/0\",\"source_sha256\":\"e0821c3453dd2911a1b761c1245504bffb9c980e8f52ead134e5938152adb64b\"}],\"schema\":\"miniuw.synthetic-evidence-currency.v1\"}",
+  "staged_loan_totals": [
+    {
+      "fees_due": {
+        "denominator": "1",
+        "numerator": "5"
+      },
+      "gross_draws": {
+        "denominator": "1",
+        "numerator": "250"
+      },
+      "interest_due": {
+        "denominator": "1",
+        "numerator": "5"
+      },
+      "principal_repaid": {
+        "denominator": "1",
+        "numerator": "50"
+      },
+      "terminal_principal": {
+        "denominator": "1",
+        "numerator": "200"
+      }
+    }
+  ],
+  "preopening_totals": {
+    "acquisition_payment": {
+      "denominator": "1",
+      "numerator": "300"
+    },
+    "additional_equity_contribution": {
+      "denominator": "1",
+      "numerator": "400"
+    },
+    "construction_payment": {
+      "denominator": "1",
+      "numerator": "600"
+    },
+    "debt_fee_payment": {
+      "denominator": "1",
+      "numerator": "5"
+    },
+    "debt_interest_payment": {
+      "denominator": "1",
+      "numerator": "5"
+    },
+    "equity_distribution": {
+      "denominator": "1",
+      "numerator": "0"
+    },
+    "initial_equity_contribution": {
+      "denominator": "1",
+      "numerator": "1000"
+    },
+    "loan_draw": {
+      "denominator": "1",
+      "numerator": "250"
+    },
+    "loan_principal_repayment": {
+      "denominator": "1",
+      "numerator": "50"
+    },
+    "other_cash_payment": {
+      "denominator": "1",
+      "numerator": "0"
+    },
+    "other_cash_receipt": {
+      "denominator": "1",
+      "numerator": "0"
+    },
+    "reserve_deposit": {
+      "denominator": "1",
+      "numerator": "0"
+    },
+    "reserve_release": {
+      "denominator": "1",
+      "numerator": "0"
+    },
+    "soft_cost_payment": {
+      "denominator": "1",
+      "numerator": "100"
+    }
+  },
+  "terminal_balances": {
+    "date": "2027-01-01",
+    "free_cash": {
+      "denominator": "1",
+      "numerator": "590"
+    },
+    "loan_principal": {
+      "SYNTHETIC-staged-loan": {
+        "denominator": "1",
+        "numerator": "200"
+      }
+    },
+    "restricted_cash": {
+      "denominator": "1",
+      "numerator": "0"
+    }
+  },
+  "late_equity_case": {
+    "state": "blocked",
+    "cash_blockers": [
+      "2026-10-01:free_cash:negative_date_close_balance"
+    ],
+    "automatic_funding_generated": false,
+    "recovered_still_blocked": true
+  },
+  "exceeded_commitment_case": {
+    "state": "blocked",
+    "loan_blockers": {
+      "SYNTHETIC-staged-loan": [
+        "SYNTHETIC-construction-period-3:cumulative_gross_draws_exceed_nonrevolving_commitment"
+      ]
+    },
+    "cash_compiled": false,
+    "recovered_still_blocked": true
+  },
+  "expired_current_summary": null,
+  "expired_evidence_blockers": [
+    "/construction/loans/0:evidence_expired"
+  ],
+  "whole_project_return_connected": false,
+  "decision": "PENDING",
+  "production_authorized": false
+}

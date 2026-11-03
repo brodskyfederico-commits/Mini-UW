@@ -1,0 +1,342 @@
+{
+  "scope": "Synthetic nonrevolving supplied interval-factor construction debt and standalone preopening cash; original 398-row financial coverage and downstream financial gates unchanged",
+  "rows": [
+    {
+      "requirement_or_variable": "staged_interval_interest_draw_fee_and_principal",
+      "source": {
+        "path": "docs/technical-implementation-T68-T69.md",
+        "line": 3,
+        "sha256": "f3616d1f27f23425979c4b501e92c934ef851918d713c890cb341e3d62e14ba5"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+          "sha256_documento": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+          "ubicacion_exacta": "§3 Costs and TDC / Timing / Refinance and metrics",
+          "definicion_documentada": "Reglas históricas de financiación y flujo mensual; Manual pp.11/13/23/32/53 y C51:C53 precisan campos y pendientes.",
+          "matrix_id": "M5-03"
+        },
+        {
+          "documento": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+          "sha256_documento": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+          "ubicacion_exacta": "§3 Costs and TDC / Timing / Refinance and metrics",
+          "definicion_documentada": "Reglas históricas de financiación y flujo mensual; Manual pp.11/13/23/32/53 y C51:C53 precisan campos y pendientes.",
+          "matrix_id": "M5-04"
+        },
+        {
+          "documento": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+          "sha256_documento": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+          "ubicacion_exacta": "§3 Costs and TDC / Timing / Refinance and metrics",
+          "definicion_documentada": "Reglas históricas de financiación y flujo mensual; Manual pp.11/13/23/32/53 y C51:C53 precisan campos y pendientes.",
+          "matrix_id": "M5-06"
+        }
+      ],
+      "current_definition": "Start draw remains exposed over supplied interval factor, end interest before end principal repayment; gross draw fee at start, no annual/day-count conversion or capitalization",
+      "affected_modules": [
+        "M5",
+        "M7",
+        "M9"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_construction_draws.py",
+          "line": 29,
+          "test": "ConstructionDrawTests.test_hand_exposure_interest_fee_and_principal"
+        },
+        {
+          "path": "tests/test_construction_draws.py",
+          "line": 39,
+          "test": "ConstructionDrawTests.test_interest_is_before_end_repayment_and_never_capitalized"
+        },
+        {
+          "path": "tests/test_construction_draws.py",
+          "line": 47,
+          "test": "ConstructionDrawTests.test_annual_rate_or_wrong_interval_not_inferred"
+        },
+        {
+          "path": "tests/test_construction_draws.py",
+          "line": 50,
+          "test": "ConstructionDrawTests.test_missing_zero_negative_source_unit_and_currency_distinct"
+        },
+        {
+          "path": "tests/test_construction_draws.py",
+          "line": 72,
+          "test": "ConstructionDrawTests.test_gross_event_dates_zeroes_and_immutable_proof"
+        }
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Actual rate/day-count contracts, floating-rate derivation, capitalization/direct-bank counterpart profiles and professional adoption"
+    },
+    {
+      "requirement_or_variable": "nonrevolving_commitment_availability_and_maturity",
+      "source": {
+        "path": "docs/technical-implementation-T68-T69.md",
+        "line": 5,
+        "sha256": "f3616d1f27f23425979c4b501e92c934ef851918d713c890cb341e3d62e14ba5"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+          "sha256_documento": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+          "ubicacion_exacta": "§3 Costs and TDC / Timing / Refinance and metrics",
+          "definicion_documentada": "Reglas históricas de financiación y flujo mensual; Manual pp.11/13/23/32/53 y C51:C53 precisan campos y pendientes.",
+          "matrix_id": "M5-02"
+        },
+        {
+          "documento": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+          "sha256_documento": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+          "ubicacion_exacta": "§3 Costs and TDC / Timing / Refinance and metrics",
+          "definicion_documentada": "Reglas históricas de financiación y flujo mensual; Manual pp.11/13/23/32/53 y C51:C53 precisan campos y pendientes.",
+          "matrix_id": "M5-09"
+        }
+      ],
+      "current_definition": "Separately supplied commitment and available draw; bound cumulative gross draws without recycling repaid capacity; preserve maturity and over-repayment blockers, no automatic funding or extension",
+      "affected_modules": [
+        "M5",
+        "M7",
+        "M9"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_construction_draws.py",
+          "line": 33,
+          "test": "ConstructionDrawTests.test_gross_nonrevolving_commitment_not_restored_by_repayment"
+        },
+        {
+          "path": "tests/test_construction_draws.py",
+          "line": 36,
+          "test": "ConstructionDrawTests.test_available_new_draw_is_separate_required_limit"
+        },
+        {
+          "path": "tests/test_construction_draws.py",
+          "line": 41,
+          "test": "ConstructionDrawTests.test_maturity_is_not_extended_or_balloon_silently_ignored"
+        },
+        {
+          "path": "tests/test_construction_draws.py",
+          "line": 45,
+          "test": "ConstructionDrawTests.test_excess_repayment_stops_invalid_principal_path"
+        },
+        {
+          "path": "tests/test_construction_draws.py",
+          "line": 56,
+          "test": "ConstructionDrawTests.test_all_basis_inventory_and_exact_calendar_required"
+        },
+        {
+          "path": "tests/test_construction_draws.py",
+          "line": 67,
+          "test": "ConstructionDrawTests.test_real_denominator_growth_budget_rejects_partial_schedule"
+        }
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Authentic conditions precedent, credit approval/availability, legal term interpretation and financial solver"
+    },
+    {
+      "requirement_or_variable": "staged_cash_binding_and_preopening_conservation",
+      "source": {
+        "path": "docs/technical-implementation-T68-T69.md",
+        "line": 9,
+        "sha256": "f3616d1f27f23425979c4b501e92c934ef851918d713c890cb341e3d62e14ba5"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 cadena financiera y diferencias; §7",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "CASH-01"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 costos, financiación, operaciones y salida",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "CASH-02"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 amortización/vencimiento y repago/distribución",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "DEBT-01"
+        },
+        {
+          "documento": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+          "sha256_documento": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+          "ubicacion_exacta": "§3 Costs and TDC / Timing / Refinance and metrics",
+          "definicion_documentada": "Reglas históricas de financiación y flujo mensual; Manual pp.11/13/23/32/53 y C51:C53 precisan campos y pendientes.",
+          "matrix_id": "M5-05"
+        }
+      ],
+      "current_definition": "Replay each staged loan; exact all-loan and all-debt-event inventory fills only empty compatible slots; run T57 without changing equity/costs/terminal claims; keep deficits and separate loan balances",
+      "affected_modules": [
+        "M5",
+        "M7",
+        "M9"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_construction_draws.py",
+          "line": 80,
+          "test": "ConstructionCashTests.test_cash_interest_fee_and_principal_hand_reconciliation"
+        },
+        {
+          "path": "tests/test_construction_draws.py",
+          "line": 84,
+          "test": "ConstructionCashTests.test_deficit_not_repaired_by_later_funding_or_calculated_interest"
+        },
+        {
+          "path": "tests/test_construction_draws.py",
+          "line": 87,
+          "test": "ConstructionCashTests.test_multiple_loans_complete_inventory_and_separate_balances"
+        },
+        {
+          "path": "tests/test_construction_draws.py",
+          "line": 93,
+          "test": "ConstructionCashTests.test_source_inventory_target_inventory_and_basis_are_complete"
+        },
+        {
+          "path": "tests/test_construction_draws.py",
+          "line": 96,
+          "test": "ConstructionCashTests.test_prefilled_zero_wrong_metadata_and_date_not_overridden"
+        },
+        {
+          "path": "tests/test_construction_draws.py",
+          "line": 103,
+          "test": "ConstructionCashTests.test_cash_claim_and_other_missing_input_not_silently_replaced"
+        },
+        {
+          "path": "tests/test_construction_draws.py",
+          "line": 106,
+          "test": "ConstructionCashTests.test_loan_plan_context_time_and_limits_preserved"
+        },
+        {
+          "path": "tests/test_construction_draws.py",
+          "line": 109,
+          "test": "ConstructionCashTests.test_rehashed_loan_forgery_rejected"
+        },
+        {
+          "path": "tests/test_construction_draws.py",
+          "line": 112,
+          "test": "ConstructionCashTests.test_exact_source_pointers_and_original_null_inputs_preserved"
+        }
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Staged-to-operating debt contract transition, noncash assets/accruals, full TDC/financing cycles and final investment return"
+    },
+    {
+      "requirement_or_variable": "construction_bundle_exact_recovery",
+      "source": {
+        "path": "docs/technical-implementation-T70-T71.md",
+        "line": 3,
+        "sha256": "dbd81ab446562eb0eea9fb6147e3a6ab2c21c4c3909d2553b6465791436c3c59"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§§3, 5 y 7",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "DAT-01"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 amortización/vencimiento y repago/distribución",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "DEBT-01"
+        }
+      ],
+      "current_definition": "Strict bounded compatible-version source transport and full T68/T69/T57 reconstruction/result comparison; blocked credit/cash histories remain blocked",
+      "affected_modules": [
+        "M5",
+        "M7",
+        "M9"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_construction_draws.py",
+          "line": 124,
+          "test": "ConstructionRecoveryTests.test_complete_source_recovery_and_deterministic_export"
+        },
+        {
+          "path": "tests/test_construction_draws.py",
+          "line": 126,
+          "test": "ConstructionRecoveryTests.test_blocked_cash_and_commitment_roundtrip_stay_blocked"
+        },
+        {
+          "path": "tests/test_construction_draws.py",
+          "line": 129,
+          "test": "ConstructionRecoveryTests.test_rehashed_result_and_changed_source_rejected"
+        },
+        {
+          "path": "tests/test_construction_draws.py",
+          "line": 134,
+          "test": "ConstructionRecoveryTests.test_wrong_version_missing_or_duplicate_json_rejected"
+        }
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Runtime DB/VPS recovery, authentic bank/payment/review evidence and financial acceptance"
+    },
+    {
+      "requirement_or_variable": "current_staged_construction_review",
+      "source": {
+        "path": "docs/technical-implementation-T70-T71.md",
+        "line": 5,
+        "sha256": "dbd81ab446562eb0eea9fb6147e3a6ab2c21c4c3909d2553b6465791436c3c59"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§§3, 5 y 7",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "DAT-01"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 costos, financiación, operaciones y salida",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "CASH-02"
+        }
+      ],
+      "current_definition": "Same explicit UTC complete-source evidence gate before numeric staged-loan/preopening review; expiry or calculation failure withdraws current values but retains history and no final return",
+      "affected_modules": [
+        "M5",
+        "M7",
+        "M9"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_construction_draws.py",
+          "line": 149,
+          "test": "CurrentConstructionTests.test_current_review_has_proposed_costs_and_no_final_return"
+        },
+        {
+          "path": "tests/test_construction_draws.py",
+          "line": 151,
+          "test": "CurrentConstructionTests.test_any_expired_source_withdraws_current_numbers"
+        },
+        {
+          "path": "tests/test_construction_draws.py",
+          "line": 155,
+          "test": "CurrentConstructionTests.test_current_evidence_cannot_repair_deficit_or_credit_limit"
+        },
+        {
+          "path": "tests/test_construction_draws.py",
+          "line": 159,
+          "test": "CurrentConstructionTests.test_missing_pending_estimate_context_and_rehashed_alias_block"
+        },
+        {
+          "path": "tests/test_construction_draws.py",
+          "line": 166,
+          "test": "CurrentConstructionTests.test_time_and_rehashed_registry_proof_rejected"
+        }
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Authentic authority, live monitor/TTL, external decision PDF, publication, personal/all-project returns and production"
+    }
+  ],
+  "real_decisions_enabled": false
+}

@@ -1,0 +1,87 @@
+{
+  "schema": "miniuw.synthetic-evidence-currency.v1",
+  "context": {
+    "deal_id": "SYNTHETIC-construction-draw-demo",
+    "definition_set_revision": "SYNTHETIC-simple-interval-factors",
+    "run_id": "SYNTHETIC-construction-draw-run",
+    "scenario_id": "SYNTHETIC-draw-plan"
+  },
+  "inventory_declared_complete": true,
+  "inventory_basis_ref": "SYNTHETIC-complete-staged-construction-transport-not-original-documents",
+  "requirements": [
+    {
+      "requirement_id": "/transport/bundle",
+      "source_sha256": "2fcd3b12d50ed985346a4f6c5ed33311415c1ce7d6902065cccb87127642bd04",
+      "source_locator": "/transport/bundle"
+    },
+    {
+      "requirement_id": "/preopening/draft",
+      "source_sha256": "5840fc93b1e0aaf3c27c9dd21730ca5d1a30de648560f7ab472d1a11c4c7b4c5",
+      "source_locator": "/preopening/draft"
+    },
+    {
+      "requirement_id": "/preopening/binding",
+      "source_sha256": "58f2f6702a345ce0459f997bd7e958785cd324c66db71442a9a2475ba6f8aa41",
+      "source_locator": "/preopening/binding"
+    },
+    {
+      "requirement_id": "/construction/loans/0",
+      "source_sha256": "e0821c3453dd2911a1b761c1245504bffb9c980e8f52ead134e5938152adb64b",
+      "source_locator": "/construction/loans/0"
+    }
+  ],
+  "evidence": [
+    {
+      "evidence_id": "SYNTHETIC-staged-evidence-0",
+      "requirement_id": "/transport/bundle",
+      "source_sha256": "2fcd3b12d50ed985346a4f6c5ed33311415c1ce7d6902065cccb87127642bd04",
+      "source_locator": "/transport/bundle",
+      "issued_at": "2026-10-01T00:00:00Z",
+      "valid_from": "2026-10-01T00:00:00Z",
+      "valid_until": "2027-01-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-express-software-validity-not-professional-review"
+    },
+    {
+      "evidence_id": "SYNTHETIC-staged-evidence-1",
+      "requirement_id": "/preopening/draft",
+      "source_sha256": "5840fc93b1e0aaf3c27c9dd21730ca5d1a30de648560f7ab472d1a11c4c7b4c5",
+      "source_locator": "/preopening/draft",
+      "issued_at": "2026-10-01T00:00:00Z",
+      "valid_from": "2026-10-01T00:00:00Z",
+      "valid_until": "2027-01-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-express-software-validity-not-professional-review"
+    },
+    {
+      "evidence_id": "SYNTHETIC-staged-evidence-2",
+      "requirement_id": "/preopening/binding",
+      "source_sha256": "58f2f6702a345ce0459f997bd7e958785cd324c66db71442a9a2475ba6f8aa41",
+      "source_locator": "/preopening/binding",
+      "issued_at": "2026-10-01T00:00:00Z",
+      "valid_from": "2026-10-01T00:00:00Z",
+      "valid_until": "2027-01-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-express-software-validity-not-professional-review"
+    },
+    {
+      "evidence_id": "SYNTHETIC-staged-evidence-3",
+      "requirement_id": "/construction/loans/0",
+      "source_sha256": "e0821c3453dd2911a1b761c1245504bffb9c980e8f52ead134e5938152adb64b",
+      "source_locator": "/construction/loans/0",
+      "issued_at": "2026-10-01T00:00:00Z",
+      "valid_from": "2026-10-01T00:00:00Z",
+      "valid_until": "2027-01-02T00:00:00Z",
+      "review_status": "accepted_synthetic",
+      "value_status": "declared_synthetic",
+      "superseded_by_sha256": null,
+      "basis_ref": "SYNTHETIC-express-software-validity-not-professional-review"
+    }
+  ]
+}

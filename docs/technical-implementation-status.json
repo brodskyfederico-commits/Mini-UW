@@ -1,7 +1,7 @@
 {
   "phase": "post-I01 synthetic technical implementation",
   "user_authorized": true,
-  "component": "T67",
+  "component": "T71",
   "status": "local_implementation_verified_pending_remote_receipt",
   "implemented": [
     "fresh raw-claim drafts from unchanged 55-input/10-criterion template",
@@ -104,9 +104,13 @@
     "preopening single-full-draw loan/cash carry into a no-refinance holding path without generating maturity extension",
     "complete gross purchase-to-sale investor ledger for no-refinance profile, retaining zero/additional contributions and omitting an opening cash seed",
     "exact-source portable no-refinance bundle with full compatible producer reconstruction and blocked-case recovery",
-    "explicit-time full-source no-refinance current output and internal view; expired sources withdraw current figures and preserve history"
+    "explicit-time full-source no-refinance current output and internal view; expired sources withdraw current figures and preserve history",
+    "explicit nonrevolving staged construction draw, start-fee and simple supplied interval-factor interest schedule with separate commitment/availability/gross draw/principal limits",
+    "complete staged loan event binding into empty T57 preopening debt cash slots without overriding equity, costs or closing claims",
+    "exact-source construction cash portable bundle and full compatible producer replay, preserving blocked credit/cash cases",
+    "explicit-time complete staged construction source evidence gate and internal current/pending review without final investor-return claims"
   ],
-  "unit_tests": 1081,
+  "unit_tests": 1111,
   "plan_packages_partially_addressed": [
     "IMP-01",
     "IMP-06",
@@ -124,7 +128,7 @@
   "next_independent_work": [
     "source-specific insurance/tax/lease-up refinements within rental scope",
     "independently supplied revised operating/exit timing cases without deriving scenario shocks",
-    "explicit noncash asset/accrual opening carry and multi-draw construction funding profiles"
+    "noncash asset/accrual opening carry and explicit staged-construction-to-operating debt transition"
   ],
   "I01_snapshot_preserved": true,
   "components_implemented": [
@@ -194,7 +198,11 @@
     "T64",
     "T65",
     "T66",
-    "T67"
+    "T67",
+    "T68",
+    "T69",
+    "T70",
+    "T71"
   ],
   "tests_by_component": {
     "T01": 31,
@@ -263,7 +271,11 @@
     "T64": 6,
     "T65": 8,
     "T66": 5,
-    "T67": 5
+    "T67": 5,
+    "T68": 12,
+    "T69": 9,
+    "T70": 4,
+    "T71": 5
   },
   "not_yet_implemented": [
     "complete financial graph and its designed cycles",
@@ -325,7 +337,7 @@
   "operating_cash_to_return_assembly_implemented": true,
   "durable_operating_cash_bundles_implemented": true,
   "durable_operating_return_bundles_implemented": true,
-  "investor_cash_producer_connection_scope": "explicit zero-opening preoperating cash and single-full-draw scheduled debt linked to separately supplied capacity-checked refinance/sale or no-refinance hold/sale paths; no financial strategy ranking, verified asset/accrual/TDC completeness, actual funding or personal allocation",
+  "investor_cash_producer_connection_scope": "declared single-full-draw purchase-to-refinance/sale or no-refinance hold/sale return paths; staged simple-interval construction debt connects only to a standalone preopening cash scope, with downstream debt transition pending; no verified actual funding/assets/accrual/TDC completeness or personal allocation",
   "synthetic_operating_holding_continuity_implemented": true,
   "holding_cash_to_return_assembly_implemented": true,
   "durable_holding_cash_bundles_implemented": true,
@@ -392,5 +404,11 @@
   "synthetic_no_refinance_opening_debt_carry_implemented": true,
   "synthetic_no_refinance_lifecycle_returns_implemented": true,
   "synthetic_no_refinance_portable_bundle_implemented": true,
-  "opt_in_current_no_refinance_review_implemented": true
+  "opt_in_current_no_refinance_review_implemented": true,
+  "construction_multi_draw_simple_interval_profile_implemented": true,
+  "construction_staged_interest_to_preopening_cash_implemented": true,
+  "construction_portable_recovery_implemented": true,
+  "opt_in_current_construction_cash_review_implemented": true,
+  "construction_capitalized_interest_implemented": false,
+  "construction_to_operating_debt_transition_connected": false
 }

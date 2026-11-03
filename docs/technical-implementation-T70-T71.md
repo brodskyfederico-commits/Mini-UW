@@ -1,0 +1,7 @@
+# T70 y T71 — recuperación y vigencia de deuda de obra por etapas
+
+T70 exporta únicamente evidencia sintética reproducida: fuentes de todos los préstamos por etapas, borrador de caja previa, vínculo y resultado íntegro T69. El JSON contiene bytes UTF-8 exactos, versiones compatibles y presupuestos de tamaño/inventario; no ejecuta instrucciones, objetos serializados ejecutables ni rutas externas. Recuperar reconstruye T68 y T69/T57 y compara el resultado completo. Cifras/fuentes/versiones manipuladas u omitidas se rechazan; una caja bloqueada sigue bloqueada.
+
+T71 reproduce ese paquete y T46 al mismo instante UTC explícito, ligando por separado cada fuente de préstamo, borrador, vínculo y paquete. Fechas, revisión, estado y base se suministran como datos de prueba; no se infiere TTL, autoridad o aprobación. Vencimiento, omisión, cambio de hash/locador, estimación, revisión pendiente o contexto diferente retira las cifras actuales y conserva la historia. Evidencia vigente no repara compromiso/disponibilidad insuficientes, deuda vencida o déficit de caja.
+
+La vista Markdown interna muestra draw, exposición, interés, fee, repago y saldo por período y su efecto sobre caja/aportes declarados. Son pagos propuestos, no acreditados. No se muestran EM/IRR o retorno final porque la transición contractual a deuda operativa y los retornos de toda la inversión aún no están conectados a este perfil multidesembolso. No hay PDF externo, publicación financiera, reloj/monitor automático, decisiones reales ni despliegue.
