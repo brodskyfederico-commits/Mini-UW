@@ -9,7 +9,7 @@ permissions:
 jobs:
   reference-check:
     runs-on: ubuntu-24.04
-    timeout-minutes: 25
+    timeout-minutes: 35
     env:
       PYTHONDONTWRITEBYTECODE: '1'
     steps:
@@ -43,6 +43,8 @@ jobs:
         run: python tools/check_IRR_output_T100.py
       - name: Verify IRR interval conditions and retained pending bands
         run: python tools/check_IRR_interval_T101.py
+      - name: Verify two-source IRR revision review and blocked candidate recovery
+        run: python tools/check_IRR_revision_review_T102.py
       - name: Verify one-page Dot and bot role summary
         run: python tools/check_dots_bots_onepage_ROLES01.py
       - name: Test synthetic technical foundation

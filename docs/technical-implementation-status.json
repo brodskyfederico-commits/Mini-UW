@@ -1,7 +1,7 @@
 {
   "phase": "post-I01 synthetic technical implementation",
   "user_authorized": true,
-  "component": "T101",
+  "component": "T102",
   "status": "local_implementation_verified_pending_remote_receipt",
   "implemented": [
     "fresh raw-claim drafts from unchanged 55-input/10-criterion template",
@@ -132,9 +132,12 @@
     "portable scheduled-expense full-case replay and eight checked local artifacts including one-page current-or-pending PDF and schedule review",
     "explicit successive synthetic insurance policies, supplied operating-period intersection fractions and one-to-many policy-installment aggregation checked against unchanged declared T90 summaries",
     "complete scheduled Mini-UW parent plus every insurance renewal book gated together by 43 exact full-source bindings at explicit UTC",
-    "portable renewal-case replay and current-or-pending one-page PDF with eight strictly inventoried local artifacts"
+    "portable renewal-case replay and current-or-pending one-page PDF with eight strictly inventoried local artifacts",
+    "source-first two-version IRR-enabled review with complete decoded source and criterion diffs",
+    "exact compatible gross cash, EM, dated-event and explicit-normalization revision deltas",
+    "separate reference/candidate snapshots, candidate-only PDF and portable blocked-candidate recovery without adoption"
   ],
-  "unit_tests": 1439,
+  "unit_tests": 1455,
   "plan_packages_partially_addressed": [
     "IMP-01",
     "IMP-06",
@@ -256,7 +259,8 @@
     "T98",
     "T99",
     "T100",
-    "T101"
+    "T101",
+    "T102"
   ],
   "tests_by_component": {
     "T01": 31,
@@ -568,5 +572,10 @@
   "synthetic_single_IRR_enclosure_condition_implemented": true,
   "synthetic_IRR_interval_output_transport_implemented": true,
   "IRR_interval_condition_is_full_deal_result": false,
-  "IRR_midpoint_selection_implemented": false
+  "IRR_midpoint_selection_implemented": false,
+  "synthetic_IRR_revision_review_implemented": true,
+  "synthetic_IRR_review_seven_artifact_packet_implemented": true,
+  "synthetic_IRR_review_portable_recovery_implemented": true,
+  "automatic_revision_adoption_enabled": false,
+  "reference_fallback_for_blocked_candidate_enabled": false
 }

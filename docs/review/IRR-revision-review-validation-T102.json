@@ -1,0 +1,143 @@
+{
+  "component": "T102",
+  "status": "passed_source_first_revision_review_and_independent_exact_deltas",
+  "files_verified": 7,
+  "page_count": 1,
+  "fixture_pairs_checked": 3,
+  "conditions": [
+    {
+      "label": "criteria",
+      "reference_sha256": "20d0b405d952f1cea32485e68fb5d5bf32886161bd7fca7b2d411af0c55e7226",
+      "candidate_sha256": "730eed4e6068bd2fac074ecca1cc8f74bb60ffde60feaeca943bfc20bc8dc811",
+      "spec_sha256": "a447324a2a08b7981e16bd00b8df54d515acb9b75a23dbee46abff04d8e93541",
+      "run_sha256": "b766cfb1768731444d0fa518fb0cbcf085a3bc47007ec16fde41e506d0f6c9d7",
+      "state": "comparable_synthetic_candidate_review",
+      "reference_condition": "BAND",
+      "candidate_condition": "PASS_CONDITION",
+      "decoded_source_changes": 257,
+      "criterion_source_changes": 3,
+      "financial_story_changes": 0,
+      "projection_deltas": {
+        "equity_multiple": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "gross_contributions": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "gross_distributions": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "net_cash_profit": {
+          "denominator": "1",
+          "numerator": "0"
+        }
+      },
+      "comparison_blockers": []
+    },
+    {
+      "label": "renewal",
+      "reference_sha256": "baa78b2ebc84a7ec5a204d9c10a4ba0f0777fd84c1b99edc40a874bb86b02306",
+      "candidate_sha256": "0a9f34bed008925c030c41869d596f4e855f621d7bd31420f6b9c8d784c74f44",
+      "spec_sha256": "203792fe2df8f55694618b0a59cb0248838bbce9faadcc1955bb1009ca5bc7b6",
+      "run_sha256": "86d6d40788671b2a2347f7daf588cb3219f674d7d1629cb32a67574cd4f39d29",
+      "state": "comparable_synthetic_candidate_review",
+      "reference_condition": "PENDING",
+      "candidate_condition": "PENDING",
+      "decoded_source_changes": 358,
+      "criterion_source_changes": 0,
+      "financial_story_changes": 35,
+      "projection_deltas": {
+        "equity_multiple": {
+          "denominator": "700",
+          "numerator": "-1"
+        },
+        "gross_contributions": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "gross_distributions": {
+          "denominator": "1",
+          "numerator": "-2"
+        },
+        "net_cash_profit": {
+          "denominator": "1",
+          "numerator": "-2"
+        }
+      },
+      "comparison_blockers": []
+    },
+    {
+      "label": "expired",
+      "reference_sha256": "baa78b2ebc84a7ec5a204d9c10a4ba0f0777fd84c1b99edc40a874bb86b02306",
+      "candidate_sha256": "7aa748c5a5b3a6cb6742798ca44c9cb51af49f25babe346096fbcaccda2015f6",
+      "spec_sha256": "5be36d251b89581e56ebc8e56f53b706476a0d3255cc1bed0e0a08d854a45e52",
+      "run_sha256": "730d5843a9613e4d62641ed6b6005b599ab5a089869d0ecae2cf2f00b4462cef",
+      "state": "PENDING",
+      "reference_condition": "PENDING",
+      "candidate_condition": "PENDING",
+      "decoded_source_changes": 359,
+      "criterion_source_changes": 0,
+      "financial_story_changes": 1,
+      "projection_deltas": null,
+      "comparison_blockers": [
+        "candidate_current_projection_unavailable"
+      ]
+    }
+  ],
+  "run_sha256": "b766cfb1768731444d0fa518fb0cbcf085a3bc47007ec16fde41e506d0f6c9d7",
+  "pdf_sha256": "791767f821bb022b927541e24281284628c7713b83bfc9e8190f0b63f7761c45",
+  "manifest_sha256": "a4849be9d77ca89747e6cd650d524b18539a78bb133d7570528f56fd9b2b3e12",
+  "source_versions": [
+    {
+      "path": "src/miniuw_foundation/irr_revision_review.py",
+      "sha256": "049c7e89830f41f868e8e27daf4af0ff6f4e1f4ec6393fea3858caf196ac7843"
+    },
+    {
+      "path": "src/miniuw_foundation/irr_review_artifacts.py",
+      "sha256": "31b3fe387d1776010a7515693618a63e863dcf86b96de7b487894b43ce064545"
+    },
+    {
+      "path": "src/miniuw_foundation/v1_revision.py",
+      "sha256": "7aade287213b6a0ea318134901c43788845127ff9fc8251230fb72e406a6cb47"
+    },
+    {
+      "path": "src/miniuw_foundation/irr_interval_output.py",
+      "sha256": "c3f9dfb600ebe749dac6ef16d97afbff1ddb59bc59bb67bd18a36bb91d4945a0"
+    },
+    {
+      "path": "src/miniuw_foundation/irr_interval_artifacts.py",
+      "sha256": "72968aa9fa2220dae0e5e7b4b281415285b6e3494dce8545ebbbb34fa4eef993"
+    },
+    {
+      "path": "tools/irr_review_miniuw_v1.py",
+      "sha256": "9b01905a43684a9754e10904fad7da8f3c1868e1d3b6c875fb84707574430ad2"
+    },
+    {
+      "path": "tools/check_IRR_revision_review_T102.py",
+      "sha256": "f11242c6b76b0c5539fe73afca7beec5966f1c92e5602c2cc71fb4e97e451743"
+    },
+    {
+      "path": "docs/technical-implementation-T102.md",
+      "sha256": "a5b7cf19aa0b47dcf74268ecb48f1e8c4f396e167be4c60bf4697ffa6fbc19ac"
+    },
+    {
+      "path": "docs/review/revision-fixture-generation-T102.json",
+      "sha256": "bfdcf65729c0ae3af82ae581d007b405f249aff8bf3e8a36e0e5a7bbf226859a"
+    }
+  ],
+  "full_source_changes_preserved": true,
+  "criterion_only_cash_invariant": true,
+  "independent_renewal_deltas_verified": true,
+  "expired_candidate_portable_recovery_verified": true,
+  "reference_fallback_used": false,
+  "candidate_adopted": false,
+  "active_revision_changed": false,
+  "IRR_point_selected": false,
+  "financial_publication_authorized": false,
+  "deployment_enabled": false,
+  "real_decisions_enabled": false,
+  "decision": "PENDING"
+}

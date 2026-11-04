@@ -1,0 +1,19 @@
+# T102: revisión candidata reproducible de dos versiones
+
+T102 compara dos fuentes sintéticas completas a través de T101. Reproduce ambas, conserva sus resultados separados y prepara evidencia para revisión. No genera una propuesta, no elige una alternativa ganadora, no modifica el original ni promueve el candidato. El cambio de una condición IRR puede pasar de BAND a PASS_CONDITION en su ensayo y aun así dejar ambos deals PENDING.
+
+La especificación reutiliza el contrato T88: ID sintético, hashes exactos de ambas fuentes y base explícita de comparación. Para calcular diferencias numéricas exige el mismo caso, perfil, deal/escenario/conjunto de definiciones, instante de evaluación e inventario de escenarios; revisión candidata posterior, moneda y ventana compatibles e inventario fechado/clasificación de movimientos idéntico. No sincroniza fechas, monedas o fuentes. Incompatibilidades y faltantes conservan PENDING y retiran las diferencias numéricas.
+
+Se distinguen bytes de fuente y cambios lógicos. Se decodifican sólo los campos JSON UTF8 conocidos de los envoltorios T94/T91, con el marcador ::json en sus localizadores; el resto se conserva literalmente. El comparador estructural T88 enumera cambios exactos, preserva racionales atómicos y distingue ausencia, null y cero. Incluye fuentes, evidencia, revisiones y criterios: no presenta cambios de metadatos como si fueran únicamente una variable económica. El límite de4.096 cambios y el de anidamiento rechazan una salida excesiva, sin truncarla.
+
+La revisión muestra por separado los cambios de criterio, el resultado completo de la historia financiera y los resúmenes de cada snapshot. Diferencias de aportes/cobros/neto/EM, por evento y normalización se calculan sólo cuando sus bases son comparables, en dirección candidato menos referencia y con racionales exactos. No se resta una TIR elegida: se conservan todas las raíces de ambos lados, con punto y diferencia de tasa nulos. No se afirma causalidad exclusiva entre una variable y un resultado.
+
+Las restas reutilizan el límite aritmético exacto existente. Un exceso deja las diferencias pendientes y conserva los resultados de cada lado, sin introducir una tolerancia financiera.
+
+Cada lado mantiene su instante y estado propios. Si el candidato tiene fuentes vencidas, su historia actual y sus diferencias numéricas quedan pendientes; la referencia conservada es evidencia de otro snapshot, nunca sustituto de la salida candidata. El PDF del paquete corresponde exclusivamente al candidato, producido sin cambios por T101 y con decisión PENDING. No se publica un segundo PDF de decisión; la revisión textual/JSON es evidencia interna.
+
+El paquete local contiene siete archivos: especificación, evidencia portable de referencia y candidata, resultado de revisión, texto interno, PDF candidato y manifiesto. La recuperación reconstruye primero ambos T101 y luego la comparación completa; no acepta un resultado o PDF sólo por rehashear sus bytes. Versiones, definiciones, inventario regular exacto y límites de bytes. Reintento idéntico, rechazo de sobrescritura distinta y limpieza de temporal propio; uso local de un escritor, no publicación concurrente productiva.
+
+Tres revisiones hipotéticas prueban: cambio explícito del criterio IRR con idéntica caja/retornos, renovación de seguro12 con caja reproducida y candidato con evidencia vencida. Son casos de software, no parámetros propuestos para invertir. Se preservan las fuentes previas; los vínculos de las revisiones nuevas se declaran fuera del runtime, sin renovación automática. La revisión posterior es un contador de entrada, no aprobación profesional ni una nueva versión activa.
+
+Los resultados del modelo financiero, las decisiones reales, las54 correspondencias semánticas originales y las demás reglas pendientes conservan sus puertas. Sin contacto con Lorena, despliegue, selección automática, aprobación o decisiones reales.

@@ -1,0 +1,14 @@
+MINI-UW | REVISION CANDIDATA SINTETICA
+DECISION PENDIENTE | Candidato no adoptado; sin despliegue ni decisiones reales.
+Referencia: revision 42 | UTC 2027-07-01T12:00:00Z | 20d0b405d952f1cea32485e68fb5d5bf32886161bd7fca7b2d411af0c55e7226
+Candidato: revision 50 | UTC 2027-07-01T12:00:00Z | 730eed4e6068bd2fac074ecca1cc8f74bb60ffde60feaeca943bfc20bc8dc811
+Ensayo IRR: BAND -> PASS_CONDITION
+Diferencias candidato menos referencia (racionales exactos): {"equity_multiple":{"denominator":"1","numerator":"0"},"gross_contributions":{"denominator":"1","numerator":"0"},"gross_distributions":{"denominator":"1","numerator":"0"},"net_cash_profit":{"denominator":"1","numerator":"0"}}
+Bloqueos de comparacion: []
+Cambios logicos de fuente: 257; cambios de criterio: 3
+Cambios en historia financiera: 0
+Las fuentes/evidencia/revisiones tambien pueden cambiar. No se afirma causalidad exclusiva.
+Si el candidato esta bloqueado, la referencia es otro snapshot y no lo sustituye.
+Cambios de criterio: [{"after":{"denominator":"4","numerator":"-1"},"after_exists":true,"before":{"denominator":"5","numerator":"-1"},"before_exists":true,"pointer":"/scheduled_case_utf8::json/base_case_utf8::json/criteria/8/fail_condition/threshold"},{"after":{"denominator":"5","numerator":"-1"},"after_exists":true,"before":{"denominator":"1","numerator":"0"},"before_exists":true,"pointer":"/scheduled_case_utf8::json/base_case_utf8::json/criteria/8/pass_condition/threshold"},{"after":"SYNTHETIC-T101-explicit-pass-condition-only-not-Lorena-or-policy","after_exists":true,"before":"SYNTHETIC-T101-explicit-band-condition-only-not-Lorena-or-policy","before_exists":true,"pointer":"/scheduled_case_utf8::json/base_case_utf8::json/criteria/8/source_ref"}]
+Fuentes, cambios completos y pruebas reproducibles incluidos en los JSON del paquete.
+El PDF es exclusivamente del candidato. No hay aprobacion o version activa nueva.

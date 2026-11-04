@@ -1,10 +1,10 @@
 {
-  "scope": "I01 preserved design, D02–D07 design/structure documentation and T01–T101 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D07 design/structure documentation and T01–T102 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 2257,
-      "sha256": "c2d0a57fb79b140726bf216dea29c860e53035f93fb54b85fdc025d291e376c8"
+      "bytes": 2400,
+      "sha256": "37b2da167bd8eae9036404789538a7b5527bbb7affea2511f1976529edee750c"
     },
     {
       "path": ".gitignore",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 38280,
-      "sha256": "e82618d2336321869ef87404ecb4497c1697a060d875ad8e24c16880f4332021"
+      "bytes": 39012,
+      "sha256": "946666dbf7e048b55f691242c8673211b89243d183c2b97aec4e53c6e3ce86c8"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 167662,
-      "sha256": "3f97a6704bdfb9c85dee198e767f35d5ee47500c6dab08aa6f38361841c0f638"
+      "bytes": 170686,
+      "sha256": "b932e1bcf350faee19ffd67ccb6e50997d5f4b4047b3c49d22b4e19faad67c5b"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -40,6 +40,11 @@
       "path": "docs/IRR-output-v1-runbook.md",
       "bytes": 4126,
       "sha256": "eb41d09e7071a897be9866785cfd931c45972df5c3b0942b48ab2b5ea7d54c4e"
+    },
+    {
+      "path": "docs/IRR-revision-review-runbook.md",
+      "bytes": 3055,
+      "sha256": "3735312a06f473c7312c8fe128725fb3da947d0d50db836a7d432964a4bf443c"
     },
     {
       "path": "docs/MiniUW_v1_Consolidado.md",
@@ -522,6 +527,11 @@
       "sha256": "b6b7b2a0cd79eef0acaed1d1e19b1bd5fe5aa9ae272521e92e4bf5cf4c873cda"
     },
     {
+      "path": "docs/review/IRR-revision-review-validation-T102.json",
+      "bytes": 5318,
+      "sha256": "389024446216a6ae29e110a6362952b2a7c4d7a848b615d94e5720e076eb7528"
+    },
+    {
       "path": "docs/review/Intereses_Obra_y_Caja_T68_T71.md",
       "bytes": 2776,
       "sha256": "914abdc75e94dfd058351e062e4e7ed00dfc3a024b43fd09446a546f92f46923"
@@ -817,6 +827,41 @@
       "sha256": "b0182e2f865cc265f4c843d71dceb3b3a434ace467f5593a9d6d85b74d2b854c"
     },
     {
+      "path": "docs/review/miniuw-v1-IRR-revision-review-example/candidate-MiniUW_v1_Resumen.pdf",
+      "bytes": 6859,
+      "sha256": "791767f821bb022b927541e24281284628c7713b83bfc9e8190f0b63f7761c45"
+    },
+    {
+      "path": "docs/review/miniuw-v1-IRR-revision-review-example/candidate-evidence.json",
+      "bytes": 1018474,
+      "sha256": "6ca459784a09b1a11ae76ea3f59dc5b0f86decf57dc1f55e18932a4ba0816b94"
+    },
+    {
+      "path": "docs/review/miniuw-v1-IRR-revision-review-example/comparison-spec.json",
+      "bytes": 345,
+      "sha256": "a447324a2a08b7981e16bd00b8df54d515acb9b75a23dbee46abff04d8e93541"
+    },
+    {
+      "path": "docs/review/miniuw-v1-IRR-revision-review-example/package.json",
+      "bytes": 1659,
+      "sha256": "a4849be9d77ca89747e6cd650d524b18539a78bb133d7570528f56fd9b2b3e12"
+    },
+    {
+      "path": "docs/review/miniuw-v1-IRR-revision-review-example/reference-evidence.json",
+      "bytes": 1018291,
+      "sha256": "48090070b5f042f0c9f508aaf5ebe9c348c49e60d7dbb9fdc9fc199d637e4e84"
+    },
+    {
+      "path": "docs/review/miniuw-v1-IRR-revision-review-example/revision-review.json",
+      "bytes": 153035,
+      "sha256": "4a6f61de493e406fd7b5f9d79328d1d5c8d575809dbb153fb288e710e5fd4b06"
+    },
+    {
+      "path": "docs/review/miniuw-v1-IRR-revision-review-example/revision-review.txt",
+      "bytes": 1894,
+      "sha256": "e30f447c3cd787bf9e4d3e95ea03ad8a52a7ba25d758dadb0810276c766653d8"
+    },
+    {
       "path": "docs/review/miniuw-v1-capital-checked-example/MiniUW_v1_Resumen.pdf",
       "bytes": 6713,
       "sha256": "7df1113f972b16b1f7bb552af79790a844cd53fda105683afee0b5634ff09707"
@@ -1110,6 +1155,11 @@
       "path": "docs/review/policy-renewal-twelve-summary.json",
       "bytes": 10941,
       "sha256": "223547931774bacd7881b050299b0ad53d77cba229537d62b608fc691e17279d"
+    },
+    {
+      "path": "docs/review/revision-fixture-generation-T102.json",
+      "bytes": 3481,
+      "sha256": "bfdcf65729c0ae3af82ae581d007b405f249aff8bf3e8a36e0e5a7bbf226859a"
     },
     {
       "path": "docs/review/scheduled-tax-four-summary.json",
@@ -1552,6 +1602,11 @@
       "sha256": "f4f728df3489a2cf0ab43612b05adb317f8324d0f0b81152d019c7272f584566"
     },
     {
+      "path": "docs/technical-implementation-T102.md",
+      "bytes": 3982,
+      "sha256": "a5b7cf19aa0b47dcf74268ecb48f1e8c4f396e167be4c60bf4697ffa6fbc19ac"
+    },
+    {
       "path": "docs/technical-implementation-T11.md",
       "bytes": 5491,
       "sha256": "7fcff82f9760ccd95f28f7ecc784aff735cd03f56225f936716eb5a87eef4e58"
@@ -1823,8 +1878,8 @@
     },
     {
       "path": "docs/technical-implementation-status.json",
-      "bytes": 35381,
-      "sha256": "c946f5779d360724218794d8ef182726a0d7a8dffa270580cdb40687d4c2d15e"
+      "bytes": 36001,
+      "sha256": "9cef1cb0a6ef0f60c7ca744320077a065d7bc2639cf2d449b4ac1611d5767af6"
     },
     {
       "path": "infra/README.md",
@@ -2772,6 +2827,16 @@
       "sha256": "c3f9dfb600ebe749dac6ef16d97afbff1ddb59bc59bb67bd18a36bb91d4945a0"
     },
     {
+      "path": "src/miniuw_foundation/irr_review_artifacts.py",
+      "bytes": 8256,
+      "sha256": "31b3fe387d1776010a7515693618a63e863dcf86b96de7b487894b43ce064545"
+    },
+    {
+      "path": "src/miniuw_foundation/irr_revision_review.py",
+      "bytes": 9842,
+      "sha256": "049c7e89830f41f868e8e27daf4af0ff6f4e1f4ec6393fea3858caf196ac7843"
+    },
+    {
       "path": "src/miniuw_foundation/lifecycle_bundle.py",
       "bytes": 7780,
       "sha256": "68abecf3a0dc87018ddb4f14592105c6bfac48d629e81dfb4377b844aab67ffe"
@@ -3057,6 +3122,21 @@
       "sha256": "cd301d7b4758b5c80628f0e6515e01da81671ecccf0d36c9c7c4ec670f470529"
     },
     {
+      "path": "templates/IRR-review-criteria-T102.json",
+      "bytes": 345,
+      "sha256": "a447324a2a08b7981e16bd00b8df54d515acb9b75a23dbee46abff04d8e93541"
+    },
+    {
+      "path": "templates/IRR-review-expired-T102.json",
+      "bytes": 343,
+      "sha256": "5be36d251b89581e56ebc8e56f53b706476a0d3255cc1bed0e0a08d854a45e52"
+    },
+    {
+      "path": "templates/IRR-review-renewal-T102.json",
+      "bytes": 343,
+      "sha256": "203792fe2df8f55694618b0a59cb0248838bbce9faadcc1955bb1009ca5bc7b6"
+    },
+    {
       "path": "templates/metric-intake-draft-empty.json",
       "bytes": 3492,
       "sha256": "3fa96c7556ee0b206e3213ad1d91c475bbebe2ab4aebb489db0a3eed034e68a7"
@@ -3145,6 +3225,21 @@
       "path": "templates/miniuw-v1-policy-renewal-twelve-case.json",
       "bytes": 196969,
       "sha256": "cf6554aec236a4f5f4d28f98ed6e3d5d555ab4298e67351e81b414eda643c994"
+    },
+    {
+      "path": "templates/miniuw-v1-review-criteria-candidate.json",
+      "bytes": 202800,
+      "sha256": "730eed4e6068bd2fac074ecca1cc8f74bb60ffde60feaeca943bfc20bc8dc811"
+    },
+    {
+      "path": "templates/miniuw-v1-review-expired-candidate.json",
+      "bytes": 194833,
+      "sha256": "7aa748c5a5b3a6cb6742798ca44c9cb51af49f25babe346096fbcaccda2015f6"
+    },
+    {
+      "path": "templates/miniuw-v1-review-renewal-candidate.json",
+      "bytes": 194833,
+      "sha256": "0a9f34bed008925c030c41869d596f4e855f621d7bd31420f6b9c8d784c74f44"
     },
     {
       "path": "templates/miniuw-v1-revision-comparison.json",
@@ -3957,6 +4052,11 @@
       "sha256": "1b4f8cecd2c1f162a5460b76783daa71710cb9fa311b9c7f80f5721b8c38366d"
     },
     {
+      "path": "tests/test_irr_revision_review.py",
+      "bytes": 14462,
+      "sha256": "2fda2fcdced9ec680d5343a94390114f57b8316fec5906945ffe1b2e35a669d1"
+    },
+    {
       "path": "tests/test_lifecycle_returns.py",
       "bytes": 19108,
       "sha256": "4273e2f1ef2e5d887f51ee0f11ba77e967374dbda9bcd20e010a99ef6455ad23"
@@ -4180,6 +4280,11 @@
       "path": "tools/check_IRR_output_T100.py",
       "bytes": 7998,
       "sha256": "0b5ec2f2b507f0eaa6ada9daad7b11cf5d515a72d0fdc63185414b92aa84966f"
+    },
+    {
+      "path": "tools/check_IRR_revision_review_T102.py",
+      "bytes": 9285,
+      "sha256": "f11242c6b76b0c5539fe73afca7beec5966f1c92e5602c2cc71fb4e97e451743"
     },
     {
       "path": "tools/check_blocking_structure_D06.py",
@@ -4500,6 +4605,11 @@
       "path": "tools/irr_miniuw_v1.py",
       "bytes": 1306,
       "sha256": "719177712b1c0e46e64ea616e1c6b426da38c88e5e24333f95a8f87daeee333d"
+    },
+    {
+      "path": "tools/irr_review_miniuw_v1.py",
+      "bytes": 1331,
+      "sha256": "9b01905a43684a9754e10904fad7da8f3c1868e1d3b6c875fb84707574430ad2"
     },
     {
       "path": "tools/lifecycle_demo_support.py",

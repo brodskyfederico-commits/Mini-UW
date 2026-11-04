@@ -1,0 +1,87 @@
+{
+  "scope": "Three explicit offline synthetic candidate revisions. No approval, source renewal at runtime or active revision promotion.",
+  "cases": [
+    {
+      "label": "criteria",
+      "reference": "templates/miniuw-v1-IRR-condition-band-case.json",
+      "reference_sha256": "20d0b405d952f1cea32485e68fb5d5bf32886161bd7fca7b2d411af0c55e7226",
+      "candidate": "templates/miniuw-v1-review-criteria-candidate.json",
+      "candidate_sha256": "730eed4e6068bd2fac074ecca1cc8f74bb60ffde60feaeca943bfc20bc8dc811",
+      "seed_source_sha256": "f00959f4d4b7ff9cb60241935e1b68c00cdd6f899bfdb4f1da64cf770c30eed3",
+      "spec": "templates/IRR-review-criteria-T102.json",
+      "spec_sha256": "a447324a2a08b7981e16bd00b8df54d515acb9b75a23dbee46abff04d8e93541",
+      "state": "comparable_synthetic_candidate_review",
+      "projection_deltas": {
+        "equity_multiple": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "gross_contributions": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "gross_distributions": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "net_cash_profit": {
+          "denominator": "1",
+          "numerator": "0"
+        }
+      },
+      "reference_condition": "BAND",
+      "candidate_condition": "PASS_CONDITION",
+      "decoded_source_changes": 257,
+      "candidate_adopted": false
+    },
+    {
+      "label": "renewal",
+      "reference": "templates/miniuw-v1-policy-renewal-case.json",
+      "reference_sha256": "baa78b2ebc84a7ec5a204d9c10a4ba0f0777fd84c1b99edc40a874bb86b02306",
+      "candidate": "templates/miniuw-v1-review-renewal-candidate.json",
+      "candidate_sha256": "0a9f34bed008925c030c41869d596f4e855f621d7bd31420f6b9c8d784c74f44",
+      "seed_source_sha256": "cf6554aec236a4f5f4d28f98ed6e3d5d555ab4298e67351e81b414eda643c994",
+      "spec": "templates/IRR-review-renewal-T102.json",
+      "spec_sha256": "203792fe2df8f55694618b0a59cb0248838bbce9faadcc1955bb1009ca5bc7b6",
+      "state": "comparable_synthetic_candidate_review",
+      "projection_deltas": {
+        "equity_multiple": {
+          "denominator": "700",
+          "numerator": "-1"
+        },
+        "gross_contributions": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "gross_distributions": {
+          "denominator": "1",
+          "numerator": "-2"
+        },
+        "net_cash_profit": {
+          "denominator": "1",
+          "numerator": "-2"
+        }
+      },
+      "reference_condition": "PENDING",
+      "candidate_condition": "PENDING",
+      "decoded_source_changes": 358,
+      "candidate_adopted": false
+    },
+    {
+      "label": "expired",
+      "reference": "templates/miniuw-v1-policy-renewal-case.json",
+      "reference_sha256": "baa78b2ebc84a7ec5a204d9c10a4ba0f0777fd84c1b99edc40a874bb86b02306",
+      "candidate": "templates/miniuw-v1-review-expired-candidate.json",
+      "candidate_sha256": "7aa748c5a5b3a6cb6742798ca44c9cb51af49f25babe346096fbcaccda2015f6",
+      "seed_source_sha256": "cf6554aec236a4f5f4d28f98ed6e3d5d555ab4298e67351e81b414eda643c994",
+      "spec": "templates/IRR-review-expired-T102.json",
+      "spec_sha256": "5be36d251b89581e56ebc8e56f53b706476a0d3255cc1bed0e0a08d854a45e52",
+      "state": "PENDING",
+      "projection_deltas": null,
+      "reference_condition": "PENDING",
+      "candidate_condition": "PENDING",
+      "decoded_source_changes": 359,
+      "candidate_adopted": false
+    }
+  ]
+}
