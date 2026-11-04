@@ -1,0 +1,107 @@
+{
+  "component": "T100",
+  "status": "passed_same_source_primitive_IRR_and_independent_sparse_certificate",
+  "files_verified": 8,
+  "page_count": 1,
+  "source_requirements": 43,
+  "pending_fixture_revisions_checked": 2,
+  "prior_numerical_status": "incomplete_synthetic",
+  "current_numerical_status": "complete_synthetic",
+  "distinct_positive_discount_roots": 1,
+  "root_multiplicity": 1,
+  "operation_budget": 200000,
+  "arithmetic_operations": 138243,
+  "coefficient_bit_limit": 4096,
+  "independent_sparse_endpoint_signs_verified": true,
+  "independent_unique_root_derivative_verified": true,
+  "independent_annual_discount_transformation_verified": true,
+  "periodic_interval_width_source": {
+    "denominator": "1000000",
+    "numerator": "1"
+  },
+  "annual_interval": {
+    "lower": {
+      "denominator": "2899499845440534246810582327947367203931851386896697290710308758133961029121328451333434600211959971498721",
+      "numerator": "-442907917918662004253701379081055177003009769926451666564099159411655621756822294307501689914770452564705"
+    },
+    "lower_closed": true,
+    "upper": {
+      "denominator": "11876259874984976597114138771131665148120999671904832148897752375959045056207526667196238522257293457275390625",
+      "numerator": "-1814059339855387891601154404575251085820464408794706072394877859592482107642509448018017321680005187721661089"
+    },
+    "upper_closed": false
+  },
+  "displayed_annual_IRR": "-15.28..-15.27%",
+  "gross_cash_unchanged": true,
+  "source_unchanged_from_T99": true,
+  "pending_capital_preserved": true,
+  "point_rate_selected": false,
+  "pending_cases": [
+    {
+      "path": "templates/miniuw-v1-IRR-budget-case.json",
+      "sha256": "db115d56c30cf86e25a21fad6a8ccbaa9d97ff7df344afcd3414db5426d33c8f",
+      "state": "PENDING",
+      "periodic_status": "incomplete_synthetic"
+    },
+    {
+      "path": "templates/miniuw-v1-IRR-frequency-pending-case.json",
+      "sha256": "983aff5722bbb1176b835aedce824e9dd859b21a82b0d0144b6b31685aedf49f",
+      "state": "PENDING",
+      "periodic_status": "complete_synthetic"
+    }
+  ],
+  "source_sha256": "654f3cf222f0aa89f23a0b9ef43568d870e4b6dc37109031270ca2a2bbec34bc",
+  "run_sha256": "f2f27a7602bc85f01087141fc896d0fa0455442480363fd7c390a2791f53f3a5",
+  "parent_capital_run_sha256": "e2d32425c657c3c4b471e7a275a1c6e91eedbb2c14efc1b9c15ad7c678f488f4",
+  "pdf_sha256": "d9e82b4a6999e01679956cadb7296c443cd72b630fd12cfbc53a0fe2e25f20a4",
+  "manifest_sha256": "5d567ee343054fd5547110b5e5def43918cdc43eed90d39b842198a95be0eb92",
+  "bundle_sha256": "52df0b71a87d1a49acf626f3802fe4a91b1f8633d25fe0cb77a1247c87754f77",
+  "source_versions": [
+    {
+      "path": "src/miniuw_foundation/primitive_periodic_returns.py",
+      "sha256": "2f01214d43bd4e921603227ac17732235bef498b1af62ef8b42a8c1f1b89fd69"
+    },
+    {
+      "path": "src/miniuw_foundation/irr_checked_output.py",
+      "sha256": "1e48f07bc41a7abe8af01ec88f4edb1501a8f9c5176f6ccfa0602dd7ffc9ed6b"
+    },
+    {
+      "path": "src/miniuw_foundation/irr_checked_artifacts.py",
+      "sha256": "d3e599692b0c6eb1e5e237203e669d3c563a88d7fff1bd1227628be6dae9022d"
+    },
+    {
+      "path": "src/miniuw_foundation/long_horizon_report.py",
+      "sha256": "13553de154016edcb8b78c3a963577453eeab750c7adde5e8bc7d7b2b5b6ebdb"
+    },
+    {
+      "path": "src/miniuw_foundation/investor_returns.py",
+      "sha256": "b64f5bae914ce97edebc4a86849935952eea4a25e271068d92b0f2197843b036"
+    },
+    {
+      "path": "src/miniuw_foundation/capital_checked_output.py",
+      "sha256": "cd34fc11cb06b39f29613b26f4fc1732d4a832fd35f7dc99c4e6d57f63229803"
+    },
+    {
+      "path": "tools/irr_miniuw_v1.py",
+      "sha256": "719177712b1c0e46e64ea616e1c6b426da38c88e5e24333f95a8f87daeee333d"
+    },
+    {
+      "path": "tools/check_IRR_output_T100.py",
+      "sha256": "0b5ec2f2b507f0eaa6ada9daad7b11cf5d515a72d0fdc63185414b92aa84966f"
+    },
+    {
+      "path": "docs/technical-implementation-T100.md",
+      "sha256": "1baf21521494559b61999c2873d2f54ba19a3810a8dce28157ec1622a348b814"
+    },
+    {
+      "path": "docs/review/IRR-fixture-generation-T100.json",
+      "sha256": "7223e42b95536ab80ad8335177764089171b2ac39a7c54c45900d020f5b26425"
+    }
+  ],
+  "financial_policy_adopted": false,
+  "personal_return_verified": false,
+  "financial_publication_authorized": false,
+  "deployment_enabled": false,
+  "real_decisions_enabled": false,
+  "decision": "PENDING"
+}

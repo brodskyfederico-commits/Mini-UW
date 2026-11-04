@@ -1,0 +1,44 @@
+{
+  "scope": "Offline synthetic numerical controls only; no runtime renewal, no threshold or financial policy",
+  "base_sha256": "654f3cf222f0aa89f23a0b9ef43568d870e4b6dc37109031270ca2a2bbec34bc",
+  "cases": [
+    {
+      "path": "templates/miniuw-v1-IRR-budget-case.json",
+      "sha256": "db115d56c30cf86e25a21fad6a8ccbaa9d97ff7df344afcd3414db5426d33c8f",
+      "parameters": {
+        "max_periodic_rate_interval_width": {
+          "denominator": "1000000",
+          "numerator": "1"
+        },
+        "operation_budget": 1,
+        "periods_per_year": 12,
+        "rate_domain": "r_gt_minus_one_positive_discount_factor",
+        "split_budget": 256
+      },
+      "state": "PENDING",
+      "numerical_status": "incomplete_synthetic",
+      "annual_roots": 0,
+      "source_requirements": 43,
+      "decision": "PENDING"
+    },
+    {
+      "path": "templates/miniuw-v1-IRR-frequency-pending-case.json",
+      "sha256": "983aff5722bbb1176b835aedce824e9dd859b21a82b0d0144b6b31685aedf49f",
+      "parameters": {
+        "max_periodic_rate_interval_width": {
+          "denominator": "1000000",
+          "numerator": "1"
+        },
+        "operation_budget": 200000,
+        "periods_per_year": null,
+        "rate_domain": "r_gt_minus_one_positive_discount_factor",
+        "split_budget": 256
+      },
+      "state": "PENDING",
+      "numerical_status": "complete_synthetic",
+      "annual_roots": 0,
+      "source_requirements": 43,
+      "decision": "PENDING"
+    }
+  ]
+}
