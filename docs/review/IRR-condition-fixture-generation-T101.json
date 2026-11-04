@@ -1,0 +1,179 @@
+{
+  "scope": "Explicit offline hypothetical branch tests only; no investment-hurdle recommendation or runtime renewal",
+  "cases": [
+    {
+      "path": "templates/miniuw-v1-IRR-condition-pass-case.json",
+      "sha256": "f00959f4d4b7ff9cb60241935e1b68c00cdd6f899bfdb4f1da64cf770c30eed3",
+      "base_source_sha256": "654f3cf222f0aa89f23a0b9ef43568d870e4b6dc37109031270ca2a2bbec34bc",
+      "criterion": {
+        "definition_ref": "SYNTHETIC-ANNUAL-PERIODIC-IRR-ENCLOSURE-v1",
+        "fail_condition": {
+          "operator": "<=",
+          "threshold": {
+            "numerator": "-1",
+            "denominator": "4"
+          }
+        },
+        "metric_id": "IRR",
+        "pass_condition": {
+          "operator": ">=",
+          "threshold": {
+            "numerator": "-1",
+            "denominator": "5"
+          }
+        },
+        "period_ref": "SYNTHETIC-lifecycle:2022-03-01:2027-07-01",
+        "source_ref": "SYNTHETIC-T101-explicit-pass-condition-only-not-Lorena-or-policy",
+        "unit": "fraction"
+      },
+      "expected_row_state": "PASS_CONDITION",
+      "source_requirements": 43,
+      "full_deal_state": "PENDING"
+    },
+    {
+      "path": "templates/miniuw-v1-IRR-condition-fail-case.json",
+      "sha256": "1c65e128de57ce28c794cee768388a0af9290996e376a68b99f4a25ed7ae92bf",
+      "base_source_sha256": "654f3cf222f0aa89f23a0b9ef43568d870e4b6dc37109031270ca2a2bbec34bc",
+      "criterion": {
+        "definition_ref": "SYNTHETIC-ANNUAL-PERIODIC-IRR-ENCLOSURE-v1",
+        "fail_condition": {
+          "operator": "<=",
+          "threshold": {
+            "numerator": "-1",
+            "denominator": "10"
+          }
+        },
+        "metric_id": "IRR",
+        "pass_condition": {
+          "operator": ">=",
+          "threshold": {
+            "numerator": "0",
+            "denominator": "1"
+          }
+        },
+        "period_ref": "SYNTHETIC-lifecycle:2022-03-01:2027-07-01",
+        "source_ref": "SYNTHETIC-T101-explicit-fail-condition-only-not-Lorena-or-policy",
+        "unit": "fraction"
+      },
+      "expected_row_state": "FAIL_CONDITION",
+      "source_requirements": 43,
+      "full_deal_state": "PENDING"
+    },
+    {
+      "path": "templates/miniuw-v1-IRR-condition-band-case.json",
+      "sha256": "20d0b405d952f1cea32485e68fb5d5bf32886161bd7fca7b2d411af0c55e7226",
+      "base_source_sha256": "654f3cf222f0aa89f23a0b9ef43568d870e4b6dc37109031270ca2a2bbec34bc",
+      "criterion": {
+        "definition_ref": "SYNTHETIC-ANNUAL-PERIODIC-IRR-ENCLOSURE-v1",
+        "fail_condition": {
+          "operator": "<=",
+          "threshold": {
+            "numerator": "-1",
+            "denominator": "5"
+          }
+        },
+        "metric_id": "IRR",
+        "pass_condition": {
+          "operator": ">=",
+          "threshold": {
+            "numerator": "0",
+            "denominator": "1"
+          }
+        },
+        "period_ref": "SYNTHETIC-lifecycle:2022-03-01:2027-07-01",
+        "source_ref": "SYNTHETIC-T101-explicit-band-condition-only-not-Lorena-or-policy",
+        "unit": "fraction"
+      },
+      "expected_row_state": "BAND",
+      "source_requirements": 43,
+      "full_deal_state": "PENDING"
+    },
+    {
+      "path": "templates/miniuw-v1-IRR-condition-conflict-case.json",
+      "sha256": "50478ae952248e3e2842b9b45d5cc43aeecc7e1bdbca66406f2afd0af9c60c88",
+      "base_source_sha256": "654f3cf222f0aa89f23a0b9ef43568d870e4b6dc37109031270ca2a2bbec34bc",
+      "criterion": {
+        "definition_ref": "SYNTHETIC-ANNUAL-PERIODIC-IRR-ENCLOSURE-v1",
+        "fail_condition": {
+          "operator": "<=",
+          "threshold": {
+            "numerator": "-1",
+            "denominator": "10"
+          }
+        },
+        "metric_id": "IRR",
+        "pass_condition": {
+          "operator": ">=",
+          "threshold": {
+            "numerator": "-1",
+            "denominator": "5"
+          }
+        },
+        "period_ref": "SYNTHETIC-lifecycle:2022-03-01:2027-07-01",
+        "source_ref": "SYNTHETIC-T101-explicit-conflict-condition-only-not-Lorena-or-policy",
+        "unit": "fraction"
+      },
+      "expected_row_state": "CONFLICT",
+      "source_requirements": 43,
+      "full_deal_state": "PENDING"
+    },
+    {
+      "path": "templates/miniuw-v1-IRR-condition-budget-case.json",
+      "sha256": "7841f3ece5e89a8bfab2923744d240b2a0b9ee899b088e3982c0792194a0a281",
+      "base_source_sha256": "db115d56c30cf86e25a21fad6a8ccbaa9d97ff7df344afcd3414db5426d33c8f",
+      "criterion": {
+        "definition_ref": "SYNTHETIC-ANNUAL-PERIODIC-IRR-ENCLOSURE-v1",
+        "fail_condition": {
+          "operator": "<=",
+          "threshold": {
+            "numerator": "-1",
+            "denominator": "4"
+          }
+        },
+        "metric_id": "IRR",
+        "pass_condition": {
+          "operator": ">=",
+          "threshold": {
+            "numerator": "-1",
+            "denominator": "5"
+          }
+        },
+        "period_ref": "SYNTHETIC-lifecycle:2022-03-01:2027-07-01",
+        "source_ref": "SYNTHETIC-T101-explicit-budget-condition-only-not-Lorena-or-policy",
+        "unit": "fraction"
+      },
+      "expected_row_state": "PENDING",
+      "source_requirements": 43,
+      "full_deal_state": "PENDING"
+    },
+    {
+      "path": "templates/miniuw-v1-IRR-condition-frequency-case.json",
+      "sha256": "bf717f42504f66f8dd028de34c69add43e6305c718b9ec677e747dbd5e082599",
+      "base_source_sha256": "983aff5722bbb1176b835aedce824e9dd859b21a82b0d0144b6b31685aedf49f",
+      "criterion": {
+        "definition_ref": "SYNTHETIC-ANNUAL-PERIODIC-IRR-ENCLOSURE-v1",
+        "fail_condition": {
+          "operator": "<=",
+          "threshold": {
+            "numerator": "-1",
+            "denominator": "4"
+          }
+        },
+        "metric_id": "IRR",
+        "pass_condition": {
+          "operator": ">=",
+          "threshold": {
+            "numerator": "-1",
+            "denominator": "5"
+          }
+        },
+        "period_ref": "SYNTHETIC-lifecycle:2022-03-01:2027-07-01",
+        "source_ref": "SYNTHETIC-T101-explicit-frequency-condition-only-not-Lorena-or-policy",
+        "unit": "fraction"
+      },
+      "expected_row_state": "PENDING",
+      "source_requirements": 43,
+      "full_deal_state": "PENDING"
+    }
+  ]
+}

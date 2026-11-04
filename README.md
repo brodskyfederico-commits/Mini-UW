@@ -4,6 +4,7 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- [Criterio IRR sobre intervalo T101](docs/IRR-interval-v1-runbook.md): comprobación de una condición sintética sin escoger punto medio; bandas, cruces y faltantes pendientes, sin PASS/FAIL parcial del deal.
 - [TIR comprobada y salida integrada T100](docs/IRR-output-v1-runbook.md): resuelve el límite numérico del caso largo con los mismos flujos y presupuestos; intervalos completos, sin punto elegido ni cambio de caja o criterios.
 - [Una página para más movimientos y años T99](docs/long-output-v1-runbook.md): resumen exhaustivo por concepto, todos los años de caja dentro del presupuesto de doce filas y calendario completo conservado; [ejemplo sintético](docs/review/miniuw-v1-long-output-example/MiniUW_v1_Resumen.pdf).
 - [Capital declarado y pendientes T98](docs/capital-checked-v1-runbook.md): evita mostrar capital sin base/fuente como dato actual; conserva las declaraciones, ceros explícitos, caja y retorno, con ejecución/recuperación local integrada.

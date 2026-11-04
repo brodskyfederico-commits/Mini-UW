@@ -1,0 +1,141 @@
+{
+  "component": "T101",
+  "status": "passed_source_first_single_IRR_condition_and_independent_partition",
+  "files_verified": 8,
+  "page_count": 1,
+  "fixture_revisions_checked": 6,
+  "condition_counts": {
+    "PASS_CONDITION": 1,
+    "FAIL_CONDITION": 1,
+    "BAND": 1,
+    "CONFLICT": 1,
+    "PENDING": 2
+  },
+  "independent_partition_relations_verified": true,
+  "criterion_fraction_unit_labeled": true,
+  "original_blank_criterion_preserved": true,
+  "parent_cash_roots_stocks_criteria_and_screening_unchanged": true,
+  "main_band_policy_preserved": true,
+  "source_requirements": 43,
+  "conditions": [
+    {
+      "path": "templates/miniuw-v1-IRR-condition-pass-case.json",
+      "sha256": "f00959f4d4b7ff9cb60241935e1b68c00cdd6f899bfdb4f1da64cf770c30eed3",
+      "row_state": "PASS_CONDITION",
+      "relations": {
+        "fail_condition": "none",
+        "pass_condition": "every"
+      },
+      "blockers": [],
+      "full_deal_state": "PENDING"
+    },
+    {
+      "path": "templates/miniuw-v1-IRR-condition-fail-case.json",
+      "sha256": "1c65e128de57ce28c794cee768388a0af9290996e376a68b99f4a25ed7ae92bf",
+      "row_state": "FAIL_CONDITION",
+      "relations": {
+        "fail_condition": "every",
+        "pass_condition": "none"
+      },
+      "blockers": [],
+      "full_deal_state": "PENDING"
+    },
+    {
+      "path": "templates/miniuw-v1-IRR-condition-band-case.json",
+      "sha256": "20d0b405d952f1cea32485e68fb5d5bf32886161bd7fca7b2d411af0c55e7226",
+      "row_state": "BAND",
+      "relations": {
+        "fail_condition": "none",
+        "pass_condition": "none"
+      },
+      "blockers": [
+        "intermediate_band_pending_professional_review"
+      ],
+      "full_deal_state": "PENDING"
+    },
+    {
+      "path": "templates/miniuw-v1-IRR-condition-conflict-case.json",
+      "sha256": "50478ae952248e3e2842b9b45d5cc43aeecc7e1bdbca66406f2afd0af9c60c88",
+      "row_state": "CONFLICT",
+      "relations": {},
+      "blockers": [
+        "pass_fail_regions_overlap"
+      ],
+      "full_deal_state": "PENDING"
+    },
+    {
+      "path": "templates/miniuw-v1-IRR-condition-budget-case.json",
+      "sha256": "7841f3ece5e89a8bfab2923744d240b2a0b9ee899b088e3982c0792194a0a281",
+      "row_state": "PENDING",
+      "relations": {},
+      "blockers": [
+        "complete_periodic_root_inventory_required",
+        "current_unique_annual_enclosure_unavailable"
+      ],
+      "full_deal_state": "PENDING"
+    },
+    {
+      "path": "templates/miniuw-v1-IRR-condition-frequency-case.json",
+      "sha256": "bf717f42504f66f8dd028de34c69add43e6305c718b9ec677e747dbd5e082599",
+      "row_state": "PENDING",
+      "relations": {},
+      "blockers": [
+        "compatible_current_annual_root_required",
+        "current_unique_annual_enclosure_unavailable"
+      ],
+      "full_deal_state": "PENDING"
+    }
+  ],
+  "point_rate_selected": false,
+  "full_deal_result_recomputed": false,
+  "financial_policy_adopted": false,
+  "criteria_adopted": false,
+  "source_sha256": "20d0b405d952f1cea32485e68fb5d5bf32886161bd7fca7b2d411af0c55e7226",
+  "run_sha256": "0a3fed92b2bb53232babb58076751b864949b8792f255812e52f0d67315b19e6",
+  "parent_IRR_checked_run_sha256": "2046b32d250fef37a0979bc19104f5d12d746a86e5235aa8544d709884fae94a",
+  "pdf_sha256": "45985d3f390e2be44e1fba4a960c8d9434f45f78a716dc2367406a4a923dbdfd",
+  "manifest_sha256": "b3aca65ae5a6bbadb9b789dd9536ff6e01b02e2832207a24912d6ed18b57f334",
+  "bundle_sha256": "48090070b5f042f0c9f508aaf5ebe9c348c49e60d7dbb9fdc9fc199d637e4e84",
+  "source_versions": [
+    {
+      "path": "src/miniuw_foundation/irr_interval_output.py",
+      "sha256": "c3f9dfb600ebe749dac6ef16d97afbff1ddb59bc59bb67bd18a36bb91d4945a0"
+    },
+    {
+      "path": "src/miniuw_foundation/irr_interval_artifacts.py",
+      "sha256": "72968aa9fa2220dae0e5e7b4b281415285b6e3494dce8545ebbbb34fa4eef993"
+    },
+    {
+      "path": "src/miniuw_foundation/irr_checked_output.py",
+      "sha256": "1e48f07bc41a7abe8af01ec88f4edb1501a8f9c5176f6ccfa0602dd7ffc9ed6b"
+    },
+    {
+      "path": "src/miniuw_foundation/screening.py",
+      "sha256": "52701de576e82c52d0d156ecc8b5801132250427ef5b02dc2393bbdcc6538137"
+    },
+    {
+      "path": "tools/irr_interval_miniuw_v1.py",
+      "sha256": "8b4b1edfcccdad6334ae5efb1f55c1f4185353cdad977d02df4782b96c4ac31b"
+    },
+    {
+      "path": "tools/check_IRR_interval_T101.py",
+      "sha256": "3b022072719929bade99c0ea24958b2cb59110a1968973120cf11d40f0ab2b96"
+    },
+    {
+      "path": "docs/technical-implementation-T101.md",
+      "sha256": "f4f728df3489a2cf0ab43612b05adb317f8324d0f0b81152d019c7272f584566"
+    },
+    {
+      "path": "docs/pending-band-policy-decision.json",
+      "sha256": "cb5553cc523ab061fd4068b6da55d78421be45bed0330b708bcf911c28b34ee9"
+    },
+    {
+      "path": "docs/review/IRR-condition-fixture-generation-T101.json",
+      "sha256": "b24e22d1ed495d5080e80a8ab4ed883885447fd81ff0a3cf1ba1e9b15c808b04"
+    }
+  ],
+  "financial_publication_authorized": false,
+  "deployment_enabled": false,
+  "real_decisions_enabled": false,
+  "decision": "PENDING"
+}
