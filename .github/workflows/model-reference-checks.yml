@@ -25,5 +25,7 @@ jobs:
         run: python tools/check_reference_package.py
       - name: Reject deliberate structural inconsistencies
         run: python tools/check_structure_faults.py
+      - name: Verify current model structure and original field crosswalk
+        run: python tools/check_current_structure_D04.py
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v

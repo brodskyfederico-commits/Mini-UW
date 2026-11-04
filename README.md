@@ -1,6 +1,6 @@
 # Mini-UW — diseño y consolidación sintética v1
 
-Repositorio privado de fuentes, diseño y referencias. [Mini-UW v1 consolidado](docs/MiniUW_v1_Consolidado.md): entrada única JSON, corrida local integrada para el perfil de obra/renta/tenencia/venta y [PDF sintético de una página](docs/review/miniuw-v1-example/MiniUW_v1_Resumen.pdf). [Contratos de siete Dots y 17 bots](docs/MiniUW_v1_Dots_y_Bots.md). La consolidación del armado independiente se verifica por ocho entregables explícitos; la validación financiera, los datos reales, las decisiones expertas y la implementación completa conservan sus puertas abiertas. Producción, evaluación de deals y despliegue siguen pausados.
+Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pendientes D04](docs/current-structure/MiniUW_Estructura_Vigente_D04.md), con [matriz de los 55 campos](docs/current-structure/MiniUW_55_campos_D04.csv). [Mini-UW v1 consolidado](docs/MiniUW_v1_Consolidado.md): entrada única JSON, corrida local integrada para el perfil de obra/renta/tenencia/venta y [PDF sintético de una página](docs/review/miniuw-v1-example/MiniUW_v1_Resumen.pdf). [Contratos de siete Dots y 17 bots](docs/MiniUW_v1_Dots_y_Bots.md). La consolidación del armado independiente se verifica por ocho entregables explícitos; la validación financiera, los datos reales, las decisiones expertas y la implementación completa conservan sus puertas abiertas. Producción, evaluación de deals y despliegue siguen pausados.
 
 ## Leer el paquete consolidado
 

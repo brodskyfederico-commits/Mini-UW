@@ -1,0 +1,3488 @@
+{
+  "snapshot_id": "D04",
+  "scope": "Current structural consolidation after T95; no new financial formula, threshold, deployment or model closure",
+  "technical_components_through": "T95",
+  "registered_technical_tests": 1351,
+  "original_inputs_count": 55,
+  "synthetic_runtime_bound_fields": 1,
+  "synthetic_runtime_pending_fields": 54,
+  "original_blank_workbook_preserved": true,
+  "original_structure_contracts": 84,
+  "modules": [
+    {
+      "module_id": "M1",
+      "label": "Entradas y evidencia",
+      "candidate_definition": "docs/model-input-evidence.md",
+      "schema": "schemas/M1.schema.json",
+      "contract_ids": [
+        "M1-01",
+        "M1-02",
+        "M1-03",
+        "M1-04",
+        "M1-05",
+        "M1-06",
+        "M1-07",
+        "M1-08"
+      ],
+      "financial_gate_closed": false
+    },
+    {
+      "module_id": "M2",
+      "label": "Operación y NOI",
+      "candidate_definition": "docs/model-operations-contract.md",
+      "schema": "schemas/M2.schema.json",
+      "contract_ids": [
+        "M2-01",
+        "M2-02",
+        "M2-03",
+        "M2-04",
+        "M2-05",
+        "M2-06",
+        "M2-07",
+        "M2-08"
+      ],
+      "financial_gate_closed": false
+    },
+    {
+      "module_id": "M3",
+      "label": "Presupuesto y alcance",
+      "candidate_definition": "docs/model-budget-schedule.md",
+      "schema": "schemas/M3.schema.json",
+      "contract_ids": [
+        "M3-01",
+        "M3-02",
+        "M3-03",
+        "M3-04",
+        "M3-05",
+        "M3-06"
+      ],
+      "financial_gate_closed": false
+    },
+    {
+      "module_id": "M4",
+      "label": "Calendario",
+      "candidate_definition": "docs/model-budget-schedule.md",
+      "schema": "schemas/M4.schema.json",
+      "contract_ids": [
+        "M4-01",
+        "M4-02",
+        "M4-03",
+        "M4-04",
+        "M4-05",
+        "M4-06"
+      ],
+      "financial_gate_closed": false
+    },
+    {
+      "module_id": "M5",
+      "label": "Capital y construcción",
+      "candidate_definition": "docs/model-construction-finance.md",
+      "schema": "schemas/M5.schema.json",
+      "contract_ids": [
+        "M5-01",
+        "M5-02",
+        "M5-03",
+        "M5-04",
+        "M5-05",
+        "M5-06",
+        "M5-07",
+        "M5-08",
+        "M5-09",
+        "M5-10"
+      ],
+      "financial_gate_closed": false
+    },
+    {
+      "module_id": "M6",
+      "label": "Refinanciación",
+      "candidate_definition": "docs/model-refinance-contract.md",
+      "schema": "schemas/M6.schema.json",
+      "contract_ids": [
+        "M6-01",
+        "M6-02",
+        "M6-03",
+        "M6-04",
+        "M6-05",
+        "M6-06",
+        "M6-07",
+        "M6-08",
+        "M6-09",
+        "M6-10"
+      ],
+      "financial_gate_closed": false
+    },
+    {
+      "module_id": "M7",
+      "label": "Tenencia, venta y retornos",
+      "candidate_definition": "docs/model-hold-exit-returns.md",
+      "schema": "schemas/M7.schema.json",
+      "contract_ids": [
+        "M7-01",
+        "M7-02",
+        "M7-03",
+        "M7-04",
+        "M7-05",
+        "M7-06",
+        "M7-07",
+        "M7-08",
+        "M7-09",
+        "M7-10",
+        "M7-11",
+        "M7-12"
+      ],
+      "financial_gate_closed": false
+    },
+    {
+      "module_id": "M8",
+      "label": "Escenarios y precio",
+      "candidate_definition": "docs/model-scenarios-price.md",
+      "schema": "schemas/M8.schema.json",
+      "contract_ids": [
+        "M8-01",
+        "M8-02",
+        "M8-03",
+        "M8-04",
+        "M8-05",
+        "M8-06",
+        "M8-07",
+        "M8-08",
+        "M8-09",
+        "M8-10",
+        "M8-11",
+        "M8-12"
+      ],
+      "financial_gate_closed": false
+    },
+    {
+      "module_id": "M9",
+      "label": "Decisión, revisión y salida",
+      "candidate_definition": "docs/model-decision-audit.md",
+      "schema": "schemas/M9.schema.json",
+      "contract_ids": [
+        "M9-01",
+        "M9-02",
+        "M9-03",
+        "M9-04",
+        "M9-05",
+        "M9-06",
+        "M9-07",
+        "M9-08",
+        "M9-09",
+        "M9-10",
+        "M9-11",
+        "M9-12"
+      ],
+      "financial_gate_closed": false
+    }
+  ],
+  "dots": [
+    {
+      "dot_id": "D01",
+      "name": "Recepcion y coordinacion",
+      "bot_ids": [
+        "B01",
+        "B02",
+        "B03"
+      ],
+      "status": "partial_synthetic_runtime"
+    },
+    {
+      "dot_id": "D02",
+      "name": "Validacion de entrada",
+      "bot_ids": [
+        "B04"
+      ],
+      "status": "partial_synthetic_runtime"
+    },
+    {
+      "dot_id": "D03",
+      "name": "Planos y conciliacion",
+      "bot_ids": [
+        "B05",
+        "B06",
+        "B07",
+        "B09"
+      ],
+      "status": "contract_only_pending"
+    },
+    {
+      "dot_id": "D04",
+      "name": "Datos oficiales",
+      "bot_ids": [
+        "B10",
+        "B11"
+      ],
+      "status": "contract_only_pending"
+    },
+    {
+      "dot_id": "D05",
+      "name": "Calculo y screening",
+      "bot_ids": [
+        "B08",
+        "B12",
+        "B13",
+        "B14"
+      ],
+      "status": "partial_synthetic_runtime"
+    },
+    {
+      "dot_id": "D06",
+      "name": "Informe",
+      "bot_ids": [
+        "B15"
+      ],
+      "status": "synthetic_callable"
+    },
+    {
+      "dot_id": "D07",
+      "name": "Comprobacion y pruebas",
+      "bot_ids": [
+        "B16",
+        "B17"
+      ],
+      "status": "deterministic_check_only"
+    }
+  ],
+  "bot_count": 17,
+  "sources": [
+    {
+      "path": "docs/input-dictionary.json",
+      "sha256": "c26720e78b12fddbc522a31fb97aa32c961e3dbe20ccf9477dcefed33583af8e"
+    },
+    {
+      "path": "docs/input-contract-map.json",
+      "sha256": "793b0075f10ed8a39b839ebda819a70dc53125c2d2013a15520e2681c69b9f94"
+    },
+    {
+      "path": "templates/project-draft-empty.json",
+      "sha256": "8cfc2915b9ee64bec53df3ea9041b7784f546200bdc676fcaf7b58679b88f16c"
+    },
+    {
+      "path": "docs/structural-integration-register.json",
+      "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc"
+    },
+    {
+      "path": "docs/module-closure.json",
+      "sha256": "a709df1f75599d4f963eb26a0c1789062351cce6e0740f7df0e3e36a89dc2ab0"
+    },
+    {
+      "path": "docs/miniuw-v1-dot-bot-contracts.json",
+      "sha256": "42a074934b1c2abcbb8c20f61a335906499c0c0f06c362167da62cb41f8fbdc5"
+    },
+    {
+      "path": "docs/technical-implementation-T85-T87.md",
+      "sha256": "dab6d254d11622ab4de9ca767cb6ca42f33566fe77bfd5856f2f286a74cdb4c4"
+    },
+    {
+      "path": "docs/technical-implementation-T88-T89.md",
+      "sha256": "462b087fc07f551afe94fb58b4b008fd38717fd02bb79d886cbb256191589491"
+    },
+    {
+      "path": "docs/technical-implementation-T90-T92.md",
+      "sha256": "36560e6086187abcddac7def5c37f067af66741f4da76597a56fff62c5a85c8b"
+    },
+    {
+      "path": "docs/technical-implementation-T93-T95.md",
+      "sha256": "f09bae292ac0542e90076740c0b0dbd5dd066a7bc7bf29ec6b00cbf692840fd1"
+    },
+    {
+      "path": "docs/review/miniuw-v1-policy-renewal-example/results.json",
+      "sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1"
+    },
+    {
+      "path": "docs/review/miniuw-v1-policy-renewal-example/audit.json",
+      "sha256": "b5e0f61f05fa09a06fd7a3152aea86dc2c77a4021cec94a5a7f034dba791b263"
+    },
+    {
+      "path": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600"
+    }
+  ],
+  "input_coverage": [
+    {
+      "requirement_or_variable": "INPUT_C7",
+      "label": "Rent basis",
+      "original_source": {
+        "path": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+        "sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+        "location": "Inputs!A7:F7",
+        "value_cell": "Inputs!C7",
+        "source_attribution_cell": "Inputs!F7"
+      },
+      "definition_current": {
+        "label_literal": "Rent basis",
+        "unit_literal": "PER UNIT / PER SF",
+        "note_literal": "Per unit = $/month; per SF = $/SF/month",
+        "historical_requirement": "REQUIRED",
+        "proposed_value_kind": "enum_rent_basis",
+        "period_contract_provisional": "Según unidad literal; definición temporal pendiente",
+        "base_contract_provisional": "PER UNIT / PER SF",
+        "financial_semantics_or_ranges_approved": false
+      },
+      "affected_modules_proposed": [
+        "M2 revenue/operations"
+      ],
+      "runtime_mapping": {
+        "example_state": "bound_synthetic_claim",
+        "recipe_pointer": "/operating_periods/0/rental_calendar/capacity/0/rent_basis",
+        "unit": "enum_rent_basis",
+        "period_ref": "SYNTHETIC-fixed-rent-basis",
+        "mapping_basis_ref": "SYNTHETIC-explicit-basis-claim-not-Lorena-layout-approval",
+        "example_value": "per_unit_per_month"
+      },
+      "validation_evidence": {
+        "original_blank_value_verified_from_workbook_XML": true,
+        "structural_mapping": {
+          "path": "docs/input-contract-map.json",
+          "sha256": "793b0075f10ed8a39b839ebda819a70dc53125c2d2013a15520e2681c69b9f94",
+          "pointer": "/fields/0"
+        },
+        "runtime_observation": {
+          "path": "docs/review/miniuw-v1-policy-renewal-example/results.json",
+          "sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1",
+          "pointer": "/original_inputs/0"
+        },
+        "scope": "Exact catalogue/source/location and observed synthetic state; not independent financial validation"
+      },
+      "state": "bound_in_scoped_synthetic_example",
+      "pending": [
+        "actual_deal_source_and_semantic_adoption_pending",
+        "financial_coverage_not_certified"
+      ]
+    },
+    {
+      "requirement_or_variable": "INPUT_C8",
+      "label": "Market rent – Studio",
+      "original_source": {
+        "path": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+        "sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+        "location": "Inputs!A8:F8",
+        "value_cell": "Inputs!C8",
+        "source_attribution_cell": "Inputs!F8"
+      },
+      "definition_current": {
+        "label_literal": "Market rent – Studio",
+        "unit_literal": "$",
+        "note_literal": "",
+        "historical_requirement": "REQUIRED",
+        "proposed_value_kind": "monetary_quantity_with_source_unit",
+        "period_contract_provisional": "Según unidad literal; definición temporal pendiente",
+        "base_contract_provisional": "Per unit/month or per SF/month only after C7 and program mapping are explicit",
+        "financial_semantics_or_ranges_approved": false
+      },
+      "affected_modules_proposed": [
+        "M2 revenue/operations"
+      ],
+      "runtime_mapping": {
+        "example_state": "PENDING",
+        "recipe_pointer": null,
+        "unit": null,
+        "period_ref": null,
+        "mapping_basis_ref": null,
+        "example_value": null
+      },
+      "validation_evidence": {
+        "original_blank_value_verified_from_workbook_XML": true,
+        "structural_mapping": {
+          "path": "docs/input-contract-map.json",
+          "sha256": "793b0075f10ed8a39b839ebda819a70dc53125c2d2013a15520e2681c69b9f94",
+          "pointer": "/fields/1"
+        },
+        "runtime_observation": {
+          "path": "docs/review/miniuw-v1-policy-renewal-example/results.json",
+          "sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1",
+          "pointer": "/original_inputs/1"
+        },
+        "scope": "Exact catalogue/source/location and observed synthetic state; not independent financial validation"
+      },
+      "state": "PENDING_runtime_semantic_mapping",
+      "pending": [
+        "actual_deal_source_and_semantic_adoption_pending",
+        "financial_coverage_not_certified",
+        "original_field_mapping_or_definition_pending",
+        "original_value_missing"
+      ]
+    },
+    {
+      "requirement_or_variable": "INPUT_C9",
+      "label": "Market rent – 1BR",
+      "original_source": {
+        "path": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+        "sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+        "location": "Inputs!A9:F9",
+        "value_cell": "Inputs!C9",
+        "source_attribution_cell": "Inputs!F9"
+      },
+      "definition_current": {
+        "label_literal": "Market rent – 1BR",
+        "unit_literal": "$",
+        "note_literal": "",
+        "historical_requirement": "REQUIRED",
+        "proposed_value_kind": "monetary_quantity_with_source_unit",
+        "period_contract_provisional": "Según unidad literal; definición temporal pendiente",
+        "base_contract_provisional": "Per unit/month or per SF/month only after C7 and program mapping are explicit",
+        "financial_semantics_or_ranges_approved": false
+      },
+      "affected_modules_proposed": [
+        "M2 revenue/operations"
+      ],
+      "runtime_mapping": {
+        "example_state": "PENDING",
+        "recipe_pointer": null,
+        "unit": null,
+        "period_ref": null,
+        "mapping_basis_ref": null,
+        "example_value": null
+      },
+      "validation_evidence": {
+        "original_blank_value_verified_from_workbook_XML": true,
+        "structural_mapping": {
+          "path": "docs/input-contract-map.json",
+          "sha256": "793b0075f10ed8a39b839ebda819a70dc53125c2d2013a15520e2681c69b9f94",
+          "pointer": "/fields/2"
+        },
+        "runtime_observation": {
+          "path": "docs/review/miniuw-v1-policy-renewal-example/results.json",
+          "sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1",
+          "pointer": "/original_inputs/2"
+        },
+        "scope": "Exact catalogue/source/location and observed synthetic state; not independent financial validation"
+      },
+      "state": "PENDING_runtime_semantic_mapping",
+      "pending": [
+        "actual_deal_source_and_semantic_adoption_pending",
+        "financial_coverage_not_certified",
+        "original_field_mapping_or_definition_pending",
+        "original_value_missing"
+      ]
+    },
+    {
+      "requirement_or_variable": "INPUT_C10",
+      "label": "Market rent – 2BR",
+      "original_source": {
+        "path": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+        "sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+        "location": "Inputs!A10:F10",
+        "value_cell": "Inputs!C10",
+        "source_attribution_cell": "Inputs!F10"
+      },
+      "definition_current": {
+        "label_literal": "Market rent – 2BR",
+        "unit_literal": "$",
+        "note_literal": "",
+        "historical_requirement": "REQUIRED",
+        "proposed_value_kind": "monetary_quantity_with_source_unit",
+        "period_contract_provisional": "Según unidad literal; definición temporal pendiente",
+        "base_contract_provisional": "Per unit/month or per SF/month only after C7 and program mapping are explicit",
+        "financial_semantics_or_ranges_approved": false
+      },
+      "affected_modules_proposed": [
+        "M2 revenue/operations"
+      ],
+      "runtime_mapping": {
+        "example_state": "PENDING",
+        "recipe_pointer": null,
+        "unit": null,
+        "period_ref": null,
+        "mapping_basis_ref": null,
+        "example_value": null
+      },
+      "validation_evidence": {
+        "original_blank_value_verified_from_workbook_XML": true,
+        "structural_mapping": {
+          "path": "docs/input-contract-map.json",
+          "sha256": "793b0075f10ed8a39b839ebda819a70dc53125c2d2013a15520e2681c69b9f94",
+          "pointer": "/fields/3"
+        },
+        "runtime_observation": {
+          "path": "docs/review/miniuw-v1-policy-renewal-example/results.json",
+          "sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1",
+          "pointer": "/original_inputs/3"
+        },
+        "scope": "Exact catalogue/source/location and observed synthetic state; not independent financial validation"
+      },
+      "state": "PENDING_runtime_semantic_mapping",
+      "pending": [
+        "actual_deal_source_and_semantic_adoption_pending",
+        "financial_coverage_not_certified",
+        "original_field_mapping_or_definition_pending",
+        "original_value_missing"
+      ]
+    },
+    {
+      "requirement_or_variable": "INPUT_C11",
+      "label": "Market rent – 3BR",
+      "original_source": {
+        "path": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+        "sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+        "location": "Inputs!A11:F11",
+        "value_cell": "Inputs!C11",
+        "source_attribution_cell": "Inputs!F11"
+      },
+      "definition_current": {
+        "label_literal": "Market rent – 3BR",
+        "unit_literal": "$",
+        "note_literal": "Add rows for other unit types",
+        "historical_requirement": "REQUIRED",
+        "proposed_value_kind": "monetary_quantity_with_source_unit",
+        "period_contract_provisional": "Según unidad literal; definición temporal pendiente",
+        "base_contract_provisional": "Per unit/month or per SF/month only after C7 and program mapping are explicit",
+        "financial_semantics_or_ranges_approved": false
+      },
+      "affected_modules_proposed": [
+        "M2 revenue/operations"
+      ],
+      "runtime_mapping": {
+        "example_state": "PENDING",
+        "recipe_pointer": null,
+        "unit": null,
+        "period_ref": null,
+        "mapping_basis_ref": null,
+        "example_value": null
+      },
+      "validation_evidence": {
+        "original_blank_value_verified_from_workbook_XML": true,
+        "structural_mapping": {
+          "path": "docs/input-contract-map.json",
+          "sha256": "793b0075f10ed8a39b839ebda819a70dc53125c2d2013a15520e2681c69b9f94",
+          "pointer": "/fields/4"
+        },
+        "runtime_observation": {
+          "path": "docs/review/miniuw-v1-policy-renewal-example/results.json",
+          "sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1",
+          "pointer": "/original_inputs/4"
+        },
+        "scope": "Exact catalogue/source/location and observed synthetic state; not independent financial validation"
+      },
+      "state": "PENDING_runtime_semantic_mapping",
+      "pending": [
+        "actual_deal_source_and_semantic_adoption_pending",
+        "financial_coverage_not_certified",
+        "original_field_mapping_or_definition_pending",
+        "original_value_missing"
+      ]
+    },
+    {
+      "requirement_or_variable": "INPUT_C12",
+      "label": "Rent comps reference",
+      "original_source": {
+        "path": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+        "sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+        "location": "Inputs!A12:F12",
+        "value_cell": "Inputs!C12",
+        "source_attribution_cell": "Inputs!F12"
+      },
+      "definition_current": {
+        "label_literal": "Rent comps reference",
+        "unit_literal": "text",
+        "note_literal": "Comp names / survey date",
+        "historical_requirement": "REQUIRED",
+        "proposed_value_kind": "text_reference_or_requested_alternative",
+        "period_contract_provisional": "Según unidad literal; definición temporal pendiente",
+        "base_contract_provisional": "text",
+        "financial_semantics_or_ranges_approved": false
+      },
+      "affected_modules_proposed": [
+        "M2 revenue/operations"
+      ],
+      "runtime_mapping": {
+        "example_state": "PENDING",
+        "recipe_pointer": null,
+        "unit": null,
+        "period_ref": null,
+        "mapping_basis_ref": null,
+        "example_value": null
+      },
+      "validation_evidence": {
+        "original_blank_value_verified_from_workbook_XML": true,
+        "structural_mapping": {
+          "path": "docs/input-contract-map.json",
+          "sha256": "793b0075f10ed8a39b839ebda819a70dc53125c2d2013a15520e2681c69b9f94",
+          "pointer": "/fields/5"
+        },
+        "runtime_observation": {
+          "path": "docs/review/miniuw-v1-policy-renewal-example/results.json",
+          "sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1",
+          "pointer": "/original_inputs/5"
+        },
+        "scope": "Exact catalogue/source/location and observed synthetic state; not independent financial validation"
+      },
+      "state": "PENDING_runtime_semantic_mapping",
+      "pending": [
+        "actual_deal_source_and_semantic_adoption_pending",
+        "financial_coverage_not_certified",
+        "original_field_mapping_or_definition_pending",
+        "original_value_missing"
+      ]
+    },
+    {
+      "requirement_or_variable": "INPUT_C13",
+      "label": "Other income",
+      "original_source": {
+        "path": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+        "sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+        "location": "Inputs!A13:F13",
+        "value_cell": "Inputs!C13",
+        "source_attribution_cell": "Inputs!F13"
+      },
+      "definition_current": {
+        "label_literal": "Other income",
+        "unit_literal": "$/unit/month",
+        "note_literal": "",
+        "historical_requirement": "REQUIRED",
+        "proposed_value_kind": "monetary_quantity_with_source_unit",
+        "period_contract_provisional": "Según unidad literal; definición temporal pendiente",
+        "base_contract_provisional": "$/unit/month",
+        "financial_semantics_or_ranges_approved": false
+      },
+      "affected_modules_proposed": [
+        "M2 revenue/operations"
+      ],
+      "runtime_mapping": {
+        "example_state": "PENDING",
+        "recipe_pointer": null,
+        "unit": null,
+        "period_ref": null,
+        "mapping_basis_ref": null,
+        "example_value": null
+      },
+      "validation_evidence": {
+        "original_blank_value_verified_from_workbook_XML": true,
+        "structural_mapping": {
+          "path": "docs/input-contract-map.json",
+          "sha256": "793b0075f10ed8a39b839ebda819a70dc53125c2d2013a15520e2681c69b9f94",
+          "pointer": "/fields/6"
+        },
+        "runtime_observation": {
+          "path": "docs/review/miniuw-v1-policy-renewal-example/results.json",
+          "sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1",
+          "pointer": "/original_inputs/6"
+        },
+        "scope": "Exact catalogue/source/location and observed synthetic state; not independent financial validation"
+      },
+      "state": "PENDING_runtime_semantic_mapping",
+      "pending": [
+        "actual_deal_source_and_semantic_adoption_pending",
+        "financial_coverage_not_certified",
+        "original_field_mapping_or_definition_pending",
+        "original_value_missing"
+      ]
+    },
+    {
+      "requirement_or_variable": "INPUT_C14",
+      "label": "Residential vacancy & credit loss",
+      "original_source": {
+        "path": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+        "sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+        "location": "Inputs!A14:F14",
+        "value_cell": "Inputs!C14",
+        "source_attribution_cell": "Inputs!F14"
+      },
+      "definition_current": {
+        "label_literal": "Residential vacancy & credit loss",
+        "unit_literal": "decimal",
+        "note_literal": "",
+        "historical_requirement": "REQUIRED",
+        "proposed_value_kind": "explicit_dimensionless_ratio_or_growth",
+        "period_contract_provisional": "Según unidad literal; definición temporal pendiente",
+        "base_contract_provisional": "decimal",
+        "financial_semantics_or_ranges_approved": false
+      },
+      "affected_modules_proposed": [
+        "M2 revenue/operations"
+      ],
+      "runtime_mapping": {
+        "example_state": "PENDING",
+        "recipe_pointer": null,
+        "unit": null,
+        "period_ref": null,
+        "mapping_basis_ref": null,
+        "example_value": null
+      },
+      "validation_evidence": {
+        "original_blank_value_verified_from_workbook_XML": true,
+        "structural_mapping": {
+          "path": "docs/input-contract-map.json",
+          "sha256": "793b0075f10ed8a39b839ebda819a70dc53125c2d2013a15520e2681c69b9f94",
+          "pointer": "/fields/7"
+        },
+        "runtime_observation": {
+          "path": "docs/review/miniuw-v1-policy-renewal-example/results.json",
+          "sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1",
+          "pointer": "/original_inputs/7"
+        },
+        "scope": "Exact catalogue/source/location and observed synthetic state; not independent financial validation"
+      },
+      "state": "PENDING_runtime_semantic_mapping",
+      "pending": [
+        "actual_deal_source_and_semantic_adoption_pending",
+        "financial_coverage_not_certified",
+        "original_field_mapping_or_definition_pending",
+        "original_value_missing"
+      ]
+    },
+    {
+      "requirement_or_variable": "INPUT_C15",
+      "label": "Lease-up concessions",
+      "original_source": {
+        "path": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+        "sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+        "location": "Inputs!A15:F15",
+        "value_cell": "Inputs!C15",
+        "source_attribution_cell": "Inputs!F15"
+      },
+      "definition_current": {
+        "label_literal": "Lease-up concessions",
+        "unit_literal": "decimal of rent",
+        "note_literal": "",
+        "historical_requirement": "REQUIRED",
+        "proposed_value_kind": "explicit_dimensionless_ratio_or_growth",
+        "period_contract_provisional": "Según unidad literal; definición temporal pendiente",
+        "base_contract_provisional": "decimal of rent",
+        "financial_semantics_or_ranges_approved": false
+      },
+      "affected_modules_proposed": [
+        "M2 revenue/operations"
+      ],
+      "runtime_mapping": {
+        "example_state": "PENDING",
+        "recipe_pointer": null,
+        "unit": null,
+        "period_ref": null,
+        "mapping_basis_ref": null,
+        "example_value": null
+      },
+      "validation_evidence": {
+        "original_blank_value_verified_from_workbook_XML": true,
+        "structural_mapping": {
+          "path": "docs/input-contract-map.json",
+          "sha256": "793b0075f10ed8a39b839ebda819a70dc53125c2d2013a15520e2681c69b9f94",
+          "pointer": "/fields/8"
+        },
+        "runtime_observation": {
+          "path": "docs/review/miniuw-v1-policy-renewal-example/results.json",
+          "sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1",
+          "pointer": "/original_inputs/8"
+        },
+        "scope": "Exact catalogue/source/location and observed synthetic state; not independent financial validation"
+      },
+      "state": "PENDING_runtime_semantic_mapping",
+      "pending": [
+        "actual_deal_source_and_semantic_adoption_pending",
+        "financial_coverage_not_certified",
+        "original_field_mapping_or_definition_pending",
+        "original_value_missing"
+      ]
+    },
+    {
+      "requirement_or_variable": "INPUT_C16",
+      "label": "Retail rent NNN",
+      "original_source": {
+        "path": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+        "sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+        "location": "Inputs!A16:F16",
+        "value_cell": "Inputs!C16",
+        "source_attribution_cell": "Inputs!F16"
+      },
+      "definition_current": {
+        "label_literal": "Retail rent NNN",
+        "unit_literal": "$/SF/yr",
+        "note_literal": "Only if the plans show retail",
+        "historical_requirement": "IF APPLIES",
+        "proposed_value_kind": "monetary_quantity_with_source_unit",
+        "period_contract_provisional": "Según unidad literal; definición temporal pendiente",
+        "base_contract_provisional": "$/SF/yr",
+        "financial_semantics_or_ranges_approved": false
+      },
+      "affected_modules_proposed": [
+        "M2 revenue/operations"
+      ],
+      "runtime_mapping": {
+        "example_state": "PENDING",
+        "recipe_pointer": null,
+        "unit": null,
+        "period_ref": null,
+        "mapping_basis_ref": null,
+        "example_value": null
+      },
+      "validation_evidence": {
+        "original_blank_value_verified_from_workbook_XML": true,
+        "structural_mapping": {
+          "path": "docs/input-contract-map.json",
+          "sha256": "793b0075f10ed8a39b839ebda819a70dc53125c2d2013a15520e2681c69b9f94",
+          "pointer": "/fields/9"
+        },
+        "runtime_observation": {
+          "path": "docs/review/miniuw-v1-policy-renewal-example/results.json",
+          "sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1",
+          "pointer": "/original_inputs/9"
+        },
+        "scope": "Exact catalogue/source/location and observed synthetic state; not independent financial validation"
+      },
+      "state": "PENDING_runtime_semantic_mapping",
+      "pending": [
+        "actual_deal_source_and_semantic_adoption_pending",
+        "financial_coverage_not_certified",
+        "original_field_mapping_or_definition_pending",
+        "original_value_missing"
+      ]
+    },
+    {
+      "requirement_or_variable": "INPUT_C17",
+      "label": "Restaurant rent NNN",
+      "original_source": {
+        "path": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+        "sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+        "location": "Inputs!A17:F17",
+        "value_cell": "Inputs!C17",
+        "source_attribution_cell": "Inputs!F17"
+      },
+      "definition_current": {
+        "label_literal": "Restaurant rent NNN",
+        "unit_literal": "$/SF/yr",
+        "note_literal": "Only if the plans show restaurant",
+        "historical_requirement": "IF APPLIES",
+        "proposed_value_kind": "monetary_quantity_with_source_unit",
+        "period_contract_provisional": "Según unidad literal; definición temporal pendiente",
+        "base_contract_provisional": "$/SF/yr",
+        "financial_semantics_or_ranges_approved": false
+      },
+      "affected_modules_proposed": [
+        "M2 revenue/operations"
+      ],
+      "runtime_mapping": {
+        "example_state": "PENDING",
+        "recipe_pointer": null,
+        "unit": null,
+        "period_ref": null,
+        "mapping_basis_ref": null,
+        "example_value": null
+      },
+      "validation_evidence": {
+        "original_blank_value_verified_from_workbook_XML": true,
+        "structural_mapping": {
+          "path": "docs/input-contract-map.json",
+          "sha256": "793b0075f10ed8a39b839ebda819a70dc53125c2d2013a15520e2681c69b9f94",
+          "pointer": "/fields/10"
+        },
+        "runtime_observation": {
+          "path": "docs/review/miniuw-v1-policy-renewal-example/results.json",
+          "sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1",
+          "pointer": "/original_inputs/10"
+        },
+        "scope": "Exact catalogue/source/location and observed synthetic state; not independent financial validation"
+      },
+      "state": "PENDING_runtime_semantic_mapping",
+      "pending": [
+        "actual_deal_source_and_semantic_adoption_pending",
+        "financial_coverage_not_certified",
+        "original_field_mapping_or_definition_pending",
+        "original_value_missing"
+      ]
+    },
+    {
+      "requirement_or_variable": "INPUT_C18",
+      "label": "Office rent NNN",
+      "original_source": {
+        "path": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+        "sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+        "location": "Inputs!A18:F18",
+        "value_cell": "Inputs!C18",
+        "source_attribution_cell": "Inputs!F18"
+      },
+      "definition_current": {
+        "label_literal": "Office rent NNN",
+        "unit_literal": "$/SF/yr",
+        "note_literal": "Only if the plans show office",
+        "historical_requirement": "IF APPLIES",
+        "proposed_value_kind": "monetary_quantity_with_source_unit",
+        "period_contract_provisional": "Según unidad literal; definición temporal pendiente",
+        "base_contract_provisional": "$/SF/yr",
+        "financial_semantics_or_ranges_approved": false
+      },
+      "affected_modules_proposed": [
+        "M2 revenue/operations"
+      ],
+      "runtime_mapping": {
+        "example_state": "PENDING",
+        "recipe_pointer": null,
+        "unit": null,
+        "period_ref": null,
+        "mapping_basis_ref": null,
+        "example_value": null
+      },
+      "validation_evidence": {
+        "original_blank_value_verified_from_workbook_XML": true,
+        "structural_mapping": {
+          "path": "docs/input-contract-map.json",
+          "sha256": "793b0075f10ed8a39b839ebda819a70dc53125c2d2013a15520e2681c69b9f94",
+          "pointer": "/fields/11"
+        },
+        "runtime_observation": {
+          "path": "docs/review/miniuw-v1-policy-renewal-example/results.json",
+          "sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1",
+          "pointer": "/original_inputs/11"
+        },
+        "scope": "Exact catalogue/source/location and observed synthetic state; not independent financial validation"
+      },
+      "state": "PENDING_runtime_semantic_mapping",
+      "pending": [
+        "actual_deal_source_and_semantic_adoption_pending",
+        "financial_coverage_not_certified",
+        "original_field_mapping_or_definition_pending",
+        "original_value_missing"
+      ]
+    },
+    {
+      "requirement_or_variable": "INPUT_C19",
+      "label": "Commercial vacancy",
+      "original_source": {
+        "path": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+        "sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+        "location": "Inputs!A19:F19",
+        "value_cell": "Inputs!C19",
+        "source_attribution_cell": "Inputs!F19"
+      },
+      "definition_current": {
+        "label_literal": "Commercial vacancy",
+        "unit_literal": "decimal",
+        "note_literal": "Only if commercial",
+        "historical_requirement": "IF APPLIES",
+        "proposed_value_kind": "explicit_dimensionless_ratio_or_growth",
+        "period_contract_provisional": "Según unidad literal; definición temporal pendiente",
+        "base_contract_provisional": "decimal",
+        "financial_semantics_or_ranges_approved": false
+      },
+      "affected_modules_proposed": [
+        "M2 revenue/operations"
+      ],
+      "runtime_mapping": {
+        "example_state": "PENDING",
+        "recipe_pointer": null,
+        "unit": null,
+        "period_ref": null,
+        "mapping_basis_ref": null,
+        "example_value": null
+      },
+      "validation_evidence": {
+        "original_blank_value_verified_from_workbook_XML": true,
+        "structural_mapping": {
+          "path": "docs/input-contract-map.json",
+          "sha256": "793b0075f10ed8a39b839ebda819a70dc53125c2d2013a15520e2681c69b9f94",
+          "pointer": "/fields/12"
+        },
+        "runtime_observation": {
+          "path": "docs/review/miniuw-v1-policy-renewal-example/results.json",
+          "sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1",
+          "pointer": "/original_inputs/12"
+        },
+        "scope": "Exact catalogue/source/location and observed synthetic state; not independent financial validation"
+      },
+      "state": "PENDING_runtime_semantic_mapping",
+      "pending": [
+        "actual_deal_source_and_semantic_adoption_pending",
+        "financial_coverage_not_certified",
+        "original_field_mapping_or_definition_pending",
+        "original_value_missing"
+      ]
+    },
+    {
+      "requirement_or_variable": "INPUT_C20",
+      "label": "Commercial non-recoverable",
+      "original_source": {
+        "path": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+        "sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+        "location": "Inputs!A20:F20",
+        "value_cell": "Inputs!C20",
+        "source_attribution_cell": "Inputs!F20"
+      },
+      "definition_current": {
+        "label_literal": "Commercial non-recoverable",
+        "unit_literal": "decimal",
+        "note_literal": "Only if commercial",
+        "historical_requirement": "IF APPLIES",
+        "proposed_value_kind": "explicit_dimensionless_ratio_or_growth",
+        "period_contract_provisional": "Según unidad literal; definición temporal pendiente",
+        "base_contract_provisional": "decimal",
+        "financial_semantics_or_ranges_approved": false
+      },
+      "affected_modules_proposed": [
+        "M2 revenue/operations"
+      ],
+      "runtime_mapping": {
+        "example_state": "PENDING",
+        "recipe_pointer": null,
+        "unit": null,
+        "period_ref": null,
+        "mapping_basis_ref": null,
+        "example_value": null
+      },
+      "validation_evidence": {
+        "original_blank_value_verified_from_workbook_XML": true,
+        "structural_mapping": {
+          "path": "docs/input-contract-map.json",
+          "sha256": "793b0075f10ed8a39b839ebda819a70dc53125c2d2013a15520e2681c69b9f94",
+          "pointer": "/fields/13"
+        },
+        "runtime_observation": {
+          "path": "docs/review/miniuw-v1-policy-renewal-example/results.json",
+          "sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1",
+          "pointer": "/original_inputs/13"
+        },
+        "scope": "Exact catalogue/source/location and observed synthetic state; not independent financial validation"
+      },
+      "state": "PENDING_runtime_semantic_mapping",
+      "pending": [
+        "actual_deal_source_and_semantic_adoption_pending",
+        "financial_coverage_not_certified",
+        "original_field_mapping_or_definition_pending",
+        "original_value_missing"
+      ]
+    },
+    {
+      "requirement_or_variable": "INPUT_C21",
+      "label": "Commercial lease start after TCO",
+      "original_source": {
+        "path": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+        "sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+        "location": "Inputs!A21:F21",
+        "value_cell": "Inputs!C21",
+        "source_attribution_cell": "Inputs!F21"
+      },
+      "definition_current": {
+        "label_literal": "Commercial lease start after TCO",
+        "unit_literal": "months",
+        "note_literal": "Only if commercial",
+        "historical_requirement": "IF APPLIES",
+        "proposed_value_kind": "duration; integer/fractional convention pending",
+        "period_contract_provisional": "Según unidad literal; definición temporal pendiente",
+        "base_contract_provisional": "months",
+        "financial_semantics_or_ranges_approved": false
+      },
+      "affected_modules_proposed": [
+        "M2 revenue/operations"
+      ],
+      "runtime_mapping": {
+        "example_state": "PENDING",
+        "recipe_pointer": null,
+        "unit": null,
+        "period_ref": null,
+        "mapping_basis_ref": null,
+        "example_value": null
+      },
+      "validation_evidence": {
+        "original_blank_value_verified_from_workbook_XML": true,
+        "structural_mapping": {
+          "path": "docs/input-contract-map.json",
+          "sha256": "793b0075f10ed8a39b839ebda819a70dc53125c2d2013a15520e2681c69b9f94",
+          "pointer": "/fields/14"
+        },
+        "runtime_observation": {
+          "path": "docs/review/miniuw-v1-policy-renewal-example/results.json",
+          "sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1",
+          "pointer": "/original_inputs/14"
+        },
+        "scope": "Exact catalogue/source/location and observed synthetic state; not independent financial validation"
+      },
+      "state": "PENDING_runtime_semantic_mapping",
+      "pending": [
+        "actual_deal_source_and_semantic_adoption_pending",
+        "financial_coverage_not_certified",
+        "original_field_mapping_or_definition_pending",
+        "original_value_missing"
+      ]
+    },
+    {
+      "requirement_or_variable": "INPUT_C25",
+      "label": "Utility allowance – Studio",
+      "original_source": {
+        "path": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+        "sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+        "location": "Inputs!A25:F25",
+        "value_cell": "Inputs!C25",
+        "source_attribution_cell": "Inputs!F25"
+      },
+      "definition_current": {
+        "label_literal": "Utility allowance – Studio",
+        "unit_literal": "$/month",
+        "note_literal": "",
+        "historical_requirement": "IF APPLIES",
+        "proposed_value_kind": "monetary_quantity_with_source_unit",
+        "period_contract_provisional": "Según unidad literal; definición temporal pendiente",
+        "base_contract_provisional": "$/month",
+        "financial_semantics_or_ranges_approved": false
+      },
+      "affected_modules_proposed": [
+        "M2 revenue/operations"
+      ],
+      "runtime_mapping": {
+        "example_state": "PENDING",
+        "recipe_pointer": null,
+        "unit": null,
+        "period_ref": null,
+        "mapping_basis_ref": null,
+        "example_value": null
+      },
+      "validation_evidence": {
+        "original_blank_value_verified_from_workbook_XML": true,
+        "structural_mapping": {
+          "path": "docs/input-contract-map.json",
+          "sha256": "793b0075f10ed8a39b839ebda819a70dc53125c2d2013a15520e2681c69b9f94",
+          "pointer": "/fields/15"
+        },
+        "runtime_observation": {
+          "path": "docs/review/miniuw-v1-policy-renewal-example/results.json",
+          "sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1",
+          "pointer": "/original_inputs/15"
+        },
+        "scope": "Exact catalogue/source/location and observed synthetic state; not independent financial validation"
+      },
+      "state": "PENDING_runtime_semantic_mapping",
+      "pending": [
+        "actual_deal_source_and_semantic_adoption_pending",
+        "financial_coverage_not_certified",
+        "original_field_mapping_or_definition_pending",
+        "original_value_missing"
+      ]
+    },
+    {
+      "requirement_or_variable": "INPUT_C26",
+      "label": "Utility allowance – 1BR",
+      "original_source": {
+        "path": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+        "sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+        "location": "Inputs!A26:F26",
+        "value_cell": "Inputs!C26",
+        "source_attribution_cell": "Inputs!F26"
+      },
+      "definition_current": {
+        "label_literal": "Utility allowance – 1BR",
+        "unit_literal": "$/month",
+        "note_literal": "",
+        "historical_requirement": "IF APPLIES",
+        "proposed_value_kind": "monetary_quantity_with_source_unit",
+        "period_contract_provisional": "Según unidad literal; definición temporal pendiente",
+        "base_contract_provisional": "$/month",
+        "financial_semantics_or_ranges_approved": false
+      },
+      "affected_modules_proposed": [
+        "M2 revenue/operations"
+      ],
+      "runtime_mapping": {
+        "example_state": "PENDING",
+        "recipe_pointer": null,
+        "unit": null,
+        "period_ref": null,
+        "mapping_basis_ref": null,
+        "example_value": null
+      },
+      "validation_evidence": {
+        "original_blank_value_verified_from_workbook_XML": true,
+        "structural_mapping": {
+          "path": "docs/input-contract-map.json",
+          "sha256": "793b0075f10ed8a39b839ebda819a70dc53125c2d2013a15520e2681c69b9f94",
+          "pointer": "/fields/16"
+        },
+        "runtime_observation": {
+          "path": "docs/review/miniuw-v1-policy-renewal-example/results.json",
+          "sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1",
+          "pointer": "/original_inputs/16"
+        },
+        "scope": "Exact catalogue/source/location and observed synthetic state; not independent financial validation"
+      },
+      "state": "PENDING_runtime_semantic_mapping",
+      "pending": [
+        "actual_deal_source_and_semantic_adoption_pending",
+        "financial_coverage_not_certified",
+        "original_field_mapping_or_definition_pending",
+        "original_value_missing"
+      ]
+    },
+    {
+      "requirement_or_variable": "INPUT_C27",
+      "label": "Utility allowance – 2BR",
+      "original_source": {
+        "path": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+        "sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+        "location": "Inputs!A27:F27",
+        "value_cell": "Inputs!C27",
+        "source_attribution_cell": "Inputs!F27"
+      },
+      "definition_current": {
+        "label_literal": "Utility allowance – 2BR",
+        "unit_literal": "$/month",
+        "note_literal": "",
+        "historical_requirement": "IF APPLIES",
+        "proposed_value_kind": "monetary_quantity_with_source_unit",
+        "period_contract_provisional": "Según unidad literal; definición temporal pendiente",
+        "base_contract_provisional": "$/month",
+        "financial_semantics_or_ranges_approved": false
+      },
+      "affected_modules_proposed": [
+        "M2 revenue/operations"
+      ],
+      "runtime_mapping": {
+        "example_state": "PENDING",
+        "recipe_pointer": null,
+        "unit": null,
+        "period_ref": null,
+        "mapping_basis_ref": null,
+        "example_value": null
+      },
+      "validation_evidence": {
+        "original_blank_value_verified_from_workbook_XML": true,
+        "structural_mapping": {
+          "path": "docs/input-contract-map.json",
+          "sha256": "793b0075f10ed8a39b839ebda819a70dc53125c2d2013a15520e2681c69b9f94",
+          "pointer": "/fields/17"
+        },
+        "runtime_observation": {
+          "path": "docs/review/miniuw-v1-policy-renewal-example/results.json",
+          "sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1",
+          "pointer": "/original_inputs/17"
+        },
+        "scope": "Exact catalogue/source/location and observed synthetic state; not independent financial validation"
+      },
+      "state": "PENDING_runtime_semantic_mapping",
+      "pending": [
+        "actual_deal_source_and_semantic_adoption_pending",
+        "financial_coverage_not_certified",
+        "original_field_mapping_or_definition_pending",
+        "original_value_missing"
+      ]
+    },
+    {
+      "requirement_or_variable": "INPUT_C28",
+      "label": "Utility allowance – 3BR",
+      "original_source": {
+        "path": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+        "sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+        "location": "Inputs!A28:F28",
+        "value_cell": "Inputs!C28",
+        "source_attribution_cell": "Inputs!F28"
+      },
+      "definition_current": {
+        "label_literal": "Utility allowance – 3BR",
+        "unit_literal": "$/month",
+        "note_literal": "",
+        "historical_requirement": "IF APPLIES",
+        "proposed_value_kind": "monetary_quantity_with_source_unit",
+        "period_contract_provisional": "Según unidad literal; definición temporal pendiente",
+        "base_contract_provisional": "$/month",
+        "financial_semantics_or_ranges_approved": false
+      },
+      "affected_modules_proposed": [
+        "M2 revenue/operations"
+      ],
+      "runtime_mapping": {
+        "example_state": "PENDING",
+        "recipe_pointer": null,
+        "unit": null,
+        "period_ref": null,
+        "mapping_basis_ref": null,
+        "example_value": null
+      },
+      "validation_evidence": {
+        "original_blank_value_verified_from_workbook_XML": true,
+        "structural_mapping": {
+          "path": "docs/input-contract-map.json",
+          "sha256": "793b0075f10ed8a39b839ebda819a70dc53125c2d2013a15520e2681c69b9f94",
+          "pointer": "/fields/18"
+        },
+        "runtime_observation": {
+          "path": "docs/review/miniuw-v1-policy-renewal-example/results.json",
+          "sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1",
+          "pointer": "/original_inputs/18"
+        },
+        "scope": "Exact catalogue/source/location and observed synthetic state; not independent financial validation"
+      },
+      "state": "PENDING_runtime_semantic_mapping",
+      "pending": [
+        "actual_deal_source_and_semantic_adoption_pending",
+        "financial_coverage_not_certified",
+        "original_field_mapping_or_definition_pending",
+        "original_value_missing"
+      ]
+    },
+    {
+      "requirement_or_variable": "INPUT_C32",
+      "label": "Land / asking price",
+      "original_source": {
+        "path": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+        "sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+        "location": "Inputs!A32:F32",
+        "value_cell": "Inputs!C32",
+        "source_attribution_cell": "Inputs!F32"
+      },
+      "definition_current": {
+        "label_literal": "Land / asking price",
+        "unit_literal": "$",
+        "note_literal": "Blank = screen reports land value (RLV) only",
+        "historical_requirement": "OPTIONAL",
+        "proposed_value_kind": "monetary_quantity_with_source_unit",
+        "period_contract_provisional": "Según unidad literal; definición temporal pendiente",
+        "base_contract_provisional": "$",
+        "financial_semantics_or_ranges_approved": false
+      },
+      "affected_modules_proposed": [
+        "M3 development budget",
+        "M5 capital/debt"
+      ],
+      "runtime_mapping": {
+        "example_state": "PENDING",
+        "recipe_pointer": null,
+        "unit": null,
+        "period_ref": null,
+        "mapping_basis_ref": null,
+        "example_value": null
+      },
+      "validation_evidence": {
+        "original_blank_value_verified_from_workbook_XML": true,
+        "structural_mapping": {
+          "path": "docs/input-contract-map.json",
+          "sha256": "793b0075f10ed8a39b839ebda819a70dc53125c2d2013a15520e2681c69b9f94",
+          "pointer": "/fields/19"
+        },
+        "runtime_observation": {
+          "path": "docs/review/miniuw-v1-policy-renewal-example/results.json",
+          "sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1",
+          "pointer": "/original_inputs/19"
+        },
+        "scope": "Exact catalogue/source/location and observed synthetic state; not independent financial validation"
+      },
+      "state": "PENDING_runtime_semantic_mapping",
+      "pending": [
+        "actual_deal_source_and_semantic_adoption_pending",
+        "financial_coverage_not_certified",
+        "original_field_mapping_or_definition_pending",
+        "original_value_missing"
+      ]
+    },
+    {
+      "requirement_or_variable": "INPUT_C33",
+      "label": "Land closing costs",
+      "original_source": {
+        "path": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+        "sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+        "location": "Inputs!A33:F33",
+        "value_cell": "Inputs!C33",
+        "source_attribution_cell": "Inputs!F33"
+      },
+      "definition_current": {
+        "label_literal": "Land closing costs",
+        "unit_literal": "decimal",
+        "note_literal": "",
+        "historical_requirement": "REQUIRED",
+        "proposed_value_kind": "explicit_dimensionless_ratio_or_growth",
+        "period_contract_provisional": "Según unidad literal; definición temporal pendiente",
+        "base_contract_provisional": "decimal",
+        "financial_semantics_or_ranges_approved": false
+      },
+      "affected_modules_proposed": [
+        "M3 development budget",
+        "M5 capital/debt"
+      ],
+      "runtime_mapping": {
+        "example_state": "PENDING",
+        "recipe_pointer": null,
+        "unit": null,
+        "period_ref": null,
+        "mapping_basis_ref": null,
+        "example_value": null
+      },
+      "validation_evidence": {
+        "original_blank_value_verified_from_workbook_XML": true,
+        "structural_mapping": {
+          "path": "docs/input-contract-map.json",
+          "sha256": "793b0075f10ed8a39b839ebda819a70dc53125c2d2013a15520e2681c69b9f94",
+          "pointer": "/fields/20"
+        },
+        "runtime_observation": {
+          "path": "docs/review/miniuw-v1-policy-renewal-example/results.json",
+          "sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1",
+          "pointer": "/original_inputs/20"
+        },
+        "scope": "Exact catalogue/source/location and observed synthetic state; not independent financial validation"
+      },
+      "state": "PENDING_runtime_semantic_mapping",
+      "pending": [
+        "actual_deal_source_and_semantic_adoption_pending",
+        "financial_coverage_not_certified",
+        "original_field_mapping_or_definition_pending",
+        "original_value_missing"
+      ]
+    },
+    {
+      "requirement_or_variable": "INPUT_C34",
+      "label": "Hard cost basis",
+      "original_source": {
+        "path": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+        "sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+        "location": "Inputs!A34:F34",
+        "value_cell": "Inputs!C34",
+        "source_attribution_cell": "Inputs!F34"
+      },
+      "definition_current": {
+        "label_literal": "Hard cost basis",
+        "unit_literal": "$/GSF / $/UNIT / TOTAL",
+        "note_literal": "",
+        "historical_requirement": "REQUIRED",
+        "proposed_value_kind": "enum_cost_basis",
+        "period_contract_provisional": "Según unidad literal; definición temporal pendiente",
+        "base_contract_provisional": "$/GSF / $/UNIT / TOTAL",
+        "financial_semantics_or_ranges_approved": false
+      },
+      "affected_modules_proposed": [
+        "M3 development budget",
+        "M5 capital/debt"
+      ],
+      "runtime_mapping": {
+        "example_state": "PENDING",
+        "recipe_pointer": null,
+        "unit": null,
+        "period_ref": null,
+        "mapping_basis_ref": null,
+        "example_value": null
+      },
+      "validation_evidence": {
+        "original_blank_value_verified_from_workbook_XML": true,
+        "structural_mapping": {
+          "path": "docs/input-contract-map.json",
+          "sha256": "793b0075f10ed8a39b839ebda819a70dc53125c2d2013a15520e2681c69b9f94",
+          "pointer": "/fields/21"
+        },
+        "runtime_observation": {
+          "path": "docs/review/miniuw-v1-policy-renewal-example/results.json",
+          "sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1",
+          "pointer": "/original_inputs/21"
+        },
+        "scope": "Exact catalogue/source/location and observed synthetic state; not independent financial validation"
+      },
+      "state": "PENDING_runtime_semantic_mapping",
+      "pending": [
+        "actual_deal_source_and_semantic_adoption_pending",
+        "financial_coverage_not_certified",
+        "original_field_mapping_or_definition_pending",
+        "original_value_missing"
+      ]
+    },
+    {
+      "requirement_or_variable": "INPUT_C35",
+      "label": "Hard cost value",
+      "original_source": {
+        "path": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+        "sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+        "location": "Inputs!A35:F35",
+        "value_cell": "Inputs!C35",
+        "source_attribution_cell": "Inputs!F35"
+      },
+      "definition_current": {
+        "label_literal": "Hard cost value",
+        "unit_literal": "per basis",
+        "note_literal": "Vertical building, excl. parking & site",
+        "historical_requirement": "REQUIRED",
+        "proposed_value_kind": "money_per_declared_cost_basis",
+        "period_contract_provisional": "Según unidad literal; definición temporal pendiente",
+        "base_contract_provisional": "per basis",
+        "financial_semantics_or_ranges_approved": false
+      },
+      "affected_modules_proposed": [
+        "M3 development budget",
+        "M5 capital/debt"
+      ],
+      "runtime_mapping": {
+        "example_state": "PENDING",
+        "recipe_pointer": null,
+        "unit": null,
+        "period_ref": null,
+        "mapping_basis_ref": null,
+        "example_value": null
+      },
+      "validation_evidence": {
+        "original_blank_value_verified_from_workbook_XML": true,
+        "structural_mapping": {
+          "path": "docs/input-contract-map.json",
+          "sha256": "793b0075f10ed8a39b839ebda819a70dc53125c2d2013a15520e2681c69b9f94",
+          "pointer": "/fields/22"
+        },
+        "runtime_observation": {
+          "path": "docs/review/miniuw-v1-policy-renewal-example/results.json",
+          "sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1",
+          "pointer": "/original_inputs/22"
+        },
+        "scope": "Exact catalogue/source/location and observed synthetic state; not independent financial validation"
+      },
+      "state": "PENDING_runtime_semantic_mapping",
+      "pending": [
+        "actual_deal_source_and_semantic_adoption_pending",
+        "financial_coverage_not_certified",
+        "original_field_mapping_or_definition_pending",
+        "original_value_missing"
+      ]
+    },
+    {
+      "requirement_or_variable": "INPUT_C36",
+      "label": "Building GSF",
+      "original_source": {
+        "path": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+        "sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+        "location": "Inputs!A36:F36",
+        "value_cell": "Inputs!C36",
+        "source_attribution_cell": "Inputs!F36"
+      },
+      "definition_current": {
+        "label_literal": "Building GSF",
+        "unit_literal": "SF",
+        "note_literal": "Only if basis = $/GSF and the plans show GBA as TBD",
+        "historical_requirement": "IF APPLIES",
+        "proposed_value_kind": "documented_area_SF",
+        "period_contract_provisional": "Según unidad literal; definición temporal pendiente",
+        "base_contract_provisional": "SF",
+        "financial_semantics_or_ranges_approved": false
+      },
+      "affected_modules_proposed": [
+        "M3 development budget",
+        "M5 capital/debt"
+      ],
+      "runtime_mapping": {
+        "example_state": "PENDING",
+        "recipe_pointer": null,
+        "unit": null,
+        "period_ref": null,
+        "mapping_basis_ref": null,
+        "example_value": null
+      },
+      "validation_evidence": {
+        "original_blank_value_verified_from_workbook_XML": true,
+        "structural_mapping": {
+          "path": "docs/input-contract-map.json",
+          "sha256": "793b0075f10ed8a39b839ebda819a70dc53125c2d2013a15520e2681c69b9f94",
+          "pointer": "/fields/23"
+        },
+        "runtime_observation": {
+          "path": "docs/review/miniuw-v1-policy-renewal-example/results.json",
+          "sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1",
+          "pointer": "/original_inputs/23"
+        },
+        "scope": "Exact catalogue/source/location and observed synthetic state; not independent financial validation"
+      },
+      "state": "PENDING_runtime_semantic_mapping",
+      "pending": [
+        "actual_deal_source_and_semantic_adoption_pending",
+        "financial_coverage_not_certified",
+        "original_field_mapping_or_definition_pending",
+        "original_value_missing"
+      ]
+    },
+    {
+      "requirement_or_variable": "INPUT_C37",
+      "label": "Parking cost",
+      "original_source": {
+        "path": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+        "sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+        "location": "Inputs!A37:F37",
+        "value_cell": "Inputs!C37",
+        "source_attribution_cell": "Inputs!F37"
+      },
+      "definition_current": {
+        "label_literal": "Parking cost",
+        "unit_literal": "$/space",
+        "note_literal": "",
+        "historical_requirement": "REQUIRED",
+        "proposed_value_kind": "monetary_quantity_with_source_unit",
+        "period_contract_provisional": "Según unidad literal; definición temporal pendiente",
+        "base_contract_provisional": "$/space",
+        "financial_semantics_or_ranges_approved": false
+      },
+      "affected_modules_proposed": [
+        "M3 development budget",
+        "M5 capital/debt"
+      ],
+      "runtime_mapping": {
+        "example_state": "PENDING",
+        "recipe_pointer": null,
+        "unit": null,
+        "period_ref": null,
+        "mapping_basis_ref": null,
+        "example_value": null
+      },
+      "validation_evidence": {
+        "original_blank_value_verified_from_workbook_XML": true,
+        "structural_mapping": {
+          "path": "docs/input-contract-map.json",
+          "sha256": "793b0075f10ed8a39b839ebda819a70dc53125c2d2013a15520e2681c69b9f94",
+          "pointer": "/fields/24"
+        },
+        "runtime_observation": {
+          "path": "docs/review/miniuw-v1-policy-renewal-example/results.json",
+          "sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1",
+          "pointer": "/original_inputs/24"
+        },
+        "scope": "Exact catalogue/source/location and observed synthetic state; not independent financial validation"
+      },
+      "state": "PENDING_runtime_semantic_mapping",
+      "pending": [
+        "actual_deal_source_and_semantic_adoption_pending",
+        "financial_coverage_not_certified",
+        "original_field_mapping_or_definition_pending",
+        "original_value_missing"
+      ]
+    },
+    {
+      "requirement_or_variable": "INPUT_C38",
+      "label": "Site work",
+      "original_source": {
+        "path": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+        "sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+        "location": "Inputs!A38:F38",
+        "value_cell": "Inputs!C38",
+        "source_attribution_cell": "Inputs!F38"
+      },
+      "definition_current": {
+        "label_literal": "Site work",
+        "unit_literal": "$",
+        "note_literal": "",
+        "historical_requirement": "REQUIRED",
+        "proposed_value_kind": "monetary_quantity_with_source_unit",
+        "period_contract_provisional": "Según unidad literal; definición temporal pendiente",
+        "base_contract_provisional": "$",
+        "financial_semantics_or_ranges_approved": false
+      },
+      "affected_modules_proposed": [
+        "M3 development budget",
+        "M5 capital/debt"
+      ],
+      "runtime_mapping": {
+        "example_state": "PENDING",
+        "recipe_pointer": null,
+        "unit": null,
+        "period_ref": null,
+        "mapping_basis_ref": null,
+        "example_value": null
+      },
+      "validation_evidence": {
+        "original_blank_value_verified_from_workbook_XML": true,
+        "structural_mapping": {
+          "path": "docs/input-contract-map.json",
+          "sha256": "793b0075f10ed8a39b839ebda819a70dc53125c2d2013a15520e2681c69b9f94",
+          "pointer": "/fields/25"
+        },
+        "runtime_observation": {
+          "path": "docs/review/miniuw-v1-policy-renewal-example/results.json",
+          "sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1",
+          "pointer": "/original_inputs/25"
+        },
+        "scope": "Exact catalogue/source/location and observed synthetic state; not independent financial validation"
+      },
+      "state": "PENDING_runtime_semantic_mapping",
+      "pending": [
+        "actual_deal_source_and_semantic_adoption_pending",
+        "financial_coverage_not_certified",
+        "original_field_mapping_or_definition_pending",
+        "original_value_missing"
+      ]
+    },
+    {
+      "requirement_or_variable": "INPUT_C39",
+      "label": "Hard contingency",
+      "original_source": {
+        "path": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+        "sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+        "location": "Inputs!A39:F39",
+        "value_cell": "Inputs!C39",
+        "source_attribution_cell": "Inputs!F39"
+      },
+      "definition_current": {
+        "label_literal": "Hard contingency",
+        "unit_literal": "decimal",
+        "note_literal": "",
+        "historical_requirement": "REQUIRED",
+        "proposed_value_kind": "explicit_dimensionless_ratio_or_growth",
+        "period_contract_provisional": "Según unidad literal; definición temporal pendiente",
+        "base_contract_provisional": "decimal",
+        "financial_semantics_or_ranges_approved": false
+      },
+      "affected_modules_proposed": [
+        "M3 development budget",
+        "M5 capital/debt"
+      ],
+      "runtime_mapping": {
+        "example_state": "PENDING",
+        "recipe_pointer": null,
+        "unit": null,
+        "period_ref": null,
+        "mapping_basis_ref": null,
+        "example_value": null
+      },
+      "validation_evidence": {
+        "original_blank_value_verified_from_workbook_XML": true,
+        "structural_mapping": {
+          "path": "docs/input-contract-map.json",
+          "sha256": "793b0075f10ed8a39b839ebda819a70dc53125c2d2013a15520e2681c69b9f94",
+          "pointer": "/fields/26"
+        },
+        "runtime_observation": {
+          "path": "docs/review/miniuw-v1-policy-renewal-example/results.json",
+          "sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1",
+          "pointer": "/original_inputs/26"
+        },
+        "scope": "Exact catalogue/source/location and observed synthetic state; not independent financial validation"
+      },
+      "state": "PENDING_runtime_semantic_mapping",
+      "pending": [
+        "actual_deal_source_and_semantic_adoption_pending",
+        "financial_coverage_not_certified",
+        "original_field_mapping_or_definition_pending",
+        "original_value_missing"
+      ]
+    },
+    {
+      "requirement_or_variable": "INPUT_C40",
+      "label": "Soft costs (incl. dev fee)",
+      "original_source": {
+        "path": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+        "sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+        "location": "Inputs!A40:F40",
+        "value_cell": "Inputs!C40",
+        "source_attribution_cell": "Inputs!F40"
+      },
+      "definition_current": {
+        "label_literal": "Soft costs (incl. dev fee)",
+        "unit_literal": "decimal of hard",
+        "note_literal": "",
+        "historical_requirement": "REQUIRED",
+        "proposed_value_kind": "explicit_dimensionless_ratio_or_growth",
+        "period_contract_provisional": "Según unidad literal; definición temporal pendiente",
+        "base_contract_provisional": "decimal of hard",
+        "financial_semantics_or_ranges_approved": false
+      },
+      "affected_modules_proposed": [
+        "M3 development budget",
+        "M5 capital/debt"
+      ],
+      "runtime_mapping": {
+        "example_state": "PENDING",
+        "recipe_pointer": null,
+        "unit": null,
+        "period_ref": null,
+        "mapping_basis_ref": null,
+        "example_value": null
+      },
+      "validation_evidence": {
+        "original_blank_value_verified_from_workbook_XML": true,
+        "structural_mapping": {
+          "path": "docs/input-contract-map.json",
+          "sha256": "793b0075f10ed8a39b839ebda819a70dc53125c2d2013a15520e2681c69b9f94",
+          "pointer": "/fields/27"
+        },
+        "runtime_observation": {
+          "path": "docs/review/miniuw-v1-policy-renewal-example/results.json",
+          "sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1",
+          "pointer": "/original_inputs/27"
+        },
+        "scope": "Exact catalogue/source/location and observed synthetic state; not independent financial validation"
+      },
+      "state": "PENDING_runtime_semantic_mapping",
+      "pending": [
+        "actual_deal_source_and_semantic_adoption_pending",
+        "financial_coverage_not_certified",
+        "original_field_mapping_or_definition_pending",
+        "original_value_missing"
+      ]
+    },
+    {
+      "requirement_or_variable": "INPUT_C41",
+      "label": "TI / LC",
+      "original_source": {
+        "path": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+        "sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+        "location": "Inputs!A41:F41",
+        "value_cell": "Inputs!C41",
+        "source_attribution_cell": "Inputs!F41"
+      },
+      "definition_current": {
+        "label_literal": "TI / LC",
+        "unit_literal": "$/commercial SF",
+        "note_literal": "Only if commercial",
+        "historical_requirement": "IF APPLIES",
+        "proposed_value_kind": "monetary_quantity_with_source_unit",
+        "period_contract_provisional": "Según unidad literal; definición temporal pendiente",
+        "base_contract_provisional": "$/commercial SF",
+        "financial_semantics_or_ranges_approved": false
+      },
+      "affected_modules_proposed": [
+        "M3 development budget",
+        "M5 capital/debt"
+      ],
+      "runtime_mapping": {
+        "example_state": "PENDING",
+        "recipe_pointer": null,
+        "unit": null,
+        "period_ref": null,
+        "mapping_basis_ref": null,
+        "example_value": null
+      },
+      "validation_evidence": {
+        "original_blank_value_verified_from_workbook_XML": true,
+        "structural_mapping": {
+          "path": "docs/input-contract-map.json",
+          "sha256": "793b0075f10ed8a39b839ebda819a70dc53125c2d2013a15520e2681c69b9f94",
+          "pointer": "/fields/28"
+        },
+        "runtime_observation": {
+          "path": "docs/review/miniuw-v1-policy-renewal-example/results.json",
+          "sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1",
+          "pointer": "/original_inputs/28"
+        },
+        "scope": "Exact catalogue/source/location and observed synthetic state; not independent financial validation"
+      },
+      "state": "PENDING_runtime_semantic_mapping",
+      "pending": [
+        "actual_deal_source_and_semantic_adoption_pending",
+        "financial_coverage_not_certified",
+        "original_field_mapping_or_definition_pending",
+        "original_value_missing"
+      ]
+    },
+    {
+      "requirement_or_variable": "INPUT_C42",
+      "label": "Soft costs drawn up front (months 1–3)",
+      "original_source": {
+        "path": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+        "sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+        "location": "Inputs!A42:F42",
+        "value_cell": "Inputs!C42",
+        "source_attribution_cell": "Inputs!F42"
+      },
+      "definition_current": {
+        "label_literal": "Soft costs drawn up front (months 1–3)",
+        "unit_literal": "decimal",
+        "note_literal": "",
+        "historical_requirement": "REQUIRED",
+        "proposed_value_kind": "explicit_dimensionless_ratio_or_growth",
+        "period_contract_provisional": "Según unidad literal; definición temporal pendiente",
+        "base_contract_provisional": "decimal",
+        "financial_semantics_or_ranges_approved": false
+      },
+      "affected_modules_proposed": [
+        "M3 development budget",
+        "M5 capital/debt"
+      ],
+      "runtime_mapping": {
+        "example_state": "PENDING",
+        "recipe_pointer": null,
+        "unit": null,
+        "period_ref": null,
+        "mapping_basis_ref": null,
+        "example_value": null
+      },
+      "validation_evidence": {
+        "original_blank_value_verified_from_workbook_XML": true,
+        "structural_mapping": {
+          "path": "docs/input-contract-map.json",
+          "sha256": "793b0075f10ed8a39b839ebda819a70dc53125c2d2013a15520e2681c69b9f94",
+          "pointer": "/fields/29"
+        },
+        "runtime_observation": {
+          "path": "docs/review/miniuw-v1-policy-renewal-example/results.json",
+          "sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1",
+          "pointer": "/original_inputs/29"
+        },
+        "scope": "Exact catalogue/source/location and observed synthetic state; not independent financial validation"
+      },
+      "state": "PENDING_runtime_semantic_mapping",
+      "pending": [
+        "actual_deal_source_and_semantic_adoption_pending",
+        "financial_coverage_not_certified",
+        "original_field_mapping_or_definition_pending",
+        "original_value_missing"
+      ]
+    },
+    {
+      "requirement_or_variable": "INPUT_C46",
+      "label": "Construction period",
+      "original_source": {
+        "path": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+        "sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+        "location": "Inputs!A46:F46",
+        "value_cell": "Inputs!C46",
+        "source_attribution_cell": "Inputs!F46"
+      },
+      "definition_current": {
+        "label_literal": "Construction period",
+        "unit_literal": "months",
+        "note_literal": "",
+        "historical_requirement": "REQUIRED",
+        "proposed_value_kind": "duration; integer/fractional convention pending",
+        "period_contract_provisional": "Según unidad literal; definición temporal pendiente",
+        "base_contract_provisional": "months",
+        "financial_semantics_or_ranges_approved": false
+      },
+      "affected_modules_proposed": [
+        "M4 monthly schedule"
+      ],
+      "runtime_mapping": {
+        "example_state": "PENDING",
+        "recipe_pointer": null,
+        "unit": null,
+        "period_ref": null,
+        "mapping_basis_ref": null,
+        "example_value": null
+      },
+      "validation_evidence": {
+        "original_blank_value_verified_from_workbook_XML": true,
+        "structural_mapping": {
+          "path": "docs/input-contract-map.json",
+          "sha256": "793b0075f10ed8a39b839ebda819a70dc53125c2d2013a15520e2681c69b9f94",
+          "pointer": "/fields/30"
+        },
+        "runtime_observation": {
+          "path": "docs/review/miniuw-v1-policy-renewal-example/results.json",
+          "sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1",
+          "pointer": "/original_inputs/30"
+        },
+        "scope": "Exact catalogue/source/location and observed synthetic state; not independent financial validation"
+      },
+      "state": "PENDING_runtime_semantic_mapping",
+      "pending": [
+        "actual_deal_source_and_semantic_adoption_pending",
+        "financial_coverage_not_certified",
+        "original_field_mapping_or_definition_pending",
+        "original_value_missing"
+      ]
+    },
+    {
+      "requirement_or_variable": "INPUT_C47",
+      "label": "Lease-up period",
+      "original_source": {
+        "path": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+        "sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+        "location": "Inputs!A47:F47",
+        "value_cell": "Inputs!C47",
+        "source_attribution_cell": "Inputs!F47"
+      },
+      "definition_current": {
+        "label_literal": "Lease-up period",
+        "unit_literal": "months",
+        "note_literal": "",
+        "historical_requirement": "REQUIRED",
+        "proposed_value_kind": "duration; integer/fractional convention pending",
+        "period_contract_provisional": "Según unidad literal; definición temporal pendiente",
+        "base_contract_provisional": "months",
+        "financial_semantics_or_ranges_approved": false
+      },
+      "affected_modules_proposed": [
+        "M4 monthly schedule"
+      ],
+      "runtime_mapping": {
+        "example_state": "PENDING",
+        "recipe_pointer": null,
+        "unit": null,
+        "period_ref": null,
+        "mapping_basis_ref": null,
+        "example_value": null
+      },
+      "validation_evidence": {
+        "original_blank_value_verified_from_workbook_XML": true,
+        "structural_mapping": {
+          "path": "docs/input-contract-map.json",
+          "sha256": "793b0075f10ed8a39b839ebda819a70dc53125c2d2013a15520e2681c69b9f94",
+          "pointer": "/fields/31"
+        },
+        "runtime_observation": {
+          "path": "docs/review/miniuw-v1-policy-renewal-example/results.json",
+          "sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1",
+          "pointer": "/original_inputs/31"
+        },
+        "scope": "Exact catalogue/source/location and observed synthetic state; not independent financial validation"
+      },
+      "state": "PENDING_runtime_semantic_mapping",
+      "pending": [
+        "actual_deal_source_and_semantic_adoption_pending",
+        "financial_coverage_not_certified",
+        "original_field_mapping_or_definition_pending",
+        "original_value_missing"
+      ]
+    },
+    {
+      "requirement_or_variable": "INPUT_C51",
+      "label": "LTC",
+      "original_source": {
+        "path": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+        "sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+        "location": "Inputs!A51:F51",
+        "value_cell": "Inputs!C51",
+        "source_attribution_cell": "Inputs!F51"
+      },
+      "definition_current": {
+        "label_literal": "LTC",
+        "unit_literal": "decimal",
+        "note_literal": "",
+        "historical_requirement": "REQUIRED",
+        "proposed_value_kind": "explicit_dimensionless_ratio_or_growth",
+        "period_contract_provisional": "Según unidad literal; definición temporal pendiente",
+        "base_contract_provisional": "decimal",
+        "financial_semantics_or_ranges_approved": false
+      },
+      "affected_modules_proposed": [
+        "M5 capital/debt"
+      ],
+      "runtime_mapping": {
+        "example_state": "PENDING",
+        "recipe_pointer": null,
+        "unit": null,
+        "period_ref": null,
+        "mapping_basis_ref": null,
+        "example_value": null
+      },
+      "validation_evidence": {
+        "original_blank_value_verified_from_workbook_XML": true,
+        "structural_mapping": {
+          "path": "docs/input-contract-map.json",
+          "sha256": "793b0075f10ed8a39b839ebda819a70dc53125c2d2013a15520e2681c69b9f94",
+          "pointer": "/fields/32"
+        },
+        "runtime_observation": {
+          "path": "docs/review/miniuw-v1-policy-renewal-example/results.json",
+          "sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1",
+          "pointer": "/original_inputs/43"
+        },
+        "scope": "Exact catalogue/source/location and observed synthetic state; not independent financial validation"
+      },
+      "state": "PENDING_runtime_semantic_mapping",
+      "pending": [
+        "actual_deal_source_and_semantic_adoption_pending",
+        "financial_coverage_not_certified",
+        "original_field_mapping_or_definition_pending",
+        "original_value_missing"
+      ]
+    },
+    {
+      "requirement_or_variable": "INPUT_C52",
+      "label": "Interest rate",
+      "original_source": {
+        "path": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+        "sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+        "location": "Inputs!A52:F52",
+        "value_cell": "Inputs!C52",
+        "source_attribution_cell": "Inputs!F52"
+      },
+      "definition_current": {
+        "label_literal": "Interest rate",
+        "unit_literal": "decimal",
+        "note_literal": "",
+        "historical_requirement": "REQUIRED",
+        "proposed_value_kind": "rate_with_explicit_frequency/day_count",
+        "period_contract_provisional": "Según unidad literal; definición temporal pendiente",
+        "base_contract_provisional": "decimal",
+        "financial_semantics_or_ranges_approved": false
+      },
+      "affected_modules_proposed": [
+        "M5 capital/debt"
+      ],
+      "runtime_mapping": {
+        "example_state": "PENDING",
+        "recipe_pointer": null,
+        "unit": null,
+        "period_ref": null,
+        "mapping_basis_ref": null,
+        "example_value": null
+      },
+      "validation_evidence": {
+        "original_blank_value_verified_from_workbook_XML": true,
+        "structural_mapping": {
+          "path": "docs/input-contract-map.json",
+          "sha256": "793b0075f10ed8a39b839ebda819a70dc53125c2d2013a15520e2681c69b9f94",
+          "pointer": "/fields/33"
+        },
+        "runtime_observation": {
+          "path": "docs/review/miniuw-v1-policy-renewal-example/results.json",
+          "sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1",
+          "pointer": "/original_inputs/44"
+        },
+        "scope": "Exact catalogue/source/location and observed synthetic state; not independent financial validation"
+      },
+      "state": "PENDING_runtime_semantic_mapping",
+      "pending": [
+        "actual_deal_source_and_semantic_adoption_pending",
+        "financial_coverage_not_certified",
+        "original_field_mapping_or_definition_pending",
+        "original_value_missing"
+      ]
+    },
+    {
+      "requirement_or_variable": "INPUT_C53",
+      "label": "Origination fee",
+      "original_source": {
+        "path": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+        "sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+        "location": "Inputs!A53:F53",
+        "value_cell": "Inputs!C53",
+        "source_attribution_cell": "Inputs!F53"
+      },
+      "definition_current": {
+        "label_literal": "Origination fee",
+        "unit_literal": "decimal",
+        "note_literal": "",
+        "historical_requirement": "REQUIRED",
+        "proposed_value_kind": "explicit_dimensionless_ratio_or_growth",
+        "period_contract_provisional": "Según unidad literal; definición temporal pendiente",
+        "base_contract_provisional": "decimal",
+        "financial_semantics_or_ranges_approved": false
+      },
+      "affected_modules_proposed": [
+        "M5 capital/debt"
+      ],
+      "runtime_mapping": {
+        "example_state": "PENDING",
+        "recipe_pointer": null,
+        "unit": null,
+        "period_ref": null,
+        "mapping_basis_ref": null,
+        "example_value": null
+      },
+      "validation_evidence": {
+        "original_blank_value_verified_from_workbook_XML": true,
+        "structural_mapping": {
+          "path": "docs/input-contract-map.json",
+          "sha256": "793b0075f10ed8a39b839ebda819a70dc53125c2d2013a15520e2681c69b9f94",
+          "pointer": "/fields/34"
+        },
+        "runtime_observation": {
+          "path": "docs/review/miniuw-v1-policy-renewal-example/results.json",
+          "sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1",
+          "pointer": "/original_inputs/45"
+        },
+        "scope": "Exact catalogue/source/location and observed synthetic state; not independent financial validation"
+      },
+      "state": "PENDING_runtime_semantic_mapping",
+      "pending": [
+        "actual_deal_source_and_semantic_adoption_pending",
+        "financial_coverage_not_certified",
+        "original_field_mapping_or_definition_pending",
+        "original_value_missing"
+      ]
+    },
+    {
+      "requirement_or_variable": "INPUT_C57",
+      "label": "Controllable opex",
+      "original_source": {
+        "path": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+        "sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+        "location": "Inputs!A57:F57",
+        "value_cell": "Inputs!C57",
+        "source_attribution_cell": "Inputs!F57"
+      },
+      "definition_current": {
+        "label_literal": "Controllable opex",
+        "unit_literal": "$/unit/yr",
+        "note_literal": "Payroll, R&M, utilities, admin, marketing, contracts",
+        "historical_requirement": "REQUIRED",
+        "proposed_value_kind": "monetary_quantity_with_source_unit",
+        "period_contract_provisional": "Según unidad literal; definición temporal pendiente",
+        "base_contract_provisional": "$/unit/yr",
+        "financial_semantics_or_ranges_approved": false
+      },
+      "affected_modules_proposed": [
+        "M2 revenue/operations"
+      ],
+      "runtime_mapping": {
+        "example_state": "PENDING",
+        "recipe_pointer": null,
+        "unit": null,
+        "period_ref": null,
+        "mapping_basis_ref": null,
+        "example_value": null
+      },
+      "validation_evidence": {
+        "original_blank_value_verified_from_workbook_XML": true,
+        "structural_mapping": {
+          "path": "docs/input-contract-map.json",
+          "sha256": "793b0075f10ed8a39b839ebda819a70dc53125c2d2013a15520e2681c69b9f94",
+          "pointer": "/fields/35"
+        },
+        "runtime_observation": {
+          "path": "docs/review/miniuw-v1-policy-renewal-example/results.json",
+          "sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1",
+          "pointer": "/original_inputs/32"
+        },
+        "scope": "Exact catalogue/source/location and observed synthetic state; not independent financial validation"
+      },
+      "state": "PENDING_runtime_semantic_mapping",
+      "pending": [
+        "actual_deal_source_and_semantic_adoption_pending",
+        "financial_coverage_not_certified",
+        "original_field_mapping_or_definition_pending",
+        "original_value_missing"
+      ]
+    },
+    {
+      "requirement_or_variable": "INPUT_C58",
+      "label": "Management fee",
+      "original_source": {
+        "path": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+        "sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+        "location": "Inputs!A58:F58",
+        "value_cell": "Inputs!C58",
+        "source_attribution_cell": "Inputs!F58"
+      },
+      "definition_current": {
+        "label_literal": "Management fee",
+        "unit_literal": "decimal of res. EGI",
+        "note_literal": "",
+        "historical_requirement": "REQUIRED",
+        "proposed_value_kind": "explicit_dimensionless_ratio_or_growth",
+        "period_contract_provisional": "Según unidad literal; definición temporal pendiente",
+        "base_contract_provisional": "decimal of res. EGI",
+        "financial_semantics_or_ranges_approved": false
+      },
+      "affected_modules_proposed": [
+        "M2 revenue/operations"
+      ],
+      "runtime_mapping": {
+        "example_state": "PENDING",
+        "recipe_pointer": null,
+        "unit": null,
+        "period_ref": null,
+        "mapping_basis_ref": null,
+        "example_value": null
+      },
+      "validation_evidence": {
+        "original_blank_value_verified_from_workbook_XML": true,
+        "structural_mapping": {
+          "path": "docs/input-contract-map.json",
+          "sha256": "793b0075f10ed8a39b839ebda819a70dc53125c2d2013a15520e2681c69b9f94",
+          "pointer": "/fields/36"
+        },
+        "runtime_observation": {
+          "path": "docs/review/miniuw-v1-policy-renewal-example/results.json",
+          "sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1",
+          "pointer": "/original_inputs/33"
+        },
+        "scope": "Exact catalogue/source/location and observed synthetic state; not independent financial validation"
+      },
+      "state": "PENDING_runtime_semantic_mapping",
+      "pending": [
+        "actual_deal_source_and_semantic_adoption_pending",
+        "financial_coverage_not_certified",
+        "original_field_mapping_or_definition_pending",
+        "original_value_missing"
+      ]
+    },
+    {
+      "requirement_or_variable": "INPUT_C59",
+      "label": "Insurance",
+      "original_source": {
+        "path": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+        "sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+        "location": "Inputs!A59:F59",
+        "value_cell": "Inputs!C59",
+        "source_attribution_cell": "Inputs!F59"
+      },
+      "definition_current": {
+        "label_literal": "Insurance",
+        "unit_literal": "$/unit/yr",
+        "note_literal": "",
+        "historical_requirement": "REQUIRED",
+        "proposed_value_kind": "monetary_quantity_with_source_unit",
+        "period_contract_provisional": "Según unidad literal; definición temporal pendiente",
+        "base_contract_provisional": "$/unit/yr",
+        "financial_semantics_or_ranges_approved": false
+      },
+      "affected_modules_proposed": [
+        "M2 revenue/operations"
+      ],
+      "runtime_mapping": {
+        "example_state": "PENDING",
+        "recipe_pointer": null,
+        "unit": null,
+        "period_ref": null,
+        "mapping_basis_ref": null,
+        "example_value": null
+      },
+      "validation_evidence": {
+        "original_blank_value_verified_from_workbook_XML": true,
+        "structural_mapping": {
+          "path": "docs/input-contract-map.json",
+          "sha256": "793b0075f10ed8a39b839ebda819a70dc53125c2d2013a15520e2681c69b9f94",
+          "pointer": "/fields/37"
+        },
+        "runtime_observation": {
+          "path": "docs/review/miniuw-v1-policy-renewal-example/results.json",
+          "sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1",
+          "pointer": "/original_inputs/34"
+        },
+        "scope": "Exact catalogue/source/location and observed synthetic state; not independent financial validation"
+      },
+      "state": "PENDING_runtime_semantic_mapping",
+      "pending": [
+        "actual_deal_source_and_semantic_adoption_pending",
+        "financial_coverage_not_certified",
+        "original_field_mapping_or_definition_pending",
+        "original_value_missing"
+      ]
+    },
+    {
+      "requirement_or_variable": "INPUT_C60",
+      "label": "Replacement reserves",
+      "original_source": {
+        "path": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+        "sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+        "location": "Inputs!A60:F60",
+        "value_cell": "Inputs!C60",
+        "source_attribution_cell": "Inputs!F60"
+      },
+      "definition_current": {
+        "label_literal": "Replacement reserves",
+        "unit_literal": "$/unit/yr",
+        "note_literal": "",
+        "historical_requirement": "REQUIRED",
+        "proposed_value_kind": "monetary_quantity_with_source_unit",
+        "period_contract_provisional": "Según unidad literal; definición temporal pendiente",
+        "base_contract_provisional": "$/unit/yr",
+        "financial_semantics_or_ranges_approved": false
+      },
+      "affected_modules_proposed": [
+        "M2 revenue/operations"
+      ],
+      "runtime_mapping": {
+        "example_state": "PENDING",
+        "recipe_pointer": null,
+        "unit": null,
+        "period_ref": null,
+        "mapping_basis_ref": null,
+        "example_value": null
+      },
+      "validation_evidence": {
+        "original_blank_value_verified_from_workbook_XML": true,
+        "structural_mapping": {
+          "path": "docs/input-contract-map.json",
+          "sha256": "793b0075f10ed8a39b839ebda819a70dc53125c2d2013a15520e2681c69b9f94",
+          "pointer": "/fields/38"
+        },
+        "runtime_observation": {
+          "path": "docs/review/miniuw-v1-policy-renewal-example/results.json",
+          "sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1",
+          "pointer": "/original_inputs/35"
+        },
+        "scope": "Exact catalogue/source/location and observed synthetic state; not independent financial validation"
+      },
+      "state": "PENDING_runtime_semantic_mapping",
+      "pending": [
+        "actual_deal_source_and_semantic_adoption_pending",
+        "financial_coverage_not_certified",
+        "original_field_mapping_or_definition_pending",
+        "original_value_missing"
+      ]
+    },
+    {
+      "requirement_or_variable": "INPUT_C61",
+      "label": "Assessment ratio (assessed ÷ market value)",
+      "original_source": {
+        "path": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+        "sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+        "location": "Inputs!A61:F61",
+        "value_cell": "Inputs!C61",
+        "source_attribution_cell": "Inputs!F61"
+      },
+      "definition_current": {
+        "label_literal": "Assessment ratio (assessed ÷ market value)",
+        "unit_literal": "decimal",
+        "note_literal": "",
+        "historical_requirement": "REQUIRED",
+        "proposed_value_kind": "explicit_dimensionless_ratio_or_growth",
+        "period_contract_provisional": "Según unidad literal; definición temporal pendiente",
+        "base_contract_provisional": "decimal",
+        "financial_semantics_or_ranges_approved": false
+      },
+      "affected_modules_proposed": [
+        "M2 revenue/operations"
+      ],
+      "runtime_mapping": {
+        "example_state": "PENDING",
+        "recipe_pointer": null,
+        "unit": null,
+        "period_ref": null,
+        "mapping_basis_ref": null,
+        "example_value": null
+      },
+      "validation_evidence": {
+        "original_blank_value_verified_from_workbook_XML": true,
+        "structural_mapping": {
+          "path": "docs/input-contract-map.json",
+          "sha256": "793b0075f10ed8a39b839ebda819a70dc53125c2d2013a15520e2681c69b9f94",
+          "pointer": "/fields/39"
+        },
+        "runtime_observation": {
+          "path": "docs/review/miniuw-v1-policy-renewal-example/results.json",
+          "sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1",
+          "pointer": "/original_inputs/36"
+        },
+        "scope": "Exact catalogue/source/location and observed synthetic state; not independent financial validation"
+      },
+      "state": "PENDING_runtime_semantic_mapping",
+      "pending": [
+        "actual_deal_source_and_semantic_adoption_pending",
+        "financial_coverage_not_certified",
+        "original_field_mapping_or_definition_pending",
+        "original_value_missing"
+      ]
+    },
+    {
+      "requirement_or_variable": "INPUT_C62",
+      "label": "Property tax comps",
+      "original_source": {
+        "path": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+        "sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+        "location": "Inputs!A62:F62",
+        "value_cell": "Inputs!C62",
+        "source_attribution_cell": "Inputs!F62"
+      },
+      "definition_current": {
+        "label_literal": "Property tax comps",
+        "unit_literal": "$/unit/yr",
+        "note_literal": "",
+        "historical_requirement": "REQUIRED",
+        "proposed_value_kind": "monetary_quantity_with_source_unit",
+        "period_contract_provisional": "Según unidad literal; definición temporal pendiente",
+        "base_contract_provisional": "$/unit/yr",
+        "financial_semantics_or_ranges_approved": false
+      },
+      "affected_modules_proposed": [
+        "M2 revenue/operations"
+      ],
+      "runtime_mapping": {
+        "example_state": "PENDING",
+        "recipe_pointer": null,
+        "unit": null,
+        "period_ref": null,
+        "mapping_basis_ref": null,
+        "example_value": null
+      },
+      "validation_evidence": {
+        "original_blank_value_verified_from_workbook_XML": true,
+        "structural_mapping": {
+          "path": "docs/input-contract-map.json",
+          "sha256": "793b0075f10ed8a39b839ebda819a70dc53125c2d2013a15520e2681c69b9f94",
+          "pointer": "/fields/40"
+        },
+        "runtime_observation": {
+          "path": "docs/review/miniuw-v1-policy-renewal-example/results.json",
+          "sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1",
+          "pointer": "/original_inputs/37"
+        },
+        "scope": "Exact catalogue/source/location and observed synthetic state; not independent financial validation"
+      },
+      "state": "PENDING_runtime_semantic_mapping",
+      "pending": [
+        "actual_deal_source_and_semantic_adoption_pending",
+        "financial_coverage_not_certified",
+        "original_field_mapping_or_definition_pending",
+        "original_value_missing"
+      ]
+    },
+    {
+      "requirement_or_variable": "INPUT_C66",
+      "label": "Market cap rate at refinance",
+      "original_source": {
+        "path": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+        "sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+        "location": "Inputs!A66:F66",
+        "value_cell": "Inputs!C66",
+        "source_attribution_cell": "Inputs!F66"
+      },
+      "definition_current": {
+        "label_literal": "Market cap rate at refinance",
+        "unit_literal": "decimal",
+        "note_literal": "",
+        "historical_requirement": "REQUIRED",
+        "proposed_value_kind": "explicit_dimensionless_ratio_or_growth",
+        "period_contract_provisional": "Según unidad literal; definición temporal pendiente",
+        "base_contract_provisional": "decimal",
+        "financial_semantics_or_ranges_approved": false
+      },
+      "affected_modules_proposed": [
+        "M6 refinance",
+        "M7 hold/exit"
+      ],
+      "runtime_mapping": {
+        "example_state": "PENDING",
+        "recipe_pointer": null,
+        "unit": null,
+        "period_ref": null,
+        "mapping_basis_ref": null,
+        "example_value": null
+      },
+      "validation_evidence": {
+        "original_blank_value_verified_from_workbook_XML": true,
+        "structural_mapping": {
+          "path": "docs/input-contract-map.json",
+          "sha256": "793b0075f10ed8a39b839ebda819a70dc53125c2d2013a15520e2681c69b9f94",
+          "pointer": "/fields/41"
+        },
+        "runtime_observation": {
+          "path": "docs/review/miniuw-v1-policy-renewal-example/results.json",
+          "sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1",
+          "pointer": "/original_inputs/38"
+        },
+        "scope": "Exact catalogue/source/location and observed synthetic state; not independent financial validation"
+      },
+      "state": "PENDING_runtime_semantic_mapping",
+      "pending": [
+        "actual_deal_source_and_semantic_adoption_pending",
+        "financial_coverage_not_certified",
+        "original_field_mapping_or_definition_pending",
+        "original_value_missing"
+      ]
+    },
+    {
+      "requirement_or_variable": "INPUT_C67",
+      "label": "Exit cap rate",
+      "original_source": {
+        "path": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+        "sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+        "location": "Inputs!A67:F67",
+        "value_cell": "Inputs!C67",
+        "source_attribution_cell": "Inputs!F67"
+      },
+      "definition_current": {
+        "label_literal": "Exit cap rate",
+        "unit_literal": "decimal",
+        "note_literal": "",
+        "historical_requirement": "REQUIRED",
+        "proposed_value_kind": "explicit_dimensionless_ratio_or_growth",
+        "period_contract_provisional": "Según unidad literal; definición temporal pendiente",
+        "base_contract_provisional": "decimal",
+        "financial_semantics_or_ranges_approved": false
+      },
+      "affected_modules_proposed": [
+        "M6 refinance",
+        "M7 hold/exit"
+      ],
+      "runtime_mapping": {
+        "example_state": "PENDING",
+        "recipe_pointer": null,
+        "unit": null,
+        "period_ref": null,
+        "mapping_basis_ref": null,
+        "example_value": null
+      },
+      "validation_evidence": {
+        "original_blank_value_verified_from_workbook_XML": true,
+        "structural_mapping": {
+          "path": "docs/input-contract-map.json",
+          "sha256": "793b0075f10ed8a39b839ebda819a70dc53125c2d2013a15520e2681c69b9f94",
+          "pointer": "/fields/42"
+        },
+        "runtime_observation": {
+          "path": "docs/review/miniuw-v1-policy-renewal-example/results.json",
+          "sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1",
+          "pointer": "/original_inputs/39"
+        },
+        "scope": "Exact catalogue/source/location and observed synthetic state; not independent financial validation"
+      },
+      "state": "PENDING_runtime_semantic_mapping",
+      "pending": [
+        "actual_deal_source_and_semantic_adoption_pending",
+        "financial_coverage_not_certified",
+        "original_field_mapping_or_definition_pending",
+        "original_value_missing"
+      ]
+    },
+    {
+      "requirement_or_variable": "INPUT_C68",
+      "label": "Sale costs",
+      "original_source": {
+        "path": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+        "sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+        "location": "Inputs!A68:F68",
+        "value_cell": "Inputs!C68",
+        "source_attribution_cell": "Inputs!F68"
+      },
+      "definition_current": {
+        "label_literal": "Sale costs",
+        "unit_literal": "decimal",
+        "note_literal": "",
+        "historical_requirement": "REQUIRED",
+        "proposed_value_kind": "explicit_dimensionless_ratio_or_growth",
+        "period_contract_provisional": "Según unidad literal; definición temporal pendiente",
+        "base_contract_provisional": "decimal",
+        "financial_semantics_or_ranges_approved": false
+      },
+      "affected_modules_proposed": [
+        "M6 refinance",
+        "M7 hold/exit"
+      ],
+      "runtime_mapping": {
+        "example_state": "PENDING",
+        "recipe_pointer": null,
+        "unit": null,
+        "period_ref": null,
+        "mapping_basis_ref": null,
+        "example_value": null
+      },
+      "validation_evidence": {
+        "original_blank_value_verified_from_workbook_XML": true,
+        "structural_mapping": {
+          "path": "docs/input-contract-map.json",
+          "sha256": "793b0075f10ed8a39b839ebda819a70dc53125c2d2013a15520e2681c69b9f94",
+          "pointer": "/fields/43"
+        },
+        "runtime_observation": {
+          "path": "docs/review/miniuw-v1-policy-renewal-example/results.json",
+          "sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1",
+          "pointer": "/original_inputs/40"
+        },
+        "scope": "Exact catalogue/source/location and observed synthetic state; not independent financial validation"
+      },
+      "state": "PENDING_runtime_semantic_mapping",
+      "pending": [
+        "actual_deal_source_and_semantic_adoption_pending",
+        "financial_coverage_not_certified",
+        "original_field_mapping_or_definition_pending",
+        "original_value_missing"
+      ]
+    },
+    {
+      "requirement_or_variable": "INPUT_C69",
+      "label": "Perm loan rate",
+      "original_source": {
+        "path": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+        "sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+        "location": "Inputs!A69:F69",
+        "value_cell": "Inputs!C69",
+        "source_attribution_cell": "Inputs!F69"
+      },
+      "definition_current": {
+        "label_literal": "Perm loan rate",
+        "unit_literal": "decimal",
+        "note_literal": "",
+        "historical_requirement": "REQUIRED",
+        "proposed_value_kind": "rate_with_explicit_frequency/day_count",
+        "period_contract_provisional": "Según unidad literal; definición temporal pendiente",
+        "base_contract_provisional": "decimal",
+        "financial_semantics_or_ranges_approved": false
+      },
+      "affected_modules_proposed": [
+        "M6 refinance",
+        "M7 hold/exit"
+      ],
+      "runtime_mapping": {
+        "example_state": "PENDING",
+        "recipe_pointer": null,
+        "unit": null,
+        "period_ref": null,
+        "mapping_basis_ref": null,
+        "example_value": null
+      },
+      "validation_evidence": {
+        "original_blank_value_verified_from_workbook_XML": true,
+        "structural_mapping": {
+          "path": "docs/input-contract-map.json",
+          "sha256": "793b0075f10ed8a39b839ebda819a70dc53125c2d2013a15520e2681c69b9f94",
+          "pointer": "/fields/44"
+        },
+        "runtime_observation": {
+          "path": "docs/review/miniuw-v1-policy-renewal-example/results.json",
+          "sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1",
+          "pointer": "/original_inputs/46"
+        },
+        "scope": "Exact catalogue/source/location and observed synthetic state; not independent financial validation"
+      },
+      "state": "PENDING_runtime_semantic_mapping",
+      "pending": [
+        "actual_deal_source_and_semantic_adoption_pending",
+        "financial_coverage_not_certified",
+        "original_field_mapping_or_definition_pending",
+        "original_value_missing"
+      ]
+    },
+    {
+      "requirement_or_variable": "INPUT_C70",
+      "label": "Amortization",
+      "original_source": {
+        "path": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+        "sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+        "location": "Inputs!A70:F70",
+        "value_cell": "Inputs!C70",
+        "source_attribution_cell": "Inputs!F70"
+      },
+      "definition_current": {
+        "label_literal": "Amortization",
+        "unit_literal": "years",
+        "note_literal": "",
+        "historical_requirement": "REQUIRED",
+        "proposed_value_kind": "duration; integer/fractional convention pending",
+        "period_contract_provisional": "Según unidad literal; definición temporal pendiente",
+        "base_contract_provisional": "years",
+        "financial_semantics_or_ranges_approved": false
+      },
+      "affected_modules_proposed": [
+        "M6 refinance",
+        "M7 hold/exit"
+      ],
+      "runtime_mapping": {
+        "example_state": "PENDING",
+        "recipe_pointer": null,
+        "unit": null,
+        "period_ref": null,
+        "mapping_basis_ref": null,
+        "example_value": null
+      },
+      "validation_evidence": {
+        "original_blank_value_verified_from_workbook_XML": true,
+        "structural_mapping": {
+          "path": "docs/input-contract-map.json",
+          "sha256": "793b0075f10ed8a39b839ebda819a70dc53125c2d2013a15520e2681c69b9f94",
+          "pointer": "/fields/45"
+        },
+        "runtime_observation": {
+          "path": "docs/review/miniuw-v1-policy-renewal-example/results.json",
+          "sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1",
+          "pointer": "/original_inputs/47"
+        },
+        "scope": "Exact catalogue/source/location and observed synthetic state; not independent financial validation"
+      },
+      "state": "PENDING_runtime_semantic_mapping",
+      "pending": [
+        "actual_deal_source_and_semantic_adoption_pending",
+        "financial_coverage_not_certified",
+        "original_field_mapping_or_definition_pending",
+        "original_value_missing"
+      ]
+    },
+    {
+      "requirement_or_variable": "INPUT_C71",
+      "label": "Max LTV",
+      "original_source": {
+        "path": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+        "sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+        "location": "Inputs!A71:F71",
+        "value_cell": "Inputs!C71",
+        "source_attribution_cell": "Inputs!F71"
+      },
+      "definition_current": {
+        "label_literal": "Max LTV",
+        "unit_literal": "decimal",
+        "note_literal": "",
+        "historical_requirement": "REQUIRED",
+        "proposed_value_kind": "explicit_dimensionless_ratio_or_growth",
+        "period_contract_provisional": "Según unidad literal; definición temporal pendiente",
+        "base_contract_provisional": "decimal",
+        "financial_semantics_or_ranges_approved": false
+      },
+      "affected_modules_proposed": [
+        "M6 refinance",
+        "M7 hold/exit"
+      ],
+      "runtime_mapping": {
+        "example_state": "PENDING",
+        "recipe_pointer": null,
+        "unit": null,
+        "period_ref": null,
+        "mapping_basis_ref": null,
+        "example_value": null
+      },
+      "validation_evidence": {
+        "original_blank_value_verified_from_workbook_XML": true,
+        "structural_mapping": {
+          "path": "docs/input-contract-map.json",
+          "sha256": "793b0075f10ed8a39b839ebda819a70dc53125c2d2013a15520e2681c69b9f94",
+          "pointer": "/fields/46"
+        },
+        "runtime_observation": {
+          "path": "docs/review/miniuw-v1-policy-renewal-example/results.json",
+          "sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1",
+          "pointer": "/original_inputs/48"
+        },
+        "scope": "Exact catalogue/source/location and observed synthetic state; not independent financial validation"
+      },
+      "state": "PENDING_runtime_semantic_mapping",
+      "pending": [
+        "actual_deal_source_and_semantic_adoption_pending",
+        "financial_coverage_not_certified",
+        "original_field_mapping_or_definition_pending",
+        "original_value_missing"
+      ]
+    },
+    {
+      "requirement_or_variable": "INPUT_C72",
+      "label": "Min DSCR",
+      "original_source": {
+        "path": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+        "sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+        "location": "Inputs!A72:F72",
+        "value_cell": "Inputs!C72",
+        "source_attribution_cell": "Inputs!F72"
+      },
+      "definition_current": {
+        "label_literal": "Min DSCR",
+        "unit_literal": "x",
+        "note_literal": "",
+        "historical_requirement": "REQUIRED",
+        "proposed_value_kind": "coverage_multiple",
+        "period_contract_provisional": "Según unidad literal; definición temporal pendiente",
+        "base_contract_provisional": "x",
+        "financial_semantics_or_ranges_approved": false
+      },
+      "affected_modules_proposed": [
+        "M6 refinance",
+        "M7 hold/exit"
+      ],
+      "runtime_mapping": {
+        "example_state": "PENDING",
+        "recipe_pointer": null,
+        "unit": null,
+        "period_ref": null,
+        "mapping_basis_ref": null,
+        "example_value": null
+      },
+      "validation_evidence": {
+        "original_blank_value_verified_from_workbook_XML": true,
+        "structural_mapping": {
+          "path": "docs/input-contract-map.json",
+          "sha256": "793b0075f10ed8a39b839ebda819a70dc53125c2d2013a15520e2681c69b9f94",
+          "pointer": "/fields/47"
+        },
+        "runtime_observation": {
+          "path": "docs/review/miniuw-v1-policy-renewal-example/results.json",
+          "sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1",
+          "pointer": "/original_inputs/49"
+        },
+        "scope": "Exact catalogue/source/location and observed synthetic state; not independent financial validation"
+      },
+      "state": "PENDING_runtime_semantic_mapping",
+      "pending": [
+        "actual_deal_source_and_semantic_adoption_pending",
+        "financial_coverage_not_certified",
+        "original_field_mapping_or_definition_pending",
+        "original_value_missing"
+      ]
+    },
+    {
+      "requirement_or_variable": "INPUT_C73",
+      "label": "Refi costs",
+      "original_source": {
+        "path": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+        "sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+        "location": "Inputs!A73:F73",
+        "value_cell": "Inputs!C73",
+        "source_attribution_cell": "Inputs!F73"
+      },
+      "definition_current": {
+        "label_literal": "Refi costs",
+        "unit_literal": "decimal of loan",
+        "note_literal": "",
+        "historical_requirement": "REQUIRED",
+        "proposed_value_kind": "explicit_dimensionless_ratio_or_growth",
+        "period_contract_provisional": "Según unidad literal; definición temporal pendiente",
+        "base_contract_provisional": "decimal of loan",
+        "financial_semantics_or_ranges_approved": false
+      },
+      "affected_modules_proposed": [
+        "M6 refinance",
+        "M7 hold/exit"
+      ],
+      "runtime_mapping": {
+        "example_state": "PENDING",
+        "recipe_pointer": null,
+        "unit": null,
+        "period_ref": null,
+        "mapping_basis_ref": null,
+        "example_value": null
+      },
+      "validation_evidence": {
+        "original_blank_value_verified_from_workbook_XML": true,
+        "structural_mapping": {
+          "path": "docs/input-contract-map.json",
+          "sha256": "793b0075f10ed8a39b839ebda819a70dc53125c2d2013a15520e2681c69b9f94",
+          "pointer": "/fields/48"
+        },
+        "runtime_observation": {
+          "path": "docs/review/miniuw-v1-policy-renewal-example/results.json",
+          "sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1",
+          "pointer": "/original_inputs/50"
+        },
+        "scope": "Exact catalogue/source/location and observed synthetic state; not independent financial validation"
+      },
+      "state": "PENDING_runtime_semantic_mapping",
+      "pending": [
+        "actual_deal_source_and_semantic_adoption_pending",
+        "financial_coverage_not_certified",
+        "original_field_mapping_or_definition_pending",
+        "original_value_missing"
+      ]
+    },
+    {
+      "requirement_or_variable": "INPUT_C74",
+      "label": "Perm reserves",
+      "original_source": {
+        "path": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+        "sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+        "location": "Inputs!A74:F74",
+        "value_cell": "Inputs!C74",
+        "source_attribution_cell": "Inputs!F74"
+      },
+      "definition_current": {
+        "label_literal": "Perm reserves",
+        "unit_literal": "$/unit",
+        "note_literal": "",
+        "historical_requirement": "REQUIRED",
+        "proposed_value_kind": "monetary_quantity_with_source_unit",
+        "period_contract_provisional": "Según unidad literal; definición temporal pendiente",
+        "base_contract_provisional": "$/unit",
+        "financial_semantics_or_ranges_approved": false
+      },
+      "affected_modules_proposed": [
+        "M6 refinance",
+        "M7 hold/exit"
+      ],
+      "runtime_mapping": {
+        "example_state": "PENDING",
+        "recipe_pointer": null,
+        "unit": null,
+        "period_ref": null,
+        "mapping_basis_ref": null,
+        "example_value": null
+      },
+      "validation_evidence": {
+        "original_blank_value_verified_from_workbook_XML": true,
+        "structural_mapping": {
+          "path": "docs/input-contract-map.json",
+          "sha256": "793b0075f10ed8a39b839ebda819a70dc53125c2d2013a15520e2681c69b9f94",
+          "pointer": "/fields/49"
+        },
+        "runtime_observation": {
+          "path": "docs/review/miniuw-v1-policy-renewal-example/results.json",
+          "sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1",
+          "pointer": "/original_inputs/51"
+        },
+        "scope": "Exact catalogue/source/location and observed synthetic state; not independent financial validation"
+      },
+      "state": "PENDING_runtime_semantic_mapping",
+      "pending": [
+        "actual_deal_source_and_semantic_adoption_pending",
+        "financial_coverage_not_certified",
+        "original_field_mapping_or_definition_pending",
+        "original_value_missing"
+      ]
+    },
+    {
+      "requirement_or_variable": "INPUT_C75",
+      "label": "Rent growth",
+      "original_source": {
+        "path": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+        "sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+        "location": "Inputs!A75:F75",
+        "value_cell": "Inputs!C75",
+        "source_attribution_cell": "Inputs!F75"
+      },
+      "definition_current": {
+        "label_literal": "Rent growth",
+        "unit_literal": "decimal / yr",
+        "note_literal": "",
+        "historical_requirement": "REQUIRED",
+        "proposed_value_kind": "explicit_dimensionless_ratio_or_growth",
+        "period_contract_provisional": "Según unidad literal; definición temporal pendiente",
+        "base_contract_provisional": "decimal / yr",
+        "financial_semantics_or_ranges_approved": false
+      },
+      "affected_modules_proposed": [
+        "M6 refinance",
+        "M7 hold/exit"
+      ],
+      "runtime_mapping": {
+        "example_state": "PENDING",
+        "recipe_pointer": null,
+        "unit": null,
+        "period_ref": null,
+        "mapping_basis_ref": null,
+        "example_value": null
+      },
+      "validation_evidence": {
+        "original_blank_value_verified_from_workbook_XML": true,
+        "structural_mapping": {
+          "path": "docs/input-contract-map.json",
+          "sha256": "793b0075f10ed8a39b839ebda819a70dc53125c2d2013a15520e2681c69b9f94",
+          "pointer": "/fields/50"
+        },
+        "runtime_observation": {
+          "path": "docs/review/miniuw-v1-policy-renewal-example/results.json",
+          "sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1",
+          "pointer": "/original_inputs/41"
+        },
+        "scope": "Exact catalogue/source/location and observed synthetic state; not independent financial validation"
+      },
+      "state": "PENDING_runtime_semantic_mapping",
+      "pending": [
+        "actual_deal_source_and_semantic_adoption_pending",
+        "financial_coverage_not_certified",
+        "original_field_mapping_or_definition_pending",
+        "original_value_missing"
+      ]
+    },
+    {
+      "requirement_or_variable": "INPUT_C76",
+      "label": "Expense growth",
+      "original_source": {
+        "path": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+        "sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+        "location": "Inputs!A76:F76",
+        "value_cell": "Inputs!C76",
+        "source_attribution_cell": "Inputs!F76"
+      },
+      "definition_current": {
+        "label_literal": "Expense growth",
+        "unit_literal": "decimal / yr",
+        "note_literal": "",
+        "historical_requirement": "REQUIRED",
+        "proposed_value_kind": "explicit_dimensionless_ratio_or_growth",
+        "period_contract_provisional": "Según unidad literal; definición temporal pendiente",
+        "base_contract_provisional": "decimal / yr",
+        "financial_semantics_or_ranges_approved": false
+      },
+      "affected_modules_proposed": [
+        "M6 refinance",
+        "M7 hold/exit"
+      ],
+      "runtime_mapping": {
+        "example_state": "PENDING",
+        "recipe_pointer": null,
+        "unit": null,
+        "period_ref": null,
+        "mapping_basis_ref": null,
+        "example_value": null
+      },
+      "validation_evidence": {
+        "original_blank_value_verified_from_workbook_XML": true,
+        "structural_mapping": {
+          "path": "docs/input-contract-map.json",
+          "sha256": "793b0075f10ed8a39b839ebda819a70dc53125c2d2013a15520e2681c69b9f94",
+          "pointer": "/fields/51"
+        },
+        "runtime_observation": {
+          "path": "docs/review/miniuw-v1-policy-renewal-example/results.json",
+          "sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1",
+          "pointer": "/original_inputs/42"
+        },
+        "scope": "Exact catalogue/source/location and observed synthetic state; not independent financial validation"
+      },
+      "state": "PENDING_runtime_semantic_mapping",
+      "pending": [
+        "actual_deal_source_and_semantic_adoption_pending",
+        "financial_coverage_not_certified",
+        "original_field_mapping_or_definition_pending",
+        "original_value_missing"
+      ]
+    },
+    {
+      "requirement_or_variable": "INPUT_C80",
+      "label": "Alternative 1",
+      "original_source": {
+        "path": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+        "sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+        "location": "Inputs!A80:F80",
+        "value_cell": "Inputs!C80",
+        "source_attribution_cell": "Inputs!F80"
+      },
+      "definition_current": {
+        "label_literal": "Alternative 1",
+        "unit_literal": "input = value",
+        "note_literal": "e.g., Market cap rate = …",
+        "historical_requirement": "OPTIONAL",
+        "proposed_value_kind": "text_reference_or_requested_alternative",
+        "period_contract_provisional": "Según unidad literal; definición temporal pendiente",
+        "base_contract_provisional": "input = value",
+        "financial_semantics_or_ranges_approved": false
+      },
+      "affected_modules_proposed": [
+        "M8 scenarios"
+      ],
+      "runtime_mapping": {
+        "example_state": "PENDING",
+        "recipe_pointer": null,
+        "unit": null,
+        "period_ref": null,
+        "mapping_basis_ref": null,
+        "example_value": null
+      },
+      "validation_evidence": {
+        "original_blank_value_verified_from_workbook_XML": true,
+        "structural_mapping": {
+          "path": "docs/input-contract-map.json",
+          "sha256": "793b0075f10ed8a39b839ebda819a70dc53125c2d2013a15520e2681c69b9f94",
+          "pointer": "/fields/52"
+        },
+        "runtime_observation": {
+          "path": "docs/review/miniuw-v1-policy-renewal-example/results.json",
+          "sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1",
+          "pointer": "/original_inputs/52"
+        },
+        "scope": "Exact catalogue/source/location and observed synthetic state; not independent financial validation"
+      },
+      "state": "PENDING_runtime_semantic_mapping",
+      "pending": [
+        "actual_deal_source_and_semantic_adoption_pending",
+        "financial_coverage_not_certified",
+        "original_field_mapping_or_definition_pending",
+        "original_value_missing"
+      ]
+    },
+    {
+      "requirement_or_variable": "INPUT_C81",
+      "label": "Alternative 2",
+      "original_source": {
+        "path": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+        "sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+        "location": "Inputs!A81:F81",
+        "value_cell": "Inputs!C81",
+        "source_attribution_cell": "Inputs!F81"
+      },
+      "definition_current": {
+        "label_literal": "Alternative 2",
+        "unit_literal": "input = value",
+        "note_literal": "",
+        "historical_requirement": "OPTIONAL",
+        "proposed_value_kind": "text_reference_or_requested_alternative",
+        "period_contract_provisional": "Según unidad literal; definición temporal pendiente",
+        "base_contract_provisional": "input = value",
+        "financial_semantics_or_ranges_approved": false
+      },
+      "affected_modules_proposed": [
+        "M8 scenarios"
+      ],
+      "runtime_mapping": {
+        "example_state": "PENDING",
+        "recipe_pointer": null,
+        "unit": null,
+        "period_ref": null,
+        "mapping_basis_ref": null,
+        "example_value": null
+      },
+      "validation_evidence": {
+        "original_blank_value_verified_from_workbook_XML": true,
+        "structural_mapping": {
+          "path": "docs/input-contract-map.json",
+          "sha256": "793b0075f10ed8a39b839ebda819a70dc53125c2d2013a15520e2681c69b9f94",
+          "pointer": "/fields/53"
+        },
+        "runtime_observation": {
+          "path": "docs/review/miniuw-v1-policy-renewal-example/results.json",
+          "sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1",
+          "pointer": "/original_inputs/53"
+        },
+        "scope": "Exact catalogue/source/location and observed synthetic state; not independent financial validation"
+      },
+      "state": "PENDING_runtime_semantic_mapping",
+      "pending": [
+        "actual_deal_source_and_semantic_adoption_pending",
+        "financial_coverage_not_certified",
+        "original_field_mapping_or_definition_pending",
+        "original_value_missing"
+      ]
+    },
+    {
+      "requirement_or_variable": "INPUT_C82",
+      "label": "Alternative 3",
+      "original_source": {
+        "path": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+        "sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+        "location": "Inputs!A82:F82",
+        "value_cell": "Inputs!C82",
+        "source_attribution_cell": "Inputs!F82"
+      },
+      "definition_current": {
+        "label_literal": "Alternative 3",
+        "unit_literal": "input = value",
+        "note_literal": "",
+        "historical_requirement": "OPTIONAL",
+        "proposed_value_kind": "text_reference_or_requested_alternative",
+        "period_contract_provisional": "Según unidad literal; definición temporal pendiente",
+        "base_contract_provisional": "input = value",
+        "financial_semantics_or_ranges_approved": false
+      },
+      "affected_modules_proposed": [
+        "M8 scenarios"
+      ],
+      "runtime_mapping": {
+        "example_state": "PENDING",
+        "recipe_pointer": null,
+        "unit": null,
+        "period_ref": null,
+        "mapping_basis_ref": null,
+        "example_value": null
+      },
+      "validation_evidence": {
+        "original_blank_value_verified_from_workbook_XML": true,
+        "structural_mapping": {
+          "path": "docs/input-contract-map.json",
+          "sha256": "793b0075f10ed8a39b839ebda819a70dc53125c2d2013a15520e2681c69b9f94",
+          "pointer": "/fields/54"
+        },
+        "runtime_observation": {
+          "path": "docs/review/miniuw-v1-policy-renewal-example/results.json",
+          "sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1",
+          "pointer": "/original_inputs/54"
+        },
+        "scope": "Exact catalogue/source/location and observed synthetic state; not independent financial validation"
+      },
+      "state": "PENDING_runtime_semantic_mapping",
+      "pending": [
+        "actual_deal_source_and_semantic_adoption_pending",
+        "financial_coverage_not_certified",
+        "original_field_mapping_or_definition_pending",
+        "original_value_missing"
+      ]
+    }
+  ],
+  "investment_metrics": [
+    {
+      "metric_id": "YoC",
+      "definition_current": null,
+      "value_state": "PENDING",
+      "value": null,
+      "reason": "NOI estabilizado y TDC all-in compatibles pendientes",
+      "comparison_state": "PENDING",
+      "criterion_source_ref": null,
+      "criterion_pass": {
+        "operator": null,
+        "threshold": null
+      },
+      "criterion_fail": {
+        "operator": null,
+        "threshold": null
+      },
+      "validation_evidence": {
+        "path": "docs/review/miniuw-v1-policy-renewal-example/results.json",
+        "sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1",
+        "pointer": "/metrics/0"
+      },
+      "financial_definition_adopted": false,
+      "IRR_interval_output_location": null
+    },
+    {
+      "metric_id": "spread",
+      "definition_current": null,
+      "value_state": "PENDING",
+      "value": null,
+      "reason": "YoC y cap de referencia compatibles pendientes",
+      "comparison_state": "PENDING",
+      "criterion_source_ref": null,
+      "criterion_pass": {
+        "operator": null,
+        "threshold": null
+      },
+      "criterion_fail": {
+        "operator": null,
+        "threshold": null
+      },
+      "validation_evidence": {
+        "path": "docs/review/miniuw-v1-policy-renewal-example/results.json",
+        "sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1",
+        "pointer": "/metrics/1"
+      },
+      "financial_definition_adopted": false,
+      "IRR_interval_output_location": null
+    },
+    {
+      "metric_id": "equity_recovered",
+      "definition_current": null,
+      "value_state": "PENDING",
+      "value": null,
+      "reason": "Base de equity y alcance de refinanciacion pendientes",
+      "comparison_state": "PENDING",
+      "criterion_source_ref": null,
+      "criterion_pass": {
+        "operator": null,
+        "threshold": null
+      },
+      "criterion_fail": {
+        "operator": null,
+        "threshold": null
+      },
+      "validation_evidence": {
+        "path": "docs/review/miniuw-v1-policy-renewal-example/results.json",
+        "sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1",
+        "pointer": "/metrics/2"
+      },
+      "financial_definition_adopted": false,
+      "IRR_interval_output_location": null
+    },
+    {
+      "metric_id": "equity_cash_in",
+      "definition_current": null,
+      "value_state": "PENDING",
+      "value": null,
+      "reason": "Base de equity y alcance de refinanciacion pendientes",
+      "comparison_state": "PENDING",
+      "criterion_source_ref": null,
+      "criterion_pass": {
+        "operator": null,
+        "threshold": null
+      },
+      "criterion_fail": {
+        "operator": null,
+        "threshold": null
+      },
+      "validation_evidence": {
+        "path": "docs/review/miniuw-v1-policy-renewal-example/results.json",
+        "sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1",
+        "pointer": "/metrics/3"
+      },
+      "financial_definition_adopted": false,
+      "IRR_interval_output_location": null
+    },
+    {
+      "metric_id": "breakeven_occupancy",
+      "definition_current": null,
+      "value_state": "PENDING",
+      "value": null,
+      "reason": "Funcion de ocupacion/costos/impuesto/deuda pendiente",
+      "comparison_state": "PENDING",
+      "criterion_source_ref": null,
+      "criterion_pass": {
+        "operator": null,
+        "threshold": null
+      },
+      "criterion_fail": {
+        "operator": null,
+        "threshold": null
+      },
+      "validation_evidence": {
+        "path": "docs/review/miniuw-v1-policy-renewal-example/results.json",
+        "sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1",
+        "pointer": "/metrics/4"
+      },
+      "financial_definition_adopted": false,
+      "IRR_interval_output_location": null
+    },
+    {
+      "metric_id": "post_refi_CoC",
+      "definition_current": null,
+      "value_state": "PENDING",
+      "value": null,
+      "reason": "Base de capital remanente y estrategia pendientes",
+      "comparison_state": "PENDING",
+      "criterion_source_ref": null,
+      "criterion_pass": {
+        "operator": null,
+        "threshold": null
+      },
+      "criterion_fail": {
+        "operator": null,
+        "threshold": null
+      },
+      "validation_evidence": {
+        "path": "docs/review/miniuw-v1-policy-renewal-example/results.json",
+        "sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1",
+        "pointer": "/metrics/5"
+      },
+      "financial_definition_adopted": false,
+      "IRR_interval_output_location": null
+    },
+    {
+      "metric_id": "equity_TDC",
+      "definition_current": null,
+      "value_state": "PENDING",
+      "value": null,
+      "reason": "Definicion y conciliacion de equity/TDC pendientes",
+      "comparison_state": "PENDING",
+      "criterion_source_ref": null,
+      "criterion_pass": {
+        "operator": null,
+        "threshold": null
+      },
+      "criterion_fail": {
+        "operator": null,
+        "threshold": null
+      },
+      "validation_evidence": {
+        "path": "docs/review/miniuw-v1-policy-renewal-example/results.json",
+        "sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1",
+        "pointer": "/metrics/6"
+      },
+      "financial_definition_adopted": false,
+      "IRR_interval_output_location": null
+    },
+    {
+      "metric_id": "equity_multiple",
+      "definition_current": "SYNTHETIC-V1-GROSS-EQUITY-MULTIPLE-v1",
+      "value_state": "computed_synthetic",
+      "value": {
+        "denominator": "700",
+        "numerator": "389"
+      },
+      "reason": null,
+      "comparison_state": "PENDING",
+      "criterion_source_ref": null,
+      "criterion_pass": {
+        "operator": null,
+        "threshold": null
+      },
+      "criterion_fail": {
+        "operator": null,
+        "threshold": null
+      },
+      "validation_evidence": {
+        "path": "docs/review/miniuw-v1-policy-renewal-example/results.json",
+        "sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1",
+        "pointer": "/metrics/7"
+      },
+      "financial_definition_adopted": false,
+      "IRR_interval_output_location": null
+    },
+    {
+      "metric_id": "IRR",
+      "definition_current": null,
+      "value_state": "PENDING",
+      "value": null,
+      "reason": "Conservar intervalos y todas las raices; no elegir valor puntual",
+      "comparison_state": "PENDING",
+      "criterion_source_ref": null,
+      "criterion_pass": {
+        "operator": null,
+        "threshold": null
+      },
+      "criterion_fail": {
+        "operator": null,
+        "threshold": null
+      },
+      "validation_evidence": {
+        "path": "docs/review/miniuw-v1-policy-renewal-example/results.json",
+        "sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1",
+        "pointer": "/metrics/8"
+      },
+      "financial_definition_adopted": false,
+      "IRR_interval_output_location": "/current_project_return_story/annual_irr_roots"
+    },
+    {
+      "metric_id": "asking_relative_to_supported_price",
+      "definition_current": null,
+      "value_state": "PENDING",
+      "value": null,
+      "reason": "Definicion RLV/objetivos y alcance de precio pendientes",
+      "comparison_state": "PENDING",
+      "criterion_source_ref": null,
+      "criterion_pass": {
+        "operator": null,
+        "threshold": null
+      },
+      "criterion_fail": {
+        "operator": null,
+        "threshold": null
+      },
+      "validation_evidence": {
+        "path": "docs/review/miniuw-v1-policy-renewal-example/results.json",
+        "sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1",
+        "pointer": "/metrics/9"
+      },
+      "financial_definition_adopted": false,
+      "IRR_interval_output_location": null
+    }
+  ],
+  "financial_model_complete": false,
+  "financial_coverage_certified": false,
+  "professional_review_authenticated": false,
+  "real_decisions_enabled": false,
+  "deployment_enabled": false
+}

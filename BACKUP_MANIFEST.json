@@ -3,8 +3,8 @@
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 1009,
-      "sha256": "99323b0a11159430cbf488634ceaea8813b603665b444a16d3bc07eead30ec46"
+      "bytes": 1140,
+      "sha256": "d9c85acc4d3cef4abcf4d4a0250d5edaeb54a1373a0f3d6062d6a8b95e659778"
     },
     {
       "path": ".gitignore",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 35933,
-      "sha256": "d22e1c6da5fc57f583ad606404e8aabb01c2557f25ede17e780418ffa15f3603"
+      "bytes": 36109,
+      "sha256": "5e18fccba4ce9839aadee2ba50276489c1990eb47b5a3a93917bc08de37516a4"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 144725,
-      "sha256": "c7209c86048967604cf876eedd43b75b365f39f59ea9db2ffcf49d6157bfdee9"
+      "bytes": 145787,
+      "sha256": "c7ffe1b6e592c0de270eb024d1b1bbe7ec92b33906894c6a5ad39f0d96625ab0"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -110,6 +110,26 @@
       "path": "docs/current-direction.txt",
       "bytes": 77,
       "sha256": "00780728befe4b9b44bbd6a044e7afaa814f5d17b20e3157ebc1ff0caa608b62"
+    },
+    {
+      "path": "docs/current-structure/D04-structural-validation.json",
+      "bytes": 880,
+      "sha256": "4602e5fb1b17242b0f4f702e3136cf342d4760a4762b89c3805126f86e9550c0"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_55_campos_D04.csv",
+      "bytes": 28155,
+      "sha256": "36933edad8b3b905d629bb0e67113b316578a63f4652744af069b9cb302f0454"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Estructura_Vigente_D04.json",
+      "bytes": 135166,
+      "sha256": "17ca7f968aff05208da34b25c884b2e36d3fbbb47b84311a17a9c32282128658"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Estructura_Vigente_D04.md",
+      "bytes": 10148,
+      "sha256": "9199f5f0ee2205b71be28345e4e363c96115702215b31fcae578a576feef69ee"
     },
     {
       "path": "docs/decision-input-contract.md",
@@ -3580,6 +3600,11 @@
       "path": "tests/xlsx_fixture.py",
       "bytes": 4336,
       "sha256": "2b1c6449a1d5cfc288fe2bd00a04be5dea6513d9d8eea3a85381cfa49860dd62"
+    },
+    {
+      "path": "tools/check_current_structure_D04.py",
+      "bytes": 9008,
+      "sha256": "308c4553f8e582f34795eb09f49f5a355af589d779f6972eb2ab971292c18a7d"
     },
     {
       "path": "tools/check_reference_package.py",
