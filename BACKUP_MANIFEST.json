@@ -1,10 +1,10 @@
 {
-  "scope": "I01 preserved design, D02–D07 design/structure documentation and T01–T102 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D07 design/structure documentation and T01–T103 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 2400,
-      "sha256": "37b2da167bd8eae9036404789538a7b5527bbb7affea2511f1976529edee750c"
+      "bytes": 2542,
+      "sha256": "0482eb38f3aaa74e6ada4f9d537fd94541254f00eb234cbfcdfb4ef820ce7d8a"
     },
     {
       "path": ".gitignore",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 39012,
-      "sha256": "946666dbf7e048b55f691242c8673211b89243d183c2b97aec4e53c6e3ce86c8"
+      "bytes": 39759,
+      "sha256": "b5423c1cb459ba237ee5704751be295670884c6c88626d0c186b121e2c40b816"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 170686,
-      "sha256": "b932e1bcf350faee19ffd67ccb6e50997d5f4b4047b3c49d22b4e19faad67c5b"
+      "bytes": 173709,
+      "sha256": "b1db54ee5b9077955d80a6a358e8fe008f4f3d5de1ac0a8156c60c9a9e67d273"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -1142,6 +1142,51 @@
       "sha256": "7679ef83ff4940109adecc7156773d51c5fb3a0a316949681c5907cf3493cc54"
     },
     {
+      "path": "docs/review/miniuw-v1-worksheet-case-example/Inputs.xlsx",
+      "bytes": 8655,
+      "sha256": "9c4e15d40b8df7755bd7dfe0ec3e9690f8d89a52fe5abc31baf7a1c13713922c"
+    },
+    {
+      "path": "docs/review/miniuw-v1-worksheet-case-example/MiniUW_v1_Resumen.pdf",
+      "bytes": 7404,
+      "sha256": "1527bb6a51c259c3d7a797f7fd0df4bb6425cd86b6d375538e96ea4188d9eceb"
+    },
+    {
+      "path": "docs/review/miniuw-v1-worksheet-case-example/audit.json",
+      "bytes": 488,
+      "sha256": "07cd227bbd92586ad09413af12e4ea18d136db9f909fd713853838c029800479"
+    },
+    {
+      "path": "docs/review/miniuw-v1-worksheet-case-example/binding.json",
+      "bytes": 680,
+      "sha256": "18866c28ebbe14912cbec6daa9f9d13e6d07ddefa9a3a97a59c8c12eaac8f5a5"
+    },
+    {
+      "path": "docs/review/miniuw-v1-worksheet-case-example/case.json",
+      "bytes": 195427,
+      "sha256": "baa78b2ebc84a7ec5a204d9c10a4ba0f0777fd84c1b99edc40a874bb86b02306"
+    },
+    {
+      "path": "docs/review/miniuw-v1-worksheet-case-example/execution-evidence.json",
+      "bytes": 1654622,
+      "sha256": "43dc33e4891b6b9949580805872ad9673be646c7d88f926a5e8b8a0085073920"
+    },
+    {
+      "path": "docs/review/miniuw-v1-worksheet-case-example/package.json",
+      "bytes": 1956,
+      "sha256": "59cd0281a69d4e7d1cf0e3121d86c074b9a03c9a7ac35477c9bb08c29204b7a3"
+    },
+    {
+      "path": "docs/review/miniuw-v1-worksheet-case-example/report-manifest.json",
+      "bytes": 15793,
+      "sha256": "08bea365d70567fc2fcd84ef69ba792adce265364ca90b8d6df25c4d6033fddd"
+    },
+    {
+      "path": "docs/review/miniuw-v1-worksheet-case-example/results.json",
+      "bytes": 133473,
+      "sha256": "8dcd1677131ce1db79873acbf67298395150f15f854c13a0169c30687e03297c"
+    },
+    {
       "path": "docs/review/pdf-review-validation-R02.json",
       "bytes": 268,
       "sha256": "50dbbe4a559ff06eb03eda76f05b437a800358c89b5aa46dc36b02fd835f9f8a"
@@ -1320,6 +1365,21 @@
       "path": "docs/review/synthetic-staged-operating-demo.json",
       "bytes": 25681,
       "sha256": "85112a66370a04bff4b85b050fea0f03625ddb98cbfba82103732e17632ee6c9"
+    },
+    {
+      "path": "docs/review/worksheet-case-validation-T103.json",
+      "bytes": 5320,
+      "sha256": "73284b7351a40b1f26f4d56aa569e3eb3c119e224f8db622e15d3580f2197676"
+    },
+    {
+      "path": "docs/review/worksheet-field-coverage-T103.json",
+      "bytes": 78422,
+      "sha256": "efe3d45bad787157056bfd7d5c915bba0768c098fdc9f1239b964695ac02d044"
+    },
+    {
+      "path": "docs/review/worksheet-fixture-generation-T103.json",
+      "bytes": 3039,
+      "sha256": "b5687039e5fa3cf1c0cf934ff11772d0b1cb36a72422366e9d15ba8f8a04fa34"
     },
     {
       "path": "docs/review-lifecycle-acceptance-cases.json",
@@ -1607,6 +1667,11 @@
       "sha256": "a5b7cf19aa0b47dcf74268ecb48f1e8c4f396e167be4c60bf4697ffa6fbc19ac"
     },
     {
+      "path": "docs/technical-implementation-T103.md",
+      "bytes": 4069,
+      "sha256": "4be94d38358486764929dac440728d56c9102f0a94fa4128c28dc1d7ed0839f7"
+    },
+    {
       "path": "docs/technical-implementation-T11.md",
       "bytes": 5491,
       "sha256": "7fcff82f9760ccd95f28f7ecc784aff735cd03f56225f936716eb5a87eef4e58"
@@ -1878,8 +1943,13 @@
     },
     {
       "path": "docs/technical-implementation-status.json",
-      "bytes": 36001,
-      "sha256": "9cef1cb0a6ef0f60c7ca744320077a065d7bc2639cf2d449b4ac1611d5767af6"
+      "bytes": 36574,
+      "sha256": "096120be488386a24b758475a7050c373c3af928f40654e44f102d1ce604d2ff"
+    },
+    {
+      "path": "docs/worksheet-case-v1-runbook.md",
+      "bytes": 2570,
+      "sha256": "e62172aba80b77ee6f531f764b166a4e86d26a98f8dbb20203adfd5d8020355a"
     },
     {
       "path": "infra/README.md",
@@ -3122,6 +3192,16 @@
       "sha256": "cd301d7b4758b5c80628f0e6515e01da81671ecccf0d36c9c7c4ec670f470529"
     },
     {
+      "path": "src/miniuw_foundation/worksheet_case_artifacts.py",
+      "bytes": 9144,
+      "sha256": "f1cd5033ea1771b94bbe73f998e600d6cdd720521967246d3ac31a70b7aff2f1"
+    },
+    {
+      "path": "src/miniuw_foundation/worksheet_case_output.py",
+      "bytes": 10451,
+      "sha256": "0f04f9a0ce17e8d2429d47cdc146672e37e0c623816817a766047e44e8172306"
+    },
+    {
       "path": "templates/IRR-review-criteria-T102.json",
       "bytes": 345,
       "sha256": "a447324a2a08b7981e16bd00b8df54d515acb9b75a23dbee46abff04d8e93541"
@@ -3797,6 +3877,46 @@
       "sha256": "4a590bd08b8aea42f555c6bfe167aec1a0f607f082e422e9be854cf276af6448"
     },
     {
+      "path": "templates/worksheet-case-formula-T103.json",
+      "bytes": 680,
+      "sha256": "f3be067f5469ab57742f4f0d5c66954e17ce678b4d62bc1a11960e5ecbbfb813"
+    },
+    {
+      "path": "templates/worksheet-case-formula-T103.xlsx",
+      "bytes": 8661,
+      "sha256": "738c2b7574703e739af56cd080bfb5a049765c10ef122cce4b79c1d6e2218408"
+    },
+    {
+      "path": "templates/worksheet-case-matched-T103.json",
+      "bytes": 680,
+      "sha256": "18866c28ebbe14912cbec6daa9f9d13e6d07ddefa9a3a97a59c8c12eaac8f5a5"
+    },
+    {
+      "path": "templates/worksheet-case-matched-T103.xlsx",
+      "bytes": 8655,
+      "sha256": "9c4e15d40b8df7755bd7dfe0ec3e9690f8d89a52fe5abc31baf7a1c13713922c"
+    },
+    {
+      "path": "templates/worksheet-case-other-case-T103.json",
+      "bytes": 683,
+      "sha256": "c7d5bd4821cd9fc9f46239407db2b9c65f0f851def92a8c71692964dddf19664"
+    },
+    {
+      "path": "templates/worksheet-case-other-case-T103.xlsx",
+      "bytes": 8646,
+      "sha256": "b78e5e483529c100a5cd31ce1b79cb36ef5a86773e76804ff00298dba5cf4cfb"
+    },
+    {
+      "path": "templates/worksheet-case-zero-conflict-T103.json",
+      "bytes": 686,
+      "sha256": "481e1307ba1a2f7db1bb6504a995d1c647a2d9a5721eae2e4a9265a32577b5b9"
+    },
+    {
+      "path": "templates/worksheet-case-zero-conflict-T103.xlsx",
+      "bytes": 8668,
+      "sha256": "64bee751fcb0e57cfe6981dd6e87f160c6d038a246e23b37d40a9a7c85f7faac"
+    },
+    {
       "path": "tests/bounded_cost_test_support.py",
       "bytes": 1707,
       "sha256": "2be8659ca6ab6954375dec379b7a41d37bab2bdc528a111ea201e8da1d17fd7b"
@@ -4262,6 +4382,11 @@
       "sha256": "58efdeb4e8f3535f8a55a1a09f802dc873c0e6f06011ffa5b5abb59d04a3a85c"
     },
     {
+      "path": "tests/test_worksheet_case.py",
+      "bytes": 14670,
+      "sha256": "9e1699e417b87698f385a9afae55c92890a30024c5e6330252a47cf8cd1923f1"
+    },
+    {
       "path": "tests/xlsx_fixture.py",
       "bytes": 4336,
       "sha256": "2b1c6449a1d5cfc288fe2bd00a04be5dea6513d9d8eea3a85381cfa49860dd62"
@@ -4335,6 +4460,11 @@
       "path": "tools/check_structure_faults.py",
       "bytes": 2201,
       "sha256": "ef657ee6d978353dbbdaadd306ec4134835b911665e05a6935eae4e956b85775"
+    },
+    {
+      "path": "tools/check_worksheet_case_T103.py",
+      "bytes": 8592,
+      "sha256": "f9d408ad9371cc68545482aa573a11731d4b794438314f02268b043a0a7e5dcb"
     },
     {
       "path": "tools/compare_miniuw_v1.py",
@@ -4650,6 +4780,11 @@
       "path": "tools/staged_phase_demo_support.py",
       "bytes": 8912,
       "sha256": "98f46cf846638a537f7313d1a22242054fc6dcffe13fbedfcf5317c9ac8f6415"
+    },
+    {
+      "path": "tools/worksheet_case_miniuw_v1.py",
+      "bytes": 1245,
+      "sha256": "92f47b8bded9fd15d9e7b3940bccc1fb117d8cb5966ea4353c1171fbf3f907ae"
     }
   ]
 }

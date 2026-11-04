@@ -1,0 +1,133 @@
+{
+  "component": "T103",
+  "status": "passed_source_first_worksheet_case_and_expired_financial_recovery",
+  "files_verified": 9,
+  "page_count": 1,
+  "fixture_sheets_checked": 4,
+  "field_rows_checked": 55,
+  "observations": [
+    {
+      "label": "matched",
+      "case_sha256": "baa78b2ebc84a7ec5a204d9c10a4ba0f0777fd84c1b99edc40a874bb86b02306",
+      "workbook_sha256": "9c4e15d40b8df7755bd7dfe0ec3e9690f8d89a52fe5abc31baf7a1c13713922c",
+      "binding_sha256": "18866c28ebbe14912cbec6daa9f9d13e6d07ddefa9a3a97a59c8c12eaac8f5a5",
+      "run_sha256": "60c74b844d8cd12abe637c0b70cf6e9dc30cb5757e6c8476f0b7b6def6bf1736",
+      "worksheet_gate_open": true,
+      "counts": {
+        "MATCHED_REPRESENTATION": 1,
+        "MISSING_BOTH": 54
+      },
+      "blockers": [],
+      "current_story_available": true
+    },
+    {
+      "label": "zero-conflict",
+      "case_sha256": "baa78b2ebc84a7ec5a204d9c10a4ba0f0777fd84c1b99edc40a874bb86b02306",
+      "workbook_sha256": "64bee751fcb0e57cfe6981dd6e87f160c6d038a246e23b37d40a9a7c85f7faac",
+      "binding_sha256": "481e1307ba1a2f7db1bb6504a995d1c647a2d9a5721eae2e4a9265a32577b5b9",
+      "run_sha256": "1c149014bb1e9aadb4d521aecb1a59e390a35298173fb1aca573e0f88fdb852b",
+      "worksheet_gate_open": false,
+      "counts": {
+        "CONFLICT": 1,
+        "MATCHED_REPRESENTATION": 1,
+        "MISSING_BOTH": 53
+      },
+      "blockers": [
+        "INPUT_C8:worksheet_value_differs_from_case_claim"
+      ],
+      "current_story_available": false
+    },
+    {
+      "label": "formula",
+      "case_sha256": "baa78b2ebc84a7ec5a204d9c10a4ba0f0777fd84c1b99edc40a874bb86b02306",
+      "workbook_sha256": "738c2b7574703e739af56cd080bfb5a049765c10ef122cce4b79c1d6e2218408",
+      "binding_sha256": "f3be067f5469ab57742f4f0d5c66954e17ce678b4d62bc1a11960e5ecbbfb813",
+      "run_sha256": "eebfe2f953e39d56abba1438306ae22f3a9c1628febe3a3e77a99272c7d11edd",
+      "worksheet_gate_open": false,
+      "counts": {
+        "MISSING_BOTH": 54,
+        "PENDING": 1
+      },
+      "blockers": [
+        "INPUT_C7:formula_or_error_not_resolved"
+      ],
+      "current_story_available": false
+    },
+    {
+      "label": "other-case",
+      "case_sha256": "baa78b2ebc84a7ec5a204d9c10a4ba0f0777fd84c1b99edc40a874bb86b02306",
+      "workbook_sha256": "b78e5e483529c100a5cd31ce1b79cb36ef5a86773e76804ff00298dba5cf4cfb",
+      "binding_sha256": "c7d5bd4821cd9fc9f46239407db2b9c65f0f851def92a8c71692964dddf19664",
+      "run_sha256": "733aa164b76f2989c8635ddf6e5c00df15037bdb0d445f330b9e8d1e41dfdc4a",
+      "worksheet_gate_open": false,
+      "counts": {
+        "MATCHED_REPRESENTATION": 1,
+        "MISSING_BOTH": 54
+      },
+      "blockers": [
+        "worksheet_metadata_mismatch:B3"
+      ],
+      "current_story_available": false
+    }
+  ],
+  "run_sha256": "60c74b844d8cd12abe637c0b70cf6e9dc30cb5757e6c8476f0b7b6def6bf1736",
+  "pdf_sha256": "1527bb6a51c259c3d7a797f7fd0df4bb6425cd86b6d375538e96ea4188d9eceb",
+  "manifest_sha256": "4d53ecb7417e4df6098cd85aa3f5c2d92bd6aed10a4144aeeb964266af215c8d",
+  "expired_source_sha256": "7aa748c5a5b3a6cb6742798ca44c9cb51af49f25babe346096fbcaccda2015f6",
+  "expired_run_sha256": "0e5193e7f6d0b64982997a1d8f7d9825c3569f0f4541a22d2775447464125754",
+  "expired_financial_source_not_revived": true,
+  "parent_financial_output_unchanged_when_matched": true,
+  "original_semantic_mappings_pending": 54,
+  "source_versions": [
+    {
+      "path": "src/miniuw_foundation/worksheet_case_output.py",
+      "sha256": "0f04f9a0ce17e8d2429d47cdc146672e37e0c623816817a766047e44e8172306"
+    },
+    {
+      "path": "src/miniuw_foundation/worksheet_case_artifacts.py",
+      "sha256": "f1cd5033ea1771b94bbe73f998e600d6cdd720521967246d3ac31a70b7aff2f1"
+    },
+    {
+      "path": "src/miniuw_foundation/inputsheet.py",
+      "sha256": "7009c2c07573741ed51dcbd3b38b1ef11210afd932d6e5d916cb74d37325ae26"
+    },
+    {
+      "path": "src/miniuw_foundation/workbooks.py",
+      "sha256": "cd301d7b4758b5c80628f0e6515e01da81671ecccf0d36c9c7c4ec670f470529"
+    },
+    {
+      "path": "src/miniuw_foundation/normalization.py",
+      "sha256": "582f318182971e79cd48fbcd43a00c3e4ecc8505450eab87762782ed8af70c0a"
+    },
+    {
+      "path": "src/miniuw_foundation/data/input-sheet-layout-v1.json",
+      "sha256": "359ad81af6d20547b91c303b661c596254bfc7dde73c1eca5528d247ff2382f3"
+    },
+    {
+      "path": "src/miniuw_foundation/irr_interval_output.py",
+      "sha256": "c3f9dfb600ebe749dac6ef16d97afbff1ddb59bc59bb67bd18a36bb91d4945a0"
+    },
+    {
+      "path": "tools/worksheet_case_miniuw_v1.py",
+      "sha256": "92f47b8bded9fd15d9e7b3940bccc1fb117d8cb5966ea4353c1171fbf3f907ae"
+    },
+    {
+      "path": "tools/check_worksheet_case_T103.py",
+      "sha256": "f9d408ad9371cc68545482aa573a11731d4b794438314f02268b043a0a7e5dcb"
+    },
+    {
+      "path": "docs/technical-implementation-T103.md",
+      "sha256": "4be94d38358486764929dac440728d56c9102f0a94fa4128c28dc1d7ed0839f7"
+    },
+    {
+      "path": "docs/review/worksheet-fixture-generation-T103.json",
+      "sha256": "b5687039e5fa3cf1c0cf934ff11772d0b1cb36a72422366e9d15ba8f8a04fa34"
+    }
+  ],
+  "worksheet_values_adopted": false,
+  "financial_field_mapping_completed": false,
+  "financial_publication_authorized": false,
+  "deployment_enabled": false,
+  "real_decisions_enabled": false,
+  "decision": "PENDING"
+}

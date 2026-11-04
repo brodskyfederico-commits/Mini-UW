@@ -1,7 +1,7 @@
 {
   "phase": "post-I01 synthetic technical implementation",
   "user_authorized": true,
-  "component": "T102",
+  "component": "T103",
   "status": "local_implementation_verified_pending_remote_receipt",
   "implemented": [
     "fresh raw-claim drafts from unchanged 55-input/10-criterion template",
@@ -135,9 +135,12 @@
     "portable renewal-case replay and current-or-pending one-page PDF with eight strictly inventoried local artifacts",
     "source-first two-version IRR-enabled review with complete decoded source and criterion diffs",
     "exact compatible gross cash, EM, dated-event and explicit-normalization revision deltas",
-    "separate reference/candidate snapshots, candidate-only PDF and portable blocked-candidate recovery without adoption"
+    "separate reference/candidate snapshots, candidate-only PDF and portable blocked-candidate recovery without adoption",
+    "original-layout synthetic worksheet to all55 current-case claim reconciliation with exact cell/JSON locators",
+    "withdraw current cash, IRR conditions and point metrics on worksheet conflict/formula/binding mismatch",
+    "source-first worksheet/case nine-artifact transport and one-page current report"
   ],
-  "unit_tests": 1455,
+  "unit_tests": 1471,
   "plan_packages_partially_addressed": [
     "IMP-01",
     "IMP-06",
@@ -260,7 +263,8 @@
     "T99",
     "T100",
     "T101",
-    "T102"
+    "T102",
+    "T103"
   ],
   "tests_by_component": {
     "T01": 31,
@@ -577,5 +581,9 @@
   "synthetic_IRR_review_seven_artifact_packet_implemented": true,
   "synthetic_IRR_review_portable_recovery_implemented": true,
   "automatic_revision_adoption_enabled": false,
-  "reference_fallback_for_blocked_candidate_enabled": false
+  "reference_fallback_for_blocked_candidate_enabled": false,
+  "synthetic_original_worksheet_case_reconciliation_implemented": true,
+  "synthetic_worksheet_case_current_output_transport_implemented": true,
+  "worksheet_values_automatically_adopted": false,
+  "worksheet_financial_semantics_completed": false
 }

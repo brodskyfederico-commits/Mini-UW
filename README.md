@@ -4,6 +4,8 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- [Hoja sintética y expediente T103](docs/worksheet-case-v1-runbook.md): cotejo de55 declaraciones, diferencias/fórmulas bloqueantes y una página con cifras actuales retiradas cuando no concilian; sin adoptar datos o semántica financiera.
+
 - [Revisión reproducible de versiones T102](docs/IRR-revision-review-runbook.md): compara fuentes, criterios y efectos exactos sobre caja/retornos; conserva candidatos bloqueados sin sustituirlos por resultados anteriores ni adoptarlos.
 
 - [Criterio IRR sobre intervalo T101](docs/IRR-interval-v1-runbook.md): comprobación de una condición sintética sin escoger punto medio; bandas, cruces y faltantes pendientes, sin PASS/FAIL parcial del deal.
@@ -149,3 +151,5 @@ T90–T92 conectan [calendarios suministrados de seguros e impuestos](docs/techn
 T93–T95 agregan [renovaciones de seguro con cuotas agrupadas](docs/technical-implementation-T93-T95.md): primas/fracciones suministradas por póliza, intersecciones exactas con períodos, agrupaciones explícitas hacia pagos existentes y retorno actual sólo con 43 vínculos completos. [Uso](docs/policy-renewal-v1-runbook.md), [entrada](templates/miniuw-v1-policy-renewal-case.json), [PDF sintético](docs/review/miniuw-v1-policy-renewal-example/MiniUW_v1_Resumen.pdf) y [cobertura](docs/technical-coverage-T93-T95.json). 28 pruebas nuevas; 1.351 técnicas registradas. Ejemplo base cobros778/resultado−622; renovación suministrada12 deja cobros776/resultado−624. PENDING, sin autoridad contractual o suficiencia de cobertura acreditadas, sin despliegue ni decisiones reales.
 
 T102 integra revisión de dos versiones a través de T101: cambios completos de fuente/criterio, diferencias exactas de caja/EM y evidencia portable con un PDF candidato. Tres ensayos distinguen cambio de regla con caja idéntica, renovación con menor cobro y evidencia candidata vencida. Sin nueva versión activa ni aprobación.16 pruebas nuevas,1.455 técnicas registradas; resultado hosted del commit exacto en comprobante externo. [Uso y límites](docs/IRR-revision-review-runbook.md).
+
+T103 conecta el lector del diseño original con la salida actual: coteja55 campos por ID/celda, preserva texto/número/cero/faltantes/fórmulas y bloquea cifras discrepantes. No completa los54 mapeos semánticos pendientes ni cambia fuentes/criterios.16 pruebas nuevas;1.471 técnicas registradas. [Uso y límites](docs/worksheet-case-v1-runbook.md), [cobertura de cotejo por campo](docs/review/worksheet-field-coverage-T103.json). Resultado hosted y respaldo del commit exacto en comprobante externo.

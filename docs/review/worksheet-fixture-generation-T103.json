@@ -1,0 +1,68 @@
+{
+  "original_workbook": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+  "original_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+  "scope": "Four explicit synthetic original-layout worksheets; fixed source case unchanged, no value or financial policy adoption",
+  "cases": [
+    {
+      "label": "matched",
+      "case": "templates/miniuw-v1-policy-renewal-case.json",
+      "case_sha256": "baa78b2ebc84a7ec5a204d9c10a4ba0f0777fd84c1b99edc40a874bb86b02306",
+      "workbook": "templates/worksheet-case-matched-T103.xlsx",
+      "workbook_sha256": "9c4e15d40b8df7755bd7dfe0ec3e9690f8d89a52fe5abc31baf7a1c13713922c",
+      "binding": "templates/worksheet-case-matched-T103.json",
+      "binding_sha256": "18866c28ebbe14912cbec6daa9f9d13e6d07ddefa9a3a97a59c8c12eaac8f5a5",
+      "worksheet_gate_open": true,
+      "counts": {
+        "MATCHED_REPRESENTATION": 1,
+        "MISSING_BOTH": 54
+      },
+      "current_story_available": true
+    },
+    {
+      "label": "zero-conflict",
+      "case": "templates/miniuw-v1-policy-renewal-case.json",
+      "case_sha256": "baa78b2ebc84a7ec5a204d9c10a4ba0f0777fd84c1b99edc40a874bb86b02306",
+      "workbook": "templates/worksheet-case-zero-conflict-T103.xlsx",
+      "workbook_sha256": "64bee751fcb0e57cfe6981dd6e87f160c6d038a246e23b37d40a9a7c85f7faac",
+      "binding": "templates/worksheet-case-zero-conflict-T103.json",
+      "binding_sha256": "481e1307ba1a2f7db1bb6504a995d1c647a2d9a5721eae2e4a9265a32577b5b9",
+      "worksheet_gate_open": false,
+      "counts": {
+        "CONFLICT": 1,
+        "MATCHED_REPRESENTATION": 1,
+        "MISSING_BOTH": 53
+      },
+      "current_story_available": false
+    },
+    {
+      "label": "formula",
+      "case": "templates/miniuw-v1-policy-renewal-case.json",
+      "case_sha256": "baa78b2ebc84a7ec5a204d9c10a4ba0f0777fd84c1b99edc40a874bb86b02306",
+      "workbook": "templates/worksheet-case-formula-T103.xlsx",
+      "workbook_sha256": "738c2b7574703e739af56cd080bfb5a049765c10ef122cce4b79c1d6e2218408",
+      "binding": "templates/worksheet-case-formula-T103.json",
+      "binding_sha256": "f3be067f5469ab57742f4f0d5c66954e17ce678b4d62bc1a11960e5ecbbfb813",
+      "worksheet_gate_open": false,
+      "counts": {
+        "MISSING_BOTH": 54,
+        "PENDING": 1
+      },
+      "current_story_available": false
+    },
+    {
+      "label": "other-case",
+      "case": "templates/miniuw-v1-policy-renewal-case.json",
+      "case_sha256": "baa78b2ebc84a7ec5a204d9c10a4ba0f0777fd84c1b99edc40a874bb86b02306",
+      "workbook": "templates/worksheet-case-other-case-T103.xlsx",
+      "workbook_sha256": "b78e5e483529c100a5cd31ce1b79cb36ef5a86773e76804ff00298dba5cf4cfb",
+      "binding": "templates/worksheet-case-other-case-T103.json",
+      "binding_sha256": "c7d5bd4821cd9fc9f46239407db2b9c65f0f851def92a8c71692964dddf19664",
+      "worksheet_gate_open": false,
+      "counts": {
+        "MATCHED_REPRESENTATION": 1,
+        "MISSING_BOTH": 54
+      },
+      "current_story_available": false
+    }
+  ]
+}

@@ -45,6 +45,8 @@ jobs:
         run: python tools/check_IRR_interval_T101.py
       - name: Verify two-source IRR revision review and blocked candidate recovery
         run: python tools/check_IRR_revision_review_T102.py
+      - name: Verify original worksheet case consistency and current figure withdrawal
+        run: python tools/check_worksheet_case_T103.py
       - name: Verify one-page Dot and bot role summary
         run: python tools/check_dots_bots_onepage_ROLES01.py
       - name: Test synthetic technical foundation
