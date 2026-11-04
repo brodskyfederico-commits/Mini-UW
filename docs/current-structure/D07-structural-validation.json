@@ -1,0 +1,29 @@
+{
+  "snapshot": "D07",
+  "status": "passed_scoped_investor_output_and_replay_check",
+  "checker_sha256": "7215b12dbd2535d4d439f03720bb59df000762d655b1c86c2484e325abf30e05",
+  "output_fields_checked": 23,
+  "cases_replayed": 3,
+  "pdfs_replayed_and_text_checked": 3,
+  "published_example_artifacts_verified": 4,
+  "exact_consistency_checks_per_current_case": 21,
+  "current_cases_checked": 2,
+  "blocked_cases_checked": 1,
+  "source_hashes_checked": 21,
+  "negative_structural_cases_rejected": [
+    "personal_return_invented",
+    "cash_shortfall_as_capital",
+    "invented_full_operating_year_verification",
+    "blocked_cash_exposed",
+    "missing_output_field",
+    "unsupported_release"
+  ],
+  "annual_net_cash_report_complete_for_supplied_window": true,
+  "personal_return_verified": false,
+  "capital_stock_derived": false,
+  "financial_validation_performed": false,
+  "professional_review_authenticated": false,
+  "independent_financial_audit": false,
+  "deployment_enabled": false,
+  "real_decisions_enabled": false
+}

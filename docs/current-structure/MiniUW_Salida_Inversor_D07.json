@@ -1,0 +1,3048 @@
+{
+  "snapshot_id": "D07",
+  "technical_baseline": "T96",
+  "financial_pipeline_baseline": "T95",
+  "registered_technical_unit_tests": 1355,
+  "scope": "Investor-output structure, exact synthetic cash identities and existing PDF span traceability; not financial acceptance",
+  "output_fields": [
+    {
+      "field_id": "R01",
+      "label": "Moneda",
+      "quantity_kind": "metadata",
+      "source_pointer": "/current_project_return_story/currency",
+      "selector": "direct",
+      "requirement_document": "docs/review/information-flow-summary-FLOW02.json",
+      "requirement_pointer": "/steps/7/description",
+      "definition": "Moneda declarada; no derivar USD de un símbolo.",
+      "presentation_scope": "matched_spans_only"
+    },
+    {
+      "field_id": "R02",
+      "label": "Alcance del equity",
+      "quantity_kind": "metadata",
+      "source_pointer": "/current_project_return_story/equity_level",
+      "selector": "direct",
+      "requirement_document": "docs/review/information-flow-summary-FLOW02.json",
+      "requirement_pointer": "/steps/7/description",
+      "definition": "Equity agregado del proyecto; no reparto personal.",
+      "presentation_scope": "matched_spans_only"
+    },
+    {
+      "field_id": "R03",
+      "label": "Ventana de caja",
+      "quantity_kind": "dates",
+      "source_pointer": "/current_project_return_story/cash_horizon",
+      "selector": "direct",
+      "requirement_document": "docs/review/information-flow-summary-FLOW02.json",
+      "requirement_pointer": "/steps/7/description",
+      "definition": "Fechas declaradas y exclusión de cobros posteriores.",
+      "presentation_scope": "matched_spans_only"
+    },
+    {
+      "field_id": "R04",
+      "label": "Aportes iniciales y fechas",
+      "quantity_kind": "cash",
+      "source_pointer": "/current_project_return_story/dated_events",
+      "selector": "initial_capital",
+      "requirement_document": "docs/review/information-flow-summary-FLOW02.json",
+      "requirement_pointer": "/investor_return_questions/0",
+      "definition": "Movimientos brutos iniciales; conservar fecha y fuente.",
+      "presentation_scope": "matched_spans_only"
+    },
+    {
+      "field_id": "R05",
+      "label": "Aportes adicionales y fechas",
+      "quantity_kind": "cash",
+      "source_pointer": "/current_project_return_story/dated_events",
+      "selector": "additional_capital",
+      "requirement_document": "docs/review/information-flow-summary-FLOW02.json",
+      "requirement_pointer": "/investor_return_questions/0",
+      "definition": "Todos los adicionales, incluidos ceros explícitos; cash-in refi separado.",
+      "presentation_scope": "matched_spans_only"
+    },
+    {
+      "field_id": "R06",
+      "label": "Cobros operativos y fechas",
+      "quantity_kind": "cash",
+      "source_pointer": "/current_project_return_story/dated_events",
+      "selector": "operating_distribution",
+      "requirement_document": "docs/review/information-flow-summary-FLOW02.json",
+      "requirement_pointer": "/investor_return_questions/5",
+      "definition": "Cobro de equity conciliado; no equivale a NOI.",
+      "presentation_scope": "matched_spans_only"
+    },
+    {
+      "field_id": "R07",
+      "label": "Cobro neto refi y fechas",
+      "quantity_kind": "cash",
+      "source_pointer": "/current_project_return_story/dated_events",
+      "selector": "net_refinance_distribution",
+      "requirement_document": "docs/review/information-flow-summary-FLOW02.json",
+      "requirement_pointer": "/investor_return_questions/1",
+      "definition": "En esta ruta sin refi: total explícito cero y ningún mes de refi inventado.",
+      "presentation_scope": "matched_spans_only"
+    },
+    {
+      "field_id": "R08",
+      "label": "Cash-in refi y fechas",
+      "quantity_kind": "cash",
+      "source_pointer": "/current_project_return_story/dated_events",
+      "selector": "refinance_cash_in",
+      "requirement_document": "docs/review/information-flow-summary-FLOW02.json",
+      "requirement_pointer": "/investor_return_questions/2",
+      "definition": "Aporte separado; cero sólo en esta ruta suministrada sin refi.",
+      "presentation_scope": "matched_spans_only"
+    },
+    {
+      "field_id": "R09",
+      "label": "Cobro neto venta y fecha",
+      "quantity_kind": "cash",
+      "source_pointer": "/current_project_return_story/dated_events",
+      "selector": "net_sale_distribution",
+      "requirement_document": "docs/review/information-flow-summary-FLOW02.json",
+      "requirement_pointer": "/investor_return_questions/6",
+      "definition": "Residual neto conciliado; no precio bruto o valor retenido.",
+      "presentation_scope": "matched_spans_only"
+    },
+    {
+      "field_id": "R10",
+      "label": "Aportes brutos totales",
+      "quantity_kind": "cash",
+      "source_pointer": "/current_project_return_story/gross_contributions",
+      "selector": "direct",
+      "requirement_document": "docs/review/information-flow-summary-FLOW02.json",
+      "requirement_pointer": "/investor_return_questions/0",
+      "definition": "Suma bruta de aportes; no netear contra distribuciones.",
+      "presentation_scope": "matched_spans_only"
+    },
+    {
+      "field_id": "R11",
+      "label": "Cobros brutos totales",
+      "quantity_kind": "cash",
+      "source_pointer": "/current_project_return_story/gross_distributions",
+      "selector": "direct",
+      "requirement_document": "docs/review/information-flow-summary-FLOW02.json",
+      "requirement_pointer": "/investor_return_questions/7",
+      "definition": "Suma bruta de cobros; no suma valor del equity retenido.",
+      "presentation_scope": "matched_spans_only"
+    },
+    {
+      "field_id": "R12",
+      "label": "Resultado neto de caja",
+      "quantity_kind": "cash",
+      "source_pointer": "/current_project_return_story/net_cash_profit",
+      "selector": "direct",
+      "requirement_document": "docs/review/information-flow-summary-FLOW02.json",
+      "requirement_pointer": "/investor_return_questions/7",
+      "definition": "Cobros menos aportes dentro de la ventana; no pérdida económica definitiva.",
+      "presentation_scope": "matched_spans_only"
+    },
+    {
+      "field_id": "R13",
+      "label": "Equity multiple",
+      "quantity_kind": "ratio",
+      "source_pointer": "/current_project_return_story/equity_multiple",
+      "selector": "direct",
+      "requirement_document": "docs/review/information-flow-summary-FLOW02.json",
+      "requirement_pointer": "/investor_return_questions/7",
+      "definition": "Cobros brutos / aportes brutos positivos; múltiplo, no tasa anual.",
+      "presentation_scope": "matched_spans_only"
+    },
+    {
+      "field_id": "R14",
+      "label": "TIR anual y selección",
+      "quantity_kind": "intervals",
+      "source_pointer": "/current_project_return_story/annual_irr_roots",
+      "selector": "irr",
+      "requirement_document": "docs/review/information-flow-summary-FLOW02.json",
+      "requirement_pointer": "/investor_return_questions/7",
+      "definition": "Conservar todas las raíces/intervalos y selección nula. No fabricar un punto.",
+      "presentation_scope": "matched_spans_only"
+    },
+    {
+      "field_id": "R15",
+      "label": "Referencia por 10 y base",
+      "quantity_kind": "normalization",
+      "source_pointer": "/current_project_return_story/normalized_story",
+      "selector": "direct",
+      "requirement_document": "docs/review/information-flow-summary-FLOW02.json",
+      "requirement_pointer": "/steps/7/description",
+      "definition": "Escala sobre base explícita de aportes del proyecto; no participación personal.",
+      "presentation_scope": "reference_basis_and_totals_only"
+    },
+    {
+      "field_id": "R16",
+      "label": "Capital aún invertido",
+      "quantity_kind": "stock",
+      "source_pointer": "/current_project_return_story/capital_snapshots",
+      "selector": "capital_still_invested",
+      "requirement_document": "docs/review/information-flow-summary-FLOW02.json",
+      "requirement_pointer": "/investor_return_questions/3",
+      "definition": "Stock declarado con fecha/base/fuente; no aportes menos cobros.",
+      "presentation_scope": "matched_spans_only"
+    },
+    {
+      "field_id": "R17",
+      "label": "Equity retenido",
+      "quantity_kind": "stock",
+      "source_pointer": "/current_project_return_story/capital_snapshots",
+      "selector": "retained_equity_value",
+      "requirement_document": "docs/review/information-flow-summary-FLOW02.json",
+      "requirement_pointer": "/investor_return_questions/4",
+      "definition": "Valor declarado, separado de efectivo cobrado.",
+      "presentation_scope": "matched_spans_only"
+    },
+    {
+      "field_id": "R18",
+      "label": "Caja neta anual",
+      "quantity_kind": "annual_cash",
+      "source_pointer": "/current_project_return_story/annual_cash_receipts",
+      "selector": "annual_cash",
+      "requirement_document": "docs/review/information-flow-summary-FLOW02.json",
+      "requirement_pointer": "/investor_return_questions/5",
+      "definition": "Cobros menos aportes por año calendario dentro de la ventana suministrada.",
+      "presentation_scope": "gross_contributions_receipts_net_cash_operating_cash_and_conditional_CoC"
+    },
+    {
+      "field_id": "R19",
+      "label": "CoC anual condicional",
+      "quantity_kind": "ratio",
+      "source_pointer": "/current_project_return_story/annual_cash_receipts",
+      "selector": "annual_coc",
+      "requirement_document": "docs/review/information-flow-summary-FLOW02.json",
+      "requirement_pointer": "/investor_return_questions/5",
+      "definition": "Sólo cobros operativos / base anual positiva declarada; sin base queda pendiente.",
+      "presentation_scope": "matched_spans_only"
+    },
+    {
+      "field_id": "R20",
+      "label": "Retorno personal",
+      "quantity_kind": "personal",
+      "source_pointer": "/current_project_return_story/personal_investor_return",
+      "selector": "direct",
+      "requirement_document": "docs/review/information-flow-summary-FLOW02.json",
+      "requirement_pointer": "/steps/7/description",
+      "definition": "Pendiente de términos de reparto aplicables; no inferir proporcionalidad LP/JV.",
+      "presentation_scope": "matched_spans_only"
+    },
+    {
+      "field_id": "R21",
+      "label": "Aportes no recuperados al corte",
+      "quantity_kind": "risk",
+      "source_pointer": "/current_project_return_story/risk_observations/cash_shortfall_at_horizon",
+      "selector": "direct",
+      "requirement_document": "docs/review/information-flow-summary-FLOW02.json",
+      "requirement_pointer": "/investor_return_questions/8",
+      "definition": "Observación de caja al horizonte; no capital remanente ni pérdida final.",
+      "presentation_scope": "matched_spans_only"
+    },
+    {
+      "field_id": "R22",
+      "label": "Pico de financiación del equity",
+      "quantity_kind": "risk",
+      "source_pointer": "/current_project_return_story/risk_observations/peak_cumulative_net_equity_funding_at_date_close",
+      "selector": "direct",
+      "requirement_document": "docs/review/information-flow-summary-FLOW02.json",
+      "requirement_pointer": "/investor_return_questions/8",
+      "definition": "Pico al cierre de fechas; no acredita liquidez intradía.",
+      "presentation_scope": "matched_spans_only"
+    },
+    {
+      "field_id": "R23",
+      "label": "Dependencia del cobro de venta",
+      "quantity_kind": "ratio",
+      "source_pointer": "/current_project_return_story/risk_observations/sale_share_of_distributions",
+      "selector": "direct",
+      "requirement_document": "docs/review/information-flow-summary-FLOW02.json",
+      "requirement_pointer": "/investor_return_questions/8",
+      "definition": "Cobro de venta / cobros totales bajo el caso suministrado.",
+      "presentation_scope": "matched_spans_only"
+    }
+  ],
+  "cases": [
+    {
+      "case_id": "baseline",
+      "input_file": "templates/miniuw-v1-policy-renewal-case.json",
+      "source_sha256": "baa78b2ebc84a7ec5a204d9c10a4ba0f0777fd84c1b99edc40a874bb86b02306",
+      "input_mutation": null,
+      "run_sha256": "81da8fb19ddfd99ac33d55781528ba3a731290b9011dcb3f66cc56bc76fac448",
+      "decision": "PENDING",
+      "current_projection_available": true,
+      "fields": [
+        {
+          "field_id": "R01",
+          "state": "available_synthetic",
+          "value": "USD",
+          "resolved_source_pointers": [
+            "/current_project_return_story/currency"
+          ],
+          "pdf_manifest_spans": [
+            {
+              "font_size": 7,
+              "result_pointers": [
+                "/evaluated_as_of_UTC",
+                "/current_project_return_story/equity_level",
+                "/current_project_return_story/currency",
+                "/current_project_return_story/cash_horizon"
+              ],
+              "text": "UTC 2027-07-01T12:00:00Z | Equity: proyecto | Moneda USD | Ventana 2026-10-01 a 2027-07-01",
+              "width": 736,
+              "x": 28,
+              "y": 498
+            }
+          ]
+        },
+        {
+          "field_id": "R02",
+          "state": "available_synthetic",
+          "value": "aggregate_project_equity",
+          "resolved_source_pointers": [
+            "/current_project_return_story/equity_level"
+          ],
+          "pdf_manifest_spans": [
+            {
+              "font_size": 7,
+              "result_pointers": [
+                "/evaluated_as_of_UTC",
+                "/current_project_return_story/equity_level",
+                "/current_project_return_story/currency",
+                "/current_project_return_story/cash_horizon"
+              ],
+              "text": "UTC 2027-07-01T12:00:00Z | Equity: proyecto | Moneda USD | Ventana 2026-10-01 a 2027-07-01",
+              "width": 736,
+              "x": 28,
+              "y": 498
+            }
+          ]
+        },
+        {
+          "field_id": "R03",
+          "state": "available_synthetic",
+          "value": {
+            "end": "2027-07-01",
+            "future_cash_after_horizon_included": false,
+            "start": "2026-10-01"
+          },
+          "resolved_source_pointers": [
+            "/current_project_return_story/cash_horizon"
+          ],
+          "pdf_manifest_spans": [
+            {
+              "font_size": 7,
+              "result_pointers": [
+                "/evaluated_as_of_UTC",
+                "/current_project_return_story/equity_level",
+                "/current_project_return_story/currency",
+                "/current_project_return_story/cash_horizon"
+              ],
+              "text": "UTC 2027-07-01T12:00:00Z | Equity: proyecto | Moneda USD | Ventana 2026-10-01 a 2027-07-01",
+              "width": 736,
+              "x": 28,
+              "y": 498
+            }
+          ]
+        },
+        {
+          "field_id": "R04",
+          "state": "computed_synthetic_cash",
+          "value": {
+            "total": {
+              "denominator": "1",
+              "numerator": "1000"
+            },
+            "events": [
+              {
+                "amount": {
+                  "denominator": "1",
+                  "numerator": "1000"
+                },
+                "category": "initial_capital",
+                "currency": "USD",
+                "date": "2026-10-01",
+                "event_id": "preopening_slots-0",
+                "kind": "contribution",
+                "source_ref": "miniuw:staged-lifecycle:ff52b6a2c7fe114fc99f058fe71fd73d8a2302a2505dcfb5689cd547c4be0344#/exportable_equity_movements/0"
+              }
+            ]
+          },
+          "resolved_source_pointers": [
+            "/current_project_return_story/dated_events",
+            "/current_project_return_story/cash_by_category/initial_capital"
+          ],
+          "pdf_manifest_spans": [
+            {
+              "font_size": 7,
+              "result_pointers": [
+                "/current_project_return_story/dated_events/0"
+              ],
+              "text": "2026-10-01  Aporte inicial",
+              "width": 258,
+              "x": 28,
+              "y": 419
+            },
+            {
+              "font_size": 7,
+              "result_pointers": [
+                "/current_project_return_story/dated_events/0/amount"
+              ],
+              "text": "1000.0000",
+              "width": 122,
+              "x": 292,
+              "y": 419
+            }
+          ]
+        },
+        {
+          "field_id": "R05",
+          "state": "computed_synthetic_cash",
+          "value": {
+            "total": {
+              "denominator": "1",
+              "numerator": "400"
+            },
+            "events": [
+              {
+                "amount": {
+                  "denominator": "1",
+                  "numerator": "400"
+                },
+                "category": "additional_capital",
+                "currency": "USD",
+                "date": "2026-11-01",
+                "event_id": "preopening_slots-1",
+                "kind": "contribution",
+                "source_ref": "miniuw:staged-lifecycle:ff52b6a2c7fe114fc99f058fe71fd73d8a2302a2505dcfb5689cd547c4be0344#/exportable_equity_movements/1"
+              },
+              {
+                "amount": {
+                  "denominator": "1",
+                  "numerator": "0"
+                },
+                "category": "additional_capital",
+                "currency": "USD",
+                "date": "2027-03-01",
+                "event_id": "operating_slots-1",
+                "kind": "contribution",
+                "source_ref": "miniuw:staged-lifecycle:4861183eee474b5e9e8df058393a5349d710261ca4d1b63421d55f518a4f02dc#/exportable_equity_movements/0/contribution"
+              },
+              {
+                "amount": {
+                  "denominator": "1",
+                  "numerator": "0"
+                },
+                "category": "additional_capital",
+                "currency": "USD",
+                "date": "2027-06-01",
+                "event_id": "operating_slots-3",
+                "kind": "contribution",
+                "source_ref": "miniuw:staged-lifecycle:4861183eee474b5e9e8df058393a5349d710261ca4d1b63421d55f518a4f02dc#/exportable_equity_movements/1/contribution"
+              },
+              {
+                "amount": {
+                  "denominator": "1",
+                  "numerator": "0"
+                },
+                "category": "additional_capital",
+                "currency": "USD",
+                "date": "2027-07-01",
+                "event_id": "operating_slots-5",
+                "kind": "contribution",
+                "source_ref": "miniuw:staged-lifecycle:4861183eee474b5e9e8df058393a5349d710261ca4d1b63421d55f518a4f02dc#/exportable_equity_movements/2/contribution"
+              }
+            ]
+          },
+          "resolved_source_pointers": [
+            "/current_project_return_story/dated_events",
+            "/current_project_return_story/cash_by_category/additional_capital"
+          ],
+          "pdf_manifest_spans": [
+            {
+              "font_size": 7,
+              "result_pointers": [
+                "/current_project_return_story/dated_events/1"
+              ],
+              "text": "2026-11-01  Aporte adicional",
+              "width": 258,
+              "x": 28,
+              "y": 406
+            },
+            {
+              "font_size": 7,
+              "result_pointers": [
+                "/current_project_return_story/dated_events/1/amount"
+              ],
+              "text": "400.0000",
+              "width": 122,
+              "x": 292,
+              "y": 406
+            },
+            {
+              "font_size": 7,
+              "result_pointers": [
+                "/current_project_return_story/dated_events/3"
+              ],
+              "text": "2027-03-01  Aporte adicional",
+              "width": 258,
+              "x": 28,
+              "y": 380
+            },
+            {
+              "font_size": 7,
+              "result_pointers": [
+                "/current_project_return_story/dated_events/3/amount"
+              ],
+              "text": "0.0000",
+              "width": 122,
+              "x": 292,
+              "y": 380
+            },
+            {
+              "font_size": 7,
+              "result_pointers": [
+                "/current_project_return_story/dated_events/5"
+              ],
+              "text": "2027-06-01  Aporte adicional",
+              "width": 258,
+              "x": 28,
+              "y": 354
+            },
+            {
+              "font_size": 7,
+              "result_pointers": [
+                "/current_project_return_story/dated_events/5/amount"
+              ],
+              "text": "0.0000",
+              "width": 122,
+              "x": 292,
+              "y": 354
+            },
+            {
+              "font_size": 7,
+              "result_pointers": [
+                "/current_project_return_story/dated_events/7"
+              ],
+              "text": "2027-07-01  Aporte adicional",
+              "width": 258,
+              "x": 28,
+              "y": 328
+            },
+            {
+              "font_size": 7,
+              "result_pointers": [
+                "/current_project_return_story/dated_events/7/amount"
+              ],
+              "text": "0.0000",
+              "width": 122,
+              "x": 292,
+              "y": 328
+            }
+          ]
+        },
+        {
+          "field_id": "R06",
+          "state": "computed_synthetic_cash",
+          "value": {
+            "total": {
+              "denominator": "1",
+              "numerator": "200"
+            },
+            "events": [
+              {
+                "amount": {
+                  "denominator": "1",
+                  "numerator": "100"
+                },
+                "category": "operating_distribution",
+                "currency": "USD",
+                "date": "2027-03-01",
+                "event_id": "operating_slots-0",
+                "kind": "distribution",
+                "source_ref": "miniuw:staged-lifecycle:4861183eee474b5e9e8df058393a5349d710261ca4d1b63421d55f518a4f02dc#/exportable_equity_movements/0/distribution"
+              },
+              {
+                "amount": {
+                  "denominator": "1",
+                  "numerator": "100"
+                },
+                "category": "operating_distribution",
+                "currency": "USD",
+                "date": "2027-06-01",
+                "event_id": "operating_slots-2",
+                "kind": "distribution",
+                "source_ref": "miniuw:staged-lifecycle:4861183eee474b5e9e8df058393a5349d710261ca4d1b63421d55f518a4f02dc#/exportable_equity_movements/1/distribution"
+              }
+            ]
+          },
+          "resolved_source_pointers": [
+            "/current_project_return_story/dated_events",
+            "/current_project_return_story/cash_by_category/operating_distribution"
+          ],
+          "pdf_manifest_spans": [
+            {
+              "font_size": 7,
+              "result_pointers": [
+                "/current_project_return_story/dated_events/2"
+              ],
+              "text": "2027-03-01  Cobro operativo",
+              "width": 258,
+              "x": 28,
+              "y": 393
+            },
+            {
+              "font_size": 7,
+              "result_pointers": [
+                "/current_project_return_story/dated_events/2/amount"
+              ],
+              "text": "100.0000",
+              "width": 122,
+              "x": 292,
+              "y": 393
+            },
+            {
+              "font_size": 7,
+              "result_pointers": [
+                "/current_project_return_story/dated_events/4"
+              ],
+              "text": "2027-06-01  Cobro operativo",
+              "width": 258,
+              "x": 28,
+              "y": 367
+            },
+            {
+              "font_size": 7,
+              "result_pointers": [
+                "/current_project_return_story/dated_events/4/amount"
+              ],
+              "text": "100.0000",
+              "width": 122,
+              "x": 292,
+              "y": 367
+            }
+          ]
+        },
+        {
+          "field_id": "R07",
+          "state": "explicit_zero_in_supplied_no_refinance_route",
+          "value": {
+            "total": {
+              "denominator": "1",
+              "numerator": "0"
+            },
+            "events": []
+          },
+          "resolved_source_pointers": [
+            "/current_project_return_story/dated_events",
+            "/current_project_return_story/cash_by_category/net_refinance_distribution"
+          ],
+          "pdf_manifest_spans": [
+            {
+              "font_size": 7,
+              "result_pointers": [
+                "/current_project_return_story/cash_by_category"
+              ],
+              "text": "Cobro refi: 0.0000 | Cash-in: 0.0000",
+              "width": 386,
+              "x": 28,
+              "y": 229
+            }
+          ]
+        },
+        {
+          "field_id": "R08",
+          "state": "explicit_zero_in_supplied_no_refinance_route",
+          "value": {
+            "total": {
+              "denominator": "1",
+              "numerator": "0"
+            },
+            "events": []
+          },
+          "resolved_source_pointers": [
+            "/current_project_return_story/dated_events",
+            "/current_project_return_story/cash_by_category/refinance_cash_in"
+          ],
+          "pdf_manifest_spans": [
+            {
+              "font_size": 7,
+              "result_pointers": [
+                "/current_project_return_story/cash_by_category"
+              ],
+              "text": "Cobro refi: 0.0000 | Cash-in: 0.0000",
+              "width": 386,
+              "x": 28,
+              "y": 229
+            }
+          ]
+        },
+        {
+          "field_id": "R09",
+          "state": "computed_synthetic_cash",
+          "value": {
+            "total": {
+              "denominator": "1",
+              "numerator": "578"
+            },
+            "events": [
+              {
+                "amount": {
+                  "denominator": "1",
+                  "numerator": "578"
+                },
+                "category": "net_sale_distribution",
+                "currency": "USD",
+                "date": "2027-07-01",
+                "event_id": "operating_slots-4",
+                "kind": "distribution",
+                "source_ref": "miniuw:staged-lifecycle:4861183eee474b5e9e8df058393a5349d710261ca4d1b63421d55f518a4f02dc#/exportable_equity_movements/2/distribution"
+              }
+            ]
+          },
+          "resolved_source_pointers": [
+            "/current_project_return_story/dated_events",
+            "/current_project_return_story/cash_by_category/net_sale_distribution"
+          ],
+          "pdf_manifest_spans": [
+            {
+              "font_size": 7,
+              "result_pointers": [
+                "/current_project_return_story/dated_events/6"
+              ],
+              "text": "2027-07-01  Cobro venta",
+              "width": 258,
+              "x": 28,
+              "y": 341
+            },
+            {
+              "font_size": 7,
+              "result_pointers": [
+                "/current_project_return_story/dated_events/6/amount"
+              ],
+              "text": "578.0000",
+              "width": 122,
+              "x": 292,
+              "y": 341
+            }
+          ]
+        },
+        {
+          "field_id": "R10",
+          "state": "available_synthetic",
+          "value": {
+            "denominator": "1",
+            "numerator": "1400"
+          },
+          "resolved_source_pointers": [
+            "/current_project_return_story/gross_contributions"
+          ],
+          "pdf_manifest_spans": [
+            {
+              "font_size": 12,
+              "result_pointers": [
+                "/current_project_return_story/gross_contributions"
+              ],
+              "text": "1400.0000",
+              "width": 178,
+              "x": 28,
+              "y": 457
+            }
+          ]
+        },
+        {
+          "field_id": "R11",
+          "state": "available_synthetic",
+          "value": {
+            "denominator": "1",
+            "numerator": "778"
+          },
+          "resolved_source_pointers": [
+            "/current_project_return_story/gross_distributions"
+          ],
+          "pdf_manifest_spans": [
+            {
+              "font_size": 12,
+              "result_pointers": [
+                "/current_project_return_story/gross_distributions"
+              ],
+              "text": "778.0000",
+              "width": 178,
+              "x": 212,
+              "y": 457
+            }
+          ]
+        },
+        {
+          "field_id": "R12",
+          "state": "available_synthetic",
+          "value": {
+            "denominator": "1",
+            "numerator": "-622"
+          },
+          "resolved_source_pointers": [
+            "/current_project_return_story/net_cash_profit"
+          ],
+          "pdf_manifest_spans": [
+            {
+              "font_size": 12,
+              "result_pointers": [
+                "/current_project_return_story/net_cash_profit"
+              ],
+              "text": "-622.0000",
+              "width": 178,
+              "x": 396,
+              "y": 457
+            }
+          ]
+        },
+        {
+          "field_id": "R13",
+          "state": "available_synthetic",
+          "value": {
+            "denominator": "700",
+            "numerator": "389"
+          },
+          "resolved_source_pointers": [
+            "/current_project_return_story/equity_multiple"
+          ],
+          "pdf_manifest_spans": [
+            {
+              "font_size": 12,
+              "result_pointers": [
+                "/current_project_return_story/equity_multiple"
+              ],
+              "text": "0.5557",
+              "width": 178,
+              "x": 580,
+              "y": 457
+            }
+          ]
+        },
+        {
+          "field_id": "R14",
+          "state": "intervals_preserved_no_point_selected",
+          "value": {
+            "annual_roots": [
+              {
+                "annual_rate_interval": {
+                  "lower": {
+                    "denominator": "5850617355225199657604996833758752474027602254899856384259257635881584895228540568164741661813222900390625",
+                    "numerator": "-3394025427703327415048115884892440447098760637929610760113048037159279487864034411138808751516033381456609"
+                  },
+                  "lower_closed": true,
+                  "upper": {
+                    "denominator": "23963954564469633747418188176842481781816536676122043460447456970259670618101115218419977449926407436151806961",
+                    "numerator": "-13901754029340045041905203810286067719516001413011917383944582453893107669536097999241756249349119166598077425"
+                  },
+                  "upper_closed": false
+                },
+                "exact_annual_rate": null
+              }
+            ],
+            "selected_IRR": null,
+            "periodic_selection": null
+          },
+          "resolved_source_pointers": [
+            "/current_project_return_story/annual_irr_roots",
+            "/current_project_return_story/selected_IRR",
+            "/current_project_return_story/periodic_irr/selected_rate"
+          ],
+          "pdf_manifest_spans": [
+            {
+              "font_size": 6.6,
+              "result_pointers": [
+                "/current_project_return_story/annual_irr_roots"
+              ],
+              "text": "-58.02..-58.01%",
+              "width": 96,
+              "x": 575,
+              "y": 315
+            }
+          ]
+        },
+        {
+          "field_id": "R15",
+          "state": "available_synthetic",
+          "value": {
+            "basis_amount": {
+              "denominator": "1",
+              "numerator": "1400"
+            },
+            "basis_event_ids": [
+              "preopening_slots-0",
+              "preopening_slots-1",
+              "operating_slots-1",
+              "operating_slots-3",
+              "operating_slots-5"
+            ],
+            "basis_ref": "SYNTHETIC-all-declared-gross-equity",
+            "equity_multiple": {
+              "denominator": "700",
+              "numerator": "389"
+            },
+            "events": [
+              {
+                "amount": {
+                  "denominator": "7",
+                  "numerator": "50"
+                },
+                "category": "initial_capital",
+                "currency": "USD",
+                "date": "2026-10-01",
+                "event_id": "preopening_slots-0",
+                "kind": "contribution",
+                "source_ref": "miniuw:staged-lifecycle:ff52b6a2c7fe114fc99f058fe71fd73d8a2302a2505dcfb5689cd547c4be0344#/exportable_equity_movements/0"
+              },
+              {
+                "amount": {
+                  "denominator": "7",
+                  "numerator": "20"
+                },
+                "category": "additional_capital",
+                "currency": "USD",
+                "date": "2026-11-01",
+                "event_id": "preopening_slots-1",
+                "kind": "contribution",
+                "source_ref": "miniuw:staged-lifecycle:ff52b6a2c7fe114fc99f058fe71fd73d8a2302a2505dcfb5689cd547c4be0344#/exportable_equity_movements/1"
+              },
+              {
+                "amount": {
+                  "denominator": "7",
+                  "numerator": "5"
+                },
+                "category": "operating_distribution",
+                "currency": "USD",
+                "date": "2027-03-01",
+                "event_id": "operating_slots-0",
+                "kind": "distribution",
+                "source_ref": "miniuw:staged-lifecycle:4861183eee474b5e9e8df058393a5349d710261ca4d1b63421d55f518a4f02dc#/exportable_equity_movements/0/distribution"
+              },
+              {
+                "amount": {
+                  "denominator": "1",
+                  "numerator": "0"
+                },
+                "category": "additional_capital",
+                "currency": "USD",
+                "date": "2027-03-01",
+                "event_id": "operating_slots-1",
+                "kind": "contribution",
+                "source_ref": "miniuw:staged-lifecycle:4861183eee474b5e9e8df058393a5349d710261ca4d1b63421d55f518a4f02dc#/exportable_equity_movements/0/contribution"
+              },
+              {
+                "amount": {
+                  "denominator": "7",
+                  "numerator": "5"
+                },
+                "category": "operating_distribution",
+                "currency": "USD",
+                "date": "2027-06-01",
+                "event_id": "operating_slots-2",
+                "kind": "distribution",
+                "source_ref": "miniuw:staged-lifecycle:4861183eee474b5e9e8df058393a5349d710261ca4d1b63421d55f518a4f02dc#/exportable_equity_movements/1/distribution"
+              },
+              {
+                "amount": {
+                  "denominator": "1",
+                  "numerator": "0"
+                },
+                "category": "additional_capital",
+                "currency": "USD",
+                "date": "2027-06-01",
+                "event_id": "operating_slots-3",
+                "kind": "contribution",
+                "source_ref": "miniuw:staged-lifecycle:4861183eee474b5e9e8df058393a5349d710261ca4d1b63421d55f518a4f02dc#/exportable_equity_movements/1/contribution"
+              },
+              {
+                "amount": {
+                  "denominator": "70",
+                  "numerator": "289"
+                },
+                "category": "net_sale_distribution",
+                "currency": "USD",
+                "date": "2027-07-01",
+                "event_id": "operating_slots-4",
+                "kind": "distribution",
+                "source_ref": "miniuw:staged-lifecycle:4861183eee474b5e9e8df058393a5349d710261ca4d1b63421d55f518a4f02dc#/exportable_equity_movements/2/distribution"
+              },
+              {
+                "amount": {
+                  "denominator": "1",
+                  "numerator": "0"
+                },
+                "category": "additional_capital",
+                "currency": "USD",
+                "date": "2027-07-01",
+                "event_id": "operating_slots-5",
+                "kind": "contribution",
+                "source_ref": "miniuw:staged-lifecycle:4861183eee474b5e9e8df058393a5349d710261ca4d1b63421d55f518a4f02dc#/exportable_equity_movements/2/contribution"
+              }
+            ],
+            "net_cash_profit": {
+              "denominator": "70",
+              "numerator": "-311"
+            },
+            "reference_amount": {
+              "denominator": "1",
+              "numerator": "10"
+            },
+            "scale_factor": {
+              "denominator": "140",
+              "numerator": "1"
+            },
+            "total_contributions": {
+              "denominator": "1",
+              "numerator": "10"
+            },
+            "total_distributions": {
+              "denominator": "70",
+              "numerator": "389"
+            }
+          },
+          "resolved_source_pointers": [
+            "/current_project_return_story/normalized_story"
+          ],
+          "pdf_manifest_spans": [
+            {
+              "font_size": 7,
+              "result_pointers": [
+                "/current_project_return_story/normalized_story"
+              ],
+              "text": "Referencia 10.0000 sobre base 1400.0000",
+              "width": 386,
+              "x": 28,
+              "y": 255
+            },
+            {
+              "font_size": 7,
+              "result_pointers": [
+                "/current_project_return_story/normalized_story"
+              ],
+              "text": "Cobros 5.5571 | Resultado -4.4429",
+              "width": 386,
+              "x": 28,
+              "y": 243
+            }
+          ]
+        },
+        {
+          "field_id": "R16",
+          "state": "pending_stock_source_missing",
+          "value": null,
+          "resolved_source_pointers": [
+            "/current_project_return_story/capital_snapshots"
+          ],
+          "pdf_manifest_spans": []
+        },
+        {
+          "field_id": "R17",
+          "state": "pending_stock_source_missing",
+          "value": null,
+          "resolved_source_pointers": [
+            "/current_project_return_story/capital_snapshots"
+          ],
+          "pdf_manifest_spans": []
+        },
+        {
+          "field_id": "R18",
+          "state": "computed_for_declared_window_not_verified_full_operating_year",
+          "value": [
+            {
+              "calendar_cash_receipt_year": 2026,
+              "gross_contributions": {
+                "denominator": "1",
+                "numerator": "1400"
+              },
+              "gross_distributions": {
+                "denominator": "1",
+                "numerator": "0"
+              },
+              "net_equity_cash": {
+                "denominator": "1",
+                "numerator": "-1400"
+              },
+              "operating_distributions_only": {
+                "denominator": "1",
+                "numerator": "0"
+              },
+              "operating_year_coverage_financially_verified": false
+            },
+            {
+              "calendar_cash_receipt_year": 2027,
+              "gross_contributions": {
+                "denominator": "1",
+                "numerator": "0"
+              },
+              "gross_distributions": {
+                "denominator": "1",
+                "numerator": "778"
+              },
+              "net_equity_cash": {
+                "denominator": "1",
+                "numerator": "778"
+              },
+              "operating_distributions_only": {
+                "denominator": "1",
+                "numerator": "200"
+              },
+              "operating_year_coverage_financially_verified": false
+            }
+          ],
+          "resolved_source_pointers": [
+            "/current_project_return_story/annual_cash_receipts"
+          ],
+          "pdf_manifest_spans": [
+            {
+              "font_size": 6.7,
+              "result_pointers": [
+                "/current_project_return_story/annual_cash_receipts/0/calendar_cash_receipt_year",
+                "/current_project_return_story/annual_cash_receipts/0/gross_contributions",
+                "/current_project_return_story/annual_cash_receipts/0/gross_distributions",
+                "/current_project_return_story/annual_cash_receipts/0/net_equity_cash",
+                "/current_project_return_story/annual_cash_receipts/0/operating_distributions_only",
+                "/current_project_return_story/annual_cash_receipts/0/conditional_coc",
+                "/current_project_return_story/annual_cash_receipts/0/declared_capital_base"
+              ],
+              "text": "2026 A1400.0000 C0.0000 N-1400.0000 O0.0000 CoC:Pendiente",
+              "width": 332,
+              "x": 432,
+              "y": 214
+            },
+            {
+              "font_size": 6.7,
+              "result_pointers": [
+                "/current_project_return_story/annual_cash_receipts/1/calendar_cash_receipt_year",
+                "/current_project_return_story/annual_cash_receipts/1/gross_contributions",
+                "/current_project_return_story/annual_cash_receipts/1/gross_distributions",
+                "/current_project_return_story/annual_cash_receipts/1/net_equity_cash",
+                "/current_project_return_story/annual_cash_receipts/1/operating_distributions_only",
+                "/current_project_return_story/annual_cash_receipts/1/conditional_coc",
+                "/current_project_return_story/annual_cash_receipts/1/declared_capital_base"
+              ],
+              "text": "2027 A0.0000 C778.0000 N778.0000 O200.0000 CoC:Pendiente",
+              "width": 332,
+              "x": 432,
+              "y": 203
+            }
+          ]
+        },
+        {
+          "field_id": "R19",
+          "state": "pending_annual_base_missing",
+          "value": [
+            {
+              "calendar_cash_receipt_year": 2026,
+              "operating_distributions_only": {
+                "denominator": "1",
+                "numerator": "0"
+              },
+              "declared_capital_base": null,
+              "conditional_coc": null,
+              "blocker": "positive_declared_annual_capital_base_missing"
+            },
+            {
+              "calendar_cash_receipt_year": 2027,
+              "operating_distributions_only": {
+                "denominator": "1",
+                "numerator": "200"
+              },
+              "declared_capital_base": null,
+              "conditional_coc": null,
+              "blocker": "positive_declared_annual_capital_base_missing"
+            }
+          ],
+          "resolved_source_pointers": [
+            "/current_project_return_story/annual_cash_receipts"
+          ],
+          "pdf_manifest_spans": [
+            {
+              "font_size": 6.7,
+              "result_pointers": [
+                "/current_project_return_story/annual_cash_receipts/0/calendar_cash_receipt_year",
+                "/current_project_return_story/annual_cash_receipts/0/gross_contributions",
+                "/current_project_return_story/annual_cash_receipts/0/gross_distributions",
+                "/current_project_return_story/annual_cash_receipts/0/net_equity_cash",
+                "/current_project_return_story/annual_cash_receipts/0/operating_distributions_only",
+                "/current_project_return_story/annual_cash_receipts/0/conditional_coc",
+                "/current_project_return_story/annual_cash_receipts/0/declared_capital_base"
+              ],
+              "text": "2026 A1400.0000 C0.0000 N-1400.0000 O0.0000 CoC:Pendiente",
+              "width": 332,
+              "x": 432,
+              "y": 214
+            },
+            {
+              "font_size": 6.7,
+              "result_pointers": [
+                "/current_project_return_story/annual_cash_receipts/1/calendar_cash_receipt_year",
+                "/current_project_return_story/annual_cash_receipts/1/gross_contributions",
+                "/current_project_return_story/annual_cash_receipts/1/gross_distributions",
+                "/current_project_return_story/annual_cash_receipts/1/net_equity_cash",
+                "/current_project_return_story/annual_cash_receipts/1/operating_distributions_only",
+                "/current_project_return_story/annual_cash_receipts/1/conditional_coc",
+                "/current_project_return_story/annual_cash_receipts/1/declared_capital_base"
+              ],
+              "text": "2027 A0.0000 C778.0000 N778.0000 O200.0000 CoC:Pendiente",
+              "width": 332,
+              "x": 432,
+              "y": 203
+            }
+          ]
+        },
+        {
+          "field_id": "R20",
+          "state": "pending_personal_allocation",
+          "value": null,
+          "resolved_source_pointers": [
+            "/current_project_return_story/personal_investor_return"
+          ],
+          "pdf_manifest_spans": []
+        },
+        {
+          "field_id": "R21",
+          "state": "available_synthetic",
+          "value": {
+            "denominator": "1",
+            "numerator": "622"
+          },
+          "resolved_source_pointers": [
+            "/current_project_return_story/risk_observations/cash_shortfall_at_horizon"
+          ],
+          "pdf_manifest_spans": [
+            {
+              "font_size": 7,
+              "result_pointers": [
+                "/current_project_return_story/risk_observations/cash_shortfall_at_horizon"
+              ],
+              "text": "Aportes no recuperados al corte: 622.0000",
+              "width": 386,
+              "x": 28,
+              "y": 193
+            }
+          ]
+        },
+        {
+          "field_id": "R22",
+          "state": "available_synthetic",
+          "value": {
+            "denominator": "1",
+            "numerator": "1400"
+          },
+          "resolved_source_pointers": [
+            "/current_project_return_story/risk_observations/peak_cumulative_net_equity_funding_at_date_close"
+          ],
+          "pdf_manifest_spans": [
+            {
+              "font_size": 7,
+              "result_pointers": [
+                "/current_project_return_story/risk_observations/peak_cumulative_net_equity_funding_at_date_close"
+              ],
+              "text": "Pico de financiacion equity: 1400.0000",
+              "width": 386,
+              "x": 28,
+              "y": 181
+            }
+          ]
+        },
+        {
+          "field_id": "R23",
+          "state": "available_synthetic",
+          "value": {
+            "denominator": "389",
+            "numerator": "289"
+          },
+          "resolved_source_pointers": [
+            "/current_project_return_story/risk_observations/sale_share_of_distributions"
+          ],
+          "pdf_manifest_spans": [
+            {
+              "font_size": 7,
+              "result_pointers": [
+                "/current_project_return_story/risk_observations/sale_share_of_distributions"
+              ],
+              "text": "Cobros de venta / total (fraccion): 0.7429",
+              "width": 386,
+              "x": 28,
+              "y": 169
+            }
+          ]
+        }
+      ],
+      "consistency_checks": [
+        "gross_contributions",
+        "gross_receipts",
+        "net_cash_result",
+        "gross_equity_multiple",
+        "contribution_categories",
+        "distribution_categories",
+        "annual_contributions",
+        "annual_receipts",
+        "annual_net_result",
+        "annual_row_identity",
+        "explicit_normalization_basis",
+        "explicit_positive_normalization",
+        "normalized_contributions",
+        "normalized_receipts",
+        "normalized_net_cash",
+        "normalized_events_not_netted",
+        "zero_events_preserved",
+        "IRR_point_not_selected",
+        "absent_stock_not_cash_shortfall",
+        "annual_base_not_defaulted",
+        "risk_cash_shortfall"
+      ],
+      "blockers": {
+        "criteria": [
+          "IRR:SYNTHETIC-draw-plan:definition_ref_missing_or_mismatch",
+          "IRR:SYNTHETIC-draw-plan:fail_condition_rule_missing_or_unsupported",
+          "IRR:SYNTHETIC-draw-plan:metric_value_missing",
+          "IRR:SYNTHETIC-draw-plan:pass_condition_rule_missing_or_unsupported",
+          "IRR:SYNTHETIC-draw-plan:period_ref_missing_or_mismatch",
+          "IRR:SYNTHETIC-draw-plan:unit_missing_or_mismatch",
+          "YoC:SYNTHETIC-draw-plan:definition_ref_missing_or_mismatch",
+          "YoC:SYNTHETIC-draw-plan:fail_condition_rule_missing_or_unsupported",
+          "YoC:SYNTHETIC-draw-plan:metric_value_missing",
+          "YoC:SYNTHETIC-draw-plan:pass_condition_rule_missing_or_unsupported",
+          "YoC:SYNTHETIC-draw-plan:period_ref_missing_or_mismatch",
+          "YoC:SYNTHETIC-draw-plan:unit_missing_or_mismatch",
+          "asking_relative_to_supported_price:SYNTHETIC-draw-plan:definition_ref_missing_or_mismatch",
+          "asking_relative_to_supported_price:SYNTHETIC-draw-plan:fail_condition_rule_missing_or_unsupported",
+          "asking_relative_to_supported_price:SYNTHETIC-draw-plan:metric_value_missing",
+          "asking_relative_to_supported_price:SYNTHETIC-draw-plan:pass_condition_rule_missing_or_unsupported",
+          "asking_relative_to_supported_price:SYNTHETIC-draw-plan:period_ref_missing_or_mismatch",
+          "asking_relative_to_supported_price:SYNTHETIC-draw-plan:unit_missing_or_mismatch",
+          "breakeven_occupancy:SYNTHETIC-draw-plan:definition_ref_missing_or_mismatch",
+          "breakeven_occupancy:SYNTHETIC-draw-plan:fail_condition_rule_missing_or_unsupported",
+          "breakeven_occupancy:SYNTHETIC-draw-plan:metric_value_missing",
+          "breakeven_occupancy:SYNTHETIC-draw-plan:pass_condition_rule_missing_or_unsupported",
+          "breakeven_occupancy:SYNTHETIC-draw-plan:period_ref_missing_or_mismatch",
+          "breakeven_occupancy:SYNTHETIC-draw-plan:unit_missing_or_mismatch",
+          "equity_TDC:SYNTHETIC-draw-plan:definition_ref_missing_or_mismatch",
+          "equity_TDC:SYNTHETIC-draw-plan:fail_condition_rule_missing_or_unsupported",
+          "equity_TDC:SYNTHETIC-draw-plan:metric_value_missing",
+          "equity_TDC:SYNTHETIC-draw-plan:pass_condition_rule_missing_or_unsupported",
+          "equity_TDC:SYNTHETIC-draw-plan:period_ref_missing_or_mismatch",
+          "equity_TDC:SYNTHETIC-draw-plan:unit_missing_or_mismatch",
+          "equity_cash_in:SYNTHETIC-draw-plan:definition_ref_missing_or_mismatch",
+          "equity_cash_in:SYNTHETIC-draw-plan:fail_condition_rule_missing_or_unsupported",
+          "equity_cash_in:SYNTHETIC-draw-plan:metric_value_missing",
+          "equity_cash_in:SYNTHETIC-draw-plan:pass_condition_rule_missing_or_unsupported",
+          "equity_cash_in:SYNTHETIC-draw-plan:period_ref_missing_or_mismatch",
+          "equity_cash_in:SYNTHETIC-draw-plan:unit_missing_or_mismatch",
+          "equity_multiple:SYNTHETIC-draw-plan:definition_ref_missing_or_mismatch",
+          "equity_multiple:SYNTHETIC-draw-plan:fail_condition_rule_missing_or_unsupported",
+          "equity_multiple:SYNTHETIC-draw-plan:pass_condition_rule_missing_or_unsupported",
+          "equity_multiple:SYNTHETIC-draw-plan:period_ref_missing_or_mismatch",
+          "equity_multiple:SYNTHETIC-draw-plan:unit_missing_or_mismatch",
+          "equity_recovered:SYNTHETIC-draw-plan:definition_ref_missing_or_mismatch",
+          "equity_recovered:SYNTHETIC-draw-plan:fail_condition_rule_missing_or_unsupported",
+          "equity_recovered:SYNTHETIC-draw-plan:metric_value_missing",
+          "equity_recovered:SYNTHETIC-draw-plan:pass_condition_rule_missing_or_unsupported",
+          "equity_recovered:SYNTHETIC-draw-plan:period_ref_missing_or_mismatch",
+          "equity_recovered:SYNTHETIC-draw-plan:unit_missing_or_mismatch",
+          "post_refi_CoC:SYNTHETIC-draw-plan:definition_ref_missing_or_mismatch",
+          "post_refi_CoC:SYNTHETIC-draw-plan:fail_condition_rule_missing_or_unsupported",
+          "post_refi_CoC:SYNTHETIC-draw-plan:metric_value_missing",
+          "post_refi_CoC:SYNTHETIC-draw-plan:pass_condition_rule_missing_or_unsupported",
+          "post_refi_CoC:SYNTHETIC-draw-plan:period_ref_missing_or_mismatch",
+          "post_refi_CoC:SYNTHETIC-draw-plan:unit_missing_or_mismatch",
+          "spread:SYNTHETIC-draw-plan:definition_ref_missing_or_mismatch",
+          "spread:SYNTHETIC-draw-plan:fail_condition_rule_missing_or_unsupported",
+          "spread:SYNTHETIC-draw-plan:metric_value_missing",
+          "spread:SYNTHETIC-draw-plan:pass_condition_rule_missing_or_unsupported",
+          "spread:SYNTHETIC-draw-plan:period_ref_missing_or_mismatch",
+          "spread:SYNTHETIC-draw-plan:unit_missing_or_mismatch"
+        ],
+        "financial_scope": [
+          "financial_policy_and_independent_acceptance_pending",
+          "authentic_professional_review_missing",
+          "original_plan_and_official_source_verification_pending",
+          "production_and_real_decisions_not_authorized"
+        ],
+        "input_catalog": [
+          "INPUT_C8:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C9:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C10:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C11:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C12:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C13:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C14:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C15:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C16:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C17:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C18:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C19:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C20:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C21:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C25:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C26:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C27:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C28:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C32:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C33:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C34:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C35:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C36:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C37:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C38:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C39:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C40:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C41:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C42:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C46:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C47:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C57:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C58:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C59:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C60:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C61:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C62:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C66:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C67:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C68:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C75:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C76:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C51:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C52:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C53:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C69:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C70:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C71:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C72:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C73:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C74:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C80:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C81:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C82:original_value_missing,original_field_mapping_or_definition_pending"
+        ],
+        "projection": []
+      },
+      "pdf": {
+        "page_count": 1,
+        "pdf_sha256": "1fe52b1bd99da4a4be686d03c6c9ea0b7c304ee00f85d8fd5344fc1e1bd928ce",
+        "manifest_sha256": "3e50d1a629d2f9171937d8824ee6b7ac641a6d416c9b78d268db72e4eb6725e4"
+      }
+    },
+    {
+      "case_id": "renewal_12",
+      "input_file": "templates/miniuw-v1-policy-renewal-twelve-case.json",
+      "source_sha256": "cf6554aec236a4f5f4d28f98ed6e3d5d555ab4298e67351e81b414eda643c994",
+      "input_mutation": null,
+      "run_sha256": "d7c404abbfaaa9500702293c3425641dff4006af2ac6c538e674e7995ac71970",
+      "decision": "PENDING",
+      "current_projection_available": true,
+      "fields": [
+        {
+          "field_id": "R01",
+          "state": "available_synthetic",
+          "value": "USD",
+          "resolved_source_pointers": [
+            "/current_project_return_story/currency"
+          ],
+          "pdf_manifest_spans": [
+            {
+              "font_size": 7,
+              "result_pointers": [
+                "/evaluated_as_of_UTC",
+                "/current_project_return_story/equity_level",
+                "/current_project_return_story/currency",
+                "/current_project_return_story/cash_horizon"
+              ],
+              "text": "UTC 2027-07-01T12:00:00Z | Equity: proyecto | Moneda USD | Ventana 2026-10-01 a 2027-07-01",
+              "width": 736,
+              "x": 28,
+              "y": 498
+            }
+          ]
+        },
+        {
+          "field_id": "R02",
+          "state": "available_synthetic",
+          "value": "aggregate_project_equity",
+          "resolved_source_pointers": [
+            "/current_project_return_story/equity_level"
+          ],
+          "pdf_manifest_spans": [
+            {
+              "font_size": 7,
+              "result_pointers": [
+                "/evaluated_as_of_UTC",
+                "/current_project_return_story/equity_level",
+                "/current_project_return_story/currency",
+                "/current_project_return_story/cash_horizon"
+              ],
+              "text": "UTC 2027-07-01T12:00:00Z | Equity: proyecto | Moneda USD | Ventana 2026-10-01 a 2027-07-01",
+              "width": 736,
+              "x": 28,
+              "y": 498
+            }
+          ]
+        },
+        {
+          "field_id": "R03",
+          "state": "available_synthetic",
+          "value": {
+            "end": "2027-07-01",
+            "future_cash_after_horizon_included": false,
+            "start": "2026-10-01"
+          },
+          "resolved_source_pointers": [
+            "/current_project_return_story/cash_horizon"
+          ],
+          "pdf_manifest_spans": [
+            {
+              "font_size": 7,
+              "result_pointers": [
+                "/evaluated_as_of_UTC",
+                "/current_project_return_story/equity_level",
+                "/current_project_return_story/currency",
+                "/current_project_return_story/cash_horizon"
+              ],
+              "text": "UTC 2027-07-01T12:00:00Z | Equity: proyecto | Moneda USD | Ventana 2026-10-01 a 2027-07-01",
+              "width": 736,
+              "x": 28,
+              "y": 498
+            }
+          ]
+        },
+        {
+          "field_id": "R04",
+          "state": "computed_synthetic_cash",
+          "value": {
+            "total": {
+              "denominator": "1",
+              "numerator": "1000"
+            },
+            "events": [
+              {
+                "amount": {
+                  "denominator": "1",
+                  "numerator": "1000"
+                },
+                "category": "initial_capital",
+                "currency": "USD",
+                "date": "2026-10-01",
+                "event_id": "preopening_slots-0",
+                "kind": "contribution",
+                "source_ref": "miniuw:staged-lifecycle:ff52b6a2c7fe114fc99f058fe71fd73d8a2302a2505dcfb5689cd547c4be0344#/exportable_equity_movements/0"
+              }
+            ]
+          },
+          "resolved_source_pointers": [
+            "/current_project_return_story/dated_events",
+            "/current_project_return_story/cash_by_category/initial_capital"
+          ],
+          "pdf_manifest_spans": [
+            {
+              "font_size": 7,
+              "result_pointers": [
+                "/current_project_return_story/dated_events/0"
+              ],
+              "text": "2026-10-01  Aporte inicial",
+              "width": 258,
+              "x": 28,
+              "y": 419
+            },
+            {
+              "font_size": 7,
+              "result_pointers": [
+                "/current_project_return_story/dated_events/0/amount"
+              ],
+              "text": "1000.0000",
+              "width": 122,
+              "x": 292,
+              "y": 419
+            }
+          ]
+        },
+        {
+          "field_id": "R05",
+          "state": "computed_synthetic_cash",
+          "value": {
+            "total": {
+              "denominator": "1",
+              "numerator": "400"
+            },
+            "events": [
+              {
+                "amount": {
+                  "denominator": "1",
+                  "numerator": "400"
+                },
+                "category": "additional_capital",
+                "currency": "USD",
+                "date": "2026-11-01",
+                "event_id": "preopening_slots-1",
+                "kind": "contribution",
+                "source_ref": "miniuw:staged-lifecycle:ff52b6a2c7fe114fc99f058fe71fd73d8a2302a2505dcfb5689cd547c4be0344#/exportable_equity_movements/1"
+              },
+              {
+                "amount": {
+                  "denominator": "1",
+                  "numerator": "0"
+                },
+                "category": "additional_capital",
+                "currency": "USD",
+                "date": "2027-03-01",
+                "event_id": "operating_slots-1",
+                "kind": "contribution",
+                "source_ref": "miniuw:staged-lifecycle:6a679510c030ca6df17d85cf574c3835af22585bfce5ef03d7669a56a4f7cbf8#/exportable_equity_movements/0/contribution"
+              },
+              {
+                "amount": {
+                  "denominator": "1",
+                  "numerator": "0"
+                },
+                "category": "additional_capital",
+                "currency": "USD",
+                "date": "2027-06-01",
+                "event_id": "operating_slots-3",
+                "kind": "contribution",
+                "source_ref": "miniuw:staged-lifecycle:6a679510c030ca6df17d85cf574c3835af22585bfce5ef03d7669a56a4f7cbf8#/exportable_equity_movements/1/contribution"
+              },
+              {
+                "amount": {
+                  "denominator": "1",
+                  "numerator": "0"
+                },
+                "category": "additional_capital",
+                "currency": "USD",
+                "date": "2027-07-01",
+                "event_id": "operating_slots-5",
+                "kind": "contribution",
+                "source_ref": "miniuw:staged-lifecycle:6a679510c030ca6df17d85cf574c3835af22585bfce5ef03d7669a56a4f7cbf8#/exportable_equity_movements/2/contribution"
+              }
+            ]
+          },
+          "resolved_source_pointers": [
+            "/current_project_return_story/dated_events",
+            "/current_project_return_story/cash_by_category/additional_capital"
+          ],
+          "pdf_manifest_spans": [
+            {
+              "font_size": 7,
+              "result_pointers": [
+                "/current_project_return_story/dated_events/1"
+              ],
+              "text": "2026-11-01  Aporte adicional",
+              "width": 258,
+              "x": 28,
+              "y": 406
+            },
+            {
+              "font_size": 7,
+              "result_pointers": [
+                "/current_project_return_story/dated_events/1/amount"
+              ],
+              "text": "400.0000",
+              "width": 122,
+              "x": 292,
+              "y": 406
+            },
+            {
+              "font_size": 7,
+              "result_pointers": [
+                "/current_project_return_story/dated_events/3"
+              ],
+              "text": "2027-03-01  Aporte adicional",
+              "width": 258,
+              "x": 28,
+              "y": 380
+            },
+            {
+              "font_size": 7,
+              "result_pointers": [
+                "/current_project_return_story/dated_events/3/amount"
+              ],
+              "text": "0.0000",
+              "width": 122,
+              "x": 292,
+              "y": 380
+            },
+            {
+              "font_size": 7,
+              "result_pointers": [
+                "/current_project_return_story/dated_events/5"
+              ],
+              "text": "2027-06-01  Aporte adicional",
+              "width": 258,
+              "x": 28,
+              "y": 354
+            },
+            {
+              "font_size": 7,
+              "result_pointers": [
+                "/current_project_return_story/dated_events/5/amount"
+              ],
+              "text": "0.0000",
+              "width": 122,
+              "x": 292,
+              "y": 354
+            },
+            {
+              "font_size": 7,
+              "result_pointers": [
+                "/current_project_return_story/dated_events/7"
+              ],
+              "text": "2027-07-01  Aporte adicional",
+              "width": 258,
+              "x": 28,
+              "y": 328
+            },
+            {
+              "font_size": 7,
+              "result_pointers": [
+                "/current_project_return_story/dated_events/7/amount"
+              ],
+              "text": "0.0000",
+              "width": 122,
+              "x": 292,
+              "y": 328
+            }
+          ]
+        },
+        {
+          "field_id": "R06",
+          "state": "computed_synthetic_cash",
+          "value": {
+            "total": {
+              "denominator": "1",
+              "numerator": "200"
+            },
+            "events": [
+              {
+                "amount": {
+                  "denominator": "1",
+                  "numerator": "100"
+                },
+                "category": "operating_distribution",
+                "currency": "USD",
+                "date": "2027-03-01",
+                "event_id": "operating_slots-0",
+                "kind": "distribution",
+                "source_ref": "miniuw:staged-lifecycle:6a679510c030ca6df17d85cf574c3835af22585bfce5ef03d7669a56a4f7cbf8#/exportable_equity_movements/0/distribution"
+              },
+              {
+                "amount": {
+                  "denominator": "1",
+                  "numerator": "100"
+                },
+                "category": "operating_distribution",
+                "currency": "USD",
+                "date": "2027-06-01",
+                "event_id": "operating_slots-2",
+                "kind": "distribution",
+                "source_ref": "miniuw:staged-lifecycle:6a679510c030ca6df17d85cf574c3835af22585bfce5ef03d7669a56a4f7cbf8#/exportable_equity_movements/1/distribution"
+              }
+            ]
+          },
+          "resolved_source_pointers": [
+            "/current_project_return_story/dated_events",
+            "/current_project_return_story/cash_by_category/operating_distribution"
+          ],
+          "pdf_manifest_spans": [
+            {
+              "font_size": 7,
+              "result_pointers": [
+                "/current_project_return_story/dated_events/2"
+              ],
+              "text": "2027-03-01  Cobro operativo",
+              "width": 258,
+              "x": 28,
+              "y": 393
+            },
+            {
+              "font_size": 7,
+              "result_pointers": [
+                "/current_project_return_story/dated_events/2/amount"
+              ],
+              "text": "100.0000",
+              "width": 122,
+              "x": 292,
+              "y": 393
+            },
+            {
+              "font_size": 7,
+              "result_pointers": [
+                "/current_project_return_story/dated_events/4"
+              ],
+              "text": "2027-06-01  Cobro operativo",
+              "width": 258,
+              "x": 28,
+              "y": 367
+            },
+            {
+              "font_size": 7,
+              "result_pointers": [
+                "/current_project_return_story/dated_events/4/amount"
+              ],
+              "text": "100.0000",
+              "width": 122,
+              "x": 292,
+              "y": 367
+            }
+          ]
+        },
+        {
+          "field_id": "R07",
+          "state": "explicit_zero_in_supplied_no_refinance_route",
+          "value": {
+            "total": {
+              "denominator": "1",
+              "numerator": "0"
+            },
+            "events": []
+          },
+          "resolved_source_pointers": [
+            "/current_project_return_story/dated_events",
+            "/current_project_return_story/cash_by_category/net_refinance_distribution"
+          ],
+          "pdf_manifest_spans": [
+            {
+              "font_size": 7,
+              "result_pointers": [
+                "/current_project_return_story/cash_by_category"
+              ],
+              "text": "Cobro refi: 0.0000 | Cash-in: 0.0000",
+              "width": 386,
+              "x": 28,
+              "y": 229
+            }
+          ]
+        },
+        {
+          "field_id": "R08",
+          "state": "explicit_zero_in_supplied_no_refinance_route",
+          "value": {
+            "total": {
+              "denominator": "1",
+              "numerator": "0"
+            },
+            "events": []
+          },
+          "resolved_source_pointers": [
+            "/current_project_return_story/dated_events",
+            "/current_project_return_story/cash_by_category/refinance_cash_in"
+          ],
+          "pdf_manifest_spans": [
+            {
+              "font_size": 7,
+              "result_pointers": [
+                "/current_project_return_story/cash_by_category"
+              ],
+              "text": "Cobro refi: 0.0000 | Cash-in: 0.0000",
+              "width": 386,
+              "x": 28,
+              "y": 229
+            }
+          ]
+        },
+        {
+          "field_id": "R09",
+          "state": "computed_synthetic_cash",
+          "value": {
+            "total": {
+              "denominator": "1",
+              "numerator": "576"
+            },
+            "events": [
+              {
+                "amount": {
+                  "denominator": "1",
+                  "numerator": "576"
+                },
+                "category": "net_sale_distribution",
+                "currency": "USD",
+                "date": "2027-07-01",
+                "event_id": "operating_slots-4",
+                "kind": "distribution",
+                "source_ref": "miniuw:staged-lifecycle:6a679510c030ca6df17d85cf574c3835af22585bfce5ef03d7669a56a4f7cbf8#/exportable_equity_movements/2/distribution"
+              }
+            ]
+          },
+          "resolved_source_pointers": [
+            "/current_project_return_story/dated_events",
+            "/current_project_return_story/cash_by_category/net_sale_distribution"
+          ],
+          "pdf_manifest_spans": [
+            {
+              "font_size": 7,
+              "result_pointers": [
+                "/current_project_return_story/dated_events/6"
+              ],
+              "text": "2027-07-01  Cobro venta",
+              "width": 258,
+              "x": 28,
+              "y": 341
+            },
+            {
+              "font_size": 7,
+              "result_pointers": [
+                "/current_project_return_story/dated_events/6/amount"
+              ],
+              "text": "576.0000",
+              "width": 122,
+              "x": 292,
+              "y": 341
+            }
+          ]
+        },
+        {
+          "field_id": "R10",
+          "state": "available_synthetic",
+          "value": {
+            "denominator": "1",
+            "numerator": "1400"
+          },
+          "resolved_source_pointers": [
+            "/current_project_return_story/gross_contributions"
+          ],
+          "pdf_manifest_spans": [
+            {
+              "font_size": 12,
+              "result_pointers": [
+                "/current_project_return_story/gross_contributions"
+              ],
+              "text": "1400.0000",
+              "width": 178,
+              "x": 28,
+              "y": 457
+            }
+          ]
+        },
+        {
+          "field_id": "R11",
+          "state": "available_synthetic",
+          "value": {
+            "denominator": "1",
+            "numerator": "776"
+          },
+          "resolved_source_pointers": [
+            "/current_project_return_story/gross_distributions"
+          ],
+          "pdf_manifest_spans": [
+            {
+              "font_size": 12,
+              "result_pointers": [
+                "/current_project_return_story/gross_distributions"
+              ],
+              "text": "776.0000",
+              "width": 178,
+              "x": 212,
+              "y": 457
+            }
+          ]
+        },
+        {
+          "field_id": "R12",
+          "state": "available_synthetic",
+          "value": {
+            "denominator": "1",
+            "numerator": "-624"
+          },
+          "resolved_source_pointers": [
+            "/current_project_return_story/net_cash_profit"
+          ],
+          "pdf_manifest_spans": [
+            {
+              "font_size": 12,
+              "result_pointers": [
+                "/current_project_return_story/net_cash_profit"
+              ],
+              "text": "-624.0000",
+              "width": 178,
+              "x": 396,
+              "y": 457
+            }
+          ]
+        },
+        {
+          "field_id": "R13",
+          "state": "available_synthetic",
+          "value": {
+            "denominator": "175",
+            "numerator": "97"
+          },
+          "resolved_source_pointers": [
+            "/current_project_return_story/equity_multiple"
+          ],
+          "pdf_manifest_spans": [
+            {
+              "font_size": 12,
+              "result_pointers": [
+                "/current_project_return_story/equity_multiple"
+              ],
+              "text": "0.5543",
+              "width": 178,
+              "x": 580,
+              "y": 457
+            }
+          ]
+        },
+        {
+          "field_id": "R14",
+          "state": "intervals_preserved_no_point_selected",
+          "value": {
+            "annual_roots": [
+              {
+                "annual_rate_interval": {
+                  "lower": {
+                    "denominator": "631940820631668513862691007135115339084161364129956574741648020076062689913295569335396644321",
+                    "numerator": "-367642862550815090968992509797720725000334846894063306437370403731985113661457819708733830625"
+                  },
+                  "lower_closed": true,
+                  "upper": {
+                    "denominator": "1375587602004317014036987678979292005936047118933479508208066247558267448053432402208624487246337890625",
+                    "numerator": "-800268475413046823276846784265508377736836732925987496582006059060294481854738901283314279764826216769"
+                  },
+                  "upper_closed": false
+                },
+                "exact_annual_rate": null
+              }
+            ],
+            "selected_IRR": null,
+            "periodic_selection": null
+          },
+          "resolved_source_pointers": [
+            "/current_project_return_story/annual_irr_roots",
+            "/current_project_return_story/selected_IRR",
+            "/current_project_return_story/periodic_irr/selected_rate"
+          ],
+          "pdf_manifest_spans": [
+            {
+              "font_size": 6.6,
+              "result_pointers": [
+                "/current_project_return_story/annual_irr_roots"
+              ],
+              "text": "-58.18..-58.17%",
+              "width": 96,
+              "x": 575,
+              "y": 315
+            }
+          ]
+        },
+        {
+          "field_id": "R15",
+          "state": "available_synthetic",
+          "value": {
+            "basis_amount": {
+              "denominator": "1",
+              "numerator": "1400"
+            },
+            "basis_event_ids": [
+              "preopening_slots-0",
+              "preopening_slots-1",
+              "operating_slots-1",
+              "operating_slots-3",
+              "operating_slots-5"
+            ],
+            "basis_ref": "SYNTHETIC-all-declared-gross-equity",
+            "equity_multiple": {
+              "denominator": "175",
+              "numerator": "97"
+            },
+            "events": [
+              {
+                "amount": {
+                  "denominator": "7",
+                  "numerator": "50"
+                },
+                "category": "initial_capital",
+                "currency": "USD",
+                "date": "2026-10-01",
+                "event_id": "preopening_slots-0",
+                "kind": "contribution",
+                "source_ref": "miniuw:staged-lifecycle:ff52b6a2c7fe114fc99f058fe71fd73d8a2302a2505dcfb5689cd547c4be0344#/exportable_equity_movements/0"
+              },
+              {
+                "amount": {
+                  "denominator": "7",
+                  "numerator": "20"
+                },
+                "category": "additional_capital",
+                "currency": "USD",
+                "date": "2026-11-01",
+                "event_id": "preopening_slots-1",
+                "kind": "contribution",
+                "source_ref": "miniuw:staged-lifecycle:ff52b6a2c7fe114fc99f058fe71fd73d8a2302a2505dcfb5689cd547c4be0344#/exportable_equity_movements/1"
+              },
+              {
+                "amount": {
+                  "denominator": "7",
+                  "numerator": "5"
+                },
+                "category": "operating_distribution",
+                "currency": "USD",
+                "date": "2027-03-01",
+                "event_id": "operating_slots-0",
+                "kind": "distribution",
+                "source_ref": "miniuw:staged-lifecycle:6a679510c030ca6df17d85cf574c3835af22585bfce5ef03d7669a56a4f7cbf8#/exportable_equity_movements/0/distribution"
+              },
+              {
+                "amount": {
+                  "denominator": "1",
+                  "numerator": "0"
+                },
+                "category": "additional_capital",
+                "currency": "USD",
+                "date": "2027-03-01",
+                "event_id": "operating_slots-1",
+                "kind": "contribution",
+                "source_ref": "miniuw:staged-lifecycle:6a679510c030ca6df17d85cf574c3835af22585bfce5ef03d7669a56a4f7cbf8#/exportable_equity_movements/0/contribution"
+              },
+              {
+                "amount": {
+                  "denominator": "7",
+                  "numerator": "5"
+                },
+                "category": "operating_distribution",
+                "currency": "USD",
+                "date": "2027-06-01",
+                "event_id": "operating_slots-2",
+                "kind": "distribution",
+                "source_ref": "miniuw:staged-lifecycle:6a679510c030ca6df17d85cf574c3835af22585bfce5ef03d7669a56a4f7cbf8#/exportable_equity_movements/1/distribution"
+              },
+              {
+                "amount": {
+                  "denominator": "1",
+                  "numerator": "0"
+                },
+                "category": "additional_capital",
+                "currency": "USD",
+                "date": "2027-06-01",
+                "event_id": "operating_slots-3",
+                "kind": "contribution",
+                "source_ref": "miniuw:staged-lifecycle:6a679510c030ca6df17d85cf574c3835af22585bfce5ef03d7669a56a4f7cbf8#/exportable_equity_movements/1/contribution"
+              },
+              {
+                "amount": {
+                  "denominator": "35",
+                  "numerator": "144"
+                },
+                "category": "net_sale_distribution",
+                "currency": "USD",
+                "date": "2027-07-01",
+                "event_id": "operating_slots-4",
+                "kind": "distribution",
+                "source_ref": "miniuw:staged-lifecycle:6a679510c030ca6df17d85cf574c3835af22585bfce5ef03d7669a56a4f7cbf8#/exportable_equity_movements/2/distribution"
+              },
+              {
+                "amount": {
+                  "denominator": "1",
+                  "numerator": "0"
+                },
+                "category": "additional_capital",
+                "currency": "USD",
+                "date": "2027-07-01",
+                "event_id": "operating_slots-5",
+                "kind": "contribution",
+                "source_ref": "miniuw:staged-lifecycle:6a679510c030ca6df17d85cf574c3835af22585bfce5ef03d7669a56a4f7cbf8#/exportable_equity_movements/2/contribution"
+              }
+            ],
+            "net_cash_profit": {
+              "denominator": "35",
+              "numerator": "-156"
+            },
+            "reference_amount": {
+              "denominator": "1",
+              "numerator": "10"
+            },
+            "scale_factor": {
+              "denominator": "140",
+              "numerator": "1"
+            },
+            "total_contributions": {
+              "denominator": "1",
+              "numerator": "10"
+            },
+            "total_distributions": {
+              "denominator": "35",
+              "numerator": "194"
+            }
+          },
+          "resolved_source_pointers": [
+            "/current_project_return_story/normalized_story"
+          ],
+          "pdf_manifest_spans": [
+            {
+              "font_size": 7,
+              "result_pointers": [
+                "/current_project_return_story/normalized_story"
+              ],
+              "text": "Referencia 10.0000 sobre base 1400.0000",
+              "width": 386,
+              "x": 28,
+              "y": 255
+            },
+            {
+              "font_size": 7,
+              "result_pointers": [
+                "/current_project_return_story/normalized_story"
+              ],
+              "text": "Cobros 5.5429 | Resultado -4.4571",
+              "width": 386,
+              "x": 28,
+              "y": 243
+            }
+          ]
+        },
+        {
+          "field_id": "R16",
+          "state": "pending_stock_source_missing",
+          "value": null,
+          "resolved_source_pointers": [
+            "/current_project_return_story/capital_snapshots"
+          ],
+          "pdf_manifest_spans": []
+        },
+        {
+          "field_id": "R17",
+          "state": "pending_stock_source_missing",
+          "value": null,
+          "resolved_source_pointers": [
+            "/current_project_return_story/capital_snapshots"
+          ],
+          "pdf_manifest_spans": []
+        },
+        {
+          "field_id": "R18",
+          "state": "computed_for_declared_window_not_verified_full_operating_year",
+          "value": [
+            {
+              "calendar_cash_receipt_year": 2026,
+              "gross_contributions": {
+                "denominator": "1",
+                "numerator": "1400"
+              },
+              "gross_distributions": {
+                "denominator": "1",
+                "numerator": "0"
+              },
+              "net_equity_cash": {
+                "denominator": "1",
+                "numerator": "-1400"
+              },
+              "operating_distributions_only": {
+                "denominator": "1",
+                "numerator": "0"
+              },
+              "operating_year_coverage_financially_verified": false
+            },
+            {
+              "calendar_cash_receipt_year": 2027,
+              "gross_contributions": {
+                "denominator": "1",
+                "numerator": "0"
+              },
+              "gross_distributions": {
+                "denominator": "1",
+                "numerator": "776"
+              },
+              "net_equity_cash": {
+                "denominator": "1",
+                "numerator": "776"
+              },
+              "operating_distributions_only": {
+                "denominator": "1",
+                "numerator": "200"
+              },
+              "operating_year_coverage_financially_verified": false
+            }
+          ],
+          "resolved_source_pointers": [
+            "/current_project_return_story/annual_cash_receipts"
+          ],
+          "pdf_manifest_spans": [
+            {
+              "font_size": 6.7,
+              "result_pointers": [
+                "/current_project_return_story/annual_cash_receipts/0/calendar_cash_receipt_year",
+                "/current_project_return_story/annual_cash_receipts/0/gross_contributions",
+                "/current_project_return_story/annual_cash_receipts/0/gross_distributions",
+                "/current_project_return_story/annual_cash_receipts/0/net_equity_cash",
+                "/current_project_return_story/annual_cash_receipts/0/operating_distributions_only",
+                "/current_project_return_story/annual_cash_receipts/0/conditional_coc",
+                "/current_project_return_story/annual_cash_receipts/0/declared_capital_base"
+              ],
+              "text": "2026 A1400.0000 C0.0000 N-1400.0000 O0.0000 CoC:Pendiente",
+              "width": 332,
+              "x": 432,
+              "y": 214
+            },
+            {
+              "font_size": 6.7,
+              "result_pointers": [
+                "/current_project_return_story/annual_cash_receipts/1/calendar_cash_receipt_year",
+                "/current_project_return_story/annual_cash_receipts/1/gross_contributions",
+                "/current_project_return_story/annual_cash_receipts/1/gross_distributions",
+                "/current_project_return_story/annual_cash_receipts/1/net_equity_cash",
+                "/current_project_return_story/annual_cash_receipts/1/operating_distributions_only",
+                "/current_project_return_story/annual_cash_receipts/1/conditional_coc",
+                "/current_project_return_story/annual_cash_receipts/1/declared_capital_base"
+              ],
+              "text": "2027 A0.0000 C776.0000 N776.0000 O200.0000 CoC:Pendiente",
+              "width": 332,
+              "x": 432,
+              "y": 203
+            }
+          ]
+        },
+        {
+          "field_id": "R19",
+          "state": "pending_annual_base_missing",
+          "value": [
+            {
+              "calendar_cash_receipt_year": 2026,
+              "operating_distributions_only": {
+                "denominator": "1",
+                "numerator": "0"
+              },
+              "declared_capital_base": null,
+              "conditional_coc": null,
+              "blocker": "positive_declared_annual_capital_base_missing"
+            },
+            {
+              "calendar_cash_receipt_year": 2027,
+              "operating_distributions_only": {
+                "denominator": "1",
+                "numerator": "200"
+              },
+              "declared_capital_base": null,
+              "conditional_coc": null,
+              "blocker": "positive_declared_annual_capital_base_missing"
+            }
+          ],
+          "resolved_source_pointers": [
+            "/current_project_return_story/annual_cash_receipts"
+          ],
+          "pdf_manifest_spans": [
+            {
+              "font_size": 6.7,
+              "result_pointers": [
+                "/current_project_return_story/annual_cash_receipts/0/calendar_cash_receipt_year",
+                "/current_project_return_story/annual_cash_receipts/0/gross_contributions",
+                "/current_project_return_story/annual_cash_receipts/0/gross_distributions",
+                "/current_project_return_story/annual_cash_receipts/0/net_equity_cash",
+                "/current_project_return_story/annual_cash_receipts/0/operating_distributions_only",
+                "/current_project_return_story/annual_cash_receipts/0/conditional_coc",
+                "/current_project_return_story/annual_cash_receipts/0/declared_capital_base"
+              ],
+              "text": "2026 A1400.0000 C0.0000 N-1400.0000 O0.0000 CoC:Pendiente",
+              "width": 332,
+              "x": 432,
+              "y": 214
+            },
+            {
+              "font_size": 6.7,
+              "result_pointers": [
+                "/current_project_return_story/annual_cash_receipts/1/calendar_cash_receipt_year",
+                "/current_project_return_story/annual_cash_receipts/1/gross_contributions",
+                "/current_project_return_story/annual_cash_receipts/1/gross_distributions",
+                "/current_project_return_story/annual_cash_receipts/1/net_equity_cash",
+                "/current_project_return_story/annual_cash_receipts/1/operating_distributions_only",
+                "/current_project_return_story/annual_cash_receipts/1/conditional_coc",
+                "/current_project_return_story/annual_cash_receipts/1/declared_capital_base"
+              ],
+              "text": "2027 A0.0000 C776.0000 N776.0000 O200.0000 CoC:Pendiente",
+              "width": 332,
+              "x": 432,
+              "y": 203
+            }
+          ]
+        },
+        {
+          "field_id": "R20",
+          "state": "pending_personal_allocation",
+          "value": null,
+          "resolved_source_pointers": [
+            "/current_project_return_story/personal_investor_return"
+          ],
+          "pdf_manifest_spans": []
+        },
+        {
+          "field_id": "R21",
+          "state": "available_synthetic",
+          "value": {
+            "denominator": "1",
+            "numerator": "624"
+          },
+          "resolved_source_pointers": [
+            "/current_project_return_story/risk_observations/cash_shortfall_at_horizon"
+          ],
+          "pdf_manifest_spans": [
+            {
+              "font_size": 7,
+              "result_pointers": [
+                "/current_project_return_story/risk_observations/cash_shortfall_at_horizon"
+              ],
+              "text": "Aportes no recuperados al corte: 624.0000",
+              "width": 386,
+              "x": 28,
+              "y": 193
+            }
+          ]
+        },
+        {
+          "field_id": "R22",
+          "state": "available_synthetic",
+          "value": {
+            "denominator": "1",
+            "numerator": "1400"
+          },
+          "resolved_source_pointers": [
+            "/current_project_return_story/risk_observations/peak_cumulative_net_equity_funding_at_date_close"
+          ],
+          "pdf_manifest_spans": [
+            {
+              "font_size": 7,
+              "result_pointers": [
+                "/current_project_return_story/risk_observations/peak_cumulative_net_equity_funding_at_date_close"
+              ],
+              "text": "Pico de financiacion equity: 1400.0000",
+              "width": 386,
+              "x": 28,
+              "y": 181
+            }
+          ]
+        },
+        {
+          "field_id": "R23",
+          "state": "available_synthetic",
+          "value": {
+            "denominator": "97",
+            "numerator": "72"
+          },
+          "resolved_source_pointers": [
+            "/current_project_return_story/risk_observations/sale_share_of_distributions"
+          ],
+          "pdf_manifest_spans": [
+            {
+              "font_size": 7,
+              "result_pointers": [
+                "/current_project_return_story/risk_observations/sale_share_of_distributions"
+              ],
+              "text": "Cobros de venta / total (fraccion): 0.7423",
+              "width": 386,
+              "x": 28,
+              "y": 169
+            }
+          ]
+        }
+      ],
+      "consistency_checks": [
+        "gross_contributions",
+        "gross_receipts",
+        "net_cash_result",
+        "gross_equity_multiple",
+        "contribution_categories",
+        "distribution_categories",
+        "annual_contributions",
+        "annual_receipts",
+        "annual_net_result",
+        "annual_row_identity",
+        "explicit_normalization_basis",
+        "explicit_positive_normalization",
+        "normalized_contributions",
+        "normalized_receipts",
+        "normalized_net_cash",
+        "normalized_events_not_netted",
+        "zero_events_preserved",
+        "IRR_point_not_selected",
+        "absent_stock_not_cash_shortfall",
+        "annual_base_not_defaulted",
+        "risk_cash_shortfall"
+      ],
+      "blockers": {
+        "criteria": [
+          "IRR:SYNTHETIC-draw-plan:definition_ref_missing_or_mismatch",
+          "IRR:SYNTHETIC-draw-plan:fail_condition_rule_missing_or_unsupported",
+          "IRR:SYNTHETIC-draw-plan:metric_value_missing",
+          "IRR:SYNTHETIC-draw-plan:pass_condition_rule_missing_or_unsupported",
+          "IRR:SYNTHETIC-draw-plan:period_ref_missing_or_mismatch",
+          "IRR:SYNTHETIC-draw-plan:unit_missing_or_mismatch",
+          "YoC:SYNTHETIC-draw-plan:definition_ref_missing_or_mismatch",
+          "YoC:SYNTHETIC-draw-plan:fail_condition_rule_missing_or_unsupported",
+          "YoC:SYNTHETIC-draw-plan:metric_value_missing",
+          "YoC:SYNTHETIC-draw-plan:pass_condition_rule_missing_or_unsupported",
+          "YoC:SYNTHETIC-draw-plan:period_ref_missing_or_mismatch",
+          "YoC:SYNTHETIC-draw-plan:unit_missing_or_mismatch",
+          "asking_relative_to_supported_price:SYNTHETIC-draw-plan:definition_ref_missing_or_mismatch",
+          "asking_relative_to_supported_price:SYNTHETIC-draw-plan:fail_condition_rule_missing_or_unsupported",
+          "asking_relative_to_supported_price:SYNTHETIC-draw-plan:metric_value_missing",
+          "asking_relative_to_supported_price:SYNTHETIC-draw-plan:pass_condition_rule_missing_or_unsupported",
+          "asking_relative_to_supported_price:SYNTHETIC-draw-plan:period_ref_missing_or_mismatch",
+          "asking_relative_to_supported_price:SYNTHETIC-draw-plan:unit_missing_or_mismatch",
+          "breakeven_occupancy:SYNTHETIC-draw-plan:definition_ref_missing_or_mismatch",
+          "breakeven_occupancy:SYNTHETIC-draw-plan:fail_condition_rule_missing_or_unsupported",
+          "breakeven_occupancy:SYNTHETIC-draw-plan:metric_value_missing",
+          "breakeven_occupancy:SYNTHETIC-draw-plan:pass_condition_rule_missing_or_unsupported",
+          "breakeven_occupancy:SYNTHETIC-draw-plan:period_ref_missing_or_mismatch",
+          "breakeven_occupancy:SYNTHETIC-draw-plan:unit_missing_or_mismatch",
+          "equity_TDC:SYNTHETIC-draw-plan:definition_ref_missing_or_mismatch",
+          "equity_TDC:SYNTHETIC-draw-plan:fail_condition_rule_missing_or_unsupported",
+          "equity_TDC:SYNTHETIC-draw-plan:metric_value_missing",
+          "equity_TDC:SYNTHETIC-draw-plan:pass_condition_rule_missing_or_unsupported",
+          "equity_TDC:SYNTHETIC-draw-plan:period_ref_missing_or_mismatch",
+          "equity_TDC:SYNTHETIC-draw-plan:unit_missing_or_mismatch",
+          "equity_cash_in:SYNTHETIC-draw-plan:definition_ref_missing_or_mismatch",
+          "equity_cash_in:SYNTHETIC-draw-plan:fail_condition_rule_missing_or_unsupported",
+          "equity_cash_in:SYNTHETIC-draw-plan:metric_value_missing",
+          "equity_cash_in:SYNTHETIC-draw-plan:pass_condition_rule_missing_or_unsupported",
+          "equity_cash_in:SYNTHETIC-draw-plan:period_ref_missing_or_mismatch",
+          "equity_cash_in:SYNTHETIC-draw-plan:unit_missing_or_mismatch",
+          "equity_multiple:SYNTHETIC-draw-plan:definition_ref_missing_or_mismatch",
+          "equity_multiple:SYNTHETIC-draw-plan:fail_condition_rule_missing_or_unsupported",
+          "equity_multiple:SYNTHETIC-draw-plan:pass_condition_rule_missing_or_unsupported",
+          "equity_multiple:SYNTHETIC-draw-plan:period_ref_missing_or_mismatch",
+          "equity_multiple:SYNTHETIC-draw-plan:unit_missing_or_mismatch",
+          "equity_recovered:SYNTHETIC-draw-plan:definition_ref_missing_or_mismatch",
+          "equity_recovered:SYNTHETIC-draw-plan:fail_condition_rule_missing_or_unsupported",
+          "equity_recovered:SYNTHETIC-draw-plan:metric_value_missing",
+          "equity_recovered:SYNTHETIC-draw-plan:pass_condition_rule_missing_or_unsupported",
+          "equity_recovered:SYNTHETIC-draw-plan:period_ref_missing_or_mismatch",
+          "equity_recovered:SYNTHETIC-draw-plan:unit_missing_or_mismatch",
+          "post_refi_CoC:SYNTHETIC-draw-plan:definition_ref_missing_or_mismatch",
+          "post_refi_CoC:SYNTHETIC-draw-plan:fail_condition_rule_missing_or_unsupported",
+          "post_refi_CoC:SYNTHETIC-draw-plan:metric_value_missing",
+          "post_refi_CoC:SYNTHETIC-draw-plan:pass_condition_rule_missing_or_unsupported",
+          "post_refi_CoC:SYNTHETIC-draw-plan:period_ref_missing_or_mismatch",
+          "post_refi_CoC:SYNTHETIC-draw-plan:unit_missing_or_mismatch",
+          "spread:SYNTHETIC-draw-plan:definition_ref_missing_or_mismatch",
+          "spread:SYNTHETIC-draw-plan:fail_condition_rule_missing_or_unsupported",
+          "spread:SYNTHETIC-draw-plan:metric_value_missing",
+          "spread:SYNTHETIC-draw-plan:pass_condition_rule_missing_or_unsupported",
+          "spread:SYNTHETIC-draw-plan:period_ref_missing_or_mismatch",
+          "spread:SYNTHETIC-draw-plan:unit_missing_or_mismatch"
+        ],
+        "financial_scope": [
+          "financial_policy_and_independent_acceptance_pending",
+          "authentic_professional_review_missing",
+          "original_plan_and_official_source_verification_pending",
+          "production_and_real_decisions_not_authorized"
+        ],
+        "input_catalog": [
+          "INPUT_C8:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C9:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C10:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C11:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C12:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C13:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C14:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C15:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C16:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C17:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C18:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C19:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C20:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C21:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C25:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C26:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C27:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C28:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C32:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C33:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C34:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C35:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C36:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C37:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C38:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C39:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C40:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C41:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C42:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C46:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C47:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C57:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C58:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C59:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C60:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C61:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C62:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C66:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C67:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C68:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C75:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C76:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C51:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C52:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C53:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C69:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C70:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C71:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C72:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C73:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C74:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C80:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C81:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C82:original_value_missing,original_field_mapping_or_definition_pending"
+        ],
+        "projection": []
+      },
+      "pdf": {
+        "page_count": 1,
+        "pdf_sha256": "045555898a5f26a48beaeb7650aa64dbd7493591a955f4d66a3c5bbd1aefbe89",
+        "manifest_sha256": "d90f1f29169dc7c3a26b95579a3795aa3ea21f811310b69667eb6a643dcaa8ab"
+      }
+    },
+    {
+      "case_id": "expired_policy",
+      "input_file": "templates/miniuw-v1-policy-renewal-case.json",
+      "source_sha256": "dda6ddbb781f029b1b1dbbddef991dfe1555a564da07041c1ac0fb1f2faf347a",
+      "input_mutation": {
+        "scenario_id": "D06-04",
+        "label": "Evidencia de póliza vencida en el corte expreso",
+        "operations": [
+          {
+            "embedded_json_pointers": [
+              "/registry_utf8"
+            ],
+            "final_pointer": "/evidence/42/valid_until",
+            "operation": "replace",
+            "value": "2027-07-01T12:00:00Z"
+          }
+        ],
+        "expected_outcome": "current_figures_withdrawn",
+        "required_blocker_fragments": [
+          "policy_renewal_sources_not_current",
+          "evidence_expired"
+        ],
+        "render_probe": true,
+        "raw_fault": null,
+        "synthetic_evidence_refresh": false
+      },
+      "run_sha256": "d52686e9afbd62e88874bdc5c60e7fca8ffad93eb215566ca661026debcf9490",
+      "decision": "PENDING",
+      "current_projection_available": false,
+      "fields": [
+        {
+          "field_id": "R01",
+          "state": "withheld_current_projection",
+          "value": null,
+          "resolved_source_pointers": [],
+          "pdf_manifest_spans": []
+        },
+        {
+          "field_id": "R02",
+          "state": "withheld_current_projection",
+          "value": null,
+          "resolved_source_pointers": [],
+          "pdf_manifest_spans": []
+        },
+        {
+          "field_id": "R03",
+          "state": "withheld_current_projection",
+          "value": null,
+          "resolved_source_pointers": [],
+          "pdf_manifest_spans": []
+        },
+        {
+          "field_id": "R04",
+          "state": "withheld_current_projection",
+          "value": null,
+          "resolved_source_pointers": [],
+          "pdf_manifest_spans": []
+        },
+        {
+          "field_id": "R05",
+          "state": "withheld_current_projection",
+          "value": null,
+          "resolved_source_pointers": [],
+          "pdf_manifest_spans": []
+        },
+        {
+          "field_id": "R06",
+          "state": "withheld_current_projection",
+          "value": null,
+          "resolved_source_pointers": [],
+          "pdf_manifest_spans": []
+        },
+        {
+          "field_id": "R07",
+          "state": "withheld_current_projection",
+          "value": null,
+          "resolved_source_pointers": [],
+          "pdf_manifest_spans": []
+        },
+        {
+          "field_id": "R08",
+          "state": "withheld_current_projection",
+          "value": null,
+          "resolved_source_pointers": [],
+          "pdf_manifest_spans": []
+        },
+        {
+          "field_id": "R09",
+          "state": "withheld_current_projection",
+          "value": null,
+          "resolved_source_pointers": [],
+          "pdf_manifest_spans": []
+        },
+        {
+          "field_id": "R10",
+          "state": "withheld_current_projection",
+          "value": null,
+          "resolved_source_pointers": [],
+          "pdf_manifest_spans": []
+        },
+        {
+          "field_id": "R11",
+          "state": "withheld_current_projection",
+          "value": null,
+          "resolved_source_pointers": [],
+          "pdf_manifest_spans": []
+        },
+        {
+          "field_id": "R12",
+          "state": "withheld_current_projection",
+          "value": null,
+          "resolved_source_pointers": [],
+          "pdf_manifest_spans": []
+        },
+        {
+          "field_id": "R13",
+          "state": "withheld_current_projection",
+          "value": null,
+          "resolved_source_pointers": [],
+          "pdf_manifest_spans": []
+        },
+        {
+          "field_id": "R14",
+          "state": "withheld_current_projection",
+          "value": null,
+          "resolved_source_pointers": [],
+          "pdf_manifest_spans": []
+        },
+        {
+          "field_id": "R15",
+          "state": "withheld_current_projection",
+          "value": null,
+          "resolved_source_pointers": [],
+          "pdf_manifest_spans": []
+        },
+        {
+          "field_id": "R16",
+          "state": "withheld_current_projection",
+          "value": null,
+          "resolved_source_pointers": [],
+          "pdf_manifest_spans": []
+        },
+        {
+          "field_id": "R17",
+          "state": "withheld_current_projection",
+          "value": null,
+          "resolved_source_pointers": [],
+          "pdf_manifest_spans": []
+        },
+        {
+          "field_id": "R18",
+          "state": "withheld_current_projection",
+          "value": null,
+          "resolved_source_pointers": [],
+          "pdf_manifest_spans": []
+        },
+        {
+          "field_id": "R19",
+          "state": "withheld_current_projection",
+          "value": null,
+          "resolved_source_pointers": [],
+          "pdf_manifest_spans": []
+        },
+        {
+          "field_id": "R20",
+          "state": "withheld_current_projection",
+          "value": null,
+          "resolved_source_pointers": [],
+          "pdf_manifest_spans": []
+        },
+        {
+          "field_id": "R21",
+          "state": "withheld_current_projection",
+          "value": null,
+          "resolved_source_pointers": [],
+          "pdf_manifest_spans": []
+        },
+        {
+          "field_id": "R22",
+          "state": "withheld_current_projection",
+          "value": null,
+          "resolved_source_pointers": [],
+          "pdf_manifest_spans": []
+        },
+        {
+          "field_id": "R23",
+          "state": "withheld_current_projection",
+          "value": null,
+          "resolved_source_pointers": [],
+          "pdf_manifest_spans": []
+        }
+      ],
+      "consistency_checks": [],
+      "blockers": {
+        "criteria": [
+          "IRR:SYNTHETIC-draw-plan:definition_ref_missing_or_mismatch",
+          "IRR:SYNTHETIC-draw-plan:fail_condition_rule_missing_or_unsupported",
+          "IRR:SYNTHETIC-draw-plan:metric_value_missing",
+          "IRR:SYNTHETIC-draw-plan:pass_condition_rule_missing_or_unsupported",
+          "IRR:SYNTHETIC-draw-plan:period_ref_missing_or_mismatch",
+          "IRR:SYNTHETIC-draw-plan:unit_missing_or_mismatch",
+          "YoC:SYNTHETIC-draw-plan:definition_ref_missing_or_mismatch",
+          "YoC:SYNTHETIC-draw-plan:fail_condition_rule_missing_or_unsupported",
+          "YoC:SYNTHETIC-draw-plan:metric_value_missing",
+          "YoC:SYNTHETIC-draw-plan:pass_condition_rule_missing_or_unsupported",
+          "YoC:SYNTHETIC-draw-plan:period_ref_missing_or_mismatch",
+          "YoC:SYNTHETIC-draw-plan:unit_missing_or_mismatch",
+          "asking_relative_to_supported_price:SYNTHETIC-draw-plan:definition_ref_missing_or_mismatch",
+          "asking_relative_to_supported_price:SYNTHETIC-draw-plan:fail_condition_rule_missing_or_unsupported",
+          "asking_relative_to_supported_price:SYNTHETIC-draw-plan:metric_value_missing",
+          "asking_relative_to_supported_price:SYNTHETIC-draw-plan:pass_condition_rule_missing_or_unsupported",
+          "asking_relative_to_supported_price:SYNTHETIC-draw-plan:period_ref_missing_or_mismatch",
+          "asking_relative_to_supported_price:SYNTHETIC-draw-plan:unit_missing_or_mismatch",
+          "breakeven_occupancy:SYNTHETIC-draw-plan:definition_ref_missing_or_mismatch",
+          "breakeven_occupancy:SYNTHETIC-draw-plan:fail_condition_rule_missing_or_unsupported",
+          "breakeven_occupancy:SYNTHETIC-draw-plan:metric_value_missing",
+          "breakeven_occupancy:SYNTHETIC-draw-plan:pass_condition_rule_missing_or_unsupported",
+          "breakeven_occupancy:SYNTHETIC-draw-plan:period_ref_missing_or_mismatch",
+          "breakeven_occupancy:SYNTHETIC-draw-plan:unit_missing_or_mismatch",
+          "equity_TDC:SYNTHETIC-draw-plan:definition_ref_missing_or_mismatch",
+          "equity_TDC:SYNTHETIC-draw-plan:fail_condition_rule_missing_or_unsupported",
+          "equity_TDC:SYNTHETIC-draw-plan:metric_value_missing",
+          "equity_TDC:SYNTHETIC-draw-plan:pass_condition_rule_missing_or_unsupported",
+          "equity_TDC:SYNTHETIC-draw-plan:period_ref_missing_or_mismatch",
+          "equity_TDC:SYNTHETIC-draw-plan:unit_missing_or_mismatch",
+          "equity_cash_in:SYNTHETIC-draw-plan:definition_ref_missing_or_mismatch",
+          "equity_cash_in:SYNTHETIC-draw-plan:fail_condition_rule_missing_or_unsupported",
+          "equity_cash_in:SYNTHETIC-draw-plan:metric_value_missing",
+          "equity_cash_in:SYNTHETIC-draw-plan:pass_condition_rule_missing_or_unsupported",
+          "equity_cash_in:SYNTHETIC-draw-plan:period_ref_missing_or_mismatch",
+          "equity_cash_in:SYNTHETIC-draw-plan:unit_missing_or_mismatch",
+          "equity_multiple:SYNTHETIC-draw-plan:definition_ref_missing_or_mismatch",
+          "equity_multiple:SYNTHETIC-draw-plan:fail_condition_rule_missing_or_unsupported",
+          "equity_multiple:SYNTHETIC-draw-plan:pass_condition_rule_missing_or_unsupported",
+          "equity_multiple:SYNTHETIC-draw-plan:period_ref_missing_or_mismatch",
+          "equity_multiple:SYNTHETIC-draw-plan:unit_missing_or_mismatch",
+          "equity_recovered:SYNTHETIC-draw-plan:definition_ref_missing_or_mismatch",
+          "equity_recovered:SYNTHETIC-draw-plan:fail_condition_rule_missing_or_unsupported",
+          "equity_recovered:SYNTHETIC-draw-plan:metric_value_missing",
+          "equity_recovered:SYNTHETIC-draw-plan:pass_condition_rule_missing_or_unsupported",
+          "equity_recovered:SYNTHETIC-draw-plan:period_ref_missing_or_mismatch",
+          "equity_recovered:SYNTHETIC-draw-plan:unit_missing_or_mismatch",
+          "post_refi_CoC:SYNTHETIC-draw-plan:definition_ref_missing_or_mismatch",
+          "post_refi_CoC:SYNTHETIC-draw-plan:fail_condition_rule_missing_or_unsupported",
+          "post_refi_CoC:SYNTHETIC-draw-plan:metric_value_missing",
+          "post_refi_CoC:SYNTHETIC-draw-plan:pass_condition_rule_missing_or_unsupported",
+          "post_refi_CoC:SYNTHETIC-draw-plan:period_ref_missing_or_mismatch",
+          "post_refi_CoC:SYNTHETIC-draw-plan:unit_missing_or_mismatch",
+          "spread:SYNTHETIC-draw-plan:definition_ref_missing_or_mismatch",
+          "spread:SYNTHETIC-draw-plan:fail_condition_rule_missing_or_unsupported",
+          "spread:SYNTHETIC-draw-plan:metric_value_missing",
+          "spread:SYNTHETIC-draw-plan:pass_condition_rule_missing_or_unsupported",
+          "spread:SYNTHETIC-draw-plan:period_ref_missing_or_mismatch",
+          "spread:SYNTHETIC-draw-plan:unit_missing_or_mismatch"
+        ],
+        "financial_scope": [
+          "financial_policy_and_independent_acceptance_pending",
+          "authentic_professional_review_missing",
+          "original_plan_and_official_source_verification_pending",
+          "production_and_real_decisions_not_authorized"
+        ],
+        "input_catalog": [
+          "INPUT_C8:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C9:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C10:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C11:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C12:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C13:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C14:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C15:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C16:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C17:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C18:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C19:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C20:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C21:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C25:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C26:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C27:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C28:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C32:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C33:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C34:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C35:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C36:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C37:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C38:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C39:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C40:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C41:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C42:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C46:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C47:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C57:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C58:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C59:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C60:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C61:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C62:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C66:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C67:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C68:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C75:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C76:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C51:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C52:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C53:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C69:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C70:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C71:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C72:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C73:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C74:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C80:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C81:original_value_missing,original_field_mapping_or_definition_pending",
+          "INPUT_C82:original_value_missing,original_field_mapping_or_definition_pending"
+        ],
+        "projection": [
+          "/policy-renewals/books/0:evidence_expired",
+          "policy_renewal_sources_not_current"
+        ]
+      },
+      "pdf": {
+        "page_count": 1,
+        "pdf_sha256": "ce73b5f8ab99a11708a167745a6d37a85ddfe2edcc55737e1c12462a0ef75bb3",
+        "manifest_sha256": "6d7c681d3ee4b5a38f0a50035a43c9685e7b3cce9920edc06973853faa0f99eb"
+      }
+    }
+  ],
+  "function_locations": [
+    {
+      "path": "src/miniuw_foundation/investor_returns.py",
+      "sha256": "b64f5bae914ce97edebc4a86849935952eea4a25e271068d92b0f2197843b036",
+      "symbol": "produce_investor_returns",
+      "line": 107
+    },
+    {
+      "path": "src/miniuw_foundation/staged_lifecycle_returns.py",
+      "sha256": "2dd366642eb025e358418115e017bdf774ac70160f9517b618f76745e18c4353",
+      "symbol": "assemble_staged_lifecycle_returns",
+      "line": 31
+    },
+    {
+      "path": "src/miniuw_foundation/cash_risk.py",
+      "sha256": "570785ab8fa2547d3ced2076dbcd8df0750725e7cb814f04c871adf8beadde24",
+      "symbol": "summarize_cash_risk",
+      "line": 30
+    },
+    {
+      "path": "src/miniuw_foundation/policy_renewal_case.py",
+      "sha256": "7f1bf0c2fcd861f8fffcaba12ea12524f6c271be96c2af4ac44be0016c0c35a3",
+      "symbol": "assemble_policy_renewal_case",
+      "line": 38
+    },
+    {
+      "path": "src/miniuw_foundation/policy_renewal_artifacts.py",
+      "sha256": "c3f6ef1b9de08e68b12ea78996295e83596aff70fa8ac2d39426946bb0c76cbb",
+      "symbol": "render_policy_renewal_report",
+      "line": 22
+    },
+    {
+      "path": "src/miniuw_foundation/investor_onepage.py",
+      "sha256": "9166655c5ad08802e270897afd619cff0caf28afc92e7d7387a4095fb686bd9e",
+      "symbol": "render_investor_onepage",
+      "line": 80
+    }
+  ],
+  "source_versions": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "a3deb94a6355a3366daaa67a3f9307c48283e119efd36fdedc1b9269c076d1c6"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Bloqueos_D06.json",
+      "sha256": "a7eb7314aeea7255913b13e1b51a4f5aa88967a4382171dae9682c860ce31c38"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Estructura_Vigente_D04.json",
+      "sha256": "17ca7f968aff05208da34b25c884b2e36d3fbbb47b84311a17a9c32282128658"
+    },
+    {
+      "path": "docs/review/information-flow-summary-FLOW02.json",
+      "sha256": "a59964d5422de6bdd89ee842e5d451411088e729e7cefdc4eae1fc994ddb96f2"
+    },
+    {
+      "path": "docs/review/miniuw-v1-investor-output-example/MiniUW_v1_Resumen.pdf",
+      "sha256": "1fe52b1bd99da4a4be686d03c6c9ea0b7c304ee00f85d8fd5344fc1e1bd928ce"
+    },
+    {
+      "path": "docs/review/miniuw-v1-investor-output-example/audit.json",
+      "sha256": "828c0d16cd5289d4a00fef5862e54891c394e5ab3a8bdaede0a889c99c66238c"
+    },
+    {
+      "path": "docs/review/miniuw-v1-investor-output-example/report-manifest.json",
+      "sha256": "4f179cdae02a6a760d3d55f59fd32f6a6360d9b3eafb5e35e38a41bdd06ea3a5"
+    },
+    {
+      "path": "docs/review/miniuw-v1-investor-output-example/results.json",
+      "sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1"
+    },
+    {
+      "path": "docs/technical-implementation-T96.md",
+      "sha256": "d484a68db68117576902b9043e8cd8e836f43eefb68ec3760bb2fa0362322fbb"
+    },
+    {
+      "path": "src/miniuw_foundation/cash_risk.py",
+      "sha256": "570785ab8fa2547d3ced2076dbcd8df0750725e7cb814f04c871adf8beadde24"
+    },
+    {
+      "path": "src/miniuw_foundation/investor_onepage.py",
+      "sha256": "9166655c5ad08802e270897afd619cff0caf28afc92e7d7387a4095fb686bd9e"
+    },
+    {
+      "path": "src/miniuw_foundation/investor_returns.py",
+      "sha256": "b64f5bae914ce97edebc4a86849935952eea4a25e271068d92b0f2197843b036"
+    },
+    {
+      "path": "src/miniuw_foundation/policy_renewal_artifacts.py",
+      "sha256": "c3f6ef1b9de08e68b12ea78996295e83596aff70fa8ac2d39426946bb0c76cbb"
+    },
+    {
+      "path": "src/miniuw_foundation/policy_renewal_case.py",
+      "sha256": "7f1bf0c2fcd861f8fffcaba12ea12524f6c271be96c2af4ac44be0016c0c35a3"
+    },
+    {
+      "path": "src/miniuw_foundation/staged_lifecycle_returns.py",
+      "sha256": "2dd366642eb025e358418115e017bdf774ac70160f9517b618f76745e18c4353"
+    },
+    {
+      "path": "src/miniuw_foundation/v1_report.py",
+      "sha256": "3b63ad76e5c7f818523dad51ad4c1e9ab196ad993a0cce1d246d60bd4df4b907"
+    },
+    {
+      "path": "templates/miniuw-v1-policy-renewal-case.json",
+      "sha256": "baa78b2ebc84a7ec5a204d9c10a4ba0f0777fd84c1b99edc40a874bb86b02306"
+    },
+    {
+      "path": "templates/miniuw-v1-policy-renewal-twelve-case.json",
+      "sha256": "cf6554aec236a4f5f4d28f98ed6e3d5d555ab4298e67351e81b414eda643c994"
+    },
+    {
+      "path": "tools/check_blocking_structure_D06.py",
+      "sha256": "8491f2d033854b380c4113893fd514e9d841a4e26bb50b5ee4471d146a13de28"
+    },
+    {
+      "path": "tools/check_dependency_structure_D05.py",
+      "sha256": "b7d7abf6e6cc6ea14651069118102c357ddf939f97a802182de115cacb6fb8f9"
+    },
+    {
+      "path": "tools/check_investor_output_D07.py",
+      "sha256": "7215b12dbd2535d4d439f03720bb59df000762d655b1c86c2484e325abf30e05"
+    }
+  ],
+  "annual_net_cash_report_complete_for_supplied_window": true,
+  "personal_return_verified": false,
+  "capital_snapshots_derived": false,
+  "annual_CoC_financial_basis_adopted": false,
+  "original_field_runtime_mappings_pending": 54,
+  "financial_model_complete": false,
+  "professional_review_authenticated": false,
+  "independent_financial_audit": false,
+  "deployment_enabled": false,
+  "real_decisions_enabled": false
+}

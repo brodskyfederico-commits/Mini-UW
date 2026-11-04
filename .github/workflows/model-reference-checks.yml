@@ -31,5 +31,7 @@ jobs:
         run: python tools/check_dependency_structure_D05.py
       - name: Verify blocking structure and current figure withdrawal
         run: python tools/check_blocking_structure_D06.py
+      - name: Verify investor output contract and annual cash presentation
+        run: python tools/check_investor_output_D07.py
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v

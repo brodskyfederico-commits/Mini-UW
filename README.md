@@ -4,6 +4,7 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- [Salida del inversor D07 y página T96](docs/current-structure/MiniUW_Salida_Inversor_D07.md): contrato de23 campos; aportes, cobros y neto anual en [una página sintética actualizada](docs/review/miniuw-v1-investor-output-example/MiniUW_v1_Resumen.pdf), con contexto trazable y pendientes separados.
 - [Faltantes, bloqueos y retiro de cifras D06](docs/current-structure/MiniUW_Bloqueos_D06.md): doce comprobaciones sintéticas de las puertas de entrada, proyección y decisión; tres PDFs reproducidos sin publicar cifras bloqueadas.
 - [Dependencias e impacto de cambios D05](docs/current-structure/MiniUW_Dependencias_D05.md): mapa de fuentes/cálculos del perfil T95 y contraste reproducido de dos revisiones sintéticas; conserva los pendientes financieros.
 - [Especificación integral en español](docs/Especificacion_Integral_Armado_I01.md).
