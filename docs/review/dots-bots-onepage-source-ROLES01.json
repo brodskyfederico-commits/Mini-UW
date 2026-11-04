@@ -1,0 +1,185 @@
+{
+  "document_id": "ROLES01",
+  "scope": "Funciones previstas; sin agentes desplegados",
+  "source_path": "docs/miniuw-v1-dot-bot-contracts.json",
+  "source_sha256": "42a074934b1c2abcbb8c20f61a335906499c0c0f06c362167da62cb41f8fbdc5",
+  "dots": [
+    {
+      "dot_id": "D01",
+      "name": "Recepción y coordinación",
+      "purpose": "Recibe el expediente y organiza el trabajo.",
+      "status": "Pruebas sintéticas parciales",
+      "bot_ids": [
+        "B01",
+        "B02",
+        "B03"
+      ]
+    },
+    {
+      "dot_id": "D02",
+      "name": "Validación de entrada",
+      "purpose": "Revisa hoja, criterios y datos faltantes.",
+      "status": "Pruebas sintéticas parciales",
+      "bot_ids": [
+        "B04"
+      ]
+    },
+    {
+      "dot_id": "D03",
+      "name": "Planos y conciliación",
+      "purpose": "Contrasta lecturas de planos y constructor.",
+      "status": "Implementación pendiente",
+      "bot_ids": [
+        "B05",
+        "B06",
+        "B07",
+        "B09"
+      ]
+    },
+    {
+      "dot_id": "D04",
+      "name": "Datos oficiales",
+      "purpose": "Busca y verifica información oficial citada.",
+      "status": "Implementación pendiente",
+      "bot_ids": [
+        "B10",
+        "B11"
+      ]
+    },
+    {
+      "dot_id": "D05",
+      "name": "Cálculo y evaluación",
+      "purpose": "Construye la caja, el retorno y la comparación.",
+      "status": "Pruebas sintéticas parciales",
+      "bot_ids": [
+        "B08",
+        "B12",
+        "B13",
+        "B14"
+      ]
+    },
+    {
+      "dot_id": "D06",
+      "name": "Informe",
+      "purpose": "Presenta cuánto se aporta, cobra y cuándo.",
+      "status": "PDF sintético integrado",
+      "bot_ids": [
+        "B15"
+      ]
+    },
+    {
+      "dot_id": "D07",
+      "name": "Comprobación y pruebas",
+      "purpose": "Verifica la salida y prueba cada versión.",
+      "status": "Comprobación técnica",
+      "bot_ids": [
+        "B16",
+        "B17"
+      ]
+    }
+  ],
+  "bots": [
+    {
+      "bot_id": "B01",
+      "dot_id": "D01",
+      "name": "Orquestador",
+      "purpose": "Ordena tareas y dependencias; coordina la ejecución."
+    },
+    {
+      "bot_id": "B02",
+      "dot_id": "D01",
+      "name": "Recepción",
+      "purpose": "Registra archivos, revisiones y procedencia de los datos."
+    },
+    {
+      "bot_id": "B03",
+      "dot_id": "D01",
+      "name": "Clasificador",
+      "purpose": "Identifica el tipo de documento y señala ambigüedades."
+    },
+    {
+      "bot_id": "B04",
+      "dot_id": "D02",
+      "name": "Validador de la hoja",
+      "purpose": "Revisa los 55 campos, criterios, unidades, fechas y faltantes."
+    },
+    {
+      "bot_id": "B05",
+      "dot_id": "D03",
+      "name": "Lector A de planos",
+      "purpose": "Lee datos explícitos de planos originales y cita su ubicación."
+    },
+    {
+      "bot_id": "B06",
+      "dot_id": "D03",
+      "name": "Lector B de planos",
+      "purpose": "Hace una lectura independiente, sin ver la lectura de A."
+    },
+    {
+      "bot_id": "B07",
+      "dot_id": "D03",
+      "name": "Conciliador",
+      "purpose": "Compara A/B y conserva las discrepancias sin elegir un valor."
+    },
+    {
+      "bot_id": "B08",
+      "dot_id": "D05",
+      "name": "Lector financiero",
+      "purpose": "Extrae datos de documentos financieros, citando página o celda."
+    },
+    {
+      "bot_id": "B09",
+      "dot_id": "D03",
+      "name": "Control del constructor",
+      "purpose": "Contrasta planos y presupuesto del constructor; marca diferencias."
+    },
+    {
+      "bot_id": "B10",
+      "dot_id": "D04",
+      "name": "Investigador oficial",
+      "purpose": "Consulta fuentes oficiales autorizadas y guarda copia y fecha."
+    },
+    {
+      "bot_id": "B11",
+      "dot_id": "D04",
+      "name": "Verificador oficial",
+      "purpose": "Comprueba el dato en la fuente y verifica su vigencia."
+    },
+    {
+      "bot_id": "B12",
+      "dot_id": "D05",
+      "name": "Guardián",
+      "purpose": "Bloquea lo afectado por faltantes o conflictos; conserva pendientes."
+    },
+    {
+      "bot_id": "B13",
+      "dot_id": "D05",
+      "name": "Motor de cálculo",
+      "purpose": "Calcula renta, gastos, deuda, caja y retorno con fuentes trazables."
+    },
+    {
+      "bot_id": "B14",
+      "dot_id": "D05",
+      "name": "Juez de métricas",
+      "purpose": "Compara métricas y criterios; faltantes o banda: PENDIENTE."
+    },
+    {
+      "bot_id": "B15",
+      "dot_id": "D06",
+      "name": "Redactor y maquetador",
+      "purpose": "Genera el PDF de una página con retorno, riesgos y pendientes."
+    },
+    {
+      "bot_id": "B16",
+      "dot_id": "D07",
+      "name": "Auditor técnico",
+      "purpose": "Reproduce cifras, fuentes y PDF; no es auditoría financiera independiente."
+    },
+    {
+      "bot_id": "B17",
+      "dot_id": "D07",
+      "name": "Pruebas de versión",
+      "purpose": "Prueba el código antes de liberar una versión; no corre por deal."
+    }
+  ]
+}

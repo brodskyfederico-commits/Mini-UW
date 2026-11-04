@@ -4,6 +4,7 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- [Qué hará cada Dot y cada bot — una página](docs/review/MiniUW_Dots_y_Bots_1_pagina_ROLES01.pdf): siete áreas,17 tareas y sus responsables; funciones previstas y estado sintético, sin agentes desplegados.
 - [Ejecución y recuperación T97](docs/investor-output-v1-runbook.md): la página T96 ya está integrada en un paquete local de ocho archivos, con reproducción de fuentes/resultados/PDF y comando `run`/`audit`.
 - [Salida del inversor D07 y página T96](docs/current-structure/MiniUW_Salida_Inversor_D07.md): contrato de23 campos; aportes, cobros y neto anual en [una página sintética actualizada](docs/review/miniuw-v1-investor-output-example/MiniUW_v1_Resumen.pdf), con contexto trazable y pendientes separados.
 - [Faltantes, bloqueos y retiro de cifras D06](docs/current-structure/MiniUW_Bloqueos_D06.md): doce comprobaciones sintéticas de las puertas de entrada, proyección y decisión; tres PDFs reproducidos sin publicar cifras bloqueadas.

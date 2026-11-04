@@ -35,5 +35,7 @@ jobs:
         run: python tools/check_investor_output_D07.py
       - name: Verify investor package source-first recovery
         run: python tools/check_investor_package_T97.py
+      - name: Verify one-page Dot and bot role summary
+        run: python tools/check_dots_bots_onepage_ROLES01.py
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v
