@@ -1,10 +1,10 @@
 {
-  "scope": "I01 preserved design, D02–D05 design/structure documentation and T01–T95 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D06 design/structure documentation and T01–T95 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 1271,
-      "sha256": "196a797caa18677bbb7dce757151c32197c22355a2dd64d252b07ed3d492fe5b"
+      "bytes": 1399,
+      "sha256": "86537ea8907913bb901fd35c764e0b4e1fcad0be7027433e3bfad8e9370d3ab3"
     },
     {
       "path": ".gitignore",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 36336,
-      "sha256": "e63fa702fce2983d8c25ffbb0e732961a843ef3b17aec2ce6bfca35c05ebdfbb"
+      "bytes": 36570,
+      "sha256": "0d59569386bcd08ec2f7b1bdea6df999e3d28bc6130ccf041922d104d2f5ce11"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 147524,
-      "sha256": "85b2724b99d09e457cfd370495c8e36ea06e5d8397a12b045b89ba76f747e73b"
+      "bytes": 149375,
+      "sha256": "426746d69a552577c004b587951ee8bb7bb9e41fde149628ebabb3ec4a2ea8fb"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -122,9 +122,29 @@
       "sha256": "6372f88e13beb0055e3a4823d69bbc6060506b16ade355be50d5ed38b8d3a6e0"
     },
     {
+      "path": "docs/current-structure/D06-structural-validation.json",
+      "bytes": 828,
+      "sha256": "4d3e79d20fb7e1be584d96d943a94d9081fdf9b0f950f0c23768c7be39259145"
+    },
+    {
       "path": "docs/current-structure/MiniUW_55_campos_D04.csv",
       "bytes": 28155,
       "sha256": "36933edad8b3b905d629bb0e67113b316578a63f4652744af069b9cb302f0454"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Bloqueos_D06.csv",
+      "bytes": 4703,
+      "sha256": "5ecba1edd4640ae6219985ac397c3adab724b84304b56daa58e9d193063a9a5e"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Bloqueos_D06.json",
+      "bytes": 198166,
+      "sha256": "a7eb7314aeea7255913b13e1b51a4f5aa88967a4382171dae9682c860ce31c38"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Bloqueos_D06.md",
+      "bytes": 12427,
+      "sha256": "5f5e14eb59008e75fd604f536674b601f0487f1052043228aec68382feeeeec0"
     },
     {
       "path": "docs/current-structure/MiniUW_Dependencias_D05.csv",
@@ -3620,6 +3640,11 @@
       "path": "tests/xlsx_fixture.py",
       "bytes": 4336,
       "sha256": "2b1c6449a1d5cfc288fe2bd00a04be5dea6513d9d8eea3a85381cfa49860dd62"
+    },
+    {
+      "path": "tools/check_blocking_structure_D06.py",
+      "bytes": 18815,
+      "sha256": "8491f2d033854b380c4113893fd514e9d841a4e26bb50b5ee4471d146a13de28"
     },
     {
       "path": "tools/check_current_structure_D04.py",

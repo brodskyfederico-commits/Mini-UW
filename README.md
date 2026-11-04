@@ -4,6 +4,7 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- [Faltantes, bloqueos y retiro de cifras D06](docs/current-structure/MiniUW_Bloqueos_D06.md): doce comprobaciones sintéticas de las puertas de entrada, proyección y decisión; tres PDFs reproducidos sin publicar cifras bloqueadas.
 - [Dependencias e impacto de cambios D05](docs/current-structure/MiniUW_Dependencias_D05.md): mapa de fuentes/cálculos del perfil T95 y contraste reproducido de dos revisiones sintéticas; conserva los pendientes financieros.
 - [Especificación integral en español](docs/Especificacion_Integral_Armado_I01.md).
 - [PDF interno integral I01](docs/review/MiniUW_Especificacion_Integral_Armado_I01.pdf).
