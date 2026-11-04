@@ -1,7 +1,7 @@
 {
   "phase": "post-I01 synthetic technical implementation",
   "user_authorized": true,
-  "component": "T97",
+  "component": "T98",
   "status": "local_implementation_verified_pending_remote_receipt",
   "implemented": [
     "fresh raw-claim drafts from unchanged 55-input/10-criterion template",
@@ -134,7 +134,7 @@
     "complete scheduled Mini-UW parent plus every insurance renewal book gated together by 43 exact full-source bindings at explicit UTC",
     "portable renewal-case replay and current-or-pending one-page PDF with eight strictly inventoried local artifacts"
   ],
-  "unit_tests": 1363,
+  "unit_tests": 1374,
   "plan_packages_partially_addressed": [
     "IMP-01",
     "IMP-06",
@@ -252,7 +252,8 @@
     "T94",
     "T95",
     "T96",
-    "T97"
+    "T97",
+    "T98"
   ],
   "tests_by_component": {
     "T01": 31,
@@ -543,5 +544,9 @@
   "T96_full_eight_artifact_transport_implemented": true,
   "synthetic_investor_output_bundle_recovery_implemented": true,
   "synthetic_investor_output_cli_run_audit_implemented": true,
-  "T97_new_financial_calculations_produced": false
+  "T97_new_financial_calculations_produced": false,
+  "synthetic_current_capital_visibility_guard_implemented": true,
+  "synthetic_capital_checked_output_transport_implemented": true,
+  "capital_stock_derivation_implemented": false,
+  "T98_financial_policy_adopted": false
 }

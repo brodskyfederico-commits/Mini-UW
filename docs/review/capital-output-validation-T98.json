@@ -1,0 +1,48 @@
+{
+  "component": "T98",
+  "status": "passed_source_first_capital_visibility_and_package_replay",
+  "files_verified": 8,
+  "page_count": 1,
+  "fixture_revisions_checked": 5,
+  "latest_capital_state": "PENDING",
+  "original_claims_preserved": true,
+  "pending_current_stock_values_withheld": true,
+  "older_cut_not_substituted": true,
+  "underlying_financial_results_preserved": true,
+  "legacy_difference_reproduced": true,
+  "source_sha256": "a83f41906fae2ce9265ca030b35af2992185070daf0b144df33fd5d04708c4a2",
+  "run_sha256": "92c93a5c44aa3a93ec1aafd57ceaa14269ac2607947305d2d6265cbe671f6e07",
+  "parent_financial_run_sha256": "262f2644427eefc8d0ed158bf3f32cfdbdba1b91d519a2a2c6fe3f10f6aa1a95",
+  "pdf_sha256": "7df1113f972b16b1f7bb552af79790a844cd53fda105683afee0b5634ff09707",
+  "manifest_sha256": "6959907ae374e873a4c7aed2ce70eeb4cc91830fa653c264d983e12bdd1ddb22",
+  "bundle_sha256": "b63568397ed51410df3a294240a9a3ff03220320ec07da1551b8a216fe68d507",
+  "source_versions": [
+    {
+      "path": "src/miniuw_foundation/capital_checked_output.py",
+      "sha256": "cd34fc11cb06b39f29613b26f4fc1732d4a832fd35f7dc99c4e6d57f63229803"
+    },
+    {
+      "path": "tools/capital_miniuw_v1.py",
+      "sha256": "89f6d470e0ef44d40224154153765a2b0f504a96909258b10a6c0fd83b03bc2a"
+    },
+    {
+      "path": "tools/check_capital_output_T98.py",
+      "sha256": "26d7ac7a620e2f05b8a72080d8de7f903dc74c1c1001c3d4d09baa4e38b63e25"
+    },
+    {
+      "path": "docs/technical-implementation-T98.md",
+      "sha256": "1feee6e254aa78b1592e74f1c69ad1f4217058843d47e186ced45a5b8b044480"
+    },
+    {
+      "path": "docs/review/capital-fixture-generation-T98.json",
+      "sha256": "63eb5aa296c6ed91b862576e5e74750cc5c7433e08e7313e3a05087061ce477d"
+    }
+  ],
+  "capital_definition_adopted": false,
+  "capital_value_derived": false,
+  "personal_return_verified": false,
+  "decision": "PENDING",
+  "independent_financial_audit": false,
+  "deployment_enabled": false,
+  "real_decisions_enabled": false
+}

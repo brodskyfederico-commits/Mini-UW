@@ -1,0 +1,205 @@
+{
+  "scope": "Synthetic fixture-only declarations; no runtime refresh, financial policy or actual authority",
+  "base_case_sha256": "baa78b2ebc84a7ec5a204d9c10a4ba0f0777fd84c1b99edc40a874bb86b02306",
+  "cases": [
+    {
+      "case": "templates/miniuw-v1-capital-declared-case.json",
+      "sha256": "b2abc62c684b8e9f2f53bd80bc05650c4c86c7e639fab85720d7b14a55e93fcf",
+      "source_claims": [
+        {
+          "as_of_date": "2027-06-01",
+          "capital_still_invested": {
+            "numerator": "1000",
+            "denominator": "1"
+          },
+          "retained_equity_value": {
+            "numerator": "900",
+            "denominator": "1"
+          },
+          "currency": "USD",
+          "basis_ref": "SYNTHETIC-declared-capital-not-financial-policy",
+          "source_ref": "SYNTHETIC-explicit-stock-claim-2027-06-01"
+        }
+      ],
+      "parent_run_sha256": "efbbbe6cc401fb9d346b0d381850fb024460519c35a593bf143db9de37325108",
+      "upstream_story_blockers": [
+        "2026:positive_declared_annual_capital_base_missing",
+        "2027:positive_declared_annual_capital_base_missing"
+      ],
+      "old_page_shows_latest_capital_1000": true,
+      "old_page_shows_retained_900": true,
+      "required_sources": 43,
+      "legacy_render_error": null,
+      "gross_contributions": {
+        "denominator": "1",
+        "numerator": "1400"
+      },
+      "gross_receipts": {
+        "denominator": "1",
+        "numerator": "778"
+      }
+    },
+    {
+      "case": "templates/miniuw-v1-capital-zero-case.json",
+      "sha256": "0c2e3ac2659d362ac2653380a4c48b27a783b85e1bb0fa2c0183a46afd4afb6b",
+      "source_claims": [
+        {
+          "as_of_date": "2027-06-01",
+          "capital_still_invested": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "retained_equity_value": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "currency": "USD",
+          "basis_ref": "SYNTHETIC-declared-capital-not-financial-policy",
+          "source_ref": "SYNTHETIC-explicit-stock-claim-2027-06-01"
+        }
+      ],
+      "parent_run_sha256": "5f8a4b191ef53e2fa9af0dce021005ce9ccc52280e3cc9e0e75794c126969f62",
+      "upstream_story_blockers": [
+        "2026:positive_declared_annual_capital_base_missing",
+        "2027:positive_declared_annual_capital_base_missing"
+      ],
+      "old_page_shows_latest_capital_1000": false,
+      "old_page_shows_retained_900": false,
+      "required_sources": 43,
+      "legacy_render_error": null,
+      "gross_contributions": {
+        "denominator": "1",
+        "numerator": "1400"
+      },
+      "gross_receipts": {
+        "denominator": "1",
+        "numerator": "778"
+      }
+    },
+    {
+      "case": "templates/miniuw-v1-capital-pending-basis-case.json",
+      "sha256": "a83f41906fae2ce9265ca030b35af2992185070daf0b144df33fd5d04708c4a2",
+      "source_claims": [
+        {
+          "as_of_date": "2027-03-01",
+          "capital_still_invested": {
+            "numerator": "1300",
+            "denominator": "1"
+          },
+          "retained_equity_value": {
+            "numerator": "1200",
+            "denominator": "1"
+          },
+          "currency": "USD",
+          "basis_ref": "SYNTHETIC-declared-capital-not-financial-policy",
+          "source_ref": "SYNTHETIC-explicit-stock-claim-2027-03-01"
+        },
+        {
+          "as_of_date": "2027-06-01",
+          "capital_still_invested": {
+            "numerator": "1000",
+            "denominator": "1"
+          },
+          "retained_equity_value": {
+            "numerator": "900",
+            "denominator": "1"
+          },
+          "currency": "USD",
+          "basis_ref": null,
+          "source_ref": "SYNTHETIC-explicit-stock-claim-2027-06-01"
+        }
+      ],
+      "parent_run_sha256": "262f2644427eefc8d0ed158bf3f32cfdbdba1b91d519a2a2c6fe3f10f6aa1a95",
+      "upstream_story_blockers": [
+        "2026:positive_declared_annual_capital_base_missing",
+        "2027:positive_declared_annual_capital_base_missing",
+        "snapshot:2027-06-01:snapshot_metadata_missing_or_mismatch"
+      ],
+      "old_page_shows_latest_capital_1000": true,
+      "old_page_shows_retained_900": true,
+      "required_sources": 43,
+      "legacy_render_error": null,
+      "gross_contributions": {
+        "denominator": "1",
+        "numerator": "1400"
+      },
+      "gross_receipts": {
+        "denominator": "1",
+        "numerator": "778"
+      }
+    },
+    {
+      "case": "templates/miniuw-v1-capital-missing-value-case.json",
+      "sha256": "7310a84c06c0ef87d02fcc616cfd248f48f71941e312ba5cd8942fcfe90d7169",
+      "source_claims": [
+        {
+          "as_of_date": "2027-06-01",
+          "capital_still_invested": null,
+          "retained_equity_value": {
+            "numerator": "900",
+            "denominator": "1"
+          },
+          "currency": "USD",
+          "basis_ref": "SYNTHETIC-declared-capital-not-financial-policy",
+          "source_ref": "SYNTHETIC-explicit-stock-claim-2027-06-01"
+        }
+      ],
+      "parent_run_sha256": "626849782c6a62d1258480b3a3d8310301cdc319b3da262c8d33dc21ec53c28c",
+      "upstream_story_blockers": [
+        "2026:positive_declared_annual_capital_base_missing",
+        "2027:positive_declared_annual_capital_base_missing",
+        "snapshot:2027-06-01:capital_still_invested_missing_or_negative"
+      ],
+      "old_page_shows_latest_capital_1000": false,
+      "old_page_shows_retained_900": true,
+      "required_sources": 43,
+      "legacy_render_error": null,
+      "gross_contributions": {
+        "denominator": "1",
+        "numerator": "1400"
+      },
+      "gross_receipts": {
+        "denominator": "1",
+        "numerator": "778"
+      }
+    },
+    {
+      "case": "templates/miniuw-v1-capital-large-pending-case.json",
+      "sha256": "8df430d4a6c25f31e6a31f63826c02efcb42474facfa89243e4d9a2630925761",
+      "source_claims": [
+        {
+          "as_of_date": "2027-06-01",
+          "capital_still_invested": {
+            "numerator": "100000000000000000000000000000000000000000000000000000000000000000000000000000000",
+            "denominator": "1"
+          },
+          "retained_equity_value": {
+            "numerator": "900",
+            "denominator": "1"
+          },
+          "currency": "USD",
+          "basis_ref": null,
+          "source_ref": "SYNTHETIC-explicit-stock-claim-2027-06-01"
+        }
+      ],
+      "parent_run_sha256": "3ec43b998a60a71321963c00f08b219d360feee274584610797a128da73b35c4",
+      "upstream_story_blockers": [
+        "2026:positive_declared_annual_capital_base_missing",
+        "2027:positive_declared_annual_capital_base_missing",
+        "snapshot:2027-06-01:snapshot_metadata_missing_or_mismatch"
+      ],
+      "old_page_shows_latest_capital_1000": false,
+      "old_page_shows_retained_900": false,
+      "required_sources": 43,
+      "legacy_render_error": "PreviewLayoutError",
+      "gross_contributions": {
+        "denominator": "1",
+        "numerator": "1400"
+      },
+      "gross_receipts": {
+        "denominator": "1",
+        "numerator": "778"
+      }
+    }
+  ]
+}
