@@ -1,0 +1,64 @@
+{
+  "component": "T99",
+  "status": "passed_exhaustive_onepage_source_first_recovery",
+  "files_verified": 8,
+  "page_count": 1,
+  "fixture_revisions_checked": 3,
+  "grouped_event_count": 16,
+  "category_rows": 7,
+  "annual_rows": 6,
+  "cashless_years_checked": [
+    2023,
+    2024,
+    2025
+  ],
+  "source_event_indices_exactly_once": true,
+  "annual_rows_omitted": 0,
+  "capital_pending_preserved": true,
+  "legacy_event_and_year_limits_reproduced": true,
+  "result_component": "T98",
+  "long_window_IRR_status": "incomplete_synthetic",
+  "long_window_IRR_root_classification": "arithmetic_budget_exhausted",
+  "underlying_financial_result_changed": false,
+  "source_sha256": "654f3cf222f0aa89f23a0b9ef43568d870e4b6dc37109031270ca2a2bbec34bc",
+  "run_sha256": "e2d32425c657c3c4b471e7a275a1c6e91eedbb2c14efc1b9c15ad7c678f488f4",
+  "pdf_sha256": "a751d484a2e3d9540b4f532ae16aa5f7fa59d9228ba19949f278133a5e4b1762",
+  "manifest_sha256": "e5cbf20bcb87fd627585fb2758778ce8b4db830ffbce4f0cdcc495db31fdd191",
+  "bundle_sha256": "0540b3e3ec99448d9973bc29de7266ec00cf40adc2c36784273b79b98b387929",
+  "source_versions": [
+    {
+      "path": "src/miniuw_foundation/long_horizon_report.py",
+      "sha256": "13553de154016edcb8b78c3a963577453eeab750c7adde5e8bc7d7b2b5b6ebdb"
+    },
+    {
+      "path": "src/miniuw_foundation/long_horizon_artifacts.py",
+      "sha256": "2acc493c8bb3f8cab6dc5173d3e47ccb6d31eabdd5278297d5e28a4fe3d8be87"
+    },
+    {
+      "path": "src/miniuw_foundation/capital_checked_output.py",
+      "sha256": "cd34fc11cb06b39f29613b26f4fc1732d4a832fd35f7dc99c4e6d57f63229803"
+    },
+    {
+      "path": "tools/long_miniuw_v1.py",
+      "sha256": "c586b45088b13de2abef3f475811cc922f45e1a261a4c628f8fe5ebf55631db7"
+    },
+    {
+      "path": "tools/check_long_output_T99.py",
+      "sha256": "c625d27511050a74e8c3c0bbafb8fbe13ef6256e7f69ca4ca906ffaa6ae4c13b"
+    },
+    {
+      "path": "docs/technical-implementation-T99.md",
+      "sha256": "46e6260dc00d8c8f4960499343892fc3e44d33804a2a22808645e216a8010fd3"
+    },
+    {
+      "path": "docs/review/long-output-fixture-generation-T99.json",
+      "sha256": "1d3127baf22485037605aee34c2267c597f33b6a93bca49dacdf8a78748952e5"
+    }
+  ],
+  "financial_policy_adopted": false,
+  "personal_return_verified": false,
+  "decision": "PENDING",
+  "financial_publication_authorized": false,
+  "deployment_enabled": false,
+  "real_decisions_enabled": false
+}

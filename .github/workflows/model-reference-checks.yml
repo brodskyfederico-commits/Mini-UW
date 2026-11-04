@@ -37,6 +37,8 @@ jobs:
         run: python tools/check_investor_package_T97.py
       - name: Verify capital visibility and source-first output recovery
         run: python tools/check_capital_output_T98.py
+      - name: Verify exhaustive event and annual one-page output
+        run: python tools/check_long_output_T99.py
       - name: Verify one-page Dot and bot role summary
         run: python tools/check_dots_bots_onepage_ROLES01.py
       - name: Test synthetic technical foundation

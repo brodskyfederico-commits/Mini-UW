@@ -1,0 +1,72 @@
+{
+  "scope": "Three explicitly declared offline synthetic revisions. Long window and years-only move initial equity to March 2022 while acquisition/construction/operations/sale dates stay supplied; no new long operating history or automatic renewal.",
+  "base_sha256": "a83f41906fae2ce9265ca030b35af2992185070daf0b144df33fd5d04708c4a2",
+  "cases": [
+    {
+      "path": "templates/miniuw-v1-many-events-case.json",
+      "sha256": "7084d5eb758218eef576896e0576d97b300d5940448268912623dfbd5480e095",
+      "cash_horizon": {
+        "end": "2027-07-01",
+        "future_cash_after_horizon_included": false,
+        "start": "2026-10-01"
+      },
+      "events": 16,
+      "years": 2,
+      "gross_contributions": {
+        "denominator": "1",
+        "numerator": "1400"
+      },
+      "gross_receipts": {
+        "denominator": "1",
+        "numerator": "778"
+      },
+      "legacy_layout_error": "more than ten gross dated events exceed v1 page budget",
+      "source_requirements": 43,
+      "initial_equity_date": "2026-10-01"
+    },
+    {
+      "path": "templates/miniuw-v1-long-window-case.json",
+      "sha256": "654f3cf222f0aa89f23a0b9ef43568d870e4b6dc37109031270ca2a2bbec34bc",
+      "cash_horizon": {
+        "end": "2027-07-01",
+        "future_cash_after_horizon_included": false,
+        "start": "2022-03-01"
+      },
+      "events": 16,
+      "years": 6,
+      "gross_contributions": {
+        "denominator": "1",
+        "numerator": "1400"
+      },
+      "gross_receipts": {
+        "denominator": "1",
+        "numerator": "778"
+      },
+      "legacy_layout_error": "more than ten gross dated events exceed v1 page budget",
+      "source_requirements": 43,
+      "initial_equity_date": "2022-03-01"
+    },
+    {
+      "path": "templates/miniuw-v1-years-only-case.json",
+      "sha256": "0e06efc5b82bdc588d1d80fa66e9f46cfcbc259600eafbd49be05615c59dd0c4",
+      "cash_horizon": {
+        "end": "2027-07-01",
+        "future_cash_after_horizon_included": false,
+        "start": "2022-03-01"
+      },
+      "events": 8,
+      "years": 6,
+      "gross_contributions": {
+        "denominator": "1",
+        "numerator": "1400"
+      },
+      "gross_receipts": {
+        "denominator": "1",
+        "numerator": "778"
+      },
+      "legacy_layout_error": "annual rows exceed v1 page budget",
+      "source_requirements": 43,
+      "initial_equity_date": "2022-03-01"
+    }
+  ]
+}

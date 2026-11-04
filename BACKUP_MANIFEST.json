@@ -1,10 +1,10 @@
 {
-  "scope": "I01 preserved design, D02–D07 design/structure documentation and T01–T98 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D07 design/structure documentation and T01–T99 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 1888,
-      "sha256": "701949578ce7cb91a0f88ca926df13bbdd25ffbb1c6c273647401748f9e6111f"
+      "bytes": 2004,
+      "sha256": "efb7f85ef5d27a24ffe80444de9d54c6829f1eae1436f57e280f8f910b888c10"
     },
     {
       "path": ".gitignore",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 37542,
-      "sha256": "39287d385557c6c84dc22832302f61738a33ce7c79c5ab2b25ecb85482aa2af4"
+      "bytes": 37840,
+      "sha256": "02c2f8905a607659d2840da1c4e47539e4c5d1951462b5e74e6c1f70a90f5951"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 156894,
-      "sha256": "968899fa84a32e191a38683fa660466fb5a35d1e2a240ce067c1f057150b1ca4"
+      "bytes": 160415,
+      "sha256": "b7999f4c25fad6dd96bed7ab8bdfff80fa36bb506c6af7813113c6bb88e96b46"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -280,6 +280,11 @@
       "path": "docs/investor-return-bridges.md",
       "bytes": 5109,
       "sha256": "88e751a2d7070eb00852c8d634814758e5a413364d3898c68f7f9bf2e606bb4f"
+    },
+    {
+      "path": "docs/long-output-v1-runbook.md",
+      "bytes": 4507,
+      "sha256": "6faa2f0e1490b89d87a847c1f615ba4cbd8f4a26a45b901826b558487532a3a5"
     },
     {
       "path": "docs/metric-intake-acceptance-cases.json",
@@ -692,6 +697,16 @@
       "sha256": "2b6d18daea008547411a2185041cbadfba5fc63e1bb72617ce3dc33616d62901"
     },
     {
+      "path": "docs/review/long-output-fixture-generation-T99.json",
+      "bytes": 2393,
+      "sha256": "1d3127baf22485037605aee34c2267c597f33b6a93bca49dacdf8a78748952e5"
+    },
+    {
+      "path": "docs/review/long-output-validation-T99.json",
+      "bytes": 2405,
+      "sha256": "88a2925e8fb1cd27e60383af9dff6064da298ef85eaaf8473a56ef83e38f0a54"
+    },
+    {
       "path": "docs/review/miniuw-v1-capital-checked-example/MiniUW_v1_Resumen.pdf",
       "bytes": 6713,
       "sha256": "7df1113f972b16b1f7bb552af79790a844cd53fda105683afee0b5634ff09707"
@@ -830,6 +845,46 @@
       "path": "docs/review/miniuw-v1-investor-package-example/schedule-review.txt",
       "bytes": 10534,
       "sha256": "c23dc2c7669f8ee49d3b2bfe1db8ac80c8571e647e3bddb052e02379afe6b058"
+    },
+    {
+      "path": "docs/review/miniuw-v1-long-output-example/MiniUW_v1_Resumen.pdf",
+      "bytes": 6744,
+      "sha256": "a751d484a2e3d9540b4f532ae16aa5f7fa59d9228ba19949f278133a5e4b1762"
+    },
+    {
+      "path": "docs/review/miniuw-v1-long-output-example/audit.json",
+      "bytes": 808,
+      "sha256": "3b96bc1d0e8cd83b26250afc4f7b5790b791a04ac218e4b907728d5a54f14abe"
+    },
+    {
+      "path": "docs/review/miniuw-v1-long-output-example/case.json",
+      "bytes": 201658,
+      "sha256": "654f3cf222f0aa89f23a0b9ef43568d870e4b6dc37109031270ca2a2bbec34bc"
+    },
+    {
+      "path": "docs/review/miniuw-v1-long-output-example/execution-evidence.json",
+      "bytes": 576023,
+      "sha256": "0540b3e3ec99448d9973bc29de7266ec00cf40adc2c36784273b79b98b387929"
+    },
+    {
+      "path": "docs/review/miniuw-v1-long-output-example/package.json",
+      "bytes": 1773,
+      "sha256": "710ab8c79e37e6691dd0778262df186334d0e12478151e692a367f85bd71b73f"
+    },
+    {
+      "path": "docs/review/miniuw-v1-long-output-example/report-manifest.json",
+      "bytes": 17959,
+      "sha256": "1555e6544395d1a5f11d133f230ad5dcac0f1c99fac6b4e198ac10fb94e556d5"
+    },
+    {
+      "path": "docs/review/miniuw-v1-long-output-example/results.json",
+      "bytes": 75372,
+      "sha256": "033af71fe69eaa7d312249abff48ca271d06910d1df0fe9c4de9513980341363"
+    },
+    {
+      "path": "docs/review/miniuw-v1-long-output-example/schedule-review.txt",
+      "bytes": 11108,
+      "sha256": "461d1fa83efaf86e10c5d2b415c8f87514ab8963bdfb4d384326677fe3e8e5b7"
     },
     {
       "path": "docs/review/miniuw-v1-policy-renewal-example/MiniUW_v1_Resumen.pdf",
@@ -1642,9 +1697,14 @@
       "sha256": "1feee6e254aa78b1592e74f1c69ad1f4217058843d47e186ced45a5b8b044480"
     },
     {
+      "path": "docs/technical-implementation-T99.md",
+      "bytes": 3769,
+      "sha256": "46e6260dc00d8c8f4960499343892fc3e44d33804a2a22808645e216a8010fd3"
+    },
+    {
       "path": "docs/technical-implementation-status.json",
-      "bytes": 34428,
-      "sha256": "0642f348a71da42be503ee8ac58e4fecdadc4417c4abc21ec5d9c131d3da6005"
+      "bytes": 34750,
+      "sha256": "bab4df6c52c36bbdad004c529659d0e14314e1bdd5557b71b86b2a4a2b549a3b"
     },
     {
       "path": "infra/README.md",
@@ -2587,6 +2647,16 @@
       "sha256": "617a42d0e4cb865bfd35c7c47f4d1933b7781ddea797f23bed9c0af2b7936d4d"
     },
     {
+      "path": "src/miniuw_foundation/long_horizon_artifacts.py",
+      "bytes": 8598,
+      "sha256": "2acc493c8bb3f8cab6dc5173d3e47ccb6d31eabdd5278297d5e28a4fe3d8be87"
+    },
+    {
+      "path": "src/miniuw_foundation/long_horizon_report.py",
+      "bytes": 10757,
+      "sha256": "13553de154016edcb8b78c3a963577453eeab750c7adde5e8bc7d7b2b5b6ebdb"
+    },
+    {
       "path": "src/miniuw_foundation/normalization.py",
       "bytes": 7683,
       "sha256": "582f318182971e79cd48fbcd43a00c3e4ecc8505450eab87762782ed8af70c0a"
@@ -2872,6 +2942,16 @@
       "sha256": "0c2e3ac2659d362ac2653380a4c48b27a783b85e1bb0fa2c0183a46afd4afb6b"
     },
     {
+      "path": "templates/miniuw-v1-long-window-case.json",
+      "bytes": 201658,
+      "sha256": "654f3cf222f0aa89f23a0b9ef43568d870e4b6dc37109031270ca2a2bbec34bc"
+    },
+    {
+      "path": "templates/miniuw-v1-many-events-case.json",
+      "bytes": 200578,
+      "sha256": "7084d5eb758218eef576896e0576d97b300d5940448268912623dfbd5480e095"
+    },
+    {
       "path": "templates/miniuw-v1-policy-renewal-case.json",
       "bytes": 195427,
       "sha256": "baa78b2ebc84a7ec5a204d9c10a4ba0f0777fd84c1b99edc40a874bb86b02306"
@@ -2905,6 +2985,11 @@
       "path": "templates/miniuw-v1-synthetic-case.json",
       "bytes": 90115,
       "sha256": "c0c8a0f065c07013cb79a0fc2b56752e235dcae6c618eb5f0dc72ca1909472be"
+    },
+    {
+      "path": "templates/miniuw-v1-years-only-case.json",
+      "bytes": 195809,
+      "sha256": "0e06efc5b82bdc588d1d80fa66e9f46cfcbc259600eafbd49be05615c59dd0c4"
     },
     {
       "path": "templates/project-draft-empty.json",
@@ -3677,6 +3762,11 @@
       "sha256": "4273e2f1ef2e5d887f51ee0f11ba77e967374dbda9bcd20e010a99ef6455ad23"
     },
     {
+      "path": "tests/test_long_horizon_output.py",
+      "bytes": 12058,
+      "sha256": "030a7e51814a9cb8663f4540521052a1f99b49c4f7aafef5ad09327a8117e578"
+    },
+    {
       "path": "tests/test_miniuw_v1.py",
       "bytes": 16503,
       "sha256": "0b0c17a06418d971e08100c9b6d5ae2ea224e16119dcff451167295f8090a8c9"
@@ -3910,6 +4000,11 @@
       "path": "tools/check_investor_package_T97.py",
       "bytes": 2755,
       "sha256": "2479187cbdfa0f2b758de7e8d5caaf85eafaef55c03438e47e77fd990238f36b"
+    },
+    {
+      "path": "tools/check_long_output_T99.py",
+      "bytes": 6499,
+      "sha256": "c625d27511050a74e8c3c0bbafb8fbe13ef6256e7f69ca4ca906ffaa6ae4c13b"
     },
     {
       "path": "tools/check_reference_package.py",
@@ -4185,6 +4280,11 @@
       "path": "tools/lifecycle_demo_support.py",
       "bytes": 9819,
       "sha256": "36072b52ab4a8f981c34b658ccca73b55093327d7ee469d2c250dd62ae32604b"
+    },
+    {
+      "path": "tools/long_miniuw_v1.py",
+      "bytes": 1322,
+      "sha256": "c586b45088b13de2abef3f475811cc922f45e1a261a4c628f8fe5ebf55631db7"
     },
     {
       "path": "tools/miniuw_v1.py",

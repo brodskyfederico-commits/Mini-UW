@@ -4,6 +4,7 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- [Una página para más movimientos y años T99](docs/long-output-v1-runbook.md): resumen exhaustivo por concepto, todos los años de caja dentro del presupuesto de doce filas y calendario completo conservado; [ejemplo sintético](docs/review/miniuw-v1-long-output-example/MiniUW_v1_Resumen.pdf).
 - [Capital declarado y pendientes T98](docs/capital-checked-v1-runbook.md): evita mostrar capital sin base/fuente como dato actual; conserva las declaraciones, ceros explícitos, caja y retorno, con ejecución/recuperación local integrada.
 - [Qué hará cada Dot y cada bot — una página](docs/review/MiniUW_Dots_y_Bots_1_pagina_ROLES01.pdf): siete áreas,17 tareas y sus responsables; funciones previstas y estado sintético, sin agentes desplegados.
 - [Ejecución y recuperación T97](docs/investor-output-v1-runbook.md): la página T96 ya está integrada en un paquete local de ocho archivos, con reproducción de fuentes/resultados/PDF y comando `run`/`audit`.
