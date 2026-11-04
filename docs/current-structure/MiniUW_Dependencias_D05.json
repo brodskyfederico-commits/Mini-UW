@@ -1,0 +1,3721 @@
+{
+  "snapshot_id": "D05",
+  "scope": "Conservative data dependency map for the supplied T95 profile; structural review, not an incremental executor or financial acceptance",
+  "technical_baseline": "T95",
+  "registered_technical_unit_tests": 1351,
+  "nodes": [
+    {
+      "node_id": "input:recipe/cash_boundary_binding",
+      "label": "cash_boundary_binding",
+      "kind": "input_source",
+      "data_dependencies": [],
+      "source_location": {
+        "embedded_json_pointers": [
+          "/scheduled_case_utf8",
+          "/base_case_utf8"
+        ],
+        "final_pointer": "/recipe/cash_boundary_binding",
+        "value_mode": "canonical_JSON_subtree"
+      },
+      "source_function": null,
+      "observed_stage": null
+    },
+    {
+      "node_id": "input:recipe/construction_binding",
+      "label": "construction_binding",
+      "kind": "input_source",
+      "data_dependencies": [],
+      "source_location": {
+        "embedded_json_pointers": [
+          "/scheduled_case_utf8",
+          "/base_case_utf8"
+        ],
+        "final_pointer": "/recipe/construction_binding",
+        "value_mode": "canonical_JSON_subtree"
+      },
+      "source_function": null,
+      "observed_stage": null
+    },
+    {
+      "node_id": "input:recipe/construction_loans",
+      "label": "construction_loans",
+      "kind": "input_source",
+      "data_dependencies": [],
+      "source_location": {
+        "embedded_json_pointers": [
+          "/scheduled_case_utf8",
+          "/base_case_utf8"
+        ],
+        "final_pointer": "/recipe/construction_loans",
+        "value_mode": "canonical_JSON_subtree"
+      },
+      "source_function": null,
+      "observed_stage": null
+    },
+    {
+      "node_id": "input:recipe/expense_manifest",
+      "label": "expense_manifest",
+      "kind": "input_source",
+      "data_dependencies": [],
+      "source_location": {
+        "embedded_json_pointers": [
+          "/scheduled_case_utf8",
+          "/base_case_utf8"
+        ],
+        "final_pointer": "/recipe/expense_manifest",
+        "value_mode": "canonical_JSON_subtree"
+      },
+      "source_function": null,
+      "observed_stage": null
+    },
+    {
+      "node_id": "input:recipe/hold_sale_binding",
+      "label": "hold_sale_binding",
+      "kind": "input_source",
+      "data_dependencies": [],
+      "source_location": {
+        "embedded_json_pointers": [
+          "/scheduled_case_utf8",
+          "/base_case_utf8"
+        ],
+        "final_pointer": "/recipe/hold_sale_binding",
+        "value_mode": "canonical_JSON_subtree"
+      },
+      "source_function": null,
+      "observed_stage": null
+    },
+    {
+      "node_id": "input:recipe/holding_manifest",
+      "label": "holding_manifest",
+      "kind": "input_source",
+      "data_dependencies": [],
+      "source_location": {
+        "embedded_json_pointers": [
+          "/scheduled_case_utf8",
+          "/base_case_utf8"
+        ],
+        "final_pointer": "/recipe/holding_manifest",
+        "value_mode": "canonical_JSON_subtree"
+      },
+      "source_function": null,
+      "observed_stage": null
+    },
+    {
+      "node_id": "input:recipe/investor_binding",
+      "label": "investor_binding",
+      "kind": "input_source",
+      "data_dependencies": [],
+      "source_location": {
+        "embedded_json_pointers": [
+          "/scheduled_case_utf8",
+          "/base_case_utf8"
+        ],
+        "final_pointer": "/recipe/investor_binding",
+        "value_mode": "canonical_JSON_subtree"
+      },
+      "source_function": null,
+      "observed_stage": null
+    },
+    {
+      "node_id": "input:recipe/investor_source",
+      "label": "investor_source",
+      "kind": "input_source",
+      "data_dependencies": [],
+      "source_location": {
+        "embedded_json_pointers": [
+          "/scheduled_case_utf8",
+          "/base_case_utf8"
+        ],
+        "final_pointer": "/recipe/investor_source",
+        "value_mode": "canonical_JSON_subtree"
+      },
+      "source_function": null,
+      "observed_stage": null
+    },
+    {
+      "node_id": "input:recipe/phase_contract",
+      "label": "phase_contract",
+      "kind": "input_source",
+      "data_dependencies": [],
+      "source_location": {
+        "embedded_json_pointers": [
+          "/scheduled_case_utf8",
+          "/base_case_utf8"
+        ],
+        "final_pointer": "/recipe/phase_contract",
+        "value_mode": "canonical_JSON_subtree"
+      },
+      "source_function": null,
+      "observed_stage": null
+    },
+    {
+      "node_id": "input:recipe/preopening_source",
+      "label": "preopening_source",
+      "kind": "input_source",
+      "data_dependencies": [],
+      "source_location": {
+        "embedded_json_pointers": [
+          "/scheduled_case_utf8",
+          "/base_case_utf8"
+        ],
+        "final_pointer": "/recipe/preopening_source",
+        "value_mode": "canonical_JSON_subtree"
+      },
+      "source_function": null,
+      "observed_stage": null
+    },
+    {
+      "node_id": "input:recipe/rental_manifest",
+      "label": "rental_manifest",
+      "kind": "input_source",
+      "data_dependencies": [],
+      "source_location": {
+        "embedded_json_pointers": [
+          "/scheduled_case_utf8",
+          "/base_case_utf8"
+        ],
+        "final_pointer": "/recipe/rental_manifest",
+        "value_mode": "canonical_JSON_subtree"
+      },
+      "source_function": null,
+      "observed_stage": null
+    },
+    {
+      "node_id": "input:recipe/sale",
+      "label": "sale",
+      "kind": "input_source",
+      "data_dependencies": [],
+      "source_location": {
+        "embedded_json_pointers": [
+          "/scheduled_case_utf8",
+          "/base_case_utf8"
+        ],
+        "final_pointer": "/recipe/sale",
+        "value_mode": "canonical_JSON_subtree"
+      },
+      "source_function": null,
+      "observed_stage": null
+    },
+    {
+      "node_id": "input:recipe/window_binding",
+      "label": "window_binding",
+      "kind": "input_source",
+      "data_dependencies": [],
+      "source_location": {
+        "embedded_json_pointers": [
+          "/scheduled_case_utf8",
+          "/base_case_utf8"
+        ],
+        "final_pointer": "/recipe/window_binding",
+        "value_mode": "canonical_JSON_subtree"
+      },
+      "source_function": null,
+      "observed_stage": null
+    },
+    {
+      "node_id": "input:period/0/noi_source",
+      "label": "SYNTHETIC-hold-1 / noi_source",
+      "kind": "input_source",
+      "data_dependencies": [],
+      "source_location": {
+        "embedded_json_pointers": [
+          "/scheduled_case_utf8",
+          "/base_case_utf8"
+        ],
+        "final_pointer": "/recipe/operating_periods/0/noi_source",
+        "value_mode": "canonical_JSON_subtree"
+      },
+      "source_function": null,
+      "observed_stage": null
+    },
+    {
+      "node_id": "input:period/0/cash_source",
+      "label": "SYNTHETIC-hold-1 / cash_source",
+      "kind": "input_source",
+      "data_dependencies": [],
+      "source_location": {
+        "embedded_json_pointers": [
+          "/scheduled_case_utf8",
+          "/base_case_utf8"
+        ],
+        "final_pointer": "/recipe/operating_periods/0/cash_source",
+        "value_mode": "canonical_JSON_subtree"
+      },
+      "source_function": null,
+      "observed_stage": null
+    },
+    {
+      "node_id": "input:period/0/expense_detail",
+      "label": "SYNTHETIC-hold-1 / expense_detail",
+      "kind": "input_source",
+      "data_dependencies": [],
+      "source_location": {
+        "embedded_json_pointers": [
+          "/scheduled_case_utf8",
+          "/base_case_utf8"
+        ],
+        "final_pointer": "/recipe/operating_periods/0/expense_detail",
+        "value_mode": "canonical_JSON_subtree"
+      },
+      "source_function": null,
+      "observed_stage": null
+    },
+    {
+      "node_id": "input:period/0/rental_calendar",
+      "label": "SYNTHETIC-hold-1 / rental_calendar",
+      "kind": "input_source",
+      "data_dependencies": [],
+      "source_location": {
+        "embedded_json_pointers": [
+          "/scheduled_case_utf8",
+          "/base_case_utf8"
+        ],
+        "final_pointer": "/recipe/operating_periods/0/rental_calendar",
+        "value_mode": "canonical_JSON_subtree"
+      },
+      "source_function": null,
+      "observed_stage": null
+    },
+    {
+      "node_id": "input:period/1/noi_source",
+      "label": "SYNTHETIC-hold-2 / noi_source",
+      "kind": "input_source",
+      "data_dependencies": [],
+      "source_location": {
+        "embedded_json_pointers": [
+          "/scheduled_case_utf8",
+          "/base_case_utf8"
+        ],
+        "final_pointer": "/recipe/operating_periods/1/noi_source",
+        "value_mode": "canonical_JSON_subtree"
+      },
+      "source_function": null,
+      "observed_stage": null
+    },
+    {
+      "node_id": "input:period/1/cash_source",
+      "label": "SYNTHETIC-hold-2 / cash_source",
+      "kind": "input_source",
+      "data_dependencies": [],
+      "source_location": {
+        "embedded_json_pointers": [
+          "/scheduled_case_utf8",
+          "/base_case_utf8"
+        ],
+        "final_pointer": "/recipe/operating_periods/1/cash_source",
+        "value_mode": "canonical_JSON_subtree"
+      },
+      "source_function": null,
+      "observed_stage": null
+    },
+    {
+      "node_id": "input:period/1/expense_detail",
+      "label": "SYNTHETIC-hold-2 / expense_detail",
+      "kind": "input_source",
+      "data_dependencies": [],
+      "source_location": {
+        "embedded_json_pointers": [
+          "/scheduled_case_utf8",
+          "/base_case_utf8"
+        ],
+        "final_pointer": "/recipe/operating_periods/1/expense_detail",
+        "value_mode": "canonical_JSON_subtree"
+      },
+      "source_function": null,
+      "observed_stage": null
+    },
+    {
+      "node_id": "input:period/1/rental_calendar",
+      "label": "SYNTHETIC-hold-2 / rental_calendar",
+      "kind": "input_source",
+      "data_dependencies": [],
+      "source_location": {
+        "embedded_json_pointers": [
+          "/scheduled_case_utf8",
+          "/base_case_utf8"
+        ],
+        "final_pointer": "/recipe/operating_periods/1/rental_calendar",
+        "value_mode": "canonical_JSON_subtree"
+      },
+      "source_function": null,
+      "observed_stage": null
+    },
+    {
+      "node_id": "input:eligibility",
+      "label": "Catálogo55 y escenarios",
+      "kind": "input_source",
+      "data_dependencies": [],
+      "source_location": {
+        "embedded_json_pointers": [
+          "/scheduled_case_utf8",
+          "/base_case_utf8"
+        ],
+        "final_pointer": "",
+        "value_mode": "canonical_JSON_subtree",
+        "selection_shape": "object",
+        "selections": [
+          {
+            "selected_key": "original_inputs",
+            "embedded_json_pointers": [
+              "/scheduled_case_utf8",
+              "/base_case_utf8"
+            ],
+            "final_pointer": "/original_inputs"
+          },
+          {
+            "selected_key": "required_scenarios",
+            "embedded_json_pointers": [
+              "/scheduled_case_utf8",
+              "/base_case_utf8"
+            ],
+            "final_pointer": "/required_scenarios"
+          },
+          {
+            "selected_key": "scenario_id",
+            "embedded_json_pointers": [
+              "/scheduled_case_utf8",
+              "/base_case_utf8"
+            ],
+            "final_pointer": "/context/scenario_id"
+          }
+        ]
+      },
+      "source_function": null,
+      "observed_stage": null
+    },
+    {
+      "node_id": "input:identity",
+      "label": "Identidad y revisión v1",
+      "kind": "input_source",
+      "data_dependencies": [],
+      "source_location": {
+        "embedded_json_pointers": [
+          "/scheduled_case_utf8",
+          "/base_case_utf8"
+        ],
+        "final_pointer": "",
+        "value_mode": "canonical_JSON_subtree",
+        "selection_shape": "object",
+        "selections": [
+          {
+            "selected_key": "schema",
+            "embedded_json_pointers": [
+              "/scheduled_case_utf8",
+              "/base_case_utf8"
+            ],
+            "final_pointer": "/schema"
+          },
+          {
+            "selected_key": "profile",
+            "embedded_json_pointers": [
+              "/scheduled_case_utf8",
+              "/base_case_utf8"
+            ],
+            "final_pointer": "/profile"
+          },
+          {
+            "selected_key": "case_id",
+            "embedded_json_pointers": [
+              "/scheduled_case_utf8",
+              "/base_case_utf8"
+            ],
+            "final_pointer": "/case_id"
+          },
+          {
+            "selected_key": "case_revision",
+            "embedded_json_pointers": [
+              "/scheduled_case_utf8",
+              "/base_case_utf8"
+            ],
+            "final_pointer": "/case_revision"
+          },
+          {
+            "selected_key": "title",
+            "embedded_json_pointers": [
+              "/scheduled_case_utf8",
+              "/base_case_utf8"
+            ],
+            "final_pointer": "/title"
+          },
+          {
+            "selected_key": "context",
+            "embedded_json_pointers": [
+              "/scheduled_case_utf8",
+              "/base_case_utf8"
+            ],
+            "final_pointer": "/context"
+          }
+        ]
+      },
+      "source_function": null,
+      "observed_stage": null
+    },
+    {
+      "node_id": "input:criteria",
+      "label": "Diez criterios expresos",
+      "kind": "input_source",
+      "data_dependencies": [],
+      "source_location": {
+        "embedded_json_pointers": [
+          "/scheduled_case_utf8",
+          "/base_case_utf8"
+        ],
+        "final_pointer": "/criteria",
+        "value_mode": "canonical_JSON_subtree"
+      },
+      "source_function": null,
+      "observed_stage": null
+    },
+    {
+      "node_id": "input:base_registry",
+      "label": "Vigencia base",
+      "kind": "input_source",
+      "data_dependencies": [],
+      "source_location": {
+        "embedded_json_pointers": [
+          "/scheduled_case_utf8",
+          "/base_case_utf8"
+        ],
+        "final_pointer": "/source_registry",
+        "value_mode": "canonical_JSON_subtree"
+      },
+      "source_function": null,
+      "observed_stage": null
+    },
+    {
+      "node_id": "input:asof",
+      "label": "Instantes UTC declarados",
+      "kind": "input_source",
+      "data_dependencies": [],
+      "source_location": {
+        "embedded_json_pointers": [],
+        "final_pointer": "",
+        "value_mode": "canonical_JSON_subtree",
+        "selection_shape": "array",
+        "selections": [
+          {
+            "selected_key": "0",
+            "embedded_json_pointers": [
+              "/scheduled_case_utf8",
+              "/base_case_utf8"
+            ],
+            "final_pointer": "/as_of_UTC"
+          },
+          {
+            "selected_key": "1",
+            "embedded_json_pointers": [
+              "/scheduled_case_utf8"
+            ],
+            "final_pointer": "/as_of_UTC"
+          },
+          {
+            "selected_key": "2",
+            "embedded_json_pointers": [],
+            "final_pointer": "/as_of_UTC"
+          }
+        ]
+      },
+      "source_function": null,
+      "observed_stage": null
+    },
+    {
+      "node_id": "input:scheduled_binding",
+      "label": "Mapa de cuotas a pagos",
+      "kind": "input_source",
+      "data_dependencies": [],
+      "source_location": {
+        "embedded_json_pointers": [
+          "/scheduled_case_utf8"
+        ],
+        "final_pointer": "/binding_utf8",
+        "value_mode": "exact_embedded_UTF8_bytes"
+      },
+      "source_function": null,
+      "observed_stage": null
+    },
+    {
+      "node_id": "input:scheduled_registry",
+      "label": "Vigencia de gastos",
+      "kind": "input_source",
+      "data_dependencies": [],
+      "source_location": {
+        "embedded_json_pointers": [
+          "/scheduled_case_utf8"
+        ],
+        "final_pointer": "/registry_utf8",
+        "value_mode": "exact_embedded_UTF8_bytes"
+      },
+      "source_function": null,
+      "observed_stage": null
+    },
+    {
+      "node_id": "input:policy_registry",
+      "label": "Vigencia de pólizas",
+      "kind": "input_source",
+      "data_dependencies": [],
+      "source_location": {
+        "embedded_json_pointers": [],
+        "final_pointer": "/registry_utf8",
+        "value_mode": "exact_embedded_UTF8_bytes"
+      },
+      "source_function": null,
+      "observed_stage": null
+    },
+    {
+      "node_id": "input:base_bytes",
+      "label": "Bytes exactos del expediente base",
+      "kind": "input_source",
+      "data_dependencies": [],
+      "source_location": {
+        "embedded_json_pointers": [
+          "/scheduled_case_utf8"
+        ],
+        "final_pointer": "/base_case_utf8",
+        "value_mode": "exact_embedded_UTF8_bytes"
+      },
+      "source_function": null,
+      "observed_stage": null
+    },
+    {
+      "node_id": "input:scheduled_bytes",
+      "label": "Bytes exactos del expediente de gastos",
+      "kind": "input_source",
+      "data_dependencies": [],
+      "source_location": {
+        "embedded_json_pointers": [],
+        "final_pointer": "/scheduled_case_utf8",
+        "value_mode": "exact_embedded_UTF8_bytes"
+      },
+      "source_function": null,
+      "observed_stage": null
+    },
+    {
+      "node_id": "input:outer_bytes",
+      "label": "Bytes exactos de la revisión completa",
+      "kind": "input_source",
+      "data_dependencies": [],
+      "source_location": {
+        "embedded_json_pointers": [],
+        "final_pointer": "",
+        "value_mode": "exact_embedded_UTF8_bytes"
+      },
+      "source_function": null,
+      "observed_stage": null
+    },
+    {
+      "node_id": "input:schedule/SYNTHETIC-schedule-insurance",
+      "label": "insurance / SYNTHETIC-schedule-insurance",
+      "kind": "input_source",
+      "data_dependencies": [],
+      "source_location": {
+        "embedded_json_pointers": [
+          "/scheduled_case_utf8"
+        ],
+        "final_pointer": "/schedule_sources_utf8/0",
+        "value_mode": "exact_embedded_UTF8_bytes"
+      },
+      "source_function": null,
+      "observed_stage": null
+    },
+    {
+      "node_id": "input:schedule/SYNTHETIC-schedule-property_tax",
+      "label": "property_tax / SYNTHETIC-schedule-property_tax",
+      "kind": "input_source",
+      "data_dependencies": [],
+      "source_location": {
+        "embedded_json_pointers": [
+          "/scheduled_case_utf8"
+        ],
+        "final_pointer": "/schedule_sources_utf8/1",
+        "value_mode": "exact_embedded_UTF8_bytes"
+      },
+      "source_function": null,
+      "observed_stage": null
+    },
+    {
+      "node_id": "input:policy/SYNTHETIC-schedule-insurance",
+      "label": "Pólizas / SYNTHETIC-schedule-insurance",
+      "kind": "input_source",
+      "data_dependencies": [],
+      "source_location": {
+        "embedded_json_pointers": [],
+        "final_pointer": "/policy_books_utf8/0",
+        "value_mode": "exact_embedded_UTF8_bytes"
+      },
+      "source_function": null,
+      "observed_stage": null
+    },
+    {
+      "node_id": "construction_cash",
+      "label": "Caja y deuda de obra",
+      "kind": "calculation_or_control",
+      "data_dependencies": [
+        "input:eligibility",
+        "input:recipe/construction_loans",
+        "input:recipe/preopening_source",
+        "input:recipe/construction_binding"
+      ],
+      "source_location": null,
+      "source_function": {
+        "path": "src/miniuw_foundation/construction_cash.py",
+        "sha256": "b8a69672179278950fdaf82e6b257043b526cd8c7c944dcb1490cd13d06f352b",
+        "symbol": "assemble_construction_cash",
+        "line": 35
+      },
+      "observed_stage": "construction_cash"
+    },
+    {
+      "node_id": "operating_phase",
+      "label": "Transición de la misma obligación",
+      "kind": "calculation_or_control",
+      "data_dependencies": [
+        "construction_cash",
+        "input:recipe/phase_contract"
+      ],
+      "source_location": null,
+      "source_function": {
+        "path": "src/miniuw_foundation/operating_debt_phase.py",
+        "sha256": "7f875a0f0fbe3ffe8003f9963f4474f45cb257bfab87b22b0af11d2630faff6b",
+        "symbol": "produce_operating_debt_phase",
+        "line": 28
+      },
+      "observed_stage": "operating_phase"
+    },
+    {
+      "node_id": "NOI:SYNTHETIC-hold-1",
+      "label": "NOI declarado y calculado / SYNTHETIC-hold-1",
+      "kind": "calculation_or_control",
+      "data_dependencies": [
+        "input:eligibility",
+        "input:period/0/noi_source"
+      ],
+      "source_location": null,
+      "source_function": {
+        "path": "src/miniuw_foundation/operating_noi.py",
+        "sha256": "034fda6791ce3386d2345fa7015d9a9ca6f2003e0e71664216d3939d268eaafd",
+        "symbol": "produce_operating_noi",
+        "line": 81
+      },
+      "observed_stage": "NOI:SYNTHETIC-hold-1"
+    },
+    {
+      "node_id": "operating_cash:SYNTHETIC-hold-1",
+      "label": "Caja operativa / SYNTHETIC-hold-1",
+      "kind": "calculation_or_control",
+      "data_dependencies": [
+        "NOI:SYNTHETIC-hold-1",
+        "input:period/0/cash_source"
+      ],
+      "source_location": null,
+      "source_function": {
+        "path": "src/miniuw_foundation/operating_cash.py",
+        "sha256": "1c23d1c6d629e98eb2448f2ab697bf2970dda501275c072ac64109d4f36ef6f1",
+        "symbol": "reconcile_operating_cash",
+        "line": 78
+      },
+      "observed_stage": "operating_cash:SYNTHETIC-hold-1"
+    },
+    {
+      "node_id": "expense_detail:SYNTHETIC-hold-1",
+      "label": "Devengo, pagos y saldos / SYNTHETIC-hold-1",
+      "kind": "calculation_or_control",
+      "data_dependencies": [
+        "NOI:SYNTHETIC-hold-1",
+        "operating_cash:SYNTHETIC-hold-1",
+        "input:period/0/expense_detail"
+      ],
+      "source_location": null,
+      "source_function": {
+        "path": "src/miniuw_foundation/expense_cash_detail.py",
+        "sha256": "78bf5aaafcf20c257436284cd2d4d968845fd49dbe9a60d117e52527eda136e5",
+        "symbol": "reconcile_expense_cash_detail",
+        "line": 109
+      },
+      "observed_stage": "expense_detail:SYNTHETIC-hold-1"
+    },
+    {
+      "node_id": "phased_rental:SYNTHETIC-hold-1",
+      "label": "Renta por tramos / SYNTHETIC-hold-1",
+      "kind": "calculation_or_control",
+      "data_dependencies": [
+        "input:eligibility",
+        "input:period/0/rental_calendar"
+      ],
+      "source_location": null,
+      "source_function": {
+        "path": "src/miniuw_foundation/phased_rental.py",
+        "sha256": "3fba8e990dc417ddf53dda7d6e3dd8065e5efc3dbc5f842f58fdf23010076e9d",
+        "symbol": "produce_phased_rental",
+        "line": 96
+      },
+      "observed_stage": "phased_rental:SYNTHETIC-hold-1"
+    },
+    {
+      "node_id": "NOI:SYNTHETIC-hold-2",
+      "label": "NOI declarado y calculado / SYNTHETIC-hold-2",
+      "kind": "calculation_or_control",
+      "data_dependencies": [
+        "input:eligibility",
+        "input:period/1/noi_source"
+      ],
+      "source_location": null,
+      "source_function": {
+        "path": "src/miniuw_foundation/operating_noi.py",
+        "sha256": "034fda6791ce3386d2345fa7015d9a9ca6f2003e0e71664216d3939d268eaafd",
+        "symbol": "produce_operating_noi",
+        "line": 81
+      },
+      "observed_stage": "NOI:SYNTHETIC-hold-2"
+    },
+    {
+      "node_id": "operating_cash:SYNTHETIC-hold-2",
+      "label": "Caja operativa / SYNTHETIC-hold-2",
+      "kind": "calculation_or_control",
+      "data_dependencies": [
+        "NOI:SYNTHETIC-hold-2",
+        "input:period/1/cash_source"
+      ],
+      "source_location": null,
+      "source_function": {
+        "path": "src/miniuw_foundation/operating_cash.py",
+        "sha256": "1c23d1c6d629e98eb2448f2ab697bf2970dda501275c072ac64109d4f36ef6f1",
+        "symbol": "reconcile_operating_cash",
+        "line": 78
+      },
+      "observed_stage": "operating_cash:SYNTHETIC-hold-2"
+    },
+    {
+      "node_id": "expense_detail:SYNTHETIC-hold-2",
+      "label": "Devengo, pagos y saldos / SYNTHETIC-hold-2",
+      "kind": "calculation_or_control",
+      "data_dependencies": [
+        "NOI:SYNTHETIC-hold-2",
+        "operating_cash:SYNTHETIC-hold-2",
+        "input:period/1/expense_detail"
+      ],
+      "source_location": null,
+      "source_function": {
+        "path": "src/miniuw_foundation/expense_cash_detail.py",
+        "sha256": "78bf5aaafcf20c257436284cd2d4d968845fd49dbe9a60d117e52527eda136e5",
+        "symbol": "reconcile_expense_cash_detail",
+        "line": 109
+      },
+      "observed_stage": "expense_detail:SYNTHETIC-hold-2"
+    },
+    {
+      "node_id": "phased_rental:SYNTHETIC-hold-2",
+      "label": "Renta por tramos / SYNTHETIC-hold-2",
+      "kind": "calculation_or_control",
+      "data_dependencies": [
+        "input:eligibility",
+        "input:period/1/rental_calendar"
+      ],
+      "source_location": null,
+      "source_function": {
+        "path": "src/miniuw_foundation/phased_rental.py",
+        "sha256": "3fba8e990dc417ddf53dda7d6e3dd8065e5efc3dbc5f842f58fdf23010076e9d",
+        "symbol": "produce_phased_rental",
+        "line": 96
+      },
+      "observed_stage": "phased_rental:SYNTHETIC-hold-2"
+    },
+    {
+      "node_id": "holding_cash",
+      "label": "Continuidad de tenencia",
+      "kind": "calculation_or_control",
+      "data_dependencies": [
+        "NOI:SYNTHETIC-hold-1",
+        "NOI:SYNTHETIC-hold-2",
+        "operating_cash:SYNTHETIC-hold-1",
+        "operating_cash:SYNTHETIC-hold-2",
+        "input:recipe/holding_manifest"
+      ],
+      "source_location": null,
+      "source_function": {
+        "path": "src/miniuw_foundation/holding_cash.py",
+        "sha256": "d7f427eeb3e24cb03aaccc344e0fc9bf22a99ee00b199d88a638438b3e6ba602",
+        "symbol": "reconcile_holding_cash",
+        "line": 79
+      },
+      "observed_stage": "holding_cash"
+    },
+    {
+      "node_id": "sale_cash",
+      "label": "Caja de venta",
+      "kind": "calculation_or_control",
+      "data_dependencies": [
+        "input:eligibility",
+        "input:recipe/sale"
+      ],
+      "source_location": null,
+      "source_function": {
+        "path": "src/miniuw_foundation/closing_cash.py",
+        "sha256": "7053bbdba91ad38d55909308fc6aef809449944ebae02c1ec387b1bfd810487b",
+        "symbol": "produce_closing_cash",
+        "line": 84
+      },
+      "observed_stage": "sale_cash"
+    },
+    {
+      "node_id": "sale_debt",
+      "label": "Conciliación de deuda de venta",
+      "kind": "calculation_or_control",
+      "data_dependencies": [
+        "operating_phase",
+        "sale_cash",
+        "input:recipe/sale"
+      ],
+      "source_location": null,
+      "source_function": {
+        "path": "src/miniuw_foundation/debt_closing.py",
+        "sha256": "1cba940c460b048132c57668ff893e2f4bdc68ab93f286be20a0f81b163f1947",
+        "symbol": "reconcile_debt_closing",
+        "line": 84
+      },
+      "observed_stage": "sale_debt"
+    },
+    {
+      "node_id": "hold_sale",
+      "label": "Tenencia a venta",
+      "kind": "calculation_or_control",
+      "data_dependencies": [
+        "holding_cash",
+        "sale_cash",
+        "sale_debt",
+        "input:recipe/hold_sale_binding"
+      ],
+      "source_location": null,
+      "source_function": {
+        "path": "src/miniuw_foundation/hold_sale_cash.py",
+        "sha256": "d49f94f77edceef7b3cedf132ec0cc2b5d8c937d78ebe554f27b924758f76b13",
+        "symbol": "reconcile_hold_sale_cash",
+        "line": 27
+      },
+      "observed_stage": "hold_sale"
+    },
+    {
+      "node_id": "staged_operating_window",
+      "label": "Ventana completa obra–operación–venta",
+      "kind": "calculation_or_control",
+      "data_dependencies": [
+        "construction_cash",
+        "operating_phase",
+        "hold_sale",
+        "operating_cash:SYNTHETIC-hold-1",
+        "input:recipe/cash_boundary_binding",
+        "input:recipe/window_binding"
+      ],
+      "source_location": null,
+      "source_function": {
+        "path": "src/miniuw_foundation/staged_operating_window.py",
+        "sha256": "20b394cc8dab2d4c78d719d0572b38025c474d3e3c97ff3e0bc6cf8044e3b731",
+        "symbol": "reconcile_staged_operating_window",
+        "line": 25
+      },
+      "observed_stage": "staged_operating_window"
+    },
+    {
+      "node_id": "lifecycle_return",
+      "label": "Aportes y cobros hasta venta",
+      "kind": "calculation_or_control",
+      "data_dependencies": [
+        "staged_operating_window",
+        "input:recipe/investor_source",
+        "input:recipe/investor_binding"
+      ],
+      "source_location": null,
+      "source_function": {
+        "path": "src/miniuw_foundation/staged_lifecycle_returns.py",
+        "sha256": "2dd366642eb025e358418115e017bdf774ac70160f9517b618f76745e18c4353",
+        "symbol": "assemble_staged_lifecycle_returns",
+        "line": 31
+      },
+      "observed_stage": "lifecycle_return"
+    },
+    {
+      "node_id": "expense_checked_return",
+      "label": "Retorno con gastos por concepto",
+      "kind": "calculation_or_control",
+      "data_dependencies": [
+        "lifecycle_return",
+        "expense_detail:SYNTHETIC-hold-1",
+        "expense_detail:SYNTHETIC-hold-2",
+        "input:recipe/expense_manifest"
+      ],
+      "source_location": null,
+      "source_function": {
+        "path": "src/miniuw_foundation/expense_checked_lifecycle.py",
+        "sha256": "3f81f3b297968910a2c553957c40ec8408daed22aef1c45d9ac4c51ace14e42e",
+        "symbol": "assemble_expense_checked_lifecycle",
+        "line": 92
+      },
+      "observed_stage": "expense_checked_return"
+    },
+    {
+      "node_id": "phased_rental_return",
+      "label": "Retorno con renta conciliada",
+      "kind": "calculation_or_control",
+      "data_dependencies": [
+        "expense_checked_return",
+        "phased_rental:SYNTHETIC-hold-1",
+        "phased_rental:SYNTHETIC-hold-2",
+        "input:recipe/rental_manifest"
+      ],
+      "source_location": null,
+      "source_function": {
+        "path": "src/miniuw_foundation/phased_rental_lifecycle.py",
+        "sha256": "f46dde3d968f2cb70e54b6ebdd065ffc2bb5d2382cdb4dafaeef2c88cdc66ec9",
+        "symbol": "assemble_phased_rental_lifecycle",
+        "line": 58
+      },
+      "observed_stage": "phased_rental_return"
+    },
+    {
+      "node_id": "source_currency",
+      "label": "Vista base actual",
+      "kind": "calculation_or_control",
+      "data_dependencies": [
+        "phased_rental_return",
+        "input:base_registry",
+        "input:asof",
+        "input:identity"
+      ],
+      "source_location": null,
+      "source_function": {
+        "path": "src/miniuw_foundation/current_phased_rental.py",
+        "sha256": "0ff27b2e2ebe1785f717cd20c0e51dec07e4f26f99358fb439c5e3bd5a8fb21f",
+        "symbol": "assemble_current_phased_rental",
+        "line": 47
+      },
+      "observed_stage": "source_currency"
+    },
+    {
+      "node_id": "screening",
+      "label": "Comparación de métricas y criterios",
+      "kind": "calculation_or_control",
+      "data_dependencies": [
+        "source_currency",
+        "input:criteria",
+        "input:identity"
+      ],
+      "source_location": null,
+      "source_function": {
+        "path": "src/miniuw_foundation/screening.py",
+        "sha256": "52701de576e82c52d0d156ecc8b5801132250427ef5b02dc2393bbdcc6538137",
+        "symbol": "simulate_screening",
+        "line": 167
+      },
+      "observed_stage": null
+    },
+    {
+      "node_id": "schedule:SYNTHETIC-schedule-insurance",
+      "label": "Calendario agregado / SYNTHETIC-schedule-insurance",
+      "kind": "calculation_or_control",
+      "data_dependencies": [
+        "input:schedule/SYNTHETIC-schedule-insurance"
+      ],
+      "source_location": null,
+      "source_function": {
+        "path": "src/miniuw_foundation/expense_schedule.py",
+        "sha256": "0ccb1428ab2cfac66493466b58014a6ca20dde0cecbd08fd37c765d450378dc4",
+        "symbol": "produce_expense_schedule",
+        "line": 70
+      },
+      "observed_stage": null
+    },
+    {
+      "node_id": "schedule:SYNTHETIC-schedule-property_tax",
+      "label": "Calendario agregado / SYNTHETIC-schedule-property_tax",
+      "kind": "calculation_or_control",
+      "data_dependencies": [
+        "input:schedule/SYNTHETIC-schedule-property_tax"
+      ],
+      "source_location": null,
+      "source_function": {
+        "path": "src/miniuw_foundation/expense_schedule.py",
+        "sha256": "0ccb1428ab2cfac66493466b58014a6ca20dde0cecbd08fd37c765d450378dc4",
+        "symbol": "produce_expense_schedule",
+        "line": 70
+      },
+      "observed_stage": null
+    },
+    {
+      "node_id": "scheduled_current",
+      "label": "Control completo de seguros e impuestos",
+      "kind": "calculation_or_control",
+      "data_dependencies": [
+        "source_currency",
+        "screening",
+        "input:scheduled_binding",
+        "input:scheduled_registry",
+        "input:asof",
+        "input:base_bytes",
+        "schedule:SYNTHETIC-schedule-insurance",
+        "schedule:SYNTHETIC-schedule-property_tax"
+      ],
+      "source_location": null,
+      "source_function": {
+        "path": "src/miniuw_foundation/scheduled_expense_case.py",
+        "sha256": "39d1130aa1b424c7ec333389718279b3ba8974a182194620fa25a069a4baa647",
+        "symbol": "assemble_scheduled_expense_case",
+        "line": 82
+      },
+      "observed_stage": null
+    },
+    {
+      "node_id": "policy:SYNTHETIC-schedule-insurance",
+      "label": "Renovaciones y cuotas agrupadas / SYNTHETIC-schedule-insurance",
+      "kind": "calculation_or_control",
+      "data_dependencies": [
+        "schedule:SYNTHETIC-schedule-insurance",
+        "input:policy/SYNTHETIC-schedule-insurance"
+      ],
+      "source_location": null,
+      "source_function": {
+        "path": "src/miniuw_foundation/insurance_renewals.py",
+        "sha256": "f30e1c1746e16eb3b77552c7c7a2138c05a4f7b99db3d4581a52218b9d2264fd",
+        "symbol": "reconcile_insurance_renewals",
+        "line": 86
+      },
+      "observed_stage": null
+    },
+    {
+      "node_id": "policy_current",
+      "label": "Control actual de pólizas y retorno",
+      "kind": "calculation_or_control",
+      "data_dependencies": [
+        "scheduled_current",
+        "input:policy_registry",
+        "input:scheduled_bytes",
+        "input:asof",
+        "policy:SYNTHETIC-schedule-insurance"
+      ],
+      "source_location": null,
+      "source_function": {
+        "path": "src/miniuw_foundation/policy_renewal_case.py",
+        "sha256": "7f1bf0c2fcd861f8fffcaba12ea12524f6c271be96c2af4ac44be0016c0c35a3",
+        "symbol": "assemble_policy_renewal_case",
+        "line": 38
+      },
+      "observed_stage": null
+    },
+    {
+      "node_id": "report",
+      "label": "Página y trazabilidad de salida",
+      "kind": "calculation_or_control",
+      "data_dependencies": [
+        "policy_current",
+        "screening",
+        "input:outer_bytes"
+      ],
+      "source_location": null,
+      "source_function": {
+        "path": "src/miniuw_foundation/policy_renewal_artifacts.py",
+        "sha256": "c3f6ef1b9de08e68b12ea78996295e83596aff70fa8ac2d39426946bb0c76cbb",
+        "symbol": "render_policy_renewal_report",
+        "line": 22
+      },
+      "observed_stage": null
+    }
+  ],
+  "source_versions": [
+    {
+      "path": "src/miniuw_foundation/closing_cash.py",
+      "sha256": "7053bbdba91ad38d55909308fc6aef809449944ebae02c1ec387b1bfd810487b"
+    },
+    {
+      "path": "src/miniuw_foundation/construction_cash.py",
+      "sha256": "b8a69672179278950fdaf82e6b257043b526cd8c7c944dcb1490cd13d06f352b"
+    },
+    {
+      "path": "src/miniuw_foundation/current_phased_rental.py",
+      "sha256": "0ff27b2e2ebe1785f717cd20c0e51dec07e4f26f99358fb439c5e3bd5a8fb21f"
+    },
+    {
+      "path": "src/miniuw_foundation/debt_closing.py",
+      "sha256": "1cba940c460b048132c57668ff893e2f4bdc68ab93f286be20a0f81b163f1947"
+    },
+    {
+      "path": "src/miniuw_foundation/expense_cash_detail.py",
+      "sha256": "78bf5aaafcf20c257436284cd2d4d968845fd49dbe9a60d117e52527eda136e5"
+    },
+    {
+      "path": "src/miniuw_foundation/expense_checked_lifecycle.py",
+      "sha256": "3f81f3b297968910a2c553957c40ec8408daed22aef1c45d9ac4c51ace14e42e"
+    },
+    {
+      "path": "src/miniuw_foundation/expense_schedule.py",
+      "sha256": "0ccb1428ab2cfac66493466b58014a6ca20dde0cecbd08fd37c765d450378dc4"
+    },
+    {
+      "path": "src/miniuw_foundation/hold_sale_cash.py",
+      "sha256": "d49f94f77edceef7b3cedf132ec0cc2b5d8c937d78ebe554f27b924758f76b13"
+    },
+    {
+      "path": "src/miniuw_foundation/holding_cash.py",
+      "sha256": "d7f427eeb3e24cb03aaccc344e0fc9bf22a99ee00b199d88a638438b3e6ba602"
+    },
+    {
+      "path": "src/miniuw_foundation/insurance_renewals.py",
+      "sha256": "f30e1c1746e16eb3b77552c7c7a2138c05a4f7b99db3d4581a52218b9d2264fd"
+    },
+    {
+      "path": "src/miniuw_foundation/operating_cash.py",
+      "sha256": "1c23d1c6d629e98eb2448f2ab697bf2970dda501275c072ac64109d4f36ef6f1"
+    },
+    {
+      "path": "src/miniuw_foundation/operating_debt_phase.py",
+      "sha256": "7f875a0f0fbe3ffe8003f9963f4474f45cb257bfab87b22b0af11d2630faff6b"
+    },
+    {
+      "path": "src/miniuw_foundation/operating_noi.py",
+      "sha256": "034fda6791ce3386d2345fa7015d9a9ca6f2003e0e71664216d3939d268eaafd"
+    },
+    {
+      "path": "src/miniuw_foundation/phased_rental.py",
+      "sha256": "3fba8e990dc417ddf53dda7d6e3dd8065e5efc3dbc5f842f58fdf23010076e9d"
+    },
+    {
+      "path": "src/miniuw_foundation/phased_rental_lifecycle.py",
+      "sha256": "f46dde3d968f2cb70e54b6ebdd065ffc2bb5d2382cdb4dafaeef2c88cdc66ec9"
+    },
+    {
+      "path": "src/miniuw_foundation/policy_renewal_artifacts.py",
+      "sha256": "c3f6ef1b9de08e68b12ea78996295e83596aff70fa8ac2d39426946bb0c76cbb"
+    },
+    {
+      "path": "src/miniuw_foundation/policy_renewal_case.py",
+      "sha256": "7f1bf0c2fcd861f8fffcaba12ea12524f6c271be96c2af4ac44be0016c0c35a3"
+    },
+    {
+      "path": "src/miniuw_foundation/scheduled_expense_case.py",
+      "sha256": "39d1130aa1b424c7ec333389718279b3ba8974a182194620fa25a069a4baa647"
+    },
+    {
+      "path": "src/miniuw_foundation/screening.py",
+      "sha256": "52701de576e82c52d0d156ecc8b5801132250427ef5b02dc2393bbdcc6538137"
+    },
+    {
+      "path": "src/miniuw_foundation/staged_lifecycle_returns.py",
+      "sha256": "2dd366642eb025e358418115e017bdf774ac70160f9517b618f76745e18c4353"
+    },
+    {
+      "path": "src/miniuw_foundation/staged_operating_window.py",
+      "sha256": "20b394cc8dab2d4c78d719d0572b38025c474d3e3c97ff3e0bc6cf8044e3b731"
+    },
+    {
+      "path": "src/miniuw_foundation/v1_case.py",
+      "sha256": "490add260ae8d2314030c7e36ebb00ff3fd8d3edf9c69f839a86ba6c15269f93"
+    },
+    {
+      "path": "src/miniuw_foundation/v1_projection.py",
+      "sha256": "16e4574b1c18feb1b53d2579287fc2262310e42eabd970621d42cec152a99aef"
+    },
+    {
+      "path": "tools/check_dependency_structure_D05.py",
+      "sha256": "b7d7abf6e6cc6ea14651069118102c357ddf939f97a802182de115cacb6fb8f9"
+    }
+  ],
+  "cases": [
+    {
+      "path": "templates/miniuw-v1-policy-renewal-case.json",
+      "sha256": "baa78b2ebc84a7ec5a204d9c10a4ba0f0777fd84c1b99edc40a874bb86b02306",
+      "run_sha256": "81da8fb19ddfd99ac33d55781528ba3a731290b9011dcb3f66cc56bc76fac448",
+      "decision": "PENDING",
+      "observed_return_summary": {
+        "source_pointer": "/current_project_return_story",
+        "values": {
+          "equity_level": "aggregate_project_equity",
+          "currency": "USD",
+          "cash_horizon": {
+            "end": "2027-07-01",
+            "future_cash_after_horizon_included": false,
+            "start": "2026-10-01"
+          },
+          "gross_contributions": {
+            "denominator": "1",
+            "numerator": "1400"
+          },
+          "gross_distributions": {
+            "denominator": "1",
+            "numerator": "778"
+          },
+          "net_cash_profit": {
+            "denominator": "1",
+            "numerator": "-622"
+          },
+          "equity_multiple": {
+            "denominator": "700",
+            "numerator": "389"
+          },
+          "cash_by_category": {
+            "additional_capital": {
+              "denominator": "1",
+              "numerator": "400"
+            },
+            "initial_capital": {
+              "denominator": "1",
+              "numerator": "1000"
+            },
+            "net_refinance_distribution": {
+              "denominator": "1",
+              "numerator": "0"
+            },
+            "net_sale_distribution": {
+              "denominator": "1",
+              "numerator": "578"
+            },
+            "operating_distribution": {
+              "denominator": "1",
+              "numerator": "200"
+            },
+            "other_distribution": {
+              "denominator": "1",
+              "numerator": "0"
+            },
+            "refinance_cash_in": {
+              "denominator": "1",
+              "numerator": "0"
+            }
+          },
+          "personal_investor_return": null,
+          "selected_IRR": null,
+          "upstream_story_blockers": [
+            "2026:positive_declared_annual_capital_base_missing",
+            "2027:positive_declared_annual_capital_base_missing",
+            "capital_and_retained_equity_snapshots_missing"
+          ]
+        },
+        "normalized_values": {
+          "reference_amount": {
+            "denominator": "1",
+            "numerator": "10"
+          },
+          "basis_amount": {
+            "denominator": "1",
+            "numerator": "1400"
+          },
+          "total_contributions": {
+            "denominator": "1",
+            "numerator": "10"
+          },
+          "total_distributions": {
+            "denominator": "70",
+            "numerator": "389"
+          },
+          "net_cash_profit": {
+            "denominator": "70",
+            "numerator": "-311"
+          }
+        }
+      },
+      "observed_producers": {
+        "construction_cash": "6aece73dfa1c9c984e0dc0dcac821e02293d419374fe87b1ba8a8516c766657f",
+        "operating_phase": "a0589dfdfeee2f50124d7dd81546a3006b0673796809cd34203586962e3cfb9c",
+        "NOI:SYNTHETIC-hold-1": "6a715b5af8164b60c1c04ad2052976c62f5c798ef1b03b43a8d1ba7696946d5a",
+        "operating_cash:SYNTHETIC-hold-1": "841fcc2c545c798fd1f0d9f6a9fe8242b0dc9d8bfe15d0b40f4f2329f69ae017",
+        "expense_detail:SYNTHETIC-hold-1": "89d3bc92082bfd3c3b815b2677135b22e793fd2e9e7ce6e2578e01d3d8be3a05",
+        "phased_rental:SYNTHETIC-hold-1": "88572c41332863c8a3a0df5507f9d4832dd3792da4b1f9d827effb6ddcc70446",
+        "NOI:SYNTHETIC-hold-2": "2ca28207dac49e03c828a7396054efc9f0b8a0f23d8c6682355d9703a7f4dd77",
+        "operating_cash:SYNTHETIC-hold-2": "943646ff86e45fe437323cc2537e845ca40012804036b1432e0bc4ecb3297a84",
+        "expense_detail:SYNTHETIC-hold-2": "d307d10a730dad61fce6b55540a5ad16b6686369e5f1e57ac10ae1a127a628b7",
+        "phased_rental:SYNTHETIC-hold-2": "07b90d3bba88ab33682c209449eca3a7d68a3fb82f48c8306efab1db2e9ffe99",
+        "holding_cash": "669f569331c11c6214260f96668733c39232090ca8e70f29677469a384cf1f2c",
+        "sale_cash": "cda87dacef4771b15facfba457eaf46dcbd3050bf5c3f785cc0e37ad6280a798",
+        "sale_debt": "bfa332ed09274ef2ab3576ea4d388b358a2c187bc07e645f5c4149fce296de5a",
+        "hold_sale": "4861183eee474b5e9e8df058393a5349d710261ca4d1b63421d55f518a4f02dc",
+        "staged_operating_window": "6b834d74cace9e21705f65d9c765e2edc5ca9f1972d52fad252d5e3c18c30613",
+        "lifecycle_return": "5f51a9182962924fd89f4e09a41973e05eeb05b9ec06af0ee187e9ce8ac73380",
+        "expense_checked_return": "fe503d30ba1ee199dd329d1e67476512bdcb0e52339c64ac591b720373691063",
+        "phased_rental_return": "ded000eabc039e4d2eaaecc476aab16d3ff1406869842d601ef36663e70648f7",
+        "source_currency": "c4365a421b031de3e8c4ddd5c9a1407febd23ba5a4c8f34b92a78f3ded99608a",
+        "schedule:SYNTHETIC-schedule-insurance": "ebad3009c57939f6e81b36e8ad821a8cc1f2e501ef7fcf0ffb084688f63a71e0",
+        "schedule:SYNTHETIC-schedule-property_tax": "3d2a57716c9b8dafb4d43349be571af726fdb8f2bb7d32f91ad0ec9c02ed2e02",
+        "policy:SYNTHETIC-schedule-insurance": "4f1927bbf5d38ae155791d3616259b7f24068dc648d5797c5870c28c010e9f42",
+        "screening": "f91701b72d30938aa1fe9951a49fbb116fcc0f6e6afdb5d6121ff99f049b9baa",
+        "scheduled_current": "b05803563ef36f93cec4c344629261a941a87656ef6ffc91290e9ffd43943677",
+        "policy_current": "81da8fb19ddfd99ac33d55781528ba3a731290b9011dcb3f66cc56bc76fac448",
+        "report": "7023d9358f46dc0984a947985c25ea40eb0a07fcc6ff1a26ff92ed6beb95eb0b"
+      },
+      "producer_dependency_fingerprints": {
+        "input:recipe/cash_boundary_binding": "1995466ea5915f7158352a4fc397de4e412759158e3961072ff7538a10c84054",
+        "input:recipe/construction_binding": "2bc6cb7bdb55231770b3fdeca9657828e5998a4b9255b44280e33eb277375ece",
+        "input:recipe/construction_loans": "c3f1a38bec52f70411663a29bbba12d264ab4cd5a90910823116c6fccee2d061",
+        "input:recipe/expense_manifest": "77c0be651415b3ba1d79c208d0f4f49aaf9e75293a18ff9f1712838c75556b65",
+        "input:recipe/hold_sale_binding": "7bb66bd643b62d1a166066f05ff09d9b3937e914902e11648a965a7ab4870be3",
+        "input:recipe/holding_manifest": "d466bb9691701d5f7e958119cd5ba2463d2250ee1ce0ae1dda951b2220521c89",
+        "input:recipe/investor_binding": "ac9a36d6f4fa06737dd373df1e82e43d3942e6a9bcfe5f4abff82e1e1617de22",
+        "input:recipe/investor_source": "d493bea409f441d178560f7a067a748960fb0a2616130928726872a46fa1c4e3",
+        "input:recipe/phase_contract": "8b05a8b4e81ee1c2dd30a0dda694db7f0d8ed5786f1d88cd6736e6b23b85f96c",
+        "input:recipe/preopening_source": "4569857302df64a7c98cba05587805690baebf48810acbff636cda4810141cf5",
+        "input:recipe/rental_manifest": "dcd731d57c4bf412c3d28e93a3bb4d98caa3cd75a70d99c41e9ca8c5abf00ced",
+        "input:recipe/sale": "383bae3f388b870d8584faff540de2251f58e2796aefbab69a3fb295c17acb8e",
+        "input:recipe/window_binding": "62ec1d9be7b9f9750be9543cba964cb63e3f66ed745fc2337318e805555576c7",
+        "input:period/0/noi_source": "99f5f2c02fca08bab5ce66f2c2aba38d230ac7cf316ea423596721e610ad6140",
+        "input:period/0/cash_source": "5d9b5661c2097f1c4e6c065cbaf4f6e343dd0bcb6357184276d952b5e440f4cb",
+        "input:period/0/expense_detail": "6bb8bf913b1f0a20ae75d67cd6ffb4b7832e804aaa7831e971d68388ae558c19",
+        "input:period/0/rental_calendar": "e68bf6176d2262b9d310a1f70e66b7845a3844f7078577e81f3f926eb51d39c3",
+        "input:period/1/noi_source": "465e5b1a9427dfe1b420dbabf307bb9e8c0750acb6b7d99c48661d3039ada59e",
+        "input:period/1/cash_source": "7d5dabef55dec07065192caa643508370b323e3ad13e1d21b8eb8a481571dd3d",
+        "input:period/1/expense_detail": "7ceec977bad84d9e2a23973fbb9318cbaddef08dbb07112d2ae421e251c93677",
+        "input:period/1/rental_calendar": "68cd3180f180237a6e5d3ea4c432636f7f5ebc2710f0b16cbf4ce9153759887b",
+        "input:eligibility": "90d0bfc9389564c0b1e754273c0bc6461e7b72036dc0714c606f74b65d8592c5",
+        "input:identity": "ebf2f47415a22a6ac2e8ea3743db35ab0bfbf2456f706a9df3ee368bc434b93e",
+        "input:criteria": "fa00ade45d4b7b53a39141eaebac628a1db5f053d1e4c6815251b09952665ed1",
+        "input:base_registry": "bc19820e0ab4ea4c4efddbe61982138d443a7203477afbd01d2b090a623947c7",
+        "input:asof": "213af51ffa47be94c4ee2f3b26a709f2764cfd50d1715460aa6206f11a9772d2",
+        "input:scheduled_binding": "fb5bb561a3571fe44f2bf7bb95cd14f7d26b4e0acd251332254f7ed8c8a675bb",
+        "input:scheduled_registry": "2ace95dfe3378f241f5341a9d1a5f25ceb25e9e2deba363e157c299eb788e7a5",
+        "input:policy_registry": "ae6e464779aae8f9aa201c94969e85cdd74d04875683798871c944552dfc384b",
+        "input:base_bytes": "65bad2a1c58c9aac1753d98964c8fd4769ea328cef4e0ea3de4795394afe68e2",
+        "input:scheduled_bytes": "946fd1248908906e0a3065f395f66adeb1d162324bb872b2cbeeb6b5d36f9ae1",
+        "input:outer_bytes": "e3819fc291818b5c0701a8008aa4475e44a515496b9a9bf5e066e08b4b17a2c9",
+        "input:schedule/SYNTHETIC-schedule-insurance": "d6499126599afe90b1cc8aed9f8f048a73e0b224c0630640e36f25c1a2a92512",
+        "input:schedule/SYNTHETIC-schedule-property_tax": "061b5605732e494aeb009943a19346ca82ec25789d4f2e8cf6d5e96fa93abe1c",
+        "input:policy/SYNTHETIC-schedule-insurance": "c9e3df57261c9d02c1d0618b99dbbb8310856c72055991ed49b43caede311be7",
+        "construction_cash": "02f5ea09488e49f23007e646b0d8a30be1a84b0fd372921954c26e9713f5c7ed",
+        "operating_phase": "c2488910c6289bd65e94dcf7cf96f32cfbd28997d11d7e2e02f4593a0ea15536",
+        "NOI:SYNTHETIC-hold-1": "e270e39a02c836f437ddc585783be493a1efee0a326210de2fce98785eef04ac",
+        "operating_cash:SYNTHETIC-hold-1": "984d82e68d19bcf46c551f33e84e946b86355403c5127e37834084a0e7a6cb15",
+        "expense_detail:SYNTHETIC-hold-1": "cee9456efe343e5c82ffb32396a9a43599602e7ae169640da2ec461c541daaff",
+        "phased_rental:SYNTHETIC-hold-1": "f90cb874dfbe69cad62f701f1f758d0cffea2f8efa0cf6067ebdd6bf661fb49b",
+        "NOI:SYNTHETIC-hold-2": "d1ebfc789d9c348ca2b5db5dbd17ad8f1b84504c39771bb704980f7380b87ecb",
+        "operating_cash:SYNTHETIC-hold-2": "a6e6ecc2aa7895a8c567e8eae59acb275f7694cd01f418b9edae4005884649a1",
+        "expense_detail:SYNTHETIC-hold-2": "31bc4d99a65999e949b75094784286326d818c9cae3f301c15fd29481393120e",
+        "phased_rental:SYNTHETIC-hold-2": "16ffeb685180ddf59d146fee8b7055a73a7798e5dcadc1516be027f645dce101",
+        "holding_cash": "8dcab4f89d40105e9c378564436326d9586f4bd995f4d1afb78493661d740bec",
+        "sale_cash": "421d3d86cfd5225967c930ea820e46757fadbae1988d0b99ad6b5e6737cde89b",
+        "sale_debt": "ac18b408d47fef5952a082f918ef5d2ff0d4f136ac290224b19c766dbd21592f",
+        "hold_sale": "7d5ec5cf389a38e9f205afc838c519702e3504640972b5532c2c4080921e53c7",
+        "staged_operating_window": "81682df25118b56a3336368016991804b0be411fd02b7c664be54557728139b5",
+        "lifecycle_return": "67b3db80f96488d96b40d19da2a534e43e35f6a9828227c806ba4ca514daf2de",
+        "expense_checked_return": "dde10ee83e43cfd36bf761540601c0fd37cae729601ec3d0b802b7158a7ac8a2",
+        "phased_rental_return": "43e5bd6423827cf5a547d8afe4ed887c1c60a9c57818cbd80fc2efcec96749fa",
+        "source_currency": "41d1a5cac04d43fea2c960a0fedd6e66ee38b81ccde79ffed163adde5db261a3",
+        "screening": "090d98706a1d00479e5a66971a8e5474a602d370a4d625dd4b0aefb1affdc872",
+        "schedule:SYNTHETIC-schedule-insurance": "f26d0ca831e22b5fa8c0880cb1b9f0af5f75a13e9efcea700d26709f67692ab1",
+        "schedule:SYNTHETIC-schedule-property_tax": "fa0c9df8a1f1f75f74dc2be21d0caa5f4cb220afb7db9502318f069397a322a7",
+        "scheduled_current": "847439752a4b224f407692104f4ec5f91a2dca537a10fae0a1e28e40efabd980",
+        "policy:SYNTHETIC-schedule-insurance": "ed5ecee10e6dabde5ca1e8f27f872e934dbceb3ce257f9dc1ceaf8a8d50c760e",
+        "policy_current": "84efaa86d438d2e24bab8f66f414da3569f091d9cf0b525489c6c2a01171cdb8",
+        "report": "73ef9792dcd92a48d64b27e31a310f3d424421e58eb37ffb63032bd46dfc63ff"
+      }
+    },
+    {
+      "path": "templates/miniuw-v1-policy-renewal-twelve-case.json",
+      "sha256": "cf6554aec236a4f5f4d28f98ed6e3d5d555ab4298e67351e81b414eda643c994",
+      "run_sha256": "d7c404abbfaaa9500702293c3425641dff4006af2ac6c538e674e7995ac71970",
+      "decision": "PENDING",
+      "observed_return_summary": {
+        "source_pointer": "/current_project_return_story",
+        "values": {
+          "equity_level": "aggregate_project_equity",
+          "currency": "USD",
+          "cash_horizon": {
+            "end": "2027-07-01",
+            "future_cash_after_horizon_included": false,
+            "start": "2026-10-01"
+          },
+          "gross_contributions": {
+            "denominator": "1",
+            "numerator": "1400"
+          },
+          "gross_distributions": {
+            "denominator": "1",
+            "numerator": "776"
+          },
+          "net_cash_profit": {
+            "denominator": "1",
+            "numerator": "-624"
+          },
+          "equity_multiple": {
+            "denominator": "175",
+            "numerator": "97"
+          },
+          "cash_by_category": {
+            "additional_capital": {
+              "denominator": "1",
+              "numerator": "400"
+            },
+            "initial_capital": {
+              "denominator": "1",
+              "numerator": "1000"
+            },
+            "net_refinance_distribution": {
+              "denominator": "1",
+              "numerator": "0"
+            },
+            "net_sale_distribution": {
+              "denominator": "1",
+              "numerator": "576"
+            },
+            "operating_distribution": {
+              "denominator": "1",
+              "numerator": "200"
+            },
+            "other_distribution": {
+              "denominator": "1",
+              "numerator": "0"
+            },
+            "refinance_cash_in": {
+              "denominator": "1",
+              "numerator": "0"
+            }
+          },
+          "personal_investor_return": null,
+          "selected_IRR": null,
+          "upstream_story_blockers": [
+            "2026:positive_declared_annual_capital_base_missing",
+            "2027:positive_declared_annual_capital_base_missing",
+            "capital_and_retained_equity_snapshots_missing"
+          ]
+        },
+        "normalized_values": {
+          "reference_amount": {
+            "denominator": "1",
+            "numerator": "10"
+          },
+          "basis_amount": {
+            "denominator": "1",
+            "numerator": "1400"
+          },
+          "total_contributions": {
+            "denominator": "1",
+            "numerator": "10"
+          },
+          "total_distributions": {
+            "denominator": "35",
+            "numerator": "194"
+          },
+          "net_cash_profit": {
+            "denominator": "35",
+            "numerator": "-156"
+          }
+        }
+      },
+      "observed_producers": {
+        "construction_cash": "6aece73dfa1c9c984e0dc0dcac821e02293d419374fe87b1ba8a8516c766657f",
+        "operating_phase": "a0589dfdfeee2f50124d7dd81546a3006b0673796809cd34203586962e3cfb9c",
+        "NOI:SYNTHETIC-hold-1": "6a715b5af8164b60c1c04ad2052976c62f5c798ef1b03b43a8d1ba7696946d5a",
+        "operating_cash:SYNTHETIC-hold-1": "841fcc2c545c798fd1f0d9f6a9fe8242b0dc9d8bfe15d0b40f4f2329f69ae017",
+        "expense_detail:SYNTHETIC-hold-1": "89d3bc92082bfd3c3b815b2677135b22e793fd2e9e7ce6e2578e01d3d8be3a05",
+        "phased_rental:SYNTHETIC-hold-1": "88572c41332863c8a3a0df5507f9d4832dd3792da4b1f9d827effb6ddcc70446",
+        "NOI:SYNTHETIC-hold-2": "ae92ba96e7ca1b2000f28256ca39dced38495505bc424ea3b97fd029d98593dd",
+        "operating_cash:SYNTHETIC-hold-2": "9cbb3fe957db0b8b26114bd56ed9dfa36ced2d7efda063a233af3b68aaedab91",
+        "expense_detail:SYNTHETIC-hold-2": "37ac97855346d81012d3081e2f0b6522d1c0e392c77b29d7457ab6f9a02e8dc8",
+        "phased_rental:SYNTHETIC-hold-2": "07b90d3bba88ab33682c209449eca3a7d68a3fb82f48c8306efab1db2e9ffe99",
+        "holding_cash": "49864298177083d2fb85aafeff412b68d112addd58d93b0f7669269685429bbd",
+        "sale_cash": "0cfe87a8d6a92f8fb2e8895f3f9f3cb65264871244703666069ddcdda43214af",
+        "sale_debt": "4fa88009c31e1d1dbc5de4cb150aaef633bd585dd76f700a416f55ed7742f5a7",
+        "hold_sale": "6a679510c030ca6df17d85cf574c3835af22585bfce5ef03d7669a56a4f7cbf8",
+        "staged_operating_window": "ae29e621274fed1dfa0ed6bff01386294e1e8725ce42937fd481e3e68d99bf47",
+        "lifecycle_return": "18db674f84d7571662eff9ea18becc35f842493b49c4bafffc398fab172c73b2",
+        "expense_checked_return": "704438d629becee1b0d841f94dffd76832404378fa7f390c0052fca6d65d6aa3",
+        "phased_rental_return": "db4c9793e7276d744e92b39ec0e17346f2aacd9d37fb0505d529a7680f8e3c33",
+        "source_currency": "2efb2f11f2991713b2f1f878426a3a3e3d37c10ffe092a71b29157d82e4075b2",
+        "schedule:SYNTHETIC-schedule-insurance": "ddff7b239346dbd3d80c2f96f64c0477a535daa53d1c819a6757b7cb2ad3f0ba",
+        "schedule:SYNTHETIC-schedule-property_tax": "3d2a57716c9b8dafb4d43349be571af726fdb8f2bb7d32f91ad0ec9c02ed2e02",
+        "policy:SYNTHETIC-schedule-insurance": "9853e7107c39e9adb57f0aa97d8c3ef00fa1cbc51ad6359cd68e81ec433cac4b",
+        "screening": "3ee38b44a84764cb08db290493ff921441bcd5307a135a6426dc2e914c148249",
+        "scheduled_current": "c3317b62c7a77f4e9825953c68b8bd5fbbeee2bcb4bd03ba3b09245eb35a94e9",
+        "policy_current": "d7c404abbfaaa9500702293c3425641dff4006af2ac6c538e674e7995ac71970",
+        "report": "ff503c9857c1f4eef04acf8ad47351d41a7cce2d8c2cd60f58849d9f2f2fa1d8"
+      },
+      "producer_dependency_fingerprints": {
+        "input:recipe/cash_boundary_binding": "1995466ea5915f7158352a4fc397de4e412759158e3961072ff7538a10c84054",
+        "input:recipe/construction_binding": "2bc6cb7bdb55231770b3fdeca9657828e5998a4b9255b44280e33eb277375ece",
+        "input:recipe/construction_loans": "c3f1a38bec52f70411663a29bbba12d264ab4cd5a90910823116c6fccee2d061",
+        "input:recipe/expense_manifest": "77c0be651415b3ba1d79c208d0f4f49aaf9e75293a18ff9f1712838c75556b65",
+        "input:recipe/hold_sale_binding": "7bb66bd643b62d1a166066f05ff09d9b3937e914902e11648a965a7ab4870be3",
+        "input:recipe/holding_manifest": "d466bb9691701d5f7e958119cd5ba2463d2250ee1ce0ae1dda951b2220521c89",
+        "input:recipe/investor_binding": "ac9a36d6f4fa06737dd373df1e82e43d3942e6a9bcfe5f4abff82e1e1617de22",
+        "input:recipe/investor_source": "d493bea409f441d178560f7a067a748960fb0a2616130928726872a46fa1c4e3",
+        "input:recipe/phase_contract": "8b05a8b4e81ee1c2dd30a0dda694db7f0d8ed5786f1d88cd6736e6b23b85f96c",
+        "input:recipe/preopening_source": "4569857302df64a7c98cba05587805690baebf48810acbff636cda4810141cf5",
+        "input:recipe/rental_manifest": "dcd731d57c4bf412c3d28e93a3bb4d98caa3cd75a70d99c41e9ca8c5abf00ced",
+        "input:recipe/sale": "3e213952eb28dbc8cdeb587c53f80b8e145a9abaff914455f480c26773c79472",
+        "input:recipe/window_binding": "62ec1d9be7b9f9750be9543cba964cb63e3f66ed745fc2337318e805555576c7",
+        "input:period/0/noi_source": "99f5f2c02fca08bab5ce66f2c2aba38d230ac7cf316ea423596721e610ad6140",
+        "input:period/0/cash_source": "5d9b5661c2097f1c4e6c065cbaf4f6e343dd0bcb6357184276d952b5e440f4cb",
+        "input:period/0/expense_detail": "6bb8bf913b1f0a20ae75d67cd6ffb4b7832e804aaa7831e971d68388ae558c19",
+        "input:period/0/rental_calendar": "e68bf6176d2262b9d310a1f70e66b7845a3844f7078577e81f3f926eb51d39c3",
+        "input:period/1/noi_source": "6987845d70b95a720b4ca07ab87a9d39abbcec45aaf3ffa62782ee1dc01d0a50",
+        "input:period/1/cash_source": "ab8ae949829cd6caaa74d3d43b3ead07f6d8000775a943e82c6636b1f1ef952c",
+        "input:period/1/expense_detail": "d752619f5051268527093b3819008e3692539f94d794907fee3b41747d299969",
+        "input:period/1/rental_calendar": "68cd3180f180237a6e5d3ea4c432636f7f5ebc2710f0b16cbf4ce9153759887b",
+        "input:eligibility": "90d0bfc9389564c0b1e754273c0bc6461e7b72036dc0714c606f74b65d8592c5",
+        "input:identity": "40a5bbe9af59bd757e1f6eaef08ebf5642be1dd71aa60b513ee25b4132107f57",
+        "input:criteria": "fa00ade45d4b7b53a39141eaebac628a1db5f053d1e4c6815251b09952665ed1",
+        "input:base_registry": "e407de7d70c5d6d6c2d5a0c76e8804c64ba0d9b43acd0cbc15bf333c4332e450",
+        "input:asof": "213af51ffa47be94c4ee2f3b26a709f2764cfd50d1715460aa6206f11a9772d2",
+        "input:scheduled_binding": "e5dfbf24f677c5dd2e3e2fb47193aeb18c15e792bc7bee10fb510484f2ca2339",
+        "input:scheduled_registry": "26dcd450f357f0d1368aa01da44597776567c21205ed48176c3c92684c92281c",
+        "input:policy_registry": "93f8929ef69e597324dfb6d39cbae75a58457ae1afbaad9c8db683310c4f2c42",
+        "input:base_bytes": "007d3abd20233d1ebbb0cb51d578af251bb8c450ed1faee2fb38edbee04721eb",
+        "input:scheduled_bytes": "965045baab11d46eb3d19c9f458e9712835f612e6c72613fc37afcc14cc132a2",
+        "input:outer_bytes": "98b352109dec0a1427f75c5a51338c02e5b13b111124f298d4242a30bb4880d6",
+        "input:schedule/SYNTHETIC-schedule-insurance": "f7718edbbd0be67705941227be72ee5aece21b2033569c5084f9c6bddc040ec5",
+        "input:schedule/SYNTHETIC-schedule-property_tax": "061b5605732e494aeb009943a19346ca82ec25789d4f2e8cf6d5e96fa93abe1c",
+        "input:policy/SYNTHETIC-schedule-insurance": "a9464be2eb2eee9997b66f234049810e18fe613fd5b561c305b4f755cfb8a2f4",
+        "construction_cash": "02f5ea09488e49f23007e646b0d8a30be1a84b0fd372921954c26e9713f5c7ed",
+        "operating_phase": "c2488910c6289bd65e94dcf7cf96f32cfbd28997d11d7e2e02f4593a0ea15536",
+        "NOI:SYNTHETIC-hold-1": "e270e39a02c836f437ddc585783be493a1efee0a326210de2fce98785eef04ac",
+        "operating_cash:SYNTHETIC-hold-1": "984d82e68d19bcf46c551f33e84e946b86355403c5127e37834084a0e7a6cb15",
+        "expense_detail:SYNTHETIC-hold-1": "cee9456efe343e5c82ffb32396a9a43599602e7ae169640da2ec461c541daaff",
+        "phased_rental:SYNTHETIC-hold-1": "f90cb874dfbe69cad62f701f1f758d0cffea2f8efa0cf6067ebdd6bf661fb49b",
+        "NOI:SYNTHETIC-hold-2": "2ae44db6a51decb9d68554e9b7f9ba329b17935c7f4066bd2ceb22e0a264108d",
+        "operating_cash:SYNTHETIC-hold-2": "e61793d58e0cfca75429250ee781119c70e29b9fef63604ad3aab0bd9e022a1e",
+        "expense_detail:SYNTHETIC-hold-2": "060c01f8eac56b35046f2755da9734698f3a7aba428d6bb703797d1cde53de01",
+        "phased_rental:SYNTHETIC-hold-2": "16ffeb685180ddf59d146fee8b7055a73a7798e5dcadc1516be027f645dce101",
+        "holding_cash": "6f2c5fec43ca40bbcae9e78c930030045235a0aab3aa19e41a345a8fd1643247",
+        "sale_cash": "a1f32d93f559bb28c5a24982ab11cf0738f00ffa26373b09d0dc4f989d267d5c",
+        "sale_debt": "34d2c5fdc41be6b1fb429e4529ece8f6961d5c6d21272244be1409fdc1af42be",
+        "hold_sale": "d5dfb73d1ffc4842aa94c6d118d1bf6cc5a3f2a3bd353c8e41bbe1a6a5fb6797",
+        "staged_operating_window": "74114b0494d4329e0820579716c34cba563eb5175077251a6c1feb513c513166",
+        "lifecycle_return": "4beafe2d8494d614d6701fda2833262448a7920c5b3ace466a35f6d30875eadd",
+        "expense_checked_return": "089f36e11810439a68a76412f5f29a14015f30b4c58a99db4e3a357cf6a73e1d",
+        "phased_rental_return": "6d8a5614f607883da1251e4740df278600503fa56c1f6751152689bbfd1dcd5c",
+        "source_currency": "d8d000851a6ed0d4fb283d11e6389d1edaac1c37b179c24cbf1bc55dd30bd15d",
+        "screening": "e1243417ead559244a57c3ccc2d31c9f39e2fad5323bad14ec718d4b84960462",
+        "schedule:SYNTHETIC-schedule-insurance": "33b8a612f789b15a436bcf09d1fe791865337509c87e4e6fe395955653c6e8f3",
+        "schedule:SYNTHETIC-schedule-property_tax": "fa0c9df8a1f1f75f74dc2be21d0caa5f4cb220afb7db9502318f069397a322a7",
+        "scheduled_current": "4620bf4a897699081cc0d0be4b35ef5646d5a95fa6f16327426a540538c2a09d",
+        "policy:SYNTHETIC-schedule-insurance": "4cc5ac170acee8ead53ac8bab6f6e2e7c65d9d4bf6c15eacf2254be47347eb63",
+        "policy_current": "919a366a93568877e72e8fc611f2a568e77fbcbd67b537b432a43de216df0c72",
+        "report": "97933d178f3cbf38c982236511c6f9a5a6918379f3f7d8ff55b96e5c5705bfda"
+      }
+    }
+  ],
+  "demonstration": {
+    "changed_input_nodes": [
+      "input:recipe/sale",
+      "input:period/1/noi_source",
+      "input:period/1/cash_source",
+      "input:period/1/expense_detail",
+      "input:identity",
+      "input:base_registry",
+      "input:scheduled_binding",
+      "input:scheduled_registry",
+      "input:policy_registry",
+      "input:base_bytes",
+      "input:scheduled_bytes",
+      "input:outer_bytes",
+      "input:schedule/SYNTHETIC-schedule-insurance",
+      "input:policy/SYNTHETIC-schedule-insurance"
+    ],
+    "logical_input_changes": [
+      {
+        "input_node": "input:recipe/sale",
+        "reference_source_sha256": "99c64b961f79630033687460312449441a3cdf54610682ee107bb152383894ee",
+        "candidate_source_sha256": "2ae95b45400fd23a213085ef0c26586d07f5ad052408038d371ffa8ad9361eeb",
+        "logical_changes": [
+          {
+            "pointer": "/closing_source/amounts/opening_free_cash/value",
+            "before_exists": true,
+            "before": {
+              "denominator": "1",
+              "numerator": "208"
+            },
+            "after_exists": true,
+            "after": {
+              "denominator": "1",
+              "numerator": "206"
+            }
+          }
+        ]
+      },
+      {
+        "input_node": "input:period/1/noi_source",
+        "reference_source_sha256": "9a345856b1045b81938f6c85cc08ce03d31716cc46a200d8336d8492263d0b6b",
+        "candidate_source_sha256": "6dc13eaf7c4d5a76fbd0644ef991f42d348b0bb9c752f28764aa25b5a4ea7979",
+        "logical_changes": [
+          {
+            "pointer": "/expense_rows/0/value",
+            "before_exists": true,
+            "before": {
+              "denominator": "1",
+              "numerator": "10"
+            },
+            "after_exists": true,
+            "after": {
+              "denominator": "1",
+              "numerator": "12"
+            }
+          }
+        ]
+      },
+      {
+        "input_node": "input:period/1/cash_source",
+        "reference_source_sha256": "2f18a902a350db9fd34a01ffb0987f0a6424d471896315d082b4f19c70b1cce7",
+        "candidate_source_sha256": "b257b7c5958d7bbc47faf613f6b2354612ffbbc81c33cb6fd71eb1e0be6967d3",
+        "logical_changes": [
+          {
+            "pointer": "/amounts/closing_free_cash_claim/value",
+            "before_exists": true,
+            "before": {
+              "denominator": "1",
+              "numerator": "208"
+            },
+            "after_exists": true,
+            "after": {
+              "denominator": "1",
+              "numerator": "206"
+            }
+          },
+          {
+            "pointer": "/amounts/operating_payments_claim/value",
+            "before_exists": true,
+            "before": {
+              "denominator": "1",
+              "numerator": "20"
+            },
+            "after_exists": true,
+            "after": {
+              "denominator": "1",
+              "numerator": "22"
+            }
+          }
+        ]
+      },
+      {
+        "input_node": "input:period/1/expense_detail",
+        "reference_source_sha256": "129b4b1c3abf362434c9cf9f2e47e6e06d83bd30ac8584146a0da8d09a2988b8",
+        "candidate_source_sha256": "533a253aa2fcf7741185343ac3b808dc359a50174b38156f3bfa1ee62402d46e",
+        "logical_changes": [
+          {
+            "pointer": "/items/0/expense_amount",
+            "before_exists": true,
+            "before": {
+              "denominator": "1",
+              "numerator": "10"
+            },
+            "after_exists": true,
+            "after": {
+              "denominator": "1",
+              "numerator": "12"
+            }
+          },
+          {
+            "pointer": "/items/0/payments/0/amount",
+            "before_exists": true,
+            "before": {
+              "denominator": "1",
+              "numerator": "15"
+            },
+            "after_exists": true,
+            "after": {
+              "denominator": "1",
+              "numerator": "17"
+            }
+          }
+        ]
+      },
+      {
+        "input_node": "input:identity",
+        "reference_source_sha256": "c9b78f68c38af4071ee00462b5e5540d12709687e45893b08cf7672fcb2bcc3a",
+        "candidate_source_sha256": "b43244f5d32cfa552a5141a7c8f009536624af2c29cbdf9302512de64438302d",
+        "logical_changes": [
+          {
+            "pointer": "/case_revision",
+            "before_exists": true,
+            "before": 1,
+            "after_exists": true,
+            "after": 3
+          }
+        ]
+      },
+      {
+        "input_node": "input:base_registry",
+        "reference_source_sha256": "9cfdb0b8e9d0694c998df8e0c72d03745a4d1cfeae2cec9f8603a9e431a847fc",
+        "candidate_source_sha256": "0c7a5f7bfd924ddfe5e209e4236e459589a567a15a7cedfc1eae1894fefa44bf",
+        "logical_changes": [
+          {
+            "pointer": "/evidence/0/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-supplied-test-validity-not-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-base-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/0/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-phased-evidence-0",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-base-0"
+          },
+          {
+            "pointer": "/evidence/0/source_sha256",
+            "before_exists": true,
+            "before": "f8de07bd04d7ba19ab81538fba680ff2139bd60ebb559f588e526a4428d64dbf",
+            "after_exists": true,
+            "after": "fd7a030d8b372a92a32baf1b0789df3b9311f778678c44205cc41fb97f7f8394"
+          },
+          {
+            "pointer": "/evidence/1/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-supplied-test-validity-not-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-base-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/1/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-phased-evidence-1",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-base-1"
+          },
+          {
+            "pointer": "/evidence/2/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-supplied-test-validity-not-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-base-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/2/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-phased-evidence-2",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-base-2"
+          },
+          {
+            "pointer": "/evidence/3/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-supplied-test-validity-not-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-base-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/3/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-phased-evidence-3",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-base-3"
+          },
+          {
+            "pointer": "/evidence/4/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-supplied-test-validity-not-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-base-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/4/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-phased-evidence-4",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-base-4"
+          },
+          {
+            "pointer": "/evidence/5/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-supplied-test-validity-not-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-base-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/5/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-phased-evidence-5",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-base-5"
+          },
+          {
+            "pointer": "/evidence/6/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-supplied-test-validity-not-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-base-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/6/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-phased-evidence-6",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-base-6"
+          },
+          {
+            "pointer": "/evidence/6/source_sha256",
+            "before_exists": true,
+            "before": "b0964d9a75197c4ffed5048184146e2554de7781c4e56eed07dbf19edf0caba0",
+            "after_exists": true,
+            "after": "92c8a44330571cb5fb68a81994e850f72af89d277c21537e36baa4922609ff32"
+          },
+          {
+            "pointer": "/evidence/7/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-supplied-test-validity-not-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-base-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/7/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-phased-evidence-7",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-base-7"
+          },
+          {
+            "pointer": "/evidence/8/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-supplied-test-validity-not-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-base-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/8/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-phased-evidence-8",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-base-8"
+          },
+          {
+            "pointer": "/evidence/8/source_sha256",
+            "before_exists": true,
+            "before": "21fd703103a344597669742a3bcd14d120c8f7d46f917679f91471931173b084",
+            "after_exists": true,
+            "after": "9c271e6f76324c7e9deca200fcb9f77112e24a5eb9f62208259168f3e5ac6762"
+          },
+          {
+            "pointer": "/evidence/9/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-supplied-test-validity-not-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-base-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/9/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-phased-evidence-9",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-base-9"
+          },
+          {
+            "pointer": "/evidence/10/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-supplied-test-validity-not-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-base-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/10/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-phased-evidence-10",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-base-10"
+          },
+          {
+            "pointer": "/evidence/11/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-supplied-test-validity-not-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-base-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/11/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-phased-evidence-11",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-base-11"
+          },
+          {
+            "pointer": "/evidence/12/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-supplied-test-validity-not-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-base-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/12/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-phased-evidence-12",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-base-12"
+          },
+          {
+            "pointer": "/evidence/13/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-supplied-test-validity-not-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-base-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/13/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-phased-evidence-13",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-base-13"
+          },
+          {
+            "pointer": "/evidence/14/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-supplied-test-validity-not-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-base-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/14/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-phased-evidence-14",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-base-14"
+          },
+          {
+            "pointer": "/evidence/14/source_sha256",
+            "before_exists": true,
+            "before": "9a345856b1045b81938f6c85cc08ce03d31716cc46a200d8336d8492263d0b6b",
+            "after_exists": true,
+            "after": "6dc13eaf7c4d5a76fbd0644ef991f42d348b0bb9c752f28764aa25b5a4ea7979"
+          },
+          {
+            "pointer": "/evidence/15/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-supplied-test-validity-not-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-base-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/15/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-phased-evidence-15",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-base-15"
+          },
+          {
+            "pointer": "/evidence/15/source_sha256",
+            "before_exists": true,
+            "before": "a5f21a2a91b0acd2d4009eec6c7ba0d8b657968ce72930cce4e1a0e0161de71f",
+            "after_exists": true,
+            "after": "8647f359e209db76c9296b0e02b51ea2f006c80dbc55d051c6cc73e146e2bec5"
+          },
+          {
+            "pointer": "/evidence/16/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-supplied-test-validity-not-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-base-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/16/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-phased-evidence-16",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-base-16"
+          },
+          {
+            "pointer": "/evidence/16/source_sha256",
+            "before_exists": true,
+            "before": "d473fce2c882e1dbafd7dd74fb9575c4a9fabc9a98aca6ab31da6a60a7cb9fc9",
+            "after_exists": true,
+            "after": "87e299ef49c6c2e43a2c1f019ad074dbd9e6076c5fdd74ad9d79078b93409eb7"
+          },
+          {
+            "pointer": "/evidence/17/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-supplied-test-validity-not-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-base-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/17/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-phased-evidence-17",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-base-17"
+          },
+          {
+            "pointer": "/evidence/17/source_sha256",
+            "before_exists": true,
+            "before": "60c59231ea5ad917bc6c3561649e9c7f9552740d1985fcf53ab31b2511b3a780",
+            "after_exists": true,
+            "after": "05b212fa85b1a7c19124f8deb3a50f719734cbdbe6ae84c729d0b967e01eca0b"
+          },
+          {
+            "pointer": "/evidence/18/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-supplied-test-validity-not-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-base-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/18/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-phased-evidence-18",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-base-18"
+          },
+          {
+            "pointer": "/evidence/18/source_sha256",
+            "before_exists": true,
+            "before": "52ce30fd9cb2066a67fdac9ca8937a19d57e2e48000b8a8f1fe27e24a6bcefd2",
+            "after_exists": true,
+            "after": "5af91dbfd1a3a345ff9b494fa9ee6b4202cc5beeb06996ee171fc761e1e67385"
+          },
+          {
+            "pointer": "/evidence/19/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-supplied-test-validity-not-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-base-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/19/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-phased-evidence-19",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-base-19"
+          },
+          {
+            "pointer": "/evidence/19/source_sha256",
+            "before_exists": true,
+            "before": "ec19db738feff631fa35efacb084268b82f0227ce2a922d68c9b08e4ea10bac8",
+            "after_exists": true,
+            "after": "5f77cb3e9ef3833018d43e316ce4d4d85f867479e389c77cc7ccfd82bb286710"
+          },
+          {
+            "pointer": "/evidence/20/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-supplied-test-validity-not-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-base-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/20/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-phased-evidence-20",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-base-20"
+          },
+          {
+            "pointer": "/evidence/21/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-supplied-test-validity-not-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-base-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/21/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-phased-evidence-21",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-base-21"
+          },
+          {
+            "pointer": "/evidence/22/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-supplied-test-validity-not-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-base-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/22/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-phased-evidence-22",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-base-22"
+          },
+          {
+            "pointer": "/evidence/22/source_sha256",
+            "before_exists": true,
+            "before": "6113de3c3d48a5421ac86864c0e74c32df58e9f8c29f38788c2bfabac1aaff32",
+            "after_exists": true,
+            "after": "f4e1c50fddd89110a298dfd32aae4ecf081f9f1491ab11ad41954a0930d4ed67"
+          },
+          {
+            "pointer": "/evidence/23/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-supplied-test-validity-not-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-base-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/23/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-phased-evidence-23",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-base-23"
+          },
+          {
+            "pointer": "/evidence/23/source_sha256",
+            "before_exists": true,
+            "before": "5bf69c8f852f6a6bb53be9ad1d93266bf73eadb8b8f52f296510c20e5c88c72a",
+            "after_exists": true,
+            "after": "4373abdbd4999a5e852ac03b4d330827092016ed4392f5215247bc9d853aa4c0"
+          },
+          {
+            "pointer": "/evidence/24/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-supplied-test-validity-not-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-base-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/24/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-phased-evidence-24",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-base-24"
+          },
+          {
+            "pointer": "/evidence/25/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-supplied-test-validity-not-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-base-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/25/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-phased-evidence-25",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-base-25"
+          },
+          {
+            "pointer": "/evidence/25/source_sha256",
+            "before_exists": true,
+            "before": "a139fca6053922df78ee2459e1c923e491e06869ce8dc06c3e341941d0c12767",
+            "after_exists": true,
+            "after": "058e8fb7e1c65dc2a551f5e4e13c857a5c4fd4093feefd955fea7beac3e22f0a"
+          },
+          {
+            "pointer": "/evidence/26/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-supplied-test-validity-not-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-base-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/26/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-phased-evidence-26",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-base-26"
+          },
+          {
+            "pointer": "/evidence/26/source_sha256",
+            "before_exists": true,
+            "before": "7046ce53ae241ebbe86f85d5f0b42b3b533d95828dc2969ab314bb01e288921a",
+            "after_exists": true,
+            "after": "7037354d6de32e3c2cc2f7d75ccdfb27f198a500f143fc3bf82e56d13ca41e6e"
+          },
+          {
+            "pointer": "/evidence/27/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-supplied-test-validity-not-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-base-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/27/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-phased-evidence-27",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-base-27"
+          },
+          {
+            "pointer": "/evidence/27/source_sha256",
+            "before_exists": true,
+            "before": "efbadadeb0dbc420899780fae3473e10c5176966ed7380dc09c468cb0f7b317f",
+            "after_exists": true,
+            "after": "b69f7fffe9804d881a150f6fb08094cea4bd1dc06f234517561deee6f8774788"
+          },
+          {
+            "pointer": "/evidence/28/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-supplied-test-validity-not-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-base-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/28/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-phased-evidence-28",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-base-28"
+          },
+          {
+            "pointer": "/evidence/29/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-supplied-test-validity-not-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-base-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/29/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-phased-evidence-29",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-base-29"
+          },
+          {
+            "pointer": "/evidence/30/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-supplied-test-validity-not-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-base-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/30/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-phased-evidence-30",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-base-30"
+          },
+          {
+            "pointer": "/evidence/31/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-supplied-test-validity-not-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-base-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/31/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-phased-evidence-31",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-base-31"
+          },
+          {
+            "pointer": "/evidence/32/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-supplied-test-validity-not-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-base-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/32/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-phased-evidence-32",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-base-32"
+          },
+          {
+            "pointer": "/evidence/33/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-supplied-test-validity-not-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-base-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/33/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-phased-evidence-33",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-base-33"
+          },
+          {
+            "pointer": "/evidence/34/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-supplied-test-validity-not-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-base-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/34/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-phased-evidence-34",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-base-34"
+          },
+          {
+            "pointer": "/evidence/35/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-supplied-test-validity-not-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-base-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/35/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-phased-evidence-35",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-base-35"
+          },
+          {
+            "pointer": "/evidence/36/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-supplied-test-validity-not-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-base-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/36/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-phased-evidence-36",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-base-36"
+          },
+          {
+            "pointer": "/requirements/0/source_sha256",
+            "before_exists": true,
+            "before": "f8de07bd04d7ba19ab81538fba680ff2139bd60ebb559f588e526a4428d64dbf",
+            "after_exists": true,
+            "after": "fd7a030d8b372a92a32baf1b0789df3b9311f778678c44205cc41fb97f7f8394"
+          },
+          {
+            "pointer": "/requirements/6/source_sha256",
+            "before_exists": true,
+            "before": "b0964d9a75197c4ffed5048184146e2554de7781c4e56eed07dbf19edf0caba0",
+            "after_exists": true,
+            "after": "92c8a44330571cb5fb68a81994e850f72af89d277c21537e36baa4922609ff32"
+          },
+          {
+            "pointer": "/requirements/8/source_sha256",
+            "before_exists": true,
+            "before": "21fd703103a344597669742a3bcd14d120c8f7d46f917679f91471931173b084",
+            "after_exists": true,
+            "after": "9c271e6f76324c7e9deca200fcb9f77112e24a5eb9f62208259168f3e5ac6762"
+          },
+          {
+            "pointer": "/requirements/14/source_sha256",
+            "before_exists": true,
+            "before": "9a345856b1045b81938f6c85cc08ce03d31716cc46a200d8336d8492263d0b6b",
+            "after_exists": true,
+            "after": "6dc13eaf7c4d5a76fbd0644ef991f42d348b0bb9c752f28764aa25b5a4ea7979"
+          },
+          {
+            "pointer": "/requirements/15/source_sha256",
+            "before_exists": true,
+            "before": "a5f21a2a91b0acd2d4009eec6c7ba0d8b657968ce72930cce4e1a0e0161de71f",
+            "after_exists": true,
+            "after": "8647f359e209db76c9296b0e02b51ea2f006c80dbc55d051c6cc73e146e2bec5"
+          },
+          {
+            "pointer": "/requirements/16/source_sha256",
+            "before_exists": true,
+            "before": "d473fce2c882e1dbafd7dd74fb9575c4a9fabc9a98aca6ab31da6a60a7cb9fc9",
+            "after_exists": true,
+            "after": "87e299ef49c6c2e43a2c1f019ad074dbd9e6076c5fdd74ad9d79078b93409eb7"
+          },
+          {
+            "pointer": "/requirements/17/source_sha256",
+            "before_exists": true,
+            "before": "60c59231ea5ad917bc6c3561649e9c7f9552740d1985fcf53ab31b2511b3a780",
+            "after_exists": true,
+            "after": "05b212fa85b1a7c19124f8deb3a50f719734cbdbe6ae84c729d0b967e01eca0b"
+          },
+          {
+            "pointer": "/requirements/18/source_sha256",
+            "before_exists": true,
+            "before": "52ce30fd9cb2066a67fdac9ca8937a19d57e2e48000b8a8f1fe27e24a6bcefd2",
+            "after_exists": true,
+            "after": "5af91dbfd1a3a345ff9b494fa9ee6b4202cc5beeb06996ee171fc761e1e67385"
+          },
+          {
+            "pointer": "/requirements/19/source_sha256",
+            "before_exists": true,
+            "before": "ec19db738feff631fa35efacb084268b82f0227ce2a922d68c9b08e4ea10bac8",
+            "after_exists": true,
+            "after": "5f77cb3e9ef3833018d43e316ce4d4d85f867479e389c77cc7ccfd82bb286710"
+          },
+          {
+            "pointer": "/requirements/22/source_sha256",
+            "before_exists": true,
+            "before": "6113de3c3d48a5421ac86864c0e74c32df58e9f8c29f38788c2bfabac1aaff32",
+            "after_exists": true,
+            "after": "f4e1c50fddd89110a298dfd32aae4ecf081f9f1491ab11ad41954a0930d4ed67"
+          },
+          {
+            "pointer": "/requirements/23/source_sha256",
+            "before_exists": true,
+            "before": "5bf69c8f852f6a6bb53be9ad1d93266bf73eadb8b8f52f296510c20e5c88c72a",
+            "after_exists": true,
+            "after": "4373abdbd4999a5e852ac03b4d330827092016ed4392f5215247bc9d853aa4c0"
+          },
+          {
+            "pointer": "/requirements/25/source_sha256",
+            "before_exists": true,
+            "before": "a139fca6053922df78ee2459e1c923e491e06869ce8dc06c3e341941d0c12767",
+            "after_exists": true,
+            "after": "058e8fb7e1c65dc2a551f5e4e13c857a5c4fd4093feefd955fea7beac3e22f0a"
+          },
+          {
+            "pointer": "/requirements/26/source_sha256",
+            "before_exists": true,
+            "before": "7046ce53ae241ebbe86f85d5f0b42b3b533d95828dc2969ab314bb01e288921a",
+            "after_exists": true,
+            "after": "7037354d6de32e3c2cc2f7d75ccdfb27f198a500f143fc3bf82e56d13ca41e6e"
+          },
+          {
+            "pointer": "/requirements/27/source_sha256",
+            "before_exists": true,
+            "before": "efbadadeb0dbc420899780fae3473e10c5176966ed7380dc09c468cb0f7b317f",
+            "after_exists": true,
+            "after": "b69f7fffe9804d881a150f6fb08094cea4bd1dc06f234517561deee6f8774788"
+          }
+        ]
+      },
+      {
+        "input_node": "input:scheduled_binding",
+        "reference_source_sha256": "104c4487dae521a70acd227c1aef4372ea4ec80ac068cf29869eacba29211bff",
+        "candidate_source_sha256": "4aabe0d86738ac07ef863b8ebbebaf33d84a1900720c1f91267614ee74214245",
+        "logical_changes": [
+          {
+            "pointer": "/base_case_sha256",
+            "before_exists": true,
+            "before": "c0c8a0f065c07013cb79a0fc2b56752e235dcae6c618eb5f0dc72ca1909472be",
+            "after_exists": true,
+            "after": "e2d9a19959e0fc40386a5580bb0dac93aca13b448dcee51c771323da47674341"
+          },
+          {
+            "pointer": "/schedules/0/schedule_source_sha256",
+            "before_exists": true,
+            "before": "936217b6b0cb4a4d52e9e7f8ec5782d7b1ec412e550c5b1f9e118cbb46b55f49",
+            "after_exists": true,
+            "after": "aeae2a3bd2881202c0c7b14a6df671bdad593908bbda8b1fbf5b1caf35c844f9"
+          }
+        ]
+      },
+      {
+        "input_node": "input:scheduled_registry",
+        "reference_source_sha256": "5d0689e0f11345cb821ac427c6071c8d41686ce81ec1bfc3f8bb22ee6166fd28",
+        "candidate_source_sha256": "b71cb4a29826ff0b8790f8a01258aab8e93e74e20ebb671b55c345fac26fb01b",
+        "logical_changes": [
+          {
+            "pointer": "/evidence/0/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-explicit-source-date-fixture-not-legal-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-parent-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/0/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-schedule-evidence-0",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-parent-0"
+          },
+          {
+            "pointer": "/evidence/0/source_sha256",
+            "before_exists": true,
+            "before": "f8de07bd04d7ba19ab81538fba680ff2139bd60ebb559f588e526a4428d64dbf",
+            "after_exists": true,
+            "after": "fd7a030d8b372a92a32baf1b0789df3b9311f778678c44205cc41fb97f7f8394"
+          },
+          {
+            "pointer": "/evidence/1/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-explicit-source-date-fixture-not-legal-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-parent-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/1/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-schedule-evidence-1",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-parent-1"
+          },
+          {
+            "pointer": "/evidence/2/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-explicit-source-date-fixture-not-legal-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-parent-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/2/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-schedule-evidence-2",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-parent-2"
+          },
+          {
+            "pointer": "/evidence/3/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-explicit-source-date-fixture-not-legal-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-parent-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/3/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-schedule-evidence-3",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-parent-3"
+          },
+          {
+            "pointer": "/evidence/4/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-explicit-source-date-fixture-not-legal-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-parent-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/4/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-schedule-evidence-4",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-parent-4"
+          },
+          {
+            "pointer": "/evidence/5/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-explicit-source-date-fixture-not-legal-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-parent-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/5/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-schedule-evidence-5",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-parent-5"
+          },
+          {
+            "pointer": "/evidence/6/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-explicit-source-date-fixture-not-legal-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-parent-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/6/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-schedule-evidence-6",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-parent-6"
+          },
+          {
+            "pointer": "/evidence/6/source_sha256",
+            "before_exists": true,
+            "before": "b0964d9a75197c4ffed5048184146e2554de7781c4e56eed07dbf19edf0caba0",
+            "after_exists": true,
+            "after": "92c8a44330571cb5fb68a81994e850f72af89d277c21537e36baa4922609ff32"
+          },
+          {
+            "pointer": "/evidence/7/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-explicit-source-date-fixture-not-legal-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-parent-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/7/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-schedule-evidence-7",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-parent-7"
+          },
+          {
+            "pointer": "/evidence/8/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-explicit-source-date-fixture-not-legal-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-parent-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/8/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-schedule-evidence-8",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-parent-8"
+          },
+          {
+            "pointer": "/evidence/8/source_sha256",
+            "before_exists": true,
+            "before": "21fd703103a344597669742a3bcd14d120c8f7d46f917679f91471931173b084",
+            "after_exists": true,
+            "after": "9c271e6f76324c7e9deca200fcb9f77112e24a5eb9f62208259168f3e5ac6762"
+          },
+          {
+            "pointer": "/evidence/9/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-explicit-source-date-fixture-not-legal-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-parent-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/9/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-schedule-evidence-9",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-parent-9"
+          },
+          {
+            "pointer": "/evidence/10/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-explicit-source-date-fixture-not-legal-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-parent-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/10/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-schedule-evidence-10",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-parent-10"
+          },
+          {
+            "pointer": "/evidence/11/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-explicit-source-date-fixture-not-legal-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-parent-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/11/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-schedule-evidence-11",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-parent-11"
+          },
+          {
+            "pointer": "/evidence/12/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-explicit-source-date-fixture-not-legal-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-parent-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/12/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-schedule-evidence-12",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-parent-12"
+          },
+          {
+            "pointer": "/evidence/13/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-explicit-source-date-fixture-not-legal-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-parent-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/13/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-schedule-evidence-13",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-parent-13"
+          },
+          {
+            "pointer": "/evidence/14/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-explicit-source-date-fixture-not-legal-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-parent-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/14/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-schedule-evidence-14",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-parent-14"
+          },
+          {
+            "pointer": "/evidence/14/source_sha256",
+            "before_exists": true,
+            "before": "9a345856b1045b81938f6c85cc08ce03d31716cc46a200d8336d8492263d0b6b",
+            "after_exists": true,
+            "after": "6dc13eaf7c4d5a76fbd0644ef991f42d348b0bb9c752f28764aa25b5a4ea7979"
+          },
+          {
+            "pointer": "/evidence/15/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-explicit-source-date-fixture-not-legal-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-parent-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/15/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-schedule-evidence-15",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-parent-15"
+          },
+          {
+            "pointer": "/evidence/15/source_sha256",
+            "before_exists": true,
+            "before": "a5f21a2a91b0acd2d4009eec6c7ba0d8b657968ce72930cce4e1a0e0161de71f",
+            "after_exists": true,
+            "after": "8647f359e209db76c9296b0e02b51ea2f006c80dbc55d051c6cc73e146e2bec5"
+          },
+          {
+            "pointer": "/evidence/16/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-explicit-source-date-fixture-not-legal-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-parent-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/16/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-schedule-evidence-16",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-parent-16"
+          },
+          {
+            "pointer": "/evidence/16/source_sha256",
+            "before_exists": true,
+            "before": "d473fce2c882e1dbafd7dd74fb9575c4a9fabc9a98aca6ab31da6a60a7cb9fc9",
+            "after_exists": true,
+            "after": "87e299ef49c6c2e43a2c1f019ad074dbd9e6076c5fdd74ad9d79078b93409eb7"
+          },
+          {
+            "pointer": "/evidence/17/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-explicit-source-date-fixture-not-legal-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-parent-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/17/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-schedule-evidence-17",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-parent-17"
+          },
+          {
+            "pointer": "/evidence/17/source_sha256",
+            "before_exists": true,
+            "before": "60c59231ea5ad917bc6c3561649e9c7f9552740d1985fcf53ab31b2511b3a780",
+            "after_exists": true,
+            "after": "05b212fa85b1a7c19124f8deb3a50f719734cbdbe6ae84c729d0b967e01eca0b"
+          },
+          {
+            "pointer": "/evidence/18/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-explicit-source-date-fixture-not-legal-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-parent-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/18/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-schedule-evidence-18",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-parent-18"
+          },
+          {
+            "pointer": "/evidence/18/source_sha256",
+            "before_exists": true,
+            "before": "52ce30fd9cb2066a67fdac9ca8937a19d57e2e48000b8a8f1fe27e24a6bcefd2",
+            "after_exists": true,
+            "after": "5af91dbfd1a3a345ff9b494fa9ee6b4202cc5beeb06996ee171fc761e1e67385"
+          },
+          {
+            "pointer": "/evidence/19/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-explicit-source-date-fixture-not-legal-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-parent-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/19/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-schedule-evidence-19",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-parent-19"
+          },
+          {
+            "pointer": "/evidence/19/source_sha256",
+            "before_exists": true,
+            "before": "ec19db738feff631fa35efacb084268b82f0227ce2a922d68c9b08e4ea10bac8",
+            "after_exists": true,
+            "after": "5f77cb3e9ef3833018d43e316ce4d4d85f867479e389c77cc7ccfd82bb286710"
+          },
+          {
+            "pointer": "/evidence/20/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-explicit-source-date-fixture-not-legal-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-parent-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/20/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-schedule-evidence-20",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-parent-20"
+          },
+          {
+            "pointer": "/evidence/21/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-explicit-source-date-fixture-not-legal-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-parent-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/21/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-schedule-evidence-21",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-parent-21"
+          },
+          {
+            "pointer": "/evidence/22/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-explicit-source-date-fixture-not-legal-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-parent-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/22/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-schedule-evidence-22",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-parent-22"
+          },
+          {
+            "pointer": "/evidence/22/source_sha256",
+            "before_exists": true,
+            "before": "6113de3c3d48a5421ac86864c0e74c32df58e9f8c29f38788c2bfabac1aaff32",
+            "after_exists": true,
+            "after": "f4e1c50fddd89110a298dfd32aae4ecf081f9f1491ab11ad41954a0930d4ed67"
+          },
+          {
+            "pointer": "/evidence/23/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-explicit-source-date-fixture-not-legal-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-parent-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/23/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-schedule-evidence-23",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-parent-23"
+          },
+          {
+            "pointer": "/evidence/23/source_sha256",
+            "before_exists": true,
+            "before": "5bf69c8f852f6a6bb53be9ad1d93266bf73eadb8b8f52f296510c20e5c88c72a",
+            "after_exists": true,
+            "after": "4373abdbd4999a5e852ac03b4d330827092016ed4392f5215247bc9d853aa4c0"
+          },
+          {
+            "pointer": "/evidence/24/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-explicit-source-date-fixture-not-legal-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-parent-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/24/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-schedule-evidence-24",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-parent-24"
+          },
+          {
+            "pointer": "/evidence/25/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-explicit-source-date-fixture-not-legal-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-parent-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/25/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-schedule-evidence-25",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-parent-25"
+          },
+          {
+            "pointer": "/evidence/25/source_sha256",
+            "before_exists": true,
+            "before": "a139fca6053922df78ee2459e1c923e491e06869ce8dc06c3e341941d0c12767",
+            "after_exists": true,
+            "after": "058e8fb7e1c65dc2a551f5e4e13c857a5c4fd4093feefd955fea7beac3e22f0a"
+          },
+          {
+            "pointer": "/evidence/26/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-explicit-source-date-fixture-not-legal-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-parent-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/26/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-schedule-evidence-26",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-parent-26"
+          },
+          {
+            "pointer": "/evidence/26/source_sha256",
+            "before_exists": true,
+            "before": "7046ce53ae241ebbe86f85d5f0b42b3b533d95828dc2969ab314bb01e288921a",
+            "after_exists": true,
+            "after": "7037354d6de32e3c2cc2f7d75ccdfb27f198a500f143fc3bf82e56d13ca41e6e"
+          },
+          {
+            "pointer": "/evidence/27/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-explicit-source-date-fixture-not-legal-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-parent-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/27/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-schedule-evidence-27",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-parent-27"
+          },
+          {
+            "pointer": "/evidence/27/source_sha256",
+            "before_exists": true,
+            "before": "efbadadeb0dbc420899780fae3473e10c5176966ed7380dc09c468cb0f7b317f",
+            "after_exists": true,
+            "after": "b69f7fffe9804d881a150f6fb08094cea4bd1dc06f234517561deee6f8774788"
+          },
+          {
+            "pointer": "/evidence/28/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-explicit-source-date-fixture-not-legal-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-parent-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/28/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-schedule-evidence-28",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-parent-28"
+          },
+          {
+            "pointer": "/evidence/29/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-explicit-source-date-fixture-not-legal-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-parent-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/29/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-schedule-evidence-29",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-parent-29"
+          },
+          {
+            "pointer": "/evidence/30/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-explicit-source-date-fixture-not-legal-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-parent-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/30/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-schedule-evidence-30",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-parent-30"
+          },
+          {
+            "pointer": "/evidence/31/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-explicit-source-date-fixture-not-legal-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-parent-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/31/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-schedule-evidence-31",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-parent-31"
+          },
+          {
+            "pointer": "/evidence/32/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-explicit-source-date-fixture-not-legal-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-parent-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/32/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-schedule-evidence-32",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-parent-32"
+          },
+          {
+            "pointer": "/evidence/33/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-explicit-source-date-fixture-not-legal-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-parent-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/33/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-schedule-evidence-33",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-parent-33"
+          },
+          {
+            "pointer": "/evidence/34/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-explicit-source-date-fixture-not-legal-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-parent-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/34/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-schedule-evidence-34",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-parent-34"
+          },
+          {
+            "pointer": "/evidence/35/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-explicit-source-date-fixture-not-legal-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-parent-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/35/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-schedule-evidence-35",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-parent-35"
+          },
+          {
+            "pointer": "/evidence/36/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-explicit-source-date-fixture-not-legal-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-parent-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/36/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-schedule-evidence-36",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-parent-36"
+          },
+          {
+            "pointer": "/evidence/37/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-explicit-source-date-fixture-not-legal-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-parent-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/37/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-schedule-evidence-37",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-parent-37"
+          },
+          {
+            "pointer": "/evidence/37/source_sha256",
+            "before_exists": true,
+            "before": "c0c8a0f065c07013cb79a0fc2b56752e235dcae6c618eb5f0dc72ca1909472be",
+            "after_exists": true,
+            "after": "e2d9a19959e0fc40386a5580bb0dac93aca13b448dcee51c771323da47674341"
+          },
+          {
+            "pointer": "/evidence/38/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-explicit-source-date-fixture-not-legal-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-parent-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/38/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-schedule-evidence-38",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-parent-38"
+          },
+          {
+            "pointer": "/evidence/38/source_sha256",
+            "before_exists": true,
+            "before": "104c4487dae521a70acd227c1aef4372ea4ec80ac068cf29869eacba29211bff",
+            "after_exists": true,
+            "after": "4aabe0d86738ac07ef863b8ebbebaf33d84a1900720c1f91267614ee74214245"
+          },
+          {
+            "pointer": "/evidence/39/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-explicit-source-date-fixture-not-legal-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-parent-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/39/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-schedule-evidence-39",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-parent-39"
+          },
+          {
+            "pointer": "/evidence/39/source_sha256",
+            "before_exists": true,
+            "before": "936217b6b0cb4a4d52e9e7f8ec5782d7b1ec412e550c5b1f9e118cbb46b55f49",
+            "after_exists": true,
+            "after": "aeae2a3bd2881202c0c7b14a6df671bdad593908bbda8b1fbf5b1caf35c844f9"
+          },
+          {
+            "pointer": "/evidence/40/basis_ref",
+            "before_exists": true,
+            "before": "SYNTHETIC-explicit-source-date-fixture-not-legal-authority",
+            "after_exists": true,
+            "after": "SYNTHETIC-explicit-renewal-twelve-parent-fixture-not-source-authority"
+          },
+          {
+            "pointer": "/evidence/40/evidence_id",
+            "before_exists": true,
+            "before": "SYNTHETIC-schedule-evidence-40",
+            "after_exists": true,
+            "after": "SYNTHETIC-renewal-twelve-parent-40"
+          },
+          {
+            "pointer": "/requirements/0/source_sha256",
+            "before_exists": true,
+            "before": "f8de07bd04d7ba19ab81538fba680ff2139bd60ebb559f588e526a4428d64dbf",
+            "after_exists": true,
+            "after": "fd7a030d8b372a92a32baf1b0789df3b9311f778678c44205cc41fb97f7f8394"
+          },
+          {
+            "pointer": "/requirements/6/source_sha256",
+            "before_exists": true,
+            "before": "b0964d9a75197c4ffed5048184146e2554de7781c4e56eed07dbf19edf0caba0",
+            "after_exists": true,
+            "after": "92c8a44330571cb5fb68a81994e850f72af89d277c21537e36baa4922609ff32"
+          },
+          {
+            "pointer": "/requirements/8/source_sha256",
+            "before_exists": true,
+            "before": "21fd703103a344597669742a3bcd14d120c8f7d46f917679f91471931173b084",
+            "after_exists": true,
+            "after": "9c271e6f76324c7e9deca200fcb9f77112e24a5eb9f62208259168f3e5ac6762"
+          },
+          {
+            "pointer": "/requirements/14/source_sha256",
+            "before_exists": true,
+            "before": "9a345856b1045b81938f6c85cc08ce03d31716cc46a200d8336d8492263d0b6b",
+            "after_exists": true,
+            "after": "6dc13eaf7c4d5a76fbd0644ef991f42d348b0bb9c752f28764aa25b5a4ea7979"
+          },
+          {
+            "pointer": "/requirements/15/source_sha256",
+            "before_exists": true,
+            "before": "a5f21a2a91b0acd2d4009eec6c7ba0d8b657968ce72930cce4e1a0e0161de71f",
+            "after_exists": true,
+            "after": "8647f359e209db76c9296b0e02b51ea2f006c80dbc55d051c6cc73e146e2bec5"
+          },
+          {
+            "pointer": "/requirements/16/source_sha256",
+            "before_exists": true,
+            "before": "d473fce2c882e1dbafd7dd74fb9575c4a9fabc9a98aca6ab31da6a60a7cb9fc9",
+            "after_exists": true,
+            "after": "87e299ef49c6c2e43a2c1f019ad074dbd9e6076c5fdd74ad9d79078b93409eb7"
+          },
+          {
+            "pointer": "/requirements/17/source_sha256",
+            "before_exists": true,
+            "before": "60c59231ea5ad917bc6c3561649e9c7f9552740d1985fcf53ab31b2511b3a780",
+            "after_exists": true,
+            "after": "05b212fa85b1a7c19124f8deb3a50f719734cbdbe6ae84c729d0b967e01eca0b"
+          },
+          {
+            "pointer": "/requirements/18/source_sha256",
+            "before_exists": true,
+            "before": "52ce30fd9cb2066a67fdac9ca8937a19d57e2e48000b8a8f1fe27e24a6bcefd2",
+            "after_exists": true,
+            "after": "5af91dbfd1a3a345ff9b494fa9ee6b4202cc5beeb06996ee171fc761e1e67385"
+          },
+          {
+            "pointer": "/requirements/19/source_sha256",
+            "before_exists": true,
+            "before": "ec19db738feff631fa35efacb084268b82f0227ce2a922d68c9b08e4ea10bac8",
+            "after_exists": true,
+            "after": "5f77cb3e9ef3833018d43e316ce4d4d85f867479e389c77cc7ccfd82bb286710"
+          },
+          {
+            "pointer": "/requirements/22/source_sha256",
+            "before_exists": true,
+            "before": "6113de3c3d48a5421ac86864c0e74c32df58e9f8c29f38788c2bfabac1aaff32",
+            "after_exists": true,
+            "after": "f4e1c50fddd89110a298dfd32aae4ecf081f9f1491ab11ad41954a0930d4ed67"
+          },
+          {
+            "pointer": "/requirements/23/source_sha256",
+            "before_exists": true,
+            "before": "5bf69c8f852f6a6bb53be9ad1d93266bf73eadb8b8f52f296510c20e5c88c72a",
+            "after_exists": true,
+            "after": "4373abdbd4999a5e852ac03b4d330827092016ed4392f5215247bc9d853aa4c0"
+          },
+          {
+            "pointer": "/requirements/25/source_sha256",
+            "before_exists": true,
+            "before": "a139fca6053922df78ee2459e1c923e491e06869ce8dc06c3e341941d0c12767",
+            "after_exists": true,
+            "after": "058e8fb7e1c65dc2a551f5e4e13c857a5c4fd4093feefd955fea7beac3e22f0a"
+          },
+          {
+            "pointer": "/requirements/26/source_sha256",
+            "before_exists": true,
+            "before": "7046ce53ae241ebbe86f85d5f0b42b3b533d95828dc2969ab314bb01e288921a",
+            "after_exists": true,
+            "after": "7037354d6de32e3c2cc2f7d75ccdfb27f198a500f143fc3bf82e56d13ca41e6e"
+          },
+          {
+            "pointer": "/requirements/27/source_sha256",
+            "before_exists": true,
+            "before": "efbadadeb0dbc420899780fae3473e10c5176966ed7380dc09c468cb0f7b317f",
+            "after_exists": true,
+            "after": "b69f7fffe9804d881a150f6fb08094cea4bd1dc06f234517561deee6f8774788"
+          },
+          {
+            "pointer": "/requirements/37/source_sha256",
+            "before_exists": true,
+            "before": "c0c8a0f065c07013cb79a0fc2b56752e235dcae6c618eb5f0dc72ca1909472be",
+            "after_exists": true,
+            "after": "e2d9a19959e0fc40386a5580bb0dac93aca13b448dcee51c771323da47674341"
+          },
+          {
+            "pointer": "/requirements/38/source_sha256",
+            "before_exists": true,
+            "before": "104c4487dae521a70acd227c1aef4372ea4ec80ac068cf29869eacba29211bff",
+            "after_exists": true,
+            "after": "4aabe0d86738ac07ef863b8ebbebaf33d84a1900720c1f91267614ee74214245"
+          },
+          {
+            "pointer": "/requirements/39/source_sha256",
+            "before_exists": true,
+            "before": "936217b6b0cb4a4d52e9e7f8ec5782d7b1ec412e550c5b1f9e118cbb46b55f49",
+            "after_exists": true,
+            "after": "aeae2a3bd2881202c0c7b14a6df671bdad593908bbda8b1fbf5b1caf35c844f9"
+          }
+        ]
+      },
+      {
+        "input_node": "input:policy_registry",
+        "reference_source_sha256": "ed72580a8c56454d0053b3e0284d7480530ea79fc90bba41f865abc095368ccd",
+        "candidate_source_sha256": "5d6119b24a862a7cfbda1715e7ce3d5a2c1cd110abbcadf1e70467093916d476",
+        "logical_changes": [
+          {
+            "pointer": "/evidence/0/source_sha256",
+            "before_exists": true,
+            "before": "f8de07bd04d7ba19ab81538fba680ff2139bd60ebb559f588e526a4428d64dbf",
+            "after_exists": true,
+            "after": "fd7a030d8b372a92a32baf1b0789df3b9311f778678c44205cc41fb97f7f8394"
+          },
+          {
+            "pointer": "/evidence/6/source_sha256",
+            "before_exists": true,
+            "before": "b0964d9a75197c4ffed5048184146e2554de7781c4e56eed07dbf19edf0caba0",
+            "after_exists": true,
+            "after": "92c8a44330571cb5fb68a81994e850f72af89d277c21537e36baa4922609ff32"
+          },
+          {
+            "pointer": "/evidence/8/source_sha256",
+            "before_exists": true,
+            "before": "21fd703103a344597669742a3bcd14d120c8f7d46f917679f91471931173b084",
+            "after_exists": true,
+            "after": "9c271e6f76324c7e9deca200fcb9f77112e24a5eb9f62208259168f3e5ac6762"
+          },
+          {
+            "pointer": "/evidence/14/source_sha256",
+            "before_exists": true,
+            "before": "9a345856b1045b81938f6c85cc08ce03d31716cc46a200d8336d8492263d0b6b",
+            "after_exists": true,
+            "after": "6dc13eaf7c4d5a76fbd0644ef991f42d348b0bb9c752f28764aa25b5a4ea7979"
+          },
+          {
+            "pointer": "/evidence/15/source_sha256",
+            "before_exists": true,
+            "before": "a5f21a2a91b0acd2d4009eec6c7ba0d8b657968ce72930cce4e1a0e0161de71f",
+            "after_exists": true,
+            "after": "8647f359e209db76c9296b0e02b51ea2f006c80dbc55d051c6cc73e146e2bec5"
+          },
+          {
+            "pointer": "/evidence/16/source_sha256",
+            "before_exists": true,
+            "before": "d473fce2c882e1dbafd7dd74fb9575c4a9fabc9a98aca6ab31da6a60a7cb9fc9",
+            "after_exists": true,
+            "after": "87e299ef49c6c2e43a2c1f019ad074dbd9e6076c5fdd74ad9d79078b93409eb7"
+          },
+          {
+            "pointer": "/evidence/17/source_sha256",
+            "before_exists": true,
+            "before": "60c59231ea5ad917bc6c3561649e9c7f9552740d1985fcf53ab31b2511b3a780",
+            "after_exists": true,
+            "after": "05b212fa85b1a7c19124f8deb3a50f719734cbdbe6ae84c729d0b967e01eca0b"
+          },
+          {
+            "pointer": "/evidence/18/source_sha256",
+            "before_exists": true,
+            "before": "52ce30fd9cb2066a67fdac9ca8937a19d57e2e48000b8a8f1fe27e24a6bcefd2",
+            "after_exists": true,
+            "after": "5af91dbfd1a3a345ff9b494fa9ee6b4202cc5beeb06996ee171fc761e1e67385"
+          },
+          {
+            "pointer": "/evidence/19/source_sha256",
+            "before_exists": true,
+            "before": "ec19db738feff631fa35efacb084268b82f0227ce2a922d68c9b08e4ea10bac8",
+            "after_exists": true,
+            "after": "5f77cb3e9ef3833018d43e316ce4d4d85f867479e389c77cc7ccfd82bb286710"
+          },
+          {
+            "pointer": "/evidence/22/source_sha256",
+            "before_exists": true,
+            "before": "6113de3c3d48a5421ac86864c0e74c32df58e9f8c29f38788c2bfabac1aaff32",
+            "after_exists": true,
+            "after": "f4e1c50fddd89110a298dfd32aae4ecf081f9f1491ab11ad41954a0930d4ed67"
+          },
+          {
+            "pointer": "/evidence/23/source_sha256",
+            "before_exists": true,
+            "before": "5bf69c8f852f6a6bb53be9ad1d93266bf73eadb8b8f52f296510c20e5c88c72a",
+            "after_exists": true,
+            "after": "4373abdbd4999a5e852ac03b4d330827092016ed4392f5215247bc9d853aa4c0"
+          },
+          {
+            "pointer": "/evidence/25/source_sha256",
+            "before_exists": true,
+            "before": "a139fca6053922df78ee2459e1c923e491e06869ce8dc06c3e341941d0c12767",
+            "after_exists": true,
+            "after": "058e8fb7e1c65dc2a551f5e4e13c857a5c4fd4093feefd955fea7beac3e22f0a"
+          },
+          {
+            "pointer": "/evidence/26/source_sha256",
+            "before_exists": true,
+            "before": "7046ce53ae241ebbe86f85d5f0b42b3b533d95828dc2969ab314bb01e288921a",
+            "after_exists": true,
+            "after": "7037354d6de32e3c2cc2f7d75ccdfb27f198a500f143fc3bf82e56d13ca41e6e"
+          },
+          {
+            "pointer": "/evidence/27/source_sha256",
+            "before_exists": true,
+            "before": "efbadadeb0dbc420899780fae3473e10c5176966ed7380dc09c468cb0f7b317f",
+            "after_exists": true,
+            "after": "b69f7fffe9804d881a150f6fb08094cea4bd1dc06f234517561deee6f8774788"
+          },
+          {
+            "pointer": "/evidence/37/source_sha256",
+            "before_exists": true,
+            "before": "c0c8a0f065c07013cb79a0fc2b56752e235dcae6c618eb5f0dc72ca1909472be",
+            "after_exists": true,
+            "after": "e2d9a19959e0fc40386a5580bb0dac93aca13b448dcee51c771323da47674341"
+          },
+          {
+            "pointer": "/evidence/38/source_sha256",
+            "before_exists": true,
+            "before": "104c4487dae521a70acd227c1aef4372ea4ec80ac068cf29869eacba29211bff",
+            "after_exists": true,
+            "after": "4aabe0d86738ac07ef863b8ebbebaf33d84a1900720c1f91267614ee74214245"
+          },
+          {
+            "pointer": "/evidence/39/source_sha256",
+            "before_exists": true,
+            "before": "936217b6b0cb4a4d52e9e7f8ec5782d7b1ec412e550c5b1f9e118cbb46b55f49",
+            "after_exists": true,
+            "after": "aeae2a3bd2881202c0c7b14a6df671bdad593908bbda8b1fbf5b1caf35c844f9"
+          },
+          {
+            "pointer": "/evidence/41/source_sha256",
+            "before_exists": true,
+            "before": "3fc6d231393b96db74fd1d3f713537722a39f34755c7e48ba25e468b629707ab",
+            "after_exists": true,
+            "after": "455b359fc94bf5766d5964348b773521ac44991a996bf467f48bc897bf869f0c"
+          },
+          {
+            "pointer": "/evidence/42/source_sha256",
+            "before_exists": true,
+            "before": "f3382bcb713c6784c4e095e089ef4ba041d7ebcb1bd1bbac7e277ec6bb4e21d9",
+            "after_exists": true,
+            "after": "5821cfa7b895f3e6a7abb7fb2d5a62fd15f81b35d48bdcfefc84d6a015f010b6"
+          },
+          {
+            "pointer": "/requirements/0/source_sha256",
+            "before_exists": true,
+            "before": "f8de07bd04d7ba19ab81538fba680ff2139bd60ebb559f588e526a4428d64dbf",
+            "after_exists": true,
+            "after": "fd7a030d8b372a92a32baf1b0789df3b9311f778678c44205cc41fb97f7f8394"
+          },
+          {
+            "pointer": "/requirements/6/source_sha256",
+            "before_exists": true,
+            "before": "b0964d9a75197c4ffed5048184146e2554de7781c4e56eed07dbf19edf0caba0",
+            "after_exists": true,
+            "after": "92c8a44330571cb5fb68a81994e850f72af89d277c21537e36baa4922609ff32"
+          },
+          {
+            "pointer": "/requirements/8/source_sha256",
+            "before_exists": true,
+            "before": "21fd703103a344597669742a3bcd14d120c8f7d46f917679f91471931173b084",
+            "after_exists": true,
+            "after": "9c271e6f76324c7e9deca200fcb9f77112e24a5eb9f62208259168f3e5ac6762"
+          },
+          {
+            "pointer": "/requirements/14/source_sha256",
+            "before_exists": true,
+            "before": "9a345856b1045b81938f6c85cc08ce03d31716cc46a200d8336d8492263d0b6b",
+            "after_exists": true,
+            "after": "6dc13eaf7c4d5a76fbd0644ef991f42d348b0bb9c752f28764aa25b5a4ea7979"
+          },
+          {
+            "pointer": "/requirements/15/source_sha256",
+            "before_exists": true,
+            "before": "a5f21a2a91b0acd2d4009eec6c7ba0d8b657968ce72930cce4e1a0e0161de71f",
+            "after_exists": true,
+            "after": "8647f359e209db76c9296b0e02b51ea2f006c80dbc55d051c6cc73e146e2bec5"
+          },
+          {
+            "pointer": "/requirements/16/source_sha256",
+            "before_exists": true,
+            "before": "d473fce2c882e1dbafd7dd74fb9575c4a9fabc9a98aca6ab31da6a60a7cb9fc9",
+            "after_exists": true,
+            "after": "87e299ef49c6c2e43a2c1f019ad074dbd9e6076c5fdd74ad9d79078b93409eb7"
+          },
+          {
+            "pointer": "/requirements/17/source_sha256",
+            "before_exists": true,
+            "before": "60c59231ea5ad917bc6c3561649e9c7f9552740d1985fcf53ab31b2511b3a780",
+            "after_exists": true,
+            "after": "05b212fa85b1a7c19124f8deb3a50f719734cbdbe6ae84c729d0b967e01eca0b"
+          },
+          {
+            "pointer": "/requirements/18/source_sha256",
+            "before_exists": true,
+            "before": "52ce30fd9cb2066a67fdac9ca8937a19d57e2e48000b8a8f1fe27e24a6bcefd2",
+            "after_exists": true,
+            "after": "5af91dbfd1a3a345ff9b494fa9ee6b4202cc5beeb06996ee171fc761e1e67385"
+          },
+          {
+            "pointer": "/requirements/19/source_sha256",
+            "before_exists": true,
+            "before": "ec19db738feff631fa35efacb084268b82f0227ce2a922d68c9b08e4ea10bac8",
+            "after_exists": true,
+            "after": "5f77cb3e9ef3833018d43e316ce4d4d85f867479e389c77cc7ccfd82bb286710"
+          },
+          {
+            "pointer": "/requirements/22/source_sha256",
+            "before_exists": true,
+            "before": "6113de3c3d48a5421ac86864c0e74c32df58e9f8c29f38788c2bfabac1aaff32",
+            "after_exists": true,
+            "after": "f4e1c50fddd89110a298dfd32aae4ecf081f9f1491ab11ad41954a0930d4ed67"
+          },
+          {
+            "pointer": "/requirements/23/source_sha256",
+            "before_exists": true,
+            "before": "5bf69c8f852f6a6bb53be9ad1d93266bf73eadb8b8f52f296510c20e5c88c72a",
+            "after_exists": true,
+            "after": "4373abdbd4999a5e852ac03b4d330827092016ed4392f5215247bc9d853aa4c0"
+          },
+          {
+            "pointer": "/requirements/25/source_sha256",
+            "before_exists": true,
+            "before": "a139fca6053922df78ee2459e1c923e491e06869ce8dc06c3e341941d0c12767",
+            "after_exists": true,
+            "after": "058e8fb7e1c65dc2a551f5e4e13c857a5c4fd4093feefd955fea7beac3e22f0a"
+          },
+          {
+            "pointer": "/requirements/26/source_sha256",
+            "before_exists": true,
+            "before": "7046ce53ae241ebbe86f85d5f0b42b3b533d95828dc2969ab314bb01e288921a",
+            "after_exists": true,
+            "after": "7037354d6de32e3c2cc2f7d75ccdfb27f198a500f143fc3bf82e56d13ca41e6e"
+          },
+          {
+            "pointer": "/requirements/27/source_sha256",
+            "before_exists": true,
+            "before": "efbadadeb0dbc420899780fae3473e10c5176966ed7380dc09c468cb0f7b317f",
+            "after_exists": true,
+            "after": "b69f7fffe9804d881a150f6fb08094cea4bd1dc06f234517561deee6f8774788"
+          },
+          {
+            "pointer": "/requirements/37/source_sha256",
+            "before_exists": true,
+            "before": "c0c8a0f065c07013cb79a0fc2b56752e235dcae6c618eb5f0dc72ca1909472be",
+            "after_exists": true,
+            "after": "e2d9a19959e0fc40386a5580bb0dac93aca13b448dcee51c771323da47674341"
+          },
+          {
+            "pointer": "/requirements/38/source_sha256",
+            "before_exists": true,
+            "before": "104c4487dae521a70acd227c1aef4372ea4ec80ac068cf29869eacba29211bff",
+            "after_exists": true,
+            "after": "4aabe0d86738ac07ef863b8ebbebaf33d84a1900720c1f91267614ee74214245"
+          },
+          {
+            "pointer": "/requirements/39/source_sha256",
+            "before_exists": true,
+            "before": "936217b6b0cb4a4d52e9e7f8ec5782d7b1ec412e550c5b1f9e118cbb46b55f49",
+            "after_exists": true,
+            "after": "aeae2a3bd2881202c0c7b14a6df671bdad593908bbda8b1fbf5b1caf35c844f9"
+          },
+          {
+            "pointer": "/requirements/41/source_sha256",
+            "before_exists": true,
+            "before": "3fc6d231393b96db74fd1d3f713537722a39f34755c7e48ba25e468b629707ab",
+            "after_exists": true,
+            "after": "455b359fc94bf5766d5964348b773521ac44991a996bf467f48bc897bf869f0c"
+          },
+          {
+            "pointer": "/requirements/42/source_sha256",
+            "before_exists": true,
+            "before": "f3382bcb713c6784c4e095e089ef4ba041d7ebcb1bd1bbac7e277ec6bb4e21d9",
+            "after_exists": true,
+            "after": "5821cfa7b895f3e6a7abb7fb2d5a62fd15f81b35d48bdcfefc84d6a015f010b6"
+          }
+        ]
+      },
+      {
+        "input_node": "input:schedule/SYNTHETIC-schedule-insurance",
+        "reference_source_sha256": "936217b6b0cb4a4d52e9e7f8ec5782d7b1ec412e550c5b1f9e118cbb46b55f49",
+        "candidate_source_sha256": "aeae2a3bd2881202c0c7b14a6df671bdad593908bbda8b1fbf5b1caf35c844f9",
+        "logical_changes": [
+          {
+            "pointer": "/allocations/0/fraction",
+            "before_exists": true,
+            "before": {
+              "denominator": "2",
+              "numerator": "1"
+            },
+            "after_exists": true,
+            "after": {
+              "denominator": "11",
+              "numerator": "5"
+            }
+          },
+          {
+            "pointer": "/allocations/1/fraction",
+            "before_exists": true,
+            "before": {
+              "denominator": "2",
+              "numerator": "1"
+            },
+            "after_exists": true,
+            "after": {
+              "denominator": "11",
+              "numerator": "6"
+            }
+          },
+          {
+            "pointer": "/installments/1/amount",
+            "before_exists": true,
+            "before": {
+              "denominator": "1",
+              "numerator": "15"
+            },
+            "after_exists": true,
+            "after": {
+              "denominator": "1",
+              "numerator": "17"
+            }
+          },
+          {
+            "pointer": "/total_cost",
+            "before_exists": true,
+            "before": {
+              "denominator": "1",
+              "numerator": "20"
+            },
+            "after_exists": true,
+            "after": {
+              "denominator": "1",
+              "numerator": "22"
+            }
+          }
+        ]
+      },
+      {
+        "input_node": "input:policy/SYNTHETIC-schedule-insurance",
+        "reference_source_sha256": "f3382bcb713c6784c4e095e089ef4ba041d7ebcb1bd1bbac7e277ec6bb4e21d9",
+        "candidate_source_sha256": "5821cfa7b895f3e6a7abb7fb2d5a62fd15f81b35d48bdcfefc84d6a015f010b6",
+        "logical_changes": [
+          {
+            "pointer": "/aggregate_source_sha256",
+            "before_exists": true,
+            "before": "936217b6b0cb4a4d52e9e7f8ec5782d7b1ec412e550c5b1f9e118cbb46b55f49",
+            "after_exists": true,
+            "after": "aeae2a3bd2881202c0c7b14a6df671bdad593908bbda8b1fbf5b1caf35c844f9"
+          },
+          {
+            "pointer": "/policies/1/installments/0/amount",
+            "before_exists": true,
+            "before": {
+              "denominator": "1",
+              "numerator": "10"
+            },
+            "after_exists": true,
+            "after": {
+              "denominator": "1",
+              "numerator": "12"
+            }
+          },
+          {
+            "pointer": "/policies/1/premium",
+            "before_exists": true,
+            "before": {
+              "denominator": "1",
+              "numerator": "10"
+            },
+            "after_exists": true,
+            "after": {
+              "denominator": "1",
+              "numerator": "12"
+            }
+          }
+        ]
+      }
+    ],
+    "data_dependency_affected_nodes": [
+      "NOI:SYNTHETIC-hold-2",
+      "operating_cash:SYNTHETIC-hold-2",
+      "expense_detail:SYNTHETIC-hold-2",
+      "holding_cash",
+      "sale_cash",
+      "sale_debt",
+      "hold_sale",
+      "staged_operating_window",
+      "lifecycle_return",
+      "expense_checked_return",
+      "phased_rental_return",
+      "source_currency",
+      "screening",
+      "schedule:SYNTHETIC-schedule-insurance",
+      "scheduled_current",
+      "policy:SYNTHETIC-schedule-insurance",
+      "policy_current",
+      "report"
+    ],
+    "observed_changed_producers": [
+      "NOI:SYNTHETIC-hold-2",
+      "operating_cash:SYNTHETIC-hold-2",
+      "expense_detail:SYNTHETIC-hold-2",
+      "holding_cash",
+      "sale_cash",
+      "sale_debt",
+      "hold_sale",
+      "staged_operating_window",
+      "lifecycle_return",
+      "expense_checked_return",
+      "phased_rental_return",
+      "source_currency",
+      "schedule:SYNTHETIC-schedule-insurance",
+      "policy:SYNTHETIC-schedule-insurance",
+      "screening",
+      "scheduled_current",
+      "policy_current",
+      "report"
+    ],
+    "observed_stable_producers": [
+      "construction_cash",
+      "operating_phase",
+      "NOI:SYNTHETIC-hold-1",
+      "operating_cash:SYNTHETIC-hold-1",
+      "expense_detail:SYNTHETIC-hold-1",
+      "phased_rental:SYNTHETIC-hold-1",
+      "phased_rental:SYNTHETIC-hold-2",
+      "schedule:SYNTHETIC-schedule-property_tax"
+    ],
+    "all_observed_changes_reached": true,
+    "unmapped_original_field_count": 54,
+    "monetary_values_not_inferred": true
+  },
+  "all_55_original_fields_financially_mapped": false,
+  "financial_model_complete": false,
+  "professional_review_authenticated": false,
+  "independent_financial_audit": false,
+  "real_decisions_enabled": false,
+  "deployment_enabled": false
+}

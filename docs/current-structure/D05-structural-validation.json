@@ -1,0 +1,25 @@
+{
+  "snapshot": "D05",
+  "status": "passed_scoped_dependency_and_replay_check",
+  "checker_sha256": "b7d7abf6e6cc6ea14651069118102c357ddf939f97a802182de115cacb6fb8f9",
+  "nodes_checked": 61,
+  "input_nodes_checked": 35,
+  "producer_sources_checked": 24,
+  "supplied_cases_replayed": 2,
+  "observed_producer_changes_checked": 18,
+  "all_observed_changes_reached": true,
+  "negative_structural_cases_rejected": [
+    "missing_node",
+    "cycle",
+    "omitted_source_dependency",
+    "wrong_function_locator",
+    "wrong_input_locator",
+    "unsupported_financial_closure",
+    "forged_observed_producer"
+  ],
+  "financial_validation_performed": false,
+  "independent_financial_audit": false,
+  "professional_review_authenticated": false,
+  "real_decisions_enabled": false,
+  "deployment_enabled": false
+}

@@ -1,10 +1,10 @@
 {
-  "scope": "I01 preserved design, D02–D03 review and metric-intake design extensions and T01–T95 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D05 design/structure documentation and T01–T95 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 1140,
-      "sha256": "d9c85acc4d3cef4abcf4d4a0250d5edaeb54a1373a0f3d6062d6a8b95e659778"
+      "bytes": 1271,
+      "sha256": "196a797caa18677bbb7dce757151c32197c22355a2dd64d252b07ed3d492fe5b"
     },
     {
       "path": ".gitignore",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 36109,
-      "sha256": "5e18fccba4ce9839aadee2ba50276489c1990eb47b5a3a93917bc08de37516a4"
+      "bytes": 36336,
+      "sha256": "e63fa702fce2983d8c25ffbb0e732961a843ef3b17aec2ce6bfca35c05ebdfbb"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 145787,
-      "sha256": "c7ffe1b6e592c0de270eb024d1b1bbe7ec92b33906894c6a5ad39f0d96625ab0"
+      "bytes": 147524,
+      "sha256": "85b2724b99d09e457cfd370495c8e36ea06e5d8397a12b045b89ba76f747e73b"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -117,9 +117,29 @@
       "sha256": "4602e5fb1b17242b0f4f702e3136cf342d4760a4762b89c3805126f86e9550c0"
     },
     {
+      "path": "docs/current-structure/D05-structural-validation.json",
+      "bytes": 803,
+      "sha256": "6372f88e13beb0055e3a4823d69bbc6060506b16ade355be50d5ed38b8d3a6e0"
+    },
+    {
       "path": "docs/current-structure/MiniUW_55_campos_D04.csv",
       "bytes": 28155,
       "sha256": "36933edad8b3b905d629bb0e67113b316578a63f4652744af069b9cb302f0454"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Dependencias_D05.csv",
+      "bytes": 16300,
+      "sha256": "f69d0fd5855ac20be01c4c37d192373cd222a71a27b5546b2feacec88ca7fd0e"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Dependencias_D05.json",
+      "bytes": 151249,
+      "sha256": "a3a6a64413664b2ac2699426ed741a84d8fc26c2ac2e67cb4669a5954f0487b2"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Dependencias_D05.md",
+      "bytes": 13375,
+      "sha256": "94d2326e3fa6f09be0a6610d58bccac25e43d799d14a5cd97666f3bf3dbcbf12"
     },
     {
       "path": "docs/current-structure/MiniUW_Estructura_Vigente_D04.json",
@@ -3605,6 +3625,11 @@
       "path": "tools/check_current_structure_D04.py",
       "bytes": 9008,
       "sha256": "308c4553f8e582f34795eb09f49f5a355af589d779f6972eb2ab971292c18a7d"
+    },
+    {
+      "path": "tools/check_dependency_structure_D05.py",
+      "bytes": 21887,
+      "sha256": "b7d7abf6e6cc6ea14651069118102c357ddf939f97a802182de115cacb6fb8f9"
     },
     {
       "path": "tools/check_reference_package.py",
