@@ -1,10 +1,10 @@
 {
-  "scope": "I01 preserved design, D02–D03 review and metric-intake design extensions and T01–T92 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D03 review and metric-intake design extensions and T01–T95 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
       "bytes": 1009,
-      "sha256": "f0d482732dfec76e5cfe579673c1f2142b83ab784c26e4beee3407c3e06a2ad5"
+      "sha256": "99323b0a11159430cbf488634ceaea8813b603665b444a16d3bc07eead30ec46"
     },
     {
       "path": ".gitignore",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 35147,
-      "sha256": "0e20e096f50ee2fe924636d68e30926aef13dd03a468f96b966616a348892aad"
+      "bytes": 35933,
+      "sha256": "d22e1c6da5fc57f583ad606404e8aabb01c2557f25ede17e780418ffa15f3603"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 140802,
-      "sha256": "38819a27cf00358891a276ab088c899d6faeaa53f0c949e8140288c55d4ab5bc"
+      "bytes": 144725,
+      "sha256": "c7209c86048967604cf876eedd43b75b365f39f59ea9db2ffcf49d6157bfdee9"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -317,6 +317,11 @@
       "sha256": "be4145684a968d6ffeafe9d47360fee3b7a83528be3f05e4876f9d8ce9ddaaf6"
     },
     {
+      "path": "docs/policy-renewal-v1-runbook.md",
+      "bytes": 3563,
+      "sha256": "846414dc9b7170ce3aaa951c57717cca5143ec3104f5e2acfc479744a2e69434"
+    },
+    {
       "path": "docs/price-grid-catalogue.md",
       "bytes": 4814,
       "sha256": "819e36e2ae5f660463c230876de029e5ffae15f3feed4cd802186e53aa5882b4"
@@ -607,6 +612,46 @@
       "sha256": "0e979a8c97b308d65ff08caf300692e66bbb4200ac4e0ae61458e62ca5e70575"
     },
     {
+      "path": "docs/review/miniuw-v1-policy-renewal-example/MiniUW_v1_Resumen.pdf",
+      "bytes": 6562,
+      "sha256": "7023d9358f46dc0984a947985c25ea40eb0a07fcc6ff1a26ff92ed6beb95eb0b"
+    },
+    {
+      "path": "docs/review/miniuw-v1-policy-renewal-example/audit.json",
+      "bytes": 581,
+      "sha256": "b5e0f61f05fa09a06fd7a3152aea86dc2c77a4021cec94a5a7f034dba791b263"
+    },
+    {
+      "path": "docs/review/miniuw-v1-policy-renewal-example/case.json",
+      "bytes": 195427,
+      "sha256": "baa78b2ebc84a7ec5a204d9c10a4ba0f0777fd84c1b99edc40a874bb86b02306"
+    },
+    {
+      "path": "docs/review/miniuw-v1-policy-renewal-example/execution-evidence.json",
+      "bytes": 324345,
+      "sha256": "80ecb89c6d5192adaa49a3c4329208bf21a58bb50b209b14e281a235d1ab0492"
+    },
+    {
+      "path": "docs/review/miniuw-v1-policy-renewal-example/package.json",
+      "bytes": 1214,
+      "sha256": "d7e326aa4979556bdefc6f633631ede3d5ddb0ced755b31331f5e5caebb93946"
+    },
+    {
+      "path": "docs/review/miniuw-v1-policy-renewal-example/report-manifest.json",
+      "bytes": 12044,
+      "sha256": "ad703f659f712e1dfea2a9913a410c0d50dccb1982a144df3bbec980a858aa35"
+    },
+    {
+      "path": "docs/review/miniuw-v1-policy-renewal-example/results.json",
+      "bytes": 66598,
+      "sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1"
+    },
+    {
+      "path": "docs/review/miniuw-v1-policy-renewal-example/schedule-review.txt",
+      "bytes": 10534,
+      "sha256": "c23dc2c7669f8ee49d3b2bfe1db8ac80c8571e647e3bddb052e02379afe6b058"
+    },
+    {
       "path": "docs/review/miniuw-v1-revision-example/comparison-evidence.json",
       "bytes": 285912,
       "sha256": "0eda3effe964791d488eb2f6788a5464be1454f6076b8f43d2899a395a40f637"
@@ -675,6 +720,11 @@
       "path": "docs/review/pdf-review-validation.json",
       "bytes": 367,
       "sha256": "d76008398e1324b0709f0df8220d92fa249863f41c664188a2bbc624d6866fd6"
+    },
+    {
+      "path": "docs/review/policy-renewal-twelve-summary.json",
+      "bytes": 10941,
+      "sha256": "223547931774bacd7881b050299b0ad53d77cba229537d62b608fc691e17279d"
     },
     {
       "path": "docs/review/scheduled-tax-four-summary.json",
@@ -1052,6 +1102,11 @@
       "sha256": "416bbc61ec146af16f34a46a9420c7b65533a93aa33a027d324a1cfaf7b2bd61"
     },
     {
+      "path": "docs/technical-coverage-T93-T95.json",
+      "bytes": 13283,
+      "sha256": "3721de877480679911179952bec3e1f172e4135e3fcdef9c6d68ee22d5525e6e"
+    },
+    {
       "path": "docs/technical-implementation-T01.md",
       "bytes": 5308,
       "sha256": "c740cc5cb50583b48bdb6368132ad90b70aea5336e3c9bca06068ffa588920d7"
@@ -1347,9 +1402,14 @@
       "sha256": "36560e6086187abcddac7def5c37f067af66741f4da76597a56fff62c5a85c8b"
     },
     {
+      "path": "docs/technical-implementation-T93-T95.md",
+      "bytes": 5009,
+      "sha256": "f09bae292ac0542e90076740c0b0dbd5dd066a7bc7bf29ec6b00cbf692840fd1"
+    },
+    {
       "path": "docs/technical-implementation-status.json",
-      "bytes": 32434,
-      "sha256": "4ffc9f158bb8740a48287ea00a08c87870a967257b5ef63a59319bf385314193"
+      "bytes": 33813,
+      "sha256": "a38e0aa8085f1873c7435d9f3dcdcf163da95f7c76d489a82d2b697f6e33d6fe"
     },
     {
       "path": "infra/README.md",
@@ -2242,6 +2302,11 @@
       "sha256": "7009c2c07573741ed51dcbd3b38b1ef11210afd932d6e5d916cb74d37325ae26"
     },
     {
+      "path": "src/miniuw_foundation/insurance_renewals.py",
+      "bytes": 13268,
+      "sha256": "f30e1c1746e16eb3b77552c7c7a2138c05a4f7b99db3d4581a52218b9d2264fd"
+    },
+    {
       "path": "src/miniuw_foundation/intake.py",
       "bytes": 2462,
       "sha256": "65c81e7916f28d2c8429b4bfce293cbc7046f232fa2c9dbdb895b6fed8885a5f"
@@ -2320,6 +2385,16 @@
       "path": "src/miniuw_foundation/phased_rental_lifecycle.py",
       "bytes": 9582,
       "sha256": "f46dde3d968f2cb70e54b6ebdd065ffc2bb5d2382cdb4dafaeef2c88cdc66ec9"
+    },
+    {
+      "path": "src/miniuw_foundation/policy_renewal_artifacts.py",
+      "bytes": 8101,
+      "sha256": "c3f6ef1b9de08e68b12ea78996295e83596aff70fa8ac2d39426946bb0c76cbb"
+    },
+    {
+      "path": "src/miniuw_foundation/policy_renewal_case.py",
+      "bytes": 6051,
+      "sha256": "7f1bf0c2fcd861f8fffcaba12ea12524f6c271be96c2af4ac44be0016c0c35a3"
     },
     {
       "path": "src/miniuw_foundation/preopening_cash.py",
@@ -2520,6 +2595,16 @@
       "path": "templates/metric-intake-draft-empty.json",
       "bytes": 3492,
       "sha256": "3fa96c7556ee0b206e3213ad1d91c475bbebe2ab4aebb489db0a3eed034e68a7"
+    },
+    {
+      "path": "templates/miniuw-v1-policy-renewal-case.json",
+      "bytes": 195427,
+      "sha256": "baa78b2ebc84a7ec5a204d9c10a4ba0f0777fd84c1b99edc40a874bb86b02306"
+    },
+    {
+      "path": "templates/miniuw-v1-policy-renewal-twelve-case.json",
+      "bytes": 196969,
+      "sha256": "cf6554aec236a4f5f4d28f98ed6e3d5d555ab4298e67351e81b414eda643c994"
     },
     {
       "path": "templates/miniuw-v1-revision-comparison.json",
@@ -2790,6 +2875,11 @@
       "path": "templates/synthetic-holding-period-3.json",
       "bytes": 7795,
       "sha256": "337daff6f55e8c55afeb3255cea226ec36f9a12a25433e7e387f94d23f24a27d"
+    },
+    {
+      "path": "templates/synthetic-insurance-policy-book.json",
+      "bytes": 2653,
+      "sha256": "f3382bcb713c6784c4e095e089ef4ba041d7ebcb1bd1bbac7e277ec6bb4e21d9"
     },
     {
       "path": "templates/synthetic-insurance-schedule.json",
@@ -3347,6 +3437,11 @@
       "sha256": "955498af879b5dcf371feb5900fc3be00a4a59045f38e0faee7ebab3c26e8131"
     },
     {
+      "path": "tests/test_policy_renewals.py",
+      "bytes": 20600,
+      "sha256": "029778e66241fa71ec07a79011a2ddb7a4d5d722714627ffd196ba5e962e4c17"
+    },
+    {
       "path": "tests/test_preopening_cash.py",
       "bytes": 14825,
       "sha256": "1c45e0db2e8f835b7b388a0317a8184b7f5d671fd439531fd31dec4914aa6749"
@@ -3765,6 +3860,11 @@
       "path": "tools/phased_rental_demo_support.py",
       "bytes": 7727,
       "sha256": "b8a5dcab0c7756c3f8a6ec9adcab24c3cb239d3ff755bca4afaf4d72530f5231"
+    },
+    {
+      "path": "tools/renewal_miniuw_v1.py",
+      "bytes": 1229,
+      "sha256": "5f0a13cd90bcba42f678ea98ba4fff80a918923210b412019ad95ff1f82c7e1d"
     },
     {
       "path": "tools/rental_lifecycle_demo_support.py",

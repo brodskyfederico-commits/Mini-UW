@@ -1,7 +1,7 @@
 {
   "phase": "post-I01 synthetic technical implementation",
   "user_authorized": true,
-  "component": "T92",
+  "component": "T95",
   "status": "local_implementation_verified_pending_remote_receipt",
   "implemented": [
     "fresh raw-claim drafts from unchanged 55-input/10-criterion template",
@@ -129,9 +129,12 @@
     "portable exact-source synthetic v1 revision comparison replay and four-file local internal review with strict inventory, hash/replay audit and no different-output overwrite",
     "explicit full-window synthetic insurance/tax cost schedule with supplied allocation fractions, complete due-installment inventory and guarded exact expense producer",
     "full v1 return and all current metric figures gated by exact every-insurance/tax period/payment binding plus 41 complete source claims at explicit UTC",
-    "portable scheduled-expense full-case replay and eight checked local artifacts including one-page current-or-pending PDF and schedule review"
+    "portable scheduled-expense full-case replay and eight checked local artifacts including one-page current-or-pending PDF and schedule review",
+    "explicit successive synthetic insurance policies, supplied operating-period intersection fractions and one-to-many policy-installment aggregation checked against unchanged declared T90 summaries",
+    "complete scheduled Mini-UW parent plus every insurance renewal book gated together by 43 exact full-source bindings at explicit UTC",
+    "portable renewal-case replay and current-or-pending one-page PDF with eight strictly inventoried local artifacts"
   ],
-  "unit_tests": 1323,
+  "unit_tests": 1351,
   "plan_packages_partially_addressed": [
     "IMP-01",
     "IMP-06",
@@ -147,7 +150,7 @@
   "deployment_enabled": false,
   "production_ready": false,
   "next_independent_work": [
-    "independently supplied policy renewals/off-window expense obligations and additional insurance terms; real coverage sufficiency, tax authority and accounting policy remain pending",
+    "off-holding insurance settlements, overlapping/complementary policies and additional clauses; actual coverage sufficiency, contract authority and accounting policy remain pending",
     "independently supplied revised operating/exit timing cases without deriving scenario shocks",
     "noncash asset/accrual opening carry and independently supplied staged-loan refinance/novation profiles"
   ],
@@ -244,7 +247,10 @@
     "T89",
     "T90",
     "T91",
-    "T92"
+    "T92",
+    "T93",
+    "T94",
+    "T95"
   ],
   "tests_by_component": {
     "T01": 31,
@@ -338,7 +344,10 @@
     "T89": 9,
     "T90": 14,
     "T91": 10,
-    "T92": 8
+    "T92": 8,
+    "T93": 12,
+    "T94": 9,
+    "T95": 7
   },
   "not_yet_implemented": [
     "complete financial graph and its designed cycles",
@@ -520,5 +529,11 @@
   "insurance_coverage_sufficiency_verified": false,
   "legal_tax_due_date_authority_verified": false,
   "partial_window_or_multi_policy_expense_schedules_implemented": false,
-  "scheduled_expense_scope": "Reduced explicit full service/operating window, one supplied schedule for every insurance/tax concept, all periods/allocations and one-to-one same-date/same-amount due-installment/payment maps. Fully settled within window with initial/terminal payables/prepaids zero. Exact preexisting NOI/T76/cash/return unchanged by checks. No legal/accounting policy, real coverage sufficiency, actual bank payments, professional approval, off-window obligations or real decisions authenticated."
+  "scheduled_expense_scope": "Reduced explicit full service/operating window, one supplied schedule for every insurance/tax concept, all periods/allocations and one-to-one same-date/same-amount due-installment/payment maps. Fully settled within window with initial/terminal payables/prepaids zero. Exact preexisting NOI/T76/cash/return unchanged by checks. No legal/accounting policy, real coverage sufficiency, actual bank payments, professional approval, off-window obligations or real decisions authenticated.",
+  "synthetic_successive_insurance_renewals_implemented": true,
+  "explicit_policy_installment_grouping_implemented": true,
+  "renewal_cost_to_full_return_and_current_one_page_connected": true,
+  "policy_installments_after_coverage_within_operating_window_supported": true,
+  "overlapping_policy_or_off_holding_settlement_profiles_implemented": false,
+  "insurance_renewal_scope": "Same insurance economic item and full holding/payment window, successive nonoverlapping supplied policies, exact policy/operating intersections and supplied fractions. Each premium fully allocated and settled, explicit complete installment grouping to same-date aggregate obligations already matched to T76 payments. No generated aggregate sources, new expense/payment/funding, legal coverage authority, accounting policy, real decisions or independent audit."
 }

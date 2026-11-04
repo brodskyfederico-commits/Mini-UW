@@ -1,0 +1,293 @@
+{
+  "scope": "Supplied sequential insurance policy cost/dues connected to current full synthetic Mini-UW return and one page; no financial/contract authority closure",
+  "rows": [
+    {
+      "requirement_or_variable": "successive_policy_costs_intersections_and_installment_groups",
+      "source": {
+        "path": "docs/technical-implementation-T93-T95.md",
+        "line": 5,
+        "sha256": "f09bae292ac0542e90076740c0b0dbd5dd066a7bc7bf29ec6b00cbf692840fd1"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+          "sha256_documento": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+          "ubicacion_exacta": "§3, Expenses",
+          "definicion_documentada": "Fuente histórica de Gastos sin impuesto; desarrollo nuevo localizado por ID en docs/model-operations-contract.md. No demuestra adopción aprobada.",
+          "matrix_id": "M2-05"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§§3, 5 y 7",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "DAT-01"
+        }
+      ],
+      "current_definition": "Supplied sequential policies, exact period intersections/fractions, premium/expense and complete same-date installment grouping without generated aggregate inputs",
+      "affected_modules": [
+        "M2",
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_policy_renewals.py",
+          "line": 37,
+          "test": "InsuranceRenewalTests.test_successive_policies_grouped_dues_and_no_duplicate_expense"
+        },
+        {
+          "path": "tests/test_policy_renewals.py",
+          "line": 41,
+          "test": "InsuranceRenewalTests.test_policy_crossing_operating_boundary_uses_supplied_fractions_not_days"
+        },
+        {
+          "path": "tests/test_policy_renewals.py",
+          "line": 46,
+          "test": "InsuranceRenewalTests.test_gaps_overlaps_order_and_incomplete_coverage_withhold_all_exports"
+        },
+        {
+          "path": "tests/test_policy_renewals.py",
+          "line": 50,
+          "test": "InsuranceRenewalTests.test_missing_premium_or_fraction_even_at_zero_is_not_zero"
+        },
+        {
+          "path": "tests/test_policy_renewals.py",
+          "line": 54,
+          "test": "InsuranceRenewalTests.test_unchanged_money_does_not_allow_wrong_coverage_intersections"
+        },
+        {
+          "path": "tests/test_policy_renewals.py",
+          "line": 58,
+          "test": "InsuranceRenewalTests.test_group_inventory_unknown_members_and_duplicate_mapping_rejected"
+        },
+        {
+          "path": "tests/test_policy_renewals.py",
+          "line": 64,
+          "test": "InsuranceRenewalTests.test_same_total_installments_cannot_offset_differences_between_groups"
+        },
+        {
+          "path": "tests/test_policy_renewals.py",
+          "line": 68,
+          "test": "InsuranceRenewalTests.test_due_after_coverage_allowed_only_as_supplied_within_payment_window"
+        },
+        {
+          "path": "tests/test_policy_renewals.py",
+          "line": 73,
+          "test": "InsuranceRenewalTests.test_zero_cost_retains_policies_and_explicit_fraction_inventory"
+        },
+        {
+          "path": "tests/test_policy_renewals.py",
+          "line": 79,
+          "test": "InsuranceRenewalTests.test_strict_schema_context_hashes_and_identity_domains"
+        },
+        {
+          "path": "tests/test_policy_renewals.py",
+          "line": 87,
+          "test": "InsuranceRenewalTests.test_injected_and_real_denominator_budget_withdraw_all_computed_amounts"
+        },
+        {
+          "path": "tests/test_policy_renewals.py",
+          "line": 96,
+          "test": "InsuranceRenewalTests.test_repeat_immutability_and_exact_byte_source_identity"
+        }
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Coverage adequacy, simultaneous policies, contractual authority, accounting policy and off-holding settlement"
+    },
+    {
+      "requirement_or_variable": "full_parent_return_and_all_insurance_books",
+      "source": {
+        "path": "docs/technical-implementation-T93-T95.md",
+        "line": 13,
+        "sha256": "f09bae292ac0542e90076740c0b0dbd5dd066a7bc7bf29ec6b00cbf692840fd1"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 costos, financiación, operaciones y salida",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "CASH-02"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 aportes/distribuciones brutos frente a neto",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "RETURN-01"
+        },
+        {
+          "documento": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+          "sha256_documento": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+          "ubicacion_exacta": "§3, Expenses",
+          "definicion_documentada": "Fuente histórica de Gastos sin impuesto; desarrollo nuevo localizado por ID en docs/model-operations-contract.md. No demuestra adopción aprobada.",
+          "matrix_id": "M2-05"
+        }
+      ],
+      "current_definition": "Exact every-insurance parent/book compatibility and unchanged return or supplied premium12 full-source revision counted once; bad grouping/cost/time/coverage withholds current numbers",
+      "affected_modules": [
+        "M2",
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_policy_renewals.py",
+          "line": 105,
+          "test": "PolicyRenewalCaseTests.test_all_43_sources_keep_existing_return_criteria_and_pending_scope"
+        },
+        {
+          "path": "tests/test_policy_renewals.py",
+          "line": 109,
+          "test": "PolicyRenewalCaseTests.test_explicit_premium_twelve_complete_case_counts_increment_only_once"
+        },
+        {
+          "path": "tests/test_policy_renewals.py",
+          "line": 112,
+          "test": "PolicyRenewalCaseTests.test_unknown_or_missing_and_duplicate_book_cannot_skip_insurance_control"
+        },
+        {
+          "path": "tests/test_policy_renewals.py",
+          "line": 119,
+          "test": "PolicyRenewalCaseTests.test_newly_rehashed_inconsistent_policy_cost_still_withdraws_parent_current_numbers"
+        },
+        {
+          "path": "tests/test_policy_renewals.py",
+          "line": 133,
+          "test": "PolicyRenewalCaseTests.test_common_time_context_and_currency_required_without_automatic_evidence_renewal"
+        },
+        {
+          "path": "tests/test_policy_renewals.py",
+          "line": 137,
+          "test": "PolicyRenewalCaseTests.test_group_mapping_unknown_target_with_fresh_source_evidence_remains_pending"
+        },
+        {
+          "path": "tests/test_policy_renewals.py",
+          "line": 141,
+          "test": "PolicyRenewalCaseTests.test_missing_base_cash_value_does_not_crash_or_get_filled"
+        },
+        {
+          "path": "tests/test_policy_renewals.py",
+          "line": 145,
+          "test": "PolicyRenewalCaseTests.test_same_total_changed_coverage_boundaries_require_exact_period_intersections"
+        }
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Personal/capital/CoC, overlap/refund/off-window policies, real sources and financial acceptance"
+    },
+    {
+      "requirement_or_variable": "complete_43_source_current_gate",
+      "source": {
+        "path": "docs/technical-implementation-T93-T95.md",
+        "line": 15,
+        "sha256": "f09bae292ac0542e90076740c0b0dbd5dd066a7bc7bf29ec6b00cbf692840fd1"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§§3, 5 y 7",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "DAT-01"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 aportes/distribuciones brutos frente a neto",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "RETURN-01"
+        }
+      ],
+      "current_definition": "All original parent sources plus exact parent input and policy books at same declared UTC/context, with neither parent nor child currentness replacing the other",
+      "affected_modules": [
+        "M2",
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_policy_renewals.py",
+          "line": 124,
+          "test": "PolicyRenewalCaseTests.test_parent_and_policy_evidence_expiry_independently_withdraw_all_current_views"
+        }
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Source authority, live monitors and professional authentication"
+    },
+    {
+      "requirement_or_variable": "portable_policy_gate_one_page_and_artifacts",
+      "source": {
+        "path": "docs/technical-implementation-T93-T95.md",
+        "line": 19,
+        "sha256": "f09bae292ac0542e90076740c0b0dbd5dd066a7bc7bf29ec6b00cbf692840fd1"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§§3, 5 y 7",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "DAT-01"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 aportes/distribuciones brutos frente a neto",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "RETURN-01"
+        }
+      ],
+      "current_definition": "Exact source/result/engine replay, one-page PDF from current gate, blocked recovery and strict immutable local artifact inventory/audit",
+      "affected_modules": [
+        "M2",
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_policy_renewals.py",
+          "line": 154,
+          "test": "PolicyRenewalArtifactTests.test_exact_one_page_eight_artifacts_manifest_and_complete_current_story"
+        },
+        {
+          "path": "tests/test_policy_renewals.py",
+          "line": 161,
+          "test": "PolicyRenewalArtifactTests.test_exact_portable_replay_versions_and_rehashed_forgery_rejected"
+        },
+        {
+          "path": "tests/test_policy_renewals.py",
+          "line": 172,
+          "test": "PolicyRenewalArtifactTests.test_expired_policy_withholds_pdf_money_and_blocked_bundle_replays"
+        },
+        {
+          "path": "tests/test_policy_renewals.py",
+          "line": 177,
+          "test": "PolicyRenewalArtifactTests.test_local_atomic_output_retry_audit_and_no_different_overwrite"
+        },
+        {
+          "path": "tests/test_policy_renewals.py",
+          "line": 183,
+          "test": "PolicyRenewalArtifactTests.test_rehashed_altered_artifact_extra_path_and_symlink_rejected"
+        },
+        {
+          "path": "tests/test_policy_renewals.py",
+          "line": 195,
+          "test": "PolicyRenewalArtifactTests.test_failed_final_rename_cleans_temp_without_partial_output"
+        },
+        {
+          "path": "tests/test_policy_renewals.py",
+          "line": 202,
+          "test": "PolicyRenewalArtifactTests.test_strict_root_and_export_size_budget_preserve_no_release"
+        }
+      ],
+      "status": "partially_implemented_synthetic",
+      "pending": "Concurrent production publication, independent financial audit, actual decision PDF authorization and runtime recovery"
+    }
+  ],
+  "real_decisions_enabled": false
+}
