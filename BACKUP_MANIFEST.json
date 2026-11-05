@@ -1,10 +1,10 @@
 {
-  "scope": "I01 preserved design, D02–D07 design/structure documentation and T01–T104 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D07 design/structure documentation and T01–T105 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 2687,
-      "sha256": "ca3c1342e9bf9529f2f2199ddc24964ffac60b3c221aa6703c2ca89fcb1646dd"
+      "bytes": 2824,
+      "sha256": "641a6c74b747b159a589e2f1357388be22c84a4184c17de080ad6b5929ad3a9c"
     },
     {
       "path": ".gitignore",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 40676,
-      "sha256": "8eb12ebb3266defc90970e8fe5daa30f4116ed3be779112220682c0dfa9e6466"
+      "bytes": 41595,
+      "sha256": "71ae710a039ec8dce8e9f5f509b025e84c6a66471fb4845bd9a9c56d63ba9b4a"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 177533,
-      "sha256": "498751082f1d648e0bf45e164ac30dd8a6924005cad421fa1519519e17cce1de"
+      "bytes": 181506,
+      "sha256": "b2fbdc3bf60d60504c0b3d9179995dc06a74acbf2ad853caf9af8f1f196ab8f6"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -420,6 +420,11 @@
       "path": "docs/package-readiness.json",
       "bytes": 12252,
       "sha256": "827aafc20a8b75e713ac74d92188530483fb384e292fa89a4c7f295b21ab8f78"
+    },
+    {
+      "path": "docs/participant-cash-risk-v1-runbook.md",
+      "bytes": 2408,
+      "sha256": "505c7e32b909b1a3826b1aa8fe27d7f957012e82988498d5282a514b11b6fe2d"
     },
     {
       "path": "docs/pending-band-policy-decision.json",
@@ -1082,6 +1087,21 @@
       "sha256": "461d1fa83efaf86e10c5d2b415c8f87514ab8963bdfb4d384326677fe3e8e5b7"
     },
     {
+      "path": "docs/review/miniuw-v1-participant-cash-risk-example/allocation-evidence.json",
+      "bytes": 2819377,
+      "sha256": "26791eccd1eef9d4d90365a40fdb6724d6ae5c0597fc383f0a2d8a1186f22914"
+    },
+    {
+      "path": "docs/review/miniuw-v1-participant-cash-risk-example/package.json",
+      "bytes": 1203,
+      "sha256": "20cfe54199f4bdfc031fc72274b5f7bf2586c71765cf7e94e3f57d90a7de60b3"
+    },
+    {
+      "path": "docs/review/miniuw-v1-participant-cash-risk-example/participant-cash-risk.json",
+      "bytes": 20906,
+      "sha256": "f1e307fc26579fd754c33da60d853b27239d7c89909be133ce8c3ea903429149"
+    },
+    {
       "path": "docs/review/miniuw-v1-policy-renewal-example/MiniUW_v1_Resumen.pdf",
       "bytes": 6562,
       "sha256": "7023d9358f46dc0984a947985c25ea40eb0a07fcc6ff1a26ff92ed6beb95eb0b"
@@ -1225,6 +1245,21 @@
       "path": "docs/review/miniuw-v1-worksheet-case-example/results.json",
       "bytes": 133473,
       "sha256": "8dcd1677131ce1db79873acbf67298395150f15f854c13a0169c30687e03297c"
+    },
+    {
+      "path": "docs/review/participant-cash-risk-coverage-T105.json",
+      "bytes": 8842,
+      "sha256": "6d3a03f5f24a5e2f85f370b344c2685ba1904e22185927d0156cec1ba46cec62"
+    },
+    {
+      "path": "docs/review/participant-cash-risk-fixtures-T105.json",
+      "bytes": 11214,
+      "sha256": "4e25242099c71989c33a92a44c0aa44beffd75f01be9aaac4c96f20dd184f5ce"
+    },
+    {
+      "path": "docs/review/participant-cash-risk-validation-T105.json",
+      "bytes": 14144,
+      "sha256": "7ee5126984c01cc959cadb66ecf04b3bd8562ac269e0b4bf337ae782ecc592a7"
     },
     {
       "path": "docs/review/pdf-review-validation-R02.json",
@@ -1717,6 +1752,11 @@
       "sha256": "e45cf0a15d0c4a07b0fce32189e8188e0f75a00ed17e67e3f1fc50ff08c6995f"
     },
     {
+      "path": "docs/technical-implementation-T105.md",
+      "bytes": 4423,
+      "sha256": "4a2729fcbd513c1d2e4fa6c9eb13b219067f400aa35c76c63a5443d6a7732333"
+    },
+    {
       "path": "docs/technical-implementation-T11.md",
       "bytes": 5491,
       "sha256": "7fcff82f9760ccd95f28f7ecc784aff735cd03f56225f936716eb5a87eef4e58"
@@ -1988,8 +2028,8 @@
     },
     {
       "path": "docs/technical-implementation-status.json",
-      "bytes": 37206,
-      "sha256": "22bf938e59e4cf0dc925794ce99fe8f9942ad3a7719169c254ec0b7dab156951"
+      "bytes": 37945,
+      "sha256": "d5c5df86b145707a7513463d5b3889e82875d8e646c01389731b0a41ffb6c39a"
     },
     {
       "path": "docs/worksheet-case-v1-runbook.md",
@@ -3020,6 +3060,16 @@
       "path": "src/miniuw_foundation/operating_returns.py",
       "bytes": 5805,
       "sha256": "c0e62855b6bbcf91fe19f454535c6aae1eca0d965ad7002c9b721d977bb40547"
+    },
+    {
+      "path": "src/miniuw_foundation/participant_cash_risk.py",
+      "bytes": 10203,
+      "sha256": "3f40895c2270d555d758f8693b7395f31d7bf98c4193826a33751fd61d1c41fe"
+    },
+    {
+      "path": "src/miniuw_foundation/participant_cash_risk_artifacts.py",
+      "bytes": 5164,
+      "sha256": "64800ce38a27c53a2893b29cf89443f81975dc47988c46a1eba9318d72cc3c0f"
     },
     {
       "path": "src/miniuw_foundation/periodic_returns.py",
@@ -4302,6 +4352,11 @@
       "sha256": "dec2f648b906c1c843e4aeffb30dfea8a68b6cb97a3e51586d1485eab6eae243"
     },
     {
+      "path": "tests/test_participant_cash_risk.py",
+      "bytes": 16101,
+      "sha256": "025fb14c96b5cfc100b73896a1a88e19f1eb4cbccf0d6800a6aac98a37381581"
+    },
+    {
       "path": "tests/test_periodic_returns.py",
       "bytes": 4850,
       "sha256": "9cab563a872fc9ad4336785d6ff6745987ff8467b4740c7ebdb2dbc065a62e38"
@@ -4540,6 +4595,11 @@
       "path": "tools/check_long_output_T99.py",
       "bytes": 6499,
       "sha256": "c625d27511050a74e8c3c0bbafb8fbe13ef6256e7f69ca4ca906ffaa6ae4c13b"
+    },
+    {
+      "path": "tools/check_participant_cash_risk_T105.py",
+      "bytes": 9871,
+      "sha256": "7069fe773a19253e89cb09afbb24b42c309aaddb05f33b99a55c13e39e4fc06c"
     },
     {
       "path": "tools/check_reference_package.py",
@@ -4845,6 +4905,11 @@
       "path": "tools/miniuw_v1.py",
       "bytes": 1216,
       "sha256": "0fbb233d201940630388854f34169bbafc4e1f5780121bbdd3bcbef6a70c9b48"
+    },
+    {
+      "path": "tools/participant_cash_risk_miniuw_v1.py",
+      "bytes": 1203,
+      "sha256": "a750601ccddc6f144d247b492be93c5283241ab02ffa4691ad9d7222d26bae02"
     },
     {
       "path": "tools/phased_rental_demo_support.py",

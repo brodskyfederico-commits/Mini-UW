@@ -1,0 +1,175 @@
+{
+  "component": "T105",
+  "scope": "Six dated cash/risk variables traced to FLOW02 and D07; original398-row matrix untouched",
+  "financial_model_complete": false,
+  "rows": [
+    {
+      "requirement_or_variable": "cash_shortfall_at_horizon",
+      "requirement_id": "R21",
+      "source_document": "docs/review/information-flow-summary-FLOW02.json",
+      "exact_source_pointer": "/investor_return_questions/8",
+      "output_contract": "docs/current-structure/MiniUW_Salida_Inversor_D07.json",
+      "exact_contract_pointer": "/output_fields/20",
+      "current_definition": {
+        "document": "docs/technical-implementation-T105.md",
+        "line": 5,
+        "scope": "Hypothetical finite-horizon cash observations; no accounting capital, actual liquidity or final economic loss"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/participant_cash_risk.py",
+        "line": 24,
+        "function": "_cash_observations"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_participant_cash_risk.py",
+        "line": 50,
+        "test": "test_quarter_shortfall_peak_sale_dependency_and_cash_only_limits",
+        "result": "docs/review/miniuw-v1-participant-cash-risk-example/participant-cash-risk.json",
+        "pointer": "/participants/0/metrics/cash_shortfall_at_horizon"
+      },
+      "technical_state": "synthetic_observation_with_source_replay",
+      "financial_requirement_closed": false,
+      "pending": "Actual ownership/available funding/intraday order, capital definitions, Downside and financial acceptance remain unresolved."
+    },
+    {
+      "requirement_or_variable": "cash_surplus_at_horizon",
+      "requirement_id": "R21",
+      "source_document": "docs/review/information-flow-summary-FLOW02.json",
+      "exact_source_pointer": "/investor_return_questions/8",
+      "output_contract": "docs/current-structure/MiniUW_Salida_Inversor_D07.json",
+      "exact_contract_pointer": "/output_fields/20",
+      "current_definition": {
+        "document": "docs/technical-implementation-T105.md",
+        "line": 5,
+        "scope": "Hypothetical finite-horizon cash observations; no accounting capital, actual liquidity or final economic loss"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/participant_cash_risk.py",
+        "line": 24,
+        "function": "_cash_observations"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_participant_cash_risk.py",
+        "line": 86,
+        "test": "test_signed_surplus_carries_forward_without_clamping_or_capital_available_claim",
+        "result": "docs/review/miniuw-v1-participant-cash-risk-example/participant-cash-risk.json",
+        "pointer": "/participants/0/metrics/cash_surplus_at_horizon"
+      },
+      "technical_state": "synthetic_observation_with_source_replay",
+      "financial_requirement_closed": false,
+      "pending": "Actual ownership/available funding/intraday order, capital definitions, Downside and financial acceptance remain unresolved."
+    },
+    {
+      "requirement_or_variable": "peak_cumulative_net_equity_funding_at_date_close",
+      "requirement_id": "R22",
+      "source_document": "docs/review/information-flow-summary-FLOW02.json",
+      "exact_source_pointer": "/investor_return_questions/8",
+      "output_contract": "docs/current-structure/MiniUW_Salida_Inversor_D07.json",
+      "exact_contract_pointer": "/output_fields/21",
+      "current_definition": {
+        "document": "docs/technical-implementation-T105.md",
+        "line": 7,
+        "scope": "Hypothetical finite-horizon cash observations; no accounting capital, actual liquidity or final economic loss"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/participant_cash_risk.py",
+        "line": 24,
+        "function": "_cash_observations"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_participant_cash_risk.py",
+        "line": 69,
+        "test": "test_independent_all_order_enumeration_proves_tight_global_bounds",
+        "result": "docs/review/miniuw-v1-participant-cash-risk-example/participant-cash-risk.json",
+        "pointer": "/participants/0/metrics/peak_cumulative_net_equity_funding_at_date_close"
+      },
+      "technical_state": "synthetic_observation_with_source_replay",
+      "financial_requirement_closed": false,
+      "pending": "Actual ownership/available funding/intraday order, capital definitions, Downside and financial acceptance remain unresolved."
+    },
+    {
+      "requirement_or_variable": "possible_intraday_peak_upper_bound",
+      "requirement_id": "R22",
+      "source_document": "docs/review/information-flow-summary-FLOW02.json",
+      "exact_source_pointer": "/investor_return_questions/8",
+      "output_contract": "docs/current-structure/MiniUW_Salida_Inversor_D07.json",
+      "exact_contract_pointer": "/output_fields/21",
+      "current_definition": {
+        "document": "docs/technical-implementation-T105.md",
+        "line": 7,
+        "scope": "Hypothetical finite-horizon cash observations; no accounting capital, actual liquidity or final economic loss"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/participant_cash_risk.py",
+        "line": 24,
+        "function": "_cash_observations"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_participant_cash_risk.py",
+        "line": 62,
+        "test": "test_same_day_gross_cash_exposes_distinct_close_and_intraday_bounds",
+        "result": "docs/review/miniuw-v1-participant-cash-risk-example/participant-cash-risk.json",
+        "pointer": "/participants/0/metrics/possible_intraday_peak_upper_bound"
+      },
+      "technical_state": "synthetic_observation_with_source_replay",
+      "financial_requirement_closed": false,
+      "pending": "Actual ownership/available funding/intraday order, capital definitions, Downside and financial acceptance remain unresolved."
+    },
+    {
+      "requirement_or_variable": "sale_share_of_distributions",
+      "requirement_id": "R23",
+      "source_document": "docs/review/information-flow-summary-FLOW02.json",
+      "exact_source_pointer": "/investor_return_questions/8",
+      "output_contract": "docs/current-structure/MiniUW_Salida_Inversor_D07.json",
+      "exact_contract_pointer": "/output_fields/22",
+      "current_definition": {
+        "document": "docs/technical-implementation-T105.md",
+        "line": 9,
+        "scope": "Hypothetical finite-horizon cash observations; no accounting capital, actual liquidity or final economic loss"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/participant_cash_risk.py",
+        "line": 24,
+        "function": "_cash_observations"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_participant_cash_risk.py",
+        "line": 93,
+        "test": "test_no_receipts_is_undefined_while_known_zero_sale_ratio_is_zero",
+        "result": "docs/review/miniuw-v1-participant-cash-risk-example/participant-cash-risk.json",
+        "pointer": "/participants/0/metrics/sale_share_of_distributions"
+      },
+      "technical_state": "synthetic_observation_with_source_replay",
+      "financial_requirement_closed": false,
+      "pending": "Actual ownership/available funding/intraday order, capital definitions, Downside and financial acceptance remain unresolved."
+    },
+    {
+      "requirement_or_variable": "cash_shortfall_excluding_sale_receipts",
+      "requirement_id": "R23",
+      "source_document": "docs/review/information-flow-summary-FLOW02.json",
+      "exact_source_pointer": "/investor_return_questions/8",
+      "output_contract": "docs/current-structure/MiniUW_Salida_Inversor_D07.json",
+      "exact_contract_pointer": "/output_fields/22",
+      "current_definition": {
+        "document": "docs/technical-implementation-T105.md",
+        "line": 9,
+        "scope": "Hypothetical finite-horizon cash observations; no accounting capital, actual liquidity or final economic loss"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/participant_cash_risk.py",
+        "line": 24,
+        "function": "_cash_observations"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_participant_cash_risk.py",
+        "line": 50,
+        "test": "test_quarter_shortfall_peak_sale_dependency_and_cash_only_limits",
+        "result": "docs/review/miniuw-v1-participant-cash-risk-example/participant-cash-risk.json",
+        "pointer": "/participants/0/metrics/cash_shortfall_excluding_sale_receipts"
+      },
+      "technical_state": "synthetic_observation_with_source_replay",
+      "financial_requirement_closed": false,
+      "pending": "Actual ownership/available funding/intraday order, capital definitions, Downside and financial acceptance remain unresolved."
+    }
+  ]
+}

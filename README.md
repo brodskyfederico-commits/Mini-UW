@@ -4,6 +4,8 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- [Riesgo de caja por participante T105](docs/participant-cash-risk-v1-runbook.md): caja no recuperada, pico por fecha/cotas intradía y dependencia de venta, con conciliación exacta al proyecto; capital, liquidez y pérdida económica final pendientes.
+
 - [Hipótesis de reparto de caja T104](docs/cash-participation-v1-runbook.md): fracciones explícitas de todos los aportes y cobros, con fechas, brutos y TIR recalculada; evidencia interna sin retorno personal verificado ni nuevo PDF externo.
 
 - [Hoja sintética y expediente T103](docs/worksheet-case-v1-runbook.md): cotejo de55 declaraciones, diferencias/fórmulas bloqueantes y una página con cifras actuales retiradas cuando no concilian; sin adoptar datos o semántica financiera.
@@ -157,3 +159,5 @@ T102 integra revisión de dos versiones a través de T101: cambios completos de 
 T103 conecta el lector del diseño original con la salida actual: coteja55 campos por ID/celda, preserva texto/número/cero/faltantes/fórmulas y bloquea cifras discrepantes. No completa los54 mapeos semánticos pendientes ni cambia fuentes/criterios.16 pruebas nuevas;1.471 técnicas registradas. [Uso y límites](docs/worksheet-case-v1-runbook.md), [cobertura de cotejo por campo](docs/review/worksheet-field-coverage-T103.json). Resultado hosted y respaldo del commit exacto en comprobante externo.
 
 T104 calcula una hipótesis explícita de reparto constante entre participantes ficticios. Conserva cada aporte/cobro/fecha/cero y concilia eventos, categorías y años con el proyecto; no infiere participación de una inversión por10 ni completa un residual. TIR independiente con controles T100, sin seleccionar punto.16 pruebas nuevas;1.487 técnicas registradas. [Alcance y uso](docs/cash-participation-v1-runbook.md), [cobertura incremental](docs/review/cash-participation-coverage-T104.json). Términos auténticos, retorno personal verificado, capital/CoC y54 mapeos semánticos siguen pendientes. Evidencia remota/CI/ZIP del commit exacto en comprobante externo.
+
+T105 observa riesgos de caja de las hipótesis T104, con moneda/ventana/UTC explícitos, todos los eventos/ceros y cotas por fecha sin afirmar un orden intradía. Reproduce los riesgos T37 del proyecto y concilia importes bajo fracciones constantes; no suma porcentajes ni genera un escenario sin venta.16 pruebas nuevas;1.503 técnicas registradas. [Uso y límites](docs/participant-cash-risk-v1-runbook.md), [cobertura incremental](docs/review/participant-cash-risk-coverage-T105.json). Retorno personal real, capital/CoC, fondos disponibles, Downside y54 mapeos semánticos siguen pendientes. Evidencia remota/CI/ZIP del commit exacto en comprobante externo.

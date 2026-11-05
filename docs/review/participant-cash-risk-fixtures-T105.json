@@ -1,0 +1,365 @@
+{
+  "scope": "Existing explicit T104 hypotheses only; independent exact observations of known1400/778/-622 source, no new financial inputs or adopted rules",
+  "source_evidence": "docs/review/miniuw-v1-cash-participation-example/allocation-evidence.json",
+  "source_evidence_sha256": "26791eccd1eef9d4d90365a40fdb6724d6ae5c0597fc383f0a2d8a1186f22914",
+  "cases": [
+    {
+      "label": "quarter",
+      "terms_path": "templates/cash-participation-quarter-T104.json",
+      "terms_sha256": "6734a3f8505b47e44126c19dc2ad281598b7eb0eb6953745ce69e00407fa5fd3",
+      "state": "computed_synthetic_cash_risk_observations",
+      "expected": [
+        {
+          "gross_contributions": {
+            "numerator": "350",
+            "denominator": "1"
+          },
+          "gross_distributions": {
+            "numerator": "389",
+            "denominator": "2"
+          },
+          "net_cash_profit": {
+            "numerator": "-311",
+            "denominator": "2"
+          },
+          "cash_shortfall_at_horizon": {
+            "numerator": "311",
+            "denominator": "2"
+          },
+          "cash_surplus_at_horizon": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "peak_cumulative_net_equity_funding_at_date_close": {
+            "numerator": "350",
+            "denominator": "1"
+          },
+          "possible_intraday_peak_upper_bound": {
+            "numerator": "350",
+            "denominator": "1"
+          },
+          "net_sale_distribution": {
+            "numerator": "289",
+            "denominator": "2"
+          },
+          "receipts_excluding_sale_distributions": {
+            "numerator": "50",
+            "denominator": "1"
+          },
+          "cash_shortfall_excluding_sale_receipts": {
+            "numerator": "300",
+            "denominator": "1"
+          },
+          "additional_capital_contributions": {
+            "numerator": "100",
+            "denominator": "1"
+          },
+          "refinance_cash_in_contributions": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "sale_share_of_distributions": {
+            "numerator": "289",
+            "denominator": "389"
+          },
+          "sale_share_state": "computed_synthetic"
+        },
+        {
+          "gross_contributions": {
+            "numerator": "1050",
+            "denominator": "1"
+          },
+          "gross_distributions": {
+            "numerator": "1167",
+            "denominator": "2"
+          },
+          "net_cash_profit": {
+            "numerator": "-933",
+            "denominator": "2"
+          },
+          "cash_shortfall_at_horizon": {
+            "numerator": "933",
+            "denominator": "2"
+          },
+          "cash_surplus_at_horizon": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "peak_cumulative_net_equity_funding_at_date_close": {
+            "numerator": "1050",
+            "denominator": "1"
+          },
+          "possible_intraday_peak_upper_bound": {
+            "numerator": "1050",
+            "denominator": "1"
+          },
+          "net_sale_distribution": {
+            "numerator": "867",
+            "denominator": "2"
+          },
+          "receipts_excluding_sale_distributions": {
+            "numerator": "150",
+            "denominator": "1"
+          },
+          "cash_shortfall_excluding_sale_receipts": {
+            "numerator": "900",
+            "denominator": "1"
+          },
+          "additional_capital_contributions": {
+            "numerator": "300",
+            "denominator": "1"
+          },
+          "refinance_cash_in_contributions": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "sale_share_of_distributions": {
+            "numerator": "289",
+            "denominator": "389"
+          },
+          "sale_share_state": "computed_synthetic"
+        }
+      ]
+    },
+    {
+      "label": "third",
+      "terms_path": "templates/cash-participation-third-T104.json",
+      "terms_sha256": "e5900e5245aba65fb57248096d6b32c9ea34d2ab26b87d3fbb61d0d0882d8988",
+      "state": "computed_synthetic_cash_risk_observations",
+      "expected": [
+        {
+          "gross_contributions": {
+            "numerator": "1400",
+            "denominator": "3"
+          },
+          "gross_distributions": {
+            "numerator": "778",
+            "denominator": "3"
+          },
+          "net_cash_profit": {
+            "numerator": "-622",
+            "denominator": "3"
+          },
+          "cash_shortfall_at_horizon": {
+            "numerator": "622",
+            "denominator": "3"
+          },
+          "cash_surplus_at_horizon": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "peak_cumulative_net_equity_funding_at_date_close": {
+            "numerator": "1400",
+            "denominator": "3"
+          },
+          "possible_intraday_peak_upper_bound": {
+            "numerator": "1400",
+            "denominator": "3"
+          },
+          "net_sale_distribution": {
+            "numerator": "578",
+            "denominator": "3"
+          },
+          "receipts_excluding_sale_distributions": {
+            "numerator": "200",
+            "denominator": "3"
+          },
+          "cash_shortfall_excluding_sale_receipts": {
+            "numerator": "400",
+            "denominator": "1"
+          },
+          "additional_capital_contributions": {
+            "numerator": "400",
+            "denominator": "3"
+          },
+          "refinance_cash_in_contributions": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "sale_share_of_distributions": {
+            "numerator": "289",
+            "denominator": "389"
+          },
+          "sale_share_state": "computed_synthetic"
+        },
+        {
+          "gross_contributions": {
+            "numerator": "2800",
+            "denominator": "3"
+          },
+          "gross_distributions": {
+            "numerator": "1556",
+            "denominator": "3"
+          },
+          "net_cash_profit": {
+            "numerator": "-1244",
+            "denominator": "3"
+          },
+          "cash_shortfall_at_horizon": {
+            "numerator": "1244",
+            "denominator": "3"
+          },
+          "cash_surplus_at_horizon": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "peak_cumulative_net_equity_funding_at_date_close": {
+            "numerator": "2800",
+            "denominator": "3"
+          },
+          "possible_intraday_peak_upper_bound": {
+            "numerator": "2800",
+            "denominator": "3"
+          },
+          "net_sale_distribution": {
+            "numerator": "1156",
+            "denominator": "3"
+          },
+          "receipts_excluding_sale_distributions": {
+            "numerator": "400",
+            "denominator": "3"
+          },
+          "cash_shortfall_excluding_sale_receipts": {
+            "numerator": "800",
+            "denominator": "1"
+          },
+          "additional_capital_contributions": {
+            "numerator": "800",
+            "denominator": "3"
+          },
+          "refinance_cash_in_contributions": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "sale_share_of_distributions": {
+            "numerator": "289",
+            "denominator": "389"
+          },
+          "sale_share_state": "computed_synthetic"
+        }
+      ]
+    },
+    {
+      "label": "zero",
+      "terms_path": "templates/cash-participation-zero-T104.json",
+      "terms_sha256": "f139a96e15c86f0beb57a123281e8a6e318718af935f3f8d700a9aae47cd820a",
+      "state": "computed_synthetic_cash_risk_observations",
+      "expected": [
+        {
+          "gross_contributions": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "gross_distributions": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "net_cash_profit": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "cash_shortfall_at_horizon": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "cash_surplus_at_horizon": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "peak_cumulative_net_equity_funding_at_date_close": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "possible_intraday_peak_upper_bound": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "net_sale_distribution": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "receipts_excluding_sale_distributions": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "cash_shortfall_excluding_sale_receipts": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "additional_capital_contributions": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "refinance_cash_in_contributions": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "sale_share_of_distributions": null,
+          "sale_share_state": "undefined_zero_distributions"
+        },
+        {
+          "gross_contributions": {
+            "numerator": "1400",
+            "denominator": "1"
+          },
+          "gross_distributions": {
+            "numerator": "778",
+            "denominator": "1"
+          },
+          "net_cash_profit": {
+            "numerator": "-622",
+            "denominator": "1"
+          },
+          "cash_shortfall_at_horizon": {
+            "numerator": "622",
+            "denominator": "1"
+          },
+          "cash_surplus_at_horizon": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "peak_cumulative_net_equity_funding_at_date_close": {
+            "numerator": "1400",
+            "denominator": "1"
+          },
+          "possible_intraday_peak_upper_bound": {
+            "numerator": "1400",
+            "denominator": "1"
+          },
+          "net_sale_distribution": {
+            "numerator": "578",
+            "denominator": "1"
+          },
+          "receipts_excluding_sale_distributions": {
+            "numerator": "200",
+            "denominator": "1"
+          },
+          "cash_shortfall_excluding_sale_receipts": {
+            "numerator": "1200",
+            "denominator": "1"
+          },
+          "additional_capital_contributions": {
+            "numerator": "400",
+            "denominator": "1"
+          },
+          "refinance_cash_in_contributions": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "sale_share_of_distributions": {
+            "numerator": "289",
+            "denominator": "389"
+          },
+          "sale_share_state": "computed_synthetic"
+        }
+      ]
+    },
+    {
+      "label": "missing",
+      "terms_path": "templates/cash-participation-missing-T104.json",
+      "terms_sha256": "5c862093f0148450cc5d18dabdb0594c20c699b42b01273283a4c214e82d65c5",
+      "state": "PENDING",
+      "expected": null
+    }
+  ]
+}
