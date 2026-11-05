@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D07 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D08 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 44260,
-      "sha256": "33929299babc44ac94c4453d97509028c194388d3239d9a84069c5146177d965"
+      "bytes": 44895,
+      "sha256": "b6d5e186adea7d0da955c75789798211c85abc70ce4c5631410db34d86546ea5"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 200992,
-      "sha256": "bd6cb4a46e980fce1f938993b548cfe0814af16fd0494b109de48387ceda1f93"
+      "bytes": 204520,
+      "sha256": "f1092822aeb8be23f4e9c3c0e148ca2a04248da405e292e020e3d90a95253973"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -162,6 +162,11 @@
       "sha256": "ac93a7f5c03093256621849fe58d354edb9d6262fb5dcad53b767f2f332f7441"
     },
     {
+      "path": "docs/current-structure/D08-design-validation.json",
+      "bytes": 2339,
+      "sha256": "a6b687aef01de6364cb873a534cf00dc37e5e469853c37360e61567805858779"
+    },
+    {
       "path": "docs/current-structure/MiniUW_55_campos_D04.csv",
       "bytes": 28155,
       "sha256": "36933edad8b3b905d629bb0e67113b316578a63f4652744af069b9cb302f0454"
@@ -182,6 +187,11 @@
       "sha256": "5f5e14eb59008e75fd604f536674b601f0487f1052043228aec68382feeeeec0"
     },
     {
+      "path": "docs/current-structure/MiniUW_Conexiones_55_campos_D08.csv",
+      "bytes": 47610,
+      "sha256": "325d71254820690ac2c6a9798787023c7856999c91ecc759c7a979e2d8ba2e0a"
+    },
+    {
       "path": "docs/current-structure/MiniUW_Dependencias_D05.csv",
       "bytes": 16300,
       "sha256": "f69d0fd5855ac20be01c4c37d192373cd222a71a27b5546b2feacec88ca7fd0e"
@@ -197,6 +207,11 @@
       "sha256": "94d2326e3fa6f09be0a6610d58bccac25e43d799d14a5cd97666f3bf3dbcbf12"
     },
     {
+      "path": "docs/current-structure/MiniUW_Entradas_a_Retornos_D08.csv",
+      "bytes": 10004,
+      "sha256": "6ecc0efbe7c576aaeda7acf63e92668e2a0c0908d3e639df950bba0a57fa0521"
+    },
+    {
       "path": "docs/current-structure/MiniUW_Estructura_Vigente_D04.json",
       "bytes": 135166,
       "sha256": "17ca7f968aff05208da34b25c884b2e36d3fbbb47b84311a17a9c32282128658"
@@ -205,6 +220,21 @@
       "path": "docs/current-structure/MiniUW_Estructura_Vigente_D04.md",
       "bytes": 10148,
       "sha256": "9199f5f0ee2205b71be28345e4e363c96115702215b31fcae578a576feef69ee"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+      "bytes": 318465,
+      "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.md",
+      "bytes": 9237,
+      "sha256": "37ac617d04902c4185d8169d52708579aa1f643b25a8485b4cce500d76a5a0b3"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Fuentes_Complementarias_D08.csv",
+      "bytes": 8911,
+      "sha256": "2ff0365cf8e2b305f36be343cccf240c7d423e7e1616038ec3543a3db7d48ffd"
     },
     {
       "path": "docs/current-structure/MiniUW_Salida_Inversor_D07.csv",

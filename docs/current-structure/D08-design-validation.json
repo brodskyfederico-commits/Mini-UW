@@ -1,0 +1,65 @@
+{
+  "snapshot_id": "D08",
+  "status": "passed_documentary_identity_source_hash_pointer_and_inventory_consistency",
+  "scope": "Structural/documentary check; candidate financial links and new acceptance cases not executed or financially validated",
+  "technical_baseline": "T111",
+  "technical_baseline_commit": "9aeb590151068ccd51f4eca0e92f7c766464ba94",
+  "prior_files_preserved": 1174,
+  "permitted_changed_metadata": [
+    "BACKUP_MANIFEST.json",
+    "README.md",
+    "WORK_LOG.md"
+  ],
+  "actual_changed_prior_files": [
+    "BACKUP_MANIFEST.json",
+    "README.md",
+    "WORK_LOG.md"
+  ],
+  "source_families": 11,
+  "original_fields": 55,
+  "supplemental_record_sets": 15,
+  "investor_output_questions": 23,
+  "source_contract_references_checked": 141,
+  "gate_states": 6,
+  "design_acceptance_cases_specified": 8,
+  "design_acceptance_cases_executed": 0,
+  "technical_tests_unchanged": 1619,
+  "new_runtime_components": 0,
+  "new_tests": 0,
+  "financial_mappings_activated": 0,
+  "investment_criteria_adopted": 0,
+  "all_original_field_ids_and_literal_metadata_preserved": true,
+  "all_document_links_and_observed_json_pointers_resolve": true,
+  "source_versions": [
+    {
+      "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+      "bytes": 318465,
+      "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.md",
+      "bytes": 9237,
+      "sha256": "37ac617d04902c4185d8169d52708579aa1f643b25a8485b4cce500d76a5a0b3"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Conexiones_55_campos_D08.csv",
+      "bytes": 47610,
+      "sha256": "325d71254820690ac2c6a9798787023c7856999c91ecc759c7a979e2d8ba2e0a"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Fuentes_Complementarias_D08.csv",
+      "bytes": 8911,
+      "sha256": "2ff0365cf8e2b305f36be343cccf240c7d423e7e1616038ec3543a3db7d48ffd"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Entradas_a_Retornos_D08.csv",
+      "bytes": 10004,
+      "sha256": "6ecc0efbe7c576aaeda7acf63e92668e2a0c0908d3e639df950bba0a57fa0521"
+    }
+  ],
+  "financial_model_complete": false,
+  "professional_review_authenticated": false,
+  "personal_return_verified": false,
+  "real_decisions_enabled": false,
+  "deployment_enabled": false
+}
