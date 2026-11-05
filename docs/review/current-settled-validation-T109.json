@@ -1,0 +1,166 @@
+{
+  "component": "T109",
+  "status": "passed_complete_source_gate_exact_parent_cash_one_page_and_blocked_recovery",
+  "source_cases_checked": 4,
+  "saved_output_directories_checked": 3,
+  "package_files_per_directory": 6,
+  "sources_per_case": 35,
+  "PDF_pages_per_output": 1,
+  "cases": [
+    {
+      "label": "current",
+      "source_sha256": "5e71e4cd8824f434c6cb24c68683285e3da985947f93342e674869fa5a3d6dae",
+      "run_sha256": "51c1b3d51362e622f9964a63f038f2f3328d30491197576333c6692bcb6030bd",
+      "pdf_sha256": "d459b7a1d6561d591cdc195db03e38fa010b9b3228c57f2cd72b00b479dd6569",
+      "state": "current_synthetic_settled_output",
+      "source_requirements_checked": 35,
+      "page_count": 1,
+      "display_spans_checked": 78,
+      "current_money_withheld": false,
+      "blockers": {
+        "calculation": {
+          "boundary": [],
+          "hold_sale": [],
+          "holding": [],
+          "returns": [],
+          "window": []
+        },
+        "evidence": [],
+        "gate": []
+      }
+    },
+    {
+      "label": "expired",
+      "source_sha256": "1a0bc941927b2b5cde054590af7a48c4d853e14c4957c00c60f51bc2fa2300f4",
+      "run_sha256": "956de7a031d1645d152caa3d8597f51c87c434412f86c589a6b480a75b071e56",
+      "pdf_sha256": "e4d95d69d412693590e64a51763999edb6d0a530603c6a181d2b695244a3929a",
+      "state": "PENDING",
+      "source_requirements_checked": 35,
+      "page_count": 1,
+      "display_spans_checked": 64,
+      "current_money_withheld": true,
+      "blockers": {
+        "calculation": {
+          "boundary": [],
+          "hold_sale": [],
+          "holding": [],
+          "returns": [],
+          "window": []
+        },
+        "evidence": [
+          "/settlement/accounting_before_after:evidence_expired"
+        ],
+        "gate": [
+          "required_settled_evidence_not_current"
+        ]
+      }
+    },
+    {
+      "label": "blocked",
+      "source_sha256": "2e062d85edce678a6684fd7a58ec0ac813b6cf4e7ba45a8b279281dbba00dcdc",
+      "run_sha256": "d561af9ca8f31b16e88f70e45c0de575c095728ca1c3f279143f073b39ea18c0",
+      "pdf_sha256": "708b3f0facfdf5e187b498689ed2f39f88998f499952d2fb870fa2983aa7cb8d",
+      "state": "PENDING",
+      "source_requirements_checked": 35,
+      "page_count": 1,
+      "display_spans_checked": 64,
+      "current_money_withheld": true,
+      "blockers": {
+        "calculation": {
+          "boundary": [
+            "accounting_balances_missing_or_negative",
+            "payables:terminal_aggregate_not_exact_supported_settlement",
+            "terminal_accounting_stock_differs_from_T76"
+          ],
+          "hold_sale": [
+            "explicit_expense_boundary_blocked"
+          ],
+          "holding": [],
+          "returns": [
+            "staged_operating_cash_or_debt_window_blocked"
+          ],
+          "window": [
+            "operating_holding_or_sale_blocked"
+          ]
+        },
+        "evidence": [],
+        "gate": [
+          "complete_settled_cash_path_blocked"
+        ]
+      }
+    },
+    {
+      "label": "distributed",
+      "source_sha256": "e938a5842ea774a9028fdefb5b3be0dad85f187c1d5b6d8dbe3b8d917e2cdd0d",
+      "run_sha256": "07aad0c9a7fccb6ab3698d6035c866708745efb966175c8a4f97d94067464d2f",
+      "pdf_sha256": "0a89e08c7156760bdb6c877787591ea5e6643cb6a3a400b354d2fca5b6a3edd7",
+      "state": "current_synthetic_settled_output",
+      "source_requirements_checked": 35,
+      "page_count": 1,
+      "display_spans_checked": 78,
+      "current_money_withheld": false,
+      "blockers": {
+        "calculation": {
+          "boundary": [],
+          "hold_sale": [],
+          "holding": [],
+          "returns": [],
+          "window": []
+        },
+        "evidence": [],
+        "gate": []
+      }
+    }
+  ],
+  "current_run_sha256": "51c1b3d51362e622f9964a63f038f2f3328d30491197576333c6692bcb6030bd",
+  "original_T108_cash_dates_roots_and_risk_preserved": true,
+  "all_source_events_grouped_exactly_once": true,
+  "blocked_current_money_withheld": true,
+  "source_versions": [
+    {
+      "path": "src/miniuw_foundation/current_settled_case.py",
+      "sha256": "68afc9c3ca4d30b33a85f6c522ead777c70decbdfce1ecfe9a23aeaaca4bcec2"
+    },
+    {
+      "path": "src/miniuw_foundation/settled_output_report.py",
+      "sha256": "919b2f2d0f049e90cc6983df19a3d6b3ce61b85cb8f7946320b7e33d85938b13"
+    },
+    {
+      "path": "src/miniuw_foundation/settled_output_artifacts.py",
+      "sha256": "e82d006c4c0380dbf27097864b8d12614c7d9c641a5607a6d3aed865f99a2d60"
+    },
+    {
+      "path": "src/miniuw_foundation/evidence_currency.py",
+      "sha256": "50f72838cdd9df157057a5fda6cb4069aa29b9500e17c7e5527e603347186d55"
+    },
+    {
+      "path": "src/miniuw_foundation/settled_case.py",
+      "sha256": "cd4d346dbb6af1c980efc10e7dbcc1dca11ad61b352ea4b13ea6617b1b38e8d8"
+    },
+    {
+      "path": "tools/current_settled_miniuw_v1.py",
+      "sha256": "196fe137129417720db4720ee669466285b81cc5e606f223fb0e21ad4afa3c92"
+    },
+    {
+      "path": "tools/check_current_settled_T109.py",
+      "sha256": "0f0397a047be9da584943e44924cab1f69ce7b4d982781cf5e622f29c0cee7db"
+    },
+    {
+      "path": "docs/technical-implementation-T109.md",
+      "sha256": "b78ff7ee6bd378930fc9c3d9be07fb4520afe64405a8171cb7dc009a01bd6019"
+    },
+    {
+      "path": "docs/review/current-settled-fixtures-T109.json",
+      "sha256": "a0651be075bbefc8812c4a4a4c9f560e955a0e0441dd2bacd4bf065b9eef9933"
+    }
+  ],
+  "original_semantic_mappings_pending": 54,
+  "original_sheet_adapter_for_this_profile_implemented": false,
+  "professional_review_authenticated": false,
+  "personal_return_verified": false,
+  "financial_model_complete": false,
+  "financial_publication_authorized": false,
+  "deployment_enabled": false,
+  "real_decisions_enabled": false,
+  "decision": "PENDING"
+}

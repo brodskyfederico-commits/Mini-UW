@@ -1,0 +1,102 @@
+{
+  "component": "T109",
+  "scope": "Explicit synthetic evidence/date/source hypotheses, not financial authority",
+  "cases": [
+    {
+      "label": "current",
+      "path": "templates/current-settled-current-T109.json",
+      "source_sha256": "5e71e4cd8824f434c6cb24c68683285e3da985947f93342e674869fa5a3d6dae",
+      "case_source_sha256": "2407ca737243e8356554bb8638b82b3229dc3b117b431f62a57d441202a6fb57",
+      "run_sha256": "51c1b3d51362e622f9964a63f038f2f3328d30491197576333c6692bcb6030bd",
+      "pdf_sha256": "d459b7a1d6561d591cdc195db03e38fa010b9b3228c57f2cd72b00b479dd6569",
+      "state": "current_synthetic_settled_output",
+      "sources": 35,
+      "spans": 78,
+      "audit": {
+        "component": "T109-audit",
+        "status": "passed_source_currentness_calculation_and_one_page_replay",
+        "page_count": 1,
+        "all_display_spans_extracted": true,
+        "input_sha256": "5e71e4cd8824f434c6cb24c68683285e3da985947f93342e674869fa5a3d6dae",
+        "run_sha256": "51c1b3d51362e622f9964a63f038f2f3328d30491197576333c6692bcb6030bd",
+        "pdf_sha256": "d459b7a1d6561d591cdc195db03e38fa010b9b3228c57f2cd72b00b479dd6569",
+        "manifest_sha256": "a3f0fd823456770fcd937380959887e3f5081e8b3e8ab6dd219f6efd8cdcbb80",
+        "visual_independent_financial_audit_performed": false,
+        "financial_publication_authorized": false,
+        "decision": "PENDING"
+      }
+    },
+    {
+      "label": "expired",
+      "path": "templates/current-settled-expired-T109.json",
+      "source_sha256": "1a0bc941927b2b5cde054590af7a48c4d853e14c4957c00c60f51bc2fa2300f4",
+      "case_source_sha256": "2407ca737243e8356554bb8638b82b3229dc3b117b431f62a57d441202a6fb57",
+      "run_sha256": "956de7a031d1645d152caa3d8597f51c87c434412f86c589a6b480a75b071e56",
+      "pdf_sha256": "e4d95d69d412693590e64a51763999edb6d0a530603c6a181d2b695244a3929a",
+      "state": "PENDING",
+      "sources": 35,
+      "spans": 64,
+      "audit": {
+        "component": "T109-audit",
+        "status": "passed_source_currentness_calculation_and_one_page_replay",
+        "page_count": 1,
+        "all_display_spans_extracted": true,
+        "input_sha256": "1a0bc941927b2b5cde054590af7a48c4d853e14c4957c00c60f51bc2fa2300f4",
+        "run_sha256": "956de7a031d1645d152caa3d8597f51c87c434412f86c589a6b480a75b071e56",
+        "pdf_sha256": "e4d95d69d412693590e64a51763999edb6d0a530603c6a181d2b695244a3929a",
+        "manifest_sha256": "5c1bb4705177e276509f057dff7feed0a012d650964c35933ce9975bf92621ad",
+        "visual_independent_financial_audit_performed": false,
+        "financial_publication_authorized": false,
+        "decision": "PENDING"
+      }
+    },
+    {
+      "label": "blocked",
+      "path": "templates/current-settled-blocked-T109.json",
+      "source_sha256": "2e062d85edce678a6684fd7a58ec0ac813b6cf4e7ba45a8b279281dbba00dcdc",
+      "case_source_sha256": "0abcc7f2349f653bd6ebb67544dca5f1a6cfafc23d1bc162b83ca9d78d6e7fcb",
+      "run_sha256": "d561af9ca8f31b16e88f70e45c0de575c095728ca1c3f279143f073b39ea18c0",
+      "pdf_sha256": "708b3f0facfdf5e187b498689ed2f39f88998f499952d2fb870fa2983aa7cb8d",
+      "state": "PENDING",
+      "sources": 35,
+      "spans": 64,
+      "audit": {
+        "component": "T109-audit",
+        "status": "passed_source_currentness_calculation_and_one_page_replay",
+        "page_count": 1,
+        "all_display_spans_extracted": true,
+        "input_sha256": "2e062d85edce678a6684fd7a58ec0ac813b6cf4e7ba45a8b279281dbba00dcdc",
+        "run_sha256": "d561af9ca8f31b16e88f70e45c0de575c095728ca1c3f279143f073b39ea18c0",
+        "pdf_sha256": "708b3f0facfdf5e187b498689ed2f39f88998f499952d2fb870fa2983aa7cb8d",
+        "manifest_sha256": "adac38490cf63267ad1c79fb340302c5bdfb6310f1f8b7292a6add5eff664164",
+        "visual_independent_financial_audit_performed": false,
+        "financial_publication_authorized": false,
+        "decision": "PENDING"
+      }
+    },
+    {
+      "label": "distributed",
+      "path": "templates/current-settled-distributed-T109.json",
+      "source_sha256": "e938a5842ea774a9028fdefb5b3be0dad85f187c1d5b6d8dbe3b8d917e2cdd0d",
+      "case_source_sha256": "196b17d7a33bb8b2b9553ba83ae3f74c44ca174c25d4cd6df42a1686b760ff3d",
+      "run_sha256": "07aad0c9a7fccb6ab3698d6035c866708745efb966175c8a4f97d94067464d2f",
+      "pdf_sha256": "0a89e08c7156760bdb6c877787591ea5e6643cb6a3a400b354d2fca5b6a3edd7",
+      "state": "current_synthetic_settled_output",
+      "sources": 35,
+      "spans": 78,
+      "audit": {
+        "component": "T109-audit",
+        "status": "passed_source_currentness_calculation_and_one_page_replay",
+        "page_count": 1,
+        "all_display_spans_extracted": true,
+        "input_sha256": "e938a5842ea774a9028fdefb5b3be0dad85f187c1d5b6d8dbe3b8d917e2cdd0d",
+        "run_sha256": "07aad0c9a7fccb6ab3698d6035c866708745efb966175c8a4f97d94067464d2f",
+        "pdf_sha256": "0a89e08c7156760bdb6c877787591ea5e6643cb6a3a400b354d2fca5b6a3edd7",
+        "manifest_sha256": "0ede62bf1a4482bdf7107ee48c46bb287edb44d3551c72391223b963a9625851",
+        "visual_independent_financial_audit_performed": false,
+        "financial_publication_authorized": false,
+        "decision": "PENDING"
+      }
+    }
+  ]
+}

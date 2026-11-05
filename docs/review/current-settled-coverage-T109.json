@@ -1,0 +1,465 @@
+{
+  "component": "T109",
+  "scope": "Synthetic currentness and one-page integration for supplied T108 profile; no authentic financial closure",
+  "rows": [
+    {
+      "requirement_or_variable": "complete_nested_source_inventory_and_provenance",
+      "source": {
+        "path": "docs/technical-implementation-T109.md",
+        "line": 5,
+        "sha256": "b78ff7ee6bd378930fc9c3d9be07fb4520afe64405a8171cb7dc009a01bd6019"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§§3, 5 y 7",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "DAT-01"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "Traspaso §§2/3/6/7; Traspaso §§6–7; C1/C2 Manual pp.17–18",
+          "definicion_documentada": "Datos, aplicabilidad, fuentes, reglas y escenarios requeridos deben estar completos; sin dictamen parcial ante bloqueos.",
+          "matrix_id": "M9-01"
+        }
+      ],
+      "current_definition": "Rebuild exact IDs/hash/locators for every input, nested accounting/payment, definition/version and empty catalog source; parent currentness cannot replace missing child evidence.",
+      "source_fixture": {
+        "path": "templates/current-settled-current-T109.json",
+        "sha256": "5e71e4cd8824f434c6cb24c68683285e3da985947f93342e674869fa5a3d6dae",
+        "json_pointer": "/registry_source_utf8::json/requirements"
+      },
+      "affected_modules": [
+        "M2",
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "calculation_modules": [
+        "src/miniuw_foundation/current_settled_case.py",
+        "src/miniuw_foundation/settled_output_report.py",
+        "src/miniuw_foundation/settled_output_artifacts.py"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_current_settled_output.py",
+          "line": 38,
+          "test": "CurrentSettledOutputTests.test_every_one_of_35_sources_can_independently_withdraw_current_cash"
+        },
+        {
+          "path": "tests/test_current_settled_output.py",
+          "line": 45,
+          "test": "CurrentSettledOutputTests.test_self_consistent_registry_cannot_omit_a_required_child_or_add_unknown_source"
+        },
+        {
+          "path": "tests/test_current_settled_output.py",
+          "line": 54,
+          "test": "CurrentSettledOutputTests.test_self_consistent_wrong_hash_and_locator_still_fail_exact_source_inventory"
+        },
+        {
+          "path": "docs/review/current-settled-validation-T109.json",
+          "json_pointer": "/status"
+        }
+      ],
+      "status": "partially_implemented_synthetic_source_gate_and_one_page",
+      "financial_end_to_end_coverage": false,
+      "pending": "Authentic source authority, full economic sufficiency and all-profile adapters remain pending."
+    },
+    {
+      "requirement_or_variable": "explicit_time_validity_and_review_without_authentication",
+      "source": {
+        "path": "docs/technical-implementation-T109.md",
+        "line": 7,
+        "sha256": "b78ff7ee6bd378930fc9c3d9be07fb4520afe64405a8171cb7dc009a01bd6019"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "Traspaso §§2/3/6/7; Traspaso §§6–7; C1/C2 Manual pp.17–18",
+          "definicion_documentada": "Datos, aplicabilidad, fuentes, reglas y escenarios requeridos deben estar completos; sin dictamen parcial ante bloqueos.",
+          "matrix_id": "M9-01"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "Traspaso §§2/3/6/7; Traspaso §§2/3/7",
+          "definicion_documentada": "Identidad acreditada, alcance, versión, vigencia, decisión y revocación; nombre/casilla/approved:true insuficientes.",
+          "matrix_id": "M9-09"
+        }
+      ],
+      "current_definition": "Evaluate T46 at supplied UTC with inclusive start/exclusive end and complete compatible declared review/value status; no TTL, wall clock, renewal or authentic approval inferred.",
+      "source_fixture": {
+        "path": "templates/current-settled-current-T109.json",
+        "sha256": "5e71e4cd8824f434c6cb24c68683285e3da985947f93342e674869fa5a3d6dae",
+        "json_pointer": "/evaluated_as_of_UTC"
+      },
+      "affected_modules": [
+        "M2",
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "calculation_modules": [
+        "src/miniuw_foundation/current_settled_case.py",
+        "src/miniuw_foundation/settled_output_report.py",
+        "src/miniuw_foundation/settled_output_artifacts.py"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_current_settled_output.py",
+          "line": 60,
+          "test": "CurrentSettledOutputTests.test_review_estimate_superseded_or_missing_dates_never_becomes_authentication"
+        },
+        {
+          "path": "tests/test_current_settled_output.py",
+          "line": 64,
+          "test": "CurrentSettledOutputTests.test_explicit_as_of_start_inclusive_end_exclusive_and_no_automatic_renewal"
+        },
+        {
+          "path": "tests/test_current_settled_output.py",
+          "line": 70,
+          "test": "CurrentSettledOutputTests.test_missing_and_multiple_evidence_do_not_resolve_by_parent_recency"
+        },
+        {
+          "path": "tests/test_current_settled_output.py",
+          "line": 75,
+          "test": "CurrentSettledOutputTests.test_registry_context_mismatch_with_all_dates_current_withholds_projection"
+        },
+        {
+          "path": "docs/review/current-settled-validation-T109.json",
+          "json_pointer": "/status"
+        }
+      ],
+      "status": "partially_implemented_synthetic_source_gate_and_one_page",
+      "financial_end_to_end_coverage": false,
+      "pending": "Real review identity/authority, revocation procedures and production monitoring remain pending."
+    },
+    {
+      "requirement_or_variable": "full_current_money_withdrawal_and_revision_identity",
+      "source": {
+        "path": "docs/technical-implementation-T109.md",
+        "line": 9,
+        "sha256": "b78ff7ee6bd378930fc9c3d9be07fb4520afe64405a8171cb7dc009a01bd6019"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "Traspaso §§2/3/6/7; Traspaso §§6–7; Manual prueba 14 p.29",
+          "definicion_documentada": "Cambios de fuentes/datos/fórmulas invalidan descendientes; criterio solo permite conservar caja independiente pero recalcula comparaciones y precio objetivo.",
+          "matrix_id": "M9-05"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "Traspaso §§2/3/6/7; Traspaso §§6–7; C1/C2 Manual pp.17–18",
+          "definicion_documentada": "Datos, aplicabilidad, fuentes, reglas y escenarios requeridos deben estar completos; sin dictamen parcial ante bloqueos.",
+          "matrix_id": "M9-01"
+        }
+      ],
+      "current_definition": "Withdraw every combined financial summary on a source/calc blocker, even with current self-consistent evidence or a calculable historical/isolated parent; new candidate needs its own source inventory.",
+      "source_fixture": {
+        "path": "templates/current-settled-current-T109.json",
+        "sha256": "5e71e4cd8824f434c6cb24c68683285e3da985947f93342e674869fa5a3d6dae",
+        "json_pointer": "/case_source_utf8"
+      },
+      "affected_modules": [
+        "M2",
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "calculation_modules": [
+        "src/miniuw_foundation/current_settled_case.py",
+        "src/miniuw_foundation/settled_output_report.py",
+        "src/miniuw_foundation/settled_output_artifacts.py"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_current_settled_output.py",
+          "line": 79,
+          "test": "CurrentSettledOutputTests.test_current_evidence_does_not_restore_blocked_accounting_calculation"
+        },
+        {
+          "path": "tests/test_current_settled_output.py",
+          "line": 84,
+          "test": "CurrentSettledOutputTests.test_new_complete_same_context_case_requires_its_own_evidence"
+        },
+        {
+          "path": "tests/test_current_settled_output.py",
+          "line": 89,
+          "test": "CurrentSettledOutputTests.test_raw_byte_identity_is_preserved_without_semantic_source_reuse"
+        },
+        {
+          "path": "tests/test_current_settled_output.py",
+          "line": 102,
+          "test": "CurrentSettledOutputTests.test_expired_and_blocked_page_contains_no_current_or_historical_money_fallback"
+        },
+        {
+          "path": "docs/review/current-settled-validation-T109.json",
+          "json_pointer": "/status"
+        }
+      ],
+      "status": "partially_implemented_synthetic_source_gate_and_one_page",
+      "financial_end_to_end_coverage": false,
+      "pending": "Actual delivery/publication authorization and independent financial acceptance remain pending."
+    },
+    {
+      "requirement_or_variable": "one_page_full_investor_cash_story_aggregate_not_personal",
+      "source": {
+        "path": "docs/technical-implementation-T109.md",
+        "line": 11,
+        "sha256": "b78ff7ee6bd378930fc9c3d9be07fb4520afe64405a8171cb7dc009a01bd6019"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 aportes/distribuciones brutos frente a neto",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "RETURN-01"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "Traspaso §§2/3/6/7; Traspaso §2; D1 p.1; Master §7",
+          "definicion_documentada": "Render desde resultados enlazados; cifras, unidades, limitaciones y criterios legibles; exactamente una página PDF por deal.",
+          "matrix_id": "M9-07"
+        }
+      ],
+      "current_definition": "Preserve exact T108 gross/dates/IRR/risk and show original contributions, additional cash, refinance absence, operation/sale, explicit normalization and current settlement; absent capital/CoC/personal terms stay pending.",
+      "source_fixture": {
+        "path": "templates/current-settled-current-T109.json",
+        "sha256": "5e71e4cd8824f434c6cb24c68683285e3da985947f93342e674869fa5a3d6dae",
+        "json_pointer": "/case_source_utf8::json/investor_source_utf8"
+      },
+      "affected_modules": [
+        "M2",
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "calculation_modules": [
+        "src/miniuw_foundation/current_settled_case.py",
+        "src/miniuw_foundation/settled_output_report.py",
+        "src/miniuw_foundation/settled_output_artifacts.py"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_current_settled_output.py",
+          "line": 33,
+          "test": "CurrentSettledOutputTests.test_complete_current_source_gate_preserves_exact_full_parent_money_and_roots"
+        },
+        {
+          "path": "tests/test_current_settled_output.py",
+          "line": 94,
+          "test": "CurrentSettledOutputTests.test_one_page_full_money_reference_dates_annual_cash_criteria_and_spans"
+        },
+        {
+          "path": "docs/review/current-settled-validation-T109.json",
+          "json_pointer": "/status"
+        }
+      ],
+      "status": "partially_implemented_synthetic_source_gate_and_one_page",
+      "financial_end_to_end_coverage": false,
+      "pending": "Capital/CoC/LP policy, authentic investor allocation and other model profiles remain pending."
+    },
+    {
+      "requirement_or_variable": "bounded_page_exhaustive_event_zero_and_annual_presentation",
+      "source": {
+        "path": "docs/technical-implementation-T109.md",
+        "line": 13,
+        "sha256": "b78ff7ee6bd378930fc9c3d9be07fb4520afe64405a8171cb7dc009a01bd6019"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "Traspaso §§2/3/6/7; Traspaso §2; D1 p.1; Master §7",
+          "definicion_documentada": "Render desde resultados enlazados; cifras, unidades, limitaciones y criterios legibles; exactamente una página PDF por deal.",
+          "matrix_id": "M9-07"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "Traspaso §§2/3/6/7; C4 Manual p.18/pp.39/50; PAR-08",
+          "definicion_documentada": "Independencia de revisión y diferencias persistentes requieren evidencia; corregir render o escalar sin publicar; no afirmar auditoría sólo por cotejo de texto.",
+          "matrix_id": "M9-08"
+        }
+      ],
+      "current_definition": "Group every event once with explicit n/zero counts, retain all annual rows up to12; four-decimal display/outward IRR bounds only. Reject overflow/nonrepresentable text, never truncate or append pages.",
+      "source_fixture": {
+        "path": "templates/current-settled-current-T109.json",
+        "sha256": "5e71e4cd8824f434c6cb24c68683285e3da985947f93342e674869fa5a3d6dae",
+        "json_pointer": "/case_source_utf8::json/return_binding_source_utf8"
+      },
+      "affected_modules": [
+        "M2",
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "calculation_modules": [
+        "src/miniuw_foundation/current_settled_case.py",
+        "src/miniuw_foundation/settled_output_report.py",
+        "src/miniuw_foundation/settled_output_artifacts.py"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_current_settled_output.py",
+          "line": 94,
+          "test": "CurrentSettledOutputTests.test_one_page_full_money_reference_dates_annual_cash_criteria_and_spans"
+        },
+        {
+          "path": "tests/test_current_settled_output.py",
+          "line": 110,
+          "test": "CurrentSettledOutputTests.test_twelve_years_all_fit_thirteen_overflow_and_unsupported_text_are_rejected"
+        },
+        {
+          "path": "tests/test_current_settled_output.py",
+          "line": 119,
+          "test": "CurrentSettledOutputTests.test_public_renderer_rejects_rehashed_run_or_other_source"
+        },
+        {
+          "path": "docs/review/current-settled-validation-T109.json",
+          "json_pointer": "/status"
+        }
+      ],
+      "status": "partially_implemented_synthetic_source_gate_and_one_page",
+      "financial_end_to_end_coverage": false,
+      "pending": "Independent visual/financial audit and real external decision PDF approval remain pending."
+    },
+    {
+      "requirement_or_variable": "empty_deal_criteria_and_decision_remain_pending",
+      "source": {
+        "path": "docs/technical-implementation-T109.md",
+        "line": 7,
+        "sha256": "b78ff7ee6bd378930fc9c3d9be07fb4520afe64405a8171cb7dc009a01bd6019"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "Traspaso §§2/3/6/7; Master §5/Estándares §2; instrucción actual",
+          "definicion_documentada": "Valores expresos, definición/unidad/período/escenario, operador, igualdad y revisión separados de términos bancarios. No heredar umbrales.",
+          "matrix_id": "M9-02"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "Traspaso §§2/3/6/7; Master §6/política 17; confirmaciones del usuario",
+          "definicion_documentada": "El objetivo binario no resuelve la banda entre PASS y FAIL histórica. Agregación y prioridades requieren regla explícita; si falta, PENDIENTE.",
+          "matrix_id": "M9-04"
+        }
+      ],
+      "current_definition": "All ten original criterion IDs retain no threshold and Pending; current projected EM/IRR does not imply a supplied investment condition or deal PASS/FAIL.",
+      "source_fixture": {
+        "path": "templates/current-settled-current-T109.json",
+        "sha256": "5e71e4cd8824f434c6cb24c68683285e3da985947f93342e674869fa5a3d6dae",
+        "json_pointer": "/registry_source_utf8::json/evidence"
+      },
+      "affected_modules": [
+        "M2",
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "calculation_modules": [
+        "src/miniuw_foundation/current_settled_case.py",
+        "src/miniuw_foundation/settled_output_report.py",
+        "src/miniuw_foundation/settled_output_artifacts.py"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_current_settled_output.py",
+          "line": 171,
+          "test": "CurrentSettledOutputTests.test_synthetic_current_evidence_does_not_adopt_criteria_financial_policy_or_authority"
+        },
+        {
+          "path": "docs/review/current-settled-validation-T109.json",
+          "json_pointer": "/status"
+        }
+      ],
+      "status": "partially_implemented_synthetic_source_gate_and_one_page",
+      "financial_end_to_end_coverage": false,
+      "pending": "Original55-field adapter for this route,54 global semantic mappings and authentic per-deal criteria remain pending."
+    },
+    {
+      "requirement_or_variable": "six_file_source_first_PDF_recovery_and_determinism",
+      "source": {
+        "path": "docs/technical-implementation-T109.md",
+        "line": 15,
+        "sha256": "b78ff7ee6bd378930fc9c3d9be07fb4520afe64405a8171cb7dc009a01bd6019"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "Traspaso §§2/3/6/7; Traspaso §7",
+          "definicion_documentada": "Preservar originales/lecturas, entradas/supuestos, cálculo, comparaciones, revisión y PDF con relaciones claras; hash no prueba autenticidad.",
+          "matrix_id": "M9-11"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "Traspaso §§2/3/6/7; Traspaso §§8/10/11",
+          "definicion_documentada": "Versionar, verificar SHA remoto completo y exclusiones; no liberar producción por conteo de pruebas, prototipo o referencias sintéticas.",
+          "matrix_id": "M9-12"
+        }
+      ],
+      "current_definition": "Replay source, registry, math, result, PDF, exact spans and manifest with compatible versions. Recover valid/expired/blocked states; safe inventory and immutable retry, no actual publication/deployment.",
+      "source_fixture": {
+        "path": "templates/current-settled-current-T109.json",
+        "sha256": "5e71e4cd8824f434c6cb24c68683285e3da985947f93342e674869fa5a3d6dae",
+        "json_pointer": "/schema"
+      },
+      "affected_modules": [
+        "M2",
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "calculation_modules": [
+        "src/miniuw_foundation/current_settled_case.py",
+        "src/miniuw_foundation/settled_output_report.py",
+        "src/miniuw_foundation/settled_output_artifacts.py"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_current_settled_output.py",
+          "line": 124,
+          "test": "CurrentSettledOutputTests.test_six_file_one_PDF_recovery_replays_current_expired_and_blocked_sources"
+        },
+        {
+          "path": "tests/test_current_settled_output.py",
+          "line": 132,
+          "test": "CurrentSettledOutputTests.test_incompatible_versions_and_rehashed_PDF_result_or_inventory_are_rejected"
+        },
+        {
+          "path": "tests/test_current_settled_output.py",
+          "line": 147,
+          "test": "CurrentSettledOutputTests.test_retry_no_different_overwrite_extra_symlink_size_and_own_temp_cleanup"
+        },
+        {
+          "path": "tests/test_current_settled_output.py",
+          "line": 163,
+          "test": "CurrentSettledOutputTests.test_separate_process_hash_seeds_preserve_exact_run_and_PDF"
+        },
+        {
+          "path": "docs/review/current-settled-validation-T109.json",
+          "json_pointer": "/status"
+        }
+      ],
+      "status": "partially_implemented_synthetic_source_gate_and_one_page",
+      "financial_end_to_end_coverage": false,
+      "pending": "Production concurrency, full runtime restoration and real financial release authority remain pending."
+    }
+  ],
+  "original_coverage_rows_preserved": 398,
+  "original_semantic_mappings_pending": 54,
+  "financial_model_complete": false,
+  "real_decisions_enabled": false
+}
