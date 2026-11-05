@@ -1,0 +1,1602 @@
+{
+  "component": "T111",
+  "scope": "All55 exact original field locations plus new source/case consistency evidence; original398 rows preserved",
+  "financial_model_complete": false,
+  "rows": [
+    {
+      "requirement_or_variable": "INPUT_C7",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_source_location": "Inputs!C7",
+      "source_unit_literal": "PER UNIT / PER SF",
+      "current_definition": {
+        "document": "docs/technical-implementation-T111.md",
+        "line": 7,
+        "scope": "Exact representation and literal-unit comparison; no financial mapping adoption"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/worksheet_settled_output.py",
+        "line": 80,
+        "function": "check_worksheet",
+        "calculation_scope": "block current inherited cash on worksheet/claim discrepancy; does not compute projection from55 claims"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_worksheet_settled_output.py",
+        "line": 56,
+        "test": "test_all_55_fields_keep_exact_cell_claim_pointer_and_unit_by_identity",
+        "result": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "pointer": "/worksheet_reconciliation/rows/0"
+      },
+      "technical_state": "MATCHED_REPRESENTATION",
+      "financial_mapping_state": "not_validated_for_T111",
+      "financial_coverage_complete": false,
+      "pending": "Financial unit/currency/period/applicability/source authority and actual calculation mapping remain unresolved; representation agreement is not financial coverage."
+    },
+    {
+      "requirement_or_variable": "INPUT_C8",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_source_location": "Inputs!C8",
+      "source_unit_literal": "$",
+      "current_definition": {
+        "document": "docs/technical-implementation-T111.md",
+        "line": 7,
+        "scope": "Exact representation and literal-unit comparison; no financial mapping adoption"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/worksheet_settled_output.py",
+        "line": 80,
+        "function": "check_worksheet",
+        "calculation_scope": "block current inherited cash on worksheet/claim discrepancy; does not compute projection from55 claims"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_worksheet_settled_output.py",
+        "line": 56,
+        "test": "test_all_55_fields_keep_exact_cell_claim_pointer_and_unit_by_identity",
+        "result": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "pointer": "/worksheet_reconciliation/rows/1"
+      },
+      "technical_state": "MISSING_BOTH",
+      "financial_mapping_state": "not_validated_for_T111",
+      "financial_coverage_complete": false,
+      "pending": "Financial unit/currency/period/applicability/source authority and actual calculation mapping remain unresolved; representation agreement is not financial coverage."
+    },
+    {
+      "requirement_or_variable": "INPUT_C9",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_source_location": "Inputs!C9",
+      "source_unit_literal": "$",
+      "current_definition": {
+        "document": "docs/technical-implementation-T111.md",
+        "line": 7,
+        "scope": "Exact representation and literal-unit comparison; no financial mapping adoption"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/worksheet_settled_output.py",
+        "line": 80,
+        "function": "check_worksheet",
+        "calculation_scope": "block current inherited cash on worksheet/claim discrepancy; does not compute projection from55 claims"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_worksheet_settled_output.py",
+        "line": 56,
+        "test": "test_all_55_fields_keep_exact_cell_claim_pointer_and_unit_by_identity",
+        "result": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "pointer": "/worksheet_reconciliation/rows/2"
+      },
+      "technical_state": "MISSING_BOTH",
+      "financial_mapping_state": "not_validated_for_T111",
+      "financial_coverage_complete": false,
+      "pending": "Financial unit/currency/period/applicability/source authority and actual calculation mapping remain unresolved; representation agreement is not financial coverage."
+    },
+    {
+      "requirement_or_variable": "INPUT_C10",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_source_location": "Inputs!C10",
+      "source_unit_literal": "$",
+      "current_definition": {
+        "document": "docs/technical-implementation-T111.md",
+        "line": 7,
+        "scope": "Exact representation and literal-unit comparison; no financial mapping adoption"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/worksheet_settled_output.py",
+        "line": 80,
+        "function": "check_worksheet",
+        "calculation_scope": "block current inherited cash on worksheet/claim discrepancy; does not compute projection from55 claims"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_worksheet_settled_output.py",
+        "line": 56,
+        "test": "test_all_55_fields_keep_exact_cell_claim_pointer_and_unit_by_identity",
+        "result": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "pointer": "/worksheet_reconciliation/rows/3"
+      },
+      "technical_state": "MISSING_BOTH",
+      "financial_mapping_state": "not_validated_for_T111",
+      "financial_coverage_complete": false,
+      "pending": "Financial unit/currency/period/applicability/source authority and actual calculation mapping remain unresolved; representation agreement is not financial coverage."
+    },
+    {
+      "requirement_or_variable": "INPUT_C11",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_source_location": "Inputs!C11",
+      "source_unit_literal": "$",
+      "current_definition": {
+        "document": "docs/technical-implementation-T111.md",
+        "line": 7,
+        "scope": "Exact representation and literal-unit comparison; no financial mapping adoption"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/worksheet_settled_output.py",
+        "line": 80,
+        "function": "check_worksheet",
+        "calculation_scope": "block current inherited cash on worksheet/claim discrepancy; does not compute projection from55 claims"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_worksheet_settled_output.py",
+        "line": 56,
+        "test": "test_all_55_fields_keep_exact_cell_claim_pointer_and_unit_by_identity",
+        "result": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "pointer": "/worksheet_reconciliation/rows/4"
+      },
+      "technical_state": "MISSING_BOTH",
+      "financial_mapping_state": "not_validated_for_T111",
+      "financial_coverage_complete": false,
+      "pending": "Financial unit/currency/period/applicability/source authority and actual calculation mapping remain unresolved; representation agreement is not financial coverage."
+    },
+    {
+      "requirement_or_variable": "INPUT_C12",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_source_location": "Inputs!C12",
+      "source_unit_literal": "text",
+      "current_definition": {
+        "document": "docs/technical-implementation-T111.md",
+        "line": 7,
+        "scope": "Exact representation and literal-unit comparison; no financial mapping adoption"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/worksheet_settled_output.py",
+        "line": 80,
+        "function": "check_worksheet",
+        "calculation_scope": "block current inherited cash on worksheet/claim discrepancy; does not compute projection from55 claims"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_worksheet_settled_output.py",
+        "line": 56,
+        "test": "test_all_55_fields_keep_exact_cell_claim_pointer_and_unit_by_identity",
+        "result": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "pointer": "/worksheet_reconciliation/rows/5"
+      },
+      "technical_state": "MISSING_BOTH",
+      "financial_mapping_state": "not_validated_for_T111",
+      "financial_coverage_complete": false,
+      "pending": "Financial unit/currency/period/applicability/source authority and actual calculation mapping remain unresolved; representation agreement is not financial coverage."
+    },
+    {
+      "requirement_or_variable": "INPUT_C13",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_source_location": "Inputs!C13",
+      "source_unit_literal": "$/unit/month",
+      "current_definition": {
+        "document": "docs/technical-implementation-T111.md",
+        "line": 7,
+        "scope": "Exact representation and literal-unit comparison; no financial mapping adoption"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/worksheet_settled_output.py",
+        "line": 80,
+        "function": "check_worksheet",
+        "calculation_scope": "block current inherited cash on worksheet/claim discrepancy; does not compute projection from55 claims"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_worksheet_settled_output.py",
+        "line": 56,
+        "test": "test_all_55_fields_keep_exact_cell_claim_pointer_and_unit_by_identity",
+        "result": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "pointer": "/worksheet_reconciliation/rows/6"
+      },
+      "technical_state": "MISSING_BOTH",
+      "financial_mapping_state": "not_validated_for_T111",
+      "financial_coverage_complete": false,
+      "pending": "Financial unit/currency/period/applicability/source authority and actual calculation mapping remain unresolved; representation agreement is not financial coverage."
+    },
+    {
+      "requirement_or_variable": "INPUT_C14",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_source_location": "Inputs!C14",
+      "source_unit_literal": "decimal",
+      "current_definition": {
+        "document": "docs/technical-implementation-T111.md",
+        "line": 7,
+        "scope": "Exact representation and literal-unit comparison; no financial mapping adoption"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/worksheet_settled_output.py",
+        "line": 80,
+        "function": "check_worksheet",
+        "calculation_scope": "block current inherited cash on worksheet/claim discrepancy; does not compute projection from55 claims"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_worksheet_settled_output.py",
+        "line": 56,
+        "test": "test_all_55_fields_keep_exact_cell_claim_pointer_and_unit_by_identity",
+        "result": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "pointer": "/worksheet_reconciliation/rows/7"
+      },
+      "technical_state": "MISSING_BOTH",
+      "financial_mapping_state": "not_validated_for_T111",
+      "financial_coverage_complete": false,
+      "pending": "Financial unit/currency/period/applicability/source authority and actual calculation mapping remain unresolved; representation agreement is not financial coverage."
+    },
+    {
+      "requirement_or_variable": "INPUT_C15",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_source_location": "Inputs!C15",
+      "source_unit_literal": "decimal of rent",
+      "current_definition": {
+        "document": "docs/technical-implementation-T111.md",
+        "line": 7,
+        "scope": "Exact representation and literal-unit comparison; no financial mapping adoption"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/worksheet_settled_output.py",
+        "line": 80,
+        "function": "check_worksheet",
+        "calculation_scope": "block current inherited cash on worksheet/claim discrepancy; does not compute projection from55 claims"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_worksheet_settled_output.py",
+        "line": 56,
+        "test": "test_all_55_fields_keep_exact_cell_claim_pointer_and_unit_by_identity",
+        "result": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "pointer": "/worksheet_reconciliation/rows/8"
+      },
+      "technical_state": "MISSING_BOTH",
+      "financial_mapping_state": "not_validated_for_T111",
+      "financial_coverage_complete": false,
+      "pending": "Financial unit/currency/period/applicability/source authority and actual calculation mapping remain unresolved; representation agreement is not financial coverage."
+    },
+    {
+      "requirement_or_variable": "INPUT_C16",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_source_location": "Inputs!C16",
+      "source_unit_literal": "$/SF/yr",
+      "current_definition": {
+        "document": "docs/technical-implementation-T111.md",
+        "line": 7,
+        "scope": "Exact representation and literal-unit comparison; no financial mapping adoption"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/worksheet_settled_output.py",
+        "line": 80,
+        "function": "check_worksheet",
+        "calculation_scope": "block current inherited cash on worksheet/claim discrepancy; does not compute projection from55 claims"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_worksheet_settled_output.py",
+        "line": 56,
+        "test": "test_all_55_fields_keep_exact_cell_claim_pointer_and_unit_by_identity",
+        "result": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "pointer": "/worksheet_reconciliation/rows/9"
+      },
+      "technical_state": "MISSING_BOTH",
+      "financial_mapping_state": "not_validated_for_T111",
+      "financial_coverage_complete": false,
+      "pending": "Financial unit/currency/period/applicability/source authority and actual calculation mapping remain unresolved; representation agreement is not financial coverage."
+    },
+    {
+      "requirement_or_variable": "INPUT_C17",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_source_location": "Inputs!C17",
+      "source_unit_literal": "$/SF/yr",
+      "current_definition": {
+        "document": "docs/technical-implementation-T111.md",
+        "line": 7,
+        "scope": "Exact representation and literal-unit comparison; no financial mapping adoption"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/worksheet_settled_output.py",
+        "line": 80,
+        "function": "check_worksheet",
+        "calculation_scope": "block current inherited cash on worksheet/claim discrepancy; does not compute projection from55 claims"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_worksheet_settled_output.py",
+        "line": 56,
+        "test": "test_all_55_fields_keep_exact_cell_claim_pointer_and_unit_by_identity",
+        "result": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "pointer": "/worksheet_reconciliation/rows/10"
+      },
+      "technical_state": "MISSING_BOTH",
+      "financial_mapping_state": "not_validated_for_T111",
+      "financial_coverage_complete": false,
+      "pending": "Financial unit/currency/period/applicability/source authority and actual calculation mapping remain unresolved; representation agreement is not financial coverage."
+    },
+    {
+      "requirement_or_variable": "INPUT_C18",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_source_location": "Inputs!C18",
+      "source_unit_literal": "$/SF/yr",
+      "current_definition": {
+        "document": "docs/technical-implementation-T111.md",
+        "line": 7,
+        "scope": "Exact representation and literal-unit comparison; no financial mapping adoption"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/worksheet_settled_output.py",
+        "line": 80,
+        "function": "check_worksheet",
+        "calculation_scope": "block current inherited cash on worksheet/claim discrepancy; does not compute projection from55 claims"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_worksheet_settled_output.py",
+        "line": 56,
+        "test": "test_all_55_fields_keep_exact_cell_claim_pointer_and_unit_by_identity",
+        "result": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "pointer": "/worksheet_reconciliation/rows/11"
+      },
+      "technical_state": "MISSING_BOTH",
+      "financial_mapping_state": "not_validated_for_T111",
+      "financial_coverage_complete": false,
+      "pending": "Financial unit/currency/period/applicability/source authority and actual calculation mapping remain unresolved; representation agreement is not financial coverage."
+    },
+    {
+      "requirement_or_variable": "INPUT_C19",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_source_location": "Inputs!C19",
+      "source_unit_literal": "decimal",
+      "current_definition": {
+        "document": "docs/technical-implementation-T111.md",
+        "line": 7,
+        "scope": "Exact representation and literal-unit comparison; no financial mapping adoption"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/worksheet_settled_output.py",
+        "line": 80,
+        "function": "check_worksheet",
+        "calculation_scope": "block current inherited cash on worksheet/claim discrepancy; does not compute projection from55 claims"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_worksheet_settled_output.py",
+        "line": 56,
+        "test": "test_all_55_fields_keep_exact_cell_claim_pointer_and_unit_by_identity",
+        "result": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "pointer": "/worksheet_reconciliation/rows/12"
+      },
+      "technical_state": "MISSING_BOTH",
+      "financial_mapping_state": "not_validated_for_T111",
+      "financial_coverage_complete": false,
+      "pending": "Financial unit/currency/period/applicability/source authority and actual calculation mapping remain unresolved; representation agreement is not financial coverage."
+    },
+    {
+      "requirement_or_variable": "INPUT_C20",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_source_location": "Inputs!C20",
+      "source_unit_literal": "decimal",
+      "current_definition": {
+        "document": "docs/technical-implementation-T111.md",
+        "line": 7,
+        "scope": "Exact representation and literal-unit comparison; no financial mapping adoption"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/worksheet_settled_output.py",
+        "line": 80,
+        "function": "check_worksheet",
+        "calculation_scope": "block current inherited cash on worksheet/claim discrepancy; does not compute projection from55 claims"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_worksheet_settled_output.py",
+        "line": 56,
+        "test": "test_all_55_fields_keep_exact_cell_claim_pointer_and_unit_by_identity",
+        "result": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "pointer": "/worksheet_reconciliation/rows/13"
+      },
+      "technical_state": "MISSING_BOTH",
+      "financial_mapping_state": "not_validated_for_T111",
+      "financial_coverage_complete": false,
+      "pending": "Financial unit/currency/period/applicability/source authority and actual calculation mapping remain unresolved; representation agreement is not financial coverage."
+    },
+    {
+      "requirement_or_variable": "INPUT_C21",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_source_location": "Inputs!C21",
+      "source_unit_literal": "months",
+      "current_definition": {
+        "document": "docs/technical-implementation-T111.md",
+        "line": 7,
+        "scope": "Exact representation and literal-unit comparison; no financial mapping adoption"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/worksheet_settled_output.py",
+        "line": 80,
+        "function": "check_worksheet",
+        "calculation_scope": "block current inherited cash on worksheet/claim discrepancy; does not compute projection from55 claims"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_worksheet_settled_output.py",
+        "line": 56,
+        "test": "test_all_55_fields_keep_exact_cell_claim_pointer_and_unit_by_identity",
+        "result": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "pointer": "/worksheet_reconciliation/rows/14"
+      },
+      "technical_state": "MISSING_BOTH",
+      "financial_mapping_state": "not_validated_for_T111",
+      "financial_coverage_complete": false,
+      "pending": "Financial unit/currency/period/applicability/source authority and actual calculation mapping remain unresolved; representation agreement is not financial coverage."
+    },
+    {
+      "requirement_or_variable": "INPUT_C25",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_source_location": "Inputs!C25",
+      "source_unit_literal": "$/month",
+      "current_definition": {
+        "document": "docs/technical-implementation-T111.md",
+        "line": 7,
+        "scope": "Exact representation and literal-unit comparison; no financial mapping adoption"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/worksheet_settled_output.py",
+        "line": 80,
+        "function": "check_worksheet",
+        "calculation_scope": "block current inherited cash on worksheet/claim discrepancy; does not compute projection from55 claims"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_worksheet_settled_output.py",
+        "line": 56,
+        "test": "test_all_55_fields_keep_exact_cell_claim_pointer_and_unit_by_identity",
+        "result": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "pointer": "/worksheet_reconciliation/rows/15"
+      },
+      "technical_state": "MISSING_BOTH",
+      "financial_mapping_state": "not_validated_for_T111",
+      "financial_coverage_complete": false,
+      "pending": "Financial unit/currency/period/applicability/source authority and actual calculation mapping remain unresolved; representation agreement is not financial coverage."
+    },
+    {
+      "requirement_or_variable": "INPUT_C26",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_source_location": "Inputs!C26",
+      "source_unit_literal": "$/month",
+      "current_definition": {
+        "document": "docs/technical-implementation-T111.md",
+        "line": 7,
+        "scope": "Exact representation and literal-unit comparison; no financial mapping adoption"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/worksheet_settled_output.py",
+        "line": 80,
+        "function": "check_worksheet",
+        "calculation_scope": "block current inherited cash on worksheet/claim discrepancy; does not compute projection from55 claims"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_worksheet_settled_output.py",
+        "line": 56,
+        "test": "test_all_55_fields_keep_exact_cell_claim_pointer_and_unit_by_identity",
+        "result": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "pointer": "/worksheet_reconciliation/rows/16"
+      },
+      "technical_state": "MISSING_BOTH",
+      "financial_mapping_state": "not_validated_for_T111",
+      "financial_coverage_complete": false,
+      "pending": "Financial unit/currency/period/applicability/source authority and actual calculation mapping remain unresolved; representation agreement is not financial coverage."
+    },
+    {
+      "requirement_or_variable": "INPUT_C27",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_source_location": "Inputs!C27",
+      "source_unit_literal": "$/month",
+      "current_definition": {
+        "document": "docs/technical-implementation-T111.md",
+        "line": 7,
+        "scope": "Exact representation and literal-unit comparison; no financial mapping adoption"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/worksheet_settled_output.py",
+        "line": 80,
+        "function": "check_worksheet",
+        "calculation_scope": "block current inherited cash on worksheet/claim discrepancy; does not compute projection from55 claims"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_worksheet_settled_output.py",
+        "line": 56,
+        "test": "test_all_55_fields_keep_exact_cell_claim_pointer_and_unit_by_identity",
+        "result": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "pointer": "/worksheet_reconciliation/rows/17"
+      },
+      "technical_state": "MISSING_BOTH",
+      "financial_mapping_state": "not_validated_for_T111",
+      "financial_coverage_complete": false,
+      "pending": "Financial unit/currency/period/applicability/source authority and actual calculation mapping remain unresolved; representation agreement is not financial coverage."
+    },
+    {
+      "requirement_or_variable": "INPUT_C28",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_source_location": "Inputs!C28",
+      "source_unit_literal": "$/month",
+      "current_definition": {
+        "document": "docs/technical-implementation-T111.md",
+        "line": 7,
+        "scope": "Exact representation and literal-unit comparison; no financial mapping adoption"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/worksheet_settled_output.py",
+        "line": 80,
+        "function": "check_worksheet",
+        "calculation_scope": "block current inherited cash on worksheet/claim discrepancy; does not compute projection from55 claims"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_worksheet_settled_output.py",
+        "line": 56,
+        "test": "test_all_55_fields_keep_exact_cell_claim_pointer_and_unit_by_identity",
+        "result": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "pointer": "/worksheet_reconciliation/rows/18"
+      },
+      "technical_state": "MISSING_BOTH",
+      "financial_mapping_state": "not_validated_for_T111",
+      "financial_coverage_complete": false,
+      "pending": "Financial unit/currency/period/applicability/source authority and actual calculation mapping remain unresolved; representation agreement is not financial coverage."
+    },
+    {
+      "requirement_or_variable": "INPUT_C32",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_source_location": "Inputs!C32",
+      "source_unit_literal": "$",
+      "current_definition": {
+        "document": "docs/technical-implementation-T111.md",
+        "line": 7,
+        "scope": "Exact representation and literal-unit comparison; no financial mapping adoption"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/worksheet_settled_output.py",
+        "line": 80,
+        "function": "check_worksheet",
+        "calculation_scope": "block current inherited cash on worksheet/claim discrepancy; does not compute projection from55 claims"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_worksheet_settled_output.py",
+        "line": 56,
+        "test": "test_all_55_fields_keep_exact_cell_claim_pointer_and_unit_by_identity",
+        "result": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "pointer": "/worksheet_reconciliation/rows/19"
+      },
+      "technical_state": "MISSING_BOTH",
+      "financial_mapping_state": "not_validated_for_T111",
+      "financial_coverage_complete": false,
+      "pending": "Financial unit/currency/period/applicability/source authority and actual calculation mapping remain unresolved; representation agreement is not financial coverage."
+    },
+    {
+      "requirement_or_variable": "INPUT_C33",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_source_location": "Inputs!C33",
+      "source_unit_literal": "decimal",
+      "current_definition": {
+        "document": "docs/technical-implementation-T111.md",
+        "line": 7,
+        "scope": "Exact representation and literal-unit comparison; no financial mapping adoption"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/worksheet_settled_output.py",
+        "line": 80,
+        "function": "check_worksheet",
+        "calculation_scope": "block current inherited cash on worksheet/claim discrepancy; does not compute projection from55 claims"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_worksheet_settled_output.py",
+        "line": 56,
+        "test": "test_all_55_fields_keep_exact_cell_claim_pointer_and_unit_by_identity",
+        "result": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "pointer": "/worksheet_reconciliation/rows/20"
+      },
+      "technical_state": "MISSING_BOTH",
+      "financial_mapping_state": "not_validated_for_T111",
+      "financial_coverage_complete": false,
+      "pending": "Financial unit/currency/period/applicability/source authority and actual calculation mapping remain unresolved; representation agreement is not financial coverage."
+    },
+    {
+      "requirement_or_variable": "INPUT_C34",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_source_location": "Inputs!C34",
+      "source_unit_literal": "$/GSF / $/UNIT / TOTAL",
+      "current_definition": {
+        "document": "docs/technical-implementation-T111.md",
+        "line": 7,
+        "scope": "Exact representation and literal-unit comparison; no financial mapping adoption"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/worksheet_settled_output.py",
+        "line": 80,
+        "function": "check_worksheet",
+        "calculation_scope": "block current inherited cash on worksheet/claim discrepancy; does not compute projection from55 claims"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_worksheet_settled_output.py",
+        "line": 56,
+        "test": "test_all_55_fields_keep_exact_cell_claim_pointer_and_unit_by_identity",
+        "result": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "pointer": "/worksheet_reconciliation/rows/21"
+      },
+      "technical_state": "MISSING_BOTH",
+      "financial_mapping_state": "not_validated_for_T111",
+      "financial_coverage_complete": false,
+      "pending": "Financial unit/currency/period/applicability/source authority and actual calculation mapping remain unresolved; representation agreement is not financial coverage."
+    },
+    {
+      "requirement_or_variable": "INPUT_C35",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_source_location": "Inputs!C35",
+      "source_unit_literal": "per basis",
+      "current_definition": {
+        "document": "docs/technical-implementation-T111.md",
+        "line": 7,
+        "scope": "Exact representation and literal-unit comparison; no financial mapping adoption"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/worksheet_settled_output.py",
+        "line": 80,
+        "function": "check_worksheet",
+        "calculation_scope": "block current inherited cash on worksheet/claim discrepancy; does not compute projection from55 claims"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_worksheet_settled_output.py",
+        "line": 56,
+        "test": "test_all_55_fields_keep_exact_cell_claim_pointer_and_unit_by_identity",
+        "result": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "pointer": "/worksheet_reconciliation/rows/22"
+      },
+      "technical_state": "MISSING_BOTH",
+      "financial_mapping_state": "not_validated_for_T111",
+      "financial_coverage_complete": false,
+      "pending": "Financial unit/currency/period/applicability/source authority and actual calculation mapping remain unresolved; representation agreement is not financial coverage."
+    },
+    {
+      "requirement_or_variable": "INPUT_C36",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_source_location": "Inputs!C36",
+      "source_unit_literal": "SF",
+      "current_definition": {
+        "document": "docs/technical-implementation-T111.md",
+        "line": 7,
+        "scope": "Exact representation and literal-unit comparison; no financial mapping adoption"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/worksheet_settled_output.py",
+        "line": 80,
+        "function": "check_worksheet",
+        "calculation_scope": "block current inherited cash on worksheet/claim discrepancy; does not compute projection from55 claims"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_worksheet_settled_output.py",
+        "line": 56,
+        "test": "test_all_55_fields_keep_exact_cell_claim_pointer_and_unit_by_identity",
+        "result": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "pointer": "/worksheet_reconciliation/rows/23"
+      },
+      "technical_state": "MISSING_BOTH",
+      "financial_mapping_state": "not_validated_for_T111",
+      "financial_coverage_complete": false,
+      "pending": "Financial unit/currency/period/applicability/source authority and actual calculation mapping remain unresolved; representation agreement is not financial coverage."
+    },
+    {
+      "requirement_or_variable": "INPUT_C37",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_source_location": "Inputs!C37",
+      "source_unit_literal": "$/space",
+      "current_definition": {
+        "document": "docs/technical-implementation-T111.md",
+        "line": 7,
+        "scope": "Exact representation and literal-unit comparison; no financial mapping adoption"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/worksheet_settled_output.py",
+        "line": 80,
+        "function": "check_worksheet",
+        "calculation_scope": "block current inherited cash on worksheet/claim discrepancy; does not compute projection from55 claims"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_worksheet_settled_output.py",
+        "line": 56,
+        "test": "test_all_55_fields_keep_exact_cell_claim_pointer_and_unit_by_identity",
+        "result": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "pointer": "/worksheet_reconciliation/rows/24"
+      },
+      "technical_state": "MISSING_BOTH",
+      "financial_mapping_state": "not_validated_for_T111",
+      "financial_coverage_complete": false,
+      "pending": "Financial unit/currency/period/applicability/source authority and actual calculation mapping remain unresolved; representation agreement is not financial coverage."
+    },
+    {
+      "requirement_or_variable": "INPUT_C38",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_source_location": "Inputs!C38",
+      "source_unit_literal": "$",
+      "current_definition": {
+        "document": "docs/technical-implementation-T111.md",
+        "line": 7,
+        "scope": "Exact representation and literal-unit comparison; no financial mapping adoption"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/worksheet_settled_output.py",
+        "line": 80,
+        "function": "check_worksheet",
+        "calculation_scope": "block current inherited cash on worksheet/claim discrepancy; does not compute projection from55 claims"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_worksheet_settled_output.py",
+        "line": 56,
+        "test": "test_all_55_fields_keep_exact_cell_claim_pointer_and_unit_by_identity",
+        "result": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "pointer": "/worksheet_reconciliation/rows/25"
+      },
+      "technical_state": "MISSING_BOTH",
+      "financial_mapping_state": "not_validated_for_T111",
+      "financial_coverage_complete": false,
+      "pending": "Financial unit/currency/period/applicability/source authority and actual calculation mapping remain unresolved; representation agreement is not financial coverage."
+    },
+    {
+      "requirement_or_variable": "INPUT_C39",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_source_location": "Inputs!C39",
+      "source_unit_literal": "decimal",
+      "current_definition": {
+        "document": "docs/technical-implementation-T111.md",
+        "line": 7,
+        "scope": "Exact representation and literal-unit comparison; no financial mapping adoption"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/worksheet_settled_output.py",
+        "line": 80,
+        "function": "check_worksheet",
+        "calculation_scope": "block current inherited cash on worksheet/claim discrepancy; does not compute projection from55 claims"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_worksheet_settled_output.py",
+        "line": 56,
+        "test": "test_all_55_fields_keep_exact_cell_claim_pointer_and_unit_by_identity",
+        "result": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "pointer": "/worksheet_reconciliation/rows/26"
+      },
+      "technical_state": "MISSING_BOTH",
+      "financial_mapping_state": "not_validated_for_T111",
+      "financial_coverage_complete": false,
+      "pending": "Financial unit/currency/period/applicability/source authority and actual calculation mapping remain unresolved; representation agreement is not financial coverage."
+    },
+    {
+      "requirement_or_variable": "INPUT_C40",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_source_location": "Inputs!C40",
+      "source_unit_literal": "decimal of hard",
+      "current_definition": {
+        "document": "docs/technical-implementation-T111.md",
+        "line": 7,
+        "scope": "Exact representation and literal-unit comparison; no financial mapping adoption"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/worksheet_settled_output.py",
+        "line": 80,
+        "function": "check_worksheet",
+        "calculation_scope": "block current inherited cash on worksheet/claim discrepancy; does not compute projection from55 claims"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_worksheet_settled_output.py",
+        "line": 56,
+        "test": "test_all_55_fields_keep_exact_cell_claim_pointer_and_unit_by_identity",
+        "result": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "pointer": "/worksheet_reconciliation/rows/27"
+      },
+      "technical_state": "MISSING_BOTH",
+      "financial_mapping_state": "not_validated_for_T111",
+      "financial_coverage_complete": false,
+      "pending": "Financial unit/currency/period/applicability/source authority and actual calculation mapping remain unresolved; representation agreement is not financial coverage."
+    },
+    {
+      "requirement_or_variable": "INPUT_C41",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_source_location": "Inputs!C41",
+      "source_unit_literal": "$/commercial SF",
+      "current_definition": {
+        "document": "docs/technical-implementation-T111.md",
+        "line": 7,
+        "scope": "Exact representation and literal-unit comparison; no financial mapping adoption"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/worksheet_settled_output.py",
+        "line": 80,
+        "function": "check_worksheet",
+        "calculation_scope": "block current inherited cash on worksheet/claim discrepancy; does not compute projection from55 claims"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_worksheet_settled_output.py",
+        "line": 56,
+        "test": "test_all_55_fields_keep_exact_cell_claim_pointer_and_unit_by_identity",
+        "result": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "pointer": "/worksheet_reconciliation/rows/28"
+      },
+      "technical_state": "MISSING_BOTH",
+      "financial_mapping_state": "not_validated_for_T111",
+      "financial_coverage_complete": false,
+      "pending": "Financial unit/currency/period/applicability/source authority and actual calculation mapping remain unresolved; representation agreement is not financial coverage."
+    },
+    {
+      "requirement_or_variable": "INPUT_C42",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_source_location": "Inputs!C42",
+      "source_unit_literal": "decimal",
+      "current_definition": {
+        "document": "docs/technical-implementation-T111.md",
+        "line": 7,
+        "scope": "Exact representation and literal-unit comparison; no financial mapping adoption"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/worksheet_settled_output.py",
+        "line": 80,
+        "function": "check_worksheet",
+        "calculation_scope": "block current inherited cash on worksheet/claim discrepancy; does not compute projection from55 claims"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_worksheet_settled_output.py",
+        "line": 56,
+        "test": "test_all_55_fields_keep_exact_cell_claim_pointer_and_unit_by_identity",
+        "result": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "pointer": "/worksheet_reconciliation/rows/29"
+      },
+      "technical_state": "MISSING_BOTH",
+      "financial_mapping_state": "not_validated_for_T111",
+      "financial_coverage_complete": false,
+      "pending": "Financial unit/currency/period/applicability/source authority and actual calculation mapping remain unresolved; representation agreement is not financial coverage."
+    },
+    {
+      "requirement_or_variable": "INPUT_C46",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_source_location": "Inputs!C46",
+      "source_unit_literal": "months",
+      "current_definition": {
+        "document": "docs/technical-implementation-T111.md",
+        "line": 7,
+        "scope": "Exact representation and literal-unit comparison; no financial mapping adoption"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/worksheet_settled_output.py",
+        "line": 80,
+        "function": "check_worksheet",
+        "calculation_scope": "block current inherited cash on worksheet/claim discrepancy; does not compute projection from55 claims"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_worksheet_settled_output.py",
+        "line": 56,
+        "test": "test_all_55_fields_keep_exact_cell_claim_pointer_and_unit_by_identity",
+        "result": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "pointer": "/worksheet_reconciliation/rows/30"
+      },
+      "technical_state": "MISSING_BOTH",
+      "financial_mapping_state": "not_validated_for_T111",
+      "financial_coverage_complete": false,
+      "pending": "Financial unit/currency/period/applicability/source authority and actual calculation mapping remain unresolved; representation agreement is not financial coverage."
+    },
+    {
+      "requirement_or_variable": "INPUT_C47",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_source_location": "Inputs!C47",
+      "source_unit_literal": "months",
+      "current_definition": {
+        "document": "docs/technical-implementation-T111.md",
+        "line": 7,
+        "scope": "Exact representation and literal-unit comparison; no financial mapping adoption"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/worksheet_settled_output.py",
+        "line": 80,
+        "function": "check_worksheet",
+        "calculation_scope": "block current inherited cash on worksheet/claim discrepancy; does not compute projection from55 claims"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_worksheet_settled_output.py",
+        "line": 56,
+        "test": "test_all_55_fields_keep_exact_cell_claim_pointer_and_unit_by_identity",
+        "result": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "pointer": "/worksheet_reconciliation/rows/31"
+      },
+      "technical_state": "MISSING_BOTH",
+      "financial_mapping_state": "not_validated_for_T111",
+      "financial_coverage_complete": false,
+      "pending": "Financial unit/currency/period/applicability/source authority and actual calculation mapping remain unresolved; representation agreement is not financial coverage."
+    },
+    {
+      "requirement_or_variable": "INPUT_C57",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_source_location": "Inputs!C57",
+      "source_unit_literal": "$/unit/yr",
+      "current_definition": {
+        "document": "docs/technical-implementation-T111.md",
+        "line": 7,
+        "scope": "Exact representation and literal-unit comparison; no financial mapping adoption"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/worksheet_settled_output.py",
+        "line": 80,
+        "function": "check_worksheet",
+        "calculation_scope": "block current inherited cash on worksheet/claim discrepancy; does not compute projection from55 claims"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_worksheet_settled_output.py",
+        "line": 56,
+        "test": "test_all_55_fields_keep_exact_cell_claim_pointer_and_unit_by_identity",
+        "result": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "pointer": "/worksheet_reconciliation/rows/32"
+      },
+      "technical_state": "MISSING_BOTH",
+      "financial_mapping_state": "not_validated_for_T111",
+      "financial_coverage_complete": false,
+      "pending": "Financial unit/currency/period/applicability/source authority and actual calculation mapping remain unresolved; representation agreement is not financial coverage."
+    },
+    {
+      "requirement_or_variable": "INPUT_C58",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_source_location": "Inputs!C58",
+      "source_unit_literal": "decimal of res. EGI",
+      "current_definition": {
+        "document": "docs/technical-implementation-T111.md",
+        "line": 7,
+        "scope": "Exact representation and literal-unit comparison; no financial mapping adoption"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/worksheet_settled_output.py",
+        "line": 80,
+        "function": "check_worksheet",
+        "calculation_scope": "block current inherited cash on worksheet/claim discrepancy; does not compute projection from55 claims"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_worksheet_settled_output.py",
+        "line": 56,
+        "test": "test_all_55_fields_keep_exact_cell_claim_pointer_and_unit_by_identity",
+        "result": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "pointer": "/worksheet_reconciliation/rows/33"
+      },
+      "technical_state": "MISSING_BOTH",
+      "financial_mapping_state": "not_validated_for_T111",
+      "financial_coverage_complete": false,
+      "pending": "Financial unit/currency/period/applicability/source authority and actual calculation mapping remain unresolved; representation agreement is not financial coverage."
+    },
+    {
+      "requirement_or_variable": "INPUT_C59",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_source_location": "Inputs!C59",
+      "source_unit_literal": "$/unit/yr",
+      "current_definition": {
+        "document": "docs/technical-implementation-T111.md",
+        "line": 7,
+        "scope": "Exact representation and literal-unit comparison; no financial mapping adoption"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/worksheet_settled_output.py",
+        "line": 80,
+        "function": "check_worksheet",
+        "calculation_scope": "block current inherited cash on worksheet/claim discrepancy; does not compute projection from55 claims"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_worksheet_settled_output.py",
+        "line": 56,
+        "test": "test_all_55_fields_keep_exact_cell_claim_pointer_and_unit_by_identity",
+        "result": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "pointer": "/worksheet_reconciliation/rows/34"
+      },
+      "technical_state": "MISSING_BOTH",
+      "financial_mapping_state": "not_validated_for_T111",
+      "financial_coverage_complete": false,
+      "pending": "Financial unit/currency/period/applicability/source authority and actual calculation mapping remain unresolved; representation agreement is not financial coverage."
+    },
+    {
+      "requirement_or_variable": "INPUT_C60",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_source_location": "Inputs!C60",
+      "source_unit_literal": "$/unit/yr",
+      "current_definition": {
+        "document": "docs/technical-implementation-T111.md",
+        "line": 7,
+        "scope": "Exact representation and literal-unit comparison; no financial mapping adoption"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/worksheet_settled_output.py",
+        "line": 80,
+        "function": "check_worksheet",
+        "calculation_scope": "block current inherited cash on worksheet/claim discrepancy; does not compute projection from55 claims"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_worksheet_settled_output.py",
+        "line": 56,
+        "test": "test_all_55_fields_keep_exact_cell_claim_pointer_and_unit_by_identity",
+        "result": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "pointer": "/worksheet_reconciliation/rows/35"
+      },
+      "technical_state": "MISSING_BOTH",
+      "financial_mapping_state": "not_validated_for_T111",
+      "financial_coverage_complete": false,
+      "pending": "Financial unit/currency/period/applicability/source authority and actual calculation mapping remain unresolved; representation agreement is not financial coverage."
+    },
+    {
+      "requirement_or_variable": "INPUT_C61",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_source_location": "Inputs!C61",
+      "source_unit_literal": "decimal",
+      "current_definition": {
+        "document": "docs/technical-implementation-T111.md",
+        "line": 7,
+        "scope": "Exact representation and literal-unit comparison; no financial mapping adoption"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/worksheet_settled_output.py",
+        "line": 80,
+        "function": "check_worksheet",
+        "calculation_scope": "block current inherited cash on worksheet/claim discrepancy; does not compute projection from55 claims"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_worksheet_settled_output.py",
+        "line": 56,
+        "test": "test_all_55_fields_keep_exact_cell_claim_pointer_and_unit_by_identity",
+        "result": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "pointer": "/worksheet_reconciliation/rows/36"
+      },
+      "technical_state": "MISSING_BOTH",
+      "financial_mapping_state": "not_validated_for_T111",
+      "financial_coverage_complete": false,
+      "pending": "Financial unit/currency/period/applicability/source authority and actual calculation mapping remain unresolved; representation agreement is not financial coverage."
+    },
+    {
+      "requirement_or_variable": "INPUT_C62",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_source_location": "Inputs!C62",
+      "source_unit_literal": "$/unit/yr",
+      "current_definition": {
+        "document": "docs/technical-implementation-T111.md",
+        "line": 7,
+        "scope": "Exact representation and literal-unit comparison; no financial mapping adoption"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/worksheet_settled_output.py",
+        "line": 80,
+        "function": "check_worksheet",
+        "calculation_scope": "block current inherited cash on worksheet/claim discrepancy; does not compute projection from55 claims"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_worksheet_settled_output.py",
+        "line": 56,
+        "test": "test_all_55_fields_keep_exact_cell_claim_pointer_and_unit_by_identity",
+        "result": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "pointer": "/worksheet_reconciliation/rows/37"
+      },
+      "technical_state": "MISSING_BOTH",
+      "financial_mapping_state": "not_validated_for_T111",
+      "financial_coverage_complete": false,
+      "pending": "Financial unit/currency/period/applicability/source authority and actual calculation mapping remain unresolved; representation agreement is not financial coverage."
+    },
+    {
+      "requirement_or_variable": "INPUT_C66",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_source_location": "Inputs!C66",
+      "source_unit_literal": "decimal",
+      "current_definition": {
+        "document": "docs/technical-implementation-T111.md",
+        "line": 7,
+        "scope": "Exact representation and literal-unit comparison; no financial mapping adoption"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/worksheet_settled_output.py",
+        "line": 80,
+        "function": "check_worksheet",
+        "calculation_scope": "block current inherited cash on worksheet/claim discrepancy; does not compute projection from55 claims"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_worksheet_settled_output.py",
+        "line": 56,
+        "test": "test_all_55_fields_keep_exact_cell_claim_pointer_and_unit_by_identity",
+        "result": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "pointer": "/worksheet_reconciliation/rows/38"
+      },
+      "technical_state": "MISSING_BOTH",
+      "financial_mapping_state": "not_validated_for_T111",
+      "financial_coverage_complete": false,
+      "pending": "Financial unit/currency/period/applicability/source authority and actual calculation mapping remain unresolved; representation agreement is not financial coverage."
+    },
+    {
+      "requirement_or_variable": "INPUT_C67",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_source_location": "Inputs!C67",
+      "source_unit_literal": "decimal",
+      "current_definition": {
+        "document": "docs/technical-implementation-T111.md",
+        "line": 7,
+        "scope": "Exact representation and literal-unit comparison; no financial mapping adoption"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/worksheet_settled_output.py",
+        "line": 80,
+        "function": "check_worksheet",
+        "calculation_scope": "block current inherited cash on worksheet/claim discrepancy; does not compute projection from55 claims"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_worksheet_settled_output.py",
+        "line": 56,
+        "test": "test_all_55_fields_keep_exact_cell_claim_pointer_and_unit_by_identity",
+        "result": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "pointer": "/worksheet_reconciliation/rows/39"
+      },
+      "technical_state": "MISSING_BOTH",
+      "financial_mapping_state": "not_validated_for_T111",
+      "financial_coverage_complete": false,
+      "pending": "Financial unit/currency/period/applicability/source authority and actual calculation mapping remain unresolved; representation agreement is not financial coverage."
+    },
+    {
+      "requirement_or_variable": "INPUT_C68",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_source_location": "Inputs!C68",
+      "source_unit_literal": "decimal",
+      "current_definition": {
+        "document": "docs/technical-implementation-T111.md",
+        "line": 7,
+        "scope": "Exact representation and literal-unit comparison; no financial mapping adoption"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/worksheet_settled_output.py",
+        "line": 80,
+        "function": "check_worksheet",
+        "calculation_scope": "block current inherited cash on worksheet/claim discrepancy; does not compute projection from55 claims"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_worksheet_settled_output.py",
+        "line": 56,
+        "test": "test_all_55_fields_keep_exact_cell_claim_pointer_and_unit_by_identity",
+        "result": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "pointer": "/worksheet_reconciliation/rows/40"
+      },
+      "technical_state": "MISSING_BOTH",
+      "financial_mapping_state": "not_validated_for_T111",
+      "financial_coverage_complete": false,
+      "pending": "Financial unit/currency/period/applicability/source authority and actual calculation mapping remain unresolved; representation agreement is not financial coverage."
+    },
+    {
+      "requirement_or_variable": "INPUT_C75",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_source_location": "Inputs!C75",
+      "source_unit_literal": "decimal / yr",
+      "current_definition": {
+        "document": "docs/technical-implementation-T111.md",
+        "line": 7,
+        "scope": "Exact representation and literal-unit comparison; no financial mapping adoption"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/worksheet_settled_output.py",
+        "line": 80,
+        "function": "check_worksheet",
+        "calculation_scope": "block current inherited cash on worksheet/claim discrepancy; does not compute projection from55 claims"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_worksheet_settled_output.py",
+        "line": 56,
+        "test": "test_all_55_fields_keep_exact_cell_claim_pointer_and_unit_by_identity",
+        "result": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "pointer": "/worksheet_reconciliation/rows/41"
+      },
+      "technical_state": "MISSING_BOTH",
+      "financial_mapping_state": "not_validated_for_T111",
+      "financial_coverage_complete": false,
+      "pending": "Financial unit/currency/period/applicability/source authority and actual calculation mapping remain unresolved; representation agreement is not financial coverage."
+    },
+    {
+      "requirement_or_variable": "INPUT_C76",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_source_location": "Inputs!C76",
+      "source_unit_literal": "decimal / yr",
+      "current_definition": {
+        "document": "docs/technical-implementation-T111.md",
+        "line": 7,
+        "scope": "Exact representation and literal-unit comparison; no financial mapping adoption"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/worksheet_settled_output.py",
+        "line": 80,
+        "function": "check_worksheet",
+        "calculation_scope": "block current inherited cash on worksheet/claim discrepancy; does not compute projection from55 claims"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_worksheet_settled_output.py",
+        "line": 56,
+        "test": "test_all_55_fields_keep_exact_cell_claim_pointer_and_unit_by_identity",
+        "result": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "pointer": "/worksheet_reconciliation/rows/42"
+      },
+      "technical_state": "MISSING_BOTH",
+      "financial_mapping_state": "not_validated_for_T111",
+      "financial_coverage_complete": false,
+      "pending": "Financial unit/currency/period/applicability/source authority and actual calculation mapping remain unresolved; representation agreement is not financial coverage."
+    },
+    {
+      "requirement_or_variable": "INPUT_C51",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_source_location": "Inputs!C51",
+      "source_unit_literal": "decimal",
+      "current_definition": {
+        "document": "docs/technical-implementation-T111.md",
+        "line": 7,
+        "scope": "Exact representation and literal-unit comparison; no financial mapping adoption"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/worksheet_settled_output.py",
+        "line": 80,
+        "function": "check_worksheet",
+        "calculation_scope": "block current inherited cash on worksheet/claim discrepancy; does not compute projection from55 claims"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_worksheet_settled_output.py",
+        "line": 56,
+        "test": "test_all_55_fields_keep_exact_cell_claim_pointer_and_unit_by_identity",
+        "result": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "pointer": "/worksheet_reconciliation/rows/43"
+      },
+      "technical_state": "MISSING_BOTH",
+      "financial_mapping_state": "not_validated_for_T111",
+      "financial_coverage_complete": false,
+      "pending": "Financial unit/currency/period/applicability/source authority and actual calculation mapping remain unresolved; representation agreement is not financial coverage."
+    },
+    {
+      "requirement_or_variable": "INPUT_C52",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_source_location": "Inputs!C52",
+      "source_unit_literal": "decimal",
+      "current_definition": {
+        "document": "docs/technical-implementation-T111.md",
+        "line": 7,
+        "scope": "Exact representation and literal-unit comparison; no financial mapping adoption"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/worksheet_settled_output.py",
+        "line": 80,
+        "function": "check_worksheet",
+        "calculation_scope": "block current inherited cash on worksheet/claim discrepancy; does not compute projection from55 claims"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_worksheet_settled_output.py",
+        "line": 56,
+        "test": "test_all_55_fields_keep_exact_cell_claim_pointer_and_unit_by_identity",
+        "result": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "pointer": "/worksheet_reconciliation/rows/44"
+      },
+      "technical_state": "MISSING_BOTH",
+      "financial_mapping_state": "not_validated_for_T111",
+      "financial_coverage_complete": false,
+      "pending": "Financial unit/currency/period/applicability/source authority and actual calculation mapping remain unresolved; representation agreement is not financial coverage."
+    },
+    {
+      "requirement_or_variable": "INPUT_C53",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_source_location": "Inputs!C53",
+      "source_unit_literal": "decimal",
+      "current_definition": {
+        "document": "docs/technical-implementation-T111.md",
+        "line": 7,
+        "scope": "Exact representation and literal-unit comparison; no financial mapping adoption"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/worksheet_settled_output.py",
+        "line": 80,
+        "function": "check_worksheet",
+        "calculation_scope": "block current inherited cash on worksheet/claim discrepancy; does not compute projection from55 claims"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_worksheet_settled_output.py",
+        "line": 56,
+        "test": "test_all_55_fields_keep_exact_cell_claim_pointer_and_unit_by_identity",
+        "result": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "pointer": "/worksheet_reconciliation/rows/45"
+      },
+      "technical_state": "MISSING_BOTH",
+      "financial_mapping_state": "not_validated_for_T111",
+      "financial_coverage_complete": false,
+      "pending": "Financial unit/currency/period/applicability/source authority and actual calculation mapping remain unresolved; representation agreement is not financial coverage."
+    },
+    {
+      "requirement_or_variable": "INPUT_C69",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_source_location": "Inputs!C69",
+      "source_unit_literal": "decimal",
+      "current_definition": {
+        "document": "docs/technical-implementation-T111.md",
+        "line": 7,
+        "scope": "Exact representation and literal-unit comparison; no financial mapping adoption"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/worksheet_settled_output.py",
+        "line": 80,
+        "function": "check_worksheet",
+        "calculation_scope": "block current inherited cash on worksheet/claim discrepancy; does not compute projection from55 claims"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_worksheet_settled_output.py",
+        "line": 56,
+        "test": "test_all_55_fields_keep_exact_cell_claim_pointer_and_unit_by_identity",
+        "result": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "pointer": "/worksheet_reconciliation/rows/46"
+      },
+      "technical_state": "MISSING_BOTH",
+      "financial_mapping_state": "not_validated_for_T111",
+      "financial_coverage_complete": false,
+      "pending": "Financial unit/currency/period/applicability/source authority and actual calculation mapping remain unresolved; representation agreement is not financial coverage."
+    },
+    {
+      "requirement_or_variable": "INPUT_C70",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_source_location": "Inputs!C70",
+      "source_unit_literal": "years",
+      "current_definition": {
+        "document": "docs/technical-implementation-T111.md",
+        "line": 7,
+        "scope": "Exact representation and literal-unit comparison; no financial mapping adoption"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/worksheet_settled_output.py",
+        "line": 80,
+        "function": "check_worksheet",
+        "calculation_scope": "block current inherited cash on worksheet/claim discrepancy; does not compute projection from55 claims"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_worksheet_settled_output.py",
+        "line": 56,
+        "test": "test_all_55_fields_keep_exact_cell_claim_pointer_and_unit_by_identity",
+        "result": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "pointer": "/worksheet_reconciliation/rows/47"
+      },
+      "technical_state": "MISSING_BOTH",
+      "financial_mapping_state": "not_validated_for_T111",
+      "financial_coverage_complete": false,
+      "pending": "Financial unit/currency/period/applicability/source authority and actual calculation mapping remain unresolved; representation agreement is not financial coverage."
+    },
+    {
+      "requirement_or_variable": "INPUT_C71",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_source_location": "Inputs!C71",
+      "source_unit_literal": "decimal",
+      "current_definition": {
+        "document": "docs/technical-implementation-T111.md",
+        "line": 7,
+        "scope": "Exact representation and literal-unit comparison; no financial mapping adoption"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/worksheet_settled_output.py",
+        "line": 80,
+        "function": "check_worksheet",
+        "calculation_scope": "block current inherited cash on worksheet/claim discrepancy; does not compute projection from55 claims"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_worksheet_settled_output.py",
+        "line": 56,
+        "test": "test_all_55_fields_keep_exact_cell_claim_pointer_and_unit_by_identity",
+        "result": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "pointer": "/worksheet_reconciliation/rows/48"
+      },
+      "technical_state": "MISSING_BOTH",
+      "financial_mapping_state": "not_validated_for_T111",
+      "financial_coverage_complete": false,
+      "pending": "Financial unit/currency/period/applicability/source authority and actual calculation mapping remain unresolved; representation agreement is not financial coverage."
+    },
+    {
+      "requirement_or_variable": "INPUT_C72",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_source_location": "Inputs!C72",
+      "source_unit_literal": "x",
+      "current_definition": {
+        "document": "docs/technical-implementation-T111.md",
+        "line": 7,
+        "scope": "Exact representation and literal-unit comparison; no financial mapping adoption"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/worksheet_settled_output.py",
+        "line": 80,
+        "function": "check_worksheet",
+        "calculation_scope": "block current inherited cash on worksheet/claim discrepancy; does not compute projection from55 claims"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_worksheet_settled_output.py",
+        "line": 56,
+        "test": "test_all_55_fields_keep_exact_cell_claim_pointer_and_unit_by_identity",
+        "result": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "pointer": "/worksheet_reconciliation/rows/49"
+      },
+      "technical_state": "MISSING_BOTH",
+      "financial_mapping_state": "not_validated_for_T111",
+      "financial_coverage_complete": false,
+      "pending": "Financial unit/currency/period/applicability/source authority and actual calculation mapping remain unresolved; representation agreement is not financial coverage."
+    },
+    {
+      "requirement_or_variable": "INPUT_C73",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_source_location": "Inputs!C73",
+      "source_unit_literal": "decimal of loan",
+      "current_definition": {
+        "document": "docs/technical-implementation-T111.md",
+        "line": 7,
+        "scope": "Exact representation and literal-unit comparison; no financial mapping adoption"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/worksheet_settled_output.py",
+        "line": 80,
+        "function": "check_worksheet",
+        "calculation_scope": "block current inherited cash on worksheet/claim discrepancy; does not compute projection from55 claims"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_worksheet_settled_output.py",
+        "line": 56,
+        "test": "test_all_55_fields_keep_exact_cell_claim_pointer_and_unit_by_identity",
+        "result": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "pointer": "/worksheet_reconciliation/rows/50"
+      },
+      "technical_state": "MISSING_BOTH",
+      "financial_mapping_state": "not_validated_for_T111",
+      "financial_coverage_complete": false,
+      "pending": "Financial unit/currency/period/applicability/source authority and actual calculation mapping remain unresolved; representation agreement is not financial coverage."
+    },
+    {
+      "requirement_or_variable": "INPUT_C74",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_source_location": "Inputs!C74",
+      "source_unit_literal": "$/unit",
+      "current_definition": {
+        "document": "docs/technical-implementation-T111.md",
+        "line": 7,
+        "scope": "Exact representation and literal-unit comparison; no financial mapping adoption"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/worksheet_settled_output.py",
+        "line": 80,
+        "function": "check_worksheet",
+        "calculation_scope": "block current inherited cash on worksheet/claim discrepancy; does not compute projection from55 claims"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_worksheet_settled_output.py",
+        "line": 56,
+        "test": "test_all_55_fields_keep_exact_cell_claim_pointer_and_unit_by_identity",
+        "result": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "pointer": "/worksheet_reconciliation/rows/51"
+      },
+      "technical_state": "MISSING_BOTH",
+      "financial_mapping_state": "not_validated_for_T111",
+      "financial_coverage_complete": false,
+      "pending": "Financial unit/currency/period/applicability/source authority and actual calculation mapping remain unresolved; representation agreement is not financial coverage."
+    },
+    {
+      "requirement_or_variable": "INPUT_C80",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_source_location": "Inputs!C80",
+      "source_unit_literal": "input = value",
+      "current_definition": {
+        "document": "docs/technical-implementation-T111.md",
+        "line": 7,
+        "scope": "Exact representation and literal-unit comparison; no financial mapping adoption"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/worksheet_settled_output.py",
+        "line": 80,
+        "function": "check_worksheet",
+        "calculation_scope": "block current inherited cash on worksheet/claim discrepancy; does not compute projection from55 claims"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_worksheet_settled_output.py",
+        "line": 56,
+        "test": "test_all_55_fields_keep_exact_cell_claim_pointer_and_unit_by_identity",
+        "result": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "pointer": "/worksheet_reconciliation/rows/52"
+      },
+      "technical_state": "MISSING_BOTH",
+      "financial_mapping_state": "not_validated_for_T111",
+      "financial_coverage_complete": false,
+      "pending": "Financial unit/currency/period/applicability/source authority and actual calculation mapping remain unresolved; representation agreement is not financial coverage."
+    },
+    {
+      "requirement_or_variable": "INPUT_C81",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_source_location": "Inputs!C81",
+      "source_unit_literal": "input = value",
+      "current_definition": {
+        "document": "docs/technical-implementation-T111.md",
+        "line": 7,
+        "scope": "Exact representation and literal-unit comparison; no financial mapping adoption"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/worksheet_settled_output.py",
+        "line": 80,
+        "function": "check_worksheet",
+        "calculation_scope": "block current inherited cash on worksheet/claim discrepancy; does not compute projection from55 claims"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_worksheet_settled_output.py",
+        "line": 56,
+        "test": "test_all_55_fields_keep_exact_cell_claim_pointer_and_unit_by_identity",
+        "result": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "pointer": "/worksheet_reconciliation/rows/53"
+      },
+      "technical_state": "MISSING_BOTH",
+      "financial_mapping_state": "not_validated_for_T111",
+      "financial_coverage_complete": false,
+      "pending": "Financial unit/currency/period/applicability/source authority and actual calculation mapping remain unresolved; representation agreement is not financial coverage."
+    },
+    {
+      "requirement_or_variable": "INPUT_C82",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_source_location": "Inputs!C82",
+      "source_unit_literal": "input = value",
+      "current_definition": {
+        "document": "docs/technical-implementation-T111.md",
+        "line": 7,
+        "scope": "Exact representation and literal-unit comparison; no financial mapping adoption"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/worksheet_settled_output.py",
+        "line": 80,
+        "function": "check_worksheet",
+        "calculation_scope": "block current inherited cash on worksheet/claim discrepancy; does not compute projection from55 claims"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_worksheet_settled_output.py",
+        "line": 56,
+        "test": "test_all_55_fields_keep_exact_cell_claim_pointer_and_unit_by_identity",
+        "result": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "pointer": "/worksheet_reconciliation/rows/54"
+      },
+      "technical_state": "MISSING_BOTH",
+      "financial_mapping_state": "not_validated_for_T111",
+      "financial_coverage_complete": false,
+      "pending": "Financial unit/currency/period/applicability/source authority and actual calculation mapping remain unresolved; representation agreement is not financial coverage."
+    }
+  ]
+}

@@ -1,0 +1,388 @@
+{
+  "component": "T111",
+  "scope": "Incremental requirement/definition/source/module/test matrix; all55 field rows separately traced without financial closure",
+  "rows": [
+    {
+      "requirement_or_variable": "source_bound_original55_claim_inventory_and_cell_provenance",
+      "source": {
+        "path": "docs/technical-implementation-T111.md",
+        "line": 7,
+        "sha256": "ec7e8eaabc2639f752d679ab0ba4febf100b14c42d07e31654a2d5b03614bace"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§§3, 5 y 7",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "DAT-01"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "Traspaso §§2/3/6/7; Traspaso §§6–7; C1/C2 Manual pp.17–18",
+          "definicion_documentada": "Datos, aplicabilidad, fuentes, reglas y escenarios requeridos deben estar completos; sin dictamen parcial ante bloqueos.",
+          "matrix_id": "M9-01"
+        }
+      ],
+      "current_definition": "Exact unchanged layout and55 ordered claim IDs, cell/claim pointers, raw cell provenance and source descriptions; compare only literal/numeric representation.",
+      "source_fixture": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "json_pointer": "/"
+      },
+      "affected_modules": [
+        "M2",
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "calculation_modules": [
+        "src/miniuw_foundation/worksheet_settled_output.py",
+        "src/miniuw_foundation/worksheet_settled_report.py",
+        "src/miniuw_foundation/worksheet_settled_artifacts.py"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_worksheet_settled_output.py",
+          "line": 56,
+          "test": "WorksheetSettledTests.test_all_55_fields_keep_exact_cell_claim_pointer_and_unit_by_identity"
+        },
+        {
+          "path": "tests/test_worksheet_settled_output.py",
+          "line": 124,
+          "test": "WorksheetSettledTests.test_strict_catalogue_base64_and_synthetic_original_layout_guards"
+        },
+        {
+          "path": "docs/review/worksheet-settled-validation-T111.json",
+          "json_pointer": "/status"
+        }
+      ],
+      "status": "partially_implemented_synthetic_claim_and_current_output_gate",
+      "financial_end_to_end_coverage": false,
+      "pending": "Financial mapping, application and authority remain pending."
+    },
+    {
+      "requirement_or_variable": "zero_blank_text_formula_and_unit_discrepancies",
+      "source": {
+        "path": "docs/technical-implementation-T111.md",
+        "line": 7,
+        "sha256": "ec7e8eaabc2639f752d679ab0ba4febf100b14c42d07e31654a2d5b03614bace"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§§3, 5 y 7",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "DAT-01"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "Traspaso §§2/3/6/7; Traspaso §§6–7; C1/C2 Manual pp.17–18",
+          "definicion_documentada": "Datos, aplicabilidad, fuentes, reglas y escenarios requeridos deben estar completos; sin dictamen parcial ante bloqueos.",
+          "matrix_id": "M9-01"
+        }
+      ],
+      "current_definition": "Preserve known zero versus absent/empty text, exact rational equivalence, formula/cache/error diagnostics and supplied literal unit/ref; do not execute, coerce or adopt.",
+      "source_fixture": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "json_pointer": "/"
+      },
+      "affected_modules": [
+        "M2",
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "calculation_modules": [
+        "src/miniuw_foundation/worksheet_settled_output.py",
+        "src/miniuw_foundation/worksheet_settled_report.py",
+        "src/miniuw_foundation/worksheet_settled_artifacts.py"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_worksheet_settled_output.py",
+          "line": 89,
+          "test": "WorksheetSettledTests.test_explicit_zero_conflict_and_rational_zero_match_never_adopt_model_values"
+        },
+        {
+          "path": "tests/test_worksheet_settled_output.py",
+          "line": 93,
+          "test": "WorksheetSettledTests.test_formulas_cache_errors_and_blank_kinds_remain_explicit"
+        },
+        {
+          "path": "tests/test_worksheet_settled_output.py",
+          "line": 108,
+          "test": "WorksheetSettledTests.test_literal_unit_and_source_reference_are_checked_without_financial_mapping"
+        },
+        {
+          "path": "docs/review/worksheet-settled-validation-T111.json",
+          "json_pointer": "/status"
+        }
+      ],
+      "status": "partially_implemented_synthetic_claim_and_current_output_gate",
+      "financial_end_to_end_coverage": false,
+      "pending": "No currency from $, period or financial meaning inferred."
+    },
+    {
+      "requirement_or_variable": "case_hash_context_revision_and_UTC_binding",
+      "source": {
+        "path": "docs/technical-implementation-T111.md",
+        "line": 5,
+        "sha256": "ec7e8eaabc2639f752d679ab0ba4febf100b14c42d07e31654a2d5b03614bace"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§§3, 5 y 7",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "DAT-01"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "Traspaso §§2/3/6/7; Traspaso §§6–7; C1/C2 Manual pp.17–18",
+          "definicion_documentada": "Datos, aplicabilidad, fuentes, reglas y escenarios requeridos deben estar completos; sin dictamen parcial ante bloqueos.",
+          "matrix_id": "M9-01"
+        }
+      ],
+      "current_definition": "Require exact bytes of parent/claims/XLSX plus context, dealID, supplied revision and same UTC; incompatible sheet/case metadata masks current money.",
+      "source_fixture": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "json_pointer": "/"
+      },
+      "affected_modules": [
+        "M2",
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "calculation_modules": [
+        "src/miniuw_foundation/worksheet_settled_output.py",
+        "src/miniuw_foundation/worksheet_settled_report.py",
+        "src/miniuw_foundation/worksheet_settled_artifacts.py"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_worksheet_settled_output.py",
+          "line": 120,
+          "test": "WorksheetSettledTests.test_binding_every_hash_revision_context_and_reference_is_required"
+        },
+        {
+          "path": "tests/test_worksheet_settled_output.py",
+          "line": 114,
+          "test": "WorksheetSettledTests.test_metadata_and_explicit_parent_case_context_utc_cannot_be_rebound_silently"
+        },
+        {
+          "path": "tests/test_worksheet_settled_output.py",
+          "line": 80,
+          "test": "WorksheetSettledTests.test_source_byte_changes_need_both_binding_and_evidence_not_only_equal_json"
+        },
+        {
+          "path": "docs/review/worksheet-settled-validation-T111.json",
+          "json_pointer": "/status"
+        }
+      ],
+      "status": "partially_implemented_synthetic_claim_and_current_output_gate",
+      "financial_end_to_end_coverage": false,
+      "pending": "Revision/source references are supplied synthetic statements, not authenticated approval."
+    },
+    {
+      "requirement_or_variable": "exhaustive59_source_currency_and_no_parent_restoration",
+      "source": {
+        "path": "docs/technical-implementation-T111.md",
+        "line": 9,
+        "sha256": "ec7e8eaabc2639f752d679ab0ba4febf100b14c42d07e31654a2d5b03614bace"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§§3, 5 y 7",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "DAT-01"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "Traspaso §§2/3/6/7; Traspaso §§6–7; C1/C2 Manual pp.17–18",
+          "definicion_documentada": "Datos, aplicabilidad, fuentes, reglas y escenarios requeridos deben estar completos; sin dictamen parcial ante bloqueos.",
+          "matrix_id": "M9-01"
+        }
+      ],
+      "current_definition": "Rebuild59 required source IDs/hash/locators and evaluate explicit UTC; every source expiry and every worksheet or parent blocker withdraws all current money.",
+      "source_fixture": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "json_pointer": "/"
+      },
+      "affected_modules": [
+        "M2",
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "calculation_modules": [
+        "src/miniuw_foundation/worksheet_settled_output.py",
+        "src/miniuw_foundation/worksheet_settled_report.py",
+        "src/miniuw_foundation/worksheet_settled_artifacts.py"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_worksheet_settled_output.py",
+          "line": 65,
+          "test": "WorksheetSettledTests.test_each_of_59_parent_and_worksheet_sources_can_expire_independently"
+        },
+        {
+          "path": "tests/test_worksheet_settled_output.py",
+          "line": 85,
+          "test": "WorksheetSettledTests.test_matched_sheet_and_current_child_cannot_restore_expired_parent"
+        },
+        {
+          "path": "tests/test_worksheet_settled_output.py",
+          "line": 71,
+          "test": "WorksheetSettledTests.test_self_consistent_omitted_extra_or_wrong_hash_registry_does_not_pass"
+        },
+        {
+          "path": "docs/review/worksheet-settled-validation-T111.json",
+          "json_pointer": "/status"
+        }
+      ],
+      "status": "partially_implemented_synthetic_claim_and_current_output_gate",
+      "financial_end_to_end_coverage": false,
+      "pending": "Real source/review authority and monitoring/renewal remain pending."
+    },
+    {
+      "requirement_or_variable": "full_return_stock_settlement_and_single_page_visibility",
+      "source": {
+        "path": "docs/technical-implementation-T111.md",
+        "line": 13,
+        "sha256": "ec7e8eaabc2639f752d679ab0ba4febf100b14c42d07e31654a2d5b03614bace"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§§3, 5 y 7",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "DAT-01"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "Traspaso §§2/3/6/7; Traspaso §§6–7; C1/C2 Manual pp.17–18",
+          "definicion_documentada": "Datos, aplicabilidad, fuentes, reglas y escenarios requeridos deben estar completos; sin dictamen parcial ante bloqueos.",
+          "matrix_id": "M9-01"
+        }
+      ],
+      "current_definition": "Preserve exact full parent gross/dated cash, stocks, risk and roots; one page states worksheet counts/remaining semantics, all events/zeros/years, money withheld on blockers.",
+      "source_fixture": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "json_pointer": "/"
+      },
+      "affected_modules": [
+        "M2",
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "calculation_modules": [
+        "src/miniuw_foundation/worksheet_settled_output.py",
+        "src/miniuw_foundation/worksheet_settled_report.py",
+        "src/miniuw_foundation/worksheet_settled_artifacts.py"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_worksheet_settled_output.py",
+          "line": 45,
+          "test": "WorksheetSettledTests.test_matched_sheet_preserves_every_parent_current_cash_stock_risk_and_root"
+        },
+        {
+          "path": "tests/test_worksheet_settled_output.py",
+          "line": 142,
+          "test": "WorksheetSettledTests.test_current_page_retains_return_zero_events_annual_rows_and_pending_definitions"
+        },
+        {
+          "path": "tests/test_worksheet_settled_output.py",
+          "line": 137,
+          "test": "WorksheetSettledTests.test_blocked_one_page_withholds_all_current_groups_years_and_money"
+        },
+        {
+          "path": "docs/review/worksheet-settled-validation-T111.json",
+          "json_pointer": "/status"
+        }
+      ],
+      "status": "partially_implemented_synthetic_claim_and_current_output_gate",
+      "financial_end_to_end_coverage": false,
+      "pending": "Personal allocation/capital/CoC, criteria and financial acceptance remain pending."
+    },
+    {
+      "requirement_or_variable": "source_first_six_file_recovery_and_version_integrity",
+      "source": {
+        "path": "docs/technical-implementation-T111.md",
+        "line": 15,
+        "sha256": "ec7e8eaabc2639f752d679ab0ba4febf100b14c42d07e31654a2d5b03614bace"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§§3, 5 y 7",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "DAT-01"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "Traspaso §§2/3/6/7; Traspaso §§6–7; C1/C2 Manual pp.17–18",
+          "definicion_documentada": "Datos, aplicabilidad, fuentes, reglas y escenarios requeridos deben estar completos; sin dictamen parcial ante bloqueos.",
+          "matrix_id": "M9-01"
+        }
+      ],
+      "current_definition": "Recover exact workbook bytes from bounded base64 single source, repeat all source/worksheet/currentness/cash/PDF computations, pin versions and reject rehashed forgery, unsafe inventory/overwrite.",
+      "source_fixture": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "json_pointer": "/"
+      },
+      "affected_modules": [
+        "M2",
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "calculation_modules": [
+        "src/miniuw_foundation/worksheet_settled_output.py",
+        "src/miniuw_foundation/worksheet_settled_report.py",
+        "src/miniuw_foundation/worksheet_settled_artifacts.py"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_worksheet_settled_output.py",
+          "line": 152,
+          "test": "WorksheetSettledTests.test_six_file_source_first_recovery_and_rehashed_packet_rejection"
+        },
+        {
+          "path": "tests/test_worksheet_settled_output.py",
+          "line": 167,
+          "test": "WorksheetSettledTests.test_safe_writer_exact_retry_no_other_overwrite_symlink_and_temp_cleanup"
+        },
+        {
+          "path": "docs/review/worksheet-settled-validation-T111.json",
+          "json_pointer": "/status"
+        }
+      ],
+      "status": "partially_implemented_synthetic_claim_and_current_output_gate",
+      "financial_end_to_end_coverage": false,
+      "pending": "Single local writer only; no production publication/VPS recovery/independent financial or visual audit."
+    }
+  ],
+  "financial_model_complete": false,
+  "real_decisions_enabled": false
+}

@@ -61,6 +61,8 @@ jobs:
         run: python tools/check_current_settled_T109.py
       - name: Verify phased rent nominal policies settled cash and current one-page recovery
         run: python tools/check_phased_settled_T110.py
+      - name: Verify original55 worksheet claims settled return and source-first current output
+        run: python tools/check_worksheet_settled_T111.py
       - name: Verify one-page Dot and bot role summary
         run: python tools/check_dots_bots_onepage_ROLES01.py
       - name: Test synthetic technical foundation

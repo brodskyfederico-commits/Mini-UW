@@ -1,0 +1,107 @@
+{
+  "component": "T111",
+  "scope": "Seven explicit synthetic source hypotheses, no financial mapping adoption",
+  "original_workbook": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+  "original_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+  "cases": [
+    {
+      "label": "matched",
+      "path": "templates/worksheet-settled-matched-T111.json",
+      "source_sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+      "run_sha256": "086587f75ee71b9a6c5d3d2437af0d0bf3d60220c327b4ac1c9f8d3b6ba99228",
+      "pdf_sha256": "2c664a962d4224cbb9c2f610702953c7acb3cac4b25f61d741aa9277524313ce",
+      "state": "current_synthetic_worksheet_settled_output",
+      "source_count": 59,
+      "worksheet_gate_open": true,
+      "counts": {
+        "MATCHED_REPRESENTATION": 1,
+        "MISSING_BOTH": 54
+      }
+    },
+    {
+      "label": "zero-conflict",
+      "path": "templates/worksheet-settled-zero-conflict-T111.json",
+      "source_sha256": "4d1da260d4bb8722ad6c534844e91fa89e6e36e919287581251e26ee6e301249",
+      "run_sha256": "4988815db8bb6e80ae8867941031563ce2cc2aea787dd93d321af3060b9b0308",
+      "pdf_sha256": "fd5df18681e6af6461e50a854c1c22abeee0dcec09264eb28f71f83448ccded1",
+      "state": "PENDING",
+      "source_count": 59,
+      "worksheet_gate_open": false,
+      "counts": {
+        "CONFLICT": 1,
+        "MATCHED_REPRESENTATION": 1,
+        "MISSING_BOTH": 53
+      }
+    },
+    {
+      "label": "formula",
+      "path": "templates/worksheet-settled-formula-T111.json",
+      "source_sha256": "07fd1be6943b1fb860b6514a9f68a3cfc18a051c58c2d675bbc109af835fbf7b",
+      "run_sha256": "ac1e4d96e65b5c8c0ac7c1c23dc72a255f5a6281cea2da8fc3b427494d55c0f5",
+      "pdf_sha256": "8b012b2a8363efa5ad2e269c192625791438b47d03008b0601e601f6593232d6",
+      "state": "PENDING",
+      "source_count": 59,
+      "worksheet_gate_open": false,
+      "counts": {
+        "MISSING_BOTH": 54,
+        "PENDING": 1
+      }
+    },
+    {
+      "label": "expired",
+      "path": "templates/worksheet-settled-expired-T111.json",
+      "source_sha256": "6c656742a39f9b084c91aa98eaf55cbd0b18a86e24420e2b0524915d703bcf30",
+      "run_sha256": "d3054f405a35b16978d1b847a1fa7c535e73f084840ab2e42870d57b2f9d4aef",
+      "pdf_sha256": "8b3f72a78cbd305fcc7e4d1c6739764ac5a1fc44b3c01e56ae75917bb348fae6",
+      "state": "PENDING",
+      "source_count": 59,
+      "worksheet_gate_open": true,
+      "counts": {
+        "MATCHED_REPRESENTATION": 1,
+        "MISSING_BOTH": 54
+      }
+    },
+    {
+      "label": "parent-expired",
+      "path": "templates/worksheet-settled-parent-expired-T111.json",
+      "source_sha256": "9a5d07c628c4a1c64c7ad2435b875ad2e50c09216cdc80109ae5b26d132fc114",
+      "run_sha256": "be81f3cf501e7dc3601a5aa46ff7b67972e6d5c56bb26a14a2fa574eabb40d68",
+      "pdf_sha256": "1ec4b010b23a98ee4e1474aee3c1f72ee39b9c394e7453ed8a369bc5449536cf",
+      "state": "PENDING",
+      "source_count": 59,
+      "worksheet_gate_open": true,
+      "counts": {
+        "MATCHED_REPRESENTATION": 1,
+        "MISSING_BOTH": 54
+      }
+    },
+    {
+      "label": "zero-matched",
+      "path": "templates/worksheet-settled-zero-matched-T111.json",
+      "source_sha256": "9a218a03d654d1c860e8b2052ea52ebfce7fc504341300f7bfffeaeafdd53602",
+      "run_sha256": "7055640ea4f252464e4f49979fc01d4b60ccbfe16ed241bacdc8f8160327d610",
+      "pdf_sha256": "8c6706565f590627ba5124bc2dcf05d1e0ae236175de87a8ea891ce01b64f947",
+      "state": "current_synthetic_worksheet_settled_output",
+      "source_count": 59,
+      "worksheet_gate_open": true,
+      "counts": {
+        "MATCHED_REPRESENTATION": 2,
+        "MISSING_BOTH": 53
+      }
+    },
+    {
+      "label": "twelve",
+      "path": "templates/worksheet-settled-twelve-T111.json",
+      "source_sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+      "run_sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+      "pdf_sha256": "071d36ede456907bd5b03116cb9c98ee6c15c02f13f3be07027a587f73c1a6f9",
+      "state": "current_synthetic_worksheet_settled_output",
+      "source_count": 59,
+      "worksheet_gate_open": true,
+      "counts": {
+        "MATCHED_REPRESENTATION": 1,
+        "MISSING_BOTH": 54
+      }
+    }
+  ]
+}
