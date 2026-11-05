@@ -9,7 +9,7 @@ permissions:
 jobs:
   reference-check:
     runs-on: ubuntu-24.04
-    timeout-minutes: 35
+    timeout-minutes: 45
     env:
       PYTHONDONTWRITEBYTECODE: '1'
     steps:
@@ -51,6 +51,8 @@ jobs:
         run: python tools/check_cash_participation_T104.py
       - name: Verify participant cash risk and dated source reconciliation
         run: python tools/check_participant_cash_risk_T105.py
+      - name: Verify nominal insurance settlement and independent cutoff reconciliation
+        run: python tools/check_deferred_insurance_T106.py
       - name: Verify one-page Dot and bot role summary
         run: python tools/check_dots_bots_onepage_ROLES01.py
       - name: Test synthetic technical foundation

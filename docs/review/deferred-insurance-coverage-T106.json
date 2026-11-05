@@ -1,0 +1,338 @@
+{
+  "component": "T106",
+  "scope": "Partial standalone technical treatment of prior insurance settlement gap; no full financial closure",
+  "rows": [
+    {
+      "requirement_or_variable": "supplied_expense_fractions_and_complete_nominal_inventory",
+      "source": {
+        "path": "docs/technical-implementation-T106.md",
+        "line": 7,
+        "sha256": "05a1e2fc9bbfa167ed8983f9f86e848b8936d556bc29488aec1949cb7a4b11e9"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+          "sha256_documento": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+          "ubicacion_exacta": "§3, Expenses",
+          "definicion_documentada": "Fuente histórica de Gastos sin impuesto; desarrollo nuevo localizado por ID en docs/model-operations-contract.md. No demuestra adopción aprobada.",
+          "matrix_id": "M2-05"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§§3, 5 y 7",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "DAT-01"
+        }
+      ],
+      "current_definition": "Expense=nominal cost times supplied fraction; contiguous exact full partition, sum fractions1 and dues/payments each cost.",
+      "source_fixture": {
+        "path": "templates/insurance-settlement-deferred-T106.json",
+        "sha256": "fb444bd80b6d3248a1936411a4ed1531f678eccdda0088694c26aa3285e02a4a",
+        "json_pointers": [
+          "/total_cost",
+          "/allocations",
+          "/due_installments"
+        ]
+      },
+      "affected_modules": [
+        "M2",
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "calculation_module": "src/miniuw_foundation/deferred_insurance_settlement.py",
+      "validation_evidence": [
+        {
+          "path": "tests/test_deferred_insurance_settlement.py",
+          "line": 23,
+          "test": "DeferredInsuranceSettlementTests.test_control_preserves_original_T90_expense_and_nominal_due_amounts"
+        },
+        {
+          "path": "tests/test_deferred_insurance_settlement.py",
+          "line": 98,
+          "test": "DeferredInsuranceSettlementTests.test_fractions_are_supplied_not_inferred_from_days_and_schema_stays_strict"
+        },
+        {
+          "path": "docs/review/deferred-insurance-validation-T106.json",
+          "json_pointer": "/status"
+        }
+      ],
+      "status": "partially_implemented_synthetic_standalone",
+      "financial_end_to_end_coverage": false,
+      "pending": "Source authority, financial/accounting policy and old complete-case integration remain pending."
+    },
+    {
+      "requirement_or_variable": "independent_per_installment_planned_cash_and_due_dates",
+      "source": {
+        "path": "docs/technical-implementation-T106.md",
+        "line": 7,
+        "sha256": "05a1e2fc9bbfa167ed8983f9f86e848b8936d556bc29488aec1949cb7a4b11e9"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+          "sha256_documento": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+          "ubicacion_exacta": "§3, Expenses",
+          "definicion_documentada": "Fuente histórica de Gastos sin impuesto; desarrollo nuevo localizado por ID en docs/model-operations-contract.md. No demuestra adopción aprobada.",
+          "matrix_id": "M2-05"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§§3, 5 y 7",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "DAT-01"
+        }
+      ],
+      "current_definition": "Every explicit payment references one due; split payments conserve each due exactly, not only global total.",
+      "source_fixture": {
+        "path": "templates/insurance-settlement-deferred-T106.json",
+        "sha256": "fb444bd80b6d3248a1936411a4ed1531f678eccdda0088694c26aa3285e02a4a",
+        "json_pointers": [
+          "/due_installments",
+          "/planned_payments"
+        ]
+      },
+      "affected_modules": [
+        "M2",
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "calculation_module": "src/miniuw_foundation/deferred_insurance_settlement.py",
+      "validation_evidence": [
+        {
+          "path": "tests/test_deferred_insurance_settlement.py",
+          "line": 58,
+          "test": "DeferredInsuranceSettlementTests.test_split_payments_keep_explicit_linkage_and_order_independent_totals"
+        },
+        {
+          "path": "tests/test_deferred_insurance_settlement.py",
+          "line": 85,
+          "test": "DeferredInsuranceSettlementTests.test_global_total_cannot_hide_overpayment_underpayment_or_omitted_plan"
+        },
+        {
+          "path": "docs/review/deferred-insurance-validation-T106.json",
+          "json_pointer": "/status"
+        }
+      ],
+      "status": "partially_implemented_synthetic_standalone",
+      "financial_end_to_end_coverage": false,
+      "pending": "Actual bank settlement, contract dates, penalties and prepayment rights unverified."
+    },
+    {
+      "requirement_or_variable": "before_on_after_cut_due_cash_and_nominal_tail",
+      "source": {
+        "path": "docs/technical-implementation-T106.md",
+        "line": 9,
+        "sha256": "05a1e2fc9bbfa167ed8983f9f86e848b8936d556bc29488aec1949cb7a4b11e9"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+          "sha256_documento": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+          "ubicacion_exacta": "§3, Expenses",
+          "definicion_documentada": "Fuente histórica de Gastos sin impuesto; desarrollo nuevo localizado por ID en docs/model-operations-contract.md. No demuestra adopción aprobada.",
+          "matrix_id": "M2-05"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§§3, 5 y 7",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "DAT-01"
+        }
+      ],
+      "current_definition": "Separate due/cash buckets; nominal tail=cost minus planned before-cut cash, partitioned into prior-due and future not-prepaid amounts.",
+      "source_fixture": {
+        "path": "templates/insurance-settlement-deferred-T106.json",
+        "sha256": "fb444bd80b6d3248a1936411a4ed1531f678eccdda0088694c26aa3285e02a4a",
+        "json_pointers": [
+          "/cutoff_date",
+          "/due_installments",
+          "/planned_payments"
+        ]
+      },
+      "affected_modules": [
+        "M2",
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "calculation_module": "src/miniuw_foundation/deferred_insurance_settlement.py",
+      "validation_evidence": [
+        {
+          "path": "tests/test_deferred_insurance_settlement.py",
+          "line": 31,
+          "test": "DeferredInsuranceSettlementTests.test_deferred_cash_tail_is_visible_and_requires_another_terminal_source"
+        },
+        {
+          "path": "tests/test_deferred_insurance_settlement.py",
+          "line": 38,
+          "test": "DeferredInsuranceSettlementTests.test_late_payment_and_future_due_are_distinct_with_same_cash_tail"
+        },
+        {
+          "path": "tests/test_deferred_insurance_settlement.py",
+          "line": 45,
+          "test": "DeferredInsuranceSettlementTests.test_future_due_can_be_prepaid_without_inventing_an_outstanding_balance"
+        },
+        {
+          "path": "tests/test_deferred_insurance_settlement.py",
+          "line": 51,
+          "test": "DeferredInsuranceSettlementTests.test_events_on_cut_are_outside_previous_cash_and_never_counted_twice"
+        },
+        {
+          "path": "docs/review/deferred-insurance-validation-T106.json",
+          "json_pointer": "/status"
+        }
+      ],
+      "status": "partially_implemented_synthetic_standalone",
+      "financial_end_to_end_coverage": false,
+      "pending": "Tail is hypothetical nominal amount; terminal settlement source and binding to sale/cash/returns remain pending."
+    },
+    {
+      "requirement_or_variable": "missing_zero_incomplete_profile_and_arithmetic_guards",
+      "source": {
+        "path": "docs/technical-implementation-T106.md",
+        "line": 13,
+        "sha256": "05a1e2fc9bbfa167ed8983f9f86e848b8936d556bc29488aec1949cb7a4b11e9"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+          "sha256_documento": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+          "ubicacion_exacta": "§3, Expenses",
+          "definicion_documentada": "Fuente histórica de Gastos sin impuesto; desarrollo nuevo localizado por ID en docs/model-operations-contract.md. No demuestra adopción aprobada.",
+          "matrix_id": "M2-05"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§§3, 5 y 7",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "DAT-01"
+        }
+      ],
+      "current_definition": "Any source/plan blocker withholds all derived money; explicit known zero retains inventory; no inferred opening profile or tolerance.",
+      "source_fixture": {
+        "path": "templates/insurance-settlement-deferred-T106.json",
+        "sha256": "fb444bd80b6d3248a1936411a4ed1531f678eccdda0088694c26aa3285e02a4a",
+        "json_pointers": [
+          "/source_ref",
+          "/assumptions",
+          "/payment_inventory_declared_complete"
+        ]
+      },
+      "affected_modules": [
+        "M2",
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "calculation_module": "src/miniuw_foundation/deferred_insurance_settlement.py",
+      "validation_evidence": [
+        {
+          "path": "tests/test_deferred_insurance_settlement.py",
+          "line": 66,
+          "test": "DeferredInsuranceSettlementTests.test_known_zero_preserves_rows_and_differs_from_missing_even_with_empty_inventories"
+        },
+        {
+          "path": "tests/test_deferred_insurance_settlement.py",
+          "line": 74,
+          "test": "DeferredInsuranceSettlementTests.test_required_missing_data_and_sources_withhold_every_derived_amount"
+        },
+        {
+          "path": "tests/test_deferred_insurance_settlement.py",
+          "line": 92,
+          "test": "DeferredInsuranceSettlementTests.test_opening_dates_other_cuts_gaps_and_overlap_require_other_profiles"
+        },
+        {
+          "path": "tests/test_deferred_insurance_settlement.py",
+          "line": 108,
+          "test": "DeferredInsuranceSettlementTests.test_real_fraction_arithmetic_excess_withholds_all_computations_and_preserves_source"
+        },
+        {
+          "path": "docs/review/deferred-insurance-validation-T106.json",
+          "json_pointer": "/status"
+        }
+      ],
+      "status": "partially_implemented_synthetic_standalone",
+      "financial_end_to_end_coverage": false,
+      "pending": "Opening balances, additional clauses, refunds, overlapping/complementary policies require separate definitions and evidence."
+    },
+    {
+      "requirement_or_variable": "source_first_three_file_recovery_without_financial_release",
+      "source": {
+        "path": "docs/technical-implementation-T106.md",
+        "line": 15,
+        "sha256": "05a1e2fc9bbfa167ed8983f9f86e848b8936d556bc29488aec1949cb7a4b11e9"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+          "sha256_documento": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+          "ubicacion_exacta": "§3, Expenses",
+          "definicion_documentada": "Fuente histórica de Gastos sin impuesto; desarrollo nuevo localizado por ID en docs/model-operations-contract.md. No demuestra adopción aprobada.",
+          "matrix_id": "M2-05"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§§3, 5 y 7",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "DAT-01"
+        }
+      ],
+      "current_definition": "Replay exact source/engine/definition and strict bounded regular inventory; retry identity, no different overwrite, no external PDF.",
+      "source_fixture": {
+        "path": "templates/insurance-settlement-deferred-T106.json",
+        "sha256": "fb444bd80b6d3248a1936411a4ed1531f678eccdda0088694c26aa3285e02a4a",
+        "json_pointers": [
+          "/schema",
+          "/context"
+        ]
+      },
+      "affected_modules": [
+        "M2",
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "calculation_module": "src/miniuw_foundation/deferred_insurance_settlement.py",
+      "validation_evidence": [
+        {
+          "path": "tests/test_deferred_insurance_settlement.py",
+          "line": 114,
+          "test": "DeferredInsuranceSettlementTests.test_rehashed_result_and_other_source_bytes_cannot_be_verified"
+        },
+        {
+          "path": "tests/test_deferred_insurance_settlement.py",
+          "line": 120,
+          "test": "DeferredInsuranceSettlementTests.test_three_file_recovery_reproduces_current_and_blocked_plans_without_PDF"
+        },
+        {
+          "path": "tests/test_deferred_insurance_settlement.py",
+          "line": 129,
+          "test": "DeferredInsuranceSettlementTests.test_incompatible_versions_and_rehashed_or_unsafe_packets_are_rejected"
+        },
+        {
+          "path": "tests/test_deferred_insurance_settlement.py",
+          "line": 143,
+          "test": "DeferredInsuranceSettlementTests.test_retry_no_overwrite_extra_symlink_size_and_failed_rename_cleanup"
+        },
+        {
+          "path": "docs/review/deferred-insurance-validation-T106.json",
+          "json_pointer": "/status"
+        }
+      ],
+      "status": "partially_implemented_synthetic_standalone",
+      "financial_end_to_end_coverage": false,
+      "pending": "Production concurrency/runtime recovery, financial acceptance, authentic approvals and deployment remain pending."
+    }
+  ],
+  "original_coverage_rows_preserved": 398,
+  "original_semantic_mappings_pending": 54,
+  "full_case_financial_integration_completed": false,
+  "real_decisions_enabled": false
+}

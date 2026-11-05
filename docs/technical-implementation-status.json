@@ -1,7 +1,7 @@
 {
   "phase": "post-I01 synthetic technical implementation",
   "user_authorized": true,
-  "component": "T105",
+  "component": "T106",
   "status": "local_implementation_verified_pending_remote_receipt",
   "implemented": [
     "fresh raw-claim drafts from unchanged 55-input/10-criterion template",
@@ -144,9 +144,12 @@
     "internal source-first cash hypothesis recovery and four-artifact local CLI; original external page unchanged",
     "hypothetical participant dated cash-risk observations with explicit currency/window/evaluation cut and complete zero-event index partitions",
     "date-close and unspecified intraday bounds, finite-horizon cash shortfall and sale dependency reconciled to unchanged T37 project observations",
-    "source-first three-artifact participant cash-risk recovery reusing exact T104 evidence without another nested proof or external PDF"
+    "source-first three-artifact participant cash-risk recovery reusing exact T104 evidence without another nested proof or external PDF",
+    "standalone synthetic nominal insurance settlement with independent due/payment inventories and exact per-installment reconciliation",
+    "separate before/on/after-cut cash and dues, explicit unsettled nominal tail and pending terminal-source requirement",
+    "three-JSON source-first settlement recovery, seven source fixtures and unchanged old full-window guard"
   ],
-  "unit_tests": 1503,
+  "unit_tests": 1519,
   "plan_packages_partially_addressed": [
     "IMP-01",
     "IMP-06",
@@ -162,7 +165,7 @@
   "deployment_enabled": false,
   "production_ready": false,
   "next_independent_work": [
-    "off-holding insurance settlements, overlapping/complementary policies and additional clauses; actual coverage sufficiency, contract authority and accounting policy remain pending",
+    "connect separately supplied terminal settlement to off-holding insurance cash without double-counting expense or selecting funding; T106 standalone nominal producer is partial, opening/overlapping/complementary policies and contractual/accounting authority remain pending",
     "independently supplied revised operating/exit timing cases without deriving scenario shocks",
     "noncash asset/accrual opening carry and independently supplied staged-loan refinance/novation profiles"
   ],
@@ -272,7 +275,8 @@
     "T102",
     "T103",
     "T104",
-    "T105"
+    "T105",
+    "T106"
   ],
   "tests_by_component": {
     "T01": 31,
@@ -602,5 +606,10 @@
   "participant_cash_risk_source_first_recovery_implemented": true,
   "actual_participant_funding_availability_verified": false,
   "participant_final_economic_loss_derived": false,
-  "full_participant_risk_analysis_completed": false
+  "full_participant_risk_analysis_completed": false,
+  "synthetic_standalone_deferred_insurance_settlement_implemented": true,
+  "deferred_insurance_source_first_recovery_implemented": true,
+  "deferred_insurance_full_case_integration_completed": false,
+  "deferred_insurance_actual_bank_payments_verified": false,
+  "deferred_insurance_legal_liability_approved": false
 }

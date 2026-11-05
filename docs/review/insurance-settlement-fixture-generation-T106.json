@@ -1,0 +1,416 @@
+{
+  "scope": "Seven explicit synthetic nominal insurance settlement sources; original T90 source and complete Mini-UW cases unchanged",
+  "original_control": "templates/synthetic-insurance-schedule.json",
+  "original_control_sha256": "936217b6b0cb4a4d52e9e7f8ec5782d7b1ec412e550c5b1f9e118cbb46b55f49",
+  "cases": [
+    {
+      "label": "control",
+      "path": "templates/insurance-settlement-control-T106.json",
+      "sha256": "2a8457e4cae1a6a052f4da341b5c1f069d676af31926beeef7b5feab4f86ed8e",
+      "state": "reconciled_synthetic_nominal_settlement_plan",
+      "integration_state": "PENDING_FINANCIAL_INTEGRATION",
+      "blockers": [],
+      "totals": {
+        "allocated_expense": {
+          "denominator": "1",
+          "numerator": "20"
+        },
+        "cash_by_cut_bucket": {
+          "after_cut": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "before_cut": {
+            "denominator": "1",
+            "numerator": "20"
+          },
+          "on_cut": {
+            "denominator": "1",
+            "numerator": "0"
+          }
+        },
+        "due_before_cut_not_settled": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "due_by_cut_bucket": {
+          "after_cut": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "before_cut": {
+            "denominator": "1",
+            "numerator": "20"
+          },
+          "on_cut": {
+            "denominator": "1",
+            "numerator": "0"
+          }
+        },
+        "fraction_sum": {
+          "denominator": "1",
+          "numerator": "1"
+        },
+        "nominal_installments": {
+          "denominator": "1",
+          "numerator": "20"
+        },
+        "nominal_not_settled_before_cut": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "not_due_before_cut_not_prepaid": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "planned_payments": {
+          "denominator": "1",
+          "numerator": "20"
+        }
+      }
+    },
+    {
+      "label": "deferred",
+      "path": "templates/insurance-settlement-deferred-T106.json",
+      "sha256": "fb444bd80b6d3248a1936411a4ed1531f678eccdda0088694c26aa3285e02a4a",
+      "state": "reconciled_synthetic_nominal_settlement_plan",
+      "integration_state": "PENDING_TERMINAL_SETTLEMENT_SOURCE",
+      "blockers": [],
+      "totals": {
+        "allocated_expense": {
+          "denominator": "1",
+          "numerator": "20"
+        },
+        "cash_by_cut_bucket": {
+          "after_cut": {
+            "denominator": "1",
+            "numerator": "5"
+          },
+          "before_cut": {
+            "denominator": "1",
+            "numerator": "15"
+          },
+          "on_cut": {
+            "denominator": "1",
+            "numerator": "0"
+          }
+        },
+        "due_before_cut_not_settled": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "due_by_cut_bucket": {
+          "after_cut": {
+            "denominator": "1",
+            "numerator": "5"
+          },
+          "before_cut": {
+            "denominator": "1",
+            "numerator": "15"
+          },
+          "on_cut": {
+            "denominator": "1",
+            "numerator": "0"
+          }
+        },
+        "fraction_sum": {
+          "denominator": "1",
+          "numerator": "1"
+        },
+        "nominal_installments": {
+          "denominator": "1",
+          "numerator": "20"
+        },
+        "nominal_not_settled_before_cut": {
+          "denominator": "1",
+          "numerator": "5"
+        },
+        "not_due_before_cut_not_prepaid": {
+          "denominator": "1",
+          "numerator": "5"
+        },
+        "planned_payments": {
+          "denominator": "1",
+          "numerator": "20"
+        }
+      }
+    },
+    {
+      "label": "late",
+      "path": "templates/insurance-settlement-late-T106.json",
+      "sha256": "9e14b55b714e32bbbfee429dda352fdd14546463488ef39e890ff962f0ca864d",
+      "state": "reconciled_synthetic_nominal_settlement_plan",
+      "integration_state": "PENDING_TERMINAL_SETTLEMENT_SOURCE",
+      "blockers": [],
+      "totals": {
+        "allocated_expense": {
+          "denominator": "1",
+          "numerator": "20"
+        },
+        "cash_by_cut_bucket": {
+          "after_cut": {
+            "denominator": "1",
+            "numerator": "5"
+          },
+          "before_cut": {
+            "denominator": "1",
+            "numerator": "15"
+          },
+          "on_cut": {
+            "denominator": "1",
+            "numerator": "0"
+          }
+        },
+        "due_before_cut_not_settled": {
+          "denominator": "1",
+          "numerator": "5"
+        },
+        "due_by_cut_bucket": {
+          "after_cut": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "before_cut": {
+            "denominator": "1",
+            "numerator": "20"
+          },
+          "on_cut": {
+            "denominator": "1",
+            "numerator": "0"
+          }
+        },
+        "fraction_sum": {
+          "denominator": "1",
+          "numerator": "1"
+        },
+        "nominal_installments": {
+          "denominator": "1",
+          "numerator": "20"
+        },
+        "nominal_not_settled_before_cut": {
+          "denominator": "1",
+          "numerator": "5"
+        },
+        "not_due_before_cut_not_prepaid": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "planned_payments": {
+          "denominator": "1",
+          "numerator": "20"
+        }
+      }
+    },
+    {
+      "label": "prepaid",
+      "path": "templates/insurance-settlement-prepaid-T106.json",
+      "sha256": "4bd6c393c7404f171cb2cac48d0ac77aa85c785c575f07f3d94e0f83c3fbae3f",
+      "state": "reconciled_synthetic_nominal_settlement_plan",
+      "integration_state": "PENDING_FINANCIAL_INTEGRATION",
+      "blockers": [],
+      "totals": {
+        "allocated_expense": {
+          "denominator": "1",
+          "numerator": "20"
+        },
+        "cash_by_cut_bucket": {
+          "after_cut": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "before_cut": {
+            "denominator": "1",
+            "numerator": "20"
+          },
+          "on_cut": {
+            "denominator": "1",
+            "numerator": "0"
+          }
+        },
+        "due_before_cut_not_settled": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "due_by_cut_bucket": {
+          "after_cut": {
+            "denominator": "1",
+            "numerator": "5"
+          },
+          "before_cut": {
+            "denominator": "1",
+            "numerator": "15"
+          },
+          "on_cut": {
+            "denominator": "1",
+            "numerator": "0"
+          }
+        },
+        "fraction_sum": {
+          "denominator": "1",
+          "numerator": "1"
+        },
+        "nominal_installments": {
+          "denominator": "1",
+          "numerator": "20"
+        },
+        "nominal_not_settled_before_cut": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "not_due_before_cut_not_prepaid": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "planned_payments": {
+          "denominator": "1",
+          "numerator": "20"
+        }
+      }
+    },
+    {
+      "label": "on-cut",
+      "path": "templates/insurance-settlement-on-cut-T106.json",
+      "sha256": "46373b2d91a8137dcbdfebc332666bc396cf19c3cfa9208d2425c529b0d83eb7",
+      "state": "reconciled_synthetic_nominal_settlement_plan",
+      "integration_state": "PENDING_TERMINAL_SETTLEMENT_SOURCE",
+      "blockers": [],
+      "totals": {
+        "allocated_expense": {
+          "denominator": "1",
+          "numerator": "20"
+        },
+        "cash_by_cut_bucket": {
+          "after_cut": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "before_cut": {
+            "denominator": "1",
+            "numerator": "15"
+          },
+          "on_cut": {
+            "denominator": "1",
+            "numerator": "5"
+          }
+        },
+        "due_before_cut_not_settled": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "due_by_cut_bucket": {
+          "after_cut": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "before_cut": {
+            "denominator": "1",
+            "numerator": "15"
+          },
+          "on_cut": {
+            "denominator": "1",
+            "numerator": "5"
+          }
+        },
+        "fraction_sum": {
+          "denominator": "1",
+          "numerator": "1"
+        },
+        "nominal_installments": {
+          "denominator": "1",
+          "numerator": "20"
+        },
+        "nominal_not_settled_before_cut": {
+          "denominator": "1",
+          "numerator": "5"
+        },
+        "not_due_before_cut_not_prepaid": {
+          "denominator": "1",
+          "numerator": "5"
+        },
+        "planned_payments": {
+          "denominator": "1",
+          "numerator": "20"
+        }
+      }
+    },
+    {
+      "label": "missing",
+      "path": "templates/insurance-settlement-missing-T106.json",
+      "sha256": "b359cbc620e973f9545f5080bd0d28485014aaebabd2675ea74c00205f9f393c",
+      "state": "PENDING",
+      "integration_state": "PENDING_SOURCE_OR_PLAN_BLOCKERS",
+      "blockers": [
+        "SYNTHETIC-DUE-C:planned_payments_do_not_settle_this_installment_exactly",
+        "SYNTHETIC-PAY-PC:payment_amount_missing_or_negative",
+        "complete_payment_sum_differs_from_total_cost"
+      ],
+      "totals": null
+    },
+    {
+      "label": "zero",
+      "path": "templates/insurance-settlement-zero-T106.json",
+      "sha256": "ccaec36a8f90dc2233f4a56e52888ae7ab144cf562df65148cf5f24320586614",
+      "state": "reconciled_synthetic_nominal_settlement_plan",
+      "integration_state": "PENDING_FINANCIAL_INTEGRATION",
+      "blockers": [],
+      "totals": {
+        "allocated_expense": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "cash_by_cut_bucket": {
+          "after_cut": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "before_cut": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "on_cut": {
+            "denominator": "1",
+            "numerator": "0"
+          }
+        },
+        "due_before_cut_not_settled": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "due_by_cut_bucket": {
+          "after_cut": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "before_cut": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "on_cut": {
+            "denominator": "1",
+            "numerator": "0"
+          }
+        },
+        "fraction_sum": {
+          "denominator": "1",
+          "numerator": "1"
+        },
+        "nominal_installments": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "nominal_not_settled_before_cut": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "not_due_before_cut_not_prepaid": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "planned_payments": {
+          "denominator": "1",
+          "numerator": "0"
+        }
+      }
+    }
+  ]
+}

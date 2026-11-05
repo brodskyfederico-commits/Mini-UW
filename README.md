@@ -4,6 +4,8 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- [Liquidación nominal de seguro T106](docs/deferred-insurance-v1-runbook.md): separa vencimientos y pagos previstos, identifica saldos al corte y exige otra fuente de liquidación; integración con venta/retorno pendiente.
+
 - [Riesgo de caja por participante T105](docs/participant-cash-risk-v1-runbook.md): caja no recuperada, pico por fecha/cotas intradía y dependencia de venta, con conciliación exacta al proyecto; capital, liquidez y pérdida económica final pendientes.
 
 - [Hipótesis de reparto de caja T104](docs/cash-participation-v1-runbook.md): fracciones explícitas de todos los aportes y cobros, con fechas, brutos y TIR recalculada; evidencia interna sin retorno personal verificado ni nuevo PDF externo.

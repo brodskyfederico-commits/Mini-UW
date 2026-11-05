@@ -1,0 +1,474 @@
+{
+  "component": "T106",
+  "status": "passed_source_first_nominal_settlement_and_independent_cut_oracles",
+  "files_verified": 3,
+  "fixture_sources_checked": 7,
+  "cases": [
+    {
+      "label": "control",
+      "source_sha256": "2a8457e4cae1a6a052f4da341b5c1f069d676af31926beeef7b5feab4f86ed8e",
+      "run_sha256": "8305009f9a75751b92910a9f5db8cff21bf4e49332bcf7c62f39d3d6f3983195",
+      "state": "reconciled_synthetic_nominal_settlement_plan",
+      "integration_state": "PENDING_FINANCIAL_INTEGRATION",
+      "terminal_settlement_source_required": false,
+      "totals": {
+        "allocated_expense": {
+          "denominator": "1",
+          "numerator": "20"
+        },
+        "cash_by_cut_bucket": {
+          "after_cut": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "before_cut": {
+            "denominator": "1",
+            "numerator": "20"
+          },
+          "on_cut": {
+            "denominator": "1",
+            "numerator": "0"
+          }
+        },
+        "due_before_cut_not_settled": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "due_by_cut_bucket": {
+          "after_cut": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "before_cut": {
+            "denominator": "1",
+            "numerator": "20"
+          },
+          "on_cut": {
+            "denominator": "1",
+            "numerator": "0"
+          }
+        },
+        "fraction_sum": {
+          "denominator": "1",
+          "numerator": "1"
+        },
+        "nominal_installments": {
+          "denominator": "1",
+          "numerator": "20"
+        },
+        "nominal_not_settled_before_cut": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "not_due_before_cut_not_prepaid": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "planned_payments": {
+          "denominator": "1",
+          "numerator": "20"
+        }
+      },
+      "blockers": []
+    },
+    {
+      "label": "deferred",
+      "source_sha256": "fb444bd80b6d3248a1936411a4ed1531f678eccdda0088694c26aa3285e02a4a",
+      "run_sha256": "dbb6ae152923e71277585bcfeadf4112cabf8cf19ef36b54ed09967fd0ac2c29",
+      "state": "reconciled_synthetic_nominal_settlement_plan",
+      "integration_state": "PENDING_TERMINAL_SETTLEMENT_SOURCE",
+      "terminal_settlement_source_required": true,
+      "totals": {
+        "allocated_expense": {
+          "denominator": "1",
+          "numerator": "20"
+        },
+        "cash_by_cut_bucket": {
+          "after_cut": {
+            "denominator": "1",
+            "numerator": "5"
+          },
+          "before_cut": {
+            "denominator": "1",
+            "numerator": "15"
+          },
+          "on_cut": {
+            "denominator": "1",
+            "numerator": "0"
+          }
+        },
+        "due_before_cut_not_settled": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "due_by_cut_bucket": {
+          "after_cut": {
+            "denominator": "1",
+            "numerator": "5"
+          },
+          "before_cut": {
+            "denominator": "1",
+            "numerator": "15"
+          },
+          "on_cut": {
+            "denominator": "1",
+            "numerator": "0"
+          }
+        },
+        "fraction_sum": {
+          "denominator": "1",
+          "numerator": "1"
+        },
+        "nominal_installments": {
+          "denominator": "1",
+          "numerator": "20"
+        },
+        "nominal_not_settled_before_cut": {
+          "denominator": "1",
+          "numerator": "5"
+        },
+        "not_due_before_cut_not_prepaid": {
+          "denominator": "1",
+          "numerator": "5"
+        },
+        "planned_payments": {
+          "denominator": "1",
+          "numerator": "20"
+        }
+      },
+      "blockers": []
+    },
+    {
+      "label": "late",
+      "source_sha256": "9e14b55b714e32bbbfee429dda352fdd14546463488ef39e890ff962f0ca864d",
+      "run_sha256": "49800709d472a733974a5d2eddd0db5604fba3376e2f21f3bd992a3432ed88a7",
+      "state": "reconciled_synthetic_nominal_settlement_plan",
+      "integration_state": "PENDING_TERMINAL_SETTLEMENT_SOURCE",
+      "terminal_settlement_source_required": true,
+      "totals": {
+        "allocated_expense": {
+          "denominator": "1",
+          "numerator": "20"
+        },
+        "cash_by_cut_bucket": {
+          "after_cut": {
+            "denominator": "1",
+            "numerator": "5"
+          },
+          "before_cut": {
+            "denominator": "1",
+            "numerator": "15"
+          },
+          "on_cut": {
+            "denominator": "1",
+            "numerator": "0"
+          }
+        },
+        "due_before_cut_not_settled": {
+          "denominator": "1",
+          "numerator": "5"
+        },
+        "due_by_cut_bucket": {
+          "after_cut": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "before_cut": {
+            "denominator": "1",
+            "numerator": "20"
+          },
+          "on_cut": {
+            "denominator": "1",
+            "numerator": "0"
+          }
+        },
+        "fraction_sum": {
+          "denominator": "1",
+          "numerator": "1"
+        },
+        "nominal_installments": {
+          "denominator": "1",
+          "numerator": "20"
+        },
+        "nominal_not_settled_before_cut": {
+          "denominator": "1",
+          "numerator": "5"
+        },
+        "not_due_before_cut_not_prepaid": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "planned_payments": {
+          "denominator": "1",
+          "numerator": "20"
+        }
+      },
+      "blockers": []
+    },
+    {
+      "label": "prepaid",
+      "source_sha256": "4bd6c393c7404f171cb2cac48d0ac77aa85c785c575f07f3d94e0f83c3fbae3f",
+      "run_sha256": "0e5223bbdfc7dcc7a5199c0d22b560a522f1e2c9957760c4f3330ad3b9fa0f2c",
+      "state": "reconciled_synthetic_nominal_settlement_plan",
+      "integration_state": "PENDING_FINANCIAL_INTEGRATION",
+      "terminal_settlement_source_required": false,
+      "totals": {
+        "allocated_expense": {
+          "denominator": "1",
+          "numerator": "20"
+        },
+        "cash_by_cut_bucket": {
+          "after_cut": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "before_cut": {
+            "denominator": "1",
+            "numerator": "20"
+          },
+          "on_cut": {
+            "denominator": "1",
+            "numerator": "0"
+          }
+        },
+        "due_before_cut_not_settled": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "due_by_cut_bucket": {
+          "after_cut": {
+            "denominator": "1",
+            "numerator": "5"
+          },
+          "before_cut": {
+            "denominator": "1",
+            "numerator": "15"
+          },
+          "on_cut": {
+            "denominator": "1",
+            "numerator": "0"
+          }
+        },
+        "fraction_sum": {
+          "denominator": "1",
+          "numerator": "1"
+        },
+        "nominal_installments": {
+          "denominator": "1",
+          "numerator": "20"
+        },
+        "nominal_not_settled_before_cut": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "not_due_before_cut_not_prepaid": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "planned_payments": {
+          "denominator": "1",
+          "numerator": "20"
+        }
+      },
+      "blockers": []
+    },
+    {
+      "label": "on-cut",
+      "source_sha256": "46373b2d91a8137dcbdfebc332666bc396cf19c3cfa9208d2425c529b0d83eb7",
+      "run_sha256": "c89c577ee86bd4d2226035d0d6da9a41ded88c3c3d825643c19a7c45b13d7580",
+      "state": "reconciled_synthetic_nominal_settlement_plan",
+      "integration_state": "PENDING_TERMINAL_SETTLEMENT_SOURCE",
+      "terminal_settlement_source_required": true,
+      "totals": {
+        "allocated_expense": {
+          "denominator": "1",
+          "numerator": "20"
+        },
+        "cash_by_cut_bucket": {
+          "after_cut": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "before_cut": {
+            "denominator": "1",
+            "numerator": "15"
+          },
+          "on_cut": {
+            "denominator": "1",
+            "numerator": "5"
+          }
+        },
+        "due_before_cut_not_settled": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "due_by_cut_bucket": {
+          "after_cut": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "before_cut": {
+            "denominator": "1",
+            "numerator": "15"
+          },
+          "on_cut": {
+            "denominator": "1",
+            "numerator": "5"
+          }
+        },
+        "fraction_sum": {
+          "denominator": "1",
+          "numerator": "1"
+        },
+        "nominal_installments": {
+          "denominator": "1",
+          "numerator": "20"
+        },
+        "nominal_not_settled_before_cut": {
+          "denominator": "1",
+          "numerator": "5"
+        },
+        "not_due_before_cut_not_prepaid": {
+          "denominator": "1",
+          "numerator": "5"
+        },
+        "planned_payments": {
+          "denominator": "1",
+          "numerator": "20"
+        }
+      },
+      "blockers": []
+    },
+    {
+      "label": "missing",
+      "source_sha256": "b359cbc620e973f9545f5080bd0d28485014aaebabd2675ea74c00205f9f393c",
+      "run_sha256": "88f42f9529c63bbe7ca1d0ea7e0a2a74cc562a09f431b5bef0ddf60e8ce629ba",
+      "state": "PENDING",
+      "integration_state": "PENDING_SOURCE_OR_PLAN_BLOCKERS",
+      "terminal_settlement_source_required": null,
+      "totals": null,
+      "blockers": [
+        "SYNTHETIC-DUE-C:planned_payments_do_not_settle_this_installment_exactly",
+        "SYNTHETIC-PAY-PC:payment_amount_missing_or_negative",
+        "complete_payment_sum_differs_from_total_cost"
+      ]
+    },
+    {
+      "label": "zero",
+      "source_sha256": "ccaec36a8f90dc2233f4a56e52888ae7ab144cf562df65148cf5f24320586614",
+      "run_sha256": "91faee9ac7814a7143ba81207fb3834c727da043804fc8b323b8f466261c8c66",
+      "state": "reconciled_synthetic_nominal_settlement_plan",
+      "integration_state": "PENDING_FINANCIAL_INTEGRATION",
+      "terminal_settlement_source_required": false,
+      "totals": {
+        "allocated_expense": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "cash_by_cut_bucket": {
+          "after_cut": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "before_cut": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "on_cut": {
+            "denominator": "1",
+            "numerator": "0"
+          }
+        },
+        "due_before_cut_not_settled": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "due_by_cut_bucket": {
+          "after_cut": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "before_cut": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "on_cut": {
+            "denominator": "1",
+            "numerator": "0"
+          }
+        },
+        "fraction_sum": {
+          "denominator": "1",
+          "numerator": "1"
+        },
+        "nominal_installments": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "nominal_not_settled_before_cut": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "not_due_before_cut_not_prepaid": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "planned_payments": {
+          "denominator": "1",
+          "numerator": "0"
+        }
+      },
+      "blockers": []
+    }
+  ],
+  "run_sha256": "dbb6ae152923e71277585bcfeadf4112cabf8cf19ef36b54ed09967fd0ac2c29",
+  "original_T90_source_sha256": "936217b6b0cb4a4d52e9e7f8ec5782d7b1ec412e550c5b1f9e118cbb46b55f49",
+  "original_full_window_expense_preserved": true,
+  "original_off_window_guard_preserved": true,
+  "dues_not_treated_as_payments": true,
+  "nominal_tail_not_discarded": true,
+  "blocked_source_directory_recovery_verified": true,
+  "source_versions": [
+    {
+      "path": "src/miniuw_foundation/deferred_insurance_settlement.py",
+      "sha256": "8cc1980e490bfcc8c04af28ab9e246342065a1002fad626e680e622ff6f91207"
+    },
+    {
+      "path": "src/miniuw_foundation/deferred_insurance_artifacts.py",
+      "sha256": "90e9e0c5f0cd2bac2cc7618f6d59f67d557e7203417b2d771de77329f858b730"
+    },
+    {
+      "path": "src/miniuw_foundation/expense_schedule.py",
+      "sha256": "0ccb1428ab2cfac66493466b58014a6ca20dde0cecbd08fd37c765d450378dc4"
+    },
+    {
+      "path": "tools/deferred_insurance_miniuw_v1.py",
+      "sha256": "50c7f57d091bde2c266afbfd68db1a1d1cfcf0bb687ce2a8f9c4417d9f880c9d"
+    },
+    {
+      "path": "tools/check_deferred_insurance_T106.py",
+      "sha256": "411e80d6cd756249b3ff91c98c109257ccc65eaebcbd7225fb620ec227f4e9e3"
+    },
+    {
+      "path": "docs/technical-implementation-T106.md",
+      "sha256": "05a1e2fc9bbfa167ed8983f9f86e848b8936d556bc29488aec1949cb7a4b11e9"
+    },
+    {
+      "path": "docs/technical-implementation-T90-T92.md",
+      "sha256": "36560e6086187abcddac7def5c37f067af66741f4da76597a56fff62c5a85c8b"
+    },
+    {
+      "path": "docs/review/insurance-settlement-fixture-generation-T106.json",
+      "sha256": "2e4d64d42140128a11106fe3294eb0680d1d9954a5e602054754bcde032a575a"
+    }
+  ],
+  "full_case_financial_integration_completed": false,
+  "new_external_PDF_created": false,
+  "actual_bank_payments_verified": false,
+  "actual_legal_liability_approved": false,
+  "original_semantic_mappings_pending": 54,
+  "financial_publication_authorized": false,
+  "deployment_enabled": false,
+  "real_decisions_enabled": false,
+  "decision": "PENDING"
+}

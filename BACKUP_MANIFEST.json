@@ -1,10 +1,10 @@
 {
-  "scope": "I01 preserved design, D02–D07 design/structure documentation and T01–T105 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D07 design/structure documentation and T01–T106 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 2824,
-      "sha256": "641a6c74b747b159a589e2f1357388be22c84a4184c17de080ad6b5929ad3a9c"
+      "bytes": 2971,
+      "sha256": "7082e957d66b786e0e7278064488137cfeba3dee179673c259e63b9b1d0b353d"
     },
     {
       "path": ".gitignore",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 41595,
-      "sha256": "71ae710a039ec8dce8e9f5f509b025e84c6a66471fb4845bd9a9c56d63ba9b4a"
+      "bytes": 41821,
+      "sha256": "ff7afc2f04bb9a8f65df05d6d24bda1ca0b783af67873f888bb77e194dbf8e86"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 181506,
-      "sha256": "b2fbdc3bf60d60504c0b3d9179995dc06a74acbf2ad853caf9af8f1f196ab8f6"
+      "bytes": 183891,
+      "sha256": "71cf8a59bd04dea66903893bdd544b05e9c772f2c781f61f22f45f188a38f8df"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -220,6 +220,11 @@
       "path": "docs/decision-input-contract.md",
       "bytes": 2872,
       "sha256": "2d2637d6889b1dec3d92df42b789dda495f6f7c98f8ccf22839f46fb47a22981"
+    },
+    {
+      "path": "docs/deferred-insurance-v1-runbook.md",
+      "bytes": 2509,
+      "sha256": "f7d9561c8809848ff7e7c194dbc76862fe522adfa4ac2e205c16991661aba9d0"
     },
     {
       "path": "docs/design-evolution-status.json",
@@ -722,6 +727,16 @@
       "sha256": "d01d40e526b50f93a0ad1f831fa4b98dfe56de2cf72dfa0f54e3cb096debdaa7"
     },
     {
+      "path": "docs/review/deferred-insurance-coverage-T106.json",
+      "bytes": 15407,
+      "sha256": "9198e918aa9204d1da9cc904fbfe4fd2c9a1e1a658833bdd8d2d0e5f080f2d7d"
+    },
+    {
+      "path": "docs/review/deferred-insurance-validation-T106.json",
+      "bytes": 13917,
+      "sha256": "dfbc6d92ee74efce82b19f9ddd496093e7a4ffdff146303b3ecdd98137c04c1e"
+    },
+    {
       "path": "docs/review/dots-bots-onepage-source-ROLES01.json",
       "bytes": 4977,
       "sha256": "f8932f3b0a66e74d2346ef62d1eadf4b6ada10759e71eeca79d163a3e71f74c8"
@@ -750,6 +765,11 @@
       "path": "docs/review/information-flow-summary-FLOW02.json",
       "bytes": 9765,
       "sha256": "a59964d5422de6bdd89ee842e5d451411088e729e7cefdc4eae1fc994ddb96f2"
+    },
+    {
+      "path": "docs/review/insurance-settlement-fixture-generation-T106.json",
+      "bytes": 11418,
+      "sha256": "2e4d64d42140128a11106fe3294eb0680d1d9954a5e602054754bcde032a575a"
     },
     {
       "path": "docs/review/integral-spec-I01-validation.json",
@@ -945,6 +965,21 @@
       "path": "docs/review/miniuw-v1-cash-participation-example/package.json",
       "bytes": 1286,
       "sha256": "4d081cba3fe76a5e742595a6d7c14d4b536111a6f439f19bc012bb73774cf4f9"
+    },
+    {
+      "path": "docs/review/miniuw-v1-deferred-insurance-example/package.json",
+      "bytes": 858,
+      "sha256": "a6cf8c7ef8a0e34c499b0599eb907341f926ed38a26f54ba3f3558059ae83d33"
+    },
+    {
+      "path": "docs/review/miniuw-v1-deferred-insurance-example/settlement-results.json",
+      "bytes": 7655,
+      "sha256": "ac3344df4d7c67f3251528a282abe2c8f2f48f1dbc78538d31393b4c35ac94ed"
+    },
+    {
+      "path": "docs/review/miniuw-v1-deferred-insurance-example/settlement-source.json",
+      "bytes": 2674,
+      "sha256": "fb444bd80b6d3248a1936411a4ed1531f678eccdda0088694c26aa3285e02a4a"
     },
     {
       "path": "docs/review/miniuw-v1-example/MiniUW_v1_Resumen.pdf",
@@ -1757,6 +1792,11 @@
       "sha256": "4a2729fcbd513c1d2e4fa6c9eb13b219067f400aa35c76c63a5443d6a7732333"
     },
     {
+      "path": "docs/technical-implementation-T106.md",
+      "bytes": 5105,
+      "sha256": "05a1e2fc9bbfa167ed8983f9f86e848b8936d556bc29488aec1949cb7a4b11e9"
+    },
+    {
       "path": "docs/technical-implementation-T11.md",
       "bytes": 5491,
       "sha256": "7fcff82f9760ccd95f28f7ecc784aff735cd03f56225f936716eb5a87eef4e58"
@@ -2028,8 +2068,8 @@
     },
     {
       "path": "docs/technical-implementation-status.json",
-      "bytes": 37945,
-      "sha256": "d5c5df86b145707a7513463d5b3889e82875d8e646c01389731b0a41ffb6c39a"
+      "bytes": 38740,
+      "sha256": "6f336ca49676ff5e858dfecab9cde26e58b3a206db258f707fb66722215fc6d6"
     },
     {
       "path": "docs/worksheet-case-v1-runbook.md",
@@ -2867,6 +2907,16 @@
       "sha256": "04d34f9479ebc802bc255d3a47c267469bdaadfee61871d174b2d0eee43d170f"
     },
     {
+      "path": "src/miniuw_foundation/deferred_insurance_artifacts.py",
+      "bytes": 4783,
+      "sha256": "90e9e0c5f0cd2bac2cc7618f6d59f67d557e7203417b2d771de77329f858b730"
+    },
+    {
+      "path": "src/miniuw_foundation/deferred_insurance_settlement.py",
+      "bytes": 12466,
+      "sha256": "8cc1980e490bfcc8c04af28ab9e246342065a1002fad626e680e622ff6f91207"
+    },
+    {
       "path": "src/miniuw_foundation/drafts.py",
       "bytes": 5233,
       "sha256": "babe6de12ad98ecbde5585dd7b46dceadd3f447cde790757585ab4ba0e4592d6"
@@ -3340,6 +3390,41 @@
       "path": "templates/cash-participation-zero-T104.json",
       "bytes": 1536,
       "sha256": "f139a96e15c86f0beb57a123281e8a6e318718af935f3f8d700a9aae47cd820a"
+    },
+    {
+      "path": "templates/insurance-settlement-control-T106.json",
+      "bytes": 2316,
+      "sha256": "2a8457e4cae1a6a052f4da341b5c1f069d676af31926beeef7b5feab4f86ed8e"
+    },
+    {
+      "path": "templates/insurance-settlement-deferred-T106.json",
+      "bytes": 2674,
+      "sha256": "fb444bd80b6d3248a1936411a4ed1531f678eccdda0088694c26aa3285e02a4a"
+    },
+    {
+      "path": "templates/insurance-settlement-late-T106.json",
+      "bytes": 2499,
+      "sha256": "9e14b55b714e32bbbfee429dda352fdd14546463488ef39e890ff962f0ca864d"
+    },
+    {
+      "path": "templates/insurance-settlement-missing-T106.json",
+      "bytes": 2636,
+      "sha256": "b359cbc620e973f9545f5080bd0d28485014aaebabd2675ea74c00205f9f393c"
+    },
+    {
+      "path": "templates/insurance-settlement-on-cut-T106.json",
+      "bytes": 2660,
+      "sha256": "46373b2d91a8137dcbdfebc332666bc396cf19c3cfa9208d2425c529b0d83eb7"
+    },
+    {
+      "path": "templates/insurance-settlement-prepaid-T106.json",
+      "bytes": 2667,
+      "sha256": "4bd6c393c7404f171cb2cac48d0ac77aa85c785c575f07f3d94e0f83c3fbae3f"
+    },
+    {
+      "path": "templates/insurance-settlement-zero-T106.json",
+      "bytes": 1942,
+      "sha256": "ccaec36a8f90dc2233f4a56e52888ae7ab144cf562df65148cf5f24320586614"
     },
     {
       "path": "templates/metric-intake-draft-empty.json",
@@ -4207,6 +4292,11 @@
       "sha256": "a0072fda153fe3b38b6f077f5454fa1a808ac7e2d4a6de7d5b3acd96e97cfbdc"
     },
     {
+      "path": "tests/test_deferred_insurance_settlement.py",
+      "bytes": 14404,
+      "sha256": "2fcaa95f7c711fa5489550b09399f4528352b22bac94f8d9a4bfa640850df934"
+    },
+    {
       "path": "tests/test_evidence_currency.py",
       "bytes": 6370,
       "sha256": "0e8de89dc0dacec774a855723e8d0fa267754801cf001519376d1ebf5ea42e33"
@@ -4572,6 +4662,11 @@
       "sha256": "308c4553f8e582f34795eb09f49f5a355af589d779f6972eb2ab971292c18a7d"
     },
     {
+      "path": "tools/check_deferred_insurance_T106.py",
+      "bytes": 9109,
+      "sha256": "411e80d6cd756249b3ff91c98c109257ccc65eaebcbd7225fb620ec227f4e9e3"
+    },
+    {
       "path": "tools/check_dependency_structure_D05.py",
       "bytes": 21887,
       "sha256": "b7d7abf6e6cc6ea14651069118102c357ddf939f97a802182de115cacb6fb8f9"
@@ -4625,6 +4720,11 @@
       "path": "tools/construction_demo_support.py",
       "bytes": 4870,
       "sha256": "d6ee1826357d7af1c13095ef111d16f2e1f43e27bccc10067464ebdac732ec84"
+    },
+    {
+      "path": "tools/deferred_insurance_miniuw_v1.py",
+      "bytes": 1168,
+      "sha256": "50c7f57d091bde2c266afbfd68db1a1d1cfcf0bb687ce2a8f9c4417d9f880c9d"
     },
     {
       "path": "tools/demo_bounded_exit_sale.py",
