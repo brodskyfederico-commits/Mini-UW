@@ -1,0 +1,161 @@
+{
+  "scope": "Four explicit hypothetical whole-ledger shares; no source/case/worksheet/criteria modification or allocation adoption",
+  "parent_evidence": "docs/review/miniuw-v1-worksheet-case-example/execution-evidence.json",
+  "parent_evidence_sha256": "43dc33e4891b6b9949580805872ad9673be646c7d88f926a5e8b8a0085073920",
+  "cases": [
+    {
+      "label": "quarter",
+      "path": "templates/cash-participation-quarter-T104.json",
+      "sha256": "6734a3f8505b47e44126c19dc2ad281598b7eb0eb6953745ce69e00407fa5fd3",
+      "state": "computed_synthetic_cash_allocation",
+      "blockers": [],
+      "participants": [
+        {
+          "participant_id": "SYNTHETIC-PARTICIPANT-1",
+          "gross_contributions": {
+            "denominator": "1",
+            "numerator": "350"
+          },
+          "gross_distributions": {
+            "denominator": "2",
+            "numerator": "389"
+          },
+          "net_cash_profit": {
+            "denominator": "2",
+            "numerator": "-311"
+          },
+          "equity_multiple": {
+            "denominator": "700",
+            "numerator": "389"
+          },
+          "IRR_status": "complete_synthetic"
+        },
+        {
+          "participant_id": "SYNTHETIC-PARTICIPANT-2",
+          "gross_contributions": {
+            "denominator": "1",
+            "numerator": "1050"
+          },
+          "gross_distributions": {
+            "denominator": "2",
+            "numerator": "1167"
+          },
+          "net_cash_profit": {
+            "denominator": "2",
+            "numerator": "-933"
+          },
+          "equity_multiple": {
+            "denominator": "700",
+            "numerator": "389"
+          },
+          "IRR_status": "complete_synthetic"
+        }
+      ]
+    },
+    {
+      "label": "third",
+      "path": "templates/cash-participation-third-T104.json",
+      "sha256": "e5900e5245aba65fb57248096d6b32c9ea34d2ab26b87d3fbb61d0d0882d8988",
+      "state": "computed_synthetic_cash_allocation",
+      "blockers": [],
+      "participants": [
+        {
+          "participant_id": "SYNTHETIC-PARTICIPANT-1",
+          "gross_contributions": {
+            "denominator": "3",
+            "numerator": "1400"
+          },
+          "gross_distributions": {
+            "denominator": "3",
+            "numerator": "778"
+          },
+          "net_cash_profit": {
+            "denominator": "3",
+            "numerator": "-622"
+          },
+          "equity_multiple": {
+            "denominator": "700",
+            "numerator": "389"
+          },
+          "IRR_status": "complete_synthetic"
+        },
+        {
+          "participant_id": "SYNTHETIC-PARTICIPANT-2",
+          "gross_contributions": {
+            "denominator": "3",
+            "numerator": "2800"
+          },
+          "gross_distributions": {
+            "denominator": "3",
+            "numerator": "1556"
+          },
+          "net_cash_profit": {
+            "denominator": "3",
+            "numerator": "-1244"
+          },
+          "equity_multiple": {
+            "denominator": "700",
+            "numerator": "389"
+          },
+          "IRR_status": "complete_synthetic"
+        }
+      ]
+    },
+    {
+      "label": "zero",
+      "path": "templates/cash-participation-zero-T104.json",
+      "sha256": "f139a96e15c86f0beb57a123281e8a6e318718af935f3f8d700a9aae47cd820a",
+      "state": "computed_synthetic_cash_allocation",
+      "blockers": [],
+      "participants": [
+        {
+          "participant_id": "SYNTHETIC-PARTICIPANT-1",
+          "gross_contributions": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "gross_distributions": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "net_cash_profit": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "equity_multiple": null,
+          "IRR_status": "indeterminate"
+        },
+        {
+          "participant_id": "SYNTHETIC-PARTICIPANT-2",
+          "gross_contributions": {
+            "denominator": "1",
+            "numerator": "1400"
+          },
+          "gross_distributions": {
+            "denominator": "1",
+            "numerator": "778"
+          },
+          "net_cash_profit": {
+            "denominator": "1",
+            "numerator": "-622"
+          },
+          "equity_multiple": {
+            "denominator": "700",
+            "numerator": "389"
+          },
+          "IRR_status": "complete_synthetic"
+        }
+      ]
+    },
+    {
+      "label": "missing",
+      "path": "templates/cash-participation-missing-T104.json",
+      "sha256": "5c862093f0148450cc5d18dabdb0594c20c699b42b01273283a4c214e82d65c5",
+      "state": "PENDING",
+      "blockers": [
+        "SYNTHETIC-PARTICIPANT-2:share_missing"
+      ],
+      "participants": null
+    }
+  ]
+}

@@ -1,10 +1,10 @@
 {
-  "scope": "I01 preserved design, D02–D07 design/structure documentation and T01–T103 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D07 design/structure documentation and T01–T104 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 2542,
-      "sha256": "0482eb38f3aaa74e6ada4f9d537fd94541254f00eb234cbfcdfb4ef820ce7d8a"
+      "bytes": 2687,
+      "sha256": "ca3c1342e9bf9529f2f2199ddc24964ffac60b3c221aa6703c2ca89fcb1646dd"
     },
     {
       "path": ".gitignore",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 39759,
-      "sha256": "b5423c1cb459ba237ee5704751be295670884c6c88626d0c186b121e2c40b816"
+      "bytes": 40676,
+      "sha256": "8eb12ebb3266defc90970e8fe5daa30f4116ed3be779112220682c0dfa9e6466"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 173709,
-      "sha256": "b1db54ee5b9077955d80a6a358e8fe008f4f3d5de1ac0a8156c60c9a9e67d273"
+      "bytes": 177533,
+      "sha256": "498751082f1d648e0bf45e164ac30dd8a6924005cad421fa1519519e17cce1de"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -95,6 +95,11 @@
       "path": "docs/capital-checked-v1-runbook.md",
       "bytes": 4120,
       "sha256": "afdca477e35e4dad615d466955eb744f528020ee99b8810fdfadab2594eb97ae"
+    },
+    {
+      "path": "docs/cash-participation-v1-runbook.md",
+      "bytes": 3085,
+      "sha256": "f5446d16bf0dd8b8a81f7c6a4ce5e8f62f36687901ce1cbaaa21a9fa50eb2a74"
     },
     {
       "path": "docs/ci-verification.json",
@@ -697,6 +702,21 @@
       "sha256": "df3322b2cba9995c006d81f945aa2e8521d6787fcbe2e55fa7f651ae60601f53"
     },
     {
+      "path": "docs/review/cash-participation-coverage-T104.json",
+      "bytes": 31363,
+      "sha256": "08bc3534ea44e2921bd3a8afb90e20f66fd26af660a65f8ddd855d9dd6e19988"
+    },
+    {
+      "path": "docs/review/cash-participation-fixture-generation-T104.json",
+      "bytes": 4808,
+      "sha256": "035e9a7495d3bf9775cd883508f1f2726e23b16d8cdca8245a66b80249740043"
+    },
+    {
+      "path": "docs/review/cash-participation-validation-T104.json",
+      "bytes": 6825,
+      "sha256": "d01d40e526b50f93a0ad1f831fa4b98dfe56de2cf72dfa0f54e3cb096debdaa7"
+    },
+    {
       "path": "docs/review/dots-bots-onepage-source-ROLES01.json",
       "bytes": 4977,
       "sha256": "f8932f3b0a66e74d2346ef62d1eadf4b6ada10759e71eeca79d163a3e71f74c8"
@@ -900,6 +920,26 @@
       "path": "docs/review/miniuw-v1-capital-checked-example/schedule-review.txt",
       "bytes": 11108,
       "sha256": "63e7a440053a75443d7f0a4a08b3c9f217207cd3a07d54e82d972d9afe7e6454"
+    },
+    {
+      "path": "docs/review/miniuw-v1-cash-participation-example/allocation-evidence.json",
+      "bytes": 2819377,
+      "sha256": "26791eccd1eef9d4d90365a40fdb6724d6ae5c0597fc383f0a2d8a1186f22914"
+    },
+    {
+      "path": "docs/review/miniuw-v1-cash-participation-example/allocation-results.json",
+      "bytes": 23804,
+      "sha256": "ba57ce0c80d04fba3e3d7b40314de0831d2fe38b433d1081fdd9119203c26e26"
+    },
+    {
+      "path": "docs/review/miniuw-v1-cash-participation-example/allocation-terms.json",
+      "bytes": 1539,
+      "sha256": "6734a3f8505b47e44126c19dc2ad281598b7eb0eb6953745ce69e00407fa5fd3"
+    },
+    {
+      "path": "docs/review/miniuw-v1-cash-participation-example/package.json",
+      "bytes": 1286,
+      "sha256": "4d081cba3fe76a5e742595a6d7c14d4b536111a6f439f19bc012bb73774cf4f9"
     },
     {
       "path": "docs/review/miniuw-v1-example/MiniUW_v1_Resumen.pdf",
@@ -1672,6 +1712,11 @@
       "sha256": "4be94d38358486764929dac440728d56c9102f0a94fa4128c28dc1d7ed0839f7"
     },
     {
+      "path": "docs/technical-implementation-T104.md",
+      "bytes": 4346,
+      "sha256": "e45cf0a15d0c4a07b0fce32189e8188e0f75a00ed17e67e3f1fc50ff08c6995f"
+    },
+    {
       "path": "docs/technical-implementation-T11.md",
       "bytes": 5491,
       "sha256": "7fcff82f9760ccd95f28f7ecc784aff735cd03f56225f936716eb5a87eef4e58"
@@ -1943,8 +1988,8 @@
     },
     {
       "path": "docs/technical-implementation-status.json",
-      "bytes": 36574,
-      "sha256": "096120be488386a24b758475a7050c373c3af928f40654e44f102d1ce604d2ff"
+      "bytes": 37206,
+      "sha256": "22bf938e59e4cf0dc925794ce99fe8f9942ad3a7719169c254ec0b7dab156951"
     },
     {
       "path": "docs/worksheet-case-v1-runbook.md",
@@ -2657,6 +2702,16 @@
       "sha256": "cd34fc11cb06b39f29613b26f4fc1732d4a832fd35f7dc99c4e6d57f63229803"
     },
     {
+      "path": "src/miniuw_foundation/cash_participation.py",
+      "bytes": 13340,
+      "sha256": "f2e1e28c4b37032ff70f24b4ad7fe82ec35dbba1958c3b7abad92f463c790c7a"
+    },
+    {
+      "path": "src/miniuw_foundation/cash_participation_artifacts.py",
+      "bytes": 7430,
+      "sha256": "544fb52918bebc6efa23d53aa302060ad6c4221df106583d28ecda15b87653c0"
+    },
+    {
       "path": "src/miniuw_foundation/cash_risk.py",
       "bytes": 6728,
       "sha256": "570785ab8fa2547d3ced2076dbcd8df0750725e7cb814f04c871adf8beadde24"
@@ -3215,6 +3270,26 @@
       "path": "templates/IRR-review-renewal-T102.json",
       "bytes": 343,
       "sha256": "203792fe2df8f55694618b0a59cb0248838bbce9faadcc1955bb1009ca5bc7b6"
+    },
+    {
+      "path": "templates/cash-participation-missing-T104.json",
+      "bytes": 1508,
+      "sha256": "5c862093f0148450cc5d18dabdb0594c20c699b42b01273283a4c214e82d65c5"
+    },
+    {
+      "path": "templates/cash-participation-quarter-T104.json",
+      "bytes": 1539,
+      "sha256": "6734a3f8505b47e44126c19dc2ad281598b7eb0eb6953745ce69e00407fa5fd3"
+    },
+    {
+      "path": "templates/cash-participation-third-T104.json",
+      "bytes": 1537,
+      "sha256": "e5900e5245aba65fb57248096d6b32c9ea34d2ab26b87d3fbb61d0d0882d8988"
+    },
+    {
+      "path": "templates/cash-participation-zero-T104.json",
+      "bytes": 1536,
+      "sha256": "f139a96e15c86f0beb57a123281e8a6e318718af935f3f8d700a9aae47cd820a"
     },
     {
       "path": "templates/metric-intake-draft-empty.json",
@@ -4012,6 +4087,11 @@
       "sha256": "3e663823f0af6139ef1b09f9f57ca39f0085de9d47070dc19c864c348a375db3"
     },
     {
+      "path": "tests/test_cash_participation.py",
+      "bytes": 17965,
+      "sha256": "d5877430c508caa385575cbcb2724ac18ec402802edb339ac0ba0e2e43b22009"
+    },
+    {
       "path": "tests/test_cash_risk.py",
       "bytes": 12050,
       "sha256": "9c9486607bd7a40fac1dfa968351ab227d5d3bee2bd291ccc19619b9633d7ff1"
@@ -4397,6 +4477,11 @@
       "sha256": "89f6d470e0ef44d40224154153765a2b0f504a96909258b10a6c0fd83b03bc2a"
     },
     {
+      "path": "tools/cash_participation_miniuw_v1.py",
+      "bytes": 1359,
+      "sha256": "8323c8222c77898a29c9bab2c1d8ff864cc3af5e3d1dc1a98a0673c9021fc4b9"
+    },
+    {
       "path": "tools/check_IRR_interval_T101.py",
       "bytes": 7820,
       "sha256": "3b022072719929bade99c0ea24958b2cb59110a1968973120cf11d40f0ab2b96"
@@ -4420,6 +4505,11 @@
       "path": "tools/check_capital_output_T98.py",
       "bytes": 5768,
       "sha256": "26d7ac7a620e2f05b8a72080d8de7f903dc74c1c1001c3d4d09baa4e38b63e25"
+    },
+    {
+      "path": "tools/check_cash_participation_T104.py",
+      "bytes": 10609,
+      "sha256": "03712ab2f3ea26d0547f2ccccc1ca72da27782abca559068408baa31895b652b"
     },
     {
       "path": "tools/check_current_structure_D04.py",

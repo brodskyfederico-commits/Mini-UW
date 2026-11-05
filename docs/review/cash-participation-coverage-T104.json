@@ -1,0 +1,651 @@
+{
+  "component": "T104",
+  "scope": "Incremental hypothesis coverage of23 investor-output requirements; original398-row matrix unchanged",
+  "financial_model_complete": false,
+  "rows": [
+    {
+      "requirement_or_variable": "R01",
+      "label": "Moneda",
+      "source_document": "docs/review/information-flow-summary-FLOW02.json",
+      "exact_source_pointer": "/steps/7/description",
+      "intermediate_contract_document": "docs/current-structure/MiniUW_Salida_Inversor_D07.json",
+      "exact_contract_pointer": "/output_fields/0",
+      "current_definition": {
+        "document": "docs/technical-implementation-T104.md",
+        "line": 7,
+        "scope": "Explicit hypothetical gross cash only; financial acceptance not adopted"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/cash_participation.py",
+        "line": 81,
+        "function": "_allocate"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_cash_participation.py",
+        "line": 50,
+        "test": "test_quarter_exact_contributions_receipts_sale_and_pending_personal_scope",
+        "result": "docs/review/miniuw-v1-cash-participation-example/allocation-results.json",
+        "pointer": "/participants/0/currency"
+      },
+      "technical_state": "hypothetical_profile_only",
+      "financial_requirement_closed": false,
+      "pending": "Actual allocation rights/terms/adjustments and financial acceptance not authenticated; original requirement is not closed by a synthetic hypothesis."
+    },
+    {
+      "requirement_or_variable": "R02",
+      "label": "Alcance del equity",
+      "source_document": "docs/review/information-flow-summary-FLOW02.json",
+      "exact_source_pointer": "/steps/7/description",
+      "intermediate_contract_document": "docs/current-structure/MiniUW_Salida_Inversor_D07.json",
+      "exact_contract_pointer": "/output_fields/1",
+      "current_definition": {
+        "document": "docs/technical-implementation-T104.md",
+        "line": 7,
+        "scope": "Explicit hypothetical gross cash only; financial acceptance not adopted"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/cash_participation.py",
+        "line": 81,
+        "function": "_allocate"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_cash_participation.py",
+        "line": 50,
+        "test": "test_quarter_exact_contributions_receipts_sale_and_pending_personal_scope",
+        "result": "docs/review/miniuw-v1-cash-participation-example/allocation-results.json",
+        "pointer": "/participants/0/scope"
+      },
+      "technical_state": "hypothetical_profile_only",
+      "financial_requirement_closed": false,
+      "pending": "Actual allocation rights/terms/adjustments and financial acceptance not authenticated; original requirement is not closed by a synthetic hypothesis."
+    },
+    {
+      "requirement_or_variable": "R03",
+      "label": "Ventana de caja",
+      "source_document": "docs/review/information-flow-summary-FLOW02.json",
+      "exact_source_pointer": "/steps/7/description",
+      "intermediate_contract_document": "docs/current-structure/MiniUW_Salida_Inversor_D07.json",
+      "exact_contract_pointer": "/output_fields/2",
+      "current_definition": {
+        "document": "docs/technical-implementation-T104.md",
+        "line": 7,
+        "scope": "Explicit hypothetical gross cash only; financial acceptance not adopted"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/cash_participation.py",
+        "line": 81,
+        "function": "_allocate"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_cash_participation.py",
+        "line": 50,
+        "test": "test_quarter_exact_contributions_receipts_sale_and_pending_personal_scope",
+        "result": "docs/review/miniuw-v1-cash-participation-example/allocation-results.json",
+        "pointer": "/participants/0/cash_horizon"
+      },
+      "technical_state": "hypothetical_profile_only",
+      "financial_requirement_closed": false,
+      "pending": "Actual allocation rights/terms/adjustments and financial acceptance not authenticated; original requirement is not closed by a synthetic hypothesis."
+    },
+    {
+      "requirement_or_variable": "R04",
+      "label": "Aportes iniciales y fechas",
+      "source_document": "docs/review/information-flow-summary-FLOW02.json",
+      "exact_source_pointer": "/investor_return_questions/0",
+      "intermediate_contract_document": "docs/current-structure/MiniUW_Salida_Inversor_D07.json",
+      "exact_contract_pointer": "/output_fields/3",
+      "current_definition": {
+        "document": "docs/technical-implementation-T104.md",
+        "line": 7,
+        "scope": "Explicit hypothetical gross cash only; financial acceptance not adopted"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/cash_participation.py",
+        "line": 81,
+        "function": "_allocate"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_cash_participation.py",
+        "line": 50,
+        "test": "test_quarter_exact_contributions_receipts_sale_and_pending_personal_scope",
+        "result": "docs/review/miniuw-v1-cash-participation-example/allocation-results.json",
+        "pointer": "/participants/0/dated_events"
+      },
+      "technical_state": "hypothetical_profile_only",
+      "financial_requirement_closed": false,
+      "pending": "Actual allocation rights/terms/adjustments and financial acceptance not authenticated; original requirement is not closed by a synthetic hypothesis."
+    },
+    {
+      "requirement_or_variable": "R05",
+      "label": "Aportes adicionales y fechas",
+      "source_document": "docs/review/information-flow-summary-FLOW02.json",
+      "exact_source_pointer": "/investor_return_questions/0",
+      "intermediate_contract_document": "docs/current-structure/MiniUW_Salida_Inversor_D07.json",
+      "exact_contract_pointer": "/output_fields/4",
+      "current_definition": {
+        "document": "docs/technical-implementation-T104.md",
+        "line": 7,
+        "scope": "Explicit hypothetical gross cash only; financial acceptance not adopted"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/cash_participation.py",
+        "line": 81,
+        "function": "_allocate"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_cash_participation.py",
+        "line": 50,
+        "test": "test_quarter_exact_contributions_receipts_sale_and_pending_personal_scope",
+        "result": "docs/review/miniuw-v1-cash-participation-example/allocation-results.json",
+        "pointer": "/participants/0/dated_events"
+      },
+      "technical_state": "hypothetical_profile_only",
+      "financial_requirement_closed": false,
+      "pending": "Actual allocation rights/terms/adjustments and financial acceptance not authenticated; original requirement is not closed by a synthetic hypothesis."
+    },
+    {
+      "requirement_or_variable": "R06",
+      "label": "Cobros operativos y fechas",
+      "source_document": "docs/review/information-flow-summary-FLOW02.json",
+      "exact_source_pointer": "/investor_return_questions/5",
+      "intermediate_contract_document": "docs/current-structure/MiniUW_Salida_Inversor_D07.json",
+      "exact_contract_pointer": "/output_fields/5",
+      "current_definition": {
+        "document": "docs/technical-implementation-T104.md",
+        "line": 7,
+        "scope": "Explicit hypothetical gross cash only; financial acceptance not adopted"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/cash_participation.py",
+        "line": 81,
+        "function": "_allocate"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_cash_participation.py",
+        "line": 50,
+        "test": "test_quarter_exact_contributions_receipts_sale_and_pending_personal_scope",
+        "result": "docs/review/miniuw-v1-cash-participation-example/allocation-results.json",
+        "pointer": "/participants/0/dated_events"
+      },
+      "technical_state": "hypothetical_profile_only",
+      "financial_requirement_closed": false,
+      "pending": "Actual allocation rights/terms/adjustments and financial acceptance not authenticated; original requirement is not closed by a synthetic hypothesis."
+    },
+    {
+      "requirement_or_variable": "R07",
+      "label": "Cobro neto refi y fechas",
+      "source_document": "docs/review/information-flow-summary-FLOW02.json",
+      "exact_source_pointer": "/investor_return_questions/1",
+      "intermediate_contract_document": "docs/current-structure/MiniUW_Salida_Inversor_D07.json",
+      "exact_contract_pointer": "/output_fields/6",
+      "current_definition": {
+        "document": "docs/technical-implementation-T104.md",
+        "line": 7,
+        "scope": "Explicit hypothetical gross cash only; financial acceptance not adopted"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/cash_participation.py",
+        "line": 81,
+        "function": "_allocate"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_cash_participation.py",
+        "line": 50,
+        "test": "test_quarter_exact_contributions_receipts_sale_and_pending_personal_scope",
+        "result": "docs/review/miniuw-v1-cash-participation-example/allocation-results.json",
+        "pointer": "/participants/0/dated_events"
+      },
+      "technical_state": "hypothetical_profile_only",
+      "financial_requirement_closed": false,
+      "pending": "Actual allocation rights/terms/adjustments and financial acceptance not authenticated; original requirement is not closed by a synthetic hypothesis."
+    },
+    {
+      "requirement_or_variable": "R08",
+      "label": "Cash-in refi y fechas",
+      "source_document": "docs/review/information-flow-summary-FLOW02.json",
+      "exact_source_pointer": "/investor_return_questions/2",
+      "intermediate_contract_document": "docs/current-structure/MiniUW_Salida_Inversor_D07.json",
+      "exact_contract_pointer": "/output_fields/7",
+      "current_definition": {
+        "document": "docs/technical-implementation-T104.md",
+        "line": 7,
+        "scope": "Explicit hypothetical gross cash only; financial acceptance not adopted"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/cash_participation.py",
+        "line": 81,
+        "function": "_allocate"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_cash_participation.py",
+        "line": 50,
+        "test": "test_quarter_exact_contributions_receipts_sale_and_pending_personal_scope",
+        "result": "docs/review/miniuw-v1-cash-participation-example/allocation-results.json",
+        "pointer": "/participants/0/dated_events"
+      },
+      "technical_state": "hypothetical_profile_only",
+      "financial_requirement_closed": false,
+      "pending": "Actual allocation rights/terms/adjustments and financial acceptance not authenticated; original requirement is not closed by a synthetic hypothesis."
+    },
+    {
+      "requirement_or_variable": "R09",
+      "label": "Cobro neto venta y fecha",
+      "source_document": "docs/review/information-flow-summary-FLOW02.json",
+      "exact_source_pointer": "/investor_return_questions/6",
+      "intermediate_contract_document": "docs/current-structure/MiniUW_Salida_Inversor_D07.json",
+      "exact_contract_pointer": "/output_fields/8",
+      "current_definition": {
+        "document": "docs/technical-implementation-T104.md",
+        "line": 7,
+        "scope": "Explicit hypothetical gross cash only; financial acceptance not adopted"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/cash_participation.py",
+        "line": 81,
+        "function": "_allocate"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_cash_participation.py",
+        "line": 50,
+        "test": "test_quarter_exact_contributions_receipts_sale_and_pending_personal_scope",
+        "result": "docs/review/miniuw-v1-cash-participation-example/allocation-results.json",
+        "pointer": "/participants/0/dated_events"
+      },
+      "technical_state": "hypothetical_profile_only",
+      "financial_requirement_closed": false,
+      "pending": "Actual allocation rights/terms/adjustments and financial acceptance not authenticated; original requirement is not closed by a synthetic hypothesis."
+    },
+    {
+      "requirement_or_variable": "R10",
+      "label": "Aportes brutos totales",
+      "source_document": "docs/review/information-flow-summary-FLOW02.json",
+      "exact_source_pointer": "/investor_return_questions/0",
+      "intermediate_contract_document": "docs/current-structure/MiniUW_Salida_Inversor_D07.json",
+      "exact_contract_pointer": "/output_fields/9",
+      "current_definition": {
+        "document": "docs/technical-implementation-T104.md",
+        "line": 7,
+        "scope": "Explicit hypothetical gross cash only; financial acceptance not adopted"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/cash_participation.py",
+        "line": 81,
+        "function": "_allocate"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_cash_participation.py",
+        "line": 50,
+        "test": "test_quarter_exact_contributions_receipts_sale_and_pending_personal_scope",
+        "result": "docs/review/miniuw-v1-cash-participation-example/allocation-results.json",
+        "pointer": "/participants/0/gross_contributions"
+      },
+      "technical_state": "hypothetical_profile_only",
+      "financial_requirement_closed": false,
+      "pending": "Actual allocation rights/terms/adjustments and financial acceptance not authenticated; original requirement is not closed by a synthetic hypothesis."
+    },
+    {
+      "requirement_or_variable": "R11",
+      "label": "Cobros brutos totales",
+      "source_document": "docs/review/information-flow-summary-FLOW02.json",
+      "exact_source_pointer": "/investor_return_questions/7",
+      "intermediate_contract_document": "docs/current-structure/MiniUW_Salida_Inversor_D07.json",
+      "exact_contract_pointer": "/output_fields/10",
+      "current_definition": {
+        "document": "docs/technical-implementation-T104.md",
+        "line": 7,
+        "scope": "Explicit hypothetical gross cash only; financial acceptance not adopted"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/cash_participation.py",
+        "line": 81,
+        "function": "_allocate"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_cash_participation.py",
+        "line": 50,
+        "test": "test_quarter_exact_contributions_receipts_sale_and_pending_personal_scope",
+        "result": "docs/review/miniuw-v1-cash-participation-example/allocation-results.json",
+        "pointer": "/participants/0/gross_distributions"
+      },
+      "technical_state": "hypothetical_profile_only",
+      "financial_requirement_closed": false,
+      "pending": "Actual allocation rights/terms/adjustments and financial acceptance not authenticated; original requirement is not closed by a synthetic hypothesis."
+    },
+    {
+      "requirement_or_variable": "R12",
+      "label": "Resultado neto de caja",
+      "source_document": "docs/review/information-flow-summary-FLOW02.json",
+      "exact_source_pointer": "/investor_return_questions/7",
+      "intermediate_contract_document": "docs/current-structure/MiniUW_Salida_Inversor_D07.json",
+      "exact_contract_pointer": "/output_fields/11",
+      "current_definition": {
+        "document": "docs/technical-implementation-T104.md",
+        "line": 7,
+        "scope": "Explicit hypothetical gross cash only; financial acceptance not adopted"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/cash_participation.py",
+        "line": 81,
+        "function": "_allocate"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_cash_participation.py",
+        "line": 50,
+        "test": "test_quarter_exact_contributions_receipts_sale_and_pending_personal_scope",
+        "result": "docs/review/miniuw-v1-cash-participation-example/allocation-results.json",
+        "pointer": "/participants/0/net_cash_profit"
+      },
+      "technical_state": "hypothetical_profile_only",
+      "financial_requirement_closed": false,
+      "pending": "Actual allocation rights/terms/adjustments and financial acceptance not authenticated; original requirement is not closed by a synthetic hypothesis."
+    },
+    {
+      "requirement_or_variable": "R13",
+      "label": "Equity multiple",
+      "source_document": "docs/review/information-flow-summary-FLOW02.json",
+      "exact_source_pointer": "/investor_return_questions/7",
+      "intermediate_contract_document": "docs/current-structure/MiniUW_Salida_Inversor_D07.json",
+      "exact_contract_pointer": "/output_fields/12",
+      "current_definition": {
+        "document": "docs/technical-implementation-T104.md",
+        "line": 7,
+        "scope": "Explicit hypothetical gross cash only; financial acceptance not adopted"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/cash_participation.py",
+        "line": 81,
+        "function": "_allocate"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_cash_participation.py",
+        "line": 50,
+        "test": "test_quarter_exact_contributions_receipts_sale_and_pending_personal_scope",
+        "result": "docs/review/miniuw-v1-cash-participation-example/allocation-results.json",
+        "pointer": "/participants/0/equity_multiple"
+      },
+      "technical_state": "hypothetical_profile_only",
+      "financial_requirement_closed": false,
+      "pending": "Actual allocation rights/terms/adjustments and financial acceptance not authenticated; original requirement is not closed by a synthetic hypothesis."
+    },
+    {
+      "requirement_or_variable": "R14",
+      "label": "TIR anual y selección",
+      "source_document": "docs/review/information-flow-summary-FLOW02.json",
+      "exact_source_pointer": "/investor_return_questions/7",
+      "intermediate_contract_document": "docs/current-structure/MiniUW_Salida_Inversor_D07.json",
+      "exact_contract_pointer": "/output_fields/13",
+      "current_definition": {
+        "document": "docs/technical-implementation-T104.md",
+        "line": 7,
+        "scope": "Explicit hypothetical gross cash only; financial acceptance not adopted"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/cash_participation.py",
+        "line": 81,
+        "function": "_allocate"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_cash_participation.py",
+        "line": 113,
+        "test": "test_independent_known_ten_percent_root_and_positive_scaling_identity",
+        "result": "docs/review/miniuw-v1-cash-participation-example/allocation-results.json",
+        "pointer": "/participants/0/annual_IRR_roots"
+      },
+      "technical_state": "hypothetical_profile_only",
+      "financial_requirement_closed": false,
+      "pending": "Actual allocation rights/terms/adjustments and financial acceptance not authenticated; original requirement is not closed by a synthetic hypothesis."
+    },
+    {
+      "requirement_or_variable": "R15",
+      "label": "Referencia por 10 y base",
+      "source_document": "docs/review/information-flow-summary-FLOW02.json",
+      "exact_source_pointer": "/steps/7/description",
+      "intermediate_contract_document": "docs/current-structure/MiniUW_Salida_Inversor_D07.json",
+      "exact_contract_pointer": "/output_fields/14",
+      "current_definition": {
+        "document": "docs/technical-implementation-T104.md",
+        "line": 11,
+        "scope": "Explicit hypothetical gross cash only; financial acceptance not adopted"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/cash_participation.py",
+        "line": 81,
+        "function": "_allocate"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_cash_participation.py",
+        "line": 50,
+        "test": "test_quarter_exact_contributions_receipts_sale_and_pending_personal_scope",
+        "result": "docs/review/miniuw-v1-cash-participation-example/allocation-results.json",
+        "pointer": null
+      },
+      "technical_state": "PENDING",
+      "financial_requirement_closed": false,
+      "pending": "Actual allocation rights/terms/adjustments and financial acceptance not authenticated; original requirement is not closed by a synthetic hypothesis."
+    },
+    {
+      "requirement_or_variable": "R16",
+      "label": "Capital aún invertido",
+      "source_document": "docs/review/information-flow-summary-FLOW02.json",
+      "exact_source_pointer": "/investor_return_questions/3",
+      "intermediate_contract_document": "docs/current-structure/MiniUW_Salida_Inversor_D07.json",
+      "exact_contract_pointer": "/output_fields/15",
+      "current_definition": {
+        "document": "docs/technical-implementation-T104.md",
+        "line": 11,
+        "scope": "Explicit hypothetical gross cash only; financial acceptance not adopted"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/cash_participation.py",
+        "line": 81,
+        "function": "_allocate"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_cash_participation.py",
+        "line": 50,
+        "test": "test_quarter_exact_contributions_receipts_sale_and_pending_personal_scope",
+        "result": "docs/review/miniuw-v1-cash-participation-example/allocation-results.json",
+        "pointer": "/participants/0/capital_still_invested"
+      },
+      "technical_state": "PENDING",
+      "financial_requirement_closed": false,
+      "pending": "Actual allocation rights/terms/adjustments and financial acceptance not authenticated; original requirement is not closed by a synthetic hypothesis."
+    },
+    {
+      "requirement_or_variable": "R17",
+      "label": "Equity retenido",
+      "source_document": "docs/review/information-flow-summary-FLOW02.json",
+      "exact_source_pointer": "/investor_return_questions/4",
+      "intermediate_contract_document": "docs/current-structure/MiniUW_Salida_Inversor_D07.json",
+      "exact_contract_pointer": "/output_fields/16",
+      "current_definition": {
+        "document": "docs/technical-implementation-T104.md",
+        "line": 11,
+        "scope": "Explicit hypothetical gross cash only; financial acceptance not adopted"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/cash_participation.py",
+        "line": 81,
+        "function": "_allocate"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_cash_participation.py",
+        "line": 50,
+        "test": "test_quarter_exact_contributions_receipts_sale_and_pending_personal_scope",
+        "result": "docs/review/miniuw-v1-cash-participation-example/allocation-results.json",
+        "pointer": "/participants/0/retained_equity_value"
+      },
+      "technical_state": "PENDING",
+      "financial_requirement_closed": false,
+      "pending": "Actual allocation rights/terms/adjustments and financial acceptance not authenticated; original requirement is not closed by a synthetic hypothesis."
+    },
+    {
+      "requirement_or_variable": "R18",
+      "label": "Caja neta anual",
+      "source_document": "docs/review/information-flow-summary-FLOW02.json",
+      "exact_source_pointer": "/investor_return_questions/5",
+      "intermediate_contract_document": "docs/current-structure/MiniUW_Salida_Inversor_D07.json",
+      "exact_contract_pointer": "/output_fields/17",
+      "current_definition": {
+        "document": "docs/technical-implementation-T104.md",
+        "line": 7,
+        "scope": "Explicit hypothetical gross cash only; financial acceptance not adopted"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/cash_participation.py",
+        "line": 81,
+        "function": "_allocate"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_cash_participation.py",
+        "line": 50,
+        "test": "test_quarter_exact_contributions_receipts_sale_and_pending_personal_scope",
+        "result": "docs/review/miniuw-v1-cash-participation-example/allocation-results.json",
+        "pointer": "/participants/0/annual_cash"
+      },
+      "technical_state": "hypothetical_profile_only",
+      "financial_requirement_closed": false,
+      "pending": "Actual allocation rights/terms/adjustments and financial acceptance not authenticated; original requirement is not closed by a synthetic hypothesis."
+    },
+    {
+      "requirement_or_variable": "R19",
+      "label": "CoC anual condicional",
+      "source_document": "docs/review/information-flow-summary-FLOW02.json",
+      "exact_source_pointer": "/investor_return_questions/5",
+      "intermediate_contract_document": "docs/current-structure/MiniUW_Salida_Inversor_D07.json",
+      "exact_contract_pointer": "/output_fields/18",
+      "current_definition": {
+        "document": "docs/technical-implementation-T104.md",
+        "line": 11,
+        "scope": "Explicit hypothetical gross cash only; financial acceptance not adopted"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/cash_participation.py",
+        "line": 81,
+        "function": "_allocate"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_cash_participation.py",
+        "line": 50,
+        "test": "test_quarter_exact_contributions_receipts_sale_and_pending_personal_scope",
+        "result": "docs/review/miniuw-v1-cash-participation-example/allocation-results.json",
+        "pointer": "/participants/0/conditional_CoC"
+      },
+      "technical_state": "PENDING",
+      "financial_requirement_closed": false,
+      "pending": "Actual allocation rights/terms/adjustments and financial acceptance not authenticated; original requirement is not closed by a synthetic hypothesis."
+    },
+    {
+      "requirement_or_variable": "R20",
+      "label": "Retorno personal",
+      "source_document": "docs/review/information-flow-summary-FLOW02.json",
+      "exact_source_pointer": "/steps/7/description",
+      "intermediate_contract_document": "docs/current-structure/MiniUW_Salida_Inversor_D07.json",
+      "exact_contract_pointer": "/output_fields/19",
+      "current_definition": {
+        "document": "docs/technical-implementation-T104.md",
+        "line": 11,
+        "scope": "Explicit hypothetical gross cash only; financial acceptance not adopted"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/cash_participation.py",
+        "line": 81,
+        "function": "_allocate"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_cash_participation.py",
+        "line": 50,
+        "test": "test_quarter_exact_contributions_receipts_sale_and_pending_personal_scope",
+        "result": "docs/review/miniuw-v1-cash-participation-example/allocation-results.json",
+        "pointer": "/participants/0/verified_personal_investor_return"
+      },
+      "technical_state": "PENDING",
+      "financial_requirement_closed": false,
+      "pending": "Actual allocation rights/terms/adjustments and financial acceptance not authenticated; original requirement is not closed by a synthetic hypothesis."
+    },
+    {
+      "requirement_or_variable": "R21",
+      "label": "Aportes no recuperados al corte",
+      "source_document": "docs/review/information-flow-summary-FLOW02.json",
+      "exact_source_pointer": "/investor_return_questions/8",
+      "intermediate_contract_document": "docs/current-structure/MiniUW_Salida_Inversor_D07.json",
+      "exact_contract_pointer": "/output_fields/20",
+      "current_definition": {
+        "document": "docs/technical-implementation-T104.md",
+        "line": 11,
+        "scope": "Explicit hypothetical gross cash only; financial acceptance not adopted"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/cash_participation.py",
+        "line": 81,
+        "function": "_allocate"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_cash_participation.py",
+        "line": 50,
+        "test": "test_quarter_exact_contributions_receipts_sale_and_pending_personal_scope",
+        "result": "docs/review/miniuw-v1-cash-participation-example/allocation-results.json",
+        "pointer": null
+      },
+      "technical_state": "PENDING",
+      "financial_requirement_closed": false,
+      "pending": "Actual allocation rights/terms/adjustments and financial acceptance not authenticated; original requirement is not closed by a synthetic hypothesis."
+    },
+    {
+      "requirement_or_variable": "R22",
+      "label": "Pico de financiación del equity",
+      "source_document": "docs/review/information-flow-summary-FLOW02.json",
+      "exact_source_pointer": "/investor_return_questions/8",
+      "intermediate_contract_document": "docs/current-structure/MiniUW_Salida_Inversor_D07.json",
+      "exact_contract_pointer": "/output_fields/21",
+      "current_definition": {
+        "document": "docs/technical-implementation-T104.md",
+        "line": 11,
+        "scope": "Explicit hypothetical gross cash only; financial acceptance not adopted"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/cash_participation.py",
+        "line": 81,
+        "function": "_allocate"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_cash_participation.py",
+        "line": 50,
+        "test": "test_quarter_exact_contributions_receipts_sale_and_pending_personal_scope",
+        "result": "docs/review/miniuw-v1-cash-participation-example/allocation-results.json",
+        "pointer": null
+      },
+      "technical_state": "PENDING",
+      "financial_requirement_closed": false,
+      "pending": "Actual allocation rights/terms/adjustments and financial acceptance not authenticated; original requirement is not closed by a synthetic hypothesis."
+    },
+    {
+      "requirement_or_variable": "R23",
+      "label": "Dependencia del cobro de venta",
+      "source_document": "docs/review/information-flow-summary-FLOW02.json",
+      "exact_source_pointer": "/investor_return_questions/8",
+      "intermediate_contract_document": "docs/current-structure/MiniUW_Salida_Inversor_D07.json",
+      "exact_contract_pointer": "/output_fields/22",
+      "current_definition": {
+        "document": "docs/technical-implementation-T104.md",
+        "line": 11,
+        "scope": "Explicit hypothetical gross cash only; financial acceptance not adopted"
+      },
+      "affected_module": {
+        "path": "src/miniuw_foundation/cash_participation.py",
+        "line": 81,
+        "function": "_allocate"
+      },
+      "validation_evidence": {
+        "test_file": "tests/test_cash_participation.py",
+        "line": 50,
+        "test": "test_quarter_exact_contributions_receipts_sale_and_pending_personal_scope",
+        "result": "docs/review/miniuw-v1-cash-participation-example/allocation-results.json",
+        "pointer": null
+      },
+      "technical_state": "PENDING",
+      "financial_requirement_closed": false,
+      "pending": "Actual allocation rights/terms/adjustments and financial acceptance not authenticated; original requirement is not closed by a synthetic hypothesis."
+    }
+  ]
+}

@@ -47,6 +47,8 @@ jobs:
         run: python tools/check_IRR_revision_review_T102.py
       - name: Verify original worksheet case consistency and current figure withdrawal
         run: python tools/check_worksheet_case_T103.py
+      - name: Verify hypothetical cash participation and independent IRR certificates
+        run: python tools/check_cash_participation_T104.py
       - name: Verify one-page Dot and bot role summary
         run: python tools/check_dots_bots_onepage_ROLES01.py
       - name: Test synthetic technical foundation

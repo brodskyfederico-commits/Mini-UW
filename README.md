@@ -4,6 +4,8 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- [Hipótesis de reparto de caja T104](docs/cash-participation-v1-runbook.md): fracciones explícitas de todos los aportes y cobros, con fechas, brutos y TIR recalculada; evidencia interna sin retorno personal verificado ni nuevo PDF externo.
+
 - [Hoja sintética y expediente T103](docs/worksheet-case-v1-runbook.md): cotejo de55 declaraciones, diferencias/fórmulas bloqueantes y una página con cifras actuales retiradas cuando no concilian; sin adoptar datos o semántica financiera.
 
 - [Revisión reproducible de versiones T102](docs/IRR-revision-review-runbook.md): compara fuentes, criterios y efectos exactos sobre caja/retornos; conserva candidatos bloqueados sin sustituirlos por resultados anteriores ni adoptarlos.
@@ -153,3 +155,5 @@ T93–T95 agregan [renovaciones de seguro con cuotas agrupadas](docs/technical-i
 T102 integra revisión de dos versiones a través de T101: cambios completos de fuente/criterio, diferencias exactas de caja/EM y evidencia portable con un PDF candidato. Tres ensayos distinguen cambio de regla con caja idéntica, renovación con menor cobro y evidencia candidata vencida. Sin nueva versión activa ni aprobación.16 pruebas nuevas,1.455 técnicas registradas; resultado hosted del commit exacto en comprobante externo. [Uso y límites](docs/IRR-revision-review-runbook.md).
 
 T103 conecta el lector del diseño original con la salida actual: coteja55 campos por ID/celda, preserva texto/número/cero/faltantes/fórmulas y bloquea cifras discrepantes. No completa los54 mapeos semánticos pendientes ni cambia fuentes/criterios.16 pruebas nuevas;1.471 técnicas registradas. [Uso y límites](docs/worksheet-case-v1-runbook.md), [cobertura de cotejo por campo](docs/review/worksheet-field-coverage-T103.json). Resultado hosted y respaldo del commit exacto en comprobante externo.
+
+T104 calcula una hipótesis explícita de reparto constante entre participantes ficticios. Conserva cada aporte/cobro/fecha/cero y concilia eventos, categorías y años con el proyecto; no infiere participación de una inversión por10 ni completa un residual. TIR independiente con controles T100, sin seleccionar punto.16 pruebas nuevas;1.487 técnicas registradas. [Alcance y uso](docs/cash-participation-v1-runbook.md), [cobertura incremental](docs/review/cash-participation-coverage-T104.json). Términos auténticos, retorno personal verificado, capital/CoC y54 mapeos semánticos siguen pendientes. Evidencia remota/CI/ZIP del commit exacto en comprobante externo.
