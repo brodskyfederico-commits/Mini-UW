@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D08 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D09 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 44895,
-      "sha256": "b6d5e186adea7d0da955c75789798211c85abc70ce4c5631410db34d86546ea5"
+      "bytes": 45551,
+      "sha256": "2f106afa77c66359d45ecdaad96b3fa35def7202562462db7392553c97ae9078"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 204520,
-      "sha256": "f1092822aeb8be23f4e9c3c0e148ca2a04248da405e292e020e3d90a95253973"
+      "bytes": 208427,
+      "sha256": "080952c66216bbc12d38064746df0ca7e34c34c84569507bfa2f184393ddba91"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -167,6 +167,11 @@
       "sha256": "a6b687aef01de6364cb873a534cf00dc37e5e469853c37360e61567805858779"
     },
     {
+      "path": "docs/current-structure/D09-design-validation.json",
+      "bytes": 2505,
+      "sha256": "decafdd72610db667dc4ef6889921909657670b56ffc5fa20e1e990efeb192af"
+    },
+    {
       "path": "docs/current-structure/MiniUW_55_campos_D04.csv",
       "bytes": 28155,
       "sha256": "36933edad8b3b905d629bb0e67113b316578a63f4652744af069b9cb302f0454"
@@ -190,6 +195,26 @@
       "path": "docs/current-structure/MiniUW_Conexiones_55_campos_D08.csv",
       "bytes": 47610,
       "sha256": "325d71254820690ac2c6a9798787023c7856999c91ecc759c7a979e2d8ba2e0a"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Conexiones_Prioritarias_D09.csv",
+      "bytes": 11720,
+      "sha256": "3edd093d624ed0abe153595a933ac98b438e1d505dfe36d20c5fca16daa49e33"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Contratos_Financieros_Prioritarios_D09.json",
+      "bytes": 103031,
+      "sha256": "9e48ecf957fc701fb231ed465a9865c4d27dd08912d8c0bcf8d345b13966db93"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Contratos_Financieros_Prioritarios_D09.md",
+      "bytes": 10296,
+      "sha256": "541bea3ca8628ff47eedbe0522c13d4a0f959cf08bfee507e47213839cd362ac"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Definiciones_Pendientes_D09.csv",
+      "bytes": 6310,
+      "sha256": "167e9c25402fdf871316d1ead7a6c93ad3acf04281279651fd4ccc8359f73018"
     },
     {
       "path": "docs/current-structure/MiniUW_Dependencias_D05.csv",
@@ -3970,6 +3995,11 @@
       "path": "templates/current-settled-expired-T109.json",
       "bytes": 168808,
       "sha256": "1a0bc941927b2b5cde054590af7a48c4d853e14c4957c00c60f51bc2fa2300f4"
+    },
+    {
+      "path": "templates/financial-link-review-D09-empty.json",
+      "bytes": 4883,
+      "sha256": "f42589d04cb1f08d484e4793a4dd9d615dc3db969ab10da3dc82cd6440979c8d"
     },
     {
       "path": "templates/insurance-settlement-control-T106.json",

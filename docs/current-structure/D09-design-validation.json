@@ -1,0 +1,67 @@
+{
+  "snapshot_id": "D09",
+  "status": "passed_documentary_source_contract_native_interface_pointer_and_empty_template_consistency",
+  "scope": "Documentary specification only; no business values or mappings activated and no new financial acceptance executed",
+  "technical_baseline": "T111",
+  "technical_baseline_commit": "9aeb590151068ccd51f4eca0e92f7c766464ba94",
+  "previous_design_commit": "01da8bbbc875a190c6d79729023c0bec666b33c4",
+  "prior_files_preserved": 1180,
+  "permitted_changed_metadata": [
+    "BACKUP_MANIFEST.json",
+    "README.md",
+    "WORK_LOG.md"
+  ],
+  "actual_changed_prior_files": [
+    "BACKUP_MANIFEST.json",
+    "README.md",
+    "WORK_LOG.md"
+  ],
+  "connection_cards": 8,
+  "original_fields_addressed": 19,
+  "original_fields_preserved_outside_this_scope": 36,
+  "source_contract_references_checked": 35,
+  "native_source_locations_checked": 14,
+  "observed_interface_examples_checked": 16,
+  "review_template_rows": 8,
+  "conditional_validation_checks_specified": 16,
+  "financial_validation_checks_executed": 0,
+  "technical_tests_unchanged": 1619,
+  "new_runtime_components": 0,
+  "new_tests": 0,
+  "financial_bindings_activated": 0,
+  "source_values_added": 0,
+  "all_original_field_metadata_preserved": true,
+  "all_references_and_interface_pointers_resolve": true,
+  "source_versions": [
+    {
+      "path": "docs/current-structure/MiniUW_Contratos_Financieros_Prioritarios_D09.json",
+      "bytes": 103031,
+      "sha256": "9e48ecf957fc701fb231ed465a9865c4d27dd08912d8c0bcf8d345b13966db93"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Contratos_Financieros_Prioritarios_D09.md",
+      "bytes": 10296,
+      "sha256": "541bea3ca8628ff47eedbe0522c13d4a0f959cf08bfee507e47213839cd362ac"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Conexiones_Prioritarias_D09.csv",
+      "bytes": 11720,
+      "sha256": "3edd093d624ed0abe153595a933ac98b438e1d505dfe36d20c5fca16daa49e33"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Definiciones_Pendientes_D09.csv",
+      "bytes": 6310,
+      "sha256": "167e9c25402fdf871316d1ead7a6c93ad3acf04281279651fd4ccc8359f73018"
+    },
+    {
+      "path": "templates/financial-link-review-D09-empty.json",
+      "bytes": 4883,
+      "sha256": "f42589d04cb1f08d484e4793a4dd9d615dc3db969ab10da3dc82cd6440979c8d"
+    }
+  ],
+  "financial_model_complete": false,
+  "professional_review_authenticated": false,
+  "personal_return_verified": false,
+  "real_decisions_enabled": false,
+  "deployment_enabled": false
+}

@@ -1,0 +1,2136 @@
+{
+  "snapshot_id": "D09",
+  "scope": "Eight priority financial connection specifications for19 original fields; documentary conditional relations and observed existing interfaces, no runtime activation",
+  "technical_baseline": "T111",
+  "technical_baseline_commit": "9aeb590151068ccd51f4eca0e92f7c766464ba94",
+  "previous_design_commit": "01da8bbbc875a190c6d79729023c0bec666b33c4",
+  "cards": [
+    {
+      "id": "F01",
+      "title": "Base de renta y grupos de unidades",
+      "field_ids": [
+        "INPUT_C7",
+        "INPUT_C8",
+        "INPUT_C9",
+        "INPUT_C10",
+        "INPUT_C11"
+      ],
+      "requirements": [
+        {
+          "contract_id": "M1-02",
+          "register": {
+            "path": "docs/structural-integration-register.json",
+            "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+            "json_pointer": "/contracts/1"
+          },
+          "definition": {
+            "path": "docs/model-input-evidence.md",
+            "line": 8,
+            "sha256": "dea3546c8da4d01c6a137d5fcaf66893e3156f30a2fa7a6e80eaf83ee3361ed8"
+          },
+          "original": {
+            "document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+            "sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+            "location": "Master §§1–3; Master §2; Manual p.7",
+            "preserved_path": "sources/originals/95a304fd3e53__Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt"
+          },
+          "financially_closed": false
+        },
+        {
+          "contract_id": "M1-03",
+          "register": {
+            "path": "docs/structural-integration-register.json",
+            "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+            "json_pointer": "/contracts/2"
+          },
+          "definition": {
+            "path": "docs/model-input-evidence.md",
+            "line": 9,
+            "sha256": "dea3546c8da4d01c6a137d5fcaf66893e3156f30a2fa7a6e80eaf83ee3361ed8"
+          },
+          "original": {
+            "document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+            "sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+            "location": "Master §§1–3; Master §3 Areas; Manual p.7",
+            "preserved_path": "sources/originals/95a304fd3e53__Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt"
+          },
+          "financially_closed": false
+        },
+        {
+          "contract_id": "M2-01",
+          "register": {
+            "path": "docs/structural-integration-register.json",
+            "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+            "json_pointer": "/contracts/8"
+          },
+          "definition": {
+            "path": "docs/model-operations-contract.md",
+            "line": 15,
+            "sha256": "71c052b3833cf1553be584fd5aa328fa20b2d4531168ece05417ca91ccf73af6"
+          },
+          "original": {
+            "document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+            "sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+            "location": "§3, Revenue",
+            "preserved_path": "sources/originals/95a304fd3e53__Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt"
+          },
+          "financially_closed": false
+        },
+        {
+          "contract_id": "M2-02",
+          "register": {
+            "path": "docs/structural-integration-register.json",
+            "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+            "json_pointer": "/contracts/9"
+          },
+          "definition": {
+            "path": "docs/model-operations-contract.md",
+            "line": 16,
+            "sha256": "71c052b3833cf1553be584fd5aa328fa20b2d4531168ece05417ca91ccf73af6"
+          },
+          "original": {
+            "document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+            "sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+            "location": "§3, Revenue",
+            "preserved_path": "sources/originals/95a304fd3e53__Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt"
+          },
+          "financially_closed": false
+        },
+        {
+          "contract_id": "M2-03",
+          "register": {
+            "path": "docs/structural-integration-register.json",
+            "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+            "json_pointer": "/contracts/10"
+          },
+          "definition": {
+            "path": "docs/model-operations-contract.md",
+            "line": 17,
+            "sha256": "71c052b3833cf1553be584fd5aa328fa20b2d4531168ece05417ca91ccf73af6"
+          },
+          "original": {
+            "document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+            "sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+            "location": "§3, Revenue",
+            "preserved_path": "sources/originals/95a304fd3e53__Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt"
+          },
+          "financially_closed": false
+        }
+      ],
+      "D08_supplemental_ids": [
+        "S01",
+        "S02",
+        "S05",
+        "S13",
+        "S14"
+      ],
+      "conditional_relation": "Sólo con grupos, base y período compatibles: renta bruta mensual = suma(n_g × r_g), o suma(n_g × a_g × s_g). Son ramas alternativas por grupo; disponibilidad y fracciones de reconocimiento se suministran aparte.",
+      "required_quantity_contracts": [
+        "Identidad explícita entre celdas Studio/1BR/2BR/3BR y group_id; sin emparejar por posición",
+        "n_g: unidades documentadas disponibles del grupo en el tramo",
+        "a_g: área rentable de la unidad; no GSF total ni área comercial",
+        "r_g: moneda/unidad/mes; s_g: moneda/SF rentable/mes",
+        "Moneda, período, rent_definition, pérdida/concesión y bases con fuentes"
+      ],
+      "definition_or_source_requirements": [
+        "La nota C7 define dimensiones mensuales; cada valor real y su alcance necesitan fuente",
+        "Un dormitorio no identifica automáticamente todos los unit types",
+        "Tarifa ya neta requiere tratamiento explícito que evite otra deducción",
+        "Tramos parciales necesitan fracciones y disponibilidad; no derivar días de una fecha"
+      ],
+      "native_profile_gap": "T21 admite per_unit_per_month y per_rentable_sf_per_month. T82 consume referencias de renta con gastos explícitamente cero; no es un lugar para insertar gasto de seguro o administración. El vínculo completo de las cinco celdas a grupos/tramos aún no está implementado.",
+      "native_source_evidence": [
+        {
+          "path": "src/miniuw_foundation/rental_operations.py",
+          "sha256": "b1df13991edfe8a3b22988a70611d308eed76635cef88eb5aecff53e219d3085",
+          "symbol": "produce_rental_operations",
+          "line": 61,
+          "scope": "observed_existing_profile_not_an_activated_worksheet_binding",
+          "markers": [
+            {
+              "marker": "'per_rentable_sf_per_month'",
+              "lines": [
+                84,
+                85
+              ]
+            },
+            {
+              "marker": "'income_scope':'residential_rent_only_excludes_other_and_commercial_income'",
+              "lines": [
+                132
+              ]
+            }
+          ]
+        },
+        {
+          "path": "src/miniuw_foundation/phased_rental.py",
+          "sha256": "3fba8e990dc417ddf53dda7d6e3dd8065e5efc3dbc5f842f58fdf23010076e9d",
+          "symbol": "produce_phased_rental",
+          "line": 96,
+          "scope": "observed_existing_profile_not_an_activated_worksheet_binding",
+          "markers": [
+            {
+              "marker": "income_only_reference_requires_explicit_zero_expenses",
+              "lines": [
+                139
+              ]
+            }
+          ]
+        }
+      ],
+      "observed_interface_examples": [
+        {
+          "path": "templates/synthetic-residential-operations.json",
+          "sha256": "1704c496be7e60afcebd68af91fef87d24418d41629fe1df969e59eb6eade356",
+          "embedded_json_pointers": [],
+          "final_pointer": "/residential_groups/0",
+          "role": "native_rental_group_shape",
+          "financial_worksheet_binding_active": false
+        },
+        {
+          "path": "templates/worksheet-settled-matched-T111.json",
+          "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+          "embedded_json_pointers": [
+            "/phased_settled_source_utf8",
+            "/rental_binding_utf8",
+            "/periods/0/calendar_source_utf8"
+          ],
+          "final_pointer": "/segments/0",
+          "role": "supplied_phased_reference_not_a_cell_mapping",
+          "financial_worksheet_binding_active": false
+        }
+      ],
+      "validation_plan": [
+        "Verificar equivalencia de dimensiones de las dos ramas sólo con área y tarifa suministradas",
+        "Retener grupos, ceros y fracciones; retirar resultado si falta identidad, área necesaria, base, disponibilidad o fuente"
+      ],
+      "validation_plan_executed": false,
+      "active_financial_binding": null,
+      "actual_values_added": false,
+      "financial_rule_adopted": false,
+      "status": "specified_priority_connection_pending_definition_sources_and_activation",
+      "worksheet_fields": [
+        {
+          "field_id": "INPUT_C7",
+          "label": "Rent basis",
+          "literal_unit": "PER UNIT / PER SF",
+          "literal_note": "Per unit = $/month; per SF = $/SF/month",
+          "historical_requirement": "REQUIRED",
+          "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+          "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+          "exact_location": "Inputs!A7:F7"
+        },
+        {
+          "field_id": "INPUT_C8",
+          "label": "Market rent – Studio",
+          "literal_unit": "$",
+          "literal_note": "",
+          "historical_requirement": "REQUIRED",
+          "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+          "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+          "exact_location": "Inputs!A8:F8"
+        },
+        {
+          "field_id": "INPUT_C9",
+          "label": "Market rent – 1BR",
+          "literal_unit": "$",
+          "literal_note": "",
+          "historical_requirement": "REQUIRED",
+          "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+          "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+          "exact_location": "Inputs!A9:F9"
+        },
+        {
+          "field_id": "INPUT_C10",
+          "label": "Market rent – 2BR",
+          "literal_unit": "$",
+          "literal_note": "",
+          "historical_requirement": "REQUIRED",
+          "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+          "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+          "exact_location": "Inputs!A10:F10"
+        },
+        {
+          "field_id": "INPUT_C11",
+          "label": "Market rent – 3BR",
+          "literal_unit": "$",
+          "literal_note": "Add rows for other unit types",
+          "historical_requirement": "REQUIRED",
+          "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+          "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+          "exact_location": "Inputs!A11:F11"
+        }
+      ]
+    },
+    {
+      "id": "F02",
+      "title": "Costo vertical e inclusiones",
+      "field_ids": [
+        "INPUT_C34",
+        "INPUT_C35",
+        "INPUT_C36"
+      ],
+      "requirements": [
+        {
+          "contract_id": "M1-03",
+          "register": {
+            "path": "docs/structural-integration-register.json",
+            "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+            "json_pointer": "/contracts/2"
+          },
+          "definition": {
+            "path": "docs/model-input-evidence.md",
+            "line": 9,
+            "sha256": "dea3546c8da4d01c6a137d5fcaf66893e3156f30a2fa7a6e80eaf83ee3361ed8"
+          },
+          "original": {
+            "document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+            "sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+            "location": "Master §§1–3; Master §3 Areas; Manual p.7",
+            "preserved_path": "sources/originals/95a304fd3e53__Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt"
+          },
+          "financially_closed": false
+        },
+        {
+          "contract_id": "M3-01",
+          "register": {
+            "path": "docs/structural-integration-register.json",
+            "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+            "json_pointer": "/contracts/16"
+          },
+          "definition": {
+            "path": "docs/model-budget-schedule.md",
+            "line": 9,
+            "sha256": "fd255eaa63fcde640f63b5604821bb08c799a92bf93ae8a54dedd01085a67297"
+          },
+          "original": {
+            "document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+            "sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+            "location": "§3 Costs and TDC",
+            "preserved_path": "sources/originals/95a304fd3e53__Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt"
+          },
+          "financially_closed": false
+        },
+        {
+          "contract_id": "M3-02",
+          "register": {
+            "path": "docs/structural-integration-register.json",
+            "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+            "json_pointer": "/contracts/17"
+          },
+          "definition": {
+            "path": "docs/model-budget-schedule.md",
+            "line": 10,
+            "sha256": "fd255eaa63fcde640f63b5604821bb08c799a92bf93ae8a54dedd01085a67297"
+          },
+          "original": {
+            "document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+            "sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+            "location": "§3 Costs and TDC",
+            "preserved_path": "sources/originals/95a304fd3e53__Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt"
+          },
+          "financially_closed": false
+        },
+        {
+          "contract_id": "M3-03",
+          "register": {
+            "path": "docs/structural-integration-register.json",
+            "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+            "json_pointer": "/contracts/18"
+          },
+          "definition": {
+            "path": "docs/model-budget-schedule.md",
+            "line": 11,
+            "sha256": "fd255eaa63fcde640f63b5604821bb08c799a92bf93ae8a54dedd01085a67297"
+          },
+          "original": {
+            "document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+            "sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+            "location": "§3 Costs and TDC",
+            "preserved_path": "sources/originals/95a304fd3e53__Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt"
+          },
+          "financially_closed": false
+        },
+        {
+          "contract_id": "M3-06",
+          "register": {
+            "path": "docs/structural-integration-register.json",
+            "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+            "json_pointer": "/contracts/21"
+          },
+          "definition": {
+            "path": "docs/model-budget-schedule.md",
+            "line": 14,
+            "sha256": "fd255eaa63fcde640f63b5604821bb08c799a92bf93ae8a54dedd01085a67297"
+          },
+          "original": {
+            "document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+            "sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+            "location": "§3 Costs and TDC",
+            "preserved_path": "sources/originals/95a304fd3e53__Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt"
+          },
+          "financially_closed": false
+        }
+      ],
+      "D08_supplemental_ids": [
+        "S01",
+        "S03",
+        "S13",
+        "S14"
+      ],
+      "conditional_relation": "Sólo bajo la base suministrada: H_vertical = GSF_documentado × tarifa_GSF; o unidades_documentadas × tarifa_unidad; o total_vertical_documentado. Las tres ramas no se suman.",
+      "required_quantity_contracts": [
+        "C34: selector de base; C35: monto/tarifa según esa base",
+        "GSF de construcción con fuente y alcance; no sustituir NRSF",
+        "Conteo documentado para rama por unidad",
+        "Identidad económica de vertical, parking, site y contingencias; inclusiones explícitas"
+      ],
+      "definition_or_source_requirements": [
+        "Conservar nota C35: vertical, excluye parking/site; conciliar cualquier cotización GC con su alcance real",
+        "Conservar condición C36: sólo si base $/GSF y GBA en planos figura TBD; no adoptar C36 como override universal",
+        "No separar inclusiones de una cotización por estimación o igualdad de importes"
+      ],
+      "native_profile_gap": "Hay referencia algebraica aislada M3/M4; no constituye productor integrado de presupuesto desde C34:C36. Sus equivalencias no validan el alcance de una cotización ni el calendario de pagos.",
+      "native_source_evidence": [
+        {
+          "path": "references/validate_m34_allocation.py",
+          "sha256": "8d62db30ba2d7526e8ad611feb055c2547becc76a188c17366471f5b6bf59c13",
+          "symbol": "allocate",
+          "line": 5,
+          "scope": "isolated_reference_algebra_not_an_integrated_budget_producer",
+          "markers": [
+            {
+              "marker": "total=count*area*rate",
+              "lines": [
+                18
+              ]
+            }
+          ]
+        }
+      ],
+      "observed_interface_examples": [],
+      "validation_plan": [
+        "Comprobar equivalencia de bases sólo si cantidades/precios equivalentes están documentados",
+        "Marcar pendiente ante GSF/alcance ausente o inclusión que duplicaría parking/site/contingencia"
+      ],
+      "validation_plan_executed": false,
+      "active_financial_binding": null,
+      "actual_values_added": false,
+      "financial_rule_adopted": false,
+      "status": "specified_priority_connection_pending_definition_sources_and_activation",
+      "worksheet_fields": [
+        {
+          "field_id": "INPUT_C34",
+          "label": "Hard cost basis",
+          "literal_unit": "$/GSF / $/UNIT / TOTAL",
+          "literal_note": "",
+          "historical_requirement": "REQUIRED",
+          "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+          "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+          "exact_location": "Inputs!A34:F34"
+        },
+        {
+          "field_id": "INPUT_C35",
+          "label": "Hard cost value",
+          "literal_unit": "per basis",
+          "literal_note": "Vertical building, excl. parking & site",
+          "historical_requirement": "REQUIRED",
+          "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+          "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+          "exact_location": "Inputs!A35:F35"
+        },
+        {
+          "field_id": "INPUT_C36",
+          "label": "Building GSF",
+          "literal_unit": "SF",
+          "literal_note": "Only if basis = $/GSF and the plans show GBA as TBD",
+          "historical_requirement": "IF APPLIES",
+          "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+          "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+          "exact_location": "Inputs!A36:F36"
+        }
+      ]
+    },
+    {
+      "id": "F03",
+      "title": "Gastos controlables y base de administración",
+      "field_ids": [
+        "INPUT_C57",
+        "INPUT_C58"
+      ],
+      "requirements": [
+        {
+          "contract_id": "M2-03",
+          "register": {
+            "path": "docs/structural-integration-register.json",
+            "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+            "json_pointer": "/contracts/10"
+          },
+          "definition": {
+            "path": "docs/model-operations-contract.md",
+            "line": 17,
+            "sha256": "71c052b3833cf1553be584fd5aa328fa20b2d4531168ece05417ca91ccf73af6"
+          },
+          "original": {
+            "document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+            "sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+            "location": "§3, Revenue",
+            "preserved_path": "sources/originals/95a304fd3e53__Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt"
+          },
+          "financially_closed": false
+        },
+        {
+          "contract_id": "M2-05",
+          "register": {
+            "path": "docs/structural-integration-register.json",
+            "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+            "json_pointer": "/contracts/12"
+          },
+          "definition": {
+            "path": "docs/model-operations-contract.md",
+            "line": 19,
+            "sha256": "71c052b3833cf1553be584fd5aa328fa20b2d4531168ece05417ca91ccf73af6"
+          },
+          "original": {
+            "document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+            "sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+            "location": "§3, Expenses",
+            "preserved_path": "sources/originals/95a304fd3e53__Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt"
+          },
+          "financially_closed": false
+        },
+        {
+          "contract_id": "M2-06",
+          "register": {
+            "path": "docs/structural-integration-register.json",
+            "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+            "json_pointer": "/contracts/13"
+          },
+          "definition": {
+            "path": "docs/model-operations-contract.md",
+            "line": 20,
+            "sha256": "71c052b3833cf1553be584fd5aa328fa20b2d4531168ece05417ca91ccf73af6"
+          },
+          "original": {
+            "document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+            "sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+            "location": "§3, Expenses",
+            "preserved_path": "sources/originals/95a304fd3e53__Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt"
+          },
+          "financially_closed": false
+        },
+        {
+          "contract_id": "M4-04",
+          "register": {
+            "path": "docs/structural-integration-register.json",
+            "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+            "json_pointer": "/contracts/25"
+          },
+          "definition": {
+            "path": "docs/model-budget-schedule.md",
+            "line": 27,
+            "sha256": "fd255eaa63fcde640f63b5604821bb08c799a92bf93ae8a54dedd01085a67297"
+          },
+          "original": {
+            "document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+            "sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+            "location": "§3 Timing",
+            "preserved_path": "sources/originals/95a304fd3e53__Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt"
+          },
+          "financially_closed": false
+        }
+      ],
+      "D08_supplemental_ids": [
+        "S01",
+        "S02",
+        "S05",
+        "S13",
+        "S14"
+      ],
+      "conditional_relation": "C57 requiere una cantidad de unidades y fracción de año compatibles para obtener gasto. C58 requiere management_rate × EGI_residencial_elegible_del_mismo_período. La base debe quedar identificada antes de comparar con el productor.",
+      "required_quantity_contracts": [
+        "C57: moneda/unidad/año y conteo elegible, no ocupación inferida",
+        "C58: fracción y base de EGI residencial documentada",
+        "Período, composición de otros ingresos, concesiones y tratamiento de gasto/caja"
+      ],
+      "definition_or_source_requirements": [
+        "T21 usa unit_total aportado en grupos; confirmar que es la cantidad elegible para C57",
+        "Definir si EGI residencial elegible incluye otros ingresos de C13",
+        "Identificar perfil regular de12 meses expresos o una asignación compatible suministrada; no inferir fracción de año desde días",
+        "No aplicar comisión al comercial ni a NOI por falta de una base identificada"
+      ],
+      "native_profile_gap": "La rama fraction_of_residential_effective_rent de T21 usa renta residencial efectiva y declara excluir otros/comercial. La etiqueta C58 dice res. EGI: no hay equivalencia automática de esas bases. Si otros ingresos son cero documentado puede demostrarse igualdad en ese alcance; no generalizarla.",
+      "native_source_evidence": [
+        {
+          "path": "src/miniuw_foundation/rental_operations.py",
+          "sha256": "b1df13991edfe8a3b22988a70611d308eed76635cef88eb5aecff53e219d3085",
+          "symbol": "produce_rental_operations",
+          "line": 61,
+          "scope": "observed_existing_profile_not_an_activated_worksheet_binding",
+          "markers": [
+            {
+              "marker": "fraction_of_residential_effective_rent",
+              "lines": [
+                109,
+                110
+              ]
+            },
+            {
+              "marker": "'income_scope':'residential_rent_only_excludes_other_and_commercial_income'",
+              "lines": [
+                132
+              ]
+            }
+          ]
+        }
+      ],
+      "observed_interface_examples": [
+        {
+          "path": "templates/synthetic-residential-operations.json",
+          "sha256": "1704c496be7e60afcebd68af91fef87d24418d41629fe1df969e59eb6eade356",
+          "embedded_json_pointers": [],
+          "final_pointer": "/expense_items/0",
+          "role": "management_fraction_of_effective_rent_profile",
+          "financial_worksheet_binding_active": false
+        },
+        {
+          "path": "templates/synthetic-residential-operations.json",
+          "sha256": "1704c496be7e60afcebd68af91fef87d24418d41629fe1df969e59eb6eade356",
+          "embedded_json_pointers": [],
+          "final_pointer": "/expense_items/1",
+          "role": "annual_per_unit_expense_profile",
+          "financial_worksheet_binding_active": false
+        }
+      ],
+      "validation_plan": [
+        "Contrastar identidad y componentes de la base EGI, no sólo igualdad casual de totales",
+        "Conservar pendiente si otra renta/ingreso/unidad/período impide justificar la equivalencia"
+      ],
+      "validation_plan_executed": false,
+      "active_financial_binding": null,
+      "actual_values_added": false,
+      "financial_rule_adopted": false,
+      "status": "specified_priority_connection_pending_definition_sources_and_activation",
+      "worksheet_fields": [
+        {
+          "field_id": "INPUT_C57",
+          "label": "Controllable opex",
+          "literal_unit": "$/unit/yr",
+          "literal_note": "Payroll, R&M, utilities, admin, marketing, contracts",
+          "historical_requirement": "REQUIRED",
+          "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+          "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+          "exact_location": "Inputs!A57:F57"
+        },
+        {
+          "field_id": "INPUT_C58",
+          "label": "Management fee",
+          "literal_unit": "decimal of res. EGI",
+          "literal_note": "",
+          "historical_requirement": "REQUIRED",
+          "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+          "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+          "exact_location": "Inputs!A58:F58"
+        }
+      ]
+    },
+    {
+      "id": "F04",
+      "title": "Seguro anual cobertura y pagos",
+      "field_ids": [
+        "INPUT_C59"
+      ],
+      "requirements": [
+        {
+          "contract_id": "M2-05",
+          "register": {
+            "path": "docs/structural-integration-register.json",
+            "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+            "json_pointer": "/contracts/12"
+          },
+          "definition": {
+            "path": "docs/model-operations-contract.md",
+            "line": 19,
+            "sha256": "71c052b3833cf1553be584fd5aa328fa20b2d4531168ece05417ca91ccf73af6"
+          },
+          "original": {
+            "document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+            "sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+            "location": "§3, Expenses",
+            "preserved_path": "sources/originals/95a304fd3e53__Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt"
+          },
+          "financially_closed": false
+        },
+        {
+          "contract_id": "M4-04",
+          "register": {
+            "path": "docs/structural-integration-register.json",
+            "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+            "json_pointer": "/contracts/25"
+          },
+          "definition": {
+            "path": "docs/model-budget-schedule.md",
+            "line": 27,
+            "sha256": "fd255eaa63fcde640f63b5604821bb08c799a92bf93ae8a54dedd01085a67297"
+          },
+          "original": {
+            "document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+            "sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+            "location": "§3 Timing",
+            "preserved_path": "sources/originals/95a304fd3e53__Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt"
+          },
+          "financially_closed": false
+        },
+        {
+          "contract_id": "M7-07",
+          "register": {
+            "path": "docs/structural-integration-register.json",
+            "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+            "json_pointer": "/contracts/54"
+          },
+          "definition": {
+            "path": "docs/model-hold-exit-returns.md",
+            "line": 17,
+            "sha256": "053746a0b7c72da941b40e9ff1251704367c50317f4dfa5a8803ce9f6981eccc"
+          },
+          "original": {
+            "document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+            "sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+            "location": "§3 Refinance and metrics / Hold; Master §3 Hold, loan balance; contrato M6-07/M6-08",
+            "preserved_path": "sources/originals/95a304fd3e53__Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt"
+          },
+          "financially_closed": false
+        }
+      ],
+      "D08_supplemental_ids": [
+        "S01",
+        "S02",
+        "S05",
+        "S07",
+        "S13",
+        "S14"
+      ],
+      "conditional_relation": "Una tarifa anual por unidad puede formar una estimación de costo sólo con cantidad asegurada y período explícitos. Prima de póliza, asignación de gasto, vencimiento nominal, pago y saldo contable son registros separados que deben conciliar.",
+      "required_quantity_contracts": [
+        "Unidades aseguradas y cobertura; no tomar automáticamente unidades disponibles para renta",
+        "Costo/prima total suministrado y asignaciones por período",
+        "Cuotas y pagos independientes con IDs/fechas",
+        "Contabilidad antes/después y liquidación terminal cuando corresponda"
+      ],
+      "definition_or_source_requirements": [
+        "Acreditar relación entre estimación C59 y costo/pólizas reales; no escoger una fuente por su nombre",
+        "No inyectar C59 como gasto en las referencias de renta T82",
+        "No transformar cuota nominal o cola no pagada en payable contable inferido"
+      ],
+      "native_profile_gap": "T111 recibe el total nominal del plan T106 y las pólizas como fuentes ya estructuradas. No calcula ese costo desde C59. T82 exige referencias de ingreso con gasto cero; la asignación/pago del seguro vive en fuentes distintas.",
+      "native_source_evidence": [
+        {
+          "path": "src/miniuw_foundation/deferred_insurance_settlement.py",
+          "sha256": "8cc1980e490bfcc8c04af28ab9e246342065a1002fad626e680e622ff6f91207",
+          "symbol": "reconcile_deferred_insurance_settlement",
+          "line": 140,
+          "scope": "observed_existing_profile_not_an_activated_worksheet_binding",
+          "markers": [
+            {
+              "marker": "def reconcile_deferred_insurance_settlement",
+              "lines": [
+                140
+              ]
+            }
+          ]
+        },
+        {
+          "path": "src/miniuw_foundation/phased_rental.py",
+          "sha256": "3fba8e990dc417ddf53dda7d6e3dd8065e5efc3dbc5f842f58fdf23010076e9d",
+          "symbol": "produce_phased_rental",
+          "line": 96,
+          "scope": "observed_existing_profile_not_an_activated_worksheet_binding",
+          "markers": [
+            {
+              "marker": "income_only_reference_requires_explicit_zero_expenses",
+              "lines": [
+                139
+              ]
+            }
+          ]
+        }
+      ],
+      "observed_interface_examples": [
+        {
+          "path": "templates/worksheet-settled-matched-T111.json",
+          "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+          "embedded_json_pointers": [
+            "/phased_settled_source_utf8",
+            "/current_settled_source_utf8",
+            "/case_source_utf8",
+            "/boundary_source_utf8",
+            "/plan_source_utf8"
+          ],
+          "final_pointer": "/total_cost",
+          "role": "independently_supplied_nominal_insurance_cost",
+          "financial_worksheet_binding_active": false
+        },
+        {
+          "path": "templates/worksheet-settled-matched-T111.json",
+          "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+          "embedded_json_pointers": [
+            "/phased_settled_source_utf8",
+            "/current_settled_source_utf8",
+            "/case_source_utf8",
+            "/boundary_source_utf8"
+          ],
+          "final_pointer": "/accounting",
+          "role": "independent_terminal_accounting_not_inferred_from_due_tail",
+          "financial_worksheet_binding_active": false
+        }
+      ],
+      "validation_plan": [
+        "Conciliar costo/gasto/vencimientos/pagos/saldos por identidad y fecha sin segundo descuento en venta",
+        "Exigir fuente compatible si cantidad asegurada/cobertura/cuotas o contabilidad faltan"
+      ],
+      "validation_plan_executed": false,
+      "active_financial_binding": null,
+      "actual_values_added": false,
+      "financial_rule_adopted": false,
+      "status": "specified_priority_connection_pending_definition_sources_and_activation",
+      "worksheet_fields": [
+        {
+          "field_id": "INPUT_C59",
+          "label": "Insurance",
+          "literal_unit": "$/unit/yr",
+          "literal_note": "",
+          "historical_requirement": "REQUIRED",
+          "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+          "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+          "exact_location": "Inputs!A59:F59"
+        }
+      ]
+    },
+    {
+      "id": "F05",
+      "title": "Reservas de reposición y caja restringida",
+      "field_ids": [
+        "INPUT_C60"
+      ],
+      "requirements": [
+        {
+          "contract_id": "M2-05",
+          "register": {
+            "path": "docs/structural-integration-register.json",
+            "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+            "json_pointer": "/contracts/12"
+          },
+          "definition": {
+            "path": "docs/model-operations-contract.md",
+            "line": 19,
+            "sha256": "71c052b3833cf1553be584fd5aa328fa20b2d4531168ece05417ca91ccf73af6"
+          },
+          "original": {
+            "document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+            "sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+            "location": "§3, Expenses",
+            "preserved_path": "sources/originals/95a304fd3e53__Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt"
+          },
+          "financially_closed": false
+        },
+        {
+          "contract_id": "M4-04",
+          "register": {
+            "path": "docs/structural-integration-register.json",
+            "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+            "json_pointer": "/contracts/25"
+          },
+          "definition": {
+            "path": "docs/model-budget-schedule.md",
+            "line": 27,
+            "sha256": "fd255eaa63fcde640f63b5604821bb08c799a92bf93ae8a54dedd01085a67297"
+          },
+          "original": {
+            "document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+            "sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+            "location": "§3 Timing",
+            "preserved_path": "sources/originals/95a304fd3e53__Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt"
+          },
+          "financially_closed": false
+        },
+        {
+          "contract_id": "M7-03",
+          "register": {
+            "path": "docs/structural-integration-register.json",
+            "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+            "json_pointer": "/contracts/50"
+          },
+          "definition": {
+            "path": "docs/model-hold-exit-returns.md",
+            "line": 13,
+            "sha256": "053746a0b7c72da941b40e9ff1251704367c50317f4dfa5a8803ce9f6981eccc"
+          },
+          "original": {
+            "document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+            "sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+            "location": "§3 Refinance and metrics / Hold; Master §3 CoC/Hold; Estándares política 12",
+            "preserved_path": "sources/originals/95a304fd3e53__Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt"
+          },
+          "financially_closed": false
+        },
+        {
+          "contract_id": "M7-08",
+          "register": {
+            "path": "docs/structural-integration-register.json",
+            "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+            "json_pointer": "/contracts/55"
+          },
+          "definition": {
+            "path": "docs/model-hold-exit-returns.md",
+            "line": 18,
+            "sha256": "053746a0b7c72da941b40e9ff1251704367c50317f4dfa5a8803ce9f6981eccc"
+          },
+          "original": {
+            "document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+            "sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+            "location": "§3 Refinance and metrics / Hold; Estándares políticas 15/16; traspaso §5",
+            "preserved_path": "sources/originals/95a304fd3e53__Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt"
+          },
+          "financially_closed": false
+        }
+      ],
+      "D08_supplemental_ids": [
+        "S01",
+        "S02",
+        "S05",
+        "S07",
+        "S09",
+        "S13",
+        "S14"
+      ],
+      "conditional_relation": "La clasificación determina si una reserva afecta NOI, un movimiento de caja restringida o ambos mediante conciliación documentada. Un depósito cambia caja libre/restringida; no es por sí solo gasto consumido o distribución al inversor.",
+      "required_quantity_contracts": [
+        "Tarifa C60 y su conteo/base/año",
+        "Política aplicable de inclusión/exclusión en NOI",
+        "Depósito, liberación, saldo inicial/final y destino en venta",
+        "Ajustes de devengo/caja sólo si están documentados"
+      ],
+      "definition_or_source_requirements": [
+        "Identificar si el monto fuente es obligación, gasto, depósito o saldo",
+        "Evitar doble uso como expense_items y reserve_deposit sin conciliación",
+        "No inventar addback o liberación para forzar una caja"
+      ],
+      "native_profile_gap": "T25 tiene reserve_deposit/reserve_release y saldos restringidos explícitos. Eso no decide la clasificación financiera de C60. T111 no tiene vínculo de C60 a esas entradas; conserva los importes independientes del caso.",
+      "native_source_evidence": [
+        {
+          "path": "src/miniuw_foundation/operating_cash.py",
+          "sha256": "1c23d1c6d629e98eb2448f2ab697bf2970dda501275c072ac64109d4f36ef6f1",
+          "symbol": "reconcile_operating_cash",
+          "line": 78,
+          "scope": "observed_existing_profile_not_an_activated_worksheet_binding",
+          "markers": [
+            {
+              "marker": "-vals['reserve_deposit']",
+              "lines": [
+                123
+              ]
+            },
+            {
+              "marker": "vals['opening_restricted_cash']+vals['reserve_deposit']-vals['reserve_release']",
+              "lines": [
+                125
+              ]
+            }
+          ]
+        }
+      ],
+      "observed_interface_examples": [
+        {
+          "path": "templates/worksheet-settled-matched-T111.json",
+          "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+          "embedded_json_pointers": [
+            "/phased_settled_source_utf8",
+            "/current_settled_source_utf8",
+            "/case_source_utf8",
+            "/periods/0/cash_source_utf8"
+          ],
+          "final_pointer": "/amounts/reserve_deposit",
+          "role": "supplied_cash_deposit_not_annual_rate",
+          "financial_worksheet_binding_active": false
+        },
+        {
+          "path": "templates/worksheet-settled-matched-T111.json",
+          "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+          "embedded_json_pointers": [
+            "/phased_settled_source_utf8",
+            "/current_settled_source_utf8",
+            "/case_source_utf8",
+            "/periods/0/cash_source_utf8"
+          ],
+          "final_pointer": "/amounts/closing_restricted_cash_claim",
+          "role": "supplied_stock_after_period",
+          "financial_worksheet_binding_active": false
+        }
+      ],
+      "validation_plan": [
+        "Verificar cambio opuesto en libre/restringida y conservación bajo fuentes suministradas",
+        "Retener pendientes ante clasificación ausente o gasto/depósito duplicados sin contrapartida documentada"
+      ],
+      "validation_plan_executed": false,
+      "active_financial_binding": null,
+      "actual_values_added": false,
+      "financial_rule_adopted": false,
+      "status": "specified_priority_connection_pending_definition_sources_and_activation",
+      "worksheet_fields": [
+        {
+          "field_id": "INPUT_C60",
+          "label": "Replacement reserves",
+          "literal_unit": "$/unit/yr",
+          "literal_note": "",
+          "historical_requirement": "REQUIRED",
+          "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+          "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+          "exact_location": "Inputs!A60:F60"
+        }
+      ]
+    },
+    {
+      "id": "F06",
+      "title": "Caps de refinanciación y de salida",
+      "field_ids": [
+        "INPUT_C66",
+        "INPUT_C67"
+      ],
+      "requirements": [
+        {
+          "contract_id": "M6-02",
+          "register": {
+            "path": "docs/structural-integration-register.json",
+            "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+            "json_pointer": "/contracts/39"
+          },
+          "definition": {
+            "path": "docs/model-refinance-contract.md",
+            "line": 10,
+            "sha256": "9e51606a66a3d938e5c433eb77b625fb3638af0e7ab334dd53544a2cb7f9db46"
+          },
+          "original": {
+            "document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+            "sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+            "location": "§3 Refinance and metrics; Master §3, Value = NOI / refi cap; Inputs C66",
+            "preserved_path": "sources/originals/95a304fd3e53__Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt"
+          },
+          "financially_closed": false
+        },
+        {
+          "contract_id": "M6-03",
+          "register": {
+            "path": "docs/structural-integration-register.json",
+            "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+            "json_pointer": "/contracts/40"
+          },
+          "definition": {
+            "path": "docs/model-refinance-contract.md",
+            "line": 11,
+            "sha256": "9e51606a66a3d938e5c433eb77b625fb3638af0e7ab334dd53544a2cb7f9db46"
+          },
+          "original": {
+            "document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+            "sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+            "location": "§3 Refinance and metrics; Master §3; Inputs C71",
+            "preserved_path": "sources/originals/95a304fd3e53__Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt"
+          },
+          "financially_closed": false
+        },
+        {
+          "contract_id": "M7-05",
+          "register": {
+            "path": "docs/structural-integration-register.json",
+            "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+            "json_pointer": "/contracts/52"
+          },
+          "definition": {
+            "path": "docs/model-hold-exit-returns.md",
+            "line": 15,
+            "sha256": "053746a0b7c72da941b40e9ff1251704367c50317f4dfa5a8803ce9f6981eccc"
+          },
+          "original": {
+            "document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+            "sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+            "location": "§3 Refinance and metrics / Hold; Master §3 Hold; Estándares política 31; Inputs C67",
+            "preserved_path": "sources/originals/95a304fd3e53__Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt"
+          },
+          "financially_closed": false
+        },
+        {
+          "contract_id": "M7-08",
+          "register": {
+            "path": "docs/structural-integration-register.json",
+            "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+            "json_pointer": "/contracts/55"
+          },
+          "definition": {
+            "path": "docs/model-hold-exit-returns.md",
+            "line": 18,
+            "sha256": "053746a0b7c72da941b40e9ff1251704367c50317f4dfa5a8803ce9f6981eccc"
+          },
+          "original": {
+            "document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+            "sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+            "location": "§3 Refinance and metrics / Hold; Estándares políticas 15/16; traspaso §5",
+            "preserved_path": "sources/originals/95a304fd3e53__Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt"
+          },
+          "financially_closed": false
+        }
+      ],
+      "D08_supplemental_ids": [
+        "S02",
+        "S05",
+        "S06",
+        "S07",
+        "S13",
+        "S14"
+      ],
+      "conditional_relation": "Sólo con NOI anual compatible y cap positivo: valor_condicional = NOI_de_valoración / cap. NOI bancario, NOI de valoración y NOI forward se identifican separadamente; valor calculado no es efectivo de venta.",
+      "required_quantity_contracts": [
+        "C66 y C67 separados con moneda/fecha/ventana y fuente de cada valoración",
+        "NOI anual de valoración, bancario y forward con bases compatibles",
+        "Hipótesis explícita para usar valor como precio de una venta",
+        "Perfil de ventana admitido; no inventar ajuste de fechas"
+      ],
+      "definition_or_source_requirements": [
+        "T41 exige ventana forward de un año calendario explícito; otro alcance necesita perfil compatible",
+        "No sustituir cap de refi por cap de salida",
+        "No agregar valor calculado como un segundo cobro además de venta"
+      ],
+      "native_profile_gap": "T35 y T41/T42 son perfiles existentes separados. La venta de T111 recibe gross_proceeds suministrados; no los deriva de C67. No hay conexión activa de estas celdas a la ruta T111 completa.",
+      "native_source_evidence": [
+        {
+          "path": "src/miniuw_foundation/refinance_capacity.py",
+          "sha256": "b3250d05ecf4af5c15596d271770bb5f2ec99b73acb022efe96ea5e40be977bf",
+          "symbol": "size_refinance",
+          "line": 87,
+          "scope": "observed_existing_profile_not_an_activated_worksheet_binding",
+          "markers": [
+            {
+              "marker": "value=_bounded(N/cap)",
+              "lines": [
+                122
+              ]
+            }
+          ]
+        },
+        {
+          "path": "src/miniuw_foundation/exit_value.py",
+          "sha256": "4885e792dc30dc2846bb66abdc98582f3ac45256d66db4ceba23f35b4038f9b4",
+          "symbol": "produce_exit_value",
+          "line": 61,
+          "scope": "observed_existing_profile_not_an_activated_worksheet_binding",
+          "markers": [
+            {
+              "marker": "positive_exit_cap_required",
+              "lines": [
+                83
+              ]
+            },
+            {
+              "marker": "explicit_one_calendar_year_forward_window_required_no_date_adjustment",
+              "lines": [
+                80
+              ]
+            }
+          ]
+        },
+        {
+          "path": "src/miniuw_foundation/exit_sale_bridge.py",
+          "sha256": "2e1095bf115f923b154cbf65c05365d4af595977f69e1267cd42cfeb4ab9f594",
+          "symbol": "assemble_exit_sale",
+          "line": 54,
+          "scope": "observed_existing_profile_not_an_activated_worksheet_binding",
+          "markers": [
+            {
+              "marker": "explicit_hypothetical_sale_at_value_basis_missing",
+              "lines": [
+                64
+              ]
+            }
+          ]
+        }
+      ],
+      "observed_interface_examples": [
+        {
+          "path": "templates/synthetic-capacity-tie-spec.json",
+          "sha256": "22f990d43e97a1bd220a914cb7a6228a8dacc17590ea42e1e06cde5fe751ebe0",
+          "embedded_json_pointers": [],
+          "final_pointer": "/parameters/cap_rate",
+          "role": "separate_annual_cap_sizing_input",
+          "financial_worksheet_binding_active": false
+        },
+        {
+          "path": "templates/worksheet-settled-matched-T111.json",
+          "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+          "embedded_json_pointers": [
+            "/phased_settled_source_utf8",
+            "/current_settled_source_utf8",
+            "/case_source_utf8",
+            "/sale/closing_source_utf8"
+          ],
+          "final_pointer": "/amounts/gross_proceeds",
+          "role": "supplied_T111_gross_sale_cash_not_derived_from_C67",
+          "financial_worksheet_binding_active": false
+        }
+      ],
+      "validation_plan": [
+        "Verificar NOI/cap, moneda, fecha y ventana dentro del perfil antes de proponer un precio",
+        "No calcular con cap cero/ausente o ventana incompatible; dominio no soportado implica PENDING del cálculo, no FAIL financiero"
+      ],
+      "validation_plan_executed": false,
+      "active_financial_binding": null,
+      "actual_values_added": false,
+      "financial_rule_adopted": false,
+      "status": "specified_priority_connection_pending_definition_sources_and_activation",
+      "worksheet_fields": [
+        {
+          "field_id": "INPUT_C66",
+          "label": "Market cap rate at refinance",
+          "literal_unit": "decimal",
+          "literal_note": "",
+          "historical_requirement": "REQUIRED",
+          "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+          "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+          "exact_location": "Inputs!A66:F66"
+        },
+        {
+          "field_id": "INPUT_C67",
+          "label": "Exit cap rate",
+          "literal_unit": "decimal",
+          "literal_note": "",
+          "historical_requirement": "REQUIRED",
+          "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+          "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+          "exact_location": "Inputs!A67:F67"
+        }
+      ]
+    },
+    {
+      "id": "F07",
+      "title": "Tasa amortización y límites bancarios",
+      "field_ids": [
+        "INPUT_C69",
+        "INPUT_C70",
+        "INPUT_C71",
+        "INPUT_C72"
+      ],
+      "requirements": [
+        {
+          "contract_id": "M6-03",
+          "register": {
+            "path": "docs/structural-integration-register.json",
+            "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+            "json_pointer": "/contracts/40"
+          },
+          "definition": {
+            "path": "docs/model-refinance-contract.md",
+            "line": 11,
+            "sha256": "9e51606a66a3d938e5c433eb77b625fb3638af0e7ab334dd53544a2cb7f9db46"
+          },
+          "original": {
+            "document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+            "sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+            "location": "§3 Refinance and metrics; Master §3; Inputs C71",
+            "preserved_path": "sources/originals/95a304fd3e53__Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt"
+          },
+          "financially_closed": false
+        },
+        {
+          "contract_id": "M6-04",
+          "register": {
+            "path": "docs/structural-integration-register.json",
+            "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+            "json_pointer": "/contracts/41"
+          },
+          "definition": {
+            "path": "docs/model-refinance-contract.md",
+            "line": 12,
+            "sha256": "9e51606a66a3d938e5c433eb77b625fb3638af0e7ab334dd53544a2cb7f9db46"
+          },
+          "original": {
+            "document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+            "sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+            "location": "§3 Refinance and metrics; Master §3 annual constant; Inputs C69/C70",
+            "preserved_path": "sources/originals/95a304fd3e53__Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt"
+          },
+          "financially_closed": false
+        },
+        {
+          "contract_id": "M6-05",
+          "register": {
+            "path": "docs/structural-integration-register.json",
+            "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+            "json_pointer": "/contracts/42"
+          },
+          "definition": {
+            "path": "docs/model-refinance-contract.md",
+            "line": 13,
+            "sha256": "9e51606a66a3d938e5c433eb77b625fb3638af0e7ab334dd53544a2cb7f9db46"
+          },
+          "original": {
+            "document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+            "sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+            "location": "§3 Refinance and metrics; Master §3, min DSCR; Inputs C72",
+            "preserved_path": "sources/originals/95a304fd3e53__Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt"
+          },
+          "financially_closed": false
+        },
+        {
+          "contract_id": "M6-06",
+          "register": {
+            "path": "docs/structural-integration-register.json",
+            "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+            "json_pointer": "/contracts/43"
+          },
+          "definition": {
+            "path": "docs/model-refinance-contract.md",
+            "line": 14,
+            "sha256": "9e51606a66a3d938e5c433eb77b625fb3638af0e7ab334dd53544a2cb7f9db46"
+          },
+          "original": {
+            "document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+            "sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+            "location": "§3 Refinance and metrics; Master §3 MIN LTV/DSCR; Estándares políticas 26/30",
+            "preserved_path": "sources/originals/95a304fd3e53__Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt"
+          },
+          "financially_closed": false
+        },
+        {
+          "contract_id": "M6-07",
+          "register": {
+            "path": "docs/structural-integration-register.json",
+            "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+            "json_pointer": "/contracts/44"
+          },
+          "definition": {
+            "path": "docs/model-refinance-contract.md",
+            "line": 15,
+            "sha256": "9e51606a66a3d938e5c433eb77b625fb3638af0e7ab334dd53544a2cb7f9db46"
+          },
+          "original": {
+            "document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+            "sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+            "location": "§3 Refinance and metrics; Inputs C70; traspaso §5 distinciones de préstamo",
+            "preserved_path": "sources/originals/95a304fd3e53__Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt"
+          },
+          "financially_closed": false
+        },
+        {
+          "contract_id": "M6-10",
+          "register": {
+            "path": "docs/structural-integration-register.json",
+            "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+            "json_pointer": "/contracts/47"
+          },
+          "definition": {
+            "path": "docs/model-refinance-contract.md",
+            "line": 18,
+            "sha256": "9e51606a66a3d938e5c433eb77b625fb3638af0e7ab334dd53544a2cb7f9db46"
+          },
+          "original": {
+            "document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+            "sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+            "location": "§3 Refinance and metrics; Master §3; Estándares políticas 9/10/12; Q7/Q8",
+            "preserved_path": "sources/originals/95a304fd3e53__Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt"
+          },
+          "financially_closed": false
+        },
+        {
+          "contract_id": "M9-02",
+          "register": {
+            "path": "docs/structural-integration-register.json",
+            "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+            "json_pointer": "/contracts/73"
+          },
+          "definition": {
+            "path": "docs/model-decision-audit.md",
+            "line": 12,
+            "sha256": "a10ca283b98524780037544b0c00b76d0b7e0421f1d788fb57ad9c610ed9f28c"
+          },
+          "original": {
+            "document": "Pasted text.txt",
+            "sha256": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+            "location": "Traspaso §§2/3/6/7; Master §5/Estándares §2; instrucción actual",
+            "preserved_path": "sources/originals/fbb44a320a46__Pasted text.txt"
+          },
+          "financially_closed": false
+        }
+      ],
+      "D08_supplemental_ids": [
+        "S02",
+        "S04",
+        "S06",
+        "S10",
+        "S13",
+        "S14"
+      ],
+      "conditional_relation": "Para el perfil fijo regular declarado, la cuota por unidad depende de tasa efectiva por intervalo i y número de pagos n; la capacidad usa límites LTV/DSCR y otros límites completos. Principal seleccionado, draw y caja distribuida se mantienen separados.",
+      "required_quantity_contracts": [
+        "Tasa con base nominal/efectiva y período; formato decimal no declara frecuencia",
+        "n: pagos de amortización y frecuencia expresos; maturity y fechas separados",
+        "NOI bancario y constante anual de sizing con base, no efectivo de un año fechado",
+        "LTV/DSCR y otras restricciones aplicables con fuente; monto seleccionado independiente"
+      ],
+      "definition_or_source_requirements": [
+        "No dividir una tasa anual por12 sin convención contractual; el vínculo de conversión no está implementado",
+        "No convertir años C70 en fechas/maturity/pagos por una frecuencia por defecto",
+        "Límites C71/C72 no llenan criterios de inversión ni acreditan aprobación/fondos disponibles"
+      ],
+      "native_profile_gap": "T10 recibe periodic_rate efectiva por intervalo, amortization_payments, payments_per_year, maturity_payment y fechas explícitas. T35 consume estos perfiles ya estructurados. Ni C69 decimal ni C70 años suministran por sí solos esas entradas; el sizing no está integrado como refi de T111.",
+      "native_source_evidence": [
+        {
+          "path": "src/miniuw_foundation/debt_service.py",
+          "sha256": "04d34f9479ebc802bc255d3a47c267469bdaadfee61871d174b2d0eee43d170f",
+          "symbol": "parse_loan_terms",
+          "line": 51,
+          "scope": "observed_existing_profile_not_an_activated_worksheet_binding",
+          "markers": [
+            {
+              "marker": "'rate_basis':'effective_per_payment_interval'",
+              "lines": [
+                24
+              ]
+            },
+            {
+              "marker": "amortization_payments",
+              "lines": [
+                20,
+                70,
+                134
+              ]
+            }
+          ]
+        },
+        {
+          "path": "src/miniuw_foundation/refinance_capacity.py",
+          "sha256": "b3250d05ecf4af5c15596d271770bb5f2ec99b73acb022efe96ea5e40be977bf",
+          "symbol": "size_refinance",
+          "line": 87,
+          "scope": "observed_existing_profile_not_an_activated_worksheet_binding",
+          "markers": [
+            {
+              "marker": "bank_limits_are_supplied_not_investment_criteria",
+              "lines": [
+                156
+              ]
+            },
+            {
+              "marker": "selected_principal_exceeds_declared_bank_capacity",
+              "lines": [
+                139
+              ]
+            }
+          ]
+        }
+      ],
+      "observed_interface_examples": [
+        {
+          "path": "templates/synthetic-capacity-tie-loan.json",
+          "sha256": "c1c4503bc2fb8c047d787b607a0042cc64b130fad92b88e0b3408ce0abb3d0f5",
+          "embedded_json_pointers": [],
+          "final_pointer": "/periodic_rate",
+          "role": "supplied_effective_interval_rate",
+          "financial_worksheet_binding_active": false
+        },
+        {
+          "path": "templates/synthetic-capacity-tie-loan.json",
+          "sha256": "c1c4503bc2fb8c047d787b607a0042cc64b130fad92b88e0b3408ce0abb3d0f5",
+          "embedded_json_pointers": [],
+          "final_pointer": "/amortization_payments",
+          "role": "explicit_payment_count_not_years",
+          "financial_worksheet_binding_active": false
+        },
+        {
+          "path": "templates/synthetic-capacity-tie-spec.json",
+          "sha256": "22f990d43e97a1bd220a914cb7a6228a8dacc17590ea42e1e06cde5fe751ebe0",
+          "embedded_json_pointers": [],
+          "final_pointer": "/parameters/minimum_dscr",
+          "role": "bank_minimum_not_investment_threshold",
+          "financial_worksheet_binding_active": false
+        },
+        {
+          "path": "templates/synthetic-capacity-tie-spec.json",
+          "sha256": "22f990d43e97a1bd220a914cb7a6228a8dacc17590ea42e1e06cde5fe751ebe0",
+          "embedded_json_pointers": [],
+          "final_pointer": "/parameters/maximum_ltv",
+          "role": "bank_limit_not_selected_draw",
+          "financial_worksheet_binding_active": false
+        }
+      ],
+      "validation_plan": [
+        "Distinguir tasa cero explícita de tasa ausente y amortización de maturity/balloon",
+        "Exigir igualdad de moneda/fecha/base y fuente para límite y selección; servicio cero deja DSCR indefinido"
+      ],
+      "validation_plan_executed": false,
+      "active_financial_binding": null,
+      "actual_values_added": false,
+      "financial_rule_adopted": false,
+      "status": "specified_priority_connection_pending_definition_sources_and_activation",
+      "worksheet_fields": [
+        {
+          "field_id": "INPUT_C69",
+          "label": "Perm loan rate",
+          "literal_unit": "decimal",
+          "literal_note": "",
+          "historical_requirement": "REQUIRED",
+          "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+          "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+          "exact_location": "Inputs!A69:F69"
+        },
+        {
+          "field_id": "INPUT_C70",
+          "label": "Amortization",
+          "literal_unit": "years",
+          "literal_note": "",
+          "historical_requirement": "REQUIRED",
+          "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+          "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+          "exact_location": "Inputs!A70:F70"
+        },
+        {
+          "field_id": "INPUT_C71",
+          "label": "Max LTV",
+          "literal_unit": "decimal",
+          "literal_note": "",
+          "historical_requirement": "REQUIRED",
+          "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+          "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+          "exact_location": "Inputs!A71:F71"
+        },
+        {
+          "field_id": "INPUT_C72",
+          "label": "Min DSCR",
+          "literal_unit": "x",
+          "literal_note": "",
+          "historical_requirement": "REQUIRED",
+          "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+          "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+          "exact_location": "Inputs!A72:F72"
+        }
+      ]
+    },
+    {
+      "id": "F08",
+      "title": "Costos de venta y monto pagado al cierre",
+      "field_ids": [
+        "INPUT_C68"
+      ],
+      "requirements": [
+        {
+          "contract_id": "M7-06",
+          "register": {
+            "path": "docs/structural-integration-register.json",
+            "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+            "json_pointer": "/contracts/53"
+          },
+          "definition": {
+            "path": "docs/model-hold-exit-returns.md",
+            "line": 16,
+            "sha256": "053746a0b7c72da941b40e9ff1251704367c50317f4dfa5a8803ce9f6981eccc"
+          },
+          "original": {
+            "document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+            "sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+            "location": "§3 Refinance and metrics / Hold; Master §3 Hold; Inputs C68; Q16",
+            "preserved_path": "sources/originals/95a304fd3e53__Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt"
+          },
+          "financially_closed": false
+        },
+        {
+          "contract_id": "M7-07",
+          "register": {
+            "path": "docs/structural-integration-register.json",
+            "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+            "json_pointer": "/contracts/54"
+          },
+          "definition": {
+            "path": "docs/model-hold-exit-returns.md",
+            "line": 17,
+            "sha256": "053746a0b7c72da941b40e9ff1251704367c50317f4dfa5a8803ce9f6981eccc"
+          },
+          "original": {
+            "document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+            "sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+            "location": "§3 Refinance and metrics / Hold; Master §3 Hold, loan balance; contrato M6-07/M6-08",
+            "preserved_path": "sources/originals/95a304fd3e53__Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt"
+          },
+          "financially_closed": false
+        },
+        {
+          "contract_id": "M7-08",
+          "register": {
+            "path": "docs/structural-integration-register.json",
+            "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+            "json_pointer": "/contracts/55"
+          },
+          "definition": {
+            "path": "docs/model-hold-exit-returns.md",
+            "line": 18,
+            "sha256": "053746a0b7c72da941b40e9ff1251704367c50317f4dfa5a8803ce9f6981eccc"
+          },
+          "original": {
+            "document": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+            "sha256": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+            "location": "§3 Refinance and metrics / Hold; Estándares políticas 15/16; traspaso §5",
+            "preserved_path": "sources/originals/95a304fd3e53__Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt"
+          },
+          "financially_closed": false
+        }
+      ],
+      "D08_supplemental_ids": [
+        "S02",
+        "S05",
+        "S07",
+        "S11",
+        "S13",
+        "S14"
+      ],
+      "conditional_relation": "Sólo para el perfil de cargos fijos y fracciones del precio bruto: costo_total = suma(fijos incluidos) + precio_bruto × suma(fracciones incluidas). La celda C68 requiere definir si es tasa agregada o componente y documentar la base antes de convertir a dinero.",
+      "required_quantity_contracts": [
+        "Precio bruto documentado y fecha/moneda compatibles",
+        "Inventario completo por cost_id, tipo, clasificación y aplicabilidad",
+        "Cargo fijo o fraction_of_gross_price según el perfil",
+        "No solapamiento con costos ya incluidos, payoff fees, impuestos y otros usos"
+      ],
+      "definition_or_source_requirements": [
+        "C68 decimal no identifica por sí solo inventario, base, impuestos o pago",
+        "No sumar una tasa agregada y sus mismos componentes",
+        "Fuentes fiscales y cargos fuera del perfil permanecen pendientes; no inventar regla/tasa"
+      ],
+      "native_profile_gap": "T43 puede producir un costo desde cargos explícitos sobre gross_price; T29 consume closing_costs_paid. T111 recibe ese monto como fuente independiente y no lo calcula desde C68 ni adopta el perfil T43 por coincidir un total.",
+      "native_source_evidence": [
+        {
+          "path": "src/miniuw_foundation/sale_costs.py",
+          "sha256": "5da82d3838b56b869c0392b2c7ccfb57e7dcb1b2720c2270e8103491019802fe",
+          "symbol": "produce_sale_costs",
+          "line": 60,
+          "scope": "observed_existing_profile_not_an_activated_worksheet_binding",
+          "markers": [
+            {
+              "marker": "fraction_of_gross_price",
+              "lines": [
+                75
+              ]
+            },
+            {
+              "marker": "cost_nonoverlap_financially_verified",
+              "lines": [
+                96
+              ]
+            }
+          ]
+        },
+        {
+          "path": "src/miniuw_foundation/closing_cash.py",
+          "sha256": "7053bbdba91ad38d55909308fc6aef809449944ebae02c1ec387b1bfd810487b",
+          "symbol": "produce_closing_cash",
+          "line": 84,
+          "scope": "observed_existing_profile_not_an_activated_worksheet_binding",
+          "markers": [
+            {
+              "marker": "projected_obligation_not_exactly_closed",
+              "lines": [
+                110
+              ]
+            }
+          ]
+        }
+      ],
+      "observed_interface_examples": [
+        {
+          "path": "templates/synthetic-sale-cost-inventory.json",
+          "sha256": "d6648af97b58ae648034938ac82c02c6c65965b2450c3a4286786665417410f4",
+          "embedded_json_pointers": [],
+          "final_pointer": "/costs/1",
+          "role": "separate_percent_of_gross_sale_cost_profile",
+          "financial_worksheet_binding_active": false
+        },
+        {
+          "path": "templates/worksheet-settled-matched-T111.json",
+          "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+          "embedded_json_pointers": [
+            "/phased_settled_source_utf8",
+            "/current_settled_source_utf8",
+            "/case_source_utf8",
+            "/sale/closing_source_utf8"
+          ],
+          "final_pointer": "/amounts/closing_costs_paid",
+          "role": "independently_supplied_cash_cost_T111",
+          "financial_worksheet_binding_active": false
+        }
+      ],
+      "validation_plan": [
+        "Conciliar tasa/base/importe y clasificación al mismo precio y fecha, con inventario completo",
+        "Bloquear total ante costo/impuesto no resuelto, inventario incompleto o solapamiento; no publicar subtotal como total"
+      ],
+      "validation_plan_executed": false,
+      "active_financial_binding": null,
+      "actual_values_added": false,
+      "financial_rule_adopted": false,
+      "status": "specified_priority_connection_pending_definition_sources_and_activation",
+      "worksheet_fields": [
+        {
+          "field_id": "INPUT_C68",
+          "label": "Sale costs",
+          "literal_unit": "decimal",
+          "literal_note": "",
+          "historical_requirement": "REQUIRED",
+          "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+          "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+          "exact_location": "Inputs!A68:F68"
+        }
+      ]
+    }
+  ],
+  "field_connections": [
+    {
+      "field_id": "INPUT_C7",
+      "label": "Rent basis",
+      "literal_unit": "PER UNIT / PER SF",
+      "literal_note": "Per unit = $/month; per SF = $/SF/month",
+      "historical_requirement": "REQUIRED",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_location": "Inputs!A7:F7",
+      "card_id": "F01",
+      "conditional_relation": "Sólo con grupos, base y período compatibles: renta bruta mensual = suma(n_g × r_g), o suma(n_g × a_g × s_g). Son ramas alternativas por grupo; disponibilidad y fracciones de reconocimiento se suministran aparte.",
+      "D08_connection_ref": {
+        "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+        "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+        "json_pointer": "/field_connections/0"
+      },
+      "native_profile_gap": "T21 admite per_unit_per_month y per_rentable_sf_per_month. T82 consume referencias de renta con gastos explícitamente cero; no es un lugar para insertar gasto de seguro o administración. El vínculo completo de las cinco celdas a grupos/tramos aún no está implementado.",
+      "status": "specified_priority_connection_pending_definition_sources_and_activation",
+      "active_financial_binding": null,
+      "financial_validation_complete": false
+    },
+    {
+      "field_id": "INPUT_C8",
+      "label": "Market rent – Studio",
+      "literal_unit": "$",
+      "literal_note": "",
+      "historical_requirement": "REQUIRED",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_location": "Inputs!A8:F8",
+      "card_id": "F01",
+      "conditional_relation": "Sólo con grupos, base y período compatibles: renta bruta mensual = suma(n_g × r_g), o suma(n_g × a_g × s_g). Son ramas alternativas por grupo; disponibilidad y fracciones de reconocimiento se suministran aparte.",
+      "D08_connection_ref": {
+        "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+        "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+        "json_pointer": "/field_connections/1"
+      },
+      "native_profile_gap": "T21 admite per_unit_per_month y per_rentable_sf_per_month. T82 consume referencias de renta con gastos explícitamente cero; no es un lugar para insertar gasto de seguro o administración. El vínculo completo de las cinco celdas a grupos/tramos aún no está implementado.",
+      "status": "specified_priority_connection_pending_definition_sources_and_activation",
+      "active_financial_binding": null,
+      "financial_validation_complete": false
+    },
+    {
+      "field_id": "INPUT_C9",
+      "label": "Market rent – 1BR",
+      "literal_unit": "$",
+      "literal_note": "",
+      "historical_requirement": "REQUIRED",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_location": "Inputs!A9:F9",
+      "card_id": "F01",
+      "conditional_relation": "Sólo con grupos, base y período compatibles: renta bruta mensual = suma(n_g × r_g), o suma(n_g × a_g × s_g). Son ramas alternativas por grupo; disponibilidad y fracciones de reconocimiento se suministran aparte.",
+      "D08_connection_ref": {
+        "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+        "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+        "json_pointer": "/field_connections/2"
+      },
+      "native_profile_gap": "T21 admite per_unit_per_month y per_rentable_sf_per_month. T82 consume referencias de renta con gastos explícitamente cero; no es un lugar para insertar gasto de seguro o administración. El vínculo completo de las cinco celdas a grupos/tramos aún no está implementado.",
+      "status": "specified_priority_connection_pending_definition_sources_and_activation",
+      "active_financial_binding": null,
+      "financial_validation_complete": false
+    },
+    {
+      "field_id": "INPUT_C10",
+      "label": "Market rent – 2BR",
+      "literal_unit": "$",
+      "literal_note": "",
+      "historical_requirement": "REQUIRED",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_location": "Inputs!A10:F10",
+      "card_id": "F01",
+      "conditional_relation": "Sólo con grupos, base y período compatibles: renta bruta mensual = suma(n_g × r_g), o suma(n_g × a_g × s_g). Son ramas alternativas por grupo; disponibilidad y fracciones de reconocimiento se suministran aparte.",
+      "D08_connection_ref": {
+        "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+        "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+        "json_pointer": "/field_connections/3"
+      },
+      "native_profile_gap": "T21 admite per_unit_per_month y per_rentable_sf_per_month. T82 consume referencias de renta con gastos explícitamente cero; no es un lugar para insertar gasto de seguro o administración. El vínculo completo de las cinco celdas a grupos/tramos aún no está implementado.",
+      "status": "specified_priority_connection_pending_definition_sources_and_activation",
+      "active_financial_binding": null,
+      "financial_validation_complete": false
+    },
+    {
+      "field_id": "INPUT_C11",
+      "label": "Market rent – 3BR",
+      "literal_unit": "$",
+      "literal_note": "Add rows for other unit types",
+      "historical_requirement": "REQUIRED",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_location": "Inputs!A11:F11",
+      "card_id": "F01",
+      "conditional_relation": "Sólo con grupos, base y período compatibles: renta bruta mensual = suma(n_g × r_g), o suma(n_g × a_g × s_g). Son ramas alternativas por grupo; disponibilidad y fracciones de reconocimiento se suministran aparte.",
+      "D08_connection_ref": {
+        "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+        "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+        "json_pointer": "/field_connections/4"
+      },
+      "native_profile_gap": "T21 admite per_unit_per_month y per_rentable_sf_per_month. T82 consume referencias de renta con gastos explícitamente cero; no es un lugar para insertar gasto de seguro o administración. El vínculo completo de las cinco celdas a grupos/tramos aún no está implementado.",
+      "status": "specified_priority_connection_pending_definition_sources_and_activation",
+      "active_financial_binding": null,
+      "financial_validation_complete": false
+    },
+    {
+      "field_id": "INPUT_C34",
+      "label": "Hard cost basis",
+      "literal_unit": "$/GSF / $/UNIT / TOTAL",
+      "literal_note": "",
+      "historical_requirement": "REQUIRED",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_location": "Inputs!A34:F34",
+      "card_id": "F02",
+      "conditional_relation": "Sólo bajo la base suministrada: H_vertical = GSF_documentado × tarifa_GSF; o unidades_documentadas × tarifa_unidad; o total_vertical_documentado. Las tres ramas no se suman.",
+      "D08_connection_ref": {
+        "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+        "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+        "json_pointer": "/field_connections/21"
+      },
+      "native_profile_gap": "Hay referencia algebraica aislada M3/M4; no constituye productor integrado de presupuesto desde C34:C36. Sus equivalencias no validan el alcance de una cotización ni el calendario de pagos.",
+      "status": "specified_priority_connection_pending_definition_sources_and_activation",
+      "active_financial_binding": null,
+      "financial_validation_complete": false
+    },
+    {
+      "field_id": "INPUT_C35",
+      "label": "Hard cost value",
+      "literal_unit": "per basis",
+      "literal_note": "Vertical building, excl. parking & site",
+      "historical_requirement": "REQUIRED",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_location": "Inputs!A35:F35",
+      "card_id": "F02",
+      "conditional_relation": "Sólo bajo la base suministrada: H_vertical = GSF_documentado × tarifa_GSF; o unidades_documentadas × tarifa_unidad; o total_vertical_documentado. Las tres ramas no se suman.",
+      "D08_connection_ref": {
+        "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+        "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+        "json_pointer": "/field_connections/22"
+      },
+      "native_profile_gap": "Hay referencia algebraica aislada M3/M4; no constituye productor integrado de presupuesto desde C34:C36. Sus equivalencias no validan el alcance de una cotización ni el calendario de pagos.",
+      "status": "specified_priority_connection_pending_definition_sources_and_activation",
+      "active_financial_binding": null,
+      "financial_validation_complete": false
+    },
+    {
+      "field_id": "INPUT_C36",
+      "label": "Building GSF",
+      "literal_unit": "SF",
+      "literal_note": "Only if basis = $/GSF and the plans show GBA as TBD",
+      "historical_requirement": "IF APPLIES",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_location": "Inputs!A36:F36",
+      "card_id": "F02",
+      "conditional_relation": "Sólo bajo la base suministrada: H_vertical = GSF_documentado × tarifa_GSF; o unidades_documentadas × tarifa_unidad; o total_vertical_documentado. Las tres ramas no se suman.",
+      "D08_connection_ref": {
+        "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+        "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+        "json_pointer": "/field_connections/23"
+      },
+      "native_profile_gap": "Hay referencia algebraica aislada M3/M4; no constituye productor integrado de presupuesto desde C34:C36. Sus equivalencias no validan el alcance de una cotización ni el calendario de pagos.",
+      "status": "specified_priority_connection_pending_definition_sources_and_activation",
+      "active_financial_binding": null,
+      "financial_validation_complete": false
+    },
+    {
+      "field_id": "INPUT_C57",
+      "label": "Controllable opex",
+      "literal_unit": "$/unit/yr",
+      "literal_note": "Payroll, R&M, utilities, admin, marketing, contracts",
+      "historical_requirement": "REQUIRED",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_location": "Inputs!A57:F57",
+      "card_id": "F03",
+      "conditional_relation": "C57 requiere una cantidad de unidades y fracción de año compatibles para obtener gasto. C58 requiere management_rate × EGI_residencial_elegible_del_mismo_período. La base debe quedar identificada antes de comparar con el productor.",
+      "D08_connection_ref": {
+        "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+        "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+        "json_pointer": "/field_connections/35"
+      },
+      "native_profile_gap": "La rama fraction_of_residential_effective_rent de T21 usa renta residencial efectiva y declara excluir otros/comercial. La etiqueta C58 dice res. EGI: no hay equivalencia automática de esas bases. Si otros ingresos son cero documentado puede demostrarse igualdad en ese alcance; no generalizarla.",
+      "status": "specified_priority_connection_pending_definition_sources_and_activation",
+      "active_financial_binding": null,
+      "financial_validation_complete": false
+    },
+    {
+      "field_id": "INPUT_C58",
+      "label": "Management fee",
+      "literal_unit": "decimal of res. EGI",
+      "literal_note": "",
+      "historical_requirement": "REQUIRED",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_location": "Inputs!A58:F58",
+      "card_id": "F03",
+      "conditional_relation": "C57 requiere una cantidad de unidades y fracción de año compatibles para obtener gasto. C58 requiere management_rate × EGI_residencial_elegible_del_mismo_período. La base debe quedar identificada antes de comparar con el productor.",
+      "D08_connection_ref": {
+        "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+        "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+        "json_pointer": "/field_connections/36"
+      },
+      "native_profile_gap": "La rama fraction_of_residential_effective_rent de T21 usa renta residencial efectiva y declara excluir otros/comercial. La etiqueta C58 dice res. EGI: no hay equivalencia automática de esas bases. Si otros ingresos son cero documentado puede demostrarse igualdad en ese alcance; no generalizarla.",
+      "status": "specified_priority_connection_pending_definition_sources_and_activation",
+      "active_financial_binding": null,
+      "financial_validation_complete": false
+    },
+    {
+      "field_id": "INPUT_C59",
+      "label": "Insurance",
+      "literal_unit": "$/unit/yr",
+      "literal_note": "",
+      "historical_requirement": "REQUIRED",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_location": "Inputs!A59:F59",
+      "card_id": "F04",
+      "conditional_relation": "Una tarifa anual por unidad puede formar una estimación de costo sólo con cantidad asegurada y período explícitos. Prima de póliza, asignación de gasto, vencimiento nominal, pago y saldo contable son registros separados que deben conciliar.",
+      "D08_connection_ref": {
+        "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+        "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+        "json_pointer": "/field_connections/37"
+      },
+      "native_profile_gap": "T111 recibe el total nominal del plan T106 y las pólizas como fuentes ya estructuradas. No calcula ese costo desde C59. T82 exige referencias de ingreso con gasto cero; la asignación/pago del seguro vive en fuentes distintas.",
+      "status": "specified_priority_connection_pending_definition_sources_and_activation",
+      "active_financial_binding": null,
+      "financial_validation_complete": false
+    },
+    {
+      "field_id": "INPUT_C60",
+      "label": "Replacement reserves",
+      "literal_unit": "$/unit/yr",
+      "literal_note": "",
+      "historical_requirement": "REQUIRED",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_location": "Inputs!A60:F60",
+      "card_id": "F05",
+      "conditional_relation": "La clasificación determina si una reserva afecta NOI, un movimiento de caja restringida o ambos mediante conciliación documentada. Un depósito cambia caja libre/restringida; no es por sí solo gasto consumido o distribución al inversor.",
+      "D08_connection_ref": {
+        "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+        "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+        "json_pointer": "/field_connections/38"
+      },
+      "native_profile_gap": "T25 tiene reserve_deposit/reserve_release y saldos restringidos explícitos. Eso no decide la clasificación financiera de C60. T111 no tiene vínculo de C60 a esas entradas; conserva los importes independientes del caso.",
+      "status": "specified_priority_connection_pending_definition_sources_and_activation",
+      "active_financial_binding": null,
+      "financial_validation_complete": false
+    },
+    {
+      "field_id": "INPUT_C66",
+      "label": "Market cap rate at refinance",
+      "literal_unit": "decimal",
+      "literal_note": "",
+      "historical_requirement": "REQUIRED",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_location": "Inputs!A66:F66",
+      "card_id": "F06",
+      "conditional_relation": "Sólo con NOI anual compatible y cap positivo: valor_condicional = NOI_de_valoración / cap. NOI bancario, NOI de valoración y NOI forward se identifican separadamente; valor calculado no es efectivo de venta.",
+      "D08_connection_ref": {
+        "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+        "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+        "json_pointer": "/field_connections/41"
+      },
+      "native_profile_gap": "T35 y T41/T42 son perfiles existentes separados. La venta de T111 recibe gross_proceeds suministrados; no los deriva de C67. No hay conexión activa de estas celdas a la ruta T111 completa.",
+      "status": "specified_priority_connection_pending_definition_sources_and_activation",
+      "active_financial_binding": null,
+      "financial_validation_complete": false
+    },
+    {
+      "field_id": "INPUT_C67",
+      "label": "Exit cap rate",
+      "literal_unit": "decimal",
+      "literal_note": "",
+      "historical_requirement": "REQUIRED",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_location": "Inputs!A67:F67",
+      "card_id": "F06",
+      "conditional_relation": "Sólo con NOI anual compatible y cap positivo: valor_condicional = NOI_de_valoración / cap. NOI bancario, NOI de valoración y NOI forward se identifican separadamente; valor calculado no es efectivo de venta.",
+      "D08_connection_ref": {
+        "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+        "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+        "json_pointer": "/field_connections/42"
+      },
+      "native_profile_gap": "T35 y T41/T42 son perfiles existentes separados. La venta de T111 recibe gross_proceeds suministrados; no los deriva de C67. No hay conexión activa de estas celdas a la ruta T111 completa.",
+      "status": "specified_priority_connection_pending_definition_sources_and_activation",
+      "active_financial_binding": null,
+      "financial_validation_complete": false
+    },
+    {
+      "field_id": "INPUT_C69",
+      "label": "Perm loan rate",
+      "literal_unit": "decimal",
+      "literal_note": "",
+      "historical_requirement": "REQUIRED",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_location": "Inputs!A69:F69",
+      "card_id": "F07",
+      "conditional_relation": "Para el perfil fijo regular declarado, la cuota por unidad depende de tasa efectiva por intervalo i y número de pagos n; la capacidad usa límites LTV/DSCR y otros límites completos. Principal seleccionado, draw y caja distribuida se mantienen separados.",
+      "D08_connection_ref": {
+        "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+        "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+        "json_pointer": "/field_connections/44"
+      },
+      "native_profile_gap": "T10 recibe periodic_rate efectiva por intervalo, amortization_payments, payments_per_year, maturity_payment y fechas explícitas. T35 consume estos perfiles ya estructurados. Ni C69 decimal ni C70 años suministran por sí solos esas entradas; el sizing no está integrado como refi de T111.",
+      "status": "specified_priority_connection_pending_definition_sources_and_activation",
+      "active_financial_binding": null,
+      "financial_validation_complete": false
+    },
+    {
+      "field_id": "INPUT_C70",
+      "label": "Amortization",
+      "literal_unit": "years",
+      "literal_note": "",
+      "historical_requirement": "REQUIRED",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_location": "Inputs!A70:F70",
+      "card_id": "F07",
+      "conditional_relation": "Para el perfil fijo regular declarado, la cuota por unidad depende de tasa efectiva por intervalo i y número de pagos n; la capacidad usa límites LTV/DSCR y otros límites completos. Principal seleccionado, draw y caja distribuida se mantienen separados.",
+      "D08_connection_ref": {
+        "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+        "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+        "json_pointer": "/field_connections/45"
+      },
+      "native_profile_gap": "T10 recibe periodic_rate efectiva por intervalo, amortization_payments, payments_per_year, maturity_payment y fechas explícitas. T35 consume estos perfiles ya estructurados. Ni C69 decimal ni C70 años suministran por sí solos esas entradas; el sizing no está integrado como refi de T111.",
+      "status": "specified_priority_connection_pending_definition_sources_and_activation",
+      "active_financial_binding": null,
+      "financial_validation_complete": false
+    },
+    {
+      "field_id": "INPUT_C71",
+      "label": "Max LTV",
+      "literal_unit": "decimal",
+      "literal_note": "",
+      "historical_requirement": "REQUIRED",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_location": "Inputs!A71:F71",
+      "card_id": "F07",
+      "conditional_relation": "Para el perfil fijo regular declarado, la cuota por unidad depende de tasa efectiva por intervalo i y número de pagos n; la capacidad usa límites LTV/DSCR y otros límites completos. Principal seleccionado, draw y caja distribuida se mantienen separados.",
+      "D08_connection_ref": {
+        "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+        "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+        "json_pointer": "/field_connections/46"
+      },
+      "native_profile_gap": "T10 recibe periodic_rate efectiva por intervalo, amortization_payments, payments_per_year, maturity_payment y fechas explícitas. T35 consume estos perfiles ya estructurados. Ni C69 decimal ni C70 años suministran por sí solos esas entradas; el sizing no está integrado como refi de T111.",
+      "status": "specified_priority_connection_pending_definition_sources_and_activation",
+      "active_financial_binding": null,
+      "financial_validation_complete": false
+    },
+    {
+      "field_id": "INPUT_C72",
+      "label": "Min DSCR",
+      "literal_unit": "x",
+      "literal_note": "",
+      "historical_requirement": "REQUIRED",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_location": "Inputs!A72:F72",
+      "card_id": "F07",
+      "conditional_relation": "Para el perfil fijo regular declarado, la cuota por unidad depende de tasa efectiva por intervalo i y número de pagos n; la capacidad usa límites LTV/DSCR y otros límites completos. Principal seleccionado, draw y caja distribuida se mantienen separados.",
+      "D08_connection_ref": {
+        "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+        "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+        "json_pointer": "/field_connections/47"
+      },
+      "native_profile_gap": "T10 recibe periodic_rate efectiva por intervalo, amortization_payments, payments_per_year, maturity_payment y fechas explícitas. T35 consume estos perfiles ya estructurados. Ni C69 decimal ni C70 años suministran por sí solos esas entradas; el sizing no está integrado como refi de T111.",
+      "status": "specified_priority_connection_pending_definition_sources_and_activation",
+      "active_financial_binding": null,
+      "financial_validation_complete": false
+    },
+    {
+      "field_id": "INPUT_C68",
+      "label": "Sale costs",
+      "literal_unit": "decimal",
+      "literal_note": "",
+      "historical_requirement": "REQUIRED",
+      "source_document": "sources/originals/b433468ec6cb__Input_Sheet_vigente_original.xlsx",
+      "source_sha256": "b433468ec6cb2ebf6b9950325fef212dc9df365ac9adbca4895ca1df39234600",
+      "exact_location": "Inputs!A68:F68",
+      "card_id": "F08",
+      "conditional_relation": "Sólo para el perfil de cargos fijos y fracciones del precio bruto: costo_total = suma(fijos incluidos) + precio_bruto × suma(fracciones incluidas). La celda C68 requiere definir si es tasa agregada o componente y documentar la base antes de convertir a dinero.",
+      "D08_connection_ref": {
+        "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+        "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+        "json_pointer": "/field_connections/43"
+      },
+      "native_profile_gap": "T43 puede producir un costo desde cargos explícitos sobre gross_price; T29 consume closing_costs_paid. T111 recibe ese monto como fuente independiente y no lo calcula desde C68 ni adopta el perfil T43 por coincidir un total.",
+      "status": "specified_priority_connection_pending_definition_sources_and_activation",
+      "active_financial_binding": null,
+      "financial_validation_complete": false
+    }
+  ],
+  "field_ids_not_addressed_here": [
+    "INPUT_C12",
+    "INPUT_C13",
+    "INPUT_C14",
+    "INPUT_C15",
+    "INPUT_C16",
+    "INPUT_C17",
+    "INPUT_C18",
+    "INPUT_C19",
+    "INPUT_C20",
+    "INPUT_C21",
+    "INPUT_C25",
+    "INPUT_C26",
+    "INPUT_C27",
+    "INPUT_C28",
+    "INPUT_C32",
+    "INPUT_C33",
+    "INPUT_C37",
+    "INPUT_C38",
+    "INPUT_C39",
+    "INPUT_C40",
+    "INPUT_C41",
+    "INPUT_C42",
+    "INPUT_C46",
+    "INPUT_C47",
+    "INPUT_C51",
+    "INPUT_C52",
+    "INPUT_C53",
+    "INPUT_C61",
+    "INPUT_C62",
+    "INPUT_C73",
+    "INPUT_C74",
+    "INPUT_C75",
+    "INPUT_C76",
+    "INPUT_C80",
+    "INPUT_C81",
+    "INPUT_C82"
+  ],
+  "source_values_added": 0,
+  "new_runtime_components": 0,
+  "new_tests": 0,
+  "technical_tests_unchanged": 1619,
+  "financial_bindings_activated": 0,
+  "financial_model_complete": false,
+  "professional_review_authenticated": false,
+  "design_validation_plans_executed": 0,
+  "real_decisions_enabled": false,
+  "deployment_enabled": false
+}
