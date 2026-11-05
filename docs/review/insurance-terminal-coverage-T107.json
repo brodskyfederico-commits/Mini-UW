@@ -1,0 +1,439 @@
+{
+  "component": "T107",
+  "scope": "Technical binding of on-cut nominal plan to supplied T29 sale cash only; no complete financial closure",
+  "rows": [
+    {
+      "requirement_or_variable": "one_payment_identity_per_complete_on_cut_inventory",
+      "source": {
+        "path": "docs/technical-implementation-T107.md",
+        "line": 5,
+        "sha256": "139136abad661f243e27d1555403b06a5bbf1b6a4f719aff85e5551ab4c3db2a"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 costos, financiación, operaciones y salida",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "CASH-02"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 aportes/distribuciones brutos frente a neto",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "RETURN-01"
+        },
+        {
+          "documento": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+          "sha256_documento": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+          "ubicacion_exacta": "§3, Expenses",
+          "definicion_documentada": "Fuente histórica de Gastos sin impuesto; desarrollo nuevo localizado por ID en docs/model-operations-contract.md. No demuestra adopción aprobada.",
+          "matrix_id": "M2-05"
+        }
+      ],
+      "current_definition": "Exactly all on-cut nominal plan payments match supplied payment/due IDs, date and exact amount; no compensating per-row differences or omission of zero.",
+      "source_fixture": {
+        "path": "templates/insurance-terminal-on-cut-binding-T107.json",
+        "sha256": "23491d71da61a4fc6ee514922c685ef192e08c513e033c613dea3b598256cdc6",
+        "json_pointers": [
+          "/payments",
+          "/payment_inventory_declared_complete"
+        ]
+      },
+      "affected_modules": [
+        "M2",
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "calculation_module": "src/miniuw_foundation/insurance_terminal_closing.py",
+      "validation_evidence": [
+        {
+          "path": "tests/test_insurance_terminal_closing.py",
+          "line": 46,
+          "test": "InsuranceTerminalClosingTests.test_split_payments_bind_each_payment_id_and_may_reorder_without_changing_cash"
+        },
+        {
+          "path": "tests/test_insurance_terminal_closing.py",
+          "line": 51,
+          "test": "InsuranceTerminalClosingTests.test_equal_global_total_cannot_hide_wrong_payment_or_installment"
+        },
+        {
+          "path": "tests/test_insurance_terminal_closing.py",
+          "line": 75,
+          "test": "InsuranceTerminalClosingTests.test_known_zero_row_is_preserved_and_cannot_be_omitted_as_empty"
+        },
+        {
+          "path": "docs/review/insurance-terminal-validation-T107.json",
+          "json_pointer": "/status"
+        }
+      ],
+      "status": "partially_implemented_synthetic_plan_and_closing_binding",
+      "financial_end_to_end_coverage": false,
+      "pending": "Multiple economic items, real bank/contract authority and exhaustive economic classification remain pending."
+    },
+    {
+      "requirement_or_variable": "nominal_tail_equals_supplied_closing_other_cash_uses_once",
+      "source": {
+        "path": "docs/technical-implementation-T107.md",
+        "line": 9,
+        "sha256": "139136abad661f243e27d1555403b06a5bbf1b6a4f719aff85e5551ab4c3db2a"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 costos, financiación, operaciones y salida",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "CASH-02"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 aportes/distribuciones brutos frente a neto",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "RETURN-01"
+        },
+        {
+          "documento": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+          "sha256_documento": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+          "ubicacion_exacta": "§3, Expenses",
+          "definicion_documentada": "Fuente histórica de Gastos sin impuesto; desarrollo nuevo localizado por ID en docs/model-operations-contract.md. No demuestra adopción aprobada.",
+          "matrix_id": "M2-05"
+        }
+      ],
+      "current_definition": "Bound payments equal nominal pre-cut tail and T29 other_cash_uses; preserve exact T29 residual/distribution/contribution without second subtraction.",
+      "source_fixture": {
+        "path": "templates/insurance-terminal-on-cut-binding-T107.json",
+        "sha256": "23491d71da61a4fc6ee514922c685ef192e08c513e033c613dea3b598256cdc6",
+        "json_pointers": [
+          "/payments",
+          "/classification_basis_ref"
+        ]
+      },
+      "affected_modules": [
+        "M2",
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "calculation_module": "src/miniuw_foundation/insurance_terminal_closing.py",
+      "validation_evidence": [
+        {
+          "path": "tests/test_insurance_terminal_closing.py",
+          "line": 26,
+          "test": "InsuranceTerminalClosingTests.test_on_cut_insurance_is_in_closing_once_not_subtracted_again"
+        },
+        {
+          "path": "tests/test_insurance_terminal_closing.py",
+          "line": 56,
+          "test": "InsuranceTerminalClosingTests.test_wrong_other_uses_and_duplicate_deduction_withhold_current_closing_figures"
+        },
+        {
+          "path": "tests/test_insurance_terminal_closing.py",
+          "line": 33,
+          "test": "InsuranceTerminalClosingTests.test_prepaid_future_due_does_not_create_another_sale_payment"
+        },
+        {
+          "path": "docs/review/insurance-terminal-validation-T107.json",
+          "json_pointer": "/status"
+        }
+      ],
+      "status": "partially_implemented_synthetic_plan_and_closing_binding",
+      "financial_end_to_end_coverage": false,
+      "pending": "T76 accounting stocks, operating cash continuity and complete lifetime cash/return integration remain pending."
+    },
+    {
+      "requirement_or_variable": "closing_funding_hypothesis_and_cash_in_scope",
+      "source": {
+        "path": "docs/technical-implementation-T107.md",
+        "line": 9,
+        "sha256": "139136abad661f243e27d1555403b06a5bbf1b6a4f719aff85e5551ab4c3db2a"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 costos, financiación, operaciones y salida",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "CASH-02"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 aportes/distribuciones brutos frente a neto",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "RETURN-01"
+        },
+        {
+          "documento": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+          "sha256_documento": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+          "ubicacion_exacta": "§3, Expenses",
+          "definicion_documentada": "Fuente histórica de Gastos sin impuesto; desarrollo nuevo localizado por ID en docs/model-operations-contract.md. No demuestra adopción aprobada.",
+          "matrix_id": "M2-05"
+        }
+      ],
+      "current_definition": "If T29 needs cash-in, retain its explicit hypothesis requirement; known required contribution is not funds availability or investor approval.",
+      "source_fixture": {
+        "path": "templates/insurance-terminal-on-cut-binding-T107.json",
+        "sha256": "23491d71da61a4fc6ee514922c685ef192e08c513e033c613dea3b598256cdc6",
+        "json_pointers": [
+          "/closing_source_sha256"
+        ]
+      },
+      "affected_modules": [
+        "M2",
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "calculation_module": "src/miniuw_foundation/insurance_terminal_closing.py",
+      "validation_evidence": [
+        {
+          "path": "tests/test_insurance_terminal_closing.py",
+          "line": 37,
+          "test": "InsuranceTerminalClosingTests.test_explicit_cash_in_and_missing_funding_assumption_are_distinct"
+        },
+        {
+          "path": "tests/test_insurance_terminal_closing.py",
+          "line": 147,
+          "test": "InsuranceTerminalClosingTests.test_no_financial_authority_or_full_case_return_is_granted"
+        },
+        {
+          "path": "docs/review/insurance-terminal-validation-T107.json",
+          "json_pointer": "/status"
+        }
+      ],
+      "status": "partially_implemented_synthetic_plan_and_closing_binding",
+      "financial_end_to_end_coverage": false,
+      "pending": "Actual funding, personal terms, capital/CoC, IRR/EM and financial approval remain pending."
+    },
+    {
+      "requirement_or_variable": "exact_cut_source_context_and_no_future_payment_acceleration",
+      "source": {
+        "path": "docs/technical-implementation-T107.md",
+        "line": 7,
+        "sha256": "139136abad661f243e27d1555403b06a5bbf1b6a4f719aff85e5551ab4c3db2a"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 costos, financiación, operaciones y salida",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "CASH-02"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 aportes/distribuciones brutos frente a neto",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "RETURN-01"
+        },
+        {
+          "documento": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+          "sha256_documento": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+          "ubicacion_exacta": "§3, Expenses",
+          "definicion_documentada": "Fuente histórica de Gastos sin impuesto; desarrollo nuevo localizado por ID en docs/model-operations-contract.md. No demuestra adopción aprobada.",
+          "matrix_id": "M2-05"
+        }
+      ],
+      "current_definition": "Plan cutoff, sale and binding dates/context/currency/item agree; future planned payments need another profile and cannot be moved into sale.",
+      "source_fixture": {
+        "path": "templates/insurance-terminal-on-cut-binding-T107.json",
+        "sha256": "23491d71da61a4fc6ee514922c685ef192e08c513e033c613dea3b598256cdc6",
+        "json_pointers": [
+          "/settlement_date",
+          "/context",
+          "/currency",
+          "/economic_item_id",
+          "/plan_source_sha256",
+          "/closing_source_sha256"
+        ]
+      },
+      "affected_modules": [
+        "M2",
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "calculation_module": "src/miniuw_foundation/insurance_terminal_closing.py",
+      "validation_evidence": [
+        {
+          "path": "tests/test_insurance_terminal_closing.py",
+          "line": 42,
+          "test": "InsuranceTerminalClosingTests.test_future_payment_is_not_accelerated_into_sale_even_with_matching_money"
+        },
+        {
+          "path": "tests/test_insurance_terminal_closing.py",
+          "line": 62,
+          "test": "InsuranceTerminalClosingTests.test_context_currency_cut_and_item_remain_exact_even_with_fresh_hashes"
+        },
+        {
+          "path": "tests/test_insurance_terminal_closing.py",
+          "line": 81,
+          "test": "InsuranceTerminalClosingTests.test_source_bytes_identity_and_equivalent_rationals_are_both_explicit"
+        },
+        {
+          "path": "docs/review/insurance-terminal-validation-T107.json",
+          "json_pointer": "/status"
+        }
+      ],
+      "status": "partially_implemented_synthetic_plan_and_closing_binding",
+      "financial_end_to_end_coverage": false,
+      "pending": "Post-cut dated payments, opening/overlapping policy profiles and currentness gates for complete case remain pending."
+    },
+    {
+      "requirement_or_variable": "missing_or_conflicting_data_withdraws_complete_current_summary",
+      "source": {
+        "path": "docs/technical-implementation-T107.md",
+        "line": 11,
+        "sha256": "139136abad661f243e27d1555403b06a5bbf1b6a4f719aff85e5551ab4c3db2a"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 costos, financiación, operaciones y salida",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "CASH-02"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 aportes/distribuciones brutos frente a neto",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "RETURN-01"
+        },
+        {
+          "documento": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+          "sha256_documento": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+          "ubicacion_exacta": "§3, Expenses",
+          "definicion_documentada": "Fuente histórica de Gastos sin impuesto; desarrollo nuevo localizado por ID en docs/model-operations-contract.md. No demuestra adopción aprobada.",
+          "matrix_id": "M2-05"
+        }
+      ],
+      "current_definition": "All derived binding money withheld if plan/closing/source/row or arithmetic fails, without isolated or historic closing-result fallback.",
+      "source_fixture": {
+        "path": "templates/insurance-terminal-on-cut-binding-T107.json",
+        "sha256": "23491d71da61a4fc6ee514922c685ef192e08c513e033c613dea3b598256cdc6",
+        "json_pointers": [
+          "/source_ref",
+          "/payments"
+        ]
+      },
+      "affected_modules": [
+        "M2",
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "calculation_module": "src/miniuw_foundation/insurance_terminal_closing.py",
+      "validation_evidence": [
+        {
+          "path": "tests/test_insurance_terminal_closing.py",
+          "line": 68,
+          "test": "InsuranceTerminalClosingTests.test_missing_sources_inventories_dates_and_money_withhold_whole_summary"
+        },
+        {
+          "path": "tests/test_insurance_terminal_closing.py",
+          "line": 95,
+          "test": "InsuranceTerminalClosingTests.test_actual_exact_arithmetic_excess_withholds_every_current_money_field"
+        },
+        {
+          "path": "tests/test_insurance_terminal_closing.py",
+          "line": 87,
+          "test": "InsuranceTerminalClosingTests.test_strict_profile_unknown_fields_duplicates_and_types_are_rejected"
+        },
+        {
+          "path": "docs/review/insurance-terminal-validation-T107.json",
+          "json_pointer": "/status"
+        }
+      ],
+      "status": "partially_implemented_synthetic_plan_and_closing_binding",
+      "financial_end_to_end_coverage": false,
+      "pending": "54 original semantic mappings, authentic source sufficiency and professional financial acceptance remain pending."
+    },
+    {
+      "requirement_or_variable": "five_file_three_source_recovery_and_local_retry",
+      "source": {
+        "path": "docs/technical-implementation-T107.md",
+        "line": 15,
+        "sha256": "139136abad661f243e27d1555403b06a5bbf1b6a4f719aff85e5551ab4c3db2a"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 costos, financiación, operaciones y salida",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "CASH-02"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 aportes/distribuciones brutos frente a neto",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "RETURN-01"
+        },
+        {
+          "documento": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+          "sha256_documento": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+          "ubicacion_exacta": "§3, Expenses",
+          "definicion_documentada": "Fuente histórica de Gastos sin impuesto; desarrollo nuevo localizado por ID en docs/model-operations-contract.md. No demuestra adopción aprobada.",
+          "matrix_id": "M2-05"
+        }
+      ],
+      "current_definition": "Replay all three sources with compatible parent/observer definitions, reject rehashed mutations and unsafe packet; no new external PDF.",
+      "source_fixture": {
+        "path": "templates/insurance-terminal-on-cut-binding-T107.json",
+        "sha256": "23491d71da61a4fc6ee514922c685ef192e08c513e033c613dea3b598256cdc6",
+        "json_pointers": [
+          "/schema",
+          "/assumptions"
+        ]
+      },
+      "affected_modules": [
+        "M2",
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "calculation_module": "src/miniuw_foundation/insurance_terminal_closing.py",
+      "validation_evidence": [
+        {
+          "path": "tests/test_insurance_terminal_closing.py",
+          "line": 102,
+          "test": "InsuranceTerminalClosingTests.test_rehashed_result_and_other_raw_source_are_not_verified"
+        },
+        {
+          "path": "tests/test_insurance_terminal_closing.py",
+          "line": 107,
+          "test": "InsuranceTerminalClosingTests.test_five_file_recovery_preserves_valid_and_blocked_sources_without_PDF"
+        },
+        {
+          "path": "tests/test_insurance_terminal_closing.py",
+          "line": 115,
+          "test": "InsuranceTerminalClosingTests.test_all_versions_source_and_rehashed_output_forgery_require_full_replay"
+        },
+        {
+          "path": "tests/test_insurance_terminal_closing.py",
+          "line": 130,
+          "test": "InsuranceTerminalClosingTests.test_retry_no_overwrite_safe_inventory_and_failed_rename_cleanup"
+        },
+        {
+          "path": "docs/review/insurance-terminal-validation-T107.json",
+          "json_pointer": "/status"
+        }
+      ],
+      "status": "partially_implemented_synthetic_plan_and_closing_binding",
+      "financial_end_to_end_coverage": false,
+      "pending": "Production concurrency/runtime restoration, one-page full-case integration, release authority and deployment remain pending."
+    }
+  ],
+  "original_coverage_rows_preserved": 398,
+  "original_semantic_mappings_pending": 54,
+  "full_operating_sale_return_integration_completed": false,
+  "real_decisions_enabled": false
+}

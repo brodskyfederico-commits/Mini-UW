@@ -1,0 +1,373 @@
+{
+  "component": "T107",
+  "status": "passed_three_source_replay_and_independent_terminal_closing_oracles",
+  "files_verified": 5,
+  "source_hypotheses_checked": 8,
+  "cases": [
+    {
+      "label": "on-cut",
+      "source_hashes": {
+        "binding": "23491d71da61a4fc6ee514922c685ef192e08c513e033c613dea3b598256cdc6",
+        "closing": "0e14d6cae15995bb304e6a43b40eb021d9c94409614462c1061ef4151025adc2",
+        "plan": "46373b2d91a8137dcbdfebc332666bc396cf19c3cfa9208d2425c529b0d83eb7"
+      },
+      "run_sha256": "af9cb00f2bddc561402fb0549fe6f8d197abcbdc2974e1847ef8ee48e811975b",
+      "state": "matched_synthetic_insurance_terminal_closing",
+      "summary": {
+        "allocated_expense": {
+          "denominator": "1",
+          "numerator": "20"
+        },
+        "bound_payment_sum": {
+          "denominator": "1",
+          "numerator": "5"
+        },
+        "closing_other_cash_uses": {
+          "denominator": "1",
+          "numerator": "5"
+        },
+        "exportable_equity_contribution": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "exportable_equity_distribution": {
+          "denominator": "1",
+          "numerator": "95"
+        },
+        "net_residual_after_retention": {
+          "denominator": "1",
+          "numerator": "95"
+        },
+        "nominal_after_supplied_cut_payments": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "nominal_before_cut": {
+          "denominator": "1",
+          "numerator": "5"
+        },
+        "planned_cash_before_cut": {
+          "denominator": "1",
+          "numerator": "15"
+        },
+        "total_cash_conservation_residual": {
+          "denominator": "1",
+          "numerator": "0"
+        }
+      },
+      "blockers": []
+    },
+    {
+      "label": "prepaid",
+      "source_hashes": {
+        "binding": "3c9686a4b8c76aa85b9a66749ce8309c8577cec3e115f3d02f4740c95cc51b42",
+        "closing": "4d42c737bb4b17a7ba148d503f5525649c80407c359895021d230bcd44834545",
+        "plan": "4bd6c393c7404f171cb2cac48d0ac77aa85c785c575f07f3d94e0f83c3fbae3f"
+      },
+      "run_sha256": "ce7a3b0693e7efaadfb498f3c55cd9ded6ae545437104e56661b563068bbe7fc",
+      "state": "matched_synthetic_insurance_terminal_closing",
+      "summary": {
+        "allocated_expense": {
+          "denominator": "1",
+          "numerator": "20"
+        },
+        "bound_payment_sum": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "closing_other_cash_uses": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "exportable_equity_contribution": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "exportable_equity_distribution": {
+          "denominator": "1",
+          "numerator": "100"
+        },
+        "net_residual_after_retention": {
+          "denominator": "1",
+          "numerator": "100"
+        },
+        "nominal_after_supplied_cut_payments": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "nominal_before_cut": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "planned_cash_before_cut": {
+          "denominator": "1",
+          "numerator": "20"
+        },
+        "total_cash_conservation_residual": {
+          "denominator": "1",
+          "numerator": "0"
+        }
+      },
+      "blockers": []
+    },
+    {
+      "label": "cash-in",
+      "source_hashes": {
+        "binding": "3492e2ea65fb7928e108f12eae5429668f66f7ba430dd22d31f4af7d451c1d58",
+        "closing": "d1efc739aad87f335df0f7925623b846736c514bc5035db34dff1c02cbfbb194",
+        "plan": "46373b2d91a8137dcbdfebc332666bc396cf19c3cfa9208d2425c529b0d83eb7"
+      },
+      "run_sha256": "94aa24153d18143c6bb22d11f1f54147abf0983767cfd667349fe16fba664f3a",
+      "state": "matched_synthetic_insurance_terminal_closing",
+      "summary": {
+        "allocated_expense": {
+          "denominator": "1",
+          "numerator": "20"
+        },
+        "bound_payment_sum": {
+          "denominator": "1",
+          "numerator": "5"
+        },
+        "closing_other_cash_uses": {
+          "denominator": "1",
+          "numerator": "5"
+        },
+        "exportable_equity_contribution": {
+          "denominator": "1",
+          "numerator": "5"
+        },
+        "exportable_equity_distribution": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "net_residual_after_retention": {
+          "denominator": "1",
+          "numerator": "-5"
+        },
+        "nominal_after_supplied_cut_payments": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "nominal_before_cut": {
+          "denominator": "1",
+          "numerator": "5"
+        },
+        "planned_cash_before_cut": {
+          "denominator": "1",
+          "numerator": "15"
+        },
+        "total_cash_conservation_residual": {
+          "denominator": "1",
+          "numerator": "0"
+        }
+      },
+      "blockers": []
+    },
+    {
+      "label": "funding-missing",
+      "source_hashes": {
+        "binding": "c1eae57b17265cbb80b66aa44158ad78e9494e5c9666bdebc9796abf307592a4",
+        "closing": "767cf6408e049d966226c9f97cb0dbf12be20bc0659fa4645a2e94b26d8762e5",
+        "plan": "46373b2d91a8137dcbdfebc332666bc396cf19c3cfa9208d2425c529b0d83eb7"
+      },
+      "run_sha256": "a0c506704102543b4f34899e0ae3f9829d7861929c589508540202d7b5aa12c2",
+      "state": "PENDING",
+      "summary": null,
+      "blockers": [
+        "closing_cash_blocked"
+      ]
+    },
+    {
+      "label": "future",
+      "source_hashes": {
+        "binding": "19ba9330bbc3d6db8fe90c419c0be4a41942c794552dce060fc7cd7ff51056d7",
+        "closing": "0e14d6cae15995bb304e6a43b40eb021d9c94409614462c1061ef4151025adc2",
+        "plan": "fb444bd80b6d3248a1936411a4ed1531f678eccdda0088694c26aa3285e02a4a"
+      },
+      "run_sha256": "70c9cb2e6c192b150bbdc14a2666b2a01bc3f214de7722b696a1aaf23d6aa2eb",
+      "state": "PENDING",
+      "summary": null,
+      "blockers": [
+        "after_cut_plan_payment_requires_other_profile_no_acceleration",
+        "bound_payment_sum_differs_from_closing_other_cash_uses",
+        "bound_payment_sum_differs_from_nominal_tail"
+      ]
+    },
+    {
+      "label": "zero",
+      "source_hashes": {
+        "binding": "3215647c6c459e39f9dfff12be459bbe0a14c62081d5f48f6581bc2587f95dff",
+        "closing": "4d42c737bb4b17a7ba148d503f5525649c80407c359895021d230bcd44834545",
+        "plan": "089ad5e5937dc11d81d735ff14e07e2b40df6f20d0dbdb03baa16028de2e51d7"
+      },
+      "run_sha256": "493a5dc6284c94886f7623995c3263c31adcc139b49a23bc5301e586f17a76c7",
+      "state": "matched_synthetic_insurance_terminal_closing",
+      "summary": {
+        "allocated_expense": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "bound_payment_sum": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "closing_other_cash_uses": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "exportable_equity_contribution": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "exportable_equity_distribution": {
+          "denominator": "1",
+          "numerator": "100"
+        },
+        "net_residual_after_retention": {
+          "denominator": "1",
+          "numerator": "100"
+        },
+        "nominal_after_supplied_cut_payments": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "nominal_before_cut": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "planned_cash_before_cut": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "total_cash_conservation_residual": {
+          "denominator": "1",
+          "numerator": "0"
+        }
+      },
+      "blockers": []
+    },
+    {
+      "label": "missing",
+      "source_hashes": {
+        "binding": "16b2ba5152a38f47b378ef24abb45f9aefd7a4cbec3d6ad6833efdfe677a4af9",
+        "closing": "0e14d6cae15995bb304e6a43b40eb021d9c94409614462c1061ef4151025adc2",
+        "plan": "46373b2d91a8137dcbdfebc332666bc396cf19c3cfa9208d2425c529b0d83eb7"
+      },
+      "run_sha256": "a8c26c203a6877b7d0e33457ab14259de6128d8b4f2130ab1f458f1f92ebb43a",
+      "state": "PENDING",
+      "summary": null,
+      "blockers": [
+        "SYNTHETIC-PAY-PC:payment_amount_differs_from_source_plan",
+        "SYNTHETIC-PAY-PC:payment_amount_missing_or_negative",
+        "bound_payment_sum_differs_from_closing_other_cash_uses",
+        "bound_payment_sum_differs_from_nominal_tail",
+        "bound_payment_sum_differs_from_on_cut_cash"
+      ]
+    },
+    {
+      "label": "split",
+      "source_hashes": {
+        "binding": "9ba3dbeb0960fc4949c77f99b852e24593119b76898eb0e539303003f937083c",
+        "closing": "0e14d6cae15995bb304e6a43b40eb021d9c94409614462c1061ef4151025adc2",
+        "plan": "fff8324c283ad13216fdbf00e75ef12c7da23683e12cc3619197d16a97137c62"
+      },
+      "run_sha256": "f3bb7712da3afcbc47435bd443c2da2b09aca49278c37677e35cbdb1485f17f0",
+      "state": "matched_synthetic_insurance_terminal_closing",
+      "summary": {
+        "allocated_expense": {
+          "denominator": "1",
+          "numerator": "20"
+        },
+        "bound_payment_sum": {
+          "denominator": "1",
+          "numerator": "5"
+        },
+        "closing_other_cash_uses": {
+          "denominator": "1",
+          "numerator": "5"
+        },
+        "exportable_equity_contribution": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "exportable_equity_distribution": {
+          "denominator": "1",
+          "numerator": "95"
+        },
+        "net_residual_after_retention": {
+          "denominator": "1",
+          "numerator": "95"
+        },
+        "nominal_after_supplied_cut_payments": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "nominal_before_cut": {
+          "denominator": "1",
+          "numerator": "5"
+        },
+        "planned_cash_before_cut": {
+          "denominator": "1",
+          "numerator": "15"
+        },
+        "total_cash_conservation_residual": {
+          "denominator": "1",
+          "numerator": "0"
+        }
+      },
+      "blockers": []
+    }
+  ],
+  "run_sha256": "af9cb00f2bddc561402fb0549fe6f8d197abcbdc2974e1847ef8ee48e811975b",
+  "closing_cash_not_deducted_twice": true,
+  "future_payment_not_accelerated": true,
+  "blocked_directory_recovery_verified": true,
+  "source_versions": [
+    {
+      "path": "src/miniuw_foundation/insurance_terminal_closing.py",
+      "sha256": "37ce6d1f9503873b991df88fde1218603d17c74f56dbbed397777b0ef53673f3"
+    },
+    {
+      "path": "src/miniuw_foundation/insurance_terminal_artifacts.py",
+      "sha256": "32ac0f0646e9da633e5301ecb91611108ced92b30476470c28e05efbca2067d2"
+    },
+    {
+      "path": "src/miniuw_foundation/deferred_insurance_settlement.py",
+      "sha256": "8cc1980e490bfcc8c04af28ab9e246342065a1002fad626e680e622ff6f91207"
+    },
+    {
+      "path": "src/miniuw_foundation/closing_cash.py",
+      "sha256": "7053bbdba91ad38d55909308fc6aef809449944ebae02c1ec387b1bfd810487b"
+    },
+    {
+      "path": "tools/insurance_terminal_miniuw_v1.py",
+      "sha256": "5d6290f6444c84dd2c95f29ede16cc40ddac065544da04d14e5cd4e0018d4925"
+    },
+    {
+      "path": "tools/check_insurance_terminal_T107.py",
+      "sha256": "adf1d58313f0b02cd3bca219bae1f41f246b6817d7ce5eb0f2604e5e5a0e2bb2"
+    },
+    {
+      "path": "docs/technical-implementation-T107.md",
+      "sha256": "139136abad661f243e27d1555403b06a5bbf1b6a4f719aff85e5551ab4c3db2a"
+    },
+    {
+      "path": "docs/technical-implementation-T106.md",
+      "sha256": "05a1e2fc9bbfa167ed8983f9f86e848b8936d556bc29488aec1949cb7a4b11e9"
+    },
+    {
+      "path": "docs/review/insurance-terminal-fixtures-T107.json",
+      "sha256": "822e69f9ed6291103295351bb715a8140c564001809bf2ff42ab2f707cbf03bd"
+    }
+  ],
+  "full_operating_sale_return_integration_completed": false,
+  "accounting_balances_derived": false,
+  "actual_bank_payments_verified": false,
+  "actual_legal_liability_approved": false,
+  "original_semantic_mappings_pending": 54,
+  "new_external_PDF_created": false,
+  "financial_publication_authorized": false,
+  "deployment_enabled": false,
+  "real_decisions_enabled": false,
+  "decision": "PENDING"
+}

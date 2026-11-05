@@ -1,10 +1,10 @@
 {
-  "scope": "I01 preserved design, D02–D07 design/structure documentation and T01–T106 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D07 design/structure documentation and T01–T107 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 2971,
-      "sha256": "7082e957d66b786e0e7278064488137cfeba3dee179673c259e63b9b1d0b353d"
+      "bytes": 3115,
+      "sha256": "0891ac41d5f69d665a4ac02ef95e1e4302d1f5e3128ae418304df83fc75a8adc"
     },
     {
       "path": ".gitignore",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 41821,
-      "sha256": "ff7afc2f04bb9a8f65df05d6d24bda1ca0b783af67873f888bb77e194dbf8e86"
+      "bytes": 42081,
+      "sha256": "f43cd85d70fe954ebfd30d6421e7dc67d2814438bd4981768362953fc97694cc"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 183891,
-      "sha256": "71cf8a59bd04dea66903893bdd544b05e9c772f2c781f61f22f45f188a38f8df"
+      "bytes": 186514,
+      "sha256": "5d59519784c1c5f3e0d236ab7fe3a5e69c16bcc9073848bb68c420fe7eff8392"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -285,6 +285,11 @@
       "path": "docs/input-dictionary.json",
       "bytes": 29587,
       "sha256": "c26720e78b12fddbc522a31fb97aa32c961e3dbe20ccf9477dcefed33583af8e"
+    },
+    {
+      "path": "docs/insurance-terminal-v1-runbook.md",
+      "bytes": 2224,
+      "sha256": "22d8d3093c08ae7586d42403496fdedab8960e3e61f4a29b7082cd78e16c6d1d"
     },
     {
       "path": "docs/integrated-synthetic-review-validation.json",
@@ -772,6 +777,21 @@
       "sha256": "2e4d64d42140128a11106fe3294eb0680d1d9954a5e602054754bcde032a575a"
     },
     {
+      "path": "docs/review/insurance-terminal-coverage-T107.json",
+      "bytes": 21098,
+      "sha256": "70efdd27937f04493b83acd7fd9022d71a505a47153cfd91d636ff24b848b1fe"
+    },
+    {
+      "path": "docs/review/insurance-terminal-fixtures-T107.json",
+      "bytes": 12239,
+      "sha256": "822e69f9ed6291103295351bb715a8140c564001809bf2ff42ab2f707cbf03bd"
+    },
+    {
+      "path": "docs/review/insurance-terminal-validation-T107.json",
+      "bytes": 12295,
+      "sha256": "5939c6406cd6b7355ce305aad5c218882f659c469aa20213a23ec5dee3fa67df"
+    },
+    {
       "path": "docs/review/integral-spec-I01-validation.json",
       "bytes": 433,
       "sha256": "9f42b7ec27e13e6adba7b32653254090b9e11b0408d3a87cec337642f2d461f6"
@@ -1020,6 +1040,31 @@
       "path": "docs/review/miniuw-v1-example/results.json",
       "bytes": 54560,
       "sha256": "0e979a8c97b308d65ff08caf300692e66bbb4200ac4e0ae61458e62ca5e70575"
+    },
+    {
+      "path": "docs/review/miniuw-v1-insurance-terminal-example/binding-source.json",
+      "bytes": 1210,
+      "sha256": "23491d71da61a4fc6ee514922c685ef192e08c513e033c613dea3b598256cdc6"
+    },
+    {
+      "path": "docs/review/miniuw-v1-insurance-terminal-example/closing-source.json",
+      "bytes": 2757,
+      "sha256": "0e14d6cae15995bb304e6a43b40eb021d9c94409614462c1061ef4151025adc2"
+    },
+    {
+      "path": "docs/review/miniuw-v1-insurance-terminal-example/package.json",
+      "bytes": 1800,
+      "sha256": "c2cb68bdbbc9c8d8b000cfed6d8a5d47abcd842b5894ec5b49401e34f06f29db"
+    },
+    {
+      "path": "docs/review/miniuw-v1-insurance-terminal-example/plan-source.json",
+      "bytes": 2660,
+      "sha256": "46373b2d91a8137dcbdfebc332666bc396cf19c3cfa9208d2425c529b0d83eb7"
+    },
+    {
+      "path": "docs/review/miniuw-v1-insurance-terminal-example/terminal-results.json",
+      "bytes": 3563,
+      "sha256": "ad8c0ca28317ebeb7dba96db1a558a77d50563c98f841c5ef899c7628b4c964e"
     },
     {
       "path": "docs/review/miniuw-v1-investor-output-example/MiniUW_v1_Resumen.pdf",
@@ -1797,6 +1842,11 @@
       "sha256": "05a1e2fc9bbfa167ed8983f9f86e848b8936d556bc29488aec1949cb7a4b11e9"
     },
     {
+      "path": "docs/technical-implementation-T107.md",
+      "bytes": 4390,
+      "sha256": "139136abad661f243e27d1555403b06a5bbf1b6a4f719aff85e5551ab4c3db2a"
+    },
+    {
       "path": "docs/technical-implementation-T11.md",
       "bytes": 5491,
       "sha256": "7fcff82f9760ccd95f28f7ecc784aff735cd03f56225f936716eb5a87eef4e58"
@@ -2068,8 +2118,8 @@
     },
     {
       "path": "docs/technical-implementation-status.json",
-      "bytes": 38740,
-      "sha256": "6f336ca49676ff5e858dfecab9cde26e58b3a206db258f707fb66722215fc6d6"
+      "bytes": 39383,
+      "sha256": "a1311dadcb9d1a5765df74da1378aefc94c3f5d51cbdc433287e5043455a21fa"
     },
     {
       "path": "docs/worksheet-case-v1-runbook.md",
@@ -2997,6 +3047,16 @@
       "sha256": "f30e1c1746e16eb3b77552c7c7a2138c05a4f7b99db3d4581a52218b9d2264fd"
     },
     {
+      "path": "src/miniuw_foundation/insurance_terminal_artifacts.py",
+      "bytes": 5418,
+      "sha256": "32ac0f0646e9da633e5301ecb91611108ced92b30476470c28e05efbca2067d2"
+    },
+    {
+      "path": "src/miniuw_foundation/insurance_terminal_closing.py",
+      "bytes": 9604,
+      "sha256": "37ce6d1f9503873b991df88fde1218603d17c74f56dbbed397777b0ef53673f3"
+    },
+    {
       "path": "src/miniuw_foundation/intake.py",
       "bytes": 2462,
       "sha256": "65c81e7916f28d2c8429b4bfce293cbc7046f232fa2c9dbdb895b6fed8885a5f"
@@ -3425,6 +3485,126 @@
       "path": "templates/insurance-settlement-zero-T106.json",
       "bytes": 1942,
       "sha256": "ccaec36a8f90dc2233f4a56e52888ae7ab144cf562df65148cf5f24320586614"
+    },
+    {
+      "path": "templates/insurance-terminal-cash-in-binding-T107.json",
+      "bytes": 1210,
+      "sha256": "3492e2ea65fb7928e108f12eae5429668f66f7ba430dd22d31f4af7d451c1d58"
+    },
+    {
+      "path": "templates/insurance-terminal-cash-in-closing-T107.json",
+      "bytes": 2810,
+      "sha256": "d1efc739aad87f335df0f7925623b846736c514bc5035db34dff1c02cbfbb194"
+    },
+    {
+      "path": "templates/insurance-terminal-cash-in-plan-T107.json",
+      "bytes": 2660,
+      "sha256": "46373b2d91a8137dcbdfebc332666bc396cf19c3cfa9208d2425c529b0d83eb7"
+    },
+    {
+      "path": "templates/insurance-terminal-funding-missing-binding-T107.json",
+      "bytes": 1210,
+      "sha256": "c1eae57b17265cbb80b66aa44158ad78e9494e5c9666bdebc9796abf307592a4"
+    },
+    {
+      "path": "templates/insurance-terminal-funding-missing-closing-T107.json",
+      "bytes": 2755,
+      "sha256": "767cf6408e049d966226c9f97cb0dbf12be20bc0659fa4645a2e94b26d8762e5"
+    },
+    {
+      "path": "templates/insurance-terminal-funding-missing-plan-T107.json",
+      "bytes": 2660,
+      "sha256": "46373b2d91a8137dcbdfebc332666bc396cf19c3cfa9208d2425c529b0d83eb7"
+    },
+    {
+      "path": "templates/insurance-terminal-future-binding-T107.json",
+      "bytes": 1018,
+      "sha256": "19ba9330bbc3d6db8fe90c419c0be4a41942c794552dce060fc7cd7ff51056d7"
+    },
+    {
+      "path": "templates/insurance-terminal-future-closing-T107.json",
+      "bytes": 2757,
+      "sha256": "0e14d6cae15995bb304e6a43b40eb021d9c94409614462c1061ef4151025adc2"
+    },
+    {
+      "path": "templates/insurance-terminal-future-plan-T107.json",
+      "bytes": 2674,
+      "sha256": "fb444bd80b6d3248a1936411a4ed1531f678eccdda0088694c26aa3285e02a4a"
+    },
+    {
+      "path": "templates/insurance-terminal-missing-binding-T107.json",
+      "bytes": 1179,
+      "sha256": "16b2ba5152a38f47b378ef24abb45f9aefd7a4cbec3d6ad6833efdfe677a4af9"
+    },
+    {
+      "path": "templates/insurance-terminal-missing-closing-T107.json",
+      "bytes": 2757,
+      "sha256": "0e14d6cae15995bb304e6a43b40eb021d9c94409614462c1061ef4151025adc2"
+    },
+    {
+      "path": "templates/insurance-terminal-missing-plan-T107.json",
+      "bytes": 2660,
+      "sha256": "46373b2d91a8137dcbdfebc332666bc396cf19c3cfa9208d2425c529b0d83eb7"
+    },
+    {
+      "path": "templates/insurance-terminal-on-cut-binding-T107.json",
+      "bytes": 1210,
+      "sha256": "23491d71da61a4fc6ee514922c685ef192e08c513e033c613dea3b598256cdc6"
+    },
+    {
+      "path": "templates/insurance-terminal-on-cut-closing-T107.json",
+      "bytes": 2757,
+      "sha256": "0e14d6cae15995bb304e6a43b40eb021d9c94409614462c1061ef4151025adc2"
+    },
+    {
+      "path": "templates/insurance-terminal-on-cut-plan-T107.json",
+      "bytes": 2660,
+      "sha256": "46373b2d91a8137dcbdfebc332666bc396cf19c3cfa9208d2425c529b0d83eb7"
+    },
+    {
+      "path": "templates/insurance-terminal-prepaid-binding-T107.json",
+      "bytes": 1018,
+      "sha256": "3c9686a4b8c76aa85b9a66749ce8309c8577cec3e115f3d02f4740c95cc51b42"
+    },
+    {
+      "path": "templates/insurance-terminal-prepaid-closing-T107.json",
+      "bytes": 2757,
+      "sha256": "4d42c737bb4b17a7ba148d503f5525649c80407c359895021d230bcd44834545"
+    },
+    {
+      "path": "templates/insurance-terminal-prepaid-plan-T107.json",
+      "bytes": 2667,
+      "sha256": "4bd6c393c7404f171cb2cac48d0ac77aa85c785c575f07f3d94e0f83c3fbae3f"
+    },
+    {
+      "path": "templates/insurance-terminal-split-binding-T107.json",
+      "bytes": 1407,
+      "sha256": "9ba3dbeb0960fc4949c77f99b852e24593119b76898eb0e539303003f937083c"
+    },
+    {
+      "path": "templates/insurance-terminal-split-closing-T107.json",
+      "bytes": 2757,
+      "sha256": "0e14d6cae15995bb304e6a43b40eb021d9c94409614462c1061ef4151025adc2"
+    },
+    {
+      "path": "templates/insurance-terminal-split-plan-T107.json",
+      "bytes": 2858,
+      "sha256": "fff8324c283ad13216fdbf00e75ef12c7da23683e12cc3619197d16a97137c62"
+    },
+    {
+      "path": "templates/insurance-terminal-zero-binding-T107.json",
+      "bytes": 1210,
+      "sha256": "3215647c6c459e39f9dfff12be459bbe0a14c62081d5f48f6581bc2587f95dff"
+    },
+    {
+      "path": "templates/insurance-terminal-zero-closing-T107.json",
+      "bytes": 2757,
+      "sha256": "4d42c737bb4b17a7ba148d503f5525649c80407c359895021d230bcd44834545"
+    },
+    {
+      "path": "templates/insurance-terminal-zero-plan-T107.json",
+      "bytes": 1942,
+      "sha256": "089ad5e5937dc11d81d735ff14e07e2b40df6f20d0dbdb03baa16028de2e51d7"
     },
     {
       "path": "templates/metric-intake-draft-empty.json",
@@ -4352,6 +4532,11 @@
       "sha256": "fc68be29bf98bec010e6c3df62ff7c3875e99eb369d7c0afed76530f61b0cbac"
     },
     {
+      "path": "tests/test_insurance_terminal_closing.py",
+      "bytes": 13392,
+      "sha256": "00647a9c18a5d3437568ce6d50b5ab31263bae15008cb4225c6f9aa4a1295f58"
+    },
+    {
       "path": "tests/test_intake.py",
       "bytes": 3862,
       "sha256": "fe18fefdc9a9002f67fd4bb9b0eab7ef9883fd92bcf5098bc34209256b65dabe"
@@ -4677,6 +4862,11 @@
       "sha256": "20f049ab0b80207ed0424cfc9c2e90271bff7d61d127b8ff733fa11ca1579ae6"
     },
     {
+      "path": "tools/check_insurance_terminal_T107.py",
+      "bytes": 7471,
+      "sha256": "adf1d58313f0b02cd3bca219bae1f41f246b6817d7ce5eb0f2604e5e5a0e2bb2"
+    },
+    {
       "path": "tools/check_investor_output_D07.py",
       "bytes": 22645,
       "sha256": "7215b12dbd2535d4d439f03720bb59df000762d655b1c86c2484e325abf30e05"
@@ -4970,6 +5160,11 @@
       "path": "tools/hold_sale_demo_support.py",
       "bytes": 9932,
       "sha256": "c9f0f618a169d63c9290b9d7c1abd28c5c17adfde788567eeeef5f0d86c25396"
+    },
+    {
+      "path": "tools/insurance_terminal_miniuw_v1.py",
+      "bytes": 1287,
+      "sha256": "5d6290f6444c84dd2c95f29ede16cc40ddac065544da04d14e5cd4e0018d4925"
     },
     {
       "path": "tools/investor_miniuw_v1.py",

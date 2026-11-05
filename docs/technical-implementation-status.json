@@ -1,7 +1,7 @@
 {
   "phase": "post-I01 synthetic technical implementation",
   "user_authorized": true,
-  "component": "T106",
+  "component": "T107",
   "status": "local_implementation_verified_pending_remote_receipt",
   "implemented": [
     "fresh raw-claim drafts from unchanged 55-input/10-criterion template",
@@ -147,9 +147,12 @@
     "source-first three-artifact participant cash-risk recovery reusing exact T104 evidence without another nested proof or external PDF",
     "standalone synthetic nominal insurance settlement with independent due/payment inventories and exact per-installment reconciliation",
     "separate before/on/after-cut cash and dues, explicit unsettled nominal tail and pending terminal-source requirement",
-    "three-JSON source-first settlement recovery, seven source fixtures and unchanged old full-window guard"
+    "three-JSON source-first settlement recovery, seven source fixtures and unchanged old full-window guard",
+    "supplied on-cut insurance payment inventory bound exactly to independent sale other_cash_uses without second deduction",
+    "three-source terminal binding with exact source identity, retained T29 residual/funding hypothesis and future-payment blockers",
+    "source-first five-file terminal recovery, eight explicit source hypotheses and independent sale-cash oracles"
   ],
-  "unit_tests": 1519,
+  "unit_tests": 1537,
   "plan_packages_partially_addressed": [
     "IMP-01",
     "IMP-06",
@@ -165,7 +168,7 @@
   "deployment_enabled": false,
   "production_ready": false,
   "next_independent_work": [
-    "connect separately supplied terminal settlement to off-holding insurance cash without double-counting expense or selecting funding; T106 standalone nominal producer is partial, opening/overlapping/complementary policies and contractual/accounting authority remain pending",
+    "connect T107 supplied on-cut nominal plan/closing binding to separately supplied T76 accounting stocks, operating continuity, complete-case source currentness and one-page lifetime return; post-cut actual dates, opening/overlapping policies and real authority remain pending",
     "independently supplied revised operating/exit timing cases without deriving scenario shocks",
     "noncash asset/accrual opening carry and independently supplied staged-loan refinance/novation profiles"
   ],
@@ -276,7 +279,8 @@
     "T103",
     "T104",
     "T105",
-    "T106"
+    "T106",
+    "T107"
   ],
   "tests_by_component": {
     "T01": 31,
@@ -611,5 +615,9 @@
   "deferred_insurance_source_first_recovery_implemented": true,
   "deferred_insurance_full_case_integration_completed": false,
   "deferred_insurance_actual_bank_payments_verified": false,
-  "deferred_insurance_legal_liability_approved": false
+  "deferred_insurance_legal_liability_approved": false,
+  "synthetic_on_cut_insurance_to_sale_cash_binding_implemented": true,
+  "insurance_terminal_full_lifetime_return_integrated": false,
+  "insurance_terminal_accounting_stocks_derived": false,
+  "insurance_terminal_five_file_recovery_implemented": true
 }

@@ -1,0 +1,386 @@
+{
+  "component": "T107",
+  "scope": "Explicit distinct synthetic hypotheses, not active whole-case revisions",
+  "cases": [
+    {
+      "label": "on-cut",
+      "sources": {
+        "plan": {
+          "path": "templates/insurance-terminal-on-cut-plan-T107.json",
+          "sha256": "46373b2d91a8137dcbdfebc332666bc396cf19c3cfa9208d2425c529b0d83eb7"
+        },
+        "closing": {
+          "path": "templates/insurance-terminal-on-cut-closing-T107.json",
+          "sha256": "0e14d6cae15995bb304e6a43b40eb021d9c94409614462c1061ef4151025adc2"
+        },
+        "binding": {
+          "path": "templates/insurance-terminal-on-cut-binding-T107.json",
+          "sha256": "23491d71da61a4fc6ee514922c685ef192e08c513e033c613dea3b598256cdc6"
+        }
+      },
+      "state": "matched_synthetic_insurance_terminal_closing",
+      "summary": {
+        "allocated_expense": {
+          "denominator": "1",
+          "numerator": "20"
+        },
+        "bound_payment_sum": {
+          "denominator": "1",
+          "numerator": "5"
+        },
+        "closing_other_cash_uses": {
+          "denominator": "1",
+          "numerator": "5"
+        },
+        "exportable_equity_contribution": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "exportable_equity_distribution": {
+          "denominator": "1",
+          "numerator": "95"
+        },
+        "net_residual_after_retention": {
+          "denominator": "1",
+          "numerator": "95"
+        },
+        "nominal_after_supplied_cut_payments": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "nominal_before_cut": {
+          "denominator": "1",
+          "numerator": "5"
+        },
+        "planned_cash_before_cut": {
+          "denominator": "1",
+          "numerator": "15"
+        },
+        "total_cash_conservation_residual": {
+          "denominator": "1",
+          "numerator": "0"
+        }
+      },
+      "blockers": []
+    },
+    {
+      "label": "prepaid",
+      "sources": {
+        "plan": {
+          "path": "templates/insurance-terminal-prepaid-plan-T107.json",
+          "sha256": "4bd6c393c7404f171cb2cac48d0ac77aa85c785c575f07f3d94e0f83c3fbae3f"
+        },
+        "closing": {
+          "path": "templates/insurance-terminal-prepaid-closing-T107.json",
+          "sha256": "4d42c737bb4b17a7ba148d503f5525649c80407c359895021d230bcd44834545"
+        },
+        "binding": {
+          "path": "templates/insurance-terminal-prepaid-binding-T107.json",
+          "sha256": "3c9686a4b8c76aa85b9a66749ce8309c8577cec3e115f3d02f4740c95cc51b42"
+        }
+      },
+      "state": "matched_synthetic_insurance_terminal_closing",
+      "summary": {
+        "allocated_expense": {
+          "denominator": "1",
+          "numerator": "20"
+        },
+        "bound_payment_sum": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "closing_other_cash_uses": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "exportable_equity_contribution": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "exportable_equity_distribution": {
+          "denominator": "1",
+          "numerator": "100"
+        },
+        "net_residual_after_retention": {
+          "denominator": "1",
+          "numerator": "100"
+        },
+        "nominal_after_supplied_cut_payments": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "nominal_before_cut": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "planned_cash_before_cut": {
+          "denominator": "1",
+          "numerator": "20"
+        },
+        "total_cash_conservation_residual": {
+          "denominator": "1",
+          "numerator": "0"
+        }
+      },
+      "blockers": []
+    },
+    {
+      "label": "cash-in",
+      "sources": {
+        "plan": {
+          "path": "templates/insurance-terminal-cash-in-plan-T107.json",
+          "sha256": "46373b2d91a8137dcbdfebc332666bc396cf19c3cfa9208d2425c529b0d83eb7"
+        },
+        "closing": {
+          "path": "templates/insurance-terminal-cash-in-closing-T107.json",
+          "sha256": "d1efc739aad87f335df0f7925623b846736c514bc5035db34dff1c02cbfbb194"
+        },
+        "binding": {
+          "path": "templates/insurance-terminal-cash-in-binding-T107.json",
+          "sha256": "3492e2ea65fb7928e108f12eae5429668f66f7ba430dd22d31f4af7d451c1d58"
+        }
+      },
+      "state": "matched_synthetic_insurance_terminal_closing",
+      "summary": {
+        "allocated_expense": {
+          "denominator": "1",
+          "numerator": "20"
+        },
+        "bound_payment_sum": {
+          "denominator": "1",
+          "numerator": "5"
+        },
+        "closing_other_cash_uses": {
+          "denominator": "1",
+          "numerator": "5"
+        },
+        "exportable_equity_contribution": {
+          "denominator": "1",
+          "numerator": "5"
+        },
+        "exportable_equity_distribution": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "net_residual_after_retention": {
+          "denominator": "1",
+          "numerator": "-5"
+        },
+        "nominal_after_supplied_cut_payments": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "nominal_before_cut": {
+          "denominator": "1",
+          "numerator": "5"
+        },
+        "planned_cash_before_cut": {
+          "denominator": "1",
+          "numerator": "15"
+        },
+        "total_cash_conservation_residual": {
+          "denominator": "1",
+          "numerator": "0"
+        }
+      },
+      "blockers": []
+    },
+    {
+      "label": "funding-missing",
+      "sources": {
+        "plan": {
+          "path": "templates/insurance-terminal-funding-missing-plan-T107.json",
+          "sha256": "46373b2d91a8137dcbdfebc332666bc396cf19c3cfa9208d2425c529b0d83eb7"
+        },
+        "closing": {
+          "path": "templates/insurance-terminal-funding-missing-closing-T107.json",
+          "sha256": "767cf6408e049d966226c9f97cb0dbf12be20bc0659fa4645a2e94b26d8762e5"
+        },
+        "binding": {
+          "path": "templates/insurance-terminal-funding-missing-binding-T107.json",
+          "sha256": "c1eae57b17265cbb80b66aa44158ad78e9494e5c9666bdebc9796abf307592a4"
+        }
+      },
+      "state": "PENDING",
+      "summary": null,
+      "blockers": [
+        "closing_cash_blocked"
+      ]
+    },
+    {
+      "label": "future",
+      "sources": {
+        "plan": {
+          "path": "templates/insurance-terminal-future-plan-T107.json",
+          "sha256": "fb444bd80b6d3248a1936411a4ed1531f678eccdda0088694c26aa3285e02a4a"
+        },
+        "closing": {
+          "path": "templates/insurance-terminal-future-closing-T107.json",
+          "sha256": "0e14d6cae15995bb304e6a43b40eb021d9c94409614462c1061ef4151025adc2"
+        },
+        "binding": {
+          "path": "templates/insurance-terminal-future-binding-T107.json",
+          "sha256": "19ba9330bbc3d6db8fe90c419c0be4a41942c794552dce060fc7cd7ff51056d7"
+        }
+      },
+      "state": "PENDING",
+      "summary": null,
+      "blockers": [
+        "after_cut_plan_payment_requires_other_profile_no_acceleration",
+        "bound_payment_sum_differs_from_closing_other_cash_uses",
+        "bound_payment_sum_differs_from_nominal_tail"
+      ]
+    },
+    {
+      "label": "zero",
+      "sources": {
+        "plan": {
+          "path": "templates/insurance-terminal-zero-plan-T107.json",
+          "sha256": "089ad5e5937dc11d81d735ff14e07e2b40df6f20d0dbdb03baa16028de2e51d7"
+        },
+        "closing": {
+          "path": "templates/insurance-terminal-zero-closing-T107.json",
+          "sha256": "4d42c737bb4b17a7ba148d503f5525649c80407c359895021d230bcd44834545"
+        },
+        "binding": {
+          "path": "templates/insurance-terminal-zero-binding-T107.json",
+          "sha256": "3215647c6c459e39f9dfff12be459bbe0a14c62081d5f48f6581bc2587f95dff"
+        }
+      },
+      "state": "matched_synthetic_insurance_terminal_closing",
+      "summary": {
+        "allocated_expense": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "bound_payment_sum": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "closing_other_cash_uses": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "exportable_equity_contribution": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "exportable_equity_distribution": {
+          "denominator": "1",
+          "numerator": "100"
+        },
+        "net_residual_after_retention": {
+          "denominator": "1",
+          "numerator": "100"
+        },
+        "nominal_after_supplied_cut_payments": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "nominal_before_cut": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "planned_cash_before_cut": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "total_cash_conservation_residual": {
+          "denominator": "1",
+          "numerator": "0"
+        }
+      },
+      "blockers": []
+    },
+    {
+      "label": "missing",
+      "sources": {
+        "plan": {
+          "path": "templates/insurance-terminal-missing-plan-T107.json",
+          "sha256": "46373b2d91a8137dcbdfebc332666bc396cf19c3cfa9208d2425c529b0d83eb7"
+        },
+        "closing": {
+          "path": "templates/insurance-terminal-missing-closing-T107.json",
+          "sha256": "0e14d6cae15995bb304e6a43b40eb021d9c94409614462c1061ef4151025adc2"
+        },
+        "binding": {
+          "path": "templates/insurance-terminal-missing-binding-T107.json",
+          "sha256": "16b2ba5152a38f47b378ef24abb45f9aefd7a4cbec3d6ad6833efdfe677a4af9"
+        }
+      },
+      "state": "PENDING",
+      "summary": null,
+      "blockers": [
+        "SYNTHETIC-PAY-PC:payment_amount_differs_from_source_plan",
+        "SYNTHETIC-PAY-PC:payment_amount_missing_or_negative",
+        "bound_payment_sum_differs_from_closing_other_cash_uses",
+        "bound_payment_sum_differs_from_nominal_tail",
+        "bound_payment_sum_differs_from_on_cut_cash"
+      ]
+    },
+    {
+      "label": "split",
+      "sources": {
+        "plan": {
+          "path": "templates/insurance-terminal-split-plan-T107.json",
+          "sha256": "fff8324c283ad13216fdbf00e75ef12c7da23683e12cc3619197d16a97137c62"
+        },
+        "closing": {
+          "path": "templates/insurance-terminal-split-closing-T107.json",
+          "sha256": "0e14d6cae15995bb304e6a43b40eb021d9c94409614462c1061ef4151025adc2"
+        },
+        "binding": {
+          "path": "templates/insurance-terminal-split-binding-T107.json",
+          "sha256": "9ba3dbeb0960fc4949c77f99b852e24593119b76898eb0e539303003f937083c"
+        }
+      },
+      "state": "matched_synthetic_insurance_terminal_closing",
+      "summary": {
+        "allocated_expense": {
+          "denominator": "1",
+          "numerator": "20"
+        },
+        "bound_payment_sum": {
+          "denominator": "1",
+          "numerator": "5"
+        },
+        "closing_other_cash_uses": {
+          "denominator": "1",
+          "numerator": "5"
+        },
+        "exportable_equity_contribution": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "exportable_equity_distribution": {
+          "denominator": "1",
+          "numerator": "95"
+        },
+        "net_residual_after_retention": {
+          "denominator": "1",
+          "numerator": "95"
+        },
+        "nominal_after_supplied_cut_payments": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "nominal_before_cut": {
+          "denominator": "1",
+          "numerator": "5"
+        },
+        "planned_cash_before_cut": {
+          "denominator": "1",
+          "numerator": "15"
+        },
+        "total_cash_conservation_residual": {
+          "denominator": "1",
+          "numerator": "0"
+        }
+      },
+      "blockers": []
+    }
+  ],
+  "original_control_source": "templates/insurance-settlement-on-cut-T106.json",
+  "original_control_source_sha256": "46373b2d91a8137dcbdfebc332666bc396cf19c3cfa9208d2425c529b0d83eb7",
+  "full_operating_sale_return_integration_completed": false
+}

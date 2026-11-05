@@ -4,6 +4,8 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- [Seguro y caja del cierre T107](docs/insurance-terminal-v1-runbook.md): concilia pagos previstos en el corte con egresos ya declarados de venta, conserva su residual sin doble descuento y retira cifras incompatibles; operación/retorno completo pendientes.
+
 - [Liquidación nominal de seguro T106](docs/deferred-insurance-v1-runbook.md): separa vencimientos y pagos previstos, identifica saldos al corte y exige otra fuente de liquidación; integración con venta/retorno pendiente.
 
 - [Riesgo de caja por participante T105](docs/participant-cash-risk-v1-runbook.md): caja no recuperada, pico por fecha/cotas intradía y dependencia de venta, con conciliación exacta al proyecto; capital, liquidez y pérdida económica final pendientes.
