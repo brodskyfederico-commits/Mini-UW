@@ -1,0 +1,389 @@
+{
+  "component": "T110",
+  "scope": "Incremental exact requirement/source/definition/module/test coverage; original398-row matrix unchanged, not complete financial validation",
+  "rows": [
+    {
+      "requirement_or_variable": "phased_rental_exact_period_income_capacity_and_proration",
+      "source": {
+        "path": "docs/technical-implementation-T110.md",
+        "line": 3,
+        "sha256": "89a6035d45f1815e666fd1553833ceb7b06183b65f147bc2c9f20a9dbc69d670"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+          "sha256_documento": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+          "ubicacion_exacta": "§3, Revenue",
+          "definicion_documentada": "Fuente histórica de Renta por tipo; desarrollo nuevo localizado por ID en docs/model-operations-contract.md. No demuestra adopción aprobada.",
+          "matrix_id": "M2-01"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§§3, 5 y 7",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "DAT-01"
+        }
+      ],
+      "current_definition": "Replay each supplied calendar against exact NOI/cash, capacity, income identity and complete explicit zero other incomes; no rent duplicated as cash.",
+      "source_fixture": {
+        "path": "templates/phased-settled-current-T110.json",
+        "sha256": "762155e37dadb0952b0077ac5f9cc4b3b034d265a9c3d7500173988a7261b51a",
+        "json_pointer": "/rental_binding_utf8::json/periods"
+      },
+      "affected_modules": [
+        "M2",
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "calculation_modules": [
+        "src/miniuw_foundation/phased_settled_output.py",
+        "src/miniuw_foundation/nominal_policy_book.py",
+        "src/miniuw_foundation/phased_settled_report.py",
+        "src/miniuw_foundation/phased_settled_artifacts.py"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_phased_settled_output.py",
+          "line": 85,
+          "test": "PhasedSettledTests.test_each_rental_period_capacity_and_income_are_checked"
+        },
+        {
+          "path": "tests/test_phased_settled_output.py",
+          "line": 100,
+          "test": "PhasedSettledTests.test_missing_proration_is_not_inferred_from_dates"
+        },
+        {
+          "path": "docs/review/phased-settled-validation-T110.json",
+          "json_pointer": "/status"
+        }
+      ],
+      "status": "partially_implemented_synthetic_connected_profile",
+      "financial_end_to_end_coverage": false,
+      "pending": "Authentic availability, market/lease facts, recognition and intramonth collection timing pending."
+    },
+    {
+      "requirement_or_variable": "successive_nominal_policies_and_explicit_cutoff_dues",
+      "source": {
+        "path": "docs/technical-implementation-T110.md",
+        "line": 5,
+        "sha256": "89a6035d45f1815e666fd1553833ceb7b06183b65f147bc2c9f20a9dbc69d670"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+          "sha256_documento": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+          "ubicacion_exacta": "§3, Expenses",
+          "definicion_documentada": "Fuente histórica de Gastos sin impuesto; desarrollo nuevo localizado por ID en docs/model-operations-contract.md. No demuestra adopción aprobada.",
+          "matrix_id": "M2-05"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§§3, 5 y 7",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "DAT-01"
+        }
+      ],
+      "current_definition": "Coverage, intersections, premium allocation and every exact nominal due group reproduce the T106 plan. Nominal cut/after-coverage dues do not generate payment or authorize financing.",
+      "source_fixture": {
+        "path": "templates/phased-settled-current-T110.json",
+        "sha256": "762155e37dadb0952b0077ac5f9cc4b3b034d265a9c3d7500173988a7261b51a",
+        "json_pointer": "/policy_book_utf8::json/policies"
+      },
+      "affected_modules": [
+        "M2",
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "calculation_modules": [
+        "src/miniuw_foundation/phased_settled_output.py",
+        "src/miniuw_foundation/nominal_policy_book.py",
+        "src/miniuw_foundation/phased_settled_report.py",
+        "src/miniuw_foundation/phased_settled_artifacts.py"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_phased_settled_output.py",
+          "line": 117,
+          "test": "PhasedSettledTests.test_global_equal_total_cannot_hide_group_date_or_amount_conflict"
+        },
+        {
+          "path": "tests/test_phased_settled_output.py",
+          "line": 126,
+          "test": "PhasedSettledTests.test_policy_coverage_fractions_basis_and_due_cannot_be_guessed"
+        },
+        {
+          "path": "tests/test_phased_settled_output.py",
+          "line": 104,
+          "test": "PhasedSettledTests.test_policy_cut_due_is_nominal_and_not_generated_cash"
+        },
+        {
+          "path": "docs/review/phased-settled-validation-T110.json",
+          "json_pointer": "/status"
+        }
+      ],
+      "status": "partially_implemented_synthetic_connected_profile",
+      "financial_end_to_end_coverage": false,
+      "pending": "Actual insurance adequacy/contract/payment authority, simultaneous policies and opening/other settlement profiles pending."
+    },
+    {
+      "requirement_or_variable": "complete_insurance_inventory_even_explicit_zero",
+      "source": {
+        "path": "docs/technical-implementation-T110.md",
+        "line": 5,
+        "sha256": "89a6035d45f1815e666fd1553833ceb7b06183b65f147bc2c9f20a9dbc69d670"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+          "sha256_documento": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+          "ubicacion_exacta": "§3, Expenses",
+          "definicion_documentada": "Fuente histórica de Gastos sin impuesto; desarrollo nuevo localizado por ID en docs/model-operations-contract.md. No demuestra adopción aprobada.",
+          "matrix_id": "M2-05"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§§3, 5 y 7",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "DAT-01"
+        }
+      ],
+      "current_definition": "All T76 period inventories must contain exactly the one insurance concept bound by the supplied nominal book; extra zero requires another profile.",
+      "source_fixture": {
+        "path": "templates/phased-settled-current-T110.json",
+        "sha256": "762155e37dadb0952b0077ac5f9cc4b3b034d265a9c3d7500173988a7261b51a",
+        "json_pointer": "/current_settled_source_utf8::json/case_source_utf8::json/boundary_source_utf8::json/periods"
+      },
+      "affected_modules": [
+        "M2",
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "calculation_modules": [
+        "src/miniuw_foundation/phased_settled_output.py",
+        "src/miniuw_foundation/nominal_policy_book.py",
+        "src/miniuw_foundation/phased_settled_report.py",
+        "src/miniuw_foundation/phased_settled_artifacts.py"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_phased_settled_output.py",
+          "line": 110,
+          "test": "PhasedSettledTests.test_even_zero_extra_insurance_is_not_silently_omitted"
+        },
+        {
+          "path": "docs/review/phased-settled-validation-T110.json",
+          "json_pointer": "/status"
+        }
+      ],
+      "status": "partially_implemented_synthetic_connected_profile",
+      "financial_end_to_end_coverage": false,
+      "pending": "No multi-concept profile or financial scope completeness certified."
+    },
+    {
+      "requirement_or_variable": "full_purchase_to_sale_cash_and_separate_stock_settlement",
+      "source": {
+        "path": "docs/technical-implementation-T110.md",
+        "line": 9,
+        "sha256": "89a6035d45f1815e666fd1553833ceb7b06183b65f147bc2c9f20a9dbc69d670"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "Traspaso §§2/3/6/7; Traspaso §§6–7; Manual prueba 14 p.29",
+          "definicion_documentada": "Cambios de fuentes/datos/fórmulas invalidan descendientes; criterio solo permite conservar caja independiente pero recalcula comparaciones y precio objetivo.",
+          "matrix_id": "M9-05"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "Traspaso §§2/3/6/7; Traspaso §§6–7; C1/C2 Manual pp.17–18",
+          "definicion_documentada": "Datos, aplicabilidad, fuentes, reglas y escenarios requeridos deben estar completos; sin dictamen parcial ante bloqueos.",
+          "matrix_id": "M9-01"
+        }
+      ],
+      "current_definition": "Keep complete parent cash/stock/debt/returns; independent 1400/778 and 1400/776 oracles preserve five units in free cash until explicit sale settlement with no second deduction.",
+      "source_fixture": {
+        "path": "templates/phased-settled-current-T110.json",
+        "sha256": "762155e37dadb0952b0077ac5f9cc4b3b034d265a9c3d7500173988a7261b51a",
+        "json_pointer": "/current_settled_source_utf8::json/case_source_utf8"
+      },
+      "affected_modules": [
+        "M2",
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "calculation_modules": [
+        "src/miniuw_foundation/phased_settled_output.py",
+        "src/miniuw_foundation/nominal_policy_book.py",
+        "src/miniuw_foundation/phased_settled_report.py",
+        "src/miniuw_foundation/phased_settled_artifacts.py"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_phased_settled_output.py",
+          "line": 43,
+          "test": "PhasedSettledTests.test_phased_cash_equals_parent_and_independent_778_oracle"
+        },
+        {
+          "path": "tests/test_phased_settled_output.py",
+          "line": 54,
+          "test": "PhasedSettledTests.test_explicit_twelve_revision_changes_all_required_cash_not_rent"
+        },
+        {
+          "path": "docs/review/phased-settled-validation-T110.json",
+          "json_pointer": "/status"
+        }
+      ],
+      "status": "partially_implemented_synthetic_connected_profile",
+      "financial_end_to_end_coverage": false,
+      "pending": "Real accounting, banks, funding, allocation, capital/CoC and all financial profiles pending."
+    },
+    {
+      "requirement_or_variable": "exhaustive_current_source_gate_and_no_parent_fallback",
+      "source": {
+        "path": "docs/technical-implementation-T110.md",
+        "line": 13,
+        "sha256": "89a6035d45f1815e666fd1553833ceb7b06183b65f147bc2c9f20a9dbc69d670"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§§3, 5 y 7",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "DAT-01"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "Traspaso §§2/3/6/7; Traspaso §§6–7; C1/C2 Manual pp.17–18",
+          "definicion_documentada": "Datos, aplicabilidad, fuentes, reglas y escenarios requeridos deben estar completos; sin dictamen parcial ante bloqueos.",
+          "matrix_id": "M9-01"
+        }
+      ],
+      "current_definition": "Exact 47 source IDs/hash/locators and same explicit UTC; both parent and outer currentness plus all calculations must pass; any blocker masks all current monetary fields.",
+      "source_fixture": {
+        "path": "templates/phased-settled-current-T110.json",
+        "sha256": "762155e37dadb0952b0077ac5f9cc4b3b034d265a9c3d7500173988a7261b51a",
+        "json_pointer": "/registry_utf8::json/requirements"
+      },
+      "affected_modules": [
+        "M2",
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "calculation_modules": [
+        "src/miniuw_foundation/phased_settled_output.py",
+        "src/miniuw_foundation/nominal_policy_book.py",
+        "src/miniuw_foundation/phased_settled_report.py",
+        "src/miniuw_foundation/phased_settled_artifacts.py"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_phased_settled_output.py",
+          "line": 61,
+          "test": "PhasedSettledTests.test_every_new_and_parent_source_expiry_withdraws_all_current_money"
+        },
+        {
+          "path": "tests/test_phased_settled_output.py",
+          "line": 66,
+          "test": "PhasedSettledTests.test_current_outer_registry_cannot_restore_expired_parent"
+        },
+        {
+          "path": "tests/test_phased_settled_output.py",
+          "line": 71,
+          "test": "PhasedSettledTests.test_self_consistent_omission_and_wrong_identity_do_not_pass"
+        },
+        {
+          "path": "docs/review/phased-settled-validation-T110.json",
+          "json_pointer": "/status"
+        }
+      ],
+      "status": "partially_implemented_synthetic_connected_profile",
+      "financial_end_to_end_coverage": false,
+      "pending": "Declared synthetic currency is not authenticated approval, continuous monitoring or financial sufficiency."
+    },
+    {
+      "requirement_or_variable": "one_page_cash_story_and_full_source_first_packet",
+      "source": {
+        "path": "docs/technical-implementation-T110.md",
+        "line": 15,
+        "sha256": "89a6035d45f1815e666fd1553833ceb7b06183b65f147bc2c9f20a9dbc69d670"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "Traspaso §§2/3/6/7; Traspaso §7",
+          "definicion_documentada": "Preservar originales/lecturas, entradas/supuestos, cálculo, comparaciones, revisión y PDF con relaciones claras; hash no prueba autenticidad.",
+          "matrix_id": "M9-11"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "Traspaso §§2/3/6/7; Traspaso §§8/10/11",
+          "definicion_documentada": "Versionar, verificar SHA remoto completo y exclusiones; no liberar producción por conteo de pruebas, prototipo o referencias sintéticas.",
+          "matrix_id": "M9-12"
+        }
+      ],
+      "current_definition": "Single bounded one-page gross return, rent/policy summaries, every event/zero/year and outward annual IRR interval; all-current withdrawal, exact source/version/PDF replay and safe writer.",
+      "source_fixture": {
+        "path": "templates/phased-settled-current-T110.json",
+        "sha256": "762155e37dadb0952b0077ac5f9cc4b3b034d265a9c3d7500173988a7261b51a",
+        "json_pointer": "/"
+      },
+      "affected_modules": [
+        "M2",
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "calculation_modules": [
+        "src/miniuw_foundation/phased_settled_output.py",
+        "src/miniuw_foundation/nominal_policy_book.py",
+        "src/miniuw_foundation/phased_settled_report.py",
+        "src/miniuw_foundation/phased_settled_artifacts.py"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_phased_settled_output.py",
+          "line": 161,
+          "test": "PhasedSettledTests.test_current_page_groups_all_gross_events_zero_and_annual_rows"
+        },
+        {
+          "path": "tests/test_phased_settled_output.py",
+          "line": 167,
+          "test": "PhasedSettledTests.test_blocked_pages_do_not_display_old_financial_numbers"
+        },
+        {
+          "path": "tests/test_phased_settled_output.py",
+          "line": 188,
+          "test": "PhasedSettledTests.test_directory_rehash_does_not_accept_forged_result_or_versions"
+        },
+        {
+          "path": "tests/test_phased_settled_output.py",
+          "line": 201,
+          "test": "PhasedSettledTests.test_safe_writer_retry_no_overwrite_symlink_and_own_temp_cleanup"
+        },
+        {
+          "path": "docs/review/phased-settled-validation-T110.json",
+          "json_pointer": "/status"
+        }
+      ],
+      "status": "partially_implemented_synthetic_connected_profile",
+      "financial_end_to_end_coverage": false,
+      "pending": "Independent visual/financial audit, real personal returns, original55-field adapter and54 semantic mappings remain pending."
+    }
+  ],
+  "financial_model_complete": false,
+  "real_decisions_enabled": false
+}

@@ -1,10 +1,10 @@
 {
-  "scope": "I01 preserved design, D02–D07 design/structure documentation and T01–T109 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D07 design/structure documentation and T01–T110 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 3396,
-      "sha256": "50d3411a8e40dbebb3ffa1e97978e59280e23a7133ece35be6f988b35c0c06e8"
+      "bytes": 3544,
+      "sha256": "eaa926a67e9104bbf1268f89f7912db63090b692c249c33acf4f583362b508b9"
     },
     {
       "path": ".gitignore",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 42729,
-      "sha256": "c881253d8abb4feea0b70659800d9909e3451aa177897d0603036f09e411e655"
+      "bytes": 43429,
+      "sha256": "cb5ba853602be6ab293381f88909990e4e6dd8595ec590bfb5056fac84be02aa"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 193459,
-      "sha256": "53f9a41266b3bdbfc90e0b3163dbce9620379b8d8390cba0a590d916afc44592"
+      "bytes": 196892,
+      "sha256": "7a14199630241958b8a3722db0a01c9c518c0df1ba819c02ec41c6e3df882a0a"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -1292,6 +1292,96 @@
       "sha256": "f1e307fc26579fd754c33da60d853b27239d7c89909be133ce8c3ea903429149"
     },
     {
+      "path": "docs/review/miniuw-v1-phased-settled-blocked-example/MiniUW_Resumen.pdf",
+      "bytes": 5634,
+      "sha256": "e2688946550502a63cfc52c20c710997df77a8ff6214c375f6d4ede5280a8940"
+    },
+    {
+      "path": "docs/review/miniuw-v1-phased-settled-blocked-example/audit.json",
+      "bytes": 588,
+      "sha256": "0a8acb22705dafcdb638b4ef4cf8d781d6f109acc14b8cf775a29e435e841de4"
+    },
+    {
+      "path": "docs/review/miniuw-v1-phased-settled-blocked-example/current-results.json",
+      "bytes": 86058,
+      "sha256": "c1f31a91762f4c0c93b1b1711de99baa4d68f6141b6f18f44321f6339121bc35"
+    },
+    {
+      "path": "docs/review/miniuw-v1-phased-settled-blocked-example/current-settled-source.json",
+      "bytes": 303360,
+      "sha256": "db34ca2718ec0f1ce57be474bd8817d07ea0ffc582458a9ae7275b1bb061bbcb"
+    },
+    {
+      "path": "docs/review/miniuw-v1-phased-settled-blocked-example/package.json",
+      "bytes": 5399,
+      "sha256": "00d384218f03ed1ba63d92e6fc005faabebafba70720b6a1bc0052abd8a80c9a"
+    },
+    {
+      "path": "docs/review/miniuw-v1-phased-settled-blocked-example/report-manifest.json",
+      "bytes": 9782,
+      "sha256": "56c3ef7c295d000c98c4d10c584bb683fbc5556e473c555b6edd2b892ccf0d02"
+    },
+    {
+      "path": "docs/review/miniuw-v1-phased-settled-current-example/MiniUW_Resumen.pdf",
+      "bytes": 6389,
+      "sha256": "1337b8cefd8e7c678b9523c37109dcce8422ca10f1a752487e8d385455c9ea33"
+    },
+    {
+      "path": "docs/review/miniuw-v1-phased-settled-current-example/audit.json",
+      "bytes": 588,
+      "sha256": "6605bbf274eb92b8c01229c9ec9bbe1b27ca5ca3bf9516e278031e3ea15a2724"
+    },
+    {
+      "path": "docs/review/miniuw-v1-phased-settled-current-example/current-results.json",
+      "bytes": 109750,
+      "sha256": "cb93107c9839f8e0ed541b1c78a3546b79736e8383f2aba5a5f6977e052b74ba"
+    },
+    {
+      "path": "docs/review/miniuw-v1-phased-settled-current-example/current-settled-source.json",
+      "bytes": 303436,
+      "sha256": "762155e37dadb0952b0077ac5f9cc4b3b034d265a9c3d7500173988a7261b51a"
+    },
+    {
+      "path": "docs/review/miniuw-v1-phased-settled-current-example/package.json",
+      "bytes": 5401,
+      "sha256": "f157e4893e6ebaeab13ba1c827f1135fe907fc0ca8528ed1374a7117e29b5412"
+    },
+    {
+      "path": "docs/review/miniuw-v1-phased-settled-current-example/report-manifest.json",
+      "bytes": 13159,
+      "sha256": "48a1ec223be9fbe69662d380e72118fd6cce5a27872ef61d8b33ec9044ee3134"
+    },
+    {
+      "path": "docs/review/miniuw-v1-phased-settled-expired-example/MiniUW_Resumen.pdf",
+      "bytes": 5634,
+      "sha256": "0fba24e4dc24cbe1cf7e2b7e282560150f37c2f0d66d6bc7135b378a0806c238"
+    },
+    {
+      "path": "docs/review/miniuw-v1-phased-settled-expired-example/audit.json",
+      "bytes": 588,
+      "sha256": "2c4fedfe9cab9842d705f2d1d4c350e5134eb0c87c02e92f1604136e2db3ac0e"
+    },
+    {
+      "path": "docs/review/miniuw-v1-phased-settled-expired-example/current-results.json",
+      "bytes": 86135,
+      "sha256": "363f1351ae05efa3801d80225ebf02546374acd722be0b3af060b8b90f2c7396"
+    },
+    {
+      "path": "docs/review/miniuw-v1-phased-settled-expired-example/current-settled-source.json",
+      "bytes": 303436,
+      "sha256": "0d8e9ab0133f062d520bba93fceb6ea01c531527f440e3b98bc4dc35b0f6e9ee"
+    },
+    {
+      "path": "docs/review/miniuw-v1-phased-settled-expired-example/package.json",
+      "bytes": 5399,
+      "sha256": "5591467ccfd3667f660b73a00330a5afaeaafdf7004a60cf477f835fedc59c1c"
+    },
+    {
+      "path": "docs/review/miniuw-v1-phased-settled-expired-example/report-manifest.json",
+      "bytes": 9782,
+      "sha256": "f02e3543b49c0b3ffc65e98f6ed800bf4faa47ec0c560c51f78af114f4e540e7"
+    },
+    {
       "path": "docs/review/miniuw-v1-policy-renewal-example/MiniUW_v1_Resumen.pdf",
       "bytes": 6562,
       "sha256": "7023d9358f46dc0984a947985c25ea40eb0a07fcc6ff1a26ff92ed6beb95eb0b"
@@ -1452,6 +1542,11 @@
       "sha256": "8dcd1677131ce1db79873acbf67298395150f15f854c13a0169c30687e03297c"
     },
     {
+      "path": "docs/review/nominal-policy-derivation-T110.json",
+      "bytes": 1006,
+      "sha256": "e9230ee6ac26407c052df4eec7803c8c00a4b886ec36cc84fd1213fa7a099a4e"
+    },
+    {
       "path": "docs/review/participant-cash-risk-coverage-T105.json",
       "bytes": 8842,
       "sha256": "6d3a03f5f24a5e2f85f370b344c2685ba1904e22185927d0156cec1ba46cec62"
@@ -1475,6 +1570,21 @@
       "path": "docs/review/pdf-review-validation.json",
       "bytes": 367,
       "sha256": "d76008398e1324b0709f0df8220d92fa249863f41c664188a2bbc624d6866fd6"
+    },
+    {
+      "path": "docs/review/phased-settled-coverage-T110.json",
+      "bytes": 17952,
+      "sha256": "eeff73a71a0f70b99c96998b24b63dbebf6a566c7d3b46045c2c83e3b52bdf7a"
+    },
+    {
+      "path": "docs/review/phased-settled-fixtures-T110.json",
+      "bytes": 2290,
+      "sha256": "e2bec3c36f256f825a032f42136eb1d3b5e3eecb3de01c63a9ebb0e7d113ba15"
+    },
+    {
+      "path": "docs/review/phased-settled-validation-T110.json",
+      "bytes": 5402,
+      "sha256": "69d6b87d4a31e61cbda30cd322943c5413ff0e5c51990b0cd0f985d38fe763d6"
     },
     {
       "path": "docs/review/policy-renewal-twelve-summary.json",
@@ -2012,6 +2122,11 @@
       "sha256": "7fcff82f9760ccd95f28f7ecc784aff735cd03f56225f936716eb5a87eef4e58"
     },
     {
+      "path": "docs/technical-implementation-T110.md",
+      "bytes": 5184,
+      "sha256": "89a6035d45f1815e666fd1553833ceb7b06183b65f147bc2c9f20a9dbc69d670"
+    },
+    {
       "path": "docs/technical-implementation-T12.md",
       "bytes": 4090,
       "sha256": "fca791860e803a53df10bf62d553b505f12e7981e3ff8f781a858e08e8d515c4"
@@ -2278,8 +2393,8 @@
     },
     {
       "path": "docs/technical-implementation-status.json",
-      "bytes": 41456,
-      "sha256": "7685ef82ac1fbaf95043875cc67e36269060237d7488a75b3bee866e9c9928ed"
+      "bytes": 41934,
+      "sha256": "f0b802f1d1c8847750af6796677eae541b17108f40be398f74ca7192fbc3d4c5"
     },
     {
       "path": "docs/worksheet-case-v1-runbook.md",
@@ -3302,6 +3417,11 @@
       "sha256": "13553de154016edcb8b78c3a963577453eeab750c7adde5e8bc7d7b2b5b6ebdb"
     },
     {
+      "path": "src/miniuw_foundation/nominal_policy_book.py",
+      "bytes": 13530,
+      "sha256": "49d040eb1192d73adf72a303f051e61349f6ac434061082f156404077d97d6eb"
+    },
+    {
       "path": "src/miniuw_foundation/normalization.py",
       "bytes": 7683,
       "sha256": "582f318182971e79cd48fbcd43a00c3e4ecc8505450eab87762782ed8af70c0a"
@@ -3360,6 +3480,21 @@
       "path": "src/miniuw_foundation/phased_rental_lifecycle.py",
       "bytes": 9582,
       "sha256": "f46dde3d968f2cb70e54b6ebdd065ffc2bb5d2382cdb4dafaeef2c88cdc66ec9"
+    },
+    {
+      "path": "src/miniuw_foundation/phased_settled_artifacts.py",
+      "bytes": 6934,
+      "sha256": "9cde0cba7f725f0539a997e77e8dc8876e08647459c7096f13ae4b386c497f94"
+    },
+    {
+      "path": "src/miniuw_foundation/phased_settled_output.py",
+      "bytes": 10763,
+      "sha256": "1f0c1bfad58d4b7ae4d8679f028deca28b4cc7b2a97679a6dc21d37b858ace4d"
+    },
+    {
+      "path": "src/miniuw_foundation/phased_settled_report.py",
+      "bytes": 11812,
+      "sha256": "af66217fbe21393121be6c4391b332b7decd20455dad5a1a92566fb5ec64b894"
     },
     {
       "path": "src/miniuw_foundation/policy_renewal_artifacts.py",
@@ -3965,6 +4100,31 @@
       "path": "templates/miniuw-v1-years-only-case.json",
       "bytes": 195809,
       "sha256": "0e06efc5b82bdc588d1d80fa66e9f46cfcbc259600eafbd49be05615c59dd0c4"
+    },
+    {
+      "path": "templates/phased-settled-blocked-T110.json",
+      "bytes": 303360,
+      "sha256": "db34ca2718ec0f1ce57be474bd8817d07ea0ffc582458a9ae7275b1bb061bbcb"
+    },
+    {
+      "path": "templates/phased-settled-current-T110.json",
+      "bytes": 303436,
+      "sha256": "762155e37dadb0952b0077ac5f9cc4b3b034d265a9c3d7500173988a7261b51a"
+    },
+    {
+      "path": "templates/phased-settled-expired-T110.json",
+      "bytes": 303436,
+      "sha256": "0d8e9ab0133f062d520bba93fceb6ea01c531527f440e3b98bc4dc35b0f6e9ee"
+    },
+    {
+      "path": "templates/phased-settled-parent-expired-T110.json",
+      "bytes": 303436,
+      "sha256": "6c456fa385babad24f1d9edc8ba6c01996321ad06e3c3ca631560130ee5c5097"
+    },
+    {
+      "path": "templates/phased-settled-twelve-T110.json",
+      "bytes": 303438,
+      "sha256": "b62e27070d4b27de59e4fb16c781481984dcfeca896ac40610c0efaba289dd45"
     },
     {
       "path": "templates/project-draft-empty.json",
@@ -4897,6 +5057,11 @@
       "sha256": "955498af879b5dcf371feb5900fc3be00a4a59045f38e0faee7ebab3c26e8131"
     },
     {
+      "path": "tests/test_phased_settled_output.py",
+      "bytes": 18258,
+      "sha256": "33eb564ec864245e0e5594a72caec8d1c46cd4cbfae080be50e161f933f264cd"
+    },
+    {
       "path": "tests/test_policy_renewals.py",
       "bytes": 20600,
       "sha256": "029778e66241fa71ec07a79011a2ddb7a4d5d722714627ffd196ba5e962e4c17"
@@ -5145,6 +5310,11 @@
       "path": "tools/check_participant_cash_risk_T105.py",
       "bytes": 9871,
       "sha256": "7069fe773a19253e89cb09afbb24b42c309aaddb05f33b99a55c13e39e4fc06c"
+    },
+    {
+      "path": "tools/check_phased_settled_T110.py",
+      "bytes": 8156,
+      "sha256": "6e635103a011cdf8081084792687cdc712e041b01b095c91ad3deda92861360b"
     },
     {
       "path": "tools/check_reference_package.py",
@@ -5480,6 +5650,11 @@
       "path": "tools/phased_rental_demo_support.py",
       "bytes": 7727,
       "sha256": "b8a5dcab0c7756c3f8a6ec9adcab24c3cb239d3ff755bca4afaf4d72530f5231"
+    },
+    {
+      "path": "tools/phased_settled_miniuw_v1.py",
+      "bytes": 1107,
+      "sha256": "4c1dea3147ca47bd48d6e11b0474ca41c98e229dca686753f754f0559b7cb5a5"
     },
     {
       "path": "tools/renewal_miniuw_v1.py",

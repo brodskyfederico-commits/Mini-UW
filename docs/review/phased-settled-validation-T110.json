@@ -1,0 +1,135 @@
+{
+  "component": "T110",
+  "status": "passed_phased_rent_nominal_policy_full_settled_cash_currentness_one_page_and_recovery",
+  "source_cases_checked": 5,
+  "saved_output_directories_checked": 3,
+  "files_per_packet": 6,
+  "source_requirements_per_case": 47,
+  "PDF_pages_per_output": 1,
+  "cases": [
+    {
+      "label": "current",
+      "source_sha256": "762155e37dadb0952b0077ac5f9cc4b3b034d265a9c3d7500173988a7261b51a",
+      "run_sha256": "9a6fd5b001c8080aa50ff78375a8c68fa626da95aa9508e04539ce76865128ec",
+      "pdf_sha256": "1337b8cefd8e7c678b9523c37109dcce8422ca10f1a752487e8d385455c9ea33",
+      "state": "current_synthetic_phased_settled_output",
+      "sources": 47,
+      "display_spans": 78,
+      "all_current_money_withheld": false,
+      "audit_status": "passed_source_currentness_calculation_and_one_page_replay"
+    },
+    {
+      "label": "twelve",
+      "source_sha256": "b62e27070d4b27de59e4fb16c781481984dcfeca896ac40610c0efaba289dd45",
+      "run_sha256": "a7e15f113cb0303b9b1b35ce88b7496a5219def159d1689552d6778663cf9270",
+      "pdf_sha256": "12019045b949db737eb709a3c78dc8137822f3ae34c47c1ff232f34521f38a10",
+      "state": "current_synthetic_phased_settled_output",
+      "sources": 47,
+      "display_spans": 78,
+      "all_current_money_withheld": false,
+      "audit_status": "passed_source_currentness_calculation_and_one_page_replay"
+    },
+    {
+      "label": "blocked",
+      "source_sha256": "db34ca2718ec0f1ce57be474bd8817d07ea0ffc582458a9ae7275b1bb061bbcb",
+      "run_sha256": "d74994144838fb8e18f393f0fc0d5e4c54d5c12356f9db50e33b8fa47cd48bd2",
+      "pdf_sha256": "e2688946550502a63cfc52c20c710997df77a8ff6214c375f6d4ede5280a8940",
+      "state": "PENDING",
+      "sources": 47,
+      "display_spans": 64,
+      "all_current_money_withheld": true,
+      "audit_status": "passed_source_currentness_calculation_and_one_page_replay"
+    },
+    {
+      "label": "expired",
+      "source_sha256": "0d8e9ab0133f062d520bba93fceb6ea01c531527f440e3b98bc4dc35b0f6e9ee",
+      "run_sha256": "92d41cff72c6430190e30eec5ecc41790e258faa68b352240dc222439b375b93",
+      "pdf_sha256": "0fba24e4dc24cbe1cf7e2b7e282560150f37c2f0d66d6bc7135b378a0806c238",
+      "state": "PENDING",
+      "sources": 47,
+      "display_spans": 64,
+      "all_current_money_withheld": true,
+      "audit_status": "passed_source_currentness_calculation_and_one_page_replay"
+    },
+    {
+      "label": "parent-expired",
+      "source_sha256": "6c456fa385babad24f1d9edc8ba6c01996321ad06e3c3ca631560130ee5c5097",
+      "run_sha256": "374a004da6e693927e82ab9e02e86a7780e7cbb3cc81f4114fd712ba1bf2355d",
+      "pdf_sha256": "6dd6d64633f21f7e072b9564d957c0e463888655dc5d51986efd935ee24a113f",
+      "state": "PENDING",
+      "sources": 47,
+      "display_spans": 64,
+      "all_current_money_withheld": true,
+      "audit_status": "passed_source_currentness_calculation_and_one_page_replay"
+    }
+  ],
+  "independent_IRR_certificates": [
+    {
+      "label": "current",
+      "coefficient_sign_variations": 1,
+      "strict_exact_rational_bracket": true,
+      "unique_positive_discount_root_certified": true,
+      "annual_frequency": 12,
+      "point_rate_selected": false
+    },
+    {
+      "label": "twelve",
+      "coefficient_sign_variations": 1,
+      "strict_exact_rational_bracket": true,
+      "unique_positive_discount_root_certified": true,
+      "annual_frequency": 12,
+      "point_rate_selected": false
+    }
+  ],
+  "original_phased_control_equity_preserved": true,
+  "no_new_cash_from_rent_policy_or_nominal_due": true,
+  "all_current_money_withheld_on_any_blocker": true,
+  "source_versions": [
+    {
+      "path": "src/miniuw_foundation/nominal_policy_book.py",
+      "sha256": "49d040eb1192d73adf72a303f051e61349f6ac434061082f156404077d97d6eb"
+    },
+    {
+      "path": "src/miniuw_foundation/phased_settled_output.py",
+      "sha256": "1f0c1bfad58d4b7ae4d8679f028deca28b4cc7b2a97679a6dc21d37b858ace4d"
+    },
+    {
+      "path": "src/miniuw_foundation/phased_settled_report.py",
+      "sha256": "af66217fbe21393121be6c4391b332b7decd20455dad5a1a92566fb5ec64b894"
+    },
+    {
+      "path": "src/miniuw_foundation/phased_settled_artifacts.py",
+      "sha256": "9cde0cba7f725f0539a997e77e8dc8876e08647459c7096f13ae4b386c497f94"
+    },
+    {
+      "path": "tools/phased_settled_miniuw_v1.py",
+      "sha256": "4c1dea3147ca47bd48d6e11b0474ca41c98e229dca686753f754f0559b7cb5a5"
+    },
+    {
+      "path": "tools/check_phased_settled_T110.py",
+      "sha256": "6e635103a011cdf8081084792687cdc712e041b01b095c91ad3deda92861360b"
+    },
+    {
+      "path": "tests/test_phased_settled_output.py",
+      "sha256": "33eb564ec864245e0e5594a72caec8d1c46cd4cbfae080be50e161f933f264cd"
+    },
+    {
+      "path": "docs/technical-implementation-T110.md",
+      "sha256": "89a6035d45f1815e666fd1553833ceb7b06183b65f147bc2c9f20a9dbc69d670"
+    },
+    {
+      "path": "docs/review/phased-settled-fixtures-T110.json",
+      "sha256": "e2bec3c36f256f825a032f42136eb1d3b5e3eecb3de01c63a9ebb0e7d113ba15"
+    }
+  ],
+  "original_semantic_mappings_pending": 54,
+  "financial_model_complete": false,
+  "source_authority_verified": false,
+  "professional_review_authenticated": false,
+  "personal_return_verified": false,
+  "visual_independent_financial_audit_performed": false,
+  "financial_publication_authorized": false,
+  "deployment_enabled": false,
+  "real_decisions_enabled": false,
+  "decision": "PENDING"
+}

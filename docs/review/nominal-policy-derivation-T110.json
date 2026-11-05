@@ -1,0 +1,19 @@
+{
+  "component": "T110",
+  "source": "src/miniuw_foundation/insurance_renewals.py",
+  "source_sha256": "f30e1c1746e16eb3b77552c7c7a2138c05a4f7b99db3d4581a52218b9d2264fd",
+  "scope": "Distinct T106 nominal-plan policy profile; old T93 parser/guard unchanged. Service coverage/intersections/premium/dues/group checks retained; nominal due outside service allowed only as supplied, not generated cash. Opening dues remain unsupported.",
+  "financial_policy_adopted": false,
+  "additional_preserved_derivations": [
+    {
+      "source_path": "src/miniuw_foundation/settled_output_report.py",
+      "source_sha256": "919b2f2d0f049e90cc6983df19a3d6b3ce61b85cb8f7946320b7e33d85938b13",
+      "new_path": "src/miniuw_foundation/phased_settled_report.py"
+    },
+    {
+      "source_path": "src/miniuw_foundation/settled_output_artifacts.py",
+      "source_sha256": "e82d006c4c0380dbf27097864b8d12614c7d9c641a5607a6d3aed865f99a2d60",
+      "new_path": "src/miniuw_foundation/phased_settled_artifacts.py"
+    }
+  ]
+}

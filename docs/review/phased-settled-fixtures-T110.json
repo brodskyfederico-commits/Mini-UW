@@ -1,0 +1,51 @@
+{
+  "component": "T110",
+  "scope": "Explicit synthetic source hypotheses, not authority or financial policy",
+  "cases": [
+    {
+      "label": "current",
+      "path": "templates/phased-settled-current-T110.json",
+      "source_sha256": "762155e37dadb0952b0077ac5f9cc4b3b034d265a9c3d7500173988a7261b51a",
+      "run_sha256": "9a6fd5b001c8080aa50ff78375a8c68fa626da95aa9508e04539ce76865128ec",
+      "pdf_sha256": "1337b8cefd8e7c678b9523c37109dcce8422ca10f1a752487e8d385455c9ea33",
+      "state": "current_synthetic_phased_settled_output",
+      "source_count": 47
+    },
+    {
+      "label": "twelve",
+      "path": "templates/phased-settled-twelve-T110.json",
+      "source_sha256": "b62e27070d4b27de59e4fb16c781481984dcfeca896ac40610c0efaba289dd45",
+      "run_sha256": "a7e15f113cb0303b9b1b35ce88b7496a5219def159d1689552d6778663cf9270",
+      "pdf_sha256": "12019045b949db737eb709a3c78dc8137822f3ae34c47c1ff232f34521f38a10",
+      "state": "current_synthetic_phased_settled_output",
+      "source_count": 47
+    },
+    {
+      "label": "blocked",
+      "path": "templates/phased-settled-blocked-T110.json",
+      "source_sha256": "db34ca2718ec0f1ce57be474bd8817d07ea0ffc582458a9ae7275b1bb061bbcb",
+      "run_sha256": "d74994144838fb8e18f393f0fc0d5e4c54d5c12356f9db50e33b8fa47cd48bd2",
+      "pdf_sha256": "e2688946550502a63cfc52c20c710997df77a8ff6214c375f6d4ede5280a8940",
+      "state": "PENDING",
+      "source_count": 47
+    },
+    {
+      "label": "expired",
+      "path": "templates/phased-settled-expired-T110.json",
+      "source_sha256": "0d8e9ab0133f062d520bba93fceb6ea01c531527f440e3b98bc4dc35b0f6e9ee",
+      "run_sha256": "92d41cff72c6430190e30eec5ecc41790e258faa68b352240dc222439b375b93",
+      "pdf_sha256": "0fba24e4dc24cbe1cf7e2b7e282560150f37c2f0d66d6bc7135b378a0806c238",
+      "state": "PENDING",
+      "source_count": 47
+    },
+    {
+      "label": "parent-expired",
+      "path": "templates/phased-settled-parent-expired-T110.json",
+      "source_sha256": "6c456fa385babad24f1d9edc8ba6c01996321ad06e3c3ca631560130ee5c5097",
+      "run_sha256": "374a004da6e693927e82ab9e02e86a7780e7cbb3cc81f4114fd712ba1bf2355d",
+      "pdf_sha256": "6dd6d64633f21f7e072b9564d957c0e463888655dc5d51986efd935ee24a113f",
+      "state": "PENDING",
+      "source_count": 47
+    }
+  ]
+}

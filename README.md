@@ -4,6 +4,8 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- [Renta, pólizas y saldos hasta venta T110](docs/technical-implementation-T110.md):47 fuentes al mismo UTC; renta por etapas y cuotas nominales verificadas sin generar caja adicional. [PDF sintético de una página](docs/review/miniuw-v1-phased-settled-current-example/MiniUW_Resumen.pdf) y [cobertura incremental](docs/review/phased-settled-coverage-T110.json). Ejecución local: `PYTHONPATH=src python tools/phased_settled_miniuw_v1.py run templates/phased-settled-current-T110.json --output /tmp/miniuw-T110-nuevo`; auditoría: `PYTHONPATH=src python tools/phased_settled_miniuw_v1.py audit /tmp/miniuw-T110-nuevo`. Decisión, capital/CoC, reparto personal y aceptación financiera pendientes.
+
 - [Vigencia y una página T109](docs/current-settled-output-v1-runbook.md):35 fuentes comprobadas al UTC suministrado, retorno T108 sin cambios y cifras retiradas ante bloqueos; [PDF sintético](docs/review/miniuw-v1-current-settled-current-example/MiniUW_Resumen.pdf). Criterios/autoridad real pendientes.
 
 - [Operación, saldos, venta y retorno T108](docs/settled-lifecycle-v1-runbook.md): ruta sintética completa desde compra/obra, liquidación explícita del seguro y retorno agregado; conserva el control directo T77 y recalcula TIR si cambia el calendario. Vigencia/salida de una página para esta ruta y aceptación financiera pendientes.
