@@ -1,0 +1,20 @@
+{
+  "component": "T108",
+  "method": "Distinct source-level profiles copied from preserved reduced source validators; no old producer modified or old run relabeled",
+  "preserved_sources": [
+    {
+      "path": "src/miniuw_foundation/hold_sale_cash.py",
+      "sha256": "d49f94f77edceef7b3cedf132ec0cc2b5d8c937d78ebe554f27b924758f76b13"
+    },
+    {
+      "path": "src/miniuw_foundation/staged_operating_window.py",
+      "sha256": "20b394cc8dab2d4c78d719d0572b38025c474d3e3c97ff3e0bc6cf8044e3b731"
+    },
+    {
+      "path": "src/miniuw_foundation/staged_lifecycle_returns.py",
+      "sha256": "2dd366642eb025e358418115e017bdf774ac70160f9517b618f76745e18c4353"
+    }
+  ],
+  "changed_rule": "Replace original zero-terminal-stock restriction only with mandatory T76/T106/T107 source-checked explicit terminal settlement; preserve all cash, debt, opening and event controls",
+  "financial_acceptance": false
+}

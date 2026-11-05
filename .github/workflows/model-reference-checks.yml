@@ -55,6 +55,8 @@ jobs:
         run: python tools/check_deferred_insurance_T106.py
       - name: Verify insurance terminal binding and independent closing cash oracles
         run: python tools/check_insurance_terminal_T107.py
+      - name: Verify settled operating stocks sale and full synthetic cash return
+        run: python tools/check_settled_lifecycle_T108.py
       - name: Verify one-page Dot and bot role summary
         run: python tools/check_dots_bots_onepage_ROLES01.py
       - name: Test synthetic technical foundation

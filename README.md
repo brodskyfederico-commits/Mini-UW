@@ -4,6 +4,8 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- [Operación, saldos, venta y retorno T108](docs/settled-lifecycle-v1-runbook.md): ruta sintética completa desde compra/obra, liquidación explícita del seguro y retorno agregado; conserva el control directo T77 y recalcula TIR si cambia el calendario. Vigencia/salida de una página para esta ruta y aceptación financiera pendientes.
+
 - [Seguro y caja del cierre T107](docs/insurance-terminal-v1-runbook.md): concilia pagos previstos en el corte con egresos ya declarados de venta, conserva su residual sin doble descuento y retira cifras incompatibles; operación/retorno completo pendientes.
 
 - [Liquidación nominal de seguro T106](docs/deferred-insurance-v1-runbook.md): separa vencimientos y pagos previstos, identifica saldos al corte y exige otra fuente de liquidación; integración con venta/retorno pendiente.

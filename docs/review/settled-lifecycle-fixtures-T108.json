@@ -1,0 +1,70 @@
+{
+  "component": "T108",
+  "scope": "Explicit distinct synthetic sources with retained or distributed five-unit operating cash; no actual deal, financial policy or candidate adoption",
+  "cases": [
+    {
+      "label": "retained",
+      "path": "templates/settled-lifecycle-retained-T108.json",
+      "sha256": "2407ca737243e8356554bb8638b82b3229dc3b117b431f62a57d441202a6fb57",
+      "run_sha256": "3f679b9cce354d42efdab6244cc764d61ad2443db3903772db035005fa95db55",
+      "state": "compiled_synthetic_settled_purchase_to_sale",
+      "gross_contributions": {
+        "denominator": "1",
+        "numerator": "1400"
+      },
+      "gross_distributions": {
+        "denominator": "1",
+        "numerator": "840"
+      },
+      "net_cash_profit": {
+        "denominator": "1",
+        "numerator": "-560"
+      },
+      "periodic_roots": "complete_synthetic"
+    },
+    {
+      "label": "distributed",
+      "path": "templates/settled-lifecycle-distributed-T108.json",
+      "sha256": "196b17d7a33bb8b2b9553ba83ae3f74c44ca174c25d4cd6df42a1686b760ff3d",
+      "run_sha256": "866ea1c1514fabb8ca76c17b67008acc68b2be9a78189472c71236b22fc37ced",
+      "state": "compiled_synthetic_settled_purchase_to_sale",
+      "gross_contributions": {
+        "denominator": "1",
+        "numerator": "1400"
+      },
+      "gross_distributions": {
+        "denominator": "1",
+        "numerator": "840"
+      },
+      "net_cash_profit": {
+        "denominator": "1",
+        "numerator": "-560"
+      },
+      "periodic_roots": "complete_synthetic"
+    },
+    {
+      "label": "missing-stock",
+      "path": "templates/settled-lifecycle-missing-stock-T108.json",
+      "sha256": "0abcc7f2349f653bd6ebb67544dca5f1a6cfafc23d1bc162b83ca9d78d6e7fcb",
+      "run_sha256": "ff2c8499da6b095de241bfc8ff180091fdacb1d0a898466b403a42ccfe79bad4",
+      "state": "PENDING",
+      "gross_contributions": null,
+      "gross_distributions": null,
+      "net_cash_profit": null,
+      "periodic_roots": null
+    },
+    {
+      "label": "wrong-payment",
+      "path": "templates/settled-lifecycle-wrong-payment-T108.json",
+      "sha256": "9c15f2ec446b83b919961d15d6c085d87c15d0e5123b148eb27f3a8c8b75245d",
+      "run_sha256": "2fa1b4719f574b864e92884ee079d9b0ef63047e327f5ff4bc856c47d1cd6f6e",
+      "state": "PENDING",
+      "gross_contributions": null,
+      "gross_distributions": null,
+      "net_cash_profit": null,
+      "periodic_roots": null
+    }
+  ],
+  "original_direct_control": "templates/synthetic-expense-checked-lifecycle-bundle.json",
+  "original_direct_control_sha256": "186933036d4834b56e76a66c49bca3d52b90af58c42ceb3e0d08c6920d55a37e"
+}

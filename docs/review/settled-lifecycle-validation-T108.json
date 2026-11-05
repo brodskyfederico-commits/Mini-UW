@@ -1,0 +1,174 @@
+{
+  "component": "T108",
+  "status": "passed_full_source_path_and_independent_cash_and_IRR_certificates",
+  "files_verified": 3,
+  "source_cases_checked": 4,
+  "cases": [
+    {
+      "label": "retained",
+      "source_sha256": "2407ca737243e8356554bb8638b82b3229dc3b117b431f62a57d441202a6fb57",
+      "run_sha256": "3f679b9cce354d42efdab6244cc764d61ad2443db3903772db035005fa95db55",
+      "state": "compiled_synthetic_settled_purchase_to_sale",
+      "blockers": {
+        "boundary": [],
+        "hold_sale": [],
+        "holding": [],
+        "returns": [],
+        "window": []
+      },
+      "gross_contributions": {
+        "denominator": "1",
+        "numerator": "1400"
+      },
+      "gross_distributions": {
+        "denominator": "1",
+        "numerator": "840"
+      }
+    },
+    {
+      "label": "distributed",
+      "source_sha256": "196b17d7a33bb8b2b9553ba83ae3f74c44ca174c25d4cd6df42a1686b760ff3d",
+      "run_sha256": "866ea1c1514fabb8ca76c17b67008acc68b2be9a78189472c71236b22fc37ced",
+      "state": "compiled_synthetic_settled_purchase_to_sale",
+      "blockers": {
+        "boundary": [],
+        "hold_sale": [],
+        "holding": [],
+        "returns": [],
+        "window": []
+      },
+      "gross_contributions": {
+        "denominator": "1",
+        "numerator": "1400"
+      },
+      "gross_distributions": {
+        "denominator": "1",
+        "numerator": "840"
+      }
+    },
+    {
+      "label": "missing-stock",
+      "source_sha256": "0abcc7f2349f653bd6ebb67544dca5f1a6cfafc23d1bc162b83ca9d78d6e7fcb",
+      "run_sha256": "ff2c8499da6b095de241bfc8ff180091fdacb1d0a898466b403a42ccfe79bad4",
+      "state": "PENDING",
+      "blockers": {
+        "boundary": [
+          "accounting_balances_missing_or_negative",
+          "payables:terminal_aggregate_not_exact_supported_settlement",
+          "terminal_accounting_stock_differs_from_T76"
+        ],
+        "hold_sale": [
+          "explicit_expense_boundary_blocked"
+        ],
+        "holding": [],
+        "returns": [
+          "staged_operating_cash_or_debt_window_blocked"
+        ],
+        "window": [
+          "operating_holding_or_sale_blocked"
+        ]
+      },
+      "gross_contributions": null,
+      "gross_distributions": null
+    },
+    {
+      "label": "wrong-payment",
+      "source_sha256": "9c15f2ec446b83b919961d15d6c085d87c15d0e5123b148eb27f3a8c8b75245d",
+      "run_sha256": "2fa1b4719f574b864e92884ee079d9b0ef63047e327f5ff4bc856c47d1cd6f6e",
+      "state": "PENDING",
+      "blockers": {
+        "boundary": [
+          "complete_exact_pre_cut_insurance_payment_mapping_required",
+          "unknown_or_wrong_item_payment_mapping"
+        ],
+        "hold_sale": [
+          "explicit_expense_boundary_blocked"
+        ],
+        "holding": [],
+        "returns": [
+          "staged_operating_cash_or_debt_window_blocked"
+        ],
+        "window": [
+          "operating_holding_or_sale_blocked"
+        ]
+      },
+      "gross_contributions": null,
+      "gross_distributions": null
+    }
+  ],
+  "independent_IRR_certificates": [
+    {
+      "label": "retained",
+      "coefficient_sign_variations": 1,
+      "strict_exact_rational_bracket": true,
+      "unique_positive_discount_root_certified": true,
+      "annual_frequency": 12,
+      "point_rate_selected": false
+    },
+    {
+      "label": "distributed",
+      "coefficient_sign_variations": 1,
+      "strict_exact_rational_bracket": true,
+      "unique_positive_discount_root_certified": true,
+      "annual_frequency": 12,
+      "point_rate_selected": false
+    }
+  ],
+  "run_sha256": "3f679b9cce354d42efdab6244cc764d61ad2443db3903772db035005fa95db55",
+  "original_direct_control_cash_preserved": true,
+  "old_zero_terminal_profile_preserved": true,
+  "blocked_source_first_directory_recovery_verified": true,
+  "source_versions": [
+    {
+      "path": "src/miniuw_foundation/settled_case.py",
+      "sha256": "cd4d346dbb6af1c980efc10e7dbcc1dca11ad61b352ea4b13ea6617b1b38e8d8"
+    },
+    {
+      "path": "src/miniuw_foundation/settled_expense_boundary.py",
+      "sha256": "126aa3cd82a4e164c3c624a6dd0fb77c4fca4b78ed205f394cd3b417e8cd06d4"
+    },
+    {
+      "path": "src/miniuw_foundation/settled_hold_sale.py",
+      "sha256": "95cce059bd65fd0a0704c3165b71a753e48805e4279e17cd199a0682c6fc9084"
+    },
+    {
+      "path": "src/miniuw_foundation/settled_operating_window.py",
+      "sha256": "268ca9c625220152e278d3df273f22e6d76eedd1bbe3b224ad5758acc61d25e0"
+    },
+    {
+      "path": "src/miniuw_foundation/settled_lifecycle_returns.py",
+      "sha256": "3130b3102dcac1f856d952df0ff318f2ae39df05a90d3367a39a629ec6b74fc8"
+    },
+    {
+      "path": "src/miniuw_foundation/settled_case_artifacts.py",
+      "sha256": "50c4d3ee7ce2d48c440023fd033f4cc94001097f468c5153a33108c8e23bf7be"
+    },
+    {
+      "path": "tools/check_settled_lifecycle_T108.py",
+      "sha256": "acc98d25cdf327c8442a1cf98861979c5fd7e4bf0c67d83c77c1e229db2fd2d9"
+    },
+    {
+      "path": "tools/settled_miniuw_v1.py",
+      "sha256": "cd92f3684d7ac2e85c4659205b05f2ba61b9bf3a09c135cd70467cd306d1417d"
+    },
+    {
+      "path": "docs/technical-implementation-T108.md",
+      "sha256": "cdb8c4b3725ebf1e6adb4ea5a1bbcf144bc4d2f831d58d6c27ff61d49795bfee"
+    },
+    {
+      "path": "docs/review/settled-lifecycle-fixtures-T108.json",
+      "sha256": "0c5eefa0f702c978df1a74075ecc7fa1fe429c3a930d271442e90e0eb9ef58f4"
+    }
+  ],
+  "complete_supplied_synthetic_cash_path_connected": true,
+  "all_model_profiles_or_financial_acceptance_completed": false,
+  "current_source_authority_verified": false,
+  "one_page_for_this_new_profile_integrated": false,
+  "original_semantic_mappings_pending": 54,
+  "actual_personal_return_verified": false,
+  "new_external_PDF_created": false,
+  "financial_publication_authorized": false,
+  "deployment_enabled": false,
+  "real_decisions_enabled": false,
+  "decision": "PENDING"
+}

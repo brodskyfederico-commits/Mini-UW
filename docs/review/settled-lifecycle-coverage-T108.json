@@ -1,0 +1,595 @@
+{
+  "component": "T108",
+  "scope": "Connected full supplied synthetic cash profile; partial financial model coverage, no authentic financial closure",
+  "rows": [
+    {
+      "requirement_or_variable": "construction_opening_same_debt_and_cash_not_new_equity",
+      "source": {
+        "path": "docs/technical-implementation-T108.md",
+        "line": 3,
+        "sha256": "cdb8c4b3725ebf1e6adb4ea5a1bbcf144bc4d2f831d58d6c27ff61d49795bfee"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 costos, financiación, operaciones y salida",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "CASH-02"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 aportes/distribuciones brutos frente a neto",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "RETURN-01"
+        },
+        {
+          "documento": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+          "sha256_documento": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+          "ubicacion_exacta": "§3, Expenses",
+          "definicion_documentada": "Fuente histórica de Gastos sin impuesto; desarrollo nuevo localizado por ID en docs/model-operations-contract.md. No demuestra adopción aprobada.",
+          "matrix_id": "M2-05"
+        }
+      ],
+      "current_definition": "Replay original construction cash, phase debt, opening cash, period service and scheduled sale debt; no phase principal/cash counted as extra contribution.",
+      "source_fixture": {
+        "path": "templates/settled-lifecycle-retained-T108.json",
+        "sha256": "2407ca737243e8356554bb8638b82b3229dc3b117b431f62a57d441202a6fb57",
+        "json_pointer": "/construction_bundle_utf8"
+      },
+      "affected_modules": [
+        "M2",
+        "M5",
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "calculation_modules": [
+        "src/miniuw_foundation/settled_expense_boundary.py",
+        "src/miniuw_foundation/settled_hold_sale.py",
+        "src/miniuw_foundation/settled_operating_window.py",
+        "src/miniuw_foundation/settled_lifecycle_returns.py",
+        "src/miniuw_foundation/settled_case.py"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_settled_lifecycle.py",
+          "line": 52,
+          "test": "SettledLifecycleTests.test_gross_zero_events_and_normalization_are_not_net_flow_or_funding_shortcuts"
+        },
+        {
+          "path": "tests/test_settled_lifecycle.py",
+          "line": 102,
+          "test": "SettledLifecycleTests.test_boundary_cash_or_sale_debt_proof_cannot_be_bypassed"
+        },
+        {
+          "path": "docs/review/settled-lifecycle-validation-T108.json",
+          "json_pointer": "/status"
+        }
+      ],
+      "status": "partially_implemented_synthetic_supplied_profile_connected",
+      "financial_end_to_end_coverage": false,
+      "pending": "Actual contracts/funding, asset/accrual opening carry, additional liability profiles and real authority pending."
+    },
+    {
+      "requirement_or_variable": "complete_period_item_inventory_and_stock_continuity",
+      "source": {
+        "path": "docs/technical-implementation-T108.md",
+        "line": 7,
+        "sha256": "cdb8c4b3725ebf1e6adb4ea5a1bbcf144bc4d2f831d58d6c27ff61d49795bfee"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 costos, financiación, operaciones y salida",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "CASH-02"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 aportes/distribuciones brutos frente a neto",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "RETURN-01"
+        },
+        {
+          "documento": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+          "sha256_documento": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+          "ubicacion_exacta": "§3, Expenses",
+          "definicion_documentada": "Fuente histórica de Gastos sin impuesto; desarrollo nuevo localizado por ID en docs/model-operations-contract.md. No demuestra adopción aprobada.",
+          "matrix_id": "M2-05"
+        }
+      ],
+      "current_definition": "Every NOI/cash/T76 source reconciles; fixed item/kind/economic identity and gross payable/prepaid continuity by item, including explicit zero.",
+      "source_fixture": {
+        "path": "templates/settled-lifecycle-retained-T108.json",
+        "sha256": "2407ca737243e8356554bb8638b82b3229dc3b117b431f62a57d441202a6fb57",
+        "json_pointer": "/boundary_source_utf8::json/periods"
+      },
+      "affected_modules": [
+        "M2",
+        "M5",
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "calculation_modules": [
+        "src/miniuw_foundation/settled_expense_boundary.py",
+        "src/miniuw_foundation/settled_hold_sale.py",
+        "src/miniuw_foundation/settled_operating_window.py",
+        "src/miniuw_foundation/settled_lifecycle_returns.py",
+        "src/miniuw_foundation/settled_case.py"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_settled_lifecycle.py",
+          "line": 77,
+          "test": "SettledLifecycleTests.test_complete_ordered_period_inventory_preserves_missing_and_zero_items"
+        },
+        {
+          "path": "tests/test_settled_lifecycle.py",
+          "line": 83,
+          "test": "SettledLifecycleTests.test_same_aggregate_stocks_and_payments_cannot_hide_per_item_discontinuity"
+        },
+        {
+          "path": "docs/review/settled-lifecycle-validation-T108.json",
+          "json_pointer": "/status"
+        }
+      ],
+      "status": "partially_implemented_synthetic_supplied_profile_connected",
+      "financial_end_to_end_coverage": false,
+      "pending": "Real accounting policy, complete economic inventory and original54 semantic mappings remain pending."
+    },
+    {
+      "requirement_or_variable": "nominal_cost_allocation_and_pre_cut_payment_identity_map",
+      "source": {
+        "path": "docs/technical-implementation-T108.md",
+        "line": 7,
+        "sha256": "cdb8c4b3725ebf1e6adb4ea5a1bbcf144bc4d2f831d58d6c27ff61d49795bfee"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 costos, financiación, operaciones y salida",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "CASH-02"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 aportes/distribuciones brutos frente a neto",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "RETURN-01"
+        },
+        {
+          "documento": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+          "sha256_documento": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+          "ubicacion_exacta": "§3, Expenses",
+          "definicion_documentada": "Fuente histórica de Gastos sin impuesto; desarrollo nuevo localizado por ID en docs/model-operations-contract.md. No demuestra adopción aprobada.",
+          "matrix_id": "M2-05"
+        }
+      ],
+      "current_definition": "Exact supplied allocation periods/expense plus one-to-one complete T106 pre-cut IDs to dated T76 insurance payments.",
+      "source_fixture": {
+        "path": "templates/settled-lifecycle-retained-T108.json",
+        "sha256": "2407ca737243e8356554bb8638b82b3229dc3b117b431f62a57d441202a6fb57",
+        "json_pointer": "/boundary_source_utf8::json/payment_map"
+      },
+      "affected_modules": [
+        "M2",
+        "M5",
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "calculation_modules": [
+        "src/miniuw_foundation/settled_expense_boundary.py",
+        "src/miniuw_foundation/settled_hold_sale.py",
+        "src/miniuw_foundation/settled_operating_window.py",
+        "src/miniuw_foundation/settled_lifecycle_returns.py",
+        "src/miniuw_foundation/settled_case.py"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_settled_lifecycle.py",
+          "line": 70,
+          "test": "SettledLifecycleTests.test_pre_cut_payment_identity_date_and_complete_inventory_cannot_be_guessed"
+        },
+        {
+          "path": "tests/test_settled_lifecycle.py",
+          "line": 90,
+          "test": "SettledLifecycleTests.test_incompatible_plan_allocation_or_future_payment_withdraws_full_return"
+        },
+        {
+          "path": "docs/review/settled-lifecycle-validation-T108.json",
+          "json_pointer": "/status"
+        }
+      ],
+      "status": "partially_implemented_synthetic_supplied_profile_connected",
+      "financial_end_to_end_coverage": false,
+      "pending": "Additional clauses, overlapping policy profiles and future post-cut dated settlement pending."
+    },
+    {
+      "requirement_or_variable": "independently_supplied_accounting_terminal_settlement",
+      "source": {
+        "path": "docs/technical-implementation-T108.md",
+        "line": 9,
+        "sha256": "cdb8c4b3725ebf1e6adb4ea5a1bbcf144bc4d2f831d58d6c27ff61d49795bfee"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 costos, financiación, operaciones y salida",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "CASH-02"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 aportes/distribuciones brutos frente a neto",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "RETURN-01"
+        },
+        {
+          "documento": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+          "sha256_documento": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+          "ubicacion_exacta": "§3, Expenses",
+          "definicion_documentada": "Fuente histórica de Gastos sin impuesto; desarrollo nuevo localizado por ID en docs/model-operations-contract.md. No demuestra adopción aprobada.",
+          "matrix_id": "M2-05"
+        }
+      ],
+      "current_definition": "T76 terminal stocks match explicit before/after claims; payment matches payoff identity and T107 sale cash. No stock inferred from nominal tail.",
+      "source_fixture": {
+        "path": "templates/settled-lifecycle-retained-T108.json",
+        "sha256": "2407ca737243e8356554bb8638b82b3229dc3b117b431f62a57d441202a6fb57",
+        "json_pointer": "/boundary_source_utf8::json/accounting"
+      },
+      "affected_modules": [
+        "M2",
+        "M5",
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "calculation_modules": [
+        "src/miniuw_foundation/settled_expense_boundary.py",
+        "src/miniuw_foundation/settled_hold_sale.py",
+        "src/miniuw_foundation/settled_operating_window.py",
+        "src/miniuw_foundation/settled_lifecycle_returns.py",
+        "src/miniuw_foundation/settled_case.py"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_settled_lifecycle.py",
+          "line": 62,
+          "test": "SettledLifecycleTests.test_missing_supplied_accounting_stock_never_becomes_nominal_tail_or_zero"
+        },
+        {
+          "path": "tests/test_settled_lifecycle.py",
+          "line": 66,
+          "test": "SettledLifecycleTests.test_wrong_before_after_accounting_balances_with_fresh_hashes_stay_pending"
+        },
+        {
+          "path": "docs/review/settled-lifecycle-validation-T108.json",
+          "json_pointer": "/status"
+        }
+      ],
+      "status": "partially_implemented_synthetic_supplied_profile_connected",
+      "financial_end_to_end_coverage": false,
+      "pending": "Authentic legal/accounting liability, bank settlement and additional terminal balances pending."
+    },
+    {
+      "requirement_or_variable": "full_window_sale_cash_and_no_second_expense_or_payment",
+      "source": {
+        "path": "docs/technical-implementation-T108.md",
+        "line": 11,
+        "sha256": "cdb8c4b3725ebf1e6adb4ea5a1bbcf144bc4d2f831d58d6c27ff61d49795bfee"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 costos, financiación, operaciones y salida",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "CASH-02"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 aportes/distribuciones brutos frente a neto",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "RETURN-01"
+        },
+        {
+          "documento": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+          "sha256_documento": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+          "ubicacion_exacta": "§3, Expenses",
+          "definicion_documentada": "Fuente histórica de Gastos sin impuesto; desarrollo nuevo localizado por ID en docs/model-operations-contract.md. No demuestra adopción aprobada.",
+          "matrix_id": "M2-05"
+        }
+      ],
+      "current_definition": "Carry free/restricted cash to sale, keep same debt, reconcile exhaustive gross window sources/uses and count insurance payment once.",
+      "source_fixture": {
+        "path": "templates/settled-lifecycle-retained-T108.json",
+        "sha256": "2407ca737243e8356554bb8638b82b3229dc3b117b431f62a57d441202a6fb57",
+        "json_pointer": "/sale/closing_source_utf8"
+      },
+      "affected_modules": [
+        "M2",
+        "M5",
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "calculation_modules": [
+        "src/miniuw_foundation/settled_expense_boundary.py",
+        "src/miniuw_foundation/settled_hold_sale.py",
+        "src/miniuw_foundation/settled_operating_window.py",
+        "src/miniuw_foundation/settled_lifecycle_returns.py",
+        "src/miniuw_foundation/settled_case.py"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_settled_lifecycle.py",
+          "line": 40,
+          "test": "SettledLifecycleTests.test_retained_cash_settles_five_once_and_preserves_full_direct_control_return"
+        },
+        {
+          "path": "tests/test_settled_lifecycle.py",
+          "line": 98,
+          "test": "SettledLifecycleTests.test_old_zero_terminal_profile_still_rejects_this_supplied_payable"
+        },
+        {
+          "path": "docs/review/settled-lifecycle-validation-T108.json",
+          "json_pointer": "/status"
+        }
+      ],
+      "status": "partially_implemented_synthetic_supplied_profile_connected",
+      "financial_end_to_end_coverage": false,
+      "pending": "Source currentness, later phased rental/current case adapter and complete financial acceptance pending."
+    },
+    {
+      "requirement_or_variable": "gross_lifetime_equity_calendar_and_all_root_returns",
+      "source": {
+        "path": "docs/technical-implementation-T108.md",
+        "line": 13,
+        "sha256": "cdb8c4b3725ebf1e6adb4ea5a1bbcf144bc4d2f831d58d6c27ff61d49795bfee"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 costos, financiación, operaciones y salida",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "CASH-02"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 aportes/distribuciones brutos frente a neto",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "RETURN-01"
+        },
+        {
+          "documento": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+          "sha256_documento": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+          "ubicacion_exacta": "§3, Expenses",
+          "definicion_documentada": "Fuente histórica de Gastos sin impuesto; desarrollo nuevo localizado por ID en docs/model-operations-contract.md. No demuestra adopción aprobada.",
+          "matrix_id": "M2-05"
+        }
+      ],
+      "current_definition": "All opening/operation/sale events exactly mapped into blank source slots; derive dated gross/net, EM, annual cash and explicit normalization; primitive all-root/annual IRR with unchanged limits and no point.",
+      "source_fixture": {
+        "path": "templates/settled-lifecycle-retained-T108.json",
+        "sha256": "2407ca737243e8356554bb8638b82b3229dc3b117b431f62a57d441202a6fb57",
+        "json_pointer": "/return_binding_source_utf8"
+      },
+      "affected_modules": [
+        "M2",
+        "M5",
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "calculation_modules": [
+        "src/miniuw_foundation/settled_expense_boundary.py",
+        "src/miniuw_foundation/settled_hold_sale.py",
+        "src/miniuw_foundation/settled_operating_window.py",
+        "src/miniuw_foundation/settled_lifecycle_returns.py",
+        "src/miniuw_foundation/settled_case.py"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_settled_lifecycle.py",
+          "line": 46,
+          "test": "SettledLifecycleTests.test_explicit_distribution_revision_changes_dates_but_not_total_receipts"
+        },
+        {
+          "path": "tests/test_settled_lifecycle.py",
+          "line": 57,
+          "test": "SettledLifecycleTests.test_IRR_all_root_inventory_and_annualization_keep_same_source_budgets"
+        },
+        {
+          "path": "tests/test_settled_lifecycle.py",
+          "line": 110,
+          "test": "SettledLifecycleTests.test_event_mapping_unknown_prepopulated_or_off_grid_is_never_filled"
+        },
+        {
+          "path": "docs/review/settled-lifecycle-validation-T108.json",
+          "json_pointer": "/status"
+        }
+      ],
+      "status": "partially_implemented_synthetic_supplied_profile_connected",
+      "financial_end_to_end_coverage": false,
+      "pending": "Capital bases/CoC, actual LP allocation, full metric/criterion financial definitions and review pending."
+    },
+    {
+      "requirement_or_variable": "blocked_whole_return_withdrawal_and_process_determinism",
+      "source": {
+        "path": "docs/technical-implementation-T108.md",
+        "line": 17,
+        "sha256": "cdb8c4b3725ebf1e6adb4ea5a1bbcf144bc4d2f831d58d6c27ff61d49795bfee"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 costos, financiación, operaciones y salida",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "CASH-02"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 aportes/distribuciones brutos frente a neto",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "RETURN-01"
+        },
+        {
+          "documento": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+          "sha256_documento": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+          "ubicacion_exacta": "§3, Expenses",
+          "definicion_documentada": "Fuente histórica de Gastos sin impuesto; desarrollo nuevo localizado por ID en docs/model-operations-contract.md. No demuestra adopción aprobada.",
+          "matrix_id": "M2-05"
+        }
+      ],
+      "current_definition": "Any required-source blocker withdraws all combined financial figures; hash-seed independent ordering gives identical full run across processes.",
+      "source_fixture": {
+        "path": "templates/settled-lifecycle-retained-T108.json",
+        "sha256": "2407ca737243e8356554bb8638b82b3229dc3b117b431f62a57d441202a6fb57",
+        "json_pointer": "/boundary_source_utf8"
+      },
+      "affected_modules": [
+        "M2",
+        "M5",
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "calculation_modules": [
+        "src/miniuw_foundation/settled_expense_boundary.py",
+        "src/miniuw_foundation/settled_hold_sale.py",
+        "src/miniuw_foundation/settled_operating_window.py",
+        "src/miniuw_foundation/settled_lifecycle_returns.py",
+        "src/miniuw_foundation/settled_case.py"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_settled_lifecycle.py",
+          "line": 120,
+          "test": "SettledLifecycleTests.test_all_process_hash_seeds_produce_identical_full_run"
+        },
+        {
+          "path": "tests/test_settled_lifecycle.py",
+          "line": 62,
+          "test": "SettledLifecycleTests.test_missing_supplied_accounting_stock_never_becomes_nominal_tail_or_zero"
+        },
+        {
+          "path": "tests/test_settled_lifecycle.py",
+          "line": 179,
+          "test": "SettledLifecycleTests.test_full_cash_path_does_not_approve_personal_capital_policy_or_real_decisions"
+        },
+        {
+          "path": "docs/review/settled-lifecycle-validation-T108.json",
+          "json_pointer": "/status"
+        }
+      ],
+      "status": "partially_implemented_synthetic_supplied_profile_connected",
+      "financial_end_to_end_coverage": false,
+      "pending": "T46 current-evidence gate and exactly-one-page rendering for this new profile pending."
+    },
+    {
+      "requirement_or_variable": "source_first_package_and_strict_recovery",
+      "source": {
+        "path": "docs/technical-implementation-T108.md",
+        "line": 19,
+        "sha256": "cdb8c4b3725ebf1e6adb4ea5a1bbcf144bc4d2f831d58d6c27ff61d49795bfee"
+      },
+      "original_requirement_references": [
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 costos, financiación, operaciones y salida",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "CASH-02"
+        },
+        {
+          "documento": "Pasted text.txt",
+          "sha256_documento": "fbb44a320a46c3a5ae9534443e9eba48477d42ff03e540d3beb4b43cb5340791",
+          "ubicacion_exacta": "§5 aportes/distribuciones brutos frente a neto",
+          "definicion_documentada": "El traspaso exige distinguir y trazar estos conceptos. El contrato detallado se propone ahora, no se recuperó como implementación.",
+          "matrix_id": "RETURN-01"
+        },
+        {
+          "documento": "Fuentes de Lorena/Reglas_de_la_casa_v5.1_Master_Prompt_Lorena.txt",
+          "sha256_documento": "95a304fd3e535f16ebd5eb6abf0b223c211f9f596727c878de720779f7ceb701",
+          "ubicacion_exacta": "§3, Expenses",
+          "definicion_documentada": "Fuente histórica de Gastos sin impuesto; desarrollo nuevo localizado por ID en docs/model-operations-contract.md. No demuestra adopción aprobada.",
+          "matrix_id": "M2-05"
+        }
+      ],
+      "current_definition": "Three JSON files replay full raw source chain, versions and outputs, including blocked cases; no trusted rehashed result, other overwrite or external PDF.",
+      "source_fixture": {
+        "path": "templates/settled-lifecycle-retained-T108.json",
+        "sha256": "2407ca737243e8356554bb8638b82b3229dc3b117b431f62a57d441202a6fb57",
+        "json_pointer": "/schema"
+      },
+      "affected_modules": [
+        "M2",
+        "M5",
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "calculation_modules": [
+        "src/miniuw_foundation/settled_expense_boundary.py",
+        "src/miniuw_foundation/settled_hold_sale.py",
+        "src/miniuw_foundation/settled_operating_window.py",
+        "src/miniuw_foundation/settled_lifecycle_returns.py",
+        "src/miniuw_foundation/settled_case.py"
+      ],
+      "validation_evidence": [
+        {
+          "path": "tests/test_settled_lifecycle.py",
+          "line": 128,
+          "test": "SettledLifecycleTests.test_rehashed_current_return_and_other_raw_source_do_not_verify"
+        },
+        {
+          "path": "tests/test_settled_lifecycle.py",
+          "line": 134,
+          "test": "SettledLifecycleTests.test_three_file_source_first_recovery_handles_current_and_blocked_cases"
+        },
+        {
+          "path": "tests/test_settled_lifecycle.py",
+          "line": 143,
+          "test": "SettledLifecycleTests.test_versions_rehashed_results_and_unsafe_manifest_cannot_replace_replay"
+        },
+        {
+          "path": "tests/test_settled_lifecycle.py",
+          "line": 156,
+          "test": "SettledLifecycleTests.test_retry_no_other_overwrite_size_symlink_and_own_temp_cleanup"
+        },
+        {
+          "path": "tests/test_settled_lifecycle.py",
+          "line": 172,
+          "test": "SettledLifecycleTests.test_strict_schema_duplicate_mapping_and_bounded_sources_reject"
+        },
+        {
+          "path": "docs/review/settled-lifecycle-validation-T108.json",
+          "json_pointer": "/status"
+        }
+      ],
+      "status": "partially_implemented_synthetic_supplied_profile_connected",
+      "financial_end_to_end_coverage": false,
+      "pending": "Production concurrency, runtime restoration, financial release authority, real decisions and deployment pending."
+    }
+  ],
+  "original_coverage_rows_preserved": 398,
+  "original_semantic_mappings_pending": 54,
+  "all_model_profiles_or_financial_acceptance_completed": false,
+  "real_decisions_enabled": false
+}

@@ -1,10 +1,10 @@
 {
-  "scope": "I01 preserved design, D02–D07 design/structure documentation and T01–T107 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D07 design/structure documentation and T01–T108 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 3115,
-      "sha256": "0891ac41d5f69d665a4ac02ef95e1e4302d1f5e3128ae418304df83fc75a8adc"
+      "bytes": 3255,
+      "sha256": "767350b95c17492563a8d6861ebcb5d2aeb0242e8cab3c6f12545a3c67365cc2"
     },
     {
       "path": ".gitignore",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 42081,
-      "sha256": "f43cd85d70fe954ebfd30d6421e7dc67d2814438bd4981768362953fc97694cc"
+      "bytes": 42421,
+      "sha256": "2012492c5849f84499aa5a68a3fb963adfab00737324d43b5ea8995557623583"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 186514,
-      "sha256": "5d59519784c1c5f3e0d236ab7fe3a5e69c16bcc9073848bb68c420fe7eff8392"
+      "bytes": 189815,
+      "sha256": "47002c9832d823c8d70ea22eec3c3d37f0f5c4e4516d6a78a3141ed06fc14a39"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -1282,6 +1282,21 @@
       "sha256": "7679ef83ff4940109adecc7156773d51c5fb3a0a316949681c5907cf3493cc54"
     },
     {
+      "path": "docs/review/miniuw-v1-settled-lifecycle-example/package.json",
+      "bytes": 3184,
+      "sha256": "6dfde4eb1116d3476f4cc5b5020484dfa835f1139dce7ccc463aa14175848259"
+    },
+    {
+      "path": "docs/review/miniuw-v1-settled-lifecycle-example/settled-case-results.json",
+      "bytes": 30891,
+      "sha256": "f53eedbe823b4d3540c9dbda842141007adf35a781784c71ba37bf32b412dfd0"
+    },
+    {
+      "path": "docs/review/miniuw-v1-settled-lifecycle-example/settled-case-source.json",
+      "bytes": 107273,
+      "sha256": "2407ca737243e8356554bb8638b82b3229dc3b117b431f62a57d441202a6fb57"
+    },
+    {
       "path": "docs/review/miniuw-v1-worksheet-case-example/Inputs.xlsx",
       "bytes": 8655,
       "sha256": "9c4e15d40b8df7755bd7dfe0ec3e9690f8d89a52fe5abc31baf7a1c13713922c"
@@ -1365,6 +1380,26 @@
       "path": "docs/review/scheduled-tax-four-summary.json",
       "bytes": 11714,
       "sha256": "1aedba3e87e5b94fa3ccf7e16d8ba6fc977c058cca2dc87d7e7f6dd628145a98"
+    },
+    {
+      "path": "docs/review/settled-lifecycle-coverage-T108.json",
+      "bytes": 28588,
+      "sha256": "e7b379a1668429da50d6fd599e6ed9ba17b936f84db2e18245bde2030066f2dc"
+    },
+    {
+      "path": "docs/review/settled-lifecycle-derivation-T108.json",
+      "bytes": 908,
+      "sha256": "aedd6c43d686274b43f4f6dca08a7b06b2432072f194c5dd2c4aad045027b21e"
+    },
+    {
+      "path": "docs/review/settled-lifecycle-fixtures-T108.json",
+      "bytes": 2619,
+      "sha256": "0c5eefa0f702c978df1a74075ecc7fa1fe429c3a930d271442e90e0eb9ef58f4"
+    },
+    {
+      "path": "docs/review/settled-lifecycle-validation-T108.json",
+      "bytes": 5857,
+      "sha256": "23f757d48a116fa46e85e5b3f740233dc0aaa92e33a50aeba337de99386332d1"
     },
     {
       "path": "docs/review/synthetic-bounded-exit-sale-demo.json",
@@ -1570,6 +1605,11 @@
       "path": "docs/sensitivity-ranking.md",
       "bytes": 4024,
       "sha256": "ace476dfa79506eff7e9d541a93523cd84db2b5cd12cdb3cd2abec871aaf6c52"
+    },
+    {
+      "path": "docs/settled-lifecycle-v1-runbook.md",
+      "bytes": 2910,
+      "sha256": "07d1f133b7646fbfe94d73019cf768701334b71158726e3de469ea73af5fa9ec"
     },
     {
       "path": "docs/source-annex-reconciliation.json",
@@ -1847,6 +1887,11 @@
       "sha256": "139136abad661f243e27d1555403b06a5bbf1b6a4f719aff85e5551ab4c3db2a"
     },
     {
+      "path": "docs/technical-implementation-T108.md",
+      "bytes": 5702,
+      "sha256": "cdb8c4b3725ebf1e6adb4ea5a1bbcf144bc4d2f831d58d6c27ff61d49795bfee"
+    },
+    {
       "path": "docs/technical-implementation-T11.md",
       "bytes": 5491,
       "sha256": "7fcff82f9760ccd95f28f7ecc784aff735cd03f56225f936716eb5a87eef4e58"
@@ -2118,8 +2163,8 @@
     },
     {
       "path": "docs/technical-implementation-status.json",
-      "bytes": 39383,
-      "sha256": "a1311dadcb9d1a5765df74da1378aefc94c3f5d51cbdc433287e5043455a21fa"
+      "bytes": 40765,
+      "sha256": "2b264e7a8dfe21a50b0ce668f67b492aa2a96836f8f115879bff7dc122fb5de9"
     },
     {
       "path": "docs/worksheet-case-v1-runbook.md",
@@ -3327,6 +3372,36 @@
       "sha256": "52701de576e82c52d0d156ecc8b5801132250427ef5b02dc2393bbdcc6538137"
     },
     {
+      "path": "src/miniuw_foundation/settled_case.py",
+      "bytes": 7877,
+      "sha256": "cd4d346dbb6af1c980efc10e7dbcc1dca11ad61b352ea4b13ea6617b1b38e8d8"
+    },
+    {
+      "path": "src/miniuw_foundation/settled_case_artifacts.py",
+      "bytes": 5152,
+      "sha256": "50c4d3ee7ce2d48c440023fd033f4cc94001097f468c5153a33108c8e23bf7be"
+    },
+    {
+      "path": "src/miniuw_foundation/settled_expense_boundary.py",
+      "bytes": 11650,
+      "sha256": "126aa3cd82a4e164c3c624a6dd0fb77c4fca4b78ed205f394cd3b417e8cd06d4"
+    },
+    {
+      "path": "src/miniuw_foundation/settled_hold_sale.py",
+      "bytes": 10888,
+      "sha256": "95cce059bd65fd0a0704c3165b71a753e48805e4279e17cd199a0682c6fc9084"
+    },
+    {
+      "path": "src/miniuw_foundation/settled_lifecycle_returns.py",
+      "bytes": 7568,
+      "sha256": "3130b3102dcac1f856d952df0ff318f2ae39df05a90d3367a39a629ec6b74fc8"
+    },
+    {
+      "path": "src/miniuw_foundation/settled_operating_window.py",
+      "bytes": 6103,
+      "sha256": "268ca9c625220152e278d3df273f22e6d76eedd1bbe3b224ad5758acc61d25e0"
+    },
+    {
       "path": "src/miniuw_foundation/sheets.py",
       "bytes": 2146,
       "sha256": "b3ef61d0bbef33652572c0caf3095931c3c157154c21780b962058f458f367af"
@@ -3745,6 +3820,26 @@
       "path": "templates/project-draft-empty.json",
       "bytes": 26694,
       "sha256": "8cfc2915b9ee64bec53df3ea9041b7784f546200bdc676fcaf7b58679b88f16c"
+    },
+    {
+      "path": "templates/settled-lifecycle-distributed-T108.json",
+      "bytes": 107273,
+      "sha256": "196b17d7a33bb8b2b9553ba83ae3f74c44ca174c25d4cd6df42a1686b760ff3d"
+    },
+    {
+      "path": "templates/settled-lifecycle-missing-stock-T108.json",
+      "bytes": 107234,
+      "sha256": "0abcc7f2349f653bd6ebb67544dca5f1a6cfafc23d1bc162b83ca9d78d6e7fcb"
+    },
+    {
+      "path": "templates/settled-lifecycle-retained-T108.json",
+      "bytes": 107273,
+      "sha256": "2407ca737243e8356554bb8638b82b3229dc3b117b431f62a57d441202a6fb57"
+    },
+    {
+      "path": "templates/settled-lifecycle-wrong-payment-T108.json",
+      "bytes": 107267,
+      "sha256": "9c15f2ec446b83b919961d15d6c085d87c15d0e5123b148eb27f3a8c8b75245d"
     },
     {
       "path": "templates/synthetic-bounded-exit-currency-example.json",
@@ -4767,6 +4862,11 @@
       "sha256": "a8217759cb0ad47723e05e3a11233c718eb7b6534214e46b362c8e7c08f6cc7c"
     },
     {
+      "path": "tests/test_settled_lifecycle.py",
+      "bytes": 16615,
+      "sha256": "092abb59c1e1270956105b19790fc67790a0670bef18802e855316676aa1983d"
+    },
+    {
       "path": "tests/test_sheets.py",
       "bytes": 10876,
       "sha256": "272634c6f8e9cbe2e32b98684b2ca101cdc0e60a53c2a6983fb43ef3eb18a3ae"
@@ -4890,6 +4990,11 @@
       "path": "tools/check_reference_package.py",
       "bytes": 6320,
       "sha256": "85fa024e6718f2adae6e4dba2f23a0568dfcacc28bdc14c8e668f79ca3bbb148"
+    },
+    {
+      "path": "tools/check_settled_lifecycle_T108.py",
+      "bytes": 11352,
+      "sha256": "acc98d25cdf327c8442a1cf98861979c5fd7e4bf0c67d83c77c1e229db2fd2d9"
     },
     {
       "path": "tools/check_structure_faults.py",
@@ -5225,6 +5330,11 @@
       "path": "tools/scheduled_miniuw_v1.py",
       "bytes": 1276,
       "sha256": "57f00bf482afbce443e8d44ebb931d3fb22743f37966daf31f55f6196ac86791"
+    },
+    {
+      "path": "tools/settled_miniuw_v1.py",
+      "bytes": 1087,
+      "sha256": "cd92f3684d7ac2e85c4659205b05f2ba61b9bf3a09c135cd70467cd306d1417d"
     },
     {
       "path": "tools/staged_phase_demo_support.py",
