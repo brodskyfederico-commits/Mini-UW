@@ -1,0 +1,713 @@
+{
+  "snapshot_id": "D14",
+  "scope": "Scoped arithmetic fault demonstrations and existing non-arithmetic blockers; no product runtime changes or financial stress policy",
+  "previous_design_commit": "3cc5edc8534f545823516565b7bba6e552af12b3",
+  "technical_baseline": "T111",
+  "technical_baseline_commit": "9aeb590151068ccd51f4eca0e92f7c766464ba94",
+  "baseline_audit_ref": {
+    "path": "docs/current-structure/MiniUW_Conciliacion_Sintetica_D13.json",
+    "sha256": "0f23a7388dcb045cedda6b33a11e7ba119a4ace300ad1f2f5127e9e992c60837"
+  },
+  "fault_cases": [
+    {
+      "case_id": "F01",
+      "title": "Doble descuento del seguro incluido en venta",
+      "mutation": {
+        "target_ref": {
+          "path": "templates/worksheet-settled-matched-T111.json",
+          "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+          "embedded_json_pointers": [
+            "/phased_settled_source_utf8",
+            "/current_settled_source_utf8",
+            "/case_source_utf8",
+            "/sale/closing_source_utf8"
+          ],
+          "final_pointer": "/amounts/other_cash_uses/value"
+        },
+        "operation": "add_existing_amount",
+        "magnitude_ref": {
+          "path": "templates/worksheet-settled-matched-T111.json",
+          "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+          "embedded_json_pointers": [
+            "/phased_settled_source_utf8",
+            "/current_settled_source_utf8",
+            "/case_source_utf8",
+            "/boundary_source_utf8",
+            "/terminal_binding_source_utf8"
+          ],
+          "final_pointer": "/payments/0/amount"
+        },
+        "original_value": {
+          "numerator": "5",
+          "denominator": "1"
+        },
+        "derived_fault_value": {
+          "numerator": "10",
+          "denominator": "1"
+        }
+      },
+      "expected_minimum_mismatch_checks": [
+        "A13",
+        "A16"
+      ],
+      "required_handling": "Conservar concepto/pago/contrapartida; conciliar el uso existente antes de deducir otro pago.",
+      "baseline_parsed_source_sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+      "ephemeral_derived_source_sha256": "b7a995fba19f1f6d050ee148f807b8427b6998f28a00858d0987a704c15a2c27",
+      "nonzero_residual_check_ids": [
+        "A13",
+        "A16",
+        "A20",
+        "A21",
+        "A22",
+        "A24"
+      ],
+      "nonzero_residual_count": 6,
+      "global_sources_uses_check_A18_detects_fault": false,
+      "global_sources_uses_check_A18_residual": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "arithmetic_fault_detected": true,
+      "model_input_adopted": false,
+      "runtime_rejection_tested": false,
+      "financial_classification": "PENDING"
+    },
+    {
+      "case_id": "F02",
+      "title": "Omisión del seguro al corte",
+      "mutation": {
+        "target_ref": {
+          "path": "templates/worksheet-settled-matched-T111.json",
+          "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+          "embedded_json_pointers": [
+            "/phased_settled_source_utf8",
+            "/current_settled_source_utf8",
+            "/case_source_utf8",
+            "/sale/closing_source_utf8"
+          ],
+          "final_pointer": "/amounts/other_cash_uses/value"
+        },
+        "operation": "subtract_existing_amount",
+        "magnitude_ref": {
+          "path": "templates/worksheet-settled-matched-T111.json",
+          "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+          "embedded_json_pointers": [
+            "/phased_settled_source_utf8",
+            "/current_settled_source_utf8",
+            "/case_source_utf8",
+            "/boundary_source_utf8",
+            "/terminal_binding_source_utf8"
+          ],
+          "final_pointer": "/payments/0/amount"
+        },
+        "original_value": {
+          "numerator": "5",
+          "denominator": "1"
+        },
+        "derived_fault_value": {
+          "numerator": "0",
+          "denominator": "1"
+        }
+      },
+      "expected_minimum_mismatch_checks": [
+        "A13",
+        "A16"
+      ],
+      "required_handling": "No borrar el uso suministrado sin una revisión sustentada del pago, stock y cierre.",
+      "baseline_parsed_source_sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+      "ephemeral_derived_source_sha256": "b84e61fb26b3077e9e2abed77a95f0975e592444f03c3b7d38c2e679a3fbffd3",
+      "nonzero_residual_check_ids": [
+        "A13",
+        "A16",
+        "A20",
+        "A21",
+        "A22",
+        "A24"
+      ],
+      "nonzero_residual_count": 6,
+      "global_sources_uses_check_A18_detects_fault": false,
+      "global_sources_uses_check_A18_residual": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "arithmetic_fault_detected": true,
+      "model_input_adopted": false,
+      "runtime_rejection_tested": false,
+      "financial_classification": "PENDING"
+    },
+    {
+      "case_id": "F03",
+      "title": "Repago de principal de venta duplicado",
+      "mutation": {
+        "target_ref": {
+          "path": "templates/worksheet-settled-matched-T111.json",
+          "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+          "embedded_json_pointers": [
+            "/phased_settled_source_utf8",
+            "/current_settled_source_utf8",
+            "/case_source_utf8",
+            "/sale/closing_source_utf8"
+          ],
+          "final_pointer": "/old_debts/0/principal_paid/value"
+        },
+        "operation": "add_existing_amount",
+        "magnitude_ref": {
+          "path": "templates/worksheet-settled-matched-T111.json",
+          "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+          "embedded_json_pointers": [
+            "/phased_settled_source_utf8",
+            "/current_settled_source_utf8",
+            "/case_source_utf8",
+            "/sale/closing_source_utf8"
+          ],
+          "final_pointer": "/old_debts/0/principal_paid"
+        },
+        "original_value": {
+          "numerator": "100",
+          "denominator": "1"
+        },
+        "derived_fault_value": {
+          "numerator": "200",
+          "denominator": "1"
+        }
+      },
+      "expected_minimum_mismatch_checks": [
+        "A16"
+      ],
+      "required_handling": "Separar principal debido/pagado y reconstruir payoff/distribución con fuentes; no cuadrar por ajuste ficticio.",
+      "baseline_parsed_source_sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+      "ephemeral_derived_source_sha256": "934c5aa744be31120b305304233bf60a3b8620aa77ac9c197c0e39315b80ffd4",
+      "nonzero_residual_check_ids": [
+        "A16",
+        "A20",
+        "A21",
+        "A22",
+        "A24"
+      ],
+      "nonzero_residual_count": 5,
+      "global_sources_uses_check_A18_detects_fault": false,
+      "global_sources_uses_check_A18_residual": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "arithmetic_fault_detected": true,
+      "model_input_adopted": false,
+      "runtime_rejection_tested": false,
+      "financial_classification": "PENDING"
+    },
+    {
+      "case_id": "F04",
+      "title": "Payable operativo borrado con pagos sin revisar",
+      "mutation": {
+        "target_ref": {
+          "path": "templates/worksheet-settled-matched-T111.json",
+          "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+          "embedded_json_pointers": [
+            "/phased_settled_source_utf8",
+            "/current_settled_source_utf8",
+            "/case_source_utf8",
+            "/periods/0/cash_source_utf8"
+          ],
+          "final_pointer": "/working_balances/payables/closing/value"
+        },
+        "operation": "subtract_existing_amount",
+        "magnitude_ref": {
+          "path": "templates/worksheet-settled-matched-T111.json",
+          "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+          "embedded_json_pointers": [
+            "/phased_settled_source_utf8",
+            "/current_settled_source_utf8",
+            "/case_source_utf8",
+            "/periods/0/cash_source_utf8"
+          ],
+          "final_pointer": "/working_balances/payables/closing"
+        },
+        "original_value": {
+          "numerator": "5",
+          "denominator": "1"
+        },
+        "derived_fault_value": {
+          "numerator": "0",
+          "denominator": "1"
+        }
+      },
+      "expected_minimum_mismatch_checks": [
+        "A05",
+        "A09"
+      ],
+      "required_handling": "Preservar devengo, pago y saldo por concepto; no sustituir faltantes o discrepancias por cero.",
+      "baseline_parsed_source_sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+      "ephemeral_derived_source_sha256": "1ee64960697736d007cc814e421ee6ca0eaa8aed636b2866bd5ea182156bf138",
+      "nonzero_residual_check_ids": [
+        "A05",
+        "A09",
+        "A18"
+      ],
+      "nonzero_residual_count": 3,
+      "global_sources_uses_check_A18_detects_fault": true,
+      "global_sources_uses_check_A18_residual": {
+        "numerator": "-5",
+        "denominator": "1"
+      },
+      "arithmetic_fault_detected": true,
+      "model_input_adopted": false,
+      "runtime_rejection_tested": false,
+      "financial_classification": "PENDING"
+    },
+    {
+      "case_id": "F05",
+      "title": "Principal de cambio de fase tratado como caja nueva",
+      "mutation": {
+        "target_ref": {
+          "path": "templates/worksheet-settled-matched-T111.json",
+          "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+          "embedded_json_pointers": [
+            "/phased_settled_source_utf8",
+            "/current_settled_source_utf8",
+            "/case_source_utf8",
+            "/periods/0/cash_source_utf8"
+          ],
+          "final_pointer": "/amounts/opening_free_cash/value"
+        },
+        "operation": "add_existing_amount",
+        "magnitude_ref": {
+          "path": "templates/worksheet-settled-matched-T111.json",
+          "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+          "embedded_json_pointers": [
+            "/phased_settled_source_utf8",
+            "/current_settled_source_utf8",
+            "/case_source_utf8",
+            "/sale/loans/0/source"
+          ],
+          "final_pointer": "/principal"
+        },
+        "original_value": {
+          "numerator": "590",
+          "denominator": "1"
+        },
+        "derived_fault_value": {
+          "numerator": "790",
+          "denominator": "1"
+        }
+      },
+      "expected_minimum_mismatch_checks": [
+        "A04",
+        "A05"
+      ],
+      "required_handling": "Una fase de la misma obligación no crea draw/equity; exigir origen de la diferencia de caja.",
+      "baseline_parsed_source_sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+      "ephemeral_derived_source_sha256": "87c42c8e3934da252f63647de604133c6ae425d69f3cb7ce7cd277be64b36c31",
+      "nonzero_residual_check_ids": [
+        "A04",
+        "A05"
+      ],
+      "nonzero_residual_count": 2,
+      "global_sources_uses_check_A18_detects_fault": false,
+      "global_sources_uses_check_A18_residual": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "arithmetic_fault_detected": true,
+      "model_input_adopted": false,
+      "runtime_rejection_tested": false,
+      "financial_classification": "PENDING"
+    },
+    {
+      "case_id": "F06",
+      "title": "Reserva restringida sumada otra vez a caja libre de venta",
+      "mutation": {
+        "target_ref": {
+          "path": "templates/worksheet-settled-matched-T111.json",
+          "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+          "embedded_json_pointers": [
+            "/phased_settled_source_utf8",
+            "/current_settled_source_utf8",
+            "/case_source_utf8",
+            "/sale/closing_source_utf8"
+          ],
+          "final_pointer": "/amounts/opening_free_cash/value"
+        },
+        "operation": "add_existing_amount",
+        "magnitude_ref": {
+          "path": "templates/worksheet-settled-matched-T111.json",
+          "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+          "embedded_json_pointers": [
+            "/phased_settled_source_utf8",
+            "/current_settled_source_utf8",
+            "/case_source_utf8",
+            "/sale/closing_source_utf8"
+          ],
+          "final_pointer": "/amounts/opening_restricted_cash"
+        },
+        "original_value": {
+          "numerator": "213",
+          "denominator": "1"
+        },
+        "derived_fault_value": {
+          "numerator": "313",
+          "denominator": "1"
+        }
+      },
+      "expected_minimum_mismatch_checks": [
+        "A14",
+        "A16"
+      ],
+      "required_handling": "Conciliar libre/restringida y liberación interna sin duplicar fondos.",
+      "baseline_parsed_source_sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+      "ephemeral_derived_source_sha256": "51022114b33fa3534b2dc30a6fe92052c10d84ecc84262094474ab0d3ef5e5a0",
+      "nonzero_residual_check_ids": [
+        "A14",
+        "A16",
+        "A18",
+        "A20",
+        "A21",
+        "A22",
+        "A24"
+      ],
+      "nonzero_residual_count": 7,
+      "global_sources_uses_check_A18_detects_fault": true,
+      "global_sources_uses_check_A18_residual": {
+        "numerator": "-100",
+        "denominator": "1"
+      },
+      "arithmetic_fault_detected": true,
+      "model_input_adopted": false,
+      "runtime_rejection_tested": false,
+      "financial_classification": "PENDING"
+    },
+    {
+      "case_id": "F07",
+      "title": "Aportes brutos sustituidos por neteo con cobros",
+      "mutation": {
+        "target_ref": {
+          "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+          "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+          "embedded_json_pointers": [],
+          "final_pointer": "/current_project_return_story/gross_contributions"
+        },
+        "operation": "subtract_existing_amount",
+        "magnitude_ref": {
+          "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+          "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+          "embedded_json_pointers": [],
+          "final_pointer": "/current_project_return_story/gross_distributions"
+        },
+        "original_value": {
+          "numerator": "1400",
+          "denominator": "1"
+        },
+        "derived_fault_value": {
+          "numerator": "622",
+          "denominator": "1"
+        }
+      },
+      "expected_minimum_mismatch_checks": [
+        "A19"
+      ],
+      "required_handling": "Mantener aportes y cobros brutos; no calcular EM o capital desde el neteo.",
+      "baseline_parsed_source_sha256": "086587f75ee71b9a6c5d3d2437af0d0bf3d60220c327b4ac1c9f8d3b6ba99228",
+      "ephemeral_derived_source_sha256": "a067dd6d10d701393c75ddc06c9d3cff96aaccc70078b793635e5bca692e8764",
+      "nonzero_residual_check_ids": [
+        "A19"
+      ],
+      "nonzero_residual_count": 1,
+      "global_sources_uses_check_A18_detects_fault": false,
+      "global_sources_uses_check_A18_residual": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "arithmetic_fault_detected": true,
+      "model_input_adopted": false,
+      "runtime_rejection_tested": false,
+      "financial_classification": "PENDING"
+    },
+    {
+      "case_id": "F08",
+      "title": "Aporte adicional omitido conservando cierres originales",
+      "mutation": {
+        "target_ref": {
+          "path": "templates/worksheet-settled-matched-T111.json",
+          "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+          "embedded_json_pointers": [
+            "/phased_settled_source_utf8",
+            "/current_settled_source_utf8",
+            "/case_source_utf8",
+            "/construction_bundle_utf8",
+            "/preopening_source"
+          ],
+          "final_pointer": "/events/4/amount/value"
+        },
+        "operation": "subtract_existing_amount",
+        "magnitude_ref": {
+          "path": "templates/worksheet-settled-matched-T111.json",
+          "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+          "embedded_json_pointers": [
+            "/phased_settled_source_utf8",
+            "/current_settled_source_utf8",
+            "/case_source_utf8",
+            "/construction_bundle_utf8",
+            "/preopening_source"
+          ],
+          "final_pointer": "/events/4/amount"
+        },
+        "original_value": {
+          "numerator": "400",
+          "denominator": "1"
+        },
+        "derived_fault_value": {
+          "numerator": "0",
+          "denominator": "1"
+        }
+      },
+      "expected_minimum_mismatch_checks": [
+        "A02",
+        "A19"
+      ],
+      "required_handling": "Conservar aporte/fecha/fuente y recalcular revisión; no sostener caja anterior con financiación no documentada.",
+      "baseline_parsed_source_sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+      "ephemeral_derived_source_sha256": "ce400dff30329d6654c796e7bc364a4d1159746ecf08caeba6dcb7749850e46d",
+      "nonzero_residual_check_ids": [
+        "A02",
+        "A04",
+        "A18",
+        "A19",
+        "A21",
+        "A22",
+        "A23"
+      ],
+      "nonzero_residual_count": 7,
+      "global_sources_uses_check_A18_detects_fault": true,
+      "global_sources_uses_check_A18_residual": {
+        "numerator": "-400",
+        "denominator": "1"
+      },
+      "arithmetic_fault_detected": true,
+      "model_input_adopted": false,
+      "runtime_rejection_tested": false,
+      "financial_classification": "PENDING"
+    }
+  ],
+  "arithmetic_limits": [
+    {
+      "limit_id": "L01",
+      "title": "Completitud y autenticidad",
+      "evidence_refs": [
+        {
+          "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+          "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+          "embedded_json_pointers": [],
+          "final_pointer": "/source_authority_verified"
+        },
+        {
+          "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+          "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+          "embedded_json_pointers": [],
+          "final_pointer": "/professional_review_authenticated"
+        }
+      ],
+      "observed_values": [
+        false,
+        false
+      ],
+      "pending_reason": "Cuadrar no autentica inventario, pago bancario, términos o revisión profesional.",
+      "baseline_arithmetic_equalities_match": true,
+      "financial_status": "PENDING",
+      "financial_acceptance_complete": false
+    },
+    {
+      "limit_id": "L02",
+      "title": "Criterios y decisión",
+      "evidence_refs": [
+        {
+          "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+          "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+          "embedded_json_pointers": [],
+          "final_pointer": "/criterion_slots"
+        },
+        {
+          "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+          "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+          "embedded_json_pointers": [],
+          "final_pointer": "/decision"
+        }
+      ],
+      "observed_values": [
+        [
+          {
+            "metric_id": "YoC",
+            "state": "PENDING",
+            "threshold": null
+          },
+          {
+            "metric_id": "spread",
+            "state": "PENDING",
+            "threshold": null
+          },
+          {
+            "metric_id": "equity_recovered",
+            "state": "PENDING",
+            "threshold": null
+          },
+          {
+            "metric_id": "equity_cash_in",
+            "state": "PENDING",
+            "threshold": null
+          },
+          {
+            "metric_id": "breakeven_occupancy",
+            "state": "PENDING",
+            "threshold": null
+          },
+          {
+            "metric_id": "post_refi_CoC",
+            "state": "PENDING",
+            "threshold": null
+          },
+          {
+            "metric_id": "equity_TDC",
+            "state": "PENDING",
+            "threshold": null
+          },
+          {
+            "metric_id": "equity_multiple",
+            "state": "PENDING",
+            "threshold": null
+          },
+          {
+            "metric_id": "IRR",
+            "state": "PENDING",
+            "threshold": null
+          },
+          {
+            "metric_id": "asking_relative_to_supported_price",
+            "state": "PENDING",
+            "threshold": null
+          }
+        ],
+        "PENDING"
+      ],
+      "pending_reason": "Diez criterios vacíos y bandas/definiciones pendientes conservan PENDING; una igualdad no fija un umbral.",
+      "baseline_arithmetic_equalities_match": true,
+      "financial_status": "PENDING",
+      "financial_acceptance_complete": false
+    },
+    {
+      "limit_id": "L03",
+      "title": "Stock de capital y CoC",
+      "evidence_refs": [
+        {
+          "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+          "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+          "embedded_json_pointers": [],
+          "final_pointer": "/current_project_return_story/capital_snapshots"
+        },
+        {
+          "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+          "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+          "embedded_json_pointers": [],
+          "final_pointer": "/current_project_return_story/annual_cash_receipts"
+        }
+      ],
+      "observed_values": [
+        [],
+        [
+          {
+            "blocker": "positive_declared_annual_capital_base_missing",
+            "calendar_cash_receipt_year": 2026,
+            "conditional_coc": null,
+            "declared_capital_base": null,
+            "gross_contributions": {
+              "denominator": "1",
+              "numerator": "1400"
+            },
+            "gross_distributions": {
+              "denominator": "1",
+              "numerator": "0"
+            },
+            "net_equity_cash": {
+              "denominator": "1",
+              "numerator": "-1400"
+            },
+            "normalized_operating_distributions": {
+              "denominator": "1",
+              "numerator": "0"
+            },
+            "operating_distributions_only": {
+              "denominator": "1",
+              "numerator": "0"
+            },
+            "operating_year_coverage_financially_verified": false
+          },
+          {
+            "blocker": "positive_declared_annual_capital_base_missing",
+            "calendar_cash_receipt_year": 2027,
+            "conditional_coc": null,
+            "declared_capital_base": null,
+            "gross_contributions": {
+              "denominator": "1",
+              "numerator": "0"
+            },
+            "gross_distributions": {
+              "denominator": "1",
+              "numerator": "778"
+            },
+            "net_equity_cash": {
+              "denominator": "1",
+              "numerator": "778"
+            },
+            "normalized_operating_distributions": {
+              "denominator": "7",
+              "numerator": "10"
+            },
+            "operating_distributions_only": {
+              "denominator": "1",
+              "numerator": "200"
+            },
+            "operating_year_coverage_financially_verified": false
+          }
+        ]
+      ],
+      "pending_reason": "El flujo de caja no define stock/equity ni el denominador anual de CoC.",
+      "baseline_arithmetic_equalities_match": true,
+      "financial_status": "PENDING",
+      "financial_acceptance_complete": false
+    },
+    {
+      "limit_id": "L04",
+      "title": "Retorno personal",
+      "evidence_refs": [
+        {
+          "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+          "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+          "embedded_json_pointers": [],
+          "final_pointer": "/personal_investor_return"
+        }
+      ],
+      "observed_values": [
+        null
+      ],
+      "pending_reason": "El retorno agregado no establece participación ni reparto personal sin términos aplicables.",
+      "baseline_arithmetic_equalities_match": true,
+      "financial_status": "PENDING",
+      "financial_acceptance_complete": false
+    }
+  ],
+  "ephemeral_synthetic_fault_views": 8,
+  "published_model_input_values_added": 0,
+  "new_runtime_components": 0,
+  "new_tests": 0,
+  "technical_tests_unchanged": 1619,
+  "financial_bindings_activated": 0,
+  "financial_acceptance_checks_executed": 0,
+  "original_semantic_mappings_pending": 54,
+  "source_files_modified": false,
+  "old_results_modified": false,
+  "model_producers_imported_or_called": false,
+  "runtime_rejection_tested": false,
+  "IRR_recalculated": false,
+  "financial_model_complete": false,
+  "professional_review_authenticated": false,
+  "personal_return_verified": false,
+  "real_decisions_enabled": false,
+  "deployment_enabled": false
+}

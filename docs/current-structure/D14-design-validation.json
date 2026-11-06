@@ -1,0 +1,64 @@
+{
+  "snapshot_id": "D14",
+  "status": "passed_scoped_arithmetic_fault_replay_and_documentary_consistency",
+  "scope": "Eight tagged in-memory arithmetic fault views; not financial stress acceptance or runtime rejection verification",
+  "previous_design_commit": "3cc5edc8534f545823516565b7bba6e552af12b3",
+  "technical_baseline": "T111",
+  "technical_baseline_commit": "9aeb590151068ccd51f4eca0e92f7c766464ba94",
+  "prior_files_preserved": 1210,
+  "actual_changed_prior_files": [
+    "BACKUP_MANIFEST.json",
+    "README.md",
+    "WORK_LOG.md"
+  ],
+  "baseline_equalities_replayed": 24,
+  "synthetic_fault_views_replayed": 8,
+  "fault_views_detected_by_any_reconciliation": 8,
+  "arithmetic_evaluations_replayed": 216,
+  "fault_views_missed_by_global_A18_alone": 5,
+  "non_arithmetic_limits_documented": 4,
+  "source_files_modified": false,
+  "old_results_modified": false,
+  "source_views_persisted_as_model_input": false,
+  "model_producers_imported_or_called": false,
+  "runtime_rejection_tested": false,
+  "financial_acceptance_checks_executed": 0,
+  "financial_bindings_activated": 0,
+  "published_model_input_values_added": 0,
+  "new_runtime_components": 0,
+  "new_tests": 0,
+  "technical_tests_unchanged": 1619,
+  "IRR_recalculated": false,
+  "source_versions": [
+    {
+      "path": "docs/current-structure/MiniUW_Controles_Negativos_D14.json",
+      "bytes": 25681,
+      "sha256": "395038b524ec4f2976eddc9b271bacfb1b054f60962e02da627cea28322b888f"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Resultados_Controles_D14.json",
+      "bytes": 146792,
+      "sha256": "50eba65381d6e4abdf419f0163e9c31ba5c15c1b40083fa8b46c641dd341987e"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Controles_Negativos_D14.md",
+      "bytes": 7067,
+      "sha256": "04a1df1a73d94f17293c4580e3fe9eee0bfda6a41521ed9722ab3ac9fdd46cc8"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Casos_8_D14.csv",
+      "bytes": 2231,
+      "sha256": "1eb69e06255bcf4c0481d9775a48541d7e2e9d3c7dc071fe9a83e0d85ca4c688"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Limites_4_D14.csv",
+      "bytes": 2468,
+      "sha256": "5d5cea51292d962ab70f8ab561659fe5d12b73d2e1fa18eeffe83f0ffe1d35df"
+    }
+  ],
+  "financial_model_complete": false,
+  "professional_review_authenticated": false,
+  "personal_return_verified": false,
+  "real_decisions_enabled": false,
+  "deployment_enabled": false
+}
