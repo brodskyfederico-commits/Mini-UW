@@ -1,0 +1,77 @@
+{
+  "snapshot_id": "D18",
+  "status": "passed_read_only_shared_preopening_bundle_draw_event_cash_and_budget_boundary_reconstruction",
+  "previous_design_commit": "13648c013cd3790d56f1993a07a513fa0b524f55",
+  "technical_baseline": "T111",
+  "technical_baseline_commit": "9aeb590151068ccd51f4eca0e92f7c766464ba94",
+  "prior_files_preserved": 1234,
+  "actual_changed_prior_files": [
+    "BACKUP_MANIFEST.json",
+    "README.md",
+    "WORK_LOG.md"
+  ],
+  "outer_snapshot_bindings_verified": 2,
+  "unique_identical_embedded_bundles": 1,
+  "loan_periods_verified": 3,
+  "preopening_events_verified": 17,
+  "raw_null_debt_slots_preserved_and_linked": 12,
+  "date_close_rows_verified": 4,
+  "category_totals_verified": 14,
+  "opening_boundary_checks_verified": 4,
+  "pending_budget_finance_gates_preserved": 6,
+  "unknown_summary_values_preserved": 8,
+  "source_reference_locations_verified": 148,
+  "closing_free_cash": 590,
+  "closing_principal": 200,
+  "gross_draws": 250,
+  "gross_equity": 1400,
+  "principal_repayments": 50,
+  "nonrevolving_commitment_remaining": 50,
+  "shared_subcomponent_evidence_only": true,
+  "incremental_execution_or_cache_reuse_implemented": false,
+  "new_runtime_components": 0,
+  "new_tests": 0,
+  "technical_tests_unchanged": 1619,
+  "financial_bindings_activated": 0,
+  "financial_acceptance_checks_executed": 0,
+  "published_model_input_values_added": 0,
+  "deliberate_faults_introduced": 0,
+  "actual_model_bug_fixes": 0,
+  "model_producers_imported_or_called": false,
+  "IRR_recalculated": false,
+  "source_inputs_modified": false,
+  "old_results_modified": false,
+  "source_versions": [
+    {
+      "path": "docs/current-structure/MiniUW_Presupuesto_Deuda_y_Aportes_D18.json",
+      "bytes": 108044,
+      "sha256": "d0da73bb23461c1943a7730c23c3371e01b5cb7b10c527bc5b98eed24cdd9093"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Presupuesto_Deuda_y_Aportes_D18.md",
+      "bytes": 7276,
+      "sha256": "4d50fd8c239000f3fece2c9d61f307e97a021f9025f53f97d86bbbf4993d6a8b"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Eventos_Previos_17_D18.csv",
+      "bytes": 41047,
+      "sha256": "5e722933bb51475fcd5f1d046ba745839ff40f7560bab9be150c422a95e79b85"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Caja_Por_Fecha_4_D18.csv",
+      "bytes": 3765,
+      "sha256": "ae87dfa45698c49990cfb2c8741d09bdd2f21648612c622a8449c2f038798745"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Periodos_Deuda_3_D18.csv",
+      "bytes": 5669,
+      "sha256": "dcbebb760d7bf2c7fbd19b72764cf01ca2a6dca1d303f37d23319e13208a5aa6"
+    }
+  ],
+  "financial_model_complete": false,
+  "professional_review_authenticated": false,
+  "personal_return_verified": false,
+  "real_decisions_enabled": false,
+  "deployment_enabled": false,
+  "PDF_generated": false
+}

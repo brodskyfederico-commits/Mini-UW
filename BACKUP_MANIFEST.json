@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D17 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D18 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 50443,
-      "sha256": "f9a2b8254c37e201dd2a19963b2619482f1e2cd908c5fc52537681d4a3c5463d"
+      "bytes": 51209,
+      "sha256": "33f12914cd0bf2cd9c1e03a60861c1d9fdd71f91a89030afc1ce4533fcb2fa13"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 233198,
-      "sha256": "590c3027d8a96d7ba3398fe3e56ca1b73b12668070e05a01636e940209a32bed"
+      "bytes": 236513,
+      "sha256": "3eede67a3d18f65e42012e83891153f9739f4b9617006d74e36d687aa3e4db43"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -212,6 +212,11 @@
       "sha256": "d34de8b0bb452da4b64fa3db01d5679577ffaa595d468af4a89ebd230d048eec"
     },
     {
+      "path": "docs/current-structure/D18-design-validation.json",
+      "bytes": 2805,
+      "sha256": "4ec36f4ee61c0eff785f1e91fa22b43945cc13cb22d7e589a2dbc62b650d037f"
+    },
+    {
       "path": "docs/current-structure/MiniUW_55_campos_D04.csv",
       "bytes": 28155,
       "sha256": "36933edad8b3b905d629bb0e67113b316578a63f4652744af069b9cb302f0454"
@@ -255,6 +260,11 @@
       "path": "docs/current-structure/MiniUW_Bloqueos_D06.md",
       "bytes": 12427,
       "sha256": "5f5e14eb59008e75fd604f536674b601f0487f1052043228aec68382feeeeec0"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Caja_Por_Fecha_4_D18.csv",
+      "bytes": 3765,
+      "sha256": "ae87dfa45698c49990cfb2c8741d09bdd2f21648612c622a8449c2f038798745"
     },
     {
       "path": "docs/current-structure/MiniUW_Calendario_y_Retorno_D16.json",
@@ -412,6 +422,11 @@
       "sha256": "9199f5f0ee2205b71be28345e4e363c96115702215b31fcae578a576feef69ee"
     },
     {
+      "path": "docs/current-structure/MiniUW_Eventos_Previos_17_D18.csv",
+      "bytes": 41047,
+      "sha256": "5e722933bb51475fcd5f1d046ba745839ff40f7560bab9be150c422a95e79b85"
+    },
+    {
       "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
       "bytes": 318465,
       "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e"
@@ -445,6 +460,21 @@
       "path": "docs/current-structure/MiniUW_Movimientos_16_D16.csv",
       "bytes": 35744,
       "sha256": "fd476e36c71f1002210dbb112f992ab24b8e39ba6b1ad66050d8a1e5a478c7ed"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Periodos_Deuda_3_D18.csv",
+      "bytes": 5669,
+      "sha256": "dcbebb760d7bf2c7fbd19b72764cf01ca2a6dca1d303f37d23319e13208a5aa6"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Presupuesto_Deuda_y_Aportes_D18.json",
+      "bytes": 108044,
+      "sha256": "d0da73bb23461c1943a7730c23c3371e01b5cb7b10c527bc5b98eed24cdd9093"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Presupuesto_Deuda_y_Aportes_D18.md",
+      "bytes": 7276,
+      "sha256": "4d50fd8c239000f3fece2c9d61f307e97a021f9025f53f97d86bbbf4993d6a8b"
     },
     {
       "path": "docs/current-structure/MiniUW_Puentes_28_D17.csv",

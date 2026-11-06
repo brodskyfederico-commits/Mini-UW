@@ -1,0 +1,3088 @@
+{
+  "snapshot_id": "D18",
+  "scope": "One identical embedded preopening bundle shared by two existing outer T111 snapshots; read-only source-bound debt periods/events/date-close cash and budget sufficiency boundaries, without new financial inputs or execution reuse",
+  "previous_design_commit": "13648c013cd3790d56f1993a07a513fa0b524f55",
+  "technical_baseline": "T111",
+  "technical_baseline_commit": "9aeb590151068ccd51f4eca0e92f7c766464ba94",
+  "outer_snapshot_bindings": [
+    {
+      "input_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [],
+        "final_pointer": ""
+      },
+      "result_ref": {
+        "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+        "embedded_json_pointers": [],
+        "final_pointer": ""
+      },
+      "bundle_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8"
+        ],
+        "final_pointer": "/construction_bundle_utf8"
+      },
+      "bundle_UTF8_sha256": "2fcd3b12d50ed985346a4f6c5ed33311415c1ce7d6902065cccb87127642bd04",
+      "phase_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8"
+        ],
+        "final_pointer": "/phase_source_utf8"
+      },
+      "phase_UTF8_sha256": "91cab74563bec95cbc59f22dbde09777ba60de83df9f51f2e460b9b870d3074f",
+      "context": {
+        "deal_id": "SYNTHETIC-construction-draw-demo",
+        "definition_set_revision": "SYNTHETIC-simple-interval-factors",
+        "run_id": "SYNTHETIC-construction-draw-run",
+        "scenario_id": "SYNTHETIC-draw-plan"
+      },
+      "evaluated_as_of_UTC": "2027-07-01T12:00:00Z",
+      "bundle_bytes_identical": true,
+      "active_revision_changed": false,
+      "financial_decision": "PENDING"
+    },
+    {
+      "input_ref": {
+        "path": "templates/worksheet-settled-twelve-T111.json",
+        "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+        "embedded_json_pointers": [],
+        "final_pointer": ""
+      },
+      "result_ref": {
+        "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+        "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+        "embedded_json_pointers": [],
+        "final_pointer": ""
+      },
+      "bundle_ref": {
+        "path": "templates/worksheet-settled-twelve-T111.json",
+        "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8"
+        ],
+        "final_pointer": "/construction_bundle_utf8"
+      },
+      "bundle_UTF8_sha256": "2fcd3b12d50ed985346a4f6c5ed33311415c1ce7d6902065cccb87127642bd04",
+      "phase_ref": {
+        "path": "templates/worksheet-settled-twelve-T111.json",
+        "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8"
+        ],
+        "final_pointer": "/phase_source_utf8"
+      },
+      "phase_UTF8_sha256": "91cab74563bec95cbc59f22dbde09777ba60de83df9f51f2e460b9b870d3074f",
+      "context": {
+        "deal_id": "SYNTHETIC-construction-draw-demo",
+        "definition_set_revision": "SYNTHETIC-simple-interval-factors",
+        "run_id": "SYNTHETIC-construction-draw-run",
+        "scenario_id": "SYNTHETIC-draw-plan"
+      },
+      "evaluated_as_of_UTC": "2027-07-01T12:00:00Z",
+      "bundle_bytes_identical": true,
+      "active_revision_changed": false,
+      "financial_decision": "PENDING"
+    }
+  ],
+  "shared_bundle_UTF8_sha256": "2fcd3b12d50ed985346a4f6c5ed33311415c1ce7d6902065cccb87127642bd04",
+  "saved_construction_run_ref": {
+    "path": "templates/worksheet-settled-matched-T111.json",
+    "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+    "embedded_json_pointers": [
+      "/phased_settled_source_utf8",
+      "/current_settled_source_utf8",
+      "/case_source_utf8",
+      "/construction_bundle_utf8"
+    ],
+    "final_pointer": "/expected_run"
+  },
+  "saved_preopening_run_ref": {
+    "path": "templates/worksheet-settled-matched-T111.json",
+    "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+    "embedded_json_pointers": [
+      "/phased_settled_source_utf8",
+      "/current_settled_source_utf8",
+      "/case_source_utf8",
+      "/construction_bundle_utf8",
+      "/expected_run/payload_json"
+    ],
+    "final_pointer": "/preopening_run"
+  },
+  "debt_arithmetic_blueprint_ref": {
+    "path": "docs/current-structure/MiniUW_Conciliacion_Sintetica_D13.json",
+    "sha256": "0f23a7388dcb045cedda6b33a11e7ba119a4ace300ad1f2f5127e9e992c60837",
+    "embedded_json_pointers": [],
+    "final_pointer": ""
+  },
+  "loan_periods": [
+    {
+      "period_index": 0,
+      "period_id": "SYNTHETIC-construction-period-1",
+      "start_date": "2026-10-01",
+      "end_date": "2026-11-01",
+      "opening_principal": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "draw": {
+        "numerator": "100",
+        "denominator": "1"
+      },
+      "declared_period_available_draw": {
+        "numerator": "100",
+        "denominator": "1"
+      },
+      "interest_exposure": {
+        "numerator": "100",
+        "denominator": "1"
+      },
+      "supplied_interval_factor": {
+        "numerator": "1",
+        "denominator": "100"
+      },
+      "interest": {
+        "numerator": "1",
+        "denominator": "1"
+      },
+      "gross_draw_fee": {
+        "numerator": "2",
+        "denominator": "1"
+      },
+      "principal_repayment": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "closing_principal": {
+        "numerator": "100",
+        "denominator": "1"
+      },
+      "cumulative_gross_draws": {
+        "numerator": "100",
+        "denominator": "1"
+      },
+      "nonrevolving_commitment_remaining": {
+        "numerator": "200",
+        "denominator": "1"
+      },
+      "commitment_minus_outstanding_not_draw_capacity": {
+        "numerator": "200",
+        "denominator": "1"
+      },
+      "period_source_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/loans/0/source"
+        ],
+        "final_pointer": "/periods/0"
+      },
+      "commitment_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/loans/0/source"
+        ],
+        "final_pointer": "/principal_commitment"
+      },
+      "fee_fraction_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/loans/0/source"
+        ],
+        "final_pointer": "/draw_fee_fraction"
+      },
+      "no_annual_rate_conversion": true,
+      "actual_availability_authenticated": false
+    },
+    {
+      "period_index": 1,
+      "period_id": "SYNTHETIC-construction-period-2",
+      "start_date": "2026-11-01",
+      "end_date": "2026-12-01",
+      "opening_principal": {
+        "numerator": "100",
+        "denominator": "1"
+      },
+      "draw": {
+        "numerator": "100",
+        "denominator": "1"
+      },
+      "declared_period_available_draw": {
+        "numerator": "100",
+        "denominator": "1"
+      },
+      "interest_exposure": {
+        "numerator": "200",
+        "denominator": "1"
+      },
+      "supplied_interval_factor": {
+        "numerator": "1",
+        "denominator": "100"
+      },
+      "interest": {
+        "numerator": "2",
+        "denominator": "1"
+      },
+      "gross_draw_fee": {
+        "numerator": "2",
+        "denominator": "1"
+      },
+      "principal_repayment": {
+        "numerator": "50",
+        "denominator": "1"
+      },
+      "closing_principal": {
+        "numerator": "150",
+        "denominator": "1"
+      },
+      "cumulative_gross_draws": {
+        "numerator": "200",
+        "denominator": "1"
+      },
+      "nonrevolving_commitment_remaining": {
+        "numerator": "100",
+        "denominator": "1"
+      },
+      "commitment_minus_outstanding_not_draw_capacity": {
+        "numerator": "150",
+        "denominator": "1"
+      },
+      "period_source_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/loans/0/source"
+        ],
+        "final_pointer": "/periods/1"
+      },
+      "commitment_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/loans/0/source"
+        ],
+        "final_pointer": "/principal_commitment"
+      },
+      "fee_fraction_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/loans/0/source"
+        ],
+        "final_pointer": "/draw_fee_fraction"
+      },
+      "no_annual_rate_conversion": true,
+      "actual_availability_authenticated": false
+    },
+    {
+      "period_index": 2,
+      "period_id": "SYNTHETIC-construction-period-3",
+      "start_date": "2026-12-01",
+      "end_date": "2027-01-01",
+      "opening_principal": {
+        "numerator": "150",
+        "denominator": "1"
+      },
+      "draw": {
+        "numerator": "50",
+        "denominator": "1"
+      },
+      "declared_period_available_draw": {
+        "numerator": "50",
+        "denominator": "1"
+      },
+      "interest_exposure": {
+        "numerator": "200",
+        "denominator": "1"
+      },
+      "supplied_interval_factor": {
+        "numerator": "1",
+        "denominator": "100"
+      },
+      "interest": {
+        "numerator": "2",
+        "denominator": "1"
+      },
+      "gross_draw_fee": {
+        "numerator": "1",
+        "denominator": "1"
+      },
+      "principal_repayment": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "closing_principal": {
+        "numerator": "200",
+        "denominator": "1"
+      },
+      "cumulative_gross_draws": {
+        "numerator": "250",
+        "denominator": "1"
+      },
+      "nonrevolving_commitment_remaining": {
+        "numerator": "50",
+        "denominator": "1"
+      },
+      "commitment_minus_outstanding_not_draw_capacity": {
+        "numerator": "100",
+        "denominator": "1"
+      },
+      "period_source_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/loans/0/source"
+        ],
+        "final_pointer": "/periods/2"
+      },
+      "commitment_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/loans/0/source"
+        ],
+        "final_pointer": "/principal_commitment"
+      },
+      "fee_fraction_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/loans/0/source"
+        ],
+        "final_pointer": "/draw_fee_fraction"
+      },
+      "no_annual_rate_conversion": true,
+      "actual_availability_authenticated": false
+    }
+  ],
+  "preopening_events": [
+    {
+      "event_index": 0,
+      "event_id": "SYNTHETIC-equity-initial",
+      "date": "2026-10-01",
+      "category": "initial_equity_contribution",
+      "loan_id": null,
+      "currency": "USD",
+      "original_value": {
+        "denominator": "1",
+        "numerator": "1000"
+      },
+      "original_null_preserved": false,
+      "effective_amount": {
+        "numerator": "1000",
+        "denominator": "1"
+      },
+      "cash_sign": 1,
+      "signed_free_cash": {
+        "numerator": "1000",
+        "denominator": "1"
+      },
+      "event_source_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/preopening_source"
+        ],
+        "final_pointer": "/events/0"
+      },
+      "compiled_event_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/expected_run/payload_json",
+          "/compiled_preopening_json"
+        ],
+        "final_pointer": "/events/0"
+      },
+      "saved_event_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/expected_run/payload_json",
+          "/preopening_run/payload_json"
+        ],
+        "final_pointer": "/events/0"
+      },
+      "debt_blueprint_link_ref": null,
+      "debt_binding_slot_ref": null,
+      "derived_expression": null,
+      "used_as_new_investor_equity": true
+    },
+    {
+      "event_index": 1,
+      "event_id": "SYNTHETIC-acquisition",
+      "date": "2026-10-01",
+      "category": "acquisition_payment",
+      "loan_id": null,
+      "currency": "USD",
+      "original_value": {
+        "denominator": "1",
+        "numerator": "300"
+      },
+      "original_null_preserved": false,
+      "effective_amount": {
+        "numerator": "300",
+        "denominator": "1"
+      },
+      "cash_sign": -1,
+      "signed_free_cash": {
+        "numerator": "-300",
+        "denominator": "1"
+      },
+      "event_source_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/preopening_source"
+        ],
+        "final_pointer": "/events/1"
+      },
+      "compiled_event_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/expected_run/payload_json",
+          "/compiled_preopening_json"
+        ],
+        "final_pointer": "/events/1"
+      },
+      "saved_event_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/expected_run/payload_json",
+          "/preopening_run/payload_json"
+        ],
+        "final_pointer": "/events/1"
+      },
+      "debt_blueprint_link_ref": null,
+      "debt_binding_slot_ref": null,
+      "derived_expression": null,
+      "used_as_new_investor_equity": false
+    },
+    {
+      "event_index": 2,
+      "event_id": "SYNTHETIC-debt-0-0-loan_draw",
+      "date": "2026-10-01",
+      "category": "loan_draw",
+      "loan_id": "SYNTHETIC-staged-loan",
+      "currency": "USD",
+      "original_value": null,
+      "original_null_preserved": true,
+      "effective_amount": {
+        "numerator": "100",
+        "denominator": "1"
+      },
+      "cash_sign": 1,
+      "signed_free_cash": {
+        "numerator": "100",
+        "denominator": "1"
+      },
+      "event_source_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/preopening_source"
+        ],
+        "final_pointer": "/events/2"
+      },
+      "compiled_event_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/expected_run/payload_json",
+          "/compiled_preopening_json"
+        ],
+        "final_pointer": "/events/2"
+      },
+      "saved_event_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/expected_run/payload_json",
+          "/preopening_run/payload_json"
+        ],
+        "final_pointer": "/events/2"
+      },
+      "debt_blueprint_link_ref": {
+        "path": "docs/current-structure/MiniUW_Conciliacion_Sintetica_D13.json",
+        "sha256": "0f23a7388dcb045cedda6b33a11e7ba119a4ace300ad1f2f5127e9e992c60837",
+        "embedded_json_pointers": [],
+        "final_pointer": "/explicit_debt_slot_links/0"
+      },
+      "debt_binding_slot_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/binding_source"
+        ],
+        "final_pointer": "/event_slots/0"
+      },
+      "derived_expression": {
+        "op": "source",
+        "ref": {
+          "path": "templates/worksheet-settled-matched-T111.json",
+          "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+          "embedded_json_pointers": [
+            "/phased_settled_source_utf8",
+            "/current_settled_source_utf8",
+            "/case_source_utf8",
+            "/construction_bundle_utf8",
+            "/loans/0/source"
+          ],
+          "final_pointer": "/periods/0/draw_at_start"
+        }
+      },
+      "used_as_new_investor_equity": false
+    },
+    {
+      "event_index": 3,
+      "event_id": "SYNTHETIC-debt-0-0-debt_fee_payment",
+      "date": "2026-10-01",
+      "category": "debt_fee_payment",
+      "loan_id": "SYNTHETIC-staged-loan",
+      "currency": "USD",
+      "original_value": null,
+      "original_null_preserved": true,
+      "effective_amount": {
+        "numerator": "2",
+        "denominator": "1"
+      },
+      "cash_sign": -1,
+      "signed_free_cash": {
+        "numerator": "-2",
+        "denominator": "1"
+      },
+      "event_source_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/preopening_source"
+        ],
+        "final_pointer": "/events/3"
+      },
+      "compiled_event_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/expected_run/payload_json",
+          "/compiled_preopening_json"
+        ],
+        "final_pointer": "/events/3"
+      },
+      "saved_event_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/expected_run/payload_json",
+          "/preopening_run/payload_json"
+        ],
+        "final_pointer": "/events/3"
+      },
+      "debt_blueprint_link_ref": {
+        "path": "docs/current-structure/MiniUW_Conciliacion_Sintetica_D13.json",
+        "sha256": "0f23a7388dcb045cedda6b33a11e7ba119a4ace300ad1f2f5127e9e992c60837",
+        "embedded_json_pointers": [],
+        "final_pointer": "/explicit_debt_slot_links/1"
+      },
+      "debt_binding_slot_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/binding_source"
+        ],
+        "final_pointer": "/event_slots/1"
+      },
+      "derived_expression": {
+        "op": "mul",
+        "args": [
+          {
+            "op": "source",
+            "ref": {
+              "path": "templates/worksheet-settled-matched-T111.json",
+              "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/construction_bundle_utf8",
+                "/loans/0/source"
+              ],
+              "final_pointer": "/periods/0/draw_at_start"
+            }
+          },
+          {
+            "op": "source",
+            "ref": {
+              "path": "templates/worksheet-settled-matched-T111.json",
+              "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/construction_bundle_utf8",
+                "/loans/0/source"
+              ],
+              "final_pointer": "/draw_fee_fraction"
+            }
+          }
+        ]
+      },
+      "used_as_new_investor_equity": false
+    },
+    {
+      "event_index": 4,
+      "event_id": "SYNTHETIC-equity-additional",
+      "date": "2026-11-01",
+      "category": "additional_equity_contribution",
+      "loan_id": null,
+      "currency": "USD",
+      "original_value": {
+        "denominator": "1",
+        "numerator": "400"
+      },
+      "original_null_preserved": false,
+      "effective_amount": {
+        "numerator": "400",
+        "denominator": "1"
+      },
+      "cash_sign": 1,
+      "signed_free_cash": {
+        "numerator": "400",
+        "denominator": "1"
+      },
+      "event_source_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/preopening_source"
+        ],
+        "final_pointer": "/events/4"
+      },
+      "compiled_event_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/expected_run/payload_json",
+          "/compiled_preopening_json"
+        ],
+        "final_pointer": "/events/4"
+      },
+      "saved_event_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/expected_run/payload_json",
+          "/preopening_run/payload_json"
+        ],
+        "final_pointer": "/events/4"
+      },
+      "debt_blueprint_link_ref": null,
+      "debt_binding_slot_ref": null,
+      "derived_expression": null,
+      "used_as_new_investor_equity": true
+    },
+    {
+      "event_index": 5,
+      "event_id": "SYNTHETIC-construction",
+      "date": "2026-11-01",
+      "category": "construction_payment",
+      "loan_id": null,
+      "currency": "USD",
+      "original_value": {
+        "denominator": "1",
+        "numerator": "600"
+      },
+      "original_null_preserved": false,
+      "effective_amount": {
+        "numerator": "600",
+        "denominator": "1"
+      },
+      "cash_sign": -1,
+      "signed_free_cash": {
+        "numerator": "-600",
+        "denominator": "1"
+      },
+      "event_source_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/preopening_source"
+        ],
+        "final_pointer": "/events/5"
+      },
+      "compiled_event_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/expected_run/payload_json",
+          "/compiled_preopening_json"
+        ],
+        "final_pointer": "/events/5"
+      },
+      "saved_event_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/expected_run/payload_json",
+          "/preopening_run/payload_json"
+        ],
+        "final_pointer": "/events/5"
+      },
+      "debt_blueprint_link_ref": null,
+      "debt_binding_slot_ref": null,
+      "derived_expression": null,
+      "used_as_new_investor_equity": false
+    },
+    {
+      "event_index": 6,
+      "event_id": "SYNTHETIC-debt-0-0-debt_interest_payment",
+      "date": "2026-11-01",
+      "category": "debt_interest_payment",
+      "loan_id": "SYNTHETIC-staged-loan",
+      "currency": "USD",
+      "original_value": null,
+      "original_null_preserved": true,
+      "effective_amount": {
+        "numerator": "1",
+        "denominator": "1"
+      },
+      "cash_sign": -1,
+      "signed_free_cash": {
+        "numerator": "-1",
+        "denominator": "1"
+      },
+      "event_source_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/preopening_source"
+        ],
+        "final_pointer": "/events/6"
+      },
+      "compiled_event_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/expected_run/payload_json",
+          "/compiled_preopening_json"
+        ],
+        "final_pointer": "/events/6"
+      },
+      "saved_event_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/expected_run/payload_json",
+          "/preopening_run/payload_json"
+        ],
+        "final_pointer": "/events/6"
+      },
+      "debt_blueprint_link_ref": {
+        "path": "docs/current-structure/MiniUW_Conciliacion_Sintetica_D13.json",
+        "sha256": "0f23a7388dcb045cedda6b33a11e7ba119a4ace300ad1f2f5127e9e992c60837",
+        "embedded_json_pointers": [],
+        "final_pointer": "/explicit_debt_slot_links/2"
+      },
+      "debt_binding_slot_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/binding_source"
+        ],
+        "final_pointer": "/event_slots/2"
+      },
+      "derived_expression": {
+        "op": "mul",
+        "args": [
+          {
+            "op": "add",
+            "args": [
+              {
+                "op": "add",
+                "args": []
+              },
+              {
+                "op": "source",
+                "ref": {
+                  "path": "templates/worksheet-settled-matched-T111.json",
+                  "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+                  "embedded_json_pointers": [
+                    "/phased_settled_source_utf8",
+                    "/current_settled_source_utf8",
+                    "/case_source_utf8",
+                    "/construction_bundle_utf8",
+                    "/loans/0/source"
+                  ],
+                  "final_pointer": "/periods/0/draw_at_start"
+                }
+              }
+            ]
+          },
+          {
+            "op": "source",
+            "ref": {
+              "path": "templates/worksheet-settled-matched-T111.json",
+              "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/construction_bundle_utf8",
+                "/loans/0/source"
+              ],
+              "final_pointer": "/periods/0/interest_fraction"
+            }
+          }
+        ]
+      },
+      "used_as_new_investor_equity": false
+    },
+    {
+      "event_index": 7,
+      "event_id": "SYNTHETIC-debt-0-0-loan_principal_repayment",
+      "date": "2026-11-01",
+      "category": "loan_principal_repayment",
+      "loan_id": "SYNTHETIC-staged-loan",
+      "currency": "USD",
+      "original_value": null,
+      "original_null_preserved": true,
+      "effective_amount": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "cash_sign": -1,
+      "signed_free_cash": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "event_source_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/preopening_source"
+        ],
+        "final_pointer": "/events/7"
+      },
+      "compiled_event_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/expected_run/payload_json",
+          "/compiled_preopening_json"
+        ],
+        "final_pointer": "/events/7"
+      },
+      "saved_event_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/expected_run/payload_json",
+          "/preopening_run/payload_json"
+        ],
+        "final_pointer": "/events/7"
+      },
+      "debt_blueprint_link_ref": {
+        "path": "docs/current-structure/MiniUW_Conciliacion_Sintetica_D13.json",
+        "sha256": "0f23a7388dcb045cedda6b33a11e7ba119a4ace300ad1f2f5127e9e992c60837",
+        "embedded_json_pointers": [],
+        "final_pointer": "/explicit_debt_slot_links/3"
+      },
+      "debt_binding_slot_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/binding_source"
+        ],
+        "final_pointer": "/event_slots/3"
+      },
+      "derived_expression": {
+        "op": "source",
+        "ref": {
+          "path": "templates/worksheet-settled-matched-T111.json",
+          "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+          "embedded_json_pointers": [
+            "/phased_settled_source_utf8",
+            "/current_settled_source_utf8",
+            "/case_source_utf8",
+            "/construction_bundle_utf8",
+            "/loans/0/source"
+          ],
+          "final_pointer": "/periods/0/principal_repayment_at_end"
+        }
+      },
+      "used_as_new_investor_equity": false
+    },
+    {
+      "event_index": 8,
+      "event_id": "SYNTHETIC-debt-0-1-loan_draw",
+      "date": "2026-11-01",
+      "category": "loan_draw",
+      "loan_id": "SYNTHETIC-staged-loan",
+      "currency": "USD",
+      "original_value": null,
+      "original_null_preserved": true,
+      "effective_amount": {
+        "numerator": "100",
+        "denominator": "1"
+      },
+      "cash_sign": 1,
+      "signed_free_cash": {
+        "numerator": "100",
+        "denominator": "1"
+      },
+      "event_source_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/preopening_source"
+        ],
+        "final_pointer": "/events/8"
+      },
+      "compiled_event_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/expected_run/payload_json",
+          "/compiled_preopening_json"
+        ],
+        "final_pointer": "/events/8"
+      },
+      "saved_event_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/expected_run/payload_json",
+          "/preopening_run/payload_json"
+        ],
+        "final_pointer": "/events/8"
+      },
+      "debt_blueprint_link_ref": {
+        "path": "docs/current-structure/MiniUW_Conciliacion_Sintetica_D13.json",
+        "sha256": "0f23a7388dcb045cedda6b33a11e7ba119a4ace300ad1f2f5127e9e992c60837",
+        "embedded_json_pointers": [],
+        "final_pointer": "/explicit_debt_slot_links/4"
+      },
+      "debt_binding_slot_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/binding_source"
+        ],
+        "final_pointer": "/event_slots/4"
+      },
+      "derived_expression": {
+        "op": "source",
+        "ref": {
+          "path": "templates/worksheet-settled-matched-T111.json",
+          "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+          "embedded_json_pointers": [
+            "/phased_settled_source_utf8",
+            "/current_settled_source_utf8",
+            "/case_source_utf8",
+            "/construction_bundle_utf8",
+            "/loans/0/source"
+          ],
+          "final_pointer": "/periods/1/draw_at_start"
+        }
+      },
+      "used_as_new_investor_equity": false
+    },
+    {
+      "event_index": 9,
+      "event_id": "SYNTHETIC-debt-0-1-debt_fee_payment",
+      "date": "2026-11-01",
+      "category": "debt_fee_payment",
+      "loan_id": "SYNTHETIC-staged-loan",
+      "currency": "USD",
+      "original_value": null,
+      "original_null_preserved": true,
+      "effective_amount": {
+        "numerator": "2",
+        "denominator": "1"
+      },
+      "cash_sign": -1,
+      "signed_free_cash": {
+        "numerator": "-2",
+        "denominator": "1"
+      },
+      "event_source_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/preopening_source"
+        ],
+        "final_pointer": "/events/9"
+      },
+      "compiled_event_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/expected_run/payload_json",
+          "/compiled_preopening_json"
+        ],
+        "final_pointer": "/events/9"
+      },
+      "saved_event_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/expected_run/payload_json",
+          "/preopening_run/payload_json"
+        ],
+        "final_pointer": "/events/9"
+      },
+      "debt_blueprint_link_ref": {
+        "path": "docs/current-structure/MiniUW_Conciliacion_Sintetica_D13.json",
+        "sha256": "0f23a7388dcb045cedda6b33a11e7ba119a4ace300ad1f2f5127e9e992c60837",
+        "embedded_json_pointers": [],
+        "final_pointer": "/explicit_debt_slot_links/5"
+      },
+      "debt_binding_slot_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/binding_source"
+        ],
+        "final_pointer": "/event_slots/5"
+      },
+      "derived_expression": {
+        "op": "mul",
+        "args": [
+          {
+            "op": "source",
+            "ref": {
+              "path": "templates/worksheet-settled-matched-T111.json",
+              "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/construction_bundle_utf8",
+                "/loans/0/source"
+              ],
+              "final_pointer": "/periods/1/draw_at_start"
+            }
+          },
+          {
+            "op": "source",
+            "ref": {
+              "path": "templates/worksheet-settled-matched-T111.json",
+              "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/construction_bundle_utf8",
+                "/loans/0/source"
+              ],
+              "final_pointer": "/draw_fee_fraction"
+            }
+          }
+        ]
+      },
+      "used_as_new_investor_equity": false
+    },
+    {
+      "event_index": 10,
+      "event_id": "SYNTHETIC-soft-cost",
+      "date": "2026-12-01",
+      "category": "soft_cost_payment",
+      "loan_id": null,
+      "currency": "USD",
+      "original_value": {
+        "denominator": "1",
+        "numerator": "100"
+      },
+      "original_null_preserved": false,
+      "effective_amount": {
+        "numerator": "100",
+        "denominator": "1"
+      },
+      "cash_sign": -1,
+      "signed_free_cash": {
+        "numerator": "-100",
+        "denominator": "1"
+      },
+      "event_source_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/preopening_source"
+        ],
+        "final_pointer": "/events/10"
+      },
+      "compiled_event_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/expected_run/payload_json",
+          "/compiled_preopening_json"
+        ],
+        "final_pointer": "/events/10"
+      },
+      "saved_event_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/expected_run/payload_json",
+          "/preopening_run/payload_json"
+        ],
+        "final_pointer": "/events/10"
+      },
+      "debt_blueprint_link_ref": null,
+      "debt_binding_slot_ref": null,
+      "derived_expression": null,
+      "used_as_new_investor_equity": false
+    },
+    {
+      "event_index": 11,
+      "event_id": "SYNTHETIC-debt-0-1-debt_interest_payment",
+      "date": "2026-12-01",
+      "category": "debt_interest_payment",
+      "loan_id": "SYNTHETIC-staged-loan",
+      "currency": "USD",
+      "original_value": null,
+      "original_null_preserved": true,
+      "effective_amount": {
+        "numerator": "2",
+        "denominator": "1"
+      },
+      "cash_sign": -1,
+      "signed_free_cash": {
+        "numerator": "-2",
+        "denominator": "1"
+      },
+      "event_source_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/preopening_source"
+        ],
+        "final_pointer": "/events/11"
+      },
+      "compiled_event_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/expected_run/payload_json",
+          "/compiled_preopening_json"
+        ],
+        "final_pointer": "/events/11"
+      },
+      "saved_event_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/expected_run/payload_json",
+          "/preopening_run/payload_json"
+        ],
+        "final_pointer": "/events/11"
+      },
+      "debt_blueprint_link_ref": {
+        "path": "docs/current-structure/MiniUW_Conciliacion_Sintetica_D13.json",
+        "sha256": "0f23a7388dcb045cedda6b33a11e7ba119a4ace300ad1f2f5127e9e992c60837",
+        "embedded_json_pointers": [],
+        "final_pointer": "/explicit_debt_slot_links/6"
+      },
+      "debt_binding_slot_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/binding_source"
+        ],
+        "final_pointer": "/event_slots/6"
+      },
+      "derived_expression": {
+        "op": "mul",
+        "args": [
+          {
+            "op": "add",
+            "args": [
+              {
+                "op": "sub",
+                "args": [
+                  {
+                    "op": "add",
+                    "args": [
+                      {
+                        "op": "add",
+                        "args": []
+                      },
+                      {
+                        "op": "source",
+                        "ref": {
+                          "path": "templates/worksheet-settled-matched-T111.json",
+                          "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+                          "embedded_json_pointers": [
+                            "/phased_settled_source_utf8",
+                            "/current_settled_source_utf8",
+                            "/case_source_utf8",
+                            "/construction_bundle_utf8",
+                            "/loans/0/source"
+                          ],
+                          "final_pointer": "/periods/0/draw_at_start"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "op": "source",
+                    "ref": {
+                      "path": "templates/worksheet-settled-matched-T111.json",
+                      "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+                      "embedded_json_pointers": [
+                        "/phased_settled_source_utf8",
+                        "/current_settled_source_utf8",
+                        "/case_source_utf8",
+                        "/construction_bundle_utf8",
+                        "/loans/0/source"
+                      ],
+                      "final_pointer": "/periods/0/principal_repayment_at_end"
+                    }
+                  }
+                ]
+              },
+              {
+                "op": "source",
+                "ref": {
+                  "path": "templates/worksheet-settled-matched-T111.json",
+                  "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+                  "embedded_json_pointers": [
+                    "/phased_settled_source_utf8",
+                    "/current_settled_source_utf8",
+                    "/case_source_utf8",
+                    "/construction_bundle_utf8",
+                    "/loans/0/source"
+                  ],
+                  "final_pointer": "/periods/1/draw_at_start"
+                }
+              }
+            ]
+          },
+          {
+            "op": "source",
+            "ref": {
+              "path": "templates/worksheet-settled-matched-T111.json",
+              "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/construction_bundle_utf8",
+                "/loans/0/source"
+              ],
+              "final_pointer": "/periods/1/interest_fraction"
+            }
+          }
+        ]
+      },
+      "used_as_new_investor_equity": false
+    },
+    {
+      "event_index": 12,
+      "event_id": "SYNTHETIC-debt-0-1-loan_principal_repayment",
+      "date": "2026-12-01",
+      "category": "loan_principal_repayment",
+      "loan_id": "SYNTHETIC-staged-loan",
+      "currency": "USD",
+      "original_value": null,
+      "original_null_preserved": true,
+      "effective_amount": {
+        "numerator": "50",
+        "denominator": "1"
+      },
+      "cash_sign": -1,
+      "signed_free_cash": {
+        "numerator": "-50",
+        "denominator": "1"
+      },
+      "event_source_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/preopening_source"
+        ],
+        "final_pointer": "/events/12"
+      },
+      "compiled_event_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/expected_run/payload_json",
+          "/compiled_preopening_json"
+        ],
+        "final_pointer": "/events/12"
+      },
+      "saved_event_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/expected_run/payload_json",
+          "/preopening_run/payload_json"
+        ],
+        "final_pointer": "/events/12"
+      },
+      "debt_blueprint_link_ref": {
+        "path": "docs/current-structure/MiniUW_Conciliacion_Sintetica_D13.json",
+        "sha256": "0f23a7388dcb045cedda6b33a11e7ba119a4ace300ad1f2f5127e9e992c60837",
+        "embedded_json_pointers": [],
+        "final_pointer": "/explicit_debt_slot_links/7"
+      },
+      "debt_binding_slot_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/binding_source"
+        ],
+        "final_pointer": "/event_slots/7"
+      },
+      "derived_expression": {
+        "op": "source",
+        "ref": {
+          "path": "templates/worksheet-settled-matched-T111.json",
+          "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+          "embedded_json_pointers": [
+            "/phased_settled_source_utf8",
+            "/current_settled_source_utf8",
+            "/case_source_utf8",
+            "/construction_bundle_utf8",
+            "/loans/0/source"
+          ],
+          "final_pointer": "/periods/1/principal_repayment_at_end"
+        }
+      },
+      "used_as_new_investor_equity": false
+    },
+    {
+      "event_index": 13,
+      "event_id": "SYNTHETIC-debt-0-2-loan_draw",
+      "date": "2026-12-01",
+      "category": "loan_draw",
+      "loan_id": "SYNTHETIC-staged-loan",
+      "currency": "USD",
+      "original_value": null,
+      "original_null_preserved": true,
+      "effective_amount": {
+        "numerator": "50",
+        "denominator": "1"
+      },
+      "cash_sign": 1,
+      "signed_free_cash": {
+        "numerator": "50",
+        "denominator": "1"
+      },
+      "event_source_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/preopening_source"
+        ],
+        "final_pointer": "/events/13"
+      },
+      "compiled_event_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/expected_run/payload_json",
+          "/compiled_preopening_json"
+        ],
+        "final_pointer": "/events/13"
+      },
+      "saved_event_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/expected_run/payload_json",
+          "/preopening_run/payload_json"
+        ],
+        "final_pointer": "/events/13"
+      },
+      "debt_blueprint_link_ref": {
+        "path": "docs/current-structure/MiniUW_Conciliacion_Sintetica_D13.json",
+        "sha256": "0f23a7388dcb045cedda6b33a11e7ba119a4ace300ad1f2f5127e9e992c60837",
+        "embedded_json_pointers": [],
+        "final_pointer": "/explicit_debt_slot_links/8"
+      },
+      "debt_binding_slot_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/binding_source"
+        ],
+        "final_pointer": "/event_slots/8"
+      },
+      "derived_expression": {
+        "op": "source",
+        "ref": {
+          "path": "templates/worksheet-settled-matched-T111.json",
+          "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+          "embedded_json_pointers": [
+            "/phased_settled_source_utf8",
+            "/current_settled_source_utf8",
+            "/case_source_utf8",
+            "/construction_bundle_utf8",
+            "/loans/0/source"
+          ],
+          "final_pointer": "/periods/2/draw_at_start"
+        }
+      },
+      "used_as_new_investor_equity": false
+    },
+    {
+      "event_index": 14,
+      "event_id": "SYNTHETIC-debt-0-2-debt_fee_payment",
+      "date": "2026-12-01",
+      "category": "debt_fee_payment",
+      "loan_id": "SYNTHETIC-staged-loan",
+      "currency": "USD",
+      "original_value": null,
+      "original_null_preserved": true,
+      "effective_amount": {
+        "numerator": "1",
+        "denominator": "1"
+      },
+      "cash_sign": -1,
+      "signed_free_cash": {
+        "numerator": "-1",
+        "denominator": "1"
+      },
+      "event_source_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/preopening_source"
+        ],
+        "final_pointer": "/events/14"
+      },
+      "compiled_event_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/expected_run/payload_json",
+          "/compiled_preopening_json"
+        ],
+        "final_pointer": "/events/14"
+      },
+      "saved_event_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/expected_run/payload_json",
+          "/preopening_run/payload_json"
+        ],
+        "final_pointer": "/events/14"
+      },
+      "debt_blueprint_link_ref": {
+        "path": "docs/current-structure/MiniUW_Conciliacion_Sintetica_D13.json",
+        "sha256": "0f23a7388dcb045cedda6b33a11e7ba119a4ace300ad1f2f5127e9e992c60837",
+        "embedded_json_pointers": [],
+        "final_pointer": "/explicit_debt_slot_links/9"
+      },
+      "debt_binding_slot_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/binding_source"
+        ],
+        "final_pointer": "/event_slots/9"
+      },
+      "derived_expression": {
+        "op": "mul",
+        "args": [
+          {
+            "op": "source",
+            "ref": {
+              "path": "templates/worksheet-settled-matched-T111.json",
+              "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/construction_bundle_utf8",
+                "/loans/0/source"
+              ],
+              "final_pointer": "/periods/2/draw_at_start"
+            }
+          },
+          {
+            "op": "source",
+            "ref": {
+              "path": "templates/worksheet-settled-matched-T111.json",
+              "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/construction_bundle_utf8",
+                "/loans/0/source"
+              ],
+              "final_pointer": "/draw_fee_fraction"
+            }
+          }
+        ]
+      },
+      "used_as_new_investor_equity": false
+    },
+    {
+      "event_index": 15,
+      "event_id": "SYNTHETIC-debt-0-2-debt_interest_payment",
+      "date": "2027-01-01",
+      "category": "debt_interest_payment",
+      "loan_id": "SYNTHETIC-staged-loan",
+      "currency": "USD",
+      "original_value": null,
+      "original_null_preserved": true,
+      "effective_amount": {
+        "numerator": "2",
+        "denominator": "1"
+      },
+      "cash_sign": -1,
+      "signed_free_cash": {
+        "numerator": "-2",
+        "denominator": "1"
+      },
+      "event_source_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/preopening_source"
+        ],
+        "final_pointer": "/events/15"
+      },
+      "compiled_event_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/expected_run/payload_json",
+          "/compiled_preopening_json"
+        ],
+        "final_pointer": "/events/15"
+      },
+      "saved_event_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/expected_run/payload_json",
+          "/preopening_run/payload_json"
+        ],
+        "final_pointer": "/events/15"
+      },
+      "debt_blueprint_link_ref": {
+        "path": "docs/current-structure/MiniUW_Conciliacion_Sintetica_D13.json",
+        "sha256": "0f23a7388dcb045cedda6b33a11e7ba119a4ace300ad1f2f5127e9e992c60837",
+        "embedded_json_pointers": [],
+        "final_pointer": "/explicit_debt_slot_links/10"
+      },
+      "debt_binding_slot_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/binding_source"
+        ],
+        "final_pointer": "/event_slots/10"
+      },
+      "derived_expression": {
+        "op": "mul",
+        "args": [
+          {
+            "op": "add",
+            "args": [
+              {
+                "op": "sub",
+                "args": [
+                  {
+                    "op": "add",
+                    "args": [
+                      {
+                        "op": "sub",
+                        "args": [
+                          {
+                            "op": "add",
+                            "args": [
+                              {
+                                "op": "add",
+                                "args": []
+                              },
+                              {
+                                "op": "source",
+                                "ref": {
+                                  "path": "templates/worksheet-settled-matched-T111.json",
+                                  "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+                                  "embedded_json_pointers": [
+                                    "/phased_settled_source_utf8",
+                                    "/current_settled_source_utf8",
+                                    "/case_source_utf8",
+                                    "/construction_bundle_utf8",
+                                    "/loans/0/source"
+                                  ],
+                                  "final_pointer": "/periods/0/draw_at_start"
+                                }
+                              }
+                            ]
+                          },
+                          {
+                            "op": "source",
+                            "ref": {
+                              "path": "templates/worksheet-settled-matched-T111.json",
+                              "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+                              "embedded_json_pointers": [
+                                "/phased_settled_source_utf8",
+                                "/current_settled_source_utf8",
+                                "/case_source_utf8",
+                                "/construction_bundle_utf8",
+                                "/loans/0/source"
+                              ],
+                              "final_pointer": "/periods/0/principal_repayment_at_end"
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "op": "source",
+                        "ref": {
+                          "path": "templates/worksheet-settled-matched-T111.json",
+                          "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+                          "embedded_json_pointers": [
+                            "/phased_settled_source_utf8",
+                            "/current_settled_source_utf8",
+                            "/case_source_utf8",
+                            "/construction_bundle_utf8",
+                            "/loans/0/source"
+                          ],
+                          "final_pointer": "/periods/1/draw_at_start"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "op": "source",
+                    "ref": {
+                      "path": "templates/worksheet-settled-matched-T111.json",
+                      "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+                      "embedded_json_pointers": [
+                        "/phased_settled_source_utf8",
+                        "/current_settled_source_utf8",
+                        "/case_source_utf8",
+                        "/construction_bundle_utf8",
+                        "/loans/0/source"
+                      ],
+                      "final_pointer": "/periods/1/principal_repayment_at_end"
+                    }
+                  }
+                ]
+              },
+              {
+                "op": "source",
+                "ref": {
+                  "path": "templates/worksheet-settled-matched-T111.json",
+                  "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+                  "embedded_json_pointers": [
+                    "/phased_settled_source_utf8",
+                    "/current_settled_source_utf8",
+                    "/case_source_utf8",
+                    "/construction_bundle_utf8",
+                    "/loans/0/source"
+                  ],
+                  "final_pointer": "/periods/2/draw_at_start"
+                }
+              }
+            ]
+          },
+          {
+            "op": "source",
+            "ref": {
+              "path": "templates/worksheet-settled-matched-T111.json",
+              "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/construction_bundle_utf8",
+                "/loans/0/source"
+              ],
+              "final_pointer": "/periods/2/interest_fraction"
+            }
+          }
+        ]
+      },
+      "used_as_new_investor_equity": false
+    },
+    {
+      "event_index": 16,
+      "event_id": "SYNTHETIC-debt-0-2-loan_principal_repayment",
+      "date": "2027-01-01",
+      "category": "loan_principal_repayment",
+      "loan_id": "SYNTHETIC-staged-loan",
+      "currency": "USD",
+      "original_value": null,
+      "original_null_preserved": true,
+      "effective_amount": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "cash_sign": -1,
+      "signed_free_cash": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "event_source_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/preopening_source"
+        ],
+        "final_pointer": "/events/16"
+      },
+      "compiled_event_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/expected_run/payload_json",
+          "/compiled_preopening_json"
+        ],
+        "final_pointer": "/events/16"
+      },
+      "saved_event_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/expected_run/payload_json",
+          "/preopening_run/payload_json"
+        ],
+        "final_pointer": "/events/16"
+      },
+      "debt_blueprint_link_ref": {
+        "path": "docs/current-structure/MiniUW_Conciliacion_Sintetica_D13.json",
+        "sha256": "0f23a7388dcb045cedda6b33a11e7ba119a4ace300ad1f2f5127e9e992c60837",
+        "embedded_json_pointers": [],
+        "final_pointer": "/explicit_debt_slot_links/11"
+      },
+      "debt_binding_slot_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/binding_source"
+        ],
+        "final_pointer": "/event_slots/11"
+      },
+      "derived_expression": {
+        "op": "source",
+        "ref": {
+          "path": "templates/worksheet-settled-matched-T111.json",
+          "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+          "embedded_json_pointers": [
+            "/phased_settled_source_utf8",
+            "/current_settled_source_utf8",
+            "/case_source_utf8",
+            "/construction_bundle_utf8",
+            "/loans/0/source"
+          ],
+          "final_pointer": "/periods/2/principal_repayment_at_end"
+        }
+      },
+      "used_as_new_investor_equity": false
+    }
+  ],
+  "date_close_rows": [
+    {
+      "date": "2026-10-01",
+      "event_ids": [
+        "SYNTHETIC-equity-initial",
+        "SYNTHETIC-acquisition",
+        "SYNTHETIC-debt-0-0-loan_draw",
+        "SYNTHETIC-debt-0-0-debt_fee_payment"
+      ],
+      "opening_free_cash": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "gross_cash_sources": {
+        "numerator": "1100",
+        "denominator": "1"
+      },
+      "gross_cash_uses": {
+        "numerator": "302",
+        "denominator": "1"
+      },
+      "closing_free_cash": {
+        "numerator": "798",
+        "denominator": "1"
+      },
+      "closing_restricted_cash": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "closing_loan_principal": {
+        "numerator": "100",
+        "denominator": "1"
+      },
+      "saved_balance_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/expected_run/payload_json",
+          "/preopening_run/payload_json"
+        ],
+        "final_pointer": "/date_close_balances/0"
+      },
+      "intraday_liquidity_proven": false
+    },
+    {
+      "date": "2026-11-01",
+      "event_ids": [
+        "SYNTHETIC-equity-additional",
+        "SYNTHETIC-construction",
+        "SYNTHETIC-debt-0-0-debt_interest_payment",
+        "SYNTHETIC-debt-0-0-loan_principal_repayment",
+        "SYNTHETIC-debt-0-1-loan_draw",
+        "SYNTHETIC-debt-0-1-debt_fee_payment"
+      ],
+      "opening_free_cash": {
+        "numerator": "798",
+        "denominator": "1"
+      },
+      "gross_cash_sources": {
+        "numerator": "500",
+        "denominator": "1"
+      },
+      "gross_cash_uses": {
+        "numerator": "603",
+        "denominator": "1"
+      },
+      "closing_free_cash": {
+        "numerator": "695",
+        "denominator": "1"
+      },
+      "closing_restricted_cash": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "closing_loan_principal": {
+        "numerator": "200",
+        "denominator": "1"
+      },
+      "saved_balance_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/expected_run/payload_json",
+          "/preopening_run/payload_json"
+        ],
+        "final_pointer": "/date_close_balances/1"
+      },
+      "intraday_liquidity_proven": false
+    },
+    {
+      "date": "2026-12-01",
+      "event_ids": [
+        "SYNTHETIC-soft-cost",
+        "SYNTHETIC-debt-0-1-debt_interest_payment",
+        "SYNTHETIC-debt-0-1-loan_principal_repayment",
+        "SYNTHETIC-debt-0-2-loan_draw",
+        "SYNTHETIC-debt-0-2-debt_fee_payment"
+      ],
+      "opening_free_cash": {
+        "numerator": "695",
+        "denominator": "1"
+      },
+      "gross_cash_sources": {
+        "numerator": "50",
+        "denominator": "1"
+      },
+      "gross_cash_uses": {
+        "numerator": "153",
+        "denominator": "1"
+      },
+      "closing_free_cash": {
+        "numerator": "592",
+        "denominator": "1"
+      },
+      "closing_restricted_cash": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "closing_loan_principal": {
+        "numerator": "200",
+        "denominator": "1"
+      },
+      "saved_balance_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/expected_run/payload_json",
+          "/preopening_run/payload_json"
+        ],
+        "final_pointer": "/date_close_balances/2"
+      },
+      "intraday_liquidity_proven": false
+    },
+    {
+      "date": "2027-01-01",
+      "event_ids": [
+        "SYNTHETIC-debt-0-2-debt_interest_payment",
+        "SYNTHETIC-debt-0-2-loan_principal_repayment"
+      ],
+      "opening_free_cash": {
+        "numerator": "592",
+        "denominator": "1"
+      },
+      "gross_cash_sources": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "gross_cash_uses": {
+        "numerator": "2",
+        "denominator": "1"
+      },
+      "closing_free_cash": {
+        "numerator": "590",
+        "denominator": "1"
+      },
+      "closing_restricted_cash": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "closing_loan_principal": {
+        "numerator": "200",
+        "denominator": "1"
+      },
+      "saved_balance_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/expected_run/payload_json",
+          "/preopening_run/payload_json"
+        ],
+        "final_pointer": "/date_close_balances/3"
+      },
+      "intraday_liquidity_proven": false
+    }
+  ],
+  "category_totals": [
+    {
+      "category": "acquisition_payment",
+      "amount": {
+        "numerator": "300",
+        "denominator": "1"
+      },
+      "event_ids": [
+        "SYNTHETIC-acquisition"
+      ],
+      "saved_total_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/expected_run/payload_json",
+          "/preopening_run/payload_json"
+        ],
+        "final_pointer": "/totals/acquisition_payment"
+      }
+    },
+    {
+      "category": "additional_equity_contribution",
+      "amount": {
+        "numerator": "400",
+        "denominator": "1"
+      },
+      "event_ids": [
+        "SYNTHETIC-equity-additional"
+      ],
+      "saved_total_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/expected_run/payload_json",
+          "/preopening_run/payload_json"
+        ],
+        "final_pointer": "/totals/additional_equity_contribution"
+      }
+    },
+    {
+      "category": "construction_payment",
+      "amount": {
+        "numerator": "600",
+        "denominator": "1"
+      },
+      "event_ids": [
+        "SYNTHETIC-construction"
+      ],
+      "saved_total_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/expected_run/payload_json",
+          "/preopening_run/payload_json"
+        ],
+        "final_pointer": "/totals/construction_payment"
+      }
+    },
+    {
+      "category": "debt_fee_payment",
+      "amount": {
+        "numerator": "5",
+        "denominator": "1"
+      },
+      "event_ids": [
+        "SYNTHETIC-debt-0-0-debt_fee_payment",
+        "SYNTHETIC-debt-0-1-debt_fee_payment",
+        "SYNTHETIC-debt-0-2-debt_fee_payment"
+      ],
+      "saved_total_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/expected_run/payload_json",
+          "/preopening_run/payload_json"
+        ],
+        "final_pointer": "/totals/debt_fee_payment"
+      }
+    },
+    {
+      "category": "debt_interest_payment",
+      "amount": {
+        "numerator": "5",
+        "denominator": "1"
+      },
+      "event_ids": [
+        "SYNTHETIC-debt-0-0-debt_interest_payment",
+        "SYNTHETIC-debt-0-1-debt_interest_payment",
+        "SYNTHETIC-debt-0-2-debt_interest_payment"
+      ],
+      "saved_total_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/expected_run/payload_json",
+          "/preopening_run/payload_json"
+        ],
+        "final_pointer": "/totals/debt_interest_payment"
+      }
+    },
+    {
+      "category": "equity_distribution",
+      "amount": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "event_ids": [],
+      "saved_total_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/expected_run/payload_json",
+          "/preopening_run/payload_json"
+        ],
+        "final_pointer": "/totals/equity_distribution"
+      }
+    },
+    {
+      "category": "initial_equity_contribution",
+      "amount": {
+        "numerator": "1000",
+        "denominator": "1"
+      },
+      "event_ids": [
+        "SYNTHETIC-equity-initial"
+      ],
+      "saved_total_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/expected_run/payload_json",
+          "/preopening_run/payload_json"
+        ],
+        "final_pointer": "/totals/initial_equity_contribution"
+      }
+    },
+    {
+      "category": "loan_draw",
+      "amount": {
+        "numerator": "250",
+        "denominator": "1"
+      },
+      "event_ids": [
+        "SYNTHETIC-debt-0-0-loan_draw",
+        "SYNTHETIC-debt-0-1-loan_draw",
+        "SYNTHETIC-debt-0-2-loan_draw"
+      ],
+      "saved_total_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/expected_run/payload_json",
+          "/preopening_run/payload_json"
+        ],
+        "final_pointer": "/totals/loan_draw"
+      }
+    },
+    {
+      "category": "loan_principal_repayment",
+      "amount": {
+        "numerator": "50",
+        "denominator": "1"
+      },
+      "event_ids": [
+        "SYNTHETIC-debt-0-0-loan_principal_repayment",
+        "SYNTHETIC-debt-0-1-loan_principal_repayment",
+        "SYNTHETIC-debt-0-2-loan_principal_repayment"
+      ],
+      "saved_total_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/expected_run/payload_json",
+          "/preopening_run/payload_json"
+        ],
+        "final_pointer": "/totals/loan_principal_repayment"
+      }
+    },
+    {
+      "category": "other_cash_payment",
+      "amount": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "event_ids": [],
+      "saved_total_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/expected_run/payload_json",
+          "/preopening_run/payload_json"
+        ],
+        "final_pointer": "/totals/other_cash_payment"
+      }
+    },
+    {
+      "category": "other_cash_receipt",
+      "amount": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "event_ids": [],
+      "saved_total_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/expected_run/payload_json",
+          "/preopening_run/payload_json"
+        ],
+        "final_pointer": "/totals/other_cash_receipt"
+      }
+    },
+    {
+      "category": "reserve_deposit",
+      "amount": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "event_ids": [],
+      "saved_total_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/expected_run/payload_json",
+          "/preopening_run/payload_json"
+        ],
+        "final_pointer": "/totals/reserve_deposit"
+      }
+    },
+    {
+      "category": "reserve_release",
+      "amount": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "event_ids": [],
+      "saved_total_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/expected_run/payload_json",
+          "/preopening_run/payload_json"
+        ],
+        "final_pointer": "/totals/reserve_release"
+      }
+    },
+    {
+      "category": "soft_cost_payment",
+      "amount": {
+        "numerator": "100",
+        "denominator": "1"
+      },
+      "event_ids": [
+        "SYNTHETIC-soft-cost"
+      ],
+      "saved_total_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [
+          "/phased_settled_source_utf8",
+          "/current_settled_source_utf8",
+          "/case_source_utf8",
+          "/construction_bundle_utf8",
+          "/expected_run/payload_json",
+          "/preopening_run/payload_json"
+        ],
+        "final_pointer": "/totals/soft_cost_payment"
+      }
+    }
+  ],
+  "opening_boundary_checks": [
+    {
+      "check_id": "B01",
+      "label": "Caja previa a apertura operativa",
+      "left": {
+        "numerator": "590",
+        "denominator": "1"
+      },
+      "right": {
+        "numerator": "590",
+        "denominator": "1"
+      },
+      "residual": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "formula": "zero opening cash + all supplied gross sources - all supplied uses = opening operating free cash",
+      "source_refs": [
+        {
+          "path": "templates/worksheet-settled-matched-T111.json",
+          "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+          "embedded_json_pointers": [
+            "/phased_settled_source_utf8",
+            "/current_settled_source_utf8",
+            "/case_source_utf8",
+            "/construction_bundle_utf8",
+            "/preopening_source"
+          ],
+          "final_pointer": "/terminal_claims/free_cash"
+        },
+        {
+          "path": "templates/worksheet-settled-matched-T111.json",
+          "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+          "embedded_json_pointers": [
+            "/phased_settled_source_utf8",
+            "/current_settled_source_utf8",
+            "/case_source_utf8",
+            "/periods/0/cash_source_utf8"
+          ],
+          "final_pointer": "/amounts/opening_free_cash"
+        }
+      ],
+      "financial_acceptance": false
+    },
+    {
+      "check_id": "B02",
+      "label": "Mismo principal al cambiar de fase",
+      "left": {
+        "numerator": "200",
+        "denominator": "1"
+      },
+      "right": {
+        "numerator": "200",
+        "denominator": "1"
+      },
+      "residual": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "formula": "zero opening principal + gross draws - principal repaid = supplied operating-phase principal",
+      "source_refs": [
+        {
+          "path": "templates/worksheet-settled-matched-T111.json",
+          "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+          "embedded_json_pointers": [
+            "/phased_settled_source_utf8",
+            "/current_settled_source_utf8",
+            "/case_source_utf8",
+            "/construction_bundle_utf8",
+            "/preopening_source"
+          ],
+          "final_pointer": "/terminal_claims/loan_principal/SYNTHETIC-staged-loan"
+        },
+        {
+          "path": "templates/worksheet-settled-matched-T111.json",
+          "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+          "embedded_json_pointers": [
+            "/phased_settled_source_utf8",
+            "/current_settled_source_utf8",
+            "/case_source_utf8",
+            "/phase_source_utf8",
+            "/loan_phases/0/schedule_source_utf8"
+          ],
+          "final_pointer": "/principal"
+        }
+      ],
+      "financial_acceptance": false
+    },
+    {
+      "check_id": "B03",
+      "label": "Caja restringida en apertura operativa",
+      "left": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "right": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "residual": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "formula": "supplied closing restricted cash = supplied opening operating restricted cash",
+      "source_refs": [
+        {
+          "path": "templates/worksheet-settled-matched-T111.json",
+          "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+          "embedded_json_pointers": [
+            "/phased_settled_source_utf8",
+            "/current_settled_source_utf8",
+            "/case_source_utf8",
+            "/construction_bundle_utf8",
+            "/preopening_source"
+          ],
+          "final_pointer": "/terminal_claims/restricted_cash"
+        },
+        {
+          "path": "templates/worksheet-settled-matched-T111.json",
+          "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+          "embedded_json_pointers": [
+            "/phased_settled_source_utf8",
+            "/current_settled_source_utf8",
+            "/case_source_utf8",
+            "/periods/0/cash_source_utf8"
+          ],
+          "final_pointer": "/amounts/opening_restricted_cash"
+        }
+      ],
+      "financial_acceptance": false
+    },
+    {
+      "check_id": "B04",
+      "label": "Aportes brutos del equity sin sumar caja de apertura",
+      "left": {
+        "numerator": "1400",
+        "denominator": "1"
+      },
+      "right": {
+        "numerator": "1400",
+        "denominator": "1"
+      },
+      "residual": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "formula": "initial contribution + additional contribution = project gross contributions; opening cash is not a new contribution",
+      "source_refs": [
+        {
+          "path": "templates/worksheet-settled-matched-T111.json",
+          "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+          "embedded_json_pointers": [
+            "/phased_settled_source_utf8",
+            "/current_settled_source_utf8",
+            "/case_source_utf8",
+            "/construction_bundle_utf8",
+            "/preopening_source"
+          ],
+          "final_pointer": "/events/0/amount"
+        },
+        {
+          "path": "templates/worksheet-settled-matched-T111.json",
+          "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+          "embedded_json_pointers": [
+            "/phased_settled_source_utf8",
+            "/current_settled_source_utf8",
+            "/case_source_utf8",
+            "/construction_bundle_utf8",
+            "/preopening_source"
+          ],
+          "final_pointer": "/events/4/amount"
+        },
+        {
+          "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+          "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+          "embedded_json_pointers": [],
+          "final_pointer": "/current_project_return_story/gross_contributions"
+        }
+      ],
+      "financial_acceptance": false
+    }
+  ],
+  "pending_budget_finance_gates": [
+    {
+      "gate_id": "P01",
+      "label": "Presupuesto de alcances exclusivos",
+      "source_contract_refs": [
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "embedded_json_pointers": [],
+          "final_pointer": "/contracts/16"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "embedded_json_pointers": [],
+          "final_pointer": "/contracts/17"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "embedded_json_pointers": [],
+          "final_pointer": "/contracts/18"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "embedded_json_pointers": [],
+          "final_pointer": "/contracts/19"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "embedded_json_pointers": [],
+          "final_pointer": "/contracts/20"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "embedded_json_pointers": [],
+          "final_pointer": "/contracts/21"
+        }
+      ],
+      "required_records": [
+        "Cantidades y bases de costo aplicables",
+        "Inclusiones y exclusiones sin doble cómputo",
+        "Compra evaluada, contingencia, soft y TI/LC con alcance"
+      ],
+      "financial_definition": null,
+      "financial_mapping": null,
+      "independent_expected_case": null,
+      "acceptance_evidence": null,
+      "status": "PENDING",
+      "financial_acceptance_executed": false
+    },
+    {
+      "gate_id": "P02",
+      "label": "Presupuesto a calendario de pagos",
+      "source_contract_refs": [
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "embedded_json_pointers": [],
+          "final_pointer": "/contracts/22"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "embedded_json_pointers": [],
+          "final_pointer": "/contracts/23"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "embedded_json_pointers": [],
+          "final_pointer": "/contracts/24"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "embedded_json_pointers": [],
+          "final_pointer": "/contracts/25"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "embedded_json_pointers": [],
+          "final_pointer": "/contracts/26"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "embedded_json_pointers": [],
+          "final_pointer": "/contracts/27"
+        }
+      ],
+      "required_records": [
+        "Partida, pesos y fechas de pagos respaldados",
+        "Saldo no asignado/programado y su explicación",
+        "Devengo, pagos, anticipos y saldos por separado"
+      ],
+      "financial_definition": null,
+      "financial_mapping": null,
+      "independent_expected_case": null,
+      "acceptance_evidence": null,
+      "status": "PENDING",
+      "financial_acceptance_executed": false
+    },
+    {
+      "gate_id": "P03",
+      "label": "Costo elegible y LTC",
+      "source_contract_refs": [
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "embedded_json_pointers": [],
+          "final_pointer": "/contracts/28"
+        }
+      ],
+      "required_records": [
+        "Base elegible y porcentaje aplicable",
+        "Condiciones y límite del préstamo",
+        "No obtener un LTC desde la razón entre commitment y pagos"
+      ],
+      "financial_definition": null,
+      "financial_mapping": null,
+      "independent_expected_case": null,
+      "acceptance_evidence": null,
+      "status": "PENDING",
+      "financial_acceptance_executed": false
+    },
+    {
+      "gate_id": "P04",
+      "label": "Selección de fondos y disponibilidad",
+      "source_contract_refs": [
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "embedded_json_pointers": [],
+          "final_pointer": "/contracts/29"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "embedded_json_pointers": [],
+          "final_pointer": "/contracts/32"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "embedded_json_pointers": [],
+          "final_pointer": "/contracts/36"
+        }
+      ],
+      "required_records": [
+        "Equity requerido, comprometido y aportado separados",
+        "Condiciones y disponibilidad fechadas de draws",
+        "Faltantes sin financiación automática"
+      ],
+      "financial_definition": null,
+      "financial_mapping": null,
+      "independent_expected_case": null,
+      "acceptance_evidence": null,
+      "status": "PENDING",
+      "financial_acceptance_executed": false
+    },
+    {
+      "gate_id": "P05",
+      "label": "Financiación y TDC all in",
+      "source_contract_refs": [
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "embedded_json_pointers": [],
+          "final_pointer": "/contracts/21"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "embedded_json_pointers": [],
+          "final_pointer": "/contracts/30"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "embedded_json_pointers": [],
+          "final_pointer": "/contracts/31"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "embedded_json_pointers": [],
+          "final_pointer": "/contracts/35"
+        }
+      ],
+      "required_records": [
+        "Definición de capitalización y costo financiero",
+        "Convenciones generales de tasa y fee",
+        "Método y precisión de cualquier circularidad aplicable"
+      ],
+      "financial_definition": null,
+      "financial_mapping": null,
+      "independent_expected_case": null,
+      "acceptance_evidence": null,
+      "status": "PENDING",
+      "financial_acceptance_executed": false
+    },
+    {
+      "gate_id": "P06",
+      "label": "Continuidad y liquidación de fases",
+      "source_contract_refs": [
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "embedded_json_pointers": [],
+          "final_pointer": "/contracts/33"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "embedded_json_pointers": [],
+          "final_pointer": "/contracts/37"
+        }
+      ],
+      "required_records": [
+        "Misma obligación o cambio contractual sustentado",
+        "Principal, interés, fees y caja al corte",
+        "No crear nueva caja por una transición de fase"
+      ],
+      "financial_definition": null,
+      "financial_mapping": null,
+      "independent_expected_case": null,
+      "acceptance_evidence": null,
+      "status": "PENDING",
+      "financial_acceptance_executed": false
+    }
+  ],
+  "observed_summary": {
+    "gross_equity": {
+      "numerator": "1400",
+      "denominator": "1"
+    },
+    "gross_draws": {
+      "numerator": "250",
+      "denominator": "1"
+    },
+    "principal_repayments": {
+      "numerator": "50",
+      "denominator": "1"
+    },
+    "paid_acquisition_construction_soft_costs": {
+      "numerator": "1000",
+      "denominator": "1"
+    },
+    "paid_interest_and_draw_fees": {
+      "numerator": "10",
+      "denominator": "1"
+    },
+    "closing_free_cash": {
+      "numerator": "590",
+      "denominator": "1"
+    },
+    "closing_principal": {
+      "numerator": "200",
+      "denominator": "1"
+    },
+    "commitment": {
+      "numerator": "300",
+      "denominator": "1"
+    },
+    "unused_nonrevolving_commitment": {
+      "numerator": "50",
+      "denominator": "1"
+    },
+    "actual_future_draw_available": null,
+    "budget_total": null,
+    "eligible_cost_base": null,
+    "unallocated_budget_amount": null,
+    "unscheduled_budget_amount": null,
+    "TDC_all_in": null,
+    "capitalized_financing_cost": null,
+    "personal_return": null
+  },
+  "shared_subcomponent_evidence_only": true,
+  "incremental_execution_or_cache_reuse_implemented": false,
+  "source_inputs_modified": false,
+  "old_results_modified": false,
+  "model_producers_imported_or_called": false,
+  "IRR_recalculated": false,
+  "deliberate_faults_introduced": 0,
+  "actual_model_bug_fixes": 0,
+  "new_runtime_components": 0,
+  "new_tests": 0,
+  "technical_tests_unchanged": 1619,
+  "financial_bindings_activated": 0,
+  "financial_acceptance_checks_executed": 0,
+  "published_model_input_values_added": 0,
+  "original_semantic_mappings_pending": 54,
+  "financial_model_complete": false,
+  "professional_review_authenticated": false,
+  "personal_return_verified": false,
+  "real_decisions_enabled": false,
+  "deployment_enabled": false,
+  "PDF_generated": false
+}
