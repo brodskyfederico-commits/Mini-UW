@@ -1,0 +1,73 @@
+{
+  "snapshot_id": "D15",
+  "status": "passed_explicit_source_version_comparison_scoped_arithmetic_and_freshness_consistency",
+  "scope": "Two supplied coherent synthetic source pairs, two deliberate mismatches and one saved expired view; no active revision adoption or financial acceptance",
+  "previous_design_commit": "4f8ccae340fbfa53ff44e57604bc451df44fb99f",
+  "technical_baseline": "T111",
+  "technical_baseline_commit": "9aeb590151068ccd51f4eca0e92f7c766464ba94",
+  "prior_files_preserved": 1216,
+  "actual_changed_prior_files": [
+    "BACKUP_MANIFEST.json",
+    "README.md",
+    "WORK_LOG.md"
+  ],
+  "coherent_source_pairs": 2,
+  "mixed_source_pairs": 2,
+  "blocked_saved_views": 1,
+  "arithmetic_evaluations_replayed": 96,
+  "profile_predicate_evaluations": 92,
+  "mismatch_check_count_per_mixed_pair": 5,
+  "source_pointer_pairs_verified": 155,
+  "unchanged_JSON_values": 146,
+  "changed_JSON_values": 9,
+  "selected_output_deltas_verified": 10,
+  "withheld_current_groups_in_expired_view": 11,
+  "source_requirements_per_view": 59,
+  "existing_profile_producer_replays": 1,
+  "existing_expected_run_hash_reproduced": true,
+  "source_inputs_modified": false,
+  "old_results_modified": false,
+  "active_revision_changed": false,
+  "candidate_automatically_adopted": false,
+  "published_model_input_values_added": 0,
+  "new_runtime_components": 0,
+  "new_tests": 0,
+  "technical_tests_unchanged": 1619,
+  "financial_acceptance_checks_executed": 0,
+  "financial_bindings_activated": 0,
+  "IRR_point_selected": false,
+  "IRR_rates_subtracted": false,
+  "PDF_generated": false,
+  "source_versions": [
+    {
+      "path": "docs/current-structure/MiniUW_Revision_y_Vigencia_D15.json",
+      "bytes": 325820,
+      "sha256": "286f39f34d41f5da54b3bea40347af8eee843e1b40099b6d361b3baa5d51d453"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+      "bytes": 173714,
+      "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Revision_y_Vigencia_D15.md",
+      "bytes": 7410,
+      "sha256": "91a15d845a8d86fc9a91827401a18ec5e90e81de9d04eefa2d693cfe1ede3f55"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Cambios_Fuentes_D15.csv",
+      "bytes": 158335,
+      "sha256": "aadf7d25488e3404b8834df7e686256096df9f24d87849f7615c527e72029686"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Diferencias_Salidas_D15.csv",
+      "bytes": 6830,
+      "sha256": "0fba5062db38a4f6451bc4ced0e929e045b76dec3f6f4b14078d45a4fd5a3d2c"
+    }
+  ],
+  "financial_model_complete": false,
+  "professional_review_authenticated": false,
+  "personal_return_verified": false,
+  "real_decisions_enabled": false,
+  "deployment_enabled": false
+}

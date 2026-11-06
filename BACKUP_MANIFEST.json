@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D14 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D15 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 48499,
-      "sha256": "db2cb7b4f497a8b19874641f638907796086fd999b73599ad0c86593a7daec37"
+      "bytes": 49071,
+      "sha256": "61f2c9d6eb5d7e1c9ab7595d5896b0b456cd4e3c5caa2e70319582d86c91a164"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 223685,
-      "sha256": "75c9fa26ca59ebafed4f2150b031104703eb9785d3b0d98354bfc690df1e95ec"
+      "bytes": 226938,
+      "sha256": "7e56343f264a6a1c72a6e0929ff4a3e3eab99f4c6a225dd2818656988877cb51"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -197,6 +197,11 @@
       "sha256": "316b55c2a3bf2f490357b6e847662ab4170b742b9e301deb06723ac1bb44b4c2"
     },
     {
+      "path": "docs/current-structure/D15-design-validation.json",
+      "bytes": 2764,
+      "sha256": "2d1b1af8cc7a6f6d08c7fe6e0933f7d42d332f4d039df8d74d623984204e8ba7"
+    },
+    {
       "path": "docs/current-structure/MiniUW_55_campos_D04.csv",
       "bytes": 28155,
       "sha256": "36933edad8b3b905d629bb0e67113b316578a63f4652744af069b9cb302f0454"
@@ -235,6 +240,11 @@
       "path": "docs/current-structure/MiniUW_Bloqueos_D06.md",
       "bytes": 12427,
       "sha256": "5f5e14eb59008e75fd604f536674b601f0487f1052043228aec68382feeeeec0"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Cambios_Fuentes_D15.csv",
+      "bytes": 158335,
+      "sha256": "aadf7d25488e3404b8834df7e686256096df9f24d87849f7615c527e72029686"
     },
     {
       "path": "docs/current-structure/MiniUW_Casos_8_D14.csv",
@@ -347,6 +357,11 @@
       "sha256": "0c080e6e5e22005222d6d8fa991f62503a11d69603bbb1f31f7798ad9108686a"
     },
     {
+      "path": "docs/current-structure/MiniUW_Diferencias_Salidas_D15.csv",
+      "bytes": 6830,
+      "sha256": "0fba5062db38a4f6451bc4ced0e929e045b76dec3f6f4b14078d45a4fd5a3d2c"
+    },
+    {
       "path": "docs/current-structure/MiniUW_Entradas_a_Retornos_D08.csv",
       "bytes": 10004,
       "sha256": "6ecc0efbe7c576aaeda7acf63e92668e2a0c0908d3e639df950bba0a57fa0521"
@@ -387,6 +402,16 @@
       "sha256": "50eba65381d6e4abdf419f0163e9c31ba5c15c1b40083fa8b46c641dd341987e"
     },
     {
+      "path": "docs/current-structure/MiniUW_Revision_y_Vigencia_D15.json",
+      "bytes": 325820,
+      "sha256": "286f39f34d41f5da54b3bea40347af8eee843e1b40099b6d361b3baa5d51d453"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Revision_y_Vigencia_D15.md",
+      "bytes": 7410,
+      "sha256": "91a15d845a8d86fc9a91827401a18ec5e90e81de9d04eefa2d693cfe1ede3f55"
+    },
+    {
       "path": "docs/current-structure/MiniUW_Rutas_33_D12.csv",
       "bytes": 21415,
       "sha256": "fff5b87dd4f6db3b2ae2bce3124ee6fb1598180529583b32e87952d8c460e10e"
@@ -410,6 +435,11 @@
       "path": "docs/current-structure/MiniUW_Traspasos_6_D12.csv",
       "bytes": 3853,
       "sha256": "fa19580daeea50c2dcd481694a219430ac009b1ec804462214d3a5927bf00116"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+      "bytes": 173714,
+      "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7"
     },
     {
       "path": "docs/decision-input-contract.md",
