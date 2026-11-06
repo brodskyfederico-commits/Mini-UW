@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D10 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D11 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 46120,
-      "sha256": "81784031259ddb9b93056e175668766c9ffd1277ef2ef4a866af492739134066"
+      "bytes": 46709,
+      "sha256": "28378757effae4c4833cd08f7425c4c334ab1a7f6870f23b48726cb219d41cdc"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 211436,
-      "sha256": "71040667d3782bd35cce59e58a152bf35d82a0592b7867139702297a0bf6f845"
+      "bytes": 214805,
+      "sha256": "3272ccabc7ddaf51dd3df1ca95e69f2ae49aceae5987154ca0ef0dfcca231db2"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -177,9 +177,34 @@
       "sha256": "801db34028677ec9c19da0869e1acd4433c1c79831355979f97787845c6a2888"
     },
     {
+      "path": "docs/current-structure/D11-design-validation.json",
+      "bytes": 2653,
+      "sha256": "eb2371b196bce5a7ce646435790f38bf99fe4b9b57ae947df34ebf6b4962ebf5"
+    },
+    {
       "path": "docs/current-structure/MiniUW_55_campos_D04.csv",
       "bytes": 28155,
       "sha256": "36933edad8b3b905d629bb0e67113b316578a63f4652744af069b9cb302f0454"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Aceptacion_23_Salidas_D11.csv",
+      "bytes": 13118,
+      "sha256": "881c0ca1afa1114bfec681e104b2d40362ab909d190e2c1bf1dc3f2156cef59d"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Activacion_20_Conexiones_D11.csv",
+      "bytes": 12088,
+      "sha256": "cb59dab53de2bdc14f7cfa6af3df1796514e3abb81e8e127ee7f97936ab3d1b8"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Activacion_y_Aceptacion_D11.json",
+      "bytes": 105333,
+      "sha256": "be609e0f08ded0bea96c37444522817fdc30ac9053a82a4506330c0ef72bb13c"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Activacion_y_Aceptacion_D11.md",
+      "bytes": 7649,
+      "sha256": "b4529e8108a6f28a7fa43d62a22fefb5b92a8b44b0bcc22d721addc3ff640239"
     },
     {
       "path": "docs/current-structure/MiniUW_Bloqueos_D06.csv",
@@ -3980,6 +4005,11 @@
       "path": "templates/IRR-review-renewal-T102.json",
       "bytes": 343,
       "sha256": "203792fe2df8f55694618b0a59cb0248838bbce9faadcc1955bb1009ca5bc7b6"
+    },
+    {
+      "path": "templates/activation-review-D11-empty.json",
+      "bytes": 16703,
+      "sha256": "b03c125dadb30fd5b7308f3fe9500b9ecc92b2ee89eb2209d71e7632290e948a"
     },
     {
       "path": "templates/cash-participation-missing-T104.json",

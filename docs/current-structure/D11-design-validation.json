@@ -1,0 +1,72 @@
+{
+  "snapshot_id": "D11",
+  "status": "passed_documentary_evidence_packet_source_and_observed_output_consistency",
+  "scope": "Documentary evidence organization only; proposed financial acceptance not executed",
+  "previous_design_commit": "4006e8f732fc8e4cf03165e3beefef39c9edb82e",
+  "technical_baseline": "T111",
+  "technical_baseline_commit": "9aeb590151068ccd51f4eca0e92f7c766464ba94",
+  "prior_files_preserved": 1192,
+  "actual_changed_prior_files": [
+    "BACKUP_MANIFEST.json",
+    "README.md",
+    "WORK_LOG.md"
+  ],
+  "connection_packets": 20,
+  "original_fields": 55,
+  "supplemental_source_sets": 15,
+  "investor_outputs": 23,
+  "evidence_classes": 6,
+  "inherited_conditional_checks": 40,
+  "new_joint_situations_specified": 6,
+  "source_contract_references_checked": 92,
+  "native_source_locations_checked": 33,
+  "observed_interface_examples_checked": 28,
+  "observed_output_states": {
+    "available_in_conditional_synthetic_project_view": 17,
+    "explicit_zero_only_in_declared_no_refinance_profile": 2,
+    "PENDING_declared_stock_missing": 2,
+    "PENDING_annual_capital_base_missing": 1,
+    "PENDING_personal_terms_missing": 1
+  },
+  "empty_connection_review_rows": 20,
+  "empty_output_review_rows": 23,
+  "financial_acceptance_checks_executed": 0,
+  "financial_bindings_activated": 0,
+  "new_source_values": 0,
+  "new_runtime_components": 0,
+  "new_tests": 0,
+  "technical_tests_unchanged": 1619,
+  "all_references_and_empty_templates_checked": true,
+  "source_versions": [
+    {
+      "path": "docs/current-structure/MiniUW_Activacion_y_Aceptacion_D11.json",
+      "bytes": 105333,
+      "sha256": "be609e0f08ded0bea96c37444522817fdc30ac9053a82a4506330c0ef72bb13c"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Activacion_y_Aceptacion_D11.md",
+      "bytes": 7649,
+      "sha256": "b4529e8108a6f28a7fa43d62a22fefb5b92a8b44b0bcc22d721addc3ff640239"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Activacion_20_Conexiones_D11.csv",
+      "bytes": 12088,
+      "sha256": "cb59dab53de2bdc14f7cfa6af3df1796514e3abb81e8e127ee7f97936ab3d1b8"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Aceptacion_23_Salidas_D11.csv",
+      "bytes": 13118,
+      "sha256": "881c0ca1afa1114bfec681e104b2d40362ab909d190e2c1bf1dc3f2156cef59d"
+    },
+    {
+      "path": "templates/activation-review-D11-empty.json",
+      "bytes": 16703,
+      "sha256": "b03c125dadb30fd5b7308f3fe9500b9ecc92b2ee89eb2209d71e7632290e948a"
+    }
+  ],
+  "financial_model_complete": false,
+  "professional_review_authenticated": false,
+  "personal_return_verified": false,
+  "real_decisions_enabled": false,
+  "deployment_enabled": false
+}

@@ -1,0 +1,2543 @@
+{
+  "snapshot_id": "D11",
+  "scope": "Documentary evidence plan for20 field-connection packets and23 investor outputs; no executable activation or new financial approval policy",
+  "previous_design_commit": "4006e8f732fc8e4cf03165e3beefef39c9edb82e",
+  "technical_baseline": "T111",
+  "technical_baseline_commit": "9aeb590151068ccd51f4eca0e92f7c766464ba94",
+  "evidence_classes": [
+    {
+      "id": "E01",
+      "title": "Identidad fuente y vigencia",
+      "requirement": "Original, hash, localizador, revisión, deal, escenario y UTC compatibles; conservar conflictos y faltantes.",
+      "source_refs": [
+        {
+          "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+          "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+          "json_pointer": "/supplemental_sources/12"
+        }
+      ]
+    },
+    {
+      "id": "E02",
+      "title": "Unidades cantidades y período",
+      "requirement": "Unidad literal y normalizada, moneda, población/base elegible, período y conversión explícita; conservar cero y ausencia separados.",
+      "source_refs": [
+        {
+          "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+          "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+          "json_pointer": "/supplemental_sources/13"
+        }
+      ]
+    },
+    {
+      "id": "E03",
+      "title": "Definición aplicabilidad y alcance",
+      "requirement": "Definición financiera vigente, alcance, inclusiones y aplicabilidad con evidencia; reglas oficiales sólo cuando correspondan y estén sustentadas.",
+      "source_refs": [
+        {
+          "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+          "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+          "json_pointer": "/supplemental_sources/10"
+        },
+        {
+          "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+          "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+          "json_pointer": "/states/3"
+        }
+      ]
+    },
+    {
+      "id": "E04",
+      "title": "Conexión técnica compatible",
+      "requirement": "Perfil que soporte la relación y prueba de vínculo de cada campo a su cantidad/base/destino; aceptar representaciones no demuestra que la hoja produzca una proyección.",
+      "source_refs": [
+        {
+          "path": "docs/current-structure/MiniUW_Contratos_Financieros_Complementarios_D10.json",
+          "sha256": "ecda3f4871fbf828b4b580d933dab3acc2dcbf8abce9dd3ff9b380267722119f",
+          "json_pointer": "/financial_bindings_activated"
+        },
+        {
+          "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+          "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+          "json_pointer": "/states/1"
+        }
+      ]
+    },
+    {
+      "id": "E05",
+      "title": "Resultado esperado independiente",
+      "requirement": "Caso y resultado esperado independientes con unidades/fechas/alcance; comparación sin tolerancia inventada y conciliación de caja/deuda cuando aplique.",
+      "source_refs": [
+        {
+          "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+          "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+          "json_pointer": "/supplemental_sources/14"
+        }
+      ]
+    },
+    {
+      "id": "E06",
+      "title": "Salida y revisión del snapshot",
+      "requirement": "Salida trazable al mismo snapshot, límites y pendientes visibles, criterios separados y revisión pertinente para cualquier uso real; exactamente una página externa.",
+      "source_refs": [
+        {
+          "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+          "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+          "json_pointer": "/supplemental_sources/14"
+        },
+        {
+          "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+          "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+          "json_pointer": "/states/5"
+        }
+      ]
+    }
+  ],
+  "activation_packets": [
+    {
+      "card_id": "F01",
+      "title": "Base de renta y grupos de unidades",
+      "field_ids": [
+        "INPUT_C7",
+        "INPUT_C8",
+        "INPUT_C9",
+        "INPUT_C10",
+        "INPUT_C11"
+      ],
+      "source_card_ref": {
+        "path": "docs/current-structure/MiniUW_Contratos_Financieros_Prioritarios_D09.json",
+        "sha256": "9e48ecf957fc701fb231ed465a9865c4d27dd08912d8c0bcf8d345b13966db93",
+        "json_pointer": "/cards/0"
+      },
+      "supplemental_ids": [
+        "S01",
+        "S02",
+        "S05",
+        "S13",
+        "S14"
+      ],
+      "quantity_requirements": [
+        "Identidad explícita entre celdas Studio/1BR/2BR/3BR y group_id; sin emparejar por posición",
+        "n_g: unidades documentadas disponibles del grupo en el tramo",
+        "a_g: área rentable de la unidad; no GSF total ni área comercial",
+        "r_g: moneda/unidad/mes; s_g: moneda/SF rentable/mes",
+        "Moneda, período, rent_definition, pérdida/concesión y bases con fuentes"
+      ],
+      "definition_requirements": [
+        "La nota C7 define dimensiones mensuales; cada valor real y su alcance necesitan fuente",
+        "Un dormitorio no identifica automáticamente todos los unit types",
+        "Tarifa ya neta requiere tratamiento explícito que evite otra deducción",
+        "Tramos parciales necesitan fracciones y disponibilidad; no derivar días de una fecha"
+      ],
+      "native_profile_gap": "T21 admite per_unit_per_month y per_rentable_sf_per_month. T82 consume referencias de renta con gastos explícitamente cero; no es un lugar para insertar gasto de seguro o administración. El vínculo completo de las cinco celdas a grupos/tramos aún no está implementado.",
+      "evidence_class_ids": [
+        "E01",
+        "E02",
+        "E03",
+        "E04",
+        "E05",
+        "E06"
+      ],
+      "conditional_check_refs": [
+        {
+          "path": "docs/current-structure/MiniUW_Contratos_Financieros_Prioritarios_D09.json",
+          "sha256": "9e48ecf957fc701fb231ed465a9865c4d27dd08912d8c0bcf8d345b13966db93",
+          "json_pointer": "/cards/0/validation_plan/0"
+        },
+        {
+          "path": "docs/current-structure/MiniUW_Contratos_Financieros_Prioritarios_D09.json",
+          "sha256": "9e48ecf957fc701fb231ed465a9865c4d27dd08912d8c0bcf8d345b13966db93",
+          "json_pointer": "/cards/0/validation_plan/1"
+        }
+      ],
+      "applicability": null,
+      "financial_definition_ref": null,
+      "active_financial_binding": null,
+      "independent_expected_case_ref": null,
+      "financial_acceptance_complete": false,
+      "status": "PENDING",
+      "technical_profile_exists_does_not_activate_field_mapping": true
+    },
+    {
+      "card_id": "F02",
+      "title": "Costo vertical e inclusiones",
+      "field_ids": [
+        "INPUT_C34",
+        "INPUT_C35",
+        "INPUT_C36"
+      ],
+      "source_card_ref": {
+        "path": "docs/current-structure/MiniUW_Contratos_Financieros_Prioritarios_D09.json",
+        "sha256": "9e48ecf957fc701fb231ed465a9865c4d27dd08912d8c0bcf8d345b13966db93",
+        "json_pointer": "/cards/1"
+      },
+      "supplemental_ids": [
+        "S01",
+        "S03",
+        "S13",
+        "S14"
+      ],
+      "quantity_requirements": [
+        "C34: selector de base; C35: monto/tarifa según esa base",
+        "GSF de construcción con fuente y alcance; no sustituir NRSF",
+        "Conteo documentado para rama por unidad",
+        "Identidad económica de vertical, parking, site y contingencias; inclusiones explícitas"
+      ],
+      "definition_requirements": [
+        "Conservar nota C35: vertical, excluye parking/site; conciliar cualquier cotización GC con su alcance real",
+        "Conservar condición C36: sólo si base $/GSF y GBA en planos figura TBD; no adoptar C36 como override universal",
+        "No separar inclusiones de una cotización por estimación o igualdad de importes"
+      ],
+      "native_profile_gap": "Hay referencia algebraica aislada M3/M4; no constituye productor integrado de presupuesto desde C34:C36. Sus equivalencias no validan el alcance de una cotización ni el calendario de pagos.",
+      "evidence_class_ids": [
+        "E01",
+        "E02",
+        "E03",
+        "E04",
+        "E05",
+        "E06"
+      ],
+      "conditional_check_refs": [
+        {
+          "path": "docs/current-structure/MiniUW_Contratos_Financieros_Prioritarios_D09.json",
+          "sha256": "9e48ecf957fc701fb231ed465a9865c4d27dd08912d8c0bcf8d345b13966db93",
+          "json_pointer": "/cards/1/validation_plan/0"
+        },
+        {
+          "path": "docs/current-structure/MiniUW_Contratos_Financieros_Prioritarios_D09.json",
+          "sha256": "9e48ecf957fc701fb231ed465a9865c4d27dd08912d8c0bcf8d345b13966db93",
+          "json_pointer": "/cards/1/validation_plan/1"
+        }
+      ],
+      "applicability": null,
+      "financial_definition_ref": null,
+      "active_financial_binding": null,
+      "independent_expected_case_ref": null,
+      "financial_acceptance_complete": false,
+      "status": "PENDING",
+      "technical_profile_exists_does_not_activate_field_mapping": true
+    },
+    {
+      "card_id": "F03",
+      "title": "Gastos controlables y base de administración",
+      "field_ids": [
+        "INPUT_C57",
+        "INPUT_C58"
+      ],
+      "source_card_ref": {
+        "path": "docs/current-structure/MiniUW_Contratos_Financieros_Prioritarios_D09.json",
+        "sha256": "9e48ecf957fc701fb231ed465a9865c4d27dd08912d8c0bcf8d345b13966db93",
+        "json_pointer": "/cards/2"
+      },
+      "supplemental_ids": [
+        "S01",
+        "S02",
+        "S05",
+        "S13",
+        "S14"
+      ],
+      "quantity_requirements": [
+        "C57: moneda/unidad/año y conteo elegible, no ocupación inferida",
+        "C58: fracción y base de EGI residencial documentada",
+        "Período, composición de otros ingresos, concesiones y tratamiento de gasto/caja"
+      ],
+      "definition_requirements": [
+        "T21 usa unit_total aportado en grupos; confirmar que es la cantidad elegible para C57",
+        "Definir si EGI residencial elegible incluye otros ingresos de C13",
+        "Identificar perfil regular de12 meses expresos o una asignación compatible suministrada; no inferir fracción de año desde días",
+        "No aplicar comisión al comercial ni a NOI por falta de una base identificada"
+      ],
+      "native_profile_gap": "La rama fraction_of_residential_effective_rent de T21 usa renta residencial efectiva y declara excluir otros/comercial. La etiqueta C58 dice res. EGI: no hay equivalencia automática de esas bases. Si otros ingresos son cero documentado puede demostrarse igualdad en ese alcance; no generalizarla.",
+      "evidence_class_ids": [
+        "E01",
+        "E02",
+        "E03",
+        "E04",
+        "E05",
+        "E06"
+      ],
+      "conditional_check_refs": [
+        {
+          "path": "docs/current-structure/MiniUW_Contratos_Financieros_Prioritarios_D09.json",
+          "sha256": "9e48ecf957fc701fb231ed465a9865c4d27dd08912d8c0bcf8d345b13966db93",
+          "json_pointer": "/cards/2/validation_plan/0"
+        },
+        {
+          "path": "docs/current-structure/MiniUW_Contratos_Financieros_Prioritarios_D09.json",
+          "sha256": "9e48ecf957fc701fb231ed465a9865c4d27dd08912d8c0bcf8d345b13966db93",
+          "json_pointer": "/cards/2/validation_plan/1"
+        }
+      ],
+      "applicability": null,
+      "financial_definition_ref": null,
+      "active_financial_binding": null,
+      "independent_expected_case_ref": null,
+      "financial_acceptance_complete": false,
+      "status": "PENDING",
+      "technical_profile_exists_does_not_activate_field_mapping": true
+    },
+    {
+      "card_id": "F04",
+      "title": "Seguro anual cobertura y pagos",
+      "field_ids": [
+        "INPUT_C59"
+      ],
+      "source_card_ref": {
+        "path": "docs/current-structure/MiniUW_Contratos_Financieros_Prioritarios_D09.json",
+        "sha256": "9e48ecf957fc701fb231ed465a9865c4d27dd08912d8c0bcf8d345b13966db93",
+        "json_pointer": "/cards/3"
+      },
+      "supplemental_ids": [
+        "S01",
+        "S02",
+        "S05",
+        "S07",
+        "S13",
+        "S14"
+      ],
+      "quantity_requirements": [
+        "Unidades aseguradas y cobertura; no tomar automáticamente unidades disponibles para renta",
+        "Costo/prima total suministrado y asignaciones por período",
+        "Cuotas y pagos independientes con IDs/fechas",
+        "Contabilidad antes/después y liquidación terminal cuando corresponda"
+      ],
+      "definition_requirements": [
+        "Acreditar relación entre estimación C59 y costo/pólizas reales; no escoger una fuente por su nombre",
+        "No inyectar C59 como gasto en las referencias de renta T82",
+        "No transformar cuota nominal o cola no pagada en payable contable inferido"
+      ],
+      "native_profile_gap": "T111 recibe el total nominal del plan T106 y las pólizas como fuentes ya estructuradas. No calcula ese costo desde C59. T82 exige referencias de ingreso con gasto cero; la asignación/pago del seguro vive en fuentes distintas.",
+      "evidence_class_ids": [
+        "E01",
+        "E02",
+        "E03",
+        "E04",
+        "E05",
+        "E06"
+      ],
+      "conditional_check_refs": [
+        {
+          "path": "docs/current-structure/MiniUW_Contratos_Financieros_Prioritarios_D09.json",
+          "sha256": "9e48ecf957fc701fb231ed465a9865c4d27dd08912d8c0bcf8d345b13966db93",
+          "json_pointer": "/cards/3/validation_plan/0"
+        },
+        {
+          "path": "docs/current-structure/MiniUW_Contratos_Financieros_Prioritarios_D09.json",
+          "sha256": "9e48ecf957fc701fb231ed465a9865c4d27dd08912d8c0bcf8d345b13966db93",
+          "json_pointer": "/cards/3/validation_plan/1"
+        }
+      ],
+      "applicability": null,
+      "financial_definition_ref": null,
+      "active_financial_binding": null,
+      "independent_expected_case_ref": null,
+      "financial_acceptance_complete": false,
+      "status": "PENDING",
+      "technical_profile_exists_does_not_activate_field_mapping": true
+    },
+    {
+      "card_id": "F05",
+      "title": "Reservas de reposición y caja restringida",
+      "field_ids": [
+        "INPUT_C60"
+      ],
+      "source_card_ref": {
+        "path": "docs/current-structure/MiniUW_Contratos_Financieros_Prioritarios_D09.json",
+        "sha256": "9e48ecf957fc701fb231ed465a9865c4d27dd08912d8c0bcf8d345b13966db93",
+        "json_pointer": "/cards/4"
+      },
+      "supplemental_ids": [
+        "S01",
+        "S02",
+        "S05",
+        "S07",
+        "S09",
+        "S13",
+        "S14"
+      ],
+      "quantity_requirements": [
+        "Tarifa C60 y su conteo/base/año",
+        "Política aplicable de inclusión/exclusión en NOI",
+        "Depósito, liberación, saldo inicial/final y destino en venta",
+        "Ajustes de devengo/caja sólo si están documentados"
+      ],
+      "definition_requirements": [
+        "Identificar si el monto fuente es obligación, gasto, depósito o saldo",
+        "Evitar doble uso como expense_items y reserve_deposit sin conciliación",
+        "No inventar addback o liberación para forzar una caja"
+      ],
+      "native_profile_gap": "T25 tiene reserve_deposit/reserve_release y saldos restringidos explícitos. Eso no decide la clasificación financiera de C60. T111 no tiene vínculo de C60 a esas entradas; conserva los importes independientes del caso.",
+      "evidence_class_ids": [
+        "E01",
+        "E02",
+        "E03",
+        "E04",
+        "E05",
+        "E06"
+      ],
+      "conditional_check_refs": [
+        {
+          "path": "docs/current-structure/MiniUW_Contratos_Financieros_Prioritarios_D09.json",
+          "sha256": "9e48ecf957fc701fb231ed465a9865c4d27dd08912d8c0bcf8d345b13966db93",
+          "json_pointer": "/cards/4/validation_plan/0"
+        },
+        {
+          "path": "docs/current-structure/MiniUW_Contratos_Financieros_Prioritarios_D09.json",
+          "sha256": "9e48ecf957fc701fb231ed465a9865c4d27dd08912d8c0bcf8d345b13966db93",
+          "json_pointer": "/cards/4/validation_plan/1"
+        }
+      ],
+      "applicability": null,
+      "financial_definition_ref": null,
+      "active_financial_binding": null,
+      "independent_expected_case_ref": null,
+      "financial_acceptance_complete": false,
+      "status": "PENDING",
+      "technical_profile_exists_does_not_activate_field_mapping": true
+    },
+    {
+      "card_id": "F06",
+      "title": "Caps de refinanciación y de salida",
+      "field_ids": [
+        "INPUT_C66",
+        "INPUT_C67"
+      ],
+      "source_card_ref": {
+        "path": "docs/current-structure/MiniUW_Contratos_Financieros_Prioritarios_D09.json",
+        "sha256": "9e48ecf957fc701fb231ed465a9865c4d27dd08912d8c0bcf8d345b13966db93",
+        "json_pointer": "/cards/5"
+      },
+      "supplemental_ids": [
+        "S02",
+        "S05",
+        "S06",
+        "S07",
+        "S13",
+        "S14"
+      ],
+      "quantity_requirements": [
+        "C66 y C67 separados con moneda/fecha/ventana y fuente de cada valoración",
+        "NOI anual de valoración, bancario y forward con bases compatibles",
+        "Hipótesis explícita para usar valor como precio de una venta",
+        "Perfil de ventana admitido; no inventar ajuste de fechas"
+      ],
+      "definition_requirements": [
+        "T41 exige ventana forward de un año calendario explícito; otro alcance necesita perfil compatible",
+        "No sustituir cap de refi por cap de salida",
+        "No agregar valor calculado como un segundo cobro además de venta"
+      ],
+      "native_profile_gap": "T35 y T41/T42 son perfiles existentes separados. La venta de T111 recibe gross_proceeds suministrados; no los deriva de C67. No hay conexión activa de estas celdas a la ruta T111 completa.",
+      "evidence_class_ids": [
+        "E01",
+        "E02",
+        "E03",
+        "E04",
+        "E05",
+        "E06"
+      ],
+      "conditional_check_refs": [
+        {
+          "path": "docs/current-structure/MiniUW_Contratos_Financieros_Prioritarios_D09.json",
+          "sha256": "9e48ecf957fc701fb231ed465a9865c4d27dd08912d8c0bcf8d345b13966db93",
+          "json_pointer": "/cards/5/validation_plan/0"
+        },
+        {
+          "path": "docs/current-structure/MiniUW_Contratos_Financieros_Prioritarios_D09.json",
+          "sha256": "9e48ecf957fc701fb231ed465a9865c4d27dd08912d8c0bcf8d345b13966db93",
+          "json_pointer": "/cards/5/validation_plan/1"
+        }
+      ],
+      "applicability": null,
+      "financial_definition_ref": null,
+      "active_financial_binding": null,
+      "independent_expected_case_ref": null,
+      "financial_acceptance_complete": false,
+      "status": "PENDING",
+      "technical_profile_exists_does_not_activate_field_mapping": true
+    },
+    {
+      "card_id": "F07",
+      "title": "Tasa amortización y límites bancarios",
+      "field_ids": [
+        "INPUT_C69",
+        "INPUT_C70",
+        "INPUT_C71",
+        "INPUT_C72"
+      ],
+      "source_card_ref": {
+        "path": "docs/current-structure/MiniUW_Contratos_Financieros_Prioritarios_D09.json",
+        "sha256": "9e48ecf957fc701fb231ed465a9865c4d27dd08912d8c0bcf8d345b13966db93",
+        "json_pointer": "/cards/6"
+      },
+      "supplemental_ids": [
+        "S02",
+        "S04",
+        "S06",
+        "S10",
+        "S13",
+        "S14"
+      ],
+      "quantity_requirements": [
+        "Tasa con base nominal/efectiva y período; formato decimal no declara frecuencia",
+        "n: pagos de amortización y frecuencia expresos; maturity y fechas separados",
+        "NOI bancario y constante anual de sizing con base, no efectivo de un año fechado",
+        "LTV/DSCR y otras restricciones aplicables con fuente; monto seleccionado independiente"
+      ],
+      "definition_requirements": [
+        "No dividir una tasa anual por12 sin convención contractual; el vínculo de conversión no está implementado",
+        "No convertir años C70 en fechas/maturity/pagos por una frecuencia por defecto",
+        "Límites C71/C72 no llenan criterios de inversión ni acreditan aprobación/fondos disponibles"
+      ],
+      "native_profile_gap": "T10 recibe periodic_rate efectiva por intervalo, amortization_payments, payments_per_year, maturity_payment y fechas explícitas. T35 consume estos perfiles ya estructurados. Ni C69 decimal ni C70 años suministran por sí solos esas entradas; el sizing no está integrado como refi de T111.",
+      "evidence_class_ids": [
+        "E01",
+        "E02",
+        "E03",
+        "E04",
+        "E05",
+        "E06"
+      ],
+      "conditional_check_refs": [
+        {
+          "path": "docs/current-structure/MiniUW_Contratos_Financieros_Prioritarios_D09.json",
+          "sha256": "9e48ecf957fc701fb231ed465a9865c4d27dd08912d8c0bcf8d345b13966db93",
+          "json_pointer": "/cards/6/validation_plan/0"
+        },
+        {
+          "path": "docs/current-structure/MiniUW_Contratos_Financieros_Prioritarios_D09.json",
+          "sha256": "9e48ecf957fc701fb231ed465a9865c4d27dd08912d8c0bcf8d345b13966db93",
+          "json_pointer": "/cards/6/validation_plan/1"
+        }
+      ],
+      "applicability": null,
+      "financial_definition_ref": null,
+      "active_financial_binding": null,
+      "independent_expected_case_ref": null,
+      "financial_acceptance_complete": false,
+      "status": "PENDING",
+      "technical_profile_exists_does_not_activate_field_mapping": true
+    },
+    {
+      "card_id": "F08",
+      "title": "Costos de venta y monto pagado al cierre",
+      "field_ids": [
+        "INPUT_C68"
+      ],
+      "source_card_ref": {
+        "path": "docs/current-structure/MiniUW_Contratos_Financieros_Prioritarios_D09.json",
+        "sha256": "9e48ecf957fc701fb231ed465a9865c4d27dd08912d8c0bcf8d345b13966db93",
+        "json_pointer": "/cards/7"
+      },
+      "supplemental_ids": [
+        "S02",
+        "S05",
+        "S07",
+        "S11",
+        "S13",
+        "S14"
+      ],
+      "quantity_requirements": [
+        "Precio bruto documentado y fecha/moneda compatibles",
+        "Inventario completo por cost_id, tipo, clasificación y aplicabilidad",
+        "Cargo fijo o fraction_of_gross_price según el perfil",
+        "No solapamiento con costos ya incluidos, payoff fees, impuestos y otros usos"
+      ],
+      "definition_requirements": [
+        "C68 decimal no identifica por sí solo inventario, base, impuestos o pago",
+        "No sumar una tasa agregada y sus mismos componentes",
+        "Fuentes fiscales y cargos fuera del perfil permanecen pendientes; no inventar regla/tasa"
+      ],
+      "native_profile_gap": "T43 puede producir un costo desde cargos explícitos sobre gross_price; T29 consume closing_costs_paid. T111 recibe ese monto como fuente independiente y no lo calcula desde C68 ni adopta el perfil T43 por coincidir un total.",
+      "evidence_class_ids": [
+        "E01",
+        "E02",
+        "E03",
+        "E04",
+        "E05",
+        "E06"
+      ],
+      "conditional_check_refs": [
+        {
+          "path": "docs/current-structure/MiniUW_Contratos_Financieros_Prioritarios_D09.json",
+          "sha256": "9e48ecf957fc701fb231ed465a9865c4d27dd08912d8c0bcf8d345b13966db93",
+          "json_pointer": "/cards/7/validation_plan/0"
+        },
+        {
+          "path": "docs/current-structure/MiniUW_Contratos_Financieros_Prioritarios_D09.json",
+          "sha256": "9e48ecf957fc701fb231ed465a9865c4d27dd08912d8c0bcf8d345b13966db93",
+          "json_pointer": "/cards/7/validation_plan/1"
+        }
+      ],
+      "applicability": null,
+      "financial_definition_ref": null,
+      "active_financial_binding": null,
+      "independent_expected_case_ref": null,
+      "financial_acceptance_complete": false,
+      "status": "PENDING",
+      "technical_profile_exists_does_not_activate_field_mapping": true
+    },
+    {
+      "card_id": "F09",
+      "title": "Comparables y otros ingresos",
+      "field_ids": [
+        "INPUT_C12",
+        "INPUT_C13"
+      ],
+      "source_card_ref": {
+        "path": "docs/current-structure/MiniUW_Contratos_Financieros_Complementarios_D10.json",
+        "sha256": "ecda3f4871fbf828b4b580d933dab3acc2dcbf8abce9dd3ff9b380267722119f",
+        "json_pointer": "/cards/0"
+      },
+      "supplemental_ids": [
+        "S01",
+        "S02",
+        "S05",
+        "S13",
+        "S14"
+      ],
+      "quantity_requirements": [
+        "C12: referencia textual, fuente, fecha y alcance de comparable",
+        "C13: moneda/unidad/mes, población elegible y fechas",
+        "Clasificación residencial/comercial, devengo, cobros y efecto en EGI/management"
+      ],
+      "definition_requirements": [
+        "No asignar monto a una referencia textual",
+        "No elegir por defecto unidades totales, disponibles u ocupadas",
+        "Definir si el ingreso participa en pérdidas, concesiones y base de administración"
+      ],
+      "native_profile_gap": "T21 excluye otros ingresos y comercial. NOI acepta filas de importes suministrados, pero T111 exige cero en los ingresos ajenos al objetivo residencial. Un C13 no cero necesita un perfil/vínculo compatible, no insertar un monto en la referencia de renta ni omitirlo.",
+      "evidence_class_ids": [
+        "E01",
+        "E02",
+        "E03",
+        "E04",
+        "E05",
+        "E06"
+      ],
+      "conditional_check_refs": [
+        {
+          "path": "docs/current-structure/MiniUW_Contratos_Financieros_Complementarios_D10.json",
+          "sha256": "ecda3f4871fbf828b4b580d933dab3acc2dcbf8abce9dd3ff9b380267722119f",
+          "json_pointer": "/cards/0/validation_plan/0"
+        },
+        {
+          "path": "docs/current-structure/MiniUW_Contratos_Financieros_Complementarios_D10.json",
+          "sha256": "ecda3f4871fbf828b4b580d933dab3acc2dcbf8abce9dd3ff9b380267722119f",
+          "json_pointer": "/cards/0/validation_plan/1"
+        }
+      ],
+      "applicability": null,
+      "financial_definition_ref": null,
+      "active_financial_binding": null,
+      "independent_expected_case_ref": null,
+      "financial_acceptance_complete": false,
+      "status": "PENDING",
+      "technical_profile_exists_does_not_activate_field_mapping": true
+    },
+    {
+      "card_id": "F10",
+      "title": "Vacancia pérdida crediticia y concesiones",
+      "field_ids": [
+        "INPUT_C14",
+        "INPUT_C15"
+      ],
+      "source_card_ref": {
+        "path": "docs/current-structure/MiniUW_Contratos_Financieros_Complementarios_D10.json",
+        "sha256": "ecda3f4871fbf828b4b580d933dab3acc2dcbf8abce9dd3ff9b380267722119f",
+        "json_pointer": "/cards/1"
+      },
+      "supplemental_ids": [
+        "S01",
+        "S02",
+        "S05",
+        "S13",
+        "S14"
+      ],
+      "quantity_requirements": [
+        "Fracciones explícitas y formato decimal/porcentaje",
+        "Renta bruta o neta identificada por grupo/período",
+        "Base de concesión y alcance de pérdida/crédito",
+        "Aplicación a otros ingresos/comercial sólo con definición"
+      ],
+      "definition_requirements": [
+        "No descontar otra vez una concesión ya incorporada en renta",
+        "No asumir que vacancia afecta todos los ingresos",
+        "Los rangos técnicos del perfil no certifican una política financiera aplicable"
+      ],
+      "native_profile_gap": "T21 tiene rent_definition, loss_fraction, concession_fraction y concession_basis. C14/C15 aisladas no eligen entre gross_potential_rent, after_vacancy_rent o already_in_rent. No hay vínculo activo desde esas celdas a grupos/tramos T111.",
+      "evidence_class_ids": [
+        "E01",
+        "E02",
+        "E03",
+        "E04",
+        "E05",
+        "E06"
+      ],
+      "conditional_check_refs": [
+        {
+          "path": "docs/current-structure/MiniUW_Contratos_Financieros_Complementarios_D10.json",
+          "sha256": "ecda3f4871fbf828b4b580d933dab3acc2dcbf8abce9dd3ff9b380267722119f",
+          "json_pointer": "/cards/1/validation_plan/0"
+        },
+        {
+          "path": "docs/current-structure/MiniUW_Contratos_Financieros_Complementarios_D10.json",
+          "sha256": "ecda3f4871fbf828b4b580d933dab3acc2dcbf8abce9dd3ff9b380267722119f",
+          "json_pointer": "/cards/1/validation_plan/1"
+        }
+      ],
+      "applicability": null,
+      "financial_definition_ref": null,
+      "active_financial_binding": null,
+      "independent_expected_case_ref": null,
+      "financial_acceptance_complete": false,
+      "status": "PENDING",
+      "technical_profile_exists_does_not_activate_field_mapping": true
+    },
+    {
+      "card_id": "F11",
+      "title": "Rentas comerciales y fecha de inicio",
+      "field_ids": [
+        "INPUT_C16",
+        "INPUT_C17",
+        "INPUT_C18",
+        "INPUT_C19",
+        "INPUT_C20",
+        "INPUT_C21"
+      ],
+      "source_card_ref": {
+        "path": "docs/current-structure/MiniUW_Contratos_Financieros_Complementarios_D10.json",
+        "sha256": "ecda3f4871fbf828b4b580d933dab3acc2dcbf8abce9dd3ff9b380267722119f",
+        "json_pointer": "/cards/2"
+      },
+      "supplemental_ids": [
+        "S01",
+        "S02",
+        "S05",
+        "S13",
+        "S14"
+      ],
+      "quantity_requirements": [
+        "Uso/área por retail, restaurant u office con evidencia",
+        "Tarifa moneda/SF/año y moneda/período objetivo",
+        "C19/C20 como fracciones con bases y clasificación",
+        "TCO, origen del plazo C21 e inicio efectivo de reconocimiento/cobros"
+      ],
+      "definition_requirements": [
+        "IF APPLIES exige evidencia del uso; cero o casilla vacía no prueba que no existe",
+        "No aplicar no recuperable simultáneamente como reducción de ingreso y gasto sin conciliación",
+        "No dividir por12 o inventar fecha desde TCO sin calendario/perfil compatibles"
+      ],
+      "native_profile_gap": "El contrato M2-04 propone una relación condicionada; no hay productor comercial vinculado a C16:C21 en T111. La puerta residencial comprueba otros ingresos explícitamente cero. El lector NOI de importes no reemplaza las áreas, el contrato NNN o el calendario comercial.",
+      "evidence_class_ids": [
+        "E01",
+        "E02",
+        "E03",
+        "E04",
+        "E05",
+        "E06"
+      ],
+      "conditional_check_refs": [
+        {
+          "path": "docs/current-structure/MiniUW_Contratos_Financieros_Complementarios_D10.json",
+          "sha256": "ecda3f4871fbf828b4b580d933dab3acc2dcbf8abce9dd3ff9b380267722119f",
+          "json_pointer": "/cards/2/validation_plan/0"
+        },
+        {
+          "path": "docs/current-structure/MiniUW_Contratos_Financieros_Complementarios_D10.json",
+          "sha256": "ecda3f4871fbf828b4b580d933dab3acc2dcbf8abce9dd3ff9b380267722119f",
+          "json_pointer": "/cards/2/validation_plan/1"
+        }
+      ],
+      "applicability": null,
+      "financial_definition_ref": null,
+      "active_financial_binding": null,
+      "independent_expected_case_ref": null,
+      "financial_acceptance_complete": false,
+      "status": "PENDING",
+      "technical_profile_exists_does_not_activate_field_mapping": true
+    },
+    {
+      "card_id": "F12",
+      "title": "Utility allowance y alcance del programa",
+      "field_ids": [
+        "INPUT_C25",
+        "INPUT_C26",
+        "INPUT_C27",
+        "INPUT_C28"
+      ],
+      "source_card_ref": {
+        "path": "docs/current-structure/MiniUW_Contratos_Financieros_Complementarios_D10.json",
+        "sha256": "ecda3f4871fbf828b4b580d933dab3acc2dcbf8abce9dd3ff9b380267722119f",
+        "json_pointer": "/cards/3"
+      },
+      "supplemental_ids": [
+        "S01",
+        "S02",
+        "S05",
+        "S11",
+        "S13",
+        "S14"
+      ],
+      "quantity_requirements": [
+        "Identidad de unidad/grupo y programa",
+        "Allowance moneda/mes, sujeto y fecha vigentes",
+        "Límite bruto, renta de mercado y tratamiento aplicables con fuentes",
+        "Identidad entre tarifa publicada y monto neto reconocido/cobrado"
+      ],
+      "definition_requirements": [
+        "No instalar porcentajes o límites legales históricos",
+        "No restar allowance a toda renta residencial por omisión de programa",
+        "No inferir elegibilidad o ausencia de unidades asequibles desde un cero"
+      ],
+      "native_profile_gap": "El contrato M2 mantiene asequibilidad pendiente. T21 puede recibir rentas/grupos explícitos, pero no es verificador de AMI/elegibilidad ni productor de renta legal desde C25:C28. No hay binding financiero activo ni fuente oficial adoptada.",
+      "evidence_class_ids": [
+        "E01",
+        "E02",
+        "E03",
+        "E04",
+        "E05",
+        "E06"
+      ],
+      "conditional_check_refs": [
+        {
+          "path": "docs/current-structure/MiniUW_Contratos_Financieros_Complementarios_D10.json",
+          "sha256": "ecda3f4871fbf828b4b580d933dab3acc2dcbf8abce9dd3ff9b380267722119f",
+          "json_pointer": "/cards/3/validation_plan/0"
+        },
+        {
+          "path": "docs/current-structure/MiniUW_Contratos_Financieros_Complementarios_D10.json",
+          "sha256": "ecda3f4871fbf828b4b580d933dab3acc2dcbf8abce9dd3ff9b380267722119f",
+          "json_pointer": "/cards/3/validation_plan/1"
+        }
+      ],
+      "applicability": null,
+      "financial_definition_ref": null,
+      "active_financial_binding": null,
+      "independent_expected_case_ref": null,
+      "financial_acceptance_complete": false,
+      "status": "PENDING",
+      "technical_profile_exists_does_not_activate_field_mapping": true
+    },
+    {
+      "card_id": "F13",
+      "title": "Asking compra evaluada y costos de adquisición",
+      "field_ids": [
+        "INPUT_C32",
+        "INPUT_C33"
+      ],
+      "source_card_ref": {
+        "path": "docs/current-structure/MiniUW_Contratos_Financieros_Complementarios_D10.json",
+        "sha256": "ecda3f4871fbf828b4b580d933dab3acc2dcbf8abce9dd3ff9b380267722119f",
+        "json_pointer": "/cards/4"
+      },
+      "supplemental_ids": [
+        "S02",
+        "S03",
+        "S12",
+        "S13",
+        "S14"
+      ],
+      "quantity_requirements": [
+        "Precio evaluado con moneda/fecha/fuente",
+        "Asking opcional separado y objetivos/dominio de precio soportado",
+        "C33: fracción, base y alcance de costos/tributos",
+        "Evento bruto de adquisición y pagos con identidad"
+      ],
+      "definition_requirements": [
+        "Conservar nota C32: vacío remite al reporte histórico de RLV; no certifica RLV ni autoriza precio cero",
+        "Precio soportado requiere objetivos/reglas aún pendientes, no sólo una fórmula de referencia",
+        "No reemplazar precio de compra cuando cambia una cotización de asking"
+      ],
+      "native_profile_gap": "T57 recibe acquisition_payment como evento de caja explícito. Eso no calcula compra/costos desde C32/C33. Las referencias reducidas de precio no son RLV global aprobado; una ausencia de asking sigue siendo ausencia.",
+      "evidence_class_ids": [
+        "E01",
+        "E02",
+        "E03",
+        "E04",
+        "E05",
+        "E06"
+      ],
+      "conditional_check_refs": [
+        {
+          "path": "docs/current-structure/MiniUW_Contratos_Financieros_Complementarios_D10.json",
+          "sha256": "ecda3f4871fbf828b4b580d933dab3acc2dcbf8abce9dd3ff9b380267722119f",
+          "json_pointer": "/cards/4/validation_plan/0"
+        },
+        {
+          "path": "docs/current-structure/MiniUW_Contratos_Financieros_Complementarios_D10.json",
+          "sha256": "ecda3f4871fbf828b4b580d933dab3acc2dcbf8abce9dd3ff9b380267722119f",
+          "json_pointer": "/cards/4/validation_plan/1"
+        }
+      ],
+      "applicability": null,
+      "financial_definition_ref": null,
+      "active_financial_binding": null,
+      "independent_expected_case_ref": null,
+      "financial_acceptance_complete": false,
+      "status": "PENDING",
+      "technical_profile_exists_does_not_activate_field_mapping": true
+    },
+    {
+      "card_id": "F14",
+      "title": "Parking y site work",
+      "field_ids": [
+        "INPUT_C37",
+        "INPUT_C38"
+      ],
+      "source_card_ref": {
+        "path": "docs/current-structure/MiniUW_Contratos_Financieros_Complementarios_D10.json",
+        "sha256": "ecda3f4871fbf828b4b580d933dab3acc2dcbf8abce9dd3ff9b380267722119f",
+        "json_pointer": "/cards/5"
+      },
+      "supplemental_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S13",
+        "S14"
+      ],
+      "quantity_requirements": [
+        "Conteo de parking con fuente y tipo de alcance",
+        "Tarifa por espacio y monto site work documentados",
+        "Inclusión/exclusión frente al vertical/GC y otras partidas",
+        "Presupuesto, calendario y caja con identidades separadas"
+      ],
+      "definition_requirements": [
+        "No inferir espacios desde unidades residenciales o área",
+        "No agregar parking/site si la cotización ya los incluye",
+        "No deducir una descomposición de costo GC por igualdad de importes"
+      ],
+      "native_profile_gap": "El presupuesto M3 tiene relaciones candidatas; T57 recibe pagos de construcción/otros explícitos, sin convertir C37/C38 ni certificar inclusiones. El desglose por costo económico y sus enlaces requieren evidencia adicional.",
+      "evidence_class_ids": [
+        "E01",
+        "E02",
+        "E03",
+        "E04",
+        "E05",
+        "E06"
+      ],
+      "conditional_check_refs": [
+        {
+          "path": "docs/current-structure/MiniUW_Contratos_Financieros_Complementarios_D10.json",
+          "sha256": "ecda3f4871fbf828b4b580d933dab3acc2dcbf8abce9dd3ff9b380267722119f",
+          "json_pointer": "/cards/5/validation_plan/0"
+        },
+        {
+          "path": "docs/current-structure/MiniUW_Contratos_Financieros_Complementarios_D10.json",
+          "sha256": "ecda3f4871fbf828b4b580d933dab3acc2dcbf8abce9dd3ff9b380267722119f",
+          "json_pointer": "/cards/5/validation_plan/1"
+        }
+      ],
+      "applicability": null,
+      "financial_definition_ref": null,
+      "active_financial_binding": null,
+      "independent_expected_case_ref": null,
+      "financial_acceptance_complete": false,
+      "status": "PENDING",
+      "technical_profile_exists_does_not_activate_field_mapping": true
+    },
+    {
+      "card_id": "F15",
+      "title": "Contingencia soft costs y TI LC",
+      "field_ids": [
+        "INPUT_C39",
+        "INPUT_C40",
+        "INPUT_C41"
+      ],
+      "source_card_ref": {
+        "path": "docs/current-structure/MiniUW_Contratos_Financieros_Complementarios_D10.json",
+        "sha256": "ecda3f4871fbf828b4b580d933dab3acc2dcbf8abce9dd3ff9b380267722119f",
+        "json_pointer": "/cards/6"
+      },
+      "supplemental_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S13",
+        "S14"
+      ],
+      "quantity_requirements": [
+        "Base de contingencia y control/uso de la partida",
+        "Base hard de soft costs e inclusión del developer fee",
+        "Área comercial y aplicabilidad TI/LC",
+        "Identidades de costos para evitar solapamiento y calendario de uso/pago"
+      ],
+      "definition_requirements": [
+        "No asumir que contingencia aplica a todo hard/parking/site",
+        "C40 incluye dev fee según etiqueta: conciliar otra partida de fee antes de sumarla",
+        "C41 sólo si comercial con evidencia; sin área/regla no calcular monto"
+      ],
+      "native_profile_gap": "Las referencias M3/M4 comprueban algebra de asignación, no bases GC reales. T57 sólo recibe soft_cost_payment y otros eventos suministrados. No hay conversión integrada desde C39:C41 al presupuesto/pago T111.",
+      "evidence_class_ids": [
+        "E01",
+        "E02",
+        "E03",
+        "E04",
+        "E05",
+        "E06"
+      ],
+      "conditional_check_refs": [
+        {
+          "path": "docs/current-structure/MiniUW_Contratos_Financieros_Complementarios_D10.json",
+          "sha256": "ecda3f4871fbf828b4b580d933dab3acc2dcbf8abce9dd3ff9b380267722119f",
+          "json_pointer": "/cards/6/validation_plan/0"
+        },
+        {
+          "path": "docs/current-structure/MiniUW_Contratos_Financieros_Complementarios_D10.json",
+          "sha256": "ecda3f4871fbf828b4b580d933dab3acc2dcbf8abce9dd3ff9b380267722119f",
+          "json_pointer": "/cards/6/validation_plan/1"
+        }
+      ],
+      "applicability": null,
+      "financial_definition_ref": null,
+      "active_financial_binding": null,
+      "independent_expected_case_ref": null,
+      "financial_acceptance_complete": false,
+      "status": "PENDING",
+      "technical_profile_exists_does_not_activate_field_mapping": true
+    },
+    {
+      "card_id": "F16",
+      "title": "Upfront soft y duraciones del proyecto",
+      "field_ids": [
+        "INPUT_C42",
+        "INPUT_C46",
+        "INPUT_C47"
+      ],
+      "source_card_ref": {
+        "path": "docs/current-structure/MiniUW_Contratos_Financieros_Complementarios_D10.json",
+        "sha256": "ecda3f4871fbf828b4b580d933dab3acc2dcbf8abce9dd3ff9b380267722119f",
+        "json_pointer": "/cards/7"
+      },
+      "supplemental_ids": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S13",
+        "S14"
+      ],
+      "quantity_requirements": [
+        "Soft total/base de la fracción upfront y definición del inicio de meses1–3",
+        "Pesos por período, horizonte y tratamiento de plazos menores a tres meses",
+        "Compra/inicio/TCO/estabilización/refi/venta separados",
+        "Curvas de gasto/pago y política de retrasos con fuente"
+      ],
+      "definition_requirements": [
+        "No elegir reparto uniforme o sin² desde una etiqueta",
+        "No convertir TCO, fin de obra y estabilización en el mismo hito",
+        "No inventar meses, costos por retraso o normalizar pesos incompletos silenciosamente"
+      ],
+      "native_profile_gap": "T57/T68 reciben fechas/eventos/intervalos explícitos, no una curva generada desde estos tres campos. El motor de revisión T88 conserva inventario fechado/horizonte en su perfil; no es comparador universal de retrasos que cambian fechas.",
+      "evidence_class_ids": [
+        "E01",
+        "E02",
+        "E03",
+        "E04",
+        "E05",
+        "E06"
+      ],
+      "conditional_check_refs": [
+        {
+          "path": "docs/current-structure/MiniUW_Contratos_Financieros_Complementarios_D10.json",
+          "sha256": "ecda3f4871fbf828b4b580d933dab3acc2dcbf8abce9dd3ff9b380267722119f",
+          "json_pointer": "/cards/7/validation_plan/0"
+        },
+        {
+          "path": "docs/current-structure/MiniUW_Contratos_Financieros_Complementarios_D10.json",
+          "sha256": "ecda3f4871fbf828b4b580d933dab3acc2dcbf8abce9dd3ff9b380267722119f",
+          "json_pointer": "/cards/7/validation_plan/1"
+        }
+      ],
+      "applicability": null,
+      "financial_definition_ref": null,
+      "active_financial_binding": null,
+      "independent_expected_case_ref": null,
+      "financial_acceptance_complete": false,
+      "status": "PENDING",
+      "technical_profile_exists_does_not_activate_field_mapping": true
+    },
+    {
+      "card_id": "F17",
+      "title": "LTC interés y fee de construcción",
+      "field_ids": [
+        "INPUT_C51",
+        "INPUT_C52",
+        "INPUT_C53"
+      ],
+      "source_card_ref": {
+        "path": "docs/current-structure/MiniUW_Contratos_Financieros_Complementarios_D10.json",
+        "sha256": "ecda3f4871fbf828b4b580d933dab3acc2dcbf8abce9dd3ff9b380267722119f",
+        "json_pointer": "/cards/8"
+      },
+      "supplemental_ids": [
+        "S02",
+        "S03",
+        "S04",
+        "S06",
+        "S13",
+        "S14"
+      ],
+      "quantity_requirements": [
+        "Costo elegible y límite monetario con fuente; no igualar automáticamente a TDC",
+        "Convención de interés/tasa/intervalo y saldo de cálculo",
+        "C53: base de originación (compromiso/draw/otra) y pago/retención/financiación",
+        "Orden de fondos, saldos y payoff por préstamo"
+      ],
+      "definition_requirements": [
+        "T68 usa interés simple por intervalo suministrado y fee por draw bruto; no equivalen automáticamente a C52/C53",
+        "El compromiso T68 se recibe aparte; no se calcula desde C51",
+        "No cerrar circularidad TDC/interés con coeficiente agregado o solver no definido"
+      ],
+      "native_profile_gap": "T68 es cero-apertura, no revolvente, con draw al inicio y repago al final; no convierte tasa anual ni capitaliza interés. T111 hereda ese perfil explícito. C51:C53 no lo configuran por sí solos ni autorizan nuevos draws/aportes.",
+      "evidence_class_ids": [
+        "E01",
+        "E02",
+        "E03",
+        "E04",
+        "E05",
+        "E06"
+      ],
+      "conditional_check_refs": [
+        {
+          "path": "docs/current-structure/MiniUW_Contratos_Financieros_Complementarios_D10.json",
+          "sha256": "ecda3f4871fbf828b4b580d933dab3acc2dcbf8abce9dd3ff9b380267722119f",
+          "json_pointer": "/cards/8/validation_plan/0"
+        },
+        {
+          "path": "docs/current-structure/MiniUW_Contratos_Financieros_Complementarios_D10.json",
+          "sha256": "ecda3f4871fbf828b4b580d933dab3acc2dcbf8abce9dd3ff9b380267722119f",
+          "json_pointer": "/cards/8/validation_plan/1"
+        }
+      ],
+      "applicability": null,
+      "financial_definition_ref": null,
+      "active_financial_binding": null,
+      "independent_expected_case_ref": null,
+      "financial_acceptance_complete": false,
+      "status": "PENDING",
+      "technical_profile_exists_does_not_activate_field_mapping": true
+    },
+    {
+      "card_id": "F18",
+      "title": "Assessment comparables e impuesto",
+      "field_ids": [
+        "INPUT_C61",
+        "INPUT_C62"
+      ],
+      "source_card_ref": {
+        "path": "docs/current-structure/MiniUW_Contratos_Financieros_Complementarios_D10.json",
+        "sha256": "ecda3f4871fbf828b4b580d933dab3acc2dcbf8abce9dd3ff9b380267722119f",
+        "json_pointer": "/cards/9"
+      },
+      "supplemental_ids": [
+        "S01",
+        "S02",
+        "S05",
+        "S11",
+        "S13",
+        "S14"
+      ],
+      "quantity_requirements": [
+        "Cantidad elegible y período del comparable anual",
+        "Assessment/valor/base y fuentes fiscales aplicables",
+        "Millage, exención, cap y otras ramas sólo si corresponden y están documentados",
+        "Devengo, pago y calendario de impuesto separados"
+      ],
+      "definition_requirements": [
+        "C61 no determina por sí solo k y C62 no es impuesto pagado",
+        "No adoptar millage/exención/ley histórica ni convertir por mil sin unidad expresa",
+        "La solución de la hipótesis no acredita aplicabilidad, valoración o tributo real"
+      ],
+      "native_profile_gap": "T20 recibe tax_floor y tax_coefficient con fuente; no los obtiene automáticamente de C61/C62 ni valida ley. Las reglas, parámetros, alcance y perfil real permanecen pendientes; no se recorta un NOI negativo para pasar.",
+      "evidence_class_ids": [
+        "E01",
+        "E02",
+        "E03",
+        "E04",
+        "E05",
+        "E06"
+      ],
+      "conditional_check_refs": [
+        {
+          "path": "docs/current-structure/MiniUW_Contratos_Financieros_Complementarios_D10.json",
+          "sha256": "ecda3f4871fbf828b4b580d933dab3acc2dcbf8abce9dd3ff9b380267722119f",
+          "json_pointer": "/cards/9/validation_plan/0"
+        },
+        {
+          "path": "docs/current-structure/MiniUW_Contratos_Financieros_Complementarios_D10.json",
+          "sha256": "ecda3f4871fbf828b4b580d933dab3acc2dcbf8abce9dd3ff9b380267722119f",
+          "json_pointer": "/cards/9/validation_plan/1"
+        }
+      ],
+      "applicability": null,
+      "financial_definition_ref": null,
+      "active_financial_binding": null,
+      "independent_expected_case_ref": null,
+      "financial_acceptance_complete": false,
+      "status": "PENDING",
+      "technical_profile_exists_does_not_activate_field_mapping": true
+    },
+    {
+      "card_id": "F19",
+      "title": "Costos y reservas del refi",
+      "field_ids": [
+        "INPUT_C73",
+        "INPUT_C74"
+      ],
+      "source_card_ref": {
+        "path": "docs/current-structure/MiniUW_Contratos_Financieros_Complementarios_D10.json",
+        "sha256": "ecda3f4871fbf828b4b580d933dab3acc2dcbf8abce9dd3ff9b380267722119f",
+        "json_pointer": "/cards/10"
+      },
+      "supplemental_ids": [
+        "S01",
+        "S02",
+        "S04",
+        "S05",
+        "S06",
+        "S13",
+        "S14"
+      ],
+      "quantity_requirements": [
+        "Base de loan de C73: compromiso, seleccionado, draw u otra fuente explícita",
+        "Inventario de costos/refi no solapados con payoff fees",
+        "Unidades elegibles, reserva requerida/efectiva y fecha",
+        "Tratamiento de gastos, retenciones brutas/netas y saldo restringido"
+      ],
+      "definition_requirements": [
+        "No tomar capacidad como base de fee ni como proceeds por defecto",
+        "No confundir reserva permanente por unidad con gasto anual de reposición C60",
+        "No restar costo/reserva dos veces al recibir proceeds netos"
+      ],
+      "native_profile_gap": "T29 distingue closing_costs_paid y new_reserve en fuentes brutas. El ejemplo de refi es un perfil separado; T111 no tiene refi activo ni binding desde C73/C74 a esos montos.",
+      "evidence_class_ids": [
+        "E01",
+        "E02",
+        "E03",
+        "E04",
+        "E05",
+        "E06"
+      ],
+      "conditional_check_refs": [
+        {
+          "path": "docs/current-structure/MiniUW_Contratos_Financieros_Complementarios_D10.json",
+          "sha256": "ecda3f4871fbf828b4b580d933dab3acc2dcbf8abce9dd3ff9b380267722119f",
+          "json_pointer": "/cards/10/validation_plan/0"
+        },
+        {
+          "path": "docs/current-structure/MiniUW_Contratos_Financieros_Complementarios_D10.json",
+          "sha256": "ecda3f4871fbf828b4b580d933dab3acc2dcbf8abce9dd3ff9b380267722119f",
+          "json_pointer": "/cards/10/validation_plan/1"
+        }
+      ],
+      "applicability": null,
+      "financial_definition_ref": null,
+      "active_financial_binding": null,
+      "independent_expected_case_ref": null,
+      "financial_acceptance_complete": false,
+      "status": "PENDING",
+      "technical_profile_exists_does_not_activate_field_mapping": true
+    },
+    {
+      "card_id": "F20",
+      "title": "Crecimiento y alternativas declaradas",
+      "field_ids": [
+        "INPUT_C75",
+        "INPUT_C76",
+        "INPUT_C80",
+        "INPUT_C81",
+        "INPUT_C82"
+      ],
+      "source_card_ref": {
+        "path": "docs/current-structure/MiniUW_Contratos_Financieros_Complementarios_D10.json",
+        "sha256": "ecda3f4871fbf828b4b580d933dab3acc2dcbf8abce9dd3ff9b380267722119f",
+        "json_pointer": "/cards/11"
+      },
+      "supplemental_ids": [
+        "S02",
+        "S05",
+        "S07",
+        "S10",
+        "S12",
+        "S13",
+        "S14"
+      ],
+      "quantity_requirements": [
+        "Rentas/gastos elegibles, año base y momento de actualización",
+        "Regla discreta/compuesta/prorrateada si procede, sin elegirla por defecto",
+        "Driver, reemplazo/delta, unidad, orden y alcance de cada alternativa",
+        "Escenarios requeridos, Base inmutable y criterios aplicables"
+      ],
+      "definition_requirements": [
+        "No hacer crecer todas las partidas ni cambiar calendarios o impuestos por omisión",
+        "No ejecutar C80:C82 como instrucciones de documento/código",
+        "No generar Downside con shocks históricos o sumar sensibilidades como resultado integrado"
+      ],
+      "native_profile_gap": "T88 compara casos completos suministrados bajo su perfil; no genera candidatos, no aplica C75/C76 ni ejecuta texto de alternativas. T111 recibe fuentes por período ya suministradas. El vínculo de crecimiento/escenarios/objetivos a la hoja sigue pendiente.",
+      "evidence_class_ids": [
+        "E01",
+        "E02",
+        "E03",
+        "E04",
+        "E05",
+        "E06"
+      ],
+      "conditional_check_refs": [
+        {
+          "path": "docs/current-structure/MiniUW_Contratos_Financieros_Complementarios_D10.json",
+          "sha256": "ecda3f4871fbf828b4b580d933dab3acc2dcbf8abce9dd3ff9b380267722119f",
+          "json_pointer": "/cards/11/validation_plan/0"
+        },
+        {
+          "path": "docs/current-structure/MiniUW_Contratos_Financieros_Complementarios_D10.json",
+          "sha256": "ecda3f4871fbf828b4b580d933dab3acc2dcbf8abce9dd3ff9b380267722119f",
+          "json_pointer": "/cards/11/validation_plan/1"
+        }
+      ],
+      "applicability": null,
+      "financial_definition_ref": null,
+      "active_financial_binding": null,
+      "independent_expected_case_ref": null,
+      "financial_acceptance_complete": false,
+      "status": "PENDING",
+      "technical_profile_exists_does_not_activate_field_mapping": true
+    }
+  ],
+  "supplemental_source_sets": [
+    {
+      "id": "S01",
+      "title": "Programa físico y alcance",
+      "source_ref": {
+        "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+        "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+        "json_pointer": "/supplemental_sources/0"
+      },
+      "required_records": [
+        "Identidades de unit type y grupos mercado/asequible",
+        "Conteos por grupo y unidades disponibles por etapa",
+        "GSF, NRSF, áreas por unidad y comerciales diferenciadas",
+        "Parking y áreas exteriores con fuente",
+        "Usos presentes y aplicabilidad documentada"
+      ],
+      "missing_or_conflicting_consequence": "Sin cantidades/áreas compatibles no convertir tarifas de la hoja en ingreso/costo; no inferir programa desde importe, dormitorio o GSF.",
+      "source_owner": null,
+      "financial_authority": null,
+      "status": "PENDING"
+    },
+    {
+      "id": "S02",
+      "title": "Hitos y calendario de flujos",
+      "source_ref": {
+        "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+        "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+        "json_pointer": "/supplemental_sources/1"
+      },
+      "required_records": [
+        "Compra, obra, TCO, disponibilidad, estabilización, refi y venta con fechas",
+        "Fechas de pago y ventanas de servicio declaradas",
+        "Disponibilidad y fracciones de reconocimiento por tramo",
+        "Frecuencia y alcance de anualización explícitos"
+      ],
+      "missing_or_conflicting_consequence": "Una duración no fija el origen de fechas, distribución mensual, day count o fecha de cobro; las fechas faltantes bloquean el cálculo que las consume.",
+      "source_owner": null,
+      "financial_authority": null,
+      "status": "PENDING"
+    },
+    {
+      "id": "S03",
+      "title": "Presupuesto y exclusividad de costos",
+      "source_ref": {
+        "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+        "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+        "json_pointer": "/supplemental_sources/2"
+      },
+      "required_records": [
+        "Compra evaluada separada del asking",
+        "Partidas con identidad, base y alcance incluido/excluido",
+        "Hard/soft/contingencias/TI/LC/parking/site con bases documentadas",
+        "Tratamiento de costos financieros, reservas e inclusiones de TDC"
+      ],
+      "missing_or_conflicting_consequence": "Evitar multiplicar una tarifa sin su cantidad/base o contar dos veces un mismo costo; costo incluido en contrato no se agrega de nuevo.",
+      "source_owner": null,
+      "financial_authority": null,
+      "status": "PENDING"
+    },
+    {
+      "id": "S04",
+      "title": "Deuda de apertura obra y transición",
+      "source_ref": {
+        "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+        "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+        "json_pointer": "/supplemental_sources/3"
+      },
+      "required_records": [
+        "Identidad de préstamo, compromiso, draw y principal separados",
+        "Fechas, tasas y convenciones aplicables",
+        "Fees, capitalización, fondos propios y pagos por fecha",
+        "Deuda heredada a operación y saldo antes del refi/venta"
+      ],
+      "missing_or_conflicting_consequence": "Una capacidad o cambio de fase no genera automáticamente nuevo draw/equity; requerir continuidad de la misma obligación.",
+      "source_owner": null,
+      "financial_authority": null,
+      "status": "PENDING"
+    },
+    {
+      "id": "S05",
+      "title": "Operación devengo caja y pólizas",
+      "source_ref": {
+        "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+        "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+        "json_pointer": "/supplemental_sources/4"
+      },
+      "required_records": [
+        "Ingresos devengados, cobros y pérdidas/concesiones por período",
+        "Gastos por concepto, pagos y saldos de payables/prepaid",
+        "Pólizas, primas, cobertura y cuotas nominales diferenciadas de pagos",
+        "Caja libre/restringida y reservas antes/después de cada cierre"
+      ],
+      "missing_or_conflicting_consequence": "NOI no prueba efectivo distribuible; primas/cuotas no prueban pago o saldo contable; no deducir dos veces un pago ya incluido en venta.",
+      "source_owner": null,
+      "financial_authority": null,
+      "status": "PENDING"
+    },
+    {
+      "id": "S06",
+      "title": "Refinanciación y préstamo seleccionado",
+      "source_ref": {
+        "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+        "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+        "json_pointer": "/supplemental_sources/5"
+      },
+      "required_records": [
+        "Estrategia, fecha y NOI/valor de sizing compatibles",
+        "Límites LTV/DSCR y otras restricciones aplicables",
+        "Monto seleccionado y draw efectivo con fuente",
+        "Términos de amortización/maturity/balloon",
+        "Payoffs, costos, reservas, cash-out/cash-in"
+      ],
+      "missing_or_conflicting_consequence": "Capacidad bancaria no equivale a aprobación, financiación disponible o dinero del inversor; términos bancarios no sustituyen criterios de inversión.",
+      "source_owner": null,
+      "financial_authority": null,
+      "status": "PENDING"
+    },
+    {
+      "id": "S07",
+      "title": "Venta y liquidación terminal",
+      "source_ref": {
+        "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+        "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+        "json_pointer": "/supplemental_sources/6"
+      },
+      "required_records": [
+        "Fecha, NOI/valor de salida y precio suministrado/condicionado con base",
+        "Costos, impuestos aplicables y deuda a cancelar",
+        "Caja/saldos operativos que llegan al cierre",
+        "Reservas, obligaciones, retenciones y distribución terminal"
+      ],
+      "missing_or_conflicting_consequence": "Precio bruto no es cobro neto; exigir conciliación del cierre y fuente de obligaciones/impuestos sin inventar tasas o financiación.",
+      "source_owner": null,
+      "financial_authority": null,
+      "status": "PENDING"
+    },
+    {
+      "id": "S08",
+      "title": "Atribución personal y términos del inversor",
+      "source_ref": {
+        "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+        "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+        "json_pointer": "/supplemental_sources/7"
+      },
+      "required_records": [
+        "Aportes/cobros brutos con fecha y participante",
+        "Participación y reglas de asignación aplicables",
+        "Fees, promote/waterfall sólo si están documentados",
+        "Alcance personal separado del equity agregado del proyecto"
+      ],
+      "missing_or_conflicting_consequence": "Retorno personal PENDING sin términos; una referencia por10 de aportes del proyecto no acredita distribución personal.",
+      "source_owner": null,
+      "financial_authority": null,
+      "status": "PENDING"
+    },
+    {
+      "id": "S09",
+      "title": "Capital remanente equity retenido y CoC",
+      "source_ref": {
+        "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+        "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+        "json_pointer": "/supplemental_sources/8"
+      },
+      "required_records": [
+        "Stock de capital con fecha, alcance, base y fuente",
+        "Valor de equity retenido separado del efectivo",
+        "Base anual de capital positiva cuando corresponda a CoC",
+        "Definición financiera y cobertura del año operativo"
+      ],
+      "missing_or_conflicting_consequence": "Aportes menos cobros no define capital aún invertido; déficit al horizonte no es pérdida económica final; sin base de CoC, indicador PENDING.",
+      "source_owner": null,
+      "financial_authority": null,
+      "status": "PENDING"
+    },
+    {
+      "id": "S10",
+      "title": "Criterios comparaciones y agregación",
+      "source_ref": {
+        "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+        "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+        "json_pointer": "/supplemental_sources/9"
+      },
+      "required_records": [
+        "Métricas requeridas con definición/unidad/período/escenario",
+        "Condiciones de PASS/FAIL con operadores y límites explícitos",
+        "Aplicabilidad y resolución vigente de conflictos",
+        "Identidad/alcance/revisión de autoridad cuando proceda"
+      ],
+      "missing_or_conflicting_consequence": "Inicializar diez criterios vacíos; faltantes/bandas quedan PENDING; PASS no habilita por sí solo inversión o Full UW.",
+      "source_owner": null,
+      "financial_authority": null,
+      "status": "PENDING"
+    },
+    {
+      "id": "S11",
+      "title": "Fuentes oficiales y reglas aplicables",
+      "source_ref": {
+        "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+        "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+        "json_pointer": "/supplemental_sources/10"
+      },
+      "required_records": [
+        "Copias y citas fechadas de fuentes oficiales aplicables",
+        "Dominio/publicador y alcance autorizado",
+        "Elegibilidad, exención, millage, assessment y tributos según fuentes",
+        "Reglas de vivienda/utility allowance si corresponden"
+      ],
+      "missing_or_conflicting_consequence": "No activar una afirmación legal histórica o un porcentaje por aparecer en un documento; regla o autoridad pendiente conserva PENDING.",
+      "source_owner": null,
+      "financial_authority": null,
+      "status": "PENDING"
+    },
+    {
+      "id": "S12",
+      "title": "Escenarios alternativas y precio soportado",
+      "source_ref": {
+        "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+        "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+        "json_pointer": "/supplemental_sources/11"
+      },
+      "required_records": [
+        "Escenarios requeridos y fuentes de cada hipótesis",
+        "Drivers, unidades, fechas y reglas de transformación explícitos",
+        "Precio evaluado, asking, objetivos y dominio de precio separados",
+        "Alternativas como solicitudes de datos, sin ejecución de instrucciones"
+      ],
+      "missing_or_conflicting_consequence": "No copiar Base, adoptar shocks históricos o cambiar variables automáticamente para obtener PASS; objetivos de precio no definidos quedan pendientes.",
+      "source_owner": null,
+      "financial_authority": null,
+      "status": "PENDING"
+    },
+    {
+      "id": "S13",
+      "title": "Identidad procedencia vigencia y revisión",
+      "source_ref": {
+        "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+        "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+        "json_pointer": "/supplemental_sources/12"
+      },
+      "required_records": [
+        "Original/hash/localizador y versión de cada afirmación",
+        "Deal/escenario/revisión y UTC de evaluación explícitos",
+        "Vigencia y estado de evidencia sin renovación automática",
+        "Snapshot reproducible de entrada, cálculo, comparación y PDF"
+      ],
+      "missing_or_conflicting_consequence": "Una hoja coincidente o fuente padre actual no cubre una fuente hija omitida/vencida; rechazar mezclas de versión o restauración de cifras previas como actuales.",
+      "source_owner": null,
+      "financial_authority": null,
+      "status": "PENDING"
+    },
+    {
+      "id": "S14",
+      "title": "Unidades bases y normalización",
+      "source_ref": {
+        "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+        "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+        "json_pointer": "/supplemental_sources/13"
+      },
+      "required_records": [
+        "Unidad literal y cantidad objetivo separadas",
+        "Moneda, escala decimal/porcentual y período documentados",
+        "Base de tarifa, denominador y alcance de inclusión explícitos",
+        "Aplicabilidad y criterio de redondeo/tolerancia aprobado cuando corresponda"
+      ],
+      "missing_or_conflicting_consequence": "No derivar moneda de $, convertir5 a0.05 sin formato, ni completar bases/ratios/días por el nombre del campo.",
+      "source_owner": null,
+      "financial_authority": null,
+      "status": "PENDING"
+    },
+    {
+      "id": "S15",
+      "title": "Aceptación y comprobación independiente",
+      "source_ref": {
+        "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+        "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+        "json_pointer": "/supplemental_sources/14"
+      },
+      "required_records": [
+        "Casos de aceptación y resultados esperados independientes",
+        "Conciliación de caja y de deuda, trazabilidad de variables",
+        "Una página legible con cifras vigentes y pendientes",
+        "Evidencia de versión y límites del control técnico"
+      ],
+      "missing_or_conflicting_consequence": "CI y cotejo de representaciones acreditan pruebas técnicas; la aceptación financiera y revisión auténtica requieren evidencia propia.",
+      "source_owner": null,
+      "financial_authority": null,
+      "status": "PENDING"
+    }
+  ],
+  "investor_output_acceptance": [
+    {
+      "output_id": "R01",
+      "label": "Moneda",
+      "definition": "Moneda declarada; no derivar USD de un símbolo.",
+      "D08_output_ref": {
+        "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+        "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+        "json_pointer": "/investor_outputs/0"
+      },
+      "supplemental_ids": [
+        "S13",
+        "S14",
+        "S15"
+      ],
+      "observed_evidence": {
+        "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+        "json_pointer": "/current_project_return_story/currency"
+      },
+      "selector": "direct",
+      "explicit_zero_evidence": null,
+      "observed_state": "available_in_conditional_synthetic_project_view",
+      "observed_shape": "present_in_saved_conditional_source_view",
+      "activation_state": "PENDING",
+      "financial_acceptance_complete": false,
+      "missing_evidence": "Applicable real source authority, full financial sufficiency and acceptance remain open.",
+      "independent_expected_case_ref": null,
+      "personal_return_verified": false
+    },
+    {
+      "output_id": "R02",
+      "label": "Alcance del equity",
+      "definition": "Equity agregado del proyecto; no reparto personal.",
+      "D08_output_ref": {
+        "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+        "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+        "json_pointer": "/investor_outputs/1"
+      },
+      "supplemental_ids": [
+        "S08",
+        "S13",
+        "S14",
+        "S15"
+      ],
+      "observed_evidence": {
+        "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+        "json_pointer": "/current_project_return_story/equity_level"
+      },
+      "selector": "direct",
+      "explicit_zero_evidence": null,
+      "observed_state": "available_in_conditional_synthetic_project_view",
+      "observed_shape": "present_in_saved_conditional_source_view",
+      "activation_state": "PENDING",
+      "financial_acceptance_complete": false,
+      "missing_evidence": "Applicable real source authority, full financial sufficiency and acceptance remain open.",
+      "independent_expected_case_ref": null,
+      "personal_return_verified": false
+    },
+    {
+      "output_id": "R03",
+      "label": "Ventana de caja",
+      "definition": "Fechas declaradas y exclusión de cobros posteriores.",
+      "D08_output_ref": {
+        "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+        "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+        "json_pointer": "/investor_outputs/2"
+      },
+      "supplemental_ids": [
+        "S02",
+        "S13",
+        "S14",
+        "S15"
+      ],
+      "observed_evidence": {
+        "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+        "json_pointer": "/current_project_return_story/cash_horizon"
+      },
+      "selector": "direct",
+      "explicit_zero_evidence": null,
+      "observed_state": "available_in_conditional_synthetic_project_view",
+      "observed_shape": "present_in_saved_conditional_source_view",
+      "activation_state": "PENDING",
+      "financial_acceptance_complete": false,
+      "missing_evidence": "Applicable real source authority, full financial sufficiency and acceptance remain open.",
+      "independent_expected_case_ref": null,
+      "personal_return_verified": false
+    },
+    {
+      "output_id": "R04",
+      "label": "Aportes iniciales y fechas",
+      "definition": "Movimientos brutos iniciales; conservar fecha y fuente.",
+      "D08_output_ref": {
+        "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+        "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+        "json_pointer": "/investor_outputs/3"
+      },
+      "supplemental_ids": [
+        "S02",
+        "S03",
+        "S04",
+        "S08",
+        "S13",
+        "S14",
+        "S15"
+      ],
+      "observed_evidence": {
+        "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+        "json_pointer": "/current_project_return_story/events"
+      },
+      "selector": "initial_capital",
+      "explicit_zero_evidence": null,
+      "observed_state": "available_in_conditional_synthetic_project_view",
+      "observed_shape": "present_in_saved_conditional_source_view",
+      "activation_state": "PENDING",
+      "financial_acceptance_complete": false,
+      "missing_evidence": "Applicable real source authority, full financial sufficiency and acceptance remain open.",
+      "independent_expected_case_ref": null,
+      "personal_return_verified": false
+    },
+    {
+      "output_id": "R05",
+      "label": "Aportes adicionales y fechas",
+      "definition": "Todos los adicionales, incluidos ceros explícitos; cash-in refi separado.",
+      "D08_output_ref": {
+        "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+        "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+        "json_pointer": "/investor_outputs/4"
+      },
+      "supplemental_ids": [
+        "S02",
+        "S03",
+        "S04",
+        "S08",
+        "S13",
+        "S14",
+        "S15"
+      ],
+      "observed_evidence": {
+        "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+        "json_pointer": "/current_project_return_story/events"
+      },
+      "selector": "additional_capital",
+      "explicit_zero_evidence": null,
+      "observed_state": "available_in_conditional_synthetic_project_view",
+      "observed_shape": "present_in_saved_conditional_source_view",
+      "activation_state": "PENDING",
+      "financial_acceptance_complete": false,
+      "missing_evidence": "Applicable real source authority, full financial sufficiency and acceptance remain open.",
+      "independent_expected_case_ref": null,
+      "personal_return_verified": false
+    },
+    {
+      "output_id": "R06",
+      "label": "Cobros operativos y fechas",
+      "definition": "Cobro de equity conciliado; no equivale a NOI.",
+      "D08_output_ref": {
+        "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+        "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+        "json_pointer": "/investor_outputs/5"
+      },
+      "supplemental_ids": [
+        "S02",
+        "S05",
+        "S08",
+        "S13",
+        "S14",
+        "S15"
+      ],
+      "observed_evidence": {
+        "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+        "json_pointer": "/current_project_return_story/events"
+      },
+      "selector": "operating_distribution",
+      "explicit_zero_evidence": null,
+      "observed_state": "available_in_conditional_synthetic_project_view",
+      "observed_shape": "present_in_saved_conditional_source_view",
+      "activation_state": "PENDING",
+      "financial_acceptance_complete": false,
+      "missing_evidence": "Applicable real source authority, full financial sufficiency and acceptance remain open.",
+      "independent_expected_case_ref": null,
+      "personal_return_verified": false
+    },
+    {
+      "output_id": "R07",
+      "label": "Cobro neto refi y fechas",
+      "definition": "En esta ruta sin refi: total explícito cero y ningún mes de refi inventado.",
+      "D08_output_ref": {
+        "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+        "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+        "json_pointer": "/investor_outputs/6"
+      },
+      "supplemental_ids": [
+        "S02",
+        "S04",
+        "S06",
+        "S08",
+        "S13",
+        "S14",
+        "S15"
+      ],
+      "observed_evidence": {
+        "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+        "json_pointer": "/current_project_return_story/events"
+      },
+      "selector": "net_refinance_distribution",
+      "explicit_zero_evidence": {
+        "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+        "json_pointer": "/current_project_return_story/cash_by_category/net_refinance_distribution"
+      },
+      "observed_state": "explicit_zero_only_in_declared_no_refinance_profile",
+      "observed_shape": "explicit_zero_category_and_no_refinance_events",
+      "activation_state": "PENDING",
+      "financial_acceptance_complete": false,
+      "missing_evidence": "Do not generalize zero to an actual/refinanced deal; require its independent source profile.",
+      "independent_expected_case_ref": null,
+      "personal_return_verified": false
+    },
+    {
+      "output_id": "R08",
+      "label": "Cash-in refi y fechas",
+      "definition": "Aporte separado; cero sólo en esta ruta suministrada sin refi.",
+      "D08_output_ref": {
+        "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+        "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+        "json_pointer": "/investor_outputs/7"
+      },
+      "supplemental_ids": [
+        "S02",
+        "S04",
+        "S06",
+        "S08",
+        "S13",
+        "S14",
+        "S15"
+      ],
+      "observed_evidence": {
+        "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+        "json_pointer": "/current_project_return_story/events"
+      },
+      "selector": "refinance_cash_in",
+      "explicit_zero_evidence": {
+        "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+        "json_pointer": "/current_project_return_story/cash_by_category/refinance_cash_in"
+      },
+      "observed_state": "explicit_zero_only_in_declared_no_refinance_profile",
+      "observed_shape": "explicit_zero_category_and_no_refinance_events",
+      "activation_state": "PENDING",
+      "financial_acceptance_complete": false,
+      "missing_evidence": "Do not generalize zero to an actual/refinanced deal; require its independent source profile.",
+      "independent_expected_case_ref": null,
+      "personal_return_verified": false
+    },
+    {
+      "output_id": "R09",
+      "label": "Cobro neto venta y fecha",
+      "definition": "Residual neto conciliado; no precio bruto o valor retenido.",
+      "D08_output_ref": {
+        "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+        "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+        "json_pointer": "/investor_outputs/8"
+      },
+      "supplemental_ids": [
+        "S02",
+        "S04",
+        "S05",
+        "S07",
+        "S08",
+        "S13",
+        "S14",
+        "S15"
+      ],
+      "observed_evidence": {
+        "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+        "json_pointer": "/current_project_return_story/events"
+      },
+      "selector": "net_sale_distribution",
+      "explicit_zero_evidence": null,
+      "observed_state": "available_in_conditional_synthetic_project_view",
+      "observed_shape": "present_in_saved_conditional_source_view",
+      "activation_state": "PENDING",
+      "financial_acceptance_complete": false,
+      "missing_evidence": "Applicable real source authority, full financial sufficiency and acceptance remain open.",
+      "independent_expected_case_ref": null,
+      "personal_return_verified": false
+    },
+    {
+      "output_id": "R10",
+      "label": "Aportes brutos totales",
+      "definition": "Suma bruta de aportes; no netear contra distribuciones.",
+      "D08_output_ref": {
+        "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+        "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+        "json_pointer": "/investor_outputs/9"
+      },
+      "supplemental_ids": [
+        "S02",
+        "S03",
+        "S04",
+        "S08",
+        "S13",
+        "S14",
+        "S15"
+      ],
+      "observed_evidence": {
+        "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+        "json_pointer": "/current_project_return_story/gross_contributions"
+      },
+      "selector": "direct",
+      "explicit_zero_evidence": null,
+      "observed_state": "available_in_conditional_synthetic_project_view",
+      "observed_shape": "present_in_saved_conditional_source_view",
+      "activation_state": "PENDING",
+      "financial_acceptance_complete": false,
+      "missing_evidence": "Applicable real source authority, full financial sufficiency and acceptance remain open.",
+      "independent_expected_case_ref": null,
+      "personal_return_verified": false
+    },
+    {
+      "output_id": "R11",
+      "label": "Cobros brutos totales",
+      "definition": "Suma bruta de cobros; no suma valor del equity retenido.",
+      "D08_output_ref": {
+        "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+        "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+        "json_pointer": "/investor_outputs/10"
+      },
+      "supplemental_ids": [
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S13",
+        "S14",
+        "S15"
+      ],
+      "observed_evidence": {
+        "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+        "json_pointer": "/current_project_return_story/gross_distributions"
+      },
+      "selector": "direct",
+      "explicit_zero_evidence": null,
+      "observed_state": "available_in_conditional_synthetic_project_view",
+      "observed_shape": "present_in_saved_conditional_source_view",
+      "activation_state": "PENDING",
+      "financial_acceptance_complete": false,
+      "missing_evidence": "Applicable real source authority, full financial sufficiency and acceptance remain open.",
+      "independent_expected_case_ref": null,
+      "personal_return_verified": false
+    },
+    {
+      "output_id": "R12",
+      "label": "Resultado neto de caja",
+      "definition": "Cobros menos aportes dentro de la ventana; no pérdida económica definitiva.",
+      "D08_output_ref": {
+        "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+        "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+        "json_pointer": "/investor_outputs/11"
+      },
+      "supplemental_ids": [
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S13",
+        "S14",
+        "S15"
+      ],
+      "observed_evidence": {
+        "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+        "json_pointer": "/current_project_return_story/net_cash_profit"
+      },
+      "selector": "direct",
+      "explicit_zero_evidence": null,
+      "observed_state": "available_in_conditional_synthetic_project_view",
+      "observed_shape": "present_in_saved_conditional_source_view",
+      "activation_state": "PENDING",
+      "financial_acceptance_complete": false,
+      "missing_evidence": "Applicable real source authority, full financial sufficiency and acceptance remain open.",
+      "independent_expected_case_ref": null,
+      "personal_return_verified": false
+    },
+    {
+      "output_id": "R13",
+      "label": "Equity multiple",
+      "definition": "Cobros brutos / aportes brutos positivos; múltiplo, no tasa anual.",
+      "D08_output_ref": {
+        "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+        "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+        "json_pointer": "/investor_outputs/12"
+      },
+      "supplemental_ids": [
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10",
+        "S13",
+        "S14",
+        "S15"
+      ],
+      "observed_evidence": {
+        "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+        "json_pointer": "/current_project_return_story/equity_multiple"
+      },
+      "selector": "direct",
+      "explicit_zero_evidence": null,
+      "observed_state": "available_in_conditional_synthetic_project_view",
+      "observed_shape": "present_in_saved_conditional_source_view",
+      "activation_state": "PENDING",
+      "financial_acceptance_complete": false,
+      "missing_evidence": "Applicable real source authority, full financial sufficiency and acceptance remain open.",
+      "independent_expected_case_ref": null,
+      "personal_return_verified": false
+    },
+    {
+      "output_id": "R14",
+      "label": "TIR anual y selección",
+      "definition": "Conservar todas las raíces/intervalos y selección nula. No fabricar un punto.",
+      "D08_output_ref": {
+        "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+        "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+        "json_pointer": "/investor_outputs/13"
+      },
+      "supplemental_ids": [
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10",
+        "S13",
+        "S14",
+        "S15"
+      ],
+      "observed_evidence": {
+        "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+        "json_pointer": "/current_project_return_story/annual_irr_roots"
+      },
+      "selector": "irr",
+      "explicit_zero_evidence": null,
+      "observed_state": "available_in_conditional_synthetic_project_view",
+      "observed_shape": "present_in_saved_conditional_source_view",
+      "activation_state": "PENDING",
+      "financial_acceptance_complete": false,
+      "missing_evidence": "Applicable real source authority, full financial sufficiency and acceptance remain open.",
+      "independent_expected_case_ref": null,
+      "personal_return_verified": false
+    },
+    {
+      "output_id": "R15",
+      "label": "Referencia por 10 y base",
+      "definition": "Escala sobre base explícita de aportes del proyecto; no participación personal.",
+      "D08_output_ref": {
+        "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+        "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+        "json_pointer": "/investor_outputs/14"
+      },
+      "supplemental_ids": [
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S13",
+        "S14",
+        "S15"
+      ],
+      "observed_evidence": {
+        "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+        "json_pointer": "/current_project_return_story/normalized_story"
+      },
+      "selector": "direct",
+      "explicit_zero_evidence": null,
+      "observed_state": "available_in_conditional_synthetic_project_view",
+      "observed_shape": "present_in_saved_conditional_source_view",
+      "activation_state": "PENDING",
+      "financial_acceptance_complete": false,
+      "missing_evidence": "Applicable real source authority, full financial sufficiency and acceptance remain open.",
+      "independent_expected_case_ref": null,
+      "personal_return_verified": false
+    },
+    {
+      "output_id": "R16",
+      "label": "Capital aún invertido",
+      "definition": "Stock declarado con fecha/base/fuente; no aportes menos cobros.",
+      "D08_output_ref": {
+        "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+        "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+        "json_pointer": "/investor_outputs/15"
+      },
+      "supplemental_ids": [
+        "S02",
+        "S08",
+        "S09",
+        "S13",
+        "S14",
+        "S15"
+      ],
+      "observed_evidence": {
+        "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+        "json_pointer": "/current_project_return_story/capital_snapshots"
+      },
+      "selector": "capital_still_invested",
+      "explicit_zero_evidence": null,
+      "observed_state": "PENDING_declared_stock_missing",
+      "observed_shape": "empty_declared_stock_inventory",
+      "activation_state": "PENDING",
+      "financial_acceptance_complete": false,
+      "missing_evidence": "Independent dated capital/equity stock, basis and scope missing; do not derive from cash gap.",
+      "independent_expected_case_ref": null,
+      "personal_return_verified": false
+    },
+    {
+      "output_id": "R17",
+      "label": "Equity retenido",
+      "definition": "Valor declarado, separado de efectivo cobrado.",
+      "D08_output_ref": {
+        "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+        "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+        "json_pointer": "/investor_outputs/16"
+      },
+      "supplemental_ids": [
+        "S02",
+        "S08",
+        "S09",
+        "S13",
+        "S14",
+        "S15"
+      ],
+      "observed_evidence": {
+        "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+        "json_pointer": "/current_project_return_story/capital_snapshots"
+      },
+      "selector": "retained_equity_value",
+      "explicit_zero_evidence": null,
+      "observed_state": "PENDING_declared_stock_missing",
+      "observed_shape": "empty_declared_stock_inventory",
+      "activation_state": "PENDING",
+      "financial_acceptance_complete": false,
+      "missing_evidence": "Independent dated capital/equity stock, basis and scope missing; do not derive from cash gap.",
+      "independent_expected_case_ref": null,
+      "personal_return_verified": false
+    },
+    {
+      "output_id": "R18",
+      "label": "Caja neta anual",
+      "definition": "Cobros menos aportes por año calendario dentro de la ventana suministrada.",
+      "D08_output_ref": {
+        "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+        "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+        "json_pointer": "/investor_outputs/17"
+      },
+      "supplemental_ids": [
+        "S02",
+        "S05",
+        "S08",
+        "S13",
+        "S14",
+        "S15"
+      ],
+      "observed_evidence": {
+        "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+        "json_pointer": "/current_project_return_story/annual_cash_receipts"
+      },
+      "selector": "annual_cash",
+      "explicit_zero_evidence": null,
+      "observed_state": "available_in_conditional_synthetic_project_view",
+      "observed_shape": "present_in_saved_conditional_source_view",
+      "activation_state": "PENDING",
+      "financial_acceptance_complete": false,
+      "missing_evidence": "Applicable real source authority, full financial sufficiency and acceptance remain open.",
+      "independent_expected_case_ref": null,
+      "personal_return_verified": false
+    },
+    {
+      "output_id": "R19",
+      "label": "CoC anual condicional",
+      "definition": "Sólo cobros operativos / base anual positiva declarada; sin base queda pendiente.",
+      "D08_output_ref": {
+        "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+        "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+        "json_pointer": "/investor_outputs/18"
+      },
+      "supplemental_ids": [
+        "S02",
+        "S08",
+        "S09",
+        "S10",
+        "S13",
+        "S14",
+        "S15"
+      ],
+      "observed_evidence": {
+        "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+        "json_pointer": "/current_project_return_story/annual_cash_receipts"
+      },
+      "selector": "annual_coc",
+      "explicit_zero_evidence": null,
+      "observed_state": "PENDING_annual_capital_base_missing",
+      "observed_shape": "annual_rows_with_missing_coc_and_capital_base",
+      "activation_state": "PENDING",
+      "financial_acceptance_complete": false,
+      "missing_evidence": "Applicable annual capital denominator and year coverage remain pending.",
+      "independent_expected_case_ref": null,
+      "personal_return_verified": false
+    },
+    {
+      "output_id": "R20",
+      "label": "Retorno personal",
+      "definition": "Pendiente de términos de reparto aplicables; no inferir proporcionalidad LP/JV.",
+      "D08_output_ref": {
+        "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+        "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+        "json_pointer": "/investor_outputs/19"
+      },
+      "supplemental_ids": [
+        "S02",
+        "S08",
+        "S09",
+        "S13",
+        "S14",
+        "S15"
+      ],
+      "observed_evidence": {
+        "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+        "json_pointer": "/personal_investor_return"
+      },
+      "selector": "direct",
+      "explicit_zero_evidence": null,
+      "observed_state": "PENDING_personal_terms_missing",
+      "observed_shape": "null_personal_return",
+      "activation_state": "PENDING",
+      "financial_acceptance_complete": false,
+      "missing_evidence": "No verified personal allocation terms; aggregate cash is not a personal return.",
+      "independent_expected_case_ref": null,
+      "personal_return_verified": false
+    },
+    {
+      "output_id": "R21",
+      "label": "Aportes no recuperados al corte",
+      "definition": "Observación de caja al horizonte; no capital remanente ni pérdida final.",
+      "D08_output_ref": {
+        "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+        "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+        "json_pointer": "/investor_outputs/20"
+      },
+      "supplemental_ids": [
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S13",
+        "S14",
+        "S15"
+      ],
+      "observed_evidence": {
+        "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+        "json_pointer": "/current_risk_observations/cash_shortfall_at_horizon"
+      },
+      "selector": "direct",
+      "explicit_zero_evidence": null,
+      "observed_state": "available_in_conditional_synthetic_project_view",
+      "observed_shape": "present_in_saved_conditional_source_view",
+      "activation_state": "PENDING",
+      "financial_acceptance_complete": false,
+      "missing_evidence": "Applicable real source authority, full financial sufficiency and acceptance remain open.",
+      "independent_expected_case_ref": null,
+      "personal_return_verified": false
+    },
+    {
+      "output_id": "R22",
+      "label": "Pico de financiación del equity",
+      "definition": "Pico al cierre de fechas; no acredita liquidez intradía.",
+      "D08_output_ref": {
+        "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+        "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+        "json_pointer": "/investor_outputs/21"
+      },
+      "supplemental_ids": [
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S13",
+        "S14",
+        "S15"
+      ],
+      "observed_evidence": {
+        "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+        "json_pointer": "/current_risk_observations/peak_cumulative_net_equity_funding_at_date_close"
+      },
+      "selector": "direct",
+      "explicit_zero_evidence": null,
+      "observed_state": "available_in_conditional_synthetic_project_view",
+      "observed_shape": "present_in_saved_conditional_source_view",
+      "activation_state": "PENDING",
+      "financial_acceptance_complete": false,
+      "missing_evidence": "Applicable real source authority, full financial sufficiency and acceptance remain open.",
+      "independent_expected_case_ref": null,
+      "personal_return_verified": false
+    },
+    {
+      "output_id": "R23",
+      "label": "Dependencia del cobro de venta",
+      "definition": "Cobro de venta / cobros totales bajo el caso suministrado.",
+      "D08_output_ref": {
+        "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+        "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+        "json_pointer": "/investor_outputs/22"
+      },
+      "supplemental_ids": [
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10",
+        "S13",
+        "S14",
+        "S15"
+      ],
+      "observed_evidence": {
+        "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+        "json_pointer": "/current_risk_observations/sale_share_of_distributions"
+      },
+      "selector": "direct",
+      "explicit_zero_evidence": null,
+      "observed_state": "available_in_conditional_synthetic_project_view",
+      "observed_shape": "present_in_saved_conditional_source_view",
+      "activation_state": "PENDING",
+      "financial_acceptance_complete": false,
+      "missing_evidence": "Applicable real source authority, full financial sufficiency and acceptance remain open.",
+      "independent_expected_case_ref": null,
+      "personal_return_verified": false
+    }
+  ],
+  "joint_acceptance_situations": [
+    {
+      "id": "J01",
+      "trigger": "Las55 declaraciones coinciden pero una tarifa carece de cantidad/base o período compatibles",
+      "card_ids": [
+        "F01",
+        "F03",
+        "F09",
+        "F10"
+      ],
+      "D08_case_refs": [
+        {
+          "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+          "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+          "json_pointer": "/acceptance_cases/0"
+        },
+        {
+          "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+          "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+          "json_pointer": "/acceptance_cases/1"
+        }
+      ],
+      "expected_handling": "Conservar representación cotejada y conexión financiera PENDING; no convertir una coincidencia literal en ingreso/gasto calculado.",
+      "expected_numerical_result": null,
+      "executed": false,
+      "financial_validation_complete": false,
+      "status": "conditional_joint_acceptance_situation_specified_not_executed"
+    },
+    {
+      "id": "J02",
+      "trigger": "Existe ingreso comercial u otro ingreso fuera del perfil residencial objetivo",
+      "card_ids": [
+        "F09",
+        "F11"
+      ],
+      "D08_case_refs": [
+        {
+          "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+          "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+          "json_pointer": "/acceptance_cases/0"
+        }
+      ],
+      "expected_handling": "Conservar las fuentes y exigir perfil compatible; no omitir el ingreso ni introducir un cero para que pase la puerta.",
+      "expected_numerical_result": null,
+      "executed": false,
+      "financial_validation_complete": false,
+      "status": "conditional_joint_acceptance_situation_specified_not_executed"
+    },
+    {
+      "id": "J03",
+      "trigger": "El presupuesto/costo cambia y no hay fuente compatible de draw o aporte",
+      "card_ids": [
+        "F02",
+        "F13",
+        "F14",
+        "F15",
+        "F16",
+        "F17"
+      ],
+      "D08_case_refs": [
+        {
+          "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+          "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+          "json_pointer": "/acceptance_cases/2"
+        },
+        {
+          "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+          "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+          "json_pointer": "/acceptance_cases/4"
+        }
+      ],
+      "expected_handling": "Separar presupuesto, capacidad, préstamo y caja; mantener pendiente la cadena de financiación sin inventar fondos o aportes.",
+      "expected_numerical_result": null,
+      "executed": false,
+      "financial_validation_complete": false,
+      "status": "conditional_joint_acceptance_situation_specified_not_executed"
+    },
+    {
+      "id": "J04",
+      "trigger": "Un pago/reserva de operación aparece también en la liquidación de venta",
+      "card_ids": [
+        "F04",
+        "F05",
+        "F08",
+        "F19"
+      ],
+      "D08_case_refs": [
+        {
+          "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+          "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+          "json_pointer": "/acceptance_cases/3"
+        }
+      ],
+      "expected_handling": "Conciliar identidades, clasificación y contrapartidas; impedir doble descuento y preservar el dato original.",
+      "expected_numerical_result": null,
+      "executed": false,
+      "financial_validation_complete": false,
+      "status": "conditional_joint_acceptance_situation_specified_not_executed"
+    },
+    {
+      "id": "J05",
+      "trigger": "Existe retorno agregado calculable pero falta stock/base anual o términos personales",
+      "card_ids": [],
+      "D08_case_refs": [
+        {
+          "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+          "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+          "json_pointer": "/acceptance_cases/6"
+        }
+      ],
+      "expected_handling": "Capital, equity retenido, CoC y retorno personal siguen pendientes por separado; no deducirlos del déficit de caja ni de una normalización.",
+      "expected_numerical_result": null,
+      "executed": false,
+      "financial_validation_complete": false,
+      "status": "conditional_joint_acceptance_situation_specified_not_executed"
+    },
+    {
+      "id": "J06",
+      "trigger": "Una revisión cambia una fuente o pierde vigencia aunque la hoja siga coincidiendo",
+      "card_ids": [
+        "F20"
+      ],
+      "D08_case_refs": [
+        {
+          "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+          "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+          "json_pointer": "/acceptance_cases/5"
+        },
+        {
+          "path": "docs/current-structure/MiniUW_Expediente_y_Conexiones_D08.json",
+          "sha256": "bf16d330ff40c93413d9657447c183591367d25455d2ea2c0b32ba9dac133b6e",
+          "json_pointer": "/acceptance_cases/7"
+        }
+      ],
+      "expected_handling": "Revisar snapshot/dependencias y conservar la revisión sin adoptar; no restaurar cifras previas como actuales ni afinar variables para conseguir PASS.",
+      "expected_numerical_result": null,
+      "executed": false,
+      "financial_validation_complete": false,
+      "status": "conditional_joint_acceptance_situation_specified_not_executed"
+    }
+  ],
+  "original_fields_in_packets": 55,
+  "inherited_conditional_checks": 40,
+  "new_joint_situations_specified": 6,
+  "financial_acceptance_checks_executed": 0,
+  "financial_bindings_activated": 0,
+  "new_source_values": 0,
+  "new_runtime_components": 0,
+  "new_tests": 0,
+  "technical_tests_unchanged": 1619,
+  "original_semantic_mappings_pending": 54,
+  "financial_model_complete": false,
+  "professional_review_authenticated": false,
+  "personal_return_verified": false,
+  "real_decisions_enabled": false,
+  "deployment_enabled": false
+}
