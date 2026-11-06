@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D12 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D13 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 47284,
-      "sha256": "7dcb9735670eb35ac82c5f59d1208088ade75d5c2dbcb94be686ee153f8e9ca9"
+      "bytes": 47888,
+      "sha256": "49192e78ad7a69c9aa25f458527f8aaba7e2e1dca46a406b9b5c0248ec4301a3"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 218046,
-      "sha256": "3f465a387cb4ff084c75d3097879f13292fffabb0736cc6a20f77b0c24207274"
+      "bytes": 220985,
+      "sha256": "633dbcbce33fe613e437572dbae9d0280edcb293ed58688a02eef0c346e0cb1c"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -187,6 +187,11 @@
       "sha256": "e642ef91f9c11cdcb7cdb3909eebb4b32bca63a95b3c35eb04fb73c28b13e90a"
     },
     {
+      "path": "docs/current-structure/D13-design-validation.json",
+      "bytes": 2431,
+      "sha256": "d346d0a333580b99811dd3fa85398bae24d2a5bb255f98bc808a2f732ed06b30"
+    },
+    {
       "path": "docs/current-structure/MiniUW_55_campos_D04.csv",
       "bytes": 28155,
       "sha256": "36933edad8b3b905d629bb0e67113b316578a63f4652744af069b9cb302f0454"
@@ -232,6 +237,26 @@
       "sha256": "a0bc10934853d7a7e2f8d37bd6650657ce4fdcebe20473fa85446c516b31b82e"
     },
     {
+      "path": "docs/current-structure/MiniUW_Comprobaciones_24_D13.csv",
+      "bytes": 6240,
+      "sha256": "5be9700d280070ba26a7498e4825fcec4f67fcb16d0bd49cd6b560bd49625906"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Conciliacion_Sintetica_D13.json",
+      "bytes": 353830,
+      "sha256": "0f23a7388dcb045cedda6b33a11e7ba119a4ace300ad1f2f5127e9e992c60837"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Conciliaciones_D13.json",
+      "bytes": 24344,
+      "sha256": "8d7225e7c19a0c77e51013f23e5d197534505aede4062f4683c46a9c813f6ed5"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Conciliaciones_D13.md",
+      "bytes": 7780,
+      "sha256": "054533abad53aae7ede5c842f4014032aa9725e92458c3eb811b44937e6defc6"
+    },
+    {
       "path": "docs/current-structure/MiniUW_Conexiones_55_campos_D08.csv",
       "bytes": 47610,
       "sha256": "325d71254820690ac2c6a9798787023c7856999c91ecc759c7a979e2d8ba2e0a"
@@ -245,6 +270,11 @@
       "path": "docs/current-structure/MiniUW_Conexiones_Prioritarias_D09.csv",
       "bytes": 11720,
       "sha256": "3edd093d624ed0abe153595a933ac98b438e1d505dfe36d20c5fca16daa49e33"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Contratos_Conciliacion_D13.csv",
+      "bytes": 4455,
+      "sha256": "04402b85e0e7e448b3608b9125030c9ccddd7fcd2a1611401bbb064fd0feb4af"
     },
     {
       "path": "docs/current-structure/MiniUW_Contratos_Financieros_Complementarios_D10.json",

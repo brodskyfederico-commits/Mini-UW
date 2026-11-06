@@ -1,0 +1,588 @@
+{
+  "snapshot_id": "D13",
+  "scope": "Reconciliation design and separate exact arithmetic reconstruction of one existing supplied synthetic T111 case; no product code or financial acceptance",
+  "previous_design_commit": "d7fac77a76c5ae291a974d7dc7137e482a99a5b9",
+  "technical_baseline": "T111",
+  "technical_baseline_commit": "9aeb590151068ccd51f4eca0e92f7c766464ba94",
+  "contracts": [
+    {
+      "contract_id": "RC01",
+      "title": "Compra obra caja y principal",
+      "conditional_identity": "Caja inicial + fuentes − usos = caja final; principal inicial + draws − repagos = principal final, bajo alcance explícito.",
+      "required_records": [
+        "Movimientos brutos y IDs, préstamos, fechas y perfil de apertura",
+        "Interés/fees y ajustes/capitalización sólo con contrapartidas documentadas"
+      ],
+      "missing_or_conflicting_consequence": "No completar un evento ausente con cero ni crear fondos para cuadrar.",
+      "source_contract_refs": [
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/25"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/29"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/30"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/31"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/33"
+        }
+      ],
+      "handoff_refs": [
+        {
+          "path": "docs/current-structure/MiniUW_Dependencias_y_Traspasos_D12.json",
+          "sha256": "7e9c69e6b2514189788a25fdc662fc80f06e98d0de7b68ec4243022651cad29a",
+          "json_pointer": "/handoff_boundaries/1"
+        },
+        {
+          "path": "docs/current-structure/MiniUW_Dependencias_y_Traspasos_D12.json",
+          "sha256": "7e9c69e6b2514189788a25fdc662fc80f06e98d0de7b68ec4243022651cad29a",
+          "json_pointer": "/handoff_boundaries/3"
+        }
+      ],
+      "synthetic_check_ids": [
+        "A01",
+        "A02"
+      ],
+      "financial_definition_or_applicability_complete": false,
+      "active_financial_binding": null,
+      "financial_status": "PENDING"
+    },
+    {
+      "contract_id": "RC02",
+      "title": "Continuidad entre obra y operación",
+      "conditional_identity": "Saldos de cierre = saldos de apertura compatibles para la misma obligación/caja.",
+      "required_records": [
+        "Identidad de préstamo, corte y fechas",
+        "Cambios de fase, ajustes y ausencia/presencia de nueva caja explícitos"
+      ],
+      "missing_or_conflicting_consequence": "Un cambio de fase no origina aporte ni draw por sí solo.",
+      "source_contract_refs": [
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/37"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/45"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/50"
+        }
+      ],
+      "handoff_refs": [
+        {
+          "path": "docs/current-structure/MiniUW_Dependencias_y_Traspasos_D12.json",
+          "sha256": "7e9c69e6b2514189788a25fdc662fc80f06e98d0de7b68ec4243022651cad29a",
+          "json_pointer": "/handoff_boundaries/3"
+        }
+      ],
+      "synthetic_check_ids": [
+        "A03",
+        "A04"
+      ],
+      "financial_definition_or_applicability_complete": false,
+      "active_financial_binding": null,
+      "financial_status": "PENDING"
+    },
+    {
+      "contract_id": "RC03",
+      "title": "Caja libre por período",
+      "conditional_identity": "Apertura + cobros/fuentes/liberaciones − pagos/usos/depósitos/distribuciones = cierre.",
+      "required_records": [
+        "Cada concepto de caja con fecha y fuente",
+        "Saldos inicial/final y contrapartidas de deuda/capital"
+      ],
+      "missing_or_conflicting_consequence": "No tratar NOI, compromiso o un saldo contable como cobro efectivo.",
+      "source_contract_refs": [
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/25"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/50"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/51"
+        }
+      ],
+      "handoff_refs": [
+        {
+          "path": "docs/current-structure/MiniUW_Dependencias_y_Traspasos_D12.json",
+          "sha256": "7e9c69e6b2514189788a25fdc662fc80f06e98d0de7b68ec4243022651cad29a",
+          "json_pointer": "/handoff_boundaries/2"
+        },
+        {
+          "path": "docs/current-structure/MiniUW_Dependencias_y_Traspasos_D12.json",
+          "sha256": "7e9c69e6b2514189788a25fdc662fc80f06e98d0de7b68ec4243022651cad29a",
+          "json_pointer": "/handoff_boundaries/4"
+        }
+      ],
+      "synthetic_check_ids": [
+        "A05",
+        "A06"
+      ],
+      "financial_definition_or_applicability_complete": false,
+      "active_financial_binding": null,
+      "financial_status": "PENDING"
+    },
+    {
+      "contract_id": "RC04",
+      "title": "Reservas restringidas",
+      "conditional_identity": "Saldo inicial + depósitos − liberaciones + ajustes documentados = saldo final.",
+      "required_records": [
+        "Saldos restringidos, movimientos y reglas de uso",
+        "Clasificación separada de gasto y payout"
+      ],
+      "missing_or_conflicting_consequence": "Transferir reserva no crea gasto/payout automáticamente.",
+      "source_contract_refs": [
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/46"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/50"
+        }
+      ],
+      "handoff_refs": [
+        {
+          "path": "docs/current-structure/MiniUW_Dependencias_y_Traspasos_D12.json",
+          "sha256": "7e9c69e6b2514189788a25fdc662fc80f06e98d0de7b68ec4243022651cad29a",
+          "json_pointer": "/handoff_boundaries/4"
+        }
+      ],
+      "synthetic_check_ids": [
+        "A07",
+        "A08"
+      ],
+      "financial_definition_or_applicability_complete": false,
+      "active_financial_binding": null,
+      "financial_status": "PENDING"
+    },
+    {
+      "contract_id": "RC05",
+      "title": "Devengo y pago operativo",
+      "conditional_identity": "Pagos = gasto reconocido − aumento de payables + aumento de prepaid, con los demás ajustes explícitos del perfil.",
+      "required_records": [
+        "Gasto/impuesto y partidas no monetarias con período",
+        "Saldos por concepto e inventario de pagos"
+      ],
+      "missing_or_conflicting_consequence": "Saldos faltantes o alcances distintos impiden obtener pagos desde NOI.",
+      "source_contract_refs": [
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/25"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/12"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/50"
+        }
+      ],
+      "handoff_refs": [
+        {
+          "path": "docs/current-structure/MiniUW_Dependencias_y_Traspasos_D12.json",
+          "sha256": "7e9c69e6b2514189788a25fdc662fc80f06e98d0de7b68ec4243022651cad29a",
+          "json_pointer": "/handoff_boundaries/2"
+        },
+        {
+          "path": "docs/current-structure/MiniUW_Dependencias_y_Traspasos_D12.json",
+          "sha256": "7e9c69e6b2514189788a25fdc662fc80f06e98d0de7b68ec4243022651cad29a",
+          "json_pointer": "/handoff_boundaries/4"
+        }
+      ],
+      "synthetic_check_ids": [
+        "A09",
+        "A10"
+      ],
+      "financial_definition_or_applicability_complete": false,
+      "active_financial_binding": null,
+      "financial_status": "PENDING"
+    },
+    {
+      "contract_id": "RC06",
+      "title": "Principal y payoff de salida",
+      "conditional_identity": "Principal remanente se concilia con pagos y corte; payoff añade obligaciones separadas aplicables.",
+      "required_records": [
+        "Servicio fechado, préstamo, cuota, maturity y corte",
+        "Principal/interest/fees/otros debidos y pagados"
+      ],
+      "missing_or_conflicting_consequence": "No igualar saldo, capacidad y payoff ni duplicar pago regular en el corte.",
+      "source_contract_refs": [
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/33"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/44"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/45"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/54"
+        }
+      ],
+      "handoff_refs": [
+        {
+          "path": "docs/current-structure/MiniUW_Dependencias_y_Traspasos_D12.json",
+          "sha256": "7e9c69e6b2514189788a25fdc662fc80f06e98d0de7b68ec4243022651cad29a",
+          "json_pointer": "/handoff_boundaries/3"
+        },
+        {
+          "path": "docs/current-structure/MiniUW_Dependencias_y_Traspasos_D12.json",
+          "sha256": "7e9c69e6b2514189788a25fdc662fc80f06e98d0de7b68ec4243022651cad29a",
+          "json_pointer": "/handoff_boundaries/4"
+        }
+      ],
+      "synthetic_check_ids": [
+        "A11"
+      ],
+      "financial_definition_or_applicability_complete": false,
+      "active_financial_binding": null,
+      "financial_status": "PENDING"
+    },
+    {
+      "contract_id": "RC07",
+      "title": "Seguro al corte y liquidación",
+      "conditional_identity": "Saldos antes/después y pagos al corte deben conciliar bajo la clasificación explícita; pago ya incluido se usa una vez.",
+      "required_records": [
+        "Cuotas nominales, pagos previstos/efectivos y stock separados",
+        "Inventario de cierre, fechas y representación bruto/neta"
+      ],
+      "missing_or_conflicting_consequence": "Un vencimiento nominal no prueba pago; no deducir otra vez un pago incluido.",
+      "source_contract_refs": [
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/25"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/50"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/53"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/55"
+        }
+      ],
+      "handoff_refs": [
+        {
+          "path": "docs/current-structure/MiniUW_Dependencias_y_Traspasos_D12.json",
+          "sha256": "7e9c69e6b2514189788a25fdc662fc80f06e98d0de7b68ec4243022651cad29a",
+          "json_pointer": "/handoff_boundaries/4"
+        }
+      ],
+      "synthetic_check_ids": [
+        "A12",
+        "A13"
+      ],
+      "financial_definition_or_applicability_complete": false,
+      "active_financial_binding": null,
+      "financial_status": "PENDING"
+    },
+    {
+      "contract_id": "RC08",
+      "title": "Continuidad de caja hacia venta",
+      "conditional_identity": "Cierre operativo = apertura de venta compatible, con cambios intermedios explícitos.",
+      "required_records": [
+        "Fecha, cuenta libre/restringida, moneda y scope",
+        "Movimientos entre cortes si corresponden"
+      ],
+      "missing_or_conflicting_consequence": "No trasladar sólo caja libre ni descartar reservas/obligaciones.",
+      "source_contract_refs": [
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/50"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/53"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/55"
+        }
+      ],
+      "handoff_refs": [
+        {
+          "path": "docs/current-structure/MiniUW_Dependencias_y_Traspasos_D12.json",
+          "sha256": "7e9c69e6b2514189788a25fdc662fc80f06e98d0de7b68ec4243022651cad29a",
+          "json_pointer": "/handoff_boundaries/4"
+        }
+      ],
+      "synthetic_check_ids": [
+        "A14",
+        "A15"
+      ],
+      "financial_definition_or_applicability_complete": false,
+      "active_financial_binding": null,
+      "financial_status": "PENDING"
+    },
+    {
+      "contract_id": "RC09",
+      "title": "Venta neta y reserva final",
+      "conditional_identity": "Fuentes de cierre − usos/payoffs/retenciones = residual; reserva inicial − liberación + depósito = reserva final.",
+      "required_records": [
+        "Precio suministrado separado de valoración",
+        "Deuda, costos, obligaciones y retenciones con contrapartidas"
+      ],
+      "missing_or_conflicting_consequence": "Precio/valor no son payout; fondos restringidos y costos no se cuentan dos veces.",
+      "source_contract_refs": [
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/46"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/52"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/53"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/54"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/55"
+        }
+      ],
+      "handoff_refs": [
+        {
+          "path": "docs/current-structure/MiniUW_Dependencias_y_Traspasos_D12.json",
+          "sha256": "7e9c69e6b2514189788a25fdc662fc80f06e98d0de7b68ec4243022651cad29a",
+          "json_pointer": "/handoff_boundaries/4"
+        },
+        {
+          "path": "docs/current-structure/MiniUW_Dependencias_y_Traspasos_D12.json",
+          "sha256": "7e9c69e6b2514189788a25fdc662fc80f06e98d0de7b68ec4243022651cad29a",
+          "json_pointer": "/handoff_boundaries/5"
+        }
+      ],
+      "synthetic_check_ids": [
+        "A16",
+        "A17"
+      ],
+      "financial_definition_or_applicability_complete": false,
+      "active_financial_binding": null,
+      "financial_status": "PENDING"
+    },
+    {
+      "contract_id": "RC10",
+      "title": "Fuentes y usos externos del ciclo",
+      "conditional_identity": "Fuentes externas = usos externos + saldos finales dentro del inventario declarado; transferencias internas se cancelan.",
+      "required_records": [
+        "Inventario completo del alcance y eventos únicos",
+        "Cuentas/contrapartes y saldos terminales"
+      ],
+      "missing_or_conflicting_consequence": "Un residual no se resuelve con equity/draw/ajuste sin fuente; cuadrar no autentica el inventario.",
+      "source_contract_refs": [
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/25"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/33"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/36"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/50"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/55"
+        }
+      ],
+      "handoff_refs": [
+        {
+          "path": "docs/current-structure/MiniUW_Dependencias_y_Traspasos_D12.json",
+          "sha256": "7e9c69e6b2514189788a25fdc662fc80f06e98d0de7b68ec4243022651cad29a",
+          "json_pointer": "/handoff_boundaries/1"
+        },
+        {
+          "path": "docs/current-structure/MiniUW_Dependencias_y_Traspasos_D12.json",
+          "sha256": "7e9c69e6b2514189788a25fdc662fc80f06e98d0de7b68ec4243022651cad29a",
+          "json_pointer": "/handoff_boundaries/3"
+        },
+        {
+          "path": "docs/current-structure/MiniUW_Dependencias_y_Traspasos_D12.json",
+          "sha256": "7e9c69e6b2514189788a25fdc662fc80f06e98d0de7b68ec4243022651cad29a",
+          "json_pointer": "/handoff_boundaries/4"
+        }
+      ],
+      "synthetic_check_ids": [
+        "A18"
+      ],
+      "financial_definition_or_applicability_complete": false,
+      "active_financial_binding": null,
+      "financial_status": "PENDING"
+    },
+    {
+      "contract_id": "RC11",
+      "title": "Aportes cobros neto y múltiplo",
+      "conditional_identity": "Neto = cobros − aportes; EM = cobros brutos / aportes brutos positivos dentro de la ventana/alcance.",
+      "required_records": [
+        "Aportes y distribuciones brutos, fechas y scope",
+        "Términos personales y stock/base por separado"
+      ],
+      "missing_or_conflicting_consequence": "No netear flujos para EM ni presentar retorno agregado como retorno personal.",
+      "source_contract_refs": [
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/51"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/56"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/59"
+        }
+      ],
+      "handoff_refs": [
+        {
+          "path": "docs/current-structure/MiniUW_Dependencias_y_Traspasos_D12.json",
+          "sha256": "7e9c69e6b2514189788a25fdc662fc80f06e98d0de7b68ec4243022651cad29a",
+          "json_pointer": "/handoff_boundaries/5"
+        }
+      ],
+      "synthetic_check_ids": [
+        "A19",
+        "A20",
+        "A21",
+        "A22"
+      ],
+      "financial_definition_or_applicability_complete": false,
+      "active_financial_binding": null,
+      "financial_status": "PENDING"
+    },
+    {
+      "contract_id": "RC12",
+      "title": "Caja anual y alcance del retorno",
+      "conditional_identity": "Sumar movimientos fechados dentro de cada año/ventana; stock de capital y base anual requieren evidencia propia.",
+      "required_records": [
+        "Fechas explícitas y ventana",
+        "Base de CoC, stock y reparto si se requieren esas salidas"
+      ],
+      "missing_or_conflicting_consequence": "Un año de caja, una TIR o un déficit no definen CoC, capital ni pérdida económica final.",
+      "source_contract_refs": [
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/48"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/57"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/58"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/59"
+        }
+      ],
+      "handoff_refs": [
+        {
+          "path": "docs/current-structure/MiniUW_Dependencias_y_Traspasos_D12.json",
+          "sha256": "7e9c69e6b2514189788a25fdc662fc80f06e98d0de7b68ec4243022651cad29a",
+          "json_pointer": "/handoff_boundaries/5"
+        }
+      ],
+      "synthetic_check_ids": [
+        "A23",
+        "A24"
+      ],
+      "financial_definition_or_applicability_complete": false,
+      "active_financial_binding": null,
+      "financial_status": "PENDING"
+    }
+  ],
+  "financial_bindings_activated": 0,
+  "new_runtime_components": 0,
+  "new_tests": 0,
+  "new_source_values": 0,
+  "technical_tests_unchanged": 1619,
+  "original_semantic_mappings_pending": 54,
+  "financial_acceptance_checks_executed": 0,
+  "financial_model_complete": false,
+  "professional_review_authenticated": false,
+  "personal_return_verified": false,
+  "real_decisions_enabled": false,
+  "deployment_enabled": false
+}

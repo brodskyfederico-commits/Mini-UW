@@ -1,0 +1,65 @@
+{
+  "snapshot_id": "D13",
+  "status": "passed_source_traced_documentary_and_scoped_exact_arithmetic_reconciliation",
+  "scope": "Read-only existing synthetic source arithmetic; not financial acceptance or real payment verification",
+  "previous_design_commit": "d7fac77a76c5ae291a974d7dc7137e482a99a5b9",
+  "technical_baseline": "T111",
+  "technical_baseline_commit": "9aeb590151068ccd51f4eca0e92f7c766464ba94",
+  "prior_files_preserved": 1204,
+  "actual_changed_prior_files": [
+    "BACKUP_MANIFEST.json",
+    "README.md",
+    "WORK_LOG.md"
+  ],
+  "reconciliation_contracts": 12,
+  "source_contract_references_checked": 44,
+  "numeric_equalities_replayed": 24,
+  "profile_predicates_verified": 23,
+  "explicit_debt_slot_links_verified": 12,
+  "unique_source_pointer_references_verified": 155,
+  "all_exact_residuals_zero": true,
+  "model_producers_imported_or_called": false,
+  "source_inputs_modified": false,
+  "old_result_modified": false,
+  "financial_acceptance_checks_executed": 0,
+  "financial_bindings_activated": 0,
+  "new_runtime_components": 0,
+  "new_tests": 0,
+  "new_source_values": 0,
+  "technical_tests_unchanged": 1619,
+  "IRR_recalculated": false,
+  "source_inventory_authenticated": false,
+  "bank_payment_authentication_verified": false,
+  "source_versions": [
+    {
+      "path": "docs/current-structure/MiniUW_Conciliaciones_D13.json",
+      "bytes": 24344,
+      "sha256": "8d7225e7c19a0c77e51013f23e5d197534505aede4062f4683c46a9c813f6ed5"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Conciliacion_Sintetica_D13.json",
+      "bytes": 353830,
+      "sha256": "0f23a7388dcb045cedda6b33a11e7ba119a4ace300ad1f2f5127e9e992c60837"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Conciliaciones_D13.md",
+      "bytes": 7780,
+      "sha256": "054533abad53aae7ede5c842f4014032aa9725e92458c3eb811b44937e6defc6"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Contratos_Conciliacion_D13.csv",
+      "bytes": 4455,
+      "sha256": "04402b85e0e7e448b3608b9125030c9ccddd7fcd2a1611401bbb064fd0feb4af"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Comprobaciones_24_D13.csv",
+      "bytes": 6240,
+      "sha256": "5be9700d280070ba26a7498e4825fcec4f67fcb16d0bd49cd6b560bd49625906"
+    }
+  ],
+  "financial_model_complete": false,
+  "professional_review_authenticated": false,
+  "personal_return_verified": false,
+  "real_decisions_enabled": false,
+  "deployment_enabled": false
+}
