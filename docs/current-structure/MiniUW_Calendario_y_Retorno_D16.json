@@ -1,0 +1,3265 @@
+{
+  "snapshot_id": "D16",
+  "scope": "Independent read-only event/source, date, category, annual and normalized cash audit of the two existing D15 T111 snapshots; no financial binding activation",
+  "previous_design_commit": "99b5676f4831bbc5ef2baac3aaa87c34d3eb67ce",
+  "technical_baseline": "T111",
+  "technical_baseline_commit": "9aeb590151068ccd51f4eca0e92f7c766464ba94",
+  "source_arithmetic_blueprint_ref": {
+    "path": "docs/current-structure/MiniUW_Conciliacion_Sintetica_D13.json",
+    "sha256": "0f23a7388dcb045cedda6b33a11e7ba119a4ace300ad1f2f5127e9e992c60837",
+    "embedded_json_pointers": [],
+    "final_pointer": ""
+  },
+  "snapshots": [
+    {
+      "snapshot_id": "L01",
+      "input_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [],
+        "final_pointer": ""
+      },
+      "result_ref": {
+        "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+        "embedded_json_pointers": [],
+        "final_pointer": ""
+      },
+      "context": {
+        "deal_id": "SYNTHETIC-construction-draw-demo",
+        "definition_set_revision": "SYNTHETIC-simple-interval-factors",
+        "run_id": "SYNTHETIC-construction-draw-run",
+        "scenario_id": "SYNTHETIC-draw-plan"
+      },
+      "evaluated_as_of_UTC": "2027-07-01T12:00:00Z",
+      "currency": "USD",
+      "equity_level": "aggregate_project_equity",
+      "cash_horizon": {
+        "end": "2027-07-01",
+        "future_cash_after_horizon_included": false,
+        "start": "2026-10-01"
+      },
+      "event_rows": [
+        {
+          "snapshot_id": "L01",
+          "event_index": 0,
+          "event_id": "preopening_slots-0",
+          "source_event_id": "SYNTHETIC-equity-initial",
+          "date": "2026-10-01",
+          "kind": "contribution",
+          "category": "initial_capital",
+          "currency": "USD",
+          "amount": {
+            "numerator": "1000",
+            "denominator": "1"
+          },
+          "explicit_zero": false,
+          "derivation": "direct_declared_gross_contribution",
+          "amount_source_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/construction_bundle_utf8",
+              "/preopening_source"
+            ],
+            "final_pointer": "/events/0/amount"
+          },
+          "sale_expression_ref": null,
+          "sale_expression_selected_input_ref": null,
+          "date_source_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/construction_bundle_utf8",
+              "/preopening_source"
+            ],
+            "final_pointer": "/events/0/date"
+          },
+          "binding_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/return_binding_source_utf8"
+            ],
+            "final_pointer": "/preopening_slots/0"
+          },
+          "declared_target_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/investor_source_utf8"
+            ],
+            "final_pointer": "/events/0"
+          },
+          "compiled_event_ref": {
+            "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+            "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+            "embedded_json_pointers": [
+              "/current_compiled_investor_json"
+            ],
+            "final_pointer": "/events/0"
+          },
+          "result_event_ref": {
+            "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+            "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/events/0"
+          },
+          "event_source_ref_string": "miniuw:staged-lifecycle:ff52b6a2c7fe114fc99f058fe71fd73d8a2302a2505dcfb5689cd547c4be0344#/exportable_equity_movements/0",
+          "source_reference_evidence_level": "embedded_saved_preopening_run_bytes_hash_and_exported_event_verified_not_bank_authentication",
+          "normalized_amount": {
+            "numerator": "50",
+            "denominator": "7"
+          },
+          "normalized_event_ref": {
+            "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+            "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/normalized_story/events/0"
+          }
+        },
+        {
+          "snapshot_id": "L01",
+          "event_index": 1,
+          "event_id": "preopening_slots-1",
+          "source_event_id": "SYNTHETIC-equity-additional",
+          "date": "2026-11-01",
+          "kind": "contribution",
+          "category": "additional_capital",
+          "currency": "USD",
+          "amount": {
+            "numerator": "400",
+            "denominator": "1"
+          },
+          "explicit_zero": false,
+          "derivation": "direct_declared_gross_contribution",
+          "amount_source_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/construction_bundle_utf8",
+              "/preopening_source"
+            ],
+            "final_pointer": "/events/4/amount"
+          },
+          "sale_expression_ref": null,
+          "sale_expression_selected_input_ref": null,
+          "date_source_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/construction_bundle_utf8",
+              "/preopening_source"
+            ],
+            "final_pointer": "/events/4/date"
+          },
+          "binding_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/return_binding_source_utf8"
+            ],
+            "final_pointer": "/preopening_slots/1"
+          },
+          "declared_target_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/investor_source_utf8"
+            ],
+            "final_pointer": "/events/1"
+          },
+          "compiled_event_ref": {
+            "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+            "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+            "embedded_json_pointers": [
+              "/current_compiled_investor_json"
+            ],
+            "final_pointer": "/events/1"
+          },
+          "result_event_ref": {
+            "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+            "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/events/1"
+          },
+          "event_source_ref_string": "miniuw:staged-lifecycle:ff52b6a2c7fe114fc99f058fe71fd73d8a2302a2505dcfb5689cd547c4be0344#/exportable_equity_movements/1",
+          "source_reference_evidence_level": "embedded_saved_preopening_run_bytes_hash_and_exported_event_verified_not_bank_authentication",
+          "normalized_amount": {
+            "numerator": "20",
+            "denominator": "7"
+          },
+          "normalized_event_ref": {
+            "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+            "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/normalized_story/events/1"
+          }
+        },
+        {
+          "snapshot_id": "L01",
+          "event_index": 2,
+          "event_id": "operating_slots-0",
+          "source_event_id": "SYNTHETIC-hold-1:distribution",
+          "date": "2027-03-01",
+          "kind": "distribution",
+          "category": "operating_distribution",
+          "currency": "USD",
+          "amount": {
+            "numerator": "100",
+            "denominator": "1"
+          },
+          "explicit_zero": false,
+          "derivation": "direct_declared_operating_gross_movement",
+          "amount_source_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/0/cash_source_utf8"
+            ],
+            "final_pointer": "/amounts/planned_operating_distribution"
+          },
+          "sale_expression_ref": null,
+          "sale_expression_selected_input_ref": null,
+          "date_source_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/0/cash_source_utf8"
+            ],
+            "final_pointer": "/cash_date"
+          },
+          "binding_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/return_binding_source_utf8"
+            ],
+            "final_pointer": "/operating_slots/0"
+          },
+          "declared_target_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/investor_source_utf8"
+            ],
+            "final_pointer": "/events/2"
+          },
+          "compiled_event_ref": {
+            "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+            "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+            "embedded_json_pointers": [
+              "/current_compiled_investor_json"
+            ],
+            "final_pointer": "/events/2"
+          },
+          "result_event_ref": {
+            "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+            "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/events/2"
+          },
+          "event_source_ref_string": "miniuw:staged-lifecycle:901c62dfcbd51398b56f5fa3969923e7712f446e02fd16f6c05b8d31ac6564e8#/exportable_equity_movements/0/distribution",
+          "source_reference_evidence_level": "declared_hold_sale_run_hash_and_pointer_match_window_not_independent_replay_of_run_hash",
+          "normalized_amount": {
+            "numerator": "5",
+            "denominator": "7"
+          },
+          "normalized_event_ref": {
+            "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+            "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/normalized_story/events/2"
+          }
+        },
+        {
+          "snapshot_id": "L01",
+          "event_index": 3,
+          "event_id": "operating_slots-1",
+          "source_event_id": "SYNTHETIC-hold-1:contribution",
+          "date": "2027-03-01",
+          "kind": "contribution",
+          "category": "additional_capital",
+          "currency": "USD",
+          "amount": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "explicit_zero": true,
+          "derivation": "direct_declared_operating_gross_movement",
+          "amount_source_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/0/cash_source_utf8"
+            ],
+            "final_pointer": "/amounts/equity_contribution"
+          },
+          "sale_expression_ref": null,
+          "sale_expression_selected_input_ref": null,
+          "date_source_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/0/cash_source_utf8"
+            ],
+            "final_pointer": "/cash_date"
+          },
+          "binding_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/return_binding_source_utf8"
+            ],
+            "final_pointer": "/operating_slots/1"
+          },
+          "declared_target_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/investor_source_utf8"
+            ],
+            "final_pointer": "/events/3"
+          },
+          "compiled_event_ref": {
+            "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+            "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+            "embedded_json_pointers": [
+              "/current_compiled_investor_json"
+            ],
+            "final_pointer": "/events/3"
+          },
+          "result_event_ref": {
+            "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+            "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/events/3"
+          },
+          "event_source_ref_string": "miniuw:staged-lifecycle:901c62dfcbd51398b56f5fa3969923e7712f446e02fd16f6c05b8d31ac6564e8#/exportable_equity_movements/0/contribution",
+          "source_reference_evidence_level": "declared_hold_sale_run_hash_and_pointer_match_window_not_independent_replay_of_run_hash",
+          "normalized_amount": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "normalized_event_ref": {
+            "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+            "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/normalized_story/events/3"
+          }
+        },
+        {
+          "snapshot_id": "L01",
+          "event_index": 4,
+          "event_id": "operating_slots-2",
+          "source_event_id": "SYNTHETIC-hold-2:distribution",
+          "date": "2027-06-01",
+          "kind": "distribution",
+          "category": "operating_distribution",
+          "currency": "USD",
+          "amount": {
+            "numerator": "100",
+            "denominator": "1"
+          },
+          "explicit_zero": false,
+          "derivation": "direct_declared_operating_gross_movement",
+          "amount_source_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/1/cash_source_utf8"
+            ],
+            "final_pointer": "/amounts/planned_operating_distribution"
+          },
+          "sale_expression_ref": null,
+          "sale_expression_selected_input_ref": null,
+          "date_source_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/1/cash_source_utf8"
+            ],
+            "final_pointer": "/cash_date"
+          },
+          "binding_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/return_binding_source_utf8"
+            ],
+            "final_pointer": "/operating_slots/2"
+          },
+          "declared_target_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/investor_source_utf8"
+            ],
+            "final_pointer": "/events/4"
+          },
+          "compiled_event_ref": {
+            "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+            "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+            "embedded_json_pointers": [
+              "/current_compiled_investor_json"
+            ],
+            "final_pointer": "/events/4"
+          },
+          "result_event_ref": {
+            "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+            "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/events/4"
+          },
+          "event_source_ref_string": "miniuw:staged-lifecycle:901c62dfcbd51398b56f5fa3969923e7712f446e02fd16f6c05b8d31ac6564e8#/exportable_equity_movements/1/distribution",
+          "source_reference_evidence_level": "declared_hold_sale_run_hash_and_pointer_match_window_not_independent_replay_of_run_hash",
+          "normalized_amount": {
+            "numerator": "5",
+            "denominator": "7"
+          },
+          "normalized_event_ref": {
+            "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+            "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/normalized_story/events/4"
+          }
+        },
+        {
+          "snapshot_id": "L01",
+          "event_index": 5,
+          "event_id": "operating_slots-3",
+          "source_event_id": "SYNTHETIC-hold-2:contribution",
+          "date": "2027-06-01",
+          "kind": "contribution",
+          "category": "additional_capital",
+          "currency": "USD",
+          "amount": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "explicit_zero": true,
+          "derivation": "direct_declared_operating_gross_movement",
+          "amount_source_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/1/cash_source_utf8"
+            ],
+            "final_pointer": "/amounts/equity_contribution"
+          },
+          "sale_expression_ref": null,
+          "sale_expression_selected_input_ref": null,
+          "date_source_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/1/cash_source_utf8"
+            ],
+            "final_pointer": "/cash_date"
+          },
+          "binding_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/return_binding_source_utf8"
+            ],
+            "final_pointer": "/operating_slots/3"
+          },
+          "declared_target_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/investor_source_utf8"
+            ],
+            "final_pointer": "/events/5"
+          },
+          "compiled_event_ref": {
+            "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+            "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+            "embedded_json_pointers": [
+              "/current_compiled_investor_json"
+            ],
+            "final_pointer": "/events/5"
+          },
+          "result_event_ref": {
+            "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+            "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/events/5"
+          },
+          "event_source_ref_string": "miniuw:staged-lifecycle:901c62dfcbd51398b56f5fa3969923e7712f446e02fd16f6c05b8d31ac6564e8#/exportable_equity_movements/1/contribution",
+          "source_reference_evidence_level": "declared_hold_sale_run_hash_and_pointer_match_window_not_independent_replay_of_run_hash",
+          "normalized_amount": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "normalized_event_ref": {
+            "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+            "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/normalized_story/events/5"
+          }
+        },
+        {
+          "snapshot_id": "L01",
+          "event_index": 6,
+          "event_id": "operating_slots-4",
+          "source_event_id": "SYNTHETIC-staged-sale:distribution",
+          "date": "2027-07-01",
+          "kind": "distribution",
+          "category": "net_sale_distribution",
+          "currency": "USD",
+          "amount": {
+            "numerator": "578",
+            "denominator": "1"
+          },
+          "explicit_zero": false,
+          "derivation": "positive_explicit_sale_residual",
+          "amount_source_ref": null,
+          "sale_expression_ref": {
+            "path": "docs/current-structure/MiniUW_Conciliacion_Sintetica_D13.json",
+            "sha256": "0f23a7388dcb045cedda6b33a11e7ba119a4ace300ad1f2f5127e9e992c60837",
+            "embedded_json_pointers": [],
+            "final_pointer": "/checks/15/left_expression"
+          },
+          "sale_expression_selected_input_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [],
+            "final_pointer": ""
+          },
+          "date_source_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/sale/closing_source_utf8"
+            ],
+            "final_pointer": "/closing_date"
+          },
+          "binding_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/return_binding_source_utf8"
+            ],
+            "final_pointer": "/operating_slots/4"
+          },
+          "declared_target_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/investor_source_utf8"
+            ],
+            "final_pointer": "/events/6"
+          },
+          "compiled_event_ref": {
+            "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+            "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+            "embedded_json_pointers": [
+              "/current_compiled_investor_json"
+            ],
+            "final_pointer": "/events/6"
+          },
+          "result_event_ref": {
+            "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+            "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/events/6"
+          },
+          "event_source_ref_string": "miniuw:staged-lifecycle:901c62dfcbd51398b56f5fa3969923e7712f446e02fd16f6c05b8d31ac6564e8#/exportable_equity_movements/2/distribution",
+          "source_reference_evidence_level": "declared_hold_sale_run_hash_and_pointer_match_window_not_independent_replay_of_run_hash",
+          "normalized_amount": {
+            "numerator": "289",
+            "denominator": "70"
+          },
+          "normalized_event_ref": {
+            "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+            "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/normalized_story/events/6"
+          }
+        },
+        {
+          "snapshot_id": "L01",
+          "event_index": 7,
+          "event_id": "operating_slots-5",
+          "source_event_id": "SYNTHETIC-staged-sale:contribution",
+          "date": "2027-07-01",
+          "kind": "contribution",
+          "category": "additional_capital",
+          "currency": "USD",
+          "amount": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "explicit_zero": true,
+          "derivation": "zero_contribution_from_positive_sale_residual_within_supplied_profile",
+          "amount_source_ref": null,
+          "sale_expression_ref": {
+            "path": "docs/current-structure/MiniUW_Conciliacion_Sintetica_D13.json",
+            "sha256": "0f23a7388dcb045cedda6b33a11e7ba119a4ace300ad1f2f5127e9e992c60837",
+            "embedded_json_pointers": [],
+            "final_pointer": "/checks/15/left_expression"
+          },
+          "sale_expression_selected_input_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [],
+            "final_pointer": ""
+          },
+          "date_source_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/sale/closing_source_utf8"
+            ],
+            "final_pointer": "/closing_date"
+          },
+          "binding_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/return_binding_source_utf8"
+            ],
+            "final_pointer": "/operating_slots/5"
+          },
+          "declared_target_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/investor_source_utf8"
+            ],
+            "final_pointer": "/events/7"
+          },
+          "compiled_event_ref": {
+            "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+            "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+            "embedded_json_pointers": [
+              "/current_compiled_investor_json"
+            ],
+            "final_pointer": "/events/7"
+          },
+          "result_event_ref": {
+            "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+            "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/events/7"
+          },
+          "event_source_ref_string": "miniuw:staged-lifecycle:901c62dfcbd51398b56f5fa3969923e7712f446e02fd16f6c05b8d31ac6564e8#/exportable_equity_movements/2/contribution",
+          "source_reference_evidence_level": "declared_hold_sale_run_hash_and_pointer_match_window_not_independent_replay_of_run_hash",
+          "normalized_amount": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "normalized_event_ref": {
+            "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+            "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/normalized_story/events/7"
+          }
+        }
+      ],
+      "date_rows": [
+        {
+          "snapshot_id": "L01",
+          "date": "2026-10-01",
+          "event_ids": [
+            "preopening_slots-0"
+          ],
+          "gross_contributions": {
+            "numerator": "1000",
+            "denominator": "1"
+          },
+          "gross_distributions": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "net_cash": {
+            "numerator": "-1000",
+            "denominator": "1"
+          },
+          "event_count": 1,
+          "no_equity_event_on_declared_grid_date": false,
+          "grid_date_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/investor_source_utf8"
+            ],
+            "final_pointer": "/grid/dates/0"
+          },
+          "net_result_ref": {
+            "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+            "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/dated_net_flows/0"
+          }
+        },
+        {
+          "snapshot_id": "L01",
+          "date": "2026-11-01",
+          "event_ids": [
+            "preopening_slots-1"
+          ],
+          "gross_contributions": {
+            "numerator": "400",
+            "denominator": "1"
+          },
+          "gross_distributions": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "net_cash": {
+            "numerator": "-400",
+            "denominator": "1"
+          },
+          "event_count": 1,
+          "no_equity_event_on_declared_grid_date": false,
+          "grid_date_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/investor_source_utf8"
+            ],
+            "final_pointer": "/grid/dates/1"
+          },
+          "net_result_ref": {
+            "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+            "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/dated_net_flows/1"
+          }
+        },
+        {
+          "snapshot_id": "L01",
+          "date": "2026-12-01",
+          "event_ids": [],
+          "gross_contributions": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "gross_distributions": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "net_cash": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "event_count": 0,
+          "no_equity_event_on_declared_grid_date": true,
+          "grid_date_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/investor_source_utf8"
+            ],
+            "final_pointer": "/grid/dates/2"
+          },
+          "net_result_ref": {
+            "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+            "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/dated_net_flows/2"
+          }
+        },
+        {
+          "snapshot_id": "L01",
+          "date": "2027-01-01",
+          "event_ids": [],
+          "gross_contributions": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "gross_distributions": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "net_cash": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "event_count": 0,
+          "no_equity_event_on_declared_grid_date": true,
+          "grid_date_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/investor_source_utf8"
+            ],
+            "final_pointer": "/grid/dates/3"
+          },
+          "net_result_ref": {
+            "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+            "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/dated_net_flows/3"
+          }
+        },
+        {
+          "snapshot_id": "L01",
+          "date": "2027-02-01",
+          "event_ids": [],
+          "gross_contributions": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "gross_distributions": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "net_cash": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "event_count": 0,
+          "no_equity_event_on_declared_grid_date": true,
+          "grid_date_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/investor_source_utf8"
+            ],
+            "final_pointer": "/grid/dates/4"
+          },
+          "net_result_ref": {
+            "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+            "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/dated_net_flows/4"
+          }
+        },
+        {
+          "snapshot_id": "L01",
+          "date": "2027-03-01",
+          "event_ids": [
+            "operating_slots-0",
+            "operating_slots-1"
+          ],
+          "gross_contributions": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "gross_distributions": {
+            "numerator": "100",
+            "denominator": "1"
+          },
+          "net_cash": {
+            "numerator": "100",
+            "denominator": "1"
+          },
+          "event_count": 2,
+          "no_equity_event_on_declared_grid_date": false,
+          "grid_date_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/investor_source_utf8"
+            ],
+            "final_pointer": "/grid/dates/5"
+          },
+          "net_result_ref": {
+            "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+            "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/dated_net_flows/5"
+          }
+        },
+        {
+          "snapshot_id": "L01",
+          "date": "2027-04-01",
+          "event_ids": [],
+          "gross_contributions": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "gross_distributions": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "net_cash": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "event_count": 0,
+          "no_equity_event_on_declared_grid_date": true,
+          "grid_date_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/investor_source_utf8"
+            ],
+            "final_pointer": "/grid/dates/6"
+          },
+          "net_result_ref": {
+            "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+            "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/dated_net_flows/6"
+          }
+        },
+        {
+          "snapshot_id": "L01",
+          "date": "2027-05-01",
+          "event_ids": [],
+          "gross_contributions": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "gross_distributions": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "net_cash": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "event_count": 0,
+          "no_equity_event_on_declared_grid_date": true,
+          "grid_date_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/investor_source_utf8"
+            ],
+            "final_pointer": "/grid/dates/7"
+          },
+          "net_result_ref": {
+            "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+            "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/dated_net_flows/7"
+          }
+        },
+        {
+          "snapshot_id": "L01",
+          "date": "2027-06-01",
+          "event_ids": [
+            "operating_slots-2",
+            "operating_slots-3"
+          ],
+          "gross_contributions": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "gross_distributions": {
+            "numerator": "100",
+            "denominator": "1"
+          },
+          "net_cash": {
+            "numerator": "100",
+            "denominator": "1"
+          },
+          "event_count": 2,
+          "no_equity_event_on_declared_grid_date": false,
+          "grid_date_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/investor_source_utf8"
+            ],
+            "final_pointer": "/grid/dates/8"
+          },
+          "net_result_ref": {
+            "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+            "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/dated_net_flows/8"
+          }
+        },
+        {
+          "snapshot_id": "L01",
+          "date": "2027-07-01",
+          "event_ids": [
+            "operating_slots-4",
+            "operating_slots-5"
+          ],
+          "gross_contributions": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "gross_distributions": {
+            "numerator": "578",
+            "denominator": "1"
+          },
+          "net_cash": {
+            "numerator": "578",
+            "denominator": "1"
+          },
+          "event_count": 2,
+          "no_equity_event_on_declared_grid_date": false,
+          "grid_date_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/investor_source_utf8"
+            ],
+            "final_pointer": "/grid/dates/9"
+          },
+          "net_result_ref": {
+            "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+            "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/dated_net_flows/9"
+          }
+        }
+      ],
+      "aggregate_rows": [
+        {
+          "snapshot_id": "L01",
+          "group_kind": "category",
+          "group_key": "additional_capital",
+          "event_ids": [
+            "preopening_slots-1",
+            "operating_slots-1",
+            "operating_slots-3",
+            "operating_slots-5"
+          ],
+          "calculated": {
+            "amount": {
+              "numerator": "400",
+              "denominator": "1"
+            }
+          },
+          "reported_ref": {
+            "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+            "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/cash_by_category/additional_capital"
+          },
+          "scope": "declared_complete_supplied_no_refinance_event_inventory_only"
+        },
+        {
+          "snapshot_id": "L01",
+          "group_kind": "category",
+          "group_key": "initial_capital",
+          "event_ids": [
+            "preopening_slots-0"
+          ],
+          "calculated": {
+            "amount": {
+              "numerator": "1000",
+              "denominator": "1"
+            }
+          },
+          "reported_ref": {
+            "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+            "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/cash_by_category/initial_capital"
+          },
+          "scope": "declared_complete_supplied_no_refinance_event_inventory_only"
+        },
+        {
+          "snapshot_id": "L01",
+          "group_kind": "category",
+          "group_key": "net_refinance_distribution",
+          "event_ids": [],
+          "calculated": {
+            "amount": {
+              "numerator": "0",
+              "denominator": "1"
+            }
+          },
+          "reported_ref": {
+            "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+            "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/cash_by_category/net_refinance_distribution"
+          },
+          "scope": "declared_complete_supplied_no_refinance_event_inventory_only"
+        },
+        {
+          "snapshot_id": "L01",
+          "group_kind": "category",
+          "group_key": "net_sale_distribution",
+          "event_ids": [
+            "operating_slots-4"
+          ],
+          "calculated": {
+            "amount": {
+              "numerator": "578",
+              "denominator": "1"
+            }
+          },
+          "reported_ref": {
+            "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+            "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/cash_by_category/net_sale_distribution"
+          },
+          "scope": "declared_complete_supplied_no_refinance_event_inventory_only"
+        },
+        {
+          "snapshot_id": "L01",
+          "group_kind": "category",
+          "group_key": "operating_distribution",
+          "event_ids": [
+            "operating_slots-0",
+            "operating_slots-2"
+          ],
+          "calculated": {
+            "amount": {
+              "numerator": "200",
+              "denominator": "1"
+            }
+          },
+          "reported_ref": {
+            "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+            "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/cash_by_category/operating_distribution"
+          },
+          "scope": "declared_complete_supplied_no_refinance_event_inventory_only"
+        },
+        {
+          "snapshot_id": "L01",
+          "group_kind": "category",
+          "group_key": "other_distribution",
+          "event_ids": [],
+          "calculated": {
+            "amount": {
+              "numerator": "0",
+              "denominator": "1"
+            }
+          },
+          "reported_ref": {
+            "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+            "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/cash_by_category/other_distribution"
+          },
+          "scope": "declared_complete_supplied_no_refinance_event_inventory_only"
+        },
+        {
+          "snapshot_id": "L01",
+          "group_kind": "category",
+          "group_key": "refinance_cash_in",
+          "event_ids": [],
+          "calculated": {
+            "amount": {
+              "numerator": "0",
+              "denominator": "1"
+            }
+          },
+          "reported_ref": {
+            "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+            "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/cash_by_category/refinance_cash_in"
+          },
+          "scope": "declared_complete_supplied_no_refinance_event_inventory_only"
+        },
+        {
+          "snapshot_id": "L01",
+          "group_kind": "calendar_year",
+          "group_key": "2026",
+          "event_ids": [
+            "preopening_slots-0",
+            "preopening_slots-1"
+          ],
+          "calculated": {
+            "gross_contributions": {
+              "numerator": "1400",
+              "denominator": "1"
+            },
+            "gross_distributions": {
+              "numerator": "0",
+              "denominator": "1"
+            },
+            "net_equity_cash": {
+              "numerator": "-1400",
+              "denominator": "1"
+            },
+            "operating_distributions_only": {
+              "numerator": "0",
+              "denominator": "1"
+            },
+            "normalized_operating_distributions": {
+              "numerator": "0",
+              "denominator": "1"
+            }
+          },
+          "reported_ref": {
+            "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+            "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/annual_cash_receipts/0"
+          },
+          "scope": "calendar_year_of_declared_cash_date_not_annualized_operating_return"
+        },
+        {
+          "snapshot_id": "L01",
+          "group_kind": "calendar_year",
+          "group_key": "2027",
+          "event_ids": [
+            "operating_slots-0",
+            "operating_slots-1",
+            "operating_slots-2",
+            "operating_slots-3",
+            "operating_slots-4",
+            "operating_slots-5"
+          ],
+          "calculated": {
+            "gross_contributions": {
+              "numerator": "0",
+              "denominator": "1"
+            },
+            "gross_distributions": {
+              "numerator": "778",
+              "denominator": "1"
+            },
+            "net_equity_cash": {
+              "numerator": "778",
+              "denominator": "1"
+            },
+            "operating_distributions_only": {
+              "numerator": "200",
+              "denominator": "1"
+            },
+            "normalized_operating_distributions": {
+              "numerator": "10",
+              "denominator": "7"
+            }
+          },
+          "reported_ref": {
+            "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+            "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/annual_cash_receipts/1"
+          },
+          "scope": "calendar_year_of_declared_cash_date_not_annualized_operating_return"
+        },
+        {
+          "snapshot_id": "L01",
+          "group_kind": "whole_horizon",
+          "group_key": "gross_contributions",
+          "event_ids": [
+            "preopening_slots-0",
+            "preopening_slots-1",
+            "operating_slots-0",
+            "operating_slots-1",
+            "operating_slots-2",
+            "operating_slots-3",
+            "operating_slots-4",
+            "operating_slots-5"
+          ],
+          "calculated": {
+            "amount": {
+              "numerator": "1400",
+              "denominator": "1"
+            }
+          },
+          "reported_ref": {
+            "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+            "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/gross_contributions"
+          },
+          "scope": "project_gross_equity_cash_USD"
+        },
+        {
+          "snapshot_id": "L01",
+          "group_kind": "whole_horizon",
+          "group_key": "gross_distributions",
+          "event_ids": [
+            "preopening_slots-0",
+            "preopening_slots-1",
+            "operating_slots-0",
+            "operating_slots-1",
+            "operating_slots-2",
+            "operating_slots-3",
+            "operating_slots-4",
+            "operating_slots-5"
+          ],
+          "calculated": {
+            "amount": {
+              "numerator": "778",
+              "denominator": "1"
+            }
+          },
+          "reported_ref": {
+            "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+            "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/gross_distributions"
+          },
+          "scope": "project_gross_equity_cash_USD"
+        },
+        {
+          "snapshot_id": "L01",
+          "group_kind": "whole_horizon",
+          "group_key": "net_cash_profit",
+          "event_ids": [
+            "preopening_slots-0",
+            "preopening_slots-1",
+            "operating_slots-0",
+            "operating_slots-1",
+            "operating_slots-2",
+            "operating_slots-3",
+            "operating_slots-4",
+            "operating_slots-5"
+          ],
+          "calculated": {
+            "amount": {
+              "numerator": "-622",
+              "denominator": "1"
+            }
+          },
+          "reported_ref": {
+            "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+            "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/net_cash_profit"
+          },
+          "scope": "project_gross_equity_cash_USD"
+        },
+        {
+          "snapshot_id": "L01",
+          "group_kind": "whole_horizon",
+          "group_key": "equity_multiple",
+          "event_ids": [
+            "preopening_slots-0",
+            "preopening_slots-1",
+            "operating_slots-0",
+            "operating_slots-1",
+            "operating_slots-2",
+            "operating_slots-3",
+            "operating_slots-4",
+            "operating_slots-5"
+          ],
+          "calculated": {
+            "amount": {
+              "numerator": "389",
+              "denominator": "700"
+            }
+          },
+          "reported_ref": {
+            "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+            "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/equity_multiple"
+          },
+          "scope": "project_gross_equity_cash_multiple_unit"
+        }
+      ],
+      "normalization": {
+        "basis_event_ids": [
+          "preopening_slots-0",
+          "preopening_slots-1",
+          "operating_slots-1",
+          "operating_slots-3",
+          "operating_slots-5"
+        ],
+        "basis_amount": {
+          "numerator": "1400",
+          "denominator": "1"
+        },
+        "reference_amount": {
+          "numerator": "10",
+          "denominator": "1"
+        },
+        "scale_factor": {
+          "numerator": "1",
+          "denominator": "140"
+        },
+        "personal_allocation": false
+      },
+      "source_reference_hashes_fully_replayed": false,
+      "financial_decision": "PENDING",
+      "capital_stock_and_equity_pending": true,
+      "annual_CoC_pending": true,
+      "personal_return_pending": true
+    },
+    {
+      "snapshot_id": "L02",
+      "input_ref": {
+        "path": "templates/worksheet-settled-twelve-T111.json",
+        "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+        "embedded_json_pointers": [],
+        "final_pointer": ""
+      },
+      "result_ref": {
+        "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+        "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+        "embedded_json_pointers": [],
+        "final_pointer": ""
+      },
+      "context": {
+        "deal_id": "SYNTHETIC-construction-draw-demo",
+        "definition_set_revision": "SYNTHETIC-simple-interval-factors",
+        "run_id": "SYNTHETIC-construction-draw-run",
+        "scenario_id": "SYNTHETIC-draw-plan"
+      },
+      "evaluated_as_of_UTC": "2027-07-01T12:00:00Z",
+      "currency": "USD",
+      "equity_level": "aggregate_project_equity",
+      "cash_horizon": {
+        "end": "2027-07-01",
+        "future_cash_after_horizon_included": false,
+        "start": "2026-10-01"
+      },
+      "event_rows": [
+        {
+          "snapshot_id": "L02",
+          "event_index": 0,
+          "event_id": "preopening_slots-0",
+          "source_event_id": "SYNTHETIC-equity-initial",
+          "date": "2026-10-01",
+          "kind": "contribution",
+          "category": "initial_capital",
+          "currency": "USD",
+          "amount": {
+            "numerator": "1000",
+            "denominator": "1"
+          },
+          "explicit_zero": false,
+          "derivation": "direct_declared_gross_contribution",
+          "amount_source_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/construction_bundle_utf8",
+              "/preopening_source"
+            ],
+            "final_pointer": "/events/0/amount"
+          },
+          "sale_expression_ref": null,
+          "sale_expression_selected_input_ref": null,
+          "date_source_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/construction_bundle_utf8",
+              "/preopening_source"
+            ],
+            "final_pointer": "/events/0/date"
+          },
+          "binding_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/return_binding_source_utf8"
+            ],
+            "final_pointer": "/preopening_slots/0"
+          },
+          "declared_target_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/investor_source_utf8"
+            ],
+            "final_pointer": "/events/0"
+          },
+          "compiled_event_ref": {
+            "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+            "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+            "embedded_json_pointers": [
+              "/current_compiled_investor_json"
+            ],
+            "final_pointer": "/events/0"
+          },
+          "result_event_ref": {
+            "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+            "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/events/0"
+          },
+          "event_source_ref_string": "miniuw:staged-lifecycle:ff52b6a2c7fe114fc99f058fe71fd73d8a2302a2505dcfb5689cd547c4be0344#/exportable_equity_movements/0",
+          "source_reference_evidence_level": "embedded_saved_preopening_run_bytes_hash_and_exported_event_verified_not_bank_authentication",
+          "normalized_amount": {
+            "numerator": "50",
+            "denominator": "7"
+          },
+          "normalized_event_ref": {
+            "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+            "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/normalized_story/events/0"
+          }
+        },
+        {
+          "snapshot_id": "L02",
+          "event_index": 1,
+          "event_id": "preopening_slots-1",
+          "source_event_id": "SYNTHETIC-equity-additional",
+          "date": "2026-11-01",
+          "kind": "contribution",
+          "category": "additional_capital",
+          "currency": "USD",
+          "amount": {
+            "numerator": "400",
+            "denominator": "1"
+          },
+          "explicit_zero": false,
+          "derivation": "direct_declared_gross_contribution",
+          "amount_source_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/construction_bundle_utf8",
+              "/preopening_source"
+            ],
+            "final_pointer": "/events/4/amount"
+          },
+          "sale_expression_ref": null,
+          "sale_expression_selected_input_ref": null,
+          "date_source_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/construction_bundle_utf8",
+              "/preopening_source"
+            ],
+            "final_pointer": "/events/4/date"
+          },
+          "binding_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/return_binding_source_utf8"
+            ],
+            "final_pointer": "/preopening_slots/1"
+          },
+          "declared_target_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/investor_source_utf8"
+            ],
+            "final_pointer": "/events/1"
+          },
+          "compiled_event_ref": {
+            "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+            "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+            "embedded_json_pointers": [
+              "/current_compiled_investor_json"
+            ],
+            "final_pointer": "/events/1"
+          },
+          "result_event_ref": {
+            "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+            "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/events/1"
+          },
+          "event_source_ref_string": "miniuw:staged-lifecycle:ff52b6a2c7fe114fc99f058fe71fd73d8a2302a2505dcfb5689cd547c4be0344#/exportable_equity_movements/1",
+          "source_reference_evidence_level": "embedded_saved_preopening_run_bytes_hash_and_exported_event_verified_not_bank_authentication",
+          "normalized_amount": {
+            "numerator": "20",
+            "denominator": "7"
+          },
+          "normalized_event_ref": {
+            "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+            "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/normalized_story/events/1"
+          }
+        },
+        {
+          "snapshot_id": "L02",
+          "event_index": 2,
+          "event_id": "operating_slots-0",
+          "source_event_id": "SYNTHETIC-hold-1:distribution",
+          "date": "2027-03-01",
+          "kind": "distribution",
+          "category": "operating_distribution",
+          "currency": "USD",
+          "amount": {
+            "numerator": "100",
+            "denominator": "1"
+          },
+          "explicit_zero": false,
+          "derivation": "direct_declared_operating_gross_movement",
+          "amount_source_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/0/cash_source_utf8"
+            ],
+            "final_pointer": "/amounts/planned_operating_distribution"
+          },
+          "sale_expression_ref": null,
+          "sale_expression_selected_input_ref": null,
+          "date_source_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/0/cash_source_utf8"
+            ],
+            "final_pointer": "/cash_date"
+          },
+          "binding_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/return_binding_source_utf8"
+            ],
+            "final_pointer": "/operating_slots/0"
+          },
+          "declared_target_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/investor_source_utf8"
+            ],
+            "final_pointer": "/events/2"
+          },
+          "compiled_event_ref": {
+            "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+            "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+            "embedded_json_pointers": [
+              "/current_compiled_investor_json"
+            ],
+            "final_pointer": "/events/2"
+          },
+          "result_event_ref": {
+            "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+            "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/events/2"
+          },
+          "event_source_ref_string": "miniuw:staged-lifecycle:a37b4ad01683d1b8ba6d48b426d1b30492081113bfc0f4df3d47c702fc5f7f64#/exportable_equity_movements/0/distribution",
+          "source_reference_evidence_level": "declared_hold_sale_run_hash_and_pointer_match_window_not_independent_replay_of_run_hash",
+          "normalized_amount": {
+            "numerator": "5",
+            "denominator": "7"
+          },
+          "normalized_event_ref": {
+            "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+            "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/normalized_story/events/2"
+          }
+        },
+        {
+          "snapshot_id": "L02",
+          "event_index": 3,
+          "event_id": "operating_slots-1",
+          "source_event_id": "SYNTHETIC-hold-1:contribution",
+          "date": "2027-03-01",
+          "kind": "contribution",
+          "category": "additional_capital",
+          "currency": "USD",
+          "amount": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "explicit_zero": true,
+          "derivation": "direct_declared_operating_gross_movement",
+          "amount_source_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/0/cash_source_utf8"
+            ],
+            "final_pointer": "/amounts/equity_contribution"
+          },
+          "sale_expression_ref": null,
+          "sale_expression_selected_input_ref": null,
+          "date_source_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/0/cash_source_utf8"
+            ],
+            "final_pointer": "/cash_date"
+          },
+          "binding_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/return_binding_source_utf8"
+            ],
+            "final_pointer": "/operating_slots/1"
+          },
+          "declared_target_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/investor_source_utf8"
+            ],
+            "final_pointer": "/events/3"
+          },
+          "compiled_event_ref": {
+            "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+            "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+            "embedded_json_pointers": [
+              "/current_compiled_investor_json"
+            ],
+            "final_pointer": "/events/3"
+          },
+          "result_event_ref": {
+            "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+            "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/events/3"
+          },
+          "event_source_ref_string": "miniuw:staged-lifecycle:a37b4ad01683d1b8ba6d48b426d1b30492081113bfc0f4df3d47c702fc5f7f64#/exportable_equity_movements/0/contribution",
+          "source_reference_evidence_level": "declared_hold_sale_run_hash_and_pointer_match_window_not_independent_replay_of_run_hash",
+          "normalized_amount": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "normalized_event_ref": {
+            "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+            "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/normalized_story/events/3"
+          }
+        },
+        {
+          "snapshot_id": "L02",
+          "event_index": 4,
+          "event_id": "operating_slots-2",
+          "source_event_id": "SYNTHETIC-hold-2:distribution",
+          "date": "2027-06-01",
+          "kind": "distribution",
+          "category": "operating_distribution",
+          "currency": "USD",
+          "amount": {
+            "numerator": "100",
+            "denominator": "1"
+          },
+          "explicit_zero": false,
+          "derivation": "direct_declared_operating_gross_movement",
+          "amount_source_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/1/cash_source_utf8"
+            ],
+            "final_pointer": "/amounts/planned_operating_distribution"
+          },
+          "sale_expression_ref": null,
+          "sale_expression_selected_input_ref": null,
+          "date_source_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/1/cash_source_utf8"
+            ],
+            "final_pointer": "/cash_date"
+          },
+          "binding_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/return_binding_source_utf8"
+            ],
+            "final_pointer": "/operating_slots/2"
+          },
+          "declared_target_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/investor_source_utf8"
+            ],
+            "final_pointer": "/events/4"
+          },
+          "compiled_event_ref": {
+            "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+            "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+            "embedded_json_pointers": [
+              "/current_compiled_investor_json"
+            ],
+            "final_pointer": "/events/4"
+          },
+          "result_event_ref": {
+            "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+            "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/events/4"
+          },
+          "event_source_ref_string": "miniuw:staged-lifecycle:a37b4ad01683d1b8ba6d48b426d1b30492081113bfc0f4df3d47c702fc5f7f64#/exportable_equity_movements/1/distribution",
+          "source_reference_evidence_level": "declared_hold_sale_run_hash_and_pointer_match_window_not_independent_replay_of_run_hash",
+          "normalized_amount": {
+            "numerator": "5",
+            "denominator": "7"
+          },
+          "normalized_event_ref": {
+            "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+            "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/normalized_story/events/4"
+          }
+        },
+        {
+          "snapshot_id": "L02",
+          "event_index": 5,
+          "event_id": "operating_slots-3",
+          "source_event_id": "SYNTHETIC-hold-2:contribution",
+          "date": "2027-06-01",
+          "kind": "contribution",
+          "category": "additional_capital",
+          "currency": "USD",
+          "amount": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "explicit_zero": true,
+          "derivation": "direct_declared_operating_gross_movement",
+          "amount_source_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/1/cash_source_utf8"
+            ],
+            "final_pointer": "/amounts/equity_contribution"
+          },
+          "sale_expression_ref": null,
+          "sale_expression_selected_input_ref": null,
+          "date_source_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/1/cash_source_utf8"
+            ],
+            "final_pointer": "/cash_date"
+          },
+          "binding_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/return_binding_source_utf8"
+            ],
+            "final_pointer": "/operating_slots/3"
+          },
+          "declared_target_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/investor_source_utf8"
+            ],
+            "final_pointer": "/events/5"
+          },
+          "compiled_event_ref": {
+            "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+            "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+            "embedded_json_pointers": [
+              "/current_compiled_investor_json"
+            ],
+            "final_pointer": "/events/5"
+          },
+          "result_event_ref": {
+            "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+            "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/events/5"
+          },
+          "event_source_ref_string": "miniuw:staged-lifecycle:a37b4ad01683d1b8ba6d48b426d1b30492081113bfc0f4df3d47c702fc5f7f64#/exportable_equity_movements/1/contribution",
+          "source_reference_evidence_level": "declared_hold_sale_run_hash_and_pointer_match_window_not_independent_replay_of_run_hash",
+          "normalized_amount": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "normalized_event_ref": {
+            "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+            "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/normalized_story/events/5"
+          }
+        },
+        {
+          "snapshot_id": "L02",
+          "event_index": 6,
+          "event_id": "operating_slots-4",
+          "source_event_id": "SYNTHETIC-staged-sale:distribution",
+          "date": "2027-07-01",
+          "kind": "distribution",
+          "category": "net_sale_distribution",
+          "currency": "USD",
+          "amount": {
+            "numerator": "576",
+            "denominator": "1"
+          },
+          "explicit_zero": false,
+          "derivation": "positive_explicit_sale_residual",
+          "amount_source_ref": null,
+          "sale_expression_ref": {
+            "path": "docs/current-structure/MiniUW_Conciliacion_Sintetica_D13.json",
+            "sha256": "0f23a7388dcb045cedda6b33a11e7ba119a4ace300ad1f2f5127e9e992c60837",
+            "embedded_json_pointers": [],
+            "final_pointer": "/checks/15/left_expression"
+          },
+          "sale_expression_selected_input_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [],
+            "final_pointer": ""
+          },
+          "date_source_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/sale/closing_source_utf8"
+            ],
+            "final_pointer": "/closing_date"
+          },
+          "binding_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/return_binding_source_utf8"
+            ],
+            "final_pointer": "/operating_slots/4"
+          },
+          "declared_target_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/investor_source_utf8"
+            ],
+            "final_pointer": "/events/6"
+          },
+          "compiled_event_ref": {
+            "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+            "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+            "embedded_json_pointers": [
+              "/current_compiled_investor_json"
+            ],
+            "final_pointer": "/events/6"
+          },
+          "result_event_ref": {
+            "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+            "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/events/6"
+          },
+          "event_source_ref_string": "miniuw:staged-lifecycle:a37b4ad01683d1b8ba6d48b426d1b30492081113bfc0f4df3d47c702fc5f7f64#/exportable_equity_movements/2/distribution",
+          "source_reference_evidence_level": "declared_hold_sale_run_hash_and_pointer_match_window_not_independent_replay_of_run_hash",
+          "normalized_amount": {
+            "numerator": "144",
+            "denominator": "35"
+          },
+          "normalized_event_ref": {
+            "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+            "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/normalized_story/events/6"
+          }
+        },
+        {
+          "snapshot_id": "L02",
+          "event_index": 7,
+          "event_id": "operating_slots-5",
+          "source_event_id": "SYNTHETIC-staged-sale:contribution",
+          "date": "2027-07-01",
+          "kind": "contribution",
+          "category": "additional_capital",
+          "currency": "USD",
+          "amount": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "explicit_zero": true,
+          "derivation": "zero_contribution_from_positive_sale_residual_within_supplied_profile",
+          "amount_source_ref": null,
+          "sale_expression_ref": {
+            "path": "docs/current-structure/MiniUW_Conciliacion_Sintetica_D13.json",
+            "sha256": "0f23a7388dcb045cedda6b33a11e7ba119a4ace300ad1f2f5127e9e992c60837",
+            "embedded_json_pointers": [],
+            "final_pointer": "/checks/15/left_expression"
+          },
+          "sale_expression_selected_input_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [],
+            "final_pointer": ""
+          },
+          "date_source_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/sale/closing_source_utf8"
+            ],
+            "final_pointer": "/closing_date"
+          },
+          "binding_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/return_binding_source_utf8"
+            ],
+            "final_pointer": "/operating_slots/5"
+          },
+          "declared_target_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/investor_source_utf8"
+            ],
+            "final_pointer": "/events/7"
+          },
+          "compiled_event_ref": {
+            "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+            "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+            "embedded_json_pointers": [
+              "/current_compiled_investor_json"
+            ],
+            "final_pointer": "/events/7"
+          },
+          "result_event_ref": {
+            "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+            "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/events/7"
+          },
+          "event_source_ref_string": "miniuw:staged-lifecycle:a37b4ad01683d1b8ba6d48b426d1b30492081113bfc0f4df3d47c702fc5f7f64#/exportable_equity_movements/2/contribution",
+          "source_reference_evidence_level": "declared_hold_sale_run_hash_and_pointer_match_window_not_independent_replay_of_run_hash",
+          "normalized_amount": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "normalized_event_ref": {
+            "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+            "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/normalized_story/events/7"
+          }
+        }
+      ],
+      "date_rows": [
+        {
+          "snapshot_id": "L02",
+          "date": "2026-10-01",
+          "event_ids": [
+            "preopening_slots-0"
+          ],
+          "gross_contributions": {
+            "numerator": "1000",
+            "denominator": "1"
+          },
+          "gross_distributions": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "net_cash": {
+            "numerator": "-1000",
+            "denominator": "1"
+          },
+          "event_count": 1,
+          "no_equity_event_on_declared_grid_date": false,
+          "grid_date_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/investor_source_utf8"
+            ],
+            "final_pointer": "/grid/dates/0"
+          },
+          "net_result_ref": {
+            "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+            "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/dated_net_flows/0"
+          }
+        },
+        {
+          "snapshot_id": "L02",
+          "date": "2026-11-01",
+          "event_ids": [
+            "preopening_slots-1"
+          ],
+          "gross_contributions": {
+            "numerator": "400",
+            "denominator": "1"
+          },
+          "gross_distributions": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "net_cash": {
+            "numerator": "-400",
+            "denominator": "1"
+          },
+          "event_count": 1,
+          "no_equity_event_on_declared_grid_date": false,
+          "grid_date_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/investor_source_utf8"
+            ],
+            "final_pointer": "/grid/dates/1"
+          },
+          "net_result_ref": {
+            "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+            "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/dated_net_flows/1"
+          }
+        },
+        {
+          "snapshot_id": "L02",
+          "date": "2026-12-01",
+          "event_ids": [],
+          "gross_contributions": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "gross_distributions": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "net_cash": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "event_count": 0,
+          "no_equity_event_on_declared_grid_date": true,
+          "grid_date_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/investor_source_utf8"
+            ],
+            "final_pointer": "/grid/dates/2"
+          },
+          "net_result_ref": {
+            "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+            "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/dated_net_flows/2"
+          }
+        },
+        {
+          "snapshot_id": "L02",
+          "date": "2027-01-01",
+          "event_ids": [],
+          "gross_contributions": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "gross_distributions": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "net_cash": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "event_count": 0,
+          "no_equity_event_on_declared_grid_date": true,
+          "grid_date_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/investor_source_utf8"
+            ],
+            "final_pointer": "/grid/dates/3"
+          },
+          "net_result_ref": {
+            "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+            "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/dated_net_flows/3"
+          }
+        },
+        {
+          "snapshot_id": "L02",
+          "date": "2027-02-01",
+          "event_ids": [],
+          "gross_contributions": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "gross_distributions": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "net_cash": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "event_count": 0,
+          "no_equity_event_on_declared_grid_date": true,
+          "grid_date_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/investor_source_utf8"
+            ],
+            "final_pointer": "/grid/dates/4"
+          },
+          "net_result_ref": {
+            "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+            "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/dated_net_flows/4"
+          }
+        },
+        {
+          "snapshot_id": "L02",
+          "date": "2027-03-01",
+          "event_ids": [
+            "operating_slots-0",
+            "operating_slots-1"
+          ],
+          "gross_contributions": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "gross_distributions": {
+            "numerator": "100",
+            "denominator": "1"
+          },
+          "net_cash": {
+            "numerator": "100",
+            "denominator": "1"
+          },
+          "event_count": 2,
+          "no_equity_event_on_declared_grid_date": false,
+          "grid_date_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/investor_source_utf8"
+            ],
+            "final_pointer": "/grid/dates/5"
+          },
+          "net_result_ref": {
+            "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+            "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/dated_net_flows/5"
+          }
+        },
+        {
+          "snapshot_id": "L02",
+          "date": "2027-04-01",
+          "event_ids": [],
+          "gross_contributions": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "gross_distributions": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "net_cash": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "event_count": 0,
+          "no_equity_event_on_declared_grid_date": true,
+          "grid_date_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/investor_source_utf8"
+            ],
+            "final_pointer": "/grid/dates/6"
+          },
+          "net_result_ref": {
+            "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+            "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/dated_net_flows/6"
+          }
+        },
+        {
+          "snapshot_id": "L02",
+          "date": "2027-05-01",
+          "event_ids": [],
+          "gross_contributions": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "gross_distributions": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "net_cash": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "event_count": 0,
+          "no_equity_event_on_declared_grid_date": true,
+          "grid_date_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/investor_source_utf8"
+            ],
+            "final_pointer": "/grid/dates/7"
+          },
+          "net_result_ref": {
+            "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+            "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/dated_net_flows/7"
+          }
+        },
+        {
+          "snapshot_id": "L02",
+          "date": "2027-06-01",
+          "event_ids": [
+            "operating_slots-2",
+            "operating_slots-3"
+          ],
+          "gross_contributions": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "gross_distributions": {
+            "numerator": "100",
+            "denominator": "1"
+          },
+          "net_cash": {
+            "numerator": "100",
+            "denominator": "1"
+          },
+          "event_count": 2,
+          "no_equity_event_on_declared_grid_date": false,
+          "grid_date_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/investor_source_utf8"
+            ],
+            "final_pointer": "/grid/dates/8"
+          },
+          "net_result_ref": {
+            "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+            "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/dated_net_flows/8"
+          }
+        },
+        {
+          "snapshot_id": "L02",
+          "date": "2027-07-01",
+          "event_ids": [
+            "operating_slots-4",
+            "operating_slots-5"
+          ],
+          "gross_contributions": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "gross_distributions": {
+            "numerator": "576",
+            "denominator": "1"
+          },
+          "net_cash": {
+            "numerator": "576",
+            "denominator": "1"
+          },
+          "event_count": 2,
+          "no_equity_event_on_declared_grid_date": false,
+          "grid_date_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/investor_source_utf8"
+            ],
+            "final_pointer": "/grid/dates/9"
+          },
+          "net_result_ref": {
+            "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+            "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/dated_net_flows/9"
+          }
+        }
+      ],
+      "aggregate_rows": [
+        {
+          "snapshot_id": "L02",
+          "group_kind": "category",
+          "group_key": "additional_capital",
+          "event_ids": [
+            "preopening_slots-1",
+            "operating_slots-1",
+            "operating_slots-3",
+            "operating_slots-5"
+          ],
+          "calculated": {
+            "amount": {
+              "numerator": "400",
+              "denominator": "1"
+            }
+          },
+          "reported_ref": {
+            "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+            "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/cash_by_category/additional_capital"
+          },
+          "scope": "declared_complete_supplied_no_refinance_event_inventory_only"
+        },
+        {
+          "snapshot_id": "L02",
+          "group_kind": "category",
+          "group_key": "initial_capital",
+          "event_ids": [
+            "preopening_slots-0"
+          ],
+          "calculated": {
+            "amount": {
+              "numerator": "1000",
+              "denominator": "1"
+            }
+          },
+          "reported_ref": {
+            "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+            "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/cash_by_category/initial_capital"
+          },
+          "scope": "declared_complete_supplied_no_refinance_event_inventory_only"
+        },
+        {
+          "snapshot_id": "L02",
+          "group_kind": "category",
+          "group_key": "net_refinance_distribution",
+          "event_ids": [],
+          "calculated": {
+            "amount": {
+              "numerator": "0",
+              "denominator": "1"
+            }
+          },
+          "reported_ref": {
+            "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+            "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/cash_by_category/net_refinance_distribution"
+          },
+          "scope": "declared_complete_supplied_no_refinance_event_inventory_only"
+        },
+        {
+          "snapshot_id": "L02",
+          "group_kind": "category",
+          "group_key": "net_sale_distribution",
+          "event_ids": [
+            "operating_slots-4"
+          ],
+          "calculated": {
+            "amount": {
+              "numerator": "576",
+              "denominator": "1"
+            }
+          },
+          "reported_ref": {
+            "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+            "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/cash_by_category/net_sale_distribution"
+          },
+          "scope": "declared_complete_supplied_no_refinance_event_inventory_only"
+        },
+        {
+          "snapshot_id": "L02",
+          "group_kind": "category",
+          "group_key": "operating_distribution",
+          "event_ids": [
+            "operating_slots-0",
+            "operating_slots-2"
+          ],
+          "calculated": {
+            "amount": {
+              "numerator": "200",
+              "denominator": "1"
+            }
+          },
+          "reported_ref": {
+            "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+            "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/cash_by_category/operating_distribution"
+          },
+          "scope": "declared_complete_supplied_no_refinance_event_inventory_only"
+        },
+        {
+          "snapshot_id": "L02",
+          "group_kind": "category",
+          "group_key": "other_distribution",
+          "event_ids": [],
+          "calculated": {
+            "amount": {
+              "numerator": "0",
+              "denominator": "1"
+            }
+          },
+          "reported_ref": {
+            "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+            "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/cash_by_category/other_distribution"
+          },
+          "scope": "declared_complete_supplied_no_refinance_event_inventory_only"
+        },
+        {
+          "snapshot_id": "L02",
+          "group_kind": "category",
+          "group_key": "refinance_cash_in",
+          "event_ids": [],
+          "calculated": {
+            "amount": {
+              "numerator": "0",
+              "denominator": "1"
+            }
+          },
+          "reported_ref": {
+            "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+            "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/cash_by_category/refinance_cash_in"
+          },
+          "scope": "declared_complete_supplied_no_refinance_event_inventory_only"
+        },
+        {
+          "snapshot_id": "L02",
+          "group_kind": "calendar_year",
+          "group_key": "2026",
+          "event_ids": [
+            "preopening_slots-0",
+            "preopening_slots-1"
+          ],
+          "calculated": {
+            "gross_contributions": {
+              "numerator": "1400",
+              "denominator": "1"
+            },
+            "gross_distributions": {
+              "numerator": "0",
+              "denominator": "1"
+            },
+            "net_equity_cash": {
+              "numerator": "-1400",
+              "denominator": "1"
+            },
+            "operating_distributions_only": {
+              "numerator": "0",
+              "denominator": "1"
+            },
+            "normalized_operating_distributions": {
+              "numerator": "0",
+              "denominator": "1"
+            }
+          },
+          "reported_ref": {
+            "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+            "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/annual_cash_receipts/0"
+          },
+          "scope": "calendar_year_of_declared_cash_date_not_annualized_operating_return"
+        },
+        {
+          "snapshot_id": "L02",
+          "group_kind": "calendar_year",
+          "group_key": "2027",
+          "event_ids": [
+            "operating_slots-0",
+            "operating_slots-1",
+            "operating_slots-2",
+            "operating_slots-3",
+            "operating_slots-4",
+            "operating_slots-5"
+          ],
+          "calculated": {
+            "gross_contributions": {
+              "numerator": "0",
+              "denominator": "1"
+            },
+            "gross_distributions": {
+              "numerator": "776",
+              "denominator": "1"
+            },
+            "net_equity_cash": {
+              "numerator": "776",
+              "denominator": "1"
+            },
+            "operating_distributions_only": {
+              "numerator": "200",
+              "denominator": "1"
+            },
+            "normalized_operating_distributions": {
+              "numerator": "10",
+              "denominator": "7"
+            }
+          },
+          "reported_ref": {
+            "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+            "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/annual_cash_receipts/1"
+          },
+          "scope": "calendar_year_of_declared_cash_date_not_annualized_operating_return"
+        },
+        {
+          "snapshot_id": "L02",
+          "group_kind": "whole_horizon",
+          "group_key": "gross_contributions",
+          "event_ids": [
+            "preopening_slots-0",
+            "preopening_slots-1",
+            "operating_slots-0",
+            "operating_slots-1",
+            "operating_slots-2",
+            "operating_slots-3",
+            "operating_slots-4",
+            "operating_slots-5"
+          ],
+          "calculated": {
+            "amount": {
+              "numerator": "1400",
+              "denominator": "1"
+            }
+          },
+          "reported_ref": {
+            "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+            "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/gross_contributions"
+          },
+          "scope": "project_gross_equity_cash_USD"
+        },
+        {
+          "snapshot_id": "L02",
+          "group_kind": "whole_horizon",
+          "group_key": "gross_distributions",
+          "event_ids": [
+            "preopening_slots-0",
+            "preopening_slots-1",
+            "operating_slots-0",
+            "operating_slots-1",
+            "operating_slots-2",
+            "operating_slots-3",
+            "operating_slots-4",
+            "operating_slots-5"
+          ],
+          "calculated": {
+            "amount": {
+              "numerator": "776",
+              "denominator": "1"
+            }
+          },
+          "reported_ref": {
+            "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+            "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/gross_distributions"
+          },
+          "scope": "project_gross_equity_cash_USD"
+        },
+        {
+          "snapshot_id": "L02",
+          "group_kind": "whole_horizon",
+          "group_key": "net_cash_profit",
+          "event_ids": [
+            "preopening_slots-0",
+            "preopening_slots-1",
+            "operating_slots-0",
+            "operating_slots-1",
+            "operating_slots-2",
+            "operating_slots-3",
+            "operating_slots-4",
+            "operating_slots-5"
+          ],
+          "calculated": {
+            "amount": {
+              "numerator": "-624",
+              "denominator": "1"
+            }
+          },
+          "reported_ref": {
+            "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+            "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/net_cash_profit"
+          },
+          "scope": "project_gross_equity_cash_USD"
+        },
+        {
+          "snapshot_id": "L02",
+          "group_kind": "whole_horizon",
+          "group_key": "equity_multiple",
+          "event_ids": [
+            "preopening_slots-0",
+            "preopening_slots-1",
+            "operating_slots-0",
+            "operating_slots-1",
+            "operating_slots-2",
+            "operating_slots-3",
+            "operating_slots-4",
+            "operating_slots-5"
+          ],
+          "calculated": {
+            "amount": {
+              "numerator": "97",
+              "denominator": "175"
+            }
+          },
+          "reported_ref": {
+            "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+            "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_project_return_story/equity_multiple"
+          },
+          "scope": "project_gross_equity_cash_multiple_unit"
+        }
+      ],
+      "normalization": {
+        "basis_event_ids": [
+          "preopening_slots-0",
+          "preopening_slots-1",
+          "operating_slots-1",
+          "operating_slots-3",
+          "operating_slots-5"
+        ],
+        "basis_amount": {
+          "numerator": "1400",
+          "denominator": "1"
+        },
+        "reference_amount": {
+          "numerator": "10",
+          "denominator": "1"
+        },
+        "scale_factor": {
+          "numerator": "1",
+          "denominator": "140"
+        },
+        "personal_allocation": false
+      },
+      "source_reference_hashes_fully_replayed": false,
+      "financial_decision": "PENDING",
+      "capital_stock_and_equity_pending": true,
+      "annual_CoC_pending": true,
+      "personal_return_pending": true
+    }
+  ],
+  "review_counterexamples": [
+    {
+      "case_id": "F01",
+      "label": "Mover un cobro a otra fecha del mismo año",
+      "review_view_operations": [
+        {
+          "op": "replace",
+          "path": "/events/2/date",
+          "value": "2027-04-01"
+        }
+      ],
+      "review_view_sha256": "c30f73c8423b0b52b63c7c2a20cc33d32f2c3e11c131018c504965c0962442d6",
+      "detected_by": [
+        "event_date"
+      ],
+      "whole_horizon_net_unchanged": true,
+      "gross_contributions": {
+        "numerator": "1400",
+        "denominator": "1"
+      },
+      "gross_distributions": {
+        "numerator": "778",
+        "denominator": "1"
+      },
+      "net_cash": {
+        "numerator": "-622",
+        "denominator": "1"
+      },
+      "source_or_result_file_modified": false,
+      "runtime_rejection_tested": false
+    },
+    {
+      "case_id": "F02",
+      "label": "Duplicar un aporte explícito cero",
+      "review_view_operations": [
+        {
+          "op": "add",
+          "path": "/events/8",
+          "value": {
+            "amount": {
+              "denominator": "1",
+              "numerator": "0"
+            },
+            "category": "additional_capital",
+            "currency": "USD",
+            "date": "2027-03-01",
+            "event_id": "operating_slots-1",
+            "kind": "contribution",
+            "source_ref": "miniuw:staged-lifecycle:901c62dfcbd51398b56f5fa3969923e7712f446e02fd16f6c05b8d31ac6564e8#/exportable_equity_movements/0/contribution"
+          }
+        }
+      ],
+      "review_view_sha256": "82f7b94bee65751e9712d33de56642172d7cf2d52531b96e243ae73140e7835e",
+      "detected_by": [
+        "event_inventory"
+      ],
+      "whole_horizon_net_unchanged": true,
+      "gross_contributions": {
+        "numerator": "1400",
+        "denominator": "1"
+      },
+      "gross_distributions": {
+        "numerator": "778",
+        "denominator": "1"
+      },
+      "net_cash": {
+        "numerator": "-622",
+        "denominator": "1"
+      },
+      "source_or_result_file_modified": false,
+      "runtime_rejection_tested": false
+    },
+    {
+      "case_id": "F03",
+      "label": "Omitir un aporte explícito cero",
+      "review_view_operations": [
+        {
+          "op": "remove",
+          "path": "/events/3"
+        }
+      ],
+      "review_view_sha256": "16cf9732ee86270825fe4aae1af8110c39af72c0602f48993087052bf1ea826a",
+      "detected_by": [
+        "event_inventory"
+      ],
+      "whole_horizon_net_unchanged": true,
+      "gross_contributions": {
+        "numerator": "1400",
+        "denominator": "1"
+      },
+      "gross_distributions": {
+        "numerator": "778",
+        "denominator": "1"
+      },
+      "net_cash": {
+        "numerator": "-622",
+        "denominator": "1"
+      },
+      "source_or_result_file_modified": false,
+      "runtime_rejection_tested": false
+    },
+    {
+      "case_id": "F04",
+      "label": "Compensar aporte y cobro brutos en la misma fecha",
+      "review_view_operations": [
+        {
+          "op": "replace",
+          "path": "/events/2/amount",
+          "value": {
+            "numerator": "110",
+            "denominator": "1"
+          }
+        },
+        {
+          "op": "replace",
+          "path": "/events/3/amount",
+          "value": {
+            "numerator": "10",
+            "denominator": "1"
+          }
+        }
+      ],
+      "review_view_sha256": "c9050ea0990dfe262f59acaaa7291179185696104ff5d10e836029f36f7cb636",
+      "detected_by": [
+        "gross_amount"
+      ],
+      "whole_horizon_net_unchanged": true,
+      "gross_contributions": {
+        "numerator": "1410",
+        "denominator": "1"
+      },
+      "gross_distributions": {
+        "numerator": "788",
+        "denominator": "1"
+      },
+      "net_cash": {
+        "numerator": "-622",
+        "denominator": "1"
+      },
+      "source_or_result_file_modified": false,
+      "runtime_rejection_tested": false
+    },
+    {
+      "case_id": "F05",
+      "label": "Reclasificar distribución operativa como otro cobro",
+      "review_view_operations": [
+        {
+          "op": "replace",
+          "path": "/events/2/category",
+          "value": "other_distribution"
+        }
+      ],
+      "review_view_sha256": "6854c8a39426bc670efdfee8da3d81efeea4c65b0442b9a491385226e29dd9a2",
+      "detected_by": [
+        "category"
+      ],
+      "whole_horizon_net_unchanged": true,
+      "gross_contributions": {
+        "numerator": "1400",
+        "denominator": "1"
+      },
+      "gross_distributions": {
+        "numerator": "778",
+        "denominator": "1"
+      },
+      "net_cash": {
+        "numerator": "-622",
+        "denominator": "1"
+      },
+      "source_or_result_file_modified": false,
+      "runtime_rejection_tested": false
+    },
+    {
+      "case_id": "F06",
+      "label": "Compensar importes entre dos fechas del mismo año",
+      "review_view_operations": [
+        {
+          "op": "replace",
+          "path": "/events/2/amount",
+          "value": {
+            "numerator": "99",
+            "denominator": "1"
+          }
+        },
+        {
+          "op": "replace",
+          "path": "/events/4/amount",
+          "value": {
+            "numerator": "101",
+            "denominator": "1"
+          }
+        }
+      ],
+      "review_view_sha256": "660aa84ae1e019d87a31857996d81348cd22a1720468ae776582d3bfd4698ab8",
+      "detected_by": [
+        "gross_amount"
+      ],
+      "whole_horizon_net_unchanged": true,
+      "gross_contributions": {
+        "numerator": "1400",
+        "denominator": "1"
+      },
+      "gross_distributions": {
+        "numerator": "778",
+        "denominator": "1"
+      },
+      "net_cash": {
+        "numerator": "-622",
+        "denominator": "1"
+      },
+      "source_or_result_file_modified": false,
+      "runtime_rejection_tested": false
+    },
+    {
+      "case_id": "F07",
+      "label": "Suprimir una fecha sin movimientos de equity",
+      "review_view_operations": [
+        {
+          "op": "remove",
+          "path": "/grid/2"
+        }
+      ],
+      "review_view_sha256": "ed9a21620cdac352c859ce382a8eef4bc8420d3fa2785b7053b7104133826ea6",
+      "detected_by": [
+        "grid_inventory"
+      ],
+      "whole_horizon_net_unchanged": true,
+      "gross_contributions": {
+        "numerator": "1400",
+        "denominator": "1"
+      },
+      "gross_distributions": {
+        "numerator": "778",
+        "denominator": "1"
+      },
+      "net_cash": {
+        "numerator": "-622",
+        "denominator": "1"
+      },
+      "source_or_result_file_modified": false,
+      "runtime_rejection_tested": false
+    },
+    {
+      "case_id": "F08",
+      "label": "Cambiar sólo la referencia del productor",
+      "review_view_operations": [
+        {
+          "op": "replace",
+          "path": "/events/2/source_ref",
+          "value": "SYNTHETIC-unmatched-source-reference"
+        }
+      ],
+      "review_view_sha256": "0e007115e1ca032085aa73c9161858307ddeb7c4f2a7a40155d7259b575548b3",
+      "detected_by": [
+        "source_reference"
+      ],
+      "whole_horizon_net_unchanged": true,
+      "gross_contributions": {
+        "numerator": "1400",
+        "denominator": "1"
+      },
+      "gross_distributions": {
+        "numerator": "778",
+        "denominator": "1"
+      },
+      "net_cash": {
+        "numerator": "-622",
+        "denominator": "1"
+      },
+      "source_or_result_file_modified": false,
+      "runtime_rejection_tested": false
+    }
+  ],
+  "source_inputs_modified": false,
+  "old_results_modified": false,
+  "model_producers_imported_or_called": false,
+  "IRR_recalculated": false,
+  "new_runtime_components": 0,
+  "new_tests": 0,
+  "technical_tests_unchanged": 1619,
+  "published_model_input_values_added": 0,
+  "financial_bindings_activated": 0,
+  "financial_acceptance_checks_executed": 0,
+  "original_semantic_mappings_pending": 54,
+  "financial_model_complete": false,
+  "professional_review_authenticated": false,
+  "personal_return_verified": false,
+  "real_decisions_enabled": false,
+  "deployment_enabled": false,
+  "PDF_generated": false
+}

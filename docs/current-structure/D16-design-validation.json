@@ -1,0 +1,69 @@
+{
+  "snapshot_id": "D16",
+  "status": "passed_read_only_gross_event_lineage_calendar_aggregation_and_normalization_audit",
+  "previous_design_commit": "99b5676f4831bbc5ef2baac3aaa87c34d3eb67ce",
+  "technical_baseline": "T111",
+  "technical_baseline_commit": "9aeb590151068ccd51f4eca0e92f7c766464ba94",
+  "prior_files_preserved": 1222,
+  "actual_changed_prior_files": [
+    "BACKUP_MANIFEST.json",
+    "README.md",
+    "WORK_LOG.md"
+  ],
+  "coherent_saved_snapshots": 2,
+  "event_lineage_rows_verified": 16,
+  "explicit_zero_events_preserved": 6,
+  "declared_calendar_dates_verified": 20,
+  "dates_without_equity_events_preserved": 10,
+  "aggregate_rows_verified": 26,
+  "normalized_events_verified": 16,
+  "review_counterexamples_replayed": 8,
+  "counterexamples_with_unchanged_whole_horizon_net": 8,
+  "counterexamples_detected_by_scoped_review": 8,
+  "preopening_run_byte_hashes_verified": 2,
+  "operating_sale_run_hashes_independently_replayed": false,
+  "source_reference_locations_verified": 173,
+  "new_runtime_components": 0,
+  "new_tests": 0,
+  "technical_tests_unchanged": 1619,
+  "financial_bindings_activated": 0,
+  "financial_acceptance_checks_executed": 0,
+  "published_model_input_values_added": 0,
+  "model_producers_imported_or_called": false,
+  "IRR_recalculated": false,
+  "source_inputs_modified": false,
+  "old_results_modified": false,
+  "source_versions": [
+    {
+      "path": "docs/current-structure/MiniUW_Calendario_y_Retorno_D16.json",
+      "bytes": 129001,
+      "sha256": "aeb70879a3bdee5710f269047dcf4c3490edeb6958595a561797cdf268900f81"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Calendario_y_Retorno_D16.md",
+      "bytes": 7889,
+      "sha256": "135ff8b9d2a56dbb53761403a06ddb1bce89e68101ffd5e1a81b141eb512f47e"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Movimientos_16_D16.csv",
+      "bytes": 35744,
+      "sha256": "fd476e36c71f1002210dbb112f992ab24b8e39ba6b1ad66050d8a1e5a478c7ed"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Fechas_20_D16.csv",
+      "bytes": 16126,
+      "sha256": "e8d1b075c1241b5b9b38cce7a9cf9148d77965709b9db2aa2f86900c6566aea5"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Agregados_26_D16.csv",
+      "bytes": 15058,
+      "sha256": "b8409b907d4a48c2ad750f129096bf99219b0f5612ee903f82e390c28e121f4a"
+    }
+  ],
+  "financial_model_complete": false,
+  "personal_return_verified": false,
+  "professional_review_authenticated": false,
+  "real_decisions_enabled": false,
+  "deployment_enabled": false,
+  "PDF_generated": false
+}
