@@ -1,0 +1,4074 @@
+{
+  "snapshot_id": "D19",
+  "scope": "Read-only accrual NOI/per-item payments/working balances/proposed distributions audit of two existing T111 snapshots; no payout policy, annualization or personal capital classification",
+  "previous_design_commit": "e340d28f64fca21d0acab7f064a0a3217d6a033d",
+  "technical_baseline": "T111",
+  "technical_baseline_commit": "9aeb590151068ccd51f4eca0e92f7c766464ba94",
+  "snapshots": [
+    {
+      "snapshot_id": "O01",
+      "input_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [],
+        "final_pointer": ""
+      },
+      "result_ref": {
+        "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+        "embedded_json_pointers": [],
+        "final_pointer": ""
+      },
+      "context": {
+        "deal_id": "SYNTHETIC-construction-draw-demo",
+        "definition_set_revision": "SYNTHETIC-simple-interval-factors",
+        "run_id": "SYNTHETIC-construction-draw-run",
+        "scenario_id": "SYNTHETIC-draw-plan"
+      },
+      "evaluated_as_of_UTC": "2027-07-01T12:00:00Z",
+      "expense_rows": [
+        {
+          "snapshot_id": "O01",
+          "period_index": 0,
+          "period_ref": "SYNTHETIC-hold-1",
+          "start_date": "2027-01-01",
+          "end_date": "2027-04-01",
+          "detail_item_id": "SYNTHETIC-insurance",
+          "noi_item_id": "SYNTHETIC-insurance",
+          "kind": "insurance",
+          "noi_pointer": "/expense_rows/0",
+          "currency": "USD",
+          "expense_amount": {
+            "denominator": "1",
+            "numerator": "10"
+          },
+          "opening_payables": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "closing_payables": {
+            "denominator": "1",
+            "numerator": "5"
+          },
+          "opening_prepaid": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "closing_prepaid": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "expected_payments": {
+            "numerator": "5",
+            "denominator": "1"
+          },
+          "listed_payments": {
+            "numerator": "5",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "payment_ids": [
+            "SYNTHETIC-payment-0-insurance"
+          ],
+          "empty_payment_inventory_explicitly_complete": false,
+          "detail_item_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/boundary_source_utf8",
+              "/periods/0/detail_source_utf8"
+            ],
+            "final_pointer": "/items/0"
+          },
+          "noi_operand_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/0/noi_source_utf8"
+            ],
+            "final_pointer": "/expense_rows/0"
+          },
+          "tax_zero_profile_guard_ref": null,
+          "financial_acceptance": false
+        },
+        {
+          "snapshot_id": "O01",
+          "period_index": 0,
+          "period_ref": "SYNTHETIC-hold-1",
+          "start_date": "2027-01-01",
+          "end_date": "2027-04-01",
+          "detail_item_id": "SYNTHETIC-other",
+          "noi_item_id": "SYNTHETIC-other-opex",
+          "kind": "other_operating_expense",
+          "noi_pointer": "/expense_rows/1",
+          "currency": "USD",
+          "expense_amount": {
+            "denominator": "1",
+            "numerator": "5"
+          },
+          "opening_payables": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "closing_payables": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "opening_prepaid": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "closing_prepaid": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "expected_payments": {
+            "numerator": "5",
+            "denominator": "1"
+          },
+          "listed_payments": {
+            "numerator": "5",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "payment_ids": [
+            "SYNTHETIC-payment-0-other"
+          ],
+          "empty_payment_inventory_explicitly_complete": false,
+          "detail_item_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/boundary_source_utf8",
+              "/periods/0/detail_source_utf8"
+            ],
+            "final_pointer": "/items/1"
+          },
+          "noi_operand_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/0/noi_source_utf8"
+            ],
+            "final_pointer": "/expense_rows/1"
+          },
+          "tax_zero_profile_guard_ref": null,
+          "financial_acceptance": false
+        },
+        {
+          "snapshot_id": "O01",
+          "period_index": 0,
+          "period_ref": "SYNTHETIC-hold-1",
+          "start_date": "2027-01-01",
+          "end_date": "2027-04-01",
+          "detail_item_id": "SYNTHETIC-tax",
+          "noi_item_id": null,
+          "kind": "property_tax",
+          "noi_pointer": "/property_tax",
+          "currency": "USD",
+          "expense_amount": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "opening_payables": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "closing_payables": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "opening_prepaid": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "closing_prepaid": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "expected_payments": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "listed_payments": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "payment_ids": [],
+          "empty_payment_inventory_explicitly_complete": true,
+          "detail_item_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/boundary_source_utf8",
+              "/periods/0/detail_source_utf8"
+            ],
+            "final_pointer": "/items/2"
+          },
+          "noi_operand_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/0/noi_source_utf8"
+            ],
+            "final_pointer": "/tax_floor"
+          },
+          "tax_zero_profile_guard_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/0/noi_source_utf8"
+            ],
+            "final_pointer": "/tax_coefficient"
+          },
+          "financial_acceptance": false
+        },
+        {
+          "snapshot_id": "O01",
+          "period_index": 1,
+          "period_ref": "SYNTHETIC-hold-2",
+          "start_date": "2027-04-01",
+          "end_date": "2027-07-01",
+          "detail_item_id": "SYNTHETIC-insurance",
+          "noi_item_id": "SYNTHETIC-insurance",
+          "kind": "insurance",
+          "noi_pointer": "/expense_rows/0",
+          "currency": "USD",
+          "expense_amount": {
+            "denominator": "1",
+            "numerator": "10"
+          },
+          "opening_payables": {
+            "denominator": "1",
+            "numerator": "5"
+          },
+          "closing_payables": {
+            "denominator": "1",
+            "numerator": "5"
+          },
+          "opening_prepaid": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "closing_prepaid": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "expected_payments": {
+            "numerator": "10",
+            "denominator": "1"
+          },
+          "listed_payments": {
+            "numerator": "10",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "payment_ids": [
+            "SYNTHETIC-payment-1-insurance"
+          ],
+          "empty_payment_inventory_explicitly_complete": false,
+          "detail_item_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/boundary_source_utf8",
+              "/periods/1/detail_source_utf8"
+            ],
+            "final_pointer": "/items/0"
+          },
+          "noi_operand_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/1/noi_source_utf8"
+            ],
+            "final_pointer": "/expense_rows/0"
+          },
+          "tax_zero_profile_guard_ref": null,
+          "financial_acceptance": false
+        },
+        {
+          "snapshot_id": "O01",
+          "period_index": 1,
+          "period_ref": "SYNTHETIC-hold-2",
+          "start_date": "2027-04-01",
+          "end_date": "2027-07-01",
+          "detail_item_id": "SYNTHETIC-other",
+          "noi_item_id": "SYNTHETIC-other-opex",
+          "kind": "other_operating_expense",
+          "noi_pointer": "/expense_rows/1",
+          "currency": "USD",
+          "expense_amount": {
+            "denominator": "1",
+            "numerator": "5"
+          },
+          "opening_payables": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "closing_payables": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "opening_prepaid": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "closing_prepaid": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "expected_payments": {
+            "numerator": "5",
+            "denominator": "1"
+          },
+          "listed_payments": {
+            "numerator": "5",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "payment_ids": [
+            "SYNTHETIC-payment-1-other"
+          ],
+          "empty_payment_inventory_explicitly_complete": false,
+          "detail_item_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/boundary_source_utf8",
+              "/periods/1/detail_source_utf8"
+            ],
+            "final_pointer": "/items/1"
+          },
+          "noi_operand_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/1/noi_source_utf8"
+            ],
+            "final_pointer": "/expense_rows/1"
+          },
+          "tax_zero_profile_guard_ref": null,
+          "financial_acceptance": false
+        },
+        {
+          "snapshot_id": "O01",
+          "period_index": 1,
+          "period_ref": "SYNTHETIC-hold-2",
+          "start_date": "2027-04-01",
+          "end_date": "2027-07-01",
+          "detail_item_id": "SYNTHETIC-tax",
+          "noi_item_id": null,
+          "kind": "property_tax",
+          "noi_pointer": "/property_tax",
+          "currency": "USD",
+          "expense_amount": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "opening_payables": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "closing_payables": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "opening_prepaid": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "closing_prepaid": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "expected_payments": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "listed_payments": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "payment_ids": [],
+          "empty_payment_inventory_explicitly_complete": true,
+          "detail_item_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/boundary_source_utf8",
+              "/periods/1/detail_source_utf8"
+            ],
+            "final_pointer": "/items/2"
+          },
+          "noi_operand_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/1/noi_source_utf8"
+            ],
+            "final_pointer": "/tax_floor"
+          },
+          "tax_zero_profile_guard_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/1/noi_source_utf8"
+            ],
+            "final_pointer": "/tax_coefficient"
+          },
+          "financial_acceptance": false
+        }
+      ],
+      "payment_rows": [
+        {
+          "snapshot_id": "O01",
+          "period_index": 0,
+          "period_ref": "SYNTHETIC-hold-1",
+          "detail_item_id": "SYNTHETIC-insurance",
+          "payment_id": "SYNTHETIC-payment-0-insurance",
+          "date": "2027-03-01",
+          "amount": {
+            "denominator": "1",
+            "numerator": "5"
+          },
+          "currency": "USD",
+          "payment_source_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/boundary_source_utf8",
+              "/periods/0/detail_source_utf8"
+            ],
+            "final_pointer": "/items/0/payments/0"
+          },
+          "bank_payment_authenticated": false
+        },
+        {
+          "snapshot_id": "O01",
+          "period_index": 0,
+          "period_ref": "SYNTHETIC-hold-1",
+          "detail_item_id": "SYNTHETIC-other",
+          "payment_id": "SYNTHETIC-payment-0-other",
+          "date": "2027-03-01",
+          "amount": {
+            "denominator": "1",
+            "numerator": "5"
+          },
+          "currency": "USD",
+          "payment_source_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/boundary_source_utf8",
+              "/periods/0/detail_source_utf8"
+            ],
+            "final_pointer": "/items/1/payments/0"
+          },
+          "bank_payment_authenticated": false
+        },
+        {
+          "snapshot_id": "O01",
+          "period_index": 1,
+          "period_ref": "SYNTHETIC-hold-2",
+          "detail_item_id": "SYNTHETIC-insurance",
+          "payment_id": "SYNTHETIC-payment-1-insurance",
+          "date": "2027-06-01",
+          "amount": {
+            "denominator": "1",
+            "numerator": "10"
+          },
+          "currency": "USD",
+          "payment_source_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/boundary_source_utf8",
+              "/periods/1/detail_source_utf8"
+            ],
+            "final_pointer": "/items/0/payments/0"
+          },
+          "bank_payment_authenticated": false
+        },
+        {
+          "snapshot_id": "O01",
+          "period_index": 1,
+          "period_ref": "SYNTHETIC-hold-2",
+          "detail_item_id": "SYNTHETIC-other",
+          "payment_id": "SYNTHETIC-payment-1-other",
+          "date": "2027-06-01",
+          "amount": {
+            "denominator": "1",
+            "numerator": "5"
+          },
+          "currency": "USD",
+          "payment_source_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/boundary_source_utf8",
+              "/periods/1/detail_source_utf8"
+            ],
+            "final_pointer": "/items/1/payments/0"
+          },
+          "bank_payment_authenticated": false
+        }
+      ],
+      "period_rows": [
+        {
+          "snapshot_id": "O01",
+          "period_index": 0,
+          "period_ref": "SYNTHETIC-hold-1",
+          "start_date": "2027-01-01",
+          "end_date": "2027-04-01",
+          "cash_date": "2027-03-01",
+          "currency": "USD",
+          "accrued_income": {
+            "numerator": "28",
+            "denominator": "1"
+          },
+          "accrued_expenses_ex_tax": {
+            "numerator": "15",
+            "denominator": "1"
+          },
+          "property_tax": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "accrued_NOI": {
+            "numerator": "13",
+            "denominator": "1"
+          },
+          "operating_receipts": {
+            "numerator": "28",
+            "denominator": "1"
+          },
+          "operating_payments": {
+            "numerator": "10",
+            "denominator": "1"
+          },
+          "net_operating_cash": {
+            "numerator": "18",
+            "denominator": "1"
+          },
+          "net_cash_minus_NOI": {
+            "numerator": "5",
+            "denominator": "1"
+          },
+          "working_balance_deltas": {
+            "receivables": {
+              "numerator": "0",
+              "denominator": "1"
+            },
+            "advance_income": {
+              "numerator": "0",
+              "denominator": "1"
+            },
+            "payables": {
+              "numerator": "5",
+              "denominator": "1"
+            },
+            "prepaid_expenses": {
+              "numerator": "0",
+              "denominator": "1"
+            }
+          },
+          "opening_free_cash": {
+            "denominator": "1",
+            "numerator": "590"
+          },
+          "opening_restricted_cash": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "debt_principal_payment": {
+            "denominator": "1",
+            "numerator": "40"
+          },
+          "debt_interest_payment": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "debt_fee_payment": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "capital_expenditure": {
+            "denominator": "1",
+            "numerator": "20"
+          },
+          "reserve_deposit": {
+            "denominator": "1",
+            "numerator": "50"
+          },
+          "reserve_release": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "equity_contribution": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "nonfinancing_other_cash_receipt": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "other_cash_payment": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "free_cash_before_proposed_distribution": {
+            "numerator": "498",
+            "denominator": "1"
+          },
+          "planned_operating_distribution": {
+            "denominator": "1",
+            "numerator": "100"
+          },
+          "closing_free_cash_claim": {
+            "numerator": "398",
+            "denominator": "1"
+          },
+          "closing_restricted_cash_claim": {
+            "numerator": "50",
+            "denominator": "1"
+          },
+          "proposed_distribution_minus_net_operating_cash": {
+            "numerator": "82",
+            "denominator": "1"
+          },
+          "noi_source_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/0/noi_source_utf8"
+            ],
+            "final_pointer": ""
+          },
+          "cash_source_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/0/cash_source_utf8"
+            ],
+            "final_pointer": ""
+          },
+          "detail_source_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/boundary_source_utf8",
+              "/periods/0/detail_source_utf8"
+            ],
+            "final_pointer": ""
+          },
+          "source_byte_hashes_verified": true,
+          "declared_run_hashes_crossmatched_not_independently_replayed": true,
+          "distribution_authorized": false,
+          "capital_repayment_classified": false,
+          "operating_year_coverage_verified": false
+        },
+        {
+          "snapshot_id": "O01",
+          "period_index": 1,
+          "period_ref": "SYNTHETIC-hold-2",
+          "start_date": "2027-04-01",
+          "end_date": "2027-07-01",
+          "cash_date": "2027-06-01",
+          "currency": "USD",
+          "accrued_income": {
+            "numerator": "60",
+            "denominator": "1"
+          },
+          "accrued_expenses_ex_tax": {
+            "numerator": "15",
+            "denominator": "1"
+          },
+          "property_tax": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "accrued_NOI": {
+            "numerator": "45",
+            "denominator": "1"
+          },
+          "operating_receipts": {
+            "numerator": "60",
+            "denominator": "1"
+          },
+          "operating_payments": {
+            "numerator": "15",
+            "denominator": "1"
+          },
+          "net_operating_cash": {
+            "numerator": "45",
+            "denominator": "1"
+          },
+          "net_cash_minus_NOI": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "working_balance_deltas": {
+            "receivables": {
+              "numerator": "0",
+              "denominator": "1"
+            },
+            "advance_income": {
+              "numerator": "0",
+              "denominator": "1"
+            },
+            "payables": {
+              "numerator": "0",
+              "denominator": "1"
+            },
+            "prepaid_expenses": {
+              "numerator": "0",
+              "denominator": "1"
+            }
+          },
+          "opening_free_cash": {
+            "denominator": "1",
+            "numerator": "398"
+          },
+          "opening_restricted_cash": {
+            "denominator": "1",
+            "numerator": "50"
+          },
+          "debt_principal_payment": {
+            "denominator": "1",
+            "numerator": "60"
+          },
+          "debt_interest_payment": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "debt_fee_payment": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "capital_expenditure": {
+            "denominator": "1",
+            "numerator": "20"
+          },
+          "reserve_deposit": {
+            "denominator": "1",
+            "numerator": "50"
+          },
+          "reserve_release": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "equity_contribution": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "nonfinancing_other_cash_receipt": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "other_cash_payment": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "free_cash_before_proposed_distribution": {
+            "numerator": "313",
+            "denominator": "1"
+          },
+          "planned_operating_distribution": {
+            "denominator": "1",
+            "numerator": "100"
+          },
+          "closing_free_cash_claim": {
+            "numerator": "213",
+            "denominator": "1"
+          },
+          "closing_restricted_cash_claim": {
+            "numerator": "100",
+            "denominator": "1"
+          },
+          "proposed_distribution_minus_net_operating_cash": {
+            "numerator": "55",
+            "denominator": "1"
+          },
+          "noi_source_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/1/noi_source_utf8"
+            ],
+            "final_pointer": ""
+          },
+          "cash_source_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/1/cash_source_utf8"
+            ],
+            "final_pointer": ""
+          },
+          "detail_source_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/boundary_source_utf8",
+              "/periods/1/detail_source_utf8"
+            ],
+            "final_pointer": ""
+          },
+          "source_byte_hashes_verified": true,
+          "declared_run_hashes_crossmatched_not_independently_replayed": true,
+          "distribution_authorized": false,
+          "capital_repayment_classified": false,
+          "operating_year_coverage_verified": false
+        }
+      ],
+      "stock_sum_checks": [
+        {
+          "snapshot_id": "O01",
+          "period_index": 0,
+          "item_balance_field": "opening_payables",
+          "aggregate_working_family": "payables",
+          "cut": "opening",
+          "item_sum": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "aggregate_claim": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "aggregate_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/0/cash_source_utf8"
+            ],
+            "final_pointer": "/working_balances/payables/opening"
+          }
+        },
+        {
+          "snapshot_id": "O01",
+          "period_index": 0,
+          "item_balance_field": "closing_payables",
+          "aggregate_working_family": "payables",
+          "cut": "closing",
+          "item_sum": {
+            "numerator": "5",
+            "denominator": "1"
+          },
+          "aggregate_claim": {
+            "numerator": "5",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "aggregate_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/0/cash_source_utf8"
+            ],
+            "final_pointer": "/working_balances/payables/closing"
+          }
+        },
+        {
+          "snapshot_id": "O01",
+          "period_index": 0,
+          "item_balance_field": "opening_prepaid",
+          "aggregate_working_family": "prepaid_expenses",
+          "cut": "opening",
+          "item_sum": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "aggregate_claim": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "aggregate_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/0/cash_source_utf8"
+            ],
+            "final_pointer": "/working_balances/prepaid_expenses/opening"
+          }
+        },
+        {
+          "snapshot_id": "O01",
+          "period_index": 0,
+          "item_balance_field": "closing_prepaid",
+          "aggregate_working_family": "prepaid_expenses",
+          "cut": "closing",
+          "item_sum": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "aggregate_claim": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "aggregate_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/0/cash_source_utf8"
+            ],
+            "final_pointer": "/working_balances/prepaid_expenses/closing"
+          }
+        },
+        {
+          "snapshot_id": "O01",
+          "period_index": 1,
+          "item_balance_field": "opening_payables",
+          "aggregate_working_family": "payables",
+          "cut": "opening",
+          "item_sum": {
+            "numerator": "5",
+            "denominator": "1"
+          },
+          "aggregate_claim": {
+            "numerator": "5",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "aggregate_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/1/cash_source_utf8"
+            ],
+            "final_pointer": "/working_balances/payables/opening"
+          }
+        },
+        {
+          "snapshot_id": "O01",
+          "period_index": 1,
+          "item_balance_field": "closing_payables",
+          "aggregate_working_family": "payables",
+          "cut": "closing",
+          "item_sum": {
+            "numerator": "5",
+            "denominator": "1"
+          },
+          "aggregate_claim": {
+            "numerator": "5",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "aggregate_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/1/cash_source_utf8"
+            ],
+            "final_pointer": "/working_balances/payables/closing"
+          }
+        },
+        {
+          "snapshot_id": "O01",
+          "period_index": 1,
+          "item_balance_field": "opening_prepaid",
+          "aggregate_working_family": "prepaid_expenses",
+          "cut": "opening",
+          "item_sum": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "aggregate_claim": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "aggregate_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/1/cash_source_utf8"
+            ],
+            "final_pointer": "/working_balances/prepaid_expenses/opening"
+          }
+        },
+        {
+          "snapshot_id": "O01",
+          "period_index": 1,
+          "item_balance_field": "closing_prepaid",
+          "aggregate_working_family": "prepaid_expenses",
+          "cut": "closing",
+          "item_sum": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "aggregate_claim": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "aggregate_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/1/cash_source_utf8"
+            ],
+            "final_pointer": "/working_balances/prepaid_expenses/closing"
+          }
+        }
+      ],
+      "continuity_checks": [
+        {
+          "snapshot_id": "O01",
+          "scope": "aggregate_working_balance",
+          "identity": "receivables",
+          "closing_value": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "next_opening_value": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "closing_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/0/cash_source_utf8"
+            ],
+            "final_pointer": "/working_balances/receivables/closing"
+          },
+          "next_opening_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/1/cash_source_utf8"
+            ],
+            "final_pointer": "/working_balances/receivables/opening"
+          }
+        },
+        {
+          "snapshot_id": "O01",
+          "scope": "aggregate_working_balance",
+          "identity": "advance_income",
+          "closing_value": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "next_opening_value": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "closing_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/0/cash_source_utf8"
+            ],
+            "final_pointer": "/working_balances/advance_income/closing"
+          },
+          "next_opening_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/1/cash_source_utf8"
+            ],
+            "final_pointer": "/working_balances/advance_income/opening"
+          }
+        },
+        {
+          "snapshot_id": "O01",
+          "scope": "aggregate_working_balance",
+          "identity": "payables",
+          "closing_value": {
+            "numerator": "5",
+            "denominator": "1"
+          },
+          "next_opening_value": {
+            "numerator": "5",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "closing_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/0/cash_source_utf8"
+            ],
+            "final_pointer": "/working_balances/payables/closing"
+          },
+          "next_opening_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/1/cash_source_utf8"
+            ],
+            "final_pointer": "/working_balances/payables/opening"
+          }
+        },
+        {
+          "snapshot_id": "O01",
+          "scope": "aggregate_working_balance",
+          "identity": "prepaid_expenses",
+          "closing_value": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "next_opening_value": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "closing_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/0/cash_source_utf8"
+            ],
+            "final_pointer": "/working_balances/prepaid_expenses/closing"
+          },
+          "next_opening_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/1/cash_source_utf8"
+            ],
+            "final_pointer": "/working_balances/prepaid_expenses/opening"
+          }
+        },
+        {
+          "snapshot_id": "O01",
+          "scope": "detail_item_balance",
+          "identity": "SYNTHETIC-insurance:payables",
+          "closing_value": {
+            "numerator": "5",
+            "denominator": "1"
+          },
+          "next_opening_value": {
+            "numerator": "5",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "closing_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/boundary_source_utf8",
+              "/periods/0/detail_source_utf8"
+            ],
+            "final_pointer": "/items/0/closing_payables"
+          },
+          "next_opening_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/boundary_source_utf8",
+              "/periods/1/detail_source_utf8"
+            ],
+            "final_pointer": "/items/0/opening_payables"
+          }
+        },
+        {
+          "snapshot_id": "O01",
+          "scope": "detail_item_balance",
+          "identity": "SYNTHETIC-insurance:prepaid",
+          "closing_value": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "next_opening_value": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "closing_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/boundary_source_utf8",
+              "/periods/0/detail_source_utf8"
+            ],
+            "final_pointer": "/items/0/closing_prepaid"
+          },
+          "next_opening_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/boundary_source_utf8",
+              "/periods/1/detail_source_utf8"
+            ],
+            "final_pointer": "/items/0/opening_prepaid"
+          }
+        },
+        {
+          "snapshot_id": "O01",
+          "scope": "detail_item_balance",
+          "identity": "SYNTHETIC-other:payables",
+          "closing_value": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "next_opening_value": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "closing_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/boundary_source_utf8",
+              "/periods/0/detail_source_utf8"
+            ],
+            "final_pointer": "/items/1/closing_payables"
+          },
+          "next_opening_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/boundary_source_utf8",
+              "/periods/1/detail_source_utf8"
+            ],
+            "final_pointer": "/items/1/opening_payables"
+          }
+        },
+        {
+          "snapshot_id": "O01",
+          "scope": "detail_item_balance",
+          "identity": "SYNTHETIC-other:prepaid",
+          "closing_value": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "next_opening_value": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "closing_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/boundary_source_utf8",
+              "/periods/0/detail_source_utf8"
+            ],
+            "final_pointer": "/items/1/closing_prepaid"
+          },
+          "next_opening_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/boundary_source_utf8",
+              "/periods/1/detail_source_utf8"
+            ],
+            "final_pointer": "/items/1/opening_prepaid"
+          }
+        },
+        {
+          "snapshot_id": "O01",
+          "scope": "detail_item_balance",
+          "identity": "SYNTHETIC-tax:payables",
+          "closing_value": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "next_opening_value": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "closing_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/boundary_source_utf8",
+              "/periods/0/detail_source_utf8"
+            ],
+            "final_pointer": "/items/2/closing_payables"
+          },
+          "next_opening_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/boundary_source_utf8",
+              "/periods/1/detail_source_utf8"
+            ],
+            "final_pointer": "/items/2/opening_payables"
+          }
+        },
+        {
+          "snapshot_id": "O01",
+          "scope": "detail_item_balance",
+          "identity": "SYNTHETIC-tax:prepaid",
+          "closing_value": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "next_opening_value": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "closing_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/boundary_source_utf8",
+              "/periods/0/detail_source_utf8"
+            ],
+            "final_pointer": "/items/2/closing_prepaid"
+          },
+          "next_opening_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/boundary_source_utf8",
+              "/periods/1/detail_source_utf8"
+            ],
+            "final_pointer": "/items/2/opening_prepaid"
+          }
+        }
+      ],
+      "aggregate_comparisons": [
+        {
+          "snapshot_id": "O01",
+          "field": "capital_expenditure",
+          "aggregation": "sum_period_flows",
+          "calculated": {
+            "numerator": "40",
+            "denominator": "1"
+          },
+          "saved_value": {
+            "denominator": "1",
+            "numerator": "40"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "saved_ref": {
+            "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+            "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_operating_totals/capital_expenditure"
+          }
+        },
+        {
+          "snapshot_id": "O01",
+          "field": "closing_free_cash_claim",
+          "aggregation": "last_closing_stock",
+          "calculated": {
+            "numerator": "213",
+            "denominator": "1"
+          },
+          "saved_value": {
+            "denominator": "1",
+            "numerator": "213"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "saved_ref": {
+            "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+            "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_operating_totals/closing_free_cash_claim"
+          }
+        },
+        {
+          "snapshot_id": "O01",
+          "field": "closing_restricted_cash_claim",
+          "aggregation": "last_closing_stock",
+          "calculated": {
+            "numerator": "100",
+            "denominator": "1"
+          },
+          "saved_value": {
+            "denominator": "1",
+            "numerator": "100"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "saved_ref": {
+            "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+            "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_operating_totals/closing_restricted_cash_claim"
+          }
+        },
+        {
+          "snapshot_id": "O01",
+          "field": "debt_fee_payment",
+          "aggregation": "sum_period_flows",
+          "calculated": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "saved_value": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "saved_ref": {
+            "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+            "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_operating_totals/debt_fee_payment"
+          }
+        },
+        {
+          "snapshot_id": "O01",
+          "field": "debt_interest_payment",
+          "aggregation": "sum_period_flows",
+          "calculated": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "saved_value": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "saved_ref": {
+            "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+            "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_operating_totals/debt_interest_payment"
+          }
+        },
+        {
+          "snapshot_id": "O01",
+          "field": "debt_principal_payment",
+          "aggregation": "sum_period_flows",
+          "calculated": {
+            "numerator": "100",
+            "denominator": "1"
+          },
+          "saved_value": {
+            "denominator": "1",
+            "numerator": "100"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "saved_ref": {
+            "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+            "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_operating_totals/debt_principal_payment"
+          }
+        },
+        {
+          "snapshot_id": "O01",
+          "field": "equity_contribution",
+          "aggregation": "sum_period_flows",
+          "calculated": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "saved_value": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "saved_ref": {
+            "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+            "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_operating_totals/equity_contribution"
+          }
+        },
+        {
+          "snapshot_id": "O01",
+          "field": "net_operating_cash",
+          "aggregation": "sum_period_flows",
+          "calculated": {
+            "numerator": "63",
+            "denominator": "1"
+          },
+          "saved_value": {
+            "denominator": "1",
+            "numerator": "63"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "saved_ref": {
+            "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+            "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_operating_totals/net_operating_cash"
+          }
+        },
+        {
+          "snapshot_id": "O01",
+          "field": "nonfinancing_other_cash_receipt",
+          "aggregation": "sum_period_flows",
+          "calculated": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "saved_value": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "saved_ref": {
+            "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+            "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_operating_totals/nonfinancing_other_cash_receipt"
+          }
+        },
+        {
+          "snapshot_id": "O01",
+          "field": "opening_free_cash",
+          "aggregation": "first_opening_stock",
+          "calculated": {
+            "numerator": "590",
+            "denominator": "1"
+          },
+          "saved_value": {
+            "denominator": "1",
+            "numerator": "590"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "saved_ref": {
+            "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+            "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_operating_totals/opening_free_cash"
+          }
+        },
+        {
+          "snapshot_id": "O01",
+          "field": "opening_restricted_cash",
+          "aggregation": "first_opening_stock",
+          "calculated": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "saved_value": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "saved_ref": {
+            "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+            "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_operating_totals/opening_restricted_cash"
+          }
+        },
+        {
+          "snapshot_id": "O01",
+          "field": "operating_payments",
+          "aggregation": "sum_period_flows",
+          "calculated": {
+            "numerator": "25",
+            "denominator": "1"
+          },
+          "saved_value": {
+            "denominator": "1",
+            "numerator": "25"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "saved_ref": {
+            "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+            "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_operating_totals/operating_payments"
+          }
+        },
+        {
+          "snapshot_id": "O01",
+          "field": "operating_receipts",
+          "aggregation": "sum_period_flows",
+          "calculated": {
+            "numerator": "88",
+            "denominator": "1"
+          },
+          "saved_value": {
+            "denominator": "1",
+            "numerator": "88"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "saved_ref": {
+            "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+            "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_operating_totals/operating_receipts"
+          }
+        },
+        {
+          "snapshot_id": "O01",
+          "field": "other_cash_payment",
+          "aggregation": "sum_period_flows",
+          "calculated": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "saved_value": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "saved_ref": {
+            "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+            "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_operating_totals/other_cash_payment"
+          }
+        },
+        {
+          "snapshot_id": "O01",
+          "field": "planned_operating_distribution",
+          "aggregation": "sum_period_flows",
+          "calculated": {
+            "numerator": "200",
+            "denominator": "1"
+          },
+          "saved_value": {
+            "denominator": "1",
+            "numerator": "200"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "saved_ref": {
+            "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+            "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_operating_totals/planned_operating_distribution"
+          }
+        },
+        {
+          "snapshot_id": "O01",
+          "field": "reserve_deposit",
+          "aggregation": "sum_period_flows",
+          "calculated": {
+            "numerator": "100",
+            "denominator": "1"
+          },
+          "saved_value": {
+            "denominator": "1",
+            "numerator": "100"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "saved_ref": {
+            "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+            "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_operating_totals/reserve_deposit"
+          }
+        },
+        {
+          "snapshot_id": "O01",
+          "field": "reserve_release",
+          "aggregation": "sum_period_flows",
+          "calculated": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "saved_value": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "saved_ref": {
+            "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+            "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_operating_totals/reserve_release"
+          }
+        }
+      ],
+      "summary": {
+        "accrued_income": {
+          "numerator": "88",
+          "denominator": "1"
+        },
+        "accrued_expenses_ex_tax": {
+          "numerator": "30",
+          "denominator": "1"
+        },
+        "accrued_NOI": {
+          "numerator": "58",
+          "denominator": "1"
+        },
+        "operating_payments": {
+          "numerator": "25",
+          "denominator": "1"
+        },
+        "net_operating_cash": {
+          "numerator": "63",
+          "denominator": "1"
+        },
+        "planned_operating_distributions": {
+          "numerator": "200",
+          "denominator": "1"
+        },
+        "distribution_minus_net_operating_cash": {
+          "numerator": "137",
+          "denominator": "1"
+        },
+        "opening_free_cash": {
+          "denominator": "1",
+          "numerator": "590"
+        },
+        "closing_free_cash": {
+          "numerator": "213",
+          "denominator": "1"
+        },
+        "closing_restricted_cash": {
+          "numerator": "100",
+          "denominator": "1"
+        },
+        "annual_CoC": null,
+        "capital_repaid": null,
+        "personal_return": null
+      },
+      "financial_decision": "PENDING",
+      "zero_tax_profile_only": true,
+      "source_authority_verified": false,
+      "distribution_authorized": false
+    },
+    {
+      "snapshot_id": "O02",
+      "input_ref": {
+        "path": "templates/worksheet-settled-twelve-T111.json",
+        "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+        "embedded_json_pointers": [],
+        "final_pointer": ""
+      },
+      "result_ref": {
+        "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+        "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+        "embedded_json_pointers": [],
+        "final_pointer": ""
+      },
+      "context": {
+        "deal_id": "SYNTHETIC-construction-draw-demo",
+        "definition_set_revision": "SYNTHETIC-simple-interval-factors",
+        "run_id": "SYNTHETIC-construction-draw-run",
+        "scenario_id": "SYNTHETIC-draw-plan"
+      },
+      "evaluated_as_of_UTC": "2027-07-01T12:00:00Z",
+      "expense_rows": [
+        {
+          "snapshot_id": "O02",
+          "period_index": 0,
+          "period_ref": "SYNTHETIC-hold-1",
+          "start_date": "2027-01-01",
+          "end_date": "2027-04-01",
+          "detail_item_id": "SYNTHETIC-insurance",
+          "noi_item_id": "SYNTHETIC-insurance",
+          "kind": "insurance",
+          "noi_pointer": "/expense_rows/0",
+          "currency": "USD",
+          "expense_amount": {
+            "denominator": "1",
+            "numerator": "10"
+          },
+          "opening_payables": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "closing_payables": {
+            "denominator": "1",
+            "numerator": "5"
+          },
+          "opening_prepaid": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "closing_prepaid": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "expected_payments": {
+            "numerator": "5",
+            "denominator": "1"
+          },
+          "listed_payments": {
+            "numerator": "5",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "payment_ids": [
+            "SYNTHETIC-payment-0-insurance"
+          ],
+          "empty_payment_inventory_explicitly_complete": false,
+          "detail_item_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/boundary_source_utf8",
+              "/periods/0/detail_source_utf8"
+            ],
+            "final_pointer": "/items/0"
+          },
+          "noi_operand_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/0/noi_source_utf8"
+            ],
+            "final_pointer": "/expense_rows/0"
+          },
+          "tax_zero_profile_guard_ref": null,
+          "financial_acceptance": false
+        },
+        {
+          "snapshot_id": "O02",
+          "period_index": 0,
+          "period_ref": "SYNTHETIC-hold-1",
+          "start_date": "2027-01-01",
+          "end_date": "2027-04-01",
+          "detail_item_id": "SYNTHETIC-other",
+          "noi_item_id": "SYNTHETIC-other-opex",
+          "kind": "other_operating_expense",
+          "noi_pointer": "/expense_rows/1",
+          "currency": "USD",
+          "expense_amount": {
+            "denominator": "1",
+            "numerator": "5"
+          },
+          "opening_payables": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "closing_payables": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "opening_prepaid": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "closing_prepaid": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "expected_payments": {
+            "numerator": "5",
+            "denominator": "1"
+          },
+          "listed_payments": {
+            "numerator": "5",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "payment_ids": [
+            "SYNTHETIC-payment-0-other"
+          ],
+          "empty_payment_inventory_explicitly_complete": false,
+          "detail_item_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/boundary_source_utf8",
+              "/periods/0/detail_source_utf8"
+            ],
+            "final_pointer": "/items/1"
+          },
+          "noi_operand_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/0/noi_source_utf8"
+            ],
+            "final_pointer": "/expense_rows/1"
+          },
+          "tax_zero_profile_guard_ref": null,
+          "financial_acceptance": false
+        },
+        {
+          "snapshot_id": "O02",
+          "period_index": 0,
+          "period_ref": "SYNTHETIC-hold-1",
+          "start_date": "2027-01-01",
+          "end_date": "2027-04-01",
+          "detail_item_id": "SYNTHETIC-tax",
+          "noi_item_id": null,
+          "kind": "property_tax",
+          "noi_pointer": "/property_tax",
+          "currency": "USD",
+          "expense_amount": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "opening_payables": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "closing_payables": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "opening_prepaid": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "closing_prepaid": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "expected_payments": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "listed_payments": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "payment_ids": [],
+          "empty_payment_inventory_explicitly_complete": true,
+          "detail_item_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/boundary_source_utf8",
+              "/periods/0/detail_source_utf8"
+            ],
+            "final_pointer": "/items/2"
+          },
+          "noi_operand_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/0/noi_source_utf8"
+            ],
+            "final_pointer": "/tax_floor"
+          },
+          "tax_zero_profile_guard_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/0/noi_source_utf8"
+            ],
+            "final_pointer": "/tax_coefficient"
+          },
+          "financial_acceptance": false
+        },
+        {
+          "snapshot_id": "O02",
+          "period_index": 1,
+          "period_ref": "SYNTHETIC-hold-2",
+          "start_date": "2027-04-01",
+          "end_date": "2027-07-01",
+          "detail_item_id": "SYNTHETIC-insurance",
+          "noi_item_id": "SYNTHETIC-insurance",
+          "kind": "insurance",
+          "noi_pointer": "/expense_rows/0",
+          "currency": "USD",
+          "expense_amount": {
+            "denominator": "1",
+            "numerator": "12"
+          },
+          "opening_payables": {
+            "denominator": "1",
+            "numerator": "5"
+          },
+          "closing_payables": {
+            "denominator": "1",
+            "numerator": "5"
+          },
+          "opening_prepaid": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "closing_prepaid": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "expected_payments": {
+            "numerator": "12",
+            "denominator": "1"
+          },
+          "listed_payments": {
+            "numerator": "12",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "payment_ids": [
+            "SYNTHETIC-payment-1-insurance"
+          ],
+          "empty_payment_inventory_explicitly_complete": false,
+          "detail_item_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/boundary_source_utf8",
+              "/periods/1/detail_source_utf8"
+            ],
+            "final_pointer": "/items/0"
+          },
+          "noi_operand_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/1/noi_source_utf8"
+            ],
+            "final_pointer": "/expense_rows/0"
+          },
+          "tax_zero_profile_guard_ref": null,
+          "financial_acceptance": false
+        },
+        {
+          "snapshot_id": "O02",
+          "period_index": 1,
+          "period_ref": "SYNTHETIC-hold-2",
+          "start_date": "2027-04-01",
+          "end_date": "2027-07-01",
+          "detail_item_id": "SYNTHETIC-other",
+          "noi_item_id": "SYNTHETIC-other-opex",
+          "kind": "other_operating_expense",
+          "noi_pointer": "/expense_rows/1",
+          "currency": "USD",
+          "expense_amount": {
+            "denominator": "1",
+            "numerator": "5"
+          },
+          "opening_payables": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "closing_payables": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "opening_prepaid": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "closing_prepaid": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "expected_payments": {
+            "numerator": "5",
+            "denominator": "1"
+          },
+          "listed_payments": {
+            "numerator": "5",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "payment_ids": [
+            "SYNTHETIC-payment-1-other"
+          ],
+          "empty_payment_inventory_explicitly_complete": false,
+          "detail_item_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/boundary_source_utf8",
+              "/periods/1/detail_source_utf8"
+            ],
+            "final_pointer": "/items/1"
+          },
+          "noi_operand_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/1/noi_source_utf8"
+            ],
+            "final_pointer": "/expense_rows/1"
+          },
+          "tax_zero_profile_guard_ref": null,
+          "financial_acceptance": false
+        },
+        {
+          "snapshot_id": "O02",
+          "period_index": 1,
+          "period_ref": "SYNTHETIC-hold-2",
+          "start_date": "2027-04-01",
+          "end_date": "2027-07-01",
+          "detail_item_id": "SYNTHETIC-tax",
+          "noi_item_id": null,
+          "kind": "property_tax",
+          "noi_pointer": "/property_tax",
+          "currency": "USD",
+          "expense_amount": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "opening_payables": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "closing_payables": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "opening_prepaid": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "closing_prepaid": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "expected_payments": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "listed_payments": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "payment_ids": [],
+          "empty_payment_inventory_explicitly_complete": true,
+          "detail_item_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/boundary_source_utf8",
+              "/periods/1/detail_source_utf8"
+            ],
+            "final_pointer": "/items/2"
+          },
+          "noi_operand_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/1/noi_source_utf8"
+            ],
+            "final_pointer": "/tax_floor"
+          },
+          "tax_zero_profile_guard_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/1/noi_source_utf8"
+            ],
+            "final_pointer": "/tax_coefficient"
+          },
+          "financial_acceptance": false
+        }
+      ],
+      "payment_rows": [
+        {
+          "snapshot_id": "O02",
+          "period_index": 0,
+          "period_ref": "SYNTHETIC-hold-1",
+          "detail_item_id": "SYNTHETIC-insurance",
+          "payment_id": "SYNTHETIC-payment-0-insurance",
+          "date": "2027-03-01",
+          "amount": {
+            "denominator": "1",
+            "numerator": "5"
+          },
+          "currency": "USD",
+          "payment_source_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/boundary_source_utf8",
+              "/periods/0/detail_source_utf8"
+            ],
+            "final_pointer": "/items/0/payments/0"
+          },
+          "bank_payment_authenticated": false
+        },
+        {
+          "snapshot_id": "O02",
+          "period_index": 0,
+          "period_ref": "SYNTHETIC-hold-1",
+          "detail_item_id": "SYNTHETIC-other",
+          "payment_id": "SYNTHETIC-payment-0-other",
+          "date": "2027-03-01",
+          "amount": {
+            "denominator": "1",
+            "numerator": "5"
+          },
+          "currency": "USD",
+          "payment_source_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/boundary_source_utf8",
+              "/periods/0/detail_source_utf8"
+            ],
+            "final_pointer": "/items/1/payments/0"
+          },
+          "bank_payment_authenticated": false
+        },
+        {
+          "snapshot_id": "O02",
+          "period_index": 1,
+          "period_ref": "SYNTHETIC-hold-2",
+          "detail_item_id": "SYNTHETIC-insurance",
+          "payment_id": "SYNTHETIC-payment-1-insurance",
+          "date": "2027-06-01",
+          "amount": {
+            "denominator": "1",
+            "numerator": "12"
+          },
+          "currency": "USD",
+          "payment_source_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/boundary_source_utf8",
+              "/periods/1/detail_source_utf8"
+            ],
+            "final_pointer": "/items/0/payments/0"
+          },
+          "bank_payment_authenticated": false
+        },
+        {
+          "snapshot_id": "O02",
+          "period_index": 1,
+          "period_ref": "SYNTHETIC-hold-2",
+          "detail_item_id": "SYNTHETIC-other",
+          "payment_id": "SYNTHETIC-payment-1-other",
+          "date": "2027-06-01",
+          "amount": {
+            "denominator": "1",
+            "numerator": "5"
+          },
+          "currency": "USD",
+          "payment_source_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/boundary_source_utf8",
+              "/periods/1/detail_source_utf8"
+            ],
+            "final_pointer": "/items/1/payments/0"
+          },
+          "bank_payment_authenticated": false
+        }
+      ],
+      "period_rows": [
+        {
+          "snapshot_id": "O02",
+          "period_index": 0,
+          "period_ref": "SYNTHETIC-hold-1",
+          "start_date": "2027-01-01",
+          "end_date": "2027-04-01",
+          "cash_date": "2027-03-01",
+          "currency": "USD",
+          "accrued_income": {
+            "numerator": "28",
+            "denominator": "1"
+          },
+          "accrued_expenses_ex_tax": {
+            "numerator": "15",
+            "denominator": "1"
+          },
+          "property_tax": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "accrued_NOI": {
+            "numerator": "13",
+            "denominator": "1"
+          },
+          "operating_receipts": {
+            "numerator": "28",
+            "denominator": "1"
+          },
+          "operating_payments": {
+            "numerator": "10",
+            "denominator": "1"
+          },
+          "net_operating_cash": {
+            "numerator": "18",
+            "denominator": "1"
+          },
+          "net_cash_minus_NOI": {
+            "numerator": "5",
+            "denominator": "1"
+          },
+          "working_balance_deltas": {
+            "receivables": {
+              "numerator": "0",
+              "denominator": "1"
+            },
+            "advance_income": {
+              "numerator": "0",
+              "denominator": "1"
+            },
+            "payables": {
+              "numerator": "5",
+              "denominator": "1"
+            },
+            "prepaid_expenses": {
+              "numerator": "0",
+              "denominator": "1"
+            }
+          },
+          "opening_free_cash": {
+            "denominator": "1",
+            "numerator": "590"
+          },
+          "opening_restricted_cash": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "debt_principal_payment": {
+            "denominator": "1",
+            "numerator": "40"
+          },
+          "debt_interest_payment": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "debt_fee_payment": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "capital_expenditure": {
+            "denominator": "1",
+            "numerator": "20"
+          },
+          "reserve_deposit": {
+            "denominator": "1",
+            "numerator": "50"
+          },
+          "reserve_release": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "equity_contribution": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "nonfinancing_other_cash_receipt": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "other_cash_payment": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "free_cash_before_proposed_distribution": {
+            "numerator": "498",
+            "denominator": "1"
+          },
+          "planned_operating_distribution": {
+            "denominator": "1",
+            "numerator": "100"
+          },
+          "closing_free_cash_claim": {
+            "numerator": "398",
+            "denominator": "1"
+          },
+          "closing_restricted_cash_claim": {
+            "numerator": "50",
+            "denominator": "1"
+          },
+          "proposed_distribution_minus_net_operating_cash": {
+            "numerator": "82",
+            "denominator": "1"
+          },
+          "noi_source_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/0/noi_source_utf8"
+            ],
+            "final_pointer": ""
+          },
+          "cash_source_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/0/cash_source_utf8"
+            ],
+            "final_pointer": ""
+          },
+          "detail_source_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/boundary_source_utf8",
+              "/periods/0/detail_source_utf8"
+            ],
+            "final_pointer": ""
+          },
+          "source_byte_hashes_verified": true,
+          "declared_run_hashes_crossmatched_not_independently_replayed": true,
+          "distribution_authorized": false,
+          "capital_repayment_classified": false,
+          "operating_year_coverage_verified": false
+        },
+        {
+          "snapshot_id": "O02",
+          "period_index": 1,
+          "period_ref": "SYNTHETIC-hold-2",
+          "start_date": "2027-04-01",
+          "end_date": "2027-07-01",
+          "cash_date": "2027-06-01",
+          "currency": "USD",
+          "accrued_income": {
+            "numerator": "60",
+            "denominator": "1"
+          },
+          "accrued_expenses_ex_tax": {
+            "numerator": "17",
+            "denominator": "1"
+          },
+          "property_tax": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "accrued_NOI": {
+            "numerator": "43",
+            "denominator": "1"
+          },
+          "operating_receipts": {
+            "numerator": "60",
+            "denominator": "1"
+          },
+          "operating_payments": {
+            "numerator": "17",
+            "denominator": "1"
+          },
+          "net_operating_cash": {
+            "numerator": "43",
+            "denominator": "1"
+          },
+          "net_cash_minus_NOI": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "working_balance_deltas": {
+            "receivables": {
+              "numerator": "0",
+              "denominator": "1"
+            },
+            "advance_income": {
+              "numerator": "0",
+              "denominator": "1"
+            },
+            "payables": {
+              "numerator": "0",
+              "denominator": "1"
+            },
+            "prepaid_expenses": {
+              "numerator": "0",
+              "denominator": "1"
+            }
+          },
+          "opening_free_cash": {
+            "denominator": "1",
+            "numerator": "398"
+          },
+          "opening_restricted_cash": {
+            "denominator": "1",
+            "numerator": "50"
+          },
+          "debt_principal_payment": {
+            "denominator": "1",
+            "numerator": "60"
+          },
+          "debt_interest_payment": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "debt_fee_payment": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "capital_expenditure": {
+            "denominator": "1",
+            "numerator": "20"
+          },
+          "reserve_deposit": {
+            "denominator": "1",
+            "numerator": "50"
+          },
+          "reserve_release": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "equity_contribution": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "nonfinancing_other_cash_receipt": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "other_cash_payment": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "free_cash_before_proposed_distribution": {
+            "numerator": "311",
+            "denominator": "1"
+          },
+          "planned_operating_distribution": {
+            "denominator": "1",
+            "numerator": "100"
+          },
+          "closing_free_cash_claim": {
+            "numerator": "211",
+            "denominator": "1"
+          },
+          "closing_restricted_cash_claim": {
+            "numerator": "100",
+            "denominator": "1"
+          },
+          "proposed_distribution_minus_net_operating_cash": {
+            "numerator": "57",
+            "denominator": "1"
+          },
+          "noi_source_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/1/noi_source_utf8"
+            ],
+            "final_pointer": ""
+          },
+          "cash_source_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/1/cash_source_utf8"
+            ],
+            "final_pointer": ""
+          },
+          "detail_source_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/boundary_source_utf8",
+              "/periods/1/detail_source_utf8"
+            ],
+            "final_pointer": ""
+          },
+          "source_byte_hashes_verified": true,
+          "declared_run_hashes_crossmatched_not_independently_replayed": true,
+          "distribution_authorized": false,
+          "capital_repayment_classified": false,
+          "operating_year_coverage_verified": false
+        }
+      ],
+      "stock_sum_checks": [
+        {
+          "snapshot_id": "O02",
+          "period_index": 0,
+          "item_balance_field": "opening_payables",
+          "aggregate_working_family": "payables",
+          "cut": "opening",
+          "item_sum": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "aggregate_claim": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "aggregate_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/0/cash_source_utf8"
+            ],
+            "final_pointer": "/working_balances/payables/opening"
+          }
+        },
+        {
+          "snapshot_id": "O02",
+          "period_index": 0,
+          "item_balance_field": "closing_payables",
+          "aggregate_working_family": "payables",
+          "cut": "closing",
+          "item_sum": {
+            "numerator": "5",
+            "denominator": "1"
+          },
+          "aggregate_claim": {
+            "numerator": "5",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "aggregate_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/0/cash_source_utf8"
+            ],
+            "final_pointer": "/working_balances/payables/closing"
+          }
+        },
+        {
+          "snapshot_id": "O02",
+          "period_index": 0,
+          "item_balance_field": "opening_prepaid",
+          "aggregate_working_family": "prepaid_expenses",
+          "cut": "opening",
+          "item_sum": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "aggregate_claim": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "aggregate_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/0/cash_source_utf8"
+            ],
+            "final_pointer": "/working_balances/prepaid_expenses/opening"
+          }
+        },
+        {
+          "snapshot_id": "O02",
+          "period_index": 0,
+          "item_balance_field": "closing_prepaid",
+          "aggregate_working_family": "prepaid_expenses",
+          "cut": "closing",
+          "item_sum": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "aggregate_claim": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "aggregate_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/0/cash_source_utf8"
+            ],
+            "final_pointer": "/working_balances/prepaid_expenses/closing"
+          }
+        },
+        {
+          "snapshot_id": "O02",
+          "period_index": 1,
+          "item_balance_field": "opening_payables",
+          "aggregate_working_family": "payables",
+          "cut": "opening",
+          "item_sum": {
+            "numerator": "5",
+            "denominator": "1"
+          },
+          "aggregate_claim": {
+            "numerator": "5",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "aggregate_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/1/cash_source_utf8"
+            ],
+            "final_pointer": "/working_balances/payables/opening"
+          }
+        },
+        {
+          "snapshot_id": "O02",
+          "period_index": 1,
+          "item_balance_field": "closing_payables",
+          "aggregate_working_family": "payables",
+          "cut": "closing",
+          "item_sum": {
+            "numerator": "5",
+            "denominator": "1"
+          },
+          "aggregate_claim": {
+            "numerator": "5",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "aggregate_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/1/cash_source_utf8"
+            ],
+            "final_pointer": "/working_balances/payables/closing"
+          }
+        },
+        {
+          "snapshot_id": "O02",
+          "period_index": 1,
+          "item_balance_field": "opening_prepaid",
+          "aggregate_working_family": "prepaid_expenses",
+          "cut": "opening",
+          "item_sum": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "aggregate_claim": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "aggregate_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/1/cash_source_utf8"
+            ],
+            "final_pointer": "/working_balances/prepaid_expenses/opening"
+          }
+        },
+        {
+          "snapshot_id": "O02",
+          "period_index": 1,
+          "item_balance_field": "closing_prepaid",
+          "aggregate_working_family": "prepaid_expenses",
+          "cut": "closing",
+          "item_sum": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "aggregate_claim": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "aggregate_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/1/cash_source_utf8"
+            ],
+            "final_pointer": "/working_balances/prepaid_expenses/closing"
+          }
+        }
+      ],
+      "continuity_checks": [
+        {
+          "snapshot_id": "O02",
+          "scope": "aggregate_working_balance",
+          "identity": "receivables",
+          "closing_value": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "next_opening_value": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "closing_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/0/cash_source_utf8"
+            ],
+            "final_pointer": "/working_balances/receivables/closing"
+          },
+          "next_opening_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/1/cash_source_utf8"
+            ],
+            "final_pointer": "/working_balances/receivables/opening"
+          }
+        },
+        {
+          "snapshot_id": "O02",
+          "scope": "aggregate_working_balance",
+          "identity": "advance_income",
+          "closing_value": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "next_opening_value": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "closing_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/0/cash_source_utf8"
+            ],
+            "final_pointer": "/working_balances/advance_income/closing"
+          },
+          "next_opening_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/1/cash_source_utf8"
+            ],
+            "final_pointer": "/working_balances/advance_income/opening"
+          }
+        },
+        {
+          "snapshot_id": "O02",
+          "scope": "aggregate_working_balance",
+          "identity": "payables",
+          "closing_value": {
+            "numerator": "5",
+            "denominator": "1"
+          },
+          "next_opening_value": {
+            "numerator": "5",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "closing_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/0/cash_source_utf8"
+            ],
+            "final_pointer": "/working_balances/payables/closing"
+          },
+          "next_opening_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/1/cash_source_utf8"
+            ],
+            "final_pointer": "/working_balances/payables/opening"
+          }
+        },
+        {
+          "snapshot_id": "O02",
+          "scope": "aggregate_working_balance",
+          "identity": "prepaid_expenses",
+          "closing_value": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "next_opening_value": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "closing_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/0/cash_source_utf8"
+            ],
+            "final_pointer": "/working_balances/prepaid_expenses/closing"
+          },
+          "next_opening_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/periods/1/cash_source_utf8"
+            ],
+            "final_pointer": "/working_balances/prepaid_expenses/opening"
+          }
+        },
+        {
+          "snapshot_id": "O02",
+          "scope": "detail_item_balance",
+          "identity": "SYNTHETIC-insurance:payables",
+          "closing_value": {
+            "numerator": "5",
+            "denominator": "1"
+          },
+          "next_opening_value": {
+            "numerator": "5",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "closing_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/boundary_source_utf8",
+              "/periods/0/detail_source_utf8"
+            ],
+            "final_pointer": "/items/0/closing_payables"
+          },
+          "next_opening_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/boundary_source_utf8",
+              "/periods/1/detail_source_utf8"
+            ],
+            "final_pointer": "/items/0/opening_payables"
+          }
+        },
+        {
+          "snapshot_id": "O02",
+          "scope": "detail_item_balance",
+          "identity": "SYNTHETIC-insurance:prepaid",
+          "closing_value": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "next_opening_value": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "closing_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/boundary_source_utf8",
+              "/periods/0/detail_source_utf8"
+            ],
+            "final_pointer": "/items/0/closing_prepaid"
+          },
+          "next_opening_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/boundary_source_utf8",
+              "/periods/1/detail_source_utf8"
+            ],
+            "final_pointer": "/items/0/opening_prepaid"
+          }
+        },
+        {
+          "snapshot_id": "O02",
+          "scope": "detail_item_balance",
+          "identity": "SYNTHETIC-other:payables",
+          "closing_value": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "next_opening_value": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "closing_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/boundary_source_utf8",
+              "/periods/0/detail_source_utf8"
+            ],
+            "final_pointer": "/items/1/closing_payables"
+          },
+          "next_opening_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/boundary_source_utf8",
+              "/periods/1/detail_source_utf8"
+            ],
+            "final_pointer": "/items/1/opening_payables"
+          }
+        },
+        {
+          "snapshot_id": "O02",
+          "scope": "detail_item_balance",
+          "identity": "SYNTHETIC-other:prepaid",
+          "closing_value": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "next_opening_value": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "closing_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/boundary_source_utf8",
+              "/periods/0/detail_source_utf8"
+            ],
+            "final_pointer": "/items/1/closing_prepaid"
+          },
+          "next_opening_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/boundary_source_utf8",
+              "/periods/1/detail_source_utf8"
+            ],
+            "final_pointer": "/items/1/opening_prepaid"
+          }
+        },
+        {
+          "snapshot_id": "O02",
+          "scope": "detail_item_balance",
+          "identity": "SYNTHETIC-tax:payables",
+          "closing_value": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "next_opening_value": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "closing_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/boundary_source_utf8",
+              "/periods/0/detail_source_utf8"
+            ],
+            "final_pointer": "/items/2/closing_payables"
+          },
+          "next_opening_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/boundary_source_utf8",
+              "/periods/1/detail_source_utf8"
+            ],
+            "final_pointer": "/items/2/opening_payables"
+          }
+        },
+        {
+          "snapshot_id": "O02",
+          "scope": "detail_item_balance",
+          "identity": "SYNTHETIC-tax:prepaid",
+          "closing_value": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "next_opening_value": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "closing_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/boundary_source_utf8",
+              "/periods/0/detail_source_utf8"
+            ],
+            "final_pointer": "/items/2/closing_prepaid"
+          },
+          "next_opening_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/boundary_source_utf8",
+              "/periods/1/detail_source_utf8"
+            ],
+            "final_pointer": "/items/2/opening_prepaid"
+          }
+        }
+      ],
+      "aggregate_comparisons": [
+        {
+          "snapshot_id": "O02",
+          "field": "capital_expenditure",
+          "aggregation": "sum_period_flows",
+          "calculated": {
+            "numerator": "40",
+            "denominator": "1"
+          },
+          "saved_value": {
+            "denominator": "1",
+            "numerator": "40"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "saved_ref": {
+            "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+            "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_operating_totals/capital_expenditure"
+          }
+        },
+        {
+          "snapshot_id": "O02",
+          "field": "closing_free_cash_claim",
+          "aggregation": "last_closing_stock",
+          "calculated": {
+            "numerator": "211",
+            "denominator": "1"
+          },
+          "saved_value": {
+            "denominator": "1",
+            "numerator": "211"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "saved_ref": {
+            "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+            "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_operating_totals/closing_free_cash_claim"
+          }
+        },
+        {
+          "snapshot_id": "O02",
+          "field": "closing_restricted_cash_claim",
+          "aggregation": "last_closing_stock",
+          "calculated": {
+            "numerator": "100",
+            "denominator": "1"
+          },
+          "saved_value": {
+            "denominator": "1",
+            "numerator": "100"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "saved_ref": {
+            "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+            "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_operating_totals/closing_restricted_cash_claim"
+          }
+        },
+        {
+          "snapshot_id": "O02",
+          "field": "debt_fee_payment",
+          "aggregation": "sum_period_flows",
+          "calculated": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "saved_value": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "saved_ref": {
+            "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+            "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_operating_totals/debt_fee_payment"
+          }
+        },
+        {
+          "snapshot_id": "O02",
+          "field": "debt_interest_payment",
+          "aggregation": "sum_period_flows",
+          "calculated": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "saved_value": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "saved_ref": {
+            "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+            "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_operating_totals/debt_interest_payment"
+          }
+        },
+        {
+          "snapshot_id": "O02",
+          "field": "debt_principal_payment",
+          "aggregation": "sum_period_flows",
+          "calculated": {
+            "numerator": "100",
+            "denominator": "1"
+          },
+          "saved_value": {
+            "denominator": "1",
+            "numerator": "100"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "saved_ref": {
+            "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+            "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_operating_totals/debt_principal_payment"
+          }
+        },
+        {
+          "snapshot_id": "O02",
+          "field": "equity_contribution",
+          "aggregation": "sum_period_flows",
+          "calculated": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "saved_value": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "saved_ref": {
+            "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+            "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_operating_totals/equity_contribution"
+          }
+        },
+        {
+          "snapshot_id": "O02",
+          "field": "net_operating_cash",
+          "aggregation": "sum_period_flows",
+          "calculated": {
+            "numerator": "61",
+            "denominator": "1"
+          },
+          "saved_value": {
+            "denominator": "1",
+            "numerator": "61"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "saved_ref": {
+            "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+            "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_operating_totals/net_operating_cash"
+          }
+        },
+        {
+          "snapshot_id": "O02",
+          "field": "nonfinancing_other_cash_receipt",
+          "aggregation": "sum_period_flows",
+          "calculated": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "saved_value": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "saved_ref": {
+            "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+            "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_operating_totals/nonfinancing_other_cash_receipt"
+          }
+        },
+        {
+          "snapshot_id": "O02",
+          "field": "opening_free_cash",
+          "aggregation": "first_opening_stock",
+          "calculated": {
+            "numerator": "590",
+            "denominator": "1"
+          },
+          "saved_value": {
+            "denominator": "1",
+            "numerator": "590"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "saved_ref": {
+            "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+            "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_operating_totals/opening_free_cash"
+          }
+        },
+        {
+          "snapshot_id": "O02",
+          "field": "opening_restricted_cash",
+          "aggregation": "first_opening_stock",
+          "calculated": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "saved_value": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "saved_ref": {
+            "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+            "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_operating_totals/opening_restricted_cash"
+          }
+        },
+        {
+          "snapshot_id": "O02",
+          "field": "operating_payments",
+          "aggregation": "sum_period_flows",
+          "calculated": {
+            "numerator": "27",
+            "denominator": "1"
+          },
+          "saved_value": {
+            "denominator": "1",
+            "numerator": "27"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "saved_ref": {
+            "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+            "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_operating_totals/operating_payments"
+          }
+        },
+        {
+          "snapshot_id": "O02",
+          "field": "operating_receipts",
+          "aggregation": "sum_period_flows",
+          "calculated": {
+            "numerator": "88",
+            "denominator": "1"
+          },
+          "saved_value": {
+            "denominator": "1",
+            "numerator": "88"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "saved_ref": {
+            "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+            "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_operating_totals/operating_receipts"
+          }
+        },
+        {
+          "snapshot_id": "O02",
+          "field": "other_cash_payment",
+          "aggregation": "sum_period_flows",
+          "calculated": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "saved_value": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "saved_ref": {
+            "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+            "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_operating_totals/other_cash_payment"
+          }
+        },
+        {
+          "snapshot_id": "O02",
+          "field": "planned_operating_distribution",
+          "aggregation": "sum_period_flows",
+          "calculated": {
+            "numerator": "200",
+            "denominator": "1"
+          },
+          "saved_value": {
+            "denominator": "1",
+            "numerator": "200"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "saved_ref": {
+            "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+            "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_operating_totals/planned_operating_distribution"
+          }
+        },
+        {
+          "snapshot_id": "O02",
+          "field": "reserve_deposit",
+          "aggregation": "sum_period_flows",
+          "calculated": {
+            "numerator": "100",
+            "denominator": "1"
+          },
+          "saved_value": {
+            "denominator": "1",
+            "numerator": "100"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "saved_ref": {
+            "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+            "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_operating_totals/reserve_deposit"
+          }
+        },
+        {
+          "snapshot_id": "O02",
+          "field": "reserve_release",
+          "aggregation": "sum_period_flows",
+          "calculated": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "saved_value": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "saved_ref": {
+            "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+            "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+            "embedded_json_pointers": [],
+            "final_pointer": "/current_operating_totals/reserve_release"
+          }
+        }
+      ],
+      "summary": {
+        "accrued_income": {
+          "numerator": "88",
+          "denominator": "1"
+        },
+        "accrued_expenses_ex_tax": {
+          "numerator": "32",
+          "denominator": "1"
+        },
+        "accrued_NOI": {
+          "numerator": "56",
+          "denominator": "1"
+        },
+        "operating_payments": {
+          "numerator": "27",
+          "denominator": "1"
+        },
+        "net_operating_cash": {
+          "numerator": "61",
+          "denominator": "1"
+        },
+        "planned_operating_distributions": {
+          "numerator": "200",
+          "denominator": "1"
+        },
+        "distribution_minus_net_operating_cash": {
+          "numerator": "139",
+          "denominator": "1"
+        },
+        "opening_free_cash": {
+          "denominator": "1",
+          "numerator": "590"
+        },
+        "closing_free_cash": {
+          "numerator": "211",
+          "denominator": "1"
+        },
+        "closing_restricted_cash": {
+          "numerator": "100",
+          "denominator": "1"
+        },
+        "annual_CoC": null,
+        "capital_repaid": null,
+        "personal_return": null
+      },
+      "financial_decision": "PENDING",
+      "zero_tax_profile_only": true,
+      "source_authority_verified": false,
+      "distribution_authorized": false
+    }
+  ],
+  "source_inputs_modified": false,
+  "old_results_modified": false,
+  "model_producers_imported_or_called": false,
+  "IRR_recalculated": false,
+  "deliberate_faults_introduced": 0,
+  "actual_model_bug_fixes": 0,
+  "new_runtime_components": 0,
+  "new_tests": 0,
+  "technical_tests_unchanged": 1619,
+  "financial_bindings_activated": 0,
+  "financial_acceptance_checks_executed": 0,
+  "published_model_input_values_added": 0,
+  "original_semantic_mappings_pending": 54,
+  "financial_model_complete": false,
+  "professional_review_authenticated": false,
+  "personal_return_verified": false,
+  "real_decisions_enabled": false,
+  "deployment_enabled": false,
+  "PDF_generated": false,
+  "formulas": {
+    "item_payment": "accrued expense + opening payables - closing payables + closing prepaid - opening prepaid",
+    "operating_receipts": "accrued income - noncash revenue - delta receivables + delta advance income",
+    "operating_payments": "accrued expenses + property tax - noncash expense - delta payables + delta prepaid expenses",
+    "net_operating_cash": "operating receipts - operating payments",
+    "accrued_NOI": "accrued income - accrued expenses excluding tax - property tax under supplied zero coefficient/floor guards",
+    "net_cash_minus_NOI": "- noncash revenue + noncash expense - delta receivables + delta advance income + delta payables - delta prepaid expenses",
+    "free_cash_before_proposed_distribution": "opening free cash + net operating cash + nonfinancing other receipts + reserve release + equity contribution - debt principal/interest/fees - capex - other cash payments - reserve deposit",
+    "closing_free_cash": "free cash before proposed distribution - supplied proposed operating distribution",
+    "closing_restricted_cash": "opening restricted cash + reserve deposit - reserve release",
+    "aggregation": "sum period flows; retain first opening and last closing stocks; no sum of successive stock balances"
+  },
+  "definition_refs": [
+    {
+      "path": "docs/operating-settlement-bridges.md",
+      "sha256": "defb05e619f39a1f413491bf5ff20b6cf8e0119d6de4941870988eaacab27bd4",
+      "line": 11,
+      "marker": "- Cobros ="
+    },
+    {
+      "path": "docs/operating-settlement-bridges.md",
+      "sha256": "defb05e619f39a1f413491bf5ff20b6cf8e0119d6de4941870988eaacab27bd4",
+      "line": 12,
+      "marker": "- Pagos ="
+    },
+    {
+      "path": "docs/operating-settlement-bridges.md",
+      "sha256": "defb05e619f39a1f413491bf5ff20b6cf8e0119d6de4941870988eaacab27bd4",
+      "line": 13,
+      "marker": "- NOI candidato ="
+    },
+    {
+      "path": "docs/technical-implementation-T76.md",
+      "sha256": "15b1ad5902b3f44f7085b3bf215d02cf40384177dc12a88e6fcf5ae8afd60bfa",
+      "line": 9,
+      "marker": "Para cada concepto:"
+    },
+    {
+      "path": "src/miniuw_foundation/operating_cash.py",
+      "sha256": "1c23d1c6d629e98eb2448f2ab697bf2970dda501275c072ac64109d4f36ef6f1",
+      "line": 123,
+      "marker": "available=_bounded(vals"
+    },
+    {
+      "path": "src/miniuw_foundation/operating_cash.py",
+      "sha256": "1c23d1c6d629e98eb2448f2ab697bf2970dda501275c072ac64109d4f36ef6f1",
+      "line": 125,
+      "marker": "close_restricted=_bounded(vals"
+    }
+  ]
+}

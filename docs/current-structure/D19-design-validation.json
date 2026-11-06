@@ -1,0 +1,84 @@
+{
+  "snapshot_id": "D19",
+  "status": "passed_read_only_accrual_item_cash_working_balance_and_proposed_distribution_reconciliation",
+  "previous_design_commit": "e340d28f64fca21d0acab7f064a0a3217d6a033d",
+  "technical_baseline": "T111",
+  "technical_baseline_commit": "9aeb590151068ccd51f4eca0e92f7c766464ba94",
+  "prior_files_preserved": 1240,
+  "actual_changed_prior_files": [
+    "BACKUP_MANIFEST.json",
+    "README.md",
+    "WORK_LOG.md"
+  ],
+  "outer_snapshot_bindings_verified": 2,
+  "period_observations_verified": 4,
+  "expense_concept_observations_verified": 12,
+  "planned_payment_rows_verified": 8,
+  "explicitly_complete_empty_tax_payment_inventories": 4,
+  "expense_stock_sum_checks_verified": 16,
+  "continuity_checks_verified": 20,
+  "aggregate_field_comparisons_verified": 34,
+  "definition_locations_verified": 6,
+  "source_reference_locations_verified": 134,
+  "reference_NOI": 58,
+  "compared_NOI": 56,
+  "reference_net_operating_cash": 63,
+  "compared_net_operating_cash": 61,
+  "proposed_distribution_each_snapshot": 200,
+  "distribution_minus_net_cash": [
+    137,
+    139
+  ],
+  "closing_free_cash": [
+    213,
+    211
+  ],
+  "declared_run_hashes_crossmatched_not_independently_replayed": true,
+  "new_runtime_components": 0,
+  "new_tests": 0,
+  "technical_tests_unchanged": 1619,
+  "financial_bindings_activated": 0,
+  "financial_acceptance_checks_executed": 0,
+  "published_model_input_values_added": 0,
+  "deliberate_faults_introduced": 0,
+  "actual_model_bug_fixes": 0,
+  "model_producers_imported_or_called": false,
+  "IRR_recalculated": false,
+  "source_inputs_modified": false,
+  "old_results_modified": false,
+  "source_versions": [
+    {
+      "path": "docs/current-structure/MiniUW_NOI_Pagos_y_Distribuciones_D19.json",
+      "bytes": 139901,
+      "sha256": "f895686a1a1798b1a4a1f12a90431fefac11a7d5bea223e25c3a84808278772d"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_NOI_Pagos_y_Distribuciones_D19.md",
+      "bytes": 6521,
+      "sha256": "1b930e9c4dc5b386206daf1f6fa2ec160fbacb64b996a57cba6330cf0bce0763"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Conceptos_12_D19.csv",
+      "bytes": 16628,
+      "sha256": "c7f4412f8578f1f055ded4f741adafe4b2de8de0b10b49d142d074bd59b84d9e"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Pagos_8_D19.csv",
+      "bytes": 4224,
+      "sha256": "5404bc2b62c6ecc404f7512a0f6987fcbeca67d932eb07a1e9ddf3477941fe77"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Puentes_Operativos_4_D19.csv",
+      "bytes": 11066,
+      "sha256": "a3c0e5d7555b96346ed124f0230dfe53989e075e963b76eb1dd9d1a320e2a156"
+    }
+  ],
+  "financial_model_complete": false,
+  "professional_review_authenticated": false,
+  "personal_return_verified": false,
+  "distribution_authorized": false,
+  "capital_repayment_classified": false,
+  "real_decisions_enabled": false,
+  "deployment_enabled": false,
+  "PDF_generated": false
+}

@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D18 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D19 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 51209,
-      "sha256": "33f12914cd0bf2cd9c1e03a60861c1d9fdd71f91a89030afc1ce4533fcb2fa13"
+      "bytes": 51969,
+      "sha256": "20519e309ce143cdcab408da1137687ef6f16e1090682d521a4c817088763192"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 236513,
-      "sha256": "3eede67a3d18f65e42012e83891153f9739f4b9617006d74e36d687aa3e4db43"
+      "bytes": 239398,
+      "sha256": "378a9985a015c390db2863609353ace5390a88dc2eafc3d1686f20e4d4ae123e"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -217,6 +217,11 @@
       "sha256": "4ec36f4ee61c0eff785f1e91fa22b43945cc13cb22d7e589a2dbc62b650d037f"
     },
     {
+      "path": "docs/current-structure/D19-design-validation.json",
+      "bytes": 2918,
+      "sha256": "bc67042ad18f100be71d0615454cf3a07cb07139a6ac2f5781457a4088f31e73"
+    },
+    {
       "path": "docs/current-structure/MiniUW_55_campos_D04.csv",
       "bytes": 28155,
       "sha256": "36933edad8b3b905d629bb0e67113b316578a63f4652744af069b9cb302f0454"
@@ -305,6 +310,11 @@
       "path": "docs/current-structure/MiniUW_Comprobaciones_24_D13.csv",
       "bytes": 6240,
       "sha256": "5be9700d280070ba26a7498e4825fcec4f67fcb16d0bd49cd6b560bd49625906"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Conceptos_12_D19.csv",
+      "bytes": 16628,
+      "sha256": "c7f4412f8578f1f055ded4f741adafe4b2de8de0b10b49d142d074bd59b84d9e"
     },
     {
       "path": "docs/current-structure/MiniUW_Conciliacion_Sintetica_D13.json",
@@ -462,6 +472,21 @@
       "sha256": "fd476e36c71f1002210dbb112f992ab24b8e39ba6b1ad66050d8a1e5a478c7ed"
     },
     {
+      "path": "docs/current-structure/MiniUW_NOI_Pagos_y_Distribuciones_D19.json",
+      "bytes": 139901,
+      "sha256": "f895686a1a1798b1a4a1f12a90431fefac11a7d5bea223e25c3a84808278772d"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_NOI_Pagos_y_Distribuciones_D19.md",
+      "bytes": 6521,
+      "sha256": "1b930e9c4dc5b386206daf1f6fa2ec160fbacb64b996a57cba6330cf0bce0763"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Pagos_8_D19.csv",
+      "bytes": 4224,
+      "sha256": "5404bc2b62c6ecc404f7512a0f6987fcbeca67d932eb07a1e9ddf3477941fe77"
+    },
+    {
       "path": "docs/current-structure/MiniUW_Periodos_Deuda_3_D18.csv",
       "bytes": 5669,
       "sha256": "dcbebb760d7bf2c7fbd19b72764cf01ca2a6dca1d303f37d23319e13208a5aa6"
@@ -480,6 +505,11 @@
       "path": "docs/current-structure/MiniUW_Puentes_28_D17.csv",
       "bytes": 44697,
       "sha256": "75efcfd258eff8efb61f692491895cf57826063015650332b8664292a2a6a877"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Puentes_Operativos_4_D19.csv",
+      "bytes": 11066,
+      "sha256": "a3c0e5d7555b96346ed124f0230dfe53989e075e963b76eb1dd9d1a320e2a156"
     },
     {
       "path": "docs/current-structure/MiniUW_Resultados_Controles_D14.json",
