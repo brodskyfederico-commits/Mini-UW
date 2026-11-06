@@ -1,0 +1,79 @@
+{
+  "snapshot_id": "D17",
+  "status": "passed_read_only_closing_claim_roles_single_use_residual_and_boundary_reconciliation",
+  "previous_design_commit": "d94c8237777df0dba27d9684e8aabf2b6a070a25",
+  "technical_baseline": "T111",
+  "technical_baseline_commit": "9aeb590151068ccd51f4eca0e92f7c766464ba94",
+  "prior_files_preserved": 1228,
+  "actual_changed_prior_files": [
+    "BACKUP_MANIFEST.json",
+    "README.md",
+    "WORK_LOG.md"
+  ],
+  "coherent_saved_snapshots": 2,
+  "closing_claims_classified": 38,
+  "free_cash_terms_verified": 24,
+  "excluded_claims_preserved": 14,
+  "missing_valuation_claims_preserved": 2,
+  "explicit_zero_claims_preserved": 16,
+  "exact_boundary_checks_verified": 28,
+  "original_A16_twelve_term_coefficients_preserved": true,
+  "source_reference_locations_verified": 76,
+  "native_contract_locations_verified": 6,
+  "closing_distributions": [
+    578,
+    576
+  ],
+  "total_closing_sources_and_uses": [
+    713,
+    711
+  ],
+  "cutoff_principal_per_snapshot": 100,
+  "operating_plus_sale_principal_per_snapshot": 200,
+  "insurance_settlement_counted_once_per_snapshot": 5,
+  "deliberate_faults_introduced": 0,
+  "actual_model_bug_fixes": 0,
+  "new_runtime_components": 0,
+  "new_tests": 0,
+  "technical_tests_unchanged": 1619,
+  "financial_bindings_activated": 0,
+  "financial_acceptance_checks_executed": 0,
+  "published_model_input_values_added": 0,
+  "model_producers_imported_or_called": false,
+  "IRR_recalculated": false,
+  "source_inputs_modified": false,
+  "old_results_modified": false,
+  "source_versions": [
+    {
+      "path": "docs/current-structure/MiniUW_Cierre_y_Uso_Unico_D17.json",
+      "bytes": 149670,
+      "sha256": "2d63ef91b1e493cc4663aa4e1a202f1c31d31c8741e4db100ed60bbe55b62ee4"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Cierre_y_Uso_Unico_D17.md",
+      "bytes": 7032,
+      "sha256": "552f0944d5e127b7c43b426c3e3ecbe461f7003953ca5c90b02b0bef84848065"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Inventario_38_D17.csv",
+      "bytes": 27412,
+      "sha256": "56108326dd3e1a47b6cd0b4b4c8272015fbc5107d3d21ff48d092aafc33f104d"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Terminos_24_D17.csv",
+      "bytes": 12088,
+      "sha256": "a5251a30a577ac1a7b599cfe63fc91921aa3d04357fae393d7b1dfb2c33c080c"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Puentes_28_D17.csv",
+      "bytes": 44697,
+      "sha256": "75efcfd258eff8efb61f692491895cf57826063015650332b8664292a2a6a877"
+    }
+  ],
+  "financial_model_complete": false,
+  "professional_review_authenticated": false,
+  "personal_return_verified": false,
+  "real_decisions_enabled": false,
+  "deployment_enabled": false,
+  "PDF_generated": false
+}

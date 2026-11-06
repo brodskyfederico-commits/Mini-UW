@@ -1,0 +1,3986 @@
+{
+  "snapshot_id": "D17",
+  "scope": "Read-only complete supplied closing-claim classification, twelve-term free cash residual, total cash and operating/debt/insurance boundary reconciliation in two existing synthetic snapshots; no general sale profile or financial approval",
+  "previous_design_commit": "d94c8237777df0dba27d9684e8aabf2b6a070a25",
+  "technical_baseline": "T111",
+  "technical_baseline_commit": "9aeb590151068ccd51f4eca0e92f7c766464ba94",
+  "native_contract_refs": [
+    {
+      "path": "src/miniuw_foundation/closing_cash.py",
+      "sha256": "7053bbdba91ad38d55909308fc6aef809449944ebae02c1ec387b1bfd810487b",
+      "line": 18,
+      "marker": "CASH_FIELDS="
+    },
+    {
+      "path": "src/miniuw_foundation/closing_cash.py",
+      "sha256": "7053bbdba91ad38d55909308fc6aef809449944ebae02c1ec387b1bfd810487b",
+      "line": 19,
+      "marker": "STOCK_FIELDS="
+    },
+    {
+      "path": "src/miniuw_foundation/closing_cash.py",
+      "sha256": "7053bbdba91ad38d55909308fc6aef809449944ebae02c1ec387b1bfd810487b",
+      "line": 123,
+      "marker": "residual=_bounded(values['opening_free_cash']"
+    },
+    {
+      "path": "src/miniuw_foundation/closing_cash.py",
+      "sha256": "7053bbdba91ad38d55909308fc6aef809449944ebae02c1ec387b1bfd810487b",
+      "line": 130,
+      "marker": "conservation=_bounded(values"
+    },
+    {
+      "path": "src/miniuw_foundation/insurance_terminal_closing.py",
+      "sha256": "37ce6d1f9503873b991df88fde1218603d17c74f56dbbed397777b0ef53673f3",
+      "line": 113,
+      "marker": "no_additional_deduction_applied=True"
+    },
+    {
+      "path": "src/miniuw_foundation/settled_hold_sale.py",
+      "sha256": "95cce059bd65fd0a0704c3165b71a753e48805e4279e17cd199a0682c6fc9084",
+      "line": 86,
+      "marker": "totals['debt_'+key]"
+    }
+  ],
+  "snapshots": [
+    {
+      "snapshot_id": "S01",
+      "input_ref": {
+        "path": "templates/worksheet-settled-matched-T111.json",
+        "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+        "embedded_json_pointers": [],
+        "final_pointer": ""
+      },
+      "result_ref": {
+        "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+        "embedded_json_pointers": [],
+        "final_pointer": ""
+      },
+      "context": {
+        "deal_id": "SYNTHETIC-construction-draw-demo",
+        "definition_set_revision": "SYNTHETIC-simple-interval-factors",
+        "run_id": "SYNTHETIC-construction-draw-run",
+        "scenario_id": "SYNTHETIC-draw-plan"
+      },
+      "evaluated_as_of_UTC": "2027-07-01T12:00:00Z",
+      "closing_date": "2027-07-01",
+      "currency": "USD",
+      "closing_profile": "SYNTHETIC-RESIDUAL-AFTER-EXPLICIT-RETENTION-v1",
+      "closing_claim_inventory": [
+        {
+          "snapshot_id": "S01",
+          "claim_id": "C01",
+          "source_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/sale/closing_source_utf8"
+            ],
+            "final_pointer": "/amounts/opening_free_cash"
+          },
+          "declared_claim": {
+            "as_of_date": "2027-07-01",
+            "basis": "project_cash_before_closing",
+            "currency": "USD",
+            "source_ref": "SYNTHETIC-explicit-closing-source:sale",
+            "value": {
+              "denominator": "1",
+              "numerator": "213"
+            }
+          },
+          "role": "available_opening_free_cash",
+          "coefficient_in_free_cash_residual": 1,
+          "included_in_residual": true,
+          "amount": {
+            "numerator": "213",
+            "denominator": "1"
+          },
+          "explicit_zero": false,
+          "missing_value": false,
+          "signed_cash_term": {
+            "numerator": "213",
+            "denominator": "1"
+          },
+          "financial_authority_verified": false
+        },
+        {
+          "snapshot_id": "S01",
+          "claim_id": "C02",
+          "source_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/sale/closing_source_utf8"
+            ],
+            "final_pointer": "/amounts/gross_proceeds"
+          },
+          "declared_claim": {
+            "as_of_date": "2027-07-01",
+            "basis": "cash_flow_at_closing",
+            "currency": "USD",
+            "source_ref": "SYNTHETIC-explicit-closing-source:sale",
+            "value": {
+              "denominator": "1",
+              "numerator": "400"
+            }
+          },
+          "role": "sale_gross_cash",
+          "coefficient_in_free_cash_residual": 1,
+          "included_in_residual": true,
+          "amount": {
+            "numerator": "400",
+            "denominator": "1"
+          },
+          "explicit_zero": false,
+          "missing_value": false,
+          "signed_cash_term": {
+            "numerator": "400",
+            "denominator": "1"
+          },
+          "financial_authority_verified": false
+        },
+        {
+          "snapshot_id": "S01",
+          "claim_id": "C03",
+          "source_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/sale/closing_source_utf8"
+            ],
+            "final_pointer": "/amounts/reserve_release"
+          },
+          "declared_claim": {
+            "as_of_date": "2027-07-01",
+            "basis": "cash_flow_at_closing",
+            "currency": "USD",
+            "source_ref": "SYNTHETIC-explicit-closing-source:sale",
+            "value": {
+              "denominator": "1",
+              "numerator": "100"
+            }
+          },
+          "role": "internal_transfer_from_restricted_to_free",
+          "coefficient_in_free_cash_residual": 1,
+          "included_in_residual": true,
+          "amount": {
+            "numerator": "100",
+            "denominator": "1"
+          },
+          "explicit_zero": false,
+          "missing_value": false,
+          "signed_cash_term": {
+            "numerator": "100",
+            "denominator": "1"
+          },
+          "financial_authority_verified": false
+        },
+        {
+          "snapshot_id": "S01",
+          "claim_id": "C04",
+          "source_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/sale/closing_source_utf8"
+            ],
+            "final_pointer": "/amounts/other_cash_sources"
+          },
+          "declared_claim": {
+            "as_of_date": "2027-07-01",
+            "basis": "cash_flow_at_closing",
+            "currency": "USD",
+            "source_ref": "SYNTHETIC-explicit-closing-source:sale",
+            "value": {
+              "denominator": "1",
+              "numerator": "0"
+            }
+          },
+          "role": "other_declared_closing_cash_source",
+          "coefficient_in_free_cash_residual": 1,
+          "included_in_residual": true,
+          "amount": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "explicit_zero": true,
+          "missing_value": false,
+          "signed_cash_term": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "financial_authority_verified": false
+        },
+        {
+          "snapshot_id": "S01",
+          "claim_id": "C05",
+          "source_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/sale/closing_source_utf8"
+            ],
+            "final_pointer": "/amounts/closing_costs_paid"
+          },
+          "declared_claim": {
+            "as_of_date": "2027-07-01",
+            "basis": "cash_flow_at_closing",
+            "currency": "USD",
+            "source_ref": "SYNTHETIC-explicit-closing-source:sale",
+            "value": {
+              "denominator": "1",
+              "numerator": "20"
+            }
+          },
+          "role": "closing_cash_cost",
+          "coefficient_in_free_cash_residual": -1,
+          "included_in_residual": true,
+          "amount": {
+            "numerator": "20",
+            "denominator": "1"
+          },
+          "explicit_zero": false,
+          "missing_value": false,
+          "signed_cash_term": {
+            "numerator": "-20",
+            "denominator": "1"
+          },
+          "financial_authority_verified": false
+        },
+        {
+          "snapshot_id": "S01",
+          "claim_id": "C06",
+          "source_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/sale/closing_source_utf8"
+            ],
+            "final_pointer": "/amounts/new_reserve"
+          },
+          "declared_claim": {
+            "as_of_date": "2027-07-01",
+            "basis": "cash_flow_at_closing",
+            "currency": "USD",
+            "source_ref": "SYNTHETIC-explicit-closing-source:sale",
+            "value": {
+              "denominator": "1",
+              "numerator": "0"
+            }
+          },
+          "role": "internal_transfer_from_free_to_restricted",
+          "coefficient_in_free_cash_residual": -1,
+          "included_in_residual": true,
+          "amount": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "explicit_zero": true,
+          "missing_value": false,
+          "signed_cash_term": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "financial_authority_verified": false
+        },
+        {
+          "snapshot_id": "S01",
+          "claim_id": "C07",
+          "source_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/sale/closing_source_utf8"
+            ],
+            "final_pointer": "/amounts/other_cash_uses"
+          },
+          "declared_claim": {
+            "as_of_date": "2027-07-01",
+            "basis": "cash_flow_at_closing",
+            "currency": "USD",
+            "source_ref": "SYNTHETIC-explicit-closing-source:sale",
+            "value": {
+              "denominator": "1",
+              "numerator": "5"
+            }
+          },
+          "role": "other_declared_closing_cash_use",
+          "coefficient_in_free_cash_residual": -1,
+          "included_in_residual": true,
+          "amount": {
+            "numerator": "5",
+            "denominator": "1"
+          },
+          "explicit_zero": false,
+          "missing_value": false,
+          "signed_cash_term": {
+            "numerator": "-5",
+            "denominator": "1"
+          },
+          "financial_authority_verified": false
+        },
+        {
+          "snapshot_id": "S01",
+          "claim_id": "C08",
+          "source_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/sale/closing_source_utf8"
+            ],
+            "final_pointer": "/amounts/retained_free_cash"
+          },
+          "declared_claim": {
+            "as_of_date": "2027-07-01",
+            "basis": "project_cash_after_closing",
+            "currency": "USD",
+            "source_ref": "SYNTHETIC-explicit-closing-source:sale",
+            "value": {
+              "denominator": "1",
+              "numerator": "0"
+            }
+          },
+          "role": "free_cash_retained_not_distributed",
+          "coefficient_in_free_cash_residual": -1,
+          "included_in_residual": true,
+          "amount": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "explicit_zero": true,
+          "missing_value": false,
+          "signed_cash_term": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "financial_authority_verified": false
+        },
+        {
+          "snapshot_id": "S01",
+          "claim_id": "C09",
+          "source_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/sale/closing_source_utf8"
+            ],
+            "final_pointer": "/amounts/opening_restricted_cash"
+          },
+          "declared_claim": {
+            "as_of_date": "2027-07-01",
+            "basis": "project_cash_before_closing",
+            "currency": "USD",
+            "source_ref": "SYNTHETIC-explicit-closing-source:sale",
+            "value": {
+              "denominator": "1",
+              "numerator": "100"
+            }
+          },
+          "role": "restricted_opening_stock_not_second_free_cash_source",
+          "coefficient_in_free_cash_residual": 0,
+          "included_in_residual": false,
+          "amount": {
+            "numerator": "100",
+            "denominator": "1"
+          },
+          "explicit_zero": false,
+          "missing_value": false,
+          "signed_cash_term": null,
+          "financial_authority_verified": false
+        },
+        {
+          "snapshot_id": "S01",
+          "claim_id": "C10",
+          "source_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/sale/closing_source_utf8"
+            ],
+            "final_pointer": "/amounts/closing_restricted_cash_claim"
+          },
+          "declared_claim": {
+            "as_of_date": "2027-07-01",
+            "basis": "project_cash_after_closing",
+            "currency": "USD",
+            "source_ref": "SYNTHETIC-explicit-closing-source:sale",
+            "value": {
+              "denominator": "1",
+              "numerator": "0"
+            }
+          },
+          "role": "restricted_closing_stock_not_second_cash_use",
+          "coefficient_in_free_cash_residual": 0,
+          "included_in_residual": false,
+          "amount": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "explicit_zero": true,
+          "missing_value": false,
+          "signed_cash_term": null,
+          "financial_authority_verified": false
+        },
+        {
+          "snapshot_id": "S01",
+          "claim_id": "C11",
+          "source_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/sale/closing_source_utf8"
+            ],
+            "final_pointer": "/old_debts/0/principal_paid"
+          },
+          "declared_claim": {
+            "as_of_date": "2027-07-01",
+            "basis": "cash_flow_at_closing",
+            "currency": "USD",
+            "source_ref": "SYNTHETIC-explicit-closing-source:refinance",
+            "value": {
+              "denominator": "1",
+              "numerator": "100"
+            }
+          },
+          "role": "old_debt_principal_cash_payment",
+          "coefficient_in_free_cash_residual": -1,
+          "included_in_residual": true,
+          "amount": {
+            "numerator": "100",
+            "denominator": "1"
+          },
+          "explicit_zero": false,
+          "missing_value": false,
+          "signed_cash_term": {
+            "numerator": "-100",
+            "denominator": "1"
+          },
+          "financial_authority_verified": false
+        },
+        {
+          "snapshot_id": "S01",
+          "claim_id": "C12",
+          "source_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/sale/closing_source_utf8"
+            ],
+            "final_pointer": "/old_debts/0/principal_due"
+          },
+          "declared_claim": {
+            "as_of_date": "2027-07-01",
+            "basis": "debt_obligation_before_closing",
+            "currency": "USD",
+            "source_ref": "SYNTHETIC-explicit-closing-source:refinance",
+            "value": {
+              "denominator": "1",
+              "numerator": "100"
+            }
+          },
+          "role": "old_debt_principal_obligation_not_second_payment",
+          "coefficient_in_free_cash_residual": 0,
+          "included_in_residual": false,
+          "amount": {
+            "numerator": "100",
+            "denominator": "1"
+          },
+          "explicit_zero": false,
+          "missing_value": false,
+          "signed_cash_term": null,
+          "financial_authority_verified": false
+        },
+        {
+          "snapshot_id": "S01",
+          "claim_id": "C13",
+          "source_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/sale/closing_source_utf8"
+            ],
+            "final_pointer": "/old_debts/0/interest_paid"
+          },
+          "declared_claim": {
+            "as_of_date": "2027-07-01",
+            "basis": "cash_flow_at_closing",
+            "currency": "USD",
+            "source_ref": "SYNTHETIC-explicit-closing-source:refinance",
+            "value": {
+              "denominator": "1",
+              "numerator": "0"
+            }
+          },
+          "role": "old_debt_interest_cash_payment",
+          "coefficient_in_free_cash_residual": -1,
+          "included_in_residual": true,
+          "amount": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "explicit_zero": true,
+          "missing_value": false,
+          "signed_cash_term": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "financial_authority_verified": false
+        },
+        {
+          "snapshot_id": "S01",
+          "claim_id": "C14",
+          "source_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/sale/closing_source_utf8"
+            ],
+            "final_pointer": "/old_debts/0/interest_due"
+          },
+          "declared_claim": {
+            "as_of_date": "2027-07-01",
+            "basis": "debt_obligation_before_closing",
+            "currency": "USD",
+            "source_ref": "SYNTHETIC-explicit-closing-source:refinance",
+            "value": {
+              "denominator": "1",
+              "numerator": "0"
+            }
+          },
+          "role": "old_debt_interest_obligation_not_second_payment",
+          "coefficient_in_free_cash_residual": 0,
+          "included_in_residual": false,
+          "amount": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "explicit_zero": true,
+          "missing_value": false,
+          "signed_cash_term": null,
+          "financial_authority_verified": false
+        },
+        {
+          "snapshot_id": "S01",
+          "claim_id": "C15",
+          "source_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/sale/closing_source_utf8"
+            ],
+            "final_pointer": "/old_debts/0/fees_paid"
+          },
+          "declared_claim": {
+            "as_of_date": "2027-07-01",
+            "basis": "cash_flow_at_closing",
+            "currency": "USD",
+            "source_ref": "SYNTHETIC-explicit-closing-source:refinance",
+            "value": {
+              "denominator": "1",
+              "numerator": "10"
+            }
+          },
+          "role": "old_debt_fees_cash_payment",
+          "coefficient_in_free_cash_residual": -1,
+          "included_in_residual": true,
+          "amount": {
+            "numerator": "10",
+            "denominator": "1"
+          },
+          "explicit_zero": false,
+          "missing_value": false,
+          "signed_cash_term": {
+            "numerator": "-10",
+            "denominator": "1"
+          },
+          "financial_authority_verified": false
+        },
+        {
+          "snapshot_id": "S01",
+          "claim_id": "C16",
+          "source_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/sale/closing_source_utf8"
+            ],
+            "final_pointer": "/old_debts/0/fees_due"
+          },
+          "declared_claim": {
+            "as_of_date": "2027-07-01",
+            "basis": "debt_obligation_before_closing",
+            "currency": "USD",
+            "source_ref": "SYNTHETIC-explicit-closing-source:refinance",
+            "value": {
+              "denominator": "1",
+              "numerator": "10"
+            }
+          },
+          "role": "old_debt_fees_obligation_not_second_payment",
+          "coefficient_in_free_cash_residual": 0,
+          "included_in_residual": false,
+          "amount": {
+            "numerator": "10",
+            "denominator": "1"
+          },
+          "explicit_zero": false,
+          "missing_value": false,
+          "signed_cash_term": null,
+          "financial_authority_verified": false
+        },
+        {
+          "snapshot_id": "S01",
+          "claim_id": "C17",
+          "source_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/sale/closing_source_utf8"
+            ],
+            "final_pointer": "/old_debts/0/other_paid"
+          },
+          "declared_claim": {
+            "as_of_date": "2027-07-01",
+            "basis": "cash_flow_at_closing",
+            "currency": "USD",
+            "source_ref": "SYNTHETIC-explicit-closing-source:refinance",
+            "value": {
+              "denominator": "1",
+              "numerator": "0"
+            }
+          },
+          "role": "old_debt_other_cash_payment",
+          "coefficient_in_free_cash_residual": -1,
+          "included_in_residual": true,
+          "amount": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "explicit_zero": true,
+          "missing_value": false,
+          "signed_cash_term": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "financial_authority_verified": false
+        },
+        {
+          "snapshot_id": "S01",
+          "claim_id": "C18",
+          "source_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/sale/closing_source_utf8"
+            ],
+            "final_pointer": "/old_debts/0/other_due"
+          },
+          "declared_claim": {
+            "as_of_date": "2027-07-01",
+            "basis": "debt_obligation_before_closing",
+            "currency": "USD",
+            "source_ref": "SYNTHETIC-explicit-closing-source:refinance",
+            "value": {
+              "denominator": "1",
+              "numerator": "0"
+            }
+          },
+          "role": "old_debt_other_obligation_not_second_payment",
+          "coefficient_in_free_cash_residual": 0,
+          "included_in_residual": false,
+          "amount": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "explicit_zero": true,
+          "missing_value": false,
+          "signed_cash_term": null,
+          "financial_authority_verified": false
+        },
+        {
+          "snapshot_id": "S01",
+          "claim_id": "C19",
+          "source_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/sale/closing_source_utf8"
+            ],
+            "final_pointer": "/valuation_claim"
+          },
+          "declared_claim": {
+            "as_of_date": "2027-07-01",
+            "basis": "valuation_not_cash",
+            "currency": "USD",
+            "source_ref": "SYNTHETIC-explicit-closing-source:sale",
+            "value": null
+          },
+          "role": "valuation_not_cash_missing_claim_preserved",
+          "coefficient_in_free_cash_residual": 0,
+          "included_in_residual": false,
+          "amount": null,
+          "explicit_zero": false,
+          "missing_value": true,
+          "signed_cash_term": null,
+          "financial_authority_verified": false
+        }
+      ],
+      "free_cash_terms": [
+        {
+          "snapshot_id": "S01",
+          "term_id": "T01",
+          "inventory_claim_id": "C01",
+          "source_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/sale/closing_source_utf8"
+            ],
+            "final_pointer": "/amounts/opening_free_cash"
+          },
+          "role": "available_opening_free_cash",
+          "coefficient": 1,
+          "amount": {
+            "numerator": "213",
+            "denominator": "1"
+          },
+          "signed_amount": {
+            "numerator": "213",
+            "denominator": "1"
+          },
+          "presentation_order_is_not_intraday_funding_or_payment_priority": true
+        },
+        {
+          "snapshot_id": "S01",
+          "term_id": "T02",
+          "inventory_claim_id": "C02",
+          "source_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/sale/closing_source_utf8"
+            ],
+            "final_pointer": "/amounts/gross_proceeds"
+          },
+          "role": "sale_gross_cash",
+          "coefficient": 1,
+          "amount": {
+            "numerator": "400",
+            "denominator": "1"
+          },
+          "signed_amount": {
+            "numerator": "400",
+            "denominator": "1"
+          },
+          "presentation_order_is_not_intraday_funding_or_payment_priority": true
+        },
+        {
+          "snapshot_id": "S01",
+          "term_id": "T03",
+          "inventory_claim_id": "C03",
+          "source_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/sale/closing_source_utf8"
+            ],
+            "final_pointer": "/amounts/reserve_release"
+          },
+          "role": "internal_transfer_from_restricted_to_free",
+          "coefficient": 1,
+          "amount": {
+            "numerator": "100",
+            "denominator": "1"
+          },
+          "signed_amount": {
+            "numerator": "100",
+            "denominator": "1"
+          },
+          "presentation_order_is_not_intraday_funding_or_payment_priority": true
+        },
+        {
+          "snapshot_id": "S01",
+          "term_id": "T04",
+          "inventory_claim_id": "C04",
+          "source_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/sale/closing_source_utf8"
+            ],
+            "final_pointer": "/amounts/other_cash_sources"
+          },
+          "role": "other_declared_closing_cash_source",
+          "coefficient": 1,
+          "amount": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "signed_amount": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "presentation_order_is_not_intraday_funding_or_payment_priority": true
+        },
+        {
+          "snapshot_id": "S01",
+          "term_id": "T05",
+          "inventory_claim_id": "C05",
+          "source_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/sale/closing_source_utf8"
+            ],
+            "final_pointer": "/amounts/closing_costs_paid"
+          },
+          "role": "closing_cash_cost",
+          "coefficient": -1,
+          "amount": {
+            "numerator": "20",
+            "denominator": "1"
+          },
+          "signed_amount": {
+            "numerator": "-20",
+            "denominator": "1"
+          },
+          "presentation_order_is_not_intraday_funding_or_payment_priority": true
+        },
+        {
+          "snapshot_id": "S01",
+          "term_id": "T06",
+          "inventory_claim_id": "C06",
+          "source_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/sale/closing_source_utf8"
+            ],
+            "final_pointer": "/amounts/new_reserve"
+          },
+          "role": "internal_transfer_from_free_to_restricted",
+          "coefficient": -1,
+          "amount": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "signed_amount": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "presentation_order_is_not_intraday_funding_or_payment_priority": true
+        },
+        {
+          "snapshot_id": "S01",
+          "term_id": "T07",
+          "inventory_claim_id": "C07",
+          "source_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/sale/closing_source_utf8"
+            ],
+            "final_pointer": "/amounts/other_cash_uses"
+          },
+          "role": "other_declared_closing_cash_use",
+          "coefficient": -1,
+          "amount": {
+            "numerator": "5",
+            "denominator": "1"
+          },
+          "signed_amount": {
+            "numerator": "-5",
+            "denominator": "1"
+          },
+          "presentation_order_is_not_intraday_funding_or_payment_priority": true
+        },
+        {
+          "snapshot_id": "S01",
+          "term_id": "T08",
+          "inventory_claim_id": "C08",
+          "source_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/sale/closing_source_utf8"
+            ],
+            "final_pointer": "/amounts/retained_free_cash"
+          },
+          "role": "free_cash_retained_not_distributed",
+          "coefficient": -1,
+          "amount": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "signed_amount": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "presentation_order_is_not_intraday_funding_or_payment_priority": true
+        },
+        {
+          "snapshot_id": "S01",
+          "term_id": "T09",
+          "inventory_claim_id": "C11",
+          "source_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/sale/closing_source_utf8"
+            ],
+            "final_pointer": "/old_debts/0/principal_paid"
+          },
+          "role": "old_debt_principal_cash_payment",
+          "coefficient": -1,
+          "amount": {
+            "numerator": "100",
+            "denominator": "1"
+          },
+          "signed_amount": {
+            "numerator": "-100",
+            "denominator": "1"
+          },
+          "presentation_order_is_not_intraday_funding_or_payment_priority": true
+        },
+        {
+          "snapshot_id": "S01",
+          "term_id": "T10",
+          "inventory_claim_id": "C13",
+          "source_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/sale/closing_source_utf8"
+            ],
+            "final_pointer": "/old_debts/0/interest_paid"
+          },
+          "role": "old_debt_interest_cash_payment",
+          "coefficient": -1,
+          "amount": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "signed_amount": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "presentation_order_is_not_intraday_funding_or_payment_priority": true
+        },
+        {
+          "snapshot_id": "S01",
+          "term_id": "T11",
+          "inventory_claim_id": "C15",
+          "source_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/sale/closing_source_utf8"
+            ],
+            "final_pointer": "/old_debts/0/fees_paid"
+          },
+          "role": "old_debt_fees_cash_payment",
+          "coefficient": -1,
+          "amount": {
+            "numerator": "10",
+            "denominator": "1"
+          },
+          "signed_amount": {
+            "numerator": "-10",
+            "denominator": "1"
+          },
+          "presentation_order_is_not_intraday_funding_or_payment_priority": true
+        },
+        {
+          "snapshot_id": "S01",
+          "term_id": "T12",
+          "inventory_claim_id": "C17",
+          "source_ref": {
+            "path": "templates/worksheet-settled-matched-T111.json",
+            "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/sale/closing_source_utf8"
+            ],
+            "final_pointer": "/old_debts/0/other_paid"
+          },
+          "role": "old_debt_other_cash_payment",
+          "coefficient": -1,
+          "amount": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "signed_amount": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "presentation_order_is_not_intraday_funding_or_payment_priority": true
+        }
+      ],
+      "checks": [
+        {
+          "snapshot_id": "S01",
+          "check_id": "B01",
+          "label": "Caja libre de operación a apertura de venta",
+          "formula": "saved operating closing_free_cash_claim = supplied sale opening_free_cash",
+          "left": {
+            "numerator": "213",
+            "denominator": "1"
+          },
+          "right": {
+            "numerator": "213",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "unit": "USD",
+          "source_refs": [
+            {
+              "path": "templates/worksheet-settled-matched-T111.json",
+              "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/sale/closing_source_utf8"
+              ],
+              "final_pointer": "/amounts/opening_free_cash"
+            }
+          ],
+          "result_refs": [
+            {
+              "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+              "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+              "embedded_json_pointers": [],
+              "final_pointer": "/current_operating_totals/closing_free_cash_claim"
+            }
+          ],
+          "status": "matched_exact_scoped_review",
+          "scope_note": "Within the explicitly supplied synthetic profile only",
+          "financial_acceptance": false
+        },
+        {
+          "snapshot_id": "S01",
+          "check_id": "B02",
+          "label": "Caja restringida de operación a apertura de venta",
+          "formula": "saved operating closing_restricted_cash_claim = supplied sale opening_restricted_cash",
+          "left": {
+            "numerator": "100",
+            "denominator": "1"
+          },
+          "right": {
+            "numerator": "100",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "unit": "USD",
+          "source_refs": [
+            {
+              "path": "templates/worksheet-settled-matched-T111.json",
+              "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/sale/closing_source_utf8"
+              ],
+              "final_pointer": "/amounts/opening_restricted_cash"
+            }
+          ],
+          "result_refs": [
+            {
+              "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+              "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+              "embedded_json_pointers": [],
+              "final_pointer": "/current_operating_totals/closing_restricted_cash_claim"
+            }
+          ],
+          "status": "matched_exact_scoped_review",
+          "scope_note": "Within the explicitly supplied synthetic profile only",
+          "financial_acceptance": false
+        },
+        {
+          "snapshot_id": "S01",
+          "check_id": "B03",
+          "label": "Reserva final separada del residual libre",
+          "formula": "opening_restricted_cash + new_reserve - reserve_release = closing_restricted_cash_claim",
+          "left": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "right": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "unit": "USD",
+          "source_refs": [
+            {
+              "path": "templates/worksheet-settled-matched-T111.json",
+              "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/sale/closing_source_utf8"
+              ],
+              "final_pointer": "/amounts/opening_restricted_cash"
+            },
+            {
+              "path": "templates/worksheet-settled-matched-T111.json",
+              "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/sale/closing_source_utf8"
+              ],
+              "final_pointer": "/amounts/new_reserve"
+            },
+            {
+              "path": "templates/worksheet-settled-matched-T111.json",
+              "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/sale/closing_source_utf8"
+              ],
+              "final_pointer": "/amounts/reserve_release"
+            },
+            {
+              "path": "templates/worksheet-settled-matched-T111.json",
+              "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/sale/closing_source_utf8"
+              ],
+              "final_pointer": "/amounts/closing_restricted_cash_claim"
+            }
+          ],
+          "result_refs": [],
+          "status": "matched_exact_scoped_review",
+          "scope_note": "Within the explicitly supplied synthetic profile only",
+          "financial_acceptance": false
+        },
+        {
+          "snapshot_id": "S01",
+          "check_id": "B04",
+          "label": "Obligación y pago declarados de principal",
+          "formula": "principal_due = principal_paid; due is not an additional cash subtraction",
+          "left": {
+            "numerator": "100",
+            "denominator": "1"
+          },
+          "right": {
+            "numerator": "100",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "unit": "USD",
+          "source_refs": [
+            {
+              "path": "templates/worksheet-settled-matched-T111.json",
+              "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/sale/closing_source_utf8"
+              ],
+              "final_pointer": "/old_debts/0/principal_due"
+            },
+            {
+              "path": "templates/worksheet-settled-matched-T111.json",
+              "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/sale/closing_source_utf8"
+              ],
+              "final_pointer": "/old_debts/0/principal_paid"
+            }
+          ],
+          "result_refs": [],
+          "status": "matched_exact_scoped_review",
+          "scope_note": "Equal declared due and paid does not authenticate bank payment or legal discharge; only paid enters cash residual",
+          "financial_acceptance": false
+        },
+        {
+          "snapshot_id": "S01",
+          "check_id": "B05",
+          "label": "Obligación y pago declarados de interest",
+          "formula": "interest_due = interest_paid; due is not an additional cash subtraction",
+          "left": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "right": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "unit": "USD",
+          "source_refs": [
+            {
+              "path": "templates/worksheet-settled-matched-T111.json",
+              "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/sale/closing_source_utf8"
+              ],
+              "final_pointer": "/old_debts/0/interest_due"
+            },
+            {
+              "path": "templates/worksheet-settled-matched-T111.json",
+              "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/sale/closing_source_utf8"
+              ],
+              "final_pointer": "/old_debts/0/interest_paid"
+            }
+          ],
+          "result_refs": [],
+          "status": "matched_exact_scoped_review",
+          "scope_note": "Equal declared due and paid does not authenticate bank payment or legal discharge; only paid enters cash residual",
+          "financial_acceptance": false
+        },
+        {
+          "snapshot_id": "S01",
+          "check_id": "B06",
+          "label": "Obligación y pago declarados de fees",
+          "formula": "fees_due = fees_paid; due is not an additional cash subtraction",
+          "left": {
+            "numerator": "10",
+            "denominator": "1"
+          },
+          "right": {
+            "numerator": "10",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "unit": "USD",
+          "source_refs": [
+            {
+              "path": "templates/worksheet-settled-matched-T111.json",
+              "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/sale/closing_source_utf8"
+              ],
+              "final_pointer": "/old_debts/0/fees_due"
+            },
+            {
+              "path": "templates/worksheet-settled-matched-T111.json",
+              "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/sale/closing_source_utf8"
+              ],
+              "final_pointer": "/old_debts/0/fees_paid"
+            }
+          ],
+          "result_refs": [],
+          "status": "matched_exact_scoped_review",
+          "scope_note": "Equal declared due and paid does not authenticate bank payment or legal discharge; only paid enters cash residual",
+          "financial_acceptance": false
+        },
+        {
+          "snapshot_id": "S01",
+          "check_id": "B07",
+          "label": "Obligación y pago declarados de other",
+          "formula": "other_due = other_paid; due is not an additional cash subtraction",
+          "left": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "right": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "unit": "USD",
+          "source_refs": [
+            {
+              "path": "templates/worksheet-settled-matched-T111.json",
+              "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/sale/closing_source_utf8"
+              ],
+              "final_pointer": "/old_debts/0/other_due"
+            },
+            {
+              "path": "templates/worksheet-settled-matched-T111.json",
+              "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/sale/closing_source_utf8"
+              ],
+              "final_pointer": "/old_debts/0/other_paid"
+            }
+          ],
+          "result_refs": [],
+          "status": "matched_exact_scoped_review",
+          "scope_note": "Equal declared due and paid does not authenticate bank payment or legal discharge; only paid enters cash residual",
+          "financial_acceptance": false
+        },
+        {
+          "snapshot_id": "S01",
+          "check_id": "B08",
+          "label": "Puente de saldos contables del seguro al pago de corte",
+          "formula": "before_payables - after_payables + after_prepaid - before_prepaid = supplied terminal insurance payment sum",
+          "left": {
+            "numerator": "5",
+            "denominator": "1"
+          },
+          "right": {
+            "numerator": "5",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "unit": "USD",
+          "source_refs": [
+            {
+              "path": "templates/worksheet-settled-matched-T111.json",
+              "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/boundary_source_utf8"
+              ],
+              "final_pointer": "/accounting/before_payables"
+            },
+            {
+              "path": "templates/worksheet-settled-matched-T111.json",
+              "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/boundary_source_utf8"
+              ],
+              "final_pointer": "/accounting/after_payables"
+            },
+            {
+              "path": "templates/worksheet-settled-matched-T111.json",
+              "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/boundary_source_utf8"
+              ],
+              "final_pointer": "/accounting/after_prepaid"
+            },
+            {
+              "path": "templates/worksheet-settled-matched-T111.json",
+              "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/boundary_source_utf8"
+              ],
+              "final_pointer": "/accounting/before_prepaid"
+            },
+            {
+              "path": "templates/worksheet-settled-matched-T111.json",
+              "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/boundary_source_utf8",
+                "/terminal_binding_source_utf8"
+              ],
+              "final_pointer": "/payments/0/amount"
+            }
+          ],
+          "result_refs": [
+            {
+              "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+              "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+              "embedded_json_pointers": [],
+              "final_pointer": "/current_settlement_summary/settlement_cash"
+            }
+          ],
+          "status": "matched_exact_scoped_review",
+          "scope_note": "Within the explicitly supplied synthetic profile only",
+          "financial_acceptance": false
+        },
+        {
+          "snapshot_id": "S01",
+          "check_id": "B09",
+          "label": "Seguro incluido una vez en otros usos del cierre",
+          "formula": "supplied terminal insurance payment sum = supplied closing other_cash_uses under the explicit only-insurance assumption",
+          "left": {
+            "numerator": "5",
+            "denominator": "1"
+          },
+          "right": {
+            "numerator": "5",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "unit": "USD",
+          "source_refs": [
+            {
+              "path": "templates/worksheet-settled-matched-T111.json",
+              "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/boundary_source_utf8",
+                "/terminal_binding_source_utf8"
+              ],
+              "final_pointer": "/payments/0/amount"
+            },
+            {
+              "path": "templates/worksheet-settled-matched-T111.json",
+              "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/sale/closing_source_utf8"
+              ],
+              "final_pointer": "/amounts/other_cash_uses"
+            }
+          ],
+          "result_refs": [],
+          "status": "matched_exact_scoped_review",
+          "scope_note": "Entire other_cash_uses is this one insurance cut payment only in the supplied profile; no general decomposition or additional deduction",
+          "financial_acceptance": false
+        },
+        {
+          "snapshot_id": "S01",
+          "check_id": "B10",
+          "label": "Pago nominal en la fecha de corte frente al binding",
+          "formula": "sum(plan payments with payment_date exactly closing_date) = supplied terminal binding payment sum",
+          "left": {
+            "numerator": "5",
+            "denominator": "1"
+          },
+          "right": {
+            "numerator": "5",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "unit": "USD",
+          "source_refs": [
+            {
+              "path": "templates/worksheet-settled-matched-T111.json",
+              "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/boundary_source_utf8",
+                "/plan_source_utf8"
+              ],
+              "final_pointer": "/planned_payments"
+            },
+            {
+              "path": "templates/worksheet-settled-matched-T111.json",
+              "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/boundary_source_utf8",
+                "/terminal_binding_source_utf8"
+              ],
+              "final_pointer": "/payments"
+            }
+          ],
+          "result_refs": [],
+          "status": "matched_exact_scoped_review",
+          "scope_note": "All payment IDs, installment IDs, dates and amounts matched; no acceleration or authenticated payment assumed",
+          "financial_acceptance": false
+        },
+        {
+          "snapshot_id": "S01",
+          "check_id": "B11",
+          "label": "Doce términos al cobro neto de venta",
+          "formula": "sum(twelve signed free_cash_terms) = saved net_sale_distribution",
+          "left": {
+            "numerator": "578",
+            "denominator": "1"
+          },
+          "right": {
+            "numerator": "578",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "unit": "USD",
+          "source_refs": [
+            {
+              "path": "templates/worksheet-settled-matched-T111.json",
+              "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/sale/closing_source_utf8"
+              ],
+              "final_pointer": "/amounts/opening_free_cash"
+            },
+            {
+              "path": "templates/worksheet-settled-matched-T111.json",
+              "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/sale/closing_source_utf8"
+              ],
+              "final_pointer": "/amounts/gross_proceeds"
+            },
+            {
+              "path": "templates/worksheet-settled-matched-T111.json",
+              "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/sale/closing_source_utf8"
+              ],
+              "final_pointer": "/amounts/reserve_release"
+            },
+            {
+              "path": "templates/worksheet-settled-matched-T111.json",
+              "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/sale/closing_source_utf8"
+              ],
+              "final_pointer": "/amounts/other_cash_sources"
+            },
+            {
+              "path": "templates/worksheet-settled-matched-T111.json",
+              "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/sale/closing_source_utf8"
+              ],
+              "final_pointer": "/amounts/closing_costs_paid"
+            },
+            {
+              "path": "templates/worksheet-settled-matched-T111.json",
+              "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/sale/closing_source_utf8"
+              ],
+              "final_pointer": "/amounts/new_reserve"
+            },
+            {
+              "path": "templates/worksheet-settled-matched-T111.json",
+              "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/sale/closing_source_utf8"
+              ],
+              "final_pointer": "/amounts/other_cash_uses"
+            },
+            {
+              "path": "templates/worksheet-settled-matched-T111.json",
+              "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/sale/closing_source_utf8"
+              ],
+              "final_pointer": "/amounts/retained_free_cash"
+            },
+            {
+              "path": "templates/worksheet-settled-matched-T111.json",
+              "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/sale/closing_source_utf8"
+              ],
+              "final_pointer": "/old_debts/0/principal_paid"
+            },
+            {
+              "path": "templates/worksheet-settled-matched-T111.json",
+              "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/sale/closing_source_utf8"
+              ],
+              "final_pointer": "/old_debts/0/interest_paid"
+            },
+            {
+              "path": "templates/worksheet-settled-matched-T111.json",
+              "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/sale/closing_source_utf8"
+              ],
+              "final_pointer": "/old_debts/0/fees_paid"
+            },
+            {
+              "path": "templates/worksheet-settled-matched-T111.json",
+              "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/sale/closing_source_utf8"
+              ],
+              "final_pointer": "/old_debts/0/other_paid"
+            }
+          ],
+          "result_refs": [
+            {
+              "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+              "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+              "embedded_json_pointers": [],
+              "final_pointer": "/current_project_return_story/cash_by_category/net_sale_distribution"
+            },
+            {
+              "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+              "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+              "embedded_json_pointers": [],
+              "final_pointer": "/current_project_return_story/events/6/amount"
+            }
+          ],
+          "status": "matched_exact_scoped_review",
+          "scope_note": "Within the explicitly supplied synthetic profile only",
+          "financial_acceptance": false
+        },
+        {
+          "snapshot_id": "S01",
+          "check_id": "B12",
+          "label": "Conservación total sin sumar transferencias internas",
+          "formula": "opening_free_cash + opening_restricted_cash + gross_proceeds + other_cash_sources = debt_paid + closing_costs_paid + other_cash_uses + positive residual distribution + retained_free_cash + closing_restricted_cash_claim; no new contribution in this positive-residual profile",
+          "left": {
+            "numerator": "713",
+            "denominator": "1"
+          },
+          "right": {
+            "numerator": "713",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "unit": "USD",
+          "source_refs": [
+            {
+              "path": "templates/worksheet-settled-matched-T111.json",
+              "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/sale/closing_source_utf8"
+              ],
+              "final_pointer": ""
+            }
+          ],
+          "result_refs": [],
+          "status": "matched_exact_scoped_review",
+          "scope_note": "Reserve release/new reserve move between free/restricted accounts; opening/closing stocks enter total conservation instead. Positive residual implies zero extra equity contribution only in this profile",
+          "financial_acceptance": false
+        },
+        {
+          "snapshot_id": "S01",
+          "check_id": "B13",
+          "label": "Principal anterior a todos los pagos de la fecha de cierre",
+          "formula": "zero-rate loan principal - (principal / amortization_payments) * count(payment_dates strictly before closing_date) = principal_due before all closing-date events",
+          "left": {
+            "numerator": "100",
+            "denominator": "1"
+          },
+          "right": {
+            "numerator": "100",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "unit": "USD",
+          "source_refs": [
+            {
+              "path": "templates/worksheet-settled-matched-T111.json",
+              "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/sale/loans/0/source"
+              ],
+              "final_pointer": ""
+            },
+            {
+              "path": "templates/worksheet-settled-matched-T111.json",
+              "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/sale/closing_source_utf8"
+              ],
+              "final_pointer": "/old_debts/0/principal_due"
+            }
+          ],
+          "result_refs": [],
+          "status": "matched_exact_scoped_review",
+          "scope_note": "Five supplied zero-rate scheduled principal payments occur strictly before cut; the sixth coincides with cut and is not separately deducted again from the stated payoff",
+          "financial_acceptance": false
+        },
+        {
+          "snapshot_id": "S01",
+          "check_id": "B14",
+          "label": "Principal del agregado tenencia y venta frente a sus dos fases",
+          "formula": "sum(supplied operating debt_principal_payment) + supplied closing principal_paid = saved holding-plus-sale debt_principal",
+          "left": {
+            "numerator": "200",
+            "denominator": "1"
+          },
+          "right": {
+            "numerator": "200",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "unit": "USD",
+          "source_refs": [
+            {
+              "path": "templates/worksheet-settled-matched-T111.json",
+              "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/periods/0/cash_source_utf8"
+              ],
+              "final_pointer": "/amounts/debt_principal_payment"
+            },
+            {
+              "path": "templates/worksheet-settled-matched-T111.json",
+              "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/periods/1/cash_source_utf8"
+              ],
+              "final_pointer": "/amounts/debt_principal_payment"
+            },
+            {
+              "path": "templates/worksheet-settled-matched-T111.json",
+              "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/sale/closing_source_utf8"
+              ],
+              "final_pointer": "/old_debts/0/principal_paid"
+            }
+          ],
+          "result_refs": [
+            {
+              "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+              "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+              "embedded_json_pointers": [],
+              "final_pointer": "/current_holding_sale_totals/debt_principal"
+            }
+          ],
+          "status": "matched_exact_scoped_review",
+          "scope_note": "Holding-plus-sale principal200 already includes operating100 and closing100; it is not another sale-only payoff",
+          "financial_acceptance": false
+        }
+      ],
+      "free_cash_distribution": {
+        "numerator": "578",
+        "denominator": "1"
+      },
+      "total_closing_sources": {
+        "numerator": "713",
+        "denominator": "1"
+      },
+      "total_closing_uses": {
+        "numerator": "713",
+        "denominator": "1"
+      },
+      "closing_retained_free_cash": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "closing_restricted_cash": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "loan_cut": {
+        "prior_payment_dates": [
+          "2027-02-01",
+          "2027-03-01",
+          "2027-04-01",
+          "2027-05-01",
+          "2027-06-01"
+        ],
+        "coincident_payment_dates": [
+          "2027-07-01"
+        ],
+        "regular_principal_per_payment": {
+          "numerator": "20",
+          "denominator": "1"
+        },
+        "principal_before_all_cut_events": {
+          "numerator": "100",
+          "denominator": "1"
+        },
+        "regular_cut_payment_deducted_again": false
+      },
+      "insurance_payment_in_other_uses_only_once": true,
+      "inventory_financially_authenticated": false,
+      "actual_payments_authenticated": false,
+      "financial_decision": "PENDING"
+    },
+    {
+      "snapshot_id": "S02",
+      "input_ref": {
+        "path": "templates/worksheet-settled-twelve-T111.json",
+        "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+        "embedded_json_pointers": [],
+        "final_pointer": ""
+      },
+      "result_ref": {
+        "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+        "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+        "embedded_json_pointers": [],
+        "final_pointer": ""
+      },
+      "context": {
+        "deal_id": "SYNTHETIC-construction-draw-demo",
+        "definition_set_revision": "SYNTHETIC-simple-interval-factors",
+        "run_id": "SYNTHETIC-construction-draw-run",
+        "scenario_id": "SYNTHETIC-draw-plan"
+      },
+      "evaluated_as_of_UTC": "2027-07-01T12:00:00Z",
+      "closing_date": "2027-07-01",
+      "currency": "USD",
+      "closing_profile": "SYNTHETIC-RESIDUAL-AFTER-EXPLICIT-RETENTION-v1",
+      "closing_claim_inventory": [
+        {
+          "snapshot_id": "S02",
+          "claim_id": "C01",
+          "source_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/sale/closing_source_utf8"
+            ],
+            "final_pointer": "/amounts/opening_free_cash"
+          },
+          "declared_claim": {
+            "as_of_date": "2027-07-01",
+            "basis": "project_cash_before_closing",
+            "currency": "USD",
+            "source_ref": "SYNTHETIC-explicit-closing-source:sale",
+            "value": {
+              "denominator": "1",
+              "numerator": "211"
+            }
+          },
+          "role": "available_opening_free_cash",
+          "coefficient_in_free_cash_residual": 1,
+          "included_in_residual": true,
+          "amount": {
+            "numerator": "211",
+            "denominator": "1"
+          },
+          "explicit_zero": false,
+          "missing_value": false,
+          "signed_cash_term": {
+            "numerator": "211",
+            "denominator": "1"
+          },
+          "financial_authority_verified": false
+        },
+        {
+          "snapshot_id": "S02",
+          "claim_id": "C02",
+          "source_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/sale/closing_source_utf8"
+            ],
+            "final_pointer": "/amounts/gross_proceeds"
+          },
+          "declared_claim": {
+            "as_of_date": "2027-07-01",
+            "basis": "cash_flow_at_closing",
+            "currency": "USD",
+            "source_ref": "SYNTHETIC-explicit-closing-source:sale",
+            "value": {
+              "denominator": "1",
+              "numerator": "400"
+            }
+          },
+          "role": "sale_gross_cash",
+          "coefficient_in_free_cash_residual": 1,
+          "included_in_residual": true,
+          "amount": {
+            "numerator": "400",
+            "denominator": "1"
+          },
+          "explicit_zero": false,
+          "missing_value": false,
+          "signed_cash_term": {
+            "numerator": "400",
+            "denominator": "1"
+          },
+          "financial_authority_verified": false
+        },
+        {
+          "snapshot_id": "S02",
+          "claim_id": "C03",
+          "source_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/sale/closing_source_utf8"
+            ],
+            "final_pointer": "/amounts/reserve_release"
+          },
+          "declared_claim": {
+            "as_of_date": "2027-07-01",
+            "basis": "cash_flow_at_closing",
+            "currency": "USD",
+            "source_ref": "SYNTHETIC-explicit-closing-source:sale",
+            "value": {
+              "denominator": "1",
+              "numerator": "100"
+            }
+          },
+          "role": "internal_transfer_from_restricted_to_free",
+          "coefficient_in_free_cash_residual": 1,
+          "included_in_residual": true,
+          "amount": {
+            "numerator": "100",
+            "denominator": "1"
+          },
+          "explicit_zero": false,
+          "missing_value": false,
+          "signed_cash_term": {
+            "numerator": "100",
+            "denominator": "1"
+          },
+          "financial_authority_verified": false
+        },
+        {
+          "snapshot_id": "S02",
+          "claim_id": "C04",
+          "source_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/sale/closing_source_utf8"
+            ],
+            "final_pointer": "/amounts/other_cash_sources"
+          },
+          "declared_claim": {
+            "as_of_date": "2027-07-01",
+            "basis": "cash_flow_at_closing",
+            "currency": "USD",
+            "source_ref": "SYNTHETIC-explicit-closing-source:sale",
+            "value": {
+              "denominator": "1",
+              "numerator": "0"
+            }
+          },
+          "role": "other_declared_closing_cash_source",
+          "coefficient_in_free_cash_residual": 1,
+          "included_in_residual": true,
+          "amount": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "explicit_zero": true,
+          "missing_value": false,
+          "signed_cash_term": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "financial_authority_verified": false
+        },
+        {
+          "snapshot_id": "S02",
+          "claim_id": "C05",
+          "source_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/sale/closing_source_utf8"
+            ],
+            "final_pointer": "/amounts/closing_costs_paid"
+          },
+          "declared_claim": {
+            "as_of_date": "2027-07-01",
+            "basis": "cash_flow_at_closing",
+            "currency": "USD",
+            "source_ref": "SYNTHETIC-explicit-closing-source:sale",
+            "value": {
+              "denominator": "1",
+              "numerator": "20"
+            }
+          },
+          "role": "closing_cash_cost",
+          "coefficient_in_free_cash_residual": -1,
+          "included_in_residual": true,
+          "amount": {
+            "numerator": "20",
+            "denominator": "1"
+          },
+          "explicit_zero": false,
+          "missing_value": false,
+          "signed_cash_term": {
+            "numerator": "-20",
+            "denominator": "1"
+          },
+          "financial_authority_verified": false
+        },
+        {
+          "snapshot_id": "S02",
+          "claim_id": "C06",
+          "source_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/sale/closing_source_utf8"
+            ],
+            "final_pointer": "/amounts/new_reserve"
+          },
+          "declared_claim": {
+            "as_of_date": "2027-07-01",
+            "basis": "cash_flow_at_closing",
+            "currency": "USD",
+            "source_ref": "SYNTHETIC-explicit-closing-source:sale",
+            "value": {
+              "denominator": "1",
+              "numerator": "0"
+            }
+          },
+          "role": "internal_transfer_from_free_to_restricted",
+          "coefficient_in_free_cash_residual": -1,
+          "included_in_residual": true,
+          "amount": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "explicit_zero": true,
+          "missing_value": false,
+          "signed_cash_term": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "financial_authority_verified": false
+        },
+        {
+          "snapshot_id": "S02",
+          "claim_id": "C07",
+          "source_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/sale/closing_source_utf8"
+            ],
+            "final_pointer": "/amounts/other_cash_uses"
+          },
+          "declared_claim": {
+            "as_of_date": "2027-07-01",
+            "basis": "cash_flow_at_closing",
+            "currency": "USD",
+            "source_ref": "SYNTHETIC-explicit-closing-source:sale",
+            "value": {
+              "denominator": "1",
+              "numerator": "5"
+            }
+          },
+          "role": "other_declared_closing_cash_use",
+          "coefficient_in_free_cash_residual": -1,
+          "included_in_residual": true,
+          "amount": {
+            "numerator": "5",
+            "denominator": "1"
+          },
+          "explicit_zero": false,
+          "missing_value": false,
+          "signed_cash_term": {
+            "numerator": "-5",
+            "denominator": "1"
+          },
+          "financial_authority_verified": false
+        },
+        {
+          "snapshot_id": "S02",
+          "claim_id": "C08",
+          "source_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/sale/closing_source_utf8"
+            ],
+            "final_pointer": "/amounts/retained_free_cash"
+          },
+          "declared_claim": {
+            "as_of_date": "2027-07-01",
+            "basis": "project_cash_after_closing",
+            "currency": "USD",
+            "source_ref": "SYNTHETIC-explicit-closing-source:sale",
+            "value": {
+              "denominator": "1",
+              "numerator": "0"
+            }
+          },
+          "role": "free_cash_retained_not_distributed",
+          "coefficient_in_free_cash_residual": -1,
+          "included_in_residual": true,
+          "amount": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "explicit_zero": true,
+          "missing_value": false,
+          "signed_cash_term": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "financial_authority_verified": false
+        },
+        {
+          "snapshot_id": "S02",
+          "claim_id": "C09",
+          "source_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/sale/closing_source_utf8"
+            ],
+            "final_pointer": "/amounts/opening_restricted_cash"
+          },
+          "declared_claim": {
+            "as_of_date": "2027-07-01",
+            "basis": "project_cash_before_closing",
+            "currency": "USD",
+            "source_ref": "SYNTHETIC-explicit-closing-source:sale",
+            "value": {
+              "denominator": "1",
+              "numerator": "100"
+            }
+          },
+          "role": "restricted_opening_stock_not_second_free_cash_source",
+          "coefficient_in_free_cash_residual": 0,
+          "included_in_residual": false,
+          "amount": {
+            "numerator": "100",
+            "denominator": "1"
+          },
+          "explicit_zero": false,
+          "missing_value": false,
+          "signed_cash_term": null,
+          "financial_authority_verified": false
+        },
+        {
+          "snapshot_id": "S02",
+          "claim_id": "C10",
+          "source_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/sale/closing_source_utf8"
+            ],
+            "final_pointer": "/amounts/closing_restricted_cash_claim"
+          },
+          "declared_claim": {
+            "as_of_date": "2027-07-01",
+            "basis": "project_cash_after_closing",
+            "currency": "USD",
+            "source_ref": "SYNTHETIC-explicit-closing-source:sale",
+            "value": {
+              "denominator": "1",
+              "numerator": "0"
+            }
+          },
+          "role": "restricted_closing_stock_not_second_cash_use",
+          "coefficient_in_free_cash_residual": 0,
+          "included_in_residual": false,
+          "amount": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "explicit_zero": true,
+          "missing_value": false,
+          "signed_cash_term": null,
+          "financial_authority_verified": false
+        },
+        {
+          "snapshot_id": "S02",
+          "claim_id": "C11",
+          "source_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/sale/closing_source_utf8"
+            ],
+            "final_pointer": "/old_debts/0/principal_paid"
+          },
+          "declared_claim": {
+            "as_of_date": "2027-07-01",
+            "basis": "cash_flow_at_closing",
+            "currency": "USD",
+            "source_ref": "SYNTHETIC-explicit-closing-source:refinance",
+            "value": {
+              "denominator": "1",
+              "numerator": "100"
+            }
+          },
+          "role": "old_debt_principal_cash_payment",
+          "coefficient_in_free_cash_residual": -1,
+          "included_in_residual": true,
+          "amount": {
+            "numerator": "100",
+            "denominator": "1"
+          },
+          "explicit_zero": false,
+          "missing_value": false,
+          "signed_cash_term": {
+            "numerator": "-100",
+            "denominator": "1"
+          },
+          "financial_authority_verified": false
+        },
+        {
+          "snapshot_id": "S02",
+          "claim_id": "C12",
+          "source_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/sale/closing_source_utf8"
+            ],
+            "final_pointer": "/old_debts/0/principal_due"
+          },
+          "declared_claim": {
+            "as_of_date": "2027-07-01",
+            "basis": "debt_obligation_before_closing",
+            "currency": "USD",
+            "source_ref": "SYNTHETIC-explicit-closing-source:refinance",
+            "value": {
+              "denominator": "1",
+              "numerator": "100"
+            }
+          },
+          "role": "old_debt_principal_obligation_not_second_payment",
+          "coefficient_in_free_cash_residual": 0,
+          "included_in_residual": false,
+          "amount": {
+            "numerator": "100",
+            "denominator": "1"
+          },
+          "explicit_zero": false,
+          "missing_value": false,
+          "signed_cash_term": null,
+          "financial_authority_verified": false
+        },
+        {
+          "snapshot_id": "S02",
+          "claim_id": "C13",
+          "source_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/sale/closing_source_utf8"
+            ],
+            "final_pointer": "/old_debts/0/interest_paid"
+          },
+          "declared_claim": {
+            "as_of_date": "2027-07-01",
+            "basis": "cash_flow_at_closing",
+            "currency": "USD",
+            "source_ref": "SYNTHETIC-explicit-closing-source:refinance",
+            "value": {
+              "denominator": "1",
+              "numerator": "0"
+            }
+          },
+          "role": "old_debt_interest_cash_payment",
+          "coefficient_in_free_cash_residual": -1,
+          "included_in_residual": true,
+          "amount": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "explicit_zero": true,
+          "missing_value": false,
+          "signed_cash_term": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "financial_authority_verified": false
+        },
+        {
+          "snapshot_id": "S02",
+          "claim_id": "C14",
+          "source_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/sale/closing_source_utf8"
+            ],
+            "final_pointer": "/old_debts/0/interest_due"
+          },
+          "declared_claim": {
+            "as_of_date": "2027-07-01",
+            "basis": "debt_obligation_before_closing",
+            "currency": "USD",
+            "source_ref": "SYNTHETIC-explicit-closing-source:refinance",
+            "value": {
+              "denominator": "1",
+              "numerator": "0"
+            }
+          },
+          "role": "old_debt_interest_obligation_not_second_payment",
+          "coefficient_in_free_cash_residual": 0,
+          "included_in_residual": false,
+          "amount": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "explicit_zero": true,
+          "missing_value": false,
+          "signed_cash_term": null,
+          "financial_authority_verified": false
+        },
+        {
+          "snapshot_id": "S02",
+          "claim_id": "C15",
+          "source_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/sale/closing_source_utf8"
+            ],
+            "final_pointer": "/old_debts/0/fees_paid"
+          },
+          "declared_claim": {
+            "as_of_date": "2027-07-01",
+            "basis": "cash_flow_at_closing",
+            "currency": "USD",
+            "source_ref": "SYNTHETIC-explicit-closing-source:refinance",
+            "value": {
+              "denominator": "1",
+              "numerator": "10"
+            }
+          },
+          "role": "old_debt_fees_cash_payment",
+          "coefficient_in_free_cash_residual": -1,
+          "included_in_residual": true,
+          "amount": {
+            "numerator": "10",
+            "denominator": "1"
+          },
+          "explicit_zero": false,
+          "missing_value": false,
+          "signed_cash_term": {
+            "numerator": "-10",
+            "denominator": "1"
+          },
+          "financial_authority_verified": false
+        },
+        {
+          "snapshot_id": "S02",
+          "claim_id": "C16",
+          "source_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/sale/closing_source_utf8"
+            ],
+            "final_pointer": "/old_debts/0/fees_due"
+          },
+          "declared_claim": {
+            "as_of_date": "2027-07-01",
+            "basis": "debt_obligation_before_closing",
+            "currency": "USD",
+            "source_ref": "SYNTHETIC-explicit-closing-source:refinance",
+            "value": {
+              "denominator": "1",
+              "numerator": "10"
+            }
+          },
+          "role": "old_debt_fees_obligation_not_second_payment",
+          "coefficient_in_free_cash_residual": 0,
+          "included_in_residual": false,
+          "amount": {
+            "numerator": "10",
+            "denominator": "1"
+          },
+          "explicit_zero": false,
+          "missing_value": false,
+          "signed_cash_term": null,
+          "financial_authority_verified": false
+        },
+        {
+          "snapshot_id": "S02",
+          "claim_id": "C17",
+          "source_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/sale/closing_source_utf8"
+            ],
+            "final_pointer": "/old_debts/0/other_paid"
+          },
+          "declared_claim": {
+            "as_of_date": "2027-07-01",
+            "basis": "cash_flow_at_closing",
+            "currency": "USD",
+            "source_ref": "SYNTHETIC-explicit-closing-source:refinance",
+            "value": {
+              "denominator": "1",
+              "numerator": "0"
+            }
+          },
+          "role": "old_debt_other_cash_payment",
+          "coefficient_in_free_cash_residual": -1,
+          "included_in_residual": true,
+          "amount": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "explicit_zero": true,
+          "missing_value": false,
+          "signed_cash_term": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "financial_authority_verified": false
+        },
+        {
+          "snapshot_id": "S02",
+          "claim_id": "C18",
+          "source_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/sale/closing_source_utf8"
+            ],
+            "final_pointer": "/old_debts/0/other_due"
+          },
+          "declared_claim": {
+            "as_of_date": "2027-07-01",
+            "basis": "debt_obligation_before_closing",
+            "currency": "USD",
+            "source_ref": "SYNTHETIC-explicit-closing-source:refinance",
+            "value": {
+              "denominator": "1",
+              "numerator": "0"
+            }
+          },
+          "role": "old_debt_other_obligation_not_second_payment",
+          "coefficient_in_free_cash_residual": 0,
+          "included_in_residual": false,
+          "amount": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "explicit_zero": true,
+          "missing_value": false,
+          "signed_cash_term": null,
+          "financial_authority_verified": false
+        },
+        {
+          "snapshot_id": "S02",
+          "claim_id": "C19",
+          "source_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/sale/closing_source_utf8"
+            ],
+            "final_pointer": "/valuation_claim"
+          },
+          "declared_claim": {
+            "as_of_date": "2027-07-01",
+            "basis": "valuation_not_cash",
+            "currency": "USD",
+            "source_ref": "SYNTHETIC-explicit-closing-source:sale",
+            "value": null
+          },
+          "role": "valuation_not_cash_missing_claim_preserved",
+          "coefficient_in_free_cash_residual": 0,
+          "included_in_residual": false,
+          "amount": null,
+          "explicit_zero": false,
+          "missing_value": true,
+          "signed_cash_term": null,
+          "financial_authority_verified": false
+        }
+      ],
+      "free_cash_terms": [
+        {
+          "snapshot_id": "S02",
+          "term_id": "T01",
+          "inventory_claim_id": "C01",
+          "source_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/sale/closing_source_utf8"
+            ],
+            "final_pointer": "/amounts/opening_free_cash"
+          },
+          "role": "available_opening_free_cash",
+          "coefficient": 1,
+          "amount": {
+            "numerator": "211",
+            "denominator": "1"
+          },
+          "signed_amount": {
+            "numerator": "211",
+            "denominator": "1"
+          },
+          "presentation_order_is_not_intraday_funding_or_payment_priority": true
+        },
+        {
+          "snapshot_id": "S02",
+          "term_id": "T02",
+          "inventory_claim_id": "C02",
+          "source_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/sale/closing_source_utf8"
+            ],
+            "final_pointer": "/amounts/gross_proceeds"
+          },
+          "role": "sale_gross_cash",
+          "coefficient": 1,
+          "amount": {
+            "numerator": "400",
+            "denominator": "1"
+          },
+          "signed_amount": {
+            "numerator": "400",
+            "denominator": "1"
+          },
+          "presentation_order_is_not_intraday_funding_or_payment_priority": true
+        },
+        {
+          "snapshot_id": "S02",
+          "term_id": "T03",
+          "inventory_claim_id": "C03",
+          "source_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/sale/closing_source_utf8"
+            ],
+            "final_pointer": "/amounts/reserve_release"
+          },
+          "role": "internal_transfer_from_restricted_to_free",
+          "coefficient": 1,
+          "amount": {
+            "numerator": "100",
+            "denominator": "1"
+          },
+          "signed_amount": {
+            "numerator": "100",
+            "denominator": "1"
+          },
+          "presentation_order_is_not_intraday_funding_or_payment_priority": true
+        },
+        {
+          "snapshot_id": "S02",
+          "term_id": "T04",
+          "inventory_claim_id": "C04",
+          "source_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/sale/closing_source_utf8"
+            ],
+            "final_pointer": "/amounts/other_cash_sources"
+          },
+          "role": "other_declared_closing_cash_source",
+          "coefficient": 1,
+          "amount": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "signed_amount": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "presentation_order_is_not_intraday_funding_or_payment_priority": true
+        },
+        {
+          "snapshot_id": "S02",
+          "term_id": "T05",
+          "inventory_claim_id": "C05",
+          "source_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/sale/closing_source_utf8"
+            ],
+            "final_pointer": "/amounts/closing_costs_paid"
+          },
+          "role": "closing_cash_cost",
+          "coefficient": -1,
+          "amount": {
+            "numerator": "20",
+            "denominator": "1"
+          },
+          "signed_amount": {
+            "numerator": "-20",
+            "denominator": "1"
+          },
+          "presentation_order_is_not_intraday_funding_or_payment_priority": true
+        },
+        {
+          "snapshot_id": "S02",
+          "term_id": "T06",
+          "inventory_claim_id": "C06",
+          "source_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/sale/closing_source_utf8"
+            ],
+            "final_pointer": "/amounts/new_reserve"
+          },
+          "role": "internal_transfer_from_free_to_restricted",
+          "coefficient": -1,
+          "amount": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "signed_amount": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "presentation_order_is_not_intraday_funding_or_payment_priority": true
+        },
+        {
+          "snapshot_id": "S02",
+          "term_id": "T07",
+          "inventory_claim_id": "C07",
+          "source_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/sale/closing_source_utf8"
+            ],
+            "final_pointer": "/amounts/other_cash_uses"
+          },
+          "role": "other_declared_closing_cash_use",
+          "coefficient": -1,
+          "amount": {
+            "numerator": "5",
+            "denominator": "1"
+          },
+          "signed_amount": {
+            "numerator": "-5",
+            "denominator": "1"
+          },
+          "presentation_order_is_not_intraday_funding_or_payment_priority": true
+        },
+        {
+          "snapshot_id": "S02",
+          "term_id": "T08",
+          "inventory_claim_id": "C08",
+          "source_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/sale/closing_source_utf8"
+            ],
+            "final_pointer": "/amounts/retained_free_cash"
+          },
+          "role": "free_cash_retained_not_distributed",
+          "coefficient": -1,
+          "amount": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "signed_amount": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "presentation_order_is_not_intraday_funding_or_payment_priority": true
+        },
+        {
+          "snapshot_id": "S02",
+          "term_id": "T09",
+          "inventory_claim_id": "C11",
+          "source_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/sale/closing_source_utf8"
+            ],
+            "final_pointer": "/old_debts/0/principal_paid"
+          },
+          "role": "old_debt_principal_cash_payment",
+          "coefficient": -1,
+          "amount": {
+            "numerator": "100",
+            "denominator": "1"
+          },
+          "signed_amount": {
+            "numerator": "-100",
+            "denominator": "1"
+          },
+          "presentation_order_is_not_intraday_funding_or_payment_priority": true
+        },
+        {
+          "snapshot_id": "S02",
+          "term_id": "T10",
+          "inventory_claim_id": "C13",
+          "source_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/sale/closing_source_utf8"
+            ],
+            "final_pointer": "/old_debts/0/interest_paid"
+          },
+          "role": "old_debt_interest_cash_payment",
+          "coefficient": -1,
+          "amount": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "signed_amount": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "presentation_order_is_not_intraday_funding_or_payment_priority": true
+        },
+        {
+          "snapshot_id": "S02",
+          "term_id": "T11",
+          "inventory_claim_id": "C15",
+          "source_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/sale/closing_source_utf8"
+            ],
+            "final_pointer": "/old_debts/0/fees_paid"
+          },
+          "role": "old_debt_fees_cash_payment",
+          "coefficient": -1,
+          "amount": {
+            "numerator": "10",
+            "denominator": "1"
+          },
+          "signed_amount": {
+            "numerator": "-10",
+            "denominator": "1"
+          },
+          "presentation_order_is_not_intraday_funding_or_payment_priority": true
+        },
+        {
+          "snapshot_id": "S02",
+          "term_id": "T12",
+          "inventory_claim_id": "C17",
+          "source_ref": {
+            "path": "templates/worksheet-settled-twelve-T111.json",
+            "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+            "embedded_json_pointers": [
+              "/phased_settled_source_utf8",
+              "/current_settled_source_utf8",
+              "/case_source_utf8",
+              "/sale/closing_source_utf8"
+            ],
+            "final_pointer": "/old_debts/0/other_paid"
+          },
+          "role": "old_debt_other_cash_payment",
+          "coefficient": -1,
+          "amount": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "signed_amount": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "presentation_order_is_not_intraday_funding_or_payment_priority": true
+        }
+      ],
+      "checks": [
+        {
+          "snapshot_id": "S02",
+          "check_id": "B01",
+          "label": "Caja libre de operación a apertura de venta",
+          "formula": "saved operating closing_free_cash_claim = supplied sale opening_free_cash",
+          "left": {
+            "numerator": "211",
+            "denominator": "1"
+          },
+          "right": {
+            "numerator": "211",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "unit": "USD",
+          "source_refs": [
+            {
+              "path": "templates/worksheet-settled-twelve-T111.json",
+              "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/sale/closing_source_utf8"
+              ],
+              "final_pointer": "/amounts/opening_free_cash"
+            }
+          ],
+          "result_refs": [
+            {
+              "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+              "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+              "embedded_json_pointers": [],
+              "final_pointer": "/current_operating_totals/closing_free_cash_claim"
+            }
+          ],
+          "status": "matched_exact_scoped_review",
+          "scope_note": "Within the explicitly supplied synthetic profile only",
+          "financial_acceptance": false
+        },
+        {
+          "snapshot_id": "S02",
+          "check_id": "B02",
+          "label": "Caja restringida de operación a apertura de venta",
+          "formula": "saved operating closing_restricted_cash_claim = supplied sale opening_restricted_cash",
+          "left": {
+            "numerator": "100",
+            "denominator": "1"
+          },
+          "right": {
+            "numerator": "100",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "unit": "USD",
+          "source_refs": [
+            {
+              "path": "templates/worksheet-settled-twelve-T111.json",
+              "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/sale/closing_source_utf8"
+              ],
+              "final_pointer": "/amounts/opening_restricted_cash"
+            }
+          ],
+          "result_refs": [
+            {
+              "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+              "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+              "embedded_json_pointers": [],
+              "final_pointer": "/current_operating_totals/closing_restricted_cash_claim"
+            }
+          ],
+          "status": "matched_exact_scoped_review",
+          "scope_note": "Within the explicitly supplied synthetic profile only",
+          "financial_acceptance": false
+        },
+        {
+          "snapshot_id": "S02",
+          "check_id": "B03",
+          "label": "Reserva final separada del residual libre",
+          "formula": "opening_restricted_cash + new_reserve - reserve_release = closing_restricted_cash_claim",
+          "left": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "right": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "unit": "USD",
+          "source_refs": [
+            {
+              "path": "templates/worksheet-settled-twelve-T111.json",
+              "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/sale/closing_source_utf8"
+              ],
+              "final_pointer": "/amounts/opening_restricted_cash"
+            },
+            {
+              "path": "templates/worksheet-settled-twelve-T111.json",
+              "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/sale/closing_source_utf8"
+              ],
+              "final_pointer": "/amounts/new_reserve"
+            },
+            {
+              "path": "templates/worksheet-settled-twelve-T111.json",
+              "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/sale/closing_source_utf8"
+              ],
+              "final_pointer": "/amounts/reserve_release"
+            },
+            {
+              "path": "templates/worksheet-settled-twelve-T111.json",
+              "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/sale/closing_source_utf8"
+              ],
+              "final_pointer": "/amounts/closing_restricted_cash_claim"
+            }
+          ],
+          "result_refs": [],
+          "status": "matched_exact_scoped_review",
+          "scope_note": "Within the explicitly supplied synthetic profile only",
+          "financial_acceptance": false
+        },
+        {
+          "snapshot_id": "S02",
+          "check_id": "B04",
+          "label": "Obligación y pago declarados de principal",
+          "formula": "principal_due = principal_paid; due is not an additional cash subtraction",
+          "left": {
+            "numerator": "100",
+            "denominator": "1"
+          },
+          "right": {
+            "numerator": "100",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "unit": "USD",
+          "source_refs": [
+            {
+              "path": "templates/worksheet-settled-twelve-T111.json",
+              "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/sale/closing_source_utf8"
+              ],
+              "final_pointer": "/old_debts/0/principal_due"
+            },
+            {
+              "path": "templates/worksheet-settled-twelve-T111.json",
+              "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/sale/closing_source_utf8"
+              ],
+              "final_pointer": "/old_debts/0/principal_paid"
+            }
+          ],
+          "result_refs": [],
+          "status": "matched_exact_scoped_review",
+          "scope_note": "Equal declared due and paid does not authenticate bank payment or legal discharge; only paid enters cash residual",
+          "financial_acceptance": false
+        },
+        {
+          "snapshot_id": "S02",
+          "check_id": "B05",
+          "label": "Obligación y pago declarados de interest",
+          "formula": "interest_due = interest_paid; due is not an additional cash subtraction",
+          "left": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "right": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "unit": "USD",
+          "source_refs": [
+            {
+              "path": "templates/worksheet-settled-twelve-T111.json",
+              "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/sale/closing_source_utf8"
+              ],
+              "final_pointer": "/old_debts/0/interest_due"
+            },
+            {
+              "path": "templates/worksheet-settled-twelve-T111.json",
+              "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/sale/closing_source_utf8"
+              ],
+              "final_pointer": "/old_debts/0/interest_paid"
+            }
+          ],
+          "result_refs": [],
+          "status": "matched_exact_scoped_review",
+          "scope_note": "Equal declared due and paid does not authenticate bank payment or legal discharge; only paid enters cash residual",
+          "financial_acceptance": false
+        },
+        {
+          "snapshot_id": "S02",
+          "check_id": "B06",
+          "label": "Obligación y pago declarados de fees",
+          "formula": "fees_due = fees_paid; due is not an additional cash subtraction",
+          "left": {
+            "numerator": "10",
+            "denominator": "1"
+          },
+          "right": {
+            "numerator": "10",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "unit": "USD",
+          "source_refs": [
+            {
+              "path": "templates/worksheet-settled-twelve-T111.json",
+              "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/sale/closing_source_utf8"
+              ],
+              "final_pointer": "/old_debts/0/fees_due"
+            },
+            {
+              "path": "templates/worksheet-settled-twelve-T111.json",
+              "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/sale/closing_source_utf8"
+              ],
+              "final_pointer": "/old_debts/0/fees_paid"
+            }
+          ],
+          "result_refs": [],
+          "status": "matched_exact_scoped_review",
+          "scope_note": "Equal declared due and paid does not authenticate bank payment or legal discharge; only paid enters cash residual",
+          "financial_acceptance": false
+        },
+        {
+          "snapshot_id": "S02",
+          "check_id": "B07",
+          "label": "Obligación y pago declarados de other",
+          "formula": "other_due = other_paid; due is not an additional cash subtraction",
+          "left": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "right": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "unit": "USD",
+          "source_refs": [
+            {
+              "path": "templates/worksheet-settled-twelve-T111.json",
+              "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/sale/closing_source_utf8"
+              ],
+              "final_pointer": "/old_debts/0/other_due"
+            },
+            {
+              "path": "templates/worksheet-settled-twelve-T111.json",
+              "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/sale/closing_source_utf8"
+              ],
+              "final_pointer": "/old_debts/0/other_paid"
+            }
+          ],
+          "result_refs": [],
+          "status": "matched_exact_scoped_review",
+          "scope_note": "Equal declared due and paid does not authenticate bank payment or legal discharge; only paid enters cash residual",
+          "financial_acceptance": false
+        },
+        {
+          "snapshot_id": "S02",
+          "check_id": "B08",
+          "label": "Puente de saldos contables del seguro al pago de corte",
+          "formula": "before_payables - after_payables + after_prepaid - before_prepaid = supplied terminal insurance payment sum",
+          "left": {
+            "numerator": "5",
+            "denominator": "1"
+          },
+          "right": {
+            "numerator": "5",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "unit": "USD",
+          "source_refs": [
+            {
+              "path": "templates/worksheet-settled-twelve-T111.json",
+              "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/boundary_source_utf8"
+              ],
+              "final_pointer": "/accounting/before_payables"
+            },
+            {
+              "path": "templates/worksheet-settled-twelve-T111.json",
+              "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/boundary_source_utf8"
+              ],
+              "final_pointer": "/accounting/after_payables"
+            },
+            {
+              "path": "templates/worksheet-settled-twelve-T111.json",
+              "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/boundary_source_utf8"
+              ],
+              "final_pointer": "/accounting/after_prepaid"
+            },
+            {
+              "path": "templates/worksheet-settled-twelve-T111.json",
+              "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/boundary_source_utf8"
+              ],
+              "final_pointer": "/accounting/before_prepaid"
+            },
+            {
+              "path": "templates/worksheet-settled-twelve-T111.json",
+              "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/boundary_source_utf8",
+                "/terminal_binding_source_utf8"
+              ],
+              "final_pointer": "/payments/0/amount"
+            }
+          ],
+          "result_refs": [
+            {
+              "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+              "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+              "embedded_json_pointers": [],
+              "final_pointer": "/current_settlement_summary/settlement_cash"
+            }
+          ],
+          "status": "matched_exact_scoped_review",
+          "scope_note": "Within the explicitly supplied synthetic profile only",
+          "financial_acceptance": false
+        },
+        {
+          "snapshot_id": "S02",
+          "check_id": "B09",
+          "label": "Seguro incluido una vez en otros usos del cierre",
+          "formula": "supplied terminal insurance payment sum = supplied closing other_cash_uses under the explicit only-insurance assumption",
+          "left": {
+            "numerator": "5",
+            "denominator": "1"
+          },
+          "right": {
+            "numerator": "5",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "unit": "USD",
+          "source_refs": [
+            {
+              "path": "templates/worksheet-settled-twelve-T111.json",
+              "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/boundary_source_utf8",
+                "/terminal_binding_source_utf8"
+              ],
+              "final_pointer": "/payments/0/amount"
+            },
+            {
+              "path": "templates/worksheet-settled-twelve-T111.json",
+              "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/sale/closing_source_utf8"
+              ],
+              "final_pointer": "/amounts/other_cash_uses"
+            }
+          ],
+          "result_refs": [],
+          "status": "matched_exact_scoped_review",
+          "scope_note": "Entire other_cash_uses is this one insurance cut payment only in the supplied profile; no general decomposition or additional deduction",
+          "financial_acceptance": false
+        },
+        {
+          "snapshot_id": "S02",
+          "check_id": "B10",
+          "label": "Pago nominal en la fecha de corte frente al binding",
+          "formula": "sum(plan payments with payment_date exactly closing_date) = supplied terminal binding payment sum",
+          "left": {
+            "numerator": "5",
+            "denominator": "1"
+          },
+          "right": {
+            "numerator": "5",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "unit": "USD",
+          "source_refs": [
+            {
+              "path": "templates/worksheet-settled-twelve-T111.json",
+              "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/boundary_source_utf8",
+                "/plan_source_utf8"
+              ],
+              "final_pointer": "/planned_payments"
+            },
+            {
+              "path": "templates/worksheet-settled-twelve-T111.json",
+              "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/boundary_source_utf8",
+                "/terminal_binding_source_utf8"
+              ],
+              "final_pointer": "/payments"
+            }
+          ],
+          "result_refs": [],
+          "status": "matched_exact_scoped_review",
+          "scope_note": "All payment IDs, installment IDs, dates and amounts matched; no acceleration or authenticated payment assumed",
+          "financial_acceptance": false
+        },
+        {
+          "snapshot_id": "S02",
+          "check_id": "B11",
+          "label": "Doce términos al cobro neto de venta",
+          "formula": "sum(twelve signed free_cash_terms) = saved net_sale_distribution",
+          "left": {
+            "numerator": "576",
+            "denominator": "1"
+          },
+          "right": {
+            "numerator": "576",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "unit": "USD",
+          "source_refs": [
+            {
+              "path": "templates/worksheet-settled-twelve-T111.json",
+              "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/sale/closing_source_utf8"
+              ],
+              "final_pointer": "/amounts/opening_free_cash"
+            },
+            {
+              "path": "templates/worksheet-settled-twelve-T111.json",
+              "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/sale/closing_source_utf8"
+              ],
+              "final_pointer": "/amounts/gross_proceeds"
+            },
+            {
+              "path": "templates/worksheet-settled-twelve-T111.json",
+              "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/sale/closing_source_utf8"
+              ],
+              "final_pointer": "/amounts/reserve_release"
+            },
+            {
+              "path": "templates/worksheet-settled-twelve-T111.json",
+              "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/sale/closing_source_utf8"
+              ],
+              "final_pointer": "/amounts/other_cash_sources"
+            },
+            {
+              "path": "templates/worksheet-settled-twelve-T111.json",
+              "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/sale/closing_source_utf8"
+              ],
+              "final_pointer": "/amounts/closing_costs_paid"
+            },
+            {
+              "path": "templates/worksheet-settled-twelve-T111.json",
+              "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/sale/closing_source_utf8"
+              ],
+              "final_pointer": "/amounts/new_reserve"
+            },
+            {
+              "path": "templates/worksheet-settled-twelve-T111.json",
+              "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/sale/closing_source_utf8"
+              ],
+              "final_pointer": "/amounts/other_cash_uses"
+            },
+            {
+              "path": "templates/worksheet-settled-twelve-T111.json",
+              "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/sale/closing_source_utf8"
+              ],
+              "final_pointer": "/amounts/retained_free_cash"
+            },
+            {
+              "path": "templates/worksheet-settled-twelve-T111.json",
+              "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/sale/closing_source_utf8"
+              ],
+              "final_pointer": "/old_debts/0/principal_paid"
+            },
+            {
+              "path": "templates/worksheet-settled-twelve-T111.json",
+              "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/sale/closing_source_utf8"
+              ],
+              "final_pointer": "/old_debts/0/interest_paid"
+            },
+            {
+              "path": "templates/worksheet-settled-twelve-T111.json",
+              "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/sale/closing_source_utf8"
+              ],
+              "final_pointer": "/old_debts/0/fees_paid"
+            },
+            {
+              "path": "templates/worksheet-settled-twelve-T111.json",
+              "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/sale/closing_source_utf8"
+              ],
+              "final_pointer": "/old_debts/0/other_paid"
+            }
+          ],
+          "result_refs": [
+            {
+              "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+              "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+              "embedded_json_pointers": [],
+              "final_pointer": "/current_project_return_story/cash_by_category/net_sale_distribution"
+            },
+            {
+              "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+              "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+              "embedded_json_pointers": [],
+              "final_pointer": "/current_project_return_story/events/6/amount"
+            }
+          ],
+          "status": "matched_exact_scoped_review",
+          "scope_note": "Within the explicitly supplied synthetic profile only",
+          "financial_acceptance": false
+        },
+        {
+          "snapshot_id": "S02",
+          "check_id": "B12",
+          "label": "Conservación total sin sumar transferencias internas",
+          "formula": "opening_free_cash + opening_restricted_cash + gross_proceeds + other_cash_sources = debt_paid + closing_costs_paid + other_cash_uses + positive residual distribution + retained_free_cash + closing_restricted_cash_claim; no new contribution in this positive-residual profile",
+          "left": {
+            "numerator": "711",
+            "denominator": "1"
+          },
+          "right": {
+            "numerator": "711",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "unit": "USD",
+          "source_refs": [
+            {
+              "path": "templates/worksheet-settled-twelve-T111.json",
+              "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/sale/closing_source_utf8"
+              ],
+              "final_pointer": ""
+            }
+          ],
+          "result_refs": [],
+          "status": "matched_exact_scoped_review",
+          "scope_note": "Reserve release/new reserve move between free/restricted accounts; opening/closing stocks enter total conservation instead. Positive residual implies zero extra equity contribution only in this profile",
+          "financial_acceptance": false
+        },
+        {
+          "snapshot_id": "S02",
+          "check_id": "B13",
+          "label": "Principal anterior a todos los pagos de la fecha de cierre",
+          "formula": "zero-rate loan principal - (principal / amortization_payments) * count(payment_dates strictly before closing_date) = principal_due before all closing-date events",
+          "left": {
+            "numerator": "100",
+            "denominator": "1"
+          },
+          "right": {
+            "numerator": "100",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "unit": "USD",
+          "source_refs": [
+            {
+              "path": "templates/worksheet-settled-twelve-T111.json",
+              "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/sale/loans/0/source"
+              ],
+              "final_pointer": ""
+            },
+            {
+              "path": "templates/worksheet-settled-twelve-T111.json",
+              "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/sale/closing_source_utf8"
+              ],
+              "final_pointer": "/old_debts/0/principal_due"
+            }
+          ],
+          "result_refs": [],
+          "status": "matched_exact_scoped_review",
+          "scope_note": "Five supplied zero-rate scheduled principal payments occur strictly before cut; the sixth coincides with cut and is not separately deducted again from the stated payoff",
+          "financial_acceptance": false
+        },
+        {
+          "snapshot_id": "S02",
+          "check_id": "B14",
+          "label": "Principal del agregado tenencia y venta frente a sus dos fases",
+          "formula": "sum(supplied operating debt_principal_payment) + supplied closing principal_paid = saved holding-plus-sale debt_principal",
+          "left": {
+            "numerator": "200",
+            "denominator": "1"
+          },
+          "right": {
+            "numerator": "200",
+            "denominator": "1"
+          },
+          "residual": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "unit": "USD",
+          "source_refs": [
+            {
+              "path": "templates/worksheet-settled-twelve-T111.json",
+              "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/periods/0/cash_source_utf8"
+              ],
+              "final_pointer": "/amounts/debt_principal_payment"
+            },
+            {
+              "path": "templates/worksheet-settled-twelve-T111.json",
+              "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/periods/1/cash_source_utf8"
+              ],
+              "final_pointer": "/amounts/debt_principal_payment"
+            },
+            {
+              "path": "templates/worksheet-settled-twelve-T111.json",
+              "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+              "embedded_json_pointers": [
+                "/phased_settled_source_utf8",
+                "/current_settled_source_utf8",
+                "/case_source_utf8",
+                "/sale/closing_source_utf8"
+              ],
+              "final_pointer": "/old_debts/0/principal_paid"
+            }
+          ],
+          "result_refs": [
+            {
+              "path": "docs/current-structure/MiniUW_Version_Comparada_T111_D15.json",
+              "sha256": "5b9ae36667bcf744b81a2cd5afdb4c64930777640f2732b5e3809d37240a63f7",
+              "embedded_json_pointers": [],
+              "final_pointer": "/current_holding_sale_totals/debt_principal"
+            }
+          ],
+          "status": "matched_exact_scoped_review",
+          "scope_note": "Holding-plus-sale principal200 already includes operating100 and closing100; it is not another sale-only payoff",
+          "financial_acceptance": false
+        }
+      ],
+      "free_cash_distribution": {
+        "numerator": "576",
+        "denominator": "1"
+      },
+      "total_closing_sources": {
+        "numerator": "711",
+        "denominator": "1"
+      },
+      "total_closing_uses": {
+        "numerator": "711",
+        "denominator": "1"
+      },
+      "closing_retained_free_cash": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "closing_restricted_cash": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "loan_cut": {
+        "prior_payment_dates": [
+          "2027-02-01",
+          "2027-03-01",
+          "2027-04-01",
+          "2027-05-01",
+          "2027-06-01"
+        ],
+        "coincident_payment_dates": [
+          "2027-07-01"
+        ],
+        "regular_principal_per_payment": {
+          "numerator": "20",
+          "denominator": "1"
+        },
+        "principal_before_all_cut_events": {
+          "numerator": "100",
+          "denominator": "1"
+        },
+        "regular_cut_payment_deducted_again": false
+      },
+      "insurance_payment_in_other_uses_only_once": true,
+      "inventory_financially_authenticated": false,
+      "actual_payments_authenticated": false,
+      "financial_decision": "PENDING"
+    }
+  ],
+  "model_producers_imported_or_called": false,
+  "IRR_recalculated": false,
+  "source_inputs_modified": false,
+  "old_results_modified": false,
+  "deliberate_faults_introduced": 0,
+  "actual_model_bug_fixes": 0,
+  "new_runtime_components": 0,
+  "new_tests": 0,
+  "technical_tests_unchanged": 1619,
+  "financial_bindings_activated": 0,
+  "financial_acceptance_checks_executed": 0,
+  "published_model_input_values_added": 0,
+  "original_semantic_mappings_pending": 54,
+  "financial_model_complete": false,
+  "professional_review_authenticated": false,
+  "personal_return_verified": false,
+  "real_decisions_enabled": false,
+  "deployment_enabled": false,
+  "PDF_generated": false
+}
