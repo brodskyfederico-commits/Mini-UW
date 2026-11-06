@@ -1,0 +1,3325 @@
+{
+  "snapshot_id": "D12",
+  "scope": "Documentary aggregate delivery routes, separate feedback/diagnostic controls, handoff boundaries and conservative review reach; no execution order or financial solver activated",
+  "previous_design_commit": "0fd8247ffea0af7acaf5eadb2e945f92eb57aa38",
+  "technical_baseline": "T111",
+  "technical_baseline_commit": "9aeb590151068ccd51f4eca0e92f7c766464ba94",
+  "modules": [
+    {
+      "id": "M1",
+      "name": "Entradas y evidencia",
+      "source_ref": {
+        "path": "docs/structural-integration-register.json",
+        "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+        "json_pointer": "/modules/0"
+      },
+      "financial_gate_closed": false
+    },
+    {
+      "id": "M2",
+      "name": "Operación y NOI",
+      "source_ref": {
+        "path": "docs/structural-integration-register.json",
+        "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+        "json_pointer": "/modules/1"
+      },
+      "financial_gate_closed": false
+    },
+    {
+      "id": "M3",
+      "name": "Presupuesto y alcance",
+      "source_ref": {
+        "path": "docs/structural-integration-register.json",
+        "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+        "json_pointer": "/modules/2"
+      },
+      "financial_gate_closed": false
+    },
+    {
+      "id": "M4",
+      "name": "Calendario",
+      "source_ref": {
+        "path": "docs/structural-integration-register.json",
+        "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+        "json_pointer": "/modules/3"
+      },
+      "financial_gate_closed": false
+    },
+    {
+      "id": "M5",
+      "name": "Capital y construcción",
+      "source_ref": {
+        "path": "docs/structural-integration-register.json",
+        "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+        "json_pointer": "/modules/4"
+      },
+      "financial_gate_closed": false
+    },
+    {
+      "id": "M6",
+      "name": "Refinanciación",
+      "source_ref": {
+        "path": "docs/structural-integration-register.json",
+        "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+        "json_pointer": "/modules/5"
+      },
+      "financial_gate_closed": false
+    },
+    {
+      "id": "M7",
+      "name": "Tenencia, venta y retornos",
+      "source_ref": {
+        "path": "docs/structural-integration-register.json",
+        "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+        "json_pointer": "/modules/6"
+      },
+      "financial_gate_closed": false
+    },
+    {
+      "id": "M8",
+      "name": "Escenarios y precio",
+      "source_ref": {
+        "path": "docs/structural-integration-register.json",
+        "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+        "json_pointer": "/modules/7"
+      },
+      "financial_gate_closed": false
+    },
+    {
+      "id": "M9",
+      "name": "Decisión, revisión y salida",
+      "source_ref": {
+        "path": "docs/structural-integration-register.json",
+        "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+        "json_pointer": "/modules/8"
+      },
+      "financial_gate_closed": false
+    }
+  ],
+  "routes": [
+    {
+      "route_id": "M1.program_units",
+      "source_ref": {
+        "path": "docs/structural-integration-register.json",
+        "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+        "json_pointer": "/aggregate_port_routes/0"
+      },
+      "producer": "M1",
+      "producer_port": "program_units",
+      "consumers": [
+        "M2",
+        "M3",
+        "M4"
+      ],
+      "contract_ids": [
+        "M1-01",
+        "M1-02",
+        "M1-03",
+        "M1-04",
+        "M1-05",
+        "M1-06",
+        "M1-07",
+        "M1-08"
+      ],
+      "consumer_rule": "Exigir misma definición y contexto, unidad/base/período compatibles y evidencia de cálculo vigente; adapter explícito si difieren.",
+      "transport_requirements": [
+        "deal/scenario/run/input/definition/criterion/rule revisions",
+        "typed payload and any quantity states/claims/causes",
+        "dimensions/unit/currency/basis/period",
+        "source and detailed-record evidence refs"
+      ],
+      "implicit_conversion_allowed": false,
+      "machine_executable_wiring": false,
+      "payload_kind": "typed_quantity",
+      "status": "documentary_route_financial_activation_pending"
+    },
+    {
+      "route_id": "M1.building_gsf",
+      "source_ref": {
+        "path": "docs/structural-integration-register.json",
+        "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+        "json_pointer": "/aggregate_port_routes/1"
+      },
+      "producer": "M1",
+      "producer_port": "building_gsf",
+      "consumers": [
+        "M3"
+      ],
+      "contract_ids": [
+        "M1-01",
+        "M1-02",
+        "M1-03",
+        "M1-04",
+        "M1-05",
+        "M1-06",
+        "M1-07",
+        "M1-08"
+      ],
+      "consumer_rule": "GSF no se convierte en NRSF ni se reconstruye con ratio supuesto.",
+      "transport_requirements": [
+        "deal/scenario/run/input/definition/criterion/rule revisions",
+        "typed payload and any quantity states/claims/causes",
+        "dimensions/unit/currency/basis/period",
+        "source and detailed-record evidence refs"
+      ],
+      "implicit_conversion_allowed": false,
+      "machine_executable_wiring": false,
+      "payload_kind": "typed_quantity",
+      "status": "documentary_route_financial_activation_pending"
+    },
+    {
+      "route_id": "M1.residential_nrsf",
+      "source_ref": {
+        "path": "docs/structural-integration-register.json",
+        "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+        "json_pointer": "/aggregate_port_routes/2"
+      },
+      "producer": "M1",
+      "producer_port": "residential_nrsf",
+      "consumers": [
+        "M2"
+      ],
+      "contract_ids": [
+        "M1-01",
+        "M1-02",
+        "M1-03",
+        "M1-04",
+        "M1-05",
+        "M1-06",
+        "M1-07",
+        "M1-08"
+      ],
+      "consumer_rule": "NRSF y GSF son bases distintas aun compartiendo dimensión física.",
+      "transport_requirements": [
+        "deal/scenario/run/input/definition/criterion/rule revisions",
+        "typed payload and any quantity states/claims/causes",
+        "dimensions/unit/currency/basis/period",
+        "source and detailed-record evidence refs"
+      ],
+      "implicit_conversion_allowed": false,
+      "machine_executable_wiring": false,
+      "payload_kind": "typed_quantity",
+      "status": "documentary_route_financial_activation_pending"
+    },
+    {
+      "route_id": "M1.commercial_sf",
+      "source_ref": {
+        "path": "docs/structural-integration-register.json",
+        "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+        "json_pointer": "/aggregate_port_routes/3"
+      },
+      "producer": "M1",
+      "producer_port": "commercial_sf",
+      "consumers": [
+        "M2",
+        "M3"
+      ],
+      "contract_ids": [
+        "M1-01",
+        "M1-02",
+        "M1-03",
+        "M1-04",
+        "M1-05",
+        "M1-06",
+        "M1-07",
+        "M1-08"
+      ],
+      "consumer_rule": "Exigir misma definición y contexto, unidad/base/período compatibles y evidencia de cálculo vigente; adapter explícito si difieren.",
+      "transport_requirements": [
+        "deal/scenario/run/input/definition/criterion/rule revisions",
+        "typed payload and any quantity states/claims/causes",
+        "dimensions/unit/currency/basis/period",
+        "source and detailed-record evidence refs"
+      ],
+      "implicit_conversion_allowed": false,
+      "machine_executable_wiring": false,
+      "payload_kind": "typed_quantity",
+      "status": "documentary_route_financial_activation_pending"
+    },
+    {
+      "route_id": "M1.parking_spaces",
+      "source_ref": {
+        "path": "docs/structural-integration-register.json",
+        "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+        "json_pointer": "/aggregate_port_routes/4"
+      },
+      "producer": "M1",
+      "producer_port": "parking_spaces",
+      "consumers": [
+        "M2",
+        "M3"
+      ],
+      "contract_ids": [
+        "M1-01",
+        "M1-02",
+        "M1-03",
+        "M1-04",
+        "M1-05",
+        "M1-06",
+        "M1-07",
+        "M1-08"
+      ],
+      "consumer_rule": "Exigir misma definición y contexto, unidad/base/período compatibles y evidencia de cálculo vigente; adapter explícito si difieren.",
+      "transport_requirements": [
+        "deal/scenario/run/input/definition/criterion/rule revisions",
+        "typed payload and any quantity states/claims/causes",
+        "dimensions/unit/currency/basis/period",
+        "source and detailed-record evidence refs"
+      ],
+      "implicit_conversion_allowed": false,
+      "machine_executable_wiring": false,
+      "payload_kind": "typed_quantity",
+      "status": "documentary_route_financial_activation_pending"
+    },
+    {
+      "route_id": "M2.effective_income",
+      "source_ref": {
+        "path": "docs/structural-integration-register.json",
+        "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+        "json_pointer": "/aggregate_port_routes/5"
+      },
+      "producer": "M2",
+      "producer_port": "effective_income",
+      "consumers": [
+        "M4",
+        "M7",
+        "M9"
+      ],
+      "contract_ids": [
+        "M2-01",
+        "M2-02",
+        "M2-03",
+        "M2-04",
+        "M2-05",
+        "M2-06",
+        "M2-07",
+        "M2-08"
+      ],
+      "consumer_rule": "Exigir misma definición y contexto, unidad/base/período compatibles y evidencia de cálculo vigente; adapter explícito si difieren.",
+      "transport_requirements": [
+        "deal/scenario/run/input/definition/criterion/rule revisions",
+        "typed payload and any quantity states/claims/causes",
+        "dimensions/unit/currency/basis/period",
+        "source and detailed-record evidence refs"
+      ],
+      "implicit_conversion_allowed": false,
+      "machine_executable_wiring": false,
+      "payload_kind": "typed_quantity",
+      "status": "documentary_route_financial_activation_pending"
+    },
+    {
+      "route_id": "M2.operating_expenses",
+      "source_ref": {
+        "path": "docs/structural-integration-register.json",
+        "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+        "json_pointer": "/aggregate_port_routes/6"
+      },
+      "producer": "M2",
+      "producer_port": "operating_expenses",
+      "consumers": [
+        "M4",
+        "M7",
+        "M9"
+      ],
+      "contract_ids": [
+        "M2-01",
+        "M2-02",
+        "M2-03",
+        "M2-04",
+        "M2-05",
+        "M2-06",
+        "M2-07",
+        "M2-08"
+      ],
+      "consumer_rule": "Exigir misma definición y contexto, unidad/base/período compatibles y evidencia de cálculo vigente; adapter explícito si difieren.",
+      "transport_requirements": [
+        "deal/scenario/run/input/definition/criterion/rule revisions",
+        "typed payload and any quantity states/claims/causes",
+        "dimensions/unit/currency/basis/period",
+        "source and detailed-record evidence refs"
+      ],
+      "implicit_conversion_allowed": false,
+      "machine_executable_wiring": false,
+      "payload_kind": "typed_quantity",
+      "status": "documentary_route_financial_activation_pending"
+    },
+    {
+      "route_id": "M2.property_tax",
+      "source_ref": {
+        "path": "docs/structural-integration-register.json",
+        "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+        "json_pointer": "/aggregate_port_routes/7"
+      },
+      "producer": "M2",
+      "producer_port": "property_tax",
+      "consumers": [
+        "M4",
+        "M7",
+        "M9"
+      ],
+      "contract_ids": [
+        "M2-01",
+        "M2-02",
+        "M2-03",
+        "M2-04",
+        "M2-05",
+        "M2-06",
+        "M2-07",
+        "M2-08"
+      ],
+      "consumer_rule": "Exigir misma definición y contexto, unidad/base/período compatibles y evidencia de cálculo vigente; adapter explícito si difieren.",
+      "transport_requirements": [
+        "deal/scenario/run/input/definition/criterion/rule revisions",
+        "typed payload and any quantity states/claims/causes",
+        "dimensions/unit/currency/basis/period",
+        "source and detailed-record evidence refs"
+      ],
+      "implicit_conversion_allowed": false,
+      "machine_executable_wiring": false,
+      "payload_kind": "typed_quantity",
+      "status": "documentary_route_financial_activation_pending"
+    },
+    {
+      "route_id": "M2.noi",
+      "source_ref": {
+        "path": "docs/structural-integration-register.json",
+        "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+        "json_pointer": "/aggregate_port_routes/8"
+      },
+      "producer": "M2",
+      "producer_port": "noi",
+      "consumers": [
+        "M6",
+        "M7",
+        "M8",
+        "M9"
+      ],
+      "contract_ids": [
+        "M2-01",
+        "M2-02",
+        "M2-03",
+        "M2-04",
+        "M2-05",
+        "M2-06",
+        "M2-07",
+        "M2-08"
+      ],
+      "consumer_rule": "NOI devengado no es cobro, caja distribuible ni NOI bancario por defecto; exigir período/base y ajustes expresos.",
+      "transport_requirements": [
+        "deal/scenario/run/input/definition/criterion/rule revisions",
+        "typed payload and any quantity states/claims/causes",
+        "dimensions/unit/currency/basis/period",
+        "source and detailed-record evidence refs"
+      ],
+      "implicit_conversion_allowed": false,
+      "machine_executable_wiring": false,
+      "payload_kind": "typed_quantity",
+      "status": "documentary_route_financial_activation_pending"
+    },
+    {
+      "route_id": "M3.budget_before_financing",
+      "source_ref": {
+        "path": "docs/structural-integration-register.json",
+        "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+        "json_pointer": "/aggregate_port_routes/9"
+      },
+      "producer": "M3",
+      "producer_port": "budget_before_financing",
+      "consumers": [
+        "M4",
+        "M5"
+      ],
+      "contract_ids": [
+        "M3-01",
+        "M3-02",
+        "M3-03",
+        "M3-04",
+        "M3-05",
+        "M3-06"
+      ],
+      "consumer_rule": "Exigir misma definición y contexto, unidad/base/período compatibles y evidencia de cálculo vigente; adapter explícito si difieren.",
+      "transport_requirements": [
+        "deal/scenario/run/input/definition/criterion/rule revisions",
+        "typed payload and any quantity states/claims/causes",
+        "dimensions/unit/currency/basis/period",
+        "source and detailed-record evidence refs"
+      ],
+      "implicit_conversion_allowed": false,
+      "machine_executable_wiring": false,
+      "payload_kind": "typed_quantity",
+      "status": "documentary_route_financial_activation_pending"
+    },
+    {
+      "route_id": "M3.unallocated_scope_cost",
+      "source_ref": {
+        "path": "docs/structural-integration-register.json",
+        "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+        "json_pointer": "/aggregate_port_routes/10"
+      },
+      "producer": "M3",
+      "producer_port": "unallocated_scope_cost",
+      "consumers": [
+        "M4",
+        "M5",
+        "M9"
+      ],
+      "contract_ids": [
+        "M3-01",
+        "M3-02",
+        "M3-03",
+        "M3-04",
+        "M3-05",
+        "M3-06"
+      ],
+      "consumer_rule": "Residual no asignado, incluso conocido distinto de cero, bloquea completitud del presupuesto afectado.",
+      "transport_requirements": [
+        "deal/scenario/run/input/definition/criterion/rule revisions",
+        "typed payload and any quantity states/claims/causes",
+        "dimensions/unit/currency/basis/period",
+        "source and detailed-record evidence refs"
+      ],
+      "implicit_conversion_allowed": false,
+      "machine_executable_wiring": false,
+      "payload_kind": "typed_quantity",
+      "status": "documentary_route_financial_activation_pending"
+    },
+    {
+      "route_id": "M4.scheduled_uses",
+      "source_ref": {
+        "path": "docs/structural-integration-register.json",
+        "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+        "json_pointer": "/aggregate_port_routes/11"
+      },
+      "producer": "M4",
+      "producer_port": "scheduled_uses",
+      "consumers": [
+        "M5"
+      ],
+      "contract_ids": [
+        "M4-01",
+        "M4-02",
+        "M4-03",
+        "M4-04",
+        "M4-05",
+        "M4-06"
+      ],
+      "consumer_rule": "Exigir misma definición y contexto, unidad/base/período compatibles y evidencia de cálculo vigente; adapter explícito si difieren.",
+      "transport_requirements": [
+        "deal/scenario/run/input/definition/criterion/rule revisions",
+        "typed payload and any quantity states/claims/causes",
+        "dimensions/unit/currency/basis/period",
+        "source and detailed-record evidence refs"
+      ],
+      "implicit_conversion_allowed": false,
+      "machine_executable_wiring": false,
+      "payload_kind": "typed_quantity",
+      "status": "documentary_route_financial_activation_pending"
+    },
+    {
+      "route_id": "M4.unscheduled_uses",
+      "source_ref": {
+        "path": "docs/structural-integration-register.json",
+        "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+        "json_pointer": "/aggregate_port_routes/12"
+      },
+      "producer": "M4",
+      "producer_port": "unscheduled_uses",
+      "consumers": [
+        "M5",
+        "M9"
+      ],
+      "contract_ids": [
+        "M4-01",
+        "M4-02",
+        "M4-03",
+        "M4-04",
+        "M4-05",
+        "M4-06"
+      ],
+      "consumer_rule": "Saldo no programado no se reparte ni convierte en cero; bloquear la financiación dependiente.",
+      "transport_requirements": [
+        "deal/scenario/run/input/definition/criterion/rule revisions",
+        "typed payload and any quantity states/claims/causes",
+        "dimensions/unit/currency/basis/period",
+        "source and detailed-record evidence refs"
+      ],
+      "implicit_conversion_allowed": false,
+      "machine_executable_wiring": false,
+      "payload_kind": "typed_quantity",
+      "status": "documentary_route_financial_activation_pending"
+    },
+    {
+      "route_id": "M5.tdc",
+      "source_ref": {
+        "path": "docs/structural-integration-register.json",
+        "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+        "json_pointer": "/aggregate_port_routes/13"
+      },
+      "producer": "M5",
+      "producer_port": "tdc",
+      "consumers": [
+        "M8",
+        "M9"
+      ],
+      "contract_ids": [
+        "M5-01",
+        "M5-02",
+        "M5-03",
+        "M5-04",
+        "M5-05",
+        "M5-06",
+        "M5-07",
+        "M5-08",
+        "M5-09",
+        "M5-10"
+      ],
+      "consumer_rule": "Exigir misma definición y contexto, unidad/base/período compatibles y evidencia de cálculo vigente; adapter explícito si difieren.",
+      "transport_requirements": [
+        "deal/scenario/run/input/definition/criterion/rule revisions",
+        "typed payload and any quantity states/claims/causes",
+        "dimensions/unit/currency/basis/period",
+        "source and detailed-record evidence refs"
+      ],
+      "implicit_conversion_allowed": false,
+      "machine_executable_wiring": false,
+      "payload_kind": "typed_quantity",
+      "status": "documentary_route_financial_activation_pending"
+    },
+    {
+      "route_id": "M5.construction_principal",
+      "source_ref": {
+        "path": "docs/structural-integration-register.json",
+        "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+        "json_pointer": "/aggregate_port_routes/14"
+      },
+      "producer": "M5",
+      "producer_port": "construction_principal",
+      "consumers": [
+        "M6",
+        "M7"
+      ],
+      "contract_ids": [
+        "M5-01",
+        "M5-02",
+        "M5-03",
+        "M5-04",
+        "M5-05",
+        "M5-06",
+        "M5-07",
+        "M5-08",
+        "M5-09",
+        "M5-10"
+      ],
+      "consumer_rule": "Principal no es payoff total; intereses/fees/otras obligaciones y corte requieren registros propios.",
+      "transport_requirements": [
+        "deal/scenario/run/input/definition/criterion/rule revisions",
+        "typed payload and any quantity states/claims/causes",
+        "dimensions/unit/currency/basis/period",
+        "source and detailed-record evidence refs"
+      ],
+      "implicit_conversion_allowed": false,
+      "machine_executable_wiring": false,
+      "payload_kind": "typed_quantity",
+      "status": "documentary_route_financial_activation_pending"
+    },
+    {
+      "route_id": "M5.construction_payoff",
+      "source_ref": {
+        "path": "docs/structural-integration-register.json",
+        "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+        "json_pointer": "/aggregate_port_routes/15"
+      },
+      "producer": "M5",
+      "producer_port": "construction_payoff",
+      "consumers": [
+        "M6",
+        "M7"
+      ],
+      "contract_ids": [
+        "M5-01",
+        "M5-02",
+        "M5-03",
+        "M5-04",
+        "M5-05",
+        "M5-06",
+        "M5-07",
+        "M5-08",
+        "M5-09",
+        "M5-10"
+      ],
+      "consumer_rule": "Exigir desglose, fecha, completitud y contrapartidas; no sumar de nuevo capitalización ya en principal.",
+      "transport_requirements": [
+        "deal/scenario/run/input/definition/criterion/rule revisions",
+        "typed payload and any quantity states/claims/causes",
+        "dimensions/unit/currency/basis/period",
+        "source and detailed-record evidence refs"
+      ],
+      "implicit_conversion_allowed": false,
+      "machine_executable_wiring": false,
+      "payload_kind": "typed_quantity",
+      "status": "documentary_route_financial_activation_pending"
+    },
+    {
+      "route_id": "M5.equity_required",
+      "source_ref": {
+        "path": "docs/structural-integration-register.json",
+        "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+        "json_pointer": "/aggregate_port_routes/16"
+      },
+      "producer": "M5",
+      "producer_port": "equity_required",
+      "consumers": [
+        "M6",
+        "M7",
+        "M9"
+      ],
+      "contract_ids": [
+        "M5-01",
+        "M5-02",
+        "M5-03",
+        "M5-04",
+        "M5-05",
+        "M5-06",
+        "M5-07",
+        "M5-08",
+        "M5-09",
+        "M5-10"
+      ],
+      "consumer_rule": "Necesidad de capital no acredita aporte recibido o capital disponible; M7 requiere movimientos brutos.",
+      "transport_requirements": [
+        "deal/scenario/run/input/definition/criterion/rule revisions",
+        "typed payload and any quantity states/claims/causes",
+        "dimensions/unit/currency/basis/period",
+        "source and detailed-record evidence refs"
+      ],
+      "implicit_conversion_allowed": false,
+      "machine_executable_wiring": false,
+      "payload_kind": "typed_quantity",
+      "status": "documentary_route_financial_activation_pending"
+    },
+    {
+      "route_id": "M6.permanent_loan",
+      "source_ref": {
+        "path": "docs/structural-integration-register.json",
+        "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+        "json_pointer": "/aggregate_port_routes/17"
+      },
+      "producer": "M6",
+      "producer_port": "permanent_loan",
+      "consumers": [
+        "M7"
+      ],
+      "contract_ids": [
+        "M6-01",
+        "M6-02",
+        "M6-03",
+        "M6-04",
+        "M6-05",
+        "M6-06",
+        "M6-07",
+        "M6-08",
+        "M6-09",
+        "M6-10"
+      ],
+      "consumer_rule": "Exigir misma definición y contexto, unidad/base/período compatibles y evidencia de cálculo vigente; adapter explícito si difieren.",
+      "transport_requirements": [
+        "deal/scenario/run/input/definition/criterion/rule revisions",
+        "typed payload and any quantity states/claims/causes",
+        "dimensions/unit/currency/basis/period",
+        "source and detailed-record evidence refs"
+      ],
+      "implicit_conversion_allowed": false,
+      "machine_executable_wiring": false,
+      "payload_kind": "typed_quantity",
+      "status": "documentary_route_financial_activation_pending"
+    },
+    {
+      "route_id": "M6.annual_debt_service",
+      "source_ref": {
+        "path": "docs/structural-integration-register.json",
+        "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+        "json_pointer": "/aggregate_port_routes/18"
+      },
+      "producer": "M6",
+      "producer_port": "annual_debt_service",
+      "consumers": [
+        "M7",
+        "M9"
+      ],
+      "contract_ids": [
+        "M6-01",
+        "M6-02",
+        "M6-03",
+        "M6-04",
+        "M6-05",
+        "M6-06",
+        "M6-07",
+        "M6-08",
+        "M6-09",
+        "M6-10"
+      ],
+      "consumer_rule": "Distinguir cuota equivalente anualizada y servicio efectivamente fechado. El equivalente de sizing no alimenta caja M7 sin calendario/amortización; tampoco se divide por 12 implícitamente.",
+      "transport_requirements": [
+        "deal/scenario/run/input/definition/criterion/rule revisions",
+        "typed payload and any quantity states/claims/causes",
+        "dimensions/unit/currency/basis/period",
+        "source and detailed-record evidence refs"
+      ],
+      "implicit_conversion_allowed": false,
+      "machine_executable_wiring": false,
+      "payload_kind": "typed_quantity",
+      "status": "documentary_route_financial_activation_pending"
+    },
+    {
+      "route_id": "M6.construction_payoff",
+      "source_ref": {
+        "path": "docs/structural-integration-register.json",
+        "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+        "json_pointer": "/aggregate_port_routes/19"
+      },
+      "producer": "M6",
+      "producer_port": "construction_payoff",
+      "consumers": [
+        "M7"
+      ],
+      "contract_ids": [
+        "M6-01",
+        "M6-02",
+        "M6-03",
+        "M6-04",
+        "M6-05",
+        "M6-06",
+        "M6-07",
+        "M6-08",
+        "M6-09",
+        "M6-10"
+      ],
+      "consumer_rule": "Exigir misma definición y contexto, unidad/base/período compatibles y evidencia de cálculo vigente; adapter explícito si difieren.",
+      "transport_requirements": [
+        "deal/scenario/run/input/definition/criterion/rule revisions",
+        "typed payload and any quantity states/claims/causes",
+        "dimensions/unit/currency/basis/period",
+        "source and detailed-record evidence refs"
+      ],
+      "implicit_conversion_allowed": false,
+      "machine_executable_wiring": false,
+      "payload_kind": "typed_quantity",
+      "status": "documentary_route_financial_activation_pending"
+    },
+    {
+      "route_id": "M6.restricted_reserves",
+      "source_ref": {
+        "path": "docs/structural-integration-register.json",
+        "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+        "json_pointer": "/aggregate_port_routes/20"
+      },
+      "producer": "M6",
+      "producer_port": "restricted_reserves",
+      "consumers": [
+        "M7"
+      ],
+      "contract_ids": [
+        "M6-01",
+        "M6-02",
+        "M6-03",
+        "M6-04",
+        "M6-05",
+        "M6-06",
+        "M6-07",
+        "M6-08",
+        "M6-09",
+        "M6-10"
+      ],
+      "consumer_rule": "Fondos restringidos no son distribución; exigir liberación/regla y movimientos separados.",
+      "transport_requirements": [
+        "deal/scenario/run/input/definition/criterion/rule revisions",
+        "typed payload and any quantity states/claims/causes",
+        "dimensions/unit/currency/basis/period",
+        "source and detailed-record evidence refs"
+      ],
+      "implicit_conversion_allowed": false,
+      "machine_executable_wiring": false,
+      "payload_kind": "typed_quantity",
+      "status": "documentary_route_financial_activation_pending"
+    },
+    {
+      "route_id": "M6.refi_distribution",
+      "source_ref": {
+        "path": "docs/structural-integration-register.json",
+        "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+        "json_pointer": "/aggregate_port_routes/21"
+      },
+      "producer": "M6",
+      "producer_port": "refi_distribution",
+      "consumers": [
+        "M7"
+      ],
+      "contract_ids": [
+        "M6-01",
+        "M6-02",
+        "M6-03",
+        "M6-04",
+        "M6-05",
+        "M6-06",
+        "M6-07",
+        "M6-08",
+        "M6-09",
+        "M6-10"
+      ],
+      "consumer_rule": "M7 recibe distribución bruta registrada; no sumar otra vez valor o proceeds del mismo refi.",
+      "transport_requirements": [
+        "deal/scenario/run/input/definition/criterion/rule revisions",
+        "typed payload and any quantity states/claims/causes",
+        "dimensions/unit/currency/basis/period",
+        "source and detailed-record evidence refs"
+      ],
+      "implicit_conversion_allowed": false,
+      "machine_executable_wiring": false,
+      "payload_kind": "typed_quantity",
+      "status": "documentary_route_financial_activation_pending"
+    },
+    {
+      "route_id": "M6.refi_contribution",
+      "source_ref": {
+        "path": "docs/structural-integration-register.json",
+        "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+        "json_pointer": "/aggregate_port_routes/22"
+      },
+      "producer": "M6",
+      "producer_port": "refi_contribution",
+      "consumers": [
+        "M7"
+      ],
+      "contract_ids": [
+        "M6-01",
+        "M6-02",
+        "M6-03",
+        "M6-04",
+        "M6-05",
+        "M6-06",
+        "M6-07",
+        "M6-08",
+        "M6-09",
+        "M6-10"
+      ],
+      "consumer_rule": "M7 conserva aporte bruto aunque coincida con distribución en el período.",
+      "transport_requirements": [
+        "deal/scenario/run/input/definition/criterion/rule revisions",
+        "typed payload and any quantity states/claims/causes",
+        "dimensions/unit/currency/basis/period",
+        "source and detailed-record evidence refs"
+      ],
+      "implicit_conversion_allowed": false,
+      "machine_executable_wiring": false,
+      "payload_kind": "typed_quantity",
+      "status": "documentary_route_financial_activation_pending"
+    },
+    {
+      "route_id": "M7.gross_contributions",
+      "source_ref": {
+        "path": "docs/structural-integration-register.json",
+        "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+        "json_pointer": "/aggregate_port_routes/23"
+      },
+      "producer": "M7",
+      "producer_port": "gross_contributions",
+      "consumers": [
+        "M8",
+        "M9"
+      ],
+      "contract_ids": [
+        "M7-01",
+        "M7-02",
+        "M7-03",
+        "M7-04",
+        "M7-05",
+        "M7-06",
+        "M7-07",
+        "M7-08",
+        "M7-09",
+        "M7-10",
+        "M7-11",
+        "M7-12"
+      ],
+      "consumer_rule": "Exigir misma definición y contexto, unidad/base/período compatibles y evidencia de cálculo vigente; adapter explícito si difieren.",
+      "transport_requirements": [
+        "deal/scenario/run/input/definition/criterion/rule revisions",
+        "typed payload and any quantity states/claims/causes",
+        "dimensions/unit/currency/basis/period",
+        "source and detailed-record evidence refs"
+      ],
+      "implicit_conversion_allowed": false,
+      "machine_executable_wiring": false,
+      "payload_kind": "typed_quantity",
+      "status": "documentary_route_financial_activation_pending"
+    },
+    {
+      "route_id": "M7.gross_distributions",
+      "source_ref": {
+        "path": "docs/structural-integration-register.json",
+        "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+        "json_pointer": "/aggregate_port_routes/24"
+      },
+      "producer": "M7",
+      "producer_port": "gross_distributions",
+      "consumers": [
+        "M8",
+        "M9"
+      ],
+      "contract_ids": [
+        "M7-01",
+        "M7-02",
+        "M7-03",
+        "M7-04",
+        "M7-05",
+        "M7-06",
+        "M7-07",
+        "M7-08",
+        "M7-09",
+        "M7-10",
+        "M7-11",
+        "M7-12"
+      ],
+      "consumer_rule": "Exigir misma definición y contexto, unidad/base/período compatibles y evidencia de cálculo vigente; adapter explícito si difieren.",
+      "transport_requirements": [
+        "deal/scenario/run/input/definition/criterion/rule revisions",
+        "typed payload and any quantity states/claims/causes",
+        "dimensions/unit/currency/basis/period",
+        "source and detailed-record evidence refs"
+      ],
+      "implicit_conversion_allowed": false,
+      "machine_executable_wiring": false,
+      "payload_kind": "typed_quantity",
+      "status": "documentary_route_financial_activation_pending"
+    },
+    {
+      "route_id": "M7.equity_multiple",
+      "source_ref": {
+        "path": "docs/structural-integration-register.json",
+        "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+        "json_pointer": "/aggregate_port_routes/25"
+      },
+      "producer": "M7",
+      "producer_port": "equity_multiple",
+      "consumers": [
+        "M8",
+        "M9"
+      ],
+      "contract_ids": [
+        "M7-01",
+        "M7-02",
+        "M7-03",
+        "M7-04",
+        "M7-05",
+        "M7-06",
+        "M7-07",
+        "M7-08",
+        "M7-09",
+        "M7-10",
+        "M7-11",
+        "M7-12"
+      ],
+      "consumer_rule": "Exigir misma definición y contexto, unidad/base/período compatibles y evidencia de cálculo vigente; adapter explícito si difieren.",
+      "transport_requirements": [
+        "deal/scenario/run/input/definition/criterion/rule revisions",
+        "typed payload and any quantity states/claims/causes",
+        "dimensions/unit/currency/basis/period",
+        "source and detailed-record evidence refs"
+      ],
+      "implicit_conversion_allowed": false,
+      "machine_executable_wiring": false,
+      "payload_kind": "typed_quantity",
+      "status": "documentary_route_financial_activation_pending"
+    },
+    {
+      "route_id": "M7.irr",
+      "source_ref": {
+        "path": "docs/structural-integration-register.json",
+        "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+        "json_pointer": "/aggregate_port_routes/26"
+      },
+      "producer": "M7",
+      "producer_port": "irr",
+      "consumers": [
+        "M8",
+        "M9"
+      ],
+      "contract_ids": [
+        "M7-01",
+        "M7-02",
+        "M7-03",
+        "M7-04",
+        "M7-05",
+        "M7-06",
+        "M7-07",
+        "M7-08",
+        "M7-09",
+        "M7-10",
+        "M7-11",
+        "M7-12"
+      ],
+      "consumer_rule": "Si hay raíces múltiples/sin raíz/indeterminación, el agregado queda indefinido o bloqueado con causa y evidencia del conjunto de raíces; nunca exportar primera raíz como cantidad conocida sin política aplicable.",
+      "transport_requirements": [
+        "deal/scenario/run/input/definition/criterion/rule revisions",
+        "typed payload and any quantity states/claims/causes",
+        "dimensions/unit/currency/basis/period",
+        "source and detailed-record evidence refs"
+      ],
+      "implicit_conversion_allowed": false,
+      "machine_executable_wiring": false,
+      "payload_kind": "typed_quantity",
+      "status": "documentary_route_financial_activation_pending"
+    },
+    {
+      "route_id": "M7.terminal_distribution",
+      "source_ref": {
+        "path": "docs/structural-integration-register.json",
+        "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+        "json_pointer": "/aggregate_port_routes/27"
+      },
+      "producer": "M7",
+      "producer_port": "terminal_distribution",
+      "consumers": [
+        "M8",
+        "M9"
+      ],
+      "contract_ids": [
+        "M7-01",
+        "M7-02",
+        "M7-03",
+        "M7-04",
+        "M7-05",
+        "M7-06",
+        "M7-07",
+        "M7-08",
+        "M7-09",
+        "M7-10",
+        "M7-11",
+        "M7-12"
+      ],
+      "consumer_rule": "Distinguir distribución realizada, valoración y escenario de liquidación; no duplicar valor terminal y venta.",
+      "transport_requirements": [
+        "deal/scenario/run/input/definition/criterion/rule revisions",
+        "typed payload and any quantity states/claims/causes",
+        "dimensions/unit/currency/basis/period",
+        "source and detailed-record evidence refs"
+      ],
+      "implicit_conversion_allowed": false,
+      "machine_executable_wiring": false,
+      "payload_kind": "typed_quantity",
+      "status": "documentary_route_financial_activation_pending"
+    },
+    {
+      "route_id": "M8.supported_price_bound",
+      "source_ref": {
+        "path": "docs/structural-integration-register.json",
+        "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+        "json_pointer": "/aggregate_port_routes/28"
+      },
+      "producer": "M8",
+      "producer_port": "supported_price_bound",
+      "consumers": [
+        "M9"
+      ],
+      "contract_ids": [
+        "M8-01",
+        "M8-02",
+        "M8-03",
+        "M8-04",
+        "M8-05",
+        "M8-06",
+        "M8-07",
+        "M8-08",
+        "M8-09",
+        "M8-10",
+        "M8-11",
+        "M8-12"
+      ],
+      "consumer_rule": "Transportar dominio, objetivos, escenario, revisión y evidencia junto al importe. Soporte reducido no es RLV completo.",
+      "transport_requirements": [
+        "deal/scenario/run/input/definition/criterion/rule revisions",
+        "typed payload and any quantity states/claims/causes",
+        "dimensions/unit/currency/basis/period",
+        "source and detailed-record evidence refs"
+      ],
+      "implicit_conversion_allowed": false,
+      "machine_executable_wiring": false,
+      "payload_kind": "typed_quantity",
+      "status": "documentary_route_financial_activation_pending"
+    },
+    {
+      "route_id": "M8.bound_kind",
+      "source_ref": {
+        "path": "docs/structural-integration-register.json",
+        "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+        "json_pointer": "/aggregate_port_routes/29"
+      },
+      "producer": "M8",
+      "producer_port": "bound_kind",
+      "consumers": [
+        "M9"
+      ],
+      "contract_ids": [
+        "M8-01",
+        "M8-02",
+        "M8-03",
+        "M8-04",
+        "M8-05",
+        "M8-06",
+        "M8-07",
+        "M8-08",
+        "M8-09",
+        "M8-10",
+        "M8-11",
+        "M8-12"
+      ],
+      "consumer_rule": "Máximo alcanzado, supremo no alcanzado, vacío probado, no acotado e indeterminado no son intercambiables; búsqueda parcial conserva indeterminación.",
+      "transport_requirements": [
+        "deal/scenario/run/input/definition/criterion/rule revisions",
+        "typed payload and any quantity states/claims/causes",
+        "dimensions/unit/currency/basis/period",
+        "source and detailed-record evidence refs"
+      ],
+      "implicit_conversion_allowed": false,
+      "machine_executable_wiring": false,
+      "payload_kind": "enum",
+      "status": "documentary_route_financial_activation_pending"
+    },
+    {
+      "route_id": "M9.decision",
+      "source_ref": {
+        "path": "docs/structural-integration-register.json",
+        "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+        "json_pointer": "/aggregate_port_routes/30"
+      },
+      "producer": "M9",
+      "producer_port": "decision",
+      "consumers": [
+        "external_one_page_report_design"
+      ],
+      "contract_ids": [
+        "M9-01",
+        "M9-02",
+        "M9-03",
+        "M9-04",
+        "M9-05",
+        "M9-06",
+        "M9-07",
+        "M9-08",
+        "M9-09",
+        "M9-10",
+        "M9-11",
+        "M9-12"
+      ],
+      "consumer_rule": "Faltantes/reglas/conflictos requeridos mantienen PENDING sin PASS/FAIL; faltan política completa y aprobación auténtica para uso real.",
+      "transport_requirements": [
+        "deal/scenario/run/input/definition/criterion/rule revisions",
+        "typed payload and any quantity states/claims/causes",
+        "dimensions/unit/currency/basis/period",
+        "source and detailed-record evidence refs"
+      ],
+      "implicit_conversion_allowed": false,
+      "machine_executable_wiring": false,
+      "payload_kind": "enum",
+      "status": "documentary_route_financial_activation_pending"
+    },
+    {
+      "route_id": "M9.aggregation_rule_ref",
+      "source_ref": {
+        "path": "docs/structural-integration-register.json",
+        "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+        "json_pointer": "/aggregate_port_routes/31"
+      },
+      "producer": "M9",
+      "producer_port": "aggregation_rule_ref",
+      "consumers": [
+        "internal_audit_design",
+        "external_one_page_report_design"
+      ],
+      "contract_ids": [
+        "M9-01",
+        "M9-02",
+        "M9-03",
+        "M9-04",
+        "M9-05",
+        "M9-06",
+        "M9-07",
+        "M9-08",
+        "M9-09",
+        "M9-10",
+        "M9-11",
+        "M9-12"
+      ],
+      "consumer_rule": "Exigir misma definición y contexto, unidad/base/período compatibles y evidencia de cálculo vigente; adapter explícito si difieren.",
+      "transport_requirements": [
+        "deal/scenario/run/input/definition/criterion/rule revisions",
+        "typed payload and any quantity states/claims/causes",
+        "dimensions/unit/currency/basis/period",
+        "source and detailed-record evidence refs"
+      ],
+      "implicit_conversion_allowed": false,
+      "machine_executable_wiring": false,
+      "payload_kind": [
+        "string",
+        "null"
+      ],
+      "status": "documentary_route_financial_activation_pending"
+    },
+    {
+      "route_id": "M9.comparisons",
+      "source_ref": {
+        "path": "docs/structural-integration-register.json",
+        "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+        "json_pointer": "/aggregate_port_routes/32"
+      },
+      "producer": "M9",
+      "producer_port": "comparisons",
+      "consumers": [
+        "internal_audit_design",
+        "external_one_page_report_design"
+      ],
+      "contract_ids": [
+        "M9-01",
+        "M9-02",
+        "M9-03",
+        "M9-04",
+        "M9-05",
+        "M9-06",
+        "M9-07",
+        "M9-08",
+        "M9-09",
+        "M9-10",
+        "M9-11",
+        "M9-12"
+      ],
+      "consumer_rule": "Exigir misma definición y contexto, unidad/base/período compatibles y evidencia de cálculo vigente; adapter explícito si difieren.",
+      "transport_requirements": [
+        "deal/scenario/run/input/definition/criterion/rule revisions",
+        "typed payload and any quantity states/claims/causes",
+        "dimensions/unit/currency/basis/period",
+        "source and detailed-record evidence refs"
+      ],
+      "implicit_conversion_allowed": false,
+      "machine_executable_wiring": false,
+      "payload_kind": "array",
+      "status": "documentary_route_financial_activation_pending"
+    }
+  ],
+  "ordinary_module_delivery_layers": [
+    [
+      "M1"
+    ],
+    [
+      "M2",
+      "M3"
+    ],
+    [
+      "M4"
+    ],
+    [
+      "M5"
+    ],
+    [
+      "M6"
+    ],
+    [
+      "M7"
+    ],
+    [
+      "M8"
+    ],
+    [
+      "M9"
+    ]
+  ],
+  "control_and_coupling_records": [
+    {
+      "control_id": "LOOP-FINANCE",
+      "members": [
+        "M3",
+        "M4",
+        "M5"
+      ],
+      "source_ref": {
+        "path": "docs/structural-integration-register.json",
+        "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+        "json_pointer": "/control_loops_and_secondary_passes/0"
+      },
+      "description": "Costo/base, calendario y financiación capitalizada/TDC: bloque circular explícito.",
+      "handling": "No certifica convergencia un grafo de etapas; método y tolerancias quedan explícitos/pending, solver futuro.",
+      "ordinary_DAG_edge": false,
+      "activation_state": "PENDING",
+      "solver_or_policy_adopted": false
+    },
+    {
+      "control_id": "PASS-BREAKEVEN",
+      "members": [
+        "M2",
+        "M6"
+      ],
+      "source_ref": {
+        "path": "docs/structural-integration-register.json",
+        "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+        "json_pointer": "/control_loops_and_secondary_passes/1"
+      },
+      "description": "M2-08 ocupación de equilibrio utiliza servicio de deuda de M6 después de su cálculo.",
+      "handling": "Pasada diagnóstica posterior a M6, separada de outputs base de M2. No retroalimentar NOI base sin dependencia y fórmula expresas.",
+      "ordinary_DAG_edge": false,
+      "activation_state": "PENDING",
+      "solver_or_policy_adopted": false
+    },
+    {
+      "control_id": "LOOP-SCENARIO-PRICE",
+      "members": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5",
+        "M6",
+        "M7",
+        "M8"
+      ],
+      "source_ref": {
+        "path": "docs/structural-integration-register.json",
+        "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+        "json_pointer": "/control_loops_and_secondary_passes/2"
+      },
+      "description": "M8 reevalúa dependencias bajo escenario/precio.",
+      "handling": "Contextos aislados y cierre transitivo; no sumar sensibilidades ni inferir monotonía global.",
+      "ordinary_DAG_edge": false,
+      "activation_state": "PENDING",
+      "solver_or_policy_adopted": false
+    },
+    {
+      "control_id": "PASS-CRITERIA",
+      "members": [
+        "M8",
+        "M9"
+      ],
+      "source_ref": {
+        "path": "docs/structural-integration-register.json",
+        "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+        "json_pointer": "/control_loops_and_secondary_passes/3"
+      },
+      "description": "Cambio de criterios altera comparaciones y precio dependiente.",
+      "handling": "Invalidar dependientes. Conservar caja sólo si su independencia se acredita; publicación/registro atómico futuro.",
+      "ordinary_DAG_edge": false,
+      "activation_state": "PENDING",
+      "solver_or_policy_adopted": false
+    },
+    {
+      "control_id": "COUPLING-NOI-TAX",
+      "members": [
+        "M2"
+      ],
+      "source_ref": {
+        "path": "docs/structural-integration-register.json",
+        "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+        "json_pointer": "/contracts/14"
+      },
+      "description": "Impuesto/NOI simultáneos dentro del contrato M2-07, bajo hipótesis documentadas.",
+      "handling": "Conservar el cierre algebraico condicionado separado de aplicabilidad fiscal, parámetros y reglas oficiales; la tarifa/ratio de la hoja no define por sí sola el coeficiente.",
+      "ordinary_DAG_edge": false,
+      "activation_state": "PENDING",
+      "solver_or_policy_adopted": false,
+      "card_ref": {
+        "path": "docs/current-structure/MiniUW_Activacion_y_Aceptacion_D11.json",
+        "sha256": "be609e0f08ded0bea96c37444522817fdc30ac9053a82a4506330c0ef72bb13c",
+        "json_pointer": "/activation_packets/17"
+      }
+    }
+  ],
+  "handoff_boundaries": [
+    {
+      "boundary_id": "H01",
+      "title": "Cantidades y bases hacia renta y costos",
+      "route_ids": [
+        "M1.program_units",
+        "M1.building_gsf",
+        "M1.residential_nrsf",
+        "M1.commercial_sf",
+        "M1.parking_spaces"
+      ],
+      "route_refs": [
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/aggregate_port_routes/0"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/aggregate_port_routes/1"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/aggregate_port_routes/2"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/aggregate_port_routes/3"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/aggregate_port_routes/4"
+        }
+      ],
+      "connection_ids": [
+        "F01",
+        "F02",
+        "F09",
+        "F10",
+        "F11",
+        "F12",
+        "F14"
+      ],
+      "connection_refs": [
+        {
+          "path": "docs/current-structure/MiniUW_Activacion_y_Aceptacion_D11.json",
+          "sha256": "be609e0f08ded0bea96c37444522817fdc30ac9053a82a4506330c0ef72bb13c",
+          "json_pointer": "/activation_packets/0"
+        },
+        {
+          "path": "docs/current-structure/MiniUW_Activacion_y_Aceptacion_D11.json",
+          "sha256": "be609e0f08ded0bea96c37444522817fdc30ac9053a82a4506330c0ef72bb13c",
+          "json_pointer": "/activation_packets/1"
+        },
+        {
+          "path": "docs/current-structure/MiniUW_Activacion_y_Aceptacion_D11.json",
+          "sha256": "be609e0f08ded0bea96c37444522817fdc30ac9053a82a4506330c0ef72bb13c",
+          "json_pointer": "/activation_packets/8"
+        },
+        {
+          "path": "docs/current-structure/MiniUW_Activacion_y_Aceptacion_D11.json",
+          "sha256": "be609e0f08ded0bea96c37444522817fdc30ac9053a82a4506330c0ef72bb13c",
+          "json_pointer": "/activation_packets/9"
+        },
+        {
+          "path": "docs/current-structure/MiniUW_Activacion_y_Aceptacion_D11.json",
+          "sha256": "be609e0f08ded0bea96c37444522817fdc30ac9053a82a4506330c0ef72bb13c",
+          "json_pointer": "/activation_packets/10"
+        },
+        {
+          "path": "docs/current-structure/MiniUW_Activacion_y_Aceptacion_D11.json",
+          "sha256": "be609e0f08ded0bea96c37444522817fdc30ac9053a82a4506330c0ef72bb13c",
+          "json_pointer": "/activation_packets/11"
+        },
+        {
+          "path": "docs/current-structure/MiniUW_Activacion_y_Aceptacion_D11.json",
+          "sha256": "be609e0f08ded0bea96c37444522817fdc30ac9053a82a4506330c0ef72bb13c",
+          "json_pointer": "/activation_packets/13"
+        }
+      ],
+      "contract_refs": [
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/1"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/2"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/4"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/6"
+        }
+      ],
+      "required_records": [
+        "Identidad de tipo/grupo y cantidad elegible con fecha",
+        "GSF, NRSF, área comercial y espacios con bases separadas",
+        "Tarifas, unidad/moneda/período y aplicabilidad sustentadas"
+      ],
+      "blocking_consequence": "Sin cantidad/base compatibles la tarifa no produce monto; no inferir área, uso o elegibilidad de una celda.",
+      "financial_definition_ref": null,
+      "applicability": null,
+      "financial_activation_state": "PENDING",
+      "active_financial_binding": null
+    },
+    {
+      "boundary_id": "H02",
+      "title": "Presupuesto y calendario hacia financiación",
+      "route_ids": [
+        "M3.budget_before_financing",
+        "M3.unallocated_scope_cost",
+        "M4.scheduled_uses",
+        "M4.unscheduled_uses",
+        "M5.tdc"
+      ],
+      "route_refs": [
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/aggregate_port_routes/9"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/aggregate_port_routes/10"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/aggregate_port_routes/11"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/aggregate_port_routes/12"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/aggregate_port_routes/13"
+        }
+      ],
+      "connection_ids": [
+        "F02",
+        "F13",
+        "F14",
+        "F15",
+        "F16",
+        "F17"
+      ],
+      "connection_refs": [
+        {
+          "path": "docs/current-structure/MiniUW_Activacion_y_Aceptacion_D11.json",
+          "sha256": "be609e0f08ded0bea96c37444522817fdc30ac9053a82a4506330c0ef72bb13c",
+          "json_pointer": "/activation_packets/1"
+        },
+        {
+          "path": "docs/current-structure/MiniUW_Activacion_y_Aceptacion_D11.json",
+          "sha256": "be609e0f08ded0bea96c37444522817fdc30ac9053a82a4506330c0ef72bb13c",
+          "json_pointer": "/activation_packets/12"
+        },
+        {
+          "path": "docs/current-structure/MiniUW_Activacion_y_Aceptacion_D11.json",
+          "sha256": "be609e0f08ded0bea96c37444522817fdc30ac9053a82a4506330c0ef72bb13c",
+          "json_pointer": "/activation_packets/13"
+        },
+        {
+          "path": "docs/current-structure/MiniUW_Activacion_y_Aceptacion_D11.json",
+          "sha256": "be609e0f08ded0bea96c37444522817fdc30ac9053a82a4506330c0ef72bb13c",
+          "json_pointer": "/activation_packets/14"
+        },
+        {
+          "path": "docs/current-structure/MiniUW_Activacion_y_Aceptacion_D11.json",
+          "sha256": "be609e0f08ded0bea96c37444522817fdc30ac9053a82a4506330c0ef72bb13c",
+          "json_pointer": "/activation_packets/15"
+        },
+        {
+          "path": "docs/current-structure/MiniUW_Activacion_y_Aceptacion_D11.json",
+          "sha256": "be609e0f08ded0bea96c37444522817fdc30ac9053a82a4506330c0ef72bb13c",
+          "json_pointer": "/activation_packets/16"
+        }
+      ],
+      "contract_refs": [
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/17"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/21"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/22"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/23"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/27"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/28"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/35"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/36"
+        }
+      ],
+      "required_records": [
+        "Partidas exclusivas, base y saldo sin asignar",
+        "Hitos, pesos/curvas suministrados, pagos y saldo sin programar",
+        "Costo elegible, compromiso y uso de fondos separados de TDC"
+      ],
+      "blocking_consequence": "Un residual no se reparte ni se convierte en cero. La circularidad financiera requiere método/perfil sustentado; capacidad o equity requerido no acredita caja.",
+      "financial_definition_ref": null,
+      "applicability": null,
+      "financial_activation_state": "PENDING",
+      "active_financial_binding": null
+    },
+    {
+      "boundary_id": "H03",
+      "title": "Operación y NOI hacia sizing y diagnóstico",
+      "route_ids": [
+        "M2.effective_income",
+        "M2.operating_expenses",
+        "M2.property_tax",
+        "M2.noi",
+        "M6.annual_debt_service"
+      ],
+      "route_refs": [
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/aggregate_port_routes/5"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/aggregate_port_routes/6"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/aggregate_port_routes/7"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/aggregate_port_routes/8"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/aggregate_port_routes/18"
+        }
+      ],
+      "connection_ids": [
+        "F01",
+        "F03",
+        "F04",
+        "F05",
+        "F06",
+        "F07",
+        "F09",
+        "F10",
+        "F11",
+        "F12",
+        "F18",
+        "F20"
+      ],
+      "connection_refs": [
+        {
+          "path": "docs/current-structure/MiniUW_Activacion_y_Aceptacion_D11.json",
+          "sha256": "be609e0f08ded0bea96c37444522817fdc30ac9053a82a4506330c0ef72bb13c",
+          "json_pointer": "/activation_packets/0"
+        },
+        {
+          "path": "docs/current-structure/MiniUW_Activacion_y_Aceptacion_D11.json",
+          "sha256": "be609e0f08ded0bea96c37444522817fdc30ac9053a82a4506330c0ef72bb13c",
+          "json_pointer": "/activation_packets/2"
+        },
+        {
+          "path": "docs/current-structure/MiniUW_Activacion_y_Aceptacion_D11.json",
+          "sha256": "be609e0f08ded0bea96c37444522817fdc30ac9053a82a4506330c0ef72bb13c",
+          "json_pointer": "/activation_packets/3"
+        },
+        {
+          "path": "docs/current-structure/MiniUW_Activacion_y_Aceptacion_D11.json",
+          "sha256": "be609e0f08ded0bea96c37444522817fdc30ac9053a82a4506330c0ef72bb13c",
+          "json_pointer": "/activation_packets/4"
+        },
+        {
+          "path": "docs/current-structure/MiniUW_Activacion_y_Aceptacion_D11.json",
+          "sha256": "be609e0f08ded0bea96c37444522817fdc30ac9053a82a4506330c0ef72bb13c",
+          "json_pointer": "/activation_packets/5"
+        },
+        {
+          "path": "docs/current-structure/MiniUW_Activacion_y_Aceptacion_D11.json",
+          "sha256": "be609e0f08ded0bea96c37444522817fdc30ac9053a82a4506330c0ef72bb13c",
+          "json_pointer": "/activation_packets/6"
+        },
+        {
+          "path": "docs/current-structure/MiniUW_Activacion_y_Aceptacion_D11.json",
+          "sha256": "be609e0f08ded0bea96c37444522817fdc30ac9053a82a4506330c0ef72bb13c",
+          "json_pointer": "/activation_packets/8"
+        },
+        {
+          "path": "docs/current-structure/MiniUW_Activacion_y_Aceptacion_D11.json",
+          "sha256": "be609e0f08ded0bea96c37444522817fdc30ac9053a82a4506330c0ef72bb13c",
+          "json_pointer": "/activation_packets/9"
+        },
+        {
+          "path": "docs/current-structure/MiniUW_Activacion_y_Aceptacion_D11.json",
+          "sha256": "be609e0f08ded0bea96c37444522817fdc30ac9053a82a4506330c0ef72bb13c",
+          "json_pointer": "/activation_packets/10"
+        },
+        {
+          "path": "docs/current-structure/MiniUW_Activacion_y_Aceptacion_D11.json",
+          "sha256": "be609e0f08ded0bea96c37444522817fdc30ac9053a82a4506330c0ef72bb13c",
+          "json_pointer": "/activation_packets/11"
+        },
+        {
+          "path": "docs/current-structure/MiniUW_Activacion_y_Aceptacion_D11.json",
+          "sha256": "be609e0f08ded0bea96c37444522817fdc30ac9053a82a4506330c0ef72bb13c",
+          "json_pointer": "/activation_packets/17"
+        },
+        {
+          "path": "docs/current-structure/MiniUW_Activacion_y_Aceptacion_D11.json",
+          "sha256": "be609e0f08ded0bea96c37444522817fdc30ac9053a82a4506330c0ef72bb13c",
+          "json_pointer": "/activation_packets/19"
+        }
+      ],
+      "contract_refs": [
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/10"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/12"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/13"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/14"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/15"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/39"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/41"
+        }
+      ],
+      "required_records": [
+        "Ingreso/gasto/impuesto con misma base y período",
+        "NOI de operación y NOI bancario con ajustes explícitos",
+        "Servicio de deuda aplicable y función de ocupación para diagnóstico posterior"
+      ],
+      "blocking_consequence": "NOI no equivale a cobro ni caja distribuible. Impuesto/NOI conserva su hipótesis; el diagnóstico de equilibrio no sustituye NOI base ni resuelve su conflicto de denominador.",
+      "financial_definition_ref": null,
+      "applicability": null,
+      "financial_activation_state": "PENDING",
+      "active_financial_binding": null
+    },
+    {
+      "boundary_id": "H04",
+      "title": "Deuda de obra hacia refi y tenencia",
+      "route_ids": [
+        "M5.construction_principal",
+        "M5.construction_payoff",
+        "M5.equity_required",
+        "M6.permanent_loan",
+        "M6.construction_payoff",
+        "M6.refi_distribution",
+        "M6.refi_contribution"
+      ],
+      "route_refs": [
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/aggregate_port_routes/14"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/aggregate_port_routes/15"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/aggregate_port_routes/16"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/aggregate_port_routes/17"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/aggregate_port_routes/19"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/aggregate_port_routes/21"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/aggregate_port_routes/22"
+        }
+      ],
+      "connection_ids": [
+        "F07",
+        "F16",
+        "F17",
+        "F19"
+      ],
+      "connection_refs": [
+        {
+          "path": "docs/current-structure/MiniUW_Activacion_y_Aceptacion_D11.json",
+          "sha256": "be609e0f08ded0bea96c37444522817fdc30ac9053a82a4506330c0ef72bb13c",
+          "json_pointer": "/activation_packets/6"
+        },
+        {
+          "path": "docs/current-structure/MiniUW_Activacion_y_Aceptacion_D11.json",
+          "sha256": "be609e0f08ded0bea96c37444522817fdc30ac9053a82a4506330c0ef72bb13c",
+          "json_pointer": "/activation_packets/15"
+        },
+        {
+          "path": "docs/current-structure/MiniUW_Activacion_y_Aceptacion_D11.json",
+          "sha256": "be609e0f08ded0bea96c37444522817fdc30ac9053a82a4506330c0ef72bb13c",
+          "json_pointer": "/activation_packets/16"
+        },
+        {
+          "path": "docs/current-structure/MiniUW_Activacion_y_Aceptacion_D11.json",
+          "sha256": "be609e0f08ded0bea96c37444522817fdc30ac9053a82a4506330c0ef72bb13c",
+          "json_pointer": "/activation_packets/18"
+        }
+      ],
+      "contract_refs": [
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/29"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/32"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/33"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/37"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/43"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/44"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/45"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/47"
+        }
+      ],
+      "required_records": [
+        "Identidad de préstamo y saldos antes/después por fecha",
+        "Interés/fees/obligaciones separados del principal y payoff",
+        "Monto seleccionado, draw, servicio fechado, cash-out y cash-in separados"
+      ],
+      "blocking_consequence": "Cambio de fase no crea deuda o equity nuevos. Sizing, aprobación, desembolso y pago al inversor requieren evidencias distintas; conservar ambos brutos aunque coincidan en fecha.",
+      "financial_definition_ref": null,
+      "applicability": null,
+      "financial_activation_state": "PENDING",
+      "active_financial_binding": null
+    },
+    {
+      "boundary_id": "H05",
+      "title": "Caja saldos y reservas hacia venta",
+      "route_ids": [
+        "M6.restricted_reserves",
+        "M7.terminal_distribution"
+      ],
+      "route_refs": [
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/aggregate_port_routes/20"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/aggregate_port_routes/27"
+        }
+      ],
+      "connection_ids": [
+        "F04",
+        "F05",
+        "F06",
+        "F08",
+        "F16",
+        "F17",
+        "F19",
+        "F20"
+      ],
+      "connection_refs": [
+        {
+          "path": "docs/current-structure/MiniUW_Activacion_y_Aceptacion_D11.json",
+          "sha256": "be609e0f08ded0bea96c37444522817fdc30ac9053a82a4506330c0ef72bb13c",
+          "json_pointer": "/activation_packets/3"
+        },
+        {
+          "path": "docs/current-structure/MiniUW_Activacion_y_Aceptacion_D11.json",
+          "sha256": "be609e0f08ded0bea96c37444522817fdc30ac9053a82a4506330c0ef72bb13c",
+          "json_pointer": "/activation_packets/4"
+        },
+        {
+          "path": "docs/current-structure/MiniUW_Activacion_y_Aceptacion_D11.json",
+          "sha256": "be609e0f08ded0bea96c37444522817fdc30ac9053a82a4506330c0ef72bb13c",
+          "json_pointer": "/activation_packets/5"
+        },
+        {
+          "path": "docs/current-structure/MiniUW_Activacion_y_Aceptacion_D11.json",
+          "sha256": "be609e0f08ded0bea96c37444522817fdc30ac9053a82a4506330c0ef72bb13c",
+          "json_pointer": "/activation_packets/7"
+        },
+        {
+          "path": "docs/current-structure/MiniUW_Activacion_y_Aceptacion_D11.json",
+          "sha256": "be609e0f08ded0bea96c37444522817fdc30ac9053a82a4506330c0ef72bb13c",
+          "json_pointer": "/activation_packets/15"
+        },
+        {
+          "path": "docs/current-structure/MiniUW_Activacion_y_Aceptacion_D11.json",
+          "sha256": "be609e0f08ded0bea96c37444522817fdc30ac9053a82a4506330c0ef72bb13c",
+          "json_pointer": "/activation_packets/16"
+        },
+        {
+          "path": "docs/current-structure/MiniUW_Activacion_y_Aceptacion_D11.json",
+          "sha256": "be609e0f08ded0bea96c37444522817fdc30ac9053a82a4506330c0ef72bb13c",
+          "json_pointer": "/activation_packets/18"
+        },
+        {
+          "path": "docs/current-structure/MiniUW_Activacion_y_Aceptacion_D11.json",
+          "sha256": "be609e0f08ded0bea96c37444522817fdc30ac9053a82a4506330c0ef72bb13c",
+          "json_pointer": "/activation_packets/19"
+        }
+      ],
+      "contract_refs": [
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/25"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/46"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/50"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/52"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/53"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/54"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/55"
+        }
+      ],
+      "required_records": [
+        "Caja libre/restringida antes y después del cierre",
+        "Pagos, devengos, saldos y primas/cuotas nominales con identidad",
+        "Precio/valor de salida, deuda, costos y contrapartidas de liquidación"
+      ],
+      "blocking_consequence": "Una reserva no es gasto o cobro del inversor por defecto. Conciliar pagos ya incluidos, obligaciones y liberaciones; no sumar precio/valor y distribución del mismo cierre.",
+      "financial_definition_ref": null,
+      "applicability": null,
+      "financial_activation_state": "PENDING",
+      "active_financial_binding": null
+    },
+    {
+      "boundary_id": "H06",
+      "title": "Movimientos hacia retornos comparación y una página",
+      "route_ids": [
+        "M7.gross_contributions",
+        "M7.gross_distributions",
+        "M7.equity_multiple",
+        "M7.irr",
+        "M7.terminal_distribution",
+        "M8.supported_price_bound",
+        "M8.bound_kind",
+        "M9.decision",
+        "M9.aggregation_rule_ref",
+        "M9.comparisons"
+      ],
+      "route_refs": [
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/aggregate_port_routes/23"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/aggregate_port_routes/24"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/aggregate_port_routes/25"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/aggregate_port_routes/26"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/aggregate_port_routes/27"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/aggregate_port_routes/28"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/aggregate_port_routes/29"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/aggregate_port_routes/30"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/aggregate_port_routes/31"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/aggregate_port_routes/32"
+        }
+      ],
+      "connection_ids": [
+        "F13",
+        "F20"
+      ],
+      "connection_refs": [
+        {
+          "path": "docs/current-structure/MiniUW_Activacion_y_Aceptacion_D11.json",
+          "sha256": "be609e0f08ded0bea96c37444522817fdc30ac9053a82a4506330c0ef72bb13c",
+          "json_pointer": "/activation_packets/12"
+        },
+        {
+          "path": "docs/current-structure/MiniUW_Activacion_y_Aceptacion_D11.json",
+          "sha256": "be609e0f08ded0bea96c37444522817fdc30ac9053a82a4506330c0ef72bb13c",
+          "json_pointer": "/activation_packets/19"
+        }
+      ],
+      "contract_refs": [
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/56"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/57"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/58"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/59"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/68"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/69"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/71"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/73"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/75"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/77"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/78"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/80"
+        },
+        {
+          "path": "docs/structural-integration-register.json",
+          "sha256": "3ed64b6881c9d7f36bcd35b81019408fbed8d06eadad911438b4b1b4fa8c77fc",
+          "json_pointer": "/contracts/81"
+        }
+      ],
+      "required_records": [
+        "Movimientos brutos, fechas, ventana y versión del proyecto",
+        "Stock/base de capital, reparto personal y criterios con evidencia propia",
+        "Raíces/intervalos, dominio de precio y snapshot de comparación/PDF"
+      ],
+      "blocking_consequence": "Caja y retorno agregados no definen capital/CoC/personal. Precio soportado reducido no es RLV global. Bandas/faltantes siguen PENDING; revisión/Full UW son puertas separadas.",
+      "financial_definition_ref": null,
+      "applicability": null,
+      "financial_activation_state": "PENDING",
+      "active_financial_binding": null
+    }
+  ],
+  "connection_review_index": [
+    {
+      "card_id": "F01",
+      "field_ids": [
+        "INPUT_C7",
+        "INPUT_C8",
+        "INPUT_C9",
+        "INPUT_C10",
+        "INPUT_C11"
+      ],
+      "packet_ref": {
+        "path": "docs/current-structure/MiniUW_Activacion_y_Aceptacion_D11.json",
+        "sha256": "be609e0f08ded0bea96c37444522817fdc30ac9053a82a4506330c0ef72bb13c",
+        "json_pointer": "/activation_packets/0"
+      },
+      "contract_ids": [
+        "M1-02",
+        "M1-03",
+        "M2-01",
+        "M2-02",
+        "M2-03"
+      ],
+      "documentary_module_incidence": [
+        "M1",
+        "M2"
+      ],
+      "coarse_route_review_ids": [
+        "M1.program_units",
+        "M1.building_gsf",
+        "M1.residential_nrsf",
+        "M1.commercial_sf",
+        "M1.parking_spaces",
+        "M2.effective_income",
+        "M2.operating_expenses",
+        "M2.property_tax",
+        "M2.noi"
+      ],
+      "handoff_boundary_ids": [
+        "H01",
+        "H03"
+      ],
+      "exact_financial_dependency_proven": false,
+      "active_financial_binding": null
+    },
+    {
+      "card_id": "F02",
+      "field_ids": [
+        "INPUT_C34",
+        "INPUT_C35",
+        "INPUT_C36"
+      ],
+      "packet_ref": {
+        "path": "docs/current-structure/MiniUW_Activacion_y_Aceptacion_D11.json",
+        "sha256": "be609e0f08ded0bea96c37444522817fdc30ac9053a82a4506330c0ef72bb13c",
+        "json_pointer": "/activation_packets/1"
+      },
+      "contract_ids": [
+        "M1-03",
+        "M3-01",
+        "M3-02",
+        "M3-03",
+        "M3-06"
+      ],
+      "documentary_module_incidence": [
+        "M1",
+        "M3"
+      ],
+      "coarse_route_review_ids": [
+        "M1.program_units",
+        "M1.building_gsf",
+        "M1.residential_nrsf",
+        "M1.commercial_sf",
+        "M1.parking_spaces",
+        "M3.budget_before_financing",
+        "M3.unallocated_scope_cost"
+      ],
+      "handoff_boundary_ids": [
+        "H01",
+        "H02"
+      ],
+      "exact_financial_dependency_proven": false,
+      "active_financial_binding": null
+    },
+    {
+      "card_id": "F03",
+      "field_ids": [
+        "INPUT_C57",
+        "INPUT_C58"
+      ],
+      "packet_ref": {
+        "path": "docs/current-structure/MiniUW_Activacion_y_Aceptacion_D11.json",
+        "sha256": "be609e0f08ded0bea96c37444522817fdc30ac9053a82a4506330c0ef72bb13c",
+        "json_pointer": "/activation_packets/2"
+      },
+      "contract_ids": [
+        "M2-03",
+        "M2-05",
+        "M2-06",
+        "M4-04"
+      ],
+      "documentary_module_incidence": [
+        "M2",
+        "M4"
+      ],
+      "coarse_route_review_ids": [
+        "M2.effective_income",
+        "M2.operating_expenses",
+        "M2.property_tax",
+        "M2.noi",
+        "M4.scheduled_uses",
+        "M4.unscheduled_uses"
+      ],
+      "handoff_boundary_ids": [
+        "H03"
+      ],
+      "exact_financial_dependency_proven": false,
+      "active_financial_binding": null
+    },
+    {
+      "card_id": "F04",
+      "field_ids": [
+        "INPUT_C59"
+      ],
+      "packet_ref": {
+        "path": "docs/current-structure/MiniUW_Activacion_y_Aceptacion_D11.json",
+        "sha256": "be609e0f08ded0bea96c37444522817fdc30ac9053a82a4506330c0ef72bb13c",
+        "json_pointer": "/activation_packets/3"
+      },
+      "contract_ids": [
+        "M2-05",
+        "M4-04",
+        "M7-07"
+      ],
+      "documentary_module_incidence": [
+        "M2",
+        "M4",
+        "M7"
+      ],
+      "coarse_route_review_ids": [
+        "M2.effective_income",
+        "M2.operating_expenses",
+        "M2.property_tax",
+        "M2.noi",
+        "M4.scheduled_uses",
+        "M4.unscheduled_uses",
+        "M7.gross_contributions",
+        "M7.gross_distributions",
+        "M7.equity_multiple",
+        "M7.irr",
+        "M7.terminal_distribution"
+      ],
+      "handoff_boundary_ids": [
+        "H03",
+        "H05"
+      ],
+      "exact_financial_dependency_proven": false,
+      "active_financial_binding": null
+    },
+    {
+      "card_id": "F05",
+      "field_ids": [
+        "INPUT_C60"
+      ],
+      "packet_ref": {
+        "path": "docs/current-structure/MiniUW_Activacion_y_Aceptacion_D11.json",
+        "sha256": "be609e0f08ded0bea96c37444522817fdc30ac9053a82a4506330c0ef72bb13c",
+        "json_pointer": "/activation_packets/4"
+      },
+      "contract_ids": [
+        "M2-05",
+        "M4-04",
+        "M7-03",
+        "M7-08"
+      ],
+      "documentary_module_incidence": [
+        "M2",
+        "M4",
+        "M7"
+      ],
+      "coarse_route_review_ids": [
+        "M2.effective_income",
+        "M2.operating_expenses",
+        "M2.property_tax",
+        "M2.noi",
+        "M4.scheduled_uses",
+        "M4.unscheduled_uses",
+        "M7.gross_contributions",
+        "M7.gross_distributions",
+        "M7.equity_multiple",
+        "M7.irr",
+        "M7.terminal_distribution"
+      ],
+      "handoff_boundary_ids": [
+        "H03",
+        "H05"
+      ],
+      "exact_financial_dependency_proven": false,
+      "active_financial_binding": null
+    },
+    {
+      "card_id": "F06",
+      "field_ids": [
+        "INPUT_C66",
+        "INPUT_C67"
+      ],
+      "packet_ref": {
+        "path": "docs/current-structure/MiniUW_Activacion_y_Aceptacion_D11.json",
+        "sha256": "be609e0f08ded0bea96c37444522817fdc30ac9053a82a4506330c0ef72bb13c",
+        "json_pointer": "/activation_packets/5"
+      },
+      "contract_ids": [
+        "M6-02",
+        "M6-03",
+        "M7-05",
+        "M7-08"
+      ],
+      "documentary_module_incidence": [
+        "M6",
+        "M7"
+      ],
+      "coarse_route_review_ids": [
+        "M6.permanent_loan",
+        "M6.annual_debt_service",
+        "M6.construction_payoff",
+        "M6.restricted_reserves",
+        "M6.refi_distribution",
+        "M6.refi_contribution",
+        "M7.gross_contributions",
+        "M7.gross_distributions",
+        "M7.equity_multiple",
+        "M7.irr",
+        "M7.terminal_distribution"
+      ],
+      "handoff_boundary_ids": [
+        "H03",
+        "H05"
+      ],
+      "exact_financial_dependency_proven": false,
+      "active_financial_binding": null
+    },
+    {
+      "card_id": "F07",
+      "field_ids": [
+        "INPUT_C69",
+        "INPUT_C70",
+        "INPUT_C71",
+        "INPUT_C72"
+      ],
+      "packet_ref": {
+        "path": "docs/current-structure/MiniUW_Activacion_y_Aceptacion_D11.json",
+        "sha256": "be609e0f08ded0bea96c37444522817fdc30ac9053a82a4506330c0ef72bb13c",
+        "json_pointer": "/activation_packets/6"
+      },
+      "contract_ids": [
+        "M6-03",
+        "M6-04",
+        "M6-05",
+        "M6-06",
+        "M6-07",
+        "M6-10",
+        "M9-02"
+      ],
+      "documentary_module_incidence": [
+        "M6",
+        "M9"
+      ],
+      "coarse_route_review_ids": [
+        "M6.permanent_loan",
+        "M6.annual_debt_service",
+        "M6.construction_payoff",
+        "M6.restricted_reserves",
+        "M6.refi_distribution",
+        "M6.refi_contribution",
+        "M9.decision",
+        "M9.aggregation_rule_ref",
+        "M9.comparisons"
+      ],
+      "handoff_boundary_ids": [
+        "H03",
+        "H04"
+      ],
+      "exact_financial_dependency_proven": false,
+      "active_financial_binding": null
+    },
+    {
+      "card_id": "F08",
+      "field_ids": [
+        "INPUT_C68"
+      ],
+      "packet_ref": {
+        "path": "docs/current-structure/MiniUW_Activacion_y_Aceptacion_D11.json",
+        "sha256": "be609e0f08ded0bea96c37444522817fdc30ac9053a82a4506330c0ef72bb13c",
+        "json_pointer": "/activation_packets/7"
+      },
+      "contract_ids": [
+        "M7-06",
+        "M7-07",
+        "M7-08"
+      ],
+      "documentary_module_incidence": [
+        "M7"
+      ],
+      "coarse_route_review_ids": [
+        "M7.gross_contributions",
+        "M7.gross_distributions",
+        "M7.equity_multiple",
+        "M7.irr",
+        "M7.terminal_distribution"
+      ],
+      "handoff_boundary_ids": [
+        "H05"
+      ],
+      "exact_financial_dependency_proven": false,
+      "active_financial_binding": null
+    },
+    {
+      "card_id": "F09",
+      "field_ids": [
+        "INPUT_C12",
+        "INPUT_C13"
+      ],
+      "packet_ref": {
+        "path": "docs/current-structure/MiniUW_Activacion_y_Aceptacion_D11.json",
+        "sha256": "be609e0f08ded0bea96c37444522817fdc30ac9053a82a4506330c0ef72bb13c",
+        "json_pointer": "/activation_packets/8"
+      },
+      "contract_ids": [
+        "M1-01",
+        "M1-06",
+        "M2-03"
+      ],
+      "documentary_module_incidence": [
+        "M1",
+        "M2"
+      ],
+      "coarse_route_review_ids": [
+        "M1.program_units",
+        "M1.building_gsf",
+        "M1.residential_nrsf",
+        "M1.commercial_sf",
+        "M1.parking_spaces",
+        "M2.effective_income",
+        "M2.operating_expenses",
+        "M2.property_tax",
+        "M2.noi"
+      ],
+      "handoff_boundary_ids": [
+        "H01",
+        "H03"
+      ],
+      "exact_financial_dependency_proven": false,
+      "active_financial_binding": null
+    },
+    {
+      "card_id": "F10",
+      "field_ids": [
+        "INPUT_C14",
+        "INPUT_C15"
+      ],
+      "packet_ref": {
+        "path": "docs/current-structure/MiniUW_Activacion_y_Aceptacion_D11.json",
+        "sha256": "be609e0f08ded0bea96c37444522817fdc30ac9053a82a4506330c0ef72bb13c",
+        "json_pointer": "/activation_packets/9"
+      },
+      "contract_ids": [
+        "M2-03",
+        "M1-07"
+      ],
+      "documentary_module_incidence": [
+        "M1",
+        "M2"
+      ],
+      "coarse_route_review_ids": [
+        "M1.program_units",
+        "M1.building_gsf",
+        "M1.residential_nrsf",
+        "M1.commercial_sf",
+        "M1.parking_spaces",
+        "M2.effective_income",
+        "M2.operating_expenses",
+        "M2.property_tax",
+        "M2.noi"
+      ],
+      "handoff_boundary_ids": [
+        "H01",
+        "H03"
+      ],
+      "exact_financial_dependency_proven": false,
+      "active_financial_binding": null
+    },
+    {
+      "card_id": "F11",
+      "field_ids": [
+        "INPUT_C16",
+        "INPUT_C17",
+        "INPUT_C18",
+        "INPUT_C19",
+        "INPUT_C20",
+        "INPUT_C21"
+      ],
+      "packet_ref": {
+        "path": "docs/current-structure/MiniUW_Activacion_y_Aceptacion_D11.json",
+        "sha256": "be609e0f08ded0bea96c37444522817fdc30ac9053a82a4506330c0ef72bb13c",
+        "json_pointer": "/activation_packets/10"
+      },
+      "contract_ids": [
+        "M1-03",
+        "M1-05",
+        "M2-04",
+        "M4-01"
+      ],
+      "documentary_module_incidence": [
+        "M1",
+        "M2",
+        "M4"
+      ],
+      "coarse_route_review_ids": [
+        "M1.program_units",
+        "M1.building_gsf",
+        "M1.residential_nrsf",
+        "M1.commercial_sf",
+        "M1.parking_spaces",
+        "M2.effective_income",
+        "M2.operating_expenses",
+        "M2.property_tax",
+        "M2.noi",
+        "M4.scheduled_uses",
+        "M4.unscheduled_uses"
+      ],
+      "handoff_boundary_ids": [
+        "H01",
+        "H03"
+      ],
+      "exact_financial_dependency_proven": false,
+      "active_financial_binding": null
+    },
+    {
+      "card_id": "F12",
+      "field_ids": [
+        "INPUT_C25",
+        "INPUT_C26",
+        "INPUT_C27",
+        "INPUT_C28"
+      ],
+      "packet_ref": {
+        "path": "docs/current-structure/MiniUW_Activacion_y_Aceptacion_D11.json",
+        "sha256": "be609e0f08ded0bea96c37444522817fdc30ac9053a82a4506330c0ef72bb13c",
+        "json_pointer": "/activation_packets/11"
+      },
+      "contract_ids": [
+        "M1-02",
+        "M1-05",
+        "M2-01",
+        "M2-03"
+      ],
+      "documentary_module_incidence": [
+        "M1",
+        "M2"
+      ],
+      "coarse_route_review_ids": [
+        "M1.program_units",
+        "M1.building_gsf",
+        "M1.residential_nrsf",
+        "M1.commercial_sf",
+        "M1.parking_spaces",
+        "M2.effective_income",
+        "M2.operating_expenses",
+        "M2.property_tax",
+        "M2.noi"
+      ],
+      "handoff_boundary_ids": [
+        "H01",
+        "H03"
+      ],
+      "exact_financial_dependency_proven": false,
+      "active_financial_binding": null
+    },
+    {
+      "card_id": "F13",
+      "field_ids": [
+        "INPUT_C32",
+        "INPUT_C33"
+      ],
+      "packet_ref": {
+        "path": "docs/current-structure/MiniUW_Activacion_y_Aceptacion_D11.json",
+        "sha256": "be609e0f08ded0bea96c37444522817fdc30ac9053a82a4506330c0ef72bb13c",
+        "json_pointer": "/activation_packets/12"
+      },
+      "contract_ids": [
+        "M3-05",
+        "M8-09",
+        "M8-10",
+        "M8-12"
+      ],
+      "documentary_module_incidence": [
+        "M3",
+        "M8"
+      ],
+      "coarse_route_review_ids": [
+        "M3.budget_before_financing",
+        "M3.unallocated_scope_cost",
+        "M8.supported_price_bound",
+        "M8.bound_kind"
+      ],
+      "handoff_boundary_ids": [
+        "H02",
+        "H06"
+      ],
+      "exact_financial_dependency_proven": false,
+      "active_financial_binding": null
+    },
+    {
+      "card_id": "F14",
+      "field_ids": [
+        "INPUT_C37",
+        "INPUT_C38"
+      ],
+      "packet_ref": {
+        "path": "docs/current-structure/MiniUW_Activacion_y_Aceptacion_D11.json",
+        "sha256": "be609e0f08ded0bea96c37444522817fdc30ac9053a82a4506330c0ef72bb13c",
+        "json_pointer": "/activation_packets/13"
+      },
+      "contract_ids": [
+        "M1-03",
+        "M3-01",
+        "M3-02",
+        "M3-06"
+      ],
+      "documentary_module_incidence": [
+        "M1",
+        "M3"
+      ],
+      "coarse_route_review_ids": [
+        "M1.program_units",
+        "M1.building_gsf",
+        "M1.residential_nrsf",
+        "M1.commercial_sf",
+        "M1.parking_spaces",
+        "M3.budget_before_financing",
+        "M3.unallocated_scope_cost"
+      ],
+      "handoff_boundary_ids": [
+        "H01",
+        "H02"
+      ],
+      "exact_financial_dependency_proven": false,
+      "active_financial_binding": null
+    },
+    {
+      "card_id": "F15",
+      "field_ids": [
+        "INPUT_C39",
+        "INPUT_C40",
+        "INPUT_C41"
+      ],
+      "packet_ref": {
+        "path": "docs/current-structure/MiniUW_Activacion_y_Aceptacion_D11.json",
+        "sha256": "be609e0f08ded0bea96c37444522817fdc30ac9053a82a4506330c0ef72bb13c",
+        "json_pointer": "/activation_packets/14"
+      },
+      "contract_ids": [
+        "M3-02",
+        "M3-03",
+        "M3-04",
+        "M3-06"
+      ],
+      "documentary_module_incidence": [
+        "M3"
+      ],
+      "coarse_route_review_ids": [
+        "M3.budget_before_financing",
+        "M3.unallocated_scope_cost"
+      ],
+      "handoff_boundary_ids": [
+        "H02"
+      ],
+      "exact_financial_dependency_proven": false,
+      "active_financial_binding": null
+    },
+    {
+      "card_id": "F16",
+      "field_ids": [
+        "INPUT_C42",
+        "INPUT_C46",
+        "INPUT_C47"
+      ],
+      "packet_ref": {
+        "path": "docs/current-structure/MiniUW_Activacion_y_Aceptacion_D11.json",
+        "sha256": "be609e0f08ded0bea96c37444522817fdc30ac9053a82a4506330c0ef72bb13c",
+        "json_pointer": "/activation_packets/15"
+      },
+      "contract_ids": [
+        "M4-01",
+        "M4-02",
+        "M4-03",
+        "M4-04",
+        "M4-05",
+        "M4-06"
+      ],
+      "documentary_module_incidence": [
+        "M4"
+      ],
+      "coarse_route_review_ids": [
+        "M4.scheduled_uses",
+        "M4.unscheduled_uses"
+      ],
+      "handoff_boundary_ids": [
+        "H02",
+        "H04",
+        "H05"
+      ],
+      "exact_financial_dependency_proven": false,
+      "active_financial_binding": null
+    },
+    {
+      "card_id": "F17",
+      "field_ids": [
+        "INPUT_C51",
+        "INPUT_C52",
+        "INPUT_C53"
+      ],
+      "packet_ref": {
+        "path": "docs/current-structure/MiniUW_Activacion_y_Aceptacion_D11.json",
+        "sha256": "be609e0f08ded0bea96c37444522817fdc30ac9053a82a4506330c0ef72bb13c",
+        "json_pointer": "/activation_packets/16"
+      },
+      "contract_ids": [
+        "M5-01",
+        "M5-02",
+        "M5-03",
+        "M5-04",
+        "M5-05",
+        "M5-06",
+        "M5-08",
+        "M5-09",
+        "M5-10"
+      ],
+      "documentary_module_incidence": [
+        "M5"
+      ],
+      "coarse_route_review_ids": [
+        "M5.tdc",
+        "M5.construction_principal",
+        "M5.construction_payoff",
+        "M5.equity_required"
+      ],
+      "handoff_boundary_ids": [
+        "H02",
+        "H04",
+        "H05"
+      ],
+      "exact_financial_dependency_proven": false,
+      "active_financial_binding": null
+    },
+    {
+      "card_id": "F18",
+      "field_ids": [
+        "INPUT_C61",
+        "INPUT_C62"
+      ],
+      "packet_ref": {
+        "path": "docs/current-structure/MiniUW_Activacion_y_Aceptacion_D11.json",
+        "sha256": "be609e0f08ded0bea96c37444522817fdc30ac9053a82a4506330c0ef72bb13c",
+        "json_pointer": "/activation_packets/17"
+      },
+      "contract_ids": [
+        "M2-07",
+        "M2-08",
+        "M1-07"
+      ],
+      "documentary_module_incidence": [
+        "M1",
+        "M2"
+      ],
+      "coarse_route_review_ids": [
+        "M1.program_units",
+        "M1.building_gsf",
+        "M1.residential_nrsf",
+        "M1.commercial_sf",
+        "M1.parking_spaces",
+        "M2.effective_income",
+        "M2.operating_expenses",
+        "M2.property_tax",
+        "M2.noi"
+      ],
+      "handoff_boundary_ids": [
+        "H03"
+      ],
+      "exact_financial_dependency_proven": false,
+      "active_financial_binding": null
+    },
+    {
+      "card_id": "F19",
+      "field_ids": [
+        "INPUT_C73",
+        "INPUT_C74"
+      ],
+      "packet_ref": {
+        "path": "docs/current-structure/MiniUW_Activacion_y_Aceptacion_D11.json",
+        "sha256": "be609e0f08ded0bea96c37444522817fdc30ac9053a82a4506330c0ef72bb13c",
+        "json_pointer": "/activation_packets/18"
+      },
+      "contract_ids": [
+        "M6-06",
+        "M6-09",
+        "M6-10",
+        "M7-03"
+      ],
+      "documentary_module_incidence": [
+        "M6",
+        "M7"
+      ],
+      "coarse_route_review_ids": [
+        "M6.permanent_loan",
+        "M6.annual_debt_service",
+        "M6.construction_payoff",
+        "M6.restricted_reserves",
+        "M6.refi_distribution",
+        "M6.refi_contribution",
+        "M7.gross_contributions",
+        "M7.gross_distributions",
+        "M7.equity_multiple",
+        "M7.irr",
+        "M7.terminal_distribution"
+      ],
+      "handoff_boundary_ids": [
+        "H04",
+        "H05"
+      ],
+      "exact_financial_dependency_proven": false,
+      "active_financial_binding": null
+    },
+    {
+      "card_id": "F20",
+      "field_ids": [
+        "INPUT_C75",
+        "INPUT_C76",
+        "INPUT_C80",
+        "INPUT_C81",
+        "INPUT_C82"
+      ],
+      "packet_ref": {
+        "path": "docs/current-structure/MiniUW_Activacion_y_Aceptacion_D11.json",
+        "sha256": "be609e0f08ded0bea96c37444522817fdc30ac9053a82a4506330c0ef72bb13c",
+        "json_pointer": "/activation_packets/19"
+      },
+      "contract_ids": [
+        "M7-02",
+        "M8-01",
+        "M8-02",
+        "M8-03",
+        "M8-04",
+        "M8-05",
+        "M8-06",
+        "M8-07",
+        "M8-09",
+        "M8-12"
+      ],
+      "documentary_module_incidence": [
+        "M7",
+        "M8"
+      ],
+      "coarse_route_review_ids": [
+        "M7.gross_contributions",
+        "M7.gross_distributions",
+        "M7.equity_multiple",
+        "M7.irr",
+        "M7.terminal_distribution",
+        "M8.supported_price_bound",
+        "M8.bound_kind"
+      ],
+      "handoff_boundary_ids": [
+        "H03",
+        "H05",
+        "H06"
+      ],
+      "exact_financial_dependency_proven": false,
+      "active_financial_binding": null
+    }
+  ],
+  "documentary_impact_examples": [
+    {
+      "id": "C01",
+      "trigger": "Cambio de programa o base física",
+      "start_modules": [
+        "M1"
+      ],
+      "ordinary_module_review_reach": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5",
+        "M6",
+        "M7",
+        "M8",
+        "M9"
+      ],
+      "related_controls": [
+        "LOOP-FINANCE",
+        "PASS-BREAKEVEN",
+        "LOOP-SCENARIO-PRICE",
+        "PASS-CRITERIA",
+        "COUPLING-NOI-TAX"
+      ],
+      "scope": "coarse_documentary_module_reach_only_not_exact_invalidated_financial_outputs",
+      "financial_execution_performed": false
+    },
+    {
+      "id": "C02",
+      "trigger": "Revisión del presupuesto",
+      "start_modules": [
+        "M3"
+      ],
+      "ordinary_module_review_reach": [
+        "M3",
+        "M4",
+        "M5",
+        "M6",
+        "M7",
+        "M8",
+        "M9"
+      ],
+      "related_controls": [
+        "LOOP-FINANCE",
+        "PASS-BREAKEVEN",
+        "LOOP-SCENARIO-PRICE",
+        "PASS-CRITERIA"
+      ],
+      "scope": "coarse_documentary_module_reach_only_not_exact_invalidated_financial_outputs",
+      "financial_execution_performed": false
+    },
+    {
+      "id": "C03",
+      "trigger": "Revisión de operación NOI o impuesto",
+      "start_modules": [
+        "M2"
+      ],
+      "ordinary_module_review_reach": [
+        "M2",
+        "M4",
+        "M5",
+        "M6",
+        "M7",
+        "M8",
+        "M9"
+      ],
+      "related_controls": [
+        "LOOP-FINANCE",
+        "PASS-BREAKEVEN",
+        "LOOP-SCENARIO-PRICE",
+        "PASS-CRITERIA",
+        "COUPLING-NOI-TAX"
+      ],
+      "scope": "coarse_documentary_module_reach_only_not_exact_invalidated_financial_outputs",
+      "financial_execution_performed": false
+    },
+    {
+      "id": "C04",
+      "trigger": "Revisión de términos de refi o servicio",
+      "start_modules": [
+        "M6"
+      ],
+      "ordinary_module_review_reach": [
+        "M6",
+        "M7",
+        "M8",
+        "M9"
+      ],
+      "related_controls": [
+        "PASS-BREAKEVEN",
+        "LOOP-SCENARIO-PRICE",
+        "PASS-CRITERIA"
+      ],
+      "scope": "coarse_documentary_module_reach_only_not_exact_invalidated_financial_outputs",
+      "financial_execution_performed": false
+    },
+    {
+      "id": "C05",
+      "trigger": "Revisión de movimientos o liquidación",
+      "start_modules": [
+        "M7"
+      ],
+      "ordinary_module_review_reach": [
+        "M7",
+        "M8",
+        "M9"
+      ],
+      "related_controls": [
+        "LOOP-SCENARIO-PRICE",
+        "PASS-CRITERIA"
+      ],
+      "scope": "coarse_documentary_module_reach_only_not_exact_invalidated_financial_outputs",
+      "financial_execution_performed": false
+    },
+    {
+      "id": "C06",
+      "trigger": "Revisión de escenario o precio",
+      "start_modules": [
+        "M8"
+      ],
+      "ordinary_module_review_reach": [
+        "M8",
+        "M9"
+      ],
+      "related_controls": [
+        "LOOP-SCENARIO-PRICE",
+        "PASS-CRITERIA"
+      ],
+      "scope": "coarse_documentary_module_reach_only_not_exact_invalidated_financial_outputs",
+      "financial_execution_performed": false
+    },
+    {
+      "id": "C07",
+      "trigger": "Cambio de criterio comparación o revisión",
+      "start_modules": [
+        "M9"
+      ],
+      "ordinary_module_review_reach": [
+        "M9"
+      ],
+      "related_controls": [
+        "PASS-CRITERIA"
+      ],
+      "scope": "coarse_documentary_module_reach_only_not_exact_invalidated_financial_outputs",
+      "financial_execution_performed": false
+    }
+  ],
+  "saved_T111_observations": [
+    {
+      "case_id": "matched",
+      "result_ref": {
+        "path": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+        "sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25"
+      },
+      "state": "current_synthetic_worksheet_settled_output",
+      "worksheet_gate_open": true,
+      "gate_blockers": [],
+      "source_requirements_checked": 59,
+      "current_group_keys": [
+        "current_compiled_investor_json",
+        "current_holding_sale_totals",
+        "current_irr_evidence",
+        "current_nominal_insurance_totals",
+        "current_nominal_plan_run_sha256",
+        "current_operating_totals",
+        "current_policy_totals",
+        "current_project_return_story",
+        "current_rental_totals",
+        "current_risk_observations",
+        "current_settlement_summary"
+      ],
+      "current_group_count": 11,
+      "withheld_current_group_count": 0,
+      "parent_result_used_as_current_fallback": false,
+      "financial_model_complete": false,
+      "observation_mode": "read_only_saved_T111_result_shape_not_a_new_financial_run"
+    },
+    {
+      "case_id": "expired",
+      "result_ref": {
+        "path": "docs/review/miniuw-v1-worksheet-settled-expired-example/current-results.json",
+        "sha256": "d3c267110a40a78d2dc1a80a45ac887214a769108e2cc64316b20de42de71440"
+      },
+      "state": "PENDING",
+      "worksheet_gate_open": true,
+      "gate_blockers": [
+        "worksheet_settled_evidence_not_current"
+      ],
+      "source_requirements_checked": 59,
+      "current_group_keys": [
+        "current_compiled_investor_json",
+        "current_holding_sale_totals",
+        "current_irr_evidence",
+        "current_nominal_insurance_totals",
+        "current_nominal_plan_run_sha256",
+        "current_operating_totals",
+        "current_policy_totals",
+        "current_project_return_story",
+        "current_rental_totals",
+        "current_risk_observations",
+        "current_settlement_summary"
+      ],
+      "current_group_count": 11,
+      "withheld_current_group_count": 11,
+      "parent_result_used_as_current_fallback": false,
+      "financial_model_complete": false,
+      "observation_mode": "read_only_saved_T111_result_shape_not_a_new_financial_run"
+    },
+    {
+      "case_id": "zero-conflict",
+      "result_ref": {
+        "path": "docs/review/miniuw-v1-worksheet-settled-zero-conflict-example/current-results.json",
+        "sha256": "f7277f162ae768e9d1592365c321f157da4447024b78a6fc456679bceaa18f37"
+      },
+      "state": "PENDING",
+      "worksheet_gate_open": false,
+      "gate_blockers": [
+        "worksheet_claim_reconciliation_blocked"
+      ],
+      "source_requirements_checked": 59,
+      "current_group_keys": [
+        "current_compiled_investor_json",
+        "current_holding_sale_totals",
+        "current_irr_evidence",
+        "current_nominal_insurance_totals",
+        "current_nominal_plan_run_sha256",
+        "current_operating_totals",
+        "current_policy_totals",
+        "current_project_return_story",
+        "current_rental_totals",
+        "current_risk_observations",
+        "current_settlement_summary"
+      ],
+      "current_group_count": 11,
+      "withheld_current_group_count": 11,
+      "parent_result_used_as_current_fallback": false,
+      "financial_model_complete": false,
+      "observation_mode": "read_only_saved_T111_result_shape_not_a_new_financial_run"
+    }
+  ],
+  "current_gate_native_evidence": {
+    "path": "src/miniuw_foundation/worksheet_settled_output.py",
+    "sha256": "f004532782ea335d52d8971eb0c342b232396f3ba71f7c88d9a7c3e403c800eb",
+    "symbol": "assemble_worksheet_settled_output",
+    "line": 117,
+    "markers": [
+      {
+        "marker": "complete_exact_worksheet_settled_inventory_mismatch",
+        "lines": [
+          120
+        ]
+      },
+      {
+        "marker": "worksheet_settled_evidence_not_current",
+        "lines": [
+          122
+        ]
+      },
+      {
+        "marker": "worksheet_claim_reconciliation_blocked",
+        "lines": [
+          124
+        ]
+      },
+      {
+        "marker": "if k.startswith('current_'):result[k]=None",
+        "lines": [
+          129
+        ]
+      },
+      {
+        "marker": "parent_result_used_as_current_fallback=False",
+        "lines": [
+          133
+        ]
+      }
+    ]
+  },
+  "ordinary_graph_is_acyclic": true,
+  "acyclicity_proves_financial_solvability": false,
+  "financial_bindings_activated": 0,
+  "financial_acceptance_checks_executed": 0,
+  "new_runtime_components": 0,
+  "new_tests": 0,
+  "new_source_values": 0,
+  "technical_tests_unchanged": 1619,
+  "original_semantic_mappings_pending": 54,
+  "financial_model_complete": false,
+  "professional_review_authenticated": false,
+  "personal_return_verified": false,
+  "real_decisions_enabled": false,
+  "deployment_enabled": false
+}

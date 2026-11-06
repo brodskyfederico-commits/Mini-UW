@@ -1,0 +1,70 @@
+{
+  "snapshot_id": "D12",
+  "status": "passed_documentary_route_control_handoff_reach_and_saved_profile_consistency",
+  "scope": "Documentary structural review only; not a financial executor or independent financial acceptance",
+  "previous_design_commit": "0fd8247ffea0af7acaf5eadb2e945f92eb57aa38",
+  "technical_baseline": "T111",
+  "technical_baseline_commit": "9aeb590151068ccd51f4eca0e92f7c766464ba94",
+  "prior_files_preserved": 1198,
+  "actual_changed_prior_files": [
+    "BACKUP_MANIFEST.json",
+    "README.md",
+    "WORK_LOG.md"
+  ],
+  "modules": 9,
+  "aggregate_routes": 33,
+  "ordinary_delivery_layers": 8,
+  "base_route_graph_acyclic": true,
+  "financial_solvability_proven": false,
+  "separate_controls_and_couplings": 5,
+  "handoff_boundaries": 6,
+  "all_routes_referenced_in_handoffs": true,
+  "connection_packets_indexed": 20,
+  "original_fields": 55,
+  "handoff_contract_references_checked": 47,
+  "documentary_impact_examples": 7,
+  "saved_T111_views_checked": 3,
+  "source_requirements_per_saved_view": 59,
+  "current_groups_per_saved_view": 11,
+  "blocked_groups_per_expired_or_conflicting_view": 11,
+  "empty_handoff_review_rows": 6,
+  "empty_control_review_rows": 5,
+  "financial_bindings_activated": 0,
+  "financial_acceptance_checks_executed": 0,
+  "new_runtime_components": 0,
+  "new_tests": 0,
+  "new_source_values": 0,
+  "technical_tests_unchanged": 1619,
+  "source_versions": [
+    {
+      "path": "docs/current-structure/MiniUW_Dependencias_y_Traspasos_D12.json",
+      "bytes": 110074,
+      "sha256": "7e9c69e6b2514189788a25fdc662fc80f06e98d0de7b68ec4243022651cad29a"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Dependencias_y_Traspasos_D12.md",
+      "bytes": 8245,
+      "sha256": "0c080e6e5e22005222d6d8fa991f62503a11d69603bbb1f31f7798ad9108686a"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Rutas_33_D12.csv",
+      "bytes": 21415,
+      "sha256": "fff5b87dd4f6db3b2ae2bce3124ee6fb1598180529583b32e87952d8c460e10e"
+    },
+    {
+      "path": "docs/current-structure/MiniUW_Traspasos_6_D12.csv",
+      "bytes": 3853,
+      "sha256": "fa19580daeea50c2dcd481694a219430ac009b1ec804462214d3a5927bf00116"
+    },
+    {
+      "path": "templates/handoff-review-D12-empty.json",
+      "bytes": 3524,
+      "sha256": "afd0f4da46da95af2d975e2946f26b8331e4a529ed31e2a5273256df85f74cb6"
+    }
+  ],
+  "financial_model_complete": false,
+  "professional_review_authenticated": false,
+  "personal_return_verified": false,
+  "real_decisions_enabled": false,
+  "deployment_enabled": false
+}
