@@ -65,5 +65,7 @@ jobs:
         run: python tools/check_worksheet_settled_T111.py
       - name: Verify one-page Dot and bot role summary
         run: python tools/check_dots_bots_onepage_ROLES01.py
+      - name: Verify reproducible operating cash reconciliation
+        run: python tools/check_operating_replay_D20.py
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v
