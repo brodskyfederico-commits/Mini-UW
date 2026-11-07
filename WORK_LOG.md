@@ -972,3 +972,9 @@ Six artifacts: Spanish guide, structured source/formula register,12-item/eight-p
 El comando `PYTHONDONTWRITEBYTECODE=1 python tools/check_operating_replay_D20.py` reconstruye los cuatro períodos de D19 desde el repositorio. Verifica los hashes y los vínculos con los resultados guardados. Recalcula devengos, pagos, saldos y caja con fracciones exactas. Coteja doce observaciones de gasto, ocho pagos y 34 campos agregados. La salida JSON resume la caja operativa y de cierre de cada versión. [Verificador D20](tools/check_operating_replay_D20.py).
 
 GitHub Actions ejecuta el comando junto con los controles del paquete. El alcance se limita a las dos versiones sintéticas archivadas de D19. CoC, capital y retorno personal permanecen pendientes.
+
+## D21 — Reproducción de las conciliaciones de deuda y cierre de venta
+
+`PYTHONDONTWRITEBYTECODE=1 python tools/check_debt_sale_replay_D21.py` verifica los hashes de las fuentes sintéticas y recalcula con fracciones exactas tres períodos de deuda de obra, 17 eventos de caja y cuatro saldos por fecha. Reconstruye los 12 importes derivados de deuda y conserva sus campos de origen vacíos. Concilia el paso a la deuda operativa, el principal pagado durante la tenencia y el saldo liquidado al vender.
+
+El verificador coteja 19 conceptos, 12 términos de caja y 14 puentes en cada cierre. Incluye el seguro una sola vez dentro de otros usos y concilia las reservas como transferencias entre saldos. Las dos versiones sintéticas arrojan distribuciones de venta de 578 y 576 USD. Ambas conservan la decisión archivada PENDING. GitHub Actions ejecuta el mismo comando. [Verificador D21](tools/check_debt_sale_replay_D21.py).
