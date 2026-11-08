@@ -158,7 +158,7 @@ def verify_controls(terms, parent, binding, wrong_binding):
     return dict(pending_controls=list(controls), explicit_zero_preserved=True)
 
 
-def run():
+def replay_with_ledgers():
     parents = replay_ledgers()
     raw = local_file(ROOT, TERMS).read_bytes()
     terms = json.loads(raw)
@@ -176,9 +176,15 @@ def run():
                 f"Archived terms did not reconcile: {key}")
     scenarios["refinance_original_blocked"] = allocate(terms, None, None)
     controls = verify_controls(terms, parents["L01"], bindings["L01"], bindings["L02"])
-    return dict(status="passed", scope="archived_synthetic", decision="PENDING", currency="USD",
-                terms_sha256=digest(raw.decode("utf-8")), project_ledgers=bindings, scenarios=scenarios,
-                controls=controls, personal_investor_return=None, deployment_enabled=False, real_decisions_enabled=False)
+    report = dict(status="passed", scope="archived_synthetic", decision="PENDING", currency="USD",
+                  terms_sha256=digest(raw.decode("utf-8")), project_ledgers=bindings, scenarios=scenarios,
+                  controls=controls, personal_investor_return=None, deployment_enabled=False, real_decisions_enabled=False)
+    return report, parents, terms
+
+
+def run():
+    report, _, _ = replay_with_ledgers()
+    return report
 
 
 def summary(result):

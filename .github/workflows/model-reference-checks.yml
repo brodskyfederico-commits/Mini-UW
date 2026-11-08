@@ -83,5 +83,7 @@ jobs:
         run: python tools/check_capital_coc_replay_D27.py
       - name: Verify integrated synthetic participant cash allocations
         run: python tools/check_integrated_participation_D28.py --summary
+      - name: Verify synthetic participant funding peaks and sale dependence
+        run: python tools/check_participant_funding_risk_D29.py --summary
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v

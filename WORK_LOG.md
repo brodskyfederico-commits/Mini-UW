@@ -1026,3 +1026,11 @@ Los términos de prueba declaran fracciones constantes de 1/4 y 3/4 sobre cada a
 Con 1/4 de participación en la primera versión de venta directa, el participante aporta USD 250 iniciales y USD 100 adicionales. Cobra USD 50 de operación y USD 144,50 de venta, para USD 194,50 de cobros y un neto de −USD 155,50. En el caso de refinanciación independiente, aporta USD 250 y cobra USD 324,729925 en total, incluidos USD 88,2525 netos de refinanciación. Los importes se conservan como fracciones exactas.
 
 La corrida deja pendiente cualquier reparto con fracción faltante, total distinto de 1, evidencia de otro libro o caja de origen bloqueada. Una fracción de cero conserva caja cero y múltiplo y TIR indefinidos. Capital, equity retenido, CoC del participante y retorno personal verificado siguen pendientes. [Términos D28](templates/synthetic-integrated-cash-participation-D28.json), [verificador D28](tools/check_integrated_participation_D28.py).
+
+## D29 — Pico de financiación y dependencia de venta por participante
+
+La corrida toma los flujos brutos de D28 y reutiliza la aritmética de T105. Calcula aportes acumulados menos cobros acumulados por fecha, el pico al cierre y la cota superior intradía si los aportes del día se realizan primero. La caja no recuperada es el déficit positivo al corte. La dependencia de venta divide el cobro neto de venta entre todos los cobros. El informe identifica cada fecha y conserva los movimientos de cero.
+
+Para la participación sintética del 25 %, las dos versiones de venta directa tienen un pico de USD 350, caja no recuperada de USD 155,50 y USD 156, y dependencia de venta de aproximadamente 74,29 % y 74,23 %. En la prueba con refinanciación, el pico es USD 250, la caja no recuperada al corte es cero y la dependencia de venta es aproximadamente 57,43 %. El informe distingue esas observaciones de financiación disponible, capital aún invertido y pérdida económica definitiva.
+
+Los importes del 25 % y 75 % se concilian con el proyecto por fecha y por métrica en este perfil de reparto constante. Los porcentajes de dependencia se verifican por separado. Una participación con cero cobros deja la proporción indefinida. Una asignación pendiente deja el riesgo pendiente. [Verificador D29](tools/check_participant_funding_risk_D29.py).
