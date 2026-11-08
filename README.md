@@ -4,6 +4,7 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D28 reparte cada aporte y cobro de los casos integrados con términos sintéticos expresos. Ejecuta `PYTHONDONTWRITEBYTECODE=1 python tools/check_integrated_participation_D28.py`. El JSON contiene los flujos fechados y la conciliación por participante. `--summary` devuelve los estados y el hash del informe. [Verificador D28](tools/check_integrated_participation_D28.py).
 - D27 añade cortes de capital declarado y CoC condicionado a la verificación de caja de D26. Ejecuta `PYTHONDONTWRITEBYTECODE=1 python tools/check_capital_coc_replay_D27.py`. El JSON separa los cinco casos de capital y la base de CoC propia de la prueba con refinanciación. [Verificador D27](tools/check_capital_coc_replay_D27.py).
 - D26 ejecuta en una misma corrida las dos versiones con venta de D24 y los casos archivados de refinanciación. Ejecuta `PYTHONDONTWRITEBYTECODE=1 python tools/check_refinance_return_replay_D26.py`. El JSON separa la ventana de caja conciliada, el control de capacidad y el retorno que puede calcularse en cada caso sintético. [Verificador D26](tools/check_refinance_return_replay_D26.py).
 - D25 comprueba que el retorno integrado rechace siete alteraciones sintéticas del traspaso de caja y de la escala de TIR. Ejecuta `PYTHONDONTWRITEBYTECODE=1 python tools/check_return_handoff_faults_D25.py`. [Controles D25](tools/check_return_handoff_faults_D25.py).

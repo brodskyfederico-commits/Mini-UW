@@ -1,10 +1,10 @@
 {
-  "scope": "I01 preserved design, D02–D27 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D28 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 4734,
-      "sha256": "63993b15eeec8269b7ce5de7a5ff9fb3eb674bf395b628582f8bcbe76f36e80f"
+      "bytes": 4879,
+      "sha256": "cd4254f86a6c12608103e0814bc5b7e2aa47e30d9e6b7988e5d90ecf7c242863"
     },
     {
       "path": ".gitignore",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 54798,
-      "sha256": "9ae0e298bf7cb4fdd6788763db4978463a2cb92118eaab3c95be950d35c4f89e"
+      "bytes": 55174,
+      "sha256": "44a28c70beb44875e2fdd53c6d1fcf5d3f6773d90f0422db8f2bf6cbc972eb03"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 247589,
-      "sha256": "d0aeb52ce2907f4cad2cb2679485b31d10c9659c1aea2bd2bf5fd339d05d66b3"
+      "bytes": 249021,
+      "sha256": "5fbe1cea210e2ae4b27c74f13bed3542670f36ed40ca97ae6c01b1e423a0acb3"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -4892,6 +4892,11 @@
       "sha256": "936217b6b0cb4a4d52e9e7f8ec5782d7b1ec412e550c5b1f9e118cbb46b55f49"
     },
     {
+      "path": "templates/synthetic-integrated-cash-participation-D28.json",
+      "bytes": 1376,
+      "sha256": "602df8e8421094af668ff7621feca267f8e93bd9776d629ab40bfa6f759cf55d"
+    },
+    {
       "path": "templates/synthetic-investor-returns.json",
       "bytes": 3827,
       "sha256": "46f6b1f4deff4410273a9943ac5b18bdb809351be35e2b53054e5ba009c762ed"
@@ -5835,6 +5840,11 @@
       "path": "tools/check_insurance_terminal_T107.py",
       "bytes": 7471,
       "sha256": "adf1d58313f0b02cd3bca219bae1f41f246b6817d7ce5eb0f2604e5e5a0e2bb2"
+    },
+    {
+      "path": "tools/check_integrated_participation_D28.py",
+      "bytes": 11555,
+      "sha256": "8e7d12baaf11c42ae6f2b767d4c2bb3313f834b6ce7d3402c15083ba781d8b19"
     },
     {
       "path": "tools/check_integrated_replay_D22.py",

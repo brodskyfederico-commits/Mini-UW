@@ -1,0 +1,38 @@
+{
+  "schema": "miniuw.synthetic-integrated-cash-participation.v1",
+  "profile": "constant_fraction_of_every_project_equity_cash_event",
+  "terms_id": "SYNTHETIC-integrated-cash-share-D28",
+  "revision": 1,
+  "currency": "USD",
+  "participant_inventory_complete": true,
+  "source_ref": "SYNTHETIC-D28-explicit-hypothetical-constant-shares",
+  "whole_ledger_scope_ref": "SYNTHETIC-D28-every-gross-equity-event-in-each-bound-ledger",
+  "assumptions": {
+    "same_fraction_for_all_contributions_and_distributions": true,
+    "fees_promotes_taxes_or_priority_adjustments": false,
+    "amounts_are": "hypothetical_gross_cash_only"
+  },
+  "project_ledgers": {
+    "L01": "ec9524d1a382681aa8d34dac7a2d0e6656a3d3141f73229a08ed814b6fb48e38",
+    "L02": "4c6fa2bbc3762b47c43d2004d3b154ec4c31dfcc36d4faf5b6cde609156b6ea9",
+    "refinance_independent_fixture": "2ee56b447f2bb4b60551141c60c876bef81cd96f60d75c40b699fe01ca332bc7"
+  },
+  "participants": [
+    {
+      "participant_id": "SYNTHETIC-participant-A",
+      "share_fraction": {
+        "numerator": "1",
+        "denominator": "4"
+      },
+      "source_ref": "SYNTHETIC-D28-participant-A-one-quarter"
+    },
+    {
+      "participant_id": "SYNTHETIC-participant-B",
+      "share_fraction": {
+        "numerator": "3",
+        "denominator": "4"
+      },
+      "source_ref": "SYNTHETIC-D28-participant-B-three-quarters"
+    }
+  ]
+}
