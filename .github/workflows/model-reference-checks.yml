@@ -73,5 +73,7 @@ jobs:
         run: python tools/check_integrated_replay_D22.py
       - name: Verify integrated synthetic project equity cash return
         run: python tools/check_return_replay_D23.py
+      - name: Verify bounded annual project equity IRR from integrated cash
+        run: python tools/check_annual_return_replay_D24.py
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v
