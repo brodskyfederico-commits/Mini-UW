@@ -1034,3 +1034,11 @@ La corrida toma los flujos brutos de D28 y reutiliza la aritmética de T105. Cal
 Para la participación sintética del 25 %, las dos versiones de venta directa tienen un pico de USD 350, caja no recuperada de USD 155,50 y USD 156, y dependencia de venta de aproximadamente 74,29 % y 74,23 %. En la prueba con refinanciación, el pico es USD 250, la caja no recuperada al corte es cero y la dependencia de venta es aproximadamente 57,43 %. El informe distingue esas observaciones de financiación disponible, capital aún invertido y pérdida económica definitiva.
 
 Los importes del 25 % y 75 % se concilian con el proyecto por fecha y por métrica en este perfil de reparto constante. Los porcentajes de dependencia se verifican por separado. Una participación con cero cobros deja la proporción indefinida. Una asignación pendiente deja el riesgo pendiente. [Verificador D29](tools/check_participant_funding_risk_D29.py).
+
+## D30 — Reparto y riesgo en las revisiones sintéticas de venta
+
+La corrida recupera siete revisiones de D26. Vincula los cuatro libros calculables a los términos del 25 % y 75 % por hash, verifica que la caja ajena a la venta y el calendario coincidan con la prueba base, y concilia las métricas por participante con el proyecto. Las tres revisiones del caso original mantienen el bloqueo de capacidad y el reparto pendiente.
+
+Para la participación del 25 %, las pruebas con precio bruto de USD 0, USD 200 y USD 400 y costos de cierre de USD 20 producen cobros netos de venta de aproximadamente USD 86,48, USD 136,48 y USD 186,48. El cierre con precio bruto cero incluye el residual de la caja que ya tenía el proyecto. Con costos de USD 500 y precio bruto cero, el cierre exige USD 33,52 de aporte adicional para ese participante. El cobro de venta es cero y quedan USD 145,27 de caja no recuperada al corte. El pico de financiación se mantiene en USD 250 en las cuatro revisiones.
+
+La revisión que exige aporte conserva el estado de TIR sin raíz admisible. Se conservan las fracciones exactas y la decisión PENDING. [Verificador D30](tools/check_participant_sale_revisions_D30.py), [vínculos de términos](templates/synthetic-participant-sale-revisions-D30.json).

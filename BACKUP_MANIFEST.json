@@ -1,10 +1,10 @@
 {
-  "scope": "I01 preserved design, D02–D29 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D30 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 5030,
-      "sha256": "654d41dfc90939eaf1feea45af53863254af43cacbb9d5aceead2376fe2a44ba"
+      "bytes": 5190,
+      "sha256": "5dfcbdd2e39c9f69fe42fb6ec945ea5ec6eda75c065bf923424b1382027d08bb"
     },
     {
       "path": ".gitignore",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 55523,
-      "sha256": "eb98a1a91666edb67eba5ec2113065e3f9af34ca34e69bba10a0d976f01d1f90"
+      "bytes": 55873,
+      "sha256": "452f9020d89a134dd6214754e1c40bc2dbfa5965ddf60588006b116deea01f3d"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 250377,
-      "sha256": "93ad1521ab1ba73de52ef741da9f5741a67b96b28f0724ed1380b943b567d2cb"
+      "bytes": 251657,
+      "sha256": "34560c081497816906a4a50893a3f46d853a5b850f59bb2cd1f380199a8711fa"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -4967,6 +4967,11 @@
       "sha256": "0af827855b0b39d652d8fd16d1819e2988f367b9552e468236ef86e5b73aa030"
     },
     {
+      "path": "templates/synthetic-participant-sale-revisions-D30.json",
+      "bytes": 728,
+      "sha256": "b5ad1f953237e4c6754a810b970050f1f83d6c4146e0e0184445592b00b15b3f"
+    },
+    {
       "path": "templates/synthetic-phased-expense-base.json",
       "bytes": 234008,
       "sha256": "5bf69c8f852f6a6bb53be9ad1d93266bf73eadb8b8f52f296510c20e5c88c72a"
@@ -5843,8 +5848,8 @@
     },
     {
       "path": "tools/check_integrated_participation_D28.py",
-      "bytes": 11683,
-      "sha256": "078d5d03cce16cfc3033e9306073fc65016291d00d09adf947f679e932e7862c"
+      "bytes": 11867,
+      "sha256": "604f99b2eb31ad3325b6ca8a6ad80ad2f18130818201a8fa47f2ee1b198fb80b"
     },
     {
       "path": "tools/check_integrated_replay_D22.py",
@@ -5880,6 +5885,11 @@
       "path": "tools/check_participant_funding_risk_D29.py",
       "bytes": 6855,
       "sha256": "c42b8f6859ff1c84e345e0fc1e2ff0436323ff6cafccc67e630a4acff38b7997"
+    },
+    {
+      "path": "tools/check_participant_sale_revisions_D30.py",
+      "bytes": 8087,
+      "sha256": "2508e5dcb9317f51d9a2c4c3bdd6547f697244d689efe7fd7014a4a404a32cd7"
     },
     {
       "path": "tools/check_phased_settled_T110.py",

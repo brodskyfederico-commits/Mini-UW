@@ -94,7 +94,7 @@ def prepare_shares(terms):
     return shares, blockers
 
 
-def allocate(terms, parent, binding):
+def allocate(terms, parent, binding, *, require_unique_irr=True):
     if parent is None:
         return dict(state="PENDING", blockers=["current_project_cash_unavailable"], participants=None, reconciliation=None)
     shares, blockers = prepare_shares(terms)
@@ -127,8 +127,10 @@ def allocate(terms, parent, binding):
         else:
             roots = row["periodic_IRR"]
             require(row["positive_scalar_net_flow_identity_verified"] is True
-                    and roots["status"] == "complete_synthetic" and roots["distinct_positive_discount_roots"] == 1
-                    and row["annual_IRR_roots"], "Synthetic IRR enclosure did not reconcile")
+                    and roots["status"] == "complete_synthetic" and not roots["unresolved_intervals"]
+                    and len(row["annual_IRR_roots"]) == roots["distinct_positive_discount_roots"]
+                    and (not require_unique_irr or roots["distinct_positive_discount_roots"] == 1),
+                    "Synthetic IRR enclosure did not reconcile")
             positive_roots.append((roots["roots"], row["annual_IRR_roots"]))
     require(all(roots == positive_roots[0] for roots in positive_roots),
             "Positive shares produced different IRR enclosures")
