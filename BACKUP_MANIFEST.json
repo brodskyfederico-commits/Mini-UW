@@ -1,10 +1,10 @@
 {
-  "scope": "I01 preserved design, D02–D30 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D31 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 5190,
-      "sha256": "5dfcbdd2e39c9f69fe42fb6ec945ea5ec6eda75c065bf923424b1382027d08bb"
+      "bytes": 5347,
+      "sha256": "b1ef7e79f6e66c877bfd016e8847feb8a8144d75d658e7ee0c8414658a43d583"
     },
     {
       "path": ".gitignore",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 55873,
-      "sha256": "452f9020d89a134dd6214754e1c40bc2dbfa5965ddf60588006b116deea01f3d"
+      "bytes": 56184,
+      "sha256": "36dd42414bed3e3ccd41e5353d2fe8894c9fc1a78cc5c3cd4a17a17a056d12e0"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 251657,
-      "sha256": "34560c081497816906a4a50893a3f46d853a5b850f59bb2cd1f380199a8711fa"
+      "bytes": 253250,
+      "sha256": "aa13267c9db0a2b21457ca34ccf3b639a868ed3685e79f86fac8ba12aa0c0af0"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -4967,6 +4967,11 @@
       "sha256": "0af827855b0b39d652d8fd16d1819e2988f367b9552e468236ef86e5b73aa030"
     },
     {
+      "path": "templates/synthetic-participant-refinance-variants-D31.json",
+      "bytes": 1944,
+      "sha256": "1a7e05aac471e0d79cd8c2a456e506b048ef8056e84cea346c51d7a6c8481526"
+    },
+    {
       "path": "templates/synthetic-participant-sale-revisions-D30.json",
       "bytes": 728,
       "sha256": "b5ad1f953237e4c6754a810b970050f1f83d6c4146e0e0184445592b00b15b3f"
@@ -5885,6 +5890,11 @@
       "path": "tools/check_participant_funding_risk_D29.py",
       "bytes": 6855,
       "sha256": "c42b8f6859ff1c84e345e0fc1e2ff0436323ff6cafccc67e630a4acff38b7997"
+    },
+    {
+      "path": "tools/check_participant_refinance_variants_D31.py",
+      "bytes": 15529,
+      "sha256": "911525aceedc2d62330809446b11dc0632fd328047470822997118dd58349d42"
     },
     {
       "path": "tools/check_participant_sale_revisions_D30.py",

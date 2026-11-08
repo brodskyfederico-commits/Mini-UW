@@ -4,6 +4,7 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D31 prueba cuatro variantes de refinanciación y vuelve a calcular los aportes, cobros y riesgos por participante hasta la venta. Ejecuta `PYTHONDONTWRITEBYTECODE=1 python tools/check_participant_refinance_variants_D31.py` desde la raíz. [Verificador D31](tools/check_participant_refinance_variants_D31.py).
 - D30 extiende el reparto y las métricas de D29 a las revisiones archivadas de venta. Ejecuta `PYTHONDONTWRITEBYTECODE=1 python tools/check_participant_sale_revisions_D30.py` desde la raíz. El informe separa el precio de venta, el cobro neto y el aporte adicional por participante. [Verificador D30](tools/check_participant_sale_revisions_D30.py).
 - D29 conecta el reparto de D28 con el pico de financiación, la caja no recuperada al corte y la dependencia del cobro de venta. Ejecuta `PYTHONDONTWRITEBYTECODE=1 python tools/check_participant_funding_risk_D29.py` desde la raíz. El JSON incluye el acumulado y las cotas por fecha. [Verificador D29](tools/check_participant_funding_risk_D29.py).
 - D28 reparte cada aporte y cobro de los casos integrados con términos sintéticos expresos. Ejecuta `PYTHONDONTWRITEBYTECODE=1 python tools/check_integrated_participation_D28.py`. El JSON contiene los flujos fechados y la conciliación por participante. `--summary` devuelve los estados y el hash del informe. [Verificador D28](tools/check_integrated_participation_D28.py).

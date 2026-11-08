@@ -1,0 +1,61 @@
+{
+  "schema": "miniuw.synthetic-participant-refinance-sensitivity.v1",
+  "base_evidence_sha256": "38880a34cb502bbdff161327ebb1244d321171c5713c54181258217f23cd947c",
+  "allocation_terms_sha256": "602df8e8421094af668ff7621feca267f8e93bd9776d629ab40bfa6f759cf55d",
+  "fixed_sources_basis_ref": "SYNTHETIC-D31-fixed-dates-rate-amortization-bank-noi-operations-sale-and-reserves",
+  "variants": [
+    {
+      "variant_id": "SYNTHETIC-D31-lower",
+      "selected_principal": {
+        "numerator": "150",
+        "denominator": "1"
+      },
+      "refinance_closing_costs": {
+        "numerator": "20",
+        "denominator": "1"
+      },
+      "equity_funding_assumption_ref": null
+    },
+    {
+      "variant_id": "SYNTHETIC-D31-near-limit",
+      "selected_principal": {
+        "numerator": "390",
+        "denominator": "1"
+      },
+      "refinance_closing_costs": {
+        "numerator": "20",
+        "denominator": "1"
+      },
+      "equity_funding_assumption_ref": null
+    },
+    {
+      "variant_id": "SYNTHETIC-D31-cash-in",
+      "selected_principal": {
+        "numerator": "150",
+        "denominator": "1"
+      },
+      "refinance_closing_costs": {
+        "numerator": "300",
+        "denominator": "1"
+      },
+      "equity_funding_assumption_ref": "SYNTHETIC-D31-explicit-equity-funding-hypothesis"
+    },
+    {
+      "variant_id": "SYNTHETIC-D31-above-limit",
+      "selected_principal": {
+        "numerator": "400",
+        "denominator": "1"
+      },
+      "refinance_closing_costs": {
+        "numerator": "20",
+        "denominator": "1"
+      },
+      "equity_funding_assumption_ref": null
+    }
+  ],
+  "project_ledgers": {
+    "SYNTHETIC-D31-lower": "23bedc48b107e52f5cbb7349b2baad055f7b6a6e03b914ad7e63072ce828f8a0",
+    "SYNTHETIC-D31-near-limit": "cbb1b34027464029720a30aa2ce25ac0aaf9e33f5211e738203ecf086ad79dcb",
+    "SYNTHETIC-D31-cash-in": "7b496f424e69039400c1c5b11c129764daa4e23f6554ada2e0d01f776cfe03ea"
+  }
+}

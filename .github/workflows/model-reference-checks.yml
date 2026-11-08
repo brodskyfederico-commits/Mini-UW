@@ -87,5 +87,7 @@ jobs:
         run: python tools/check_participant_funding_risk_D29.py --summary
       - name: Verify participant funding and returns across archived sale revisions
         run: python tools/check_participant_sale_revisions_D30.py --summary
+      - name: Verify participant cash and risk under refinance sensitivities
+        run: python tools/check_participant_refinance_variants_D31.py --summary
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v
