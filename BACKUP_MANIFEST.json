@@ -1,10 +1,10 @@
 {
-  "scope": "I01 preserved design, D02–D31 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D32 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 5347,
-      "sha256": "b1ef7e79f6e66c877bfd016e8847feb8a8144d75d658e7ee0c8414658a43d583"
+      "bytes": 5494,
+      "sha256": "289f3863e3c6dc04a9887e6a2a184af4a504c4066b99d40e7c217df3aeb94f68"
     },
     {
       "path": ".gitignore",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 56184,
-      "sha256": "36dd42414bed3e3ccd41e5353d2fe8894c9fc1a78cc5c3cd4a17a17a056d12e0"
+      "bytes": 56540,
+      "sha256": "d37847f294ea81baf801aaf8141468da0d94b2495907a0ded5dd9891e222ffd2"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 253250,
-      "sha256": "aa13267c9db0a2b21457ca34ccf3b639a868ed3685e79f86fac8ba12aa0c0af0"
+      "bytes": 254691,
+      "sha256": "e51a5f13e2584e8ab07c9a3a8edfce40430798a2189fec04d6600c6df1b1620c"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -4967,6 +4967,11 @@
       "sha256": "0af827855b0b39d652d8fd16d1819e2988f367b9552e468236ef86e5b73aa030"
     },
     {
+      "path": "templates/synthetic-participant-joint-exit-D32.json",
+      "bytes": 1807,
+      "sha256": "8af789b539b0da2f2b8cb114f893d6d182a66ea88c27ac55dc44b4072b2ecf99"
+    },
+    {
       "path": "templates/synthetic-participant-refinance-variants-D31.json",
       "bytes": 1944,
       "sha256": "1a7e05aac471e0d79cd8c2a456e506b048ef8056e84cea346c51d7a6c8481526"
@@ -5892,9 +5897,14 @@
       "sha256": "c42b8f6859ff1c84e345e0fc1e2ff0436323ff6cafccc67e630a4acff38b7997"
     },
     {
+      "path": "tools/check_participant_joint_exit_D32.py",
+      "bytes": 8661,
+      "sha256": "3521308cb6d5eea49644843ab97c5badbf794e6d47b0a0286eaf61a43a5d6809"
+    },
+    {
       "path": "tools/check_participant_refinance_variants_D31.py",
-      "bytes": 15529,
-      "sha256": "911525aceedc2d62330809446b11dc0632fd328047470822997118dd58349d42"
+      "bytes": 15903,
+      "sha256": "17268649b9d3445a9bc23a5e978a36719b83b4e9c787d70f854198a481ea5a24"
     },
     {
       "path": "tools/check_participant_sale_revisions_D30.py",

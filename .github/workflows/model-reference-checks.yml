@@ -89,5 +89,7 @@ jobs:
         run: python tools/check_participant_sale_revisions_D30.py --summary
       - name: Verify participant cash and risk under refinance sensitivities
         run: python tools/check_participant_refinance_variants_D31.py --summary
+      - name: Verify joint refinance and sale sensitivities by participant
+        run: python tools/check_participant_joint_exit_D32.py --summary
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v

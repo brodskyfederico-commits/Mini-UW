@@ -18,7 +18,7 @@ from miniuw_foundation.debt_service import produce_debt_service, rational
 from miniuw_foundation.drafts import canonical, digest
 from miniuw_foundation.operating_cash import reconcile_operating_cash
 from miniuw_foundation.project_cash import reconcile_project_cash
-from miniuw_foundation.project_sale_revision import evidence_fingerprint
+from miniuw_foundation.project_sale_revision import CapacityProjectEvidence, evidence_fingerprint
 from miniuw_foundation.refinance_capacity import size_refinance
 
 
@@ -101,7 +101,7 @@ def rebuild_cash(base, spec):
     return periods, (refinance, closing), loan
 
 
-def reconcile_variant(base, spec):
+def build_variant_evidence(base, spec):
     periods, closings, loan = rebuild_cash(base, spec)
     pre, post = periods
     refinance, sale = closings
@@ -144,7 +144,14 @@ def reconcile_variant(base, spec):
                       project_return_binding=inner)
     guarded = assemble_capacity_checked_returns(periods, closings, manifest_raw, project, inputs,
                                                  capacity_raw, capacity, investor_raw, binding)
-    return capacity, guarded, refinance, sale, post
+    return CapacityProjectEvidence(periods, closings, manifest_raw, project, inputs,
+                                   capacity_raw, capacity, investor_raw, binding, guarded)
+
+
+def reconcile_variant(base, spec):
+    evidence = build_variant_evidence(base, spec)
+    refinance, sale = evidence.closings
+    return evidence.capacity_run, evidence.guarded_run, refinance, sale, evidence.periods[1]
 
 
 def replay_variants(fixture, base):
