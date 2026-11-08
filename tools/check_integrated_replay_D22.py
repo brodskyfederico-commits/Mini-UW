@@ -6,11 +6,11 @@ from check_debt_sale_replay_D21 import run as replay_debt_and_sale
 from check_operating_replay_D20 import ROOT, replay_snapshots, require
 
 
-def run(root=ROOT):
+def run(root=ROOT, *, include_return_cash=False):
     operations = replay_snapshots(root)
     by_input = {result["input_ref"]["path"]: result for result in operations}
     require(len(by_input) == len(operations), "Duplicate operating input")
-    replay = replay_debt_and_sale(root, operating_by_input=by_input)
+    replay = replay_debt_and_sale(root, operating_by_input=by_input, include_return_cash=include_return_cash)
     return dict(scope="archived_synthetic", currency="USD", **replay)
 
 

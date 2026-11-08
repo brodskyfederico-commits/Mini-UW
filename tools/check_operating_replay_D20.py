@@ -58,6 +58,8 @@ def replay_period(root, row, expenses, payments, input_path):
     require(noi["context"] == cash["context"] == detail["context"], "Period context mismatch")
     for key in ("start_date", "end_date"):
         require(row[key] == cash[key] == detail[key], f"Period cutoff mismatch: {key}")
+    require(row["cash_date"] == cash["cash_date"] and cash["start_date"] <= cash["cash_date"] < cash["end_date"],
+            "Operating equity cash date differs")
     require(amount(noi["tax_floor"]) == amount(noi["tax_coefficient"]) == 0, "Expected D19 zero-tax fixture")
     require(amount(cash["amounts"]["noncash_expense"]) == 0, "Noncash expense outside D19 scope")
     require(detail["inventory_declared_complete"] is True, "Expense inventory incomplete")

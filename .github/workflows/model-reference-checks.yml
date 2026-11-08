@@ -71,5 +71,7 @@ jobs:
         run: python tools/check_debt_sale_replay_D21.py
       - name: Verify integrated synthetic debt, operating cash and sale reconciliation
         run: python tools/check_integrated_replay_D22.py
+      - name: Verify integrated synthetic project equity cash return
+        run: python tools/check_return_replay_D23.py
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v

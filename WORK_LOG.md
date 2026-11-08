@@ -986,3 +986,9 @@ El verificador coteja 19 conceptos, 12 términos de caja y 14 puentes en cada ci
 Cruza la fecha de apertura y los saldos de obra con la caja inicial operativa. Coteja el principal de cada período con su calendario, y lleva la caja libre, la reserva y el principal pendientes al cierre de venta. El saldo por pagar y el prepago del seguro de operación se cotejan con los saldos previos al pago de cierre. Ambas versiones pasan a operación con caja libre de USD 590, reserva de USD 0 y principal de USD 200. Llegan a la venta con caja libre de USD 213 y USD 211, respectivamente, y con USD 100 de reserva y USD 100 de principal cada una. Las distribuciones sintéticas de venta son USD 578 y USD 576.
 
 Los comandos independientes conservan sus salidas. Las dos decisiones archivadas permanecen en PENDING. El alcance cubre los perfiles sintéticos archivados. [Verificador D22](tools/check_integrated_replay_D22.py).
+
+## D23 — Retorno de caja del equity conectado a la corrida integrada
+
+La corrida reutiliza los aportes conciliados de obra, los aportes y distribuciones propuestos de cada período y el residual de la venta. Vincula por ID los ocho movimientos de cada versión a las declaraciones, el resultado archivado y D16. Distingue los aportes explícitos de cero de las fechas sin movimientos. Reconstruye el calendario, los totales por categoría y año, el múltiplo y la escala exacta sobre USD 10 de aportes agregados.
+
+En ambas versiones se aportan USD 1.000 el 1 de octubre de 2026 y USD 400 el 1 de noviembre. Se proyectan dos cobros operativos de USD 100 en 2027, más USD 578 o USD 576 en la venta. Los cobros totales de USD 778 y USD 776 corresponden a múltiplos de 389/700 y 97/175. En escala por USD 10 se cobran aproximadamente USD 5,56 y USD 5,54. El CoC, el capital aún invertido, el equity retenido y el retorno personal siguen pendientes. Ambos casos conservan PENDING. [Verificador D23](tools/check_return_replay_D23.py).

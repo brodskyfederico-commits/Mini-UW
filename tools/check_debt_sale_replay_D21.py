@@ -25,6 +25,7 @@ CLOSING_SIGNS = {
     "opening_restricted_cash": 0, "closing_restricted_cash_claim": 0,
 }
 DEBT_FIELDS = ("principal", "interest", "fees", "other")
+CONTRIBUTIONS = {"initial_equity_contribution": "initial_capital", "additional_equity_contribution": "additional_capital"}
 
 
 def digest(raw):
@@ -116,6 +117,7 @@ def replay_preopening(bundle, register, root):
     totals = Counter()
     used_slots = set()
     seen_events = set()
+    equity_events = []
     for event, effective, saved_event, row in zip(pre["events"], compiled["events"], cash_saved["events"],
                                                    register["preopening_events"]):
         event_id, date, category = (event[key] for key in ("event_id", "date", "category"))
@@ -149,6 +151,9 @@ def replay_preopening(bundle, register, root):
         verify_amounts(row, dict(effective_amount=value, signed_free_cash=sign * value), event_id)
         events_by_date.setdefault(date, []).append((event_id, category, value, sign))
         totals[category] += value
+        if category in CONTRIBUTIONS:
+            equity_events.append(dict(source_event_id=event_id, date=date, kind="contribution",
+                                      category=CONTRIBUTIONS[category], amount=str(value)))
     require(len(used_slots) == len(slots), "Unused construction debt slot")
 
     cash = balance = Fraction()
@@ -187,6 +192,7 @@ def replay_preopening(bundle, register, root):
                    closing_free_cash=cash, closing_principal=principal, commitment=commitment,
                    unused_nonrevolving_commitment=commitment - draws)
     verify_amounts(register["observed_summary"], summary, "D18 summary")
+    summary["equity_events"] = equity_events
     return summary, bound_loan, pre["opening_operation_date"]
 
 
@@ -428,7 +434,28 @@ def bind_operating(operating, snapshot, case, opening_date):
             require(row[f"{source}_source_ref"] == expected_ref, f"Operating period {source} source differs: {index}")
 
 
-def run(root=ROOT, *, operating_by_input=None):
+def return_cash_events(summary, operating, case, sale):
+    events = list(summary["equity_events"])
+    for row, values in zip(operating["period_rows"], operating["period_amounts"]):
+        for kind, category, field in (
+            ("contribution", "additional_capital", "equity_contribution"),
+            ("distribution", "operating_distribution", "planned_operating_distribution"),
+        ):
+            events.append(dict(source_event_id=f"{row['period_ref']}:{kind}", date=row["cash_date"],
+                               kind=kind, category=category, amount=str(values[field])))
+    closing_id = case["sale"]["closing_id"]
+    cut = sale["handoffs"]["operation_to_sale"]["date"]
+    # The checked sale profile has a positive residual and no additional equity funding.
+    events.extend([
+        dict(source_event_id=f"{closing_id}:contribution", date=cut, kind="contribution",
+             category="additional_capital", amount="0"),
+        dict(source_event_id=f"{closing_id}:distribution", date=cut, kind="distribution",
+             category="net_sale_distribution", amount=sale["sale_distribution"]),
+    ])
+    return events
+
+
+def run(root=ROOT, *, operating_by_input=None, include_return_cash=False):
     d18 = json.loads(local_file(root, STRUCTURE + "MiniUW_Presupuesto_Deuda_y_Aportes_D18.json").read_bytes())
     d17 = json.loads(local_file(root, STRUCTURE + "MiniUW_Cierre_y_Uso_Unico_D17.json").read_bytes())
     snapshots = d17["snapshots"]
@@ -436,6 +463,7 @@ def run(root=ROOT, *, operating_by_input=None):
     require(d18["snapshot_id"] == "D18" and d17["snapshot_id"] == "D17"
             and [row["snapshot_id"] for row in snapshots] == ["S01", "S02"] and len(bindings) == 2,
             "Expected both archived D17 and D18 snapshots")
+    require(not include_return_cash or operating_by_input is not None, "Return cash requires integrated operating evidence")
     if operating_by_input is not None:
         require(operating_by_input.keys() == {row["input_ref"]["path"] for row in snapshots},
                 "Expected operating evidence for both sale snapshots")
@@ -464,8 +492,12 @@ def run(root=ROOT, *, operating_by_input=None):
         if operating_by_input is not None:
             operating = operating_by_input[input_ref["path"]]
             bind_operating(operating, snapshot, case, opening_date)
-        results.append(replay_sale(root, snapshot, case, json.loads(phase_raw), source_hash,
-                                   summary, bound_loan, bundle, saved, d18["opening_boundary_checks"], operating))
+        sale = replay_sale(root, snapshot, case, json.loads(phase_raw), source_hash, summary, bound_loan,
+                           bundle, saved, d18["opening_boundary_checks"], operating)
+        if include_return_cash:
+            sale["return_cash"] = dict(input_ref=input_ref, result_ref=snapshot["result_ref"],
+                                       events=return_cash_events(summary, operating, case, sale))
+        results.append(sale)
     return dict(status="passed", decision="PENDING", construction=dict(periods=3, events=17, linked_nulls=12,
                 dates=4, gross_draws=str(summary["gross_draws"]), closing_principal=str(summary["closing_principal"]),
                 closing_free_cash=str(summary["closing_free_cash"]),
