@@ -998,3 +998,9 @@ En ambas versiones se aportan USD 1.000 el 1 de octubre de 2026 y USD 400 el 1 d
 La corrida toma los netos de las diez fechas reconstruidas por D23, respeta el calendario mensual y los presupuestos archivados, y vuelve a ejecutar el motor exacto T100. Verifica las raíces periódicas y sus intervalos anualizados contra los resultados guardados. Repite el cálculo con los flujos normalizados por USD 10 y verifica que el intervalo periódico sea idéntico en ambas escalas.
 
 Cada versión tiene un intervalo anual con una única raíz aislada. Sus límites, redondeados para lectura, son −58,011407 % y −58,011102 % para la referencia, y −58,176787 % y −58,176482 % para la comparación. El JSON conserva los límites exactos, la inclusión de los extremos y la tasa puntual vacía. El calendario mensual, la TIR anualizada y el alcance de equity agregado pertenecen a estas dos versiones sintéticas. [Verificador D24](tools/check_annual_return_replay_D24.py).
+
+## D25 — Controles de inconsistencias en el retorno integrado
+
+Siete controles alteran copias en memoria y exigen un rechazo por el motivo esperado. Cubren resultados cruzados de otra versión, desplazamiento de una fecha de cobro, movimientos brutos que se compensan, duplicación y omisión de un aporte explícito de cero, reclasificación del cobro de venta y alteración de un neto normalizado que cambia la TIR. Cuatro alteraciones conservan todos los netos por fecha y se detectan por el detalle del traspaso.
+
+Los controles parten de la corrida integrada y su calendario verificado. Las fuentes, los resultados archivados y los umbrales quedan preservados. [Controles D25](tools/check_return_handoff_faults_D25.py).
