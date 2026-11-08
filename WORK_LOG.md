@@ -1004,3 +1004,11 @@ Cada versión tiene un intervalo anual con una única raíz aislada. Sus límite
 Siete controles alteran copias en memoria y exigen un rechazo por el motivo esperado. Cubren resultados cruzados de otra versión, desplazamiento de una fecha de cobro, movimientos brutos que se compensan, duplicación y omisión de un aporte explícito de cero, reclasificación del cobro de venta y alteración de un neto normalizado que cambia la TIR. Cuatro alteraciones conservan todos los netos por fecha y se detectan por el detalle del traspaso.
 
 Los controles parten de la corrida integrada y su calendario verificado. Las fuentes, los resultados archivados y los umbrales quedan preservados. [Controles D25](tools/check_return_handoff_faults_D25.py).
+
+## D26 — Refinanciación y retorno de caja con control de capacidad
+
+La misma corrida ejecuta D24 y reproduce los dos casos archivados de refinanciación y sus siete revisiones de venta. Concilia el préstamo nuevo, el pago de deuda anterior, costos, reservas, efectivo retenido y distribución neta. Verifica seis saldos de caja entre operación, refinanciación y venta, y la identidad del préstamo permanente que llega a la venta.
+
+En ambos casos de refinanciación, el principal elegido es USD 303,01 y el residual de caja es USD 353,01. El caso original conserva el límite de capacidad de aproximadamente USD 9,80 y deja el retorno bloqueado. En el caso independiente de software, la capacidad sintética de aproximadamente USD 392,13 permite reconstruir el calendario de equity. La ventana declarada empieza con USD 1.000 de aportes y muestra USD 200 de cobros operativos, USD 353,01 de cobro de refinanciación y USD 745,9097 de cobro de venta. El total es USD 1.298,9197. La revisión con aporte requerido en la venta muestra USD 134,0903 de aporte adicional y cero de distribución de venta. La hipótesis de aporte pertenece al caso archivado.
+
+Los casos de refinanciación tienen su propio calendario y fuentes. El informe conserva el retorno personal vacío, la decisión PENDING y la ausencia de aprobación bancaria. [Verificador D26](tools/check_refinance_return_replay_D26.py).

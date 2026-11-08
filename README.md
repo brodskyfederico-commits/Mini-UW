@@ -4,6 +4,7 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D26 ejecuta en una misma corrida las dos versiones con venta de D24 y los casos archivados de refinanciación. Ejecuta `PYTHONDONTWRITEBYTECODE=1 python tools/check_refinance_return_replay_D26.py`. El JSON separa la ventana de caja conciliada, el control de capacidad y el retorno que puede calcularse en cada caso sintético. [Verificador D26](tools/check_refinance_return_replay_D26.py).
 - D25 comprueba que el retorno integrado rechace siete alteraciones sintéticas del traspaso de caja y de la escala de TIR. Ejecuta `PYTHONDONTWRITEBYTECODE=1 python tools/check_return_handoff_faults_D25.py`. [Controles D25](tools/check_return_handoff_faults_D25.py).
 - D24 agrega la TIR anual del equity sintético a la misma corrida. Ejecuta `PYTHONDONTWRITEBYTECODE=1 python tools/check_annual_return_replay_D24.py`. Recalcula el intervalo con el motor T100 y verifica que la normalización por USD 10 conserve la raíz. [Verificador D24](tools/check_annual_return_replay_D24.py).
 - D23 añade a la corrida integrada el calendario de aportes, distribuciones operativas propuestas y cobro neto de venta. Ejecuta `PYTHONDONTWRITEBYTECODE=1 python tools/check_return_replay_D23.py` desde la raíz. La salida incluye múltiplo y escala por USD 10 del equity agregado del proyecto. [Verificador D23](tools/check_return_replay_D23.py).
