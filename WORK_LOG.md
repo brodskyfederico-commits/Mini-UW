@@ -978,3 +978,11 @@ GitHub Actions ejecuta el comando junto con los controles del paquete. El alcanc
 `PYTHONDONTWRITEBYTECODE=1 python tools/check_debt_sale_replay_D21.py` verifica los hashes de las fuentes sintéticas y recalcula con fracciones exactas tres períodos de deuda de obra, 17 eventos de caja y cuatro saldos por fecha. Reconstruye los 12 importes derivados de deuda y conserva sus campos de origen vacíos. Concilia el paso a la deuda operativa, el principal pagado durante la tenencia y el saldo liquidado al vender.
 
 El verificador coteja 19 conceptos, 12 términos de caja y 14 puentes en cada cierre. Incluye el seguro una sola vez dentro de otros usos y concilia las reservas como transferencias entre saldos. Las dos versiones sintéticas arrojan distribuciones de venta de 578 y 576 USD. Ambas conservan la decisión archivada PENDING. GitHub Actions ejecuta el mismo comando. [Verificador D21](tools/check_debt_sale_replay_D21.py).
+
+## D22 — Conciliación integrada de deuda, caja operativa y venta
+
+`PYTHONDONTWRITEBYTECODE=1 python tools/check_integrated_replay_D22.py` ejecuta las conciliaciones D20 y D21 en un proceso. Verifica que cada par comparta las referencias completas de entrada, resultado y fuentes de cada período. Reconstruye el tramo de obra común una vez y mantiene separadas las dos versiones de operación y venta.
+
+Cruza la fecha de apertura y los saldos de obra con la caja inicial operativa. Coteja el principal de cada período con su calendario, y lleva la caja libre, la reserva y el principal pendientes al cierre de venta. El saldo por pagar y el prepago del seguro de operación se cotejan con los saldos previos al pago de cierre. Ambas versiones pasan a operación con caja libre de USD 590, reserva de USD 0 y principal de USD 200. Llegan a la venta con caja libre de USD 213 y USD 211, respectivamente, y con USD 100 de reserva y USD 100 de principal cada una. Las distribuciones sintéticas de venta son USD 578 y USD 576.
+
+Los comandos independientes conservan sus salidas. Las dos decisiones archivadas permanecen en PENDING. El alcance cubre los perfiles sintéticos archivados. [Verificador D22](tools/check_integrated_replay_D22.py).

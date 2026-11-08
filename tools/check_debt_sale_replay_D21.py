@@ -187,7 +187,7 @@ def replay_preopening(bundle, register, root):
                    closing_free_cash=cash, closing_principal=principal, commitment=commitment,
                    unused_nonrevolving_commitment=commitment - draws)
     verify_amounts(register["observed_summary"], summary, "D18 summary")
-    return summary, bound_loan
+    return summary, bound_loan, pre["opening_operation_date"]
 
 
 def verify_checks(rows, comparisons):
@@ -198,7 +198,8 @@ def verify_checks(rows, comparisons):
         verify_amounts(row, dict(left=left, right=right, residual=0), label)
 
 
-def replay_holding(case, phase, source_hash, summary, bound_loan, bundle, closing, saved, opening_checks):
+def replay_holding(case, phase, source_hash, summary, bound_loan, bundle, closing, saved, opening_checks,
+                   operating):
     phase_loan, = phase["loan_phases"]
     sale_loan, = case["sale"]["loans"]
     schedule_raw = phase_loan["schedule_source_utf8"]
@@ -235,18 +236,26 @@ def replay_holding(case, phase, source_hash, summary, bound_loan, bundle, closin
     original = amount(loan["principal"])
     installment = original / loan["amortization_payments"]
     operating_principal = Fraction()
-    for period in periods:
+    for index, period in enumerate(periods):
         count = sum(period["start_date"] <= date < period["end_date"] for date in dates)
         payment = count * installment
-        verify_amounts(period["amounts"], dict(debt_principal_payment=payment, debt_interest_payment=0),
-                       period["period_ref"])
+        if operating is None:
+            verify_amounts(period["amounts"], dict(debt_principal_payment=payment, debt_interest_payment=0),
+                           period["period_ref"])
+        else:
+            replayed = operating["period_amounts"][index]
+            paid = replayed["debt_principal_payment"]
+            require(paid == payment and replayed["debt_interest_payment"] == 0,
+                    f"Operating debt payments differ from schedule: {period['period_ref']}")
+            payment = paid
         operating_principal += payment
     principal_at_cut = original - operating_principal
-    opening = first["amounts"]
+    opening = (operating["period_amounts"][0] if operating is not None else
+               {key: amount(first["amounts"][key]) for key in ("opening_free_cash", "opening_restricted_cash")})
     verify_checks(opening_checks, [
-        (summary["closing_free_cash"], amount(opening["opening_free_cash"])),
+        (summary["closing_free_cash"], opening["opening_free_cash"]),
         (summary["closing_principal"], original),
-        (0, amount(opening["opening_restricted_cash"])),
+        (0, opening["opening_restricted_cash"]),
         (summary["gross_equity"], amount(saved["current_project_return_story"]["gross_contributions"])),
     ])
     return prior, coincident, installment, principal_at_cut, operating_principal
@@ -297,7 +306,7 @@ def closing_terms(snapshot, closing, input_ref, root):
     return residual
 
 
-def settlement_amount(case, closing, saved):
+def settlement_amount(case, closing, saved, operating):
     boundary = json.loads(case["boundary_source_utf8"])
     terminal = json.loads(boundary["terminal_binding_source_utf8"])
     plan = json.loads(boundary["plan_source_utf8"])
@@ -317,6 +326,11 @@ def settlement_amount(case, closing, saved):
             and all(payment[key] == planned[key] for key in ("payment_id", "payment_date", "installment_id")),
             "On-cut insurance payment identity differs")
     account = boundary["accounting"]
+    if operating is not None:
+        item, = [item for item in operating["closing_items"] if item["item_id"] == boundary["economic_item_id"]]
+        require(amount(item["closing_payables"]) == amount(account["before_payables"])
+                and amount(item["closing_prepaid"]) == amount(account["before_prepaid"]),
+                "Closing operating insurance balances differ from sale settlement")
     balance_change = (amount(account["before_payables"]) - amount(account["after_payables"])
                       + amount(account["after_prepaid"]) - amount(account["before_prepaid"]))
     settlement = amount(payment["amount"])
@@ -325,7 +339,8 @@ def settlement_amount(case, closing, saved):
     return settlement, balance_change, amount(planned["amount"])
 
 
-def replay_sale(root, snapshot, case, phase, source_hash, summary, bound_loan, bundle, saved, opening_checks):
+def replay_sale(root, snapshot, case, phase, source_hash, summary, bound_loan, bundle, saved, opening_checks,
+                operating):
     closing = json.loads(case["sale"]["closing_source_utf8"])
     cut = closing["closing_date"]
     require(closing["kind"] == "sale" and closing["representation"] == "explicit_gross_cash_movements"
@@ -336,14 +351,14 @@ def replay_sale(root, snapshot, case, phase, source_hash, summary, bound_loan, b
             and closing["currency"] == snapshot["currency"] == "USD" and snapshot["closing_date"] == cut
             and set(closing["amounts"]) == CLOSING_SIGNS.keys(), "Unexpected sale closing profile")
     residual = closing_terms(snapshot, closing, snapshot["input_ref"], root)
-    prior, coincident, installment, principal, operating = replay_holding(
-        case, phase, source_hash, summary, bound_loan, bundle, closing, saved, opening_checks)
+    prior, coincident, installment, principal, holding_principal = replay_holding(
+        case, phase, source_hash, summary, bound_loan, bundle, closing, saved, opening_checks, operating)
     loan_cut = snapshot["loan_cut"]
     require(prior == loan_cut["prior_payment_dates"] and coincident == loan_cut["coincident_payment_dates"]
             and loan_cut["regular_cut_payment_deducted_again"] is False, "Archived payment cut differs")
     verify_amounts(loan_cut, dict(regular_principal_per_payment=installment,
                                  principal_before_all_cut_events=principal), "Sale loan cut")
-    settlement, balance_change, planned_payment = settlement_amount(case, closing, saved)
+    settlement, balance_change, planned_payment = settlement_amount(case, closing, saved, operating)
     require(snapshot["insurance_payment_in_other_uses_only_once"] is True, "Insurance inclusion differs")
     cash = {key: amount(value) for key, value in closing["amounts"].items()}
     debt, = closing["old_debts"]
@@ -357,10 +372,12 @@ def replay_sale(root, snapshot, case, phase, source_hash, summary, bound_loan, b
                                          "other_cash_sources"))
     uses = payoff + residual + sum(cash[key] for key in ("closing_costs_paid", "other_cash_uses",
                                                         "retained_free_cash", "closing_restricted_cash_claim"))
-    operating_cash = saved["current_operating_totals"]
+    closing_cash_keys = ("closing_free_cash_claim", "closing_restricted_cash_claim")
+    operating_cash = (operating["period_amounts"][-1] if operating is not None else
+                      {key: amount(saved["current_operating_totals"][key]) for key in closing_cash_keys})
     verify_checks(snapshot["checks"], [
-        (amount(operating_cash["closing_free_cash_claim"]), cash["opening_free_cash"]),
-        (amount(operating_cash["closing_restricted_cash_claim"]), cash["opening_restricted_cash"]),
+        (operating_cash["closing_free_cash_claim"], cash["opening_free_cash"]),
+        (operating_cash["closing_restricted_cash_claim"], cash["opening_restricted_cash"]),
         (cash["opening_restricted_cash"] + cash["new_reserve"] - cash["reserve_release"],
          cash["closing_restricted_cash_claim"]),
         *debt_pairs,
@@ -370,17 +387,48 @@ def replay_sale(root, snapshot, case, phase, source_hash, summary, bound_loan, b
         (residual, amount(sale_event["amount"])),
         (sources, uses),
         (principal, amount(debt["principal_due"])),
-        (operating + amount(debt["principal_paid"]), amount(saved["current_holding_sale_totals"]["debt_principal"])),
+        (holding_principal + amount(debt["principal_paid"]), amount(saved["current_holding_sale_totals"]["debt_principal"])),
     ])
     verify_amounts(snapshot, dict(free_cash_distribution=residual, total_closing_sources=sources,
                                   total_closing_uses=uses, closing_retained_free_cash=cash["retained_free_cash"],
                                   closing_restricted_cash=cash["closing_restricted_cash_claim"]), "D17 closing")
-    return dict(snapshot=snapshot["snapshot_id"], checks=14, claims=19, cash_terms=12,
-                holding_principal=str(operating), sale_principal=str(principal), sale_debt_paid=str(payoff),
-                insurance_at_cut=str(settlement), closing_sources=str(sources), sale_distribution=str(residual))
+    result = dict(snapshot=snapshot["snapshot_id"], checks=14, claims=19, cash_terms=12,
+                  holding_principal=str(holding_principal), sale_principal=str(principal), sale_debt_paid=str(payoff),
+                  insurance_at_cut=str(settlement), closing_sources=str(sources), sale_distribution=str(residual))
+    if operating is not None:
+        first = operating["period_amounts"][0]
+        result["input_sha256"] = snapshot["input_ref"]["sha256"]
+        result["operation"] = operating["summary"]
+        result["handoffs"] = {
+            "construction_to_operation": dict(date=operating["period_rows"][0]["start_date"],
+                                              free_cash=str(first["opening_free_cash"]),
+                                              restricted_cash=str(first["opening_restricted_cash"]),
+                                              principal=str(summary["closing_principal"])),
+            "operation_to_sale": dict(date=cut, free_cash=str(operating_cash["closing_free_cash_claim"]),
+                                      restricted_cash=str(operating_cash["closing_restricted_cash_claim"]),
+                                      principal=str(principal)),
+        }
+    return result
 
 
-def run(root=ROOT):
+def bind_operating(operating, snapshot, case, opening_date):
+    input_ref = snapshot["input_ref"]
+    require(operating["input_ref"] == input_ref and operating["result_ref"] == snapshot["result_ref"],
+            "Operating and sale source or result references differ")
+    rows = operating["period_rows"]
+    require(len(rows) == len(operating["period_amounts"]) == len(case["periods"])
+            and rows[0]["start_date"] == opening_date, "Construction and operating cutoffs differ")
+    for index, row in enumerate(rows):
+        for source in ("noi", "cash", "detail"):
+            chain = CASE_CHAIN + (["/boundary_source_utf8"] if source == "detail" else [])
+            expected_ref = input_ref | {
+                "embedded_json_pointers": chain + [f"/periods/{index}/{source}_source_utf8"],
+                "final_pointer": "",
+            }
+            require(row[f"{source}_source_ref"] == expected_ref, f"Operating period {source} source differs: {index}")
+
+
+def run(root=ROOT, *, operating_by_input=None):
     d18 = json.loads(local_file(root, STRUCTURE + "MiniUW_Presupuesto_Deuda_y_Aportes_D18.json").read_bytes())
     d17 = json.loads(local_file(root, STRUCTURE + "MiniUW_Cierre_y_Uso_Unico_D17.json").read_bytes())
     snapshots = d17["snapshots"]
@@ -388,11 +436,14 @@ def run(root=ROOT):
     require(d18["snapshot_id"] == "D18" and d17["snapshot_id"] == "D17"
             and [row["snapshot_id"] for row in snapshots] == ["S01", "S02"] and len(bindings) == 2,
             "Expected both archived D17 and D18 snapshots")
+    if operating_by_input is not None:
+        require(operating_by_input.keys() == {row["input_ref"]["path"] for row in snapshots},
+                "Expected operating evidence for both sale snapshots")
     bundle_raw = resolve(root, bindings[0]["bundle_ref"])
     source_hash = digest(bundle_raw)
     require(source_hash == d18["shared_bundle_UTF8_sha256"], "Shared construction bundle hash differs")
     bundle = json.loads(bundle_raw)
-    summary, bound_loan = replay_preopening(bundle, d18, root)
+    summary, bound_loan, opening_date = replay_preopening(bundle, d18, root)
     results = []
     for snapshot, binding in zip(snapshots, bindings):
         input_ref = snapshot["input_ref"]
@@ -409,8 +460,12 @@ def run(root=ROOT):
                 and saved["decision"] == snapshot["financial_decision"] == binding["financial_decision"] == "PENDING"
                 and saved["real_decisions_enabled"] is saved["deployment_enabled"] is False
                 and saved["personal_investor_return"] is None, "Saved result binding or synthetic status differs")
+        operating = None
+        if operating_by_input is not None:
+            operating = operating_by_input[input_ref["path"]]
+            bind_operating(operating, snapshot, case, opening_date)
         results.append(replay_sale(root, snapshot, case, json.loads(phase_raw), source_hash,
-                                   summary, bound_loan, bundle, saved, d18["opening_boundary_checks"]))
+                                   summary, bound_loan, bundle, saved, d18["opening_boundary_checks"], operating))
     return dict(status="passed", decision="PENDING", construction=dict(periods=3, events=17, linked_nulls=12,
                 dates=4, gross_draws=str(summary["gross_draws"]), closing_principal=str(summary["closing_principal"]),
                 closing_free_cash=str(summary["closing_free_cash"]),

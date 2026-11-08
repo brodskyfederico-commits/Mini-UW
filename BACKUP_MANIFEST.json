@@ -1,10 +1,10 @@
 {
-  "scope": "I01 preserved design, D02–D21 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D22 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 3937,
-      "sha256": "9747881104e72fbdc0d2b5a2391366eaefed78911d3c1866dc8496afbff7c96b"
+      "bytes": 4081,
+      "sha256": "961282cdc5b7ca27e8596e2f2166d02377f8ec29ab670f433d549e3fd0713a7b"
     },
     {
       "path": ".gitignore",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 52726,
-      "sha256": "0cb6f16938548fe7400615af9448738d6cb35a6ca2c1512715a6e190b0479148"
+      "bytes": 53138,
+      "sha256": "b4d982ca2dd723ecc1d19ddb57707c581cb3c2a3bdd09ff2514988ad87be63d6"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 241054,
-      "sha256": "5fb857dd9c2a6ac6f486c64f909252b8916c25f98b9ec4274247ef6321b99fee"
+      "bytes": 242299,
+      "sha256": "bcb1f9d6d8a97f89e2795fc88207187f43be6038ea8646183e3595fd9cc4cd19"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -5803,8 +5803,8 @@
     },
     {
       "path": "tools/check_debt_sale_replay_D21.py",
-      "bytes": 27880,
-      "sha256": "0a52f04f897154bfe58aa0364c14f6a3d67eb15db98246fa3934430063d7fec5"
+      "bytes": 31500,
+      "sha256": "c71604f13c593ffa9b8f9536a3d3422104338c7e279cb8a2fa00d2ac36dad460"
     },
     {
       "path": "tools/check_deferred_insurance_T106.py",
@@ -5827,6 +5827,11 @@
       "sha256": "adf1d58313f0b02cd3bca219bae1f41f246b6817d7ce5eb0f2604e5e5a0e2bb2"
     },
     {
+      "path": "tools/check_integrated_replay_D22.py",
+      "bytes": 904,
+      "sha256": "b975831fd144618e078015fc630f7ff426c8a86b3fc46a146f50c006a1c34588"
+    },
+    {
       "path": "tools/check_investor_output_D07.py",
       "bytes": 22645,
       "sha256": "7215b12dbd2535d4d439f03720bb59df000762d655b1c86c2484e325abf30e05"
@@ -5843,8 +5848,8 @@
     },
     {
       "path": "tools/check_operating_replay_D20.py",
-      "bytes": 10734,
-      "sha256": "92a461bb9566b42ef11c4eaa187679a333fc0d8a54dfe65e54430f80f7c6a42f"
+      "bytes": 11210,
+      "sha256": "3f0b36015c54cb5c8b2e4126f115aad5930da07419dcf5432df5181ae5491016"
     },
     {
       "path": "tools/check_participant_cash_risk_T105.py",

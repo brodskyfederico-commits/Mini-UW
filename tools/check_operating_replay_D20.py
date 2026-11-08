@@ -115,7 +115,8 @@ def replay_period(root, row, expenses, payments, input_path):
     require(closing == values["closing_free_cash_claim"], "Closing free cash differs")
     require(restricted == values["closing_restricted_cash_claim"], "Closing restricted cash differs")
     values.update(accrued_NOI=income - accrued_cost, operating_receipts=receipts,
-                  operating_payments=paid, net_operating_cash=net, free_cash_before_proposed_distribution=before)
+                  operating_payments=paid, net_operating_cash=net, free_cash_before_proposed_distribution=before,
+                  closing_free_cash_claim=closing, closing_restricted_cash_claim=restricted)
     for key in ("accrued_NOI", "operating_receipts", "operating_payments", "net_operating_cash",
                 "free_cash_before_proposed_distribution", "planned_operating_distribution",
                 "closing_free_cash_claim", "closing_restricted_cash_claim"):
@@ -123,7 +124,8 @@ def replay_period(root, row, expenses, payments, input_path):
     return values, balances, detail["items"]
 
 
-def run(root=ROOT):
+def replay_snapshots(root=ROOT):
+    """Return replayed periods with their source bindings for downstream reconciliation."""
     register = json.loads(local_file(root, REGISTER).read_bytes())
     snapshots = register["snapshots"]
     require(register["snapshot_id"] == "D19" and [s["snapshot_id"] for s in snapshots] == ["O01", "O02"],
@@ -168,10 +170,16 @@ def run(root=ROOT):
             else:
                 calculated = first[key] + last[key]
             require(calculated == amount(value) == archived[key], f"Saved operating aggregate differs: {key}")
-        results.append(dict(snapshot=snapshot["snapshot_id"], periods=2, expenses=6, payments=4,
-                            aggregates=17, net_operating_cash=str(first["net_operating_cash"] + last["net_operating_cash"]),
-                            closing_free_cash=str(last["closing_free_cash_claim"])))
-    return dict(status="passed", snapshots=results)
+        summary = dict(snapshot=snapshot["snapshot_id"], periods=2, expenses=6, payments=4,
+                       aggregates=17, net_operating_cash=str(first["net_operating_cash"] + last["net_operating_cash"]),
+                       closing_free_cash=str(last["closing_free_cash_claim"]))
+        results.append(dict(input_ref=input_ref, result_ref=snapshot["result_ref"], summary=summary,
+                            period_rows=rows, period_amounts=[first, last], closing_items=last_items))
+    return results
+
+
+def run(root=ROOT):
+    return dict(status="passed", snapshots=[result["summary"] for result in replay_snapshots(root)])
 
 
 if __name__ == "__main__":
