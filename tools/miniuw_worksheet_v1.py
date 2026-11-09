@@ -1,0 +1,187 @@
+"""One source-bound synthetic worksheet entry point for both sale paths."""
+from argparse import ArgumentParser
+from pathlib import Path
+from tempfile import TemporaryDirectory
+import json
+import os
+import sys
+
+from check_operating_replay_D20 import ROOT, local_file, require
+from check_worksheet_recovery_page_D44 import render_run
+from check_worksheet_refinance_D45 import FIXTURE as REFINANCE, replay
+from check_worksheet_sale_recovery_D43 import FIXTURE as SALE, worksheet_bindings
+from miniuw_foundation.debt_service import _fraction
+from miniuw_foundation.drafts import canonical
+from miniuw_foundation.expense_cash_detail import _exact, _json
+from miniuw_foundation.scheduled_expense_case import sha
+from miniuw_foundation.worksheet_settled_output import assemble_worksheet_settled_output
+
+
+CASE_SCHEMA = "miniuw.synthetic-unified-worksheet-case.v1"
+PACKAGE_SCHEMA = "miniuw.synthetic-unified-worksheet-package.v1"
+ARCHIVES = {"without_refinance": SALE, "with_refinance": REFINANCE}
+FILES = frozenset({"case.json", "results.json", "MiniUW_Resumen.pdf", "package.json"})
+MAX_FILE_BYTES = 4 * 1024 * 1024
+
+
+def read_case(raw):
+    case = _json(raw, 4096)
+    _exact(case, {"schema", "profile", "archive_case", "archive_sha256", "monthly_discount_rate"})
+    require(case["schema"] == CASE_SCHEMA and isinstance(case["profile"], str)
+            and case["profile"] in ARCHIVES and isinstance(case["archive_case"], str),
+            "An explicit supported synthetic worksheet profile and case are required")
+    archive_path = ARCHIVES[case["profile"]]
+    archive_raw = local_file(ROOT, archive_path).read_bytes()
+    require(case["archive_sha256"] == sha(archive_raw), "Case archive bytes differ")
+    bindings, rates = worksheet_bindings()
+    rate = _fraction(case["monthly_discount_rate"])
+    require(rate in rates, "An explicit rate from the synthetic monthly grid is required")
+    return case, archive_path, archive_raw, bindings, rate
+
+
+def build_results(raw):
+    case, archive_path, archive_raw, bindings, rate = read_case(raw)
+    key = case["archive_case"]
+    profile = case["profile"]
+    refinance = capacity = None
+    if profile == "without_refinance":
+        require(key in bindings, "Case does not belong to the sale-only profile")
+        binding = bindings[key]
+        source = local_file(ROOT, binding["path"]).read_text(encoding="utf-8")
+        require(sha(source.encode()) == binding["sha256"], "Worksheet source bytes differ")
+        run = assemble_worksheet_settled_output(source.encode())
+        result = run.payload
+        pdf, page = render_run(source, run, rate)
+        project = result["current_project_return_story"]
+        risk = result["current_risk_observations"]
+        recovery = page["cash_recovery"]
+        if recovery is not None:
+            recovery = {key: value for key, value in recovery.items() if key != "observations"} | recovery["observations"][0]
+        worksheet = result["worksheet_reconciliation"]
+        blockers = result["blockers"]
+        context = result["context"]
+        as_of = result["evaluated_as_of_UTC"]
+        provenance = dict(workbook_sha256=worksheet["source_hashes"]["workbook_sha256"],
+                          worksheet_source_sha256=sha(source.encode()), worksheet_run_sha256=run.sha256,
+                          recovery_run_sha256=page["recovery_sha256"])
+    else:
+        require(key in _json(archive_raw, MAX_FILE_BYTES)["cases"], "Case does not belong to the refinance profile")
+        _, result, pdf = next(replay(key, rate))
+        project = result["return_story"]
+        risk = result["risk"]
+        recovery = result["cash_recovery"]
+        if recovery is not None:
+            recovery = recovery | {"currency": project["currency"]}
+        worksheet = result["worksheet"]
+        capacity = result["capacity"]
+        refinance = result["refinance"]
+        blockers = dict(worksheet=worksheet["blockers"],
+                        capacity=[] if capacity is None else capacity["blockers"],
+                        calculation=[] if capacity is None else capacity["return_blockers"])
+        context = result["context"]
+        as_of = result["evaluated_as_of_UTC"]
+        provenance = dict(workbook_sha256=worksheet["workbook_sha256"],
+                          base_evidence_sha256=result["base_evidence_sha256"],
+                          guarded_return_run_sha256=None if capacity is None else capacity["return_run_sha256"])
+    require(result["decision"] == "PENDING", "Unexpected case decision")
+    if project is None:
+        require(risk is recovery is refinance is None, "Blocked project exposed cash")
+    else:
+        require(risk is not None and recovery is not None and project["equity_level"] == "aggregate_project_equity",
+                "Complete project lost its reconciled recovery or cash risk")
+    normalized = dict(profile=profile, archive_case=key, context=context, evaluated_as_of_UTC=as_of,
+                      state="PENDING" if project is None else "computed_synthetic_project_cash",
+                      decision="PENDING", scope="synthetic_project_equity", monthly_discount_rate=str(rate),
+                      blockers=blockers, worksheet=worksheet, capacity=capacity, refinance=refinance,
+                      project=project, risk=risk, cash_recovery=recovery,
+                      provenance=provenance | dict(archive_path=archive_path, archive_sha256=sha(archive_raw),
+                                                   case_sha256=sha(raw)),
+                      pdf_sha256=sha(pdf), page_count=1, personal_investor_return=None,
+                      deployment_enabled=False, real_decisions_enabled=False)
+    return normalized, pdf
+
+
+def encoded(value):
+    return (canonical(value) + "\n").encode()
+
+
+def build_package(raw):
+    result, pdf = build_results(raw)
+    files = {"case.json": raw, "results.json": encoded(result), "MiniUW_Resumen.pdf": pdf}
+    files["package.json"] = encoded(dict(
+        schema=PACKAGE_SCHEMA, state=result["state"], decision=result["decision"],
+        files=[dict(path=name, bytes=len(content), sha256=sha(content)) for name, content in sorted(files.items())],
+    ))
+    require(all(len(content) <= MAX_FILE_BYTES for content in files.values()), "Output exceeds the package size limit")
+    return files, result
+
+
+def read_package(directory):
+    require(not directory.is_symlink() and directory.is_dir(), "A regular output directory is required")
+    paths = list(directory.iterdir())
+    require({p.name for p in paths} == FILES
+            and all(p.is_file() and not p.is_symlink() and p.stat().st_size <= MAX_FILE_BYTES for p in paths),
+            "Exact regular case, results, PDF and manifest files are required")
+    return {p.name: p.read_bytes() for p in paths}
+
+
+def verify_package(directory):
+    saved = read_package(directory)
+    expected, result = build_package(saved["case.json"])
+    require(saved == expected, "Output does not match source-first replay")
+    return status("verified_source_first", result)
+
+
+def status(operation, result):
+    return dict(status=operation, state=result["state"], profile=result["profile"],
+                decision=result["decision"], pdf_sha256=result["pdf_sha256"], page_count=1)
+
+
+def write_package(raw, directory):
+    expected, result = build_package(raw)
+    if directory.exists() or directory.is_symlink():
+        require(read_package(directory) == expected, "Existing output differs from the requested case")
+        return status("verified_identical_output", result)
+    require(directory.parent.is_dir(), "Output parent directory must exist")
+    with TemporaryDirectory(dir=directory.parent, prefix=".miniuw-worksheet-") as temp:
+        staging = Path(temp) / "package"
+        staging.mkdir()
+        for name, content in expected.items():
+            with (staging / name).open("xb") as stream:
+                stream.write(content)
+                stream.flush()
+                os.fsync(stream.fileno())
+        try:
+            staging.rename(directory)
+        except OSError:
+            if directory.is_dir() and read_package(directory) == expected:
+                return status("verified_identical_output", result)
+            raise
+    return status("written_synthetic_package", result)
+
+
+def main():
+    parser = ArgumentParser(description=__doc__)
+    subcommands = parser.add_subparsers(dest="command", required=True)
+    run = subcommands.add_parser("run")
+    run.add_argument("case", type=Path)
+    run.add_argument("--output", required=True, type=Path)
+    audit = subcommands.add_parser("audit")
+    audit.add_argument("directory", type=Path)
+    args = parser.parse_args()
+    try:
+        if args.command == "run":
+            require(args.case.is_file() and args.case.stat().st_size <= 4096, "A bounded case JSON file is required")
+            result = write_package(args.case.read_bytes(), args.output)
+        else:
+            result = verify_package(args.directory)
+        print(json.dumps(result, ensure_ascii=False))
+        return 0
+    except (ValueError, TypeError, OSError, KeyError, IndexError, StopIteration) as error:
+        print(json.dumps({"status": "blocked", "reason": str(error), "decision": "PENDING"}, ensure_ascii=False),
+              file=sys.stderr)
+        return 2
+
+
+if __name__ == "__main__":
+    sys.exit(main())

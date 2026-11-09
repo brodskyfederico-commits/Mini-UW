@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D46 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D47 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 60776,
-      "sha256": "e4e54ab2c5b15c738dde1732578bef29c0c558b6429821eaef44d3d792368254"
+      "bytes": 61306,
+      "sha256": "60f7bd2c3cbe3443e359591946384d88686338dc650a5267e8c8ca3b53016345"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 272203,
-      "sha256": "6f31822813b8922f8ec7e5d90273f4eddfc418d5b95e6faecf9d4ab47353b7a7"
+      "bytes": 273093,
+      "sha256": "4abc033de8524d2c11c5c3d0b8b558f23ccf02286ac190759ec5098674eb3ae2"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -5222,6 +5222,16 @@
       "sha256": "d12b89c18c4c791a1767583fad9e83d32041f3ad43f87ee842d263050cf29562"
     },
     {
+      "path": "templates/synthetic-unified-worksheet-refinance-D47.json",
+      "bytes": 290,
+      "sha256": "afa136494f2343edf8df8e947cfaf03c0d5140410ca57204ed357f72b50666a9"
+    },
+    {
+      "path": "templates/synthetic-unified-worksheet-sale-D47.json",
+      "bytes": 292,
+      "sha256": "41c0123ba62e52c838e821b66f2d02211ae81340f18fdf3a522f81e5fe3e4816"
+    },
+    {
       "path": "templates/synthetic-workbook-example.xlsx",
       "bytes": 1661,
       "sha256": "d7acbf6cd7eefd921b183c89e9ac987a33dc5105f2c8be886969f05d22b36042"
@@ -6063,8 +6073,8 @@
     },
     {
       "path": "tools/check_worksheet_recovery_page_D44.py",
-      "bytes": 5630,
-      "sha256": "028b5bda08ec30a0c1db3931d7c523b6fbbde7d2d488eb2912201c94963fbb4e"
+      "bytes": 5757,
+      "sha256": "3f230b9ad7ab3de022d8550580a879fa859fbbf28d7f5b37572d8c64fe1f57e7"
     },
     {
       "path": "tools/check_worksheet_refinance_D45.py",
@@ -6390,6 +6400,11 @@
       "path": "tools/miniuw_v1.py",
       "bytes": 1216,
       "sha256": "0fbb233d201940630388854f34169bbafc4e1f5780121bbdd3bcbef6a70c9b48"
+    },
+    {
+      "path": "tools/miniuw_worksheet_v1.py",
+      "bytes": 9327,
+      "sha256": "6728ceb5ecac94216f9b04b99eebac6b8a59d9c098533b5145b8e39ecf9963c4"
     },
     {
       "path": "tools/participant_cash_risk_miniuw_v1.py",

@@ -1160,3 +1160,9 @@ Con el préstamo de USD 150, el primer cierre aporta al equity USD 200 netos. Lo
 La página puede mostrar el precio bruto de venta y el precio mínimo al centavo para recuperar los aportes en valor presente. Requiere una tasa mensual expresa de la grilla sintética de D35. Usa las fechas y los flujos brutos de D45, incluidos el cobro o el aporte de refinanciación, y recalcula el cierre al precio exacto y a un dólar a ambos lados. Conserva los costos de venta y los demás flujos del caso.
 
 A tasa cero y al 2 % mensual, los dos casos calculables coinciden exactamente con los precios obtenidos al recalcular los cierres en D35. La prueba reproduce catorce páginas. Diez conservan vacíos el retorno y el precio por bloqueos de hoja o capacidad. En el caso con cobro al refinanciar, el mínimo al 2 % mensual es USD 201,69 para una venta bruta del escenario de USD 400. La decisión queda PENDING. [Control D46](tools/check_worksheet_refinance_recovery_D46.py).
+
+## D47 — Entrada, corrida y auditoría comunes para la hoja
+
+Una entrada JSON declara el perfil, el caso archivado, el hash del archivo de evidencia y la tasa mensual sintética. El mismo comando ejecuta el perfil T111/D44 sin refinanciación o D45/D46 con refinanciación. Cada ruta reproduce la fuente de la hoja y su evidencia financiera. La selección es expresa y un caso fuera de su perfil se rechaza. No se trasladan cifras entre perfiles.
+
+El paquete guarda la entrada exacta, el JSON de resultados con contrato común, el manifiesto y un PDF de una página. La auditoría reconstruye los cuatro archivos desde la entrada y las fuentes archivadas. Un reintento idéntico verifica lo existente y una salida distinta se rechaza. Los perfiles conservan sus disposiciones de PDF y mantienen PENDING la decisión y el retorno personal. [Comando común](tools/miniuw_worksheet_v1.py).

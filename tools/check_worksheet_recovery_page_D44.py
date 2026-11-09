@@ -28,9 +28,14 @@ def render(binding, rate):
     raw = local_file(ROOT, binding["path"]).read_text(encoding="utf-8")
     require(digest(raw) == binding["sha256"], "Worksheet source bytes differ")
     run = assemble_worksheet_settled_output(raw.encode())
+    pdf, evidence = render_run(raw, run, rate)
+    require((evidence["cash_recovery"] is not None) is binding["expected_cash_available"], "Worksheet gate differs")
+    return pdf, evidence
+
+
+def render_run(raw, run, rate):
     recovery = observe_run(raw, run, (rate,))
     cash = recovery["cash_recovery"]
-    require((cash is not None) is binding["expected_cash_available"], "Worksheet gate differs")
     if cash is None:
         line = "Recuperacion descontada: PENDIENTE por hoja o evidencia."
     else:
