@@ -99,5 +99,7 @@ jobs:
         run: python tools/check_discount_rate_crossover_D35.py --summary
       - name: Verify synthetic bank NOI capacity boundaries and discount comparison
         run: python tools/check_bank_noi_capacity_order_D36.py --summary
+      - name: Verify LTV boundaries and exact ties with synthetic DSCR capacity
+        run: python tools/check_ltv_capacity_order_D37.py --summary
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v

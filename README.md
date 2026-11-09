@@ -4,6 +4,7 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D37 prueba el límite LTV con NOI bancario fijo, el empate exacto con DSCR y el bloqueo por valoración desactualizada. Ejecuta `PYTHONDONTWRITEBYTECODE=1 python tools/check_ltv_capacity_order_D37.py`. [Verificador D37](tools/check_ltv_capacity_order_D37.py).
 - D36 verifica con tres niveles de NOI bancario sintético cuándo se pueden comparar los préstamos de USD 150 y USD 390. Ejecuta `PYTHONDONTWRITEBYTECODE=1 python tools/check_bank_noi_capacity_order_D36.py`. [Verificador D36](tools/check_bank_noi_capacity_order_D36.py).
 - D35 verifica el cruce de precios de recuperación entre las variantes de refinanciación a seis tasas mensuales sintéticas. Ejecuta `PYTHONDONTWRITEBYTECODE=1 python tools/check_discount_rate_crossover_D35.py`. [Verificador D35](tools/check_discount_rate_crossover_D35.py).
 - D34 prueba el precio bruto de venta que deja el valor presente de la caja en cero con descuento sintético del 1 % mensual. Ejecuta `PYTHONDONTWRITEBYTECODE=1 python tools/check_discounted_sale_recovery_D34.py`. [Verificador D34](tools/check_discounted_sale_recovery_D34.py).

@@ -1090,3 +1090,11 @@ La corrida conserva los flujos del proyecto y el NOI de valoración. Varía úni
 El NOI bancario exacto para igualar la capacidad al principal es aproximadamente USD 765,05 para USD 150 y USD 1.989,13 para USD 390. Se prueba un dólar por debajo, en la igualdad exacta y un dólar por encima. El caso inferior retira el retorno y el precio de recuperación. Los casos compatibles conservan los flujos de caja fechados. Cuando ambos préstamos son comparables, se reproduce el orden de D35 a tasas mensuales de 0,66 % y 0,67 % con costos de venta de USD 20.
 
 Los límites provienen del contrato sintético de capacidad. La aprobación bancaria, el retorno personal y la decisión quedan pendientes. [Verificador D36](tools/check_bank_noi_capacity_order_D36.py), [niveles sintéticos](templates/synthetic-bank-noi-capacity-order-D36.json).
+
+## D37 — Capacidad por LTV y empate con DSCR
+
+La corrida conserva el NOI bancario anual sintético de USD 2.000, las cuotas y los flujos de operación y venta. Varía el NOI de valoración entre USD 15, USD 30, USD 49 y USD 50 con los parámetros archivados de tasa de capitalización del 10 % y LTV máximo del 80 %. La capacidad es el menor límite entre LTV y DSCR. Resulta en USD 120, USD 240, USD 392 y aproximadamente USD 392,13, respectivamente. Cuando ambos préstamos caben, se conserva el orden de precios de D35 al 0,66 % y 0,67 % mensual.
+
+El NOI de valoración mínimo es USD 18,75 para el préstamo de USD 150 y USD 48,75 para el de USD 390. Los dos se prueban un dólar por debajo, en el punto exacto y un dólar por encima. Cerca de USD 49,01642 de NOI de valoración, los dos límites empatan exactamente. La corrida identifica ambos y verifica el cambio de límite a cada lado. Mantener una valoración de cierre desactualizada también bloquea el retorno aunque el principal quepa en la capacidad.
+
+La prueba actualiza la procedencia de la valoración y verifica que los importes de caja sean iguales. La aprobación bancaria y la decisión quedan PENDING. [Verificador D37](tools/check_ltv_capacity_order_D37.py), [niveles sintéticos](templates/synthetic-ltv-capacity-order-D37.json).

@@ -1,10 +1,10 @@
 {
-  "scope": "I01 preserved design, D02–D36 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D37 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 6112,
-      "sha256": "c262b3f778e972cc68dbaa1dc54dc71885542c9d9410b1747d1ba462700d0389"
+      "bytes": 6260,
+      "sha256": "13d46bb1969b576564c8b893380e7adf3f50d375782c9254c14a446c913a81a4"
     },
     {
       "path": ".gitignore",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 57642,
-      "sha256": "a6ae228d7b9251f8f555cf6bf84614b09125ad554b2ec4038994a7efb096fa89"
+      "bytes": 57904,
+      "sha256": "c269af9fd8551584c1fe81761cc5e99d7da87dca433fcd38c707cfe2cc01ca13"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 260224,
-      "sha256": "08c4c6fcf8ce9c3018508edeb17b116583e484d16682caad688b0436ba4fe12c"
+      "bytes": 261533,
+      "sha256": "8706a12157bf2a2a3a9d743ef7cf7c461afbc38cf76d6ba1ee7c348aa59e56ab"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -4937,6 +4937,11 @@
       "sha256": "7f3a5004226900954ab4b32ffb614d3c845f5047aaf5328ed614605fce4ac0ff"
     },
     {
+      "path": "templates/synthetic-ltv-capacity-order-D37.json",
+      "bytes": 509,
+      "sha256": "a310e990a51c1824c2d5811202e92d369789453412b996d122548a49afe66e8b"
+    },
+    {
       "path": "templates/synthetic-native-inputs-example.xlsx",
       "bytes": 8680,
       "sha256": "9213f5c8f9b7b656f0a3332ea90cb6734e1b112eb45a787617f4b0e7531b2aa0"
@@ -5915,6 +5920,11 @@
       "path": "tools/check_long_output_T99.py",
       "bytes": 6499,
       "sha256": "c625d27511050a74e8c3c0bbafb8fbe13ef6256e7f69ca4ca906ffaa6ae4c13b"
+    },
+    {
+      "path": "tools/check_ltv_capacity_order_D37.py",
+      "bytes": 12389,
+      "sha256": "2be528113e418aa87df357c0f769e76cd5d35745a6c0841999099af479072c05"
     },
     {
       "path": "tools/check_operating_replay_D20.py",
