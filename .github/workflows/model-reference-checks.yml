@@ -129,5 +129,7 @@ jobs:
         run: python tools/check_scenario_pilot_D51.py
       - name: Verify the complete Base and Downside pilot package and tamper rejection
         run: python tools/check_scenario_package_D52.py
+      - name: Verify the filled synthetic Cotejo against source-bound pilot evidence
+        run: python tools/check_cotejo_review_D53.py
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v

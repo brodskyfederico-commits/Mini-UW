@@ -4,6 +4,7 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D53 coteja una copia sintética completada de la planilla contra el expediente auditado. Ejecuta `PYTHONDONTWRITEBYTECODE=1 python tools/check_cotejo_review_D53.py --output /tmp/miniuw-cotejo` para generar el ejemplo y `python tools/check_cotejo_review_D53.py --review /tmp/miniuw-cotejo/MiniUW_Cotejo_Sintetico_D53.xlsx` para verificarlo. [Control D53](tools/check_cotejo_review_D53.py).
 - D52 agrupa la planilla, el ensayo y los expedientes Base y Downside. Usa `PYTHONDONTWRITEBYTECODE=1 python tools/miniuw_scenario_package_D52.py run /tmp/miniuw-expediente` y `python tools/miniuw_scenario_package_D52.py audit /tmp/miniuw-expediente`. [Control D52](tools/check_scenario_package_D52.py).
 - D51 agrega a la misma [planilla de cotejo](docs/review/MiniUW_Planilla_Cotejo_D51.xlsx) tres métricas en Base y Downside. Ejecuta `PYTHONDONTWRITEBYTECODE=1 python tools/check_scenario_pilot_D51.py --output /tmp/miniuw-base-downside` para reproducir los ocho ensayos y su evidencia. [Control D51](tools/check_scenario_pilot_D51.py).
 - D50 amplía la misma [planilla de cotejo](docs/review/MiniUW_Planilla_Cotejo_D50.xlsx) con tres variantes sintéticas de refinanciación. Ejecuta `PYTHONDONTWRITEBYTECODE=1 python tools/check_refinance_pilot_D50.py --output /tmp/miniuw-piloto-refi` para reproducir los expedientes y la planilla. [Control D50](tools/check_refinance_pilot_D50.py).

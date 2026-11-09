@@ -1200,3 +1200,9 @@ La nueva pestaña conserva el valor exacto, las condiciones por métrica, el est
 Agrupa once archivos en un paquete sintético. Incluye la planilla D51, el ensayo de PASS/FAIL, un manifiesto y dos expedientes D47, cada uno con su entrada, resultados, manifiesto y PDF de una página. Cada resultado financiero queda vinculado al hash usado por su escenario en el ensayo. La decisión operativa permanece PENDING.
 
 La auditoría reproduce todo el paquete desde las fuentes del repositorio. El reintento idéntico verifica lo existente. Las cuatro pruebas rechazan un resultado de ensayo alterado, una planilla modificada, un expediente Base puesto en Downside y un archivo adicional. Los tres cambios con manifiesto recalculado se rechazan al contrastarlos con las fuentes. [Comando de corrida y auditoría](tools/miniuw_scenario_package_D52.py), [control reproducible](tools/check_scenario_package_D52.py).
+
+## D53 — Cotejo de una planilla completada
+
+El ejemplo sintético completa seis filas de Cotejo para las tres métricas de Base y Downside. El lector verifica identidad, revisión, corte, unidades, valores exactos, condiciones y estados contra el expediente D52 reproducido desde fuentes. Reporta discrepancias por celda. Los valores de referencia pertenecen al ensayo y la decisión operativa se mantiene PENDING.
+
+Las diez pruebas cubren coincidencia, equivalencia entre fracción y decimal, dato ausente, cero retirado, valor distinto, regla distinta, estado distinto, revisión distinta, fórmula con caché en un campo de entrada y fórmula de presentación alterada. Las columnas I y P son de presentación y sus fórmulas no se usan como evidencia. La hoja sintética se genera como copia y el Excel de Cotejo del piloto real conserva su versión en blanco. [Control D53](tools/check_cotejo_review_D53.py).
