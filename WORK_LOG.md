@@ -1218,3 +1218,9 @@ La prueba ejecuta el comando con cuatro planillas y verifica cinco rechazos. Una
 El informe D54 identifica cada incidencia con la celda, el motivo, el tipo y valor recibido, el valor esperado y un puntero a la fuente del expediente. Para dos números válidos en conflicto devuelve la diferencia exacta. Un faltante o una fórmula se informa sin convertirlo en cero ni tomar el resultado guardado como valor.
 
 La prueba reúne cinco discrepancias. Incluye Cotejo!H14, que trae USD 81 frente a los USD 80 de la referencia independiente de Downside. La diferencia es USD 1. Se validan también la revisión distinta, una condición incompleta, el resultado de comparación distinto y una fórmula con caché. El cotejo y la decisión siguen PENDING. [Control D55](tools/check_cotejo_diagnostics_D55.py).
+
+## D56 — Corrección y recotejo contra el mismo expediente
+
+La prueba parte de las cinco incidencias sintéticas de D55. Corrige primero Cotejo!H14 de USD 81 a USD 80 en una copia y verifica que las otras cuatro incidencias mantienen PENDING el cotejo. Corrige después la revisión, el umbral ausente, el estado distinto y el valor presentado como fórmula. Las seis filas coinciden y el informe pasa a COINCIDE. Una repetición de la planilla corregida devuelve el mismo informe.
+
+Cada paso usa el comando D54 y verifica el mismo expediente Base y Downside desde las fuentes. La prueba coteja byte por byte sus once archivos y los hashes del manifiesto, del ensayo y de ambos resultados. Sólo cambian las celdas de prueba declaradas en las copias de la planilla. La decisión operativa queda PENDING desde el inicio hasta la repetición. [Control D56](tools/check_cotejo_corrections_D56.py).

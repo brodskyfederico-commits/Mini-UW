@@ -5,7 +5,7 @@ from io import BytesIO
 from pathlib import Path
 from tempfile import TemporaryDirectory
 from xml.etree import ElementTree as ET
-from zipfile import ZipFile
+from zipfile import ZipFile, ZipInfo
 import json
 import re
 import sys
@@ -188,14 +188,18 @@ def review(raw, package):
 
 
 def filled_workbook(package, changes=None):
-    parts = _parts(package[TOP_FILES[0]])
-    path, sheet, _ = cotejo_sheet(parts)
     metadata, rows, _ = reference_inputs(package)
     edits = {"A1": "ENSAYO SINTÉTICO D53 | Cotejo de Base y Downside",
              "A5": "Resultado simulado (Mini-UW)",
              "A6": "Las fracciones se guardan como texto exacto. El verificador compara valores, reglas y estados."} | metadata
     edits.update({f"{col}{i}": value for i, row in enumerate(rows, 9) for col, value in row.items()})
     edits.update(changes or {})
+    return replace_cotejo_cells(package[TOP_FILES[0]], edits)
+
+
+def replace_cotejo_cells(raw, edits):
+    parts = _parts(raw)
+    path, sheet, _ = cotejo_sheet(parts)
     cells = {entry.get("r"): entry for entry in sheet.findall(f"{NS}sheetData/{NS}row/{NS}c")}
     for address, value in edits.items():
         cell = cells[address]
@@ -215,7 +219,7 @@ def filled_workbook(package, changes=None):
     output = BytesIO()
     with ZipFile(output, "w") as workbook:
         for name, content in sorted(parts.items()):
-            workbook.writestr(name, content)
+            workbook.writestr(ZipInfo(name), content)
     return output.getvalue()
 
 

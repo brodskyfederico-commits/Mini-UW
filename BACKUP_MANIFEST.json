@@ -1,10 +1,10 @@
 {
-  "scope": "I01 preserved design, D02–D55 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D56 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 8736,
-      "sha256": "7225933700cb9af7e6a09b4eab75895838b642a4fef3ecf399355e3ec012ccd2"
+      "bytes": 8877,
+      "sha256": "5172dcff37df628ae1e69ce664f058e25ae97ea386a2d35f8f9c8247dd8519e5"
     },
     {
       "path": ".gitignore",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 63784,
-      "sha256": "c6fc90b27af1a19f3e5ba0a388107d9d72dd21a0d95766a1d1c9fe2791a7967b"
+      "bytes": 64070,
+      "sha256": "dd8c4dff0a654e2b2d62e71ee6f3fffe963f2004b1eb1a3e1adbb86ec082c467"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 281657,
-      "sha256": "316f20ceba14158d0ba798fbf1fb2f0fb6111a6310f47cdd54ee6b125b4fab0f"
+      "bytes": 282555,
+      "sha256": "d40d8d258b555c26ac50bcf98ec31a51da8f239529fff7876c2f760588f588c6"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -5927,14 +5927,19 @@
       "sha256": "03712ab2f3ea26d0547f2ccccc1ca72da27782abca559068408baa31895b652b"
     },
     {
+      "path": "tools/check_cotejo_corrections_D56.py",
+      "bytes": 5825,
+      "sha256": "1a4cab293540924a3f6afe8c24d65e2289d7282db444d659899d3068221f9335"
+    },
+    {
       "path": "tools/check_cotejo_diagnostics_D55.py",
       "bytes": 3363,
       "sha256": "26ee62957467200f658b9f8d81c72d56682ed32165b6fec77de3c07641d99b29"
     },
     {
       "path": "tools/check_cotejo_review_D53.py",
-      "bytes": 14993,
-      "sha256": "421696a9e88f946121387521bdb50f72be1728d11925cdf1fc59bbcf37e581af"
+      "bytes": 15095,
+      "sha256": "3dff2f9ab5455c47382178e6b85fc77016a4b989f2ff9f475033f20b07c6b4d2"
     },
     {
       "path": "tools/check_current_settled_T109.py",
