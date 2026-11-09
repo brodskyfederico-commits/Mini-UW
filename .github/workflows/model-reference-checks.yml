@@ -125,5 +125,7 @@ jobs:
         run: python tools/check_first_pilot_D49.py
       - name: Verify the refinance pilot in the common PASS FAIL workbook
         run: python tools/check_refinance_pilot_D50.py
+      - name: Verify the Base and Downside multi-metric pilot in the common workbook
+        run: python tools/check_scenario_pilot_D51.py
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v

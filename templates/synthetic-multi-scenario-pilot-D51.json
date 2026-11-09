@@ -1,0 +1,219 @@
+{
+  "schema": "miniuw.synthetic-multi-scenario-pilot.v1",
+  "refinance_fixture_sha256": "31e90cdc5c50ab69cd5c33605ba1a27bbf020aa0141fda7c17f80126e25daa47",
+  "scenarios": {
+    "Base": "cash-out",
+    "Downside": "cash-in"
+  },
+  "criteria": {
+    "equity_multiple": {
+      "pass_condition": {
+        "operator": ">=",
+        "threshold": {
+          "numerator": "1",
+          "denominator": "1"
+        }
+      },
+      "fail_condition": {
+        "operator": "<",
+        "threshold": {
+          "numerator": "1",
+          "denominator": "1"
+        }
+      }
+    },
+    "equity_recovered": {
+      "pass_condition": {
+        "operator": ">=",
+        "threshold": {
+          "numerator": "0",
+          "denominator": "1"
+        }
+      },
+      "fail_condition": {
+        "operator": "<",
+        "threshold": {
+          "numerator": "0",
+          "denominator": "1"
+        }
+      }
+    },
+    "equity_cash_in": {
+      "pass_condition": {
+        "operator": "<=",
+        "threshold": {
+          "numerator": "80",
+          "denominator": "1"
+        }
+      },
+      "fail_condition": {
+        "operator": ">",
+        "threshold": {
+          "numerator": "80",
+          "denominator": "1"
+        }
+      }
+    }
+  },
+  "probes": [
+    {
+      "id": "completo_pass",
+      "expected": "PASS",
+      "blockers": [],
+      "overrides": {},
+      "action": null
+    },
+    {
+      "id": "downside_fail",
+      "expected": "FAIL",
+      "blockers": [],
+      "overrides": {
+        "equity_multiple": {
+          "pass_condition": {
+            "operator": ">=",
+            "threshold": {
+              "numerator": "6",
+              "denominator": "5"
+            }
+          },
+          "fail_condition": {
+            "operator": "<",
+            "threshold": {
+              "numerator": "21",
+              "denominator": "20"
+            }
+          }
+        }
+      },
+      "action": null
+    },
+    {
+      "id": "falta_dato_con_fail",
+      "expected": "PENDING",
+      "blockers": [
+        "equity_cash_in:Downside:metric_value_missing"
+      ],
+      "overrides": {
+        "equity_multiple": {
+          "pass_condition": {
+            "operator": ">=",
+            "threshold": {
+              "numerator": "6",
+              "denominator": "5"
+            }
+          },
+          "fail_condition": {
+            "operator": "<",
+            "threshold": {
+              "numerator": "21",
+              "denominator": "20"
+            }
+          }
+        }
+      },
+      "action": "missing_value"
+    },
+    {
+      "id": "falta_regla_con_fail",
+      "expected": "PENDING",
+      "blockers": [
+        "equity_cash_in:Downside:fail_condition_rule_missing_or_unsupported"
+      ],
+      "overrides": {
+        "equity_multiple": {
+          "pass_condition": {
+            "operator": ">=",
+            "threshold": {
+              "numerator": "6",
+              "denominator": "5"
+            }
+          },
+          "fail_condition": {
+            "operator": "<",
+            "threshold": {
+              "numerator": "21",
+              "denominator": "20"
+            }
+          }
+        }
+      },
+      "action": "missing_rule"
+    },
+    {
+      "id": "falta_downside",
+      "expected": "PENDING",
+      "blockers": [
+        "equity_multiple:Downside:criterion_record_missing",
+        "equity_multiple:Downside:metric_record_missing",
+        "equity_recovered:Downside:criterion_record_missing",
+        "equity_recovered:Downside:metric_record_missing",
+        "equity_cash_in:Downside:criterion_record_missing",
+        "equity_cash_in:Downside:metric_record_missing"
+      ],
+      "overrides": {},
+      "action": "missing_scenario"
+    },
+    {
+      "id": "banda_downside",
+      "expected": "PENDING",
+      "blockers": [
+        "intermediate_band_pending_professional_review"
+      ],
+      "overrides": {
+        "equity_multiple": {
+          "pass_condition": {
+            "operator": ">=",
+            "threshold": {
+              "numerator": "6",
+              "denominator": "5"
+            }
+          },
+          "fail_condition": {
+            "operator": "<",
+            "threshold": {
+              "numerator": "1",
+              "denominator": "1"
+            }
+          }
+        }
+      },
+      "action": null
+    },
+    {
+      "id": "reglas_solapadas",
+      "expected": "PENDING",
+      "blockers": [
+        "equity_cash_in:Base:pass_fail_regions_overlap",
+        "equity_cash_in:Downside:pass_fail_regions_overlap"
+      ],
+      "overrides": {
+        "equity_cash_in": {
+          "pass_condition": {
+            "operator": "<=",
+            "threshold": {
+              "numerator": "80",
+              "denominator": "1"
+            }
+          },
+          "fail_condition": {
+            "operator": ">=",
+            "threshold": {
+              "numerator": "80",
+              "denominator": "1"
+            }
+          }
+        }
+      },
+      "action": null
+    },
+    {
+      "id": "unidad_incompatible",
+      "expected": "PENDING",
+      "blockers": [
+        "equity_cash_in:Downside:unit_missing_or_mismatch"
+      ],
+      "overrides": {},
+      "action": "unit_mismatch"
+    }
+  ]
+}

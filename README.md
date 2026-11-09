@@ -4,6 +4,7 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D51 agrega a la misma [planilla de cotejo](docs/review/MiniUW_Planilla_Cotejo_D51.xlsx) tres métricas en Base y Downside. Ejecuta `PYTHONDONTWRITEBYTECODE=1 python tools/check_scenario_pilot_D51.py --output /tmp/miniuw-base-downside` para reproducir los ocho ensayos y su evidencia. [Control D51](tools/check_scenario_pilot_D51.py).
 - D50 amplía la misma [planilla de cotejo](docs/review/MiniUW_Planilla_Cotejo_D50.xlsx) con tres variantes sintéticas de refinanciación. Ejecuta `PYTHONDONTWRITEBYTECODE=1 python tools/check_refinance_pilot_D50.py --output /tmp/miniuw-piloto-refi` para reproducir los expedientes y la planilla. [Control D50](tools/check_refinance_pilot_D50.py).
 - D49 deja listo el primer piloto sintético y su [planilla de cotejo](docs/review/MiniUW_Planilla_Cotejo_D49.xlsx). Ejecuta `PYTHONDONTWRITEBYTECODE=1 python tools/check_first_pilot_D49.py --output /tmp/miniuw-primer-piloto` para obtener el expediente auditado y el ensayo de PASS/FAIL. [Control D49](tools/check_first_pilot_D49.py).
 - D48 valida de punta a punta las dos rutas del comando común en once expedientes sintéticos. Ejecuta `PYTHONDONTWRITEBYTECODE=1 python tools/check_unified_worksheet_D48.py`. [Control D48](tools/check_unified_worksheet_D48.py).

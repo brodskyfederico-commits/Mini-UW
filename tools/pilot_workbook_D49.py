@@ -99,11 +99,35 @@ def refinance_flows(references):
     return sheet(rows, [24, 17, 17, 33, 19, 24])
 
 
-def workbook_bytes(evidence, refinance=None):
+def scenario_comparisons(evidence):
+    rows = [["Ensayo", "Escenario", "Métrica", "Valor exacto", "Unidad declarada", "Regla PASS", "Regla FAIL",
+             "Estado de la métrica", "Bloqueo", "Global simulado", "Esperado", "Operativo"]]
+    labels = {"equity_multiple": "Múltiplo de equity", "equity_recovered": "Equity recuperado",
+              "equity_cash_in": "Equity cash-in"}
+    for probe in evidence["probes"]:
+        for row in probe["comparisons"]:
+            value = row["metric_record"]
+            criteria = row["criterion_record"]
+            exact = "Pendiente" if value is None or value["value"] is None else str(Fraction(
+                int(value["value"]["numerator"]), int(value["value"]["denominator"])))
+            rows.append([probe["id"], row["scenario_id"], labels[row["metric_id"]], exact,
+                         value["unit"] if value is not None else None,
+                         condition(criteria["pass_condition"]) if criteria is not None else "Sin regla",
+                         condition(criteria["fail_condition"]) if criteria is not None else "Sin regla",
+                         row["state"], "; ".join(row["blockers"]) or (
+                             "Banda pendiente de revisión" if row["state"] == "BAND" else ""),
+                         probe["simulation"], probe["expected"], probe["decision"]])
+    return sheet(rows, [27, 14, 23, 23, 16, 15, 15, 24, 77, 17, 14, 14], filter_table=True)
+
+
+def workbook_bytes(evidence, refinance=None, scenarios=None):
     directions = DIRECTIONS
     if refinance is not None:
         directions = ("D50 | Planilla común de cotejo del piloto Mini-UW", *DIRECTIONS[1:],
                       "09. Flujos refi separa el cobro al refinanciar del aporte adicional y conserva los importes exactos.")
+    if scenarios is not None:
+        directions = ("D51 | Planilla común de cotejo del piloto Mini-UW", *directions[1:],
+                      "10. Base y Downside muestra tres métricas por escenario y ocho ensayos. Las reglas son sólo de prueba.")
     guide = sheet([[line] for line in directions], [132])
     independent = evidence["independent_reference"]
     events = independent["events"]
@@ -161,6 +185,8 @@ def workbook_bytes(evidence, refinance=None):
     sheets = [("Guia", guide), ("Cotejo", compare_sheet), ("Ensayo", rehearsal), ("Flujos", flow_sheet)]
     if refinance is not None:
         sheets.append(("Flujos refi", refinance_flows(refinance["independent_references"])))
+    if scenarios is not None:
+        sheets.append(("Base y Downside", scenario_comparisons(scenarios)))
     overrides = {"xl/workbook.xml": "sheet.main", "xl/styles.xml": "styles"} | {
         f"xl/worksheets/sheet{i}.xml": "worksheet" for i in range(1, len(sheets) + 1)
     }

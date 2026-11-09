@@ -1,10 +1,10 @@
 {
-  "scope": "I01 preserved design, D02–D50 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D51 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 8033,
-      "sha256": "336417308fe39ce2d88cb13671c29e333778b3eb9e5ada8a5dd73ada65d385a2"
+      "bytes": 8172,
+      "sha256": "ba3990260a05c243caec1223c5125363f85d4ed2dd6b4f517079cc523ec330ba"
     },
     {
       "path": ".gitignore",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 62220,
-      "sha256": "b42150c86d3376529544edba0356d0ae876bf95f854d76f1558306cd267febbf"
+      "bytes": 62556,
+      "sha256": "7d194785b139bc945e06b840af7a54fddcb05396f0fed6d81ebb4bf734a2a633"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 276586,
-      "sha256": "de9e87c82cc700fc7894ef13d80980e609a8bc7ed61d5fb87436c80254fb096c"
+      "bytes": 278108,
+      "sha256": "783fc4c31eb553ea5e90d142a97b93f83424b474b31f1dfcadeb2f4e9c9a0807"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -955,6 +955,11 @@
       "path": "docs/review/MiniUW_Planilla_Cotejo_D50.xlsx",
       "bytes": 38173,
       "sha256": "a005583cea467a3011b140dc9423d6e18615bd1160c7a0566dd6411bda5a77a7"
+    },
+    {
+      "path": "docs/review/MiniUW_Planilla_Cotejo_D51.xlsx",
+      "bytes": 89134,
+      "sha256": "8f1432a63428cf41dbeea571c5fc3d9d0f9ba31befed051096042d453c8710d1"
     },
     {
       "path": "docs/review/MiniUW_Revision_Interna_Retorno_T56.md",
@@ -4982,6 +4987,11 @@
       "sha256": "a310e990a51c1824c2d5811202e92d369789453412b996d122548a49afe66e8b"
     },
     {
+      "path": "templates/synthetic-multi-scenario-pilot-D51.json",
+      "bytes": 5205,
+      "sha256": "5d6192b6df9e2cef6582c5e27f66cf67b3ebf71be7fd0c582a66daa2b48c191e"
+    },
+    {
       "path": "templates/synthetic-native-inputs-example.xlsx",
       "bytes": 8680,
       "sha256": "9213f5c8f9b7b656f0a3332ea90cb6734e1b112eb45a787617f4b0e7531b2aa0"
@@ -6087,6 +6097,11 @@
       "sha256": "3ceb9a02393e75e8dda0f516ae89e274a0a21382b1661d2bfda0486e179fbada"
     },
     {
+      "path": "tools/check_scenario_pilot_D51.py",
+      "bytes": 8941,
+      "sha256": "7168bc68df3668cab8b50abbc2779de35d89bcfc6e29d1e259d1798507aa33e9"
+    },
+    {
       "path": "tools/check_settled_lifecycle_T108.py",
       "bytes": 11352,
       "sha256": "acc98d25cdf327c8442a1cf98861979c5fd7e4bf0c67d83c77c1e229db2fd2d9"
@@ -6458,8 +6473,8 @@
     },
     {
       "path": "tools/pilot_workbook_D49.py",
-      "bytes": 12985,
-      "sha256": "37043ad8db13c5970e9450a12a4708e9692fd1b92ff3c4caf8dd4e00ee0e0642"
+      "bytes": 14814,
+      "sha256": "f64321df776f640231322e01d84c291bc47a1d514bd89a09b4a5e02218c8a6c0"
     },
     {
       "path": "tools/renewal_miniuw_v1.py",
