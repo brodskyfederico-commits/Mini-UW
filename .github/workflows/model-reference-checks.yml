@@ -103,5 +103,7 @@ jobs:
         run: python tools/check_ltv_capacity_order_D37.py --summary
       - name: Verify joint synthetic bank and valuation NOI capacity
         run: python tools/check_joint_noi_capacity_D38.py --summary
+      - name: Verify participant returns and blocked cases across the joint NOI matrix
+        run: python tools/check_joint_noi_investor_returns_D39.py --summary
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v

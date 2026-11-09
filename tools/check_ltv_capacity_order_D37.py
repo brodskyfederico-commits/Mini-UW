@@ -25,7 +25,7 @@ SCHEMA = "miniuw.synthetic-ltv-capacity-order.v1"
 VALUATION_BLOCKER = "closing_valuation_claim_differs_from_computed_noi_cap_value"
 
 
-def observe(base, valuation_noi, source, *, stale_valuation=False, bank_noi=None):
+def replay_valuation(base, valuation_noi, source, *, stale_valuation=False, bank_noi=None):
     original = base.capacity_run.payload
     valuation = json.loads(base.capacity_inputs.valuation_noi_raw)
     income = indexed(valuation["income_rows"], "item_id")["SYNTHETIC-income-residential"]
@@ -113,10 +113,16 @@ def observe(base, valuation_noi, source, *, stale_valuation=False, bank_noi=None
                 require(refinance.closing_run.sha256 in event["source_ref"], "Refinance event retains stale provenance")
             else:
                 require(event["source_ref"] == old["source_ref"], "Unrelated event provenance changed")
-    return dict(valuation_noi=str(valuation_noi), property_value=str(value), principal=str(principal),
-                capacity=str(maximum), dscr_capacity=str(dscr_cap), ltv_capacity=str(ltv_cap),
-                binding_limits=binding_limits, blockers=blockers,
-                state="PENDING" if blockers else "compatible_synthetic_capacity")
+    observation = dict(valuation_noi=str(valuation_noi), property_value=str(value), principal=str(principal),
+                       capacity=str(maximum), dscr_capacity=str(dscr_cap), ltv_capacity=str(ltv_cap),
+                       binding_limits=binding_limits, blockers=blockers,
+                       state="PENDING" if blockers else "compatible_synthetic_capacity")
+    return observation, guarded
+
+
+def observe(base, valuation_noi, source, *, stale_valuation=False, bank_noi=None):
+    result, _ = replay_valuation(base, valuation_noi, source, stale_valuation=stale_valuation, bank_noi=bank_noi)
+    return result
 
 
 def run():

@@ -4,6 +4,7 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D39 conecta las celdas de D38 con el retorno por participante y enumera los préstamos pendientes por DSCR, LTV o ambos. Ejecuta `PYTHONDONTWRITEBYTECODE=1 python tools/check_joint_noi_investor_returns_D39.py`. [Verificador D39](tools/check_joint_noi_investor_returns_D39.py).
 - D38 cruza el NOI bancario y el NOI de valoración en doce combinaciones sintéticas. Ejecuta `PYTHONDONTWRITEBYTECODE=1 python tools/check_joint_noi_capacity_D38.py` para ver ambos límites, la capacidad y los préstamos bloqueados. [Verificador D38](tools/check_joint_noi_capacity_D38.py).
 - D37 prueba el límite LTV con NOI bancario fijo, el empate exacto con DSCR y el bloqueo por valoración desactualizada. Ejecuta `PYTHONDONTWRITEBYTECODE=1 python tools/check_ltv_capacity_order_D37.py`. [Verificador D37](tools/check_ltv_capacity_order_D37.py).
 - D36 verifica con tres niveles de NOI bancario sintético cuándo se pueden comparar los préstamos de USD 150 y USD 390. Ejecuta `PYTHONDONTWRITEBYTECODE=1 python tools/check_bank_noi_capacity_order_D36.py`. [Verificador D36](tools/check_bank_noi_capacity_order_D36.py).

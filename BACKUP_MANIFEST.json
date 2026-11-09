@@ -1,10 +1,10 @@
 {
-  "scope": "I01 preserved design, D02–D38 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D39 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 6397,
-      "sha256": "9e4cae9007d32ae9468bc7df43b09e3eb18040eef35b49287c936f409731a9c2"
+      "bytes": 6560,
+      "sha256": "ecedb8c718d069a64a37b25a72d69d1f6d771e7f4451f544d7871f806ec73d25"
     },
     {
       "path": ".gitignore",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 58197,
-      "sha256": "41a1e39e078dece15905558433631a35ee8f826fd5f6b7feed3b5909b83d3b9c"
+      "bytes": 58476,
+      "sha256": "811e6a89f70ce875ce3101c5c4b90cbb2a0ba222f4f7fdbfb4d6195abdd22ce4"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 262752,
-      "sha256": "38cb56c0944534a9249d192cd195da5c2245e5213c7ecb3464ef72cb11c826a8"
+      "bytes": 263866,
+      "sha256": "460ce5d2f70e8df1727cfe1f4a148b9d24b9edeb43120f0fbf18b9f704ecf99b"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -4922,6 +4922,11 @@
       "sha256": "901eaa5cd209118fa5865385084c66dea71ab8c4f943c8cada703d32d45cd58f"
     },
     {
+      "path": "templates/synthetic-joint-noi-investor-returns-D39.json",
+      "bytes": 1118,
+      "sha256": "c1ba3b4b7d5dc964a8d1d74b42090c9812016640e47355b92939cdd2d8bfad28"
+    },
+    {
       "path": "templates/synthetic-lifecycle-bundle-example.json",
       "bytes": 127637,
       "sha256": "54263a02d8761551a3a8c5e574ad3494e98244ec1bb935611068a9576d57b304"
@@ -5923,8 +5928,13 @@
     },
     {
       "path": "tools/check_joint_noi_capacity_D38.py",
-      "bytes": 5604,
-      "sha256": "3be767c6f98fafcae6c0a10d4b63c3e31fffbfedd8cd0f8eee5a2635d1e7ae1e"
+      "bytes": 6001,
+      "sha256": "2f9309c304f20d6368ae56c2b183eb8d24c97fccfde99e9802cad8d6ec58cff3"
+    },
+    {
+      "path": "tools/check_joint_noi_investor_returns_D39.py",
+      "bytes": 5546,
+      "sha256": "70675af69ca2bef93c07ab73ae64ac8e388e0b0c301565c66f069f49de7f223c"
     },
     {
       "path": "tools/check_long_output_T99.py",
@@ -5933,8 +5943,8 @@
     },
     {
       "path": "tools/check_ltv_capacity_order_D37.py",
-      "bytes": 12908,
-      "sha256": "6481f9f178834070df0df628f721c18ede866c767445c7ad4560daf24c6c09d9"
+      "bytes": 13194,
+      "sha256": "04b71974fa5d4bb7699e9554329748d8f6235064d5283c548673589bd56e28c7"
     },
     {
       "path": "tools/check_operating_replay_D20.py",
