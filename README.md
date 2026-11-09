@@ -4,6 +4,7 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D42 muestra el precio bruto mínimo de venta para recuperar el aporte en valor presente y la distancia frente al precio del escenario, con los bloqueos de capacidad de D41. Ejecuta `PYTHONDONTWRITEBYTECODE=1 python tools/check_joint_noi_recovery_prices_D42.py`. [Verificador D42](tools/check_joint_noi_recovery_prices_D42.py).
 - D41 calcula la recuperación en valor presente por participante para las seis tasas mensuales de D35 y los cierres de D40. Ejecuta `PYTHONDONTWRITEBYTECODE=1 python tools/check_joint_noi_discounted_returns_D41.py`. [Verificador D41](tools/check_joint_noi_discounted_returns_D41.py).
 - D40 cruza los 24 casos de D39 con cuatro cierres de venta y distingue cobros, caja recuperada y déficit por participante. Ejecuta `PYTHONDONTWRITEBYTECODE=1 python tools/check_joint_noi_sale_returns_D40.py`. [Verificador D40](tools/check_joint_noi_sale_returns_D40.py).
 - D39 conecta las celdas de D38 con el retorno por participante y enumera los préstamos pendientes por DSCR, LTV o ambos. Ejecuta `PYTHONDONTWRITEBYTECODE=1 python tools/check_joint_noi_investor_returns_D39.py`. [Verificador D39](tools/check_joint_noi_investor_returns_D39.py).

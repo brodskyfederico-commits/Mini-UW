@@ -109,5 +109,7 @@ jobs:
         run: python tools/check_joint_noi_sale_returns_D40.py --summary
       - name: Verify dated discounted recovery across the joint NOI and sale matrix
         run: python tools/check_joint_noi_discounted_returns_D41.py --summary
+      - name: Verify discounted sale recovery prices and capacity blocks
+        run: python tools/check_joint_noi_recovery_prices_D42.py --summary
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v

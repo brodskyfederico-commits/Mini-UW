@@ -1,10 +1,10 @@
 {
-  "scope": "I01 preserved design, D02–D41 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D42 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 6881,
-      "sha256": "a3276a2aad05421dd617e76ee7a77ba38ac901607c4565a6aec7b1adca656d4b"
+      "bytes": 7029,
+      "sha256": "83cb73195d03eb4a2ebd40a25581440d54a1bc0af8bd2718cc42bb6e1a6852bf"
     },
     {
       "path": ".gitignore",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 59034,
-      "sha256": "c0488826cb87674acfdc0aca53bc02eadbcc9d680148d38b2c2afaa9576d92f8"
+      "bytes": 59363,
+      "sha256": "0b6562ac577079ee615dae27802bacaf099ed96af6072ef1e975e2cf3dba6126"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 266484,
-      "sha256": "ad35ecbf5fc589f44c361dbd05860eb5ab59603b305195ab94203bcedda8f993"
+      "bytes": 267762,
+      "sha256": "b6c25deca0f24f51e3d941d5b896d44a56fa99645476c9961bdeec65dbf65ddf"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -845,6 +845,21 @@
       "path": "docs/residential-noi-chain-validation.json",
       "bytes": 2141,
       "sha256": "18f29ce5be51e646612740f615bd10a3725783b6b45b8e0d0b2b72bec82a153b"
+    },
+    {
+      "path": "docs/review-lifecycle-acceptance-cases.json",
+      "bytes": 8050,
+      "sha256": "ede583b02cc2a71967eea2fd1295efeff9d3c265e0495d6ef08c0b60ea514cb9"
+    },
+    {
+      "path": "docs/review-lifecycle-design.json",
+      "bytes": 9224,
+      "sha256": "0cde061ffd60302a87bc87db39d6e85ae6b3249610057f692765f8381525a41a"
+    },
+    {
+      "path": "docs/review-lifecycle-design.md",
+      "bytes": 10875,
+      "sha256": "9d89b538de4c8f15fa7a61a4db87d9196b5691c68d5233ed7c5951cd2a2efa04"
     },
     {
       "path": "docs/review/Compra_Tenencia_Venta_Sin_Refi_T63_T67.md",
@@ -2240,21 +2255,6 @@
       "path": "docs/review/worksheet-settled-validation-T111.json",
       "bytes": 7175,
       "sha256": "3ac772534a3ee7769c96ea4af1ef9bb5f92e4d6f5996fadb767eae8617c40ded"
-    },
-    {
-      "path": "docs/review-lifecycle-acceptance-cases.json",
-      "bytes": 8050,
-      "sha256": "ede583b02cc2a71967eea2fd1295efeff9d3c265e0495d6ef08c0b60ea514cb9"
-    },
-    {
-      "path": "docs/review-lifecycle-design.json",
-      "bytes": 9224,
-      "sha256": "0cde061ffd60302a87bc87db39d6e85ae6b3249610057f692765f8381525a41a"
-    },
-    {
-      "path": "docs/review-lifecycle-design.md",
-      "bytes": 10875,
-      "sha256": "9d89b538de4c8f15fa7a61a4db87d9196b5691c68d5233ed7c5951cd2a2efa04"
     },
     {
       "path": "docs/revision-scenario-integrity.md",
@@ -4932,6 +4932,11 @@
       "sha256": "c1ba3b4b7d5dc964a8d1d74b42090c9812016640e47355b92939cdd2d8bfad28"
     },
     {
+      "path": "templates/synthetic-joint-noi-recovery-prices-D42.json",
+      "bytes": 251,
+      "sha256": "3df791cad3d2b8e949010b3f01e403cacd2dbb467be0592052b55166ffc62875"
+    },
+    {
       "path": "templates/synthetic-joint-noi-sale-returns-D40.json",
       "bytes": 4385,
       "sha256": "64245c7d43806aeeb3e879db54471c538ef11d3e7e4220261337d29fe4932079"
@@ -5950,6 +5955,11 @@
       "path": "tools/check_joint_noi_investor_returns_D39.py",
       "bytes": 5593,
       "sha256": "d49508c20413797b2177575f8c12d2c99fc4f1946702efe2f8915c3be0e73343"
+    },
+    {
+      "path": "tools/check_joint_noi_recovery_prices_D42.py",
+      "bytes": 6025,
+      "sha256": "67b875542ee40b745184d1748656e8bf273df34a5e729d2ac4079c864407592a"
     },
     {
       "path": "tools/check_joint_noi_sale_returns_D40.py",
