@@ -1,10 +1,10 @@
 {
-  "scope": "I01 preserved design, D02–D34 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D35 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 5799,
-      "sha256": "b91f4511c6f0205f2080357086a743cc194fbe4096f589d5b263b7d1d4a86116"
+      "bytes": 5955,
+      "sha256": "47dca9f0c64138b65c4c42db701744103fc9d28e0d3f15d152cad6a8d248076a"
     },
     {
       "path": ".gitignore",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 57092,
-      "sha256": "8c8a6ff319c8a26009b064c463d88014ae87f5701a628aaa6561e6e720e74ba0"
+      "bytes": 57369,
+      "sha256": "7b0525f04a9cf0ca56c7ed5ec58d231299f8991ab1235fc305101dda433140df"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 257412,
-      "sha256": "602fc338e6ed8237b2e867e32e1bf51ca74201ab96520796a2a79d97359a2277"
+      "bytes": 259010,
+      "sha256": "89e2fb7733fa1a1bd7a951fc60241423d8a6c7b7185e3a87da1498b5f04d6b1d"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -4742,6 +4742,11 @@
       "sha256": "78a1443d4c718a6f2b01b2dda962e4d0ece2829d2bac6c1d7a100125beff4429"
     },
     {
+      "path": "templates/synthetic-discount-rate-crossover-D35.json",
+      "bytes": 5483,
+      "sha256": "7e545e434809fd1828ea088dc8d7d252a23202219afe1a86cfcb2ac2b9987d49"
+    },
+    {
       "path": "templates/synthetic-discounted-sale-recovery-D34.json",
       "bytes": 2735,
       "sha256": "ee995791df425ce245c9d13903f21dc8119711646295eb6db18519584b6c50ef"
@@ -5855,6 +5860,11 @@
       "path": "tools/check_dependency_structure_D05.py",
       "bytes": 21887,
       "sha256": "b7d7abf6e6cc6ea14651069118102c357ddf939f97a802182de115cacb6fb8f9"
+    },
+    {
+      "path": "tools/check_discount_rate_crossover_D35.py",
+      "bytes": 8638,
+      "sha256": "564a2f5d34eef7bf4c82d4551e8344e3acf24c1f816bb6fc93b0b4d70f6f1689"
     },
     {
       "path": "tools/check_discounted_sale_recovery_D34.py",

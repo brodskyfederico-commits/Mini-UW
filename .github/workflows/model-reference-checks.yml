@@ -95,5 +95,7 @@ jobs:
         run: python tools/check_sale_cash_recovery_D33.py --summary
       - name: Verify discounted cash recovery prices on the synthetic sale calendar
         run: python tools/check_discounted_sale_recovery_D34.py --summary
+      - name: Verify the refinance price crossover across synthetic discount rates
+        run: python tools/check_discount_rate_crossover_D35.py --summary
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v

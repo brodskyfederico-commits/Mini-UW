@@ -1,0 +1,71 @@
+{
+  "schema": "miniuw.synthetic-discount-rate-crossover.v1",
+  "nominal_bindings_sha256": "c076bbe1199ae5cfa4f1b64d08c039be86a52aecea005c6ce216d95fce974a90",
+  "discounted_bindings_sha256": "ee995791df425ce245c9d13903f21dc8119711646295eb6db18519584b6c50ef",
+  "allocation_terms_sha256": "602df8e8421094af668ff7621feca267f8e93bd9776d629ab40bfa6f759cf55d",
+  "discount_rate_basis_ref": "SYNTHETIC-D35-monthly-rate-grid-no-investment-criterion",
+  "monthly_rates": [
+    {
+      "numerator": "0",
+      "denominator": "1"
+    },
+    {
+      "numerator": "1",
+      "denominator": "200"
+    },
+    {
+      "numerator": "33",
+      "denominator": "5000"
+    },
+    {
+      "numerator": "67",
+      "denominator": "10000"
+    },
+    {
+      "numerator": "1",
+      "denominator": "100"
+    },
+    {
+      "numerator": "1",
+      "denominator": "50"
+    }
+  ],
+  "sample_ledgers": {
+    "SYNTHETIC-D31-lower/SYNTHETIC-sale-0/0": "b526e800e469001ff05cc7c5cb60ea2a333194c704b1050e98aeaeb06cacecaf",
+    "SYNTHETIC-D31-lower/SYNTHETIC-sale-0/1/200": "23f6c9ea9446b929094c915713c00532bc34ecd08d47c7d6a805a894ea2b6276",
+    "SYNTHETIC-D31-lower/SYNTHETIC-sale-0/33/5000": "86c359e93f137f7c3377bac0068a00ce288d8ad00e2cee5c271397f0982cc663",
+    "SYNTHETIC-D31-lower/SYNTHETIC-sale-0/67/10000": "7464ff9c3777e8f34fb3d582966caf50105858c73941b41d64ff3a0eb6c066ba",
+    "SYNTHETIC-D31-lower/SYNTHETIC-sale-0/1/100": "ab352b3011ccb06b71396ecaa9a0faf7dfff0bbda82e2e919ef80cd421748a8b",
+    "SYNTHETIC-D31-lower/SYNTHETIC-sale-0/1/50": "1bac822a790e94d50a1a5e86dde81401af006dcdf06d10224fc260c1f81ac006",
+    "SYNTHETIC-D31-lower/SYNTHETIC-sale-funding-required/0": "17191f037b71e94eeed9d4bfe0808eb2ae26a448e7ad8502d7a198620b45cd69",
+    "SYNTHETIC-D31-lower/SYNTHETIC-sale-funding-required/1/200": "ba3649c733f8fc1eb9f8edb33ef8877f2934375bc88bfd87d891240f88f4230a",
+    "SYNTHETIC-D31-lower/SYNTHETIC-sale-funding-required/33/5000": "2b239a08ee6b9bfd2ff775603df9217a3c2714106419c5dfd5d58a49954f3c57",
+    "SYNTHETIC-D31-lower/SYNTHETIC-sale-funding-required/67/10000": "a7e228a4b003daa989f0a62f73595128a299fa62f7cb62a6cca7bf9ed2145f07",
+    "SYNTHETIC-D31-lower/SYNTHETIC-sale-funding-required/1/100": "388542d7ab116ef6dc92b64d27c6e1fd5113c194cfb22843152a29179173cf15",
+    "SYNTHETIC-D31-lower/SYNTHETIC-sale-funding-required/1/50": "3e5df5e2ac2e2638b79a95b6b568897ca1c0fbd1a3835bb91f317335b8d9aa80",
+    "SYNTHETIC-D31-near-limit/SYNTHETIC-sale-0/0": "ca5c9a02843827b45179de88460aa09a5fc418b8cd0d475f4d67021b9d10d07c",
+    "SYNTHETIC-D31-near-limit/SYNTHETIC-sale-0/1/200": "45a0a587515c4437dc675b37c7cc6e41d5a84974fe7014f079b05c0b1a197096",
+    "SYNTHETIC-D31-near-limit/SYNTHETIC-sale-0/33/5000": "78ab5888a6ecd08d5f296b2f96ea1599ddc4503061a7f2fd3b383d0cfeb558d7",
+    "SYNTHETIC-D31-near-limit/SYNTHETIC-sale-0/67/10000": "b6afe1e3c0c32be95b477a509226f88b0c4fa2b376bcdce96a1a933ebfc76bd1",
+    "SYNTHETIC-D31-near-limit/SYNTHETIC-sale-0/1/100": "5f1be481ed481a9c1698e796990d3eefdf322bea9e2aeacdd50dbbb532415f41",
+    "SYNTHETIC-D31-near-limit/SYNTHETIC-sale-0/1/50": "a090f7d1ebf5e7e6bee7d9b86dadbbbab78ab7627b199d678fc298b69305ecef",
+    "SYNTHETIC-D31-near-limit/SYNTHETIC-sale-funding-required/0": "d58fe911b3c4006743749f373bdec09327fe065c9e9a0a5f12df18603c8501b6",
+    "SYNTHETIC-D31-near-limit/SYNTHETIC-sale-funding-required/1/200": "4d5a8e3836b6c5ff0c81ef79fe77fd1176393c36dcab972eb0c6d53cdd6b3171",
+    "SYNTHETIC-D31-near-limit/SYNTHETIC-sale-funding-required/33/5000": "41624f1df00e19b0e6138b0ce89545e93e6b07df7c99ae2d898e95b6cf99b906",
+    "SYNTHETIC-D31-near-limit/SYNTHETIC-sale-funding-required/67/10000": "39bbe866b4d09f2d704516e9163a8bb3d21e7a77e7200276e82f03d7aa839afe",
+    "SYNTHETIC-D31-near-limit/SYNTHETIC-sale-funding-required/1/100": "3ac3c461a82dcd469737369c193771720469fdac9f29e986a89ed2fcd28bd277",
+    "SYNTHETIC-D31-near-limit/SYNTHETIC-sale-funding-required/1/50": "f809de2467c2a083f815f5c15ff9698f296355ee11b820c3b835558679fda512",
+    "SYNTHETIC-D31-cash-in/SYNTHETIC-sale-0/0": "7271f07cfce4be2ca0306bac11b9138c5da2fe63161ba474403eb2ebcf754bbb",
+    "SYNTHETIC-D31-cash-in/SYNTHETIC-sale-0/1/200": "fc4b3bfbe2f6dc5f760bce19be4f3564db802ce50e525face1f15b3b3a63d1e5",
+    "SYNTHETIC-D31-cash-in/SYNTHETIC-sale-0/33/5000": "5735782d40a7556ba88a05cf714a1f39bfe47ad4ade9bea81aa468db86ccd5a4",
+    "SYNTHETIC-D31-cash-in/SYNTHETIC-sale-0/67/10000": "e75695d096b7220d4fea00324c03d4dc9dd740b0a7ed2a6aa0a45014a8c6575d",
+    "SYNTHETIC-D31-cash-in/SYNTHETIC-sale-0/1/100": "fed3871f61f2b109f98755dd0ba34cdce62e6ae6f962a2b3f4764d8156364b13",
+    "SYNTHETIC-D31-cash-in/SYNTHETIC-sale-0/1/50": "78a2e427436a71437c285ae1c126f1f5b21d0fd80b879db5019eda10b17ee641",
+    "SYNTHETIC-D31-cash-in/SYNTHETIC-sale-funding-required/0": "d39f7f90eb379e756fc41f0c943a20d035368de77768be6e3818073dd0680d80",
+    "SYNTHETIC-D31-cash-in/SYNTHETIC-sale-funding-required/1/200": "b8b3c83e369ca57459136c6a77edfe0793f152f70444dd25290344c8466b8378",
+    "SYNTHETIC-D31-cash-in/SYNTHETIC-sale-funding-required/33/5000": "4d8189578cd6854f2952eff9d63618eb3f2611dfa95bdaa25da0005bbddac187",
+    "SYNTHETIC-D31-cash-in/SYNTHETIC-sale-funding-required/67/10000": "892565f5459ef113e24beb0e5a885e9bf2914d8e23b63439d3b3c6d5d569d85b",
+    "SYNTHETIC-D31-cash-in/SYNTHETIC-sale-funding-required/1/100": "7c6a899be30badd5d9509a14ceb6e829105fc741f110b78070a663852001d2fa",
+    "SYNTHETIC-D31-cash-in/SYNTHETIC-sale-funding-required/1/50": "02ca94c961b61356e63d1e785fac34d1f62c866c7836cd9c94f70fc335662452"
+  }
+}
