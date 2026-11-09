@@ -1,10 +1,10 @@
 {
-  "scope": "I01 preserved design, D02–D49 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D50 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 7904,
-      "sha256": "66b4f6008d2e46126c7aa7f459cdacdeaebf6bac0cbb5fd81f5094f81842e97d"
+      "bytes": 8033,
+      "sha256": "336417308fe39ce2d88cb13671c29e333778b3eb9e5ada8a5dd73ada65d385a2"
     },
     {
       "path": ".gitignore",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 61871,
-      "sha256": "fd4ed25a453e3287aa6a30439d7e8449e674d8be36c9159f13d32b65d6a624dd"
+      "bytes": 62220,
+      "sha256": "b42150c86d3376529544edba0356d0ae876bf95f854d76f1558306cd267febbf"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 275383,
-      "sha256": "181e5962c7ddc9fa81b46f1a1465774657c12836a6b18909d02700d816fc8465"
+      "bytes": 276586,
+      "sha256": "de9e87c82cc700fc7894ef13d80980e609a8bc7ed61d5fb87436c80254fb096c"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -950,6 +950,11 @@
       "path": "docs/review/MiniUW_Planilla_Cotejo_D49.xlsx",
       "bytes": 26903,
       "sha256": "0326fcf99257cb92ee2296980a3be75deb4c01d9358fd5a1ba9eb6eb693327c7"
+    },
+    {
+      "path": "docs/review/MiniUW_Planilla_Cotejo_D50.xlsx",
+      "bytes": 38173,
+      "sha256": "a005583cea467a3011b140dc9423d6e18615bd1160c7a0566dd6411bda5a77a7"
     },
     {
       "path": "docs/review/MiniUW_Revision_Interna_Retorno_T56.md",
@@ -5142,6 +5147,11 @@
       "sha256": "9fadf9da5238deafd65be0508f5aceebf649bb11f0524d2717abdffb6ac8acb4"
     },
     {
+      "path": "templates/synthetic-refinance-pilot-D50.json",
+      "bytes": 1294,
+      "sha256": "31e90cdc5c50ab69cd5c33605ba1a27bbf020aa0141fda7c17f80126e25daa47"
+    },
+    {
       "path": "templates/synthetic-rental-checked-lifecycle-bundle.json",
       "bytes": 455951,
       "sha256": "d2cae23c01afc5d733168037490926ee11050d5283b24411059860cb989aed93"
@@ -5948,8 +5958,8 @@
     },
     {
       "path": "tools/check_first_pilot_D49.py",
-      "bytes": 7313,
-      "sha256": "e6027698e64c8bbcab5fc5c374a029209fa2edc6e184f142150ff3e24d5b8e8c"
+      "bytes": 7594,
+      "sha256": "3d26c7a3bc1db2508dcad769b99d15c6864cfe1eab7808bab4e75dd919ef0a30"
     },
     {
       "path": "tools/check_insurance_terminal_T107.py",
@@ -6050,6 +6060,11 @@
       "path": "tools/check_reference_package.py",
       "bytes": 6320,
       "sha256": "85fa024e6718f2adae6e4dba2f23a0568dfcacc28bdc14c8e668f79ca3bbb148"
+    },
+    {
+      "path": "tools/check_refinance_pilot_D50.py",
+      "bytes": 5497,
+      "sha256": "947f90b4224005b9b3c1eeb4ac79f239239c7a4836b1eaedd68c593a607ce02b"
     },
     {
       "path": "tools/check_refinance_return_replay_D26.py",
@@ -6443,8 +6458,8 @@
     },
     {
       "path": "tools/pilot_workbook_D49.py",
-      "bytes": 10767,
-      "sha256": "b58ddc5ade8afc7b633f1de8c404f53be7da2ead00557f5996c6b7706b96131f"
+      "bytes": 12985,
+      "sha256": "37043ad8db13c5970e9450a12a4708e9692fd1b92ff3c4caf8dd4e00ee0e0642"
     },
     {
       "path": "tools/renewal_miniuw_v1.py",

@@ -4,6 +4,7 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D50 amplía la misma [planilla de cotejo](docs/review/MiniUW_Planilla_Cotejo_D50.xlsx) con tres variantes sintéticas de refinanciación. Ejecuta `PYTHONDONTWRITEBYTECODE=1 python tools/check_refinance_pilot_D50.py --output /tmp/miniuw-piloto-refi` para reproducir los expedientes y la planilla. [Control D50](tools/check_refinance_pilot_D50.py).
 - D49 deja listo el primer piloto sintético y su [planilla de cotejo](docs/review/MiniUW_Planilla_Cotejo_D49.xlsx). Ejecuta `PYTHONDONTWRITEBYTECODE=1 python tools/check_first_pilot_D49.py --output /tmp/miniuw-primer-piloto` para obtener el expediente auditado y el ensayo de PASS/FAIL. [Control D49](tools/check_first_pilot_D49.py).
 - D48 valida de punta a punta las dos rutas del comando común en once expedientes sintéticos. Ejecuta `PYTHONDONTWRITEBYTECODE=1 python tools/check_unified_worksheet_D48.py`. [Control D48](tools/check_unified_worksheet_D48.py).
 - D47 usa la misma entrada y el mismo comando para los perfiles sintéticos [sin refinanciación](templates/synthetic-unified-worksheet-sale-D47.json) y [con refinanciación](templates/synthetic-unified-worksheet-refinance-D47.json). Ejecuta `PYTHONDONTWRITEBYTECODE=1 python tools/miniuw_worksheet_v1.py run templates/synthetic-unified-worksheet-refinance-D47.json --output /tmp/miniuw-caso` y comprueba el paquete con `python tools/miniuw_worksheet_v1.py audit /tmp/miniuw-caso`. [Comando común](tools/miniuw_worksheet_v1.py).

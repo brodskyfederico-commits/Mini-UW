@@ -78,8 +78,33 @@ def condition(row):
     return f"{row['operator']} {exact}"
 
 
-def workbook_bytes(evidence):
-    guide = sheet([[line] for line in DIRECTIONS], [132])
+def refinance_flows(references):
+    rows = [["Variante", "Fecha", "Tipo de flujo", "Concepto", "Importe USD", "Valor exacto"]]
+    for name, ref in references.items():
+        first = len(rows) + 1
+        for date, kind, category, value in ref["events"]:
+            rows.append([name, date, "Aporte" if kind == "contribution" else "Cobro", category,
+                         float(Fraction(value)), value])
+        last = len(rows)
+        rows.extend([
+            [name, None, None, "Aportes brutos", Formula(f'SUMIF(C{first}:C{last},"Aporte",E{first}:E{last})',
+                                                         float(Fraction(ref["contributions"]))), ref["contributions"]],
+            [name, None, None, "Cobros brutos", Formula(f'SUMIF(C{first}:C{last},"Cobro",E{first}:E{last})',
+                                                        float(Fraction(ref["receipts"]))), ref["receipts"]],
+            [name, None, None, "Múltiplo de equity (EM)", Formula(f"E{last+2}/E{last+1}",
+                                                                 float(Fraction(ref["equity_multiple"]))),
+             ref["equity_multiple"]],
+            [],
+        ])
+    return sheet(rows, [24, 17, 17, 33, 19, 24])
+
+
+def workbook_bytes(evidence, refinance=None):
+    directions = DIRECTIONS
+    if refinance is not None:
+        directions = ("D50 | Planilla común de cotejo del piloto Mini-UW", *DIRECTIONS[1:],
+                      "09. Flujos refi separa el cobro al refinanciar del aporte adicional y conserva los importes exactos.")
+    guide = sheet([[line] for line in directions], [132])
     independent = evidence["independent_reference"]
     events = independent["events"]
     last = len(events) + 1
@@ -103,7 +128,14 @@ def workbook_bytes(evidence):
         tests.append([row["id"], independent["equity_multiple"] if value is not None else "Retirado",
                       condition(criterion["pass_condition"]), condition(criterion["fail_condition"]),
                       row["expected"], row["simulation"], row["operational_decision"], NOTES[row["id"]]])
-    rehearsal = sheet(tests, [23, 14, 16, 16, 14, 14, 14, 50], filter_table=True)
+    if refinance is not None:
+        for row in refinance["cases"]:
+            criterion = row["input"]["criteria"][0]
+            ref = refinance["independent_references"].get(row["archive_case"])
+            tests.append([row["id"], ref["equity_multiple"] if ref is not None else "Retirado",
+                          condition(criterion["pass_condition"]), condition(criterion["fail_condition"]),
+                          row["expected"], row["simulation"], row["operational_decision"], row["note"]])
+    rehearsal = sheet(tests, [23, 22 if refinance is not None else 14, 16, 16, 14, 14, 14, 50], filter_table=True)
 
     compare = [
         ["Cotejo del piloto real | completar con la revisión aplicable"],
@@ -127,8 +159,10 @@ def workbook_bytes(evidence):
                           header_row=8, filter_table=True)
 
     sheets = [("Guia", guide), ("Cotejo", compare_sheet), ("Ensayo", rehearsal), ("Flujos", flow_sheet)]
+    if refinance is not None:
+        sheets.append(("Flujos refi", refinance_flows(refinance["independent_references"])))
     overrides = {"xl/workbook.xml": "sheet.main", "xl/styles.xml": "styles"} | {
-        f"xl/worksheets/sheet{i}.xml": "worksheet" for i in range(1, 5)
+        f"xl/worksheets/sheet{i}.xml": "worksheet" for i in range(1, len(sheets) + 1)
     }
     content_types = f'{HEADER}<Types xmlns="{TYPES}">' + (
         '<Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>'
@@ -140,8 +174,8 @@ def workbook_bytes(evidence):
                 + '</sheets><calcPr calcId="191029" fullCalcOnLoad="1"/></workbook>')
     relationships = (f'{HEADER}<Relationships xmlns="{PACKAGE}">'
                      + "".join(f'<Relationship Id="rId{i}" Type="{OFFICE}/worksheet" Target="worksheets/sheet{i}.xml"/>'
-                               for i in range(1, 5))
-                     + f'<Relationship Id="rId5" Type="{OFFICE}/styles" Target="styles.xml"/></Relationships>')
+                               for i in range(1, len(sheets) + 1))
+                     + f'<Relationship Id="rId{len(sheets)+1}" Type="{OFFICE}/styles" Target="styles.xml"/></Relationships>')
     styles = f'''{HEADER}<styleSheet xmlns="{MAIN}">
       <fonts count="2"><font><sz val="11"/><name val="Calibri"/></font>
       <font><b/><color rgb="FFFFFFFF"/><sz val="11"/><name val="Calibri"/></font></fonts>

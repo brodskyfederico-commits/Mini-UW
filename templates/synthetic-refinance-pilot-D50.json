@@ -1,0 +1,47 @@
+{
+  "schema": "miniuw.synthetic-refinance-pilot.v1",
+  "case_path": "templates/synthetic-unified-worksheet-refinance-D47.json",
+  "case_sha256": "afa136494f2343edf8df8e947cfaf03c0d5140410ca57204ed357f72b50666a9",
+  "metric_id": "equity_multiple",
+  "criteria_revision": "SYNTHETIC-D50-EM-test-only-v1",
+  "pass_condition": {
+    "operator": ">=",
+    "threshold": {
+      "numerator": "6",
+      "denominator": "5"
+    }
+  },
+  "fail_condition": {
+    "operator": "<",
+    "threshold": {
+      "numerator": "21",
+      "denominator": "20"
+    }
+  },
+  "cases": [
+    {
+      "id": "refi_cobro",
+      "archive_case": "cash-out",
+      "expected": "PASS",
+      "expected_state": "PASS_CONDITION",
+      "expected_blocker": null,
+      "note": "El cierre distribuye USD 200 al equity."
+    },
+    {
+      "id": "refi_aporte",
+      "archive_case": "cash-in",
+      "expected": "FAIL",
+      "expected_state": "FAIL_CONDITION",
+      "expected_blocker": null,
+      "note": "El cierre requiere USD 80 de aporte adicional."
+    },
+    {
+      "id": "refi_bloqueada",
+      "archive_case": "above-capacity",
+      "expected": "PENDING",
+      "expected_state": "PENDING",
+      "expected_blocker": "metric_value_missing",
+      "note": "El préstamo de USD 400 excede el límite DSCR."
+    }
+  ]
+}

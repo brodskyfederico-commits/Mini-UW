@@ -17,6 +17,40 @@ FIXTURE = "templates/synthetic-first-pilot-D49.json"
 WORKBOOK = "docs/review/MiniUW_Planilla_Cotejo_D49.xlsx"
 
 
+def compare_probe(result, fixture, probe, case_prefix, definition_ref, period_ref):
+    archive_case = probe["archive_case"]
+    project = result["project"]
+    value = None if project is None else project["equity_multiple"]
+    context = result["context"]
+    identity = dict(metric_id=fixture["metric_id"], scenario_id=context["scenario_id"],
+                    definition_ref=definition_ref,
+                    unit="multiple", currency=None, quantity_kind="scalar",
+                    period_ref=period_ref,
+                    applicability="applicable", applicability_evidence_ref=None)
+    comparison = dict(schema=SCHEMA, case_id=f"{case_prefix}-{probe['id']}", context=context,
+                      criteria_revision=fixture["criteria_revision"], criteria_status="synthetic_fixture_only",
+                      required_metrics=[fixture["metric_id"]], required_scenarios=[context["scenario_id"]],
+                      metric_values=[identity | {"value": value}],
+                      criteria=[identity | {k: probe[k] for k in ("pass_condition", "fail_condition")}],
+                      aggregation_rule=AGGREGATION, hypothetical_band_policy=None)
+    run = simulate_screening(encoded(comparison))
+    screen = run.payload
+    blockers = screen["simulation_blockers"]
+    expected_blocker = probe["expected_blocker"]
+    require(screen["comparisons"][0]["state"] == probe["expected_state"]
+            and (not blockers if expected_blocker is None
+                 else any(value.rsplit(":", 1)[-1] == expected_blocker for value in blockers)),
+            f"Pilot screening reason differs: {probe['id']}")
+    require(screen["simulation_result"] == probe["expected"] and screen["decision"] == result["decision"] == "PENDING"
+            and screen["criteria_adopted"] is screen["production_authorized"] is False
+            and result["real_decisions_enabled"] is result["deployment_enabled"] is False,
+            f"Pilot screening differs: {probe['id']}")
+    return dict(id=probe["id"], archive_case=archive_case, input=comparison, expected=probe["expected"],
+                     simulation=screen["simulation_result"], operational_decision=screen["decision"],
+                     blockers=screen["simulation_blockers"], screening_sha256=run.sha256,
+                     project_case_sha256=result["provenance"]["case_sha256"], pdf_sha256=result["pdf_sha256"])
+
+
 def rehearsal():
     raw = local_file(ROOT, FIXTURE).read_bytes()
     fixture = json.loads(raw)
@@ -44,34 +78,9 @@ def rehearsal():
             require(amount(value) == multiple
                     and amount(project["gross_contributions"]) == contributions
                     and amount(project["gross_distributions"]) == receipts, "Pilot disagrees with the independent ledger")
-        context = result["context"]
-        identity = dict(metric_id=fixture["metric_id"], scenario_id=context["scenario_id"],
-                        definition_ref="SYNTHETIC-D49-dated-gross-cash-multiple-v1",
-                        unit="multiple", currency=None, quantity_kind="scalar",
-                        period_ref="SYNTHETIC-D49:2026-10-01/2027-07-01",
-                        applicability="applicable", applicability_evidence_ref=None)
-        comparison = dict(schema=SCHEMA, case_id=f"SYNTHETIC-D49-{probe['id']}", context=context,
-                          criteria_revision=fixture["criteria_revision"], criteria_status="synthetic_fixture_only",
-                          required_metrics=[fixture["metric_id"]], required_scenarios=[context["scenario_id"]],
-                          metric_values=[identity | {"value": value}],
-                          criteria=[identity | {k: probe[k] for k in ("pass_condition", "fail_condition")}],
-                          aggregation_rule=AGGREGATION, hypothetical_band_policy=None)
-        run = simulate_screening(encoded(comparison))
-        screen = run.payload
-        blockers = screen["simulation_blockers"]
-        expected_blocker = probe["expected_blocker"]
-        require(screen["comparisons"][0]["state"] == probe["expected_state"]
-                and (not blockers if expected_blocker is None
-                     else any(value.rsplit(":", 1)[-1] == expected_blocker for value in blockers)),
-                f"Pilot screening reason differs: {probe['id']}")
-        require(screen["simulation_result"] == probe["expected"] and screen["decision"] == result["decision"] == "PENDING"
-                and screen["criteria_adopted"] is screen["production_authorized"] is False
-                and result["real_decisions_enabled"] is result["deployment_enabled"] is False,
-                f"Pilot screening differs: {probe['id']}")
-        rows.append(dict(id=probe["id"], archive_case=archive_case, input=comparison, expected=probe["expected"],
-                         simulation=screen["simulation_result"], operational_decision=screen["decision"],
-                         blockers=screen["simulation_blockers"], screening_sha256=run.sha256,
-                         project_case_sha256=result["provenance"]["case_sha256"], pdf_sha256=result["pdf_sha256"]))
+        rows.append(compare_probe(result, fixture, probe, "SYNTHETIC-D49",
+                                  "SYNTHETIC-D49-dated-gross-cash-multiple-v1",
+                                  "SYNTHETIC-D49:2026-10-01/2027-07-01"))
     require(len(rows) == 6 and {r["simulation"] for r in rows} == {"PASS", "FAIL", "PENDING"}, "Pilot outcome inventory differs")
     evidence = dict(schema="miniuw.synthetic-first-pilot-evidence.v1", decision="PENDING",
                     fixture_sha256=sha(raw), criteria_adopted=False, deployment_enabled=False,
