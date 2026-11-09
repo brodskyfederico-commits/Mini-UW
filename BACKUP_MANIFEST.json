@@ -1,10 +1,10 @@
 {
-  "scope": "I01 preserved design, D02–D56 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D57 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 8877,
-      "sha256": "5172dcff37df628ae1e69ce664f058e25ae97ea386a2d35f8f9c8247dd8519e5"
+      "bytes": 9013,
+      "sha256": "ffed54defd10192d8594d648c776221584deec988a6b39d10ef1a090f84a518b"
     },
     {
       "path": ".gitignore",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 64070,
-      "sha256": "dd8c4dff0a654e2b2d62e71ee6f3fffe963f2004b1eb1a3e1adbb86ec082c467"
+      "bytes": 64316,
+      "sha256": "f348269cea894f2be81a0ce3c40497a07794f7fc6ae83ebb725f116fea941c4e"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 282555,
-      "sha256": "d40d8d258b555c26ac50bcf98ec31a51da8f239529fff7876c2f760588f588c6"
+      "bytes": 283511,
+      "sha256": "b251434ebb1d9eb4743a620d71bf39c920c539ecc11ff2940f7023048b4cbcb1"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -5082,6 +5082,11 @@
       "sha256": "1cc492ca7a927e8776486e4488fa02af2838f33ed019b9fb8f80e0515e6b4065"
     },
     {
+      "path": "templates/synthetic-pilot-revision-D57.json",
+      "bytes": 337,
+      "sha256": "db9941680cd59e42f74cd5680a9ecc900edf6d4fa7debd35d8e95642b8c0fb4e"
+    },
+    {
       "path": "templates/synthetic-preopening-cash-example.json",
       "bytes": 7330,
       "sha256": "3efd32687f3c42caaaeade638e04cd9ef4ca34030a42985fc74684046c9ab027"
@@ -5942,6 +5947,11 @@
       "sha256": "3dff2f9ab5455c47382178e6b85fc77016a4b989f2ff9f475033f20b07c6b4d2"
     },
     {
+      "path": "tools/check_cotejo_revision_D57.py",
+      "bytes": 6958,
+      "sha256": "a9a6dcb7f35436cb14ffec878066f9a9ad5e032a6c3b8a93a6ca90c20f3a0833"
+    },
+    {
       "path": "tools/check_current_settled_T109.py",
       "bytes": 8848,
       "sha256": "0f0397a047be9da584943e44924cab1f69ce7b4d982781cf5e622f29c0cee7db"
@@ -6473,13 +6483,13 @@
     },
     {
       "path": "tools/miniuw_linked_cotejo_D54.py",
-      "bytes": 2629,
-      "sha256": "1c92fc281c3b05a44ab2c9d443c07071b198449c7825a14717d348af9f34019d"
+      "bytes": 3008,
+      "sha256": "5e965df4b3061d87e759e8e5a9ffe4cf267c4028cc914ed9000b9087886afd1f"
     },
     {
       "path": "tools/miniuw_scenario_package_D52.py",
-      "bytes": 4734,
-      "sha256": "e8993a2f715698eb584b8f96fdd2abee10194782adbd42df10dffbda10c2e8e9"
+      "bytes": 6857,
+      "sha256": "a5b8ebe693d7e728d31638d0a5815931e4097771d4c514d73eddf9f3cd03b70f"
     },
     {
       "path": "tools/miniuw_v1.py",

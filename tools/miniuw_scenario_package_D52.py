@@ -11,6 +11,7 @@ from check_operating_replay_D20 import ROOT, local_file, require
 from check_scenario_pilot_D51 import WORKBOOK, rehearsal_with_packages
 from miniuw_worksheet_v1 import MAX_FILE_BYTES, encoded, read_package
 from miniuw_foundation.scheduled_expense_case import sha
+from miniuw_foundation.screening import simulate_screening
 from pilot_workbook_D49 import workbook_bytes
 
 
@@ -18,12 +19,42 @@ SCENARIOS = ("Base", "Downside")
 TOP_FILES = (Path(WORKBOOK).name, "ensayo_base_downside.json", "package.json")
 
 
-def build():
+REVISION = "SYNTHETIC-D57-R2"
+REVISION_FIXTURE = "templates/synthetic-pilot-revision-D57.json"
+
+
+def revised_evidence(evidence, revision):
+    raw = local_file(ROOT, REVISION_FIXTURE).read_bytes()
+    fixture = json.loads(raw)
+    require(fixture["schema"] == "miniuw.synthetic-revision-change.v1"
+            and revision == fixture["revision"] == REVISION
+            and fixture["prior_evidence_sha256"] == sha(encoded(evidence)), "Synthetic revision binding differs")
+    probe, = (probe for probe in evidence["probes"] if probe["id"] == fixture["probe_id"])
+    source = probe["input"]
+    require(source["criteria_revision"] == fixture["previous_criteria_revision"]
+            and source["criteria_revision"] != fixture["criteria_revision"], "Criteria revision did not advance")
+    updated = source | {"criteria_revision": fixture["criteria_revision"]}
+    replay = simulate_screening(encoded(updated))
+    result = replay.payload
+    require(result["decision"] == probe["decision"] == "PENDING"
+            and result["simulation_result"] == probe["simulation"]
+            and result["comparisons"] == probe["comparisons"]
+            and result["simulation_blockers"] == probe["blockers"], "Revision changed its synthetic comparisons")
+    probe.update(input=updated, screening_sha256=replay.sha256)
+    evidence.update(revision=revision, prior_evidence_sha256=fixture["prior_evidence_sha256"],
+                    revision_source_sha256=sha(raw))
+
+
+def build(revision=None):
+    require(revision in (None, REVISION), "Unsupported synthetic pilot revision")
     scenarios, refinance, evidence = rehearsal_with_packages()
     _, sale = sale_rehearsal()
     book = workbook_bytes(sale, refinance, evidence)
     require(book == local_file(ROOT, WORKBOOK).read_bytes() and set(scenarios) == set(SCENARIOS),
             "Workbook or scenario inventory differs from its sources")
+    if revision is not None:
+        revised_evidence(evidence, revision)
+        book = workbook_bytes(sale, refinance, evidence)
     files = {TOP_FILES[0]: book, TOP_FILES[1]: encoded(evidence)}
     for scenario in SCENARIOS:
         case = scenarios[scenario]
@@ -33,6 +64,8 @@ def build():
     manifest = dict(schema="miniuw.synthetic-scenario-pilot-package.v1", decision="PENDING",
                     required_scenarios=list(SCENARIOS), criteria_adopted=False, deployment_enabled=False,
                     files=[dict(path=name, bytes=len(content), sha256=sha(content)) for name, content in sorted(files.items())])
+    if revision is not None:
+        manifest.update(revision=revision, revision_source_sha256=evidence["revision_source_sha256"])
     files["package.json"] = encoded(manifest)
     return files
 
@@ -54,7 +87,9 @@ def read(directory):
 
 def verified_files(directory):
     files = read(directory)
-    require(files == build(), "Pilot package differs from source-first replay")
+    manifest = json.loads(files["package.json"])
+    require(isinstance(manifest, dict), "Invalid pilot manifest")
+    require(files == build(manifest.get("revision")), "Pilot package differs from source-first replay")
     return files
 
 
@@ -67,8 +102,8 @@ def status(operation, files):
                 manifest_sha256=sha(files["package.json"]))
 
 
-def write(directory):
-    files = build()
+def write(directory, revision=None):
+    files = build(revision)
     if directory.exists() or directory.is_symlink():
         require(read(directory) == files, "Existing pilot directory differs")
         return status("verified_identical_output", files)
@@ -94,11 +129,13 @@ def write(directory):
 def main():
     parser = ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest="command", required=True)
-    sub.add_parser("run").add_argument("directory", type=Path)
+    run = sub.add_parser("run")
+    run.add_argument("directory", type=Path)
+    run.add_argument("--revision", choices=[REVISION])
     sub.add_parser("audit").add_argument("directory", type=Path)
     args = parser.parse_args()
     try:
-        result = write(args.directory) if args.command == "run" else verify(args.directory)
+        result = write(args.directory, args.revision) if args.command == "run" else verify(args.directory)
         print(json.dumps(result, ensure_ascii=False))
         return 0
     except (ValueError, TypeError, OSError, KeyError, IndexError) as error:

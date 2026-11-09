@@ -1224,3 +1224,9 @@ La prueba reúne cinco discrepancias. Incluye Cotejo!H14, que trae USD 81 frente
 La prueba parte de las cinco incidencias sintéticas de D55. Corrige primero Cotejo!H14 de USD 81 a USD 80 en una copia y verifica que las otras cuatro incidencias mantienen PENDING el cotejo. Corrige después la revisión, el umbral ausente, el estado distinto y el valor presentado como fórmula. Las seis filas coinciden y el informe pasa a COINCIDE. Una repetición de la planilla corregida devuelve el mismo informe.
 
 Cada paso usa el comando D54 y verifica el mismo expediente Base y Downside desde las fuentes. La prueba coteja byte por byte sus once archivos y los hashes del manifiesto, del ensayo y de ambos resultados. Sólo cambian las celdas de prueba declaradas en las copias de la planilla. La decisión operativa queda PENDING desde el inicio hasta la repetición. [Control D56](tools/check_cotejo_corrections_D56.py).
+
+## D57 — Cotejo al cambiar la revisión del expediente
+
+La revisión sintética R2 reproduce la prueba Downside con una revisión distinta de criterios. Conserva los importes, límites, comparaciones y los ocho archivos financieros de Base y Downside. Cambian el ensayo y el manifiesto. La vigencia en el ensayo se fija expresamente por el SHA-256 del manifiesto. La opción del comando D54 verifica ese identificador antes de cotejar la planilla.
+
+La planilla corregida D56 coincide con la revisión anterior en un cotejo histórico. Al exigir R2, el paquete anterior se rechaza. La planilla anterior cotejada contra R2 muestra ocho referencias de revisión distintas y queda PENDING. Una copia con esas referencias alineadas pasa a COINCIDE en las seis filas. Las cuatro pruebas mantienen PENDING la decisión operativa. [Control D57](tools/check_cotejo_revision_D57.py), [fuente de revisión sintética](templates/synthetic-pilot-revision-D57.json).

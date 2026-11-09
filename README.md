@@ -4,6 +4,7 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D57 verifica que una planilla coincidente se vuelva PENDING al cotejarla con una revisión sintética nueva. El comando D54 admite `--current-manifest-sha256` para fijar el expediente vigente. [Control D57](tools/check_cotejo_revision_D57.py).
 - D56 comprueba el ciclo de corrección y recotejo contra el mismo expediente. Ejecuta `PYTHONDONTWRITEBYTECODE=1 python tools/check_cotejo_corrections_D56.py --package /tmp/miniuw-expediente --output /tmp/miniuw-cotejo-corregido`. [Control D56](tools/check_cotejo_corrections_D56.py).
 - D55 añade al informe de cotejo el dato recibido, el dato esperado, la diferencia exacta cuando corresponde y la ruta en el expediente auditado. [Control D55](tools/check_cotejo_diagnostics_D55.py).
 - D54 vincula la planilla completada con el expediente auditado. Ejecuta `PYTHONDONTWRITEBYTECODE=1 python tools/miniuw_linked_cotejo_D54.py --package /tmp/miniuw-expediente --workbook /tmp/miniuw-cotejo/MiniUW_Cotejo_Sintetico_D53.xlsx --output /tmp/miniuw-cotejo-verificado.json`. [Control D54](tools/check_linked_cotejo_D54.py).

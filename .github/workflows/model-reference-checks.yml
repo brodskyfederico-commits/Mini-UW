@@ -137,5 +137,7 @@ jobs:
         run: python tools/check_cotejo_diagnostics_D55.py
       - name: Verify Cotejo corrections and rerun against the same audited package
         run: python tools/check_cotejo_corrections_D56.py
+      - name: Verify that Cotejo follows the designated synthetic pilot revision
+        run: python tools/check_cotejo_revision_D57.py
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v
