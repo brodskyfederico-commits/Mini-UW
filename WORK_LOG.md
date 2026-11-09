@@ -1166,3 +1166,9 @@ A tasa cero y al 2 % mensual, los dos casos calculables coinciden exactamente co
 Una entrada JSON declara el perfil, el caso archivado, el hash del archivo de evidencia y la tasa mensual sintética. El mismo comando ejecuta el perfil T111/D44 sin refinanciación o D45/D46 con refinanciación. Cada ruta reproduce la fuente de la hoja y su evidencia financiera. La selección es expresa y un caso fuera de su perfil se rechaza. No se trasladan cifras entre perfiles.
 
 El paquete guarda la entrada exacta, el JSON de resultados con contrato común, el manifiesto y un PDF de una página. La auditoría reconstruye los cuatro archivos desde la entrada y las fuentes archivadas. Un reintento idéntico verifica lo existente y una salida distinta se rechaza. Los perfiles conservan sus disposiciones de PDF y mantienen PENDING la decisión y el retorno personal. [Comando común](tools/miniuw_worksheet_v1.py).
+
+## D48 — Validación de punta a punta de la corrida común
+
+Ejecuta el comando público de corrida y auditoría para once expedientes. Cuatro muestran caja y retorno agregado. Siete retiran el retorno y el precio de recuperación por evidencia vencida, conflicto, identidad, dato ausente, fórmula o capacidad. Cada expediente produce exactamente una página y conserva PENDING.
+
+Los casos calculables se contrastan con un inventario independiente de flujos fechados. Se verifican aportes, cobros, venta, capacidad por DSCR y LTV, fuentes y usos de refinanciación, múltiplo, caja anual, intervalo de TIR y precio de recuperación a la tasa sintética explícita. La auditoría rechaza resultados o PDF alterados aunque se recalculen los hashes del manifiesto. Se comprueban el reintento idéntico, el rechazo de una salida distinta y tres entradas inválidas sin materialización. El cierre de esta prueba abarca los perfiles sintéticos archivados. [Control D48](tools/check_unified_worksheet_D48.py).
