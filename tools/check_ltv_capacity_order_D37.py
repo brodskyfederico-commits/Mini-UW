@@ -5,7 +5,7 @@ from fractions import Fraction
 import json
 import sys
 
-from check_bank_noi_capacity_order_D36 import FIXTURE as BANK, RATES, verified_prices
+from check_bank_noi_capacity_order_D36 import FIXTURE as BANK, RATES, revised_bank_noi, verified_prices
 from check_discount_rate_crossover_D35 import BINDINGS as CROSSOVER, HIGH, LOW, read_fixture
 from check_operating_replay_D20 import ROOT, amount, local_file, require
 from check_participant_refinance_variants_D31 import CAPACITY_BLOCKER, build_variant_evidence, encode, rebind_closing, set_claim
@@ -25,7 +25,7 @@ SCHEMA = "miniuw.synthetic-ltv-capacity-order.v1"
 VALUATION_BLOCKER = "closing_valuation_claim_differs_from_computed_noi_cap_value"
 
 
-def observe(base, valuation_noi, source, *, stale_valuation=False):
+def observe(base, valuation_noi, source, *, stale_valuation=False, bank_noi=None):
     original = base.capacity_run.payload
     valuation = json.loads(base.capacity_inputs.valuation_noi_raw)
     income = indexed(valuation["income_rows"], "item_id")["SYNTHETIC-income-residential"]
@@ -60,6 +60,12 @@ def observe(base, valuation_noi, source, *, stale_valuation=False):
                      closing_raw=refinance.closing_raw, closing_run=refinance.closing_run)
     spec.update(valuation_noi_source_sha256=sha(valuation_raw), valuation_noi_run_sha256=valuation_run.sha256,
                 closing_source_sha256=sha(refinance.closing_raw), closing_run_sha256=refinance.closing_run.sha256)
+    expected_bank_noi = amount(original["bank_noi"])
+    if bank_noi is not None:
+        bank_raw, bank = revised_bank_noi(base, bank_noi, source)
+        inputs = replace(inputs, bank_noi_raw=bank_raw, bank_noi_run=bank)
+        spec.update(bank_noi_source_sha256=sha(bank_raw), bank_noi_run_sha256=bank.sha256)
+        expected_bank_noi = bank_noi
     spec_raw = encode(spec)
     capacity = size_refinance(inputs, spec_raw)
     inner = replace(base.binding.project_return_binding, manifest_source_sha256=sha(manifest_raw),
@@ -71,7 +77,9 @@ def observe(base, valuation_noi, source, *, stale_valuation=False):
 
     sizing = capacity.payload
     principal = amount(original["selected_principal"])
-    dscr_cap = amount(original["capacity_limits"]["DSCR"])
+    dscr = amount(spec["parameters"]["minimum_dscr"])
+    service_per_unit = amount(original["regular_annual_sizing_constant"])
+    dscr_cap = expected_bank_noi / (dscr * service_per_unit)
     ltv_cap = value * ltv
     limits = {"DSCR": dscr_cap, "LTV": ltv_cap}
     maximum = min(limits.values())
@@ -80,7 +88,7 @@ def observe(base, valuation_noi, source, *, stale_valuation=False):
     if stale_valuation:
         require(value != amount(closing["valuation_claim"]), "Stale valuation control did not change value")
         blockers.append(VALUATION_BLOCKER)
-    require(sizing["bank_noi"] == original["bank_noi"]
+    require(amount(sizing["bank_noi"]) == expected_bank_noi
             and sizing["regular_annual_sizing_constant"] == original["regular_annual_sizing_constant"]
             and amount(sizing["selected_principal"]) == principal
             and amount(sizing["computed_property_value"]) == value

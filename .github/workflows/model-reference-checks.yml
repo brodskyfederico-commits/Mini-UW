@@ -101,5 +101,7 @@ jobs:
         run: python tools/check_bank_noi_capacity_order_D36.py --summary
       - name: Verify LTV boundaries and exact ties with synthetic DSCR capacity
         run: python tools/check_ltv_capacity_order_D37.py --summary
+      - name: Verify joint synthetic bank and valuation NOI capacity
+        run: python tools/check_joint_noi_capacity_D38.py --summary
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v

@@ -1,10 +1,10 @@
 {
-  "scope": "I01 preserved design, D02–D37 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D38 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 6260,
-      "sha256": "13d46bb1969b576564c8b893380e7adf3f50d375782c9254c14a446c913a81a4"
+      "bytes": 6397,
+      "sha256": "9e4cae9007d32ae9468bc7df43b09e3eb18040eef35b49287c936f409731a9c2"
     },
     {
       "path": ".gitignore",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 57904,
-      "sha256": "c269af9fd8551584c1fe81761cc5e99d7da87dca433fcd38c707cfe2cc01ca13"
+      "bytes": 58197,
+      "sha256": "41a1e39e078dece15905558433631a35ee8f826fd5f6b7feed3b5909b83d3b9c"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 261533,
-      "sha256": "8706a12157bf2a2a3a9d743ef7cf7c461afbc38cf76d6ba1ee7c348aa59e56ab"
+      "bytes": 262752,
+      "sha256": "38cb56c0944534a9249d192cd195da5c2245e5213c7ecb3464ef72cb11c826a8"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -4917,6 +4917,11 @@
       "sha256": "46f6b1f4deff4410273a9943ac5b18bdb809351be35e2b53054e5ba009c762ed"
     },
     {
+      "path": "templates/synthetic-joint-noi-capacity-D38.json",
+      "bytes": 428,
+      "sha256": "901eaa5cd209118fa5865385084c66dea71ab8c4f943c8cada703d32d45cd58f"
+    },
+    {
       "path": "templates/synthetic-lifecycle-bundle-example.json",
       "bytes": 127637,
       "sha256": "54263a02d8761551a3a8c5e574ad3494e98244ec1bb935611068a9576d57b304"
@@ -5828,8 +5833,8 @@
     },
     {
       "path": "tools/check_bank_noi_capacity_order_D36.py",
-      "bytes": 9345,
-      "sha256": "570a09f03ed570f216a345d8a3b61fe78285f0d6c32df9efafd1d9e64abd5c1e"
+      "bytes": 9481,
+      "sha256": "bf1e7f8d31f565f0f2bdd5eefad8d0cca25516ca088b371eb04fd95d5758e7c3"
     },
     {
       "path": "tools/check_blocking_structure_D06.py",
@@ -5917,14 +5922,19 @@
       "sha256": "2479187cbdfa0f2b758de7e8d5caaf85eafaef55c03438e47e77fd990238f36b"
     },
     {
+      "path": "tools/check_joint_noi_capacity_D38.py",
+      "bytes": 5604,
+      "sha256": "3be767c6f98fafcae6c0a10d4b63c3e31fffbfedd8cd0f8eee5a2635d1e7ae1e"
+    },
+    {
       "path": "tools/check_long_output_T99.py",
       "bytes": 6499,
       "sha256": "c625d27511050a74e8c3c0bbafb8fbe13ef6256e7f69ca4ca906ffaa6ae4c13b"
     },
     {
       "path": "tools/check_ltv_capacity_order_D37.py",
-      "bytes": 12389,
-      "sha256": "2be528113e418aa87df357c0f769e76cd5d35745a6c0841999099af479072c05"
+      "bytes": 12908,
+      "sha256": "6481f9f178834070df0df628f721c18ede866c767445c7ad4560daf24c6c09d9"
     },
     {
       "path": "tools/check_operating_replay_D20.py",

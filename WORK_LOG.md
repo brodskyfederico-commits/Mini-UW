@@ -1098,3 +1098,11 @@ La corrida conserva el NOI bancario anual sintético de USD 2.000, las cuotas y 
 El NOI de valoración mínimo es USD 18,75 para el préstamo de USD 150 y USD 48,75 para el de USD 390. Los dos se prueban un dólar por debajo, en el punto exacto y un dólar por encima. Cerca de USD 49,01642 de NOI de valoración, los dos límites empatan exactamente. La corrida identifica ambos y verifica el cambio de límite a cada lado. Mantener una valoración de cierre desactualizada también bloquea el retorno aunque el principal quepa en la capacidad.
 
 La prueba actualiza la procedencia de la valoración y verifica que los importes de caja sean iguales. La aprobación bancaria y la decisión quedan PENDING. [Verificador D37](tools/check_ltv_capacity_order_D37.py), [niveles sintéticos](templates/synthetic-ltv-capacity-order-D37.json).
+
+## D38 — Capacidad con variaciones conjuntas de NOI
+
+Cruza tres niveles de NOI bancario de D36 con cuatro niveles de NOI de valoración de D37. En cada combinación reconstruye las fuentes por separado y verifica el menor límite entre DSCR y LTV para los préstamos de USD 150 y USD 390. Conserva los parámetros y los flujos del proyecto. Las variantes que exceden la capacidad dejan el retorno pendiente.
+
+Con NOI bancario de USD 750, la capacidad sube de USD 120 a USD 147,05 cuando el NOI de valoración pasa de USD 15 a USD 30, y se mantiene en los niveles de valoración superiores. Con NOI bancario de USD 1.500, el máximo de la grilla es USD 294,10. Con NOI bancario de USD 2.000, la capacidad llega a USD 392 con NOI de valoración de USD 49 y a USD 392,13 con NOI de valoración de USD 50. El préstamo de USD 390 sólo cabe en esas dos últimas celdas.
+
+La corrida verifica el empate exacto de DSCR y LTV en cada nivel de NOI bancario y el cambio de límite a ambos lados. Los datos son sintéticos, la aprobación bancaria queda pendiente y la decisión sigue PENDING. [Verificador D38](tools/check_joint_noi_capacity_D38.py), [vínculos de la matriz](templates/synthetic-joint-noi-capacity-D38.json).

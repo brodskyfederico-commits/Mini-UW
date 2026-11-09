@@ -24,13 +24,18 @@ SCHEMA = "miniuw.synthetic-bank-noi-capacity-order.v1"
 RATES = (Fraction("0.0066"), Fraction("0.0067"))
 
 
-def revised_bank_evidence(base, bank_noi, source):
+def revised_bank_noi(base, bank_noi, source):
     raw = json.loads(base.capacity_inputs.bank_noi_raw)
     income = indexed(raw["income_rows"], "item_id")["SYNTHETIC-income-residential"]
     set_claim(income, bank_noi, source)
     bank_raw = encode(raw)
     bank = produce_operating_noi(bank_raw)
     require(amount(bank.payload["noi"]) == bank_noi, "Bank NOI source did not reproduce the declared shock")
+    return bank_raw, bank
+
+
+def revised_bank_evidence(base, bank_noi, source):
+    bank_raw, bank = revised_bank_noi(base, bank_noi, source)
     inputs = replace(base.capacity_inputs, bank_noi_raw=bank_raw, bank_noi_run=bank)
     spec = json.loads(base.capacity_spec_raw)
     spec.update(bank_noi_source_sha256=sha(bank_raw), bank_noi_run_sha256=bank.sha256)
