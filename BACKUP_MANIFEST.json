@@ -1,10 +1,10 @@
 {
-  "scope": "I01 preserved design, D02–D35 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D36 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 5955,
-      "sha256": "47dca9f0c64138b65c4c42db701744103fc9d28e0d3f15d152cad6a8d248076a"
+      "bytes": 6112,
+      "sha256": "c262b3f778e972cc68dbaa1dc54dc71885542c9d9410b1747d1ba462700d0389"
     },
     {
       "path": ".gitignore",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 57369,
-      "sha256": "7b0525f04a9cf0ca56c7ed5ec58d231299f8991ab1235fc305101dda433140df"
+      "bytes": 57642,
+      "sha256": "a6ae228d7b9251f8f555cf6bf84614b09125ad554b2ec4038994a7efb096fa89"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 259010,
-      "sha256": "89e2fb7733fa1a1bd7a951fc60241423d8a6c7b7185e3a87da1498b5f04d6b1d"
+      "bytes": 260224,
+      "sha256": "08c4c6fcf8ce9c3018508edeb17b116583e484d16682caad688b0436ba4fe12c"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -4642,6 +4642,11 @@
       "sha256": "9c15f2ec446b83b919961d15d6c085d87c15d0e5123b148eb27f3a8c8b75245d"
     },
     {
+      "path": "templates/synthetic-bank-noi-capacity-order-D36.json",
+      "bytes": 453,
+      "sha256": "e4658d84b78cfbbd9d4be5d81d11b055bfe27e2435ad16e2d7e14aff23d90e59"
+    },
+    {
       "path": "templates/synthetic-bounded-exit-currency-example.json",
       "bytes": 18090,
       "sha256": "747c00b86cb6f3a9db7f05ba2fb306b2457f53ffb3d9242be6af3447e75c3032"
@@ -5815,6 +5820,11 @@
       "path": "tools/check_annual_return_replay_D24.py",
       "bytes": 3307,
       "sha256": "6a78dec6d4a3dad4deab3979955e6d6c54741dbeef6fc534e48103c6e6e4957f"
+    },
+    {
+      "path": "tools/check_bank_noi_capacity_order_D36.py",
+      "bytes": 9345,
+      "sha256": "570a09f03ed570f216a345d8a3b61fe78285f0d6c32df9efafd1d9e64abd5c1e"
     },
     {
       "path": "tools/check_blocking_structure_D06.py",
