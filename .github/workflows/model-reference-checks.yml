@@ -113,5 +113,7 @@ jobs:
         run: python tools/check_joint_noi_recovery_prices_D42.py --summary
       - name: Verify worksheet sale recovery against dated cash and blocked sources
         run: python tools/check_worksheet_sale_recovery_D43.py --summary
+      - name: Verify single-page worksheet recovery figures and withdrawal
+        run: python tools/check_worksheet_recovery_page_D44.py --summary
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v

@@ -60,7 +60,12 @@ def recovery_observation(source, flows, events, rate, gross, baseline_close):
 
 def observe(raw, rates):
     run = assemble_worksheet_settled_output(raw.encode())
+    return observe_run(raw, run, rates)
+
+
+def observe_run(raw, run, rates):
     result = run.payload
+    require(result["source_sha256"] == digest(raw), "Worksheet run does not bind the supplied source")
     story = result["current_project_return_story"]
     output = dict(source_sha256=result["source_sha256"], worksheet_run_sha256=run.sha256, state=result["state"],
                   blockers=result["blockers"], decision=result["decision"], cash_recovery=None)
@@ -92,14 +97,19 @@ def observe(raw, rates):
     return output
 
 
-def run():
+def worksheet_bindings():
     fixture = json.loads(local_file(ROOT, FIXTURE).read_bytes())
     discount_raw = local_file(ROOT, DISCOUNT).read_text(encoding="utf-8")
     require(fixture["schema"] == SCHEMA and fixture["discount_fixture_sha256"] == digest(discount_raw),
             "Worksheet recovery discount source differs")
     _, rates = read_fixture(json.loads(discount_raw))
+    return fixture["worksheet_cases"], rates
+
+
+def run():
+    bindings, rates = worksheet_bindings()
     cases = {}
-    for name, binding in fixture["worksheet_cases"].items():
+    for name, binding in bindings.items():
         raw = local_file(ROOT, binding["path"]).read_text(encoding="utf-8")
         require(digest(raw) == binding["sha256"], f"Worksheet recovery source differs: {name}")
         case = observe(raw, rates)

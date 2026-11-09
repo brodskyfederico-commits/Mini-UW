@@ -4,6 +4,7 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D44 muestra el precio de recuperación D43 en la misma página de la hoja sintética y exige elegir una tasa mensual archivada. Ejecuta `PYTHONDONTWRITEBYTECODE=1 python tools/check_worksheet_recovery_page_D44.py --case matched --monthly-rate 0.02 --output /tmp/miniuw-recuperacion.pdf`. [Verificador y salida de una página D44](tools/check_worksheet_recovery_page_D44.py).
 - D43 calcula la recuperación descontada del equity agregado desde la corrida de la hoja T111. Recalcula el cierre a cada lado del precio de equilibrio y retira las cifras si la hoja o las fuentes están bloqueadas. Ejecuta `PYTHONDONTWRITEBYTECODE=1 python tools/check_worksheet_sale_recovery_D43.py`. [Verificador D43](tools/check_worksheet_sale_recovery_D43.py).
 - D42 muestra el precio bruto mínimo de venta para recuperar el aporte en valor presente y la distancia frente al precio del escenario, con los bloqueos de capacidad de D41. Ejecuta `PYTHONDONTWRITEBYTECODE=1 python tools/check_joint_noi_recovery_prices_D42.py`. [Verificador D42](tools/check_joint_noi_recovery_prices_D42.py).
 - D41 calcula la recuperación en valor presente por participante para las seis tasas mensuales de D35 y los cierres de D40. Ejecuta `PYTHONDONTWRITEBYTECODE=1 python tools/check_joint_noi_discounted_returns_D41.py`. [Verificador D41](tools/check_joint_noi_discounted_returns_D41.py).
