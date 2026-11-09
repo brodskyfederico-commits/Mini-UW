@@ -1,10 +1,10 @@
 {
-  "scope": "I01 preserved design, D02–D40 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D41 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 6719,
-      "sha256": "9fd505b99182358524c1b0df541e3e48a29e7de4b5e534c28e8954e4069ed99d"
+      "bytes": 6881,
+      "sha256": "a3276a2aad05421dd617e76ee7a77ba38ac901607c4565a6aec7b1adca656d4b"
     },
     {
       "path": ".gitignore",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 58749,
-      "sha256": "3ee7817c535754da160646c26adb9821060ed863c85f3c87dc1823d4feb21c75"
+      "bytes": 59034,
+      "sha256": "c0488826cb87674acfdc0aca53bc02eadbcc9d680148d38b2c2afaa9576d92f8"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 265268,
-      "sha256": "d762b1cc5aa3e5fc156b93427c164efe74e5f6fec6c72e5eec60c0b143be21b6"
+      "bytes": 266484,
+      "sha256": "ad35ecbf5fc589f44c361dbd05860eb5ab59603b305195ab94203bcedda8f993"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -4922,6 +4922,11 @@
       "sha256": "901eaa5cd209118fa5865385084c66dea71ab8c4f943c8cada703d32d45cd58f"
     },
     {
+      "path": "templates/synthetic-joint-noi-discounted-returns-D41.json",
+      "bytes": 344,
+      "sha256": "57dba38e43554c37ff1402d5a07b8aafa11f4f96ff9cbd55ae81dfcbbc6903a0"
+    },
+    {
       "path": "templates/synthetic-joint-noi-investor-returns-D39.json",
       "bytes": 1118,
       "sha256": "c1ba3b4b7d5dc964a8d1d74b42090c9812016640e47355b92939cdd2d8bfad28"
@@ -5937,14 +5942,19 @@
       "sha256": "8b8ad2db3673617be295dcc4ea2446dbb95b13c135bd2f4412eaca7ca6fee5f7"
     },
     {
+      "path": "tools/check_joint_noi_discounted_returns_D41.py",
+      "bytes": 6962,
+      "sha256": "6e116c23e30a30c0192ea31894fab3feed640bf43ee730d4ee3d3769b8516c7a"
+    },
+    {
       "path": "tools/check_joint_noi_investor_returns_D39.py",
       "bytes": 5593,
       "sha256": "d49508c20413797b2177575f8c12d2c99fc4f1946702efe2f8915c3be0e73343"
     },
     {
       "path": "tools/check_joint_noi_sale_returns_D40.py",
-      "bytes": 7037,
-      "sha256": "19788b43a06de1efee184c4493ff291721d6393aabdd3abe606a9b4a6b305594"
+      "bytes": 7326,
+      "sha256": "dcf4dbfb5c451c909cbe2364a1a3696964766f71ee3d994557c0d70652816164"
     },
     {
       "path": "tools/check_long_output_T99.py",

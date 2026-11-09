@@ -76,11 +76,13 @@ def recovery_fields(metrics):
     return dict(cash_recovered=str(recovered), recovery_fraction=str(recovered / contributed))
 
 
-def run():
+def replay_with_allocations():
+    """Return the nominal report and its verified dated cash sources."""
     bindings = json.loads(local_file(ROOT, BINDINGS).read_bytes())
     terms, returns, sales = sources(bindings)
     hashes = dict(bindings["project_ledgers"])
     results = {}
+    dated_cash = {}
     for key, row, parent, revised_project in replay_cases(returns, sales):
         if parent is not None:
             allocation = allocate(terms, parent, hashes.pop(key), require_unique_irr=False)
@@ -97,11 +99,18 @@ def run():
                     == Fraction(recovery["cash_recovered"]), "Participant recovery does not sum to project")
             row.update(return_state="computed_synthetic_cash_allocation",
                        project=project | recovery, participants=participants)
+            dated_cash[key] = (parent, allocation["participants"])
         results[key] = row
     require(not hashes and len(results) == 96, "Unexpected joint NOI and sale inventory")
-    return dict(status="passed", scope="synthetic_joint_noi_sale_and_nominal_cash_recovery", currency="USD",
-                decision="PENDING", scenarios=results, verified_personal_investor_return=None,
-                deployment_enabled=False, real_decisions_enabled=False)
+    report = dict(status="passed", scope="synthetic_joint_noi_sale_and_nominal_cash_recovery", currency="USD",
+                  decision="PENDING", scenarios=results, verified_personal_investor_return=None,
+                  deployment_enabled=False, real_decisions_enabled=False)
+    return report, dated_cash
+
+
+def run():
+    report, _ = replay_with_allocations()
+    return report
 
 
 def summary(report):

@@ -1120,3 +1120,11 @@ La corrida cruza los 24 casos de préstamo de D39 con los cuatro cierres archiva
 La caja nominal recuperada es el menor importe entre los aportes y los cobros acumulados. La corrida presenta por separado la caja sin recuperar y el excedente de cobros. Para la participación del 25 %, con costos de venta de USD 20 y precio bruto cero, se recuperan USD 225,50 con el préstamo de USD 150 y USD 224,29 con el de USD 390. Con precio de USD 200 o USD 400 y los mismos costos, ambos recuperan los USD 250 aportados.
 
 Con precio bruto cero y costos de venta de USD 500, la participación del 25 % recupera USD 105,50 con el préstamo de USD 150 y conserva USD 144,50 sin recuperar. Con el de USD 390 recupera USD 160 sobre aportes totales de USD 305,71, que incluyen USD 55,71 al cierre. Quedan USD 145,71 sin recuperar. El cálculo usa datos sintéticos y las decisiones siguen PENDING. [Verificador D40](tools/check_joint_noi_sale_returns_D40.py), [vínculos de los cierres](templates/synthetic-joint-noi-sale-returns-D40.json).
+
+## D41 — Recuperación nominal y descontada en la matriz de NOI y venta
+
+Descuenta por fecha los aportes y cobros de los 32 casos calculables de D40 con las seis tasas mensuales de D35. Los valores presentes de cada participante suman exactamente los del proyecto y la tasa cero reproduce la recuperación nominal. Los 64 casos bloqueados por capacidad conservan vacías las cifras a todas las tasas.
+
+Hay seis observaciones con recuperación nominal completa y déficit a valor presente. Todas corresponden al préstamo de USD 150, precio bruto de venta de USD 200, costos de venta de USD 20 y tasa de descuento del 2 % mensual. En esas celdas el participante del 25 % aporta USD 250 y cobra nominalmente USD 275,50. El valor presente de los cobros es USD 249,63. Con el préstamo de USD 390, en las dos celdas en que cabe en la capacidad, el valor presente de los cobros es USD 251,82 con el mismo cierre y tasa.
+
+Los importes del registro están redondeados. El informe conserva las fracciones exactas. La tasa es sintética y la decisión sigue PENDING. [Verificador D41](tools/check_joint_noi_discounted_returns_D41.py), [vínculos de las fuentes](templates/synthetic-joint-noi-discounted-returns-D41.json).
