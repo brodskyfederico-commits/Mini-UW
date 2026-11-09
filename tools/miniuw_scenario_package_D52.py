@@ -20,33 +20,62 @@ TOP_FILES = (Path(WORKBOOK).name, "ensayo_base_downside.json", "package.json")
 
 
 REVISION = "SYNTHETIC-D57-R2"
-REVISION_FIXTURE = "templates/synthetic-pilot-revision-D57.json"
+THRESHOLD_REVISION = "SYNTHETIC-D58-R3"
+REVISION_FIXTURES = {
+    REVISION: "templates/synthetic-pilot-revision-D57.json",
+    THRESHOLD_REVISION: "templates/synthetic-pilot-revision-D58.json",
+}
 
 
 def revised_evidence(evidence, revision):
-    raw = local_file(ROOT, REVISION_FIXTURE).read_bytes()
+    if revision == THRESHOLD_REVISION:
+        revised_evidence(evidence, REVISION)
+    raw = local_file(ROOT, REVISION_FIXTURES[revision]).read_bytes()
     fixture = json.loads(raw)
     require(fixture["schema"] == "miniuw.synthetic-revision-change.v1"
-            and revision == fixture["revision"] == REVISION
+            and revision == fixture["revision"]
             and fixture["prior_evidence_sha256"] == sha(encoded(evidence)), "Synthetic revision binding differs")
     probe, = (probe for probe in evidence["probes"] if probe["id"] == fixture["probe_id"])
     source = probe["input"]
     require(source["criteria_revision"] == fixture["previous_criteria_revision"]
             and source["criteria_revision"] != fixture["criteria_revision"], "Criteria revision did not advance")
     updated = source | {"criteria_revision": fixture["criteria_revision"]}
+    comparisons = probe["comparisons"]
+    expected = fixture.get("expected_simulation", probe["expected"])
+    blockers = fixture.get("expected_blockers", probe["blockers"])
+    change = fixture.get("threshold_change")
+    if change is not None:
+        updated, comparisons = apply_threshold_change(updated, comparisons, change)
     replay = simulate_screening(encoded(updated))
     result = replay.payload
     require(result["decision"] == probe["decision"] == "PENDING"
-            and result["simulation_result"] == probe["simulation"]
-            and result["comparisons"] == probe["comparisons"]
-            and result["simulation_blockers"] == probe["blockers"], "Revision changed its synthetic comparisons")
-    probe.update(input=updated, screening_sha256=replay.sha256)
+            and result["simulation_result"] == expected
+            and result["comparisons"] == comparisons
+            and result["simulation_blockers"] == blockers, "Revision changed comparisons beyond its declared scope")
+    probe.update(input=updated, screening_sha256=replay.sha256, expected=expected,
+                 simulation=result["simulation_result"], comparisons=result["comparisons"], blockers=result["simulation_blockers"])
     evidence.update(revision=revision, prior_evidence_sha256=fixture["prior_evidence_sha256"],
                     revision_source_sha256=sha(raw))
 
 
+def apply_threshold_change(source, comparisons, change):
+    def target(row):
+        return row["metric_id"] == change["metric_id"] and row["scenario_id"] == change["scenario_id"]
+
+    criterion, = (row for row in source["criteria"] if target(row))
+    condition = change["condition"]
+    require(criterion[condition]["threshold"] == change["previous"]
+            and change["value"] != change["previous"], "Prior threshold differs or the revision is empty")
+    revised = criterion | {condition: criterion[condition] | {"threshold": change["value"]}}
+    source = source | {"criteria": [revised if target(row) else row for row in source["criteria"]]}
+    expected = [row | {"criterion_record": revised, "state": change["expected_state"]} if target(row) else row
+                for row in comparisons]
+    return source, expected
+
+
 def build(revision=None):
-    require(revision in (None, REVISION), "Unsupported synthetic pilot revision")
+    require(revision is None or isinstance(revision, str) and revision in REVISION_FIXTURES,
+            "Unsupported synthetic pilot revision")
     scenarios, refinance, evidence = rehearsal_with_packages()
     _, sale = sale_rehearsal()
     book = workbook_bytes(sale, refinance, evidence)
@@ -131,7 +160,7 @@ def main():
     sub = parser.add_subparsers(dest="command", required=True)
     run = sub.add_parser("run")
     run.add_argument("directory", type=Path)
-    run.add_argument("--revision", choices=[REVISION])
+    run.add_argument("--revision", choices=list(REVISION_FIXTURES))
     sub.add_parser("audit").add_argument("directory", type=Path)
     args = parser.parse_args()
     try:

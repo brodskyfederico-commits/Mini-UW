@@ -1,10 +1,10 @@
 {
-  "scope": "I01 preserved design, D02–D57 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D58 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 9013,
-      "sha256": "ffed54defd10192d8594d648c776221584deec988a6b39d10ef1a090f84a518b"
+      "bytes": 9158,
+      "sha256": "f1cd3b34c232bca2363718cab9087dc98dea5ab7f27150adf83c420657f59f35"
     },
     {
       "path": ".gitignore",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 64316,
-      "sha256": "f348269cea894f2be81a0ce3c40497a07794f7fc6ae83ebb725f116fea941c4e"
+      "bytes": 64590,
+      "sha256": "a65022c542a95722f152b8d7ee23b1dd27325686ac8deec78c0282d9569dd611"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 283511,
-      "sha256": "b251434ebb1d9eb4743a620d71bf39c920c539ecc11ff2940f7023048b4cbcb1"
+      "bytes": 284429,
+      "sha256": "020d2580a9d234570e0f5cc5208fb1d765c557ba10ba356d1cd0e3adccb7815f"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -5087,6 +5087,11 @@
       "sha256": "db9941680cd59e42f74cd5680a9ecc900edf6d4fa7debd35d8e95642b8c0fb4e"
     },
     {
+      "path": "templates/synthetic-pilot-revision-D58.json",
+      "bytes": 762,
+      "sha256": "89ef4868e9a3161508698feb4d91280266de8ff7a27e213f78603d449b72f07f"
+    },
+    {
       "path": "templates/synthetic-preopening-cash-example.json",
       "bytes": 7330,
       "sha256": "3efd32687f3c42caaaeade638e04cd9ef4ca34030a42985fc74684046c9ab027"
@@ -5943,8 +5948,8 @@
     },
     {
       "path": "tools/check_cotejo_review_D53.py",
-      "bytes": 15095,
-      "sha256": "3dff2f9ab5455c47382178e6b85fc77016a4b989f2ff9f475033f20b07c6b4d2"
+      "bytes": 15139,
+      "sha256": "8762791b8ad88e582083edf91a5274e66090498e9e1b336de266ea7bdc642956"
     },
     {
       "path": "tools/check_cotejo_revision_D57.py",
@@ -5990,6 +5995,11 @@
       "path": "tools/check_dots_bots_onepage_ROLES01.py",
       "bytes": 3608,
       "sha256": "20f049ab0b80207ed0424cfc9c2e90271bff7d61d127b8ff733fa11ca1579ae6"
+    },
+    {
+      "path": "tools/check_downside_threshold_revision_D58.py",
+      "bytes": 7121,
+      "sha256": "ce5e01a93a77a5ec8911a03579b1162f42f328f1aede5381c925c80d4fdc1fc6"
     },
     {
       "path": "tools/check_first_pilot_D49.py",
@@ -6488,8 +6498,8 @@
     },
     {
       "path": "tools/miniuw_scenario_package_D52.py",
-      "bytes": 6857,
-      "sha256": "a5b8ebe693d7e728d31638d0a5815931e4097771d4c514d73eddf9f3cd03b70f"
+      "bytes": 8447,
+      "sha256": "2ca5758046b66f7895d62a7be69e4a097e0cd659bc0b11449091caf9436a353f"
     },
     {
       "path": "tools/miniuw_v1.py",

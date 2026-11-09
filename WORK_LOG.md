@@ -1230,3 +1230,9 @@ Cada paso usa el comando D54 y verifica el mismo expediente Base y Downside desd
 La revisión sintética R2 reproduce la prueba Downside con una revisión distinta de criterios. Conserva los importes, límites, comparaciones y los ocho archivos financieros de Base y Downside. Cambian el ensayo y el manifiesto. La vigencia en el ensayo se fija expresamente por el SHA-256 del manifiesto. La opción del comando D54 verifica ese identificador antes de cotejar la planilla.
 
 La planilla corregida D56 coincide con la revisión anterior en un cotejo histórico. Al exigir R2, el paquete anterior se rechaza. La planilla anterior cotejada contra R2 muestra ocho referencias de revisión distintas y queda PENDING. Una copia con esas referencias alineadas pasa a COINCIDE en las seis filas. Las cuatro pruebas mantienen PENDING la decisión operativa. [Control D57](tools/check_cotejo_revision_D57.py), [fuente de revisión sintética](templates/synthetic-pilot-revision-D57.json).
+
+## D58 — Cambio de un umbral de Downside
+
+La revisión sintética R3 cambia sólo el umbral de FAIL del múltiplo de equity de Downside, de menor que 1,05 a menor que 1,00. La condición PASS mayor o igual a 1,20 se conserva. El múltiplo de 1,0204 queda en la banda intermedia. El comparador recalcula FAIL simulado en R2 y PENDING simulado en R3. Las otras cinco comparaciones, los valores de las métricas y los ocho archivos financieros son idénticos.
+
+La planilla R2 coincide con R2 y queda PENDING frente a R3. El informe señala las referencias de revisión, el umbral cambiado y los estados anteriores. Una copia alineada con R3 coincide en sus seis filas. El cotejo conserva la distinción entre COINCIDE, la simulación PENDING por banda y la decisión operativa PENDING. [Control D58](tools/check_downside_threshold_revision_D58.py), [revisión sintética](templates/synthetic-pilot-revision-D58.json).

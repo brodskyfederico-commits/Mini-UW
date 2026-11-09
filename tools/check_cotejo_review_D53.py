@@ -86,7 +86,8 @@ def reference_inputs(package):
     (probe_index, chosen), = ((i, p) for i, p in enumerate(evidence["probes"]) if p["id"] == "downside_fail")
     probe_pointer = f"/probes/{probe_index}"
     evidence_file = TOP_FILES[1]
-    require(chosen["simulation"] == "FAIL" and chosen["decision"] == "PENDING", "Unexpected synthetic comparison")
+    require(chosen["simulation"] in ("FAIL", "PENDING") and chosen["decision"] == "PENDING",
+            "Unexpected synthetic comparison")
     base = json.loads(package["Base/results.json"])
     metadata = {
         "B2": base["context"]["deal_id"], "D2": chosen["input"]["criteria_revision"],
@@ -109,7 +110,7 @@ def reference_inputs(package):
         amount = ratio(value["value"])
         independent = evidence["sources"][row["scenario_id"]]["values"][row["metric_id"]]
         require(amount == independent, "Pilot result and independent metric differ")
-        state = {"PASS_CONDITION": "PASS", "FAIL_CONDITION": "FAIL"}[row["state"]]
+        state = {"PASS_CONDITION": "PASS", "FAIL_CONDITION": "FAIL", "BAND": "PENDING"}[row["state"]]
         rows.append(dict(zip(INPUT_COLS, (
             row["scenario_id"], "aplicable", value["unit"],
             value["definition_ref"] + " | " + value["period_ref"], chosen["input"]["criteria_revision"],

@@ -139,5 +139,7 @@ jobs:
         run: python tools/check_cotejo_corrections_D56.py
       - name: Verify that Cotejo follows the designated synthetic pilot revision
         run: python tools/check_cotejo_revision_D57.py
+      - name: Verify Downside threshold revision and stale worksheet handling
+        run: python tools/check_downside_threshold_revision_D58.py
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v

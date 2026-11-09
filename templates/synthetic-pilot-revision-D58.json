@@ -1,0 +1,26 @@
+{
+  "schema": "miniuw.synthetic-revision-change.v1",
+  "revision": "SYNTHETIC-D58-R3",
+  "prior_evidence_sha256": "c59a04870e8d61233c577c01f60f20592af431838614b5011a0288f31d80becc",
+  "probe_id": "downside_fail",
+  "previous_criteria_revision": "SYNTHETIC-D57-downside_fail-v2",
+  "criteria_revision": "SYNTHETIC-D58-downside_fail-v3",
+  "threshold_change": {
+    "metric_id": "equity_multiple",
+    "scenario_id": "Downside",
+    "condition": "fail_condition",
+    "previous": {
+      "numerator": "21",
+      "denominator": "20"
+    },
+    "value": {
+      "numerator": "1",
+      "denominator": "1"
+    },
+    "expected_state": "BAND"
+  },
+  "expected_simulation": "PENDING",
+  "expected_blockers": [
+    "intermediate_band_pending_professional_review"
+  ]
+}
