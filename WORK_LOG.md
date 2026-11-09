@@ -1194,3 +1194,9 @@ La planilla común añade una pestaña con el múltiplo de equity, el equity rec
 El comparador T11 verifica ocho ensayos y 48 comparaciones requeridas. Hay un PASS con ambas variantes completas, un FAIL por el múltiplo de Downside y seis PENDING por dato ausente, regla ausente, escenario ausente, banda, solapamiento o unidad incompatible. Las pruebas de dato y regla ausentes conservan un FAIL individual conocido en Downside y retienen el resultado global como PENDING. Los ceros explícitos participan en el ensayo. Las reglas son exclusivas de la prueba y la decisión operativa se conserva PENDING en todos los casos.
 
 La nueva pestaña conserva el valor exacto, las condiciones por métrica, el estado individual y la decisión simulada. La pestaña editable Cotejo y los ensayos previos mantienen su contenido. [Planilla común](docs/review/MiniUW_Planilla_Cotejo_D51.xlsx), [control reproducible](tools/check_scenario_pilot_D51.py), [reglas de ensayo](templates/synthetic-multi-scenario-pilot-D51.json).
+
+## D52 — Expediente auditable de Base y Downside
+
+Agrupa once archivos en un paquete sintético. Incluye la planilla D51, el ensayo de PASS/FAIL, un manifiesto y dos expedientes D47, cada uno con su entrada, resultados, manifiesto y PDF de una página. Cada resultado financiero queda vinculado al hash usado por su escenario en el ensayo. La decisión operativa permanece PENDING.
+
+La auditoría reproduce todo el paquete desde las fuentes del repositorio. El reintento idéntico verifica lo existente. Las cuatro pruebas rechazan un resultado de ensayo alterado, una planilla modificada, un expediente Base puesto en Downside y un archivo adicional. Los tres cambios con manifiesto recalculado se rechazan al contrastarlos con las fuentes. [Comando de corrida y auditoría](tools/miniuw_scenario_package_D52.py), [control reproducible](tools/check_scenario_package_D52.py).

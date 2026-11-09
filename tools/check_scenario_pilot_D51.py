@@ -84,7 +84,7 @@ def screen_input(fixture, probe, sources):
                 aggregation_rule=AGGREGATION, hypothetical_band_policy=None)
 
 
-def rehearsal():
+def rehearsal_with_packages():
     raw = local_file(ROOT, FIXTURE).read_bytes()
     fixture = json.loads(raw)
     require(fixture["schema"] == "miniuw.synthetic-multi-scenario-pilot.v1"
@@ -120,6 +120,12 @@ def rehearsal():
                                              results_sha256=sha(packages[fixture["scenarios"][scenario]]["results.json"]),
                                              values={key: str(value) for key, value in values.items()})
                              for scenario, (_, values) in sources.items()})
+    scenarios = {scenario: packages[name] for scenario, name in fixture["scenarios"].items()}
+    return scenarios, refinance, evidence
+
+
+def rehearsal():
+    _, refinance, evidence = rehearsal_with_packages()
     return refinance, evidence
 
 

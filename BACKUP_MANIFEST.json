@@ -1,10 +1,10 @@
 {
-  "scope": "I01 preserved design, D02–D51 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D52 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 8172,
-      "sha256": "ba3990260a05c243caec1223c5125363f85d4ed2dd6b4f517079cc523ec330ba"
+      "bytes": 8315,
+      "sha256": "6c56585bb3c6dc86be5b4e68e5b02e7af411d76c0ebfff6521537e1c77f51e43"
     },
     {
       "path": ".gitignore",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 62556,
-      "sha256": "7d194785b139bc945e06b840af7a54fddcb05396f0fed6d81ebb4bf734a2a633"
+      "bytes": 62860,
+      "sha256": "ff66de3348c40e514ddc4df81048c199527658f54cbbbc7cac188908b8cdae9e"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 278108,
-      "sha256": "783fc4c31eb553ea5e90d142a97b93f83424b474b31f1dfcadeb2f4e9c9a0807"
+      "bytes": 278987,
+      "sha256": "93c4adb5c4b59c96404ffba40f79104973c4e5fc0ad29d2d41a0dc9be96badf2"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -6097,9 +6097,14 @@
       "sha256": "3ceb9a02393e75e8dda0f516ae89e274a0a21382b1661d2bfda0486e179fbada"
     },
     {
+      "path": "tools/check_scenario_package_D52.py",
+      "bytes": 4351,
+      "sha256": "bdac59ddf72f4b7dcea78d9f6fe5342dcc02dc512fe3a04dfbea37f0911f53e6"
+    },
+    {
       "path": "tools/check_scenario_pilot_D51.py",
-      "bytes": 8941,
-      "sha256": "7168bc68df3668cab8b50abbc2779de35d89bcfc6e29d1e259d1798507aa33e9"
+      "bytes": 9165,
+      "sha256": "8511b26d0729f0824e18fb3306944ed467e68878676992ae61c5f104c2f98973"
     },
     {
       "path": "tools/check_settled_lifecycle_T108.py",
@@ -6445,6 +6450,11 @@
       "path": "tools/long_miniuw_v1.py",
       "bytes": 1322,
       "sha256": "c586b45088b13de2abef3f475811cc922f45e1a261a4c628f8fe5ebf55631db7"
+    },
+    {
+      "path": "tools/miniuw_scenario_package_D52.py",
+      "bytes": 4664,
+      "sha256": "5720b3c0180afc8a7d2ffa9bfcfbf8864a658871264fa5db8ec28a5bedb3cd6e"
     },
     {
       "path": "tools/miniuw_v1.py",
