@@ -1,10 +1,10 @@
 {
-  "scope": "I01 preserved design, D02–D44 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D45 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 7334,
-      "sha256": "e7caabed5f5b3cb03bd0a467eef89ae1409c7d43a54209dcae5a6f749c568568"
+      "bytes": 7486,
+      "sha256": "fa4cc5cc5ed3d1d9ec0d29b9002c54c0f22d200a66ad4189b1f5ed1b6238b76f"
     },
     {
       "path": ".gitignore",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 60107,
-      "sha256": "fd794933b8cd74f68ac94068824930c815dd52d437dcf2d5476609afb1b74a63"
+      "bytes": 60438,
+      "sha256": "9c8f2ea3e54fe553ac4e4a1b818f95837e7b43c34054a193f56e3b96b0573a00"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 269764,
-      "sha256": "6efb26f1aee73b4d52c12d647a68bc42708c7b5db20f2af68a39fcb79b911f3f"
+      "bytes": 271238,
+      "sha256": "ae81237b7864d04c5ed9dc122ce80411184f0f733fb6b61c8893dceeb1cc4a8d"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -5227,6 +5227,11 @@
       "sha256": "d7acbf6cd7eefd921b183c89e9ac987a33dc5105f2c8be886969f05d22b36042"
     },
     {
+      "path": "templates/synthetic-worksheet-refinance-D45.json",
+      "bytes": 60029,
+      "sha256": "ad18901de7c07f5c42b1baf599f2f5acd743baa387916d73a46b431ae40b0156"
+    },
+    {
       "path": "templates/synthetic-worksheet-sale-recovery-D43.json",
       "bytes": 1048,
       "sha256": "807a958e1b87fe13784b695e9d86ad146f0172f24576a7cd9e80d9573c0398ea"
@@ -6060,6 +6065,11 @@
       "path": "tools/check_worksheet_recovery_page_D44.py",
       "bytes": 5630,
       "sha256": "028b5bda08ec30a0c1db3931d7c523b6fbbde7d2d488eb2912201c94963fbb4e"
+    },
+    {
+      "path": "tools/check_worksheet_refinance_D45.py",
+      "bytes": 14520,
+      "sha256": "1297ca54f7b414d29a8f7f398bf1a37806ce30c1703df4d7c0c2f3d881726b1d"
     },
     {
       "path": "tools/check_worksheet_sale_recovery_D43.py",

@@ -1146,3 +1146,11 @@ La fuente padre vencida y el cero que contradice la hoja mantienen vacías las c
 El perfil de salida añade a la página de T111 el precio bruto del escenario, el mínimo de recuperación en valor presente redondeado hacia arriba al centavo y la tasa sintética elegida expresamente. La línea queda PENDIENTE cuando una fuente vencida o una contradicción en la hoja retiran la proyección. La página conserva los aportes, cobros, múltiplo, TIR, riesgos y criterios pendientes.
 
 La validación reproduce los cuatro casos de D43, comprueba el tamaño de página y coteja todo el texto, incluida la línea nueva. El comando de salida escribe un PDF en una ruta nueva y devuelve JSON con los hashes de la corrida, la recuperación, el PDF y el manifiesto base. La página mantiene el retorno personal y la decisión PENDING. [Verificador y salida de una página D44](tools/check_worksheet_recovery_page_D44.py).
+
+## D45 — Capacidad de refinanciación desde la hoja y salida de una página
+
+La corrida lee copias sintéticas del formato original. Vincula las celdas Inputs!C66, C71 y C72 con la tasa de capitalización, el LTV máximo y el DSCR mínimo. Conserva el hash y localizador de cada celda en los parámetros de capacidad. El principal, el NOI bancario y de valoración, las fechas, los costos y el saldo de deuda provienen del expediente sintético D31. La decisión y el retorno personal permanecen pendientes.
+
+Los siete casos generan una sola página cada uno. Dos muestran caja calculable y cinco mantienen PENDING el retorno. El préstamo de USD 400 excede el límite DSCR de aproximadamente USD 392,13. Un LTV explícito de cero lleva la capacidad a cero. Una celda DSCR ausente, una fórmula con caché y una hoja de otro proyecto retiran capacidad y retorno.
+
+Con el préstamo de USD 150, el primer cierre aporta al equity USD 200 netos. Los USD 1.070 de fuentes incluyen la caja de apertura y la liberación de reserva. Con mayores costos, el segundo cierre requiere un aporte de USD 80. En ambos, la venta entrega USD 901,99 al equity del proyecto. El libro conserva los importes exactos, fechas, múltiplo, intervalos de TIR y riesgo de caja. Los 52 campos fuera de este perfil siguen sin vínculo financiero. [Verificador y salida D45](tools/check_worksheet_refinance_D45.py), [fuentes de las hojas sintéticas](templates/synthetic-worksheet-refinance-D45.json).
