@@ -4,6 +4,7 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D33 calcula el precio bruto de venta que iguala aportes y cobros nominales en seis combinaciones sintéticas de D32. Ejecuta `PYTHONDONTWRITEBYTECODE=1 python tools/check_sale_cash_recovery_D33.py` desde la raíz. [Verificador D33](tools/check_sale_cash_recovery_D33.py).
 - D32 cruza las cuatro variantes de refinanciación con las cuatro revisiones de venta. Ejecuta `PYTHONDONTWRITEBYTECODE=1 python tools/check_participant_joint_exit_D32.py` desde la raíz. El informe muestra aportes, cobros y riesgo para cada participante y conserva los bloqueos de capacidad. [Verificador D32](tools/check_participant_joint_exit_D32.py).
 - D31 prueba cuatro variantes de refinanciación y vuelve a calcular los aportes, cobros y riesgos por participante hasta la venta. Ejecuta `PYTHONDONTWRITEBYTECODE=1 python tools/check_participant_refinance_variants_D31.py` desde la raíz. [Verificador D31](tools/check_participant_refinance_variants_D31.py).
 - D30 extiende el reparto y las métricas de D29 a las revisiones archivadas de venta. Ejecuta `PYTHONDONTWRITEBYTECODE=1 python tools/check_participant_sale_revisions_D30.py` desde la raíz. El informe separa el precio de venta, el cobro neto y el aporte adicional por participante. [Verificador D30](tools/check_participant_sale_revisions_D30.py).

@@ -1,10 +1,10 @@
 {
-  "scope": "I01 preserved design, D02–D32 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D33 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 5494,
-      "sha256": "289f3863e3c6dc04a9887e6a2a184af4a504c4066b99d40e7c217df3aeb94f68"
+      "bytes": 5641,
+      "sha256": "733f6eb6e7412fe946198181321603261a2b646128a84ae9e097af427cfcd54c"
     },
     {
       "path": ".gitignore",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 56540,
-      "sha256": "d37847f294ea81baf801aaf8141468da0d94b2495907a0ded5dd9891e222ffd2"
+      "bytes": 56814,
+      "sha256": "06543cc56994ddddf2ed2c1c7799ec79b88580b3583dfd8b038ae59ee894fa8b"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 254691,
-      "sha256": "e51a5f13e2584e8ab07c9a3a8edfce40430798a2189fec04d6600c6df1b1620c"
+      "bytes": 256075,
+      "sha256": "a4a5ee2534a13f439866c5b7d7acaf0ac1fa0cd88a5be17475aacd0154a1c66d"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -5117,6 +5117,11 @@
       "sha256": "1704c496be7e60afcebd68af91fef87d24418d41629fe1df969e59eb6eade356"
     },
     {
+      "path": "templates/synthetic-sale-cash-recovery-D33.json",
+      "bytes": 2555,
+      "sha256": "c076bbe1199ae5cfa4f1b64d08c039be86a52aecea005c6ce216d95fce974a90"
+    },
+    {
       "path": "templates/synthetic-sale-closing.json",
       "bytes": 6211,
       "sha256": "503028ba6311093a0e4e1e9a8766b02a2d9170b521d2815ba2adad984ea65203"
@@ -5935,6 +5940,11 @@
       "path": "tools/check_return_replay_D23.py",
       "bytes": 12663,
       "sha256": "72d61804c742ad9b4d0a2d67d57541dd1f11634791d6da0425577708c17ec912"
+    },
+    {
+      "path": "tools/check_sale_cash_recovery_D33.py",
+      "bytes": 8158,
+      "sha256": "777f18b2f9084ec48ffb1a811ceb742d8bdf23544e3f35b8e8b75a4a759014d1"
     },
     {
       "path": "tools/check_settled_lifecycle_T108.py",

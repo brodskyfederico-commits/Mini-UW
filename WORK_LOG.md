@@ -1058,3 +1058,11 @@ La corrida cruza las cuatro variantes de D31 con los cuatro cambios de precio y 
 Con precio bruto de venta cero y costos de venta de USD 500, el préstamo de USD 150 con costos de refinanciación de USD 20 todavía deja USD 5,50 de cobro de venta para el participante del 25 %. Con el préstamo de USD 390, los mismos parámetros de venta generan USD 55,71 de aporte adicional al cierre y cero de cobro de venta para ese participante. Si se combina el préstamo de USD 150 con costos de refinanciación de USD 300 y ese mismo cierre de venta, la caja no recuperada al corte es USD 214,50. Las cifras del informe son exactas y los importes de este registro están redondeados.
 
 La matriz usa los cambios expresos de las fuentes sintéticas. Las métricas se concilian con el proyecto y las decisiones quedan PENDING. [Verificador D32](tools/check_participant_joint_exit_D32.py), [vínculos de la matriz](templates/synthetic-participant-joint-exit-D32.json).
+
+## D33 — Precio de venta para recuperar caja aportada
+
+Conserva el calendario, el reparto, la deuda y los demás flujos de cada combinación de D32. Para cada nivel fijo de costo de venta, el resultado neto con precio bruto cero permite calcular el precio que iguala cobros y aportes nominales. La corrida verifica la fuente de precio cero y recalcula el cierre completo en el punto exacto y a USD 1 por debajo y por encima. Son seis precios y 18 comprobaciones con reparto por evento. La cuota del 25 % registra un neto de −USD 0,25, USD 0 y USD 0,25 en esos tres puntos.
+
+Con costos de venta de USD 20, los precios brutos de recuperación son aproximadamente USD 98,01 para el préstamo de USD 150 y costos de refinanciación de USD 20, USD 102,83 para el préstamo de USD 390 y costos de USD 20, y USD 378,01 para el préstamo de USD 150 y costos de USD 300. Con costos de venta de USD 500, cada precio sube exactamente USD 480. Las dos filas del préstamo de USD 400 quedan PENDING por capacidad.
+
+La igualdad es nominal, dentro de la ventana de caja sintética y con costos fijos. El modelo conserva los precios exactos como fracciones y mantiene pendientes la decisión, la valoración de mercado y el retorno personal verificado. [Verificador D33](tools/check_sale_cash_recovery_D33.py), [vínculos de las comprobaciones](templates/synthetic-sale-cash-recovery-D33.json).
