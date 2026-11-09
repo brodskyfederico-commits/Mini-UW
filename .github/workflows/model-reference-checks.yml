@@ -117,5 +117,7 @@ jobs:
         run: python tools/check_worksheet_recovery_page_D44.py --summary
       - name: Verify worksheet-sourced refinance capacity and one-page cash output
         run: python tools/check_worksheet_refinance_D45.py --summary
+      - name: Verify discounted recovery on the refinanced worksheet page
+        run: python tools/check_worksheet_refinance_recovery_D46.py
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v

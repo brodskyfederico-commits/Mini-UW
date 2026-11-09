@@ -2,6 +2,7 @@
 from argparse import ArgumentParser
 from base64 import b64decode
 from dataclasses import replace
+from fractions import Fraction
 from io import BytesIO
 from pathlib import Path
 from tempfile import TemporaryDirectory
@@ -11,8 +12,10 @@ import sys
 
 from pypdf import PdfReader
 
+from check_discounted_sale_recovery_D34 import validate_grid
 from check_operating_replay_D20 import ROOT, amount, local_file, require
 from check_participant_refinance_variants_D31 import FIXTURE as VARIANTS, SCHEMA as VARIANT_SCHEMA, build_variant_evidence
+from check_worksheet_sale_recovery_D43 import closing_net, recovery_observation, worksheet_bindings
 from demo_project_sale_revisions import load_evidence
 from miniuw_foundation.capacity_project_returns import assemble_capacity_checked_returns
 from miniuw_foundation.cash_risk import summarize_cash_risk
@@ -62,7 +65,7 @@ def worksheet_parameters(raw, context, as_of):
     return dict(workbook_sha256=sheet.source_sha256, parameters=rows, blockers=blockers)
 
 
-def run_case(evidence, worksheet, context, as_of):
+def run_case(evidence, worksheet, context, as_of, monthly_rate=None):
     source = json.loads(evidence.capacity_spec_raw)
     require(source["context"] == context, "Worksheet and refinance case contexts differ")
     check = worksheet_parameters(worksheet, context, as_of)
@@ -71,6 +74,8 @@ def run_case(evidence, worksheet, context, as_of):
                   capacity=None, refinance=None, return_story=None, risk=None,
                   bank_credit_approved=False, personal_investor_return=None,
                   deployment_enabled=False, real_decisions_enabled=False)
+    if monthly_rate is not None:
+        result.update(monthly_discount_rate=str(monthly_rate), cash_recovery=None)
     if check["blockers"]:
         return result
 
@@ -119,6 +124,18 @@ def run_case(evidence, worksheet, context, as_of):
                                  cash_out=categories["net_refinance_distribution"], cash_in=categories["refinance_cash_in"],
                                  sale_date=sale["closing_date"], net_sale_receipt=categories["net_sale_distribution"],
                                  sources_and_uses=bridge))
+    if monthly_rate is not None:
+        sale_source = json.loads(evidence.closings[1].closing_raw)
+        gross = amount(sale_source["amounts"]["gross_proceeds"])
+        flows = validate_grid({"story": story, "evidence": {"grid": json.loads(run.compiled_raw)["grid"],
+                                                           "dated_net_flows": story["dated_net_flows"]}})
+        baseline = closing_net(sale_source)
+        require(flows[-1]["date"] == sale_source["closing_date"]
+                and amount(flows[-1]["net"]) == baseline, "Sale date or cash differs from the guarded ledger")
+        recovery = recovery_observation(sale_source, flows, story["events"], monthly_rate, gross, baseline)
+        result["cash_recovery"] = dict(gross_sale_price=str(gross),
+                                       fixed_sale_closing_costs=str(amount(sale_source["amounts"]["closing_costs_paid"])),
+                                       discount_date=flows[0]["date"], sale_date=flows[-1]["date"], **recovery)
     return result
 
 
@@ -170,6 +187,16 @@ def render_case(case, row):
                           f"{money(year['operating_distributions_only'])} | CoC {money(year['conditional_coc'])}", False))
         lines.append((f"Caja sin recuperar USD {money(row['risk']['cash_shortfall_at_horizon'])} | "
                       f"Pico neto USD {money(row['risk']['peak_cumulative_net_equity_funding_at_date_close'])}", False))
+    if "cash_recovery" in row:
+        recovery = row["cash_recovery"]
+        if recovery is None:
+            lines.append(("Precio de recuperacion en valor presente: Pendiente.", True))
+        else:
+            cents = recovery["minimum_gross_sale_price_in_cents"]
+            minimum = f"{cents // 100}.{cents % 100:02d}"
+            rate = money(rational(Fraction(recovery["monthly_discount_rate"]) * 100))
+            lines.append((f"Venta bruta USD {recovery['gross_sale_price']} | Minimo VP USD {minimum} | "
+                          f"Tasa sintetica {rate}% mensual", True))
     lines.append(("Capital remanente, equity retenido y retorno personal pendientes.", False))
     lines.append(("Criterios de inversion pendientes | Capacidad sintetica sin aprobacion bancaria.", False))
 
@@ -192,7 +219,10 @@ def render_case(case, row):
     return pdf
 
 
-def replay(selected=None):
+def replay(selected=None, monthly_rate=None):
+    if monthly_rate is not None:
+        _, rates = worksheet_bindings()
+        require(monthly_rate in rates, "Monthly rate is outside the archived sensitivity grid")
     fixture, base, variants = sources()
     evidence_by_variant = {}
     for key, case in fixture["cases"].items():
@@ -205,7 +235,7 @@ def replay(selected=None):
         worksheet = b64decode(entry["xlsx_base64"], validate=True)
         require(sha(worksheet) == entry["sha256"], "Worksheet bytes differ")
         result = run_case(evidence_by_variant[variant], worksheet, fixture["scenario_context"],
-                          fixture["worksheet_as_of_UTC"])
+                          fixture["worksheet_as_of_UTC"], monthly_rate)
         blocked = result["worksheet"]["blockers"] + ([] if result["capacity"] is None else result["capacity"]["blockers"])
         require((result["return_story"] is not None and not blocked) if case["expected_blocker"] is None
                 else (result["return_story"] is None and case["expected_blocker"] in blocked),
@@ -228,14 +258,15 @@ if __name__ == "__main__":
     group.add_argument("--summary", action="store_true")
     group.add_argument("--case")
     parser.add_argument("--output", type=Path)
+    parser.add_argument("--monthly-rate", type=Fraction)
     args = parser.parse_args()
     try:
         if args.summary:
-            require(args.output is None, "Summary does not write PDFs")
+            require(args.output is args.monthly_rate is None, "Summary does not accept report options")
             result = summary()
         else:
             require(args.output is not None, "A new PDF output path is required")
-            matches = list(replay(args.case))
+            matches = list(replay(args.case, args.monthly_rate))
             require(len(matches) == 1, "Unknown synthetic refinance case")
             _, result, pdf = matches[0]
             with TemporaryDirectory(dir=args.output.parent, prefix=".miniuw-refinance-") as staging:

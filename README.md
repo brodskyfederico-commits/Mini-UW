@@ -4,6 +4,7 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D46 añade al PDF de refinanciación el precio de recuperación calculado con los flujos de la misma corrida. Ejecuta `PYTHONDONTWRITEBYTECODE=1 python tools/check_worksheet_refinance_D45.py --case cash-out --monthly-rate 0.02 --output /tmp/miniuw-refinanciacion-vp.pdf`. [Control D46](tools/check_worksheet_refinance_recovery_D46.py).
 - D45 conecta tres celdas de la hoja sintética con la capacidad de refinanciación, el libro de equity y una sola página. Ejecuta `PYTHONDONTWRITEBYTECODE=1 python tools/check_worksheet_refinance_D45.py --case cash-out --output /tmp/miniuw-refinanciacion.pdf`. [Verificador y salida D45](tools/check_worksheet_refinance_D45.py).
 - D44 muestra el precio de recuperación D43 en la misma página de la hoja sintética y exige elegir una tasa mensual archivada. Ejecuta `PYTHONDONTWRITEBYTECODE=1 python tools/check_worksheet_recovery_page_D44.py --case matched --monthly-rate 0.02 --output /tmp/miniuw-recuperacion.pdf`. [Verificador y salida de una página D44](tools/check_worksheet_recovery_page_D44.py).
 - D43 calcula la recuperación descontada del equity agregado desde la corrida de la hoja T111. Recalcula el cierre a cada lado del precio de equilibrio y retira las cifras si la hoja o las fuentes están bloqueadas. Ejecuta `PYTHONDONTWRITEBYTECODE=1 python tools/check_worksheet_sale_recovery_D43.py`. [Verificador D43](tools/check_worksheet_sale_recovery_D43.py).
