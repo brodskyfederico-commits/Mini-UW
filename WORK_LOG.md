@@ -1206,3 +1206,9 @@ La auditoría reproduce todo el paquete desde las fuentes del repositorio. El re
 El ejemplo sintético completa seis filas de Cotejo para las tres métricas de Base y Downside. El lector verifica identidad, revisión, corte, unidades, valores exactos, condiciones y estados contra el expediente D52 reproducido desde fuentes. Reporta discrepancias por celda. Los valores de referencia pertenecen al ensayo y la decisión operativa se mantiene PENDING.
 
 Las diez pruebas cubren coincidencia, equivalencia entre fracción y decimal, dato ausente, cero retirado, valor distinto, regla distinta, estado distinto, revisión distinta, fórmula con caché en un campo de entrada y fórmula de presentación alterada. Las columnas I y P son de presentación y sus fórmulas no se usan como evidencia. La hoja sintética se genera como copia y el Excel de Cotejo del piloto real conserva su versión en blanco. [Control D53](tools/check_cotejo_review_D53.py).
+
+## D54 — Cotejo vinculado con el expediente entregado
+
+El comando acepta la carpeta del expediente Base y Downside y la planilla completada. Reproduce el expediente desde las fuentes y usa los mismos bytes verificados para cotejar seis filas. El informe registra el hash del manifiesto, la planilla, el ensayo y los resultados de ambos escenarios. Si coincide, informa COINCIDE como estado de cotejo. Una celda requerida faltante, un valor diferente o una revisión distinta deja el cotejo PENDING. La decisión operativa se conserva PENDING incluso si las seis filas coinciden.
+
+La prueba ejecuta el comando con cuatro planillas y verifica cinco rechazos. Una planilla ausente, un expediente incompleto o un escenario intercambiado con manifiesto recalculado bloquean el informe. El informe se escribe fuera del expediente y conserva cualquier archivo previo. [Comando D54](tools/miniuw_linked_cotejo_D54.py), [control reproducible](tools/check_linked_cotejo_D54.py).

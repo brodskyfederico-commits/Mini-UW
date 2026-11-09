@@ -52,10 +52,14 @@ def read(directory):
     return files
 
 
-def verify(directory):
+def verified_files(directory):
     files = read(directory)
     require(files == build(), "Pilot package differs from source-first replay")
-    return status("verified_source_first", files)
+    return files
+
+
+def verify(directory):
+    return status("verified_source_first", verified_files(directory))
 
 
 def status(operation, files):

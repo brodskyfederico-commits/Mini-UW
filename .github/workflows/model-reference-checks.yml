@@ -131,5 +131,7 @@ jobs:
         run: python tools/check_scenario_package_D52.py
       - name: Verify the filled synthetic Cotejo against source-bound pilot evidence
         run: python tools/check_cotejo_review_D53.py
+      - name: Verify the filled worksheet handoff against the delivered audited scenario package
+        run: python tools/check_linked_cotejo_D54.py
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v
