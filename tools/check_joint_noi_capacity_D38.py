@@ -25,8 +25,8 @@ def read_bound(path, expected):
     return json.loads(raw)
 
 
-def replay_with_cash():
-    """Return the unchanged capacity report and the guarded cash for each matrix loan."""
+def replay_with_evidence():
+    """Return capacity observations and the revised source evidence for each matrix loan."""
     fixture = json.loads(local_file(ROOT, FIXTURE).read_bytes())
     require(fixture["schema"] == SCHEMA and fixture["joint_basis_ref"], "Expected declared joint NOI fixture")
     bank = read_bound(BANK, fixture["bank_fixture_sha256"])
@@ -48,7 +48,7 @@ def replay_with_cash():
 
     matrix = []
     ties = []
-    guarded_by_case = {}
+    evidence_by_case = {}
     for bank_noi in bank_levels:
         dscr_cap = bank_noi / dscr_factor
         for valuation_noi in valuation_levels:
@@ -57,9 +57,9 @@ def replay_with_cash():
             source = f"SYNTHETIC-D38/{bank_noi}/{valuation_noi}"
             results = {}
             for key, parent in parents.items():
-                result, guarded = replay_valuation(parent, valuation_noi, source, bank_noi=bank_noi)
+                result, evidence = replay_valuation(parent, valuation_noi, source, bank_noi=bank_noi)
                 results[key] = result
-                guarded_by_case[f"{bank_noi}/{valuation_noi}/{key}"] = guarded
+                evidence_by_case[f"{bank_noi}/{valuation_noi}/{key}"] = evidence
             for result in results.values():
                 blocked = Fraction(result["principal"]) > maximum
                 require(Fraction(result["capacity"]) == maximum
@@ -83,11 +83,16 @@ def replay_with_cash():
         ties.append(dict(bank_noi=str(bank_noi), exact_valuation_noi=str(exact_tie), probes=tie_probes))
     report = dict(status="passed", scope="synthetic_joint_bank_and_valuation_noi", currency="USD", decision="PENDING",
                   matrix=matrix, ties=ties, deployment_enabled=False, real_decisions_enabled=False)
-    return report, guarded_by_case
+    return report, evidence_by_case
+
+
+def replay_with_cash():
+    report, cases = replay_with_evidence()
+    return report, {key: evidence.guarded_run for key, evidence in cases.items()}
 
 
 def run():
-    report, _ = replay_with_cash()
+    report, _ = replay_with_evidence()
     return report
 
 

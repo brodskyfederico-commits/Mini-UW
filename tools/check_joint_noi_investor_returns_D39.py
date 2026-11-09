@@ -19,8 +19,7 @@ FIELDS = ("gross_contributions", "gross_distributions", "net_cash_profit",
           "peak_cumulative_net_equity_funding_at_date_close", "sale_share_of_distributions")
 
 
-def replay_cases():
-    matrix, guarded_by_case = replay_with_cash()
+def cases_from_cash(matrix, guarded_by_case):
     for row in matrix["matrix"]:
         for key, loan in row["loans"].items():
             case = f"{row['bank_noi']}/{row['valuation_noi']}/{key}"
@@ -46,6 +45,10 @@ def replay_cases():
                           exceeded_limits=exceeded, blockers=loan["blockers"], decision="PENDING",
                           return_state="PENDING", participants=None, project=None)
             yield case, result, parent
+
+
+def replay_cases():
+    return cases_from_cash(*replay_with_cash())
 
 
 def expose_returns(terms, parent, binding):

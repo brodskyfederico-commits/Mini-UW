@@ -117,7 +117,10 @@ def replay_valuation(base, valuation_noi, source, *, stale_valuation=False, bank
                        capacity=str(maximum), dscr_capacity=str(dscr_cap), ltv_capacity=str(ltv_cap),
                        binding_limits=binding_limits, blockers=blockers,
                        state="PENDING" if blockers else "compatible_synthetic_capacity")
-    return observation, guarded
+    revised = replace(base, closings=closings, manifest_raw=manifest_raw, project_run=project,
+                      capacity_inputs=inputs, capacity_spec_raw=spec_raw, capacity_run=capacity,
+                      binding=binding, guarded_run=guarded)
+    return observation, revised
 
 
 def observe(base, valuation_noi, source, *, stale_valuation=False, bank_noi=None):
