@@ -1,0 +1,132 @@
+{
+  "schema": "miniuw.synthetic-first-pilot.v1",
+  "case_path": "templates/synthetic-unified-worksheet-sale-D47.json",
+  "case_sha256": "41c0123ba62e52c838e821b66f2d02211ae81340f18fdf3a522f81e5fe3e4816",
+  "metric_id": "equity_multiple",
+  "criteria_revision": "SYNTHETIC-D49-EM-test-only-v1",
+  "cases": [
+    {
+      "id": "igualdad_pass",
+      "archive_case": "matched",
+      "pass_condition": {
+        "operator": ">=",
+        "threshold": {
+          "numerator": "389",
+          "denominator": "700"
+        }
+      },
+      "fail_condition": {
+        "operator": "<",
+        "threshold": {
+          "numerator": "1",
+          "denominator": "2"
+        }
+      },
+      "expected": "PASS",
+      "expected_state": "PASS_CONDITION",
+      "expected_blocker": null
+    },
+    {
+      "id": "fallo_explicito",
+      "archive_case": "matched",
+      "pass_condition": {
+        "operator": ">=",
+        "threshold": {
+          "numerator": "3",
+          "denominator": "4"
+        }
+      },
+      "fail_condition": {
+        "operator": "<",
+        "threshold": {
+          "numerator": "3",
+          "denominator": "5"
+        }
+      },
+      "expected": "FAIL",
+      "expected_state": "FAIL_CONDITION",
+      "expected_blocker": null
+    },
+    {
+      "id": "banda_intermedia",
+      "archive_case": "matched",
+      "pass_condition": {
+        "operator": ">=",
+        "threshold": {
+          "numerator": "3",
+          "denominator": "4"
+        }
+      },
+      "fail_condition": {
+        "operator": "<",
+        "threshold": {
+          "numerator": "1",
+          "denominator": "2"
+        }
+      },
+      "expected": "PENDING",
+      "expected_state": "BAND",
+      "expected_blocker": "intermediate_band_pending_professional_review"
+    },
+    {
+      "id": "regla_faltante",
+      "archive_case": "matched",
+      "pass_condition": {
+        "operator": ">=",
+        "threshold": {
+          "numerator": "1",
+          "denominator": "2"
+        }
+      },
+      "fail_condition": {
+        "operator": null,
+        "threshold": null
+      },
+      "expected": "PENDING",
+      "expected_state": "PENDING",
+      "expected_blocker": "fail_condition_rule_missing_or_unsupported"
+    },
+    {
+      "id": "reglas_solapadas",
+      "archive_case": "matched",
+      "pass_condition": {
+        "operator": ">=",
+        "threshold": {
+          "numerator": "389",
+          "denominator": "700"
+        }
+      },
+      "fail_condition": {
+        "operator": "<=",
+        "threshold": {
+          "numerator": "389",
+          "denominator": "700"
+        }
+      },
+      "expected": "PENDING",
+      "expected_state": "CONFLICT",
+      "expected_blocker": "pass_fail_regions_overlap"
+    },
+    {
+      "id": "fuente_vencida",
+      "archive_case": "parent-expired",
+      "pass_condition": {
+        "operator": ">=",
+        "threshold": {
+          "numerator": "1",
+          "denominator": "2"
+        }
+      },
+      "fail_condition": {
+        "operator": "<",
+        "threshold": {
+          "numerator": "2",
+          "denominator": "5"
+        }
+      },
+      "expected": "PENDING",
+      "expected_state": "PENDING",
+      "expected_blocker": "metric_value_missing"
+    }
+  ]
+}

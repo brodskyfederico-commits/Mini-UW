@@ -1172,3 +1172,11 @@ El paquete guarda la entrada exacta, el JSON de resultados con contrato común, 
 Ejecuta el comando público de corrida y auditoría para once expedientes. Cuatro muestran caja y retorno agregado. Siete retiran el retorno y el precio de recuperación por evidencia vencida, conflicto, identidad, dato ausente, fórmula o capacidad. Cada expediente produce exactamente una página y conserva PENDING.
 
 Los casos calculables se contrastan con un inventario independiente de flujos fechados. Se verifican aportes, cobros, venta, capacidad por DSCR y LTV, fuentes y usos de refinanciación, múltiplo, caja anual, intervalo de TIR y precio de recuperación a la tasa sintética explícita. La auditoría rechaza resultados o PDF alterados aunque se recalculen los hashes del manifiesto. Se comprueban el reintento idéntico, el rechazo de una salida distinta y tres entradas inválidas sin materialización. El cierre de esta prueba abarca los perfiles sintéticos archivados. [Control D48](tools/check_unified_worksheet_D48.py).
+
+## D49 — Primer piloto sintético y planilla para cotejar PASS/FAIL
+
+El piloto usa el caso sin refinanciación de D47. Reproduce los cuatro archivos del expediente y compara su equity multiple con el inventario fechado independiente de D48. Los aportes de USD 1.400 y los cobros de USD 778 dan 389/700. El PDF conserva una página y decisión PENDING.
+
+El comparador T11 usa el múltiplo de ese expediente y criterios expresos sólo para el ensayo. Seis pruebas verifican PASS en la igualdad inclusiva, FAIL explícito y cuatro PENDING por banda, regla ausente, criterios solapados o evidencia vencida. El comparador conserva la decisión operativa PENDING en todos los casos. El ensayo evalúa una métrica y un escenario sintéticos.
+
+La planilla XLSX separa guía, cotejo real en blanco, ensayo y flujos de referencia. El cotejo tiene filas para las diez métricas y espacio para escenario, definición, fuente, valor del Mini-UW, valor independiente, reglas y resultados. La diferencia numérica y el cotejo de estados ayudan a revisar ambos valores. La hoja en blanco conserva los umbrales vacíos. [Planilla](docs/review/MiniUW_Planilla_Cotejo_D49.xlsx), [control reproducible](tools/check_first_pilot_D49.py), [reglas de ensayo](templates/synthetic-first-pilot-D49.json).

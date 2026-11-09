@@ -1,10 +1,10 @@
 {
-  "scope": "I01 preserved design, D02–D48 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D49 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 7767,
-      "sha256": "4f8d37cdd70fbc384c32ad6b4ec8a0ec4a1dc763ef7546809b5c8ef6db7ead46"
+      "bytes": 7904,
+      "sha256": "66b4f6008d2e46126c7aa7f459cdacdeaebf6bac0cbb5fd81f5094f81842e97d"
     },
     {
       "path": ".gitignore",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 61536,
-      "sha256": "554913346bfa080ee6d5e9b08a3a07ea60a360d638bbe0e5786e5cbe27dd732c"
+      "bytes": 61871,
+      "sha256": "fd4ed25a453e3287aa6a30439d7e8449e674d8be36c9159f13d32b65d6a624dd"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 274101,
-      "sha256": "24d703f09a503b6cf0be1c8df28f6833aa21d44d5356f38b459417686ef2b3ab"
+      "bytes": 275383,
+      "sha256": "181e5962c7ddc9fa81b46f1a1465774657c12836a6b18909d02700d816fc8465"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -945,6 +945,11 @@
       "path": "docs/review/MiniUW_Flujo_y_Retorno_del_Inversor_2_paginas_v2.pdf",
       "bytes": 53174,
       "sha256": "07d48b0ef234c29deb78a75f202fa1ade250da1f2a2d77589d02409015ee1ca1"
+    },
+    {
+      "path": "docs/review/MiniUW_Planilla_Cotejo_D49.xlsx",
+      "bytes": 26903,
+      "sha256": "0326fcf99257cb92ee2296980a3be75deb4c01d9358fd5a1ba9eb6eb693327c7"
     },
     {
       "path": "docs/review/MiniUW_Revision_Interna_Retorno_T56.md",
@@ -4847,6 +4852,11 @@
       "sha256": "ab8cb1cdbb8c4789bf7a1bef87003ee54e8eb1a87c9f29238c261c358ea8a7ed"
     },
     {
+      "path": "templates/synthetic-first-pilot-D49.json",
+      "bytes": 3235,
+      "sha256": "4b5603562895ed0277ee9ed8e67d8a1bf2ea4cd2bab7a410ea4de40bb8ca56bc"
+    },
+    {
       "path": "templates/synthetic-hold-sale-bundle-example.json",
       "bytes": 71327,
       "sha256": "24de946773f51a6e780ed94ed2910c1d98ae8a839b2d88a08559a5dda8b72fca"
@@ -5937,6 +5947,11 @@
       "sha256": "20f049ab0b80207ed0424cfc9c2e90271bff7d61d127b8ff733fa11ca1579ae6"
     },
     {
+      "path": "tools/check_first_pilot_D49.py",
+      "bytes": 7313,
+      "sha256": "e6027698e64c8bbcab5fc5c374a029209fa2edc6e184f142150ff3e24d5b8e8c"
+    },
+    {
       "path": "tools/check_insurance_terminal_T107.py",
       "bytes": 7471,
       "sha256": "adf1d58313f0b02cd3bca219bae1f41f246b6817d7ce5eb0f2604e5e5a0e2bb2"
@@ -6425,6 +6440,11 @@
       "path": "tools/phased_settled_miniuw_v1.py",
       "bytes": 1107,
       "sha256": "4c1dea3147ca47bd48d6e11b0474ca41c98e229dca686753f754f0559b7cb5a5"
+    },
+    {
+      "path": "tools/pilot_workbook_D49.py",
+      "bytes": 10767,
+      "sha256": "b58ddc5ade8afc7b633f1de8c404f53be7da2ead00557f5996c6b7706b96131f"
     },
     {
       "path": "tools/renewal_miniuw_v1.py",
