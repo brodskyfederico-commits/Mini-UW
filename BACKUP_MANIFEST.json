@@ -1,10 +1,10 @@
 {
-  "scope": "I01 preserved design, D02–D54 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D55 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 8603,
-      "sha256": "5cb3f49f4ed868fa48b7553e326de3f6bcaa90b58bb9b7250fa9f7d02b1d9ed3"
+      "bytes": 8736,
+      "sha256": "7225933700cb9af7e6a09b4eab75895838b642a4fef3ecf399355e3ec012ccd2"
     },
     {
       "path": ".gitignore",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 63583,
-      "sha256": "9f7c819e2297106f9eae11ca212c5203457cc89d317ec4e1d949980a447c59a4"
+      "bytes": 63784,
+      "sha256": "c6fc90b27af1a19f3e5ba0a388107d9d72dd21a0d95766a1d1c9fe2791a7967b"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 280876,
-      "sha256": "ca304b4bd12ebf1edfad47b2eea81a938a9515597a31dafe192a4db98b6d905b"
+      "bytes": 281657,
+      "sha256": "316f20ceba14158d0ba798fbf1fb2f0fb6111a6310f47cdd54ee6b125b4fab0f"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -5927,9 +5927,14 @@
       "sha256": "03712ab2f3ea26d0547f2ccccc1ca72da27782abca559068408baa31895b652b"
     },
     {
+      "path": "tools/check_cotejo_diagnostics_D55.py",
+      "bytes": 3363,
+      "sha256": "26ee62957467200f658b9f8d81c72d56682ed32165b6fec77de3c07641d99b29"
+    },
+    {
       "path": "tools/check_cotejo_review_D53.py",
-      "bytes": 12293,
-      "sha256": "1f0fd113657fdf30b30745b2b0ad4942c5b50e4c5401fbeb0dc4c234c5671dc5"
+      "bytes": 14993,
+      "sha256": "421696a9e88f946121387521bdb50f72be1728d11925cdf1fc59bbcf37e581af"
     },
     {
       "path": "tools/check_current_settled_T109.py",

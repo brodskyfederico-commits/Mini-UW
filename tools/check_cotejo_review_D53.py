@@ -83,7 +83,9 @@ def ratio(record):
 
 def reference_inputs(package):
     evidence = json.loads(package[TOP_FILES[1]])
-    chosen, = (p for p in evidence["probes"] if p["id"] == "downside_fail")
+    (probe_index, chosen), = ((i, p) for i, p in enumerate(evidence["probes"]) if p["id"] == "downside_fail")
+    probe_pointer = f"/probes/{probe_index}"
+    evidence_file = TOP_FILES[1]
     require(chosen["simulation"] == "FAIL" and chosen["decision"] == "PENDING", "Unexpected synthetic comparison")
     base = json.loads(package["Base/results.json"])
     metadata = {
@@ -92,8 +94,16 @@ def reference_inputs(package):
         "B3": "Base / Downside", "D3": chosen["input"]["aggregation_rule"],
         "B4": sha(package[TOP_FILES[1]]), "B5": chosen["simulation"], "D5": chosen["expected"],
     }
+    references = {addr: {"archivo": "Base/results.json", "puntero": pointer} for addr, pointer in (
+        ("B2", "/context/deal_id"), ("F2", "/evaluated_as_of_UTC"), ("H2", "/project/currency"),
+    )}
+    references.update({addr: {"archivo": evidence_file, "puntero": pointer} for addr, pointer in (
+        ("D2", probe_pointer + "/input/criteria_revision"), ("B3", probe_pointer + "/input/required_scenarios"),
+        ("D3", probe_pointer + "/input/aggregation_rule"), ("B4", ""), ("B5", probe_pointer + "/simulation"),
+        ("D5", probe_pointer + "/expected"),
+    )})
     rows = []
-    for row in chosen["comparisons"]:
+    for index, row in enumerate(chosen["comparisons"], 9):
         value = row["metric_record"]
         criterion = row["criterion_record"]
         amount = ratio(value["value"])
@@ -106,7 +116,28 @@ def reference_inputs(package):
             amount, independent, criterion["pass_condition"]["operator"], ratio(criterion["pass_condition"]["threshold"]),
             criterion["fail_condition"]["operator"], ratio(criterion["fail_condition"]["threshold"]), state, state,
         ))) | {"B": LABELS[row["metric_id"]]})
-    return metadata, rows
+        comparison_pointer = f"{probe_pointer}/comparisons/{index - 9}"
+        metric_pointer = probe_pointer + "/input" + row["metric_locator"].removesuffix("/value")
+        rule_pointer = probe_pointer + "/input" + row["criterion_locator"]
+        pointers = {
+            "A": metric_pointer + "/scenario_id", "B": metric_pointer + "/metric_id",
+            "C": metric_pointer + "/applicability", "D": metric_pointer + "/unit",
+            "E": metric_pointer, "F": probe_pointer + "/input/criteria_revision",
+            "G": metric_pointer + "/value",
+            "H": f"/sources/{row['scenario_id']}/values/{row['metric_id']}",
+            "J": rule_pointer + "/pass_condition/operator", "K": rule_pointer + "/pass_condition/threshold",
+            "L": rule_pointer + "/fail_condition/operator", "M": rule_pointer + "/fail_condition/threshold",
+            "N": comparison_pointer + "/state", "O": comparison_pointer + "/state",
+        }
+        references.update({f"{column}{index}": {"archivo": evidence_file, "puntero": pointer}
+                           for column, pointer in pointers.items()})
+    return metadata, rows, references
+
+
+def exact_number(literal):
+    if not re.fullmatch(r"[-+]?(?:[0-9]{1,40}(?:\.[0-9]{1,40})?|[0-9]{1,40}/[1-9][0-9]{0,39})", literal or ""):
+        return None
+    return Fraction(literal)
 
 
 def compare_cell(cells, address, expected, numeric=False):
@@ -117,21 +148,23 @@ def compare_cell(cells, address, expected, numeric=False):
     if kind == "blank" or literal == "":
         return "faltante"
     if numeric:
-        if kind not in ("text", "numeric_lexeme") or not re.fullmatch(
-                r"[-+]?(?:[0-9]{1,40}(?:\.[0-9]{1,40})?|[0-9]{1,40}/[1-9][0-9]{0,39})", literal or ""):
+        value = exact_number(literal) if kind in ("text", "numeric_lexeme") else None
+        if value is None:
             return "formato_exacto_no_admitido"
-        return None if Fraction(literal) == Fraction(expected) else "valor_distinto"
+        return None if value == Fraction(expected) else "valor_distinto"
     return None if kind == "text" and literal == expected else "texto_distinto"
 
 
 def review(raw, package):
     cells = worksheet_cells(raw)
-    metadata, rows = reference_inputs(package)
+    metadata, rows, references = reference_inputs(package)
     require(cells.get("A1", {}).get("literal") == "ENSAYO SINTÉTICO D53 | Cotejo de Base y Downside",
             "Explicit synthetic Cotejo marker required")
     issues = {addr: err for addr, expected in metadata.items() if (err := compare_cell(cells, addr, expected))}
     output_rows = []
+    expected_cells = dict(metadata)
     for index, row in enumerate(rows, 9):
+        expected_cells.update({col + str(index): value for col, value in row.items()})
         errors = {col + str(index): err for col, expected in row.items()
                   if (err := compare_cell(cells, col + str(index), expected, numeric=col in "GHKM"))}
         issues.update(errors)
@@ -139,15 +172,25 @@ def review(raw, package):
                                 incidencias=errors))
     require(all(cells.get(f"{col}{index}", {}).get("kind", "blank") == "blank"
                 for index in range(15, 19) for col in INPUT_COLS), "Unexpected additional populated Cotejo rows")
+    details = []
+    for address, issue in sorted(issues.items()):
+        item = cells.get(address, {"kind": "blank", "literal": None})
+        expected = expected_cells[address]
+        received = item["literal"]
+        details.append(dict(celda=f"Cotejo!{address}", motivo=issue, recibido=received, tipo_recibido=item["kind"],
+                            esperado=expected, fuente=references[address],
+                            diferencia_exacta=str(Fraction(received) - Fraction(expected))
+                            if issue == "valor_distinto" else None))
     return dict(estado="PENDING" if issues else "COINCIDE", decision="PENDING", synthetic=True,
                 workbook_sha256=sha(raw), evidence_sha256=sha(package[TOP_FILES[1]]),
-                formulas_cotejo_ignoradas=["I", "P"], incidencias=issues, comparaciones=output_rows)
+                formulas_cotejo_ignoradas=["I", "P"], incidencias=issues, detalle_incidencias=details,
+                comparaciones=output_rows)
 
 
 def filled_workbook(package, changes=None):
     parts = _parts(package[TOP_FILES[0]])
     path, sheet, _ = cotejo_sheet(parts)
-    metadata, rows = reference_inputs(package)
+    metadata, rows, _ = reference_inputs(package)
     edits = {"A1": "ENSAYO SINTÉTICO D53 | Cotejo de Base y Downside",
              "A5": "Resultado simulado (Mini-UW)",
              "A6": "Las fracciones se guardan como texto exacto. El verificador compara valores, reglas y estados."} | metadata

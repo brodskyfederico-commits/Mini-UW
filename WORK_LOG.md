@@ -1212,3 +1212,9 @@ Las diez pruebas cubren coincidencia, equivalencia entre fracción y decimal, da
 El comando acepta la carpeta del expediente Base y Downside y la planilla completada. Reproduce el expediente desde las fuentes y usa los mismos bytes verificados para cotejar seis filas. El informe registra el hash del manifiesto, la planilla, el ensayo y los resultados de ambos escenarios. Si coincide, informa COINCIDE como estado de cotejo. Una celda requerida faltante, un valor diferente o una revisión distinta deja el cotejo PENDING. La decisión operativa se conserva PENDING incluso si las seis filas coinciden.
 
 La prueba ejecuta el comando con cuatro planillas y verifica cinco rechazos. Una planilla ausente, un expediente incompleto o un escenario intercambiado con manifiesto recalculado bloquean el informe. El informe se escribe fuera del expediente y conserva cualquier archivo previo. [Comando D54](tools/miniuw_linked_cotejo_D54.py), [control reproducible](tools/check_linked_cotejo_D54.py).
+
+## D55 — Informe de discrepancias con valores y fuentes
+
+El informe D54 identifica cada incidencia con la celda, el motivo, el tipo y valor recibido, el valor esperado y un puntero a la fuente del expediente. Para dos números válidos en conflicto devuelve la diferencia exacta. Un faltante o una fórmula se informa sin convertirlo en cero ni tomar el resultado guardado como valor.
+
+La prueba reúne cinco discrepancias. Incluye Cotejo!H14, que trae USD 81 frente a los USD 80 de la referencia independiente de Downside. La diferencia es USD 1. Se validan también la revisión distinta, una condición incompleta, el resultado de comparación distinto y una fórmula con caché. El cotejo y la decisión siguen PENDING. [Control D55](tools/check_cotejo_diagnostics_D55.py).

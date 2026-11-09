@@ -4,6 +4,7 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D55 añade al informe de cotejo el dato recibido, el dato esperado, la diferencia exacta cuando corresponde y la ruta en el expediente auditado. [Control D55](tools/check_cotejo_diagnostics_D55.py).
 - D54 vincula la planilla completada con el expediente auditado. Ejecuta `PYTHONDONTWRITEBYTECODE=1 python tools/miniuw_linked_cotejo_D54.py --package /tmp/miniuw-expediente --workbook /tmp/miniuw-cotejo/MiniUW_Cotejo_Sintetico_D53.xlsx --output /tmp/miniuw-cotejo-verificado.json`. [Control D54](tools/check_linked_cotejo_D54.py).
 - D53 coteja una copia sintética completada de la planilla contra el expediente auditado. Ejecuta `PYTHONDONTWRITEBYTECODE=1 python tools/check_cotejo_review_D53.py --output /tmp/miniuw-cotejo` para generar el ejemplo y `python tools/check_cotejo_review_D53.py --review /tmp/miniuw-cotejo/MiniUW_Cotejo_Sintetico_D53.xlsx` para verificarlo. [Control D53](tools/check_cotejo_review_D53.py).
 - D52 agrupa la planilla, el ensayo y los expedientes Base y Downside. Usa `PYTHONDONTWRITEBYTECODE=1 python tools/miniuw_scenario_package_D52.py run /tmp/miniuw-expediente` y `python tools/miniuw_scenario_package_D52.py audit /tmp/miniuw-expediente`. [Control D52](tools/check_scenario_package_D52.py).

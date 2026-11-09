@@ -133,5 +133,7 @@ jobs:
         run: python tools/check_cotejo_review_D53.py
       - name: Verify the filled worksheet handoff against the delivered audited scenario package
         run: python tools/check_linked_cotejo_D54.py
+      - name: Verify linked Cotejo discrepancy details and source pointers
+        run: python tools/check_cotejo_diagnostics_D55.py
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v
