@@ -143,5 +143,7 @@ jobs:
         run: python tools/check_downside_threshold_revision_D58.py
       - name: Verify synthetic current revision registration and workbook withdrawal
         run: python tools/check_current_cotejo_D59.py
+      - name: Verify atomic current-revision check before synthetic Cotejo publication
+        run: python tools/check_current_publication_D60.py
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v

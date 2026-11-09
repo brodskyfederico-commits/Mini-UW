@@ -1242,3 +1242,9 @@ La planilla R2 coincide con R2 y queda PENDING frente a R3. El informe señala l
 El registro acepta R2 y su sucesora R3 después de reproducir sus expedientes. Conserva las dos entradas y sus hashes. Para avanzar exige identificar el manifiesto previo. El avance se hace bajo un bloqueo de archivo local y publica el nuevo registro como un archivo completo. El reintento exacto verifica la entrada existente. La prueba rechaza una revisión inicial incorrecta, un predecesor distinto, un retroceso y un expediente histórico cuando la revisión vigente ya avanzó.
 
 El cotejo puede tomar la vigencia del registro sin copiar el hash en cada revisión. Con R3 vigente, la planilla R2 queda PENDING contra el expediente R3. La planilla R3 coincide. El registro y el cotejo mantienen PENDING la decisión operativa. [Comando D59](tools/miniuw_current_cotejo_D59.py), [control reproducible](tools/check_current_cotejo_D59.py).
+
+## D60 — Publicación local condicionada a la vigencia
+
+El cotejo prepara el informe desde la revisión observada y vuelve a validar el registro justo antes de publicar. El avance del registro y la publicación usan el mismo bloqueo local. El informe se crea en una ruta nueva. El archivo existente se conserva si se repite la ruta de destino.
+
+La prueba pausa un cotejo R2 después del cálculo y activa R3 en otra ejecución. El intento R2 se rechaza y no deja un informe. El cotejo R3 se publica con los hashes exactos del expediente y del registro vigente. La decisión continúa PENDING y los dos expedientes permanecen idénticos. El alcance es local y sintético. [Control concurrente D60](tools/check_current_publication_D60.py).

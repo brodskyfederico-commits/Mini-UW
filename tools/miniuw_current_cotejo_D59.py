@@ -10,7 +10,7 @@ import re
 import sys
 
 from check_operating_replay_D20 import require
-from miniuw_linked_cotejo_D54 import compare
+from miniuw_linked_cotejo_D54 import compare, publish
 from miniuw_scenario_package_D52 import REVISION, SCENARIOS, THRESHOLD_REVISION, TOP_FILES, verified_files
 from miniuw_worksheet_v1 import encoded
 from miniuw_foundation.expense_cash_detail import _exact, _json
@@ -114,6 +114,18 @@ def review_current(register, package, workbook):
     return result | dict(revision_observada=current["revision"], registro_sha256=token)
 
 
+def publish_current(register, package, workbook, output):
+    require(not output.resolve().is_relative_to(package.resolve()), "Write the review outside the delivered package")
+    result = review_current(register, package, workbook)
+    with revision_lock(register):
+        history, token = load(register)
+        require(token == result["registro_sha256"]
+                and history[-1]["manifest_sha256"] == result["expediente_manifest_sha256"],
+                "Revision advanced while preparing the review; no report was published")
+        publish(output, result)
+    return result
+
+
 def main():
     parser = ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest="command", required=True)
@@ -127,6 +139,7 @@ def main():
     review.add_argument("registry", type=Path)
     review.add_argument("package", type=Path)
     review.add_argument("workbook", type=Path)
+    review.add_argument("--output", type=Path, help="Publish only if the registered revision remains current.")
     args = parser.parse_args()
     try:
         if args.command == "register":
@@ -134,6 +147,8 @@ def main():
         elif args.command == "current":
             history, token = load(args.registry)
             result = dict(decision="PENDING", vigente=history[-1], history=history, registro_sha256=token)
+        elif args.output is not None:
+            result = publish_current(args.registry, args.package, args.workbook, args.output)
         else:
             result = review_current(args.registry, args.package, args.workbook)
         print(json.dumps(result, ensure_ascii=False))
