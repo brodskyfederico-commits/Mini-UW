@@ -1,0 +1,26 @@
+{
+  "schema": "miniuw.synthetic-worksheet-sale-recovery.v1",
+  "discount_fixture_sha256": "7e545e434809fd1828ea088dc8d7d252a23202219afe1a86cfcb2ac2b9987d49",
+  "worksheet_cases": {
+    "matched": {
+      "path": "templates/worksheet-settled-matched-T111.json",
+      "sha256": "d699bcede042400c53cd22ede9ed139a6e19057ce44c0d3f8ccd2f462f7c0bdb",
+      "expected_cash_available": true
+    },
+    "twelve": {
+      "path": "templates/worksheet-settled-twelve-T111.json",
+      "sha256": "8f95587d646cafd5e66498f361a5094afba32bc2b53bcfd793e2a55848445c82",
+      "expected_cash_available": true
+    },
+    "parent-expired": {
+      "path": "templates/worksheet-settled-parent-expired-T111.json",
+      "sha256": "9a5d07c628c4a1c64c7ad2435b875ad2e50c09216cdc80109ae5b26d132fc114",
+      "expected_cash_available": false
+    },
+    "zero-conflict": {
+      "path": "templates/worksheet-settled-zero-conflict-T111.json",
+      "sha256": "4d1da260d4bb8722ad6c534844e91fa89e6e36e919287581251e26ee6e301249",
+      "expected_cash_available": false
+    }
+  }
+}

@@ -1,10 +1,10 @@
 {
-  "scope": "I01 preserved design, D02–D42 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D43 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 7029,
-      "sha256": "83cb73195d03eb4a2ebd40a25581440d54a1bc0af8bd2718cc42bb6e1a6852bf"
+      "bytes": 7186,
+      "sha256": "0a43858d31d14d37b99b31a5a34a442891c3d2e381e4ed7204412a08cacd18bc"
     },
     {
       "path": ".gitignore",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 59363,
-      "sha256": "0b6562ac577079ee615dae27802bacaf099ed96af6072ef1e975e2cf3dba6126"
+      "bytes": 59730,
+      "sha256": "558c0025a06b4db39875d21a47737fe6d6359c7dc0bc70d056690865bf800417"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 267762,
-      "sha256": "b6c25deca0f24f51e3d941d5b896d44a56fa99645476c9961bdeec65dbf65ddf"
+      "bytes": 268861,
+      "sha256": "2ac1940f28988d2cb3b747e90c0a060ec8dbcd1600aee9e4fd283e3de7fea764"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -5227,6 +5227,11 @@
       "sha256": "d7acbf6cd7eefd921b183c89e9ac987a33dc5105f2c8be886969f05d22b36042"
     },
     {
+      "path": "templates/synthetic-worksheet-sale-recovery-D43.json",
+      "bytes": 1048,
+      "sha256": "807a958e1b87fe13784b695e9d86ad146f0172f24576a7cd9e80d9573c0398ea"
+    },
+    {
       "path": "templates/synthetic-zero-tax-schedule.json",
       "bytes": 1348,
       "sha256": "4a590bd08b8aea42f555c6bfe167aec1a0f607f082e422e9be854cf276af6448"
@@ -6050,6 +6055,11 @@
       "path": "tools/check_worksheet_case_T103.py",
       "bytes": 8592,
       "sha256": "f9d408ad9371cc68545482aa573a11731d4b794438314f02268b043a0a7e5dcb"
+    },
+    {
+      "path": "tools/check_worksheet_sale_recovery_D43.py",
+      "bytes": 7518,
+      "sha256": "1a686557809e478ffac5c855c827670243d60d800412299479bfd603a5fb4f5e"
     },
     {
       "path": "tools/check_worksheet_settled_T111.py",
