@@ -4,6 +4,7 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D59 registra la revisión sintética vigente y permite cotejar contra el registro local. Usa los subcomandos `register`, `current` y `review` de `python tools/miniuw_current_cotejo_D59.py`. [Control D59](tools/check_current_cotejo_D59.py).
 - D58 recalcula el ensayo después de cambiar un umbral de Downside y comprueba que la planilla anterior quede PENDING. Ejecuta `PYTHONDONTWRITEBYTECODE=1 python tools/check_downside_threshold_revision_D58.py`. [Control D58](tools/check_downside_threshold_revision_D58.py).
 - D57 verifica que una planilla coincidente se vuelva PENDING al cotejarla con una revisión sintética nueva. El comando D54 admite `--current-manifest-sha256` para fijar el expediente vigente. [Control D57](tools/check_cotejo_revision_D57.py).
 - D56 comprueba el ciclo de corrección y recotejo contra el mismo expediente. Ejecuta `PYTHONDONTWRITEBYTECODE=1 python tools/check_cotejo_corrections_D56.py --package /tmp/miniuw-expediente --output /tmp/miniuw-cotejo-corregido`. [Control D56](tools/check_cotejo_corrections_D56.py).

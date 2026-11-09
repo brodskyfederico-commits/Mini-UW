@@ -1236,3 +1236,9 @@ La planilla corregida D56 coincide con la revisión anterior en un cotejo histó
 La revisión sintética R3 cambia sólo el umbral de FAIL del múltiplo de equity de Downside, de menor que 1,05 a menor que 1,00. La condición PASS mayor o igual a 1,20 se conserva. El múltiplo de 1,0204 queda en la banda intermedia. El comparador recalcula FAIL simulado en R2 y PENDING simulado en R3. Las otras cinco comparaciones, los valores de las métricas y los ocho archivos financieros son idénticos.
 
 La planilla R2 coincide con R2 y queda PENDING frente a R3. El informe señala las referencias de revisión, el umbral cambiado y los estados anteriores. Una copia alineada con R3 coincide en sus seis filas. El cotejo conserva la distinción entre COINCIDE, la simulación PENDING por banda y la decisión operativa PENDING. [Control D58](tools/check_downside_threshold_revision_D58.py), [revisión sintética](templates/synthetic-pilot-revision-D58.json).
+
+## D59 — Registro local de vigencia para el piloto sintético
+
+El registro acepta R2 y su sucesora R3 después de reproducir sus expedientes. Conserva las dos entradas y sus hashes. Para avanzar exige identificar el manifiesto previo. El avance se hace bajo un bloqueo de archivo local y publica el nuevo registro como un archivo completo. El reintento exacto verifica la entrada existente. La prueba rechaza una revisión inicial incorrecta, un predecesor distinto, un retroceso y un expediente histórico cuando la revisión vigente ya avanzó.
+
+El cotejo puede tomar la vigencia del registro sin copiar el hash en cada revisión. Con R3 vigente, la planilla R2 queda PENDING contra el expediente R3. La planilla R3 coincide. El registro y el cotejo mantienen PENDING la decisión operativa. [Comando D59](tools/miniuw_current_cotejo_D59.py), [control reproducible](tools/check_current_cotejo_D59.py).
