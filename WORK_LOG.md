@@ -1066,3 +1066,11 @@ Conserva el calendario, el reparto, la deuda y los demás flujos de cada combina
 Con costos de venta de USD 20, los precios brutos de recuperación son aproximadamente USD 98,01 para el préstamo de USD 150 y costos de refinanciación de USD 20, USD 102,83 para el préstamo de USD 390 y costos de USD 20, y USD 378,01 para el préstamo de USD 150 y costos de USD 300. Con costos de venta de USD 500, cada precio sube exactamente USD 480. Las dos filas del préstamo de USD 400 quedan PENDING por capacidad.
 
 La igualdad es nominal, dentro de la ventana de caja sintética y con costos fijos. El modelo conserva los precios exactos como fracciones y mantiene pendientes la decisión, la valoración de mercado y el retorno personal verificado. [Verificador D33](tools/check_sale_cash_recovery_D33.py), [vínculos de las comprobaciones](templates/synthetic-sale-cash-recovery-D33.json).
+
+## D34 — Precio de venta para recuperar caja en valor presente
+
+La corrida conserva las fechas y los seis casos de D33 y aplica un descuento sintético del 1 % mensual desde la primera fecha de caja. El equivalente anual efectivo es aproximadamente 12,68 %. A tasa cero se obtiene la recuperación nominal de D33. Para el descuento mensual, se calcula el precio bruto que deja el valor presente neto en cero y se verifica con 18 recálculos de cierre, en el punto exacto y a USD 1 por debajo y por encima. Los valores presentes de ambos participantes suman el del proyecto.
+
+Con costos de venta de USD 20, los precios de recuperación en valor presente son USD 148,41 para el préstamo de USD 150 con costos de refinanciación de USD 20, USD 145,95 para el préstamo de USD 390 y USD 436,89 para el préstamo de USD 150 con costos de refinanciación de USD 300. Con costos de venta de USD 500, cada precio sube USD 480. El mayor cobro temprano al refinanciar explica que las dos variantes de bajo costo cambien de orden frente a D33.
+
+El descuento del 1 % mensual es una hipótesis de sensibilidad. El préstamo de USD 400 conserva el bloqueo de capacidad y las decisiones quedan PENDING. [Verificador D34](tools/check_discounted_sale_recovery_D34.py), [hipótesis y vínculos](templates/synthetic-discounted-sale-recovery-D34.json).

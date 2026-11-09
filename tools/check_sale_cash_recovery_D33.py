@@ -32,6 +32,14 @@ def source_data(bindings):
     return matrix, refinance, [sales_by_id[key] for key in SAMPLES]
 
 
+def replay_priced_sale(evidence, sale, origin, price, identity):
+    proceeds = sale["replacement_claims"]["gross_proceeds"].copy()
+    set_claim(proceeds, price, identity)
+    spec = sale | {"revision_id": identity, "replacement_claims": sale["replacement_claims"] | {"gross_proceeds": proceeds}}
+    _, parent = replay_sale(evidence, spec, origin, False)
+    return parent
+
+
 def price_samples(evidence, sale, origin, matrix_hash, group):
     require(amount(sale["replacement_claims"]["gross_proceeds"]) == 0, "Expected zero-price anchor")
     _, anchor = replay_sale(evidence, sale, origin, False)
@@ -41,17 +49,14 @@ def price_samples(evidence, sale, origin, matrix_hash, group):
     probes = {}
     for label, offset in OFFSETS.items():
         identity = f"SYNTHETIC-D33/{group}/{label}"
-        proceeds = sale["replacement_claims"]["gross_proceeds"].copy()
         price = required_price + offset
-        set_claim(proceeds, price, identity)
-        spec = sale | {"revision_id": identity, "replacement_claims": sale["replacement_claims"] | {"gross_proceeds": proceeds}}
-        _, parent = replay_sale(evidence, spec, origin, False)
+        parent = replay_priced_sale(evidence, sale, origin, price, identity)
         require(amount(parent["story"]["net_cash_profit"]) == offset, "Replayed sale does not match exact cash recovery")
         probes[label] = (price, parent)
     return required_price, probes
 
 
-def replay_targets(bindings):
+def replay_targets(bindings, *, sample_prices=price_samples):
     matrix, refinance, sales = source_data(bindings)
     base = load_evidence(independent_test_fixture=True)
     require(refinance["base_evidence_sha256"] == evidence_fingerprint(base), "Refinance base evidence differs")
@@ -82,7 +87,7 @@ def replay_targets(bindings):
                        state="PENDING", blockers=sizing["blockers"], cash_recovery_sale_price=None, probes=None)
             probes = {}
             if origin is not None:
-                price, probes = price_samples(evidence, sale, origin, matrix["project_ledgers"][group], group)
+                price, probes = sample_prices(evidence, sale, origin, matrix["project_ledgers"][group], group)
                 row.update(state="computed_synthetic_cash_recovery", cash_recovery_sale_price=str(price))
             results[group] = row, probes
     return results

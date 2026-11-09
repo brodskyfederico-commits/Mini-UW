@@ -93,5 +93,7 @@ jobs:
         run: python tools/check_participant_joint_exit_D32.py --summary
       - name: Verify exact sale prices for synthetic participant cash recovery
         run: python tools/check_sale_cash_recovery_D33.py --summary
+      - name: Verify discounted cash recovery prices on the synthetic sale calendar
+        run: python tools/check_discounted_sale_recovery_D34.py --summary
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v

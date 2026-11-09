@@ -1,10 +1,10 @@
 {
-  "scope": "I01 preserved design, D02–D33 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D34 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 5641,
-      "sha256": "733f6eb6e7412fe946198181321603261a2b646128a84ae9e097af427cfcd54c"
+      "bytes": 5799,
+      "sha256": "b91f4511c6f0205f2080357086a743cc194fbe4096f589d5b263b7d1d4a86116"
     },
     {
       "path": ".gitignore",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 56814,
-      "sha256": "06543cc56994ddddf2ed2c1c7799ec79b88580b3583dfd8b038ae59ee894fa8b"
+      "bytes": 57092,
+      "sha256": "8c8a6ff319c8a26009b064c463d88014ae87f5701a628aaa6561e6e720e74ba0"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 256075,
-      "sha256": "a4a5ee2534a13f439866c5b7d7acaf0ac1fa0cd88a5be17475aacd0154a1c66d"
+      "bytes": 257412,
+      "sha256": "602fc338e6ed8237b2e867e32e1bf51ca74201ab96520796a2a79d97359a2277"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -4742,6 +4742,11 @@
       "sha256": "78a1443d4c718a6f2b01b2dda962e4d0ece2829d2bac6c1d7a100125beff4429"
     },
     {
+      "path": "templates/synthetic-discounted-sale-recovery-D34.json",
+      "bytes": 2735,
+      "sha256": "ee995791df425ce245c9d13903f21dc8119711646295eb6db18519584b6c50ef"
+    },
+    {
       "path": "templates/synthetic-documented-threshold-base.json",
       "bytes": 1858,
       "sha256": "f7ee0c4b8451b336028d6491c0e142dbd2f3113b31e1015867451ab5b8d097c7"
@@ -5852,6 +5857,11 @@
       "sha256": "b7d7abf6e6cc6ea14651069118102c357ddf939f97a802182de115cacb6fb8f9"
     },
     {
+      "path": "tools/check_discounted_sale_recovery_D34.py",
+      "bytes": 6927,
+      "sha256": "8a5beb549f4702a29c1202c9d44f77fb94dc9198a3b274ebb13e3eda4aadba4d"
+    },
+    {
       "path": "tools/check_dots_bots_onepage_ROLES01.py",
       "bytes": 3608,
       "sha256": "20f049ab0b80207ed0424cfc9c2e90271bff7d61d127b8ff733fa11ca1579ae6"
@@ -5943,8 +5953,8 @@
     },
     {
       "path": "tools/check_sale_cash_recovery_D33.py",
-      "bytes": 8158,
-      "sha256": "777f18b2f9084ec48ffb1a811ceb742d8bdf23544e3f35b8e8b75a4a759014d1"
+      "bytes": 8336,
+      "sha256": "3ceb9a02393e75e8dda0f516ae89e274a0a21382b1661d2bfda0486e179fbada"
     },
     {
       "path": "tools/check_settled_lifecycle_T108.py",

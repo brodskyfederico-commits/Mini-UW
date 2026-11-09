@@ -1,0 +1,30 @@
+{
+  "schema": "miniuw.synthetic-discounted-sale-recovery.v1",
+  "nominal_bindings_sha256": "c076bbe1199ae5cfa4f1b64d08c039be86a52aecea005c6ce216d95fce974a90",
+  "allocation_terms_sha256": "602df8e8421094af668ff7621feca267f8e93bd9776d629ab40bfa6f759cf55d",
+  "monthly_discount_rate": {
+    "numerator": "1",
+    "denominator": "100"
+  },
+  "discount_rate_basis_ref": "SYNTHETIC-D34-one-percent-monthly-time-value-sensitivity",
+  "probe_ledgers": {
+    "SYNTHETIC-D31-lower/SYNTHETIC-sale-0/below": "b85d9f998be31bd4256945046bdc4a5296e1d8b58415193eaab039d22b18e8ad",
+    "SYNTHETIC-D31-lower/SYNTHETIC-sale-0/at": "c12a98b9a34e60bcf48140e1602b70f169cbd3ded994ea3f17441537f35de4fb",
+    "SYNTHETIC-D31-lower/SYNTHETIC-sale-0/above": "ff84af207b7db66dc6c98f622578e73bdbd99268ce34468989676640f8b16bb8",
+    "SYNTHETIC-D31-lower/SYNTHETIC-sale-funding-required/below": "d202fcdaa490ceb177d5ecc8454b20b54d61f46c6e8c3223d17fa8b64b706593",
+    "SYNTHETIC-D31-lower/SYNTHETIC-sale-funding-required/at": "4826398b57c6eca3e3d4eeff015c39248532984bf0f85ffbcb9ca400c8bfdd3f",
+    "SYNTHETIC-D31-lower/SYNTHETIC-sale-funding-required/above": "fb581e27000e56c7df1db3cda261dc07a94175eaf03d55312e6af4e43623e2ab",
+    "SYNTHETIC-D31-near-limit/SYNTHETIC-sale-0/below": "9484a19cb69097b3c243439c9cac1d8daab205624faf8ead50c4d82884b22a56",
+    "SYNTHETIC-D31-near-limit/SYNTHETIC-sale-0/at": "12bcedb33334bc1b7808c12adf5df27cc2a55bf04c1c361f3353bd4e913db04b",
+    "SYNTHETIC-D31-near-limit/SYNTHETIC-sale-0/above": "1c32eb5a913e1e64c1a7ef5abf41596b208818117af9389ae91b18cd32ce5e56",
+    "SYNTHETIC-D31-near-limit/SYNTHETIC-sale-funding-required/below": "d7f3a114228caaa4c2d79cb85becc2aab5d3e6e19d7b38d21dd18580b1693cfd",
+    "SYNTHETIC-D31-near-limit/SYNTHETIC-sale-funding-required/at": "eee641f5f758c2fe8e8b4641fd3b6be5f7f0b4c9ad73504d9e99dfa345179f1b",
+    "SYNTHETIC-D31-near-limit/SYNTHETIC-sale-funding-required/above": "1f0e94e62909571c8846f11604bcd954de3f17f0d044ea638de24b319c67b3ef",
+    "SYNTHETIC-D31-cash-in/SYNTHETIC-sale-0/below": "d82b1bfa6b14c82c6c924aee61e6be7f35b24ef9a84fdfae12cde478d0681d19",
+    "SYNTHETIC-D31-cash-in/SYNTHETIC-sale-0/at": "61b4d3c6d9ecffd12419db1f3becc92363b73293cbaaa25513258d3cf4c18b60",
+    "SYNTHETIC-D31-cash-in/SYNTHETIC-sale-0/above": "978d38b65a1e2d65dc7cc082af6a294dd5598d648f6c55d3be31abdbb56cde53",
+    "SYNTHETIC-D31-cash-in/SYNTHETIC-sale-funding-required/below": "7e57beb1fb6f22937d4fa65a484c48ec9f90d7adb09ba4680bcca65569864b57",
+    "SYNTHETIC-D31-cash-in/SYNTHETIC-sale-funding-required/at": "c4fa1510cb51cdba40402486f1cec7180197e70202b6168698a2b64a58095269",
+    "SYNTHETIC-D31-cash-in/SYNTHETIC-sale-funding-required/above": "6d94bfc36473fffa28438dd357f6e11f89dc3744a941833e78cbf1f944df155e"
+  }
+}
