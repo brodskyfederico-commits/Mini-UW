@@ -1282,3 +1282,7 @@ Se prueban cinco expedientes, tres con cifras y dos PENDING por costos incomplet
 ## D66 — Evidencia del cierre en la matriz de cobertura
 
 La [matriz](docs/coverage-matrix.csv) y su versión JSON enlazan C67, C68, M7-05, M7-06 y Q15 con los controles D62–D65. Se conservan las 398 filas, los estados y las ubicaciones originales. Las pruebas acreditan el cálculo sintético y el bloqueo fiscal. La cobertura financiera de producto sigue abierta.
+
+## D67 — Motivo del cierre pendiente en el PDF
+
+El esquema de caso v2 muestra si falta la celda C68 o si queda por resolver la aplicabilidad del impuesto de venta. En ambos casos el PDF conserva una página y el expediente mantiene PENDING, sin publicar retorno ni mínimo de recuperación. La revisión de presentación se selecciona en la entrada para conservar la auditoría de los expedientes v1. Se verifican cuatro PDFs por el comando público y el rechazo del esquema v2 en un perfil ajeno. [Control D67](tools/check_costed_sale_diagnostics_D67.py).

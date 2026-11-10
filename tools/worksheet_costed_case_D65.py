@@ -7,7 +7,7 @@ from check_worksheet_refinance_D45 import render_case
 from check_worksheet_sale_costs_D63 import run
 
 
-def build_costed_case(key, rate):
+def build_costed_case(key, rate, *, diagnostics=False):
     row = run((rate,), selected=key, with_report=True)
     origin = json.loads(local_file(ROOT, EXIT).read_bytes())
     report = row.get("report", dict(decision="PENDING", worksheet=row["worksheet"],
@@ -27,4 +27,4 @@ def build_costed_case(key, rate):
         costed_sale_sha256=row.get("costed_sale_sha256"),
         sale_blockers=row["blockers"],
     )
-    return report, render_case(key, report)
+    return report, render_case(key, report, sale_diagnostics=diagnostics)

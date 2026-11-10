@@ -161,7 +161,7 @@ def sources():
     return fixture, base, {row["variant_id"]: row for row in variants["variants"]}
 
 
-def render_case(case, row):
+def render_case(case, row, *, sale_diagnostics=False):
     lines = []
     story = row["return_story"]
     cap = row["capacity"]
@@ -178,7 +178,17 @@ def render_case(case, row):
                       f"{money(cap['maximum_principal_capacity'])} | Limite: {' / '.join(cap['binding_limit_ids']) or 'Pendiente'}",
                       True))
     if story is None:
-        if row["worksheet"]["blockers"]:
+        if sale_diagnostics:
+            blockers = row["sale_blockers"]
+            messages = {
+                "C68:required_numeric_value_missing": "Falta C68 (costo variable de venta) en la hoja.",
+                "tax-unresolved:cost_applicability_unresolved": "Falta resolver si aplica el impuesto de venta.",
+            }
+            reasons = [message for code, message in messages.items() if code in blockers]
+            if not reasons:
+                reasons = ["Hay datos de venta pendientes. Ver motivos en el expediente."]
+            lines.extend((reason, True) for reason in reasons)
+        elif row["worksheet"]["blockers"]:
             lines.append(("Falta cotejar un dato requerido o la identidad de la hoja.", False))
         elif exit_summary is not None:
             lines.append(("El cierre de venta permanece pendiente.", False))

@@ -4,6 +4,8 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D67 explica en el PDF si falta C68 o si el impuesto de venta sigue sin resolver. Ejecuta `python tools/miniuw_worksheet_v1.py run templates/synthetic-unified-worksheet-costed-sale-D67.json --output /tmp/miniuw-diagnostico-venta` y audita el paquete con el mismo comando `audit`. Los expedientes con esquema v1 se reproducen con su presentación original. [Control D67](tools/check_costed_sale_diagnostics_D67.py).
+
 - D65 lleva C67 y C68 al comando común y al PDF de una página. Ejecuta `python tools/miniuw_worksheet_v1.py run templates/synthetic-unified-worksheet-costed-sale-D65.json --output /tmp/miniuw-venta-hoja`. [Control D65](tools/check_unified_costed_sale_D65.py).
 - D64 calcula el precio de recuperación descontado cuando el costo de venta depende del precio bruto. [Control D64](tools/check_discounted_worksheet_sale_D64.py).
 - D63 conecta Inputs!C68 como componente porcentual explícito del costo sintético de venta y coteja el cierre neto. [Control D63](tools/check_worksheet_sale_costs_D63.py).
