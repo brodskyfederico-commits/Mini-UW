@@ -197,5 +197,7 @@ jobs:
         run: python tools/price_linked_sale_cost_D88.py
       - name: Verify three price-linked sale fee rates and synthetic Downside recovery
         run: python tools/sale_cost_rate_grid_D89.py
+      - name: Verify dated USD 10 receipts and gaps at fixed synthetic sale price
+        run: python tools/fixed_sale_cash_D90.py
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v

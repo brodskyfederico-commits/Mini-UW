@@ -1,10 +1,10 @@
 {
-  "scope": "I01 preserved design, D02–D89 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D90 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 13004,
-      "sha256": "c28176ccd80a4b4f3632916050fa288079747edc7ddd58fa9d96cc3ace67c99f"
+      "bytes": 13135,
+      "sha256": "c0c1f6f87c16267e24dbe4809bfd58fa2a2161370126a544707e7e9d4b76f07d"
     },
     {
       "path": ".gitignore",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 72294,
-      "sha256": "c97e3db02a81da5ba863795f840d830652433c5157d2cbf577b6c0e5e75c35a9"
+      "bytes": 72576,
+      "sha256": "8b3edc59793a2458c92035a36cc907cd55cb2ced470f38dd3d83ef61b6f78c6a"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 308857,
-      "sha256": "ff907327b4c424e007fb4e39c81a97da23c020404d2ccac45fbd81ab4857a1e3"
+      "bytes": 309686,
+      "sha256": "92f32566675a6814467d0d4825fd962cf444de9fedb81dce0374a463241cd459"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -940,6 +940,11 @@
       "path": "docs/review/MiniUW_D89_Tasas_Costo_Venta_USD10.pdf",
       "bytes": 3425,
       "sha256": "eab64a89421ba9c84fb2bf14503ecf8ed5a2f86a02478fb61cf9606d9b72ec99"
+    },
+    {
+      "path": "docs/review/MiniUW_D90_Venta_Fija_300_USD10.pdf",
+      "bytes": 3321,
+      "sha256": "75d0b5579fb0e8f79d4ab91c87d707ac3c2d8e028056ec2fe11e064cf2c54a48"
     },
     {
       "path": "docs/review/MiniUW_Dots_y_Bots_1_pagina_ROLES01.pdf",
@@ -6670,6 +6675,11 @@
       "path": "tools/expense_lifecycle_demo_support.py",
       "bytes": 6213,
       "sha256": "01b458d45c7a778d3b4de180a587dbcd79c5be18c45ae6f56bdc854d34e83ce4"
+    },
+    {
+      "path": "tools/fixed_sale_cash_D90.py",
+      "bytes": 8629,
+      "sha256": "c134f117c764ff6edb9dd52f7b8936c6df8ca5dd766adba84c4eca52edc91df9"
     },
     {
       "path": "tools/hold_sale_demo_support.py",

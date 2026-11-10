@@ -1416,3 +1416,9 @@ Se reproducen 27 cierres. Los nueve precios de D87 quedan cortos con el costo va
 Se mantienen USD 10 de costo fijo más el 3 %, 5 % o 7 % del precio bruto. Las 27 combinaciones cruzan esas tasas con costos de refinanciación de USD 300, USD 220 y USD 150 y tasas mensuales de descuento del 0 %, 1 % y 2 %. Con costo de refinanciación de USD 150 y descuento del 1 % mensual, el precio bruto mínimo sube de USD 280,78 al 3 % a USD 286,69 al 5 % y USD 292,85 al 7 %. En los tres mínimos el inversor cobra USD 10,54 por USD 10 iniciales a precisión de centavos.
 
 Se reproducen 54 cierres. Cada mínimo recupera lo aportado a la tasa indicada y un centavo por debajo queda corto. El 5 % reproduce los mínimos de D88. Los parámetros y los resultados son sintéticos y la decisión real sigue PENDING. [PDF de una página](docs/review/MiniUW_D89_Tasas_Costo_Venta_USD10.pdf).
+
+## D90 — Cobros y brechas por USD 10 con venta fija en USD 300
+
+Se conserva el Downside de D89 con USD 10 fijos de costo de venta más el 3 %, 5 % o 7 % del precio bruto. Con costo de refinanciación de USD 150, por USD 10 iniciales se cobran USD 10,73, USD 10,67 o USD 10,61. Al 1 % mensual sobran USD 0,18, USD 0,12 o USD 0,06 en valor presente. Al 2 % mensual faltan USD 0,34, USD 0,40 o USD 0,45. Las nueve combinaciones quedan por debajo de recuperación en valor presente al 2 % mensual.
+
+Se reconstruyen nueve cierres, se cotejan 27 saldos de valor presente y se concilian el aporte adicional, los cobros fechados y el saldo nominal. El informe muestra también las refinanciaciones de USD 220 y USD 300. Datos sintéticos. Decisión real PENDING. [PDF de una página](docs/review/MiniUW_D90_Venta_Fija_300_USD10.pdf).
