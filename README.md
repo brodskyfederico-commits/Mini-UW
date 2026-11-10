@@ -4,6 +4,7 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D91 calcula el costo máximo de refinanciación que permite recuperar lo aportado por USD 10 con venta fija de USD 300 en Downside. [PDF de una página](docs/review/MiniUW_D91_Costo_Maximo_Refi_Venta_300_USD10.pdf) y control reproducible con `python tools/fixed_sale_refinance_limit_D91.py`.
 - D90 fija la venta en USD 300 y muestra cobros y faltantes o sobrantes descontados por USD 10 para las tres tasas de costo de venta en Downside. [PDF de una página](docs/review/MiniUW_D90_Venta_Fija_300_USD10.pdf) y control reproducible con `python tools/fixed_sale_cash_D90.py`.
 - D89 cruza costos de venta del 3 %, 5 % y 7 % con tres costos de refinanciación y tres tasas mensuales. Muestra precio mínimo y cobro por USD 10 iniciales. [PDF de una página](docs/review/MiniUW_D89_Tasas_Costo_Venta_USD10.pdf) y control reproducible con `python tools/sale_cost_rate_grid_D89.py`.
 - D88 repite el Downside por USD 10 con un costo de venta sintético que crece con el precio bruto. Compara los mínimos y el cobro neto de venta y total a tres tasas. [PDF de una página](docs/review/MiniUW_D88_Costos_Venta_Variables_USD10.pdf) y control reproducible con `python tools/price_linked_sale_cost_D88.py`.

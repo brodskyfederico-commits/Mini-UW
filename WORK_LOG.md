@@ -1422,3 +1422,9 @@ Se reproducen 54 cierres. Cada mínimo recupera lo aportado a la tasa indicada y
 Se conserva el Downside de D89 con USD 10 fijos de costo de venta más el 3 %, 5 % o 7 % del precio bruto. Con costo de refinanciación de USD 150, por USD 10 iniciales se cobran USD 10,73, USD 10,67 o USD 10,61. Al 1 % mensual sobran USD 0,18, USD 0,12 o USD 0,06 en valor presente. Al 2 % mensual faltan USD 0,34, USD 0,40 o USD 0,45. Las nueve combinaciones quedan por debajo de recuperación en valor presente al 2 % mensual.
 
 Se reconstruyen nueve cierres, se cotejan 27 saldos de valor presente y se concilian el aporte adicional, los cobros fechados y el saldo nominal. El informe muestra también las refinanciaciones de USD 220 y USD 300. Datos sintéticos. Decisión real PENDING. [PDF de una página](docs/review/MiniUW_D90_Venta_Fija_300_USD10.pdf).
+
+## D91 — Costo máximo de refinanciación con venta fija en USD 300
+
+Se conserva el Downside sintético de D90 con USD 10 fijos de costo de venta más el 3 %, 5 % o 7 % del precio. Con costo variable del 5 %, el costo máximo de refinanciación del proyecto para recuperar los aportes en valor presente es USD 216,99 al 0 %, USD 162,27 al 1 % y USD 107,93 al 2 % mensual. Por USD 10 iniciales, los cobros totales respectivos son USD 10,00, USD 10,55 y USD 11,09.
+
+El PDF muestra nueve límites y separa cobros, aportes y fechas. Se reproducen 18 cierres y se prueba que un centavo más de costo deja un faltante. El principal del préstamo, su capacidad y la operación se conservan. La decisión real sigue PENDING. [PDF de una página](docs/review/MiniUW_D91_Costo_Maximo_Refi_Venta_300_USD10.pdf).

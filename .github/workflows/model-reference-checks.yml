@@ -199,5 +199,7 @@ jobs:
         run: python tools/sale_cost_rate_grid_D89.py
       - name: Verify dated USD 10 receipts and gaps at fixed synthetic sale price
         run: python tools/fixed_sale_cash_D90.py
+      - name: Verify synthetic refinance cost ceilings at a fixed sale price
+        run: python tools/fixed_sale_refinance_limit_D91.py
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v

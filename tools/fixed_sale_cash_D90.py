@@ -23,6 +23,13 @@ REPORT = "docs/review/MiniUW_D90_Venta_Fija_300_USD10.pdf"
 SALE_PRICE = Fraction(300)
 
 
+def fixed_sale_spec(sale, sale_cost):
+    claims = {key: value.copy() for key, value in sale["replacement_claims"].items()}
+    set_claim(claims["gross_proceeds"], SALE_PRICE, "SYNTHETIC-D90-fixed-price")
+    set_claim(claims["closing_costs_paid"], sale_cost, "SYNTHETIC-D90-price-linked-cost")
+    return sale | {"revision_id": "SYNTHETIC-D90-fixed-price", "replacement_claims": claims}
+
+
 def verify():
     sources = downside_sources()
     base, variant, sale, selected, baseline = (
@@ -54,11 +61,7 @@ def verify():
 
         for sale_rate in SALE_RATES:
             sale_cost = FIXED_COST + SALE_PRICE * sale_rate
-            claims = {key: value.copy() for key, value in sale["replacement_claims"].items()}
-            set_claim(claims["gross_proceeds"], SALE_PRICE, "SYNTHETIC-D90-fixed-price")
-            set_claim(claims["closing_costs_paid"], sale_cost, "SYNTHETIC-D90-price-linked-cost")
-            spec = sale | {"revision_id": "SYNTHETIC-D90-fixed-price", "replacement_claims": claims}
-            _, parent = replay_sale(evidence, spec, origin, False)
+            _, parent = replay_sale(evidence, fixed_sale_spec(sale, sale_cost), origin, False)
             story = parent["story"]
             flows = validate_grid(parent)
             change_at_sale = SALE_PRICE - sale_cost - (original_sale_price - original_sale_cost)
