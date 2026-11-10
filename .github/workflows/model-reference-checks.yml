@@ -201,5 +201,7 @@ jobs:
         run: python tools/fixed_sale_cash_D90.py
       - name: Verify synthetic refinance cost ceilings at a fixed sale price
         run: python tools/fixed_sale_refinance_limit_D91.py
+      - name: Verify isolated delayed sale receipt and USD 10 recovery gaps
+        run: python tools/fixed_sale_delay_D92.py
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v

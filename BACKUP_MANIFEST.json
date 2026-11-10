@@ -1,10 +1,10 @@
 {
-  "scope": "I01 preserved design, D02–D91 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D92 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 13272,
-      "sha256": "3b1dd119e9ef3a65bb8907b392bef8330b41fb7fb83fa5234d7757023725adb6"
+      "bytes": 13398,
+      "sha256": "2b48ca9b11453faa3420f8cede097608da0f7404dff41a8c15ef54cac910c836"
     },
     {
       "path": ".gitignore",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 72870,
-      "sha256": "7633175c4d57b527e328ec05232fc8684ea8d94b0680e072e2490c2a9ff195d3"
+      "bytes": 73139,
+      "sha256": "0cfbf96c8d2b23a38d498b247f107afa2e584a10741566e55750bd8cd8d56898"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 310490,
-      "sha256": "ab0f0e0a1c839c97bc87c44ab0c20cb78a68446809efb5816509daf76106af93"
+      "bytes": 311459,
+      "sha256": "6e1b9787f01a4f31a66b0e4d868c14756d187443972ec2b5cbb29d7c75d475d7"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -950,6 +950,11 @@
       "path": "docs/review/MiniUW_D91_Costo_Maximo_Refi_Venta_300_USD10.pdf",
       "bytes": 2979,
       "sha256": "def06bd7327b1e5892d119c59f23a0ac5355dfbb4834feefbde84556b1471161"
+    },
+    {
+      "path": "docs/review/MiniUW_D92_Demora_Venta_300_USD10.pdf",
+      "bytes": 4076,
+      "sha256": "8c4552750c6663baa68452cdf4ebeb7efa6b432219349286e4b761ef5c5004ee"
     },
     {
       "path": "docs/review/MiniUW_Dots_y_Bots_1_pagina_ROLES01.pdf",
@@ -6685,6 +6690,11 @@
       "path": "tools/fixed_sale_cash_D90.py",
       "bytes": 8665,
       "sha256": "b99d3413c1e46f040120763cb583a58bebc250eb4b87caf10b7eb86ec1a6645e"
+    },
+    {
+      "path": "tools/fixed_sale_delay_D92.py",
+      "bytes": 8443,
+      "sha256": "a0bd73aaaf4a332a282596bcd45cdb0c5a97e693f89f9b1b84f01f1bce98e35a"
     },
     {
       "path": "tools/fixed_sale_refinance_limit_D91.py",

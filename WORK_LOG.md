@@ -1428,3 +1428,9 @@ Se reconstruyen nueve cierres, se cotejan 27 saldos de valor presente y se conci
 Se conserva el Downside sintético de D90 con USD 10 fijos de costo de venta más el 3 %, 5 % o 7 % del precio. Con costo variable del 5 %, el costo máximo de refinanciación del proyecto para recuperar los aportes en valor presente es USD 216,99 al 0 %, USD 162,27 al 1 % y USD 107,93 al 2 % mensual. Por USD 10 iniciales, los cobros totales respectivos son USD 10,00, USD 10,55 y USD 11,09.
 
 El PDF muestra nueve límites y separa cobros, aportes y fechas. Se reproducen 18 cierres y se prueba que un centavo más de costo deja un faltante. El principal del préstamo, su capacidad y la operación se conservan. La decisión real sigue PENDING. [PDF de una página](docs/review/MiniUW_D91_Costo_Maximo_Refi_Venta_300_USD10.pdf).
+
+## D92 — Demora de cobro de una venta de USD 300
+
+Se mueven únicamente los cobros netos de venta de los nueve casos D90 del 1 de julio al 1 de agosto, septiembre u octubre de 2027. El supuesto sintético mantiene los demás flujos y fija en cero la caja incremental de tenencia. Los importes nominales y los aportes se conservan. El caso con refinanciación de USD 150 y costo de venta de USD 10 más 5 % cobra USD 10,67 por USD 10 iniciales. Al 1 % mensual, el saldo por demoras de uno, dos o tres meses es +USD 0,04, -USD 0,03 y -USD 0,10. Al 2 % es -USD 0,54, -USD 0,67 y -USD 0,80.
+
+Se recalculan 27 calendarios y 81 saldos con números exactos. Se concilia el valor presente por fecha y por diferencia de factores de descuento del cobro de salida. Los intereses, saldo de deuda y operación del plazo adicional quedan fuera de esta prueba de calendario. La decisión real sigue PENDING. [PDF de una página](docs/review/MiniUW_D92_Demora_Venta_300_USD10.pdf).
