@@ -4,6 +4,8 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D78 explica los ocho informes PENDING y comprueba variantes sintéticas que sí permiten responder por USD 10 iniciales. Ejecuta `python tools/check_pending_investor_answers_D78.py --output /tmp/miniuw-ocho-casos.json`. Cada caso conserva separado el informe bloqueado de su variante.
+
 - D77 verifica en los 40 informes los cobros, fechas, aportes extra y caja sin recuperar por USD 10 iniciales. Ejecuta `python tools/check_investor_answers_D77.py --output /tmp/miniuw-40-informes-verificados.zip` y coteja el ZIP con `--audit`.
 
 - D76 reemite los informes financieros sintéticos de la revisión histórica con **USD 10 de aporte inicial** como base. Ejecuta `python tools/reissue_investor_reports_D76.py --output /tmp/miniuw-informes-10.zip` y verifica con `--audit /tmp/miniuw-informes-10.zip`. El ZIP incluye un PDF de una página por informe y un índice JSON con fuentes y flujos exactos. D74 y D75 ya abren con la pregunta de los USD 10 y se conservan en el índice.
