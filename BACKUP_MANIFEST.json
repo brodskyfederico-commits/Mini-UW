@@ -1,10 +1,10 @@
 {
-  "scope": "I01 preserved design, D02–D60 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D61 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 9443,
-      "sha256": "cb76b11c52486704d91572bcecc6898507b671de20aeb7309d3bb590d0ba127b"
+      "bytes": 9574,
+      "sha256": "e3286565bb9d6d21a6024e25f917fd654df47091a157552a9bbc2880b08a49a7"
     },
     {
       "path": ".gitignore",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 65085,
-      "sha256": "9832db8cd54842ff2f40d72d90b104737467b36c218d805c36fbfd011f42ea6a"
+      "bytes": 65318,
+      "sha256": "9836aea0e1fdba45a0de5f0e0b04b006e7321eb3312c237cc5c4572899d90340"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 286077,
-      "sha256": "b93cddccd0e741007335607a91e2f2e4d1a1fdcad5ebd0c8801e1246da5aa0e7"
+      "bytes": 286799,
+      "sha256": "89af69128b57b68021851d863158c816547d1f9599aaa83438ed3ce921b4711a"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -6017,6 +6017,11 @@
       "sha256": "3d26c7a3bc1db2508dcad769b99d15c6864cfe1eab7808bab4e75dd919ef0a30"
     },
     {
+      "path": "tools/check_historical_cotejo_D61.py",
+      "bytes": 4771,
+      "sha256": "7bbb20a09d575885d8739ac95bf21e07b42bc7cf135e6f88e7fdf1cb989b7996"
+    },
+    {
       "path": "tools/check_insurance_terminal_T107.py",
       "bytes": 7471,
       "sha256": "adf1d58313f0b02cd3bca219bae1f41f246b6817d7ce5eb0f2604e5e5a0e2bb2"
@@ -6503,8 +6508,8 @@
     },
     {
       "path": "tools/miniuw_current_cotejo_D59.py",
-      "bytes": 7757,
-      "sha256": "1d42e162973129f31fc1b638f890b8adbea06387e73adefc3b2f5fdc53041562"
+      "bytes": 10074,
+      "sha256": "ce716c0c6c8214fe1fe3605555d1f54f35554f00a79492c2e94b1a97be014887"
     },
     {
       "path": "tools/miniuw_linked_cotejo_D54.py",

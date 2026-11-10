@@ -12,7 +12,7 @@ import sys
 from check_operating_replay_D20 import require
 from miniuw_linked_cotejo_D54 import compare, publish
 from miniuw_scenario_package_D52 import REVISION, SCENARIOS, THRESHOLD_REVISION, TOP_FILES, verified_files
-from miniuw_worksheet_v1 import encoded
+from miniuw_worksheet_v1 import MAX_FILE_BYTES, encoded
 from miniuw_foundation.expense_cash_detail import _exact, _json
 from miniuw_foundation.scheduled_expense_case import sha
 
@@ -54,6 +54,10 @@ def valid_history(history):
                     "Revision history does not preserve the linked scenario evidence")
 
 
+def register_bytes(history):
+    return encoded(dict(schema=SCHEMA, decision="PENDING", history=history))
+
+
 def load(path):
     require(path.is_file() and not path.is_symlink() and path.stat().st_size <= BOUND,
             "A bounded regular synthetic revision register is required")
@@ -63,6 +67,7 @@ def load(path):
     _exact(state, {"schema", "decision", "history"})
     require(state["schema"] == SCHEMA and state["decision"] == "PENDING", "Synthetic revision register differs")
     valid_history(state["history"])
+    require(raw == register_bytes(state["history"]), "Register bytes differ from the canonical revision history")
     return state["history"], sha(raw)
 
 
@@ -90,7 +95,7 @@ def record(path, package, expected_previous=None):
         require(expected_previous == current, "Synthetic revision register advanced; refresh its current manifest")
         updated = [*history, candidate]
         valid_history(updated)
-        raw = encoded(dict(schema=SCHEMA, decision="PENDING", history=updated))
+        raw = register_bytes(updated)
         with TemporaryDirectory(dir=path.parent, prefix=".miniuw-register-") as temp:
             prepared = Path(temp) / "register.json"
             with prepared.open("xb") as stream:
@@ -104,14 +109,46 @@ def record(path, package, expected_previous=None):
     return dict(status="recorded_current_revision", decision="PENDING", vigente=candidate)
 
 
-def review_current(register, package, workbook):
-    history, token = load(register)
-    current = history[-1]
+def review_at_revision(package, workbook, current, token):
     result = compare(package, workbook, current["manifest_sha256"])
     require(result["evidence_sha256"] == current["evidence_sha256"]
             and result["resultados_sha256"] == current["financial_result_sha256"],
             "Cotejo differs from the designated revision record")
     return result | dict(revision_observada=current["revision"], registro_sha256=token)
+
+
+def review_current(register, package, workbook):
+    history, token = load(register)
+    return review_at_revision(package, workbook, history[-1], token)
+
+
+def audit_report(register, package, workbook, report_path):
+    require(report_path.is_file() and not report_path.is_symlink()
+            and report_path.stat().st_size <= MAX_FILE_BYTES, "A bounded regular review report is required")
+    with report_path.open("rb") as stream:
+        raw = stream.read(MAX_FILE_BYTES + 1)
+    report = _json(raw, MAX_FILE_BYTES)
+    require(isinstance(report, dict), "Invalid Cotejo report")
+    history, _ = load(register)
+    matches = [i for i, record in enumerate(history)
+               if record["manifest_sha256"] == report.get("expediente_manifest_sha256")]
+    require(len(matches) == 1, "Report manifest is not in the synthetic revision history")
+    index = matches[0]
+    prefix = history[:index + 1]
+    observed = prefix[-1]
+    token = sha(register_bytes(prefix))
+    expected = review_at_revision(package, workbook, observed, token)
+    require(encoded(expected) == raw, "Saved review differs from source-first replay")
+    with revision_lock(register):
+        latest, current_token = load(register)
+        require(latest[:len(prefix)] == prefix, "Registered history changed during the audit")
+        current = latest[-1]
+        is_current = current == observed and current_token == token
+    return dict(status="verified_source_first", decision="PENDING",
+                vigencia="VIGENTE" if is_current else "HISTORICO",
+                cotejo_guardado=expected["estado"], cotejo_vigente=expected["estado"] if is_current else "PENDING",
+                revision_informe=observed["revision"], revision_vigente=current["revision"],
+                informe_sha256=sha(raw), registro_vigente_sha256=current_token)
 
 
 def publish_current(register, package, workbook, output):
@@ -140,6 +177,11 @@ def main():
     review.add_argument("package", type=Path)
     review.add_argument("workbook", type=Path)
     review.add_argument("--output", type=Path, help="Publish only if the registered revision remains current.")
+    audit = sub.add_parser("audit")
+    audit.add_argument("registry", type=Path)
+    audit.add_argument("package", type=Path)
+    audit.add_argument("workbook", type=Path)
+    audit.add_argument("report", type=Path)
     args = parser.parse_args()
     try:
         if args.command == "register":
@@ -147,6 +189,8 @@ def main():
         elif args.command == "current":
             history, token = load(args.registry)
             result = dict(decision="PENDING", vigente=history[-1], history=history, registro_sha256=token)
+        elif args.command == "audit":
+            result = audit_report(args.registry, args.package, args.workbook, args.report)
         elif args.output is not None:
             result = publish_current(args.registry, args.package, args.workbook, args.output)
         else:

@@ -1248,3 +1248,9 @@ El cotejo puede tomar la vigencia del registro sin copiar el hash en cada revisi
 El cotejo prepara el informe desde la revisión observada y vuelve a validar el registro justo antes de publicar. El avance del registro y la publicación usan el mismo bloqueo local. El informe se crea en una ruta nueva. El archivo existente se conserva si se repite la ruta de destino.
 
 La prueba pausa un cotejo R2 después del cálculo y activa R3 en otra ejecución. El intento R2 se rechaza y no deja un informe. El cotejo R3 se publica con los hashes exactos del expediente y del registro vigente. La decisión continúa PENDING y los dos expedientes permanecen idénticos. El alcance es local y sintético. [Control concurrente D60](tools/check_current_publication_D60.py).
+
+## D61 — Auditoría de informes vigentes e históricos
+
+La auditoría reproduce un informe guardado con su planilla, expediente y revisión registrada. Recalcula el hash del prefijo del historial usado al guardar el informe y coteja los bytes. Comprueba la vigencia con el registro bajo el bloqueo local. Un informe histórico conserva su cotejo original y el cotejo vigente queda PENDING.
+
+La prueba guarda el informe R2, verifica VIGENTE, activa R3 y vuelve a auditar R2 como HISTORICO con el mismo hash. El informe R3 verifica VIGENTE. La auditoría rechaza un informe alterado y la sustitución del expediente de origen. La decisión operativa conserva PENDING. [Control D61](tools/check_historical_cotejo_D61.py).
