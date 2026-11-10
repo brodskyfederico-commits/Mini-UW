@@ -1392,3 +1392,9 @@ Se reproducen seis cierres con valor presente neto exacto de cero por participan
 El informe conserva los flujos sintéticos de D84. La venta deja USD 9,02 en Base y USD 7,02 en Downside por cada USD 10 iniciales. Contra los mínimos netos al centavo, al 0 % sobran USD 3,02 en Base y faltan USD 1,78 en Downside. Al 1 % sobran USD 2,51 y faltan USD 2,37. Al 2 % sobran USD 1,98 y faltan USD 2,99. Son diferencias en la fecha de venta y se muestra aparte el aporte extra de USD 0,80 de Downside en abril.
 
 El JSON conserva las diferencias exactas contra ambos umbrales, con y sin el redondeo del mínimo. Se concilian los flujos descontados y se cotejan las seis comparaciones en el PDF de una página. Decisión PENDING. [Control D85](tools/check_sale_gap_D85.py).
+
+## D86 — Costo máximo de refinanciación para recuperar los USD 10 en Downside
+
+El costo base del proyecto es USD 300. Para recuperar los aportes, la rebaja mínima al centavo del proyecto es USD 178,01 al 0 %, USD 229,93 al 1 % y USD 281,60 al 2 % mensual. Los costos máximos son USD 121,99, USD 70,07 y USD 18,40, respectivamente. En cada caso el aporte de USD 0,80 al refinanciar se convierte en un cobro de USD 0,98, USD 1,50 o USD 2,02 por USD 10 iniciales.
+
+Se reconstruyen nueve cierres con la rebaja un centavo por debajo del mínimo, en el punto exacto y en el mínimo redondeado. El préstamo, la capacidad, la operación y la venta se conservan. La sensibilidad es sintética y la decisión sigue PENDING. [PDF de una página](docs/review/MiniUW_D86_Costo_Refinanciacion_USD10.pdf).

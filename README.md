@@ -4,6 +4,8 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D86 calcula cuánto debe bajar el costo de refinanciación en Downside para recuperar los USD 10 iniciales a tres tasas. Abrí el [PDF de una página](docs/review/MiniUW_D86_Costo_Refinanciacion_USD10.pdf) o auditalo con `python tools/refinance_cost_recovery_D86.py`.
+
 - D85 compara el cobro de venta con el mínimo al centavo en Base y Downside, por USD 10 iniciales. Ejecuta `python tools/miniuw_worksheet_v1.py run templates/synthetic-investor-scenarios-D85.json --output /tmp/miniuw-brecha-venta-10`.
 
 - D84 muestra en una página el cobro neto mínimo de venta por USD 10 iniciales a tasas mensuales sintéticas de 0 %, 1 % y 2 %. Ejecuta `python tools/miniuw_worksheet_v1.py run templates/synthetic-investor-scenarios-D84.json --output /tmp/miniuw-sensibilidad-10`.
