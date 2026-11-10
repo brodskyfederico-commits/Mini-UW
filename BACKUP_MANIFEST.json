@@ -1,10 +1,10 @@
 {
-  "scope": "I01 preserved design, D02–D76 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D77 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 11232,
-      "sha256": "20709dd3a91a333117b2279707c2efdf061321a922a93cfad1bae78859a0189b"
+      "bytes": 11363,
+      "sha256": "ca78ca675ecf32ea44275235a942f8ca776a73abccc0005d248a1dc301151239"
     },
     {
       "path": ".gitignore",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 68603,
-      "sha256": "2dcf128d1e45f758be79ebccf87e2859b1468f93c797a2d0b3fb8f043233e5a9"
+      "bytes": 68848,
+      "sha256": "25b07c8323128d7acf4155425c847de2047939b9570ad0b6e4be0ae885eab0ed"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 298369,
-      "sha256": "29b53ea00b7b40f477754ac3ee609d7342631e449f01e0482d9d5edd976f98e2"
+      "bytes": 299297,
+      "sha256": "853f3e3b29e0c6e0a742f695f043d3582e632c2be62c5a8a36b93d4b68e03c70"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -6115,6 +6115,11 @@
       "path": "tools/check_integrated_replay_D22.py",
       "bytes": 975,
       "sha256": "9c2e19f95c98ed7f7e20fa8e0813aa7378b5014786acb430cb40b90f6fa94418"
+    },
+    {
+      "path": "tools/check_investor_answers_D77.py",
+      "bytes": 8450,
+      "sha256": "9cccd50f464bd63388c2f6acb25c19318a28624d0a258d13baa466bf25492bd6"
     },
     {
       "path": "tools/check_investor_output_D07.py",

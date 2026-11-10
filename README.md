@@ -4,6 +4,8 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D77 verifica en los 40 informes los cobros, fechas, aportes extra y caja sin recuperar por USD 10 iniciales. Ejecuta `python tools/check_investor_answers_D77.py --output /tmp/miniuw-40-informes-verificados.zip` y coteja el ZIP con `--audit`.
+
 - D76 reemite los informes financieros sintéticos de la revisión histórica con **USD 10 de aporte inicial** como base. Ejecuta `python tools/reissue_investor_reports_D76.py --output /tmp/miniuw-informes-10.zip` y verifica con `--audit /tmp/miniuw-informes-10.zip`. El ZIP incluye un PDF de una página por informe y un índice JSON con fuentes y flujos exactos. D74 y D75 ya abren con la pregunta de los USD 10 y se conservan en el índice.
 
 - D75 pone primero la pregunta de los USD 10 en Base y Downside. Ejecuta `python tools/miniuw_worksheet_v1.py run templates/synthetic-investor-scenarios-D75.json --output /tmp/miniuw-escenarios-10` y audita el paquete con `audit`. [Control D75](tools/check_investor_scenarios_D75.py).

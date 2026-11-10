@@ -171,5 +171,7 @@ jobs:
         run: python tools/check_investor_scenarios_D75.py
       - name: Verify historical investor report reissues on USD 10 initial equity
         run: python tools/reissue_investor_reports_D76.py
+      - name: Verify all four USD 10 answers in corrected investor reports
+        run: python tools/check_investor_answers_D77.py
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v

@@ -1340,3 +1340,9 @@ El calendario distingue aportes, operación, refinanciación y venta. Se reprodu
 La pregunta de los USD 10 se aplicó antes de manera desigual. Algunos informes usaban montos agregados o presentaban una normalización secundaria sobre una base declarada que podía incluir aportes posteriores. La reemisión normaliza los flujos fechados contra el aporte inicial y verifica el cuadre con los aportes y cobros originales. Los aportes posteriores conservan su fecha y se muestran separados.
 
 El inventario incluye 20 ejemplos financieros versionados y 20 entregas anteriores, incluidas las páginas D44–D46. Los ejemplos versionados se cotejan con los hashes de origen. Las entregas se reconstruyen desde la entrada archivada y sus hashes. Las ocho fuentes sin base o caja disponible conservan PENDING. D74 y D75 ya usan el formato y se reproducen sin cambios. Los documentos de arquitectura y criterios técnicos conservan sus unidades y no se usan como si fueran flujos de caja. [Comando de reemisión](tools/reissue_investor_reports_D76.py).
+
+## D77 — Cuatro respuestas verificadas en los 40 PDF
+
+Se reconstruye el paquete D76 y se cotejan los hashes de sus PDF. La nueva edición abre cada página con cuánto se cobra, cuándo, cuánto más se aporta y cuánto queda sin recuperar. Se concilian los flujos fechados con el aporte inicial de USD 10, los aportes posteriores, los cobros y el saldo nominal sin recuperar. El calendario conserva todos los movimientos y diferencia aportes y cobros por su signo. Base y Downside se verifican por separado.
+
+Los 32 informes con flujos reproducen importes y fechas. Los ocho informes sin caja verificable muestran las cuatro respuestas PENDING y los motivos disponibles. Se extrae el texto de los 40 PDF y se comprueba la presencia de cada respuesta y cada movimiento fechado en una sola página. Los resultados son sintéticos y el retorno personal real sigue pendiente. [Control D77](tools/check_investor_answers_D77.py).
