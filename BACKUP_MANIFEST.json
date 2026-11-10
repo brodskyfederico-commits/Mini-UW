@@ -1,10 +1,10 @@
 {
-  "scope": "I01 preserved design, D02–D97 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D98 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 14109,
-      "sha256": "5b87e15b4c5a1af408fb0c981c2d81a26ccbff2decf5f698c25760998f31d46b"
+      "bytes": 14248,
+      "sha256": "32ed6b2702dbbb24d37185a98d45294d7261789147d53f60d54c5298d2bb3e5c"
     },
     {
       "path": ".gitignore",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 74550,
-      "sha256": "93d7c42459e9463e8047f2baa9ef89211377af6a176f4a097656f434be47e06f"
+      "bytes": 74817,
+      "sha256": "bb172ca32f9e82189965087127b408f2d18d147c0a63869d624a8819a681a006"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 315979,
-      "sha256": "740ec7f2811f840e0148a0fb4954a9277c0edcd6cfde69451d1044402403ab55"
+      "bytes": 316791,
+      "sha256": "47748076c58211bedf6654f717808c6c5501290805d83fc12120ee816726f1c8"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -980,6 +980,11 @@
       "path": "docs/review/MiniUW_D97_Tenencia_Precio_Minimo_USD10.pdf",
       "bytes": 3607,
       "sha256": "858aceb8ea9d06bf7c4be75b01b47503ffa7ba81e891d70c7d1c223186280d74"
+    },
+    {
+      "path": "docs/review/MiniUW_D98_Venta_300_Tenencia_Demora_USD10.pdf",
+      "bytes": 3551,
+      "sha256": "2d97724208ca2a77f1d37b99595165f3f211a1e445a00deafe9bc62368f94a6d"
     },
     {
       "path": "docs/review/MiniUW_Dots_y_Bots_1_pagina_ROLES01.pdf",
@@ -6740,6 +6745,11 @@
       "path": "tools/fixed_sale_delay_D92.py",
       "bytes": 8443,
       "sha256": "a0bd73aaaf4a332a282596bcd45cdb0c5a97e693f89f9b1b84f01f1bce98e35a"
+    },
+    {
+      "path": "tools/fixed_sale_holding_grid_D98.py",
+      "bytes": 8126,
+      "sha256": "ee3365c688737e7797a71a3e9f9fa0d6db86a8c0159c92aade4e21f332dcff42"
     },
     {
       "path": "tools/fixed_sale_refinance_limit_D91.py",

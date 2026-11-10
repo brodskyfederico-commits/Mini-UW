@@ -213,5 +213,7 @@ jobs:
         run: python tools/delayed_exit_combinations_D96.py
       - name: Verify sale recovery prices across three monthly holding costs
         run: python tools/holding_cost_sale_recovery_D97.py
+      - name: Verify fixed sale receipts and gaps across holding costs and delays
+        run: python tools/fixed_sale_holding_grid_D98.py
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v

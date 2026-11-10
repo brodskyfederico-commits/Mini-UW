@@ -1464,3 +1464,9 @@ Con costo de refinanciación de USD 175, costo de venta de USD 10 más 5 % y des
 Se conserva el caso D96 con costo de refinanciación de USD 175, costo de venta de USD 10 más 5 % y pago de deuda de USD 56,00 el 1 de julio. Se modelan costos mensuales de tenencia de USD 10, USD 20 y USD 30 desde el vencimiento hasta la venta. Se pagan con caja del proyecto y se admite un precio mínimo por debajo de USD 300 cuando alcanza para recuperar los aportes.
 
 Al 1 % mensual y con dos meses de demora, el precio mínimo es USD 351,99, USD 373,05 o USD 394,10 según el costo de tenencia. En cada mínimo se cobran USD 10,71 por USD 10 iniciales, sin aportes extra. Se verifican los 27 mínimos y se reproducen 54 cierres al precio indicado y un centavo por debajo. La decisión real sigue PENDING. [PDF de una página](docs/review/MiniUW_D97_Tenencia_Precio_Minimo_USD10.pdf).
+
+## D98 — Venta fija de USD 300 con tres costos de tenencia y tres demoras
+
+Se conserva la refinanciación de USD 175, el costo de venta de USD 10 más 5 % y la liquidación de deuda de USD 56,00 el 1 de julio. Se reconstruyen nueve cierres con venta de USD 300 y tenencia mensual de USD 10, USD 20 o USD 30. Se comparan 27 saldos en valor presente. Todas las combinaciones quedan cortas al 1 % y al 2 % mensual.
+
+Con dos meses de demora, el inversor cobra USD 10,22, USD 10,02 o USD 9,82 por USD 10 iniciales según el costo de tenencia. Al 1 % mensual faltan USD 0,46, USD 0,64 o USD 0,83. Se conservan los aportes iniciales y se financia la tenencia con caja del proyecto, sin aportes extra. La decisión real sigue PENDING. [PDF de una página](docs/review/MiniUW_D98_Venta_300_Tenencia_Demora_USD10.pdf).
