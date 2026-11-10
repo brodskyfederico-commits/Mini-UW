@@ -1254,3 +1254,9 @@ La prueba pausa un cotejo R2 después del cálculo y activa R3 en otra ejecució
 La auditoría reproduce un informe guardado con su planilla, expediente y revisión registrada. Recalcula el hash del prefijo del historial usado al guardar el informe y coteja los bytes. Comprueba la vigencia con el registro bajo el bloqueo local. Un informe histórico conserva su cotejo original y el cotejo vigente queda PENDING.
 
 La prueba guarda el informe R2, verifica VIGENTE, activa R3 y vuelve a auditar R2 como HISTORICO con el mismo hash. El informe R3 verifica VIGENTE. La auditoría rechaza un informe alterado y la sustitución del expediente de origen. La decisión operativa conserva PENDING. [Control D61](tools/check_historical_cotejo_D61.py).
+
+## D62 — Tasa de salida de la hoja hasta el cierre y el retorno
+
+Inputs!C67 alimenta la valoración T41 con un NOI futuro sintético de USD 40, una ventana anual expresa y fecha de venta. T42 aplica una hipótesis expresa de venta al valor calculado y conserva los costos fijos de este ensayo. La capacidad de refinanciación sigue vinculada a C66, C71 y C72. Las celdas y el expediente conservan sus referencias y hashes.
+
+El cap de salida de 10 % da un precio candidato de USD 400 y el de 8 % da USD 500. Se comprueba que los USD 100 adicionales llegan una vez a los cobros del equity y que la caja anterior a la venta permanece igual. El cap faltante, el cap cero y el préstamo fuera de capacidad retienen el retorno en tres de los cinco casos. Las decisiones siguen PENDING. [Control D62](tools/check_worksheet_exit_D62.py), [fuentes sintéticas](templates/synthetic-worksheet-exit-cap-D62.json).

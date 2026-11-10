@@ -35,7 +35,8 @@ SCHEMA = "miniuw.synthetic-worksheet-refinance.v1"
 CAPACITY_CELLS = {"C66": "cap_rate", "C71": "maximum_ltv", "C72": "minimum_dscr"}
 
 
-def worksheet_parameters(raw, context, as_of):
+def worksheet_parameters(raw, context, as_of, additional_cells=None):
+    mapped_cells = CAPACITY_CELLS | (additional_cells or {})
     sheet = inspect_synthetic_input_sheet(raw)
     cells = sheet.cells
     blockers = []
@@ -50,7 +51,7 @@ def worksheet_parameters(raw, context, as_of):
     rows = {}
     for field in layout()["fields"]:
         cell = field["value_cell"]
-        if cell not in CAPACITY_CELLS:
+        if cell not in mapped_cells:
             if cells[cell]["kind"] not in ("missing", "blank"):
                 blockers.append(f"{cell}:outside_worksheet_refinance_profile")
             continue
@@ -59,10 +60,27 @@ def worksheet_parameters(raw, context, as_of):
         if not errors and not isinstance(value, dict):
             errors = ["required_numeric_value_missing"]
         blockers.extend(f"{cell}:{error}" for error in errors)
-        rows[CAPACITY_CELLS[cell]] = dict(value=value, unit_literal=unit,
+        rows[mapped_cells[cell]] = dict(value=value, unit_literal=unit,
                                         locator=f"xlsx:sheet:Inputs:cell:{cell}", blockers=errors)
-    require(set(rows) == set(CAPACITY_CELLS.values()), "Refinance field mapping differs")
+    require(set(rows) == set(mapped_cells.values()), "Refinance field mapping differs")
     return dict(workbook_sha256=sheet.source_sha256, parameters=rows, blockers=blockers)
+
+
+def bind_worksheet_capacity(evidence, check):
+    require(not check["blockers"], "Worksheet parameters must pass their checks before binding")
+    source = json.loads(evidence.capacity_spec_raw)
+    for name in CAPACITY_CELLS.values():
+        row = check["parameters"][name]
+        source["parameters"][name].update(value=row["value"],
+                                          source_ref=f"sha256:{check['workbook_sha256']}#{row['locator']}")
+    raw = canonical(source).encode()
+    capacity = size_refinance(evidence.capacity_inputs, raw)
+    binding = replace(evidence.binding, capacity_spec_sha256=sha(raw), capacity_run_sha256=capacity.sha256)
+    run = assemble_capacity_checked_returns(
+        evidence.periods, evidence.closings, evidence.manifest_raw, evidence.project_run,
+        evidence.capacity_inputs, raw, capacity, evidence.investor_raw, binding,
+    )
+    return replace(evidence, capacity_spec_raw=raw, capacity_run=capacity, binding=binding, guarded_run=run)
 
 
 def run_case(evidence, worksheet, context, as_of, monthly_rate=None):
@@ -79,16 +97,8 @@ def run_case(evidence, worksheet, context, as_of, monthly_rate=None):
     if check["blockers"]:
         return result
 
-    for name, row in check["parameters"].items():
-        source["parameters"][name].update(value=row["value"],
-                                          source_ref=f"sha256:{check['workbook_sha256']}#{row['locator']}")
-    raw = canonical(source).encode()
-    capacity = size_refinance(evidence.capacity_inputs, raw)
-    binding = replace(evidence.binding, capacity_spec_sha256=sha(raw), capacity_run_sha256=capacity.sha256)
-    run = assemble_capacity_checked_returns(
-        evidence.periods, evidence.closings, evidence.manifest_raw, evidence.project_run,
-        evidence.capacity_inputs, raw, capacity, evidence.investor_raw, binding,
-    )
+    bound = bind_worksheet_capacity(evidence, check)
+    raw, capacity, run = bound.capacity_spec_raw, bound.capacity_run, bound.guarded_run
     c = capacity.payload
     require(run.payload["decision"] == c["decision"] == "PENDING"
             and c["bank_credit_approved"] is c["funds_available_verified"] is False, "Refinance acquired authority")

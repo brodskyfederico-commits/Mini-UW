@@ -4,6 +4,7 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D62 conecta Inputs!C67 con la valoración de salida y el cierre sintético con refinanciación. Ejecuta `python tools/check_worksheet_exit_D62.py`. [Control D62](tools/check_worksheet_exit_D62.py).
 - D61 distingue un informe vigente de uno histórico al reproducirlo desde sus fuentes. Usa `python tools/miniuw_current_cotejo_D59.py audit REGISTRO EXPEDIENTE PLANILLA INFORME`. [Control D61](tools/check_historical_cotejo_D61.py).
 - D60 publica localmente el informe sintético sólo si la revisión sigue vigente. Usa `python tools/miniuw_current_cotejo_D59.py review REGISTRO EXPEDIENTE PLANILLA --output INFORME`. [Control concurrente D60](tools/check_current_publication_D60.py).
 - D59 registra la revisión sintética vigente y permite cotejar contra el registro local. Usa los subcomandos `register`, `current` y `review` de `python tools/miniuw_current_cotejo_D59.py`. [Control D59](tools/check_current_cotejo_D59.py).
