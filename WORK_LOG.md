@@ -1292,3 +1292,9 @@ El esquema de caso v2 muestra si falta la celda C68 o si queda por resolver la a
 El esquema de caso v3 vincula los términos de reparto al libro exacto de equity del cierre. Reproduce participaciones hipotéticas de 25 % y 75 % en aportes y cobros fechados. El PDF de una página muestra aportes, cobros y ganancia neta por participante. El JSON conserva el detalle por evento, los intervalos de TIR y el pico de financiación, la caja no recuperada y la dependencia de la venta.
 
 Se auditan cuatro expedientes. Tres concilian los importes por evento y uno queda PENDING por tratamiento fiscal pendiente, sin caja por participante. Se rechaza el hash de términos alterado. Los esquemas previos conservan su salida y el retorno personal real queda pendiente. [Control D68](tools/check_worksheet_participation_D68.py).
+
+## D69 — Verificación local de los cambios y diagnóstico de GitHub Actions
+
+La ejecución hospedada de D61 completó las 1.619 pruebas de la base técnica. La comparación D61–D68 confirma por SHA-256 que coinciden los 141 archivos de src, los 103 de tests y las dependencias de referencia. Se volvieron a ejecutar en D68 los seis controles D62–D68 y se auditaron dos expedientes anteriores, con y sin refinanciación. Pasaron las 26 suites de referencia.
+
+En D68 GitHub informó fallo con cero pasos y sin runner asignado. La API indica una anotación cuyo contenido no estuvo disponible en la conexión. El resultado hospedado de D68 sigue abierto y la batería local completa sigue su propio curso. [Registro de verificación](docs/ci-verification.json).

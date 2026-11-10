@@ -13,5 +13,149 @@
   "python_minor": "3.11",
   "reference_suites": 18,
   "local_integrity_fault_cases_rejected": 4,
-  "scope": "Observed GitHub API run/job summaries for this commit only. No financial certification, expert review, real-deal approval or deployment."
+  "scope": "Observed GitHub API run/job summaries for this commit only. No financial certification, expert review, real-deal approval or deployment.",
+  "follow_up_D69": {
+    "hosted_baseline": {
+      "milestone": "D61",
+      "commit_sha": "a5ea3992fbabbd891abd8db583d4305db83725d0",
+      "workflow_run_id": 42725981686,
+      "job_id": 129531596262,
+      "conclusion": "success",
+      "runner_assigned": true,
+      "steps": 71,
+      "technical_tests_passed": 1619,
+      "technical_tests_seconds": 1801.143
+    },
+    "hosted_failure": {
+      "milestone": "D68",
+      "commit_sha": "bfccc3790f98fb9b5d385ee5dbe500345815fb74",
+      "workflow_run_id": 42731848008,
+      "job_id": 129551548938,
+      "conclusion": "failure",
+      "runner_assigned": false,
+      "steps": 0,
+      "annotations_reported": 1,
+      "annotation_readable_via_connector": false,
+      "job_log_available": false,
+      "cause_confirmed": false
+    },
+    "comparison": {
+      "changed_paths": [
+        ".github/workflows/model-reference-checks.yml",
+        "BACKUP_MANIFEST.json",
+        "README.md",
+        "WORK_LOG.md",
+        "docs/coverage-guide.md",
+        "docs/coverage-matrix.csv",
+        "docs/coverage-matrix.json",
+        "templates/synthetic-unified-worksheet-costed-sale-D65.json",
+        "templates/synthetic-unified-worksheet-costed-sale-D67.json",
+        "templates/synthetic-unified-worksheet-participation-D68.json",
+        "templates/synthetic-worksheet-exit-cap-D62.json",
+        "templates/synthetic-worksheet-participation-terms-D68.json",
+        "templates/synthetic-worksheet-sale-costs-D63.json",
+        "tools/check_costed_sale_diagnostics_D67.py",
+        "tools/check_discounted_worksheet_sale_D64.py",
+        "tools/check_unified_costed_sale_D65.py",
+        "tools/check_worksheet_exit_D62.py",
+        "tools/check_worksheet_participation_D68.py",
+        "tools/check_worksheet_refinance_D45.py",
+        "tools/check_worksheet_sale_costs_D63.py",
+        "tools/discounted_costed_sale_D64.py",
+        "tools/miniuw_worksheet_v1.py",
+        "tools/worksheet_costed_case_D65.py",
+        "tools/worksheet_participation_D68.py"
+      ],
+      "src_files_byte_identical": 141,
+      "test_files_byte_identical": 103,
+      "reference_requirements_byte_identical": true
+    },
+    "exact_D68_local": {
+      "python_minor": "3.12",
+      "reference_suites_passed": 26,
+      "coverage_rows": 398,
+      "delta_checks": {
+        "check_worksheet_exit_D62": {
+          "status": "passed",
+          "decision": "PENDING",
+          "cases": 5,
+          "computed": 2,
+          "pending": 3,
+          "evidence_sha256": "fa212dd65c266b74b2799e0495ca61d90e3c8772bd32a54b3b7cc24f5087011d"
+        },
+        "check_worksheet_sale_costs_D63": {
+          "status": "passed",
+          "decision": "PENDING",
+          "cases": 5,
+          "computed": 3,
+          "pending": 2,
+          "evidence_sha256": "c989f7ab057f3eec0ec9a0b91eee46b3e35c18a13d17dec74fa563176c8f5cb2"
+        },
+        "check_discounted_worksheet_sale_D64": {
+          "status": "passed",
+          "decision": "PENDING",
+          "cases": 5,
+          "calculated": 3,
+          "pending": 2,
+          "cents_at_two_percent": 20178,
+          "zero_cost_fraction_cents_at_two_percent": 19169,
+          "evidence_sha256": "f84caca657f4d9229b20b018cc9121041ffc26dda2e51b866e685d606ff3dc0e"
+        },
+        "check_unified_costed_sale_D65": {
+          "status": "passed",
+          "decision": "PENDING",
+          "audited_pages": 5,
+          "states": {
+            "price_400": "computed_synthetic_project_cash",
+            "price_500": "computed_synthetic_project_cash",
+            "explicit_zero": "computed_synthetic_project_cash",
+            "missing_cost": "PENDING",
+            "tax_pending": "PENDING"
+          }
+        },
+        "check_costed_sale_diagnostics_D67": {
+          "status": "passed",
+          "decision": "PENDING",
+          "previous_pdfs_audited": 2,
+          "diagnostic_pdfs_audited": 2,
+          "unsupported_profile_rejected": true
+        },
+        "check_worksheet_participation_D68": {
+          "status": "passed",
+          "decision": "PENDING",
+          "audited_pages": 4,
+          "allocated": 3,
+          "pending": 1,
+          "mismatched_terms_rejected": true
+        }
+      },
+      "legacy_package_audits": {
+        "sale": {
+          "status": "verified_source_first",
+          "state": "computed_synthetic_project_cash",
+          "profile": "without_refinance",
+          "decision": "PENDING",
+          "pdf_sha256": "cbeef2d26586c95dcca9831f48588928b6a5a7bfe78442f87f854784855bf77e",
+          "page_count": 1
+        },
+        "refinance": {
+          "status": "verified_source_first",
+          "state": "computed_synthetic_project_cash",
+          "profile": "with_refinance",
+          "decision": "PENDING",
+          "pdf_sha256": "86bdbe8cdbddd030ef6aee8cf769785ce22736b53279a29a3944d6fa34a153b4",
+          "page_count": 1
+        }
+      }
+    },
+    "ongoing_local_full_replay_at_capture": {
+      "started_on": "D65",
+      "total_discovered": 1619,
+      "completed_successfully": 736,
+      "reported_failures": 0,
+      "reported_errors": 0,
+      "completed": false
+    },
+    "scope": "Synthetic engineering evidence. The D61 hosted result is specific to D61. The local D68 delta does not substitute for a hosted D68 result."
+  }
 }
