@@ -1298,3 +1298,9 @@ Se auditan cuatro expedientes. Tres concilian los importes por evento y uno qued
 La ejecución hospedada de D61 completó las 1.619 pruebas de la base técnica. La comparación D61–D68 confirma por SHA-256 que coinciden los 141 archivos de src, los 103 de tests y las dependencias de referencia. Se volvieron a ejecutar en D68 los seis controles D62–D68 y se auditaron dos expedientes anteriores, con y sin refinanciación. Pasaron las 26 suites de referencia.
 
 En D68 GitHub informó fallo con cero pasos y sin runner asignado. La API indica una anotación cuyo contenido no estuvo disponible en la conexión. El resultado hospedado de D68 sigue abierto y la batería local completa sigue su propio curso. [Registro de verificación](docs/ci-verification.json).
+
+## D70 — YoC y spread estabilizados con supuestos sintéticos
+
+El ensayo usa el productor de NOI, un inventario explícito de costos y una tasa de capitalización de referencia independiente de la tasa de salida y de la bancaria. Base obtiene YoC de 10 % y spread de 200 puntos básicos. Downside obtiene 3/44 de YoC y −1850/11 puntos básicos de spread. Los límites hipotéticos ensayan PASS, FAIL y la banda PENDING.
+
+Si falta un costo o el TDC suma cero se retiran ambos ratios. Si el cap de referencia no corresponde al período se conserva el YoC y queda PENDING el spread. Un NOI cero explícito da YoC cero. La matriz enlaza las dos métricas con el control reproducible y conserva los estados abiertos. La decisión operativa permanece PENDING. [Control D70](tools/check_yoc_spread_D70.py).

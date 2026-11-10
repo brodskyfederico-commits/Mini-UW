@@ -1,0 +1,409 @@
+{
+  "schema": "miniuw.synthetic-yoc-spread-rehearsal.v1",
+  "stabilized_start": "2027-01-01",
+  "stabilized_end": "2028-01-01",
+  "scenarios": {
+    "Base": {
+      "stabilized_noi": {
+        "schema": "miniuw.synthetic-operating-noi.v1",
+        "profile_id": "SYNTHETIC-M2-MAX-TAX-v1",
+        "context": {
+          "deal_id": "SYNTHETIC-D70-yield-cost-spread",
+          "scenario_id": "SYNTHETIC-D70-Base",
+          "run_id": "SYNTHETIC-D70-rehearsal",
+          "definition_set_revision": "SYNTHETIC-D70-definitions-v1"
+        },
+        "currency": "USD",
+        "period_ref": "2027-01-01/2028-01-01",
+        "income_rows": [
+          {
+            "value": {
+              "numerator": "140",
+              "denominator": "1"
+            },
+            "currency": "USD",
+            "period_ref": "2027-01-01/2028-01-01",
+            "unit": "currency_per_declared_period",
+            "basis": "accrual",
+            "source_ref": "SYNTHETIC-D70-Base-stabilized-operating-inventory",
+            "item_id": "SYNTHETIC-income-residential"
+          },
+          {
+            "value": {
+              "numerator": "0",
+              "denominator": "1"
+            },
+            "currency": "USD",
+            "period_ref": "2027-01-01/2028-01-01",
+            "unit": "currency_per_declared_period",
+            "basis": "accrual",
+            "source_ref": "SYNTHETIC-D70-Base-stabilized-operating-inventory",
+            "item_id": "SYNTHETIC-income-commercial"
+          }
+        ],
+        "expense_rows": [
+          {
+            "value": {
+              "numerator": "40",
+              "denominator": "1"
+            },
+            "currency": "USD",
+            "period_ref": "2027-01-01/2028-01-01",
+            "unit": "currency_per_declared_period",
+            "basis": "accrual",
+            "source_ref": "SYNTHETIC-D70-Base-stabilized-operating-inventory",
+            "item_id": "SYNTHETIC-expenses-excluding-tax"
+          }
+        ],
+        "tax_floor": {
+          "value": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "currency": "USD",
+          "period_ref": "2027-01-01/2028-01-01",
+          "unit": "currency_per_declared_period",
+          "basis": "accrual",
+          "source_ref": "SYNTHETIC-D70-Base-explicit-zero-tax-fixture"
+        },
+        "tax_coefficient": {
+          "value": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "unit": "scalar",
+          "source_ref": "SYNTHETIC-D70-Base-explicit-zero-tax-fixture"
+        },
+        "modelling_assumptions": {
+          "same_period_accrual": true,
+          "tax_model": "max_floor_or_fixed_coefficient_times_noi",
+          "coefficient_fixed": true,
+          "additional_tax_adjustments": false,
+          "rounding": "none_exact"
+        }
+      },
+      "tdc": {
+        "context": {
+          "deal_id": "SYNTHETIC-D70-yield-cost-spread",
+          "scenario_id": "SYNTHETIC-D70-Base",
+          "run_id": "SYNTHETIC-D70-rehearsal",
+          "definition_set_revision": "SYNTHETIC-D70-definitions-v1"
+        },
+        "currency": "USD",
+        "complete": true,
+        "scope_ref": "SYNTHETIC-D70-all-in-cost-inventory",
+        "rows": [
+          {
+            "component": "acquisition",
+            "amount": {
+              "numerator": "350",
+              "denominator": "1"
+            },
+            "source_ref": "SYNTHETIC-D70-Base-budget-acquisition"
+          },
+          {
+            "component": "hard",
+            "amount": {
+              "numerator": "450",
+              "denominator": "1"
+            },
+            "source_ref": "SYNTHETIC-D70-Base-budget-hard"
+          },
+          {
+            "component": "soft",
+            "amount": {
+              "numerator": "120",
+              "denominator": "1"
+            },
+            "source_ref": "SYNTHETIC-D70-Base-budget-soft"
+          },
+          {
+            "component": "financing",
+            "amount": {
+              "numerator": "80",
+              "denominator": "1"
+            },
+            "source_ref": "SYNTHETIC-D70-Base-budget-financing"
+          },
+          {
+            "component": "other",
+            "amount": {
+              "numerator": "0",
+              "denominator": "1"
+            },
+            "source_ref": "SYNTHETIC-D70-Base-budget-other"
+          }
+        ]
+      },
+      "cap_rate": {
+        "context": {
+          "deal_id": "SYNTHETIC-D70-yield-cost-spread",
+          "scenario_id": "SYNTHETIC-D70-Base",
+          "run_id": "SYNTHETIC-D70-rehearsal",
+          "definition_set_revision": "SYNTHETIC-D70-definitions-v1"
+        },
+        "currency": "USD",
+        "period_ref": "2027-01-01/2028-01-01",
+        "kind": "synthetic_market_cap_reference",
+        "value": {
+          "numerator": "2",
+          "denominator": "25"
+        },
+        "source_ref": "SYNTHETIC-D70-Base-reference-cap-separate-from-bank-and-sale"
+      }
+    },
+    "Downside": {
+      "stabilized_noi": {
+        "schema": "miniuw.synthetic-operating-noi.v1",
+        "profile_id": "SYNTHETIC-M2-MAX-TAX-v1",
+        "context": {
+          "deal_id": "SYNTHETIC-D70-yield-cost-spread",
+          "scenario_id": "SYNTHETIC-D70-Downside",
+          "run_id": "SYNTHETIC-D70-rehearsal",
+          "definition_set_revision": "SYNTHETIC-D70-definitions-v1"
+        },
+        "currency": "USD",
+        "period_ref": "2027-01-01/2028-01-01",
+        "income_rows": [
+          {
+            "value": {
+              "numerator": "130",
+              "denominator": "1"
+            },
+            "currency": "USD",
+            "period_ref": "2027-01-01/2028-01-01",
+            "unit": "currency_per_declared_period",
+            "basis": "accrual",
+            "source_ref": "SYNTHETIC-D70-Downside-stabilized-operating-inventory",
+            "item_id": "SYNTHETIC-income-residential"
+          },
+          {
+            "value": {
+              "numerator": "0",
+              "denominator": "1"
+            },
+            "currency": "USD",
+            "period_ref": "2027-01-01/2028-01-01",
+            "unit": "currency_per_declared_period",
+            "basis": "accrual",
+            "source_ref": "SYNTHETIC-D70-Downside-stabilized-operating-inventory",
+            "item_id": "SYNTHETIC-income-commercial"
+          }
+        ],
+        "expense_rows": [
+          {
+            "value": {
+              "numerator": "55",
+              "denominator": "1"
+            },
+            "currency": "USD",
+            "period_ref": "2027-01-01/2028-01-01",
+            "unit": "currency_per_declared_period",
+            "basis": "accrual",
+            "source_ref": "SYNTHETIC-D70-Downside-stabilized-operating-inventory",
+            "item_id": "SYNTHETIC-expenses-excluding-tax"
+          }
+        ],
+        "tax_floor": {
+          "value": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "currency": "USD",
+          "period_ref": "2027-01-01/2028-01-01",
+          "unit": "currency_per_declared_period",
+          "basis": "accrual",
+          "source_ref": "SYNTHETIC-D70-Downside-explicit-zero-tax-fixture"
+        },
+        "tax_coefficient": {
+          "value": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "unit": "scalar",
+          "source_ref": "SYNTHETIC-D70-Downside-explicit-zero-tax-fixture"
+        },
+        "modelling_assumptions": {
+          "same_period_accrual": true,
+          "tax_model": "max_floor_or_fixed_coefficient_times_noi",
+          "coefficient_fixed": true,
+          "additional_tax_adjustments": false,
+          "rounding": "none_exact"
+        }
+      },
+      "tdc": {
+        "context": {
+          "deal_id": "SYNTHETIC-D70-yield-cost-spread",
+          "scenario_id": "SYNTHETIC-D70-Downside",
+          "run_id": "SYNTHETIC-D70-rehearsal",
+          "definition_set_revision": "SYNTHETIC-D70-definitions-v1"
+        },
+        "currency": "USD",
+        "complete": true,
+        "scope_ref": "SYNTHETIC-D70-all-in-cost-inventory",
+        "rows": [
+          {
+            "component": "acquisition",
+            "amount": {
+              "numerator": "350",
+              "denominator": "1"
+            },
+            "source_ref": "SYNTHETIC-D70-Downside-budget-acquisition"
+          },
+          {
+            "component": "hard",
+            "amount": {
+              "numerator": "510",
+              "denominator": "1"
+            },
+            "source_ref": "SYNTHETIC-D70-Downside-budget-hard"
+          },
+          {
+            "component": "soft",
+            "amount": {
+              "numerator": "140",
+              "denominator": "1"
+            },
+            "source_ref": "SYNTHETIC-D70-Downside-budget-soft"
+          },
+          {
+            "component": "financing",
+            "amount": {
+              "numerator": "100",
+              "denominator": "1"
+            },
+            "source_ref": "SYNTHETIC-D70-Downside-budget-financing"
+          },
+          {
+            "component": "other",
+            "amount": {
+              "numerator": "0",
+              "denominator": "1"
+            },
+            "source_ref": "SYNTHETIC-D70-Downside-budget-other"
+          }
+        ]
+      },
+      "cap_rate": {
+        "context": {
+          "deal_id": "SYNTHETIC-D70-yield-cost-spread",
+          "scenario_id": "SYNTHETIC-D70-Downside",
+          "run_id": "SYNTHETIC-D70-rehearsal",
+          "definition_set_revision": "SYNTHETIC-D70-definitions-v1"
+        },
+        "currency": "USD",
+        "period_ref": "2027-01-01/2028-01-01",
+        "kind": "synthetic_market_cap_reference",
+        "value": {
+          "numerator": "17",
+          "denominator": "200"
+        },
+        "source_ref": "SYNTHETIC-D70-Downside-reference-cap-separate-from-bank-and-sale"
+      }
+    }
+  },
+  "criteria": {
+    "strict": {
+      "YoC": {
+        "pass_condition": {
+          "operator": ">=",
+          "threshold": {
+            "numerator": "9",
+            "denominator": "100"
+          }
+        },
+        "fail_condition": {
+          "operator": "<",
+          "threshold": {
+            "numerator": "7",
+            "denominator": "100"
+          }
+        }
+      },
+      "spread": {
+        "pass_condition": {
+          "operator": ">=",
+          "threshold": {
+            "numerator": "100",
+            "denominator": "1"
+          }
+        },
+        "fail_condition": {
+          "operator": "<",
+          "threshold": {
+            "numerator": "-150",
+            "denominator": "1"
+          }
+        }
+      }
+    },
+    "relaxed": {
+      "YoC": {
+        "pass_condition": {
+          "operator": ">=",
+          "threshold": {
+            "numerator": "3",
+            "denominator": "50"
+          }
+        },
+        "fail_condition": {
+          "operator": "<",
+          "threshold": {
+            "numerator": "1",
+            "denominator": "20"
+          }
+        }
+      },
+      "spread": {
+        "pass_condition": {
+          "operator": ">=",
+          "threshold": {
+            "numerator": "-175",
+            "denominator": "1"
+          }
+        },
+        "fail_condition": {
+          "operator": "<",
+          "threshold": {
+            "numerator": "-225",
+            "denominator": "1"
+          }
+        }
+      }
+    },
+    "intermediate": {
+      "YoC": {
+        "pass_condition": {
+          "operator": ">=",
+          "threshold": {
+            "numerator": "9",
+            "denominator": "100"
+          }
+        },
+        "fail_condition": {
+          "operator": "<",
+          "threshold": {
+            "numerator": "3",
+            "denominator": "50"
+          }
+        }
+      },
+      "spread": {
+        "pass_condition": {
+          "operator": ">=",
+          "threshold": {
+            "numerator": "100",
+            "denominator": "1"
+          }
+        },
+        "fail_condition": {
+          "operator": "<",
+          "threshold": {
+            "numerator": "-175",
+            "denominator": "1"
+          }
+        }
+      }
+    }
+  }
+}

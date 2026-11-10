@@ -1868,7 +1868,7 @@
       "definicion_vigente": "No cerrada: conservar la definición documentada como candidata, sin activarla como política aprobada.",
       "modulo_o_calculo_afectado": "M2/M5/M9",
       "evidencia_documental": "sources/extracted/38b78d40013b.txt ; extracción textual cotejada preliminarmente",
-      "evidencia_validacion": "No hay implementación recuperada, caso independiente ejecutado ni validación de producto para esta fila.",
+      "evidencia_validacion": "No hay implementación recuperada, caso independiente ejecutado ni validación de producto para esta fila. D70 tools/check_yoc_spread_D70.py reproduce NOI estabilizado y TDC sintéticos por escenario. Prueba TDC incompleto, TDC cero y NOI cero explícito.",
       "estado": "DEFINICION_PENDIENTE",
       "pendientes": "Definir NOI, estabilización y TDC. Umbrales nuevos por deal vacíos.",
       "cobertura_financiera_extremo_a_extremo": false
@@ -1886,7 +1886,7 @@
       "definicion_vigente": "No cerrada: conservar la definición documentada como candidata, sin activarla como política aprobada.",
       "modulo_o_calculo_afectado": "M8/M9",
       "evidencia_documental": "sources/extracted/38b78d40013b.txt ; extracción textual cotejada preliminarmente",
-      "evidencia_validacion": "No hay implementación recuperada, caso independiente ejecutado ni validación de producto para esta fila.",
+      "evidencia_validacion": "No hay implementación recuperada, caso independiente ejecutado ni validación de producto para esta fila. D70 tools/check_yoc_spread_D70.py reproduce puntos básicos con cap de referencia sintético separado de banco y salida. Bloquea spread si difiere el período.",
       "estado": "DEFINICION_PENDIENTE",
       "pendientes": "Unidad ratio/bps, período y cap aplicable. Umbrales nuevos por deal vacíos.",
       "cobertura_financiera_extremo_a_extremo": false

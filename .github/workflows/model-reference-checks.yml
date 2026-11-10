@@ -159,5 +159,7 @@ jobs:
         run: python tools/check_costed_sale_diagnostics_D67.py
       - name: Verify dated synthetic participant cash in the common worksheet package
         run: python tools/check_worksheet_participation_D68.py
+      - name: Verify stabilized synthetic YoC and reference cap spread
+        run: python tools/check_yoc_spread_D70.py
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v

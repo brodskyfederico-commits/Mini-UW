@@ -1,10 +1,10 @@
 {
-  "scope": "I01 preserved design, D02–D69 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D70 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 10433,
-      "sha256": "c8c91e19eebe465a6c2ed6052522043609d6c9434ecf7bffece900cc4e80d5f8"
+      "bytes": 10554,
+      "sha256": "e86ba8fd2b324bcf3776cbd3ed5c76adf1fc620dc515d4bf113da538df113c3d"
     },
     {
       "path": ".gitignore",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 66880,
-      "sha256": "278dbe2d893914fe5d282b35c236b14c217401db11f714aa7b2df5a4dbbc0f2b"
+      "bytes": 67145,
+      "sha256": "96c9717b283c71912a4b02132787f5cf56a75a01ba33445b7a96db34f0df7356"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 292828,
-      "sha256": "fec2f04f5cf140e37cf0e0cb4005c17a31615c3cd8e194cf18a117a13c169cd3"
+      "bytes": 293633,
+      "sha256": "989cb32cf7d5c331b4faa34c86d3f3870bfff4e864266c133337b50844f02451"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -123,13 +123,13 @@
     },
     {
       "path": "docs/coverage-matrix.csv",
-      "bytes": 371185,
-      "sha256": "7d4fbd29d2ad6e11168a5709cfc4c9ac8ecf1db3eead51346d2393653bd5ef13"
+      "bytes": 371494,
+      "sha256": "14d81f59288bb291b09daa9a71fb8c1241204e153b7770573a54ff43d6cd45ef"
     },
     {
       "path": "docs/coverage-matrix.json",
-      "bytes": 555626,
-      "sha256": "143fb04d2bc1490ea1bb65e59f50493b0604ca14c0d225b6a1ad64b3ebb580d8"
+      "bytes": 555935,
+      "sha256": "c64b03b44e1e303931620e6e6ea778ebb832c0d532ef6aa9656605b75e13e5c2"
     },
     {
       "path": "docs/current-direction.txt",
@@ -5317,6 +5317,11 @@
       "sha256": "807a958e1b87fe13784b695e9d86ad146f0172f24576a7cd9e80d9573c0398ea"
     },
     {
+      "path": "templates/synthetic-yoc-spread-D70.json",
+      "bytes": 12114,
+      "sha256": "9ea85c4c66f70ae9699fb9cb9e92789e9e7411680f9f94b5ac3cd59794713cb5"
+    },
+    {
       "path": "templates/synthetic-zero-tax-schedule.json",
       "bytes": 1348,
       "sha256": "4a590bd08b8aea42f555c6bfe167aec1a0f607f082e422e9be854cf276af6448"
@@ -6265,6 +6270,11 @@
       "path": "tools/check_worksheet_settled_T111.py",
       "bytes": 9054,
       "sha256": "bf4446c454d18e29d5f6fc14d672c6edc44d838da932bde6ec51a6a37dcea4f7"
+    },
+    {
+      "path": "tools/check_yoc_spread_D70.py",
+      "bytes": 9893,
+      "sha256": "adced9ccd22f034f83be3144e9f7f629ca5f56e928d81cb865d73d1763cc85d3"
     },
     {
       "path": "tools/compare_miniuw_v1.py",
