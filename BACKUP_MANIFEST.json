@@ -1,10 +1,10 @@
 {
-  "scope": "I01 preserved design, D02–D98 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D99 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 14248,
-      "sha256": "32ed6b2702dbbb24d37185a98d45294d7261789147d53f60d54c5298d2bb3e5c"
+      "bytes": 14385,
+      "sha256": "ac98295103becd18fb30b5bd121b38460ffd5d3729e48919269699a4321d15cf"
     },
     {
       "path": ".gitignore",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 74817,
-      "sha256": "bb172ca32f9e82189965087127b408f2d18d147c0a63869d624a8819a681a006"
+      "bytes": 75118,
+      "sha256": "cb0769dc5fdb5c1ffd7462ec1f1e864d061c0efbea41a14779a09d998f20e4f0"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 316791,
-      "sha256": "47748076c58211bedf6654f717808c6c5501290805d83fc12120ee816726f1c8"
+      "bytes": 317757,
+      "sha256": "effd1d4b49dc174960c4b8fdca3859036240396bced237b239b7fef3291744db"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -985,6 +985,11 @@
       "path": "docs/review/MiniUW_D98_Venta_300_Tenencia_Demora_USD10.pdf",
       "bytes": 3551,
       "sha256": "2d97724208ca2a77f1d37b99595165f3f211a1e445a00deafe9bc62368f94a6d"
+    },
+    {
+      "path": "docs/review/MiniUW_D99_Tenencia_Demora_4_6_Meses_USD10.pdf",
+      "bytes": 3837,
+      "sha256": "977e6267825f2e9837c256ecdd1f8d3888aaf4431ffaec8d0241ee41909f6479"
     },
     {
       "path": "docs/review/MiniUW_Dots_y_Bots_1_pagina_ROLES01.pdf",
@@ -6735,6 +6740,11 @@
       "path": "tools/expense_lifecycle_demo_support.py",
       "bytes": 6213,
       "sha256": "01b458d45c7a778d3b4de180a587dbcd79c5be18c45ae6f56bdc854d34e83ce4"
+    },
+    {
+      "path": "tools/extended_holding_sale_D99.py",
+      "bytes": 10438,
+      "sha256": "80b308480e7d754e7c5f6222cd9d3cd35452501bd6d33400bb7221350ae6c503"
     },
     {
       "path": "tools/fixed_sale_cash_D90.py",
