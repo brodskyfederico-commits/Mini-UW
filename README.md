@@ -4,6 +4,8 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D75 pone primero la pregunta de los USD 10 en Base y Downside. Ejecuta `python tools/miniuw_worksheet_v1.py run templates/synthetic-investor-scenarios-D75.json --output /tmp/miniuw-escenarios-10` y audita el paquete con `audit`. [Control D75](tools/check_investor_scenarios_D75.py).
+
 - D74 abre el PDF de una página con el retorno por USD 10 de aporte inicial de un participante sintético. Ejecuta `python tools/miniuw_worksheet_v1.py run templates/synthetic-unified-worksheet-investor-D74.json --output /tmp/miniuw-retorno-10`. [Control D74](tools/check_worksheet_investor_D74.py).
 
 - D72 comprueba ocupación económica de equilibrio sintética, incluido un caso inviable al 100 %. Ejecuta `python tools/check_breakeven_occupancy_D72.py`. [Control D72](tools/check_breakeven_occupancy_D72.py).

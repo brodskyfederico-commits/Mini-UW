@@ -65,17 +65,20 @@ def replay_sale(evidence, sale_spec, refinance_parent, capacity_blocked):
     return result, parent
 
 
-def replay_matrix(refinance, sales):
+def replay_matrix(refinance, sales, *, selected=None):
     base = load_evidence(independent_test_fixture=True)
     require(refinance["base_evidence_sha256"] == evidence_fingerprint(base), "Refinance base evidence differs")
     maximum = amount(base.capacity_run.payload["maximum_principal_capacity"])
     cases = {}
     for key, variant in indexed(refinance["variants"], "variant_id").items():
+        selected_sales = [sale for sale in sales if selected is None or f"{key}/{sale['revision_id']}" in selected]
+        if not selected_sales:
+            continue
         evidence = build_variant_evidence(base, variant)
         capacity = evidence.capacity_run.payload
-        selected = amount(capacity["selected_principal"])
-        blocked = selected > maximum
-        require(selected == amount(variant["selected_principal"])
+        principal = amount(capacity["selected_principal"])
+        blocked = principal > maximum
+        require(principal == amount(variant["selected_principal"])
                 and amount(capacity["maximum_principal_capacity"]) == maximum
                 and capacity["blockers"] == ([CAPACITY_BLOCKER] if blocked else [])
                 and capacity["bank_credit_approved"] is capacity["funds_available_verified"] is False,
@@ -89,11 +92,11 @@ def replay_matrix(refinance, sales):
             refinance_parent["guarded_run_sha256"] = guarded.sha256
             require(digest(canonical(refinance_parent)) == refinance["project_ledgers"][key],
                     "Refinance-only ledger differs from D31")
-        for sale_spec in sales:
+        for sale_spec in selected_sales:
             revision, parent = replay_sale(evidence, sale_spec, refinance_parent, blocked)
             amounts = sale_spec["replacement_claims"]
             row = dict(refinance_variant=key, sale_revision=sale_spec["revision_id"],
-                       selected_principal=str(selected), capacity=str(maximum), capacity_blockers=capacity["blockers"],
+                       selected_principal=str(principal), capacity=str(maximum), capacity_blockers=capacity["blockers"],
                        sale_proceeds=str(amount(amounts["gross_proceeds"])),
                        sale_closing_costs=str(amount(amounts["closing_costs_paid"])),
                        project=None, participants=None)

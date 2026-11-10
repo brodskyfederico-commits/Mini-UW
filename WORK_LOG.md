@@ -1328,3 +1328,9 @@ El resultado local se archiva por separado del fallo hospedado anterior a la asi
 La versión v4 del expediente presenta primero el retorno de un participante sintético. Normaliza cada flujo por USD 10 de aporte inicial y conserva por separado los aportes adicionales. El caso base cobra USD 12,92 y gana USD 2,92. Recibe USD 2 de operación, USD 2 de refinanciación y USD 8,92 al vender. El PDF de una página muestra fechas, múltiplo, intervalo de TIR anual y dependencia de la venta. Los importes del JSON conservan su precisión exacta.
 
 La salida queda PENDING si falta el costo variable, si el impuesto de venta está pendiente o si el aporte inicial es cero. El capital remanente, equity retenido, CoC y retorno personal real siguen pendientes de evidencia. Los expedientes previos conservan sus bytes de salida. [Control D74](tools/check_worksheet_investor_D74.py).
+
+## D75 — Cobros y aportes por USD 10 iniciales en Base y Downside
+
+El informe de una página abre con los cobros y la ganancia neta. Usa las dos revisiones de caja archivadas en D32 y conserva los hashes de las fuentes y del reparto hipotético. Base cobra USD 13,02 y gana USD 3,02. Downside exige USD 0,80 adicionales al refinanciar, cobra USD 9,02 y deja USD 1,78 sin recuperar al vender. El Base de esta comparación usa USD 20 de costos de venta del archivo D32. El caso D74 usa USD 30, por lo que su cobro es USD 0,10 menor por cada USD 10 iniciales.
+
+El calendario distingue aportes, operación, refinanciación y venta. Se reproducen el PDF y el expediente desde las fuentes y se rechazan un resultado alterado y términos sin vínculo al archivo. Todos los informes nuevos o revisados conservan la pregunta de los USD 10 al inicio. La decisión y el retorno real siguen pendientes. [Control D75](tools/check_investor_scenarios_D75.py).

@@ -22,6 +22,7 @@ DIAGNOSTIC_CASE_SCHEMA = "miniuw.synthetic-unified-worksheet-case.v2"
 PARTICIPATION_CASE_SCHEMA = "miniuw.synthetic-unified-worksheet-case.v3"
 INVESTOR_CASE_SCHEMA = "miniuw.synthetic-unified-worksheet-case.v4"
 PARTICIPATION_SCHEMAS = (PARTICIPATION_CASE_SCHEMA, INVESTOR_CASE_SCHEMA)
+SCENARIO_INVESTOR_SCHEMA = "miniuw.synthetic-investor-scenarios.v1"
 PACKAGE_SCHEMA = "miniuw.synthetic-unified-worksheet-package.v1"
 COSTED_SALE = "templates/synthetic-worksheet-sale-costs-D63.json"
 COSTED_PROFILE = "with_refinance_worksheet_sale"
@@ -30,8 +31,7 @@ FILES = frozenset({"case.json", "results.json", "MiniUW_Resumen.pdf", "package.j
 MAX_FILE_BYTES = 4 * 1024 * 1024
 
 
-def read_case(raw):
-    case = _json(raw, 4096)
+def read_case(case):
     fields = {"schema", "profile", "archive_case", "archive_sha256", "monthly_discount_rate"}
     schema = case.get("schema") if isinstance(case, dict) else None
     if schema in PARTICIPATION_SCHEMAS:
@@ -60,7 +60,11 @@ def read_case(raw):
 
 
 def build_results(raw):
-    case, archive_path, archive_raw, bindings, rate = read_case(raw)
+    case = _json(raw, 4096)
+    if isinstance(case, dict) and case.get("schema") == SCENARIO_INVESTOR_SCHEMA:
+        from worksheet_investor_scenarios_D75 import build_scenarios
+        return build_scenarios(case, sha(raw))
+    case, archive_path, archive_raw, bindings, rate = read_case(case)
     key = case["archive_case"]
     profile = case["profile"]
     refinance = capacity = None

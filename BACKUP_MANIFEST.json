@@ -1,10 +1,10 @@
 {
-  "scope": "I01 preserved design, D02–D74 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D75 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 10958,
-      "sha256": "960a022a05c7d0254137aa36907aa02a5204d5597dd30b310fdb358a1bbc64d1"
+      "bytes": 11092,
+      "sha256": "d35a2d794f70d64d1b732aa48c2dc55e0252518766536e2af9aff6486f3ce12b"
     },
     {
       "path": ".gitignore",
@@ -13,18 +13,18 @@
     },
     {
       "path": "AGENTS.md",
-      "bytes": 4166,
-      "sha256": "a3deb94a6355a3366daaa67a3f9307c48283e119efd36fdedc1b9269c076d1c6"
+      "bytes": 4705,
+      "sha256": "056d065e3046277d3551b71b05fe66ceded75ece5a95b8a7c15286293fe9b04d"
     },
     {
       "path": "README.md",
-      "bytes": 67872,
-      "sha256": "20e6a1e71fd733a75902ef353c1a5083552f21d5e8e4c060021cb932a7c10e6d"
+      "bytes": 68158,
+      "sha256": "b39661314c4f88464f21396bdfc363dd6da797c5ed242f683b4421585c0a6316"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 296393,
-      "sha256": "bc169b3f36693e5841c3a05a4656c8804be752be7d5633aaa7270027dc7f1bb2"
+      "bytes": 297341,
+      "sha256": "407eb7cf83ebe782e7778d7c0b4f18d3599616f725dcbd061d978529ec0d87c6"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -4947,6 +4947,11 @@
       "sha256": "46f6b1f4deff4410273a9943ac5b18bdb809351be35e2b53054e5ba009c762ed"
     },
     {
+      "path": "templates/synthetic-investor-scenarios-D75.json",
+      "bytes": 427,
+      "sha256": "43b0717b09c9e99dc595b6d173adb790d210b6c5b989155461e740aeff922321"
+    },
+    {
       "path": "templates/synthetic-joint-noi-capacity-D38.json",
       "bytes": 428,
       "sha256": "901eaa5cd209118fa5865385084c66dea71ab8c4f943c8cada703d32d45cd58f"
@@ -6117,6 +6122,11 @@
       "sha256": "2479187cbdfa0f2b758de7e8d5caaf85eafaef55c03438e47e77fd990238f36b"
     },
     {
+      "path": "tools/check_investor_scenarios_D75.py",
+      "bytes": 4429,
+      "sha256": "2d2f236c227973237c72753126285c1854a2ebed0afd4ae8efbe7e92d0d4bab5"
+    },
+    {
       "path": "tools/check_joint_noi_capacity_D38.py",
       "bytes": 6168,
       "sha256": "8b8ad2db3673617be295dcc4ea2446dbb95b13c135bd2f4412eaca7ca6fee5f7"
@@ -6173,8 +6183,8 @@
     },
     {
       "path": "tools/check_participant_joint_exit_D32.py",
-      "bytes": 8661,
-      "sha256": "3521308cb6d5eea49644843ab97c5badbf794e6d47b0a0286eaf61a43a5d6809"
+      "bytes": 8860,
+      "sha256": "3812645d8bff22ecab00a30a5f363ac74c31174c10d7643503e94a7c356169c7"
     },
     {
       "path": "tools/check_participant_refinance_variants_D31.py",
@@ -6633,8 +6643,8 @@
     },
     {
       "path": "tools/miniuw_worksheet_v1.py",
-      "bytes": 11976,
-      "sha256": "45b2679f406f989efe87375994a17cf1174d449b8a7e7f62ddb2f08f5add70da"
+      "bytes": 12244,
+      "sha256": "7a56a3e6917bb7620466dcde8d14cb7606b20eb33db52033133e93c3575bb3e5"
     },
     {
       "path": "tools/participant_cash_risk_miniuw_v1.py",
@@ -6695,6 +6705,11 @@
       "path": "tools/worksheet_investor_D74.py",
       "bytes": 4478,
       "sha256": "c54dd07e75ecd10c594e094085781311ce33953a971f2fc5a9f20e59a1e58c96"
+    },
+    {
+      "path": "tools/worksheet_investor_scenarios_D75.py",
+      "bytes": 5102,
+      "sha256": "c21b6392ba9d9b9b835eb47ce7981be8113acfc7476fd3a77dc9b88327f7617d"
     },
     {
       "path": "tools/worksheet_participation_D68.py",
