@@ -1404,3 +1404,9 @@ Se reconstruyen nueve cierres con la rebaja un centavo por debajo del mínimo, e
 Se conserva el Downside sintético de D86. A tasas mensuales del 0 %, 1 % y 2 %, los precios brutos mínimos de venta del activo son USD 378,01, USD 436,90 y USD 498,83 con costo de refinanciación de USD 300. Con costo de USD 220, los mínimos bajan a USD 298,01, USD 354,47 y USD 413,93. Con costo de USD 150, bajan a USD 228,01, USD 282,35 y USD 339,65.
 
 Se recalculan 18 cierres al mínimo redondeado hacia arriba y un centavo por debajo. Se conservan la operación, el préstamo, la capacidad, los costos de venta y las fechas. El PDF distingue el precio del activo del calendario de aportes y cobros por USD 10 iniciales. Decisión PENDING. [PDF de una página](docs/review/MiniUW_D87_Combinaciones_Refi_Venta_USD10.pdf).
+
+## D88 — Precio mínimo de salida en Downside con costo de venta variable
+
+El caso sintético conserva el costo original de USD 20 a un precio bruto de USD 200. Se usa USD 10 fijo más 5 % del precio bruto, con precisión exacta y el precio mínimo redondeado hacia arriba al centavo. A tasas mensuales del 0 %, 1 % y 2 %, los mínimos son USD 387,38, USD 449,37 y USD 514,56 con costo de refinanciación de USD 300. Con costo de USD 220 son USD 303,17, USD 362,60 y USD 425,19. Con costo de USD 150 son USD 229,49, USD 286,69 y USD 347,00.
+
+Se reproducen 27 cierres. Los nueve precios de D87 quedan cortos con el costo variable. Un centavo debajo de cada nuevo mínimo también queda corto. El PDF muestra por separado el cobro neto de venta, el cobro total y los aportes adicionales por USD 10 iniciales. La decisión real sigue PENDING. [PDF de una página](docs/review/MiniUW_D88_Costos_Venta_Variables_USD10.pdf).

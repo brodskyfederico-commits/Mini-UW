@@ -1,10 +1,10 @@
 {
-  "scope": "I01 preserved design, D02–D87 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D88 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 12723,
-      "sha256": "d78755bba4fccf74e0ccc74f23773d31131a41a2c93b2c754fd1b21d7ea2a444"
+      "bytes": 12864,
+      "sha256": "e59ae2174d3627fff0089edbcd9d106487fa68b49b7a33a4511556d92e010e32"
     },
     {
       "path": ".gitignore",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 71673,
-      "sha256": "801fb9bfef7b8460c305f8ef45a4bb8164fb52c3306dd332c8f3a62ca3fe8ee2"
+      "bytes": 71992,
+      "sha256": "defc14ffd9f485f4b7c710184b7ec751a35e2d9d60e04e98d68112436eb012fd"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 307060,
-      "sha256": "15b9815db00da8b1eb05d6c28ed9546f89f49ac6dfd6095248757c3609a262d7"
+      "bytes": 307982,
+      "sha256": "50fb1fcdc886289dc4a1f204beab47d83376656390a3801d3f9293928cf28d0f"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -930,6 +930,11 @@
       "path": "docs/review/MiniUW_D87_Combinaciones_Refi_Venta_USD10.pdf",
       "bytes": 3306,
       "sha256": "415bcaf9ad9051fb9c17fc56e71a3d7572a60aafc97204f12bae5c37efec2317"
+    },
+    {
+      "path": "docs/review/MiniUW_D88_Costos_Venta_Variables_USD10.pdf",
+      "bytes": 3381,
+      "sha256": "7db3b56e5e0567b0b1d0032bd6cd0590a4911ef5548b94a41fdbe5fcd2167f78"
     },
     {
       "path": "docs/review/MiniUW_Dots_y_Bots_1_pagina_ROLES01.pdf",
@@ -6752,14 +6757,19 @@
       "sha256": "f64321df776f640231322e01d84c291bc47a1d514bd89a09b4a5e02218c8a6c0"
     },
     {
+      "path": "tools/price_linked_sale_cost_D88.py",
+      "bytes": 4474,
+      "sha256": "ecd723594df9e991bdfef9b8d7ad7e914073fa1e78d84afd4f0d6e5e7e00648c"
+    },
+    {
       "path": "tools/refinance_cost_recovery_D86.py",
       "bytes": 10788,
       "sha256": "19c72b44c5b51055bc56c6cefc6b77b8d795e43f5254573760086a66f1f47652"
     },
     {
       "path": "tools/refinance_sale_combinations_D87.py",
-      "bytes": 10645,
-      "sha256": "5d8cf006cb6743273f8d3f997afe39761e220bb02f3fe1bb7ca31bafd073469e"
+      "bytes": 12745,
+      "sha256": "c52bd87d427098665d80e30de14838bf4fd094c16f5911131b741349ac3fb6da"
     },
     {
       "path": "tools/reissue_investor_reports_D76.py",
