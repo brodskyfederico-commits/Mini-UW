@@ -1352,3 +1352,7 @@ Los 32 informes con flujos reproducen importes y fechas. Los ocho informes sin c
 Se audita el inventario D77 y se comprueba que los ocho originales sigan PENDING sin flujos. Se reproducen variantes archivadas con préstamo dentro de capacidad, hipótesis de cierre con costo completo, saldo contable conciliado, fuentes contables y de renta vigentes, reconocimiento de renta por período, hoja vigente y reconciliación del cero explícito en C8. Cada variante verifica la procedencia de la fuente, el aporte inicial de USD 10, los cobros fechados, los aportes extra y la caja sin recuperar.
 
 El préstamo alternativo de USD 150 y la variante con hipótesis fiscal sintética cobran USD 13,02 y USD 12,92 por cada USD 10 iniciales, respectivamente. Las variantes contables cobran USD 8,40 y las de renta u hoja USD 7,78. Estas seis variantes requieren USD 4 adicionales el 1 de noviembre de 2026. Quedan sin recuperar USD 5,60 o USD 6,22. El resultado de la variante no completa la evidencia del original. [Control D78](tools/check_pending_investor_answers_D78.py).
+
+## D79 — Ocho casos por USD 10 iniciales en una página
+
+La página abre con la pregunta del inversor y reúne los ocho bloqueos originales. La tabla muestra cobros, aportes extra y saldo sin recuperar. Cuatro calendarios identificados por letra conservan cada fecha de cobro y de aporte adicional. El PDF se reproduce desde D78 y se comprueba cada texto de celda dentro del espacio asignado. Los originales siguen PENDING. [PDF de una página](docs/review/MiniUW_USD10_Ocho_Casos_D79.pdf).

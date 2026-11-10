@@ -1,10 +1,10 @@
 {
-  "scope": "I01 preserved design, D02–D78 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D79 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 11512,
-      "sha256": "d1b0591ca0858dc6a1efc702b85d108099cdaa78a38bacdf7d8ed93f40b94444"
+      "bytes": 11634,
+      "sha256": "f39b9e6221643028c2e1d5232502a4189462f98db2c05009d87923007674ef16"
     },
     {
       "path": ".gitignore",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 69136,
-      "sha256": "7acc02143f8d1479f06ae30180c75ee6464b98bb29a5f8297f87c11c39207550"
+      "bytes": 69383,
+      "sha256": "b22b1c1038f6e51b88d794b977bd38b86544d3c951ffdf8beaf270972e0f4caf"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 300361,
-      "sha256": "e25b9317109bf258bcda226ab9f43b6f879131309505b2ccbfc0655ad84e339f"
+      "bytes": 300855,
+      "sha256": "16971a1f28d311b1ca46771e9193bd9022a837a6b96a1ce2ab3c5aae65a06062"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -965,6 +965,11 @@
       "path": "docs/review/MiniUW_Revision_Interna_Retorno_T56.md",
       "bytes": 4577,
       "sha256": "6b861c6ceba5d89f42d77a4854043e16ae4c44c8417b0c413979df0924a00723"
+    },
+    {
+      "path": "docs/review/MiniUW_USD10_Ocho_Casos_D79.pdf",
+      "bytes": 7097,
+      "sha256": "99a2278d52390390d5b6bf7f5cb82b4f7b93c77547e3564c145c9e948cf2168f"
     },
     {
       "path": "docs/review/MiniUW_Vista_Sintetica_Interna_T18.pdf",
@@ -6660,6 +6665,11 @@
       "path": "tools/miniuw_worksheet_v1.py",
       "bytes": 12244,
       "sha256": "7a56a3e6917bb7620466dcde8d14cb7606b20eb33db52033133e93c3575bb3e5"
+    },
+    {
+      "path": "tools/onepage_pending_cases_D79.py",
+      "bytes": 7009,
+      "sha256": "a0615d683cad0ff87c1c24bb5f61f7864ebc0912df7f02377f5a5788ec1bc57a"
     },
     {
       "path": "tools/participant_cash_risk_miniuw_v1.py",

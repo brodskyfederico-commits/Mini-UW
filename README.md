@@ -4,6 +4,8 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D79 reúne los ocho informes PENDING y sus variantes por USD 10 iniciales en [una página](docs/review/MiniUW_USD10_Ocho_Casos_D79.pdf). El comando `python tools/onepage_pending_cases_D79.py` verifica el PDF archivado contra el recálculo D78.
+
 - D78 explica los ocho informes PENDING y comprueba variantes sintéticas que sí permiten responder por USD 10 iniciales. Ejecuta `python tools/check_pending_investor_answers_D78.py --output /tmp/miniuw-ocho-casos.json`. Cada caso conserva separado el informe bloqueado de su variante.
 
 - D77 verifica en los 40 informes los cobros, fechas, aportes extra y caja sin recuperar por USD 10 iniciales. Ejecuta `python tools/check_investor_answers_D77.py --output /tmp/miniuw-40-informes-verificados.zip` y coteja el ZIP con `--audit`.
