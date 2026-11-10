@@ -1386,3 +1386,9 @@ Los controles reproducen ambos cierres a un dólar por debajo, en el punto exact
 Los flujos y fechas de Base y Downside se mantienen al variar únicamente el descuento mensual. El cobro mínimo neto al vender es USD 6,00 / 8,80 al 0 %, USD 6,51 / 9,39 al 1 % y USD 7,04 / 10,01 al 2 %, con los USD 0,80 de aporte extra de Downside. Se calcula el mínimo al centavo hacia arriba. El corte es el 1 de enero de 2027 y la venta el 1 de julio.
 
 Se reproducen seis cierres con valor presente neto exacto de cero por participante. La verificación independiente coteja los flujos y rechaza una grilla de tasas incompleta. Se conserva el PDF de una página y la decisión PENDING. [Control D84](tools/check_sale_rate_grid_D84.py).
+
+## D85 — Sobrante o faltante de la venta a cada tasa mensual
+
+El informe conserva los flujos sintéticos de D84. La venta deja USD 9,02 en Base y USD 7,02 en Downside por cada USD 10 iniciales. Contra los mínimos netos al centavo, al 0 % sobran USD 3,02 en Base y faltan USD 1,78 en Downside. Al 1 % sobran USD 2,51 y faltan USD 2,37. Al 2 % sobran USD 1,98 y faltan USD 2,99. Son diferencias en la fecha de venta y se muestra aparte el aporte extra de USD 0,80 de Downside en abril.
+
+El JSON conserva las diferencias exactas contra ambos umbrales, con y sin el redondeo del mínimo. Se concilian los flujos descontados y se cotejan las seis comparaciones en el PDF de una página. Decisión PENDING. [Control D85](tools/check_sale_gap_D85.py).

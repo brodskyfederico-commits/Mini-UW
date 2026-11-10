@@ -187,5 +187,7 @@ jobs:
         run: python tools/check_discounted_scenario_recovery_D83.py
       - name: Verify the three-rate USD 10 sale sensitivity
         run: python tools/check_sale_rate_grid_D84.py
+      - name: Verify USD 10 sale cash surplus and shortfall by discount rate
+        run: python tools/check_sale_gap_D85.py
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v

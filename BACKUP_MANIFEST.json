@@ -1,10 +1,10 @@
 {
-  "scope": "I01 preserved design, D02–D84 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D85 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 12311,
-      "sha256": "6368737b7288a591f4df2c19260fa605872c4eaae5026adb3e0f02cd1b4b1b9d"
+      "bytes": 12436,
+      "sha256": "a2b1332edfe95a44c4c72c506a4c394e129849f5cfc4520b030c56d66a69406b"
     },
     {
       "path": ".gitignore",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 70830,
-      "sha256": "879fe9ac2c912f54fa9b43039cc4b03f3b084eb8f1cf7d588d2c32951b54bbcf"
+      "bytes": 71067,
+      "sha256": "92efe9d84cb91bbb7d76a1559c77350c7dc42b051320fb9f352a0ca385aa5e13"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 304685,
-      "sha256": "b3f684acc094856ccbf8b7cffa8a318aa62b0475522d2216a01a03dc6690de75"
+      "bytes": 305434,
+      "sha256": "09fe6e83db3446c08f0d3f8bb17354679a187fa7df591af4a0e281906902a63d"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -4982,6 +4982,11 @@
       "sha256": "d64371cbbc8cd4bb530c0f6dd08660c1e568f88c3d9c8771e71542e601e08547"
     },
     {
+      "path": "templates/synthetic-investor-scenarios-D85.json",
+      "bytes": 738,
+      "sha256": "fdd3d72bdfd92336d074a3b98937c095f853f232a7e391e33182ec23261723e8"
+    },
+    {
       "path": "templates/synthetic-joint-noi-capacity-D38.json",
       "bytes": 428,
       "sha256": "901eaa5cd209118fa5865385084c66dea71ab8c4f943c8cada703d32d45cd58f"
@@ -6282,6 +6287,11 @@
       "sha256": "e3d170e566cbf8e48280ed74b9639301d4bdd1e8236a4ac6679af5b33002713d"
     },
     {
+      "path": "tools/check_sale_gap_D85.py",
+      "bytes": 2654,
+      "sha256": "6d3b43f6a4b079889417c3c8ffb29e8cca6582477bc35ceb5d95dd7c737ee286"
+    },
+    {
       "path": "tools/check_sale_rate_grid_D84.py",
       "bytes": 2804,
       "sha256": "bdd692fbab6418f5b5055c10423c260abc3ad413dff48f6390cc8f189c0e480f"
@@ -6703,8 +6713,8 @@
     },
     {
       "path": "tools/miniuw_worksheet_v1.py",
-      "bytes": 13084,
-      "sha256": "2ea7ce6b2f285572eba929372b42da700e5d3197702cd52c90bbd6baa8a84b81"
+      "bytes": 13338,
+      "sha256": "c85b8aa554fc8ad8204ca8269cd5b6c076a4ff233d21ecc4ba24540f688ff313"
     },
     {
       "path": "tools/onepage_pending_cases_D79.py",
@@ -6797,9 +6807,14 @@
       "sha256": "04c7677bc76c8cf3f255c1ed7cf768a1ecd39747e43868090a0b469a757739d7"
     },
     {
+      "path": "tools/worksheet_sale_gap_D85.py",
+      "bytes": 3366,
+      "sha256": "8e447f14535036ec7443d2f1863adc320fc55a7c385db83656f3b7ddcee22c13"
+    },
+    {
       "path": "tools/worksheet_sale_rate_grid_D84.py",
-      "bytes": 7178,
-      "sha256": "2ae91fa30735a3fb5021c3ab910a5a179159f07ada76e3648fc0463c33b51696"
+      "bytes": 7291,
+      "sha256": "7e776d236d50ac8cb9c8740148c1a6250b3ea20d3f29a0d6e89be241abc6cfb6"
     },
     {
       "path": "tools/worksheet_scenario_recovery_D82.py",

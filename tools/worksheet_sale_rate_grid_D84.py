@@ -25,7 +25,7 @@ def money(value):
     return display(value).replace(".", ",")
 
 
-def render_grid(views, rows, dates):
+def render_grid(views, rows, dates, gap=None):
     def totals(field):
         return " | ".join(f"{name} USD {money(views[name]['cash'][field])}" for name in SCENARIOS)
     lines = [(f"Cobros por USD 10 iniciales | {totals('gross_distributions')}", True),
@@ -37,6 +37,8 @@ def render_grid(views, rows, dates):
         rate = f"{money(rational(amount(row['rate']) * 100))}%"
         net = " | ".join(f"{name} USD {money(row['scenarios'][name]['net_at_sale_cents'])}" for name in SCENARIOS)
         lines.append((f"{rate} mensual | {net}", True))
+    if gap is not None:
+        lines[4:] = gap
     lines.append(("Calendario de aportes y cobros del escenario | USD por USD 10 iniciales", True))
     events = {}
     for name in SCENARIOS:
@@ -55,7 +57,8 @@ def render_grid(views, rows, dates):
             parts.append(f"{name} {sign}{money(rational(value))}")
         lines.append((f"{when} {EVENTS[category]} | " + " | ".join(parts), False))
     lines.append(("Mínimos al centavo. Costos de venta y demás flujos fijos. Retorno real pendiente.", False))
-    return render_page("D84 | Base y Downside", lines, 22, "MINI-UW | SI INVIERTO USD 10, ¿CUÁNTO COBRO Y CUÁNDO?",
+    revision = "D84" if gap is None else "D85"
+    return render_page(revision + " | Base y Downside", lines, 22, "MINI-UW | SI INVIERTO USD 10, ¿CUÁNTO COBRO Y CUÁNDO?",
                        "PENDIENTE | Sensibilidad sintética del cobro de venta")
 
 
