@@ -15,7 +15,7 @@ from worksheet_investor_D74 import display, investor_view
 SCENARIOS = ("Base", "Downside")
 
 
-def render_comparison(views):
+def render_comparison(views, recovery=None):
     base, downside = (views[name]["cash"] for name in SCENARIOS)
     lines = [
         (f"Cobros por USD 10 iniciales | Base USD {display(base['gross_distributions'])} | "
@@ -26,8 +26,13 @@ def render_comparison(views):
          f"Downside USD {display(downside['gross_contributions'])}", False),
         (f"Caja sin recuperar al vender | Base USD {display(base['cash_shortfall_at_horizon'])} | "
          f"Downside USD {display(downside['cash_shortfall_at_horizon'])}", True),
-        ("Calendario por USD 10 iniciales | Importes en USD", True),
     ]
+    if recovery is not None:
+        def comparison(field):
+            return " | ".join(f"{name} USD {display(recovery[name][field])}" for name in SCENARIOS)
+        lines.append((f"Cobro neto de venta necesario por USD 10 | {comparison('minimum_net_receipt_per_usd_10')}", True))
+        lines.append((f"Precio bruto mínimo del activo | {comparison('minimum_gross_price_at_cents')}", False))
+    lines.append(("Calendario por USD 10 iniciales | Importes en USD", True))
     events = {}
     for name in SCENARIOS:
         for event in views[name]["cash"]["events"]:
@@ -43,7 +48,7 @@ def render_comparison(views):
         lines.append((f"{name} | Multiplo {display(cash['equity_multiple'])}x | "
                       f"TIR anual {annual_irr(cash['annual_irr_roots'])}", False))
     lines.append(("Retorno personal real, equity retenido y CoC: pendientes.", False))
-    return render_page("D75 | Base y Downside", lines, 23, "MINI-UW | QUE RETORNO TENGO SI INVIERTO USD 10?",
+    return render_page(("D75" if recovery is None else "D82") + " | Base y Downside", lines, 23, "MINI-UW | QUE RETORNO TENGO SI INVIERTO USD 10?",
                        "PENDIENTE | Comparacion sintetica por participante")
 
 

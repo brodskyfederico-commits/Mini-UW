@@ -4,6 +4,8 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D82 agrega el cobro neto de venta necesario por USD 10 iniciales y el precio bruto mínimo del activo en Base y Downside. Ejecuta `python tools/miniuw_worksheet_v1.py run templates/synthetic-investor-scenarios-D82.json --output /tmp/miniuw-recuperacion-10`.
+
 - D81 entrega [ocho revisiones sintéticas calculadas](docs/review/MiniUW_D81_Ocho_Revisiones_Sinteticas.zip). Cada PDF explica el bloqueo original y la corrección probada, y muestra aportes, cobros y saldo sin recuperar por USD 10 iniciales. Audita el paquete con `python tools/revise_pending_investor_reports_D81.py`.
 
 - D80 verifica que los aportes iniciales fechados sumen exactamente USD 10 en los informes calculables y en las variantes de los ocho pendientes. Ejecuta `python tools/check_initial_equity_basis_D80.py`. Los aportes posteriores conservan su fecha y no forman parte del denominador.

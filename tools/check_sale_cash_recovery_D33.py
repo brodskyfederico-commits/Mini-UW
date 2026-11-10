@@ -56,13 +56,16 @@ def price_samples(evidence, sale, origin, matrix_hash, group):
     return required_price, probes
 
 
-def replay_targets(bindings, *, sample_prices=price_samples):
+def replay_targets(bindings, *, sample_prices=price_samples, groups=None):
     matrix, refinance, sales = source_data(bindings)
     base = load_evidence(independent_test_fixture=True)
     require(refinance["base_evidence_sha256"] == evidence_fingerprint(base), "Refinance base evidence differs")
     maximum = amount(base.capacity_run.payload["maximum_principal_capacity"])
     results = {}
     for key, variant in indexed(refinance["variants"], "variant_id").items():
+        selected_sales = [sale for sale in sales if groups is None or f"{key}/{sale['revision_id']}" in groups]
+        if not selected_sales:
+            continue
         evidence = build_variant_evidence(base, variant)
         sizing = evidence.capacity_run.payload
         principal = amount(sizing["selected_principal"])
@@ -79,7 +82,7 @@ def replay_targets(bindings, *, sample_prices=price_samples):
             origin = ledger(guarded.investor_run.payload, json.loads(guarded.compiled_raw))
             origin["guarded_run_sha256"] = guarded.sha256
             require(digest(canonical(origin)) == refinance["project_ledgers"][key], "Refinance anchor differs from D31")
-        for sale in sales:
+        for sale in selected_sales:
             group = f"{key}/{sale['revision_id']}"
             row = dict(refinance_variant=key, refinance_principal=str(principal),
                        refinance_closing_costs=str(amount(variant["refinance_closing_costs"])),

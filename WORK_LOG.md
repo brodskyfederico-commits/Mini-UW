@@ -1368,3 +1368,9 @@ El control rechaza escalar a USD 10 de aportes totales cuando hay aportes extra.
 Se emitió un PDF de una página por cada informe bloqueado. Cada revisión identifica el faltante del original y la corrección verificada con fuentes sintéticas. Se concilian los USD 10 iniciales, los aportes extra, los cobros fechados, el resultado neto y el saldo sin recuperar. El índice vincula el hash del PDF histórico con los hashes de la variante y de la revisión.
 
 Los ocho originales conservan PENDING y los ocho resultados nuevos son calculados en el alcance sintético. La decisión operativa y el retorno personal real siguen pendientes. Se verifica el paquete completo byte por byte. [Paquete D81](docs/review/MiniUW_D81_Ocho_Revisiones_Sinteticas.zip).
+
+## D82 — Venta mínima para recuperar los USD 10 iniciales y los aportes extra
+
+La comparación Base y Downside conserva los flujos de D75. D82 calcula cuánto debe dejar la venta al participante sintético después de considerar los cobros previos. Base necesita USD 6 netos por USD 10 iniciales y Downside USD 8,80. El activo debe venderse al menos a USD 98,01 en Base o USD 378,01 en Downside con el costo fijo archivado y los demás flujos constantes. El umbral bruto se redondea hacia arriba al centavo.
+
+D33 reproduce un precio por debajo, en el punto exacto y por encima para cada escenario. El control rechaza una venta con distinta estructura de costos o financiación. La recuperación es nominal y el resultado no cambia PENDING. [Control D82](tools/check_scenario_recovery_D82.py).
