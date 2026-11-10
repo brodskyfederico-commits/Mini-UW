@@ -224,6 +224,16 @@ def render_case(case, row, *, sale_diagnostics=False):
             rate = money(rational(Fraction(recovery["monthly_discount_rate"]) * 100))
             lines.append((f"Venta bruta USD {recovery['gross_sale_price']} | Minimo VP USD {minimum} | "
                           f"Tasa sintetica {rate}% mensual", True))
+    participation = row.get("synthetic_cash_participation")
+    if participation is not None:
+        if participation["participants"] is None:
+            lines.append(("Reparto sintetico pendiente. Ver motivos en el expediente.", True))
+        else:
+            lines.append(("Reparto hipotetico | Aportes / cobros / ganancia neta (USD)", True))
+            for part in participation["participants"]:
+                amounts = " / ".join(money(part[field]) for field in
+                                     ("gross_contributions", "gross_distributions", "net_cash_profit"))
+                lines.append((f"{part['participant_id']} | {amounts}", False))
     lines.append(("Capital remanente, equity retenido y retorno personal pendientes.", False))
     lines.append(("Criterios de inversion pendientes | Capacidad sintetica sin aprobacion bancaria.", False))
 
@@ -233,8 +243,9 @@ def render_case(case, row, *, sale_diagnostics=False):
               (532, 7, "Caso " + case)]
     for y, size, label in header:
         commands.append(f"1 1 1 rg BT /F2 {size} Tf 1 0 0 1 36 {y} Tm (".encode() + _pdf_string(label) + b") Tj ET")
+    spacing = 16 if participation is not None else 18 if exit_summary is not None else 20
     for i, (label, bold) in enumerate(lines):
-        y = 498 - (18 if exit_summary is not None else 20) * i
+        y = 498 - spacing * i
         require(y >= 60 and len(label) * 10 * 0.6 <= 736, "Refinance report exceeds one page")
         commands.append(f'0.06 0.17 0.25 rg BT /{"F2" if bold else "F1"} 10 Tf 1 0 0 1 28 {y} Tm ('.encode()
                         + _pdf_string(label) + b") Tj ET")

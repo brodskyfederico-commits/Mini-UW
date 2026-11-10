@@ -1,10 +1,10 @@
 {
-  "scope": "I01 preserved design, D02–D67 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D68 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 10284,
-      "sha256": "851f29477e089f39db9cf434b7691c0037d004120774a4829fc3c5470f5498d5"
+      "bytes": 10433,
+      "sha256": "c8c91e19eebe465a6c2ed6052522043609d6c9434ecf7bffece900cc4e80d5f8"
     },
     {
       "path": ".gitignore",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 66535,
-      "sha256": "3564b770284b2bec08bf7aa48a3a005360e85048fde8e802912e1d9d157db374"
+      "bytes": 66880,
+      "sha256": "278dbe2d893914fe5d282b35c236b14c217401db11f714aa7b2df5a4dbbc0f2b"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 291254,
-      "sha256": "d2e9e14cafa06f51d448dc9307ac34e81b349ac8f7ed54bb7844cd1b62c9a0d9"
+      "bytes": 292061,
+      "sha256": "53d5ba7e5b2ccb39b0835ea18d56fbfae9bf0a083a53254d05cd62a1907c2ded"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -5272,6 +5272,11 @@
       "sha256": "cd0b2619fd87d2dd7121ecab6e92e8c602ca9ad64145fb871f7a1147afa3c714"
     },
     {
+      "path": "templates/synthetic-unified-worksheet-participation-D68.json",
+      "bytes": 403,
+      "sha256": "7d4d139aedba23567f63d1ae7de1e5d5b7ce0c7ececbe2665c25f795a4af4246"
+    },
+    {
       "path": "templates/synthetic-unified-worksheet-refinance-D47.json",
       "bytes": 290,
       "sha256": "afa136494f2343edf8df8e947cfaf03c0d5140410ca57204ed357f72b50666a9"
@@ -5290,6 +5295,11 @@
       "path": "templates/synthetic-worksheet-exit-cap-D62.json",
       "bytes": 48479,
       "sha256": "7abffe3904ac77a22c335b2aa3a4bc74e54318bc2382995b4c9a89d38b4bbc9b"
+    },
+    {
+      "path": "templates/synthetic-worksheet-participation-terms-D68.json",
+      "bytes": 1363,
+      "sha256": "9e4b7a0aa5b178f5b6076f6e4296e04f8f602e19d00d45618161ab0536169f3d"
     },
     {
       "path": "templates/synthetic-worksheet-refinance-D45.json",
@@ -6222,14 +6232,19 @@
       "sha256": "b108560e49ab3ec46d1cc14cd2692c52f10cd6476c973344325b51fcb3e618c1"
     },
     {
+      "path": "tools/check_worksheet_participation_D68.py",
+      "bytes": 4314,
+      "sha256": "8f31ec3d22d30b9bd416d38d4a29c1fb321cf8a800bba9a1a308cf709bc60b0a"
+    },
+    {
       "path": "tools/check_worksheet_recovery_page_D44.py",
       "bytes": 5757,
       "sha256": "3f230b9ad7ab3de022d8550580a879fa859fbbf28d7f5b37572d8c64fe1f57e7"
     },
     {
       "path": "tools/check_worksheet_refinance_D45.py",
-      "bytes": 18498,
-      "sha256": "407ad8000b68cb86f8dd3cb9877c028849ab154f78212192993335890ee85250"
+      "bytes": 19211,
+      "sha256": "2429dee1798a18cb2f2fc06eadd4bf67ce3d088636b36e9bc74fc1a0a282adc2"
     },
     {
       "path": "tools/check_worksheet_refinance_recovery_D46.py",
@@ -6238,8 +6253,8 @@
     },
     {
       "path": "tools/check_worksheet_sale_costs_D63.py",
-      "bytes": 8548,
-      "sha256": "10b8c0ced15093c5c9cc89191875d7f8e5271bebdf12ad2c1d05747aa542802a"
+      "bytes": 8704,
+      "sha256": "aec94544a8edab7ab9c67761badbff779f65635fa4002132e664c594fac1e4c5"
     },
     {
       "path": "tools/check_worksheet_sale_recovery_D43.py",
@@ -6578,8 +6593,8 @@
     },
     {
       "path": "tools/miniuw_worksheet_v1.py",
-      "bytes": 10659,
-      "sha256": "5d80461f15b4d18f44909df7159f6d9435603cb5345521cda85bea6019899722"
+      "bytes": 11287,
+      "sha256": "b07c4eb144173da37e389db8ba015effd20305d81b35565779c6abddca8394bc"
     },
     {
       "path": "tools/participant_cash_risk_miniuw_v1.py",
@@ -6633,8 +6648,13 @@
     },
     {
       "path": "tools/worksheet_costed_case_D65.py",
-      "bytes": 1577,
-      "sha256": "fd0c1c9a9c870a590fcb26a4fa2d844eb93f003de6929d35da731d1dfc30946d"
+      "bytes": 1812,
+      "sha256": "2aa51fe8db8f4f2c8155b1482b7515c8a0a5b507788ff0c0a088504cca48670a"
+    },
+    {
+      "path": "tools/worksheet_participation_D68.py",
+      "bytes": 1820,
+      "sha256": "04c7677bc76c8cf3f255c1ed7cf768a1ecd39747e43868090a0b469a757739d7"
     },
     {
       "path": "tools/worksheet_settled_miniuw_v1.py",

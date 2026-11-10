@@ -1286,3 +1286,9 @@ La [matriz](docs/coverage-matrix.csv) y su versión JSON enlazan C67, C68, M7-05
 ## D67 — Motivo del cierre pendiente en el PDF
 
 El esquema de caso v2 muestra si falta la celda C68 o si queda por resolver la aplicabilidad del impuesto de venta. En ambos casos el PDF conserva una página y el expediente mantiene PENDING, sin publicar retorno ni mínimo de recuperación. La revisión de presentación se selecciona en la entrada para conservar la auditoría de los expedientes v1. Se verifican cuatro PDFs por el comando público y el rechazo del esquema v2 en un perfil ajeno. [Control D67](tools/check_costed_sale_diagnostics_D67.py).
+
+## D68 — Reparto sintético por participante en la corrida común
+
+El esquema de caso v3 vincula los términos de reparto al libro exacto de equity del cierre. Reproduce participaciones hipotéticas de 25 % y 75 % en aportes y cobros fechados. El PDF de una página muestra aportes, cobros y ganancia neta por participante. El JSON conserva el detalle por evento, los intervalos de TIR y el pico de financiación, la caja no recuperada y la dependencia de la venta.
+
+Se auditan cuatro expedientes. Tres concilian los importes por evento y uno queda PENDING por tratamiento fiscal pendiente, sin caja por participante. Se rechaza el hash de términos alterado. Los esquemas previos conservan su salida y el retorno personal real queda pendiente. [Control D68](tools/check_worksheet_participation_D68.py).

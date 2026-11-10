@@ -7,7 +7,7 @@ from check_worksheet_refinance_D45 import render_case
 from check_worksheet_sale_costs_D63 import run
 
 
-def build_costed_case(key, rate, *, diagnostics=False):
+def build_costed_case(key, rate, *, diagnostics=False, terms_hash=None):
     row = run((rate,), selected=key, with_report=True)
     origin = json.loads(local_file(ROOT, EXIT).read_bytes())
     report = row.get("report", dict(decision="PENDING", worksheet=row["worksheet"],
@@ -27,4 +27,7 @@ def build_costed_case(key, rate, *, diagnostics=False):
         costed_sale_sha256=row.get("costed_sale_sha256"),
         sale_blockers=row["blockers"],
     )
+    if terms_hash is not None:
+        from worksheet_participation_D68 import build_participation
+        report["synthetic_cash_participation"] = build_participation(key, report.get("allocation_parent"), terms_hash)
     return report, render_case(key, report, sale_diagnostics=diagnostics)

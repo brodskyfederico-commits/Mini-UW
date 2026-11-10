@@ -157,5 +157,7 @@ jobs:
         run: python tools/check_unified_costed_sale_D65.py
       - name: Verify worksheet sale pending reasons and prior PDF replay
         run: python tools/check_costed_sale_diagnostics_D67.py
+      - name: Verify dated synthetic participant cash in the common worksheet package
+        run: python tools/check_worksheet_participation_D68.py
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v

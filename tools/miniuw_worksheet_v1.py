@@ -19,6 +19,7 @@ from miniuw_foundation.worksheet_settled_output import assemble_worksheet_settle
 
 CASE_SCHEMA = "miniuw.synthetic-unified-worksheet-case.v1"
 DIAGNOSTIC_CASE_SCHEMA = "miniuw.synthetic-unified-worksheet-case.v2"
+PARTICIPATION_CASE_SCHEMA = "miniuw.synthetic-unified-worksheet-case.v3"
 PACKAGE_SCHEMA = "miniuw.synthetic-unified-worksheet-package.v1"
 COSTED_SALE = "templates/synthetic-worksheet-sale-costs-D63.json"
 COSTED_PROFILE = "with_refinance_worksheet_sale"
@@ -29,12 +30,17 @@ MAX_FILE_BYTES = 4 * 1024 * 1024
 
 def read_case(raw):
     case = _json(raw, 4096)
-    _exact(case, {"schema", "profile", "archive_case", "archive_sha256", "monthly_discount_rate"})
-    require(case["schema"] in (CASE_SCHEMA, DIAGNOSTIC_CASE_SCHEMA) and isinstance(case["profile"], str)
+    fields = {"schema", "profile", "archive_case", "archive_sha256", "monthly_discount_rate"}
+    if isinstance(case, dict) and case.get("schema") == PARTICIPATION_CASE_SCHEMA:
+        fields.add("allocation_terms_sha256")
+    _exact(case, fields)
+    require(case["schema"] in (CASE_SCHEMA, DIAGNOSTIC_CASE_SCHEMA, PARTICIPATION_CASE_SCHEMA) and isinstance(case["profile"], str)
             and case["profile"] in ARCHIVES and isinstance(case["archive_case"], str),
             "An explicit supported synthetic worksheet profile and case are required")
-    require(case["schema"] != DIAGNOSTIC_CASE_SCHEMA or case["profile"] == COSTED_PROFILE,
-            "Diagnostic case schema requires worksheet valuation and costs")
+    require(case["schema"] == CASE_SCHEMA or case["profile"] == COSTED_PROFILE,
+            "Versioned costed sale requires worksheet valuation and costs")
+    if case["schema"] == PARTICIPATION_CASE_SCHEMA:
+        require(isinstance(case["allocation_terms_sha256"], str), "A synthetic participation terms hash is required")
     archive_path = ARCHIVES[case["profile"]]
     archive_raw = local_file(ROOT, archive_path).read_bytes()
     require(case["archive_sha256"] == sha(archive_raw), "Case archive bytes differ")
@@ -71,7 +77,8 @@ def build_results(raw):
                           recovery_run_sha256=page["recovery_sha256"])
     elif profile == COSTED_PROFILE:
         from worksheet_costed_case_D65 import build_costed_case
-        result, pdf = build_costed_case(key, rate, diagnostics=case["schema"] == DIAGNOSTIC_CASE_SCHEMA)
+        result, pdf = build_costed_case(key, rate, diagnostics=case["schema"] != CASE_SCHEMA,
+                                        terms_hash=case.get("allocation_terms_sha256"))
         project, risk, recovery = result["return_story"], result["risk"], result["cash_recovery"]
         worksheet, capacity, refinance = result["worksheet"], result["capacity"], result["refinance"]
         blockers = dict(worksheet=worksheet["blockers"], sale=result["sale_blockers"])
@@ -115,6 +122,8 @@ def build_results(raw):
                       deployment_enabled=False, real_decisions_enabled=False)
     if profile == COSTED_PROFILE:
         normalized["worksheet_exit"] = result["worksheet_exit"]
+    if case["schema"] == PARTICIPATION_CASE_SCHEMA:
+        normalized["synthetic_cash_participation"] = result["synthetic_cash_participation"]
     return normalized, pdf
 
 

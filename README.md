@@ -4,6 +4,8 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D68 agrega al expediente y al PDF el reparto hipotético del equity con términos archivados y vinculados al libro exacto del caso. Ejecuta `python tools/miniuw_worksheet_v1.py run templates/synthetic-unified-worksheet-participation-D68.json --output /tmp/miniuw-reparto-sintetico`. [Control D68](tools/check_worksheet_participation_D68.py).
+
 - D67 explica en el PDF si falta C68 o si el impuesto de venta sigue sin resolver. Ejecuta `python tools/miniuw_worksheet_v1.py run templates/synthetic-unified-worksheet-costed-sale-D67.json --output /tmp/miniuw-diagnostico-venta` y audita el paquete con el mismo comando `audit`. Los expedientes con esquema v1 se reproducen con su presentación original. [Control D67](tools/check_costed_sale_diagnostics_D67.py).
 
 - D65 lleva C67 y C68 al comando común y al PDF de una página. Ejecuta `python tools/miniuw_worksheet_v1.py run templates/synthetic-unified-worksheet-costed-sale-D65.json --output /tmp/miniuw-venta-hoja`. [Control D65](tools/check_unified_costed_sale_D65.py).

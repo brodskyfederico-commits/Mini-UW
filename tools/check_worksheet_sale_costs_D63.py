@@ -5,6 +5,7 @@ from pathlib import Path
 import json
 import sys
 
+from check_integrated_participation_D28 import ledger
 from check_operating_replay_D20 import ROOT, amount, local_file, require
 from discounted_costed_sale_D64 import recovery_prices
 from check_participant_refinance_variants_D31 import build_variant_evidence
@@ -86,6 +87,7 @@ def calculate(case, worksheet, fixture, base, noi_raw, noi, initial_spec, rates=
         report = run_case(recovered, worksheet, fixture["scenario_context"], fixture["worksheet_as_of_UTC"],
                           additional_cells=SALE_CELLS)
         require(report["return_story"] == investor, "The report ledger differs from the costed sale ledger")
+        report["allocation_parent"] = ledger(investor, json.loads(revision.guarded_run.compiled_raw))
         result["report"] = report
     return result
 
