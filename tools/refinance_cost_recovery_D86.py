@@ -51,7 +51,7 @@ def refi_net(story):
     return amount(cash["net_refinance_distribution"]) - amount(cash["refinance_cash_in"])
 
 
-def verify():
+def downside_sources():
     case_raw = local_file(ROOT, CASE).read_bytes()
     case = json.loads(case_raw)
     bindings_raw = local_file(ROOT, BINDINGS).read_bytes()
@@ -83,6 +83,14 @@ def verify():
     require(refinance["base_evidence_sha256"] == evidence_fingerprint(base),
             "Archived base evidence differs")
 
+    return dict(case_sha256=sha(case_raw), base=base, variant=variant, sale=sale,
+                selected=selected, baseline=baseline, cash=cash)
+
+
+def verify():
+    sources = downside_sources()
+    base, variant, sale, selected, baseline, cash = (
+        sources[k] for k in ("base", "variant", "sale", "selected", "baseline", "cash"))
     original_cost = amount(variant["refinance_closing_costs"])
     flows = validate_grid(baseline)
     dates = [row["date"] for row in flows]
@@ -118,7 +126,7 @@ def verify():
                          reduction_project_cents=rational(cut), maximum_refinance_cost_project=rational(original_cost - cut),
                          probes=probes))
     return dict(status="passed", decision="PENDING", scope="synthetic_only", scenario="Downside",
-                case_sha256=sha(case_raw), initial_equity_per_usd_10=cash["initial_capital"],
+                case_sha256=sources["case_sha256"], initial_equity_per_usd_10=cash["initial_capital"],
                 cost_baseline_project=rational(original_cost), refinance_date=refi_date,
                 discount_date=dates[0], sale_date=dates[-1], baseline=cash,
                 source_sale_price=selected["sale_proceeds"], rates=rows, closing_probes=9)

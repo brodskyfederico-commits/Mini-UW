@@ -191,5 +191,7 @@ jobs:
         run: python tools/check_sale_gap_D85.py
       - name: Verify refinance cost recovery thresholds in synthetic Downside
         run: python tools/refinance_cost_recovery_D86.py
+      - name: Verify combined refinance cost and gross sale recovery in synthetic Downside
+        run: python tools/refinance_sale_combinations_D87.py
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v

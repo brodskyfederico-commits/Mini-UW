@@ -1398,3 +1398,9 @@ El JSON conserva las diferencias exactas contra ambos umbrales, con y sin el red
 El costo base del proyecto es USD 300. Para recuperar los aportes, la rebaja mínima al centavo del proyecto es USD 178,01 al 0 %, USD 229,93 al 1 % y USD 281,60 al 2 % mensual. Los costos máximos son USD 121,99, USD 70,07 y USD 18,40, respectivamente. En cada caso el aporte de USD 0,80 al refinanciar se convierte en un cobro de USD 0,98, USD 1,50 o USD 2,02 por USD 10 iniciales.
 
 Se reconstruyen nueve cierres con la rebaja un centavo por debajo del mínimo, en el punto exacto y en el mínimo redondeado. El préstamo, la capacidad, la operación y la venta se conservan. La sensibilidad es sintética y la decisión sigue PENDING. [PDF de una página](docs/review/MiniUW_D86_Costo_Refinanciacion_USD10.pdf).
+
+## D87 — Combinaciones de costo de refinanciación y precio de venta para recuperar los USD 10
+
+Se conserva el Downside sintético de D86. A tasas mensuales del 0 %, 1 % y 2 %, los precios brutos mínimos de venta del activo son USD 378,01, USD 436,90 y USD 498,83 con costo de refinanciación de USD 300. Con costo de USD 220, los mínimos bajan a USD 298,01, USD 354,47 y USD 413,93. Con costo de USD 150, bajan a USD 228,01, USD 282,35 y USD 339,65.
+
+Se recalculan 18 cierres al mínimo redondeado hacia arriba y un centavo por debajo. Se conservan la operación, el préstamo, la capacidad, los costos de venta y las fechas. El PDF distingue el precio del activo del calendario de aportes y cobros por USD 10 iniciales. Decisión PENDING. [PDF de una página](docs/review/MiniUW_D87_Combinaciones_Refi_Venta_USD10.pdf).

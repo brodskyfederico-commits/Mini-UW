@@ -4,6 +4,7 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D87 cruza la rebaja del costo de refinanciación con el precio bruto de venta que necesita Downside para recuperar lo aportado por USD 10 iniciales al 0 %, 1 % y 2 % mensual. [PDF de una página](docs/review/MiniUW_D87_Combinaciones_Refi_Venta_USD10.pdf) y control reproducible con `python tools/refinance_sale_combinations_D87.py`.
 - D86 calcula cuánto debe bajar el costo de refinanciación en Downside para recuperar los USD 10 iniciales a tres tasas. Abrí el [PDF de una página](docs/review/MiniUW_D86_Costo_Refinanciacion_USD10.pdf) o auditalo con `python tools/refinance_cost_recovery_D86.py`.
 
 - D85 compara el cobro de venta con el mínimo al centavo en Base y Downside, por USD 10 iniciales. Ejecuta `python tools/miniuw_worksheet_v1.py run templates/synthetic-investor-scenarios-D85.json --output /tmp/miniuw-brecha-venta-10`.
