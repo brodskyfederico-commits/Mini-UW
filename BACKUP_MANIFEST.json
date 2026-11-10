@@ -1,10 +1,10 @@
 {
-  "scope": "I01 preserved design, D02–D62 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D63 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 9714,
-      "sha256": "7720adcd3a83669a67a7a493cc9f3ad30453e7ffaaacabeeb2bb7cc8917ef0ea"
+      "bytes": 9854,
+      "sha256": "459eb3e20ae032237dda48cce31ba303ec73e729a25a79e4338b8c709ef771f9"
     },
     {
       "path": ".gitignore",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 65518,
-      "sha256": "aaaf354c7269d1672a19c78549e62cd644c070ff16e4db4ad348ec8e03c68964"
+      "bytes": 65692,
+      "sha256": "e699b627306e3fbfb0f8627e83e8c430aae71741e7c7adffd120156e4fbd4a65"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 287704,
-      "sha256": "243507bbc80f412c1741d0cb60b13117b67c7b7843a62081059dde594a985669"
+      "bytes": 288578,
+      "sha256": "62731b87b893ccfe7c594db16e4c28af5b0a94d19700b69ac3977b1cf71a7969"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -5287,6 +5287,11 @@
       "sha256": "ad18901de7c07f5c42b1baf599f2f5acd743baa387916d73a46b431ae40b0156"
     },
     {
+      "path": "templates/synthetic-worksheet-sale-costs-D63.json",
+      "bytes": 47842,
+      "sha256": "ee679da0a0b628806bc75302ffbb7533cf3c0a3a9f3e85ec844a83cc367e9789"
+    },
+    {
       "path": "templates/synthetic-worksheet-sale-recovery-D43.json",
       "bytes": 1048,
       "sha256": "807a958e1b87fe13784b695e9d86ad146f0172f24576a7cd9e80d9573c0398ea"
@@ -6188,8 +6193,8 @@
     },
     {
       "path": "tools/check_worksheet_exit_D62.py",
-      "bytes": 7650,
-      "sha256": "ac2aaa660aef3fde5b75980cbea128077989fbd60b4cf2ec922b263f552ca7f3"
+      "bytes": 7990,
+      "sha256": "b108560e49ab3ec46d1cc14cd2692c52f10cd6476c973344325b51fcb3e618c1"
     },
     {
       "path": "tools/check_worksheet_recovery_page_D44.py",
@@ -6205,6 +6210,11 @@
       "path": "tools/check_worksheet_refinance_recovery_D46.py",
       "bytes": 2532,
       "sha256": "3e2f7a4a2776167469551c53076f493337d25b3b22517ba6125fff9863e13881"
+    },
+    {
+      "path": "tools/check_worksheet_sale_costs_D63.py",
+      "bytes": 7375,
+      "sha256": "217c372894540a2266c082e6c6f3f15534205cc97a726910d29016f72c31739b"
     },
     {
       "path": "tools/check_worksheet_sale_recovery_D43.py",

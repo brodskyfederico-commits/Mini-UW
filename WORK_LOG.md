@@ -1260,3 +1260,9 @@ La prueba guarda el informe R2, verifica VIGENTE, activa R3 y vuelve a auditar R
 Inputs!C67 alimenta la valoración T41 con un NOI futuro sintético de USD 40, una ventana anual expresa y fecha de venta. T42 aplica una hipótesis expresa de venta al valor calculado y conserva los costos fijos de este ensayo. La capacidad de refinanciación sigue vinculada a C66, C71 y C72. Las celdas y el expediente conservan sus referencias y hashes.
 
 El cap de salida de 10 % da un precio candidato de USD 400 y el de 8 % da USD 500. Se comprueba que los USD 100 adicionales llegan una vez a los cobros del equity y que la caja anterior a la venta permanece igual. El cap faltante, el cap cero y el préstamo fuera de capacidad retienen el retorno en tres de los cinco casos. Las decisiones siguen PENDING. [Control D62](tools/check_worksheet_exit_D62.py), [fuentes sintéticas](templates/synthetic-worksheet-exit-cap-D62.json).
+
+## D63 — Costo de venta de la hoja hasta el retorno
+
+Inputs!C68 alimenta un componente porcentual declarado del costo sobre el precio bruto. El inventario sintético T43 aporta USD 10 de costo fijo y mantiene explícitas las reglas de no solapamiento y aplicabilidad. Con 5 % en C68, el costo total es USD 30 para venta de USD 400 y USD 35 para venta de USD 500. El aumento de precio llega a los cobros del equity neto de USD 5 de costo adicional. La caja anterior al cierre permanece igual.
+
+Un cero en C68 conserva los USD 10 fijos. Una celda faltante o un impuesto sin aplicabilidad resuelta retienen el retorno. El alcance sintético trata C68 como un componente expreso, con fuentes y período fijados, y conserva PENDING la decisión. [Control D63](tools/check_worksheet_sale_costs_D63.py), [fuentes sintéticas](templates/synthetic-worksheet-sale-costs-D63.json).

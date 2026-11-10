@@ -149,5 +149,7 @@ jobs:
         run: python tools/check_historical_cotejo_D61.py
       - name: Verify worksheet exit cap through forward NOI, closing and guarded cash
         run: python tools/check_worksheet_exit_D62.py
+      - name: Verify worksheet sale costs through valuation and net equity cash
+        run: python tools/check_worksheet_sale_costs_D63.py
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v

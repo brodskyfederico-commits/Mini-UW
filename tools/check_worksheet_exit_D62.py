@@ -23,6 +23,14 @@ NOI = "templates/synthetic-exit-forward-noi.json"
 VALUATION = "templates/synthetic-exit-value-spec.json"
 
 
+def valuation_from_sheet(checked, noi_raw, noi, initial_spec):
+    exit_cap = checked["parameters"]["exit_cap"]
+    source = f"sha256:{checked['workbook_sha256']}#{exit_cap['locator']}"
+    spec = initial_spec | {"cap_rate": initial_spec["cap_rate"] | {"value": exit_cap["value"], "source_ref": source}}
+    raw = encoded(spec)
+    return raw, produce_exit_value(noi_raw, noi, raw)
+
+
 def calculate(case, worksheet, evidence, fixture, noi_raw, noi, initial_spec):
     checked = worksheet_parameters(worksheet, fixture["scenario_context"], fixture["worksheet_as_of_UTC"],
                                    {"C67": "exit_cap"})
@@ -31,11 +39,9 @@ def calculate(case, worksheet, evidence, fixture, noi_raw, noi, initial_spec):
     if checked["blockers"]:
         return result
     bound = bind_worksheet_capacity(evidence, checked)
+    raw, value = valuation_from_sheet(checked, noi_raw, noi, initial_spec)
+    spec = json.loads(raw)
     exit_cap = checked["parameters"]["exit_cap"]
-    source = f"sha256:{checked['workbook_sha256']}#{exit_cap['locator']}"
-    spec = initial_spec | {"cap_rate": initial_spec["cap_rate"] | {"value": exit_cap["value"], "source_ref": source}}
-    raw = encoded(spec)
-    value = produce_exit_value(noi_raw, noi, raw)
     close = bound.closings[1]
     bridge = encoded(dict(schema="miniuw.synthetic-exit-value-to-sale.v1",
                           revision_id=f"SYNTHETIC-D62-{case['id']}", base_evidence_sha256=evidence_fingerprint(bound),
@@ -78,8 +84,7 @@ def calculate(case, worksheet, evidence, fixture, noi_raw, noi, initial_spec):
     return result
 
 
-def run():
-    raw = local_file(ROOT, FIXTURE).read_bytes()
+def inputs(raw):
     fixture = json.loads(raw)
     require(fixture["schema"] == "miniuw.synthetic-worksheet-exit-cap.v1"
             and set(fixture["sources"]) == {NOI, VALUATION, REFINANCE}, "Exit fixture inventory differs")
@@ -90,14 +95,19 @@ def run():
             and base.capacity_run.payload["context"] == fixture["scenario_context"], "Base exit evidence differs")
     variants = {row["variant_id"]: row for row in json.loads(sources[REFINANCE])["variants"]}
     noi = produce_operating_noi(sources[NOI])
-    initial_spec = json.loads(sources[VALUATION])
+    return fixture, base, variants, sources[NOI], noi, json.loads(sources[VALUATION])
+
+
+def run():
+    raw = local_file(ROOT, FIXTURE).read_bytes()
+    fixture, base, variants, noi_raw, noi, initial_spec = inputs(raw)
     cases = {}
     for case in fixture["cases"]:
         workbook = fixture["workbooks"][case["workbook"]]
         sheet = b64decode(workbook["xlsx_base64"], validate=True)
         require(sha(sheet) == workbook["sha256"], "Synthetic exit workbook differs")
         evidence = build_variant_evidence(base, variants[case["variant"]])
-        row = calculate(case, sheet, evidence, fixture, sources[NOI], noi, initial_spec)
+        row = calculate(case, sheet, evidence, fixture, noi_raw, noi, initial_spec)
         price = None if row["candidate_price"] is None else str(amount(row["candidate_price"]))
         require(price == case["price"] and (row["cash"] is not None) == (case["blocker"] is None)
                 and (not row["blockers"] if case["blocker"] is None else case["blocker"] in row["blockers"]),
