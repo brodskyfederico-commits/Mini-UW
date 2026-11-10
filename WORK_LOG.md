@@ -1374,3 +1374,9 @@ Los ocho originales conservan PENDING y los ocho resultados nuevos son calculado
 La comparación Base y Downside conserva los flujos de D75. D82 calcula cuánto debe dejar la venta al participante sintético después de considerar los cobros previos. Base necesita USD 6 netos por USD 10 iniciales y Downside USD 8,80. El activo debe venderse al menos a USD 98,01 en Base o USD 378,01 en Downside con el costo fijo archivado y los demás flujos constantes. El umbral bruto se redondea hacia arriba al centavo.
 
 D33 reproduce un precio por debajo, en el punto exacto y por encima para cada escenario. El control rechaza una venta con distinta estructura de costos o financiación. La recuperación es nominal y el resultado no cambia PENDING. [Control D82](tools/check_scenario_recovery_D82.py).
+
+## D83 — Recuperación por USD 10 iniciales en valor presente
+
+Base y Downside conservan los flujos fechados de D82. Se usa la tasa sintética archivada D34 del 1 % mensual al 1 de enero de 2027. Para que el valor presente neto sea cero, la venta del 1 de julio debe dejar por USD 10 iniciales USD 6,51 netos en Base y USD 9,39 en Downside, incluidos los USD 0,80 extra de Downside. El valor al corte del cobro exacto necesario es USD 6,13 y USD 8,84. Los precios brutos mínimos del activo son USD 148,41 y USD 436,90 con los demás flujos y costos fijos.
+
+Los controles reproducen ambos cierres a un dólar por debajo, en el punto exacto y a un dólar por encima, con valor presente neto negativo, cero y positivo. Se rechaza una tasa distinta de la vinculada. Las decisiones reales siguen PENDING. [Control D83](tools/check_discounted_scenario_recovery_D83.py).

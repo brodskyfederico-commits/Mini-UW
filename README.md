@@ -4,6 +4,8 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D83 muestra cuánto tendría que dejar la venta para recuperar en valor presente USD 10 iniciales y los aportes extra. Ejecuta `python tools/miniuw_worksheet_v1.py run templates/synthetic-investor-scenarios-D83.json --output /tmp/miniuw-recuperacion-vp-10`. La tasa sintética del 1 % mensual figura en el PDF.
+
 - D82 agrega el cobro neto de venta necesario por USD 10 iniciales y el precio bruto mínimo del activo en Base y Downside. Ejecuta `python tools/miniuw_worksheet_v1.py run templates/synthetic-investor-scenarios-D82.json --output /tmp/miniuw-recuperacion-10`.
 
 - D81 entrega [ocho revisiones sintéticas calculadas](docs/review/MiniUW_D81_Ocho_Revisiones_Sinteticas.zip). Cada PDF explica el bloqueo original y la corrección probada, y muestra aportes, cobros y saldo sin recuperar por USD 10 iniciales. Audita el paquete con `python tools/revise_pending_investor_reports_D81.py`.

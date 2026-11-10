@@ -15,7 +15,7 @@ from worksheet_investor_D74 import display, investor_view
 SCENARIOS = ("Base", "Downside")
 
 
-def render_comparison(views, recovery=None):
+def render_comparison(views, recovery=None, discounted=None):
     base, downside = (views[name]["cash"] for name in SCENARIOS)
     lines = [
         (f"Cobros por USD 10 iniciales | Base USD {display(base['gross_distributions'])} | "
@@ -27,7 +27,15 @@ def render_comparison(views, recovery=None):
         (f"Caja sin recuperar al vender | Base USD {display(base['cash_shortfall_at_horizon'])} | "
          f"Downside USD {display(downside['cash_shortfall_at_horizon'])}", True),
     ]
-    if recovery is not None:
+    if discounted is not None:
+        def comparison(field):
+            return " | ".join(f"{name} USD {display(discounted['scenarios'][name][field])}" for name in SCENARIOS)
+        lines.append((f"Descuento sintético: {display(discounted['monthly_rate_percent'])}% mensual | Corte {discounted['discount_date']}", True))
+        lines.append((f"Cobro neto necesario al vender por USD 10 | {comparison('minimum_net_receipt_at_sale_cents')}", True))
+        lines.append((f"Valor presente del cobro necesario | {comparison('minimum_net_receipt_present_value')}", False))
+        lines.append((f"Precio bruto mínimo del activo en VP | {comparison('minimum_gross_price_at_cents')}", False))
+        lines.append((f"Valor presente neto del escenario | {comparison('current_net_present_value')}", False))
+    elif recovery is not None:
         def comparison(field):
             return " | ".join(f"{name} USD {display(recovery[name][field])}" for name in SCENARIOS)
         lines.append((f"Cobro neto de venta necesario por USD 10 | {comparison('minimum_net_receipt_per_usd_10')}", True))
@@ -48,7 +56,8 @@ def render_comparison(views, recovery=None):
         lines.append((f"{name} | Multiplo {display(cash['equity_multiple'])}x | "
                       f"TIR anual {annual_irr(cash['annual_irr_roots'])}", False))
     lines.append(("Retorno personal real, equity retenido y CoC: pendientes.", False))
-    return render_page(("D75" if recovery is None else "D82") + " | Base y Downside", lines, 23, "MINI-UW | QUE RETORNO TENGO SI INVIERTO USD 10?",
+    revision = "D83" if discounted is not None else "D75" if recovery is None else "D82"
+    return render_page(revision + " | Base y Downside", lines, 20 if discounted is not None else 23, "MINI-UW | QUE RETORNO TENGO SI INVIERTO USD 10?",
                        "PENDIENTE | Comparacion sintetica por participante")
 
 
