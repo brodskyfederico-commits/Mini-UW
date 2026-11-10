@@ -177,5 +177,7 @@ jobs:
         run: python tools/check_pending_investor_answers_D78.py
       - name: Audit one-page USD 10 report for eight pending cases
         run: python tools/onepage_pending_cases_D79.py
+      - name: Verify the exact USD 10 initial contribution across reports and variants
+        run: python tools/check_initial_equity_basis_D80.py
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v

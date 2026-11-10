@@ -1356,3 +1356,9 @@ El préstamo alternativo de USD 150 y la variante con hipótesis fiscal sintéti
 ## D79 — Ocho casos por USD 10 iniciales en una página
 
 La página abre con la pregunta del inversor y reúne los ocho bloqueos originales. La tabla muestra cobros, aportes extra y saldo sin recuperar. Cuatro calendarios identificados por letra conservan cada fecha de cobro y de aporte adicional. El PDF se reproduce desde D78 y se comprueba cada texto de celda dentro del espacio asignado. Los originales siguen PENDING. [PDF de una página](docs/review/MiniUW_USD10_Ocho_Casos_D79.pdf).
+
+## D80 — Verificación del aporte inicial de USD 10
+
+Se reconstruyen los 40 informes D77. Los 32 con flujos representan 33 escenarios al contar Base y Downside por separado. En los 33, el calendario contiene exactamente USD 10 de aporte inicial y separa los aportes posteriores. Se cotejan los importes visibles del PDF y las fechas. Los ocho originales bloqueados mantienen PENDING. En cada una de sus ocho variantes separadas también se verifica la base inicial de USD 10 desde el libro fuente.
+
+El control rechaza escalar a USD 10 de aportes totales cuando hay aportes extra. Si falta la contribución inicial, el cálculo queda sin base. El alcance sigue sintético. [Control D80](tools/check_initial_equity_basis_D80.py).

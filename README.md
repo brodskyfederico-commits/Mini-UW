@@ -4,6 +4,8 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D80 verifica que los aportes iniciales fechados sumen exactamente USD 10 en los informes calculables y en las variantes de los ocho pendientes. Ejecuta `python tools/check_initial_equity_basis_D80.py`. Los aportes posteriores conservan su fecha y no forman parte del denominador.
+
 - D79 reúne los ocho informes PENDING y sus variantes por USD 10 iniciales en [una página](docs/review/MiniUW_USD10_Ocho_Casos_D79.pdf). El comando `python tools/onepage_pending_cases_D79.py` verifica el PDF archivado contra el recálculo D78.
 
 - D78 explica los ocho informes PENDING y comprueba variantes sintéticas que sí permiten responder por USD 10 iniciales. Ejecuta `python tools/check_pending_investor_answers_D78.py --output /tmp/miniuw-ocho-casos.json`. Cada caso conserva separado el informe bloqueado de su variante.
