@@ -1310,3 +1310,9 @@ Si falta un costo o el TDC suma cero se retiran ambos ratios. Si el cap de refer
 El ensayo reutiliza el presupuesto D70 y fija un corte sintético anterior a la estabilización. Con USD 600 de deuda aplicada, Base requiere USD 400 de equity sobre USD 1.000 de TDC y Downside USD 500 sobre USD 1.100. Los resultados son 40 % y 5/11. Subir el compromiso sin cambiar desembolsos deja el ratio igual.
 
 Se bloquea el cálculo si se sustituye el desembolso por el compromiso, si el aporte es posterior al corte o si falta el aporte. La decisión y la definición real de Q08 siguen pendientes. [Control D71](tools/check_equity_tdc_D71.py).
+
+## D72 — Ocupación económica sintética de equilibrio
+
+El ensayo usa una función afín de renta realizada y verifica el límite contra el productor de NOI con el mismo período de servicio de deuda. El mínimo es 65 % en Base y 90 % en Downside. Se prueba el punto exacto y un punto porcentual a cada lado.
+
+El caso que no cubre la deuda al 100 % queda inviable en el dominio. El caso explícito sin gastos ni servicio de deuda acepta 0 %. Una deuda faltante o de otro período deja el cálculo PENDING. La convención de ocupación del piloto real sigue abierta. [Control D72](tools/check_breakeven_occupancy_D72.py).

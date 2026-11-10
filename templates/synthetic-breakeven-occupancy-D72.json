@@ -1,0 +1,107 @@
+{
+  "schema": "miniuw.synthetic-breakeven-occupancy-rehearsal.v1",
+  "operating_archive_sha256": "9ea85c4c66f70ae9699fb9cb9e92789e9e7411680f9f94b5ac3cd59794713cb5",
+  "occupancy_basis": "synthetic_economic_rent_realization_fraction",
+  "scenarios": {
+    "Base": {
+      "operating_inventory": "Base",
+      "rent_at_full_occupancy": {
+        "numerator": "1000",
+        "denominator": "1"
+      },
+      "fixed_expenses": {
+        "numerator": "200",
+        "denominator": "1"
+      },
+      "tax_floor": {
+        "numerator": "50",
+        "denominator": "1"
+      },
+      "tax_coefficient": {
+        "numerator": "1",
+        "denominator": "10"
+      },
+      "debt_service": {
+        "numerator": "400",
+        "denominator": "1"
+      },
+      "debt_service_period": "2027-01-01/2028-01-01",
+      "source_ref": "SYNTHETIC-D72-Base-affine-rent-expense-tax-debt"
+    },
+    "Downside": {
+      "operating_inventory": "Downside",
+      "rent_at_full_occupancy": {
+        "numerator": "900",
+        "denominator": "1"
+      },
+      "fixed_expenses": {
+        "numerator": "250",
+        "denominator": "1"
+      },
+      "tax_floor": {
+        "numerator": "30",
+        "denominator": "1"
+      },
+      "tax_coefficient": {
+        "numerator": "3",
+        "denominator": "25"
+      },
+      "debt_service": {
+        "numerator": "500",
+        "denominator": "1"
+      },
+      "debt_service_period": "2027-01-01/2028-01-01",
+      "source_ref": "SYNTHETIC-D72-Downside-affine-rent-expense-tax-debt"
+    },
+    "no_feasible_occupancy": {
+      "operating_inventory": "Downside",
+      "rent_at_full_occupancy": {
+        "numerator": "900",
+        "denominator": "1"
+      },
+      "fixed_expenses": {
+        "numerator": "250",
+        "denominator": "1"
+      },
+      "tax_floor": {
+        "numerator": "30",
+        "denominator": "1"
+      },
+      "tax_coefficient": {
+        "numerator": "3",
+        "denominator": "25"
+      },
+      "debt_service": {
+        "numerator": "650",
+        "denominator": "1"
+      },
+      "debt_service_period": "2027-01-01/2028-01-01",
+      "source_ref": "SYNTHETIC-D72-no_feasible_occupancy-affine-rent-expense-tax-debt"
+    },
+    "all_occupancies_feasible": {
+      "operating_inventory": "Base",
+      "rent_at_full_occupancy": {
+        "numerator": "1000",
+        "denominator": "1"
+      },
+      "fixed_expenses": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "tax_floor": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "tax_coefficient": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "debt_service": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "debt_service_period": "2027-01-01/2028-01-01",
+      "source_ref": "SYNTHETIC-D72-all_occupancies_feasible-affine-rent-expense-tax-debt"
+    }
+  }
+}

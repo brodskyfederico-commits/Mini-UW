@@ -1,10 +1,10 @@
 {
-  "scope": "I01 preserved design, D02–D71 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D72 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 10687,
-      "sha256": "c426bfc2e4612505bacc07f267669b88e9ef49b226f63c013a0500736a002cb5"
+      "bytes": 10820,
+      "sha256": "d7fb26c977dd2ceaa69fd98517564ec274e3237d6d7a9f73d60a2b9df64b12a2"
     },
     {
       "path": ".gitignore",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 67357,
-      "sha256": "66666b6418b8dc8bf6a27bf4329c363a1a1c17743b9c4ded0939295b9ab43901"
+      "bytes": 67570,
+      "sha256": "4c05e67cc3a727789b98b31f10c91f86a66d9119e0353ea2939a63f5b902175b"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 294248,
-      "sha256": "3ea87dc276051e3976467aab15133d0d7f4557fd4bb4b6cc2cf5ec95450ca2b8"
+      "bytes": 294873,
+      "sha256": "02a0d09d1bcd76b54b186c9200659de064c4c607284c67fefe97aefcca023aa5"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -118,8 +118,8 @@
     },
     {
       "path": "docs/coverage-guide.md",
-      "bytes": 7844,
-      "sha256": "6fa06a151f1b8d724894776bb4314b59d395d78fd1f97297e339bb3effb233b0"
+      "bytes": 8197,
+      "sha256": "91f4dc0ef66485e43e7d5d7bcad0c85e1c31c566b66ccec1374e8179a6ea216f"
     },
     {
       "path": "docs/coverage-matrix.csv",
@@ -4667,6 +4667,11 @@
       "sha256": "747c00b86cb6f3a9db7f05ba2fb306b2457f53ffb3d9242be6af3447e75c3032"
     },
     {
+      "path": "templates/synthetic-breakeven-occupancy-D72.json",
+      "bytes": 2870,
+      "sha256": "46c2a7ba3e5c662c08d0fee82a7bf6ba9154fc6d015eb477fef6136a58b93dec"
+    },
+    {
       "path": "templates/synthetic-calculation-graph.json",
       "bytes": 2053,
       "sha256": "d815de6309c1c7003f114e6ab8abf3d8020cb6d3fb7b333eee9eee0ae758d936"
@@ -5960,6 +5965,11 @@
       "path": "tools/check_blocking_structure_D06.py",
       "bytes": 18815,
       "sha256": "8491f2d033854b380c4113893fd514e9d841a4e26bb50b5ee4471d146a13de28"
+    },
+    {
+      "path": "tools/check_breakeven_occupancy_D72.py",
+      "bytes": 7014,
+      "sha256": "babe1ca8ec3098d15db39b5789c643f5cda8a2390ca313921b5a80cfd8cf1fa7"
     },
     {
       "path": "tools/check_capital_coc_replay_D27.py",

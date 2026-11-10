@@ -4,6 +4,8 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D72 comprueba ocupación económica de equilibrio sintética, incluido un caso inviable al 100 %. Ejecuta `python tools/check_breakeven_occupancy_D72.py`. [Control D72](tools/check_breakeven_occupancy_D72.py).
+
 - D71 reconcilia equity y deuda aplicada con el TDC sintético. Ejecuta `python tools/check_equity_tdc_D71.py`. Los compromisos sin desembolso no reducen el equity. [Control D71](tools/check_equity_tdc_D71.py).
 
 - D70 reproduce YoC y spread en Base y Downside con NOI estabilizado, TDC y cap de referencia sintéticos expresos. Ejecuta `python tools/check_yoc_spread_D70.py`. Las reglas de prueba no se incorporan al piloto real. [Control D70](tools/check_yoc_spread_D70.py).
