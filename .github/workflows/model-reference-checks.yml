@@ -207,5 +207,7 @@ jobs:
         run: python tools/delayed_sale_carry_D93.py
       - name: Verify minimum delayed sale prices after holding costs and debt maturity
         run: python tools/delayed_sale_recovery_D94.py
+      - name: Verify minimum refinance cost cuts at a fixed delayed sale price
+        run: python tools/delayed_sale_refinance_reduction_D95.py
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v

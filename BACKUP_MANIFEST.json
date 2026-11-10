@@ -1,10 +1,10 @@
 {
-  "scope": "I01 preserved design, D02–D94 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D95 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 13678,
-      "sha256": "0d4abb95de128aa78ae4756304ab12fa49703f03e16193170d05c24ae9f04f03"
+      "bytes": 13823,
+      "sha256": "2c35fd113925d034b2bbd20bb5877fafc7359c259ac312faa1caab0bcf584d80"
     },
     {
       "path": ".gitignore",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 73677,
-      "sha256": "41142922ef062ba04dbe08e9c7169752f5da92a54cbf690c1120271fb9fd5986"
+      "bytes": 73951,
+      "sha256": "474d9d02edd0090014fd4251852c71407032c9d896a9aa325d390683b4f59034"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 313311,
-      "sha256": "f8d4eb2b5e39139206cbf227e7885d1a44ba2248c8c4ae40617b024f7ea06a36"
+      "bytes": 314159,
+      "sha256": "75643a2e67e0ce1fb787f058fc7bd0ef3b538390095f381e00da0bf6502dfa59"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -965,6 +965,11 @@
       "path": "docs/review/MiniUW_D94_Venta_Minima_Demorada_USD10.pdf",
       "bytes": 4277,
       "sha256": "2b09e04f7924095eb61a310bbeb0d0a0f144aebb128fa94a8464d76ba3bcd0a3"
+    },
+    {
+      "path": "docs/review/MiniUW_D95_Rebaja_Refi_Venta_Demorada_300_USD10.pdf",
+      "bytes": 3388,
+      "sha256": "5b8207ab8ee2171787dc1f60978707ee6560a5ca82f50115f5144e8d05f747aa"
     },
     {
       "path": "docs/review/MiniUW_Dots_y_Bots_1_pagina_ROLES01.pdf",
@@ -6460,6 +6465,11 @@
       "path": "tools/delayed_sale_recovery_D94.py",
       "bytes": 8880,
       "sha256": "327c43df19499fad61272f58947c636e652bcbfda156a67c5de1e983ffd2b161"
+    },
+    {
+      "path": "tools/delayed_sale_refinance_reduction_D95.py",
+      "bytes": 10750,
+      "sha256": "18ec86b2da7b64fa80f63c393da6f03cc6503d598a4ae7fd10bae3dce5738470"
     },
     {
       "path": "tools/demo_bounded_exit_sale.py",

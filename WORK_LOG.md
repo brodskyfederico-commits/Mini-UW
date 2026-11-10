@@ -1446,3 +1446,9 @@ Con refinanciación de USD 150 y costo de venta de USD 10 más 5 %, por USD 10 i
 Se conservan los USD 20 por mes de tenencia y la liquidación de USD 56,00 el 1 de julio de D93. Se vuelve a calcular el costo variable de venta al cambiar el precio. Con refinanciación de USD 150, costo de venta de USD 10 más 5 % y descuento del 1 % mensual, el precio bruto mínimo sube a USD 316,00, USD 345,39 y USD 374,86 al demorar uno, dos y tres meses. Los cobros totales por USD 10 en los respectivos mínimos son USD 10,62, USD 10,70 y USD 10,78.
 
 Se concilian 81 mínimos y 162 cierres. Cada mínimo recupera lo aportado a su tasa. Un centavo por debajo queda corto. La operación, el costo de tenencia, el vencimiento y los aportes de los escenarios sintéticos se conservan. La decisión real sigue PENDING. [PDF de una página](docs/review/MiniUW_D94_Venta_Minima_Demorada_USD10.pdf).
+
+## D95 — Rebaja mínima de refinanciación con venta fija en USD 300 y demora
+
+La rebaja se mide desde el costo original de refinanciación de USD 300. Se mantiene el precio bruto de venta en USD 300, la tenencia de USD 20 por mes y el vencimiento de deuda de D93. Con costo de venta de USD 10 más 5 % y descuento del 1 % mensual, las rebajas mínimas son USD 164,60, USD 191,03 y USD 217,00 para uno, dos y tres meses. Equivalen a costos máximos de USD 135,40, USD 108,97 y USD 83,00. Los cobros por USD 10 son USD 10,62, USD 10,68 y USD 10,74.
+
+Se reproducen 54 cierres de refinanciación y 27 umbrales. Un centavo menos de rebaja queda corto. El préstamo, la capacidad y la liquidación previa a la venta se conservan. La decisión real sigue PENDING. [PDF de una página](docs/review/MiniUW_D95_Rebaja_Refi_Venta_Demorada_300_USD10.pdf).
