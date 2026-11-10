@@ -4,6 +4,7 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D97 cruza tres costos mensuales de tenencia con las demoras de venta y muestra el precio mínimo y el cobro total por USD 10 iniciales. [PDF de una página](docs/review/MiniUW_D97_Tenencia_Precio_Minimo_USD10.pdf) y control reproducible con `python tools/holding_cost_sale_recovery_D97.py`.
 - D96 cruza tres rebajas intermedias de refinanciación con el precio de venta necesario a partir de USD 300, con demoras, tenencia y deuda. [PDF de una página](docs/review/MiniUW_D96_Combinaciones_Refi_Venta_Demorada_USD10.pdf) y control reproducible con `python tools/delayed_exit_combinations_D96.py`.
 - D95 calcula la rebaja mínima de refinanciación por fecha de venta demorada a precio fijo de USD 300. [PDF de una página](docs/review/MiniUW_D95_Rebaja_Refi_Venta_Demorada_300_USD10.pdf) y control reproducible con `python tools/delayed_sale_refinance_reduction_D95.py`.
 - D94 verifica el precio bruto mínimo para recuperar los aportes por USD 10 si la venta se demora, con tenencia y deuda. [PDF de una página](docs/review/MiniUW_D94_Venta_Minima_Demorada_USD10.pdf) y control reproducible con `python tools/delayed_sale_recovery_D94.py`.

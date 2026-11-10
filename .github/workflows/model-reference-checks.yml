@@ -211,5 +211,7 @@ jobs:
         run: python tools/delayed_sale_refinance_reduction_D95.py
       - name: Verify combined refinance and sale price thresholds after a synthetic delay
         run: python tools/delayed_exit_combinations_D96.py
+      - name: Verify sale recovery prices across three monthly holding costs
+        run: python tools/holding_cost_sale_recovery_D97.py
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v

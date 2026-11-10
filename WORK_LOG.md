@@ -1458,3 +1458,9 @@ Se reproducen 54 cierres de refinanciación y 27 umbrales. Un centavo menos de r
 Se cruzan rebajas sintéticas de USD 100, USD 125 y USD 175 sobre el costo original de refinanciación de USD 300. Se conservan USD 20 de tenencia por mes, la liquidación de deuda de USD 56,00 el 1 de julio y el costo de venta de USD 10 más 3 %, 5 % o 7 %. Si el precio de USD 300 ya recupera los aportes, se conserva ese precio como piso de la comparación.
 
 Con costo de refinanciación de USD 175, costo de venta de USD 10 más 5 % y descuento del 1 % mensual, los precios brutos mínimos son USD 343,38, USD 373,05 y USD 402,80 con demoras de uno, dos y tres meses. Se cobran USD 10,63, USD 10,71 y USD 10,80 por USD 10 iniciales. Se verifican 81 escenarios y, cuando el precio supera USD 300, se reproduce un cierre un centavo por debajo. La decisión real sigue PENDING. [PDF de una página](docs/review/MiniUW_D96_Combinaciones_Refi_Venta_Demorada_USD10.pdf).
+
+## D97 — Precio de recuperación con tenencia de USD 10, USD 20 o USD 30 por mes
+
+Se conserva el caso D96 con costo de refinanciación de USD 175, costo de venta de USD 10 más 5 % y pago de deuda de USD 56,00 el 1 de julio. Se modelan costos mensuales de tenencia de USD 10, USD 20 y USD 30 desde el vencimiento hasta la venta. Se pagan con caja del proyecto y se admite un precio mínimo por debajo de USD 300 cuando alcanza para recuperar los aportes.
+
+Al 1 % mensual y con dos meses de demora, el precio mínimo es USD 351,99, USD 373,05 o USD 394,10 según el costo de tenencia. En cada mínimo se cobran USD 10,71 por USD 10 iniciales, sin aportes extra. Se verifican los 27 mínimos y se reproducen 54 cierres al precio indicado y un centavo por debajo. La decisión real sigue PENDING. [PDF de una página](docs/review/MiniUW_D97_Tenencia_Precio_Minimo_USD10.pdf).
