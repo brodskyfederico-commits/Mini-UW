@@ -157,5 +157,124 @@
       "completed": false
     },
     "scope": "Synthetic engineering evidence. The D61 hosted result is specific to D61. The local D68 delta does not substitute for a hosted D68 result."
+  },
+  "follow_up_D73": {
+    "local_full_replay": {
+      "command": "PYTHONPATH=src python3 -m unittest discover -s tests",
+      "started_on": "D65",
+      "python_minor": "3.12",
+      "completed": true,
+      "passed": 1619,
+      "failures": 0,
+      "errors": 0,
+      "seconds": 4639.804,
+      "log_sha256": "69f3f470a417886145f7da24bed4dd05fc9039d0cfab43c53bf473492e8b1d4b"
+    },
+    "comparison": {
+      "latest_milestone": "D72",
+      "same_src_files": 141,
+      "same_test_files": 103,
+      "same_reference_requirements": true,
+      "latest_metric_controls_reproduced": {
+        "check_yoc_spread_D70": {
+          "status": "passed",
+          "decision": "PENDING",
+          "scenario_values": {
+            "Base": {
+              "YoC": {
+                "numerator": "1",
+                "denominator": "10"
+              },
+              "spread": {
+                "numerator": "200",
+                "denominator": "1"
+              }
+            },
+            "Downside": {
+              "YoC": {
+                "numerator": "3",
+                "denominator": "44"
+              },
+              "spread": {
+                "numerator": "-1850",
+                "denominator": "11"
+              }
+            }
+          },
+          "simulations": {
+            "strict": "FAIL",
+            "relaxed": "PASS",
+            "intermediate": "PENDING",
+            "cap_period_mismatch": "PENDING"
+          },
+          "zero_tdc_blocked": true,
+          "explicit_zero_noi_preserved": true
+        },
+        "check_equity_tdc_D71": {
+          "status": "passed",
+          "decision": "PENDING",
+          "scenario_values": {
+            "Base": {
+              "numerator": "2",
+              "denominator": "5"
+            },
+            "Downside": {
+              "numerator": "5",
+              "denominator": "11"
+            }
+          },
+          "blocked_cases": [
+            "commitment_substituted",
+            "late_equity",
+            "missing_equity"
+          ],
+          "unused_commitment_excluded": true
+        },
+        "check_breakeven_occupancy_D72": {
+          "status": "passed",
+          "decision": "PENDING",
+          "cases": {
+            "Base": {
+              "state": "computed_synthetic",
+              "minimum": {
+                "numerator": "13",
+                "denominator": "20"
+              }
+            },
+            "Downside": {
+              "state": "computed_synthetic",
+              "minimum": {
+                "numerator": "9",
+                "denominator": "10"
+              }
+            },
+            "no_feasible_occupancy": {
+              "state": "infeasible_within_domain",
+              "minimum": null
+            },
+            "all_occupancies_feasible": {
+              "state": "computed_synthetic",
+              "minimum": {
+                "numerator": "0",
+                "denominator": "1"
+              }
+            }
+          },
+          "blocked_cases": [
+            "period_mismatch",
+            "missing_debt_service"
+          ]
+        }
+      }
+    },
+    "hosted_latest": {
+      "milestone": "D72",
+      "run_id": 42734821418,
+      "runner_assigned": false,
+      "steps": 0,
+      "conclusion": "failure",
+      "cause_confirmed": false
+    },
+    "scope": "Local full technical suite and synthetic metric controls. No financial certification, real deal decision or deployment."
   }
 }

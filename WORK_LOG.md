@@ -1316,3 +1316,9 @@ Se bloquea el cálculo si se sustituye el desembolso por el compromiso, si el ap
 El ensayo usa una función afín de renta realizada y verifica el límite contra el productor de NOI con el mismo período de servicio de deuda. El mínimo es 65 % en Base y 90 % en Downside. Se prueba el punto exacto y un punto porcentual a cada lado.
 
 El caso que no cubre la deuda al 100 % queda inviable en el dominio. El caso explícito sin gastos ni servicio de deuda acepta 0 %. Una deuda faltante o de otro período deja el cálculo PENDING. La convención de ocupación del piloto real sigue abierta. [Control D72](tools/check_breakeven_occupancy_D72.py).
+
+## D73 — Batería local completa y regresión de métricas
+
+La batería local terminó con las 1.619 pruebas aprobadas. Se inició sobre D65 con Python 3.12. La comparación de inventarios confirma que los 141 archivos de src, los 103 archivos de tests y las dependencias de referencia conservan los mismos hashes en D72. En el árbol exacto de D72 se repitieron los controles de YoC y spread, equity/TDC y ocupación de equilibrio con resultados idénticos.
+
+El resultado local se archiva por separado del fallo hospedado anterior a la asignación de runner. Se mantiene el alcance sintético y la decisión operativa PENDING. [Evidencia](docs/ci-verification.json).
