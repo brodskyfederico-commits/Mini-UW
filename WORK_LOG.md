@@ -1434,3 +1434,9 @@ El PDF muestra nueve límites y separa cobros, aportes y fechas. Se reproducen 1
 Se mueven únicamente los cobros netos de venta de los nueve casos D90 del 1 de julio al 1 de agosto, septiembre u octubre de 2027. El supuesto sintético mantiene los demás flujos y fija en cero la caja incremental de tenencia. Los importes nominales y los aportes se conservan. El caso con refinanciación de USD 150 y costo de venta de USD 10 más 5 % cobra USD 10,67 por USD 10 iniciales. Al 1 % mensual, el saldo por demoras de uno, dos o tres meses es +USD 0,04, -USD 0,03 y -USD 0,10. Al 2 % es -USD 0,54, -USD 0,67 y -USD 0,80.
 
 Se recalculan 27 calendarios y 81 saldos con números exactos. Se concilia el valor presente por fecha y por diferencia de factores de descuento del cobro de salida. Los intereses, saldo de deuda y operación del plazo adicional quedan fuera de esta prueba de calendario. La decisión real sigue PENDING. [PDF de una página](docs/review/MiniUW_D92_Demora_Venta_300_USD10.pdf).
+
+## D93 — Tenencia y vencimiento de deuda con venta demorada de USD 300
+
+El préstamo sintético de Downside vence el 1 de julio de 2027. Si se posterga la venta, la liquidación de USD 56,00 se paga con caja libre existente en esa fecha. Se concilian principal e interés contra la tabla fechada y se conserva el cargo de deuda de USD 5. El pasivo queda en cero. Se agregan USD 20 por mes de tenencia con ingreso incremental cero. Los gastos se pagan de caja libre y reducen el neto a distribuir, sin aporte adicional por demora.
+
+Con refinanciación de USD 150 y costo de venta de USD 10 más 5 %, por USD 10 iniciales los cobros totales a uno, dos o tres meses son USD 10,47, USD 10,27 y USD 10,07. Al 1 % mensual faltan USD 0,14, USD 0,40 y USD 0,65 en valor presente. Se recalculan 27 cierres y 81 saldos, sin duplicar la deuda que el cierre sin demora ya incluía. La decisión real sigue PENDING. [PDF de una página](docs/review/MiniUW_D93_Demora_Tenencia_Deuda_USD10.pdf).
