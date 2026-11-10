@@ -1410,3 +1410,9 @@ Se recalculan 18 cierres al mínimo redondeado hacia arriba y un centavo por deb
 El caso sintético conserva el costo original de USD 20 a un precio bruto de USD 200. Se usa USD 10 fijo más 5 % del precio bruto, con precisión exacta y el precio mínimo redondeado hacia arriba al centavo. A tasas mensuales del 0 %, 1 % y 2 %, los mínimos son USD 387,38, USD 449,37 y USD 514,56 con costo de refinanciación de USD 300. Con costo de USD 220 son USD 303,17, USD 362,60 y USD 425,19. Con costo de USD 150 son USD 229,49, USD 286,69 y USD 347,00.
 
 Se reproducen 27 cierres. Los nueve precios de D87 quedan cortos con el costo variable. Un centavo debajo de cada nuevo mínimo también queda corto. El PDF muestra por separado el cobro neto de venta, el cobro total y los aportes adicionales por USD 10 iniciales. La decisión real sigue PENDING. [PDF de una página](docs/review/MiniUW_D88_Costos_Venta_Variables_USD10.pdf).
+
+## D89 — Tres tasas de costo de venta y recuperación por USD 10 en Downside
+
+Se mantienen USD 10 de costo fijo más el 3 %, 5 % o 7 % del precio bruto. Las 27 combinaciones cruzan esas tasas con costos de refinanciación de USD 300, USD 220 y USD 150 y tasas mensuales de descuento del 0 %, 1 % y 2 %. Con costo de refinanciación de USD 150 y descuento del 1 % mensual, el precio bruto mínimo sube de USD 280,78 al 3 % a USD 286,69 al 5 % y USD 292,85 al 7 %. En los tres mínimos el inversor cobra USD 10,54 por USD 10 iniciales a precisión de centavos.
+
+Se reproducen 54 cierres. Cada mínimo recupera lo aportado a la tasa indicada y un centavo por debajo queda corto. El 5 % reproduce los mínimos de D88. Los parámetros y los resultados son sintéticos y la decisión real sigue PENDING. [PDF de una página](docs/review/MiniUW_D89_Tasas_Costo_Venta_USD10.pdf).

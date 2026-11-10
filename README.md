@@ -4,6 +4,7 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D89 cruza costos de venta del 3 %, 5 % y 7 % con tres costos de refinanciación y tres tasas mensuales. Muestra precio mínimo y cobro por USD 10 iniciales. [PDF de una página](docs/review/MiniUW_D89_Tasas_Costo_Venta_USD10.pdf) y control reproducible con `python tools/sale_cost_rate_grid_D89.py`.
 - D88 repite el Downside por USD 10 con un costo de venta sintético que crece con el precio bruto. Compara los mínimos y el cobro neto de venta y total a tres tasas. [PDF de una página](docs/review/MiniUW_D88_Costos_Venta_Variables_USD10.pdf) y control reproducible con `python tools/price_linked_sale_cost_D88.py`.
 - D87 cruza la rebaja del costo de refinanciación con el precio bruto de venta que necesita Downside para recuperar lo aportado por USD 10 iniciales al 0 %, 1 % y 2 % mensual. [PDF de una página](docs/review/MiniUW_D87_Combinaciones_Refi_Venta_USD10.pdf) y control reproducible con `python tools/refinance_sale_combinations_D87.py`.
 - D86 calcula cuánto debe bajar el costo de refinanciación en Downside para recuperar los USD 10 iniciales a tres tasas. Abrí el [PDF de una página](docs/review/MiniUW_D86_Costo_Refinanciacion_USD10.pdf) o auditalo con `python tools/refinance_cost_recovery_D86.py`.

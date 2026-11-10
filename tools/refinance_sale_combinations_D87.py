@@ -35,7 +35,7 @@ def fixed_events(story):
             for e in story["dated_events"] if e["category"] not in changed]
 
 
-def verify(*, marginal_sale_cost=Fraction(0)):
+def verify(*, marginal_sale_cost=Fraction(0), fixed_sale_cost=None):
     require(0 <= marginal_sale_cost < 1, "The marginal sale cost must be below the gross sale increment")
     sources = downside_sources()
     base, variant, sale, selected, baseline, cash = (
@@ -43,7 +43,12 @@ def verify(*, marginal_sale_cost=Fraction(0)):
     original_cost = amount(variant["refinance_closing_costs"])
     original_price = Fraction(selected["sale_proceeds"])
     original_sale_cost = amount(sale["replacement_claims"]["closing_costs_paid"])
+    anchored = fixed_sale_cost is None
+    if anchored:
+        fixed_sale_cost = original_sale_cost - original_price * marginal_sale_cost
+    fee_change_at_anchor = fixed_sale_cost + original_price * marginal_sale_cost - original_sale_cost
     retained = 1 - marginal_sale_cost
+    revision = "D89" if not anchored else "D88" if marginal_sale_cost else "D87"
     initial = amount(baseline["story"]["cash_by_category"]["initial_capital"])
     scale = Fraction(10) / initial
     flows = validate_grid(baseline)
@@ -71,30 +76,28 @@ def verify(*, marginal_sale_cost=Fraction(0)):
             baseline_pv = present_value(flows, rate)
             pv_after_cut = baseline_pv + cut * refi_discount
             flat_target = original_price - pv_after_cut / sale_discount
-            target = original_price + (flat_target - original_price) / retained
+            target = original_price + (flat_target - original_price + fee_change_at_anchor) / retained
             quote = Fraction(ceil(target * 100), 100)
             require(target > original_price and quote - Fraction(1, 100) < target <= quote,
                     "Expected a higher sale price with an exact cent boundary")
             probes = {}
             sample_prices = {"below": quote - Fraction(1, 100), "at_cents": quote}
-            if marginal_sale_cost:
+            if anchored and marginal_sale_cost:
                 sample_prices["at_flat_cost_quote"] = Fraction(ceil(flat_target * 100), 100)
             for label, price in sample_prices.items():
                 proceeds = sale["replacement_claims"]["gross_proceeds"].copy()
-                set_claim(proceeds, price, "SYNTHETIC-D87-gross-sale-price")
+                set_claim(proceeds, price, f"SYNTHETIC-{revision}-gross-sale-price")
                 claims = sale["replacement_claims"] | {"gross_proceeds": proceeds}
-                closing_cost = original_sale_cost + (price - original_price) * marginal_sale_cost
-                if marginal_sale_cost:
+                closing_cost = fixed_sale_cost + price * marginal_sale_cost
+                if revision != "D87":
                     closing_cost_claim = claims["closing_costs_paid"].copy()
-                    set_claim(proceeds, price, "SYNTHETIC-D88-gross-sale-price")
-                    set_claim(closing_cost_claim, closing_cost, "SYNTHETIC-D88-price-linked-closing-cost")
+                    set_claim(closing_cost_claim, closing_cost, f"SYNTHETIC-{revision}-price-linked-closing-cost")
                     claims["closing_costs_paid"] = closing_cost_claim
-                revision = "D88" if marginal_sale_cost else "D87"
                 spec = sale | {"revision_id": f"SYNTHETIC-{revision}-combination", "replacement_claims": claims}
                 _, parent = replay_sale(evidence, spec, origin, False)
                 story = parent["story"]
                 verified = validate_grid(parent)
-                increment = (price - original_price) * retained
+                increment = (price - original_price) * retained - fee_change_at_anchor
                 require([row["date"] for row in verified] == dates
                         and fixed_events(story) == fixed_events(baseline["story"])
                         and refi_net(story) == refi_net(baseline["story"]) + cut
@@ -109,7 +112,7 @@ def verify(*, marginal_sale_cost=Fraction(0)):
                                      sale_net_per_usd_10=rational(sale_net(story) * scale),
                                      cash_total_received_per_usd_10=rational(amount(story["gross_distributions"]) * scale),
                                      guarded_run_sha256=parent["guarded_run_sha256"])
-                if marginal_sale_cost:
+                if revision != "D87":
                     contributions = sum(amount(event["amount"]) for event in story["dated_events"]
                                         if event["kind"] == "contribution")
                     received = amount(story["gross_distributions"])
@@ -124,18 +127,20 @@ def verify(*, marginal_sale_cost=Fraction(0)):
                          refinance_net_per_usd_10=rational(refi_net(refi_only["story"]) * scale),
                          thresholds=thresholds))
 
-    # The no-sale-increase endpoint was replayed on both sides of the cent boundary in D86.
-    fixed_sale = [
-        rational(Fraction(ceil(-present_value(flows, rate) * (1 + rate)**refi_index * 100), 100)) for rate in RATES]
     result = dict(status="passed", decision="PENDING", scope="synthetic_only",
                 case_sha256=sources["case_sha256"], original=cash, original_refinance_cost=rational(original_cost),
                 original_sale_price=rational(original_price), discount_date=dates[0], refinance_date=refi_date,
-                sale_date=dates[-1], fixed_sale_refinance_cut_project=fixed_sale, combinations=rows,
+                sale_date=dates[-1], combinations=rows,
                 closing_probes=sum(len(t["probes"]) for row in rows for t in row["thresholds"]))
-    if marginal_sale_cost:
+    if anchored:
+        # D86 replayed this endpoint with the original gross price and sale cost.
+        result["fixed_sale_refinance_cut_project"] = [
+            rational(Fraction(ceil(-present_value(flows, rate) * (1 + rate)**refi_index * 100), 100))
+            for rate in RATES]
+    if revision != "D87":
         result.update(marginal_sale_cost=rational(marginal_sale_cost),
                       original_sale_closing_cost=rational(original_sale_cost),
-                      fixed_sale_cost_component=rational(original_sale_cost - original_price * marginal_sale_cost))
+                      fixed_sale_cost_component=rational(fixed_sale_cost))
     return result
 
 
