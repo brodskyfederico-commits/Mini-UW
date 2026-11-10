@@ -1452,3 +1452,9 @@ Se concilian 81 mínimos y 162 cierres. Cada mínimo recupera lo aportado a su t
 La rebaja se mide desde el costo original de refinanciación de USD 300. Se mantiene el precio bruto de venta en USD 300, la tenencia de USD 20 por mes y el vencimiento de deuda de D93. Con costo de venta de USD 10 más 5 % y descuento del 1 % mensual, las rebajas mínimas son USD 164,60, USD 191,03 y USD 217,00 para uno, dos y tres meses. Equivalen a costos máximos de USD 135,40, USD 108,97 y USD 83,00. Los cobros por USD 10 son USD 10,62, USD 10,68 y USD 10,74.
 
 Se reproducen 54 cierres de refinanciación y 27 umbrales. Un centavo menos de rebaja queda corto. El préstamo, la capacidad y la liquidación previa a la venta se conservan. La decisión real sigue PENDING. [PDF de una página](docs/review/MiniUW_D95_Rebaja_Refi_Venta_Demorada_300_USD10.pdf).
+
+## D96 — Combinaciones de refinanciación y precio de venta con demora
+
+Se cruzan rebajas sintéticas de USD 100, USD 125 y USD 175 sobre el costo original de refinanciación de USD 300. Se conservan USD 20 de tenencia por mes, la liquidación de deuda de USD 56,00 el 1 de julio y el costo de venta de USD 10 más 3 %, 5 % o 7 %. Si el precio de USD 300 ya recupera los aportes, se conserva ese precio como piso de la comparación.
+
+Con costo de refinanciación de USD 175, costo de venta de USD 10 más 5 % y descuento del 1 % mensual, los precios brutos mínimos son USD 343,38, USD 373,05 y USD 402,80 con demoras de uno, dos y tres meses. Se cobran USD 10,63, USD 10,71 y USD 10,80 por USD 10 iniciales. Se verifican 81 escenarios y, cuando el precio supera USD 300, se reproduce un cierre un centavo por debajo. La decisión real sigue PENDING. [PDF de una página](docs/review/MiniUW_D96_Combinaciones_Refi_Venta_Demorada_USD10.pdf).
