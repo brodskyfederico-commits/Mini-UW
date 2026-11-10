@@ -1,0 +1,83 @@
+{
+  "schema": "miniuw.synthetic-equity-tdc-rehearsal.v1",
+  "tdc_archive_sha256": "9ea85c4c66f70ae9699fb9cb9e92789e9e7411680f9f94b5ac3cd59794713cb5",
+  "funding_cutoff": "2026-12-31",
+  "scenarios": {
+    "Base": {
+      "context": {
+        "deal_id": "SYNTHETIC-D70-yield-cost-spread",
+        "scenario_id": "SYNTHETIC-D70-Base",
+        "run_id": "SYNTHETIC-D70-rehearsal",
+        "definition_set_revision": "SYNTHETIC-D70-definitions-v1"
+      },
+      "currency": "USD",
+      "cutoff": "2026-12-31",
+      "funding_inventory_complete": true,
+      "scope_ref": "SYNTHETIC-D71-Base-applied-to-complete-tdc",
+      "debt_commitment": {
+        "numerator": "750",
+        "denominator": "1"
+      },
+      "sources": [
+        {
+          "id": "SYNTHETIC-D71-Base-debt_drawn",
+          "kind": "debt_drawn",
+          "amount": {
+            "numerator": "600",
+            "denominator": "1"
+          },
+          "date": "2026-12-31",
+          "source_ref": "SYNTHETIC-D71-Base-dated-debt_drawn-applied"
+        },
+        {
+          "id": "SYNTHETIC-D71-Base-equity_paid",
+          "kind": "equity_paid",
+          "amount": {
+            "numerator": "400",
+            "denominator": "1"
+          },
+          "date": "2026-12-31",
+          "source_ref": "SYNTHETIC-D71-Base-dated-equity_paid-applied"
+        }
+      ]
+    },
+    "Downside": {
+      "context": {
+        "deal_id": "SYNTHETIC-D70-yield-cost-spread",
+        "scenario_id": "SYNTHETIC-D70-Downside",
+        "run_id": "SYNTHETIC-D70-rehearsal",
+        "definition_set_revision": "SYNTHETIC-D70-definitions-v1"
+      },
+      "currency": "USD",
+      "cutoff": "2026-12-31",
+      "funding_inventory_complete": true,
+      "scope_ref": "SYNTHETIC-D71-Downside-applied-to-complete-tdc",
+      "debt_commitment": {
+        "numerator": "750",
+        "denominator": "1"
+      },
+      "sources": [
+        {
+          "id": "SYNTHETIC-D71-Downside-debt_drawn",
+          "kind": "debt_drawn",
+          "amount": {
+            "numerator": "600",
+            "denominator": "1"
+          },
+          "date": "2026-12-31",
+          "source_ref": "SYNTHETIC-D71-Downside-dated-debt_drawn-applied"
+        },
+        {
+          "id": "SYNTHETIC-D71-Downside-equity_paid",
+          "kind": "equity_paid",
+          "amount": {
+            "numerator": "500",
+            "denominator": "1"
+          },
+          "date": "2026-12-31",
+          "source_ref": "SYNTHETIC-D71-Downside-dated-equity_paid-applied"
+        }
+      ]
+    }
+  }
+}

@@ -161,5 +161,7 @@ jobs:
         run: python tools/check_worksheet_participation_D68.py
       - name: Verify stabilized synthetic YoC and reference cap spread
         run: python tools/check_yoc_spread_D70.py
+      - name: Verify applied equity and debt reconcile to the synthetic total cost
+        run: python tools/check_equity_tdc_D71.py
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v

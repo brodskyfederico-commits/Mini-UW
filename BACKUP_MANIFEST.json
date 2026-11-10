@@ -1,10 +1,10 @@
 {
-  "scope": "I01 preserved design, D02–D70 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D71 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 10554,
-      "sha256": "e86ba8fd2b324bcf3776cbd3ed5c76adf1fc620dc515d4bf113da538df113c3d"
+      "bytes": 10687,
+      "sha256": "c426bfc2e4612505bacc07f267669b88e9ef49b226f63c013a0500736a002cb5"
     },
     {
       "path": ".gitignore",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 67145,
-      "sha256": "96c9717b283c71912a4b02132787f5cf56a75a01ba33445b7a96db34f0df7356"
+      "bytes": 67357,
+      "sha256": "66666b6418b8dc8bf6a27bf4329c363a1a1c17743b9c4ded0939295b9ab43901"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 293633,
-      "sha256": "989cb32cf7d5c331b4faa34c86d3f3870bfff4e864266c133337b50844f02451"
+      "bytes": 294248,
+      "sha256": "3ea87dc276051e3976467aab15133d0d7f4557fd4bb4b6cc2cf5ec95450ca2b8"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -118,8 +118,8 @@
     },
     {
       "path": "docs/coverage-guide.md",
-      "bytes": 7400,
-      "sha256": "585b580779a8e334c49b89a4b15f212fba9437e7e5a95ec653317cd845ee208b"
+      "bytes": 7844,
+      "sha256": "6fa06a151f1b8d724894776bb4314b59d395d78fd1f97297e339bb3effb233b0"
     },
     {
       "path": "docs/coverage-matrix.csv",
@@ -4802,6 +4802,11 @@
       "sha256": "805785e827ed097db5b35d2271ac8d48c2c9ee3e9ea0b65a842f1f32260d3a22"
     },
     {
+      "path": "templates/synthetic-equity-tdc-D71.json",
+      "bytes": 2524,
+      "sha256": "8a326602d2f12974e7d056eb17cc8f983e3b091226d6866af85e6ad62af7329a"
+    },
+    {
       "path": "templates/synthetic-evidence-currency-example.json",
       "bytes": 17126,
       "sha256": "b9b6c8e5fce82a6d3190b7c5766f05db0d6d645e016f38e8d8cccef961b1accd"
@@ -6055,6 +6060,11 @@
       "path": "tools/check_downside_threshold_revision_D58.py",
       "bytes": 7121,
       "sha256": "ce5e01a93a77a5ec8911a03579b1162f42f328f1aede5381c925c80d4fdc1fc6"
+    },
+    {
+      "path": "tools/check_equity_tdc_D71.py",
+      "bytes": 6770,
+      "sha256": "0682a31c66211b8fd7f88ef0ed8551239d289d502d26b988d1814b1968e7fc54"
     },
     {
       "path": "tools/check_first_pilot_D49.py",

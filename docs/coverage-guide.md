@@ -101,3 +101,7 @@ Consolidación I01: el registro estructural enlaza los 84 contratos a sus filas/
 ## Evidencia sintética de valoración y cierre
 
 D62–D65 añaden evidencia ejecutable en INPUT_C67, INPUT_C68, M7-05 y M7-06. Q15 registra la prueba de bloqueo por tratamiento fiscal pendiente. Las 398 filas conservan sus fuentes, ubicaciones y estados financieros. El piloto permite reproducir las cifras del expediente y del PDF en casos sintéticos. Quedan por confirmar las convenciones reales y su revisión independiente.
+
+## Evidencia sintética de costos, YoC y equity
+
+D70 enlaza METRIC-YOC y METRIC-SPREAD con el cálculo sintético por escenario. Para METRIC-EQ_TDC, D71 reconcilia desembolsos y aportes al corte con el costo total D70. Base da 40 % y Downside 5/11. Los compromisos de deuda sin desembolso quedan fuera del numerador y del cuadre de fondos aplicados. Q08 sigue abierta para la definición real. [Control D71](../tools/check_equity_tdc_D71.py).

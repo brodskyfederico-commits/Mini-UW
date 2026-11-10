@@ -1304,3 +1304,9 @@ En D68 GitHub informó fallo con cero pasos y sin runner asignado. La API indica
 El ensayo usa el productor de NOI, un inventario explícito de costos y una tasa de capitalización de referencia independiente de la tasa de salida y de la bancaria. Base obtiene YoC de 10 % y spread de 200 puntos básicos. Downside obtiene 3/44 de YoC y −1850/11 puntos básicos de spread. Los límites hipotéticos ensayan PASS, FAIL y la banda PENDING.
 
 Si falta un costo o el TDC suma cero se retiran ambos ratios. Si el cap de referencia no corresponde al período se conserva el YoC y queda PENDING el spread. Un NOI cero explícito da YoC cero. La matriz enlaza las dos métricas con el control reproducible y conserva los estados abiertos. La decisión operativa permanece PENDING. [Control D70](tools/check_yoc_spread_D70.py).
+
+## D71 — Equity aplicado sobre costo total del desarrollo
+
+El ensayo reutiliza el presupuesto D70 y fija un corte sintético anterior a la estabilización. Con USD 600 de deuda aplicada, Base requiere USD 400 de equity sobre USD 1.000 de TDC y Downside USD 500 sobre USD 1.100. Los resultados son 40 % y 5/11. Subir el compromiso sin cambiar desembolsos deja el ratio igual.
+
+Se bloquea el cálculo si se sustituye el desembolso por el compromiso, si el aporte es posterior al corte o si falta el aporte. La decisión y la definición real de Q08 siguen pendientes. [Control D71](tools/check_equity_tdc_D71.py).

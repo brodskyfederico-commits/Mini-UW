@@ -4,6 +4,8 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D71 reconcilia equity y deuda aplicada con el TDC sintético. Ejecuta `python tools/check_equity_tdc_D71.py`. Los compromisos sin desembolso no reducen el equity. [Control D71](tools/check_equity_tdc_D71.py).
+
 - D70 reproduce YoC y spread en Base y Downside con NOI estabilizado, TDC y cap de referencia sintéticos expresos. Ejecuta `python tools/check_yoc_spread_D70.py`. Las reglas de prueba no se incorporan al piloto real. [Control D70](tools/check_yoc_spread_D70.py).
 
 - D68 agrega al expediente y al PDF el reparto hipotético del equity con términos archivados y vinculados al libro exacto del caso. Ejecuta `python tools/miniuw_worksheet_v1.py run templates/synthetic-unified-worksheet-participation-D68.json --output /tmp/miniuw-reparto-sintetico`. [Control D68](tools/check_worksheet_participation_D68.py).
