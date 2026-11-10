@@ -4,6 +4,8 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D74 abre el PDF de una página con el retorno por USD 10 de aporte inicial de un participante sintético. Ejecuta `python tools/miniuw_worksheet_v1.py run templates/synthetic-unified-worksheet-investor-D74.json --output /tmp/miniuw-retorno-10`. [Control D74](tools/check_worksheet_investor_D74.py).
+
 - D72 comprueba ocupación económica de equilibrio sintética, incluido un caso inviable al 100 %. Ejecuta `python tools/check_breakeven_occupancy_D72.py`. [Control D72](tools/check_breakeven_occupancy_D72.py).
 
 - D71 reconcilia equity y deuda aplicada con el TDC sintético. Ejecuta `python tools/check_equity_tdc_D71.py`. Los compromisos sin desembolso no reducen el equity. [Control D71](tools/check_equity_tdc_D71.py).

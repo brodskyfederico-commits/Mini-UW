@@ -1322,3 +1322,9 @@ El caso que no cubre la deuda al 100 % queda inviable en el dominio. El caso exp
 La batería local terminó con las 1.619 pruebas aprobadas. Se inició sobre D65 con Python 3.12. La comparación de inventarios confirma que los 141 archivos de src, los 103 archivos de tests y las dependencias de referencia conservan los mismos hashes en D72. En el árbol exacto de D72 se repitieron los controles de YoC y spread, equity/TDC y ocupación de equilibrio con resultados idénticos.
 
 El resultado local se archiva por separado del fallo hospedado anterior a la asignación de runner. Se mantiene el alcance sintético y la decisión operativa PENDING. [Evidencia](docs/ci-verification.json).
+
+## D74 — Retorno ilustrativo por USD 10 iniciales
+
+La versión v4 del expediente presenta primero el retorno de un participante sintético. Normaliza cada flujo por USD 10 de aporte inicial y conserva por separado los aportes adicionales. El caso base cobra USD 12,92 y gana USD 2,92. Recibe USD 2 de operación, USD 2 de refinanciación y USD 8,92 al vender. El PDF de una página muestra fechas, múltiplo, intervalo de TIR anual y dependencia de la venta. Los importes del JSON conservan su precisión exacta.
+
+La salida queda PENDING si falta el costo variable, si el impuesto de venta está pendiente o si el aporte inicial es cero. El capital remanente, equity retenido, CoC y retorno personal real siguen pendientes de evidencia. Los expedientes previos conservan sus bytes de salida. [Control D74](tools/check_worksheet_investor_D74.py).

@@ -237,13 +237,16 @@ def render_case(case, row, *, sale_diagnostics=False):
     lines.append(("Capital remanente, equity retenido y retorno personal pendientes.", False))
     lines.append(("Criterios de inversion pendientes | Capacidad sintetica sin aprobacion bancaria.", False))
 
+    spacing = 16 if participation is not None else 18 if exit_summary is not None else 20
+    return render_page(case, lines, spacing, "MINI-UW | HOJA, REFINANCIACION Y VENTA",
+                       "PENDIENTE | Prueba sintetica | Equity agregado del proyecto")
+
+
+def render_page(case, lines, spacing, title, subtitle):
     commands = [b"0.06 0.17 0.25 rg 24 524 744 64 re f"]
-    header = [(566, 15, "MINI-UW | HOJA, REFINANCIACION Y VENTA"),
-              (546, 10, "PENDIENTE | Prueba sintetica | Equity agregado del proyecto"),
-              (532, 7, "Caso " + case)]
+    header = [(566, 15, title), (546, 10, subtitle), (532, 7, "Caso " + case)]
     for y, size, label in header:
         commands.append(f"1 1 1 rg BT /F2 {size} Tf 1 0 0 1 36 {y} Tm (".encode() + _pdf_string(label) + b") Tj ET")
-    spacing = 16 if participation is not None else 18 if exit_summary is not None else 20
     for i, (label, bold) in enumerate(lines):
         y = 498 - spacing * i
         require(y >= 60 and len(label) * 10 * 0.6 <= 736, "Refinance report exceeds one page")

@@ -20,6 +20,8 @@ from miniuw_foundation.worksheet_settled_output import assemble_worksheet_settle
 CASE_SCHEMA = "miniuw.synthetic-unified-worksheet-case.v1"
 DIAGNOSTIC_CASE_SCHEMA = "miniuw.synthetic-unified-worksheet-case.v2"
 PARTICIPATION_CASE_SCHEMA = "miniuw.synthetic-unified-worksheet-case.v3"
+INVESTOR_CASE_SCHEMA = "miniuw.synthetic-unified-worksheet-case.v4"
+PARTICIPATION_SCHEMAS = (PARTICIPATION_CASE_SCHEMA, INVESTOR_CASE_SCHEMA)
 PACKAGE_SCHEMA = "miniuw.synthetic-unified-worksheet-package.v1"
 COSTED_SALE = "templates/synthetic-worksheet-sale-costs-D63.json"
 COSTED_PROFILE = "with_refinance_worksheet_sale"
@@ -31,16 +33,23 @@ MAX_FILE_BYTES = 4 * 1024 * 1024
 def read_case(raw):
     case = _json(raw, 4096)
     fields = {"schema", "profile", "archive_case", "archive_sha256", "monthly_discount_rate"}
-    if isinstance(case, dict) and case.get("schema") == PARTICIPATION_CASE_SCHEMA:
+    schema = case.get("schema") if isinstance(case, dict) else None
+    if schema in PARTICIPATION_SCHEMAS:
         fields.add("allocation_terms_sha256")
+    if schema == INVESTOR_CASE_SCHEMA:
+        fields.add("illustrative_investor_id")
     _exact(case, fields)
-    require(case["schema"] in (CASE_SCHEMA, DIAGNOSTIC_CASE_SCHEMA, PARTICIPATION_CASE_SCHEMA) and isinstance(case["profile"], str)
+    require(case["schema"] in (CASE_SCHEMA, DIAGNOSTIC_CASE_SCHEMA, *PARTICIPATION_SCHEMAS) and isinstance(case["profile"], str)
             and case["profile"] in ARCHIVES and isinstance(case["archive_case"], str),
             "An explicit supported synthetic worksheet profile and case are required")
     require(case["schema"] == CASE_SCHEMA or case["profile"] == COSTED_PROFILE,
             "Versioned costed sale requires worksheet valuation and costs")
-    if case["schema"] == PARTICIPATION_CASE_SCHEMA:
+    if schema in PARTICIPATION_SCHEMAS:
         require(isinstance(case["allocation_terms_sha256"], str), "A synthetic participation terms hash is required")
+    if schema == INVESTOR_CASE_SCHEMA:
+        investor = case["illustrative_investor_id"]
+        require(isinstance(investor, str) and investor.startswith("SYNTHETIC-"),
+                "An explicit synthetic participant ID is required")
     archive_path = ARCHIVES[case["profile"]]
     archive_raw = local_file(ROOT, archive_path).read_bytes()
     require(case["archive_sha256"] == sha(archive_raw), "Case archive bytes differ")
@@ -78,7 +87,8 @@ def build_results(raw):
     elif profile == COSTED_PROFILE:
         from worksheet_costed_case_D65 import build_costed_case
         result, pdf = build_costed_case(key, rate, diagnostics=case["schema"] != CASE_SCHEMA,
-                                        terms_hash=case.get("allocation_terms_sha256"))
+                                        terms_hash=case.get("allocation_terms_sha256"),
+                                        investor_id=case.get("illustrative_investor_id"))
         project, risk, recovery = result["return_story"], result["risk"], result["cash_recovery"]
         worksheet, capacity, refinance = result["worksheet"], result["capacity"], result["refinance"]
         blockers = dict(worksheet=worksheet["blockers"], sale=result["sale_blockers"])
@@ -122,8 +132,10 @@ def build_results(raw):
                       deployment_enabled=False, real_decisions_enabled=False)
     if profile == COSTED_PROFILE:
         normalized["worksheet_exit"] = result["worksheet_exit"]
-    if case["schema"] == PARTICIPATION_CASE_SCHEMA:
+    if case["schema"] in PARTICIPATION_SCHEMAS:
         normalized["synthetic_cash_participation"] = result["synthetic_cash_participation"]
+    if case["schema"] == INVESTOR_CASE_SCHEMA:
+        normalized["illustrative_investor"] = result["illustrative_investor"]
     return normalized, pdf
 
 
