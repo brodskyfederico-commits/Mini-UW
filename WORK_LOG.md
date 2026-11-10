@@ -1278,3 +1278,7 @@ Los dos precios iniciales con la misma estructura de costos llegan al mismo mín
 El perfil sintético with_refinance_worksheet_sale se ejecuta y audita con el comando común. C67 y C68 generan el precio bruto proyectado, el costo de cierre, el retorno y el precio de recuperación en valor presente. La página reproduce los valores del expediente. Con un precio bruto de USD 400 y costos de USD 30, el mínimo al 2 % mensual sintético es USD 201,78. La tasa se suministra de forma explícita.
 
 Se prueban cinco expedientes, tres con cifras y dos PENDING por costos incompletos. Cada PDF tiene una página y la auditoría lo reproduce desde las fuentes. Se mantienen las rutas anteriores como perfiles distintos del mismo comando. Las decisiones reales, la validación de fuentes reales y el retorno personal siguen pendientes. [Control D65](tools/check_unified_costed_sale_D65.py), [entrada sintética](templates/synthetic-unified-worksheet-costed-sale-D65.json).
+
+## D66 — Evidencia del cierre en la matriz de cobertura
+
+La [matriz](docs/coverage-matrix.csv) y su versión JSON enlazan C67, C68, M7-05, M7-06 y Q15 con los controles D62–D65. Se conservan las 398 filas, los estados y las ubicaciones originales. Las pruebas acreditan el cálculo sintético y el bloqueo fiscal. La cobertura financiera de producto sigue abierta.

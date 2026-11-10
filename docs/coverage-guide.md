@@ -97,3 +97,7 @@ M1-01:M1-08 completan el índice de contratos candidatos; total vigente 398 fila
 ## Consolidación del armado I01
 
 Consolidación I01: el registro estructural enlaza los 84 contratos a sus filas/fuentes y el registro final conserva una disposición por cada fila. Esa comprobación de trazabilidad no cambia sus estados financieros abiertos.
+
+## Evidencia sintética de valoración y cierre
+
+D62–D65 añaden evidencia ejecutable en INPUT_C67, INPUT_C68, M7-05 y M7-06. Q15 registra la prueba de bloqueo por tratamiento fiscal pendiente. Las 398 filas conservan sus fuentes, ubicaciones y estados financieros. El piloto permite reproducir las cifras del expediente y del PDF en casos sintéticos. Quedan por confirmar las convenciones reales y su revisión independiente.
