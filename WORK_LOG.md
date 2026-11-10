@@ -1266,3 +1266,9 @@ El cap de salida de 10 % da un precio candidato de USD 400 y el de 8 % da USD 50
 Inputs!C68 alimenta un componente porcentual declarado del costo sobre el precio bruto. El inventario sintético T43 aporta USD 10 de costo fijo y mantiene explícitas las reglas de no solapamiento y aplicabilidad. Con 5 % en C68, el costo total es USD 30 para venta de USD 400 y USD 35 para venta de USD 500. El aumento de precio llega a los cobros del equity neto de USD 5 de costo adicional. La caja anterior al cierre permanece igual.
 
 Un cero en C68 conserva los USD 10 fijos. Una celda faltante o un impuesto sin aplicabilidad resuelta retienen el retorno. El alcance sintético trata C68 como un componente expreso, con fuentes y período fijados, y conserva PENDING la decisión. [Control D63](tools/check_worksheet_sale_costs_D63.py), [fuentes sintéticas](templates/synthetic-worksheet-sale-costs-D63.json).
+
+## D64 — Precio de recuperación con costo variable de venta
+
+El mínimo de recuperación usa la caja fechada y el costo fijo más el componente porcentual de C68. Se prueba con tasa cero y 2 % mensual sintético dentro del dominio de USD 0 a USD 1.000. El cálculo vuelve a producir los costos y el cierre a un dólar por debajo, en el precio exacto y a un dólar por encima. El valor presente del flujo en el precio exacto es cero.
+
+Los dos precios iniciales con la misma estructura de costos llegan al mismo mínimo. La tasa de costo de cero conserva el costo fijo y reduce el mínimo. Los dos casos de costos incompletos mantienen PENDING el precio de recuperación. [Control D64](tools/check_discounted_worksheet_sale_D64.py), [cálculo y recálculo del cierre](tools/discounted_costed_sale_D64.py).

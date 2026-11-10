@@ -6,6 +6,7 @@ import json
 import sys
 
 from check_operating_replay_D20 import ROOT, amount, local_file, require
+from discounted_costed_sale_D64 import recovery_prices
 from check_participant_refinance_variants_D31 import build_variant_evidence
 from check_worksheet_exit_D62 import FIXTURE as EXIT, inputs, valuation_from_sheet
 from check_worksheet_refinance_D45 import bind_worksheet_capacity, worksheet_parameters
@@ -21,11 +22,13 @@ from miniuw_foundation.scheduled_expense_case import sha
 FIXTURE = "templates/synthetic-worksheet-sale-costs-D63.json"
 
 
-def calculate(case, worksheet, fixture, base, noi_raw, noi, initial_spec):
+def calculate(case, worksheet, fixture, base, noi_raw, noi, initial_spec, rates=()):
     checked = worksheet_parameters(worksheet, fixture["scenario_context"], fixture["worksheet_as_of_UTC"],
                                    {"C67": "exit_cap", "C68": "sale_cost_fraction"})
     result = dict(state="PENDING", decision="PENDING", worksheet=checked, candidate_price=None,
                   total_cost=None, cash=None, blockers=checked["blockers"])
+    if rates:
+        result["recovery"] = None
     if checked["blockers"]:
         return result
 
@@ -73,10 +76,13 @@ def calculate(case, worksheet, fixture, base, noi_raw, noi, initial_spec):
     result.update(state="computed_synthetic_costed_sale", cash=dict(
         gross_distributions=investor["gross_distributions"], gross_contributions=investor["gross_contributions"],
         net_cash_profit=investor["net_cash_profit"], equity_multiple=investor["equity_multiple"]))
+    if rates:
+        guarded = revision.guarded_run
+        result["recovery"] = recovery_prices(investor, json.loads(guarded.compiled_raw), close, source, rates)
     return result
 
 
-def run():
+def run(rates=()):
     raw = local_file(ROOT, FIXTURE).read_bytes()
     fixture = json.loads(raw)
     exit_raw = local_file(ROOT, EXIT).read_bytes()
@@ -89,7 +95,7 @@ def run():
         workbook = fixture["workbooks"][case["workbook"]]
         sheet = b64decode(workbook["xlsx_base64"], validate=True)
         require(sha(sheet) == workbook["sha256"], "Sale cost workbook differs")
-        row = calculate(case, sheet, exit_fixture, evidence, noi_raw, noi, spec)
+        row = calculate(case, sheet, exit_fixture, evidence, noi_raw, noi, spec, rates)
         for field, expected in (("candidate_price", case["price"]), ("total_cost", case["cost"])):
             actual = None if row[field] is None else str(amount(row[field]))
             require(actual == expected, f"Sale cost case {case['id']} differs: {field}")

@@ -4,6 +4,7 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D64 calcula el precio de recuperación descontado cuando el costo de venta depende del precio bruto. [Control D64](tools/check_discounted_worksheet_sale_D64.py).
 - D63 conecta Inputs!C68 como componente porcentual explícito del costo sintético de venta y coteja el cierre neto. [Control D63](tools/check_worksheet_sale_costs_D63.py).
 - D62 conecta Inputs!C67 con la valoración de salida y el cierre sintético con refinanciación. Ejecuta `python tools/check_worksheet_exit_D62.py`. [Control D62](tools/check_worksheet_exit_D62.py).
 - D61 distingue un informe vigente de uno histórico al reproducirlo desde sus fuentes. Usa `python tools/miniuw_current_cotejo_D59.py audit REGISTRO EXPEDIENTE PLANILLA INFORME`. [Control D61](tools/check_historical_cotejo_D61.py).
