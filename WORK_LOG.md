@@ -1272,3 +1272,9 @@ Un cero en C68 conserva los USD 10 fijos. Una celda faltante o un impuesto sin a
 El mínimo de recuperación usa la caja fechada y el costo fijo más el componente porcentual de C68. Se prueba con tasa cero y 2 % mensual sintético dentro del dominio de USD 0 a USD 1.000. El cálculo vuelve a producir los costos y el cierre a un dólar por debajo, en el precio exacto y a un dólar por encima. El valor presente del flujo en el precio exacto es cero.
 
 Los dos precios iniciales con la misma estructura de costos llegan al mismo mínimo. La tasa de costo de cero conserva el costo fijo y reduce el mínimo. Los dos casos de costos incompletos mantienen PENDING el precio de recuperación. [Control D64](tools/check_discounted_worksheet_sale_D64.py), [cálculo y recálculo del cierre](tools/discounted_costed_sale_D64.py).
+
+## D65 — C67 y C68 en la corrida común y su PDF
+
+El perfil sintético with_refinance_worksheet_sale se ejecuta y audita con el comando común. C67 y C68 generan el precio bruto proyectado, el costo de cierre, el retorno y el precio de recuperación en valor presente. La página reproduce los valores del expediente. Con un precio bruto de USD 400 y costos de USD 30, el mínimo al 2 % mensual sintético es USD 201,78. La tasa se suministra de forma explícita.
+
+Se prueban cinco expedientes, tres con cifras y dos PENDING por costos incompletos. Cada PDF tiene una página y la auditoría lo reproduce desde las fuentes. Se mantienen las rutas anteriores como perfiles distintos del mismo comando. Las decisiones reales, la validación de fuentes reales y el retorno personal siguen pendientes. [Control D65](tools/check_unified_costed_sale_D65.py), [entrada sintética](templates/synthetic-unified-worksheet-costed-sale-D65.json).

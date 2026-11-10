@@ -153,5 +153,7 @@ jobs:
         run: python tools/check_worksheet_sale_costs_D63.py
       - name: Verify discounted worksheet recovery with fixed and percentage sale costs
         run: python tools/check_discounted_worksheet_sale_D64.py
+      - name: Verify worksheet exit and cost in the unified audited one-page case
+        run: python tools/check_unified_costed_sale_D65.py
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v

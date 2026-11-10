@@ -83,10 +83,10 @@ def bind_worksheet_capacity(evidence, check):
     return replace(evidence, capacity_spec_raw=raw, capacity_run=capacity, binding=binding, guarded_run=run)
 
 
-def run_case(evidence, worksheet, context, as_of, monthly_rate=None):
+def run_case(evidence, worksheet, context, as_of, monthly_rate=None, additional_cells=None):
     source = json.loads(evidence.capacity_spec_raw)
     require(source["context"] == context, "Worksheet and refinance case contexts differ")
-    check = worksheet_parameters(worksheet, context, as_of)
+    check = worksheet_parameters(worksheet, context, as_of, additional_cells)
     result = dict(state="PENDING", decision="PENDING", context=context, evaluated_as_of_UTC=as_of,
                   worksheet=check, base_evidence_sha256=evidence_fingerprint(evidence),
                   capacity=None, refinance=None, return_story=None, risk=None,
@@ -166,6 +166,11 @@ def render_case(case, row):
     story = row["return_story"]
     cap = row["capacity"]
     lines.append(("Hoja sintetica | C66 tasa cap / C71 LTV maximo / C72 DSCR minimo", True))
+    exit_summary = row.get("worksheet_exit")
+    if exit_summary is not None:
+        lines.append(("Salida desde la hoja | C67 cap de salida / C68 costo variable de venta", True))
+        lines.append((f"Precio bruto proyectado USD {money(exit_summary['candidate_price'])} | "
+                      f"Costo total USD {money(exit_summary['total_cost'])}", False))
     if cap is None:
         lines.append(("Hoja pendiente. Capacidad y retorno pendientes.", True))
     else:
@@ -175,6 +180,8 @@ def render_case(case, row):
     if story is None:
         if row["worksheet"]["blockers"]:
             lines.append(("Falta cotejar un dato requerido o la identidad de la hoja.", False))
+        elif exit_summary is not None:
+            lines.append(("El cierre de venta permanece pendiente.", False))
         elif cap["blockers"]:
             lines.append(("Capacidad pendiente para el prestamo seleccionado.", False))
         lines.append(("Sin cifras de aportes, cobros ni retorno en esta corrida.", True))
@@ -217,7 +224,7 @@ def render_case(case, row):
     for y, size, label in header:
         commands.append(f"1 1 1 rg BT /F2 {size} Tf 1 0 0 1 36 {y} Tm (".encode() + _pdf_string(label) + b") Tj ET")
     for i, (label, bold) in enumerate(lines):
-        y = 498 - 20 * i
+        y = 498 - (18 if exit_summary is not None else 20) * i
         require(y >= 60 and len(label) * 10 * 0.6 <= 736, "Refinance report exceeds one page")
         commands.append(f'0.06 0.17 0.25 rg BT /{"F2" if bold else "F1"} 10 Tf 1 0 0 1 28 {y} Tm ('.encode()
                         + _pdf_string(label) + b") Tj ET")

@@ -9,22 +9,23 @@ from check_operating_replay_D20 import ROOT, amount, local_file, require
 from discounted_costed_sale_D64 import recovery_prices
 from check_participant_refinance_variants_D31 import build_variant_evidence
 from check_worksheet_exit_D62 import FIXTURE as EXIT, inputs, valuation_from_sheet
-from check_worksheet_refinance_D45 import bind_worksheet_capacity, worksheet_parameters
+from check_worksheet_refinance_D45 import bind_worksheet_capacity, run_case, worksheet_parameters
 from demo_costed_exit_sale import cost_source
 from miniuw_linked_cotejo_D54 import publish
 from miniuw_worksheet_v1 import encoded
 from miniuw_foundation.costed_exit_sale import assemble_costed_exit_sale, verify_costed_exit_sale
-from miniuw_foundation.project_sale_revision import evidence_fingerprint
+from miniuw_foundation.project_sale_revision import evidence_fingerprint, recover_sale_revision
 from miniuw_foundation.sale_costs import produce_sale_costs
 from miniuw_foundation.scheduled_expense_case import sha
 
 
 FIXTURE = "templates/synthetic-worksheet-sale-costs-D63.json"
+SALE_CELLS = {"C67": "exit_cap", "C68": "sale_cost_fraction"}
 
 
-def calculate(case, worksheet, fixture, base, noi_raw, noi, initial_spec, rates=()):
+def calculate(case, worksheet, fixture, base, noi_raw, noi, initial_spec, rates=(), with_report=False):
     checked = worksheet_parameters(worksheet, fixture["scenario_context"], fixture["worksheet_as_of_UTC"],
-                                   {"C67": "exit_cap", "C68": "sale_cost_fraction"})
+                                   SALE_CELLS)
     result = dict(state="PENDING", decision="PENDING", worksheet=checked, candidate_price=None,
                   total_cost=None, cash=None, blockers=checked["blockers"])
     if rates:
@@ -79,10 +80,17 @@ def calculate(case, worksheet, fixture, base, noi_raw, noi, initial_spec, rates=
     if rates:
         guarded = revision.guarded_run
         result["recovery"] = recovery_prices(investor, json.loads(guarded.compiled_raw), close, source, rates)
+    if with_report:
+        recovered = recover_sale_revision(evidence, run.exit_sale_run.payload["sale_revision_spec_json"].encode(), revision)
+        require(recovered is not None, "Could not recover the costed sale evidence")
+        report = run_case(recovered, worksheet, fixture["scenario_context"], fixture["worksheet_as_of_UTC"],
+                          additional_cells=SALE_CELLS)
+        require(report["return_story"] == investor, "The report ledger differs from the costed sale ledger")
+        result["report"] = report
     return result
 
 
-def run(rates=()):
+def run(rates=(), selected=None, with_report=False):
     raw = local_file(ROOT, FIXTURE).read_bytes()
     fixture = json.loads(raw)
     exit_raw = local_file(ROOT, EXIT).read_bytes()
@@ -92,10 +100,12 @@ def run(rates=()):
     evidence = build_variant_evidence(base, variants["SYNTHETIC-D31-lower"])
     cases = {}
     for case in fixture["cases"]:
+        if selected is not None and case["id"] != selected:
+            continue
         workbook = fixture["workbooks"][case["workbook"]]
         sheet = b64decode(workbook["xlsx_base64"], validate=True)
         require(sha(sheet) == workbook["sha256"], "Sale cost workbook differs")
-        row = calculate(case, sheet, exit_fixture, evidence, noi_raw, noi, spec, rates)
+        row = calculate(case, sheet, exit_fixture, evidence, noi_raw, noi, spec, rates, with_report)
         for field, expected in (("candidate_price", case["price"]), ("total_cost", case["cost"])):
             actual = None if row[field] is None else str(amount(row[field]))
             require(actual == expected, f"Sale cost case {case['id']} differs: {field}")
@@ -103,6 +113,9 @@ def run(rates=()):
                 and (not row["blockers"] if case["blocker"] is None else case["blocker"] in row["blockers"]),
                 f"Sale cost case differs: {case['id']}")
         cases[case["id"]] = row
+    if selected is not None:
+        require(set(cases) == {selected}, "Unknown worksheet costed sale case")
+        return cases[selected]
     require(len(cases) == 5 and sum(row["cash"] is not None for row in cases.values()) == 3,
             "Unexpected costed sale inventory")
     require(amount(cases["price_500"]["cash"]["gross_distributions"])

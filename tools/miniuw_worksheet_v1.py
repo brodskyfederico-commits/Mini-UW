@@ -19,7 +19,9 @@ from miniuw_foundation.worksheet_settled_output import assemble_worksheet_settle
 
 CASE_SCHEMA = "miniuw.synthetic-unified-worksheet-case.v1"
 PACKAGE_SCHEMA = "miniuw.synthetic-unified-worksheet-package.v1"
-ARCHIVES = {"without_refinance": SALE, "with_refinance": REFINANCE}
+COSTED_SALE = "templates/synthetic-worksheet-sale-costs-D63.json"
+COSTED_PROFILE = "with_refinance_worksheet_sale"
+ARCHIVES = {"without_refinance": SALE, "with_refinance": REFINANCE, COSTED_PROFILE: COSTED_SALE}
 FILES = frozenset({"case.json", "results.json", "MiniUW_Resumen.pdf", "package.json"})
 MAX_FILE_BYTES = 4 * 1024 * 1024
 
@@ -64,6 +66,16 @@ def build_results(raw):
         provenance = dict(workbook_sha256=worksheet["source_hashes"]["workbook_sha256"],
                           worksheet_source_sha256=sha(source.encode()), worksheet_run_sha256=run.sha256,
                           recovery_run_sha256=page["recovery_sha256"])
+    elif profile == COSTED_PROFILE:
+        from worksheet_costed_case_D65 import build_costed_case
+        result, pdf = build_costed_case(key, rate)
+        project, risk, recovery = result["return_story"], result["risk"], result["cash_recovery"]
+        worksheet, capacity, refinance = result["worksheet"], result["capacity"], result["refinance"]
+        blockers = dict(worksheet=worksheet["blockers"], sale=result["sale_blockers"])
+        context, as_of = result["context"], result["evaluated_as_of_UTC"]
+        provenance = dict(workbook_sha256=worksheet["workbook_sha256"],
+                          costed_sale_sha256=result["costed_sale_sha256"],
+                          guarded_return_run_sha256=None if capacity is None else capacity["return_run_sha256"])
     else:
         require(key in _json(archive_raw, MAX_FILE_BYTES)["cases"], "Case does not belong to the refinance profile")
         _, result, pdf = next(replay(key, rate))
@@ -98,6 +110,8 @@ def build_results(raw):
                                                    case_sha256=sha(raw)),
                       pdf_sha256=sha(pdf), page_count=1, personal_investor_return=None,
                       deployment_enabled=False, real_decisions_enabled=False)
+    if profile == COSTED_PROFILE:
+        normalized["worksheet_exit"] = result["worksheet_exit"]
     return normalized, pdf
 
 

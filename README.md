@@ -4,6 +4,7 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D65 lleva C67 y C68 al comando común y al PDF de una página. Ejecuta `python tools/miniuw_worksheet_v1.py run templates/synthetic-unified-worksheet-costed-sale-D65.json --output /tmp/miniuw-venta-hoja`. [Control D65](tools/check_unified_costed_sale_D65.py).
 - D64 calcula el precio de recuperación descontado cuando el costo de venta depende del precio bruto. [Control D64](tools/check_discounted_worksheet_sale_D64.py).
 - D63 conecta Inputs!C68 como componente porcentual explícito del costo sintético de venta y coteja el cierre neto. [Control D63](tools/check_worksheet_sale_costs_D63.py).
 - D62 conecta Inputs!C67 con la valoración de salida y el cierre sintético con refinanciación. Ejecuta `python tools/check_worksheet_exit_D62.py`. [Control D62](tools/check_worksheet_exit_D62.py).

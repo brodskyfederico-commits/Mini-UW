@@ -1,10 +1,10 @@
 {
-  "scope": "I01 preserved design, D02–D64 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D65 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 10007,
-      "sha256": "2dd00074f669e0d8fa9d4bc64fcbfaf11a8c21dda455c23bcbe2dd312f3c88df"
+      "bytes": 10148,
+      "sha256": "ee3121ceba85364f51d79c3ebbbd97c347c4c5cfa0a7d36a9f19299f05756954"
     },
     {
       "path": ".gitignore",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 65856,
-      "sha256": "bb63fceba43555f49d54737d26ce2e40c00b84a51b8d78700c95e0cbacdfa78f"
+      "bytes": 66118,
+      "sha256": "6d61459c94d16b1e491392725aa6e0927a438fac67d7d076f8807d3d2cbd3759"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 289386,
-      "sha256": "2b537b3fbf74f1d7e48a95cffe89ed814e3c2e73ed39447351d04115c02ca9b2"
+      "bytes": 290324,
+      "sha256": "476f43399cfb3d556a8858e4fe092851262a9c517bfb95c837910670bc15066f"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -5262,6 +5262,11 @@
       "sha256": "d12b89c18c4c791a1767583fad9e83d32041f3ad43f87ee842d263050cf29562"
     },
     {
+      "path": "templates/synthetic-unified-worksheet-costed-sale-D65.json",
+      "bytes": 306,
+      "sha256": "935b04c3ba075ceef3aef423a3b201f068f11ae1dcc995a5725eccc26d518576"
+    },
+    {
       "path": "templates/synthetic-unified-worksheet-refinance-D47.json",
       "bytes": 290,
       "sha256": "afa136494f2343edf8df8e947cfaf03c0d5140410ca57204ed357f72b50666a9"
@@ -6187,6 +6192,11 @@
       "sha256": "ef657ee6d978353dbbdaadd306ec4134835b911665e05a6935eae4e956b85775"
     },
     {
+      "path": "tools/check_unified_costed_sale_D65.py",
+      "bytes": 2909,
+      "sha256": "dd4546e3d1714b185d0624f8b40e62bea47cdda2524b3330b8e3bd1f3ad0eca0"
+    },
+    {
       "path": "tools/check_unified_worksheet_D48.py",
       "bytes": 11666,
       "sha256": "67260d28fd3287192639316b51a81b470858050491d8c877416d4b4d81fccfc5"
@@ -6208,8 +6218,8 @@
     },
     {
       "path": "tools/check_worksheet_refinance_D45.py",
-      "bytes": 17307,
-      "sha256": "d6145f7c6b3cf597e2e2782dfd600b2af95d13efe6a1914e341007e696b16fd6"
+      "bytes": 17866,
+      "sha256": "04a59bbd2bafa825893253f137e0e4c890b98cb46a05010374f1980bd44ea0c5"
     },
     {
       "path": "tools/check_worksheet_refinance_recovery_D46.py",
@@ -6218,8 +6228,8 @@
     },
     {
       "path": "tools/check_worksheet_sale_costs_D63.py",
-      "bytes": 7667,
-      "sha256": "77a0384f3fdc9b152ee84c2e8d7af0939556b510dcb4356e2d4e35446131bc7b"
+      "bytes": 8548,
+      "sha256": "10b8c0ced15093c5c9cc89191875d7f8e5271bebdf12ad2c1d05747aa542802a"
     },
     {
       "path": "tools/check_worksheet_sale_recovery_D43.py",
@@ -6558,8 +6568,8 @@
     },
     {
       "path": "tools/miniuw_worksheet_v1.py",
-      "bytes": 9327,
-      "sha256": "6728ceb5ecac94216f9b04b99eebac6b8a59d9c098533b5145b8e39ecf9963c4"
+      "bytes": 10341,
+      "sha256": "5d829cb9ac68859f8ebf02d3c2be5c0821a67d6ca3bb668ebf4aee5baf5c8347"
     },
     {
       "path": "tools/participant_cash_risk_miniuw_v1.py",
@@ -6610,6 +6620,11 @@
       "path": "tools/worksheet_case_miniuw_v1.py",
       "bytes": 1245,
       "sha256": "92f47b8bded9fd15d9e7b3940bccc1fb117d8cb5966ea4353c1171fbf3f907ae"
+    },
+    {
+      "path": "tools/worksheet_costed_case_D65.py",
+      "bytes": 1525,
+      "sha256": "7f619928147e56dfbe939b89d82def3cccf9c478a9c90a44cbd8d94e9507688e"
     },
     {
       "path": "tools/worksheet_settled_miniuw_v1.py",
