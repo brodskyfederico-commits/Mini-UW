@@ -1362,3 +1362,9 @@ La página abre con la pregunta del inversor y reúne los ocho bloqueos original
 Se reconstruyen los 40 informes D77. Los 32 con flujos representan 33 escenarios al contar Base y Downside por separado. En los 33, el calendario contiene exactamente USD 10 de aporte inicial y separa los aportes posteriores. Se cotejan los importes visibles del PDF y las fechas. Los ocho originales bloqueados mantienen PENDING. En cada una de sus ocho variantes separadas también se verifica la base inicial de USD 10 desde el libro fuente.
 
 El control rechaza escalar a USD 10 de aportes totales cuando hay aportes extra. Si falta la contribución inicial, el cálculo queda sin base. El alcance sigue sintético. [Control D80](tools/check_initial_equity_basis_D80.py).
+
+## D81 — Ocho revisiones sintéticas calculadas
+
+Se emitió un PDF de una página por cada informe bloqueado. Cada revisión identifica el faltante del original y la corrección verificada con fuentes sintéticas. Se concilian los USD 10 iniciales, los aportes extra, los cobros fechados, el resultado neto y el saldo sin recuperar. El índice vincula el hash del PDF histórico con los hashes de la variante y de la revisión.
+
+Los ocho originales conservan PENDING y los ocho resultados nuevos son calculados en el alcance sintético. La decisión operativa y el retorno personal real siguen pendientes. Se verifica el paquete completo byte por byte. [Paquete D81](docs/review/MiniUW_D81_Ocho_Revisiones_Sinteticas.zip).

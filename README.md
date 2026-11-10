@@ -4,6 +4,8 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D81 entrega [ocho revisiones sintéticas calculadas](docs/review/MiniUW_D81_Ocho_Revisiones_Sinteticas.zip). Cada PDF explica el bloqueo original y la corrección probada, y muestra aportes, cobros y saldo sin recuperar por USD 10 iniciales. Audita el paquete con `python tools/revise_pending_investor_reports_D81.py`.
+
 - D80 verifica que los aportes iniciales fechados sumen exactamente USD 10 en los informes calculables y en las variantes de los ocho pendientes. Ejecuta `python tools/check_initial_equity_basis_D80.py`. Los aportes posteriores conservan su fecha y no forman parte del denominador.
 
 - D79 reúne los ocho informes PENDING y sus variantes por USD 10 iniciales en [una página](docs/review/MiniUW_USD10_Ocho_Casos_D79.pdf). El comando `python tools/onepage_pending_cases_D79.py` verifica el PDF archivado contra el recálculo D78.

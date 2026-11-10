@@ -1,10 +1,10 @@
 {
-  "scope": "I01 preserved design, D02–D80 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D81 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 11781,
-      "sha256": "1aaa63e1fa56b6f7f4cac8698b7d216c2fc1f28ba7d142c330c1c892f83c0d32"
+      "bytes": 11915,
+      "sha256": "500b097becec0e9bc69dd8124eb9b9ebcea2d9cb4887753512deb04e1f885d41"
     },
     {
       "path": ".gitignore",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 69666,
-      "sha256": "72569478d8d57b5fce99c40d243b35c42e00cef88e6dee0277fcb4fcf4866bd8"
+      "bytes": 69988,
+      "sha256": "85394f38a7e86ee47ea886ddd4bc678c1dd0af4219b802222a13f64e0508ed5a"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 301586,
-      "sha256": "4dbdc37764b945015033dd5a2ef2178075467e3aec7baea12e2a13c3c916c8a6"
+      "bytes": 302312,
+      "sha256": "41e104cea3a3b2b98452ae4d616dde6f22d34f2f7fa08900ff302f49ae78f353"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -915,6 +915,11 @@
       "path": "docs/review/Intereses_Obra_y_Caja_T68_T71.md",
       "bytes": 2776,
       "sha256": "914abdc75e94dfd058351e062e4e7ed00dfc3a024b43fd09446a546f92f46923"
+    },
+    {
+      "path": "docs/review/MiniUW_D81_Ocho_Revisiones_Sinteticas.zip",
+      "bytes": 12211,
+      "sha256": "88cdd78c3bf15b30f2486af6ba2fc3137579a75cf0f917aade1bcb0d3b7d0494"
     },
     {
       "path": "docs/review/MiniUW_Dots_y_Bots_1_pagina_ROLES01.pdf",
@@ -6710,6 +6715,11 @@
       "path": "tools/rental_lifecycle_demo_support.py",
       "bytes": 7048,
       "sha256": "bd5cde6a714adffa99e2151c55d4d957d2011d3a493f0af51a8ee1f1b4417ee9"
+    },
+    {
+      "path": "tools/revise_pending_investor_reports_D81.py",
+      "bytes": 6601,
+      "sha256": "19c9e02c32cef745511f9e4552d330b9a89727b276543d4b01eaca638b9d262e"
     },
     {
       "path": "tools/scheduled_miniuw_v1.py",
