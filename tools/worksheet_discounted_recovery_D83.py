@@ -18,6 +18,22 @@ def cents_up(value):
     return rational(Fraction(ceil(value * 100), 100))
 
 
+def required_sale_cash(cash, dates, rate):
+    periods = {when: n for n, when in enumerate(dates)}
+    discounts = {when: (1 + rate) ** -n for when, n in periods.items()}
+    require({e["date"] for e in cash["events"]} <= periods.keys()
+            and all(e["date"] == dates[0] for e in cash["events"] if e["category"] == "initial_capital")
+            and all(e["date"] == dates[-1] for e in cash["events"] if e["category"] == "net_sale_distribution"),
+            "The investor events differ from the verified discount dates")
+    pre_sale_pv = sum((1 if e["kind"] == "distribution" else -1)
+                      * amount(e["amount"]) * discounts[e["date"]]
+                      for e in cash["events"] if e["category"] != "net_sale_distribution")
+    sale_discount = discounts[dates[-1]]
+    needed_pv = max(Fraction(), -pre_sale_pv)
+    needed_at_sale = needed_pv / sale_discount
+    return needed_pv, needed_at_sale, sale_discount, pre_sale_pv
+
+
 def build_discounted_recovery(case, case_sha256):
     raw = local_file(ROOT, BINDINGS).read_bytes()
     require(case.get("discounted_recovery_source_sha256") == sha(raw), "Discounted recovery source differs")
@@ -47,18 +63,7 @@ def build_discounted_recovery(case, case_sha256):
                 "Expected capacity-cleared PV probes and exactly USD 10 of initial capital")
         center = probes["at"]
         dates = [flow["date"] for flow in validate_grid(center["parent"])]
-        periods = {when: n for n, when in enumerate(dates)}
-        discounts = {when: (1 + rate) ** -n for when, n in periods.items()}
-        require({e["date"] for e in cash["events"]} <= periods.keys()
-                and all(e["date"] == dates[0] for e in cash["events"] if e["category"] == "initial_capital")
-                and all(e["date"] == dates[-1] for e in cash["events"] if e["category"] == "net_sale_distribution"),
-                "The investor events differ from the verified discount dates")
-        pre_sale_pv = sum((1 if e["kind"] == "distribution" else -1)
-                          * amount(e["amount"]) * discounts[e["date"]]
-                          for e in cash["events"] if e["category"] != "net_sale_distribution")
-        sale_discount = discounts[dates[-1]]
-        needed_pv = max(Fraction(), -pre_sale_pv)
-        needed_at_sale = needed_pv / sale_discount
+        needed_pv, needed_at_sale, sale_discount, pre_sale_pv = required_sale_cash(cash, dates, rate)
         original = result["nominal_sale_recovery"][name]
         current_sale = amount(original["current_net_sale_receipt_per_usd_10"])
         target = Fraction(row["cash_recovery_sale_price"])

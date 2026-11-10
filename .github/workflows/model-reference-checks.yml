@@ -185,5 +185,7 @@ jobs:
         run: python tools/check_scenario_recovery_D82.py
       - name: Verify dated discounted recovery per USD 10 in Base and Downside
         run: python tools/check_discounted_scenario_recovery_D83.py
+      - name: Verify the three-rate USD 10 sale sensitivity
+        run: python tools/check_sale_rate_grid_D84.py
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v

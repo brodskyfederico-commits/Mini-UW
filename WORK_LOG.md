@@ -1380,3 +1380,9 @@ D33 reproduce un precio por debajo, en el punto exacto y por encima para cada es
 Base y Downside conservan los flujos fechados de D82. Se usa la tasa sintética archivada D34 del 1 % mensual al 1 de enero de 2027. Para que el valor presente neto sea cero, la venta del 1 de julio debe dejar por USD 10 iniciales USD 6,51 netos en Base y USD 9,39 en Downside, incluidos los USD 0,80 extra de Downside. El valor al corte del cobro exacto necesario es USD 6,13 y USD 8,84. Los precios brutos mínimos del activo son USD 148,41 y USD 436,90 con los demás flujos y costos fijos.
 
 Los controles reproducen ambos cierres a un dólar por debajo, en el punto exacto y a un dólar por encima, con valor presente neto negativo, cero y positivo. Se rechaza una tasa distinta de la vinculada. Las decisiones reales siguen PENDING. [Control D83](tools/check_discounted_scenario_recovery_D83.py).
+
+## D84 — Sensibilidad del cobro de venta por USD 10 iniciales
+
+Los flujos y fechas de Base y Downside se mantienen al variar únicamente el descuento mensual. El cobro mínimo neto al vender es USD 6,00 / 8,80 al 0 %, USD 6,51 / 9,39 al 1 % y USD 7,04 / 10,01 al 2 %, con los USD 0,80 de aporte extra de Downside. Se calcula el mínimo al centavo hacia arriba. El corte es el 1 de enero de 2027 y la venta el 1 de julio.
+
+Se reproducen seis cierres con valor presente neto exacto de cero por participante. La verificación independiente coteja los flujos y rechaza una grilla de tasas incompleta. Se conserva el PDF de una página y la decisión PENDING. [Control D84](tools/check_sale_rate_grid_D84.py).

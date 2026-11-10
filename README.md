@@ -4,6 +4,8 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D84 muestra en una página el cobro neto mínimo de venta por USD 10 iniciales a tasas mensuales sintéticas de 0 %, 1 % y 2 %. Ejecuta `python tools/miniuw_worksheet_v1.py run templates/synthetic-investor-scenarios-D84.json --output /tmp/miniuw-sensibilidad-10`.
+
 - D83 muestra cuánto tendría que dejar la venta para recuperar en valor presente USD 10 iniciales y los aportes extra. Ejecuta `python tools/miniuw_worksheet_v1.py run templates/synthetic-investor-scenarios-D83.json --output /tmp/miniuw-recuperacion-vp-10`. La tasa sintética del 1 % mensual figura en el PDF.
 
 - D82 agrega el cobro neto de venta necesario por USD 10 iniciales y el precio bruto mínimo del activo en Base y Downside. Ejecuta `python tools/miniuw_worksheet_v1.py run templates/synthetic-investor-scenarios-D82.json --output /tmp/miniuw-recuperacion-10`.
