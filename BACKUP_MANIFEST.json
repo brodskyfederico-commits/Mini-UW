@@ -1,10 +1,10 @@
 {
-  "scope": "I01 preserved design, D02–D75 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D76 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 11092,
-      "sha256": "d35a2d794f70d64d1b732aa48c2dc55e0252518766536e2af9aff6486f3ce12b"
+      "bytes": 11232,
+      "sha256": "20709dd3a91a333117b2279707c2efdf061321a922a93cfad1bae78859a0189b"
     },
     {
       "path": ".gitignore",
@@ -13,18 +13,18 @@
     },
     {
       "path": "AGENTS.md",
-      "bytes": 4705,
-      "sha256": "056d065e3046277d3551b71b05fe66ceded75ece5a95b8a7c15286293fe9b04d"
+      "bytes": 4800,
+      "sha256": "3d1304a99627f869d775beb87b29852dbf9cf2ef8ecc30590b0192fa6f41802e"
     },
     {
       "path": "README.md",
-      "bytes": 68158,
-      "sha256": "b39661314c4f88464f21396bdfc363dd6da797c5ed242f683b4421585c0a6316"
+      "bytes": 68603,
+      "sha256": "2dcf128d1e45f758be79ebccf87e2859b1468f93c797a2d0b3fb8f043233e5a9"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 297341,
-      "sha256": "407eb7cf83ebe782e7778d7c0b4f18d3599616f725dcbd061d978529ec0d87c6"
+      "bytes": 298369,
+      "sha256": "29b53ea00b7b40f477754ac3ee609d7342631e449f01e0482d9d5edd976f98e2"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -4942,6 +4942,11 @@
       "sha256": "602df8e8421094af668ff7621feca267f8e93bd9776d629ab40bfa6f759cf55d"
     },
     {
+      "path": "templates/synthetic-investor-report-inventory-D76.json",
+      "bytes": 22686,
+      "sha256": "936f37880b15d772b7359d79aa829e69886911926514424495b18ffc0f44019b"
+    },
+    {
       "path": "templates/synthetic-investor-returns.json",
       "bytes": 3827,
       "sha256": "46f6b1f4deff4410273a9943ac5b18bdb809351be35e2b53054e5ba009c762ed"
@@ -6665,6 +6670,11 @@
       "path": "tools/pilot_workbook_D49.py",
       "bytes": 14814,
       "sha256": "f64321df776f640231322e01d84c291bc47a1d514bd89a09b4a5e02218c8a6c0"
+    },
+    {
+      "path": "tools/reissue_investor_reports_D76.py",
+      "bytes": 9738,
+      "sha256": "7ab7c352c3bb852ec6a712f5e44e312ea196f30536a17718475fef802bd465d0"
     },
     {
       "path": "tools/renewal_miniuw_v1.py",

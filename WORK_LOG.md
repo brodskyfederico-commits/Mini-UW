@@ -1334,3 +1334,9 @@ La salida queda PENDING si falta el costo variable, si el impuesto de venta est�
 El informe de una página abre con los cobros y la ganancia neta. Usa las dos revisiones de caja archivadas en D32 y conserva los hashes de las fuentes y del reparto hipotético. Base cobra USD 13,02 y gana USD 3,02. Downside exige USD 0,80 adicionales al refinanciar, cobra USD 9,02 y deja USD 1,78 sin recuperar al vender. El Base de esta comparación usa USD 20 de costos de venta del archivo D32. El caso D74 usa USD 30, por lo que su cobro es USD 0,10 menor por cada USD 10 iniciales.
 
 El calendario distingue aportes, operación, refinanciación y venta. Se reproducen el PDF y el expediente desde las fuentes y se rechazan un resultado alterado y términos sin vínculo al archivo. Todos los informes nuevos o revisados conservan la pregunta de los USD 10 al inicio. La decisión y el retorno real siguen pendientes. [Control D75](tools/check_investor_scenarios_D75.py).
+
+## D76 — Reemisión histórica por USD 10 de aporte inicial
+
+La pregunta de los USD 10 se aplicó antes de manera desigual. Algunos informes usaban montos agregados o presentaban una normalización secundaria sobre una base declarada que podía incluir aportes posteriores. La reemisión normaliza los flujos fechados contra el aporte inicial y verifica el cuadre con los aportes y cobros originales. Los aportes posteriores conservan su fecha y se muestran separados.
+
+El inventario incluye 20 ejemplos financieros versionados y 20 entregas anteriores, incluidas las páginas D44–D46. Los ejemplos versionados se cotejan con los hashes de origen. Las entregas se reconstruyen desde la entrada archivada y sus hashes. Las ocho fuentes sin base o caja disponible conservan PENDING. D74 y D75 ya usan el formato y se reproducen sin cambios. Los documentos de arquitectura y criterios técnicos conservan sus unidades y no se usan como si fueran flujos de caja. [Comando de reemisión](tools/reissue_investor_reports_D76.py).

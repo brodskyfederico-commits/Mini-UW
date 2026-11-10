@@ -1,0 +1,288 @@
+{
+  "schema": "miniuw.synthetic-investor-report-inventory.v1",
+  "archives": [
+    {
+      "id": "miniuw-v1-IRR-checked-example",
+      "source": "docs/review/miniuw-v1-IRR-checked-example/results.json",
+      "source_sha256": "9d879d9f87500600dbcb76d2052bc01294e280d3476706ab542193f672c6d7c4",
+      "original_pdf": "docs/review/miniuw-v1-IRR-checked-example/MiniUW_v1_Resumen.pdf",
+      "original_pdf_sha256": "d9e82b4a6999e01679956cadb7296c443cd72b630fd12cfbc53a0fe2e25f20a4"
+    },
+    {
+      "id": "miniuw-v1-IRR-interval-example",
+      "source": "docs/review/miniuw-v1-IRR-interval-example/results.json",
+      "source_sha256": "9f38f16bc37429fbf63863c60961783b06352741cf3be26bb80f2543b156e0dd",
+      "original_pdf": "docs/review/miniuw-v1-IRR-interval-example/MiniUW_v1_Resumen.pdf",
+      "original_pdf_sha256": "45985d3f390e2be44e1fba4a960c8d9434f45f78a716dc2367406a4a923dbdfd"
+    },
+    {
+      "id": "miniuw-v1-IRR-revision-review-example",
+      "source": "docs/review/miniuw-v1-IRR-revision-review-example/revision-review.json",
+      "source_sha256": "4a6f61de493e406fd7b5f9d79328d1d5c8d575809dbb153fb288e710e5fd4b06",
+      "original_pdf": "docs/review/miniuw-v1-IRR-revision-review-example/candidate-MiniUW_v1_Resumen.pdf",
+      "original_pdf_sha256": "791767f821bb022b927541e24281284628c7713b83bfc9e8190f0b63f7761c45"
+    },
+    {
+      "id": "miniuw-v1-capital-checked-example",
+      "source": "docs/review/miniuw-v1-capital-checked-example/results.json",
+      "source_sha256": "280d485a3f57f3acce14b9f8842af85e1a1769d772a9eef2b49dfa256b4b176b",
+      "original_pdf": "docs/review/miniuw-v1-capital-checked-example/MiniUW_v1_Resumen.pdf",
+      "original_pdf_sha256": "7df1113f972b16b1f7bb552af79790a844cd53fda105683afee0b5634ff09707"
+    },
+    {
+      "id": "miniuw-v1-current-settled-blocked-example",
+      "source": "docs/review/miniuw-v1-current-settled-blocked-example/current-results.json",
+      "source_sha256": "6286445a895c20ed756057a04ca7b1b6d66685b19428cdc3572700e57e9aeac1",
+      "original_pdf": "docs/review/miniuw-v1-current-settled-blocked-example/MiniUW_Resumen.pdf",
+      "original_pdf_sha256": "708b3f0facfdf5e187b498689ed2f39f88998f499952d2fb870fa2983aa7cb8d"
+    },
+    {
+      "id": "miniuw-v1-current-settled-current-example",
+      "source": "docs/review/miniuw-v1-current-settled-current-example/current-results.json",
+      "source_sha256": "8a43f25d8503cde5978ea09e7e355d2c10d717bb0b586cd51435345e647abf23",
+      "original_pdf": "docs/review/miniuw-v1-current-settled-current-example/MiniUW_Resumen.pdf",
+      "original_pdf_sha256": "d459b7a1d6561d591cdc195db03e38fa010b9b3228c57f2cd72b00b479dd6569"
+    },
+    {
+      "id": "miniuw-v1-current-settled-expired-example",
+      "source": "docs/review/miniuw-v1-current-settled-expired-example/current-results.json",
+      "source_sha256": "979bd65a822ce4fbba8907c7cdfcd88304734eea84e9c58ce07fc7322af3a1d4",
+      "original_pdf": "docs/review/miniuw-v1-current-settled-expired-example/MiniUW_Resumen.pdf",
+      "original_pdf_sha256": "e4d95d69d412693590e64a51763999edb6d0a530603c6a181d2b695244a3929a"
+    },
+    {
+      "id": "miniuw-v1-example",
+      "source": "docs/review/miniuw-v1-example/results.json",
+      "source_sha256": "0e979a8c97b308d65ff08caf300692e66bbb4200ac4e0ae61458e62ca5e70575",
+      "original_pdf": "docs/review/miniuw-v1-example/MiniUW_v1_Resumen.pdf",
+      "original_pdf_sha256": "b9c93c7fa1a9e0a30f85980bda67dab221e8c577481e4c2c7754d7ec313f9f0f"
+    },
+    {
+      "id": "miniuw-v1-investor-output-example",
+      "source": "docs/review/miniuw-v1-investor-output-example/results.json",
+      "source_sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1",
+      "original_pdf": "docs/review/miniuw-v1-investor-output-example/MiniUW_v1_Resumen.pdf",
+      "original_pdf_sha256": "1fe52b1bd99da4a4be686d03c6c9ea0b7c304ee00f85d8fd5344fc1e1bd928ce"
+    },
+    {
+      "id": "miniuw-v1-investor-package-example",
+      "source": "docs/review/miniuw-v1-investor-package-example/results.json",
+      "source_sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1",
+      "original_pdf": "docs/review/miniuw-v1-investor-package-example/MiniUW_v1_Resumen.pdf",
+      "original_pdf_sha256": "1fe52b1bd99da4a4be686d03c6c9ea0b7c304ee00f85d8fd5344fc1e1bd928ce"
+    },
+    {
+      "id": "miniuw-v1-long-output-example",
+      "source": "docs/review/miniuw-v1-long-output-example/results.json",
+      "source_sha256": "033af71fe69eaa7d312249abff48ca271d06910d1df0fe9c4de9513980341363",
+      "original_pdf": "docs/review/miniuw-v1-long-output-example/MiniUW_v1_Resumen.pdf",
+      "original_pdf_sha256": "a751d484a2e3d9540b4f532ae16aa5f7fa59d9228ba19949f278133a5e4b1762"
+    },
+    {
+      "id": "miniuw-v1-phased-settled-blocked-example",
+      "source": "docs/review/miniuw-v1-phased-settled-blocked-example/current-results.json",
+      "source_sha256": "c1f31a91762f4c0c93b1b1711de99baa4d68f6141b6f18f44321f6339121bc35",
+      "original_pdf": "docs/review/miniuw-v1-phased-settled-blocked-example/MiniUW_Resumen.pdf",
+      "original_pdf_sha256": "e2688946550502a63cfc52c20c710997df77a8ff6214c375f6d4ede5280a8940"
+    },
+    {
+      "id": "miniuw-v1-phased-settled-current-example",
+      "source": "docs/review/miniuw-v1-phased-settled-current-example/current-results.json",
+      "source_sha256": "cb93107c9839f8e0ed541b1c78a3546b79736e8383f2aba5a5f6977e052b74ba",
+      "original_pdf": "docs/review/miniuw-v1-phased-settled-current-example/MiniUW_Resumen.pdf",
+      "original_pdf_sha256": "1337b8cefd8e7c678b9523c37109dcce8422ca10f1a752487e8d385455c9ea33"
+    },
+    {
+      "id": "miniuw-v1-phased-settled-expired-example",
+      "source": "docs/review/miniuw-v1-phased-settled-expired-example/current-results.json",
+      "source_sha256": "363f1351ae05efa3801d80225ebf02546374acd722be0b3af060b8b90f2c7396",
+      "original_pdf": "docs/review/miniuw-v1-phased-settled-expired-example/MiniUW_Resumen.pdf",
+      "original_pdf_sha256": "0fba24e4dc24cbe1cf7e2b7e282560150f37c2f0d66d6bc7135b378a0806c238"
+    },
+    {
+      "id": "miniuw-v1-policy-renewal-example",
+      "source": "docs/review/miniuw-v1-policy-renewal-example/results.json",
+      "source_sha256": "7245f884eb86fc17762ad376f1f8fca5e56dfef61f576cdb39c3233b4a7478f1",
+      "original_pdf": "docs/review/miniuw-v1-policy-renewal-example/MiniUW_v1_Resumen.pdf",
+      "original_pdf_sha256": "7023d9358f46dc0984a947985c25ea40eb0a07fcc6ff1a26ff92ed6beb95eb0b"
+    },
+    {
+      "id": "miniuw-v1-scheduled-expense-example",
+      "source": "docs/review/miniuw-v1-scheduled-expense-example/results.json",
+      "source_sha256": "1b73b77ae6d60a1abf7684995582109aa4e6fd18881148d1fb1643e916d8655f",
+      "original_pdf": "docs/review/miniuw-v1-scheduled-expense-example/MiniUW_v1_Resumen.pdf",
+      "original_pdf_sha256": "b68c3d7920f0cb444b3c51557dd9edba288bd9c8891b076592241f0646faf013"
+    },
+    {
+      "id": "miniuw-v1-worksheet-case-example",
+      "source": "docs/review/miniuw-v1-worksheet-case-example/results.json",
+      "source_sha256": "8dcd1677131ce1db79873acbf67298395150f15f854c13a0169c30687e03297c",
+      "original_pdf": "docs/review/miniuw-v1-worksheet-case-example/MiniUW_v1_Resumen.pdf",
+      "original_pdf_sha256": "1527bb6a51c259c3d7a797f7fd0df4bb6425cd86b6d375538e96ea4188d9eceb"
+    },
+    {
+      "id": "miniuw-v1-worksheet-settled-expired-example",
+      "source": "docs/review/miniuw-v1-worksheet-settled-expired-example/current-results.json",
+      "source_sha256": "d3c267110a40a78d2dc1a80a45ac887214a769108e2cc64316b20de42de71440",
+      "original_pdf": "docs/review/miniuw-v1-worksheet-settled-expired-example/MiniUW_Resumen.pdf",
+      "original_pdf_sha256": "8b3f72a78cbd305fcc7e4d1c6739764ac5a1fc44b3c01e56ae75917bb348fae6"
+    },
+    {
+      "id": "miniuw-v1-worksheet-settled-matched-example",
+      "source": "docs/review/miniuw-v1-worksheet-settled-matched-example/current-results.json",
+      "source_sha256": "29158d8979d60392a9328a83292b29757e0f2f1c3a8c165f1b35a13ca2014c25",
+      "original_pdf": "docs/review/miniuw-v1-worksheet-settled-matched-example/MiniUW_Resumen.pdf",
+      "original_pdf_sha256": "2c664a962d4224cbb9c2f610702953c7acb3cac4b25f61d741aa9277524313ce"
+    },
+    {
+      "id": "miniuw-v1-worksheet-settled-zero-conflict-example",
+      "source": "docs/review/miniuw-v1-worksheet-settled-zero-conflict-example/current-results.json",
+      "source_sha256": "f7277f162ae768e9d1592365c321f157da4447024b78a6fc456679bceaa18f37",
+      "original_pdf": "docs/review/miniuw-v1-worksheet-settled-zero-conflict-example/MiniUW_Resumen.pdf",
+      "original_pdf_sha256": "fd5df18681e6af6461e50a854c1c22abeee0dcec09264eb28f71f83448ccded1"
+    }
+  ],
+  "delivered": [
+    {
+      "id": "MiniUW_D48_Con_Refinanciacion",
+      "original_pdf": "MiniUW_D48_Con_Refinanciacion/MiniUW_Resumen.pdf",
+      "original_pdf_sha256": "86bdbe8cdbddd030ef6aee8cf769785ce22736b53279a29a3944d6fa34a153b4",
+      "case_raw": "{\n  \"schema\": \"miniuw.synthetic-unified-worksheet-case.v1\",\n  \"profile\": \"with_refinance\",\n  \"archive_case\": \"cash-out\",\n  \"archive_sha256\": \"ad18901de7c07f5c42b1baf599f2f5acd743baa387916d73a46b431ae40b0156\",\n  \"monthly_discount_rate\": {\n    \"numerator\": \"1\",\n    \"denominator\": \"50\"\n  }\n}\n",
+      "results_sha256": "41b0b19c1c412953b09448a591a4d98e1d6c7c18062b903a10de77795ca67d6c"
+    },
+    {
+      "id": "MiniUW_D48_Sin_Refinanciacion",
+      "original_pdf": "MiniUW_D48_Sin_Refinanciacion/MiniUW_Resumen.pdf",
+      "original_pdf_sha256": "cbeef2d26586c95dcca9831f48588928b6a5a7bfe78442f87f854784855bf77e",
+      "case_raw": "{\n  \"schema\": \"miniuw.synthetic-unified-worksheet-case.v1\",\n  \"profile\": \"without_refinance\",\n  \"archive_case\": \"matched\",\n  \"archive_sha256\": \"807a958e1b87fe13784b695e9d86ad146f0172f24576a7cd9e80d9573c0398ea\",\n  \"monthly_discount_rate\": {\n    \"numerator\": \"1\",\n    \"denominator\": \"50\"\n  }\n}\n",
+      "results_sha256": "8deb2751f8398c1a5ded715c9506f99260b11e468a20aac8f126a2e66f694464"
+    },
+    {
+      "id": "MiniUW_D49_Primer_Piloto__expediente",
+      "original_pdf": "MiniUW_D49_Primer_Piloto/expediente/MiniUW_Resumen.pdf",
+      "original_pdf_sha256": "cbeef2d26586c95dcca9831f48588928b6a5a7bfe78442f87f854784855bf77e",
+      "case_raw": "{\n  \"schema\": \"miniuw.synthetic-unified-worksheet-case.v1\",\n  \"profile\": \"without_refinance\",\n  \"archive_case\": \"matched\",\n  \"archive_sha256\": \"807a958e1b87fe13784b695e9d86ad146f0172f24576a7cd9e80d9573c0398ea\",\n  \"monthly_discount_rate\": {\n    \"numerator\": \"1\",\n    \"denominator\": \"50\"\n  }\n}\n",
+      "results_sha256": "8deb2751f8398c1a5ded715c9506f99260b11e468a20aac8f126a2e66f694464"
+    },
+    {
+      "id": "MiniUW_D50_Piloto_Refinanciacion__above-capacity",
+      "original_pdf": "MiniUW_D50_Piloto_Refinanciacion/above-capacity/MiniUW_Resumen.pdf",
+      "original_pdf_sha256": "c8bbba72007f1a00b1451aa5a64ad9b8066f8384cd59607b2689dec15619bd56",
+      "case_raw": "{\"archive_case\":\"above-capacity\",\"archive_sha256\":\"ad18901de7c07f5c42b1baf599f2f5acd743baa387916d73a46b431ae40b0156\",\"monthly_discount_rate\":{\"denominator\":\"50\",\"numerator\":\"1\"},\"profile\":\"with_refinance\",\"schema\":\"miniuw.synthetic-unified-worksheet-case.v1\"}\n",
+      "results_sha256": "034e3c1b0399cddbce64cb393e7a5ad0625f3888281c58c8c430b7e6a6f705c5"
+    },
+    {
+      "id": "MiniUW_D50_Piloto_Refinanciacion__cash-in",
+      "original_pdf": "MiniUW_D50_Piloto_Refinanciacion/cash-in/MiniUW_Resumen.pdf",
+      "original_pdf_sha256": "1a2297831542c2e9abd9df2c23d863bfb23c53673c282e2f94c0757b0d7ed0f7",
+      "case_raw": "{\"archive_case\":\"cash-in\",\"archive_sha256\":\"ad18901de7c07f5c42b1baf599f2f5acd743baa387916d73a46b431ae40b0156\",\"monthly_discount_rate\":{\"denominator\":\"50\",\"numerator\":\"1\"},\"profile\":\"with_refinance\",\"schema\":\"miniuw.synthetic-unified-worksheet-case.v1\"}\n",
+      "results_sha256": "c0ccfdaa762333e0ebee69e10b73913a4630b77e2a77afebe055448e8d855a63"
+    },
+    {
+      "id": "MiniUW_D50_Piloto_Refinanciacion__cash-out",
+      "original_pdf": "MiniUW_D50_Piloto_Refinanciacion/cash-out/MiniUW_Resumen.pdf",
+      "original_pdf_sha256": "86bdbe8cdbddd030ef6aee8cf769785ce22736b53279a29a3944d6fa34a153b4",
+      "case_raw": "{\n  \"schema\": \"miniuw.synthetic-unified-worksheet-case.v1\",\n  \"profile\": \"with_refinance\",\n  \"archive_case\": \"cash-out\",\n  \"archive_sha256\": \"ad18901de7c07f5c42b1baf599f2f5acd743baa387916d73a46b431ae40b0156\",\n  \"monthly_discount_rate\": {\n    \"numerator\": \"1\",\n    \"denominator\": \"50\"\n  }\n}\n",
+      "results_sha256": "41b0b19c1c412953b09448a591a4d98e1d6c7c18062b903a10de77795ca67d6c"
+    },
+    {
+      "id": "MiniUW_D52_Expediente_Base_Downside__Base",
+      "original_pdf": "MiniUW_D52_Expediente_Base_Downside/Base/MiniUW_Resumen.pdf",
+      "original_pdf_sha256": "86bdbe8cdbddd030ef6aee8cf769785ce22736b53279a29a3944d6fa34a153b4",
+      "case_raw": "{\n  \"schema\": \"miniuw.synthetic-unified-worksheet-case.v1\",\n  \"profile\": \"with_refinance\",\n  \"archive_case\": \"cash-out\",\n  \"archive_sha256\": \"ad18901de7c07f5c42b1baf599f2f5acd743baa387916d73a46b431ae40b0156\",\n  \"monthly_discount_rate\": {\n    \"numerator\": \"1\",\n    \"denominator\": \"50\"\n  }\n}\n",
+      "results_sha256": "41b0b19c1c412953b09448a591a4d98e1d6c7c18062b903a10de77795ca67d6c"
+    },
+    {
+      "id": "MiniUW_D52_Expediente_Base_Downside__Downside",
+      "original_pdf": "MiniUW_D52_Expediente_Base_Downside/Downside/MiniUW_Resumen.pdf",
+      "original_pdf_sha256": "1a2297831542c2e9abd9df2c23d863bfb23c53673c282e2f94c0757b0d7ed0f7",
+      "case_raw": "{\"archive_case\":\"cash-in\",\"archive_sha256\":\"ad18901de7c07f5c42b1baf599f2f5acd743baa387916d73a46b431ae40b0156\",\"monthly_discount_rate\":{\"denominator\":\"50\",\"numerator\":\"1\"},\"profile\":\"with_refinance\",\"schema\":\"miniuw.synthetic-unified-worksheet-case.v1\"}\n",
+      "results_sha256": "c0ccfdaa762333e0ebee69e10b73913a4630b77e2a77afebe055448e8d855a63"
+    },
+    {
+      "id": "MiniUW_D57_Revision_Vigente__expediente_vigente__Base",
+      "original_pdf": "MiniUW_D57_Revision_Vigente/expediente_vigente/Base/MiniUW_Resumen.pdf",
+      "original_pdf_sha256": "86bdbe8cdbddd030ef6aee8cf769785ce22736b53279a29a3944d6fa34a153b4",
+      "case_raw": "{\n  \"schema\": \"miniuw.synthetic-unified-worksheet-case.v1\",\n  \"profile\": \"with_refinance\",\n  \"archive_case\": \"cash-out\",\n  \"archive_sha256\": \"ad18901de7c07f5c42b1baf599f2f5acd743baa387916d73a46b431ae40b0156\",\n  \"monthly_discount_rate\": {\n    \"numerator\": \"1\",\n    \"denominator\": \"50\"\n  }\n}\n",
+      "results_sha256": "41b0b19c1c412953b09448a591a4d98e1d6c7c18062b903a10de77795ca67d6c"
+    },
+    {
+      "id": "MiniUW_D57_Revision_Vigente__expediente_vigente__Downside",
+      "original_pdf": "MiniUW_D57_Revision_Vigente/expediente_vigente/Downside/MiniUW_Resumen.pdf",
+      "original_pdf_sha256": "1a2297831542c2e9abd9df2c23d863bfb23c53673c282e2f94c0757b0d7ed0f7",
+      "case_raw": "{\"archive_case\":\"cash-in\",\"archive_sha256\":\"ad18901de7c07f5c42b1baf599f2f5acd743baa387916d73a46b431ae40b0156\",\"monthly_discount_rate\":{\"denominator\":\"50\",\"numerator\":\"1\"},\"profile\":\"with_refinance\",\"schema\":\"miniuw.synthetic-unified-worksheet-case.v1\"}\n",
+      "results_sha256": "c0ccfdaa762333e0ebee69e10b73913a4630b77e2a77afebe055448e8d855a63"
+    },
+    {
+      "id": "MiniUW_D58_Umbral_Downside__expediente_R3__Base",
+      "original_pdf": "MiniUW_D58_Umbral_Downside/expediente_R3/Base/MiniUW_Resumen.pdf",
+      "original_pdf_sha256": "86bdbe8cdbddd030ef6aee8cf769785ce22736b53279a29a3944d6fa34a153b4",
+      "case_raw": "{\n  \"schema\": \"miniuw.synthetic-unified-worksheet-case.v1\",\n  \"profile\": \"with_refinance\",\n  \"archive_case\": \"cash-out\",\n  \"archive_sha256\": \"ad18901de7c07f5c42b1baf599f2f5acd743baa387916d73a46b431ae40b0156\",\n  \"monthly_discount_rate\": {\n    \"numerator\": \"1\",\n    \"denominator\": \"50\"\n  }\n}\n",
+      "results_sha256": "41b0b19c1c412953b09448a591a4d98e1d6c7c18062b903a10de77795ca67d6c"
+    },
+    {
+      "id": "MiniUW_D58_Umbral_Downside__expediente_R3__Downside",
+      "original_pdf": "MiniUW_D58_Umbral_Downside/expediente_R3/Downside/MiniUW_Resumen.pdf",
+      "original_pdf_sha256": "1a2297831542c2e9abd9df2c23d863bfb23c53673c282e2f94c0757b0d7ed0f7",
+      "case_raw": "{\"archive_case\":\"cash-in\",\"archive_sha256\":\"ad18901de7c07f5c42b1baf599f2f5acd743baa387916d73a46b431ae40b0156\",\"monthly_discount_rate\":{\"denominator\":\"50\",\"numerator\":\"1\"},\"profile\":\"with_refinance\",\"schema\":\"miniuw.synthetic-unified-worksheet-case.v1\"}\n",
+      "results_sha256": "c0ccfdaa762333e0ebee69e10b73913a4630b77e2a77afebe055448e8d855a63"
+    },
+    {
+      "id": "MiniUW_D65_Cierre_Desde_Hoja",
+      "original_pdf": "MiniUW_D65_Cierre_Desde_Hoja/MiniUW_Resumen.pdf",
+      "original_pdf_sha256": "6507dbfc7c515c84a892a29ff0cd054b27e2834cbc5e834861801122e723e6cb",
+      "case_raw": "{\n  \"schema\": \"miniuw.synthetic-unified-worksheet-case.v1\",\n  \"profile\": \"with_refinance_worksheet_sale\",\n  \"archive_case\": \"price_400\",\n  \"archive_sha256\": \"ee679da0a0b628806bc75302ffbb7533cf3c0a3a9f3e85ec844a83cc367e9789\",\n  \"monthly_discount_rate\": {\n    \"numerator\": \"1\",\n    \"denominator\": \"50\"\n  }\n}\n",
+      "results_sha256": "89c9a9de113bfeba07003570413d584c53d034dea46c228d2154ca3a5273a13d"
+    },
+    {
+      "id": "MiniUW_D67_Motivo_Cierre_Pendiente",
+      "original_pdf": "MiniUW_D67_Motivo_Cierre_Pendiente/MiniUW_Resumen.pdf",
+      "original_pdf_sha256": "1f4b1f5c83bd76d2aec51b5a16bfa02dcd68ec369beae36f9ee37c66c524c465",
+      "case_raw": "{\n  \"schema\": \"miniuw.synthetic-unified-worksheet-case.v2\",\n  \"profile\": \"with_refinance_worksheet_sale\",\n  \"archive_case\": \"tax_pending\",\n  \"archive_sha256\": \"ee679da0a0b628806bc75302ffbb7533cf3c0a3a9f3e85ec844a83cc367e9789\",\n  \"monthly_discount_rate\": {\n    \"numerator\": \"1\",\n    \"denominator\": \"50\"\n  }\n}\n",
+      "results_sha256": "04c52ac0cc1c9f2d1e04c63a5abf6471f40c76265687a4f6edf15c91571a53ce"
+    },
+    {
+      "id": "MiniUW_D68_Reparto_Sintetico",
+      "original_pdf": "MiniUW_D68_Reparto_Sintetico/MiniUW_Resumen.pdf",
+      "original_pdf_sha256": "f88c086471792555a1b33aaf956d688a173ca8bf19d257810c6a8e26a323ae3f",
+      "case_raw": "{\n  \"schema\": \"miniuw.synthetic-unified-worksheet-case.v3\",\n  \"profile\": \"with_refinance_worksheet_sale\",\n  \"archive_case\": \"price_400\",\n  \"archive_sha256\": \"ee679da0a0b628806bc75302ffbb7533cf3c0a3a9f3e85ec844a83cc367e9789\",\n  \"monthly_discount_rate\": {\n    \"numerator\": \"1\",\n    \"denominator\": \"50\"\n  },\n  \"allocation_terms_sha256\": \"9e4b7a0aa5b178f5b6076f6e4296e04f8f602e19d00d45618161ab0536169f3d\"\n}\n",
+      "results_sha256": "8c9f9365ad70837a30685f56fb90f4c80688bbe8591a7854d79950ddf88b7c84"
+    },
+    {
+      "id": "MiniUW_D74_Retorno_Por_10",
+      "original_pdf": "MiniUW_D74_Retorno_Por_10/MiniUW_Resumen.pdf",
+      "original_pdf_sha256": "1378d4d1533cececd0fc2b7a54c64b44f59d71399eb38cb0015b24105e121a73",
+      "case_raw": "{\n  \"schema\": \"miniuw.synthetic-unified-worksheet-case.v4\",\n  \"profile\": \"with_refinance_worksheet_sale\",\n  \"archive_case\": \"price_400\",\n  \"archive_sha256\": \"ee679da0a0b628806bc75302ffbb7533cf3c0a3a9f3e85ec844a83cc367e9789\",\n  \"monthly_discount_rate\": {\n    \"numerator\": \"1\",\n    \"denominator\": \"50\"\n  },\n  \"allocation_terms_sha256\": \"9e4b7a0aa5b178f5b6076f6e4296e04f8f602e19d00d45618161ab0536169f3d\",\n  \"illustrative_investor_id\": \"SYNTHETIC-participant-A\"\n}\n",
+      "results_sha256": "b08bfa9733621d8d4af8341d75539492808dec439c33598ba8cd269a24c17d7d"
+    },
+    {
+      "id": "MiniUW_D75_Base_y_Downside",
+      "original_pdf": "MiniUW_D75_Base_y_Downside/MiniUW_Resumen.pdf",
+      "original_pdf_sha256": "6dbe681bf5060b16b8de2bc40aa7ec1a59dae02c0f450ee5694f06d2979e986f",
+      "case_raw": "{\n  \"schema\": \"miniuw.synthetic-investor-scenarios.v1\",\n  \"joint_exit_sha256\": \"8af789b539b0da2f2b8cb114f893d6d182a66ea88c27ac55dc44b4072b2ecf99\",\n  \"allocation_terms_sha256\": \"602df8e8421094af668ff7621feca267f8e93bd9776d629ab40bfa6f759cf55d\",\n  \"participant_id\": \"SYNTHETIC-participant-A\",\n  \"scenarios\": {\n    \"Base\": \"SYNTHETIC-D31-lower/SYNTHETIC-sale-400\",\n    \"Downside\": \"SYNTHETIC-D31-cash-in/SYNTHETIC-sale-200\"\n  }\n}\n",
+      "results_sha256": "651aac1bfd288637b6af1788c1d20456feede4aeebd0219556c2f2ef7d0508f7"
+    },
+    {
+      "id": "MiniUW_D44_Resumen_Sintetico",
+      "original_pdf": "MiniUW_D44_Resumen_Sintetico.pdf",
+      "original_pdf_sha256": "cbeef2d26586c95dcca9831f48588928b6a5a7bfe78442f87f854784855bf77e",
+      "case_raw": "{\n  \"schema\": \"miniuw.synthetic-unified-worksheet-case.v1\",\n  \"profile\": \"without_refinance\",\n  \"archive_case\": \"matched\",\n  \"archive_sha256\": \"807a958e1b87fe13784b695e9d86ad146f0172f24576a7cd9e80d9573c0398ea\",\n  \"monthly_discount_rate\": {\n    \"numerator\": \"1\",\n    \"denominator\": \"50\"\n  }\n}\n",
+      "results_sha256": "8deb2751f8398c1a5ded715c9506f99260b11e468a20aac8f126a2e66f694464"
+    },
+    {
+      "id": "MiniUW_D45_Refinanciacion_Sintetica",
+      "original_pdf": "MiniUW_D45_Refinanciacion_Sintetica.pdf",
+      "original_pdf_sha256": "81b87ecde3aafecc56c2035a2427af6232c869277984086120c4b15b90579093",
+      "case_raw": "{\n  \"schema\": \"miniuw.synthetic-unified-worksheet-case.v1\",\n  \"profile\": \"with_refinance\",\n  \"archive_case\": \"cash-out\",\n  \"archive_sha256\": \"ad18901de7c07f5c42b1baf599f2f5acd743baa387916d73a46b431ae40b0156\",\n  \"monthly_discount_rate\": {\n    \"numerator\": \"1\",\n    \"denominator\": \"50\"\n  }\n}\n",
+      "results_sha256": "41b0b19c1c412953b09448a591a4d98e1d6c7c18062b903a10de77795ca67d6c",
+      "legacy_render": "D45"
+    },
+    {
+      "id": "MiniUW_D46_Hoja_Refinanciacion_Venta",
+      "original_pdf": "MiniUW_D46_Hoja_Refinanciacion_Venta.pdf",
+      "original_pdf_sha256": "86bdbe8cdbddd030ef6aee8cf769785ce22736b53279a29a3944d6fa34a153b4",
+      "case_raw": "{\n  \"schema\": \"miniuw.synthetic-unified-worksheet-case.v1\",\n  \"profile\": \"with_refinance\",\n  \"archive_case\": \"cash-out\",\n  \"archive_sha256\": \"ad18901de7c07f5c42b1baf599f2f5acd743baa387916d73a46b431ae40b0156\",\n  \"monthly_discount_rate\": {\n    \"numerator\": \"1\",\n    \"denominator\": \"50\"\n  }\n}\n",
+      "results_sha256": "41b0b19c1c412953b09448a591a4d98e1d6c7c18062b903a10de77795ca67d6c"
+    }
+  ]
+}

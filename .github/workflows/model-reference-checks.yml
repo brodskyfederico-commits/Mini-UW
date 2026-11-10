@@ -169,5 +169,7 @@ jobs:
         run: python tools/check_worksheet_investor_D74.py
       - name: Verify Base and Downside returns per USD 10 of initial equity
         run: python tools/check_investor_scenarios_D75.py
+      - name: Verify historical investor report reissues on USD 10 initial equity
+        run: python tools/reissue_investor_reports_D76.py
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v
