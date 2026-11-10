@@ -4,6 +4,7 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D94 verifica el precio bruto mínimo para recuperar los aportes por USD 10 si la venta se demora, con tenencia y deuda. [PDF de una página](docs/review/MiniUW_D94_Venta_Minima_Demorada_USD10.pdf) y control reproducible con `python tools/delayed_sale_recovery_D94.py`.
 - D93 agrega costos sintéticos de tenencia y reconcilia el vencimiento de deuda antes de una venta demorada de USD 300. [PDF de una página](docs/review/MiniUW_D93_Demora_Tenencia_Deuda_USD10.pdf) y control reproducible con `python tools/delayed_sale_carry_D93.py`.
 - D92 difiere 1, 2 o 3 meses el cobro neto de una venta de USD 300 y compara el cobro total y saldo en valor presente por USD 10. [PDF de una página](docs/review/MiniUW_D92_Demora_Venta_300_USD10.pdf) y control reproducible con `python tools/fixed_sale_delay_D92.py`.
 - D91 calcula el costo máximo de refinanciación que permite recuperar lo aportado por USD 10 con venta fija de USD 300 en Downside. [PDF de una página](docs/review/MiniUW_D91_Costo_Maximo_Refi_Venta_300_USD10.pdf) y control reproducible con `python tools/fixed_sale_refinance_limit_D91.py`.

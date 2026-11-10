@@ -1,10 +1,10 @@
 {
-  "scope": "I01 preserved design, D02–D93 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D94 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 13536,
-      "sha256": "c58ac3f1dea571853c89ad24891d801072823b03e04a1d54ab740f5ebacc690f"
+      "bytes": 13678,
+      "sha256": "0d4abb95de128aa78ae4756304ab12fa49703f03e16193170d05c24ae9f04f03"
     },
     {
       "path": ".gitignore",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 73406,
-      "sha256": "828fee01be276397540c8f44e72ff070fd35c013f0221490201b7a6261f8dc1a"
+      "bytes": 73677,
+      "sha256": "41142922ef062ba04dbe08e9c7169752f5da92a54cbf690c1120271fb9fd5986"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 312443,
-      "sha256": "1c2c6ca5439641151ad0e773d949d88647c4f302e65af8d1e266420b05823489"
+      "bytes": 313311,
+      "sha256": "f8d4eb2b5e39139206cbf227e7885d1a44ba2248c8c4ae40617b024f7ea06a36"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -960,6 +960,11 @@
       "path": "docs/review/MiniUW_D93_Demora_Tenencia_Deuda_USD10.pdf",
       "bytes": 4281,
       "sha256": "b9f41ba5522b4b6680d2d1aef518e55d2f0219efda98796a84354e7a49bebfad"
+    },
+    {
+      "path": "docs/review/MiniUW_D94_Venta_Minima_Demorada_USD10.pdf",
+      "bytes": 4277,
+      "sha256": "2b09e04f7924095eb61a310bbeb0d0a0f144aebb128fa94a8464d76ba3bcd0a3"
     },
     {
       "path": "docs/review/MiniUW_Dots_y_Bots_1_pagina_ROLES01.pdf",
@@ -6448,8 +6453,13 @@
     },
     {
       "path": "tools/delayed_sale_carry_D93.py",
-      "bytes": 13010,
-      "sha256": "172e9ac4da8c024202812aa2933bc58e7adc7db59b1b87009cffdb85021e00d3"
+      "bytes": 13163,
+      "sha256": "5604af9eb886382e957efde0b4843fd5df2d5d6dd76567d164de3e30d1f3b20f"
+    },
+    {
+      "path": "tools/delayed_sale_recovery_D94.py",
+      "bytes": 8880,
+      "sha256": "327c43df19499fad61272f58947c636e652bcbfda156a67c5de1e983ffd2b161"
     },
     {
       "path": "tools/demo_bounded_exit_sale.py",

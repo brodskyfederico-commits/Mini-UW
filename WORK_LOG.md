@@ -1440,3 +1440,9 @@ Se recalculan 27 calendarios y 81 saldos con números exactos. Se concilia el va
 El préstamo sintético de Downside vence el 1 de julio de 2027. Si se posterga la venta, la liquidación de USD 56,00 se paga con caja libre existente en esa fecha. Se concilian principal e interés contra la tabla fechada y se conserva el cargo de deuda de USD 5. El pasivo queda en cero. Se agregan USD 20 por mes de tenencia con ingreso incremental cero. Los gastos se pagan de caja libre y reducen el neto a distribuir, sin aporte adicional por demora.
 
 Con refinanciación de USD 150 y costo de venta de USD 10 más 5 %, por USD 10 iniciales los cobros totales a uno, dos o tres meses son USD 10,47, USD 10,27 y USD 10,07. Al 1 % mensual faltan USD 0,14, USD 0,40 y USD 0,65 en valor presente. Se recalculan 27 cierres y 81 saldos, sin duplicar la deuda que el cierre sin demora ya incluía. La decisión real sigue PENDING. [PDF de una página](docs/review/MiniUW_D93_Demora_Tenencia_Deuda_USD10.pdf).
+
+## D94 — Precio mínimo de venta demorada con tenencia y deuda
+
+Se conservan los USD 20 por mes de tenencia y la liquidación de USD 56,00 el 1 de julio de D93. Se vuelve a calcular el costo variable de venta al cambiar el precio. Con refinanciación de USD 150, costo de venta de USD 10 más 5 % y descuento del 1 % mensual, el precio bruto mínimo sube a USD 316,00, USD 345,39 y USD 374,86 al demorar uno, dos y tres meses. Los cobros totales por USD 10 en los respectivos mínimos son USD 10,62, USD 10,70 y USD 10,78.
+
+Se concilian 81 mínimos y 162 cierres. Cada mínimo recupera lo aportado a su tasa. Un centavo por debajo queda corto. La operación, el costo de tenencia, el vencimiento y los aportes de los escenarios sintéticos se conservan. La decisión real sigue PENDING. [PDF de una página](docs/review/MiniUW_D94_Venta_Minima_Demorada_USD10.pdf).

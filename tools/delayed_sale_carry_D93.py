@@ -55,12 +55,14 @@ def maturity_cash(source, sale_date):
     return raw, payoff, scheduled_principal, scheduled_interest, fees, loan.run.sha256
 
 
-def sale_closing(original, source, fee, when, opening_cash):
+def sale_closing(original, source, fee, when, opening_cash, *, gross_price=None):
     spec = fixed_sale_spec(source["sale"], fee)
     closing = original | {"closing_date": when, "old_debts": [], "valuation_claim": None}
     closing["amounts"] = {key: claim | {"as_of_date": when} for key, claim in
                           (original["amounts"] | spec["replacement_claims"]).items()}
     set_claim(closing["amounts"]["opening_free_cash"], opening_cash, PROVENANCE)
+    if gross_price is not None:
+        set_claim(closing["amounts"]["gross_proceeds"], gross_price, "SYNTHETIC-D94-repriced-sale")
     run = produce_closing_cash(encoded(closing))
     payload = run.payload
     require(payload["state"] == "computed_synthetic_closing" and payload["decision"] == "PENDING"
