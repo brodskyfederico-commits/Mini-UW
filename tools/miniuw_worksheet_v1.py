@@ -35,6 +35,7 @@ PLAN_DISCOUNT_RECOVERY_SCHEMA = "miniuw.synthetic-plan-discount-comparison.v2"
 WORKBOOK_INTAKE_SCHEMA = "miniuw.synthetic-workbook-intake-case.v1"
 WORKBOOK_CAPACITY_SCHEMA = "miniuw.synthetic-workbook-intake-case.v2"
 WORKBOOK_PILOT_SCHEMA = "miniuw.synthetic-workbook-screening-pilot.v1"
+WORKBOOK_EXTENDED_PILOT_SCHEMA = "miniuw.synthetic-workbook-screening-pilot.v2"
 PACKAGE_SCHEMA = "miniuw.synthetic-unified-worksheet-package.v1"
 COSTED_SALE = "templates/synthetic-worksheet-sale-costs-D63.json"
 COSTED_PROFILE = "with_refinance_worksheet_sale"
@@ -43,6 +44,7 @@ FILES = frozenset({"case.json", "results.json", "MiniUW_Resumen.pdf", "package.j
 WORKBOOK_FILE = "Inputs.xlsx"
 DOWNSIDE_WORKBOOK_FILE = "Downside_Inputs.xlsx"
 MAX_FILE_BYTES = 4 * 1024 * 1024
+MAX_EXTENDED_PILOT_BYTES = 32 * 1024
 
 
 def read_case(case):
@@ -74,10 +76,13 @@ def read_case(case):
 
 
 def build_results(raw, *, workbook_raw=None, downside_workbook_raw=None):
-    case = _json(raw, 4096)
-    if isinstance(case, dict) and case.get("schema") == WORKBOOK_PILOT_SCHEMA:
+    case = _json(raw, MAX_EXTENDED_PILOT_BYTES)
+    schema = case.get("schema") if isinstance(case, dict) else None
+    require(schema == WORKBOOK_EXTENDED_PILOT_SCHEMA or len(raw) <= 4096, "The worksheet case exceeds its schema size limit")
+    if schema in (WORKBOOK_PILOT_SCHEMA, WORKBOOK_EXTENDED_PILOT_SCHEMA):
         from worksheet_screening_pilot_D120 import build_pilot
-        return build_pilot(case, sha(raw), {"Base": workbook_raw, "Downside": downside_workbook_raw})
+        return build_pilot(case, sha(raw), {"Base": workbook_raw, "Downside": downside_workbook_raw},
+                           extended=schema == WORKBOOK_EXTENDED_PILOT_SCHEMA)
     require(downside_workbook_raw is None, "This case schema does not accept a Downside workbook")
     if isinstance(case, dict) and case.get("schema") in (WORKBOOK_INTAKE_SCHEMA, WORKBOOK_CAPACITY_SCHEMA):
         from worksheet_intake_case_D117 import build_intake_case
@@ -278,7 +283,8 @@ def main():
     args = parser.parse_args()
     try:
         if args.command == "run":
-            require(args.case.is_file() and args.case.stat().st_size <= 4096, "A bounded case JSON file is required")
+            require(args.case.is_file() and args.case.stat().st_size <= MAX_EXTENDED_PILOT_BYTES,
+                    "A bounded case JSON file is required")
             workbook_raw = None if args.workbook is None else read_workbook(args.workbook)
             downside = None if args.downside_workbook is None else read_workbook(args.downside_workbook)
             result = write_package(args.case.read_bytes(), args.output, workbook_raw=workbook_raw,

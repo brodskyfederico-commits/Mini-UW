@@ -1580,3 +1580,7 @@ Se auditan seis copias sintéticas con el préstamo fijo. Se verifica que limite
 ## D120 — Piloto de planillas a retorno y simulación PASS/FAIL
 
 El comando común conserva las planillas Base y Downside, las vincula al caso por hash y ejecuta la corrida con el control de capacidad. Deriva tres métricas del libro por USD 10 y las compara con reglas explícitas. Se auditan PASS, FAIL y PENDING y se prueban datos y reglas faltantes, banda intermedia y fuentes incompatibles. La decisión real permanece PENDING. [Piloto y comandos](docs/workbook-screening-pilot-D120.md).
+
+## D121 — Diez métricas de inversión en el piloto sintético
+
+Se incorporan siete referencias sintéticas declaradas y vinculadas a las planillas Base y Downside por hash, además de las tres métricas calculadas desde el libro. Se auditan veinte comparaciones y se comprueban PASS, FAIL por un umbral más exigente y PENDING por dato o regla faltante. Se conservan los retornos por USD 10 de los escenarios con caja verificada. [Métricas, resultados y comandos](docs/workbook-screening-metrics-D121.md).

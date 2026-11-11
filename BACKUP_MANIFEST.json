@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D120 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D121 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/miniuw-integral-usd10.yml",
@@ -8,8 +8,8 @@
     },
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 17413,
-      "sha256": "9215dc70860116e851dac8b5696e8ff1f3858d771544ab0f9e4e60246e1d15de"
+      "bytes": 17576,
+      "sha256": "74cc36da64633c4968deee2ef618635fa4580f5386b61139c961864c8b21fe23"
     },
     {
       "path": ".gitignore",
@@ -23,13 +23,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 79830,
-      "sha256": "a3262b315aef32e2a4661342933bb7dba561644e9b6d6d368a30ad74273681b5"
+      "bytes": 79879,
+      "sha256": "4d27559a32413159f17535fd1b47fa4fc8590d2fc3ba72f4488bde68b3a3999d"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 331015,
-      "sha256": "beecfe6acd067718763fae177fc9a69556cdb196d6246b0b2d2db2b5e5312c0c"
+      "bytes": 331526,
+      "sha256": "5875e90f447af8639f8dd1e2b0451f005f0e114d774a42f4873b28643bd29b12"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -3027,6 +3027,11 @@
       "sha256": "8f7200d7f8ad66d38e30eb5a8edf169a3e7e50b23e45d951963d9f05a49d3288"
     },
     {
+      "path": "docs/workbook-screening-metrics-D121.md",
+      "bytes": 3574,
+      "sha256": "50d4fc7a45c04f069e4fe71ad0a72b63124f6108b01321a5e4f3c5dd55ff22b1"
+    },
+    {
       "path": "docs/workbook-screening-pilot-D120.md",
       "bytes": 2563,
       "sha256": "fca8bd3e4207a1c34def3f9b5bc13aa75e7e374baec6620ad4a8de834d994958"
@@ -5577,6 +5582,11 @@
       "sha256": "6cfb46684f24cf92d656e66773aae68fc3c0db404cff646b8dfbdebf706d04ee"
     },
     {
+      "path": "templates/synthetic-workbook-screening-pilot-D121.json",
+      "bytes": 16526,
+      "sha256": "3aaa1e572d46a262b0af1d2b810d37b753859ad4127dd5819a13a62f656fe425"
+    },
+    {
       "path": "templates/synthetic-worksheet-exit-cap-D62.json",
       "bytes": 48479,
       "sha256": "7abffe3904ac77a22c335b2aa3a4bc74e54318bc2382995b4c9a89d38b4bbc9b"
@@ -6632,6 +6642,11 @@
       "sha256": "3f230b9ad7ab3de022d8550580a879fa859fbbf28d7f5b37572d8c64fe1f57e7"
     },
     {
+      "path": "tools/check_worksheet_reference_metrics_D121.py",
+      "bytes": 6840,
+      "sha256": "0205031ca3e7b0dd632617c67e339712d2a522163dc0756941bf74fb5c192ad0"
+    },
+    {
       "path": "tools/check_worksheet_refinance_D45.py",
       "bytes": 19613,
       "sha256": "16a6691641b69d5cc5effe33d1ae1762374edb00add38d92ff96744681f949ba"
@@ -7073,8 +7088,8 @@
     },
     {
       "path": "tools/miniuw_worksheet_v1.py",
-      "bytes": 17422,
-      "sha256": "863a8604ea117191df6e3bed438c6cdb6c26ffc69ec69cdcbda4827402d5d3d1"
+      "bytes": 17866,
+      "sha256": "b789c2fd3b8ef12a99b3da50608f5ffe3da2e8ae13902426dd51b164eeca30d9"
     },
     {
       "path": "tools/onepage_pending_cases_D79.py",
@@ -7232,6 +7247,11 @@
       "sha256": "be7a8092aed1167a073b941b438b760488d94684a67f49d8d4e16fa6373510b0"
     },
     {
+      "path": "tools/worksheet_reference_metrics_D121.py",
+      "bytes": 4514,
+      "sha256": "8969f112a1ff20c72df2c5b865193c78a55b6e156316034923332507ded209c8"
+    },
+    {
       "path": "tools/worksheet_sale_gap_D85.py",
       "bytes": 3366,
       "sha256": "8e447f14535036ec7443d2f1863adc320fc55a7c385db83656f3b7ddcee22c13"
@@ -7248,8 +7268,8 @@
     },
     {
       "path": "tools/worksheet_screening_pilot_D120.py",
-      "bytes": 10066,
-      "sha256": "db092f8766b483b195d28c820f2b30d39c8f9f571a6757cfccf2a143feef6bb0"
+      "bytes": 11151,
+      "sha256": "ee48420a91880791615c1a25dd265320839eea334e405ba362dbbd054458144f"
     },
     {
       "path": "tools/worksheet_settled_miniuw_v1.py",
