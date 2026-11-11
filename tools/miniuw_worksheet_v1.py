@@ -40,7 +40,9 @@ WORKBOOK_IRR_PILOT_SCHEMA = "miniuw.synthetic-workbook-screening-pilot.v3"
 WORKBOOK_YIELD_PILOT_SCHEMA = "miniuw.synthetic-workbook-screening-pilot.v4"
 WORKBOOK_EQUITY_PILOT_SCHEMA = "miniuw.synthetic-workbook-screening-pilot.v5"
 WORKBOOK_OCCUPANCY_PILOT_SCHEMA = "miniuw.synthetic-workbook-screening-pilot.v6"
-WORKBOOK_FUNDING_PILOT_SCHEMAS = (WORKBOOK_EQUITY_PILOT_SCHEMA, WORKBOOK_OCCUPANCY_PILOT_SCHEMA)
+WORKBOOK_COMPLETE_PILOT_SCHEMA = "miniuw.synthetic-workbook-screening-pilot.v7"
+WORKBOOK_OPERATING_PILOT_SCHEMAS = (WORKBOOK_OCCUPANCY_PILOT_SCHEMA, WORKBOOK_COMPLETE_PILOT_SCHEMA)
+WORKBOOK_FUNDING_PILOT_SCHEMAS = (WORKBOOK_EQUITY_PILOT_SCHEMA, *WORKBOOK_OPERATING_PILOT_SCHEMAS)
 PACKAGE_SCHEMA = "miniuw.synthetic-unified-worksheet-package.v1"
 COSTED_SALE = "templates/synthetic-worksheet-sale-costs-D63.json"
 COSTED_PROFILE = "with_refinance_worksheet_sale"
@@ -242,6 +244,8 @@ def status(operation, result):
                     decision=result["decision"], pdf_sha256=result["pdf_sha256"], page_count=1)
     if "simulation_result" in result:
         response["simulation_result"] = result["simulation_result"]
+    if "pipeline" in result and operation == "verified_source_first":
+        response["audit_bot"] = "B16"
     return response
 
 

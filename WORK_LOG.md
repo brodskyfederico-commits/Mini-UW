@@ -1600,3 +1600,7 @@ Se vincula el registro de fondos de D71 al presupuesto D123 por escenario y revi
 ## D125 — Ocupación económica de equilibrio
 
 El perfil D72 de renta y costos usa el servicio regular anual equivalente del préstamo verificado por la corrida. El cruce es 87,32 % en Base y 103,94 % en Downside. Se prueban el límite inviable, un escenario compatible y los bloqueos por insumos o reglas ausentes, con la caja por USD 10 reproducida. [Resultados y comandos](docs/workbook-occupancy-D125.md).
+
+## D126 — Piloto integrado con diez métricas calculadas
+
+El CoC usa los cobros operativos posrefinanciación del tramo observado y una base declarada. El soporte de precio usa una grilla explícita y los objetivos sintéticos de YoC y múltiplo de equity. Se auditan veinte comparaciones, los cobros por USD 10 y el flujo local desde la recepción hasta el PDF. Se prueban PASS, FAIL, PENDING y rechazo de un expediente alterado. [Resultados, alcance y comandos](docs/workbook-complete-pilot-D126.md).

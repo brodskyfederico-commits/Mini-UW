@@ -267,5 +267,7 @@ jobs:
         run: PYTHONPATH=src python tools/check_worksheet_equity_tdc_D124.py
       - name: Verify economic break-even occupancy from pilot rent, costs and debt
         run: PYTHONPATH=src python tools/check_worksheet_occupancy_D125.py
+      - name: Verify the complete synthetic workbook pilot and its deterministic audit
+        run: PYTHONPATH=src python tools/check_worksheet_complete_pilot_D126.py
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v

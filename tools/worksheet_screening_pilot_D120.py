@@ -10,7 +10,8 @@ from miniuw_foundation.debt_service import rational
 from miniuw_foundation.expense_cash_detail import _exact
 from miniuw_foundation.scheduled_expense_case import sha
 from miniuw_foundation.screening import SCHEMA, simulate_screening
-from miniuw_worksheet_v1 import WORKBOOK_CAPACITY_SCHEMA, WORKBOOK_FUNDING_PILOT_SCHEMAS, WORKBOOK_OCCUPANCY_PILOT_SCHEMA, encoded
+from miniuw_worksheet_v1 import (WORKBOOK_CAPACITY_SCHEMA, WORKBOOK_COMPLETE_PILOT_SCHEMA,
+                                 WORKBOOK_FUNDING_PILOT_SCHEMAS, WORKBOOK_OPERATING_PILOT_SCHEMAS, encoded)
 from worksheet_intake_case_D117 import SOURCE_FIXTURE, build_intake_case
 from worksheet_plan_refinance_D109 import LABELS, SCENARIOS
 from worksheet_sale_rate_grid_D84 import money
@@ -86,6 +87,7 @@ def run_screening(case, scenarios, context, *, extended=False, interval_irr=Fals
     computed_yield = {}
     computed_equity = None
     computed_occupancy = None
+    computed_returns = None
     schema = case.get("schema")
     if extended:
         from worksheet_reference_metrics_D121 import REFERENCE_METRICS, reference_records
@@ -102,12 +104,18 @@ def run_screening(case, scenarios, context, *, extended=False, interval_irr=Fals
                 metrics = metrics | {METRIC_ID: METRIC}
                 derived, computed_equity = equity_records(case.get("funding_inputs"), computed_yield, case_sha256)
                 values.extend(derived)
-            if schema == WORKBOOK_OCCUPANCY_PILOT_SCHEMA:
+            if schema in WORKBOOK_OPERATING_PILOT_SCHEMAS:
                 from worksheet_occupancy_D125 import METRIC, METRIC_ID, occupancy_records
                 del catalog[METRIC_ID]
                 metrics = metrics | {METRIC_ID: METRIC}
                 derived, computed_occupancy = occupancy_records(case.get("occupancy_inputs"),
                                     case.get("yield_inputs") or {}, scenarios, case_sha256)
+                values.extend(derived)
+            if schema == WORKBOOK_COMPLETE_PILOT_SCHEMA:
+                from worksheet_final_metrics_D126 import METRICS as FINAL_METRICS, final_metric_records
+                catalog = {key: value for key, value in catalog.items() if key not in FINAL_METRICS}
+                metrics = metrics | FINAL_METRICS
+                derived, computed_returns = final_metric_records(case, scenarios, computed_yield, values, case_sha256)
                 values.extend(derived)
         metrics = metrics | catalog
         references, sources = reference_records(case.get("reference_metrics"), scenarios, case_sha256, metrics=catalog)
@@ -146,6 +154,8 @@ def run_screening(case, scenarios, context, *, extended=False, interval_irr=Fals
             result.update(component="D124", equity_tdc_by_scenario=computed_equity)
         if computed_occupancy is not None:
             result.update(component="D125", occupancy_by_scenario=computed_occupancy)
+        if computed_returns is not None:
+            result.update(component="D126", final_metrics_by_scenario=computed_returns)
         run_hash = sha(encoded(result))
     require(result["decision"] == "PENDING" and not result["criteria_adopted"] and not result["production_authorized"],
             "The synthetic screening acquired decision authority")
@@ -153,7 +163,7 @@ def run_screening(case, scenarios, context, *, extended=False, interval_irr=Fals
                          criteria_source_blockers=[] if revision else ["criteria_revision_missing"])
 
 
-def read_scenario(spec, raw, expected, *, include_sizing_service=False):
+def read_scenario(spec, raw, expected, *, include_sizing_service=False, include_capital_bases=False):
     if raw is None:
         blocker = "workbook_missing"
     elif expected is None:
@@ -162,7 +172,7 @@ def read_scenario(spec, raw, expected, *, include_sizing_service=False):
         blocker = "workbook_hash_mismatch"
     else:
         result, _ = build_intake_case(spec, sha(encoded(spec)), raw, capacity_first=True,
-                                      include_sizing_service=include_sizing_service)
+                                      include_sizing_service=include_sizing_service, include_capital_bases=include_capital_bases)
         return result | {"expected_workbook_sha256": expected, "source_blockers": []}
     return dict(state="PENDING", cash_per_usd_10=None, expected_workbook_sha256=expected,
                 received_workbook_sha256=None if raw is None else sha(raw), source_blockers=[blocker])
@@ -196,6 +206,7 @@ def render_pilot(scenarios, screening, *, extended=False, interval_irr=False, yi
     labels = METRIC_LABELS
     computed_equity = screening.get("equity_tdc_by_scenario")
     computed_occupancy = screening.get("occupancy_by_scenario")
+    computed_returns = screening.get("final_metrics_by_scenario")
     ratios = {}
     if yield_metrics:
         ratios = {metric: {name: row["values"][metric] for name, row in screening["yield_by_scenario"].items()}
@@ -204,9 +215,15 @@ def render_pilot(scenarios, screening, *, extended=False, interval_irr=False, yi
         ratios["equity_TDC"] = {name: row["equity_to_tdc"] for name, row in computed_equity.items()}
     if computed_occupancy is not None:
         ratios["breakeven_occupancy"] = {name: row["algebraic_crossing"] for name, row in computed_occupancy.items()}
+    if computed_returns is not None:
+        from worksheet_final_metrics_D126 import ASKING, COC
+        for metric in (ASKING, COC):
+            ratios[metric] = {name: row["metrics"][metric]["value"] for name, row in computed_returns.items()}
     if extended:
         from worksheet_reference_metrics_D121 import REFERENCE_LABELS
         labels = labels | REFERENCE_LABELS
+    if computed_returns is not None:
+        labels = labels | {COC: "CoC pos-refi del tramo"}
     for metric, label in labels.items():
         if interval_irr and metric == "IRR":
             from worksheet_irr_D122 import display_enclosure
@@ -230,7 +247,10 @@ def render_pilot(scenarios, screening, *, extended=False, interval_irr=False, yi
         lines.append(("Consultá los datos o reglas pendientes en el expediente.", False))
     lines.append(("Capital agregado del proyecto. Decisión de inversión PENDING.", False))
     milestone = "D120"
-    if computed_occupancy is not None:
+    if computed_returns is not None:
+        milestone = "D126"
+        lines.append(("Diez métricas calculadas bajo las definiciones del piloto sintético.", False))
+    elif computed_occupancy is not None:
         milestone = "D125"
         lines.append(("Ocho métricas calculadas y dos referencias sintéticas declaradas.", False))
     elif computed_equity is not None:
@@ -250,6 +270,22 @@ def render_pilot(scenarios, screening, *, extended=False, interval_irr=False, yi
                        "Planilla, retorno y simulación de decisión")
 
 
+def pilot_pipeline(case_sha256, scenarios, screening, pdf):
+    """Record the deterministic contracts exercised by the workbook pilot."""
+    source_ready = {name: not row["source_blockers"] for name, row in scenarios.items()}
+    input_blockers = {name: [item["cell"] for item in row.get("preflight", {}).get("checklist", []) if item["action"]]
+                      for name, row in scenarios.items()}
+    cash_ready = {name: row["cash_per_usd_10"] is not None for name, row in scenarios.items()}
+    return dict(case_sha256=case_sha256, stages=[
+        dict(dot="D01", bots=["B01", "B02"], source_ready=source_ready),
+        dict(dot="D02", bots=["B04"], pending_cells=input_blockers),
+        dict(dot="D05", bots=["B12", "B13", "B14"], cash_ready=cash_ready,
+             comparison_count=len(screening["comparisons"]), simulation=screening["simulation_result"],
+             decision=screening["decision"], blockers=screening["simulation_blockers"]),
+        dict(dot="D06", bots=["B15"], pdf_sha256=sha(pdf), pages=1),
+    ])
+
+
 def build_pilot(case, case_sha256, workbooks, *, extended=False, interval_irr=False, yield_metrics=False):
     required = {"schema", "worksheet_case", "workbook_sha256"}
     optional = {"criteria_revision", "aggregation_rule", "rules"}
@@ -262,8 +298,10 @@ def build_pilot(case, case_sha256, workbooks, *, extended=False, interval_irr=Fa
     schema = case.get("schema")
     if schema in WORKBOOK_FUNDING_PILOT_SCHEMAS:
         optional.add("funding_inputs")
-    if schema == WORKBOOK_OCCUPANCY_PILOT_SCHEMA:
+    if schema in WORKBOOK_OPERATING_PILOT_SCHEMAS:
         optional.add("occupancy_inputs")
+    if schema == WORKBOOK_COMPLETE_PILOT_SCHEMA:
+        optional.add("return_inputs")
     require(required <= case.keys() <= required | optional,
             "An explicit pilot workbook case and source hashes are required")
     spec = case["worksheet_case"]
@@ -276,15 +314,17 @@ def build_pilot(case, case_sha256, workbooks, *, extended=False, interval_irr=Fa
             and all(value is None or isinstance(value, str) and re.fullmatch(r"[0-9a-f]{64}", value)
                     for value in hashes.values()), "Use explicit worksheet SHA-256 values or missing entries")
     scenarios = {name: read_scenario(spec, workbooks[name], hashes.get(name),
-                                   include_sizing_service=schema == WORKBOOK_OCCUPANCY_PILOT_SCHEMA)
+                                   include_sizing_service=schema in WORKBOOK_OPERATING_PILOT_SCHEMAS,
+                                   include_capital_bases=schema == WORKBOOK_COMPLETE_PILOT_SCHEMA)
                  for name in SCENARIOS}
     screening = run_screening(case, scenarios, json.loads(origin_raw)["scenario_context"],
                               extended=extended, interval_irr=interval_irr, yield_metrics=yield_metrics,
                               case_sha256=case_sha256)
     pdf = render_pilot(scenarios, screening, extended=extended, interval_irr=interval_irr, yield_metrics=yield_metrics)
     simulation = screening["simulation_result"]
+    pipeline = {} if schema != WORKBOOK_COMPLETE_PILOT_SCHEMA else {"pipeline": pilot_pipeline(case_sha256, scenarios, screening, pdf)}
     return dict(profile=PROFILE, scope="synthetic_aggregate_equity", decision="PENDING",
                 state="PENDING" if simulation == "PENDING" else "computed_synthetic_pilot",
                 simulation_result=simulation, case_sha256=case_sha256, scenarios=scenarios,
                 screening=screening, pdf_sha256=sha(pdf), page_count=1,
-                personal_investor_return=None, deployment_enabled=False, real_decisions_enabled=False), pdf
+                personal_investor_return=None, deployment_enabled=False, real_decisions_enabled=False) | pipeline, pdf

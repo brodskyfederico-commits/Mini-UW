@@ -87,7 +87,8 @@ def render(result, *, show_capacity=False):
                        "PENDIENTE | Chequeo de ingreso y resultado sintético")
 
 
-def build_intake_case(case, case_sha256, workbook_raw, *, capacity_first=False, include_sizing_service=False):
+def build_intake_case(case, case_sha256, workbook_raw, *, capacity_first=False, include_sizing_service=False,
+                      include_capital_bases=False):
     _exact(case, {"schema", "source_fixture_sha256", "monthly_discount_rate"})
     raw = local_file(ROOT, SOURCE_FIXTURE).read_bytes()
     require(sha(raw) == case["source_fixture_sha256"], "The synthetic case basis has changed")
@@ -126,5 +127,10 @@ def build_intake_case(case, case_sha256, workbook_raw, *, capacity_first=False, 
                           cash_per_usd_10=initial_equity_cash(report["return_story"]))
             if include_sizing_service:
                 result["annual_sizing_service"] = calculated["annual_sizing_service"]
+            if include_capital_bases:
+                result["calendar_capital_bases"] = {
+                    str(row["calendar_cash_receipt_year"]): row["declared_capital_base"]
+                    for row in report["return_story"]["annual_cash_receipts"] if row["blocker"] is None
+                }
     pdf = render(result, show_capacity=capacity_first)
     return result | dict(pdf_sha256=sha(pdf), page_count=1), pdf
