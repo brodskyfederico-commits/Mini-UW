@@ -1536,3 +1536,7 @@ Se concilian el cobro neto de la refinanciación, el servicio de deuda en la caj
 La entrada habitual admite un caso sintético ligado a los hashes de ambos planos y a una solicitud explícita. El monto nuevo de USD 1.100.000 cabe en Base y Downside. La solicitud original de USD 1.400.000 mantiene el bloqueo en Downside. Las dos corridas generan expedientes separados y auditables con un PDF de una página.
 
 Se cotejan los flujos fechados por USD 10 con una referencia independiente y se concilia el efecto nominal de comisión e interés frente al caso sin refinanciación. Se prueban entradas rechazadas y un resultado alterado. [Resultados y reproducción](docs/plan-refinance-request-D109.md).
+
+## D110 — Plano revisado con y sin refinanciación en una página
+
+Se reproducen las cuatro variantes sintéticas del plano A-601 revisado a partir de los productores D107 y la solicitud D109. El PDF muestra aportes, cobros fechados y saldo al vender por USD 10. Se verifica la misma base de aporte inicial, el mismo alcance de obra y el mismo precio bruto de venta por escenario. La reproducción valida los flujos y el contenido de una página. [Comparación](docs/review/MiniUW_D110_Plano_Revisado_Con_y_Sin_Refinanciacion.pdf).

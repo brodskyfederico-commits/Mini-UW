@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D109 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D110 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/miniuw-integral-usd10.yml",
@@ -8,8 +8,8 @@
     },
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 15702,
-      "sha256": "b4ad0e2081abea146f46fdb943b2565ed649c82025e03b04a72822ba35eb383c"
+      "bytes": 15857,
+      "sha256": "a2b175d8600310109f863ef82358b8e10e04c1c47fdfa88fd1487edb13cc68e8"
     },
     {
       "path": ".gitignore",
@@ -23,13 +23,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 77225,
-      "sha256": "caf8eafaf9fa05a726d38fa97b8c840e2dd69b2426ede618fd587f03141fc1fa"
+      "bytes": 77488,
+      "sha256": "f5071747d18d2946bd473b5c7253061bd14c65d09dee939e4f175f05e7cfdaee"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 325674,
-      "sha256": "d62e5fe53990c3cff6b8d589b3bc39cd9e7ea500e1a1e16bdebb941e3e21d12c"
+      "bytes": 326209,
+      "sha256": "5cffc051fe05e3ba667a1df19067ecbc72941a69048116bd2d2ec4ec92f974be"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -965,6 +965,11 @@
       "path": "docs/review/MiniUW_D104_Escenario_Bloqueado_USD10.pdf",
       "bytes": 2321,
       "sha256": "80648f91d3f31cca20fd6dbcf5980578b1903cdf591a9fa2cacc1d426be0dcc2"
+    },
+    {
+      "path": "docs/review/MiniUW_D110_Plano_Revisado_Con_y_Sin_Refinanciacion.pdf",
+      "bytes": 5399,
+      "sha256": "6d02c0bd2260f3234383334618149aface754efeeb3de29958a21ec21e20883b"
     },
     {
       "path": "docs/review/MiniUW_D81_Ocho_Revisiones_Sinteticas.zip",
@@ -6545,6 +6550,11 @@
       "path": "tools/compare_miniuw_v1.py",
       "bytes": 1427,
       "sha256": "38ba3e3d9b91d27be61b9c803eccf4285af26e965e55fd3aaf9afe7b9fd92d45"
+    },
+    {
+      "path": "tools/compare_revised_plan_D110.py",
+      "bytes": 10379,
+      "sha256": "5d8d0454651e47cf87560110ecba91f751fc85521eb3511f1d6b6bd997fd2d67"
     },
     {
       "path": "tools/construction_demo_support.py",

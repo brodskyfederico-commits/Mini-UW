@@ -4,6 +4,7 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D110 compara el mismo plano revisado con y sin refinanciación en Base y Downside. [PDF de una página por USD 10](docs/review/MiniUW_D110_Plano_Revisado_Con_y_Sin_Refinanciacion.pdf). Reproducí con `PYTHONPATH=src python3 tools/compare_revised_plan_D110.py`.
 - D109 admite una nueva solicitud de refinanciación vinculada al plano revisado desde el comando habitual. Produce un PDF auditable de una página con Base y Downside por USD 10. [Resultados y reproducción](docs/plan-refinance-request-D109.md).
 - D108 repite el cambio de plano con refinanciación, valida capacidad por escenario y muestra cobros y aportes por USD 10. [Resultados y reproducción](docs/plan-refinance-per-usd10-D108.md).
 - D107 conecta revisiones sintéticas de superficie y unidades con los aportes, cobros y saldo sin recuperar por USD 10 en Base y Downside. [Resultados y reproducción](docs/plan-return-per-usd10-D107.md).

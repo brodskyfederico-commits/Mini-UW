@@ -235,5 +235,7 @@ jobs:
         run: PYTHONPATH=src python tools/plan_refinance_D108.py check
       - name: Verify the revised-plan refinance request through the worksheet and PDF audit
         run: PYTHONPATH=src python tools/check_plan_refinance_request_D109.py
+      - name: Verify the one-page revised-plan comparison with and without refinance
+        run: PYTHONPATH=src python tools/compare_revised_plan_D110.py
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v
