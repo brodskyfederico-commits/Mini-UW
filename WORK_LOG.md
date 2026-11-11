@@ -1540,3 +1540,7 @@ Se cotejan los flujos fechados por USD 10 con una referencia independiente y se 
 ## D110 — Plano revisado con y sin refinanciación en una página
 
 Se reproducen las cuatro variantes sintéticas del plano A-601 revisado a partir de los productores D107 y la solicitud D109. El PDF muestra aportes, cobros fechados y saldo al vender por USD 10. Se verifica la misma base de aporte inicial, el mismo alcance de obra y el mismo precio bruto de venta por escenario. La reproducción valida los flujos y el contenido de una página. [Comparación](docs/review/MiniUW_D110_Plano_Revisado_Con_y_Sin_Refinanciacion.pdf).
+
+## D111 — Tasa mensual de equilibrio de la refinanciación
+
+Se reproducen los cuatro libros de caja D110 y se descuentan sus flujos mensuales al 30/03/2027. La diferencia entre variantes adelanta USD 4,49 netos a marzo de 2028 y reduce los cobros de junio de 2028. La raíz común queda acotada con racionales exactos en 1,0934 % mensual redondeado. La comparación verifica el cambio de orden y los VAN de Base y Downside a 0 %, 1 %, cerca de la raíz y 2 %. [Comparación de una página](docs/review/MiniUW_D111_Tasa_de_Equilibrio_Refinanciacion.pdf).

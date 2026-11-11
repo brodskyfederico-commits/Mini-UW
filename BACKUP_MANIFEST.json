@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D110 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D111 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/miniuw-integral-usd10.yml",
@@ -8,8 +8,8 @@
     },
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 15857,
-      "sha256": "a2b175d8600310109f863ef82358b8e10e04c1c47fdfa88fd1487edb13cc68e8"
+      "bytes": 16008,
+      "sha256": "84813425b7892ad3dd5b2bf59330709d0266a5206ee679a84aa74a0845f1fb5a"
     },
     {
       "path": ".gitignore",
@@ -23,13 +23,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 77488,
-      "sha256": "f5071747d18d2946bd473b5c7253061bd14c65d09dee939e4f175f05e7cfdaee"
+      "bytes": 77770,
+      "sha256": "5355fffb909243f86ed33d3bad0090c4f499b6aa53ee7d01383c90b89a21635a"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 326209,
-      "sha256": "5cffc051fe05e3ba667a1df19067ecbc72941a69048116bd2d2ec4ec92f974be"
+      "bytes": 326766,
+      "sha256": "2e98d983b9bb11bf06c59f8ac23d4e8b975e7df6196cf40877a30ba2744a8518"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -970,6 +970,11 @@
       "path": "docs/review/MiniUW_D110_Plano_Revisado_Con_y_Sin_Refinanciacion.pdf",
       "bytes": 5399,
       "sha256": "6d02c0bd2260f3234383334618149aface754efeeb3de29958a21ec21e20883b"
+    },
+    {
+      "path": "docs/review/MiniUW_D111_Tasa_de_Equilibrio_Refinanciacion.pdf",
+      "bytes": 4285,
+      "sha256": "8c64d4cf8766d51a11b9d4b727c988b39934e6c2e0b83a0643d48031d8335468"
     },
     {
       "path": "docs/review/MiniUW_D81_Ocho_Revisiones_Sinteticas.zip",
@@ -6550,6 +6555,11 @@
       "path": "tools/compare_miniuw_v1.py",
       "bytes": 1427,
       "sha256": "38ba3e3d9b91d27be61b9c803eccf4285af26e965e55fd3aaf9afe7b9fd92d45"
+    },
+    {
+      "path": "tools/compare_refinance_discount_D111.py",
+      "bytes": 11576,
+      "sha256": "eb9f4b3d5212cd111aa1d0bc864fb6decc373c260ef1bcc9e077883c52b05c94"
     },
     {
       "path": "tools/compare_revised_plan_D110.py",
