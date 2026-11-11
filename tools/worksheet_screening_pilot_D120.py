@@ -10,7 +10,7 @@ from miniuw_foundation.debt_service import rational
 from miniuw_foundation.expense_cash_detail import _exact
 from miniuw_foundation.scheduled_expense_case import sha
 from miniuw_foundation.screening import SCHEMA, simulate_screening
-from miniuw_worksheet_v1 import WORKBOOK_CAPACITY_SCHEMA, WORKBOOK_EQUITY_PILOT_SCHEMA, encoded
+from miniuw_worksheet_v1 import WORKBOOK_CAPACITY_SCHEMA, WORKBOOK_FUNDING_PILOT_SCHEMAS, WORKBOOK_OCCUPANCY_PILOT_SCHEMA, encoded
 from worksheet_intake_case_D117 import SOURCE_FIXTURE, build_intake_case
 from worksheet_plan_refinance_D109 import LABELS, SCENARIOS
 from worksheet_sale_rate_grid_D84 import money
@@ -85,6 +85,8 @@ def run_screening(case, scenarios, context, *, extended=False, interval_irr=Fals
     provenance = {}
     computed_yield = {}
     computed_equity = None
+    computed_occupancy = None
+    schema = case.get("schema")
     if extended:
         from worksheet_reference_metrics_D121 import REFERENCE_METRICS, reference_records
         catalog = {key: value for key, value in REFERENCE_METRICS.items() if key != "IRR" or not interval_irr}
@@ -94,11 +96,18 @@ def run_screening(case, scenarios, context, *, extended=False, interval_irr=Fals
             metrics = metrics | CALCULATED_METRICS
             derived, computed_yield = yield_records(case.get("yield_inputs"), scenarios, case_sha256)
             values.extend(derived)
-            if case.get("schema") == WORKBOOK_EQUITY_PILOT_SCHEMA:
+            if schema in WORKBOOK_FUNDING_PILOT_SCHEMAS:
                 from worksheet_equity_tdc_D124 import METRIC, METRIC_ID, equity_records
                 del catalog[METRIC_ID]
                 metrics = metrics | {METRIC_ID: METRIC}
                 derived, computed_equity = equity_records(case.get("funding_inputs"), computed_yield, case_sha256)
+                values.extend(derived)
+            if schema == WORKBOOK_OCCUPANCY_PILOT_SCHEMA:
+                from worksheet_occupancy_D125 import METRIC, METRIC_ID, occupancy_records
+                del catalog[METRIC_ID]
+                metrics = metrics | {METRIC_ID: METRIC}
+                derived, computed_occupancy = occupancy_records(case.get("occupancy_inputs"),
+                                    case.get("yield_inputs") or {}, scenarios, case_sha256)
                 values.extend(derived)
         metrics = metrics | catalog
         references, sources = reference_records(case.get("reference_metrics"), scenarios, case_sha256, metrics=catalog)
@@ -113,6 +122,11 @@ def run_screening(case, scenarios, context, *, extended=False, interval_irr=Fals
         rules = [row for row in rules if row["metric_id"] != "IRR"]
     else:
         rules = criterion_records(supplied, metrics)
+    if computed_occupancy is not None:
+        from worksheet_occupancy_D125 import METRIC_ID, validate_occupancy_conditions
+        for row in rules:
+            if row["metric_id"] == METRIC_ID:
+                validate_occupancy_conditions(row)
     source = dict(schema=SCHEMA, context=context, case_id=CASE_ID,
                   criteria_revision=revision or "SYNTHETIC-unbound-criteria",
                   criteria_status="synthetic_fixture_only", required_metrics=list(metrics),
@@ -130,6 +144,8 @@ def run_screening(case, scenarios, context, *, extended=False, interval_irr=Fals
             result.update(component="D123", yield_by_scenario=computed_yield)
         if computed_equity is not None:
             result.update(component="D124", equity_tdc_by_scenario=computed_equity)
+        if computed_occupancy is not None:
+            result.update(component="D125", occupancy_by_scenario=computed_occupancy)
         run_hash = sha(encoded(result))
     require(result["decision"] == "PENDING" and not result["criteria_adopted"] and not result["production_authorized"],
             "The synthetic screening acquired decision authority")
@@ -137,7 +153,7 @@ def run_screening(case, scenarios, context, *, extended=False, interval_irr=Fals
                          criteria_source_blockers=[] if revision else ["criteria_revision_missing"])
 
 
-def read_scenario(spec, raw, expected):
+def read_scenario(spec, raw, expected, *, include_sizing_service=False):
     if raw is None:
         blocker = "workbook_missing"
     elif expected is None:
@@ -145,7 +161,8 @@ def read_scenario(spec, raw, expected):
     elif sha(raw) != expected:
         blocker = "workbook_hash_mismatch"
     else:
-        result, _ = build_intake_case(spec, sha(encoded(spec)), raw, capacity_first=True)
+        result, _ = build_intake_case(spec, sha(encoded(spec)), raw, capacity_first=True,
+                                      include_sizing_service=include_sizing_service)
         return result | {"expected_workbook_sha256": expected, "source_blockers": []}
     return dict(state="PENDING", cash_per_usd_10=None, expected_workbook_sha256=expected,
                 received_workbook_sha256=None if raw is None else sha(raw), source_blockers=[blocker])
@@ -178,12 +195,15 @@ def render_pilot(scenarios, screening, *, extended=False, interval_irr=False, yi
     lines.append(("REGLAS SINTÉTICAS POR MÉTRICA", True))
     labels = METRIC_LABELS
     computed_equity = screening.get("equity_tdc_by_scenario")
+    computed_occupancy = screening.get("occupancy_by_scenario")
     ratios = {}
     if yield_metrics:
         ratios = {metric: {name: row["values"][metric] for name, row in screening["yield_by_scenario"].items()}
                   for metric in ("YoC", "spread")}
     if computed_equity is not None:
         ratios["equity_TDC"] = {name: row["equity_to_tdc"] for name, row in computed_equity.items()}
+    if computed_occupancy is not None:
+        ratios["breakeven_occupancy"] = {name: row["algebraic_crossing"] for name, row in computed_occupancy.items()}
     if extended:
         from worksheet_reference_metrics_D121 import REFERENCE_LABELS
         labels = labels | REFERENCE_LABELS
@@ -199,7 +219,9 @@ def render_pilot(scenarios, screening, *, extended=False, interval_irr=False, yi
             for name, value in ratios[metric].items():
                 display = display_yield(metric, value)
                 if value is not None:
-                    display += f" ({states[metric, name]})"
+                    impossible = metric == "breakeven_occupancy" and computed_occupancy[name]["state"] == "infeasible_within_domain"
+                    suffix = ", inviable" if impossible else ""
+                    display += f" ({states[metric, name]}{suffix})"
                 parts.append(f"{name} {display}")
             lines.append((f"{label} | " + " | ".join(parts), False))
         else:
@@ -208,7 +230,10 @@ def render_pilot(scenarios, screening, *, extended=False, interval_irr=False, yi
         lines.append(("Consultá los datos o reglas pendientes en el expediente.", False))
     lines.append(("Capital agregado del proyecto. Decisión de inversión PENDING.", False))
     milestone = "D120"
-    if computed_equity is not None:
+    if computed_occupancy is not None:
+        milestone = "D125"
+        lines.append(("Ocho métricas calculadas y dos referencias sintéticas declaradas.", False))
+    elif computed_equity is not None:
         milestone = "D124"
         lines.append(("Siete métricas calculadas y tres referencias sintéticas declaradas.", False))
     elif yield_metrics:
@@ -234,8 +259,11 @@ def build_pilot(case, case_sha256, workbooks, *, extended=False, interval_irr=Fa
         optional.add("irr_policy")
     if yield_metrics:
         optional.add("yield_inputs")
-    if case.get("schema") == WORKBOOK_EQUITY_PILOT_SCHEMA:
+    schema = case.get("schema")
+    if schema in WORKBOOK_FUNDING_PILOT_SCHEMAS:
         optional.add("funding_inputs")
+    if schema == WORKBOOK_OCCUPANCY_PILOT_SCHEMA:
+        optional.add("occupancy_inputs")
     require(required <= case.keys() <= required | optional,
             "An explicit pilot workbook case and source hashes are required")
     spec = case["worksheet_case"]
@@ -247,7 +275,9 @@ def build_pilot(case, case_sha256, workbooks, *, extended=False, interval_irr=Fa
     require(isinstance(hashes, dict) and hashes.keys() <= set(SCENARIOS)
             and all(value is None or isinstance(value, str) and re.fullmatch(r"[0-9a-f]{64}", value)
                     for value in hashes.values()), "Use explicit worksheet SHA-256 values or missing entries")
-    scenarios = {name: read_scenario(spec, workbooks[name], hashes.get(name)) for name in SCENARIOS}
+    scenarios = {name: read_scenario(spec, workbooks[name], hashes.get(name),
+                                   include_sizing_service=schema == WORKBOOK_OCCUPANCY_PILOT_SCHEMA)
+                 for name in SCENARIOS}
     screening = run_screening(case, scenarios, json.loads(origin_raw)["scenario_context"],
                               extended=extended, interval_irr=interval_irr, yield_metrics=yield_metrics,
                               case_sha256=case_sha256)

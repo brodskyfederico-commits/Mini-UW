@@ -4,6 +4,7 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D125 calcula la ocupación económica de equilibrio con la renta, los costos y la cuota posrefinanciación del piloto. [Resultados y comandos](docs/workbook-occupancy-D125.md).
 - D124 reconcilia los fondos aplicados con el TDC de cada escenario, calcula equity/TDC y verifica el cotejo con los cobros por USD 10. [Resultados y comandos](docs/workbook-equity-tdc-D124.md).
 - D123 calcula Yield on Cost y spread a partir del NOI anual, el presupuesto y el cap de referencia del piloto. Verifica la simulación y conserva los cobros auditados por USD 10. [Resultados y comandos](docs/workbook-yoc-spread-D123.md).
 - D122 calcula la TIR anual desde los cobros por USD 10 en Base y Downside. Compara el intervalo exacto con los umbrales sintéticos y lo muestra en el PDF de una página. [Resultados y comandos](docs/workbook-irr-D122.md).

@@ -87,7 +87,7 @@ def render(result, *, show_capacity=False):
                        "PENDIENTE | Chequeo de ingreso y resultado sintético")
 
 
-def build_intake_case(case, case_sha256, workbook_raw, *, capacity_first=False):
+def build_intake_case(case, case_sha256, workbook_raw, *, capacity_first=False, include_sizing_service=False):
     _exact(case, {"schema", "source_fixture_sha256", "monthly_discount_rate"})
     raw = local_file(ROOT, SOURCE_FIXTURE).read_bytes()
     require(sha(raw) == case["source_fixture_sha256"], "The synthetic case basis has changed")
@@ -110,7 +110,7 @@ def build_intake_case(case, case_sha256, workbook_raw, *, capacity_first=False):
         milestone = "D118" if capacity_first else "D117"
         request = dict(id=f"{milestone}-{check['workbook_sha256'][:16]}", unresolved_tax=False)
         calculated = calculate(request, workbook_raw, origin, evidence, noi_raw, noi, spec, (rate,),
-                               with_report=True, capacity_first=capacity_first)
+                               with_report=True, capacity_first=capacity_first, include_sizing_service=include_sizing_service)
         require(calculated["worksheet"]["workbook_sha256"] == check["workbook_sha256"],
                 "The calculation did not use the preflight workbook")
         result.update(financial_calculation_run=True, calculation_blockers=calculated["blockers"],
@@ -124,5 +124,7 @@ def build_intake_case(case, case_sha256, workbook_raw, *, capacity_first=False):
                                               total_cost=calculated["total_cost"]),
                           capacity=report["capacity"], cash_recovery=calculated["recovery"][str(rate)],
                           cash_per_usd_10=initial_equity_cash(report["return_story"]))
+            if include_sizing_service:
+                result["annual_sizing_service"] = calculated["annual_sizing_service"]
     pdf = render(result, show_capacity=capacity_first)
     return result | dict(pdf_sha256=sha(pdf), page_count=1), pdf

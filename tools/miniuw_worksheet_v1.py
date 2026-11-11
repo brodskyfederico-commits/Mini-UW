@@ -39,6 +39,8 @@ WORKBOOK_EXTENDED_PILOT_SCHEMA = "miniuw.synthetic-workbook-screening-pilot.v2"
 WORKBOOK_IRR_PILOT_SCHEMA = "miniuw.synthetic-workbook-screening-pilot.v3"
 WORKBOOK_YIELD_PILOT_SCHEMA = "miniuw.synthetic-workbook-screening-pilot.v4"
 WORKBOOK_EQUITY_PILOT_SCHEMA = "miniuw.synthetic-workbook-screening-pilot.v5"
+WORKBOOK_OCCUPANCY_PILOT_SCHEMA = "miniuw.synthetic-workbook-screening-pilot.v6"
+WORKBOOK_FUNDING_PILOT_SCHEMAS = (WORKBOOK_EQUITY_PILOT_SCHEMA, WORKBOOK_OCCUPANCY_PILOT_SCHEMA)
 PACKAGE_SCHEMA = "miniuw.synthetic-unified-worksheet-package.v1"
 COSTED_SALE = "templates/synthetic-worksheet-sale-costs-D63.json"
 COSTED_PROFILE = "with_refinance_worksheet_sale"
@@ -81,7 +83,7 @@ def read_case(case):
 def build_results(raw, *, workbook_raw=None, downside_workbook_raw=None):
     case = _json(raw, MAX_EXTENDED_PILOT_BYTES)
     schema = case.get("schema") if isinstance(case, dict) else None
-    yield_metrics = schema in (WORKBOOK_YIELD_PILOT_SCHEMA, WORKBOOK_EQUITY_PILOT_SCHEMA)
+    yield_metrics = schema in (WORKBOOK_YIELD_PILOT_SCHEMA, *WORKBOOK_FUNDING_PILOT_SCHEMAS)
     interval_irr = schema == WORKBOOK_IRR_PILOT_SCHEMA or yield_metrics
     extended = schema == WORKBOOK_EXTENDED_PILOT_SCHEMA or interval_irr
     require(extended or len(raw) <= 4096, "The worksheet case exceeds its schema size limit")

@@ -25,7 +25,7 @@ SALE_CELLS = {"C67": "exit_cap", "C68": "sale_cost_fraction"}
 
 
 def calculate(case, worksheet, fixture, base, noi_raw, noi, initial_spec, rates=(), with_report=False, *,
-              capacity_first=False):
+              capacity_first=False, include_sizing_service=False):
     checked = worksheet_parameters(worksheet, fixture["scenario_context"], fixture["worksheet_as_of_UTC"],
                                    SALE_CELLS)
     result = dict(state="PENDING", decision="PENDING", worksheet=checked, candidate_price=None,
@@ -96,6 +96,12 @@ def calculate(case, worksheet, fixture, base, noi_raw, noi, initial_spec, rates=
         require(report["return_story"] == investor, "The report ledger differs from the costed sale ledger")
         report["allocation_parent"] = ledger(investor, json.loads(revision.guarded_run.compiled_raw))
         result["report"] = report
+        if include_sizing_service:
+            loan = recovered.capacity_inputs.new_loan
+            payment = loan.run.payload
+            result["annual_sizing_service"] = payment["annual_sizing"] | dict(
+                currency=payment["currency"], loan_source_sha256=sha(loan.loan_raw), loan_run_sha256=loan.run.sha256,
+                regular_payment=payment["regular_payment_due"])
     return result
 
 

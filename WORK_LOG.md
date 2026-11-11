@@ -1596,3 +1596,7 @@ Se incorporan los insumos sintéticos de D70 por escenario y se calcula el YoC d
 ## D124 — Equity aplicado sobre el TDC del piloto
 
 Se vincula el registro de fondos de D71 al presupuesto D123 por escenario y revisión. Los fondos aplicados cuadran con el TDC. El equity/TDC da 40 % en Base y 5/11 en Downside. Se auditan PASS, FAIL aislado por un máximo de equity más exigente y PENDING por datos, reglas o revisión incompatible. Los expedientes conservan los cobros por USD 10. [Resultados y comandos](docs/workbook-equity-tdc-D124.md).
+
+## D125 — Ocupación económica de equilibrio
+
+El perfil D72 de renta y costos usa el servicio regular anual equivalente del préstamo verificado por la corrida. El cruce es 87,32 % en Base y 103,94 % en Downside. Se prueban el límite inviable, un escenario compatible y los bloqueos por insumos o reglas ausentes, con la caja por USD 10 reproducida. [Resultados y comandos](docs/workbook-occupancy-D125.md).
