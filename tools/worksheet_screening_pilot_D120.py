@@ -10,7 +10,7 @@ from miniuw_foundation.debt_service import rational
 from miniuw_foundation.expense_cash_detail import _exact
 from miniuw_foundation.scheduled_expense_case import sha
 from miniuw_foundation.screening import SCHEMA, simulate_screening
-from miniuw_worksheet_v1 import WORKBOOK_CAPACITY_SCHEMA, encoded
+from miniuw_worksheet_v1 import WORKBOOK_CAPACITY_SCHEMA, WORKBOOK_EQUITY_PILOT_SCHEMA, encoded
 from worksheet_intake_case_D117 import SOURCE_FIXTURE, build_intake_case
 from worksheet_plan_refinance_D109 import LABELS, SCENARIOS
 from worksheet_sale_rate_grid_D84 import money
@@ -84,6 +84,7 @@ def run_screening(case, scenarios, context, *, extended=False, interval_irr=Fals
     values = [row for name in SCENARIOS for row in metric_values(name, scenarios[name])]
     provenance = {}
     computed_yield = {}
+    computed_equity = None
     if extended:
         from worksheet_reference_metrics_D121 import REFERENCE_METRICS, reference_records
         catalog = {key: value for key, value in REFERENCE_METRICS.items() if key != "IRR" or not interval_irr}
@@ -93,6 +94,12 @@ def run_screening(case, scenarios, context, *, extended=False, interval_irr=Fals
             metrics = metrics | CALCULATED_METRICS
             derived, computed_yield = yield_records(case.get("yield_inputs"), scenarios, case_sha256)
             values.extend(derived)
+            if case.get("schema") == WORKBOOK_EQUITY_PILOT_SCHEMA:
+                from worksheet_equity_tdc_D124 import METRIC, METRIC_ID, equity_records
+                del catalog[METRIC_ID]
+                metrics = metrics | {METRIC_ID: METRIC}
+                derived, computed_equity = equity_records(case.get("funding_inputs"), computed_yield, case_sha256)
+                values.extend(derived)
         metrics = metrics | catalog
         references, sources = reference_records(case.get("reference_metrics"), scenarios, case_sha256, metrics=catalog)
         values.extend(references)
@@ -121,6 +128,8 @@ def run_screening(case, scenarios, context, *, extended=False, interval_irr=Fals
         result["scalar_run_sha256"] = run_hash
         if yield_metrics:
             result.update(component="D123", yield_by_scenario=computed_yield)
+        if computed_equity is not None:
+            result.update(component="D124", equity_tdc_by_scenario=computed_equity)
         run_hash = sha(encoded(result))
     require(result["decision"] == "PENDING" and not result["criteria_adopted"] and not result["production_authorized"],
             "The synthetic screening acquired decision authority")
@@ -168,6 +177,13 @@ def render_pilot(scenarios, screening, *, extended=False, interval_irr=False, yi
     states = {(r["metric_id"], r["scenario_id"]): RESULT_LABELS[r["state"]] for r in screening["comparisons"]}
     lines.append(("REGLAS SINTÉTICAS POR MÉTRICA", True))
     labels = METRIC_LABELS
+    computed_equity = screening.get("equity_tdc_by_scenario")
+    ratios = {}
+    if yield_metrics:
+        ratios = {metric: {name: row["values"][metric] for name, row in screening["yield_by_scenario"].items()}
+                  for metric in ("YoC", "spread")}
+    if computed_equity is not None:
+        ratios["equity_TDC"] = {name: row["equity_to_tdc"] for name, row in computed_equity.items()}
     if extended:
         from worksheet_reference_metrics_D121 import REFERENCE_LABELS
         labels = labels | REFERENCE_LABELS
@@ -177,11 +193,10 @@ def render_pilot(scenarios, screening, *, extended=False, interval_irr=False, yi
             parts = [f"{name} {display_enclosure(result['annual_enclosure'])} ({states[metric, name]})"
                      for name, result in screening["irr_by_scenario"].items()]
             lines.append((f"{label} | " + " | ".join(parts), False))
-        elif yield_metrics and metric in ("YoC", "spread"):
+        elif metric in ratios:
             from worksheet_yoc_spread_D123 import display_yield
             parts = []
-            for name, result in screening["yield_by_scenario"].items():
-                value = result["values"][metric]
+            for name, value in ratios[metric].items():
                 display = display_yield(metric, value)
                 if value is not None:
                     display += f" ({states[metric, name]})"
@@ -192,13 +207,19 @@ def render_pilot(scenarios, screening, *, extended=False, interval_irr=False, yi
     if screening["simulation_result"] == "PENDING":
         lines.append(("Consultá los datos o reglas pendientes en el expediente.", False))
     lines.append(("Capital agregado del proyecto. Decisión de inversión PENDING.", False))
-    if yield_metrics:
+    milestone = "D120"
+    if computed_equity is not None:
+        milestone = "D124"
+        lines.append(("Siete métricas calculadas y tres referencias sintéticas declaradas.", False))
+    elif yield_metrics:
+        milestone = "D123"
         lines.append(("Seis métricas calculadas y cuatro referencias sintéticas declaradas.", False))
     elif interval_irr:
+        milestone = "D122"
         lines.append(("Cuatro métricas calculadas y seis referencias sintéticas declaradas.", False))
     elif extended:
+        milestone = "D121"
         lines.append(("Tres métricas del libro de caja y siete referencias sintéticas declaradas.", False))
-    milestone = "D123" if yield_metrics else "D122" if interval_irr else "D121" if extended else "D120"
     return render_page(f"{milestone} | Piloto sintético de Base y Downside", lines, 15 if extended else 18,
                        "MINI-UW | SI INVIERTO USD 10, ¿CUÁNTO COBRO Y CUÁNDO?",
                        "Planilla, retorno y simulación de decisión")
@@ -213,6 +234,8 @@ def build_pilot(case, case_sha256, workbooks, *, extended=False, interval_irr=Fa
         optional.add("irr_policy")
     if yield_metrics:
         optional.add("yield_inputs")
+    if case.get("schema") == WORKBOOK_EQUITY_PILOT_SCHEMA:
+        optional.add("funding_inputs")
     require(required <= case.keys() <= required | optional,
             "An explicit pilot workbook case and source hashes are required")
     spec = case["worksheet_case"]

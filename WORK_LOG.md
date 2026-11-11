@@ -1592,3 +1592,7 @@ La corrida usa las fechas auditadas, calcula la TIR anual como intervalo y la co
 ## D123 — Yield on Cost y spread calculados en el piloto
 
 Se incorporan los insumos sintéticos de D70 por escenario y se calcula el YoC desde el NOI anual y el costo total. El spread usa el cap de referencia explícito. Se auditan FAIL con las reglas de partida, PASS con igualdad inclusiva y PENDING por cap, costo, NOI o regla faltantes. Los cobros por USD 10 se concilian con las planillas. [Retorno, métricas y comandos](docs/workbook-yoc-spread-D123.md).
+
+## D124 — Equity aplicado sobre el TDC del piloto
+
+Se vincula el registro de fondos de D71 al presupuesto D123 por escenario y revisión. Los fondos aplicados cuadran con el TDC. El equity/TDC da 40 % en Base y 5/11 en Downside. Se auditan PASS, FAIL aislado por un máximo de equity más exigente y PENDING por datos, reglas o revisión incompatible. Los expedientes conservan los cobros por USD 10. [Resultados y comandos](docs/workbook-equity-tdc-D124.md).

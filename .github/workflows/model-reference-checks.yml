@@ -263,5 +263,7 @@ jobs:
         run: PYTHONPATH=src python tools/check_worksheet_irr_D122.py
       - name: Verify YoC and spread derived from the synthetic workbook pilot sources
         run: PYTHONPATH=src python tools/check_worksheet_yoc_spread_D123.py
+      - name: Verify applied equity over the synthetic workbook pilot cost budget
+        run: PYTHONPATH=src python tools/check_worksheet_equity_tdc_D124.py
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v

@@ -92,6 +92,6 @@ def yield_records(inventory, scenarios, case_sha256):
 def display_yield(metric, value):
     if value is None:
         return "PENDING"
-    if metric == "YoC":
+    if metric in ("YoC", "equity_TDC"):
         return f"{money(rational(amount(value) * 100))}%"
     return f"{money(value)} bps"
