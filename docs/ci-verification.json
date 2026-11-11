@@ -276,5 +276,34 @@
       "cause_confirmed": false
     },
     "scope": "Local full technical suite and synthetic metric controls. No financial certification, real deal decision or deployment."
+  },
+  "follow_up_D103": {
+    "diagnostic_commit_sha": "9ddc587ab9f1eaed2d0161a55ecdc634796c26e5",
+    "workflow_run_id": 43007394587,
+    "runner_label": "ubuntu-24.04",
+    "attempts": [
+      {
+        "attempt": 1,
+        "job_id": 130478170286,
+        "runner_assigned": false,
+        "steps": 0,
+        "conclusion": "failure"
+      },
+      {
+        "attempt": 2,
+        "job_id": 130482166900,
+        "runner_assigned": false,
+        "steps": 0,
+        "conclusion": "failure"
+      }
+    ],
+    "previous_successful_run_id": 42725981686,
+    "previous_successful_runner_label": "ubuntu-24.04",
+    "annotation_count_observed": 1,
+    "annotation_readable_via_connector": false,
+    "job_logs_available": false,
+    "account_level_cause_confirmed": false,
+    "focused_workflow": ".github/workflows/miniuw-integral-usd10.yml",
+    "scope": "Synthetic USD 10 integration verification only"
   }
 }

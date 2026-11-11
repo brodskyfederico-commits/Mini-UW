@@ -1494,3 +1494,9 @@ La prueba supone aportes sintéticos a prorrata, con la misma participación, an
 La prueba automatizada ejecuta los comandos `run` y `audit` sobre el expediente sintético de Base y Downside. Compara fechas, categorías, aportes, cobros, múltiplo y faltante con flujos esperados independientes. El caso normal cobra USD 13,02 por USD 10 iniciales. El adverso aporta USD 0,80 extra en abril, cobra USD 9,02 en total y queda con USD 1,78 sin recuperar.
 
 Se verifican seis precios alrededor del equilibrio de caja nominal, la ruta sin refinanciación y dos expedientes que quedan PENDING por capacidad excedida o DSCR faltante. La prueba de tenencia verifica nueve cierres cerca del agotamiento de caja y seis estados PENDING sin términos de financiación. La verificación conserva la decisión PENDING y utiliza exclusivamente datos sintéticos. [Resumen de una página](docs/review/MiniUW_D102_Verificacion_Integral_USD10.pdf).
+
+## D103 — Diagnóstico de inicio en GitHub Actions y verificación integral independiente
+
+La corrida D102 falló dos veces antes de asignar un runner. Ambos trabajos devolvieron cero pasos. La misma etiqueta ubuntu-24.04 aparece en la última ejecución exitosa. GitHub informa una anotación que el conector no puede leer y no proporciona logs del trabajo sin iniciar. El motivo de cuenta o de plataforma queda por confirmar. [Registro de CI](docs/ci-verification.json).
+
+Se agrega un workflow que solicita únicamente la prueba integral sintética por USD 10 con disparador manual y al cambiar su configuración o verificador. Usa el mismo entorno y dependencias del workflow completo con permiso de contenido de lectura. [Instrucciones de verificación](docs/reference-check-runbook.md).
