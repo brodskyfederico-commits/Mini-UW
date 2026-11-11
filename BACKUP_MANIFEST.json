@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D114 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D115 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/miniuw-integral-usd10.yml",
@@ -8,8 +8,8 @@
     },
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 16487,
-      "sha256": "65fe593f3fbcb5749f5d621cb79efee5848bfb28eb05ebe9068370e5f9a16318"
+      "bytes": 16629,
+      "sha256": "b8cea99fa323a3a0c18959ba5282f33e7c5b44ec055dbcb022d26486a94884d4"
     },
     {
       "path": ".gitignore",
@@ -23,13 +23,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 78520,
-      "sha256": "ad1b76237e4772d2da5d8ac22ee3a73c3183214a08fa658ba45125114f14a50e"
+      "bytes": 78809,
+      "sha256": "ebe84112bbe10b93e220b0acdb2440d8512bf7a640744868f654d5c56386ebaf"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 328242,
-      "sha256": "cdae2225a6ce2f8e71941284540ececfb4bb58d046806c84601b2d65ec100362"
+      "bytes": 328648,
+      "sha256": "d56c879bb3bf7033735f7ffb0fc7a8bfcfc0a4c0405fa576e77ae3c0f16e5b76"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -990,6 +990,11 @@
       "path": "docs/review/MiniUW_D114_Venta_Prevista_vs_Minimo_2pct.pdf",
       "bytes": 3903,
       "sha256": "7e411253c19449b0e8369c807663abb2bb02e7d020f32ce725c6c102b9884686"
+    },
+    {
+      "path": "docs/review/MiniUW_D115_Aumento_Venta_para_Recuperar_2pct.pdf",
+      "bytes": 3976,
+      "sha256": "c487db31c5dfbb365352d386b1278f739fe113870fd461f2e17c400243c33835"
     },
     {
       "path": "docs/review/MiniUW_D81_Ocho_Revisiones_Sinteticas.zip",
@@ -6605,6 +6610,11 @@
       "path": "tools/compare_sale_to_minimum_D114.py",
       "bytes": 7703,
       "sha256": "25676022736434d880f5e1dc1afa77adb6aa7017702b45046df652f159a97b1f"
+    },
+    {
+      "path": "tools/compare_sale_uplift_D115.py",
+      "bytes": 6667,
+      "sha256": "294472fbd214bf3395225934e267455b180e53604dcb5f7f5f640499e2a36a61"
     },
     {
       "path": "tools/construction_demo_support.py",

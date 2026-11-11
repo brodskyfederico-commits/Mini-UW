@@ -1556,3 +1556,7 @@ El perfil de comparación añade el neto de venta por USD 10 y el precio bruto m
 ## D114 — Venta prevista frente al mínimo al 2 % mensual
 
 Se reproducen las cuatro variantes sintéticas D113 y se cotejan el neto previsto, el mínimo exacto y la diferencia por USD 10 en la fecha de venta. Al descontar esa diferencia al aporte inicial, coincide exactamente con el VAN de cada caso. El PDF conserva aportes y cobros por fecha y presenta los precios brutos del proyecto por separado. [Comparación de una página](docs/review/MiniUW_D114_Venta_Prevista_vs_Minimo_2pct.pdf).
+
+## D115 — Aumento necesario de la venta prevista al 2 % mensual
+
+Se reproduce D114 y se calcula el aumento desde el precio bruto previsto hasta el mínimo al centavo, tanto en USD como en porcentaje del previsto. El neto de ese aumento se concilia con el faltante por USD 10 y el costo de venta proporcional. [Comparación de una página](docs/review/MiniUW_D115_Aumento_Venta_para_Recuperar_2pct.pdf).
