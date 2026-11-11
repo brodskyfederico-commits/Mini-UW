@@ -22,13 +22,13 @@ from miniuw_foundation.workbooks import MAIN
 CASE = ROOT / "templates/synthetic-workbook-intake-case-D117.json"
 
 
-def workbook_with_dscr(raw, literal=None):
-    ref = inspect_synthetic_input_sheet(raw).cells["C72"]["sheet_part"]
+def workbook_with_numeric_cell(raw, address, literal=None):
+    ref = inspect_synthetic_input_sheet(raw).cells[address]["sheet_part"]
     with ZipFile(BytesIO(raw)) as book:
         parts = {name: book.read(name) for name in book.namelist()}
     xml = ElementTree.fromstring(parts[ref])
     ns = {"m": MAIN}
-    cell = xml.find("./m:sheetData/m:row/m:c[@r='C72']", ns)
+    cell = xml.find(f"./m:sheetData/m:row/m:c[@r='{address}']", ns)
     for child in list(cell):
         cell.remove(child)
     cell.attrib.pop("t", None)
@@ -70,8 +70,8 @@ def verify(temp, saved_output):
         raw = b64decode(record["xlsx_base64"], validate=True)
         require(sha(raw) == record["sha256"], "Synthetic workbook bytes differ")
         books[key] = raw
-    books["two_missing"] = workbook_with_dscr(books["missing"])
-    books["partial"] = workbook_with_dscr(books["base"])
+    books["two_missing"] = workbook_with_numeric_cell(books["missing"], "C72")
+    books["partial"] = workbook_with_numeric_cell(books["base"], "C72")
     for before, after in (("missing", "base"), ("base", "zero"), ("two_missing", "partial")):
         require(changed_cells(books[before], books[after]) == {"C68"}, "The correction changed other cells")
 

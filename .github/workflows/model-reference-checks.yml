@@ -253,5 +253,7 @@ jobs:
         run: PYTHONPATH=src python tools/check_worksheet_intake_case_D117.py
       - name: Verify worksheet DSCR corrections and the refinance capacity gate
         run: PYTHONPATH=src python tools/check_worksheet_capacity_case_D118.py
+      - name: Verify the lower LTV or DSCR limit through the worksheet and return
+        run: PYTHONPATH=src python tools/check_worksheet_ltv_case_D119.py
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v

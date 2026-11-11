@@ -4,6 +4,7 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D119 verifica que la corrida use el menor límite entre C71 (LTV) y C72 (DSCR), con el retorno por USD 10 condicionado a la capacidad. [Casos y reproducción](docs/worksheet-ltv-case-D119.md).
 - D118 recalcula la capacidad desde C72 y muestra el límite incluso cuando el préstamo deja el retorno por USD 10 PENDING. [Casos y comandos](docs/worksheet-capacity-case-D118.md).
 - D117 conecta el checklist de la planilla con la corrida y su auditoría. Las correcciones crean otro expediente con resultados recalculados. [Casos y comandos](docs/worksheet-intake-case-D117.md).
 - D116 revisa la planilla sintética de refinanciación y venta al recibirla y localiza los faltantes, valores inválidos y conflictos antes de calcular. [Checklist y comandos](docs/worksheet-preflight-D116.md).

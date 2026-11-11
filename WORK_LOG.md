@@ -1572,3 +1572,7 @@ El comando común recibe el XLSX como fuente auditable y ejecuta la corrida de r
 ## D118 — Corrección de C72 y control de capacidad antes del retorno
 
 La corrida vincula el DSCR de C72 con la capacidad bancaria y verifica su valor con un cálculo independiente. Se comparan una celda vacía, una corrección compatible y otra que deja el préstamo por encima del límite. El expediente bloqueado muestra la capacidad y deja PENDING el cierre y el retorno por USD 10. [Casos y comandos](docs/worksheet-capacity-case-D118.md).
+
+## D119 — Menor límite entre LTV y DSCR en la corrida de la planilla
+
+Se auditan seis copias sintéticas con el préstamo fijo. Se verifica que limite LTV o DSCR según sus valores exactos, que la igualdad conserve los cobros y que superar el menor límite deje PENDING. Una C71 vacía retiene el cálculo. [Casos y comandos](docs/worksheet-ltv-case-D119.md).

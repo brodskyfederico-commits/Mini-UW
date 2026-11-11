@@ -7,7 +7,7 @@ from tempfile import TemporaryDirectory
 import json
 
 from check_operating_replay_D20 import ROOT, amount, local_file, require
-from check_worksheet_intake_case_D117 import audit, changed_cells, workbook_with_dscr
+from check_worksheet_intake_case_D117 import audit, changed_cells, workbook_with_numeric_cell
 from check_worksheet_sale_costs_D63 import FIXTURE as WORKBOOKS
 from miniuw_foundation.scheduled_expense_case import sha
 from worksheet_plan_refinance_D109 import CAPACITY_BLOCKER
@@ -20,13 +20,13 @@ def verify(temp, saved_output):
     archived = json.loads(local_file(ROOT, WORKBOOKS).read_bytes())["workbooks"]["base"]
     raw = b64decode(archived["xlsx_base64"], validate=True)
     require(sha(raw) == archived["sha256"], "The synthetic source workbook changed")
-    blank = workbook_with_dscr(raw)
+    blank = workbook_with_numeric_cell(raw, "C72")
     if saved_output is not None:
         saved_output.mkdir(exist_ok=True)
     output_root = saved_output or temp
     observed = {}
     for label, dscr in (("blank", None), ("compatible", "2"), ("above-capacity", "4")):
-        book = blank if dscr is None else workbook_with_dscr(raw, dscr)
+        book = blank if dscr is None else workbook_with_numeric_cell(raw, "C72", dscr)
         if dscr is not None:
             require(changed_cells(blank, book) == {"C72"}, "The DSCR correction changed other cells")
         path = temp / f"{label}.xlsx"
