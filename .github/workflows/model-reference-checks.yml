@@ -239,5 +239,7 @@ jobs:
         run: PYTHONPATH=src python tools/compare_revised_plan_D110.py
       - name: Verify the one-page revised-plan monthly refinance crossover
         run: PYTHONPATH=src python tools/compare_refinance_discount_D111.py
+      - name: Verify the selected-rate revised-plan comparison through the worksheet and PDF audit
+        run: PYTHONPATH=src python tools/check_plan_discount_D112.py
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v

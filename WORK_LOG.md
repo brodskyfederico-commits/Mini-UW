@@ -1544,3 +1544,7 @@ Se reproducen las cuatro variantes sintéticas del plano A-601 revisado a partir
 ## D111 — Tasa mensual de equilibrio de la refinanciación
 
 Se reproducen los cuatro libros de caja D110 y se descuentan sus flujos mensuales al 30/03/2027. La diferencia entre variantes adelanta USD 4,49 netos a marzo de 2028 y reduce los cobros de junio de 2028. La raíz común queda acotada con racionales exactos en 1,0934 % mensual redondeado. La comparación verifica el cambio de orden y los VAN de Base y Downside a 0 %, 1 %, cerca de la raíz y 2 %. [Comparación de una página](docs/review/MiniUW_D111_Tasa_de_Equilibrio_Refinanciacion.pdf).
+
+## D112 — Comparación con y sin refinanciación a la tasa declarada en la entrada
+
+El comando habitual genera y audita un expediente de una página con la tasa mensual explícita. Reproduce los aportes y cobros por USD 10 y calcula el VAN exacto de las alternativas disponibles. Prueba 0 % y 2 %, un escenario bloqueado y ambos escenarios bloqueados. Se retiran sólo los flujos y el VAN de la variante afectada. El orden por VAN se emite cuando ambas alternativas están disponibles. [Caso, alcance y reproducción](docs/plan-discount-comparison-D112.md).
