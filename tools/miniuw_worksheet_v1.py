@@ -13,6 +13,7 @@ from check_worksheet_sale_recovery_D43 import FIXTURE as SALE, worksheet_binding
 from miniuw_foundation.debt_service import _fraction
 from miniuw_foundation.drafts import canonical
 from miniuw_foundation.expense_cash_detail import _exact, _json
+from miniuw_foundation.intake import MAX_BYTES as MAX_WORKBOOK_BYTES
 from miniuw_foundation.scheduled_expense_case import sha
 from miniuw_foundation.worksheet_settled_output import assemble_worksheet_settled_output
 
@@ -31,11 +32,13 @@ SCENARIO_AVAILABILITY_SCHEMA = "miniuw.synthetic-investor-scenarios.v6"
 PLAN_REFINANCE_REQUEST_SCHEMA = "miniuw.synthetic-plan-refinance-request.v1"
 PLAN_DISCOUNT_COMPARISON_SCHEMA = "miniuw.synthetic-plan-discount-comparison.v1"
 PLAN_DISCOUNT_RECOVERY_SCHEMA = "miniuw.synthetic-plan-discount-comparison.v2"
+WORKBOOK_INTAKE_SCHEMA = "miniuw.synthetic-workbook-intake-case.v1"
 PACKAGE_SCHEMA = "miniuw.synthetic-unified-worksheet-package.v1"
 COSTED_SALE = "templates/synthetic-worksheet-sale-costs-D63.json"
 COSTED_PROFILE = "with_refinance_worksheet_sale"
 ARCHIVES = {"without_refinance": SALE, "with_refinance": REFINANCE, COSTED_PROFILE: COSTED_SALE}
 FILES = frozenset({"case.json", "results.json", "MiniUW_Resumen.pdf", "package.json"})
+WORKBOOK_FILE = "Inputs.xlsx"
 MAX_FILE_BYTES = 4 * 1024 * 1024
 
 
@@ -67,8 +70,13 @@ def read_case(case):
     return case, archive_path, archive_raw, bindings, rate
 
 
-def build_results(raw):
+def build_results(raw, *, workbook_raw=None):
     case = _json(raw, 4096)
+    if isinstance(case, dict) and case.get("schema") == WORKBOOK_INTAKE_SCHEMA:
+        from worksheet_intake_case_D117 import build_intake_case
+        require(workbook_raw is not None, "The intake case requires the exact synthetic Inputs workbook")
+        return build_intake_case(case, sha(raw), workbook_raw)
+    require(workbook_raw is None, "This case schema does not accept an additional workbook")
     if isinstance(case, dict) and case.get("schema") == SCENARIO_INVESTOR_SCHEMA:
         from worksheet_investor_scenarios_D75 import build_scenarios
         return build_scenarios(case, sha(raw))
@@ -176,9 +184,11 @@ def encoded(value):
     return (canonical(value) + "\n").encode()
 
 
-def build_package(raw):
-    result, pdf = build_results(raw)
+def build_package(raw, *, workbook_raw=None):
+    result, pdf = build_results(raw, workbook_raw=workbook_raw)
     files = {"case.json": raw, "results.json": encoded(result), "MiniUW_Resumen.pdf": pdf}
+    if workbook_raw is not None:
+        files[WORKBOOK_FILE] = workbook_raw
     files["package.json"] = encoded(dict(
         schema=PACKAGE_SCHEMA, state=result["state"], decision=result["decision"],
         files=[dict(path=name, bytes=len(content), sha256=sha(content)) for name, content in sorted(files.items())],
@@ -190,7 +200,7 @@ def build_package(raw):
 def read_package(directory):
     require(not directory.is_symlink() and directory.is_dir(), "A regular output directory is required")
     paths = list(directory.iterdir())
-    require({p.name for p in paths} == FILES
+    require({p.name for p in paths} in (FILES, FILES | {WORKBOOK_FILE})
             and all(p.is_file() and not p.is_symlink() and p.stat().st_size <= MAX_FILE_BYTES for p in paths),
             "Exact regular case, results, PDF and manifest files are required")
     return {p.name: p.read_bytes() for p in paths}
@@ -198,7 +208,7 @@ def read_package(directory):
 
 def verify_package(directory):
     saved = read_package(directory)
-    expected, result = build_package(saved["case.json"])
+    expected, result = build_package(saved["case.json"], workbook_raw=saved.get(WORKBOOK_FILE))
     require(saved == expected, "Output does not match source-first replay")
     return status("verified_source_first", result)
 
@@ -208,8 +218,8 @@ def status(operation, result):
                 decision=result["decision"], pdf_sha256=result["pdf_sha256"], page_count=1)
 
 
-def write_package(raw, directory):
-    expected, result = build_package(raw)
+def write_package(raw, directory, *, workbook_raw=None):
+    expected, result = build_package(raw, workbook_raw=workbook_raw)
     if directory.exists() or directory.is_symlink():
         require(read_package(directory) == expected, "Existing output differs from the requested case")
         return status("verified_identical_output", result)
@@ -237,6 +247,7 @@ def main():
     run = subcommands.add_parser("run")
     run.add_argument("case", type=Path)
     run.add_argument("--output", required=True, type=Path)
+    run.add_argument("--workbook", type=Path)
     audit = subcommands.add_parser("audit")
     audit.add_argument("directory", type=Path)
     preflight = subcommands.add_parser("preflight")
@@ -247,13 +258,17 @@ def main():
     try:
         if args.command == "run":
             require(args.case.is_file() and args.case.stat().st_size <= 4096, "A bounded case JSON file is required")
-            result = write_package(args.case.read_bytes(), args.output)
+            workbook_raw = None
+            if args.workbook is not None:
+                require(args.workbook.is_file() and args.workbook.stat().st_size <= MAX_WORKBOOK_BYTES,
+                        "Se requiere una planilla XLSX sintética dentro del tamaño admitido.")
+                workbook_raw = args.workbook.read_bytes()
+            result = write_package(args.case.read_bytes(), args.output, workbook_raw=workbook_raw)
         elif args.command == "audit":
             result = verify_package(args.directory)
         else:
-            from miniuw_foundation.intake import MAX_BYTES
             from worksheet_preflight_D116 import preflight as inspect_workbook
-            require(args.workbook.is_file() and args.workbook.stat().st_size <= MAX_BYTES,
+            require(args.workbook.is_file() and args.workbook.stat().st_size <= MAX_WORKBOOK_BYTES,
                     "Se requiere una planilla XLSX sintética dentro del tamaño admitido.")
             result = inspect_workbook(args.workbook.read_bytes(), args.deal_id, args.snapshot)
         print(json.dumps(result, ensure_ascii=False))

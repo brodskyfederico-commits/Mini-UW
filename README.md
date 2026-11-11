@@ -4,6 +4,7 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D117 conecta el checklist de la planilla con la corrida y su auditoría. Las correcciones crean otro expediente con resultados recalculados. [Casos y comandos](docs/worksheet-intake-case-D117.md).
 - D116 revisa la planilla sintética de refinanciación y venta al recibirla y localiza los faltantes, valores inválidos y conflictos antes de calcular. [Checklist y comandos](docs/worksheet-preflight-D116.md).
 - D115 muestra cuánto debe aumentar la venta prevista en USD y porcentaje para recuperar los aportes al 2 % mensual. [PDF de una página por USD 10](docs/review/MiniUW_D115_Aumento_Venta_para_Recuperar_2pct.pdf). Reproducí con `PYTHONPATH=src python3 tools/compare_sale_uplift_D115.py`.
 - D114 compara la venta prevista con el mínimo al 2 % mensual y muestra cuánto falta al vender y en valor presente por USD 10. [PDF de una página](docs/review/MiniUW_D114_Venta_Prevista_vs_Minimo_2pct.pdf). Reproducí con `PYTHONPATH=src python3 tools/compare_sale_to_minimum_D114.py`.

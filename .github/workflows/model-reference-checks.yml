@@ -249,5 +249,7 @@ jobs:
         run: PYTHONPATH=src python tools/compare_sale_uplift_D115.py
       - name: Verify the synthetic workbook intake checklist
         run: PYTHONPATH=src python tools/check_worksheet_preflight_D116.py
+      - name: Verify worksheet intake and one-cell corrections through run and audit
+        run: PYTHONPATH=src python tools/check_worksheet_intake_case_D117.py
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v

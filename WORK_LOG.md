@@ -1564,3 +1564,7 @@ Se reproduce D114 y se calcula el aumento desde el precio bruto previsto hasta e
 ## D116 — Checklist al recibir la planilla sintética
 
 Se agrega el chequeo de ingreso de la planilla para las cinco celdas de refinanciación y venta ya conectadas. Se conserva el archivo y se localizan los faltantes, las fórmulas, los valores fuera de dominio y los conflictos de caso o fecha. El comando devuelve PENDING cuando un dato requerido necesita corrección y mantiene pendiente la decisión en todos los casos. [Alcance y reproducción](docs/worksheet-preflight-D116.md).
+
+## D117 — Checklist de ingreso conectado con la corrida sintética
+
+El comando común recibe el XLSX como fuente auditable y ejecuta la corrida de refinanciación y venta cuando el checklist está completo. Se prueban cinco copias y tres correcciones que sólo cambian C68. Un DSCR faltante mantiene PENDING. Cambiar el costo de venta recalcula el neto, los cobros por USD 10 y el mínimo de venta. Se verifica que una corrección no reemplace el expediente y que la auditoría rechace un XLSX sustituido. [Casos y reproducción](docs/worksheet-intake-case-D117.md).
