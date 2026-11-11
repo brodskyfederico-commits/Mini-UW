@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D106 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D107 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/miniuw-integral-usd10.yml",
@@ -8,8 +8,8 @@
     },
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 15232,
-      "sha256": "a58becf1a0e07c1031d17df6154be86db4e80e75c22570ce3a1359271e9d4bd1"
+      "bytes": 15383,
+      "sha256": "62aec1e4b90b3f6596db60d0d8c7c6e99886df02cb0918caaba3041cd125c5b1"
     },
     {
       "path": ".gitignore",
@@ -23,13 +23,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 76579,
-      "sha256": "88e1809f0b740910bc694339c419866aa3144fe9d56527b959358cf726beb2fb"
+      "bytes": 76785,
+      "sha256": "1b2f3e225a2bae2cbe9556d46df4a0f380520e08f4c9782a458f5f0a19c5f6f2"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 323596,
-      "sha256": "bb67bb7660ee94271577f459947e2c1ea58e0dc1516110ccff1791c0a3bbf7ab"
+      "bytes": 324245,
+      "sha256": "a33827118fdd1caf272a438c8f68fcd93344b108886f14948de966d4360c1e88"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -800,6 +800,11 @@
       "path": "docs/plan-calculation-impact-D106.md",
       "bytes": 5155,
       "sha256": "bc42ea517297cedcf072934764f1a2f3bcff01bc93169c822fe7baedfb5541a8"
+    },
+    {
+      "path": "docs/plan-return-per-usd10-D107.md",
+      "bytes": 3954,
+      "sha256": "7a3f3d0ca0eeddc37b055c25fd58645d72a2ea09cf790373f71dcc101b68938f"
     },
     {
       "path": "docs/plan-schedule-intake-D105.md",
@@ -6933,8 +6938,13 @@
     },
     {
       "path": "tools/plan_impact_D106.py",
-      "bytes": 9606,
-      "sha256": "a4b63dc8d3718ab7114be04e0a30dd0d9136ea0280f7e5b7467aca049df34566"
+      "bytes": 9696,
+      "sha256": "d4ff4236e22ce5f7bd99ac55ce3123a5b95c79b804add229ca03420fa537e57b"
+    },
+    {
+      "path": "tools/plan_return_D107.py",
+      "bytes": 18916,
+      "sha256": "8d0a5ead6eda5693c039c98040bcd7c561ab815e4cc0caa842e079addd54f8ee"
     },
     {
       "path": "tools/plan_schedule_D105.py",

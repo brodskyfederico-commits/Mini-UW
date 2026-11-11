@@ -34,7 +34,7 @@ def values_at(comparison, revision):
     return values
 
 
-def run_operations(comparison, revision, bases):
+def operations_source(comparison, revision, bases):
     values = values_at(comparison, revision)
     groups = []
     for group_id, (basis, rate) in bases.items():
@@ -59,7 +59,7 @@ def run_operations(comparison, revision, bases):
              source_ref=f"D106/{item}", policy_ref="D106/synthetic-assumptions")
         for item, (basis, rate) in EXPENSES.items()
     ]
-    payload = {
+    return {
         "schema": SCHEMA,
         "context": {
             "deal_id": comparison["deal_id"],
@@ -74,7 +74,10 @@ def run_operations(comparison, revision, bases):
         "residential_groups": groups,
         "expense_items": expenses,
     }
-    return produce_rental_operations(json.dumps(payload).encode()).payload
+
+
+def run_operations(comparison, revision, bases):
+    return produce_rental_operations(json.dumps(operations_source(comparison, revision, bases)).encode()).payload
 
 
 def vertical_alternatives(comparison, revision):

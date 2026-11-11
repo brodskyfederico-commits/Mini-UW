@@ -229,5 +229,7 @@ jobs:
         run: PYTHONPATH=src python tools/plan_schedule_D105.py check
       - name: Verify synthetic plan revisions' rent and cost impact
         run: PYTHONPATH=src python tools/plan_impact_D106.py check
+      - name: Verify synthetic plan revisions through Base and Downside USD 10 cash
+        run: PYTHONPATH=src python tools/plan_return_D107.py check
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v

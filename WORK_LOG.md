@@ -1518,3 +1518,9 @@ El resultado señala las dependencias condicionales de renta y presupuesto sin a
 Se ejecuta el productor residencial T21 con las cantidades de los cuadros sintéticos D105 y tarifas explícitas constantes. Se verifican once resultados de renta, gastos y costo vertical. Las pruebas aíslan el cambio de GSF y distinguen cero unidades declarado, conteo ausente y grupo omitido. La rama de renta por ft² bloquea cuando falta el área rentable exigida por T21.
 
 Se documenta qué revisar por base de cálculo. Los efectos sobre la corrida integrada y el retorno por USD 10 quedan PENDING. [Ejemplo y reproducción](docs/plan-calculation-impact-D106.md).
+
+## D107 — Del plano al retorno por USD 10 en Base y Downside
+
+Se usan las dos revisiones sintéticas D105 y las bases de D106 en un caso de obra y venta con financiación exclusivamente de equity. Los módulos existentes verifican los NOI operativo y de salida, concilian caja y cierre, y generan el ledger de capital. Se compara el flujo por USD 10 antes y después en ambos escenarios, con aportes y cobros por fecha.
+
+Se verifican cuatro libros de caja, tres cambios aislados y tres faltantes que retiran los resultados afectados. La decisión de inversión permanece PENDING. [Resultados y reproducción](docs/plan-return-per-usd10-D107.md).
