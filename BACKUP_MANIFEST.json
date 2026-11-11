@@ -1,10 +1,10 @@
 {
-  "scope": "I01 preserved design, D02–D100 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D101 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 14518,
-      "sha256": "d8aa1f4d7176c67a95562829c4efbc70a69866f08ec39dd22c393eabff008aff"
+      "bytes": 14677,
+      "sha256": "6525ad7b94faca3612ea97d420e2bffaaff5cdf026e45ac8c09091c2acbd4882"
     },
     {
       "path": ".gitignore",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 75394,
-      "sha256": "369ab9fc00fc611afd1152c56720ebf5af4c9b030f21849868bb98977007517e"
+      "bytes": 75662,
+      "sha256": "5b7dbffde0f7674ccd22170830e10b51d005e8e131b8dd25b9b9f293015d40bb"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 318628,
-      "sha256": "fbbb178ff44217ad330af99f40ac45177b8dc1d4d82ebb25f7694af25457e298"
+      "bytes": 319704,
+      "sha256": "6e176cfe00883a640c7772c4c08a75dc4cf16eabe0f0f100f1a92c13c8375e09"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -920,6 +920,11 @@
       "path": "docs/review/MiniUW_D100_Venta_300_Demora_4_6_Meses_USD10.pdf",
       "bytes": 3547,
       "sha256": "0b70ad2ac1b76d095f85f8ceec34f67c9f64dc6739086c03e8e4e2655512ae2b"
+    },
+    {
+      "path": "docs/review/MiniUW_D101_Aporte_Al_Agotarse_Caja_USD10.pdf",
+      "bytes": 3714,
+      "sha256": "9abe42ff896118c4c8ec1e50a5e32f2bd8e2c228e61b22c27a2d2f34d97b2aa8"
     },
     {
       "path": "docs/review/MiniUW_D81_Ocho_Revisiones_Sinteticas.zip",
@@ -6780,6 +6785,11 @@
       "path": "tools/hold_sale_demo_support.py",
       "bytes": 9932,
       "sha256": "c9f0f618a169d63c9290b9d7c1abd28c5c17adfde788567eeeef5f0d86c25396"
+    },
+    {
+      "path": "tools/holding_cash_funding_boundary_D101.py",
+      "bytes": 10109,
+      "sha256": "658a9c6dc8a2b0f32483a910ca383efd50f0a1db3f48c3975e645c8ddcbcf743"
     },
     {
       "path": "tools/holding_cost_sale_recovery_D97.py",

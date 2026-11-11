@@ -1482,3 +1482,9 @@ Se prueban 27 mínimos con 54 cierres, incluido el cambio de año. La caja poste
 Se conserva la refinanciación de USD 175, el costo de venta de USD 10 más 5 % y la liquidación de deuda de USD 56,00 el 1 de julio. Se reutiliza la conciliación de D98 sobre los calendarios extendidos de D99. Con tenencia mensual de USD 20, el inversor cobra USD 9,62, USD 9,42 o USD 9,22 por USD 10 iniciales según la demora de cuatro, cinco o seis meses. Los faltantes nominales son USD 0,38, USD 0,58 y USD 0,78.
 
 Se reproducen nueve cierres y 27 saldos en valor presente. Todos quedan cortos al 1 % y al 2 % mensual. La tenencia se paga con caja del proyecto, sin aportes extra. Se preservan el calendario que cruza a enero de 2028 y los resultados anteriores de D98. La decisión real sigue PENDING. [PDF de una página](docs/review/MiniUW_D100_Venta_300_Demora_4_6_Meses_USD10.pdf).
+
+## D101 — Primeros aportes adicionales al agotarse la caja de tenencia
+
+Se conserva la venta en USD 300, el costo de refinanciación de USD 175, el costo de venta de USD 25 y la liquidación de deuda de USD 56,00 en julio de 2027. En el último mes cubierto por caja, el aporte extra es cero. El primer mes con faltante es el 33, 17 u 11 con tenencia de USD 10, USD 20 o USD 30 por mes, respectivamente.
+
+La prueba supone aportes sintéticos a prorrata, con la misma participación, antes de pagar la tenencia de cada mes y antes de cobrar la venta. Al primer faltante, se aportan USD 0,08, USD 0,18 o USD 0,08 por USD 10 iniciales. Un mes más lleva esos totales a USD 0,18, USD 0,38 o USD 0,38. En las seis ventas posteriores al agotamiento de caja, se cobran USD 7,20 por USD 10 iniciales, antes de restar los aportes. Se verifican nueve cierres y 27 saldos. Si faltan términos de financiación, esos seis escenarios quedan PENDING sin cobros calculados. La decisión real sigue PENDING. [PDF de una página](docs/review/MiniUW_D101_Aporte_Al_Agotarse_Caja_USD10.pdf).

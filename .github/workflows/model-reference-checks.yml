@@ -219,5 +219,7 @@ jobs:
         run: python tools/extended_holding_sale_D99.py
       - name: Verify fixed sale cash and discounted gaps after extended delays
         run: python tools/fixed_extended_sale_D100.py
+      - name: Verify first holding cash shortfalls and explicit synthetic equity contributions
+        run: python tools/holding_cash_funding_boundary_D101.py
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v

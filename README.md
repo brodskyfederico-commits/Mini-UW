@@ -4,6 +4,7 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D101 prueba el último mes cubierto con caja y los primeros dos meses que necesitan aportes adicionales. [PDF de una página](docs/review/MiniUW_D101_Aporte_Al_Agotarse_Caja_USD10.pdf) y control reproducible con `python tools/holding_cash_funding_boundary_D101.py`.
 - D100 fija la venta en USD 300 con demoras de cuatro a seis meses y muestra cuánto se cobra y cuánto falta por USD 10. [PDF de una página](docs/review/MiniUW_D100_Venta_300_Demora_4_6_Meses_USD10.pdf) y control reproducible con `python tools/fixed_extended_sale_D100.py`.
 - D99 amplía la espera de venta a cuatro, cinco y seis meses y verifica el precio mínimo, el cobro por USD 10 y el límite de caja para tenencia. [PDF de una página](docs/review/MiniUW_D99_Tenencia_Demora_4_6_Meses_USD10.pdf) y control reproducible con `python tools/extended_holding_sale_D99.py`.
 - D98 fija la venta en USD 300 y muestra cobros y saldos por USD 10 con tres costos de tenencia y tres demoras. [PDF de una página](docs/review/MiniUW_D98_Venta_300_Tenencia_Demora_USD10.pdf) y control reproducible con `python tools/fixed_sale_holding_grid_D98.py`.
