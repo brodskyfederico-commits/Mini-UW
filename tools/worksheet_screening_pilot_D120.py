@@ -76,16 +76,23 @@ def criterion_records(rules, metrics):
     return records
 
 
-def run_screening(case, scenarios, context, *, extended=False, interval_irr=False, case_sha256=None):
+def run_screening(case, scenarios, context, *, extended=False, interval_irr=False, yield_metrics=False, case_sha256=None):
     revision = case.get("criteria_revision")
     require(revision is None or isinstance(revision, str) and re.fullmatch(r"SYNTHETIC-[A-Za-z0-9_-]{1,80}", revision),
             "Use an explicit synthetic criteria revision")
     metrics = METRICS
     values = [row for name in SCENARIOS for row in metric_values(name, scenarios[name])]
     provenance = {}
+    computed_yield = {}
     if extended:
         from worksheet_reference_metrics_D121 import REFERENCE_METRICS, reference_records
         catalog = {key: value for key, value in REFERENCE_METRICS.items() if key != "IRR" or not interval_irr}
+        if yield_metrics:
+            from worksheet_yoc_spread_D123 import CALCULATED_METRICS, yield_records
+            catalog = {key: value for key, value in catalog.items() if key not in CALCULATED_METRICS}
+            metrics = metrics | CALCULATED_METRICS
+            derived, computed_yield = yield_records(case.get("yield_inputs"), scenarios, case_sha256)
+            values.extend(derived)
         metrics = metrics | catalog
         references, sources = reference_records(case.get("reference_metrics"), scenarios, case_sha256, metrics=catalog)
         values.extend(references)
@@ -112,6 +119,8 @@ def run_screening(case, scenarios, context, *, extended=False, interval_irr=Fals
     if interval_irr:
         result = combine_irr(result, irr_rules if revision else [], scenarios, case.get("irr_policy"), case_sha256)
         result["scalar_run_sha256"] = run_hash
+        if yield_metrics:
+            result.update(component="D123", yield_by_scenario=computed_yield)
         run_hash = sha(encoded(result))
     require(result["decision"] == "PENDING" and not result["criteria_adopted"] and not result["production_authorized"],
             "The synthetic screening acquired decision authority")
@@ -133,7 +142,7 @@ def read_scenario(spec, raw, expected):
                 received_workbook_sha256=None if raw is None else sha(raw), source_blockers=[blocker])
 
 
-def render_pilot(scenarios, screening, *, extended=False, interval_irr=False):
+def render_pilot(scenarios, screening, *, extended=False, interval_irr=False, yield_metrics=False):
     lines = [(f"Simulación PASS/FAIL  |  {screening['simulation_result']}", True)]
     for name, scenario in scenarios.items():
         cash = scenario["cash_per_usd_10"]
@@ -168,28 +177,42 @@ def render_pilot(scenarios, screening, *, extended=False, interval_irr=False):
             parts = [f"{name} {display_enclosure(result['annual_enclosure'])} ({states[metric, name]})"
                      for name, result in screening["irr_by_scenario"].items()]
             lines.append((f"{label} | " + " | ".join(parts), False))
+        elif yield_metrics and metric in ("YoC", "spread"):
+            from worksheet_yoc_spread_D123 import display_yield
+            parts = []
+            for name, result in screening["yield_by_scenario"].items():
+                value = result["values"][metric]
+                display = display_yield(metric, value)
+                if value is not None:
+                    display += f" ({states[metric, name]})"
+                parts.append(f"{name} {display}")
+            lines.append((f"{label} | " + " | ".join(parts), False))
         else:
             lines.append((f"{label} | Base {states[metric, 'Base']} | Downside {states[metric, 'Downside']}", False))
     if screening["simulation_result"] == "PENDING":
         lines.append(("Consultá los datos o reglas pendientes en el expediente.", False))
     lines.append(("Capital agregado del proyecto. Decisión de inversión PENDING.", False))
-    if interval_irr:
+    if yield_metrics:
+        lines.append(("Seis métricas calculadas y cuatro referencias sintéticas declaradas.", False))
+    elif interval_irr:
         lines.append(("Cuatro métricas calculadas y seis referencias sintéticas declaradas.", False))
     elif extended:
         lines.append(("Tres métricas del libro de caja y siete referencias sintéticas declaradas.", False))
-    milestone = "D122" if interval_irr else "D121" if extended else "D120"
+    milestone = "D123" if yield_metrics else "D122" if interval_irr else "D121" if extended else "D120"
     return render_page(f"{milestone} | Piloto sintético de Base y Downside", lines, 15 if extended else 18,
                        "MINI-UW | SI INVIERTO USD 10, ¿CUÁNTO COBRO Y CUÁNDO?",
                        "Planilla, retorno y simulación de decisión")
 
 
-def build_pilot(case, case_sha256, workbooks, *, extended=False, interval_irr=False):
+def build_pilot(case, case_sha256, workbooks, *, extended=False, interval_irr=False, yield_metrics=False):
     required = {"schema", "worksheet_case", "workbook_sha256"}
     optional = {"criteria_revision", "aggregation_rule", "rules"}
     if extended:
         optional.add("reference_metrics")
     if interval_irr:
         optional.add("irr_policy")
+    if yield_metrics:
+        optional.add("yield_inputs")
     require(required <= case.keys() <= required | optional,
             "An explicit pilot workbook case and source hashes are required")
     spec = case["worksheet_case"]
@@ -203,8 +226,9 @@ def build_pilot(case, case_sha256, workbooks, *, extended=False, interval_irr=Fa
                     for value in hashes.values()), "Use explicit worksheet SHA-256 values or missing entries")
     scenarios = {name: read_scenario(spec, workbooks[name], hashes.get(name)) for name in SCENARIOS}
     screening = run_screening(case, scenarios, json.loads(origin_raw)["scenario_context"],
-                              extended=extended, interval_irr=interval_irr, case_sha256=case_sha256)
-    pdf = render_pilot(scenarios, screening, extended=extended, interval_irr=interval_irr)
+                              extended=extended, interval_irr=interval_irr, yield_metrics=yield_metrics,
+                              case_sha256=case_sha256)
+    pdf = render_pilot(scenarios, screening, extended=extended, interval_irr=interval_irr, yield_metrics=yield_metrics)
     simulation = screening["simulation_result"]
     return dict(profile=PROFILE, scope="synthetic_aggregate_equity", decision="PENDING",
                 state="PENDING" if simulation == "PENDING" else "computed_synthetic_pilot",

@@ -1588,3 +1588,7 @@ Se incorporan siete referencias sintéticas declaradas y vinculadas a las planil
 ## D122 — TIR anual calculada desde la caja por USD 10
 
 La corrida usa las fechas auditadas, calcula la TIR anual como intervalo y la compara con las reglas sintéticas. Se comprueban PASS, FAIL por un umbral mayor y PENDING cuando el intervalo cruza un umbral o falta una regla o convención. Un cambio en C67 recalcula el cobro de venta y la TIR, y deja pendientes las referencias de la revisión anterior. [Retorno por USD 10, alcance y comandos](docs/workbook-irr-D122.md).
+
+## D123 — Yield on Cost y spread calculados en el piloto
+
+Se incorporan los insumos sintéticos de D70 por escenario y se calcula el YoC desde el NOI anual y el costo total. El spread usa el cap de referencia explícito. Se auditan FAIL con las reglas de partida, PASS con igualdad inclusiva y PENDING por cap, costo, NOI o regla faltantes. Los cobros por USD 10 se concilian con las planillas. [Retorno, métricas y comandos](docs/workbook-yoc-spread-D123.md).

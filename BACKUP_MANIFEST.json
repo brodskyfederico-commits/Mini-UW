@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D122 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D123 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/miniuw-integral-usd10.yml",
@@ -8,8 +8,8 @@
     },
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 17718,
-      "sha256": "ec688f26084d8f5229bc5ace4d6cc08dbf9dc693021f3ed8bf4ad25e0ccb1eeb"
+      "bytes": 17880,
+      "sha256": "7bcd1c3519bc1081f24056945e23ae152155a39e4e23474aa27cd3a2531ca4f0"
     },
     {
       "path": ".gitignore",
@@ -23,13 +23,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 80103,
-      "sha256": "5c98f579aa749f79787cb234fcbe98f68978d63cb117b90b2778c6b6aaed9d24"
+      "bytes": 80342,
+      "sha256": "1f5b2d146bfda08ba788f9332181e2aaeacd3a79298627444ffc59265a7cf623"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 332007,
-      "sha256": "4a528385aa52fee38b18559987337a96029c232de51fc4e3ca74a55690d2d8c5"
+      "bytes": 332472,
+      "sha256": "087b17ea278411f7e7bbc4a9e48fdd01e1999eccb1f4a86d7cc5ea05a8d08719"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -3042,6 +3042,11 @@
       "sha256": "fca8bd3e4207a1c34def3f9b5bc13aa75e7e374baec6620ad4a8de834d994958"
     },
     {
+      "path": "docs/workbook-yoc-spread-D123.md",
+      "bytes": 2969,
+      "sha256": "94b0fc3845827508feef5a88600fdbb08ba1f834553360b9b189f0335fdadb41"
+    },
+    {
       "path": "docs/worksheet-capacity-case-D118.md",
       "bytes": 1864,
       "sha256": "bdd41bce149f2cc2cf802567f34f23eadcdef0d6b565802bdde7cc3084404c3b"
@@ -5597,6 +5602,11 @@
       "sha256": "313c4ac49cb17fc77de191d5c39bbbc4e350aebdb656b94c9d1e153ec6ff87d1"
     },
     {
+      "path": "templates/synthetic-workbook-screening-pilot-D123.json",
+      "bytes": 24446,
+      "sha256": "05249717b3906236aee07a0f3c56989f402b6ca2321d225ceaea3d20751f73f5"
+    },
+    {
       "path": "templates/synthetic-worksheet-exit-cap-D62.json",
       "bytes": 48479,
       "sha256": "7abffe3904ac77a22c335b2aa3a4bc74e54318bc2382995b4c9a89d38b4bbc9b"
@@ -6692,6 +6702,11 @@
       "sha256": "bf4446c454d18e29d5f6fc14d672c6edc44d838da932bde6ec51a6a37dcea4f7"
     },
     {
+      "path": "tools/check_worksheet_yoc_spread_D123.py",
+      "bytes": 7142,
+      "sha256": "3728fe15f0a5d1a4f45de39cad9fd82ef1aca534f63a7e94c0432b8c90c92348"
+    },
+    {
       "path": "tools/check_yoc_spread_D70.py",
       "bytes": 9893,
       "sha256": "adced9ccd22f034f83be3144e9f7f629ca5f56e928d81cb865d73d1763cc85d3"
@@ -7103,8 +7118,8 @@
     },
     {
       "path": "tools/miniuw_worksheet_v1.py",
-      "bytes": 17990,
-      "sha256": "3579c1ad6f17c6563bbb7066763122e71547facbbdd89c11828d32d52ad48404"
+      "bytes": 18170,
+      "sha256": "4094c754b7ebb40528c4f91dd8ef8870ccbbb5e43db7d8c003b168aadc883c0e"
     },
     {
       "path": "tools/onepage_pending_cases_D79.py",
@@ -7288,13 +7303,18 @@
     },
     {
       "path": "tools/worksheet_screening_pilot_D120.py",
-      "bytes": 12694,
-      "sha256": "806e37f709cde8038405725b18b6e21ea64dcbf931c16af67c3fffa7fe8270fd"
+      "bytes": 14129,
+      "sha256": "7acacfa99e748a973cc5e3e3c0770dbb0489ac7961388223bee4d6dff65b0147"
     },
     {
       "path": "tools/worksheet_settled_miniuw_v1.py",
       "bytes": 1122,
       "sha256": "95ea004ccbff079068bfd90c352aa8f5c3c08b5a22cbefb96fcd20327498784d"
+    },
+    {
+      "path": "tools/worksheet_yoc_spread_D123.py",
+      "bytes": 5060,
+      "sha256": "e989fdde15a20511f9b97eaebd6fc7f91be38a9c2b3657b0bd612cb4ebf7eb01"
     }
   ]
 }
