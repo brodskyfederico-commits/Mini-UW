@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D113 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D114 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/miniuw-integral-usd10.yml",
@@ -8,8 +8,8 @@
     },
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 16336,
-      "sha256": "7239d151ab7b21d9666fec02e9aebe47e1d65690747dbfb7aeab34342b67229c"
+      "bytes": 16487,
+      "sha256": "65fe593f3fbcb5749f5d621cb79efee5848bfb28eb05ebe9068370e5f9a16318"
     },
     {
       "path": ".gitignore",
@@ -23,13 +23,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 78231,
-      "sha256": "772861ebe79379ebc6c677795cd60c4d6ce84bebea6a44796cba7337e2eee664"
+      "bytes": 78520,
+      "sha256": "ad1b76237e4772d2da5d8ac22ee3a73c3183214a08fa658ba45125114f14a50e"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 327747,
-      "sha256": "9d0b0b66b7cce1a7535cb612da5e1fc5729782e7cdabcac58db44ce127fde1e3"
+      "bytes": 328242,
+      "sha256": "cdae2225a6ce2f8e71941284540ececfb4bb58d046806c84601b2d65ec100362"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -985,6 +985,11 @@
       "path": "docs/review/MiniUW_D111_Tasa_de_Equilibrio_Refinanciacion.pdf",
       "bytes": 4285,
       "sha256": "8c64d4cf8766d51a11b9d4b727c988b39934e6c2e0b83a0643d48031d8335468"
+    },
+    {
+      "path": "docs/review/MiniUW_D114_Venta_Prevista_vs_Minimo_2pct.pdf",
+      "bytes": 3903,
+      "sha256": "7e411253c19449b0e8369c807663abb2bb02e7d020f32ce725c6c102b9884686"
     },
     {
       "path": "docs/review/MiniUW_D81_Ocho_Revisiones_Sinteticas.zip",
@@ -6595,6 +6600,11 @@
       "path": "tools/compare_revised_plan_D110.py",
       "bytes": 10949,
       "sha256": "13d3a20b74bf3a08e95391ec4136e35517caf67f625a99640fd9bbec84b7cfe8"
+    },
+    {
+      "path": "tools/compare_sale_to_minimum_D114.py",
+      "bytes": 7703,
+      "sha256": "25676022736434d880f5e1dc1afa77adb6aa7017702b45046df652f159a97b1f"
     },
     {
       "path": "tools/construction_demo_support.py",

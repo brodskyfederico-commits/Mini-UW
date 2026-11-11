@@ -1552,3 +1552,7 @@ El comando habitual genera y audita un expediente de una página con la tasa men
 ## D113 — Venta mínima para recuperar en valor presente a la tasa declarada
 
 El perfil de comparación añade el neto de venta por USD 10 y el precio bruto mínimo con costos proporcionales y cancelación de deuda. Se verifican el mínimo exacto y el cruce al centavo en once variantes sintéticas. La variante bloqueada por capacidad conserva PENDING. [Resultados y reproducción](docs/plan-sale-recovery-D113.md).
+
+## D114 — Venta prevista frente al mínimo al 2 % mensual
+
+Se reproducen las cuatro variantes sintéticas D113 y se cotejan el neto previsto, el mínimo exacto y la diferencia por USD 10 en la fecha de venta. Al descontar esa diferencia al aporte inicial, coincide exactamente con el VAN de cada caso. El PDF conserva aportes y cobros por fecha y presenta los precios brutos del proyecto por separado. [Comparación de una página](docs/review/MiniUW_D114_Venta_Prevista_vs_Minimo_2pct.pdf).

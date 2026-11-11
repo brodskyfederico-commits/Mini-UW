@@ -243,5 +243,7 @@ jobs:
         run: PYTHONPATH=src python tools/check_plan_discount_D112.py
       - name: Verify revised-plan sale recovery at the selected monthly discount rate
         run: PYTHONPATH=src python tools/check_plan_sale_recovery_D113.py
+      - name: Verify the expected-sale gap to the discounted recovery minimum
+        run: PYTHONPATH=src python tools/compare_sale_to_minimum_D114.py
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v
