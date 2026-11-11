@@ -1,0 +1,145 @@
+{
+  "schema": "miniuw.synthetic-workbook-screening-pilot.v1",
+  "worksheet_case": {
+    "schema": "miniuw.synthetic-workbook-intake-case.v2",
+    "source_fixture_sha256": "7abffe3904ac77a22c335b2aa3a4bc74e54318bc2382995b4c9a89d38b4bbc9b",
+    "monthly_discount_rate": {
+      "numerator": "1",
+      "denominator": "50"
+    }
+  },
+  "workbook_sha256": {
+    "Base": "bc9562c6ad208aa84cf3ddbffc796ea56df80c068d608c6a20b405d9f4116dde",
+    "Downside": "de7059160dccb32c877d59bf34fe8484acdc6799a5a35edebbae14ffa01d0c97"
+  },
+  "criteria_revision": "SYNTHETIC-D120-pilot-r1",
+  "aggregation_rule": "all_pass_any_fail_pending_blocks",
+  "rules": [
+    {
+      "scenario_id": "Base",
+      "metric_id": "equity_multiple",
+      "definition_ref": "SYNTHETIC-D51-gross-dated-cash-window",
+      "unit": "multiple",
+      "period_ref": "2027-01-01/2027-07-01",
+      "pass_condition": {
+        "operator": ">=",
+        "threshold": {
+          "numerator": "6",
+          "denominator": "5"
+        }
+      },
+      "fail_condition": {
+        "operator": "<",
+        "threshold": {
+          "numerator": "6",
+          "denominator": "5"
+        }
+      }
+    },
+    {
+      "scenario_id": "Base",
+      "metric_id": "equity_recovered",
+      "definition_ref": "SYNTHETIC-D51-net-refi-cash-over-initial-equity",
+      "unit": "fraction",
+      "period_ref": "2027-04-01",
+      "pass_condition": {
+        "operator": ">=",
+        "threshold": {
+          "numerator": "3",
+          "denominator": "20"
+        }
+      },
+      "fail_condition": {
+        "operator": "<",
+        "threshold": {
+          "numerator": "3",
+          "denominator": "20"
+        }
+      }
+    },
+    {
+      "scenario_id": "Base",
+      "metric_id": "equity_cash_in",
+      "definition_ref": "SYNTHETIC-D51-gross-additional-contribution-at-refinance",
+      "unit": "USD",
+      "period_ref": "2027-04-01",
+      "pass_condition": {
+        "operator": "<=",
+        "threshold": {
+          "numerator": "0",
+          "denominator": "1"
+        }
+      },
+      "fail_condition": {
+        "operator": ">",
+        "threshold": {
+          "numerator": "0",
+          "denominator": "1"
+        }
+      }
+    },
+    {
+      "scenario_id": "Downside",
+      "metric_id": "equity_multiple",
+      "definition_ref": "SYNTHETIC-D51-gross-dated-cash-window",
+      "unit": "multiple",
+      "period_ref": "2027-01-01/2027-07-01",
+      "pass_condition": {
+        "operator": ">=",
+        "threshold": {
+          "numerator": "21",
+          "denominator": "20"
+        }
+      },
+      "fail_condition": {
+        "operator": "<",
+        "threshold": {
+          "numerator": "21",
+          "denominator": "20"
+        }
+      }
+    },
+    {
+      "scenario_id": "Downside",
+      "metric_id": "equity_recovered",
+      "definition_ref": "SYNTHETIC-D51-net-refi-cash-over-initial-equity",
+      "unit": "fraction",
+      "period_ref": "2027-04-01",
+      "pass_condition": {
+        "operator": ">=",
+        "threshold": {
+          "numerator": "3",
+          "denominator": "20"
+        }
+      },
+      "fail_condition": {
+        "operator": "<",
+        "threshold": {
+          "numerator": "3",
+          "denominator": "20"
+        }
+      }
+    },
+    {
+      "scenario_id": "Downside",
+      "metric_id": "equity_cash_in",
+      "definition_ref": "SYNTHETIC-D51-gross-additional-contribution-at-refinance",
+      "unit": "USD",
+      "period_ref": "2027-04-01",
+      "pass_condition": {
+        "operator": "<=",
+        "threshold": {
+          "numerator": "0",
+          "denominator": "1"
+        }
+      },
+      "fail_condition": {
+        "operator": ">",
+        "threshold": {
+          "numerator": "0",
+          "denominator": "1"
+        }
+      }
+    }
+  ]
+}

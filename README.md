@@ -4,6 +4,7 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D120 ejecuta Base y Downside desde sus planillas hasta el retorno por USD 10 y el PASS/FAIL simulado. El expediente y el PDF de una página se auditan desde las fuentes. [Piloto y comandos](docs/workbook-screening-pilot-D120.md).
 - D119 verifica que la corrida use el menor límite entre C71 (LTV) y C72 (DSCR), con el retorno por USD 10 condicionado a la capacidad. [Casos y reproducción](docs/worksheet-ltv-case-D119.md).
 - D118 recalcula la capacidad desde C72 y muestra el límite incluso cuando el préstamo deja el retorno por USD 10 PENDING. [Casos y comandos](docs/worksheet-capacity-case-D118.md).
 - D117 conecta el checklist de la planilla con la corrida y su auditoría. Las correcciones crean otro expediente con resultados recalculados. [Casos y comandos](docs/worksheet-intake-case-D117.md).

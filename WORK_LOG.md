@@ -1576,3 +1576,7 @@ La corrida vincula el DSCR de C72 con la capacidad bancaria y verifica su valor 
 ## D119 — Menor límite entre LTV y DSCR en la corrida de la planilla
 
 Se auditan seis copias sintéticas con el préstamo fijo. Se verifica que limite LTV o DSCR según sus valores exactos, que la igualdad conserve los cobros y que superar el menor límite deje PENDING. Una C71 vacía retiene el cálculo. [Casos y comandos](docs/worksheet-ltv-case-D119.md).
+
+## D120 — Piloto de planillas a retorno y simulación PASS/FAIL
+
+El comando común conserva las planillas Base y Downside, las vincula al caso por hash y ejecuta la corrida con el control de capacidad. Deriva tres métricas del libro por USD 10 y las compara con reglas explícitas. Se auditan PASS, FAIL y PENDING y se prueban datos y reglas faltantes, banda intermedia y fuentes incompatibles. La decisión real permanece PENDING. [Piloto y comandos](docs/workbook-screening-pilot-D120.md).

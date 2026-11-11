@@ -34,12 +34,14 @@ PLAN_DISCOUNT_COMPARISON_SCHEMA = "miniuw.synthetic-plan-discount-comparison.v1"
 PLAN_DISCOUNT_RECOVERY_SCHEMA = "miniuw.synthetic-plan-discount-comparison.v2"
 WORKBOOK_INTAKE_SCHEMA = "miniuw.synthetic-workbook-intake-case.v1"
 WORKBOOK_CAPACITY_SCHEMA = "miniuw.synthetic-workbook-intake-case.v2"
+WORKBOOK_PILOT_SCHEMA = "miniuw.synthetic-workbook-screening-pilot.v1"
 PACKAGE_SCHEMA = "miniuw.synthetic-unified-worksheet-package.v1"
 COSTED_SALE = "templates/synthetic-worksheet-sale-costs-D63.json"
 COSTED_PROFILE = "with_refinance_worksheet_sale"
 ARCHIVES = {"without_refinance": SALE, "with_refinance": REFINANCE, COSTED_PROFILE: COSTED_SALE}
 FILES = frozenset({"case.json", "results.json", "MiniUW_Resumen.pdf", "package.json"})
 WORKBOOK_FILE = "Inputs.xlsx"
+DOWNSIDE_WORKBOOK_FILE = "Downside_Inputs.xlsx"
 MAX_FILE_BYTES = 4 * 1024 * 1024
 
 
@@ -71,8 +73,12 @@ def read_case(case):
     return case, archive_path, archive_raw, bindings, rate
 
 
-def build_results(raw, *, workbook_raw=None):
+def build_results(raw, *, workbook_raw=None, downside_workbook_raw=None):
     case = _json(raw, 4096)
+    if isinstance(case, dict) and case.get("schema") == WORKBOOK_PILOT_SCHEMA:
+        from worksheet_screening_pilot_D120 import build_pilot
+        return build_pilot(case, sha(raw), {"Base": workbook_raw, "Downside": downside_workbook_raw})
+    require(downside_workbook_raw is None, "This case schema does not accept a Downside workbook")
     if isinstance(case, dict) and case.get("schema") in (WORKBOOK_INTAKE_SCHEMA, WORKBOOK_CAPACITY_SCHEMA):
         from worksheet_intake_case_D117 import build_intake_case
         require(workbook_raw is not None, "The intake case requires the exact synthetic Inputs workbook")
@@ -185,11 +191,13 @@ def encoded(value):
     return (canonical(value) + "\n").encode()
 
 
-def build_package(raw, *, workbook_raw=None):
-    result, pdf = build_results(raw, workbook_raw=workbook_raw)
+def build_package(raw, *, workbook_raw=None, downside_workbook_raw=None):
+    result, pdf = build_results(raw, workbook_raw=workbook_raw, downside_workbook_raw=downside_workbook_raw)
     files = {"case.json": raw, "results.json": encoded(result), "MiniUW_Resumen.pdf": pdf}
     if workbook_raw is not None:
         files[WORKBOOK_FILE] = workbook_raw
+    if downside_workbook_raw is not None:
+        files[DOWNSIDE_WORKBOOK_FILE] = downside_workbook_raw
     files["package.json"] = encoded(dict(
         schema=PACKAGE_SCHEMA, state=result["state"], decision=result["decision"],
         files=[dict(path=name, bytes=len(content), sha256=sha(content)) for name, content in sorted(files.items())],
@@ -201,7 +209,8 @@ def build_package(raw, *, workbook_raw=None):
 def read_package(directory):
     require(not directory.is_symlink() and directory.is_dir(), "A regular output directory is required")
     paths = list(directory.iterdir())
-    require({p.name for p in paths} in (FILES, FILES | {WORKBOOK_FILE})
+    names = {p.name for p in paths}
+    require(FILES <= names <= FILES | {WORKBOOK_FILE, DOWNSIDE_WORKBOOK_FILE}
             and all(p.is_file() and not p.is_symlink() and p.stat().st_size <= MAX_FILE_BYTES for p in paths),
             "Exact regular case, results, PDF and manifest files are required")
     return {p.name: p.read_bytes() for p in paths}
@@ -209,18 +218,22 @@ def read_package(directory):
 
 def verify_package(directory):
     saved = read_package(directory)
-    expected, result = build_package(saved["case.json"], workbook_raw=saved.get(WORKBOOK_FILE))
+    expected, result = build_package(saved["case.json"], workbook_raw=saved.get(WORKBOOK_FILE),
+                                     downside_workbook_raw=saved.get(DOWNSIDE_WORKBOOK_FILE))
     require(saved == expected, "Output does not match source-first replay")
     return status("verified_source_first", result)
 
 
 def status(operation, result):
-    return dict(status=operation, state=result["state"], profile=result["profile"],
-                decision=result["decision"], pdf_sha256=result["pdf_sha256"], page_count=1)
+    response = dict(status=operation, state=result["state"], profile=result["profile"],
+                    decision=result["decision"], pdf_sha256=result["pdf_sha256"], page_count=1)
+    if "simulation_result" in result:
+        response["simulation_result"] = result["simulation_result"]
+    return response
 
 
-def write_package(raw, directory, *, workbook_raw=None):
-    expected, result = build_package(raw, workbook_raw=workbook_raw)
+def write_package(raw, directory, *, workbook_raw=None, downside_workbook_raw=None):
+    expected, result = build_package(raw, workbook_raw=workbook_raw, downside_workbook_raw=downside_workbook_raw)
     if directory.exists() or directory.is_symlink():
         require(read_package(directory) == expected, "Existing output differs from the requested case")
         return status("verified_identical_output", result)
@@ -242,6 +255,12 @@ def write_package(raw, directory, *, workbook_raw=None):
     return status("written_synthetic_package", result)
 
 
+def read_workbook(path):
+    require(path.is_file() and path.stat().st_size <= MAX_WORKBOOK_BYTES,
+            "Se requiere una planilla XLSX sintética dentro del tamaño admitido.")
+    return path.read_bytes()
+
+
 def main():
     parser = ArgumentParser(description=__doc__)
     subcommands = parser.add_subparsers(dest="command", required=True)
@@ -249,6 +268,7 @@ def main():
     run.add_argument("case", type=Path)
     run.add_argument("--output", required=True, type=Path)
     run.add_argument("--workbook", type=Path)
+    run.add_argument("--downside-workbook", type=Path)
     audit = subcommands.add_parser("audit")
     audit.add_argument("directory", type=Path)
     preflight = subcommands.add_parser("preflight")
@@ -259,19 +279,15 @@ def main():
     try:
         if args.command == "run":
             require(args.case.is_file() and args.case.stat().st_size <= 4096, "A bounded case JSON file is required")
-            workbook_raw = None
-            if args.workbook is not None:
-                require(args.workbook.is_file() and args.workbook.stat().st_size <= MAX_WORKBOOK_BYTES,
-                        "Se requiere una planilla XLSX sintética dentro del tamaño admitido.")
-                workbook_raw = args.workbook.read_bytes()
-            result = write_package(args.case.read_bytes(), args.output, workbook_raw=workbook_raw)
+            workbook_raw = None if args.workbook is None else read_workbook(args.workbook)
+            downside = None if args.downside_workbook is None else read_workbook(args.downside_workbook)
+            result = write_package(args.case.read_bytes(), args.output, workbook_raw=workbook_raw,
+                                   downside_workbook_raw=downside)
         elif args.command == "audit":
             result = verify_package(args.directory)
         else:
             from worksheet_preflight_D116 import preflight as inspect_workbook
-            require(args.workbook.is_file() and args.workbook.stat().st_size <= MAX_WORKBOOK_BYTES,
-                    "Se requiere una planilla XLSX sintética dentro del tamaño admitido.")
-            result = inspect_workbook(args.workbook.read_bytes(), args.deal_id, args.snapshot)
+            result = inspect_workbook(read_workbook(args.workbook), args.deal_id, args.snapshot)
         print(json.dumps(result, ensure_ascii=False))
         return 0
     except (ValueError, TypeError, OSError, KeyError, IndexError, StopIteration) as error:
