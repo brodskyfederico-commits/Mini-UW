@@ -217,5 +217,7 @@ jobs:
         run: python tools/fixed_sale_holding_grid_D98.py
       - name: Verify extended sale delays, year rollover and retained cash limits
         run: python tools/extended_holding_sale_D99.py
+      - name: Verify fixed sale cash and discounted gaps after extended delays
+        run: python tools/fixed_extended_sale_D100.py
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v

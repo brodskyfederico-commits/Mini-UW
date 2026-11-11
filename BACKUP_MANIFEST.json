@@ -1,10 +1,10 @@
 {
-  "scope": "I01 preserved design, D02–D99 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D100 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 14385,
-      "sha256": "ac98295103becd18fb30b5bd121b38460ffd5d3729e48919269699a4321d15cf"
+      "bytes": 14518,
+      "sha256": "d8aa1f4d7176c67a95562829c4efbc70a69866f08ec39dd22c393eabff008aff"
     },
     {
       "path": ".gitignore",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 75118,
-      "sha256": "cb0769dc5fdb5c1ffd7462ec1f1e864d061c0efbea41a14779a09d998f20e4f0"
+      "bytes": 75394,
+      "sha256": "369ab9fc00fc611afd1152c56720ebf5af4c9b030f21849868bb98977007517e"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 317757,
-      "sha256": "effd1d4b49dc174960c4b8fdca3859036240396bced237b239b7fef3291744db"
+      "bytes": 318628,
+      "sha256": "fbbb178ff44217ad330af99f40ac45177b8dc1d4d82ebb25f7694af25457e298"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -915,6 +915,11 @@
       "path": "docs/review/Intereses_Obra_y_Caja_T68_T71.md",
       "bytes": 2776,
       "sha256": "914abdc75e94dfd058351e062e4e7ed00dfc3a024b43fd09446a546f92f46923"
+    },
+    {
+      "path": "docs/review/MiniUW_D100_Venta_300_Demora_4_6_Meses_USD10.pdf",
+      "bytes": 3547,
+      "sha256": "0b70ad2ac1b76d095f85f8ceec34f67c9f64dc6739086c03e8e4e2655512ae2b"
     },
     {
       "path": "docs/review/MiniUW_D81_Ocho_Revisiones_Sinteticas.zip",
@@ -6747,6 +6752,11 @@
       "sha256": "80b308480e7d754e7c5f6222cd9d3cd35452501bd6d33400bb7221350ae6c503"
     },
     {
+      "path": "tools/fixed_extended_sale_D100.py",
+      "bytes": 1588,
+      "sha256": "e167c762d495ba5c2db34f5cf60c121e12f3002775f269132a1026f18ff42b21"
+    },
+    {
       "path": "tools/fixed_sale_cash_D90.py",
       "bytes": 8665,
       "sha256": "b99d3413c1e46f040120763cb583a58bebc250eb4b87caf10b7eb86ec1a6645e"
@@ -6758,8 +6768,8 @@
     },
     {
       "path": "tools/fixed_sale_holding_grid_D98.py",
-      "bytes": 8126,
-      "sha256": "ee3365c688737e7797a71a3e9f9fa0d6db86a8c0159c92aade4e21f332dcff42"
+      "bytes": 8243,
+      "sha256": "a942877ea74e61a8e1fd2f167bba3f29db3f76a3af100017a35593095c423439"
     },
     {
       "path": "tools/fixed_sale_refinance_limit_D91.py",

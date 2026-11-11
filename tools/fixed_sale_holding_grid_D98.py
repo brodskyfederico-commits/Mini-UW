@@ -22,8 +22,7 @@ REPORT = "docs/review/MiniUW_D98_Venta_300_Tenencia_Demora_USD10.pdf"
 SALE_PRICE = Fraction(300)
 
 
-def verify():
-    baseline = holding_cases()
+def fixed_price_cases(baseline):
     source = downside_sources()
     start, maturity = (date.fromisoformat(baseline[k]) for k in ("discount_date", "maturity_date"))
     original, payoff, _, _, _, loan_sha = maturity_cash(source, maturity)
@@ -79,8 +78,11 @@ def verify():
         sale_price_project=rational(SALE_PRICE), sale_cost_project=rational(fee), rows=rows)
 
 
-def build_report():
-    result = verify()
+def verify():
+    return fixed_price_cases(holding_cases())
+
+
+def render_report(result, revision):
     lines = [
         (f"Venta bruta fija USD {money(result['sale_price_project'])}. Refi USD {money(result['refinance_cost_project'])}. Costo de venta USD 10 + 5 % = USD {money(result['sale_cost_project'])}.", True),
         ("Todos los cobros y saldos de la tabla están en USD por USD 10 iniciales.", False),
@@ -101,9 +103,13 @@ def build_report():
         ("Aportes extra USD 0,00. Al 0 % el saldo es el sobrante o faltante de caja nominal.", True),
         ("Tenencia con ingresos adicionales iguales a cero. Decisión real pendiente.", False),
     ])
-    pdf = render_page("D98 | Downside", lines, 20, "MINI-UW | SI INVIERTO USD 10, ¿CUÁNTO COBRO Y CUÁNDO?",
+    pdf = render_page(revision + " | Downside", lines, 20, "MINI-UW | SI INVIERTO USD 10, ¿CUÁNTO COBRO Y CUÁNDO?",
                       "PENDIENTE | Venta fija con tres costos de tenencia y tres demoras")
     return pdf, result | {"pdf_sha256": sha(pdf), "page_count": 1}
+
+
+def build_report():
+    return render_report(verify(), "D98")
 
 
 def main():

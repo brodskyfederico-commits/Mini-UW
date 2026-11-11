@@ -1476,3 +1476,9 @@ Con dos meses de demora, el inversor cobra USD 10,22, USD 10,02 o USD 9,82 por U
 Se extiende el caso sintético de refinanciación de USD 175 y costo de venta de USD 10 más 5 %. La deuda de USD 56,00 se liquida el 1 de julio de 2027. Con tenencia de USD 20 al mes y descuento del 1 % mensual, se necesita un precio bruto de USD 432,64, USD 462,56 o USD 492,58 al vender el 1 de noviembre de 2027, el 1 de diciembre o el 1 de enero de 2028. Los cobros respectivos por USD 10 son USD 10,88, USD 10,96 y USD 11,05.
 
 Se prueban 27 mínimos con 54 cierres, incluido el cambio de año. La caja posterior al vencimiento cubre 32, 16 o 10 meses completos de tenencia a USD 10, USD 20 o USD 30 por mes. El primer mes que exige financiación adicional queda PENDING con su faltante documentado. En los escenarios de cuatro a seis meses no se requieren aportes extra. La decisión real sigue PENDING. [PDF de una página](docs/review/MiniUW_D99_Tenencia_Demora_4_6_Meses_USD10.pdf).
+
+## D100 — Venta fija en USD 300 con cuatro, cinco o seis meses de demora
+
+Se conserva la refinanciación de USD 175, el costo de venta de USD 10 más 5 % y la liquidación de deuda de USD 56,00 el 1 de julio. Se reutiliza la conciliación de D98 sobre los calendarios extendidos de D99. Con tenencia mensual de USD 20, el inversor cobra USD 9,62, USD 9,42 o USD 9,22 por USD 10 iniciales según la demora de cuatro, cinco o seis meses. Los faltantes nominales son USD 0,38, USD 0,58 y USD 0,78.
+
+Se reproducen nueve cierres y 27 saldos en valor presente. Todos quedan cortos al 1 % y al 2 % mensual. La tenencia se paga con caja del proyecto, sin aportes extra. Se preservan el calendario que cruza a enero de 2028 y los resultados anteriores de D98. La decisión real sigue PENDING. [PDF de una página](docs/review/MiniUW_D100_Venta_300_Demora_4_6_Meses_USD10.pdf).
