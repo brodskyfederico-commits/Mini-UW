@@ -1616,3 +1616,7 @@ La cadena vuelve a PASS simulado tras reponer la copia oficial, el criterio de G
 ## D129 — Nuevo máximo de equity/TDC de Downside
 
 La revisión R3 baja el máximo del 50 % al 45 %. El 45,45 % calculado en Downside da FAIL simulado y las otras diecinueve comparaciones se conservan. La auditoría de R2 contra R3 deja PENDING el dictamen vigente y conserva el PASS histórico. Los flujos fechados y el cobro por USD 10 coinciden exactamente entre revisiones. [Resultados y reproducción](docs/workbook-equity-limit-revision-D129.md).
+
+## D130 — Lectura de planos PDF sintéticos
+
+B05 y B06 extraen áreas escritas de hojas distintas del mismo PDF. B07 conserva ambas observaciones ante un conflicto y B09 coteja con GC. La cadena deja PENDING por dato, PDF o revisión faltante, y por discrepancia. La auditoría reproduce la lectura desde los bytes guardados y conserva el cobro por USD 10. [Casos y reproducción](docs/workbook-plan-pdf-D130.md).

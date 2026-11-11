@@ -41,3 +41,5 @@ El auditor local reproduce cifras y archivos; su salida no acredita independenci
 [Contrato ejecutable](miniuw-v1-dot-bot-contracts.json) · [Alcance tecnico](technical-implementation-T85-T87.md).
 
 D127 prueba estos contratos en la cadena local con copias sintéticas estructuradas. [Alcance, casos y reproducción](workbook-local-chain-D127.md).
+
+D130 prueba B05, B06, B07 y B09 con un plano PDF de texto sintético vinculado al expediente. [Lecturas, conciliación y reproducción](workbook-plan-pdf-D130.md).

@@ -43,7 +43,9 @@ WORKBOOK_OCCUPANCY_PILOT_SCHEMA = "miniuw.synthetic-workbook-screening-pilot.v6"
 WORKBOOK_COMPLETE_PILOT_SCHEMA = "miniuw.synthetic-workbook-screening-pilot.v7"
 WORKBOOK_LOCAL_CHAIN_SCHEMA = "miniuw.synthetic-workbook-screening-pilot.v8"
 WORKBOOK_CURRENT_CHAIN_SCHEMA = "miniuw.synthetic-workbook-screening-pilot.v9"
-WORKBOOK_LOCAL_CHAIN_SCHEMAS = (WORKBOOK_LOCAL_CHAIN_SCHEMA, WORKBOOK_CURRENT_CHAIN_SCHEMA)
+WORKBOOK_PLAN_CHAIN_SCHEMA = "miniuw.synthetic-workbook-screening-pilot.v10"
+WORKBOOK_CURRENT_CHAIN_SCHEMAS = (WORKBOOK_CURRENT_CHAIN_SCHEMA, WORKBOOK_PLAN_CHAIN_SCHEMA)
+WORKBOOK_LOCAL_CHAIN_SCHEMAS = (WORKBOOK_LOCAL_CHAIN_SCHEMA, *WORKBOOK_CURRENT_CHAIN_SCHEMAS)
 WORKBOOK_RETURN_PILOT_SCHEMAS = (WORKBOOK_COMPLETE_PILOT_SCHEMA, *WORKBOOK_LOCAL_CHAIN_SCHEMAS)
 WORKBOOK_OPERATING_PILOT_SCHEMAS = (WORKBOOK_OCCUPANCY_PILOT_SCHEMA, *WORKBOOK_RETURN_PILOT_SCHEMAS)
 WORKBOOK_FUNDING_PILOT_SCHEMAS = (WORKBOOK_EQUITY_PILOT_SCHEMA, *WORKBOOK_OPERATING_PILOT_SCHEMAS)
@@ -55,7 +57,9 @@ FILES = frozenset({"case.json", "results.json", "MiniUW_Resumen.pdf", "package.j
 WORKBOOK_FILE = "Inputs.xlsx"
 DOWNSIDE_WORKBOOK_FILE = "Downside_Inputs.xlsx"
 CURRENT_REVISION_FILE = "current_revision.json"
+PLAN_FILE = "Plan.pdf"
 MAX_CURRENT_REVISION_BYTES = 16 * 1024
+MAX_PLAN_BYTES = 2 * 1024 * 1024
 MAX_FILE_BYTES = 4 * 1024 * 1024
 MAX_EXTENDED_PILOT_BYTES = 32 * 1024
 
@@ -88,11 +92,13 @@ def read_case(case):
     return case, archive_path, archive_raw, bindings, rate
 
 
-def build_results(raw, *, workbook_raw=None, downside_workbook_raw=None, current_revision_raw=None):
+def build_results(raw, *, workbook_raw=None, downside_workbook_raw=None, current_revision_raw=None, plan_raw=None):
     case = _json(raw, MAX_EXTENDED_PILOT_BYTES)
     schema = case.get("schema") if isinstance(case, dict) else None
-    require(current_revision_raw is None or schema == WORKBOOK_CURRENT_CHAIN_SCHEMA,
+    require(current_revision_raw is None or schema in WORKBOOK_CURRENT_CHAIN_SCHEMAS,
             "The designated revision belongs to the current local chain schema")
+    require(plan_raw is None or schema == WORKBOOK_PLAN_CHAIN_SCHEMA and len(plan_raw) <= MAX_PLAN_BYTES,
+            "A bounded PDF plan belongs to the plan chain schema")
     yield_metrics = schema in (WORKBOOK_YIELD_PILOT_SCHEMA, *WORKBOOK_FUNDING_PILOT_SCHEMAS)
     interval_irr = schema == WORKBOOK_IRR_PILOT_SCHEMA or yield_metrics
     extended = schema == WORKBOOK_EXTENDED_PILOT_SCHEMA or interval_irr
@@ -101,7 +107,7 @@ def build_results(raw, *, workbook_raw=None, downside_workbook_raw=None, current
         from worksheet_screening_pilot_D120 import build_pilot
         return build_pilot(case, sha(raw), {"Base": workbook_raw, "Downside": downside_workbook_raw},
                            extended=extended, interval_irr=interval_irr, yield_metrics=yield_metrics,
-                           current_revision_raw=current_revision_raw)
+                           current_revision_raw=current_revision_raw, plan_raw=plan_raw)
     require(downside_workbook_raw is None, "This case schema does not accept a Downside workbook")
     if isinstance(case, dict) and case.get("schema") in (WORKBOOK_INTAKE_SCHEMA, WORKBOOK_CAPACITY_SCHEMA):
         from worksheet_intake_case_D117 import build_intake_case
@@ -215,9 +221,9 @@ def encoded(value):
     return (canonical(value) + "\n").encode()
 
 
-def build_package(raw, *, workbook_raw=None, downside_workbook_raw=None, current_revision_raw=None):
+def build_package(raw, *, workbook_raw=None, downside_workbook_raw=None, current_revision_raw=None, plan_raw=None):
     result, pdf = build_results(raw, workbook_raw=workbook_raw, downside_workbook_raw=downside_workbook_raw,
-                                current_revision_raw=current_revision_raw)
+                                current_revision_raw=current_revision_raw, plan_raw=plan_raw)
     files = {"case.json": raw, "results.json": encoded(result), "MiniUW_Resumen.pdf": pdf}
     if workbook_raw is not None:
         files[WORKBOOK_FILE] = workbook_raw
@@ -225,6 +231,8 @@ def build_package(raw, *, workbook_raw=None, downside_workbook_raw=None, current
         files[DOWNSIDE_WORKBOOK_FILE] = downside_workbook_raw
     if current_revision_raw is not None:
         files[CURRENT_REVISION_FILE] = current_revision_raw
+    if plan_raw is not None:
+        files[PLAN_FILE] = plan_raw
     files["package.json"] = encoded(dict(
         schema=PACKAGE_SCHEMA, state=result["state"], decision=result["decision"],
         files=[dict(path=name, bytes=len(content), sha256=sha(content)) for name, content in sorted(files.items())],
@@ -237,7 +245,7 @@ def read_package(directory):
     require(not directory.is_symlink() and directory.is_dir(), "A regular output directory is required")
     paths = list(directory.iterdir())
     names = {p.name for p in paths}
-    require(FILES <= names <= FILES | {WORKBOOK_FILE, DOWNSIDE_WORKBOOK_FILE, CURRENT_REVISION_FILE}
+    require(FILES <= names <= FILES | {WORKBOOK_FILE, DOWNSIDE_WORKBOOK_FILE, CURRENT_REVISION_FILE, PLAN_FILE}
             and all(p.is_file() and not p.is_symlink() and p.stat().st_size <= MAX_FILE_BYTES for p in paths),
             "Exact regular case, results, PDF and manifest files are required")
     return {p.name: p.read_bytes() for p in paths}
@@ -247,7 +255,7 @@ def verify_package(directory, *, current_revision_raw=None):
     saved = read_package(directory)
     expected, result = build_package(saved["case.json"], workbook_raw=saved.get(WORKBOOK_FILE),
                                      downside_workbook_raw=saved.get(DOWNSIDE_WORKBOOK_FILE),
-                                     current_revision_raw=saved.get(CURRENT_REVISION_FILE))
+                                     current_revision_raw=saved.get(CURRENT_REVISION_FILE), plan_raw=saved.get(PLAN_FILE))
     require(saved == expected, "Output does not match source-first replay")
     response = status("verified_source_first", result)
     if "revision_review" in result:
@@ -267,9 +275,9 @@ def status(operation, result):
     return response
 
 
-def write_package(raw, directory, *, workbook_raw=None, downside_workbook_raw=None, current_revision_raw=None):
+def write_package(raw, directory, *, workbook_raw=None, downside_workbook_raw=None, current_revision_raw=None, plan_raw=None):
     expected, result = build_package(raw, workbook_raw=workbook_raw, downside_workbook_raw=downside_workbook_raw,
-                                     current_revision_raw=current_revision_raw)
+                                     current_revision_raw=current_revision_raw, plan_raw=plan_raw)
     if directory.exists() or directory.is_symlink():
         require(read_package(directory) == expected, "Existing output differs from the requested case")
         return status("verified_identical_output", result)
@@ -309,6 +317,16 @@ def read_current_revision(path, package):
     return raw
 
 
+def read_plan_file(path):
+    if path is None:
+        return None
+    require(path.is_file() and not path.is_symlink(), "An explicit regular plan file is required")
+    with path.open("rb") as stream:
+        raw = stream.read(MAX_PLAN_BYTES + 1)
+    require(len(raw) <= MAX_PLAN_BYTES, "The plan file exceeds its size limit")
+    return raw
+
+
 def main():
     parser = ArgumentParser(description=__doc__)
     subcommands = parser.add_subparsers(dest="command", required=True)
@@ -318,6 +336,7 @@ def main():
     run.add_argument("--workbook", type=Path)
     run.add_argument("--downside-workbook", type=Path)
     run.add_argument("--current-revision", type=Path)
+    run.add_argument("--plan", type=Path)
     audit = subcommands.add_parser("audit")
     audit.add_argument("directory", type=Path)
     audit.add_argument("--current-revision", type=Path)
@@ -334,7 +353,8 @@ def main():
             downside = None if args.downside_workbook is None else read_workbook(args.downside_workbook)
             result = write_package(args.case.read_bytes(), args.output, workbook_raw=workbook_raw,
                                    downside_workbook_raw=downside,
-                                   current_revision_raw=read_current_revision(args.current_revision, args.output))
+                                   current_revision_raw=read_current_revision(args.current_revision, args.output),
+                                   plan_raw=read_plan_file(args.plan))
         elif args.command == "audit":
             result = verify_package(args.directory,
                                     current_revision_raw=read_current_revision(args.current_revision, args.directory))

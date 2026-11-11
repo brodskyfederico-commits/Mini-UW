@@ -17,10 +17,13 @@ def case_revision(case):
     """Project the exact inputs for each gate independently of their revision labels."""
     local = object_or_empty(case.get("local_sources"))
     documents = object_or_empty(local.get("documents"))
+    plans = {name: value for name, value in documents.items() if name != "official_snapshot"}
+    if "plan_pdf" in local:
+        plans = dict(documents=plans, plan_pdf=local["plan_pdf"])
     payloads = dict(
         workbooks=case.get("workbook_sha256"),
         financial_sources={name: case.get(name) for name in FINANCIAL_SOURCES},
-        plan_and_gc_documents={name: value for name, value in documents.items() if name != "official_snapshot"},
+        plan_and_gc_documents=plans,
         official_source=dict(document=documents.get("official_snapshot"), request=local.get("official_request")),
         gc_criterion=local.get("gc_criterion"),
         investment_rules=dict(rules=case.get("rules"), aggregation_rule=case.get("aggregation_rule")),

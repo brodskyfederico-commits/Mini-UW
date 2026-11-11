@@ -1,0 +1,979 @@
+{
+  "schema": "miniuw.synthetic-workbook-screening-pilot.v10",
+  "worksheet_case": {
+    "schema": "miniuw.synthetic-workbook-intake-case.v2",
+    "source_fixture_sha256": "7abffe3904ac77a22c335b2aa3a4bc74e54318bc2382995b4c9a89d38b4bbc9b",
+    "monthly_discount_rate": {
+      "numerator": "1",
+      "denominator": "50"
+    }
+  },
+  "workbook_sha256": {
+    "Base": "bc9562c6ad208aa84cf3ddbffc796ea56df80c068d608c6a20b405d9f4116dde",
+    "Downside": "de7059160dccb32c877d59bf34fe8484acdc6799a5a35edebbae14ffa01d0c97"
+  },
+  "criteria_revision": "SYNTHETIC-D129-investment-r3",
+  "aggregation_rule": "all_pass_any_fail_pending_blocks",
+  "rules": [
+    {
+      "scenario_id": "Base",
+      "metric_id": "equity_multiple",
+      "definition_ref": "SYNTHETIC-D51-gross-dated-cash-window",
+      "unit": "multiple",
+      "period_ref": "2027-01-01/2027-07-01",
+      "pass_condition": {
+        "operator": ">=",
+        "threshold": {
+          "numerator": "6",
+          "denominator": "5"
+        }
+      },
+      "fail_condition": {
+        "operator": "<",
+        "threshold": {
+          "numerator": "6",
+          "denominator": "5"
+        }
+      }
+    },
+    {
+      "scenario_id": "Base",
+      "metric_id": "equity_recovered",
+      "definition_ref": "SYNTHETIC-D51-net-refi-cash-over-initial-equity",
+      "unit": "fraction",
+      "period_ref": "2027-04-01",
+      "pass_condition": {
+        "operator": ">=",
+        "threshold": {
+          "numerator": "3",
+          "denominator": "20"
+        }
+      },
+      "fail_condition": {
+        "operator": "<",
+        "threshold": {
+          "numerator": "3",
+          "denominator": "20"
+        }
+      }
+    },
+    {
+      "scenario_id": "Base",
+      "metric_id": "equity_cash_in",
+      "definition_ref": "SYNTHETIC-D51-gross-additional-contribution-at-refinance",
+      "unit": "USD",
+      "period_ref": "2027-04-01",
+      "pass_condition": {
+        "operator": "<=",
+        "threshold": {
+          "numerator": "0",
+          "denominator": "1"
+        }
+      },
+      "fail_condition": {
+        "operator": ">",
+        "threshold": {
+          "numerator": "0",
+          "denominator": "1"
+        }
+      }
+    },
+    {
+      "scenario_id": "Downside",
+      "metric_id": "equity_multiple",
+      "definition_ref": "SYNTHETIC-D51-gross-dated-cash-window",
+      "unit": "multiple",
+      "period_ref": "2027-01-01/2027-07-01",
+      "pass_condition": {
+        "operator": ">=",
+        "threshold": {
+          "numerator": "21",
+          "denominator": "20"
+        }
+      },
+      "fail_condition": {
+        "operator": "<",
+        "threshold": {
+          "numerator": "21",
+          "denominator": "20"
+        }
+      }
+    },
+    {
+      "scenario_id": "Downside",
+      "metric_id": "equity_recovered",
+      "definition_ref": "SYNTHETIC-D51-net-refi-cash-over-initial-equity",
+      "unit": "fraction",
+      "period_ref": "2027-04-01",
+      "pass_condition": {
+        "operator": ">=",
+        "threshold": {
+          "numerator": "3",
+          "denominator": "20"
+        }
+      },
+      "fail_condition": {
+        "operator": "<",
+        "threshold": {
+          "numerator": "3",
+          "denominator": "20"
+        }
+      }
+    },
+    {
+      "scenario_id": "Downside",
+      "metric_id": "equity_cash_in",
+      "definition_ref": "SYNTHETIC-D51-gross-additional-contribution-at-refinance",
+      "unit": "USD",
+      "period_ref": "2027-04-01",
+      "pass_condition": {
+        "operator": "<=",
+        "threshold": {
+          "numerator": "0",
+          "denominator": "1"
+        }
+      },
+      "fail_condition": {
+        "operator": ">",
+        "threshold": {
+          "numerator": "0",
+          "denominator": "1"
+        }
+      }
+    },
+    {
+      "scenario_id": "Base",
+      "metric_id": "YoC",
+      "unit": "fraction",
+      "definition_ref": "SYNTHETIC-D70-stabilized-noi-over-complete-tdc",
+      "period_ref": "2027-01-01/2028-01-01",
+      "pass_condition": {
+        "operator": ">=",
+        "threshold": {
+          "numerator": "3",
+          "denominator": "40"
+        }
+      },
+      "fail_condition": {
+        "operator": "<",
+        "threshold": {
+          "numerator": "3",
+          "denominator": "40"
+        }
+      }
+    },
+    {
+      "scenario_id": "Base",
+      "metric_id": "spread",
+      "unit": "bps",
+      "definition_ref": "SYNTHETIC-D70-yoc-less-compatible-reference-cap",
+      "period_ref": "2027-01-01/2028-01-01",
+      "pass_condition": {
+        "operator": ">=",
+        "threshold": {
+          "numerator": "0",
+          "denominator": "1"
+        }
+      },
+      "fail_condition": {
+        "operator": "<",
+        "threshold": {
+          "numerator": "0",
+          "denominator": "1"
+        }
+      }
+    },
+    {
+      "scenario_id": "Base",
+      "metric_id": "breakeven_occupancy",
+      "unit": "fraction",
+      "definition_ref": "SYNTHETIC-D125-economic-occupancy-for-regular-annual-service",
+      "period_ref": "2027-01-01/2028-01-01",
+      "pass_condition": {
+        "operator": "<=",
+        "threshold": {
+          "numerator": "17",
+          "denominator": "20"
+        }
+      },
+      "fail_condition": {
+        "operator": ">",
+        "threshold": {
+          "numerator": "17",
+          "denominator": "20"
+        }
+      }
+    },
+    {
+      "scenario_id": "Base",
+      "metric_id": "post_refi_CoC",
+      "unit": "fraction",
+      "definition_ref": "SYNTHETIC-D126-post-refinance-observed-cash-over-declared-capital",
+      "period_ref": "2027-04-01/2027-07-01",
+      "pass_condition": {
+        "operator": ">=",
+        "threshold": {
+          "numerator": "1",
+          "denominator": "10"
+        }
+      },
+      "fail_condition": {
+        "operator": "<",
+        "threshold": {
+          "numerator": "1",
+          "denominator": "10"
+        }
+      }
+    },
+    {
+      "scenario_id": "Base",
+      "metric_id": "equity_TDC",
+      "unit": "fraction",
+      "definition_ref": "SYNTHETIC-D71-applied-equity-over-complete-tdc",
+      "period_ref": "2026-12-31",
+      "pass_condition": {
+        "operator": "<=",
+        "threshold": {
+          "numerator": "1",
+          "denominator": "2"
+        }
+      },
+      "fail_condition": {
+        "operator": ">",
+        "threshold": {
+          "numerator": "1",
+          "denominator": "2"
+        }
+      }
+    },
+    {
+      "scenario_id": "Base",
+      "metric_id": "IRR",
+      "unit": "fraction",
+      "definition_ref": "SYNTHETIC-ANNUAL-PERIODIC-IRR-ENCLOSURE-v1",
+      "period_ref": "2027-01-01/2027-07-01",
+      "pass_condition": {
+        "operator": ">=",
+        "threshold": {
+          "numerator": "1",
+          "denominator": "5"
+        }
+      },
+      "fail_condition": {
+        "operator": "<",
+        "threshold": {
+          "numerator": "1",
+          "denominator": "5"
+        }
+      }
+    },
+    {
+      "scenario_id": "Base",
+      "metric_id": "asking_relative_to_supported_price",
+      "unit": "multiple",
+      "definition_ref": "SYNTHETIC-D126-asking-over-finite-two-target-price-grid",
+      "period_ref": "2027-01-01",
+      "pass_condition": {
+        "operator": "<=",
+        "threshold": {
+          "numerator": "1",
+          "denominator": "1"
+        }
+      },
+      "fail_condition": {
+        "operator": ">",
+        "threshold": {
+          "numerator": "1",
+          "denominator": "1"
+        }
+      }
+    },
+    {
+      "scenario_id": "Downside",
+      "metric_id": "YoC",
+      "unit": "fraction",
+      "definition_ref": "SYNTHETIC-D70-stabilized-noi-over-complete-tdc",
+      "period_ref": "2027-01-01/2028-01-01",
+      "pass_condition": {
+        "operator": ">=",
+        "threshold": {
+          "numerator": "3",
+          "denominator": "44"
+        }
+      },
+      "fail_condition": {
+        "operator": "<",
+        "threshold": {
+          "numerator": "3",
+          "denominator": "44"
+        }
+      }
+    },
+    {
+      "scenario_id": "Downside",
+      "metric_id": "spread",
+      "unit": "bps",
+      "definition_ref": "SYNTHETIC-D70-yoc-less-compatible-reference-cap",
+      "period_ref": "2027-01-01/2028-01-01",
+      "pass_condition": {
+        "operator": ">=",
+        "threshold": {
+          "numerator": "-1850",
+          "denominator": "11"
+        }
+      },
+      "fail_condition": {
+        "operator": "<",
+        "threshold": {
+          "numerator": "-1850",
+          "denominator": "11"
+        }
+      }
+    },
+    {
+      "scenario_id": "Downside",
+      "metric_id": "breakeven_occupancy",
+      "unit": "fraction",
+      "definition_ref": "SYNTHETIC-D125-economic-occupancy-for-regular-annual-service",
+      "period_ref": "2027-01-01/2028-01-01",
+      "pass_condition": {
+        "operator": "<=",
+        "threshold": {
+          "numerator": "17",
+          "denominator": "20"
+        }
+      },
+      "fail_condition": {
+        "operator": ">",
+        "threshold": {
+          "numerator": "17",
+          "denominator": "20"
+        }
+      }
+    },
+    {
+      "scenario_id": "Downside",
+      "metric_id": "post_refi_CoC",
+      "unit": "fraction",
+      "definition_ref": "SYNTHETIC-D126-post-refinance-observed-cash-over-declared-capital",
+      "period_ref": "2027-04-01/2027-07-01",
+      "pass_condition": {
+        "operator": ">=",
+        "threshold": {
+          "numerator": "1",
+          "denominator": "10"
+        }
+      },
+      "fail_condition": {
+        "operator": "<",
+        "threshold": {
+          "numerator": "1",
+          "denominator": "10"
+        }
+      }
+    },
+    {
+      "scenario_id": "Downside",
+      "metric_id": "equity_TDC",
+      "unit": "fraction",
+      "definition_ref": "SYNTHETIC-D71-applied-equity-over-complete-tdc",
+      "period_ref": "2026-12-31",
+      "pass_condition": {
+        "operator": "<=",
+        "threshold": {
+          "numerator": "9",
+          "denominator": "20"
+        }
+      },
+      "fail_condition": {
+        "operator": ">",
+        "threshold": {
+          "numerator": "9",
+          "denominator": "20"
+        }
+      }
+    },
+    {
+      "scenario_id": "Downside",
+      "metric_id": "IRR",
+      "unit": "fraction",
+      "definition_ref": "SYNTHETIC-ANNUAL-PERIODIC-IRR-ENCLOSURE-v1",
+      "period_ref": "2027-01-01/2027-07-01",
+      "pass_condition": {
+        "operator": ">=",
+        "threshold": {
+          "numerator": "1",
+          "denominator": "5"
+        }
+      },
+      "fail_condition": {
+        "operator": "<",
+        "threshold": {
+          "numerator": "1",
+          "denominator": "5"
+        }
+      }
+    },
+    {
+      "scenario_id": "Downside",
+      "metric_id": "asking_relative_to_supported_price",
+      "unit": "multiple",
+      "definition_ref": "SYNTHETIC-D126-asking-over-finite-two-target-price-grid",
+      "period_ref": "2027-01-01",
+      "pass_condition": {
+        "operator": "<=",
+        "threshold": {
+          "numerator": "1",
+          "denominator": "1"
+        }
+      },
+      "fail_condition": {
+        "operator": ">",
+        "threshold": {
+          "numerator": "1",
+          "denominator": "1"
+        }
+      }
+    }
+  ],
+  "irr_policy": "SYNTHETIC-D122-month-start-grid-v1",
+  "yield_inputs": {
+    "Base": {
+      "stabilized_noi": {
+        "schema": "miniuw.synthetic-operating-noi.v1",
+        "profile_id": "SYNTHETIC-M2-MAX-TAX-v1",
+        "context": {
+          "deal_id": "SYNTHETIC-integrated-cash-demo",
+          "definition_set_revision": "SYNTHETIC-cash-window-assumptions-v1",
+          "run_id": "SYNTHETIC-integrated-cash-run",
+          "scenario_id": "SYNTHETIC-Base"
+        },
+        "currency": "USD",
+        "period_ref": "2027-01-01/2028-01-01",
+        "income_rows": [
+          {
+            "value": {
+              "numerator": "140",
+              "denominator": "1"
+            },
+            "currency": "USD",
+            "period_ref": "2027-01-01/2028-01-01",
+            "unit": "currency_per_declared_period",
+            "basis": "accrual",
+            "source_ref": "SYNTHETIC-D70-Base-stabilized-operating-inventory",
+            "item_id": "SYNTHETIC-income-residential"
+          },
+          {
+            "value": {
+              "numerator": "0",
+              "denominator": "1"
+            },
+            "currency": "USD",
+            "period_ref": "2027-01-01/2028-01-01",
+            "unit": "currency_per_declared_period",
+            "basis": "accrual",
+            "source_ref": "SYNTHETIC-D70-Base-stabilized-operating-inventory",
+            "item_id": "SYNTHETIC-income-commercial"
+          }
+        ],
+        "expense_rows": [
+          {
+            "value": {
+              "numerator": "40",
+              "denominator": "1"
+            },
+            "currency": "USD",
+            "period_ref": "2027-01-01/2028-01-01",
+            "unit": "currency_per_declared_period",
+            "basis": "accrual",
+            "source_ref": "SYNTHETIC-D70-Base-stabilized-operating-inventory",
+            "item_id": "SYNTHETIC-expenses-excluding-tax"
+          }
+        ],
+        "tax_floor": {
+          "value": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "currency": "USD",
+          "period_ref": "2027-01-01/2028-01-01",
+          "unit": "currency_per_declared_period",
+          "basis": "accrual",
+          "source_ref": "SYNTHETIC-D70-Base-explicit-zero-tax-fixture"
+        },
+        "tax_coefficient": {
+          "value": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "unit": "scalar",
+          "source_ref": "SYNTHETIC-D70-Base-explicit-zero-tax-fixture"
+        },
+        "modelling_assumptions": {
+          "same_period_accrual": true,
+          "tax_model": "max_floor_or_fixed_coefficient_times_noi",
+          "coefficient_fixed": true,
+          "additional_tax_adjustments": false,
+          "rounding": "none_exact"
+        }
+      },
+      "tdc": {
+        "context": {
+          "deal_id": "SYNTHETIC-integrated-cash-demo",
+          "definition_set_revision": "SYNTHETIC-cash-window-assumptions-v1",
+          "run_id": "SYNTHETIC-integrated-cash-run",
+          "scenario_id": "SYNTHETIC-Base"
+        },
+        "currency": "USD",
+        "complete": true,
+        "scope_ref": "SYNTHETIC-D70-all-in-cost-inventory",
+        "rows": [
+          {
+            "component": "acquisition",
+            "amount": {
+              "numerator": "350",
+              "denominator": "1"
+            },
+            "source_ref": "SYNTHETIC-D70-Base-budget-acquisition"
+          },
+          {
+            "component": "hard",
+            "amount": {
+              "numerator": "450",
+              "denominator": "1"
+            },
+            "source_ref": "SYNTHETIC-D70-Base-budget-hard"
+          },
+          {
+            "component": "soft",
+            "amount": {
+              "numerator": "120",
+              "denominator": "1"
+            },
+            "source_ref": "SYNTHETIC-D70-Base-budget-soft"
+          },
+          {
+            "component": "financing",
+            "amount": {
+              "numerator": "80",
+              "denominator": "1"
+            },
+            "source_ref": "SYNTHETIC-D70-Base-budget-financing"
+          },
+          {
+            "component": "other",
+            "amount": {
+              "numerator": "0",
+              "denominator": "1"
+            },
+            "source_ref": "SYNTHETIC-D70-Base-budget-other"
+          }
+        ]
+      },
+      "cap_rate": {
+        "context": {
+          "deal_id": "SYNTHETIC-integrated-cash-demo",
+          "definition_set_revision": "SYNTHETIC-cash-window-assumptions-v1",
+          "run_id": "SYNTHETIC-integrated-cash-run",
+          "scenario_id": "SYNTHETIC-Base"
+        },
+        "currency": "USD",
+        "period_ref": "2027-01-01/2028-01-01",
+        "kind": "synthetic_market_cap_reference",
+        "value": {
+          "numerator": "2",
+          "denominator": "25"
+        },
+        "source_ref": "SYNTHETIC-D70-Base-reference-cap-separate-from-bank-and-sale"
+      },
+      "workbook_sha256": "bc9562c6ad208aa84cf3ddbffc796ea56df80c068d608c6a20b405d9f4116dde"
+    },
+    "Downside": {
+      "stabilized_noi": {
+        "schema": "miniuw.synthetic-operating-noi.v1",
+        "profile_id": "SYNTHETIC-M2-MAX-TAX-v1",
+        "context": {
+          "deal_id": "SYNTHETIC-integrated-cash-demo",
+          "definition_set_revision": "SYNTHETIC-cash-window-assumptions-v1",
+          "run_id": "SYNTHETIC-integrated-cash-run",
+          "scenario_id": "SYNTHETIC-Downside"
+        },
+        "currency": "USD",
+        "period_ref": "2027-01-01/2028-01-01",
+        "income_rows": [
+          {
+            "value": {
+              "numerator": "130",
+              "denominator": "1"
+            },
+            "currency": "USD",
+            "period_ref": "2027-01-01/2028-01-01",
+            "unit": "currency_per_declared_period",
+            "basis": "accrual",
+            "source_ref": "SYNTHETIC-D70-Downside-stabilized-operating-inventory",
+            "item_id": "SYNTHETIC-income-residential"
+          },
+          {
+            "value": {
+              "numerator": "0",
+              "denominator": "1"
+            },
+            "currency": "USD",
+            "period_ref": "2027-01-01/2028-01-01",
+            "unit": "currency_per_declared_period",
+            "basis": "accrual",
+            "source_ref": "SYNTHETIC-D70-Downside-stabilized-operating-inventory",
+            "item_id": "SYNTHETIC-income-commercial"
+          }
+        ],
+        "expense_rows": [
+          {
+            "value": {
+              "numerator": "55",
+              "denominator": "1"
+            },
+            "currency": "USD",
+            "period_ref": "2027-01-01/2028-01-01",
+            "unit": "currency_per_declared_period",
+            "basis": "accrual",
+            "source_ref": "SYNTHETIC-D70-Downside-stabilized-operating-inventory",
+            "item_id": "SYNTHETIC-expenses-excluding-tax"
+          }
+        ],
+        "tax_floor": {
+          "value": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "currency": "USD",
+          "period_ref": "2027-01-01/2028-01-01",
+          "unit": "currency_per_declared_period",
+          "basis": "accrual",
+          "source_ref": "SYNTHETIC-D70-Downside-explicit-zero-tax-fixture"
+        },
+        "tax_coefficient": {
+          "value": {
+            "numerator": "0",
+            "denominator": "1"
+          },
+          "unit": "scalar",
+          "source_ref": "SYNTHETIC-D70-Downside-explicit-zero-tax-fixture"
+        },
+        "modelling_assumptions": {
+          "same_period_accrual": true,
+          "tax_model": "max_floor_or_fixed_coefficient_times_noi",
+          "coefficient_fixed": true,
+          "additional_tax_adjustments": false,
+          "rounding": "none_exact"
+        }
+      },
+      "tdc": {
+        "context": {
+          "deal_id": "SYNTHETIC-integrated-cash-demo",
+          "definition_set_revision": "SYNTHETIC-cash-window-assumptions-v1",
+          "run_id": "SYNTHETIC-integrated-cash-run",
+          "scenario_id": "SYNTHETIC-Downside"
+        },
+        "currency": "USD",
+        "complete": true,
+        "scope_ref": "SYNTHETIC-D70-all-in-cost-inventory",
+        "rows": [
+          {
+            "component": "acquisition",
+            "amount": {
+              "numerator": "350",
+              "denominator": "1"
+            },
+            "source_ref": "SYNTHETIC-D70-Downside-budget-acquisition"
+          },
+          {
+            "component": "hard",
+            "amount": {
+              "numerator": "510",
+              "denominator": "1"
+            },
+            "source_ref": "SYNTHETIC-D70-Downside-budget-hard"
+          },
+          {
+            "component": "soft",
+            "amount": {
+              "numerator": "140",
+              "denominator": "1"
+            },
+            "source_ref": "SYNTHETIC-D70-Downside-budget-soft"
+          },
+          {
+            "component": "financing",
+            "amount": {
+              "numerator": "100",
+              "denominator": "1"
+            },
+            "source_ref": "SYNTHETIC-D70-Downside-budget-financing"
+          },
+          {
+            "component": "other",
+            "amount": {
+              "numerator": "0",
+              "denominator": "1"
+            },
+            "source_ref": "SYNTHETIC-D70-Downside-budget-other"
+          }
+        ]
+      },
+      "cap_rate": {
+        "context": {
+          "deal_id": "SYNTHETIC-integrated-cash-demo",
+          "definition_set_revision": "SYNTHETIC-cash-window-assumptions-v1",
+          "run_id": "SYNTHETIC-integrated-cash-run",
+          "scenario_id": "SYNTHETIC-Downside"
+        },
+        "currency": "USD",
+        "period_ref": "2027-01-01/2028-01-01",
+        "kind": "synthetic_market_cap_reference",
+        "value": {
+          "numerator": "17",
+          "denominator": "200"
+        },
+        "source_ref": "SYNTHETIC-D70-Downside-reference-cap-separate-from-bank-and-sale"
+      },
+      "workbook_sha256": "de7059160dccb32c877d59bf34fe8484acdc6799a5a35edebbae14ffa01d0c97"
+    }
+  },
+  "funding_inputs": {
+    "Base": {
+      "workbook_sha256": "bc9562c6ad208aa84cf3ddbffc796ea56df80c068d608c6a20b405d9f4116dde",
+      "tdc_source_sha256": "7408725cc0118427f17b5449d9c9879894abcbe334352e6a7136140cf68b94f8",
+      "funding": {
+        "context": {
+          "deal_id": "SYNTHETIC-integrated-cash-demo",
+          "definition_set_revision": "SYNTHETIC-cash-window-assumptions-v1",
+          "run_id": "SYNTHETIC-integrated-cash-run",
+          "scenario_id": "SYNTHETIC-Base"
+        },
+        "currency": "USD",
+        "cutoff": "2026-12-31",
+        "funding_inventory_complete": true,
+        "scope_ref": "SYNTHETIC-D71-Base-applied-to-complete-tdc",
+        "debt_commitment": {
+          "numerator": "750",
+          "denominator": "1"
+        },
+        "sources": [
+          {
+            "id": "SYNTHETIC-D71-Base-debt_drawn",
+            "kind": "debt_drawn",
+            "amount": {
+              "numerator": "600",
+              "denominator": "1"
+            },
+            "date": "2026-12-31",
+            "source_ref": "SYNTHETIC-D71-Base-dated-debt_drawn-applied"
+          },
+          {
+            "id": "SYNTHETIC-D71-Base-equity_paid",
+            "kind": "equity_paid",
+            "amount": {
+              "numerator": "400",
+              "denominator": "1"
+            },
+            "date": "2026-12-31",
+            "source_ref": "SYNTHETIC-D71-Base-dated-equity_paid-applied"
+          }
+        ]
+      }
+    },
+    "Downside": {
+      "workbook_sha256": "de7059160dccb32c877d59bf34fe8484acdc6799a5a35edebbae14ffa01d0c97",
+      "tdc_source_sha256": "c522a4226fd005a5f83a29e6bedccfb54289594b7415131f22b01cecada039f9",
+      "funding": {
+        "context": {
+          "deal_id": "SYNTHETIC-integrated-cash-demo",
+          "definition_set_revision": "SYNTHETIC-cash-window-assumptions-v1",
+          "run_id": "SYNTHETIC-integrated-cash-run",
+          "scenario_id": "SYNTHETIC-Downside"
+        },
+        "currency": "USD",
+        "cutoff": "2026-12-31",
+        "funding_inventory_complete": true,
+        "scope_ref": "SYNTHETIC-D71-Downside-applied-to-complete-tdc",
+        "debt_commitment": {
+          "numerator": "750",
+          "denominator": "1"
+        },
+        "sources": [
+          {
+            "id": "SYNTHETIC-D71-Downside-debt_drawn",
+            "kind": "debt_drawn",
+            "amount": {
+              "numerator": "600",
+              "denominator": "1"
+            },
+            "date": "2026-12-31",
+            "source_ref": "SYNTHETIC-D71-Downside-dated-debt_drawn-applied"
+          },
+          {
+            "id": "SYNTHETIC-D71-Downside-equity_paid",
+            "kind": "equity_paid",
+            "amount": {
+              "numerator": "500",
+              "denominator": "1"
+            },
+            "date": "2026-12-31",
+            "source_ref": "SYNTHETIC-D71-Downside-dated-equity_paid-applied"
+          }
+        ]
+      }
+    }
+  },
+  "occupancy_inputs": {
+    "Base": {
+      "workbook_sha256": "bc9562c6ad208aa84cf3ddbffc796ea56df80c068d608c6a20b405d9f4116dde",
+      "period": "2027-01-01/2028-01-01",
+      "debt_basis": "SYNTHETIC-D125-post-refinance-regular-annual-equivalent",
+      "profile": {
+        "rent_at_full_occupancy": {
+          "numerator": "1100",
+          "denominator": "1"
+        },
+        "fixed_expenses": {
+          "numerator": "200",
+          "denominator": "1"
+        },
+        "tax_floor": {
+          "numerator": "50",
+          "denominator": "1"
+        },
+        "tax_coefficient": {
+          "numerator": "1",
+          "denominator": "10"
+        },
+        "source_ref": "SYNTHETIC-D72-Base-affine-rent-expense-tax-debt"
+      }
+    },
+    "Downside": {
+      "workbook_sha256": "de7059160dccb32c877d59bf34fe8484acdc6799a5a35edebbae14ffa01d0c97",
+      "period": "2027-01-01/2028-01-01",
+      "debt_basis": "SYNTHETIC-D125-post-refinance-regular-annual-equivalent",
+      "profile": {
+        "rent_at_full_occupancy": {
+          "numerator": "1200",
+          "denominator": "1"
+        },
+        "fixed_expenses": {
+          "numerator": "250",
+          "denominator": "1"
+        },
+        "tax_floor": {
+          "numerator": "30",
+          "denominator": "1"
+        },
+        "tax_coefficient": {
+          "numerator": "3",
+          "denominator": "25"
+        },
+        "source_ref": "SYNTHETIC-D72-Downside-affine-rent-expense-tax-debt"
+      }
+    }
+  },
+  "return_inputs": {
+    "Base": {
+      "workbook_sha256": "bc9562c6ad208aa84cf3ddbffc796ea56df80c068d608c6a20b405d9f4116dde",
+      "coc_basis": "SYNTHETIC-D126-post-refinance-observed-cash-over-declared-capital",
+      "pricing": {
+        "basis": "SYNTHETIC-D126-only-acquisition-cost-and-initial-equity-change",
+        "as_of": "2027-01-01",
+        "asking": {
+          "numerator": "350",
+          "denominator": "1"
+        },
+        "lower": 0,
+        "upper": 700,
+        "step": 1
+      }
+    },
+    "Downside": {
+      "workbook_sha256": "de7059160dccb32c877d59bf34fe8484acdc6799a5a35edebbae14ffa01d0c97",
+      "coc_basis": "SYNTHETIC-D126-post-refinance-observed-cash-over-declared-capital",
+      "pricing": {
+        "basis": "SYNTHETIC-D126-only-acquisition-cost-and-initial-equity-change",
+        "as_of": "2027-01-01",
+        "asking": {
+          "numerator": "350",
+          "denominator": "1"
+        },
+        "lower": 0,
+        "upper": 700,
+        "step": 1
+      }
+    }
+  },
+  "local_sources": {
+    "revision": "SYNTHETIC-D128-local-evidence-r2",
+    "workbook_sha256": {
+      "Base": "bc9562c6ad208aa84cf3ddbffc796ea56df80c068d608c6a20b405d9f4116dde",
+      "Downside": "de7059160dccb32c877d59bf34fe8484acdc6799a5a35edebbae14ffa01d0c97"
+    },
+    "documents": {
+      "gc_budget": {
+        "document": {
+          "schema": "miniuw.synthetic-local-source.gc_budget.v1",
+          "revision": "SYNTHETIC-D128-local-evidence-r2",
+          "document_id": "SYNTHETIC-GC-BUDGET-01",
+          "plan_ref": "SYNTHETIC-PLAN-01-R1",
+          "area": {
+            "value": {
+              "numerator": "1000",
+              "denominator": "1"
+            },
+            "unit": "m2",
+            "locator": "GC/partida de superficie"
+          },
+          "budget": {
+            "value": {
+              "numerator": "450",
+              "denominator": "1"
+            },
+            "currency": "USD",
+            "locator": "GC/estimación de obra"
+          }
+        },
+        "sha256": "c471c389969a0a1bbf9a5694e043d14efd5e9dce9890e56d3491393cab76e9f6"
+      },
+      "official_snapshot": {
+        "document": {
+          "schema": "miniuw.synthetic-local-source.official_snapshot.v1",
+          "revision": "SYNTHETIC-D128-local-evidence-r2",
+          "document_id": "SYNTHETIC-ARCHIVED-PARCEL-01-R2",
+          "url": "https://municipio.example.invalid/archive/parcels",
+          "valid_from": "2026-12-20",
+          "valid_through": "2027-02-28",
+          "records": {
+            "SYNTHETIC-PARCEL-01": {
+              "max_floors": 4
+            }
+          }
+        },
+        "sha256": "3645b48d32d5a00a31fb3e7182748b018e2aa7badf12e1ebff1c2aa4f62369b6"
+      }
+    },
+    "gc_criterion": {
+      "maximum_absolute_difference": {
+        "numerator": "0",
+        "denominator": "1"
+      },
+      "unit": "m2",
+      "rule_ref": "SYNTHETIC-D128-GC-r2"
+    },
+    "official_request": {
+      "allowed_hosts": [
+        "municipio.example.invalid"
+      ],
+      "as_of": "2027-01-01",
+      "record_id": "SYNTHETIC-PARCEL-01"
+    },
+    "plan_pdf": {
+      "sha256": "252e399a2c6e9def9b557e0e0816e79595158320f867e735d0cede6909e4ca23",
+      "plan_ref": "SYNTHETIC-PLAN-01-R1"
+    }
+  }
+}

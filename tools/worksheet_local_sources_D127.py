@@ -42,10 +42,10 @@ def day(value):
         return None
 
 
-def classify(sources, revision):
+def classify(sources, revision, *, kinds=KINDS):
     """B03 checks typed content and its claimed revision before it reaches a reader."""
     documents, findings = {}, {}
-    for name, kind in KINDS.items():
+    for name, kind in kinds.items():
         envelope = object_or_empty(sources.get(name))
         document = object_or_empty(envelope.get("document"))
         digest = sha(encoded(document)) if document else None
@@ -59,7 +59,7 @@ def classify(sources, revision):
         else:
             documents[name] = document
             findings[name] = check(pointer=pointer, sha256=digest, kind=kind)
-    for name in sorted(sources.keys() - KINDS.keys()):
+    for name in sorted(sources.keys() - kinds.keys()):
         findings[name] = check("undeclared_document_role")
     blocker = "local_document_inventory_pending" if any(row["blockers"] for row in findings.values()) else None
     return documents, check(blocker, documents=findings)
@@ -78,10 +78,14 @@ def area_reading(document, source_name):
                  source_pointer=f"/local_sources/documents/{source_name}/document")
 
 
-def reconcile_readings(first, second):
+def reconcile_readings(first, second, *, shared_pdf=False):
     if first["blockers"] or second["blockers"]:
         return check("both_plan_readings_required")
-    if first["document_id"] == second["document_id"] or first["source_sha256"] == second["source_sha256"]:
+    if shared_pdf:
+        if (first["source_sha256"] != second["source_sha256"] or first["page"] == second["page"]
+                or first["sheet"] == second["sheet"]):
+            return check("distinct_sheets_of_same_plan_required", readings=[first, second])
+    elif first["document_id"] == second["document_id"] or first["source_sha256"] == second["source_sha256"]:
         return check("distinct_plan_reading_sources_required", readings=[first, second])
     if any(first[key] != second[key] for key in ("plan_ref", "unit", "value")):
         return check("plan_readings_conflict", readings=[first, second])
@@ -145,19 +149,30 @@ def verify_official_record(document, archived, request):
                  source_sha256=archived["sha256"], url=archived["url"], as_of=archived["as_of"])
 
 
-def review_local_sources(section, workbook_hashes):
+def review_local_sources(section, workbook_hashes, *, pdf_plan=None):
     _, contract_sha256 = load_contracts()
     section = object_or_empty(section)
     revision = section.get("revision")
     sources = object_or_empty(section.get("documents"))
     binding_ok = synthetic_id(revision) and section.get("workbook_sha256") == workbook_hashes
-    documents, classifier = classify(sources if binding_ok else {}, revision)
+    kinds = KINDS if pdf_plan is None else {name: KINDS[name] for name in ("gc_budget", "official_snapshot")}
+    documents, classifier = classify(sources if binding_ok else {}, revision, kinds=kinds)
     if not binding_ok:
         classifier["blockers"].append("local_evidence_revision_or_workbook_binding_missing")
         classifier["state"] = "PENDING"
-    first = area_reading(documents.get("plan_a", {}), "plan_a")
-    second = area_reading(documents.get("plan_b", {}), "plan_b")
-    plans = reconcile_readings(first, second)
+    if pdf_plan is None:
+        first = area_reading(documents.get("plan_a", {}), "plan_a")
+        second = area_reading(documents.get("plan_b", {}), "plan_b")
+    else:
+        plan_document = pdf_plan["document"] if binding_ok else check("local_evidence_revision_or_workbook_binding_missing")
+        classifier["documents"]["plan_pdf"] = plan_document
+        if plan_document["blockers"]:
+            if "local_document_inventory_pending" not in classifier["blockers"]:
+                classifier["blockers"].append("local_document_inventory_pending")
+            classifier["state"] = "PENDING"
+        first, second = (pdf_plan["B05"], pdf_plan["B06"]) if binding_ok else (
+            check("bound_synthetic_plan_pdf_required"), check("bound_synthetic_plan_pdf_required"))
+    plans = reconcile_readings(first, second, shared_pdf=pdf_plan is not None)
     budget = read_budget(documents.get("gc_budget", {}))
     gc = check_gc(plans, budget, section.get("gc_criterion"))
     snapshot = documents.get("official_snapshot", {})
