@@ -44,7 +44,9 @@ WORKBOOK_COMPLETE_PILOT_SCHEMA = "miniuw.synthetic-workbook-screening-pilot.v7"
 WORKBOOK_LOCAL_CHAIN_SCHEMA = "miniuw.synthetic-workbook-screening-pilot.v8"
 WORKBOOK_CURRENT_CHAIN_SCHEMA = "miniuw.synthetic-workbook-screening-pilot.v9"
 WORKBOOK_PLAN_CHAIN_SCHEMA = "miniuw.synthetic-workbook-screening-pilot.v10"
-WORKBOOK_CURRENT_CHAIN_SCHEMAS = (WORKBOOK_CURRENT_CHAIN_SCHEMA, WORKBOOK_PLAN_CHAIN_SCHEMA)
+WORKBOOK_SCAN_CHAIN_SCHEMA = "miniuw.synthetic-workbook-screening-pilot.v11"
+WORKBOOK_PDF_CHAIN_SCHEMAS = (WORKBOOK_PLAN_CHAIN_SCHEMA, WORKBOOK_SCAN_CHAIN_SCHEMA)
+WORKBOOK_CURRENT_CHAIN_SCHEMAS = (WORKBOOK_CURRENT_CHAIN_SCHEMA, *WORKBOOK_PDF_CHAIN_SCHEMAS)
 WORKBOOK_LOCAL_CHAIN_SCHEMAS = (WORKBOOK_LOCAL_CHAIN_SCHEMA, *WORKBOOK_CURRENT_CHAIN_SCHEMAS)
 WORKBOOK_RETURN_PILOT_SCHEMAS = (WORKBOOK_COMPLETE_PILOT_SCHEMA, *WORKBOOK_LOCAL_CHAIN_SCHEMAS)
 WORKBOOK_OPERATING_PILOT_SCHEMAS = (WORKBOOK_OCCUPANCY_PILOT_SCHEMA, *WORKBOOK_RETURN_PILOT_SCHEMAS)
@@ -97,7 +99,7 @@ def build_results(raw, *, workbook_raw=None, downside_workbook_raw=None, current
     schema = case.get("schema") if isinstance(case, dict) else None
     require(current_revision_raw is None or schema in WORKBOOK_CURRENT_CHAIN_SCHEMAS,
             "The designated revision belongs to the current local chain schema")
-    require(plan_raw is None or schema == WORKBOOK_PLAN_CHAIN_SCHEMA and len(plan_raw) <= MAX_PLAN_BYTES,
+    require(plan_raw is None or schema in WORKBOOK_PDF_CHAIN_SCHEMAS and len(plan_raw) <= MAX_PLAN_BYTES,
             "A bounded PDF plan belongs to the plan chain schema")
     yield_metrics = schema in (WORKBOOK_YIELD_PILOT_SCHEMA, *WORKBOOK_FUNDING_PILOT_SCHEMAS)
     interval_irr = schema == WORKBOOK_IRR_PILOT_SCHEMA or yield_metrics

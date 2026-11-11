@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D130 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D131 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/miniuw-integral-usd10.yml",
@@ -8,8 +8,8 @@
     },
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 19010,
-      "sha256": "aa8b8d5328a664e6efad34e919bdb635b64fd43c78063c681292bd171868cf29"
+      "bytes": 19361,
+      "sha256": "46308158d21f6ca77c4febaeba3cf5c536f008512395e992b7c7a9aec77da53b"
     },
     {
       "path": ".gitignore",
@@ -23,13 +23,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 81804,
-      "sha256": "05d772712a862e712dc6a6041ff60a54b1898ac1188ecdc2322f38d470ee10f2"
+      "bytes": 82019,
+      "sha256": "94c012113500687300d19b9954555470db4c162f8c440c519cac9ff2ba11336b"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 335658,
-      "sha256": "69d20d381239bc04a687a1ec76a4dca3ede87e60de81ab223c631c326cc327e0"
+      "bytes": 336112,
+      "sha256": "b672cb8efac366620a060cb071cb78bbc4ef27afc967348ba04dee108270ebb7"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -58,8 +58,8 @@
     },
     {
       "path": "docs/MiniUW_v1_Dots_y_Bots.md",
-      "bytes": 6082,
-      "sha256": "558f878898ce5978301f0499ce1c5dc31c124671e21219ffdb49da105e56ac74"
+      "bytes": 6254,
+      "sha256": "ff20acd5f4d2e8e5839f230df298e1ce4afe322dbbfd644d6cd4ac2686d77e4e"
     },
     {
       "path": "docs/acceptance-case-contracts.json",
@@ -3067,6 +3067,11 @@
       "sha256": "f5af93b9ed729310519ad233bf4dbc93605afd8a5685e2f6dded6bfb6db2c8df"
     },
     {
+      "path": "docs/workbook-plan-scan-D131.md",
+      "bytes": 2934,
+      "sha256": "1e46784b065cbf911091634e99e4c3685040be4adb29173db75ff4c02aeb367a"
+    },
+    {
       "path": "docs/workbook-screening-metrics-D121.md",
       "bytes": 3574,
       "sha256": "50d4fc7a45c04f069e4fe71ad0a72b63124f6108b01321a5e4f3c5dd55ff22b1"
@@ -5557,6 +5562,21 @@
       "sha256": "d6ba2d197fa473118d67f7590f484db899797ebb882d6e72264752c21542fe54"
     },
     {
+      "path": "templates/synthetic-scanned-plan-D131.pdf",
+      "bytes": 85223,
+      "sha256": "f219248d27b66e28d44c20e00f410197029b4022b1f72274181ce690186a6828"
+    },
+    {
+      "path": "templates/synthetic-scanned-plan-conflict-D131.pdf",
+      "bytes": 85525,
+      "sha256": "3c23be789697998b62d8ca296394ef6088f82efe7b5796a2fa93ec6854247080"
+    },
+    {
+      "path": "templates/synthetic-scanned-plan-missing-area-D131.pdf",
+      "bytes": 84705,
+      "sha256": "982fef8b5bed232dd4321106adbc0e307575bfab735ba909f57cd6465c4cf0c7"
+    },
+    {
       "path": "templates/synthetic-screening-band-case.json",
       "bytes": 4673,
       "sha256": "59493c78fd72ee6a2daedcf74ccc914a3dea81d74f7b5a8302e4ee56868f40b2"
@@ -5642,6 +5662,11 @@
       "sha256": "8e924e47b425c3fd7734a59371b605bfd7bee722fc5e5abb30dc99aae8701ba1"
     },
     {
+      "path": "templates/synthetic-workbook-current-revision-D131.json",
+      "bytes": 728,
+      "sha256": "d20560ff5ee704fee7c0e33e5f46e28e7db22b7eec415479e2f167a4ec7c57e4"
+    },
+    {
       "path": "templates/synthetic-workbook-example.xlsx",
       "bytes": 1661,
       "sha256": "d7acbf6cd7eefd921b183c89e9ac987a33dc5105f2c8be886969f05d22b36042"
@@ -5660,6 +5685,11 @@
       "path": "templates/synthetic-workbook-plan-chain-D130.json",
       "bytes": 28886,
       "sha256": "f44b8882363029b75310c31e9ef6d229989991dfec005103b0e7bb027a5f72a5"
+    },
+    {
+      "path": "templates/synthetic-workbook-scan-chain-D131.json",
+      "bytes": 29221,
+      "sha256": "f7bb6308460ce65d0a3b9fbb82dffe26acfd7060ead159aa694572f7ce0f4bc8"
     },
     {
       "path": "templates/synthetic-workbook-screening-pilot-D120.json",
@@ -6782,6 +6812,11 @@
       "sha256": "2c481c0c4db24a2598738ab0d3cff77641d8f545244a48df32a58fdf0ac9bcc7"
     },
     {
+      "path": "tools/check_worksheet_plan_scan_D131.py",
+      "bytes": 6285,
+      "sha256": "02b082b637fe53f732f86c6f7db47760441a2c19d3534f37fef1081bdad00144"
+    },
+    {
       "path": "tools/check_worksheet_preflight_D116.py",
       "bytes": 3949,
       "sha256": "cca61135c39f867d5a61b6836709fdeeda34f8a256b8d5c604e29123a7a08e5a"
@@ -7243,8 +7278,8 @@
     },
     {
       "path": "tools/miniuw_worksheet_v1.py",
-      "bytes": 22179,
-      "sha256": "6e18d505d8a6b59008abde967f8aaa4c6b872dc58af1a9d6c4b25f004e895688"
+      "bytes": 22343,
+      "sha256": "28815b3588a64c30909a04cc045410b3eab6c484a9fc77a143647e7eb66e0341"
     },
     {
       "path": "tools/onepage_pending_cases_D79.py",
@@ -7427,6 +7462,11 @@
       "sha256": "3c8e4b4d2f88f082e46eec5e3ea87e27fd408279ef8025fa9792d21e9e4409a7"
     },
     {
+      "path": "tools/worksheet_plan_scan_D131.py",
+      "bytes": 7576,
+      "sha256": "551b0ccf3c0ec554ae1235a7834fd0294c1ec1d37988a61cd849f5e3475f9128"
+    },
+    {
       "path": "tools/worksheet_preflight_D116.py",
       "bytes": 4976,
       "sha256": "be7a8092aed1167a073b941b438b760488d94684a67f49d8d4e16fa6373510b0"
@@ -7458,8 +7498,8 @@
     },
     {
       "path": "tools/worksheet_screening_pilot_D120.py",
-      "bytes": 22950,
-      "sha256": "edd8c058d4ccbdd0be4ab7efaba89c6c5f8e4f0ed35bb3ea7dd7b57f11cb2c75"
+      "bytes": 23335,
+      "sha256": "9750bf954da1d5fa95c123c9a7fcf579a3f9e9f6e3e2cf1063436a55e2fb42df"
     },
     {
       "path": "tools/worksheet_settled_miniuw_v1.py",

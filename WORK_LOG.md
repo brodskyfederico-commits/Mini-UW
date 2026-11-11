@@ -1620,3 +1620,7 @@ La revisión R3 baja el máximo del 50 % al 45 %. El 45,45 % calculado en Downsi
 ## D130 — Lectura de planos PDF sintéticos
 
 B05 y B06 extraen áreas escritas de hojas distintas del mismo PDF. B07 conserva ambas observaciones ante un conflicto y B09 coteja con GC. La cadena deja PENDING por dato, PDF o revisión faltante, y por discrepancia. La auditoría reproduce la lectura desde los bytes guardados y conserva el cobro por USD 10. [Casos y reproducción](docs/workbook-plan-pdf-D130.md).
+
+## D131 — OCR de planos escaneados sintéticos
+
+B05 y B06 leen superficies declaradas desde dos imágenes de un PDF sin capa de texto. El expediente conserva citas de página, regiones y confianza, además de la versión del motor y el hash del idioma. Se auditan la coincidencia de 1.000 m² y los bloqueos por dato, conflicto, confianza o motor faltante. Los cobros por USD 10 se conservan. [Casos y reproducción](docs/workbook-plan-scan-D131.md).
