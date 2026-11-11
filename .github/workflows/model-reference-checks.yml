@@ -269,5 +269,7 @@ jobs:
         run: PYTHONPATH=src python tools/check_worksheet_occupancy_D125.py
       - name: Verify the complete synthetic workbook pilot and its deterministic audit
         run: PYTHONPATH=src python tools/check_worksheet_complete_pilot_D126.py
+      - name: Verify the seven local Dot stages and their synthetic source gates
+        run: PYTHONPATH=src python tools/check_worksheet_local_chain_D127.py
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v

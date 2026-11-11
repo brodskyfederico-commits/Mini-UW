@@ -39,3 +39,5 @@ El ejecutor puede calcular el perfil sintetico desde fuentes complementarias com
 El auditor local reproduce cifras y archivos; su salida no acredita independencia financiera o profesional. La evidencia de CI corresponde a la version, no al estado de cada deal. No hay mensajes, busquedas, aprobaciones, publicacion o despliegue externos.
 
 [Contrato ejecutable](miniuw-v1-dot-bot-contracts.json) · [Alcance tecnico](technical-implementation-T85-T87.md).
+
+D127 prueba estos contratos en la cadena local con copias sintéticas estructuradas. [Alcance, casos y reproducción](workbook-local-chain-D127.md).

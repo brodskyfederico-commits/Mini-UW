@@ -1604,3 +1604,7 @@ El perfil D72 de renta y costos usa el servicio regular anual equivalente del pr
 ## D126 — Piloto integrado con diez métricas calculadas
 
 El CoC usa los cobros operativos posrefinanciación del tramo observado y una base declarada. El soporte de precio usa una grilla explícita y los objetivos sintéticos de YoC y múltiplo de equity. Se auditan veinte comparaciones, los cobros por USD 10 y el flujo local desde la recepción hasta el PDF. Se prueban PASS, FAIL, PENDING y rechazo de un expediente alterado. [Resultados, alcance y comandos](docs/workbook-complete-pilot-D126.md).
+
+## D127 — Cadena local de los siete Dots
+
+Los contratos de recepción, validación, planos, GC, copia oficial, cálculo, informe y auditoría se prueban con fuentes sintéticas estructuradas. Se auditan PASS, FAIL y PENDING por fuente, criterio de GC o regla de inversión faltantes. La evidencia conserva los cobros por USD 10 y la auditoría rechaza un resultado alterado con hashes recalculados. [Casos y reproducción](docs/workbook-local-chain-D127.md).

@@ -4,6 +4,7 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D127 conecta y prueba los siete Dots del flujo local, con documentos sintéticos estructurados para planos, GC y la copia oficial archivada. [Casos y reproducción](docs/workbook-local-chain-D127.md).
 - D126 reproduce las diez métricas del piloto, veinte comparaciones, los cobros por USD 10 y el PDF. Registra los pasos locales de recepción, validación, cálculo e informe y vuelve a correrlos en auditoría. [Resultados, alcance y comandos](docs/workbook-complete-pilot-D126.md).
 - D125 calcula la ocupación económica de equilibrio con la renta, los costos y la cuota posrefinanciación del piloto. [Resultados y comandos](docs/workbook-occupancy-D125.md).
 - D124 reconcilia los fondos aplicados con el TDC de cada escenario, calcula equity/TDC y verifica el cotejo con los cobros por USD 10. [Resultados y comandos](docs/workbook-equity-tdc-D124.md).
