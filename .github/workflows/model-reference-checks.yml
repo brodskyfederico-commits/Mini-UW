@@ -225,5 +225,7 @@ jobs:
         run: python tools/check_integral_miniuw_D102.py
       - name: Verify synthetic USD 10 scenario withholding when refinance is blocked
         run: python tools/check_scenario_availability_D104.py
+      - name: Verify declared synthetic plan schedule revisions
+        run: PYTHONPATH=src python tools/plan_schedule_D105.py check
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v

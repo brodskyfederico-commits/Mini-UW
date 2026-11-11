@@ -4,6 +4,7 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D105 compara revisiones sintéticas de cuadros de superficies y unidades declaradas, con fuente por campo y revisión pendiente para cambios y faltantes. [Contrato y comandos](docs/plan-schedule-intake-D105.md).
 - D104 conserva los cobros verificados de Base o Downside cuando el otro escenario queda PENDING por capacidad de refinanciación. Ejecuta `python tools/check_scenario_availability_D104.py`. [Ejemplo de una página](docs/review/MiniUW_D104_Escenario_Bloqueado_USD10.pdf).
 - D102 automatiza la verificación integral por USD 10 en Base, Downside y casos límite. Ejecuta `python tools/check_integral_miniuw_D102.py` desde la raíz. [Resumen de una página](docs/review/MiniUW_D102_Verificacion_Integral_USD10.pdf).
 - D101 prueba el último mes cubierto con caja y los primeros dos meses que necesitan aportes adicionales. [PDF de una página](docs/review/MiniUW_D101_Aporte_Al_Agotarse_Caja_USD10.pdf) y control reproducible con `python tools/holding_cash_funding_boundary_D101.py`.

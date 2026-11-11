@@ -1506,3 +1506,9 @@ Se agrega un workflow que solicita únicamente la prueba integral sintética por
 La entrada sintética v6 del comando común admite un escenario archivado cuya capacidad de refinanciación está bloqueada. La comparación queda PENDING, el escenario bloqueado retira sus cifras y el otro conserva sus cobros, aportes y fechas verificados por USD 10 iniciales. Con ambos escenarios bloqueados se produce una página con los dos motivos. La entrada original v1 conserva su contrato.
 
 Se prueban cuatro combinaciones de disponibilidad y tres entradas rechazadas. La validación corre en el VPS mientras se renueva el cupo de GitHub Actions. GitHub confirmó que se agotó el cupo incluido de Actions. [Ejemplo sintético de una página](docs/review/MiniUW_D104_Escenario_Bloqueado_USD10.pdf).
+
+## D105 — Trazabilidad de revisiones de cuadros de planos
+
+Se verifican cinco campos explícitos entre dos cuadros sintéticos de la lámina A-601. Se vincula cada dato con los bytes, la revisión, la ubicación y la fila de la fuente. La superficie rentable cambia de 710 a 690 ft² por unidad para 1BR-A. El grupo 2BR-A conserva su cero explícito y GSF queda pendiente. La comparación distingue cambios, faltantes y grupos agregados o retirados. Se rechazan cuatro entradas inválidas.
+
+El resultado señala las dependencias condicionales de renta y presupuesto sin aplicar cifras al modelo. La lectura CAD, la conciliación técnica del plano y la decisión financiera conservan estado PENDING. [Contrato y comandos](docs/plan-schedule-intake-D105.md).

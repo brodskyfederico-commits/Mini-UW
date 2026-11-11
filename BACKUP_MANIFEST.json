@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D104 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D105 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/miniuw-integral-usd10.yml",
@@ -8,8 +8,8 @@
     },
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 14964,
-      "sha256": "fc643ce8f6b1a8049b3dc92bc58f8dd726cb50708ddd52818a4cbdc5745d32e0"
+      "bytes": 15097,
+      "sha256": "9548f718d9961d40c7b4f7c90ac3d4ee760a4acfafae0cec32ff82334f8514a1"
     },
     {
       "path": ".gitignore",
@@ -23,13 +23,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 76176,
-      "sha256": "76d83fe599d510599a18a3a30f6c26deaf13c41f811eefb2a58c8c4ab534b95f"
+      "bytes": 76390,
+      "sha256": "0dd107355b6f2989e1e99acba73ea6405a4e52e548adba09a3b8c18728eb928f"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 322200,
-      "sha256": "7b4ea2f3a47973447b9698b4ffdb96ff156764e8dc9e2f25ebd160d78987bcab"
+      "bytes": 322961,
+      "sha256": "2d0e1ba91b7085a59e8d96c56c347847c3ac0d317a959bf8785d4baa447fe4fa"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -795,6 +795,11 @@
       "path": "docs/periodic-irr-root-isolation.md",
       "bytes": 4254,
       "sha256": "be4145684a968d6ffeafe9d47360fee3b7a83528be3f05e4876f9d8ce9ddaaf6"
+    },
+    {
+      "path": "docs/plan-schedule-intake-D105.md",
+      "bytes": 2038,
+      "sha256": "7ef19d829b2a4e9974aade9eb2adfeeeaf54ce4942a551ba682908d8cf1c3620"
     },
     {
       "path": "docs/policy-renewal-v1-runbook.md",
@@ -5242,6 +5247,16 @@
       "sha256": "89ef4868e9a3161508698feb4d91280266de8ff7a27e213f78603d449b72f07f"
     },
     {
+      "path": "templates/synthetic-plan-schedule-D105-A.json",
+      "bytes": 951,
+      "sha256": "197fb5bbfa724fc9c3b843560af9a25a32f326149d8fc1fdbaf6556700c07fb0"
+    },
+    {
+      "path": "templates/synthetic-plan-schedule-D105-B.json",
+      "bytes": 829,
+      "sha256": "eeef46be7f632af4f1e989ee2c7a719f6ad4ae7e8cc9be2a0f671625d2426ee0"
+    },
+    {
       "path": "templates/synthetic-preopening-cash-example.json",
       "bytes": 7330,
       "sha256": "3efd32687f3c42caaaeade638e04cd9ef4ca34030a42985fc74684046c9ab027"
@@ -6910,6 +6925,11 @@
       "path": "tools/pilot_workbook_D49.py",
       "bytes": 14814,
       "sha256": "f64321df776f640231322e01d84c291bc47a1d514bd89a09b4a5e02218c8a6c0"
+    },
+    {
+      "path": "tools/plan_schedule_D105.py",
+      "bytes": 9265,
+      "sha256": "6aa0db2696f9f12f56efe44d8f3ca4c1e7244b1778ee62fb7798daa5440d51ba"
     },
     {
       "path": "tools/price_linked_sale_cost_D88.py",

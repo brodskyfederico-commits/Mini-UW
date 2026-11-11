@@ -1,0 +1,38 @@
+{
+  "schema": "miniuw.synthetic-declared-plan-schedule.v1",
+  "deal_id": "SYNTHETIC-D105-demo",
+  "document_id": "SYNTHETIC-D105-area-table",
+  "sheet": "A-601",
+  "revision": 2,
+  "building_gsf": {
+    "value": null,
+    "schedule_ref": "Building / Gross SF"
+  },
+  "groups": [
+    {
+      "id": "2BR-A",
+      "unit_count": {
+        "value": 0,
+        "schedule_ref": "2BR-A / Units"
+      },
+      "unit_rentable_sf": {
+        "value": null,
+        "schedule_ref": "2BR-A / Rentable SF per unit"
+      }
+    },
+    {
+      "id": "1BR-A",
+      "unit_count": {
+        "value": 20,
+        "schedule_ref": "1BR-A / Units"
+      },
+      "unit_rentable_sf": {
+        "value": {
+          "numerator": "690",
+          "denominator": "1"
+        },
+        "schedule_ref": "1BR-A / Rentable SF per unit"
+      }
+    }
+  ]
+}
