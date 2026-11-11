@@ -221,5 +221,7 @@ jobs:
         run: python tools/fixed_extended_sale_D100.py
       - name: Verify first holding cash shortfalls and explicit synthetic equity contributions
         run: python tools/holding_cash_funding_boundary_D101.py
+      - name: Verify the complete synthetic USD 10 workflow and recovery boundaries
+        run: python tools/check_integral_miniuw_D102.py
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v

@@ -1488,3 +1488,9 @@ Se reproducen nueve cierres y 27 saldos en valor presente. Todos quedan cortos a
 Se conserva la venta en USD 300, el costo de refinanciación de USD 175, el costo de venta de USD 25 y la liquidación de deuda de USD 56,00 en julio de 2027. En el último mes cubierto por caja, el aporte extra es cero. El primer mes con faltante es el 33, 17 u 11 con tenencia de USD 10, USD 20 o USD 30 por mes, respectivamente.
 
 La prueba supone aportes sintéticos a prorrata, con la misma participación, antes de pagar la tenencia de cada mes y antes de cobrar la venta. Al primer faltante, se aportan USD 0,08, USD 0,18 o USD 0,08 por USD 10 iniciales. Un mes más lleva esos totales a USD 0,18, USD 0,38 o USD 0,38. En las seis ventas posteriores al agotamiento de caja, se cobran USD 7,20 por USD 10 iniciales, antes de restar los aportes. Se verifican nueve cierres y 27 saldos. Si faltan términos de financiación, esos seis escenarios quedan PENDING sin cobros calculados. La decisión real sigue PENDING. [PDF de una página](docs/review/MiniUW_D101_Aporte_Al_Agotarse_Caja_USD10.pdf).
+
+## D102 — Verificación integral del Mini-UW por USD 10
+
+La prueba automatizada ejecuta los comandos `run` y `audit` sobre el expediente sintético de Base y Downside. Compara fechas, categorías, aportes, cobros, múltiplo y faltante con flujos esperados independientes. El caso normal cobra USD 13,02 por USD 10 iniciales. El adverso aporta USD 0,80 extra en abril, cobra USD 9,02 en total y queda con USD 1,78 sin recuperar.
+
+Se verifican seis precios alrededor del equilibrio de caja nominal, la ruta sin refinanciación y dos expedientes que quedan PENDING por capacidad excedida o DSCR faltante. La prueba de tenencia verifica nueve cierres cerca del agotamiento de caja y seis estados PENDING sin términos de financiación. La verificación conserva la decisión PENDING y utiliza exclusivamente datos sintéticos. [Resumen de una página](docs/review/MiniUW_D102_Verificacion_Integral_USD10.pdf).

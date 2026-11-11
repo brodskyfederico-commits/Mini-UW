@@ -1,10 +1,10 @@
 {
-  "scope": "I01 preserved design, D02–D101 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D102 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 14677,
-      "sha256": "6525ad7b94faca3612ea97d420e2bffaaff5cdf026e45ac8c09091c2acbd4882"
+      "bytes": 14817,
+      "sha256": "db0060d36cb9848564226d95500e4b6689a01727b9d1fcf5d11a01585e0d589d"
     },
     {
       "path": ".gitignore",
@@ -18,13 +18,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 75662,
-      "sha256": "5b7dbffde0f7674ccd22170830e10b51d005e8e131b8dd25b9b9f293015d40bb"
+      "bytes": 75904,
+      "sha256": "40a8973bfe8e89167d2b8df576ab62ab526a25b25bb00e6cca08f885ee6f2039"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 319704,
-      "sha256": "6e176cfe00883a640c7772c4c08a75dc4cf16eabe0f0f100f1a92c13c8375e09"
+      "bytes": 320613,
+      "sha256": "44709b03491e2429aa1fe72536b1f1b258cb795b9a9bf5a241ecfbce1b9fbc4e"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -925,6 +925,11 @@
       "path": "docs/review/MiniUW_D101_Aporte_Al_Agotarse_Caja_USD10.pdf",
       "bytes": 3714,
       "sha256": "9abe42ff896118c4c8ec1e50a5e32f2bd8e2c228e61b22c27a2d2f34d97b2aa8"
+    },
+    {
+      "path": "docs/review/MiniUW_D102_Verificacion_Integral_USD10.pdf",
+      "bytes": 2853,
+      "sha256": "2560fe8707a8d9029f0c4923fa83bd3398c99b5e8c58ddd2f3972cd0419aa9b7"
     },
     {
       "path": "docs/review/MiniUW_D81_Ocho_Revisiones_Sinteticas.zip",
@@ -6225,6 +6230,11 @@
       "path": "tools/check_insurance_terminal_T107.py",
       "bytes": 7471,
       "sha256": "adf1d58313f0b02cd3bca219bae1f41f246b6817d7ce5eb0f2604e5e5a0e2bb2"
+    },
+    {
+      "path": "tools/check_integral_miniuw_D102.py",
+      "bytes": 13534,
+      "sha256": "f54803a5f73ef3286010a7bd7eb4abba4e937f22c738c9a40d9a12f903331632"
     },
     {
       "path": "tools/check_integrated_participation_D28.py",
