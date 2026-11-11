@@ -4,6 +4,7 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D118 recalcula la capacidad desde C72 y muestra el límite incluso cuando el préstamo deja el retorno por USD 10 PENDING. [Casos y comandos](docs/worksheet-capacity-case-D118.md).
 - D117 conecta el checklist de la planilla con la corrida y su auditoría. Las correcciones crean otro expediente con resultados recalculados. [Casos y comandos](docs/worksheet-intake-case-D117.md).
 - D116 revisa la planilla sintética de refinanciación y venta al recibirla y localiza los faltantes, valores inválidos y conflictos antes de calcular. [Checklist y comandos](docs/worksheet-preflight-D116.md).
 - D115 muestra cuánto debe aumentar la venta prevista en USD y porcentaje para recuperar los aportes al 2 % mensual. [PDF de una página por USD 10](docs/review/MiniUW_D115_Aumento_Venta_para_Recuperar_2pct.pdf). Reproducí con `PYTHONPATH=src python3 tools/compare_sale_uplift_D115.py`.

@@ -6,7 +6,7 @@ from io import BytesIO
 from pathlib import Path
 from tempfile import TemporaryDirectory
 from xml.etree import ElementTree
-from zipfile import ZipFile
+from zipfile import ZipFile, ZipInfo
 import json
 
 from pypdf import PdfReader
@@ -22,7 +22,7 @@ from miniuw_foundation.workbooks import MAIN
 CASE = ROOT / "templates/synthetic-workbook-intake-case-D117.json"
 
 
-def workbook_without_dscr(raw):
+def workbook_with_dscr(raw, literal=None):
     ref = inspect_synthetic_input_sheet(raw).cells["C72"]["sheet_part"]
     with ZipFile(BytesIO(raw)) as book:
         parts = {name: book.read(name) for name in book.namelist()}
@@ -32,11 +32,13 @@ def workbook_without_dscr(raw):
     for child in list(cell):
         cell.remove(child)
     cell.attrib.pop("t", None)
+    if literal is not None:
+        ElementTree.SubElement(cell, f"{{{MAIN}}}v").text = literal
     parts[ref] = ElementTree.tostring(xml, encoding="utf-8", xml_declaration=True)
     buffer = BytesIO()
     with ZipFile(buffer, "w") as book:
         for name, value in parts.items():
-            book.writestr(name, value)
+            book.writestr(ZipInfo(name), value)
     return buffer.getvalue()
 
 
@@ -45,8 +47,8 @@ def changed_cells(before, after):
     return {cell for cell in old.keys() | new.keys() if old.get(cell) != new.get(cell)}
 
 
-def audit(workbook, output):
-    created = call("run", CASE, "--workbook", workbook, "--output", output)
+def audit(workbook, output, *, case=CASE):
+    created = call("run", case, "--workbook", workbook, "--output", output)
     verified = call("audit", output)
     result = json.loads((output / "results.json").read_bytes())
     pdf = (output / "MiniUW_Resumen.pdf").read_bytes()
@@ -68,8 +70,8 @@ def verify(temp, saved_output):
         raw = b64decode(record["xlsx_base64"], validate=True)
         require(sha(raw) == record["sha256"], "Synthetic workbook bytes differ")
         books[key] = raw
-    books["two_missing"] = workbook_without_dscr(books["missing"])
-    books["partial"] = workbook_without_dscr(books["base"])
+    books["two_missing"] = workbook_with_dscr(books["missing"])
+    books["partial"] = workbook_with_dscr(books["base"])
     for before, after in (("missing", "base"), ("base", "zero"), ("two_missing", "partial")):
         require(changed_cells(books[before], books[after]) == {"C68"}, "The correction changed other cells")
 

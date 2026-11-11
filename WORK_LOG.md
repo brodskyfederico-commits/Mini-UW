@@ -1568,3 +1568,7 @@ Se agrega el chequeo de ingreso de la planilla para las cinco celdas de refinanc
 ## D117 — Checklist de ingreso conectado con la corrida sintética
 
 El comando común recibe el XLSX como fuente auditable y ejecuta la corrida de refinanciación y venta cuando el checklist está completo. Se prueban cinco copias y tres correcciones que sólo cambian C68. Un DSCR faltante mantiene PENDING. Cambiar el costo de venta recalcula el neto, los cobros por USD 10 y el mínimo de venta. Se verifica que una corrección no reemplace el expediente y que la auditoría rechace un XLSX sustituido. [Casos y reproducción](docs/worksheet-intake-case-D117.md).
+
+## D118 — Corrección de C72 y control de capacidad antes del retorno
+
+La corrida vincula el DSCR de C72 con la capacidad bancaria y verifica su valor con un cálculo independiente. Se comparan una celda vacía, una corrección compatible y otra que deja el préstamo por encima del límite. El expediente bloqueado muestra la capacidad y deja PENDING el cierre y el retorno por USD 10. [Casos y comandos](docs/worksheet-capacity-case-D118.md).

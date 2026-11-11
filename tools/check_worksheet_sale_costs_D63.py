@@ -10,7 +10,7 @@ from check_operating_replay_D20 import ROOT, amount, local_file, require
 from discounted_costed_sale_D64 import recovery_prices
 from check_participant_refinance_variants_D31 import build_variant_evidence
 from check_worksheet_exit_D62 import FIXTURE as EXIT, inputs, valuation_from_sheet
-from check_worksheet_refinance_D45 import bind_worksheet_capacity, run_case, worksheet_parameters
+from check_worksheet_refinance_D45 import bind_worksheet_capacity, capacity_diagnostics, run_case, worksheet_parameters
 from demo_costed_exit_sale import cost_source
 from miniuw_linked_cotejo_D54 import publish
 from miniuw_worksheet_v1 import encoded
@@ -24,7 +24,8 @@ FIXTURE = "templates/synthetic-worksheet-sale-costs-D63.json"
 SALE_CELLS = {"C67": "exit_cap", "C68": "sale_cost_fraction"}
 
 
-def calculate(case, worksheet, fixture, base, noi_raw, noi, initial_spec, rates=(), with_report=False):
+def calculate(case, worksheet, fixture, base, noi_raw, noi, initial_spec, rates=(), with_report=False, *,
+              capacity_first=False):
     checked = worksheet_parameters(worksheet, fixture["scenario_context"], fixture["worksheet_as_of_UTC"],
                                    SALE_CELLS)
     result = dict(state="PENDING", decision="PENDING", worksheet=checked, candidate_price=None,
@@ -35,6 +36,12 @@ def calculate(case, worksheet, fixture, base, noi_raw, noi, initial_spec, rates=
         return result
 
     evidence = bind_worksheet_capacity(base, checked)
+    if capacity_first:
+        capacity = capacity_diagnostics(evidence)
+        result["capacity"] = capacity
+        if capacity["blockers"] or capacity["return_blockers"]:
+            result["blockers"] = sorted(set(capacity["blockers"] + capacity["return_blockers"]))
+            return result
     vr, valuation = valuation_from_sheet(checked, noi_raw, noi, initial_spec)
     source = cost_source(valuation, case["unresolved_tax"])
     fee, = (row for row in source["costs"] if row["kind"] == "percent_of_gross")

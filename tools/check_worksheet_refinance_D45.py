@@ -84,6 +84,16 @@ def bind_worksheet_capacity(evidence, check):
     return replace(evidence, capacity_spec_raw=raw, capacity_run=capacity, binding=binding, guarded_run=run)
 
 
+def capacity_diagnostics(bound):
+    capacity = bound.capacity_run
+    payload = capacity.payload
+    result = {key: payload[key] for key in ("as_of_date", "selected_principal", "maximum_principal_capacity",
+                                           "capacity_limits", "binding_limit_ids", "blockers", "lineage")}
+    return result | dict(spec_sha256=sha(bound.capacity_spec_raw), run_sha256=capacity.sha256,
+                         return_run_sha256=bound.guarded_run.sha256,
+                         return_blockers=bound.guarded_run.payload["blockers"])
+
+
 def run_case(evidence, worksheet, context, as_of, monthly_rate=None, additional_cells=None):
     source = json.loads(evidence.capacity_spec_raw)
     require(source["context"] == context, "Worksheet and refinance case contexts differ")
@@ -99,14 +109,11 @@ def run_case(evidence, worksheet, context, as_of, monthly_rate=None, additional_
         return result
 
     bound = bind_worksheet_capacity(evidence, check)
-    raw, capacity, run = bound.capacity_spec_raw, bound.capacity_run, bound.guarded_run
+    capacity, run = bound.capacity_run, bound.guarded_run
     c = capacity.payload
     require(run.payload["decision"] == c["decision"] == "PENDING"
             and c["bank_credit_approved"] is c["funds_available_verified"] is False, "Refinance acquired authority")
-    result["capacity"] = {key: c[key] for key in ("as_of_date", "selected_principal", "maximum_principal_capacity",
-                                                 "capacity_limits", "binding_limit_ids", "blockers", "lineage")}
-    result["capacity"].update(spec_sha256=sha(raw), run_sha256=capacity.sha256,
-                              return_run_sha256=run.sha256, return_blockers=run.payload["blockers"])
+    result["capacity"] = capacity_diagnostics(bound)
     if run.investor_run is None:
         require(run.compiled_raw is None and run.payload["blockers"], "Blocked capacity leaked dated cash")
         return result

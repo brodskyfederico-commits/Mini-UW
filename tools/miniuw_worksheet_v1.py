@@ -33,6 +33,7 @@ PLAN_REFINANCE_REQUEST_SCHEMA = "miniuw.synthetic-plan-refinance-request.v1"
 PLAN_DISCOUNT_COMPARISON_SCHEMA = "miniuw.synthetic-plan-discount-comparison.v1"
 PLAN_DISCOUNT_RECOVERY_SCHEMA = "miniuw.synthetic-plan-discount-comparison.v2"
 WORKBOOK_INTAKE_SCHEMA = "miniuw.synthetic-workbook-intake-case.v1"
+WORKBOOK_CAPACITY_SCHEMA = "miniuw.synthetic-workbook-intake-case.v2"
 PACKAGE_SCHEMA = "miniuw.synthetic-unified-worksheet-package.v1"
 COSTED_SALE = "templates/synthetic-worksheet-sale-costs-D63.json"
 COSTED_PROFILE = "with_refinance_worksheet_sale"
@@ -72,10 +73,10 @@ def read_case(case):
 
 def build_results(raw, *, workbook_raw=None):
     case = _json(raw, 4096)
-    if isinstance(case, dict) and case.get("schema") == WORKBOOK_INTAKE_SCHEMA:
+    if isinstance(case, dict) and case.get("schema") in (WORKBOOK_INTAKE_SCHEMA, WORKBOOK_CAPACITY_SCHEMA):
         from worksheet_intake_case_D117 import build_intake_case
         require(workbook_raw is not None, "The intake case requires the exact synthetic Inputs workbook")
-        return build_intake_case(case, sha(raw), workbook_raw)
+        return build_intake_case(case, sha(raw), workbook_raw, capacity_first=case["schema"] == WORKBOOK_CAPACITY_SCHEMA)
     require(workbook_raw is None, "This case schema does not accept an additional workbook")
     if isinstance(case, dict) and case.get("schema") == SCENARIO_INVESTOR_SCHEMA:
         from worksheet_investor_scenarios_D75 import build_scenarios

@@ -11,7 +11,7 @@ from check_worksheet_sale_recovery_D43 import worksheet_bindings
 from miniuw_foundation.debt_service import _fraction, rational
 from miniuw_foundation.expense_cash_detail import _exact
 from miniuw_foundation.scheduled_expense_case import sha
-from worksheet_plan_refinance_D109 import LABELS
+from worksheet_plan_refinance_D109 import CAPACITY_BLOCKER, LABELS
 from worksheet_preflight_D116 import preflight
 from worksheet_sale_rate_grid_D84 import money
 
@@ -38,9 +38,18 @@ def initial_equity_cash(story):
                 net_cash_profit=rational(received - paid), unrecovered_after_sale=rational(max(0, paid - received)))
 
 
-def render(result):
+def render(result, *, show_capacity=False):
     check = result["preflight"]
     lines = [(f"Planilla Inputs | Huella {check['workbook_sha256'][:16]} | Perfil sintético", False)]
+    capacity = result["capacity"] if show_capacity else None
+    if capacity is not None:
+        dscr = next(row for row in check["checklist"] if row["cell"] == "Inputs!C72")
+        lines.append((f"Inputs!C72 | DSCR mínimo {money(dscr['value'])}x", True))
+        maximum = capacity["maximum_principal_capacity"]
+        if maximum is not None:
+            limits = " / ".join(capacity["binding_limit_ids"])
+            lines.append((f"Préstamo solicitado USD {money(capacity['selected_principal'])} | "
+                          f"Capacidad USD {money(maximum)} | Límite {limits}", False))
     cash = result["cash_per_usd_10"]
     if cash is None:
         lines.append(("Retorno por USD 10 PENDING", True))
@@ -49,7 +58,9 @@ def render(result):
             lines.append((f"{row['cell']} | {row['state']} | {row['action']}", False))
         if len(pending) > 8:
             lines.append((f"Quedan {len(pending) - 8} bloqueos adicionales en el expediente.", False))
-        if not pending:
+        if capacity is not None and CAPACITY_BLOCKER in capacity["blockers"]:
+            lines.append(("El préstamo solicitado supera la capacidad. Retorno por USD 10 pendiente.", True))
+        elif not pending:
             lines.append(("El checklist está completo. Quedan bloqueos en la corrida financiera.", False))
         else:
             lines.append(("La corrida espera la corrección de los datos requeridos.", False))
@@ -70,12 +81,13 @@ def render(result):
         price = f"{cents // 100},{cents % 100:02d}"
         lines.append((f"Venta mínima en VP USD {price} | Tasa {money(minimum)} % mensual.", False))
     lines.append(("Capital agregado del proyecto. Decisión de inversión PENDING.", False))
-    return render_page("D117 | Ingreso y corrida de la planilla", lines, 20,
+    case_label = "D118 | Corrección de DSCR y capacidad" if show_capacity else "D117 | Ingreso y corrida de la planilla"
+    return render_page(case_label, lines, 20,
                        "MINI-UW | SI INVIERTO USD 10, ¿CUÁNTO COBRO Y CUÁNDO?",
                        "PENDIENTE | Chequeo de ingreso y resultado sintético")
 
 
-def build_intake_case(case, case_sha256, workbook_raw):
+def build_intake_case(case, case_sha256, workbook_raw, *, capacity_first=False):
     _exact(case, {"schema", "source_fixture_sha256", "monthly_discount_rate"})
     raw = local_file(ROOT, SOURCE_FIXTURE).read_bytes()
     require(sha(raw) == case["source_fixture_sha256"], "The synthetic case basis has changed")
@@ -95,12 +107,16 @@ def build_intake_case(case, case_sha256, workbook_raw):
     if not check["pending_items"]:
         origin, base, variants, noi_raw, noi, spec = inputs(raw)
         evidence = build_variant_evidence(base, variants[VARIANT])
-        request = dict(id=f"D117-{check['workbook_sha256'][:16]}", unresolved_tax=False)
-        calculated = calculate(request, workbook_raw, origin, evidence, noi_raw, noi, spec, (rate,), with_report=True)
+        milestone = "D118" if capacity_first else "D117"
+        request = dict(id=f"{milestone}-{check['workbook_sha256'][:16]}", unresolved_tax=False)
+        calculated = calculate(request, workbook_raw, origin, evidence, noi_raw, noi, spec, (rate,),
+                               with_report=True, capacity_first=capacity_first)
         require(calculated["worksheet"]["workbook_sha256"] == check["workbook_sha256"],
                 "The calculation did not use the preflight workbook")
         result.update(financial_calculation_run=True, calculation_blockers=calculated["blockers"],
                       costed_sale_sha256=calculated.get("costed_sale_sha256"))
+        if capacity_first:
+            result["capacity"] = calculated.get("capacity")
         if calculated["state"] == "computed_synthetic_costed_sale":
             report = calculated["report"]
             result.update(state="computed_synthetic_project_cash",
@@ -108,5 +124,5 @@ def build_intake_case(case, case_sha256, workbook_raw):
                                               total_cost=calculated["total_cost"]),
                           capacity=report["capacity"], cash_recovery=calculated["recovery"][str(rate)],
                           cash_per_usd_10=initial_equity_cash(report["return_story"]))
-    pdf = render(result)
+    pdf = render(result, show_capacity=capacity_first)
     return result | dict(pdf_sha256=sha(pdf), page_count=1), pdf
