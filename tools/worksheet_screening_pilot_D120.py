@@ -76,7 +76,7 @@ def criterion_records(rules, metrics):
     return records
 
 
-def run_screening(case, scenarios, context, *, extended=False, case_sha256=None):
+def run_screening(case, scenarios, context, *, extended=False, interval_irr=False, case_sha256=None):
     revision = case.get("criteria_revision")
     require(revision is None or isinstance(revision, str) and re.fullmatch(r"SYNTHETIC-[A-Za-z0-9_-]{1,80}", revision),
             "Use an explicit synthetic criteria revision")
@@ -85,11 +85,20 @@ def run_screening(case, scenarios, context, *, extended=False, case_sha256=None)
     provenance = {}
     if extended:
         from worksheet_reference_metrics_D121 import REFERENCE_METRICS, reference_records
-        metrics = metrics | REFERENCE_METRICS
-        references, sources = reference_records(case.get("reference_metrics"), scenarios, case_sha256)
+        catalog = {key: value for key, value in REFERENCE_METRICS.items() if key != "IRR" or not interval_irr}
+        metrics = metrics | catalog
+        references, sources = reference_records(case.get("reference_metrics"), scenarios, case_sha256, metrics=catalog)
         values.extend(references)
         provenance = {"reference_metric_sources": sources}
-    rules = criterion_records(case.get("rules") or [], metrics)
+    supplied = case.get("rules") or []
+    if interval_irr:
+        from worksheet_irr_D122 import IRR_METRIC, combine_irr
+        rules = criterion_records(supplied, metrics | {"IRR": IRR_METRIC})
+        irr_rules = [(index, row) for index, row in enumerate(rules) if row["metric_id"] == "IRR"]
+        require(len({row["scenario_id"] for _, row in irr_rules}) == len(irr_rules), "Duplicate IRR criterion")
+        rules = [row for row in rules if row["metric_id"] != "IRR"]
+    else:
+        rules = criterion_records(supplied, metrics)
     source = dict(schema=SCHEMA, context=context, case_id=CASE_ID,
                   criteria_revision=revision or "SYNTHETIC-unbound-criteria",
                   criteria_status="synthetic_fixture_only", required_metrics=list(metrics),
@@ -99,9 +108,14 @@ def run_screening(case, scenarios, context, *, extended=False, case_sha256=None)
                   hypothetical_band_policy=None)
     run = simulate_screening(encoded(source))
     result = run.payload
+    run_hash = run.sha256
+    if interval_irr:
+        result = combine_irr(result, irr_rules if revision else [], scenarios, case.get("irr_policy"), case_sha256)
+        result["scalar_run_sha256"] = run_hash
+        run_hash = sha(encoded(result))
     require(result["decision"] == "PENDING" and not result["criteria_adopted"] and not result["production_authorized"],
             "The synthetic screening acquired decision authority")
-    return result | provenance | dict(run_sha256=run.sha256,
+    return result | provenance | dict(run_sha256=run_hash,
                          criteria_source_blockers=[] if revision else ["criteria_revision_missing"])
 
 
@@ -119,7 +133,7 @@ def read_scenario(spec, raw, expected):
                 received_workbook_sha256=None if raw is None else sha(raw), source_blockers=[blocker])
 
 
-def render_pilot(scenarios, screening, *, extended=False):
+def render_pilot(scenarios, screening, *, extended=False, interval_irr=False):
     lines = [(f"Simulación PASS/FAIL  |  {screening['simulation_result']}", True)]
     for name, scenario in scenarios.items():
         cash = scenario["cash_per_usd_10"]
@@ -149,23 +163,33 @@ def render_pilot(scenarios, screening, *, extended=False):
         from worksheet_reference_metrics_D121 import REFERENCE_LABELS
         labels = labels | REFERENCE_LABELS
     for metric, label in labels.items():
-        lines.append((f"{label} | Base {states[metric, 'Base']} | Downside {states[metric, 'Downside']}", False))
+        if interval_irr and metric == "IRR":
+            from worksheet_irr_D122 import display_enclosure
+            parts = [f"{name} {display_enclosure(result['annual_enclosure'])} ({states[metric, name]})"
+                     for name, result in screening["irr_by_scenario"].items()]
+            lines.append((f"{label} | " + " | ".join(parts), False))
+        else:
+            lines.append((f"{label} | Base {states[metric, 'Base']} | Downside {states[metric, 'Downside']}", False))
     if screening["simulation_result"] == "PENDING":
         lines.append(("Consultá los datos o reglas pendientes en el expediente.", False))
     lines.append(("Capital agregado del proyecto. Decisión de inversión PENDING.", False))
-    if extended:
+    if interval_irr:
+        lines.append(("Cuatro métricas calculadas y seis referencias sintéticas declaradas.", False))
+    elif extended:
         lines.append(("Tres métricas del libro de caja y siete referencias sintéticas declaradas.", False))
-    milestone = "D121" if extended else "D120"
+    milestone = "D122" if interval_irr else "D121" if extended else "D120"
     return render_page(f"{milestone} | Piloto sintético de Base y Downside", lines, 15 if extended else 18,
                        "MINI-UW | SI INVIERTO USD 10, ¿CUÁNTO COBRO Y CUÁNDO?",
                        "Planilla, retorno y simulación de decisión")
 
 
-def build_pilot(case, case_sha256, workbooks, *, extended=False):
+def build_pilot(case, case_sha256, workbooks, *, extended=False, interval_irr=False):
     required = {"schema", "worksheet_case", "workbook_sha256"}
     optional = {"criteria_revision", "aggregation_rule", "rules"}
     if extended:
         optional.add("reference_metrics")
+    if interval_irr:
+        optional.add("irr_policy")
     require(required <= case.keys() <= required | optional,
             "An explicit pilot workbook case and source hashes are required")
     spec = case["worksheet_case"]
@@ -179,8 +203,8 @@ def build_pilot(case, case_sha256, workbooks, *, extended=False):
                     for value in hashes.values()), "Use explicit worksheet SHA-256 values or missing entries")
     scenarios = {name: read_scenario(spec, workbooks[name], hashes.get(name)) for name in SCENARIOS}
     screening = run_screening(case, scenarios, json.loads(origin_raw)["scenario_context"],
-                              extended=extended, case_sha256=case_sha256)
-    pdf = render_pilot(scenarios, screening, extended=extended)
+                              extended=extended, interval_irr=interval_irr, case_sha256=case_sha256)
+    pdf = render_pilot(scenarios, screening, extended=extended, interval_irr=interval_irr)
     simulation = screening["simulation_result"]
     return dict(profile=PROFILE, scope="synthetic_aggregate_equity", decision="PENDING",
                 state="PENDING" if simulation == "PENDING" else "computed_synthetic_pilot",

@@ -1584,3 +1584,7 @@ El comando común conserva las planillas Base y Downside, las vincula al caso po
 ## D121 — Diez métricas de inversión en el piloto sintético
 
 Se incorporan siete referencias sintéticas declaradas y vinculadas a las planillas Base y Downside por hash, además de las tres métricas calculadas desde el libro. Se auditan veinte comparaciones y se comprueban PASS, FAIL por un umbral más exigente y PENDING por dato o regla faltante. Se conservan los retornos por USD 10 de los escenarios con caja verificada. [Métricas, resultados y comandos](docs/workbook-screening-metrics-D121.md).
+
+## D122 — TIR anual calculada desde la caja por USD 10
+
+La corrida usa las fechas auditadas, calcula la TIR anual como intervalo y la compara con las reglas sintéticas. Se comprueban PASS, FAIL por un umbral mayor y PENDING cuando el intervalo cruza un umbral o falta una regla o convención. Un cambio en C67 recalcula el cobro de venta y la TIR, y deja pendientes las referencias de la revisión anterior. [Retorno por USD 10, alcance y comandos](docs/workbook-irr-D122.md).

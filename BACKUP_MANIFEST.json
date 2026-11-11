@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D121 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D122 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/miniuw-integral-usd10.yml",
@@ -8,8 +8,8 @@
     },
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 17576,
-      "sha256": "74cc36da64633c4968deee2ef618635fa4580f5386b61139c961864c8b21fe23"
+      "bytes": 17718,
+      "sha256": "ec688f26084d8f5229bc5ace4d6cc08dbf9dc693021f3ed8bf4ad25e0ccb1eeb"
     },
     {
       "path": ".gitignore",
@@ -23,13 +23,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 79879,
-      "sha256": "4d27559a32413159f17535fd1b47fa4fc8590d2fc3ba72f4488bde68b3a3999d"
+      "bytes": 80103,
+      "sha256": "5c98f579aa749f79787cb234fcbe98f68978d63cb117b90b2778c6b6aaed9d24"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 331526,
-      "sha256": "5875e90f447af8639f8dd1e2b0451f005f0e114d774a42f4873b28643bd29b12"
+      "bytes": 332007,
+      "sha256": "4a528385aa52fee38b18559987337a96029c232de51fc4e3ca74a55690d2d8c5"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -3027,6 +3027,11 @@
       "sha256": "8f7200d7f8ad66d38e30eb5a8edf169a3e7e50b23e45d951963d9f05a49d3288"
     },
     {
+      "path": "docs/workbook-irr-D122.md",
+      "bytes": 2536,
+      "sha256": "f5afef6378c489a12417366cfa393171d7459b9890c26b92a7b5ee0283d4de8c"
+    },
+    {
       "path": "docs/workbook-screening-metrics-D121.md",
       "bytes": 3574,
       "sha256": "50d4fc7a45c04f069e4fe71ad0a72b63124f6108b01321a5e4f3c5dd55ff22b1"
@@ -5587,6 +5592,11 @@
       "sha256": "3aaa1e572d46a262b0af1d2b810d37b753859ad4127dd5819a13a62f656fe425"
     },
     {
+      "path": "templates/synthetic-workbook-screening-pilot-D122.json",
+      "bytes": 15823,
+      "sha256": "313c4ac49cb17fc77de191d5c39bbbc4e350aebdb656b94c9d1e153ec6ff87d1"
+    },
+    {
       "path": "templates/synthetic-worksheet-exit-cap-D62.json",
       "bytes": 48479,
       "sha256": "7abffe3904ac77a22c335b2aa3a4bc74e54318bc2382995b4c9a89d38b4bbc9b"
@@ -6622,6 +6632,11 @@
       "sha256": "9003942b4836c68e48bf187c14c242100d718a4bff8ddc3f61aedb84a4f13228"
     },
     {
+      "path": "tools/check_worksheet_irr_D122.py",
+      "bytes": 7669,
+      "sha256": "0eda837dff49c228eca15efd9fa5783da774454d6c5c7343a48c3dca1dae97c8"
+    },
+    {
       "path": "tools/check_worksheet_ltv_case_D119.py",
       "bytes": 7150,
       "sha256": "ebffd4ced5f99fdaad4941b48293f44b250d8bae918f34a5f24c228a2a4914ed"
@@ -7088,8 +7103,8 @@
     },
     {
       "path": "tools/miniuw_worksheet_v1.py",
-      "bytes": 17866,
-      "sha256": "b789c2fd3b8ef12a99b3da50608f5ffe3da2e8ae13902426dd51b164eeca30d9"
+      "bytes": 17990,
+      "sha256": "3579c1ad6f17c6563bbb7066763122e71547facbbdd89c11828d32d52ad48404"
     },
     {
       "path": "tools/onepage_pending_cases_D79.py",
@@ -7222,6 +7237,11 @@
       "sha256": "032d657a1b59825a7376aa96c4c07931b089a8ba00e14bb1e0e345b0207bd3ff"
     },
     {
+      "path": "tools/worksheet_irr_D122.py",
+      "bytes": 6011,
+      "sha256": "ad52af9c2ccc2727acf338bce2c46f6f8a60973544087674c62bac4da1e6504c"
+    },
+    {
       "path": "tools/worksheet_participation_D68.py",
       "bytes": 1820,
       "sha256": "04c7677bc76c8cf3f255c1ed7cf768a1ecd39747e43868090a0b469a757739d7"
@@ -7248,8 +7268,8 @@
     },
     {
       "path": "tools/worksheet_reference_metrics_D121.py",
-      "bytes": 4514,
-      "sha256": "8969f112a1ff20c72df2c5b865193c78a55b6e156316034923332507ded209c8"
+      "bytes": 4524,
+      "sha256": "893f4dc62baca3591bd99727203c802d4a17293e633a9e2787e229c32f2c31d0"
     },
     {
       "path": "tools/worksheet_sale_gap_D85.py",
@@ -7268,8 +7288,8 @@
     },
     {
       "path": "tools/worksheet_screening_pilot_D120.py",
-      "bytes": 11151,
-      "sha256": "ee48420a91880791615c1a25dd265320839eea334e405ba362dbbd054458144f"
+      "bytes": 12694,
+      "sha256": "806e37f709cde8038405725b18b6e21ea64dcbf931c16af67c3fffa7fe8270fd"
     },
     {
       "path": "tools/worksheet_settled_miniuw_v1.py",

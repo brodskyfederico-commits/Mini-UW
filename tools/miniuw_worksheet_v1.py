@@ -36,6 +36,7 @@ WORKBOOK_INTAKE_SCHEMA = "miniuw.synthetic-workbook-intake-case.v1"
 WORKBOOK_CAPACITY_SCHEMA = "miniuw.synthetic-workbook-intake-case.v2"
 WORKBOOK_PILOT_SCHEMA = "miniuw.synthetic-workbook-screening-pilot.v1"
 WORKBOOK_EXTENDED_PILOT_SCHEMA = "miniuw.synthetic-workbook-screening-pilot.v2"
+WORKBOOK_IRR_PILOT_SCHEMA = "miniuw.synthetic-workbook-screening-pilot.v3"
 PACKAGE_SCHEMA = "miniuw.synthetic-unified-worksheet-package.v1"
 COSTED_SALE = "templates/synthetic-worksheet-sale-costs-D63.json"
 COSTED_PROFILE = "with_refinance_worksheet_sale"
@@ -78,11 +79,12 @@ def read_case(case):
 def build_results(raw, *, workbook_raw=None, downside_workbook_raw=None):
     case = _json(raw, MAX_EXTENDED_PILOT_BYTES)
     schema = case.get("schema") if isinstance(case, dict) else None
-    require(schema == WORKBOOK_EXTENDED_PILOT_SCHEMA or len(raw) <= 4096, "The worksheet case exceeds its schema size limit")
-    if schema in (WORKBOOK_PILOT_SCHEMA, WORKBOOK_EXTENDED_PILOT_SCHEMA):
+    extended = schema in (WORKBOOK_EXTENDED_PILOT_SCHEMA, WORKBOOK_IRR_PILOT_SCHEMA)
+    require(extended or len(raw) <= 4096, "The worksheet case exceeds its schema size limit")
+    if extended or schema == WORKBOOK_PILOT_SCHEMA:
         from worksheet_screening_pilot_D120 import build_pilot
         return build_pilot(case, sha(raw), {"Base": workbook_raw, "Downside": downside_workbook_raw},
-                           extended=schema == WORKBOOK_EXTENDED_PILOT_SCHEMA)
+                           extended=extended, interval_irr=schema == WORKBOOK_IRR_PILOT_SCHEMA)
     require(downside_workbook_raw is None, "This case schema does not accept a Downside workbook")
     if isinstance(case, dict) and case.get("schema") in (WORKBOOK_INTAKE_SCHEMA, WORKBOOK_CAPACITY_SCHEMA):
         from worksheet_intake_case_D117 import build_intake_case

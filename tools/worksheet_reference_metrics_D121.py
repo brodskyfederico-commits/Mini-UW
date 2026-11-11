@@ -22,7 +22,7 @@ REFERENCE_LABELS = {
 }
 
 
-def reference_records(inventory, scenarios, case_sha256):
+def reference_records(inventory, scenarios, case_sha256, *, metrics=REFERENCE_METRICS):
     inventory = {} if inventory is None else inventory
     require(isinstance(inventory, dict) and inventory.keys() <= scenarios.keys(),
             "Reference metrics must identify an explicit pilot scenario")
@@ -34,10 +34,10 @@ def reference_records(inventory, scenarios, case_sha256):
                 "Reference claims require their worksheet revision")
         claims = group.get("claims")
         claims = {} if claims is None else claims
-        require(isinstance(claims, dict) and claims.keys() <= REFERENCE_METRICS.keys(),
+        require(isinstance(claims, dict) and claims.keys() <= metrics.keys(),
                 "Only the declared synthetic reference metrics may be supplied")
         current_hash = scenario.get("preflight", {}).get("workbook_sha256")
-        for metric, (unit, kind, currency, definition) in REFERENCE_METRICS.items():
+        for metric, (unit, kind, currency, definition) in metrics.items():
             claim = claims.get(metric)
             claim = {} if claim is None else claim
             require(isinstance(claim, dict) and claim.keys() <= {"definition_ref", "unit", "period_ref", "value", "source_ref"},

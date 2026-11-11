@@ -4,6 +4,7 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D122 calcula la TIR anual desde los cobros por USD 10 en Base y Downside. Compara el intervalo exacto con los umbrales sintéticos y lo muestra en el PDF de una página. [Resultados y comandos](docs/workbook-irr-D122.md).
 - D121 ejecuta Base y Downside desde sus planillas hasta el retorno por USD 10 y la comparación de diez métricas con reglas sintéticas. El expediente y el PDF de una página se auditan desde las fuentes. [Métricas, pruebas y comandos](docs/workbook-screening-metrics-D121.md).
 - D119 verifica que la corrida use el menor límite entre C71 (LTV) y C72 (DSCR), con el retorno por USD 10 condicionado a la capacidad. [Casos y reproducción](docs/worksheet-ltv-case-D119.md).
 - D118 recalcula la capacidad desde C72 y muestra el límite incluso cuando el préstamo deja el retorno por USD 10 PENDING. [Casos y comandos](docs/worksheet-capacity-case-D118.md).

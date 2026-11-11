@@ -259,5 +259,7 @@ jobs:
         run: PYTHONPATH=src python tools/check_worksheet_screening_pilot_D120.py
       - name: Verify all ten investment metrics in the synthetic workbook pilot
         run: PYTHONPATH=src python tools/check_worksheet_reference_metrics_D121.py
+      - name: Verify annual IRR derived from the synthetic workbook cash
+        run: PYTHONPATH=src python tools/check_worksheet_irr_D122.py
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v

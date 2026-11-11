@@ -1,0 +1,572 @@
+{
+  "schema": "miniuw.synthetic-workbook-screening-pilot.v3",
+  "worksheet_case": {
+    "schema": "miniuw.synthetic-workbook-intake-case.v2",
+    "source_fixture_sha256": "7abffe3904ac77a22c335b2aa3a4bc74e54318bc2382995b4c9a89d38b4bbc9b",
+    "monthly_discount_rate": {
+      "numerator": "1",
+      "denominator": "50"
+    }
+  },
+  "workbook_sha256": {
+    "Base": "bc9562c6ad208aa84cf3ddbffc796ea56df80c068d608c6a20b405d9f4116dde",
+    "Downside": "de7059160dccb32c877d59bf34fe8484acdc6799a5a35edebbae14ffa01d0c97"
+  },
+  "criteria_revision": "SYNTHETIC-D122-interval-irr-r1",
+  "aggregation_rule": "all_pass_any_fail_pending_blocks",
+  "rules": [
+    {
+      "scenario_id": "Base",
+      "metric_id": "equity_multiple",
+      "definition_ref": "SYNTHETIC-D51-gross-dated-cash-window",
+      "unit": "multiple",
+      "period_ref": "2027-01-01/2027-07-01",
+      "pass_condition": {
+        "operator": ">=",
+        "threshold": {
+          "numerator": "6",
+          "denominator": "5"
+        }
+      },
+      "fail_condition": {
+        "operator": "<",
+        "threshold": {
+          "numerator": "6",
+          "denominator": "5"
+        }
+      }
+    },
+    {
+      "scenario_id": "Base",
+      "metric_id": "equity_recovered",
+      "definition_ref": "SYNTHETIC-D51-net-refi-cash-over-initial-equity",
+      "unit": "fraction",
+      "period_ref": "2027-04-01",
+      "pass_condition": {
+        "operator": ">=",
+        "threshold": {
+          "numerator": "3",
+          "denominator": "20"
+        }
+      },
+      "fail_condition": {
+        "operator": "<",
+        "threshold": {
+          "numerator": "3",
+          "denominator": "20"
+        }
+      }
+    },
+    {
+      "scenario_id": "Base",
+      "metric_id": "equity_cash_in",
+      "definition_ref": "SYNTHETIC-D51-gross-additional-contribution-at-refinance",
+      "unit": "USD",
+      "period_ref": "2027-04-01",
+      "pass_condition": {
+        "operator": "<=",
+        "threshold": {
+          "numerator": "0",
+          "denominator": "1"
+        }
+      },
+      "fail_condition": {
+        "operator": ">",
+        "threshold": {
+          "numerator": "0",
+          "denominator": "1"
+        }
+      }
+    },
+    {
+      "scenario_id": "Downside",
+      "metric_id": "equity_multiple",
+      "definition_ref": "SYNTHETIC-D51-gross-dated-cash-window",
+      "unit": "multiple",
+      "period_ref": "2027-01-01/2027-07-01",
+      "pass_condition": {
+        "operator": ">=",
+        "threshold": {
+          "numerator": "21",
+          "denominator": "20"
+        }
+      },
+      "fail_condition": {
+        "operator": "<",
+        "threshold": {
+          "numerator": "21",
+          "denominator": "20"
+        }
+      }
+    },
+    {
+      "scenario_id": "Downside",
+      "metric_id": "equity_recovered",
+      "definition_ref": "SYNTHETIC-D51-net-refi-cash-over-initial-equity",
+      "unit": "fraction",
+      "period_ref": "2027-04-01",
+      "pass_condition": {
+        "operator": ">=",
+        "threshold": {
+          "numerator": "3",
+          "denominator": "20"
+        }
+      },
+      "fail_condition": {
+        "operator": "<",
+        "threshold": {
+          "numerator": "3",
+          "denominator": "20"
+        }
+      }
+    },
+    {
+      "scenario_id": "Downside",
+      "metric_id": "equity_cash_in",
+      "definition_ref": "SYNTHETIC-D51-gross-additional-contribution-at-refinance",
+      "unit": "USD",
+      "period_ref": "2027-04-01",
+      "pass_condition": {
+        "operator": "<=",
+        "threshold": {
+          "numerator": "0",
+          "denominator": "1"
+        }
+      },
+      "fail_condition": {
+        "operator": ">",
+        "threshold": {
+          "numerator": "0",
+          "denominator": "1"
+        }
+      }
+    },
+    {
+      "scenario_id": "Base",
+      "metric_id": "YoC",
+      "unit": "fraction",
+      "definition_ref": "SYNTHETIC-D121-stabilized-noi-over-declared-tdc",
+      "period_ref": "2027-07-01/2028-07-01",
+      "pass_condition": {
+        "operator": ">=",
+        "threshold": {
+          "numerator": "3",
+          "denominator": "40"
+        }
+      },
+      "fail_condition": {
+        "operator": "<",
+        "threshold": {
+          "numerator": "3",
+          "denominator": "40"
+        }
+      }
+    },
+    {
+      "scenario_id": "Base",
+      "metric_id": "spread",
+      "unit": "bps",
+      "definition_ref": "SYNTHETIC-D121-yoc-less-reference-cap-in-bps",
+      "period_ref": "2027-07-01/2028-07-01",
+      "pass_condition": {
+        "operator": ">=",
+        "threshold": {
+          "numerator": "0",
+          "denominator": "1"
+        }
+      },
+      "fail_condition": {
+        "operator": "<",
+        "threshold": {
+          "numerator": "0",
+          "denominator": "1"
+        }
+      }
+    },
+    {
+      "scenario_id": "Base",
+      "metric_id": "breakeven_occupancy",
+      "unit": "fraction",
+      "definition_ref": "SYNTHETIC-D121-economic-occupancy-for-debt-service",
+      "period_ref": "2027-07-01/2028-07-01",
+      "pass_condition": {
+        "operator": "<=",
+        "threshold": {
+          "numerator": "17",
+          "denominator": "20"
+        }
+      },
+      "fail_condition": {
+        "operator": ">",
+        "threshold": {
+          "numerator": "17",
+          "denominator": "20"
+        }
+      }
+    },
+    {
+      "scenario_id": "Base",
+      "metric_id": "post_refi_CoC",
+      "unit": "fraction",
+      "definition_ref": "SYNTHETIC-D121-annual-post-refi-cash-over-declared-equity",
+      "period_ref": "2027-04-01/2028-04-01",
+      "pass_condition": {
+        "operator": ">=",
+        "threshold": {
+          "numerator": "3",
+          "denominator": "50"
+        }
+      },
+      "fail_condition": {
+        "operator": "<",
+        "threshold": {
+          "numerator": "3",
+          "denominator": "50"
+        }
+      }
+    },
+    {
+      "scenario_id": "Base",
+      "metric_id": "equity_TDC",
+      "unit": "fraction",
+      "definition_ref": "SYNTHETIC-D121-applied-equity-over-complete-tdc",
+      "period_ref": "2027-01-01",
+      "pass_condition": {
+        "operator": "<=",
+        "threshold": {
+          "numerator": "1",
+          "denominator": "2"
+        }
+      },
+      "fail_condition": {
+        "operator": ">",
+        "threshold": {
+          "numerator": "1",
+          "denominator": "2"
+        }
+      }
+    },
+    {
+      "scenario_id": "Base",
+      "metric_id": "IRR",
+      "unit": "fraction",
+      "definition_ref": "SYNTHETIC-ANNUAL-PERIODIC-IRR-ENCLOSURE-v1",
+      "period_ref": "2027-01-01/2027-07-01",
+      "pass_condition": {
+        "operator": ">=",
+        "threshold": {
+          "numerator": "1",
+          "denominator": "5"
+        }
+      },
+      "fail_condition": {
+        "operator": "<",
+        "threshold": {
+          "numerator": "1",
+          "denominator": "5"
+        }
+      }
+    },
+    {
+      "scenario_id": "Base",
+      "metric_id": "asking_relative_to_supported_price",
+      "unit": "multiple",
+      "definition_ref": "SYNTHETIC-D121-asking-over-supported-price",
+      "period_ref": "2027-01-01",
+      "pass_condition": {
+        "operator": "<=",
+        "threshold": {
+          "numerator": "1",
+          "denominator": "1"
+        }
+      },
+      "fail_condition": {
+        "operator": ">",
+        "threshold": {
+          "numerator": "1",
+          "denominator": "1"
+        }
+      }
+    },
+    {
+      "scenario_id": "Downside",
+      "metric_id": "YoC",
+      "unit": "fraction",
+      "definition_ref": "SYNTHETIC-D121-stabilized-noi-over-declared-tdc",
+      "period_ref": "2027-07-01/2028-07-01",
+      "pass_condition": {
+        "operator": ">=",
+        "threshold": {
+          "numerator": "3",
+          "denominator": "40"
+        }
+      },
+      "fail_condition": {
+        "operator": "<",
+        "threshold": {
+          "numerator": "3",
+          "denominator": "40"
+        }
+      }
+    },
+    {
+      "scenario_id": "Downside",
+      "metric_id": "spread",
+      "unit": "bps",
+      "definition_ref": "SYNTHETIC-D121-yoc-less-reference-cap-in-bps",
+      "period_ref": "2027-07-01/2028-07-01",
+      "pass_condition": {
+        "operator": ">=",
+        "threshold": {
+          "numerator": "-100",
+          "denominator": "1"
+        }
+      },
+      "fail_condition": {
+        "operator": "<",
+        "threshold": {
+          "numerator": "-100",
+          "denominator": "1"
+        }
+      }
+    },
+    {
+      "scenario_id": "Downside",
+      "metric_id": "breakeven_occupancy",
+      "unit": "fraction",
+      "definition_ref": "SYNTHETIC-D121-economic-occupancy-for-debt-service",
+      "period_ref": "2027-07-01/2028-07-01",
+      "pass_condition": {
+        "operator": "<=",
+        "threshold": {
+          "numerator": "17",
+          "denominator": "20"
+        }
+      },
+      "fail_condition": {
+        "operator": ">",
+        "threshold": {
+          "numerator": "17",
+          "denominator": "20"
+        }
+      }
+    },
+    {
+      "scenario_id": "Downside",
+      "metric_id": "post_refi_CoC",
+      "unit": "fraction",
+      "definition_ref": "SYNTHETIC-D121-annual-post-refi-cash-over-declared-equity",
+      "period_ref": "2027-04-01/2028-04-01",
+      "pass_condition": {
+        "operator": ">=",
+        "threshold": {
+          "numerator": "3",
+          "denominator": "50"
+        }
+      },
+      "fail_condition": {
+        "operator": "<",
+        "threshold": {
+          "numerator": "3",
+          "denominator": "50"
+        }
+      }
+    },
+    {
+      "scenario_id": "Downside",
+      "metric_id": "equity_TDC",
+      "unit": "fraction",
+      "definition_ref": "SYNTHETIC-D121-applied-equity-over-complete-tdc",
+      "period_ref": "2027-01-01",
+      "pass_condition": {
+        "operator": "<=",
+        "threshold": {
+          "numerator": "1",
+          "denominator": "2"
+        }
+      },
+      "fail_condition": {
+        "operator": ">",
+        "threshold": {
+          "numerator": "1",
+          "denominator": "2"
+        }
+      }
+    },
+    {
+      "scenario_id": "Downside",
+      "metric_id": "IRR",
+      "unit": "fraction",
+      "definition_ref": "SYNTHETIC-ANNUAL-PERIODIC-IRR-ENCLOSURE-v1",
+      "period_ref": "2027-01-01/2027-07-01",
+      "pass_condition": {
+        "operator": ">=",
+        "threshold": {
+          "numerator": "1",
+          "denominator": "5"
+        }
+      },
+      "fail_condition": {
+        "operator": "<",
+        "threshold": {
+          "numerator": "1",
+          "denominator": "5"
+        }
+      }
+    },
+    {
+      "scenario_id": "Downside",
+      "metric_id": "asking_relative_to_supported_price",
+      "unit": "multiple",
+      "definition_ref": "SYNTHETIC-D121-asking-over-supported-price",
+      "period_ref": "2027-01-01",
+      "pass_condition": {
+        "operator": "<=",
+        "threshold": {
+          "numerator": "1",
+          "denominator": "1"
+        }
+      },
+      "fail_condition": {
+        "operator": ">",
+        "threshold": {
+          "numerator": "1",
+          "denominator": "1"
+        }
+      }
+    }
+  ],
+  "reference_metrics": {
+    "Base": {
+      "workbook_sha256": "bc9562c6ad208aa84cf3ddbffc796ea56df80c068d608c6a20b405d9f4116dde",
+      "claims": {
+        "YoC": {
+          "unit": "fraction",
+          "definition_ref": "SYNTHETIC-D121-stabilized-noi-over-declared-tdc",
+          "period_ref": "2027-07-01/2028-07-01",
+          "value": {
+            "numerator": "1",
+            "denominator": "10"
+          },
+          "source_ref": "SYNTHETIC-D121-reference-Base-YoC"
+        },
+        "spread": {
+          "unit": "bps",
+          "definition_ref": "SYNTHETIC-D121-yoc-less-reference-cap-in-bps",
+          "period_ref": "2027-07-01/2028-07-01",
+          "value": {
+            "numerator": "200",
+            "denominator": "1"
+          },
+          "source_ref": "SYNTHETIC-D121-reference-Base-spread"
+        },
+        "breakeven_occupancy": {
+          "unit": "fraction",
+          "definition_ref": "SYNTHETIC-D121-economic-occupancy-for-debt-service",
+          "period_ref": "2027-07-01/2028-07-01",
+          "value": {
+            "numerator": "13",
+            "denominator": "20"
+          },
+          "source_ref": "SYNTHETIC-D121-reference-Base-breakeven_occupancy"
+        },
+        "post_refi_CoC": {
+          "unit": "fraction",
+          "definition_ref": "SYNTHETIC-D121-annual-post-refi-cash-over-declared-equity",
+          "period_ref": "2027-04-01/2028-04-01",
+          "value": {
+            "numerator": "9",
+            "denominator": "100"
+          },
+          "source_ref": "SYNTHETIC-D121-reference-Base-post_refi_CoC"
+        },
+        "equity_TDC": {
+          "unit": "fraction",
+          "definition_ref": "SYNTHETIC-D121-applied-equity-over-complete-tdc",
+          "period_ref": "2027-01-01",
+          "value": {
+            "numerator": "2",
+            "denominator": "5"
+          },
+          "source_ref": "SYNTHETIC-D121-reference-Base-equity_TDC"
+        },
+        "asking_relative_to_supported_price": {
+          "unit": "multiple",
+          "definition_ref": "SYNTHETIC-D121-asking-over-supported-price",
+          "period_ref": "2027-01-01",
+          "value": {
+            "numerator": "9",
+            "denominator": "10"
+          },
+          "source_ref": "SYNTHETIC-D121-reference-Base-asking_relative_to_supported_price"
+        }
+      }
+    },
+    "Downside": {
+      "workbook_sha256": "de7059160dccb32c877d59bf34fe8484acdc6799a5a35edebbae14ffa01d0c97",
+      "claims": {
+        "YoC": {
+          "unit": "fraction",
+          "definition_ref": "SYNTHETIC-D121-stabilized-noi-over-declared-tdc",
+          "period_ref": "2027-07-01/2028-07-01",
+          "value": {
+            "numerator": "2",
+            "denominator": "25"
+          },
+          "source_ref": "SYNTHETIC-D121-reference-Downside-YoC"
+        },
+        "spread": {
+          "unit": "bps",
+          "definition_ref": "SYNTHETIC-D121-yoc-less-reference-cap-in-bps",
+          "period_ref": "2027-07-01/2028-07-01",
+          "value": {
+            "numerator": "-50",
+            "denominator": "1"
+          },
+          "source_ref": "SYNTHETIC-D121-reference-Downside-spread"
+        },
+        "breakeven_occupancy": {
+          "unit": "fraction",
+          "definition_ref": "SYNTHETIC-D121-economic-occupancy-for-debt-service",
+          "period_ref": "2027-07-01/2028-07-01",
+          "value": {
+            "numerator": "4",
+            "denominator": "5"
+          },
+          "source_ref": "SYNTHETIC-D121-reference-Downside-breakeven_occupancy"
+        },
+        "post_refi_CoC": {
+          "unit": "fraction",
+          "definition_ref": "SYNTHETIC-D121-annual-post-refi-cash-over-declared-equity",
+          "period_ref": "2027-04-01/2028-04-01",
+          "value": {
+            "numerator": "7",
+            "denominator": "100"
+          },
+          "source_ref": "SYNTHETIC-D121-reference-Downside-post_refi_CoC"
+        },
+        "equity_TDC": {
+          "unit": "fraction",
+          "definition_ref": "SYNTHETIC-D121-applied-equity-over-complete-tdc",
+          "period_ref": "2027-01-01",
+          "value": {
+            "numerator": "9",
+            "denominator": "20"
+          },
+          "source_ref": "SYNTHETIC-D121-reference-Downside-equity_TDC"
+        },
+        "asking_relative_to_supported_price": {
+          "unit": "multiple",
+          "definition_ref": "SYNTHETIC-D121-asking-over-supported-price",
+          "period_ref": "2027-01-01",
+          "value": {
+            "numerator": "97",
+            "denominator": "100"
+          },
+          "source_ref": "SYNTHETIC-D121-reference-Downside-asking_relative_to_supported_price"
+        }
+      }
+    }
+  },
+  "irr_policy": "SYNTHETIC-D122-month-start-grid-v1"
+}
