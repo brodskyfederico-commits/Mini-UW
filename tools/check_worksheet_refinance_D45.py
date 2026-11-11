@@ -35,7 +35,7 @@ SCHEMA = "miniuw.synthetic-worksheet-refinance.v1"
 CAPACITY_CELLS = {"C66": "cap_rate", "C71": "maximum_ltv", "C72": "minimum_dscr"}
 
 
-def worksheet_parameters(raw, context, as_of, additional_cells=None):
+def worksheet_parameters(raw, context, as_of, additional_cells=None, *, include_source_cells=False):
     mapped_cells = CAPACITY_CELLS | (additional_cells or {})
     sheet = inspect_synthetic_input_sheet(raw)
     cells = sheet.cells
@@ -63,7 +63,8 @@ def worksheet_parameters(raw, context, as_of, additional_cells=None):
         rows[mapped_cells[cell]] = dict(value=value, unit_literal=unit,
                                         locator=f"xlsx:sheet:Inputs:cell:{cell}", blockers=errors)
     require(set(rows) == set(mapped_cells.values()), "Refinance field mapping differs")
-    return dict(workbook_sha256=sheet.source_sha256, parameters=rows, blockers=blockers)
+    result = dict(workbook_sha256=sheet.source_sha256, parameters=rows, blockers=blockers)
+    return result | {"source_cells": cells} if include_source_cells else result
 
 
 def bind_worksheet_capacity(evidence, check):

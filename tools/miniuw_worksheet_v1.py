@@ -239,13 +239,23 @@ def main():
     run.add_argument("--output", required=True, type=Path)
     audit = subcommands.add_parser("audit")
     audit.add_argument("directory", type=Path)
+    preflight = subcommands.add_parser("preflight")
+    preflight.add_argument("workbook", type=Path)
+    preflight.add_argument("--deal-id", required=True)
+    preflight.add_argument("--snapshot", required=True)
     args = parser.parse_args()
     try:
         if args.command == "run":
             require(args.case.is_file() and args.case.stat().st_size <= 4096, "A bounded case JSON file is required")
             result = write_package(args.case.read_bytes(), args.output)
-        else:
+        elif args.command == "audit":
             result = verify_package(args.directory)
+        else:
+            from miniuw_foundation.intake import MAX_BYTES
+            from worksheet_preflight_D116 import preflight as inspect_workbook
+            require(args.workbook.is_file() and args.workbook.stat().st_size <= MAX_BYTES,
+                    "Se requiere una planilla XLSX sintética dentro del tamaño admitido.")
+            result = inspect_workbook(args.workbook.read_bytes(), args.deal_id, args.snapshot)
         print(json.dumps(result, ensure_ascii=False))
         return 0
     except (ValueError, TypeError, OSError, KeyError, IndexError, StopIteration) as error:

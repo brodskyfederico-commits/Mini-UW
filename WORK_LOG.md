@@ -1560,3 +1560,7 @@ Se reproducen las cuatro variantes sintéticas D113 y se cotejan el neto previst
 ## D115 — Aumento necesario de la venta prevista al 2 % mensual
 
 Se reproduce D114 y se calcula el aumento desde el precio bruto previsto hasta el mínimo al centavo, tanto en USD como en porcentaje del previsto. El neto de ese aumento se concilia con el faltante por USD 10 y el costo de venta proporcional. [Comparación de una página](docs/review/MiniUW_D115_Aumento_Venta_para_Recuperar_2pct.pdf).
+
+## D116 — Checklist al recibir la planilla sintética
+
+Se agrega el chequeo de ingreso de la planilla para las cinco celdas de refinanciación y venta ya conectadas. Se conserva el archivo y se localizan los faltantes, las fórmulas, los valores fuera de dominio y los conflictos de caso o fecha. El comando devuelve PENDING cuando un dato requerido necesita corrección y mantiene pendiente la decisión en todos los casos. [Alcance y reproducción](docs/worksheet-preflight-D116.md).
