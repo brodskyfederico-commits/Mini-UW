@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D128 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D129 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/miniuw-integral-usd10.yml",
@@ -8,8 +8,8 @@
     },
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 18692,
-      "sha256": "98c2f2a81e1984bf02cdc2a677e0f7026d650dcfccea28dd8d961510021cb0a4"
+      "bytes": 18857,
+      "sha256": "a3557fe4c51d76b22cc29272d2b160308afef73b0819b708b377218e4677349a"
     },
     {
       "path": ".gitignore",
@@ -23,13 +23,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 81390,
-      "sha256": "1c726224f36c5aeb7732fa2709b1ab999a719d92ca2a5c9169f451bb7b5d896d"
+      "bytes": 81643,
+      "sha256": "d39d70cb63f601604ce5363f5fc95dc66e0959434e0fab786be7745988536896"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 334785,
-      "sha256": "064e8c7d7fa8d2908288347bdaa8a61a31aa6d253916e4e0d38428bc5dfd678c"
+      "bytes": 335241,
+      "sha256": "ee6b8f2f67c50743ce4241cbdd0dc7ac0491f9811325db54dc2e391614c9dffc"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -3037,6 +3037,11 @@
       "sha256": "8774019f783540ce37ed493176b2286b9ebeaa4ff51ce07d406780da7873c476"
     },
     {
+      "path": "docs/workbook-equity-limit-revision-D129.md",
+      "bytes": 2180,
+      "sha256": "7031a886cba555e6bdbd3f2ff2fb781d85bdd7543ffba6b7782bbea44b6dc560"
+    },
+    {
       "path": "docs/workbook-equity-tdc-D124.md",
       "bytes": 2549,
       "sha256": "0322901f96b7d19d0fea60be521bd1b3ad14370c4814c085adffec9383a02d03"
@@ -5607,9 +5612,19 @@
       "sha256": "8ce810cba9ab13c2143b441cb5a76587dacb8acd31fc480557fedea73cdf9d0f"
     },
     {
+      "path": "templates/synthetic-workbook-current-chain-D129.json",
+      "bytes": 29905,
+      "sha256": "f39293711f0309f9386e6e207351d2f7ba99019af303311317fd59840bfd2ea2"
+    },
+    {
       "path": "templates/synthetic-workbook-current-revision-D128.json",
       "bytes": 728,
       "sha256": "1066f235fa94752edefeed2b2829e24c232817f081063c35b0a7e6a597dae739"
+    },
+    {
+      "path": "templates/synthetic-workbook-current-revision-D129.json",
+      "bytes": 728,
+      "sha256": "185f96283db7c370422bfd858b700c7edc8acc6bce9457366f1cd663fb220cc3"
     },
     {
       "path": "templates/synthetic-workbook-example.xlsx",
@@ -6690,6 +6705,11 @@
       "path": "tools/check_worksheet_current_chain_D128.py",
       "bytes": 9712,
       "sha256": "c0009bc3ec30a103ff0d08ecd9ff62f2d21d417bdfa09a6110d714655d1f3879"
+    },
+    {
+      "path": "tools/check_worksheet_equity_limit_revision_D129.py",
+      "bytes": 5410,
+      "sha256": "185ac802bbd0a5c3409a22283424a8dc4d4354d0b2b76df8ffb9b584e9397d11"
     },
     {
       "path": "tools/check_worksheet_equity_tdc_D124.py",

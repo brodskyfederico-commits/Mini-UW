@@ -1612,3 +1612,7 @@ Los contratos de recepción, validación, planos, GC, copia oficial, cálculo, i
 ## D128 — Reposición con verificación de vigencia
 
 La cadena vuelve a PASS simulado tras reponer la copia oficial, el criterio de GC y la regla de inversión con la referencia sintética vigente. Cada reposición parcial, versión obsoleta, copia vencida o referencia ausente conserva PENDING. La auditoría distingue el PASS histórico del estado vigente y conserva los cobros verificados por USD 10. [Casos y reproducción](docs/workbook-current-chain-D128.md).
+
+## D129 — Nuevo máximo de equity/TDC de Downside
+
+La revisión R3 baja el máximo del 50 % al 45 %. El 45,45 % calculado en Downside da FAIL simulado y las otras diecinueve comparaciones se conservan. La auditoría de R2 contra R3 deja PENDING el dictamen vigente y conserva el PASS histórico. Los flujos fechados y el cobro por USD 10 coinciden exactamente entre revisiones. [Resultados y reproducción](docs/workbook-equity-limit-revision-D129.md).

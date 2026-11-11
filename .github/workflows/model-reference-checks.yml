@@ -273,5 +273,7 @@ jobs:
         run: PYTHONPATH=src python tools/check_worksheet_local_chain_D127.py
       - name: Verify the local chain restoration against independently designated revisions
         run: PYTHONPATH=src python tools/check_worksheet_current_chain_D128.py
+      - name: Verify the revised Downside equity limit and historical verdict
+        run: PYTHONPATH=src python tools/check_worksheet_equity_limit_revision_D129.py
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v

@@ -4,6 +4,7 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D129 baja el máximo sintético de equity/TDC de Downside al 45 %. La revisión vigente da FAIL simulado y el PASS anterior queda histórico, con los mismos cobros por USD 10. [Resultados y reproducción](docs/workbook-equity-limit-revision-D129.md).
 - D128 repone los tres faltantes y verifica que la cadena sólo recupere el dictamen simulado con fuentes y reglas vigentes. [Casos y reproducción](docs/workbook-current-chain-D128.md).
 - D127 conecta y prueba los siete Dots del flujo local, con documentos sintéticos estructurados para planos, GC y la copia oficial archivada. [Casos y reproducción](docs/workbook-local-chain-D127.md).
 - D126 reproduce las diez métricas del piloto, veinte comparaciones, los cobros por USD 10 y el PDF. Registra los pasos locales de recepción, validación, cálculo e informe y vuelve a correrlos en auditoría. [Resultados, alcance y comandos](docs/workbook-complete-pilot-D126.md).
