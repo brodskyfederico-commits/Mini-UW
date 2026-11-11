@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D103 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D104 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/miniuw-integral-usd10.yml",
@@ -8,8 +8,8 @@
     },
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 14817,
-      "sha256": "db0060d36cb9848564226d95500e4b6689a01727b9d1fcf5d11a01585e0d589d"
+      "bytes": 14964,
+      "sha256": "fc643ce8f6b1a8049b3dc92bc58f8dd726cb50708ddd52818a4cbdc5745d32e0"
     },
     {
       "path": ".gitignore",
@@ -23,13 +23,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 75904,
-      "sha256": "40a8973bfe8e89167d2b8df576ab62ab526a25b25bb00e6cca08f885ee6f2039"
+      "bytes": 76176,
+      "sha256": "76d83fe599d510599a18a3a30f6c26deaf13c41f811eefb2a58c8c4ab534b95f"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 321408,
-      "sha256": "20ff6828038ba66b067566921d34a517abd7b91c2f9c74dd9004487bb6573fbd"
+      "bytes": 322200,
+      "sha256": "7b4ea2f3a47973447b9698b4ffdb96ff156764e8dc9e2f25ebd160d78987bcab"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -935,6 +935,11 @@
       "path": "docs/review/MiniUW_D102_Verificacion_Integral_USD10.pdf",
       "bytes": 2853,
       "sha256": "2560fe8707a8d9029f0c4923fa83bd3398c99b5e8c58ddd2f3972cd0419aa9b7"
+    },
+    {
+      "path": "docs/review/MiniUW_D104_Escenario_Bloqueado_USD10.pdf",
+      "bytes": 2321,
+      "sha256": "80648f91d3f31cca20fd6dbcf5980578b1903cdf591a9fa2cacc1d426be0dcc2"
     },
     {
       "path": "docs/review/MiniUW_D81_Ocho_Revisiones_Sinteticas.zip",
@@ -5052,6 +5057,11 @@
       "sha256": "46f6b1f4deff4410273a9943ac5b18bdb809351be35e2b53054e5ba009c762ed"
     },
     {
+      "path": "templates/synthetic-investor-scenarios-D104.json",
+      "bytes": 431,
+      "sha256": "39874c8c6c1b9b71a90c9503561de049072120ca904e366fd6b5cae37c11201e"
+    },
+    {
       "path": "templates/synthetic-investor-scenarios-D75.json",
       "bytes": 427,
       "sha256": "43b0717b09c9e99dc595b6d173adb790d210b6c5b989155461e740aeff922321"
@@ -6392,6 +6402,11 @@
       "sha256": "bdd692fbab6418f5b5055c10423c260abc3ad413dff48f6390cc8f189c0e480f"
     },
     {
+      "path": "tools/check_scenario_availability_D104.py",
+      "bytes": 5567,
+      "sha256": "9fa8e713d3ed5e34ce33a9b88e03c4ce9b005567298d545c704fd08a7105bd87"
+    },
+    {
       "path": "tools/check_scenario_package_D52.py",
       "bytes": 4351,
       "sha256": "bdac59ddf72f4b7dcea78d9f6fe5342dcc02dc512fe3a04dfbea37f0911f53e6"
@@ -6868,8 +6883,8 @@
     },
     {
       "path": "tools/miniuw_worksheet_v1.py",
-      "bytes": 13338,
-      "sha256": "c85b8aa554fc8ad8204ca8269cd5b6c076a4ff233d21ecc4ba24540f688ff313"
+      "bytes": 13632,
+      "sha256": "56da6c5d776eb151105ff53b15b06d8cf7e170ca41dcdc75c98bb14ce55fd1d5"
     },
     {
       "path": "tools/onepage_pending_cases_D79.py",
@@ -6973,8 +6988,8 @@
     },
     {
       "path": "tools/worksheet_investor_scenarios_D75.py",
-      "bytes": 6476,
-      "sha256": "c276b9cdf48c4090303dea1111faf3a28277ad1b87e0e578dce9e336622c7184"
+      "bytes": 9021,
+      "sha256": "032d657a1b59825a7376aa96c4c07931b089a8ba00e14bb1e0e345b0207bd3ff"
     },
     {
       "path": "tools/worksheet_participation_D68.py",

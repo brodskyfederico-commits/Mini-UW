@@ -4,6 +4,7 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D104 conserva los cobros verificados de Base o Downside cuando el otro escenario queda PENDING por capacidad de refinanciación. Ejecuta `python tools/check_scenario_availability_D104.py`. [Ejemplo de una página](docs/review/MiniUW_D104_Escenario_Bloqueado_USD10.pdf).
 - D102 automatiza la verificación integral por USD 10 en Base, Downside y casos límite. Ejecuta `python tools/check_integral_miniuw_D102.py` desde la raíz. [Resumen de una página](docs/review/MiniUW_D102_Verificacion_Integral_USD10.pdf).
 - D101 prueba el último mes cubierto con caja y los primeros dos meses que necesitan aportes adicionales. [PDF de una página](docs/review/MiniUW_D101_Aporte_Al_Agotarse_Caja_USD10.pdf) y control reproducible con `python tools/holding_cash_funding_boundary_D101.py`.
 - D100 fija la venta en USD 300 con demoras de cuatro a seis meses y muestra cuánto se cobra y cuánto falta por USD 10. [PDF de una página](docs/review/MiniUW_D100_Venta_300_Demora_4_6_Meses_USD10.pdf) y control reproducible con `python tools/fixed_extended_sale_D100.py`.

@@ -27,6 +27,7 @@ SCENARIO_RECOVERY_SCHEMA = "miniuw.synthetic-investor-scenarios.v2"
 SCENARIO_DISCOUNTED_RECOVERY_SCHEMA = "miniuw.synthetic-investor-scenarios.v3"
 SCENARIO_SENSITIVITY_SCHEMA = "miniuw.synthetic-investor-scenarios.v4"
 SCENARIO_SALE_GAP_SCHEMA = "miniuw.synthetic-investor-scenarios.v5"
+SCENARIO_AVAILABILITY_SCHEMA = "miniuw.synthetic-investor-scenarios.v6"
 PACKAGE_SCHEMA = "miniuw.synthetic-unified-worksheet-package.v1"
 COSTED_SALE = "templates/synthetic-worksheet-sale-costs-D63.json"
 COSTED_PROFILE = "with_refinance_worksheet_sale"
@@ -80,6 +81,9 @@ def build_results(raw):
     if isinstance(case, dict) and case.get("schema") == SCENARIO_SALE_GAP_SCHEMA:
         from worksheet_sale_gap_D85 import build_sale_gap
         return build_sale_gap(case, sha(raw))
+    if isinstance(case, dict) and case.get("schema") == SCENARIO_AVAILABILITY_SCHEMA:
+        from worksheet_investor_scenarios_D75 import build_scenarios
+        return build_scenarios(case, sha(raw), allow_pending=True)
     case, archive_path, archive_raw, bindings, rate = read_case(case)
     key = case["archive_case"]
     profile = case["profile"]

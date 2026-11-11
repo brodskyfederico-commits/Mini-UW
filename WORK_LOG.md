@@ -1500,3 +1500,9 @@ Se verifican seis precios alrededor del equilibrio de caja nominal, la ruta sin 
 La corrida D102 falló dos veces antes de asignar un runner. Ambos trabajos devolvieron cero pasos. La misma etiqueta ubuntu-24.04 aparece en la última ejecución exitosa. GitHub informa una anotación que el conector no puede leer y no proporciona logs del trabajo sin iniciar. El motivo de cuenta o de plataforma queda por confirmar. [Registro de CI](docs/ci-verification.json).
 
 Se agrega un workflow que solicita únicamente la prueba integral sintética por USD 10 con disparador manual y al cambiar su configuración o verificador. Usa el mismo entorno y dependencias del workflow completo con permiso de contenido de lectura. [Instrucciones de verificación](docs/reference-check-runbook.md).
+
+## D104 — Comparación de escenarios cuando falta capacidad de refinanciación
+
+La entrada sintética v6 del comando común admite un escenario archivado cuya capacidad de refinanciación está bloqueada. La comparación queda PENDING, el escenario bloqueado retira sus cifras y el otro conserva sus cobros, aportes y fechas verificados por USD 10 iniciales. Con ambos escenarios bloqueados se produce una página con los dos motivos. La entrada original v1 conserva su contrato.
+
+Se prueban cuatro combinaciones de disponibilidad y tres entradas rechazadas. La validación corre en el VPS mientras se renueva el cupo de GitHub Actions. GitHub confirmó que se agotó el cupo incluido de Actions. [Ejemplo sintético de una página](docs/review/MiniUW_D104_Escenario_Bloqueado_USD10.pdf).
