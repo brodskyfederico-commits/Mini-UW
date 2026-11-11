@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D127 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D128 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/miniuw-integral-usd10.yml",
@@ -8,8 +8,8 @@
     },
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 18521,
-      "sha256": "6b5e67bd42336b6965556ae7ad870d504601baebb7d8ab4abf34e6da741796f2"
+      "bytes": 18692,
+      "sha256": "98c2f2a81e1984bf02cdc2a677e0f7026d650dcfccea28dd8d961510021cb0a4"
     },
     {
       "path": ".gitignore",
@@ -23,13 +23,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 81203,
-      "sha256": "9060bdeecedff750ee50da815ff25b8faf0a4d174f02a889b1b89ff49c9c8657"
+      "bytes": 81390,
+      "sha256": "1c726224f36c5aeb7732fa2709b1ab999a719d92ca2a5c9169f451bb7b5d896d"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 334316,
-      "sha256": "7abce5395e013f7d7d06905fbf7705f166547d274e8a099f9fa77530f8dc854f"
+      "bytes": 334785,
+      "sha256": "064e8c7d7fa8d2908288347bdaa8a61a31aa6d253916e4e0d38428bc5dfd678c"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -3032,6 +3032,11 @@
       "sha256": "332804419348047603c30713eca3de2e6bc171975cc3ed22c2dba058db6d9aee"
     },
     {
+      "path": "docs/workbook-current-chain-D128.md",
+      "bytes": 2523,
+      "sha256": "8774019f783540ce37ed493176b2286b9ebeaa4ff51ce07d406780da7873c476"
+    },
+    {
       "path": "docs/workbook-equity-tdc-D124.md",
       "bytes": 2549,
       "sha256": "0322901f96b7d19d0fea60be521bd1b3ad14370c4814c085adffec9383a02d03"
@@ -5597,6 +5602,16 @@
       "sha256": "b9b0b6e4cc84ddc51452e08c4c5a9902338b800261ae0ee5218b394f9cce0469"
     },
     {
+      "path": "templates/synthetic-workbook-current-chain-D128.json",
+      "bytes": 29903,
+      "sha256": "8ce810cba9ab13c2143b441cb5a76587dacb8acd31fc480557fedea73cdf9d0f"
+    },
+    {
+      "path": "templates/synthetic-workbook-current-revision-D128.json",
+      "bytes": 728,
+      "sha256": "1066f235fa94752edefeed2b2829e24c232817f081063c35b0a7e6a597dae739"
+    },
+    {
       "path": "templates/synthetic-workbook-example.xlsx",
       "bytes": 1661,
       "sha256": "d7acbf6cd7eefd921b183c89e9ac987a33dc5105f2c8be886969f05d22b36042"
@@ -6672,6 +6687,11 @@
       "sha256": "b1bafd06a05085202dacfcf3169ef6706703bf0107e19aa952077e0954be6b41"
     },
     {
+      "path": "tools/check_worksheet_current_chain_D128.py",
+      "bytes": 9712,
+      "sha256": "c0009bc3ec30a103ff0d08ecd9ff62f2d21d417bdfa09a6110d714655d1f3879"
+    },
+    {
       "path": "tools/check_worksheet_equity_tdc_D124.py",
       "bytes": 7479,
       "sha256": "8b0432a664da6512cebe0064f66f3ad82fdcb0277ed579f9a9791369763c94a9"
@@ -7178,8 +7198,8 @@
     },
     {
       "path": "tools/miniuw_worksheet_v1.py",
-      "bytes": 18943,
-      "sha256": "5ea2f484985f1ceed82057d3b465704aad3a253fc02dc00c996fa672f6e2569d"
+      "bytes": 21110,
+      "sha256": "66557264432103a6362c2e8670785fe7e8e7f2165d0b672d29f32162ba5ef6e8"
     },
     {
       "path": "tools/onepage_pending_cases_D79.py",
@@ -7367,6 +7387,11 @@
       "sha256": "893f4dc62baca3591bd99727203c802d4a17293e633a9e2787e229c32f2c31d0"
     },
     {
+      "path": "tools/worksheet_revision_D128.py",
+      "bytes": 4273,
+      "sha256": "c86b1b891a5b8b084a1d4d54340403432b2791cede622b9356bb8831893c1258"
+    },
+    {
       "path": "tools/worksheet_sale_gap_D85.py",
       "bytes": 3366,
       "sha256": "8e447f14535036ec7443d2f1863adc320fc55a7c385db83656f3b7ddcee22c13"
@@ -7383,8 +7408,8 @@
     },
     {
       "path": "tools/worksheet_screening_pilot_D120.py",
-      "bytes": 21673,
-      "sha256": "b2c083f27d684c8115b3f2d462c27ded5f288f1bd8c16a3427179085ed2ca486"
+      "bytes": 22488,
+      "sha256": "6ca4b34e5e79d5749244d452003e47e9d208d1123ed5795a4e9d5b4d5c90bbb2"
     },
     {
       "path": "tools/worksheet_settled_miniuw_v1.py",

@@ -10,8 +10,8 @@ from miniuw_foundation.debt_service import rational
 from miniuw_foundation.expense_cash_detail import _exact
 from miniuw_foundation.scheduled_expense_case import sha
 from miniuw_foundation.screening import SCHEMA, simulate_screening
-from miniuw_worksheet_v1 import (WORKBOOK_CAPACITY_SCHEMA, WORKBOOK_FUNDING_PILOT_SCHEMAS,
-                                 WORKBOOK_LOCAL_CHAIN_SCHEMA, WORKBOOK_OPERATING_PILOT_SCHEMAS,
+from miniuw_worksheet_v1 import (WORKBOOK_CAPACITY_SCHEMA, WORKBOOK_CURRENT_CHAIN_SCHEMA, WORKBOOK_FUNDING_PILOT_SCHEMAS,
+                                 WORKBOOK_LOCAL_CHAIN_SCHEMAS, WORKBOOK_OPERATING_PILOT_SCHEMAS,
                                  WORKBOOK_RETURN_PILOT_SCHEMAS, encoded)
 from worksheet_intake_case_D117 import SOURCE_FIXTURE, build_intake_case
 from worksheet_plan_refinance_D109 import LABELS, SCENARIOS
@@ -179,7 +179,8 @@ def read_scenario(spec, raw, expected, *, include_sizing_service=False, include_
                 received_workbook_sha256=None if raw is None else sha(raw), source_blockers=[blocker])
 
 
-def render_pilot(scenarios, screening, *, extended=False, interval_irr=False, yield_metrics=False, local_chain=False):
+def render_pilot(scenarios, screening, *, extended=False, interval_irr=False, yield_metrics=False,
+                 local_chain=False, current_chain=False):
     lines = [(f"Simulación PASS/FAIL  |  {screening['simulation_result']}", True)]
     for name, scenario in scenarios.items():
         cash = scenario["cash_per_usd_10"]
@@ -249,7 +250,7 @@ def render_pilot(scenarios, screening, *, extended=False, interval_irr=False, yi
     lines.append(("Capital agregado del proyecto. Decisión de inversión PENDING.", False))
     milestone = "D120"
     if computed_returns is not None:
-        milestone = "D127" if local_chain else "D126"
+        milestone = "D128" if current_chain else "D127" if local_chain else "D126"
         lines.append(("Diez métricas calculadas bajo las definiciones del piloto sintético.", False))
     elif computed_occupancy is not None:
         milestone = "D125"
@@ -271,7 +272,7 @@ def render_pilot(scenarios, screening, *, extended=False, interval_irr=False, yi
                        "Planilla, retorno y simulación de decisión")
 
 
-def pilot_pipeline(case_sha256, scenarios, screening, pdf, local_review=None):
+def pilot_pipeline(case_sha256, scenarios, screening, pdf, local_review=None, revision_review=None):
     """Record the deterministic contracts exercised by the workbook pilot."""
     source_ready = {name: not row["source_blockers"] for name, row in scenarios.items()}
     input_blockers = {name: [item["cell"] for item in row.get("preflight", {}).get("checklist", []) if item["action"]]
@@ -295,12 +296,13 @@ def pilot_pipeline(case_sha256, scenarios, screening, pdf, local_review=None):
             dict(dot="D03", bots=["B05", "B06", "B07", "B09"], reconciliation=bots["B09"]["state"]),
             dict(dot="D04", bots=["B10", "B11"], local_snapshot=bots["B11"]["state"]),
         ]
-        stages.append(dict(dot="D07", bots=["B16", "B17"],
-                           audit_command="audit", version_suite="check_worksheet_local_chain_D127.py"))
+        suite = "check_worksheet_local_chain_D127.py" if revision_review is None else "check_worksheet_current_chain_D128.py"
+        stages.append(dict(dot="D07", bots=["B16", "B17"], audit_command="audit", version_suite=suite))
     return dict(case_sha256=case_sha256, stages=stages)
 
 
-def build_pilot(case, case_sha256, workbooks, *, extended=False, interval_irr=False, yield_metrics=False):
+def build_pilot(case, case_sha256, workbooks, *, extended=False, interval_irr=False, yield_metrics=False,
+                current_revision_raw=None):
     required = {"schema", "worksheet_case", "workbook_sha256"}
     optional = {"criteria_revision", "aggregation_rule", "rules"}
     if extended:
@@ -316,7 +318,7 @@ def build_pilot(case, case_sha256, workbooks, *, extended=False, interval_irr=Fa
         optional.add("occupancy_inputs")
     if schema in WORKBOOK_RETURN_PILOT_SCHEMAS:
         optional.add("return_inputs")
-    if schema == WORKBOOK_LOCAL_CHAIN_SCHEMA:
+    if schema in WORKBOOK_LOCAL_CHAIN_SCHEMAS:
         optional.add("local_sources")
     require(required <= case.keys() <= required | optional,
             "An explicit pilot workbook case and source hashes are required")
@@ -337,23 +339,34 @@ def build_pilot(case, case_sha256, workbooks, *, extended=False, interval_irr=Fa
                               extended=extended, interval_irr=interval_irr, yield_metrics=yield_metrics,
                               case_sha256=case_sha256)
     local_review = None
-    if schema == WORKBOOK_LOCAL_CHAIN_SCHEMA:
+    revision_review = None
+    if schema in WORKBOOK_LOCAL_CHAIN_SCHEMAS:
         from worksheet_local_sources_D127 import review_local_sources
         local_review = review_local_sources(case.get("local_sources"), hashes)
         screening["worksheet_simulation_result"] = screening["simulation_result"]
         screening["worksheet_run_sha256"] = screening.pop("run_sha256")
-        if local_review["blockers"]:
+        blockers = local_review["blockers"]
+        evidence = {"screening": screening, "local_review": local_review}
+        if schema == WORKBOOK_CURRENT_CHAIN_SCHEMA:
+            from worksheet_revision_D128 import review_revision
+            revision_review = review_revision(case, current_revision_raw)
+            evidence["revision_review"] = revision_review
+            blockers = blockers + [f"B12:{reason}" for reason in revision_review["blockers"]]
+        if blockers:
             screening["simulation_result"] = "PENDING"
-            screening["simulation_blockers"] = sorted(set(screening["simulation_blockers"] + local_review["blockers"]))
-        screening["run_sha256"] = sha(encoded({"screening": screening, "local_review": local_review}))
+            screening["simulation_blockers"] = sorted(set(screening["simulation_blockers"] + blockers))
+        screening["run_sha256"] = sha(encoded(evidence))
     pdf = render_pilot(scenarios, screening, extended=extended, interval_irr=interval_irr,
-                       yield_metrics=yield_metrics, local_chain=local_review is not None)
+                       yield_metrics=yield_metrics, local_chain=local_review is not None,
+                       current_chain=revision_review is not None)
     simulation = screening["simulation_result"]
     pipeline = {}
     if schema in WORKBOOK_RETURN_PILOT_SCHEMAS:
-        pipeline["pipeline"] = pilot_pipeline(case_sha256, scenarios, screening, pdf, local_review)
+        pipeline["pipeline"] = pilot_pipeline(case_sha256, scenarios, screening, pdf, local_review, revision_review)
     if local_review is not None:
         pipeline["local_review"] = local_review
+    if revision_review is not None:
+        pipeline["revision_review"] = revision_review
     return dict(profile=PROFILE, scope="synthetic_aggregate_equity", decision="PENDING",
                 state="PENDING" if simulation == "PENDING" else "computed_synthetic_pilot",
                 simulation_result=simulation, case_sha256=case_sha256, scenarios=scenarios,

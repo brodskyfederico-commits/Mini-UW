@@ -42,7 +42,9 @@ WORKBOOK_EQUITY_PILOT_SCHEMA = "miniuw.synthetic-workbook-screening-pilot.v5"
 WORKBOOK_OCCUPANCY_PILOT_SCHEMA = "miniuw.synthetic-workbook-screening-pilot.v6"
 WORKBOOK_COMPLETE_PILOT_SCHEMA = "miniuw.synthetic-workbook-screening-pilot.v7"
 WORKBOOK_LOCAL_CHAIN_SCHEMA = "miniuw.synthetic-workbook-screening-pilot.v8"
-WORKBOOK_RETURN_PILOT_SCHEMAS = (WORKBOOK_COMPLETE_PILOT_SCHEMA, WORKBOOK_LOCAL_CHAIN_SCHEMA)
+WORKBOOK_CURRENT_CHAIN_SCHEMA = "miniuw.synthetic-workbook-screening-pilot.v9"
+WORKBOOK_LOCAL_CHAIN_SCHEMAS = (WORKBOOK_LOCAL_CHAIN_SCHEMA, WORKBOOK_CURRENT_CHAIN_SCHEMA)
+WORKBOOK_RETURN_PILOT_SCHEMAS = (WORKBOOK_COMPLETE_PILOT_SCHEMA, *WORKBOOK_LOCAL_CHAIN_SCHEMAS)
 WORKBOOK_OPERATING_PILOT_SCHEMAS = (WORKBOOK_OCCUPANCY_PILOT_SCHEMA, *WORKBOOK_RETURN_PILOT_SCHEMAS)
 WORKBOOK_FUNDING_PILOT_SCHEMAS = (WORKBOOK_EQUITY_PILOT_SCHEMA, *WORKBOOK_OPERATING_PILOT_SCHEMAS)
 PACKAGE_SCHEMA = "miniuw.synthetic-unified-worksheet-package.v1"
@@ -52,6 +54,8 @@ ARCHIVES = {"without_refinance": SALE, "with_refinance": REFINANCE, COSTED_PROFI
 FILES = frozenset({"case.json", "results.json", "MiniUW_Resumen.pdf", "package.json"})
 WORKBOOK_FILE = "Inputs.xlsx"
 DOWNSIDE_WORKBOOK_FILE = "Downside_Inputs.xlsx"
+CURRENT_REVISION_FILE = "current_revision.json"
+MAX_CURRENT_REVISION_BYTES = 16 * 1024
 MAX_FILE_BYTES = 4 * 1024 * 1024
 MAX_EXTENDED_PILOT_BYTES = 32 * 1024
 
@@ -84,9 +88,11 @@ def read_case(case):
     return case, archive_path, archive_raw, bindings, rate
 
 
-def build_results(raw, *, workbook_raw=None, downside_workbook_raw=None):
+def build_results(raw, *, workbook_raw=None, downside_workbook_raw=None, current_revision_raw=None):
     case = _json(raw, MAX_EXTENDED_PILOT_BYTES)
     schema = case.get("schema") if isinstance(case, dict) else None
+    require(current_revision_raw is None or schema == WORKBOOK_CURRENT_CHAIN_SCHEMA,
+            "The designated revision belongs to the current local chain schema")
     yield_metrics = schema in (WORKBOOK_YIELD_PILOT_SCHEMA, *WORKBOOK_FUNDING_PILOT_SCHEMAS)
     interval_irr = schema == WORKBOOK_IRR_PILOT_SCHEMA or yield_metrics
     extended = schema == WORKBOOK_EXTENDED_PILOT_SCHEMA or interval_irr
@@ -94,7 +100,8 @@ def build_results(raw, *, workbook_raw=None, downside_workbook_raw=None):
     if extended or schema == WORKBOOK_PILOT_SCHEMA:
         from worksheet_screening_pilot_D120 import build_pilot
         return build_pilot(case, sha(raw), {"Base": workbook_raw, "Downside": downside_workbook_raw},
-                           extended=extended, interval_irr=interval_irr, yield_metrics=yield_metrics)
+                           extended=extended, interval_irr=interval_irr, yield_metrics=yield_metrics,
+                           current_revision_raw=current_revision_raw)
     require(downside_workbook_raw is None, "This case schema does not accept a Downside workbook")
     if isinstance(case, dict) and case.get("schema") in (WORKBOOK_INTAKE_SCHEMA, WORKBOOK_CAPACITY_SCHEMA):
         from worksheet_intake_case_D117 import build_intake_case
@@ -208,13 +215,16 @@ def encoded(value):
     return (canonical(value) + "\n").encode()
 
 
-def build_package(raw, *, workbook_raw=None, downside_workbook_raw=None):
-    result, pdf = build_results(raw, workbook_raw=workbook_raw, downside_workbook_raw=downside_workbook_raw)
+def build_package(raw, *, workbook_raw=None, downside_workbook_raw=None, current_revision_raw=None):
+    result, pdf = build_results(raw, workbook_raw=workbook_raw, downside_workbook_raw=downside_workbook_raw,
+                                current_revision_raw=current_revision_raw)
     files = {"case.json": raw, "results.json": encoded(result), "MiniUW_Resumen.pdf": pdf}
     if workbook_raw is not None:
         files[WORKBOOK_FILE] = workbook_raw
     if downside_workbook_raw is not None:
         files[DOWNSIDE_WORKBOOK_FILE] = downside_workbook_raw
+    if current_revision_raw is not None:
+        files[CURRENT_REVISION_FILE] = current_revision_raw
     files["package.json"] = encoded(dict(
         schema=PACKAGE_SCHEMA, state=result["state"], decision=result["decision"],
         files=[dict(path=name, bytes=len(content), sha256=sha(content)) for name, content in sorted(files.items())],
@@ -227,18 +237,24 @@ def read_package(directory):
     require(not directory.is_symlink() and directory.is_dir(), "A regular output directory is required")
     paths = list(directory.iterdir())
     names = {p.name for p in paths}
-    require(FILES <= names <= FILES | {WORKBOOK_FILE, DOWNSIDE_WORKBOOK_FILE}
+    require(FILES <= names <= FILES | {WORKBOOK_FILE, DOWNSIDE_WORKBOOK_FILE, CURRENT_REVISION_FILE}
             and all(p.is_file() and not p.is_symlink() and p.stat().st_size <= MAX_FILE_BYTES for p in paths),
             "Exact regular case, results, PDF and manifest files are required")
     return {p.name: p.read_bytes() for p in paths}
 
 
-def verify_package(directory):
+def verify_package(directory, *, current_revision_raw=None):
     saved = read_package(directory)
     expected, result = build_package(saved["case.json"], workbook_raw=saved.get(WORKBOOK_FILE),
-                                     downside_workbook_raw=saved.get(DOWNSIDE_WORKBOOK_FILE))
+                                     downside_workbook_raw=saved.get(DOWNSIDE_WORKBOOK_FILE),
+                                     current_revision_raw=saved.get(CURRENT_REVISION_FILE))
     require(saved == expected, "Output does not match source-first replay")
-    return status("verified_source_first", result)
+    response = status("verified_source_first", result)
+    if "revision_review" in result:
+        from worksheet_revision_D128 import audit_revision
+        return response | audit_revision(result, current_revision_raw)
+    require(current_revision_raw is None, "The designated revision belongs to the current local chain schema")
+    return response
 
 
 def status(operation, result):
@@ -251,8 +267,9 @@ def status(operation, result):
     return response
 
 
-def write_package(raw, directory, *, workbook_raw=None, downside_workbook_raw=None):
-    expected, result = build_package(raw, workbook_raw=workbook_raw, downside_workbook_raw=downside_workbook_raw)
+def write_package(raw, directory, *, workbook_raw=None, downside_workbook_raw=None, current_revision_raw=None):
+    expected, result = build_package(raw, workbook_raw=workbook_raw, downside_workbook_raw=downside_workbook_raw,
+                                     current_revision_raw=current_revision_raw)
     if directory.exists() or directory.is_symlink():
         require(read_package(directory) == expected, "Existing output differs from the requested case")
         return status("verified_identical_output", result)
@@ -280,6 +297,18 @@ def read_workbook(path):
     return path.read_bytes()
 
 
+def read_current_revision(path, package):
+    if path is None:
+        return None
+    require(not path.resolve().is_relative_to(package.resolve()),
+            "Designate the current revision outside the audited package")
+    require(path.is_file() and not path.is_symlink(), "An explicit regular revision file is required")
+    with path.open("rb") as stream:
+        raw = stream.read(MAX_CURRENT_REVISION_BYTES + 1)
+    require(len(raw) <= MAX_CURRENT_REVISION_BYTES, "The designated revision file exceeds its size limit")
+    return raw
+
+
 def main():
     parser = ArgumentParser(description=__doc__)
     subcommands = parser.add_subparsers(dest="command", required=True)
@@ -288,8 +317,10 @@ def main():
     run.add_argument("--output", required=True, type=Path)
     run.add_argument("--workbook", type=Path)
     run.add_argument("--downside-workbook", type=Path)
+    run.add_argument("--current-revision", type=Path)
     audit = subcommands.add_parser("audit")
     audit.add_argument("directory", type=Path)
+    audit.add_argument("--current-revision", type=Path)
     preflight = subcommands.add_parser("preflight")
     preflight.add_argument("workbook", type=Path)
     preflight.add_argument("--deal-id", required=True)
@@ -302,9 +333,11 @@ def main():
             workbook_raw = None if args.workbook is None else read_workbook(args.workbook)
             downside = None if args.downside_workbook is None else read_workbook(args.downside_workbook)
             result = write_package(args.case.read_bytes(), args.output, workbook_raw=workbook_raw,
-                                   downside_workbook_raw=downside)
+                                   downside_workbook_raw=downside,
+                                   current_revision_raw=read_current_revision(args.current_revision, args.output))
         elif args.command == "audit":
-            result = verify_package(args.directory)
+            result = verify_package(args.directory,
+                                    current_revision_raw=read_current_revision(args.current_revision, args.directory))
         else:
             from worksheet_preflight_D116 import preflight as inspect_workbook
             result = inspect_workbook(read_workbook(args.workbook), args.deal_id, args.snapshot)

@@ -1608,3 +1608,7 @@ El CoC usa los cobros operativos posrefinanciación del tramo observado y una ba
 ## D127 — Cadena local de los siete Dots
 
 Los contratos de recepción, validación, planos, GC, copia oficial, cálculo, informe y auditoría se prueban con fuentes sintéticas estructuradas. Se auditan PASS, FAIL y PENDING por fuente, criterio de GC o regla de inversión faltantes. La evidencia conserva los cobros por USD 10 y la auditoría rechaza un resultado alterado con hashes recalculados. [Casos y reproducción](docs/workbook-local-chain-D127.md).
+
+## D128 — Reposición con verificación de vigencia
+
+La cadena vuelve a PASS simulado tras reponer la copia oficial, el criterio de GC y la regla de inversión con la referencia sintética vigente. Cada reposición parcial, versión obsoleta, copia vencida o referencia ausente conserva PENDING. La auditoría distingue el PASS histórico del estado vigente y conserva los cobros verificados por USD 10. [Casos y reproducción](docs/workbook-current-chain-D128.md).
