@@ -30,6 +30,7 @@ SCENARIO_SALE_GAP_SCHEMA = "miniuw.synthetic-investor-scenarios.v5"
 SCENARIO_AVAILABILITY_SCHEMA = "miniuw.synthetic-investor-scenarios.v6"
 PLAN_REFINANCE_REQUEST_SCHEMA = "miniuw.synthetic-plan-refinance-request.v1"
 PLAN_DISCOUNT_COMPARISON_SCHEMA = "miniuw.synthetic-plan-discount-comparison.v1"
+PLAN_DISCOUNT_RECOVERY_SCHEMA = "miniuw.synthetic-plan-discount-comparison.v2"
 PACKAGE_SCHEMA = "miniuw.synthetic-unified-worksheet-package.v1"
 COSTED_SALE = "templates/synthetic-worksheet-sale-costs-D63.json"
 COSTED_PROFILE = "with_refinance_worksheet_sale"
@@ -89,9 +90,9 @@ def build_results(raw):
     if isinstance(case, dict) and case.get("schema") == PLAN_REFINANCE_REQUEST_SCHEMA:
         from worksheet_plan_refinance_D109 import build_request
         return build_request(case, sha(raw))
-    if isinstance(case, dict) and case.get("schema") == PLAN_DISCOUNT_COMPARISON_SCHEMA:
+    if isinstance(case, dict) and case.get("schema") in (PLAN_DISCOUNT_COMPARISON_SCHEMA, PLAN_DISCOUNT_RECOVERY_SCHEMA):
         from worksheet_plan_discount_D112 import build_discount_comparison
-        return build_discount_comparison(case, sha(raw))
+        return build_discount_comparison(case, sha(raw), include_recovery=case["schema"] == PLAN_DISCOUNT_RECOVERY_SCHEMA)
     case, archive_path, archive_raw, bindings, rate = read_case(case)
     key = case["archive_case"]
     profile = case["profile"]

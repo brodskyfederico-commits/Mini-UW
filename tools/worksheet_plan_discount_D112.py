@@ -34,9 +34,10 @@ def compare_at_rate(nominal, rate):
     return scenarios
 
 
-def render(nominal, scenarios, rate):
+def render(nominal, scenarios, rate, *, include_recovery=False):
     columns = [scenarios[name]["alternatives"][option] for name in SCENARIOS for option in OPTIONS]
-    options = "".join(f"{label:>12}" for label in ("Sin refi", "Con refi", "Sin refi", "Con refi"))
+    width = 14 if include_recovery else 12
+    options = "".join(f"{label:>{width}}" for label in ("Sin refi", "Con refi", "Sin refi", "Con refi"))
     # Expose very small positive supplied rates without presenting them as explicit zero.
     rate_label = percent(rational(rate), 4)
     if rate and rate_label == "0,0000 %":
@@ -46,15 +47,15 @@ def render(nominal, scenarios, rate):
     lines = [
         (f"Plano A-601 revisado | Tasa de descuento {rate_label}", True),
         ("Cobros y aportes nominales en USD por USD 10 de equity inicial.", False),
-        (f"{' ':<46}{'Base':^24}{'Downside':^24}", True),
+        (f"{' ':<{40 + width // 2}}{'Base':^{width * 2}}{'Downside':^{width * 2}}", True),
         (f"{'Flujo y fecha':<40}{options}", True),
     ]
     for key, label, day, kind in EVENT_ROWS + TOTAL_ROWS:
         when = "  " + "/".join(reversed(day.split("-"))) if kind is not None else ""
         cells = ["PENDING" if case["amounts"] is None else money(case["amounts"][key]) for case in columns]
-        lines.append((f"{label + when:<40}" + "".join(f"{cell:>12}" for cell in cells), kind is None))
+        lines.append((f"{label + when:<40}" + "".join(f"{cell:>{width}}" for cell in cells), kind is None))
     cells = ["PENDING" if case["npv_per_usd_10"] is None else money(case["npv_per_usd_10"]) for case in columns]
-    lines.append((f"{'VAN al 30/03/2027':<40}" + "".join(f"{cell:>12}" for cell in cells), True))
+    lines.append((f"{'VAN al 30/03/2027':<40}" + "".join(f"{cell:>{width}}" for cell in cells), True))
     lines.append(("El VAN descuenta cobros y aportes. El orden se calcula con valores exactos.", False))
     descriptions = {"with_refinance": "con refi", "without_refinance": "sin refi", "equal": "empate"}
     for name, scenario in scenarios.items():
@@ -70,21 +71,27 @@ def render(nominal, scenarios, rate):
     whole, cents = money(nominal["requested_principal_usd"]).split(",")
     principal = f"{int(whole):,}".replace(",", ".") + "," + cents
     lines.append((f"Solicitud sintética bruta USD {principal}. Decisión de inversión PENDING.", False))
+    if include_recovery:
+        from worksheet_plan_sale_recovery_D113 import recovery_lines
+        lines.extend(recovery_lines(columns, width))
     return render_page(nominal["refinance_request_id"], lines, 20,
                        "MINI-UW | SI INVIERTO USD 10, ¿CUÁNTO COBRO Y CUÁNDO?",
                        "PENDIENTE | Comparación de una página con y sin refinanciación")
 
 
-def build_discount_comparison(case, case_sha256):
+def build_discount_comparison(case, case_sha256, *, include_recovery=False):
     _exact(case, {"schema", "refinance_request", "monthly_discount_rate"})
     request = case["refinance_request"]
     require(isinstance(request, dict) and request.get("schema") == PLAN_REFINANCE_REQUEST_SCHEMA,
             "An explicit synthetic plan refinance request is required")
     rate = _fraction(case["monthly_discount_rate"], 18)
     require(rate is not None and rate >= 0, "An explicit nonnegative monthly discount rate is required")
-    nominal = build_comparison(encoded(request))
+    nominal = build_comparison(encoded(request), include_sale_basis=include_recovery)
     scenarios = compare_at_rate(nominal, rate)
-    pdf = render(nominal, scenarios, rate)
+    if include_recovery:
+        from worksheet_plan_sale_recovery_D113 import add_sale_recovery
+        add_sale_recovery(scenarios, rate)
+    pdf = render(nominal, scenarios, rate, include_recovery=include_recovery)
     state = "PENDING" if any(row["state"] == "PENDING" for row in scenarios.values()) else "computed_synthetic_scenario_cash"
     return dict(profile=PROFILE, state=state, decision="PENDING", scope="synthetic_aggregate_equity",
                 monthly_discount_rate=rational(rate), discount_date=EVENT_ROWS[0][2],

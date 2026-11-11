@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D112 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D113 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/miniuw-integral-usd10.yml",
@@ -8,8 +8,8 @@
     },
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 16176,
-      "sha256": "ee04d30b576ac266ee516301029b2636b9dca6e83eade0aae4b59e112ac58262"
+      "bytes": 16336,
+      "sha256": "7239d151ab7b21d9666fec02e9aebe47e1d65690747dbfb7aeab34342b67229c"
     },
     {
       "path": ".gitignore",
@@ -23,13 +23,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 78021,
-      "sha256": "d9c90bd7eef0c4aa22c36217cbaa7a529d1d90acf8996f54b08230568648d7d7"
+      "bytes": 78231,
+      "sha256": "772861ebe79379ebc6c677795cd60c4d6ce84bebea6a44796cba7337e2eee664"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 327327,
-      "sha256": "1109ce9ef4a9c687165a57c7ae29798074032a85ea1aad054840a59b595190f5"
+      "bytes": 327747,
+      "sha256": "9d0b0b66b7cce1a7535cb612da5e1fc5729782e7cdabcac58db44ce127fde1e3"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -820,6 +820,11 @@
       "path": "docs/plan-return-per-usd10-D107.md",
       "bytes": 3954,
       "sha256": "7a3f3d0ca0eeddc37b055c25fd58645d72a2ea09cf790373f71dcc101b68938f"
+    },
+    {
+      "path": "docs/plan-sale-recovery-D113.md",
+      "bytes": 2152,
+      "sha256": "2f6c6099109308a296cb57c0a8633183ff6b6993c89ab35db96cc98b91833797"
     },
     {
       "path": "docs/plan-schedule-intake-D105.md",
@@ -5292,6 +5297,11 @@
       "sha256": "9647c56a45fccdf93aa0bc7cb13c1173d40c4deddfc5b67581451e9158a7d5a3"
     },
     {
+      "path": "templates/synthetic-plan-sale-recovery-D113.json",
+      "bytes": 571,
+      "sha256": "de3ff0230b8ce50646f78860b50767d4b27af47ef5e67e072fd6fb59de3c501b"
+    },
+    {
       "path": "templates/synthetic-plan-schedule-D105-A.json",
       "bytes": 951,
       "sha256": "197fb5bbfa724fc9c3b843560af9a25a32f326149d8fc1fdbaf6556700c07fb0"
@@ -6432,6 +6442,11 @@
       "sha256": "98ee7ad09b8da0a794c2a378da46b1611a2f315c7ca99567827859130442b337"
     },
     {
+      "path": "tools/check_plan_sale_recovery_D113.py",
+      "bytes": 4164,
+      "sha256": "048269eca243fd8540b61afde67d39eec78a2a1b6ec0d4fde7724f73dcaf59e2"
+    },
+    {
       "path": "tools/check_reference_package.py",
       "bytes": 6320,
       "sha256": "85fa024e6718f2adae6e4dba2f23a0568dfcacc28bdc14c8e668f79ca3bbb148"
@@ -6578,8 +6593,8 @@
     },
     {
       "path": "tools/compare_revised_plan_D110.py",
-      "bytes": 10379,
-      "sha256": "5d8d0454651e47cf87560110ecba91f751fc85521eb3511f1d6b6bd997fd2d67"
+      "bytes": 10949,
+      "sha256": "13d3a20b74bf3a08e95391ec4136e35517caf67f625a99640fd9bbec84b7cfe8"
     },
     {
       "path": "tools/construction_demo_support.py",
@@ -6963,8 +6978,8 @@
     },
     {
       "path": "tools/miniuw_worksheet_v1.py",
-      "bytes": 14207,
-      "sha256": "c4afd6fd61c21211104eccf0e0e4d3b7e0659c24c51e24a0c52da734ab1d720b"
+      "bytes": 14385,
+      "sha256": "456d173d89f4e7ccfb89b35acc1e8a42eec49cd394f167513c76704a364a6267"
     },
     {
       "path": "tools/onepage_pending_cases_D79.py",
@@ -7098,13 +7113,18 @@
     },
     {
       "path": "tools/worksheet_plan_discount_D112.py",
-      "bytes": 5933,
-      "sha256": "45495130b2c6db7dea4b96bf70c01544279d418dc41952431b99f82874884733"
+      "bytes": 6437,
+      "sha256": "40bdf31a4db62424c034e0a212a85ffa11771ed2baa65e1ee5e2c1b0fd6ef170"
     },
     {
       "path": "tools/worksheet_plan_refinance_D109.py",
       "bytes": 5000,
       "sha256": "4a811ed32f854584c4aa0bc10fdc4dcd754210afc8be63ef7fecfdfa3c253384"
+    },
+    {
+      "path": "tools/worksheet_plan_sale_recovery_D113.py",
+      "bytes": 4272,
+      "sha256": "3c8e4b4d2f88f082e46eec5e3ea87e27fd408279ef8025fa9792d21e9e4409a7"
     },
     {
       "path": "tools/worksheet_sale_gap_D85.py",

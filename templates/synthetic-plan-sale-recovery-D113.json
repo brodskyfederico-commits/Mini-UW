@@ -1,0 +1,17 @@
+{
+  "schema": "miniuw.synthetic-plan-discount-comparison.v2",
+  "refinance_request": {
+    "schema": "miniuw.synthetic-plan-refinance-request.v1",
+    "request_id": "SYNTHETIC-D109-request-1100000",
+    "reference_plan_sha256": "197fb5bbfa724fc9c3b843560af9a25a32f326149d8fc1fdbaf6556700c07fb0",
+    "revised_plan_sha256": "eeef46be7f632af4f1e989ee2c7a719f6ad4ae7e8cc9be2a0f671625d2426ee0",
+    "requested_principal_usd": {
+      "numerator": "1100000",
+      "denominator": "1"
+    }
+  },
+  "monthly_discount_rate": {
+    "numerator": "1",
+    "denominator": "50"
+  }
+}

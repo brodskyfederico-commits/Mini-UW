@@ -241,5 +241,7 @@ jobs:
         run: PYTHONPATH=src python tools/compare_refinance_discount_D111.py
       - name: Verify the selected-rate revised-plan comparison through the worksheet and PDF audit
         run: PYTHONPATH=src python tools/check_plan_discount_D112.py
+      - name: Verify revised-plan sale recovery at the selected monthly discount rate
+        run: PYTHONPATH=src python tools/check_plan_sale_recovery_D113.py
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v

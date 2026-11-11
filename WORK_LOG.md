@@ -1548,3 +1548,7 @@ Se reproducen los cuatro libros de caja D110 y se descuentan sus flujos mensuale
 ## D112 — Comparación con y sin refinanciación a la tasa declarada en la entrada
 
 El comando habitual genera y audita un expediente de una página con la tasa mensual explícita. Reproduce los aportes y cobros por USD 10 y calcula el VAN exacto de las alternativas disponibles. Prueba 0 % y 2 %, un escenario bloqueado y ambos escenarios bloqueados. Se retiran sólo los flujos y el VAN de la variante afectada. El orden por VAN se emite cuando ambas alternativas están disponibles. [Caso, alcance y reproducción](docs/plan-discount-comparison-D112.md).
+
+## D113 — Venta mínima para recuperar en valor presente a la tasa declarada
+
+El perfil de comparación añade el neto de venta por USD 10 y el precio bruto mínimo con costos proporcionales y cancelación de deuda. Se verifican el mínimo exacto y el cruce al centavo en once variantes sintéticas. La variante bloqueada por capacidad conserva PENDING. [Resultados y reproducción](docs/plan-sale-recovery-D113.md).

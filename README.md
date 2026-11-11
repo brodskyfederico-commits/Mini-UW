@@ -4,6 +4,7 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D113 añade a la comparación por USD 10 el cobro neto y el precio bruto de venta mínimos para recuperar en valor presente a la tasa declarada. [Resultados y reproducción](docs/plan-sale-recovery-D113.md).
 - D112 genera y audita la comparación por USD 10 a la tasa mensual declarada desde la entrada habitual. Mantiene las alternativas disponibles cuando una refinanciación queda PENDING. [Entrada y reproducción](docs/plan-discount-comparison-D112.md).
 - D111 calcula la tasa mensual que iguala el VAN con y sin refinanciación del plano revisado. [Comparación de una página por USD 10](docs/review/MiniUW_D111_Tasa_de_Equilibrio_Refinanciacion.pdf). Reproducí con `PYTHONPATH=src python3 tools/compare_refinance_discount_D111.py`.
 - D110 compara el mismo plano revisado con y sin refinanciación en Base y Downside. [PDF de una página por USD 10](docs/review/MiniUW_D110_Plano_Revisado_Con_y_Sin_Refinanciacion.pdf). Reproducí con `PYTHONPATH=src python3 tools/compare_revised_plan_D110.py`.

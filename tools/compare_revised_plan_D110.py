@@ -13,7 +13,7 @@ from miniuw_foundation.scheduled_expense_case import sha
 from miniuw_foundation.synthetic_onepager import _pdf, _pdf_string
 from miniuw_worksheet_v1 import build_results, encoded
 from plan_refinance_D108 import REFI_DATE
-from plan_return_D107 import DATES, SALE_DATE, run_scenario
+from plan_return_D107 import DATES, SALE_COST_RATE, SALE_DATE, run_scenario
 from worksheet_plan_refinance_D109 import SCENARIOS
 from worksheet_sale_rate_grid_D84 import money
 
@@ -64,7 +64,7 @@ def summarize_case(view, with_refinance):
     return {key: rational(value) for key, value in amounts.items()}
 
 
-def build_comparison(request_raw):
+def build_comparison(request_raw, *, include_sale_basis=False):
     refinance, _ = build_results(request_raw)
     comparison = refinance["plan_comparison"]
     cases = {}
@@ -79,6 +79,14 @@ def build_comparison(request_raw):
         for label, view in (("without_refinance", cash_only), ("with_refinance", funded)):
             cases[scenario][label] = dict(state=view["state"], blockers=view["blockers"],
                 amounts=summarize_case(view, label == "with_refinance"), source_runs=view.get("source_runs"))
+            if include_sale_basis:
+                cash = view["cash_per_usd_10"]
+                cases[scenario][label]["sale_basis"] = None if cash is None else dict(
+                    gross_price=view["gross_sale"], sale_cost_rate=rational(SALE_COST_RATE),
+                    initial_equity_scale=cash["scale_factor"],
+                    debt_principal_paid_at_sale=(view["debt_principal_paid_at_sale"] if label == "with_refinance"
+                                                 else rational(0)),
+                )
         cases[scenario]["with_refinance"]["capacity"] = funded["capacity"]
 
     return dict(decision="PENDING", scope="synthetic_aggregate_equity", cases=cases,
