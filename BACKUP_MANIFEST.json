@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D108 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D109 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/miniuw-integral-usd10.yml",
@@ -8,8 +8,8 @@
     },
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 15532,
-      "sha256": "fd8eb35d96a9e028ccd7d0449dbcda63e43ed8c70e72d30fa2d83637da1247b3"
+      "bytes": 15702,
+      "sha256": "b4ad0e2081abea146f46fdb943b2565ed649c82025e03b04a72822ba35eb383c"
     },
     {
       "path": ".gitignore",
@@ -23,13 +23,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 76978,
-      "sha256": "2625ef128cf04090cb93c32854d47863d11654df9f3120371ce5fd77c02bb294"
+      "bytes": 77225,
+      "sha256": "caf8eafaf9fa05a726d38fa97b8c840e2dd69b2426ede618fd587f03141fc1fa"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 324978,
-      "sha256": "44149334284b13239168edcee7000a45e8e45d0b7d68f82adc2bc95599b10987"
+      "bytes": 325674,
+      "sha256": "d62e5fe53990c3cff6b8d589b3bc39cd9e7ea500e1a1e16bdebb941e3e21d12c"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -805,6 +805,11 @@
       "path": "docs/plan-refinance-per-usd10-D108.md",
       "bytes": 4495,
       "sha256": "401863b5e2a91bcd8aa6551565d0f0553d462d075162eb262b28a1011524a451"
+    },
+    {
+      "path": "docs/plan-refinance-request-D109.md",
+      "bytes": 2811,
+      "sha256": "4da15b944171a197c5d658e3d0e171f6086a69ae8cb8077cf709f5e5a66b7cf0"
     },
     {
       "path": "docs/plan-return-per-usd10-D107.md",
@@ -5262,6 +5267,11 @@
       "sha256": "89ef4868e9a3161508698feb4d91280266de8ff7a27e213f78603d449b72f07f"
     },
     {
+      "path": "templates/synthetic-plan-refinance-request-D109.json",
+      "bytes": 386,
+      "sha256": "9647c56a45fccdf93aa0bc7cb13c1173d40c4deddfc5b67581451e9158a7d5a3"
+    },
+    {
       "path": "templates/synthetic-plan-schedule-D105-A.json",
       "bytes": 951,
       "sha256": "197fb5bbfa724fc9c3b843560af9a25a32f326149d8fc1fdbaf6556700c07fb0"
@@ -6392,6 +6402,11 @@
       "sha256": "6e635103a011cdf8081084792687cdc712e041b01b095c91ad3deda92861360b"
     },
     {
+      "path": "tools/check_plan_refinance_request_D109.py",
+      "bytes": 6417,
+      "sha256": "98ee7ad09b8da0a794c2a378da46b1611a2f315c7ca99567827859130442b337"
+    },
+    {
       "path": "tools/check_reference_package.py",
       "bytes": 6320,
       "sha256": "85fa024e6718f2adae6e4dba2f23a0568dfcacc28bdc14c8e668f79ca3bbb148"
@@ -6913,8 +6928,8 @@
     },
     {
       "path": "tools/miniuw_worksheet_v1.py",
-      "bytes": 13632,
-      "sha256": "56da6c5d776eb151105ff53b15b06d8cf7e170ca41dcdc75c98bb14ce55fd1d5"
+      "bytes": 13905,
+      "sha256": "146c7a3fc6ab29f8dacb71cc51192f8bcb5ab6947ccbee8cd2ec103803f090f2"
     },
     {
       "path": "tools/onepage_pending_cases_D79.py",
@@ -7045,6 +7060,11 @@
       "path": "tools/worksheet_participation_D68.py",
       "bytes": 1820,
       "sha256": "04c7677bc76c8cf3f255c1ed7cf768a1ecd39747e43868090a0b469a757739d7"
+    },
+    {
+      "path": "tools/worksheet_plan_refinance_D109.py",
+      "bytes": 5000,
+      "sha256": "4a811ed32f854584c4aa0bc10fdc4dcd754210afc8be63ef7fecfdfa3c253384"
     },
     {
       "path": "tools/worksheet_sale_gap_D85.py",

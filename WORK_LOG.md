@@ -1530,3 +1530,9 @@ Se verifican cuatro libros de caja, tres cambios aislados y tres faltantes que r
 Se conserva un préstamo solicitado de USD 1.400.000 y se recalculan el NOI bancario, el NOI de valoración y los límites de capacidad para las cuatro combinaciones de plano y escenario. Tres casos producen un libro de caja verificable. Downside con el plano revisado queda PENDING por capacidad. Dos pruebas a un centavo de distancia confirman el límite.
 
 Se concilian el cobro neto de la refinanciación, el servicio de deuda en la caja operativa y la cancelación del saldo en venta. Se comparan los flujos fechados por USD 10 de equity inicial con una referencia independiente. [Resultados y reproducción](docs/plan-refinance-per-usd10-D108.md).
+
+## D109 — Solicitud revisada de refinanciación desde la entrada Mini-UW
+
+La entrada habitual admite un caso sintético ligado a los hashes de ambos planos y a una solicitud explícita. El monto nuevo de USD 1.100.000 cabe en Base y Downside. La solicitud original de USD 1.400.000 mantiene el bloqueo en Downside. Las dos corridas generan expedientes separados y auditables con un PDF de una página.
+
+Se cotejan los flujos fechados por USD 10 con una referencia independiente y se concilia el efecto nominal de comisión e interés frente al caso sin refinanciación. Se prueban entradas rechazadas y un resultado alterado. [Resultados y reproducción](docs/plan-refinance-request-D109.md).

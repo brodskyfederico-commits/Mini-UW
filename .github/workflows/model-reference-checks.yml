@@ -233,5 +233,7 @@ jobs:
         run: PYTHONPATH=src python tools/plan_return_D107.py check
       - name: Verify plan revisions through refinance capacity and USD 10 cash
         run: PYTHONPATH=src python tools/plan_refinance_D108.py check
+      - name: Verify the revised-plan refinance request through the worksheet and PDF audit
+        run: PYTHONPATH=src python tools/check_plan_refinance_request_D109.py
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v
