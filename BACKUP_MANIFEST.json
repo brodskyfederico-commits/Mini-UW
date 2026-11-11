@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D107 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D108 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/miniuw-integral-usd10.yml",
@@ -8,8 +8,8 @@
     },
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 15383,
-      "sha256": "62aec1e4b90b3f6596db60d0d8c7c6e99886df02cb0918caaba3041cd125c5b1"
+      "bytes": 15532,
+      "sha256": "fd8eb35d96a9e028ccd7d0449dbcda63e43ed8c70e72d30fa2d83637da1247b3"
     },
     {
       "path": ".gitignore",
@@ -23,13 +23,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 76785,
-      "sha256": "1b2f3e225a2bae2cbe9556d46df4a0f380520e08f4c9782a458f5f0a19c5f6f2"
+      "bytes": 76978,
+      "sha256": "2625ef128cf04090cb93c32854d47863d11654df9f3120371ce5fd77c02bb294"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 324245,
-      "sha256": "a33827118fdd1caf272a438c8f68fcd93344b108886f14948de966d4360c1e88"
+      "bytes": 324978,
+      "sha256": "44149334284b13239168edcee7000a45e8e45d0b7d68f82adc2bc95599b10987"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -800,6 +800,11 @@
       "path": "docs/plan-calculation-impact-D106.md",
       "bytes": 5155,
       "sha256": "bc42ea517297cedcf072934764f1a2f3bcff01bc93169c822fe7baedfb5541a8"
+    },
+    {
+      "path": "docs/plan-refinance-per-usd10-D108.md",
+      "bytes": 4495,
+      "sha256": "401863b5e2a91bcd8aa6551565d0f0553d462d075162eb262b28a1011524a451"
     },
     {
       "path": "docs/plan-return-per-usd10-D107.md",
@@ -6942,9 +6947,14 @@
       "sha256": "d4ff4236e22ce5f7bd99ac55ce3123a5b95c79b804add229ca03420fa537e57b"
     },
     {
+      "path": "tools/plan_refinance_D108.py",
+      "bytes": 16516,
+      "sha256": "be33fae472a5bb922944e29052db380dcf1cf586775d3cc06e242ab2929c1164"
+    },
+    {
       "path": "tools/plan_return_D107.py",
-      "bytes": 18916,
-      "sha256": "8d0a5ead6eda5693c039c98040bcd7c561ab815e4cc0caa842e079addd54f8ee"
+      "bytes": 19953,
+      "sha256": "0fa852358376806ac4d9281adb3f68af32545a410cd773e61d008a62bec6e843"
     },
     {
       "path": "tools/plan_schedule_D105.py",

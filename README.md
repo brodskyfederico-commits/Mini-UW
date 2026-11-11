@@ -4,6 +4,7 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D108 repite el cambio de plano con refinanciación, valida capacidad por escenario y muestra cobros y aportes por USD 10. [Resultados y reproducción](docs/plan-refinance-per-usd10-D108.md).
 - D107 conecta revisiones sintéticas de superficie y unidades con los aportes, cobros y saldo sin recuperar por USD 10 en Base y Downside. [Resultados y reproducción](docs/plan-return-per-usd10-D107.md).
 - D106 prueba qué cambia en renta, gastos y costo vertical al revisar superficies o unidades de un cuadro de planos. [Ejemplo sintético y comandos](docs/plan-calculation-impact-D106.md).
 - D105 compara revisiones sintéticas de cuadros de superficies y unidades declaradas, con fuente por campo y revisión pendiente para cambios y faltantes. [Contrato y comandos](docs/plan-schedule-intake-D105.md).

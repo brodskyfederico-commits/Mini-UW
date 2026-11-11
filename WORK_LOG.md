@@ -1524,3 +1524,9 @@ Se documenta qué revisar por base de cálculo. Los efectos sobre la corrida int
 Se usan las dos revisiones sintéticas D105 y las bases de D106 en un caso de obra y venta con financiación exclusivamente de equity. Los módulos existentes verifican los NOI operativo y de salida, concilian caja y cierre, y generan el ledger de capital. Se compara el flujo por USD 10 antes y después en ambos escenarios, con aportes y cobros por fecha.
 
 Se verifican cuatro libros de caja, tres cambios aislados y tres faltantes que retiran los resultados afectados. La decisión de inversión permanece PENDING. [Resultados y reproducción](docs/plan-return-per-usd10-D107.md).
+
+## D108 — Efecto del plano sobre la refinanciación y el retorno por USD 10
+
+Se conserva un préstamo solicitado de USD 1.400.000 y se recalculan el NOI bancario, el NOI de valoración y los límites de capacidad para las cuatro combinaciones de plano y escenario. Tres casos producen un libro de caja verificable. Downside con el plano revisado queda PENDING por capacidad. Dos pruebas a un centavo de distancia confirman el límite.
+
+Se concilian el cobro neto de la refinanciación, el servicio de deuda en la caja operativa y la cancelación del saldo en venta. Se comparan los flujos fechados por USD 10 de equity inicial con una referencia independiente. [Resultados y reproducción](docs/plan-refinance-per-usd10-D108.md).

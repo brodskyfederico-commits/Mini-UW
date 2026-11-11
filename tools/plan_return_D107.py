@@ -53,20 +53,25 @@ def build_noi(comparison, revision, context, period, terms):
     return assemble_rental_noi(rental_raw, residential, encode(spec))
 
 
-def reconcile_year(assembly, context):
+def reconcile_year(assembly, context, *, debt_payment=None, debt_source_ref=None):
     noi = assembly.noi_run.payload
     income = _fraction(noi["income_total"])
     costs = _fraction(noi["expenses_excluding_tax"]) + _fraction(noi["property_tax"])
 
-    def claim(value, period=OPERATING_PERIOD):
+    def claim(value, period=OPERATING_PERIOD, source_ref=f"{SOURCE}/all-operating-accruals-settled-by-sale"):
         return dict(value=rational(value), currency="USD", period_ref=period,
-                    source_ref=f"{SOURCE}/all-operating-accruals-settled-by-sale")
+                    source_ref=source_ref)
 
+    debt = {} if debt_payment is None else {
+        "debt_principal_payment": _fraction(debt_payment["principal_due"]),
+        "debt_interest_payment": _fraction(debt_payment["interest_due"]),
+    }
+    available = income - costs - sum(debt.values())
     claims = {
         "operating_receipts_claim": income,
         "operating_payments_claim": costs,
-        "planned_operating_distribution": max(0, income - costs),
-        "equity_contribution": max(0, costs - income),
+        "planned_operating_distribution": max(0, available),
+        "equity_contribution": max(0, -available),
     }
     spec = template("synthetic-operating-cash")
     spec.update(
@@ -82,6 +87,11 @@ def reconcile_year(assembly, context):
                  operating_cash.FLOWS + operating_cash.ADJUSTMENTS + operating_cash.CLAIMS}
         | {key: claim(0, prefix + OPERATING_PERIOD) for key, prefix in operating_cash.STOCKS.items()},
     )
+    if debt:
+        require(debt_source_ref and debt_payment["date"] == SALE_DATE,
+                "Dated debt evidence must match the operating payment date")
+        spec["classification_basis_ref"] = f"{SOURCE}/operating-cash-with-dated-debt-service"
+        spec["amounts"].update({key: claim(value, source_ref=debt_source_ref) for key, value in debt.items()})
     return operating_cash.reconcile_operating_cash(assembly.compiled_raw, assembly.noi_run, encode(spec))
 
 
@@ -96,7 +106,7 @@ def value_at_exit(forward, context, cap):
     return exit_value.produce_exit_value(forward.compiled_raw, forward.noi_run, encode(spec))
 
 
-def close_sale(context, operating, valuation):
+def sale_source(context, operating, valuation):
     def claim(value, basis, source_ref):
         return dict(value=rational(value), currency="USD", as_of_date=SALE_DATE, basis=basis, source_ref=source_ref)
 
@@ -115,18 +125,21 @@ def close_sale(context, operating, valuation):
                 "retained_free_cash": 0, "closing_restricted_cash_claim": 0}
     amounts.update({key: claim(balances[key], basis, f"{operating.sha256}/D107-sale-balances")
                     for key, basis in closing_cash.STOCK_FIELDS.items()})
-    source = dict(schema=closing_cash.SCHEMA, profile="SYNTHETIC-RESIDUAL-AFTER-EXPLICIT-RETENTION-v1",
+    return dict(schema=closing_cash.SCHEMA, profile="SYNTHETIC-RESIDUAL-AFTER-EXPLICIT-RETENTION-v1",
                   context=context, currency="USD", closing_date=SALE_DATE, kind="sale",
                   representation="explicit_gross_cash_movements", debt_inventory_declared_complete=True,
                   classification_basis_ref=f"{SOURCE}/sale-without-debt",
                   equity_residual_basis_ref=f"{SOURCE}/distribute-sale-residual",
                   equity_funding_assumption_ref=None, amounts=amounts, old_debts=[], new_loan=None,
                   valuation_claim=None)
-    raw = encode(source)
+
+
+def close_sale(context, operating, valuation):
+    raw = encode(sale_source(context, operating, valuation))
     return raw, closing_cash.produce_closing_cash(raw)
 
 
-def equity_returns(context, construction, comparison, revision, operating, closing_raw, closing):
+def equity_source(context, construction, comparison, revision, operating):
     def event(identity, day, kind, category, value, source_ref):
         return dict(event_id=identity, date=day, kind=kind, category=category,
                     amount=value, currency="USD", source_ref=source_ref)
@@ -150,12 +163,20 @@ def equity_returns(context, construction, comparison, revision, operating, closi
                         event("sale", SALE_DATE, "distribution", "net_sale_distribution", None, None),
                     ])
     investor["irr_parameters"]["periods_per_year"] = 4
-    raw = encode(investor)
+    return investor
+
+
+def bind_closing(raw, closing_raw, closing, event_id):
     binding = ClosingReturnBinding(profile_id="SYNTHETIC-CLOSING-EMPTY-EQUITY-SLOTS-v1",
                                    closing_source_sha256=sha(closing_raw), closing_run_sha256=closing.sha256,
-                                   investor_source_sha256=sha(raw), distribution_event_id="sale",
+                                   investor_source_sha256=sha(raw), distribution_event_id=event_id,
                                    contribution_event_id=None)
     return assemble_closing_returns(closing_raw, closing, raw, binding)
+
+
+def equity_returns(context, construction, comparison, revision, operating, closing_raw, closing):
+    raw = encode(equity_source(context, construction, comparison, revision, operating))
+    return bind_closing(raw, closing_raw, closing, "sale")
 
 
 def run_scenario(comparison, revision, scenario, basis="units"):
