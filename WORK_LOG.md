@@ -1512,3 +1512,9 @@ Se prueban cuatro combinaciones de disponibilidad y tres entradas rechazadas. La
 Se verifican cinco campos explícitos entre dos cuadros sintéticos de la lámina A-601. Se vincula cada dato con los bytes, la revisión, la ubicación y la fila de la fuente. La superficie rentable cambia de 710 a 690 ft² por unidad para 1BR-A. El grupo 2BR-A conserva su cero explícito y GSF queda pendiente. La comparación distingue cambios, faltantes y grupos agregados o retirados. Se rechazan cuatro entradas inválidas.
 
 El resultado señala las dependencias condicionales de renta y presupuesto sin aplicar cifras al modelo. La lectura CAD, la conciliación técnica del plano y la decisión financiera conservan estado PENDING. [Contrato y comandos](docs/plan-schedule-intake-D105.md).
+
+## D106 — Impacto de revisiones de planos en renta y costos
+
+Se ejecuta el productor residencial T21 con las cantidades de los cuadros sintéticos D105 y tarifas explícitas constantes. Se verifican once resultados de renta, gastos y costo vertical. Las pruebas aíslan el cambio de GSF y distinguen cero unidades declarado, conteo ausente y grupo omitido. La rama de renta por ft² bloquea cuando falta el área rentable exigida por T21.
+
+Se documenta qué revisar por base de cálculo. Los efectos sobre la corrida integrada y el retorno por USD 10 quedan PENDING. [Ejemplo y reproducción](docs/plan-calculation-impact-D106.md).
