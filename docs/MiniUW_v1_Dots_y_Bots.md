@@ -67,3 +67,5 @@ D140 conecta las confirmaciones de B04 para C7–C15 con la renta, el NOI y los 
 D141 conecta C16–C21 con áreas comerciales declaradas, el calendario pos-TCO y el NOI por período. B04 exige confirmación de los datos aplicables y B12 conserva PENDING ante un faltante. [Resultados y reproducción](workbook-commercial-inputs-D141.md).
 
 D142 vincula C25–C28 a las unidades elegibles y al presupuesto explícito de servicios pagados por el propietario. B13 incorpora ese gasto al NOI. B12 conserva PENDING ante un dato o criterio sin confirmar. [Resultados y reproducción](workbook-utility-inputs-D142.md).
+
+D143 vincula C32–C36 al precio evaluado, los gastos de cierre y la obra vertical. B13 lleva los costos al libro de aportes y B12 bloquea la decisión ante fuentes, datos o criterios faltantes. [Resultados y reproducción](workbook-development-inputs-D143.md).

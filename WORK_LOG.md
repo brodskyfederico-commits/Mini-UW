@@ -1668,3 +1668,7 @@ El piloto combina áreas comerciales explícitas con las tarifas NNN de los tres
 ## D142 — C25–C28 conectadas a gastos de servicios y NOI
 
 Se aplica la tarifa mensual de cada tipo de unidad a la población elegible confirmada. El gasto del propietario se suma una vez al presupuesto operativo. El piloto conserva la renta y lleva el gasto al NOI operativo, bancario, de valoración y de salida. Los ocho ensayos incluyen cero, no aplicabilidad, cambios de tarifa y bloqueos por dato, alcance o criterio. [Resultados y reproducción](docs/workbook-utility-inputs-D142.md).
+
+## D143 — C32–C36 conectadas a terreno y obra vertical
+
+Se coteja C32 con el precio evaluado documentado y se aplica C33 sobre esa compra. Se prueban las tres bases de obra y el uso condicionado de C36 cuando el plano marca GSF pendiente. El costo conjunto modifica los aportes fechados. Los once ensayos incluyen siete bloqueos por fuente, dato, calendario de aportes o criterio. [Resultados y reproducción](docs/workbook-development-inputs-D143.md).
