@@ -1708,3 +1708,7 @@ B13 usa C66 con el NOI de valoración y C67 con el NOI de los doce meses posteri
 ## D152 — C69–C72 conectadas a deuda permanente y capacidad
 
 B13 lleva la tasa y la amortización a las cuotas fechadas. La prueba compara el préstamo solicitado con el menor de LTV y DSCR y concilia el pago de la primera cuota con la cancelación de deuda al vender. Diecisiete corridas verifican la caja por USD 10 y diez casos PENDING. [Resultados y reproducción](docs/workbook-permanent-loan-D152.md).
+
+## D153 — C73–C74 conectadas al cierre y al cobro neto de refinanciación
+
+B13 aplica el costo al desembolso bruto, cancela el saldo de obra y conserva la reserva permanente en caja restringida hasta la venta. Dieciséis corridas verifican la caja fechada por USD 10 y nueve casos PENDING. [Resultados y reproducción](docs/workbook-refinance-costs-D153.md).

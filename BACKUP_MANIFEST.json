@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D152 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D153 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/miniuw-integral-usd10.yml",
@@ -8,8 +8,8 @@
     },
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 23041,
-      "sha256": "c4d520c6baddca4bd56dc0a33f8400bd69ce7ac2e0c374d1c4005e489aa8dacf"
+      "bytes": 23237,
+      "sha256": "e6c4f581442b902aad6de60793b228a8e6d3185cdfb22303a786912ab73899e9"
     },
     {
       "path": ".gitignore",
@@ -23,13 +23,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 86116,
-      "sha256": "b5d26ed14a1cfb640a4b9082968860286e8d2a7b42c48d1c7c741b74af5d0b71"
+      "bytes": 86282,
+      "sha256": "7acddb9ba77c73e1df2b9bf1f76ffc1bcc18f111bd8ab0b3e8352c74e5f1240f"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 345379,
-      "sha256": "585b6037e3aa531ce0f32e11bb6da4a78903b41ba221b773048253677bfd00bf"
+      "bytes": 345743,
+      "sha256": "a660bd8910caeab2e11094908af6aa51e491a60c52cbcf8144a01717b993bac2"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -58,8 +58,8 @@
     },
     {
       "path": "docs/MiniUW_v1_Dots_y_Bots.md",
-      "bytes": 11950,
-      "sha256": "378fe69c4be0e3ddd02bd9d8d0139c7d67d428e6fc227fd838803b07e1166d8f"
+      "bytes": 12264,
+      "sha256": "d67f1e708e9721c559f878ef201bbfb776af681ec6ff482b9a26b51a6ccfbb99"
     },
     {
       "path": "docs/acceptance-case-contracts.json",
@@ -3167,6 +3167,11 @@
       "sha256": "372d217912a30dddf520b3403bbf6c53f104a7c83e4e9ff49f0fed8545fef097"
     },
     {
+      "path": "docs/workbook-refinance-costs-D153.md",
+      "bytes": 4274,
+      "sha256": "7dbbd6022102e5dd4d54778bfc7ed3dfdf59acd3b4c0c7db14a001f0b2373260"
+    },
+    {
       "path": "docs/workbook-rental-inputs-D140.md",
       "bytes": 3507,
       "sha256": "b3828300f3b54972a11821db8523dcba169d77a602bbdba8e47a5bfe5ba1788b"
@@ -5727,6 +5732,16 @@
       "sha256": "9fadf9da5238deafd65be0508f5aceebf649bb11f0524d2717abdffb6ac8acb4"
     },
     {
+      "path": "templates/synthetic-refinance-costs-base-D153.xlsx",
+      "bytes": 8862,
+      "sha256": "ad7dcdec41045c80c90ad23bdc25b917eb534381dafc6ac0f1ab3a9b2776b88d"
+    },
+    {
+      "path": "templates/synthetic-refinance-costs-downside-D153.xlsx",
+      "bytes": 8872,
+      "sha256": "2e507fd730662df8602adab5d7b98caceed5e6028902a36f0eb7857181d749ba"
+    },
+    {
       "path": "templates/synthetic-refinance-pilot-D50.json",
       "bytes": 1294,
       "sha256": "31e90cdc5c50ab69cd5c33605ba1a27bbf020aa0141fda7c17f80126e25daa47"
@@ -6072,6 +6087,11 @@
       "sha256": "d3247b6f7c5ccc03a0e94ccfcd6d8aeedb35068402e89933323f1ba74b5ac688"
     },
     {
+      "path": "templates/synthetic-workbook-current-revision-D153.json",
+      "bytes": 717,
+      "sha256": "cceac24d5f3affaed47e8e70ec595d1c50654e31a9280fb050572bb54e2b278c"
+    },
+    {
       "path": "templates/synthetic-workbook-development-inputs-D143.json",
       "bytes": 7061,
       "sha256": "ae482b141f5f8a5c49820c4294c6134cc061e55479631d6b68ed776bd0096a1e"
@@ -6145,6 +6165,11 @@
       "path": "templates/synthetic-workbook-property-tax-D150.json",
       "bytes": 15793,
       "sha256": "d944a8125ea176a6d18415202f4f765f7bf0d394076fecd32704b6fdd2f647c2"
+    },
+    {
+      "path": "templates/synthetic-workbook-refinance-costs-D153.json",
+      "bytes": 19109,
+      "sha256": "24b0bade34a452fe31d71671669dad0eb0fe321efeb570125be41ff43ee097b2"
     },
     {
       "path": "templates/synthetic-workbook-rental-inputs-D140.json",
@@ -7417,6 +7442,11 @@
       "sha256": "e74e6be863d1ccdcae04baf16fc73bc830dcb0a7d50bed03ddecd68a52d660bd"
     },
     {
+      "path": "tools/check_worksheet_refinance_costs_D153.py",
+      "bytes": 12508,
+      "sha256": "29f9ed81bd2514a7031e2372e1b43ad9d5d73d1cf8b5f631e6f71127f15dfadd"
+    },
+    {
       "path": "tools/check_worksheet_refinance_recovery_D46.py",
       "bytes": 2532,
       "sha256": "3e2f7a4a2776167469551c53076f493337d25b3b22517ba6125fff9863e13881"
@@ -7873,8 +7903,8 @@
     },
     {
       "path": "tools/miniuw_worksheet_v1.py",
-      "bytes": 26725,
-      "sha256": "e7aa3e65ad5a79ad0f9aac0d643d706799ac2624e18a8802425990f8ec1b53d7"
+      "bytes": 26960,
+      "sha256": "96be71710f9db03936f2ecd8f16eff94b6ad2627535601a1bec9872c8e492fbd"
     },
     {
       "path": "tools/onepage_pending_cases_D79.py",
@@ -7908,13 +7938,13 @@
     },
     {
       "path": "tools/plan_refinance_D108.py",
-      "bytes": 24586,
-      "sha256": "f3b5e03247e0fb8e7bb53f3e40f887c3c374bbf86df9176e49d2ba866ef79a94"
+      "bytes": 27233,
+      "sha256": "8f66723406e0c5d569076f4550609ba548f7c8a82ed90e548e8fbd6dbed2561a"
     },
     {
       "path": "tools/plan_return_D107.py",
-      "bytes": 22881,
-      "sha256": "f0495f0e0917aa05646cde374c45356391830cf5b3426eb03beeffccd70273f8"
+      "bytes": 23869,
+      "sha256": "1bca6db2e9d216d128f47ad9c1096446fec808bdf3c326c165ee2a5297a44ec1"
     },
     {
       "path": "tools/plan_schedule_D105.py",
@@ -8147,9 +8177,14 @@
       "sha256": "893f4dc62baca3591bd99727203c802d4a17293e633a9e2787e229c32f2c31d0"
     },
     {
+      "path": "tools/worksheet_refinance_costs_D153.py",
+      "bytes": 3473,
+      "sha256": "92517532c67d1d5d4687ecc52fad0fcdf35591ebdcef1514f815faa1b25bda5e"
+    },
+    {
       "path": "tools/worksheet_rental_inputs_D140.py",
-      "bytes": 36357,
-      "sha256": "c5551b2d67523237651d84a5e550fc24dbe937c2a30faec9a01953c78e4ed7bc"
+      "bytes": 38060,
+      "sha256": "66c3dfa21b35d0e185f0a12286661e3f7c61eb9b043c0b94615c3818c1f9aea1"
     },
     {
       "path": "tools/worksheet_replacement_reserve_D149.py",

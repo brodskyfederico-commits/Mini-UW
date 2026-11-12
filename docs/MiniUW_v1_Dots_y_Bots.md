@@ -87,3 +87,5 @@ D150 conecta C61–C62 con B04 y B13. El expediente registra el comparable anual
 D151 conecta C66–C68 con B04 y B13. El expediente distingue la valoración para refinanciación, la valoración de salida y los costos deducidos al cerrar. B12 conserva PENDING ante tasas sin confirmar, inventario de cargos incompleto o capacidad insuficiente. [Resultados y reproducción](workbook-exit-pricing-D151.md).
 
 D152 conecta C69–C72 con B04 y B13. El expediente conserva la cuota fechada, el vencimiento, los límites LTV y DSCR y el saldo cancelado al vender. B12 deja PENDING el escenario ante un término sin confirmar o una solicitud por encima de la capacidad. [Resultados y reproducción](workbook-permanent-loan-D152.md).
+
+D153 vincula C73 y C74 con B04 y B13. B16 reproduce el cobro neto al refinanciar y la liquidación de la reserva permanente al vender. B12 conserva PENDING ante faltantes, capacidad insuficiente o una necesidad de caja sin financiación confirmada. [Resultados y reproducción](workbook-refinance-costs-D153.md).

@@ -325,5 +325,7 @@ jobs:
         run: OMP_THREAD_LIMIT=1 PYTHONPATH=src:tests python tools/check_worksheet_exit_pricing_D151.py
       - name: Verify permanent loan service, capacity and dated cash per initial USD 10
         run: OMP_THREAD_LIMIT=1 PYTHONPATH=src:tests python tools/check_worksheet_permanent_loan_D152.py
+      - name: Verify refinance costs, permanent reserve and dated cash per initial USD 10
+        run: OMP_THREAD_LIMIT=1 PYTHONPATH=src:tests python tools/check_worksheet_refinance_costs_D153.py
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v

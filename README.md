@@ -4,6 +4,7 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D153 conecta C73–C74 con los cargos del cierre, la reserva permanente y el cobro por USD 10. [Resultados y reproducción](docs/workbook-refinance-costs-D153.md).
 - D152 conecta C69–C72 con la deuda permanente, los límites de refinanciación y la caja por USD 10. [Resultados y reproducción](docs/workbook-permanent-loan-D152.md).
 - D151 conecta C66–C68 con el valor para refinanciar, el precio bruto, el costo de venta y la caja por USD 10. [Resultados y reproducción](docs/workbook-exit-pricing-D151.md).
 - D150 conecta C61–C62 con el impuesto inmobiliario, el NOI por período y los cobros por USD 10. [Resultados y reproducción](docs/workbook-property-tax-D150.md).
