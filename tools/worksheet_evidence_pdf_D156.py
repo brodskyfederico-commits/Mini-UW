@@ -133,7 +133,7 @@ def parse_page(role, number, lines, digest, revision, deal_id):
 
 
 def read_evidence_pdf(raw, spec, revision, deal_id, *, include_construction=False, scanned=False,
-                      oriented=False, allow_rgb=False, allow_jpeg=False):
+                      oriented=False, allow_rgb=False, jpeg_profile=None):
     headers = HEADERS | CONSTRUCTION_HEADERS if include_construction else HEADERS
     profile = CONSTRUCTION_PROFILE if include_construction else PROFILE
     required = {"profile", "sha256"}
@@ -143,9 +143,9 @@ def read_evidence_pdf(raw, spec, revision, deal_id, *, include_construction=Fals
         from worksheet_plan_scan_D131 import valid_ocr_options
         profile = COLOR_PROFILE if allow_rgb else ORIENTED_PROFILE if oriented else scan_profile
         required.add("ocr")
-    if allow_jpeg:
-        from worksheet_evidence_jpeg_D161 import PROFILE as jpeg_profile, jpeg_runtime
-        profile = jpeg_profile
+    if jpeg_profile:
+        from worksheet_evidence_jpeg_D161 import PROFILE as sequential_profile, PROGRESSIVE_PROFILE, jpeg_runtime
+        profile = PROGRESSIVE_PROFILE if jpeg_profile == "D162" else sequential_profile
         required.add("jpeg_decoder")
     specification = object_or_empty(spec)
     digest = None if raw is None else sha(raw)
@@ -158,7 +158,7 @@ def read_evidence_pdf(raw, spec, revision, deal_id, *, include_construction=Fals
         error = "evidence_pdf_binding_unconfirmed"
     if error:
         return check(error, **inventory), {}
-    if allow_jpeg:
+    if jpeg_profile:
         decoder = jpeg_runtime()
         if decoder is None:
             return check("evidence_jpeg_decoder_unavailable", **inventory), {}
@@ -181,7 +181,7 @@ def read_evidence_pdf(raw, spec, revision, deal_id, *, include_construction=Fals
         for number, page in enumerate(reader.pages, 1):
             if scanned:
                 role, reading = scanned_evidence_page(page, number, digest, revision, deal_id, headers, options, command,
-                                                      oriented=oriented, allow_rgb=allow_rgb, allow_jpeg=allow_jpeg)
+                                                      oriented=oriented, allow_rgb=allow_rgb, jpeg_profile=jpeg_profile)
                 if role is None:
                     return check(reading["blockers"][0], page_reading=reading, **inventory), {}
             else:
@@ -225,10 +225,10 @@ def bind_bank_evidence(quote, terms, principal):
 
 
 def pdf_document_sources(source, raw, deal_id, *, include_construction=False, scanned=False,
-                         oriented=False, allow_rgb=False, allow_jpeg=False):
+                         oriented=False, allow_rgb=False, jpeg_profile=None):
     inventory, pages = read_evidence_pdf(raw, source.get("evidence_pdf"), source.get("revision"), deal_id,
                                          include_construction=include_construction, scanned=scanned,
-                                         oriented=oriented, allow_rgb=allow_rgb, allow_jpeg=allow_jpeg)
+                                         oriented=oriented, allow_rgb=allow_rgb, jpeg_profile=jpeg_profile)
     if "documents" in source:
         inventory = check("structured_document_sources_conflict_with_pdf_profile",
                           source_file=SOURCE_FILE, observed_sha256=inventory["observed_sha256"])
@@ -263,7 +263,7 @@ def record_pdf_evidence(review, inventory, pages, *, include_construction=False)
                     for key in ("page_rotation_clockwise", "raw_image_sha256", "ocr_region_basis",
                                 "crop_box_pdf_points", "crop_region_in_oriented_scan", "full_oriented_scan_sha256",
                                 "source_color_space", "source_raster_sha256", "grayscale_conversion", "grayscale_input_sha256",
-                                "source_image_filter", "source_jpeg_sha256"):
+                                "source_image_filter", "source_jpeg_sha256", "jpeg_encoding"):
                         if key in gc:
                             quote[key] = gc[key]
     official = pages.get("official_snapshot")

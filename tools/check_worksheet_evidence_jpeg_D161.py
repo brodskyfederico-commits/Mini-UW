@@ -32,7 +32,7 @@ DECODER = {"pillow_version": "13.0.0", "libjpeg_turbo_version": "3.2.0"}
 JPEG_ROLES = {"gc": ("RGB", 97), "base": ("RGB", 97), "construction_base": ("L", 100)}
 
 
-def jpeg_bundle(upright, *, overlay=None, truncated=None):
+def jpeg_bundle(upright, *, overlay=None, truncated=None, progressive_roles=()):
     writer = PdfWriter()
     writer.add_metadata({"/Title": "Mini-UW D161 synthetic JPEG-compressed financial evidence"})
     originals = PdfReader(BytesIO(upright), strict=True).pages
@@ -51,7 +51,8 @@ def jpeg_bundle(upright, *, overlay=None, truncated=None):
             pixels = b"".join(map(PALETTE.__getitem__, pixels))
         source = Image.frombytes(mode, (width, height), pixels)
         buffer = BytesIO()
-        source.save(buffer, "JPEG", quality=quality, subsampling=0, optimize=True)
+        source.save(buffer, "JPEG", quality=quality, subsampling=0, optimize=True,
+                    progressive=role in progressive_roles)
         compressed = buffer.getvalue()
         stream = EncodedStreamObject()
         stream._data = compressed[:-32] if role == truncated else compressed

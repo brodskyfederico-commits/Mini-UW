@@ -35,9 +35,9 @@ def ordered_rows(image, command):
     return sorted(recognize(image, *command), key=lambda row: (row["pixel_region"][1], row["pixel_region"][0]))
 
 
-def color_scan_input(page, rotation, *, allow_jpeg=False):
+def color_scan_input(page, rotation, *, jpeg_profile=None):
     raster = full_page_raster(page, allow_text_layer=True, allowed_rotation=rotation, allow_crop_box=True,
-                              allow_rgb=True, allow_jpeg=allow_jpeg)
+                              allow_rgb=True, jpeg_profile=jpeg_profile)
     if raster is None:
         return None, {}
     width, height, color_space, pixels, encoding = raster
@@ -54,11 +54,11 @@ def color_scan_input(page, rotation, *, allow_jpeg=False):
     pgm = b"P5" + header + gray
     evidence = dict(source_color_space=color_space, source_raster_sha256=sha(raw),
                     grayscale_conversion=conversion, grayscale_input_sha256=sha(pgm))
-    return pgm, evidence | encoding if allow_jpeg else evidence
+    return pgm, evidence | encoding if jpeg_profile else evidence
 
 
 def scanned_evidence_page(page, number, digest, revision, deal_id, headers, options, command, *,
-                          oriented=False, allow_rgb=False, allow_jpeg=False):
+                          oriented=False, allow_rgb=False, jpeg_profile=None):
     citation = dict(source_file=SOURCE_FILE, source_sha256=digest, page=number)
     role = None
     try:
@@ -71,7 +71,7 @@ def scanned_evidence_page(page, number, digest, revision, deal_id, headers, opti
             return native_role, check("evidence_scan_rotation_unsupported", observed_rotation=rotation, **citation)
         geometry = {}
         if allow_rgb:
-            image, geometry = color_scan_input(page, rotation, allow_jpeg=allow_jpeg)
+            image, geometry = color_scan_input(page, rotation, jpeg_profile=jpeg_profile)
         else:
             image = full_page_image(page, allow_text_layer=True, allowed_rotation=rotation, allow_crop_box=oriented)
         if image is None:

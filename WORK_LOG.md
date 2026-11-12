@@ -1744,3 +1744,7 @@ El piloto registra la imagen original, la conversión y el recorte. Cinco varian
 ## D161 — OCR de cotización y préstamos con JPEG comprimido
 
 El piloto conserva la huella de los bytes JPEG y del raster decodificado. B16 reproduce el archivo mixto. Cinco variantes quedan PENDING por dato ausente, discrepancias, JPEG truncado o decodificador distinto. [Resultados y reproducción](docs/workbook-evidence-jpeg-D161.md).
+
+## D162 — JPEG progresivo en el expediente financiero
+
+La cotización y el crédito Base se leen desde JPEG progresivo. El caso completo reproduce D161 y B16 coteja los archivos guardados. Cuatro variantes quedan PENDING por dato ausente, discrepancia, archivo truncado o formato ajeno al perfil anterior. [Resultados y reproducción](docs/workbook-evidence-progressive-D162.md).

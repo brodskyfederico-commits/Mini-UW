@@ -4,6 +4,7 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D162 verifica JPEG progresivo y secuencial en el mismo PDF de evidencia. [Resultados y reproducción](docs/workbook-evidence-progressive-D162.md).
 - D161 verifica el OCR de cotizaciones y préstamos con imágenes JPEG comprimidas en PDF. [Resultados y reproducción](docs/workbook-evidence-jpeg-D161.md).
 - D160 verifica el OCR de páginas financieras RGB y en escala de grises dentro del mismo PDF. [Resultados y reproducción](docs/workbook-evidence-color-D160.md).
 - D159 verifica el OCR de cotizaciones y documentos bancarios girados y recortados. [Resultados y reproducción](docs/workbook-evidence-oriented-D159.md).

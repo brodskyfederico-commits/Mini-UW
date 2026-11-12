@@ -630,6 +630,7 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
             "D159": ("synthetic_oriented_financial_evidence", "check_worksheet_evidence_oriented_D159.py"),
             "D160": ("synthetic_color_financial_evidence", "check_worksheet_evidence_color_D160.py"),
             "D161": ("synthetic_jpeg_financial_evidence", "check_worksheet_evidence_jpeg_D161.py"),
+            "D162": ("synthetic_progressive_jpeg_financial_evidence", "check_worksheet_evidence_progressive_D162.py"),
         }[evidence_milestone]
         pipeline["pipeline"]["stages"][-1]["version_suite"] = version_suite
     return dict(profile=profile, state=state,

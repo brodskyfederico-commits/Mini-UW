@@ -28,7 +28,7 @@ def valid_ocr_options(ocr):
 
 
 def full_page_raster(page, *, allow_text_layer=False, allowed_rotation=0, allow_crop_box=False,
-                     allow_rgb=False, allow_jpeg=False):
+                     allow_rgb=False, jpeg_profile=None):
     contents = page.get_contents()
     if contents is None:
         return None
@@ -54,7 +54,7 @@ def full_page_raster(page, *, allow_text_layer=False, allowed_rotation=0, allow_
     color_space = image.get("/ColorSpace")
     channels = 1 if color_space == "/DeviceGray" else 3 if allow_rgb and color_space == "/DeviceRGB" else None
     image_filter = image.get("/Filter")
-    allowed_filters = ("/FlateDecode", "/DCTDecode") if allow_jpeg else ("/FlateDecode",)
+    allowed_filters = ("/FlateDecode", "/DCTDecode") if jpeg_profile else ("/FlateDecode",)
     if (image.get("/Subtype") != "/Image" or channels is None
             or image.get("/BitsPerComponent") != 8 or image_filter not in allowed_filters
             or any(key in image for key in ("/Decode", "/Mask", "/SMask", "/ImageMask"))
@@ -68,7 +68,12 @@ def full_page_raster(page, *, allow_text_layer=False, allowed_rotation=0, allow_
             return None
         from worksheet_evidence_jpeg_D161 import decode_jpeg
         source["source_jpeg_sha256"] = sha(pixels)
-        pixels = decode_jpeg(pixels, width, height, color_space)
+        decoded = decode_jpeg(pixels, width, height, color_space, allow_progressive=jpeg_profile == "D162")
+        if decoded is None:
+            return None
+        pixels, encoding = decoded
+        if jpeg_profile == "D162":
+            source["jpeg_encoding"] = encoding
     if pixels is None or len(pixels) != width * height * channels:
         return None
     return width, height, color_space, pixels, source
