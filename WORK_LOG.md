@@ -1672,3 +1672,7 @@ Se aplica la tarifa mensual de cada tipo de unidad a la población elegible conf
 ## D143 — C32–C36 conectadas a terreno y obra vertical
 
 Se coteja C32 con el precio evaluado documentado y se aplica C33 sobre esa compra. Se prueban las tres bases de obra y el uso condicionado de C36 cuando el plano marca GSF pendiente. El costo conjunto modifica los aportes fechados. Los once ensayos incluyen siete bloqueos por fuente, dato, calendario de aportes o criterio. [Resultados y reproducción](docs/workbook-development-inputs-D143.md).
+
+## D144 — C37–C42 conectadas a presupuesto de obra y aportes
+
+B13 incorpora parking, obras de sitio, reserva, soft costs y TI/LC con bases y alcances explícitos. C42 determina cuánto soft se fondea al cierre de los meses 1–3. Los 17 ensayos por planilla verifican cada partida, los aportes fechados, los cobros por USD 10 y nueve casos PENDING. [Resultados y reproducción](docs/workbook-construction-budget-D144.md).

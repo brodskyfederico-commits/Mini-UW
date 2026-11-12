@@ -144,12 +144,16 @@ def equity_source(context, construction, comparison, revision, operating):
     return equity_source_from_cost(context, construction, f"{plan_hash}/declared-plan-and-D106-vertical-basis", operating)
 
 
-def equity_source_from_cost(context, construction, construction_source_ref, operating):
+def equity_source_from_cost(context, construction, construction_source_ref, operating, *, construction_draws=None):
     def event(identity, day, kind, category, value, source_ref):
         return dict(event_id=identity, date=day, kind=kind, category=category,
                     amount=value, currency="USD", source_ref=source_ref)
 
-    construction_funding = construction - INITIAL
+    if construction_draws is None:
+        construction_draws = [dict(event_id="construction", date=DATES[1], amount=rational(construction - INITIAL),
+                                   source_ref=construction_source_ref)]
+    require(sum(_fraction(draw["amount"]) for draw in construction_draws) == construction - INITIAL,
+            "Construction draws do not reconcile to the funding requirement")
     cash = operating.payload
     investor = template("synthetic-closing-investor-slots")
     investor.update(context=context, capital_snapshots=[], annual_cash_bases=[],
@@ -158,8 +162,8 @@ def equity_source_from_cost(context, construction, construction_source_ref, oper
                     events=[
                         event("initial", DATES[0], "contribution", "initial_capital",
                               rational(INITIAL), f"{SOURCE}/initial-equity"),
-                        event("construction", DATES[1], "contribution", "additional_capital",
-                              rational(construction_funding), construction_source_ref),
+                        *(event(draw["event_id"], draw["date"], "contribution", "additional_capital", draw["amount"],
+                                draw["source_ref"]) for draw in construction_draws),
                         event("operating-funding", SALE_DATE, "contribution", "additional_capital",
                               cash["exportable_equity_contribution"], f"{operating.sha256}#/exportable_equity_contribution"),
                         event("operating", SALE_DATE, "distribution", "operating_distribution",

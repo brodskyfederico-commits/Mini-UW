@@ -136,7 +136,7 @@ def rental_noi(terms, cells, values, period, commercial=None):
 
 
 def run_rental_scenario(name, raw, review, rent_inputs, *, include_commercial=False, include_utilities=False,
-                        include_development=False):
+                        include_development=False, include_budget=False):
     pending = dict(state="PENDING", cash_per_usd_10=None, capacity=None, noi_by_period={})
     if not review["calculation_inputs_ready"]:
         return pending | dict(blockers=["required_rental_cells_unconfirmed"])
@@ -161,6 +161,14 @@ def run_rental_scenario(name, raw, review, rent_inputs, *, include_commercial=Fa
         if include_commercial:
             from worksheet_commercial_inputs_D141 import commercial_terms
             commercial = commercial_terms(rent_inputs.get("commercial"), review)
+        budget = None
+        draws = None
+        if include_budget:
+            from worksheet_construction_budget_D144 import construction_budget
+            budget = construction_budget(rent_inputs.get("construction_budget"), name, review, development, commercial)
+            terms["cost"] = _fraction(budget["total_development_cost"])
+            cost_source = f"sha256:{sha(encoded(budget))}#/equity_draws"
+            draws = [draw | dict(source_ref=f"{cost_source}/{index}") for index, draw in enumerate(budget["equity_draws"])]
         periods = {}
 
         def noi_for(period):
@@ -171,7 +179,8 @@ def run_rental_scenario(name, raw, review, rent_inputs, *, include_commercial=Fa
         operating = noi_for(OPERATING_PERIOD)
         result = financed_cash(terms["context"], terms["cost"], cost_source,
                                terms["principal"], terms["cap"],
-                               lambda period: operating if period == OPERATING_PERIOD else noi_for(period))
+                               lambda period: operating if period == OPERATING_PERIOD else noi_for(period),
+                               construction_draws=draws)
     except (ValueError, TypeError, KeyError) as error:
         return pending | dict(blockers=[str(error)], cell_sources=cells)
     if commercial is not None:
@@ -179,6 +188,8 @@ def run_rental_scenario(name, raw, review, rent_inputs, *, include_commercial=Fa
     if development is not None:
         result.pop("vertical_cost", None)
         result["development_costs"] = development
+    if budget is not None:
+        result["construction_budget"] = budget
     return result | dict(noi_by_period=periods, cell_sources=cells, comps_evidence=terms["comps"], rent_basis=terms["basis"])
 
 
@@ -200,7 +211,8 @@ def screen(case, views, blockers):
                          simulation_blockers=sorted(set(result["simulation_blockers"] + blockers)))
 
 
-def render(views, result, *, include_commercial=False, include_utilities=False, include_development=False):
+def render(views, result, *, include_commercial=False, include_utilities=False, include_development=False,
+           include_budget=False):
     lines = [(f"Simulación por múltiplo de equity | {result} | Decisión real PENDING", True)]
     for name, view in views.items():
         accrued = view["noi_by_period"].get(OPERATING_PERIOD)
@@ -218,6 +230,10 @@ def render(views, result, *, include_commercial=False, include_utilities=False, 
             costs = view["development_costs"]
             lines.append((f"Terreno USD {money(costs['evaluated_purchase_price'])} | Cierre USD "
                           f"{money(costs['land_closing_cost'])} | Obra vertical USD {money(costs['vertical_cost'])}", False))
+        if include_budget and "construction_budget" in view:
+            budget = view["construction_budget"]
+            lines.append((f"Presupuesto USD {money(budget['total_development_cost'])} | Soft meses 1-3 USD "
+                          f"{money(budget['upfront_soft'])} | Saldo soft USD {money(budget['remaining_soft'])}", False))
         if cash is not None:
             for event in cash["events"]:
                 if _fraction(event["amount"]):
@@ -227,30 +243,35 @@ def render(views, result, *, include_commercial=False, include_utilities=False, 
     if include_development:
         label = "D143 | C32-C36"
     spacing = 17 if include_development else 19 if include_utilities else 21
+    if include_budget:
+        return render_page("D144 | C37-C42", lines, 16, "MINI-UW | SI INVIERTO USD 10, ¿CUÁNTO COBRO Y CUÁNDO?",
+                           "Presupuesto de obra, aportes y cobros | Piloto sintético")
     return render_page(label, lines, spacing, "MINI-UW | SI INVIERTO USD 10, ¿CUÁNTO COBRO Y CUÁNDO?",
                        "Renta, NOI y cobros del proyecto | Piloto sintético")
 
 
 def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, include_commercial=False, include_utilities=False,
-                      include_development=False):
+                      include_development=False, include_budget=False):
     hashes = object_or_empty(case.get("workbook_sha256"))
     review = review_native_mapping(case.get("native_mapping"), workbooks, hashes, calculation_fields=FIELDS)
     revision = review_revision(case, current_revision_raw)
     views = {name: run_rental_scenario(name, workbooks[name], review["scenarios"][name], case.get("rent_inputs"),
                                       include_commercial=include_commercial, include_utilities=include_utilities,
-                                      include_development=include_development)
+                                      include_development=include_development, include_budget=include_budget)
              for name in SCENARIOS}
     blockers = [f"B04:{reason}" for reason in review["blockers"]] + [f"B12:{reason}" for reason in revision["blockers"]]
     blockers += [f"{name}:{reason}" for name, view in views.items() for reason in view["blockers"]]
     screening = screen(case, views, blockers)
     simulation = screening["simulation_result"]
     pdf = render(views, simulation, include_commercial=include_commercial, include_utilities=include_utilities,
-                 include_development=include_development)
+                 include_development=include_development, include_budget=include_budget)
     profile = "synthetic_native_residential_and_commercial_rent" if include_commercial else PROFILE
     if include_utilities:
         profile = "synthetic_native_rent_and_utility_expenses"
     if include_development:
         profile = "synthetic_native_rent_and_development_costs"
+    if include_budget:
+        profile = "synthetic_native_rent_and_construction_budget"
     return dict(profile=profile, state="PENDING" if simulation == "PENDING" else "computed_synthetic_scenario_cash",
                 case_sha256=case_sha256, decision="PENDING", simulation_result=simulation,
                 real_decisions_enabled=False, deployment_enabled=False, personal_investor_return=None,

@@ -69,3 +69,5 @@ D141 conecta C16–C21 con áreas comerciales declaradas, el calendario pos-TCO 
 D142 vincula C25–C28 a las unidades elegibles y al presupuesto explícito de servicios pagados por el propietario. B13 incorpora ese gasto al NOI. B12 conserva PENDING ante un dato o criterio sin confirmar. [Resultados y reproducción](workbook-utility-inputs-D142.md).
 
 D143 vincula C32–C36 al precio evaluado, los gastos de cierre y la obra vertical. B13 lleva los costos al libro de aportes y B12 bloquea la decisión ante fuentes, datos o criterios faltantes. [Resultados y reproducción](workbook-development-inputs-D143.md).
+
+D144 conecta C37–C42 con partidas y aportes fechados. B04 confirma las celdas, B13 concilia el alcance del presupuesto con el calendario de aportes y B12 conserva PENDING ante discrepancias, faltantes o revisión desactualizada. [Resultados y reproducción](workbook-construction-budget-D144.md).

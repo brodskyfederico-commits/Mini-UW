@@ -307,5 +307,7 @@ jobs:
         run: PYTHONPATH=src:tests python tools/check_worksheet_utility_inputs_D142.py
       - name: Verify land and vertical construction inputs through dated equity cash
         run: PYTHONPATH=src:tests python tools/check_worksheet_development_inputs_D143.py
+      - name: Verify construction budget and dated funding per initial USD 10
+        run: PYTHONPATH=src:tests python tools/check_worksheet_construction_budget_D144.py
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v

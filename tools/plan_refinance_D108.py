@@ -126,7 +126,7 @@ def run_scenario(comparison, revision, scenario, principal=REQUEST):
     return financed_cash(context, cost, f"{plan_hash}/declared-plan-and-D106-vertical-basis", principal, terms["cap"], noi_for)
 
 
-def financed_cash(context, cost, construction_source_ref, principal, exit_cap, noi_for):
+def financed_cash(context, cost, construction_source_ref, principal, exit_cap, noi_for, *, construction_draws=None):
     result = dict(state="PENDING", capacity=None, cash_per_usd_10=None)
     valuation = noi_for(VALUE_PERIOD)
     bank = noi_for(BANK_PERIOD)
@@ -163,9 +163,10 @@ def financed_cash(context, cost, construction_source_ref, principal, exit_cap, n
     if debt_check.payload["blockers"]:
         return result | dict(blockers=debt_check.payload["blockers"] + debt_check.payload["closing_blockers"])
 
-    ledger = equity_source_from_cost(context, cost, construction_source_ref, operating)
-    ledger["events"].insert(2, dict(event_id="refinance", date=REFI_DATE, kind="distribution",
-                                    category="net_refinance_distribution", amount=None, currency="USD", source_ref=None))
+    ledger = equity_source_from_cost(context, cost, construction_source_ref, operating, construction_draws=construction_draws)
+    ledger["events"].insert(len(ledger["events"]) - 3, dict(
+        event_id="refinance", date=REFI_DATE, kind="distribution", category="net_refinance_distribution",
+        amount=None, currency="USD", source_ref=None))
     refi_bound = bind_closing(encode(ledger), refi_raw, refi, "refinance")
     if refi_bound.compiled_raw is None:
         return result | dict(blockers=refi_bound.payload["blockers"] + refi_bound.payload["closing_blockers"])
