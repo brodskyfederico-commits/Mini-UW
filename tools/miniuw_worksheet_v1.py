@@ -53,6 +53,7 @@ WORKBOOK_ROTATED_PLAN_SET_CHAIN_SCHEMA = "miniuw.synthetic-workbook-screening-pi
 WORKBOOK_DUAL_ROTATED_PLAN_SET_CHAIN_SCHEMA = "miniuw.synthetic-workbook-screening-pilot.v17"
 WORKBOOK_CROPPED_PLAN_SET_CHAIN_SCHEMA = "miniuw.synthetic-workbook-screening-pilot.v18"
 WORKBOOK_NATIVE_MAPPING_CHAIN_SCHEMA = "miniuw.synthetic-workbook-screening-pilot.v19"
+WORKBOOK_RENTAL_INPUTS_SCHEMA = "miniuw.synthetic-native-rental-inputs.v1"
 WORKBOOK_PDF_CHAIN_SCHEMAS = (WORKBOOK_PLAN_CHAIN_SCHEMA, WORKBOOK_SCAN_CHAIN_SCHEMA,
                               WORKBOOK_MIXED_CHAIN_SCHEMA, WORKBOOK_OVERLAY_CHAIN_SCHEMA,
                               WORKBOOK_ROTATED_OVERLAY_CHAIN_SCHEMA, WORKBOOK_PLAN_SET_CHAIN_SCHEMA,
@@ -109,10 +110,13 @@ def read_case(case):
 def build_results(raw, *, workbook_raw=None, downside_workbook_raw=None, current_revision_raw=None, plan_raw=None):
     case = _json(raw, MAX_EXTENDED_PILOT_BYTES)
     schema = case.get("schema") if isinstance(case, dict) else None
-    require(current_revision_raw is None or schema in WORKBOOK_CURRENT_CHAIN_SCHEMAS,
+    require(current_revision_raw is None or schema in (*WORKBOOK_CURRENT_CHAIN_SCHEMAS, WORKBOOK_RENTAL_INPUTS_SCHEMA),
             "The designated revision belongs to the current local chain schema")
     require(plan_raw is None or schema in WORKBOOK_PDF_CHAIN_SCHEMAS and len(plan_raw) <= MAX_PLAN_BYTES,
             "A bounded PDF plan belongs to the plan chain schema")
+    if schema == WORKBOOK_RENTAL_INPUTS_SCHEMA:
+        from worksheet_rental_inputs_D140 import build_rental_case
+        return build_rental_case(case, sha(raw), {"Base": workbook_raw, "Downside": downside_workbook_raw}, current_revision_raw)
     yield_metrics = schema in (WORKBOOK_YIELD_PILOT_SCHEMA, *WORKBOOK_FUNDING_PILOT_SCHEMAS)
     interval_irr = schema == WORKBOOK_IRR_PILOT_SCHEMA or yield_metrics
     extended = schema == WORKBOOK_EXTENDED_PILOT_SCHEMA or interval_irr

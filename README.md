@@ -4,6 +4,7 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D140 conecta C7–C15 con renta residencial, NOI y cobros por USD 10 en Base y Downside. [Resultados y reproducción](docs/workbook-rental-inputs-D140.md).
 - D139 mapea las 55 celdas del original y prueba la confirmación por escenario con dos copias sintéticas. El dictamen queda PENDING si falta un campo o una regla. [Matriz, casos y reproducción](docs/workbook-native-mapping-D139.md).
 - D138 aplica el recorte del PDF al escaneo antes de cotejar OCR y texto. Conserva PENDING si el recorte impide verificar la identidad o la superficie. [Casos y reproducción](docs/workbook-plan-cropped-set-D138.md).
 - D137 verifica giros distintos para A101 y A601 en el mismo PDF. Coteja el texto con el OCR de cada hoja y conserva PENDING ante faltantes, duplicados o discrepancias. [Casos y reproducción](docs/workbook-plan-dual-rotation-D137.md).

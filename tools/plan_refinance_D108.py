@@ -13,7 +13,7 @@ from miniuw_foundation.scheduled_expense_case import sha
 from plan_impact_D106 import RENT_BASES, vertical_alternatives
 from plan_return_D107 import (
     ASSUMPTIONS, DATES, FORWARD_PERIOD, INITIAL, OPERATING_PERIOD, SALE_COST_RATE, SALE_DATE,
-    bind_closing, build_noi, encode, equity_source, reconcile_year, sale_source, template, value_at_exit,
+    bind_closing, build_noi, encode, equity_source_from_cost, reconcile_year, sale_source, template, value_at_exit,
 )
 from plan_schedule_D105 import FIXTURE_A, FIXTURE_B, compare_schedules
 
@@ -117,8 +117,19 @@ def run_scenario(comparison, revision, scenario, principal=REQUEST):
     context = dict(deal_id=comparison["deal_id"], scenario_id=f"SYNTHETIC-{scenario}",
                    run_id=f"{SOURCE}-{revision}", definition_set_revision=f"{SOURCE}-v1")
     terms = ASSUMPTIONS[scenario]
-    valuation = build_noi(comparison, revision, context, VALUE_PERIOD, terms)
-    bank = build_noi(comparison, revision, context, BANK_PERIOD, terms | {"loss": terms["loss"] + BANK_LOSS_ADD})
+    plan_hash = comparison[f"{'reference' if revision == 'before' else 'candidate'}_sha256"]
+
+    def noi_for(period):
+        inputs = terms | {"loss": terms["loss"] + BANK_LOSS_ADD} if period == BANK_PERIOD else terms
+        return build_noi(comparison, revision, context, period, inputs)
+
+    return financed_cash(context, cost, f"{plan_hash}/declared-plan-and-D106-vertical-basis", principal, terms["cap"], noi_for)
+
+
+def financed_cash(context, cost, construction_source_ref, principal, exit_cap, noi_for):
+    result = dict(state="PENDING", capacity=None, cash_per_usd_10=None)
+    valuation = noi_for(VALUE_PERIOD)
+    bank = noi_for(BANK_PERIOD)
     for assembly in (valuation, bank):
         if assembly.payload["blockers"]:
             return result | dict(blockers=assembly.payload["blockers"] + assembly.payload["residential_blockers"])
@@ -133,8 +144,8 @@ def run_scenario(comparison, revision, scenario, principal=REQUEST):
     if cap["state"] != "compatible_synthetic_refinance_capacity":
         return result | dict(blockers=cap["blockers"])
 
-    operating_noi = build_noi(comparison, revision, context, OPERATING_PERIOD, terms)
-    forward_noi = build_noi(comparison, revision, context, FORWARD_PERIOD, terms)
+    operating_noi = noi_for(OPERATING_PERIOD)
+    forward_noi = noi_for(FORWARD_PERIOD)
     for assembly in (operating_noi, forward_noi):
         if assembly.payload["blockers"]:
             return result | dict(blockers=assembly.payload["blockers"] + assembly.payload["residential_blockers"])
@@ -145,14 +156,14 @@ def run_scenario(comparison, revision, scenario, principal=REQUEST):
                                debt_source_ref=f"{loan.run.sha256}#/schedule/0")
     if operating.payload["blockers"]:
         return result | dict(blockers=operating.payload["blockers"])
-    exit_run = value_at_exit(forward_noi, context, terms["cap"])
+    exit_run = value_at_exit(forward_noi, context, exit_cap)
     if exit_run.payload["blockers"]:
         return result | dict(blockers=exit_run.payload["blockers"])
     sale_raw, sale, debt_check = sale_with_payoff(context, operating, exit_run, loan, payment)
     if debt_check.payload["blockers"]:
         return result | dict(blockers=debt_check.payload["blockers"] + debt_check.payload["closing_blockers"])
 
-    ledger = equity_source(context, cost, comparison, revision, operating)
+    ledger = equity_source_from_cost(context, cost, construction_source_ref, operating)
     ledger["events"].insert(2, dict(event_id="refinance", date=REFI_DATE, kind="distribution",
                                     category="net_refinance_distribution", amount=None, currency="USD", source_ref=None))
     refi_bound = bind_closing(encode(ledger), refi_raw, refi, "refinance")

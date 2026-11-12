@@ -1656,3 +1656,7 @@ El OCR coteja la parte visible de A101 o A601 y verifica que el recorte conserve
 ## D139 — Mapeo de las 55 celdas de la planilla original
 
 Se cotejan celdas, unidades y aplicabilidad con el original y los contratos D04, D08 y D10. B04 registra 55 confirmaciones por escenario en el caso completo. Cinco campos alimentan el cálculo del piloto. Los demás conservan su destino propuesto y la validación financiera real PENDING. Se prueban faltantes, confirmación de otra copia, fórmula con caché, no aplicabilidad, criterio ausente y recálculo al cambiar C67. [Matriz, casos y reproducción](docs/workbook-native-mapping-D139.md).
+
+## D140 — C7–C15 conectadas a renta residencial y NOI
+
+El piloto lee las nueve celdas de Base y Downside. Usa C12 como evidencia de comparables y lleva los otros ingresos de C13 al NOI con una población elegible explícita. Reproduce el impacto en capacidad, operación y venta por USD 10 con la financiación de D108. Se prueba el cambio aislado de C14 y el bloqueo por fuente, criterio o capacidad. [Resultados y reproducción](docs/workbook-rental-inputs-D140.md).

@@ -61,3 +61,5 @@ D137 aplica el cotejo a A101 y A601. Cada bot verifica la orientación declarada
 D138 aplica el recorte del PDF a cada escaneo antes del cotejo. Guarda la región visible y sus huellas. El dictamen queda PENDING si la identidad o la superficie requerida quedan fuera del recorte. [Alcance y resultados](workbook-plan-cropped-set-D138.md).
 
 D139 vincula B04 con las 55 celdas de la planilla original en dos copias sintéticas. B12 mantiene PENDING el dictamen ante un campo sin confirmar o un criterio faltante. [Alcance y resultados](workbook-native-mapping-D139.md).
+
+D140 conecta las confirmaciones de B04 para C7–C15 con la renta, el NOI y los cobros de B13. B12 retiene la caja dependiente de una renta sin confirmar y el dictamen queda PENDING ante un criterio faltante. [Alcance y resultados](workbook-rental-inputs-D140.md).

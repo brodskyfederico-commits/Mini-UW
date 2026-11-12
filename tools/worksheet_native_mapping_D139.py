@@ -112,7 +112,7 @@ def check_field(row, cell, confirmed, omitted):
     return ("PENDING", None, blockers) if blockers else ("CONFIRMED_SYNTHETIC", value, [])
 
 
-def review_scenario(raw, expected, confirmation, catalog, catalog_verified):
+def review_scenario(raw, expected, confirmation, catalog, catalog_verified, calculation_fields):
     if raw is None or sha(raw) != expected:
         return check("native_workbook_missing_or_unbound", rows=[], calculation_inputs_ready=False)
     try:
@@ -134,17 +134,19 @@ def review_scenario(raw, expected, confirmation, catalog, catalog_verified):
         blockers.extend(f"{row['field_id']}:{issue}" for issue in issues)
     return dict(state="PENDING" if blockers else "checked_synthetic", blockers=blockers, rows=rows,
                 workbook_sha256=inspection.source_sha256, confirmation_source_ref=object_or_empty(confirmation).get("source_ref"),
-                calculation_inputs_ready=catalog_verified and all(row["state"] == "CONFIRMED_SYNTHETIC"
-                    for row in rows if row["synthetic_pilot_parameter"]))
+                calculation_inputs_ready=catalog_verified and calculation_fields <= {
+                    row["field_id"] for row in rows if row["state"] == "CONFIRMED_SYNTHETIC"})
 
 
-def review_native_mapping(mapping, workbooks, hashes):
+def review_native_mapping(mapping, workbooks, hashes, *, calculation_fields=None):
     catalog = mapping_catalog()
+    if calculation_fields is None:
+        calculation_fields = {row["field_id"] for row in catalog if row["synthetic_pilot_parameter"]}
     specification = object_or_empty(mapping)
     confirmations = object_or_empty(specification.get("scenarios"))
     digest = sha(encoded(catalog))
     verified = specification.get("catalog_sha256") == digest and not (confirmations.keys() - set(SCENARIOS))
-    results = {name: review_scenario(workbooks[name], hashes.get(name), confirmations.get(name), catalog, verified)
+    results = {name: review_scenario(workbooks[name], hashes.get(name), confirmations.get(name), catalog, verified, calculation_fields)
                for name in SCENARIOS}
     blockers = [f"{name}:{reason}" for name, result in results.items() for reason in result["blockers"]]
     return dict(state="PENDING" if blockers else "checked_synthetic", catalog_sha256=digest,

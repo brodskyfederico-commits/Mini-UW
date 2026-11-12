@@ -30,6 +30,8 @@ def case_revision(case):
     )
     if "native_mapping" in case:
         payloads["financial_sources"]["native_mapping"] = case["native_mapping"]
+    if "rent_inputs" in case:
+        payloads["financial_sources"]["rent_inputs"] = case["rent_inputs"]
     return dict(local_revision=local.get("revision"), criteria_revision=case.get("criteria_revision"),
                 fingerprints={role: sha(encoded(value)) for role, value in payloads.items()})
 

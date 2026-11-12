@@ -299,5 +299,7 @@ jobs:
         run: PYTHONPATH=src python tools/check_worksheet_plan_cropped_set_D138.py
       - name: Verify all original worksheet fields and confirmation gates in the synthetic pilot
         run: PYTHONPATH=src:tests python tools/check_worksheet_native_mapping_D139.py
+      - name: Verify workbook rental inputs through NOI and dated cash in both scenarios
+        run: PYTHONPATH=src:tests python tools/check_worksheet_rental_inputs_D140.py
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v
