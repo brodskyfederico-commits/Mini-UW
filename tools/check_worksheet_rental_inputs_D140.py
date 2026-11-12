@@ -65,9 +65,10 @@ def case_for(books, catalog):
                 aggregation_rule="all_pass_any_fail_pending_blocks")
 
 
-def run(case, books, revision, output):
+def run(case, books, revision, output, *, plan=None):
+    plan_arg = () if plan is None else ("--plan", plan)
     status = call("run", case, "--workbook", books["Base"], "--downside-workbook", books["Downside"],
-                  "--current-revision", revision, "--output", output)
+                  "--current-revision", revision, "--output", output, *plan_arg)
     result = json.loads((output / "results.json").read_bytes())
     pdf = output / "MiniUW_Resumen.pdf"
     page, = PdfReader(pdf).pages

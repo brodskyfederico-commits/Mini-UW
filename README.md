@@ -4,6 +4,7 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D147 une planos, cotizaciones de GC, copia oficial y revisión vigente con el motor D146 y la salida fechada por USD 10. [Resultados y reproducción](docs/workbook-documented-finance-D147.md).
 - D146 conecta los desembolsos de deuda y los intereses de obra con los aportes y la refinanciación por USD 10. [Resultados y reproducción](docs/workbook-construction-financing-D146.md).
 - D145 conecta C46–C47 con el fin de obra, la estabilización y las fechas de aportes y cobros por USD 10. [Resultados y reproducción](docs/workbook-project-calendar-D145.md).
 - D144 conecta C37–C42 con el presupuesto de obra y los aportes fechados por USD 10 en Base y Downside. [Resultados y reproducción](docs/workbook-construction-budget-D144.md).

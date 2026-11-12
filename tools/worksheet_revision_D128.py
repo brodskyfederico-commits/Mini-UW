@@ -20,6 +20,8 @@ def case_revision(case):
     plans = {name: value for name, value in documents.items() if name != "official_snapshot"}
     if "plan_pdf" in local:
         plans = dict(documents=plans, plan_pdf=local["plan_pdf"])
+    if "finance_binding" in local:
+        plans = dict(source_inventory=plans, finance_binding=local["finance_binding"])
     payloads = dict(
         workbooks=case.get("workbook_sha256"),
         financial_sources={name: case.get(name) for name in FINANCIAL_SOURCES},

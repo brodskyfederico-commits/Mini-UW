@@ -92,8 +92,26 @@ def reconcile_readings(first, second, *, shared_pdf=False):
     return check(value=first["value"], unit=first["unit"], plan_ref=first["plan_ref"], readings=[first, second])
 
 
-def read_budget(document):
+def read_budget(document, *, scenarios=None):
     area = area_reading(document, "gc_budget")
+    if scenarios is not None:
+        if area["blockers"]:
+            return check("structured_gc_area_or_budget_claim_missing", area=area, scenario_quotes={})
+        quotes = object_or_empty(document.get("budget_by_scenario"))
+        if quotes.keys() - set(scenarios):
+            return check("undeclared_gc_budget_scenario", area=area, scenario_quotes={})
+        results = {}
+        for name in scenarios:
+            claim = object_or_empty(quotes.get(name))
+            value, locator = number(claim.get("value")), claim.get("locator")
+            if (value is None or value < 0 or claim.get("currency") != "USD"
+                    or claim.get("scope") != "vertical_building_excluding_parking_and_site"
+                    or not isinstance(locator, str) or not locator.strip()):
+                results[name] = check("structured_gc_scenario_quote_unconfirmed")
+            else:
+                results[name] = check(value=rational(value), currency="USD", scope=claim["scope"], locator=locator,
+                                      source_sha256=area["source_sha256"], source_pointer=f"{area['source_pointer']}/budget_by_scenario/{name}")
+        return check(area=area, scenario_quotes=results)
     claim = object_or_empty(document.get("budget"))
     value, locator = number(claim.get("value")), claim.get("locator")
     if (area["blockers"] or value is None or value < 0 or claim.get("currency") != "USD"
@@ -149,7 +167,7 @@ def verify_official_record(document, archived, request):
                  source_sha256=archived["sha256"], url=archived["url"], as_of=archived["as_of"])
 
 
-def review_local_sources(section, workbook_hashes, *, pdf_plan=None):
+def review_local_sources(section, workbook_hashes, *, pdf_plan=None, gc_scenarios=None):
     _, contract_sha256 = load_contracts()
     section = object_or_empty(section)
     revision = section.get("revision")
@@ -173,7 +191,7 @@ def review_local_sources(section, workbook_hashes, *, pdf_plan=None):
         first, second = (pdf_plan["B05"], pdf_plan["B06"]) if binding_ok else (
             check("bound_synthetic_plan_pdf_required"), check("bound_synthetic_plan_pdf_required"))
     plans = reconcile_readings(first, second, shared_pdf=pdf_plan is not None)
-    budget = read_budget(documents.get("gc_budget", {}))
+    budget = read_budget(documents.get("gc_budget", {}), scenarios=gc_scenarios)
     gc = check_gc(plans, budget, section.get("gc_criterion"))
     snapshot = documents.get("official_snapshot", {})
     request = object_or_empty(section.get("official_request"))
@@ -181,5 +199,9 @@ def review_local_sources(section, workbook_hashes, *, pdf_plan=None):
     official = verify_official_record(snapshot, archived, request)
     bots = dict(B03=classifier, B05=first, B06=second, B07=plans, B08=budget, B09=gc, B10=archived, B11=official)
     blockers = [f"{bot}:{reason}" for bot, row in bots.items() for reason in row["blockers"]]
+    quote_blockers = [f"B08:{name}:{reason}" for name, quote in budget.get("scenario_quotes", {}).items() for reason in quote["blockers"]]
+    if quote_blockers:
+        budget["state"] = "PENDING"
+        blockers.extend(quote_blockers)
     return dict(contract_sha256=contract_sha256, revision=revision, state="PENDING" if blockers else "checked_synthetic",
                 bots=bots, blockers=blockers)

@@ -137,13 +137,14 @@ def rental_noi(terms, cells, values, period, commercial=None, *, window_start=No
 
 def run_rental_scenario(name, raw, review, rent_inputs, *, include_commercial=False, include_utilities=False,
                         include_development=False, include_budget=False, include_calendar=False,
-                        include_construction_financing=False):
+                        include_construction_financing=False, document_review=None):
     pending = dict(state="PENDING", cash_per_usd_10=None, capacity=None, noi_by_period={})
     if not review["calculation_inputs_ready"]:
         return pending | dict(blockers=["required_rental_cells_unconfirmed"])
     rows = {row["value_cell"].split("!")[1]: row for row in review["rows"] if row["field_id"] in FIELDS}
     values = {cell: row["value"] for cell, row in rows.items()}
     cells = {cell: f"sha256:{review['workbook_sha256']}#{row['value_cell']}" for cell, row in rows.items()}
+    binding = None
     try:
         terms = terms_for(rent_inputs, name, values, inspect_synthetic_input_sheet(raw).cells,
                           include_development=include_development)
@@ -154,6 +155,12 @@ def run_rental_scenario(name, raw, review, rent_inputs, *, include_commercial=Fa
             development = development_costs(rent_inputs.get("development"), name, review, terms["groups"])
             terms["cost"] = _fraction(development["total_development_cost"])
             cost_source = f"sha256:{sha(encoded(development))}#/total_development_cost"
+        if document_review is not None:
+            from worksheet_documented_finance_D147 import bind_development
+            binding = bind_development(name, development, document_review)
+            if binding["blockers"]:
+                return pending | dict(blockers=binding["blockers"], development_costs=development,
+                                      document_financial_binding=binding, cell_sources=cells)
         if include_utilities:
             from worksheet_utility_inputs_D142 import utility_expenses
             terms["utility_expenses"], terms["utility_evidence"] = utility_expenses(
@@ -178,6 +185,8 @@ def run_rental_scenario(name, raw, review, rent_inputs, *, include_commercial=Fa
             from worksheet_construction_budget_D144 import construction_budget
             budget = construction_budget(rent_inputs.get("construction_budget"), name, review, development, commercial,
                                          calendar=calendar)
+            if binding is not None:
+                budget["document_financial_binding_sha256"] = sha(encoded(binding))
             terms["cost"] = _fraction(budget["total_development_cost"])
             if calendar is not None:
                 terms["cost"] += _fraction(calendar["lease_up_funding"])
@@ -189,8 +198,9 @@ def run_rental_scenario(name, raw, review, rent_inputs, *, include_commercial=Fa
             funding = staged_construction_financing(rent_inputs.get("construction_financing"), name, review, terms["context"],
                                                   development, budget, calendar)
             if funding["blockers"]:
+                evidence = dict(document_financial_binding=binding) if binding is not None else {}
                 return pending | dict(blockers=funding["blockers"], construction_financing=funding,
-                                      project_calendar=calendar, construction_budget=budget, development_costs=development)
+                                      project_calendar=calendar, construction_budget=budget, development_costs=development) | evidence
             terms["cost"] = _fraction(funding["equity_funding_through_refinance"])
             cost_source = f"sha256:{sha(encoded(funding))}#/equity_draws"
             draws = [draw | dict(source_ref=f"{cost_source}/{index}") for index, draw in enumerate(funding["equity_draws"])]
@@ -208,7 +218,8 @@ def run_rental_scenario(name, raw, review, rent_inputs, *, include_commercial=Fa
                                lambda period: operating if period == OPERATING_PERIOD else noi_for(period),
                                construction_draws=draws, calendar=calendar, construction_financing=funding)
     except (ValueError, TypeError, KeyError) as error:
-        return pending | dict(blockers=[str(error)], cell_sources=cells)
+        evidence = dict(document_financial_binding=binding) if binding is not None else {}
+        return pending | dict(blockers=[str(error)], cell_sources=cells) | evidence
     if commercial is not None:
         result["commercial_terms"] = commercial
     if development is not None:
@@ -220,6 +231,8 @@ def run_rental_scenario(name, raw, review, rent_inputs, *, include_commercial=Fa
         result["project_calendar"] = calendar
     if funding is not None:
         result["construction_financing"] = funding
+    if binding is not None:
+        result["document_financial_binding"] = binding
     return result | dict(noi_by_period=periods, cell_sources=cells, comps_evidence=terms["comps"], rent_basis=terms["basis"])
 
 
@@ -242,8 +255,13 @@ def screen(case, views, blockers, *, period_ref=PERIOD):
 
 
 def render(views, result, *, include_commercial=False, include_utilities=False, include_development=False,
-           include_budget=False, include_calendar=False, include_construction_financing=False):
+           include_budget=False, include_calendar=False, include_construction_financing=False, document_review=None):
     lines = [(f"Simulación por múltiplo de equity | {result} | Decisión real PENDING", True)]
+    if document_review is not None:
+        label = "Documentos cotejados" if document_review["state"] == "checked_synthetic" else "Validación documental PENDING"
+        if result == "PENDING":
+            label += " | Flujos disponibles sujetos a los pendientes del expediente"
+        lines.append((label, False))
     for name, view in views.items():
         accrued = view["noi_by_period"].get(OPERATING_PERIOD)
         cash = view["cash_per_usd_10"]
@@ -290,6 +308,10 @@ def render(views, result, *, include_commercial=False, include_utilities=False, 
     if include_development:
         label = "D143 | C32-C36"
     spacing = 17 if include_development else 19 if include_utilities else 21
+    if document_review is not None:
+        return render_page("D147 | Validación documental y motor D146", lines, 12,
+                           "MINI-UW | SI INVIERTO USD 10, ¿CUÁNTO COBRO Y CUÁNDO?",
+                           "Planos, GC, vigencia, aportes y cobros | Piloto sintético")
     if include_construction_financing:
         return render_page("D146 | C51-C53", lines, 12, "MINI-UW | SI INVIERTO USD 10, ¿CUÁNTO COBRO Y CUÁNDO?",
                            "Deuda de obra, aportes y cobros | Piloto sintético")
@@ -305,7 +327,7 @@ def render(views, result, *, include_commercial=False, include_utilities=False, 
 
 def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, include_commercial=False, include_utilities=False,
                       include_development=False, include_budget=False, include_calendar=False,
-                      include_construction_financing=False):
+                      include_construction_financing=False, document_review=None):
     hashes = object_or_empty(case.get("workbook_sha256"))
     review = review_native_mapping(case.get("native_mapping"), workbooks, hashes, calculation_fields=FIELDS)
     revision = review_revision(case, current_revision_raw)
@@ -313,10 +335,19 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
                                       include_commercial=include_commercial, include_utilities=include_utilities,
                                       include_development=include_development, include_budget=include_budget,
                                       include_calendar=include_calendar,
-                                      include_construction_financing=include_construction_financing)
+                                      include_construction_financing=include_construction_financing,
+                                      document_review=document_review)
              for name in SCENARIOS}
     blockers = [f"B04:{reason}" for reason in review["blockers"]] + [f"B12:{reason}" for reason in revision["blockers"]]
     blockers += [f"{name}:{reason}" for name, view in views.items() for reason in view["blockers"]]
+    if document_review is not None:
+        bindings = {name: view["document_financial_binding"] for name, view in views.items()
+                    if "document_financial_binding" in view}
+        document_blockers = document_review["blockers"] + [f"{name}:{reason}" for name, binding in bindings.items()
+                                                          for reason in binding["blockers"]]
+        document_review = document_review | dict(financial_bindings=bindings, blockers=sorted(set(document_blockers)),
+                                                 state="PENDING" if document_blockers else "checked_synthetic")
+        blockers += document_review["blockers"]
     period_ref = PERIOD
     if include_calendar:
         from worksheet_project_calendar_D145 import LIFECYCLE
@@ -328,7 +359,7 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
     simulation = screening["simulation_result"]
     pdf = render(views, simulation, include_commercial=include_commercial, include_utilities=include_utilities,
                  include_development=include_development, include_budget=include_budget, include_calendar=include_calendar,
-                 include_construction_financing=include_construction_financing)
+                 include_construction_financing=include_construction_financing, document_review=document_review)
     profile = "synthetic_native_residential_and_commercial_rent" if include_commercial else PROFILE
     if include_utilities:
         profile = "synthetic_native_rent_and_utility_expenses"
@@ -340,8 +371,14 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
         profile = "synthetic_native_project_calendar"
     if include_construction_financing:
         profile = "synthetic_native_construction_financing"
+    pipeline = {}
+    if document_review is not None:
+        from worksheet_documented_finance_D147 import record_pipeline
+        profile = "synthetic_documented_construction_financing"
+        pipeline = dict(local_review=document_review,
+                        pipeline=record_pipeline(case_sha256, views, review, revision, screening, pdf, document_review))
     return dict(profile=profile, state="PENDING" if simulation == "PENDING" else "computed_synthetic_scenario_cash",
                 case_sha256=case_sha256, decision="PENDING", simulation_result=simulation,
                 real_decisions_enabled=False, deployment_enabled=False, personal_investor_return=None,
                 scenarios=views, native_mapping_review=review, revision_review=revision, screening=screening,
-                pdf_sha256=sha(pdf), page_count=1), pdf
+                pdf_sha256=sha(pdf), page_count=1) | pipeline, pdf

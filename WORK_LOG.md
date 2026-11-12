@@ -1684,3 +1684,7 @@ B04 coteja ambas duraciones y B13 lleva los hitos al libro de aportes, al NOI, a
 ## D146 — Desembolsos e intereses de obra desde el calendario
 
 B13 enlaza los pagos de obra con los desembolsos de T68, reconcilia los aportes por fecha y cancela el principal de construcción al refinanciar. Quince corridas verifican los aportes y cobros por USD 10, el efecto de mover un desembolso y diez bloqueos PENDING. [Resultados y reproducción](docs/workbook-construction-financing-D146.md).
+
+## D147 — Validación documental y motor D146 en una corrida
+
+La cadena coteja A101 y A601 con texto y OCR, compara la superficie y la cotización vertical por escenario con GC y verifica la copia oficial a la fecha del caso. El presupuesto y la deuda enlazan el cotejo por hash. Catorce corridas verifican la caja por USD 10 y doce casos PENDING. B16 rechaza un PDF reemplazado con un manifiesto recalculado. [Resultados y reproducción](docs/workbook-documented-finance-D147.md).
