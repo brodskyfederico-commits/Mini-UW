@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D145 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D146 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/miniuw-integral-usd10.yml",
@@ -8,8 +8,8 @@
     },
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 21678,
-      "sha256": "bdeae2b44984b16f2462c59951389ad74c058aff87b1adfe7b14fe724fb3f71e"
+      "bytes": 21883,
+      "sha256": "02b7ef4b5f15028411f3c56504b5bf2a352433a0224f0a8caf168eb370554a25"
     },
     {
       "path": ".gitignore",
@@ -23,13 +23,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 84841,
-      "sha256": "05eeea9d1d867c6371ba3f53e26a9806d8ae5933b27675ee5abc57cdc0705cd7"
+      "bytes": 85030,
+      "sha256": "765bd3142f86ac3e8033b43d301365c90efc39a42a2790f3ecb24d835209e3d5"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 342538,
-      "sha256": "3bcf96371fae270d4748fd188d81f7eef820a34ccddf9b339592db132468ba32"
+      "bytes": 342943,
+      "sha256": "4a1c5d883993e1f032494ae8aeeabbb3475ce31320fb46b5c87cd51a1df52311"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -58,8 +58,8 @@
     },
     {
       "path": "docs/MiniUW_v1_Dots_y_Bots.md",
-      "bytes": 9623,
-      "sha256": "3c1ccd49b3d508a4f12baa706a7290f036f8e725fb7c34a89f0b863786844f6e"
+      "bytes": 10015,
+      "sha256": "fe5efcb1282dd1917bd6abaee2f77c5ca7885dce570abede2606bb09b3b50b7a"
     },
     {
       "path": "docs/acceptance-case-contracts.json",
@@ -3047,6 +3047,11 @@
       "sha256": "13d1e538492688e0b1f1b0bf98040838a506e0ccaf134d8ab05ce23c7d0c2e55"
     },
     {
+      "path": "docs/workbook-construction-financing-D146.md",
+      "bytes": 4985,
+      "sha256": "839a2340fc682f01cf9d782946710e52526d269a7e4ca33f57408b082b3007bf"
+    },
+    {
       "path": "docs/workbook-current-chain-D128.md",
       "bytes": 2523,
       "sha256": "8774019f783540ce37ed493176b2286b9ebeaa4ff51ce07d406780da7873c476"
@@ -5067,6 +5072,16 @@
       "sha256": "6637023f88ab800d504ed72fd5e1d0993b978f1fc076522416122ae19d295d9a"
     },
     {
+      "path": "templates/synthetic-construction-financing-base-D146.xlsx",
+      "bytes": 8865,
+      "sha256": "3abebfbff35b1f222e3fccb23809970195eded86e477ffd83e8a425cc508ea6a"
+    },
+    {
+      "path": "templates/synthetic-construction-financing-downside-D146.xlsx",
+      "bytes": 8877,
+      "sha256": "7e71724ec41081fee74286f1beb506af1c2e73fde29fd3455a7de9191e692c51"
+    },
+    {
       "path": "templates/synthetic-cropped-rotated-set-D138.pdf",
       "bytes": 120962,
       "sha256": "8aa93ce770b565dd956e2fd37e1f2bbc55821d8ee9c2d757b7338aa84f41766a"
@@ -5827,6 +5842,11 @@
       "sha256": "1afe787de79511e1864479c597a20832d89ab1ea3f9e87e583c3e464da36ed19"
     },
     {
+      "path": "templates/synthetic-workbook-construction-financing-D146.json",
+      "bytes": 10338,
+      "sha256": "e11ff687036283d6bfdbb13934189a5a6629c3f92588a4d2bce62f67932ebff5"
+    },
+    {
       "path": "templates/synthetic-workbook-cropped-rotated-set-D138.json",
       "bytes": 19345,
       "sha256": "4ffd6a85fe80c33b8971a7f08e97ecc370a6deb9f6fc286637d2ed6399a3a4bd"
@@ -5930,6 +5950,11 @@
       "path": "templates/synthetic-workbook-current-revision-D145.json",
       "bytes": 717,
       "sha256": "d774e105a2374715c361fa3bca277fb913e1299819c8bece02326fe1c1551900"
+    },
+    {
+      "path": "templates/synthetic-workbook-current-revision-D146.json",
+      "bytes": 717,
+      "sha256": "a0c68ff1c23c796240921504718424e2e5969016f632f11902b921c096cbe98b"
     },
     {
       "path": "templates/synthetic-workbook-development-inputs-D143.json",
@@ -7082,6 +7107,11 @@
       "sha256": "079f3bd848ab0eb8f461ecd14758d576cb21e389b00851665c9bfad5709b5977"
     },
     {
+      "path": "tools/check_worksheet_construction_financing_D146.py",
+      "bytes": 12285,
+      "sha256": "e985e95db46b3988d5ece56e7b3e5e9f618b744aba67f9fc8a0baac0b67ae9f5"
+    },
+    {
       "path": "tools/check_worksheet_current_chain_D128.py",
       "bytes": 9712,
       "sha256": "c0009bc3ec30a103ff0d08ecd9ff62f2d21d417bdfa09a6110d714655d1f3879"
@@ -7668,8 +7698,8 @@
     },
     {
       "path": "tools/miniuw_worksheet_v1.py",
-      "bytes": 24920,
-      "sha256": "dbc674b1f7a9dda19ef973b9a25b8a5632e5619085abc5fb49853c255b4049a3"
+      "bytes": 25179,
+      "sha256": "a30f03fd6a1539be2012e379e03f2de4d515fa3d00c649e03194c2af1507b285"
     },
     {
       "path": "tools/onepage_pending_cases_D79.py",
@@ -7703,8 +7733,8 @@
     },
     {
       "path": "tools/plan_refinance_D108.py",
-      "bytes": 17946,
-      "sha256": "e84e67d55fa4ea83feff9df7e2baa8ead2149285c9c110ea1e9128e721f9a240"
+      "bytes": 20004,
+      "sha256": "220d25534ee298c1983aad3ae4c73ec1b5b89c0a8cfbf98f5ebc9eee320b7382"
     },
     {
       "path": "tools/plan_return_D107.py",
@@ -7785,6 +7815,11 @@
       "path": "tools/worksheet_construction_budget_D144.py",
       "bytes": 5630,
       "sha256": "c010e1a7a8f3863f989b2e7fd0d98a1a54459d06276085d909dcaef4cd09f079"
+    },
+    {
+      "path": "tools/worksheet_construction_financing_D146.py",
+      "bytes": 8538,
+      "sha256": "d0938aecb3634d93fc8c1aa0d4141ee25ea0f0d41ed36c455e858fff26044e4f"
     },
     {
       "path": "tools/worksheet_costed_case_D65.py",
@@ -7913,8 +7948,8 @@
     },
     {
       "path": "tools/worksheet_rental_inputs_D140.py",
-      "bytes": 21941,
-      "sha256": "e4eb7e072edc7c9d85df8d95d48c53b3110d088d1b7908a3655bb794474aa7c6"
+      "bytes": 24549,
+      "sha256": "602937edbfe9543290ed06e410d08cb93d00714925ed463e3168d00092593d23"
     },
     {
       "path": "tools/worksheet_revision_D128.py",

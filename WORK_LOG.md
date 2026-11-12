@@ -1680,3 +1680,7 @@ B13 incorpora parking, obras de sitio, reserva, soft costs y TI/LC con bases y a
 ## D145 — C46–C47 conectadas al calendario de obra y estabilización
 
 B04 coteja ambas duraciones y B13 lleva los hitos al libro de aportes, al NOI, a la capacidad de refinanciación y al cierre de venta. Trece corridas verifican los flujos por USD 10, el vencimiento de la revisión y diez casos PENDING. [Resultados y reproducción](docs/workbook-project-calendar-D145.md).
+
+## D146 — Desembolsos e intereses de obra desde el calendario
+
+B13 enlaza los pagos de obra con los desembolsos de T68, reconcilia los aportes por fecha y cancela el principal de construcción al refinanciar. Quince corridas verifican los aportes y cobros por USD 10, el efecto de mover un desembolso y diez bloqueos PENDING. [Resultados y reproducción](docs/workbook-construction-financing-D146.md).

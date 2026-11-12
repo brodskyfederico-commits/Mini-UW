@@ -47,7 +47,7 @@ def loan_evidence(context, principal, *, refi_date=REFI_DATE, payment_dates=PAYM
     return DatedLoanEvidence(loan_raw=raw, windows=(), run=produce_debt_service(raw, ()))
 
 
-def refi_closing(context, loan, principal, *, refi_date=REFI_DATE):
+def refi_closing(context, loan, principal, *, refi_date=REFI_DATE, construction_financing=None):
     source = template("synthetic-capacity-tie-closing")
     source.update(context=context, closing_date=refi_date, kind="refinance",
                   classification_basis_ref=f"{SOURCE}/gross-draw-and-explicit-refinance-fee",
@@ -56,6 +56,22 @@ def refi_closing(context, loan, principal, *, refi_date=REFI_DATE):
     values = {"gross_proceeds": principal, "closing_costs_paid": principal * FEE}
     for key, row in source["amounts"].items():
         row.update(value=rational(values.get(key, 0)), as_of_date=refi_date, source_ref=f"{SOURCE}/refi/{key}")
+    if construction_financing is not None:
+        funding = construction_financing
+        require(funding["payoff_date"] == refi_date, "construction_payoff_date_must_match_refinance")
+        proof_ref = f"sha256:{funding['debt_run_sha256']}"
+        source["amounts"]["opening_free_cash"].update(
+            value=funding["free_cash_at_refinance"], source_ref=f"sha256:{sha(encode(funding))}#/free_cash_at_refinance")
+        if _fraction(funding["construction_principal_payoff"]):
+            old_debt = dict(loan_id=funding["debt_run"]["loan_id"])
+            for category in closing_cash.DUE:
+                for role, basis in (("due", "debt_obligation_before_closing"), ("paid", "cash_flow_at_closing")):
+                    old_debt[f"{category}_{role}"] = dict(
+                        value=funding["construction_principal_payoff"] if category == "principal" else rational(0),
+                        currency="USD", as_of_date=refi_date, basis=basis,
+                        source_ref=f"{proof_ref}#/totals/principal_repaid" if category == "principal"
+                        else f"{funding['policy_ref']}/no-unpaid-interest-or-other-payoff-fees")
+            source["old_debts"].append(old_debt)
     source["new_loan"] = dict(loan_id=loan.run.payload["loan_id"], principal_after_closing=dict(
         value=rational(principal), currency="USD", as_of_date=refi_date, basis="debt_principal_after_closing",
         source_ref=f"{loan.run.sha256}#/principal_at_origination"))
@@ -128,7 +144,7 @@ def run_scenario(comparison, revision, scenario, principal=REQUEST):
 
 
 def financed_cash(context, cost, construction_source_ref, principal, exit_cap, noi_for, *, construction_draws=None,
-                  calendar=None):
+                  calendar=None, construction_financing=None):
     result = dict(state="PENDING", capacity=None, cash_per_usd_10=None)
     refi_date = REFI_DATE if calendar is None else calendar["refinance_date"]
     sale_date = SALE_DATE if calendar is None else calendar["sale_date"]
@@ -139,7 +155,15 @@ def financed_cash(context, cost, construction_source_ref, principal, exit_cap, n
             return result | dict(blockers=assembly.payload["blockers"] + assembly.payload["residential_blockers"])
     loan = loan_evidence(context, principal, refi_date=refi_date,
                          payment_dates=PAYMENT_DATES if calendar is None else calendar["payment_dates"])
-    refi_raw, refi = refi_closing(context, loan, principal, refi_date=refi_date)
+    refi_raw, refi = refi_closing(context, loan, principal, refi_date=refi_date,
+                                 construction_financing=construction_financing)
+    if construction_financing is not None:
+        closing = refi.payload
+        result["construction_refinance"] = dict(
+            date=refi_date, gross_proceeds=rational(principal), closing_fee=rational(principal * FEE),
+            prior_principal_paid=closing["payoff_totals"]["principal"],
+            net_equity_distribution=closing["exportable_equity_distribution"], blockers=closing["blockers"],
+            closing_source_sha256=sha(refi_raw), closing_run_sha256=refi.sha256)
     cap_run = capacity_check(context, valuation, bank, loan, refi_raw, refi, principal, refi_date=refi_date)
     cap = cap_run.payload
     result["capacity"] = {key: cap[key] for key in (
@@ -147,6 +171,9 @@ def financed_cash(context, cost, construction_source_ref, principal, exit_cap, n
         "capacity_limits", "capacity_state", "state", "as_of_date", "input_bindings",
     )} | {"capacity_run_sha256": cap_run.sha256}
     if cap["state"] != "compatible_synthetic_refinance_capacity":
+        if construction_financing is not None:
+            result["construction_refinance"]["net_equity_distribution"] = None
+            return result | dict(blockers=sorted(set(cap["blockers"] + closing["blockers"])))
         return result | dict(blockers=cap["blockers"])
 
     operating_noi = noi_for(OPERATING_PERIOD)

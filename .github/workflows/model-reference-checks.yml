@@ -311,5 +311,7 @@ jobs:
         run: PYTHONPATH=src:tests python tools/check_worksheet_construction_budget_D144.py
       - name: Verify construction and lease-up calendar through dated cash per initial USD 10
         run: PYTHONPATH=src:tests python tools/check_worksheet_project_calendar_D145.py
+      - name: Verify construction draws, interest and refinancing payoff through dated cash per initial USD 10
+        run: PYTHONPATH=src:tests python tools/check_worksheet_construction_financing_D146.py
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v

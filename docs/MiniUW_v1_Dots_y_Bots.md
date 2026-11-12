@@ -73,3 +73,5 @@ D143 vincula C32–C36 al precio evaluado, los gastos de cierre y la obra vertic
 D144 conecta C37–C42 con partidas y aportes fechados. B04 confirma las celdas, B13 concilia el alcance del presupuesto con el calendario de aportes y B12 conserva PENDING ante discrepancias, faltantes o revisión desactualizada. [Resultados y reproducción](workbook-construction-budget-D144.md).
 
 D145 lleva C46–C47 de la confirmación B04 al calendario y la caja de B13. B12 conserva PENDING ante un dato faltante, una incompatibilidad temporal, una revisión anterior o un criterio sin confirmar. [Resultados y reproducción](workbook-project-calendar-D145.md).
+
+D146 lleva C51–C53 y las condiciones bancarias sintéticas confirmadas a los pagos de obra de B13. El saldo de principal de T68 entra en el cierre de refi y la caja del inversor refleja sólo su remanente. B12 conserva PENDING ante falta de datos, criterio, disponibilidad, vencimiento o cobertura de la cancelación. [Resultados y reproducción](workbook-construction-financing-D146.md).

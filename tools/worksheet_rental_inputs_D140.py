@@ -136,7 +136,8 @@ def rental_noi(terms, cells, values, period, commercial=None, *, window_start=No
 
 
 def run_rental_scenario(name, raw, review, rent_inputs, *, include_commercial=False, include_utilities=False,
-                        include_development=False, include_budget=False, include_calendar=False):
+                        include_development=False, include_budget=False, include_calendar=False,
+                        include_construction_financing=False):
     pending = dict(state="PENDING", cash_per_usd_10=None, capacity=None, noi_by_period={})
     if not review["calculation_inputs_ready"]:
         return pending | dict(blockers=["required_rental_cells_unconfirmed"])
@@ -182,6 +183,17 @@ def run_rental_scenario(name, raw, review, rent_inputs, *, include_commercial=Fa
                 terms["cost"] += _fraction(calendar["lease_up_funding"])
             cost_source = f"sha256:{sha(encoded(budget))}#/equity_draws"
             draws = [draw | dict(source_ref=f"{cost_source}/{index}") for index, draw in enumerate(budget["equity_draws"])]
+        funding = None
+        if include_construction_financing:
+            from worksheet_construction_financing_D146 import staged_construction_financing
+            funding = staged_construction_financing(rent_inputs.get("construction_financing"), name, review, terms["context"],
+                                                  development, budget, calendar)
+            if funding["blockers"]:
+                return pending | dict(blockers=funding["blockers"], construction_financing=funding,
+                                      project_calendar=calendar, construction_budget=budget, development_costs=development)
+            terms["cost"] = _fraction(funding["equity_funding_through_refinance"])
+            cost_source = f"sha256:{sha(encoded(funding))}#/equity_draws"
+            draws = [draw | dict(source_ref=f"{cost_source}/{index}") for index, draw in enumerate(funding["equity_draws"])]
         periods = {}
 
         def noi_for(period):
@@ -194,7 +206,7 @@ def run_rental_scenario(name, raw, review, rent_inputs, *, include_commercial=Fa
         result = financed_cash(terms["context"], terms["cost"], cost_source,
                                terms["principal"], terms["cap"],
                                lambda period: operating if period == OPERATING_PERIOD else noi_for(period),
-                               construction_draws=draws, calendar=calendar)
+                               construction_draws=draws, calendar=calendar, construction_financing=funding)
     except (ValueError, TypeError, KeyError) as error:
         return pending | dict(blockers=[str(error)], cell_sources=cells)
     if commercial is not None:
@@ -206,6 +218,8 @@ def run_rental_scenario(name, raw, review, rent_inputs, *, include_commercial=Fa
         result["construction_budget"] = budget
     if calendar is not None:
         result["project_calendar"] = calendar
+    if funding is not None:
+        result["construction_financing"] = funding
     return result | dict(noi_by_period=periods, cell_sources=cells, comps_evidence=terms["comps"], rent_basis=terms["basis"])
 
 
@@ -228,7 +242,7 @@ def screen(case, views, blockers, *, period_ref=PERIOD):
 
 
 def render(views, result, *, include_commercial=False, include_utilities=False, include_development=False,
-           include_budget=False, include_calendar=False):
+           include_budget=False, include_calendar=False, include_construction_financing=False):
     lines = [(f"Simulación por múltiplo de equity | {result} | Decisión real PENDING", True)]
     for name, view in views.items():
         accrued = view["noi_by_period"].get(OPERATING_PERIOD)
@@ -240,6 +254,11 @@ def render(views, result, *, include_commercial=False, include_utilities=False, 
             lines.append((f"Fin de obra {calendar['construction_finish']} | TCO {calendar['tco_date']} | "
                           f"Estabilización {calendar['stabilization_date']}", False))
             lines.append((f"Refi prevista {calendar['refinance_date']} | Venta prevista {calendar['sale_date']}", False))
+        if include_construction_financing and view.get("construction_financing", {}).get("state") == "computed_synthetic":
+            funding = view["construction_financing"]
+            totals = funding["debt_run"]["totals"]
+            lines.append((f"Obra | Deuda desembolsada USD {money(totals['gross_draws'])} | Interés USD "
+                          f"{money(totals['interest_due'])} | Comisión USD {money(funding['origination_fee'])}", False))
         if include_calendar and cash is None:
             lines.append((f"Pendiente por {view['blockers'][0][:105]}", False))
         if accrued and accrued["noi"] is not None and not include_calendar:
@@ -258,15 +277,22 @@ def render(views, result, *, include_commercial=False, include_utilities=False, 
             lines.append((f"Presupuesto USD {money(budget['total_development_cost'])} | Soft meses 1-3 USD "
                           f"{money(budget['upfront_soft'])} | Saldo soft USD {money(budget['remaining_soft'])}", False))
         if cash is not None:
-            for event in cash["events"]:
-                if _fraction(event["amount"]):
-                    label = "Aporte para estabilización" if event["event_id"] == "lease-up-funding" else LABELS[event["category"]]
-                    lines.append((f"{event['date']} | {label} USD {money(event['amount'])}", False))
+            events = [event for event in cash["events"] if _fraction(event["amount"])]
+            for index, event in enumerate(events):
+                if include_construction_financing and len(events) > 12 and 6 <= index < len(events) - 5:
+                    if index == 6:
+                        lines.append(("Fechas intermedias de aportes en el expediente de cálculo", False))
+                    continue
+                label = "Aporte para estabilización" if event["event_id"] == "lease-up-funding" else LABELS[event["category"]]
+                lines.append((f"{event['date']} | {label} USD {money(event['amount'])}", False))
             lines.append((f"Aportado USD {money(cash['total_contributions'])} | Sin recuperar USD {money(cash['unrecovered_after_sale'])}", False))
     label = "D142 | C25-C28" if include_utilities else "D141 | C7-C21" if include_commercial else "D140 | C7-C15"
     if include_development:
         label = "D143 | C32-C36"
     spacing = 17 if include_development else 19 if include_utilities else 21
+    if include_construction_financing:
+        return render_page("D146 | C51-C53", lines, 12, "MINI-UW | SI INVIERTO USD 10, ¿CUÁNTO COBRO Y CUÁNDO?",
+                           "Deuda de obra, aportes y cobros | Piloto sintético")
     if include_calendar:
         return render_page("D145 | C46-C47", lines, 16, "MINI-UW | SI INVIERTO USD 10, ¿CUÁNTO COBRO Y CUÁNDO?",
                            "Obra, estabilización, aportes y cobros | Piloto sintético")
@@ -278,14 +304,16 @@ def render(views, result, *, include_commercial=False, include_utilities=False, 
 
 
 def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, include_commercial=False, include_utilities=False,
-                      include_development=False, include_budget=False, include_calendar=False):
+                      include_development=False, include_budget=False, include_calendar=False,
+                      include_construction_financing=False):
     hashes = object_or_empty(case.get("workbook_sha256"))
     review = review_native_mapping(case.get("native_mapping"), workbooks, hashes, calculation_fields=FIELDS)
     revision = review_revision(case, current_revision_raw)
     views = {name: run_rental_scenario(name, workbooks[name], review["scenarios"][name], case.get("rent_inputs"),
                                       include_commercial=include_commercial, include_utilities=include_utilities,
                                       include_development=include_development, include_budget=include_budget,
-                                      include_calendar=include_calendar)
+                                      include_calendar=include_calendar,
+                                      include_construction_financing=include_construction_financing)
              for name in SCENARIOS}
     blockers = [f"B04:{reason}" for reason in review["blockers"]] + [f"B12:{reason}" for reason in revision["blockers"]]
     blockers += [f"{name}:{reason}" for name, view in views.items() for reason in view["blockers"]]
@@ -293,10 +321,14 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
     if include_calendar:
         from worksheet_project_calendar_D145 import LIFECYCLE
         period_ref = LIFECYCLE
+    if include_construction_financing:
+        from worksheet_construction_financing_D146 import LIFECYCLE
+        period_ref = LIFECYCLE
     screening = screen(case, views, blockers, period_ref=period_ref)
     simulation = screening["simulation_result"]
     pdf = render(views, simulation, include_commercial=include_commercial, include_utilities=include_utilities,
-                 include_development=include_development, include_budget=include_budget, include_calendar=include_calendar)
+                 include_development=include_development, include_budget=include_budget, include_calendar=include_calendar,
+                 include_construction_financing=include_construction_financing)
     profile = "synthetic_native_residential_and_commercial_rent" if include_commercial else PROFILE
     if include_utilities:
         profile = "synthetic_native_rent_and_utility_expenses"
@@ -306,6 +338,8 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
         profile = "synthetic_native_rent_and_construction_budget"
     if include_calendar:
         profile = "synthetic_native_project_calendar"
+    if include_construction_financing:
+        profile = "synthetic_native_construction_financing"
     return dict(profile=profile, state="PENDING" if simulation == "PENDING" else "computed_synthetic_scenario_cash",
                 case_sha256=case_sha256, decision="PENDING", simulation_result=simulation,
                 real_decisions_enabled=False, deployment_enabled=False, personal_investor_return=None,

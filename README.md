@@ -4,6 +4,7 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D146 conecta los desembolsos de deuda y los intereses de obra con los aportes y la refinanciación por USD 10. [Resultados y reproducción](docs/workbook-construction-financing-D146.md).
 - D145 conecta C46–C47 con el fin de obra, la estabilización y las fechas de aportes y cobros por USD 10. [Resultados y reproducción](docs/workbook-project-calendar-D145.md).
 - D144 conecta C37–C42 con el presupuesto de obra y los aportes fechados por USD 10 en Base y Downside. [Resultados y reproducción](docs/workbook-construction-budget-D144.md).
 - D143 conecta C32–C36 con terreno, cierre y obra vertical y calcula los aportes y cobros por USD 10 en ambos escenarios. [Resultados y reproducción](docs/workbook-development-inputs-D143.md).
