@@ -77,3 +77,5 @@ D145 lleva C46–C47 de la confirmación B04 al calendario y la caja de B13. B12
 D146 lleva C51–C53 y las condiciones bancarias sintéticas confirmadas a los pagos de obra de B13. El saldo de principal de T68 entra en el cierre de refi y la caja del inversor refleja sólo su remanente. B12 conserva PENDING ante falta de datos, criterio, disponibilidad, vencimiento o cobertura de la cancelación. [Resultados y reproducción](workbook-construction-financing-D146.md).
 
 D147 registra los siete Dots en la corrida del motor D146. B05–B09 cotejan el área y la cotización vertical que usa cada escenario. B10 y B11 verifican una copia oficial local a la fecha del caso. B16 vuelve a calcular el expediente desde los archivos guardados. B17 prueba la versión por separado. [Resultados y reproducción](workbook-documented-finance-D147.md).
+
+D148 conecta C57–C59 con B04 y B13. La evidencia registra el alcance de los gastos, el EGI residencial de cada período y el inventario asegurado. B12 conserva PENDING si falta la base o si los servicios exceden el total controlable. [Resultados y reproducción](workbook-operating-costs-D148.md).

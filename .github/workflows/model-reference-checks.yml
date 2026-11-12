@@ -315,5 +315,7 @@ jobs:
         run: PYTHONPATH=src:tests python tools/check_worksheet_construction_financing_D146.py
       - name: Verify the document and D146 cash gates together per initial USD 10
         run: OMP_THREAD_LIMIT=1 PYTHONPATH=src:tests python tools/check_worksheet_documented_finance_D147.py
+      - name: Verify controllable expense, management and insurance through NOI and dated cash
+        run: OMP_THREAD_LIMIT=1 PYTHONPATH=src:tests python tools/check_worksheet_operating_costs_D148.py
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v

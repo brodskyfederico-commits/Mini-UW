@@ -1688,3 +1688,7 @@ B13 enlaza los pagos de obra con los desembolsos de T68, reconcilia los aportes 
 ## D147 — Validación documental y motor D146 en una corrida
 
 La cadena coteja A101 y A601 con texto y OCR, compara la superficie y la cotización vertical por escenario con GC y verifica la copia oficial a la fecha del caso. El presupuesto y la deuda enlazan el cotejo por hash. Catorce corridas verifican la caja por USD 10 y doce casos PENDING. B16 rechaza un PDF reemplazado con un manifiesto recalculado. [Resultados y reproducción](docs/workbook-documented-finance-D147.md).
+
+## D148 — C57–C59 conectadas al NOI y a la caja
+
+C57 concilia el subtotal de servicios con el presupuesto controlable. C58 usa el EGI residencial que incluye C13. C59 usa el inventario de unidades aseguradas. Doce corridas verifican el efecto de cada celda, la capacidad y los cobros por USD 10, con siete casos PENDING. [Resultados y reproducción](docs/workbook-operating-costs-D148.md).
