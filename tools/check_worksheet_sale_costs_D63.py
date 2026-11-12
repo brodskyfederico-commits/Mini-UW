@@ -25,9 +25,9 @@ SALE_CELLS = {"C67": "exit_cap", "C68": "sale_cost_fraction"}
 
 
 def calculate(case, worksheet, fixture, base, noi_raw, noi, initial_spec, rates=(), with_report=False, *,
-              capacity_first=False, include_sizing_service=False):
+              capacity_first=False, include_sizing_service=False, allow_additional_fields=False):
     checked = worksheet_parameters(worksheet, fixture["scenario_context"], fixture["worksheet_as_of_UTC"],
-                                   SALE_CELLS)
+                                   SALE_CELLS, allow_additional_fields=allow_additional_fields)
     result = dict(state="PENDING", decision="PENDING", worksheet=checked, candidate_price=None,
                   total_cost=None, cash=None, blockers=checked["blockers"])
     if rates:
@@ -92,7 +92,7 @@ def calculate(case, worksheet, fixture, base, noi_raw, noi, initial_spec, rates=
         recovered = recover_sale_revision(evidence, run.exit_sale_run.payload["sale_revision_spec_json"].encode(), revision)
         require(recovered is not None, "Could not recover the costed sale evidence")
         report = run_case(recovered, worksheet, fixture["scenario_context"], fixture["worksheet_as_of_UTC"],
-                          additional_cells=SALE_CELLS)
+                          additional_cells=SALE_CELLS, allow_additional_fields=allow_additional_fields)
         require(report["return_story"] == investor, "The report ledger differs from the costed sale ledger")
         report["allocation_parent"] = ledger(investor, json.loads(revision.guarded_run.compiled_raw))
         result["report"] = report

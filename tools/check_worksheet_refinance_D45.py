@@ -35,7 +35,8 @@ SCHEMA = "miniuw.synthetic-worksheet-refinance.v1"
 CAPACITY_CELLS = {"C66": "cap_rate", "C71": "maximum_ltv", "C72": "minimum_dscr"}
 
 
-def worksheet_parameters(raw, context, as_of, additional_cells=None, *, include_source_cells=False):
+def worksheet_parameters(raw, context, as_of, additional_cells=None, *, include_source_cells=False,
+                         allow_additional_fields=False):
     mapped_cells = CAPACITY_CELLS | (additional_cells or {})
     sheet = inspect_synthetic_input_sheet(raw)
     cells = sheet.cells
@@ -52,7 +53,7 @@ def worksheet_parameters(raw, context, as_of, additional_cells=None, *, include_
     for field in layout()["fields"]:
         cell = field["value_cell"]
         if cell not in mapped_cells:
-            if cells[cell]["kind"] not in ("missing", "blank"):
+            if not allow_additional_fields and cells[cell]["kind"] not in ("missing", "blank"):
                 blockers.append(f"{cell}:outside_worksheet_refinance_profile")
             continue
         unit = cells[field["unit_cell"]]["literal"]
@@ -94,10 +95,12 @@ def capacity_diagnostics(bound):
                          return_blockers=bound.guarded_run.payload["blockers"])
 
 
-def run_case(evidence, worksheet, context, as_of, monthly_rate=None, additional_cells=None):
+def run_case(evidence, worksheet, context, as_of, monthly_rate=None, additional_cells=None, *,
+             allow_additional_fields=False):
     source = json.loads(evidence.capacity_spec_raw)
     require(source["context"] == context, "Worksheet and refinance case contexts differ")
-    check = worksheet_parameters(worksheet, context, as_of, additional_cells)
+    check = worksheet_parameters(worksheet, context, as_of, additional_cells,
+                                 allow_additional_fields=allow_additional_fields)
     result = dict(state="PENDING", decision="PENDING", context=context, evaluated_as_of_UTC=as_of,
                   worksheet=check, base_evidence_sha256=evidence_fingerprint(evidence),
                   capacity=None, refinance=None, return_story=None, risk=None,

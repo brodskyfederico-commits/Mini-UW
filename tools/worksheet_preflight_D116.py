@@ -28,14 +28,15 @@ CELL_REASONS = {
 }
 
 
-def preflight(raw, deal_id, snapshot):
+def preflight(raw, deal_id, snapshot, *, allow_additional_fields=False):
     require(re.fullmatch(r"SYNTHETIC-[A-Za-z0-9_-]{1,80}", deal_id),
             "Se requiere un identificador de caso sintético.")
     require(re.fullmatch(r"[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z", snapshot),
             "Se requiere una fecha de corte UTC explícita en formato ISO.")
     datetime.fromisoformat(snapshot.removesuffix("Z"))
 
-    checked = worksheet_parameters(raw, {"deal_id": deal_id}, snapshot, SALE_CELLS, include_source_cells=True)
+    checked = worksheet_parameters(raw, {"deal_id": deal_id}, snapshot, SALE_CELLS, include_source_cells=True,
+                                   allow_additional_fields=allow_additional_fields)
     cells = checked["source_cells"]
     items = []
     for address, label, expected in (("B3", "Identificador de caso", deal_id), ("E3", "Fecha de corte UTC", snapshot)):

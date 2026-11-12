@@ -12,7 +12,8 @@ from miniuw_foundation.scheduled_expense_case import sha
 from miniuw_foundation.screening import SCHEMA, simulate_screening
 from miniuw_worksheet_v1 import (WORKBOOK_CAPACITY_SCHEMA, WORKBOOK_CROPPED_PLAN_SET_CHAIN_SCHEMA, WORKBOOK_CURRENT_CHAIN_SCHEMAS,
                                  WORKBOOK_DUAL_ROTATED_PLAN_SET_CHAIN_SCHEMA, WORKBOOK_FUNDING_PILOT_SCHEMAS,
-                                 WORKBOOK_LOCAL_CHAIN_SCHEMAS, WORKBOOK_MIXED_CHAIN_SCHEMA, WORKBOOK_OPERATING_PILOT_SCHEMAS,
+                                 WORKBOOK_LOCAL_CHAIN_SCHEMAS, WORKBOOK_MIXED_CHAIN_SCHEMA, WORKBOOK_NATIVE_MAPPING_CHAIN_SCHEMA,
+                                 WORKBOOK_OPERATING_PILOT_SCHEMAS,
                                  WORKBOOK_OVERLAY_CHAIN_SCHEMA, WORKBOOK_PLAN_CHAIN_SCHEMA, WORKBOOK_PLAN_SET_CHAIN_SCHEMA,
                                  WORKBOOK_RETURN_PILOT_SCHEMAS,
                                  WORKBOOK_ROTATED_OVERLAY_CHAIN_SCHEMA, WORKBOOK_ROTATED_PLAN_SET_CHAIN_SCHEMA,
@@ -30,7 +31,8 @@ RESULT_LABELS = {"PASS_CONDITION": "PASS", "FAIL_CONDITION": "FAIL", "BAND": "PE
                  "PENDING": "PENDING", "CONFLICT": "PENDING"}
 SOURCE_LABELS = {"workbook_missing": "Falta la planilla del escenario.",
                  "workbook_hash_missing": "Falta vincular la planilla al caso.",
-                 "workbook_hash_mismatch": "La planilla no coincide con la fuente declarada."}
+                 "workbook_hash_mismatch": "La planilla no coincide con la fuente declarada.",
+                 "native_financial_inputs_unconfirmed": "Falta confirmar una entrada de cálculo de la planilla."}
 
 
 def metric_values(name, scenario):
@@ -168,16 +170,20 @@ def run_screening(case, scenarios, context, *, extended=False, interval_irr=Fals
                          criteria_source_blockers=[] if revision else ["criteria_revision_missing"])
 
 
-def read_scenario(spec, raw, expected, *, include_sizing_service=False, include_capital_bases=False):
+def read_scenario(spec, raw, expected, *, include_sizing_service=False, include_capital_bases=False,
+                  native_review=None):
     if raw is None:
         blocker = "workbook_missing"
     elif expected is None:
         blocker = "workbook_hash_missing"
     elif sha(raw) != expected:
         blocker = "workbook_hash_mismatch"
+    elif native_review is not None and not native_review["calculation_inputs_ready"]:
+        blocker = "native_financial_inputs_unconfirmed"
     else:
         result, _ = build_intake_case(spec, sha(encoded(spec)), raw, capacity_first=True,
-                                      include_sizing_service=include_sizing_service, include_capital_bases=include_capital_bases)
+                                      include_sizing_service=include_sizing_service, include_capital_bases=include_capital_bases,
+                                      allow_additional_fields=native_review is not None)
         return result | {"expected_workbook_sha256": expected, "source_blockers": []}
     return dict(state="PENDING", cash_per_usd_10=None, expected_workbook_sha256=expected,
                 received_workbook_sha256=None if raw is None else sha(raw), source_blockers=[blocker])
@@ -323,6 +329,8 @@ def build_pilot(case, case_sha256, workbooks, *, extended=False, interval_irr=Fa
         optional.add("return_inputs")
     if schema in WORKBOOK_LOCAL_CHAIN_SCHEMAS:
         optional.add("local_sources")
+    if schema == WORKBOOK_NATIVE_MAPPING_CHAIN_SCHEMA:
+        optional.add("native_mapping")
     require(required <= case.keys() <= required | optional,
             "An explicit pilot workbook case and source hashes are required")
     spec = case["worksheet_case"]
@@ -334,9 +342,14 @@ def build_pilot(case, case_sha256, workbooks, *, extended=False, interval_irr=Fa
     require(isinstance(hashes, dict) and hashes.keys() <= set(SCENARIOS)
             and all(value is None or isinstance(value, str) and re.fullmatch(r"[0-9a-f]{64}", value)
                     for value in hashes.values()), "Use explicit worksheet SHA-256 values or missing entries")
+    mapping_review = None
+    if schema == WORKBOOK_NATIVE_MAPPING_CHAIN_SCHEMA:
+        from worksheet_native_mapping_D139 import review_native_mapping
+        mapping_review = review_native_mapping(case.get("native_mapping"), workbooks, hashes)
     scenarios = {name: read_scenario(spec, workbooks[name], hashes.get(name),
                                    include_sizing_service=schema in WORKBOOK_OPERATING_PILOT_SCHEMAS,
-                                   include_capital_bases=schema in WORKBOOK_RETURN_PILOT_SCHEMAS)
+                                   include_capital_bases=schema in WORKBOOK_RETURN_PILOT_SCHEMAS,
+                                   native_review=mapping_review["scenarios"][name] if mapping_review is not None else None)
                  for name in SCENARIOS}
     screening = run_screening(case, scenarios, json.loads(origin_raw)["scenario_context"],
                               extended=extended, interval_irr=interval_irr, yield_metrics=yield_metrics,
@@ -364,12 +377,14 @@ def build_pilot(case, case_sha256, workbooks, *, extended=False, interval_irr=Fa
             pdf_plan = read_overlay_plan(plan_raw, object_or_empty(local_sources).get("plan_pdf"),
                                          require_rotation=schema == WORKBOOK_ROTATED_OVERLAY_CHAIN_SCHEMA)
         elif schema in (WORKBOOK_PLAN_SET_CHAIN_SCHEMA, WORKBOOK_ROTATED_PLAN_SET_CHAIN_SCHEMA,
-                        WORKBOOK_DUAL_ROTATED_PLAN_SET_CHAIN_SCHEMA, WORKBOOK_CROPPED_PLAN_SET_CHAIN_SCHEMA):
+                        WORKBOOK_DUAL_ROTATED_PLAN_SET_CHAIN_SCHEMA, WORKBOOK_CROPPED_PLAN_SET_CHAIN_SCHEMA,
+                        WORKBOOK_NATIVE_MAPPING_CHAIN_SCHEMA):
             from worksheet_plan_set_D135 import (CROPPED_PROFILE, DUAL_ROTATED_PROFILE, PROFILE as PLAN_SET_PROFILE,
                                                  ROTATED_PROFILE, read_plan_set)
             profile = {WORKBOOK_PLAN_SET_CHAIN_SCHEMA: PLAN_SET_PROFILE, WORKBOOK_ROTATED_PLAN_SET_CHAIN_SCHEMA: ROTATED_PROFILE,
                        WORKBOOK_DUAL_ROTATED_PLAN_SET_CHAIN_SCHEMA: DUAL_ROTATED_PROFILE,
-                       WORKBOOK_CROPPED_PLAN_SET_CHAIN_SCHEMA: CROPPED_PROFILE}[schema]
+                       WORKBOOK_CROPPED_PLAN_SET_CHAIN_SCHEMA: CROPPED_PROFILE,
+                       WORKBOOK_NATIVE_MAPPING_CHAIN_SCHEMA: CROPPED_PROFILE}[schema]
             pdf_plan = read_plan_set(plan_raw, object_or_empty(local_sources).get("plan_pdf"), profile=profile)
         local_review = review_local_sources(local_sources, hashes, pdf_plan=pdf_plan)
         screening["worksheet_simulation_result"] = screening["simulation_result"]
@@ -400,6 +415,10 @@ def build_pilot(case, case_sha256, workbooks, *, extended=False, interval_irr=Fa
             local_milestone, version_suite = "D137", "check_worksheet_plan_dual_rotation_D137.py"
         elif schema == WORKBOOK_CROPPED_PLAN_SET_CHAIN_SCHEMA:
             local_milestone, version_suite = "D138", "check_worksheet_plan_cropped_set_D138.py"
+        elif schema == WORKBOOK_NATIVE_MAPPING_CHAIN_SCHEMA:
+            local_milestone, version_suite = "D139", "check_worksheet_native_mapping_D139.py"
+            evidence["native_mapping_review"] = mapping_review
+            blockers = blockers + [f"B04:{reason}" for reason in mapping_review["blockers"]]
         if blockers:
             screening["simulation_result"] = "PENDING"
             screening["simulation_blockers"] = sorted(set(screening["simulation_blockers"] + blockers))
@@ -414,6 +433,9 @@ def build_pilot(case, case_sha256, workbooks, *, extended=False, interval_irr=Fa
         pipeline["local_review"] = local_review
     if revision_review is not None:
         pipeline["revision_review"] = revision_review
+    if mapping_review is not None:
+        pipeline["native_mapping_review"] = mapping_review
+        pipeline["pipeline"]["stages"][1]["native_mapping_state"] = mapping_review["state"]
     return dict(profile=PROFILE, scope="synthetic_aggregate_equity", decision="PENDING",
                 state="PENDING" if simulation == "PENDING" else "computed_synthetic_pilot",
                 simulation_result=simulation, case_sha256=case_sha256, scenarios=scenarios,

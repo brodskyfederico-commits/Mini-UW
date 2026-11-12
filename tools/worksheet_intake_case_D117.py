@@ -88,7 +88,7 @@ def render(result, *, show_capacity=False):
 
 
 def build_intake_case(case, case_sha256, workbook_raw, *, capacity_first=False, include_sizing_service=False,
-                      include_capital_bases=False):
+                      include_capital_bases=False, allow_additional_fields=False):
     _exact(case, {"schema", "source_fixture_sha256", "monthly_discount_rate"})
     raw = local_file(ROOT, SOURCE_FIXTURE).read_bytes()
     require(sha(raw) == case["source_fixture_sha256"], "The synthetic case basis has changed")
@@ -98,7 +98,7 @@ def build_intake_case(case, case_sha256, workbook_raw, *, capacity_first=False, 
     require(rate in rates, "An explicit rate from the synthetic monthly grid is required")
     context = origin["scenario_context"]
     as_of = origin["worksheet_as_of_UTC"]
-    check = preflight(workbook_raw, context["deal_id"], as_of)
+    check = preflight(workbook_raw, context["deal_id"], as_of, allow_additional_fields=allow_additional_fields)
     result = dict(profile=PROFILE, scope="synthetic_aggregate_equity", state="PENDING", decision="PENDING",
                   case_sha256=case_sha256, source_fixture_sha256=sha(raw), preflight=check,
                   monthly_discount_rate=rational(rate), context=context, evaluated_as_of_UTC=as_of,
@@ -111,7 +111,8 @@ def build_intake_case(case, case_sha256, workbook_raw, *, capacity_first=False, 
         milestone = "D118" if capacity_first else "D117"
         request = dict(id=f"{milestone}-{check['workbook_sha256'][:16]}", unresolved_tax=False)
         calculated = calculate(request, workbook_raw, origin, evidence, noi_raw, noi, spec, (rate,),
-                               with_report=True, capacity_first=capacity_first, include_sizing_service=include_sizing_service)
+                               with_report=True, capacity_first=capacity_first, include_sizing_service=include_sizing_service,
+                               allow_additional_fields=allow_additional_fields)
         require(calculated["worksheet"]["workbook_sha256"] == check["workbook_sha256"],
                 "The calculation did not use the preflight workbook")
         result.update(financial_calculation_run=True, calculation_blockers=calculated["blockers"],

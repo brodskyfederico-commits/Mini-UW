@@ -1652,3 +1652,7 @@ El caso principal usa A101 a 270° y A601 a 90°. Una segunda corrida cambia las
 ## D138 — Recorte de un escaneo con las dos hojas giradas
 
 El OCR coteja la parte visible de A101 o A601 y verifica que el recorte conserve completas las líneas requeridas. Los dos recortes que conservan las líneas concilian 1.000 m² con GC. Siete casos dejan PENDING ante datos ocultos o parciales, discrepancias, duplicidad de superficie oculta o un borde que no coincide con píxeles completos. [Casos y reproducción](docs/workbook-plan-cropped-set-D138.md).
+
+## D139 — Mapeo de las 55 celdas de la planilla original
+
+Se cotejan celdas, unidades y aplicabilidad con el original y los contratos D04, D08 y D10. B04 registra 55 confirmaciones por escenario en el caso completo. Cinco campos alimentan el cálculo del piloto. Los demás conservan su destino propuesto y la validación financiera real PENDING. Se prueban faltantes, confirmación de otra copia, fórmula con caché, no aplicabilidad, criterio ausente y recálculo al cambiar C67. [Matriz, casos y reproducción](docs/workbook-native-mapping-D139.md).

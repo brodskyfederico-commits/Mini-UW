@@ -28,6 +28,8 @@ def case_revision(case):
         gc_criterion=local.get("gc_criterion"),
         investment_rules=dict(rules=case.get("rules"), aggregation_rule=case.get("aggregation_rule")),
     )
+    if "native_mapping" in case:
+        payloads["financial_sources"]["native_mapping"] = case["native_mapping"]
     return dict(local_revision=local.get("revision"), criteria_revision=case.get("criteria_revision"),
                 fingerprints={role: sha(encoded(value)) for role, value in payloads.items()})
 

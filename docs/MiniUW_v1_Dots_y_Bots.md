@@ -59,3 +59,5 @@ D136 verifica la orientación de A601 después de identificarla y exige coincide
 D137 aplica el cotejo a A101 y A601. Cada bot verifica la orientación declarada para su hoja y compara las dos lecturas de superficie antes de B07. [Alcance y resultados](workbook-plan-dual-rotation-D137.md).
 
 D138 aplica el recorte del PDF a cada escaneo antes del cotejo. Guarda la región visible y sus huellas. El dictamen queda PENDING si la identidad o la superficie requerida quedan fuera del recorte. [Alcance y resultados](workbook-plan-cropped-set-D138.md).
+
+D139 vincula B04 con las 55 celdas de la planilla original en dos copias sintéticas. B12 mantiene PENDING el dictamen ante un campo sin confirmar o un criterio faltante. [Alcance y resultados](workbook-native-mapping-D139.md).
