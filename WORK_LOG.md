@@ -1628,3 +1628,7 @@ B05 y B06 leen superficies declaradas desde dos imágenes de un PDF sin capa de 
 ## D132 — Planos PDF mixtos
 
 El caso declara qué página y método usa cada lector. Se prueban ambas asignaciones de texto y OCR, la conservación de citas discrepantes y el bloqueo por área ausente, texto superpuesto o motor faltante. La auditoría reproduce la conciliación y los cobros por USD 10. [Casos y reproducción](docs/workbook-plan-mixed-D132.md).
+
+## D133 — Texto superpuesto a la imagen del plano
+
+B06 coteja las dos lecturas de A601 y guarda sus citas por separado. El OCR procesa los píxeles originales del escaneo, incluso cuando se dibuja texto visible encima de ellos. Se prueban coincidencia, dos direcciones de discrepancia, faltantes en ambas capas y falta de OCR. Las seis corridas conservan los cobros por USD 10 y la decisión real PENDING. [Casos y reproducción](docs/workbook-plan-overlay-D133.md).

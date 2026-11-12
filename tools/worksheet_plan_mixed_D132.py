@@ -38,6 +38,10 @@ def text_lines(page):
     return [line.strip() for line in (page.extract_text() or "").splitlines()]
 
 
+def matching_sheet_identity(lines, sheet):
+    return lines.count(MARKER) == 1 and [line for line in lines if line.startswith("SHEET ")] == [f"SHEET {sheet}"]
+
+
 def read_mixed_sheet(page, sheet, route, ocr, digest, plan_ref):
     index, method = route["page"], route["method"]
     citation = dict(sheet=sheet, page=index, extraction_method=method, source_sha256=digest)
@@ -56,7 +60,7 @@ def read_mixed_sheet(page, sheet, route, ocr, digest, plan_ref):
                 return check(blocker, **citation)
             recognized = recognize(image, *command)
             lines = [line["text"] for line in recognized]
-        if lines.count(MARKER) != 1 or [line for line in lines if line.startswith("SHEET ")] != [f"SHEET {sheet}"]:
+        if not matching_sheet_identity(lines, sheet):
             return check("mixed_sheet_identity_missing_or_ambiguous", **citation)
         if method == "text":
             return sheet_area([(index, lines)], sheet, label, pattern, digest, plan_ref) | citation

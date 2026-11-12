@@ -27,14 +27,19 @@ def valid_ocr_options(ocr):
             and type(ocr["minimum_word_confidence"]) is int and 0 < ocr["minimum_word_confidence"] <= 100)
 
 
-def full_page_image(page):
+def full_page_image(page, *, allow_text_layer=False):
     contents = page.get_contents()
     if contents is None:
         return None
     operations = contents.operations
-    if [op for _, op in operations] != [b"q", b"cm", b"Do", b"Q"]:
+    image_ops = operations[:4]
+    if [op for _, op in image_ops] != [b"q", b"cm", b"Do", b"Q"]:
         return None
-    matrix, draw = operations[1][0], operations[2][0]
+    tail = [op for _, op in operations[4:]]
+    if tail and (not allow_text_layer or tail[0] != b"BT" or tail[-1] != b"ET"
+                 or any(op not in (b"Tf", b"Tr", b"Tm", b"Tj") for op in tail[1:-1])):
+        return None
+    matrix, draw = image_ops[1][0], image_ops[2][0]
     extent = (page.mediabox.width, 0, 0, page.mediabox.height, 0, 0)
     if (tuple(matrix) != extent or len(draw) != 1 or tuple(page.mediabox.lower_left) != (0, 0)
             or tuple(page.cropbox) != tuple(page.mediabox)

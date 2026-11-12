@@ -285,5 +285,7 @@ jobs:
         run: PYTHONPATH=src python tools/check_worksheet_plan_scan_D131.py
       - name: Verify mixed synthetic plan sheets and preserve independent readings
         run: PYTHONPATH=src python tools/check_worksheet_plan_mixed_D132.py
+      - name: Verify synthetic PDF text against OCR of the underlying image
+        run: PYTHONPATH=src python tools/check_worksheet_plan_overlay_D133.py
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v

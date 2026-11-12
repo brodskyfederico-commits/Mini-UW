@@ -4,6 +4,7 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D133 coteja el texto superpuesto con el OCR de la imagen original de una misma hoja. Conserva ambas lecturas y deja PENDING ante faltantes o discrepancias. [Casos y reproducción](docs/workbook-plan-overlay-D133.md).
 - D132 prueba un PDF mixto con texto y OCR en hojas separadas. Conserva las dos citas y bloquea discrepancias o lecturas incompletas. [Casos y reproducción](docs/workbook-plan-mixed-D132.md).
 - D131 lee por OCR dos hojas de un plano escaneado sintético, cita los renglones y conserva PENDING ante faltantes, discrepancias o confianza insuficiente. [Casos y reproducción](docs/workbook-plan-scan-D131.md).
 - D130 conecta B05 y B06 a dos hojas de un plano PDF sintético y prueba la conciliación con B07 y GC. [Casos y reproducción](docs/workbook-plan-pdf-D130.md).
