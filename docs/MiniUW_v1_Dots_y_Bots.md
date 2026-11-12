@@ -101,3 +101,5 @@ D157 lleva dos páginas de crédito de obra a B08 y B13. El cotejo entra en la e
 D158 agrega lectura OCR de cinco páginas financieras sintéticas a B03 y B08. B09 y B13 reciben citas y huellas de imágenes. Un dato omitido, dos lecturas incompatibles o confianza insuficiente conservan PENDING. [Resultados y reproducción](workbook-evidence-scan-D158.md).
 
 D159 amplía B03 y B08 a giros de 90°, 180° y 270° y recortes alineados a píxeles. B12 bloquea los datos ocultos, truncados o en conflicto. B16 reproduce la corrida desde los archivos guardados. [Resultados y reproducción](workbook-evidence-oriented-D159.md).
+
+D160 amplía el formato de las páginas financieras de B03 y B08 a imágenes RGB y en escala de grises. Conserva las huellas de origen y de la conversión. B12 retiene los flujos afectados por faltantes, discrepancias, confianza insuficiente o formato sin soporte. [Resultados y reproducción](workbook-evidence-color-D160.md).

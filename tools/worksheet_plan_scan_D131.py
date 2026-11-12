@@ -27,7 +27,7 @@ def valid_ocr_options(ocr):
             and type(ocr["minimum_word_confidence"]) is int and 0 < ocr["minimum_word_confidence"] <= 100)
 
 
-def full_page_image(page, *, allow_text_layer=False, allowed_rotation=0, allow_crop_box=False):
+def full_page_raster(page, *, allow_text_layer=False, allowed_rotation=0, allow_crop_box=False, allow_rgb=False):
     contents = page.get_contents()
     if contents is None:
         return None
@@ -50,15 +50,26 @@ def full_page_image(page, *, allow_text_layer=False, allowed_rotation=0, allow_c
         return None
     image = resources[draw[0]]
     width, height = image.get("/Width"), image.get("/Height")
-    if (image.get("/Subtype") != "/Image" or image.get("/ColorSpace") != "/DeviceGray"
+    color_space = image.get("/ColorSpace")
+    channels = 1 if color_space == "/DeviceGray" else 3 if allow_rgb and color_space == "/DeviceRGB" else None
+    if (image.get("/Subtype") != "/Image" or channels is None
             or image.get("/BitsPerComponent") != 8 or image.get("/Filter") != "/FlateDecode"
             or any(key in image for key in ("/Decode", "/Mask", "/SMask", "/ImageMask"))
             or not isinstance(width, int) or not isinstance(height, int)
             or width <= 0 or height <= 0 or width * height > MAX_SCAN_PIXELS):
         return None
     pixels = image.get_data()
-    if len(pixels) != width * height:
+    if len(pixels) != width * height * channels:
         return None
+    return width, height, color_space, pixels
+
+
+def full_page_image(page, *, allow_text_layer=False, allowed_rotation=0, allow_crop_box=False):
+    raster = full_page_raster(page, allow_text_layer=allow_text_layer, allowed_rotation=allowed_rotation,
+                              allow_crop_box=allow_crop_box)
+    if raster is None:
+        return None
+    width, height, _, pixels = raster
     return f"P5\n{width} {height}\n255\n".encode() + pixels
 
 

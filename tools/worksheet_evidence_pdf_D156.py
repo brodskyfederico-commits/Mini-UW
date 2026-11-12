@@ -132,14 +132,15 @@ def parse_page(role, number, lines, digest, revision, deal_id):
         return check("evidence_required_row_invalid", **citation)
 
 
-def read_evidence_pdf(raw, spec, revision, deal_id, *, include_construction=False, scanned=False, oriented=False):
+def read_evidence_pdf(raw, spec, revision, deal_id, *, include_construction=False, scanned=False, oriented=False, allow_rgb=False):
     headers = HEADERS | CONSTRUCTION_HEADERS if include_construction else HEADERS
     profile = CONSTRUCTION_PROFILE if include_construction else PROFILE
     required = {"profile", "sha256"}
     if scanned:
-        from worksheet_evidence_scan_D158 import ORIENTED_PROFILE, PROFILE as scan_profile, financial_ocr_command, scanned_evidence_page
+        from worksheet_evidence_scan_D158 import COLOR_PROFILE, ORIENTED_PROFILE, PROFILE as scan_profile
+        from worksheet_evidence_scan_D158 import financial_ocr_command, scanned_evidence_page
         from worksheet_plan_scan_D131 import valid_ocr_options
-        profile = ORIENTED_PROFILE if oriented else scan_profile
+        profile = COLOR_PROFILE if allow_rgb else ORIENTED_PROFILE if oriented else scan_profile
         required.add("ocr")
     specification = object_or_empty(spec)
     digest = None if raw is None else sha(raw)
@@ -168,7 +169,7 @@ def read_evidence_pdf(raw, spec, revision, deal_id, *, include_construction=Fals
         for number, page in enumerate(reader.pages, 1):
             if scanned:
                 role, reading = scanned_evidence_page(page, number, digest, revision, deal_id, headers, options, command,
-                                                      oriented=oriented)
+                                                      oriented=oriented, allow_rgb=allow_rgb)
                 if role is None:
                     return check(reading["blockers"][0], page_reading=reading, **inventory), {}
             else:
@@ -211,9 +212,10 @@ def bind_bank_evidence(quote, terms, principal):
                                "bank_pdf_and_worksheet_terms_disagree")
 
 
-def pdf_document_sources(source, raw, deal_id, *, include_construction=False, scanned=False, oriented=False):
+def pdf_document_sources(source, raw, deal_id, *, include_construction=False, scanned=False, oriented=False, allow_rgb=False):
     inventory, pages = read_evidence_pdf(raw, source.get("evidence_pdf"), source.get("revision"), deal_id,
-                                         include_construction=include_construction, scanned=scanned, oriented=oriented)
+                                         include_construction=include_construction, scanned=scanned,
+                                         oriented=oriented, allow_rgb=allow_rgb)
     if "documents" in source:
         inventory = check("structured_document_sources_conflict_with_pdf_profile",
                           source_file=SOURCE_FILE, observed_sha256=inventory["observed_sha256"])
@@ -246,7 +248,8 @@ def record_pdf_evidence(review, inventory, pages, *, include_construction=False)
                                  ocr_citation=next(row for row in gc["ocr"]["cited_lines"]
                                                    if row["text"].startswith(f"Vertical {name} | ")))
                     for key in ("page_rotation_clockwise", "raw_image_sha256", "ocr_region_basis",
-                                "crop_box_pdf_points", "crop_region_in_oriented_scan", "full_oriented_scan_sha256"):
+                                "crop_box_pdf_points", "crop_region_in_oriented_scan", "full_oriented_scan_sha256",
+                                "source_color_space", "source_raster_sha256", "grayscale_conversion", "grayscale_input_sha256"):
                         if key in gc:
                             quote[key] = gc[key]
     official = pages.get("official_snapshot")

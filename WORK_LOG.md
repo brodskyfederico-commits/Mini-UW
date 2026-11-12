@@ -1736,3 +1736,7 @@ B03 y B08 leen cinco imágenes sin capa de texto. El expediente conserva regione
 ## D159 — Giros y recortes de los PDF financieros
 
 B03 y B08 orientan las imágenes y leen los píxeles visibles. B16 reproduce la evidencia. Los datos ocultos o discrepantes y la geometría sin soporte dejan PENDING en cinco variantes. [Resultados y reproducción](docs/workbook-evidence-oriented-D159.md).
+
+## D160 — OCR de escaneos financieros RGB y en escala de grises
+
+El piloto registra la imagen original, la conversión y el recorte. Cinco variantes quedan PENDING por recorte, discrepancia, dato faltante, formato sin soporte o confianza insuficiente. B16 reproduce el archivo mixto. [Resultados y reproducción](docs/workbook-evidence-color-D160.md).

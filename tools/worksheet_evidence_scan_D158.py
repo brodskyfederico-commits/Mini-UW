@@ -7,11 +7,12 @@ from worksheet_local_sources_D127 import check
 from worksheet_plan_crop_D138 import citations_inside, visible_crop
 from worksheet_plan_mixed_D132 import PAGE_ERRORS, text_lines
 from worksheet_plan_overlay_D133 import RIGHT_ANGLES, rotate_scan
-from worksheet_plan_scan_D131 import full_page_image, recognize, runtime
+from worksheet_plan_scan_D131 import full_page_image, full_page_raster, recognize, runtime
 
 
 PROFILE = "SYNTHETIC-D158-scanned-financial-evidence"
 ORIENTED_PROFILE = "SYNTHETIC-D159-oriented-and-cropped-financial-evidence"
+COLOR_PROFILE = "SYNTHETIC-D160-mixed-grayscale-and-rgb-financial-evidence"
 
 
 def financial_ocr_command(options):
@@ -34,7 +35,28 @@ def ordered_rows(image, command):
     return sorted(recognize(image, *command), key=lambda row: (row["pixel_region"][1], row["pixel_region"][0]))
 
 
-def scanned_evidence_page(page, number, digest, revision, deal_id, headers, options, command, *, oriented=False):
+def color_scan_input(page, rotation):
+    raster = full_page_raster(page, allow_text_layer=True, allowed_rotation=rotation, allow_crop_box=True, allow_rgb=True)
+    if raster is None:
+        return None, {}
+    width, height, color_space, pixels = raster
+    header = f"\n{width} {height}\n255\n".encode()
+    if color_space == "/DeviceRGB":
+        raw = b"P6" + header + pixels
+        gray = bytes((299 * r + 587 * g + 114 * b + 500) // 1000
+                     for r, g, b in zip(pixels[::3], pixels[1::3], pixels[2::3], strict=True))
+        conversion = "rgb_integer_299_587_114"
+    else:
+        raw = b"P5" + header + pixels
+        gray = pixels
+        conversion = "identity"
+    pgm = b"P5" + header + gray
+    return pgm, dict(source_color_space=color_space, source_raster_sha256=sha(raw),
+                     grayscale_conversion=conversion, grayscale_input_sha256=sha(pgm))
+
+
+def scanned_evidence_page(page, number, digest, revision, deal_id, headers, options, command, *,
+                          oriented=False, allow_rgb=False):
     citation = dict(source_file=SOURCE_FILE, source_sha256=digest, page=number)
     role = None
     try:
@@ -45,12 +67,15 @@ def scanned_evidence_page(page, number, digest, revision, deal_id, headers, opti
         rotation = page.get("/Rotate", 0) if oriented else 0
         if not isinstance(rotation, int) or rotation not in (0, *RIGHT_ANGLES):
             return native_role, check("evidence_scan_rotation_unsupported", observed_rotation=rotation, **citation)
-        image = full_page_image(page, allow_text_layer=True, allowed_rotation=rotation, allow_crop_box=oriented)
+        geometry = {}
+        if allow_rgb:
+            image, geometry = color_scan_input(page, rotation)
+        else:
+            image = full_page_image(page, allow_text_layer=True, allowed_rotation=rotation, allow_crop_box=oriented)
         if image is None:
             if native_role == "official_snapshot" and text_lines(page) is not None:
                 return native_role, parse_page(native_role, number, native[1:], digest, revision, deal_id)
             return native_role, check("evidence_financial_scan_required_or_layout_unsupported", **citation)
-        geometry = {}
         full_oriented = None
         if oriented:
             geometry.update(page_rotation_clockwise=int(rotation), raw_image_sha256=sha(image),
