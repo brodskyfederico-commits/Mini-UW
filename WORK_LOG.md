@@ -1660,3 +1660,7 @@ Se cotejan celdas, unidades y aplicabilidad con el original y los contratos D04,
 ## D140 — C7–C15 conectadas a renta residencial y NOI
 
 El piloto lee las nueve celdas de Base y Downside. Usa C12 como evidencia de comparables y lleva los otros ingresos de C13 al NOI con una población elegible explícita. Reproduce el impacto en capacidad, operación y venta por USD 10 con la financiación de D108. Se prueba el cambio aislado de C14 y el bloqueo por fuente, criterio o capacidad. [Resultados y reproducción](docs/workbook-rental-inputs-D140.md).
+
+## D141 — C16–C21 conectadas a renta comercial y NOI
+
+El piloto combina áreas comerciales explícitas con las tarifas NNN de los tres usos. Prorratea los meses desde el inicio pos-TCO, deduce vacancia y no recuperables y concilia el efecto en operación, capacidad y venta. Los ocho ensayos incluyen cero explícito, no aplicabilidad, cambio de inicio y bloqueos por dato o criterio. [Resultados y reproducción](docs/workbook-commercial-inputs-D141.md).

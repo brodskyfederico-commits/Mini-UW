@@ -301,5 +301,7 @@ jobs:
         run: PYTHONPATH=src:tests python tools/check_worksheet_native_mapping_D139.py
       - name: Verify workbook rental inputs through NOI and dated cash in both scenarios
         run: PYTHONPATH=src:tests python tools/check_worksheet_rental_inputs_D140.py
+      - name: Verify commercial rental inputs through NOI and dated cash
+        run: PYTHONPATH=src:tests python tools/check_worksheet_commercial_inputs_D141.py
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v
