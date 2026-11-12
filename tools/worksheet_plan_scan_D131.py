@@ -21,6 +21,12 @@ DEFAULT_TESSDATA = "/usr/share/tesseract-ocr/5/tessdata"
 MAX_SCAN_PIXELS = 4_000_000
 
 
+def valid_ocr_options(ocr):
+    return (set(ocr) == {"engine_version", "image_library_version", "language_sha256", "dpi", "minimum_word_confidence"}
+            and type(ocr["dpi"]) is int and 72 <= ocr["dpi"] <= 400
+            and type(ocr["minimum_word_confidence"]) is int and 0 < ocr["minimum_word_confidence"] <= 100)
+
+
 def full_page_image(page):
     contents = page.get_contents()
     if contents is None:
@@ -116,10 +122,7 @@ def read_scanned_plan(raw, specification):
     if digest != spec.get("sha256") or not synthetic_id(spec.get("plan_ref")):
         return unavailable_plan("plan_pdf_hash_or_reference_mismatch", digest)
     ocr = object_or_empty(spec.get("ocr"))
-    if (spec.get("scan_profile") != PROFILE
-            or set(ocr) != {"engine_version", "image_library_version", "language_sha256", "dpi", "minimum_word_confidence"}
-            or type(ocr["dpi"]) is not int or not 72 <= ocr["dpi"] <= 400
-            or type(ocr["minimum_word_confidence"]) is not int or not 0 < ocr["minimum_word_confidence"] <= 100):
+    if spec.get("scan_profile") != PROFILE or not valid_ocr_options(ocr):
         return unavailable_plan("scan_ocr_profile_missing_or_invalid", digest)
     try:
         reader = PdfReader(BytesIO(raw), strict=True)

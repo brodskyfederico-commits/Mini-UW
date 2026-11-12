@@ -4,6 +4,7 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D132 prueba un PDF mixto con texto y OCR en hojas separadas. Conserva las dos citas y bloquea discrepancias o lecturas incompletas. [Casos y reproducción](docs/workbook-plan-mixed-D132.md).
 - D131 lee por OCR dos hojas de un plano escaneado sintético, cita los renglones y conserva PENDING ante faltantes, discrepancias o confianza insuficiente. [Casos y reproducción](docs/workbook-plan-scan-D131.md).
 - D130 conecta B05 y B06 a dos hojas de un plano PDF sintético y prueba la conciliación con B07 y GC. [Casos y reproducción](docs/workbook-plan-pdf-D130.md).
 - D129 baja el máximo sintético de equity/TDC de Downside al 45 %. La revisión vigente da FAIL simulado y el PASS anterior queda histórico, con los mismos cobros por USD 10. [Resultados y reproducción](docs/workbook-equity-limit-revision-D129.md).

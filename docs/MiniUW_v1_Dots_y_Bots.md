@@ -45,3 +45,5 @@ D127 prueba estos contratos en la cadena local con copias sintéticas estructura
 D130 prueba B05, B06, B07 y B09 con un plano PDF de texto sintético vinculado al expediente. [Lecturas, conciliación y reproducción](workbook-plan-pdf-D130.md).
 
 D131 prueba esos contratos con OCR sobre un PDF escaneado sintético y conserva la región y la confianza de cada cita. [Lecturas y bloqueos](workbook-plan-scan-D131.md).
+
+D132 prueba ambos métodos en hojas separadas de un mismo PDF. [Alcance y resultados](workbook-plan-mixed-D132.md).

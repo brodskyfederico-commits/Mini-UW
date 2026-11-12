@@ -1624,3 +1624,7 @@ B05 y B06 extraen áreas escritas de hojas distintas del mismo PDF. B07 conserva
 ## D131 — OCR de planos escaneados sintéticos
 
 B05 y B06 leen superficies declaradas desde dos imágenes de un PDF sin capa de texto. El expediente conserva citas de página, regiones y confianza, además de la versión del motor y el hash del idioma. Se auditan la coincidencia de 1.000 m² y los bloqueos por dato, conflicto, confianza o motor faltante. Los cobros por USD 10 se conservan. [Casos y reproducción](docs/workbook-plan-scan-D131.md).
+
+## D132 — Planos PDF mixtos
+
+El caso declara qué página y método usa cada lector. Se prueban ambas asignaciones de texto y OCR, la conservación de citas discrepantes y el bloqueo por área ausente, texto superpuesto o motor faltante. La auditoría reproduce la conciliación y los cobros por USD 10. [Casos y reproducción](docs/workbook-plan-mixed-D132.md).
