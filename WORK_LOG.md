@@ -1700,3 +1700,7 @@ B13 lleva el depósito de C60 a caja restringida y concilia la liberación y el 
 ## D150 — C61–C62 conectadas al impuesto inmobiliario y al NOI
 
 B13 aplica el mayor entre el comparable anual y el impuesto sobre el valor fiscal estimado. La prueba verifica ambas ramas, el residual exacto y el efecto en la caja por USD 10. Catorce corridas incluyen nueve casos PENDING por datos, capacidad o criterio. [Resultados y reproducción](docs/workbook-property-tax-D150.md).
+
+## D151 — C66–C68 conectadas a la valoración y al cierre de venta
+
+B13 usa C66 con el NOI de valoración y C67 con el NOI de los doce meses posteriores a la venta. T43 calcula C68 sobre el precio bruto y el cierre deduce ese costo una sola vez. Quince corridas verifican la caja por USD 10 y diez casos PENDING. [Resultados y reproducción](docs/workbook-exit-pricing-D151.md).

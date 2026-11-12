@@ -102,25 +102,36 @@ def reconcile_year(assembly, context, *, debt_payment=None, debt_source_ref=None
     return operating_cash.reconcile_operating_cash(assembly.compiled_raw, assembly.noi_run, encode(spec))
 
 
-def value_at_exit(forward, context, cap, *, sale_date=SALE_DATE, forward_end="2029-06-30"):
+def value_at_exit(forward, context, cap, *, sale_date=SALE_DATE, forward_end="2029-06-30",
+                  cap_source_ref=f"{SOURCE}/scenario-cap", sale_at_value_ref=f"{SOURCE}/explicit-sale-at-value"):
     spec = dict(schema="miniuw.synthetic-exit-value.v1", context=context, currency="USD",
                 valuation_date=sale_date, noi_source_sha256=sha(forward.compiled_raw),
-                noi_run_sha256=forward.noi_run.sha256, valuation_basis_ref=f"{SOURCE}/explicit-sale-at-value",
+                noi_run_sha256=forward.noi_run.sha256, valuation_basis_ref=sale_at_value_ref,
                 forward_window=dict(start=sale_date, end=forward_end, period_ref=FORWARD_PERIOD,
                                     basis_ref=f"{SOURCE}/same-terms-forward-12-months"),
                 cap_rate=dict(value=rational(cap), unit="annual_cap_fraction", period_ref=FORWARD_PERIOD,
-                              source_ref=f"{SOURCE}/scenario-cap"))
+                              source_ref=cap_source_ref))
     return exit_value.produce_exit_value(forward.compiled_raw, forward.noi_run, encode(spec))
 
 
-def sale_source(context, operating, valuation, *, sale_date=SALE_DATE, replacement_reserve=None):
+def sale_source(context, operating, valuation, *, sale_date=SALE_DATE, replacement_reserve=None, sale_costs=None):
     def claim(value, basis, source_ref):
         return dict(value=rational(value), currency="USD", as_of_date=sale_date, basis=basis, source_ref=source_ref)
 
     price = _fraction(valuation.payload["candidate_value"])
+    if sale_costs is None:
+        closing_cost = (price * SALE_COST_RATE, f"{SOURCE}/sale-cost-fraction-of-price")
+    else:
+        evidence = sale_costs.payload
+        require(evidence["state"] == "computed_synthetic_sale_costs" and evidence["context"] == context
+                and evidence["currency"] == "USD" and evidence["sale_date"] == sale_date
+                and _fraction(evidence["gross_price"]["value"]) == price
+                and evidence["gross_price"]["source_ref"] == f"miniuw:synthetic-exit-value:{valuation.sha256}#/candidate_value",
+                "sale_costs_do_not_match_gross_price_and_cutoff")
+        closing_cost = (_fraction(evidence["total_closing_cost"]), f"miniuw:synthetic-sale-costs:{sale_costs.sha256}#/total_closing_cost")
     proceeds = {
         "gross_proceeds": (price, f"{valuation.sha256}#/candidate_value"),
-        "closing_costs_paid": (price * SALE_COST_RATE, f"{SOURCE}/sale-cost-fraction-of-price"),
+        "closing_costs_paid": closing_cost,
     }
     amounts = {}
     for key in closing_cash.CASH_FIELDS:

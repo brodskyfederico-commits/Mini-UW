@@ -79,7 +79,7 @@ def refi_closing(context, loan, principal, *, refi_date=REFI_DATE, construction_
     return raw, closing_cash.produce_closing_cash(raw)
 
 
-def capacity_check(context, valuation, bank, loan, refi_raw, refi, principal, *, refi_date=REFI_DATE):
+def capacity_check(context, valuation, bank, loan, refi_raw, refi, principal, *, refi_date=REFI_DATE, valuation_terms=None):
     inputs = RefinanceInputs(valuation_noi_raw=valuation.compiled_raw, valuation_noi_run=valuation.noi_run,
                              bank_noi_raw=bank.compiled_raw, bank_noi_run=bank.noi_run,
                              new_loan=loan, closing_raw=refi_raw, closing_run=refi)
@@ -93,14 +93,17 @@ def capacity_check(context, valuation, bank, loan, refi_raw, refi, principal, *,
     for key, value, period in (("cap_rate", REFI_CAP, VALUE_PERIOD), ("maximum_ltv", LTV, "SYNTHETIC-sizing-at-date"),
                                ("minimum_dscr", DSCR, BANK_PERIOD)):
         spec["parameters"][key].update(value=rational(value), period_ref=period, source_ref=f"{SOURCE}/bank/{key}")
+    if valuation_terms is not None:
+        spec["parameters"]["cap_rate"].update(value=valuation_terms["refinance_cap"],
+            source_ref=f"sha256:{sha(encode(valuation_terms))}#/refinance_cap")
     spec["selected_principal"].update(value=rational(principal), as_of_date=refi_date,
                                       source_ref=f"{SOURCE}/requested-gross-principal")
     return size_refinance(inputs, encode(spec))
 
 
-def sale_with_payoff(context, operating, valuation, loan, payment, *, replacement_reserve=None):
+def sale_with_payoff(context, operating, valuation, loan, payment, *, replacement_reserve=None, sale_costs=None):
     sale_date = payment["date"]
-    source = sale_source(context, operating, valuation, sale_date=sale_date, replacement_reserve=replacement_reserve)
+    source = sale_source(context, operating, valuation, sale_date=sale_date, replacement_reserve=replacement_reserve, sale_costs=sale_costs)
     source["classification_basis_ref"] = f"{SOURCE}/sale-after-dated-regular-payment"
     principal = _fraction(payment["closing_balance"])
     debt = {"loan_id": loan.run.payload["loan_id"]}
@@ -144,7 +147,7 @@ def run_scenario(comparison, revision, scenario, principal=REQUEST):
 
 
 def financed_cash(context, cost, construction_source_ref, principal, exit_cap, noi_for, *, construction_draws=None,
-                  calendar=None, construction_financing=None, replacement_reserve=None):
+                  calendar=None, construction_financing=None, replacement_reserve=None, valuation_terms=None):
     result = dict(state="PENDING", capacity=None, cash_per_usd_10=None)
     refi_date = REFI_DATE if calendar is None else calendar["refinance_date"]
     sale_date = SALE_DATE if calendar is None else calendar["sale_date"]
@@ -164,12 +167,16 @@ def financed_cash(context, cost, construction_source_ref, principal, exit_cap, n
             prior_principal_paid=closing["payoff_totals"]["principal"],
             net_equity_distribution=closing["exportable_equity_distribution"], blockers=closing["blockers"],
             closing_source_sha256=sha(refi_raw), closing_run_sha256=refi.sha256)
-    cap_run = capacity_check(context, valuation, bank, loan, refi_raw, refi, principal, refi_date=refi_date)
+    cap_run = capacity_check(context, valuation, bank, loan, refi_raw, refi, principal, refi_date=refi_date,
+                             valuation_terms=valuation_terms)
     cap = cap_run.payload
     result["capacity"] = {key: cap[key] for key in (
         "valuation_noi", "bank_noi", "selected_principal", "maximum_principal_capacity", "binding_limit_ids",
         "capacity_limits", "capacity_state", "state", "as_of_date", "input_bindings",
     )} | {"capacity_run_sha256": cap_run.sha256}
+    if valuation_terms is not None:
+        result["valuation_and_sale"] = valuation_terms | dict(refinance_date=refi_date, refinance_noi=cap["valuation_noi"],
+                                                               refinance_value=cap["computed_property_value"])
     if cap["state"] != "compatible_synthetic_refinance_capacity":
         if construction_financing is not None:
             result["construction_refinance"]["net_equity_distribution"] = None
@@ -191,10 +198,26 @@ def financed_cash(context, cost, construction_source_ref, principal, exit_cap, n
     if operating.payload["blockers"]:
         return result | dict(blockers=operating.payload["blockers"])
     exit_dates = {} if calendar is None else dict(sale_date=sale_date, forward_end=calendar["exit_forward_end"])
+    if valuation_terms is not None:
+        exit_dates.update(cap_source_ref=f"sha256:{sha(encode(valuation_terms))}#/exit_cap",
+                          sale_at_value_ref=valuation_terms["sale_at_value_ref"])
     exit_run = value_at_exit(forward_noi, context, exit_cap, **exit_dates)
     if exit_run.payload["blockers"]:
         return result | dict(blockers=exit_run.payload["blockers"])
-    sale_raw, sale, debt_check = sale_with_payoff(context, operating, exit_run, loan, payment, replacement_reserve=replacement_reserve)
+    sale_costs = None
+    if valuation_terms is not None:
+        from worksheet_exit_pricing_D151 import price_sale_costs
+        sale_costs = price_sale_costs(exit_run, valuation_terms)
+        if sale_costs.payload["blockers"]:
+            return result | dict(blockers=sale_costs.payload["blockers"])
+        result["valuation_and_sale"].update(sale_date=sale_date, forward_noi=exit_run.payload["forward_noi"],
+            forward_window=exit_run.payload["forward_window"], gross_sale_price=exit_run.payload["candidate_value"],
+            sale_cost=sale_costs.payload["total_closing_cost"], sale_cost_run_sha256=sale_costs.sha256, sale_cost_run=sale_costs.payload)
+    sale_raw, sale, debt_check = sale_with_payoff(context, operating, exit_run, loan, payment,
+                                                 replacement_reserve=replacement_reserve, sale_costs=sale_costs)
+    if valuation_terms is not None:
+        result["valuation_and_sale"].update(sale_closing_sha256=sale.sha256,
+                                            closing_cash_residual=sale.payload["total_cash_conservation_residual"])
     if debt_check.payload["blockers"]:
         return result | dict(blockers=debt_check.payload["blockers"] + debt_check.payload["closing_blockers"])
     if replacement_reserve is not None:

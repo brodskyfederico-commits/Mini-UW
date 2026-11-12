@@ -4,6 +4,7 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D151 conecta C66–C68 con el valor para refinanciar, el precio bruto, el costo de venta y la caja por USD 10. [Resultados y reproducción](docs/workbook-exit-pricing-D151.md).
 - D150 conecta C61–C62 con el impuesto inmobiliario, el NOI por período y los cobros por USD 10. [Resultados y reproducción](docs/workbook-property-tax-D150.md).
 - D149 conecta C60 con la caja restringida, su destino al vender y los aportes y cobros por USD 10. [Resultados y reproducción](docs/workbook-replacement-reserve-D149.md).
 - D148 conecta C57–C59 con gastos operativos, NOI, capacidad de refinanciación y cobros por USD 10 en el expediente documentado. [Resultados y reproducción](docs/workbook-operating-costs-D148.md).

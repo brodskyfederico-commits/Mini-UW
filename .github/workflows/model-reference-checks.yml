@@ -321,5 +321,7 @@ jobs:
         run: OMP_THREAD_LIMIT=1 PYTHONPATH=src:tests python tools/check_worksheet_replacement_reserve_D149.py
       - name: Verify property tax, NOI and dated cash per initial USD 10
         run: OMP_THREAD_LIMIT=1 PYTHONPATH=src:tests python tools/check_worksheet_property_tax_D150.py
+      - name: Verify refinance cap, exit cap and gross sale costs per initial USD 10
+        run: OMP_THREAD_LIMIT=1 PYTHONPATH=src:tests python tools/check_worksheet_exit_pricing_D151.py
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v

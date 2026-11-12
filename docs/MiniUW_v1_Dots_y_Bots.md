@@ -83,3 +83,5 @@ D148 conecta C57–C59 con B04 y B13. La evidencia registra el alcance de los ga
 D149 conecta C60 con B04 y B13. La evidencia concilia el depósito operativo, la caja restringida previa a la venta, la liberación y el saldo transferido al comprador. B12 conserva PENDING ante la falta de una tasa, una base o una instrucción de liquidación. [Resultados y reproducción](workbook-replacement-reserve-D149.md).
 
 D150 conecta C61–C62 con B04 y B13. El expediente registra el comparable anual, la base fiscal estimada, la rama aplicada y el NOI de cada período. B12 conserva PENDING ante la falta de una base, tasa, unidad o criterio. [Resultados y reproducción](workbook-property-tax-D150.md).
+
+D151 conecta C66–C68 con B04 y B13. El expediente distingue la valoración para refinanciación, la valoración de salida y los costos deducidos al cerrar. B12 conserva PENDING ante tasas sin confirmar, inventario de cargos incompleto o capacidad insuficiente. [Resultados y reproducción](workbook-exit-pricing-D151.md).
