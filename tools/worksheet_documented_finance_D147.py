@@ -12,17 +12,18 @@ AREA_SCOPE = "entire_building_gross_floor_area"
 SF_TO_M2 = Fraction("0.09290304")
 
 
-def review_documents(case, plan_raw, *, evidence_raw=None, use_evidence_pdf=False):
+def review_documents(case, plan_raw, *, evidence_raw=None, use_evidence_pdf=False, include_construction_pdf=False):
     source = object_or_empty(case.get("local_sources"))
     hashes = object_or_empty(case.get("workbook_sha256"))
     plan = read_plan_set(plan_raw, source.get("plan_pdf"), profile=CROPPED_PROFILE)
     inputs = object_or_empty(case.get("rent_inputs"))
     if use_evidence_pdf:
         from worksheet_evidence_pdf_D156 import pdf_document_sources, record_pdf_evidence
-        source, inventory, pages = pdf_document_sources(source, evidence_raw, inputs.get("deal_id"))
+        source, inventory, pages = pdf_document_sources(source, evidence_raw, inputs.get("deal_id"),
+                                                        include_construction=include_construction_pdf)
     review = review_local_sources(source, hashes, pdf_plan=plan, gc_scenarios=SCENARIOS)
     if use_evidence_pdf:
-        record_pdf_evidence(review, inventory, pages)
+        record_pdf_evidence(review, inventory, pages, include_construction=include_construction_pdf)
     as_of = inputs.get("as_of_UTC")
     official = review["bots"]["B11"]
     if not official["blockers"] and (not isinstance(as_of, str) or day(as_of.split("T", 1)[0]) != day(official["as_of"])):

@@ -1724,3 +1724,7 @@ B04 coteja la solicitud con un reemplazo tipado y B13 recalcula la caja por USD 
 ## D156 — PDF de evidencia conectado a B03, B08–B11 y B13
 
 El piloto clasifica cuatro páginas por contenido, coteja la cotización y los términos de deuda por escenario y conserva la cita oficial con vigencia. B16 reproduce el paquete. Ocho variantes quedan PENDING. [Resultados y reproducción](docs/workbook-evidence-pdf-D156.md).
+
+## D157 — Condiciones del crédito de obra conectadas al cálculo T68
+
+B08 coteja las dos páginas bancarias con C51–C53 y las condiciones complementarias. B13 vincula la evidencia con los desembolsos, intereses y cancelación de la deuda. B16 reproduce la salida. Cinco casos conservan PENDING. [Resultados y reproducción](docs/workbook-construction-pdf-D157.md).

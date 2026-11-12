@@ -9,10 +9,12 @@ from pypdf.errors import PyPdfError
 from miniuw_foundation.debt_service import _fraction, rational
 from miniuw_foundation.scheduled_expense_case import sha
 from miniuw_worksheet_v1 import encoded
+from worksheet_construction_financing_D146 import RULES as CONSTRUCTION_RULES
 from worksheet_local_sources_D127 import SCHEMA_PREFIX, check, object_or_empty, synthetic_id
 
 
 PROFILE = "SYNTHETIC-D156-evidence-pdf"
+CONSTRUCTION_PROFILE = "SYNTHETIC-D157-evidence-pdf-with-construction"
 SOURCE_FILE = "Evidence.pdf"
 SCOPE = "vertical_building_excluding_parking_and_site"
 HEADERS = {
@@ -20,6 +22,10 @@ HEADERS = {
     "SYNTHETIC MINI-UW BANK TERMS BASE": "bank_Base",
     "SYNTHETIC MINI-UW BANK TERMS DOWNSIDE": "bank_Downside",
     "SYNTHETIC MINI-UW OFFICIAL COPY": "official_snapshot",
+}
+CONSTRUCTION_HEADERS = {
+    "SYNTHETIC MINI-UW CONSTRUCTION TERMS BASE": "construction_Base",
+    "SYNTHETIC MINI-UW CONSTRUCTION TERMS DOWNSIDE": "construction_Downside",
 }
 METADATA = {"Document ID", "Revision", "Case ID"}
 BANK_ROWS = {
@@ -35,6 +41,22 @@ BANK_CONVENTIONS = {
     "Interest basis": "nominal_annual_fixed_convertible_quarterly",
     "Payment timing": "regular_in_arrears",
     "Capacity limits": "LTV+DSCR",
+}
+CONSTRUCTION_ROWS = {
+    "C51": ("ltc", "fraction"),
+    "C52": ("annual_interest", "annual_nominal_fraction"),
+    "C53": ("origination_fee_fraction", "fraction_of_commitment"),
+    "Maximum commitment": ("maximum_commitment", "USD"),
+    "Requested invoice share": ("requested_invoice_fraction", "fraction"),
+    "Available per draw": ("available_per_draw_checkpoint", "USD"),
+}
+CONSTRUCTION_CONVENTIONS = {
+    "Eligible cost": CONSTRUCTION_RULES["eligible_cost"],
+    "Commitment basis": CONSTRUCTION_RULES["commitment"],
+    "Draw basis": CONSTRUCTION_RULES["draws"],
+    "Interest basis": CONSTRUCTION_RULES["interest"],
+    "Fee basis": CONSTRUCTION_RULES["fee"],
+    "Payoff basis": CONSTRUCTION_RULES["payoff"],
 }
 DECIMAL = re.compile(r"[0-9]{1,12}(?:\.[0-9]{1,8})?")
 
@@ -91,6 +113,12 @@ def parse_page(role, number, lines, digest, revision, deal_id):
             document = common | dict(schema=f"{SCHEMA_PREFIX}official_snapshot.v1", url=literal("URL"),
                                      valid_from=literal("Valid from"), valid_through=literal("Valid through"),
                                      records={record_id: {"max_floors": int(floors)}})
+        elif role.startswith("construction_"):
+            if fields != CONSTRUCTION_ROWS.keys() | CONSTRUCTION_CONVENTIONS.keys() | {"Maturity date"} or any(
+                    literal(key) != value for key, value in CONSTRUCTION_CONVENTIONS.items()):
+                raise ValueError("construction_pdf_convention_or_inventory_unconfirmed")
+            document = {field: parse_quantity(rows[key], unit) for key, (field, unit) in CONSTRUCTION_ROWS.items()}
+            document["maturity_date"] = literal("Maturity date")
         else:
             if fields != BANK_ROWS.keys() | BANK_CONVENTIONS.keys() or any(
                     literal(key) != value for key, value in BANK_CONVENTIONS.items()):
@@ -103,21 +131,23 @@ def parse_page(role, number, lines, digest, revision, deal_id):
         return check("evidence_required_row_invalid", **citation)
 
 
-def read_evidence_pdf(raw, spec, revision, deal_id):
+def read_evidence_pdf(raw, spec, revision, deal_id, *, include_construction=False):
+    headers = HEADERS | CONSTRUCTION_HEADERS if include_construction else HEADERS
+    profile = CONSTRUCTION_PROFILE if include_construction else PROFILE
     specification = object_or_empty(spec)
     digest = None if raw is None else sha(raw)
     inventory = dict(source_file=SOURCE_FILE, observed_sha256=digest)
     error = None
     if raw is None:
         error = "evidence_pdf_missing"
-    elif (specification.keys() != {"profile", "sha256"} or specification["profile"] != PROFILE
+    elif (specification.keys() != {"profile", "sha256"} or specification["profile"] != profile
           or specification["sha256"] != digest or not synthetic_id(revision) or not synthetic_id(deal_id)):
         error = "evidence_pdf_binding_unconfirmed"
     if error:
         return check(error, **inventory), {}
     try:
         reader = PdfReader(BytesIO(raw), strict=True)
-        if reader.is_encrypted or not 1 <= len(reader.pages) <= len(HEADERS):
+        if reader.is_encrypted or not 1 <= len(reader.pages) <= len(headers):
             return check("evidence_pdf_profile_unsupported", **inventory), {}
         pages = {}
         for number, page in enumerate(reader.pages, 1):
@@ -125,33 +155,43 @@ def read_evidence_pdf(raw, spec, revision, deal_id):
             if len(text) > 4096:
                 return check("evidence_pdf_profile_unsupported", **inventory), {}
             lines = [line.strip() for line in text.splitlines() if line.strip()]
-            role = HEADERS.get(lines[0]) if lines else None
-            if role is None or any(line in HEADERS for line in lines[1:]):
+            role = headers.get(lines[0]) if lines else None
+            if role is None or any(line in headers for line in lines[1:]):
                 return check("evidence_page_role_unrecognized_or_ambiguous", page=number, **inventory), {}
             if role in pages:
                 return check("evidence_page_role_duplicate", role=role, **inventory), {}
             pages[role] = parse_page(role, number, lines[1:], digest, revision, deal_id)
     except (PyPdfError, OSError, ValueError, TypeError, KeyError, NotImplementedError):
         return check("evidence_pdf_unreadable", **inventory), {}
-    missing = set(HEADERS.values()) - pages.keys()
+    missing = set(headers.values()) - pages.keys()
     for role in sorted(missing):
         pages[role] = check("evidence_page_role_missing", **inventory)
-    return check(kind=PROFILE, page_roles={role: entry.get("page") for role, entry in pages.items()}, **inventory), pages
+    return check(kind=profile, page_roles={role: entry.get("page") for role, entry in pages.items()}, **inventory), pages
 
 
-def bind_bank_evidence(quote, terms, principal):
+def bind_document_terms(quote, candidate, mismatch):
     if quote["blockers"]:
         return quote
-    candidate = terms | {"requested_principal": rational(principal)}
-    conflicts = sorted(key for key, value in quote["document"].items() if _fraction(value) != _fraction(
-        rational(candidate[key]) if type(candidate[key]) is int else candidate[key]))
+
+    def exact(value):
+        if isinstance(value, dict):
+            return _fraction(value)
+        return value
+
+    conflicts = sorted(key for key, value in quote["document"].items() if exact(value) != exact(candidate[key]))
     if conflicts:
-        return check("bank_pdf_and_worksheet_terms_disagree", fields=conflicts, quote=quote)
+        return check(mismatch, fields=conflicts, quote=quote)
     return check(quote=quote)
 
 
-def pdf_document_sources(source, raw, deal_id):
-    inventory, pages = read_evidence_pdf(raw, source.get("evidence_pdf"), source.get("revision"), deal_id)
+def bind_bank_evidence(quote, terms, principal):
+    return bind_document_terms(quote, terms | {"requested_principal": rational(principal)},
+                               "bank_pdf_and_worksheet_terms_disagree")
+
+
+def pdf_document_sources(source, raw, deal_id, *, include_construction=False):
+    inventory, pages = read_evidence_pdf(raw, source.get("evidence_pdf"), source.get("revision"), deal_id,
+                                         include_construction=include_construction)
     if "documents" in source:
         inventory = check("structured_document_sources_conflict_with_pdf_profile",
                           source_file=SOURCE_FILE, observed_sha256=inventory["observed_sha256"])
@@ -161,7 +201,7 @@ def pdf_document_sources(source, raw, deal_id):
     return source | {"documents": documents}, inventory, pages
 
 
-def record_pdf_evidence(review, inventory, pages):
+def record_pdf_evidence(review, inventory, pages, *, include_construction=False):
     bots = review["bots"]
     classifier = bots["B03"]
     classifier["documents"]["evidence_pdf"] = inventory
@@ -187,11 +227,14 @@ def record_pdf_evidence(review, inventory, pages):
             review["blockers"].extend(f"B10:{reason}" for reason in official["blockers"])
         if not bots["B11"]["blockers"] and not official["blockers"]:
             bots["B11"].update(document_locator=official["locators"]["Record"], document_sha256=official["source_sha256"])
-    budget["bank_pdf_by_scenario"] = {name: pages.get(f"bank_{name}", check("bound_bank_pdf_page_required"))
-                                      for name in ("Base", "Downside")}
-    for name, quote in budget["bank_pdf_by_scenario"].items():
-        if quote["blockers"]:
-            budget["state"] = "PENDING"
-            review["blockers"].extend(f"B08:{name}:{reason}" for reason in quote["blockers"])
+    roles = ("bank", "construction") if include_construction else ("bank",)
+    for role in roles:
+        quotes = {name: pages.get(f"{role}_{name}", check(f"bound_{role}_pdf_page_required"))
+                  for name in ("Base", "Downside")}
+        budget[f"{role}_pdf_by_scenario"] = quotes
+        for name, quote in quotes.items():
+            if quote["blockers"]:
+                budget["state"] = "PENDING"
+                review["blockers"].extend(f"B08:{name}:{reason}" for reason in quote["blockers"])
     if review["blockers"]:
         review["state"] = "PENDING"

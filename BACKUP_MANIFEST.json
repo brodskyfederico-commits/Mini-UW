@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D156 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D157 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/miniuw-integral-usd10.yml",
@@ -8,8 +8,8 @@
     },
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 23790,
-      "sha256": "7418570bbd59a4266ee5a12ffd66ff8c9f49ff541840e0eb8165151da36a463b"
+      "bytes": 23967,
+      "sha256": "877e1ec301d65262281c85fa1e52b08f96304616a1083300e0bd52c39780e7ce"
     },
     {
       "path": ".gitignore",
@@ -23,13 +23,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 86763,
-      "sha256": "d1a430a0d522571477df427f9ee1ee0ae33c52abf17ab28dc618b6023110c6f6"
+      "bytes": 86937,
+      "sha256": "fbd9f9dcd1d69f3bbf8e5344a6b26958171684f919f221eeb74bdac4ab560c34"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 346799,
-      "sha256": "d18e066fd6774b0ad926dfd371e9ace9ccf9946667b995b1380c73733bc12a54"
+      "bytes": 347170,
+      "sha256": "d7058f21f83c09b51dfb1196cd83c2e2918862601a7b9e926afb139532e65abc"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -58,8 +58,8 @@
     },
     {
       "path": "docs/MiniUW_v1_Dots_y_Bots.md",
-      "bytes": 13143,
-      "sha256": "cefbf57a0a145d6339f2aab7e89dc465083d99ce0bc3d05b308438350d65fb25"
+      "bytes": 13412,
+      "sha256": "70c47811bd7aea3c5385abaada234a43c84b1a0010c5adb954a4727fae47d740"
     },
     {
       "path": "docs/acceptance-case-contracts.json",
@@ -3057,6 +3057,11 @@
       "sha256": "839a2340fc682f01cf9d782946710e52526d269a7e4ca33f57408b082b3007bf"
     },
     {
+      "path": "docs/workbook-construction-pdf-D157.md",
+      "bytes": 2432,
+      "sha256": "335170eb329ab03227b679b917db882f7406b776ab059e2e5d31badf525febfa"
+    },
+    {
       "path": "docs/workbook-current-chain-D128.md",
       "bytes": 2523,
       "sha256": "8774019f783540ce37ed493176b2286b9ebeaa4ff51ce07d406780da7873c476"
@@ -5252,6 +5257,11 @@
       "sha256": "ec5b483b27f8ea4f6faa916890411bbc5dd6b8d31f48427595a3877ab4e2d611"
     },
     {
+      "path": "templates/synthetic-evidence-bundle-D157.pdf",
+      "bytes": 9356,
+      "sha256": "3c8baf56009ed4485fe89f648cc84c036b622b5b46317e128d74b4aa380dff03"
+    },
+    {
       "path": "templates/synthetic-evidence-currency-example.json",
       "bytes": 17126,
       "sha256": "b9b6c8e5fce82a6d3190b7c5766f05db0d6d645e016f38e8d8cccef961b1accd"
@@ -5992,6 +6002,11 @@
       "sha256": "e11ff687036283d6bfdbb13934189a5a6629c3f92588a4d2bce62f67932ebff5"
     },
     {
+      "path": "templates/synthetic-workbook-construction-pdf-D157.json",
+      "bytes": 20252,
+      "sha256": "15786cd842f47026e7de17f0b1b746208bd7a18ba19689e97fddcde83bf033f1"
+    },
+    {
       "path": "templates/synthetic-workbook-cropped-rotated-set-D138.json",
       "bytes": 19345,
       "sha256": "4ffd6a85fe80c33b8971a7f08e97ecc370a6deb9f6fc286637d2ed6399a3a4bd"
@@ -6150,6 +6165,11 @@
       "path": "templates/synthetic-workbook-current-revision-D156.json",
       "bytes": 714,
       "sha256": "f40e2b27482d8d4e5a0b35f0a61d62431e28198fe7f0df79e8896421833b412f"
+    },
+    {
+      "path": "templates/synthetic-workbook-current-revision-D157.json",
+      "bytes": 714,
+      "sha256": "9f047fcb135e1ee2af9999e205db333f4a9f2f0e2efe563b9290cc6a09e26695"
     },
     {
       "path": "templates/synthetic-workbook-development-inputs-D143.json",
@@ -7357,6 +7377,11 @@
       "sha256": "e985e95db46b3988d5ece56e7b3e5e9f618b744aba67f9fc8a0baac0b67ae9f5"
     },
     {
+      "path": "tools/check_worksheet_construction_pdf_D157.py",
+      "bytes": 8346,
+      "sha256": "25edea1b5d554a20f02ef03eeb4b7eab846542a92f221cb561b5eaa6f08f0777"
+    },
+    {
       "path": "tools/check_worksheet_current_chain_D128.py",
       "bytes": 9712,
       "sha256": "c0009bc3ec30a103ff0d08ecd9ff62f2d21d417bdfa09a6110d714655d1f3879"
@@ -7988,8 +8013,8 @@
     },
     {
       "path": "tools/miniuw_worksheet_v1.py",
-      "bytes": 28371,
-      "sha256": "ab2649b45036b0eea5a8b2d5e7458738cdba9ca0c8db7dd56b1c73c62e918899"
+      "bytes": 28743,
+      "sha256": "e48e23dd0a241981a1d83459f7d47b76fc60f839cc869968009d44e7a9013a33"
     },
     {
       "path": "tools/onepage_pending_cases_D79.py",
@@ -8113,8 +8138,8 @@
     },
     {
       "path": "tools/worksheet_construction_financing_D146.py",
-      "bytes": 8538,
-      "sha256": "d0938aecb3634d93fc8c1aa0d4141ee25ea0f0d41ed36c455e858fff26044e4f"
+      "bytes": 9595,
+      "sha256": "22a0d5d2e3e6884ed9a680819d166b051520cdb86c7c575d35997c1d67616c95"
     },
     {
       "path": "tools/worksheet_costed_case_D65.py",
@@ -8133,8 +8158,8 @@
     },
     {
       "path": "tools/worksheet_documented_finance_D147.py",
-      "bytes": 4610,
-      "sha256": "fa11e2ab6d58290a95c57bfa5add9b097fea3c725076ece685c20e23066dcd87"
+      "bytes": 4792,
+      "sha256": "54fe8ca9b5563475d29730d45cfc79a8258b26f820215f91654844707c11934a"
     },
     {
       "path": "tools/worksheet_equity_tdc_D124.py",
@@ -8143,8 +8168,8 @@
     },
     {
       "path": "tools/worksheet_evidence_pdf_D156.py",
-      "bytes": 10312,
-      "sha256": "9d30ac620cefc5eb22bff212e6cca332bbfc8ad3e1337b17457c8e7e8197ab17"
+      "bytes": 12480,
+      "sha256": "734add03cf1cfe41e0cb165d23d0852db62d3bf21e80853c1b29e82244e95042"
     },
     {
       "path": "tools/worksheet_exit_pricing_D151.py",
@@ -8283,8 +8308,8 @@
     },
     {
       "path": "tools/worksheet_rental_inputs_D140.py",
-      "bytes": 45379,
-      "sha256": "89d5e600438c6712a441d90a6e7d144e96300139355b83a528b9190534c24ac6"
+      "bytes": 45977,
+      "sha256": "4baeb71db0e7f2fe0e3b5c3325949b0bdf7a2eb335a967976a270c3aa7bb900e"
     },
     {
       "path": "tools/worksheet_replacement_reserve_D149.py",

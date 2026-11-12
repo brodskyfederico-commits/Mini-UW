@@ -28,7 +28,7 @@ def cash_amount(value, ref):
     return dict(value=rational(value), currency="USD", source_ref=ref)
 
 
-def staged_construction_financing(raw, name, review, context, development, budget, calendar):
+def staged_construction_financing(raw, name, review, context, development, budget, calendar, *, construction_quote=None):
     source = object_or_empty(raw)
     rule_ref = source.get("policy_ref")
     require(source.get("policy") == POLICY and source.get("rules") == RULES and synthetic_id(rule_ref),
@@ -47,6 +47,17 @@ def staged_construction_financing(raw, name, review, context, development, budge
     rows = {row["value_cell"].split("!")[1]: row for row in review["rows"]}
     ltc, annual, fee_rate = (loan_cell(rows, cell) for cell in ("C51", "C52", "C53"))
     cells = {cell: f"sha256:{review['workbook_sha256']}#{rows[cell]['value_cell']}" for cell in ("C51", "C52", "C53")}
+    bank_document = None
+    if construction_quote is not None:
+        from worksheet_evidence_pdf_D156 import bind_document_terms
+        candidate = dict(ltc=rational(ltc), annual_interest=rational(annual), origination_fee_fraction=rational(fee_rate),
+                         maximum_commitment=record["maximum_commitment"], requested_invoice_fraction=record["requested_invoice_fraction"],
+                         available_per_draw_checkpoint=record["available_per_draw_checkpoint"], maturity_date=maturity_text)
+        bank_document = bind_document_terms(construction_quote, candidate, "construction_pdf_and_worksheet_terms_disagree")
+        if bank_document["blockers"]:
+            return dict(state="PENDING", blockers=[f"B08:{reason}" for reason in bank_document["blockers"]],
+                        bank_document_binding=bank_document, cell_sources=cells)
+        term_ref = f"sha256:{sha(encoded(bank_document))}#/quote"
     eligible_cost = _fraction(budget["direct_hard_cost"])
     eligible_upfront = eligible_cost * _fraction(calendar["upfront_direct_hard_share"])
     commitment = min(eligible_cost * ltc, cap)
@@ -85,6 +96,8 @@ def staged_construction_financing(raw, name, review, context, development, budge
                     ltc=rational(ltc), ltc_limit=rational(eligible_cost * ltc), contractual_limit=rational(cap),
                     commitment=rational(commitment), annual_interest=rational(annual), origination_fee_fraction=rational(fee_rate),
                     origination_fee=rational(origination_fee), debt_source=spec, debt_run=proof, debt_run_sha256=run.sha256)
+    if bank_document is not None:
+        evidence["bank_document_binding"] = bank_document
     if proof["blockers"]:
         return evidence | dict(state="PENDING", blockers=proof["blockers"])
     require(_fraction(proof["totals"]["principal_repaid"]) == gross_draws

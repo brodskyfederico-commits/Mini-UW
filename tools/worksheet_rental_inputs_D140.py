@@ -285,8 +285,11 @@ def run_rental_scenario(name, raw, review, rent_inputs, *, include_commercial=Fa
         funding = None
         if include_construction_financing:
             from worksheet_construction_financing_D146 import staged_construction_financing
+            construction_quote = None
+            if document_review is not None:
+                construction_quote = document_review["bots"]["B08"].get("construction_pdf_by_scenario", {}).get(name)
             funding = staged_construction_financing(rent_inputs.get("construction_financing"), name, review, terms["context"],
-                                                  development, budget, calendar)
+                                                    development, budget, calendar, construction_quote=construction_quote)
             if funding["blockers"]:
                 evidence = dict(document_financial_binding=binding) if binding is not None else {}
                 return pending | dict(blockers=funding["blockers"], construction_financing=funding,
@@ -354,7 +357,7 @@ def render(views, result, *, include_commercial=False, include_utilities=False, 
            include_budget=False, include_calendar=False, include_construction_financing=False, document_review=None,
            include_operating_costs=False, include_replacement_reserve=False, include_property_tax=False,
            include_exit_pricing=False, include_permanent_loan=False, include_refinance_costs=False, include_growth=False,
-           alternatives=None, use_evidence_pdf=False):
+           alternatives=None, evidence_milestone=None):
     lines = [(f"Simulación por múltiplo de equity | {result} | Decisión real PENDING", True)]
     if alternatives is not None:
         lines[0] = (lines[0][0] + " | Escenarios de origen", True)
@@ -472,7 +475,7 @@ def render(views, result, *, include_commercial=False, include_utilities=False, 
                 lines.append((f"{title} | Aportado {money(cash['total_contributions'])} | "
                               f"Cobrado {money(cash['total_distributions'])} | Sin recuperar {money(cash['unrecovered_after_sale'])} | "
                               f"Venta {net_sale['date']}", False))
-        label = "D156 | Evidencia en PDF" if use_evidence_pdf else "D155 | C80-C82"
+        label = f"{evidence_milestone} | Evidencia en PDF" if evidence_milestone else "D155 | C80-C82"
         return render_page(label, lines, 10, "MINI-UW | SI INVIERTO USD 10, ¿CUÁNTO COBRO Y CUÁNDO?",
                            "Aportes y cobros de origen y alternativas | Piloto sintético")
     label = "D142 | C25-C28" if include_utilities else "D141 | C7-C21" if include_commercial else "D140 | C7-C15"
@@ -522,7 +525,7 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
                       include_construction_financing=False, document_review=None, include_operating_costs=False,
                       include_replacement_reserve=False, include_property_tax=False, include_exit_pricing=False,
                       include_permanent_loan=False, include_refinance_costs=False, include_growth=False,
-                      include_alternatives=False, use_evidence_pdf=False):
+                      include_alternatives=False, use_evidence_pdf=False, include_construction_pdf=False):
     hashes = object_or_empty(case.get("workbook_sha256"))
     review = review_native_mapping(case.get("native_mapping"), workbooks, hashes, calculation_fields=FIELDS)
     revision = review_revision(case, current_revision_raw)
@@ -567,13 +570,14 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
     if include_alternatives:
         alternatives = evaluate_alternatives(object_or_empty(case.get("rent_inputs")).get("alternatives"), review, views, run_scenario,
                                              revision=revision, documents=document_review, case_sha256=case_sha256)
+    evidence_milestone = "D157" if include_construction_pdf else "D156" if use_evidence_pdf else None
     pdf = render(views, simulation, include_commercial=include_commercial, include_utilities=include_utilities,
                  include_development=include_development, include_budget=include_budget, include_calendar=include_calendar,
                  include_construction_financing=include_construction_financing, document_review=document_review,
                  include_operating_costs=include_operating_costs, include_replacement_reserve=include_replacement_reserve,
                  include_property_tax=include_property_tax, include_exit_pricing=include_exit_pricing,
                  include_permanent_loan=include_permanent_loan, include_refinance_costs=include_refinance_costs,
-                 include_growth=include_growth, alternatives=alternatives, use_evidence_pdf=use_evidence_pdf)
+                 include_growth=include_growth, alternatives=alternatives, evidence_milestone=evidence_milestone)
     profile = "synthetic_native_residential_and_commercial_rent" if include_commercial else PROFILE
     if include_utilities:
         profile = "synthetic_native_rent_and_utility_expenses"
@@ -622,6 +626,9 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
     if use_evidence_pdf:
         profile = "synthetic_pdf_evidence"
         pipeline["pipeline"]["stages"][-1]["version_suite"] = "check_worksheet_evidence_pdf_D156.py"
+    if include_construction_pdf:
+        profile = "synthetic_pdf_evidence_with_construction"
+        pipeline["pipeline"]["stages"][-1]["version_suite"] = "check_worksheet_construction_pdf_D157.py"
     return dict(profile=profile, state=state,
                 case_sha256=case_sha256, decision="PENDING", simulation_result=simulation,
                 real_decisions_enabled=False, deployment_enabled=False, personal_investor_return=None,

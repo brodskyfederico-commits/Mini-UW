@@ -333,5 +333,7 @@ jobs:
         run: OMP_THREAD_LIMIT=1 PYTHONPATH=src:tests python tools/check_worksheet_alternatives_D155.py
       - name: Verify PDF budget, bank terms and archived official evidence
         run: OMP_THREAD_LIMIT=1 PYTHONPATH=src:tests python tools/check_worksheet_evidence_pdf_D156.py
+      - name: Verify construction loan PDF evidence, draws and payoff
+        run: OMP_THREAD_LIMIT=1 PYTHONPATH=src:tests python tools/check_worksheet_construction_pdf_D157.py
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v
