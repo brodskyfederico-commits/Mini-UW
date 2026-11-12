@@ -4,6 +4,7 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D137 verifica giros distintos para A101 y A601 en el mismo PDF. Coteja el texto con el OCR de cada hoja y conserva PENDING ante faltantes, duplicados o discrepancias. [Casos y reproducción](docs/workbook-plan-dual-rotation-D137.md).
 - D136 combina el PDF de hojas fuera de orden con A601 girada. Verifica la orientación y coteja texto y OCR antes de conciliar la superficie. [Casos y reproducción](docs/workbook-plan-rotated-set-D136.md).
 - D135 busca A101 y A601 por su identificación dentro de un PDF con hojas adicionales. Registra las páginas y deja PENDING ante faltantes, duplicados o discrepancias. [Casos y reproducción](docs/workbook-plan-set-D135.md).
 - D134 coteja el texto con el OCR de un escaneo girado. La orientación declarada debe coincidir con la del PDF y las dos lecturas deben concordar. [Casos y reproducción](docs/workbook-plan-rotation-D134.md).

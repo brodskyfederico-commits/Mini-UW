@@ -27,22 +27,26 @@ CURRENT = ROOT / "templates/synthetic-workbook-current-revision-D133.json"
 PLAN = ROOT / "templates/synthetic-overlay-plan-D133.pdf"
 
 
-def overlay_pdf(background, area="1,000.00", *, visible=False):
-    writer = PdfWriter()
-    writer.add_metadata({"/Title": "Mini-UW synthetic plan with PDF text overlay D133"})
-    writer.add_page(PdfReader(TEXT_PLAN, strict=True).pages[0])
-    page = writer.add_page(PdfReader(background, strict=True).pages[1])
+def add_text_overlay(writer, page, lines, *, visible=False):
     font = DictionaryObject({NameObject("/Type"): NameObject("/Font"), NameObject("/Subtype"): NameObject("/Type1"),
                              NameObject("/BaseFont"): NameObject("/Helvetica")})
     page["/Resources"][NameObject("/Font")] = DictionaryObject({NameObject("/F1"): writer._add_object(font)})
-    lines = [(462, "SYNTHETIC MINI-UW PLAN"), (438, "PLAN REF SYNTHETIC-PLAN-01-R1"), (420, "SHEET A601")]
-    if area is not None:
-        lines.append((255, f"Declared GBA: {area} m2"))
     rendering_mode = 0 if visible else 3
     overlay = f"BT\n/F1 11 Tf\n{rendering_mode} Tr\n" + "".join(f"1 0 0 1 60 {y} Tm\n({line}) Tj\n" for y, line in lines)
     content = DecodedStreamObject()
     content.set_data(page.get_contents().get_data() + b"\n" + (overlay + "ET\n").encode())
     page.replace_contents(content)
+
+
+def overlay_pdf(background, area="1,000.00", *, visible=False):
+    writer = PdfWriter()
+    writer.add_metadata({"/Title": "Mini-UW synthetic plan with PDF text overlay D133"})
+    writer.add_page(PdfReader(TEXT_PLAN, strict=True).pages[0])
+    page = writer.add_page(PdfReader(background, strict=True).pages[1])
+    lines = [(462, "SYNTHETIC MINI-UW PLAN"), (438, "PLAN REF SYNTHETIC-PLAN-01-R1"), (420, "SHEET A601")]
+    if area is not None:
+        lines.append((255, f"Declared GBA: {area} m2"))
+    add_text_overlay(writer, page, lines, visible=visible)
     buffer = BytesIO()
     writer.write(buffer)
     return buffer.getvalue()

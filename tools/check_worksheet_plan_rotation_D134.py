@@ -27,9 +27,10 @@ CURRENT = ROOT / "templates/synthetic-workbook-current-revision-D134.json"
 PLAN = ROOT / "templates/synthetic-rotated-overlay-D134.pdf"
 
 
-def rotated_pdf(rotation, *, conflicting_text=False):
-    writer = PdfWriter(clone_from=PdfReader(OVERLAY_PLAN, strict=True))
-    page = writer.pages[1]
+def rotated_pdf(rotation, *, conflicting_text=False, source=None, page_index=1):
+    source = BytesIO(source) if source is not None else OVERLAY_PLAN
+    writer = PdfWriter(clone_from=PdfReader(source, strict=True))
+    page = writer.pages[page_index]
     width, height = int(page.mediabox.width), int(page.mediabox.height)
     image = page["/Resources"]["/XObject"]["/Im0"]
     columns, rows = image["/Width"], image["/Height"]
@@ -52,7 +53,7 @@ def rotated_pdf(rotation, *, conflicting_text=False):
     page.rotate(rotation)
 
     data = page.get_contents().get_data()
-    _, overlay = data.split(b"BT", 1)
+    _, _, overlay = data.partition(b"BT")
 
     def transform(match):
         x, y = map(int, match.groups())
@@ -63,7 +64,7 @@ def rotated_pdf(rotation, *, conflicting_text=False):
         overlay = overlay.replace(b"3 Tr", b"0 Tr").replace(b"1,000.00 m2", b"1,050.00 m2")
     scan_draw = f"q\n{int(page.mediabox.width)} 0 0 {int(page.mediabox.height)} 0 0 cm\n/Im0 Do\nQ\n".encode()
     contents = DecodedStreamObject()
-    contents.set_data(scan_draw + b"BT" + overlay)
+    contents.set_data(scan_draw + (b"BT" + overlay if overlay else b""))
     page.replace_contents(contents)
     writer.add_metadata({"/Title": "Mini-UW synthetic rotated overlay D134"})
     output = BytesIO()

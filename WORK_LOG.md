@@ -1644,3 +1644,7 @@ El plano de cuatro páginas incluye portada, A601, A202 y A101. El expediente ci
 ## D136 — A601 girada en un PDF con hojas fuera de orden
 
 A601 se localiza por su identificación y se concilia en giros de 90°, 180° y 270°. Se conservan el hash del escaneo y el de la entrada al OCR. Ocho casos dejan PENDING ante hojas faltantes o duplicadas, superficies discrepantes, orientación contradictoria o texto ausente. Las once corridas conservan los cobros por USD 10. [Casos y reproducción](docs/workbook-plan-rotated-set-D136.md).
+
+## D137 — A101 y A601 con giros distintos en el mismo PDF
+
+El caso principal usa A101 a 270° y A601 a 90°. Una segunda corrida cambia las ubicaciones y usa 90° y 180°. Ambas verifican texto y OCR por hoja y concilian 1.000 m² con GC. Once casos dejan PENDING ante faltantes, duplicados, discrepancias de área o de giro, o texto ausente. Las trece corridas conservan los cobros por USD 10. [Casos y reproducción](docs/workbook-plan-dual-rotation-D137.md).

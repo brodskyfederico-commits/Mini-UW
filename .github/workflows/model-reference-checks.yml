@@ -293,5 +293,7 @@ jobs:
         run: PYTHONPATH=src python tools/check_worksheet_plan_set_D135.py
       - name: Verify rotated overlays in unordered synthetic plan sets
         run: PYTHONPATH=src python tools/check_worksheet_plan_rotated_set_D136.py
+      - name: Verify two independent rotations in an unordered synthetic plan set
+        run: PYTHONPATH=src python tools/check_worksheet_plan_dual_rotation_D137.py
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v

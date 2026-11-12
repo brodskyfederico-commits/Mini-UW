@@ -16,6 +16,7 @@ from worksheet_plan_scan_D131 import full_page_image, recognize, runtime, scan_r
 
 PROFILE = "SYNTHETIC-D135-sheet-set"
 ROTATED_PROFILE = "SYNTHETIC-D136-rotated-sheet-set"
+DUAL_ROTATED_PROFILE = "SYNTHETIC-D137-two-rotated-sheets"
 MAX_PAGES = 12
 SHEET_ID = re.compile(r"SHEET ([A-Z][A-Z0-9.-]{0,23})")
 
@@ -119,7 +120,7 @@ def required_reading(sheet, pages, claimed, document, digest, plan_ref, threshol
     return first | evidence
 
 
-def read_plan_set(raw, specification, *, require_a601_rotation=False):
+def read_plan_set(raw, specification, *, profile=PROFILE):
     spec = object_or_empty(specification)
     if raw is None:
         return unavailable_plan("plan_pdf_missing")
@@ -128,19 +129,24 @@ def read_plan_set(raw, specification, *, require_a601_rotation=False):
     if digest != spec.get("sha256") or not synthetic_id(plan_ref):
         return unavailable_plan("plan_pdf_hash_or_reference_mismatch", digest)
     ocr = object_or_empty(spec.get("ocr"))
-    profile = ROTATED_PROFILE if require_a601_rotation else PROFILE
     if spec.get("sheet_set_profile") != profile or not valid_ocr_options(ocr):
         return unavailable_plan("explicit_sheet_set_and_ocr_profile_required", digest)
-    rotation = None
-    if require_a601_rotation:
+    expected_rotations = {}
+    if profile == ROTATED_PROFILE:
         rotation = spec.get("a601_rotation_clockwise")
         if type(rotation) is not int or rotation not in RIGHT_ANGLES:
             return unavailable_plan("explicit_a601_page_rotation_required", digest)
+        expected_rotations["A601"] = rotation
+    elif profile == DUAL_ROTATED_PROFILE:
+        expected_rotations = object_or_empty(spec.get("sheet_rotations_clockwise"))
+        if expected_rotations.keys() != SHEETS.keys() or any(
+                type(angle) is not int or angle not in RIGHT_ANGLES for angle in expected_rotations.values()):
+            return unavailable_plan("explicit_required_sheet_rotations_required", digest)
     try:
         reader = PdfReader(BytesIO(raw), strict=True)
         if reader.is_encrypted or not 1 <= len(reader.pages) <= MAX_PAGES:
             return unavailable_plan("plan_pdf_profile_unsupported", digest)
-        pages = [identify_page(page, index, ocr, plan_ref, allow_rotation=require_a601_rotation)
+        pages = [identify_page(page, index, ocr, plan_ref, allow_rotation=bool(expected_rotations))
                  for index, page in enumerate(reader.pages, 1)]
     except PAGE_ERRORS:
         return unavailable_plan("plan_pdf_unreadable", digest)
@@ -160,9 +166,11 @@ def read_plan_set(raw, specification, *, require_a601_rotation=False):
     document = check(blocker, kind="synthetic_pdf_sheet_set", source_file="Plan.pdf", sha256=digest,
                      plan_ref=plan_ref, sheet_inventory=inventory, duplicate_sheet_pages=duplicates,
                      ocr=ocr | {"language": "eng"})
-    if require_a601_rotation:
-        document.update(kind="synthetic_rotated_pdf_sheet_set", a601_rotation_clockwise=rotation)
+    if profile == ROTATED_PROFILE:
+        document.update(kind="synthetic_rotated_pdf_sheet_set", a601_rotation_clockwise=expected_rotations["A601"])
+    elif profile == DUAL_ROTATED_PROFILE:
+        document.update(kind="synthetic_pdf_sheet_set_with_two_rotations", sheet_rotations_clockwise=expected_rotations)
     return {"document": document} | {
         bot: required_reading(sheet, pages, candidates[sheet], document, digest, plan_ref, ocr["minimum_word_confidence"],
-                              expected_rotation=rotation if sheet == "A601" else None)
+                              expected_rotation=expected_rotations.get(sheet))
         for sheet, (bot, _, _) in SHEETS.items()}
