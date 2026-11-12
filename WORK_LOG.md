@@ -1676,3 +1676,7 @@ Se coteja C32 con el precio evaluado documentado y se aplica C33 sobre esa compr
 ## D144 — C37–C42 conectadas a presupuesto de obra y aportes
 
 B13 incorpora parking, obras de sitio, reserva, soft costs y TI/LC con bases y alcances explícitos. C42 determina cuánto soft se fondea al cierre de los meses 1–3. Los 17 ensayos por planilla verifican cada partida, los aportes fechados, los cobros por USD 10 y nueve casos PENDING. [Resultados y reproducción](docs/workbook-construction-budget-D144.md).
+
+## D145 — C46–C47 conectadas al calendario de obra y estabilización
+
+B04 coteja ambas duraciones y B13 lleva los hitos al libro de aportes, al NOI, a la capacidad de refinanciación y al cierre de venta. Trece corridas verifican los flujos por USD 10, el vencimiento de la revisión y diez casos PENDING. [Resultados y reproducción](docs/workbook-project-calendar-D145.md).

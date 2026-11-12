@@ -53,7 +53,8 @@ def build_noi(comparison, revision, context, period, terms):
     return assemble_rental_noi(rental_raw, residential, encode(spec))
 
 
-def reconcile_year(assembly, context, *, debt_payment=None, debt_source_ref=None):
+def reconcile_year(assembly, context, *, debt_payment=None, debt_source_ref=None,
+                   operating_window=("2027-07-01", "2028-07-01"), cash_date=SALE_DATE):
     noi = assembly.noi_run.payload
     income = _fraction(noi["income_total"])
     costs = _fraction(noi["expenses_excluding_tax"]) + _fraction(noi["property_tax"])
@@ -75,8 +76,8 @@ def reconcile_year(assembly, context, *, debt_payment=None, debt_source_ref=None
     }
     spec = template("synthetic-operating-cash")
     spec.update(
-        context=context, period_ref=OPERATING_PERIOD, start_date="2027-07-01", end_date="2028-07-01",
-        cash_date=SALE_DATE, noi_source_sha256=sha(assembly.compiled_raw), noi_run_sha256=assembly.noi_run.sha256,
+        context=context, period_ref=OPERATING_PERIOD, start_date=operating_window[0], end_date=operating_window[1],
+        cash_date=cash_date, noi_source_sha256=sha(assembly.compiled_raw), noi_run_sha256=assembly.noi_run.sha256,
         period_basis_ref=f"{SOURCE}/one-year-accrual-and-cash",
         distribution_basis_ref=f"{SOURCE}/distribute-surplus-or-fund-shortfall-from-equity",
         classification_basis_ref=f"{SOURCE}/all-equity-no-unsettled-cash-items",
@@ -88,27 +89,27 @@ def reconcile_year(assembly, context, *, debt_payment=None, debt_source_ref=None
         | {key: claim(0, prefix + OPERATING_PERIOD) for key, prefix in operating_cash.STOCKS.items()},
     )
     if debt:
-        require(debt_source_ref and debt_payment["date"] == SALE_DATE,
+        require(debt_source_ref and debt_payment["date"] == cash_date,
                 "Dated debt evidence must match the operating payment date")
         spec["classification_basis_ref"] = f"{SOURCE}/operating-cash-with-dated-debt-service"
         spec["amounts"].update({key: claim(value, source_ref=debt_source_ref) for key, value in debt.items()})
     return operating_cash.reconcile_operating_cash(assembly.compiled_raw, assembly.noi_run, encode(spec))
 
 
-def value_at_exit(forward, context, cap):
+def value_at_exit(forward, context, cap, *, sale_date=SALE_DATE, forward_end="2029-06-30"):
     spec = dict(schema="miniuw.synthetic-exit-value.v1", context=context, currency="USD",
-                valuation_date=SALE_DATE, noi_source_sha256=sha(forward.compiled_raw),
+                valuation_date=sale_date, noi_source_sha256=sha(forward.compiled_raw),
                 noi_run_sha256=forward.noi_run.sha256, valuation_basis_ref=f"{SOURCE}/explicit-sale-at-value",
-                forward_window=dict(start=SALE_DATE, end="2029-06-30", period_ref=FORWARD_PERIOD,
+                forward_window=dict(start=sale_date, end=forward_end, period_ref=FORWARD_PERIOD,
                                     basis_ref=f"{SOURCE}/same-terms-forward-12-months"),
                 cap_rate=dict(value=rational(cap), unit="annual_cap_fraction", period_ref=FORWARD_PERIOD,
                               source_ref=f"{SOURCE}/scenario-cap"))
     return exit_value.produce_exit_value(forward.compiled_raw, forward.noi_run, encode(spec))
 
 
-def sale_source(context, operating, valuation):
+def sale_source(context, operating, valuation, *, sale_date=SALE_DATE):
     def claim(value, basis, source_ref):
-        return dict(value=rational(value), currency="USD", as_of_date=SALE_DATE, basis=basis, source_ref=source_ref)
+        return dict(value=rational(value), currency="USD", as_of_date=sale_date, basis=basis, source_ref=source_ref)
 
     price = _fraction(valuation.payload["candidate_value"])
     proceeds = {
@@ -126,7 +127,7 @@ def sale_source(context, operating, valuation):
     amounts.update({key: claim(balances[key], basis, f"{operating.sha256}/D107-sale-balances")
                     for key, basis in closing_cash.STOCK_FIELDS.items()})
     return dict(schema=closing_cash.SCHEMA, profile="SYNTHETIC-RESIDUAL-AFTER-EXPLICIT-RETENTION-v1",
-                  context=context, currency="USD", closing_date=SALE_DATE, kind="sale",
+                  context=context, currency="USD", closing_date=sale_date, kind="sale",
                   representation="explicit_gross_cash_movements", debt_inventory_declared_complete=True,
                   classification_basis_ref=f"{SOURCE}/sale-without-debt",
                   equity_residual_basis_ref=f"{SOURCE}/distribute-sale-residual",
@@ -144,31 +145,33 @@ def equity_source(context, construction, comparison, revision, operating):
     return equity_source_from_cost(context, construction, f"{plan_hash}/declared-plan-and-D106-vertical-basis", operating)
 
 
-def equity_source_from_cost(context, construction, construction_source_ref, operating, *, construction_draws=None):
+def equity_source_from_cost(context, construction, construction_source_ref, operating, *, construction_draws=None,
+                            equity_dates=DATES, timing_basis_ref=f"{SOURCE}/quarterly-event-grid"):
     def event(identity, day, kind, category, value, source_ref):
         return dict(event_id=identity, date=day, kind=kind, category=category,
                     amount=value, currency="USD", source_ref=source_ref)
 
     if construction_draws is None:
-        construction_draws = [dict(event_id="construction", date=DATES[1], amount=rational(construction - INITIAL),
+        construction_draws = [dict(event_id="construction", date=equity_dates[1], amount=rational(construction - INITIAL),
                                    source_ref=construction_source_ref)]
     require(sum(_fraction(draw["amount"]) for draw in construction_draws) == construction - INITIAL,
             "Construction draws do not reconcile to the funding requirement")
     cash = operating.payload
+    sale_date = equity_dates[-1]
     investor = template("synthetic-closing-investor-slots")
     investor.update(context=context, capital_snapshots=[], annual_cash_bases=[],
-                    grid=dict(spacing="calendar_months_same_day", step_months=3, dates=list(DATES),
-                              timing_basis_ref=f"{SOURCE}/quarterly-event-grid"),
+                    grid=dict(spacing="calendar_months_same_day", step_months=3, dates=list(equity_dates),
+                              timing_basis_ref=timing_basis_ref),
                     events=[
-                        event("initial", DATES[0], "contribution", "initial_capital",
+                        event("initial", equity_dates[0], "contribution", "initial_capital",
                               rational(INITIAL), f"{SOURCE}/initial-equity"),
                         *(event(draw["event_id"], draw["date"], "contribution", "additional_capital", draw["amount"],
                                 draw["source_ref"]) for draw in construction_draws),
-                        event("operating-funding", SALE_DATE, "contribution", "additional_capital",
+                        event("operating-funding", sale_date, "contribution", "additional_capital",
                               cash["exportable_equity_contribution"], f"{operating.sha256}#/exportable_equity_contribution"),
-                        event("operating", SALE_DATE, "distribution", "operating_distribution",
+                        event("operating", sale_date, "distribution", "operating_distribution",
                               cash["exportable_operating_distribution"], f"{operating.sha256}#/exportable_operating_distribution"),
-                        event("sale", SALE_DATE, "distribution", "net_sale_distribution", None, None),
+                        event("sale", sale_date, "distribution", "net_sale_distribution", None, None),
                     ])
     investor["irr_parameters"]["periods_per_year"] = 4
     return investor

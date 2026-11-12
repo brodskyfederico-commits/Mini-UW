@@ -63,14 +63,15 @@ def commercial_terms(raw, review):
                            non_recoverable=rational(non_recoverable))
 
 
-def commercial_income(terms, period):
-    start = month(date.fromisoformat(WINDOW_STARTS[period]))
+def commercial_income(terms, period, *, window_start=None):
+    window_start = WINDOW_STARTS[period] if window_start is None else window_start
+    start = month(date.fromisoformat(window_start))
     lease_start = terms["lease_start"]
     months = 0 if lease_start is None else max(0, start + 12 - max(start, month(date.fromisoformat(lease_start))))
     annual = sum((_fraction(use["area"]) * _fraction(use["rate"]) for use in terms["uses"].values()), Fraction())
     gross = annual * Fraction(months, 12)
     vacancy = gross * _fraction(terms["vacancy"])
     non_recoverable = (gross - vacancy) * _fraction(terms["non_recoverable"])
-    return dict(window_start=WINDOW_STARTS[period], lease_start=lease_start, recognized_months=months,
+    return dict(window_start=window_start, lease_start=lease_start, recognized_months=months,
                 gross=rational(gross), vacancy=rational(vacancy), non_recoverable=rational(non_recoverable),
                 net=rational(gross - vacancy - non_recoverable))

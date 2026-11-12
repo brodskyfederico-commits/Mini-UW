@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D144 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D145 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/miniuw-integral-usd10.yml",
@@ -8,8 +8,8 @@
     },
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 21496,
-      "sha256": "98792431b6b9546abe32543c0689690d2e36108b76851b532d9f77be4f801056"
+      "bytes": 21678,
+      "sha256": "bdeae2b44984b16f2462c59951389ad74c058aff87b1adfe7b14fe724fb3f71e"
     },
     {
       "path": ".gitignore",
@@ -23,13 +23,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 84662,
-      "sha256": "214e14d484c7c6e15c23fd77b02527d38da514d36cebf37dca065486f1649de7"
+      "bytes": 84841,
+      "sha256": "05eeea9d1d867c6371ba3f53e26a9806d8ae5933b27675ee5abc57cdc0705cd7"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 342157,
-      "sha256": "5ca06f06675cd1bc51e285ff3d0830825f1292cc0597d9a714838172efc4546f"
+      "bytes": 342538,
+      "sha256": "3bcf96371fae270d4748fd188d81f7eef820a34ccddf9b339592db132468ba32"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -58,8 +58,8 @@
     },
     {
       "path": "docs/MiniUW_v1_Dots_y_Bots.md",
-      "bytes": 9353,
-      "sha256": "11b550afc0e641de05a3afc858f2c21b54986bbc1becabc899767704c7653e4a"
+      "bytes": 9623,
+      "sha256": "3c1ccd49b3d508a4f12baa706a7290f036f8e725fb7c34a89f0b863786844f6e"
     },
     {
       "path": "docs/acceptance-case-contracts.json",
@@ -3132,6 +3132,11 @@
       "sha256": "d62a8d78213a436f9f389f6898a7d27feeefae516aac5eef3830afd68e440cee"
     },
     {
+      "path": "docs/workbook-project-calendar-D145.md",
+      "bytes": 4741,
+      "sha256": "993f2a9404e7dd2a02e32b6302f1efb694a0740f9a5c2c2afffbc2a15b409849"
+    },
+    {
       "path": "docs/workbook-rental-inputs-D140.md",
       "bytes": 3507,
       "sha256": "b3828300f3b54972a11821db8523dcba169d77a602bbdba8e47a5bfe5ba1788b"
@@ -5557,6 +5562,16 @@
       "sha256": "b7a7508696733e6c31cc413144fda58e6916c4ac1b40eb5b1063474822ea1797"
     },
     {
+      "path": "templates/synthetic-project-calendar-base-D145.xlsx",
+      "bytes": 8865,
+      "sha256": "2cfcc69701bd7f96532c1bbde49b73814fc9d5e45344f586e808ec31f2b3a239"
+    },
+    {
+      "path": "templates/synthetic-project-calendar-downside-D145.xlsx",
+      "bytes": 8880,
+      "sha256": "418b44ccdea0a87b5aebe62a8c5ceb38d56a6cd46999e6f3533c367918663219"
+    },
+    {
       "path": "templates/synthetic-project-cash-manifest.json",
       "bytes": 2635,
       "sha256": "6d0a6c9525a446bb9955b1d2304e1a7708c24c5f9935d9926f383bf49dc63d3c"
@@ -5912,6 +5927,11 @@
       "sha256": "8daece64c001e150b34b6c83212aae9399f6ba386368165c4c7d6d4aa8d25556"
     },
     {
+      "path": "templates/synthetic-workbook-current-revision-D145.json",
+      "bytes": 717,
+      "sha256": "d774e105a2374715c361fa3bca277fb913e1299819c8bece02326fe1c1551900"
+    },
+    {
       "path": "templates/synthetic-workbook-development-inputs-D143.json",
       "bytes": 7061,
       "sha256": "ae482b141f5f8a5c49820c4294c6134cc061e55479631d6b68ed776bd0096a1e"
@@ -5955,6 +5975,11 @@
       "path": "templates/synthetic-workbook-plan-chain-D130.json",
       "bytes": 28886,
       "sha256": "f44b8882363029b75310c31e9ef6d229989991dfec005103b0e7bb027a5f72a5"
+    },
+    {
+      "path": "templates/synthetic-workbook-project-calendar-D145.json",
+      "bytes": 9136,
+      "sha256": "755d0a8af7b7536e15f6c73f697d953b68dd5e447e9ef316642cf942d9b985f3"
     },
     {
       "path": "templates/synthetic-workbook-rental-inputs-D140.json",
@@ -7172,6 +7197,11 @@
       "sha256": "cca61135c39f867d5a61b6836709fdeeda34f8a256b8d5c604e29123a7a08e5a"
     },
     {
+      "path": "tools/check_worksheet_project_calendar_D145.py",
+      "bytes": 10759,
+      "sha256": "b598eeb09401e22383b23c394b338e21877a4250d1673f0ddbc30a663be8f7f0"
+    },
+    {
       "path": "tools/check_worksheet_recovery_page_D44.py",
       "bytes": 5757,
       "sha256": "3f230b9ad7ab3de022d8550580a879fa859fbbf28d7f5b37572d8c64fe1f57e7"
@@ -7638,8 +7668,8 @@
     },
     {
       "path": "tools/miniuw_worksheet_v1.py",
-      "bytes": 24722,
-      "sha256": "07cddeed9d5f028bae4226667c3aadc938db291c04c5797e7706ece25371d260"
+      "bytes": 24920,
+      "sha256": "dbc674b1f7a9dda19ef973b9a25b8a5632e5619085abc5fb49853c255b4049a3"
     },
     {
       "path": "tools/onepage_pending_cases_D79.py",
@@ -7673,13 +7703,13 @@
     },
     {
       "path": "tools/plan_refinance_D108.py",
-      "bytes": 16989,
-      "sha256": "759d0758abbd0b9096489c51192406246e861876f1ab9f5b67233aed343784f6"
+      "bytes": 17946,
+      "sha256": "e84e67d55fa4ea83feff9df7e2baa8ead2149285c9c110ea1e9128e721f9a240"
     },
     {
       "path": "tools/plan_return_D107.py",
-      "bytes": 20538,
-      "sha256": "74c9aa337e56292d636a55ad9b7c045984347857ba299e1e0d0ddca9a77fda81"
+      "bytes": 20849,
+      "sha256": "34aeea4059cce6252b84561e449826ed97e9f4651fad60fd321730f63f19aad7"
     },
     {
       "path": "tools/plan_schedule_D105.py",
@@ -7748,13 +7778,13 @@
     },
     {
       "path": "tools/worksheet_commercial_inputs_D141.py",
-      "bytes": 4345,
-      "sha256": "4833c8edc6bc604e653648547c9226ccc3a1c69cb9a96acb3d9035a0f27d9a4f"
+      "bytes": 4432,
+      "sha256": "484249fed310a9df35c717317f9d01bf84389e1bceec9ac9989c8365ee634e72"
     },
     {
       "path": "tools/worksheet_construction_budget_D144.py",
-      "bytes": 4861,
-      "sha256": "9f8b316fe336268d53e2314a618890d7ef0d2353e908dac2a85376766fcbc81b"
+      "bytes": 5630,
+      "sha256": "c010e1a7a8f3863f989b2e7fd0d98a1a54459d06276085d909dcaef4cd09f079"
     },
     {
       "path": "tools/worksheet_costed_case_D65.py",
@@ -7872,14 +7902,19 @@
       "sha256": "8574a388bd4c02bcdba5c996e407603f81e1a8bbc4e30838808f1ee04ddb0c5f"
     },
     {
+      "path": "tools/worksheet_project_calendar_D145.py",
+      "bytes": 5160,
+      "sha256": "e87ffceca0ee683556268505e66af022e8fc9b9a9fd72f9e5764da1a09485bdd"
+    },
+    {
       "path": "tools/worksheet_reference_metrics_D121.py",
       "bytes": 4524,
       "sha256": "893f4dc62baca3591bd99727203c802d4a17293e633a9e2787e229c32f2c31d0"
     },
     {
       "path": "tools/worksheet_rental_inputs_D140.py",
-      "bytes": 19382,
-      "sha256": "e148de1e1b3830f02dd985928cce9cc3cc283204b1e468fe29f87060f48e37c7"
+      "bytes": 21941,
+      "sha256": "e4eb7e072edc7c9d85df8d95d48c53b3110d088d1b7908a3655bb794474aa7c6"
     },
     {
       "path": "tools/worksheet_revision_D128.py",

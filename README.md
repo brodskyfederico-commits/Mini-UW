@@ -4,6 +4,7 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D145 conecta C46–C47 con el fin de obra, la estabilización y las fechas de aportes y cobros por USD 10. [Resultados y reproducción](docs/workbook-project-calendar-D145.md).
 - D144 conecta C37–C42 con el presupuesto de obra y los aportes fechados por USD 10 en Base y Downside. [Resultados y reproducción](docs/workbook-construction-budget-D144.md).
 - D143 conecta C32–C36 con terreno, cierre y obra vertical y calcula los aportes y cobros por USD 10 en ambos escenarios. [Resultados y reproducción](docs/workbook-development-inputs-D143.md).
 - D142 vincula C25–C28 con gastos de servicios por tipo de unidad y su efecto en el NOI y los cobros por USD 10. [Resultados y reproducción](docs/workbook-utility-inputs-D142.md).

@@ -22,14 +22,21 @@ def confirmed_number(rows, cell, *, fraction=False):
     return value
 
 
-def construction_budget(raw, name, review, development, commercial):
+def construction_budget(raw, name, review, development, commercial, *, calendar=None):
     source = object_or_empty(raw)
     require(source.get("policy") == POLICY and source.get("currency") == "USD"
             and synthetic_id(source.get("policy_ref")) and source.get("bases") == BASES,
             "construction_budget_scope_or_base_unconfirmed")
-    schedule = object_or_empty(source.get("schedule"))
-    require(schedule.get("terms") == TIMING and synthetic_id(schedule.get("source_ref")),
-            "construction_funding_schedule_unconfirmed:C42")
+    if calendar is None:
+        schedule = object_or_empty(source.get("schedule"))
+        require(schedule.get("terms") == TIMING and synthetic_id(schedule.get("source_ref")),
+                "construction_funding_schedule_unconfirmed:C42")
+    else:
+        require("schedule" not in source, "conflicting_construction_funding_schedules:C42")
+        schedule = dict(source_ref=calendar["construction_draw_ref"], terms=dict(
+            window_start=calendar["construction_start"], early_date=calendar["upfront_date"],
+            remainder_date=calendar["construction_finish"],
+            upfront_direct_hard_share=calendar["upfront_direct_hard_share"]))
     scenario = object_or_empty(object_or_empty(source.get("scenarios")).get(name))
     require(synthetic_id(scenario.get("scope_source_ref")), "construction_budget_line_scope_unconfirmed")
     inventory = object_or_empty(scenario.get("parking"))
@@ -60,11 +67,14 @@ def construction_budget(raw, name, review, development, commercial):
     remainder = soft - upfront
     land = _fraction(development["evaluated_purchase_price"]) + _fraction(development["land_closing_cost"])
     total = land + hard + soft + ti_lc
-    early_uses = land + hard + ti_lc + upfront
+    early_uses = land + hard + ti_lc + upfront if calendar is None else (
+        land + direct_hard * _fraction(calendar["upfront_direct_hard_share"]) + upfront)
     early_equity = max(0, early_uses - INITIAL)
     late_equity = total - INITIAL - early_equity
-    draws = [dict(event_id="construction-early", date=TIMING["early_date"], amount=rational(early_equity)),
-             dict(event_id="construction-late", date=TIMING["remainder_date"], amount=rational(late_equity))]
+    draws = [dict(event_id="construction-early", date=schedule["terms"]["early_date"], amount=rational(early_equity)),
+             dict(event_id="construction-late", date=schedule["terms"]["remainder_date"], amount=rational(late_equity))]
+    if calendar is not None:
+        draws.append(dict(event_id="lease-up-funding", date=calendar["construction_finish"], amount=calendar["lease_up_funding"]))
     cell_sources = {cell: f"sha256:{review['workbook_sha256']}#{rows[cell]['value_cell']}" for cell in
                     ("C37", "C38", "C39", "C40", "C41", "C42")}
     amounts = dict(parking_rate=parking_rate, parking_cost=parking, site_cost=site, direct_hard_cost=direct_hard,

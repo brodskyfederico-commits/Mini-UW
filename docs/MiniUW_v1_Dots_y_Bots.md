@@ -71,3 +71,5 @@ D142 vincula C25–C28 a las unidades elegibles y al presupuesto explícito de s
 D143 vincula C32–C36 al precio evaluado, los gastos de cierre y la obra vertical. B13 lleva los costos al libro de aportes y B12 bloquea la decisión ante fuentes, datos o criterios faltantes. [Resultados y reproducción](workbook-development-inputs-D143.md).
 
 D144 conecta C37–C42 con partidas y aportes fechados. B04 confirma las celdas, B13 concilia el alcance del presupuesto con el calendario de aportes y B12 conserva PENDING ante discrepancias, faltantes o revisión desactualizada. [Resultados y reproducción](workbook-construction-budget-D144.md).
+
+D145 lleva C46–C47 de la confirmación B04 al calendario y la caja de B13. B12 conserva PENDING ante un dato faltante, una incompatibilidad temporal, una revisión anterior o un criterio sin confirmar. [Resultados y reproducción](workbook-project-calendar-D145.md).

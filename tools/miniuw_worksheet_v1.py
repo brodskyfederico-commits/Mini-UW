@@ -58,9 +58,10 @@ WORKBOOK_COMMERCIAL_INPUTS_SCHEMA = "miniuw.synthetic-native-rental-inputs.v2"
 WORKBOOK_UTILITY_INPUTS_SCHEMA = "miniuw.synthetic-native-rental-inputs.v3"
 WORKBOOK_DEVELOPMENT_INPUTS_SCHEMA = "miniuw.synthetic-native-rental-inputs.v4"
 WORKBOOK_CONSTRUCTION_BUDGET_SCHEMA = "miniuw.synthetic-native-rental-inputs.v5"
+WORKBOOK_PROJECT_CALENDAR_SCHEMA = "miniuw.synthetic-native-rental-inputs.v6"
 WORKBOOK_RENTAL_SCHEMAS = (WORKBOOK_RENTAL_INPUTS_SCHEMA, WORKBOOK_COMMERCIAL_INPUTS_SCHEMA,
                           WORKBOOK_UTILITY_INPUTS_SCHEMA, WORKBOOK_DEVELOPMENT_INPUTS_SCHEMA,
-                          WORKBOOK_CONSTRUCTION_BUDGET_SCHEMA)
+                          WORKBOOK_CONSTRUCTION_BUDGET_SCHEMA, WORKBOOK_PROJECT_CALENDAR_SCHEMA)
 WORKBOOK_PDF_CHAIN_SCHEMAS = (WORKBOOK_PLAN_CHAIN_SCHEMA, WORKBOOK_SCAN_CHAIN_SCHEMA,
                               WORKBOOK_MIXED_CHAIN_SCHEMA, WORKBOOK_OVERLAY_CHAIN_SCHEMA,
                               WORKBOOK_ROTATED_OVERLAY_CHAIN_SCHEMA, WORKBOOK_PLAN_SET_CHAIN_SCHEMA,
@@ -127,7 +128,8 @@ def build_results(raw, *, workbook_raw=None, downside_workbook_raw=None, current
                                  current_revision_raw, include_commercial=schema != WORKBOOK_RENTAL_INPUTS_SCHEMA,
                                  include_utilities=schema in WORKBOOK_RENTAL_SCHEMAS[2:],
                                  include_development=schema in WORKBOOK_RENTAL_SCHEMAS[3:],
-                                 include_budget=schema == WORKBOOK_CONSTRUCTION_BUDGET_SCHEMA)
+                                 include_budget=schema in WORKBOOK_RENTAL_SCHEMAS[4:],
+                                 include_calendar=schema == WORKBOOK_PROJECT_CALENDAR_SCHEMA)
     yield_metrics = schema in (WORKBOOK_YIELD_PILOT_SCHEMA, *WORKBOOK_FUNDING_PILOT_SCHEMAS)
     interval_irr = schema == WORKBOOK_IRR_PILOT_SCHEMA or yield_metrics
     extended = schema == WORKBOOK_EXTENDED_PILOT_SCHEMA or interval_irr
