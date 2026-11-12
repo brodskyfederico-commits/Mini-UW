@@ -289,5 +289,7 @@ jobs:
         run: PYTHONPATH=src python tools/check_worksheet_plan_overlay_D133.py
       - name: Verify synthetic rotated PDF overlays and OCR provenance
         run: PYTHONPATH=src python tools/check_worksheet_plan_rotation_D134.py
+      - name: Verify unordered synthetic plan sets and reject unresolved sheet inventories
+        run: PYTHONPATH=src python tools/check_worksheet_plan_set_D135.py
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v
