@@ -41,8 +41,9 @@ def case_for(raw, minimum=60):
     return case
 
 
-def add_scan(writer, width, height, pixels):
-    page = writer.add_blank_page(width=792, height=612)
+def add_scan(writer, width, height, pixels, *, page_size=(792, 612)):
+    page_width, page_height = page_size
+    page = writer.add_blank_page(width=page_width, height=page_height)
     image = DecodedStreamObject()
     image.set_data(pixels)
     image.update({NameObject("/Type"): NameObject("/XObject"), NameObject("/Subtype"): NameObject("/Image"),
@@ -51,7 +52,7 @@ def add_scan(writer, width, height, pixels):
     resources = DictionaryObject({NameObject("/I"): writer._add_object(image.flate_encode())})
     page[NameObject("/Resources")] = DictionaryObject({NameObject("/XObject"): resources})
     stream = DecodedStreamObject()
-    stream.set_data(b"q\n792 0 0 612 0 0 cm\n/I Do\nQ\n")
+    stream.set_data(f"q\n{page_width} 0 0 {page_height} 0 0 cm\n/I Do\nQ\n".encode())
     page[NameObject("/Contents")] = writer._add_object(stream)
     return page
 

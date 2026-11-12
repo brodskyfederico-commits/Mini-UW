@@ -4,6 +4,7 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D159 verifica el OCR de cotizaciones y documentos bancarios girados y recortados. [Resultados y reproducción](docs/workbook-evidence-oriented-D159.md).
 - D158 coteja cotizaciones y documentos bancarios desde imágenes PDF con OCR. [Resultados y reproducción](docs/workbook-evidence-scan-D158.md).
 - D157 coteja el crédito de obra desde PDF antes de calcular desembolsos, intereses y caja por USD 10. [Resultados y reproducción](docs/workbook-construction-pdf-D157.md).
 - D156 coteja el presupuesto GC, el préstamo permanente y la copia oficial desde un PDF sintético. [Resultados y reproducción](docs/workbook-evidence-pdf-D156.md).

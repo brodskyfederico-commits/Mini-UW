@@ -1732,3 +1732,7 @@ B08 coteja las dos páginas bancarias con C51–C53 y las condiciones complement
 ## D158 — OCR de cotización y préstamos en PDF escaneado
 
 B03 y B08 leen cinco imágenes sin capa de texto. El expediente conserva regiones y confianza y exige concordancia si existe texto superpuesto. B16 reproduce las fuentes y siete variantes quedan PENDING. [Resultados y reproducción](docs/workbook-evidence-scan-D158.md).
+
+## D159 — Giros y recortes de los PDF financieros
+
+B03 y B08 orientan las imágenes y leen los píxeles visibles. B16 reproduce la evidencia. Los datos ocultos o discrepantes y la geometría sin soporte dejan PENDING en cinco variantes. [Resultados y reproducción](docs/workbook-evidence-oriented-D159.md).

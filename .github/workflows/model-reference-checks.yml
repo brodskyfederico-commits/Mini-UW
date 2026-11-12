@@ -337,5 +337,7 @@ jobs:
         run: OMP_THREAD_LIMIT=1 PYTHONPATH=src:tests python tools/check_worksheet_construction_pdf_D157.py
       - name: Verify OCR of scanned quotes and loan documents
         run: OMP_THREAD_LIMIT=1 PYTHONPATH=src:tests python tools/check_worksheet_evidence_scan_D158.py
+      - name: Verify rotated and cropped financial evidence OCR
+        run: OMP_THREAD_LIMIT=1 PYTHONPATH=src:tests python tools/check_worksheet_evidence_oriented_D159.py
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v
