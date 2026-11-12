@@ -71,6 +71,9 @@ WORKBOOK_GROWTH_SCHEMA = "miniuw.synthetic-native-rental-inputs.v15"
 WORKBOOK_ALTERNATIVES_SCHEMA = "miniuw.synthetic-native-rental-inputs.v16"
 WORKBOOK_EVIDENCE_PDF_SCHEMA = "miniuw.synthetic-native-rental-inputs.v17"
 WORKBOOK_CONSTRUCTION_PDF_SCHEMA = "miniuw.synthetic-native-rental-inputs.v18"
+WORKBOOK_SCANNED_EVIDENCE_SCHEMA = "miniuw.synthetic-native-rental-inputs.v19"
+EVIDENCE_MILESTONES = {WORKBOOK_EVIDENCE_PDF_SCHEMA: "D156", WORKBOOK_CONSTRUCTION_PDF_SCHEMA: "D157",
+                       WORKBOOK_SCANNED_EVIDENCE_SCHEMA: "D158"}
 WORKBOOK_RENTAL_SCHEMAS = (WORKBOOK_RENTAL_INPUTS_SCHEMA, WORKBOOK_COMMERCIAL_INPUTS_SCHEMA,
                           WORKBOOK_UTILITY_INPUTS_SCHEMA, WORKBOOK_DEVELOPMENT_INPUTS_SCHEMA,
                           WORKBOOK_CONSTRUCTION_BUDGET_SCHEMA, WORKBOOK_PROJECT_CALENDAR_SCHEMA,
@@ -78,7 +81,8 @@ WORKBOOK_RENTAL_SCHEMAS = (WORKBOOK_RENTAL_INPUTS_SCHEMA, WORKBOOK_COMMERCIAL_IN
                           WORKBOOK_OPERATING_COSTS_SCHEMA, WORKBOOK_REPLACEMENT_RESERVE_SCHEMA,
                           WORKBOOK_PROPERTY_TAX_SCHEMA, WORKBOOK_EXIT_PRICING_SCHEMA, WORKBOOK_PERMANENT_LOAN_SCHEMA,
                           WORKBOOK_REFINANCE_COSTS_SCHEMA, WORKBOOK_GROWTH_SCHEMA, WORKBOOK_ALTERNATIVES_SCHEMA,
-                          WORKBOOK_EVIDENCE_PDF_SCHEMA, WORKBOOK_CONSTRUCTION_PDF_SCHEMA)
+                          WORKBOOK_EVIDENCE_PDF_SCHEMA, WORKBOOK_CONSTRUCTION_PDF_SCHEMA,
+                          WORKBOOK_SCANNED_EVIDENCE_SCHEMA)
 WORKBOOK_DOCUMENTED_SCHEMAS = WORKBOOK_RENTAL_SCHEMAS[7:]
 WORKBOOK_PDF_CHAIN_SCHEMAS = (WORKBOOK_PLAN_CHAIN_SCHEMA, WORKBOOK_SCAN_CHAIN_SCHEMA,
                               WORKBOOK_MIXED_CHAIN_SCHEMA, WORKBOOK_OVERLAY_CHAIN_SCHEMA,
@@ -143,9 +147,8 @@ def build_results(raw, *, workbook_raw=None, downside_workbook_raw=None, current
     require(plan_raw is None or schema in (*WORKBOOK_PDF_CHAIN_SCHEMAS, *WORKBOOK_DOCUMENTED_SCHEMAS)
             and len(plan_raw) <= MAX_PLAN_BYTES,
             "A bounded PDF plan belongs to the plan chain schema")
-    use_evidence_pdf = schema in (WORKBOOK_EVIDENCE_PDF_SCHEMA, WORKBOOK_CONSTRUCTION_PDF_SCHEMA)
-    include_construction_pdf = schema == WORKBOOK_CONSTRUCTION_PDF_SCHEMA
-    require(evidence_raw is None or (use_evidence_pdf and len(evidence_raw) <= MAX_PLAN_BYTES),
+    evidence_milestone = EVIDENCE_MILESTONES.get(schema)
+    require(evidence_raw is None or (evidence_milestone is not None and len(evidence_raw) <= MAX_PLAN_BYTES),
             "A bounded evidence PDF belongs to the evidence worksheet schema")
     if schema in WORKBOOK_RENTAL_SCHEMAS:
         from worksheet_rental_inputs_D140 import build_rental_case
@@ -153,8 +156,7 @@ def build_results(raw, *, workbook_raw=None, downside_workbook_raw=None, current
         if schema in WORKBOOK_DOCUMENTED_SCHEMAS:
             from worksheet_documented_finance_D147 import review_documents
             document_review = review_documents(case, plan_raw, evidence_raw=evidence_raw,
-                                               use_evidence_pdf=use_evidence_pdf,
-                                               include_construction_pdf=include_construction_pdf)
+                                               evidence_milestone=evidence_milestone)
         return build_rental_case(case, sha(raw), {"Base": workbook_raw, "Downside": downside_workbook_raw},
                                  current_revision_raw, include_commercial=schema != WORKBOOK_RENTAL_INPUTS_SCHEMA,
                                  include_utilities=schema in WORKBOOK_RENTAL_SCHEMAS[2:],
@@ -170,7 +172,7 @@ def build_results(raw, *, workbook_raw=None, downside_workbook_raw=None, current
                                  include_refinance_costs=schema in WORKBOOK_RENTAL_SCHEMAS[13:],
                                  include_growth=schema in WORKBOOK_RENTAL_SCHEMAS[14:],
                                  include_alternatives=schema in WORKBOOK_RENTAL_SCHEMAS[15:],
-                                 use_evidence_pdf=use_evidence_pdf, include_construction_pdf=include_construction_pdf)
+                                 evidence_milestone=evidence_milestone)
     yield_metrics = schema in (WORKBOOK_YIELD_PILOT_SCHEMA, *WORKBOOK_FUNDING_PILOT_SCHEMAS)
     interval_irr = schema == WORKBOOK_IRR_PILOT_SCHEMA or yield_metrics
     extended = schema == WORKBOOK_EXTENDED_PILOT_SCHEMA or interval_irr

@@ -1728,3 +1728,7 @@ El piloto clasifica cuatro páginas por contenido, coteja la cotización y los t
 ## D157 — Condiciones del crédito de obra conectadas al cálculo T68
 
 B08 coteja las dos páginas bancarias con C51–C53 y las condiciones complementarias. B13 vincula la evidencia con los desembolsos, intereses y cancelación de la deuda. B16 reproduce la salida. Cinco casos conservan PENDING. [Resultados y reproducción](docs/workbook-construction-pdf-D157.md).
+
+## D158 — OCR de cotización y préstamos en PDF escaneado
+
+B03 y B08 leen cinco imágenes sin capa de texto. El expediente conserva regiones y confianza y exige concordancia si existe texto superpuesto. B16 reproduce las fuentes y siete variantes quedan PENDING. [Resultados y reproducción](docs/workbook-evidence-scan-D158.md).

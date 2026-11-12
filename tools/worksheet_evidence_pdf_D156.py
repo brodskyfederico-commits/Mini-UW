@@ -1,6 +1,7 @@
 """Read bounded synthetic GC, bank and archived official evidence from explicit PDF rows."""
 from fractions import Fraction
 from io import BytesIO
+from subprocess import SubprocessError
 import re
 
 from pypdf import PdfReader
@@ -131,16 +132,22 @@ def parse_page(role, number, lines, digest, revision, deal_id):
         return check("evidence_required_row_invalid", **citation)
 
 
-def read_evidence_pdf(raw, spec, revision, deal_id, *, include_construction=False):
+def read_evidence_pdf(raw, spec, revision, deal_id, *, include_construction=False, scanned=False):
     headers = HEADERS | CONSTRUCTION_HEADERS if include_construction else HEADERS
     profile = CONSTRUCTION_PROFILE if include_construction else PROFILE
+    required = {"profile", "sha256"}
+    if scanned:
+        from worksheet_evidence_scan_D158 import PROFILE as scan_profile, financial_ocr_command, scanned_evidence_page
+        from worksheet_plan_scan_D131 import valid_ocr_options
+        profile = scan_profile
+        required.add("ocr")
     specification = object_or_empty(spec)
     digest = None if raw is None else sha(raw)
     inventory = dict(source_file=SOURCE_FILE, observed_sha256=digest)
     error = None
     if raw is None:
         error = "evidence_pdf_missing"
-    elif (specification.keys() != {"profile", "sha256"} or specification["profile"] != profile
+    elif (specification.keys() != required or specification["profile"] != profile
           or specification["sha256"] != digest or not synthetic_id(revision) or not synthetic_id(deal_id)):
         error = "evidence_pdf_binding_unconfirmed"
     if error:
@@ -150,18 +157,32 @@ def read_evidence_pdf(raw, spec, revision, deal_id, *, include_construction=Fals
         if reader.is_encrypted or not 1 <= len(reader.pages) <= len(headers):
             return check("evidence_pdf_profile_unsupported", **inventory), {}
         pages = {}
+        if scanned:
+            options = object_or_empty(specification.get("ocr"))
+            if not valid_ocr_options(options):
+                return check("evidence_scan_ocr_profile_invalid", **inventory), {}
+            command, blocker = financial_ocr_command(options)
+            if blocker:
+                return check(blocker, **inventory), {}
+            inventory["ocr"] = options | dict(language="eng", page_segmentation_mode=6)
         for number, page in enumerate(reader.pages, 1):
-            text = page.extract_text() or ""
-            if len(text) > 4096:
-                return check("evidence_pdf_profile_unsupported", **inventory), {}
-            lines = [line.strip() for line in text.splitlines() if line.strip()]
-            role = headers.get(lines[0]) if lines else None
-            if role is None or any(line in headers for line in lines[1:]):
-                return check("evidence_page_role_unrecognized_or_ambiguous", page=number, **inventory), {}
+            if scanned:
+                role, reading = scanned_evidence_page(page, number, digest, revision, deal_id, headers, options, command)
+                if role is None:
+                    return check(reading["blockers"][0], page_reading=reading, **inventory), {}
+            else:
+                text = page.extract_text() or ""
+                if len(text) > 4096:
+                    return check("evidence_pdf_profile_unsupported", **inventory), {}
+                lines = [line.strip() for line in text.splitlines() if line.strip()]
+                role = headers.get(lines[0]) if lines else None
+                if role is None or any(line in headers for line in lines[1:]):
+                    return check("evidence_page_role_unrecognized_or_ambiguous", page=number, **inventory), {}
+                reading = parse_page(role, number, lines[1:], digest, revision, deal_id)
             if role in pages:
                 return check("evidence_page_role_duplicate", role=role, **inventory), {}
-            pages[role] = parse_page(role, number, lines[1:], digest, revision, deal_id)
-    except (PyPdfError, OSError, ValueError, TypeError, KeyError, NotImplementedError):
+            pages[role] = reading
+    except (PyPdfError, OSError, ValueError, TypeError, KeyError, NotImplementedError, SubprocessError):
         return check("evidence_pdf_unreadable", **inventory), {}
     missing = set(headers.values()) - pages.keys()
     for role in sorted(missing):
@@ -189,9 +210,9 @@ def bind_bank_evidence(quote, terms, principal):
                                "bank_pdf_and_worksheet_terms_disagree")
 
 
-def pdf_document_sources(source, raw, deal_id, *, include_construction=False):
+def pdf_document_sources(source, raw, deal_id, *, include_construction=False, scanned=False):
     inventory, pages = read_evidence_pdf(raw, source.get("evidence_pdf"), source.get("revision"), deal_id,
-                                         include_construction=include_construction)
+                                         include_construction=include_construction, scanned=scanned)
     if "documents" in source:
         inventory = check("structured_document_sources_conflict_with_pdf_profile",
                           source_file=SOURCE_FILE, observed_sha256=inventory["observed_sha256"])
@@ -215,10 +236,14 @@ def record_pdf_evidence(review, inventory, pages, *, include_construction=False)
         budget["gc_pdf"] = {key: value for key, value in gc.items() if key != "document"}
         if gc["blockers"]:
             review["blockers"].extend(f"B08:gc_budget:{reason}" for reason in gc["blockers"])
-        for quote in budget.get("scenario_quotes", {}).values():
+        for name, quote in budget.get("scenario_quotes", {}).items():
             if not quote["blockers"]:
                 quote["normalized_document_sha256"] = quote["source_sha256"]
                 quote.update(source_sha256=gc["source_sha256"], source_file=SOURCE_FILE, page=gc["page"])
+                if "ocr" in gc:
+                    quote.update(extraction_method=gc["extraction_method"], ocr_input_sha256=gc["ocr_input_sha256"],
+                                 ocr_citation=next(row for row in gc["ocr"]["cited_lines"]
+                                                   if row["text"].startswith(f"Vertical {name} | ")))
     official = pages.get("official_snapshot")
     if official is not None:
         for key in ("B10", "B11"):

@@ -525,7 +525,7 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
                       include_construction_financing=False, document_review=None, include_operating_costs=False,
                       include_replacement_reserve=False, include_property_tax=False, include_exit_pricing=False,
                       include_permanent_loan=False, include_refinance_costs=False, include_growth=False,
-                      include_alternatives=False, use_evidence_pdf=False, include_construction_pdf=False):
+                      include_alternatives=False, evidence_milestone=None):
     hashes = object_or_empty(case.get("workbook_sha256"))
     review = review_native_mapping(case.get("native_mapping"), workbooks, hashes, calculation_fields=FIELDS)
     revision = review_revision(case, current_revision_raw)
@@ -570,7 +570,6 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
     if include_alternatives:
         alternatives = evaluate_alternatives(object_or_empty(case.get("rent_inputs")).get("alternatives"), review, views, run_scenario,
                                              revision=revision, documents=document_review, case_sha256=case_sha256)
-    evidence_milestone = "D157" if include_construction_pdf else "D156" if use_evidence_pdf else None
     pdf = render(views, simulation, include_commercial=include_commercial, include_utilities=include_utilities,
                  include_development=include_development, include_budget=include_budget, include_calendar=include_calendar,
                  include_construction_financing=include_construction_financing, document_review=document_review,
@@ -623,12 +622,13 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
         pipeline["alternative_evaluation"] = alternatives
         if alternatives["state"] == "PENDING":
             state = "PENDING"
-    if use_evidence_pdf:
-        profile = "synthetic_pdf_evidence"
-        pipeline["pipeline"]["stages"][-1]["version_suite"] = "check_worksheet_evidence_pdf_D156.py"
-    if include_construction_pdf:
-        profile = "synthetic_pdf_evidence_with_construction"
-        pipeline["pipeline"]["stages"][-1]["version_suite"] = "check_worksheet_construction_pdf_D157.py"
+    if evidence_milestone is not None:
+        profile, version_suite = {
+            "D156": ("synthetic_pdf_evidence", "check_worksheet_evidence_pdf_D156.py"),
+            "D157": ("synthetic_pdf_evidence_with_construction", "check_worksheet_construction_pdf_D157.py"),
+            "D158": ("synthetic_scanned_financial_evidence", "check_worksheet_evidence_scan_D158.py"),
+        }[evidence_milestone]
+        pipeline["pipeline"]["stages"][-1]["version_suite"] = version_suite
     return dict(profile=profile, state=state,
                 case_sha256=case_sha256, decision="PENDING", simulation_result=simulation,
                 real_decisions_enabled=False, deployment_enabled=False, personal_investor_return=None,

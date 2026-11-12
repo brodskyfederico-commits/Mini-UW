@@ -97,3 +97,5 @@ D155 vincula C80–C82 con B04, B13 y B16. Cada solicitud requiere una confirmac
 D156 conecta un PDF de prueba con B03, B08–B11 y B13. La página y la huella del archivo se incorporan al costo, los términos bancarios y la cita oficial. B16 vuelve a ejecutar las mismas fuentes. [Resultados y reproducción](workbook-evidence-pdf-D156.md).
 
 D157 lleva dos páginas de crédito de obra a B08 y B13. El cotejo entra en la evidencia de T68. B12 deja PENDING el escenario si la página falta, los términos difieren o el plan supera el compromiso. [Resultados y reproducción](workbook-construction-pdf-D157.md).
+
+D158 agrega lectura OCR de cinco páginas financieras sintéticas a B03 y B08. B09 y B13 reciben citas y huellas de imágenes. Un dato omitido, dos lecturas incompatibles o confianza insuficiente conservan PENDING. [Resultados y reproducción](workbook-evidence-scan-D158.md).
