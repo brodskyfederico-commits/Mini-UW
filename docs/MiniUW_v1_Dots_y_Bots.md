@@ -93,3 +93,5 @@ D153 vincula C73 y C74 con B04 y B13. B16 reproduce el cobro neto al refinanciar
 D154 vincula C75 y C76 con B04 y B13. B16 reproduce las ventanas de crecimiento, el NOI y la caja fechada por USD 10. B12 conserva PENDING ante una tasa o convención sin confirmar, capacidad insuficiente, revisión desactualizada o criterio faltante. [Resultados y reproducción](workbook-growth-D154.md).
 
 D155 vincula C80–C82 con B04, B13 y B16. Cada solicitud requiere una confirmación estructurada y se recalcula sobre su escenario de origen. Se conserva PENDING ante un reemplazo sin confirmar, capacidad insuficiente o revisión desactualizada. [Resultados y reproducción](workbook-alternatives-D155.md).
+
+D156 conecta un PDF de prueba con B03, B08–B11 y B13. La página y la huella del archivo se incorporan al costo, los términos bancarios y la cita oficial. B16 vuelve a ejecutar las mismas fuentes. [Resultados y reproducción](workbook-evidence-pdf-D156.md).

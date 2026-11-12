@@ -69,13 +69,15 @@ WORKBOOK_PERMANENT_LOAN_SCHEMA = "miniuw.synthetic-native-rental-inputs.v13"
 WORKBOOK_REFINANCE_COSTS_SCHEMA = "miniuw.synthetic-native-rental-inputs.v14"
 WORKBOOK_GROWTH_SCHEMA = "miniuw.synthetic-native-rental-inputs.v15"
 WORKBOOK_ALTERNATIVES_SCHEMA = "miniuw.synthetic-native-rental-inputs.v16"
+WORKBOOK_EVIDENCE_PDF_SCHEMA = "miniuw.synthetic-native-rental-inputs.v17"
 WORKBOOK_RENTAL_SCHEMAS = (WORKBOOK_RENTAL_INPUTS_SCHEMA, WORKBOOK_COMMERCIAL_INPUTS_SCHEMA,
                           WORKBOOK_UTILITY_INPUTS_SCHEMA, WORKBOOK_DEVELOPMENT_INPUTS_SCHEMA,
                           WORKBOOK_CONSTRUCTION_BUDGET_SCHEMA, WORKBOOK_PROJECT_CALENDAR_SCHEMA,
                           WORKBOOK_CONSTRUCTION_FINANCING_SCHEMA, WORKBOOK_DOCUMENTED_FINANCING_SCHEMA,
                           WORKBOOK_OPERATING_COSTS_SCHEMA, WORKBOOK_REPLACEMENT_RESERVE_SCHEMA,
                           WORKBOOK_PROPERTY_TAX_SCHEMA, WORKBOOK_EXIT_PRICING_SCHEMA, WORKBOOK_PERMANENT_LOAN_SCHEMA,
-                          WORKBOOK_REFINANCE_COSTS_SCHEMA, WORKBOOK_GROWTH_SCHEMA, WORKBOOK_ALTERNATIVES_SCHEMA)
+                          WORKBOOK_REFINANCE_COSTS_SCHEMA, WORKBOOK_GROWTH_SCHEMA, WORKBOOK_ALTERNATIVES_SCHEMA,
+                          WORKBOOK_EVIDENCE_PDF_SCHEMA)
 WORKBOOK_DOCUMENTED_SCHEMAS = WORKBOOK_RENTAL_SCHEMAS[7:]
 WORKBOOK_PDF_CHAIN_SCHEMAS = (WORKBOOK_PLAN_CHAIN_SCHEMA, WORKBOOK_SCAN_CHAIN_SCHEMA,
                               WORKBOOK_MIXED_CHAIN_SCHEMA, WORKBOOK_OVERLAY_CHAIN_SCHEMA,
@@ -96,6 +98,7 @@ WORKBOOK_FILE = "Inputs.xlsx"
 DOWNSIDE_WORKBOOK_FILE = "Downside_Inputs.xlsx"
 CURRENT_REVISION_FILE = "current_revision.json"
 PLAN_FILE = "Plan.pdf"
+EVIDENCE_FILE = "Evidence.pdf"
 MAX_CURRENT_REVISION_BYTES = 16 * 1024
 MAX_PLAN_BYTES = 2 * 1024 * 1024
 MAX_FILE_BYTES = 4 * 1024 * 1024
@@ -130,7 +133,8 @@ def read_case(case):
     return case, archive_path, archive_raw, bindings, rate
 
 
-def build_results(raw, *, workbook_raw=None, downside_workbook_raw=None, current_revision_raw=None, plan_raw=None):
+def build_results(raw, *, workbook_raw=None, downside_workbook_raw=None, current_revision_raw=None, plan_raw=None,
+                  evidence_raw=None):
     case = _json(raw, MAX_EXTENDED_PILOT_BYTES)
     schema = case.get("schema") if isinstance(case, dict) else None
     require(current_revision_raw is None or schema in (*WORKBOOK_CURRENT_CHAIN_SCHEMAS, *WORKBOOK_RENTAL_SCHEMAS),
@@ -138,12 +142,16 @@ def build_results(raw, *, workbook_raw=None, downside_workbook_raw=None, current
     require(plan_raw is None or schema in (*WORKBOOK_PDF_CHAIN_SCHEMAS, *WORKBOOK_DOCUMENTED_SCHEMAS)
             and len(plan_raw) <= MAX_PLAN_BYTES,
             "A bounded PDF plan belongs to the plan chain schema")
+    use_evidence_pdf = schema == WORKBOOK_EVIDENCE_PDF_SCHEMA
+    require(evidence_raw is None or (use_evidence_pdf and len(evidence_raw) <= MAX_PLAN_BYTES),
+            "A bounded evidence PDF belongs to the evidence worksheet schema")
     if schema in WORKBOOK_RENTAL_SCHEMAS:
         from worksheet_rental_inputs_D140 import build_rental_case
         document_review = None
         if schema in WORKBOOK_DOCUMENTED_SCHEMAS:
             from worksheet_documented_finance_D147 import review_documents
-            document_review = review_documents(case, plan_raw)
+            document_review = review_documents(case, plan_raw, evidence_raw=evidence_raw,
+                                               use_evidence_pdf=use_evidence_pdf)
         return build_rental_case(case, sha(raw), {"Base": workbook_raw, "Downside": downside_workbook_raw},
                                  current_revision_raw, include_commercial=schema != WORKBOOK_RENTAL_INPUTS_SCHEMA,
                                  include_utilities=schema in WORKBOOK_RENTAL_SCHEMAS[2:],
@@ -158,7 +166,8 @@ def build_results(raw, *, workbook_raw=None, downside_workbook_raw=None, current
                                  include_permanent_loan=schema in WORKBOOK_RENTAL_SCHEMAS[12:],
                                  include_refinance_costs=schema in WORKBOOK_RENTAL_SCHEMAS[13:],
                                  include_growth=schema in WORKBOOK_RENTAL_SCHEMAS[14:],
-                                 include_alternatives=schema == WORKBOOK_ALTERNATIVES_SCHEMA)
+                                 include_alternatives=schema in WORKBOOK_RENTAL_SCHEMAS[15:],
+                                 use_evidence_pdf=use_evidence_pdf)
     yield_metrics = schema in (WORKBOOK_YIELD_PILOT_SCHEMA, *WORKBOOK_FUNDING_PILOT_SCHEMAS)
     interval_irr = schema == WORKBOOK_IRR_PILOT_SCHEMA or yield_metrics
     extended = schema == WORKBOOK_EXTENDED_PILOT_SCHEMA or interval_irr
@@ -281,9 +290,10 @@ def encoded(value):
     return (canonical(value) + "\n").encode()
 
 
-def build_package(raw, *, workbook_raw=None, downside_workbook_raw=None, current_revision_raw=None, plan_raw=None):
+def build_package(raw, *, workbook_raw=None, downside_workbook_raw=None, current_revision_raw=None, plan_raw=None,
+                  evidence_raw=None):
     result, pdf = build_results(raw, workbook_raw=workbook_raw, downside_workbook_raw=downside_workbook_raw,
-                                current_revision_raw=current_revision_raw, plan_raw=plan_raw)
+                                current_revision_raw=current_revision_raw, plan_raw=plan_raw, evidence_raw=evidence_raw)
     files = {"case.json": raw, "results.json": encoded(result), "MiniUW_Resumen.pdf": pdf}
     if workbook_raw is not None:
         files[WORKBOOK_FILE] = workbook_raw
@@ -293,6 +303,8 @@ def build_package(raw, *, workbook_raw=None, downside_workbook_raw=None, current
         files[CURRENT_REVISION_FILE] = current_revision_raw
     if plan_raw is not None:
         files[PLAN_FILE] = plan_raw
+    if evidence_raw is not None:
+        files[EVIDENCE_FILE] = evidence_raw
     files["package.json"] = encoded(dict(
         schema=PACKAGE_SCHEMA, state=result["state"], decision=result["decision"],
         files=[dict(path=name, bytes=len(content), sha256=sha(content)) for name, content in sorted(files.items())],
@@ -305,7 +317,7 @@ def read_package(directory):
     require(not directory.is_symlink() and directory.is_dir(), "A regular output directory is required")
     paths = list(directory.iterdir())
     names = {p.name for p in paths}
-    require(FILES <= names <= FILES | {WORKBOOK_FILE, DOWNSIDE_WORKBOOK_FILE, CURRENT_REVISION_FILE, PLAN_FILE}
+    require(FILES <= names <= FILES | {WORKBOOK_FILE, DOWNSIDE_WORKBOOK_FILE, CURRENT_REVISION_FILE, PLAN_FILE, EVIDENCE_FILE}
             and all(p.is_file() and not p.is_symlink() and p.stat().st_size <= MAX_FILE_BYTES for p in paths),
             "Exact regular case, results, PDF and manifest files are required")
     return {p.name: p.read_bytes() for p in paths}
@@ -315,7 +327,8 @@ def verify_package(directory, *, current_revision_raw=None):
     saved = read_package(directory)
     expected, result = build_package(saved["case.json"], workbook_raw=saved.get(WORKBOOK_FILE),
                                      downside_workbook_raw=saved.get(DOWNSIDE_WORKBOOK_FILE),
-                                     current_revision_raw=saved.get(CURRENT_REVISION_FILE), plan_raw=saved.get(PLAN_FILE))
+                                     current_revision_raw=saved.get(CURRENT_REVISION_FILE), plan_raw=saved.get(PLAN_FILE),
+                                     evidence_raw=saved.get(EVIDENCE_FILE))
     require(saved == expected, "Output does not match source-first replay")
     response = status("verified_source_first", result)
     if "revision_review" in result:
@@ -335,9 +348,10 @@ def status(operation, result):
     return response
 
 
-def write_package(raw, directory, *, workbook_raw=None, downside_workbook_raw=None, current_revision_raw=None, plan_raw=None):
+def write_package(raw, directory, *, workbook_raw=None, downside_workbook_raw=None, current_revision_raw=None, plan_raw=None,
+                  evidence_raw=None):
     expected, result = build_package(raw, workbook_raw=workbook_raw, downside_workbook_raw=downside_workbook_raw,
-                                     current_revision_raw=current_revision_raw, plan_raw=plan_raw)
+                                     current_revision_raw=current_revision_raw, plan_raw=plan_raw, evidence_raw=evidence_raw)
     if directory.exists() or directory.is_symlink():
         require(read_package(directory) == expected, "Existing output differs from the requested case")
         return status("verified_identical_output", result)
@@ -397,6 +411,7 @@ def main():
     run.add_argument("--downside-workbook", type=Path)
     run.add_argument("--current-revision", type=Path)
     run.add_argument("--plan", type=Path)
+    run.add_argument("--evidence", type=Path)
     audit = subcommands.add_parser("audit")
     audit.add_argument("directory", type=Path)
     audit.add_argument("--current-revision", type=Path)
@@ -414,7 +429,8 @@ def main():
             result = write_package(args.case.read_bytes(), args.output, workbook_raw=workbook_raw,
                                    downside_workbook_raw=downside,
                                    current_revision_raw=read_current_revision(args.current_revision, args.output),
-                                   plan_raw=read_plan_file(args.plan))
+                                   plan_raw=read_plan_file(args.plan),
+                                   evidence_raw=read_plan_file(args.evidence))
         elif args.command == "audit":
             result = verify_package(args.directory,
                                     current_revision_raw=read_current_revision(args.current_revision, args.directory))

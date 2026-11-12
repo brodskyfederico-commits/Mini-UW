@@ -1720,3 +1720,7 @@ B13 aplica los ajustes desde el aniversario de estabilización y calcula el NOI 
 ## D155 — C80–C82 conectadas a alternativas por escenario
 
 B04 coteja la solicitud con un reemplazo tipado y B13 recalcula la caja por USD 10. La prueba calcula cinco alternativas y conserva PENDING una sexta por capacidad. También verifica una solicitud incompatible, omisión documentada y revisión desactualizada. [Resultados y reproducción](docs/workbook-alternatives-D155.md).
+
+## D156 — PDF de evidencia conectado a B03, B08–B11 y B13
+
+El piloto clasifica cuatro páginas por contenido, coteja la cotización y los términos de deuda por escenario y conserva la cita oficial con vigencia. B16 reproduce el paquete. Ocho variantes quedan PENDING. [Resultados y reproducción](docs/workbook-evidence-pdf-D156.md).

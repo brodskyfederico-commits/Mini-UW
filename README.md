@@ -4,6 +4,7 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D156 coteja el presupuesto GC, el préstamo permanente y la copia oficial desde un PDF sintético. [Resultados y reproducción](docs/workbook-evidence-pdf-D156.md).
 - D155 conecta C80–C82 con alternativas por escenario y su efecto en los cobros por USD 10. [Resultados y reproducción](docs/workbook-alternatives-D155.md).
 - D154 conecta C75–C76 con la renta, los gastos, el NOI proyectado y los cobros por USD 10. [Resultados y reproducción](docs/workbook-growth-D154.md).
 - D153 conecta C73–C74 con los cargos del cierre, la reserva permanente y el cobro por USD 10. [Resultados y reproducción](docs/workbook-refinance-costs-D153.md).
