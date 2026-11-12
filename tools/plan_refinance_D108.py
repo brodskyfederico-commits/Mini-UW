@@ -36,13 +36,18 @@ BANK_PERIOD = f"{SOURCE}-bank-annual"
 VALUE_PERIOD = f"{SOURCE}-refinance-valuation-annual"
 
 
-def loan_evidence(context, principal, *, refi_date=REFI_DATE, payment_dates=PAYMENT_DATES):
+def loan_evidence(context, principal, *, refi_date=REFI_DATE, payment_dates=PAYMENT_DATES, permanent_terms=None):
     terms = template("synthetic-project-sale-loan")
     terms.update(context=context, loan_id=f"{SOURCE}-permanent-loan", principal=rational(principal),
                  periodic_rate=rational(QUARTERLY_RATE), origination_date=refi_date,
                  payments_per_year=4, amortization_payments=AMORTIZATION, maturity_payment=len(payment_dates),
                  payment_dates=list(payment_dates), annual_equivalent_ref=BANK_PERIOD,
                  rate_interval_ref=f"{SOURCE}/quarterly-fixed-rate")
+    if permanent_terms is not None:
+        terms.update(periodic_rate=permanent_terms["periodic_rate"], payments_per_year=permanent_terms["payments_per_year"],
+                     amortization_payments=permanent_terms["amortization_payments"],
+                     maturity_payment=permanent_terms["maturity_payments"],
+                     rate_interval_ref=f"sha256:{sha(encode(permanent_terms))}#/periodic_rate")
     raw = encode(terms)
     return DatedLoanEvidence(loan_raw=raw, windows=(), run=produce_debt_service(raw, ()))
 
@@ -79,7 +84,8 @@ def refi_closing(context, loan, principal, *, refi_date=REFI_DATE, construction_
     return raw, closing_cash.produce_closing_cash(raw)
 
 
-def capacity_check(context, valuation, bank, loan, refi_raw, refi, principal, *, refi_date=REFI_DATE, valuation_terms=None):
+def capacity_check(context, valuation, bank, loan, refi_raw, refi, principal, *, refi_date=REFI_DATE, valuation_terms=None,
+                   permanent_terms=None):
     inputs = RefinanceInputs(valuation_noi_raw=valuation.compiled_raw, valuation_noi_run=valuation.noi_run,
                              bank_noi_raw=bank.compiled_raw, bank_noi_run=bank.noi_run,
                              new_loan=loan, closing_raw=refi_raw, closing_run=refi)
@@ -96,6 +102,12 @@ def capacity_check(context, valuation, bank, loan, refi_raw, refi, principal, *,
     if valuation_terms is not None:
         spec["parameters"]["cap_rate"].update(value=valuation_terms["refinance_cap"],
             source_ref=f"sha256:{sha(encode(valuation_terms))}#/refinance_cap")
+    if permanent_terms is not None:
+        terms_ref = f"sha256:{sha(encode(permanent_terms))}"
+        for key in ("maximum_ltv", "minimum_dscr"):
+            spec["parameters"][key].update(value=permanent_terms[key], source_ref=f"{terms_ref}#/{key}")
+        spec.update(other_limits_declared_complete=permanent_terms["other_limits_declared_complete"],
+                    other_limits_basis_ref=permanent_terms["other_limits_ref"])
     spec["selected_principal"].update(value=rational(principal), as_of_date=refi_date,
                                       source_ref=f"{SOURCE}/requested-gross-principal")
     return size_refinance(inputs, encode(spec))
@@ -147,7 +159,7 @@ def run_scenario(comparison, revision, scenario, principal=REQUEST):
 
 
 def financed_cash(context, cost, construction_source_ref, principal, exit_cap, noi_for, *, construction_draws=None,
-                  calendar=None, construction_financing=None, replacement_reserve=None, valuation_terms=None):
+                  calendar=None, construction_financing=None, replacement_reserve=None, valuation_terms=None, permanent_terms=None):
     result = dict(state="PENDING", capacity=None, cash_per_usd_10=None)
     refi_date = REFI_DATE if calendar is None else calendar["refinance_date"]
     sale_date = SALE_DATE if calendar is None else calendar["sale_date"]
@@ -157,7 +169,16 @@ def financed_cash(context, cost, construction_source_ref, principal, exit_cap, n
         if assembly.payload["blockers"]:
             return result | dict(blockers=assembly.payload["blockers"] + assembly.payload["residential_blockers"])
     loan = loan_evidence(context, principal, refi_date=refi_date,
-                         payment_dates=PAYMENT_DATES if calendar is None else calendar["payment_dates"])
+                         payment_dates=PAYMENT_DATES if calendar is None else calendar["payment_dates"],
+                         permanent_terms=permanent_terms)
+    if permanent_terms is not None:
+        loan_run = loan.run.payload
+        result["permanent_loan"] = permanent_terms | dict(
+            origination_date=refi_date, requested_principal=rational(principal), loan_source_sha256=sha(loan.loan_raw),
+            loan_run_sha256=loan.run.sha256, projected_schedule=loan_run["schedule"], regular_payment_due=loan_run["regular_payment_due"],
+            annual_sizing_service=loan_run["annual_sizing"]["amount"], quote_state=loan_run["schedule_state"])
+        if loan_run["schedule_blockers"]:
+            return result | dict(blockers=loan_run["schedule_blockers"])
     refi_raw, refi = refi_closing(context, loan, principal, refi_date=refi_date,
                                  construction_financing=construction_financing)
     if construction_financing is not None:
@@ -168,7 +189,7 @@ def financed_cash(context, cost, construction_source_ref, principal, exit_cap, n
             net_equity_distribution=closing["exportable_equity_distribution"], blockers=closing["blockers"],
             closing_source_sha256=sha(refi_raw), closing_run_sha256=refi.sha256)
     cap_run = capacity_check(context, valuation, bank, loan, refi_raw, refi, principal, refi_date=refi_date,
-                             valuation_terms=valuation_terms)
+                             valuation_terms=valuation_terms, permanent_terms=permanent_terms)
     cap = cap_run.payload
     result["capacity"] = {key: cap[key] for key in (
         "valuation_noi", "bank_noi", "selected_principal", "maximum_principal_capacity", "binding_limit_ids",

@@ -1704,3 +1704,7 @@ B13 aplica el mayor entre el comparable anual y el impuesto sobre el valor fisca
 ## D151 — C66–C68 conectadas a la valoración y al cierre de venta
 
 B13 usa C66 con el NOI de valoración y C67 con el NOI de los doce meses posteriores a la venta. T43 calcula C68 sobre el precio bruto y el cierre deduce ese costo una sola vez. Quince corridas verifican la caja por USD 10 y diez casos PENDING. [Resultados y reproducción](docs/workbook-exit-pricing-D151.md).
+
+## D152 — C69–C72 conectadas a deuda permanente y capacidad
+
+B13 lleva la tasa y la amortización a las cuotas fechadas. La prueba compara el préstamo solicitado con el menor de LTV y DSCR y concilia el pago de la primera cuota con la cancelación de deuda al vender. Diecisiete corridas verifican la caja por USD 10 y diez casos PENDING. [Resultados y reproducción](docs/workbook-permanent-loan-D152.md).

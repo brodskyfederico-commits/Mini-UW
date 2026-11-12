@@ -65,12 +65,13 @@ WORKBOOK_OPERATING_COSTS_SCHEMA = "miniuw.synthetic-native-rental-inputs.v9"
 WORKBOOK_REPLACEMENT_RESERVE_SCHEMA = "miniuw.synthetic-native-rental-inputs.v10"
 WORKBOOK_PROPERTY_TAX_SCHEMA = "miniuw.synthetic-native-rental-inputs.v11"
 WORKBOOK_EXIT_PRICING_SCHEMA = "miniuw.synthetic-native-rental-inputs.v12"
+WORKBOOK_PERMANENT_LOAN_SCHEMA = "miniuw.synthetic-native-rental-inputs.v13"
 WORKBOOK_RENTAL_SCHEMAS = (WORKBOOK_RENTAL_INPUTS_SCHEMA, WORKBOOK_COMMERCIAL_INPUTS_SCHEMA,
                           WORKBOOK_UTILITY_INPUTS_SCHEMA, WORKBOOK_DEVELOPMENT_INPUTS_SCHEMA,
                           WORKBOOK_CONSTRUCTION_BUDGET_SCHEMA, WORKBOOK_PROJECT_CALENDAR_SCHEMA,
                           WORKBOOK_CONSTRUCTION_FINANCING_SCHEMA, WORKBOOK_DOCUMENTED_FINANCING_SCHEMA,
                           WORKBOOK_OPERATING_COSTS_SCHEMA, WORKBOOK_REPLACEMENT_RESERVE_SCHEMA,
-                          WORKBOOK_PROPERTY_TAX_SCHEMA, WORKBOOK_EXIT_PRICING_SCHEMA)
+                          WORKBOOK_PROPERTY_TAX_SCHEMA, WORKBOOK_EXIT_PRICING_SCHEMA, WORKBOOK_PERMANENT_LOAN_SCHEMA)
 WORKBOOK_DOCUMENTED_SCHEMAS = WORKBOOK_RENTAL_SCHEMAS[7:]
 WORKBOOK_PDF_CHAIN_SCHEMAS = (WORKBOOK_PLAN_CHAIN_SCHEMA, WORKBOOK_SCAN_CHAIN_SCHEMA,
                               WORKBOOK_MIXED_CHAIN_SCHEMA, WORKBOOK_OVERLAY_CHAIN_SCHEMA,
@@ -149,7 +150,8 @@ def build_results(raw, *, workbook_raw=None, downside_workbook_raw=None, current
                                  document_review=document_review, include_operating_costs=schema in WORKBOOK_RENTAL_SCHEMAS[8:],
                                  include_replacement_reserve=schema in WORKBOOK_RENTAL_SCHEMAS[9:],
                                  include_property_tax=schema in WORKBOOK_RENTAL_SCHEMAS[10:],
-                                 include_exit_pricing=schema == WORKBOOK_EXIT_PRICING_SCHEMA)
+                                 include_exit_pricing=schema in WORKBOOK_RENTAL_SCHEMAS[11:],
+                                 include_permanent_loan=schema == WORKBOOK_PERMANENT_LOAN_SCHEMA)
     yield_metrics = schema in (WORKBOOK_YIELD_PILOT_SCHEMA, *WORKBOOK_FUNDING_PILOT_SCHEMAS)
     interval_irr = schema == WORKBOOK_IRR_PILOT_SCHEMA or yield_metrics
     extended = schema == WORKBOOK_EXTENDED_PILOT_SCHEMA or interval_irr
