@@ -91,3 +91,5 @@ D152 conecta C69–C72 con B04 y B13. El expediente conserva la cuota fechada, e
 D153 vincula C73 y C74 con B04 y B13. B16 reproduce el cobro neto al refinanciar y la liquidación de la reserva permanente al vender. B12 conserva PENDING ante faltantes, capacidad insuficiente o una necesidad de caja sin financiación confirmada. [Resultados y reproducción](workbook-refinance-costs-D153.md).
 
 D154 vincula C75 y C76 con B04 y B13. B16 reproduce las ventanas de crecimiento, el NOI y la caja fechada por USD 10. B12 conserva PENDING ante una tasa o convención sin confirmar, capacidad insuficiente, revisión desactualizada o criterio faltante. [Resultados y reproducción](workbook-growth-D154.md).
+
+D155 vincula C80–C82 con B04, B13 y B16. Cada solicitud requiere una confirmación estructurada y se recalcula sobre su escenario de origen. Se conserva PENDING ante un reemplazo sin confirmar, capacidad insuficiente o revisión desactualizada. [Resultados y reproducción](workbook-alternatives-D155.md).

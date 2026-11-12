@@ -344,8 +344,11 @@ def screen(case, views, blockers, *, period_ref=PERIOD):
 def render(views, result, *, include_commercial=False, include_utilities=False, include_development=False,
            include_budget=False, include_calendar=False, include_construction_financing=False, document_review=None,
            include_operating_costs=False, include_replacement_reserve=False, include_property_tax=False,
-           include_exit_pricing=False, include_permanent_loan=False, include_refinance_costs=False, include_growth=False):
+           include_exit_pricing=False, include_permanent_loan=False, include_refinance_costs=False, include_growth=False,
+           alternatives=None):
     lines = [(f"Simulación por múltiplo de equity | {result} | Decisión real PENDING", True)]
+    if alternatives is not None:
+        lines[0] = (lines[0][0] + " | Escenarios de origen", True)
     if document_review is not None:
         label = "Documentos cotejados" if document_review["state"] == "checked_synthetic" else "Validación documental PENDING"
         if result == "PENDING":
@@ -356,7 +359,7 @@ def render(views, result, *, include_commercial=False, include_utilities=False, 
         cash = view["cash_per_usd_10"]
         lines.append((f"{name} | Cobro total por USD 10 iniciales: "
                       + ("PENDING" if cash is None else f"USD {money(cash['total_distributions'])}"), True))
-        if include_calendar and "project_calendar" in view:
+        if include_calendar and alternatives is None and "project_calendar" in view:
             calendar = view["project_calendar"]
             lines.append((f"Fin de obra {calendar['construction_finish']} | TCO {calendar['tco_date']} | "
                           f"Estabilización {calendar['stabilization_date']}", False))
@@ -374,7 +377,7 @@ def render(views, result, *, include_commercial=False, include_utilities=False, 
                 costs = accrued["operating_costs"]
                 lines.append((f"NOI anual USD {money(accrued['noi'])} | Administración USD {money(costs['management_fee'])} | "
                               f"Seguro USD {money(costs['insurance_total'])}", False))
-        if include_growth and "growth_terms" in view:
+        if include_growth and alternatives is None and "growth_terms" in view:
             growth = view["growth_terms"]
             rates = [money(rational(100 * _fraction(growth[key]))) for key in ("rent_growth", "expense_growth")]
             lines.append((f"C75 rentas {rates[0]} % anual | C76 gastos {rates[1]} % anual | Base {growth['anchor']}", False))
@@ -389,7 +392,7 @@ def render(views, result, *, include_commercial=False, include_utilities=False, 
             reserve = view["replacement_reserve"]
             lines.append((f"Reserva del proyecto USD {money(reserve['deposit'])} | Liberada USD {money(reserve['released_at_sale'])} | "
                           f"Transferida al comprador USD {money(reserve['transferred_restricted_to_buyer'])}", False))
-        if include_exit_pricing and "valuation_and_sale" in view:
+        if include_exit_pricing and alternatives is None and "valuation_and_sale" in view:
             pricing = view["valuation_and_sale"]
             if pricing["refinance_value"] is not None:
                 capacity = view["capacity"]["maximum_principal_capacity"]
@@ -438,6 +441,30 @@ def render(views, result, *, include_commercial=False, include_utilities=False, 
                 label = "Aporte para estabilización" if event["event_id"] == "lease-up-funding" else LABELS[event["category"]]
                 lines.append((f"{event['date']} | {label} USD {money(event['amount'])}", False))
             lines.append((f"Aportado USD {money(cash['total_contributions'])} | Sin recuperar USD {money(cash['unrecovered_after_sale'])}", False))
+    if alternatives is not None:
+        lines.append(("Alternativas independientes | USD por cada USD 10 iniciales", True))
+        driver_labels = {"C67": "Cap de salida", "C68": "Costo de venta", "C75": "Renta anual"}
+        for cell, pair in alternatives["slots"].items():
+            for name, entry in pair.items():
+                title = f"{cell} {name}"
+                binding = entry.get("binding")
+                if binding is not None:
+                    label = driver_labels[binding["target_cell"]]
+                    rate = money(rational(100 * _fraction(binding["value"])))
+                    title += f" · {label} {rate} %"
+                cash = entry["cash_per_usd_10"]
+                if cash is None:
+                    status = "No solicitada" if entry["state"] == "NOT_APPLICABLE" else "PENDING"
+                    if "selected_principal_exceeds_declared_bank_capacity" in entry["blockers"]:
+                        status += " · capacidad insuficiente"
+                    lines.append((f"{title} | {status}", False))
+                    continue
+                net_sale = next(event for event in cash["events"] if event["category"] == "net_sale_distribution")
+                lines.append((f"{title} | Aportado {money(cash['total_contributions'])} | "
+                              f"Cobrado {money(cash['total_distributions'])} | Sin recuperar {money(cash['unrecovered_after_sale'])} | "
+                              f"Venta {net_sale['date']}", False))
+        return render_page("D155 | C80-C82", lines, 10, "MINI-UW | SI INVIERTO USD 10, ¿CUÁNTO COBRO Y CUÁNDO?",
+                           "Aportes y cobros de origen y alternativas | Piloto sintético")
     label = "D142 | C25-C28" if include_utilities else "D141 | C7-C21" if include_commercial else "D140 | C7-C15"
     if include_development:
         label = "D143 | C32-C36"
@@ -484,11 +511,13 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
                       include_development=False, include_budget=False, include_calendar=False,
                       include_construction_financing=False, document_review=None, include_operating_costs=False,
                       include_replacement_reserve=False, include_property_tax=False, include_exit_pricing=False,
-                      include_permanent_loan=False, include_refinance_costs=False, include_growth=False):
+                      include_permanent_loan=False, include_refinance_costs=False, include_growth=False, include_alternatives=False):
     hashes = object_or_empty(case.get("workbook_sha256"))
     review = review_native_mapping(case.get("native_mapping"), workbooks, hashes, calculation_fields=FIELDS)
     revision = review_revision(case, current_revision_raw)
-    views = {name: run_rental_scenario(name, workbooks[name], review["scenarios"][name], case.get("rent_inputs"),
+
+    def run_scenario(name, source_review):
+        return run_rental_scenario(name, workbooks[name], source_review, case.get("rent_inputs"),
                                       include_commercial=include_commercial, include_utilities=include_utilities,
                                       include_development=include_development, include_budget=include_budget,
                                       include_calendar=include_calendar,
@@ -498,8 +527,13 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
                                       include_property_tax=include_property_tax, include_exit_pricing=include_exit_pricing,
                                       include_permanent_loan=include_permanent_loan, include_refinance_costs=include_refinance_costs,
                                       include_growth=include_growth)
-             for name in SCENARIOS}
-    blockers = [f"B04:{reason}" for reason in review["blockers"]] + [f"B12:{reason}" for reason in revision["blockers"]]
+
+    views = {name: run_scenario(name, review["scenarios"][name]) for name in SCENARIOS}
+    workbook_blockers = review["blockers"]
+    if include_alternatives:
+        from worksheet_alternatives_D155 import SLOT_FIELDS, evaluate_alternatives
+        workbook_blockers = [reason for reason in workbook_blockers if not reason.partition(":")[2].startswith(SLOT_FIELDS)]
+    blockers = [f"B04:{reason}" for reason in workbook_blockers] + [f"B12:{reason}" for reason in revision["blockers"]]
     blockers += [f"{name}:{reason}" for name, view in views.items() for reason in view["blockers"]]
     if document_review is not None:
         bindings = {name: view["document_financial_binding"] for name, view in views.items()
@@ -518,13 +552,17 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
         period_ref = LIFECYCLE
     screening = screen(case, views, blockers, period_ref=period_ref)
     simulation = screening["simulation_result"]
+    alternatives = None
+    if include_alternatives:
+        alternatives = evaluate_alternatives(object_or_empty(case.get("rent_inputs")).get("alternatives"), review, views, run_scenario,
+                                             revision=revision, documents=document_review, case_sha256=case_sha256)
     pdf = render(views, simulation, include_commercial=include_commercial, include_utilities=include_utilities,
                  include_development=include_development, include_budget=include_budget, include_calendar=include_calendar,
                  include_construction_financing=include_construction_financing, document_review=document_review,
                  include_operating_costs=include_operating_costs, include_replacement_reserve=include_replacement_reserve,
                  include_property_tax=include_property_tax, include_exit_pricing=include_exit_pricing,
                  include_permanent_loan=include_permanent_loan, include_refinance_costs=include_refinance_costs,
-                 include_growth=include_growth)
+                 include_growth=include_growth, alternatives=alternatives)
     profile = "synthetic_native_residential_and_commercial_rent" if include_commercial else PROFILE
     if include_utilities:
         profile = "synthetic_native_rent_and_utility_expenses"
@@ -563,7 +601,14 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
     if include_growth:
         profile = "synthetic_documented_growth"
         pipeline["pipeline"]["stages"][-1]["version_suite"] = "check_worksheet_growth_D154.py"
-    return dict(profile=profile, state="PENDING" if simulation == "PENDING" else "computed_synthetic_scenario_cash",
+    state = "PENDING" if simulation == "PENDING" else "computed_synthetic_scenario_cash"
+    if alternatives is not None:
+        profile = "synthetic_documented_alternatives"
+        pipeline["pipeline"]["stages"][-1]["version_suite"] = "check_worksheet_alternatives_D155.py"
+        pipeline["alternative_evaluation"] = alternatives
+        if alternatives["state"] == "PENDING":
+            state = "PENDING"
+    return dict(profile=profile, state=state,
                 case_sha256=case_sha256, decision="PENDING", simulation_result=simulation,
                 real_decisions_enabled=False, deployment_enabled=False, personal_investor_return=None,
                 scenarios=views, native_mapping_review=review, revision_review=revision, screening=screening,

@@ -4,6 +4,7 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D155 conecta C80–C82 con alternativas por escenario y su efecto en los cobros por USD 10. [Resultados y reproducción](docs/workbook-alternatives-D155.md).
 - D154 conecta C75–C76 con la renta, los gastos, el NOI proyectado y los cobros por USD 10. [Resultados y reproducción](docs/workbook-growth-D154.md).
 - D153 conecta C73–C74 con los cargos del cierre, la reserva permanente y el cobro por USD 10. [Resultados y reproducción](docs/workbook-refinance-costs-D153.md).
 - D152 conecta C69–C72 con la deuda permanente, los límites de refinanciación y la caja por USD 10. [Resultados y reproducción](docs/workbook-permanent-loan-D152.md).

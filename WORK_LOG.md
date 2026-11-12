@@ -1716,3 +1716,7 @@ B13 aplica el costo al desembolso bruto, cancela el saldo de obra y conserva la 
 ## D154 — C75–C76 conectadas al crecimiento y al retorno por USD 10
 
 B13 aplica los ajustes desde el aniversario de estabilización y calcula el NOI de operación, de refinanciación y de salida. Doce corridas D154 verifican ambos ajustes y ocho casos PENDING. [Resultados y reproducción](docs/workbook-growth-D154.md).
+
+## D155 — C80–C82 conectadas a alternativas por escenario
+
+B04 coteja la solicitud con un reemplazo tipado y B13 recalcula la caja por USD 10. La prueba calcula cinco alternativas y conserva PENDING una sexta por capacidad. También verifica una solicitud incompatible, omisión documentada y revisión desactualizada. [Resultados y reproducción](docs/workbook-alternatives-D155.md).

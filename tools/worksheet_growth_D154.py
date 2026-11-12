@@ -39,7 +39,7 @@ def declared_growth(raw, scenario, review, calendar):
         require(row["state"] == "CONFIRMED_SYNTHETIC" and value is not None and value > -1,
                 f"growth_rate_unconfirmed_or_outside_positive_factor_profile:{cell}")
         rates[name] = rational(value)
-        refs[cell] = f"sha256:{review['workbook_sha256']}#{row['value_cell']}"
+        refs[cell] = row.get("alternative_value_source_ref", f"sha256:{review['workbook_sha256']}#{row['value_cell']}")
     return dict(policy_ref=source["source_ref"], scenario_scope_ref=record["scope_ref"], rules=source["rules"],
                 cell_sources=refs, anchor=calendar["stabilization_date"], **rates)
 

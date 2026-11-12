@@ -30,7 +30,7 @@ def declared_valuation_terms(raw, name, review):
         require(row["state"] == "CONFIRMED_SYNTHETIC" and value is not None and 0 <= value <= 1
                 and (cell == "C68" or value > 0), f"valuation_or_sale_rate_unconfirmed_or_out_of_range:{cell}")
         values[key] = rational(value)
-        refs[cell] = f"sha256:{review['workbook_sha256']}#{row['value_cell']}"
+        refs[cell] = row.get("alternative_value_source_ref", f"sha256:{review['workbook_sha256']}#{row['value_cell']}")
     return dict(policy_ref=source["source_ref"], rules=source["rules"], cell_sources=refs, **record, **values)
 
 
