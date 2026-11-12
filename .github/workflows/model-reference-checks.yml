@@ -291,5 +291,7 @@ jobs:
         run: PYTHONPATH=src python tools/check_worksheet_plan_rotation_D134.py
       - name: Verify unordered synthetic plan sets and reject unresolved sheet inventories
         run: PYTHONPATH=src python tools/check_worksheet_plan_set_D135.py
+      - name: Verify rotated overlays in unordered synthetic plan sets
+        run: PYTHONPATH=src python tools/check_worksheet_plan_rotated_set_D136.py
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v

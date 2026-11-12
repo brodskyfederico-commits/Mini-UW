@@ -53,3 +53,5 @@ D133 compara texto y OCR de la misma hoja en B06. B07 y B09 continúan la concil
 D134 conserva ese cotejo para una hoja escaneada con un giro declarado de 90°, 180° o 270°. El expediente guarda la orientación, el hash del escaneo extraído y el de la imagen que recibe el OCR. [Alcance y resultados](workbook-plan-rotation-D134.md).
 
 D135 inventaría las páginas antes de conciliar A101 y A601. Registra la ubicación de cada hoja y conserva PENDING ante faltantes, duplicados o identidades en conflicto. [Alcance y resultados](workbook-plan-set-D135.md).
+
+D136 verifica la orientación de A601 después de identificarla y exige coincidencia entre texto y OCR. El inventario detecta duplicados aunque las copias tengan giros distintos. [Alcance y resultados](workbook-plan-rotated-set-D136.md).

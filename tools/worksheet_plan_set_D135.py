@@ -9,11 +9,13 @@ from pypdf import PdfReader
 from miniuw_foundation.scheduled_expense_case import sha
 from worksheet_local_sources_D127 import check, object_or_empty, synthetic_id
 from worksheet_plan_mixed_D132 import PAGE_ERRORS, SHEETS, text_lines
+from worksheet_plan_overlay_D133 import RIGHT_ANGLES, rotate_scan
 from worksheet_plan_pdf_D130 import MARKER, sheet_area, unavailable_plan
 from worksheet_plan_scan_D131 import full_page_image, recognize, runtime, scan_reading, valid_ocr_options
 
 
 PROFILE = "SYNTHETIC-D135-sheet-set"
+ROTATED_PROFILE = "SYNTHETIC-D136-rotated-sheet-set"
 MAX_PAGES = 12
 SHEET_ID = re.compile(r"SHEET ([A-Z][A-Z0-9.-]{0,23})")
 
@@ -35,28 +37,37 @@ def observe_identity(lines, plan_ref, *, ocr_rows=(), threshold=0):
     return check(sheet=names[0], **evidence)
 
 
-def identify_page(page, index, ocr, plan_ref):
+def identify_page(page, index, ocr, plan_ref, *, allow_rotation=False):
     sources, observations = {}, {}
+    raster_evidence = {}
     try:
         native = text_lines(page)
         if native is not None:
             sources["text"] = native
         else:
-            raster = full_page_image(page, allow_text_layer=True)
+            rotation = page.get("/Rotate", 0) if allow_rotation else 0
+            if not isinstance(rotation, int) or rotation not in (0, *RIGHT_ANGLES):
+                return check("sheet_page_rotation_unsupported", page=index), sources
+            raster = full_page_image(page, allow_text_layer=True, allowed_rotation=rotation)
             if raster is None:
                 return check("sheet_page_layout_unsupported", page=index), sources
             native = [line.strip() for line in (page.extract_text() or "").splitlines() if line.strip()]
             if native:
                 sources["text"] = native
+            if allow_rotation:
+                raster_evidence.update(page_rotation_clockwise=int(rotation), raw_image_sha256=sha(raster),
+                                       ocr_region_basis="rotation_normalized_pixels")
+                if rotation:
+                    raster = rotate_scan(raster, rotation)
+            raster_evidence["ocr_input_sha256"] = sha(raster)
             command, blocker = runtime(ocr)
             if blocker:
-                observations["ocr"] = check(blocker, ocr_input_sha256=sha(raster))
+                observations["ocr"] = check(blocker, **raster_evidence)
             else:
                 rows = recognize(raster, *command)
                 sources["ocr"] = rows
                 observations["ocr"] = observe_identity([row["text"] for row in rows], plan_ref, ocr_rows=rows,
-                                                       threshold=ocr["minimum_word_confidence"]) | {
-                                                           "ocr_input_sha256": sha(raster)}
+                                                       threshold=ocr["minimum_word_confidence"]) | raster_evidence
         if "text" in sources:
             observations["text"] = observe_identity(sources["text"], plan_ref)
     except PAGE_ERRORS:
@@ -70,7 +81,7 @@ def identify_page(page, index, ocr, plan_ref):
     return check(sheet=next(iter(sheets)), **evidence), sources
 
 
-def required_reading(sheet, pages, claimed, document, digest, plan_ref, threshold):
+def required_reading(sheet, pages, claimed, document, digest, plan_ref, threshold, *, expected_rotation=None):
     evidence = dict(sheet=sheet, candidate_pages=claimed)
     if len(claimed) > 1:
         return check("required_sheet_duplicated", **evidence)
@@ -85,12 +96,21 @@ def required_reading(sheet, pages, claimed, document, digest, plan_ref, threshol
     if "text" in sources:
         readings["text"] = sheet_area([(index, sources["text"])], sheet, label, pattern, digest, plan_ref)
     if "ocr" in sources:
-        readings["ocr"] = scan_reading([(index, sources["ocr"])], sheet, label, pattern, digest, plan_ref, threshold) | {
-            "ocr_input_sha256": identity["observations"]["ocr"]["ocr_input_sha256"]}
+        ocr_evidence = identity["observations"]["ocr"]
+        raster_keys = ("ocr_input_sha256", "page_rotation_clockwise", "raw_image_sha256", "ocr_region_basis")
+        readings["ocr"] = scan_reading([(index, sources["ocr"])], sheet, label, pattern, digest, plan_ref, threshold)
+        readings["ocr"].update({key: ocr_evidence[key] for key in raster_keys if key in ocr_evidence})
     for method, row in readings.items():
         row.update(extraction_method=method, source_sha256=digest, page=index)
     method = "text_and_ocr" if len(readings) == 2 else next(iter(readings))
     evidence.update(page=index, extraction_method=method, source_sha256=digest, observations=readings)
+    if expected_rotation is not None:
+        observed = readings.get("ocr", {}).get("page_rotation_clockwise")
+        evidence.update(declared_page_rotation=expected_rotation, observed_page_rotation=observed)
+        if method != "text_and_ocr":
+            return check("rotated_sheet_text_and_ocr_required", **evidence)
+        if observed != expected_rotation:
+            return check("required_sheet_page_rotation_mismatch", **evidence)
     if any(row["blockers"] for row in readings.values()):
         return check("required_sheet_area_unverified", **evidence)
     first = next(iter(readings.values()))
@@ -99,7 +119,7 @@ def required_reading(sheet, pages, claimed, document, digest, plan_ref, threshol
     return first | evidence
 
 
-def read_plan_set(raw, specification):
+def read_plan_set(raw, specification, *, require_a601_rotation=False):
     spec = object_or_empty(specification)
     if raw is None:
         return unavailable_plan("plan_pdf_missing")
@@ -108,13 +128,20 @@ def read_plan_set(raw, specification):
     if digest != spec.get("sha256") or not synthetic_id(plan_ref):
         return unavailable_plan("plan_pdf_hash_or_reference_mismatch", digest)
     ocr = object_or_empty(spec.get("ocr"))
-    if spec.get("sheet_set_profile") != PROFILE or not valid_ocr_options(ocr):
+    profile = ROTATED_PROFILE if require_a601_rotation else PROFILE
+    if spec.get("sheet_set_profile") != profile or not valid_ocr_options(ocr):
         return unavailable_plan("explicit_sheet_set_and_ocr_profile_required", digest)
+    rotation = None
+    if require_a601_rotation:
+        rotation = spec.get("a601_rotation_clockwise")
+        if type(rotation) is not int or rotation not in RIGHT_ANGLES:
+            return unavailable_plan("explicit_a601_page_rotation_required", digest)
     try:
         reader = PdfReader(BytesIO(raw), strict=True)
         if reader.is_encrypted or not 1 <= len(reader.pages) <= MAX_PAGES:
             return unavailable_plan("plan_pdf_profile_unsupported", digest)
-        pages = [identify_page(page, index, ocr, plan_ref) for index, page in enumerate(reader.pages, 1)]
+        pages = [identify_page(page, index, ocr, plan_ref, allow_rotation=require_a601_rotation)
+                 for index, page in enumerate(reader.pages, 1)]
     except PAGE_ERRORS:
         return unavailable_plan("plan_pdf_unreadable", digest)
 
@@ -133,6 +160,9 @@ def read_plan_set(raw, specification):
     document = check(blocker, kind="synthetic_pdf_sheet_set", source_file="Plan.pdf", sha256=digest,
                      plan_ref=plan_ref, sheet_inventory=inventory, duplicate_sheet_pages=duplicates,
                      ocr=ocr | {"language": "eng"})
+    if require_a601_rotation:
+        document.update(kind="synthetic_rotated_pdf_sheet_set", a601_rotation_clockwise=rotation)
     return {"document": document} | {
-        bot: required_reading(sheet, pages, candidates[sheet], document, digest, plan_ref, ocr["minimum_word_confidence"])
+        bot: required_reading(sheet, pages, candidates[sheet], document, digest, plan_ref, ocr["minimum_word_confidence"],
+                              expected_rotation=rotation if sheet == "A601" else None)
         for sheet, (bot, _, _) in SHEETS.items()}

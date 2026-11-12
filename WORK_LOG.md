@@ -1640,3 +1640,7 @@ B06 verifica la rotación declarada contra el PDF y gira los píxeles extraídos
 ## D135 — Inventario de un PDF con hojas fuera de orden
 
 El plano de cuatro páginas incluye portada, A601, A202 y A101. El expediente cita A601 en la página 2 y A101 en la 4, y coteja 1.000 m² con GC. Se prueban faltantes de ambas hojas, duplicados incluso en una imagen sin capa de texto, discrepancias entre capas y entre hojas, y una página adicional sin identificación. Los cobros por USD 10 se conservan en las diez corridas. [Casos y reproducción](docs/workbook-plan-set-D135.md).
+
+## D136 — A601 girada en un PDF con hojas fuera de orden
+
+A601 se localiza por su identificación y se concilia en giros de 90°, 180° y 270°. Se conservan el hash del escaneo y el de la entrada al OCR. Ocho casos dejan PENDING ante hojas faltantes o duplicadas, superficies discrepantes, orientación contradictoria o texto ausente. Las once corridas conservan los cobros por USD 10. [Casos y reproducción](docs/workbook-plan-rotated-set-D136.md).
