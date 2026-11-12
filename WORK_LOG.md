@@ -1664,3 +1664,7 @@ El piloto lee las nueve celdas de Base y Downside. Usa C12 como evidencia de com
 ## D141 — C16–C21 conectadas a renta comercial y NOI
 
 El piloto combina áreas comerciales explícitas con las tarifas NNN de los tres usos. Prorratea los meses desde el inicio pos-TCO, deduce vacancia y no recuperables y concilia el efecto en operación, capacidad y venta. Los ocho ensayos incluyen cero explícito, no aplicabilidad, cambio de inicio y bloqueos por dato o criterio. [Resultados y reproducción](docs/workbook-commercial-inputs-D141.md).
+
+## D142 — C25–C28 conectadas a gastos de servicios y NOI
+
+Se aplica la tarifa mensual de cada tipo de unidad a la población elegible confirmada. El gasto del propietario se suma una vez al presupuesto operativo. El piloto conserva la renta y lleva el gasto al NOI operativo, bancario, de valoración y de salida. Los ocho ensayos incluyen cero, no aplicabilidad, cambios de tarifa y bloqueos por dato, alcance o criterio. [Resultados y reproducción](docs/workbook-utility-inputs-D142.md).

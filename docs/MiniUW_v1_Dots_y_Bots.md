@@ -65,3 +65,5 @@ D139 vincula B04 con las 55 celdas de la planilla original en dos copias sintét
 D140 conecta las confirmaciones de B04 para C7–C15 con la renta, el NOI y los cobros de B13. B12 retiene la caja dependiente de una renta sin confirmar y el dictamen queda PENDING ante un criterio faltante. [Alcance y resultados](workbook-rental-inputs-D140.md).
 
 D141 conecta C16–C21 con áreas comerciales declaradas, el calendario pos-TCO y el NOI por período. B04 exige confirmación de los datos aplicables y B12 conserva PENDING ante un faltante. [Resultados y reproducción](workbook-commercial-inputs-D141.md).
+
+D142 vincula C25–C28 a las unidades elegibles y al presupuesto explícito de servicios pagados por el propietario. B13 incorpora ese gasto al NOI. B12 conserva PENDING ante un dato o criterio sin confirmar. [Resultados y reproducción](workbook-utility-inputs-D142.md).

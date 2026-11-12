@@ -103,6 +103,7 @@ def rental_noi(terms, cells, values, period, commercial=None):
     expense_terms = terms["expenses"]
     expenses = [dict(item_id=key, kind=kind, rate=expense_terms[key], currency="USD",
                      source_ref=expense_terms["source_ref"], policy_ref=policy["source_ref"]) for key, kind in EXPENSES.items()]
+    expenses.extend(terms.get("utility_expenses", ()))
     raw = encoded(dict(schema=RENTAL_SCHEMA, context=context, currency="USD", period_ref=period,
                        months_in_period=12, months_per_year=12, residential_groups=groups, expense_items=expenses))
     producer = produce_rental_operations(raw)
@@ -128,10 +129,12 @@ def rental_noi(terms, cells, values, period, commercial=None):
                     noi_assembly_sha256=assembled.sha256, groups=rows["groups"], loss_fraction=rational(loss))
     if commercial is not None:
         evidence["commercial"] = commercial_result
+    if "utility_evidence" in terms:
+        evidence["utilities"] = terms["utility_evidence"]
     return assembled, evidence
 
 
-def run_rental_scenario(name, raw, review, rent_inputs, *, include_commercial=False):
+def run_rental_scenario(name, raw, review, rent_inputs, *, include_commercial=False, include_utilities=False):
     pending = dict(state="PENDING", cash_per_usd_10=None, capacity=None, noi_by_period={})
     if not review["calculation_inputs_ready"]:
         return pending | dict(blockers=["required_rental_cells_unconfirmed"])
@@ -140,6 +143,10 @@ def run_rental_scenario(name, raw, review, rent_inputs, *, include_commercial=Fa
     cells = {cell: f"sha256:{review['workbook_sha256']}#{row['value_cell']}" for cell, row in rows.items()}
     try:
         terms = terms_for(rent_inputs, name, values, inspect_synthetic_input_sheet(raw).cells)
+        if include_utilities:
+            from worksheet_utility_inputs_D142 import utility_expenses
+            terms["utility_expenses"], terms["utility_evidence"] = utility_expenses(
+                rent_inputs.get("utilities"), name, review, terms["groups"])
         commercial = None
         if include_commercial:
             from worksheet_commercial_inputs_D141 import commercial_terms
@@ -180,7 +187,7 @@ def screen(case, views, blockers):
                          simulation_blockers=sorted(set(result["simulation_blockers"] + blockers)))
 
 
-def render(views, result, *, include_commercial=False):
+def render(views, result, *, include_commercial=False, include_utilities=False):
     lines = [(f"Simulación por múltiplo de equity | {result} | Decisión real PENDING", True)]
     for name, view in views.items():
         accrued = view["noi_by_period"].get(OPERATING_PERIOD)
@@ -192,29 +199,33 @@ def render(views, result, *, include_commercial=False):
             if include_commercial:
                 commercial = accrued["commercial"]
                 lines.append((f"Renta comercial neta USD {money(commercial['net'])} | {commercial['recognized_months']} meses", False))
+            if include_utilities:
+                lines.append((f"Gasto anual de servicios USD {money(accrued['utilities']['annual_total'])}", False))
         if cash is not None:
             for event in cash["events"]:
                 if _fraction(event["amount"]):
                     lines.append((f"{event['date']} | {LABELS[event['category']]} USD {money(event['amount'])}", False))
             lines.append((f"Aportado USD {money(cash['total_contributions'])} | Sin recuperar USD {money(cash['unrecovered_after_sale'])}", False))
-    label = "D141 | C7-C21" if include_commercial else "D140 | C7-C15"
-    return render_page(label, lines, 21, "MINI-UW | SI INVIERTO USD 10, ¿CUÁNTO COBRO Y CUÁNDO?",
+    label = "D142 | C25-C28" if include_utilities else "D141 | C7-C21" if include_commercial else "D140 | C7-C15"
+    return render_page(label, lines, 19 if include_utilities else 21, "MINI-UW | SI INVIERTO USD 10, ¿CUÁNTO COBRO Y CUÁNDO?",
                        "Renta, NOI y cobros del proyecto | Piloto sintético")
 
 
-def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, include_commercial=False):
+def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, include_commercial=False, include_utilities=False):
     hashes = object_or_empty(case.get("workbook_sha256"))
     review = review_native_mapping(case.get("native_mapping"), workbooks, hashes, calculation_fields=FIELDS)
     revision = review_revision(case, current_revision_raw)
     views = {name: run_rental_scenario(name, workbooks[name], review["scenarios"][name], case.get("rent_inputs"),
-                                      include_commercial=include_commercial)
+                                      include_commercial=include_commercial, include_utilities=include_utilities)
              for name in SCENARIOS}
     blockers = [f"B04:{reason}" for reason in review["blockers"]] + [f"B12:{reason}" for reason in revision["blockers"]]
     blockers += [f"{name}:{reason}" for name, view in views.items() for reason in view["blockers"]]
     screening = screen(case, views, blockers)
     simulation = screening["simulation_result"]
-    pdf = render(views, simulation, include_commercial=include_commercial)
+    pdf = render(views, simulation, include_commercial=include_commercial, include_utilities=include_utilities)
     profile = "synthetic_native_residential_and_commercial_rent" if include_commercial else PROFILE
+    if include_utilities:
+        profile = "synthetic_native_rent_and_utility_expenses"
     return dict(profile=profile, state="PENDING" if simulation == "PENDING" else "computed_synthetic_scenario_cash",
                 case_sha256=case_sha256, decision="PENDING", simulation_result=simulation,
                 real_decisions_enabled=False, deployment_enabled=False, personal_investor_return=None,

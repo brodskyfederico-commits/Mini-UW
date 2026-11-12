@@ -4,6 +4,7 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D142 vincula C25–C28 con gastos de servicios por tipo de unidad y su efecto en el NOI y los cobros por USD 10. [Resultados y reproducción](docs/workbook-utility-inputs-D142.md).
 - D141 conecta C16–C21 con el inicio de la renta comercial, el NOI de cada período y los cobros por USD 10. [Resultados y reproducción](docs/workbook-commercial-inputs-D141.md).
 - D140 conecta C7–C15 con renta residencial, NOI y cobros por USD 10 en Base y Downside. [Resultados y reproducción](docs/workbook-rental-inputs-D140.md).
 - D139 mapea las 55 celdas del original y prueba la confirmación por escenario con dos copias sintéticas. El dictamen queda PENDING si falta un campo o una regla. [Matriz, casos y reproducción](docs/workbook-native-mapping-D139.md).
