@@ -319,5 +319,7 @@ jobs:
         run: OMP_THREAD_LIMIT=1 PYTHONPATH=src:tests python tools/check_worksheet_operating_costs_D148.py
       - name: Verify replacement reserve deposits, sale releases and dated cash per initial USD 10
         run: OMP_THREAD_LIMIT=1 PYTHONPATH=src:tests python tools/check_worksheet_replacement_reserve_D149.py
+      - name: Verify property tax, NOI and dated cash per initial USD 10
+        run: OMP_THREAD_LIMIT=1 PYTHONPATH=src:tests python tools/check_worksheet_property_tax_D150.py
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v

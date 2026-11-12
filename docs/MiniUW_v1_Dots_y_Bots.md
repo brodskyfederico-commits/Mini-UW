@@ -81,3 +81,5 @@ D147 registra los siete Dots en la corrida del motor D146. B05–B09 cotejan el 
 D148 conecta C57–C59 con B04 y B13. La evidencia registra el alcance de los gastos, el EGI residencial de cada período y el inventario asegurado. B12 conserva PENDING si falta la base o si los servicios exceden el total controlable. [Resultados y reproducción](workbook-operating-costs-D148.md).
 
 D149 conecta C60 con B04 y B13. La evidencia concilia el depósito operativo, la caja restringida previa a la venta, la liberación y el saldo transferido al comprador. B12 conserva PENDING ante la falta de una tasa, una base o una instrucción de liquidación. [Resultados y reproducción](workbook-replacement-reserve-D149.md).
+
+D150 conecta C61–C62 con B04 y B13. El expediente registra el comparable anual, la base fiscal estimada, la rama aplicada y el NOI de cada período. B12 conserva PENDING ante la falta de una base, tasa, unidad o criterio. [Resultados y reproducción](workbook-property-tax-D150.md).

@@ -1696,3 +1696,7 @@ C57 concilia el subtotal de servicios con el presupuesto controlable. C58 usa el
 ## D149 — C60 conectada a la reserva de reposición y a la venta
 
 B13 lleva el depósito de C60 a caja restringida y concilia la liberación y el saldo que pasa al comprador. Trece corridas verifican el efecto por USD 10, el aporte por insuficiencia de caja operativa y siete casos PENDING. [Resultados y reproducción](docs/workbook-replacement-reserve-D149.md).
+
+## D150 — C61–C62 conectadas al impuesto inmobiliario y al NOI
+
+B13 aplica el mayor entre el comparable anual y el impuesto sobre el valor fiscal estimado. La prueba verifica ambas ramas, el residual exacto y el efecto en la caja por USD 10. Catorce corridas incluyen nueve casos PENDING por datos, capacidad o criterio. [Resultados y reproducción](docs/workbook-property-tax-D150.md).
