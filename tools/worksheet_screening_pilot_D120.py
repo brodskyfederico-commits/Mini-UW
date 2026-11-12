@@ -13,7 +13,7 @@ from miniuw_foundation.screening import SCHEMA, simulate_screening
 from miniuw_worksheet_v1 import (WORKBOOK_CAPACITY_SCHEMA, WORKBOOK_CURRENT_CHAIN_SCHEMAS, WORKBOOK_FUNDING_PILOT_SCHEMAS,
                                  WORKBOOK_LOCAL_CHAIN_SCHEMAS, WORKBOOK_MIXED_CHAIN_SCHEMA, WORKBOOK_OPERATING_PILOT_SCHEMAS,
                                  WORKBOOK_OVERLAY_CHAIN_SCHEMA, WORKBOOK_PLAN_CHAIN_SCHEMA, WORKBOOK_RETURN_PILOT_SCHEMAS,
-                                 WORKBOOK_SCAN_CHAIN_SCHEMA, encoded)
+                                 WORKBOOK_ROTATED_OVERLAY_CHAIN_SCHEMA, WORKBOOK_SCAN_CHAIN_SCHEMA, encoded)
 from worksheet_intake_case_D117 import SOURCE_FIXTURE, build_intake_case
 from worksheet_plan_refinance_D109 import LABELS, SCENARIOS
 from worksheet_sale_rate_grid_D84 import money
@@ -356,9 +356,10 @@ def build_pilot(case, case_sha256, workbooks, *, extended=False, interval_irr=Fa
         elif schema == WORKBOOK_MIXED_CHAIN_SCHEMA:
             from worksheet_plan_mixed_D132 import read_mixed_plan
             pdf_plan = read_mixed_plan(plan_raw, object_or_empty(local_sources).get("plan_pdf"))
-        elif schema == WORKBOOK_OVERLAY_CHAIN_SCHEMA:
+        elif schema in (WORKBOOK_OVERLAY_CHAIN_SCHEMA, WORKBOOK_ROTATED_OVERLAY_CHAIN_SCHEMA):
             from worksheet_plan_overlay_D133 import read_overlay_plan
-            pdf_plan = read_overlay_plan(plan_raw, object_or_empty(local_sources).get("plan_pdf"))
+            pdf_plan = read_overlay_plan(plan_raw, object_or_empty(local_sources).get("plan_pdf"),
+                                         require_rotation=schema == WORKBOOK_ROTATED_OVERLAY_CHAIN_SCHEMA)
         local_review = review_local_sources(local_sources, hashes, pdf_plan=pdf_plan)
         screening["worksheet_simulation_result"] = screening["simulation_result"]
         screening["worksheet_run_sha256"] = screening.pop("run_sha256")
@@ -378,6 +379,8 @@ def build_pilot(case, case_sha256, workbooks, *, extended=False, interval_irr=Fa
             local_milestone, version_suite = "D132", "check_worksheet_plan_mixed_D132.py"
         elif schema == WORKBOOK_OVERLAY_CHAIN_SCHEMA:
             local_milestone, version_suite = "D133", "check_worksheet_plan_overlay_D133.py"
+        elif schema == WORKBOOK_ROTATED_OVERLAY_CHAIN_SCHEMA:
+            local_milestone, version_suite = "D134", "check_worksheet_plan_rotation_D134.py"
         if blockers:
             screening["simulation_result"] = "PENDING"
             screening["simulation_blockers"] = sorted(set(screening["simulation_blockers"] + blockers))

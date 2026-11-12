@@ -49,3 +49,5 @@ D131 prueba esos contratos con OCR sobre un PDF escaneado sintético y conserva 
 D132 prueba ambos métodos en hojas separadas de un mismo PDF. [Alcance y resultados](workbook-plan-mixed-D132.md).
 
 D133 compara texto y OCR de la misma hoja en B06. B07 y B09 continúan la conciliación sólo cuando ambas lecturas están completas y coinciden. [Alcance y resultados](workbook-plan-overlay-D133.md).
+
+D134 conserva ese cotejo para una hoja escaneada con un giro declarado de 90°, 180° o 270°. El expediente guarda la orientación, el hash del escaneo extraído y el de la imagen que recibe el OCR. [Alcance y resultados](workbook-plan-rotation-D134.md).
