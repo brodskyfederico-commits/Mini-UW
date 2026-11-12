@@ -54,7 +54,7 @@ def build_noi(comparison, revision, context, period, terms):
 
 
 def reconcile_year(assembly, context, *, debt_payment=None, debt_source_ref=None,
-                   operating_window=("2027-07-01", "2028-07-01"), cash_date=SALE_DATE):
+                   operating_window=("2027-07-01", "2028-07-01"), cash_date=SALE_DATE, replacement_reserve=None):
     noi = assembly.noi_run.payload
     income = _fraction(noi["income_total"])
     costs = _fraction(noi["expenses_excluding_tax"]) + _fraction(noi["property_tax"])
@@ -67,7 +67,8 @@ def reconcile_year(assembly, context, *, debt_payment=None, debt_source_ref=None
         "debt_principal_payment": _fraction(debt_payment["principal_due"]),
         "debt_interest_payment": _fraction(debt_payment["interest_due"]),
     }
-    available = income - costs - sum(debt.values())
+    deposit = 0 if replacement_reserve is None else _fraction(replacement_reserve["deposit"])
+    available = income - costs - sum(debt.values()) - deposit
     claims = {
         "operating_receipts_claim": income,
         "operating_payments_claim": costs,
@@ -93,6 +94,11 @@ def reconcile_year(assembly, context, *, debt_payment=None, debt_source_ref=None
                 "Dated debt evidence must match the operating payment date")
         spec["classification_basis_ref"] = f"{SOURCE}/operating-cash-with-dated-debt-service"
         spec["amounts"].update({key: claim(value, source_ref=debt_source_ref) for key, value in debt.items()})
+    if replacement_reserve is not None:
+        source = f"sha256:{sha(encode(replacement_reserve))}#/deposit"
+        spec["amounts"].update(reserve_deposit=claim(deposit, source_ref=source),
+                               closing_restricted_cash_claim=claim(deposit, "CLOSING:" + OPERATING_PERIOD, source))
+        spec["distribution_basis_ref"] = f"{replacement_reserve['policy_ref']}/settle-and-fund-restricted-reserve"
     return operating_cash.reconcile_operating_cash(assembly.compiled_raw, assembly.noi_run, encode(spec))
 
 
@@ -107,7 +113,7 @@ def value_at_exit(forward, context, cap, *, sale_date=SALE_DATE, forward_end="20
     return exit_value.produce_exit_value(forward.compiled_raw, forward.noi_run, encode(spec))
 
 
-def sale_source(context, operating, valuation, *, sale_date=SALE_DATE):
+def sale_source(context, operating, valuation, *, sale_date=SALE_DATE, replacement_reserve=None):
     def claim(value, basis, source_ref):
         return dict(value=rational(value), currency="USD", as_of_date=sale_date, basis=basis, source_ref=source_ref)
 
@@ -122,10 +128,18 @@ def sale_source(context, operating, valuation, *, sale_date=SALE_DATE):
         amounts[key] = claim(value, "cash_flow_at_closing", source_ref)
     free_cash = _fraction(operating.payload["expected_closing_free_cash"])
     restricted_cash = _fraction(operating.payload["expected_closing_restricted_cash"])
+    restricted_at_delivery = 0
+    if replacement_reserve is not None:
+        require(restricted_cash == _fraction(replacement_reserve["deposit"]), "sale_reserve_does_not_match_operating_balance")
+        release = restricted_cash * _fraction(replacement_reserve["sale_release_fraction"])
+        restricted_at_delivery = restricted_cash - release
+        amounts["reserve_release"] = claim(release, "cash_flow_at_closing", replacement_reserve["sale_settlement_ref"])
     balances = {"opening_free_cash": free_cash, "opening_restricted_cash": restricted_cash,
-                "retained_free_cash": 0, "closing_restricted_cash_claim": 0}
+                "retained_free_cash": 0, "closing_restricted_cash_claim": restricted_at_delivery}
     amounts.update({key: claim(balances[key], basis, f"{operating.sha256}/D107-sale-balances")
                     for key, basis in closing_cash.STOCK_FIELDS.items()})
+    if replacement_reserve is not None:
+        amounts["closing_restricted_cash_claim"]["source_ref"] = replacement_reserve["sale_settlement_ref"]
     return dict(schema=closing_cash.SCHEMA, profile="SYNTHETIC-RESIDUAL-AFTER-EXPLICIT-RETENTION-v1",
                   context=context, currency="USD", closing_date=sale_date, kind="sale",
                   representation="explicit_gross_cash_movements", debt_inventory_declared_complete=True,

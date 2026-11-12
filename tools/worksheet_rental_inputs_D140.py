@@ -147,7 +147,8 @@ def rental_noi(terms, cells, values, period, commercial=None, *, window_start=No
 
 def run_rental_scenario(name, raw, review, rent_inputs, *, include_commercial=False, include_utilities=False,
                         include_development=False, include_budget=False, include_calendar=False,
-                        include_construction_financing=False, document_review=None, include_operating_costs=False):
+                        include_construction_financing=False, document_review=None, include_operating_costs=False,
+                        include_replacement_reserve=False):
     pending = dict(state="PENDING", cash_per_usd_10=None, capacity=None, noi_by_period={})
     if not review["calculation_inputs_ready"]:
         return pending | dict(blockers=["required_rental_cells_unconfirmed"])
@@ -179,6 +180,10 @@ def run_rental_scenario(name, raw, review, rent_inputs, *, include_commercial=Fa
             from worksheet_operating_costs_D148 import declared_costs
             terms["operating_costs"] = declared_costs(rent_inputs.get("operating_costs"), name, review, terms["groups"],
                                                      terms["utility_evidence"])
+        reserve = None
+        if include_replacement_reserve:
+            from worksheet_replacement_reserve_D149 import declared_reserve
+            reserve = declared_reserve(rent_inputs.get("replacement_reserve"), name, review, terms["groups"])
         calendar = None
         if include_calendar:
             from worksheet_project_calendar_D145 import project_calendar
@@ -230,7 +235,8 @@ def run_rental_scenario(name, raw, review, rent_inputs, *, include_commercial=Fa
         result = financed_cash(terms["context"], terms["cost"], cost_source,
                                terms["principal"], terms["cap"],
                                lambda period: operating if period == OPERATING_PERIOD else noi_for(period),
-                               construction_draws=draws, calendar=calendar, construction_financing=funding)
+                               construction_draws=draws, calendar=calendar, construction_financing=funding,
+                               replacement_reserve=reserve)
     except (ValueError, TypeError, KeyError) as error:
         evidence = dict(document_financial_binding=binding) if binding is not None else {}
         return pending | dict(blockers=[str(error)], cell_sources=cells) | evidence
@@ -270,7 +276,7 @@ def screen(case, views, blockers, *, period_ref=PERIOD):
 
 def render(views, result, *, include_commercial=False, include_utilities=False, include_development=False,
            include_budget=False, include_calendar=False, include_construction_financing=False, document_review=None,
-           include_operating_costs=False):
+           include_operating_costs=False, include_replacement_reserve=False):
     lines = [(f"Simulación por múltiplo de equity | {result} | Decisión real PENDING", True)]
     if document_review is not None:
         label = "Documentos cotejados" if document_review["state"] == "checked_synthetic" else "Validación documental PENDING"
@@ -296,6 +302,10 @@ def render(views, result, *, include_commercial=False, include_utilities=False, 
             costs = accrued["operating_costs"]
             lines.append((f"NOI anual USD {money(accrued['noi'])} | Administración USD {money(costs['management_fee'])} | "
                           f"Seguro USD {money(costs['insurance_total'])}", False))
+        if include_replacement_reserve and "replacement_reserve" in view:
+            reserve = view["replacement_reserve"]
+            lines.append((f"Reserva del proyecto USD {money(reserve['deposit'])} | Liberada USD {money(reserve['released_at_sale'])} | "
+                          f"Transferida al comprador USD {money(reserve['transferred_restricted_to_buyer'])}", False))
         if include_calendar and cash is None:
             lines.append((f"Pendiente por {view['blockers'][0][:105]}", False))
         if accrued and accrued["noi"] is not None and not include_calendar:
@@ -327,6 +337,9 @@ def render(views, result, *, include_commercial=False, include_utilities=False, 
     if include_development:
         label = "D143 | C32-C36"
     spacing = 17 if include_development else 19 if include_utilities else 21
+    if include_replacement_reserve:
+        return render_page("D149 | C60", lines, 11, "MINI-UW | SI INVIERTO USD 10, ¿CUÁNTO COBRO Y CUÁNDO?",
+                           "Reserva de reposición, aportes y cobros | Piloto sintético")
     if include_operating_costs:
         return render_page("D148 | C57-C59", lines, 11, "MINI-UW | SI INVIERTO USD 10, ¿CUÁNTO COBRO Y CUÁNDO?",
                            "Gastos operativos, aportes y cobros | Piloto sintético")
@@ -349,7 +362,8 @@ def render(views, result, *, include_commercial=False, include_utilities=False, 
 
 def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, include_commercial=False, include_utilities=False,
                       include_development=False, include_budget=False, include_calendar=False,
-                      include_construction_financing=False, document_review=None, include_operating_costs=False):
+                      include_construction_financing=False, document_review=None, include_operating_costs=False,
+                      include_replacement_reserve=False):
     hashes = object_or_empty(case.get("workbook_sha256"))
     review = review_native_mapping(case.get("native_mapping"), workbooks, hashes, calculation_fields=FIELDS)
     revision = review_revision(case, current_revision_raw)
@@ -358,7 +372,8 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
                                       include_development=include_development, include_budget=include_budget,
                                       include_calendar=include_calendar,
                                       include_construction_financing=include_construction_financing,
-                                      document_review=document_review, include_operating_costs=include_operating_costs)
+                                      document_review=document_review, include_operating_costs=include_operating_costs,
+                                      include_replacement_reserve=include_replacement_reserve)
              for name in SCENARIOS}
     blockers = [f"B04:{reason}" for reason in review["blockers"]] + [f"B12:{reason}" for reason in revision["blockers"]]
     blockers += [f"{name}:{reason}" for name, view in views.items() for reason in view["blockers"]]
@@ -382,7 +397,7 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
     pdf = render(views, simulation, include_commercial=include_commercial, include_utilities=include_utilities,
                  include_development=include_development, include_budget=include_budget, include_calendar=include_calendar,
                  include_construction_financing=include_construction_financing, document_review=document_review,
-                 include_operating_costs=include_operating_costs)
+                 include_operating_costs=include_operating_costs, include_replacement_reserve=include_replacement_reserve)
     profile = "synthetic_native_residential_and_commercial_rent" if include_commercial else PROFILE
     if include_utilities:
         profile = "synthetic_native_rent_and_utility_expenses"
@@ -403,6 +418,9 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
     if include_operating_costs:
         profile = "synthetic_documented_operating_costs"
         pipeline["pipeline"]["stages"][-1]["version_suite"] = "check_worksheet_operating_costs_D148.py"
+    if include_replacement_reserve:
+        profile = "synthetic_documented_replacement_reserve"
+        pipeline["pipeline"]["stages"][-1]["version_suite"] = "check_worksheet_replacement_reserve_D149.py"
     return dict(profile=profile, state="PENDING" if simulation == "PENDING" else "computed_synthetic_scenario_cash",
                 case_sha256=case_sha256, decision="PENDING", simulation_result=simulation,
                 real_decisions_enabled=False, deployment_enabled=False, personal_investor_return=None,

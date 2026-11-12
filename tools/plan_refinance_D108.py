@@ -98,9 +98,9 @@ def capacity_check(context, valuation, bank, loan, refi_raw, refi, principal, *,
     return size_refinance(inputs, encode(spec))
 
 
-def sale_with_payoff(context, operating, valuation, loan, payment):
+def sale_with_payoff(context, operating, valuation, loan, payment, *, replacement_reserve=None):
     sale_date = payment["date"]
-    source = sale_source(context, operating, valuation, sale_date=sale_date)
+    source = sale_source(context, operating, valuation, sale_date=sale_date, replacement_reserve=replacement_reserve)
     source["classification_basis_ref"] = f"{SOURCE}/sale-after-dated-regular-payment"
     principal = _fraction(payment["closing_balance"])
     debt = {"loan_id": loan.run.payload["loan_id"]}
@@ -144,7 +144,7 @@ def run_scenario(comparison, revision, scenario, principal=REQUEST):
 
 
 def financed_cash(context, cost, construction_source_ref, principal, exit_cap, noi_for, *, construction_draws=None,
-                  calendar=None, construction_financing=None):
+                  calendar=None, construction_financing=None, replacement_reserve=None):
     result = dict(state="PENDING", capacity=None, cash_per_usd_10=None)
     refi_date = REFI_DATE if calendar is None else calendar["refinance_date"]
     sale_date = SALE_DATE if calendar is None else calendar["sale_date"]
@@ -186,16 +186,30 @@ def financed_cash(context, cost, construction_source_ref, principal, exit_cap, n
             "The synthetic period requires one scheduled payment on sale day before payoff")
     operating_dates = {} if calendar is None else dict(operating_window=calendar["operating_window"], cash_date=sale_date)
     operating = reconcile_year(operating_noi, context, debt_payment=payment,
-                               debt_source_ref=f"{loan.run.sha256}#/schedule/0", **operating_dates)
+                               debt_source_ref=f"{loan.run.sha256}#/schedule/0", replacement_reserve=replacement_reserve,
+                               **operating_dates)
     if operating.payload["blockers"]:
         return result | dict(blockers=operating.payload["blockers"])
     exit_dates = {} if calendar is None else dict(sale_date=sale_date, forward_end=calendar["exit_forward_end"])
     exit_run = value_at_exit(forward_noi, context, exit_cap, **exit_dates)
     if exit_run.payload["blockers"]:
         return result | dict(blockers=exit_run.payload["blockers"])
-    sale_raw, sale, debt_check = sale_with_payoff(context, operating, exit_run, loan, payment)
+    sale_raw, sale, debt_check = sale_with_payoff(context, operating, exit_run, loan, payment, replacement_reserve=replacement_reserve)
     if debt_check.payload["blockers"]:
         return result | dict(blockers=debt_check.payload["blockers"] + debt_check.payload["closing_blockers"])
+    if replacement_reserve is not None:
+        operating_cash = operating.payload
+        sale_cash = sale.payload
+        closing_claims = json.loads(sale_raw)["amounts"]
+        result["replacement_reserve"] = replacement_reserve | dict(
+            deposit_date=operating_cash["cash_date"], sale_date=sale_cash["closing_date"],
+            restricted_before_sale=operating_cash["expected_closing_restricted_cash"],
+            operating_equity_contribution=operating_cash["exportable_equity_contribution"],
+            released_at_sale=closing_claims["reserve_release"]["value"],
+            transferred_restricted_to_buyer=sale_cash["expected_closing_restricted_cash"],
+            operating_cash_residual=operating_cash["total_cash_conservation_residual"],
+            sale_cash_residual=sale_cash["total_cash_conservation_residual"],
+            operating_cash_sha256=operating.sha256, sale_closing_sha256=sale.sha256)
 
     equity_grid = {} if calendar is None else dict(equity_dates=calendar["equity_dates"], timing_basis_ref=calendar["policy_ref"])
     ledger = equity_source_from_cost(context, cost, construction_source_ref, operating, construction_draws=construction_draws,

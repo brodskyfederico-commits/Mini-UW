@@ -1692,3 +1692,7 @@ La cadena coteja A101 y A601 con texto y OCR, compara la superficie y la cotizac
 ## D148 — C57–C59 conectadas al NOI y a la caja
 
 C57 concilia el subtotal de servicios con el presupuesto controlable. C58 usa el EGI residencial que incluye C13. C59 usa el inventario de unidades aseguradas. Doce corridas verifican el efecto de cada celda, la capacidad y los cobros por USD 10, con siete casos PENDING. [Resultados y reproducción](docs/workbook-operating-costs-D148.md).
+
+## D149 — C60 conectada a la reserva de reposición y a la venta
+
+B13 lleva el depósito de C60 a caja restringida y concilia la liberación y el saldo que pasa al comprador. Trece corridas verifican el efecto por USD 10, el aporte por insuficiencia de caja operativa y siete casos PENDING. [Resultados y reproducción](docs/workbook-replacement-reserve-D149.md).

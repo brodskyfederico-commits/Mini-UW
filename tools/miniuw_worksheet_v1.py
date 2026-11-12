@@ -62,12 +62,13 @@ WORKBOOK_PROJECT_CALENDAR_SCHEMA = "miniuw.synthetic-native-rental-inputs.v6"
 WORKBOOK_CONSTRUCTION_FINANCING_SCHEMA = "miniuw.synthetic-native-rental-inputs.v7"
 WORKBOOK_DOCUMENTED_FINANCING_SCHEMA = "miniuw.synthetic-native-rental-inputs.v8"
 WORKBOOK_OPERATING_COSTS_SCHEMA = "miniuw.synthetic-native-rental-inputs.v9"
+WORKBOOK_REPLACEMENT_RESERVE_SCHEMA = "miniuw.synthetic-native-rental-inputs.v10"
 WORKBOOK_RENTAL_SCHEMAS = (WORKBOOK_RENTAL_INPUTS_SCHEMA, WORKBOOK_COMMERCIAL_INPUTS_SCHEMA,
                           WORKBOOK_UTILITY_INPUTS_SCHEMA, WORKBOOK_DEVELOPMENT_INPUTS_SCHEMA,
                           WORKBOOK_CONSTRUCTION_BUDGET_SCHEMA, WORKBOOK_PROJECT_CALENDAR_SCHEMA,
                           WORKBOOK_CONSTRUCTION_FINANCING_SCHEMA, WORKBOOK_DOCUMENTED_FINANCING_SCHEMA,
-                          WORKBOOK_OPERATING_COSTS_SCHEMA)
-WORKBOOK_DOCUMENTED_SCHEMAS = (WORKBOOK_DOCUMENTED_FINANCING_SCHEMA, WORKBOOK_OPERATING_COSTS_SCHEMA)
+                          WORKBOOK_OPERATING_COSTS_SCHEMA, WORKBOOK_REPLACEMENT_RESERVE_SCHEMA)
+WORKBOOK_DOCUMENTED_SCHEMAS = WORKBOOK_RENTAL_SCHEMAS[7:]
 WORKBOOK_PDF_CHAIN_SCHEMAS = (WORKBOOK_PLAN_CHAIN_SCHEMA, WORKBOOK_SCAN_CHAIN_SCHEMA,
                               WORKBOOK_MIXED_CHAIN_SCHEMA, WORKBOOK_OVERLAY_CHAIN_SCHEMA,
                               WORKBOOK_ROTATED_OVERLAY_CHAIN_SCHEMA, WORKBOOK_PLAN_SET_CHAIN_SCHEMA,
@@ -142,7 +143,8 @@ def build_results(raw, *, workbook_raw=None, downside_workbook_raw=None, current
                                  include_budget=schema in WORKBOOK_RENTAL_SCHEMAS[4:],
                                  include_calendar=schema in WORKBOOK_RENTAL_SCHEMAS[5:],
                                  include_construction_financing=schema in WORKBOOK_RENTAL_SCHEMAS[6:],
-                                 document_review=document_review, include_operating_costs=schema == WORKBOOK_OPERATING_COSTS_SCHEMA)
+                                 document_review=document_review, include_operating_costs=schema in WORKBOOK_RENTAL_SCHEMAS[8:],
+                                 include_replacement_reserve=schema == WORKBOOK_REPLACEMENT_RESERVE_SCHEMA)
     yield_metrics = schema in (WORKBOOK_YIELD_PILOT_SCHEMA, *WORKBOOK_FUNDING_PILOT_SCHEMAS)
     interval_irr = schema == WORKBOOK_IRR_PILOT_SCHEMA or yield_metrics
     extended = schema == WORKBOOK_EXTENDED_PILOT_SCHEMA or interval_irr

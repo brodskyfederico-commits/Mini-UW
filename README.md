@@ -4,6 +4,7 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D149 conecta C60 con la caja restringida, su destino al vender y los aportes y cobros por USD 10. [Resultados y reproducción](docs/workbook-replacement-reserve-D149.md).
 - D148 conecta C57–C59 con gastos operativos, NOI, capacidad de refinanciación y cobros por USD 10 en el expediente documentado. [Resultados y reproducción](docs/workbook-operating-costs-D148.md).
 - D147 une planos, cotizaciones de GC, copia oficial y revisión vigente con el motor D146 y la salida fechada por USD 10. [Resultados y reproducción](docs/workbook-documented-finance-D147.md).
 - D146 conecta los desembolsos de deuda y los intereses de obra con los aportes y la refinanciación por USD 10. [Resultados y reproducción](docs/workbook-construction-financing-D146.md).
