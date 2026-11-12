@@ -27,7 +27,7 @@ def valid_ocr_options(ocr):
             and type(ocr["minimum_word_confidence"]) is int and 0 < ocr["minimum_word_confidence"] <= 100)
 
 
-def full_page_image(page, *, allow_text_layer=False, allowed_rotation=0):
+def full_page_image(page, *, allow_text_layer=False, allowed_rotation=0, allow_crop_box=False):
     contents = page.get_contents()
     if contents is None:
         return None
@@ -42,7 +42,7 @@ def full_page_image(page, *, allow_text_layer=False, allowed_rotation=0):
     matrix, draw = image_ops[1][0], image_ops[2][0]
     extent = (page.mediabox.width, 0, 0, page.mediabox.height, 0, 0)
     if (tuple(matrix) != extent or len(draw) != 1 or tuple(page.mediabox.lower_left) != (0, 0)
-            or tuple(page.cropbox) != tuple(page.mediabox)
+            or (not allow_crop_box and tuple(page.cropbox) != tuple(page.mediabox))
             or page.rotation != allowed_rotation):
         return None
     resources = page["/Resources"]["/XObject"].get_object()

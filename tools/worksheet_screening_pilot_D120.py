@@ -10,7 +10,7 @@ from miniuw_foundation.debt_service import rational
 from miniuw_foundation.expense_cash_detail import _exact
 from miniuw_foundation.scheduled_expense_case import sha
 from miniuw_foundation.screening import SCHEMA, simulate_screening
-from miniuw_worksheet_v1 import (WORKBOOK_CAPACITY_SCHEMA, WORKBOOK_CURRENT_CHAIN_SCHEMAS,
+from miniuw_worksheet_v1 import (WORKBOOK_CAPACITY_SCHEMA, WORKBOOK_CROPPED_PLAN_SET_CHAIN_SCHEMA, WORKBOOK_CURRENT_CHAIN_SCHEMAS,
                                  WORKBOOK_DUAL_ROTATED_PLAN_SET_CHAIN_SCHEMA, WORKBOOK_FUNDING_PILOT_SCHEMAS,
                                  WORKBOOK_LOCAL_CHAIN_SCHEMAS, WORKBOOK_MIXED_CHAIN_SCHEMA, WORKBOOK_OPERATING_PILOT_SCHEMAS,
                                  WORKBOOK_OVERLAY_CHAIN_SCHEMA, WORKBOOK_PLAN_CHAIN_SCHEMA, WORKBOOK_PLAN_SET_CHAIN_SCHEMA,
@@ -364,10 +364,12 @@ def build_pilot(case, case_sha256, workbooks, *, extended=False, interval_irr=Fa
             pdf_plan = read_overlay_plan(plan_raw, object_or_empty(local_sources).get("plan_pdf"),
                                          require_rotation=schema == WORKBOOK_ROTATED_OVERLAY_CHAIN_SCHEMA)
         elif schema in (WORKBOOK_PLAN_SET_CHAIN_SCHEMA, WORKBOOK_ROTATED_PLAN_SET_CHAIN_SCHEMA,
-                        WORKBOOK_DUAL_ROTATED_PLAN_SET_CHAIN_SCHEMA):
-            from worksheet_plan_set_D135 import DUAL_ROTATED_PROFILE, PROFILE as PLAN_SET_PROFILE, ROTATED_PROFILE, read_plan_set
+                        WORKBOOK_DUAL_ROTATED_PLAN_SET_CHAIN_SCHEMA, WORKBOOK_CROPPED_PLAN_SET_CHAIN_SCHEMA):
+            from worksheet_plan_set_D135 import (CROPPED_PROFILE, DUAL_ROTATED_PROFILE, PROFILE as PLAN_SET_PROFILE,
+                                                 ROTATED_PROFILE, read_plan_set)
             profile = {WORKBOOK_PLAN_SET_CHAIN_SCHEMA: PLAN_SET_PROFILE, WORKBOOK_ROTATED_PLAN_SET_CHAIN_SCHEMA: ROTATED_PROFILE,
-                       WORKBOOK_DUAL_ROTATED_PLAN_SET_CHAIN_SCHEMA: DUAL_ROTATED_PROFILE}[schema]
+                       WORKBOOK_DUAL_ROTATED_PLAN_SET_CHAIN_SCHEMA: DUAL_ROTATED_PROFILE,
+                       WORKBOOK_CROPPED_PLAN_SET_CHAIN_SCHEMA: CROPPED_PROFILE}[schema]
             pdf_plan = read_plan_set(plan_raw, object_or_empty(local_sources).get("plan_pdf"), profile=profile)
         local_review = review_local_sources(local_sources, hashes, pdf_plan=pdf_plan)
         screening["worksheet_simulation_result"] = screening["simulation_result"]
@@ -396,6 +398,8 @@ def build_pilot(case, case_sha256, workbooks, *, extended=False, interval_irr=Fa
             local_milestone, version_suite = "D136", "check_worksheet_plan_rotated_set_D136.py"
         elif schema == WORKBOOK_DUAL_ROTATED_PLAN_SET_CHAIN_SCHEMA:
             local_milestone, version_suite = "D137", "check_worksheet_plan_dual_rotation_D137.py"
+        elif schema == WORKBOOK_CROPPED_PLAN_SET_CHAIN_SCHEMA:
+            local_milestone, version_suite = "D138", "check_worksheet_plan_cropped_set_D138.py"
         if blockers:
             screening["simulation_result"] = "PENDING"
             screening["simulation_blockers"] = sorted(set(screening["simulation_blockers"] + blockers))

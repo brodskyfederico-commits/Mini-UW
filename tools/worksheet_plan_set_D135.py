@@ -8,6 +8,7 @@ from pypdf import PdfReader
 
 from miniuw_foundation.scheduled_expense_case import sha
 from worksheet_local_sources_D127 import check, object_or_empty, synthetic_id
+from worksheet_plan_crop_D138 import citations_inside, visible_crop
 from worksheet_plan_mixed_D132 import PAGE_ERRORS, SHEETS, text_lines
 from worksheet_plan_overlay_D133 import RIGHT_ANGLES, rotate_scan
 from worksheet_plan_pdf_D130 import MARKER, sheet_area, unavailable_plan
@@ -17,6 +18,7 @@ from worksheet_plan_scan_D131 import full_page_image, recognize, runtime, scan_r
 PROFILE = "SYNTHETIC-D135-sheet-set"
 ROTATED_PROFILE = "SYNTHETIC-D136-rotated-sheet-set"
 DUAL_ROTATED_PROFILE = "SYNTHETIC-D137-two-rotated-sheets"
+CROPPED_PROFILE = "SYNTHETIC-D138-cropped-rotated-sheets"
 MAX_PAGES = 12
 SHEET_ID = re.compile(r"SHEET ([A-Z][A-Z0-9.-]{0,23})")
 
@@ -38,7 +40,7 @@ def observe_identity(lines, plan_ref, *, ocr_rows=(), threshold=0):
     return check(sheet=names[0], **evidence)
 
 
-def identify_page(page, index, ocr, plan_ref, *, allow_rotation=False):
+def identify_page(page, index, ocr, plan_ref, *, allow_rotation=False, allow_crop_box=False):
     sources, observations = {}, {}
     raster_evidence = {}
     try:
@@ -49,16 +51,24 @@ def identify_page(page, index, ocr, plan_ref, *, allow_rotation=False):
             rotation = page.get("/Rotate", 0) if allow_rotation else 0
             if not isinstance(rotation, int) or rotation not in (0, *RIGHT_ANGLES):
                 return check("sheet_page_rotation_unsupported", page=index), sources
-            raster = full_page_image(page, allow_text_layer=True, allowed_rotation=rotation)
+            raster = full_page_image(page, allow_text_layer=True, allowed_rotation=rotation, allow_crop_box=allow_crop_box)
             if raster is None:
                 return check("sheet_page_layout_unsupported", page=index), sources
             native = [line.strip() for line in (page.extract_text() or "").splitlines() if line.strip()]
             if native:
                 sources["text"] = native
+            full_oriented = None
             if allow_rotation:
                 raster_evidence.update(page_rotation_clockwise=int(rotation), raw_image_sha256=sha(raster),
                                        ocr_region_basis="rotation_normalized_pixels")
-                if rotation:
+                if allow_crop_box and tuple(page.cropbox) != tuple(page.mediabox):
+                    cropped = visible_crop(page, raster, rotation)
+                    if cropped is None:
+                        return check("scan_crop_box_unsupported", page=index), sources
+                    raster, full_oriented, crop_evidence = cropped
+                    raster_evidence.update(crop_evidence, full_oriented_scan_sha256=sha(full_oriented),
+                                           ocr_region_basis="cropped_rotation_normalized_pixels")
+                elif rotation:
                     raster = rotate_scan(raster, rotation)
             raster_evidence["ocr_input_sha256"] = sha(raster)
             command, blocker = runtime(ocr)
@@ -67,8 +77,17 @@ def identify_page(page, index, ocr, plan_ref, *, allow_rotation=False):
             else:
                 rows = recognize(raster, *command)
                 sources["ocr"] = rows
-                observations["ocr"] = observe_identity([row["text"] for row in rows], plan_ref, ocr_rows=rows,
-                                                       threshold=ocr["minimum_word_confidence"]) | raster_evidence
+                threshold = ocr["minimum_word_confidence"]
+                identity = observe_identity([row["text"] for row in rows], plan_ref, ocr_rows=rows, threshold=threshold)
+                if full_oriented is not None and not identity["blockers"]:
+                    full_rows = recognize(full_oriented, *command)
+                    full_identity = observe_identity([row["text"] for row in full_rows], plan_ref, ocr_rows=full_rows,
+                                                     threshold=threshold)
+                    if (full_identity["blockers"] or full_identity["sheet"] != identity["sheet"]
+                            or not citations_inside(full_identity["cited_lines"], raster_evidence["crop_region_in_oriented_scan"])):
+                        identity.update(check("scan_crop_hides_or_changes_sheet_identity"))
+                    sources["uncropped_ocr"] = full_rows
+                observations["ocr"] = identity | raster_evidence
         if "text" in sources:
             observations["text"] = observe_identity(sources["text"], plan_ref)
     except PAGE_ERRORS:
@@ -98,9 +117,17 @@ def required_reading(sheet, pages, claimed, document, digest, plan_ref, threshol
         readings["text"] = sheet_area([(index, sources["text"])], sheet, label, pattern, digest, plan_ref)
     if "ocr" in sources:
         ocr_evidence = identity["observations"]["ocr"]
-        raster_keys = ("ocr_input_sha256", "page_rotation_clockwise", "raw_image_sha256", "ocr_region_basis")
+        raster_keys = ("ocr_input_sha256", "page_rotation_clockwise", "raw_image_sha256", "ocr_region_basis",
+                       "crop_box_pdf_points", "crop_region_in_oriented_scan", "full_oriented_scan_sha256")
         readings["ocr"] = scan_reading([(index, sources["ocr"])], sheet, label, pattern, digest, plan_ref, threshold)
         readings["ocr"].update({key: ocr_evidence[key] for key in raster_keys if key in ocr_evidence})
+        reading = readings["ocr"]
+        if "uncropped_ocr" in sources and not reading["blockers"]:
+            full = scan_reading([(index, sources["uncropped_ocr"])], sheet, label, pattern, digest, plan_ref, threshold)
+            if (full["blockers"] or full["raw_line"] != reading["raw_line"]
+                    or not citations_inside(full["ocr"]["cited_lines"], reading["crop_region_in_oriented_scan"])):
+                reading["ocr"]["observed_value"] = reading.pop("value")
+                reading.update(check("scan_crop_hides_or_changes_required_area"))
     for method, row in readings.items():
         row.update(extraction_method=method, source_sha256=digest, page=index)
     method = "text_and_ocr" if len(readings) == 2 else next(iter(readings))
@@ -137,7 +164,7 @@ def read_plan_set(raw, specification, *, profile=PROFILE):
         if type(rotation) is not int or rotation not in RIGHT_ANGLES:
             return unavailable_plan("explicit_a601_page_rotation_required", digest)
         expected_rotations["A601"] = rotation
-    elif profile == DUAL_ROTATED_PROFILE:
+    elif profile in (DUAL_ROTATED_PROFILE, CROPPED_PROFILE):
         expected_rotations = object_or_empty(spec.get("sheet_rotations_clockwise"))
         if expected_rotations.keys() != SHEETS.keys() or any(
                 type(angle) is not int or angle not in RIGHT_ANGLES for angle in expected_rotations.values()):
@@ -146,7 +173,8 @@ def read_plan_set(raw, specification, *, profile=PROFILE):
         reader = PdfReader(BytesIO(raw), strict=True)
         if reader.is_encrypted or not 1 <= len(reader.pages) <= MAX_PAGES:
             return unavailable_plan("plan_pdf_profile_unsupported", digest)
-        pages = [identify_page(page, index, ocr, plan_ref, allow_rotation=bool(expected_rotations))
+        pages = [identify_page(page, index, ocr, plan_ref, allow_rotation=bool(expected_rotations),
+                               allow_crop_box=profile == CROPPED_PROFILE)
                  for index, page in enumerate(reader.pages, 1)]
     except PAGE_ERRORS:
         return unavailable_plan("plan_pdf_unreadable", digest)
@@ -170,6 +198,8 @@ def read_plan_set(raw, specification, *, profile=PROFILE):
         document.update(kind="synthetic_rotated_pdf_sheet_set", a601_rotation_clockwise=expected_rotations["A601"])
     elif profile == DUAL_ROTATED_PROFILE:
         document.update(kind="synthetic_pdf_sheet_set_with_two_rotations", sheet_rotations_clockwise=expected_rotations)
+    elif profile == CROPPED_PROFILE:
+        document.update(kind="synthetic_pdf_sheet_set_with_cropped_scans", sheet_rotations_clockwise=expected_rotations)
     return {"document": document} | {
         bot: required_reading(sheet, pages, candidates[sheet], document, digest, plan_ref, ocr["minimum_word_confidence"],
                               expected_rotation=expected_rotations.get(sheet))

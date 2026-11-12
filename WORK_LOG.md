@@ -1648,3 +1648,7 @@ A601 se localiza por su identificación y se concilia en giros de 90°, 180° y 
 ## D137 — A101 y A601 con giros distintos en el mismo PDF
 
 El caso principal usa A101 a 270° y A601 a 90°. Una segunda corrida cambia las ubicaciones y usa 90° y 180°. Ambas verifican texto y OCR por hoja y concilian 1.000 m² con GC. Once casos dejan PENDING ante faltantes, duplicados, discrepancias de área o de giro, o texto ausente. Las trece corridas conservan los cobros por USD 10. [Casos y reproducción](docs/workbook-plan-dual-rotation-D137.md).
+
+## D138 — Recorte de un escaneo con las dos hojas giradas
+
+El OCR coteja la parte visible de A101 o A601 y verifica que el recorte conserve completas las líneas requeridas. Los dos recortes que conservan las líneas concilian 1.000 m² con GC. Siete casos dejan PENDING ante datos ocultos o parciales, discrepancias, duplicidad de superficie oculta o un borde que no coincide con píxeles completos. [Casos y reproducción](docs/workbook-plan-cropped-set-D138.md).
