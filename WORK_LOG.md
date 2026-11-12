@@ -1712,3 +1712,7 @@ B13 lleva la tasa y la amortización a las cuotas fechadas. La prueba compara el
 ## D153 — C73–C74 conectadas al cierre y al cobro neto de refinanciación
 
 B13 aplica el costo al desembolso bruto, cancela el saldo de obra y conserva la reserva permanente en caja restringida hasta la venta. Dieciséis corridas verifican la caja fechada por USD 10 y nueve casos PENDING. [Resultados y reproducción](docs/workbook-refinance-costs-D153.md).
+
+## D154 — C75–C76 conectadas al crecimiento y al retorno por USD 10
+
+B13 aplica los ajustes desde el aniversario de estabilización y calcula el NOI de operación, de refinanciación y de salida. Doce corridas D154 verifican ambos ajustes y ocho casos PENDING. [Resultados y reproducción](docs/workbook-growth-D154.md).

@@ -89,3 +89,5 @@ D151 conecta C66–C68 con B04 y B13. El expediente distingue la valoración par
 D152 conecta C69–C72 con B04 y B13. El expediente conserva la cuota fechada, el vencimiento, los límites LTV y DSCR y el saldo cancelado al vender. B12 deja PENDING el escenario ante un término sin confirmar o una solicitud por encima de la capacidad. [Resultados y reproducción](workbook-permanent-loan-D152.md).
 
 D153 vincula C73 y C74 con B04 y B13. B16 reproduce el cobro neto al refinanciar y la liquidación de la reserva permanente al vender. B12 conserva PENDING ante faltantes, capacidad insuficiente o una necesidad de caja sin financiación confirmada. [Resultados y reproducción](workbook-refinance-costs-D153.md).
+
+D154 vincula C75 y C76 con B04 y B13. B16 reproduce las ventanas de crecimiento, el NOI y la caja fechada por USD 10. B12 conserva PENDING ante una tasa o convención sin confirmar, capacidad insuficiente, revisión desactualizada o criterio faltante. [Resultados y reproducción](workbook-growth-D154.md).

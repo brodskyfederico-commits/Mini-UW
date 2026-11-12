@@ -12,8 +12,8 @@ from miniuw_foundation.rental_operations import SCHEMA as RENTAL_SCHEMA, produce
 from miniuw_foundation.scheduled_expense_case import sha
 from miniuw_foundation.screening import SCHEMA as SCREENING_SCHEMA, simulate_screening
 from miniuw_worksheet_v1 import encoded
-from plan_refinance_D108 import BANK_PERIOD, SOURCE as FINANCING_PROFILE, financed_cash
-from plan_return_D107 import DATES, INITIAL, OPERATING_PERIOD, SALE_DATE, template
+from plan_refinance_D108 import BANK_PERIOD, SOURCE as FINANCING_PROFILE, VALUE_PERIOD, financed_cash
+from plan_return_D107 import DATES, FORWARD_PERIOD, INITIAL, OPERATING_PERIOD, SALE_DATE, template
 from worksheet_local_sources_D127 import object_or_empty, synthetic_id
 from worksheet_native_mapping_D139 import SCENARIOS, review_native_mapping
 from worksheet_plan_refinance_D109 import LABELS
@@ -96,7 +96,12 @@ def terms_for(supplied, scenario, values, sheet, *, include_development=False, i
                 groups=groups, other_income=others, expenses=expenses, cost=cost, principal=principal, cap=cap)
 
 
-def rental_noi(terms, cells, values, period, commercial=None, *, window_start=None):
+def rental_noi(terms, cells, values, period, commercial=None, *, window_start=None, growth=None):
+    growth_ref = None
+    if growth is not None:
+        from worksheet_growth_D154 import projected_expense_terms
+        terms = projected_expense_terms(terms, growth)
+        growth_ref = f"sha256:{sha(encoded(growth))}"
     context = terms["context"]
     policy = terms["policy"]
     loss = _fraction(values["C14"])
@@ -110,6 +115,10 @@ def rental_noi(terms, cells, values, period, commercial=None, *, window_start=No
                            loss_fraction=rational(loss), concession_fraction=values["C15"],
                            concession_basis=policy["concession_basis"], currency="USD",
                            source_ref=cells[cell], policy_ref=policy["source_ref"]))
+    if growth is not None:
+        for group in groups:
+            group["rent"] = rational(_fraction(group["rent"]) * _fraction(growth["rent_factor"]))
+            group["source_ref"] += f" and {growth_ref}#/rent_factor"
     expense_terms = terms["expenses"]
     expenses = [dict(item_id=key, kind=kind, rate=expense_terms[key], currency="USD",
                      source_ref=expense_terms["source_ref"], policy_ref=policy["source_ref"])
@@ -119,7 +128,14 @@ def rental_noi(terms, cells, values, period, commercial=None, *, window_start=No
     if "operating_costs" in terms:
         from worksheet_operating_costs_D148 import expense_items
         expenses.extend(expense_items(terms["operating_costs"], other_value, cells["C13"]))
-    expenses.extend(terms.get("utility_expenses", ()))
+    utility_items = terms.get("utility_expenses", ())
+    if growth is not None:
+        for item in expenses:
+            if item["item_id"] in {"fixed_opex", "controllable_excluding_utilities", "insurance"}:
+                item["source_ref"] += f" and {growth_ref}#/expense_factor"
+        utility_items = [item | dict(source_ref=f"{item['source_ref']} and {growth_ref}#/expense_factor")
+                         for item in utility_items]
+    expenses.extend(utility_items)
     raw = encoded(dict(schema=RENTAL_SCHEMA, context=context, currency="USD", period_ref=period,
                        months_in_period=12, months_per_year=12, residential_groups=groups, expense_items=expenses))
     producer = produce_rental_operations(raw)
@@ -129,10 +145,14 @@ def rental_noi(terms, cells, values, period, commercial=None, *, window_start=No
                                              period_ref=period, value=rational(other_value), source_ref=cells["C13"])
     if commercial is not None:
         from worksheet_commercial_inputs_D141 import commercial_income
-        commercial_result = commercial_income(commercial, period, window_start=window_start)
+        commercial_result = commercial_income(commercial, period, window_start=window_start,
+                                              rent_month_factors=None if growth is None else growth["rent_month_factors"])
+        commercial_ref = f"sha256:{sha(encoded(commercial))}#/uses"
+        if growth_ref is not None:
+            commercial_ref += f" and {growth_ref}#/rent_month_factors"
         spec["additional_income_rows"].append(spec["additional_income_rows"][0] | dict(
             item_id="SYNTHETIC-net-commercial-NNN", value=commercial_result["net"],
-            source_ref=f"sha256:{sha(encoded(commercial))}#/uses"))
+            source_ref=commercial_ref))
     property_tax = terms.get("property_tax")
     if property_tax is None:
         spec["tax_floor"].update(value=expense_terms["property_tax"], period_ref=period, source_ref=expense_terms["source_ref"])
@@ -159,6 +179,8 @@ def rental_noi(terms, cells, values, period, commercial=None, *, window_start=No
         evidence["property_tax"] = property_tax | dict(period_ref=period, annual_tax=result["property_tax"],
                                                        operating_before_tax=result["operating_before_tax"],
                                                        branch=result["tax_branch"], equation_residual=result["equation_residual"])
+    if growth is not None:
+        evidence["growth"] = growth
     return assembled, evidence
 
 
@@ -166,7 +188,7 @@ def run_rental_scenario(name, raw, review, rent_inputs, *, include_commercial=Fa
                         include_development=False, include_budget=False, include_calendar=False,
                         include_construction_financing=False, document_review=None, include_operating_costs=False,
                         include_replacement_reserve=False, include_property_tax=False, include_exit_pricing=False,
-                        include_permanent_loan=False, include_refinance_costs=False):
+                        include_permanent_loan=False, include_refinance_costs=False, include_growth=False):
     pending = dict(state="PENDING", cash_per_usd_10=None, capacity=None, noi_by_period={})
     if not review["calculation_inputs_ready"]:
         return pending | dict(blockers=["required_rental_cells_unconfirmed"])
@@ -219,6 +241,10 @@ def run_rental_scenario(name, raw, review, rent_inputs, *, include_commercial=Fa
         if include_calendar:
             from worksheet_project_calendar_D145 import project_calendar
             calendar = project_calendar(rent_inputs.get("project_calendar"), name, review, development["purchase_date"])
+        growth_terms = None
+        if include_growth:
+            from worksheet_growth_D154 import declared_growth, project_window
+            growth_terms = declared_growth(rent_inputs.get("growth"), name, review, calendar)
         permanent_terms = None
         if include_permanent_loan:
             from worksheet_permanent_loan_D152 import declared_loan_terms
@@ -263,7 +289,9 @@ def run_rental_scenario(name, raw, review, rent_inputs, *, include_commercial=Fa
 
         def noi_for(period):
             window_start = None if calendar is None else calendar["noi_window_starts"][period]
-            assembled, periods[period] = rental_noi(terms, cells, values, period, commercial, window_start=window_start)
+            projection = None if growth_terms is None else project_window(growth_terms, window_start)
+            assembled, periods[period] = rental_noi(terms, cells, values, period, commercial,
+                                                   window_start=window_start, growth=projection)
             return assembled
 
         # The accrued operating result remains available when the refinance request is blocked.
@@ -277,6 +305,8 @@ def run_rental_scenario(name, raw, review, rent_inputs, *, include_commercial=Fa
     except (ValueError, TypeError, KeyError) as error:
         evidence = dict(document_financial_binding=binding) if binding is not None else {}
         return pending | dict(blockers=[str(error)], cell_sources=cells) | evidence
+    if growth_terms is not None:
+        result["growth_terms"] = growth_terms
     if commercial is not None:
         result["commercial_terms"] = commercial
     if development is not None:
@@ -314,7 +344,7 @@ def screen(case, views, blockers, *, period_ref=PERIOD):
 def render(views, result, *, include_commercial=False, include_utilities=False, include_development=False,
            include_budget=False, include_calendar=False, include_construction_financing=False, document_review=None,
            include_operating_costs=False, include_replacement_reserve=False, include_property_tax=False,
-           include_exit_pricing=False, include_permanent_loan=False, include_refinance_costs=False):
+           include_exit_pricing=False, include_permanent_loan=False, include_refinance_costs=False, include_growth=False):
     lines = [(f"Simulación por múltiplo de equity | {result} | Decisión real PENDING", True)]
     if document_review is not None:
         label = "Documentos cotejados" if document_review["state"] == "checked_synthetic" else "Validación documental PENDING"
@@ -344,7 +374,18 @@ def render(views, result, *, include_commercial=False, include_utilities=False, 
                 costs = accrued["operating_costs"]
                 lines.append((f"NOI anual USD {money(accrued['noi'])} | Administración USD {money(costs['management_fee'])} | "
                               f"Seguro USD {money(costs['insurance_total'])}", False))
-        if include_replacement_reserve and "replacement_reserve" in view:
+        if include_growth and "growth_terms" in view:
+            growth = view["growth_terms"]
+            rates = [money(rational(100 * _fraction(growth[key]))) for key in ("rent_growth", "expense_growth")]
+            lines.append((f"C75 rentas {rates[0]} % anual | C76 gastos {rates[1]} % anual | Base {growth['anchor']}", False))
+            periods = view["noi_by_period"]
+            for left, right in (((OPERATING_PERIOD, "Operación"), (FORWARD_PERIOD, "Salida forward")),
+                                ((BANK_PERIOD, "Bancario"), (VALUE_PERIOD, "Valoración refi"))):
+                parts = [f"{label} USD {money(periods[key]['noi'])}" for key, label in (left, right)
+                         if key in periods and periods[key]["noi"] is not None]
+                if parts:
+                    lines.append(("NOI | " + " | ".join(parts), False))
+        if include_replacement_reserve and not include_growth and "replacement_reserve" in view:
             reserve = view["replacement_reserve"]
             lines.append((f"Reserva del proyecto USD {money(reserve['deposit'])} | Liberada USD {money(reserve['released_at_sale'])} | "
                           f"Transferida al comprador USD {money(reserve['transferred_restricted_to_buyer'])}", False))
@@ -358,15 +399,15 @@ def render(views, result, *, include_commercial=False, include_utilities=False, 
                 lines.append((f"Valor para refi USD {money(pricing['refinance_value'])} | Capacidad {limit}", False))
             if "gross_sale_price" in pricing:
                 lines.append((f"Precio bruto USD {money(pricing['gross_sale_price'])} | Costos de venta USD {money(pricing['sale_cost'])}", False))
-        if include_permanent_loan and view.get("permanent_loan", {}).get("quote_state") == "computed_synthetic":
+        if include_permanent_loan and not include_growth and view.get("permanent_loan", {}).get("quote_state") == "computed_synthetic":
             loan = view["permanent_loan"]
             lines.append((f"Cuota trimestral proyectada USD {money(loan['regular_payment_due'])} | "
                           f"Servicio anual para capacidad USD {money(loan['annual_sizing_service'])}", False))
-        if include_refinance_costs and "construction_refinance" in view:
+        if include_refinance_costs and not include_growth and "construction_refinance" in view:
             closing = view["construction_refinance"]
             lines.append((f"Refi | Cargo USD {money(closing['closing_fee'])} | "
                           f"Depósito de reserva permanente USD {money(closing['permanent_reserve_deposit'])}", False))
-        if include_refinance_costs and "permanent_reserve" in view:
+        if include_refinance_costs and not include_growth and "permanent_reserve" in view:
             permanent = view["permanent_reserve"]
             lines.append((f"Reserva permanente | Liberada USD {money(permanent['released_at_sale'])} | "
                           f"Transferida al comprador USD {money(permanent['transferred_restricted_to_buyer'])}", False))
@@ -401,6 +442,9 @@ def render(views, result, *, include_commercial=False, include_utilities=False, 
     if include_development:
         label = "D143 | C32-C36"
     spacing = 17 if include_development else 19 if include_utilities else 21
+    if include_growth:
+        return render_page("D154 | C75-C76", lines, 10, "MINI-UW | SI INVIERTO USD 10, ¿CUÁNTO COBRO Y CUÁNDO?",
+                           "Crecimiento de rentas y gastos, NOI y cobros | Piloto sintético")
     if include_refinance_costs:
         return render_page("D153 | C73-C74", lines, 10, "MINI-UW | SI INVIERTO USD 10, ¿CUÁNTO COBRO Y CUÁNDO?",
                            "Cierre de refinanciación, reserva permanente y caja | Piloto sintético")
@@ -440,7 +484,7 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
                       include_development=False, include_budget=False, include_calendar=False,
                       include_construction_financing=False, document_review=None, include_operating_costs=False,
                       include_replacement_reserve=False, include_property_tax=False, include_exit_pricing=False,
-                      include_permanent_loan=False, include_refinance_costs=False):
+                      include_permanent_loan=False, include_refinance_costs=False, include_growth=False):
     hashes = object_or_empty(case.get("workbook_sha256"))
     review = review_native_mapping(case.get("native_mapping"), workbooks, hashes, calculation_fields=FIELDS)
     revision = review_revision(case, current_revision_raw)
@@ -452,7 +496,8 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
                                       document_review=document_review, include_operating_costs=include_operating_costs,
                                       include_replacement_reserve=include_replacement_reserve,
                                       include_property_tax=include_property_tax, include_exit_pricing=include_exit_pricing,
-                                      include_permanent_loan=include_permanent_loan, include_refinance_costs=include_refinance_costs)
+                                      include_permanent_loan=include_permanent_loan, include_refinance_costs=include_refinance_costs,
+                                      include_growth=include_growth)
              for name in SCENARIOS}
     blockers = [f"B04:{reason}" for reason in review["blockers"]] + [f"B12:{reason}" for reason in revision["blockers"]]
     blockers += [f"{name}:{reason}" for name, view in views.items() for reason in view["blockers"]]
@@ -478,7 +523,8 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
                  include_construction_financing=include_construction_financing, document_review=document_review,
                  include_operating_costs=include_operating_costs, include_replacement_reserve=include_replacement_reserve,
                  include_property_tax=include_property_tax, include_exit_pricing=include_exit_pricing,
-                 include_permanent_loan=include_permanent_loan, include_refinance_costs=include_refinance_costs)
+                 include_permanent_loan=include_permanent_loan, include_refinance_costs=include_refinance_costs,
+                 include_growth=include_growth)
     profile = "synthetic_native_residential_and_commercial_rent" if include_commercial else PROFILE
     if include_utilities:
         profile = "synthetic_native_rent_and_utility_expenses"
@@ -514,6 +560,9 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
     if include_refinance_costs:
         profile = "synthetic_documented_refinance_costs"
         pipeline["pipeline"]["stages"][-1]["version_suite"] = "check_worksheet_refinance_costs_D153.py"
+    if include_growth:
+        profile = "synthetic_documented_growth"
+        pipeline["pipeline"]["stages"][-1]["version_suite"] = "check_worksheet_growth_D154.py"
     return dict(profile=profile, state="PENDING" if simulation == "PENDING" else "computed_synthetic_scenario_cash",
                 case_sha256=case_sha256, decision="PENDING", simulation_result=simulation,
                 real_decisions_enabled=False, deployment_enabled=False, personal_investor_return=None,

@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D153 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D154 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/miniuw-integral-usd10.yml",
@@ -8,8 +8,8 @@
     },
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 23237,
-      "sha256": "e6c4f581442b902aad6de60793b228a8e6d3185cdfb22303a786912ab73899e9"
+      "bytes": 23425,
+      "sha256": "dc52c0b382e4313d5568593b16793ea55322e35edcd66a11bb07bce03d5e6987"
     },
     {
       "path": ".gitignore",
@@ -23,13 +23,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 86282,
-      "sha256": "7acddb9ba77c73e1df2b9bf1f76ffc1bcc18f111bd8ab0b3e8352c74e5f1240f"
+      "bytes": 86436,
+      "sha256": "5ce4740edf8cb8ca637ad44d5362c780c03499dc757520b18aef22a1e76b389a"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 345743,
-      "sha256": "a660bd8910caeab2e11094908af6aa51e491a60c52cbcf8144a01717b993bac2"
+      "bytes": 346069,
+      "sha256": "d7b993a96ca49328089cc983e4da698c7b9dde6093e66e9bfbeeb1386a084717"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -58,8 +58,8 @@
     },
     {
       "path": "docs/MiniUW_v1_Dots_y_Bots.md",
-      "bytes": 12264,
-      "sha256": "d67f1e708e9721c559f878ef201bbfb776af681ec6ff482b9a26b51a6ccfbb99"
+      "bytes": 12572,
+      "sha256": "236fcbe2ae52ba47475bf782e2c142d331145ba0fffdc493927b0d23825b251e"
     },
     {
       "path": "docs/acceptance-case-contracts.json",
@@ -3082,6 +3082,11 @@
       "sha256": "8235ed6cc2191f5fd57014c8d0fab3ee1b7759251bc74b4119ee307ff4a6ac79"
     },
     {
+      "path": "docs/workbook-growth-D154.md",
+      "bytes": 4819,
+      "sha256": "7f20ac72d6f4181426e70fa02f8178676db45d693251f4d4b73f8cae5575a324"
+    },
+    {
       "path": "docs/workbook-irr-D122.md",
       "bytes": 2536,
       "sha256": "f5afef6378c489a12417366cfa393171d7459b9890c26b92a7b5ee0283d4de8c"
@@ -5297,6 +5302,16 @@
       "sha256": "4b5603562895ed0277ee9ed8e67d8a1bf2ea4cd2bab7a410ea4de40bb8ca56bc"
     },
     {
+      "path": "templates/synthetic-growth-base-D154.xlsx",
+      "bytes": 8860,
+      "sha256": "d50f24a842fd0f2f9f112bbca4b2effd1a5022ebe58e34339bd4ab9f663369d6"
+    },
+    {
+      "path": "templates/synthetic-growth-downside-D154.xlsx",
+      "bytes": 8874,
+      "sha256": "34500c6580552c67a358f13f4b01d7ace476fd75e1a38cad9908128f17b656c8"
+    },
+    {
       "path": "templates/synthetic-hold-sale-bundle-example.json",
       "bytes": 71327,
       "sha256": "24de946773f51a6e780ed94ed2910c1d98ae8a839b2d88a08559a5dda8b72fca"
@@ -6092,6 +6107,11 @@
       "sha256": "cceac24d5f3affaed47e8e70ec595d1c50654e31a9280fb050572bb54e2b278c"
     },
     {
+      "path": "templates/synthetic-workbook-current-revision-D154.json",
+      "bytes": 714,
+      "sha256": "f3c0e4b05f32e39d51a90f295012bb93a19de2598d4424d2057110893886caba"
+    },
+    {
       "path": "templates/synthetic-workbook-development-inputs-D143.json",
       "bytes": 7061,
       "sha256": "ae482b141f5f8a5c49820c4294c6134cc061e55479631d6b68ed776bd0096a1e"
@@ -6115,6 +6135,11 @@
       "path": "templates/synthetic-workbook-exit-pricing-D151.json",
       "bytes": 16918,
       "sha256": "a492e9b35c092f279d13a313a14f36c1a132b438779d5e4c2e8db68e06df8600"
+    },
+    {
+      "path": "templates/synthetic-workbook-growth-D154.json",
+      "bytes": 19913,
+      "sha256": "cedac4030ce7c2b5e85a3f5dcc9c719bd782e8560b9ada723a8808a43afff2c2"
     },
     {
       "path": "templates/synthetic-workbook-intake-case-D117.json",
@@ -7317,6 +7342,11 @@
       "sha256": "82b302e246a255871d8eea79dca104a6b0e527c3150a0ca10a7629e829f94a64"
     },
     {
+      "path": "tools/check_worksheet_growth_D154.py",
+      "bytes": 13610,
+      "sha256": "e346272bf97d02767ec90f67ae717824280e21a98f95d45632bef9bf4b8fb9b8"
+    },
+    {
       "path": "tools/check_worksheet_intake_case_D117.py",
       "bytes": 7213,
       "sha256": "0a64eee4c8966978028e8c6a0ef49542d3e74c0a929385ecd8f3c3a04973375a"
@@ -7903,8 +7933,8 @@
     },
     {
       "path": "tools/miniuw_worksheet_v1.py",
-      "bytes": 26960,
-      "sha256": "96be71710f9db03936f2ecd8f16eff94b6ad2627535601a1bec9872c8e492fbd"
+      "bytes": 27132,
+      "sha256": "3431323827e1339cb51a7f8b0b1452764231ec65cdefd6a6cee99c7a8e6ad328"
     },
     {
       "path": "tools/onepage_pending_cases_D79.py",
@@ -8013,8 +8043,8 @@
     },
     {
       "path": "tools/worksheet_commercial_inputs_D141.py",
-      "bytes": 4432,
-      "sha256": "484249fed310a9df35c717317f9d01bf84389e1bceec9ac9989c8365ee634e72"
+      "bytes": 4667,
+      "sha256": "a2fffe04da2281fae20825cdd666f6da9ecda2ebf2622a35b4e0c80cbc3b9171"
     },
     {
       "path": "tools/worksheet_construction_budget_D144.py",
@@ -8060,6 +8090,11 @@
       "path": "tools/worksheet_final_metrics_D126.py",
       "bytes": 9234,
       "sha256": "a39cabeaa4f9ebbeced3f7e949cc3a440a0dea50f0e4bbab7dd1614ee3b386a0"
+    },
+    {
+      "path": "tools/worksheet_growth_D154.py",
+      "bytes": 4445,
+      "sha256": "ab3e640b79ac6e4567e0240ddafac7ab5a4cc0ce54ff8e95f89c81e252c3c0ec"
     },
     {
       "path": "tools/worksheet_intake_case_D117.py",
@@ -8183,8 +8218,8 @@
     },
     {
       "path": "tools/worksheet_rental_inputs_D140.py",
-      "bytes": 38060,
-      "sha256": "66c3dfa21b35d0e185f0a12286661e3f7c61eb9b043c0b94615c3818c1f9aea1"
+      "bytes": 41318,
+      "sha256": "adb08d2835bd143396924c44bd1be2ccf7e8c16d0971f7449823277671d22053"
     },
     {
       "path": "tools/worksheet_replacement_reserve_D149.py",
