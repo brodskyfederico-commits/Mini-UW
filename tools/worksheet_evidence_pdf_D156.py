@@ -132,7 +132,8 @@ def parse_page(role, number, lines, digest, revision, deal_id):
         return check("evidence_required_row_invalid", **citation)
 
 
-def read_evidence_pdf(raw, spec, revision, deal_id, *, include_construction=False, scanned=False, oriented=False, allow_rgb=False):
+def read_evidence_pdf(raw, spec, revision, deal_id, *, include_construction=False, scanned=False,
+                      oriented=False, allow_rgb=False, allow_jpeg=False):
     headers = HEADERS | CONSTRUCTION_HEADERS if include_construction else HEADERS
     profile = CONSTRUCTION_PROFILE if include_construction else PROFILE
     required = {"profile", "sha256"}
@@ -142,6 +143,10 @@ def read_evidence_pdf(raw, spec, revision, deal_id, *, include_construction=Fals
         from worksheet_plan_scan_D131 import valid_ocr_options
         profile = COLOR_PROFILE if allow_rgb else ORIENTED_PROFILE if oriented else scan_profile
         required.add("ocr")
+    if allow_jpeg:
+        from worksheet_evidence_jpeg_D161 import PROFILE as jpeg_profile, jpeg_runtime
+        profile = jpeg_profile
+        required.add("jpeg_decoder")
     specification = object_or_empty(spec)
     digest = None if raw is None else sha(raw)
     inventory = dict(source_file=SOURCE_FILE, observed_sha256=digest)
@@ -153,6 +158,13 @@ def read_evidence_pdf(raw, spec, revision, deal_id, *, include_construction=Fals
         error = "evidence_pdf_binding_unconfirmed"
     if error:
         return check(error, **inventory), {}
+    if allow_jpeg:
+        decoder = jpeg_runtime()
+        if decoder is None:
+            return check("evidence_jpeg_decoder_unavailable", **inventory), {}
+        if specification["jpeg_decoder"] != decoder:
+            return check("evidence_jpeg_decoder_mismatch", **inventory), {}
+        inventory["jpeg_decoder"] = decoder
     try:
         reader = PdfReader(BytesIO(raw), strict=True)
         if reader.is_encrypted or not 1 <= len(reader.pages) <= len(headers):
@@ -169,7 +181,7 @@ def read_evidence_pdf(raw, spec, revision, deal_id, *, include_construction=Fals
         for number, page in enumerate(reader.pages, 1):
             if scanned:
                 role, reading = scanned_evidence_page(page, number, digest, revision, deal_id, headers, options, command,
-                                                      oriented=oriented, allow_rgb=allow_rgb)
+                                                      oriented=oriented, allow_rgb=allow_rgb, allow_jpeg=allow_jpeg)
                 if role is None:
                     return check(reading["blockers"][0], page_reading=reading, **inventory), {}
             else:
@@ -212,10 +224,11 @@ def bind_bank_evidence(quote, terms, principal):
                                "bank_pdf_and_worksheet_terms_disagree")
 
 
-def pdf_document_sources(source, raw, deal_id, *, include_construction=False, scanned=False, oriented=False, allow_rgb=False):
+def pdf_document_sources(source, raw, deal_id, *, include_construction=False, scanned=False,
+                         oriented=False, allow_rgb=False, allow_jpeg=False):
     inventory, pages = read_evidence_pdf(raw, source.get("evidence_pdf"), source.get("revision"), deal_id,
                                          include_construction=include_construction, scanned=scanned,
-                                         oriented=oriented, allow_rgb=allow_rgb)
+                                         oriented=oriented, allow_rgb=allow_rgb, allow_jpeg=allow_jpeg)
     if "documents" in source:
         inventory = check("structured_document_sources_conflict_with_pdf_profile",
                           source_file=SOURCE_FILE, observed_sha256=inventory["observed_sha256"])
@@ -249,7 +262,8 @@ def record_pdf_evidence(review, inventory, pages, *, include_construction=False)
                                                    if row["text"].startswith(f"Vertical {name} | ")))
                     for key in ("page_rotation_clockwise", "raw_image_sha256", "ocr_region_basis",
                                 "crop_box_pdf_points", "crop_region_in_oriented_scan", "full_oriented_scan_sha256",
-                                "source_color_space", "source_raster_sha256", "grayscale_conversion", "grayscale_input_sha256"):
+                                "source_color_space", "source_raster_sha256", "grayscale_conversion", "grayscale_input_sha256",
+                                "source_image_filter", "source_jpeg_sha256"):
                         if key in gc:
                             quote[key] = gc[key]
     official = pages.get("official_snapshot")

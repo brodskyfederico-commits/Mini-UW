@@ -35,11 +35,12 @@ def ordered_rows(image, command):
     return sorted(recognize(image, *command), key=lambda row: (row["pixel_region"][1], row["pixel_region"][0]))
 
 
-def color_scan_input(page, rotation):
-    raster = full_page_raster(page, allow_text_layer=True, allowed_rotation=rotation, allow_crop_box=True, allow_rgb=True)
+def color_scan_input(page, rotation, *, allow_jpeg=False):
+    raster = full_page_raster(page, allow_text_layer=True, allowed_rotation=rotation, allow_crop_box=True,
+                              allow_rgb=True, allow_jpeg=allow_jpeg)
     if raster is None:
         return None, {}
-    width, height, color_space, pixels = raster
+    width, height, color_space, pixels, encoding = raster
     header = f"\n{width} {height}\n255\n".encode()
     if color_space == "/DeviceRGB":
         raw = b"P6" + header + pixels
@@ -51,12 +52,13 @@ def color_scan_input(page, rotation):
         gray = pixels
         conversion = "identity"
     pgm = b"P5" + header + gray
-    return pgm, dict(source_color_space=color_space, source_raster_sha256=sha(raw),
-                     grayscale_conversion=conversion, grayscale_input_sha256=sha(pgm))
+    evidence = dict(source_color_space=color_space, source_raster_sha256=sha(raw),
+                    grayscale_conversion=conversion, grayscale_input_sha256=sha(pgm))
+    return pgm, evidence | encoding if allow_jpeg else evidence
 
 
 def scanned_evidence_page(page, number, digest, revision, deal_id, headers, options, command, *,
-                          oriented=False, allow_rgb=False):
+                          oriented=False, allow_rgb=False, allow_jpeg=False):
     citation = dict(source_file=SOURCE_FILE, source_sha256=digest, page=number)
     role = None
     try:
@@ -69,7 +71,7 @@ def scanned_evidence_page(page, number, digest, revision, deal_id, headers, opti
             return native_role, check("evidence_scan_rotation_unsupported", observed_rotation=rotation, **citation)
         geometry = {}
         if allow_rgb:
-            image, geometry = color_scan_input(page, rotation)
+            image, geometry = color_scan_input(page, rotation, allow_jpeg=allow_jpeg)
         else:
             image = full_page_image(page, allow_text_layer=True, allowed_rotation=rotation, allow_crop_box=oriented)
         if image is None:

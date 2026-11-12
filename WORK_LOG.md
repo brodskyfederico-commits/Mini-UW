@@ -1740,3 +1740,7 @@ B03 y B08 orientan las imágenes y leen los píxeles visibles. B16 reproduce la 
 ## D160 — OCR de escaneos financieros RGB y en escala de grises
 
 El piloto registra la imagen original, la conversión y el recorte. Cinco variantes quedan PENDING por recorte, discrepancia, dato faltante, formato sin soporte o confianza insuficiente. B16 reproduce el archivo mixto. [Resultados y reproducción](docs/workbook-evidence-color-D160.md).
+
+## D161 — OCR de cotización y préstamos con JPEG comprimido
+
+El piloto conserva la huella de los bytes JPEG y del raster decodificado. B16 reproduce el archivo mixto. Cinco variantes quedan PENDING por dato ausente, discrepancias, JPEG truncado o decodificador distinto. [Resultados y reproducción](docs/workbook-evidence-jpeg-D161.md).

@@ -19,12 +19,13 @@ def review_documents(case, plan_raw, *, evidence_raw=None, evidence_milestone=No
     inputs = object_or_empty(case.get("rent_inputs"))
     if evidence_milestone is not None:
         from worksheet_evidence_pdf_D156 import pdf_document_sources, record_pdf_evidence
-        include_construction_pdf = evidence_milestone in ("D157", "D158", "D159", "D160")
+        include_construction_pdf = evidence_milestone != "D156"
         source, inventory, pages = pdf_document_sources(source, evidence_raw, inputs.get("deal_id"),
                                                         include_construction=include_construction_pdf,
-                                                        scanned=evidence_milestone in ("D158", "D159", "D160"),
-                                                        oriented=evidence_milestone in ("D159", "D160"),
-                                                        allow_rgb=evidence_milestone == "D160")
+                                                        scanned=evidence_milestone in ("D158", "D159", "D160", "D161"),
+                                                        oriented=evidence_milestone in ("D159", "D160", "D161"),
+                                                        allow_rgb=evidence_milestone in ("D160", "D161"),
+                                                        allow_jpeg=evidence_milestone == "D161")
     review = review_local_sources(source, hashes, pdf_plan=plan, gc_scenarios=SCENARIOS)
     if evidence_milestone is not None:
         record_pdf_evidence(review, inventory, pages, include_construction=include_construction_pdf)

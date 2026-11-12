@@ -27,7 +27,8 @@ def valid_ocr_options(ocr):
             and type(ocr["minimum_word_confidence"]) is int and 0 < ocr["minimum_word_confidence"] <= 100)
 
 
-def full_page_raster(page, *, allow_text_layer=False, allowed_rotation=0, allow_crop_box=False, allow_rgb=False):
+def full_page_raster(page, *, allow_text_layer=False, allowed_rotation=0, allow_crop_box=False,
+                     allow_rgb=False, allow_jpeg=False):
     contents = page.get_contents()
     if contents is None:
         return None
@@ -52,16 +53,25 @@ def full_page_raster(page, *, allow_text_layer=False, allowed_rotation=0, allow_
     width, height = image.get("/Width"), image.get("/Height")
     color_space = image.get("/ColorSpace")
     channels = 1 if color_space == "/DeviceGray" else 3 if allow_rgb and color_space == "/DeviceRGB" else None
+    image_filter = image.get("/Filter")
+    allowed_filters = ("/FlateDecode", "/DCTDecode") if allow_jpeg else ("/FlateDecode",)
     if (image.get("/Subtype") != "/Image" or channels is None
-            or image.get("/BitsPerComponent") != 8 or image.get("/Filter") != "/FlateDecode"
+            or image.get("/BitsPerComponent") != 8 or image_filter not in allowed_filters
             or any(key in image for key in ("/Decode", "/Mask", "/SMask", "/ImageMask"))
             or not isinstance(width, int) or not isinstance(height, int)
             or width <= 0 or height <= 0 or width * height > MAX_SCAN_PIXELS):
         return None
+    source = dict(source_image_filter=image_filter)
     pixels = image.get_data()
-    if len(pixels) != width * height * channels:
+    if image_filter == "/DCTDecode":
+        if "/DecodeParms" in image:
+            return None
+        from worksheet_evidence_jpeg_D161 import decode_jpeg
+        source["source_jpeg_sha256"] = sha(pixels)
+        pixels = decode_jpeg(pixels, width, height, color_space)
+    if pixels is None or len(pixels) != width * height * channels:
         return None
-    return width, height, color_space, pixels
+    return width, height, color_space, pixels, source
 
 
 def full_page_image(page, *, allow_text_layer=False, allowed_rotation=0, allow_crop_box=False):
@@ -69,7 +79,7 @@ def full_page_image(page, *, allow_text_layer=False, allowed_rotation=0, allow_c
                               allow_crop_box=allow_crop_box)
     if raster is None:
         return None
-    width, height, _, pixels = raster
+    width, height, _, pixels, _ = raster
     return f"P5\n{width} {height}\n255\n".encode() + pixels
 
 

@@ -4,6 +4,7 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D161 verifica el OCR de cotizaciones y préstamos con imágenes JPEG comprimidas en PDF. [Resultados y reproducción](docs/workbook-evidence-jpeg-D161.md).
 - D160 verifica el OCR de páginas financieras RGB y en escala de grises dentro del mismo PDF. [Resultados y reproducción](docs/workbook-evidence-color-D160.md).
 - D159 verifica el OCR de cotizaciones y documentos bancarios girados y recortados. [Resultados y reproducción](docs/workbook-evidence-oriented-D159.md).
 - D158 coteja cotizaciones y documentos bancarios desde imágenes PDF con OCR. [Resultados y reproducción](docs/workbook-evidence-scan-D158.md).

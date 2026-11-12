@@ -103,3 +103,5 @@ D158 agrega lectura OCR de cinco páginas financieras sintéticas a B03 y B08. B
 D159 amplía B03 y B08 a giros de 90°, 180° y 270° y recortes alineados a píxeles. B12 bloquea los datos ocultos, truncados o en conflicto. B16 reproduce la corrida desde los archivos guardados. [Resultados y reproducción](workbook-evidence-oriented-D159.md).
 
 D160 amplía el formato de las páginas financieras de B03 y B08 a imágenes RGB y en escala de grises. Conserva las huellas de origen y de la conversión. B12 retiene los flujos afectados por faltantes, discrepancias, confianza insuficiente o formato sin soporte. [Resultados y reproducción](workbook-evidence-color-D160.md).
+
+D161 amplía B03 y B08 a imágenes JPEG sintéticas en PDF. B12 conserva PENDING si un dato falta, discrepa o el JPEG queda fuera del perfil. B16 reproduce las fuentes con el decodificador declarado. [Resultados y reproducción](workbook-evidence-jpeg-D161.md).
