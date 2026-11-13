@@ -349,5 +349,7 @@ jobs:
         run: OMP_THREAD_LIMIT=1 PYTHONPATH=src:tests python tools/check_worksheet_evidence_progressive_crop_D163.py
       - name: Verify shuffled progressive JPEG financial evidence OCR
         run: OMP_THREAD_LIMIT=1 PYTHONPATH=src:tests python tools/check_worksheet_evidence_progressive_order_D164.py
+      - name: Verify market, insurance and bank evidence gates
+        run: OMP_THREAD_LIMIT=1 PYTHONPATH=src:tests python tools/check_worksheet_market_evidence_D166.py
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v

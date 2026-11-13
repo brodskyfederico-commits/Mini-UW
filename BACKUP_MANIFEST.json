@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D165 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D166 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/miniuw-integral-usd10.yml",
@@ -8,8 +8,8 @@
     },
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 25189,
-      "sha256": "69a75ef7c7dc74548e53af15467768c6fa655897bc5fd4a0e2102ebb12387118"
+      "bytes": 25358,
+      "sha256": "ab351b41a8ec2b16a5bf31a684d4e5608fc281bb968db4a32a5af70bef0bcc74"
     },
     {
       "path": ".gitignore",
@@ -23,13 +23,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 88261,
-      "sha256": "60b3f994986cb8f248c761073fde73b0ba8401ea1d6d46653213417db235152e"
+      "bytes": 88401,
+      "sha256": "e52a181c58eab3a4d47198b86323524ca1b4f3bdccdbcfd7d47c14ce3b56814e"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 350327,
-      "sha256": "94cefa417b7cc2264d5659c5e4d7789e72f392ce859ac56d4f4f1bf113cc5707"
+      "bytes": 350812,
+      "sha256": "7191a6e646c6450fc581bfb44a17e8a02caf98125696a4fdc82d3a2ad9679341"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -58,8 +58,8 @@
     },
     {
       "path": "docs/MiniUW_v1_Dots_y_Bots.md",
-      "bytes": 15631,
-      "sha256": "008a7240aef098b872de6c2f6d78fccd364c2800e42ee696ae61ac0f1db3c6b5"
+      "bytes": 15910,
+      "sha256": "be3737728613d1ad6d41cdf7045113904f889588d3f153e8611f4f5eda84ddf6"
     },
     {
       "path": "docs/acceptance-case-contracts.json",
@@ -123,18 +123,18 @@
     },
     {
       "path": "docs/coverage-guide.md",
-      "bytes": 8750,
-      "sha256": "1a216c372b940156cd3e33fba6d81314720819bf8205a9a3c735f698f88bf19f"
+      "bytes": 8971,
+      "sha256": "c4dd73774eb52bb0b976bff8c233fbf5a9426716fa54697f808a66a4479a87a8"
     },
     {
       "path": "docs/coverage-matrix.csv",
-      "bytes": 380389,
-      "sha256": "a15654bd5f51ad4ded57e5333ba562c584fd143de94c30763d4f380e2cd921d7"
+      "bytes": 381968,
+      "sha256": "472f3010eecc79d0384f7873930bea08dc24fc5fbc6c3bb2281513297a80ff63"
     },
     {
       "path": "docs/coverage-matrix.json",
-      "bytes": 564393,
-      "sha256": "4a27f8d1cb5834ff45cead90a0cebd5e888cf4b21ffb85913e13c689bd07925d"
+      "bytes": 565972,
+      "sha256": "98375be44840a0cc6400b18382deec289d9254aa3130436364195493501c458d"
     },
     {
       "path": "docs/current-direction.txt",
@@ -3155,6 +3155,11 @@
       "path": "docs/workbook-local-chain-D127.md",
       "bytes": 2901,
       "sha256": "6fcb96ac0457cd20b987da88c15638a306ced686d99706546359e37d6f88c9fc"
+    },
+    {
+      "path": "docs/workbook-market-evidence-D166.md",
+      "bytes": 4106,
+      "sha256": "80503541b738aec232777f8bcd0737b711c32f7413f361dfda652d1a3110188f"
     },
     {
       "path": "docs/workbook-native-mapping-D139.md",
@@ -6277,6 +6282,11 @@
       "sha256": "227c1df731955aeb4871c23df57e4dafbd577ff050482c24249e0e325ffd5819"
     },
     {
+      "path": "templates/synthetic-workbook-current-revision-D166.json",
+      "bytes": 714,
+      "sha256": "15a09b7eeb7870668a3739a6cd537361b846b8e576556b1ddaae03a4f6a4e5d1"
+    },
+    {
       "path": "templates/synthetic-workbook-development-inputs-D143.json",
       "bytes": 7061,
       "sha256": "ae482b141f5f8a5c49820c4294c6134cc061e55479631d6b68ed776bd0096a1e"
@@ -6350,6 +6360,11 @@
       "path": "templates/synthetic-workbook-local-chain-D127.json",
       "bytes": 29906,
       "sha256": "5bdf2f27dbdaedee5ff15aad48f2ae3fbda4d8ccbf3fbefea661f8c33d87bd52"
+    },
+    {
+      "path": "templates/synthetic-workbook-market-evidence-D166.json",
+      "bytes": 25787,
+      "sha256": "d1b9203c564ca08285ab206b24f94ac3d8abd80a4fdc8d15b58f06f5834b876c"
     },
     {
       "path": "templates/synthetic-workbook-mixed-chain-D132.json",
@@ -7622,6 +7637,11 @@
       "sha256": "ebffd4ced5f99fdaad4941b48293f44b250d8bae918f34a5f24c228a2a4914ed"
     },
     {
+      "path": "tools/check_worksheet_market_evidence_D166.py",
+      "bytes": 10788,
+      "sha256": "31c9cd64f19236cc6ef5854a2ce6518ad580a2d68e57eb89027b5dd913c3d236"
+    },
+    {
       "path": "tools/check_worksheet_native_mapping_D139.py",
       "bytes": 11228,
       "sha256": "46e2a672fc1317ccd9f3ae0eaaa17ccf8f3f229f69a1b75914ec828f23e1a85c"
@@ -8183,8 +8203,8 @@
     },
     {
       "path": "tools/miniuw_worksheet_v1.py",
-      "bytes": 29541,
-      "sha256": "0b76a019fcf52808f04519c79b15f19bc79711dce919935bc29756ec57937a50"
+      "bytes": 29816,
+      "sha256": "73a1f635378931f9246ff8ad34767c6813d1f503582a4987770015e77b15920e"
     },
     {
       "path": "tools/onepage_pending_cases_D79.py",
@@ -8392,6 +8412,11 @@
       "sha256": "793ecd91b9fcc37ae27553c5da05ec155dfa28ea010b3a6bb271932c2f9b74ab"
     },
     {
+      "path": "tools/worksheet_market_evidence_D166.py",
+      "bytes": 6780,
+      "sha256": "31e4722ddecfa90bfe70994e034f73dd371029ce9dfe510dfee5dc5781ce53b6"
+    },
+    {
       "path": "tools/worksheet_native_mapping_D139.py",
       "bytes": 8498,
       "sha256": "a7ea745ae57c9ece7379fcb7bf419a1ebd44792a3f3ebba863516e778cdbb744"
@@ -8488,8 +8513,8 @@
     },
     {
       "path": "tools/worksheet_rental_inputs_D140.py",
-      "bytes": 46386,
-      "sha256": "1b0674c4ca7d76092f582a97c50ed5986d5fe37c22fadcd31ff8bd7061e4a070"
+      "bytes": 47761,
+      "sha256": "6c1735b699d7b142a851e3124fbf4c4b15d137cb07b27023adcacaeee98fbced"
     },
     {
       "path": "tools/worksheet_replacement_reserve_D149.py",

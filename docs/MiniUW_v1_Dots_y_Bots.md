@@ -113,3 +113,5 @@ D162 permite JPEG progresivo bajo un perfil declarado. B08 conserva el tipo de c
 D163 verifica el OCR de la cotización y los préstamos Base en JPEG progresivo con distintos giros y recortes. B08 conserva las lecturas discrepantes y el escenario afectado queda PENDING. B16 reproduce el expediente completo. [Resultados y reproducción](workbook-evidence-progressive-crop-D163.md).
 
 D164 prueba que B03 reconoce la cotización y los cuatro préstamos aunque cambie su posición. B08 usa las citas de la página física y B16 reproduce el expediente. [Resultados y reproducción](workbook-evidence-progressive-order-D164.md).
+
+D166 aplica B08 al respaldo estructurado de mercado y seguro antes de B13. Conserva el cotejo de los préstamos y registra B08 antes de B09 en el perfil vigente. B16 reproduce las fuentes y B17 se registra aparte. [Resultados y reproducción](workbook-market-evidence-D166.md).

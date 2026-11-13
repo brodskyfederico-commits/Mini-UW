@@ -188,13 +188,21 @@ def run_rental_scenario(name, raw, review, rent_inputs, *, include_commercial=Fa
                         include_development=False, include_budget=False, include_calendar=False,
                         include_construction_financing=False, document_review=None, include_operating_costs=False,
                         include_replacement_reserve=False, include_property_tax=False, include_exit_pricing=False,
-                        include_permanent_loan=False, include_refinance_costs=False, include_growth=False):
+                        include_permanent_loan=False, include_refinance_costs=False, include_growth=False,
+                        require_market_evidence=False):
     pending = dict(state="PENDING", cash_per_usd_10=None, capacity=None, noi_by_period={})
     if not review["calculation_inputs_ready"]:
         return pending | dict(blockers=["required_rental_cells_unconfirmed"])
     rows = {row["value_cell"].split("!")[1]: row for row in review["rows"] if row["field_id"] in FIELDS}
     values = {cell: row["value"] for cell, row in rows.items()}
     cells = {cell: f"sha256:{review['workbook_sha256']}#{row['value_cell']}" for cell, row in rows.items()}
+    market = {}
+    if require_market_evidence:
+        from worksheet_market_evidence_D166 import review_assumptions
+        market = {"market_insurance_review": review_assumptions(rent_inputs, name, review)}
+        if market["market_insurance_review"]["blockers"]:
+            blockers = [f"B08:{reason}" for reason in market["market_insurance_review"]["blockers"]]
+            return pending | dict(blockers=blockers, cell_sources=cells) | market
     binding = None
     try:
         terms = terms_for(rent_inputs, name, values, inspect_synthetic_input_sheet(raw).cells,
@@ -212,7 +220,7 @@ def run_rental_scenario(name, raw, review, rent_inputs, *, include_commercial=Fa
             binding = bind_development(name, development, document_review)
             if binding["blockers"]:
                 return pending | dict(blockers=binding["blockers"], development_costs=development,
-                                      document_financial_binding=binding, cell_sources=cells)
+                                      document_financial_binding=binding, cell_sources=cells) | market
         if include_utilities:
             from worksheet_utility_inputs_D142 import utility_expenses
             terms["utility_expenses"], terms["utility_evidence"] = utility_expenses(
@@ -256,7 +264,7 @@ def run_rental_scenario(name, raw, review, rent_inputs, *, include_commercial=Fa
                 if bank["blockers"]:
                     return pending | dict(blockers=[f"B08:{reason}" for reason in bank["blockers"]],
                                           cell_sources=cells, document_financial_binding=binding,
-                                          project_calendar=calendar, bank_document_binding=bank)
+                                          project_calendar=calendar, bank_document_binding=bank) | market
                 permanent_terms["bank_document_binding"] = bank
             calendar["payment_dates"] = permanent_terms["payment_dates"]
         commercial = None
@@ -293,7 +301,7 @@ def run_rental_scenario(name, raw, review, rent_inputs, *, include_commercial=Fa
             if funding["blockers"]:
                 evidence = dict(document_financial_binding=binding) if binding is not None else {}
                 return pending | dict(blockers=funding["blockers"], construction_financing=funding,
-                                      project_calendar=calendar, construction_budget=budget, development_costs=development) | evidence
+                                      project_calendar=calendar, construction_budget=budget, development_costs=development) | evidence | market
             terms["cost"] = _fraction(funding["equity_funding_through_refinance"])
             cost_source = f"sha256:{sha(encoded(funding))}#/equity_draws"
             draws = [draw | dict(source_ref=f"{cost_source}/{index}") for index, draw in enumerate(funding["equity_draws"])]
@@ -316,7 +324,7 @@ def run_rental_scenario(name, raw, review, rent_inputs, *, include_commercial=Fa
                                refinance_costs=refinance_costs)
     except (ValueError, TypeError, KeyError) as error:
         evidence = dict(document_financial_binding=binding) if binding is not None else {}
-        return pending | dict(blockers=[str(error)], cell_sources=cells) | evidence
+        return pending | dict(blockers=[str(error)], cell_sources=cells) | evidence | market
     if growth_terms is not None:
         result["growth_terms"] = growth_terms
     if commercial is not None:
@@ -332,7 +340,7 @@ def run_rental_scenario(name, raw, review, rent_inputs, *, include_commercial=Fa
         result["construction_financing"] = funding
     if binding is not None:
         result["document_financial_binding"] = binding
-    return result | dict(noi_by_period=periods, cell_sources=cells, comps_evidence=terms["comps"], rent_basis=terms["basis"])
+    return result | market | dict(noi_by_period=periods, cell_sources=cells, comps_evidence=terms["comps"], rent_basis=terms["basis"])
 
 
 def screen(case, views, blockers, *, period_ref=PERIOD):
@@ -525,7 +533,7 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
                       include_construction_financing=False, document_review=None, include_operating_costs=False,
                       include_replacement_reserve=False, include_property_tax=False, include_exit_pricing=False,
                       include_permanent_loan=False, include_refinance_costs=False, include_growth=False,
-                      include_alternatives=False, evidence_milestone=None):
+                      include_alternatives=False, evidence_milestone=None, require_market_evidence=False):
     hashes = object_or_empty(case.get("workbook_sha256"))
     review = review_native_mapping(case.get("native_mapping"), workbooks, hashes, calculation_fields=FIELDS)
     revision = review_revision(case, current_revision_raw)
@@ -540,7 +548,7 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
                                       include_replacement_reserve=include_replacement_reserve,
                                       include_property_tax=include_property_tax, include_exit_pricing=include_exit_pricing,
                                       include_permanent_loan=include_permanent_loan, include_refinance_costs=include_refinance_costs,
-                                      include_growth=include_growth)
+                                      include_growth=include_growth, require_market_evidence=require_market_evidence)
 
     views = {name: run_scenario(name, review["scenarios"][name]) for name in SCENARIOS}
     workbook_blockers = review["blockers"]
@@ -576,7 +584,8 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
                  include_operating_costs=include_operating_costs, include_replacement_reserve=include_replacement_reserve,
                  include_property_tax=include_property_tax, include_exit_pricing=include_exit_pricing,
                  include_permanent_loan=include_permanent_loan, include_refinance_costs=include_refinance_costs,
-                 include_growth=include_growth, alternatives=alternatives, evidence_milestone=evidence_milestone)
+                 include_growth=include_growth, alternatives=alternatives,
+                 evidence_milestone="D166" if require_market_evidence else evidence_milestone)
     profile = "synthetic_native_residential_and_commercial_rent" if include_commercial else PROFILE
     if include_utilities:
         profile = "synthetic_native_rent_and_utility_expenses"
@@ -633,6 +642,17 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
             "D162": ("synthetic_progressive_jpeg_financial_evidence", "check_worksheet_evidence_progressive_D162.py"),
         }[evidence_milestone]
         pipeline["pipeline"]["stages"][-1]["version_suite"] = version_suite
+    if require_market_evidence:
+        profile = "synthetic_documented_market_insurance_and_bank"
+        stages = {stage["dot"]: stage for stage in pipeline["pipeline"]["stages"]}
+        stages["D03"]["bots"].insert(stages["D03"]["bots"].index("B09"), "B08")
+        stages["D03"]["market_insurance_by_scenario"] = {
+            name: view.get("market_insurance_review", {}).get("state", "PENDING") for name, view in views.items()
+        }
+        stages["D05"]["bots"].remove("B08")
+        stages["D07"]["bots"].remove("B17")
+        stages["D07"].pop("version_suite")
+        pipeline["pipeline"]["version_tests"] = dict(bot="B17", suite="check_worksheet_market_evidence_D166.py")
     return dict(profile=profile, state=state,
                 case_sha256=case_sha256, decision="PENDING", simulation_result=simulation,
                 real_decisions_enabled=False, deployment_enabled=False, personal_investor_return=None,

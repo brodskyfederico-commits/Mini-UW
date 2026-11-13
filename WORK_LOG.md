@@ -1760,3 +1760,7 @@ B03 y B08 ubican y leen cinco páginas JPEG progresivas giradas y recortadas, in
 ## D165 — Guía para Lorena y matriz de cobertura
 
 El primer bloque autorizado incorpora el carril humano y los responsables por función, documenta B08 antes de B09, saca B17 de la corrida por proyecto y muestra estados a D164 por bot, Dot y módulo. Se cotejan los aportes y cobros por USD 10, la ganancia o déficit, el EM y el saldo sin recuperar. La TIR del expediente y el retorno personal quedan PENDING. La matriz conserva 398 filas y sus estados de cierre financiero. La revisión del experto se cita por página y huella. [Guía](docs/review/MiniUW_Flujo_Dots_y_Bots_para_Lorena_D165.pdf) · [Matriz](docs/coverage-matrix.csv).
+
+## D166 — Cotejo de mercado, seguro y banco
+
+El perfil sintético coteja renta, concesiones, absorción, tasa de salida y seguro antes de calcular. Conserva la conciliación bancaria de D164 y vuelve a controlar el cap de salida de C80. Siete variantes verifican PENDING ante faltantes, discrepancias, unidad o vigencia incompatible y huella incorrecta. Con respaldo completo se reproducen los flujos por USD 10. [Resultados y reproducción](docs/workbook-market-evidence-D166.md).

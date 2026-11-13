@@ -111,3 +111,7 @@ D72 vincula M2-08 con la ocupación económica sintética de equilibrio bajo un 
 ## Revisión del flujo D165
 
 La [guía actualizada](review/MiniUW_Flujo_Dots_y_Bots_para_Lorena_D165.pdf) documenta los estados de los 17 bots y nueve módulos a D164, el carril humano y el ejemplo fechado por USD 10. Las 398 filas conservan sus fuentes originales y estados de cierre financiero. Las filas BOT-01 a BOT-17, M9-02, M9-05, M9-07 a M9-10, M7-04, M7-09, M7-11, M7-12 y METRIC-ASKING incorporan definición vigente, evidencia y pendientes. VS y PA describen el alcance sintético. Ninguna fila acredita cierre financiero extremo a extremo.
+
+## Evidencia de mercado, seguro y banco D166
+
+[D166](workbook-market-evidence-D166.md) agrega evidencia de prueba en 11 filas de cobertura. Los 398 requisitos conservan sus pendientes y sus estados de cierre financiero.
