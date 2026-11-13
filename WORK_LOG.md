@@ -1880,3 +1880,7 @@ B16 deja PENDING si las reglas del expediente difieren de la revisión designada
 ## D196 · Downside con PASS sin FAIL
 
 Se ensaya la regla explícita por métrica y revisión con «Sin FAIL» en el Excel. Si Downside cumple, la fila puede dar PASS simulado. Si incumple, falta la política o existe un conflicto, queda PENDING. Se preservan el FAIL explícito de Base, los criterios conjuntos del RLV y los flujos por USD 10. El piloto real sigue PENDING. [Casos y reproducción](docs/workbook-downside-pass-only-D196.md).
+
+## D197 · Corrección del reporte D196 tras revisión especializada
+
+Se mantienen 12/16 hitos técnicos al corte D196 y se precisa el denominador. Se publica la matriz de aceptación revisada de los cuatro hitos y un checklist de seis condiciones del piloto real con cero cierres documentados. Se documentan las fuentes oficiales de Florida y el pendiente fiscal de M2. Se registra «Cumple criterios» para la futura presentación profesional. [Reporte y criterios de cierre](docs/review/MiniUW_Cierre_Tecnico_y_Piloto_D197.md).
