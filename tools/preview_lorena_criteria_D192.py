@@ -15,6 +15,7 @@ from miniuw_foundation.threshold_rehearsal import ROWS
 from miniuw_foundation.workbooks import DOC_REL, MAIN, _parts, _read_cell, _relationships, _text, _xml
 from miniuw_worksheet_v1 import encoded, read_current_revision, verify_package
 from worksheet_integrated_screening_D181 import METRICS
+from worksheet_definition_screening_D193 import RLV, land_band_rules
 
 
 SHEET = "Criterios PASS FAIL"
@@ -148,11 +149,12 @@ def comparison(metric, passing, failing, evidence, *, downside=False):
 
 
 def preview(raw, result):
-    require(result.get("profile") == "synthetic_documented_integrated_screening"
+    require(result.get("profile") in ("synthetic_documented_integrated_screening", "synthetic_documented_definition_screening")
             and result["deployment_enabled"] is False
             and result["decision"] == "PENDING" and result["real_decisions_enabled"] is False,
-            "Sólo se admite el perfil sintético integrado D181")
+            "Sólo se admite un perfil sintético integrado")
     cells = read_cells(raw)
+    definition_screening = result["profile"] == "synthetic_documented_definition_screening"
     original = result["screening"]["comparisons"]
     index = {(row["scenario_id"], row["metric_id"]): row for row in original}
     require(len(index) == len(original) == 2 * len(METRICS), "Inventario de métricas incompleto o repetido")
@@ -167,13 +169,21 @@ def preview(raw, result):
             metric = row["metric_record"]
             passing, failing, note = [cells.get(ref, "") for ref in (pass_ref, fail_ref, note_ref)]
             state, blockers, rules = comparison(metric, passing, failing, note, downside=scenario == "Downside")
+            if definition_screening and metric_id == RLV and rules:
+                trace = result["screening"]["metric_evidence_by_scenario"][scenario]["candidate_definitions"][RLV]
+                boundary = trace.get("fail_boundary_multiple")
+                expected = {key: rule | {"unit": "multiple"} for key, rule in land_band_rules(boundary).items()}
+                if boundary is not None and rules != expected:
+                    state = "PENDING"
+                    blockers.append("SRC-03_ratio_rule_does_not_match_computed_price_band")
             rows.append(dict(scenario=scenario, metric=metric_id, state=state, blockers=blockers, parsed_rules=rules,
                              criteria_cells=dict(passing=pass_ref, failing=fail_ref, note=note_ref),
                              input_literals=dict(passing=passing, failing=failing, note=note),
                              result_locator=row["metric_locator"], metric_record=metric))
     return dict(sheet=SHEET, criteria_xlsx_sha256=sha256(raw).hexdigest(),
                 criteria_source_and_validity=source or None, downside_policy_note=policy or None,
-                comparison_scope="arithmetic_on_D181_definitions_for_reconciliation",
+                comparison_scope="arithmetic_on_D181_definitions_for_reconciliation"
+                if not definition_screening else "arithmetic_on_D193_candidate_definitions_for_reconciliation",
                 criteria_adopted=False, matching_financial_bases_confirmed=False, decision="PENDING",
                 pilot_state="PENDING", real_decisions_enabled=False, deployment_enabled=False,
                 source_revision=result["revision_review"]["reference_revision"],

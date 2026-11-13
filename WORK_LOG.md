@@ -1864,3 +1864,7 @@ Se usó el expediente D181 para probar el pedido, la recepción de los dos Input
 ## D192 · Lectura del Excel de criterios de Lorena
 
 Se versiona la planilla de las diez métricas y se conecta su lectura con la revisión vigente del expediente sintético D181. El cotejo conserva huellas, celdas, literales, reglas exactas y caja por USD 10. Se prueban blancos, cero explícito, banda, conflicto, criterio Downside sin FAIL, unidad incompatible, TIR por intervalo, fórmulas rechazadas y revisión histórica. El piloto real y SRC-02/SRC-03 siguen PENDING. [Cotejo y reproducción](docs/workbook-criteria-intake-D192.md).
+
+## D193 · Ocupación de equilibrio y RLV en el dictamen
+
+El perfil sintético v30 calcula SRC-02 y SRC-03 desde la corrida financiera y pasa las métricas a B14. Ocupación usa renta efectiva, gastos, impuesto, reservas y servicio amortizante anual. RLV prueba criterios conjuntos con deuda fija y C33, conservando las dos fronteras, sus puntos vecinos y el cociente cuando es válido. Se comprueba la banda PENDING y el bloqueo de criterios, fuentes o revisión faltantes o incompatibles. El ensayo reproduce los flujos por USD 10 y el PDF histórico D181. Las definiciones reales, la decisión formal y el retorno personal siguen PENDING. [Resultados y reproducción](docs/workbook-definition-screening-D193.md).

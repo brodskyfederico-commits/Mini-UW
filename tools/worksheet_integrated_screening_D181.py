@@ -183,23 +183,46 @@ def review_rules(raw, scenarios):
     return accepted, issues, []
 
 
-def screen_integrated(case, views, blockers):
+def screen_integrated(case, views, blockers, *, definition_screening=False):
     inputs = object_or_empty(object_or_empty(case.get("rent_inputs")).get("integrated_screening"))
     collections = {name: collect_metrics(name, view, object_or_empty(inputs.get(name)))
                    for name, view in views.items()}
-    records = {(name, metric): data[0][metric] for name, data in collections.items() for metric in METRICS}
-    values = [{key: value for key, value in row.items() if key not in {"source_pointer", "blockers"}}
-              for (_, metric), row in records.items() if metric != "IRR"]
-
     revision = case.get("criteria_revision")
     current_rules = synthetic_id(revision) and not any(reason.startswith("B12:") for reason in blockers)
     rules, rule_issues, inventory_issues = review_rules(case.get("rules") if current_rules else None, views)
+    if definition_screening:
+        from worksheet_definition_screening_D193 import extend
+        source = object_or_empty(object_or_empty(case.get("rent_inputs")).get("definition_screening"))
+        for name, (records, evidence, irr) in collections.items():
+            criteria = {key: entry for (scenario, key), entry in rules.items() if scenario == name}
+            updated, trace = extend(views[name], object_or_empty(source.get(name)), object_or_empty(inputs.get(name)),
+                                    criteria, records, evidence, irr)
+            collections[name] = (updated, trace, irr)
+    records = {(name, metric): data[0][metric] for name, data in collections.items() for metric in METRICS}
+    if definition_screening:
+        from worksheet_definition_screening_D193 import RLV, land_band_rules
+        for name, (_, trace, _) in collections.items():
+            key = (name, RLV)
+            if key not in rules:
+                continue
+            _, criterion = rules[key]
+            boundary = trace["candidate_definitions"][RLV].get("fail_boundary_multiple")
+            actual = {"PASS": criterion["pass_condition"], "FAIL": criterion["fail_condition"]}
+            if boundary is not None and actual != land_band_rules(boundary):
+                # The price band is defined by the joint price search. An
+                # inconsistent manual ratio threshold must not override it.
+                rules.pop(key)
+                rule_issues[key] = "SRC-03_ratio_rule_does_not_match_computed_price_band"
+    values = [{key: value for key, value in row.items() if key not in {"source_pointer", "blockers"}}
+              for (_, metric), row in records.items() if metric != "IRR"]
     rule_inventory = [criterion for _, criterion in rules.values()]
     aggregation = case.get("aggregation_rule")
+    component = "D193" if definition_screening else "D181"
+    case_id = f"SYNTHETIC-{component}"
     scalar_result = simulate_screening(encoded(dict(
-        schema=SCHEMA, context=dict(deal_id="SYNTHETIC-D181-screening", scenario_id="SYNTHETIC-pair",
-                                    run_id="SYNTHETIC-D181", definition_set_revision="SYNTHETIC-D181-integrated"),
-        case_id="SYNTHETIC-D181", criteria_revision=revision if synthetic_id(revision) else "SYNTHETIC-unconfirmed",
+        schema=SCHEMA, context=dict(deal_id=f"{case_id}-screening", scenario_id="SYNTHETIC-pair",
+                                    run_id=case_id, definition_set_revision=f"{case_id}-integrated"),
+        case_id=case_id, criteria_revision=revision if synthetic_id(revision) else "SYNTHETIC-unconfirmed",
         criteria_status="synthetic_fixture_only", required_metrics=[m for m in METRICS if m != "IRR"],
         required_scenarios=list(views), metric_values=values, criteria=[row for row in rule_inventory if row["metric_id"] != "IRR"],
         aggregation_rule=aggregation if aggregation == AGGREGATION else None, hypothetical_band_policy=None,
@@ -232,7 +255,7 @@ def screen_integrated(case, views, blockers):
             review.append({key: row[key] for key in ("metric_id", "scenario_id", "metric_locator", "criterion_locator")})
     simulation = "PENDING" if all_blockers else ("FAIL" if any(
         row["state"] == "FAIL_CONDITION" for row in comparisons) else "PASS")
-    return scalar_result | dict(component="D181", required_metrics=list(METRICS), comparisons=comparisons,
+    return scalar_result | dict(component=component, required_metrics=list(METRICS), comparisons=comparisons,
                                 input_case_rule_source="/rules", input_case_sha256=sha(encoded(case)),
                                 current_criteria_confirmed=current_rules, interval_engine_sha256=ENGINE_SHA256,
                                 metric_evidence_by_scenario={name: row[1] for name, row in collections.items()},
@@ -307,7 +330,22 @@ def render_integrated(views, screening):
     for metric in METRICS:
         cells = " / ".join(display_metric(by_key[metric, name], view["cash_per_usd_10"]) for name, view in views.items())
         lines.append((f"{LABELS[metric]}  ·  {cells}", False))
-    lines.append(("Pendientes de definición: ocupación económica (SRC-02) y RLV de la casa (SRC-03).", False))
+    definition_screening = any("candidate_definitions" in item
+                               for item in screening["metric_evidence_by_scenario"].values())
+    if definition_screening:
+        def land_boundaries(name):
+            details = screening["metric_evidence_by_scenario"][name]["candidate_definitions"]
+            price = details["asking_relative_to_supported_price"].get("calculation", {})
+            values = (price.get("pass_price"), price.get("before_fail"))
+            return " / ".join("PENDING" if value is None else str(value) for value in values)
+
+        lines.append((f"RLV / último antes de FAIL (USD proyecto) | Base {land_boundaries('Base')} | Downside {land_boundaries('Downside')}", True))
+        if any(row["state"] in {"PENDING", "CONFLICT", "BAND"} and row["metric_id"] in
+               {"breakeven_occupancy", "asking_relative_to_supported_price"} for row in screening["comparisons"]):
+            lines.append(("SRC-02/SRC-03: revisar bases, datos, criterios y límites del expediente.", False))
+        lines.append(("Ocupación y RLV de ensayo. Aprobación de definiciones reales PENDING.", False))
+    else:
+        lines.append(("Pendientes de definición: ocupación económica (SRC-02) y RLV de la casa (SRC-03).", False))
     if not screening["current_criteria_confirmed"]:
         lines.append(("PENDING por vigencia: revisar la revisión de fuentes y criterios del expediente.", True))
     elif any(row["state"] in {"PENDING", "CONFLICT"} and row["metric_id"] not in
@@ -316,5 +354,7 @@ def render_integrated(views, screening):
     if screening["professional_review_needed_for_band"]:
         lines.append(("PENDING por banda: una comparación requiere revisión profesional.", True))
     lines.append(("— indica que no hay evento para esa fecha o falta un valor. 0,00 indica un cero documentado o redondeado.", False))
-    return render_page("D181 | Base y Downside", lines, 10, "MINI-UW | SI INVIERTO USD 10, ¿CUÁNTO COBRO Y CUÁNDO?",
+    label = "D193 | Base y Downside" if definition_screening else "D181 | Base y Downside"
+    return render_page(label, lines, 9 if definition_screening else 10,
+                       "MINI-UW | SI INVIERTO USD 10, ¿CUÁNTO COBRO Y CUÁNDO?",
                        "Piloto sintético | Aportes, cobros, riesgos y métricas del dictamen")

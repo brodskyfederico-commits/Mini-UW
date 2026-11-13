@@ -4,6 +4,8 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D193 conecta la ocupación de equilibrio y el RLV al dictamen sintético con revisión y evidencia. [Ensayo y bloqueos](docs/workbook-definition-screening-D193.md).
+
 - D192 conecta el Excel de criterios de Lorena con el cotejo sintético. [Planilla y verificación](docs/workbook-criteria-intake-D192.md).
 
 - D189 congela el alcance del Mini-UW v1 y deja reproducible el piloto PRELIMINAR. [Mínimos, pruebas y pendientes del piloto](docs/preliminary-pilot-readiness-D189.md).
