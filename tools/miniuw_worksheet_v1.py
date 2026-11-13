@@ -81,13 +81,14 @@ WORKBOOK_FORMULA_REVIEW_SCHEMA = "miniuw.synthetic-native-rental-inputs.v25"
 WORKBOOK_SUPPLEMENTAL_SCOPE_SCHEMA = "miniuw.synthetic-native-rental-inputs.v26"
 WORKBOOK_VERSIONED_TEMPLATE_SCHEMA = "miniuw.synthetic-native-rental-inputs.v27"
 WORKBOOK_DEBT_YIELD_SCHEMA = "miniuw.synthetic-native-rental-inputs.v28"
+WORKBOOK_INTEGRATED_SCREENING_SCHEMA = "miniuw.synthetic-native-rental-inputs.v29"
 EVIDENCE_MILESTONES = {WORKBOOK_EVIDENCE_PDF_SCHEMA: "D156", WORKBOOK_CONSTRUCTION_PDF_SCHEMA: "D157",
                        WORKBOOK_SCANNED_EVIDENCE_SCHEMA: "D158", WORKBOOK_ORIENTED_EVIDENCE_SCHEMA: "D159",
                        WORKBOOK_COLOR_EVIDENCE_SCHEMA: "D160", WORKBOOK_JPEG_EVIDENCE_SCHEMA: "D161",
                        WORKBOOK_PROGRESSIVE_JPEG_EVIDENCE_SCHEMA: "D162",
                        WORKBOOK_MARKET_EVIDENCE_SCHEMA: "D162", WORKBOOK_FORMULA_REVIEW_SCHEMA: "D162",
                        WORKBOOK_SUPPLEMENTAL_SCOPE_SCHEMA: "D162", WORKBOOK_VERSIONED_TEMPLATE_SCHEMA: "D162",
-                       WORKBOOK_DEBT_YIELD_SCHEMA: "D162"}
+                       WORKBOOK_DEBT_YIELD_SCHEMA: "D162", WORKBOOK_INTEGRATED_SCREENING_SCHEMA: "D162"}
 WORKBOOK_RENTAL_SCHEMAS = (WORKBOOK_RENTAL_INPUTS_SCHEMA, WORKBOOK_COMMERCIAL_INPUTS_SCHEMA,
                           WORKBOOK_UTILITY_INPUTS_SCHEMA, WORKBOOK_DEVELOPMENT_INPUTS_SCHEMA,
                           WORKBOOK_CONSTRUCTION_BUDGET_SCHEMA, WORKBOOK_PROJECT_CALENDAR_SCHEMA,
@@ -100,8 +101,9 @@ WORKBOOK_RENTAL_SCHEMAS = (WORKBOOK_RENTAL_INPUTS_SCHEMA, WORKBOOK_COMMERCIAL_IN
                           WORKBOOK_COLOR_EVIDENCE_SCHEMA, WORKBOOK_JPEG_EVIDENCE_SCHEMA,
                           WORKBOOK_PROGRESSIVE_JPEG_EVIDENCE_SCHEMA, WORKBOOK_MARKET_EVIDENCE_SCHEMA,
                           WORKBOOK_FORMULA_REVIEW_SCHEMA, WORKBOOK_SUPPLEMENTAL_SCOPE_SCHEMA,
-                          WORKBOOK_VERSIONED_TEMPLATE_SCHEMA, WORKBOOK_DEBT_YIELD_SCHEMA)
-VERSIONED_TEMPLATE_SCHEMAS = (WORKBOOK_VERSIONED_TEMPLATE_SCHEMA, WORKBOOK_DEBT_YIELD_SCHEMA)
+                          WORKBOOK_VERSIONED_TEMPLATE_SCHEMA, WORKBOOK_DEBT_YIELD_SCHEMA, WORKBOOK_INTEGRATED_SCREENING_SCHEMA)
+DEBT_YIELD_SCHEMAS = (WORKBOOK_DEBT_YIELD_SCHEMA, WORKBOOK_INTEGRATED_SCREENING_SCHEMA)
+VERSIONED_TEMPLATE_SCHEMAS = (WORKBOOK_VERSIONED_TEMPLATE_SCHEMA, *DEBT_YIELD_SCHEMAS)
 SUPPLEMENTAL_SCHEMAS = (WORKBOOK_SUPPLEMENTAL_SCOPE_SCHEMA, *VERSIONED_TEMPLATE_SCHEMAS)
 FORMULA_SCHEMAS = (WORKBOOK_FORMULA_REVIEW_SCHEMA, *SUPPLEMENTAL_SCHEMAS)
 MARKET_SCHEMAS = (WORKBOOK_MARKET_EVIDENCE_SCHEMA, *FORMULA_SCHEMAS)
@@ -130,6 +132,7 @@ MAX_CURRENT_REVISION_BYTES = 16 * 1024
 MAX_PLAN_BYTES = 2 * 1024 * 1024
 MAX_FILE_BYTES = 4 * 1024 * 1024
 MAX_EXTENDED_PILOT_BYTES = 32 * 1024
+MAX_INTEGRATED_PILOT_BYTES = 48 * 1024
 
 
 def read_case(case):
@@ -162,8 +165,10 @@ def read_case(case):
 
 def build_results(raw, *, workbook_raw=None, downside_workbook_raw=None, current_revision_raw=None, plan_raw=None,
                   evidence_raw=None):
-    case = _json(raw, MAX_EXTENDED_PILOT_BYTES)
+    case = _json(raw, MAX_INTEGRATED_PILOT_BYTES)
     schema = case.get("schema") if isinstance(case, dict) else None
+    require(schema == WORKBOOK_INTEGRATED_SCREENING_SCHEMA or len(raw) <= MAX_EXTENDED_PILOT_BYTES,
+            "The worksheet case exceeds its schema size limit")
     require(current_revision_raw is None or schema in (*WORKBOOK_CURRENT_CHAIN_SCHEMAS, *WORKBOOK_RENTAL_SCHEMAS),
             "The designated revision belongs to the current local chain schema")
     require(plan_raw is None or schema in (*WORKBOOK_PDF_CHAIN_SCHEMAS, *WORKBOOK_DOCUMENTED_SCHEMAS)
@@ -199,7 +204,8 @@ def build_results(raw, *, workbook_raw=None, downside_workbook_raw=None, current
                                  require_formula_review=schema in FORMULA_SCHEMAS,
                                  require_supplemental_scope=schema in SUPPLEMENTAL_SCHEMAS,
                                  require_template_identity=schema in VERSIONED_TEMPLATE_SCHEMAS,
-                                 require_debt_yield=schema == WORKBOOK_DEBT_YIELD_SCHEMA)
+                                 require_debt_yield=schema in DEBT_YIELD_SCHEMAS,
+                                 integrated_screening=schema == WORKBOOK_INTEGRATED_SCREENING_SCHEMA)
     yield_metrics = schema in (WORKBOOK_YIELD_PILOT_SCHEMA, *WORKBOOK_FUNDING_PILOT_SCHEMAS)
     interval_irr = schema == WORKBOOK_IRR_PILOT_SCHEMA or yield_metrics
     extended = schema == WORKBOOK_EXTENDED_PILOT_SCHEMA or interval_irr
@@ -454,7 +460,7 @@ def main():
     args = parser.parse_args()
     try:
         if args.command == "run":
-            require(args.case.is_file() and args.case.stat().st_size <= MAX_EXTENDED_PILOT_BYTES,
+            require(args.case.is_file() and args.case.stat().st_size <= MAX_INTEGRATED_PILOT_BYTES,
                     "A bounded case JSON file is required")
             workbook_raw = None if args.workbook is None else read_workbook(args.workbook)
             downside = None if args.downside_workbook is None else read_workbook(args.downside_workbook)

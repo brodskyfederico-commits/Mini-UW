@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D180 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D181 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/miniuw-integral-usd10.yml",
@@ -8,8 +8,8 @@
     },
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 27103,
-      "sha256": "8596fc0ae8ab8e58b5a24d99d458e4505a13071d1c8d8ee76c80f36e7b14c5b0"
+      "bytes": 27297,
+      "sha256": "138c74215c10a44f8005f9a1b8ae43400b49c9b1b7b10a56a8d03fd2320cbdf0"
     },
     {
       "path": ".gitignore",
@@ -23,13 +23,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 89891,
-      "sha256": "235b27b8f36bb3de2cc6fc7a5fdc5c8900105147b044acd8c251fc6854cd9b46"
+      "bytes": 90063,
+      "sha256": "5a7481809640e0e4ad7b564f6168963e492f94129c71b6c0c399e265400a6de8"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 356259,
-      "sha256": "7d3412bab23a34a12f956b9a10be17588077e1b447a10ee42e99460d8b8b5d3c"
+      "bytes": 356776,
+      "sha256": "bc1e955129073de3948a94b24fed43dfe7bdcea7bf51db18dea259b61b05632b"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -1142,6 +1142,11 @@
       "sha256": "07d48b0ef234c29deb78a75f202fa1ade250da1f2a2d77589d02409015ee1ca1"
     },
     {
+      "path": "docs/review/MiniUW_Informe_USD10_D181.pdf",
+      "bytes": 5891,
+      "sha256": "43d6c8bb14523963b48e3b0a4ac830855f16c443288175cb42cde1858ec5f8f5"
+    },
+    {
       "path": "docs/review/MiniUW_Planilla_55_Campos_Revision_Profesional.xlsx",
       "bytes": 19233,
       "sha256": "5262db20b532c3f139079c7342bf06cfea046337cc52f3dc9e1a64a31f851f71"
@@ -1175,6 +1180,11 @@
       "path": "docs/review/MiniUW_USD10_Ocho_Casos_D79.pdf",
       "bytes": 7097,
       "sha256": "99a2278d52390390d5b6bf7f5cb82b4f7b93c77547e3564c145c9e948cf2168f"
+    },
+    {
+      "path": "docs/review/MiniUW_Verificacion_D181.json",
+      "bytes": 241,
+      "sha256": "e3349dec0f576985475c5b042038dae787228ec346d73164c43e95543c24e647"
     },
     {
       "path": "docs/review/MiniUW_Vista_Sintetica_Interna_T18.pdf",
@@ -3205,6 +3215,11 @@
       "path": "docs/workbook-independent-reconciliation-D179.md",
       "bytes": 3997,
       "sha256": "9eb5e39776d3649bb5d0ea46e12d22574c0b17b4573c6764a200fd973f75a3d9"
+    },
+    {
+      "path": "docs/workbook-integrated-screening-D181.md",
+      "bytes": 6061,
+      "sha256": "a72223eb1b0b0319bbb8556f028d241384b7bbd707405eb8de256fb8b482b303"
     },
     {
       "path": "docs/workbook-irr-D122.md",
@@ -6407,6 +6422,11 @@
       "sha256": "d063bb9c29e902ba514144f5ad50c7462ac219598cc24416c925ddf4ee4bcc46"
     },
     {
+      "path": "templates/synthetic-workbook-current-revision-D181.json",
+      "bytes": 722,
+      "sha256": "2457438df8164f1e33adc1d04fe4fbbfcb89b5bdb54d10d4096cc466db9a6073"
+    },
+    {
       "path": "templates/synthetic-workbook-debt-yield-D178.json",
       "bytes": 29445,
       "sha256": "899662259e5779d203edd83a5baca60ae23aa53f464a39ef40927bf2865cab67"
@@ -6485,6 +6505,11 @@
       "path": "templates/synthetic-workbook-intake-case-D117.json",
       "bytes": 234,
       "sha256": "d2caf65e2faca9dc4b66a0a9444df7f1a5423281550a6f93cd6fb1d287ffc39d"
+    },
+    {
+      "path": "templates/synthetic-workbook-integrated-screening-D181.json",
+      "bytes": 34952,
+      "sha256": "75aec2e75a5d1962afc18dc6046bdaf6469f3b2cc0bc268ba8d29d79fcacc173"
     },
     {
       "path": "templates/synthetic-workbook-local-chain-D127.json",
@@ -7777,6 +7802,11 @@
       "sha256": "0a64eee4c8966978028e8c6a0ef49542d3e74c0a929385ecd8f3c3a04973375a"
     },
     {
+      "path": "tools/check_worksheet_integrated_screening_D181.py",
+      "bytes": 12701,
+      "sha256": "3e9a6047cf51ab2cbcdf8ba2d95d892e73a5c0a69d21b4655a1a9ed1dab3fb01"
+    },
+    {
       "path": "tools/check_worksheet_investor_D74.py",
       "bytes": 3416,
       "sha256": "9003942b4836c68e48bf187c14c242100d718a4bff8ddc3f61aedb84a4f13228"
@@ -8393,8 +8423,8 @@
     },
     {
       "path": "tools/miniuw_worksheet_v1.py",
-      "bytes": 31193,
-      "sha256": "c8574b8d6f1d5a0ef72a607fbee33fcf96b2bda030c013102dd97632f9618038"
+      "bytes": 31742,
+      "sha256": "34b9ff50b8dca46dccba021a12e71d1d45bd775d85270d55a74946fd75e60e31"
     },
     {
       "path": "tools/onepage_pending_cases_D79.py",
@@ -8597,6 +8627,11 @@
       "sha256": "d2f6cae11ea8f85b407105f6272e194a93aef936611fa5b813702e237914f906"
     },
     {
+      "path": "tools/worksheet_integrated_screening_D181.py",
+      "bytes": 18465,
+      "sha256": "e19c86af92841cbc4346eec000a59ecd307fa4154bc10de5e7ebc8f90dd5c061"
+    },
+    {
       "path": "tools/worksheet_investor_D74.py",
       "bytes": 4478,
       "sha256": "c54dd07e75ecd10c594e094085781311ce33953a971f2fc5a9f20e59a1e58c96"
@@ -8718,8 +8753,8 @@
     },
     {
       "path": "tools/worksheet_rental_inputs_D140.py",
-      "bytes": 53799,
-      "sha256": "fa7c5ccf8350aacfcc69dd4199726940ce798b39411e3ab9b4a423d169dbe338"
+      "bytes": 54407,
+      "sha256": "c263cb66bb3404a8f13f9fb575a1f7b90c33fe3c8f2b71dc4a625bcf1cae6b66"
     },
     {
       "path": "tools/worksheet_replacement_reserve_D149.py",

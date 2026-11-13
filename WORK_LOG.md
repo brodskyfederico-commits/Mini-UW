@@ -1816,3 +1816,7 @@ Se reconstruyen ambos escenarios principales de D178 a partir del XLSX y el expe
 ## D180 — Cotejo final de las tres revisiones profesionales
 
 Se cotejan las observaciones de Flujo, Fórmulas y Planilla con el árbol D179 y se documenta lo pendiente de integración, definición y validación real. [Matriz y lista priorizada](docs/review/MiniUW_Cierre_Revision_Profesional_D180.md).
+
+## D181 — Dictamen integrado e informe de una página por USD 10
+
+El perfil v29 agrega al mismo expediente de Base y Downside ocho métricas calculadas con criterios sintéticos. Las definiciones pendientes de ocupación económica y RLV aparecen en las comparaciones y mantienen PENDING el dictamen. El informe muestra la caja fechada, la dependencia de venta y el mínimo nominal a recuperar, con aportes y cobros por USD 10 iniciales. [Prueba y matriz de cobertura](docs/workbook-integrated-screening-D181.md).

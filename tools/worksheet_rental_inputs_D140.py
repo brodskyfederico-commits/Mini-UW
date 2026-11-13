@@ -588,7 +588,7 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
                       include_permanent_loan=False, include_refinance_costs=False, include_growth=False,
                       include_alternatives=False, evidence_milestone=None, require_market_evidence=False,
                       require_formula_review=False, require_supplemental_scope=False, require_template_identity=False,
-                      require_debt_yield=False):
+                      require_debt_yield=False, integrated_screening=False):
     hashes = object_or_empty(case.get("workbook_sha256"))
     review = review_native_mapping(case.get("native_mapping"), workbooks, hashes, calculation_fields=FIELDS,
                                    require_template_identity=require_template_identity)
@@ -643,23 +643,31 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
     if include_construction_financing:
         from worksheet_construction_financing_D146 import LIFECYCLE
         period_ref = LIFECYCLE
-    screening = screen(case, views, blockers, period_ref=period_ref)
+    if integrated_screening:
+        from worksheet_integrated_screening_D181 import screen_integrated
+        screening = screen_integrated(case, views, blockers)
+    else:
+        screening = screen(case, views, blockers, period_ref=period_ref)
     simulation = screening["simulation_result"]
     alternatives = None
     if include_alternatives:
         alternatives = evaluate_alternatives(object_or_empty(case.get("rent_inputs")).get("alternatives"), review, views, run_scenario,
                                              revision=revision, documents=document_review, case_sha256=case_sha256)
-    pdf = render(views, simulation, include_commercial=include_commercial, include_utilities=include_utilities,
-                 include_development=include_development, include_budget=include_budget, include_calendar=include_calendar,
-                 include_construction_financing=include_construction_financing, document_review=document_review,
-                 include_operating_costs=include_operating_costs, include_replacement_reserve=include_replacement_reserve,
-                 include_property_tax=include_property_tax, include_exit_pricing=include_exit_pricing,
-                 include_permanent_loan=include_permanent_loan, include_refinance_costs=include_refinance_costs,
-                 include_growth=include_growth, alternatives=alternatives,
-                 evidence_milestone="D178" if require_debt_yield else "D176" if require_template_identity
-                 else "D174" if require_supplemental_scope
-                 else "D173" if require_formula_review else "D166" if require_market_evidence else evidence_milestone,
-                 formula_review=require_formula_review)
+    if integrated_screening:
+        from worksheet_integrated_screening_D181 import render_integrated
+        pdf = render_integrated(views, screening)
+    else:
+        pdf = render(views, simulation, include_commercial=include_commercial, include_utilities=include_utilities,
+                     include_development=include_development, include_budget=include_budget, include_calendar=include_calendar,
+                     include_construction_financing=include_construction_financing, document_review=document_review,
+                     include_operating_costs=include_operating_costs, include_replacement_reserve=include_replacement_reserve,
+                     include_property_tax=include_property_tax, include_exit_pricing=include_exit_pricing,
+                     include_permanent_loan=include_permanent_loan, include_refinance_costs=include_refinance_costs,
+                     include_growth=include_growth, alternatives=alternatives,
+                     evidence_milestone="D178" if require_debt_yield else "D176" if require_template_identity
+                     else "D174" if require_supplemental_scope
+                     else "D173" if require_formula_review else "D166" if require_market_evidence else evidence_milestone,
+                     formula_review=require_formula_review)
     profile = "synthetic_native_residential_and_commercial_rent" if include_commercial else PROFILE
     if include_utilities:
         profile = "synthetic_native_rent_and_utility_expenses"
@@ -742,6 +750,9 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
         from worksheet_debt_yield_D178 import PROFILE as DEBT_YIELD_PROFILE
         profile = DEBT_YIELD_PROFILE
         pipeline["pipeline"]["version_tests"]["suite"] = "check_worksheet_debt_yield_D178.py"
+    if integrated_screening:
+        profile = "synthetic_documented_integrated_screening"
+        pipeline["pipeline"]["version_tests"]["suite"] = "check_worksheet_integrated_screening_D181.py"
     return dict(profile=profile, state=state,
                 case_sha256=case_sha256, decision="PENDING", simulation_result=simulation,
                 real_decisions_enabled=False, deployment_enabled=False, personal_investor_return=None,
