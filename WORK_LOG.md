@@ -1764,3 +1764,7 @@ El primer bloque autorizado incorpora el carril humano y los responsables por fu
 ## D166 — Cotejo de mercado, seguro y banco
 
 El perfil sintético coteja renta, concesiones, absorción, tasa de salida y seguro antes de calcular. Conserva la conciliación bancaria de D164 y vuelve a controlar el cap de salida de C80. Siete variantes verifican PENDING ante faltantes, discrepancias, unidad o vigencia incompatible y huella incorrecta. Con respaldo completo se reproducen los flujos por USD 10. [Resultados y reproducción](docs/workbook-market-evidence-D166.md).
+
+## D167 — TIR y CoC de la corrida D166
+
+B16 vuelve a ejecutar D166. D167 verifica TIR trimestral anualizada y CoC del tramo posrefi sobre la caja por USD 10. Base da una TIR anual de 17,58 % a 17,59 % y un CoC del tramo de 9,63 %. Downside da −42,32 % a −42,31 % y 3,02 %. Retorno personal PENDING por términos de reparto. [Método y reproducción](docs/workbook-return-metrics-D167.md).

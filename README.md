@@ -4,6 +4,7 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D167 verifica TIR anual y CoC del tramo para Base y Downside sobre D166. [Resultados y reproducción](docs/workbook-return-metrics-D167.md).
 - D166 coteja evidencia de mercado, seguro y banco antes del cálculo. [Resultados y reproducción](docs/workbook-market-evidence-D166.md).
 - D165 actualiza el flujo con el carril humano y los estados a D164. [Guía para Lorena](docs/review/MiniUW_Flujo_Dots_y_Bots_para_Lorena_D165.pdf) · [Matriz de cobertura](docs/coverage-matrix.csv).
 - D164 verifica las cinco páginas financieras en JPEG progresivo, con giros, recortes y fuera de orden. [Resultados y reproducción](docs/workbook-evidence-progressive-order-D164.md).

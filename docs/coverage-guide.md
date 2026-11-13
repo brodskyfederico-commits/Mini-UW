@@ -115,3 +115,7 @@ La [guía actualizada](review/MiniUW_Flujo_Dots_y_Bots_para_Lorena_D165.pdf) doc
 ## Evidencia de mercado, seguro y banco D166
 
 [D166](workbook-market-evidence-D166.md) agrega evidencia de prueba en 11 filas de cobertura. Los 398 requisitos conservan sus pendientes y sus estados de cierre financiero.
+
+## TIR y CoC de la corrida D166
+
+[D167](workbook-return-metrics-D167.md) agrega evidencia sintética en cinco filas. El CoC usa los aportes brutos hasta la refi y conserva pendiente la definición real de capital remanente. El retorno personal sigue PENDING.

@@ -1958,7 +1958,7 @@
       "definicion_vigente": "No cerrada: conservar la definición documentada como candidata, sin activarla como política aprobada.",
       "modulo_o_calculo_afectado": "M6/M7/M9",
       "evidencia_documental": "sources/extracted/38b78d40013b.txt ; extracción textual cotejada preliminarmente",
-      "evidencia_validacion": "No hay implementación recuperada, caso independiente ejecutado ni validación de producto para esta fila.",
+      "evidencia_validacion": "No hay implementación recuperada, caso independiente ejecutado ni validación de producto para esta fila. D167: docs/workbook-return-metrics-D167.md, Tabla Base y Downside, cobro operativo del tramo sobre aportes brutos hasta la refi. Sin anualizar. Alcance sintético.",
       "estado": "DEFINICION_PENDIENTE",
       "pendientes": "Definir período y equity remanente; denominador cero indefinido. Umbrales nuevos por deal vacíos.",
       "cobertura_financiera_extremo_a_extremo": false
@@ -2012,7 +2012,7 @@
       "definicion_vigente": "No cerrada: conservar la definición documentada como candidata, sin activarla como política aprobada.",
       "modulo_o_calculo_afectado": "M7/M8/M9",
       "evidencia_documental": "sources/extracted/38b78d40013b.txt ; extracción textual cotejada preliminarmente",
-      "evidencia_validacion": "No hay implementación recuperada, caso independiente ejecutado ni validación de producto para esta fila.",
+      "evidencia_validacion": "No hay implementación recuperada, caso independiente ejecutado ni validación de producto para esta fila. D167: docs/workbook-return-metrics-D167.md, Tabla Base y Downside, intervalos anuales y verificación de VAN. Alcance sintético.",
       "estado": "DEFINICION_PENDIENTE",
       "pendientes": "Mensual regular versus XIRR; tasa, dominio y raíces. Umbrales nuevos por deal vacíos.",
       "cobertura_financiera_extremo_a_extremo": false
@@ -6548,7 +6548,7 @@
       "definicion_vigente": "Contrato candidato M7-10 en docs/model-hold-exit-returns.md; alcance y convenciones pendientes.",
       "modulo_o_calculo_afectado": "M7 → M8/M9",
       "evidencia_documental": "sources/extracted/95a304fd3e53.txt ; extracción textual cotejada preliminarmente",
-      "evidencia_validacion": "references/m7-validation.json: casos algebraicos sintéticos condicionados; sin solver IRR general, XIRR ni auditoría independiente. Ampliación matemática: references/periodic-irr-isolation-validation.json, 64 controles de conteo/aislamiento racional de raíces periódicas; sin XIRR, elección de raíz, convención de anualización o integración de deal. Referencia adicional: references/investor-return-bridge-validation.json, 43 controles de vínculos explícitos ledger/grid/brutos/TIR sintéticos; sin elección temporal aprobada, terminal o XIRR. Referencia adicional: references/return-metric-bridge-validation.json, 31 controles más tabla de 180 casos de extremos; comparación sin redondeo y compounding declarado, sin criterio auténtico ni decisión del deal. Referencia adicional: references/affine-price-support-validation.json, 42 controles y 144 puntos/operadores de una rama afín/retorno único declarada; sin RLV completo, inputs reales, integración financiera general o política Q3 aprobada. Consolidación I01: references/structure-closeout-validation.json comprueba documento/línea, fuente/ubicación y rutas agregadas; verificación estructural, sin cierre financiero/productivo.",
+      "evidencia_validacion": "references/m7-validation.json: casos algebraicos sintéticos condicionados; sin solver IRR general, XIRR ni auditoría independiente. Ampliación matemática: references/periodic-irr-isolation-validation.json, 64 controles de conteo/aislamiento racional de raíces periódicas; sin XIRR, elección de raíz, convención de anualización o integración de deal. Referencia adicional: references/investor-return-bridge-validation.json, 43 controles de vínculos explícitos ledger/grid/brutos/TIR sintéticos; sin elección temporal aprobada, terminal o XIRR. Referencia adicional: references/return-metric-bridge-validation.json, 31 controles más tabla de 180 casos de extremos; comparación sin redondeo y compounding declarado, sin criterio auténtico ni decisión del deal. Referencia adicional: references/affine-price-support-validation.json, 42 controles y 144 puntos/operadores de una rama afín/retorno único declarada; sin RLV completo, inputs reales, integración financiera general o política Q3 aprobada. Consolidación I01: references/structure-closeout-validation.json comprueba documento/línea, fuente/ubicación y rutas agregadas; verificación estructural, sin cierre financiero/productivo. D167: docs/workbook-return-metrics-D167.md, § Cómo se verifica, TIR trimestral anualizada y VAN en extremos. Alcance sintético.",
       "estado": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
       "pendientes": "Cerrar fuentes/calendario/denominadores/terminal/estrategia y validación independiente; ver contrato M7.",
       "cobertura_financiera_extremo_a_extremo": false
@@ -6566,7 +6566,7 @@
       "definicion_vigente": "La salida fechada conserva el libro de caja. TIR anual y CoC de este expediente siguen PENDING.",
       "modulo_o_calculo_afectado": "M7 → M8/M9",
       "evidencia_documental": "sources/extracted/95a304fd3e53.txt ; extracción textual cotejada preliminarmente | Revisión aportada por el usuario: MiniUW_Revision_Flujo_Dots_y_Bots.pdf, pp. 1–2, «El resultado del ejemplo» y «Respuesta al inversor», SHA-256 809a3446998c449e0bab0ead28f27832ea46eda26018f211c9e24f4eda1aa2b6. Guía docs/review/MiniUW_Flujo_Dots_y_Bots_para_Lorena_D165.pdf.",
-      "evidencia_validacion": "references/m7-validation.json: casos algebraicos sintéticos condicionados; sin solver IRR general, XIRR ni auditoría independiente. Consolidación I01: references/structure-closeout-validation.json comprueba documento/línea, fuente/ubicación y rutas agregadas; verificación estructural, sin cierre financiero/productivo. D165: D164 entrega movimientos y EM. D126 prueba TIR y CoC en otro perfil sintético; no se trasladan sus cifras a D164.",
+      "evidencia_validacion": "references/m7-validation.json: casos algebraicos sintéticos condicionados; sin solver IRR general, XIRR ni auditoría independiente. Consolidación I01: references/structure-closeout-validation.json comprueba documento/línea, fuente/ubicación y rutas agregadas; verificación estructural, sin cierre financiero/productivo. D165: D164 entrega movimientos y EM. D126 prueba TIR y CoC en otro perfil sintético; no se trasladan sus cifras a D164. D167: docs/workbook-return-metrics-D167.md, § Cómo se verifica, TIR y CoC del tramo con aportes brutos hasta la refi. Falta confirmar base de capital remanente real. Alcance sintético.",
       "estado": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
       "pendientes": "Validar TIR y CoC en la corrida integrada y confirmar las convenciones.",
       "cobertura_financiera_extremo_a_extremo": false
@@ -6584,7 +6584,7 @@
       "definicion_vigente": "Retorno agregado del equity en el piloto. El reparto LP/GP es un paso pendiente y el retorno personal requiere términos documentados.",
       "modulo_o_calculo_afectado": "M7 → M8/M9",
       "evidencia_documental": "sources/extracted/95a304fd3e53.txt ; extracción textual cotejada preliminarmente | Revisión aportada por el usuario: MiniUW_Revision_Flujo_Dots_y_Bots.pdf, pp. 1, 3 y 4, reparto LP/GP e impuestos del inversor, SHA-256 809a3446998c449e0bab0ead28f27832ea46eda26018f211c9e24f4eda1aa2b6. Guía docs/review/MiniUW_Flujo_Dots_y_Bots_para_Lorena_D165.pdf.",
-      "evidencia_validacion": "references/m7-validation.json: casos algebraicos sintéticos condicionados; sin solver IRR general, XIRR ni auditoría independiente. Consolidación I01: references/structure-closeout-validation.json comprueba documento/línea, fuente/ubicación y rutas agregadas; verificación estructural, sin cierre financiero/productivo. D165: D164, personal_investor_return PENDING; guía D165, pp. 3–4.",
+      "evidencia_validacion": "references/m7-validation.json: casos algebraicos sintéticos condicionados; sin solver IRR general, XIRR ni auditoría independiente. Consolidación I01: references/structure-closeout-validation.json comprueba documento/línea, fuente/ubicación y rutas agregadas; verificación estructural, sin cierre financiero/productivo. D165: D164, personal_investor_return PENDING; guía D165, pp. 3–4. D167: docs/workbook-return-metrics-D167.md, § Cómo se verifica, retorno personal PENDING por términos de reparto. Alcance sintético.",
       "estado": "PROPUESTA_NO_VALIDADA_EN_PRODUCTO",
       "pendientes": "Confirmar términos de reparto, nivel fiscal y conciliación de la distribución al inversor.",
       "cobertura_financiera_extremo_a_extremo": false
