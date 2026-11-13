@@ -64,7 +64,7 @@ def check_terms(terms, verified):
     return None
 
 
-def waterfall(view, terms):
+def waterfall(view, terms, *, gp_catch_up_share=Fraction()):
     cash = view["cash_per_usd_10"]
     dates = [entry["date"] for entry in view["irr"]["dated_net_flows"]]
     events_by_date = {d: [] for d in dates}
@@ -75,6 +75,8 @@ def waterfall(view, terms):
     rate = amount(terms["annual_preference"]) / 4
     capital = dict.fromkeys(ROLES, Fraction())
     pref_due = Fraction()
+    total_pref_paid = total_catch_up = Fraction()
+    catch_up_ratio = gp_catch_up_share / (1 - gp_catch_up_share)
     ledger, checkpoints = [], []
     for index, (when, events) in enumerate(events_by_date.items()):
         opening = capital.copy()
@@ -87,7 +89,7 @@ def waterfall(view, terms):
             value = amount(event["amount"])
             capital_paid = dict.fromkeys(ROLES, Fraction())
             residual_paid = dict.fromkeys(ROLES, Fraction())
-            pref_paid = Fraction()
+            pref_paid = catch_up_paid = Fraction()
             if event["kind"] == "contribution":
                 allocation = {role: value * contributions[role] for role in ROLES}
                 for role in ROLES:
@@ -101,14 +103,21 @@ def waterfall(view, terms):
                         capital[role] -= capital_paid[role]
                 pref_paid = min(value - capital_total, pref_due)
                 pref_due -= pref_paid
-                residual_paid = {role: (value - capital_total - pref_paid) * residual[role] for role in ROLES}
+                total_pref_paid += pref_paid
+                distributable = value - capital_total - pref_paid
+                catch_up_paid = min(distributable, total_pref_paid * catch_up_ratio - total_catch_up)
+                total_catch_up += catch_up_paid
+                residual_paid = {role: (distributable - catch_up_paid) * residual[role] for role in ROLES}
                 allocation = {role: capital_paid[role] + residual_paid[role] for role in ROLES}
                 allocation["LP"] += pref_paid
+                allocation["GP"] += catch_up_paid
             require(sum(allocation.values()) == value and min(*capital.values(), pref_due) >= 0,
                     "Waterfall did not conserve project cash")
             ledger.append(dict(event=event, allocated={k: rational(v) for k, v in allocation.items()},
                                returned_capital={k: rational(v) for k, v in capital_paid.items()},
                                lp_preference_paid=rational(pref_paid), residual={k: rational(v) for k, v in residual_paid.items()}))
+            if gp_catch_up_share:
+                ledger[-1]["gp_catch_up_paid"] = rational(catch_up_paid)
         checkpoints.append(dict(date=when, lp_opening_capital=rational(opening["LP"]),
                                 lp_preference_accrued=rational(accrued), lp_preference_due=rational(pref_due),
                                 ending_capital={k: rational(v) for k, v in capital.items()}))
@@ -127,8 +136,11 @@ def waterfall(view, terms):
     for kind, key in (("contribution", "total_contributions"), ("distribution", "total_distributions")):
         require(sum(amount(v) for row in ledger if row["event"]["kind"] == kind for v in row["allocated"].values())
                 == amount(cash[key]), "Allocated totals do not reconcile")
-    return dict(state="computed_synthetic_cash_allocation", blockers=[], participants=participants,
-                reconciliation=dict(events=ledger, quarterly_checkpoints=checkpoints, ending_lp_preference_due=rational(pref_due)))
+    reconciliation = dict(events=ledger, quarterly_checkpoints=checkpoints, ending_lp_preference_due=rational(pref_due))
+    if gp_catch_up_share:
+        reconciliation.update(gp_catch_up_paid=rational(total_catch_up),
+                              gp_catch_up_due=rational(total_pref_paid * catch_up_ratio - total_catch_up))
+    return dict(state="computed_synthetic_cash_allocation", blockers=[], participants=participants, reconciliation=reconciliation)
 
 
 def split(terms, verified):

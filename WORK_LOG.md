@@ -1776,3 +1776,7 @@ La ficha sintética declara 80 % LP y 20 % GP para cada aporte y cobro. B16 repr
 ## D169 — Devolución de capital y retorno preferente LP
 
 La ficha sintética declara capital primero, preferente LP simple anual del 8 % y remanente 80/20. D169 reproduce D166 y concilia cada movimiento de Base y Downside. Base paga el preferente en la venta; Downside conserva capital y preferente impagos al cierre. Cinco pruebas dejan PENDING ante términos insuficientes o mal vinculados. [Resultados y reproducción](docs/workbook-preferred-lp-gp-D169.md).
+
+## D170 — Catch-up GP después del preferente LP
+
+Se coteja el catch-up completo en Base, cero en Downside y un caso parcial sin caja residual. Se concilia cada movimiento con D166 y se preservan las prioridades de D169. Cinco pruebas dejan PENDING ante términos ausentes o incompatibles. [Resultados](docs/workbook-gp-catch-up-D170.md).

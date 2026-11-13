@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D169 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D170 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/miniuw-integral-usd10.yml",
@@ -8,8 +8,8 @@
     },
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 25879,
-      "sha256": "7aa0b0e79fbd6ec9087c2a7524d4846dafe58d10dc032c69c41a1de75caac4c4"
+      "bytes": 26044,
+      "sha256": "a03fd98f82ed6b5e5f12b66870d8e8e38b5cf7a6cfd8f55b06487234ed4a6233"
     },
     {
       "path": ".gitignore",
@@ -23,13 +23,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 88829,
-      "sha256": "cae07ff95259db75b3af605f56deb2a90214c81b50d24b1b52fdc71ee9eb563a"
+      "bytes": 88948,
+      "sha256": "b942d7d9335b53071e1b830714840696d8cb54e7787d741d1bb7ab61e12af95a"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 352081,
-      "sha256": "8e1d61eec978acf225897c9540d226db395f50d4d4046f2beadebabeea33fa5a"
+      "bytes": 352423,
+      "sha256": "9140b94a7a58c26730213d7da8542c61b8ca9e34aec00ad961437c4a422dc50a"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -3142,6 +3142,11 @@
       "sha256": "8235ed6cc2191f5fd57014c8d0fab3ee1b7759251bc74b4119ee307ff4a6ac79"
     },
     {
+      "path": "docs/workbook-gp-catch-up-D170.md",
+      "bytes": 2722,
+      "sha256": "6702c51448b1a333d4cc22f30b937436f08e33dbbb256e11073575c5efd8942e"
+    },
+    {
       "path": "docs/workbook-growth-D154.md",
       "bytes": 4819,
       "sha256": "7f20ac72d6f4181426e70fa02f8178676db45d693251f4d4b73f8cae5575a324"
@@ -5407,6 +5412,11 @@
       "sha256": "4b5603562895ed0277ee9ed8e67d8a1bf2ea4cd2bab7a410ea4de40bb8ca56bc"
     },
     {
+      "path": "templates/synthetic-gp-catch-up-terms-D170.json",
+      "bytes": 357,
+      "sha256": "3f1c3754800798b9674a90b36013b0ee51d89059ca26e42fc23c45147bfa6aef"
+    },
+    {
       "path": "templates/synthetic-growth-base-D154.xlsx",
       "bytes": 8860,
       "sha256": "d50f24a842fd0f2f9f112bbca4b2effd1a5022ebe58e34339bd4ab9f663369d6"
@@ -7632,6 +7642,11 @@
       "sha256": "82b302e246a255871d8eea79dca104a6b0e527c3150a0ca10a7629e829f94a64"
     },
     {
+      "path": "tools/check_worksheet_gp_catch_up_D170.py",
+      "bytes": 10038,
+      "sha256": "c728563083ea90ee120f1d59c7d310cd5bcc0229595618aa26ac77be01207ac7"
+    },
+    {
       "path": "tools/check_worksheet_growth_D154.py",
       "bytes": 13610,
       "sha256": "e346272bf97d02767ec90f67ae717824280e21a98f95d45632bef9bf4b8fb9b8"
@@ -7743,8 +7758,8 @@
     },
     {
       "path": "tools/check_worksheet_preferred_lp_gp_D169.py",
-      "bytes": 16253,
-      "sha256": "b990504178c7ae93c416bc42450ece402a29a20c1f65c75dbb89a4adabefc927"
+      "bytes": 17057,
+      "sha256": "231591539e120602b40e095f9fd3bbed4d2336996bfd3badb9756e203d25910d"
     },
     {
       "path": "tools/check_worksheet_preflight_D116.py",
