@@ -1832,3 +1832,7 @@ El perfil v29 conserva la salida de una página y el dictamen PENDING cuando un 
 ## D184 — Ensayos de NOI comparable, ocupación y RLV
 
 Se reproduce el piloto D181 desde sus fuentes y se ensaya la propuesta de NOI después de reservas para YoC, CoC y ocupación económica. El spread coteja la base del cap y queda PENDING si falta. C14 combinado deja PENDING la ocupación física. La grilla de deuda fija prueba C33, restricciones simultáneas, precio negativo, precio no alcanzable y fronteras PASS y previa a FAIL. Las definiciones quedan PENDING de aprobación. [Resultados, alcance y reproducción](docs/workbook-performance-policy-D184.md).
+
+## D185 — PRELIMINAR para LOI en el piloto sintético
+
+El comando común produce y audita una página por USD 10 a partir de estimaciones con fuente, fecha y responsable. El ensayo ordena sólo casos con Base y Downside completos y una ventana, corte y ruta de financiación comunes. Una ausencia o incompatibilidad excluye al caso del ranking. La priorización sintética por múltiplo de equity en Downside conserva el dictamen formal PENDING. [Alcance, validación y pendientes del piloto](docs/workbook-preliminary-loi-D185.md).

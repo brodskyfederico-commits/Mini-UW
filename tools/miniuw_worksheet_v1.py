@@ -19,6 +19,7 @@ from miniuw_foundation.worksheet_settled_output import assemble_worksheet_settle
 
 
 CASE_SCHEMA = "miniuw.synthetic-unified-worksheet-case.v1"
+PRELIMINARY_SCHEMA = "miniuw.synthetic-preliminary-loi.v1"
 DIAGNOSTIC_CASE_SCHEMA = "miniuw.synthetic-unified-worksheet-case.v2"
 PARTICIPATION_CASE_SCHEMA = "miniuw.synthetic-unified-worksheet-case.v3"
 INVESTOR_CASE_SCHEMA = "miniuw.synthetic-unified-worksheet-case.v4"
@@ -174,6 +175,11 @@ def build_results(raw, *, workbook_raw=None, downside_workbook_raw=None, current
     require(plan_raw is None or schema in (*WORKBOOK_PDF_CHAIN_SCHEMAS, *WORKBOOK_DOCUMENTED_SCHEMAS)
             and len(plan_raw) <= MAX_PLAN_BYTES,
             "A bounded PDF plan belongs to the plan chain schema")
+    if schema == PRELIMINARY_SCHEMA:
+        require(workbook_raw is None and downside_workbook_raw is None and evidence_raw is None,
+                "The synthetic preliminary profile uses explicit cash estimates in the case")
+        from worksheet_preliminary_D185 import build_preliminary
+        return build_preliminary(case, raw)
     evidence_milestone = EVIDENCE_MILESTONES.get(schema)
     require(evidence_raw is None or (evidence_milestone is not None and len(evidence_raw) <= MAX_PLAN_BYTES),
             "A bounded evidence PDF belongs to the evidence worksheet schema")
