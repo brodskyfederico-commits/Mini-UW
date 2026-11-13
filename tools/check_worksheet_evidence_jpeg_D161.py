@@ -32,7 +32,9 @@ DECODER = {"pillow_version": "13.0.0", "libjpeg_turbo_version": "3.2.0"}
 JPEG_ROLES = {"gc": ("RGB", 97), "base": ("RGB", 97), "construction_base": ("L", 100)}
 
 
-def jpeg_bundle(upright, *, overlay=None, truncated=None, progressive_roles=(), oriented=False, rgb_quality=None):
+def jpeg_bundle(upright, *, overlay=None, truncated=None, progressive_roles=(), oriented=False, rgb_quality=None, jpeg_roles=None):
+    if jpeg_roles is None:
+        jpeg_roles = JPEG_ROLES
     writer = PdfWriter()
     title = ("Mini-UW D163 synthetic oriented progressive financial evidence" if oriented
              else "Mini-UW D161 synthetic JPEG-compressed financial evidence")
@@ -40,10 +42,10 @@ def jpeg_bundle(upright, *, overlay=None, truncated=None, progressive_roles=(), 
     originals = PdfReader(BytesIO(upright), strict=True).pages
     flate = PdfReader(BytesIO(oriented_bundle(upright)), strict=True).pages
     for index, role in enumerate(ORDER):
-        if role not in JPEG_ROLES:
+        if role not in jpeg_roles:
             writer.add_page(flate[index])
             continue
-        mode, quality = JPEG_ROLES[role]
+        mode, quality = jpeg_roles[role]
         _, dimensions, _, pixels = full_page_image(originals[index]).split(b"\n", 3)
         width, height = map(int, dimensions.split())
         if mode == "RGB":

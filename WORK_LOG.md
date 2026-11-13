@@ -1752,3 +1752,7 @@ La cotización y el crédito Base se leen desde JPEG progresivo. El caso complet
 ## D163 — JPEG progresivos girados y recortados
 
 B08 coteja la cotización y dos documentos bancarios Base desde imágenes progresivas giradas a 90°, 180° y 270°. El expediente completo y el texto coincidente reproducen D162. Cinco variantes quedan PENDING por recorte, discrepancia o baja confianza OCR. B16 reproduce la salida. [Resultados y reproducción](docs/workbook-evidence-progressive-crop-D163.md).
+
+## D164 — Expediente financiero progresivo fuera de orden
+
+B03 y B08 ubican y leen cinco páginas JPEG progresivas giradas y recortadas, incluida la deuda Downside. B16 reproduce los aportes y cobros por USD 10. Cinco variantes quedan PENDING por faltante, recorte, discrepancia o duplicado. [Resultados y reproducción](docs/workbook-evidence-progressive-order-D164.md).

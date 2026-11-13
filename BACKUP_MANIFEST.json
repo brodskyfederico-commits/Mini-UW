@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D163 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D164 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/miniuw-integral-usd10.yml",
@@ -8,8 +8,8 @@
     },
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 25002,
-      "sha256": "d9d1b1dbc69721b117688332bfe7050e2313f8d347b679286f353972a9fc80ba"
+      "bytes": 25189,
+      "sha256": "69a75ef7c7dc74548e53af15467768c6fa655897bc5fd4a0e2102ebb12387118"
     },
     {
       "path": ".gitignore",
@@ -23,13 +23,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 87876,
-      "sha256": "ea0e69df50e76269012f4de9adb505e8ac1a59599a2989a1abbbcdf8842e472d"
+      "bytes": 88061,
+      "sha256": "51e3542f187fdd83304edeca2b65bc583facf70295fb996d2d03ddf528d6824e"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 349311,
-      "sha256": "3c17c8938abd4bd14ed16616435cabf33b53a7f69af567f71215be128be61396"
+      "bytes": 349686,
+      "sha256": "be42c5d0b2be7a6b12a7e8c0ffa977c75af6fd42013d88e784d156dbdb5cb6d1"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -58,8 +58,8 @@
     },
     {
       "path": "docs/MiniUW_v1_Dots_y_Bots.md",
-      "bytes": 15137,
-      "sha256": "f861057c865cd3984e34f464ff14f53867c1ef741ca35d012455d03e3183db4e"
+      "bytes": 15380,
+      "sha256": "cc77592026a30a9f12366724619f7592dcd85b8a3a87433e3d7cd5b4515e6eee"
     },
     {
       "path": "docs/acceptance-case-contracts.json",
@@ -3115,6 +3115,11 @@
       "path": "docs/workbook-evidence-progressive-crop-D163.md",
       "bytes": 3114,
       "sha256": "7b65a37d83970083579f70cbd8f5672675a2ba199b893f51f8cc746ab47ef699"
+    },
+    {
+      "path": "docs/workbook-evidence-progressive-order-D164.md",
+      "bytes": 2840,
+      "sha256": "d2eb0f0104cabb581ca7d08ab28f8e83ba11fb23774c241f4d715484f43eefae"
     },
     {
       "path": "docs/workbook-evidence-scan-D158.md",
@@ -7533,8 +7538,8 @@
     },
     {
       "path": "tools/check_worksheet_evidence_jpeg_D161.py",
-      "bytes": 12196,
-      "sha256": "37a8eeab3c9f256ed09f77bad53d03c6cfbbcb74e4a46de63f9d375ba6deda86"
+      "bytes": 12272,
+      "sha256": "4a562157a9aae80efc2f6d35fc45d1b4da4b6cabf36e1fedbc0a6d66089eed87"
     },
     {
       "path": "tools/check_worksheet_evidence_oriented_D159.py",
@@ -7555,6 +7560,11 @@
       "path": "tools/check_worksheet_evidence_progressive_crop_D163.py",
       "bytes": 10084,
       "sha256": "8d621d938e0d8dbab5be2e5c446a7502924fc46f77b869f5c7eb7498ef5e5abe"
+    },
+    {
+      "path": "tools/check_worksheet_evidence_progressive_order_D164.py",
+      "bytes": 9602,
+      "sha256": "57bc2689a91c760a52278c9009ce8417e2ef1409f373f6426d3414c56e2ebda7"
     },
     {
       "path": "tools/check_worksheet_evidence_scan_D158.py",
