@@ -373,5 +373,7 @@ jobs:
         run: OMP_THREAD_LIMIT=1 PYTHONPATH=src:tests python tools/check_worksheet_reconciliation_D179.py --csv /tmp/miniuw-d179.csv
       - name: Verify the integrated synthetic screening and one-page USD 10 report
         run: OMP_THREAD_LIMIT=1 PYTHONPATH=src:tests python tools/check_worksheet_integrated_screening_D181.py
+      - name: Verify proposed NOI bases and fixed-debt price boundaries
+        run: OMP_THREAD_LIMIT=1 PYTHONPATH=src:tests python tools/check_worksheet_performance_policy_D184.py
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v

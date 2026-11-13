@@ -1828,3 +1828,7 @@ Pasan las 1.619 pruebas unitarias y diez comprobaciones integradas en el VPS. La
 ## D183 — Criterios inválidos y duplicados en el dictamen integrado
 
 El perfil v29 conserva la salida de una página y el dictamen PENDING cuando un criterio está mal formado o repetido. El control conserva los flujos ya verificados y mantiene las comparaciones independientes cuando la incidencia se puede atribuir a una fila. La regresión del piloto cubre 14 comprobaciones. [Reproducción](docs/workbook-criterion-validation-D183.md). Se preserva el [expediente de revisión profesional al corte D182](docs/review/MiniUW_Expediente_Revision_Profesional_D182.pdf).
+
+## D184 — Ensayos de NOI comparable, ocupación y RLV
+
+Se reproduce el piloto D181 desde sus fuentes y se ensaya la propuesta de NOI después de reservas para YoC, CoC y ocupación económica. El spread coteja la base del cap y queda PENDING si falta. C14 combinado deja PENDING la ocupación física. La grilla de deuda fija prueba C33, restricciones simultáneas, precio negativo, precio no alcanzable y fronteras PASS y previa a FAIL. Las definiciones quedan PENDING de aprobación. [Resultados, alcance y reproducción](docs/workbook-performance-policy-D184.md).

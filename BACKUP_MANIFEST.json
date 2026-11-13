@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D183 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D184 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/miniuw-integral-usd10.yml",
@@ -8,8 +8,8 @@
     },
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 27297,
-      "sha256": "138c74215c10a44f8005f9a1b8ae43400b49c9b1b7b10a56a8d03fd2320cbdf0"
+      "bytes": 27478,
+      "sha256": "e0e08a9b0e4bbdf366dd801acbf1b8b2f9f9d859b8a75c6e8b54279fb98b5f93"
     },
     {
       "path": ".gitignore",
@@ -28,8 +28,8 @@
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 357828,
-      "sha256": "690e7e52f7465c4a928d1f0487d9b7fbf678344636f7715bdc384a363f5bc3ec"
+      "bytes": 358398,
+      "sha256": "d8d12cb12e061b36ab9bc87ddca82449b9ec1f7bffcce29ed27f5b83e0d339a3"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -1205,6 +1205,11 @@
       "path": "docs/review/MiniUW_Verificacion_D183.json",
       "bytes": 392,
       "sha256": "779e9972d6b1cb27f15e19f9c1d97038e5ac9d809b567db605055476a0488484"
+    },
+    {
+      "path": "docs/review/MiniUW_Verificacion_D184.json",
+      "bytes": 40530,
+      "sha256": "dbce0ebc8680dcb1dbdca92ea7de4e1fc931353b45d5f69f29fdc4fb26e8a65b"
     },
     {
       "path": "docs/review/MiniUW_Vista_Sintetica_Interna_T18.pdf",
@@ -3280,6 +3285,11 @@
       "path": "docs/workbook-operating-costs-D148.md",
       "bytes": 4157,
       "sha256": "cd0789ed3410c20229bcf8c0baa13a18c5bd8f6e35b9a599b8c74eabeea1cd43"
+    },
+    {
+      "path": "docs/workbook-performance-policy-D184.md",
+      "bytes": 6986,
+      "sha256": "cead6cf15088a52784b8d6f303a66ca63fda406398615f1c65ba21ce0999953f"
     },
     {
       "path": "docs/workbook-permanent-loan-D152.md",
@@ -7882,6 +7892,11 @@
       "sha256": "8f31ec3d22d30b9bd416d38d4a29c1fb321cf8a800bba9a1a308cf709bc60b0a"
     },
     {
+      "path": "tools/check_worksheet_performance_policy_D184.py",
+      "bytes": 13375,
+      "sha256": "b8fcad2b3813f0214d8399840444817fd723ba7ce9e9731cbc6e4548f6d47747"
+    },
+    {
       "path": "tools/check_worksheet_permanent_loan_D152.py",
       "bytes": 12430,
       "sha256": "283b1ad4633cfab00f6ece59b2767faa0347a546e86cbbaeca6d286ae22b6ea3"
@@ -8700,6 +8715,11 @@
       "path": "tools/worksheet_participation_D68.py",
       "bytes": 1820,
       "sha256": "04c7677bc76c8cf3f255c1ed7cf768a1ecd39747e43868090a0b469a757739d7"
+    },
+    {
+      "path": "tools/worksheet_performance_policy_D184.py",
+      "bytes": 8175,
+      "sha256": "db07cb4bf0b9705d3af7c8836014f090d9574056cfdbbf552a2d1be5d7851d2c"
     },
     {
       "path": "tools/worksheet_permanent_loan_D152.py",
