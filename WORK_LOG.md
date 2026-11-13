@@ -1848,3 +1848,7 @@ El perfil residencial financiado lee C51–C53 y C66–C74 desde Inputs Base y D
 ## D188 — Desembolsos de obra por etapas en PRELIMINAR
 
 El perfil residencial v3 distribuye costo elegible de Inputs por trimestre y calcula el desembolso solicitado de cada etapa con su fracción documentada. El motor de obra verifica disponibilidad y compromiso acumulado, liquida intereses sobre el saldo expuesto y cancela sólo el principal desembolsado al refinanciar. Se cotejaron los flujos Base/Downside por USD 10 y se ensayaron faltantes y excesos de capacidad. [Resultados y reproducción](docs/workbook-preliminary-staged-D188.md).
+
+## D189 — Alcance v1 congelado y piloto PRELIMINAR preparado
+
+Se registra el alcance congelado del Mini-UW y la matriz de mínimos del ranking sintético. El perfil financiado con desembolsos por etapas verifica omisiones en Base y Downside, límites de capacidad y recuperación con cero explícito. El dictamen formal y la habilitación real permanecen PENDING. [Acta y pasos del piloto](docs/preliminary-pilot-readiness-D189.md).

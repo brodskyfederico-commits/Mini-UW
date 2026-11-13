@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D188 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D189 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/miniuw-integral-usd10.yml",
@@ -8,8 +8,8 @@
     },
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 28121,
-      "sha256": "76696bd016b0c04c6e856a737b54b5273754b69d34ae0a01608e5ae4e4bfb7d3"
+      "bytes": 28272,
+      "sha256": "770db176ae5c14a71bcd865127f415ebd8570bdf44f1358e5286b3cf22fdaed4"
     },
     {
       "path": ".gitignore",
@@ -23,13 +23,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 90063,
-      "sha256": "5a7481809640e0e4ad7b564f6168963e492f94129c71b6c0c399e265400a6de8"
+      "bytes": 90234,
+      "sha256": "dec55d000a55732a295a04bbf901482ff38b8d27584d76603bb294e3f9667f4e"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 360555,
-      "sha256": "229693ccb0275d2d2430e64078cdcf22f8fd562963bf3ce1a54fd691cc0c50da"
+      "bytes": 360991,
+      "sha256": "765005156c5c04059fb9c2631eb30836e8c4b8706fe484bf9622b0feb188e712"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -862,6 +862,11 @@
       "sha256": "846414dc9b7170ce3aaa951c57717cca5143ec3104f5e2acfc479744a2e69434"
     },
     {
+      "path": "docs/preliminary-pilot-readiness-D189.md",
+      "bytes": 5261,
+      "sha256": "59fe767498955c4f98a0f347ccdf9a3770878759daadcd1db09c66ec90433801"
+    },
+    {
       "path": "docs/price-grid-catalogue.md",
       "bytes": 4814,
       "sha256": "819e36e2ae5f660463c230876de029e5ffae15f3feed4cd802186e53aa5882b4"
@@ -1250,6 +1255,11 @@
       "path": "docs/review/MiniUW_Verificacion_D188.json",
       "bytes": 166,
       "sha256": "6645e86c3f837b0fb466d3e714e6df1313d66e2079e5e7acc44afa482220dd31"
+    },
+    {
+      "path": "docs/review/MiniUW_Verificacion_D189.json",
+      "bytes": 17023,
+      "sha256": "1a52a10adfde35c372b4ad6886222e66eae44a59b5ab4cd3612b3bb56dd071e7"
     },
     {
       "path": "docs/review/MiniUW_Vista_Sintetica_Interna_T18.pdf",
@@ -7720,6 +7730,11 @@
       "path": "tools/check_plan_sale_recovery_D113.py",
       "bytes": 4164,
       "sha256": "048269eca243fd8540b61afde67d39eec78a2a1b6ec0d4fde7724f73dcaf59e2"
+    },
+    {
+      "path": "tools/check_preliminary_pilot_readiness_D189.py",
+      "bytes": 7542,
+      "sha256": "c0d03f8513da60406929e7b81903ab591503a4d3a9190c741cbc2da846cf17ab"
     },
     {
       "path": "tools/check_reference_package.py",

@@ -4,6 +4,8 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D189 congela el alcance del Mini-UW v1 y deja reproducible el piloto PRELIMINAR. [Mínimos, pruebas y pendientes del piloto](docs/preliminary-pilot-readiness-D189.md).
+
 - D181 conecta ocho métricas al dictamen sintético y reúne el retorno por USD 10 en una página. [Informe y verificación](docs/workbook-integrated-screening-D181.md).
 
 - D179 coteja los flujos de Base y Downside con un cálculo independiente. [Cotejo y CSV](docs/workbook-independent-reconciliation-D179.md).

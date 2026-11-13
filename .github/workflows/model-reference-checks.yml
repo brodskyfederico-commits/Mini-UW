@@ -383,5 +383,7 @@ jobs:
         run: PYTHONPATH=src:tests python tools/check_worksheet_preliminary_finance_D187.py
       - name: Verify staged construction draws in the PRELIMINAR workbook
         run: PYTHONPATH=src:tests python tools/check_worksheet_preliminary_stages_D188.py
+      - name: Verify frozen PRELIMINAR pilot ranking minimums
+        run: PYTHONPATH=src:tests python tools/check_preliminary_pilot_readiness_D189.py
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v
