@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D162 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D163 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/miniuw-integral-usd10.yml",
@@ -8,8 +8,8 @@
     },
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 24814,
-      "sha256": "8d8c3cd68c64f989300f3b37cae597da39c6a24bd149aa89165763233e35ff10"
+      "bytes": 25002,
+      "sha256": "d9d1b1dbc69721b117688332bfe7050e2313f8d347b679286f353972a9fc80ba"
     },
     {
       "path": ".gitignore",
@@ -23,13 +23,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 87708,
-      "sha256": "dbe1e648a1e65ea24ceb4064500be811608b662ea3465663fc317860ff6465a3"
+      "bytes": 87876,
+      "sha256": "ea0e69df50e76269012f4de9adb505e8ac1a59599a2989a1abbbcdf8842e472d"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 348896,
-      "sha256": "98f9d3632e869600a0128300886f8f212376886c601918c2f0a0e707b4c7cc4a"
+      "bytes": 349311,
+      "sha256": "3c17c8938abd4bd14ed16616435cabf33b53a7f69af567f71215be128be61396"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -58,8 +58,8 @@
     },
     {
       "path": "docs/MiniUW_v1_Dots_y_Bots.md",
-      "bytes": 14834,
-      "sha256": "5d44e64fcbc5686d42e89e0451338fa8345e71396ce42113a8db4c264b4b11df"
+      "bytes": 15137,
+      "sha256": "f861057c865cd3984e34f464ff14f53867c1ef741ca35d012455d03e3183db4e"
     },
     {
       "path": "docs/acceptance-case-contracts.json",
@@ -3112,6 +3112,11 @@
       "sha256": "ba2fb8c567e6d7972c0676f34f4a5e370ad0eb02a7b682a690eb68c9eb51b759"
     },
     {
+      "path": "docs/workbook-evidence-progressive-crop-D163.md",
+      "bytes": 3114,
+      "sha256": "7b65a37d83970083579f70cbd8f5672675a2ba199b893f51f8cc746ab47ef699"
+    },
+    {
       "path": "docs/workbook-evidence-scan-D158.md",
       "bytes": 3733,
       "sha256": "e9e363328ebe063fcad50e6ad73f36f22246284c070701ae3fe1f6bc79bf89e1"
@@ -5737,6 +5742,11 @@
       "sha256": "b7a7508696733e6c31cc413144fda58e6916c4ac1b40eb5b1063474822ea1797"
     },
     {
+      "path": "templates/synthetic-progressive-crop-evidence-D163.pdf",
+      "bytes": 681581,
+      "sha256": "5566bee1ff0b5a9b8a4873d9e80b64e195e5d120658aba0378a3befc93dfdf47"
+    },
+    {
       "path": "templates/synthetic-progressive-evidence-D162.pdf",
       "bytes": 660972,
       "sha256": "bdbf7b524b6750f26835bff4c3c305b1aa7eeee93e5ade534a058d15b2044379"
@@ -6247,6 +6257,11 @@
       "sha256": "de402d380d6a6f174604276d56ce8c9741d0452e09b19e32bae9c5895a322247"
     },
     {
+      "path": "templates/synthetic-workbook-current-revision-D163.json",
+      "bytes": 714,
+      "sha256": "227c1df731955aeb4871c23df57e4dafbd577ff050482c24249e0e325ffd5819"
+    },
+    {
       "path": "templates/synthetic-workbook-development-inputs-D143.json",
       "bytes": 7061,
       "sha256": "ae482b141f5f8a5c49820c4294c6134cc061e55479631d6b68ed776bd0096a1e"
@@ -6285,6 +6300,11 @@
       "path": "templates/synthetic-workbook-evidence-progressive-D162.json",
       "bytes": 20527,
       "sha256": "835b63561077c9e6217aae7b43d0a86d2a9276c83ed8a82fcc4db3a4d6ed513a"
+    },
+    {
+      "path": "templates/synthetic-workbook-evidence-progressive-crop-D163.json",
+      "bytes": 20527,
+      "sha256": "bac7ed246633e004f75b7df71964577dcb4511f7eac3baf7a5209c7f65d8ff02"
     },
     {
       "path": "templates/synthetic-workbook-evidence-scan-D158.json",
@@ -7513,8 +7533,8 @@
     },
     {
       "path": "tools/check_worksheet_evidence_jpeg_D161.py",
-      "bytes": 11698,
-      "sha256": "bd9256d6532e06586a21227f39c7153fc030b259842b6a97288a15c6ddbac95c"
+      "bytes": 12196,
+      "sha256": "37a8eeab3c9f256ed09f77bad53d03c6cfbbcb74e4a46de63f9d375ba6deda86"
     },
     {
       "path": "tools/check_worksheet_evidence_oriented_D159.py",
@@ -7530,6 +7550,11 @@
       "path": "tools/check_worksheet_evidence_progressive_D162.py",
       "bytes": 8681,
       "sha256": "00a6fd949ea37a3853f33a9cdbab58717375a49ad261441ade36853029bfecc5"
+    },
+    {
+      "path": "tools/check_worksheet_evidence_progressive_crop_D163.py",
+      "bytes": 10084,
+      "sha256": "8d621d938e0d8dbab5be2e5c446a7502924fc46f77b869f5c7eb7498ef5e5abe"
     },
     {
       "path": "tools/check_worksheet_evidence_scan_D158.py",

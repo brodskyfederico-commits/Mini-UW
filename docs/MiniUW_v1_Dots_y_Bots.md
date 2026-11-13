@@ -107,3 +107,5 @@ D160 amplía el formato de las páginas financieras de B03 y B08 a imágenes RGB
 D161 amplía B03 y B08 a imágenes JPEG sintéticas en PDF. B12 conserva PENDING si un dato falta, discrepa o el JPEG queda fuera del perfil. B16 reproduce las fuentes con el decodificador declarado. [Resultados y reproducción](workbook-evidence-jpeg-D161.md).
 
 D162 permite JPEG progresivo bajo un perfil declarado. B08 conserva el tipo de codificación y las citas OCR. B12 conserva PENDING ante faltantes o discrepancias y B16 reproduce la corrida desde el archivo original. [Resultados y reproducción](workbook-evidence-progressive-D162.md).
+
+D163 verifica el OCR de la cotización y los préstamos Base en JPEG progresivo con distintos giros y recortes. B08 conserva las lecturas discrepantes y el escenario afectado queda PENDING. B16 reproduce el expediente completo. [Resultados y reproducción](workbook-evidence-progressive-crop-D163.md).

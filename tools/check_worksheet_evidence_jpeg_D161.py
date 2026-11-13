@@ -8,14 +8,14 @@ import json
 
 from PIL import Image
 from pypdf import PdfReader, PdfWriter
-from pypdf.generic import DecodedStreamObject, DictionaryObject, EncodedStreamObject, NameObject, NumberObject, RectangleObject
+from pypdf.generic import DecodedStreamObject, DictionaryObject, EncodedStreamObject, NameObject, NumberObject
 
 from check_operating_replay_D20 import ROOT, amount, require
 from check_unified_worksheet_D48 import call
 from check_worksheet_construction_budget_D144 import events
 from check_worksheet_construction_pdf_D157 import BOOKS, ORDER, PLAN, pages, run_package
 from check_worksheet_evidence_color_D160 import CASE as PRIOR, CURRENT as PRIOR_CURRENT, SCAN as PRIOR_SCAN, PALETTE
-from check_worksheet_evidence_oriented_D159 import MARGIN, PRIOR_SCAN as UPRIGHT, oriented_bundle
+from check_worksheet_evidence_oriented_D159 import ANGLES, MARGIN, PRIOR_SCAN as UPRIGHT, oriented_bundle, pdf_crop_box
 from check_worksheet_evidence_scan_D158 import variant_bundle
 from check_worksheet_plan_overlay_D133 import add_text_overlay
 from miniuw_foundation.scheduled_expense_case import sha
@@ -32,9 +32,11 @@ DECODER = {"pillow_version": "13.0.0", "libjpeg_turbo_version": "3.2.0"}
 JPEG_ROLES = {"gc": ("RGB", 97), "base": ("RGB", 97), "construction_base": ("L", 100)}
 
 
-def jpeg_bundle(upright, *, overlay=None, truncated=None, progressive_roles=()):
+def jpeg_bundle(upright, *, overlay=None, truncated=None, progressive_roles=(), oriented=False, rgb_quality=None):
     writer = PdfWriter()
-    writer.add_metadata({"/Title": "Mini-UW D161 synthetic JPEG-compressed financial evidence"})
+    title = ("Mini-UW D163 synthetic oriented progressive financial evidence" if oriented
+             else "Mini-UW D161 synthetic JPEG-compressed financial evidence")
+    writer.add_metadata({"/Title": title})
     originals = PdfReader(BytesIO(upright), strict=True).pages
     flate = PdfReader(BytesIO(oriented_bundle(upright)), strict=True).pages
     for index, role in enumerate(ORDER):
@@ -44,12 +46,20 @@ def jpeg_bundle(upright, *, overlay=None, truncated=None, progressive_roles=()):
         mode, quality = JPEG_ROLES[role]
         _, dimensions, _, pixels = full_page_image(originals[index]).split(b"\n", 3)
         width, height = map(int, dimensions.split())
-        page = writer.add_blank_page(width=width, height=height)
-        left, top, right, bottom = MARGIN
-        page.cropbox = RectangleObject((left, height - bottom, right, height - top))
         if mode == "RGB":
+            if rgb_quality is not None:
+                quality = rgb_quality
             pixels = b"".join(map(PALETTE.__getitem__, pixels))
         source = Image.frombytes(mode, (width, height), pixels)
+        angle = ANGLES[role] if oriented else 0
+        if angle:
+            rotation = {90: Image.Transpose.ROTATE_90, 180: Image.Transpose.ROTATE_180, 270: Image.Transpose.ROTATE_270}
+            source = source.transpose(rotation[angle])
+        width, height = source.size
+        page = writer.add_blank_page(width=width, height=height)
+        if angle:
+            page.rotate(angle)
+        page.cropbox = pdf_crop_box(MARGIN, angle, width, height)
         buffer = BytesIO()
         source.save(buffer, "JPEG", quality=quality, subsampling=0, optimize=True,
                     progressive=role in progressive_roles)

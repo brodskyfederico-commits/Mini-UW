@@ -1748,3 +1748,7 @@ El piloto conserva la huella de los bytes JPEG y del raster decodificado. B16 re
 ## D162 — JPEG progresivo en el expediente financiero
 
 La cotización y el crédito Base se leen desde JPEG progresivo. El caso completo reproduce D161 y B16 coteja los archivos guardados. Cuatro variantes quedan PENDING por dato ausente, discrepancia, archivo truncado o formato ajeno al perfil anterior. [Resultados y reproducción](docs/workbook-evidence-progressive-D162.md).
+
+## D163 — JPEG progresivos girados y recortados
+
+B08 coteja la cotización y dos documentos bancarios Base desde imágenes progresivas giradas a 90°, 180° y 270°. El expediente completo y el texto coincidente reproducen D162. Cinco variantes quedan PENDING por recorte, discrepancia o baja confianza OCR. B16 reproduce la salida. [Resultados y reproducción](docs/workbook-evidence-progressive-crop-D163.md).
