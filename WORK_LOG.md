@@ -1856,3 +1856,7 @@ Se registra el alcance congelado del Mini-UW y la matriz de mínimos del ranking
 ## D190 — Paquete del primer piloto real
 
 Se prepara el pedido para Lorena, el inventario de criterios y responsables PENDING y la planilla de cotejo independiente por USD 10. El paquete documenta el corte, fuentes, flujos por fecha, conciliación y revisión final. Se publica con plantillas vacías y referencias sintéticas. [Paquete del piloto](docs/review/piloto-real-D190/README.md).
+
+## D191 · Ensayo sintético del primer piloto D190
+
+Se usó el expediente D181 para probar el pedido, la recepción de los dos Inputs y sus respaldos, la corrida integrada y la auditoría B16. Se completó una copia de la planilla D190 con el cálculo independiente D179 y las veinte filas de criterio. Se verificaron 734 líneas exactas, dos TIR contenidas, 23 movimientos fechados y dos aportes de refi en cero. En la planilla, un dato faltante deja la diferencia vacía y una diferencia abierta deja PENDING. La revisión anterior queda histórica. El informe de una página muestra por USD 10 los cobros Base de USD 18,06 y Downside de USD 6,08, aportes extra de USD 4,87 y USD 8,19 y saldo sin recuperar de USD 0,00 y USD 12,11, respectivamente. El piloto real y el retorno personal siguen PENDING. [Evidencia y reproducción](docs/review/ensayo-D190-D191/README.md).

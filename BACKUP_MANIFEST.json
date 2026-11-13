@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D190 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D191 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/miniuw-integral-usd10.yml",
@@ -28,8 +28,8 @@
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 361384,
-      "sha256": "27af743501e76fa2a5916b34d97527389bd54c297055f2b7d6d6ffb388dfeef0"
+      "bytes": 362259,
+      "sha256": "a4996c9df702d0d330bde0999df02be1d2c01c7cdda450d04916edf83862051e"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -1435,6 +1435,26 @@
       "path": "docs/review/dots-bots-onepage-validation-ROLES01.json",
       "bytes": 408,
       "sha256": "e2242c1c8ddc3fdda30e2e0876c5538fb5fec7a43434250a6047cbb05c3eeac4"
+    },
+    {
+      "path": "docs/review/ensayo-D190-D191/MiniUW_Cotejo_Sintetico_D191.xlsx",
+      "bytes": 15413,
+      "sha256": "c201cf9f156d7950a49be08385c0085074d7a0780c6a11bfa93e1b06c96c8066"
+    },
+    {
+      "path": "docs/review/ensayo-D190-D191/MiniUW_Informe_USD10_D191.pdf",
+      "bytes": 5891,
+      "sha256": "43d6c8bb14523963b48e3b0a4ac830855f16c443288175cb42cde1858ec5f8f5"
+    },
+    {
+      "path": "docs/review/ensayo-D190-D191/MiniUW_Verificacion_D191.json",
+      "bytes": 4072,
+      "sha256": "8e9c2a2eacbadf6eabf194688c63da126409540651a11b9a32fb5ef2f330b798"
+    },
+    {
+      "path": "docs/review/ensayo-D190-D191/README.md",
+      "bytes": 3306,
+      "sha256": "5ce99f1ce3e69c0c045bf26ed76f4484f4a2163eff579b865321939a4f4b92de"
     },
     {
       "path": "docs/review/information-flow-summary-FLOW01-validation.json",
@@ -7735,6 +7755,11 @@
       "path": "tools/check_phased_settled_T110.py",
       "bytes": 8156,
       "sha256": "6e635103a011cdf8081084792687cdc712e041b01b095c91ad3deda92861360b"
+    },
+    {
+      "path": "tools/check_pilot_intake_D191.py",
+      "bytes": 22087,
+      "sha256": "6ac7f653ec014365231bbd0f49d89cddbf50cd2f7a42cbec9fa7e994e217f8af"
     },
     {
       "path": "tools/check_plan_discount_D112.py",
