@@ -203,7 +203,8 @@ def run_rental_scenario(name, raw, review, rent_inputs, *, include_commercial=Fa
                         include_construction_financing=False, document_review=None, include_operating_costs=False,
                         include_replacement_reserve=False, include_property_tax=False, include_exit_pricing=False,
                         include_permanent_loan=False, include_refinance_costs=False, include_growth=False,
-                        require_market_evidence=False, require_formula_review=False, supplemental=None):
+                        require_market_evidence=False, require_formula_review=False, supplemental=None,
+                        require_debt_yield=False):
     pending = dict(state="PENDING", cash_per_usd_10=None, capacity=None, noi_by_period={})
     if not review["calculation_inputs_ready"]:
         return pending | dict(blockers=["required_rental_cells_unconfirmed"])
@@ -275,7 +276,7 @@ def run_rental_scenario(name, raw, review, rent_inputs, *, include_commercial=Fa
         if include_growth:
             from worksheet_growth_D154 import declared_growth, project_window
             growth_terms = declared_growth(rent_inputs.get("growth"), name, review, calendar)
-        permanent_terms = None
+        permanent_terms = debt_yield_terms = quote = None
         if include_permanent_loan:
             from worksheet_permanent_loan_D152 import declared_loan_terms
             permanent_terms = declared_loan_terms(rent_inputs.get("permanent_loan"), name, review, calendar)
@@ -294,6 +295,9 @@ def run_rental_scenario(name, raw, review, rent_inputs, *, include_commercial=Fa
                                           project_calendar=calendar, bank_document_binding=bank) | market
                 permanent_terms["bank_document_binding"] = bank
             calendar["payment_dates"] = permanent_terms["payment_dates"]
+        if require_debt_yield:
+            from worksheet_debt_yield_D178 import bank_debt_yield_terms
+            debt_yield_terms = bank_debt_yield_terms(rent_inputs.get("bank_debt_yield"), name, quote)
         commercial = None
         if include_commercial:
             from worksheet_commercial_inputs_D141 import commercial_terms
@@ -354,7 +358,7 @@ def run_rental_scenario(name, raw, review, rent_inputs, *, include_commercial=Fa
                                lambda period: operating if period == OPERATING_PERIOD else noi_for(period),
                                construction_draws=draws, calendar=calendar, construction_financing=funding,
                                replacement_reserve=reserve, valuation_terms=valuation_terms, permanent_terms=permanent_terms,
-                               refinance_costs=refinance_costs, buyer_tax=buyer_tax)
+                               refinance_costs=refinance_costs, buyer_tax=buyer_tax, debt_yield_terms=debt_yield_terms)
     except (ValueError, TypeError, KeyError) as error:
         evidence = dict(document_financial_binding=binding) if binding is not None else {}
         return pending | dict(blockers=[str(error)], cell_sources=cells) | evidence | market
@@ -414,6 +418,14 @@ def render(views, result, *, include_commercial=False, include_utilities=False, 
         cash = view["cash_per_usd_10"]
         lines.append((f"{name} | Cobro total por USD 10 iniciales: "
                       + ("PENDING" if cash is None else f"USD {money(cash['total_distributions'])}"), True))
+        capacity = view["capacity"]
+        if capacity is not None and "debt_yield" in capacity:
+            dy = capacity["debt_yield"]
+            pct = money(rational(100 * _fraction(dy["achieved"], 1300)))
+            ratio = f"{pct} %" if dy["applicability"] == "applicable" else f"{pct} % (sin mínimo aplicable)"
+            ceiling = capacity["maximum_principal_capacity"]
+            label = "PENDING" if ceiling is None else f"USD {money(ceiling)} ({'/'.join(capacity['binding_limit_ids'])})"
+            lines.append((f"Debt yield {ratio} | Capacidad bancaria {label}", False))
         if include_calendar and alternatives is None and "project_calendar" in view:
             calendar = view["project_calendar"]
             lines.append((f"Fin de obra {calendar['construction_finish']} | TCO {calendar['tco_date']} | "
@@ -575,7 +587,8 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
                       include_replacement_reserve=False, include_property_tax=False, include_exit_pricing=False,
                       include_permanent_loan=False, include_refinance_costs=False, include_growth=False,
                       include_alternatives=False, evidence_milestone=None, require_market_evidence=False,
-                      require_formula_review=False, require_supplemental_scope=False, require_template_identity=False):
+                      require_formula_review=False, require_supplemental_scope=False, require_template_identity=False,
+                      require_debt_yield=False):
     hashes = object_or_empty(case.get("workbook_sha256"))
     review = review_native_mapping(case.get("native_mapping"), workbooks, hashes, calculation_fields=FIELDS,
                                    require_template_identity=require_template_identity)
@@ -599,7 +612,8 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
                                       include_property_tax=include_property_tax, include_exit_pricing=include_exit_pricing,
                                       include_permanent_loan=include_permanent_loan, include_refinance_costs=include_refinance_costs,
                                       include_growth=include_growth, require_market_evidence=require_market_evidence,
-                                      require_formula_review=require_formula_review, supplemental=supplemental)
+                                      require_formula_review=require_formula_review, supplemental=supplemental,
+                                      require_debt_yield=require_debt_yield)
 
     views = {name: run_scenario(name, review["scenarios"][name]) for name in SCENARIOS}
     workbook_blockers = review["blockers"]
@@ -642,7 +656,8 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
                  include_property_tax=include_property_tax, include_exit_pricing=include_exit_pricing,
                  include_permanent_loan=include_permanent_loan, include_refinance_costs=include_refinance_costs,
                  include_growth=include_growth, alternatives=alternatives,
-                 evidence_milestone="D176" if require_template_identity else "D174" if require_supplemental_scope
+                 evidence_milestone="D178" if require_debt_yield else "D176" if require_template_identity
+                 else "D174" if require_supplemental_scope
                  else "D173" if require_formula_review else "D166" if require_market_evidence else evidence_milestone,
                  formula_review=require_formula_review)
     profile = "synthetic_native_residential_and_commercial_rent" if include_commercial else PROFILE
@@ -723,6 +738,10 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
     if require_template_identity:
         profile = "synthetic_documented_versioned_input_template"
         pipeline["pipeline"]["version_tests"]["suite"] = "check_worksheet_template_version_D176.py"
+    if require_debt_yield:
+        from worksheet_debt_yield_D178 import PROFILE as DEBT_YIELD_PROFILE
+        profile = DEBT_YIELD_PROFILE
+        pipeline["pipeline"]["version_tests"]["suite"] = "check_worksheet_debt_yield_D178.py"
     return dict(profile=profile, state=state,
                 case_sha256=case_sha256, decision="PENDING", simulation_result=simulation,
                 real_decisions_enabled=False, deployment_enabled=False, personal_investor_return=None,

@@ -92,7 +92,7 @@ def refi_closing(context, loan, principal, *, refi_date=REFI_DATE, construction_
 
 
 def capacity_check(context, valuation, bank, loan, refi_raw, refi, principal, *, refi_date=REFI_DATE, valuation_terms=None,
-                   permanent_terms=None):
+                   permanent_terms=None, debt_yield=None):
     inputs = RefinanceInputs(valuation_noi_raw=valuation.compiled_raw, valuation_noi_run=valuation.noi_run,
                              bank_noi_raw=bank.compiled_raw, bank_noi_run=bank.noi_run,
                              new_loan=loan, closing_raw=refi_raw, closing_run=refi)
@@ -115,6 +115,12 @@ def capacity_check(context, valuation, bank, loan, refi_raw, refi, principal, *,
             spec["parameters"][key].update(value=permanent_terms[key], source_ref=f"{terms_ref}#/{key}")
         spec.update(other_limits_declared_complete=permanent_terms["other_limits_declared_complete"],
                     other_limits_basis_ref=permanent_terms["other_limits_ref"])
+    if debt_yield is not None and debt_yield["principal_limit"] is not None:
+        from worksheet_debt_yield_D178 import LIMIT_ID
+        spec["other_limits"].append(dict(
+            limit_id=LIMIT_ID, amount=dict(value=debt_yield["principal_limit"], currency="USD", as_of_date=refi_date,
+                                          basis="additional_bank_principal_limit",
+                                          source_ref=f"sha256:{debt_yield['addendum_sha256']}#/minimum")))
     spec["selected_principal"].update(value=rational(principal), as_of_date=refi_date,
                                       source_ref=f"{SOURCE}/requested-gross-principal")
     return size_refinance(inputs, encode(spec))
@@ -169,7 +175,7 @@ def run_scenario(comparison, revision, scenario, principal=REQUEST):
 
 def financed_cash(context, cost, construction_source_ref, principal, exit_cap, noi_for, *, construction_draws=None,
                   calendar=None, construction_financing=None, replacement_reserve=None, valuation_terms=None, permanent_terms=None,
-                  refinance_costs=None, buyer_tax=None):
+                  refinance_costs=None, buyer_tax=None, debt_yield_terms=None):
     result = dict(state="PENDING", capacity=None, cash_per_usd_10=None)
     refi_date = REFI_DATE if calendar is None else calendar["refinance_date"]
     sale_date = SALE_DATE if calendar is None else calendar["sale_date"]
@@ -207,13 +213,20 @@ def financed_cash(context, cost, construction_source_ref, principal, exit_cap, n
                 closing_restricted_cash=closing["expected_closing_restricted_cash"],
                 projected_cash_in_required=closing["projected_equity_contribution_required"],
                 closing_cash_residual=closing["total_cash_conservation_residual"])
+    debt_yield = None
+    if debt_yield_terms is not None:
+        from worksheet_debt_yield_D178 import debt_yield_capacity
+        debt_yield = debt_yield_capacity(debt_yield_terms, bank.noi_run.payload["noi"], principal)
     cap_run = capacity_check(context, valuation, bank, loan, refi_raw, refi, principal, refi_date=refi_date,
-                             valuation_terms=valuation_terms, permanent_terms=permanent_terms)
+                             valuation_terms=valuation_terms, permanent_terms=permanent_terms,
+                             debt_yield=debt_yield)
     cap = cap_run.payload
     result["capacity"] = {key: cap[key] for key in (
         "valuation_noi", "bank_noi", "selected_principal", "maximum_principal_capacity", "binding_limit_ids",
         "capacity_limits", "capacity_state", "state", "as_of_date", "input_bindings",
     )} | {"capacity_run_sha256": cap_run.sha256}
+    if debt_yield is not None:
+        result["capacity"]["debt_yield"] = debt_yield
     if valuation_terms is not None:
         result["valuation_and_sale"] = valuation_terms | dict(refinance_date=refi_date, refinance_noi=cap["valuation_noi"],
                                                                refinance_value=cap["computed_property_value"])

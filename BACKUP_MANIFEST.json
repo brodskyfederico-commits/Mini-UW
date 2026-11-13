@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D177 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D178 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/miniuw-integral-usd10.yml",
@@ -8,8 +8,8 @@
     },
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 26738,
-      "sha256": "a98145e53660a7e6fca535d6eee1d900705c18e569e981527f4568b5e3c57749"
+      "bytes": 26913,
+      "sha256": "a1461050978023692ed9245cda6b41d5bdcc69f5797c0bea180f274a98f601e4"
     },
     {
       "path": ".gitignore",
@@ -23,13 +23,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 89636,
-      "sha256": "65004b8c415e25495ce13e134b91f3a806eb83154f3c14f91e4859f83e8ab19c"
+      "bytes": 89749,
+      "sha256": "9cc9dbbfdc4d9c4c4cc90deb2644152b51608f067f2e971633d3235ba8d13583"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 355206,
-      "sha256": "202f31582ea8cbe7244a15a48286e730e29b580c38d07f571402a1c7bbf1dc1c"
+      "bytes": 355595,
+      "sha256": "0b54e79dc35b54beedf24dcc28b8c7f6f160317d2818307b8c11bebf50a643ec"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -3100,6 +3100,11 @@
       "path": "docs/workbook-current-chain-D128.md",
       "bytes": 2523,
       "sha256": "8774019f783540ce37ed493176b2286b9ebeaa4ff51ce07d406780da7873c476"
+    },
+    {
+      "path": "docs/workbook-debt-yield-D178.md",
+      "bytes": 2858,
+      "sha256": "183c9aca914ffa4f564fa86ea47816e88edbcf9b89850d1ea342cf210658cf3e"
     },
     {
       "path": "docs/workbook-development-inputs-D143.md",
@@ -6377,6 +6382,16 @@
       "sha256": "18a3f9beee401aee9b7df33641c26bb4d27448ec514546cbbe1ce3dfa02090ba"
     },
     {
+      "path": "templates/synthetic-workbook-current-revision-D178.json",
+      "bytes": 714,
+      "sha256": "d063bb9c29e902ba514144f5ad50c7462ac219598cc24416c925ddf4ee4bcc46"
+    },
+    {
+      "path": "templates/synthetic-workbook-debt-yield-D178.json",
+      "bytes": 29445,
+      "sha256": "899662259e5779d203edd83a5baca60ae23aa53f464a39ef40927bf2865cab67"
+    },
+    {
       "path": "templates/synthetic-workbook-development-inputs-D143.json",
       "bytes": 7061,
       "sha256": "ae482b141f5f8a5c49820c4294c6134cc061e55479631d6b68ed776bd0096a1e"
@@ -7647,6 +7662,11 @@
       "sha256": "c0009bc3ec30a103ff0d08ecd9ff62f2d21d417bdfa09a6110d714655d1f3879"
     },
     {
+      "path": "tools/check_worksheet_debt_yield_D178.py",
+      "bytes": 8985,
+      "sha256": "633b5e1505e93ab88079269e8f0eb13d72a26c0e1515d466d104e3bf0eb63876"
+    },
+    {
       "path": "tools/check_worksheet_development_inputs_D143.py",
       "bytes": 9484,
       "sha256": "fce5f963375f1b2e872647547a819d08535398f9bebfcb3593294245077901f5"
@@ -8348,8 +8368,8 @@
     },
     {
       "path": "tools/miniuw_worksheet_v1.py",
-      "bytes": 30864,
-      "sha256": "962b8b10e14063c8e91986a1db45d92981d8d20bc0c9975be74fd451218938a3"
+      "bytes": 31193,
+      "sha256": "c8574b8d6f1d5a0ef72a607fbee33fcf96b2bda030c013102dd97632f9618038"
     },
     {
       "path": "tools/onepage_pending_cases_D79.py",
@@ -8383,8 +8403,8 @@
     },
     {
       "path": "tools/plan_refinance_D108.py",
-      "bytes": 27491,
-      "sha256": "bf2ccb2dd0839828f33cffcb3b3481c5973e4201870fb6fb5818dc48e66c5319"
+      "bytes": 28374,
+      "sha256": "8f3ef008404a33829522f39150fff82b3efc173163e70ebeb58354c0ce87f502"
     },
     {
       "path": "tools/plan_return_D107.py",
@@ -8480,6 +8500,11 @@
       "path": "tools/worksheet_costed_case_D65.py",
       "bytes": 2140,
       "sha256": "ae8273021f01e6c6cf0fa32ad7ac40126099e18f55404a9b7cd9aabdf3af8ee6"
+    },
+    {
+      "path": "tools/worksheet_debt_yield_D178.py",
+      "bytes": 2077,
+      "sha256": "b40ce242d3f8f5a436a09fb304d3b74459d5865bd3eee6fdbe5846312ac6e0eb"
     },
     {
       "path": "tools/worksheet_development_inputs_D143.py",
@@ -8663,8 +8688,8 @@
     },
     {
       "path": "tools/worksheet_rental_inputs_D140.py",
-      "bytes": 52482,
-      "sha256": "d7e608bc4c6ebee67fe3c7e7c41656d942467cfd53dc0f46fecfc8b83233c5f5"
+      "bytes": 53799,
+      "sha256": "fa7c5ccf8350aacfcc69dd4199726940ce798b39411e3ab9b4a423d169dbe338"
     },
     {
       "path": "tools/worksheet_replacement_reserve_D149.py",

@@ -367,5 +367,7 @@ jobs:
         run: OMP_THREAD_LIMIT=1 PYTHONPATH=src:tests python tools/check_worksheet_scope_D174.py
       - name: Verify the declared template and exact 55-field layout
         run: OMP_THREAD_LIMIT=1 PYTHONPATH=src:tests python tools/check_worksheet_template_version_D176.py
+      - name: Verify the debt yield bank limit and scoped cash withdrawal
+        run: OMP_THREAD_LIMIT=1 PYTHONPATH=src:tests python tools/check_worksheet_debt_yield_D178.py
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v

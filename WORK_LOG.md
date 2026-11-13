@@ -1804,3 +1804,7 @@ La revisión del flujo pide IDs de campo y una plantilla versionada. El perfil s
 ## D177 — Batería general tras las revisiones profesionales
 
 La corrida local sobre el árbol D174 completó 1.619 pruebas unitarias. Pasaron 26 suites de referencia, el flujo integral por USD 10, los ensayos de vacíos y ceros, la revisión de fórmulas y el alcance complementario. El Excel cotejó 55 campos originales y ocho complementarios. D176 conserva los mismos archivos del motor base y de la batería unitaria y pasó sus controles propios de plantilla y referencias. [Evidencia reproducible](docs/general-regression-D177.md).
+
+## D178 — Límite bancario por debt yield
+
+La revisión del flujo identifica este límite en p. 3, ítem 5. El perfil v28 coteja el anexo sintético con el term sheet y usa el NOI bancario anual para calcular el máximo adicional. Una condición vinculante puede retirar la caja del escenario y dejar PENDING la simulación. [Alcance y reproducción](docs/workbook-debt-yield-D178.md).
