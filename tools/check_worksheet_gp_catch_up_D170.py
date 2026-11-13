@@ -111,7 +111,7 @@ def verify_controls(terms, prior, verified, results):
     return 5
 
 
-def render(results):
+def render(results, *, formula_review=False):
     lines = [("Por USD 10 iniciales propios de cada rol | LP y GP se normalizan por separado", True),
              ("Capital primero, preferente LP 8 % simple, catch-up GP al 20 % de ganancias, remanente 80/20", False),
              ("Simulación con términos de prueba | Retorno personal real y decisión real PENDING", False)]
@@ -127,11 +127,23 @@ def render(results):
                 lp, gp = (usd(amount(row["allocated"][role]) * 10 / initial[role]) for role in ROLES)
                 lines.append((f"{event['date']} | {KINDS[event['category']]} | LP USD {lp} | GP USD {gp}", False))
         lp, gp = (result["participants"][role]["own_initial_usd_10"] for role in ROLES)
-        lines.append((f"Cobro total LP {money(lp['total_received'])} | GP {money(gp['total_received'])}"
+        if formula_review:
+            invested = {role: amount(row["initial"]) + amount(row["additional"])
+                        for role, row in (("LP", lp), ("GP", gp))}
+            lines.append(("Cobro total / múltiplo sobre todo lo aportado", False))
+            lines.append((f"LP USD {money(lp['total_received'])} ({usd(amount(lp['total_received']) / invested['LP'])}x) | "
+                          f"GP USD {money(gp['total_received'])} ({usd(amount(gp['total_received']) / invested['GP'])}x)", True))
+            lines.append((f"Aporte total LP USD {usd(invested['LP'])} | GP USD {usd(invested['GP'])} | "
+                          f"Sin recuperar LP {money(lp['cash_unrecovered'])} / GP {money(gp['cash_unrecovered'])}", False))
+        else:
+            lines.append((f"Cobro total LP {money(lp['total_received'])} | GP {money(gp['total_received'])}"
                       f" | Sin recuperar LP {money(lp['cash_unrecovered'])} | GP {money(gp['cash_unrecovered'])}", True))
         catch_up = amount(result["reconciliation"]["gp_catch_up_paid"])
         lines.append((f"Catch-up incluido en los cobros del GP: USD {usd(catch_up * 10 / initial['GP'])} por USD 10 propios", False))
-    return render_page("D170 | D169 y D166", lines, 11, "MINI-UW | SI INVIERTO USD 10, ¿CUÁNTO COBRO Y CUÁNDO?",
+    if formula_review:
+        lines.append(("Ejemplo sintético de reparto. La evaluación del proyecto de origen dio FAIL simulado.", False))
+    return render_page("D173 | Ejemplo D170" if formula_review else "D170 | D169 y D166", lines,
+                       10 if formula_review else 11, "MINI-UW | SI INVIERTO USD 10, ¿CUÁNTO COBRO Y CUÁNDO?",
                        "Reparto LP/GP con catch-up | Aportes y cobros por fecha")
 
 

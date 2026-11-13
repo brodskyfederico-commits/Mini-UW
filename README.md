@@ -4,6 +4,8 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D173 conecta el impuesto del comprador con el valor de salida y verifica el CoC sobre capital remanente. [Revisión de fórmulas, resultados y reproducción](docs/workbook-formula-review-D173.md).
+
 - D171 automatiza la verificación de vacíos y ceros explícitos en los 55 campos. [Resultados y reproducción](docs/workbook-blanks-and-zero-D171.md).
 - D170 prueba catch-up GP después del preferente LP. [Resultados y reproducción](docs/workbook-gp-catch-up-D170.md).
 - D169 verifica devolución de capital y retorno preferente LP sobre los flujos de D166. [Resultados y reproducción](docs/workbook-preferred-lp-gp-D169.md).

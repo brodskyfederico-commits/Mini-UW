@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D172 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D173 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/miniuw-integral-usd10.yml",
@@ -8,8 +8,8 @@
     },
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 26222,
-      "sha256": "0b37cedfd3531b1e04c103e7bdd91667cba424e6675330fa5223f1692ed1d80e"
+      "bytes": 26401,
+      "sha256": "57e5db7db728a50925382b5f0c4fba2ab7b7d603d9b05458121d7b77c79c38f3"
     },
     {
       "path": ".gitignore",
@@ -23,13 +23,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 89101,
-      "sha256": "3b0c9cd4c01cb927a59b5585627bff722219bb63754885fe7b13dcca050d954b"
+      "bytes": 89301,
+      "sha256": "0ee93221781e73c103441da238610ca55aaafcd8bc08fd63053ed46a15d56edb"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 353254,
-      "sha256": "f4a47a396f8134e667076f22058e819ef957a2d719cfa13f9de85b0b3435a0ae"
+      "bytes": 353752,
+      "sha256": "f0bbd644404ebbe8f8723761bf5fc01a7604b515c96169e713a3613882dcae70"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -3152,9 +3152,14 @@
       "sha256": "8235ed6cc2191f5fd57014c8d0fab3ee1b7759251bc74b4119ee307ff4a6ac79"
     },
     {
+      "path": "docs/workbook-formula-review-D173.md",
+      "bytes": 5353,
+      "sha256": "3f9da777f2a389429f09f6cc9aa9617587d368053de312074aeedcbd0711d74d"
+    },
+    {
       "path": "docs/workbook-gp-catch-up-D170.md",
-      "bytes": 2722,
-      "sha256": "6702c51448b1a333d4cc22f30b937436f08e33dbbb256e11073575c5efd8942e"
+      "bytes": 3016,
+      "sha256": "24c49c7c8c46bc2b30ee714d934b261975b458cace2396a99794c02ba0893c67"
     },
     {
       "path": "docs/workbook-growth-D154.md",
@@ -3278,8 +3283,8 @@
     },
     {
       "path": "docs/workbook-return-metrics-D167.md",
-      "bytes": 2947,
-      "sha256": "80f59b5c7a4c596f38fd51933aeb7ca906fb547d2cbfebfd7adcc8be4efb542e"
+      "bytes": 3302,
+      "sha256": "81863120441795f581e575846343df8243bceb3f8de468cf6141413d5bd7de7e"
     },
     {
       "path": "docs/workbook-screening-metrics-D121.md",
@@ -6332,6 +6337,11 @@
       "sha256": "15a09b7eeb7870668a3739a6cd537361b846b8e576556b1ddaae03a4f6a4e5d1"
     },
     {
+      "path": "templates/synthetic-workbook-current-revision-D173.json",
+      "bytes": 714,
+      "sha256": "1902a04efe85ee2ed5a958d40bc9770ce8ce3aa7e559a674ed2119e99b2c8ceb"
+    },
+    {
       "path": "templates/synthetic-workbook-development-inputs-D143.json",
       "bytes": 7061,
       "sha256": "ae482b141f5f8a5c49820c4294c6134cc061e55479631d6b68ed776bd0096a1e"
@@ -6390,6 +6400,11 @@
       "path": "templates/synthetic-workbook-exit-pricing-D151.json",
       "bytes": 16918,
       "sha256": "a492e9b35c092f279d13a313a14f36c1a132b438779d5e4c2e8db68e06df8600"
+    },
+    {
+      "path": "templates/synthetic-workbook-formula-review-D173.json",
+      "bytes": 27244,
+      "sha256": "d26b61a2b433c3971bf7a5c22f29e226c5fc8799c4ef8f67ca94024fbd502155"
     },
     {
       "path": "templates/synthetic-workbook-growth-D154.json",
@@ -7657,9 +7672,14 @@
       "sha256": "82b302e246a255871d8eea79dca104a6b0e527c3150a0ca10a7629e829f94a64"
     },
     {
+      "path": "tools/check_worksheet_formula_review_D173.py",
+      "bytes": 11591,
+      "sha256": "a1ad4d69f31c2007ab91fbd14833d04aa41f3a224523907159329c7933971522"
+    },
+    {
       "path": "tools/check_worksheet_gp_catch_up_D170.py",
-      "bytes": 10038,
-      "sha256": "c728563083ea90ee120f1d59c7d310cd5bcc0229595618aa26ac77be01207ac7"
+      "bytes": 11062,
+      "sha256": "8290b78af277ce11d5212971854130d48753b7fd538c3db98993dba7a91535ad"
     },
     {
       "path": "tools/check_worksheet_growth_D154.py",
@@ -8273,8 +8293,8 @@
     },
     {
       "path": "tools/miniuw_worksheet_v1.py",
-      "bytes": 29816,
-      "sha256": "73a1f635378931f9246ff8ad34767c6813d1f503582a4987770015e77b15920e"
+      "bytes": 30123,
+      "sha256": "fac142495885028435190cd474ed3b6b62237b6eb6684d9f041f4c425a748743"
     },
     {
       "path": "tools/onepage_pending_cases_D79.py",
@@ -8308,13 +8328,13 @@
     },
     {
       "path": "tools/plan_refinance_D108.py",
-      "bytes": 27233,
-      "sha256": "8f66723406e0c5d569076f4550609ba548f7c8a82ed90e548e8fbd6dbed2561a"
+      "bytes": 27491,
+      "sha256": "bf2ccb2dd0839828f33cffcb3b3481c5973e4201870fb6fb5818dc48e66c5319"
     },
     {
       "path": "tools/plan_return_D107.py",
-      "bytes": 23869,
-      "sha256": "1bca6db2e9d216d128f47ad9c1096446fec808bdf3c326c165ee2a5297a44ec1"
+      "bytes": 23922,
+      "sha256": "acda5f1b863c9538619b6dbebbbf95b20f099f36523da1239c27fc6347c74f8d"
     },
     {
       "path": "tools/plan_schedule_D105.py",
@@ -8452,6 +8472,11 @@
       "sha256": "a39cabeaa4f9ebbeced3f7e949cc3a440a0dea50f0e4bbab7dd1614ee3b386a0"
     },
     {
+      "path": "tools/worksheet_formula_review_D173.py",
+      "bytes": 3292,
+      "sha256": "55a0fd42875ec8fe2715bfa65c80f96106608efc2ca16c46cd4c15a510393836"
+    },
+    {
       "path": "tools/worksheet_growth_D154.py",
       "bytes": 4486,
       "sha256": "debd49bfd36fb616a580e24f5ae45fb0530920145137aa87658752bd230d4e63"
@@ -8583,8 +8608,8 @@
     },
     {
       "path": "tools/worksheet_rental_inputs_D140.py",
-      "bytes": 47761,
-      "sha256": "6c1735b699d7b142a851e3124fbf4c4b15d137cb07b27023adcacaeee98fbced"
+      "bytes": 49850,
+      "sha256": "9e6d45ba13d2240980ff35d27b805df54f58aad047f6b37da35879bfeeef5130"
     },
     {
       "path": "tools/worksheet_replacement_reserve_D149.py",

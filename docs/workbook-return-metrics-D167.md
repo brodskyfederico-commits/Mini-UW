@@ -31,3 +31,7 @@ El script regenera y audita D166 con el [runtime OCR del piloto](workbook-plan-s
 ```bash
 OMP_THREAD_LIMIT=1 PYTHONPATH=src:tests python3 tools/check_worksheet_return_metrics_D167.py --output /tmp/miniuw-d167
 ```
+
+## Vigencia del indicador
+
+El cociente D167 queda como diagnóstico histórico de cobros operativos registrados sobre aportes brutos. Para la definición de CoC sobre capital que sigue invertido y una ventana de NOI específica, usá el [perfil D173](workbook-formula-review-D173.md). Los porcentajes D167 no se comparan con umbrales del CoC de la casa.

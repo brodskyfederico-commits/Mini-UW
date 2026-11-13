@@ -169,7 +169,7 @@ def run_scenario(comparison, revision, scenario, principal=REQUEST):
 
 def financed_cash(context, cost, construction_source_ref, principal, exit_cap, noi_for, *, construction_draws=None,
                   calendar=None, construction_financing=None, replacement_reserve=None, valuation_terms=None, permanent_terms=None,
-                  refinance_costs=None):
+                  refinance_costs=None, buyer_tax=None):
     result = dict(state="PENDING", capacity=None, cash_per_usd_10=None)
     refi_date = REFI_DATE if calendar is None else calendar["refinance_date"]
     sale_date = SALE_DATE if calendar is None else calendar["sale_date"]
@@ -241,6 +241,8 @@ def financed_cash(context, cost, construction_source_ref, principal, exit_cap, n
     if valuation_terms is not None:
         exit_dates.update(cap_source_ref=f"sha256:{sha(encode(valuation_terms))}#/exit_cap",
                           sale_at_value_ref=valuation_terms["sale_at_value_ref"])
+    if buyer_tax is not None:
+        exit_dates["window_basis_ref"] = f"sha256:{buyer_tax['source_sha256']}/buyer-tax-exact-forward-window"
     exit_run = value_at_exit(forward_noi, context, exit_cap, **exit_dates)
     if exit_run.payload["blockers"]:
         return result | dict(blockers=exit_run.payload["blockers"])
@@ -253,6 +255,8 @@ def financed_cash(context, cost, construction_source_ref, principal, exit_cap, n
         result["valuation_and_sale"].update(sale_date=sale_date, forward_noi=exit_run.payload["forward_noi"],
             forward_window=exit_run.payload["forward_window"], gross_sale_price=exit_run.payload["candidate_value"],
             sale_cost=sale_costs.payload["total_closing_cost"], sale_cost_run_sha256=sale_costs.sha256, sale_cost_run=sale_costs.payload)
+    if buyer_tax is not None:
+        result["valuation_and_sale"]["buyer_property_tax"] = buyer_tax
     permanent_reserve = None
     if refinance_costs is not None:
         from worksheet_refinance_costs_D153 import settle_permanent_reserve

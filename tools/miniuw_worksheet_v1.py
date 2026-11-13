@@ -77,11 +77,12 @@ WORKBOOK_COLOR_EVIDENCE_SCHEMA = "miniuw.synthetic-native-rental-inputs.v21"
 WORKBOOK_JPEG_EVIDENCE_SCHEMA = "miniuw.synthetic-native-rental-inputs.v22"
 WORKBOOK_PROGRESSIVE_JPEG_EVIDENCE_SCHEMA = "miniuw.synthetic-native-rental-inputs.v23"
 WORKBOOK_MARKET_EVIDENCE_SCHEMA = "miniuw.synthetic-native-rental-inputs.v24"
+WORKBOOK_FORMULA_REVIEW_SCHEMA = "miniuw.synthetic-native-rental-inputs.v25"
 EVIDENCE_MILESTONES = {WORKBOOK_EVIDENCE_PDF_SCHEMA: "D156", WORKBOOK_CONSTRUCTION_PDF_SCHEMA: "D157",
                        WORKBOOK_SCANNED_EVIDENCE_SCHEMA: "D158", WORKBOOK_ORIENTED_EVIDENCE_SCHEMA: "D159",
                        WORKBOOK_COLOR_EVIDENCE_SCHEMA: "D160", WORKBOOK_JPEG_EVIDENCE_SCHEMA: "D161",
                        WORKBOOK_PROGRESSIVE_JPEG_EVIDENCE_SCHEMA: "D162",
-                       WORKBOOK_MARKET_EVIDENCE_SCHEMA: "D162"}
+                       WORKBOOK_MARKET_EVIDENCE_SCHEMA: "D162", WORKBOOK_FORMULA_REVIEW_SCHEMA: "D162"}
 WORKBOOK_RENTAL_SCHEMAS = (WORKBOOK_RENTAL_INPUTS_SCHEMA, WORKBOOK_COMMERCIAL_INPUTS_SCHEMA,
                           WORKBOOK_UTILITY_INPUTS_SCHEMA, WORKBOOK_DEVELOPMENT_INPUTS_SCHEMA,
                           WORKBOOK_CONSTRUCTION_BUDGET_SCHEMA, WORKBOOK_PROJECT_CALENDAR_SCHEMA,
@@ -92,7 +93,8 @@ WORKBOOK_RENTAL_SCHEMAS = (WORKBOOK_RENTAL_INPUTS_SCHEMA, WORKBOOK_COMMERCIAL_IN
                           WORKBOOK_EVIDENCE_PDF_SCHEMA, WORKBOOK_CONSTRUCTION_PDF_SCHEMA,
                           WORKBOOK_SCANNED_EVIDENCE_SCHEMA, WORKBOOK_ORIENTED_EVIDENCE_SCHEMA,
                           WORKBOOK_COLOR_EVIDENCE_SCHEMA, WORKBOOK_JPEG_EVIDENCE_SCHEMA,
-                          WORKBOOK_PROGRESSIVE_JPEG_EVIDENCE_SCHEMA, WORKBOOK_MARKET_EVIDENCE_SCHEMA)
+                          WORKBOOK_PROGRESSIVE_JPEG_EVIDENCE_SCHEMA, WORKBOOK_MARKET_EVIDENCE_SCHEMA,
+                          WORKBOOK_FORMULA_REVIEW_SCHEMA)
 WORKBOOK_DOCUMENTED_SCHEMAS = WORKBOOK_RENTAL_SCHEMAS[7:]
 WORKBOOK_PDF_CHAIN_SCHEMAS = (WORKBOOK_PLAN_CHAIN_SCHEMA, WORKBOOK_SCAN_CHAIN_SCHEMA,
                               WORKBOOK_MIXED_CHAIN_SCHEMA, WORKBOOK_OVERLAY_CHAIN_SCHEMA,
@@ -183,7 +185,8 @@ def build_results(raw, *, workbook_raw=None, downside_workbook_raw=None, current
                                  include_growth=schema in WORKBOOK_RENTAL_SCHEMAS[14:],
                                  include_alternatives=schema in WORKBOOK_RENTAL_SCHEMAS[15:],
                                  evidence_milestone=evidence_milestone,
-                                 require_market_evidence=schema == WORKBOOK_MARKET_EVIDENCE_SCHEMA)
+                                 require_market_evidence=schema in (WORKBOOK_MARKET_EVIDENCE_SCHEMA, WORKBOOK_FORMULA_REVIEW_SCHEMA),
+                                 require_formula_review=schema == WORKBOOK_FORMULA_REVIEW_SCHEMA)
     yield_metrics = schema in (WORKBOOK_YIELD_PILOT_SCHEMA, *WORKBOOK_FUNDING_PILOT_SCHEMAS)
     interval_irr = schema == WORKBOOK_IRR_PILOT_SCHEMA or yield_metrics
     extended = schema == WORKBOOK_EXTENDED_PILOT_SCHEMA or interval_irr

@@ -9,6 +9,7 @@ D170 · Simulación de catch-up del GP sobre D169 y los flujos de D166. Cada col
 | Refi · Base 30/09/2028 · Downside 30/03/2029 | 2,85 | 2,85 | 2,45 | 2,45 |
 | Operación · Base 30/12/2028 · Downside 30/06/2029 | 1,43 | 1,43 | 0,55 | 0,55 |
 | Venta · Base 30/12/2028 · Downside 30/06/2029 | 14,82 | 14,82 | 3,81 | 3,81 |
+| Múltiplo sobre todos los aportes | **1,28x** | **1,28x** | **0,37x** | **0,37x** |
 | **Total cobrado** | **19,10** | **19,10** | **6,80** | **6,80** |
 | Sin recuperar al cierre | 0,00 | 0,00 | 11,39 | 11,39 |
 
@@ -29,3 +30,5 @@ OMP_THREAD_LIMIT=1 PYTHONPATH=src:tests python3 tools/check_worksheet_gp_catch_u
 ```
 
 Usá el [runtime OCR del piloto](workbook-plan-scan-D131.md). Agregá `--package` para auditar un D166 guardado.
+
+El expediente sintético D166 que alimenta este ejemplo tuvo un FAIL simulado. La [revisión D173](workbook-formula-review-D173.md) muestra el múltiplo y el total aportado junto al cobro por rol en el PDF.

@@ -103,12 +103,13 @@ def reconcile_year(assembly, context, *, debt_payment=None, debt_source_ref=None
 
 
 def value_at_exit(forward, context, cap, *, sale_date=SALE_DATE, forward_end="2029-06-30",
-                  cap_source_ref=f"{SOURCE}/scenario-cap", sale_at_value_ref=f"{SOURCE}/explicit-sale-at-value"):
+                  cap_source_ref=f"{SOURCE}/scenario-cap", sale_at_value_ref=f"{SOURCE}/explicit-sale-at-value",
+                  window_basis_ref=f"{SOURCE}/same-terms-forward-12-months"):
     spec = dict(schema="miniuw.synthetic-exit-value.v1", context=context, currency="USD",
                 valuation_date=sale_date, noi_source_sha256=sha(forward.compiled_raw),
                 noi_run_sha256=forward.noi_run.sha256, valuation_basis_ref=sale_at_value_ref,
                 forward_window=dict(start=sale_date, end=forward_end, period_ref=FORWARD_PERIOD,
-                                    basis_ref=f"{SOURCE}/same-terms-forward-12-months"),
+                                    basis_ref=window_basis_ref),
                 cap_rate=dict(value=rational(cap), unit="annual_cap_fraction", period_ref=FORWARD_PERIOD,
                               source_ref=cap_source_ref))
     return exit_value.produce_exit_value(forward.compiled_raw, forward.noi_run, encode(spec))

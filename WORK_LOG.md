@@ -1788,3 +1788,7 @@ Se prueban cuatro representaciones de vacío y un cero explícito por campo en a
 ## D172 — Planilla de 55 campos para revisión profesional
 
 La [planilla editable](docs/review/MiniUW_Planilla_55_Campos_Revision_Profesional.xlsx) reúne los 55 campos de Inputs, sus ubicaciones, unidades y referencias de cálculo. Incluye dictamen, correcciones y evidencia por campo. Se cotejó contra el mapeo D139 y la huella del original. La revisión y el retorno real por USD 10 quedan PENDING hasta contar con fuentes y reglas vigentes.
+
+## D173 — Correcciones tras la revisión del catálogo de fórmulas D170
+
+Se incorpora el CoC del tramo sobre capital remanente documentado y el impuesto escolar/no escolar del comprador en el NOI forward de salida. El PDF del ejemplo D170 incluye aportes totales, múltiplos y FAIL simulado del expediente de origen. Se cotejan los flujos por USD 10 y se prueban faltantes, ceros y revisión desactualizada. [Hallazgos, fórmulas, evidencia y pendientes](docs/workbook-formula-review-D173.md).
