@@ -4,6 +4,8 @@ Definicion funcional para integracion sintetica local. Ningun agente externo est
 
 Fuentes preservadas: Feedback_Dots_Mini_UW, pagina fisica 1; Framework Roadmap 3.1, pagina fisica 4. La asignacion funcional es nueva; no adopta recomendaciones historicas de modelos, umbrales o plataformas.
 
+La [guía vigente D165](review/MiniUW_Flujo_Dots_y_Bots_para_Lorena_D165.pdf) muestra B08 en ingreso de evidencia antes de B09, B17 fuera de la corrida y los estados a D164. Las tablas siguientes documentan el contrato base y sus etapas históricas.
+
 | Dot | Entradas | Salidas | Bloqueos | Estado |
 |---|---|---|---|---|
 | D01 Recepcion y coordinacion | Caso/archivos declarados/revision | Inventario de fuentes y plan de ejecucion | Formato/contexto ambiguo; Fuente o revision incompatible | partial_synthetic_runtime |

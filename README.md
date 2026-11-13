@@ -4,6 +4,7 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D165 actualiza el flujo con el carril humano y los estados a D164. [Guía para Lorena](docs/review/MiniUW_Flujo_Dots_y_Bots_para_Lorena_D165.pdf) · [Matriz de cobertura](docs/coverage-matrix.csv).
 - D164 verifica las cinco páginas financieras en JPEG progresivo, con giros, recortes y fuera de orden. [Resultados y reproducción](docs/workbook-evidence-progressive-order-D164.md).
 - D163 combina JPEG progresivo, giros y recortes en cotizaciones y documentos bancarios. [Resultados y reproducción](docs/workbook-evidence-progressive-crop-D163.md).
 - D162 verifica JPEG progresivo y secuencial en el mismo PDF de evidencia. [Resultados y reproducción](docs/workbook-evidence-progressive-D162.md).

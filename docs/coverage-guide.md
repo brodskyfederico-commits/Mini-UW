@@ -107,3 +107,7 @@ D62–D65 añaden evidencia ejecutable en INPUT_C67, INPUT_C68, M7-05 y M7-06. Q
 D70 enlaza METRIC-YOC y METRIC-SPREAD con el cálculo sintético por escenario. Para METRIC-EQ_TDC, D71 reconcilia desembolsos y aportes al corte con el costo total D70. Base da 40 % y Downside 5/11. Los compromisos de deuda sin desembolso quedan fuera del numerador y del cuadre de fondos aplicados. Q08 sigue abierta para la definición real. [Control D71](../tools/check_equity_tdc_D71.py).
 
 D72 vincula M2-08 con la ocupación económica sintética de equilibrio bajo un perfil afín explícito. Prueba el límite contra el motor de NOI en ambos escenarios, una ocupación inviable y bloqueos por deuda ausente o de otro período. La decisión sobre la definición real sigue abierta. [Control D72](../tools/check_breakeven_occupancy_D72.py).
+
+## Revisión del flujo D165
+
+La [guía actualizada](review/MiniUW_Flujo_Dots_y_Bots_para_Lorena_D165.pdf) documenta los estados de los 17 bots y nueve módulos a D164, el carril humano y el ejemplo fechado por USD 10. Las 398 filas conservan sus fuentes originales y estados de cierre financiero. Las filas BOT-01 a BOT-17, M9-02, M9-05, M9-07 a M9-10, M7-04, M7-09, M7-11, M7-12 y METRIC-ASKING incorporan definición vigente, evidencia y pendientes. VS y PA describen el alcance sintético. Ninguna fila acredita cierre financiero extremo a extremo.

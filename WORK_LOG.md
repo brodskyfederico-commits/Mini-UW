@@ -1756,3 +1756,7 @@ B08 coteja la cotización y dos documentos bancarios Base desde imágenes progre
 ## D164 — Expediente financiero progresivo fuera de orden
 
 B03 y B08 ubican y leen cinco páginas JPEG progresivas giradas y recortadas, incluida la deuda Downside. B16 reproduce los aportes y cobros por USD 10. Cinco variantes quedan PENDING por faltante, recorte, discrepancia o duplicado. [Resultados y reproducción](docs/workbook-evidence-progressive-order-D164.md).
+
+## D165 — Guía para Lorena y matriz de cobertura
+
+El primer bloque autorizado incorpora el carril humano y los responsables por función, documenta B08 antes de B09, saca B17 de la corrida por proyecto y muestra estados a D164 por bot, Dot y módulo. Se cotejan los aportes y cobros por USD 10, la ganancia o déficit, el EM y el saldo sin recuperar. La TIR del expediente y el retorno personal quedan PENDING. La matriz conserva 398 filas y sus estados de cierre financiero. La revisión del experto se cita por página y huella. [Guía](docs/review/MiniUW_Flujo_Dots_y_Bots_para_Lorena_D165.pdf) · [Matriz](docs/coverage-matrix.csv).
