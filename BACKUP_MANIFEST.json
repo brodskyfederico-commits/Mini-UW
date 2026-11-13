@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D170 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D171 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/miniuw-integral-usd10.yml",
@@ -8,8 +8,8 @@
     },
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 26044,
-      "sha256": "a03fd98f82ed6b5e5f12b66870d8e8e38b5cf7a6cfd8f55b06487234ed4a6233"
+      "bytes": 26222,
+      "sha256": "0b37cedfd3531b1e04c103e7bdd91667cba424e6675330fa5223f1692ed1d80e"
     },
     {
       "path": ".gitignore",
@@ -23,13 +23,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 88948,
-      "sha256": "b942d7d9335b53071e1b830714840696d8cb54e7787d741d1bb7ab61e12af95a"
+      "bytes": 89101,
+      "sha256": "3b0c9cd4c01cb927a59b5585627bff722219bb63754885fe7b13dcca050d954b"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 352423,
-      "sha256": "9140b94a7a58c26730213d7da8542c61b8ca9e34aec00ad961437c4a422dc50a"
+      "bytes": 352805,
+      "sha256": "2c102ac7f783e7693b5356c87866f50281ac7ac63258da8a17b5b51b3a4f3f98"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -3045,6 +3045,11 @@
       "path": "docs/workbook-alternatives-D155.md",
       "bytes": 4198,
       "sha256": "5b5cc6bccddf4a2a6fd468520fcfc9cf8db51611fe94671387ac2f2826110dd0"
+    },
+    {
+      "path": "docs/workbook-blanks-and-zero-D171.md",
+      "bytes": 2560,
+      "sha256": "b73cf431738f4a111bf42f97d8015bf0a057bec5516a98a8a8981935c65e1b4c"
     },
     {
       "path": "docs/workbook-commercial-inputs-D141.md",
@@ -7530,6 +7535,11 @@
       "path": "tools/check_worksheet_alternatives_D155.py",
       "bytes": 11565,
       "sha256": "d4ae23cc0220a0b38159060fc8533379fc7dba7380cf2764cf08ce96f42b633b"
+    },
+    {
+      "path": "tools/check_worksheet_blanks_and_zero_D171.py",
+      "bytes": 9218,
+      "sha256": "c0b4ac28fa2e945935603e1fad1e7ef8b94d5fb8c7960e659bce2510c425cf7e"
     },
     {
       "path": "tools/check_worksheet_capacity_case_D118.py",

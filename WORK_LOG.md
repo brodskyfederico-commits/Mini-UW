@@ -1780,3 +1780,7 @@ La ficha sintética declara capital primero, preferente LP simple anual del 8 % 
 ## D170 — Catch-up GP después del preferente LP
 
 Se coteja el catch-up completo en Base, cero en Downside y un caso parcial sin caja residual. Se concilia cada movimiento con D166 y se preservan las prioridades de D169. Cinco pruebas dejan PENDING ante términos ausentes o incompatibles. [Resultados](docs/workbook-gp-catch-up-D170.md).
+
+## D171 — Regresión de vacíos y ceros en 55 campos
+
+Se prueban cuatro representaciones de vacío y un cero explícito por campo en ambos escenarios. D166 coteja ingresos, seguro, DSCR, una fórmula con caché cero y costo de venta. El lector preserva valores nulos y distingue la no aplicabilidad declarada. [Resultados y reproducción](docs/workbook-blanks-and-zero-D171.md).

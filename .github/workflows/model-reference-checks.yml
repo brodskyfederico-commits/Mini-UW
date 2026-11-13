@@ -359,5 +359,7 @@ jobs:
         run: OMP_THREAD_LIMIT=1 PYTHONPATH=src:tests python tools/check_worksheet_preferred_lp_gp_D169.py
       - name: Verify synthetic GP catch-up after LP preference
         run: OMP_THREAD_LIMIT=1 PYTHONPATH=src:tests python tools/check_worksheet_gp_catch_up_D170.py
+      - name: Verify blank and explicit zero handling for all 55 fields
+        run: OMP_THREAD_LIMIT=1 PYTHONPATH=src:tests python tools/check_worksheet_blanks_and_zero_D171.py
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v
