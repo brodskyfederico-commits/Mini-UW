@@ -1836,3 +1836,7 @@ Se reproduce el piloto D181 desde sus fuentes y se ensaya la propuesta de NOI de
 ## D185 — PRELIMINAR para LOI en el piloto sintético
 
 El comando común produce y audita una página por USD 10 a partir de estimaciones con fuente, fecha y responsable. El ensayo ordena sólo casos con Base y Downside completos y una ventana, corte y ruta de financiación comunes. Una ausencia o incompatibilidad excluye al caso del ranking. La priorización sintética por múltiplo de equity en Downside conserva el dictamen formal PENDING. [Alcance, validación y pendientes del piloto](docs/workbook-preliminary-loi-D185.md).
+
+## D186 — PRELIMINAR calcula caja desde Inputs Base y Downside
+
+El comando común vincula dos copias sintéticas del formato original Inputs y calcula adquisición, obra, absorción, operación, reservas y venta por USD 10. El perfil es residencial sin deuda. Los datos mínimos vacíos, una fórmula con caché o una huella incompatible dejan fuera el caso y conservan PENDING. Una corrección a cero explícito recalcula el escenario y permite volver al ranking sintético. [Celdas, alcance y reproducción](docs/workbook-preliminary-calculation-D186.md).

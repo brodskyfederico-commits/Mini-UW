@@ -377,5 +377,7 @@ jobs:
         run: OMP_THREAD_LIMIT=1 PYTHONPATH=src:tests python tools/check_worksheet_performance_policy_D184.py
       - name: Verify synthetic LOI prioritization and PENDING decision
         run: PYTHONPATH=src:tests python tools/check_worksheet_preliminary_D185.py
+      - name: Verify native Inputs calculations for PRELIMINAR LOI
+        run: PYTHONPATH=src:tests python tools/check_worksheet_preliminary_workbook_D186.py
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v

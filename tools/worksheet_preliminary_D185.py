@@ -130,6 +130,10 @@ def build_preliminary(case, raw):
         views[deal["id"]] = (dict(state="PENDING", reason="fecha, horizonte o financiación incompatible", scenarios={})
                              if not comparable else dict(scenarios={n: estimate(case, deal, n, cutoff) for n in SCENARIOS}))
     require(isinstance(case["focus"], str) and case["focus"] in views, "Explicit focus deal required")
+    return finish_preliminary(case, raw, views)
+
+
+def finish_preliminary(case, raw, views, *, profile=PROFILE):
     comparable = []
     for deal_id, view in views.items():
         if all(view["scenarios"].get(n, {}).get("cash") is not None for n in SCENARIOS):
@@ -146,7 +150,7 @@ def build_preliminary(case, raw):
         ranking.append(dict(deal_id=deal_id, position=rank, downside_equity_multiple=rational(score)))
         last = score
     pdf = report(case, views, ranking)
-    return dict(profile=PROFILE, state=views[case["focus"]]["state"], decision="PENDING", simulation_result="PENDING",
+    return dict(profile=profile, state=views[case["focus"]]["state"], decision="PENDING", simulation_result="PENDING",
                 real_decisions_enabled=False, deployment_enabled=False, full_uw_eligible=False, personal_investor_return=None,
                 case_sha256=sha(raw), pdf_sha256=sha(pdf), page_count=1, ranking_policy=POLICY, ranking=ranking, deals=views), pdf
 
