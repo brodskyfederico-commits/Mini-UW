@@ -1784,3 +1784,7 @@ Se coteja el catch-up completo en Base, cero en Downside y un caso parcial sin c
 ## D171 — Regresión de vacíos y ceros en 55 campos
 
 Se prueban cuatro representaciones de vacío y un cero explícito por campo en ambos escenarios. D166 coteja ingresos, seguro, DSCR, una fórmula con caché cero y costo de venta. El lector preserva valores nulos y distingue la no aplicabilidad declarada. [Resultados y reproducción](docs/workbook-blanks-and-zero-D171.md).
+
+## D172 — Planilla de 55 campos para revisión profesional
+
+La [planilla editable](docs/review/MiniUW_Planilla_55_Campos_Revision_Profesional.xlsx) reúne los 55 campos de Inputs, sus ubicaciones, unidades y referencias de cálculo. Incluye dictamen, correcciones y evidencia por campo. Se cotejó contra el mapeo D139 y la huella del original. La revisión y el retorno real por USD 10 quedan PENDING hasta contar con fuentes y reglas vigentes.
