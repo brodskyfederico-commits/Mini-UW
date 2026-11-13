@@ -4,6 +4,8 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D179 coteja los flujos de Base y Downside con un cálculo independiente. [Cotejo y CSV](docs/workbook-independent-reconciliation-D179.md).
+
 - D178 integra el límite bancario por debt yield. [Alcance y reproducción](docs/workbook-debt-yield-D178.md).
 
 - D176 vincula la revisión de cada escenario con la identidad de la plantilla. [Cotejo del informe de flujo y reproducción](docs/workbook-template-version-D176.md).

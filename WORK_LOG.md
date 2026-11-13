@@ -1808,3 +1808,7 @@ La corrida local sobre el árbol D174 completó 1.619 pruebas unitarias. Pasaron
 ## D178 — Límite bancario por debt yield
 
 La revisión del flujo identifica este límite en p. 3, ítem 5. El perfil v28 coteja el anexo sintético con el term sheet y usa el NOI bancario anual para calcular el máximo adicional. Una condición vinculante puede retirar la caja del escenario y dejar PENDING la simulación. [Alcance y reproducción](docs/workbook-debt-yield-D178.md).
+
+## D179 — Cotejo independiente de Base y Downside
+
+Se reconstruyen ambos escenarios principales de D178 a partir del XLSX y el expediente sintético, con aritmética racional ajena al motor. El cotejo registra NOI, deuda, venta neta, aportes y cobros fechados por USD 10, múltiplo y TIR. [Método y CSV](docs/workbook-independent-reconciliation-D179.md).

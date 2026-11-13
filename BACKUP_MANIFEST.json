@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D178 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D179 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/miniuw-integral-usd10.yml",
@@ -8,8 +8,8 @@
     },
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 26913,
-      "sha256": "a1461050978023692ed9245cda6b41d5bdcc69f5797c0bea180f274a98f601e4"
+      "bytes": 27103,
+      "sha256": "8596fc0ae8ab8e58b5a24d99d458e4505a13071d1c8d8ee76c80f36e7b14c5b0"
     },
     {
       "path": ".gitignore",
@@ -23,13 +23,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 89749,
-      "sha256": "9cc9dbbfdc4d9c4c4cc90deb2644152b51608f067f2e971633d3235ba8d13583"
+      "bytes": 89891,
+      "sha256": "235b27b8f36bb3de2cc6fc7a5fdc5c8900105147b044acd8c251fc6854cd9b46"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 355595,
-      "sha256": "0b54e79dc35b54beedf24dcc28b8c7f6f160317d2818307b8c11bebf50a643ec"
+      "bytes": 355954,
+      "sha256": "121f41e489988eaf3e08f299822a4e16aabe5c94b47a96747df34996dea65c16"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -970,6 +970,16 @@
       "path": "docs/review/Intereses_Obra_y_Caja_T68_T71.md",
       "bytes": 2776,
       "sha256": "914abdc75e94dfd058351e062e4e7ed00dfc3a024b43fd09446a546f92f46923"
+    },
+    {
+      "path": "docs/review/MiniUW_Cotejo_Independiente_D179.csv",
+      "bytes": 192983,
+      "sha256": "4d91b73c40aa5148791ab32f4a74d7682ce0aefdee73e727d7439a92d6f30601"
+    },
+    {
+      "path": "docs/review/MiniUW_Cotejo_Independiente_D179.json",
+      "bytes": 922,
+      "sha256": "045dee1449b7ce2415ab95db6cba895dec8dd4430019019c6b5830987212809c"
     },
     {
       "path": "docs/review/MiniUW_D100_Venta_300_Demora_4_6_Meses_USD10.pdf",
@@ -3185,6 +3195,11 @@
       "path": "docs/workbook-growth-D154.md",
       "bytes": 4819,
       "sha256": "7f20ac72d6f4181426e70fa02f8178676db45d693251f4d4b73f8cae5575a324"
+    },
+    {
+      "path": "docs/workbook-independent-reconciliation-D179.md",
+      "bytes": 3997,
+      "sha256": "9eb5e39776d3649bb5d0ea46e12d22574c0b17b4573c6764a200fd973f75a3d9"
     },
     {
       "path": "docs/workbook-irr-D122.md",
@@ -7877,6 +7892,11 @@
       "sha256": "40df7e95708f6241fbc84917aee53a7a22f4fafe9d14b81bdc5e3d766e91b0e3"
     },
     {
+      "path": "tools/check_worksheet_reconciliation_D179.py",
+      "bytes": 15143,
+      "sha256": "9b6683fa69cf080065d7f72a7fba659ce6e86e9f7eb1fc51d728a067136c6a87"
+    },
+    {
       "path": "tools/check_worksheet_recovery_page_D44.py",
       "bytes": 5757,
       "sha256": "3f230b9ad7ab3de022d8550580a879fa859fbbf28d7f5b37572d8c64fe1f57e7"
@@ -8420,6 +8440,11 @@
       "path": "tools/price_linked_sale_cost_D88.py",
       "bytes": 4474,
       "sha256": "ecd723594df9e991bdfef9b8d7ad7e914073fa1e78d84afd4f0d6e5e7e00648c"
+    },
+    {
+      "path": "tools/reconcile_worksheet_D179.py",
+      "bytes": 15045,
+      "sha256": "17b2fa388ea75976adb2e464f6f25da1cfffbf654b4c8db2d5e79b5602fdc613"
     },
     {
       "path": "tools/refinance_cost_recovery_D86.py",

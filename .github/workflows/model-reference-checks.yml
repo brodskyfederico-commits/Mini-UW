@@ -369,5 +369,7 @@ jobs:
         run: OMP_THREAD_LIMIT=1 PYTHONPATH=src:tests python tools/check_worksheet_template_version_D176.py
       - name: Verify the debt yield bank limit and scoped cash withdrawal
         run: OMP_THREAD_LIMIT=1 PYTHONPATH=src:tests python tools/check_worksheet_debt_yield_D178.py
+      - name: Reconcile both D178 scenarios independently
+        run: OMP_THREAD_LIMIT=1 PYTHONPATH=src:tests python tools/check_worksheet_reconciliation_D179.py --csv /tmp/miniuw-d179.csv
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v
