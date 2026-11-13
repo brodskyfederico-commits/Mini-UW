@@ -1824,3 +1824,7 @@ El perfil v29 agrega al mismo expediente de Base y Downside ocho métricas calcu
 ## D182 — Batería unitaria de D181 y comprobación del PDF PENDING
 
 Pasan las 1.619 pruebas unitarias y diez comprobaciones integradas en el VPS. La prueba integrada reabre los PDF y coteja el dictamen PENDING ante datos o criterios faltantes. Un C72 vacío bloquea la caja de Downside y mantiene Base. Si falta sólo un criterio, el PDF conserva los flujos ya calculados y señala la comparación pendiente. [Verificación y reproducción](docs/general-regression-D182.md).
+
+## D183 — Criterios inválidos y duplicados en el dictamen integrado
+
+El perfil v29 conserva la salida de una página y el dictamen PENDING cuando un criterio está mal formado o repetido. El control conserva los flujos ya verificados y mantiene las comparaciones independientes cuando la incidencia se puede atribuir a una fila. La regresión del piloto cubre 14 comprobaciones. [Reproducción](docs/workbook-criterion-validation-D183.md). Se preserva el [expediente de revisión profesional al corte D182](docs/review/MiniUW_Expediente_Revision_Profesional_D182.pdf).

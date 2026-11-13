@@ -3,11 +3,12 @@ from collections import defaultdict
 from datetime import date
 from fractions import Fraction
 
-from check_operating_replay_D20 import require
+from check_reference_package import PackageError
 from check_scenario_pilot_D51 import METRICS as CASH_METRICS
 from check_worksheet_refinance_D45 import render_page
 from check_worksheet_return_metrics_D167 import KINDS, verify_irr
 from miniuw_foundation.debt_service import _fraction as amount, rational
+from miniuw_foundation.drafts import ValidationError
 from miniuw_foundation.irr_interval_output import ENGINE_SHA256, _compare
 from miniuw_foundation.scheduled_expense_case import sha
 from miniuw_foundation.screening import AGGREGATION, SCHEMA, simulate_screening
@@ -145,6 +146,43 @@ def collect_metrics(name, view, supplied):
     return records, evidence, irr
 
 
+def review_rules(raw, scenarios):
+    """Keep the source indices and isolate unusable or ambiguous criteria."""
+    if raw is None:
+        return {}, {}, []
+    if not isinstance(raw, list) or len(raw) > len(scenarios) * len(METRICS):
+        return {}, {}, ["criterion_inventory_invalid"]
+
+    accepted = {}
+    issues = {}
+    for index, entry in enumerate(raw):
+        candidate = object_or_empty(entry)
+        scenario, metric = candidate.get("scenario_id"), candidate.get("metric_id")
+        if not isinstance(scenario, str) or not isinstance(metric, str) or scenario not in scenarios or metric not in METRICS:
+            return {}, {}, [f"criterion_identity_invalid:/rules/{index}"]
+        key = (scenario, metric)
+        if key in accepted or key in issues:
+            accepted.pop(key, None)
+            issues[key] = "duplicate_scenario_metric_criterion"
+            continue
+        try:
+            criterion, = criterion_records([candidate], METRICS)
+            for field in ("definition_ref", "unit", "period_ref"):
+                value = criterion[field]
+                if value is not None and (not isinstance(value, str) or not value.strip()):
+                    raise ValidationError("criterion metadata must be text")
+            for condition in (criterion["pass_condition"], criterion["fail_condition"]):
+                operator = condition["operator"]
+                if operator is not None and not isinstance(operator, str):
+                    raise ValidationError("criterion operator must be text")
+                amount(condition["threshold"])
+        except (PackageError, ValidationError):
+            issues[key] = f"criterion_record_invalid:/rules/{index}"
+        else:
+            accepted[key] = (index, criterion)
+    return accepted, issues, []
+
+
 def screen_integrated(case, views, blockers):
     inputs = object_or_empty(object_or_empty(case.get("rent_inputs")).get("integrated_screening"))
     collections = {name: collect_metrics(name, view, object_or_empty(inputs.get(name)))
@@ -155,41 +193,39 @@ def screen_integrated(case, views, blockers):
 
     revision = case.get("criteria_revision")
     current_rules = synthetic_id(revision) and not any(reason.startswith("B12:") for reason in blockers)
-    raw_rules = case.get("rules") or []
-    rules = criterion_records(raw_rules, METRICS) if current_rules else []
-    rule_indices = {(row["scenario_id"], row["metric_id"]): index for index, row in enumerate(rules)}
-    require(len(rule_indices) == len(rules), "Duplicate scenario and investment metric criterion")
+    rules, rule_issues, inventory_issues = review_rules(case.get("rules") if current_rules else None, views)
+    rule_inventory = [criterion for _, criterion in rules.values()]
     aggregation = case.get("aggregation_rule")
     scalar_result = simulate_screening(encoded(dict(
         schema=SCHEMA, context=dict(deal_id="SYNTHETIC-D181-screening", scenario_id="SYNTHETIC-pair",
                                     run_id="SYNTHETIC-D181", definition_set_revision="SYNTHETIC-D181-integrated"),
         case_id="SYNTHETIC-D181", criteria_revision=revision if synthetic_id(revision) else "SYNTHETIC-unconfirmed",
         criteria_status="synthetic_fixture_only", required_metrics=[m for m in METRICS if m != "IRR"],
-        required_scenarios=list(views), metric_values=values, criteria=[row for row in rules if row["metric_id"] != "IRR"],
+        required_scenarios=list(views), metric_values=values, criteria=[row for row in rule_inventory if row["metric_id"] != "IRR"],
         aggregation_rule=aggregation if aggregation == AGGREGATION else None, hypothetical_band_policy=None,
     ))).payload
     comparisons = scalar_result["comparisons"]
     for name, (_, _, irr) in collections.items():
-        index = rule_indices.get((name, "IRR"))
+        index, criterion = rules.get((name, "IRR"), (None, None))
         source = None if index is None else f"/rules/{index}"
-        criterion = None if index is None else rules[index]
         state, relations, reasons = ("PENDING", {}, ["criterion_record_missing"]) if criterion is None else _compare(
             irr["annual_enclosure"], criterion | dict(source_ref=source), irr.get("period_ref"))
         comparisons.append(dict(metric_id="IRR", scenario_id=name, state=state, blockers=reasons,
                                 criterion_record=criterion, metric_record=records[name, "IRR"] |
                                 dict(annual_enclosure=irr["annual_enclosure"]), condition_relations=relations))
 
-    all_blockers = set(blockers)
+    all_blockers = set(blockers) | set(inventory_issues)
     if aggregation != AGGREGATION:
         all_blockers.add("aggregation_rule_missing_or_unconfirmed")
     review = []
     for row in comparisons:
         key = (row["scenario_id"], row["metric_id"])
         metric = records[key]
-        index = rule_indices.get(key)
+        index, _ = rules.get(key, (None, None))
         row["criterion_locator"] = None if index is None else f"/rules/{index}"
         row["metric_locator"] = metric["source_pointer"]
-        row["blockers"] = sorted(set(row["blockers"] + metric["blockers"]))
+        issues = [rule_issues[key]] if key in rule_issues else []
+        row["blockers"] = sorted(set(row["blockers"] + metric["blockers"] + issues))
         all_blockers.update(f"{key[0]}:{key[1]}:{reason}" for reason in row["blockers"])
         if row["state"] == "BAND":
             all_blockers.add("intermediate_band_pending_professional_review")

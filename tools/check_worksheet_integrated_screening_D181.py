@@ -221,6 +221,35 @@ def verify(output):
             and blocked["scenarios"]["Base"]["cash_per_usd_10"] == result["scenarios"]["Base"]["cash_per_usd_10"]
             and all(comparisons["Downside", metric]["state"] == "PENDING" for metric in METRICS),
             "Blocked capacity leaked a Downside comparison or cash flow")
+    def invalid_threshold(updated, metric):
+        criterion = next(row for row in updated["rules"] if
+                         (row["scenario_id"], row["metric_id"]) == ("Downside", metric))
+        criterion["pass_condition"]["threshold"] = {"numerator": "1", "denominator": "0"}
+
+    for metric, expected in (("YoC", "10,48% [PASS] / 4,99% [PENDING]"),
+                             ("IRR", "-46,16% a -46,15% [PENDING]")):
+        pending, invalid = probe(lambda updated: invalid_threshold(updated, metric), pdf_expected=(expected, "Cobro total 6,08"))
+        affected = invalid["Downside", metric]
+        require(affected["state"] == "PENDING" and affected["criterion_record"] is None
+                and any(reason.startswith("criterion_record_invalid:/rules/") for reason in affected["blockers"])
+                and invalid["Base", metric] == rows["Base", metric]
+                and pending["scenarios"] == result["scenarios"],
+                "An invalid threshold changed verified cash or an independent comparison")
+
+    def duplicate(updated):
+        updated["rules"].append(deepcopy(updated["rules"][0]))
+
+    pending, ambiguous = probe(duplicate, pdf_expected=("1,21× [PENDING] / 0,33× [FAIL]", "Cobro total 18,06"))
+    affected = ambiguous["Base", "equity_multiple"]
+    require(affected["state"] == "PENDING" and "duplicate_scenario_metric_criterion" in affected["blockers"]
+            and affected["criterion_locator"] is None and pending["scenarios"] == result["scenarios"],
+            "A duplicate criterion selected a rule or changed the cash story")
+
+    pending, invalid = probe(lambda updated: updated.update(rules={}), pdf_expected=("1,21× [PENDING] / 0,33× [PENDING]",))
+    require("criterion_inventory_invalid" in pending["screening"]["simulation_blockers"]
+            and all(row["state"] == "PENDING" for row in invalid.values())
+            and pending["scenarios"] == result["scenarios"], "Malformed criterion inventory did not fail closed")
+
     # Remove a required DSCR value in the actual versioned Downside workbook.
     values = {"Downside": workbook_values("Downside", mapping_catalog())}
     missing_cell, modified_books = workbook_variant(case, books, values, "Downside", "C72", {})
@@ -241,7 +270,7 @@ def verify(output):
     pending_pdf(blank_pdf, "Downside | Caja PENDING", "Cobro total 18,06",
                 absent=("Cobro total 6,08", "Aporte extra 8,19"))
     return dict(status="passed", comparison_rows=len(rows), calculated_per_scenario=len(THRESHOLDS),
-                probes=10, missing_workbook_cell="Downside!C72", pending_pdf_verified=True,
+                probes=14, malformed_or_duplicate_criteria_probes=4, missing_workbook_cell="Downside!C72", pending_pdf_verified=True,
                 published_pdf_reproduced=True, decision="PENDING", simulation_result="PENDING", page_count=1,
                 pdf_sha256=result["pdf_sha256"])
 
