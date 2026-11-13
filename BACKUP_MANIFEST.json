@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D201 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D202 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/miniuw-integral-usd10.yml",
@@ -23,13 +23,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 91384,
-      "sha256": "1871d4ed071b8b18841f74dd2b382ca9d0d9cff7e500efb4f7fd50fb46ad0c38"
+      "bytes": 91542,
+      "sha256": "c0bf69e6b4d9d7d40dfb8945a66f363a6e5efab0f5e26b37d17358970376aa03"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 367102,
-      "sha256": "d0ab6de94be757a95088a295b54ad4958e9fa25fb453a1b5135846b002e91efc"
+      "bytes": 367575,
+      "sha256": "72133d6b03509b354bf82a6fb957b1895e767ebc284f41195c10b3a50c83d584"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -1320,6 +1320,11 @@
       "path": "docs/review/MiniUW_Verificacion_D201.json",
       "bytes": 4389,
       "sha256": "4600092cc718ef8c32b3f0e4f21ee9b3bd4daf12125547f9c3b61184aa8e3901"
+    },
+    {
+      "path": "docs/review/MiniUW_Verificacion_D202.json",
+      "bytes": 5488,
+      "sha256": "bff4c4fe0c11e15523086b72c60567f21f6e7d6345975a1b3638888bc7e93a7d"
     },
     {
       "path": "docs/review/MiniUW_Vista_Sintetica_Interna_T18.pdf",
@@ -3330,6 +3335,11 @@
       "path": "docs/workbook-document-currency-D201.md",
       "bytes": 1741,
       "sha256": "cdc9f3c30d547ec5ee629730ed05817d24cce4004db0790eed471aea6ab2356c"
+    },
+    {
+      "path": "docs/workbook-document-pages-D202.md",
+      "bytes": 1528,
+      "sha256": "ff87bb615ca3c8571b93c254b2425b4f317e4107ee86720109e9b6bc16aefb5d"
     },
     {
       "path": "docs/workbook-documented-finance-D147.md",
@@ -8067,6 +8077,11 @@
       "sha256": "84fcd6762d31f9f4a190a6ba5d518e4babcae8f764f311887a23fc174c8b29fb"
     },
     {
+      "path": "tools/check_worksheet_document_pages_D202.py",
+      "bytes": 4631,
+      "sha256": "a0ae520b27df2db745e8a3480e64f85ba30f5cd1f60e0a0428bdb1e3f35cb04c"
+    },
+    {
       "path": "tools/check_worksheet_documented_finance_D147.py",
       "bytes": 12080,
       "sha256": "c810ffdeefa93a977d40a24e965a05c3d3e1f0738f31a1dc7fe895a3d1af4220"
@@ -9208,8 +9223,8 @@
     },
     {
       "path": "tools/worksheet_revision_D128.py",
-      "bytes": 6305,
-      "sha256": "f5ab91c7a3f6b247fb3b8233b08476af578ea30c167f6d79edf94a2798844d21"
+      "bytes": 7113,
+      "sha256": "f23185dbf30b827f5ff10c995af84d8f59cb4b5b0948021f51ef381893346328"
     },
     {
       "path": "tools/worksheet_sale_gap_D85.py",

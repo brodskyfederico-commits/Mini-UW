@@ -4,6 +4,8 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D202 verifica páginas requeridas aun cuando los PDF coincidan con sus huellas registradas. [Casos y reproducción](docs/workbook-document-pages-D202.md).
+
 - D201 comprueba que el expediente sólo vuelva a VIGENTE al recuperar el plano y los respaldos registrados. [Casos y reproducción](docs/workbook-document-currency-D201.md).
 
 - D200 cierra los cuatro hitos técnicos sintéticos de D197 y verifica el flujo completo por USD 10 en el VPS. [Criterios, resultados y reproducción](docs/worksheet-technical-acceptance-D200.md).

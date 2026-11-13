@@ -81,6 +81,27 @@ def review_revision(case, raw):
                 reference_sha256=sha(raw), blockers=blockers, observed=observed, expected=expected["fingerprints"])
 
 
+def pdf_revision_blockers(bots):
+    """Surface page-level failures once the enclosing PDF has been identified."""
+    documents = bots["B03"]["documents"]
+    for key, readings in (
+        ("plan_pdf", {"A101": bots["B05"], "A601": bots["B06"]}),
+        ("evidence_pdf", {"gc_budget": bots["B08"].get("gc_pdf", {}),
+                          "official_snapshot": bots["B10"].get("official_pdf", {})} | {
+            f"{role}_{scenario}": reading
+            for role in ("bank", "construction")
+            for scenario, reading in bots["B08"][f"{role}_pdf_by_scenario"].items()
+        }),
+    ):
+        blockers = documents[key]["blockers"]
+        if blockers:
+            yield from blockers
+        else:
+            for role, reading in readings.items():
+                for blocker in reading.get("blockers", []):
+                    yield f"{documents[key]['source_file']}:{role}:{blocker}"
+
+
 def audit_revision(result, raw):
     """Distinguish replay of the saved case from its designation as current."""
     captured = result["revision_review"]
@@ -94,9 +115,7 @@ def audit_revision(result, raw):
         "criteria_workbook_missing", "criteria_workbook_hash_mismatch", "criteria_workbook_revision_mismatch",
     })
     if result.get("profile") == "synthetic_documented_technical_acceptance":
-        documents = result["local_review"]["bots"]["B03"]["documents"]
-        for key in ("plan_pdf", "evidence_pdf"):
-            revision_blockers.extend(documents[key]["blockers"])
+        revision_blockers.extend(pdf_revision_blockers(result["local_review"]["bots"]))
         for scenario, review in result["native_mapping_review"]["scenarios"].items():
             if "native_workbook_missing_or_unbound" in review["blockers"]:
                 revision_blockers.append(f"{scenario}:native_workbook_missing_or_unbound")

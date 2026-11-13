@@ -1895,3 +1895,7 @@ Se mantienen 12/16 hitos técnicos al corte D196 y se precisa el denominador. Se
 ## D201 · Vigencia del plano y de los respaldos financieros
 
 B16 usa la verificación de los dos PDF por B03 en el perfil v31. La prueba reproduce cuatro expedientes PENDING con el plano o el respaldo financiero alterado o ausente, identifica el archivo y recupera el expediente original al restaurar los bytes registrados. Las corridas son sintéticas en el VPS. [Casos y reproducción](docs/workbook-document-currency-D201.md).
+
+## D202 · Auditoría de páginas requeridas dentro de PDF registrados
+
+B16 exige la lectura de las páginas requeridas y anota archivo, rol y motivo cuando falta respaldo en el perfil v31. Los ensayos aíslan A601, la página bancaria de Downside y la copia oficial. La caja de escenarios verificados conserva los importes y fechas por USD 10. El dictamen queda PENDING en los tres casos, todos sintéticos. [Casos y reproducción](docs/workbook-document-pages-D202.md).

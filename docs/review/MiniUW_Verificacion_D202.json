@@ -1,0 +1,203 @@
+{
+  "decision": "PENDING",
+  "deployment_enabled": false,
+  "real_decisions_enabled": false,
+  "status": "passed",
+  "variants": {
+    "missing-a601": {
+      "blocker": "Plan.pdf:A601:required_sheet_missing",
+      "cash_per_usd_10": {
+        "Base": null,
+        "Downside": null
+      },
+      "simulation_result": "PENDING",
+      "vigencia": "PENDING"
+    },
+    "missing-downside-bank": {
+      "blocker": "Evidence.pdf:bank_Downside:evidence_page_role_missing",
+      "cash_per_usd_10": {
+        "Base": {
+          "additional": 4.87,
+          "events": [
+            {
+              "category": "initial_capital",
+              "date": "2027-03-30",
+              "usd": 10.0
+            },
+            {
+              "category": "additional_capital",
+              "date": "2027-09-30",
+              "usd": 4.66
+            },
+            {
+              "category": "additional_capital",
+              "date": "2027-12-30",
+              "usd": 0.05
+            },
+            {
+              "category": "additional_capital",
+              "date": "2028-03-30",
+              "usd": 0.05
+            },
+            {
+              "category": "additional_capital",
+              "date": "2028-06-30",
+              "usd": 0.05
+            },
+            {
+              "category": "additional_capital",
+              "date": "2028-09-30",
+              "usd": 0.05
+            },
+            {
+              "category": "net_refinance_distribution",
+              "date": "2028-09-30",
+              "usd": 2.85
+            },
+            {
+              "category": "operating_distribution",
+              "date": "2028-12-30",
+              "usd": 1.43
+            },
+            {
+              "category": "net_sale_distribution",
+              "date": "2028-12-30",
+              "usd": 13.78
+            }
+          ],
+          "received": 18.06,
+          "unrecovered": 0.0
+        },
+        "Downside": null
+      },
+      "simulation_result": "PENDING",
+      "vigencia": "PENDING"
+    },
+    "missing-official": {
+      "blocker": "Evidence.pdf:official_snapshot:evidence_page_role_missing",
+      "cash_per_usd_10": {
+        "Base": {
+          "additional": 4.87,
+          "events": [
+            {
+              "category": "initial_capital",
+              "date": "2027-03-30",
+              "usd": 10.0
+            },
+            {
+              "category": "additional_capital",
+              "date": "2027-09-30",
+              "usd": 4.66
+            },
+            {
+              "category": "additional_capital",
+              "date": "2027-12-30",
+              "usd": 0.05
+            },
+            {
+              "category": "additional_capital",
+              "date": "2028-03-30",
+              "usd": 0.05
+            },
+            {
+              "category": "additional_capital",
+              "date": "2028-06-30",
+              "usd": 0.05
+            },
+            {
+              "category": "additional_capital",
+              "date": "2028-09-30",
+              "usd": 0.05
+            },
+            {
+              "category": "net_refinance_distribution",
+              "date": "2028-09-30",
+              "usd": 2.85
+            },
+            {
+              "category": "operating_distribution",
+              "date": "2028-12-30",
+              "usd": 1.43
+            },
+            {
+              "category": "net_sale_distribution",
+              "date": "2028-12-30",
+              "usd": 13.78
+            }
+          ],
+          "received": 18.06,
+          "unrecovered": 0.0
+        },
+        "Downside": {
+          "additional": 8.19,
+          "events": [
+            {
+              "category": "initial_capital",
+              "date": "2027-03-30",
+              "usd": 10.0
+            },
+            {
+              "category": "additional_capital",
+              "date": "2027-06-30",
+              "usd": 0.76
+            },
+            {
+              "category": "additional_capital",
+              "date": "2027-09-30",
+              "usd": 0.04
+            },
+            {
+              "category": "additional_capital",
+              "date": "2027-12-30",
+              "usd": 7.03
+            },
+            {
+              "category": "additional_capital",
+              "date": "2028-03-30",
+              "usd": 0.07
+            },
+            {
+              "category": "additional_capital",
+              "date": "2028-06-30",
+              "usd": 0.07
+            },
+            {
+              "category": "additional_capital",
+              "date": "2028-09-30",
+              "usd": 0.07
+            },
+            {
+              "category": "additional_capital",
+              "date": "2028-12-30",
+              "usd": 0.07
+            },
+            {
+              "category": "additional_capital",
+              "date": "2029-03-30",
+              "usd": 0.07
+            },
+            {
+              "category": "net_refinance_distribution",
+              "date": "2029-03-30",
+              "usd": 2.45
+            },
+            {
+              "category": "operating_distribution",
+              "date": "2029-06-30",
+              "usd": 0.55
+            },
+            {
+              "category": "net_sale_distribution",
+              "date": "2029-06-30",
+              "usd": 3.08
+            }
+          ],
+          "received": 6.08,
+          "unrecovered": 12.11
+        }
+      },
+      "simulation_result": "PENDING",
+      "vigencia": "PENDING"
+    }
+  }
+}
