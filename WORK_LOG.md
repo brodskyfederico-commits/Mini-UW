@@ -1844,3 +1844,7 @@ El comando común vincula dos copias sintéticas del formato original Inputs y c
 ## D187 — Deuda de obra y refinanciación en PRELIMINAR
 
 El perfil residencial financiado lee C51–C53 y C66–C74 desde Inputs Base y Downside. Calcula desembolso, interés, cancelación, límite de capacidad por LTV, DSCR y debt yield aplicable, caja de refinanciación y liquidación de deuda permanente en la venta. Un dato faltante o una solicitud superior a la capacidad excluye al caso del ranking y mantiene PENDING. [Caja por USD 10, alcance y pruebas](docs/workbook-preliminary-financing-D187.md).
+
+## D188 — Desembolsos de obra por etapas en PRELIMINAR
+
+El perfil residencial v3 distribuye costo elegible de Inputs por trimestre y calcula el desembolso solicitado de cada etapa con su fracción documentada. El motor de obra verifica disponibilidad y compromiso acumulado, liquida intereses sobre el saldo expuesto y cancela sólo el principal desembolsado al refinanciar. Se cotejaron los flujos Base/Downside por USD 10 y se ensayaron faltantes y excesos de capacidad. [Resultados y reproducción](docs/workbook-preliminary-staged-D188.md).

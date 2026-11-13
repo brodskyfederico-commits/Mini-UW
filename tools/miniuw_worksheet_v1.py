@@ -22,6 +22,7 @@ CASE_SCHEMA = "miniuw.synthetic-unified-worksheet-case.v1"
 PRELIMINARY_SCHEMA = "miniuw.synthetic-preliminary-loi.v1"
 PRELIMINARY_WORKBOOK_SCHEMA = "miniuw.synthetic-preliminary-loi-workbook.v1"
 PRELIMINARY_FINANCED_SCHEMA = "miniuw.synthetic-preliminary-loi-workbook.v2"
+PRELIMINARY_STAGED_SCHEMA = "miniuw.synthetic-preliminary-loi-workbook.v3"
 DIAGNOSTIC_CASE_SCHEMA = "miniuw.synthetic-unified-worksheet-case.v2"
 PARTICIPATION_CASE_SCHEMA = "miniuw.synthetic-unified-worksheet-case.v3"
 INVESTOR_CASE_SCHEMA = "miniuw.synthetic-unified-worksheet-case.v4"
@@ -177,11 +178,12 @@ def build_results(raw, *, workbook_raw=None, downside_workbook_raw=None, current
     require(plan_raw is None or schema in (*WORKBOOK_PDF_CHAIN_SCHEMAS, *WORKBOOK_DOCUMENTED_SCHEMAS)
             and len(plan_raw) <= MAX_PLAN_BYTES,
             "A bounded PDF plan belongs to the plan chain schema")
-    if schema in (PRELIMINARY_WORKBOOK_SCHEMA, PRELIMINARY_FINANCED_SCHEMA):
+    if schema in (PRELIMINARY_WORKBOOK_SCHEMA, PRELIMINARY_FINANCED_SCHEMA, PRELIMINARY_STAGED_SCHEMA):
         require(evidence_raw is None, "Preliminary workbook evidence is declared in the case")
         from worksheet_preliminary_workbook_D186 import build_preliminary_workbook
         return build_preliminary_workbook(case, raw, {"Base": workbook_raw, "Downside": downside_workbook_raw},
-                                          financed=schema == PRELIMINARY_FINANCED_SCHEMA)
+                                          financed=schema != PRELIMINARY_WORKBOOK_SCHEMA,
+                                          staged=schema == PRELIMINARY_STAGED_SCHEMA)
     if schema == PRELIMINARY_SCHEMA:
         require(workbook_raw is None and downside_workbook_raw is None and evidence_raw is None,
                 "The synthetic preliminary profile uses explicit cash estimates in the case")

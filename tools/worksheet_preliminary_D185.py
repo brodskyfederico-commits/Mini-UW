@@ -39,7 +39,7 @@ def assumption_ready(row, cutoff):
                     for k in ("source_ref", "owner")))
 
 
-def estimate(spec, deal, name, cutoff, *, amount_digits=12):
+def estimate(spec, deal, name, cutoff, *, amount_digits=12, max_events=12):
     dates = spec["dates"]
     inputs = deal["scenarios"].get(name)
     if not isinstance(inputs, dict):
@@ -51,7 +51,7 @@ def estimate(spec, deal, name, cutoff, *, amount_digits=12):
         return dict(cash=None, blockers=["supuesto sin respaldo: " + k for k in missing])
 
     events = inputs.get("events")
-    if not isinstance(events, list) or not events or len(events) > 12:
+    if not isinstance(events, list) or not events or len(events) > max_events:
         return dict(cash=None, blockers=["inventario de caja incompleto"])
     ledger = []
     for i, row in enumerate(events):

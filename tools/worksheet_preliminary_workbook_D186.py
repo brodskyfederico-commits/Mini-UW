@@ -87,7 +87,7 @@ def read_inputs(raw, deal, name, cutoff, *, financed=False):
                 parking_spaces=parking_spaces), []
 
 
-def project(case, deal, name, raw, cutoff, *, financed=False):
+def project(case, deal, name, raw, cutoff, *, financed=False, staged=False):
     inputs, blockers = read_inputs(raw, deal, name, cutoff, financed=financed)
     if blockers:
         return dict(cash=None, blockers=blockers)
@@ -117,26 +117,43 @@ def project(case, deal, name, raw, cutoff, *, financed=False):
         opex = fixed_opex * (1 + v["C76"]) ** years
         return rent + other_income - rent * v["C58"] - opex - property_tax
 
+    stages = None
+    if staged:
+        from worksheet_preliminary_stages_D188 import read_stages
+        stages, blockers = read_stages(case, name, inputs, finish, direct_hard, hard, soft, early_soft, cutoff)
+        if blockers:
+            return dict(cash=None, blockers=blockers)
     financing = {}
     if financed:
         from worksheet_preliminary_finance_D187 import finance
-        financing, blockers = finance(case, name, inputs, finish, stabilize, direct_hard, construction_cost - early_soft, operating)
+        financing, blockers = finance(case, name, inputs, finish, stabilize, direct_hard, construction_cost - early_soft, operating,
+                                        stages=stages)
         if blockers:
             return dict(cash=None, blockers=blockers, financing=financing)
 
     events = []
 
-    def event(category, index, value, basis, refs):
-        provenance = support[basis]
+    def event(category, index, value, basis, refs, *, stage=None):
+        provenance = support[basis] if stage is None else stage["assumption"]
+        source_ref = f"sha256:{inputs['workbook_sha256']}#Inputs!{refs}"
+        if stage is not None:
+            source_ref += f" + case.json#{stage['pointer']}"
         events.append(dict(category=category, date=dates[index], amount=rational(value),
-                           source_ref=f"sha256:{inputs['workbook_sha256']}#Inputs!{refs}",
+                           source_ref=source_ref,
                            as_of=provenance["as_of"], owner=provenance["owner"]))
 
     if initial <= 0:
         return dict(cash=None, blockers=["C32: aporte inicial de compra debe ser positivo"])
     event("initial_capital", 0, initial, "acquisition_and_costs", "C32:C33")
     obra_net = construction_cost - (financing["draw"] - financing["origination_fee"] if financed else 0)
-    if finish == 1:
+    if staged:
+        for stage in stages:
+            i = stage["index"]
+            interest = financing["construction_interest"].get(i, Fraction())
+            fee = financing["origination_fee"] if i == stages[0]["index"] else Fraction()
+            equity = stage["cost"] - stage["draw"] + interest + fee
+            event("additional_capital", i, equity, "financing", "C34:C53", stage=stage)
+    elif finish == 1:
         event("additional_capital", finish, obra_net, "acquisition_and_costs", "C34:C42,C51:C53" if financed else "C34:C42")
     else:
         event("additional_capital", 1, early_soft, "acquisition_and_costs", "C40:C42")
@@ -175,7 +192,7 @@ def project(case, deal, name, raw, cutoff, *, financed=False):
     if not any(e["category"] == "operating_distribution" for e in events):
         event("operating_distribution", len(dates) - 1, Fraction(), "rent_and_expenses", "C7:C15,C57:C62,C75:C76")
     projected = {"scenarios": {name: dict(support=support, events=events)}, "id": deal["id"]}
-    view = estimate(case, projected, name, cutoff, amount_digits=256 if financed else 12)
+    view = estimate(case, projected, name, cutoff, amount_digits=256 if financed else 12, max_events=13 if staged else 12)
     if financed:
         view["financing"] = financing["evidence"]
     return view | dict(worksheet_sha256=inputs["workbook_sha256"], cell_sources={
@@ -185,7 +202,7 @@ def project(case, deal, name, raw, cutoff, *, financed=False):
                         reserve_released_at_sale=rational(restricted), stabilization_date=dates[stabilize]))
 
 
-def build_preliminary_workbook(case, raw, workbooks, *, financed=False):
+def build_preliminary_workbook(case, raw, workbooks, *, financed=False, staged=False):
     require(set(case) == {"schema", "policy", "as_of", "dates", "financing", "focus", "scenarios"}
             and case["policy"] == POLICY and case["financing"] == ("with_refinance" if financed else "without_refinance"),
             "Expected the financing path declared by the synthetic workbook profile")
@@ -200,6 +217,7 @@ def build_preliminary_workbook(case, raw, workbooks, *, financed=False):
     require(isinstance(case["scenarios"], dict) and case["scenarios"].keys() <= set(SCENARIOS),
             "Unknown scenario")
     deal = case | {"id": case["focus"]}
-    views = {deal["id"]: dict(scenarios={n: project(case, deal, n, workbooks[n], cutoff, financed=financed) for n in SCENARIOS})}
-    profile = "synthetic_preliminary_loi_financed_workbook" if financed else PROFILE
+    views = {deal["id"]: dict(scenarios={n: project(case, deal, n, workbooks[n], cutoff, financed=financed, staged=staged) for n in SCENARIOS})}
+    profile = "synthetic_preliminary_loi_staged_workbook" if staged else (
+        "synthetic_preliminary_loi_financed_workbook" if financed else PROFILE)
     return finish_preliminary(case, raw, views, profile=profile)
