@@ -1840,3 +1840,7 @@ El comando común produce y audita una página por USD 10 a partir de estimacion
 ## D186 — PRELIMINAR calcula caja desde Inputs Base y Downside
 
 El comando común vincula dos copias sintéticas del formato original Inputs y calcula adquisición, obra, absorción, operación, reservas y venta por USD 10. El perfil es residencial sin deuda. Los datos mínimos vacíos, una fórmula con caché o una huella incompatible dejan fuera el caso y conservan PENDING. Una corrección a cero explícito recalcula el escenario y permite volver al ranking sintético. [Celdas, alcance y reproducción](docs/workbook-preliminary-calculation-D186.md).
+
+## D187 — Deuda de obra y refinanciación en PRELIMINAR
+
+El perfil residencial financiado lee C51–C53 y C66–C74 desde Inputs Base y Downside. Calcula desembolso, interés, cancelación, límite de capacidad por LTV, DSCR y debt yield aplicable, caja de refinanciación y liquidación de deuda permanente en la venta. Un dato faltante o una solicitud superior a la capacidad excluye al caso del ranking y mantiene PENDING. [Caja por USD 10, alcance y pruebas](docs/workbook-preliminary-financing-D187.md).

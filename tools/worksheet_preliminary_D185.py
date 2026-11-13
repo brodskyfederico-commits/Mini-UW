@@ -39,7 +39,7 @@ def assumption_ready(row, cutoff):
                     for k in ("source_ref", "owner")))
 
 
-def estimate(spec, deal, name, cutoff):
+def estimate(spec, deal, name, cutoff, *, amount_digits=12):
     dates = spec["dates"]
     inputs = deal["scenarios"].get(name)
     if not isinstance(inputs, dict):
@@ -59,7 +59,7 @@ def estimate(spec, deal, name, cutoff):
             return dict(cash=None, blockers=[f"flujo {i + 1} sin fuente, fecha o responsable"])
         category, when = row.get("category"), row.get("date")
         try:
-            value = amount(row.get("amount"), 12)
+            value = amount(row.get("amount"), amount_digits)
         except ValidationError:
             value = None
         if (not isinstance(category, str) or category not in REQUIRED or when not in dates or value is None or value < 0):

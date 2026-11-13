@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D186 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D187 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/miniuw-integral-usd10.yml",
@@ -8,8 +8,8 @@
     },
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 27791,
-      "sha256": "47472f7ec185d254aff5c30243cfe191c6c2a27d993164485ed5e9fd26e2a3dd"
+      "bytes": 27957,
+      "sha256": "2a7a63332146666972c6ab9934aef7c3025d53d66437c84ce16d0b899eee7b7f"
     },
     {
       "path": ".gitignore",
@@ -28,8 +28,8 @@
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 359495,
-      "sha256": "324d31adc87d17e91912d8e94bc2d6bee9b6965ea3c0a2a57118051e0bb6fcb4"
+      "bytes": 360007,
+      "sha256": "b2de13558ba579852ebd0f4ac6f5ad803aaf24c77462805cee8d106b9ac47590"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -1197,6 +1197,11 @@
       "sha256": "285097539038d0ba0e183756335ce14d7ed9c5afb17149fdb6af639bff510dcb"
     },
     {
+      "path": "docs/review/MiniUW_Preliminar_Refinanciacion_D187.pdf",
+      "bytes": 4281,
+      "sha256": "1035edd59e41026cd6fea81bda07807742bbc828457a3796913bf90c9515e97e"
+    },
+    {
       "path": "docs/review/MiniUW_Revision_Interna_Retorno_T56.md",
       "bytes": 4577,
       "sha256": "6b861c6ceba5d89f42d77a4854043e16ae4c44c8417b0c413979df0924a00723"
@@ -1230,6 +1235,11 @@
       "path": "docs/review/MiniUW_Verificacion_D186.json",
       "bytes": 139,
       "sha256": "f7bd09e3753b98cc5895225ffcf4d112bcdc15f9cbf89f7fbf809e437e644d38"
+    },
+    {
+      "path": "docs/review/MiniUW_Verificacion_D187.json",
+      "bytes": 166,
+      "sha256": "844daaa67566c723613c93eca69215d21ced09d06ed848ddf513e60f5942451c"
     },
     {
       "path": "docs/review/MiniUW_Vista_Sintetica_Interna_T18.pdf",
@@ -3370,6 +3380,11 @@
       "path": "docs/workbook-preliminary-calculation-D186.md",
       "bytes": 3898,
       "sha256": "186da95e8bde7cec43e7aa97a37db3839c11f6dfca7699cbdf6efe394749bdba"
+    },
+    {
+      "path": "docs/workbook-preliminary-financing-D187.md",
+      "bytes": 4002,
+      "sha256": "6d915087348a5a9ba2575a69c0612a2bae84d9407c09c72bdae8a9ee2ac27f98"
     },
     {
       "path": "docs/workbook-preliminary-loi-D185.md",
@@ -5942,6 +5957,21 @@
       "sha256": "5261fcfb072483adeba417a6d7cfd02284cbd3219771bb46938885467e5c7477"
     },
     {
+      "path": "templates/synthetic-preliminary-financed-D187.json",
+      "bytes": 4124,
+      "sha256": "9eac6d3877c7be9db8b165d950ef76067c827b36f46a5831d3fa0fcd92bec19e"
+    },
+    {
+      "path": "templates/synthetic-preliminary-financed-base-D187.xlsx",
+      "bytes": 8745,
+      "sha256": "b9eac8996289b87f18e5c03ac3eca04717cfdff49147de69747c3d7a1cf3bb43"
+    },
+    {
+      "path": "templates/synthetic-preliminary-financed-downside-D187.xlsx",
+      "bytes": 8753,
+      "sha256": "8770fce9069cd2647fdb068e3707633ae2c9d5e3ff17d28be7e1196efe1612d7"
+    },
+    {
       "path": "templates/synthetic-preliminary-loi-D185.json",
       "bytes": 10238,
       "sha256": "63882977bf6647824c99c988cd2bf60cfdf4ec159c979632d08c7ff9a936f44d"
@@ -8012,6 +8042,11 @@
       "sha256": "7f032e193b8aac2af1fb7e1f0b1629f848f81d13b572e4b04566376d0c105249"
     },
     {
+      "path": "tools/check_worksheet_preliminary_finance_D187.py",
+      "bytes": 8720,
+      "sha256": "93b606ab44e44f28e98b197c1a3ff2be5dc94e57365e8af09d7f634a85b1367f"
+    },
+    {
       "path": "tools/check_worksheet_preliminary_workbook_D186.py",
       "bytes": 7935,
       "sha256": "689fc1f1c58e7ee27a00d03780b3f7f0ad8589f08c6c6d91826f5add910cc11a"
@@ -8523,8 +8558,8 @@
     },
     {
       "path": "tools/miniuw_worksheet_v1.py",
-      "bytes": 32551,
-      "sha256": "b0babd3ef971484f60499d8333298c371a998a91b76bba1f50f62a161d16448b"
+      "bytes": 32749,
+      "sha256": "8d983ae9b029b56be254b5b3377f2d63c3f570417cf093599778e85962070516"
     },
     {
       "path": "tools/onepage_pending_cases_D79.py",
@@ -8838,13 +8873,18 @@
     },
     {
       "path": "tools/worksheet_preliminary_D185.py",
-      "bytes": 11314,
-      "sha256": "da910643e908ce006d4ee00f187e1c04cab5762f93ab316616070b22fe44e1f2"
+      "bytes": 11346,
+      "sha256": "4c63253740fc633a5286df64a03a1e084ab03581f03c9db2fad4799c6da9acb1"
+    },
+    {
+      "path": "tools/worksheet_preliminary_finance_D187.py",
+      "bytes": 7974,
+      "sha256": "8b3f9226f333d64d1874167934463435406a07e598a03662b92c7a89389836f0"
     },
     {
       "path": "tools/worksheet_preliminary_workbook_D186.py",
-      "bytes": 9655,
-      "sha256": "421d483c2311908e5dfc21ed6e83fd3e207400fa32868e8a4017bdaf1a349080"
+      "bytes": 11650,
+      "sha256": "9b3261129947cafcd381801bc2fa49e3feb7ffcc9e3151e00ac1a6b04d8effcd"
     },
     {
       "path": "tools/worksheet_project_calendar_D145.py",

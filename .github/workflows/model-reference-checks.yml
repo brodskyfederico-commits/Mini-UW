@@ -379,5 +379,7 @@ jobs:
         run: PYTHONPATH=src:tests python tools/check_worksheet_preliminary_D185.py
       - name: Verify native Inputs calculations for PRELIMINAR LOI
         run: PYTHONPATH=src:tests python tools/check_worksheet_preliminary_workbook_D186.py
+      - name: Verify financed PRELIMINAR workbook, dated cash and capacity
+        run: PYTHONPATH=src:tests python tools/check_worksheet_preliminary_finance_D187.py
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v

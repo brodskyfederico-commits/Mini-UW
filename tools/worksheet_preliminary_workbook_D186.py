@@ -22,7 +22,7 @@ NUMERIC = (
 FRACTIONS = ("C14", "C15", "C33", "C39", "C40", "C42", "C58", "C67", "C68")
 
 
-def read_inputs(raw, deal, name, cutoff):
+def read_inputs(raw, deal, name, cutoff, *, financed=False):
     binding = deal["scenarios"].get(name)
     if raw is None or not isinstance(binding, dict) or binding.get("workbook_sha256") != sha(raw):
         return {}, ["planilla ausente o huella distinta"]
@@ -42,7 +42,11 @@ def read_inputs(raw, deal, name, cutoff):
 
     fields = {f["value_cell"]: f for f in layout()["fields"]}
     values, blockers = {}, []
-    for ref in NUMERIC:
+    numeric = NUMERIC
+    if financed:
+        from worksheet_preliminary_finance_D187 import FINANCING_CELLS
+        numeric += FINANCING_CELLS
+    for ref in numeric:
         field = fields[ref]
         value, issues = _cell_value(cells[ref], dict(field, unit_literal=cells[field["unit_cell"]]["literal"]))
         if not issues and isinstance(value, dict):
@@ -77,14 +81,14 @@ def read_inputs(raw, deal, name, cutoff):
     if (any(values[ref] < 0 for ref in NUMERIC if ref not in ("C75", "C76"))
             or any(values[ref] > 1 for ref in FRACTIONS)
             or any(not -1 < values[ref] <= 1 for ref in ("C75", "C76"))
-            or any(values[ref] for ref in ("C15", "C51")) or values["C67"] == 0):
+            or values["C15"] != 0 or (not financed and values["C51"] != 0) or values["C67"] == 0):
         return {}, ["concesiones, deuda, cap o rangos fuera del perfil"]
     return dict(values=values, support=support, workbook_sha256=book.source_sha256, units=units, carry=carry,
                 parking_spaces=parking_spaces), []
 
 
-def project(case, deal, name, raw, cutoff):
-    inputs, blockers = read_inputs(raw, deal, name, cutoff)
+def project(case, deal, name, raw, cutoff, *, financed=False):
+    inputs, blockers = read_inputs(raw, deal, name, cutoff, financed=financed)
     if blockers:
         return dict(cash=None, blockers=blockers)
 
@@ -108,10 +112,17 @@ def project(case, deal, name, raw, cutoff):
     property_tax = units * v["C62"]
     annual_reserve = units * v["C60"]
 
-    def operating(years):
-        rent = gross_rent * (1 - v["C14"]) * (1 + v["C75"]) ** years
+    def operating(years, bank_loss=Fraction()):
+        rent = gross_rent * (1 - v["C14"] - bank_loss) * (1 + v["C75"]) ** years
         opex = fixed_opex * (1 + v["C76"]) ** years
         return rent + other_income - rent * v["C58"] - opex - property_tax
+
+    financing = {}
+    if financed:
+        from worksheet_preliminary_finance_D187 import finance
+        financing, blockers = finance(case, name, inputs, finish, stabilize, direct_hard, construction_cost - early_soft, operating)
+        if blockers:
+            return dict(cash=None, blockers=blockers, financing=financing)
 
     events = []
 
@@ -124,39 +135,60 @@ def project(case, deal, name, raw, cutoff):
     if initial <= 0:
         return dict(cash=None, blockers=["C32: aporte inicial de compra debe ser positivo"])
     event("initial_capital", 0, initial, "acquisition_and_costs", "C32:C33")
+    obra_net = construction_cost - (financing["draw"] - financing["origination_fee"] if financed else 0)
     if finish == 1:
-        event("additional_capital", finish, construction_cost, "acquisition_and_costs", "C34:C42")
+        event("additional_capital", finish, obra_net, "acquisition_and_costs", "C34:C42,C51:C53" if financed else "C34:C42")
     else:
         event("additional_capital", 1, early_soft, "acquisition_and_costs", "C40:C42")
-        event("additional_capital", finish, construction_cost - early_soft, "acquisition_and_costs", "C34:C42")
+        event("additional_capital", finish, obra_net - early_soft, "acquisition_and_costs", "C34:C42,C51:C53" if financed else "C34:C42")
     for i in range(finish + 1, stabilize + 1):
-        event("additional_capital", i, Fraction(inputs["carry"]), "calendar", "C46:C47")
+        if financed:
+            interest = financing["construction_interest"][i]
+            event("additional_capital", i, inputs["carry"] + interest, "calendar", "C46:C47,C51:C53")
+        else:
+            event("additional_capital", i, Fraction(inputs["carry"]), "calendar", "C46:C47")
+    if financed:
+        net_refi = financing["net_refi"]
+        event("refinance_cash_in", stabilize, max(Fraction(), -net_refi), "financing", "C51:C53,C66:C74")
+        event("net_refinance_distribution", stabilize, max(Fraction(), net_refi), "financing", "C51:C53,C66:C74")
     restricted = Fraction()
     for i in range(stabilize + 1, len(dates)):
         cash = (operating((i - stabilize - 1) // 4) - annual_reserve) / 4
+        if financed:
+            cash -= financing["payment"]
         restricted += annual_reserve / 4
-        event("operating_distribution" if cash >= 0 else "additional_capital", i, abs(cash), "rent_and_expenses", "C7:C15,C57:C62,C75:C76")
+        event("operating_distribution" if cash >= 0 else "additional_capital", i, abs(cash),
+              "rent_and_expenses", "C7:C15,C57:C62,C69:C70,C75:C76" if financed else "C7:C15,C57:C62,C75:C76")
 
     sale_noi = sum((operating((i - stabilize) // 4) for i in range(len(dates) - 1, len(dates) + 3)), Fraction()) / 4
     if sale_noi <= 0:
         return dict(cash=None, blockers=["NOI de salida no positivo"])
     net_sale = sale_noi / v["C67"] * (1 - v["C68"])
-    event("net_sale_distribution", len(dates) - 1, net_sale + restricted, "exit", "C60,C67:C68")
+    sale_distribution = net_sale + restricted
+    if financed:
+        sale_distribution += financing["reserve_release"] - financing["balance_at_sale"]
+        if sale_distribution < 0:
+            return dict(cash=None, blockers=["venta insuficiente para liquidar deuda permanente"],
+                        financing=financing["evidence"])
+    event("net_sale_distribution", len(dates) - 1, sale_distribution, "exit",
+          "C60,C67:C74" if financed else "C60,C67:C68")
     if not any(e["category"] == "operating_distribution" for e in events):
         event("operating_distribution", len(dates) - 1, Fraction(), "rent_and_expenses", "C7:C15,C57:C62,C75:C76")
     projected = {"scenarios": {name: dict(support=support, events=events)}, "id": deal["id"]}
-    view = estimate(case, projected, name, cutoff)
+    view = estimate(case, projected, name, cutoff, amount_digits=256 if financed else 12)
+    if financed:
+        view["financing"] = financing["evidence"]
     return view | dict(worksheet_sha256=inputs["workbook_sha256"], cell_sources={
-        ref: f"sha256:{inputs['workbook_sha256']}#Inputs!{ref}" for ref in (*NUMERIC, "C7", "C34")},
+        ref: f"sha256:{inputs['workbook_sha256']}#Inputs!{ref}" for ref in (*v, "C7", "C34")},
         projection=dict(land_and_closing=rational(initial), construction=rational(construction_cost),
                         sale_noi=rational(sale_noi), sale_net_before_reserve_release=rational(net_sale),
                         reserve_released_at_sale=rational(restricted), stabilization_date=dates[stabilize]))
 
 
-def build_preliminary_workbook(case, raw, workbooks):
+def build_preliminary_workbook(case, raw, workbooks, *, financed=False):
     require(set(case) == {"schema", "policy", "as_of", "dates", "financing", "focus", "scenarios"}
-            and case["policy"] == POLICY and case["financing"] == "without_refinance",
-            "Expected a bounded synthetic residential case without debt")
+            and case["policy"] == POLICY and case["financing"] == ("with_refinance" if financed else "without_refinance"),
+            "Expected the financing path declared by the synthetic workbook profile")
     require(isinstance(case["focus"], str) and re.fullmatch(r"SYNTHETIC-[A-Z0-9-]{1,22}", case["focus"]),
             "Explicit synthetic case identity required")
     cutoff = day(case["as_of"])
@@ -168,5 +200,6 @@ def build_preliminary_workbook(case, raw, workbooks):
     require(isinstance(case["scenarios"], dict) and case["scenarios"].keys() <= set(SCENARIOS),
             "Unknown scenario")
     deal = case | {"id": case["focus"]}
-    views = {deal["id"]: dict(scenarios={n: project(case, deal, n, workbooks[n], cutoff) for n in SCENARIOS})}
-    return finish_preliminary(case, raw, views, profile=PROFILE)
+    views = {deal["id"]: dict(scenarios={n: project(case, deal, n, workbooks[n], cutoff, financed=financed) for n in SCENARIOS})}
+    profile = "synthetic_preliminary_loi_financed_workbook" if financed else PROFILE
+    return finish_preliminary(case, raw, views, profile=profile)
