@@ -4,6 +4,8 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D174 incorpora los campos complementarios de la revisión profesional al expediente y al Excel. [Cotejo y reproducción](docs/workbook-supplemental-scope-D174.md).
+
 - D173 conecta el impuesto del comprador con el valor de salida y verifica el CoC sobre capital remanente. [Revisión de fórmulas, resultados y reproducción](docs/workbook-formula-review-D173.md).
 
 - D171 automatiza la verificación de vacíos y ceros explícitos en los 55 campos. [Resultados y reproducción](docs/workbook-blanks-and-zero-D171.md).

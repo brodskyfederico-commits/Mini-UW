@@ -363,5 +363,7 @@ jobs:
         run: OMP_THREAD_LIMIT=1 PYTHONPATH=src:tests python tools/check_worksheet_blanks_and_zero_D171.py
       - name: Verify buyer tax, post-refinance CoC and LP/GP presentation
         run: OMP_THREAD_LIMIT=1 PYTHONPATH=src:tests python tools/check_worksheet_formula_review_D173.py
+      - name: Verify supplemental worksheet scope and dated cash
+        run: OMP_THREAD_LIMIT=1 PYTHONPATH=src:tests python tools/check_worksheet_scope_D174.py
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v

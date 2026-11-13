@@ -30,7 +30,7 @@ def confirmed_months(rows, cell, minimum):
     return int(months)
 
 
-def project_calendar(raw, name, review, purchase_date):
+def project_calendar(raw, name, review, purchase_date, *, sale_term=None):
     source = object_or_empty(raw)
     record = object_or_empty(object_or_empty(source.get("scenarios")).get(name))
     require(source.get("policy") == POLICY and source.get("rules") == TIMING_RULES
@@ -52,6 +52,14 @@ def project_calendar(raw, name, review, purchase_date):
     stabilization_checkpoint = offset(tco_checkpoint, lease_up)
     refi = offset(stabilization_checkpoint, 9)
     sale = offset(stabilization_checkpoint, 12)
+    sale_evidence = {}
+    if sale_term is not None:
+        declared = _date(sale_term["value"])
+        # This profile has one permanent-loan payment and a twelve-month
+        # stabilized seller operating window.
+        require(declared == sale, "declared_sale_date_outside_supported_quarterly_hold")
+        sale = declared
+        sale_evidence = dict(sale_source_ref=sale_term["source_ref"])
     horizon = (sale.year - start.year) * 12 + sale.month - start.month
     require(horizon <= 192, "project_calendar_horizon_outside_equity_grid")
     monthly_shortfall = _fraction(record.get("lease_up_shortfall_per_month"))
@@ -75,4 +83,4 @@ def project_calendar(raw, name, review, purchase_date):
         lease_up_funding=rational(monthly_shortfall * lease_up), lease_up_shortfall_per_month=rational(monthly_shortfall),
         lease_up_cash_ref=record["lease_up_cash_ref"], upfront_direct_hard_share=rational(early_hard_share),
         construction_draw_ref=record["construction_draw_ref"],
-    )
+    ) | sale_evidence

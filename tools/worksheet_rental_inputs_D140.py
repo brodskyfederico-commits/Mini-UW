@@ -33,7 +33,7 @@ PERIOD = f"{DATES[0]}/{SALE_DATE}"
 
 
 def terms_for(supplied, scenario, values, sheet, *, include_development=False, include_operating_costs=False,
-              include_property_tax=False, include_exit_pricing=False):
+              include_property_tax=False, include_exit_pricing=False, bank_vacancy=None):
     source = object_or_empty(supplied)
     policy = object_or_empty(source.get("policy"))
     comps = object_or_empty(object_or_empty(source.get("rent_comps")).get(scenario))
@@ -86,6 +86,11 @@ def terms_for(supplied, scenario, values, sheet, *, include_development=False, i
         require("exit_cap" not in source, "conflicting_workbook_and_supplemental_exit_cap:C67")
     require((include_development or (cost is not None and cost >= INITIAL)) and principal is not None and principal > 0
             and (include_exit_pricing or (cap is not None and 0 < cap <= 1)), "rental_cost_or_loan_terms_unconfirmed")
+    if bank_vacancy is not None:
+        require("bank_vacancy_addition" not in policy
+                or _fraction(policy["bank_vacancy_addition"]) == _fraction(bank_vacancy["value"]),
+                "bank_vacancy_evidence_and_policy_disagree")
+        policy = policy | dict(bank_vacancy_addition=bank_vacancy["value"], bank_vacancy_ref=bank_vacancy["source_ref"])
     vacancy, concessions, stress = (_fraction(value) for value in
                                     (values["C14"], values["C15"], policy.get("bank_vacancy_addition")))
     require(stress is not None and 0 <= vacancy <= vacancy + stress <= 1 and 0 <= concessions <= 1
@@ -115,6 +120,9 @@ def rental_noi(terms, cells, values, period, commercial=None, *, window_start=No
                            loss_fraction=rational(loss), concession_fraction=values["C15"],
                            concession_basis=policy["concession_basis"], currency="USD",
                            source_ref=cells[cell], policy_ref=policy["source_ref"]))
+    if period == BANK_PERIOD and "bank_vacancy_ref" in policy:
+        for group in groups:
+            group["policy_ref"] += f" and {policy['bank_vacancy_ref']}"
     if growth is not None:
         for group in groups:
             group["rent"] = rational(_fraction(group["rent"]) * _fraction(growth["rent_factor"]))
@@ -195,7 +203,7 @@ def run_rental_scenario(name, raw, review, rent_inputs, *, include_commercial=Fa
                         include_construction_financing=False, document_review=None, include_operating_costs=False,
                         include_replacement_reserve=False, include_property_tax=False, include_exit_pricing=False,
                         include_permanent_loan=False, include_refinance_costs=False, include_growth=False,
-                        require_market_evidence=False, require_formula_review=False):
+                        require_market_evidence=False, require_formula_review=False, supplemental=None):
     pending = dict(state="PENDING", cash_per_usd_10=None, capacity=None, noi_by_period={})
     if not review["calculation_inputs_ready"]:
         return pending | dict(blockers=["required_rental_cells_unconfirmed"])
@@ -211,9 +219,14 @@ def run_rental_scenario(name, raw, review, rent_inputs, *, include_commercial=Fa
             return pending | dict(blockers=blockers, cell_sources=cells) | market
     binding = None
     try:
+        scope = {}
+        if supplemental is not None:
+            from worksheet_scope_D174 import scenario_scope
+            scope = scenario_scope(supplemental, name)
         terms = terms_for(rent_inputs, name, values, inspect_synthetic_input_sheet(raw).cells,
                           include_development=include_development, include_operating_costs=include_operating_costs,
-                          include_property_tax=include_property_tax, include_exit_pricing=include_exit_pricing)
+                          include_property_tax=include_property_tax, include_exit_pricing=include_exit_pricing,
+                          bank_vacancy=scope.get("bank_vacancy_addition"))
         development = None
         cost_source = rent_inputs.get("cost_source_ref")
         if include_development:
@@ -250,11 +263,14 @@ def run_rental_scenario(name, raw, review, rent_inputs, *, include_commercial=Fa
         if include_exit_pricing:
             from worksheet_exit_pricing_D151 import declared_valuation_terms
             valuation_terms = declared_valuation_terms(rent_inputs.get("valuation_and_sale"), name, review)
+            if scope:
+                valuation_terms["fixed_sale_cost"] = scope["fixed_sale_cost"]
             terms["cap"] = _fraction(valuation_terms["exit_cap"])
         calendar = None
         if include_calendar:
             from worksheet_project_calendar_D145 import project_calendar
-            calendar = project_calendar(rent_inputs.get("project_calendar"), name, review, development["purchase_date"])
+            calendar = project_calendar(rent_inputs.get("project_calendar"), name, review, development["purchase_date"],
+                                        sale_term=scope.get("sale_date"))
         growth_terms = None
         if include_growth:
             from worksheet_growth_D154 import declared_growth, project_window
@@ -263,6 +279,11 @@ def run_rental_scenario(name, raw, review, rent_inputs, *, include_commercial=Fa
         if include_permanent_loan:
             from worksheet_permanent_loan_D152 import declared_loan_terms
             permanent_terms = declared_loan_terms(rent_inputs.get("permanent_loan"), name, review, calendar)
+            if scope:
+                maturity = scope["maturity_payments"]
+                require(maturity["value"] == permanent_terms["maturity_payments"],
+                        "permanent_maturity_evidence_and_loan_terms_disagree")
+                permanent_terms["supplemental_maturity_ref"] = maturity["source_ref"]
             if document_review is not None and "bank_pdf_by_scenario" in document_review["bots"]["B08"]:
                 from worksheet_evidence_pdf_D156 import bind_bank_evidence
                 quote = document_review["bots"]["B08"]["bank_pdf_by_scenario"][name]
@@ -352,6 +373,8 @@ def run_rental_scenario(name, raw, review, rent_inputs, *, include_commercial=Fa
         result["construction_financing"] = funding
     if binding is not None:
         result["document_financial_binding"] = binding
+    if scope:
+        result["supplemental_scope"] = scope
     return result | market | dict(noi_by_period=periods, cell_sources=cells, comps_evidence=terms["comps"], rent_basis=terms["basis"])
 
 
@@ -552,10 +575,17 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
                       include_replacement_reserve=False, include_property_tax=False, include_exit_pricing=False,
                       include_permanent_loan=False, include_refinance_costs=False, include_growth=False,
                       include_alternatives=False, evidence_milestone=None, require_market_evidence=False,
-                      require_formula_review=False):
+                      require_formula_review=False, require_supplemental_scope=False):
     hashes = object_or_empty(case.get("workbook_sha256"))
     review = review_native_mapping(case.get("native_mapping"), workbooks, hashes, calculation_fields=FIELDS)
     revision = review_revision(case, current_revision_raw)
+
+    supplemental = None
+    if require_supplemental_scope:
+        supplemental = object_or_empty(object_or_empty(case.get("rent_inputs")).get("supplemental_scope"))
+        downside = object_or_empty(object_or_empty(supplemental.get("Downside")).get("downside_scope"))
+        if (downside.get("base_workbook_sha256"), downside.get("downside_workbook_sha256")) != (hashes.get("Base"), hashes.get("Downside")):
+            supplemental = supplemental | {"Downside": object_or_empty(supplemental.get("Downside")) | {"downside_scope": None}}
 
     def run_scenario(name, source_review):
         return run_rental_scenario(name, workbooks[name], source_review, case.get("rent_inputs"),
@@ -568,7 +598,7 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
                                       include_property_tax=include_property_tax, include_exit_pricing=include_exit_pricing,
                                       include_permanent_loan=include_permanent_loan, include_refinance_costs=include_refinance_costs,
                                       include_growth=include_growth, require_market_evidence=require_market_evidence,
-                                      require_formula_review=require_formula_review)
+                                      require_formula_review=require_formula_review, supplemental=supplemental)
 
     views = {name: run_scenario(name, review["scenarios"][name]) for name in SCENARIOS}
     workbook_blockers = review["blockers"]
@@ -611,7 +641,8 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
                  include_property_tax=include_property_tax, include_exit_pricing=include_exit_pricing,
                  include_permanent_loan=include_permanent_loan, include_refinance_costs=include_refinance_costs,
                  include_growth=include_growth, alternatives=alternatives,
-                 evidence_milestone="D173" if require_formula_review else "D166" if require_market_evidence else evidence_milestone,
+                 evidence_milestone="D174" if require_supplemental_scope else "D173" if require_formula_review
+                 else "D166" if require_market_evidence else evidence_milestone,
                  formula_review=require_formula_review)
     profile = "synthetic_native_residential_and_commercial_rent" if include_commercial else PROFILE
     if include_utilities:
@@ -684,6 +715,10 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
         from worksheet_formula_review_D173 import PROFILE as REVIEW_PROFILE
         profile = REVIEW_PROFILE
         pipeline["pipeline"]["version_tests"]["suite"] = "check_worksheet_formula_review_D173.py"
+    if require_supplemental_scope:
+        from worksheet_scope_D174 import PROFILE as SUPPLEMENTAL_PROFILE
+        profile = SUPPLEMENTAL_PROFILE
+        pipeline["pipeline"]["version_tests"]["suite"] = "check_worksheet_scope_D174.py"
     return dict(profile=profile, state=state,
                 case_sha256=case_sha256, decision="PENDING", simulation_result=simulation,
                 real_decisions_enabled=False, deployment_enabled=False, personal_investor_return=None,

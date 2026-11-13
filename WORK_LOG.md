@@ -1792,3 +1792,7 @@ La [planilla editable](docs/review/MiniUW_Planilla_55_Campos_Revision_Profesiona
 ## D173 — Correcciones tras la revisión del catálogo de fórmulas D170
 
 Se incorpora el CoC del tramo sobre capital remanente documentado y el impuesto escolar/no escolar del comprador en el NOI forward de salida. El PDF del ejemplo D170 incluye aportes totales, múltiplos y FAIL simulado del expediente de origen. Se cotejan los flujos por USD 10 y se prueban faltantes, ceros y revisión desactualizada. [Hallazgos, fórmulas, evidencia y pendientes](docs/workbook-formula-review-D173.md).
+
+## D174 — Revisión profesional de la planilla y alcance del piloto
+
+Los 55 campos originales conservan sus IDs y referencias. Se agrega una hoja de datos complementarios y se enlazan venta, vencimiento, costos fijos, vacancia bancaria y evidencia de Downside al perfil sintético v26. Live Local aplicable queda PENDING. El expediente prueba faltantes, discrepancias y ceros explícitos. [Cotejo, resultados y planilla](docs/workbook-supplemental-scope-D174.md).

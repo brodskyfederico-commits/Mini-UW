@@ -47,4 +47,10 @@ def price_sale_costs(exit_run, terms):
                       applicability="included", applicability_basis_ref=terms["sale_cost_inventory_ref"],
                       value=terms["sale_cost_fraction"], unit="fraction_of_gross_price", currency=valuation["currency"],
                       as_of_date=day, source_ref=terms["cell_sources"]["C68"])])
+    if "fixed_sale_cost" in terms:
+        fixed = terms["fixed_sale_cost"]
+        source["costs"].append(dict(
+            cost_id="fixed-sale-cost", classification="transaction_cost", kind="fixed",
+            applicability="included", applicability_basis_ref=terms["nonoverlap_ref"], value=fixed["value"],
+            unit="currency", currency=valuation["currency"], as_of_date=day, source_ref=fixed["source_ref"]))
     return produce_sale_costs(encoded(source))
