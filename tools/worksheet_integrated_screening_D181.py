@@ -204,7 +204,8 @@ def compare_pass_only(metric, criterion, enclosure):
             {"pass_condition": relation}, [] if relation == "every" else [reasons[relation]])
 
 
-def screen_integrated(case, views, blockers, *, definition_screening=False, criteria_review=None):
+def screen_integrated(case, views, blockers, *, definition_screening=False, criteria_review=None,
+                      technical_acceptance=False):
     inputs = object_or_empty(object_or_empty(case.get("rent_inputs")).get("integrated_screening"))
     collections = {name: collect_metrics(name, view, object_or_empty(inputs.get(name)))
                    for name, view in views.items()}
@@ -222,10 +223,12 @@ def screen_integrated(case, views, blockers, *, definition_screening=False, crit
     if definition_screening:
         from worksheet_definition_screening_D193 import RLV, extend, land_band_rules
         source = object_or_empty(object_or_empty(case.get("rent_inputs")).get("definition_screening"))
+        noi_contract = object_or_empty(case["rent_inputs"].get("criterion_noi_contexts"))
         for name, (records, evidence, irr) in collections.items():
             criteria = {key: entry for (scenario, key), entry in rules.items() if scenario == name}
             updated, trace = extend(views[name], object_or_empty(source.get(name)), object_or_empty(inputs.get(name)),
-                                    criteria, records, evidence, irr)
+                                    criteria, records, evidence, irr, noi_contexts=(
+                                        object_or_empty(noi_contract.get(name)) if technical_acceptance else None))
             if criteria_review is not None:
                 rlv_trace = trace["candidate_definitions"][RLV]
                 locators = rlv_trace.get("criterion_locators", {})
@@ -338,7 +341,7 @@ def display_metric(row, cash):
     return f"{value} [{RESULT_LABELS[row['state']]}]"
 
 
-def render_integrated(views, screening):
+def render_integrated(views, screening, *, technical_acceptance=False):
     lines = [(f"Dictamen simulado {screening['simulation_result']} | Decisión real PENDING | Retorno personal LP/GP PENDING", True),
              ("Equity agregado del proyecto antes de impuestos personales. Importes en USD por USD 10 iniciales.", False)]
     dated = defaultdict(dict)
@@ -409,6 +412,8 @@ def render_integrated(views, screening):
         lines.append(("PENDING por banda: una comparación requiere revisión profesional.", True))
     lines.append(("— indica que no hay evento para esa fecha o falta un valor. 0,00 indica un cero documentado o redondeado.", False))
     label = "D193 | Base y Downside" if definition_screening else "D181 | Base y Downside"
+    if technical_acceptance:
+        label = "D200 | Base y Downside"
     return render_page(label, lines, 9 if definition_screening else 10,
                        "MINI-UW | SI INVIERTO USD 10, ¿CUÁNTO COBRO Y CUÁNDO?",
                        "Piloto sintético | Aportes, cobros, riesgos y métricas del dictamen")

@@ -87,6 +87,8 @@ WORKBOOK_VERSIONED_TEMPLATE_SCHEMA = "miniuw.synthetic-native-rental-inputs.v27"
 WORKBOOK_DEBT_YIELD_SCHEMA = "miniuw.synthetic-native-rental-inputs.v28"
 WORKBOOK_INTEGRATED_SCREENING_SCHEMA = "miniuw.synthetic-native-rental-inputs.v29"
 WORKBOOK_DEFINITION_SCREENING_SCHEMA = "miniuw.synthetic-native-rental-inputs.v30"
+WORKBOOK_TECHNICAL_ACCEPTANCE_SCHEMA = "miniuw.synthetic-native-rental-inputs.v31"
+DEFINITION_SCHEMAS = (WORKBOOK_DEFINITION_SCREENING_SCHEMA, WORKBOOK_TECHNICAL_ACCEPTANCE_SCHEMA)
 EVIDENCE_MILESTONES = {WORKBOOK_EVIDENCE_PDF_SCHEMA: "D156", WORKBOOK_CONSTRUCTION_PDF_SCHEMA: "D157",
                        WORKBOOK_SCANNED_EVIDENCE_SCHEMA: "D158", WORKBOOK_ORIENTED_EVIDENCE_SCHEMA: "D159",
                        WORKBOOK_COLOR_EVIDENCE_SCHEMA: "D160", WORKBOOK_JPEG_EVIDENCE_SCHEMA: "D161",
@@ -94,7 +96,7 @@ EVIDENCE_MILESTONES = {WORKBOOK_EVIDENCE_PDF_SCHEMA: "D156", WORKBOOK_CONSTRUCTI
                        WORKBOOK_MARKET_EVIDENCE_SCHEMA: "D162", WORKBOOK_FORMULA_REVIEW_SCHEMA: "D162",
                        WORKBOOK_SUPPLEMENTAL_SCOPE_SCHEMA: "D162", WORKBOOK_VERSIONED_TEMPLATE_SCHEMA: "D162",
                        WORKBOOK_DEBT_YIELD_SCHEMA: "D162", WORKBOOK_INTEGRATED_SCREENING_SCHEMA: "D162",
-                       WORKBOOK_DEFINITION_SCREENING_SCHEMA: "D162"}
+                       **dict.fromkeys(DEFINITION_SCHEMAS, "D162")}
 WORKBOOK_RENTAL_SCHEMAS = (WORKBOOK_RENTAL_INPUTS_SCHEMA, WORKBOOK_COMMERCIAL_INPUTS_SCHEMA,
                           WORKBOOK_UTILITY_INPUTS_SCHEMA, WORKBOOK_DEVELOPMENT_INPUTS_SCHEMA,
                           WORKBOOK_CONSTRUCTION_BUDGET_SCHEMA, WORKBOOK_PROJECT_CALENDAR_SCHEMA,
@@ -108,9 +110,9 @@ WORKBOOK_RENTAL_SCHEMAS = (WORKBOOK_RENTAL_INPUTS_SCHEMA, WORKBOOK_COMMERCIAL_IN
                           WORKBOOK_PROGRESSIVE_JPEG_EVIDENCE_SCHEMA, WORKBOOK_MARKET_EVIDENCE_SCHEMA,
                           WORKBOOK_FORMULA_REVIEW_SCHEMA, WORKBOOK_SUPPLEMENTAL_SCOPE_SCHEMA,
                           WORKBOOK_VERSIONED_TEMPLATE_SCHEMA, WORKBOOK_DEBT_YIELD_SCHEMA, WORKBOOK_INTEGRATED_SCREENING_SCHEMA,
-                          WORKBOOK_DEFINITION_SCREENING_SCHEMA)
+                          *DEFINITION_SCHEMAS)
 DEBT_YIELD_SCHEMAS = (WORKBOOK_DEBT_YIELD_SCHEMA, WORKBOOK_INTEGRATED_SCREENING_SCHEMA,
-                      WORKBOOK_DEFINITION_SCREENING_SCHEMA)
+                      *DEFINITION_SCHEMAS)
 VERSIONED_TEMPLATE_SCHEMAS = (WORKBOOK_VERSIONED_TEMPLATE_SCHEMA, *DEBT_YIELD_SCHEMAS)
 SUPPLEMENTAL_SCHEMAS = (WORKBOOK_SUPPLEMENTAL_SCOPE_SCHEMA, *VERSIONED_TEMPLATE_SCHEMAS)
 FORMULA_SCHEMAS = (WORKBOOK_FORMULA_REVIEW_SCHEMA, *SUPPLEMENTAL_SCHEMAS)
@@ -176,7 +178,7 @@ def build_results(raw, *, workbook_raw=None, downside_workbook_raw=None, current
                   evidence_raw=None, criteria_raw=None):
     case = _json(raw, MAX_INTEGRATED_PILOT_BYTES)
     schema = case.get("schema") if isinstance(case, dict) else None
-    require(schema in (WORKBOOK_INTEGRATED_SCREENING_SCHEMA, WORKBOOK_DEFINITION_SCREENING_SCHEMA) or len(raw) <= MAX_EXTENDED_PILOT_BYTES,
+    require(schema in (WORKBOOK_INTEGRATED_SCREENING_SCHEMA, *DEFINITION_SCHEMAS) or len(raw) <= MAX_EXTENDED_PILOT_BYTES,
             "The worksheet case exceeds its schema size limit")
     require(current_revision_raw is None or schema in (*WORKBOOK_CURRENT_CHAIN_SCHEMAS, *WORKBOOK_RENTAL_SCHEMAS),
             "The designated revision belongs to the current local chain schema")
@@ -198,7 +200,7 @@ def build_results(raw, *, workbook_raw=None, downside_workbook_raw=None, current
     require(evidence_raw is None or (evidence_milestone is not None and len(evidence_raw) <= MAX_PLAN_BYTES),
             "A bounded evidence PDF belongs to the evidence worksheet schema")
     has_criteria_binding = isinstance(case, dict) and "criteria_workbook" in case
-    require(not (has_criteria_binding or criteria_raw is not None) or schema == WORKBOOK_DEFINITION_SCREENING_SCHEMA,
+    require(not (has_criteria_binding or criteria_raw is not None) or schema in DEFINITION_SCHEMAS,
             "El Excel de criterios requiere el perfil sintético D193")
     criteria_review = None
     if has_criteria_binding or criteria_raw is not None:
@@ -232,9 +234,9 @@ def build_results(raw, *, workbook_raw=None, downside_workbook_raw=None, current
                                  require_supplemental_scope=schema in SUPPLEMENTAL_SCHEMAS,
                                  require_template_identity=schema in VERSIONED_TEMPLATE_SCHEMAS,
                                  require_debt_yield=schema in DEBT_YIELD_SCHEMAS,
-                                 integrated_screening=schema in (WORKBOOK_INTEGRATED_SCREENING_SCHEMA,
-                                                                 WORKBOOK_DEFINITION_SCREENING_SCHEMA),
-                                 definition_screening=schema == WORKBOOK_DEFINITION_SCREENING_SCHEMA,
+                                 integrated_screening=schema in (WORKBOOK_INTEGRATED_SCREENING_SCHEMA, *DEFINITION_SCHEMAS),
+                                 definition_screening=schema in DEFINITION_SCHEMAS,
+                                 technical_acceptance=schema == WORKBOOK_TECHNICAL_ACCEPTANCE_SCHEMA,
                                  criteria_review=criteria_review)
     yield_metrics = schema in (WORKBOOK_YIELD_PILOT_SCHEMA, *WORKBOOK_FUNDING_PILOT_SCHEMAS)
     interval_irr = schema == WORKBOOK_IRR_PILOT_SCHEMA or yield_metrics

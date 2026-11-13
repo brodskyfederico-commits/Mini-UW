@@ -89,10 +89,17 @@ def occupancy(view, annual, reserve, period, policy):
                                         C14=view["cell_sources"]["C14"], physical_breakdown=breakdown))
 
 
-def rlv(view, policies, records, evidence, criteria, before_reserve, after_reserve, cap, cap_basis):
+def rlv(view, policies, records, evidence, criteria, before_reserve, after_reserve, cap, cap_basis, *,
+        strict=False):
     if not synthetic_id(policies.get("source_ref")) or policies.get("basis") != PRICE_BASIS:
         return pending("SRC-03_fixed_debt_price_basis_missing")
-    yield_metric = policies.get("yield_metric")
+    if strict:
+        designated = policies.get("binding_yields")
+        if designated not in (["YoC"], ["spread"]) or "yield_metric" in policies:
+            return pending("SRC-03_exactly_one_binding_yield_required")
+        yield_metric, = designated
+    else:
+        yield_metric = policies.get("yield_metric")
     if yield_metric not in ("YoC", "spread"):
         return pending("SRC-03_yield_or_spread_criterion_not_designated")
     if yield_metric == "spread" and (cap is None or cap_basis not in (AFTER_RESERVES, BEFORE_RESERVES)):
@@ -102,7 +109,8 @@ def rlv(view, policies, records, evidence, criteria, before_reserve, after_reser
                         ("equity_multiple", "equity_multiple"), ("equity_to_tdc", "equity_TDC")):
         supplied = criteria.get(key)
         metric = records[key]
-        if supplied is None or any(supplied[1][field] != metric[field] or metric[field] is None
+        if supplied is None or (strict and metric["blockers"]) or any(
+                supplied[1][field] != metric[field] or metric[field] is None
                                    for field in ("definition_ref", "unit", "period_ref")):
             return pending(f"SRC-03_incompatible_or_missing_criterion:{key}")
         pc, fc = (supplied[1][field] for field in ("pass_condition", "fail_condition"))
@@ -138,7 +146,7 @@ def rlv(view, policies, records, evidence, criteria, before_reserve, after_reser
     if any(source[key] is None for key in ("price", "asking", "closing_rate")) or source["asking"] < 0:
         return pending("SRC-03_asking_purchase_or_C33_missing")
     try:
-        result = price_screen(source, rules, grid_prices)
+        result = price_screen(source, rules, grid_prices, require_both_neighbors=strict)
     except ValueError as error:
         return pending("SRC-03_invalid_fixed_debt_profile", detail=str(error))
     ratio = result.get("asking_over_pass_price") if result["state"] == "calculated_synthetic" else None
@@ -159,7 +167,19 @@ def rlv(view, policies, records, evidence, criteria, before_reserve, after_reser
                                  "C33": development["cell_sources"]["C33"]})
 
 
-def extend(view, section, supplied, criteria, records, evidence, irr):
+def apply_noi_contexts(records, details, bases, contexts):
+    for key, basis in bases.items():
+        expected = dict(noi_basis=basis, period_ref=records[key]["period_ref"])
+        supplied = object_or_empty(contexts.get(key))
+        matches = bool(basis and expected["period_ref"] and supplied == expected)
+        detail = dict(expected=expected, supplied=supplied, matched=matches)
+        details[key] = details.get(key, {}) | {"comparison_noi_context": detail}
+        if not matches:
+            records[key]["value"] = None
+            records[key]["blockers"].append("NOI_basis_or_window_unconfirmed_or_incompatible")
+
+
+def extend(view, section, supplied, criteria, records, evidence, irr, *, noi_contexts=None):
     """Attach versioned metrics and producer evidence before B14 evaluates thresholds."""
     records = {key: value.copy() for key, value in records.items()}
     records["IRR"]["period_ref"] = irr.get("period_ref")
@@ -201,9 +221,17 @@ def extend(view, section, supplied, criteria, records, evidence, irr):
                                 cap=cap if key == "spread" else None, cap_noi_basis=cap_basis if key == "spread" else None,
                                 noi_sha256=annual["noi_assembly_sha256"])
         details[OCCUPANCY] = occupancy(view, annual, reserve, period, object_or_empty(section.get("occupancy")))
+        apply(OCCUPANCY, details[OCCUPANCY], ECONOMIC)
+        if noi_contexts is not None:
+            bases = {
+                "YoC": AFTER_RESERVES, "spread": cap_basis, OCCUPANCY: AFTER_RESERVES,
+                "post_refi_CoC": view["post_refinance_coc"].get("noi_basis"),
+            }
+            apply_noi_contexts(records, details, bases, noi_contexts)
         details[RLV] = rlv(view, object_or_empty(section.get("rlv")), records, evidence, criteria,
-                           before, after, cap, cap_basis)
-    apply(OCCUPANCY, details[OCCUPANCY], ECONOMIC)
+                           before, after, cap, cap_basis, strict=noi_contexts is not None)
+    if annual_data is None:
+        apply(OCCUPANCY, details[OCCUPANCY], ECONOMIC)
     apply(RLV, details[RLV], PRICE)
     details = json.loads(json.dumps(details, default=rational))
     return records, evidence | {"candidate_definitions": details}

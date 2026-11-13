@@ -4,6 +4,8 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D200 cierra los cuatro hitos técnicos sintéticos de D197 y verifica el flujo completo por USD 10 en el VPS. [Criterios, resultados y reproducción](docs/worksheet-technical-acceptance-D200.md).
+
 - D196 prueba el dictamen con PASS Downside y una política explícita sin umbral FAIL. [Casos y reproducción](docs/workbook-downside-pass-only-D196.md).
 
 - D195 verifica la vigencia del expediente y del Excel de criterios en la auditoría B16. [Casos y reproducción](docs/workbook-revision-audit-D195.md).

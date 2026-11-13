@@ -24,7 +24,7 @@ def forward_buyer_tax(raw, name, calendar):
     return record | dict(total=rational(school + non_school), source_sha256=sha(encoded(record)))
 
 
-def post_refi_coc(raw, name, view):
+def post_refi_coc(raw, name, view, *, require_noi_basis=False):
     result = dict(definition=COC_BASIS, value=None, annualized=False)
     calendar = view.get("project_calendar")
     if calendar is None or view.get("cash_per_usd_10") is None:
@@ -32,8 +32,15 @@ def post_refi_coc(raw, name, view):
     start, end = calendar["refinance_date"], calendar["sale_date"]
     result.update(window_start=start, window_end=end)
     record = object_or_empty(object_or_empty(raw).get(name))
-    if (record.keys() != {"basis", "currency", "window_start", "window_end", "period_noi",
-                          "noi_source_ref", "equity_still_invested", "equity_source_ref"}
+    fields = {"basis", "currency", "window_start", "window_end", "period_noi",
+              "noi_source_ref", "equity_still_invested", "equity_source_ref"}
+    if require_noi_basis:
+        from worksheet_performance_policy_D184 import AFTER_RESERVES
+        fields.add("noi_basis")
+        if record.get("noi_basis") != AFTER_RESERVES:
+            return check("post_refi_reserve_adjusted_noi_basis_unconfirmed", **result)
+        result["noi_basis"] = AFTER_RESERVES
+    if (record.keys() != fields
             or record["basis"] != COC_BASIS or record["currency"] != "USD"
             or (record["window_start"], record["window_end"]) != (start, end)
             or not all(synthetic_id(record[key]) for key in ("noi_source_ref", "equity_source_ref"))):

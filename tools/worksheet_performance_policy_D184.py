@@ -37,7 +37,7 @@ def equilibrium(slope, intercept, floor, tax_coefficient, debt_service, reserve,
                          physical_blocker=None)
 
 
-def price_screen(source, rules, grid):
+def price_screen(source, rules, grid, *, require_both_neighbors=False):
     """Find joint price limits on a declared grid with exact signed cash and rates."""
     low, high, step = grid
     if any(type(value) is not int for value in grid) or step <= 0 or not 2 * step <= high - low <= 1000 * step:
@@ -109,8 +109,14 @@ def price_screen(source, rules, grid):
         at = rows[index]
         below = rows[index - 1] if index else None
         above = rows[index + 1] if index + 1 < len(rows) else None
-        state = "upper_bound_unresolved" if above is None else "bounded_synthetic"
-        return dict(state=state, price=at["price"] if above is not None else None, below=below, at=at, above=above)
+        if above is None:
+            state = "upper_bound_unresolved"
+        elif require_both_neighbors and below is None:
+            state = "lower_neighbor_missing"
+        else:
+            state = "bounded_synthetic"
+        return dict(state=state, price=at["price"] if state == "bounded_synthetic" else None,
+                    below=below, at=at, above=above)
 
     passing = limit({"PASS"})
     before_fail = limit({"PASS", "PENDING"})

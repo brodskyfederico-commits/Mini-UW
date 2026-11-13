@@ -1,6 +1,7 @@
 """Bind C7–C15 to scoped residential NOI, refinance and equity cash."""
 from datetime import date, datetime
 from fractions import Fraction
+import json
 
 from check_operating_replay_D20 import require
 from check_scenario_pilot_D51 import METRICS
@@ -589,7 +590,7 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
                       include_alternatives=False, evidence_milestone=None, require_market_evidence=False,
                       require_formula_review=False, require_supplemental_scope=False, require_template_identity=False,
                       require_debt_yield=False, integrated_screening=False, definition_screening=False,
-                      criteria_review=None):
+                      criteria_review=None, technical_acceptance=False):
     hashes = object_or_empty(case.get("workbook_sha256"))
     review = review_native_mapping(case.get("native_mapping"), workbooks, hashes, calculation_fields=FIELDS,
                                    require_template_identity=require_template_identity)
@@ -634,7 +635,9 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
     if require_formula_review:
         from worksheet_formula_review_D173 import post_refi_coc
         for name, view in views.items():
-            coc = post_refi_coc(object_or_empty(case.get("rent_inputs")).get("post_refinance_coc"), name, view)
+            inputs = object_or_empty(case.get("rent_inputs"))
+            coc = post_refi_coc(inputs.get("post_refinance_coc"), name, view,
+                                require_noi_basis=technical_acceptance)
             view["post_refinance_coc"] = coc
             blockers.extend(f"{name}:post_refinance_coc:{reason}" for reason in coc["blockers"])
     period_ref = PERIOD
@@ -647,7 +650,7 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
     if integrated_screening:
         from worksheet_integrated_screening_D181 import screen_integrated
         screening = screen_integrated(case, views, blockers, definition_screening=definition_screening,
-                                      criteria_review=criteria_review)
+                                      criteria_review=criteria_review, technical_acceptance=technical_acceptance)
     else:
         screening = screen(case, views, blockers, period_ref=period_ref)
     simulation = screening["simulation_result"]
@@ -657,7 +660,7 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
                                              revision=revision, documents=document_review, case_sha256=case_sha256)
     if integrated_screening:
         from worksheet_integrated_screening_D181 import render_integrated
-        pdf = render_integrated(views, screening)
+        pdf = render_integrated(views, screening, technical_acceptance=technical_acceptance)
     else:
         pdf = render(views, simulation, include_commercial=include_commercial, include_utilities=include_utilities,
                      include_development=include_development, include_budget=include_budget, include_calendar=include_calendar,
@@ -758,6 +761,17 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
     if definition_screening:
         profile = "synthetic_documented_definition_screening"
         pipeline["pipeline"]["version_tests"]["suite"] = "check_worksheet_definition_screening_D193.py"
+    if technical_acceptance:
+        from worksheet_calendar_routes_D199 import route_cash
+        routes = object_or_empty(case["rent_inputs"].get("calendar_checks"))
+        calendar_checks = {
+            name: {label: route_cash(views[name], object_or_empty(config))
+                   for label, config in object_or_empty(routes.get(name)).items()}
+            for name in SCENARIOS
+        }
+        pipeline["calendar_checks"] = json.loads(json.dumps(calendar_checks, default=rational))
+        profile = "synthetic_documented_technical_acceptance"
+        pipeline["pipeline"]["version_tests"]["suite"] = "check_worksheet_technical_acceptance_D200.py"
     return dict(profile=profile, state=state,
                 case_sha256=case_sha256, decision="PENDING", simulation_result=simulation,
                 real_decisions_enabled=False, deployment_enabled=False, personal_investor_return=None,

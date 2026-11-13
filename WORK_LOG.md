@@ -1884,3 +1884,10 @@ Se ensaya la regla explícita por métrica y revisión con «Sin FAIL» en el Ex
 ## D197 · Corrección del reporte D196 tras revisión especializada
 
 Se mantienen 12/16 hitos técnicos al corte D196 y se precisa el denominador. Se publica la matriz de aceptación revisada de los cuatro hitos y un checklist de seis condiciones del piloto real con cero cierres documentados. Se documentan las fuentes oficiales de Florida y el pendiente fiscal de M2. Se registra «Cumple criterios» para la futura presentación profesional. [Reporte y criterios de cierre](docs/review/MiniUW_Cierre_Tecnico_y_Piloto_D197.md).
+
+## 13 November 2026 — D198–D200 synthetic technical acceptance
+
+- D198 assembles the v31 case, revision, one-page report and audit package from registered source files and explicit synthetic settings. The acceptance suite checks byte-identical replay and reports a changed Inputs cell against the original registration.
+- D199 verifies the interest-only to amortizing transition, sale without a permanent refinance, and a pre-opening property-tax cash payment on the same Base/Downside inputs. Scope is quarterly synthetic routes and declared source terms. Real Florida M2 remains pending validation.
+- D200 checks the documented four-case acceptance, separate PASS/FAIL price neighbors, required NOI basis and window, physical occupancy without the C14 breakdown, independent arithmetic, cash conservation and synthetic LP/GP by date. Read [the scoped results and reproduction](docs/worksheet-technical-acceptance-D200.md).
+- Real decision, actual allocation, pilot, and production release remain PENDING. Source documents, blank real criteria, prior output profiles, cloud infrastructure and hosted-runner settings were preserved.
