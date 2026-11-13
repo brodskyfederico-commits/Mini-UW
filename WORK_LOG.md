@@ -1872,3 +1872,7 @@ El perfil sintético v30 calcula SRC-02 y SRC-03 desde la corrida financiera y p
 ## D194 · Excel de Lorena hasta el dictamen D193
 
 La corrida pública recibe y archiva el Excel de criterios, coteja su huella y revisión, y conserva la ubicación de cada regla. B16 reproduce ocupación, RLV con banda y flujos por USD 10. En los ensayos, el Excel completo da PASS simulado; cambios de ocupación producen FAIL y de equity/TDC recalculan el RLV y producen PENDING en banda. Se bloquean faltantes, formatos y revisiones incompatibles. El piloto real sigue PENDING. [Resultados y reproducción](docs/workbook-lorena-screening-D194.md).
+
+## D195 · Vigencia del expediente y Excel de criterios
+
+B16 deja PENDING si las reglas del expediente difieren de la revisión designada o el Excel de criterios falta, tiene otra huella o declara otra versión. La auditoría conserva el resultado histórico cuando avanza la revisión y devuelve los motivos de vigencia. Se verifican los flujos conciliados por USD 10 durante todos los cambios del expediente de prueba. [Casos y reproducción](docs/workbook-revision-audit-D195.md).

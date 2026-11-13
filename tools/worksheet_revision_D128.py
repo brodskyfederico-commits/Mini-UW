@@ -86,10 +86,24 @@ def audit_revision(result, raw):
     captured = result["revision_review"]
     current = parse_snapshot(raw)
     status = "PENDING"
-    if current is not None and captured["reference_sha256"] is not None:
-        status = "VIGENTE" if captured["reference_sha256"] == sha(raw) else "HISTORICO"
+    revision_blockers = list(captured["blockers"])
+    # A matching case declaration alone does not establish the identity of
+    # the criteria XLSX that the package actually replayed.
+    intake = object_or_empty(result.get("screening", {}).get("criteria_workbook"))
+    revision_blockers.extend(reason for reason in intake.get("blockers", []) if reason in {
+        "criteria_workbook_missing", "criteria_workbook_hash_mismatch", "criteria_workbook_revision_mismatch",
+    })
+    if current is None:
+        revision_blockers.append("current_revision_snapshot_missing" if raw is None else "current_revision_snapshot_invalid")
+    elif not revision_blockers and captured["state"] == "matched_synthetic_revision":
+        if captured["reference_sha256"] == sha(raw):
+            status = "VIGENTE"
+        else:
+            status = "HISTORICO"
+            revision_blockers.append("archived_revision_differs_from_current")
     archived = result["simulation_result"]
-    return dict(vigencia=status, archived_simulation_result=archived,
+    return dict(vigencia=status, revision_blockers=sorted(set(revision_blockers)),
+                archived_simulation_result=archived,
                 state=result["state"] if status == "VIGENTE" else "PENDING",
                 simulation_result=archived if status == "VIGENTE" else "PENDING",
                 archived_revision=captured["reference_revision"],
