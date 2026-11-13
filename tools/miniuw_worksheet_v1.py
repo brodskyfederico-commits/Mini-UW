@@ -136,6 +136,7 @@ DOWNSIDE_WORKBOOK_FILE = "Downside_Inputs.xlsx"
 CURRENT_REVISION_FILE = "current_revision.json"
 PLAN_FILE = "Plan.pdf"
 EVIDENCE_FILE = "Evidence.pdf"
+CRITERIA_FILE = "Criterios_Lorena.xlsx"
 MAX_CURRENT_REVISION_BYTES = 16 * 1024
 MAX_PLAN_BYTES = 2 * 1024 * 1024
 MAX_FILE_BYTES = 4 * 1024 * 1024
@@ -172,7 +173,7 @@ def read_case(case):
 
 
 def build_results(raw, *, workbook_raw=None, downside_workbook_raw=None, current_revision_raw=None, plan_raw=None,
-                  evidence_raw=None):
+                  evidence_raw=None, criteria_raw=None):
     case = _json(raw, MAX_INTEGRATED_PILOT_BYTES)
     schema = case.get("schema") if isinstance(case, dict) else None
     require(schema in (WORKBOOK_INTEGRATED_SCREENING_SCHEMA, WORKBOOK_DEFINITION_SCREENING_SCHEMA) or len(raw) <= MAX_EXTENDED_PILOT_BYTES,
@@ -196,6 +197,13 @@ def build_results(raw, *, workbook_raw=None, downside_workbook_raw=None, current
     evidence_milestone = EVIDENCE_MILESTONES.get(schema)
     require(evidence_raw is None or (evidence_milestone is not None and len(evidence_raw) <= MAX_PLAN_BYTES),
             "A bounded evidence PDF belongs to the evidence worksheet schema")
+    has_criteria_binding = isinstance(case, dict) and "criteria_workbook" in case
+    require(not (has_criteria_binding or criteria_raw is not None) or schema == WORKBOOK_DEFINITION_SCREENING_SCHEMA,
+            "El Excel de criterios requiere el perfil sintético D193")
+    criteria_review = None
+    if has_criteria_binding or criteria_raw is not None:
+        from worksheet_criteria_intake_D194 import compile_criteria
+        criteria_review = compile_criteria(case, criteria_raw)
     if schema in WORKBOOK_RENTAL_SCHEMAS:
         from worksheet_rental_inputs_D140 import build_rental_case
         document_review = None
@@ -226,7 +234,8 @@ def build_results(raw, *, workbook_raw=None, downside_workbook_raw=None, current
                                  require_debt_yield=schema in DEBT_YIELD_SCHEMAS,
                                  integrated_screening=schema in (WORKBOOK_INTEGRATED_SCREENING_SCHEMA,
                                                                  WORKBOOK_DEFINITION_SCREENING_SCHEMA),
-                                 definition_screening=schema == WORKBOOK_DEFINITION_SCREENING_SCHEMA)
+                                 definition_screening=schema == WORKBOOK_DEFINITION_SCREENING_SCHEMA,
+                                 criteria_review=criteria_review)
     yield_metrics = schema in (WORKBOOK_YIELD_PILOT_SCHEMA, *WORKBOOK_FUNDING_PILOT_SCHEMAS)
     interval_irr = schema == WORKBOOK_IRR_PILOT_SCHEMA or yield_metrics
     extended = schema == WORKBOOK_EXTENDED_PILOT_SCHEMA or interval_irr
@@ -350,9 +359,10 @@ def encoded(value):
 
 
 def build_package(raw, *, workbook_raw=None, downside_workbook_raw=None, current_revision_raw=None, plan_raw=None,
-                  evidence_raw=None):
+                  evidence_raw=None, criteria_raw=None):
     result, pdf = build_results(raw, workbook_raw=workbook_raw, downside_workbook_raw=downside_workbook_raw,
-                                current_revision_raw=current_revision_raw, plan_raw=plan_raw, evidence_raw=evidence_raw)
+                                current_revision_raw=current_revision_raw, plan_raw=plan_raw, evidence_raw=evidence_raw,
+                                criteria_raw=criteria_raw)
     files = {"case.json": raw, "results.json": encoded(result), "MiniUW_Resumen.pdf": pdf}
     if workbook_raw is not None:
         files[WORKBOOK_FILE] = workbook_raw
@@ -364,6 +374,8 @@ def build_package(raw, *, workbook_raw=None, downside_workbook_raw=None, current
         files[PLAN_FILE] = plan_raw
     if evidence_raw is not None:
         files[EVIDENCE_FILE] = evidence_raw
+    if criteria_raw is not None:
+        files[CRITERIA_FILE] = criteria_raw
     files["package.json"] = encoded(dict(
         schema=PACKAGE_SCHEMA, state=result["state"], decision=result["decision"],
         files=[dict(path=name, bytes=len(content), sha256=sha(content)) for name, content in sorted(files.items())],
@@ -376,7 +388,7 @@ def read_package(directory):
     require(not directory.is_symlink() and directory.is_dir(), "A regular output directory is required")
     paths = list(directory.iterdir())
     names = {p.name for p in paths}
-    require(FILES <= names <= FILES | {WORKBOOK_FILE, DOWNSIDE_WORKBOOK_FILE, CURRENT_REVISION_FILE, PLAN_FILE, EVIDENCE_FILE}
+    require(FILES <= names <= FILES | {WORKBOOK_FILE, DOWNSIDE_WORKBOOK_FILE, CURRENT_REVISION_FILE, PLAN_FILE, EVIDENCE_FILE, CRITERIA_FILE}
             and all(p.is_file() and not p.is_symlink() and p.stat().st_size <= MAX_FILE_BYTES for p in paths),
             "Exact regular case, results, PDF and manifest files are required")
     return {p.name: p.read_bytes() for p in paths}
@@ -387,7 +399,7 @@ def verify_package(directory, *, current_revision_raw=None):
     expected, result = build_package(saved["case.json"], workbook_raw=saved.get(WORKBOOK_FILE),
                                      downside_workbook_raw=saved.get(DOWNSIDE_WORKBOOK_FILE),
                                      current_revision_raw=saved.get(CURRENT_REVISION_FILE), plan_raw=saved.get(PLAN_FILE),
-                                     evidence_raw=saved.get(EVIDENCE_FILE))
+                                     evidence_raw=saved.get(EVIDENCE_FILE), criteria_raw=saved.get(CRITERIA_FILE))
     require(saved == expected, "Output does not match source-first replay")
     response = status("verified_source_first", result)
     if "revision_review" in result:
@@ -408,9 +420,10 @@ def status(operation, result):
 
 
 def write_package(raw, directory, *, workbook_raw=None, downside_workbook_raw=None, current_revision_raw=None, plan_raw=None,
-                  evidence_raw=None):
+                  evidence_raw=None, criteria_raw=None):
     expected, result = build_package(raw, workbook_raw=workbook_raw, downside_workbook_raw=downside_workbook_raw,
-                                     current_revision_raw=current_revision_raw, plan_raw=plan_raw, evidence_raw=evidence_raw)
+                                     current_revision_raw=current_revision_raw, plan_raw=plan_raw, evidence_raw=evidence_raw,
+                                     criteria_raw=criteria_raw)
     if directory.exists() or directory.is_symlink():
         require(read_package(directory) == expected, "Existing output differs from the requested case")
         return status("verified_identical_output", result)
@@ -471,6 +484,7 @@ def main():
     run.add_argument("--current-revision", type=Path)
     run.add_argument("--plan", type=Path)
     run.add_argument("--evidence", type=Path)
+    run.add_argument("--criteria", type=Path, help="Version-bound synthetic Lorena criteria workbook")
     audit = subcommands.add_parser("audit")
     audit.add_argument("directory", type=Path)
     audit.add_argument("--current-revision", type=Path)
@@ -489,7 +503,8 @@ def main():
                                    downside_workbook_raw=downside,
                                    current_revision_raw=read_current_revision(args.current_revision, args.output),
                                    plan_raw=read_plan_file(args.plan),
-                                   evidence_raw=read_plan_file(args.evidence))
+                                   evidence_raw=read_plan_file(args.evidence),
+                                   criteria_raw=None if args.criteria is None else read_workbook(args.criteria))
         elif args.command == "audit":
             result = verify_package(args.directory,
                                     current_revision_raw=read_current_revision(args.current_revision, args.directory))

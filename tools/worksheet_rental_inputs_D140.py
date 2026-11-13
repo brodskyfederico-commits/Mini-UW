@@ -588,7 +588,8 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
                       include_permanent_loan=False, include_refinance_costs=False, include_growth=False,
                       include_alternatives=False, evidence_milestone=None, require_market_evidence=False,
                       require_formula_review=False, require_supplemental_scope=False, require_template_identity=False,
-                      require_debt_yield=False, integrated_screening=False, definition_screening=False):
+                      require_debt_yield=False, integrated_screening=False, definition_screening=False,
+                      criteria_review=None):
     hashes = object_or_empty(case.get("workbook_sha256"))
     review = review_native_mapping(case.get("native_mapping"), workbooks, hashes, calculation_fields=FIELDS,
                                    require_template_identity=require_template_identity)
@@ -645,7 +646,8 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
         period_ref = LIFECYCLE
     if integrated_screening:
         from worksheet_integrated_screening_D181 import screen_integrated
-        screening = screen_integrated(case, views, blockers, definition_screening=definition_screening)
+        screening = screen_integrated(case, views, blockers, definition_screening=definition_screening,
+                                      criteria_review=criteria_review)
     else:
         screening = screen(case, views, blockers, period_ref=period_ref)
     simulation = screening["simulation_result"]

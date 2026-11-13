@@ -183,30 +183,44 @@ def review_rules(raw, scenarios):
     return accepted, issues, []
 
 
-def screen_integrated(case, views, blockers, *, definition_screening=False):
+def screen_integrated(case, views, blockers, *, definition_screening=False, criteria_review=None):
     inputs = object_or_empty(object_or_empty(case.get("rent_inputs")).get("integrated_screening"))
     collections = {name: collect_metrics(name, view, object_or_empty(inputs.get(name)))
                    for name, view in views.items()}
     revision = case.get("criteria_revision")
     current_rules = synthetic_id(revision) and not any(reason.startswith("B12:") for reason in blockers)
-    rules, rule_issues, inventory_issues = review_rules(case.get("rules") if current_rules else None, views)
+    workbook_rows = {}
+    rule_path = "/rules" if criteria_review is None else "/screening/criteria_workbook/rules"
+    raw_rules = case.get("rules")
+    if criteria_review is not None:
+        workbook_rows = {(row["scenario_id"], row["metric_id"]): row for row in criteria_review["rows"]}
+        raw_rules = criteria_review["rules"]
+        blockers = [*blockers, *criteria_review["blockers"]]
+        current_rules = current_rules and not criteria_review["blockers"]
+    rules, rule_issues, inventory_issues = review_rules(raw_rules if current_rules else None, views)
     if definition_screening:
-        from worksheet_definition_screening_D193 import extend
+        from worksheet_definition_screening_D193 import RLV, extend, land_band_rules
         source = object_or_empty(object_or_empty(case.get("rent_inputs")).get("definition_screening"))
         for name, (records, evidence, irr) in collections.items():
             criteria = {key: entry for (scenario, key), entry in rules.items() if scenario == name}
             updated, trace = extend(views[name], object_or_empty(source.get(name)), object_or_empty(inputs.get(name)),
                                     criteria, records, evidence, irr)
+            if criteria_review is not None:
+                rlv_trace = trace["candidate_definitions"][RLV]
+                locators = rlv_trace.get("criterion_locators", {})
+                for key, locator in locators.items():
+                    locators[key] = f"{rule_path}/{locator.rsplit('/', 1)[-1]}"
             collections[name] = (updated, trace, irr)
     records = {(name, metric): data[0][metric] for name, data in collections.items() for metric in METRICS}
     if definition_screening:
-        from worksheet_definition_screening_D193 import RLV, land_band_rules
         for name, (_, trace, _) in collections.items():
             key = (name, RLV)
             if key not in rules:
                 continue
             _, criterion = rules[key]
             boundary = trace["candidate_definitions"][RLV].get("fail_boundary_multiple")
+            if (boundary is not None and criteria_review is not None and name in criteria_review["derived_rlv"]):
+                criterion["fail_condition"] = land_band_rules(boundary)["FAIL"]
             actual = {"PASS": criterion["pass_condition"], "FAIL": criterion["fail_condition"]}
             if boundary is not None and actual != land_band_rules(boundary):
                 # The price band is defined by the joint price search. An
@@ -230,7 +244,7 @@ def screen_integrated(case, views, blockers, *, definition_screening=False):
     comparisons = scalar_result["comparisons"]
     for name, (_, _, irr) in collections.items():
         index, criterion = rules.get((name, "IRR"), (None, None))
-        source = None if index is None else f"/rules/{index}"
+        source = None if index is None else f"{rule_path}/{index}"
         state, relations, reasons = ("PENDING", {}, ["criterion_record_missing"]) if criterion is None else _compare(
             irr["annual_enclosure"], criterion | dict(source_ref=source), irr.get("period_ref"))
         comparisons.append(dict(metric_id="IRR", scenario_id=name, state=state, blockers=reasons,
@@ -245,9 +259,13 @@ def screen_integrated(case, views, blockers, *, definition_screening=False):
         key = (row["scenario_id"], row["metric_id"])
         metric = records[key]
         index, _ = rules.get(key, (None, None))
-        row["criterion_locator"] = None if index is None else f"/rules/{index}"
+        row["criterion_locator"] = None if index is None else f"{rule_path}/{index}"
         row["metric_locator"] = metric["source_pointer"]
         issues = [rule_issues[key]] if key in rule_issues else []
+        if key in workbook_rows:
+            workbook_row = workbook_rows[key]
+            row["criteria_workbook_cells"] = workbook_row["conditions"]
+            issues.extend(workbook_row["blockers"])
         row["blockers"] = sorted(set(row["blockers"] + metric["blockers"] + issues))
         all_blockers.update(f"{key[0]}:{key[1]}:{reason}" for reason in row["blockers"])
         if row["state"] == "BAND":
@@ -255,13 +273,20 @@ def screen_integrated(case, views, blockers, *, definition_screening=False):
             review.append({key: row[key] for key in ("metric_id", "scenario_id", "metric_locator", "criterion_locator")})
     simulation = "PENDING" if all_blockers else ("FAIL" if any(
         row["state"] == "FAIL_CONDITION" for row in comparisons) else "PASS")
-    return scalar_result | dict(component=component, required_metrics=list(METRICS), comparisons=comparisons,
+    result = scalar_result | dict(component=component, required_metrics=list(METRICS), comparisons=comparisons,
                                 input_case_rule_source="/rules", input_case_sha256=sha(encoded(case)),
                                 current_criteria_confirmed=current_rules, interval_engine_sha256=ENGINE_SHA256,
                                 metric_evidence_by_scenario={name: row[1] for name, row in collections.items()},
                                 irr_by_scenario={name: row[2] for name, row in collections.items()},
                                 professional_review_needed_for_band=bool(review), pending_review_metrics=review,
                                 simulation_result=simulation, simulation_blockers=sorted(all_blockers))
+    if criteria_review is not None:
+        compiled = [dict(rule) for rule in raw_rules]
+        for index, criterion in rules.values():
+            compiled[index].update(pass_condition=criterion["pass_condition"], fail_condition=criterion["fail_condition"])
+        result.update(input_case_rule_source="Criterios_Lorena.xlsx",
+                      criteria_workbook=criteria_review | {"rules": compiled})
+    return result
 
 
 def percent(value):

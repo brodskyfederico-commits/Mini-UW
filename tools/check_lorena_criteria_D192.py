@@ -48,7 +48,7 @@ def change_cells(raw, edits, *, formula=None):
                         ET.SubElement(cell, f"{namespace}f").text = "1-1"
                         ET.SubElement(cell, f"{namespace}v").text = "0"
                 data = ET.tostring(sheet, encoding="utf-8")
-            target.writestr(member, data)
+            target.writestr(source.getinfo(member), data)
     return output.getvalue()
 
 

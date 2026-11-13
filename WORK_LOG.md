@@ -1868,3 +1868,7 @@ Se versiona la planilla de las diez métricas y se conecta su lectura con la rev
 ## D193 · Ocupación de equilibrio y RLV en el dictamen
 
 El perfil sintético v30 calcula SRC-02 y SRC-03 desde la corrida financiera y pasa las métricas a B14. Ocupación usa renta efectiva, gastos, impuesto, reservas y servicio amortizante anual. RLV prueba criterios conjuntos con deuda fija y C33, conservando las dos fronteras, sus puntos vecinos y el cociente cuando es válido. Se comprueba la banda PENDING y el bloqueo de criterios, fuentes o revisión faltantes o incompatibles. El ensayo reproduce los flujos por USD 10 y el PDF histórico D181. Las definiciones reales, la decisión formal y el retorno personal siguen PENDING. [Resultados y reproducción](docs/workbook-definition-screening-D193.md).
+
+## D194 · Excel de Lorena hasta el dictamen D193
+
+La corrida pública recibe y archiva el Excel de criterios, coteja su huella y revisión, y conserva la ubicación de cada regla. B16 reproduce ocupación, RLV con banda y flujos por USD 10. En los ensayos, el Excel completo da PASS simulado; cambios de ocupación producen FAIL y de equity/TDC recalculan el RLV y producen PENDING en banda. Se bloquean faltantes, formatos y revisiones incompatibles. El piloto real sigue PENDING. [Resultados y reproducción](docs/workbook-lorena-screening-D194.md).
