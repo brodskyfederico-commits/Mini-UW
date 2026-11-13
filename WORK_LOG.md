@@ -1891,3 +1891,7 @@ Se mantienen 12/16 hitos técnicos al corte D196 y se precisa el denominador. Se
 - D199 verifies the interest-only to amortizing transition, sale without a permanent refinance, and a pre-opening property-tax cash payment on the same Base/Downside inputs. Scope is quarterly synthetic routes and declared source terms. Real Florida M2 remains pending validation.
 - D200 checks the documented four-case acceptance, separate PASS/FAIL price neighbors, required NOI basis and window, physical occupancy without the C14 breakdown, independent arithmetic, cash conservation and synthetic LP/GP by date. Read [the scoped results and reproduction](docs/worksheet-technical-acceptance-D200.md).
 - Real decision, actual allocation, pilot, and production release remain PENDING. Source documents, blank real criteria, prior output profiles, cloud infrastructure and hosted-runner settings were preserved.
+
+## D201 · Vigencia del plano y de los respaldos financieros
+
+B16 usa la verificación de los dos PDF por B03 en el perfil v31. La prueba reproduce cuatro expedientes PENDING con el plano o el respaldo financiero alterado o ausente, identifica el archivo y recupera el expediente original al restaurar los bytes registrados. Las corridas son sintéticas en el VPS. [Casos y reproducción](docs/workbook-document-currency-D201.md).

@@ -1,0 +1,164 @@
+{
+  "decision": "PENDING",
+  "deployment_enabled": false,
+  "real_decisions_enabled": false,
+  "restored_identical_files": 10,
+  "restored_simulation_result": "PASS",
+  "restored_vigencia": "VIGENTE",
+  "scenarios": {
+    "Base": {
+      "additional": 4.87,
+      "events": [
+        {
+          "category": "initial_capital",
+          "date": "2027-03-30",
+          "usd": 10.0
+        },
+        {
+          "category": "additional_capital",
+          "date": "2027-09-30",
+          "usd": 4.66
+        },
+        {
+          "category": "additional_capital",
+          "date": "2027-12-30",
+          "usd": 0.05
+        },
+        {
+          "category": "additional_capital",
+          "date": "2028-03-30",
+          "usd": 0.05
+        },
+        {
+          "category": "additional_capital",
+          "date": "2028-06-30",
+          "usd": 0.05
+        },
+        {
+          "category": "additional_capital",
+          "date": "2028-09-30",
+          "usd": 0.05
+        },
+        {
+          "category": "net_refinance_distribution",
+          "date": "2028-09-30",
+          "usd": 2.85
+        },
+        {
+          "category": "operating_distribution",
+          "date": "2028-12-30",
+          "usd": 1.43
+        },
+        {
+          "category": "net_sale_distribution",
+          "date": "2028-12-30",
+          "usd": 13.78
+        }
+      ],
+      "received": 18.06,
+      "unrecovered": 0.0
+    },
+    "Downside": {
+      "additional": 8.19,
+      "events": [
+        {
+          "category": "initial_capital",
+          "date": "2027-03-30",
+          "usd": 10.0
+        },
+        {
+          "category": "additional_capital",
+          "date": "2027-06-30",
+          "usd": 0.76
+        },
+        {
+          "category": "additional_capital",
+          "date": "2027-09-30",
+          "usd": 0.04
+        },
+        {
+          "category": "additional_capital",
+          "date": "2027-12-30",
+          "usd": 7.03
+        },
+        {
+          "category": "additional_capital",
+          "date": "2028-03-30",
+          "usd": 0.07
+        },
+        {
+          "category": "additional_capital",
+          "date": "2028-06-30",
+          "usd": 0.07
+        },
+        {
+          "category": "additional_capital",
+          "date": "2028-09-30",
+          "usd": 0.07
+        },
+        {
+          "category": "additional_capital",
+          "date": "2028-12-30",
+          "usd": 0.07
+        },
+        {
+          "category": "additional_capital",
+          "date": "2029-03-30",
+          "usd": 0.07
+        },
+        {
+          "category": "net_refinance_distribution",
+          "date": "2029-03-30",
+          "usd": 2.45
+        },
+        {
+          "category": "operating_distribution",
+          "date": "2029-06-30",
+          "usd": 0.55
+        },
+        {
+          "category": "net_sale_distribution",
+          "date": "2029-06-30",
+          "usd": 3.08
+        }
+      ],
+      "received": 6.08,
+      "unrecovered": 12.11
+    }
+  },
+  "status": "passed",
+  "variants": {
+    "evidence_pdf-missing": {
+      "blocker": "evidence_pdf_missing",
+      "filename": "Evidence.pdf",
+      "observed_sha256": null,
+      "registered_sha256": "a8ad0c3a6e9bc7f05549afaded130b5b0390730a879ae507d8b3f11f8da91777",
+      "simulation_result": "PENDING",
+      "vigencia": "PENDING"
+    },
+    "evidence_pdf-modified": {
+      "blocker": "evidence_pdf_binding_unconfirmed",
+      "filename": "Evidence.pdf",
+      "observed_sha256": "2628dfda6efbe46012367f2b6a01f467d20e46632061a0d55ae9e5ea924fdad5",
+      "registered_sha256": "a8ad0c3a6e9bc7f05549afaded130b5b0390730a879ae507d8b3f11f8da91777",
+      "simulation_result": "PENDING",
+      "vigencia": "PENDING"
+    },
+    "plan_pdf-missing": {
+      "blocker": "plan_pdf_missing",
+      "filename": "Plan.pdf",
+      "observed_sha256": null,
+      "registered_sha256": "8aa93ce770b565dd956e2fd37e1f2bbc55821d8ee9c2d757b7338aa84f41766a",
+      "simulation_result": "PENDING",
+      "vigencia": "PENDING"
+    },
+    "plan_pdf-modified": {
+      "blocker": "plan_pdf_hash_or_reference_mismatch",
+      "filename": "Plan.pdf",
+      "observed_sha256": "7f6de73b65fd7987103a345d029a0aa65c705cacf719632c440232fc9cece452",
+      "registered_sha256": "8aa93ce770b565dd956e2fd37e1f2bbc55821d8ee9c2d757b7338aa84f41766a",
+      "simulation_result": "PENDING",
+      "vigencia": "PENDING"
+    }
+  }
+}

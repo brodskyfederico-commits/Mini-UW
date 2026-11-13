@@ -94,6 +94,9 @@ def audit_revision(result, raw):
         "criteria_workbook_missing", "criteria_workbook_hash_mismatch", "criteria_workbook_revision_mismatch",
     })
     if result.get("profile") == "synthetic_documented_technical_acceptance":
+        documents = result["local_review"]["bots"]["B03"]["documents"]
+        for key in ("plan_pdf", "evidence_pdf"):
+            revision_blockers.extend(documents[key]["blockers"])
         for scenario, review in result["native_mapping_review"]["scenarios"].items():
             if "native_workbook_missing_or_unbound" in review["blockers"]:
                 revision_blockers.append(f"{scenario}:native_workbook_missing_or_unbound")
