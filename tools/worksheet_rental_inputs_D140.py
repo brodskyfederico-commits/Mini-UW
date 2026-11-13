@@ -575,9 +575,10 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
                       include_replacement_reserve=False, include_property_tax=False, include_exit_pricing=False,
                       include_permanent_loan=False, include_refinance_costs=False, include_growth=False,
                       include_alternatives=False, evidence_milestone=None, require_market_evidence=False,
-                      require_formula_review=False, require_supplemental_scope=False):
+                      require_formula_review=False, require_supplemental_scope=False, require_template_identity=False):
     hashes = object_or_empty(case.get("workbook_sha256"))
-    review = review_native_mapping(case.get("native_mapping"), workbooks, hashes, calculation_fields=FIELDS)
+    review = review_native_mapping(case.get("native_mapping"), workbooks, hashes, calculation_fields=FIELDS,
+                                   require_template_identity=require_template_identity)
     revision = review_revision(case, current_revision_raw)
 
     supplemental = None
@@ -641,8 +642,8 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
                  include_property_tax=include_property_tax, include_exit_pricing=include_exit_pricing,
                  include_permanent_loan=include_permanent_loan, include_refinance_costs=include_refinance_costs,
                  include_growth=include_growth, alternatives=alternatives,
-                 evidence_milestone="D174" if require_supplemental_scope else "D173" if require_formula_review
-                 else "D166" if require_market_evidence else evidence_milestone,
+                 evidence_milestone="D176" if require_template_identity else "D174" if require_supplemental_scope
+                 else "D173" if require_formula_review else "D166" if require_market_evidence else evidence_milestone,
                  formula_review=require_formula_review)
     profile = "synthetic_native_residential_and_commercial_rent" if include_commercial else PROFILE
     if include_utilities:
@@ -719,6 +720,9 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
         from worksheet_scope_D174 import PROFILE as SUPPLEMENTAL_PROFILE
         profile = SUPPLEMENTAL_PROFILE
         pipeline["pipeline"]["version_tests"]["suite"] = "check_worksheet_scope_D174.py"
+    if require_template_identity:
+        profile = "synthetic_documented_versioned_input_template"
+        pipeline["pipeline"]["version_tests"]["suite"] = "check_worksheet_template_version_D176.py"
     return dict(profile=profile, state=state,
                 case_sha256=case_sha256, decision="PENDING", simulation_result=simulation,
                 real_decisions_enabled=False, deployment_enabled=False, personal_investor_return=None,

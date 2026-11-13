@@ -112,9 +112,19 @@ def check_field(row, cell, confirmed, omitted):
     return ("PENDING", None, blockers) if blockers else ("CONFIRMED_SYNTHETIC", value, [])
 
 
-def review_scenario(raw, expected, confirmation, catalog, catalog_verified, calculation_fields):
+def template_identity():
+    specification = layout()
+    return dict(version=specification["version"], layout_sha256=sha(encoded(specification)))
+
+
+def review_scenario(raw, expected, confirmation, catalog, catalog_verified, calculation_fields, *, template=None):
     if raw is None or sha(raw) != expected:
         return check("native_workbook_missing_or_unbound", rows=[], calculation_inputs_ready=False)
+    if template is not None:
+        declaration = object_or_empty(confirmation).get("template")
+        if declaration != template:
+            reason = "worksheet_template_declaration_missing" if declaration is None else "worksheet_template_identity_unverified"
+            return check(reason, rows=[], calculation_inputs_ready=False)
     try:
         inspection = inspect_synthetic_input_sheet(raw)
     except ValidationError as error:
@@ -132,13 +142,14 @@ def review_scenario(raw, expected, confirmation, catalog, catalog_verified, calc
         rows.append(row | dict(state=state, value=value, source_literal=cell["literal"], cell_kind=cell["kind"],
                                formula=cell["formula"], cached_value=cell["cached_value"], blockers=issues))
         blockers.extend(f"{row['field_id']}:{issue}" for issue in issues)
+    template_evidence = {} if template is None else {"verified_template": template}
     return dict(state="PENDING" if blockers else "checked_synthetic", blockers=blockers, rows=rows,
                 workbook_sha256=inspection.source_sha256, confirmation_source_ref=object_or_empty(confirmation).get("source_ref"),
                 calculation_inputs_ready=catalog_verified and calculation_fields <= {
-                    row["field_id"] for row in rows if row["state"] == "CONFIRMED_SYNTHETIC"})
+                    row["field_id"] for row in rows if row["state"] == "CONFIRMED_SYNTHETIC"}) | template_evidence
 
 
-def review_native_mapping(mapping, workbooks, hashes, *, calculation_fields=None):
+def review_native_mapping(mapping, workbooks, hashes, *, calculation_fields=None, require_template_identity=False):
     catalog = mapping_catalog()
     if calculation_fields is None:
         calculation_fields = {row["field_id"] for row in catalog if row["synthetic_pilot_parameter"]}
@@ -146,7 +157,9 @@ def review_native_mapping(mapping, workbooks, hashes, *, calculation_fields=None
     confirmations = object_or_empty(specification.get("scenarios"))
     digest = sha(encoded(catalog))
     verified = specification.get("catalog_sha256") == digest and not (confirmations.keys() - set(SCENARIOS))
-    results = {name: review_scenario(workbooks[name], hashes.get(name), confirmations.get(name), catalog, verified, calculation_fields)
+    template = template_identity() if require_template_identity else None
+    results = {name: review_scenario(workbooks[name], hashes.get(name), confirmations.get(name), catalog, verified,
+                                     calculation_fields, template=template)
                for name in SCENARIOS}
     blockers = [f"{name}:{reason}" for name, result in results.items() for reason in result["blockers"]]
     return dict(state="PENDING" if blockers else "checked_synthetic", catalog_sha256=digest,

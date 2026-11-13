@@ -1796,3 +1796,7 @@ Se incorpora el CoC del tramo sobre capital remanente documentado y el impuesto 
 ## D174 — Revisión profesional de la planilla y alcance del piloto
 
 Los 55 campos originales conservan sus IDs y referencias. Se agrega una hoja de datos complementarios y se enlazan venta, vencimiento, costos fijos, vacancia bancaria y evidencia de Downside al perfil sintético v26. Live Local aplicable queda PENDING. El expediente prueba faltantes, discrepancias y ceros explícitos. [Cotejo, resultados y planilla](docs/workbook-supplemental-scope-D174.md).
+
+## D176 — B04 coteja la identidad y la estructura de la planilla
+
+La revisión del flujo pide IDs de campo y una plantilla versionada. El perfil sintético v27 exige versión y huella por escenario. Los 55 IDs mantienen su ubicación documentada. B04 deja PENDING una versión faltante o desconocida, una huella incorrecta y los cambios de unidad o fila. [Cotejo del informe de flujo y reproducción](docs/workbook-template-version-D176.md).
