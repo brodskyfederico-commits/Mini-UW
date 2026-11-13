@@ -4,6 +4,7 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D168 prueba el reparto sintético LP/GP sobre los flujos de D166. [Resultados y reproducción](docs/workbook-lp-gp-D168.md).
 - D167 verifica TIR anual y CoC del tramo para Base y Downside sobre D166. [Resultados y reproducción](docs/workbook-return-metrics-D167.md).
 - D166 coteja evidencia de mercado, seguro y banco antes del cálculo. [Resultados y reproducción](docs/workbook-market-evidence-D166.md).
 - D165 actualiza el flujo con el carril humano y los estados a D164. [Guía para Lorena](docs/review/MiniUW_Flujo_Dots_y_Bots_para_Lorena_D165.pdf) · [Matriz de cobertura](docs/coverage-matrix.csv).

@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D167 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D168 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/miniuw-integral-usd10.yml",
@@ -8,8 +8,8 @@
     },
     {
       "path": ".github/workflows/model-reference-checks.yml",
-      "bytes": 25535,
-      "sha256": "120b6e300a249cabc0cffc1f72c14105389992c4152fae130630c2039569dbec"
+      "bytes": 25693,
+      "sha256": "651ef7a94ed19a7cdeeb684f781d5bb15534f178d3525a8bbe16c9506156a7a2"
     },
     {
       "path": ".gitignore",
@@ -23,13 +23,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 88544,
-      "sha256": "afc68b951babc1d3f368ff964c86c18663ed73f539d672921e0097265118d4af"
+      "bytes": 88671,
+      "sha256": "a005344e0d78f4acb60d08818d7a1fcb2bf54a70130a10ce4d0fa478d7a034c9"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 351208,
-      "sha256": "413b7bfaecbd04049d57dc38f281d799131fec732a32d7ed3ea174ae92a4504b"
+      "bytes": 351615,
+      "sha256": "c581f1611890125ba693d227af5306951e427410ce1510da37d207517860ebd1"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -123,18 +123,18 @@
     },
     {
       "path": "docs/coverage-guide.md",
-      "bytes": 9231,
-      "sha256": "2aaeb3c872d0f78a475d3af784e16274c897f36e11b5d14c6e04e6e2bc31aadc"
+      "bytes": 9489,
+      "sha256": "70dcee9d3cc47ed3f376f12f9c35989a5f78f02476cc956b160358c92ae791a9"
     },
     {
       "path": "docs/coverage-matrix.csv",
-      "bytes": 382718,
-      "sha256": "865e7ab1369cf342a1d8abd8ac261e1e079c21412cf3b805f568c083e857dee3"
+      "bytes": 383212,
+      "sha256": "4de3b8ea77ff831a62d5118d4c97a4da147779edab49c3333d39a550be0482cb"
     },
     {
       "path": "docs/coverage-matrix.json",
-      "bytes": 566722,
-      "sha256": "87acf1bcda132e7e8bbc99c90f057495fbf957872d09d123f0c7c8f832110b7f"
+      "bytes": 567216,
+      "sha256": "d8e45caa6d98611660c33ded43865053e689ed942701bf0ccf4c9e6be266aaed"
     },
     {
       "path": "docs/current-direction.txt",
@@ -3157,6 +3157,11 @@
       "sha256": "6fcb96ac0457cd20b987da88c15638a306ced686d99706546359e37d6f88c9fc"
     },
     {
+      "path": "docs/workbook-lp-gp-D168.md",
+      "bytes": 3400,
+      "sha256": "39d8b6d54b82433105f3293f24b26fd843b5d3eda0d4f944d72e061886f3ec1b"
+    },
+    {
       "path": "docs/workbook-market-evidence-D166.md",
       "bytes": 4106,
       "sha256": "80503541b738aec232777f8bcd0737b711c32f7413f361dfda652d1a3110188f"
@@ -5562,6 +5567,11 @@
       "sha256": "7f3a5004226900954ab4b32ffb614d3c845f5047aaf5328ed614605fce4ac0ff"
     },
     {
+      "path": "templates/synthetic-lp-gp-terms-D168.json",
+      "bytes": 1082,
+      "sha256": "ed0e8347a5d45ea4373683613c1bc56825c4927d8f7c082783a581467db5679b"
+    },
+    {
       "path": "templates/synthetic-ltv-capacity-order-D37.json",
       "bytes": 509,
       "sha256": "a310e990a51c1824c2d5811202e92d369789453412b996d122548a49afe66e8b"
@@ -7635,6 +7645,11 @@
       "path": "tools/check_worksheet_local_chain_D127.py",
       "bytes": 6978,
       "sha256": "d18ee80ecf0c2a84a1038cf63f45a6cb85d9475506f62caebf2841ea222b8365"
+    },
+    {
+      "path": "tools/check_worksheet_lp_gp_D168.py",
+      "bytes": 12686,
+      "sha256": "5841b45fd8f8d7e91faaa7cb9f27ca8610cfc8d0b112fe5db208cce058d4d140"
     },
     {
       "path": "tools/check_worksheet_ltv_case_D119.py",

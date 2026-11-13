@@ -1768,3 +1768,7 @@ El perfil sintético coteja renta, concesiones, absorción, tasa de salida y seg
 ## D167 — TIR y CoC de la corrida D166
 
 B16 vuelve a ejecutar D166. D167 verifica TIR trimestral anualizada y CoC del tramo posrefi sobre la caja por USD 10. Base da una TIR anual de 17,58 % a 17,59 % y un CoC del tramo de 9,63 %. Downside da −42,32 % a −42,31 % y 3,02 %. Retorno personal PENDING por términos de reparto. [Método y reproducción](docs/workbook-return-metrics-D167.md).
+
+## D168 — Reparto LP/GP sobre D166
+
+La ficha sintética declara 80 % LP y 20 % GP para cada aporte y cobro. B16 reproduce D166 y se concilian exactamente los movimientos de Base y Downside. Cinco variantes comprueban PENDING ante términos faltantes, incompletos o vinculados a otra evidencia. Se conserva PENDING para el retorno personal real. [Resultados y reproducción](docs/workbook-lp-gp-D168.md).

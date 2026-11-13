@@ -119,3 +119,7 @@ La [guía actualizada](review/MiniUW_Flujo_Dots_y_Bots_para_Lorena_D165.pdf) doc
 ## TIR y CoC de la corrida D166
 
 [D167](workbook-return-metrics-D167.md) agrega evidencia sintética en cinco filas. El CoC usa los aportes brutos hasta la refi y conserva pendiente la definición real de capital remanente. El retorno personal sigue PENDING.
+
+## Reparto LP/GP D168
+
+[D168](workbook-lp-gp-D168.md) agrega evidencia sintética en M7-04, M7-09 y M7-12. Se concilian los flujos LP/GP bajo términos proporcionales documentados. El retorno personal real y las condiciones contractuales siguen pendientes.
