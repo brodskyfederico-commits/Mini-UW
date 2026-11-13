@@ -1,0 +1,41 @@
+{
+  "status": "passed",
+  "decision": "PENDING",
+  "deployment_enabled": false,
+  "real_decisions_enabled": false,
+  "github_actions_executed": false,
+  "environment": {
+    "host": "ubuntu-dallas-2gb",
+    "python": "3.12.3",
+    "dependency_manifest_sha256": "067ab56aa5232c542f40bf5072daa751835282de4a6088a6de7fd517d9cbf7a7"
+  },
+  "source_tree": {
+    "commit_sha": "bd16e076e430ee1da5dcfad1ed0a080651d47d1a",
+    "tree_sha": "e3b57dfba31437d20c126196c346979b8caf3da4",
+    "compared_unit_paths": 245,
+    "revised_unit_paths": []
+  },
+  "unit_discovery": {
+    "command": "python3 -u -m unittest discover -s tests -v",
+    "passed": 1619,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "seconds": 3837.894,
+    "log_sha256": "cfc50218993e01195f23384f795af40f7591f19f8439cb18f07a8e9ff86833bf"
+  },
+  "integrated_checks": {
+    "calculated_per_scenario": 8,
+    "comparison_rows": 20,
+    "decision": "PENDING",
+    "missing_workbook_cell": "Downside!C72",
+    "page_count": 1,
+    "pdf_sha256": "43d6c8bb14523963b48e3b0a4ac830855f16c443288175cb42cde1858ec5f8f5",
+    "pending_pdf_verified": true,
+    "probes": 10,
+    "published_pdf_reproduced": true,
+    "simulation_result": "PENDING",
+    "status": "passed",
+    "log_sha256": "f5d1fb862d341fa09a0847df0a23193f207882de39398e1224c97758b9437f7e"
+  }
+}

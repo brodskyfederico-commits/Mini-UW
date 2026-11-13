@@ -51,4 +51,6 @@ La prueba compara ambos escenarios con el [cotejo independiente D179](review/Min
 | Flujo pp. 2–3 · métricas y comparación | B14 ejecuta ocho métricas con criterios explícitos y registra las diez por escenario | SRC-02, SRC-03 y criterios vigentes para el uso real |
 | Fórmulas p. 1 · ítem 1 | El CoC del tramo de D173 se compara en B14 con período y definición exactos | Confirmar con evidencia real la base de equity remanente, el NOI y el criterio |
 
+[Batería unitaria y comprobación del PDF en variantes PENDING](general-regression-D182.md).
+
 [Vínculo con la revisión de los tres informes D180](review/MiniUW_Cierre_Revision_Profesional_D180.md).

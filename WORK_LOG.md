@@ -1820,3 +1820,7 @@ Se cotejan las observaciones de Flujo, Fórmulas y Planilla con el árbol D179 y
 ## D181 — Dictamen integrado e informe de una página por USD 10
 
 El perfil v29 agrega al mismo expediente de Base y Downside ocho métricas calculadas con criterios sintéticos. Las definiciones pendientes de ocupación económica y RLV aparecen en las comparaciones y mantienen PENDING el dictamen. El informe muestra la caja fechada, la dependencia de venta y el mínimo nominal a recuperar, con aportes y cobros por USD 10 iniciales. [Prueba y matriz de cobertura](docs/workbook-integrated-screening-D181.md).
+
+## D182 — Batería unitaria de D181 y comprobación del PDF PENDING
+
+Pasan las 1.619 pruebas unitarias y diez comprobaciones integradas en el VPS. La prueba integrada reabre los PDF y coteja el dictamen PENDING ante datos o criterios faltantes. Un C72 vacío bloquea la caja de Downside y mantiene Base. Si falta sólo un criterio, el PDF conserva los flujos ya calculados y señala la comparación pendiente. [Verificación y reproducción](docs/general-regression-D182.md).
