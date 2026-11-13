@@ -355,5 +355,7 @@ jobs:
         run: OMP_THREAD_LIMIT=1 PYTHONPATH=src:tests python tools/check_worksheet_return_metrics_D167.py
       - name: Verify synthetic LP and GP allocation from D166
         run: OMP_THREAD_LIMIT=1 PYTHONPATH=src:tests python tools/check_worksheet_lp_gp_D168.py
+      - name: Verify synthetic LP and GP return of capital and preferred return
+        run: OMP_THREAD_LIMIT=1 PYTHONPATH=src:tests python tools/check_worksheet_preferred_lp_gp_D169.py
       - name: Test synthetic technical foundation
         run: PYTHONPATH=src python -m unittest discover -s tests -v

@@ -4,6 +4,7 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D169 verifica devolución de capital y retorno preferente LP sobre los flujos de D166. [Resultados y reproducción](docs/workbook-preferred-lp-gp-D169.md).
 - D168 prueba el reparto sintético LP/GP sobre los flujos de D166. [Resultados y reproducción](docs/workbook-lp-gp-D168.md).
 - D167 verifica TIR anual y CoC del tramo para Base y Downside sobre D166. [Resultados y reproducción](docs/workbook-return-metrics-D167.md).
 - D166 coteja evidencia de mercado, seguro y banco antes del cálculo. [Resultados y reproducción](docs/workbook-market-evidence-D166.md).

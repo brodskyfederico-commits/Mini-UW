@@ -1772,3 +1772,7 @@ B16 vuelve a ejecutar D166. D167 verifica TIR trimestral anualizada y CoC del tr
 ## D168 — Reparto LP/GP sobre D166
 
 La ficha sintética declara 80 % LP y 20 % GP para cada aporte y cobro. B16 reproduce D166 y se concilian exactamente los movimientos de Base y Downside. Cinco variantes comprueban PENDING ante términos faltantes, incompletos o vinculados a otra evidencia. Se conserva PENDING para el retorno personal real. [Resultados y reproducción](docs/workbook-lp-gp-D168.md).
+
+## D169 — Devolución de capital y retorno preferente LP
+
+La ficha sintética declara capital primero, preferente LP simple anual del 8 % y remanente 80/20. D169 reproduce D166 y concilia cada movimiento de Base y Downside. Base paga el preferente en la venta; Downside conserva capital y preferente impagos al cierre. Cinco pruebas dejan PENDING ante términos insuficientes o mal vinculados. [Resultados y reproducción](docs/workbook-preferred-lp-gp-D169.md).

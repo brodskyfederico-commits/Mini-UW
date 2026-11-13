@@ -123,3 +123,7 @@ La [guía actualizada](review/MiniUW_Flujo_Dots_y_Bots_para_Lorena_D165.pdf) doc
 ## Reparto LP/GP D168
 
 [D168](workbook-lp-gp-D168.md) agrega evidencia sintética en M7-04, M7-09 y M7-12. Se concilian los flujos LP/GP bajo términos proporcionales documentados. El retorno personal real y las condiciones contractuales siguen pendientes.
+
+## Retorno preferente LP D169
+
+[D169](workbook-preferred-lp-gp-D169.md) agrega evidencia sintética en M7-04, M7-08 y M7-12. La ficha distingue devolución de capital, retorno preferente y remanente. Las condiciones contractuales reales siguen pendientes.
