@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D191 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D192 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/miniuw-integral-usd10.yml",
@@ -23,13 +23,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 90234,
-      "sha256": "dec55d000a55732a295a04bbf901482ff38b8d27584d76603bb294e3f9667f4e"
+      "bytes": 90375,
+      "sha256": "3ccb214b797f7c760cff3b786376c6e35fc2e496e309baea24e8d05915ce347a"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 362259,
-      "sha256": "a4996c9df702d0d330bde0999df02be1d2c01c7cdda450d04916edf83862051e"
+      "bytes": 362801,
+      "sha256": "c86543ff8501e24aae33683fbeeb75297d2deaf04911152c2217d189df7b5b48"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -1260,6 +1260,11 @@
       "path": "docs/review/MiniUW_Verificacion_D189.json",
       "bytes": 17023,
       "sha256": "1a52a10adfde35c372b4ad6886222e66eae44a59b5ab4cd3612b3bb56dd071e7"
+    },
+    {
+      "path": "docs/review/MiniUW_Verificacion_D192.json",
+      "bytes": 481,
+      "sha256": "06ee4a1dd122f757714613c33a86111c6ea3297656a3258ac96d997e6016788c"
     },
     {
       "path": "docs/review/MiniUW_Vista_Sintetica_Interna_T18.pdf",
@@ -3237,6 +3242,11 @@
       "sha256": "335170eb329ab03227b679b917db882f7406b776ab059e2e5d31badf525febfa"
     },
     {
+      "path": "docs/workbook-criteria-intake-D192.md",
+      "bytes": 3045,
+      "sha256": "871fb32727d894f548deaa8983e84709e664836e0f2b5f4b0c28cffbd6fd39cc"
+    },
+    {
       "path": "docs/workbook-criterion-validation-D183.md",
       "bytes": 1710,
       "sha256": "92b9b8f89fc2b0a73570880b1309b66c912628b22c89f5c30c1104b194ee66ab"
@@ -4925,6 +4935,11 @@
       "path": "templates/IRR-review-renewal-T102.json",
       "bytes": 343,
       "sha256": "203792fe2df8f55694618b0a59cb0248838bbce9faadcc1955bb1009ca5bc7b6"
+    },
+    {
+      "path": "templates/MiniUW_Criterios_PASS_FAIL_Lorena.xlsx",
+      "bytes": 9630,
+      "sha256": "92d67df5e466dd4286305248322612dbbf75d73ceb4959fa30b56023ef1e387d"
     },
     {
       "path": "templates/activation-review-D11-empty.json",
@@ -7712,6 +7727,11 @@
       "sha256": "c625d27511050a74e8c3c0bbafb8fbe13ef6256e7f69ca4ca906ffaa6ae4c13b"
     },
     {
+      "path": "tools/check_lorena_criteria_D192.py",
+      "bytes": 7688,
+      "sha256": "8a730767b6005b81d4180aadf5e5b61a9383f99a61f0e5c60e4e4ef88edb9a5f"
+    },
+    {
       "path": "tools/check_ltv_capacity_order_D37.py",
       "bytes": 13446,
       "sha256": "252a624b5a03d291fcf3b6e2ebd390cfa17446be0bd0f43e6726105e3cd65fcf"
@@ -8700,6 +8720,11 @@
       "path": "tools/plan_schedule_D105.py",
       "bytes": 9265,
       "sha256": "6aa0db2696f9f12f56efe44d8f3ca4c1e7244b1778ee62fb7798daa5440d51ba"
+    },
+    {
+      "path": "tools/preview_lorena_criteria_D192.py",
+      "bytes": 11282,
+      "sha256": "098a2b02929a8d983e4a32c5e30fe31d2639c7707e249d08d01333486578a685"
     },
     {
       "path": "tools/price_linked_sale_cost_D88.py",
