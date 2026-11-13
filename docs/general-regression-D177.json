@@ -1,0 +1,133 @@
+{
+  "status": "passed",
+  "decision": "PENDING",
+  "deployment_enabled": false,
+  "real_decisions_enabled": false,
+  "github_actions_executed": false,
+  "source_tree": {
+    "commit_sha": "07736f1b0c518450f2180fdf68c1e8bb934a25b9",
+    "tree_sha": "3df65c9d6664d9ab3eb52cbff9a492bb9d4bee40"
+  },
+  "environment": {
+    "host": "ubuntu-dallas-2gb",
+    "python": "3.12.3",
+    "tesseract": "5.3.4",
+    "dependency_manifest_sha256": "067ab56aa5232c542f40bf5072daa751835282de4a6088a6de7fd517d9cbf7a7"
+  },
+  "unit_discovery": {
+    "command": "python3 -u -m unittest discover -s tests -v",
+    "passed": 1619,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "seconds": 4264.155,
+    "log_sha256": "fb5ba88865b673028ff08ea35af676f9a31a129d0ecc804cbfe4314f4ade3592",
+    "previously_intermittent_test": "test_unbounded_fee_and_zero_cap_profiles",
+    "previously_intermittent_test_status": "passed"
+  },
+  "reference_suites": {
+    "D174": {
+      "status": "passed",
+      "suite_count": 26,
+      "files_checked": 1738,
+      "log_sha256": "7d5ca2d6acfb94d24bc382bdf0d5237fc20e2970a787195957d42c2b0250d427"
+    },
+    "D176": {
+      "status": "passed",
+      "suite_count": 26,
+      "files_checked": 1742,
+      "log_sha256": "a64a62b8302b01ee1147247ff12972d93f698b50502980cf8fa668281f57cf91"
+    }
+  },
+  "integrated_checks": {
+    "check_integral_miniuw_D102": {
+      "result": {
+        "status": "passed",
+        "decision": "PENDING",
+        "cash_cases": 2,
+        "recovery_probes": 6,
+        "blocked_inputs": 2,
+        "sale_only_verified": true,
+        "funding_cases": 9,
+        "one_page_report": true,
+        "pdf_sha256": "2560fe8707a8d9029f0c4923fa83bd3398c99b5e8c58ddd2f3972cd0419aa9b7"
+      },
+      "log_sha256": "c6d5bd4e9bc4f5cd37ab88de3247570ec0e6e64927fb5e9f6ecc54241a91f2da"
+    },
+    "check_worksheet_blanks_and_zero_D171": {
+      "result": {
+        "decision": "PENDING",
+        "empty_cases": 440,
+        "fields": 55,
+        "integrated_explicit_zero_cases": 2,
+        "integrated_pending_cases": 6,
+        "nonnumeric_zero_rejections": 12,
+        "not_applicable_empty_cases": 4,
+        "numeric_zero_cases": 98,
+        "page_count": 1,
+        "pdf_sha256": "3e485462c5eb0ad63ffc7a38aa0fe9f555408589e2d149f3fd46e7fe29ad6795",
+        "pending_empty_cases": 436,
+        "scenarios": [
+          "Base",
+          "Downside"
+        ],
+        "status": "passed"
+      },
+      "log_sha256": "8801aa5af0812df796fa49ad0610ba8dca163d72ffd344b961420ef9f3d72135"
+    },
+    "check_worksheet_formula_review_D173": {
+      "result": {
+        "decision": "PENDING",
+        "example_pdf_sha256": "c1e26ab87ff45c264431f8a6e179ffaa20a09eabd6f20ba9e84cedab9ccf1100",
+        "explicit_zero_cases": 2,
+        "page_count": 1,
+        "pdf_sha256": "c8e99cd451c8cb0003b120f1d52809d6dfb1a6ae6120f8ff5026e0a059f39170",
+        "pending_cases": 6,
+        "source_result_sha256": "0db67005815022865a4010c6940c6baed9b8791eb21b2ed7f7da36f84cf7b5da",
+        "status": "passed"
+      },
+      "log_sha256": "a0852c180d0b0a25139ebed5796346ef450388b9bf41bed1248d6c69c18a6050"
+    },
+    "check_worksheet_scope_D174": {
+      "result": {
+        "decision": "PENDING",
+        "explicit_zero_cases": 2,
+        "page_count": 1,
+        "pdf_sha256": "c475d7738b8fe8357144b7dd8fee62ccf98ab7472745606d7639bc4d6a95d864",
+        "pending_cases": 7,
+        "status": "passed"
+      },
+      "log_sha256": "62fad8489d23fcf3d161d2f51822ee75fe20e425a3efb943d98b7b9b28bcdea7"
+    }
+  },
+  "D176_scope": {
+    "commit_sha": "1e3c337b299236d07ea9a190c7ef0009b900aa69",
+    "same_core_and_test_paths": 245,
+    "integration_check": {
+      "result": {
+        "decision": "PENDING",
+        "fields": 55,
+        "page_count": 1,
+        "pdf_sha256": "f4273cb6b6d7f89453101c7c9af71dfc1a9abb4682646550c54ebedd0aa0d482",
+        "pending_cases": 5,
+        "status": "passed"
+      },
+      "log_sha256": "cc1ff7e7774884f7349c400637503f0d5f332a39486427d445f8490f913987a7"
+    }
+  },
+  "review_workbook": {
+    "result": {
+      "decision": "PENDING",
+      "fields": 55,
+      "requirements": {
+        "IF APPLIES": 12,
+        "OPTIONAL": 4,
+        "REQUIRED": 39
+      },
+      "status": "passed",
+      "supplements": 8,
+      "workbook_sha256": "660303e4e4a9cf64953cfe1c878e88ca05b25564a5623d0dd16e7257bd9c11c5"
+    },
+    "log_sha256": "d73d6c152c8fdbdbdf511f5075d66c9198e0434bf01a30cb521bb2524368ebd1"
+  }
+}

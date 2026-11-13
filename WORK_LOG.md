@@ -1800,3 +1800,7 @@ Los 55 campos originales conservan sus IDs y referencias. Se agrega una hoja de 
 ## D176 — B04 coteja la identidad y la estructura de la planilla
 
 La revisión del flujo pide IDs de campo y una plantilla versionada. El perfil sintético v27 exige versión y huella por escenario. Los 55 IDs mantienen su ubicación documentada. B04 deja PENDING una versión faltante o desconocida, una huella incorrecta y los cambios de unidad o fila. [Cotejo del informe de flujo y reproducción](docs/workbook-template-version-D176.md).
+
+## D177 — Batería general tras las revisiones profesionales
+
+La corrida local sobre el árbol D174 completó 1.619 pruebas unitarias. Pasaron 26 suites de referencia, el flujo integral por USD 10, los ensayos de vacíos y ceros, la revisión de fórmulas y el alcance complementario. El Excel cotejó 55 campos originales y ocho complementarios. D176 conserva los mismos archivos del motor base y de la batería unitaria y pasó sus controles propios de plantilla y referencias. [Evidencia reproducible](docs/general-regression-D177.md).
