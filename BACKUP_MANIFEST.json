@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D195 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D196 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/miniuw-integral-usd10.yml",
@@ -23,13 +23,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 90853,
-      "sha256": "6a1d7da7e0a726c00e091ef18edd3cad0953efd97ef86e65b9c8b1fb90981826"
+      "bytes": 91009,
+      "sha256": "3d1bc9aafafca1ffe627c737e9af2d0066b9e5f1652b8cbf3f74d09a791dc059"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 364557,
-      "sha256": "04621db5dee0b3d2296244fb9cddfefba48ec8e9b4a8182eee77a90b4b07d208"
+      "bytes": 365000,
+      "sha256": "602149df0d4a0920d7bee47b4a430379eac4c95fc478e13a064e9741c818314b"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -1290,6 +1290,11 @@
       "path": "docs/review/MiniUW_Verificacion_D195.json",
       "bytes": 715,
       "sha256": "d86da6960223e25d8480af3d9b685a5b972f0ceb48c648882fdb645795f26078"
+    },
+    {
+      "path": "docs/review/MiniUW_Verificacion_D196.json",
+      "bytes": 505,
+      "sha256": "3c5b36a3bd5f0fda38c1256f8894200739d0309aefef1a3c136b9cde51f00385"
     },
     {
       "path": "docs/review/MiniUW_Vista_Sintetica_Interna_T18.pdf",
@@ -3300,6 +3305,11 @@
       "path": "docs/workbook-documented-finance-D147.md",
       "bytes": 4640,
       "sha256": "65501d3bd612b04ae9443a5d7b3f665ef55d5a7dd68a4f39760baa11f0642332"
+    },
+    {
+      "path": "docs/workbook-downside-pass-only-D196.md",
+      "bytes": 2216,
+      "sha256": "b06054c99142f44f4a8bf3dae50979d01feda4c969fb5411c964c8da23261fcf"
     },
     {
       "path": "docs/workbook-equity-limit-revision-D129.md",
@@ -8017,6 +8027,11 @@
       "sha256": "c810ffdeefa93a977d40a24e965a05c3d3e1f0738f31a1dc7fe895a3d1af4220"
     },
     {
+      "path": "tools/check_worksheet_downside_pass_only_D196.py",
+      "bytes": 8857,
+      "sha256": "3c018ac9fac003a11e8256dee3eb8b1611fb82d98bf9611cd8851ae36c6a4f2c"
+    },
+    {
       "path": "tools/check_worksheet_equity_limit_revision_D129.py",
       "bytes": 5410,
       "sha256": "185ac802bbd0a5c3409a22283424a8dc4d4354d0b2b76df8ffb9b584e9397d11"
@@ -8898,8 +8913,8 @@
     },
     {
       "path": "tools/worksheet_criteria_intake_D194.py",
-      "bytes": 4629,
-      "sha256": "3fb4f8f397ebc2926697bce377a9a1393ed2a6e2e37e136a8035943275359573"
+      "bytes": 5560,
+      "sha256": "fb0bba7692befc92f37219216378543be5d60063fe831590eb213b869cd5b9b3"
     },
     {
       "path": "tools/worksheet_debt_yield_D178.py",
@@ -8973,8 +8988,8 @@
     },
     {
       "path": "tools/worksheet_integrated_screening_D181.py",
-      "bytes": 24642,
-      "sha256": "d136707e970c9a370cc3d04986cc3d6de2839b76bc8141bec09283c01ae9efe1"
+      "bytes": 26495,
+      "sha256": "704ebe58040e492284dce321b7bca8d081b04ed419c2d73ca809cb1121550ed1"
     },
     {
       "path": "tools/worksheet_investor_D74.py",

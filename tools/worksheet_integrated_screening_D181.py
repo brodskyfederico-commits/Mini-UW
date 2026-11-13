@@ -9,7 +9,7 @@ from check_worksheet_refinance_D45 import render_page
 from check_worksheet_return_metrics_D167 import KINDS, verify_irr
 from miniuw_foundation.debt_service import _fraction as amount, rational
 from miniuw_foundation.drafts import ValidationError
-from miniuw_foundation.irr_interval_output import ENGINE_SHA256, _compare
+from miniuw_foundation.irr_interval_output import ENGINE_SHA256, _compare, condition_relation
 from miniuw_foundation.scheduled_expense_case import sha
 from miniuw_foundation.screening import AGGREGATION, SCHEMA, simulate_screening
 from miniuw_worksheet_v1 import encoded
@@ -183,6 +183,27 @@ def review_rules(raw, scenarios):
     return accepted, issues, []
 
 
+def compare_pass_only(metric, criterion, enclosure):
+    """Evaluate an explicitly scoped Downside PASS without a FAIL threshold."""
+    blockers = [f"{field}_missing_or_mismatch" for field in
+                ("definition_ref", "unit", "period_ref", "quantity_kind", "currency", "applicability")
+                if metric[field] != criterion[field] or (field != "currency" and metric[field] is None)]
+    condition = criterion["pass_condition"]
+    if condition["operator"] not in (">", ">=", "<", "<=") or condition["threshold"] is None:
+        blockers.append("pass_condition_rule_missing_or_unsupported")
+    if enclosure is None and metric["value"] is not None:
+        enclosure = dict(lower=metric["value"], upper=metric["value"], lower_closed=True, upper_closed=True)
+    if enclosure is None:
+        blockers.append("metric_value_missing")
+    if blockers:
+        return "PENDING", {}, blockers
+    relation = condition_relation(enclosure, condition["threshold"], condition["operator"])
+    reasons = {"mixed": "IRR_enclosure_crosses_criterion_boundary",
+               "none": "downside_pass_not_met_pending_review"}
+    return ("PASS_CONDITION" if relation == "every" else "PENDING",
+            {"pass_condition": relation}, [] if relation == "every" else [reasons[relation]])
+
+
 def screen_integrated(case, views, blockers, *, definition_screening=False, criteria_review=None):
     inputs = object_or_empty(object_or_empty(case.get("rent_inputs")).get("integrated_screening"))
     collections = {name: collect_metrics(name, view, object_or_empty(inputs.get(name)))
@@ -222,7 +243,10 @@ def screen_integrated(case, views, blockers, *, definition_screening=False, crit
             if (boundary is not None and criteria_review is not None and name in criteria_review["derived_rlv"]):
                 criterion["fail_condition"] = land_band_rules(boundary)["FAIL"]
             actual = {"PASS": criterion["pass_condition"], "FAIL": criterion["fail_condition"]}
-            if boundary is not None and actual != land_band_rules(boundary):
+            expected = land_band_rules(boundary)
+            if workbook_rows.get(key, {}).get("pass_only_policy"):
+                expected["FAIL"] = dict(operator=None, threshold=None)
+            if boundary is not None and actual != expected:
                 # The price band is defined by the joint price search. An
                 # inconsistent manual ratio threshold must not override it.
                 rules.pop(key)
@@ -266,6 +290,11 @@ def screen_integrated(case, views, blockers, *, definition_screening=False, crit
             workbook_row = workbook_rows[key]
             row["criteria_workbook_cells"] = workbook_row["conditions"]
             issues.extend(workbook_row["blockers"])
+            if index is not None and "pass_only_policy" in workbook_row:
+                row["pass_only_policy"] = workbook_row["pass_only_policy"]
+                enclosure = row["metric_record"].get("annual_enclosure")
+                row["state"], row["condition_relations"], row["blockers"] = compare_pass_only(
+                    metric, rules[key][1], enclosure)
         row["blockers"] = sorted(set(row["blockers"] + metric["blockers"] + issues))
         all_blockers.update(f"{key[0]}:{key[1]}:{reason}" for reason in row["blockers"])
         if row["state"] == "BAND":

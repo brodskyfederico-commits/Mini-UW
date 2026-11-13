@@ -12,6 +12,7 @@ SCENARIOS = ("Base", "Downside")
 METRIC_IDS = {metric for _, metric in ROWS}
 CONTEXT_FIELDS = {"scenario_id", "metric_id", "definition_ref", "unit", "period_ref"}
 LAND_BAND_LITERAL = "> banda RLV"
+PASS_ONLY_POLICY = "downside_pass_only_miss_pending"
 
 
 def compile_criteria(case, raw):
@@ -53,16 +54,30 @@ def compile_criteria(case, raw):
             return blocked("criteria_workbook_comparison_context_duplicate")
         indexed[identity] = item
 
+    pass_only = object_or_empty(binding.get("downside_pass_only"))
+    authorized = {
+        metric for metric, entry in pass_only.items()
+        if metric in METRIC_IDS and isinstance(entry, dict)
+        and entry.get("policy") == PASS_ONLY_POLICY and synthetic_id(entry.get("source_ref"))
+    }
     for row_num, (_, metric) in enumerate(ROWS, 7):
         for scenario, columns in zip(SCENARIOS, ("EF", "GH"), strict=True):
             context = indexed.get((scenario, metric))
             reasons, conditions, provenance = [], {}, {}
+            pass_only_row = scenario == "Downside" and metric in authorized
             for mode, col in zip(("pass", "fail"), columns, strict=True):
                 address = f"{col}{row_num}"
                 literal = cells.get(address, "")
                 provenance[mode] = dict(cell=address, literal=literal)
-                if metric == RLV and mode == "fail" and literal.casefold() == LAND_BAND_LITERAL.casefold():
+                if (metric == RLV and mode == "fail" and not pass_only_row
+                        and literal.casefold() == LAND_BAND_LITERAL.casefold()):
                     conditions[f"{mode}_condition"] = dict(operator=">", threshold=None)
+                    continue
+                if mode == "fail" and pass_only_row:
+                    if literal.casefold() == "sin fail":
+                        conditions["fail_condition"] = dict(operator=None, threshold=None)
+                    else:
+                        reasons.append("downside_pass_only_declaration_missing_or_conflicting")
                     continue
                 parsed = parse_condition(literal)
                 if not literal:
@@ -85,7 +100,9 @@ def compile_criteria(case, raw):
             if not reasons:
                 entry["rule_index"] = len(result["rules"])
                 result["rules"].append(context | conditions)
-                if conditions["fail_condition"]["threshold"] is None:
+                if pass_only_row:
+                    entry["pass_only_policy"] = pass_only[metric]
+                elif conditions["fail_condition"]["threshold"] is None:
                     result["derived_rlv"].append(scenario)
             result["rows"].append(entry)
     return result

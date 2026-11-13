@@ -1876,3 +1876,7 @@ La corrida pública recibe y archiva el Excel de criterios, coteja su huella y r
 ## D195 · Vigencia del expediente y Excel de criterios
 
 B16 deja PENDING si las reglas del expediente difieren de la revisión designada o el Excel de criterios falta, tiene otra huella o declara otra versión. La auditoría conserva el resultado histórico cuando avanza la revisión y devuelve los motivos de vigencia. Se verifican los flujos conciliados por USD 10 durante todos los cambios del expediente de prueba. [Casos y reproducción](docs/workbook-revision-audit-D195.md).
+
+## D196 · Downside con PASS sin FAIL
+
+Se ensaya la regla explícita por métrica y revisión con «Sin FAIL» en el Excel. Si Downside cumple, la fila puede dar PASS simulado. Si incumple, falta la política o existe un conflicto, queda PENDING. Se preservan el FAIL explícito de Base, los criterios conjuntos del RLV y los flujos por USD 10. El piloto real sigue PENDING. [Casos y reproducción](docs/workbook-downside-pass-only-D196.md).

@@ -4,6 +4,8 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D196 prueba el dictamen con PASS Downside y una política explícita sin umbral FAIL. [Casos y reproducción](docs/workbook-downside-pass-only-D196.md).
+
 - D195 verifica la vigencia del expediente y del Excel de criterios en la auditoría B16. [Casos y reproducción](docs/workbook-revision-audit-D195.md).
 
 - D194 prueba el Excel de Lorena hasta el dictamen D193 y el retorno por USD 10. [Verificación de punta a punta](docs/workbook-lorena-screening-D194.md).
