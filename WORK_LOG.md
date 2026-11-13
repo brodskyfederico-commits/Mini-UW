@@ -1852,3 +1852,7 @@ El perfil residencial v3 distribuye costo elegible de Inputs por trimestre y cal
 ## D189 — Alcance v1 congelado y piloto PRELIMINAR preparado
 
 Se registra el alcance congelado del Mini-UW y la matriz de mínimos del ranking sintético. El perfil financiado con desembolsos por etapas verifica omisiones en Base y Downside, límites de capacidad y recuperación con cero explícito. El dictamen formal y la habilitación real permanecen PENDING. [Acta y pasos del piloto](docs/preliminary-pilot-readiness-D189.md).
+
+## D190 — Paquete del primer piloto real
+
+Se prepara el pedido para Lorena, el inventario de criterios y responsables PENDING y la planilla de cotejo independiente por USD 10. El paquete documenta el corte, fuentes, flujos por fecha, conciliación y revisión final. Se publica con plantillas vacías y referencias sintéticas. [Paquete del piloto](docs/review/piloto-real-D190/README.md).
