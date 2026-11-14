@@ -4,12 +4,13 @@ import re
 from zipfile import BadZipFile
 
 from check_operating_replay_D20 import require
+from check_reference_package import PackageError
 from miniuw_foundation.debt_service import _fraction as amount, rational
 from miniuw_foundation.drafts import ValidationError
 from miniuw_foundation.inputsheet import inspect_synthetic_input_sheet, layout
 from miniuw_foundation.scheduled_expense_case import sha
 from miniuw_foundation.worksheet_case_output import _cell_value
-from worksheet_local_sources_D127 import day
+from worksheet_local_sources_D127 import day, object_or_empty
 from worksheet_preliminary_D185 import POLICY, SCENARIOS, SUPPORT, assumption_ready, estimate, finish_preliminary
 from worksheet_project_calendar_D145 import offset
 
@@ -22,7 +23,7 @@ NUMERIC = (
 FRACTIONS = ("C14", "C15", "C33", "C39", "C40", "C42", "C58", "C67", "C68")
 
 
-def read_inputs(raw, deal, name, cutoff, *, financed=False):
+def read_inputs(raw, deal, name, cutoff, *, financed=False, florida_tax=False):
     binding = deal["scenarios"].get(name)
     if raw is None or not isinstance(binding, dict) or binding.get("workbook_sha256") != sha(raw):
         return {}, ["planilla ausente o huella distinta"]
@@ -42,7 +43,7 @@ def read_inputs(raw, deal, name, cutoff, *, financed=False):
 
     fields = {f["value_cell"]: f for f in layout()["fields"]}
     values, blockers = {}, []
-    numeric = NUMERIC
+    numeric = tuple(ref for ref in NUMERIC if ref != "C62") if florida_tax else NUMERIC
     if financed:
         from worksheet_preliminary_finance_D187 import FINANCING_CELLS
         numeric += FINANCING_CELLS
@@ -78,7 +79,7 @@ def read_inputs(raw, deal, name, cutoff, *, financed=False):
             or sum(units) == 0 or type(carry) is not int or not 0 <= carry <= 10**9
             or type(parking_spaces) is not int or not 0 <= parking_spaces <= 10000):
         return {}, ["faltan unidades, estacionamientos o costo trimestral de absorción"]
-    if (any(values[ref] < 0 for ref in NUMERIC if ref not in ("C75", "C76"))
+    if (any(values[ref] < 0 for ref in numeric if ref in NUMERIC and ref not in ("C75", "C76"))
             or any(values[ref] > 1 for ref in FRACTIONS)
             or any(not -1 < values[ref] <= 1 for ref in ("C75", "C76"))
             or values["C15"] != 0 or (not financed and values["C51"] != 0) or values["C67"] == 0):
@@ -87,8 +88,8 @@ def read_inputs(raw, deal, name, cutoff, *, financed=False):
                 parking_spaces=parking_spaces), []
 
 
-def project(case, deal, name, raw, cutoff, *, financed=False, staged=False):
-    inputs, blockers = read_inputs(raw, deal, name, cutoff, financed=financed)
+def project(case, deal, name, raw, cutoff, *, financed=False, staged=False, florida_tax=False):
+    inputs, blockers = read_inputs(raw, deal, name, cutoff, financed=financed, florida_tax=florida_tax)
     if blockers:
         return dict(cash=None, blockers=blockers)
 
@@ -109,7 +110,7 @@ def project(case, deal, name, raw, cutoff, *, financed=False, staged=False):
     gross_rent = 12 * sum(v[f"C{8 + i}"] * n for i, n in enumerate(inputs["units"]))
     other_income = 12 * v["C13"] * units
     fixed_opex = units * (v["C57"] + v["C59"])
-    property_tax = units * v["C62"]
+    property_tax = Fraction() if florida_tax else units * v["C62"]
     annual_reserve = units * v["C60"]
 
     def operating(years, bank_loss=Fraction()):
@@ -117,6 +118,27 @@ def project(case, deal, name, raw, cutoff, *, financed=False, staged=False):
         opex = fixed_opex * (1 + v["C76"]) ** years
         return rent + other_income - rent * v["C58"] - opex - property_tax
 
+    taxes = {}
+    if florida_tax:
+        from worksheet_florida_tax_D203 import window_taxes
+
+        def following_month(checkpoint):
+            return offset(day(checkpoint).replace(day=1), 1)
+
+        fiscal = object_or_empty(case.get("florida_property_tax"))
+        submission = object_or_empty(object_or_empty(fiscal.get("scenarios")).get(name))
+        if not assumption_ready(submission, cutoff):
+            return dict(cash=None, blockers=["M2: falta fuente, fecha o responsable fiscal vigente"])
+        sale, refi = day(dates[-1]), dates[stabilize]
+        windows = {"refinance": (following_month(refi), 12, False),
+                   "sale": (following_month(dates[-1]), 12, True)}
+        operating_dates = dates[stabilize + 1:]
+        for start, end in zip(dates[stabilize:-1], operating_dates, strict=True):
+            windows[end] = (following_month(start), 3, False)
+        try:
+            taxes = window_taxes(fiscal, name, sale, windows)
+        except PackageError as error:
+            return dict(cash=None, blockers=[str(error)])
     stages = None
     if staged:
         from worksheet_preliminary_stages_D188 import read_stages
@@ -127,17 +149,20 @@ def project(case, deal, name, raw, cutoff, *, financed=False, staged=False):
     if financed:
         from worksheet_preliminary_finance_D187 import finance
         financing, blockers = finance(case, name, inputs, finish, stabilize, direct_hard, construction_cost - early_soft, operating,
-                                        stages=stages)
+                                        stages=stages, sizing_tax=amount(taxes["refinance"]["total"]) if taxes else None)
         if blockers:
-            return dict(cash=None, blockers=blockers, financing=financing)
+            result = dict(cash=None, blockers=blockers, financing=financing)
+            return result | {"florida_property_tax": taxes} if taxes else result
 
     events = []
 
-    def event(category, index, value, basis, refs, *, stage=None):
+    def event(category, index, value, basis, refs, *, stage=None, tax_window=None):
         provenance = support[basis] if stage is None else stage["assumption"]
         source_ref = f"sha256:{inputs['workbook_sha256']}#Inputs!{refs}"
         if stage is not None:
             source_ref += f" + case.json#{stage['pointer']}"
+        if tax_window is not None:
+            source_ref += f" + case.json#/florida_property_tax/scenarios/{name}"
         events.append(dict(category=category, date=dates[index], amount=rational(value),
                            source_ref=source_ref,
                            as_of=provenance["as_of"], owner=provenance["owner"]))
@@ -169,15 +194,21 @@ def project(case, deal, name, raw, cutoff, *, financed=False, staged=False):
         event("refinance_cash_in", stabilize, max(Fraction(), -net_refi), "financing", "C51:C53,C66:C74")
         event("net_refinance_distribution", stabilize, max(Fraction(), net_refi), "financing", "C51:C53,C66:C74")
     restricted = Fraction()
+    operating_cells = "C7:C15,C57:C60,C69:C70,C75:C76" if florida_tax else (
+        "C7:C15,C57:C62,C69:C70,C75:C76" if financed else "C7:C15,C57:C62,C75:C76")
     for i in range(stabilize + 1, len(dates)):
         cash = (operating((i - stabilize - 1) // 4) - annual_reserve) / 4
         if financed:
             cash -= financing["payment"]
+        if taxes:
+            cash -= amount(taxes[dates[i]]["total"])
         restricted += annual_reserve / 4
         event("operating_distribution" if cash >= 0 else "additional_capital", i, abs(cash),
-              "rent_and_expenses", "C7:C15,C57:C62,C69:C70,C75:C76" if financed else "C7:C15,C57:C62,C75:C76")
+              "rent_and_expenses", operating_cells, tax_window=dates[i] if taxes else None)
 
     sale_noi = sum((operating((i - stabilize) // 4) for i in range(len(dates) - 1, len(dates) + 3)), Fraction()) / 4
+    if taxes:
+        sale_noi -= amount(taxes["sale"]["total"])
     if sale_noi <= 0:
         return dict(cash=None, blockers=["NOI de salida no positivo"])
     net_sale = sale_noi / v["C67"] * (1 - v["C68"])
@@ -188,11 +219,14 @@ def project(case, deal, name, raw, cutoff, *, financed=False, staged=False):
             return dict(cash=None, blockers=["venta insuficiente para liquidar deuda permanente"],
                         financing=financing["evidence"])
     event("net_sale_distribution", len(dates) - 1, sale_distribution, "exit",
-          "C60,C67:C74" if financed else "C60,C67:C68")
+          "C60,C67:C74" if financed else "C60,C67:C68", tax_window="sale" if taxes else None)
     if not any(e["category"] == "operating_distribution" for e in events):
-        event("operating_distribution", len(dates) - 1, Fraction(), "rent_and_expenses", "C7:C15,C57:C62,C75:C76")
+        event("operating_distribution", len(dates) - 1, Fraction(), "rent_and_expenses",
+              operating_cells if taxes else "C7:C15,C57:C62,C75:C76", tax_window=dates[-1] if taxes else None)
     projected = {"scenarios": {name: dict(support=support, events=events)}, "id": deal["id"]}
     view = estimate(case, projected, name, cutoff, amount_digits=256 if financed else 12, max_events=13 if staged else 12)
+    if taxes:
+        view["florida_property_tax"] = taxes
     if financed:
         view["financing"] = financing["evidence"]
     return view | dict(worksheet_sha256=inputs["workbook_sha256"], cell_sources={
@@ -202,8 +236,11 @@ def project(case, deal, name, raw, cutoff, *, financed=False, staged=False):
                         reserve_released_at_sale=rational(restricted), stabilization_date=dates[stabilize]))
 
 
-def build_preliminary_workbook(case, raw, workbooks, *, financed=False, staged=False):
-    require(set(case) == {"schema", "policy", "as_of", "dates", "financing", "focus", "scenarios"}
+def build_preliminary_workbook(case, raw, workbooks, *, financed=False, staged=False, florida_tax=False):
+    fields = {"schema", "policy", "as_of", "dates", "financing", "focus", "scenarios"}
+    if florida_tax:
+        fields.add("florida_property_tax")
+    require(set(case) <= fields and fields - {"florida_property_tax"} <= set(case)
             and case["policy"] == POLICY and case["financing"] == ("with_refinance" if financed else "without_refinance"),
             "Expected the financing path declared by the synthetic workbook profile")
     require(isinstance(case["focus"], str) and re.fullmatch(r"SYNTHETIC-[A-Z0-9-]{1,22}", case["focus"]),
@@ -217,7 +254,11 @@ def build_preliminary_workbook(case, raw, workbooks, *, financed=False, staged=F
     require(isinstance(case["scenarios"], dict) and case["scenarios"].keys() <= set(SCENARIOS),
             "Unknown scenario")
     deal = case | {"id": case["focus"]}
-    views = {deal["id"]: dict(scenarios={n: project(case, deal, n, workbooks[n], cutoff, financed=financed, staged=staged) for n in SCENARIOS})}
+    views = {deal["id"]: dict(scenarios={
+        name: project(case, deal, name, workbooks[name], cutoff, financed=financed, staged=staged, florida_tax=florida_tax)
+        for name in SCENARIOS})}
     profile = "synthetic_preliminary_loi_staged_workbook" if staged else (
         "synthetic_preliminary_loi_financed_workbook" if financed else PROFILE)
+    if florida_tax:
+        profile = "synthetic_preliminary_loi_florida_tax"
     return finish_preliminary(case, raw, views, profile=profile)

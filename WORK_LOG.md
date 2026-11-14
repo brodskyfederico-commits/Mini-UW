@@ -1903,3 +1903,7 @@ B16 exige la lectura de las páginas requeridas y anota archivo, rol y motivo cu
 ## D203 · Tope no escolar de Florida en M2
 
 El perfil sintético v32 calcula el impuesto escolar y no escolar por padrón y ventana. Prueba la vigencia del tope de 5 % desde 2027, el límite del valor justo y la retasación por mejora calificada y por compra. Recalcula NOI, capacidad, CoC, venta y caja por USD 10. Los faltantes fiscales mantienen PENDING el escenario afectado y su auditoría. [Alcance y reproducción](docs/workbook-florida-tax-D203.md).
+
+## D204 · M2 conectado a PRELIMINAR
+
+El perfil sintético v4 aplica los padrones de M2 al NOI de refinanciación, los flujos trimestrales y el NOI de venta. Coteja Base y Downside por USD 10 y excluye del ranking el expediente con evidencia fiscal incompleta o capacidad insuficiente. Conserva la caja comprobable del otro escenario y reproduce el caso histórico D188. [Alcance y reproducción](docs/workbook-preliminary-tax-D204.md).

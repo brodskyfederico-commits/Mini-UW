@@ -4,6 +4,8 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D204 usa M2 en PRELIMINAR y bloquea el ranking si falta evidencia fiscal. [Resultados por USD 10 y reproducción](docs/workbook-preliminary-tax-D204.md).
+
 - D203 incorpora a M2 el tope no escolar de Florida desde 2027 y prueba su efecto por USD 10 en Base y Downside. [Alcance y reproducción](docs/workbook-florida-tax-D203.md).
 
 - D202 verifica páginas requeridas aun cuando los PDF coincidan con sus huellas registradas. [Casos y reproducción](docs/workbook-document-pages-D202.md).

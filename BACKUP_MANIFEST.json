@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D203 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D204 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/miniuw-integral-usd10.yml",
@@ -23,13 +23,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 91718,
-      "sha256": "11602b49f82026de07027118b9fec2d8c72061ee25cd43d735e78f32da4d938f"
+      "bytes": 91875,
+      "sha256": "d7f2d6ad0154e8ed509986f7894578ce6aa6fef9e1971d116f92b3a4aae8de79"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 368035,
-      "sha256": "569bac471eee349a6b1adfe0660ed5ef6330a98ec603cc8c0466be8fe553c59f"
+      "bytes": 368473,
+      "sha256": "cff870e50af9838c61d9a05e793b14d341bb78851c2bde38892ac6b8bd45d836"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -1217,6 +1217,11 @@
       "sha256": "8f1432a63428cf41dbeea571c5fc3d9d0f9ba31befed051096042d453c8710d1"
     },
     {
+      "path": "docs/review/MiniUW_Preliminar_Impuesto_D204.pdf",
+      "bytes": 4280,
+      "sha256": "373d97f6313da91996992a0e09aa1fedd3563a92cf215c62aec999e83a35b36b"
+    },
+    {
       "path": "docs/review/MiniUW_Preliminar_LOI_D185.pdf",
       "bytes": 3188,
       "sha256": "9139672aa4e9ea0726846889c88eb3674628ed5122727f1d83d66a0da8c9ed7f"
@@ -1335,6 +1340,11 @@
       "path": "docs/review/MiniUW_Verificacion_D203.json",
       "bytes": 13647,
       "sha256": "61a80c154cd2b99360f951cd2879efcff6a7686ea0d1a4d50793fcb7bce7dc5b"
+    },
+    {
+      "path": "docs/review/MiniUW_Verificacion_D204.json",
+      "bytes": 11669,
+      "sha256": "e2768467c4a64420de0cd19abb46b433c0b486ac6b98dc8075e2640498d0b6f8"
     },
     {
       "path": "docs/review/MiniUW_Vista_Sintetica_Interna_T18.pdf",
@@ -3565,6 +3575,11 @@
       "path": "docs/workbook-preliminary-staged-D188.md",
       "bytes": 4235,
       "sha256": "69c399969a9691f0fb1e6e7ba94ea3fd1dd84de59df8d4dac0f53dc9e6a6b4c9"
+    },
+    {
+      "path": "docs/workbook-preliminary-tax-D204.md",
+      "bytes": 2805,
+      "sha256": "4d2e9641b65e61136422e0ecd9ba6f28d9815e6697ccf69c39647503bf444e9b"
     },
     {
       "path": "docs/workbook-project-calendar-D145.md",
@@ -6177,6 +6192,11 @@
       "sha256": "8770fce9069cd2647fdb068e3707633ae2c9d5e3ff17d28be7e1196efe1612d7"
     },
     {
+      "path": "templates/synthetic-preliminary-florida-tax-D204.json",
+      "bytes": 8502,
+      "sha256": "5ffdfd172b86160d1a0cf85ae4661b645d312fe6814642c75d46ef67f6d7d671"
+    },
+    {
       "path": "templates/synthetic-preliminary-loi-D185.json",
       "bytes": 10238,
       "sha256": "63882977bf6647824c99c988cd2bf60cfdf4ec159c979632d08c7ff9a936f44d"
@@ -8337,6 +8357,11 @@
       "sha256": "47d2ca06a3e9e43622593c239789eba6b86cb34efd0d602e932eea4dd2dba005"
     },
     {
+      "path": "tools/check_worksheet_preliminary_tax_D204.py",
+      "bytes": 11500,
+      "sha256": "97e7e3e4377bb025e34ba1b12100c3f092bd199dd2c510ca2fe8e907b650244a"
+    },
+    {
       "path": "tools/check_worksheet_preliminary_workbook_D186.py",
       "bytes": 7935,
       "sha256": "689fc1f1c58e7ee27a00d03780b3f7f0ad8589f08c6c6d91826f5add910cc11a"
@@ -8858,8 +8883,8 @@
     },
     {
       "path": "tools/miniuw_worksheet_v1.py",
-      "bytes": 34902,
-      "sha256": "231effb1efee146a4f0b1ec5cd56177e2a8f3ee7c6a0875f13cbe371954f4a8b"
+      "bytes": 35285,
+      "sha256": "4bb3dfebc42addc223d83bbc24cccb46c54da86d4ec93a2e9faadb194877b871"
     },
     {
       "path": "tools/onepage_pending_cases_D79.py",
@@ -9068,8 +9093,8 @@
     },
     {
       "path": "tools/worksheet_florida_tax_D203.py",
-      "bytes": 8076,
-      "sha256": "86354e4dac62f2603f2c5b43f26e1d1bc39b5972f1da16721795b80d8d2edb0b"
+      "bytes": 8315,
+      "sha256": "5956420a06e13fa4196989af837a2d2054ee4fba85ab211ced2a1bcb1d8a6978"
     },
     {
       "path": "tools/worksheet_formula_review_D173.py",
@@ -9208,8 +9233,8 @@
     },
     {
       "path": "tools/worksheet_preliminary_finance_D187.py",
-      "bytes": 9811,
-      "sha256": "2530db061b0efcb21a03b314f0785ff4c94100a38398d51011e3cb6551bdc817"
+      "bytes": 9958,
+      "sha256": "2787f39c1db373933172cc9f2fde4831761311664e4ee922143f2e9d55712039"
     },
     {
       "path": "tools/worksheet_preliminary_stages_D188.py",
@@ -9218,8 +9243,8 @@
     },
     {
       "path": "tools/worksheet_preliminary_workbook_D186.py",
-      "bytes": 12717,
-      "sha256": "c1678f648ec2b6ef6953bce86b990b318ffa53bd6e0a73d084ef12e6f9fff599"
+      "bytes": 15052,
+      "sha256": "556bb974979e2bc7d194fc7c94de475bfd777f2fe5787a04536091970d1271e0"
     },
     {
       "path": "tools/worksheet_project_calendar_D145.py",

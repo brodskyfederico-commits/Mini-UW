@@ -17,7 +17,7 @@ CONVENTION = "SYNTHETIC-D187-single-draw-at-completion-fixed-quarterly-refi"
 STAGED_CONVENTION = "SYNTHETIC-D188-staged-draws-fixed-quarterly-refi"
 
 
-def finance(case, name, inputs, finish, stabilize, direct_hard, remaining_work, operating, *, stages=None):
+def finance(case, name, inputs, finish, stabilize, direct_hard, remaining_work, operating, *, stages=None, sizing_tax=None):
     staged = stages is not None
     convention = STAGED_CONVENTION if staged else CONVENTION
     run_id = "SYNTHETIC-D188" if staged else "SYNTHETIC-D187"
@@ -110,8 +110,10 @@ def finance(case, name, inputs, finish, stabilize, direct_hard, remaining_work, 
     loan = loan_run.payload
     if loan["schedule_blockers"]:
         return {}, ["deuda permanente: " + loan["schedule_blockers"][0]]
-    bank_noi = operating(0, bank_loss)
-    refi_noi = operating(0)
+    if sizing_tax is None:
+        bank_noi, refi_noi = operating(0, bank_loss), operating(0)
+    else:
+        bank_noi, refi_noi = operating(0, bank_loss) - sizing_tax, operating(0) - sizing_tax
     annual_unit = amount(loan["payment_per_unit"], 1300) * 4
     if min(bank_noi, refi_noi) <= 0:
         return {}, ["NOI bancario o de valoración no positivo"]

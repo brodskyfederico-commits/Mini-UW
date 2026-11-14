@@ -68,8 +68,11 @@ def month_weights(start, months):
     return Counter(offset(start, month).year for month in range(months))
 
 
-def tax_inputs(raw, name, calendar):
-    """Bind seller and buyer rolls to the exact NOI windows for one scenario."""
+def window_taxes(raw, name, sale, windows):
+    """Price declared monthly windows against the appropriate dated tax rolls.
+
+    windows maps identifiers to (start, months, uses_buyer_roll_after_reset).
+    """
     spec = object_or_empty(raw)
     require(spec.get("policy") == POLICY, "M2:florida_tax_policy_missing")
     record = object_or_empty(object_or_empty(spec.get("scenarios")).get(name))
@@ -86,23 +89,22 @@ def tax_inputs(raw, name, calendar):
     buyer = object_or_empty(rolls.get("buyer"))
     previous = object_or_empty(record.get("opening_assessment"))
     seed_year = previous.get("tax_year")
-    sale = day(calendar["sale_date"])
     reset_year = sale.year + 1
     require(type(seed_year) is int and 2000 <= seed_year < reset_year, "M2:prior_assessment_year_missing_or_invalid")
     seed = nonnegative(previous, "non_school_assessed_value", label="prior_roll")
     seed_ref = evidence(previous, "source_ref", label="prior_roll")
-    starts = {period: day(value) for period, value in calendar["noi_window_starts"].items()}
-    weights = {period: month_weights(start, 12) for period, start in starts.items()}
-    min_seller = min(year for period, years in weights.items() for year in years
-                     if period != FORWARD_PERIOD or year < reset_year)
-    max_seller = max(year for period, years in weights.items() for year in years
-                     if period != FORWARD_PERIOD or year < reset_year)
-    max_buyer = max(weights[FORWARD_PERIOD])
+    seller_years, buyer_years = set(), set()
+    for start, months, forward in windows.values():
+        for year in month_weights(start, months):
+            (buyer_years if forward and year >= reset_year else seller_years).add(year)
+    min_seller = min(seller_years)
+    max_seller = max(seller_years)
+    max_buyer = max(buyer_years)
     require(seed_year < min_seller and max(max_seller, max_buyer) - seed_year <= 20,
             "M2:prior_assessment_outside_supported_roll_range")
 
     levy = {}
-    for year in range(min_seller, max(max_seller, max_buyer) + 1):
+    for year in sorted(seller_years | buyer_years):
         item = object_or_empty(rates.get(str(year)))
         rate_label = f"millage:{year}"
         source_ref = evidence(item, "source_ref", label=rate_label)
@@ -135,13 +137,21 @@ def tax_inputs(raw, name, calendar):
                      school_tax=school, non_school_tax=non_school, total=school + non_school, rolls=parts)
         return json.loads(json.dumps(trace, default=rational))
 
-    taxes = {period: window_tax(start, 12, forward=period == FORWARD_PERIOD) for period, start in starts.items()}
+    taxes = {period: window_tax(start, months, forward=forward)
+             for period, (start, months, forward) in windows.items()}
     for tax in taxes.values():
         tax["source_sha256"] = sha(encoded(tax))
-    start = day(calendar["noi_window_starts"][BANK_PERIOD])
-    end = starts[FORWARD_PERIOD]
+    return taxes
+
+
+def tax_inputs(raw, name, calendar):
+    """Bind seller and buyer rolls to the exact D203 NOI and CoC windows."""
+    starts = {period: day(value) for period, value in calendar["noi_window_starts"].items()}
+    start, end = starts[BANK_PERIOD], starts[FORWARD_PERIOD]
     months = (end.year - start.year) * 12 + end.month - start.month
     require(months > 0, "M2:post_refinance_tax_window_unconfirmed")
-    post_refi = window_tax(start, months)
-    post_refi["source_sha256"] = sha(encoded(post_refi))
+    windows = {period: (window_start, 12, period == FORWARD_PERIOD) for period, window_start in starts.items()}
+    windows["post_refi"] = (start, months, False)
+    taxes = window_taxes(raw, name, day(calendar["sale_date"]), windows)
+    post_refi = taxes.pop("post_refi")
     return taxes, post_refi
