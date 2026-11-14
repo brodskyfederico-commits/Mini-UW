@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D208 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D209 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/miniuw-integral-usd10.yml",
@@ -23,13 +23,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 92538,
-      "sha256": "bc2224b53479453b942b75b859be024f8965d9c1d12fb9c489184c7077b7f09a"
+      "bytes": 92698,
+      "sha256": "b0fc4f34b06718c91f35843d4deb480a7246463e3b449721c2f01b825aa6c766"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 370591,
-      "sha256": "f9b95840739a4ea5833ce8556bbf8bf7ab892f0dfe06d0f32d315a91b19645b0"
+      "bytes": 371109,
+      "sha256": "eeae38b75aa28432fd389f92ff7f553d0e21750f4e7004a4a73fd83040ad3d65"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -3530,6 +3530,11 @@
       "path": "docs/workbook-permanent-loan-D152.md",
       "bytes": 4787,
       "sha256": "45170ec1ecc40298be3deb19856fb384ca14ada3ff0e112db5cbef53400ec3d0"
+    },
+    {
+      "path": "docs/workbook-plan-checklist-D209.md",
+      "bytes": 2225,
+      "sha256": "b8d5de7c70d9e770afa339e9c2b213f8d830de7f2d0db03de09c4fd53714fc47"
     },
     {
       "path": "docs/workbook-plan-cropped-set-D138.md",
@@ -8373,8 +8378,8 @@
     },
     {
       "path": "tools/check_worksheet_documentary_intake.py",
-      "bytes": 3033,
-      "sha256": "60d93b5dc38fc557d01fd61167ac3e9385c91b4e6534c0d5d986784a1277045b"
+      "bytes": 5502,
+      "sha256": "27cc2c663ec74b64d07314f0a997ecf10aac4a2cdbe13d7237b9ddb76e0fc5a8"
     },
     {
       "path": "tools/check_worksheet_documented_finance_D147.py",
@@ -9323,8 +9328,8 @@
     },
     {
       "path": "tools/worksheet_documentary_intake.py",
-      "bytes": 10611,
-      "sha256": "bb56bfb6f68caa52e001d3e9e13c6a2ff496e0ceec7656c267628f4a3b9facc1"
+      "bytes": 11169,
+      "sha256": "c87668ba70e5d5b9c0c9ca1ef1cb45a440619632c27849553dde2e3df6d15a5b"
     },
     {
       "path": "tools/worksheet_documented_finance_D147.py",
@@ -9445,6 +9450,11 @@
       "path": "tools/worksheet_permanent_loan_D152.py",
       "bytes": 3349,
       "sha256": "98a147ca436bc999ec8ac829db03ba9457d86da240f85500af3edf6a18aa7699"
+    },
+    {
+      "path": "tools/worksheet_plan_checklist.py",
+      "bytes": 4974,
+      "sha256": "6cf8d97aa9c1c0afa5f7d3a0cad97f49976746cf02ff2c6a6b2bcd8c4a84c890"
     },
     {
       "path": "tools/worksheet_plan_crop_D138.py",

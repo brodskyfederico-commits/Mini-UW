@@ -6,6 +6,7 @@ from decimal import Decimal
 from hashlib import file_digest
 import re
 
+from worksheet_plan_checklist import plan_preflight, plan_values
 from worksheet_preliminary_D185 import SCENARIOS
 
 
@@ -178,7 +179,9 @@ def intake(architecture, *, narrative=None, area_schedule=None):
                 flag("unit_total_mismatch", basis=basis, site_page=site_page, declared=reported_total, observed=observed)
         for kind, declared in site["unit_mix"].items():
             if declared != floor_mix[kind]:
-                flag("unit_mix_mismatch", bedrooms=kind, site_page=site_page, declared=declared, observed=floor_mix[kind])
+                floor_pages = sorted({unit["page"] for unit in floor_units if unit["bedrooms"] == kind})
+                flag("unit_mix_mismatch", bedrooms=kind, site_page=site_page, floor_pages=floor_pages,
+                     declared=declared, observed=floor_mix[kind])
         site_total = sum(site["commercial_areas_sf"].values())
         claims.insert(0, {"file": source["file"], "page": site_page, "sheet": "A1.0", "area_sf": site_total,
                           "literal": "BUILDING DATA / OFFICE + RETAIL + RESTAURANT"})
@@ -196,15 +199,19 @@ def intake(architecture, *, narrative=None, area_schedule=None):
     else:
         flag("unit_area_schedule_missing")
 
+    preflight = plan_preflight(findings)
+    verified = plan_values(preflight, site, floor_units, sources.get("area_schedule", {}).get("unit_types", {}))
+    return_blockers = preflight["calculations"]["return_per_usd_10"]["plan_blockers"]
     return {
-        "profile": "miniuw.documentary-intake.v1", "sources": sources,
+        "profile": "miniuw.documentary-intake.v1", "sources": sources, "preflight": preflight,
         "plan": {"site": site, "floor_sheets": {key: sheets[key] for key in sorted(floor_ids)},
                  "floor_labels": len(floor_units), "unique_unit_ids": len(unit_locations), "floor_mix": dict(floor_mix),
                  "units": floor_units, "commercial_claims": [{**claim, "area_sf": str(claim["area_sf"])} for claim in claims],
-                 "findings": findings, "state": "PENDING" if findings else "READ"},
+                 "findings": findings, "verified_inputs": verified, "state": preflight["status"]},
         "state": "PENDING", "decision": "PENDING", "ranking": [], "deployment_enabled": False,
         "real_decisions_enabled": False, "personal_investor_return": None,
         "scenarios": {name: {"state": "PENDING", "cash": None, "return_per_usd_10": "PENDING",
+                             "plan_blockers": return_blockers,
                              "blockers": ["documentary_intake_only", "verified_financial_inputs_missing"]}
                       for name in SCENARIOS},
     }

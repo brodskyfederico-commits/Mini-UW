@@ -4,6 +4,8 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D209 lleva las discrepancias de planos al checklist y a los cálculos que dependen de cada dato. [Bloqueos y pruebas](docs/workbook-plan-checklist-D209.md).
+
 - D208 coteja unidades y áreas de planos con capa de texto en el ingreso documental del Mini-UW. [Perfil, uso y verificación](docs/workbook-documentary-intake-D208.md).
 
 - D207 define el cotejo por campo y el recálculo de PRELIMINAR tras una corrección. [Diseño y casos de aceptación](docs/workbook-preliminary-revision-D207.md).

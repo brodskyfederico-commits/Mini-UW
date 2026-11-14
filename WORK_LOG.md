@@ -1923,3 +1923,7 @@ Documenta la revisión por campo, la vigencia y aplicabilidad de la evidencia, q
 ## D208 · Ingreso documental de planos con capa de texto
 
 El piloto agrega un ingreso de arquitectura que coteja la lámina de resumen, el índice y los rótulos por piso con la carta y el cuadro de áreas. En el VPS se comprobó el set de 57 páginas y se ejecutaron los ensayos del perfil y la regresión D206. La caja y el retorno por USD 10 quedan PENDING en Base y Downside. La copia excluye documentos y resultados del expediente real. [Perfil y reproducción](docs/workbook-documentary-intake-D208.md).
+
+## D209 · Checklist documental y bloqueo por cálculo
+
+Cada discrepancia del plano se refleja en el checklist con evidencia, corrección y bloqueos propagados a los cálculos afectados. Se aislaron las seis filas del expediente documental en el VPS y se repitieron los ensayos sintéticos y la regresión D117. Base y Downside conservan el retorno por USD 10 PENDING y el dictamen queda PENDING. El respaldo excluye los archivos y resultados reales. [Bloqueos y reproducción](docs/workbook-plan-checklist-D209.md).
