@@ -1915,3 +1915,7 @@ Dos expedientes sintéticos pasan desde planillas y respaldos estructurados regi
 ## D206 · Piloto PRELIMINAR desde respaldos PDF
 
 El piloto lee tablas de texto de planos, cotizaciones, créditos de obra y permanente y padrones fiscales sintéticos, con citas por página y línea. La corrida reproduce el ranking D205 y la caja por USD 10 en ambos escenarios. Cambiar un dato fiscal debidamente registrado recalcula NOI, cobros y múltiplo. Faltantes, duplicados y discrepancias mantienen PENDING y retiran el caso del ranking. La auditoría reproduce las fuentes archivadas. [Alcance y reproducción](docs/workbook-preliminary-pdf-D206.md).
+
+## D207 · Diseño de cotejo y correcciones PRELIMINAR
+
+Documenta la revisión por campo, la vigencia y aplicabilidad de la evidencia, qué cifras dependen de cada respaldo y cómo se verifica el recálculo tras una corrección. Se vuelve a ejecutar la batería sintética D206 en el VPS. Se registran aparte los casos de diseño pendientes de prueba, incluido un cambio en la base inicial por USD 10. [Diseño de revisión](docs/workbook-preliminary-revision-D207.md).
