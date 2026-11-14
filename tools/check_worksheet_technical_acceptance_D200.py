@@ -233,7 +233,8 @@ def verify_calendar(model, settings):
         "project_calendar", "construction_financing", "replacement_reserve", "valuation_and_sale", "noi_by_period")}
     sale_only_inputs.update(state="PENDING", cash_per_usd_10=None,
                             blockers=["selected_principal_exceeds_declared_bank_capacity"])
-    require(route_cash(sale_only_inputs, config) == model["calendar_checks"]["Downside"]["sell_without_refinance"],
+    independent_sale = json.loads(json.dumps(route_cash(sale_only_inputs, config), default=rational))
+    require(independent_sale == model["calendar_checks"]["Downside"]["sell_without_refinance"],
             "The existing construction-loan exit depends on the permanent loan")
     missing_noi = deepcopy(sale_only_inputs)
     del missing_noi["noi_by_period"][FORWARD_PERIOD]
