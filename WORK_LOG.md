@@ -1931,3 +1931,7 @@ Cada discrepancia del plano se refleja en el checklist con evidencia, correcció
 ## D210 · Venta sin refi ante un bloqueo de capacidad
 
 La ruta sintética de venta con deuda de obra conserva su propio calendario, NOI, reserva y precio cuando el único bloqueo de la refinanciación es que el principal solicitado supera la capacidad. El retorno usa el equity inicial comprobado en la caja de obra. Se mantiene PENDING si falta un insumo propio de la ruta o si el préstamo de obra vence antes de la venta. El dictamen formal y el retorno histórico siguen PENDING. Los expedientes privados, planillas de trabajo, resultados particulares y archivos de ejecución del VPS quedan fuera del respaldo.
+
+## D211 · Pruebas de precedencia del dictamen y RLV Downside
+
+El verificador sintético combina ambas reglas de precedencia con RLV Downside aplicable, explícitamente excluido o sin confirmar. Coteja PASS, FAIL, banda, umbrales faltantes y vigencia, y exige que la caja por USD 10 conserve importes y fechas. Los criterios alternativos siguen en revisión. El respaldo contiene el verificador y las fuentes sintéticas del repositorio. Excluye expedientes reales, planillas privadas y registros de ejecución del VPS. [Matriz y reproducción](docs/workbook-verdict-options-D211.md).

@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D210 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D211 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/miniuw-integral-usd10.yml",
@@ -28,8 +28,8 @@
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 371727,
-      "sha256": "e7ab0c0bcb42875ad7fb785feb032aaebb01d5336daad7033e38edf6364f4faf"
+      "bytes": 372313,
+      "sha256": "5abda14eb773a36b83da58564c30b6954e9b9baeb7f502c898f0ed3bd0889f3e"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -3685,6 +3685,11 @@
       "path": "docs/workbook-utility-inputs-D142.md",
       "bytes": 2826,
       "sha256": "6f2245e53a61cbbc4fd31b814afefb52a7c2806b82ed7b81220fe909d788e10f"
+    },
+    {
+      "path": "docs/workbook-verdict-options-D211.md",
+      "bytes": 1966,
+      "sha256": "64cd96163fc8c9a4200c8ede5e2a7bd7356a4bc5905d97a3c239d17f32ee350b"
     },
     {
       "path": "docs/workbook-yoc-spread-D123.md",
@@ -8735,6 +8740,11 @@
       "path": "tools/check_worksheet_utility_inputs_D142.py",
       "bytes": 8451,
       "sha256": "487f6e91fd0ae43946c2dd449cee7b4ab52dda4c30eb7e8554f6ad272ff825eb"
+    },
+    {
+      "path": "tools/check_worksheet_verdict_options_D211.py",
+      "bytes": 14514,
+      "sha256": "5e6cc37205f504c8b63f91f0fa35c61bf53613c552c2578482dddeb25995635f"
     },
     {
       "path": "tools/check_worksheet_yoc_spread_D123.py",
