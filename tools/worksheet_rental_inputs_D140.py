@@ -102,7 +102,7 @@ def terms_for(supplied, scenario, values, sheet, *, include_development=False, i
                 groups=groups, other_income=others, expenses=expenses, cost=cost, principal=principal, cap=cap)
 
 
-def rental_noi(terms, cells, values, period, commercial=None, *, window_start=None, growth=None, buyer_tax=None):
+def rental_noi(terms, cells, values, period, commercial=None, *, window_start=None, growth=None, buyer_tax=None, seller_tax=None):
     growth_ref = None
     if growth is not None:
         from worksheet_growth_D154 import projected_expense_terms
@@ -167,6 +167,10 @@ def rental_noi(terms, cells, values, period, commercial=None, *, window_start=No
         tax_source = f"sha256:{buyer_tax['source_sha256']}"
         spec["tax_floor"].update(value=buyer_tax["total"], period_ref=period, source_ref=tax_source)
         spec["tax_coefficient"].update(value=rational(0), source_ref=tax_source)
+    elif seller_tax is not None:
+        tax_source = f"sha256:{seller_tax['source_sha256']}"
+        spec["tax_floor"].update(value=seller_tax["total"], period_ref=period, source_ref=tax_source)
+        spec["tax_coefficient"].update(value=rational(0), source_ref=tax_source)
     elif property_tax is None:
         spec["tax_floor"].update(value=expense_terms["property_tax"], period_ref=period, source_ref=expense_terms["source_ref"])
         spec["tax_coefficient"].update(value=rational(0), source_ref=policy["source_ref"])
@@ -189,9 +193,11 @@ def rental_noi(terms, cells, values, period, commercial=None, *, window_start=No
         evidence["operating_costs"] = period_evidence(terms["operating_costs"], rows, other_value)
     if buyer_tax is not None:
         evidence["buyer_property_tax"] = buyer_tax
-    elif property_tax is not None and assembled.noi_run is not None:
+    elif (seller_tax is not None or property_tax is not None) and assembled.noi_run is not None:
         result = assembled.noi_run.payload
-        evidence["property_tax"] = property_tax | dict(period_ref=period, annual_tax=result["property_tax"],
+        tax_basis = property_tax if seller_tax is None else seller_tax | dict(
+            floor=seller_tax["total"], coefficient=rational(0))
+        evidence["property_tax"] = tax_basis | dict(period_ref=period, annual_tax=result["property_tax"],
                                                        operating_before_tax=result["operating_before_tax"],
                                                        branch=result["tax_branch"], equation_residual=result["equation_residual"])
     if growth is not None:
@@ -205,7 +211,7 @@ def run_rental_scenario(name, raw, review, rent_inputs, *, include_commercial=Fa
                         include_replacement_reserve=False, include_property_tax=False, include_exit_pricing=False,
                         include_permanent_loan=False, include_refinance_costs=False, include_growth=False,
                         require_market_evidence=False, require_formula_review=False, supplemental=None,
-                        require_debt_yield=False):
+                        require_debt_yield=False, florida_tax=False):
     pending = dict(state="PENDING", cash_per_usd_10=None, capacity=None, noi_by_period={})
     if not review["calculation_inputs_ready"]:
         return pending | dict(blockers=["required_rental_cells_unconfirmed"])
@@ -258,7 +264,7 @@ def run_rental_scenario(name, raw, review, rent_inputs, *, include_commercial=Fa
         if include_refinance_costs:
             from worksheet_refinance_costs_D153 import declared_refinance_costs
             refinance_costs = declared_refinance_costs(rent_inputs.get("refinance_costs"), name, review, terms["groups"])
-        if include_property_tax:
+        if include_property_tax and not florida_tax:
             from worksheet_property_tax_D150 import declared_property_tax
             terms["property_tax"] = declared_property_tax(rent_inputs.get("property_tax"), name, review, terms["groups"])
         valuation_terms = None
@@ -339,8 +345,13 @@ def run_rental_scenario(name, raw, review, rent_inputs, *, include_commercial=Fa
             draws = [draw | dict(source_ref=f"{cost_source}/{index}") for index, draw in enumerate(funding["equity_draws"])]
         periods = {}
 
+        tax_by_period, post_refi_tax = {}, None
         buyer_tax = None
-        if require_formula_review:
+        if florida_tax:
+            from worksheet_florida_tax_D203 import tax_inputs
+            tax_by_period, post_refi_tax = tax_inputs(rent_inputs.get("florida_property_tax"), name, calendar)
+            buyer_tax = tax_by_period[FORWARD_PERIOD]
+        elif require_formula_review:
             from worksheet_formula_review_D173 import forward_buyer_tax
             buyer_tax = forward_buyer_tax(rent_inputs.get("buyer_forward_property_tax"), name, calendar)
 
@@ -349,7 +360,8 @@ def run_rental_scenario(name, raw, review, rent_inputs, *, include_commercial=Fa
             projection = None if growth_terms is None else project_window(growth_terms, window_start)
             assembled, periods[period] = rental_noi(terms, cells, values, period, commercial,
                                                    window_start=window_start, growth=projection,
-                                                   buyer_tax=buyer_tax if period == FORWARD_PERIOD else None)
+                                                   buyer_tax=buyer_tax if period == FORWARD_PERIOD else None,
+                                                   seller_tax=tax_by_period.get(period))
             return assembled
 
         # The accrued operating result remains available when the refinance request is blocked.
@@ -378,6 +390,8 @@ def run_rental_scenario(name, raw, review, rent_inputs, *, include_commercial=Fa
         result["construction_financing"] = funding
     if binding is not None:
         result["document_financial_binding"] = binding
+    if post_refi_tax is not None:
+        result["post_refinance_tax"] = post_refi_tax
     if scope:
         result["supplemental_scope"] = scope
     return result | market | dict(noi_by_period=periods, cell_sources=cells, comps_evidence=terms["comps"], rent_basis=terms["basis"])
@@ -590,7 +604,7 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
                       include_alternatives=False, evidence_milestone=None, require_market_evidence=False,
                       require_formula_review=False, require_supplemental_scope=False, require_template_identity=False,
                       require_debt_yield=False, integrated_screening=False, definition_screening=False,
-                      criteria_review=None, technical_acceptance=False):
+                      criteria_review=None, technical_acceptance=False, florida_tax=False):
     hashes = object_or_empty(case.get("workbook_sha256"))
     review = review_native_mapping(case.get("native_mapping"), workbooks, hashes, calculation_fields=FIELDS,
                                    require_template_identity=require_template_identity)
@@ -615,7 +629,7 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
                                       include_permanent_loan=include_permanent_loan, include_refinance_costs=include_refinance_costs,
                                       include_growth=include_growth, require_market_evidence=require_market_evidence,
                                       require_formula_review=require_formula_review, supplemental=supplemental,
-                                      require_debt_yield=require_debt_yield)
+                                      require_debt_yield=require_debt_yield, florida_tax=florida_tax)
 
     views = {name: run_scenario(name, review["scenarios"][name]) for name in SCENARIOS}
     workbook_blockers = review["blockers"]
@@ -637,7 +651,7 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
         for name, view in views.items():
             inputs = object_or_empty(case.get("rent_inputs"))
             coc = post_refi_coc(inputs.get("post_refinance_coc"), name, view,
-                                require_noi_basis=technical_acceptance)
+                                require_noi_basis=technical_acceptance, property_tax=view.get("post_refinance_tax"))
             view["post_refinance_coc"] = coc
             blockers.extend(f"{name}:post_refinance_coc:{reason}" for reason in coc["blockers"])
     period_ref = PERIOD
@@ -660,7 +674,7 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
                                              revision=revision, documents=document_review, case_sha256=case_sha256)
     if integrated_screening:
         from worksheet_integrated_screening_D181 import render_integrated
-        pdf = render_integrated(views, screening, technical_acceptance=technical_acceptance)
+        pdf = render_integrated(views, screening, technical_acceptance=technical_acceptance, florida_tax=florida_tax)
     else:
         pdf = render(views, simulation, include_commercial=include_commercial, include_utilities=include_utilities,
                      include_development=include_development, include_budget=include_budget, include_calendar=include_calendar,
@@ -772,6 +786,10 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
         pipeline["calendar_checks"] = json.loads(json.dumps(calendar_checks, default=rational))
         profile = "synthetic_documented_technical_acceptance"
         pipeline["pipeline"]["version_tests"]["suite"] = "check_worksheet_technical_acceptance_D200.py"
+    if florida_tax:
+        from worksheet_florida_tax_D203 import PROFILE
+        profile = PROFILE
+        pipeline["pipeline"]["version_tests"]["suite"] = "check_worksheet_florida_tax_D203.py"
     return dict(profile=profile, state=state,
                 case_sha256=case_sha256, decision="PENDING", simulation_result=simulation,
                 real_decisions_enabled=False, deployment_enabled=False, personal_investor_return=None,

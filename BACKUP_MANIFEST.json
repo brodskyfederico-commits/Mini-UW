@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D202 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D203 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/miniuw-integral-usd10.yml",
@@ -23,13 +23,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 91542,
-      "sha256": "c0bf69e6b4d9d7d40dfb8945a66f363a6e5efab0f5e26b37d17358970376aa03"
+      "bytes": 91718,
+      "sha256": "11602b49f82026de07027118b9fec2d8c72061ee25cd43d735e78f32da4d938f"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 367575,
-      "sha256": "72133d6b03509b354bf82a6fb957b1895e767ebc284f41195c10b3a50c83d584"
+      "bytes": 368035,
+      "sha256": "569bac471eee349a6b1adfe0660ed5ef6330a98ec603cc8c0466be8fe553c59f"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -1187,6 +1187,11 @@
       "sha256": "48427ed96e6c81278b67593b98b87651295a20881d705b9671df78be803603e2"
     },
     {
+      "path": "docs/review/MiniUW_Informe_USD10_D203.pdf",
+      "bytes": 6035,
+      "sha256": "e0f8588ce5d022603365d67972b39a16be5a6cacd200f8d695eb6dbf15deed97"
+    },
+    {
       "path": "docs/review/MiniUW_Planilla_55_Campos_Revision_Profesional.xlsx",
       "bytes": 19233,
       "sha256": "5262db20b532c3f139079c7342bf06cfea046337cc52f3dc9e1a64a31f851f71"
@@ -1325,6 +1330,11 @@
       "path": "docs/review/MiniUW_Verificacion_D202.json",
       "bytes": 5488,
       "sha256": "bff4c4fe0c11e15523086b72c60567f21f6e7d6345975a1b3638888bc7e93a7d"
+    },
+    {
+      "path": "docs/review/MiniUW_Verificacion_D203.json",
+      "bytes": 13647,
+      "sha256": "61a80c154cd2b99360f951cd2879efcff6a7686ea0d1a4d50793fcb7bce7dc5b"
     },
     {
       "path": "docs/review/MiniUW_Vista_Sintetica_Interna_T18.pdf",
@@ -3405,6 +3415,11 @@
       "path": "docs/workbook-exit-pricing-D151.md",
       "bytes": 4304,
       "sha256": "8235ed6cc2191f5fd57014c8d0fab3ee1b7759251bc74b4119ee307ff4a6ac79"
+    },
+    {
+      "path": "docs/workbook-florida-tax-D203.md",
+      "bytes": 3982,
+      "sha256": "ae659c273d32bf6e4dd3c4549be8b5b0058f457af3d8fd293c6cce4ce40cfe8d"
     },
     {
       "path": "docs/workbook-formula-review-D173.md",
@@ -5755,6 +5770,11 @@
       "path": "templates/synthetic-first-pilot-D49.json",
       "bytes": 3235,
       "sha256": "4b5603562895ed0277ee9ed8e67d8a1bf2ea4cd2bab7a410ea4de40bb8ca56bc"
+    },
+    {
+      "path": "templates/synthetic-florida-tax-settings-D203.json",
+      "bytes": 36903,
+      "sha256": "e93ebc5c52c747bc9fd13b71a24eb6f2b5db0a8140f1e4d47a26c0cedcec539d"
     },
     {
       "path": "templates/synthetic-gp-catch-up-terms-D170.json",
@@ -8152,6 +8172,11 @@
       "sha256": "82b302e246a255871d8eea79dca104a6b0e527c3150a0ca10a7629e829f94a64"
     },
     {
+      "path": "tools/check_worksheet_florida_tax_D203.py",
+      "bytes": 13295,
+      "sha256": "b33483d46eafb7e60794ea8f61c4fbb43575de3071edc8f447a16ae2743b5c1b"
+    },
+    {
       "path": "tools/check_worksheet_formula_review_D173.py",
       "bytes": 11591,
       "sha256": "a1ad4d69f31c2007ab91fbd14833d04aa41f3a224523907159329c7933971522"
@@ -8833,8 +8858,8 @@
     },
     {
       "path": "tools/miniuw_worksheet_v1.py",
-      "bytes": 34693,
-      "sha256": "89b9d661a8a875d206ef9fdaeab80154f17c5df9c52d33e5f54862b8c5cc883f"
+      "bytes": 34902,
+      "sha256": "231effb1efee146a4f0b1ec5cd56177e2a8f3ee7c6a0875f13cbe371954f4a8b"
     },
     {
       "path": "tools/onepage_pending_cases_D79.py",
@@ -9042,9 +9067,14 @@
       "sha256": "a39cabeaa4f9ebbeced3f7e949cc3a440a0dea50f0e4bbab7dd1614ee3b386a0"
     },
     {
+      "path": "tools/worksheet_florida_tax_D203.py",
+      "bytes": 8076,
+      "sha256": "86354e4dac62f2603f2c5b43f26e1d1bc39b5972f1da16721795b80d8d2edb0b"
+    },
+    {
       "path": "tools/worksheet_formula_review_D173.py",
-      "bytes": 3641,
-      "sha256": "89c1b72d3f446301d8f95198e8c0b41072801e2c1f7793fbe68d549c7ca6bdd0"
+      "bytes": 4122,
+      "sha256": "1eca81d6c9da9f7414be7e8d81b2c951f1682dc7f55c425e9dd57a2c1191a6c8"
     },
     {
       "path": "tools/worksheet_growth_D154.py",
@@ -9053,8 +9083,8 @@
     },
     {
       "path": "tools/worksheet_intake_D198.py",
-      "bytes": 5928,
-      "sha256": "fe87bd3d6f437735db350bd7fcaf81134fd3dfa274d538f45be1d2fcf4c635b4"
+      "bytes": 5899,
+      "sha256": "f6a8132c25bae0a8e48708cb8eca7a3a04ba6e1c254ee981ea1a5aa139eeb70d"
     },
     {
       "path": "tools/worksheet_intake_case_D117.py",
@@ -9063,8 +9093,8 @@
     },
     {
       "path": "tools/worksheet_integrated_screening_D181.py",
-      "bytes": 26867,
-      "sha256": "0151bbc71e7587aa96aaf803422b628db03042ace75903ca73737a9702172e51"
+      "bytes": 27113,
+      "sha256": "af8b1e1fc91f24d5016474d8785f27a57887916909992ea6fd6a98431bf7aae1"
     },
     {
       "path": "tools/worksheet_investor_D74.py",
@@ -9213,8 +9243,8 @@
     },
     {
       "path": "tools/worksheet_rental_inputs_D140.py",
-      "bytes": 55674,
-      "sha256": "94b82b80dad8a3fb95be62cc7f1b50b2402bb5352aec8da3a63e3776db5759b2"
+      "bytes": 56962,
+      "sha256": "190f6b5bf233e2abb0f91c8af0c0d5743d920d0dada173c06dc482a7b6d7615f"
     },
     {
       "path": "tools/worksheet_replacement_reserve_D149.py",
@@ -9223,8 +9253,8 @@
     },
     {
       "path": "tools/worksheet_revision_D128.py",
-      "bytes": 7113,
-      "sha256": "f23185dbf30b827f5ff10c995af84d8f59cb4b5b0948021f51ef381893346328"
+      "bytes": 7390,
+      "sha256": "77352d22a0a422529089f101ca2bcac75b934cf7d3f23dd8aa03733af3b95401"
     },
     {
       "path": "tools/worksheet_sale_gap_D85.py",

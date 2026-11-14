@@ -1,0 +1,494 @@
+{
+  "decision": "PENDING",
+  "deployment_enabled": false,
+  "missing_evidence": {
+    "missing-buyer-appraisal": "M2:buyer:2030:just_value_missing_or_invalid",
+    "missing-millage": "M2:millage:2029:non_school_mills_missing_or_invalid",
+    "missing-opening": "M2:prior_roll:non_school_assessed_value_missing_or_invalid",
+    "missing-reset-evidence": "M2:seller:2028:event_ref_missing"
+  },
+  "observed_simulation": "PASS",
+  "pdf_sha256": "e0f8588ce5d022603365d67972b39a16be5a6cacd200f8d695eb6dbf15deed97",
+  "real_decisions_enabled": false,
+  "scenarios": {
+    "Base": {
+      "buyer_reset_roll": {
+        "assessment_ceiling": null,
+        "assessment_treatment": "ownership_or_control_reset",
+        "cap": null,
+        "event_date": "2028-12-30",
+        "event_ref": "SYNTHETIC-D203-event-record",
+        "just_value": {
+          "denominator": "1",
+          "numerator": "3500000"
+        },
+        "millage_ref": "SYNTHETIC-D203-separated-certified-millage-example",
+        "months": 12,
+        "non_school_assessed_value": {
+          "denominator": "1",
+          "numerator": "3500000"
+        },
+        "non_school_mills": {
+          "denominator": "1",
+          "numerator": "9"
+        },
+        "non_school_tax": {
+          "denominator": "1",
+          "numerator": "31500"
+        },
+        "owner": "buyer",
+        "prior_non_school_assessed": null,
+        "school_mills": {
+          "denominator": "1",
+          "numerator": "4"
+        },
+        "school_tax": {
+          "denominator": "1",
+          "numerator": "14000"
+        },
+        "school_taxable_value": {
+          "denominator": "1",
+          "numerator": "3500000"
+        },
+        "tax_year": 2029,
+        "valuation_ref": "SYNTHETIC-D203-roll-valuation"
+      },
+      "capacity": {
+        "denominator": "15200",
+        "numerator": "48558896919"
+      },
+      "cash_per_usd_10": {
+        "additional": 4.87,
+        "events": [
+          {
+            "category": "initial_capital",
+            "date": "2027-03-30",
+            "usd": 10.0
+          },
+          {
+            "category": "additional_capital",
+            "date": "2027-09-30",
+            "usd": 4.66
+          },
+          {
+            "category": "additional_capital",
+            "date": "2027-12-30",
+            "usd": 0.05
+          },
+          {
+            "category": "additional_capital",
+            "date": "2028-03-30",
+            "usd": 0.05
+          },
+          {
+            "category": "additional_capital",
+            "date": "2028-06-30",
+            "usd": 0.05
+          },
+          {
+            "category": "additional_capital",
+            "date": "2028-09-30",
+            "usd": 0.05
+          },
+          {
+            "category": "net_refinance_distribution",
+            "date": "2028-09-30",
+            "usd": 2.85
+          },
+          {
+            "category": "operating_distribution",
+            "date": "2028-12-30",
+            "usd": 1.53
+          },
+          {
+            "category": "net_sale_distribution",
+            "date": "2028-12-30",
+            "usd": 15.13
+          }
+        ],
+        "received": 19.51,
+        "unrecovered": 0.0
+      },
+      "delta_receipts_per_usd_10": {
+        "denominator": "1344000",
+        "numerator": "1949771"
+      },
+      "gross_sale": {
+        "denominator": "175",
+        "numerator": "902883896"
+      },
+      "prior_cash_per_usd_10": {
+        "additional": 4.87,
+        "events": [
+          {
+            "category": "initial_capital",
+            "date": "2027-03-30",
+            "usd": 10.0
+          },
+          {
+            "category": "additional_capital",
+            "date": "2027-09-30",
+            "usd": 4.66
+          },
+          {
+            "category": "additional_capital",
+            "date": "2027-12-30",
+            "usd": 0.05
+          },
+          {
+            "category": "additional_capital",
+            "date": "2028-03-30",
+            "usd": 0.05
+          },
+          {
+            "category": "additional_capital",
+            "date": "2028-06-30",
+            "usd": 0.05
+          },
+          {
+            "category": "additional_capital",
+            "date": "2028-09-30",
+            "usd": 0.05
+          },
+          {
+            "category": "net_refinance_distribution",
+            "date": "2028-09-30",
+            "usd": 2.85
+          },
+          {
+            "category": "operating_distribution",
+            "date": "2028-12-30",
+            "usd": 1.43
+          },
+          {
+            "category": "net_sale_distribution",
+            "date": "2028-12-30",
+            "usd": 13.78
+          }
+        ],
+        "received": 18.06,
+        "unrecovered": 0.0
+      },
+      "seller_first_operating_roll": {
+        "assessment_ceiling": {
+          "denominator": "1",
+          "numerator": "1653750"
+        },
+        "assessment_treatment": "confirmed_no_change",
+        "cap": {
+          "denominator": "20",
+          "numerator": "1"
+        },
+        "event_date": null,
+        "event_ref": "SYNTHETIC-D203-event-record",
+        "just_value": {
+          "denominator": "1",
+          "numerator": "2500000"
+        },
+        "millage_ref": "SYNTHETIC-D203-separated-certified-millage-example",
+        "months": 12,
+        "non_school_assessed_value": {
+          "denominator": "1",
+          "numerator": "1653750"
+        },
+        "non_school_mills": {
+          "denominator": "1",
+          "numerator": "9"
+        },
+        "non_school_tax": {
+          "denominator": "4",
+          "numerator": "59535"
+        },
+        "owner": "seller",
+        "prior_non_school_assessed": {
+          "denominator": "1",
+          "numerator": "1575000"
+        },
+        "school_mills": {
+          "denominator": "1",
+          "numerator": "4"
+        },
+        "school_tax": {
+          "denominator": "1",
+          "numerator": "10000"
+        },
+        "school_taxable_value": {
+          "denominator": "1",
+          "numerator": "2500000"
+        },
+        "tax_year": 2028,
+        "valuation_ref": "SYNTHETIC-D203-roll-valuation"
+      },
+      "taxes": {
+        "SYNTHETIC-D107-operating-year": {
+          "denominator": "4",
+          "numerator": "99535"
+        },
+        "SYNTHETIC-D107-year-from-sale": {
+          "denominator": "1",
+          "numerator": "45500"
+        },
+        "SYNTHETIC-D108-bank-annual": {
+          "denominator": "64",
+          "numerator": "1685881"
+        },
+        "SYNTHETIC-D108-refinance-valuation-annual": {
+          "denominator": "64",
+          "numerator": "1685881"
+        }
+      }
+    },
+    "Downside": {
+      "buyer_reset_roll": {
+        "assessment_ceiling": null,
+        "assessment_treatment": "ownership_or_control_reset",
+        "cap": null,
+        "event_date": "2029-06-30",
+        "event_ref": "SYNTHETIC-D203-event-record",
+        "just_value": {
+          "denominator": "1",
+          "numerator": "3300000"
+        },
+        "millage_ref": "SYNTHETIC-D203-separated-certified-millage-example",
+        "months": 6,
+        "non_school_assessed_value": {
+          "denominator": "1",
+          "numerator": "3300000"
+        },
+        "non_school_mills": {
+          "denominator": "1",
+          "numerator": "9"
+        },
+        "non_school_tax": {
+          "denominator": "1",
+          "numerator": "14850"
+        },
+        "owner": "buyer",
+        "prior_non_school_assessed": null,
+        "school_mills": {
+          "denominator": "1",
+          "numerator": "4"
+        },
+        "school_tax": {
+          "denominator": "1",
+          "numerator": "6600"
+        },
+        "school_taxable_value": {
+          "denominator": "1",
+          "numerator": "3300000"
+        },
+        "tax_year": 2030,
+        "valuation_ref": "SYNTHETIC-D203-roll-valuation"
+      },
+      "capacity": {
+        "denominator": "14385579400971777511706051626164193383731942081529704844909925132175130210445570183520799638980741929727277167962095672739427752930",
+        "numerator": "20742524073558087984527609147400252571444110688213453127972471940361770756866477713920830118424461233783586744890458290949138298266264637"
+      },
+      "cash_per_usd_10": {
+        "additional": 8.19,
+        "events": [
+          {
+            "category": "initial_capital",
+            "date": "2027-03-30",
+            "usd": 10.0
+          },
+          {
+            "category": "additional_capital",
+            "date": "2027-06-30",
+            "usd": 0.76
+          },
+          {
+            "category": "additional_capital",
+            "date": "2027-09-30",
+            "usd": 0.04
+          },
+          {
+            "category": "additional_capital",
+            "date": "2027-12-30",
+            "usd": 7.03
+          },
+          {
+            "category": "additional_capital",
+            "date": "2028-03-30",
+            "usd": 0.07
+          },
+          {
+            "category": "additional_capital",
+            "date": "2028-06-30",
+            "usd": 0.07
+          },
+          {
+            "category": "additional_capital",
+            "date": "2028-09-30",
+            "usd": 0.07
+          },
+          {
+            "category": "additional_capital",
+            "date": "2028-12-30",
+            "usd": 0.07
+          },
+          {
+            "category": "additional_capital",
+            "date": "2029-03-30",
+            "usd": 0.07
+          },
+          {
+            "category": "net_refinance_distribution",
+            "date": "2029-03-30",
+            "usd": 2.45
+          },
+          {
+            "category": "operating_distribution",
+            "date": "2029-06-30",
+            "usd": 0.57
+          },
+          {
+            "category": "net_sale_distribution",
+            "date": "2029-06-30",
+            "usd": 4.11
+          }
+        ],
+        "received": 7.13,
+        "unrecovered": 11.06
+      },
+      "delta_receipts_per_usd_10": {
+        "denominator": "50400000",
+        "numerator": "53223577"
+      },
+      "gross_sale": {
+        "denominator": "105",
+        "numerator": "259703089"
+      },
+      "prior_cash_per_usd_10": {
+        "additional": 8.19,
+        "events": [
+          {
+            "category": "initial_capital",
+            "date": "2027-03-30",
+            "usd": 10.0
+          },
+          {
+            "category": "additional_capital",
+            "date": "2027-06-30",
+            "usd": 0.76
+          },
+          {
+            "category": "additional_capital",
+            "date": "2027-09-30",
+            "usd": 0.04
+          },
+          {
+            "category": "additional_capital",
+            "date": "2027-12-30",
+            "usd": 7.03
+          },
+          {
+            "category": "additional_capital",
+            "date": "2028-03-30",
+            "usd": 0.07
+          },
+          {
+            "category": "additional_capital",
+            "date": "2028-06-30",
+            "usd": 0.07
+          },
+          {
+            "category": "additional_capital",
+            "date": "2028-09-30",
+            "usd": 0.07
+          },
+          {
+            "category": "additional_capital",
+            "date": "2028-12-30",
+            "usd": 0.07
+          },
+          {
+            "category": "additional_capital",
+            "date": "2029-03-30",
+            "usd": 0.07
+          },
+          {
+            "category": "net_refinance_distribution",
+            "date": "2029-03-30",
+            "usd": 2.45
+          },
+          {
+            "category": "operating_distribution",
+            "date": "2029-06-30",
+            "usd": 0.55
+          },
+          {
+            "category": "net_sale_distribution",
+            "date": "2029-06-30",
+            "usd": 3.08
+          }
+        ],
+        "received": 6.08,
+        "unrecovered": 12.11
+      },
+      "seller_first_operating_roll": {
+        "assessment_ceiling": null,
+        "assessment_treatment": "qualifying_improvement_reset",
+        "cap": null,
+        "event_date": "2027-12-31",
+        "event_ref": "SYNTHETIC-D203-event-record",
+        "just_value": {
+          "denominator": "1",
+          "numerator": "3000000"
+        },
+        "millage_ref": "SYNTHETIC-D203-separated-certified-millage-example",
+        "months": 6,
+        "non_school_assessed_value": {
+          "denominator": "1",
+          "numerator": "3000000"
+        },
+        "non_school_mills": {
+          "denominator": "1",
+          "numerator": "9"
+        },
+        "non_school_tax": {
+          "denominator": "1",
+          "numerator": "13500"
+        },
+        "owner": "seller",
+        "prior_non_school_assessed": {
+          "denominator": "1",
+          "numerator": "1575000"
+        },
+        "school_mills": {
+          "denominator": "1",
+          "numerator": "4"
+        },
+        "school_tax": {
+          "denominator": "1",
+          "numerator": "6000"
+        },
+        "school_taxable_value": {
+          "denominator": "1",
+          "numerator": "3000000"
+        },
+        "tax_year": 2028,
+        "valuation_ref": "SYNTHETIC-D203-roll-valuation"
+      },
+      "taxes": {
+        "SYNTHETIC-D107-operating-year": {
+          "denominator": "1",
+          "numerator": "40075"
+        },
+        "SYNTHETIC-D107-year-from-sale": {
+          "denominator": "1",
+          "numerator": "42025"
+        },
+        "SYNTHETIC-D108-bank-annual": {
+          "denominator": "2",
+          "numerator": "83175"
+        },
+        "SYNTHETIC-D108-refinance-valuation-annual": {
+          "denominator": "2",
+          "numerator": "83175"
+        }
+      }
+    }
+  },
+  "status": "passed"
+}

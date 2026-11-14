@@ -88,7 +88,9 @@ WORKBOOK_DEBT_YIELD_SCHEMA = "miniuw.synthetic-native-rental-inputs.v28"
 WORKBOOK_INTEGRATED_SCREENING_SCHEMA = "miniuw.synthetic-native-rental-inputs.v29"
 WORKBOOK_DEFINITION_SCREENING_SCHEMA = "miniuw.synthetic-native-rental-inputs.v30"
 WORKBOOK_TECHNICAL_ACCEPTANCE_SCHEMA = "miniuw.synthetic-native-rental-inputs.v31"
-DEFINITION_SCHEMAS = (WORKBOOK_DEFINITION_SCREENING_SCHEMA, WORKBOOK_TECHNICAL_ACCEPTANCE_SCHEMA)
+WORKBOOK_FLORIDA_TAX_SCHEMA = "miniuw.synthetic-native-rental-inputs.v32"
+TECHNICAL_SCHEMAS = (WORKBOOK_TECHNICAL_ACCEPTANCE_SCHEMA, WORKBOOK_FLORIDA_TAX_SCHEMA)
+DEFINITION_SCHEMAS = (WORKBOOK_DEFINITION_SCREENING_SCHEMA, *TECHNICAL_SCHEMAS)
 EVIDENCE_MILESTONES = {WORKBOOK_EVIDENCE_PDF_SCHEMA: "D156", WORKBOOK_CONSTRUCTION_PDF_SCHEMA: "D157",
                        WORKBOOK_SCANNED_EVIDENCE_SCHEMA: "D158", WORKBOOK_ORIENTED_EVIDENCE_SCHEMA: "D159",
                        WORKBOOK_COLOR_EVIDENCE_SCHEMA: "D160", WORKBOOK_JPEG_EVIDENCE_SCHEMA: "D161",
@@ -236,7 +238,8 @@ def build_results(raw, *, workbook_raw=None, downside_workbook_raw=None, current
                                  require_debt_yield=schema in DEBT_YIELD_SCHEMAS,
                                  integrated_screening=schema in (WORKBOOK_INTEGRATED_SCREENING_SCHEMA, *DEFINITION_SCHEMAS),
                                  definition_screening=schema in DEFINITION_SCHEMAS,
-                                 technical_acceptance=schema == WORKBOOK_TECHNICAL_ACCEPTANCE_SCHEMA,
+                                 technical_acceptance=schema in TECHNICAL_SCHEMAS,
+                                 florida_tax=schema == WORKBOOK_FLORIDA_TAX_SCHEMA,
                                  criteria_review=criteria_review)
     yield_metrics = schema in (WORKBOOK_YIELD_PILOT_SCHEMA, *WORKBOOK_FUNDING_PILOT_SCHEMAS)
     interval_irr = schema == WORKBOOK_IRR_PILOT_SCHEMA or yield_metrics

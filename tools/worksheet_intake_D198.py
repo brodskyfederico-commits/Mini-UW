@@ -9,7 +9,7 @@ from miniuw_foundation.inputsheet import inspect_synthetic_input_sheet
 from miniuw_foundation.scheduled_expense_case import sha
 from miniuw_worksheet_v1 import (
     CRITERIA_FILE, DOWNSIDE_WORKBOOK_FILE, EVIDENCE_FILE, MAX_FILE_BYTES, PLAN_FILE, WORKBOOK_FILE,
-    WORKBOOK_TECHNICAL_ACCEPTANCE_SCHEMA, encoded, write_package,
+    TECHNICAL_SCHEMAS, encoded, write_package,
 )
 from preview_lorena_criteria_D192 import read_cells
 from worksheet_local_sources_D127 import synthetic_id
@@ -63,8 +63,8 @@ def register(sources, revision):
 
 def prepare(settings, registered):
     # Compare observed bytes separately. Bind the case only to the declared registration.
-    if settings.get("schema") != WORKBOOK_TECHNICAL_ACCEPTANCE_SCHEMA:
-        raise ValidationError("explicit_D200_synthetic_settings_required")
+    if settings.get("schema") not in TECHNICAL_SCHEMAS:
+        raise ValidationError("explicit_synthetic_worksheet_settings_required")
     if not synthetic_id(registered.get("revision")) or set(registered["files"]) != set(SOURCES.values()):
         raise ValidationError("invalid_synthetic_registration")
     case = deepcopy(settings)

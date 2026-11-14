@@ -1899,3 +1899,7 @@ B16 usa la verificación de los dos PDF por B03 en el perfil v31. La prueba repr
 ## D202 · Auditoría de páginas requeridas dentro de PDF registrados
 
 B16 exige la lectura de las páginas requeridas y anota archivo, rol y motivo cuando falta respaldo en el perfil v31. Los ensayos aíslan A601, la página bancaria de Downside y la copia oficial. La caja de escenarios verificados conserva los importes y fechas por USD 10. El dictamen queda PENDING en los tres casos, todos sintéticos. [Casos y reproducción](docs/workbook-document-pages-D202.md).
+
+## D203 · Tope no escolar de Florida en M2
+
+El perfil sintético v32 calcula el impuesto escolar y no escolar por padrón y ventana. Prueba la vigencia del tope de 5 % desde 2027, el límite del valor justo y la retasación por mejora calificada y por compra. Recalcula NOI, capacidad, CoC, venta y caja por USD 10. Los faltantes fiscales mantienen PENDING el escenario afectado y su auditoría. [Alcance y reproducción](docs/workbook-florida-tax-D203.md).

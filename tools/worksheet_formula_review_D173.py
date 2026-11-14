@@ -24,7 +24,7 @@ def forward_buyer_tax(raw, name, calendar):
     return record | dict(total=rational(school + non_school), source_sha256=sha(encoded(record)))
 
 
-def post_refi_coc(raw, name, view, *, require_noi_basis=False):
+def post_refi_coc(raw, name, view, *, require_noi_basis=False, property_tax=None):
     result = dict(definition=COC_BASIS, value=None, annualized=False)
     calendar = view.get("project_calendar")
     if calendar is None or view.get("cash_per_usd_10") is None:
@@ -40,15 +40,25 @@ def post_refi_coc(raw, name, view, *, require_noi_basis=False):
         if record.get("noi_basis") != AFTER_RESERVES:
             return check("post_refi_reserve_adjusted_noi_basis_unconfirmed", **result)
         result["noi_basis"] = AFTER_RESERVES
+    if property_tax is not None:
+        fields.remove("period_noi")
+        fields.add("period_noi_before_property_tax")
     if (record.keys() != fields
             or record["basis"] != COC_BASIS or record["currency"] != "USD"
             or (record["window_start"], record["window_end"]) != (start, end)
             or not all(synthetic_id(record[key]) for key in ("noi_source_ref", "equity_source_ref"))):
         return check("post_refi_noi_and_equity_evidence_or_window_unconfirmed", **result)
-    noi, equity = number(record["period_noi"]), number(record["equity_still_invested"])
+    if property_tax is None:
+        noi = number(record["period_noi"])
+    else:
+        before_tax = number(record["period_noi_before_property_tax"])
+        noi = None if before_tax is None else before_tax - number(property_tax["total"])
+        result["property_tax"] = property_tax
+    equity = number(record["equity_still_invested"])
     debt = view["dated_debt_service"]
     service = number(debt["scheduled_service_due"])
-    result.update(period_noi=record["period_noi"], equity_still_invested=record["equity_still_invested"],
+    result.update(period_noi=record["period_noi"] if property_tax is None else (None if noi is None else rational(noi)),
+                  equity_still_invested=record["equity_still_invested"],
                   scheduled_debt_service=debt["scheduled_service_due"], debt_payment_date=debt["date"],
                   debt_source_ref=view["permanent_loan"]["loan_run_sha256"],
                   source_sha256=sha(encoded(record)), source=record)

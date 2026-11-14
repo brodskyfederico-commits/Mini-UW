@@ -114,11 +114,14 @@ def audit_revision(result, raw):
     revision_blockers.extend(reason for reason in intake.get("blockers", []) if reason in {
         "criteria_workbook_missing", "criteria_workbook_hash_mismatch", "criteria_workbook_revision_mismatch",
     })
-    if result.get("profile") == "synthetic_documented_technical_acceptance":
+    if result.get("profile") in ("synthetic_documented_technical_acceptance", "synthetic_documented_florida_tax"):
         revision_blockers.extend(pdf_revision_blockers(result["local_review"]["bots"]))
         for scenario, review in result["native_mapping_review"]["scenarios"].items():
             if "native_workbook_missing_or_unbound" in review["blockers"]:
                 revision_blockers.append(f"{scenario}:native_workbook_missing_or_unbound")
+    if result.get("profile") == "synthetic_documented_florida_tax":
+        for name, view in result["scenarios"].items():
+            revision_blockers.extend(f"{name}:{reason}" for reason in view["blockers"] if reason.startswith("M2:"))
     if current is None:
         revision_blockers.append("current_revision_snapshot_missing" if raw is None else "current_revision_snapshot_invalid")
     elif not revision_blockers and captured["state"] == "matched_synthetic_revision":

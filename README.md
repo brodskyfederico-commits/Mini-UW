@@ -4,6 +4,8 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D203 incorpora a M2 el tope no escolar de Florida desde 2027 y prueba su efecto por USD 10 en Base y Downside. [Alcance y reproducción](docs/workbook-florida-tax-D203.md).
+
 - D202 verifica páginas requeridas aun cuando los PDF coincidan con sus huellas registradas. [Casos y reproducción](docs/workbook-document-pages-D202.md).
 
 - D201 comprueba que el expediente sólo vuelva a VIGENTE al recuperar el plano y los respaldos registrados. [Casos y reproducción](docs/workbook-document-currency-D201.md).
