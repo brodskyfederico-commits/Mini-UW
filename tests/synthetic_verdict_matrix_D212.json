@@ -1,0 +1,64 @@
+{
+  "case_id": "SYNTHETIC-D212-verdict-and-cash",
+  "dates": [
+    "2030-01-15", "2030-04-15", "2030-07-15", "2030-10-15",
+    "2031-01-15", "2031-04-15", "2031-07-15", "2031-10-15"
+  ],
+  "land": {
+    "price": 250,
+    "closing_rate": "0.04",
+    "tdc": 2500,
+    "debt": 750,
+    "grid": [50, 950, 5]
+  },
+  "scenarios": {
+    "Base": {
+      "events": [
+        [0, "initial_capital", 1250],
+        [1, "additional_capital", 500],
+        [2, "additional_capital", 250],
+        [4, "net_refinance_distribution", 240],
+        [5, "operating_distribution", 110],
+        [6, "operating_distribution", 120],
+        [7, "net_sale_distribution", 2300]
+      ],
+      "expected_cash_per_usd_10": ["16", "22.16", "0"],
+      "noi_uw": 220,
+      "land_bands": ["0.08", "0.07", "1.25", "1.15"],
+      "expected_price_limits": [455, 640],
+      "observed": ["0.12", "0", "0.68", "0.05"]
+    },
+    "Downside": {
+      "events": [
+        [0, "initial_capital", 1250],
+        [1, "additional_capital", 650],
+        [2, "additional_capital", 350],
+        [5, "net_refinance_distribution", 170],
+        [6, "operating_distribution", 120],
+        [7, "net_sale_distribution", 1650]
+      ],
+      "expected_cash_per_usd_10": ["18", "15.52", "2.48"],
+      "noi_uw": 170,
+      "land_bands": ["0.065", "0.06", "0.80", "0.75"],
+      "expected_price_limits": [360, 570],
+      "observed": ["0.08", "0", "0.79", "0.02"]
+    }
+  },
+  "cases": [
+    ["base_band_and_rlv_missing", "required", false, ["band", "missing", "no_downside_rlv_limit"], ["PENDING", "PENDING"]],
+    ["base_band_and_rlv_missing_na", "excluded", true, ["band", "missing"], ["PENDING", "PENDING"]],
+    ["base_band", "excluded", true, ["band", "base_fail"], ["PENDING", "PENDING"]],
+    ["base_rlv_missing", "excluded", true, ["missing", "base_fail"], ["PENDING", "PENDING"]],
+    ["downside_rlv_missing", "required", false, ["base_fail", "no_downside_rlv_limit"], ["PENDING", "PENDING"]],
+    ["downside_pass_missed_na", "excluded", true, ["base_fail", "downside_miss"], ["PENDING", "FAIL"]],
+    ["downside_pass_missed_rlv_pass", "required", false, ["base_fail", "downside_miss"], ["PENDING", "FAIL"]],
+    ["downside_rlv_missed", "required", false, ["base_fail", "tight_downside_rlv_limit"], ["PENDING", "FAIL"]],
+    ["base_failed_rlv_pass", "required", false, ["base_fail"], ["FAIL", "FAIL"]],
+    ["base_failed_rlv_na", "excluded", true, ["base_fail"], ["FAIL", "FAIL"]],
+    ["all_pass_rlv_applies", "required", false, [], ["PASS", "PASS"]],
+    ["all_pass_rlv_na", "excluded", true, [], ["PASS", "PASS"]],
+    ["otherwise_pass_no_rlv_threshold", "required", false, ["no_downside_rlv_limit"], ["PENDING", "PENDING"]],
+    ["otherwise_pass_unconfirmed_rlv_na", "excluded", false, [], ["PENDING", "PENDING"]],
+    ["rlv_exclusion_preserves_other_missing_rule", "excluded", true, ["base_fail", "no_downside_spread_limit"], ["PENDING", "PENDING"]]
+  ]
+}
