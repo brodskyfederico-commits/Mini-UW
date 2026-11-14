@@ -1,0 +1,339 @@
+{
+  "decision": "PENDING",
+  "deployment_enabled": false,
+  "missing_or_conflicting_evidence": {
+    "falta-financiacion": [
+      "SYNTHETIC-LOI-D188/Downside/financing.json · archivo ausente"
+    ],
+    "falta-fiscal": [
+      "SYNTHETIC-LOI-D188/Downside/florida_property_tax.json · archivo ausente"
+    ],
+    "fiscal-incompleto": [
+      "M2:millage:2028:non_school_mills_missing_or_invalid"
+    ],
+    "renta-no-cuadra": [
+      "SYNTHETIC-LOI-D188/Downside/rent_and_expenses.json · C8 difiere de Inputs.xlsx"
+    ],
+    "respaldo-cambiado": [
+      "SYNTHETIC-LOI-D188/Downside/financing.json · huella distinta"
+    ]
+  },
+  "pdf_sha256": "49293bb76206fc1df04544e765e096a1079ab63580f6c1e3bd80d9e53809d234",
+  "ranking": [
+    {
+      "deal_id": "SYNTHETIC-LOI-D188",
+      "downside_equity_multiple": {
+        "denominator": "1512960",
+        "numerator": "761161"
+      },
+      "position": 1
+    },
+    {
+      "deal_id": "SYNTHETIC-LOI-D205-B",
+      "downside_equity_multiple": {
+        "denominator": "2127600",
+        "numerator": "894469"
+      },
+      "position": 2
+    }
+  ],
+  "real_decisions_enabled": false,
+  "scenarios": {
+    "Base": {
+      "additional": 6.22,
+      "buyer_tax": {
+        "denominator": "1",
+        "numerator": "4290"
+      },
+      "dated_cash": [
+        {
+          "amount": {
+            "denominator": "1",
+            "numerator": "10"
+          },
+          "category": "initial_capital",
+          "currency": "USD",
+          "date": "2027-03-30",
+          "event_id": "estimate-1",
+          "kind": "contribution",
+          "source_ref": "sha256:ab3893b56add5c14bcf9fd1a9761fab5a5524b8da58d56637bfe94cc3c33b94b#Inputs!C32:C33"
+        },
+        {
+          "amount": {
+            "denominator": "105",
+            "numerator": "361"
+          },
+          "category": "additional_capital",
+          "currency": "USD",
+          "date": "2027-06-30",
+          "event_id": "estimate-2",
+          "kind": "contribution",
+          "source_ref": "sha256:ab3893b56add5c14bcf9fd1a9761fab5a5524b8da58d56637bfe94cc3c33b94b#Inputs!C34:C53 + case.json#/scenarios/Base/support/financing/construction_stages/0"
+        },
+        {
+          "amount": {
+            "denominator": "21",
+            "numerator": "52"
+          },
+          "category": "additional_capital",
+          "currency": "USD",
+          "date": "2027-09-30",
+          "event_id": "estimate-3",
+          "kind": "contribution",
+          "source_ref": "sha256:ab3893b56add5c14bcf9fd1a9761fab5a5524b8da58d56637bfe94cc3c33b94b#Inputs!C34:C53 + case.json#/scenarios/Base/support/financing/construction_stages/1"
+        },
+        {
+          "amount": {
+            "denominator": "105",
+            "numerator": "32"
+          },
+          "category": "additional_capital",
+          "currency": "USD",
+          "date": "2027-12-30",
+          "event_id": "estimate-4",
+          "kind": "contribution",
+          "source_ref": "sha256:ab3893b56add5c14bcf9fd1a9761fab5a5524b8da58d56637bfe94cc3c33b94b#Inputs!C46:C47,C51:C53"
+        },
+        {
+          "amount": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "category": "refinance_cash_in",
+          "currency": "USD",
+          "date": "2027-12-30",
+          "event_id": "estimate-5",
+          "kind": "contribution",
+          "source_ref": "sha256:ab3893b56add5c14bcf9fd1a9761fab5a5524b8da58d56637bfe94cc3c33b94b#Inputs!C51:C53,C66:C74"
+        },
+        {
+          "amount": {
+            "denominator": "105",
+            "numerator": "278"
+          },
+          "category": "net_refinance_distribution",
+          "currency": "USD",
+          "date": "2027-12-30",
+          "event_id": "estimate-6",
+          "kind": "distribution",
+          "source_ref": "sha256:ab3893b56add5c14bcf9fd1a9761fab5a5524b8da58d56637bfe94cc3c33b94b#Inputs!C51:C53,C66:C74"
+        },
+        {
+          "amount": {
+            "denominator": "400",
+            "numerator": "251"
+          },
+          "category": "operating_distribution",
+          "currency": "USD",
+          "date": "2028-03-30",
+          "event_id": "estimate-7",
+          "kind": "distribution",
+          "source_ref": "sha256:ab3893b56add5c14bcf9fd1a9761fab5a5524b8da58d56637bfe94cc3c33b94b#Inputs!C7:C15,C57:C60,C69:C70,C75:C76 + case.json#/florida_property_tax/scenarios/Base"
+        },
+        {
+          "amount": {
+            "denominator": "400",
+            "numerator": "251"
+          },
+          "category": "operating_distribution",
+          "currency": "USD",
+          "date": "2028-06-30",
+          "event_id": "estimate-8",
+          "kind": "distribution",
+          "source_ref": "sha256:ab3893b56add5c14bcf9fd1a9761fab5a5524b8da58d56637bfe94cc3c33b94b#Inputs!C7:C15,C57:C60,C69:C70,C75:C76 + case.json#/florida_property_tax/scenarios/Base"
+        },
+        {
+          "amount": {
+            "denominator": "400",
+            "numerator": "251"
+          },
+          "category": "operating_distribution",
+          "currency": "USD",
+          "date": "2028-09-30",
+          "event_id": "estimate-9",
+          "kind": "distribution",
+          "source_ref": "sha256:ab3893b56add5c14bcf9fd1a9761fab5a5524b8da58d56637bfe94cc3c33b94b#Inputs!C7:C15,C57:C60,C69:C70,C75:C76 + case.json#/florida_property_tax/scenarios/Base"
+        },
+        {
+          "amount": {
+            "denominator": "400",
+            "numerator": "251"
+          },
+          "category": "operating_distribution",
+          "currency": "USD",
+          "date": "2028-12-30",
+          "event_id": "estimate-10",
+          "kind": "distribution",
+          "source_ref": "sha256:ab3893b56add5c14bcf9fd1a9761fab5a5524b8da58d56637bfe94cc3c33b94b#Inputs!C7:C15,C57:C60,C69:C70,C75:C76 + case.json#/florida_property_tax/scenarios/Base"
+        },
+        {
+          "amount": {
+            "denominator": "10500",
+            "numerator": "251807"
+          },
+          "category": "net_sale_distribution",
+          "currency": "USD",
+          "date": "2028-12-30",
+          "event_id": "estimate-11",
+          "kind": "distribution",
+          "source_ref": "sha256:ab3893b56add5c14bcf9fd1a9761fab5a5524b8da58d56637bfe94cc3c33b94b#Inputs!C60,C67:C74 + case.json#/florida_property_tax/scenarios/Base"
+        }
+      ],
+      "received": 29.14,
+      "seller_tax": {
+        "denominator": "1",
+        "numerator": "2841"
+      },
+      "unrecovered": 0.0
+    },
+    "Downside": {
+      "additional": 8.01,
+      "buyer_tax": {
+        "denominator": "1",
+        "numerator": "3705"
+      },
+      "dated_cash": [
+        {
+          "amount": {
+            "denominator": "1",
+            "numerator": "10"
+          },
+          "category": "initial_capital",
+          "currency": "USD",
+          "date": "2027-03-30",
+          "event_id": "estimate-1",
+          "kind": "contribution",
+          "source_ref": "sha256:c5f5de71c9e7c37b28367de8f1ace54129e88486dbc39e4f9a8359d8a9a89959#Inputs!C32:C33"
+        },
+        {
+          "amount": {
+            "denominator": "1050",
+            "numerator": "4451"
+          },
+          "category": "additional_capital",
+          "currency": "USD",
+          "date": "2027-06-30",
+          "event_id": "estimate-2",
+          "kind": "contribution",
+          "source_ref": "sha256:c5f5de71c9e7c37b28367de8f1ace54129e88486dbc39e4f9a8359d8a9a89959#Inputs!C34:C53 + case.json#/scenarios/Downside/support/financing/construction_stages/0"
+        },
+        {
+          "amount": {
+            "denominator": "350",
+            "numerator": "1147"
+          },
+          "category": "additional_capital",
+          "currency": "USD",
+          "date": "2027-09-30",
+          "event_id": "estimate-3",
+          "kind": "contribution",
+          "source_ref": "sha256:c5f5de71c9e7c37b28367de8f1ace54129e88486dbc39e4f9a8359d8a9a89959#Inputs!C34:C53 + case.json#/scenarios/Downside/support/financing/construction_stages/1"
+        },
+        {
+          "amount": {
+            "denominator": "105",
+            "numerator": "34"
+          },
+          "category": "additional_capital",
+          "currency": "USD",
+          "date": "2027-12-30",
+          "event_id": "estimate-4",
+          "kind": "contribution",
+          "source_ref": "sha256:c5f5de71c9e7c37b28367de8f1ace54129e88486dbc39e4f9a8359d8a9a89959#Inputs!C46:C47,C51:C53"
+        },
+        {
+          "amount": {
+            "denominator": "35",
+            "numerator": "6"
+          },
+          "category": "refinance_cash_in",
+          "currency": "USD",
+          "date": "2027-12-30",
+          "event_id": "estimate-5",
+          "kind": "contribution",
+          "source_ref": "sha256:c5f5de71c9e7c37b28367de8f1ace54129e88486dbc39e4f9a8359d8a9a89959#Inputs!C51:C53,C66:C74"
+        },
+        {
+          "amount": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "category": "net_refinance_distribution",
+          "currency": "USD",
+          "date": "2027-12-30",
+          "event_id": "estimate-6",
+          "kind": "distribution",
+          "source_ref": "sha256:c5f5de71c9e7c37b28367de8f1ace54129e88486dbc39e4f9a8359d8a9a89959#Inputs!C51:C53,C66:C74"
+        },
+        {
+          "amount": {
+            "denominator": "210000",
+            "numerator": "81071"
+          },
+          "category": "operating_distribution",
+          "currency": "USD",
+          "date": "2028-03-30",
+          "event_id": "estimate-7",
+          "kind": "distribution",
+          "source_ref": "sha256:c5f5de71c9e7c37b28367de8f1ace54129e88486dbc39e4f9a8359d8a9a89959#Inputs!C7:C15,C57:C60,C69:C70,C75:C76 + case.json#/florida_property_tax/scenarios/Downside"
+        },
+        {
+          "amount": {
+            "denominator": "210000",
+            "numerator": "81071"
+          },
+          "category": "operating_distribution",
+          "currency": "USD",
+          "date": "2028-06-30",
+          "event_id": "estimate-8",
+          "kind": "distribution",
+          "source_ref": "sha256:c5f5de71c9e7c37b28367de8f1ace54129e88486dbc39e4f9a8359d8a9a89959#Inputs!C7:C15,C57:C60,C69:C70,C75:C76 + case.json#/florida_property_tax/scenarios/Downside"
+        },
+        {
+          "amount": {
+            "denominator": "210000",
+            "numerator": "81071"
+          },
+          "category": "operating_distribution",
+          "currency": "USD",
+          "date": "2028-09-30",
+          "event_id": "estimate-9",
+          "kind": "distribution",
+          "source_ref": "sha256:c5f5de71c9e7c37b28367de8f1ace54129e88486dbc39e4f9a8359d8a9a89959#Inputs!C7:C15,C57:C60,C69:C70,C75:C76 + case.json#/florida_property_tax/scenarios/Downside"
+        },
+        {
+          "amount": {
+            "denominator": "210000",
+            "numerator": "81071"
+          },
+          "category": "operating_distribution",
+          "currency": "USD",
+          "date": "2028-12-30",
+          "event_id": "estimate-10",
+          "kind": "distribution",
+          "source_ref": "sha256:c5f5de71c9e7c37b28367de8f1ace54129e88486dbc39e4f9a8359d8a9a89959#Inputs!C7:C15,C57:C60,C69:C70,C75:C76 + case.json#/florida_property_tax/scenarios/Downside"
+        },
+        {
+          "amount": {
+            "denominator": "420000",
+            "numerator": "3157237"
+          },
+          "category": "net_sale_distribution",
+          "currency": "USD",
+          "date": "2028-12-30",
+          "event_id": "estimate-11",
+          "kind": "distribution",
+          "source_ref": "sha256:c5f5de71c9e7c37b28367de8f1ace54129e88486dbc39e4f9a8359d8a9a89959#Inputs!C60,C67:C74 + case.json#/florida_property_tax/scenarios/Downside"
+        }
+      ],
+      "received": 9.06,
+      "seller_tax": {
+        "denominator": "1",
+        "numerator": "3445"
+      },
+      "unrecovered": 8.95
+    }
+  },
+  "source_files_verified": 32,
+  "status": "passed"
+}

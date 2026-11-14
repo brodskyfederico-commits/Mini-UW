@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D204 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D205 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/miniuw-integral-usd10.yml",
@@ -23,13 +23,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 91875,
-      "sha256": "d7f2d6ad0154e8ed509986f7894578ce6aa6fef9e1971d116f92b3a4aae8de79"
+      "bytes": 92051,
+      "sha256": "dee46e35e9527217b1cb3c6125cd022eb7a514008ab0472192cf66d99070c244"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 368473,
-      "sha256": "cff870e50af9838c61d9a05e793b14d341bb78851c2bde38892ac6b8bd45d836"
+      "bytes": 369045,
+      "sha256": "f69ed67084b32c8a72ef3b20aa5ae3742d560297f96a4fe174b192f6e5e1ef11"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -1232,6 +1232,11 @@
       "sha256": "2b33e31b4685d198ba4700ff6f3a9587dc8a9eb74b9c55b4a24b3479249ce228"
     },
     {
+      "path": "docs/review/MiniUW_Preliminar_Piloto_D205.pdf",
+      "bytes": 4368,
+      "sha256": "49293bb76206fc1df04544e765e096a1079ab63580f6c1e3bd80d9e53809d234"
+    },
+    {
       "path": "docs/review/MiniUW_Preliminar_Planilla_D186.pdf",
       "bytes": 3928,
       "sha256": "285097539038d0ba0e183756335ce14d7ed9c5afb17149fdb6af639bff510dcb"
@@ -1345,6 +1350,11 @@
       "path": "docs/review/MiniUW_Verificacion_D204.json",
       "bytes": 11669,
       "sha256": "e2768467c4a64420de0cd19abb46b433c0b486ac6b98dc8075e2640498d0b6f8"
+    },
+    {
+      "path": "docs/review/MiniUW_Verificacion_D205.json",
+      "bytes": 11907,
+      "sha256": "82c5543bef271c3d62d10fa64751b266b6bc0e169e31c0d2eacfe1cb6fda269e"
     },
     {
       "path": "docs/review/MiniUW_Vista_Sintetica_Interna_T18.pdf",
@@ -3572,6 +3582,11 @@
       "sha256": "9bb861bfb75a9175a9e3fd8ba19b216807930d89a3183856982fe6422bdb6142"
     },
     {
+      "path": "docs/workbook-preliminary-pilot-D205.md",
+      "bytes": 3663,
+      "sha256": "d9beb016438cc7de6251de477dda5d71ca6de6448a3d7a4482bcc1c3fe80bf49"
+    },
+    {
       "path": "docs/workbook-preliminary-staged-D188.md",
       "bytes": 4235,
       "sha256": "69c399969a9691f0fb1e6e7ba94ea3fd1dd84de59df8d4dac0f53dc9e6a6b4c9"
@@ -5440,6 +5455,171 @@
       "path": "templates/phased-settled-twelve-T110.json",
       "bytes": 303438,
       "sha256": "b62e27070d4b27de59e4fb16c781481984dcfeca896ac40610c0efaba289dd45"
+    },
+    {
+      "path": "templates/preliminary-pilot-D205/SYNTHETIC-LOI-D188/Base/Inputs.xlsx",
+      "bytes": 8745,
+      "sha256": "ab3893b56add5c14bcf9fd1a9761fab5a5524b8da58d56637bfe94cc3c33b94b"
+    },
+    {
+      "path": "templates/preliminary-pilot-D205/SYNTHETIC-LOI-D188/Base/acquisition_and_costs.json",
+      "bytes": 441,
+      "sha256": "6157ca9e16aecbdc33f57849c2d0cf6605de96fa955a15d47a70f8deea30aa54"
+    },
+    {
+      "path": "templates/preliminary-pilot-D205/SYNTHETIC-LOI-D188/Base/calendar.json",
+      "bytes": 285,
+      "sha256": "f61c1fd5ea4f528c66e1ef2798940fb3b5a2c8aa23b81bd6a1ad72656a1fb073"
+    },
+    {
+      "path": "templates/preliminary-pilot-D205/SYNTHETIC-LOI-D188/Base/exit.json",
+      "bytes": 278,
+      "sha256": "f8ef64ead64fa8be9f48b98ef7ad7c6de01522acafba7c47b44e76d05897e728"
+    },
+    {
+      "path": "templates/preliminary-pilot-D205/SYNTHETIC-LOI-D188/Base/financing.json",
+      "bytes": 1597,
+      "sha256": "e26ec7dee5825ae92e953399ee3b3ec18ccdc56dba6d7f76d5ee68f86f22f61a"
+    },
+    {
+      "path": "templates/preliminary-pilot-D205/SYNTHETIC-LOI-D188/Base/florida_property_tax.json",
+      "bytes": 1603,
+      "sha256": "de5d9811132b797f780e42a06d404bd59d9aa3c135e37abf015b76b23998f898"
+    },
+    {
+      "path": "templates/preliminary-pilot-D205/SYNTHETIC-LOI-D188/Base/program.json",
+      "bytes": 258,
+      "sha256": "de11275f0dcdacfcf97a4c41f94458edb6e51986175f27122c5873bcce023feb"
+    },
+    {
+      "path": "templates/preliminary-pilot-D205/SYNTHETIC-LOI-D188/Base/rent_and_expenses.json",
+      "bytes": 451,
+      "sha256": "d024fa88fcac751a5d1dabe9243a61677ac3628ee153cee5a4536d7bb3f0c8ac"
+    },
+    {
+      "path": "templates/preliminary-pilot-D205/SYNTHETIC-LOI-D188/Downside/Inputs.xlsx",
+      "bytes": 8753,
+      "sha256": "c5f5de71c9e7c37b28367de8f1ace54129e88486dbc39e4f9a8359d8a9a89959"
+    },
+    {
+      "path": "templates/preliminary-pilot-D205/SYNTHETIC-LOI-D188/Downside/acquisition_and_costs.json",
+      "bytes": 450,
+      "sha256": "e2c03b797b4465de1a085b8ae77b5e494b38e3636ee83350eb334930cc242157"
+    },
+    {
+      "path": "templates/preliminary-pilot-D205/SYNTHETIC-LOI-D188/Downside/calendar.json",
+      "bytes": 293,
+      "sha256": "87ae048204fcff9470f65e24236f592ff8246c80d8f1021c35183672add83980"
+    },
+    {
+      "path": "templates/preliminary-pilot-D205/SYNTHETIC-LOI-D188/Downside/exit.json",
+      "bytes": 287,
+      "sha256": "78beac9d3140be6382c9c54835ec160ffc057332614ee4634d5ff1e323f80a22"
+    },
+    {
+      "path": "templates/preliminary-pilot-D205/SYNTHETIC-LOI-D188/Downside/financing.json",
+      "bytes": 1616,
+      "sha256": "b561af0f2fc2c1942c3a3ccb79a8c60e78f721cb4bcd8358f5185b5427311827"
+    },
+    {
+      "path": "templates/preliminary-pilot-D205/SYNTHETIC-LOI-D188/Downside/florida_property_tax.json",
+      "bytes": 1664,
+      "sha256": "3994077b34dd07b26738f7b232f93b1886c49bc52c139ad582494dbfe93e6b61"
+    },
+    {
+      "path": "templates/preliminary-pilot-D205/SYNTHETIC-LOI-D188/Downside/program.json",
+      "bytes": 266,
+      "sha256": "64e48e771b9162430e6b464ed77ba1c8d8d99cf4f6d74cbb0c7b7d7f86661b47"
+    },
+    {
+      "path": "templates/preliminary-pilot-D205/SYNTHETIC-LOI-D188/Downside/rent_and_expenses.json",
+      "bytes": 458,
+      "sha256": "7aed49e97fefff001697603c924245c239fe9f8096d9539d4e73d9af342a0b9f"
+    },
+    {
+      "path": "templates/preliminary-pilot-D205/SYNTHETIC-LOI-D205-B/Base/Inputs.xlsx",
+      "bytes": 8747,
+      "sha256": "43d8cac78cc1e59137befc37a0b0d2b625e64a3a0a57dfc59b575137dca5fc1f"
+    },
+    {
+      "path": "templates/preliminary-pilot-D205/SYNTHETIC-LOI-D205-B/Base/acquisition_and_costs.json",
+      "bytes": 443,
+      "sha256": "f4390cbf2e7521536dd09cc1e41af2ca82c765cd220dbede80d66bf7d83d9ef1"
+    },
+    {
+      "path": "templates/preliminary-pilot-D205/SYNTHETIC-LOI-D205-B/Base/calendar.json",
+      "bytes": 287,
+      "sha256": "9402874c670c14cbdfaae857befc3416a88afd2ea429eb0712296fe6182733f0"
+    },
+    {
+      "path": "templates/preliminary-pilot-D205/SYNTHETIC-LOI-D205-B/Base/exit.json",
+      "bytes": 280,
+      "sha256": "a1bb85d96f3f5cbbc89f3d0e6c98feb9e9293027acb56097a5b7cd08aac82ba6"
+    },
+    {
+      "path": "templates/preliminary-pilot-D205/SYNTHETIC-LOI-D205-B/Base/financing.json",
+      "bytes": 1599,
+      "sha256": "55b360bdfe457680c23bdfa045b764177928dbfafe87a5633bf0cbf5c9c49ece"
+    },
+    {
+      "path": "templates/preliminary-pilot-D205/SYNTHETIC-LOI-D205-B/Base/florida_property_tax.json",
+      "bytes": 1605,
+      "sha256": "44ed54700295cf76da55e2f29747ce4d823ca7a57f98ccb5c3ed21e73f65ece5"
+    },
+    {
+      "path": "templates/preliminary-pilot-D205/SYNTHETIC-LOI-D205-B/Base/program.json",
+      "bytes": 260,
+      "sha256": "68cfa7fe47b216e1d056dc41e7a83c571a2a33909991e5f98138f34c8a7647c7"
+    },
+    {
+      "path": "templates/preliminary-pilot-D205/SYNTHETIC-LOI-D205-B/Base/rent_and_expenses.json",
+      "bytes": 453,
+      "sha256": "fa574521d8317cccbd59167fb686733636d4bc8d593c20970453617b9d5711a7"
+    },
+    {
+      "path": "templates/preliminary-pilot-D205/SYNTHETIC-LOI-D205-B/Downside/Inputs.xlsx",
+      "bytes": 8759,
+      "sha256": "0442f8e531b403c83280efc9687e473adf5daade8908bc152f9a3bb3b6aed005"
+    },
+    {
+      "path": "templates/preliminary-pilot-D205/SYNTHETIC-LOI-D205-B/Downside/acquisition_and_costs.json",
+      "bytes": 452,
+      "sha256": "287e666d2dae8e517a718bfa39e07dba530ba69c5cd3bb7deb87b3c1c5001619"
+    },
+    {
+      "path": "templates/preliminary-pilot-D205/SYNTHETIC-LOI-D205-B/Downside/calendar.json",
+      "bytes": 295,
+      "sha256": "78744ee397c446b237be743f19538f9c20701da27666d83f0ba9a212c13de798"
+    },
+    {
+      "path": "templates/preliminary-pilot-D205/SYNTHETIC-LOI-D205-B/Downside/exit.json",
+      "bytes": 289,
+      "sha256": "3c497248936d5626c256ee0c01f8b36c4dab604f3dc7811d6abb9a52ce366dad"
+    },
+    {
+      "path": "templates/preliminary-pilot-D205/SYNTHETIC-LOI-D205-B/Downside/financing.json",
+      "bytes": 1618,
+      "sha256": "d3930a60bc07b8d5eb555ba7df60a92011f7f23305ecf5715dd4fd823fa0439c"
+    },
+    {
+      "path": "templates/preliminary-pilot-D205/SYNTHETIC-LOI-D205-B/Downside/florida_property_tax.json",
+      "bytes": 1666,
+      "sha256": "668a4653391ec276168f21f34ac0e1db70c608e582b219170878b165077111af"
+    },
+    {
+      "path": "templates/preliminary-pilot-D205/SYNTHETIC-LOI-D205-B/Downside/program.json",
+      "bytes": 268,
+      "sha256": "9d5b75452b838a88106168a4eb5f403b20d52c70b0fab2f106b6b637b4ec3a46"
+    },
+    {
+      "path": "templates/preliminary-pilot-D205/SYNTHETIC-LOI-D205-B/Downside/rent_and_expenses.json",
+      "bytes": 460,
+      "sha256": "ee650695c4479d9b7dff0ceb66df6d2ee017ebdaaaa938060d4ca7122b346295"
+    },
+    {
+      "path": "templates/preliminary-pilot-D205/pilot.json",
+      "bytes": 3912,
+      "sha256": "5d377aa9f12a1273fea49ad4314b2b8160b667e584d7f4f98f332cd776dd940d"
     },
     {
       "path": "templates/project-draft-empty.json",
@@ -8352,6 +8532,11 @@
       "sha256": "93b606ab44e44f28e98b197c1a3ff2be5dc94e57365e8af09d7f634a85b1367f"
     },
     {
+      "path": "tools/check_worksheet_preliminary_pilot_D205.py",
+      "bytes": 8050,
+      "sha256": "f6b57a601f467af9678a3b5df7fce9c4149eeadcaf2497d9b6ced2e872d5a168"
+    },
+    {
       "path": "tools/check_worksheet_preliminary_stages_D188.py",
       "bytes": 9043,
       "sha256": "47d2ca06a3e9e43622593c239789eba6b86cb34efd0d602e932eea4dd2dba005"
@@ -9235,6 +9420,11 @@
       "path": "tools/worksheet_preliminary_finance_D187.py",
       "bytes": 9958,
       "sha256": "2787f39c1db373933172cc9f2fde4831761311664e4ee922143f2e9d55712039"
+    },
+    {
+      "path": "tools/worksheet_preliminary_pilot_D205.py",
+      "bytes": 9477,
+      "sha256": "f9612cd486425163a002794cb0a084a3a37ea6ad19aec467ec5a4257f6cac0f3"
     },
     {
       "path": "tools/worksheet_preliminary_stages_D188.py",

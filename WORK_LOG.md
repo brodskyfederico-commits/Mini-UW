@@ -1907,3 +1907,7 @@ El perfil sintético v32 calcula el impuesto escolar y no escolar por padrón y 
 ## D204 · M2 conectado a PRELIMINAR
 
 El perfil sintético v4 aplica los padrones de M2 al NOI de refinanciación, los flujos trimestrales y el NOI de venta. Coteja Base y Downside por USD 10 y excluye del ranking el expediente con evidencia fiscal incompleta o capacidad insuficiente. Conserva la caja comprobable del otro escenario y reproduce el caso histórico D188. [Alcance y reproducción](docs/workbook-preliminary-tax-D204.md).
+
+## D205 · Primer piloto PRELIMINAR reproducible desde respaldos
+
+Dos expedientes sintéticos pasan desde planillas y respaldos estructurados registrados por huella hasta el ranking de Downside y los aportes y cobros por USD 10. La auditoría reproduce el paquete desde sus fuentes archivadas. Cinco faltantes o discrepancias retiran el expediente afectado del ranking y conservan la caja independiente. La reposición reproduce el paquete completo. El dictamen formal y el piloto real siguen PENDING. [Uso, alcance y evidencia](docs/workbook-preliminary-pilot-D205.md).
