@@ -175,7 +175,7 @@ def run_scenario(comparison, revision, scenario, principal=REQUEST):
 
 def financed_cash(context, cost, construction_source_ref, principal, exit_cap, noi_for, *, construction_draws=None,
                   calendar=None, construction_financing=None, replacement_reserve=None, valuation_terms=None, permanent_terms=None,
-                  refinance_costs=None, buyer_tax=None, debt_yield_terms=None):
+                  refinance_costs=None, buyer_tax=None, debt_yield_terms=None, sale_only_on_capacity_block=False):
     result = dict(state="PENDING", capacity=None, cash_per_usd_10=None)
     refi_date = REFI_DATE if calendar is None else calendar["refinance_date"]
     sale_date = SALE_DATE if calendar is None else calendar["sale_date"]
@@ -233,7 +233,16 @@ def financed_cash(context, cost, construction_source_ref, principal, exit_cap, n
     if cap["state"] != "compatible_synthetic_refinance_capacity":
         if construction_financing is not None:
             result["construction_refinance"]["net_equity_distribution"] = None
-            return result | dict(blockers=sorted(set(cap["blockers"] + closing["blockers"])))
+            blockers = sorted(set(cap["blockers"] + closing["blockers"]))
+            if (sale_only_on_capacity_block and blockers == ["selected_principal_exceeds_declared_bank_capacity"]
+                    and calendar is not None and valuation_terms is not None and replacement_reserve is not None):
+                # The no-refinance route still has its own construction, operation and sale.
+                operating_noi = noi_for(OPERATING_PERIOD)
+                forward_noi = noi_for(FORWARD_PERIOD)
+                if not any(assembly.payload["blockers"] or assembly.payload["residential_blockers"]
+                           for assembly in (operating_noi, forward_noi)):
+                    result["replacement_reserve_for_sale_only"] = replacement_reserve
+            return result | dict(blockers=blockers)
         return result | dict(blockers=cap["blockers"])
 
     operating_noi = noi_for(OPERATING_PERIOD)

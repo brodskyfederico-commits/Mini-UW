@@ -4,7 +4,8 @@ from fractions import Fraction
 
 from miniuw_foundation.debt_service import rational
 from plan_return_D107 import FORWARD_PERIOD, OPERATING_PERIOD
-from worksheet_local_sources_D127 import day, number, synthetic_id
+from worksheet_exit_pricing_D151 import RULES as SALE_PRICING_RULES
+from worksheet_local_sources_D127 import day, number, object_or_empty, synthetic_id
 from worksheet_project_calendar_D145 import offset
 
 
@@ -71,15 +72,35 @@ def phased_schedule(view, terms, principal):
 
 def route_cash(view, terms):
     """Reconcile construction, operation and terminal equity on explicit quarterly cutoffs."""
-    if (view.get("cash_per_usd_10") is None or view.get("permanent_loan") is None
-            or view.get("construction_refinance") is None):
-        return pending("audited_input_cash_unavailable")
     mode = terms.get("route")
     if mode not in ("interest_only_then_amortize", "sell_without_refinance") or not synthetic_id(terms.get("source_ref")):
-        return pending("calendar_route_unconfirmed")
-    original = view["project_calendar"]
-    funding = view["construction_financing"]
-    reserve = view["replacement_reserve"]
+        return pending("calendar_route_unconfirmed" if view.get("cash_per_usd_10") is not None
+                       else "audited_input_cash_unavailable")
+    if mode == "interest_only_then_amortize" and any(
+            view.get(key) is None for key in ("cash_per_usd_10", "permanent_loan", "construction_refinance")):
+        return pending("audited_input_cash_unavailable")
+    original = view.get("project_calendar")
+    funding = view.get("construction_financing")
+    reserve = view.get("replacement_reserve")
+    if mode == "sell_without_refinance":
+        reserve = view.get("replacement_reserve_for_sale_only", reserve)
+    price_terms = view.get("valuation_and_sale")
+    if any(item is None for item in (original, funding, reserve, price_terms)) or funding.get("state") != "computed_synthetic":
+        return pending("audited_input_cash_unavailable")
+    periods = object_or_empty(view.get("noi_by_period"))
+    operating_noi = number(object_or_empty(periods.get(OPERATING_PERIOD)).get("noi"))
+    exit_cap = number(price_terms.get("exit_cap"))
+    sale_cost_fraction = number(price_terms.get("sale_cost_fraction"))
+    fixed_terms = price_terms.get("fixed_sale_cost")
+    if (fixed_terms is None and price_terms.get("rules") == SALE_PRICING_RULES
+            and price_terms.get("inventory_declared_complete") is True):
+        # D151 declares all transaction costs in the single gross-price percentage.
+        fixed_sale_cost = Fraction()
+    else:
+        fixed_sale_cost = number(object_or_empty(fixed_terms).get("value"))
+    if (operating_noi is None or exit_cap is None or exit_cap <= 0 or sale_cost_fraction is None
+            or not 0 <= sale_cost_fraction <= 1 or fixed_sale_cost is None or fixed_sale_cost < 0):
+        return pending("audited_input_cash_unavailable")
     # Keep the documented stabilized year and take its cash at the original cutoff.
     # The later exit carries only explicitly supplied interim net operating cash.
     cash_date = original["sale_date"]
@@ -101,8 +122,15 @@ def route_cash(view, terms):
             return pending("construction_tax_payment_date_not_in_preopening_schedule")
 
     rows = []
-    normalized = view["cash_per_usd_10"]
-    scale = number(normalized["scale_factor"])
+    if mode == "sell_without_refinance":
+        ledger = funding.get("cash_by_date")
+        opening = ledger[0] if ledger else {}
+        basis = number(opening.get("equity_contribution"))
+        if opening.get("date") != original["purchase_date"] or basis is None or basis <= 0:
+            return pending("initial_equity_basis_unconfirmed")
+        scale = 10 / basis
+    else:
+        scale = number(view["cash_per_usd_10"]["scale_factor"])
     free_cash = Fraction()
     payoff = number(funding["construction_principal_payoff"])
     for item in funding["cash_by_date"]:
@@ -121,10 +149,8 @@ def route_cash(view, terms):
                          debt_interest=number(item["interest_paid"]), debt_principal=Fraction(), preopening_tax=levy))
         free_cash = closing
 
-    operating_noi = number(view["noi_by_period"][OPERATING_PERIOD]["noi"])
     deposit = number(reserve["deposit"])
     replacement_release = deposit * number(reserve["sale_release_fraction"])
-    price_terms = view["valuation_and_sale"]
     # The existing forward NOI and quote are valid only for the original sale.
     if mode == "interest_only_then_amortize":
         refi = view["construction_refinance"]
@@ -184,7 +210,9 @@ def route_cash(view, terms):
         # The final quarter carries existing construction debt at its documented interval rate.
         interest = payoff * number(funding["debt_source"]["periods"][-1]["interest_fraction"]["value"])
         payments = [dict(date=sale_date, service=interest, principal=Fraction(), interest=interest)]
-        forward_noi = number(view["noi_by_period"][FORWARD_PERIOD]["noi"])
+        forward_noi = number(object_or_empty(periods.get(FORWARD_PERIOD)).get("noi"))
+        if forward_noi is None:
+            return pending("audited_input_cash_unavailable")
         reference = dict(schedule=payments, construction_maturity=funding["debt_source"]["maturity_date"])
         sale_principal = payoff
 
@@ -204,8 +232,8 @@ def route_cash(view, terms):
                          debt_interest=payment["interest"], debt_principal=payment["principal"]))
         reserve_balance = restricted_close
 
-    gross = forward_noi / number(price_terms["exit_cap"])
-    cost = gross * number(price_terms["sale_cost_fraction"]) + number(price_terms["fixed_sale_cost"]["value"])
+    gross = forward_noi / exit_cap
+    cost = gross * sale_cost_fraction + fixed_sale_cost
     restricted_close = reserve_balance - replacement_release - release
     proceeds = free_cash + gross - cost - sale_principal + replacement_release + release
     if proceeds < 0 or gross < 0:

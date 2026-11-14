@@ -1927,3 +1927,7 @@ El piloto agrega un ingreso de arquitectura que coteja la lámina de resumen, el
 ## D209 · Checklist documental y bloqueo por cálculo
 
 Cada discrepancia del plano se refleja en el checklist con evidencia, corrección y bloqueos propagados a los cálculos afectados. Se aislaron las seis filas del expediente documental en el VPS y se repitieron los ensayos sintéticos y la regresión D117. Base y Downside conservan el retorno por USD 10 PENDING y el dictamen queda PENDING. El respaldo excluye los archivos y resultados reales. [Bloqueos y reproducción](docs/workbook-plan-checklist-D209.md).
+
+## D210 · Venta sin refi ante un bloqueo de capacidad
+
+La ruta sintética de venta con deuda de obra conserva su propio calendario, NOI, reserva y precio cuando el único bloqueo de la refinanciación es que el principal solicitado supera la capacidad. El retorno usa el equity inicial comprobado en la caja de obra. Se mantiene PENDING si falta un insumo propio de la ruta o si el préstamo de obra vence antes de la venta. El dictamen formal y el retorno histórico siguen PENDING. Los expedientes privados, planillas de trabajo, resultados particulares y archivos de ejecución del VPS quedan fuera del respaldo.

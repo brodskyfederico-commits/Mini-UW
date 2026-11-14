@@ -211,7 +211,7 @@ def run_rental_scenario(name, raw, review, rent_inputs, *, include_commercial=Fa
                         include_replacement_reserve=False, include_property_tax=False, include_exit_pricing=False,
                         include_permanent_loan=False, include_refinance_costs=False, include_growth=False,
                         require_market_evidence=False, require_formula_review=False, supplemental=None,
-                        require_debt_yield=False, florida_tax=False):
+                        require_debt_yield=False, florida_tax=False, sale_only_on_capacity_block=False):
     pending = dict(state="PENDING", cash_per_usd_10=None, capacity=None, noi_by_period={})
     if not review["calculation_inputs_ready"]:
         return pending | dict(blockers=["required_rental_cells_unconfirmed"])
@@ -371,7 +371,8 @@ def run_rental_scenario(name, raw, review, rent_inputs, *, include_commercial=Fa
                                lambda period: operating if period == OPERATING_PERIOD else noi_for(period),
                                construction_draws=draws, calendar=calendar, construction_financing=funding,
                                replacement_reserve=reserve, valuation_terms=valuation_terms, permanent_terms=permanent_terms,
-                               refinance_costs=refinance_costs, buyer_tax=buyer_tax, debt_yield_terms=debt_yield_terms)
+                               refinance_costs=refinance_costs, buyer_tax=buyer_tax, debt_yield_terms=debt_yield_terms,
+                               sale_only_on_capacity_block=sale_only_on_capacity_block)
     except (ValueError, TypeError, KeyError) as error:
         evidence = dict(document_financial_binding=binding) if binding is not None else {}
         return pending | dict(blockers=[str(error)], cell_sources=cells) | evidence | market
@@ -617,7 +618,15 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
         if (downside.get("base_workbook_sha256"), downside.get("downside_workbook_sha256")) != (hashes.get("Base"), hashes.get("Downside")):
             supplemental = supplemental | {"Downside": object_or_empty(supplemental.get("Downside")) | {"downside_scope": None}}
 
+    routes = object_or_empty(object_or_empty(case.get("rent_inputs")).get("calendar_checks"))
+
     def run_scenario(name, source_review):
+        requested_routes = object_or_empty(routes.get(name)).values()
+        sale_only_on_capacity_block = any(
+            object_or_empty(config).get("route") == "sell_without_refinance"
+            and synthetic_id(object_or_empty(config).get("source_ref"))
+            for config in requested_routes
+        )
         return run_rental_scenario(name, workbooks[name], source_review, case.get("rent_inputs"),
                                       include_commercial=include_commercial, include_utilities=include_utilities,
                                       include_development=include_development, include_budget=include_budget,
@@ -629,7 +638,8 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
                                       include_permanent_loan=include_permanent_loan, include_refinance_costs=include_refinance_costs,
                                       include_growth=include_growth, require_market_evidence=require_market_evidence,
                                       require_formula_review=require_formula_review, supplemental=supplemental,
-                                      require_debt_yield=require_debt_yield, florida_tax=florida_tax)
+                                      require_debt_yield=require_debt_yield, florida_tax=florida_tax,
+                                      sale_only_on_capacity_block=sale_only_on_capacity_block)
 
     views = {name: run_scenario(name, review["scenarios"][name]) for name in SCENARIOS}
     workbook_blockers = review["blockers"]
@@ -777,7 +787,6 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
         pipeline["pipeline"]["version_tests"]["suite"] = "check_worksheet_definition_screening_D193.py"
     if technical_acceptance:
         from worksheet_calendar_routes_D199 import route_cash
-        routes = object_or_empty(case["rent_inputs"].get("calendar_checks"))
         calendar_checks = {
             name: {label: route_cash(views[name], object_or_empty(config))
                    for label, config in object_or_empty(routes.get(name)).items()}

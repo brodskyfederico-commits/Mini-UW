@@ -22,7 +22,7 @@ from miniuw_foundation.scheduled_expense_case import sha
 from miniuw_worksheet_v1 import (
     CURRENT_REVISION_FILE, WORKBOOK_TECHNICAL_ACCEPTANCE_SCHEMA, encoded, read_package, verify_package,
 )
-from plan_return_D107 import OPERATING_PERIOD
+from plan_return_D107 import FORWARD_PERIOD, OPERATING_PERIOD
 from reconcile_worksheet_D179 import calculate, exact
 from worksheet_calendar_routes_D199 import route_cash
 from worksheet_definition_screening_D193 import OCCUPANCY, PHYSICAL, RLV
@@ -227,6 +227,17 @@ def verify_calendar(model, settings):
     require(blocked_capacity["state"] == "PENDING" and blocked_capacity["cash_per_usd_10"] is None
             and blocked_capacity["blocker"] == "selected_principal_exceeds_declared_bank_capacity",
             "Phased refinance exceeded bank capacity")
+    # A refinance rejection must not remove an already supported construction-loan exit.
+    down = model["scenarios"]["Downside"]
+    sale_only_inputs = {key: down[key] for key in (
+        "project_calendar", "construction_financing", "replacement_reserve", "valuation_and_sale", "noi_by_period")}
+    sale_only_inputs.update(state="PENDING", cash_per_usd_10=None,
+                            blockers=["selected_principal_exceeds_declared_bank_capacity"])
+    require(route_cash(sale_only_inputs, config) == model["calendar_checks"]["Downside"]["sell_without_refinance"],
+            "The existing construction-loan exit depends on the permanent loan")
+    missing_noi = deepcopy(sale_only_inputs)
+    del missing_noi["noi_by_period"][FORWARD_PERIOD]
+    require(route_cash(missing_noi, config)["state"] == "PENDING", "Without-refinance exit guessed forward NOI")
     missing = deepcopy(config)
     missing["construction_tax"]["improvements"][1].pop("usable_on")
     blocked = route_cash(model["scenarios"]["Downside"], missing)

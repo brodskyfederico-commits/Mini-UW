@@ -16,6 +16,7 @@ from check_worksheet_rental_inputs_D140 import run
 from inputsheet_fixture import native_workbook
 from miniuw_foundation.debt_service import rational
 from miniuw_worksheet_v1 import WORKBOOK_REFINANCE_COSTS_SCHEMA, encoded
+from worksheet_calendar_routes_D199 import route_cash
 from worksheet_native_mapping_D139 import SCENARIOS, mapping_catalog
 from worksheet_refinance_costs_D153 import POLICY, RULES
 from worksheet_revision_D128 import snapshot_for_case
@@ -160,9 +161,21 @@ def verify(temp, output):
                        edits={"C71": {"value": "0.63"}})["scenarios"]["Downside"]
     require(capacity["construction_refinance"]["net_equity_distribution"] is None and "permanent_reserve" not in capacity,
             "A blocked draw supplied a receipt or a reserve for sale")
+    sale_terms = dict(route="sell_without_refinance", source_ref="SYNTHETIC-D153-sale-only",
+                      construction_tax=dict(applicability="no_incremental_tax_in_variant",
+                                            source_ref="SYNTHETIC-D153-no-additional-levy"))
+    separate = pending("separate-exit", "selected_principal_exceeds_declared_bank_capacity",
+                       edits={"C71": {"value": "0.63"}}, patch=lambda case: case["rent_inputs"].update(
+                           calendar_checks={"Downside": {"sell_without_refinance": sale_terms}}))
+    candidate = route_cash(separate["scenarios"]["Downside"], sale_terms)
+    control = route_cash(old, sale_terms)
+    require(candidate["state"] == "calculated_synthetic" and candidate == control
+            and candidate["sale"]["principal_paid"] == 686000
+            and all(event["stage"] != "refinance" for event in candidate["cash_per_usd_10"]["events"]),
+            "Refinance capacity rejected an independently supported sale")
     pending("criterion-missing", "criterion_record_missing", keep_cash=True, patch=lambda case: case["rules"].pop())
     pending("stale-refinance-fee", "workbooks_fingerprint_mismatch", keep_cash=True, edits={"C73": {"value": "0.04"}}, stale=True)
-    return dict(status="passed", decision="PENDING", full_workbook_cases=16, pending_cases=9, worksheet_cells=2,
+    return dict(status="passed", decision="PENDING", full_workbook_cases=17, pending_cases=10, worksheet_cells=2,
                 pdf_sha256=matching["pdf_sha256"], page_count=1)
 
 
