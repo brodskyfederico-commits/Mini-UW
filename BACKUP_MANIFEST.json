@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D207 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D208 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/miniuw-integral-usd10.yml",
@@ -23,13 +23,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 92366,
-      "sha256": "e58cc7336c747af39b7b9d428c0ddee77dab74d7aae9b1c5216148537ab2d44d"
+      "bytes": 92538,
+      "sha256": "bc2224b53479453b942b75b859be024f8965d9c1d12fb9c489184c7077b7f09a"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 370079,
-      "sha256": "a09cad4b6520e41637986f6d5676f7530fa89bd3bd5531d375ac49c5e2d2488a"
+      "bytes": 370591,
+      "sha256": "f9b95840739a4ea5833ce8556bbf8bf7ab892f0dfe06d0f32d315a91b19645b0"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -3380,6 +3380,11 @@
       "path": "docs/workbook-document-pages-D202.md",
       "bytes": 1528,
       "sha256": "ff87bb615ca3c8571b93c254b2425b4f317e4107ee86720109e9b6bc16aefb5d"
+    },
+    {
+      "path": "docs/workbook-documentary-intake-D208.md",
+      "bytes": 2115,
+      "sha256": "b3f5a7abb684f11e58b1f138e2ab80ec09a950ac3dfaabfd769ffa8e47f943e6"
     },
     {
       "path": "docs/workbook-documented-finance-D147.md",
@@ -8367,6 +8372,11 @@
       "sha256": "a0ae520b27df2db745e8a3480e64f85ba30f5cd1f60e0a0428bdb1e3f35cb04c"
     },
     {
+      "path": "tools/check_worksheet_documentary_intake.py",
+      "bytes": 3033,
+      "sha256": "60d93b5dc38fc557d01fd61167ac3e9385c91b4e6534c0d5d986784a1277045b"
+    },
+    {
       "path": "tools/check_worksheet_documented_finance_D147.py",
       "bytes": 12080,
       "sha256": "c810ffdeefa93a977d40a24e965a05c3d3e1f0738f31a1dc7fe895a3d1af4220"
@@ -9312,6 +9322,11 @@
       "sha256": "ec83895f19d169b8cf63a00e0211e769d36eb250cc46658ed909a87d3834d6f4"
     },
     {
+      "path": "tools/worksheet_documentary_intake.py",
+      "bytes": 10611,
+      "sha256": "bb56bfb6f68caa52e001d3e9e13c6a2ff496e0ceec7656c267628f4a3b9facc1"
+    },
+    {
       "path": "tools/worksheet_documented_finance_D147.py",
       "bytes": 5357,
       "sha256": "2b69cf6dc95f4a9fb08f67c09301daa6d943ca8510927d0481cabe02fdfa9076"
@@ -9498,8 +9513,8 @@
     },
     {
       "path": "tools/worksheet_preliminary_pilot_D205.py",
-      "bytes": 11928,
-      "sha256": "b9834070b28c4a3042196d5a8c14b59073d86c837e2f23406dc5f188f75198e6"
+      "bytes": 12710,
+      "sha256": "ad27686177f8fcf49f260241270e9f713be2b27ec1dba86c5e781fdc1f328623"
     },
     {
       "path": "tools/worksheet_preliminary_stages_D188.py",

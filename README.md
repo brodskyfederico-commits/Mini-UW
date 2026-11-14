@@ -4,6 +4,8 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D208 coteja unidades y áreas de planos con capa de texto en el ingreso documental del Mini-UW. [Perfil, uso y verificación](docs/workbook-documentary-intake-D208.md).
+
 - D207 define el cotejo por campo y el recálculo de PRELIMINAR tras una corrección. [Diseño y casos de aceptación](docs/workbook-preliminary-revision-D207.md).
 
 - D206 conecta respaldos PDF sintéticos al ranking PRELIMINAR y a los flujos por USD 10. [Uso y resultados](docs/workbook-preliminary-pdf-D206.md).

@@ -1919,3 +1919,7 @@ El piloto lee tablas de texto de planos, cotizaciones, créditos de obra y perma
 ## D207 · Diseño de cotejo y correcciones PRELIMINAR
 
 Documenta la revisión por campo, la vigencia y aplicabilidad de la evidencia, qué cifras dependen de cada respaldo y cómo se verifica el recálculo tras una corrección. Se vuelve a ejecutar la batería sintética D206 en el VPS. Se registran aparte los casos de diseño pendientes de prueba, incluido un cambio en la base inicial por USD 10. [Diseño de revisión](docs/workbook-preliminary-revision-D207.md).
+
+## D208 · Ingreso documental de planos con capa de texto
+
+El piloto agrega un ingreso de arquitectura que coteja la lámina de resumen, el índice y los rótulos por piso con la carta y el cuadro de áreas. En el VPS se comprobó el set de 57 páginas y se ejecutaron los ensayos del perfil y la regresión D206. La caja y el retorno por USD 10 quedan PENDING en Base y Downside. La copia excluye documentos y resultados del expediente real. [Perfil y reproducción](docs/workbook-documentary-intake-D208.md).

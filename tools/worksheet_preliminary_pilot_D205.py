@@ -217,8 +217,21 @@ def main():
     run.add_argument("output", type=Path)
     audit = commands.add_parser("audit")
     audit.add_argument("output", type=Path)
+    documentary = commands.add_parser("intake", help="Cotejar un set real de arquitectura sin calcular caja")
+    documentary.add_argument("architecture", type=Path)
+    documentary.add_argument("--narrative", type=Path)
+    documentary.add_argument("--area-schedule", type=Path)
+    documentary.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
     try:
+        if args.command == "intake":
+            from worksheet_documentary_intake import intake
+
+            result = intake(args.architecture, narrative=args.narrative, area_schedule=args.area_schedule)
+            with args.output.open("xb") as stream:
+                stream.write(encoded(result))
+            print(json.dumps({key: result[key] for key in ("state", "decision", "ranking")}, ensure_ascii=False))
+            return
         result = pilot_run(args.source, args.output) if args.command == "run" else pilot_audit(args.output)
     except (PackageError, ValidationError, ValueError, OSError) as error:
         parser.exit(1, f"{error}\n")
