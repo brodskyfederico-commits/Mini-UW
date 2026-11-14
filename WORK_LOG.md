@@ -1911,3 +1911,7 @@ El perfil sintético v4 aplica los padrones de M2 al NOI de refinanciación, los
 ## D205 · Primer piloto PRELIMINAR reproducible desde respaldos
 
 Dos expedientes sintéticos pasan desde planillas y respaldos estructurados registrados por huella hasta el ranking de Downside y los aportes y cobros por USD 10. La auditoría reproduce el paquete desde sus fuentes archivadas. Cinco faltantes o discrepancias retiran el expediente afectado del ranking y conservan la caja independiente. La reposición reproduce el paquete completo. El dictamen formal y el piloto real siguen PENDING. [Uso, alcance y evidencia](docs/workbook-preliminary-pilot-D205.md).
+
+## D206 · Piloto PRELIMINAR desde respaldos PDF
+
+El piloto lee tablas de texto de planos, cotizaciones, créditos de obra y permanente y padrones fiscales sintéticos, con citas por página y línea. La corrida reproduce el ranking D205 y la caja por USD 10 en ambos escenarios. Cambiar un dato fiscal debidamente registrado recalcula NOI, cobros y múltiplo. Faltantes, duplicados y discrepancias mantienen PENDING y retiran el caso del ranking. La auditoría reproduce las fuentes archivadas. [Alcance y reproducción](docs/workbook-preliminary-pdf-D206.md).

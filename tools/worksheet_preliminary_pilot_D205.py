@@ -15,6 +15,7 @@ from miniuw_worksheet_v1 import PRELIMINARY_FLORIDA_TAX_SCHEMA, build_results, e
 from worksheet_florida_tax_D203 import POLICY as TAX_POLICY
 from worksheet_local_sources_D127 import day, object_or_empty, synthetic_id
 from worksheet_preliminary_D185 import POLICY, SCENARIOS, SUPPORT, assumption_ready, finish_preliminary
+from worksheet_preliminary_pdf_D206 import BANK_ROLES, FILENAME, SCHEMA as PDF_SCHEMA, merge_financing, read_bundle
 
 
 SCHEMA = "miniuw.synthetic-preliminary-pilot.v1"
@@ -33,8 +34,10 @@ CELLS = dict(
 MAX_SOURCE_BYTES = 512 * 1024
 
 
-def paths(deal, scenario):
+def paths(deal, scenario, *, pdf=False):
     folder = f"{deal}/{scenario}"
+    if pdf:
+        return {"Inputs": f"{folder}/Inputs.xlsx", "Evidence": f"{folder}/{FILENAME}"}
     return {"Inputs": f"{folder}/Inputs.xlsx"} | {area: f"{folder}/{area}.json" for area in AREAS}
 
 
@@ -53,7 +56,7 @@ def read_pilot(directory):
     require(raw is not None, f"Falta {INDEX}")
     index = _json(raw, MAX_SOURCE_BYTES)
     require(isinstance(index, dict) and set(index) == {"schema", "as_of", "dates", "focus", "deals", "sha256"}
-            and index["schema"] == SCHEMA, "Inventario de piloto sintético inválido")
+            and index["schema"] in (SCHEMA, PDF_SCHEMA), "Inventario de piloto sintético inválido")
     deals = index["deals"]
     require(isinstance(deals, list) and 1 <= len(deals) <= 4 and all(
         isinstance(deal, str) and re.fullmatch(r"SYNTHETIC-[A-Z0-9-]{1,22}", deal) for deal in deals
@@ -67,7 +70,7 @@ def read_pilot(directory):
                  and (date.fromisoformat(value).year - start.year) * 12 + date.fromisoformat(value).month - start.month == i * 3)
                 for i, value in enumerate(dates)), "El ranking exige el mismo calendario trimestral")
     hashes = index["sha256"]
-    names = {name for deal in deals for scenario in SCENARIOS for name in paths(deal, scenario).values()}
+    names = {name for deal in deals for scenario in SCENARIOS for name in paths(deal, scenario, pdf=index["schema"] == PDF_SCHEMA).values()}
     require(isinstance(hashes, dict) and set(hashes) == names
             and all(isinstance(value, str) and re.fullmatch(r"[0-9a-f]{64}", value) for value in hashes.values()),
             "Se requiere una huella por cada planilla y respaldo")
@@ -77,7 +80,8 @@ def read_pilot(directory):
 
 def review_scenario(index, sources, deal, scenario):
     records, findings, blockers = {}, {}, []
-    filenames = paths(deal, scenario)
+    pdf = index["schema"] == PDF_SCHEMA
+    filenames = paths(deal, scenario, pdf=pdf)
     for role, name in filenames.items():
         raw = sources.get(name)
         observed = sha(raw) if raw is not None else None
@@ -92,15 +96,37 @@ def review_scenario(index, sources, deal, scenario):
         sheet = inspect_synthetic_input_sheet(sources[filenames["Inputs"]]).cells
     except ValidationError:
         return records, findings, [f"{filenames['Inputs']} · plantilla incompatible"]
-    for area in AREAS:
-        name = filenames[area]
+    if pdf:
+        bundle = filenames["Evidence"]
+        pages, issues = read_bundle(sources[bundle], deal, scenario)
+        findings["Evidence"]["pages"] = {role: {key: page[key] for key in ("page", "locators")}
+                                          for role, page in pages.items()}
+        if issues:
+            return records, findings, [f"{FILENAME} · {error}" for error in issues]
+        summary = pages["A601"]
+        if summary["data"] != {"units": pages["A101"]["data"].get("units")} or summary["cells"]:
+            return records, findings, [f"{FILENAME} · A101 y A601 difieren en unidades"]
         try:
-            document = object_or_empty(_json(sources[name], MAX_SOURCE_BYTES))
-        except ValidationError:
-            document = {}
+            finance = merge_financing(pages)
+        except ValueError as error:
+            return records, findings, [f"{FILENAME} · {error}"]
+        plan = pages["A101"]
+        documents = {area: pages[area] for area in AREAS if area not in ("program", "financing")}
+        documents.update(program=plan, financing=finance)
+    for area in AREAS:
+        if pdf:
+            document = documents[area] | dict(kind=area, deal=deal, scenario=scenario)
+            role = "A101" if area == "program" else area
+            name = f"{FILENAME} · {role}"
+        else:
+            name = filenames[area]
+            try:
+                document = object_or_empty(_json(sources[name], MAX_SOURCE_BYTES))
+            except ValidationError:
+                document = {}
         data = object_or_empty(document.get("data"))
         claims = object_or_empty(document.get("cells"))
-        if (set(document) != {"kind", "deal", "scenario", "data", "cells"} or document["kind"] != area
+        if ((not pdf and set(document) != {"kind", "deal", "scenario", "data", "cells"}) or document.get("kind") != area
                 or document["deal"] != deal or document["scenario"] != scenario
                 or not assumption_ready(data, day(index["as_of"])) or not synthetic_id(data["source_ref"])
                 or set(claims) != set(CELLS[area])
@@ -111,7 +137,12 @@ def review_scenario(index, sources, deal, scenario):
             literal = sheet[cell]["literal"]
             if (not isinstance(expected, str) or literal != expected
                     or sheet[cell]["kind"] not in ("text", "numeric_lexeme")):
-                blockers.append(f"{name} · {cell} difiere de Inputs.xlsx")
+                if pdf:
+                    page_role = next((bank for bank in BANK_ROLES if cell in pages[bank]["cells"]), role) if area == "financing" else role
+                    page = pages[page_role]
+                    blockers.append(f"{FILENAME} p. {page['page']} · {page_role} · {cell} difiere de Inputs.xlsx")
+                else:
+                    blockers.append(f"{name} · {cell} difiere de Inputs.xlsx")
         records[area] = data
     return records, findings, blockers
 
@@ -129,8 +160,15 @@ def calculate(raw_index, index, sources):
                 blocked[scenario] = dict(cash=None, blockers=blockers)
                 books[scenario] = None
                 continue
-            path = paths(deal, scenario)["Inputs"]
+            path = paths(deal, scenario, pdf=index["schema"] == PDF_SCHEMA)["Inputs"]
             books[scenario] = sources[path]
+            if index["schema"] == PDF_SCHEMA:
+                evidence = findings[scenario]["Evidence"]
+                for area, document in documents.items():
+                    role = "A101" if area == "program" else area
+                    page_numbers = ("/".join(str(evidence["pages"][bank]["page"]) for bank in BANK_ROLES)
+                                    if area == "financing" else evidence["pages"][role]["page"])
+                    document["source_ref"] = f"SYNTHETIC-D206-{FILENAME}-p{page_numbers}-{role}"
             fiscal = documents.pop("florida_property_tax")
             fiscal.pop("policy")
             case["florida_property_tax"]["scenarios"][scenario] = fiscal

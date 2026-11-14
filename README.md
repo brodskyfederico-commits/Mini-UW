@@ -4,6 +4,8 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D206 conecta respaldos PDF sintéticos al ranking PRELIMINAR y a los flujos por USD 10. [Uso y resultados](docs/workbook-preliminary-pdf-D206.md).
+
 - D205 deja listo el primer piloto PRELIMINAR sintético desde respaldos, incluyendo ranking y flujos por USD 10. [Uso y resultados](docs/workbook-preliminary-pilot-D205.md).
 
 - D204 usa M2 en PRELIMINAR y bloquea el ranking si falta evidencia fiscal. [Resultados por USD 10 y reproducción](docs/workbook-preliminary-tax-D204.md).

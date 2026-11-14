@@ -1,5 +1,5 @@
 {
-  "scope": "I01 preserved design, D02–D205 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
+  "scope": "I01 preserved design, D02–D206 design/structure documentation and T01–T111 synthetic technical components. Financial/product gates remain open; no deployment or complete runtime/system recovery.",
   "files": [
     {
       "path": ".github/workflows/miniuw-integral-usd10.yml",
@@ -23,13 +23,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 92051,
-      "sha256": "dee46e35e9527217b1cb3c6125cd022eb7a514008ab0472192cf66d99070c244"
+      "bytes": 92201,
+      "sha256": "18ba428cd8b32264265331c25cebe38d99aeab64efc6c66ba57d1baf6d842075"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 369045,
-      "sha256": "f69ed67084b32c8a72ef3b20aa5ae3742d560297f96a4fe174b192f6e5e1ef11"
+      "bytes": 369608,
+      "sha256": "67ec4c20e86f98c03fa9cfc0ffc3a2998e8cae687cd1839544a4f9f266457f87"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -1247,6 +1247,11 @@
       "sha256": "1035edd59e41026cd6fea81bda07807742bbc828457a3796913bf90c9515e97e"
     },
     {
+      "path": "docs/review/MiniUW_Preliminar_Respaldo_PDF_D206.pdf",
+      "bytes": 4368,
+      "sha256": "49293bb76206fc1df04544e765e096a1079ab63580f6c1e3bd80d9e53809d234"
+    },
+    {
       "path": "docs/review/MiniUW_Reporte_Procesos_y_Avance_D196_Corregido.pdf",
       "bytes": 86018,
       "sha256": "d0ed059449b9e66313dc0caea98283633d6ef737038967e0beffbe323c10724a"
@@ -1355,6 +1360,11 @@
       "path": "docs/review/MiniUW_Verificacion_D205.json",
       "bytes": 11907,
       "sha256": "82c5543bef271c3d62d10fa64751b266b6bc0e169e31c0d2eacfe1cb6fda269e"
+    },
+    {
+      "path": "docs/review/MiniUW_Verificacion_D206.json",
+      "bytes": 12076,
+      "sha256": "a357eedf697c0a33b4ade560eaeb776a1d3992051605fa0687ddad68e965d766"
     },
     {
       "path": "docs/review/MiniUW_Vista_Sintetica_Interna_T18.pdf",
@@ -3582,6 +3592,11 @@
       "sha256": "9bb861bfb75a9175a9e3fd8ba19b216807930d89a3183856982fe6422bdb6142"
     },
     {
+      "path": "docs/workbook-preliminary-pdf-D206.md",
+      "bytes": 2999,
+      "sha256": "7a28d51bf30b16a658ad5d8b0358308406ee96b109e13940f797f283c1edee8a"
+    },
+    {
       "path": "docs/workbook-preliminary-pilot-D205.md",
       "bytes": 3663,
       "sha256": "d9beb016438cc7de6251de477dda5d71ca6de6448a3d7a4482bcc1c3fe80bf49"
@@ -5620,6 +5635,51 @@
       "path": "templates/preliminary-pilot-D205/pilot.json",
       "bytes": 3912,
       "sha256": "5d377aa9f12a1273fea49ad4314b2b8160b667e584d7f4f98f332cd776dd940d"
+    },
+    {
+      "path": "templates/preliminary-pilot-D206/SYNTHETIC-LOI-D188/Base/Evidence.pdf",
+      "bytes": 19793,
+      "sha256": "7a6971ba3edff2eb568cb703f50320f7045ebb537ca8ed471c92e8547208aa15"
+    },
+    {
+      "path": "templates/preliminary-pilot-D206/SYNTHETIC-LOI-D188/Base/Inputs.xlsx",
+      "bytes": 8745,
+      "sha256": "ab3893b56add5c14bcf9fd1a9761fab5a5524b8da58d56637bfe94cc3c33b94b"
+    },
+    {
+      "path": "templates/preliminary-pilot-D206/SYNTHETIC-LOI-D188/Downside/Evidence.pdf",
+      "bytes": 19922,
+      "sha256": "f2a3ca42b2f9f95bbfd39bd1cd1a8bec47719c264f8ced49b2c5ef78c37e65a0"
+    },
+    {
+      "path": "templates/preliminary-pilot-D206/SYNTHETIC-LOI-D188/Downside/Inputs.xlsx",
+      "bytes": 8753,
+      "sha256": "c5f5de71c9e7c37b28367de8f1ace54129e88486dbc39e4f9a8359d8a9a89959"
+    },
+    {
+      "path": "templates/preliminary-pilot-D206/SYNTHETIC-LOI-D205-B/Base/Evidence.pdf",
+      "bytes": 19811,
+      "sha256": "08467745d238dc1d023fff2d87c1a5a537311d55cf0ad2eda5b502e1bf19f5dc"
+    },
+    {
+      "path": "templates/preliminary-pilot-D206/SYNTHETIC-LOI-D205-B/Base/Inputs.xlsx",
+      "bytes": 8747,
+      "sha256": "43d8cac78cc1e59137befc37a0b0d2b625e64a3a0a57dfc59b575137dca5fc1f"
+    },
+    {
+      "path": "templates/preliminary-pilot-D206/SYNTHETIC-LOI-D205-B/Downside/Evidence.pdf",
+      "bytes": 19940,
+      "sha256": "f6f14e09115cee74702bbb8d2f58a3c0e87319f0e0431cdf970c4e3634fab864"
+    },
+    {
+      "path": "templates/preliminary-pilot-D206/SYNTHETIC-LOI-D205-B/Downside/Inputs.xlsx",
+      "bytes": 8759,
+      "sha256": "0442f8e531b403c83280efc9687e473adf5daade8908bc152f9a3bb3b6aed005"
+    },
+    {
+      "path": "templates/preliminary-pilot-D206/pilot.json",
+      "bytes": 1148,
+      "sha256": "b2095fe6dc078d5c25fca90ebd14b419fe3c3e4aeffed146a0a6a719eb55dc2c"
     },
     {
       "path": "templates/project-draft-empty.json",
@@ -8532,6 +8592,11 @@
       "sha256": "93b606ab44e44f28e98b197c1a3ff2be5dc94e57365e8af09d7f634a85b1367f"
     },
     {
+      "path": "tools/check_worksheet_preliminary_pdf_D206.py",
+      "bytes": 12227,
+      "sha256": "6deed4797209fab091b82aa97dfeac92b6a70b742252008044f384b9d3c658af"
+    },
+    {
       "path": "tools/check_worksheet_preliminary_pilot_D205.py",
       "bytes": 8050,
       "sha256": "f6b57a601f467af9678a3b5df7fce9c4149eeadcaf2497d9b6ced2e872d5a168"
@@ -9422,9 +9487,14 @@
       "sha256": "2787f39c1db373933172cc9f2fde4831761311664e4ee922143f2e9d55712039"
     },
     {
+      "path": "tools/worksheet_preliminary_pdf_D206.py",
+      "bytes": 5392,
+      "sha256": "bc41348e20f28e3bdfe76d9f6165ca8ea182caf7bebef97a8e96314d563fe6dd"
+    },
+    {
       "path": "tools/worksheet_preliminary_pilot_D205.py",
-      "bytes": 9477,
-      "sha256": "f9612cd486425163a002794cb0a084a3a37ea6ad19aec467ec5a4257f6cac0f3"
+      "bytes": 11928,
+      "sha256": "b9834070b28c4a3042196d5a8c14b59073d86c837e2f23406dc5f188f75198e6"
     },
     {
       "path": "tools/worksheet_preliminary_stages_D188.py",
