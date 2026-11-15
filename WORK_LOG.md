@@ -1987,3 +1987,7 @@ El ensayo sintético repone C72 primero. D219 verifica 47/48 datos y conserva am
 ## D225 · Prueba automática para ambos órdenes de recuperación
 
 La prueba ejecuta y audita ambos órdenes en una corrida sintética. Coteja los 10 movimientos de Base y 13 de Downside por monto exacto, fecha y categoría. Verifica los bloqueos parciales, rechaza la primera revisión completa al designar la final y exporta un solo PDF vigente. Los guiones individuales quedan disponibles para reproducción. El respaldo excluye expedientes, PDF generados y registros del VPS. [Resultados y reproducción](docs/workbook-combined-citation-orders-D225.md).
+
+## D226 · Batería completa del VPS con D225
+
+Pasaron 1648 pruebas unitarias en 75 min 47 s, 26 suites de referencia y el ensayo integral D102. D225 verifica que los dos órdenes produzcan los mismos 10 movimientos de Base y 13 de Downside por USD 10, y que sólo se exporte el PDF de la revisión vigente. El expediente sintético de control tomó 99,47 s desde el registro hasta la entrega auditada. El respaldo excluye expedientes, PDF generados y registros del VPS. [Resultados y reproducción](docs/workbook-validation-D226.md).
