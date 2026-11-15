@@ -1,0 +1,557 @@
+{
+  "schema": "miniuw.synthetic-critical-evidence.v1",
+  "deal_id": "SYNTHETIC-D140-rental-return",
+  "local_revision": "SYNTHETIC-D158-EVIDENCE",
+  "as_of": "2027-03-01",
+  "plan_ref": "SYNTHETIC-PLAN-01-R1",
+  "gross_area_m2": "1000",
+  "gc_tolerance_m2": "0",
+  "gc_rule_ref": "SYNTHETIC-D128-GC-r2",
+  "sources": {
+    "Plan.pdf": "8aa93ce770b565dd956e2fd37e1f2bbc55821d8ee9c2d757b7338aa84f41766a",
+    "Evidence.pdf": "a8ad0c3a6e9bc7f05549afaded130b5b0390730a879ae507d8b3f11f8da91777",
+    "Inputs.xlsx": "408cfef08a08c4171a5f73f89c58559942f186220b3e11a6216e8d555e4fa96a",
+    "Downside_Inputs.xlsx": "d1c8306c896ac4c1ae92c7b9d61b7dc5eeb1b9137e70b3b2b04df16edaf062e0"
+  },
+  "plan": {
+    "B05": [
+      4,
+      "A101",
+      "Gross building area",
+      "Gross building area | 1000.00 | m2"
+    ],
+    "B06": [
+      2,
+      "A601",
+      "Declared GBA",
+      "Declared GBA: 1,000.00 m2"
+    ]
+  },
+  "parcel": {
+    "Record": [
+      "SYNTHETIC-PARCEL-01",
+      "floors",
+      "4"
+    ],
+    "Valid from": [
+      "2026-12-20"
+    ],
+    "Valid through": [
+      "2027-03-31"
+    ]
+  },
+  "gc_cost": {
+    "Base": [
+      "vertical_building_excluding_parking_and_site",
+      "USD",
+      "2340000"
+    ],
+    "Downside": [
+      "vertical_building_excluding_parking_and_site",
+      "USD",
+      "2500000"
+    ]
+  },
+  "bank": {
+    "Base": {
+      "permanent": {
+        "page": 1,
+        "terms": {
+          "requested_principal": [
+            "Requested principal",
+            "USD",
+            "1400000"
+          ],
+          "annual_nominal_rate": [
+            "C69",
+            "annual_nominal_fraction",
+            "0.05"
+          ],
+          "amortization_years": [
+            "C70",
+            "years",
+            "20"
+          ],
+          "maximum_ltv": [
+            "C71",
+            "fraction",
+            "0.65"
+          ],
+          "minimum_dscr": [
+            "C72",
+            "multiple",
+            "1.25"
+          ],
+          "payments_per_year": [
+            "Payments per year",
+            "payments/year",
+            "4"
+          ],
+          "maturity_payments": [
+            "Maturity",
+            "payments",
+            "8"
+          ]
+        }
+      },
+      "construction": {
+        "page": 3,
+        "terms": {
+          "ltc": [
+            "C51",
+            "fraction",
+            "0.60"
+          ],
+          "annual_interest": [
+            "C52",
+            "annual_nominal_fraction",
+            "0.08"
+          ],
+          "origination_fee_fraction": [
+            "C53",
+            "fraction_of_commitment",
+            "0.01"
+          ],
+          "maximum_commitment": [
+            "Maximum commitment",
+            "USD",
+            "1600000"
+          ],
+          "requested_invoice_fraction": [
+            "Requested invoice share",
+            "fraction",
+            "0.25"
+          ],
+          "available_per_draw_checkpoint": [
+            "Available per draw",
+            "USD",
+            "350000"
+          ],
+          "maturity_date": [
+            "Maturity date",
+            "2028-12-30"
+          ]
+        }
+      }
+    },
+    "Downside": {
+      "permanent": {
+        "page": 5,
+        "terms": {
+          "requested_principal": [
+            "Requested principal",
+            "USD",
+            "1400000"
+          ],
+          "annual_nominal_rate": [
+            "C69",
+            "annual_nominal_fraction",
+            "0.065"
+          ],
+          "amortization_years": [
+            "C70",
+            "years",
+            "11"
+          ],
+          "maximum_ltv": [
+            "C71",
+            "fraction",
+            "0.65"
+          ],
+          "minimum_dscr": [
+            "C72",
+            "multiple",
+            "1.30"
+          ],
+          "payments_per_year": [
+            "Payments per year",
+            "payments/year",
+            "4"
+          ],
+          "maturity_payments": [
+            "Maturity",
+            "payments",
+            "8"
+          ]
+        }
+      },
+      "construction": {
+        "page": 6,
+        "terms": {
+          "ltc": [
+            "C51",
+            "fraction",
+            "0.50"
+          ],
+          "annual_interest": [
+            "C52",
+            "annual_nominal_fraction",
+            "0.10"
+          ],
+          "origination_fee_fraction": [
+            "C53",
+            "fraction_of_commitment",
+            "0.015"
+          ],
+          "maximum_commitment": [
+            "Maximum commitment",
+            "USD",
+            "1250000"
+          ],
+          "requested_invoice_fraction": [
+            "Requested invoice share",
+            "fraction",
+            "0.25"
+          ],
+          "available_per_draw_checkpoint": [
+            "Available per draw",
+            "USD",
+            "380000"
+          ],
+          "maturity_date": [
+            "Maturity date",
+            "2029-06-30"
+          ]
+        }
+      }
+    }
+  },
+  "market": {
+    "Base": {
+      "absorption": {
+        "document": {
+          "basis": "tco_to_stabilization",
+          "deal_id": "SYNTHETIC-D140-rental-return",
+          "observed_on": "2027-02-10",
+          "ranges": {
+            "C47": {
+              "maximum": {
+                "denominator": "1",
+                "numerator": "4"
+              },
+              "minimum": {
+                "denominator": "1",
+                "numerator": "3"
+              }
+            }
+          },
+          "scenario": "Base",
+          "source_ref": "SYNTHETIC-D166-Base-absorption",
+          "unit": "months",
+          "valid_through": "2027-03-31"
+        },
+        "sha256": "749bf016946b22e160a6f1f03ba348c102a14f624e179285d94dd6ab79d5ec29",
+        "cells": {
+          "C47": "3"
+        }
+      },
+      "concessions": {
+        "document": {
+          "basis": "gross_potential_rent",
+          "deal_id": "SYNTHETIC-D140-rental-return",
+          "observed_on": "2027-02-10",
+          "ranges": {
+            "C15": {
+              "maximum": {
+                "denominator": "40",
+                "numerator": "1"
+              },
+              "minimum": {
+                "denominator": "1",
+                "numerator": "0"
+              }
+            }
+          },
+          "scenario": "Base",
+          "source_ref": "SYNTHETIC-D166-Base-concessions",
+          "unit": "fraction",
+          "valid_through": "2027-03-31"
+        },
+        "sha256": "10aec5439acc4921e3367935b4039ca2e840266e86f7017ea77d8d216266640d",
+        "cells": {
+          "C15": ".02"
+        }
+      },
+      "exit_cap": {
+        "document": {
+          "basis": "forward_twelve_month_noi_divided_by_exit_cap",
+          "deal_id": "SYNTHETIC-D140-rental-return",
+          "observed_on": "2027-02-10",
+          "ranges": {
+            "C67": {
+              "maximum": {
+                "denominator": "200",
+                "numerator": "19"
+              },
+              "minimum": {
+                "denominator": "25",
+                "numerator": "2"
+              }
+            }
+          },
+          "scenario": "Base",
+          "source_ref": "SYNTHETIC-D166-Base-exit_cap",
+          "unit": "annual_cap_fraction",
+          "valid_through": "2027-03-31"
+        },
+        "sha256": "d5fb49bbf5ce8a925bcaa26f829bd05be840402ba69d8143d376664182aeda39",
+        "cells": {
+          "C67": ".0875"
+        }
+      },
+      "insurance": {
+        "document": {
+          "basis": "residential_insurance",
+          "coverage_ref": "SYNTHETIC-D148-Base-insured-unit-schedule",
+          "deal_id": "SYNTHETIC-D140-rental-return",
+          "insured_units": 26,
+          "observed_on": "2027-02-10",
+          "premium_per_insured_unit": {
+            "denominator": "1",
+            "numerator": "300"
+          },
+          "scenario": "Base",
+          "source_ref": "SYNTHETIC-D166-Base-insurance",
+          "unit": "USD_per_insured_unit_per_year",
+          "valid_through": "2027-03-31"
+        },
+        "sha256": "759d10c5ffc45a4efd5dee3f301272657f397ec67bbc624d3dd447d588a7da74",
+        "cells": {
+          "C59": "300"
+        }
+      },
+      "rent": {
+        "document": {
+          "basis": "gross_before_losses_and_concessions",
+          "deal_id": "SYNTHETIC-D140-rental-return",
+          "observed_on": "2027-02-10",
+          "ranges": {
+            "C10": {
+              "maximum": {
+                "denominator": "1",
+                "numerator": "1950"
+              },
+              "minimum": {
+                "denominator": "1",
+                "numerator": "1800"
+              }
+            },
+            "C11": {
+              "maximum": {
+                "denominator": "1",
+                "numerator": "2500"
+              },
+              "minimum": {
+                "denominator": "1",
+                "numerator": "2300"
+              }
+            },
+            "C8": {
+              "maximum": {
+                "denominator": "1",
+                "numerator": "1250"
+              },
+              "minimum": {
+                "denominator": "1",
+                "numerator": "1150"
+              }
+            },
+            "C9": {
+              "maximum": {
+                "denominator": "1",
+                "numerator": "1550"
+              },
+              "minimum": {
+                "denominator": "1",
+                "numerator": "1450"
+              }
+            }
+          },
+          "scenario": "Base",
+          "source_ref": "SYNTHETIC-D166-Base-rent",
+          "unit": "USD_per_unit_per_month",
+          "valid_through": "2027-03-31"
+        },
+        "sha256": "64cdd44b372dedeeaeb7722b97df03d1606130cf0edacabb9bb528e5f1e8e6c6",
+        "cells": {
+          "C10": "1900",
+          "C11": "2400",
+          "C8": "1200",
+          "C9": "1500"
+        }
+      }
+    },
+    "Downside": {
+      "absorption": {
+        "document": {
+          "basis": "tco_to_stabilization",
+          "deal_id": "SYNTHETIC-D140-rental-return",
+          "observed_on": "2027-02-10",
+          "ranges": {
+            "C47": {
+              "maximum": {
+                "denominator": "1",
+                "numerator": "7"
+              },
+              "minimum": {
+                "denominator": "1",
+                "numerator": "5"
+              }
+            }
+          },
+          "scenario": "Downside",
+          "source_ref": "SYNTHETIC-D166-Downside-absorption",
+          "unit": "months",
+          "valid_through": "2027-03-31"
+        },
+        "sha256": "82dc55112f554eeded71f4d9dcd467f902fa40c9276896004f0f931d90b9d945",
+        "cells": {
+          "C47": "6"
+        }
+      },
+      "concessions": {
+        "document": {
+          "basis": "gross_potential_rent",
+          "deal_id": "SYNTHETIC-D140-rental-return",
+          "observed_on": "2027-02-10",
+          "ranges": {
+            "C15": {
+              "maximum": {
+                "denominator": "50",
+                "numerator": "3"
+              },
+              "minimum": {
+                "denominator": "25",
+                "numerator": "1"
+              }
+            }
+          },
+          "scenario": "Downside",
+          "source_ref": "SYNTHETIC-D166-Downside-concessions",
+          "unit": "fraction",
+          "valid_through": "2027-03-31"
+        },
+        "sha256": "4623132c320f5224d09bddb5acc471003e33f57721c49fd462e9e6dd0f5322b7",
+        "cells": {
+          "C15": ".05"
+        }
+      },
+      "exit_cap": {
+        "document": {
+          "basis": "forward_twelve_month_noi_divided_by_exit_cap",
+          "deal_id": "SYNTHETIC-D140-rental-return",
+          "observed_on": "2027-02-10",
+          "ranges": {
+            "C67": {
+              "maximum": {
+                "denominator": "25",
+                "numerator": "3"
+              },
+              "minimum": {
+                "denominator": "10",
+                "numerator": "1"
+              }
+            }
+          },
+          "scenario": "Downside",
+          "source_ref": "SYNTHETIC-D166-Downside-exit_cap",
+          "unit": "annual_cap_fraction",
+          "valid_through": "2027-03-31"
+        },
+        "sha256": "7add5cf8b0a7543c19b7e2bddb378f075f039346f27057b4425e756ee9df0345",
+        "cells": {
+          "C67": ".105"
+        }
+      },
+      "insurance": {
+        "document": {
+          "basis": "residential_insurance",
+          "coverage_ref": "SYNTHETIC-D148-Downside-insured-unit-schedule",
+          "deal_id": "SYNTHETIC-D140-rental-return",
+          "insured_units": 26,
+          "observed_on": "2027-02-10",
+          "premium_per_insured_unit": {
+            "denominator": "1",
+            "numerator": "550"
+          },
+          "scenario": "Downside",
+          "source_ref": "SYNTHETIC-D166-Downside-insurance",
+          "unit": "USD_per_insured_unit_per_year",
+          "valid_through": "2027-03-31"
+        },
+        "sha256": "4f4a7e8867a97a97f12e21afb6e428a5ddc59eceb2bcf83ba1515fc44a31a5d0",
+        "cells": {
+          "C59": "550"
+        }
+      },
+      "rent": {
+        "document": {
+          "basis": "gross_before_losses_and_concessions",
+          "deal_id": "SYNTHETIC-D140-rental-return",
+          "observed_on": "2027-02-10",
+          "ranges": {
+            "C10": {
+              "maximum": {
+                "denominator": "1",
+                "numerator": "1750"
+              },
+              "minimum": {
+                "denominator": "1",
+                "numerator": "1600"
+              }
+            },
+            "C11": {
+              "maximum": {
+                "denominator": "1",
+                "numerator": "2100"
+              },
+              "minimum": {
+                "denominator": "1",
+                "numerator": "1900"
+              }
+            },
+            "C8": {
+              "maximum": {
+                "denominator": "1",
+                "numerator": "1150"
+              },
+              "minimum": {
+                "denominator": "1",
+                "numerator": "1050"
+              }
+            },
+            "C9": {
+              "maximum": {
+                "denominator": "1",
+                "numerator": "1400"
+              },
+              "minimum": {
+                "denominator": "1",
+                "numerator": "1300"
+              }
+            }
+          },
+          "scenario": "Downside",
+          "source_ref": "SYNTHETIC-D166-Downside-rent",
+          "unit": "USD_per_unit_per_month",
+          "valid_through": "2027-03-31"
+        },
+        "sha256": "545499e4e568c396e5d62e1c96b9286864316c6cb64ff02b7a5ef2ff8e19b182",
+        "cells": {
+          "C10": "1620",
+          "C11": "1980",
+          "C8": "1100",
+          "C9": "1375"
+        }
+      }
+    }
+  },
+  "page_documents": {
+    "1": "SYNTHETIC-D156-BANK-Base",
+    "2": "SYNTHETIC-D156-GC",
+    "3": "SYNTHETIC-D157-Base-CONSTRUCTION",
+    "4": "SYNTHETIC-D156-PARCEL",
+    "5": "SYNTHETIC-D156-BANK-Downside",
+    "6": "SYNTHETIC-D157-Downside-CONSTRUCTION"
+  }
+}

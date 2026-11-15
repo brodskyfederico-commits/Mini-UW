@@ -1959,3 +1959,7 @@ La prueba automática registra dos revisiones sintéticas del costo de venta de 
 ## D218 · Ensayo de las propuestas de RLV y precedencia ante FAIL
 
 Ocho pruebas sintéticas comparan el RLV Downside N/A por defecto y el FAIL basado en una métrica verificable con faltantes independientes. Se prueban la excepción con respaldo, la conservación del RLV Base, el bloqueo por evidencia de la propia métrica y la vigencia en B16. Base y Downside conservan los movimientos exactos por USD 10. Las políticas quedan como propuestas y el dictamen real sigue PENDING. El respaldo excluye el material privado, los PDF generados y los registros del VPS. [Resultados y reproducción](docs/workbook-professional-proposals-D218.md).
+
+## D219 · Auditoría de falsos verdes por dato crítico
+
+El auditor de sólo lectura coteja 48 datos del expediente sintético por escenario, con valores, citas, huellas y revisión designada. El control reproducido por B16 pasa 48/48, con cero falsos verdes. Se detectan faltas de respaldo inyectadas en cada uno de los 48 datos y se registran los bots y motivos. Un faltante correctamente marcado queda PENDING. El dictamen real sigue PENDING. El respaldo excluye expedientes reales, archivos generados y registros del VPS. [Alcance y reproducción](docs/workbook-critical-evidence-audit-D219.md).
