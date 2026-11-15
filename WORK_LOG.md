@@ -1943,3 +1943,7 @@ El PRELIMINAR sintético D206 mantiene Downside PENDING y fuera del ranking si l
 ## D214 · Vigencia del ranking PRELIMINAR
 
 La opción `audit --current-source` reproduce el paquete archivado y coteja su revisión con el inventario vigente designado y las huellas de sus archivos. Un inventario distinto o una fuente vigente faltante o alterada produce PENDING y retira el ranking y el identificador del PDF vigente. Se prueban las revisiones de C32 en el chequeo automático de D213, el comando público y la conservación del archivo histórico. El respaldo excluye expedientes, flujos y registros de ejecución privados. [Uso y comprobaciones](docs/workbook-preliminary-revision-D207.md).
+
+## D215 · Entrega del PDF PRELIMINAR vigente
+
+El comando `deliver` emite el PDF auditado de una página de la revisión designada cuando el caso de foco está completo. Verifica vigencia antes de publicar el archivo en un destino nuevo y conserva los paquetes históricos. La prueba sintética de C32 verifica los flujos fechados por USD 10, el bloqueo de un paquete anterior, fuentes incompletas o alteradas, cambio del inventario durante el cotejo y protección del destino ocupado. El respaldo excluye los PDF generados, registros de ejecución y expedientes privados. [Comando y alcance](docs/workbook-preliminary-revision-D207.md).

@@ -1,4 +1,4 @@
-"""Run or audit the synthetic PRELIMINAR pilot from registered source files."""
+"""Run, audit or deliver the synthetic PRELIMINAR pilot PDF."""
 from argparse import ArgumentParser
 from datetime import date
 import json
@@ -32,6 +32,7 @@ CELLS = dict(
     florida_property_tax=(),
 )
 MAX_SOURCE_BYTES = 512 * 1024
+SUMMARY_PDF = "MiniUW_Resumen.pdf"
 
 
 def paths(deal, scenario, *, pdf=False):
@@ -184,7 +185,7 @@ def replay(directory):
     raw, index, sources = read_pilot(directory)
     result, pdf = calculate(raw, index, sources)
     files = {f"sources/{name}": content for name, content in (sources | {INDEX: raw}).items()}
-    return files | {"results.json": encoded(result), "MiniUW_Resumen.pdf": pdf}, result
+    return files | {"results.json": encoded(result), SUMMARY_PDF: pdf}, result
 
 
 def pilot_run(source, output):
@@ -201,17 +202,19 @@ def pilot_run(source, output):
     return result
 
 
-def pilot_audit(output):
+def _audited_files(output):
     expected, result = replay(output / "sources")
     actual = {path.relative_to(output).as_posix() for path in output.rglob("*") if path.is_file() or path.is_symlink()}
     require(actual == set(expected) and all(read_file(output, name, limit=max(MAX_SOURCE_BYTES, len(data))) == data for name, data in expected.items()),
             "El piloto difiere de la repetición desde los respaldos")
-    return result
+    return expected, result
 
 
-def pilot_current(output, current_source):
-    """Check a replayed package against the independently designated pilot inventory."""
-    archived = pilot_audit(output)
+def pilot_audit(output):
+    return _audited_files(output)[1]
+
+
+def _review_current(archived, output, current_source):
     current_sha = None
     blockers = []
     try:
@@ -243,6 +246,32 @@ def pilot_current(output, current_source):
     )
 
 
+def pilot_current(output, current_source):
+    """Check a replayed package against the independently designated pilot inventory."""
+    return _review_current(pilot_audit(output), output, current_source)
+
+
+def pilot_deliver(package, current_source, destination):
+    """Publish the exact audited PDF when the designated review is current and complete."""
+    require(destination.suffix.lower() == ".pdf" and destination.parent.is_dir(),
+            "Indicá un archivo PDF con un directorio de destino existente")
+    require(not destination.exists() and not destination.is_symlink(), "Usá un destino nuevo para la entrega")
+    target = destination.resolve()
+    require(not any(target.is_relative_to(folder.resolve()) for folder in (package, current_source)),
+            "El destino debe quedar fuera del paquete y de sus fuentes vigentes")
+    files, archived = _audited_files(package)
+    require(archived["page_count"] == 1, "La entrega requiere un PDF de una página")
+    with TemporaryDirectory(prefix=".miniuw-delivery-", dir=destination.parent) as temp:
+        prepared = Path(temp) / SUMMARY_PDF
+        prepared.write_bytes(files[SUMMARY_PDF])
+        current = _review_current(archived, package, current_source)
+        if current["vigencia"] != "VIGENTE" or current["state"] != "PRELIMINAR":
+            blockers = current["blockers"] or ["La revisión vigente tiene un escenario PENDING"]
+            return current | dict(delivery="PENDING", pdf_sha256=None, blockers=blockers)
+        destination.hardlink_to(prepared)
+    return current | dict(delivery="DELIVERED")
+
+
 def main():
     parser = ArgumentParser(description=__doc__)
     commands = parser.add_subparsers(dest="command", required=True)
@@ -252,6 +281,10 @@ def main():
     audit = commands.add_parser("audit")
     audit.add_argument("output", type=Path)
     audit.add_argument("--current-source", type=Path, help="Directorio de la revisión vigente designada")
+    deliver = commands.add_parser("deliver", help="Entregar el PDF de la revisión vigente")
+    deliver.add_argument("package", type=Path)
+    deliver.add_argument("output", type=Path)
+    deliver.add_argument("--current-source", type=Path, required=True)
     documentary = commands.add_parser("intake", help="Cotejar un set real de arquitectura sin calcular caja")
     documentary.add_argument("architecture", type=Path)
     documentary.add_argument("--narrative", type=Path)
@@ -259,6 +292,10 @@ def main():
     documentary.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
     try:
+        if args.command == "deliver":
+            delivery = pilot_deliver(args.package, args.current_source, args.output)
+            print(json.dumps(delivery, ensure_ascii=False))
+            return 0 if delivery["delivery"] == "DELIVERED" else 2
         if args.command == "intake":
             from worksheet_documentary_intake import intake
 
@@ -277,4 +314,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

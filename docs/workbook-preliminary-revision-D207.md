@@ -49,3 +49,13 @@ PYTHONPATH=src:tests python3 tools/worksheet_preliminary_pilot_D205.py audit /tm
 ```
 
 D214 aplica el cotejo a las dos revisiones sintéticas de C32. La revisión original conserva su ranking histórico. Frente al inventario corregido, el ranking original queda retirado de la consulta vigente. El paquete corregido muestra el orden recalculado y conserva sus flujos por USD 10. La designación es explícita y corresponde al piloto sintético. El dictamen formal sigue PENDING.
+
+## Entrega del PDF vigente
+
+```bash
+PYTHONPATH=src:tests python3 tools/worksheet_preliminary_pilot_D205.py deliver /tmp/miniuw-pdf-D206 /tmp/MiniUW_PRELIMINAR_Vigente.pdf --current-source templates/preliminary-pilot-D206
+```
+
+`deliver` reproduce el paquete, verifica el inventario designado inmediatamente antes de la entrega y escribe el PDF auditado de una página en un destino nuevo. El destino queda fuera del paquete y de sus fuentes. Si la revisión es anterior, el inventario cambió durante el cotejo o el caso de foco tiene un escenario PENDING, devuelve `delivery=PENDING` con código 2 y el destino no se crea. Un paquete alterado o un destino ocupado genera un error. Una entrega identifica el PDF, el inventario y el ranking de la revisión en ese momento. El archivo histórico sigue disponible mediante `audit`.
+
+D215 coteja los aportes y cobros fechados de Base y Downside antes de redondear y verifica su presentación en el PDF entregado. Con la revisión sintética de C32, Downside aporta USD 5,72 adicionales, cobra USD 6,47 hasta el 30/12/2028 y queda con USD 9,25 sin recuperar por USD 10 iniciales. El dictamen formal sigue PENDING.

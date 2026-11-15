@@ -8,6 +8,7 @@ import json
 import subprocess
 import sys
 import unittest
+from unittest.mock import patch
 
 from pypdf import PdfReader
 
@@ -22,6 +23,8 @@ from check_worksheet_preliminary_stages_D188 import workbook
 from miniuw_foundation.inputsheet import inspect_synthetic_input_sheet
 from miniuw_worksheet_v1 import encoded
 from reconcile_worksheet_D179 import exact
+import worksheet_preliminary_pilot_D205 as pilot
+from worksheet_preliminary_D185 import LABELS, money
 from worksheet_preliminary_pilot_D205 import paths, pilot_audit, pilot_current, pilot_run
 
 SCENARIO = "Downside"
@@ -42,6 +45,13 @@ def register(files, replacements):
     return revised | {INDEX: encoded(index)}
 
 
+def purchase_sources(price, sheets):
+    book = workbook(SCENARIO, {"C32": {"value": str(price)}})
+    rows = [f"Inputs | C32 | {price}" if row.startswith("Inputs | C32 | ") else row
+            for row in sheets["acquisition_and_costs"]]
+    return book, pdf_bundle(sheets | {"acquisition_and_costs": rows})
+
+
 class PreliminaryInitialEquityTests(unittest.TestCase):
     def test_purchase_revision_rescales_every_gross_cash_event(self):
         names = paths(DEAL, SCENARIO, pdf=True)
@@ -51,15 +61,6 @@ class PreliminaryInitialEquityTests(unittest.TestCase):
         old_row = f"Inputs | C32 | {OLD_PRICE}"
         self.assertIn(old_row, quote)
         self.assertIn("Inputs | C33 | 0.05", quote)
-
-        def revised_sources(price):
-            book = workbook(SCENARIO, {"C32": {"value": str(price)}})
-            before = inspect_synthetic_input_sheet(published[names["Inputs"]]).cells
-            after = inspect_synthetic_input_sheet(book).cells
-            self.assertEqual([cell for cell in before if before[cell] != after[cell]], ["C32"])
-            rows = [f"Inputs | C32 | {price}" if row == old_row else row for row in quote]
-            pdf = pdf_bundle(sheets | {"acquisition_and_costs": rows})
-            return book, pdf
 
         with TemporaryDirectory(prefix="miniuw-d213-") as temp:
             root = Path(temp)
@@ -79,8 +80,12 @@ class PreliminaryInitialEquityTests(unittest.TestCase):
             original_package_bytes = inventory(original_package)
             self.assertEqual([row["deal_id"] for row in original["ranking"]], [DEAL, SECOND])
             before = original["deals"][DEAL]["scenarios"][SCENARIO]
-            book, pdf = revised_sources(NEW_PRICE)
-            zero_book, zero_pdf = revised_sources(0)
+            book, pdf = purchase_sources(NEW_PRICE, sheets)
+            zero_book, zero_pdf = purchase_sources(0, sheets)
+            original_cells = inspect_synthetic_input_sheet(published[names["Inputs"]]).cells
+            for corrected in (book, zero_book):
+                revised_cells = inspect_synthetic_input_sheet(corrected).cells
+                self.assertEqual([c for c in original_cells if original_cells[c] != revised_cells[c]], ["C32"])
             for label, inputs, issue in (
                 ("workbook-only", {names["Inputs"]: book}, "acquisition_and_costs · C32 difiere"),
                 ("pdf-only", {names["Evidence"]: pdf}, "acquisition_and_costs · C32 difiere"),
@@ -193,3 +198,98 @@ class PreliminaryInitialEquityTests(unittest.TestCase):
             archived = subprocess.check_output([*command, str(original_package)])
             self.assertEqual(json.loads(archived)["ranking"], original["ranking"])
             self.assertEqual(inventory(original_package), original_package_bytes)
+
+    def test_deliver_exports_only_the_current_complete_pdf(self):
+        names = paths(DEAL, SCENARIO, pdf=True)
+        published = inventory(FIXTURES)
+        sheets = bundle_pages(DEAL, SCENARIO, structured_sources())
+        book, pdf = purchase_sources(NEW_PRICE, sheets)
+        revised = register(published, {names["Inputs"]: book, names["Evidence"]: pdf})
+
+        with TemporaryDirectory(prefix="miniuw-d215-") as temp:
+            root = Path(temp)
+            old_package, new_package, pending_package = (root / name for name in ("old", "new", "pending"))
+            current, incomplete = root / "current", root / "incomplete"
+            delivery_folder = root / "delivery"
+            delivery_folder.mkdir()
+            original = pilot_run(FIXTURES, old_package)
+            original_bytes = inventory(old_package)
+            write_sources(revised, current)
+            result = pilot_run(current, new_package)
+            write_sources(register(published, {names["Inputs"]: book}), incomplete)
+            self.assertEqual(pilot_run(incomplete, pending_package)["state"], "PENDING")
+
+            output = delivery_folder / "MiniUW_vigente.pdf"
+            command = [sys.executable, str(ROOT / "tools/worksheet_preliminary_pilot_D205.py"), "deliver"]
+            denied = subprocess.run([*command, str(old_package), str(output), "--current-source", str(current)],
+                                    capture_output=True, check=False)
+            self.assertEqual(denied.returncode, 2, denied.stderr)
+            blocked = json.loads(denied.stdout)
+            self.assertEqual((blocked["delivery"], blocked["vigencia"], blocked["decision"]),
+                             ("PENDING", "PENDING", "PENDING"))
+            self.assertEqual(blocked["ranking"], [])
+            self.assertIsNone(blocked["pdf_sha256"])
+            self.assertEqual(inventory(delivery_folder), {})
+
+            blocked = pilot.pilot_deliver(pending_package, incomplete, output)
+            self.assertEqual((blocked["delivery"], blocked["vigencia"]), ("PENDING", "VIGENTE"))
+            self.assertIsNone(blocked["pdf_sha256"])
+            self.assertEqual(inventory(delivery_folder), {})
+
+            workbook_path = current / names["Inputs"]
+            workbook_path.unlink()
+            blocked = pilot.pilot_deliver(new_package, current, output)
+            self.assertEqual(blocked["delivery"], "PENDING")
+            self.assertEqual(inventory(delivery_folder), {})
+            workbook_path.write_bytes(book + b" ")
+            blocked = pilot.pilot_deliver(new_package, current, output)
+            self.assertEqual(blocked["delivery"], "PENDING")
+            self.assertEqual(inventory(delivery_folder), {})
+            workbook_path.write_bytes(book)
+
+            def advance_revision(directory):
+                snapshot = read_pilot(directory)
+                if directory == current:
+                    (current / INDEX).write_bytes(published[INDEX])
+                return snapshot
+
+            read_pilot = pilot.read_pilot
+            with patch.object(pilot, "read_pilot", side_effect=advance_revision):
+                blocked = pilot.pilot_deliver(new_package, current, output)
+            self.assertIn("El inventario vigente cambió durante el cotejo", blocked["blockers"])
+            self.assertEqual(inventory(delivery_folder), {})
+            (current / INDEX).write_bytes(revised[INDEX])
+
+            exported = subprocess.check_output([*command, str(new_package), str(output),
+                                                "--current-source", str(current)])
+            delivered = json.loads(exported)
+            self.assertEqual((delivered["delivery"], delivered["vigencia"], delivered["decision"]),
+                             ("DELIVERED", "VIGENTE", "PENDING"))
+            raw = output.read_bytes()
+            self.assertEqual(raw, (new_package / pilot.SUMMARY_PDF).read_bytes())
+            self.assertNotEqual(raw, (old_package / pilot.SUMMARY_PDF).read_bytes())
+            self.assertEqual(sha256(raw).hexdigest(), delivered["pdf_sha256"])
+            self.assertEqual(delivered["ranking"], result["ranking"])
+
+            page, = PdfReader(output).pages
+            report = page.extract_text()
+            base, downside = report.split("Downside | Aporte extra")
+            downside = downside.split("Prioridad de revisión")[0]
+            for scenario, section in zip(("Base", "Downside"), (base, downside), strict=True):
+                cash = result["deals"][DEAL]["scenarios"][scenario]["cash"]
+                for event in cash["events"]:
+                    self.assertIn(f"{event['date']}  {LABELS[event['category']]}  {money(event['amount'])}", section)
+            self.assertIn("Cobro total 29,14", base)
+            self.assertIn("Cobro total 6,47", downside)
+            self.assertIn("Sin recuperar 9,25", downside)
+
+            with self.assertRaises(pilot.PackageError):
+                pilot.pilot_deliver(new_package, current, output)
+            self.assertEqual(inventory(delivery_folder), {output.name: raw})
+            (new_package / pilot.SUMMARY_PDF).write_bytes(raw + b" ")
+            altered = delivery_folder / "alterado.pdf"
+            with self.assertRaises(pilot.PackageError):
+                pilot.pilot_deliver(new_package, current, altered)
+            self.assertFalse(altered.exists())
+            self.assertEqual(pilot_audit(old_package), original)
+            self.assertEqual(inventory(old_package), original_bytes)
