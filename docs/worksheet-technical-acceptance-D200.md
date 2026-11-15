@@ -55,3 +55,13 @@ PYTHONPATH=src python3 tools/worksheet_intake_D198.py run ./fuentes-sinteticas .
 El directorio de prueba contiene `Inputs.xlsx`, `Downside_Inputs.xlsx`, `Criterios_Lorena.xlsx`, `Plan.pdf` y `Evidence.pdf`. El registro conserva hashes de archivo y de celdas para localizar cambios. El archivo de configuración conserva las reglas, las bases de comparación, las confirmaciones y las referencias sintéticas declaradas. La revisión de vigencia del caso se genera al armar el expediente. Las confirmaciones y el registro son evidencias sintéticas locales.
 
 **Alcance de cierre** · D197 mide el checklist técnico v1 con 16 hitos de igual peso. D200 acredita el cierre sintético. El piloto real mantiene sus seis condiciones de cierre y requiere documentos, responsables, criterios y validación del caso.
+
+## Entrega vigente del informe integral
+
+El comando `deliver` vuelve a ejecutar la auditoría B16 desde el expediente, verifica la revisión designada fuera del paquete y coteja su huella justo antes de exportar. Entrega el PDF auditado de una página de los perfiles sintéticos v31 y v32 cuando los flujos por USD 10 de Base y Downside están disponibles. La revisión histórica, una fuente o PDF incompatibles y la caja incompleta bloquean la entrega. Un criterio de inversión pendiente puede dejar el dictamen simulado PENDING con ambos flujos visibles. La decisión real sigue PENDING.
+
+```bash
+PYTHONPATH=src:tests python3 tools/miniuw_worksheet_v1.py deliver ./Expediente --current-revision ./Vigente.json --output ./MiniUW_Vigente.pdf
+```
+
+Designá la revisión verificada en `Vigente.json` y elegí un destino nuevo fuera del expediente. La constancia incluye la huella del PDF y de la revisión. El ensayo automatizado de D216 usa las fuentes sintéticas de D200 y D203. Coteja la salida completa y rechaza el PDF alterado, la revisión anterior, el reemplazo de la revisión durante la entrega y la caja incompleta.

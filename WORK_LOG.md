@@ -1947,3 +1947,7 @@ La opción `audit --current-source` reproduce el paquete archivado y coteja su r
 ## D215 · Entrega del PDF PRELIMINAR vigente
 
 El comando `deliver` emite el PDF auditado de una página de la revisión designada cuando el caso de foco está completo. Verifica vigencia antes de publicar el archivo en un destino nuevo y conserva los paquetes históricos. La prueba sintética de C32 verifica los flujos fechados por USD 10, el bloqueo de un paquete anterior, fuentes incompletas o alteradas, cambio del inventario durante el cotejo y protección del destino ocupado. El respaldo excluye los PDF generados, registros de ejecución y expedientes privados. [Comando y alcance](docs/workbook-preliminary-revision-D207.md).
+
+## D216 · Entrega del PDF integral vigente
+
+El comando `deliver` del flujo integral verifica B16 y la revisión designada antes de entregar un PDF de una página. El archivo vigente conserva importes y fechas por USD 10 en Base y Downside. Se prueba el cambio de PASS a FAIL simulado por criterios, una revisión PENDING con caja completa y el bloqueo de una revisión anterior, una caja incompleta o un PDF alterado. Las pruebas usan fuentes sintéticas y se ejecutan por descubrimiento de unittest. El respaldo excluye expedientes, PDF generados y registros de ejecución. [Uso y alcance](docs/worksheet-technical-acceptance-D200.md).

@@ -403,13 +403,18 @@ def read_package(directory):
     return {p.name: p.read_bytes() for p in paths}
 
 
-def verify_package(directory, *, current_revision_raw=None):
+def _audit_package(directory):
     saved = read_package(directory)
     expected, result = build_package(saved["case.json"], workbook_raw=saved.get(WORKBOOK_FILE),
                                      downside_workbook_raw=saved.get(DOWNSIDE_WORKBOOK_FILE),
                                      current_revision_raw=saved.get(CURRENT_REVISION_FILE), plan_raw=saved.get(PLAN_FILE),
                                      evidence_raw=saved.get(EVIDENCE_FILE), criteria_raw=saved.get(CRITERIA_FILE))
     require(saved == expected, "Output does not match source-first replay")
+    return expected, result
+
+
+def verify_package(directory, *, current_revision_raw=None):
+    _, result = _audit_package(directory)
     response = status("verified_source_first", result)
     if "revision_review" in result:
         from worksheet_revision_D128 import audit_revision
@@ -472,6 +477,40 @@ def read_current_revision(path, package):
     return raw
 
 
+def deliver_package(directory, output, current_revision):
+    from worksheet_revision_D128 import audit_revision
+
+    require(output.suffix.lower() == ".pdf" and output.parent.is_dir(),
+            "Elegí un archivo PDF en un directorio existente")
+    require(not output.exists() and not output.is_symlink()
+            and not output.resolve().is_relative_to(directory.resolve())
+            and output.resolve() != current_revision.resolve(),
+            "La entrega requiere un destino nuevo fuera del expediente y de la revisión")
+    revision = read_current_revision(current_revision, directory)
+    files, result = _audit_package(directory)
+    require(result["profile"] in ("synthetic_documented_technical_acceptance", "synthetic_documented_florida_tax"),
+            "La entrega requiere el perfil sintético de aceptación integral o fiscal")
+    review = audit_revision(result, revision)
+    require(review["vigencia"] == "VIGENTE",
+            f'La revisión no está vigente: {", ".join(review["revision_blockers"])}')
+    unavailable = [name for name in ("Base", "Downside")
+                   if not (result["scenarios"].get(name, {}).get("cash_per_usd_10") or {}).get("events")]
+    require(not unavailable, f'Flujos por USD 10 PENDING: {", ".join(unavailable)}')
+    require(result["decision"] == "PENDING" and result["page_count"] == 1
+            and not result["real_decisions_enabled"] and not result["deployment_enabled"],
+            "La entrega requiere un informe sintético de una página")
+    with TemporaryDirectory(dir=output.parent, prefix=".miniuw-delivery-") as temp:
+        prepared = Path(temp) / "MiniUW_Resumen.pdf"
+        prepared.write_bytes(files["MiniUW_Resumen.pdf"])
+        require(read_current_revision(current_revision, directory) == revision,
+                "La revisión vigente cambió durante la entrega")
+        os.link(prepared, output)
+    return dict(status="delivered_synthetic_pdf", decision=result["decision"],
+                simulation_result=result["simulation_result"], vigencia=review["vigencia"],
+                current_revision=review["current_revision"], revision_sha256=sha(revision),
+                pdf_sha256=result["pdf_sha256"], page_count=result["page_count"])
+
+
 def read_plan_file(path):
     if path is None:
         return None
@@ -497,6 +536,10 @@ def main():
     audit = subcommands.add_parser("audit")
     audit.add_argument("directory", type=Path)
     audit.add_argument("--current-revision", type=Path)
+    deliver = subcommands.add_parser("deliver")
+    deliver.add_argument("directory", type=Path)
+    deliver.add_argument("--current-revision", required=True, type=Path)
+    deliver.add_argument("--output", required=True, type=Path)
     preflight = subcommands.add_parser("preflight")
     preflight.add_argument("workbook", type=Path)
     preflight.add_argument("--deal-id", required=True)
@@ -517,6 +560,8 @@ def main():
         elif args.command == "audit":
             result = verify_package(args.directory,
                                     current_revision_raw=read_current_revision(args.current_revision, args.directory))
+        elif args.command == "deliver":
+            result = deliver_package(args.directory, args.output, args.current_revision)
         else:
             from worksheet_preflight_D116 import preflight as inspect_workbook
             result = inspect_workbook(read_workbook(args.workbook), args.deal_id, args.snapshot)
