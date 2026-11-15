@@ -2,8 +2,10 @@
 from argparse import ArgumentParser
 from collections import defaultdict
 from copy import deepcopy
+from dataclasses import dataclass
 from pathlib import Path
 from tempfile import TemporaryDirectory
+from typing import Callable
 import json
 import re
 import subprocess
@@ -72,7 +74,15 @@ def verify_published_cash(text, ledgers, views):
     require(visible == expected, "The PDF dated rows differ from the reconciled Base and Downside events")
 
 
-def verify_citation_recovery(root, *, milestone, field, affected_scenarios, invalidate, restored_citation):
+@dataclass(frozen=True)
+class BlockedRevision:
+    name: str
+    fields: tuple[str, ...]
+    affected_scenarios: tuple[str, ...]
+    invalidate: Callable[[dict], None]
+
+
+def verify_citation_recovery(root, *, milestone, blocked_revisions, restored_citation):
     settings = settings_for_tax() | {"schema": worksheet.WORKBOOK_CRITICAL_EVIDENCE_SCHEMA}
     sources = source_files(root / "sources")
     current_file = root / "revision-vigente.json"
@@ -91,11 +101,11 @@ def verify_citation_recovery(root, *, milestone, field, affected_scenarios, inva
     def designate(package_files):
         current_file.write_bytes(package_files[CURRENT])
 
-    def expect_block(directory, reason):
+    def expect_block(directory, *reasons):
         try:
             worksheet.deliver_package(directory, output, current_file)
         except ValueError as error:
-            require(reason in str(error), f"Unexpected reason for withholding delivery: {error}")
+            require(all(reason in str(error) for reason in reasons), f"Unexpected delivery rejection: {error}")
             require(not output.exists(), "A rejected revision left a PDF")
             return str(error)
         raise AssertionError(f"{directory.name} unexpectedly produced an external PDF")
@@ -104,48 +114,63 @@ def verify_citation_recovery(root, *, milestone, field, affected_scenarios, inva
     observed = deepcopy(prior["local_review"])
     del observed["financial_bindings"]
 
-    def with_bad_citation(case, plan_raw, *, evidence_raw, evidence_milestone):
-        require(plan_raw == sources["plan_raw"] and evidence_raw == sources["evidence_raw"]
-                and evidence_milestone == "D162"
-                and case["local_sources"] == json.loads(prior_files["case.json"])["local_sources"],
-                "The simulated citation fault must come from the registered synthetic sources")
-        evidence = deepcopy(observed)
-        invalidate(evidence)
-        return evidence
+    def faulty_review(revision):
+        def read(case, plan_raw, *, evidence_raw, evidence_milestone):
+            require(plan_raw == sources["plan_raw"] and evidence_raw == sources["evidence_raw"]
+                    and evidence_milestone == "D162"
+                    and case["local_sources"] == json.loads(prior_files["case.json"])["local_sources"],
+                    "The simulated citation fault must come from the registered synthetic sources")
+            evidence = deepcopy(observed)
+            revision.invalidate(evidence)
+            return evidence
+        return patch("worksheet_documented_finance_D147.review_documents", side_effect=read)
 
-    review_target = "worksheet_documented_finance_D147.review_documents"
-    with patch(review_target, side_effect=with_bad_citation):
-        blocked_path, blocked_files, blocked = archive("cita-invalida")
-        designate(blocked_files)
-        rejected = expect_block(blocked_path, f"Cotejo D219 PENDING: {field}")
-    evidence = blocked["critical_evidence_review"]
-    require(evidence["fields"][field]["status"] == "FALSE_GREEN"
-            and evidence["counts"]["FALSE_GREEN"] == 1
-            and evidence["affected_scenarios"] == list(affected_scenarios)
-            and blocked["simulation_result"] == "PENDING", "The citation fault did not reach the expected scenarios")
-    for name, view in blocked["scenarios"].items():
-        if name in affected_scenarios:
-            require(view["state"] == "PENDING" and view["cash_per_usd_10"] is None
-                    and view["capacity"] is None and view["noi_by_period"] == {},
-                    f"{name}: the faulty citation did not withhold the dependent calculation")
-        else:
-            require(view == prior["scenarios"][name], f"{name}: an independent scenario changed")
+    rejected_archives = []
+    rejected_revisions = {}
+    for revision in blocked_revisions:
+        with faulty_review(revision):
+            path, files, blocked = archive(revision.name)
+            designate(files)
+            rejection = expect_block(path, "Cotejo D219 PENDING", *revision.fields)
+        evidence = blocked["critical_evidence_review"]
+        actual_faults = {field for field, row in evidence["fields"].items() if row["status"] == "FALSE_GREEN"}
+        require(actual_faults == set(revision.fields)
+                and evidence["counts"] == dict(VERIFIED_GREEN=48 - len(revision.fields),
+                                               FALSE_GREEN=len(revision.fields), PENDING=0)
+                and evidence["affected_scenarios"] == list(revision.affected_scenarios)
+                and blocked["simulation_result"] == "PENDING", "The citation fault did not reach the expected scenarios")
+        ledgers = {}
+        for name, view in blocked["scenarios"].items():
+            if name in revision.affected_scenarios:
+                require(view["state"] == "PENDING" and view["cash_per_usd_10"] is None
+                        and view["capacity"] is None and view["noi_by_period"] == {},
+                        f"{name}: the faulty citation did not withhold the dependent calculation")
+                ledgers[name] = None
+            else:
+                require(view == prior["scenarios"][name], f"{name}: an independent scenario changed")
+                ledgers[name] = reconcile_cash(view)
+        rejected_archives.append((revision, path, files))
+        rejected_revisions[revision.name] = dict(rejection=rejection, critical_evidence=evidence["counts"],
+                                                  false_green_fields=sorted(actual_faults), ledgers=ledgers)
 
     # The corrected run reads the registered PDF without the injected fault.
     fixed_path, fixed_files, fixed = archive("corregida")
     restored = restored_citation(fixed["local_review"]["bots"], sources)
     require(fixed["critical_evidence_review"]["counts"] == {"VERIFIED_GREEN": 48, "FALSE_GREEN": 0, "PENDING": 0}
             and fixed["scenarios"] == prior["scenarios"], "The restored calculation differs from the supported control")
-    for path in ("case.json", worksheet.PLAN_FILE, worksheet.EVIDENCE_FILE,
+    archives = [(prior_path, prior_files), *((path, files) for _, path, files in rejected_archives),
+                (fixed_path, fixed_files)]
+    for name in ("case.json", worksheet.PLAN_FILE, worksheet.EVIDENCE_FILE,
                  worksheet.WORKBOOK_FILE, worksheet.DOWNSIDE_WORKBOOK_FILE, worksheet.CRITERIA_FILE):
-        require(prior_files[path] == blocked_files[path] == fixed_files[path], f"{path} changed between revisions")
-    require(len({files[CURRENT] for files in (prior_files, blocked_files, fixed_files)}) == 3,
-            "The three archives require distinct revision records")
+        require(all(files[name] == prior_files[name] for _, files in archives), f"{name} changed between revisions")
+    require(len({files[CURRENT] for _, files in archives}) == len(archives),
+            "The archives require distinct revision records")
     ledgers = {name: reconcile_cash(view) for name, view in fixed["scenarios"].items()}
 
     designate(fixed_files)
-    with patch(review_target, side_effect=with_bad_citation):
-        expect_block(blocked_path, f"Cotejo D219 PENDING: {field}")
+    for revision, path, _ in rejected_archives:
+        with faulty_review(revision):
+            expect_block(path, "Cotejo D219 PENDING", *revision.fields)
     stale = expect_block(prior_path, "archived_revision_differs_from_current")
     audit = worksheet.verify_package(fixed_path, current_revision_raw=current_file.read_bytes())
     require(audit["audit_bot"] == "B16" and audit["vigencia"] == "VIGENTE"
@@ -159,30 +184,35 @@ def verify_citation_recovery(root, *, milestone, field, affected_scenarios, inva
             and delivery["current_revision"] == f"SYNTHETIC-{milestone}-corregida"
             and delivery["revision_sha256"] == worksheet.sha(fixed_files[CURRENT])
             and delivery["pdf_sha256"] == worksheet.sha(pdf)
-            and pdf == fixed_files["MiniUW_Resumen.pdf"] != blocked_files["MiniUW_Resumen.pdf"],
+            and pdf == fixed_files["MiniUW_Resumen.pdf"]
+            and all(pdf != files["MiniUW_Resumen.pdf"] for _, _, files in rejected_archives)
+            and list(root.glob("*.pdf")) == [output],
             "Delivery did not match the audited current PDF")
     page, = PdfReader(output).pages
     verify_published_cash(page.extract_text(), ledgers, fixed["scenarios"])
-    for path, files in ((prior_path, prior_files), (blocked_path, blocked_files), (fixed_path, fixed_files)):
+    for path, files in archives:
         require(worksheet.read_package(path) == files, f"Delivery modified archive {path.name}")
     return dict(status="passed", decision="PENDING", historical_return="PENDING",
-                historical_rejection=stale, false_green_rejection=rejected,
-                ledgers=ledgers, delivery=delivery, **restored)
+                historical_rejection=stale, false_green_rejection=next(iter(rejected_revisions.values()))["rejection"],
+                rejected_revisions=rejected_revisions, ledgers=ledgers, delivery=delivery, **restored)
+
+
+def omit_dscr_citation(review):
+    del review["bots"]["B08"]["bank_pdf_by_scenario"]["Downside"]["locators"]["C72"]
+
+
+def restored_dscr_citation(bots, sources):
+    quote = bots["B08"]["bank_pdf_by_scenario"]["Downside"]
+    require(quote["locators"]["C72"] == LOCATOR and quote["observations"]["C72"] == ["multiple", "1.30"]
+            and quote["source_sha256"] == worksheet.sha(sources["evidence_raw"]),
+            "The source citation and DSCR were not recovered from the original PDF")
+    return dict(citation=LOCATOR, minimum_dscr=quote["observations"]["C72"])
 
 
 def verify(root):
-    def invalidate(review):
-        del review["bots"]["B08"]["bank_pdf_by_scenario"]["Downside"]["locators"]["C72"]
-
-    def restored_citation(bots, sources):
-        quote = bots["B08"]["bank_pdf_by_scenario"]["Downside"]
-        require(quote["locators"]["C72"] == LOCATOR and quote["observations"]["C72"] == ["multiple", "1.30"]
-                and quote["source_sha256"] == worksheet.sha(sources["evidence_raw"]),
-                "The source citation and DSCR were not recovered from the original PDF")
-        return dict(citation=LOCATOR, minimum_dscr=quote["observations"]["C72"])
-
-    return verify_citation_recovery(root, milestone="D221", field=DSCR, affected_scenarios=("Downside",),
-                                    invalidate=invalidate, restored_citation=restored_citation)
+    blocked = BlockedRevision("cita-invalida", (DSCR,), ("Downside",), omit_dscr_citation)
+    return verify_citation_recovery(root, milestone="D221", blocked_revisions=(blocked,),
+                                    restored_citation=restored_dscr_citation)
 
 
 class WorksheetDscrCitationRecoveryTests(unittest.TestCase):

@@ -1975,3 +1975,7 @@ El ensayo retira el localizador C72 del resultado de B08 y luego recorre el PDF 
 ## D222 · Recuperación de la cita del plano compartido
 
 El ensayo recupera A601 desde la página 2 del plano sintético registrado y concilia sus 1.000 m² con A101 y GC. La cita simulada incorrecta bloquea ambos escenarios. La revisión corregida verifica 48/48 y reproduce cada fila de aportes y cobros por USD 10 en el PDF. La entrega rechaza las revisiones anteriores y sólo publica la corregida. El respaldo excluye expedientes reales, PDF generados y registros del VPS. [Flujos y reproducción](docs/workbook-plan-citation-recovery-D222.md).
+
+## D223 · Recuperación secuencial de las citas del plano y el DSCR
+
+El ensayo prueba tres revisiones sintéticas. Con ambos fallos, D219 verifica 46/48 datos y retiene Base y Downside. Al reponer A601 verifica 47/48 y recupera la caja exacta de Base mientras Downside y la entrega siguen PENDING por C72. Al reponer C72 verifica 48/48, recupera Downside y B16 entrega exclusivamente el PDF de la revisión corregida. El respaldo excluye expedientes reales, PDF generados y logs del VPS. [Caja por USD 10 y reproducción](docs/workbook-sequential-citation-recovery-D223.md).
