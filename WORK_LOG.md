@@ -1991,3 +1991,7 @@ La prueba ejecuta y audita ambos órdenes en una corrida sintética. Coteja los 
 ## D226 · Batería completa del VPS con D225
 
 Pasaron 1648 pruebas unitarias en 75 min 47 s, 26 suites de referencia y el ensayo integral D102. D225 verifica que los dos órdenes produzcan los mismos 10 movimientos de Base y 13 de Downside por USD 10, y que sólo se exporte el PDF de la revisión vigente. El expediente sintético de control tomó 99,47 s desde el registro hasta la entrega auditada. El respaldo excluye expedientes, PDF generados y registros del VPS. [Resultados y reproducción](docs/workbook-validation-D226.md).
+
+## D227 · Cotejo del expediente antes de exportar
+
+La entrega integral vuelve a leer el expediente justo antes de publicar. La prueba sintética reproduce una modificación de Evidence.pdf después de B16 y verifica que se bloquee la entrega. Al restituir el respaldo se exporta un solo PDF vigente con los mismos diez movimientos de Base y trece de Downside por USD 10. El respaldo excluye expedientes reales, PDF generados y registros del VPS. [Entrega y reproducción](docs/worksheet-technical-acceptance-D200.md#entrega-vigente-del-informe-integral).

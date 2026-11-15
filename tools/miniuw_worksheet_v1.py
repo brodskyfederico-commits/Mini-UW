@@ -525,6 +525,7 @@ def deliver_package(directory, output, current_revision):
     with TemporaryDirectory(dir=output.parent, prefix=".miniuw-delivery-") as temp:
         prepared = Path(temp) / "MiniUW_Resumen.pdf"
         prepared.write_bytes(files["MiniUW_Resumen.pdf"])
+        require(read_package(directory) == files, "El expediente cambió durante la entrega")
         require(read_current_revision(current_revision, directory) == revision,
                 "La revisión vigente cambió durante la entrega")
         os.link(prepared, output)

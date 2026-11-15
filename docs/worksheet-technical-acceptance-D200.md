@@ -58,13 +58,19 @@ El directorio de prueba contiene `Inputs.xlsx`, `Downside_Inputs.xlsx`, `Criteri
 
 ## Entrega vigente del informe integral
 
-El comando `deliver` vuelve a ejecutar la auditoría B16 desde el expediente, verifica la revisión designada fuera del paquete y coteja su huella justo antes de exportar. Entrega el PDF auditado de una página de los perfiles sintéticos v31 y v32 cuando los flujos por USD 10 de Base y Downside están disponibles. La revisión histórica, una fuente o PDF incompatibles y la caja incompleta bloquean la entrega. Un criterio de inversión pendiente puede dejar el dictamen simulado PENDING con ambos flujos visibles. La decisión real sigue PENDING.
+El comando `deliver` vuelve a ejecutar la auditoría B16 desde el expediente, verifica la revisión designada fuera del paquete y coteja su huella justo antes de exportar. Entrega el PDF auditado de una página de los perfiles sintéticos v31, v32 y v33 cuando los flujos por USD 10 de Base y Downside están disponibles. La revisión histórica, una fuente o PDF incompatibles y la caja incompleta bloquean la entrega. Un criterio de inversión pendiente puede dejar el dictamen simulado PENDING con ambos flujos visibles. La decisión real sigue PENDING.
 
 ```bash
 PYTHONPATH=src:tests python3 tools/miniuw_worksheet_v1.py deliver ./Expediente --current-revision ./Vigente.json --output ./MiniUW_Vigente.pdf
 ```
 
 Designá la revisión verificada en `Vigente.json` y elegí un destino nuevo fuera del expediente. La constancia incluye la huella del PDF y de la revisión. El ensayo automatizado de D216 usa las fuentes sintéticas de D200 y D203. Coteja la salida completa y rechaza el PDF alterado, la revisión anterior, el reemplazo de la revisión durante la entrega y la caja incompleta.
+
+D227 vuelve a comparar los archivos del expediente con la copia auditada antes de publicar. Si algún archivo cambia en ese intervalo, la entrega queda PENDING. El ensayo modifica un respaldo justo después de la auditoría B16, verifica el rechazo y comprueba que al restituir los bytes originales se entrega un solo PDF vigente. Se cotejan las fechas y los importes de los diez movimientos de Base y trece de Downside por USD 10 iniciales.
+
+~~~bash
+PYTHONPATH=src:tests OMP_THREAD_LIMIT=1 python3 -m unittest -v test_worksheet_delivery_snapshot_D227
+~~~
 
 ## Corrección financiera y recálculo para la entrega
 
