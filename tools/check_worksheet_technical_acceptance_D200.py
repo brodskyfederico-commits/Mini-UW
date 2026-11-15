@@ -264,7 +264,9 @@ def verify(output):
         model = json.loads(saved["results.json"])
         approvals_unchanged(model)
         pdf = pdf_text(saved["MiniUW_Resumen.pdf"])
-        require(f"Dictamen simulado {expected}" in pdf and "Decisión real PENDING" in pdf, f"{label}: PDF differs")
+        require("Decisión real PENDING" in pdf and "Criterios de inversión reales PENDING" in pdf
+                and all(marker not in pdf for marker in ("Dictamen simulado", "[PASS]", "[FAIL]")),
+                f"{label}: PDF exposed trial criteria")
         if audit:
             verified = verify_package(path, current_revision_raw=saved[CURRENT_REVISION_FILE])
             require(verified["audit_bot"] == "B16" and verified["simulation_result"] == expected,

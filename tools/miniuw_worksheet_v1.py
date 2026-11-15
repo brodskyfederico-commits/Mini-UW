@@ -135,6 +135,7 @@ WORKBOOK_RETURN_PILOT_SCHEMAS = (WORKBOOK_COMPLETE_PILOT_SCHEMA, *WORKBOOK_LOCAL
 WORKBOOK_OPERATING_PILOT_SCHEMAS = (WORKBOOK_OCCUPANCY_PILOT_SCHEMA, *WORKBOOK_RETURN_PILOT_SCHEMAS)
 WORKBOOK_FUNDING_PILOT_SCHEMAS = (WORKBOOK_EQUITY_PILOT_SCHEMA, *WORKBOOK_OPERATING_PILOT_SCHEMAS)
 PACKAGE_SCHEMA = "miniuw.synthetic-unified-worksheet-package.v1"
+DELIVERY_PACKAGE_SCHEMA = "miniuw.synthetic-unified-worksheet-package.v2"
 COSTED_SALE = "templates/synthetic-worksheet-sale-costs-D63.json"
 COSTED_PROFILE = "with_refinance_worksheet_sale"
 ARCHIVES = {"without_refinance": SALE, "with_refinance": REFINANCE, COSTED_PROFILE: COSTED_SALE}
@@ -181,9 +182,11 @@ def read_case(case):
 
 
 def build_results(raw, *, workbook_raw=None, downside_workbook_raw=None, current_revision_raw=None, plan_raw=None,
-                  evidence_raw=None, criteria_raw=None):
+                  evidence_raw=None, criteria_raw=None, delivery_report=False):
     case = _json(raw, MAX_INTEGRATED_PILOT_BYTES)
     schema = case.get("schema") if isinstance(case, dict) else None
+    require(not delivery_report or schema in TECHNICAL_SCHEMAS,
+            "La hoja de entrega requiere un perfil de aceptación integral o fiscal")
     require(schema in (WORKBOOK_INTEGRATED_SCREENING_SCHEMA, *DEFINITION_SCHEMAS) or len(raw) <= MAX_EXTENDED_PILOT_BYTES,
             "The worksheet case exceeds its schema size limit")
     require(current_revision_raw is None or schema in (*WORKBOOK_CURRENT_CHAIN_SCHEMAS, *WORKBOOK_RENTAL_SCHEMAS),
@@ -258,7 +261,8 @@ def build_results(raw, *, workbook_raw=None, downside_workbook_raw=None, current
                                  definition_screening=schema in DEFINITION_SCHEMAS,
                                  technical_acceptance=schema in TECHNICAL_SCHEMAS,
                                  florida_tax=schema in FLORIDA_TAX_SCHEMAS,
-                                 criteria_review=criteria_review, critical_evidence=critical_evidence)
+                                 criteria_review=criteria_review, critical_evidence=critical_evidence,
+                                 delivery_report=delivery_report)
     yield_metrics = schema in (WORKBOOK_YIELD_PILOT_SCHEMA, *WORKBOOK_FUNDING_PILOT_SCHEMAS)
     interval_irr = schema == WORKBOOK_IRR_PILOT_SCHEMA or yield_metrics
     extended = schema == WORKBOOK_EXTENDED_PILOT_SCHEMA or interval_irr
@@ -382,10 +386,15 @@ def encoded(value):
 
 
 def build_package(raw, *, workbook_raw=None, downside_workbook_raw=None, current_revision_raw=None, plan_raw=None,
-                  evidence_raw=None, criteria_raw=None):
+                  evidence_raw=None, criteria_raw=None, package_schema=None):
+    if package_schema is None:
+        case = _json(raw, MAX_INTEGRATED_PILOT_BYTES)
+        schema = case.get("schema") if isinstance(case, dict) else None
+        package_schema = DELIVERY_PACKAGE_SCHEMA if schema in TECHNICAL_SCHEMAS else PACKAGE_SCHEMA
+    require(package_schema in (PACKAGE_SCHEMA, DELIVERY_PACKAGE_SCHEMA), "Formato de expediente desconocido")
     result, pdf = build_results(raw, workbook_raw=workbook_raw, downside_workbook_raw=downside_workbook_raw,
                                 current_revision_raw=current_revision_raw, plan_raw=plan_raw, evidence_raw=evidence_raw,
-                                criteria_raw=criteria_raw)
+                                criteria_raw=criteria_raw, delivery_report=package_schema == DELIVERY_PACKAGE_SCHEMA)
     files = {"case.json": raw, "results.json": encoded(result), "MiniUW_Resumen.pdf": pdf}
     if workbook_raw is not None:
         files[WORKBOOK_FILE] = workbook_raw
@@ -400,7 +409,7 @@ def build_package(raw, *, workbook_raw=None, downside_workbook_raw=None, current
     if criteria_raw is not None:
         files[CRITERIA_FILE] = criteria_raw
     files["package.json"] = encoded(dict(
-        schema=PACKAGE_SCHEMA, state=result["state"], decision=result["decision"],
+        schema=package_schema, state=result["state"], decision=result["decision"],
         files=[dict(path=name, bytes=len(content), sha256=sha(content)) for name, content in sorted(files.items())],
     ))
     require(all(len(content) <= MAX_FILE_BYTES for content in files.values()), "Output exceeds the package size limit")
@@ -417,12 +426,20 @@ def read_package(directory):
     return {p.name: p.read_bytes() for p in paths}
 
 
+def _read_package_schema(files):
+    manifest = _json(files["package.json"], MAX_FILE_BYTES)
+    require(isinstance(manifest, dict) and manifest.get("schema") in (PACKAGE_SCHEMA, DELIVERY_PACKAGE_SCHEMA),
+            "Formato de expediente desconocido")
+    return manifest["schema"]
+
+
 def _audit_package(directory):
     saved = read_package(directory)
     expected, result = build_package(saved["case.json"], workbook_raw=saved.get(WORKBOOK_FILE),
                                      downside_workbook_raw=saved.get(DOWNSIDE_WORKBOOK_FILE),
                                      current_revision_raw=saved.get(CURRENT_REVISION_FILE), plan_raw=saved.get(PLAN_FILE),
-                                     evidence_raw=saved.get(EVIDENCE_FILE), criteria_raw=saved.get(CRITERIA_FILE))
+                                     evidence_raw=saved.get(EVIDENCE_FILE), criteria_raw=saved.get(CRITERIA_FILE),
+                                     package_schema=_read_package_schema(saved))
     require(saved == expected, "Output does not match source-first replay")
     return expected, result
 
@@ -452,10 +469,12 @@ def status(operation, result):
 
 def write_package(raw, directory, *, workbook_raw=None, downside_workbook_raw=None, current_revision_raw=None, plan_raw=None,
                   evidence_raw=None, criteria_raw=None):
+    saved = read_package(directory) if directory.exists() or directory.is_symlink() else None
     expected, result = build_package(raw, workbook_raw=workbook_raw, downside_workbook_raw=downside_workbook_raw,
                                      current_revision_raw=current_revision_raw, plan_raw=plan_raw, evidence_raw=evidence_raw,
-                                     criteria_raw=criteria_raw)
-    if directory.exists() or directory.is_symlink():
+                                     criteria_raw=criteria_raw,
+                                     package_schema=_read_package_schema(saved) if saved is not None else None)
+    if saved is not None:
         require(read_package(directory) == expected, "Existing output differs from the requested case")
         return status("verified_identical_output", result)
     require(directory.parent.is_dir(), "Output parent directory must exist")
@@ -522,9 +541,17 @@ def deliver_package(directory, output, current_revision):
     require(result["decision"] == "PENDING" and result["page_count"] == 1
             and not result["real_decisions_enabled"] and not result["deployment_enabled"],
             "La entrega requiere un informe sintético de una página")
+    pdf = files["MiniUW_Resumen.pdf"]
+    if _read_package_schema(files) == PACKAGE_SCHEMA:
+        from worksheet_integrated_screening_D181 import render_integrated
+
+        pdf = render_integrated(result["scenarios"], result["screening"], technical_acceptance=True,
+                                florida_tax=result["profile"] != "synthetic_documented_technical_acceptance",
+                                critical_evidence=result["profile"] == WORKBOOK_CRITICAL_EVIDENCE_PROFILE,
+                                delivery_report=True)
     with TemporaryDirectory(dir=output.parent, prefix=".miniuw-delivery-") as temp:
         prepared = Path(temp) / "MiniUW_Resumen.pdf"
-        prepared.write_bytes(files["MiniUW_Resumen.pdf"])
+        prepared.write_bytes(pdf)
         require(read_package(directory) == files, "El expediente cambió durante la entrega")
         require(read_current_revision(current_revision, directory) == revision,
                 "La revisión vigente cambió durante la entrega")
@@ -532,7 +559,7 @@ def deliver_package(directory, output, current_revision):
     return dict(status="delivered_synthetic_pdf", decision=result["decision"],
                 simulation_result=result["simulation_result"], vigencia=review["vigencia"],
                 current_revision=review["current_revision"], revision_sha256=sha(revision),
-                pdf_sha256=result["pdf_sha256"], page_count=result["page_count"])
+                pdf_sha256=sha(pdf), audited_pdf_sha256=result["pdf_sha256"], page_count=result["page_count"])
 
 
 def read_plan_file(path):

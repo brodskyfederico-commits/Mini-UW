@@ -60,7 +60,12 @@ def verify(root):
             "The synthetic case opened a real decision gate")
     ledgers = {name: reconcile_cash(view) for name, view in model["scenarios"].items()}
     page, = PdfReader(output).pages
-    verify_published_cash(page.extract_text(), ledgers, model["scenarios"])
+    page_text = page.extract_text()
+    require(model["simulation_result"] == "PASS" and "-40,67% a -40,66%" in page_text
+            and "Decisión real PENDING" in page_text and "Criterios de inversión reales PENDING" in page_text
+            and all(marker not in page_text for marker in ("Dictamen simulado", "[PASS]", "[FAIL]")),
+            "A negative Downside return was mislabeled or removed from the delivery")
+    verify_published_cash(page_text, ledgers, model["scenarios"])
     return dict(status="passed", rejection=rejection, delivery=receipt,
                 movements={name: len(ledger["events"]) for name, ledger in ledgers.items()})
 

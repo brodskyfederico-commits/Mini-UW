@@ -605,7 +605,8 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
                       include_alternatives=False, evidence_milestone=None, require_market_evidence=False,
                       require_formula_review=False, require_supplemental_scope=False, require_template_identity=False,
                       require_debt_yield=False, integrated_screening=False, definition_screening=False,
-                      criteria_review=None, technical_acceptance=False, florida_tax=False, critical_evidence=None):
+                      criteria_review=None, technical_acceptance=False, florida_tax=False, critical_evidence=None,
+                      delivery_report=False):
     hashes = object_or_empty(case.get("workbook_sha256"))
     review = review_native_mapping(case.get("native_mapping"), workbooks, hashes, calculation_fields=FIELDS,
                                    require_template_identity=require_template_identity)
@@ -690,7 +691,7 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
     if integrated_screening:
         from worksheet_integrated_screening_D181 import render_integrated
         pdf = render_integrated(views, screening, technical_acceptance=technical_acceptance, florida_tax=florida_tax,
-                                critical_evidence=evidence_gate is not None)
+                                critical_evidence=evidence_gate is not None, delivery_report=delivery_report)
     else:
         pdf = render(views, simulation, include_commercial=include_commercial, include_utilities=include_utilities,
                      include_development=include_development, include_budget=include_budget, include_calendar=include_calendar,

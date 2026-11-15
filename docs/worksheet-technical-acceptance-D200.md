@@ -58,7 +58,9 @@ El directorio de prueba contiene `Inputs.xlsx`, `Downside_Inputs.xlsx`, `Criteri
 
 ## Entrega vigente del informe integral
 
-El comando `deliver` vuelve a ejecutar la auditoría B16 desde el expediente, verifica la revisión designada fuera del paquete y coteja su huella justo antes de exportar. Entrega el PDF auditado de una página de los perfiles sintéticos v31, v32 y v33 cuando los flujos por USD 10 de Base y Downside están disponibles. La revisión histórica, una fuente o PDF incompatibles y la caja incompleta bloquean la entrega. Un criterio de inversión pendiente puede dejar el dictamen simulado PENDING con ambos flujos visibles. La decisión real sigue PENDING.
+El comando `deliver` vuelve a ejecutar la auditoría B16 desde el expediente, verifica la revisión designada fuera del paquete y coteja su huella justo antes de exportar. Entrega una hoja de los perfiles sintéticos v31, v32 y v33 cuando los flujos por USD 10 de Base y Downside están disponibles. La revisión histórica, una fuente o PDF incompatibles y la caja incompleta bloquean la entrega. La hoja muestra la caja, las métricas calculadas y el dictamen real PENDING. Los umbrales de ensayo y su clasificación se consultan en `results.json`.
+
+Los expedientes nuevos guardan la hoja de entrega auditada. Si un expediente de formato anterior sigue vigente, B16 reproduce su hoja original y `deliver` genera la presentación actual desde sus resultados auditados. La constancia registra las dos huellas para reproducir el expediente y verificar la entrega.
 
 ```bash
 PYTHONPATH=src:tests python3 tools/miniuw_worksheet_v1.py deliver ./Expediente --current-revision ./Vigente.json --output ./MiniUW_Vigente.pdf

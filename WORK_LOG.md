@@ -1999,3 +1999,7 @@ La entrega integral vuelve a leer el expediente justo antes de publicar. La prue
 ## D228 · Batería completa del VPS con D227
 
 Pasaron 1649 pruebas unitarias en 100 min 05 s, 26 suites de referencia y la verificación integral D102. D227 confirma que el cambio posterior a B16 bloquea la entrega. Al restituir el respaldo, se exporta un solo PDF vigente con diez movimientos de Base y trece de Downside por USD 10. D225 también pasó. El respaldo excluye expedientes, PDF generados y registros del VPS. [Resultados y reproducción](docs/workbook-validation-D228.md).
+
+## D229 · Dictamen real PENDING en la hoja de entrega
+
+La hoja de una página muestra los cobros por USD 10 y las métricas calculadas. Los umbrales, comparaciones y el dictamen de ensayo se conservan en el expediente. El cotejo con D227 confirmó los diez movimientos de Base y los trece de Downside exactos y la misma TIR negativa de Downside. Pasaron 26 pruebas dirigidas, la aceptación D200 y la reproducción D227 en el VPS. Los expedientes anteriores se auditan con su formato original y la entrega vigente reproduce la presentación corregida con ambas huellas en la constancia. El 1101 real sigue PENDING. [Entrega vigente](docs/worksheet-technical-acceptance-D200.md#entrega-vigente-del-informe-integral).

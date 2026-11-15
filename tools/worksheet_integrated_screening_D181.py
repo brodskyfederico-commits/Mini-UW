@@ -325,8 +325,10 @@ def percent(value):
     return money(rational(amount(value) * 100)) + "%"
 
 
-def display_metric(row, cash):
+def display_metric(row, cash, *, delivery_report=False):
     metric = row["metric_id"]
+    if delivery_report and metric == "asking_relative_to_supported_price":
+        return "PENDING"
     record = row["metric_record"] or {}
     if metric == "IRR":
         value = display_enclosure(record.get("annual_enclosure"))
@@ -338,11 +340,17 @@ def display_metric(row, cash):
         value = "USD " + money(rational(amount(record["value"]) * amount(cash["scale_factor"])))
     else:
         value = money(record["value"]) + {"multiple": "×", "bps": " pb"}[record["unit"]]
+    if delivery_report:
+        return "PENDING" if value == "—" else value
     return f"{value} [{RESULT_LABELS[row['state']]}]"
 
 
-def render_integrated(views, screening, *, technical_acceptance=False, florida_tax=False, critical_evidence=False):
-    lines = [(f"Dictamen simulado {screening['simulation_result']} | Decisión real PENDING | Retorno personal LP/GP PENDING", True),
+def render_integrated(views, screening, *, technical_acceptance=False, florida_tax=False, critical_evidence=False,
+                      delivery_report=False):
+    verdict = "Decisión real PENDING | Retorno personal LP/GP PENDING"
+    if not delivery_report:
+        verdict = f"Dictamen simulado {screening['simulation_result']} | {verdict}"
+    lines = [(verdict, True),
              ("Equity agregado del proyecto antes de impuestos personales. Importes en USD por USD 10 iniciales.", False)]
     dated = defaultdict(dict)
     for name, view in views.items():
@@ -386,14 +394,18 @@ def render_integrated(views, screening, *, technical_acceptance=False, florida_t
             cells = " / ".join(money(rational(by_name[name])) if name in by_name else "—" for name in views)
             lines.append((f"{day}  {KINDS[category]}  ·  {cells}", False))
 
-    lines.append(("Métricas del dictamen  ·  Base / Downside  ·  CoC del tramo posrefi, sin anualizar", True))
+    metrics_label = "Métricas calculadas" if delivery_report else "Métricas del dictamen"
+    lines.append((f"{metrics_label}  ·  Base / Downside  ·  CoC del tramo posrefi, sin anualizar", True))
     by_key = {(row["metric_id"], row["scenario_id"]): row for row in screening["comparisons"]}
     for metric in METRICS:
-        cells = " / ".join(display_metric(by_key[metric, name], view["cash_per_usd_10"]) for name, view in views.items())
+        cells = " / ".join(display_metric(by_key[metric, name], view["cash_per_usd_10"], delivery_report=delivery_report)
+                           for name, view in views.items())
         lines.append((f"{LABELS[metric]}  ·  {cells}", False))
     definition_screening = any("candidate_definitions" in item
                                for item in screening["metric_evidence_by_scenario"].values())
-    if definition_screening:
+    if delivery_report:
+        lines.append(("Criterios de inversión reales PENDING. Los umbrales de ensayo están en el expediente.", False))
+    elif definition_screening:
         def land_boundaries(name):
             details = screening["metric_evidence_by_scenario"][name]["candidate_definitions"]
             price = details["asking_relative_to_supported_price"].get("calculation", {})
@@ -412,7 +424,7 @@ def render_integrated(views, screening, *, technical_acceptance=False, florida_t
     elif any(row["state"] in {"PENDING", "CONFLICT"} and row["metric_id"] not in
              {"breakeven_occupancy", "asking_relative_to_supported_price"} for row in screening["comparisons"]):
         lines.append(("Hay datos o criterios adicionales PENDING. El expediente detalla cada métrica y el motivo.", True))
-    if screening["professional_review_needed_for_band"]:
+    if not delivery_report and screening["professional_review_needed_for_band"]:
         lines.append(("PENDING por banda: una comparación requiere revisión profesional.", True))
     lines.append(("— indica que no hay evento para esa fecha o falta un valor. 0,00 indica un cero documentado o redondeado.", False))
     label = "D193 | Base y Downside" if definition_screening else "D181 | Base y Downside"
@@ -422,6 +434,8 @@ def render_integrated(views, screening, *, technical_acceptance=False, florida_t
         label = "D203 | Base y Downside"
     if critical_evidence:
         label = "D220 | Base y Downside"
+    subtitle = "Simulación sintética | Aportes, cobros, riesgos y métricas" if delivery_report else (
+        "Piloto sintético | Aportes, cobros, riesgos y métricas del dictamen")
     return render_page(label, lines, 9 if definition_screening else 10,
                        "MINI-UW | SI INVIERTO USD 10, ¿CUÁNTO COBRO Y CUÁNDO?",
-                       "Piloto sintético | Aportes, cobros, riesgos y métricas del dictamen")
+                       subtitle)

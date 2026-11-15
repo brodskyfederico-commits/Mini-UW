@@ -1,6 +1,7 @@
 """Check delivery of the current synthetic integrated Mini-UW report."""
 from copy import deepcopy
 from hashlib import sha256
+from io import BytesIO
 from pathlib import Path
 from tempfile import TemporaryDirectory
 from unittest.mock import patch
@@ -38,6 +39,8 @@ class WorksheetDeliveryTests(unittest.TestCase):
 
             older, older_state, older_files = make_package("original", settings)
             self.assertEqual(older_state, "PASS")
+            older_page, = PdfReader(BytesIO(older_files["MiniUW_Resumen.pdf"])).pages
+            self.assertNotIn("[PASS]", older_page.extract_text())
             adverse = dict(sources, criteria_raw=change_cells(sources["criteria_raw"], {"G11": "<= 50 %", "H11": "> 65 %"}))
             newer, newer_state, newer_files = make_package("adverse", settings, adverse)
             self.assertEqual(newer_state, "FAIL")
@@ -63,9 +66,29 @@ class WorksheetDeliveryTests(unittest.TestCase):
             self.assertEqual(receipt["pdf_sha256"], sha256(raw).hexdigest())
             page, = PdfReader(deliverable).pages
             text = page.extract_text()
-            for marker in ("Dictamen simulado FAIL", "Decisión real PENDING", "USD 10", "18,06", "6,08",
+            for marker in ("Decisión real PENDING", "Criterios de inversión reales PENDING", "USD 10", "18,06", "6,08",
                            "2028-12-30", "2029-06-30", "12,11"):
                 self.assertIn(marker, text)
+            for marker in ("Dictamen simulado", "[PASS]", "[FAIL]", "último antes de FAIL"):
+                self.assertNotIn(marker, text)
+
+            legacy_files, legacy_result = worksheet.build_package(
+                newer_files["case.json"], current_revision_raw=newer_files[worksheet.CURRENT_REVISION_FILE],
+                package_schema=worksheet.PACKAGE_SCHEMA, **adverse)
+            self.assertEqual(legacy_result["scenarios"], revised["scenarios"])
+            self.assertEqual(legacy_result["screening"], revised["screening"])
+            archived = root / "archived"
+            archived.mkdir()
+            for name, content in legacy_files.items():
+                (archived / name).write_bytes(content)
+            archived_page, = PdfReader(BytesIO(legacy_files["MiniUW_Resumen.pdf"])).pages
+            self.assertIn("Dictamen simulado FAIL", archived_page.extract_text())
+            corrected = root / "legacy_entrega.pdf"
+            legacy_receipt = worksheet.deliver_package(archived, corrected, current)
+            self.assertEqual(legacy_receipt["audited_pdf_sha256"], sha256(legacy_files["MiniUW_Resumen.pdf"]).hexdigest())
+            self.assertEqual(legacy_receipt["pdf_sha256"], sha256(raw).hexdigest())
+            self.assertEqual(corrected.read_bytes(), raw)
+            self.assertEqual(worksheet.read_package(archived), legacy_files)
 
             candidate = root / "bloqueado.pdf"
             existing_revision = current.read_bytes()
@@ -119,5 +142,5 @@ class WorksheetDeliveryTests(unittest.TestCase):
                              ("VIGENTE", "PENDING", "PENDING"))
             self.assertEqual(report.read_bytes(), files["MiniUW_Resumen.pdf"])
             page, = PdfReader(report).pages
-            for marker in ("D203", "Dictamen simulado PENDING", "Base | Aporte extra", "Downside | Aporte extra", "USD 10"):
+            for marker in ("D203", "Decisión real PENDING", "Base | Aporte extra", "Downside | Aporte extra", "USD 10"):
                 self.assertIn(marker, page.extract_text())
