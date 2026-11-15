@@ -1983,3 +1983,7 @@ El ensayo prueba tres revisiones sintéticas. Con ambos fallos, D219 verifica 46
 ## D224 · Recuperación del DSCR antes del plano compartido
 
 El ensayo sintético repone C72 primero. D219 verifica 47/48 datos y conserva ambas cajas por USD 10 PENDING por A601. La entrega permanece bloqueada. Al reponer el plano se verifican 48/48, se concilian los flujos de ambos escenarios y sólo se exporta el PDF de la revisión vigente. El respaldo excluye expedientes, PDF generados y registros del VPS. [Resultados y reproducción](docs/workbook-reverse-citation-recovery-D224.md).
+
+## D225 · Prueba automática para ambos órdenes de recuperación
+
+La prueba ejecuta y audita ambos órdenes en una corrida sintética. Coteja los 10 movimientos de Base y 13 de Downside por monto exacto, fecha y categoría. Verifica los bloqueos parciales, rechaza la primera revisión completa al designar la final y exporta un solo PDF vigente. Los guiones individuales quedan disponibles para reproducción. El respaldo excluye expedientes, PDF generados y registros del VPS. [Resultados y reproducción](docs/workbook-combined-citation-orders-D225.md).

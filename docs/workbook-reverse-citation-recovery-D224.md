@@ -24,9 +24,7 @@ El PDF de una página detalla cada aporte y cobro. Se concilia cada cifra exacta
 
 Configurar el [runtime OCR](workbook-plan-scan-D131.md) y ejecutar desde la raíz del repositorio.
 
-~~~bash
-OMP_THREAD_LIMIT=1 PYTHONPATH=src:tests python3 -m unittest -v test_worksheet_reverse_citation_recovery_D224
-~~~
+La [prueba automática D225](workbook-combined-citation-orders-D225.md) ejecuta ambos órdenes juntos.
 
 Para conservar el único PDF exportado y la evidencia sintética, usar un directorio nuevo.
 

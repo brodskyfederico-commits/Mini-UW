@@ -82,7 +82,34 @@ class BlockedRevision:
     invalidate: Callable[[dict], None]
 
 
-def verify_citation_recovery(root, *, milestone, blocked_revisions, restored_citation):
+def expect_delivery_block(directory, current_file, output, *reasons):
+    try:
+        worksheet.deliver_package(directory, output, current_file)
+    except ValueError as error:
+        require(all(reason in str(error) for reason in reasons), f"Unexpected delivery rejection: {error}")
+        require(not output.exists(), "A rejected revision left a PDF")
+        return str(error)
+    raise AssertionError(f"{directory.name} unexpectedly produced an external PDF")
+
+
+def publish_citation_recovery(directory, current_file, output, ledgers):
+    files = worksheet.read_package(directory)
+    revision = json.loads(files[CURRENT])["revision"]
+    command = [sys.executable, str(ROOT / "tools/miniuw_worksheet_v1.py"), "deliver", str(directory),
+               "--current-revision", str(current_file), "--output", str(output)]
+    delivery = json.loads(subprocess.check_output(command))
+    pdf = output.read_bytes()
+    require(delivery["status"] == "delivered_synthetic_pdf" and delivery["decision"] == "PENDING"
+            and delivery["current_revision"] == revision
+            and delivery["revision_sha256"] == worksheet.sha(files[CURRENT])
+            and delivery["pdf_sha256"] == worksheet.sha(pdf)
+            and pdf == files["MiniUW_Resumen.pdf"], "Delivery did not match the audited current PDF")
+    page, = PdfReader(output).pages
+    verify_published_cash(page.extract_text(), ledgers, json.loads(files["results.json"])["scenarios"])
+    return delivery
+
+
+def verify_citation_recovery(root, *, milestone, blocked_revisions, restored_citation, publish=True):
     settings = settings_for_tax() | {"schema": worksheet.WORKBOOK_CRITICAL_EVIDENCE_SCHEMA}
     sources = source_files(root / "sources")
     current_file = root / "revision-vigente.json"
@@ -100,15 +127,6 @@ def verify_citation_recovery(root, *, milestone, blocked_revisions, restored_cit
 
     def designate(package_files):
         current_file.write_bytes(package_files[CURRENT])
-
-    def expect_block(directory, *reasons):
-        try:
-            worksheet.deliver_package(directory, output, current_file)
-        except ValueError as error:
-            require(all(reason in str(error) for reason in reasons), f"Unexpected delivery rejection: {error}")
-            require(not output.exists(), "A rejected revision left a PDF")
-            return str(error)
-        raise AssertionError(f"{directory.name} unexpectedly produced an external PDF")
 
     prior_path, prior_files, prior = archive("control-anterior")
     observed = deepcopy(prior["local_review"])
@@ -131,7 +149,7 @@ def verify_citation_recovery(root, *, milestone, blocked_revisions, restored_cit
         with faulty_review(revision):
             path, files, blocked = archive(revision.name)
             designate(files)
-            rejection = expect_block(path, "Cotejo D219 PENDING", *revision.fields)
+            rejection = expect_delivery_block(path, current_file, output, "Cotejo D219 PENDING", *revision.fields)
         evidence = blocked["critical_evidence_review"]
         actual_faults = {field for field, row in evidence["fields"].items() if row["status"] == "FALSE_GREEN"}
         require(actual_faults == set(revision.fields)
@@ -170,26 +188,16 @@ def verify_citation_recovery(root, *, milestone, blocked_revisions, restored_cit
     designate(fixed_files)
     for revision, path, _ in rejected_archives:
         with faulty_review(revision):
-            expect_block(path, "Cotejo D219 PENDING", *revision.fields)
-    stale = expect_block(prior_path, "archived_revision_differs_from_current")
+            expect_delivery_block(path, current_file, output, "Cotejo D219 PENDING", *revision.fields)
+    stale = expect_delivery_block(prior_path, current_file, output, "archived_revision_differs_from_current")
     audit = worksheet.verify_package(fixed_path, current_revision_raw=current_file.read_bytes())
     require(audit["audit_bot"] == "B16" and audit["vigencia"] == "VIGENTE"
             and audit["critical_evidence"]["status"] == "PASSED", "B16 did not reproduce the corrected revision")
 
-    command = [sys.executable, str(ROOT / "tools/miniuw_worksheet_v1.py"), "deliver", str(fixed_path),
-               "--current-revision", str(current_file), "--output", str(output)]
-    delivery = json.loads(subprocess.check_output(command))
-    pdf = output.read_bytes()
-    require(delivery["status"] == "delivered_synthetic_pdf" and delivery["decision"] == "PENDING"
-            and delivery["current_revision"] == f"SYNTHETIC-{milestone}-corregida"
-            and delivery["revision_sha256"] == worksheet.sha(fixed_files[CURRENT])
-            and delivery["pdf_sha256"] == worksheet.sha(pdf)
-            and pdf == fixed_files["MiniUW_Resumen.pdf"]
-            and all(pdf != files["MiniUW_Resumen.pdf"] for _, _, files in rejected_archives)
-            and list(root.glob("*.pdf")) == [output],
-            "Delivery did not match the audited current PDF")
-    page, = PdfReader(output).pages
-    verify_published_cash(page.extract_text(), ledgers, fixed["scenarios"])
+    require(all(fixed_files["MiniUW_Resumen.pdf"] != files["MiniUW_Resumen.pdf"]
+                for _, _, files in rejected_archives), "A blocked review matches the corrected PDF")
+    delivery = publish_citation_recovery(fixed_path, current_file, output, ledgers) if publish else None
+    require(list(root.glob("*.pdf")) == ([output] if publish else []), "Unexpected standalone PDF")
     for path, files in archives:
         require(worksheet.read_package(path) == files, f"Delivery modified archive {path.name}")
     return dict(status="passed", decision="PENDING", historical_return="PENDING",

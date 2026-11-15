@@ -16,9 +16,7 @@ Tras designar la revisión final, B16 audita el expediente corregido. La prueba 
 
 Con el [runtime OCR configurado](workbook-plan-scan-D131.md), ejecutar desde la raíz del repositorio.
 
-~~~bash
-OMP_THREAD_LIMIT=1 PYTHONPATH=src:tests python3 -m unittest -v test_worksheet_sequential_citation_recovery_D223
-~~~
+La [prueba automática D225](workbook-combined-citation-orders-D225.md) ejecuta ambos órdenes juntos.
 
 Para conservar la evidencia sintética en el VPS, ejecutar el verificador con un directorio nuevo.
 
