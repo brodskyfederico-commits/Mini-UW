@@ -1979,3 +1979,7 @@ El ensayo recupera A601 desde la página 2 del plano sintético registrado y con
 ## D223 · Recuperación secuencial de las citas del plano y el DSCR
 
 El ensayo prueba tres revisiones sintéticas. Con ambos fallos, D219 verifica 46/48 datos y retiene Base y Downside. Al reponer A601 verifica 47/48 y recupera la caja exacta de Base mientras Downside y la entrega siguen PENDING por C72. Al reponer C72 verifica 48/48, recupera Downside y B16 entrega exclusivamente el PDF de la revisión corregida. El respaldo excluye expedientes reales, PDF generados y logs del VPS. [Caja por USD 10 y reproducción](docs/workbook-sequential-citation-recovery-D223.md).
+
+## D224 · Recuperación del DSCR antes del plano compartido
+
+El ensayo sintético repone C72 primero. D219 verifica 47/48 datos y conserva ambas cajas por USD 10 PENDING por A601. La entrega permanece bloqueada. Al reponer el plano se verifican 48/48, se concilian los flujos de ambos escenarios y sólo se exporta el PDF de la revisión vigente. El respaldo excluye expedientes, PDF generados y registros del VPS. [Resultados y reproducción](docs/workbook-reverse-citation-recovery-D224.md).
