@@ -1955,3 +1955,7 @@ El comando `deliver` del flujo integral verifica B16 y la revisión designada an
 ## D217 · Recálculo y entrega tras corregir C68
 
 La prueba automática registra dos revisiones sintéticas del costo de venta de Base y Downside y concilia su efecto en cada movimiento por USD 10. Las planillas corregidas con huellas antiguas quedan bloqueadas por C68. Al designar la nueva revisión, el comando integral rechaza la anterior y entrega el PDF auditado actualizado. La decisión real sigue PENDING. Los PDF generados y registros de ejecución quedan fuera de GitHub. [Reproducción y resultados](docs/worksheet-technical-acceptance-D200.md).
+
+## D218 · Ensayo de las propuestas de RLV y precedencia ante FAIL
+
+Ocho pruebas sintéticas comparan el RLV Downside N/A por defecto y el FAIL basado en una métrica verificable con faltantes independientes. Se prueban la excepción con respaldo, la conservación del RLV Base, el bloqueo por evidencia de la propia métrica y la vigencia en B16. Base y Downside conservan los movimientos exactos por USD 10. Las políticas quedan como propuestas y el dictamen real sigue PENDING. El respaldo excluye el material privado, los PDF generados y los registros del VPS. [Resultados y reproducción](docs/workbook-professional-proposals-D218.md).
