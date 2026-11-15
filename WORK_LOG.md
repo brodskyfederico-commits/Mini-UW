@@ -1971,3 +1971,7 @@ El perfil sintético v33 vincula el inventario D219 a la revisión y coteja las 
 ## D221 · Recuperación de la cita del DSCR de Downside
 
 El ensayo retira el localizador C72 del resultado de B08 y luego recorre el PDF sintético original en una revisión nueva. El cotejo D219 verifica 48/48, se concilia cada aporte y cobro por USD 10 y se conserva Base. La entrega rechaza tanto el falso verde como una revisión anterior respaldada y sólo exporta la revisión corregida. El respaldo excluye expedientes reales, PDF generados y registros del VPS. [Flujos y reproducción](docs/workbook-dscr-citation-recovery-D221.md).
+
+## D222 · Recuperación de la cita del plano compartido
+
+El ensayo recupera A601 desde la página 2 del plano sintético registrado y concilia sus 1.000 m² con A101 y GC. La cita simulada incorrecta bloquea ambos escenarios. La revisión corregida verifica 48/48 y reproduce cada fila de aportes y cobros por USD 10 en el PDF. La entrega rechaza las revisiones anteriores y sólo publica la corregida. El respaldo excluye expedientes reales, PDF generados y registros del VPS. [Flujos y reproducción](docs/workbook-plan-citation-recovery-D222.md).

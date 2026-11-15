@@ -1,9 +1,11 @@
-"""Replay a missing Downside DSCR citation, restore it and deliver the current PDF."""
+"""Verify citation recovery and current-only synthetic worksheet delivery."""
 from argparse import ArgumentParser
+from collections import defaultdict
 from copy import deepcopy
 from pathlib import Path
 from tempfile import TemporaryDirectory
 import json
+import re
 import subprocess
 import sys
 import unittest
@@ -17,6 +19,7 @@ sys.path.insert(0, str(ROOT / "tools"))
 import miniuw_worksheet_v1 as worksheet
 from check_reference_package import require
 from check_worksheet_florida_tax_D203 import settings_for_tax
+from check_worksheet_return_metrics_D167 import KINDS
 from check_worksheet_technical_acceptance_D200 import source_files
 from miniuw_foundation.debt_service import rational
 from reconcile_worksheet_D179 import exact
@@ -26,7 +29,6 @@ from worksheet_sale_rate_grid_D84 import money
 CURRENT = worksheet.CURRENT_REVISION_FILE
 DSCR = "Downside:permanent:minimum_dscr"
 LOCATOR = "Evidence.pdf p. 5 / C72"
-OUTPUT = "MiniUW_Sintetico_D221_Revision_Corregida.pdf"
 
 
 def reconcile_cash(scenario):
@@ -46,15 +48,39 @@ def reconcile_cash(scenario):
                 events=[{field: event[field] for field in ("date", "category", "amount")} for event in events])
 
 
-def verify(root):
+def verify_published_cash(text, ledgers, views):
+    require("USD 10" in text and "Decisión real PENDING" in text, "The normalizing basis or real status is absent")
+    dated = defaultdict(lambda: defaultdict(int))
+    scopes = ("Base", "Downside")
+    for name in scopes:
+        ledger = ledgers[name]
+        require(f"{name} | Aporte extra {money(ledger['additional'])}" in text
+                and f"Cobro total {money(ledger['received'])}" in text, f"{name}: PDF totals disagree with the ledger")
+        for event in ledger["events"]:
+            dated[event["date"], event["category"]][name] += exact(event["amount"])
+        closing = views[name]["construction_refinance"]
+        cash_in = closing["projected_cash_in_required"]
+        if cash_in is not None:
+            scale = exact(views[name]["cash_per_usd_10"]["scale_factor"])
+            dated[closing["date"], "refinance_cash_in"][name] = exact(cash_in) * scale
+
+    expected = []
+    for (day, category), movements in sorted(dated.items(), key=lambda item: (item[0][0], list(KINDS).index(item[0][1]))):
+        amounts = " / ".join(money(rational(movements[name])) if name in movements else "—" for name in scopes)
+        expected.append(f"{day} {KINDS[category]} · {amounts}")
+    visible = [" ".join(line.split()) for line in text.splitlines() if re.match(r"^\d{4}-\d{2}-\d{2}\s", line)]
+    require(visible == expected, "The PDF dated rows differ from the reconciled Base and Downside events")
+
+
+def verify_citation_recovery(root, *, milestone, field, affected_scenarios, invalidate, restored_citation):
     settings = settings_for_tax() | {"schema": worksheet.WORKBOOK_CRITICAL_EVIDENCE_SCHEMA}
     sources = source_files(root / "sources")
     current_file = root / "revision-vigente.json"
-    output = root / OUTPUT
+    output = root / f"MiniUW_Sintetico_{milestone}_Revision_Corregida.pdf"
 
     def archive(label):
         path = root / label
-        intake = assemble(settings, register(sources, f"SYNTHETIC-D221-{label}"), sources, path)
+        intake = assemble(settings, register(sources, f"SYNTHETIC-{milestone}-{label}"), sources, path)
         require(not intake["source_blockers"], "An original source failed registration")
         files = worksheet.read_package(path)
         model = json.loads(files["results.json"])
@@ -78,33 +104,36 @@ def verify(root):
     observed = deepcopy(prior["local_review"])
     del observed["financial_bindings"]
 
-    def without_citation(case, plan_raw, *, evidence_raw, evidence_milestone):
+    def with_bad_citation(case, plan_raw, *, evidence_raw, evidence_milestone):
         require(plan_raw == sources["plan_raw"] and evidence_raw == sources["evidence_raw"]
                 and evidence_milestone == "D162"
                 and case["local_sources"] == json.loads(prior_files["case.json"])["local_sources"],
-                "The simulated omission must come from the registered synthetic sources")
+                "The simulated citation fault must come from the registered synthetic sources")
         evidence = deepcopy(observed)
-        del evidence["bots"]["B08"]["bank_pdf_by_scenario"]["Downside"]["locators"]["C72"]
+        invalidate(evidence)
         return evidence
 
     review_target = "worksheet_documented_finance_D147.review_documents"
-    with patch(review_target, side_effect=without_citation):
-        blocked_path, blocked_files, blocked = archive("sin-cita")
+    with patch(review_target, side_effect=with_bad_citation):
+        blocked_path, blocked_files, blocked = archive("cita-invalida")
         designate(blocked_files)
-        rejected = expect_block(blocked_path, f"Cotejo D219 PENDING: {DSCR}")
-    require(blocked["critical_evidence_review"]["fields"][DSCR]["status"] == "FALSE_GREEN"
-            and blocked["critical_evidence_review"]["affected_scenarios"] == ["Downside"]
-            and blocked["simulation_result"] == "PENDING"
-            and blocked["scenarios"]["Downside"]["cash_per_usd_10"] is None,
-            "The missing citation did not withhold the dependent calculation")
-    require(blocked["scenarios"]["Base"] == prior["scenarios"]["Base"], "Base changed while Downside was blocked")
+        rejected = expect_block(blocked_path, f"Cotejo D219 PENDING: {field}")
+    evidence = blocked["critical_evidence_review"]
+    require(evidence["fields"][field]["status"] == "FALSE_GREEN"
+            and evidence["counts"]["FALSE_GREEN"] == 1
+            and evidence["affected_scenarios"] == list(affected_scenarios)
+            and blocked["simulation_result"] == "PENDING", "The citation fault did not reach the expected scenarios")
+    for name, view in blocked["scenarios"].items():
+        if name in affected_scenarios:
+            require(view["state"] == "PENDING" and view["cash_per_usd_10"] is None
+                    and view["capacity"] is None and view["noi_by_period"] == {},
+                    f"{name}: the faulty citation did not withhold the dependent calculation")
+        else:
+            require(view == prior["scenarios"][name], f"{name}: an independent scenario changed")
 
-    # With the simulated omission removed, B08 reads the original PDF again.
+    # The corrected run reads the registered PDF without the injected fault.
     fixed_path, fixed_files, fixed = archive("corregida")
-    quote = fixed["local_review"]["bots"]["B08"]["bank_pdf_by_scenario"]["Downside"]
-    require(quote["locators"]["C72"] == LOCATOR and quote["observations"]["C72"] == ["multiple", "1.30"]
-            and quote["source_sha256"] == worksheet.sha(sources["evidence_raw"]),
-            "The source citation and DSCR were not recovered from the original PDF")
+    restored = restored_citation(fixed["local_review"]["bots"], sources)
     require(fixed["critical_evidence_review"]["counts"] == {"VERIFIED_GREEN": 48, "FALSE_GREEN": 0, "PENDING": 0}
             and fixed["scenarios"] == prior["scenarios"], "The restored calculation differs from the supported control")
     for path in ("case.json", worksheet.PLAN_FILE, worksheet.EVIDENCE_FILE,
@@ -115,8 +144,8 @@ def verify(root):
     ledgers = {name: reconcile_cash(view) for name, view in fixed["scenarios"].items()}
 
     designate(fixed_files)
-    with patch(review_target, side_effect=without_citation):
-        expect_block(blocked_path, f"Cotejo D219 PENDING: {DSCR}")
+    with patch(review_target, side_effect=with_bad_citation):
+        expect_block(blocked_path, f"Cotejo D219 PENDING: {field}")
     stale = expect_block(prior_path, "archived_revision_differs_from_current")
     audit = worksheet.verify_package(fixed_path, current_revision_raw=current_file.read_bytes())
     require(audit["audit_bot"] == "B16" and audit["vigencia"] == "VIGENTE"
@@ -127,28 +156,33 @@ def verify(root):
     delivery = json.loads(subprocess.check_output(command))
     pdf = output.read_bytes()
     require(delivery["status"] == "delivered_synthetic_pdf" and delivery["decision"] == "PENDING"
-            and delivery["current_revision"] == "SYNTHETIC-D221-corregida"
+            and delivery["current_revision"] == f"SYNTHETIC-{milestone}-corregida"
             and delivery["revision_sha256"] == worksheet.sha(fixed_files[CURRENT])
             and delivery["pdf_sha256"] == worksheet.sha(pdf)
             and pdf == fixed_files["MiniUW_Resumen.pdf"] != blocked_files["MiniUW_Resumen.pdf"],
             "Delivery did not match the audited current PDF")
     page, = PdfReader(output).pages
-    text = page.extract_text()
-    require("USD 10" in text and "Decisión real PENDING" in text, "The normalizing basis or real status is absent")
-    for name, ledger in ledgers.items():
-        require(f"{name} | Aporte extra {money(ledger['additional'])}" in text
-                and f"Cobro total {money(ledger['received'])}" in text,
-                f"{name}: published totals do not agree with the ledger")
-        for event in ledger["events"]:
-            if event["category"] in ("net_refinance_distribution", "operating_distribution", "net_sale_distribution"):
-                require(any(event["date"] in line and money(event["amount"]) in line for line in text.splitlines()),
-                        f"{name}: PDF omits a dated receipt")
+    verify_published_cash(page.extract_text(), ledgers, fixed["scenarios"])
     for path, files in ((prior_path, prior_files), (blocked_path, blocked_files), (fixed_path, fixed_files)):
         require(worksheet.read_package(path) == files, f"Delivery modified archive {path.name}")
     return dict(status="passed", decision="PENDING", historical_return="PENDING",
-                citation=LOCATOR, minimum_dscr=quote["observations"]["C72"],
                 historical_rejection=stale, false_green_rejection=rejected,
-                ledgers=ledgers, delivery=delivery)
+                ledgers=ledgers, delivery=delivery, **restored)
+
+
+def verify(root):
+    def invalidate(review):
+        del review["bots"]["B08"]["bank_pdf_by_scenario"]["Downside"]["locators"]["C72"]
+
+    def restored_citation(bots, sources):
+        quote = bots["B08"]["bank_pdf_by_scenario"]["Downside"]
+        require(quote["locators"]["C72"] == LOCATOR and quote["observations"]["C72"] == ["multiple", "1.30"]
+                and quote["source_sha256"] == worksheet.sha(sources["evidence_raw"]),
+                "The source citation and DSCR were not recovered from the original PDF")
+        return dict(citation=LOCATOR, minimum_dscr=quote["observations"]["C72"])
+
+    return verify_citation_recovery(root, milestone="D221", field=DSCR, affected_scenarios=("Downside",),
+                                    invalidate=invalidate, restored_citation=restored_citation)
 
 
 class WorksheetDscrCitationRecoveryTests(unittest.TestCase):
