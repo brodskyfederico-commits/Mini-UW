@@ -1995,3 +1995,7 @@ Pasaron 1648 pruebas unitarias en 75 min 47 s, 26 suites de referencia y el ensa
 ## D227 · Cotejo del expediente antes de exportar
 
 La entrega integral vuelve a leer el expediente justo antes de publicar. La prueba sintética reproduce una modificación de Evidence.pdf después de B16 y verifica que se bloquee la entrega. Al restituir el respaldo se exporta un solo PDF vigente con los mismos diez movimientos de Base y trece de Downside por USD 10. El respaldo excluye expedientes reales, PDF generados y registros del VPS. [Entrega y reproducción](docs/worksheet-technical-acceptance-D200.md#entrega-vigente-del-informe-integral).
+
+## D228 · Batería completa del VPS con D227
+
+Pasaron 1649 pruebas unitarias en 100 min 05 s, 26 suites de referencia y la verificación integral D102. D227 confirma que el cambio posterior a B16 bloquea la entrega. Al restituir el respaldo, se exporta un solo PDF vigente con diez movimientos de Base y trece de Downside por USD 10. D225 también pasó. El respaldo excluye expedientes, PDF generados y registros del VPS. [Resultados y reproducción](docs/workbook-validation-D228.md).
