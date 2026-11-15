@@ -1935,3 +1935,7 @@ La ruta sintética de venta con deuda de obra conserva su propio calendario, NOI
 ## D211 · Pruebas de precedencia del dictamen y RLV Downside
 
 El verificador sintético combina ambas reglas de precedencia con RLV Downside aplicable, explícitamente excluido o sin confirmar. Coteja PASS, FAIL, banda, umbrales faltantes y vigencia, y exige que la caja por USD 10 conserve importes y fechas. Los criterios alternativos siguen en revisión. El respaldo contiene el verificador y las fuentes sintéticas del repositorio. Excluye expedientes reales, planillas privadas y registros de ejecución del VPS. [Matriz y reproducción](docs/workbook-verdict-options-D211.md).
+
+## D213 · Cotejo del aporte inicial tras corregir el precio de compra
+
+El PRELIMINAR sintético D206 mantiene Downside PENDING y fuera del ranking si la planilla y el PDF discrepan en C32 o si el aporte inicial es cero. Con ambas fuentes corregidas y registradas, el aporte de compra pasa de USD 105.000 a USD 147.000. Se cotejan los once movimientos desde el nuevo factor por USD 10, las dos revisiones archivadas, el PDF de una página y el cambio del orden del ranking. Base y el expediente comparador conservan sus resultados. La prueba se incluye en el descubrimiento automático de unittest. El respaldo excluye documentos, flujos y registros privados del 1101. [Cotejo y revisión](docs/workbook-preliminary-revision-D207.md).
