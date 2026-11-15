@@ -5,6 +5,7 @@ from hashlib import sha256
 from pathlib import Path
 from tempfile import TemporaryDirectory
 import json
+import subprocess
 import sys
 import unittest
 
@@ -21,7 +22,7 @@ from check_worksheet_preliminary_stages_D188 import workbook
 from miniuw_foundation.inputsheet import inspect_synthetic_input_sheet
 from miniuw_worksheet_v1 import encoded
 from reconcile_worksheet_D179 import exact
-from worksheet_preliminary_pilot_D205 import paths, pilot_audit, pilot_run
+from worksheet_preliminary_pilot_D205 import paths, pilot_audit, pilot_current, pilot_run
 
 SCENARIO = "Downside"
 OLD_PRICE, NEW_PRICE = 100_000, 140_000
@@ -148,3 +149,47 @@ class PreliminaryInitialEquityTests(unittest.TestCase):
             self.assertEqual(inventory(original_package), original_package_bytes)
             self.assertEqual(pilot_audit(original_package), original)
             self.assertEqual(inventory(FIXTURES), published)
+
+            revised_sources_dir = root / "revised-sources"
+            current = pilot_current(new_package, revised_sources_dir)
+            self.assertEqual(current["vigencia"], "VIGENTE")
+            self.assertEqual(current["ranking"], revised["ranking"])
+            self.assertEqual(current["pdf_sha256"], revised["pdf_sha256"])
+            self.assertEqual(current["current_case_sha256"], current["archived_case_sha256"])
+            self.assertEqual(current["blockers"], [])
+            self.assertEqual(current["decision"], "PENDING")
+            stale = pilot_current(original_package, revised_sources_dir)
+            self.assertEqual(stale["current_case_sha256"], current["current_case_sha256"])
+            self.assertEqual(stale["archived_case_sha256"], original["case_sha256"])
+            self.assertEqual(stale["blockers"], ["El inventario vigente difiere de la revisión archivada"])
+
+            for package, sources_dir in ((original_package, revised_sources_dir),
+                                         (new_package, new_package / "sources"),
+                                         (new_package, root / "missing-current-sources")):
+                blocked = pilot_current(package, sources_dir)
+                self.assertEqual((blocked["state"], blocked["decision"], blocked["vigencia"]),
+                                 ("PENDING", "PENDING", "PENDING"))
+                self.assertEqual(blocked["ranking"], [])
+                self.assertIsNone(blocked["pdf_sha256"])
+                self.assertTrue(blocked["blockers"])
+
+            workbook_path = revised_sources_dir / names["Inputs"]
+            workbook_path.unlink()
+            blocked = pilot_current(new_package, revised_sources_dir)
+            self.assertEqual(blocked["ranking"], [])
+            self.assertIsNone(blocked["pdf_sha256"])
+            self.assertEqual(blocked["blockers"], [f"{names['Inputs']} · falta en la revisión vigente"])
+            workbook_path.write_bytes(book + b" ")
+            blocked = pilot_current(new_package, revised_sources_dir)
+            self.assertEqual(blocked["vigencia"], "PENDING")
+            self.assertEqual(blocked["blockers"], [f"{names['Inputs']} · huella distinta en la revisión vigente"])
+            workbook_path.write_bytes(book)
+            self.assertEqual(pilot_current(new_package, revised_sources_dir), current)
+
+            command = [sys.executable, str(ROOT / "tools/worksheet_preliminary_pilot_D205.py"), "audit"]
+            audited = subprocess.check_output([*command, str(original_package), "--current-source",
+                                               str(revised_sources_dir)])
+            self.assertEqual(json.loads(audited), stale)
+            archived = subprocess.check_output([*command, str(original_package)])
+            self.assertEqual(json.loads(archived)["ranking"], original["ranking"])
+            self.assertEqual(inventory(original_package), original_package_bytes)

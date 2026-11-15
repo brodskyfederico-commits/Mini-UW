@@ -1939,3 +1939,7 @@ El verificador sintético combina ambas reglas de precedencia con RLV Downside a
 ## D213 · Cotejo del aporte inicial tras corregir el precio de compra
 
 El PRELIMINAR sintético D206 mantiene Downside PENDING y fuera del ranking si la planilla y el PDF discrepan en C32 o si el aporte inicial es cero. Con ambas fuentes corregidas y registradas, el aporte de compra pasa de USD 105.000 a USD 147.000. Se cotejan los once movimientos desde el nuevo factor por USD 10, las dos revisiones archivadas, el PDF de una página y el cambio del orden del ranking. Base y el expediente comparador conservan sus resultados. La prueba se incluye en el descubrimiento automático de unittest. El respaldo excluye documentos, flujos y registros privados del 1101. [Cotejo y revisión](docs/workbook-preliminary-revision-D207.md).
+
+## D214 · Vigencia del ranking PRELIMINAR
+
+La opción `audit --current-source` reproduce el paquete archivado y coteja su revisión con el inventario vigente designado y las huellas de sus archivos. Un inventario distinto o una fuente vigente faltante o alterada produce PENDING y retira el ranking y el identificador del PDF vigente. Se prueban las revisiones de C32 en el chequeo automático de D213, el comando público y la conservación del archivo histórico. El respaldo excluye expedientes, flujos y registros de ejecución privados. [Uso y comprobaciones](docs/workbook-preliminary-revision-D207.md).

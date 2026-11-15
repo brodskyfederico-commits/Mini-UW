@@ -209,6 +209,40 @@ def pilot_audit(output):
     return result
 
 
+def pilot_current(output, current_source):
+    """Check a replayed package against the independently designated pilot inventory."""
+    archived = pilot_audit(output)
+    current_sha = None
+    blockers = []
+    try:
+        require(not current_source.resolve().is_relative_to(output.resolve()),
+                "La revisión vigente debe designarse fuera del paquete archivado")
+        raw, index, sources = read_pilot(current_source)
+        current_sha = sha(raw)
+        if current_sha != archived["case_sha256"]:
+            blockers.append("El inventario vigente difiere de la revisión archivada")
+        for name, expected in sorted(index["sha256"].items()):
+            if name not in sources:
+                blockers.append(f"{name} · falta en la revisión vigente")
+            elif sha(sources[name]) != expected:
+                blockers.append(f"{name} · huella distinta en la revisión vigente")
+        if read_file(current_source, INDEX) != raw:
+            blockers.append("El inventario vigente cambió durante el cotejo")
+    except (PackageError, ValidationError, ValueError, OSError) as error:
+        blockers.append(f"No se pudo cotejar la revisión vigente · {error}")
+
+    return dict(
+        vigencia="PENDING" if blockers else "VIGENTE",
+        state="PENDING" if blockers else archived["state"],
+        decision=archived["decision"],
+        ranking=[] if blockers else archived["ranking"],
+        pdf_sha256=None if blockers else archived["pdf_sha256"],
+        archived_case_sha256=archived["case_sha256"],
+        current_case_sha256=current_sha,
+        blockers=blockers,
+    )
+
+
 def main():
     parser = ArgumentParser(description=__doc__)
     commands = parser.add_subparsers(dest="command", required=True)
@@ -217,6 +251,7 @@ def main():
     run.add_argument("output", type=Path)
     audit = commands.add_parser("audit")
     audit.add_argument("output", type=Path)
+    audit.add_argument("--current-source", type=Path, help="Directorio de la revisión vigente designada")
     documentary = commands.add_parser("intake", help="Cotejar un set real de arquitectura sin calcular caja")
     documentary.add_argument("architecture", type=Path)
     documentary.add_argument("--narrative", type=Path)
@@ -231,6 +266,9 @@ def main():
             with args.output.open("xb") as stream:
                 stream.write(encoded(result))
             print(json.dumps({key: result[key] for key in ("state", "decision", "ranking")}, ensure_ascii=False))
+            return
+        if args.command == "audit" and args.current_source is not None:
+            print(json.dumps(pilot_current(args.output, args.current_source), ensure_ascii=False))
             return
         result = pilot_run(args.source, args.output) if args.command == "run" else pilot_audit(args.output)
     except (PackageError, ValidationError, ValueError, OSError) as error:

@@ -39,3 +39,13 @@ El cotejo conserva el blanco como faltante y el cero explícito como valor. Una 
 | Restituir evidencia con valores nuevos | Guardar ambas revisiones, demostrar qué diferencias se explican por el cambio y recalcular el ranking vigente. | Procedimiento definido en D207. D206 prueba un cambio fiscal. D213 vuelve a calcular el ranking ante el nuevo aporte inicial, conserva la revisión anterior y verifica que las discrepancias o un aporte cero dejen el caso fuera del ranking. |
 
 La tabla describe el flujo de revisión diseñado en D207. La corrida D206 acepta los PDF de tablas sintéticas y deja trazas por página y línea. La vinculación de documentos con formatos reales, la revisión de sus términos aplicables y la comparación financiera del primer proyecto se harán cuando exista un expediente autorizado. El PRELIMINAR mantiene el dictamen formal PENDING.
+
+## Vigencia tras una corrección
+
+La auditoría archivada reproduce el expediente con sus propios respaldos y devuelve el resultado de esa revisión. Para consultar el ranking vigente, indicá en `audit` el directorio externo que se designó como revisión vigente. La comparación verifica el inventario completo y las huellas de sus archivos. Un inventario distinto, una fuente ausente o alterada, o un directorio de fuentes dentro del propio expediente deja el cotejo PENDING, con ranking vacío y sin huella de PDF vigente.
+
+```bash
+PYTHONPATH=src:tests python3 tools/worksheet_preliminary_pilot_D205.py audit /tmp/miniuw-pdf-D206 --current-source templates/preliminary-pilot-D206
+```
+
+D214 aplica el cotejo a las dos revisiones sintéticas de C32. La revisión original conserva su ranking histórico. Frente al inventario corregido, el ranking original queda retirado de la consulta vigente. El paquete corregido muestra el orden recalculado y conserva sus flujos por USD 10. La designación es explícita y corresponde al piloto sintético. El dictamen formal sigue PENDING.
