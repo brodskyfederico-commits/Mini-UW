@@ -65,3 +65,18 @@ PYTHONPATH=src:tests python3 tools/miniuw_worksheet_v1.py deliver ./Expediente -
 ```
 
 Designá la revisión verificada en `Vigente.json` y elegí un destino nuevo fuera del expediente. La constancia incluye la huella del PDF y de la revisión. El ensayo automatizado de D216 usa las fuentes sintéticas de D200 y D203. Coteja la salida completa y rechaza el PDF alterado, la revisión anterior, el reemplazo de la revisión durante la entrega y la caja incompleta.
+
+## Corrección financiera y recálculo para la entrega
+
+D217 corrige el costo porcentual de venta en C68 de 4 % a 5 % en Base y de 7 % a 8 % en Downside, con planillas e inventario sintéticos del perfil v32. El cotejo reconstruye el precio bruto desde NOI de salida y cap, y verifica el efecto exacto `precio bruto × cambio de tasa × 10 ÷ aporte inicial` sobre el cobro de venta. Se cotejan las fechas y los importes de cada aporte y cobro.
+
+| Escenario | Aporte extra por USD 10 | Cobro total anterior | Cobro total corregido | Venta neta corregida | Sin recuperar al cierre |
+| --- | ---: | ---: | ---: | --- | ---: |
+| Base | USD 4,87 | USD 19,51 | USD 19,30 | USD 14,92 el 30/12/2028 | USD 0,00 |
+| Downside | USD 8,19 | USD 7,13 | USD 7,03 | USD 4,01 el 30/06/2029 | USD 11,16 |
+
+La prueba coteja ambas planillas antes y después, verifica el bloqueo por C68 al usar el registro anterior y confirma que el comando `deliver` sólo entrega el PDF auditado de la revisión nueva. La decisión real permanece PENDING.
+
+```bash
+PYTHONPATH=src:tests OMP_THREAD_LIMIT=1 python3 -m unittest discover -s tests -p test_worksheet_cash_revision_D217.py -v
+```

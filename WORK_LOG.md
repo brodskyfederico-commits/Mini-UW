@@ -1951,3 +1951,7 @@ El comando `deliver` emite el PDF auditado de una página de la revisión design
 ## D216 · Entrega del PDF integral vigente
 
 El comando `deliver` del flujo integral verifica B16 y la revisión designada antes de entregar un PDF de una página. El archivo vigente conserva importes y fechas por USD 10 en Base y Downside. Se prueba el cambio de PASS a FAIL simulado por criterios, una revisión PENDING con caja completa y el bloqueo de una revisión anterior, una caja incompleta o un PDF alterado. Las pruebas usan fuentes sintéticas y se ejecutan por descubrimiento de unittest. El respaldo excluye expedientes, PDF generados y registros de ejecución. [Uso y alcance](docs/worksheet-technical-acceptance-D200.md).
+
+## D217 · Recálculo y entrega tras corregir C68
+
+La prueba automática registra dos revisiones sintéticas del costo de venta de Base y Downside y concilia su efecto en cada movimiento por USD 10. Las planillas corregidas con huellas antiguas quedan bloqueadas por C68. Al designar la nueva revisión, el comando integral rechaza la anterior y entrega el PDF auditado actualizado. La decisión real sigue PENDING. Los PDF generados y registros de ejecución quedan fuera de GitHub. [Reproducción y resultados](docs/worksheet-technical-acceptance-D200.md).
