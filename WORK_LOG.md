@@ -1967,3 +1967,7 @@ El auditor de sólo lectura coteja 48 datos del expediente sintético por escena
 ## D220 · Cotejo D219 en el cálculo y la entrega integral
 
 El perfil sintético v33 vincula el inventario D219 a la revisión y coteja las lecturas y los vínculos usados antes del dictamen. Un falso verde de Downside retira su capacidad, NOI y caja por USD 10, conserva Base y bloquea la entrega. Una cita de área compartida sin respaldo deja ambos escenarios PENDING. B16 vuelve a ejecutar el cotejo y el control limpio conserva los flujos del perfil fiscal archivado. El respaldo excluye casos reales, PDF generados y registros del VPS. [Pruebas y reproducción](docs/workbook-critical-evidence-gate-D220.md).
+
+## D221 · Recuperación de la cita del DSCR de Downside
+
+El ensayo retira el localizador C72 del resultado de B08 y luego recorre el PDF sintético original en una revisión nueva. El cotejo D219 verifica 48/48, se concilia cada aporte y cobro por USD 10 y se conserva Base. La entrega rechaza tanto el falso verde como una revisión anterior respaldada y sólo exporta la revisión corregida. El respaldo excluye expedientes reales, PDF generados y registros del VPS. [Flujos y reproducción](docs/workbook-dscr-citation-recovery-D221.md).
