@@ -3,7 +3,7 @@ import re
 
 from miniuw_foundation.expense_cash_detail import _json
 from miniuw_foundation.scheduled_expense_case import sha
-from miniuw_worksheet_v1 import MAX_CURRENT_REVISION_BYTES, encoded
+from miniuw_worksheet_v1 import MAX_CURRENT_REVISION_BYTES, WORKBOOK_CRITICAL_EVIDENCE_PROFILE, encoded
 from worksheet_local_sources_D127 import object_or_empty, synthetic_id
 
 
@@ -36,6 +36,8 @@ def case_revision(case):
         payloads["financial_sources"]["native_mapping"] = case["native_mapping"]
     if "rent_inputs" in case:
         payloads["financial_sources"]["rent_inputs"] = case["rent_inputs"]
+    if "critical_evidence_reference_sha256" in case:
+        payloads["financial_sources"]["critical_evidence_reference_sha256"] = case["critical_evidence_reference_sha256"]
     if "criteria_workbook" in case:
         payloads["investment_rules"]["criteria_workbook"] = case["criteria_workbook"]
     return dict(local_revision=local.get("revision"), criteria_revision=case.get("criteria_revision"),
@@ -114,12 +116,13 @@ def audit_revision(result, raw):
     revision_blockers.extend(reason for reason in intake.get("blockers", []) if reason in {
         "criteria_workbook_missing", "criteria_workbook_hash_mismatch", "criteria_workbook_revision_mismatch",
     })
-    if result.get("profile") in ("synthetic_documented_technical_acceptance", "synthetic_documented_florida_tax"):
+    if result.get("profile") in ("synthetic_documented_technical_acceptance", "synthetic_documented_florida_tax",
+                                 WORKBOOK_CRITICAL_EVIDENCE_PROFILE):
         revision_blockers.extend(pdf_revision_blockers(result["local_review"]["bots"]))
         for scenario, review in result["native_mapping_review"]["scenarios"].items():
             if "native_workbook_missing_or_unbound" in review["blockers"]:
                 revision_blockers.append(f"{scenario}:native_workbook_missing_or_unbound")
-    if result.get("profile") == "synthetic_documented_florida_tax":
+    if result.get("profile") in ("synthetic_documented_florida_tax", WORKBOOK_CRITICAL_EVIDENCE_PROFILE):
         for name, view in result["scenarios"].items():
             revision_blockers.extend(f"{name}:{reason}" for reason in view["blockers"] if reason.startswith("M2:"))
     if current is None:

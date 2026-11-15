@@ -1963,3 +1963,7 @@ Ocho pruebas sintéticas comparan el RLV Downside N/A por defecto y el FAIL basa
 ## D219 · Auditoría de falsos verdes por dato crítico
 
 El auditor de sólo lectura coteja 48 datos del expediente sintético por escenario, con valores, citas, huellas y revisión designada. El control reproducido por B16 pasa 48/48, con cero falsos verdes. Se detectan faltas de respaldo inyectadas en cada uno de los 48 datos y se registran los bots y motivos. Un faltante correctamente marcado queda PENDING. El dictamen real sigue PENDING. El respaldo excluye expedientes reales, archivos generados y registros del VPS. [Alcance y reproducción](docs/workbook-critical-evidence-audit-D219.md).
+
+## D220 · Cotejo D219 en el cálculo y la entrega integral
+
+El perfil sintético v33 vincula el inventario D219 a la revisión y coteja las lecturas y los vínculos usados antes del dictamen. Un falso verde de Downside retira su capacidad, NOI y caja por USD 10, conserva Base y bloquea la entrega. Una cita de área compartida sin respaldo deja ambos escenarios PENDING. B16 vuelve a ejecutar el cotejo y el control limpio conserva los flujos del perfil fiscal archivado. El respaldo excluye casos reales, PDF generados y registros del VPS. [Pruebas y reproducción](docs/workbook-critical-evidence-gate-D220.md).

@@ -9,7 +9,7 @@ from miniuw_foundation.inputsheet import inspect_synthetic_input_sheet
 from miniuw_foundation.scheduled_expense_case import sha
 from miniuw_worksheet_v1 import (
     CRITERIA_FILE, DOWNSIDE_WORKBOOK_FILE, EVIDENCE_FILE, MAX_FILE_BYTES, PLAN_FILE, WORKBOOK_FILE,
-    TECHNICAL_SCHEMAS, encoded, write_package,
+    TECHNICAL_SCHEMAS, WORKBOOK_CRITICAL_EVIDENCE_SCHEMA, encoded, write_package,
 )
 from preview_lorena_criteria_D192 import read_cells
 from worksheet_local_sources_D127 import synthetic_id
@@ -68,6 +68,9 @@ def prepare(settings, registered):
     if not synthetic_id(registered.get("revision")) or set(registered["files"]) != set(SOURCES.values()):
         raise ValidationError("invalid_synthetic_registration")
     case = deepcopy(settings)
+    if case["schema"] == WORKBOOK_CRITICAL_EVIDENCE_SCHEMA:
+        from audit_worksheet_critical_evidence_D219 import REFERENCE
+        case["critical_evidence_reference_sha256"] = sha(REFERENCE.read_bytes())
     files = registered["files"]
 
     def expected(filename):

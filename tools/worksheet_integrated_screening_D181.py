@@ -341,7 +341,7 @@ def display_metric(row, cash):
     return f"{value} [{RESULT_LABELS[row['state']]}]"
 
 
-def render_integrated(views, screening, *, technical_acceptance=False, florida_tax=False):
+def render_integrated(views, screening, *, technical_acceptance=False, florida_tax=False, critical_evidence=False):
     lines = [(f"Dictamen simulado {screening['simulation_result']} | Decisión real PENDING | Retorno personal LP/GP PENDING", True),
              ("Equity agregado del proyecto antes de impuestos personales. Importes en USD por USD 10 iniciales.", False)]
     dated = defaultdict(dict)
@@ -353,6 +353,8 @@ def render_integrated(views, screening, *, technical_acceptance=False, florida_t
                       if capacity.get("capacity_state") == "blocked" else "entradas o fuentes sin confirmar")
             if florida_tax and any(blocker.startswith("M2:") for blocker in view["blockers"]):
                 reason = "evidencia fiscal M2 faltante o incompatible"
+            if critical_evidence and any(blocker.startswith("B12:D219:") for blocker in view["blockers"]):
+                reason = "respaldo documental D219 pendiente"
             lines.append((f"{name} | Caja PENDING: {reason}", True))
             continue
         events = cash["events"]
@@ -418,6 +420,8 @@ def render_integrated(views, screening, *, technical_acceptance=False, florida_t
         label = "D200 | Base y Downside"
     if florida_tax:
         label = "D203 | Base y Downside"
+    if critical_evidence:
+        label = "D220 | Base y Downside"
     return render_page(label, lines, 9 if definition_screening else 10,
                        "MINI-UW | SI INVIERTO USD 10, ¿CUÁNTO COBRO Y CUÁNDO?",
                        "Piloto sintético | Aportes, cobros, riesgos y métricas del dictamen")

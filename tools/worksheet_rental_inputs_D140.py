@@ -12,7 +12,7 @@ from miniuw_foundation.rental_noi import assemble_rental_noi
 from miniuw_foundation.rental_operations import SCHEMA as RENTAL_SCHEMA, produce_rental_operations
 from miniuw_foundation.scheduled_expense_case import sha
 from miniuw_foundation.screening import SCHEMA as SCREENING_SCHEMA, simulate_screening
-from miniuw_worksheet_v1 import encoded
+from miniuw_worksheet_v1 import WORKBOOK_CRITICAL_EVIDENCE_PROFILE, encoded
 from plan_refinance_D108 import BANK_PERIOD, SOURCE as FINANCING_PROFILE, VALUE_PERIOD, financed_cash
 from plan_return_D107 import DATES, FORWARD_PERIOD, INITIAL, OPERATING_PERIOD, SALE_DATE, template
 from worksheet_local_sources_D127 import object_or_empty, synthetic_id
@@ -605,7 +605,7 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
                       include_alternatives=False, evidence_milestone=None, require_market_evidence=False,
                       require_formula_review=False, require_supplemental_scope=False, require_template_identity=False,
                       require_debt_yield=False, integrated_screening=False, definition_screening=False,
-                      criteria_review=None, technical_acceptance=False, florida_tax=False):
+                      criteria_review=None, technical_acceptance=False, florida_tax=False, critical_evidence=None):
     hashes = object_or_empty(case.get("workbook_sha256"))
     review = review_native_mapping(case.get("native_mapping"), workbooks, hashes, calculation_fields=FIELDS,
                                    require_template_identity=require_template_identity)
@@ -642,6 +642,11 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
                                       sale_only_on_capacity_block=sale_only_on_capacity_block)
 
     views = {name: run_scenario(name, review["scenarios"][name]) for name in SCENARIOS}
+    evidence_gate = None
+    if critical_evidence is not None:
+        from worksheet_critical_evidence_D220 import withhold_unverified_cash
+        reference, sources = critical_evidence
+        views, evidence_gate = withhold_unverified_cash(views, document_review, revision, case_sha256, reference, sources)
     workbook_blockers = review["blockers"]
     if include_alternatives:
         from worksheet_alternatives_D155 import SLOT_FIELDS, evaluate_alternatives
@@ -684,7 +689,8 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
                                              revision=revision, documents=document_review, case_sha256=case_sha256)
     if integrated_screening:
         from worksheet_integrated_screening_D181 import render_integrated
-        pdf = render_integrated(views, screening, technical_acceptance=technical_acceptance, florida_tax=florida_tax)
+        pdf = render_integrated(views, screening, technical_acceptance=technical_acceptance, florida_tax=florida_tax,
+                                critical_evidence=evidence_gate is not None)
     else:
         pdf = render(views, simulation, include_commercial=include_commercial, include_utilities=include_utilities,
                      include_development=include_development, include_budget=include_budget, include_calendar=include_calendar,
@@ -799,6 +805,14 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
         from worksheet_florida_tax_D203 import PROFILE
         profile = PROFILE
         pipeline["pipeline"]["version_tests"]["suite"] = "check_worksheet_florida_tax_D203.py"
+    if evidence_gate is not None:
+        profile = WORKBOOK_CRITICAL_EVIDENCE_PROFILE
+        pipeline["critical_evidence_review"] = evidence_gate
+        stages["D03"]["critical_evidence_by_scenario"] = {
+            name: "PENDING" if name in evidence_gate["affected_scenarios"] else "checked_synthetic"
+            for name in SCENARIOS
+        }
+        pipeline["pipeline"]["version_tests"]["suite"] = "test_worksheet_critical_evidence_gate_D220.py"
     return dict(profile=profile, state=state,
                 case_sha256=case_sha256, decision="PENDING", simulation_result=simulation,
                 real_decisions_enabled=False, deployment_enabled=False, personal_investor_return=None,

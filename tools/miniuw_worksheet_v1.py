@@ -90,7 +90,10 @@ WORKBOOK_INTEGRATED_SCREENING_SCHEMA = "miniuw.synthetic-native-rental-inputs.v2
 WORKBOOK_DEFINITION_SCREENING_SCHEMA = "miniuw.synthetic-native-rental-inputs.v30"
 WORKBOOK_TECHNICAL_ACCEPTANCE_SCHEMA = "miniuw.synthetic-native-rental-inputs.v31"
 WORKBOOK_FLORIDA_TAX_SCHEMA = "miniuw.synthetic-native-rental-inputs.v32"
-TECHNICAL_SCHEMAS = (WORKBOOK_TECHNICAL_ACCEPTANCE_SCHEMA, WORKBOOK_FLORIDA_TAX_SCHEMA)
+WORKBOOK_CRITICAL_EVIDENCE_SCHEMA = "miniuw.synthetic-native-rental-inputs.v33"
+WORKBOOK_CRITICAL_EVIDENCE_PROFILE = "synthetic_documented_florida_tax_with_critical_evidence"
+FLORIDA_TAX_SCHEMAS = (WORKBOOK_FLORIDA_TAX_SCHEMA, WORKBOOK_CRITICAL_EVIDENCE_SCHEMA)
+TECHNICAL_SCHEMAS = (WORKBOOK_TECHNICAL_ACCEPTANCE_SCHEMA, *FLORIDA_TAX_SCHEMAS)
 DEFINITION_SCHEMAS = (WORKBOOK_DEFINITION_SCREENING_SCHEMA, *TECHNICAL_SCHEMAS)
 EVIDENCE_MILESTONES = {WORKBOOK_EVIDENCE_PDF_SCHEMA: "D156", WORKBOOK_CONSTRUCTION_PDF_SCHEMA: "D157",
                        WORKBOOK_SCANNED_EVIDENCE_SCHEMA: "D158", WORKBOOK_ORIENTED_EVIDENCE_SCHEMA: "D159",
@@ -219,6 +222,17 @@ def build_results(raw, *, workbook_raw=None, downside_workbook_raw=None, current
             from worksheet_documented_finance_D147 import review_documents
             document_review = review_documents(case, plan_raw, evidence_raw=evidence_raw,
                                                evidence_milestone=evidence_milestone)
+        critical_evidence = None
+        if schema == WORKBOOK_CRITICAL_EVIDENCE_SCHEMA:
+            from audit_worksheet_critical_evidence_D219 import REFERENCE
+            reference = REFERENCE.read_bytes()
+            require(case.get("critical_evidence_reference_sha256") == sha(reference),
+                    "El inventario D219 no coincide con la revisión registrada")
+            critical_evidence = (reference, {
+                "case.json": raw, CURRENT_REVISION_FILE: current_revision_raw,
+                WORKBOOK_FILE: workbook_raw, DOWNSIDE_WORKBOOK_FILE: downside_workbook_raw,
+                PLAN_FILE: plan_raw, EVIDENCE_FILE: evidence_raw,
+            })
         return build_rental_case(case, sha(raw), {"Base": workbook_raw, "Downside": downside_workbook_raw},
                                  current_revision_raw, include_commercial=schema != WORKBOOK_RENTAL_INPUTS_SCHEMA,
                                  include_utilities=schema in WORKBOOK_RENTAL_SCHEMAS[2:],
@@ -243,8 +257,8 @@ def build_results(raw, *, workbook_raw=None, downside_workbook_raw=None, current
                                  integrated_screening=schema in (WORKBOOK_INTEGRATED_SCREENING_SCHEMA, *DEFINITION_SCHEMAS),
                                  definition_screening=schema in DEFINITION_SCHEMAS,
                                  technical_acceptance=schema in TECHNICAL_SCHEMAS,
-                                 florida_tax=schema == WORKBOOK_FLORIDA_TAX_SCHEMA,
-                                 criteria_review=criteria_review)
+                                 florida_tax=schema in FLORIDA_TAX_SCHEMAS,
+                                 criteria_review=criteria_review, critical_evidence=critical_evidence)
     yield_metrics = schema in (WORKBOOK_YIELD_PILOT_SCHEMA, *WORKBOOK_FUNDING_PILOT_SCHEMAS)
     interval_irr = schema == WORKBOOK_IRR_PILOT_SCHEMA or yield_metrics
     extended = schema == WORKBOOK_EXTENDED_PILOT_SCHEMA or interval_irr
@@ -428,6 +442,9 @@ def status(operation, result):
                     decision=result["decision"], pdf_sha256=result["pdf_sha256"], page_count=1)
     if "simulation_result" in result:
         response["simulation_result"] = result["simulation_result"]
+    if "critical_evidence_review" in result:
+        evidence = result["critical_evidence_review"]
+        response["critical_evidence"] = {key: evidence[key] for key in ("status", "counts", "affected_scenarios")}
     if "pipeline" in result and operation == "verified_source_first":
         response["audit_bot"] = "B16"
     return response
@@ -488,8 +505,14 @@ def deliver_package(directory, output, current_revision):
             "La entrega requiere un destino nuevo fuera del expediente y de la revisión")
     revision = read_current_revision(current_revision, directory)
     files, result = _audit_package(directory)
-    require(result["profile"] in ("synthetic_documented_technical_acceptance", "synthetic_documented_florida_tax"),
+    require(result["profile"] in ("synthetic_documented_technical_acceptance", "synthetic_documented_florida_tax",
+                                  WORKBOOK_CRITICAL_EVIDENCE_PROFILE),
             "La entrega requiere el perfil sintético de aceptación integral o fiscal")
+    if result["profile"] == WORKBOOK_CRITICAL_EVIDENCE_PROFILE:
+        evidence = result["critical_evidence_review"]
+        require(evidence["status"] == "PASSED",
+                "Cotejo D219 PENDING: " + ", ".join(
+                    field for field, row in evidence["fields"].items() if row["status"] != "VERIFIED_GREEN"))
     review = audit_revision(result, revision)
     require(review["vigencia"] == "VIGENTE",
             f'La revisión no está vigente: {", ".join(review["revision_blockers"])}')
