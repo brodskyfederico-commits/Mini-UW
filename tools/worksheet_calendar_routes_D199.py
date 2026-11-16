@@ -1,11 +1,15 @@
 """Calculate audited synthetic cash variants for the D197 quarterly calendar checks."""
 from datetime import date
 from fractions import Fraction
+from hashlib import sha256
 
 from miniuw_foundation.debt_service import rational
+from miniuw_worksheet_v1 import encoded
 from plan_return_D107 import FORWARD_PERIOD, OPERATING_PERIOD
+from worksheet_annual_coc import SCHEMA as ANNUAL_COC_SCHEMA, quantity, verify_annual_coc
 from worksheet_exit_pricing_D151 import RULES as SALE_PRICING_RULES
 from worksheet_local_sources_D127 import day, number, object_or_empty, synthetic_id
+from worksheet_performance_policy_D184 import AFTER_RESERVES
 from worksheet_project_calendar_D145 import offset
 
 
@@ -70,12 +74,58 @@ def phased_schedule(view, terms, principal):
                 annual_sizing_service=installment * loan["payments_per_year"])
 
 
+def confirmed_period_amounts(records, dates):
+    return (isinstance(records, dict) and set(records) == set(dates) and all(
+        isinstance(row, dict) and synthetic_id(row.get("source_ref")) and number(row.get("value")) is not None
+        for row in records.values()))
+
+
+def annual_route_coc(flows, payments, quarterly_noi, reserve, scale, refi_date, date_of_sale, refinance, source_ref):
+    """Feed D232 the same quarterly NOI, debt and normalized cash as this route."""
+    periods = []
+    start = refi_date
+    for payment in payments:
+        end = payment["date"]
+        source = quarterly_noi[end]
+        noi = number(source["value"]) - (reserve if end == date_of_sale else 0)
+        periods.append(dict(start=start, end=end, noi_after_reserves=rational(noi), source_ref=source["source_ref"]))
+        start = end
+    schedule = [dict(date=row["date"], scheduled_service_due=rational(row["service"]),
+                     interest_due=rational(row["interest"]), principal_due=rational(row["principal"]),
+                     balloon_due=rational(row["balloon"])) for row in payments]
+    events = []
+    for index, row in enumerate(flows):
+        when, stage = row["date"], row["stage"]
+        if row["contribution"]:
+            events.append(dict(date=when, category="initial_capital" if index == 0 else "additional_capital",
+                               amount=rational(row["contribution"])))
+        if row["receipt"]:
+            category = {"refinance": "net_refinance_distribution", "operation": "operating_distribution",
+                        "sale": "net_sale_distribution"}[stage]
+            events.append(dict(date=when, category=category, amount=rational(row["receipt"])))
+    view = dict(project_calendar=dict(refinance_date=refi_date, sale_date=date_of_sale),
+                cash_per_usd_10=dict(scale_factor=rational(scale), reference_amount=rational(10), events=events),
+                construction_refinance=dict(date=refi_date, blockers=[], net_equity_distribution=rational(refinance),
+                                            projected_cash_in_required=rational(0)),
+                permanent_loan=dict(quote_state="computed_synthetic", origination_date=refi_date, payments_per_year=4,
+                                    projected_schedule=schedule, loan_run_sha256=sha256(encoded(schedule)).hexdigest()))
+    proof = verify_annual_coc(view, dict(schema=ANNUAL_COC_SCHEMA, noi_basis=AFTER_RESERVES,
+                                       source_ref=source_ref, quarters=periods))
+    operating = sum((row["receipt"] - row["contribution"] for row in flows if row["stage"] == "operation"), Fraction())
+    if proof["state"] != "PENDING" and quantity(proof["cash_available"]) * scale != operating:
+        raise ValueError("Annual cash-on-cash does not reconcile to the operational ledger")
+    return proof
+
+
 def route_cash(view, terms):
     """Reconcile construction, operation and terminal equity on explicit quarterly cutoffs."""
     mode = terms.get("route")
     if mode not in ("interest_only_then_amortize", "sell_without_refinance") or not synthetic_id(terms.get("source_ref")):
         return pending("calendar_route_unconfirmed" if view.get("cash_per_usd_10") is not None
                        else "audited_input_cash_unavailable")
+    quarterly = "quarterly_noi_before_reserves" in terms
+    if quarterly and mode != "interest_only_then_amortize":
+        return pending("quarterly_noi_route_requires_refinancing")
     if mode == "interest_only_then_amortize" and any(
             view.get(key) is None for key in ("cash_per_usd_10", "permanent_loan", "construction_refinance")):
         return pending("audited_input_cash_unavailable")
@@ -98,7 +148,7 @@ def route_cash(view, terms):
         fixed_sale_cost = Fraction()
     else:
         fixed_sale_cost = number(object_or_empty(fixed_terms).get("value"))
-    if (operating_noi is None or exit_cap is None or exit_cap <= 0 or sale_cost_fraction is None
+    if ((not quarterly and operating_noi is None) or exit_cap is None or exit_cap <= 0 or sale_cost_fraction is None
             or not 0 <= sale_cost_fraction <= 1 or fixed_sale_cost is None or fixed_sale_cost < 0):
         return pending("audited_input_cash_unavailable")
     # Keep the documented stabilized year and take its cash at the original cutoff.
@@ -188,11 +238,17 @@ def route_cash(view, terms):
         forward = terms.get("delayed_forward_noi")
         period_start = offset(day(sale_date).replace(day=1), 1)
         expected_window = f"{period_start}/{offset(period_start, 12)}"
-        interim = terms.get("intermediate_net_operating_cash")
+        interim = terms.get("quarterly_noi_before_reserves" if quarterly else "intermediate_net_operating_cash")
         interim_dates = [row["date"] for row in payments if row["date"] != cash_date]
-        if (not isinstance(interim, dict) or set(interim) != set(interim_dates) or any(
-                not isinstance(row, dict) or not synthetic_id(row.get("source_ref")) or number(row.get("value")) is None
-                for row in interim.values())):
+        if quarterly:
+            try:
+                expected = [offset(start, n).isoformat() for n in (3, 6, 9, 12)]
+            except ValueError:
+                return pending("verified_quarterly_anniversary_grid_required")
+            if (reserve.get("rules", {}).get("period_months") != 12 or [r["date"] for r in payments] != expected
+                    or "intermediate_net_operating_cash" in terms or not confirmed_period_amounts(interim, expected)):
+                return pending("four_documented_noi_quarters_after_refinancing_required")
+        elif not confirmed_period_amounts(interim, interim_dates):
             return pending("delayed_exit_interim_cash_unconfirmed")
         if (not isinstance(forward, dict) or not synthetic_id(forward.get("source_ref"))
                 or forward.get("period_ref") != expected_window or forward.get("noi_basis") != "before_replacement_reserves"
@@ -201,6 +257,8 @@ def route_cash(view, terms):
         forward_noi = number(forward["value"])
         reference = dict(schedule=payments, capacity=capacity, requested_principal=request,
                          forward_noi_source=forward, interim_cash=interim)
+        if quarterly:
+            reference["quarterly_noi_source"] = reference.pop("interim_cash")
         sale_principal = payments[-1]["closing"]
     else:
         sale_date = original["sale_date"]
@@ -218,9 +276,9 @@ def route_cash(view, terms):
 
     for payment in payments:
         when = payment["date"]
-        at_stabilized_close = when == cash_date
+        at_stabilized_close = when == cash_date and not quarterly
         net_income = operating_noi if at_stabilized_close else number(interim[when]["value"])
-        deposit_today = deposit if at_stabilized_close else Fraction()
+        deposit_today = deposit if at_stabilized_close or quarterly and when == sale_date else Fraction()
         net = net_income - payment["service"] - deposit_today
         contribution, distribution = max(Fraction(), -net), max(Fraction(), net)
         restricted_close = reserve_balance + deposit_today
@@ -254,7 +312,11 @@ def route_cash(view, terms):
                   receipt=row["distribution"] * scale) for row in rows if row["contribution"] or row["distribution"]]
     contributed = sum(flow["contribution"] for flow in flows)
     received = sum(flow["receipt"] for flow in flows)
-    return dict(state="calculated_synthetic", route=mode, source_ref=terms["source_ref"], tax=tax,
-                debt=reference, sale=dict(date=sale_date, gross=gross, cost=cost, principal_paid=sale_principal),
-                cash_by_period=rows, cash_per_usd_10=dict(events=flows, additional=contributed - 10,
-                                                       received=received, unrecovered=max(Fraction(), contributed - received)))
+    result = dict(state="calculated_synthetic", route=mode, source_ref=terms["source_ref"], tax=tax,
+                  debt=reference, sale=dict(date=sale_date, gross=gross, cost=cost, principal_paid=sale_principal),
+                  cash_by_period=rows, cash_per_usd_10=dict(events=flows, additional=contributed - 10,
+                                                           received=received, unrecovered=max(Fraction(), contributed - received)))
+    if quarterly:
+        result["annual_post_refi_coc"] = annual_route_coc(flows, payments, interim, deposit, scale,
+                                                       start.isoformat(), sale_date, cash_out, terms["source_ref"])
+    return result
