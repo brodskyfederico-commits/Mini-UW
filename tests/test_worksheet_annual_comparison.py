@@ -19,6 +19,7 @@ from test_worksheet_annual_holding import ROUTE, source_files
 from test_worksheet_annual_sale_without_refi import SALE, settings_with_sale
 from worksheet_annual_coc import quantity as amount
 from worksheet_annual_comparison import annual_cash, deliver_annual_comparison, render_page
+from worksheet_annual_crossover_sale_price import sale_prices
 from worksheet_annual_discount_crossover import crossover_by_scenario, shown_rate
 from worksheet_intake_D198 import assemble, register
 from worksheet_sale_rate_grid_D84 import money
@@ -87,6 +88,34 @@ class WorksheetAnnualComparisonTests(TestCase):
                 self.assertEqual(pv("Con refi", Fraction()) - pv("Sin refi", Fraction()),
                                  amount(row["net_nominal_with_refi"]) - amount(row["net_nominal_without_refi"]))
                 self.assertEqual(pv("Sin refi", (lower + upper) / 2), amount(row["npv_at_midpoint_without_refi"]))
+
+            prices = sale_prices(model, annual_cash(model, (ROUTE, SALE)), (ROUTE, SALE))
+            expected = {"Base": Fraction("4749316.96"), "Downside": Fraction("8919058.39")}
+            for name, row in prices.items():
+                origin = date.fromisoformat(row["cross"]["purchase_date"])
+                for variant, label in (("Con refi", ROUTE), ("Sin refi", SALE)):
+                    path = row["paths"][variant]
+                    self.assertEqual(amount(path["minimum_gross_at_cents"]), expected[name])
+                    self.assertLess(amount(path["below_terminal_upper"]), 0)
+                    self.assertGreaterEqual(amount(path["minimum_terminal_lower"]), 0)
+                    route = model["calendar_checks"][name][label]
+                    source = route["cash_by_period"][0]
+                    sale = date.fromisoformat(route["sale"]["date"])
+                    terminal_month = (sale.year - origin.year) * 12 + sale.month - origin.month
+                    nominal_gross = amount(route["sale"]["gross"])
+                    commission = amount(model["scenarios"][name]["valuation_and_sale"]["sale_cost_fraction"])
+                    for endpoint in ("monthly_rate_lower", "monthly_rate_upper"):
+                        rate = amount(row["cross"][endpoint])
+                        upfront = amount(source["contribution"])
+                        future_cash = Fraction()
+                        for event in route["cash_per_usd_10"]["events"]:
+                            when = date.fromisoformat(event["date"])
+                            elapsed = (sale.year - when.year) * 12 + sale.month - when.month
+                            self.assertLessEqual(elapsed, terminal_month)
+                            future_cash += (amount(event["receipt"]) - amount(event["contribution"])) * (1 + rate) ** elapsed
+                        reach = future_cash + (expected[name] - nominal_gross) * (1 - commission) * 10 / upfront
+                        self.assertLess(reach - Fraction(1, 100) * (1 - commission) * 10 / upfront, 0)
+                        self.assertGreaterEqual(reach, 0)
 
             changed = deepcopy(model)
             changed["calendar_checks"]["Base"][SALE]["sale"]["gross"] = rational(1)

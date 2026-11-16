@@ -603,7 +603,7 @@ def main():
     deliver.add_argument("directory", type=Path)
     deliver.add_argument("--current-revision", required=True, type=Path)
     deliver.add_argument("--output", required=True, type=Path)
-    for name in ("compare-annual", "compare-annual-crossover"):
+    for name in ("compare-annual", "compare-annual-crossover", "compare-annual-crossover-sale"):
         annual = subcommands.add_parser(name)
         annual.add_argument("directory", type=Path)
         annual.add_argument("--current-revision", required=True, type=Path)
@@ -642,6 +642,11 @@ def main():
 
             result = deliver_annual_crossover(args.directory, args.output, args.current_revision,
                                               (args.with_refi, args.without_refi))
+        elif args.command == "compare-annual-crossover-sale":
+            from worksheet_annual_crossover_sale_price import deliver_annual_crossover_sale
+
+            result = deliver_annual_crossover_sale(args.directory, args.output, args.current_revision,
+                                                   (args.with_refi, args.without_refi))
         else:
             from worksheet_preflight_D116 import preflight as inspect_workbook
             result = inspect_workbook(read_workbook(args.workbook), args.deal_id, args.snapshot)

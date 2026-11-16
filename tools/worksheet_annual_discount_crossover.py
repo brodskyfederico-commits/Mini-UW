@@ -34,7 +34,7 @@ def exact_rows(values):
     return [dict(net=rational(value)) for value in values]
 
 
-def bracket_crossover(relative):
+def bracket_crossover(relative, *, width=Fraction(1, 10**10)):
     """Prove a unique nonnegative crossing for an advance followed by shortfalls."""
     require(relative and relative[0] > 0 and all(value <= 0 for value in relative[1:]) and sum(relative) < 0,
             "Cruce PENDING: la caja diferencial no prueba un cruce único con adelanto inicial")
@@ -42,7 +42,8 @@ def bracket_crossover(relative):
     lo, hi = Fraction(), Fraction(1, 100)
     while present_value(observations, hi) < 0:
         hi *= 2
-    while hi - lo > Fraction(1, 10**10):
+    require(width > 0, "La precisión del intervalo debe ser positiva")
+    while hi - lo > width:
         middle = (lo + hi) / 2
         if present_value(observations, middle) < 0:
             lo = middle
@@ -51,7 +52,7 @@ def bracket_crossover(relative):
     return lo, hi
 
 
-def crossover_by_scenario(table):
+def crossover_by_scenario(table, *, width=Fraction(1, 10**10)):
     result = {}
     for scenario in SCENARIOS:
         with_refi, without = (table[scenario, key] for key in ("Con refi", "Sin refi"))
@@ -61,7 +62,7 @@ def crossover_by_scenario(table):
         with_net, without_net = (monthly_flows(route, origin) for route in (with_refi, without))
         delta = [left - right for left, right in zip(with_net, without_net, strict=True)]
         first = next((index for index, value in enumerate(delta) if value), len(delta))
-        lo, hi = bracket_crossover(delta[first:])
+        lo, hi = bracket_crossover(delta[first:], width=width)
         refi, sale = exact_rows(with_net), exact_rows(without_net)
 
         def advantage(rate):
