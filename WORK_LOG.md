@@ -2003,3 +2003,7 @@ Pasaron 1649 pruebas unitarias en 100 min 05 s, 26 suites de referencia y la ver
 ## D229 · Dictamen real PENDING en la hoja de entrega
 
 La hoja de una página muestra los cobros por USD 10 y las métricas calculadas. Los umbrales, comparaciones y el dictamen de ensayo se conservan en el expediente. El cotejo con D227 confirmó los diez movimientos de Base y los trece de Downside exactos y la misma TIR negativa de Downside. Pasaron 26 pruebas dirigidas, la aceptación D200 y la reproducción D227 en el VPS. Los expedientes anteriores se auditan con su formato original y la entrega vigente reproduce la presentación corregida con ambas huellas en la constancia. El 1101 real sigue PENDING. [Entrega vigente](docs/worksheet-technical-acceptance-D200.md#entrega-vigente-del-informe-integral).
+
+## D230 · Configuración versionada de criterios de Lorena
+
+La receta compila diez métricas y 29 umbrales exactos desde el DOCX verificado, con operadores, unidades, bases y localizadores. Pasaron 46 pruebas dirigidas en el VPS y cinco ensayos por línea de comandos para PASS, ambos HOLD, FAIL y PENDING ante un FAIL y un faltante material juntos. El dictamen operativo y el retorno histórico del 1101 siguen PENDING. GitHub conserva la receta y los ensayos reproducibles. Los valores compilados y los registros del VPS quedan locales. [Criterios y reproducción](docs/lorena-screening-D230.md).
