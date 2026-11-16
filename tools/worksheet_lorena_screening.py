@@ -9,7 +9,8 @@ from check_worksheet_return_metrics_D167 import quarterly_cash
 from miniuw_foundation.debt_service import _fraction, rational
 from miniuw_foundation.drafts import ValidationError
 from miniuw_foundation.lorena_screening import BASES, CASE_SCHEMA, RLV, SCENARIOS, encode, prepare_configuration, rehearse
-from miniuw_worksheet_v1 import TECHNICAL_SCHEMAS, _audit_package, read_current_revision, read_package
+from miniuw_worksheet_v1 import (TECHNICAL_SCHEMAS, _audit_package, publish_current_pdf, read_current_revision,
+                                read_package, require_delivery_evidence, require_pdf_destination)
 from worksheet_definition_screening_D193 import ECONOMIC, PRICE_BASIS, SPREAD, YOC
 from worksheet_annual_coc import equity_at_refinance, verify_annual_coc
 from worksheet_local_sources_D127 import object_or_empty, synthetic_id
@@ -202,7 +203,11 @@ def calculated_case(result, case, configuration, configuration_raw):
     return observed, proof
 
 
-def rehearse_workbook(directory, current_revision, recipe, source, configuration_raw, *, route=None):
+def rehearse_workbook(directory, current_revision, recipe, source, configuration_raw, *, route=None, pdf_output=None):
+    if pdf_output is not None:
+        if route is None:
+            raise ValidationError("Seleccioná una ruta anual para exportar su PDF")
+        require_pdf_destination(directory, pdf_output, current_revision)
     revision = read_current_revision(current_revision, directory)
     files, result = _audit_package(directory)
     case = json.loads(files["case.json"])
@@ -229,6 +234,15 @@ def rehearse_workbook(directory, current_revision, recipe, source, configuration
     verdict = rehearse(recipe, source, configuration_raw, encode(observed))
     if read_package(directory) != files or read_current_revision(current_revision, directory) != revision:
         raise ValidationError("worksheet or designated revision changed during comparison")
-    return verdict | dict(observed_metrics=observed["metric_values"], source=proof,
-                          source_results_sha256=sha256(files["results.json"]).hexdigest(),
-                          pdf_sha256=result["pdf_sha256"], current_revision=audit["current_revision"]) | annual_summary
+    receipt = verdict | dict(observed_metrics=observed["metric_values"], source=proof,
+                             source_results_sha256=sha256(files["results.json"]).hexdigest(),
+                             pdf_sha256=result["pdf_sha256"], current_revision=audit["current_revision"]) | annual_summary
+    if pdf_output is not None:
+        from worksheet_annual_route_report import render_annual_route
+
+        require_delivery_evidence(result)
+        pdf = render_annual_route(receipt)
+        publish_current_pdf(directory, files, current_revision, revision, pdf_output, pdf)
+        receipt["annual_pdf"] = dict(page_count=1, sha256=sha256(pdf).hexdigest(),
+                                    revision_sha256=sha256(revision).hexdigest())
+    return receipt

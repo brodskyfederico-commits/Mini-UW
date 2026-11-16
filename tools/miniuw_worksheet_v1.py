@@ -513,25 +513,43 @@ def read_current_revision(path, package):
     return raw
 
 
-def deliver_package(directory, output, current_revision):
-    from worksheet_revision_D128 import audit_revision
-
+def require_pdf_destination(directory, output, current_revision):
     require(output.suffix.lower() == ".pdf" and output.parent.is_dir(),
             "Elegí un archivo PDF en un directorio existente")
     require(not output.exists() and not output.is_symlink()
             and not output.resolve().is_relative_to(directory.resolve())
             and output.resolve() != current_revision.resolve(),
             "La entrega requiere un destino nuevo fuera del expediente y de la revisión")
-    revision = read_current_revision(current_revision, directory)
-    files, result = _audit_package(directory)
-    require(result["profile"] in ("synthetic_documented_technical_acceptance", "synthetic_documented_florida_tax",
-                                  WORKBOOK_CRITICAL_EVIDENCE_PROFILE),
-            "La entrega requiere el perfil sintético de aceptación integral o fiscal")
+
+
+def require_delivery_evidence(result):
     if result["profile"] == WORKBOOK_CRITICAL_EVIDENCE_PROFILE:
         evidence = result["critical_evidence_review"]
         require(evidence["status"] == "PASSED",
                 "Cotejo D219 PENDING: " + ", ".join(
                     field for field, row in evidence["fields"].items() if row["status"] != "VERIFIED_GREEN"))
+
+
+def publish_current_pdf(directory, files, current_revision, revision, output, pdf):
+    with TemporaryDirectory(dir=output.parent, prefix=".miniuw-delivery-") as temp:
+        prepared = Path(temp) / "MiniUW_Resumen.pdf"
+        prepared.write_bytes(pdf)
+        require(read_package(directory) == files, "El expediente cambió durante la entrega")
+        require(read_current_revision(current_revision, directory) == revision,
+                "La revisión vigente cambió durante la entrega")
+        os.link(prepared, output)
+
+
+def deliver_package(directory, output, current_revision):
+    from worksheet_revision_D128 import audit_revision
+
+    require_pdf_destination(directory, output, current_revision)
+    revision = read_current_revision(current_revision, directory)
+    files, result = _audit_package(directory)
+    require(result["profile"] in ("synthetic_documented_technical_acceptance", "synthetic_documented_florida_tax",
+                                  WORKBOOK_CRITICAL_EVIDENCE_PROFILE),
+            "La entrega requiere el perfil sintético de aceptación integral o fiscal")
+    require_delivery_evidence(result)
     review = audit_revision(result, revision)
     require(review["vigencia"] == "VIGENTE",
             f'La revisión no está vigente: {", ".join(review["revision_blockers"])}')
@@ -549,13 +567,7 @@ def deliver_package(directory, output, current_revision):
                                 florida_tax=result["profile"] != "synthetic_documented_technical_acceptance",
                                 critical_evidence=result["profile"] == WORKBOOK_CRITICAL_EVIDENCE_PROFILE,
                                 delivery_report=True)
-    with TemporaryDirectory(dir=output.parent, prefix=".miniuw-delivery-") as temp:
-        prepared = Path(temp) / "MiniUW_Resumen.pdf"
-        prepared.write_bytes(pdf)
-        require(read_package(directory) == files, "El expediente cambió durante la entrega")
-        require(read_current_revision(current_revision, directory) == revision,
-                "La revisión vigente cambió durante la entrega")
-        os.link(prepared, output)
+    publish_current_pdf(directory, files, current_revision, revision, output, pdf)
     return dict(status="delivered_synthetic_pdf", decision=result["decision"],
                 simulation_result=result["simulation_result"], vigencia=review["vigencia"],
                 current_revision=review["current_revision"], revision_sha256=sha(revision),

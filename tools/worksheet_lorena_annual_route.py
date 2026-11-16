@@ -144,7 +144,8 @@ def project_annual_route(result, label):
             gaps.extend(f"{name}:IRR:{reason}" for reason in intervals[name]["blockers"])
         audited[name] = dict(state="calculated_synthetic", cash_per_usd_10=route["cash_per_usd_10"],
                              cash_sha256=sha256(encode(route["cash_per_usd_10"])).hexdigest(),
-                             sale_date=calendar["sale_date"], annual_post_refi_coc=annual)
+                             refinance_date=calendar["refinance_date"], sale_date=calendar["sale_date"],
+                             annual_post_refi_coc=annual)
     projected = dict(scenarios=views, screening=dict(comparisons=comparisons, metric_evidence_by_scenario=evidence,
                                                       irr_by_scenario=intervals))
     return projected, audited, gaps
