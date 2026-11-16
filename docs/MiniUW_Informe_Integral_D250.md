@@ -6,7 +6,7 @@ Procedimientos, siete Dots, diecisiete bots y conexiones entre fuentes, variable
 
 ## 1. Cierre y alcance
 
-**Estado al 16/11/2026 22:29 UTC.** La batería de cierre del commit D249 está en curso en el VPS. En la sesión actual figuran 716 de 1.676 pruebas aprobadas y 0 fallos o errores registrados a este corte. El primer intento se interrumpió por el límite de duración de la terminal y la corrida se reinició en una sesión independiente. La última regresión completa documentada, D228, aprobó 1.649 unitarias, 26 suites de referencia y el ensayo integral D102. El piloto real sigue PENDING.
+**Regresión de cierre aprobada en el VPS.** 1.676 pruebas unitarias, 26 suites de referencia, verificación integral D102 y aceptación D200. El corte de código y entradas es el commit `5876424c5cc487b230e5025a57d4ceee98fdd5f9`. La copia se verificó contra el manifiesto de 2.004 archivos. D200 volvió a probar un caso completo, adverso, incompleto y corregido. La [constancia reproducible](review/MiniUW_Validacion_D250.json) registra los comandos, tiempos, huellas y resultados por suite. La aceptación de uso real sigue PENDING.
 
 El diseño sintético de v1 cerró los **16 hitos** de D197 con la aceptación D200. Los casos de D228 a D249 agregan el control de vigencia del PDF, la configuración de criterios, los calendarios anuales con y sin refinanciación y las sensibilidades trazables. Este informe documenta el perfil ejecutado y las condiciones de otros perfiles conservados para reproducir ensayos anteriores. Toda cifra de ejemplo corresponde a equity agregado del proyecto de prueba, antes de impuestos personales. El retorno personal requiere un reparto aplicable y acreditado.
 
@@ -22,6 +22,8 @@ El diseño sintético de v1 cerró los **16 hitos** de D197 con la aceptación D
 La venta neta de cada ruta y el último cobro suceden en la fecha de salida de esa ruta. La caja operativa se registra por período entre la estabilización y la venta. El anexo de movimientos muestra aportes y cobros separados incluso cuando coinciden en fecha. El saldo sin recuperar es nominal al cierre. Los ejercicios D239–D249 descontaron esa caja sólo para sensibilidades con tasa declarada.
 
 **Referencias.** [Aceptación D200](worksheet-technical-acceptance-D200.md) · [Comparación D238](worksheet-annual-comparison-D238.md) · [Alcance congelado D189](preliminary-pilot-readiness-D189.md).
+
+La [matriz de las 33 políticas frente a D250](worksheet-policy-review-D251.md) quedó incorporada como revisión documental. Su registro conserva la evaluación del PDF y remite a los puntos que requieren cotejo y aprobación.
 
 ## 2. Procedimientos de punta a punta
 

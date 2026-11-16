@@ -2027,3 +2027,7 @@ Al 2 % mensual, el precio bruto de venta que recupera los aportes por USD 10 sub
 ## D251 · Incorporación de la matriz de 33 políticas
 
 Se preservó la revisión aportada por el usuario con tres páginas y SHA-256 verificado. La revisión clasifica 8 políticas como cumplidas, 21 parciales y 4 sin cumplir, más una observación de renta asequible fuera de ese conteo. El índice enlaza cada grupo abierto con su evidencia y condición de aprobación. La incorporación es documental y el 1101 real sigue PENDING. [Matriz y registro](docs/worksheet-policy-review-D251.md).
+
+## D250 · Cierre de regresión del Mini-UW v1 e informe integral
+
+Pasaron 1.676 pruebas unitarias (87 min 17 s), 26 suites de referencia, el ensayo integral D102 y la aceptación D200 en una copia limpia del commit D249. La primera sesión se interrumpió por duración y la corrida completa se repitió en un proceso independiente. La constancia conserva el corte, los comandos, estados y huellas. El informe reúne 7 Dots, 17 bots, 55 campos originales, 8 complementarios, 85 fórmulas y reglas y 52 movimientos sintéticos por USD 10. El piloto real, el dictamen y el retorno histórico del 1101 siguen PENDING. [Informe integral](docs/MiniUW_Informe_Integral_D250.md) · [Constancia](docs/review/MiniUW_Validacion_D250.json).

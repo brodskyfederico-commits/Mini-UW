@@ -1,0 +1,223 @@
+{
+  "milestone": "D250",
+  "state": "passed",
+  "mode": "synthetic_v1_validation",
+  "checkout": {
+    "base": "5876424c5cc487b230e5025a57d4ceee98fdd5f9",
+    "files": 2004,
+    "manifest_sha256": "cdcbaeba61f96455e133b94908efdd3944b8837ea48b00ab7ac888e65f319bf9"
+  },
+  "started": "2026-11-16T22:06:19Z",
+  "completed": "2026-11-16T23:39:16Z",
+  "host": "ubuntu-dallas-2gb",
+  "dependencies": {
+    "python": "3.12.3",
+    "pypdf": "6.21.4",
+    "pillow": "13.0.0",
+    "jsonschema": "4.10.3",
+    "ocr_threads": 1,
+    "tessdata_eng_sha256": "7d4322bd2a7749724879683fc3912cb542f19906c83bcc1a52132556427170b2"
+  },
+  "real_1101": "PENDING",
+  "historical_return": "PENDING",
+  "production_authorized": false,
+  "deployment_enabled": false,
+  "retry": {
+    "reason": "Primera sesión de terminal interrumpida; se reinició toda la batería en un proceso independiente.",
+    "exit_status": 143,
+    "partial_ok": 647,
+    "partial_log_sha256": "ba343569908fb432f34d2eaf51ff977d99ec2c85f2899e5fba61341090e9e1a3"
+  },
+  "unitarias": {
+    "command": "python3 -m unittest discover -s tests -v",
+    "exit_status": 0,
+    "seconds": 5237,
+    "log_sha256": "e14c43338416e053bded553c8457f0677e0afabe98ee71e15c2475049f6603ec",
+    "tests": 1676,
+    "passed": 1676,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "referencias": {
+    "command": "python3 tools/check_reference_package.py",
+    "exit_status": 0,
+    "seconds": 44,
+    "log_sha256": "70a7650bcf6fe910cf667f080df70ef644b9b2177dabaf8f158897235c2a6660",
+    "suites": 26,
+    "files_checked": 2005,
+    "coverage_rows": 398,
+    "results": [
+      {
+        "script": "references/validate_m2_algebra.py",
+        "status": "passed",
+        "count": 186
+      },
+      {
+        "script": "references/validate_m34_allocation.py",
+        "status": "passed",
+        "count": 22
+      },
+      {
+        "script": "references/validate_m5_algebra.py",
+        "status": "passed",
+        "count": 36
+      },
+      {
+        "script": "references/validate_m6_refinance.py",
+        "status": "passed",
+        "count": 128
+      },
+      {
+        "script": "references/validate_m7_returns.py",
+        "status": "passed",
+        "count": 65
+      },
+      {
+        "script": "references/validate_m8_scenarios_price.py",
+        "status": "passed",
+        "count": 99
+      },
+      {
+        "script": "references/validate_m9_comparisons.py",
+        "status": "passed",
+        "count": 46
+      },
+      {
+        "script": "references/validate_integrated_bridge.py",
+        "status": "passed",
+        "count": 14
+      },
+      {
+        "script": "references/validate_revision_integrity.py",
+        "status": "passed",
+        "count": 29
+      },
+      {
+        "script": "references/validate_interface_contracts.py",
+        "status": "passed",
+        "count": 75
+      },
+      {
+        "script": "references/validate_calendar_ledger.py",
+        "status": "passed",
+        "count": 60
+      },
+      {
+        "script": "references/validate_cost_scope.py",
+        "status": "passed",
+        "count": 29
+      },
+      {
+        "script": "references/validate_evidence_locators.py",
+        "status": "passed",
+        "count": 21
+      },
+      {
+        "script": "references/validate_budget_payment_bridge.py",
+        "status": "passed",
+        "count": 41
+      },
+      {
+        "script": "references/validate_calculation_lineage.py",
+        "status": "passed",
+        "count": 48
+      },
+      {
+        "script": "references/validate_periodic_irr_isolation.py",
+        "status": "passed",
+        "count": 64
+      },
+      {
+        "script": "references/validate_investor_return_bridge.py",
+        "status": "passed",
+        "count": 43
+      },
+      {
+        "script": "references/validate_return_metric_bridge.py",
+        "status": "passed",
+        "count": 31
+      },
+      {
+        "script": "references/validate_operating_cash_bridge.py",
+        "status": "passed",
+        "count": 26
+      },
+      {
+        "script": "references/validate_settlement_bridge.py",
+        "status": "passed",
+        "count": 43
+      },
+      {
+        "script": "references/validate_financing_timeline.py",
+        "status": "passed",
+        "count": 50
+      },
+      {
+        "script": "references/validate_price_grid_catalogue.py",
+        "status": "passed",
+        "count": 52
+      },
+      {
+        "script": "references/validate_sensitivity_ranking.py",
+        "status": "passed",
+        "count": 33
+      },
+      {
+        "script": "references/validate_affine_price_support.py",
+        "status": "passed",
+        "count": 42
+      },
+      {
+        "script": "references/validate_refinance_capacity_bridge.py",
+        "status": "passed",
+        "count": 46
+      },
+      {
+        "script": "references/validate_structure_closeout.py",
+        "status": "passed",
+        "count": 31
+      }
+    ]
+  },
+  "integral": {
+    "command": "python3 tools/check_integral_miniuw_D102.py",
+    "exit_status": 0,
+    "seconds": 43,
+    "log_sha256": "c6d5bd4e9bc4f5cd37ab88de3247570ec0e6e64927fb5e9f6ecc54241a91f2da",
+    "status": "passed",
+    "decision": "PENDING",
+    "cash_cases": 2,
+    "recovery_probes": 6,
+    "blocked_inputs": 2,
+    "sale_only_verified": true,
+    "funding_cases": 9,
+    "one_page_report": true,
+    "pdf_sha256": "2560fe8707a8d9029f0c4923fa83bd3398c99b5e8c58ddd2f3972cd0419aa9b7"
+  },
+  "aceptacion": {
+    "command": "python3 tools/check_worksheet_technical_acceptance_D200.py --output <directorio nuevo>",
+    "exit_status": 0,
+    "seconds": 253,
+    "log_sha256": "3e7d7120aeb2ba9fccc22145253b7da9559144c5e3d5d2b5033327a7b7fa1e15",
+    "status": "passed",
+    "technical_checklist": "16/16",
+    "cases": {
+      "adverse": "FAIL",
+      "complete": "PASS",
+      "corrected": "PASS",
+      "incomplete": "PENDING"
+    },
+    "identical_replay_files": 10,
+    "independent_checks": {
+      "Base": {
+        "independent_lines": 351,
+        "sources_and_uses_periods": 10
+      },
+      "Downside": {
+        "independent_lines": 385,
+        "sources_and_uses_periods": 12
+      }
+    }
+  }
+}
