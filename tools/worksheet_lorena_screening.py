@@ -12,7 +12,8 @@ from miniuw_foundation.irr_interval_output import condition_relation
 from miniuw_foundation.lorena_screening import BASES, CASE_SCHEMA, RLV, SCENARIOS, encode, prepare_configuration, rehearse
 from miniuw_worksheet_v1 import TECHNICAL_SCHEMAS, _audit_package, read_current_revision, read_package
 from worksheet_definition_screening_D193 import ECONOMIC, PRICE_BASIS, SPREAD, YOC
-from worksheet_local_sources_D127 import synthetic_id
+from worksheet_annual_coc import verify_annual_coc
+from worksheet_local_sources_D127 import object_or_empty, synthetic_id
 from worksheet_performance_policy_D184 import AFTER_RESERVES, BEFORE_RESERVES, price_screen
 from worksheet_revision_D128 import audit_revision
 
@@ -69,7 +70,7 @@ def full_annual_coc(view, calendar):
     return value if value == amount(coc.get("value")) else None
 
 
-def base_rlv(view, evidence, metrics, pre_stab, settings, configuration):
+def base_rlv(view, evidence, metrics, pre_stab, equity_left, settings, configuration):
     """Use D230 thresholds and check the remaining Base criteria at the proposed limit."""
     if (settings.get("basis") != PRICE_BASIS or not synthetic_id(settings.get("source_ref"))
             or settings.get("binding_yields") not in (["YoC"], ["spread"])):
@@ -79,13 +80,12 @@ def base_rlv(view, evidence, metrics, pre_stab, settings, configuration):
     if not required <= metrics.keys():
         return None, "rlv_requires_all_base_metric_inputs"
     cash, calendar = view["cash_per_usd_10"], view["project_calendar"]
-    closing, coc = view["construction_refinance"], view["post_refinance_coc"]
+    closing = view["construction_refinance"]
     scale = amount(cash["scale_factor"])
     development, cost = view["development_costs"], evidence["cost_basis"]
     details = evidence["candidate_definitions"]
     spread = details["spread"]
     tdc, debt, applied = (amount(value) for value in (cost["tdc"], cost["components"]["loan_draw"], cost["applied_equity"]))
-    equity_left = amount(coc["equity_still_invested"])
     payout, cash_in = (amount(closing[key]) for key in ("net_equity_distribution", "projected_cash_in_required"))
     flows = quarterly_cash(cash, calendar["equity_dates"])
     price, asking, closing_rate = (amount(development.get(key)) for key in
@@ -147,12 +147,11 @@ def calculated_case(result, case, configuration, configuration_raw):
     metrics, scope, gaps = {}, {}, []
     proof = {}
     by_id = {spec["metric_id"]: spec for spec in configuration["metrics"]}
+    annual_inputs = case["rent_inputs"].get("annual_post_refi_coc")
     for name in SCENARIOS:
         view = scenarios[name]
         cash, dates = view.get("cash_per_usd_10"), view.get("project_calendar", {})
-        retained = amount(view.get("post_refinance_coc", {}).get("equity_still_invested"))
-        scope[name] = dict(refinance_in_scope=True,
-                           equity_remains_after_refi=None if retained is None or retained < 0 else retained > 0)
+        scope[name] = dict(refinance_in_scope=True, equity_remains_after_refi=None)
         metrics[name] = {}
         proof[name] = dict(window=None, equity_through_stabilization=None, cash_sha256=None)
         if cash is None or amount(cash.get("reference_amount")) != 10 or view.get("blockers"):
@@ -171,11 +170,22 @@ def calculated_case(result, case, configuration, configuration_raw):
             if (row["definition_ref"] == definition and row["unit"] == unit and row["period_ref"]
                     and not row.get("blockers") and row["value"] is not None):
                 values[metric] = amount(row["value"])
-        coc = full_annual_coc(view, dates)
+        if annual_inputs is None:
+            retained = amount(view.get("post_refinance_coc", {}).get("equity_still_invested"))
+            coc = full_annual_coc(view, dates)
+            coc_blocker = "verified_full_annual_window_required"
+        else:
+            annual_proof = verify_annual_coc(view, object_or_empty(annual_inputs).get(name))
+            proof[name]["annual_post_refi_coc"] = annual_proof
+            retained = amount(annual_proof.get("equity_remaining"))
+            coc = amount(annual_proof["value"])
+            coc_blocker = annual_proof["blocker"]
+        if retained is not None and retained >= 0:
+            scope[name]["equity_remains_after_refi"] = retained > 0
         if coc is not None:
             values["post_refi_CoC"] = coc
         elif retained is None or retained > 0:
-            gaps.append(f"{name}:post_refi_CoC:verified_full_annual_window_required")
+            gaps.append(f"{name}:post_refi_CoC:{coc_blocker}")
         investment = amount(cash["total_contributions"])
         window = f"{dates['purchase_date']}/{dates['sale_date']}"
         proof[name]["window"] = window
@@ -187,7 +197,7 @@ def calculated_case(result, case, configuration, configuration_raw):
                 values["IRR"] = irr["annual_enclosure"]
         if name == "Base":
             settings = case["rent_inputs"]["definition_screening"][name]["rlv"]
-            rlv, issue = base_rlv(view, evidence[name], values, pre_stab, settings, configuration)
+            rlv, issue = base_rlv(view, evidence[name], values, pre_stab, retained, settings, configuration)
             if rlv is not None:
                 values[RLV] = rlv
             else:
