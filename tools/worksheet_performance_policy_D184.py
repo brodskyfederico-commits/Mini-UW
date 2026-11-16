@@ -6,6 +6,8 @@ BEFORE_RESERVES = "before_replacement_reserves"
 AFTER_RESERVES = "after_replacement_reserves"
 MINIMUM_METRICS = ("yield_or_spread", "annual_irr", "equity_multiple")
 METRICS = (*MINIMUM_METRICS, "equity_to_tdc")
+JOINT_MINIMUM = ("YoC", "spread", "equity_recovered", "post_refi_CoC")
+JOINT_MAXIMUM = ("equity_cash_in", "breakeven_occupancy")
 
 
 def performance(noi, reserve, cost, cap, cap_basis, post_refi_noi, post_refi_reserve, service, equity):
@@ -60,16 +62,22 @@ def _future_pv_at_annual_hurdle(flows, hurdle):
     return minimum, maximum
 
 
-def price_screen(source, rules, grid, *, require_both_neighbors=False, annual_hurdles=False):
+def price_screen(source, rules, grid, *, require_both_neighbors=False, annual_hurdles=False, joint_base=None):
     """Find joint price limits on a declared grid with exact signed cash and rates."""
     low, high, step = grid
     if any(type(value) is not int for value in grid) or step <= 0 or not 2 * step <= high - low <= 1000 * step:
         raise ValueError("explicit bounded price grid required")
     points = range(low, high + 1, step)
-    if points[-1] != high or rules.keys() != set(METRICS):
+    minimum_metrics = set(MINIMUM_METRICS)
+    required_metrics = set(METRICS)
+    if joint_base is not None:
+        minimum_metrics.update(JOINT_MINIMUM)
+        required_metrics.update(JOINT_MINIMUM + JOINT_MAXIMUM)
+        required_metrics.remove("yield_or_spread")
+    if points[-1] != high or rules.keys() != required_metrics:
         raise ValueError("explicit bounded price grid and complete synthetic criteria required")
     for metric, (pass_op, pass_value, fail_op, fail_value) in rules.items():
-        minimum = metric in MINIMUM_METRICS
+        minimum = metric in minimum_metrics
         if (pass_op, fail_op) != ((">=", "<") if minimum else ("<=", ">")) or (
                 pass_value < fail_value if minimum else pass_value > fail_value):
             return dict(state="PENDING", blocker="criterion_direction_or_band_unconfirmed", pass_price=None, before_fail=None)
@@ -106,8 +114,19 @@ def price_screen(source, rules, grid, *, require_both_neighbors=False, annual_hu
         contributions, first = source["contributions"] + change, flows[0] - change
         if tdc <= 0 or equity < 0 or equity + source["debt"] != tdc or contributions <= 0 or first >= 0:
             return None
-        values = dict(yield_or_spread=(yield_noi / tdc - cap) * (10_000 if source["cap"] is not None else 1),
-                      equity_multiple=source["distributions"] / contributions, equity_to_tdc=equity / tdc)
+        values = dict(equity_multiple=source["distributions"] / contributions, equity_to_tdc=equity / tdc)
+        if joint_base is None:
+            values["yield_or_spread"] = (yield_noi / tdc - cap) * (10_000 if source["cap"] is not None else 1)
+        else:
+            remaining = joint_base["equity_remaining"] + change
+            if equity <= 0 or remaining <= 0:
+                return None
+            values.update(YoC=source["noi_uw"] / tdc,
+                          spread=(joint_base["spread_noi"] / tdc - joint_base["comparable_cap"]) * 10_000,
+                          equity_recovered=joint_base["refi_payout"] / equity,
+                          equity_cash_in=joint_base["refi_cash_in"] / equity,
+                          breakeven_occupancy=joint_base["breakeven_occupancy"],
+                          post_refi_CoC=joint_base["available_annual_cash"] / remaining)
         comparisons = {}
         for metric, (_, pass_value, _, fail_value) in rules.items():
             if metric == "annual_irr":
@@ -116,7 +135,7 @@ def price_screen(source, rules, grid, *, require_both_neighbors=False, annual_hu
                 if first + pass_min < 0 <= first + pass_max or first + fail_min < 0 <= first + fail_max:
                     return dict(state="IRR_UNRESOLVED")
                 passing, failing = first + pass_min >= 0, first + fail_max < 0
-            elif metric in MINIMUM_METRICS:
+            elif metric in minimum_metrics:
                 passing, failing = values[metric] >= pass_value, values[metric] < fail_value
             else:
                 passing, failing = values[metric] <= pass_value, values[metric] > fail_value
@@ -126,13 +145,23 @@ def price_screen(source, rules, grid, *, require_both_neighbors=False, annual_hu
                     state=overall)
 
     rows = [evaluate(price) for price in points]
-    if any(row is None for row in rows):
+    if joint_base is not None:
+        # With fixed debt and nonnegative C33, cost, equity and initial funding
+        # grow with price. Skip only an invalid prefix of the grid.
+        first_eligible = next((i for i, row in enumerate(rows) if row is not None), len(rows))
+        rows = rows[first_eligible:]
+    if not rows or any(row is None for row in rows):
         return dict(state="PENDING", blocker="price_grid_outside_positive_equity_or_cost_domain", pass_price=None, before_fail=None)
     if any(row["state"] == "IRR_UNRESOLVED" for row in rows):
         return dict(state="PENDING", blocker="irr_hurdle_enclosure_crosses_zero", pass_price=None, before_fail=None)
     severity = {"PASS": 0, "PENDING": 1, "FAIL": 2}
-    if any(severity[a["comparisons"][m]] > severity[b["comparisons"][m]]
-           for a, b in zip(rows, rows[1:]) for m in METRICS):
+    improves = set()
+    if joint_base is not None:
+        improves.add("equity_cash_in")
+        if joint_base["available_annual_cash"] < 0:
+            improves.add("post_refi_CoC")
+    if any((severity[a["comparisons"][m]] - severity[b["comparisons"][m]]) * (-1 if m in improves else 1) > 0
+           for a, b in zip(rows, rows[1:]) for m in rules):
         return dict(state="PENDING", blocker="criterion_status_not_monotone_on_grid", pass_price=None, before_fail=None)
 
     def limit(allowed):
@@ -157,7 +186,8 @@ def price_screen(source, rules, grid, *, require_both_neighbors=False, annual_hu
     return dict(state="PENDING" if any(r["price"] is None for r in (passing, before_fail)) else "calculated_synthetic",
                 blocker=next((r["state"] for r in (passing, before_fail) if r["price"] is None), None),
                 pass_price=passing["price"], before_fail=before_fail["price"],
-                yield_criterion="spread_bps" if source["cap"] is not None else "yoc_uw",
+                yield_criterion="yoc_uw_and_spread_bps" if joint_base is not None else
+                "spread_bps" if source["cap"] is not None else "yoc_uw",
                 negative_pass_price=passing["price"] is not None and passing["price"] < 0,
                 evaluated_prices=len(rows), grid=list(grid), monotone_on_grid=True,
                 pass_boundary=passing, before_fail_boundary=before_fail,

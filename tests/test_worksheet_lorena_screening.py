@@ -139,8 +139,45 @@ class CalculatedLorenaScreeningTests(TestCase):
         self.assertIn("Base:asking_relative_to_supported_price:rlv_interval_crosses_criterion", verdict["material_gaps"])
         self.assertEqual(verdict["simulation_result"], "HOLD")
 
-    def test_rlv_candidate_must_reconcile_remaining_base_criteria(self):
+    def test_refinance_recovery_can_bind_below_the_spread_limit(self):
         result, case = calculated_control(base_payout=160)
+        previous = deepcopy(result)
         verdict = evaluate(result, case)
-        self.assertNotIn(RLV, verdict["observed"]["Base"])
-        self.assertIn("Base:RLV:rlv_boundary_does_not_meet:equity_recovered", verdict["material_gaps"])
+        self.assertEqual(result, previous)
+        self.assertIn(RLV, verdict["observed"]["Base"])
+        self.assertEqual((verdict["simulation_result"], verdict["reason"]), ("HOLD", "ECONOMICS_NOT_SUPPORTED"))
+        proof = verdict["cash_proof"]["Base"]["rlv_price_search"]
+        self.assertEqual((proof["price_lower"], proof["price_upper_exclusive"], proof["binding_metrics"]),
+                         (160, 170, ["equity_recovered"]))
+
+    def test_equity_to_cost_can_bind_the_rlv(self):
+        result, case = calculated_control(base_cap="0.07", base_payout=240)
+        verdict = evaluate(result, case)
+        proof = verdict["cash_proof"]["Base"]["rlv_price_search"]
+        self.assertEqual((proof["price_lower"], proof["price_upper_exclusive"], proof["binding_metrics"]),
+                         (270, 280, ["equity_TDC"]))
+
+    def test_c33_moves_the_price_limit_with_the_same_reported_cash(self):
+        result, case = calculated_control(base_payout=160)
+        case["rent_inputs"]["definition_screening"]["Base"]["rlv"]["grid"] = [70, 350, 1]
+        positive = evaluate(result, case)["cash_proof"]["Base"]
+        result["scenarios"]["Base"]["development_costs"]["closing_fraction"] = rational(0)
+        zero = evaluate(result, case)["cash_proof"]["Base"]
+        self.assertEqual((zero["rlv_price_search"]["price_lower"], positive["rlv_price_search"]["price_lower"]), (166, 167))
+        self.assertEqual(positive["cash_sha256"], zero["cash_sha256"])
+
+    def test_negative_price_interval_and_unattainable_grid_are_distinct(self):
+        result, case = calculated_control()
+        result["scenarios"]["Base"]["development_costs"]["evaluated_purchase_price"] = rational(-50)
+        case["rent_inputs"]["definition_screening"]["Base"]["rlv"]["grid"] = [-150, 100, 10]
+        negative = evaluate(result, case)
+        first = negative["cash_proof"]["Base"]["rlv_price_search"]
+        self.assertEqual((first["price_lower"], first["price_upper_exclusive"], first["negative_limit"]), (-50, -40, True))
+        self.assertNotIn(RLV, negative["observed"]["Base"])
+        row = next(r for r in result["screening"]["comparisons"]
+                   if (r["scenario_id"], r["metric_id"]) == ("Base", "breakeven_occupancy"))
+        row["metric_record"]["value"] = rational(Fraction("0.86"))
+        unattainable = evaluate(result, case)
+        self.assertEqual(unattainable["cash_proof"]["Base"]["rlv_price_search"],
+                         dict(state="PENDING", blocker="not_attainable_on_grid"))
+        self.assertNotIn(RLV, unattainable["observed"]["Base"])

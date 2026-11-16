@@ -8,23 +8,17 @@ import json
 from check_worksheet_return_metrics_D167 import quarterly_cash
 from miniuw_foundation.debt_service import _fraction, rational
 from miniuw_foundation.drafts import ValidationError
-from miniuw_foundation.irr_interval_output import condition_relation
 from miniuw_foundation.lorena_screening import BASES, CASE_SCHEMA, RLV, SCENARIOS, encode, prepare_configuration, rehearse
 from miniuw_worksheet_v1 import TECHNICAL_SCHEMAS, _audit_package, read_current_revision, read_package
 from worksheet_definition_screening_D193 import ECONOMIC, PRICE_BASIS, SPREAD, YOC
 from worksheet_annual_coc import verify_annual_coc
 from worksheet_local_sources_D127 import object_or_empty, synthetic_id
-from worksheet_performance_policy_D184 import AFTER_RESERVES, BEFORE_RESERVES, price_screen
+from worksheet_performance_policy_D184 import AFTER_RESERVES, BEFORE_RESERVES, JOINT_MAXIMUM, JOINT_MINIMUM, price_screen
 from worksheet_revision_D128 import audit_revision
 
 
 def amount(value):
     return _fraction(value, 1300)
-
-
-def point(value):
-    value = rational(value)
-    return dict(lower=value, upper=value, lower_closed=True, upper_closed=True)
 
 
 def refinance_values(view, cash, calendar):
@@ -71,14 +65,16 @@ def full_annual_coc(view, calendar):
 
 
 def base_rlv(view, evidence, metrics, pre_stab, equity_left, settings, configuration):
-    """Use D230 thresholds and check the remaining Base criteria at the proposed limit."""
+    """Find the largest grid price that satisfies all non-RLV Base criteria."""
+    def pending(reason):
+        return None, dict(state="PENDING", blocker=reason)
+
     if (settings.get("basis") != PRICE_BASIS or not synthetic_id(settings.get("source_ref"))
             or settings.get("binding_yields") not in (["YoC"], ["spread"])):
-        return None, "rlv_price_grid_or_binding_yield_unconfirmed"
-    yield_metric, = settings["binding_yields"]
+        return pending("rlv_price_grid_or_binding_yield_unconfirmed")
     required = set(BASES) - {RLV}
     if not required <= metrics.keys():
-        return None, "rlv_requires_all_base_metric_inputs"
+        return pending("rlv_requires_all_base_metric_inputs")
     cash, calendar = view["cash_per_usd_10"], view["project_calendar"]
     closing = view["construction_refinance"]
     scale = amount(cash["scale_factor"])
@@ -93,50 +89,43 @@ def base_rlv(view, evidence, metrics, pre_stab, equity_left, settings, configura
     if (None in (tdc, debt, applied, price, asking, closing_rate) or asking < 0 or flows is None
             or applied != pre_stab or equity_left != pre_stab - payout + cash_in
             or not synthetic_id(development.get("purchase_source_ref")) or not development.get("cell_sources", {}).get("C33")):
-        return None, "rlv_equity_cash_timing_or_purchase_basis_unconfirmed"
+        return pending("rlv_equity_cash_timing_or_purchase_basis_unconfirmed")
     specs = {entry["metric_id"]: entry for entry in configuration["metrics"]}
     rules = {}
-    for key, metric in (("yield_or_spread", yield_metric), ("annual_irr", "IRR"),
-                        ("equity_multiple", "equity_multiple"), ("equity_to_tdc", "equity_TDC")):
+    metric_names = {metric: metric for metric in (*JOINT_MINIMUM, *JOINT_MAXIMUM, "equity_multiple")}
+    metric_names.update(annual_irr="IRR", equity_to_tdc="equity_TDC")
+    for key, metric in metric_names.items():
         pc, fc = (specs[metric][name] for name in ("pass_base", "fail_base"))
         rules[key] = (pc["operator"], amount(pc["threshold"]), fc["operator"], amount(fc["threshold"]))
     noi_uw = amount(details["YoC"]["noi_after_reserve"])
     noi_before = amount(details["YoC"]["noi_before_reserve"])
     cap, cap_basis = amount(spread["cap"]), spread["cap_noi_basis"]
+    if None in (noi_uw, noi_before, cap) or cap_basis not in (AFTER_RESERVES, BEFORE_RESERVES):
+        return pending("rlv_compatible_yield_and_spread_inputs_required")
     source = dict(price=price, asking=asking, closing_rate=closing_rate, tdc=tdc, applied_equity=applied, debt=debt,
                   contributions=amount(cash["total_contributions"]) / scale,
                   distributions=amount(cash["total_distributions"]) / scale,
-                  net_flows=[value / scale for value in flows.values()],
-                  cap=cap if yield_metric == "spread" else None, cap_noi_basis=cap_basis,
-                  noi_before=noi_before, noi_uw=noi_uw)
+                  net_flows=[value / scale for value in flows.values()], cap=None, cap_noi_basis=None, noi_uw=noi_uw)
+    joint = dict(equity_remaining=equity_left, spread_noi=noi_before if cap_basis == BEFORE_RESERVES else noi_uw,
+                 comparable_cap=cap, refi_payout=payout, refi_cash_in=cash_in,
+                 breakeven_occupancy=metrics["breakeven_occupancy"], available_annual_cash=metrics["post_refi_CoC"] * equity_left)
     try:
-        answer = price_screen(source, rules, settings["grid"], require_both_neighbors=True, annual_hurdles=True)
+        answer = price_screen(source, rules, settings["grid"], require_both_neighbors=True, annual_hurdles=True, joint_base=joint)
     except (TypeError, KeyError, ValueError) as error:
-        return None, str(error)
-    if answer["pass_price"] is None or answer["pass_price"] <= 0:
-        return None, answer["blocker"] or "nonpositive_rlv_premium_undefined"
-    boundary = answer["pass_boundary"]
-    delta = boundary["at"]["delta_tdc"]
-    candidate_equity, candidate_remaining = pre_stab + delta, equity_left + delta
-    if candidate_equity <= 0 or candidate_remaining <= 0:
-        return None, "rlv_boundary_equity_outside_supported_domain"
-    # The upper neighbor fails a monotone price criterion. The lower boundary
-    # must also meet every applicable Base criterion outside that solver.
-    candidate = {
-        "YoC": noi_uw / (tdc + delta),
-        "spread": ((noi_before if cap_basis == BEFORE_RESERVES else noi_uw) / (tdc + delta) - cap) * 10_000,
-        "equity_recovered": payout / candidate_equity,
-        "equity_cash_in": cash_in / candidate_equity,
-        "breakeven_occupancy": metrics["breakeven_occupancy"],
-        "post_refi_CoC": metrics["post_refi_CoC"] * equity_left / candidate_remaining,
-    }
-    for metric, value in candidate.items():
-        criterion = specs[metric]["pass_base"]
-        if condition_relation(point(value), criterion["threshold"], criterion["operator"]) != "every":
-            return None, f"rlv_boundary_does_not_meet:{metric}"
-    low = asking / boundary["above"]["price"] - 1
-    high = asking / answer["pass_price"] - 1
-    return dict(lower=rational(low), upper=rational(high), lower_closed=low == high, upper_closed=True), None
+        return pending(str(error))
+    boundary = answer.get("pass_boundary")
+    lower = answer["pass_price"]
+    if lower is None:
+        return pending(boundary["state"] if boundary else answer["blocker"])
+    upper = boundary["above"]["price"]
+    stopped = sorted(metric_names[key] for key, state in boundary["above"]["comparisons"].items() if state != "PASS")
+    proof = dict(state="bounded_synthetic", price_lower=lower, price_upper_exclusive=upper,
+                 binding_metrics=stopped, negative_limit=upper <= 0,
+                 blocker="nonpositive_rlv_premium_undefined" if lower <= 0 else None)
+    if lower <= 0:
+        return None, proof
+    low, high = asking / upper - 1, asking / lower - 1
+    return dict(lower=rational(low), upper=rational(high), lower_closed=low == high, upper_closed=True), proof
 
 
 def calculated_case(result, case, configuration, configuration_raw):
@@ -197,11 +186,12 @@ def calculated_case(result, case, configuration, configuration_raw):
                 values["IRR"] = irr["annual_enclosure"]
         if name == "Base":
             settings = case["rent_inputs"]["definition_screening"][name]["rlv"]
-            rlv, issue = base_rlv(view, evidence[name], values, pre_stab, retained, settings, configuration)
+            rlv, search = base_rlv(view, evidence[name], values, pre_stab, retained, settings, configuration)
+            proof[name]["rlv_price_search"] = search
             if rlv is not None:
                 values[RLV] = rlv
             else:
-                gaps.append(f"{name}:RLV:{issue}")
+                gaps.append(f"{name}:RLV:{search['blocker']}")
         metrics[name] = {metric: dict(basis=BASES[metric], unit=by_id[metric]["unit"],
                                       value=value if isinstance(value, dict) else rational(value))
                          for metric, value in values.items()}
