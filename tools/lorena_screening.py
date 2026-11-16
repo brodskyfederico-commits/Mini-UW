@@ -32,6 +32,7 @@ def main():
     workbook.add_argument("configuration", type=Path)
     workbook.add_argument("package", type=Path)
     workbook.add_argument("--current-revision", type=Path, required=True)
+    workbook.add_argument("--route", help="Audited annual calendar route label for Base and Downside")
     args = parser.parse_args()
     try:
         recipe, source = source_files()
@@ -47,7 +48,8 @@ def main():
         else:
             from worksheet_lorena_screening import rehearse_workbook
 
-            result = rehearse_workbook(args.package, args.current_revision, recipe, source, args.configuration.read_bytes())
+            result = rehearse_workbook(args.package, args.current_revision, recipe, source, args.configuration.read_bytes(),
+                                       route=args.route)
     except (ValueError, OSError, TypeError, KeyError) as error:
         print(json.dumps(dict(status="blocked", decision="PENDING", reason=str(error))), file=sys.stderr)
         return 2

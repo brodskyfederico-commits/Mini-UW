@@ -11,7 +11,7 @@ from miniuw_foundation.drafts import ValidationError
 from miniuw_foundation.lorena_screening import BASES, CASE_SCHEMA, RLV, SCENARIOS, encode, prepare_configuration, rehearse
 from miniuw_worksheet_v1 import TECHNICAL_SCHEMAS, _audit_package, read_current_revision, read_package
 from worksheet_definition_screening_D193 import ECONOMIC, PRICE_BASIS, SPREAD, YOC
-from worksheet_annual_coc import verify_annual_coc
+from worksheet_annual_coc import equity_at_refinance, verify_annual_coc
 from worksheet_local_sources_D127 import object_or_empty, synthetic_id
 from worksheet_performance_policy_D184 import AFTER_RESERVES, BEFORE_RESERVES, JOINT_MAXIMUM, JOINT_MINIMUM, price_screen
 from worksheet_revision_D128 import audit_revision
@@ -87,7 +87,7 @@ def base_rlv(view, evidence, metrics, pre_stab, equity_left, settings, configura
     price, asking, closing_rate = (amount(development.get(key)) for key in
                                   ("evaluated_purchase_price", "worksheet_asking", "closing_fraction"))
     if (None in (tdc, debt, applied, price, asking, closing_rate) or asking < 0 or flows is None
-            or applied != pre_stab or equity_left != pre_stab - payout + cash_in
+            or equity_left != equity_at_refinance(view, cash, calendar["refinance_date"])
             or not synthetic_id(development.get("purchase_source_ref")) or not development.get("cell_sources", {}).get("C33")):
         return pending("rlv_equity_cash_timing_or_purchase_basis_unconfirmed")
     specs = {entry["metric_id"]: entry for entry in configuration["metrics"]}
@@ -106,7 +106,8 @@ def base_rlv(view, evidence, metrics, pre_stab, equity_left, settings, configura
                   contributions=amount(cash["total_contributions"]) / scale,
                   distributions=amount(cash["total_distributions"]) / scale,
                   net_flows=[value / scale for value in flows.values()], cap=None, cap_noi_basis=None, noi_uw=noi_uw)
-    joint = dict(equity_remaining=equity_left, spread_noi=noi_before if cap_basis == BEFORE_RESERVES else noi_uw,
+    joint = dict(equity_remaining=equity_left, equity_through_stabilization=pre_stab,
+                 spread_noi=noi_before if cap_basis == BEFORE_RESERVES else noi_uw,
                  comparable_cap=cap, refi_payout=payout, refi_cash_in=cash_in,
                  breakeven_occupancy=metrics["breakeven_occupancy"], available_annual_cash=metrics["post_refi_CoC"] * equity_left)
     try:
@@ -201,7 +202,7 @@ def calculated_case(result, case, configuration, configuration_raw):
     return observed, proof
 
 
-def rehearse_workbook(directory, current_revision, recipe, source, configuration_raw):
+def rehearse_workbook(directory, current_revision, recipe, source, configuration_raw, *, route=None):
     revision = read_current_revision(current_revision, directory)
     files, result = _audit_package(directory)
     case = json.loads(files["case.json"])
@@ -212,10 +213,22 @@ def rehearse_workbook(directory, current_revision, recipe, source, configuration
     if audit["vigencia"] != "VIGENTE":
         raise ValidationError("stored worksheet revision is not current")
     configuration = prepare_configuration(recipe, source)
-    observed, proof = calculated_case(result, case, configuration, configuration_raw)
+    annual_summary = {}
+    if route is None:
+        observed, proof = calculated_case(result, case, configuration, configuration_raw)
+    else:
+        from worksheet_lorena_annual_route import project_annual_route
+
+        projected, routes, gaps = project_annual_route(result, route)
+        # The selected calendar route already reconciled its own annual proof.
+        # A CoC attachment for the primary route has a different cash ledger.
+        inputs = {key: value for key, value in case["rent_inputs"].items() if key != "annual_post_refi_coc"}
+        observed, proof = calculated_case(projected, case | {"rent_inputs": inputs}, configuration, configuration_raw)
+        observed["material_gaps"].extend(gaps)
+        annual_summary = dict(annual_calendar_route=dict(label=route, scenarios=routes))
     verdict = rehearse(recipe, source, configuration_raw, encode(observed))
     if read_package(directory) != files or read_current_revision(current_revision, directory) != revision:
         raise ValidationError("worksheet or designated revision changed during comparison")
     return verdict | dict(observed_metrics=observed["metric_values"], source=proof,
                           source_results_sha256=sha256(files["results.json"]).hexdigest(),
-                          pdf_sha256=result["pdf_sha256"], current_revision=audit["current_revision"])
+                          pdf_sha256=result["pdf_sha256"], current_revision=audit["current_revision"]) | annual_summary

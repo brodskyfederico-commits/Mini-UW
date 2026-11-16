@@ -119,12 +119,14 @@ def price_screen(source, rules, grid, *, require_both_neighbors=False, annual_hu
             values["yield_or_spread"] = (yield_noi / tdc - cap) * (10_000 if source["cap"] is not None else 1)
         else:
             remaining = joint_base["equity_remaining"] + change
-            if equity <= 0 or remaining <= 0:
+            stabilized_equity = joint_base["equity_through_stabilization"] + change
+            if equity <= 0 or remaining <= 0 or stabilized_equity <= 0:
                 return None
             values.update(YoC=source["noi_uw"] / tdc,
                           spread=(joint_base["spread_noi"] / tdc - joint_base["comparable_cap"]) * 10_000,
-                          equity_recovered=joint_base["refi_payout"] / equity,
-                          equity_cash_in=joint_base["refi_cash_in"] / equity,
+                          equity_to_tdc=stabilized_equity / tdc,
+                          equity_recovered=joint_base["refi_payout"] / stabilized_equity,
+                          equity_cash_in=joint_base["refi_cash_in"] / stabilized_equity,
                           breakeven_occupancy=joint_base["breakeven_occupancy"],
                           post_refi_CoC=joint_base["available_annual_cash"] / remaining)
         comparisons = {}
