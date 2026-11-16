@@ -91,7 +91,7 @@ def _observe(observation, spec):
     value = observation["value"]
     if value is None:
         return None, "metric_value_missing"
-    if spec["metric_id"] == "IRR" and isinstance(value, dict) and "lower" in value:
+    if spec["metric_id"] in ("IRR", RLV) and isinstance(value, dict) and "lower" in value:
         return value, None
     point = rational(_fraction(value))
     return dict(lower=point, upper=point, lower_closed=True, upper_closed=True), None
@@ -118,7 +118,8 @@ def _comparison(case, scenario, spec):
     pass_relation = condition_relation(enclosure, passing["threshold"], passing["operator"])
     fail_relation = condition_relation(enclosure, failing["threshold"], failing["operator"]) if failing else "none"
     if "mixed" in (pass_relation, fail_relation):
-        return row | dict(reason="irr_interval_crosses_criterion")
+        reason = "irr_interval_crosses_criterion" if metric == "IRR" else "rlv_interval_crosses_criterion"
+        return row | dict(reason=reason)
     if fail_relation == "every":
         return row | dict(state="FAIL_CONDITION")
     if pass_relation == "every":

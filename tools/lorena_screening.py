@@ -28,6 +28,10 @@ def main():
     evaluation = commands.add_parser("rehearse")
     evaluation.add_argument("configuration", type=Path)
     evaluation.add_argument("case", type=Path)
+    workbook = commands.add_parser("rehearse-workbook")
+    workbook.add_argument("configuration", type=Path)
+    workbook.add_argument("package", type=Path)
+    workbook.add_argument("--current-revision", type=Path, required=True)
     args = parser.parse_args()
     try:
         recipe, source = source_files()
@@ -38,8 +42,12 @@ def main():
                 stream.write(raw)
             result = dict(criteria_revision=config["revision"], criteria_sha256=sha256(raw).hexdigest(),
                           status=config["status"], decision="PENDING")
-        else:
+        elif args.command == "rehearse":
             result = rehearse(recipe, source, args.configuration.read_bytes(), args.case.read_bytes())
+        else:
+            from worksheet_lorena_screening import rehearse_workbook
+
+            result = rehearse_workbook(args.package, args.current_revision, recipe, source, args.configuration.read_bytes())
     except (ValueError, OSError, TypeError, KeyError) as error:
         print(json.dumps(dict(status="blocked", decision="PENDING", reason=str(error))), file=sys.stderr)
         return 2

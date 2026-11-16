@@ -37,7 +37,30 @@ def equilibrium(slope, intercept, floor, tax_coefficient, debt_service, reserve,
                          physical_blocker=None)
 
 
-def price_screen(source, rules, grid, *, require_both_neighbors=False):
+def _future_pv_at_annual_hurdle(flows, hurdle):
+    """Enclose a quarterly PV at a nonnegative annual hurdle using exact bounds."""
+    if not 0 <= hurdle <= 1:
+        raise ValueError("annual hurdle outside the supported positive price profile")
+    lower, upper = Fraction(), Fraction(1)
+    for _ in range(48):
+        between = (lower + upper) / 2
+        annual = (1 + between) ** 4 - 1
+        if annual == hurdle:
+            lower = upper = between
+            break
+        if annual < hurdle:
+            lower = between
+        else:
+            upper = between
+    minimum = maximum = Fraction()
+    for index, flow in enumerate(flows[1:], 1):
+        bounds = sorted((flow / (1 + lower) ** index, flow / (1 + upper) ** index))
+        minimum += bounds[0]
+        maximum += bounds[1]
+    return minimum, maximum
+
+
+def price_screen(source, rules, grid, *, require_both_neighbors=False, annual_hurdles=False):
     """Find joint price limits on a declared grid with exact signed cash and rates."""
     low, high, step = grid
     if any(type(value) is not int for value in grid) or step <= 0 or not 2 * step <= high - low <= 1000 * step:
@@ -62,12 +85,17 @@ def price_screen(source, rules, grid, *, require_both_neighbors=False):
     # An annual TIR hurdle uses an explicit exact quarterly equivalent in this trial.
     # With one negative-to-positive sign change, its NPV sign orders the unique TIR.
     irr = rules["annual_irr"]
-    hurdles = source["quarterly_irr_thresholds"]
-    if any(rate <= -1 or (1 + rate) ** 4 - 1 != threshold
-           for rate, threshold in zip(hurdles, (irr[1], irr[3]), strict=True)):
-        return dict(state="PENDING", blocker="annual_and_quarterly_irr_threshold_mismatch", pass_price=None, before_fail=None)
-    future_pv = [sum((flow / (1 + rate) ** index for index, flow in enumerate(flows) if index), Fraction())
-                 for rate in hurdles]
+    if annual_hurdles:
+        future_pv = [_future_pv_at_annual_hurdle(flows, hurdle) for hurdle in (irr[1], irr[3])]
+    else:
+        hurdles = source["quarterly_irr_thresholds"]
+        if any(rate <= -1 or (1 + rate) ** 4 - 1 != threshold
+               for rate, threshold in zip(hurdles, (irr[1], irr[3]), strict=True)):
+            return dict(state="PENDING", blocker="annual_and_quarterly_irr_threshold_mismatch", pass_price=None, before_fail=None)
+        future_pv = []
+        for rate in hurdles:
+            pv = sum((flow / (1 + rate) ** index for index, flow in enumerate(flows) if index), Fraction())
+            future_pv.append((pv, pv))
     nonzero = [x for x in flows[1:] if x]
     if not nonzero or nonzero[-1] <= 0 or any(a > 0 > b for a, b in zip(nonzero, nonzero[1:])):
         return dict(state="PENDING", blocker="irr_monotonicity_unproven", pass_price=None, before_fail=None)
@@ -83,7 +111,11 @@ def price_screen(source, rules, grid, *, require_both_neighbors=False):
         comparisons = {}
         for metric, (_, pass_value, _, fail_value) in rules.items():
             if metric == "annual_irr":
-                passing, failing = first + future_pv[0] >= 0, first + future_pv[1] < 0
+                pass_min, pass_max = future_pv[0]
+                fail_min, fail_max = future_pv[1]
+                if first + pass_min < 0 <= first + pass_max or first + fail_min < 0 <= first + fail_max:
+                    return dict(state="IRR_UNRESOLVED")
+                passing, failing = first + pass_min >= 0, first + fail_max < 0
             elif metric in MINIMUM_METRICS:
                 passing, failing = values[metric] >= pass_value, values[metric] < fail_value
             else:
@@ -96,6 +128,8 @@ def price_screen(source, rules, grid, *, require_both_neighbors=False):
     rows = [evaluate(price) for price in points]
     if any(row is None for row in rows):
         return dict(state="PENDING", blocker="price_grid_outside_positive_equity_or_cost_domain", pass_price=None, before_fail=None)
+    if any(row["state"] == "IRR_UNRESOLVED" for row in rows):
+        return dict(state="PENDING", blocker="irr_hurdle_enclosure_crosses_zero", pass_price=None, before_fail=None)
     severity = {"PASS": 0, "PENDING": 1, "FAIL": 2}
     if any(severity[a["comparisons"][m]] > severity[b["comparisons"][m]]
            for a, b in zip(rows, rows[1:]) for m in METRICS):
