@@ -19,6 +19,7 @@ from test_worksheet_annual_holding import ROUTE, source_files
 from test_worksheet_annual_sale_without_refi import SALE, settings_with_sale
 from worksheet_annual_coc import quantity as amount
 from worksheet_annual_comparison import annual_cash, deliver_annual_comparison, render_page
+from worksheet_annual_crossover_construction import construction_at_cut, construction_recovery, reprice_route
 from worksheet_annual_crossover_sale_price import sale_prices
 from worksheet_annual_discount_crossover import crossover_by_scenario, shown_rate
 from worksheet_intake_D198 import assemble, register
@@ -116,6 +117,32 @@ class WorksheetAnnualComparisonTests(TestCase):
                         reach = future_cash + (expected[name] - nominal_gross) * (1 - commission) * 10 / upfront
                         self.assertLess(reach - Fraction(1, 100) * (1 - commission) * 10 / upfront, 0)
                         self.assertGreaterEqual(reach, 0)
+
+            inputs = json.loads(files["case.json"])["rent_inputs"]
+            cuts = construction_recovery(model, inputs, annual_cash(model, (ROUTE, SALE)), (ROUTE, SALE))
+            expected_cuts = {"Con refi": Fraction("125513.82"), "Sin refi": Fraction("125487.65")}
+            for name, row in cuts.items():
+                rate = sum(amount(row["cross"][key]) for key in ("monthly_rate_lower", "monthly_rate_upper")) / 2
+                origin = date.fromisoformat(row["cross"]["purchase_date"])
+                for caption, label in (("Con refi", ROUTE), ("Sin refi", SALE)):
+                    path = row["paths"][caption]
+                    if name == "Base":
+                        cut = amount(path["direct_cut"])
+                        self.assertEqual(cut, expected_cuts[caption])
+                        self.assertGreaterEqual(amount(path["tested_terminal_bounds"]["lower"]), 0)
+                        _, funding = construction_at_cut(model, inputs, name, cut - Fraction(1, 100))
+                        replay = reprice_route(model["scenarios"][name], inputs["calendar_checks"][name][label],
+                                              model["calendar_checks"][name][label], funding)
+                        net = Fraction()
+                        for event in replay["cash_per_usd_10"]["events"]:
+                            when = date.fromisoformat(event["date"])
+                            elapsed = 12 * (when.year - origin.year) + when.month - origin.month
+                            net += (amount(event["receipt"]) - amount(event["contribution"])) / (1 + rate) ** elapsed
+                        self.assertLess(net, 0)
+                    else:
+                        self.assertIsNone(path["direct_cut"])
+                        self.assertEqual(amount(path["tested_direct_cost"]), 0)
+                        self.assertLess(amount(path["tested_terminal_bounds"]["upper"]), 0)
 
             changed = deepcopy(model)
             changed["calendar_checks"]["Base"][SALE]["sale"]["gross"] = rational(1)
