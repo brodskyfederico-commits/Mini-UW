@@ -23,6 +23,7 @@ from worksheet_annual_crossover_construction import construction_at_cut, constru
 from worksheet_annual_crossover_sale_price import sale_prices
 from worksheet_annual_discount_crossover import crossover_by_scenario, shown_rate
 from worksheet_downside_construction_sale import CUTS, downside_combinations
+from worksheet_downside_fixed_sale_construction import SALE_PRICES, downside_fixed_price_cuts
 from worksheet_intake_D198 import assemble, register
 from worksheet_sale_rate_grid_D84 import money
 
@@ -162,6 +163,19 @@ class WorksheetAnnualComparisonTests(TestCase):
                     cash = path["dated_cash_at_original_price"]
                     self.assertEqual(amount(path["total_received_per_10_at_minimum"]),
                                      amount(cash["received"]) + amount(price["net_sale_increase_per_10"]))
+
+            fixed = downside_fixed_price_cuts(model, inputs, annual_cash(model, (ROUTE, SALE)), (ROUTE, SALE))
+            minimums = (("2397953.38", "2550826.92"), ("1826958.96", "1857193.81"), ("1356788.54", "1379242.41"))
+            self.assertEqual(fixed["cross"], combinations["cross"])
+            for row, price, reductions in zip(fixed["rows"], SALE_PRICES, minimums, strict=True):
+                self.assertEqual(amount(row["gross_sale"]), price)
+                for caption, expected in zip(("Con refi", "Sin refi"), reductions, strict=True):
+                    trial = row["paths"][caption]
+                    self.assertEqual(amount(trial["minimum_direct_cut"]), Fraction(expected))
+                    self.assertEqual(amount(trial["tested_direct_cost"]), 2744000 - Fraction(expected))
+                    self.assertLess(amount(trial["one_cent_less_terminal_upper"]), 0)
+                    self.assertGreaterEqual(amount(trial["tested_terminal_bounds"]["lower"]), 0)
+                    self.assertEqual(trial["original_cash_sha256"], receipt["scenarios"]["Downside"][caption]["cash_sha256"])
 
             changed = deepcopy(model)
             changed["calendar_checks"]["Base"][SALE]["sale"]["gross"] = rational(1)

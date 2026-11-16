@@ -61,6 +61,41 @@ def normalized_route(route):
     return dict(cash_per_usd_10=route["cash_per_usd_10"], sale_date=route["sale"]["date"], refinance_date=refinance)
 
 
+def require_monotone_funding(base, zero):
+    # D144 allocates direct and linked costs linearly. D146 draws a fixed share
+    # of invoices, with fees and cash interest nondecreasing in eligible cost.
+    require(all(a["date"] == b["date"]
+                and amount(a["project_uses"]) - amount(a["loan_draw"]) >= amount(b["project_uses"]) - amount(b["loan_draw"])
+                for a, b in zip(base["cash_by_date"], zero["cash_by_date"], strict=True)),
+            "No se comprobó que reducir obra reduzca los usos netos en las fechas de aporte")
+
+
+def minimum_construction_cut(direct, evaluate):
+    """Certify the first recoverable cent under the D144/D146 funding order."""
+    direct_cents = direct * 100
+    require(direct_cents.denominator == 1 and direct_cents > 0, "La obra base debe expresarse en centavos")
+    baseline, study = evaluate(Fraction())
+    if baseline[0] >= 0:
+        return Fraction(), baseline, None, study
+    require(baseline[1] < 0, "La precisión del cruce no determina el resultado sin recorte")
+    bounds, study = evaluate(direct)
+    if bounds[1] < 0:
+        return None, bounds, None, study
+    require(bounds[0] >= 0, "La precisión del cruce no determina el resultado con obra cero")
+    low, high = 0, int(direct_cents)
+    below_upper = baseline[1]
+    while high - low > 1:
+        cents = (low + high) // 2
+        (floor, ceiling), trial = evaluate(Fraction(cents, 100))
+        if ceiling < 0:
+            low, below_upper = cents, ceiling
+        else:
+            require(floor >= 0, "La precisión del cruce no separa los dos centavos de costo")
+            high, bounds, study = cents, (floor, ceiling), trial
+    require(below_upper < 0 <= bounds[0], "La reducción no pasó la prueba del centavo")
+    return Fraction(high, 100), bounds, below_upper, study
+
+
 def construction_recovery(model, inputs, table, labels):
     crosses = crossover_by_scenario(table, width=Fraction(1, 10**14))
     result = {}
@@ -69,18 +104,12 @@ def construction_recovery(model, inputs, table, labels):
         budget = original["construction_budget"]
         original_direct = amount(budget["direct_hard_cost"])
         original_development = amount(budget["total_development_cost"])
-        direct_cents = original_direct * 100
-        require(direct_cents.denominator == 1 and direct_cents > 0, "La obra base debe expresarse en centavos")
         cross = crosses[name]
         purchase = date.fromisoformat(cross["purchase_date"])
         rates = tuple(amount(cross[key]) for key in ("monthly_rate_lower", "monthly_rate_upper"))
         base_budget, base_funding = construction_at_cut(model, inputs, name, Fraction())
         zero_budget, zero_funding = construction_at_cut(model, inputs, name, original_direct)
-        # D144 places hard cost and linked soft costs linearly across the two checkpoints.
-        # D146 draws a fixed fraction of eligible invoices. Interest and fee are nondecreasing in that principal.
-        require(all(a["date"] == b["date"] and amount(a["project_uses"]) - amount(a["loan_draw"]) >= amount(b["project_uses"]) - amount(b["loan_draw"])
-                    for a, b in zip(base_funding["cash_by_date"], zero_funding["cash_by_date"], strict=True)),
-                "No se comprobó que reducir obra reduzca los usos netos en las fechas de aporte")
+        require_monotone_funding(base_funding, zero_funding)
         paths = {}
         for label, (caption, _, _) in zip(labels, ROUTES, strict=True):
             baseline = model["calendar_checks"][name][label]
@@ -90,30 +119,16 @@ def construction_recovery(model, inputs, table, labels):
                     "La caja sin reducción no reproduce D238")
             baseline_balance = accumulated_balance_bounds(monthly_flows(normalized_route(baseline), purchase), rates)
             require(baseline_balance[1] < 0, "El caso de partida no necesita una reducción positiva")
-            at_zero = reprice_route(original, terms, baseline, zero_funding)
-            zero_balance = accumulated_balance_bounds(monthly_flows(normalized_route(at_zero), purchase), rates)
-            if zero_balance[1] < 0:
-                cut = None
-                tested, tested_budget, bounds = at_zero, zero_budget, zero_balance
-                below_upper = None
-            else:
-                require(zero_balance[0] >= 0, "La precisión del cruce no determina el resultado con obra cero")
-                low, high = 0, int(direct_cents)
-                below_upper = baseline_balance[1]
-                tested, tested_budget, bounds = at_zero, zero_budget, zero_balance
-                while high - low > 1:
-                    cents = (low + high) // 2
-                    next_budget, funding = construction_at_cut(model, inputs, name, Fraction(cents, 100))
-                    replay = reprice_route(original, terms, baseline, funding)
-                    floor, ceiling = accumulated_balance_bounds(monthly_flows(normalized_route(replay), purchase), rates)
-                    if ceiling < 0:
-                        low, below_upper = cents, ceiling
-                    else:
-                        require(floor >= 0, "La precisión del cruce no separa los dos centavos de costo")
-                        high = cents
-                        tested, tested_budget, bounds = replay, next_budget, (floor, ceiling)
-                cut = Fraction(high, 100)
-                require(below_upper < 0 <= bounds[0], "La reducción no pasó la prueba del centavo")
+            def evaluate(cut):
+                if cut == 0:
+                    return baseline_balance, (baseline, base_budget)
+                trial_budget, funding = (zero_budget, zero_funding) if cut == original_direct else (
+                    construction_at_cut(model, inputs, name, cut))
+                replay = reprice_route(original, terms, baseline, funding)
+                bounds = accumulated_balance_bounds(monthly_flows(normalized_route(replay), purchase), rates)
+                return bounds, (replay, trial_budget)
+
+            cut, bounds, below_upper, (tested, tested_budget) = minimum_construction_cut(original_direct, evaluate)
             pv = present_value(exact_rows(monthly_flows(normalized_route(tested), purchase)), sum(rates) / 2)
             paths[caption] = dict(
                 direct_cut=None if cut is None else rational(cut),
