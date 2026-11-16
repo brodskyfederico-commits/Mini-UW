@@ -52,35 +52,36 @@ def bracket_crossover(relative, *, width=Fraction(1, 10**10)):
     return lo, hi
 
 
+def crossover_for_routes(with_refi, without, *, width=Fraction(1, 10**10)):
+    initial = [date.fromisoformat(route["cash_per_usd_10"]["events"][0]["date"]) for route in (with_refi, without)]
+    require(initial[0] == initial[1], "Las rutas requieren la misma fecha de aporte inicial")
+    origin = initial[0]
+    with_net, without_net = (monthly_flows(route, origin) for route in (with_refi, without))
+    delta = [left - right for left, right in zip(with_net, without_net, strict=True)]
+    first = next((index for index, value in enumerate(delta) if value), len(delta))
+    lo, hi = bracket_crossover(delta[first:], width=width)
+    refi, sale = exact_rows(with_net), exact_rows(without_net)
+
+    def advantage(rate):
+        return present_value(refi, rate) - present_value(sale, rate)
+
+    require(advantage(lo) < 0 <= advantage(hi), "El VAN total no reproduce el intervalo del cruce")
+    middle = (lo + hi) / 2
+    return dict(
+        purchase_date=origin.isoformat(), refinance_date=with_refi["refinance_date"], sale_date=with_refi["sale_date"],
+        monthly_rate_lower=rational(lo), monthly_rate_upper=rational(hi),
+        net_nominal_with_refi=rational(sum(with_net)), net_nominal_without_refi=rational(sum(without_net)),
+        npv_at_midpoint_with_refi=rational(present_value(refi, middle)),
+        npv_at_midpoint_without_refi=rational(present_value(sale, middle)),
+        difference_at_lower=rational(advantage(lo)), difference_at_upper=rational(advantage(hi)),
+        net_cash_delta_by_month=[dict(month=index, amount=rational(value)) for index, value in enumerate(delta) if value],
+        cash_sha256=dict(with_refi=with_refi["cash_sha256"], without_refi=without["cash_sha256"]),
+    )
+
+
 def crossover_by_scenario(table, *, width=Fraction(1, 10**10)):
-    result = {}
-    for scenario in SCENARIOS:
-        with_refi, without = (table[scenario, key] for key in ("Con refi", "Sin refi"))
-        initial = [date.fromisoformat(route["cash_per_usd_10"]["events"][0]["date"]) for route in (with_refi, without)]
-        require(initial[0] == initial[1], "Las rutas requieren la misma fecha de aporte inicial")
-        origin = initial[0]
-        with_net, without_net = (monthly_flows(route, origin) for route in (with_refi, without))
-        delta = [left - right for left, right in zip(with_net, without_net, strict=True)]
-        first = next((index for index, value in enumerate(delta) if value), len(delta))
-        lo, hi = bracket_crossover(delta[first:], width=width)
-        refi, sale = exact_rows(with_net), exact_rows(without_net)
-
-        def advantage(rate):
-            return present_value(refi, rate) - present_value(sale, rate)
-
-        require(advantage(lo) < 0 <= advantage(hi), "El VAN total no reproduce el intervalo del cruce")
-        middle = (lo + hi) / 2
-        result[scenario] = dict(
-            purchase_date=origin.isoformat(), refinance_date=with_refi["refinance_date"], sale_date=with_refi["sale_date"],
-            monthly_rate_lower=rational(lo), monthly_rate_upper=rational(hi),
-            net_nominal_with_refi=rational(sum(with_net)), net_nominal_without_refi=rational(sum(without_net)),
-            npv_at_midpoint_with_refi=rational(present_value(refi, middle)),
-            npv_at_midpoint_without_refi=rational(present_value(sale, middle)),
-            difference_at_lower=rational(advantage(lo)), difference_at_upper=rational(advantage(hi)),
-            net_cash_delta_by_month=[dict(month=index, amount=rational(value)) for index, value in enumerate(delta) if value],
-            cash_sha256=dict(with_refi=with_refi["cash_sha256"], without_refi=without["cash_sha256"]),
-        )
-    return result
+    return {name: crossover_for_routes(table[name, "Con refi"], table[name, "Sin refi"], width=width)
+            for name in SCENARIOS}
 
 
 def shown_rate(row):

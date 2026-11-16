@@ -23,7 +23,7 @@ from worksheet_annual_crossover_construction import construction_at_cut, constru
 from worksheet_annual_crossover_sale_price import sale_prices
 from worksheet_annual_discount_crossover import crossover_by_scenario, shown_rate
 from worksheet_downside_construction_sale import CUTS, downside_combinations
-from worksheet_downside_fixed_sale_balance import balance_money, downside_fixed_balance
+from worksheet_downside_fixed_sale_balance import balance_money, downside_adjusted_crossover, downside_fixed_balance
 from worksheet_downside_fixed_sale_construction import SALE_PRICES, downside_fixed_price_cuts
 from worksheet_intake_D198 import assemble, register
 from worksheet_sale_rate_grid_D84 import money
@@ -184,18 +184,37 @@ class WorksheetAnnualComparisonTests(TestCase):
             self.assertEqual(amount(balance["gross_sale"]), 6000000)
             origin = date.fromisoformat(balance["cross"]["purchase_date"])
             rate = sum(amount(balance["cross"][key]) for key in ("monthly_rate_lower", "monthly_rate_upper")) / 2
+
+            def discounted_path(path, monthly_rate):
+                total = Fraction()
+                for event in path["cash_per_usd_10"]["events"]:
+                    day = date.fromisoformat(event["date"])
+                    k = (day.year - origin.year) * 12 + day.month - origin.month
+                    total += (amount(event["receipt"]) - amount(event["contribution"])) / (1 + monthly_rate) ** k
+                return total
+
             for caption, expected in (("Con refi", "+0,0662"), ("Sin refi", "-0,0310")):
                 path = balance["paths"][caption]
                 self.assertEqual(balance_money(path["van_per_10"]), expected)
                 self.assertEqual(path["original_cash_sha256"], receipt["scenarios"]["Downside"][caption]["cash_sha256"])
-                discounted = Fraction()
-                for event in path["cash_per_usd_10"]["events"]:
-                    day = date.fromisoformat(event["date"])
-                    k = (day.year - origin.year) * 12 + day.month - origin.month
-                    discounted += (amount(event["receipt"]) - amount(event["contribution"])) / (1 + rate) ** k
-                self.assertEqual(discounted, amount(path["van_per_10"]))
+                self.assertEqual(discounted_path(path, rate), amount(path["van_per_10"]))
             self.assertGreater(amount(balance["paths"]["Con refi"]["terminal_bounds"]["lower"]), 0)
             self.assertLess(amount(balance["paths"]["Sin refi"]["terminal_bounds"]["upper"]), 0)
+
+            recalculated = downside_adjusted_crossover(balance)
+            self.assertEqual(recalculated["original_cross"], balance["cross"])
+            self.assertEqual(shown_rate(recalculated["cross"]), "1,3528%")
+            lower, upper = (amount(recalculated["cross"][key]) for key in ("monthly_rate_lower", "monthly_rate_upper"))
+            self.assertTrue(0 < upper - lower <= Fraction(1, 10**14))
+            with_refi, without = (recalculated["paths"][caption] for caption in ("Con refi", "Sin refi"))
+            self.assertLess(discounted_path(with_refi, lower), discounted_path(without, lower))
+            self.assertGreaterEqual(discounted_path(with_refi, upper), discounted_path(without, upper))
+            for caption, path in recalculated["paths"].items():
+                self.assertEqual(path["cash_per_usd_10"], balance["paths"][caption]["cash_per_usd_10"])
+                self.assertEqual(path["cash_sha256"], sha256(encode(path["cash_per_usd_10"])).hexdigest())
+                self.assertEqual(balance_money(path["van_per_10"]), "+1,8721")
+                self.assertEqual(discounted_path(path, (lower + upper) / 2), amount(path["van_per_10"]))
+                self.assertGreater(amount(path["terminal_bounds"]["lower"]), 0)
 
             changed = deepcopy(model)
             changed["calendar_checks"]["Base"][SALE]["sale"]["gross"] = rational(1)
