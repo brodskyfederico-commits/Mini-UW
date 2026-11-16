@@ -2019,3 +2019,7 @@ Con el recorte de obra directa del 50 %, el primer precio al centavo que recuper
 ## D248 · Recorte adicional de obra en Downside con venta fija
 
 Con venta bruta de USD 6 millones y tasa del 2 % mensual, recuperar todos los aportes por USD 10 exige recortar USD 165.495,75 adicionales con refi o USD 201.114,39 sin refi sobre el costo de obra que quedaba al 50 %. La prueba reprodujo D246 en el VPS y verificó el centavo inferior de cada recorte. El dictamen y el retorno histórico del 1101 real siguen PENDING. [Comparación y reproducción](docs/worksheet-downside-additional-construction-cut-D248.md).
+
+## D249 · Precio de venta mínimo de Downside con recorte de obra del 55 %
+
+Al 2 % mensual, el precio bruto de venta que recupera los aportes por USD 10 sube desde USD 6 millones hasta USD 6.063.292,98 con refi y USD 6.140.239,75 sin refi. El cotejo del VPS reprodujo la caja del 50 %, recalculó el recorte del 55 % y verificó el centavo inferior de cada precio. El dictamen y el retorno histórico del 1101 real siguen PENDING. [Comparación y reproducción](docs/worksheet-downside-minimum-sale-55-cut-D249.md).
