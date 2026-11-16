@@ -25,14 +25,17 @@ def totals(scenario, name):
     cash = scenario["cash_per_usd_10"]
     extra, received, unrecovered = (amount(cash[key]) for key in ("additional", "received", "unrecovered"))
     sale = sum(amount(row["receipt"]) for row in cash["events"] if row["stage"] == "sale")
-    payout = sum(amount(row["receipt"]) for row in cash["events"] if row["stage"] == "refinance")
-    invested_at_refi = sum(amount(row["contribution"]) for row in cash["events"]
-                           if row["date"] <= scenario["refinance_date"])
-    still_invested = max(Fraction(), invested_at_refi - payout)
+    refi = scenario["refinance_date"]
+    if refi is None:
+        capital = "Refinanciación N/A"
+    else:
+        payout = sum(amount(row["receipt"]) for row in cash["events"] if row["stage"] == "refinance")
+        invested_at_refi = sum(amount(row["contribution"]) for row in cash["events"] if row["date"] <= refi)
+        capital = f"Capital remanente en refi {usd(max(Fraction(), invested_at_refi - payout))}"
     return [
         (f"{name} | Aporte extra {usd(extra)} | Cobro total {usd(received)} | Neto {usd(received - 10 - extra)}"
          f" | Sin recuperar {usd(unrecovered)}", True),
-        (f"Capital remanente en refi {usd(still_invested)} | Cobro final por venta {usd(sale)}"
+        (f"{capital} | Cobro final por venta {usd(sale)}"
          " | Valor retenido en el inmueble PENDING", False),
     ]
 
@@ -42,7 +45,9 @@ def dated_lines(scenarios):
     for name in SCENARIOS:
         scenario = scenarios[name]
         for stage in ("refinance", "sale"):
-            dated[scenario[f"{stage}_date"], stage][name] = [Fraction(), Fraction()]
+            when = scenario[f"{stage}_date"]
+            if when is not None:
+                dated[when, stage][name] = [Fraction(), Fraction()]
         for row in scenario["cash_per_usd_10"]["events"]:
             cell = dated[row["date"], row["stage"]].setdefault(name, [Fraction(), Fraction()])
             cell[0] += amount(row["contribution"])
@@ -85,7 +90,10 @@ def render_annual_route(receipt):
     for name in SCENARIOS:
         lines.extend(totals(scenarios[name], name))
     lines.extend(dated_lines(scenarios))
-    lines.append(("Métricas calculadas | Base / Downside | CoC de los primeros 12 meses posrefi", True))
+    coc_basis = "CoC de los primeros 12 meses posrefi"
+    if any(scenarios[name]["refinance_date"] is None for name in SCENARIOS):
+        coc_basis = "CoC anual posrefi cuando aplica"
+    lines.append((f"Métricas calculadas | Base / Downside | {coc_basis}", True))
     states = {(row["scenario"], row["metric_id"]): row["state"] for row in receipt["comparisons"]}
     for metric in BASES:
         values = " / ".join(metric_label(receipt["observed_metrics"][name].get(metric), states[name, metric])

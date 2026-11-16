@@ -56,14 +56,14 @@ def route_annual_irr(cash, dates):
     return verify_irr(cash, dates)
 
 
-def route_metric_evidence(name, route, annual, evidence, refi_date, tdc, debt):
+def route_metric_evidence(name, route, annual, evidence, tdc, debt):
     records = []
     details = evidence.get("candidate_definitions", {})
     required = {"YoC": YOC, "spread": SPREAD, "breakeven_occupancy": ECONOMIC}
     units = {"YoC": "fraction", "spread": "bps", "breakeven_occupancy": "fraction"}
     noi_after = amount(annual.get("noi_after_reserves"))
     noi_before = sum((amount(r["value"]) for r in route["debt"]["quarterly_noi_source"].values()), Fraction())
-    period_start = offset(day(refi_date).replace(day=1), 1)
+    period_start = offset(day(annual["window_start"]).replace(day=1), 1)
     period = f"{period_start}/{offset(period_start,12)}"
     comparable = evidence.get("comparable_cap", {})
     cap_evidence = details.get("spread", {})
@@ -107,7 +107,9 @@ def project_annual_route(result, label):
     for name in SCENARIOS:
         view = result["scenarios"][name]
         route = object_or_empty(result.get("calendar_checks", {}).get(name, {}).get(label))
-        if route.get("state") != "calculated_synthetic" or "annual_post_refi_coc" not in route:
+        refi = route.get("route") != "sell_without_refinance"
+        annual = route.get("annual_post_refi_coc" if refi else "annual_without_refi")
+        if route.get("state") != "calculated_synthetic" or annual is None:
             reason = route.get("blocker") or "audited_annual_calendar_route_missing"
             views[name] = dict(cash_per_usd_10=None, blockers=[reason])
             audited[name] = dict(state="PENDING", blocker=reason)
@@ -115,10 +117,9 @@ def project_annual_route(result, label):
             continue
         dated = route["cash_by_period"]
         construction = [row for row in dated if row["stage"] == "construction"]
-        refinance, = [row for row in dated if row["stage"] == "refinance"]
-        annual = route["annual_post_refi_coc"]
-        cash = route_cash_story(route, view["cash_per_usd_10"]["scale_factor"])
-        calendar = view["project_calendar"] | dict(refinance_date=refinance["date"], sale_date=route["sale"]["date"],
+        cash = route_cash_story(route, rational(10 / amount(construction[0]["contribution"])))
+        refinance = next((row for row in dated if row["stage"] == "refinance"), None)
+        calendar = view["project_calendar"] | dict(refinance_date=refinance["date"] if refi else None, sale_date=route["sale"]["date"],
             sale_source_ref=route["debt"]["forward_noi_source"]["source_ref"],
             equity_dates=list(dict.fromkeys(row["date"] for row in dated)))
         tdc = sum(amount(row["uses"]) for row in construction)
@@ -126,15 +127,20 @@ def project_annual_route(result, label):
         if tdc <= 0 or debt < 0 or tdc - debt != sum(amount(row["contribution"]) for row in construction) - amount(construction[-1]["closing_free"]):
             raise ValidationError("annual construction costs do not reconcile to the route debt and equity")
         views[name] = dict(blockers=[], cash_per_usd_10=cash, project_calendar=calendar,
+            refinance_in_scope=refi,
             development_costs=view["development_costs"], construction_financing=dict(cash_by_date=[
-                dict(date=row["date"], equity_contribution=row["contribution"]) for row in construction]),
-            construction_refinance=dict(date=refinance["date"], blockers=[], net_equity_distribution=refinance["distribution"],
-                                        projected_cash_in_required=refinance["contribution"]),
-            post_refinance_coc=dict(blockers=[annual["blocker"]] if annual["blocker"] else [], noi_basis=AFTER_RESERVES,
+                dict(date=row["date"], equity_contribution=row["contribution"]) for row in construction]))
+        if refi:
+            views[name]["construction_refinance"] = dict(
+                date=refinance["date"], blockers=[], net_equity_distribution=refinance["distribution"],
+                projected_cash_in_required=refinance["contribution"])
+            views[name]["post_refinance_coc"] = dict(
+                blockers=[annual["blocker"]] if annual["blocker"] else [], noi_basis=AFTER_RESERVES,
                 window_start=annual.get("window_start"), window_end=annual.get("window_end"),
                 period_noi=annual.get("noi_after_reserves"), scheduled_debt_service=annual.get("scheduled_debt_service"),
-                equity_still_invested=annual.get("equity_remaining"), value=annual["value"]))
-        rows, support = route_metric_evidence(name, route, annual, original_evidence[name], refinance["date"], tdc, debt)
+                equity_still_invested=annual.get("equity_remaining"), value=annual["value"])
+        annual_period = {"window_start": refinance["date"], **annual} if refi else annual
+        rows, support = route_metric_evidence(name, route, annual_period, original_evidence[name], tdc, debt)
         comparisons.extend(rows)
         for row in rows:
             gaps.extend(f"{name}:{row['metric_id']}:{reason}" for reason in row["metric_record"]["blockers"])
@@ -145,7 +151,9 @@ def project_annual_route(result, label):
         audited[name] = dict(state="calculated_synthetic", cash_per_usd_10=route["cash_per_usd_10"],
                              cash_sha256=sha256(encode(route["cash_per_usd_10"])).hexdigest(),
                              refinance_date=calendar["refinance_date"], sale_date=calendar["sale_date"],
-                             annual_post_refi_coc=annual)
+                             annual_post_refi_coc=annual if refi else None)
+        if not refi:
+            audited[name]["annual_without_refi"] = annual
     projected = dict(scenarios=views, screening=dict(comparisons=comparisons, metric_evidence_by_scenario=evidence,
                                                       irr_by_scenario=intervals))
     return projected, audited, gaps

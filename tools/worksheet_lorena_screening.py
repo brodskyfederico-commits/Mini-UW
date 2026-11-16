@@ -22,8 +22,7 @@ def amount(value):
     return _fraction(value, 1300)
 
 
-def refinance_values(view, cash, calendar):
-    closing = view.get("construction_refinance", {})
+def stabilized_equity(view, cash, calendar):
     funding = view.get("construction_financing", {})
     scale = amount(cash["scale_factor"])
     cutoff = calendar["stabilization_date"]
@@ -33,7 +32,17 @@ def refinance_values(view, cash, calendar):
     initial_funding = sum((amount(e["amount"]) for e in events if e["category"] in
                            ("initial_capital", "additional_capital") and e["date"] <= cutoff), Fraction())
     if not by_date or scale <= 0 or pre_stab <= 0 or pre_stab * scale != initial_funding:
+        return None
+    return pre_stab
+
+
+def refinance_values(view, cash, calendar):
+    closing = view.get("construction_refinance", {})
+    pre_stab = stabilized_equity(view, cash, calendar)
+    if pre_stab is None:
         return {}, None
+    scale = amount(cash["scale_factor"])
+    cutoff = calendar["stabilization_date"]
     values = {}
     if (closing.get("date") == calendar["refinance_date"] and calendar["refinance_date"] >= cutoff
             and closing.get("blockers") == []):
@@ -42,7 +51,7 @@ def refinance_values(view, cash, calendar):
             ("equity_cash_in", "projected_cash_in_required", "refinance_cash_in"),
         ):
             observed = amount(closing.get(field))
-            dated = sum((amount(e["amount"]) for e in events if e["category"] == category
+            dated = sum((amount(e["amount"]) for e in cash["events"] if e["category"] == category
                          and e["date"] == closing["date"]), Fraction())
             if observed is not None and observed >= 0 and observed * scale == dated:
                 values[metric] = observed / pre_stab
@@ -142,14 +151,15 @@ def calculated_case(result, case, configuration, configuration_raw):
     for name in SCENARIOS:
         view = scenarios[name]
         cash, dates = view.get("cash_per_usd_10"), view.get("project_calendar", {})
-        scope[name] = dict(refinance_in_scope=True, equity_remains_after_refi=None)
+        refi = view.get("refinance_in_scope", True)
+        scope[name] = dict(refinance_in_scope=refi, equity_remains_after_refi=None)
         metrics[name] = {}
         proof[name] = dict(window=None, equity_through_stabilization=None, cash_sha256=None)
         if cash is None or amount(cash.get("reference_amount")) != 10 or view.get("blockers"):
             gaps.append(f"{name}:verified_project_cash_unavailable")
             continue
         proof[name]["cash_sha256"] = sha256(encode(cash)).hexdigest()
-        values, pre_stab = refinance_values(view, cash, dates)
+        values, pre_stab = refinance_values(view, cash, dates) if refi else ({}, stabilized_equity(view, cash, dates))
         proof[name]["equity_through_stabilization"] = None if pre_stab is None else rational(pre_stab)
         cost = evidence[name].get("cost_basis", {})
         tdc = amount(cost.get("tdc"))
@@ -161,7 +171,10 @@ def calculated_case(result, case, configuration, configuration_raw):
             if (row["definition_ref"] == definition and row["unit"] == unit and row["period_ref"]
                     and not row.get("blockers") and row["value"] is not None):
                 values[metric] = amount(row["value"])
-        if annual_inputs is None:
+        retained = coc = None
+        if not refi:
+            coc_blocker = None
+        elif annual_inputs is None:
             retained = amount(view.get("post_refinance_coc", {}).get("equity_still_invested"))
             coc = full_annual_coc(view, dates)
             coc_blocker = "verified_full_annual_window_required"
@@ -175,7 +188,7 @@ def calculated_case(result, case, configuration, configuration_raw):
             scope[name]["equity_remains_after_refi"] = retained > 0
         if coc is not None:
             values["post_refi_CoC"] = coc
-        elif retained is None or retained > 0:
+        elif refi and (retained is None or retained > 0):
             gaps.append(f"{name}:post_refi_CoC:{coc_blocker}")
         investment = amount(cash["total_contributions"])
         window = f"{dates['purchase_date']}/{dates['sale_date']}"
@@ -188,7 +201,10 @@ def calculated_case(result, case, configuration, configuration_raw):
                 values["IRR"] = irr["annual_enclosure"]
         if name == "Base":
             settings = case["rent_inputs"]["definition_screening"][name]["rlv"]
-            rlv, search = base_rlv(view, evidence[name], values, pre_stab, retained, settings, configuration)
+            if refi:
+                rlv, search = base_rlv(view, evidence[name], values, pre_stab, retained, settings, configuration)
+            else:
+                rlv, search = None, dict(state="PENDING", blocker="rlv_criteria_without_refinance_unconfirmed")
             proof[name]["rlv_price_search"] = search
             if rlv is not None:
                 values[RLV] = rlv

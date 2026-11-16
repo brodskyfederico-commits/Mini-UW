@@ -80,6 +80,42 @@ def confirmed_period_amounts(records, dates):
         for row in records.values()))
 
 
+def hold_forward_noi(terms, sale_date):
+    record = object_or_empty(terms.get("delayed_forward_noi"))
+    start = offset(day(sale_date).replace(day=1), 1)
+    if (synthetic_id(record.get("source_ref")) and record.get("noi_basis") == "before_replacement_reserves"
+            and record.get("period_ref") == f"{start}/{offset(start, 12)}"):
+        return number(record.get("value"))
+    return None
+
+
+def construction_hold_schedule(funding, terms, start, dates, payoff):
+    """Keep existing principal outstanding under explicit post-construction loan terms."""
+    hold = object_or_empty(terms.get("construction_hold"))
+    fractions = hold.get("interest_fractions")
+    if (not synthetic_id(hold.get("source_ref")) or hold.get("principal_basis") != "unchanged_until_sale"
+            or not confirmed_period_amounts(fractions, dates)):
+        return pending("documented_construction_hold_interest_required")
+    rates = [number(fractions[when]["value"]) for when in dates]
+    if any(not 0 <= rate <= 1 for rate in rates):
+        return pending("construction_hold_interest_fraction_out_of_range")
+    maturity = day(funding["debt_source"].get("maturity_date"))
+    if maturity is None or start > maturity:
+        return pending("construction_loan_matures_before_hold")
+    if "maturity_extension" in hold:
+        extension = object_or_empty(hold["maturity_extension"])
+        extended = day(extension.get("date"))
+        if (extended is None or extended < maturity or not synthetic_id(extension.get("source_ref"))
+                or number(extension.get("fee_usd")) != 0):
+            return pending("construction_extension_requires_documented_maturity_and_zero_fee")
+        maturity = extended
+    if day(dates[-1]) > maturity:
+        return pending("construction_loan_matures_before_sale")
+    payments = [dict(date=when, opening=payoff, interest=payoff * rate, principal=Fraction(),
+                     service=payoff * rate, closing=payoff) for when, rate in zip(dates, rates, strict=True)]
+    return dict(schedule=payments, construction_maturity=maturity.isoformat(), construction_hold=hold)
+
+
 def annual_route_coc(flows, payments, quarterly_noi, reserve, scale, refi_date, date_of_sale, refinance, source_ref):
     """Feed D232 the same quarterly NOI, debt and normalized cash as this route."""
     periods = []
@@ -124,8 +160,6 @@ def route_cash(view, terms):
         return pending("calendar_route_unconfirmed" if view.get("cash_per_usd_10") is not None
                        else "audited_input_cash_unavailable")
     quarterly = "quarterly_noi_before_reserves" in terms
-    if quarterly and mode != "interest_only_then_amortize":
-        return pending("quarterly_noi_route_requires_refinancing")
     if mode == "interest_only_then_amortize" and any(
             view.get(key) is None for key in ("cash_per_usd_10", "permanent_loan", "construction_refinance")):
         return pending("audited_input_cash_unavailable")
@@ -154,7 +188,7 @@ def route_cash(view, terms):
     # Keep the documented stabilized year and take its cash at the original cutoff.
     # The later exit carries only explicitly supplied interim net operating cash.
     cash_date = original["sale_date"]
-    start = day(original["refinance_date"])
+    start = day(original["refinance_date"]) if mode == "interest_only_then_amortize" else None
     tax_record = terms.get("construction_tax")
     tax_date = None
     if (isinstance(tax_record, dict) and tax_record.get("applicability") == "no_incremental_tax_in_variant"
@@ -236,8 +270,6 @@ def route_cash(view, terms):
         payments = phased["schedule"][:sale_index]
         sale_date = payments[-1]["date"]
         forward = terms.get("delayed_forward_noi")
-        period_start = offset(day(sale_date).replace(day=1), 1)
-        expected_window = f"{period_start}/{offset(period_start, 12)}"
         interim = terms.get("quarterly_noi_before_reserves" if quarterly else "intermediate_net_operating_cash")
         interim_dates = [row["date"] for row in payments if row["date"] != cash_date]
         if quarterly:
@@ -250,16 +282,35 @@ def route_cash(view, terms):
                 return pending("four_documented_noi_quarters_after_refinancing_required")
         elif not confirmed_period_amounts(interim, interim_dates):
             return pending("delayed_exit_interim_cash_unconfirmed")
-        if (not isinstance(forward, dict) or not synthetic_id(forward.get("source_ref"))
-                or forward.get("period_ref") != expected_window or forward.get("noi_basis") != "before_replacement_reserves"
-                or number(forward.get("value")) is None):
+        forward_noi = hold_forward_noi(terms, sale_date)
+        if forward_noi is None:
             return pending("delayed_exit_forward_noi_or_interim_cash_unconfirmed")
-        forward_noi = number(forward["value"])
         reference = dict(schedule=payments, capacity=capacity, requested_principal=request,
                          forward_noi_source=forward, interim_cash=interim)
         if quarterly:
             reference["quarterly_noi_source"] = reference.pop("interim_cash")
         sale_principal = payments[-1]["closing"]
+    elif quarterly:
+        start = day(rows[-1]["date"])
+        try:
+            dates = [offset(start, n).isoformat() for n in (3, 6, 9, 12)]
+        except ValueError:
+            return pending("verified_quarterly_anniversary_grid_required")
+        interim = terms["quarterly_noi_before_reserves"]
+        if (reserve.get("rules", {}).get("period_months") != 12 or "intermediate_net_operating_cash" in terms
+                or not confirmed_period_amounts(interim, dates)):
+            return pending("four_documented_noi_quarters_without_refinancing_required")
+        sale_date = dates[-1]
+        reference = construction_hold_schedule(funding, terms, start, dates, payoff)
+        if reference.get("state") == "PENDING":
+            return reference
+        forward_noi = hold_forward_noi(terms, sale_date)
+        if forward_noi is None:
+            return pending("delayed_exit_forward_noi_or_interim_cash_unconfirmed")
+        reference.update(forward_noi_source=terms["delayed_forward_noi"], quarterly_noi_source=interim)
+        payments = reference["schedule"]
+        reserve_balance = release = Fraction()
+        sale_principal = payoff
     else:
         sale_date = original["sale_date"]
         if day(sale_date) > day(funding["debt_source"]["maturity_date"]):
@@ -316,7 +367,15 @@ def route_cash(view, terms):
                   debt=reference, sale=dict(date=sale_date, gross=gross, cost=cost, principal_paid=sale_principal),
                   cash_by_period=rows, cash_per_usd_10=dict(events=flows, additional=contributed - 10,
                                                            received=received, unrecovered=max(Fraction(), contributed - received)))
-    if quarterly:
+    if quarterly and mode == "interest_only_then_amortize":
         result["annual_post_refi_coc"] = annual_route_coc(flows, payments, interim, deposit, scale,
                                                        start.isoformat(), sale_date, cash_out, terms["source_ref"])
+    elif quarterly:
+        noi = sum(number(row["value"]) for row in interim.values()) - deposit
+        service = sum(row["service"] for row in payments)
+        operating = sum(row["distribution"] - row["contribution"] for row in rows if row["stage"] == "operation")
+        if operating != noi - service:
+            raise ValueError("Annual cash does not reconcile to the construction-hold operating ledger")
+        result["annual_without_refi"] = dict(window_start=start.isoformat(), window_end=sale_date,
+                                            noi_after_reserves=noi, scheduled_debt_service=service)
     return result
