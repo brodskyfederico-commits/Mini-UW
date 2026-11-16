@@ -605,7 +605,7 @@ def main():
     deliver.add_argument("--output", required=True, type=Path)
     for name in ("compare-annual", "compare-annual-crossover", "compare-annual-crossover-sale",
                  "compare-annual-crossover-construction", "compare-downside-construction-sale",
-                 "compare-downside-fixed-sale"):
+                 "compare-downside-fixed-sale", "compare-downside-fixed-sale-balance"):
         annual = subcommands.add_parser(name)
         annual.add_argument("directory", type=Path)
         annual.add_argument("--current-revision", required=True, type=Path)
@@ -664,6 +664,11 @@ def main():
 
             result = deliver_downside_fixed_sale_construction(args.directory, args.output, args.current_revision,
                                                              (args.with_refi, args.without_refi))
+        elif args.command == "compare-downside-fixed-sale-balance":
+            from worksheet_downside_fixed_sale_balance import deliver_downside_fixed_sale_balance
+
+            result = deliver_downside_fixed_sale_balance(args.directory, args.output, args.current_revision,
+                                                        (args.with_refi, args.without_refi))
         else:
             from worksheet_preflight_D116 import preflight as inspect_workbook
             result = inspect_workbook(read_workbook(args.workbook), args.deal_id, args.snapshot)

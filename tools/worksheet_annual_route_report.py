@@ -53,18 +53,18 @@ def dated_cash(scenario):
     return dated
 
 
-def dated_lines(scenarios):
+def dated_lines(scenarios, names=SCENARIOS):
     dated = defaultdict(dict)
-    for name in SCENARIOS:
+    for name in names:
         for key, cell in dated_cash(scenarios[name]).items():
             dated[key][name] = cell
     order = {stage: index for index, stage in enumerate(STAGES)}
-    lines = [(f"{'Fecha y etapa':32} | {'Base':^19} | {'Downside':^19}", True),
-             (f"{'':32} | {'Aporta / Cobra':^19} | {'Aporta / Cobra':^19}", False)]
+    lines = [(f"{'Fecha y etapa':32} | " + " | ".join(f"{name:^19}" for name in names), True),
+             (f"{'':32} | " + " | ".join(f"{'Aporta / Cobra':^19}" for _ in names), False)]
     for (when, stage), by_name in sorted(dated.items(), key=lambda item: (item[0][0], order[item[0][1]])):
         values = " | ".join(
             " / ".join(f"{usd(value):>8}" for value in by_name[name]) if name in by_name else f"{'—':^19}"
-            for name in SCENARIOS)
+            for name in names)
         lines.append((f"{when}  {STAGES[stage]:20} | {values}", False))
     return lines
 
