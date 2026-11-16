@@ -40,18 +40,24 @@ def totals(scenario, name):
     ]
 
 
+def dated_cash(scenario):
+    dated = {}
+    for stage in ("refinance", "sale"):
+        when = scenario[f"{stage}_date"]
+        if when is not None:
+            dated[when, stage] = [Fraction(), Fraction()]
+    for row in scenario["cash_per_usd_10"]["events"]:
+        cell = dated.setdefault((row["date"], row["stage"]), [Fraction(), Fraction()])
+        cell[0] += amount(row["contribution"])
+        cell[1] += amount(row["receipt"])
+    return dated
+
+
 def dated_lines(scenarios):
     dated = defaultdict(dict)
     for name in SCENARIOS:
-        scenario = scenarios[name]
-        for stage in ("refinance", "sale"):
-            when = scenario[f"{stage}_date"]
-            if when is not None:
-                dated[when, stage][name] = [Fraction(), Fraction()]
-        for row in scenario["cash_per_usd_10"]["events"]:
-            cell = dated[row["date"], row["stage"]].setdefault(name, [Fraction(), Fraction()])
-            cell[0] += amount(row["contribution"])
-            cell[1] += amount(row["receipt"])
+        for key, cell in dated_cash(scenarios[name]).items():
+            dated[key][name] = cell
     order = {stage: index for index, stage in enumerate(STAGES)}
     lines = [(f"{'Fecha y etapa':32} | {'Base':^19} | {'Downside':^19}", True),
              (f"{'':32} | {'Aporta / Cobra':^19} | {'Aporta / Cobra':^19}", False)]
