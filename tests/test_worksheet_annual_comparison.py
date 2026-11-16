@@ -1,6 +1,8 @@
 """Verify the four-route page against an independent reading of the audited ledger."""
 
 from copy import deepcopy
+from datetime import date
+from fractions import Fraction
 from hashlib import sha256
 import json
 from pathlib import Path
@@ -17,6 +19,7 @@ from test_worksheet_annual_holding import ROUTE, source_files
 from test_worksheet_annual_sale_without_refi import SALE, settings_with_sale
 from worksheet_annual_coc import quantity as amount
 from worksheet_annual_comparison import annual_cash, deliver_annual_comparison, render_page
+from worksheet_annual_discount_crossover import crossover_by_scenario, shown_rate
 from worksheet_intake_D198 import assemble, register
 from worksheet_sale_rate_grid_D84 import money
 
@@ -62,6 +65,28 @@ class WorksheetAnnualComparisonTests(TestCase):
             self.assertEqual(count, 52)
             for key, cells in directory_ledger.items():
                 self.assertIn(" | ".join([key, *cells]), report)
+
+            cross = crossover_by_scenario(annual_cash(model, (ROUTE, SALE)))
+            for name, row in cross.items():
+                self.assertEqual(shown_rate(row), {"Base": "0,6532%", "Downside": "1,7903%"}[name])
+                origin = date.fromisoformat(row["purchase_date"])
+
+                def pv(variant, rate):
+                    events = receipt["scenarios"][name][variant]["cash_per_usd_10"]["events"]
+                    total = Fraction()
+                    for event in events:
+                        when = date.fromisoformat(event["date"])
+                        offset = 12 * (when.year - origin.year) + when.month - origin.month
+                        total += (amount(event["receipt"]) - amount(event["contribution"])) / (1 + rate) ** offset
+                    return total
+
+                lower, upper = (amount(row[key]) for key in ("monthly_rate_lower", "monthly_rate_upper"))
+                self.assertLessEqual(upper - lower, Fraction(1, 10**10))
+                self.assertLess(pv("Con refi", lower), pv("Sin refi", lower))
+                self.assertGreaterEqual(pv("Con refi", upper), pv("Sin refi", upper))
+                self.assertEqual(pv("Con refi", Fraction()) - pv("Sin refi", Fraction()),
+                                 amount(row["net_nominal_with_refi"]) - amount(row["net_nominal_without_refi"]))
+                self.assertEqual(pv("Sin refi", (lower + upper) / 2), amount(row["npv_at_midpoint_without_refi"]))
 
             changed = deepcopy(model)
             changed["calendar_checks"]["Base"][SALE]["sale"]["gross"] = rational(1)

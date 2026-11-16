@@ -89,8 +89,7 @@ def comparison_lines(table):
     return lines
 
 
-def deliver_annual_comparison(directory, output, current_revision, labels):
-    require_pdf_destination(directory, output, current_revision)
+def audited_annual_comparison(directory, current_revision, labels):
     revision = read_current_revision(current_revision, directory)
     files, result = _audit_package(directory)
     require(result["decision"] == "PENDING" and not result["real_decisions_enabled"] and not result["deployment_enabled"],
@@ -98,12 +97,17 @@ def deliver_annual_comparison(directory, output, current_revision, labels):
     review = audit_revision(result, revision)
     require(review["vigencia"] == "VIGENTE", "La revisión no está vigente")
     require_delivery_evidence(result)
-    table = annual_cash(result, labels)
-    pdf = render_page(review["current_revision"], comparison_lines(table), 11.4,
+    return files, revision, review["current_revision"], annual_cash(result, labels)
+
+
+def deliver_annual_comparison(directory, output, current_revision, labels):
+    require_pdf_destination(directory, output, current_revision)
+    files, revision, case_revision, table = audited_annual_comparison(directory, current_revision, labels)
+    pdf = render_page(case_revision, comparison_lines(table), 11.4,
                       "MINI-UW | SI INVIERTO USD 10, ¿CUÁNTO COBRO Y CUÁNDO?",
                       "Comparación anual | Base y Downside, con y sin refinanciación")
     publish_current_pdf(directory, files, current_revision, revision, output, pdf)
-    return dict(decision="PENDING", page_count=1, current_revision=review["current_revision"],
+    return dict(decision="PENDING", page_count=1, current_revision=case_revision,
                 revision_sha256=sha256(revision).hexdigest(), source_results_sha256=sha256(files["results.json"]).hexdigest(),
                 pdf_sha256=sha256(pdf).hexdigest(), route_labels=dict(with_refinance=labels[0], without_refinance=labels[1]),
                 scenarios={name: {caption: table[name, caption] for caption, _, _ in ROUTES} for name in SCENARIOS})

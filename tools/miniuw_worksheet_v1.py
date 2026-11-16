@@ -603,12 +603,13 @@ def main():
     deliver.add_argument("directory", type=Path)
     deliver.add_argument("--current-revision", required=True, type=Path)
     deliver.add_argument("--output", required=True, type=Path)
-    annual = subcommands.add_parser("compare-annual")
-    annual.add_argument("directory", type=Path)
-    annual.add_argument("--current-revision", required=True, type=Path)
-    annual.add_argument("--output", required=True, type=Path)
-    annual.add_argument("--with-refi", required=True)
-    annual.add_argument("--without-refi", required=True)
+    for name in ("compare-annual", "compare-annual-crossover"):
+        annual = subcommands.add_parser(name)
+        annual.add_argument("directory", type=Path)
+        annual.add_argument("--current-revision", required=True, type=Path)
+        annual.add_argument("--output", required=True, type=Path)
+        annual.add_argument("--with-refi", required=True)
+        annual.add_argument("--without-refi", required=True)
     preflight = subcommands.add_parser("preflight")
     preflight.add_argument("workbook", type=Path)
     preflight.add_argument("--deal-id", required=True)
@@ -636,6 +637,11 @@ def main():
 
             result = deliver_annual_comparison(args.directory, args.output, args.current_revision,
                                                (args.with_refi, args.without_refi))
+        elif args.command == "compare-annual-crossover":
+            from worksheet_annual_discount_crossover import deliver_annual_crossover
+
+            result = deliver_annual_crossover(args.directory, args.output, args.current_revision,
+                                              (args.with_refi, args.without_refi))
         else:
             from worksheet_preflight_D116 import preflight as inspect_workbook
             result = inspect_workbook(read_workbook(args.workbook), args.deal_id, args.snapshot)
