@@ -2007,3 +2007,7 @@ La hoja de una página muestra los cobros por USD 10 y las métricas calculadas.
 ## D230 · Configuración versionada de criterios de Lorena
 
 La receta compila diez métricas y 29 umbrales exactos desde el DOCX verificado, con operadores, unidades, bases y localizadores. Pasaron 46 pruebas dirigidas en el VPS y cinco ensayos por línea de comandos para PASS, ambos HOLD, FAIL y PENDING ante un FAIL y un faltante material juntos. El dictamen operativo y el retorno histórico del 1101 siguen PENDING. GitHub conserva la receta y los ensayos reproducibles. Los valores compilados y los registros del VPS quedan locales. [Criterios y reproducción](docs/lorena-screening-D230.md).
+
+## D246 · Saldo de Downside al 1 % y al 2 % mensual
+
+Con la venta en USD 6 millones y el recorte de obra directa del 50 %, los cuatro saldos se cotejaron en el VPS contra los flujos fechados de D245, reproducidos desde el expediente sintético. Al 1 % sobran USD 3,5507 con refi y USD 3,6500 sin refi por USD 10 iniciales. Al 2 % faltan USD 0,7032 con refi y USD 0,8383 sin refi. El dictamen y el retorno histórico del 1101 real siguen PENDING. [Comparación y reproducción](docs/worksheet-downside-fixed-sale-discount-rates-D246.md).
