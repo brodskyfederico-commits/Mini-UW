@@ -22,6 +22,7 @@ from worksheet_annual_comparison import annual_cash, deliver_annual_comparison, 
 from worksheet_annual_crossover_construction import construction_at_cut, construction_recovery, reprice_route
 from worksheet_annual_crossover_sale_price import sale_prices
 from worksheet_annual_discount_crossover import crossover_by_scenario, shown_rate
+from worksheet_downside_construction_sale import CUTS, downside_combinations
 from worksheet_intake_D198 import assemble, register
 from worksheet_sale_rate_grid_D84 import money
 
@@ -143,6 +144,24 @@ class WorksheetAnnualComparisonTests(TestCase):
                         self.assertIsNone(path["direct_cut"])
                         self.assertEqual(amount(path["tested_direct_cost"]), 0)
                         self.assertLess(amount(path["tested_terminal_bounds"]["upper"]), 0)
+
+            combinations = downside_combinations(model, inputs, annual_cash(model, (ROUTE, SALE)), (ROUTE, SALE))
+            expected_pairs = (
+                ("8919058.39", "8919058.39"), ("7426692.33", "7450445.38"), ("5967646.91", "6015153.02"),
+                ("4582547.40", "4696913.53"), ("3407011.14", "3726831.21"),
+            )
+            for ratio, row, pair in zip(CUTS, combinations["rows"], expected_pairs, strict=True):
+                self.assertEqual(amount(row["cut_ratio"]), ratio)
+                self.assertEqual(amount(row["tested_direct_cost"]), Fraction(2744000) * (1 - ratio))
+                for caption, expected_price in zip(("Con refi", "Sin refi"), pair, strict=True):
+                    path = row["paths"][caption]
+                    price = path["price"]
+                    self.assertEqual(amount(price["minimum_gross_at_cents"]), Fraction(expected_price))
+                    self.assertLess(amount(price["below_terminal_upper"]), 0)
+                    self.assertGreaterEqual(amount(price["minimum_terminal_lower"]), 0)
+                    cash = path["dated_cash_at_original_price"]
+                    self.assertEqual(amount(path["total_received_per_10_at_minimum"]),
+                                     amount(cash["received"]) + amount(price["net_sale_increase_per_10"]))
 
             changed = deepcopy(model)
             changed["calendar_checks"]["Base"][SALE]["sale"]["gross"] = rational(1)
