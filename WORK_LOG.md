@@ -2023,3 +2023,7 @@ Con venta bruta de USD 6 millones y tasa del 2 % mensual, recuperar todos los ap
 ## D249 · Precio de venta mínimo de Downside con recorte de obra del 55 %
 
 Al 2 % mensual, el precio bruto de venta que recupera los aportes por USD 10 sube desde USD 6 millones hasta USD 6.063.292,98 con refi y USD 6.140.239,75 sin refi. El cotejo del VPS reprodujo la caja del 50 %, recalculó el recorte del 55 % y verificó el centavo inferior de cada precio. El dictamen y el retorno histórico del 1101 real siguen PENDING. [Comparación y reproducción](docs/worksheet-downside-minimum-sale-55-cut-D249.md).
+
+## D251 · Incorporación de la matriz de 33 políticas
+
+Se preservó la revisión aportada por el usuario con tres páginas y SHA-256 verificado. La revisión clasifica 8 políticas como cumplidas, 21 parciales y 4 sin cumplir, más una observación de renta asequible fuera de ese conteo. El índice enlaza cada grupo abierto con su evidencia y condición de aprobación. La incorporación es documental y el 1101 real sigue PENDING. [Matriz y registro](docs/worksheet-policy-review-D251.md).
