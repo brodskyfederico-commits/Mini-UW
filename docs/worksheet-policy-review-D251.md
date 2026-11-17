@@ -34,3 +34,5 @@ La fila de renta asequible está en la página 3, después de la política 33. L
 Los comentarios quedan registrados para el cotejo con el repositorio y con el responsable de criterios. La incorporación documental conserva el perfil sintético, las configuraciones vigentes y el 1101 real **PENDING**.
 
 **Referencias.** [Conflictos y autoridad de fuentes](requirements-conflicts.md) · [Planilla y Live Local D174](workbook-supplemental-scope-D174.md) · [M2 D203](workbook-florida-tax-D203.md) · [Propuestas D218](workbook-professional-proposals-D218.md) · [Ruta sin refi D237](worksheet-annual-sale-without-refinance-D237.md).
+
+El [cotejo D252 contra el código y las pruebas](worksheet-policy-implementation-audit-D252.md) registra el estado verificado por política y los pendientes de implementación.

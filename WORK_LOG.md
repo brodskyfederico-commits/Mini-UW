@@ -2031,3 +2031,7 @@ Se preservó la revisión aportada por el usuario con tres páginas y SHA-256 ve
 ## D250 · Cierre de regresión del Mini-UW v1 e informe integral
 
 Pasaron 1.676 pruebas unitarias (87 min 17 s), 26 suites de referencia, el ensayo integral D102 y la aceptación D200 en una copia limpia del commit D249. La primera sesión se interrumpió por duración y la corrida completa se repitió en un proceso independiente. La constancia conserva el corte, los comandos, estados y huellas. El informe reúne 7 Dots, 17 bots, 55 campos originales, 8 complementarios, 85 fórmulas y reglas y 52 movimientos sintéticos por USD 10. El piloto real, el dictamen y el retorno histórico del 1101 siguen PENDING. [Informe integral](docs/MiniUW_Informe_Integral_D250.md) · [Constancia](docs/review/MiniUW_Validacion_D250.json).
+
+## D252 · Cotejo de las 33 políticas contra código y pruebas
+
+Auditado el corte D250 preservado en GitHub. Siete políticas cubiertas en el perfil sintético, veinticuatro parciales y dos con función pendiente. D143 verifica C36 con fuente ante GSF TBD, D150 implementa el máximo fiscal y deja pendiente el stress de incertidumbre de Downside, y se verifica el múltiplo mientras continúa pendiente el horizonte de cinco años. Pasaron 46 pruebas dirigidas y los verificadores D143 y D155. Cambios de documentación. 1101 real PENDING. [Auditoría por política](docs/worksheet-policy-implementation-audit-D252.md).
