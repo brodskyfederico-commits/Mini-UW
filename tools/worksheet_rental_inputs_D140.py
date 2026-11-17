@@ -814,6 +814,13 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
             for name in SCENARIOS
         }
         pipeline["pipeline"]["version_tests"]["suite"] = "test_worksheet_critical_evidence_gate_D220.py"
+    inputs = object_or_empty(case.get("rent_inputs"))
+    if "sensitivities" in inputs:
+        from worksheet_sensitivities_D253 import evaluate_sensitivities
+        pipeline["sensitivity_evaluation"] = evaluate_sensitivities(
+            inputs["sensitivities"], review, views, run_scenario, revision=revision, documents=document_review,
+            evidence_gate=evidence_gate, case_sha256=case_sha256)
+
     return dict(profile=profile, state=state,
                 case_sha256=case_sha256, decision="PENDING", simulation_result=simulation,
                 real_decisions_enabled=False, deployment_enabled=False, personal_investor_return=None,

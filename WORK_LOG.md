@@ -2035,3 +2035,7 @@ Pasaron 1.676 pruebas unitarias (87 min 17 s), 26 suites de referencia, el ensay
 ## D252 · Cotejo de las 33 políticas contra código y pruebas
 
 Auditado el corte D250 preservado en GitHub. Siete políticas cubiertas en el perfil sintético, veinticuatro parciales y dos con función pendiente. D143 verifica C36 con fuente ante GSF TBD, D150 implementa el máximo fiscal y deja pendiente el stress de incertidumbre de Downside, y se verifica el múltiplo mientras continúa pendiente el horizonte de cinco años. Pasaron 46 pruebas dirigidas y los verificadores D143 y D155. Cambios de documentación. 1101 real PENDING. [Auditoría por política](docs/worksheet-policy-implementation-audit-D252.md).
+
+## D253 · Sensibilidades explícitas de cap, costos de venta y renta
+
+El expediente sintético recalcula C67, C68 y C75 por separado y en conjunto. Base cobra USD 17,54 frente a USD 18,06 por USD 10 iniciales en el ensayo conjunto. Downside conserva el cálculo aislado de C68 en cero y bloquea los ensayos con cap fuera de evidencia o refi por encima de capacidad. El VPS verificó la corrida D253 con B16, reprodujo el expediente previo D200 y pasó el verificador D155. El dictamen y retorno histórico del 1101 real siguen PENDING. [Cotejo y reproducción](docs/workbook-sensitivities-D253.md).

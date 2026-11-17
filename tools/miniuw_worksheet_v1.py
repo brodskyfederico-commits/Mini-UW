@@ -185,6 +185,9 @@ def build_results(raw, *, workbook_raw=None, downside_workbook_raw=None, current
                   evidence_raw=None, criteria_raw=None, delivery_report=False):
     case = _json(raw, MAX_INTEGRATED_PILOT_BYTES)
     schema = case.get("schema") if isinstance(case, dict) else None
+    rent_inputs = case.get("rent_inputs") if isinstance(case, dict) else None
+    require(not isinstance(rent_inputs, dict) or "sensitivities" not in rent_inputs or schema in TECHNICAL_SCHEMAS,
+            "Las sensibilidades requieren un expediente sintético de aceptación técnica")
     require(not delivery_report or schema in TECHNICAL_SCHEMAS,
             "La hoja de entrega requiere un perfil de aceptación integral o fiscal")
     require(schema in (WORKBOOK_INTEGRATED_SCREENING_SCHEMA, *DEFINITION_SCHEMAS) or len(raw) <= MAX_EXTENDED_PILOT_BYTES,
