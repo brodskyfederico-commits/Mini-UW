@@ -1,6 +1,6 @@
 """Require explicit buyer-tax and post-refinance cash-on-cash scopes."""
 from check_operating_replay_D20 import require
-from miniuw_foundation.debt_service import rational
+from miniuw_foundation.debt_service import _fraction, rational
 from miniuw_foundation.scheduled_expense_case import sha
 from miniuw_worksheet_v1 import encoded
 from worksheet_local_sources_D127 import check, number, object_or_empty, synthetic_id
@@ -56,7 +56,10 @@ def post_refi_coc(raw, name, view, *, require_noi_basis=False, property_tax=None
         result["property_tax"] = property_tax
     equity = number(record["equity_still_invested"])
     debt = view["dated_debt_service"]
-    service = number(debt["scheduled_service_due"])
+    try:
+        service = _fraction(debt["scheduled_service_due"], 1300)
+    except (ValueError, TypeError):
+        service = None
     result.update(period_noi=record["period_noi"] if property_tax is None else (None if noi is None else rational(noi)),
                   equity_still_invested=record["equity_still_invested"],
                   scheduled_debt_service=debt["scheduled_service_due"], debt_payment_date=debt["date"],

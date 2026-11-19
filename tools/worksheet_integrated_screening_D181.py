@@ -7,7 +7,8 @@ from check_reference_package import PackageError
 from check_scenario_pilot_D51 import METRICS as CASH_METRICS
 from check_worksheet_refinance_D45 import render_page
 from check_worksheet_return_metrics_D167 import KINDS, verify_irr
-from miniuw_foundation.debt_service import _fraction as amount, rational
+from functools import partial
+from miniuw_foundation.debt_service import _fraction, rational
 from miniuw_foundation.drafts import ValidationError
 from miniuw_foundation.irr_interval_output import ENGINE_SHA256, _compare, condition_relation
 from miniuw_foundation.scheduled_expense_case import sha
@@ -24,6 +25,7 @@ from worksheet_screening_pilot_D120 import METRIC_LABELS, RESULT_LABELS, criteri
 
 
 TDC_SCOPE = "project_uses_lease_up_origination_and_cash_interest_before_refinance"
+amount = partial(_fraction, max_digits=1300)
 CAP_BASIS = "synthetic_stabilized_comparable_cap"
 METRICS = {
     **{key: (unit, kind, currency, f"SYNTHETIC-D51-{definition}")
@@ -205,7 +207,7 @@ def compare_pass_only(metric, criterion, enclosure):
 
 
 def screen_integrated(case, views, blockers, *, definition_screening=False, criteria_review=None,
-                      technical_acceptance=False):
+                      technical_acceptance=False, scalar_engine=None):
     inputs = object_or_empty(object_or_empty(case.get("rent_inputs")).get("integrated_screening"))
     collections = {name: collect_metrics(name, view, object_or_empty(inputs.get(name)))
                    for name, view in views.items()}
@@ -260,7 +262,8 @@ def screen_integrated(case, views, blockers, *, definition_screening=False, crit
     aggregation = case.get("aggregation_rule")
     component = "D193" if definition_screening else "D181"
     case_id = f"SYNTHETIC-{component}"
-    scalar_result = simulate_screening(encoded(dict(
+    calculate_screening = simulate_screening if scalar_engine is None else scalar_engine
+    scalar_result = calculate_screening(encoded(dict(
         schema=SCHEMA, context=dict(deal_id=f"{case_id}-screening", scenario_id="SYNTHETIC-pair",
                                     run_id=case_id, definition_set_revision=f"{case_id}-integrated"),
         case_id=case_id, criteria_revision=revision if synthetic_id(revision) else "SYNTHETIC-unconfirmed",

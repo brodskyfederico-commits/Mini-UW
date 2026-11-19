@@ -4,13 +4,15 @@ from fractions import Fraction
 import json
 
 from check_worksheet_return_metrics_D167 import quarterly_cash
-from miniuw_foundation.debt_service import _fraction as amount, rational
+from functools import partial
+from miniuw_foundation.debt_service import _fraction, rational
 from plan_refinance_D108 import VALUE_PERIOD
 from worksheet_local_sources_D127 import number, object_or_empty, synthetic_id
 from worksheet_performance_policy_D184 import AFTER_RESERVES, BEFORE_RESERVES, equilibrium, price_screen
 
 
 OCCUPANCY = "breakeven_occupancy"
+amount = partial(_fraction, max_digits=1300)
 RLV = "asking_relative_to_supported_price"
 YOC = "SYNTHETIC-D193-reserve-adjusted-YoC"
 SPREAD = "SYNTHETIC-D193-spread-aligned-to-cap-NOI"

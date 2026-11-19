@@ -44,7 +44,7 @@ def quarterly_cash(cash, dates):
     for event in cash["events"]:
         if event["date"] not in flows:
             return None
-        value = _fraction(event["amount"])
+        value = _fraction(event["amount"], 1300)
         flows[event["date"]] += value if event["kind"] == "distribution" else -value
     return flows
 

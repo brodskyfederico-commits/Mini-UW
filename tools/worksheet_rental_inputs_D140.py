@@ -623,8 +623,20 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
             supplemental = supplemental | {"Downside": object_or_empty(supplemental.get("Downside")) | {"downside_scope": None}}
 
     routes = object_or_empty(object_or_empty(case.get("rent_inputs")).get("calendar_checks"))
+    integrated_engine = scalar_engine = transport_descriptor = None
+    transport_blockers = []
+    inputs = object_or_empty(case.get("rent_inputs"))
+    if "cash_transport" in inputs:
+        from worksheet_integrated_transport_D264 import integrated_engines
+        try:
+            integrated_engine, scalar_engine, transport_descriptor = integrated_engines(
+                inputs["cash_transport"], technical=technical_acceptance)
+        except (ValueError, TypeError, KeyError) as error:
+            transport_blockers = [str(error)]
 
     def run_scenario(name, source_review, *, scenario_inputs=None, construction_quote=None, bank_quote=None, cash_engine=None):
+        if transport_blockers:
+            return dict(state="PENDING", cash_per_usd_10=None, capacity=None, noi_by_period={}, blockers=transport_blockers)
         scenario_supplemental = supplemental
         if scenario_inputs is not None and require_supplemental_scope:
             scenario_supplemental = object_or_empty(scenario_inputs.get("supplemental_scope"))
@@ -638,7 +650,7 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
             and synthetic_id(object_or_empty(config).get("source_ref"))
             for config in requested_routes
         )
-        return run_rental_scenario(name, workbooks[name], source_review,
+        view = run_rental_scenario(name, workbooks[name], source_review,
                                       case.get("rent_inputs") if scenario_inputs is None else scenario_inputs,
                                       include_commercial=include_commercial, include_utilities=include_utilities,
                                       include_development=include_development, include_budget=include_budget,
@@ -652,7 +664,9 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
                                       require_formula_review=require_formula_review, supplemental=scenario_supplemental,
                                       require_debt_yield=require_debt_yield, florida_tax=florida_tax,
                                       sale_only_on_capacity_block=sale_only_on_capacity_block,
-                                      construction_quote_override=construction_quote, bank_quote_override=bank_quote, cash_engine=cash_engine)
+                                      construction_quote_override=construction_quote, bank_quote_override=bank_quote,
+                                      cash_engine=cash_engine if cash_engine is not None else integrated_engine)
+        return view if transport_descriptor is None else view | dict(exact_cash_transport=transport_descriptor)
 
     views = {name: run_scenario(name, review["scenarios"][name]) for name in SCENARIOS}
     evidence_gate = None
@@ -692,7 +706,8 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
     if integrated_screening:
         from worksheet_integrated_screening_D181 import screen_integrated
         screening = screen_integrated(case, views, blockers, definition_screening=definition_screening,
-                                      criteria_review=criteria_review, technical_acceptance=technical_acceptance)
+                                      criteria_review=criteria_review, technical_acceptance=technical_acceptance,
+                                      scalar_engine=scalar_engine)
     else:
         screening = screen(case, views, blockers, period_ref=period_ref)
     simulation = screening["simulation_result"]
