@@ -151,6 +151,19 @@ MAX_PLAN_BYTES = 2 * 1024 * 1024
 MAX_FILE_BYTES = 4 * 1024 * 1024
 MAX_EXTENDED_PILOT_BYTES = 32 * 1024
 MAX_INTEGRATED_PILOT_BYTES = 48 * 1024
+MAX_CONSTRUCTION_PILOT_BYTES = 96 * 1024
+CONSTRUCTION_SENSITIVITY_SCHEMA = "miniuw.synthetic-worksheet-sensitivities.v5"
+
+
+def read_case_source(raw):
+    case = _json(raw, MAX_CONSTRUCTION_PILOT_BYTES)
+    inputs = case.get("rent_inputs") if isinstance(case, dict) else None
+    sensitivity = inputs.get("sensitivities") if isinstance(inputs, dict) else None
+    construction = (isinstance(case, dict) and case.get("schema") in TECHNICAL_SCHEMAS
+                    and isinstance(sensitivity, dict) and sensitivity.get("schema") == CONSTRUCTION_SENSITIVITY_SCHEMA)
+    if not construction and len(raw) > MAX_INTEGRATED_PILOT_BYTES:
+        return _json(raw, MAX_INTEGRATED_PILOT_BYTES)
+    return case
 
 
 def read_case(case):
@@ -183,7 +196,7 @@ def read_case(case):
 
 def build_results(raw, *, workbook_raw=None, downside_workbook_raw=None, current_revision_raw=None, plan_raw=None,
                   evidence_raw=None, criteria_raw=None, delivery_report=False):
-    case = _json(raw, MAX_INTEGRATED_PILOT_BYTES)
+    case = read_case_source(raw)
     schema = case.get("schema") if isinstance(case, dict) else None
     rent_inputs = case.get("rent_inputs") if isinstance(case, dict) else None
     require(not isinstance(rent_inputs, dict) or "sensitivities" not in rent_inputs or schema in TECHNICAL_SCHEMAS,
@@ -391,7 +404,7 @@ def encoded(value):
 def build_package(raw, *, workbook_raw=None, downside_workbook_raw=None, current_revision_raw=None, plan_raw=None,
                   evidence_raw=None, criteria_raw=None, package_schema=None):
     if package_schema is None:
-        case = _json(raw, MAX_INTEGRATED_PILOT_BYTES)
+        case = read_case_source(raw)
         schema = case.get("schema") if isinstance(case, dict) else None
         package_schema = DELIVERY_PACKAGE_SCHEMA if schema in TECHNICAL_SCHEMAS else PACKAGE_SCHEMA
     require(package_schema in (PACKAGE_SCHEMA, DELIVERY_PACKAGE_SCHEMA), "Formato de expediente desconocido")
@@ -623,7 +636,7 @@ def main():
     args = parser.parse_args()
     try:
         if args.command == "run":
-            require(args.case.is_file() and args.case.stat().st_size <= MAX_INTEGRATED_PILOT_BYTES,
+            require(args.case.is_file() and args.case.stat().st_size <= MAX_CONSTRUCTION_PILOT_BYTES,
                     "A bounded case JSON file is required")
             workbook_raw = None if args.workbook is None else read_workbook(args.workbook)
             downside = None if args.downside_workbook is None else read_workbook(args.downside_workbook)

@@ -46,7 +46,7 @@ def staged_construction_financing(raw, name, review, context, development, budge
     require(maturity.isoformat() == maturity_text, "construction_maturity_unconfirmed")
     rows = {row["value_cell"].split("!")[1]: row for row in review["rows"]}
     ltc, annual, fee_rate = (loan_cell(rows, cell) for cell in ("C51", "C52", "C53"))
-    cells = {cell: f"sha256:{review['workbook_sha256']}#{rows[cell]['value_cell']}" for cell in ("C51", "C52", "C53")}
+    cells = {cell: rows[cell].get("sensitivity_value_source_ref", f"sha256:{review['workbook_sha256']}#{rows[cell]['value_cell']}") for cell in ("C51", "C52", "C53")}
     bank_document = None
     if construction_quote is not None:
         from worksheet_evidence_pdf_D156 import bind_document_terms

@@ -65,3 +65,5 @@ Se utilizan las dependencias de referencia y OCR del repositorio. La aceptación
 En el VPS pasaron las tres pruebas nuevas: cuatro cambios individuales y dos conjuntos válidos, más los controles de faltantes y deuda. D145 pasó sus trece casos de planilla, con diez PENDING esperados. B16 reprodujo sin diferencias el expediente D255 de sensibilidades v3 guardado. Son verificaciones dirigidas; la última batería general íntegra sigue siendo la registrada para D253.
 
 Se conservan las convenciones del perfil de financiación trimestral y el déficit mensual de lease-up declarado. Otros costos de tiempo, seguros de obra o gastos generales requieren su propio alcance y respaldo antes de recalcularse; no se agregan coeficientes. Los plazos del ensayo no se adoptan como escenarios automáticos, y la validación profesional y el uso real siguen pendientes.
+
+[D257](workbook-construction-sensitivities-D257.md) conecta C51–C53 con desembolsos, intereses, comisiones y caja mediante cotizaciones PDF sintéticas ligadas al respaldo original. Conserva la reproducción de v4.
