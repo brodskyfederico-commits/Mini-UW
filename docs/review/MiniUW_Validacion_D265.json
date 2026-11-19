@@ -1,0 +1,691 @@
+{
+  "milestone": "D265",
+  "state": "passed",
+  "mode": "synthetic_frozen_v1_regression",
+  "source_commit": "ff4e823117ec4543d9754cda4ef9ccfb0789359a",
+  "source_manifest_sha256": "70210942c62c039178cea9db1827144a2da2c72786cc22288cbe7c1a021fe35b",
+  "started_utc": "2026-11-19T19:36:20Z",
+  "finished_utc": "2026-11-19T22:01:08Z",
+  "elapsed_seconds": 8688,
+  "host": "ubuntu-dallas-2gb",
+  "python": "Python 3.12.3",
+  "real_decision": "PENDING",
+  "historical_return": "PENDING",
+  "deployment_enabled": false,
+  "all_33_policies_certified": false,
+  "real_document_empirical_acceptance": false,
+  "phases": {
+    "vacios": {
+      "command": "python3 tools/check_worksheet_blanks_and_zero_D171.py",
+      "exit_status": 0,
+      "started_utc": "2026-11-19T19:36:20Z",
+      "finished_utc": "2026-11-19T19:40:13Z",
+      "elapsed_seconds": 233,
+      "log_sha256": "8801aa5af0812df796fa49ad0610ba8dca163d72ffd344b961420ef9f3d72135",
+      "result": {
+        "decision": "PENDING",
+        "empty_cases": 440,
+        "fields": 55,
+        "integrated_explicit_zero_cases": 2,
+        "integrated_pending_cases": 6,
+        "nonnumeric_zero_rejections": 12,
+        "not_applicable_empty_cases": 4,
+        "numeric_zero_cases": 98,
+        "page_count": 1,
+        "pdf_sha256": "3e485462c5eb0ad63ffc7a38aa0fe9f555408589e2d149f3fd46e7fe29ad6795",
+        "pending_empty_cases": 436,
+        "scenarios": [
+          "Base",
+          "Downside"
+        ],
+        "status": "passed"
+      }
+    },
+    "unitarias": {
+      "command": "python3 -m unittest discover -s tests -v",
+      "exit_status": 0,
+      "started_utc": "2026-11-19T19:40:13Z",
+      "finished_utc": "2026-11-19T21:54:15Z",
+      "elapsed_seconds": 8042,
+      "log_sha256": "114a19b44bb3f3baf6ea15035296fd831129a9668e9950e567d9bbe1e3afe5e2",
+      "tests": 1715,
+      "reported_seconds": 8037.037,
+      "outcome": "OK",
+      "errors": []
+    },
+    "referencias": {
+      "command": "python3 tools/check_reference_package.py",
+      "exit_status": 0,
+      "started_utc": "2026-11-19T21:54:15Z",
+      "finished_utc": "2026-11-19T21:55:05Z",
+      "elapsed_seconds": 50,
+      "log_sha256": "2474d1b9a68f18ab2f25e80d6050cc8a12dd4826e48b95739e7fcb7f8e41cf46",
+      "result": {
+        "files_checked": 2043,
+        "unique_originals_checked": 16,
+        "coverage_rows": 398,
+        "status": "passed",
+        "reference_suites": 26,
+        "results": [
+          {
+            "script": "references/validate_m2_algebra.py",
+            "status": "passed",
+            "count": 186
+          },
+          {
+            "script": "references/validate_m34_allocation.py",
+            "status": "passed",
+            "count": 22
+          },
+          {
+            "script": "references/validate_m5_algebra.py",
+            "status": "passed",
+            "count": 36
+          },
+          {
+            "script": "references/validate_m6_refinance.py",
+            "status": "passed",
+            "count": 128
+          },
+          {
+            "script": "references/validate_m7_returns.py",
+            "status": "passed",
+            "count": 65
+          },
+          {
+            "script": "references/validate_m8_scenarios_price.py",
+            "status": "passed",
+            "count": 99
+          },
+          {
+            "script": "references/validate_m9_comparisons.py",
+            "status": "passed",
+            "count": 46
+          },
+          {
+            "script": "references/validate_integrated_bridge.py",
+            "status": "passed",
+            "count": 14
+          },
+          {
+            "script": "references/validate_revision_integrity.py",
+            "status": "passed",
+            "count": 29
+          },
+          {
+            "script": "references/validate_interface_contracts.py",
+            "status": "passed",
+            "count": 75
+          },
+          {
+            "script": "references/validate_calendar_ledger.py",
+            "status": "passed",
+            "count": 60
+          },
+          {
+            "script": "references/validate_cost_scope.py",
+            "status": "passed",
+            "count": 29
+          },
+          {
+            "script": "references/validate_evidence_locators.py",
+            "status": "passed",
+            "count": 21
+          },
+          {
+            "script": "references/validate_budget_payment_bridge.py",
+            "status": "passed",
+            "count": 41
+          },
+          {
+            "script": "references/validate_calculation_lineage.py",
+            "status": "passed",
+            "count": 48
+          },
+          {
+            "script": "references/validate_periodic_irr_isolation.py",
+            "status": "passed",
+            "count": 64
+          },
+          {
+            "script": "references/validate_investor_return_bridge.py",
+            "status": "passed",
+            "count": 43
+          },
+          {
+            "script": "references/validate_return_metric_bridge.py",
+            "status": "passed",
+            "count": 31
+          },
+          {
+            "script": "references/validate_operating_cash_bridge.py",
+            "status": "passed",
+            "count": 26
+          },
+          {
+            "script": "references/validate_settlement_bridge.py",
+            "status": "passed",
+            "count": 43
+          },
+          {
+            "script": "references/validate_financing_timeline.py",
+            "status": "passed",
+            "count": 50
+          },
+          {
+            "script": "references/validate_price_grid_catalogue.py",
+            "status": "passed",
+            "count": 52
+          },
+          {
+            "script": "references/validate_sensitivity_ranking.py",
+            "status": "passed",
+            "count": 33
+          },
+          {
+            "script": "references/validate_affine_price_support.py",
+            "status": "passed",
+            "count": 42
+          },
+          {
+            "script": "references/validate_refinance_capacity_bridge.py",
+            "status": "passed",
+            "count": 46
+          },
+          {
+            "script": "references/validate_structure_closeout.py",
+            "status": "passed",
+            "count": 31
+          }
+        ],
+        "production_ready": false,
+        "scope": "Package integrity and scoped synthetic references only; no independent financial audit, deal decision or production release."
+      }
+    },
+    "integral": {
+      "command": "python3 tools/check_integral_miniuw_D102.py",
+      "exit_status": 0,
+      "started_utc": "2026-11-19T21:55:05Z",
+      "finished_utc": "2026-11-19T21:55:59Z",
+      "elapsed_seconds": 54,
+      "log_sha256": "c6d5bd4e9bc4f5cd37ab88de3247570ec0e6e64927fb5e9f6ecc54241a91f2da",
+      "result": {
+        "status": "passed",
+        "decision": "PENDING",
+        "cash_cases": 2,
+        "recovery_probes": 6,
+        "blocked_inputs": 2,
+        "sale_only_verified": true,
+        "funding_cases": 9,
+        "one_page_report": true,
+        "pdf_sha256": "2560fe8707a8d9029f0c4923fa83bd3398c99b5e8c58ddd2f3972cd0419aa9b7"
+      }
+    },
+    "aceptacion": {
+      "command": "python3 tools/check_worksheet_technical_acceptance_D200.py --output <directorio nuevo>",
+      "exit_status": 0,
+      "started_utc": "2026-11-19T21:55:59Z",
+      "finished_utc": "2026-11-19T22:01:04Z",
+      "elapsed_seconds": 305,
+      "log_sha256": "3e7d7120aeb2ba9fccc22145253b7da9559144c5e3d5d2b5033327a7b7fa1e15",
+      "result": {
+        "allocation_terms_sha256": "f0cdcde8c7185d94bcbfbfadcc5cfb9cb68bac4dbbbc956c1a3e9948bae6cc3f",
+        "cases": {
+          "adverse": "FAIL",
+          "complete": "PASS",
+          "corrected": "PASS",
+          "incomplete": "PENDING"
+        },
+        "decision": "PENDING",
+        "deployment_enabled": false,
+        "identical_replay_files": 10,
+        "independent_checks": {
+          "Base": {
+            "allocation": {
+              "participants": {
+                "GP": {
+                  "own_initial_usd_10": {
+                    "additional": {
+                      "denominator": "24000",
+                      "numerator": "116809"
+                    },
+                    "capital_unreturned": {
+                      "denominator": "1",
+                      "numerator": "0"
+                    },
+                    "cash_unrecovered": {
+                      "denominator": "1",
+                      "numerator": "0"
+                    },
+                    "initial": {
+                      "denominator": "1",
+                      "numerator": "10"
+                    },
+                    "preference_paid": {
+                      "denominator": "1",
+                      "numerator": "0"
+                    },
+                    "total_received": {
+                      "denominator": "2100000000",
+                      "numerator": "34868409133"
+                    }
+                  },
+                  "project_usd_10": {
+                    "additional": {
+                      "denominator": "120000",
+                      "numerator": "116809"
+                    },
+                    "capital_unreturned": {
+                      "denominator": "1",
+                      "numerator": "0"
+                    },
+                    "cash_unrecovered": {
+                      "denominator": "1",
+                      "numerator": "0"
+                    },
+                    "initial": {
+                      "denominator": "1",
+                      "numerator": "2"
+                    },
+                    "preference_paid": {
+                      "denominator": "1",
+                      "numerator": "0"
+                    },
+                    "total_received": {
+                      "denominator": "10500000000",
+                      "numerator": "34868409133"
+                    }
+                  }
+                },
+                "LP": {
+                  "own_initial_usd_10": {
+                    "additional": {
+                      "denominator": "24000",
+                      "numerator": "116809"
+                    },
+                    "capital_unreturned": {
+                      "denominator": "1",
+                      "numerator": "0"
+                    },
+                    "cash_unrecovered": {
+                      "denominator": "1",
+                      "numerator": "0"
+                    },
+                    "initial": {
+                      "denominator": "1",
+                      "numerator": "10"
+                    },
+                    "preference_paid": {
+                      "denominator": "16000",
+                      "numerator": "29107"
+                    },
+                    "total_received": {
+                      "denominator": "2100000000",
+                      "numerator": "38688702883"
+                    }
+                  },
+                  "project_usd_10": {
+                    "additional": {
+                      "denominator": "30000",
+                      "numerator": "116809"
+                    },
+                    "capital_unreturned": {
+                      "denominator": "1",
+                      "numerator": "0"
+                    },
+                    "cash_unrecovered": {
+                      "denominator": "1",
+                      "numerator": "0"
+                    },
+                    "initial": {
+                      "denominator": "1",
+                      "numerator": "8"
+                    },
+                    "preference_paid": {
+                      "denominator": "20000",
+                      "numerator": "29107"
+                    },
+                    "total_received": {
+                      "denominator": "2625000000",
+                      "numerator": "38688702883"
+                    }
+                  }
+                }
+              },
+              "reconciled_dates": [
+                "2028-09-30",
+                "2028-12-30"
+              ]
+            },
+            "cash_per_usd_10": {
+              "additional": 4.87,
+              "events": [
+                {
+                  "category": "initial_capital",
+                  "date": "2027-03-30",
+                  "usd": 10.0
+                },
+                {
+                  "category": "additional_capital",
+                  "date": "2027-09-30",
+                  "usd": 4.66
+                },
+                {
+                  "category": "additional_capital",
+                  "date": "2027-12-30",
+                  "usd": 0.05
+                },
+                {
+                  "category": "additional_capital",
+                  "date": "2028-03-30",
+                  "usd": 0.05
+                },
+                {
+                  "category": "additional_capital",
+                  "date": "2028-06-30",
+                  "usd": 0.05
+                },
+                {
+                  "category": "additional_capital",
+                  "date": "2028-09-30",
+                  "usd": 0.05
+                },
+                {
+                  "category": "net_refinance_distribution",
+                  "date": "2028-09-30",
+                  "usd": 2.85
+                },
+                {
+                  "category": "operating_distribution",
+                  "date": "2028-12-30",
+                  "usd": 1.43
+                },
+                {
+                  "category": "net_sale_distribution",
+                  "date": "2028-12-30",
+                  "usd": 13.78
+                }
+              ],
+              "received": 18.06,
+              "unrecovered": 0.0
+            },
+            "independent_lines": 351,
+            "last_before_fail": 7350000,
+            "last_pass": 3200000,
+            "sources_and_uses_periods": 10
+          },
+          "Downside": {
+            "allocation": {
+              "participants": {
+                "GP": {
+                  "own_initial_usd_10": {
+                    "additional": {
+                      "denominator": "120000",
+                      "numerator": "982721"
+                    },
+                    "capital_unreturned": {
+                      "denominator": "2520000000",
+                      "numerator": "30523846973"
+                    },
+                    "cash_unrecovered": {
+                      "denominator": "2520000000",
+                      "numerator": "30523846973"
+                    },
+                    "initial": {
+                      "denominator": "1",
+                      "numerator": "10"
+                    },
+                    "preference_paid": {
+                      "denominator": "1",
+                      "numerator": "0"
+                    },
+                    "total_received": {
+                      "denominator": "2520000000",
+                      "numerator": "15313294027"
+                    }
+                  },
+                  "project_usd_10": {
+                    "additional": {
+                      "denominator": "600000",
+                      "numerator": "982721"
+                    },
+                    "capital_unreturned": {
+                      "denominator": "12600000000",
+                      "numerator": "30523846973"
+                    },
+                    "cash_unrecovered": {
+                      "denominator": "12600000000",
+                      "numerator": "30523846973"
+                    },
+                    "initial": {
+                      "denominator": "1",
+                      "numerator": "2"
+                    },
+                    "preference_paid": {
+                      "denominator": "1",
+                      "numerator": "0"
+                    },
+                    "total_received": {
+                      "denominator": "12600000000",
+                      "numerator": "15313294027"
+                    }
+                  }
+                },
+                "LP": {
+                  "own_initial_usd_10": {
+                    "additional": {
+                      "denominator": "120000",
+                      "numerator": "982721"
+                    },
+                    "capital_unreturned": {
+                      "denominator": "2520000000",
+                      "numerator": "30523846973"
+                    },
+                    "cash_unrecovered": {
+                      "denominator": "2520000000",
+                      "numerator": "30523846973"
+                    },
+                    "initial": {
+                      "denominator": "1",
+                      "numerator": "10"
+                    },
+                    "preference_paid": {
+                      "denominator": "1",
+                      "numerator": "0"
+                    },
+                    "total_received": {
+                      "denominator": "2520000000",
+                      "numerator": "15313294027"
+                    }
+                  },
+                  "project_usd_10": {
+                    "additional": {
+                      "denominator": "150000",
+                      "numerator": "982721"
+                    },
+                    "capital_unreturned": {
+                      "denominator": "3150000000",
+                      "numerator": "30523846973"
+                    },
+                    "cash_unrecovered": {
+                      "denominator": "3150000000",
+                      "numerator": "30523846973"
+                    },
+                    "initial": {
+                      "denominator": "1",
+                      "numerator": "8"
+                    },
+                    "preference_paid": {
+                      "denominator": "1",
+                      "numerator": "0"
+                    },
+                    "total_received": {
+                      "denominator": "3150000000",
+                      "numerator": "15313294027"
+                    }
+                  }
+                }
+              },
+              "reconciled_dates": [
+                "2029-03-30",
+                "2029-06-30"
+              ]
+            },
+            "cash_per_usd_10": {
+              "additional": 8.19,
+              "events": [
+                {
+                  "category": "initial_capital",
+                  "date": "2027-03-30",
+                  "usd": 10.0
+                },
+                {
+                  "category": "additional_capital",
+                  "date": "2027-06-30",
+                  "usd": 0.76
+                },
+                {
+                  "category": "additional_capital",
+                  "date": "2027-09-30",
+                  "usd": 0.04
+                },
+                {
+                  "category": "additional_capital",
+                  "date": "2027-12-30",
+                  "usd": 7.03
+                },
+                {
+                  "category": "additional_capital",
+                  "date": "2028-03-30",
+                  "usd": 0.07
+                },
+                {
+                  "category": "additional_capital",
+                  "date": "2028-06-30",
+                  "usd": 0.07
+                },
+                {
+                  "category": "additional_capital",
+                  "date": "2028-09-30",
+                  "usd": 0.07
+                },
+                {
+                  "category": "additional_capital",
+                  "date": "2028-12-30",
+                  "usd": 0.07
+                },
+                {
+                  "category": "additional_capital",
+                  "date": "2029-03-30",
+                  "usd": 0.07
+                },
+                {
+                  "category": "net_refinance_distribution",
+                  "date": "2029-03-30",
+                  "usd": 2.45
+                },
+                {
+                  "category": "operating_distribution",
+                  "date": "2029-06-30",
+                  "usd": 0.55
+                },
+                {
+                  "category": "net_sale_distribution",
+                  "date": "2029-06-30",
+                  "usd": 3.08
+                }
+              ],
+              "received": 6.08,
+              "unrecovered": 12.11
+            },
+            "independent_lines": 385,
+            "last_before_fail": 4140000,
+            "last_pass": 2720000,
+            "sources_and_uses_periods": 12
+          }
+        },
+        "package_hashes": {
+          "Criterios_Lorena.xlsx": "bf73287a310f339514f106d56f840c697b0d65460d366582b7d96e9a4bce0c79",
+          "Downside_Inputs.xlsx": "d1c8306c896ac4c1ae92c7b9d61b7dc5eeb1b9137e70b3b2b04df16edaf062e0",
+          "Evidence.pdf": "a8ad0c3a6e9bc7f05549afaded130b5b0390730a879ae507d8b3f11f8da91777",
+          "Inputs.xlsx": "408cfef08a08c4171a5f73f89c58559942f186220b3e11a6216e8d555e4fa96a",
+          "MiniUW_Resumen.pdf": "ed0f2ad2b0061afd70230b4f7fa3661d9b82ae6b004b96bbba822cfe4f7a6ddd",
+          "Plan.pdf": "8aa93ce770b565dd956e2fd37e1f2bbc55821d8ee9c2d757b7338aa84f41766a",
+          "case.json": "94aa8571d330dff6ee2b9410e59afe3b1a18b86ce946ee5ff3b3ba426e3f6d92",
+          "current_revision.json": "33567772b4f89a34b6ef8be6f13dbba5ebc6d24c330edf346687e73df74c0b41",
+          "package.json": "27c79d0f52bd504467da7e54a15743dd2f7b9b7d53aa5c13da7ccf00dc654ca1",
+          "results.json": "d1d83d99ff9279bc6a4a5c340abdd0acb969579f1bbef3b4de3930d1d560db0d"
+        },
+        "pilot_real": "PENDING",
+        "real_decisions_enabled": false,
+        "routes": {
+          "Base": {
+            "interest_only_then_amortize": {
+              "additional": 4.88,
+              "last_receipt": "2029-03-30",
+              "received": 16.64,
+              "unrecovered": 0.0
+            },
+            "sell_without_refinance": {
+              "additional": 4.87,
+              "last_receipt": "2028-12-30",
+              "received": 18.23,
+              "unrecovered": 0.0
+            }
+          },
+          "Downside": {
+            "interest_only_then_amortize": {
+              "additional": 8.33,
+              "last_receipt": "2029-09-30",
+              "received": 5.01,
+              "unrecovered": 13.33
+            },
+            "sell_without_refinance": {
+              "additional": 8.25,
+              "last_receipt": "2029-06-30",
+              "received": 6.47,
+              "unrecovered": 11.79
+            }
+          }
+        },
+        "status": "passed",
+        "technical_checklist": "16/16"
+      }
+    },
+    "integridad": {
+      "command": "python3 preparar.py verify",
+      "exit_status": 0,
+      "started_utc": "2026-11-19T22:01:04Z",
+      "finished_utc": "2026-11-19T22:01:08Z",
+      "elapsed_seconds": 4,
+      "log_sha256": "a4b8101b0be9e13f88b781d45caf06a5431712883e1e45fd8dc8c47f09d30057",
+      "result": {
+        "commit": "ff4e823117ec4543d9754cda4ef9ccfb0789359a",
+        "manifest_sha256": "70210942c62c039178cea9db1827144a2da2c72786cc22288cbe7c1a021fe35b",
+        "files_verified": 2042,
+        "workspace_and_snapshot_match": true
+      }
+    }
+  },
+  "additional_archive_replay": {
+    "milestone": "D263",
+    "profile": "synthetic precision-v11",
+    "verified_utc": "2026-11-19T22:02:45.478746+00:00",
+    "log_sha256": "0788458b8c05653ff9d4d9e2a17ed0b0037835d474c886fcc8950699d436402f",
+    "audit": {
+      "archived_revision": "SYNTHETIC-D263-exact-cash",
+      "archived_simulation_result": "PASS",
+      "audit_bot": "B16",
+      "current_revision": "SYNTHETIC-D263-exact-cash",
+      "decision": "PENDING",
+      "page_count": 1,
+      "pdf_sha256": "ed0f2ad2b0061afd70230b4f7fa3661d9b82ae6b004b96bbba822cfe4f7a6ddd",
+      "profile": "synthetic_documented_technical_acceptance",
+      "revision_blockers": [],
+      "simulation_result": "PASS",
+      "state": "PENDING",
+      "status": "verified_source_first",
+      "vigencia": "VIGENTE"
+    }
+  }
+}
