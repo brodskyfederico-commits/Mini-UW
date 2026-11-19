@@ -27,7 +27,7 @@ def declared_reserve(raw, name, review, groups):
     require(fraction is not None and 0 <= fraction <= 1 and synthetic_id(scenario.get("sale_settlement_ref")),
             "replacement_reserve_sale_disposition_unconfirmed:C60")
     return dict(policy_ref=source["source_ref"], rules=source["rules"],
-                cell_source=f"sha256:{review['workbook_sha256']}#{row['value_cell']}",
+                cell_source=row.get("sensitivity_value_source_ref", f"sha256:{review['workbook_sha256']}#{row['value_cell']}"),
                 annual_rate=rational(rate), eligible_units=units, eligible_units_ref=scenario["eligible_units_ref"],
                 deposit=rational(rate * units), sale_release_fraction=rational(fraction),
                 sale_settlement_ref=scenario["sale_settlement_ref"])

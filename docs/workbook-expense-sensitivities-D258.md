@@ -62,3 +62,5 @@ PYTHONPATH=src:tools:tests python3 tools/check_worksheet_operating_costs_D148.py
 Se utilizan las dependencias de referencia y OCR del repositorio para los respaldos originales. Los paquetes y registros del VPS quedan fuera de GitHub; se preservan código, pruebas y esta descripción. Los costos y períodos ajenos al alcance declarado requieren sus propias fuentes. La validación profesional, los datos reales y el despliegue siguen pendientes.
 
 En el VPS pasaron las tres pruebas nuevas, con seis cambios individuales y dos conjuntos válidos, además de los controles de faltantes y cero explícito. D148 pasó sus doce casos de planilla, con siete PENDING esperados. B16 reprodujo sin diferencias el expediente D257 guardado con sensibilidades v5. Son verificaciones dirigidas; la última batería general íntegra sigue siendo la registrada para D253.
+
+[D259](workbook-reserve-sensitivities-D259.md) agrega C60 al conjunto de gastos, preservando por separado la reserva restringida, su liquidación y el fondeo adicional requerido.
