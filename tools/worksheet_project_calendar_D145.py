@@ -30,7 +30,10 @@ def confirmed_months(rows, cell, minimum):
     return int(months)
 
 
-def project_calendar(raw, name, review, purchase_date, *, sale_term=None):
+def project_calendar(raw, name, review, purchase_date, *, sale_term=None, holding_horizon=None):
+    if holding_horizon is not None:
+        from worksheet_holding_horizon_D266 import horizon_calendar
+        return horizon_calendar(raw, name, review, purchase_date, sale_term, holding_horizon)
     source = object_or_empty(raw)
     record = object_or_empty(object_or_empty(source.get("scenarios")).get(name))
     require(source.get("policy") == POLICY and source.get("rules") == TIMING_RULES

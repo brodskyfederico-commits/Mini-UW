@@ -28,7 +28,10 @@ def cash_amount(value, ref):
     return dict(value=rational(value), currency="USD", source_ref=ref)
 
 
-def staged_construction_financing(raw, name, review, context, development, budget, calendar, *, construction_quote=None):
+def staged_construction_financing(raw, name, review, context, development, budget, calendar, *, construction_quote=None,
+                                 initial_equity=INITIAL, initial_equity_ref=None):
+    require(initial_equity > 0 and (initial_equity_ref is None or synthetic_id(initial_equity_ref)),
+            "construction_initial_equity_missing_nonpositive_or_unsourced")
     source = object_or_empty(raw)
     rule_ref = source.get("policy_ref")
     require(source.get("policy") == POLICY and source.get("rules") == RULES and synthetic_id(rule_ref),
@@ -98,6 +101,8 @@ def staged_construction_financing(raw, name, review, context, development, budge
                     origination_fee=rational(origination_fee), debt_source=spec, debt_run=proof, debt_run_sha256=run.sha256)
     if bank_document is not None:
         evidence["bank_document_binding"] = bank_document
+    if initial_equity_ref is not None:
+        evidence["declared_initial_equity"] = cash_amount(initial_equity, initial_equity_ref)
     if proof["blockers"]:
         return evidence | dict(state="PENDING", blockers=proof["blockers"])
     require(_fraction(proof["totals"]["principal_repaid"]) == gross_draws
@@ -119,7 +124,7 @@ def staged_construction_financing(raw, name, review, context, development, budge
         fee = origination_fee if day == purchase else 0
         draw, interest_payment = draws.get(day, 0), interest.get(day, 0)
         before_equity = balance + draw - uses[day] - interest_payment - fee
-        equity = INITIAL if day == purchase else max(0, -before_equity)
+        equity = initial_equity if day == purchase else max(0, -before_equity)
         closing = before_equity + equity
         require(closing >= 0, "initial_equity_cannot_cover_purchase_and_financing_fee")
         cash_by_date.append(dict(date=day, opening_free_cash=rational(balance), eligible_invoices=rational(eligible_by_day[day]),

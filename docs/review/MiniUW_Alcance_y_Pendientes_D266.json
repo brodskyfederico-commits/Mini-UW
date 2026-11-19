@@ -1,0 +1,78 @@
+{
+  "scope": "D266: five-year integrated horizon verified for the explicit quarterly synthetic profile; other gaps retained",
+  "real_decisions_enabled": false,
+  "deployment_enabled": false,
+  "readiness": {
+    "receive_real_case": "piloto_asistido_con_procedencia_y_dictamen_PENDIENTE",
+    "all_33_policies": "not_certified",
+    "production": "not_authorized"
+  },
+  "known_gaps": [
+    {
+      "id": "TEC-01",
+      "requirement": "Calendario integrado general de cinco años desde estabilización y duración documentada",
+      "source": "docs/workbook-holding-horizon-D266.md; tools/worksheet_holding_horizon_D266.py:configuration/horizon_calendar/calculate/without_refinance; tests/test_worksheet_holding_horizon.py",
+      "state": "implemented_and_validated_scoped_profile",
+      "impact": "Do not claim general five-year coverage for unsupported fiscal/calendar profiles; block unsupported input instead of approximation.",
+      "supported": "Explicit 60-month integrated horizon plus documented 36-month alternative, quarterly first-day grid, Base/Downside with and without refinance.",
+      "remaining": [
+        "Irregular/monthly schedules and profiles outside the explicit contract",
+        "M2/Florida v32 multi-year fiscal-cash integration",
+        "Critical-evidence auditor v33 integration with this horizon"
+      ]
+    },
+    {
+      "id": "TEC-02",
+      "requirement": "Un orquestador para todos los drivers, excepciones y Upside",
+      "source": "D252 políticas 3, 18–33; tools/worksheet_sensitivities_D253.py evaluate_trial/evaluate_sensitivities",
+      "state": "partially_implemented",
+      "impact": "D253–D263 prueban grupos y conjuntos compatibles; no un único escenario derivado por los 15 defaults",
+      "blocked_policy": "CUR-01/REQ-06: no activar shocks históricos por defecto"
+    },
+    {
+      "id": "TEC-03",
+      "requirement": "Renta asequible regulada con AMI, tope y utility allowance",
+      "source": "D252 observación adicional del Input Sheet",
+      "state": "implementation_and_evidence_pending",
+      "impact": "No deducir renta asequible de los gastos de servicios ni calcular un beneficio sin regla acreditada"
+    },
+    {
+      "id": "POL-01",
+      "requirement": "GBA derivado, materialidad y autoridad de fuente",
+      "source": "D252 política 4; docs/requirements-conflicts.md SRC-01",
+      "state": "decision_then_implementation",
+      "impact": "El área no respaldada bloquea los cálculos dependientes"
+    },
+    {
+      "id": "POL-02",
+      "requirement": "Beneficios fiscales condicionales y stress de incertidumbre/orden de reglas",
+      "source": "D252 políticas 5, 6 y 29; tools/worksheet_scope_D174.py",
+      "state": "evidence_policy_then_implementation",
+      "impact": "El perfil actual no acredita un beneficio o excepción fiscal real"
+    },
+    {
+      "id": "POL-03",
+      "requirement": "Criterios por versión, RLV por estrategia, equity bajo y precedencia con faltantes",
+      "source": "D252 políticas 11, 13, 14 y 17; docs/pending-band-policy-decision.json",
+      "state": "approval_and_scoped_implementation_pending",
+      "impact": "Conservar banda PENDING y no adoptar propuestas ni umbrales históricos sin alcance confirmado"
+    },
+    {
+      "id": "PIL-01",
+      "requirement": "Fuentes y términos reales, roles y cotejo independiente del caso",
+      "source": "docs/review/piloto-real-D190/README.md",
+      "state": "await_real_case_and_confirmations",
+      "impact": "Datos no documentados quedan vacíos/PENDING; retorno personal requiere reparto real"
+    },
+    {
+      "id": "VAL-01",
+      "requirement": "Validación empírica del OCR, backtest y corridas en paralelo",
+      "source": "docs/MiniUW_Informe_Integral_D250.md",
+      "state": "real_validation_pending",
+      "impact": "Las pruebas sintéticas no certifican cero falsos verdes en documentos reales"
+    }
+  ],
+  "parent_commit": "10f1eb2e8933604d5808afc9c4598dbc754fe165",
+  "previous_record": "MiniUW_Alcance_y_Pendientes_D265.json",
+  "implementation_validation": "MiniUW_Validacion_D266.json"
+}

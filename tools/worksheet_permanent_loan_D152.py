@@ -12,7 +12,7 @@ RULES = dict(rate="nominal_annual_fixed_convertible_quarterly", payment="regular
              maturity="separately_declared_quarterly_maturity", capacity="minimum_of_ltv_and_dscr_only")
 
 
-def declared_loan_terms(raw, name, review, calendar):
+def declared_loan_terms(raw, name, review, calendar, *, integrated_horizon=False):
     source = object_or_empty(raw)
     require(source.get("policy") == POLICY and source.get("rules") == RULES and source.get("currency") == "USD"
             and synthetic_id(source.get("source_ref")), "permanent_loan_rate_or_schedule_policy_unconfirmed:C69-C72")
@@ -41,7 +41,11 @@ def declared_loan_terms(raw, name, review, calendar):
     require(type(maturity) is int and 2 <= maturity <= amortization_payments, "permanent_loan_maturity_outside_sale_profile")
     origination = _date(calendar["refinance_date"])
     dates = [offset(origination, 3 * index).isoformat() for index in range(1, maturity + 1)]
-    require(dates[0] == calendar["sale_date"], "permanent_loan_first_quarterly_payment_must_match_sale_cutoff")
+    if integrated_horizon:
+        require(_date(calendar["sale_date"]) > origination,
+                "permanent_loan_horizon_sale_must_follow_origination")
+    else:
+        require(dates[0] == calendar["sale_date"], "permanent_loan_first_quarterly_payment_must_match_sale_cutoff")
     return dict(policy_ref=source["source_ref"], rules=source["rules"], cell_sources=refs, **record,
                 annual_nominal_rate=rational(annual), periodic_rate=rational(annual / frequency), payments_per_year=frequency,
                 amortization_years=int(years), amortization_payments=amortization_payments,

@@ -15,9 +15,13 @@ RATE_UNIT = "annual_USD_per_USD_assessed"
 CAP_UNIT = "annual_cap_fraction"
 
 
-def declared_property_tax(raw, name, review, groups):
+def declared_property_tax(raw, name, review, groups, *, integrated_horizon=False):
     source = object_or_empty(raw)
-    require(source.get("policy") == POLICY and source.get("rules") == RULES and source.get("currency") == "USD"
+    policy,rules=POLICY,RULES
+    if integrated_horizon:
+        from worksheet_holding_horizon_D266 import PROPERTY_TAX_POLICY,PROPERTY_TAX_CASH
+        policy,rules=PROPERTY_TAX_POLICY,RULES|dict(operating_cash=PROPERTY_TAX_CASH)
+    require(source.get("policy") == policy and source.get("rules") == rules and source.get("currency") == "USD"
             and synthetic_id(source.get("source_ref")), "property_tax_scope_unconfirmed:C61-C62")
     record = object_or_empty(object_or_empty(source.get("scenarios")).get(name))
     units = record.get("comparable_units")

@@ -229,6 +229,17 @@ def run_rental_scenario(name, raw, review, rent_inputs, *, include_commercial=Fa
             return pending | dict(blockers=blockers, cell_sources=cells) | market
     binding = None
     try:
+        has_horizon = "holding_horizon" in rent_inputs
+        horizon_config = None
+        if has_horizon:
+            from worksheet_holding_horizon_D266 import configuration
+            horizon_config = configuration(rent_inputs["holding_horizon"], name)
+            require(not florida_tax, "holding_M2_multi_year_cash_schedule_not_implemented_in_v1")
+            require(include_calendar and include_construction_financing and include_permanent_loan
+                    and include_growth and require_formula_review and require_debt_yield,
+                    "holding_complete_financial_profile_required")
+            require(rent_inputs.get("calendar_checks") == {} and "post_refinance_coc" not in rent_inputs,
+                    "holding_conflicting_short_calendar_or_manual_CoC_source")
         scope = {}
         if supplemental is not None:
             from worksheet_scope_D174 import scenario_scope
@@ -241,7 +252,8 @@ def run_rental_scenario(name, raw, review, rent_inputs, *, include_commercial=Fa
         cost_source = rent_inputs.get("cost_source_ref")
         if include_development:
             from worksheet_development_inputs_D143 import development_costs
-            development = development_costs(rent_inputs.get("development"), name, review, terms["groups"])
+            development = development_costs(rent_inputs.get("development"), name, review, terms["groups"], dated_horizon=has_horizon,
+                                            initial_equity=_fraction(horizon_config["initial_equity"]["value"]) if has_horizon else INITIAL)
             terms["cost"] = _fraction(development["total_development_cost"])
             cost_source = f"sha256:{sha(encoded(development))}#/total_development_cost"
         if document_review is not None:
@@ -261,14 +273,14 @@ def run_rental_scenario(name, raw, review, rent_inputs, *, include_commercial=Fa
         reserve = None
         if include_replacement_reserve:
             from worksheet_replacement_reserve_D149 import declared_reserve
-            reserve = declared_reserve(rent_inputs.get("replacement_reserve"), name, review, terms["groups"])
+            reserve = declared_reserve(rent_inputs.get("replacement_reserve"), name, review, terms["groups"], integrated_horizon=has_horizon)
         refinance_costs = None
         if include_refinance_costs:
             from worksheet_refinance_costs_D153 import declared_refinance_costs
             refinance_costs = declared_refinance_costs(rent_inputs.get("refinance_costs"), name, review, terms["groups"])
         if include_property_tax and not florida_tax:
             from worksheet_property_tax_D150 import declared_property_tax
-            terms["property_tax"] = declared_property_tax(rent_inputs.get("property_tax"), name, review, terms["groups"])
+            terms["property_tax"] = declared_property_tax(rent_inputs.get("property_tax"), name, review, terms["groups"], integrated_horizon=has_horizon)
         valuation_terms = None
         if include_exit_pricing:
             from worksheet_exit_pricing_D151 import declared_valuation_terms
@@ -280,7 +292,8 @@ def run_rental_scenario(name, raw, review, rent_inputs, *, include_commercial=Fa
         if include_calendar:
             from worksheet_project_calendar_D145 import project_calendar
             calendar = project_calendar(rent_inputs.get("project_calendar"), name, review, development["purchase_date"],
-                                        sale_term=scope.get("sale_date"))
+                                        sale_term=scope.get("sale_date"),
+                                        holding_horizon=rent_inputs["holding_horizon"] if has_horizon else None)
         growth_terms = None
         if include_growth:
             from worksheet_growth_D154 import declared_growth, project_window
@@ -288,7 +301,7 @@ def run_rental_scenario(name, raw, review, rent_inputs, *, include_commercial=Fa
         permanent_terms = debt_yield_terms = quote = None
         if include_permanent_loan:
             from worksheet_permanent_loan_D152 import declared_loan_terms
-            permanent_terms = declared_loan_terms(rent_inputs.get("permanent_loan"), name, review, calendar)
+            permanent_terms = declared_loan_terms(rent_inputs.get("permanent_loan"), name, review, calendar, integrated_horizon=has_horizon)
             if scope:
                 maturity = scope["maturity_payments"]
                 require(maturity["value"] == permanent_terms["maturity_payments"],
@@ -322,7 +335,8 @@ def run_rental_scenario(name, raw, review, rent_inputs, *, include_commercial=Fa
         if include_budget:
             from worksheet_construction_budget_D144 import construction_budget
             budget = construction_budget(rent_inputs.get("construction_budget"), name, review, development, commercial,
-                                         calendar=calendar)
+                                         calendar=calendar,
+                                         initial_equity=_fraction(horizon_config["initial_equity"]["value"]) if has_horizon else INITIAL)
             if binding is not None:
                 budget["document_financial_binding_sha256"] = sha(encoded(binding))
             terms["cost"] = _fraction(budget["total_development_cost"])
@@ -337,7 +351,9 @@ def run_rental_scenario(name, raw, review, rent_inputs, *, include_commercial=Fa
             if construction_quote is None and document_review is not None:
                 construction_quote = document_review["bots"]["B08"].get("construction_pdf_by_scenario", {}).get(name)
             funding = staged_construction_financing(rent_inputs.get("construction_financing"), name, review, terms["context"],
-                                                    development, budget, calendar, construction_quote=construction_quote)
+                                                    development, budget, calendar, construction_quote=construction_quote,
+                                                    initial_equity=_fraction(horizon_config["initial_equity"]["value"]) if has_horizon else INITIAL,
+                                                    initial_equity_ref=horizon_config["initial_equity"]["source_ref"] if has_horizon else None)
             if funding["blockers"]:
                 evidence = dict(document_financial_binding=binding) if binding is not None else {}
                 return pending | dict(blockers=funding["blockers"], construction_financing=funding,
@@ -368,8 +384,24 @@ def run_rental_scenario(name, raw, review, rent_inputs, *, include_commercial=Fa
 
         # The accrued operating result remains available when the refinance request is blocked.
         operating = noi_for(OPERATING_PERIOD)
-        calculate_cash = financed_cash if cash_engine is None else cash_engine
-        result = calculate_cash(terms["context"], terms["cost"], cost_source,
+        if has_horizon:
+            from worksheet_holding_horizon_D266 import calculate as calculate_horizon
+            from worksheet_project_calendar_D145 import offset
+            years=[dict(assembly=operating)]
+            for index in range(1,calendar["holding_months"]//12):
+                period=f"SYNTHETIC-D266-{name}-year-{index+1}"
+                start=offset(date.fromisoformat(calendar["stabilization_date"]),12*index).isoformat()
+                assembly,periods[period]=rental_noi(terms,cells,values,period,commercial,window_start=start,
+                                                  growth=project_window(growth_terms,start))
+                years.append(dict(assembly=assembly))
+            require(not commercial["uses"] or all(object_or_empty(periods[key].get("commercial")).get("recognized_months") == 12
+                        for key in [OPERATING_PERIOD]+[f"SYNTHETIC-D266-{name}-year-{i+1}" for i in range(1,len(years))]),
+                    "holding_uniform_quarter_cash_requires_full_stabilized_commercial_years")
+            result=calculate_horizon(terms["context"],name,horizon_config,calendar,funding,terms["principal"],
+                valuation_terms,permanent_terms,refinance_costs,reserve,buyer_tax,debt_yield_terms,noi_for,years)
+        else:
+            calculate_cash = financed_cash if cash_engine is None else cash_engine
+            result = calculate_cash(terms["context"], terms["cost"], cost_source,
                                terms["principal"], terms["cap"],
                                lambda period: operating if period == OPERATING_PERIOD else noi_for(period),
                                construction_draws=draws, calendar=calendar, construction_financing=funding,
@@ -626,11 +658,18 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
     integrated_engine = scalar_engine = transport_descriptor = None
     transport_blockers = []
     inputs = object_or_empty(case.get("rent_inputs"))
-    if "cash_transport" in inputs:
-        from worksheet_integrated_transport_D264 import integrated_engines
+    horizon_requested = "holding_horizon" in inputs
+    if horizon_requested:
+        from miniuw_worksheet_v1 import WORKBOOK_TECHNICAL_ACCEPTANCE_SCHEMA
+        if case.get("schema") != WORKBOOK_TECHNICAL_ACCEPTANCE_SCHEMA:
+            transport_blockers = ["holding_horizon_requires_declared_v31_intake"]
+    if "cash_transport" in inputs or horizon_requested:
+        from worksheet_integrated_transport_D264 import PROFILE as TRANSPORT_PROFILE, integrated_engines
         try:
+            transport_config = inputs["cash_transport"] if "cash_transport" in inputs else dict(
+                profile=TRANSPORT_PROFILE,source_ref=object_or_empty(inputs.get("holding_horizon")).get("source_ref"))
             integrated_engine, scalar_engine, transport_descriptor = integrated_engines(
-                inputs["cash_transport"], technical=technical_acceptance)
+                transport_config, technical=technical_acceptance)
         except (ValueError, TypeError, KeyError) as error:
             transport_blockers = [str(error)]
 
@@ -692,7 +731,10 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
         from worksheet_formula_review_D173 import post_refi_coc
         for name, view in views.items():
             inputs = object_or_empty(case.get("rent_inputs"))
-            coc = post_refi_coc(inputs.get("post_refinance_coc"), name, view,
+            if horizon_requested:
+                coc = view.get("post_refinance_coc", dict(value=None,blockers=["holding_verified_refinance_cash_required"]))
+            else:
+                coc = post_refi_coc(inputs.get("post_refinance_coc"), name, view,
                                 require_noi_basis=technical_acceptance, property_tax=view.get("post_refinance_tax"))
             view["post_refinance_coc"] = coc
             blockers.extend(f"{name}:post_refinance_coc:{reason}" for reason in coc["blockers"])
@@ -715,7 +757,10 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
     if include_alternatives:
         alternatives = evaluate_alternatives(object_or_empty(case.get("rent_inputs")).get("alternatives"), review, views, run_scenario,
                                              revision=revision, documents=document_review, case_sha256=case_sha256)
-    if integrated_screening:
+    if horizon_requested:
+        from worksheet_holding_horizon_D266 import render_horizon
+        pdf = render_horizon(views, screening, delivery_report=delivery_report)
+    elif integrated_screening:
         from worksheet_integrated_screening_D181 import render_integrated
         pdf = render_integrated(views, screening, technical_acceptance=technical_acceptance, florida_tax=florida_tax,
                                 critical_evidence=evidence_gate is not None, delivery_report=delivery_report)

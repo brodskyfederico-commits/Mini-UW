@@ -137,10 +137,15 @@ def collect_metrics(name, view, supplied):
     record("spread", period, spread, f"noi_by_period/{VALUE_PERIOD}/noi", *spread_blockers)
 
     coc = view["post_refinance_coc"]
-    coc_period = f"{calendar['refinance_date']}/{calendar['sale_date']}"
+    coc_period = (f"{coc['window_start']}/{coc['window_end']}" if "holding_horizon" in view else
+                  f"{calendar['refinance_date']}/{calendar['sale_date']}")
     record("post_refi_CoC", coc_period, coc["value"], "post_refinance_coc/value", *coc["blockers"])
 
-    irr = verify_irr(cash, calendar["equity_dates"])
+    if "holding_horizon" in view:
+        from worksheet_holding_horizon_D266 import horizon_irr
+        irr = horizon_irr(cash, calendar["equity_dates"])
+    else:
+        irr = verify_irr(cash, calendar["equity_dates"])
     record("IRR", irr.get("period_ref"), None, "cash_per_usd_10/events", *irr["blockers"])
     evidence = dict(cost_basis=cost, noi_pointer=f"/scenarios/{name}/noi_by_period/{VALUE_PERIOD}/noi",
                     comparable_cap_pointer=f"/rent_inputs/integrated_screening/{name}/reference_cap",

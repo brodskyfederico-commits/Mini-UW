@@ -41,7 +41,7 @@ def vertical_quantity(basis, worksheet, declaration, groups):
     return quantity, ref
 
 
-def development_costs(raw, scenario, review, groups):
+def development_costs(raw, scenario, review, groups, *, dated_horizon=False, initial_equity=INITIAL):
     source = object_or_empty(raw)
     declaration = object_or_empty(object_or_empty(source.get("scenarios")).get(scenario))
     require(source.get("policy") == POLICY and source.get("currency") == "USD"
@@ -52,8 +52,15 @@ def development_costs(raw, scenario, review, groups):
     worksheet = {row["value_cell"].split("!")[1]: row for row in review["rows"]}
     asking = _fraction(confirmed(worksheet, "C32"))
     price = _fraction(declaration.get("evaluated_purchase_price"))
+    purchase_date = declaration.get("purchase_date")
+    if dated_horizon:
+        from worksheet_local_sources_D127 import day
+        purchase = day(purchase_date)
+        valid_purchase = purchase is not None and purchase.day == 1 and purchase.month in (1, 4, 7, 10)
+    else:
+        valid_purchase = purchase_date == DATES[0]
     require(price is not None and price >= 0 and asking == price and synthetic_id(declaration.get("purchase_source_ref"))
-            and declaration.get("purchase_date") == DATES[0], "evaluated_purchase_price_unconfirmed_or_mismatched:C32")
+            and valid_purchase, "evaluated_purchase_price_unconfirmed_or_mismatched:C32")
     fraction = _fraction(confirmed(worksheet, "C33"))
     require(0 <= fraction <= 1, "land_closing_cost_fraction_outside_profile:C33")
     basis = confirmed(worksheet, "C34")
@@ -63,7 +70,8 @@ def development_costs(raw, scenario, review, groups):
     land_closing = price * fraction
     vertical = rate * quantity
     total = price + land_closing + vertical
-    require(price + land_closing <= INITIAL <= total, "development_costs_outside_declared_equity_schedule")
+    require(initial_equity > 0 and price + land_closing <= initial_equity
+            and (dated_horizon or initial_equity <= total), "development_costs_outside_declared_equity_schedule")
     cells = {f"C{i}": f"sha256:{review['workbook_sha256']}#Inputs!C{i}" for i in range(32, 37)}
     return dict(policy_ref=source["policy_ref"], cell_sources=cells, purchase_date=declaration["purchase_date"],
                 worksheet_asking=rational(asking), evaluated_purchase_price=rational(price),

@@ -22,7 +22,7 @@ def confirmed_number(rows, cell, *, fraction=False):
     return value
 
 
-def construction_budget(raw, name, review, development, commercial, *, calendar=None):
+def construction_budget(raw, name, review, development, commercial, *, calendar=None, initial_equity=INITIAL):
     source = object_or_empty(raw)
     require(source.get("policy") == POLICY and source.get("currency") == "USD"
             and synthetic_id(source.get("policy_ref")) and source.get("bases") == BASES,
@@ -69,8 +69,9 @@ def construction_budget(raw, name, review, development, commercial, *, calendar=
     total = land + hard + soft + ti_lc
     early_uses = land + hard + ti_lc + upfront if calendar is None else (
         land + direct_hard * _fraction(calendar["upfront_direct_hard_share"]) + upfront)
-    early_equity = max(0, early_uses - INITIAL)
-    late_equity = total - INITIAL - early_equity
+    require(initial_equity > 0, "construction_initial_equity_missing_or_nonpositive")
+    early_equity = max(0, early_uses - initial_equity)
+    late_equity = max(0, total - initial_equity - early_equity)
     draws = [dict(event_id="construction-early", date=schedule["terms"]["early_date"], amount=rational(early_equity)),
              dict(event_id="construction-late", date=schedule["terms"]["remainder_date"], amount=rational(late_equity))]
     if calendar is not None:

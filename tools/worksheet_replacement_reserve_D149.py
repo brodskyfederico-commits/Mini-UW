@@ -11,9 +11,13 @@ RULES = dict(classification="restricted_cash_excluded_from_noi_and_valuation",
              shortfall_funding="equity_at_operating_settlement", sale_remainder="transferred_restricted_to_buyer")
 
 
-def declared_reserve(raw, name, review, groups):
+def declared_reserve(raw, name, review, groups, *, integrated_horizon=False):
     source = object_or_empty(raw)
-    require(source.get("policy") == POLICY and source.get("rules") == RULES and source.get("currency") == "USD"
+    policy,rules=POLICY,RULES
+    if integrated_horizon:
+        from worksheet_holding_horizon_D266 import RESERVE_POLICY,RESERVE_RULES
+        policy,rules=RESERVE_POLICY,RESERVE_RULES
+    require(source.get("policy") == policy and source.get("rules") == rules and source.get("currency") == "USD"
             and synthetic_id(source.get("source_ref")), "replacement_reserve_policy_unconfirmed:C60")
     scenario = object_or_empty(object_or_empty(source.get("scenarios")).get(name))
     units = scenario.get("eligible_units")
