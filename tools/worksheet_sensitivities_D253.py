@@ -15,6 +15,7 @@ from worksheet_market_evidence_D166 import RENT_UNITS
 SCHEMA = "miniuw.synthetic-worksheet-sensitivities.v1"
 EXTENDED_SCHEMA = "miniuw.synthetic-worksheet-sensitivities.v2"
 BUDGET_SCHEMA = "miniuw.synthetic-worksheet-sensitivities.v3"
+CALENDAR_SCHEMA = "miniuw.synthetic-worksheet-sensitivities.v4"
 EXTENDED_UNITS = {
     "C14": "fraction", "C15": "fraction", "C19": "fraction",
     "C16": "USD_per_rentable_sf_per_year", "C17": "USD_per_rentable_sf_per_year",
@@ -42,8 +43,13 @@ def bind_change(change, rows, workbook_sha256, case_sha256, *, units=None):
     require(prior is not None and delta is not None, "sensitivity_explicit_numeric_value_required")
     operation = change["operation"]
     unit = DRIVERS[cell][1] if units is None else units[cell]
+    if unit == "months":
+        require(operation in ("replace_absolute", "month_change") and prior.denominator == delta.denominator == 1,
+                "sensitivity_calendar_requires_explicit_whole_months")
     if operation == "replace_absolute":
         expected_unit, candidate = unit, delta
+    elif operation == "month_change" and unit == "months":
+        expected_unit, candidate = "months", prior + delta
     elif operation == "relative_change":
         expected_unit, candidate = "fraction_of_baseline", prior * (1 + delta)
     else:
@@ -56,7 +62,8 @@ def bind_change(change, rows, workbook_sha256, case_sha256, *, units=None):
                 base_cell_ref=f"sha256:{workbook_sha256}#{record['value_cell']}", origin_case_sha256=case_sha256)
 
 
-def evaluate_trial(name, review, bindings, origin, run_variant, *, extended=False, budget=False):
+def evaluate_trial(name, review, bindings, origin, run_variant, *, extended=False, budget=False,
+                   calendar=False, support=None, scenario_inputs=None):
     by_cell = {entry["change"]["target_cell"]: entry for entry in bindings}
     rows = []
     for row in review["rows"]:
@@ -67,22 +74,40 @@ def evaluate_trial(name, review, bindings, origin, run_variant, *, extended=Fals
             if extended:
                 row["sensitivity_value_source_ref"] = row["alternative_value_source_ref"]
         rows.append(row)
-    candidate = run_variant(name, review | dict(rows=rows))
+    support_binding = None
+    if calendar:
+        from worksheet_calendar_support_D256 import supported_inputs
+        try:
+            inputs, support_binding = supported_inputs(scenario_inputs, name, support)
+        except (ValueError, TypeError, KeyError) as error:
+            return pending(str(error)) | dict(bindings=bindings, capacity=None)
+        candidate = run_variant(name, review | dict(rows=rows), scenario_inputs=inputs)
+    else:
+        candidate = run_variant(name, review | dict(rows=rows))
     comparison = dict(bindings=bindings, capacity=candidate["capacity"],
                       candidate_sha256=sha(encoded(candidate)))
     if budget:
         comparison.update({key: candidate[key] for key in (
             "development_costs", "construction_budget", "construction_financing", "construction_refinance", "project_calendar"
         ) if key in candidate})
+    if calendar:
+        comparison["calendar_support"] = support_binding
+        comparison.update({key: candidate[key] for key in (
+            "permanent_loan", "market_insurance_review", "bank_document_binding") if key in candidate})
     cash = candidate["cash_per_usd_10"]
     if candidate["blockers"] or cash is None:
         blockers = candidate["blockers"] or ["sensitivity_cash_unavailable"]
         return comparison | pending(*blockers)
     base = origin["cash_per_usd_10"]
+    date_keys = ("purchase_date",) if calendar else ("purchase_date", "sale_date")
     if any(cash[key] != base[key] for key in ("reference_amount", "scale_factor")) or any(
-        candidate["project_calendar"][key] != origin["project_calendar"][key] for key in ("purchase_date", "sale_date")
+        candidate["project_calendar"][key] != origin["project_calendar"][key] for key in date_keys
     ):
         return comparison | pending("sensitivity_cash_basis_or_dates_differ")
+    if calendar:
+        comparison["date_comparison"] = {key: dict(original=origin["project_calendar"][key],
+                                                    variant=candidate["project_calendar"][key]) for key in (
+            "purchase_date", "construction_finish", "tco_date", "stabilization_date", "refinance_date", "sale_date")}
     deltas = {key: _fraction(cash[key], 1300) - _fraction(base[key], 1300) for key in CASH_TOTALS}
     net = deltas["total_distributions"] - deltas["total_contributions"]
     if extended:
@@ -96,7 +121,8 @@ def evaluate_trial(name, review, bindings, origin, run_variant, *, extended=Fals
                              valuation_and_sale=candidate["valuation_and_sale"])
 
 
-def evaluate_scenario(spec, name, review, origin, run_variant, origin_blockers, case_sha256, *, extended=False, budget=False):
+def evaluate_scenario(spec, name, review, origin, run_variant, origin_blockers, case_sha256, *, extended=False,
+                      budget=False, calendar=False, scenario_inputs=None):
     if origin_blockers:
         return pending(*origin_blockers)
     units = {cell: driver[1] for cell, driver in DRIVERS.items()}
@@ -110,13 +136,23 @@ def evaluate_scenario(spec, name, review, origin, run_variant, origin_blockers, 
         units.update({cell: rent_unit for cell in ("C8", "C9", "C10", "C11")})
     if budget:
         units.update(BUDGET_UNITS)
+    if calendar:
+        units = {"C46": "months", "C47": "months"}
     changes = spec.get("changes")
-    if (spec.keys() != {"changes"} or not isinstance(changes, list) or not 1 <= len(changes) <= len(units)
+    fields = {"changes", "calendar_support"} if calendar else {"changes"}
+    if (spec.keys() != fields or not isinstance(changes, list) or not 1 <= len(changes) <= len(units)
             or not all(isinstance(change, dict) and isinstance(change.get("target_cell"), str)
                        and change["target_cell"] in units for change in changes)):
         return pending("sensitivity_driver_inventory_invalid")
     if len({change["target_cell"] for change in changes}) != len(changes):
         return pending("sensitivity_duplicate_driver")
+    support = None
+    if calendar:
+        from worksheet_calendar_support_D256 import support_inventory
+        try:
+            support = support_inventory(spec["calendar_support"], [change["target_cell"] for change in changes])
+        except (ValueError, TypeError, KeyError) as error:
+            return pending(str(error))
     bindings, individual = [], {}
     for change in changes:
         cell = change["target_cell"]
@@ -126,13 +162,17 @@ def evaluate_scenario(spec, name, review, origin, run_variant, origin_blockers, 
             individual[cell] = pending(str(error))
             continue
         bindings.append(binding)
-        individual[cell] = evaluate_trial(name, review, [binding], origin, run_variant, extended=extended, budget=budget)
+        individual[cell] = evaluate_trial(name, review, [binding], origin, run_variant, extended=extended, budget=budget,
+                                          calendar=calendar, support=None if support is None else support["individual"][cell],
+                                          scenario_inputs=scenario_inputs)
     if len(bindings) != len(changes):
         combined = pending("sensitivity_combination_has_unconfirmed_inputs")
-    elif len(bindings) == 1:
+    elif len(bindings) == 1 and not calendar:
         combined = next(iter(individual.values()))
     else:
-        combined = evaluate_trial(name, review, bindings, origin, run_variant, extended=extended, budget=budget)
+        combined = evaluate_trial(name, review, bindings, origin, run_variant, extended=extended, budget=budget,
+                                   calendar=calendar, support=None if support is None else support["combined"],
+                                   scenario_inputs=scenario_inputs)
     complete = all(row["state"] == "computed_synthetic" for row in individual.values())
     # Equal effects share a group. The combined recalculation is a distinct observation.
     ranking = []
@@ -148,10 +188,10 @@ def evaluate_scenario(spec, name, review, origin, run_variant, origin_blockers, 
                 individual=individual, combined=combined, rank_by_signed_net_cash_delta=ranking)
 
 
-def evaluate_sensitivities(raw, mapping, views, run_variant, *, revision, documents, evidence_gate, case_sha256):
+def evaluate_sensitivities(raw, mapping, views, run_variant, *, revision, documents, evidence_gate, case_sha256, scenario_inputs=None):
     spec = object_or_empty(raw)
     schema = spec.get("schema")
-    supported = (SCHEMA, EXTENDED_SCHEMA, BUDGET_SCHEMA)
+    supported = (SCHEMA, EXTENDED_SCHEMA, BUDGET_SCHEMA, CALENDAR_SCHEMA)
     heading = dict(schema=schema if schema in supported else SCHEMA, decision="PENDING", origin_case_sha256=case_sha256,
                    revision_sha256=revision["reference_sha256"], request_sha256=sha(encoded(raw)))
     cases = object_or_empty(spec.get("scenarios"))
@@ -170,6 +210,8 @@ def evaluate_sensitivities(raw, mapping, views, run_variant, *, revision, docume
             blockers.append("sensitivity_origin_cash_pending")
         scenarios[name] = evaluate_scenario(object_or_empty(cases[name]), name, mapping["scenarios"][name],
                                                origin, run_variant, blockers, case_sha256,
-                                               extended=schema in (EXTENDED_SCHEMA, BUDGET_SCHEMA), budget=schema == BUDGET_SCHEMA)
+                                               extended=schema in (EXTENDED_SCHEMA, BUDGET_SCHEMA, CALENDAR_SCHEMA),
+                                               budget=schema in (BUDGET_SCHEMA, CALENDAR_SCHEMA), calendar=schema == CALENDAR_SCHEMA,
+                                               scenario_inputs=scenario_inputs)
     state = "computed_synthetic" if all(row["state"] == "computed_synthetic" for row in scenarios.values()) else "PENDING"
     return heading | dict(state=state, blockers=[], scenarios=scenarios)

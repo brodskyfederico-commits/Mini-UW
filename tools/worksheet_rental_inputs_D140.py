@@ -622,14 +622,22 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
 
     routes = object_or_empty(object_or_empty(case.get("rent_inputs")).get("calendar_checks"))
 
-    def run_scenario(name, source_review):
+    def run_scenario(name, source_review, *, scenario_inputs=None):
+        scenario_supplemental = supplemental
+        if scenario_inputs is not None and require_supplemental_scope:
+            scenario_supplemental = object_or_empty(scenario_inputs.get("supplemental_scope"))
+            downside = object_or_empty(object_or_empty(scenario_supplemental.get("Downside")).get("downside_scope"))
+            if (downside.get("base_workbook_sha256"), downside.get("downside_workbook_sha256")) != (hashes.get("Base"), hashes.get("Downside")):
+                scenario_supplemental = scenario_supplemental | {
+                    "Downside": object_or_empty(scenario_supplemental.get("Downside")) | {"downside_scope": None}}
         requested_routes = object_or_empty(routes.get(name)).values()
         sale_only_on_capacity_block = any(
             object_or_empty(config).get("route") == "sell_without_refinance"
             and synthetic_id(object_or_empty(config).get("source_ref"))
             for config in requested_routes
         )
-        return run_rental_scenario(name, workbooks[name], source_review, case.get("rent_inputs"),
+        return run_rental_scenario(name, workbooks[name], source_review,
+                                      case.get("rent_inputs") if scenario_inputs is None else scenario_inputs,
                                       include_commercial=include_commercial, include_utilities=include_utilities,
                                       include_development=include_development, include_budget=include_budget,
                                       include_calendar=include_calendar,
@@ -639,7 +647,7 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
                                       include_property_tax=include_property_tax, include_exit_pricing=include_exit_pricing,
                                       include_permanent_loan=include_permanent_loan, include_refinance_costs=include_refinance_costs,
                                       include_growth=include_growth, require_market_evidence=require_market_evidence,
-                                      require_formula_review=require_formula_review, supplemental=supplemental,
+                                      require_formula_review=require_formula_review, supplemental=scenario_supplemental,
                                       require_debt_yield=require_debt_yield, florida_tax=florida_tax,
                                       sale_only_on_capacity_block=sale_only_on_capacity_block)
 
@@ -820,7 +828,7 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
         from worksheet_sensitivities_D253 import evaluate_sensitivities
         pipeline["sensitivity_evaluation"] = evaluate_sensitivities(
             inputs["sensitivities"], review, views, run_scenario, revision=revision, documents=document_review,
-            evidence_gate=evidence_gate, case_sha256=case_sha256)
+            evidence_gate=evidence_gate, case_sha256=case_sha256, scenario_inputs=inputs)
 
     return dict(profile=profile, state=state,
                 case_sha256=case_sha256, decision="PENDING", simulation_result=simulation,

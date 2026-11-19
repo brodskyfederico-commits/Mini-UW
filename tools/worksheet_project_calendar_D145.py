@@ -69,7 +69,7 @@ def project_calendar(raw, name, review, purchase_date, *, sale_term=None):
     require(early_hard_share is not None and 0 <= early_hard_share <= 1 and synthetic_id(record.get("construction_draw_ref")),
             "construction_funding_split_unconfirmed:C46")
     return dict(
-        cell_sources={cell: f"sha256:{review['workbook_sha256']}#{rows[cell]['value_cell']}" for cell in ("C46", "C47")},
+        cell_sources={cell: rows[cell].get("sensitivity_value_source_ref", f"sha256:{review['workbook_sha256']}#{rows[cell]['value_cell']}") for cell in ("C46", "C47")},
         policy_ref=source["policy_ref"], rules=source["rules"],
         purchase_date=purchase_date, construction_start=purchase_date, construction_start_ref=record["start_ref"],
         upfront_date=offset(start, 3).isoformat(), construction_months=construction, construction_finish=completion.isoformat(),
