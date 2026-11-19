@@ -30,7 +30,7 @@ def declared_costs(raw, name, review, groups, utilities):
         require(row["state"] == "CONFIRMED_SYNTHETIC" and value is not None and value >= 0,
                 f"operating_expense_rate_unconfirmed_or_negative:{cell}")
         rates[cell] = value
-        refs[cell] = f"sha256:{review['workbook_sha256']}#{row['value_cell']}"
+        refs[cell] = row.get("sensitivity_value_source_ref", f"sha256:{review['workbook_sha256']}#{row['value_cell']}")
     require(rates["C58"] <= 1, "management_fraction_outside_profile:C58")
     total = rates["C57"] * controllable_units
     utility_total = _fraction(utilities["annual_total"])

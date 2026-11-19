@@ -63,7 +63,7 @@ def check_insurance(reading, rows, workbook_sha, cost_record):
     row = rows.get("C59", {})
     rate, quote = number(row.get("value")), number(doc["premium_per_insured_unit"])
     units = doc["insured_units"]
-    comparison = dict(value=row.get("value"), value_source=f"sha256:{workbook_sha}#{row.get('value_cell')}",
+    comparison = dict(value=row.get("value"), value_source=row.get("sensitivity_value_source_ref", f"sha256:{workbook_sha}#{row.get('value_cell')}"),
                       insured_units=cost_record.get("insured_units"), coverage_ref=cost_record.get("insurance_coverage_ref"))
     if row.get("state") != "CONFIRMED_SYNTHETIC" or rate is None:
         blocker = "market_workbook_value_unconfirmed:C59"
