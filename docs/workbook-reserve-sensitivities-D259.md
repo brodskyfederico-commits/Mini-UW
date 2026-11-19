@@ -1,5 +1,7 @@
 # Si invierto USD 10, ¿cuánto cobro y cuándo?
 
+Continuación: [C61–C62, impuesto, NOI y caja por USD 10 en D260](workbook-tax-sensitivities-D260.md).
+
 D259 conecta C60 con la caja restringida, el cierre y el retorno por USD 10, por separado y junto con los gastos C57–C59 de D258. El ensayo usa respaldos sintéticos D200 y la misma escala de 10/2.400.000 de equity inicial verificado. El aporte inicial ocurre el 30/03/2027; los aportes posteriores se conservan aparte. El dictamen operativo y el retorno personal sin términos de reparto permanecen PENDING.
 
 | Escenario y variante | Aporte adicional por USD 10 iniciales | Cobro total por USD 10 | Caja sin recuperar después de venta |

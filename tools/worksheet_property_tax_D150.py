@@ -40,7 +40,7 @@ def declared_property_tax(raw, name, review, groups):
             "property_tax_assessment_ratio_unconfirmed_or_out_of_range:C61")
     require(comparable["state"] == "CONFIRMED_SYNTHETIC" and comparable_rate is not None and comparable_rate >= 0,
             "property_tax_comparable_rate_unconfirmed_or_negative:C62")
-    cells = {cell: f"sha256:{review['workbook_sha256']}#{row['value_cell']}"
+    cells = {cell: row.get("sensitivity_value_source_ref", f"sha256:{review['workbook_sha256']}#{row['value_cell']}")
              for cell, row in (("C61", assessment), ("C62", comparable))}
     return dict(policy_ref=source["source_ref"], rules=source["rules"], cell_sources=cells, comparable_units=units,
                 comparable_source_ref=record["comparable_source_ref"], assessment_source_ref=record["assessment_source_ref"],
