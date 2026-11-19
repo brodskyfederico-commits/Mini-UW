@@ -29,7 +29,7 @@ def declared_loan_terms(raw, name, review, calendar):
         require(row["state"] == "CONFIRMED_SYNTHETIC" and value is not None and value >= 0,
                 f"permanent_loan_input_unconfirmed_or_negative:{cell}")
         rates[cell] = value
-        refs[cell] = f"sha256:{review['workbook_sha256']}#{row['value_cell']}"
+        refs[cell] = row.get("sensitivity_value_source_ref", f"sha256:{review['workbook_sha256']}#{row['value_cell']}")
     annual, years, ltv, dscr = (rates[cell] for cell in ("C69", "C70", "C71", "C72"))
     frequency = PAYMENTS_PER_YEAR
     require(annual <= 1, "permanent_loan_nominal_rate_outside_profile:C69")

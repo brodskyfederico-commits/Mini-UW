@@ -4,7 +4,7 @@ from fractions import Fraction
 from check_operating_replay_D20 import require
 from miniuw_foundation.debt_service import _fraction, rational
 from miniuw_foundation.scheduled_expense_case import sha
-from miniuw_worksheet_v1 import CONSTRUCTION_SENSITIVITY_SCHEMA, encoded
+from miniuw_worksheet_v1 import CONSTRUCTION_SENSITIVITY_SCHEMA, PERMANENT_SENSITIVITY_SCHEMA, encoded
 from plan_return_D107 import FORWARD_PERIOD, OPERATING_PERIOD
 from worksheet_alternatives_D155 import CASH_TOTALS, DRIVERS
 from worksheet_local_sources_D127 import object_or_empty, synthetic_id
@@ -23,6 +23,8 @@ TAX_SCHEMA = "miniuw.synthetic-worksheet-sensitivities.v8"
 TAX_UNITS = {"C61": "fraction_of_market_value", "C62": "USD_per_comparable_unit_per_year"}
 PRICING_SCHEMA = "miniuw.synthetic-worksheet-sensitivities.v9"
 PRICING_UNITS = {"C66": "annual_cap_fraction", "C67": "annual_cap_fraction", "C68": "fraction_of_gross_sale_price"}
+PERMANENT_SCHEMA = PERMANENT_SENSITIVITY_SCHEMA
+PERMANENT_UNITS = {"C69": "annual_nominal_fraction", "C70": "years", "C71": "fraction", "C72": "multiple"}
 EXTENDED_UNITS = {
     "C14": "fraction", "C15": "fraction", "C19": "fraction",
     "C16": "USD_per_rentable_sf_per_year", "C17": "USD_per_rentable_sf_per_year",
@@ -53,6 +55,11 @@ def bind_change(change, rows, workbook_sha256, case_sha256, *, units=None):
     if unit == "months":
         require(operation in ("replace_absolute", "month_change") and prior.denominator == delta.denominator == 1,
                 "sensitivity_calendar_requires_explicit_whole_months")
+    if unit == "years":
+        require(operation == "replace_absolute" and prior.denominator == delta.denominator == 1,
+                "sensitivity_amortization_requires_explicit_whole_years")
+    if unit == "multiple":
+        require(operation in ("replace_absolute", "relative_change"), "sensitivity_multiple_operation_unsupported")
     if operation == "replace_absolute":
         expected_unit, candidate = unit, delta
     elif operation == "month_change" and unit == "months":
@@ -70,7 +77,7 @@ def bind_change(change, rows, workbook_sha256, case_sha256, *, units=None):
 
 
 def evaluate_trial(name, review, bindings, origin, run_variant, *, extended=False, budget=False,
-                   calendar=False, support=None, scenario_inputs=None, construction=False, parent_quote=None, expense=False, reserve=False, tax=False, pricing=False):
+                   calendar=False, support=None, scenario_inputs=None, construction=False, parent_quote=None, expense=False, reserve=False, tax=False, pricing=False, permanent=False, parent_bank=None):
     by_cell = {entry["change"]["target_cell"]: entry for entry in bindings}
     rows = []
     for row in review["rows"]:
@@ -82,7 +89,14 @@ def evaluate_trial(name, review, bindings, origin, run_variant, *, extended=Fals
                 row["sensitivity_value_source_ref"] = row["alternative_value_source_ref"]
         rows.append(row)
     support_binding = None
-    if expense:
+    if permanent:
+        from worksheet_permanent_support_D262 import supported_terms
+        try:
+            quote, inputs, support_binding = supported_terms(support, name, scenario_inputs, parent_bank)
+        except (ValueError, TypeError, KeyError) as error:
+            return pending(str(error)) | dict(bindings=bindings, capacity=None)
+        candidate = run_variant(name, review | dict(rows=rows), scenario_inputs=inputs, bank_quote=quote)
+    elif expense:
         from worksheet_expense_support_D258 import supported_inputs
         try:
             inputs, support_binding = supported_inputs(scenario_inputs, name, support, bindings)
@@ -117,10 +131,15 @@ def evaluate_trial(name, review, bindings, origin, run_variant, *, extended=Fals
             "permanent_loan", "market_insurance_review", "bank_document_binding") if key in candidate})
     if construction:
         comparison["construction_support"] = support_binding
+    if permanent:
+        comparison["permanent_support"] = support_binding
+        comparison.update({key: candidate[key] for key in (
+            "permanent_loan", "market_insurance_review", "bank_document_binding", "cell_sources", "valuation_and_sale"
+        ) if key in candidate})
     if expense:
         comparison["expense_support"] = support_binding
         comparison.update({key: candidate[key] for key in ("market_insurance_review", "cell_sources") if key in candidate})
-    if reserve or tax or pricing:
+    if reserve or tax or pricing or permanent:
         comparison.update({key: candidate[key] for key in (
             "replacement_reserve", "permanent_reserve", "dated_debt_service", "gross_sale", "debt_principal_paid_at_sale"
         ) if key in candidate})
@@ -131,7 +150,15 @@ def evaluate_trial(name, review, bindings, origin, run_variant, *, extended=Fals
     cash = candidate["cash_per_usd_10"]
     if candidate["blockers"] or cash is None:
         blockers = candidate["blockers"] or ["sensitivity_cash_unavailable"]
+        if permanent and "bounded rational integer strings with positive denominator required" in blockers:
+            blockers = ["permanent_exact_cash_transport_precision_unsupported", *blockers]
+            comparison["technical_limit"] = dict(exact_cash_claim_max_integer_digits=256, rounding_applied=False,
+                                                 scope="legacy_exact_operating_closing_and_investor_cash_bridges")
         return comparison | pending(*blockers)
+    if permanent:
+        refs = object_or_empty(object_or_empty(candidate.get("permanent_loan")).get("cell_sources"))
+        if any(refs.get(entry["change"]["target_cell"]) != f"sha256:{sha(encoded(entry))}#/resulting_value" for entry in bindings):
+            return comparison | pending("sensitivity_permanent_basis_not_connected:C69-C72")
     if pricing:
         refs = object_or_empty(object_or_empty(candidate.get("valuation_and_sale")).get("cell_sources"))
         if any(refs.get(entry["change"]["target_cell"]) != f"sha256:{sha(encoded(entry))}#/resulting_value" for entry in bindings):
@@ -155,7 +182,7 @@ def evaluate_trial(name, review, bindings, origin, run_variant, *, extended=Fals
         comparison["date_comparison"] = {key: dict(original=origin["project_calendar"][key],
                                                     variant=candidate["project_calendar"][key]) for key in (
             "purchase_date", "construction_finish", "tco_date", "stabilization_date", "refinance_date", "sale_date")}
-    if reserve or tax or pricing:
+    if reserve or tax or pricing or permanent:
         operating = candidate["noi_by_period"][OPERATING_PERIOD]
         terms = candidate["replacement_reserve"]
         comparison["operating_noi_after_reserve"] = dict(
@@ -175,7 +202,7 @@ def evaluate_trial(name, review, bindings, origin, run_variant, *, extended=Fals
 
 
 def evaluate_scenario(spec, name, review, origin, run_variant, origin_blockers, case_sha256, *, extended=False,
-                      budget=False, calendar=False, scenario_inputs=None, construction=False, parent_quote=None, expense=False, reserve=False, tax=False, pricing=False):
+                      budget=False, calendar=False, scenario_inputs=None, construction=False, parent_quote=None, expense=False, reserve=False, tax=False, pricing=False, permanent=False, parent_bank=None):
     if origin_blockers:
         return pending(*origin_blockers)
     units = {cell: driver[1] for cell, driver in DRIVERS.items()}
@@ -202,9 +229,11 @@ def evaluate_scenario(spec, name, review, origin, run_variant, origin_blockers, 
         units = TAX_UNITS.copy()
     if pricing:
         units = PRICING_UNITS.copy()
+    if permanent:
+        units = PERMANENT_UNITS.copy()
     changes = spec.get("changes")
-    support_key = "expense_support" if expense else "calendar_support" if calendar else "construction_support"
-    fields = {"changes", support_key} if calendar or construction or expense else {"changes"}
+    support_key = "permanent_support" if permanent else "expense_support" if expense else "calendar_support" if calendar else "construction_support"
+    fields = {"changes", support_key} if calendar or construction or expense or permanent else {"changes"}
     if (spec.keys() != fields or not isinstance(changes, list) or not 1 <= len(changes) <= len(units)
             or not all(isinstance(change, dict) and isinstance(change.get("target_cell"), str)
                        and change["target_cell"] in units for change in changes)):
@@ -212,8 +241,10 @@ def evaluate_scenario(spec, name, review, origin, run_variant, origin_blockers, 
     if len({change["target_cell"] for change in changes}) != len(changes):
         return pending("sensitivity_duplicate_driver")
     support = None
-    if calendar or construction or expense:
-        if expense:
+    if calendar or construction or expense or permanent:
+        if permanent:
+            from worksheet_permanent_support_D262 import support_inventory
+        elif expense:
             from worksheet_expense_support_D258 import support_inventory
         elif calendar:
             from worksheet_calendar_support_D256 import support_inventory
@@ -234,15 +265,15 @@ def evaluate_scenario(spec, name, review, origin, run_variant, origin_blockers, 
         bindings.append(binding)
         individual[cell] = evaluate_trial(name, review, [binding], origin, run_variant, extended=extended, budget=budget,
                                           calendar=calendar, support=None if support is None else support["individual"][cell],
-                                          scenario_inputs=scenario_inputs, construction=construction, parent_quote=parent_quote, expense=expense, reserve=reserve, tax=tax, pricing=pricing)
+                                          scenario_inputs=scenario_inputs, construction=construction, parent_quote=parent_quote, expense=expense, reserve=reserve, tax=tax, pricing=pricing, permanent=permanent, parent_bank=parent_bank)
     if len(bindings) != len(changes):
         combined = pending("sensitivity_combination_has_unconfirmed_inputs")
-    elif len(bindings) == 1 and not calendar and not construction and not expense:
+    elif len(bindings) == 1 and not calendar and not construction and not expense and not permanent:
         combined = next(iter(individual.values()))
     else:
         combined = evaluate_trial(name, review, bindings, origin, run_variant, extended=extended, budget=budget,
                                    calendar=calendar, support=None if support is None else support["combined"],
-                                   scenario_inputs=scenario_inputs, construction=construction, parent_quote=parent_quote, expense=expense, reserve=reserve, tax=tax, pricing=pricing)
+                                   scenario_inputs=scenario_inputs, construction=construction, parent_quote=parent_quote, expense=expense, reserve=reserve, tax=tax, pricing=pricing, permanent=permanent, parent_bank=parent_bank)
     complete = all(row["state"] == "computed_synthetic" for row in individual.values())
     # Equal effects share a group. The combined recalculation is a distinct observation.
     ranking = []
@@ -261,7 +292,7 @@ def evaluate_scenario(spec, name, review, origin, run_variant, origin_blockers, 
 def evaluate_sensitivities(raw, mapping, views, run_variant, *, revision, documents, evidence_gate, case_sha256, scenario_inputs=None):
     spec = object_or_empty(raw)
     schema = spec.get("schema")
-    supported = (SCHEMA, EXTENDED_SCHEMA, BUDGET_SCHEMA, CALENDAR_SCHEMA, CONSTRUCTION_SCHEMA, EXPENSE_SCHEMA, RESERVE_SCHEMA, TAX_SCHEMA, PRICING_SCHEMA)
+    supported = (SCHEMA, EXTENDED_SCHEMA, BUDGET_SCHEMA, CALENDAR_SCHEMA, CONSTRUCTION_SCHEMA, EXPENSE_SCHEMA, RESERVE_SCHEMA, TAX_SCHEMA, PRICING_SCHEMA, PERMANENT_SCHEMA)
     heading = dict(schema=schema if schema in supported else SCHEMA, decision="PENDING", origin_case_sha256=case_sha256,
                    revision_sha256=revision["reference_sha256"], request_sha256=sha(encoded(raw)))
     cases = object_or_empty(spec.get("scenarios"))
@@ -280,11 +311,14 @@ def evaluate_sensitivities(raw, mapping, views, run_variant, *, revision, docume
             blockers.append("sensitivity_origin_cash_pending")
         scenarios[name] = evaluate_scenario(object_or_empty(cases[name]), name, mapping["scenarios"][name],
                                                origin, run_variant, blockers, case_sha256,
-                                               extended=schema in (EXTENDED_SCHEMA, BUDGET_SCHEMA, CALENDAR_SCHEMA, CONSTRUCTION_SCHEMA, EXPENSE_SCHEMA, RESERVE_SCHEMA, TAX_SCHEMA, PRICING_SCHEMA),
-                                               budget=schema in (BUDGET_SCHEMA, CALENDAR_SCHEMA, CONSTRUCTION_SCHEMA, EXPENSE_SCHEMA, RESERVE_SCHEMA, TAX_SCHEMA, PRICING_SCHEMA), calendar=schema == CALENDAR_SCHEMA,
+                                               extended=schema in (EXTENDED_SCHEMA, BUDGET_SCHEMA, CALENDAR_SCHEMA, CONSTRUCTION_SCHEMA, EXPENSE_SCHEMA, RESERVE_SCHEMA, TAX_SCHEMA, PRICING_SCHEMA, PERMANENT_SCHEMA),
+                                               budget=schema in (BUDGET_SCHEMA, CALENDAR_SCHEMA, CONSTRUCTION_SCHEMA, EXPENSE_SCHEMA, RESERVE_SCHEMA, TAX_SCHEMA, PRICING_SCHEMA, PERMANENT_SCHEMA), calendar=schema == CALENDAR_SCHEMA,
                                                scenario_inputs=scenario_inputs, construction=schema == CONSTRUCTION_SCHEMA,
                                                parent_quote=object_or_empty(object_or_empty(object_or_empty(documents.get("bots")).get("B08"))
                                                                            .get("construction_pdf_by_scenario")).get(name), expense=schema in (EXPENSE_SCHEMA, RESERVE_SCHEMA),
-                                               reserve=schema == RESERVE_SCHEMA, tax=schema == TAX_SCHEMA, pricing=schema == PRICING_SCHEMA)
+                                               reserve=schema == RESERVE_SCHEMA, tax=schema == TAX_SCHEMA, pricing=schema == PRICING_SCHEMA,
+                                               permanent=schema == PERMANENT_SCHEMA,
+                                               parent_bank=object_or_empty(object_or_empty(object_or_empty(documents.get("bots")).get("B08"))
+                                                                          .get("bank_pdf_by_scenario")).get(name))
     state = "computed_synthetic" if all(row["state"] == "computed_synthetic" for row in scenarios.values()) else "PENDING"
     return heading | dict(state=state, blockers=[], scenarios=scenarios)

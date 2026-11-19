@@ -212,7 +212,7 @@ def run_rental_scenario(name, raw, review, rent_inputs, *, include_commercial=Fa
                         include_permanent_loan=False, include_refinance_costs=False, include_growth=False,
                         require_market_evidence=False, require_formula_review=False, supplemental=None,
                         require_debt_yield=False, florida_tax=False, sale_only_on_capacity_block=False,
-                        construction_quote_override=None):
+                        construction_quote_override=None, bank_quote_override=None):
     pending = dict(state="PENDING", cash_per_usd_10=None, capacity=None, noi_by_period={})
     if not review["calculation_inputs_ready"]:
         return pending | dict(blockers=["required_rental_cells_unconfirmed"])
@@ -294,9 +294,9 @@ def run_rental_scenario(name, raw, review, rent_inputs, *, include_commercial=Fa
                 require(maturity["value"] == permanent_terms["maturity_payments"],
                         "permanent_maturity_evidence_and_loan_terms_disagree")
                 permanent_terms["supplemental_maturity_ref"] = maturity["source_ref"]
-            if document_review is not None and "bank_pdf_by_scenario" in document_review["bots"]["B08"]:
+            if bank_quote_override is not None or (document_review is not None and "bank_pdf_by_scenario" in document_review["bots"]["B08"]):
                 from worksheet_evidence_pdf_D156 import bind_bank_evidence
-                quote = document_review["bots"]["B08"]["bank_pdf_by_scenario"][name]
+                quote = bank_quote_override if bank_quote_override is not None else document_review["bots"]["B08"]["bank_pdf_by_scenario"][name]
                 bank = bind_bank_evidence(quote, permanent_terms, terms["principal"])
                 if bank["blockers"]:
                     return pending | dict(blockers=[f"B08:{reason}" for reason in bank["blockers"]],
@@ -623,7 +623,7 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
 
     routes = object_or_empty(object_or_empty(case.get("rent_inputs")).get("calendar_checks"))
 
-    def run_scenario(name, source_review, *, scenario_inputs=None, construction_quote=None):
+    def run_scenario(name, source_review, *, scenario_inputs=None, construction_quote=None, bank_quote=None):
         scenario_supplemental = supplemental
         if scenario_inputs is not None and require_supplemental_scope:
             scenario_supplemental = object_or_empty(scenario_inputs.get("supplemental_scope"))
@@ -651,7 +651,7 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
                                       require_formula_review=require_formula_review, supplemental=scenario_supplemental,
                                       require_debt_yield=require_debt_yield, florida_tax=florida_tax,
                                       sale_only_on_capacity_block=sale_only_on_capacity_block,
-                                      construction_quote_override=construction_quote)
+                                      construction_quote_override=construction_quote, bank_quote_override=bank_quote)
 
     views = {name: run_scenario(name, review["scenarios"][name]) for name in SCENARIOS}
     evidence_gate = None

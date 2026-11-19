@@ -1,5 +1,7 @@
 # Si invierto USD 10, ¿cuánto cobro y cuándo?
 
+Continuación: [C69–C72, deuda permanente, capacidad y caja por USD 10 en D262](workbook-permanent-sensitivities-D262.md).
+
 D261 conecta los cambios de C66, C67 y C68 en una misma corrida reproducible del perfil sintético D200. C66 modifica la valoración de refinanciación; C67, el precio bruto de venta; C68, el porcentaje de costo de venta sobre ese precio. Cada cambio se ejecuta por separado y luego se recalculan los tres juntos. La valoración y la capacidad disponible no se cuentan como efectivo del inversor.
 
 ## Alcance y origen de los valores
