@@ -75,7 +75,7 @@ def construction_budget(raw, name, review, development, commercial, *, calendar=
              dict(event_id="construction-late", date=schedule["terms"]["remainder_date"], amount=rational(late_equity))]
     if calendar is not None:
         draws.append(dict(event_id="lease-up-funding", date=calendar["construction_finish"], amount=calendar["lease_up_funding"]))
-    cell_sources = {cell: f"sha256:{review['workbook_sha256']}#{rows[cell]['value_cell']}" for cell in
+    cell_sources = {cell: rows[cell].get("sensitivity_value_source_ref", f"sha256:{review['workbook_sha256']}#{rows[cell]['value_cell']}") for cell in
                     ("C37", "C38", "C39", "C40", "C41", "C42")}
     amounts = dict(parking_rate=parking_rate, parking_cost=parking, site_cost=site, direct_hard_cost=direct_hard,
                    contingency_rate=contingency_rate, contingency_reserve=reserve, hard_budget=hard,

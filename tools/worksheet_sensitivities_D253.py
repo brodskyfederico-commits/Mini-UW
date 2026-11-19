@@ -14,10 +14,15 @@ from worksheet_market_evidence_D166 import RENT_UNITS
 
 SCHEMA = "miniuw.synthetic-worksheet-sensitivities.v1"
 EXTENDED_SCHEMA = "miniuw.synthetic-worksheet-sensitivities.v2"
+BUDGET_SCHEMA = "miniuw.synthetic-worksheet-sensitivities.v3"
 EXTENDED_UNITS = {
     "C14": "fraction", "C15": "fraction", "C19": "fraction",
     "C16": "USD_per_rentable_sf_per_year", "C17": "USD_per_rentable_sf_per_year",
     "C18": "USD_per_rentable_sf_per_year", "C76": "annual_effective_growth_fraction",
+}
+BUDGET_UNITS = {
+    "C37": "USD_per_parking_space", "C38": "USD_total",
+    "C39": "fraction", "C40": "fraction", "C41": "USD_per_rentable_sf", "C42": "fraction",
 }
 CHANGE_FIELDS = {"target_cell", "operation", "unit", "value", "source_ref"}
 ADDITIVE_SCALES = {"basis_point_change": ("bps", 10_000), "percentage_point_change": ("percentage_points", 100)}
@@ -51,7 +56,7 @@ def bind_change(change, rows, workbook_sha256, case_sha256, *, units=None):
                 base_cell_ref=f"sha256:{workbook_sha256}#{record['value_cell']}", origin_case_sha256=case_sha256)
 
 
-def evaluate_trial(name, review, bindings, origin, run_variant, *, extended=False):
+def evaluate_trial(name, review, bindings, origin, run_variant, *, extended=False, budget=False):
     by_cell = {entry["change"]["target_cell"]: entry for entry in bindings}
     rows = []
     for row in review["rows"]:
@@ -65,6 +70,10 @@ def evaluate_trial(name, review, bindings, origin, run_variant, *, extended=Fals
     candidate = run_variant(name, review | dict(rows=rows))
     comparison = dict(bindings=bindings, capacity=candidate["capacity"],
                       candidate_sha256=sha(encoded(candidate)))
+    if budget:
+        comparison.update({key: candidate[key] for key in (
+            "development_costs", "construction_budget", "construction_financing", "construction_refinance", "project_calendar"
+        ) if key in candidate})
     cash = candidate["cash_per_usd_10"]
     if candidate["blockers"] or cash is None:
         blockers = candidate["blockers"] or ["sensitivity_cash_unavailable"]
@@ -87,7 +96,7 @@ def evaluate_trial(name, review, bindings, origin, run_variant, *, extended=Fals
                              valuation_and_sale=candidate["valuation_and_sale"])
 
 
-def evaluate_scenario(spec, name, review, origin, run_variant, origin_blockers, case_sha256, *, extended=False):
+def evaluate_scenario(spec, name, review, origin, run_variant, origin_blockers, case_sha256, *, extended=False, budget=False):
     if origin_blockers:
         return pending(*origin_blockers)
     units = {cell: driver[1] for cell, driver in DRIVERS.items()}
@@ -99,6 +108,8 @@ def evaluate_scenario(spec, name, review, origin, run_variant, origin_blockers, 
             return pending("sensitivity_rent_basis_unconfirmed:C7")
         units.update(EXTENDED_UNITS)
         units.update({cell: rent_unit for cell in ("C8", "C9", "C10", "C11")})
+    if budget:
+        units.update(BUDGET_UNITS)
     changes = spec.get("changes")
     if (spec.keys() != {"changes"} or not isinstance(changes, list) or not 1 <= len(changes) <= len(units)
             or not all(isinstance(change, dict) and isinstance(change.get("target_cell"), str)
@@ -115,13 +126,13 @@ def evaluate_scenario(spec, name, review, origin, run_variant, origin_blockers, 
             individual[cell] = pending(str(error))
             continue
         bindings.append(binding)
-        individual[cell] = evaluate_trial(name, review, [binding], origin, run_variant, extended=extended)
+        individual[cell] = evaluate_trial(name, review, [binding], origin, run_variant, extended=extended, budget=budget)
     if len(bindings) != len(changes):
         combined = pending("sensitivity_combination_has_unconfirmed_inputs")
     elif len(bindings) == 1:
         combined = next(iter(individual.values()))
     else:
-        combined = evaluate_trial(name, review, bindings, origin, run_variant, extended=extended)
+        combined = evaluate_trial(name, review, bindings, origin, run_variant, extended=extended, budget=budget)
     complete = all(row["state"] == "computed_synthetic" for row in individual.values())
     # Equal effects share a group. The combined recalculation is a distinct observation.
     ranking = []
@@ -140,10 +151,11 @@ def evaluate_scenario(spec, name, review, origin, run_variant, origin_blockers, 
 def evaluate_sensitivities(raw, mapping, views, run_variant, *, revision, documents, evidence_gate, case_sha256):
     spec = object_or_empty(raw)
     schema = spec.get("schema")
-    heading = dict(schema=EXTENDED_SCHEMA if schema == EXTENDED_SCHEMA else SCHEMA, decision="PENDING", origin_case_sha256=case_sha256,
+    supported = (SCHEMA, EXTENDED_SCHEMA, BUDGET_SCHEMA)
+    heading = dict(schema=schema if schema in supported else SCHEMA, decision="PENDING", origin_case_sha256=case_sha256,
                    revision_sha256=revision["reference_sha256"], request_sha256=sha(encoded(raw)))
     cases = object_or_empty(spec.get("scenarios"))
-    if spec.keys() != {"schema", "scenarios"} or schema not in (SCHEMA, EXTENDED_SCHEMA) or cases.keys() != set(SCENARIOS):
+    if spec.keys() != {"schema", "scenarios"} or schema not in supported or cases.keys() != set(SCENARIOS):
         return heading | dict(state="PENDING", blockers=["sensitivity_request_or_scenarios_unconfirmed"], scenarios={})
     common = list(revision["blockers"])
     if documents["blockers"]:
@@ -157,6 +169,7 @@ def evaluate_sensitivities(raw, mapping, views, run_variant, *, revision, docume
         if origin["cash_per_usd_10"] is None:
             blockers.append("sensitivity_origin_cash_pending")
         scenarios[name] = evaluate_scenario(object_or_empty(cases[name]), name, mapping["scenarios"][name],
-                                               origin, run_variant, blockers, case_sha256, extended=schema == EXTENDED_SCHEMA)
+                                               origin, run_variant, blockers, case_sha256,
+                                               extended=schema in (EXTENDED_SCHEMA, BUDGET_SCHEMA), budget=schema == BUDGET_SCHEMA)
     state = "computed_synthetic" if all(row["state"] == "computed_synthetic" for row in scenarios.values()) else "PENDING"
     return heading | dict(state=state, blockers=[], scenarios=scenarios)
