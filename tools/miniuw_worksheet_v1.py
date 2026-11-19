@@ -154,6 +154,7 @@ MAX_INTEGRATED_PILOT_BYTES = 48 * 1024
 MAX_CONSTRUCTION_PILOT_BYTES = 96 * 1024
 CONSTRUCTION_SENSITIVITY_SCHEMA = "miniuw.synthetic-worksheet-sensitivities.v5"
 PERMANENT_SENSITIVITY_SCHEMA = "miniuw.synthetic-worksheet-sensitivities.v10"
+EXACT_PERMANENT_SENSITIVITY_SCHEMA = "miniuw.synthetic-worksheet-sensitivities.v11"
 
 
 def read_case_source(raw):
@@ -161,7 +162,7 @@ def read_case_source(raw):
     inputs = case.get("rent_inputs") if isinstance(case, dict) else None
     sensitivity = inputs.get("sensitivities") if isinstance(inputs, dict) else None
     pdf_support = (isinstance(case, dict) and case.get("schema") in TECHNICAL_SCHEMAS
-                   and isinstance(sensitivity, dict) and sensitivity.get("schema") in (CONSTRUCTION_SENSITIVITY_SCHEMA, PERMANENT_SENSITIVITY_SCHEMA))
+                   and isinstance(sensitivity, dict) and sensitivity.get("schema") in (CONSTRUCTION_SENSITIVITY_SCHEMA, PERMANENT_SENSITIVITY_SCHEMA, EXACT_PERMANENT_SENSITIVITY_SCHEMA))
     if not pdf_support and len(raw) > MAX_INTEGRATED_PILOT_BYTES:
         return _json(raw, MAX_INTEGRATED_PILOT_BYTES)
     return case

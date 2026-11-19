@@ -1,5 +1,7 @@
 # Si invierto USD 10, ¿cuánto cobro y cuándo?
 
+Actualización posterior: [D263 calcula la variante de 5,01 % mediante el contrato optativo v11 de transporte exacto](workbook-exact-cash-D263.md). Este registro conserva los resultados y la limitación originales de v10.
+
 D262 conecta los cambios C69–C72 por separado y en conjunto con la deuda permanente, la capacidad de refinanciación y los movimientos brutos por USD 10 en Base y Downside. Usa exclusivamente el perfil sintético documentado D200. Se conserva el equity inicial verificado de USD 2.400.000 y el factor `10 / 2.400.000`. Los aportes posteriores se muestran separados. El dictamen real y el retorno personal sin términos de reparto permanecen PENDING.
 
 ## Valores del ensayo y alcance

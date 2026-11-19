@@ -212,7 +212,7 @@ def run_rental_scenario(name, raw, review, rent_inputs, *, include_commercial=Fa
                         include_permanent_loan=False, include_refinance_costs=False, include_growth=False,
                         require_market_evidence=False, require_formula_review=False, supplemental=None,
                         require_debt_yield=False, florida_tax=False, sale_only_on_capacity_block=False,
-                        construction_quote_override=None, bank_quote_override=None):
+                        construction_quote_override=None, bank_quote_override=None, cash_engine=None):
     pending = dict(state="PENDING", cash_per_usd_10=None, capacity=None, noi_by_period={})
     if not review["calculation_inputs_ready"]:
         return pending | dict(blockers=["required_rental_cells_unconfirmed"])
@@ -368,7 +368,8 @@ def run_rental_scenario(name, raw, review, rent_inputs, *, include_commercial=Fa
 
         # The accrued operating result remains available when the refinance request is blocked.
         operating = noi_for(OPERATING_PERIOD)
-        result = financed_cash(terms["context"], terms["cost"], cost_source,
+        calculate_cash = financed_cash if cash_engine is None else cash_engine
+        result = calculate_cash(terms["context"], terms["cost"], cost_source,
                                terms["principal"], terms["cap"],
                                lambda period: operating if period == OPERATING_PERIOD else noi_for(period),
                                construction_draws=draws, calendar=calendar, construction_financing=funding,
@@ -623,7 +624,7 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
 
     routes = object_or_empty(object_or_empty(case.get("rent_inputs")).get("calendar_checks"))
 
-    def run_scenario(name, source_review, *, scenario_inputs=None, construction_quote=None, bank_quote=None):
+    def run_scenario(name, source_review, *, scenario_inputs=None, construction_quote=None, bank_quote=None, cash_engine=None):
         scenario_supplemental = supplemental
         if scenario_inputs is not None and require_supplemental_scope:
             scenario_supplemental = object_or_empty(scenario_inputs.get("supplemental_scope"))
@@ -651,7 +652,7 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
                                       require_formula_review=require_formula_review, supplemental=scenario_supplemental,
                                       require_debt_yield=require_debt_yield, florida_tax=florida_tax,
                                       sale_only_on_capacity_block=sale_only_on_capacity_block,
-                                      construction_quote_override=construction_quote, bank_quote_override=bank_quote)
+                                      construction_quote_override=construction_quote, bank_quote_override=bank_quote, cash_engine=cash_engine)
 
     views = {name: run_scenario(name, review["scenarios"][name]) for name in SCENARIOS}
     evidence_gate = None
