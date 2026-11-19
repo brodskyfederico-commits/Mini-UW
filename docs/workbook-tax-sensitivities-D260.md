@@ -1,5 +1,7 @@
 # D260 · C61–C62, impuesto inmobiliario, NOI y caja
 
+Continuación: [C66–C68, valoración de refi, venta y caja por USD 10 en D261](workbook-pricing-sensitivities-D261.md).
+
 ## Si invierto USD 10, ¿cuánto recibo y cuándo?
 
 Ejemplo exclusivamente sintético del perfil D200, normalizado sobre USD 2.400.000 de equity inicial del proyecto: factor fijo `10 / 2.400.000`. No corresponde al 1101 ni a One Hollywood. El retorno personal sigue PENDING sin términos de reparto documentados.

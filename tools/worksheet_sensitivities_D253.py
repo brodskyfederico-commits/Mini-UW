@@ -21,6 +21,8 @@ EXPENSE_SCHEMA = "miniuw.synthetic-worksheet-sensitivities.v6"
 RESERVE_SCHEMA = "miniuw.synthetic-worksheet-sensitivities.v7"
 TAX_SCHEMA = "miniuw.synthetic-worksheet-sensitivities.v8"
 TAX_UNITS = {"C61": "fraction_of_market_value", "C62": "USD_per_comparable_unit_per_year"}
+PRICING_SCHEMA = "miniuw.synthetic-worksheet-sensitivities.v9"
+PRICING_UNITS = {"C66": "annual_cap_fraction", "C67": "annual_cap_fraction", "C68": "fraction_of_gross_sale_price"}
 EXTENDED_UNITS = {
     "C14": "fraction", "C15": "fraction", "C19": "fraction",
     "C16": "USD_per_rentable_sf_per_year", "C17": "USD_per_rentable_sf_per_year",
@@ -68,7 +70,7 @@ def bind_change(change, rows, workbook_sha256, case_sha256, *, units=None):
 
 
 def evaluate_trial(name, review, bindings, origin, run_variant, *, extended=False, budget=False,
-                   calendar=False, support=None, scenario_inputs=None, construction=False, parent_quote=None, expense=False, reserve=False, tax=False):
+                   calendar=False, support=None, scenario_inputs=None, construction=False, parent_quote=None, expense=False, reserve=False, tax=False, pricing=False):
     by_cell = {entry["change"]["target_cell"]: entry for entry in bindings}
     rows = []
     for row in review["rows"]:
@@ -118,14 +120,22 @@ def evaluate_trial(name, review, bindings, origin, run_variant, *, extended=Fals
     if expense:
         comparison["expense_support"] = support_binding
         comparison.update({key: candidate[key] for key in ("market_insurance_review", "cell_sources") if key in candidate})
-    if reserve or tax:
+    if reserve or tax or pricing:
         comparison.update({key: candidate[key] for key in (
             "replacement_reserve", "permanent_reserve", "dated_debt_service", "gross_sale", "debt_principal_paid_at_sale"
+        ) if key in candidate})
+    if pricing:
+        comparison.update({key: candidate[key] for key in (
+            "valuation_and_sale", "market_insurance_review", "permanent_loan", "cell_sources"
         ) if key in candidate})
     cash = candidate["cash_per_usd_10"]
     if candidate["blockers"] or cash is None:
         blockers = candidate["blockers"] or ["sensitivity_cash_unavailable"]
         return comparison | pending(*blockers)
+    if pricing:
+        refs = object_or_empty(object_or_empty(candidate.get("valuation_and_sale")).get("cell_sources"))
+        if any(refs.get(entry["change"]["target_cell"]) != f"sha256:{sha(encoded(entry))}#/resulting_value" for entry in bindings):
+            return comparison | pending("sensitivity_valuation_basis_not_connected:C66-C68")
     if tax:
         # A different fiscal profile must not silently ignore C61/C62 changes.
         periods = candidate["noi_by_period"]
@@ -145,7 +155,7 @@ def evaluate_trial(name, review, bindings, origin, run_variant, *, extended=Fals
         comparison["date_comparison"] = {key: dict(original=origin["project_calendar"][key],
                                                     variant=candidate["project_calendar"][key]) for key in (
             "purchase_date", "construction_finish", "tco_date", "stabilization_date", "refinance_date", "sale_date")}
-    if reserve or tax:
+    if reserve or tax or pricing:
         operating = candidate["noi_by_period"][OPERATING_PERIOD]
         terms = candidate["replacement_reserve"]
         comparison["operating_noi_after_reserve"] = dict(
@@ -165,7 +175,7 @@ def evaluate_trial(name, review, bindings, origin, run_variant, *, extended=Fals
 
 
 def evaluate_scenario(spec, name, review, origin, run_variant, origin_blockers, case_sha256, *, extended=False,
-                      budget=False, calendar=False, scenario_inputs=None, construction=False, parent_quote=None, expense=False, reserve=False, tax=False):
+                      budget=False, calendar=False, scenario_inputs=None, construction=False, parent_quote=None, expense=False, reserve=False, tax=False, pricing=False):
     if origin_blockers:
         return pending(*origin_blockers)
     units = {cell: driver[1] for cell, driver in DRIVERS.items()}
@@ -190,6 +200,8 @@ def evaluate_scenario(spec, name, review, origin, run_variant, origin_blockers, 
         units["C60"] = "USD_per_eligible_unit_per_year"
     if tax:
         units = TAX_UNITS.copy()
+    if pricing:
+        units = PRICING_UNITS.copy()
     changes = spec.get("changes")
     support_key = "expense_support" if expense else "calendar_support" if calendar else "construction_support"
     fields = {"changes", support_key} if calendar or construction or expense else {"changes"}
@@ -222,7 +234,7 @@ def evaluate_scenario(spec, name, review, origin, run_variant, origin_blockers, 
         bindings.append(binding)
         individual[cell] = evaluate_trial(name, review, [binding], origin, run_variant, extended=extended, budget=budget,
                                           calendar=calendar, support=None if support is None else support["individual"][cell],
-                                          scenario_inputs=scenario_inputs, construction=construction, parent_quote=parent_quote, expense=expense, reserve=reserve, tax=tax)
+                                          scenario_inputs=scenario_inputs, construction=construction, parent_quote=parent_quote, expense=expense, reserve=reserve, tax=tax, pricing=pricing)
     if len(bindings) != len(changes):
         combined = pending("sensitivity_combination_has_unconfirmed_inputs")
     elif len(bindings) == 1 and not calendar and not construction and not expense:
@@ -230,7 +242,7 @@ def evaluate_scenario(spec, name, review, origin, run_variant, origin_blockers, 
     else:
         combined = evaluate_trial(name, review, bindings, origin, run_variant, extended=extended, budget=budget,
                                    calendar=calendar, support=None if support is None else support["combined"],
-                                   scenario_inputs=scenario_inputs, construction=construction, parent_quote=parent_quote, expense=expense, reserve=reserve, tax=tax)
+                                   scenario_inputs=scenario_inputs, construction=construction, parent_quote=parent_quote, expense=expense, reserve=reserve, tax=tax, pricing=pricing)
     complete = all(row["state"] == "computed_synthetic" for row in individual.values())
     # Equal effects share a group. The combined recalculation is a distinct observation.
     ranking = []
@@ -249,7 +261,7 @@ def evaluate_scenario(spec, name, review, origin, run_variant, origin_blockers, 
 def evaluate_sensitivities(raw, mapping, views, run_variant, *, revision, documents, evidence_gate, case_sha256, scenario_inputs=None):
     spec = object_or_empty(raw)
     schema = spec.get("schema")
-    supported = (SCHEMA, EXTENDED_SCHEMA, BUDGET_SCHEMA, CALENDAR_SCHEMA, CONSTRUCTION_SCHEMA, EXPENSE_SCHEMA, RESERVE_SCHEMA, TAX_SCHEMA)
+    supported = (SCHEMA, EXTENDED_SCHEMA, BUDGET_SCHEMA, CALENDAR_SCHEMA, CONSTRUCTION_SCHEMA, EXPENSE_SCHEMA, RESERVE_SCHEMA, TAX_SCHEMA, PRICING_SCHEMA)
     heading = dict(schema=schema if schema in supported else SCHEMA, decision="PENDING", origin_case_sha256=case_sha256,
                    revision_sha256=revision["reference_sha256"], request_sha256=sha(encoded(raw)))
     cases = object_or_empty(spec.get("scenarios"))
@@ -268,11 +280,11 @@ def evaluate_sensitivities(raw, mapping, views, run_variant, *, revision, docume
             blockers.append("sensitivity_origin_cash_pending")
         scenarios[name] = evaluate_scenario(object_or_empty(cases[name]), name, mapping["scenarios"][name],
                                                origin, run_variant, blockers, case_sha256,
-                                               extended=schema in (EXTENDED_SCHEMA, BUDGET_SCHEMA, CALENDAR_SCHEMA, CONSTRUCTION_SCHEMA, EXPENSE_SCHEMA, RESERVE_SCHEMA, TAX_SCHEMA),
-                                               budget=schema in (BUDGET_SCHEMA, CALENDAR_SCHEMA, CONSTRUCTION_SCHEMA, EXPENSE_SCHEMA, RESERVE_SCHEMA, TAX_SCHEMA), calendar=schema == CALENDAR_SCHEMA,
+                                               extended=schema in (EXTENDED_SCHEMA, BUDGET_SCHEMA, CALENDAR_SCHEMA, CONSTRUCTION_SCHEMA, EXPENSE_SCHEMA, RESERVE_SCHEMA, TAX_SCHEMA, PRICING_SCHEMA),
+                                               budget=schema in (BUDGET_SCHEMA, CALENDAR_SCHEMA, CONSTRUCTION_SCHEMA, EXPENSE_SCHEMA, RESERVE_SCHEMA, TAX_SCHEMA, PRICING_SCHEMA), calendar=schema == CALENDAR_SCHEMA,
                                                scenario_inputs=scenario_inputs, construction=schema == CONSTRUCTION_SCHEMA,
                                                parent_quote=object_or_empty(object_or_empty(object_or_empty(documents.get("bots")).get("B08"))
                                                                            .get("construction_pdf_by_scenario")).get(name), expense=schema in (EXPENSE_SCHEMA, RESERVE_SCHEMA),
-                                               reserve=schema == RESERVE_SCHEMA, tax=schema == TAX_SCHEMA)
+                                               reserve=schema == RESERVE_SCHEMA, tax=schema == TAX_SCHEMA, pricing=schema == PRICING_SCHEMA)
     state = "computed_synthetic" if all(row["state"] == "computed_synthetic" for row in scenarios.values()) else "PENDING"
     return heading | dict(state=state, blockers=[], scenarios=scenarios)
