@@ -217,7 +217,8 @@ def run_rental_scenario(name, raw, review, rent_inputs, *, include_commercial=Fa
         return pending | dict(blockers=["required_rental_cells_unconfirmed"])
     rows = {row["value_cell"].split("!")[1]: row for row in review["rows"] if row["field_id"] in FIELDS}
     values = {cell: row["value"] for cell, row in rows.items()}
-    cells = {cell: f"sha256:{review['workbook_sha256']}#{row['value_cell']}" for cell, row in rows.items()}
+    cells = {cell: row.get("sensitivity_value_source_ref", f"sha256:{review['workbook_sha256']}#{row['value_cell']}")
+             for cell, row in rows.items()}
     market = {}
     if require_market_evidence:
         from worksheet_market_evidence_D166 import review_assumptions

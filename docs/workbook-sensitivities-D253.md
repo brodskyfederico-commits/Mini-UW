@@ -41,3 +41,5 @@ PYTHONPATH=src:tools python3 tools/check_worksheet_alternatives_D155.py --output
 ```
 
 La prueba nueva ensambla el expediente original y las variantes, verifica los cobros contra sus movimientos y el precio de salida, reproduce el expediente por B16 y prueba unidad inválida y revisión financiera desactualizada. D155 verifica la compatibilidad de las alternativas C80–C82.
+
+La ampliación optativa [D254](workbook-operating-sensitivities-D254.md) incorpora rentas, vacancia, concesiones y crecimiento de gastos mediante el esquema v2. El contrato v1 y sus expedientes anteriores conservan su reproducción original.

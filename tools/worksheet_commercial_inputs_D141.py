@@ -42,7 +42,8 @@ def commercial_terms(raw, review):
             require(area == 0 and rows[cell]["state"] == "NOT_APPLICABLE",
                     f"commercial_non_applicability_unconfirmed:{cell}")
 
-    cells = {f"C{i}": f"sha256:{review['workbook_sha256']}#Inputs!C{i}" for i in range(16, 22)}
+    cells = {f"C{i}": rows[f"C{i}"].get("sensitivity_value_source_ref", f"sha256:{review['workbook_sha256']}#Inputs!C{i}")
+             for i in range(16, 22)}
     evidence = dict(uses=active, cell_sources=cells, inventory_source_ref=source["source_ref"])
     if not active:
         require(all(rows[cell]["state"] == "NOT_APPLICABLE" for cell in ("C19", "C20", "C21")),

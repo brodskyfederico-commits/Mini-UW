@@ -9,9 +9,16 @@ from plan_return_D107 import FORWARD_PERIOD
 from worksheet_alternatives_D155 import CASH_TOTALS, DRIVERS
 from worksheet_local_sources_D127 import object_or_empty, synthetic_id
 from worksheet_native_mapping_D139 import SCENARIOS
+from worksheet_market_evidence_D166 import RENT_UNITS
 
 
 SCHEMA = "miniuw.synthetic-worksheet-sensitivities.v1"
+EXTENDED_SCHEMA = "miniuw.synthetic-worksheet-sensitivities.v2"
+EXTENDED_UNITS = {
+    "C14": "fraction", "C15": "fraction", "C19": "fraction",
+    "C16": "USD_per_rentable_sf_per_year", "C17": "USD_per_rentable_sf_per_year",
+    "C18": "USD_per_rentable_sf_per_year", "C76": "annual_effective_growth_fraction",
+}
 CHANGE_FIELDS = {"target_cell", "operation", "unit", "value", "source_ref"}
 ADDITIVE_SCALES = {"basis_point_change": ("bps", 10_000), "percentage_point_change": ("percentage_points", 100)}
 
@@ -20,7 +27,7 @@ def pending(*blockers):
     return dict(state="PENDING", cash_per_usd_10=None, blockers=list(blockers))
 
 
-def bind_change(change, rows, workbook_sha256, case_sha256):
+def bind_change(change, rows, workbook_sha256, case_sha256, *, units=None):
     cell = change["target_cell"]
     record = rows[f"INPUT_{cell}"]
     require(change.keys() == CHANGE_FIELDS and synthetic_id(change.get("source_ref")),
@@ -29,13 +36,14 @@ def bind_change(change, rows, workbook_sha256, case_sha256):
     prior, delta = _fraction(record["value"]), _fraction(change["value"], 24)
     require(prior is not None and delta is not None, "sensitivity_explicit_numeric_value_required")
     operation = change["operation"]
-    unit = DRIVERS[cell][1]
+    unit = DRIVERS[cell][1] if units is None else units[cell]
     if operation == "replace_absolute":
         expected_unit, candidate = unit, delta
     elif operation == "relative_change":
         expected_unit, candidate = "fraction_of_baseline", prior * (1 + delta)
     else:
         require(isinstance(operation, str) and operation in ADDITIVE_SCALES, "sensitivity_operation_unsupported")
+        require(units is None or not unit.startswith("USD_"), "sensitivity_additive_rate_operation_requires_fraction")
         expected_unit, divisor = ADDITIVE_SCALES[operation]
         candidate = prior + delta / divisor
     require(change["unit"] == expected_unit, "sensitivity_change_unit_mismatch")
@@ -43,7 +51,7 @@ def bind_change(change, rows, workbook_sha256, case_sha256):
                 base_cell_ref=f"sha256:{workbook_sha256}#{record['value_cell']}", origin_case_sha256=case_sha256)
 
 
-def evaluate_trial(name, review, bindings, origin, run_variant):
+def evaluate_trial(name, review, bindings, origin, run_variant, *, extended=False):
     by_cell = {entry["change"]["target_cell"]: entry for entry in bindings}
     rows = []
     for row in review["rows"]:
@@ -51,6 +59,8 @@ def evaluate_trial(name, review, bindings, origin, run_variant):
         if entry is not None:
             row = row | dict(value=entry["resulting_value"],
                              alternative_value_source_ref=f"sha256:{sha(encoded(entry))}#/resulting_value")
+            if extended:
+                row["sensitivity_value_source_ref"] = row["alternative_value_source_ref"]
         rows.append(row)
     candidate = run_variant(name, review | dict(rows=rows))
     comparison = dict(bindings=bindings, capacity=candidate["capacity"],
@@ -66,6 +76,10 @@ def evaluate_trial(name, review, bindings, origin, run_variant):
         return comparison | pending("sensitivity_cash_basis_or_dates_differ")
     deltas = {key: _fraction(cash[key], 1300) - _fraction(base[key], 1300) for key in CASH_TOTALS}
     net = deltas["total_distributions"] - deltas["total_contributions"]
+    if extended:
+        comparison.update(noi_by_period=candidate["noi_by_period"], cell_sources=candidate["cell_sources"],
+                          growth_terms=candidate["growth_terms"],
+                          commercial_terms=candidate["commercial_terms"])
     return comparison | dict(state="computed_synthetic", blockers=[], cash_per_usd_10=cash,
                              delta_per_usd_10={key: rational(value) for key, value in deltas.items()},
                              delta_net_cash_per_usd_10=rational(net),
@@ -73,33 +87,41 @@ def evaluate_trial(name, review, bindings, origin, run_variant):
                              valuation_and_sale=candidate["valuation_and_sale"])
 
 
-def evaluate_scenario(spec, name, review, origin, run_variant, origin_blockers, case_sha256):
+def evaluate_scenario(spec, name, review, origin, run_variant, origin_blockers, case_sha256, *, extended=False):
     if origin_blockers:
         return pending(*origin_blockers)
+    units = {cell: driver[1] for cell, driver in DRIVERS.items()}
+    rows = {row["field_id"]: row for row in review["rows"]}
+    if extended:
+        rent_basis = object_or_empty(rows.get("INPUT_C7")).get("value")
+        rent_unit = RENT_UNITS.get(rent_basis) if isinstance(rent_basis, str) else None
+        if rent_unit is None:
+            return pending("sensitivity_rent_basis_unconfirmed:C7")
+        units.update(EXTENDED_UNITS)
+        units.update({cell: rent_unit for cell in ("C8", "C9", "C10", "C11")})
     changes = spec.get("changes")
-    if (spec.keys() != {"changes"} or not isinstance(changes, list) or not 1 <= len(changes) <= len(DRIVERS)
+    if (spec.keys() != {"changes"} or not isinstance(changes, list) or not 1 <= len(changes) <= len(units)
             or not all(isinstance(change, dict) and isinstance(change.get("target_cell"), str)
-                       and change["target_cell"] in DRIVERS for change in changes)):
+                       and change["target_cell"] in units for change in changes)):
         return pending("sensitivity_driver_inventory_invalid")
     if len({change["target_cell"] for change in changes}) != len(changes):
         return pending("sensitivity_duplicate_driver")
-    rows = {row["field_id"]: row for row in review["rows"]}
     bindings, individual = [], {}
     for change in changes:
         cell = change["target_cell"]
         try:
-            binding = bind_change(change, rows, review["workbook_sha256"], case_sha256)
+            binding = bind_change(change, rows, review["workbook_sha256"], case_sha256, units=units if extended else None)
         except (ValueError, TypeError, KeyError) as error:
             individual[cell] = pending(str(error))
             continue
         bindings.append(binding)
-        individual[cell] = evaluate_trial(name, review, [binding], origin, run_variant)
+        individual[cell] = evaluate_trial(name, review, [binding], origin, run_variant, extended=extended)
     if len(bindings) != len(changes):
         combined = pending("sensitivity_combination_has_unconfirmed_inputs")
     elif len(bindings) == 1:
         combined = next(iter(individual.values()))
     else:
-        combined = evaluate_trial(name, review, bindings, origin, run_variant)
+        combined = evaluate_trial(name, review, bindings, origin, run_variant, extended=extended)
     complete = all(row["state"] == "computed_synthetic" for row in individual.values())
     # Equal effects share a group. The combined recalculation is a distinct observation.
     ranking = []
@@ -116,11 +138,12 @@ def evaluate_scenario(spec, name, review, origin, run_variant, origin_blockers, 
 
 
 def evaluate_sensitivities(raw, mapping, views, run_variant, *, revision, documents, evidence_gate, case_sha256):
-    heading = dict(schema=SCHEMA, decision="PENDING", origin_case_sha256=case_sha256,
-                   revision_sha256=revision["reference_sha256"], request_sha256=sha(encoded(raw)))
     spec = object_or_empty(raw)
+    schema = spec.get("schema")
+    heading = dict(schema=EXTENDED_SCHEMA if schema == EXTENDED_SCHEMA else SCHEMA, decision="PENDING", origin_case_sha256=case_sha256,
+                   revision_sha256=revision["reference_sha256"], request_sha256=sha(encoded(raw)))
     cases = object_or_empty(spec.get("scenarios"))
-    if spec.keys() != {"schema", "scenarios"} or spec["schema"] != SCHEMA or cases.keys() != set(SCENARIOS):
+    if spec.keys() != {"schema", "scenarios"} or schema not in (SCHEMA, EXTENDED_SCHEMA) or cases.keys() != set(SCENARIOS):
         return heading | dict(state="PENDING", blockers=["sensitivity_request_or_scenarios_unconfirmed"], scenarios={})
     common = list(revision["blockers"])
     if documents["blockers"]:
@@ -134,6 +157,6 @@ def evaluate_sensitivities(raw, mapping, views, run_variant, *, revision, docume
         if origin["cash_per_usd_10"] is None:
             blockers.append("sensitivity_origin_cash_pending")
         scenarios[name] = evaluate_scenario(object_or_empty(cases[name]), name, mapping["scenarios"][name],
-                                               origin, run_variant, blockers, case_sha256)
+                                               origin, run_variant, blockers, case_sha256, extended=schema == EXTENDED_SCHEMA)
     state = "computed_synthetic" if all(row["state"] == "computed_synthetic" for row in scenarios.values()) else "PENDING"
     return heading | dict(state=state, blockers=[], scenarios=scenarios)
