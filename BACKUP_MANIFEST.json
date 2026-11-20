@@ -1,5 +1,5 @@
 {
-  "scope": "Preserved originals and synthetic Mini-UW through D269: explicit annual per-unit AMI rent caps, utility allowances, complete independent source inventory and integrated USD10 cash under opt-in v35. Prior profiles and policy/real-use gates retained; no eligibility, conditional benefit, deployment or real decision authorized.",
+  "scope": "Preserved originals and synthetic Mini-UW through D270: opt-in exact quarterly IRR uniqueness certificates close the three known D268 resource-limit cases without altering financial inputs or dated cash. v34/v35 M2/AMI integration, prior reproducibility and policy/real-use gates retained; no deployment or real decision.",
   "files": [
     {
       "path": ".github/workflows/miniuw-integral-usd10.yml",
@@ -23,13 +23,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 94339,
-      "sha256": "35571f24800ba7c877ef686755c4db09140e072ac78915a17bc4de72310850ec"
+      "bytes": 94986,
+      "sha256": "34b15a0df0ee573e4dec3cdbd99bec9b40b60926226a2af761985f20086e925b"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 411605,
-      "sha256": "f6cc493902bbb2a17f747ae24581e28cffecc45dd3c75a4338166c840a548737"
+      "bytes": 413483,
+      "sha256": "5d694ad104b4a53e0f8694b61cd64786810302329612ece908342ffe827f6cea"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -1022,6 +1022,11 @@
       "sha256": "086547b03b7de23edb927b11b8a3f7d7915e059bd7c105907d2aef911b8a2b66"
     },
     {
+      "path": "docs/review/MiniUW_Alcance_y_Pendientes_D270.json",
+      "bytes": 6237,
+      "sha256": "c090a85866e056aaff6f140da9f07380ddc12ad3eef91c607d11a4d391894ddc"
+    },
+    {
       "path": "docs/review/MiniUW_Cierre_Revision_Profesional_D180.md",
       "bytes": 18791,
       "sha256": "dd618c0e7b654d73d39f81916f7c184d6a197add081b4cc99202da5311e251c0"
@@ -1397,6 +1402,11 @@
       "sha256": "b47bf1abc3e296e984707353f2243930a743c72b8322be247160083d927c0f27"
     },
     {
+      "path": "docs/review/MiniUW_TIR_Verificada_D270.pdf",
+      "bytes": 8692,
+      "sha256": "480c3392de2b066eaa09f1a07b3c9243b8e445ccd0a467a3e354acb738a61faa"
+    },
+    {
       "path": "docs/review/MiniUW_USD10_Ocho_Casos_D79.pdf",
       "bytes": 7097,
       "sha256": "99a2278d52390390d5b6bf7f5cb82b4f7b93c77547e3564c145c9e948cf2168f"
@@ -1430,6 +1440,11 @@
       "path": "docs/review/MiniUW_Validacion_D269.json",
       "bytes": 155802,
       "sha256": "4209125b3e1472cc5150ba5ef94914e4d125017ea4b5d15a8d1fe2d3db20aa08"
+    },
+    {
+      "path": "docs/review/MiniUW_Validacion_D270.json",
+      "bytes": 136719,
+      "sha256": "5268c79a564c094cdd4aef733a58bb761ab40cc2a337216011c4e5e626e2424d"
     },
     {
       "path": "docs/review/MiniUW_Verificacion_D181.json",
@@ -3710,6 +3725,11 @@
       "path": "docs/workbook-irr-D122.md",
       "bytes": 2536,
       "sha256": "f5afef6378c489a12417366cfa393171d7459b9890c26b92a7b5ee0283d4de8c"
+    },
+    {
+      "path": "docs/workbook-irr-certificate-D270.md",
+      "bytes": 5338,
+      "sha256": "63d058c274e4dfad0f2e17375d71ea27074ae63341731746a26f88c0a3770a21"
     },
     {
       "path": "docs/workbook-local-chain-D127.md",
@@ -6597,6 +6617,11 @@
       "sha256": "fdd3d72bdfd92336d074a3b98937c095f853f232a7e391e33182ec23261723e8"
     },
     {
+      "path": "templates/synthetic-irr-certificate-D270.json",
+      "bytes": 800,
+      "sha256": "3b81dcefaee5cac34049e63b8edde0ec226f342d64d5e5d0971ec88d55a3020e"
+    },
+    {
       "path": "templates/synthetic-joint-noi-capacity-D38.json",
       "bytes": 428,
       "sha256": "901eaa5cd209118fa5865385084c66dea71ab8c4f943c8cada703d32d45cd58f"
@@ -8447,6 +8472,11 @@
       "sha256": "5e8dcce11eaf8b36d45ccabc7187c1e02d0c26864bd56c7a8fccbcbf29dd929b"
     },
     {
+      "path": "tests/test_worksheet_irr_certificate.py",
+      "bytes": 10093,
+      "sha256": "b8f5b64c0a37045c3b7fffa38f7cb9ed0f9772120cfb2e58417ec331833df047"
+    },
+    {
       "path": "tests/test_worksheet_lorena_annual_route.py",
       "bytes": 7886,
       "sha256": "548c6112aff8b11b126c44c3bd982db9fdeab5c01ee1d1a87ed3302984d88d3c"
@@ -9132,6 +9162,11 @@
       "sha256": "0eda837dff49c228eca15efd9fa5783da774454d6c5c7343a48c3dca1dae97c8"
     },
     {
+      "path": "tools/check_worksheet_irr_certificate_D270.py",
+      "bytes": 8719,
+      "sha256": "4769f47fe01743913e515cf042993e1810bd3198c2462dd083b8b9c29fb93478"
+    },
+    {
       "path": "tools/check_worksheet_local_chain_D127.py",
       "bytes": 6978,
       "sha256": "d18ee80ecf0c2a84a1038cf63f45a6cb85d9475506f62caebf2841ea222b8365"
@@ -9813,8 +9848,8 @@
     },
     {
       "path": "tools/miniuw_worksheet_v1.py",
-      "bytes": 48376,
-      "sha256": "10cd2a376e9f258c9a5bd2290de4850e71ffce932dab12d81dcac939aeaab9ce"
+      "bytes": 49002,
+      "sha256": "9af08fadebd4c23b43a006f1e53f428a077f5d567eb65983775e56a0ee5e5359"
     },
     {
       "path": "tools/onepage_pending_cases_D79.py",
@@ -10133,8 +10168,8 @@
     },
     {
       "path": "tools/worksheet_integrated_screening_D181.py",
-      "bytes": 28719,
-      "sha256": "6178aca8ca39983504dade944a74d989ad0d5b7b6532569330ebe4404d860c3b"
+      "bytes": 28986,
+      "sha256": "f979fd927f9fe79eb4b8528c64cc22e863fc0859f991d7418bdf2b1147ffdd1a"
     },
     {
       "path": "tools/worksheet_integrated_transport_D264.py",
@@ -10155,6 +10190,11 @@
       "path": "tools/worksheet_irr_D122.py",
       "bytes": 6011,
       "sha256": "ad52af9c2ccc2727acf338bce2c46f6f8a60973544087674c62bac4da1e6504c"
+    },
+    {
+      "path": "tools/worksheet_irr_certificate_D270.py",
+      "bytes": 9936,
+      "sha256": "6ca6d34c726d36be60ae1943e51dbf671cfc90bc9b94c18204dfb4a180483aad"
     },
     {
       "path": "tools/worksheet_local_sources_D127.py",
@@ -10323,8 +10363,8 @@
     },
     {
       "path": "tools/worksheet_rental_inputs_D140.py",
-      "bytes": 70750,
-      "sha256": "971eb7cda656647a45e79b9ffecd41aa11ad35c0f2e34792d43caf4980c92820"
+      "bytes": 71648,
+      "sha256": "94c4b22263e0159e1fdad4bb9ef446d12aed224478caa34b679aa9f5480c78ab"
     },
     {
       "path": "tools/worksheet_replacement_reserve_D149.py",

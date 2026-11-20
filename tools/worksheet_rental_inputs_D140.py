@@ -463,6 +463,12 @@ def run_rental_scenario(name, raw, review, rent_inputs, *, include_commercial=Fa
                 result["holding_horizon"]["regulated_rents"] = dict(state="checked_synthetic", blockers=[],
                     profile=REGULATED_PROFILE, rules=REGULATED_RULES, inputs_sha256=sha(encoded(rent_inputs["regulated_rent"])),
                     windows=regulated_windows)
+            if "irr_certificate" in rent_inputs:
+                from worksheet_irr_certificate_D270 import solver as certificate_solver
+                alternative = result.get("horizon_without_refinance")
+                if alternative is not None and alternative.get("cash_per_usd_10") is not None:
+                    alternative["irr"] = certificate_solver(rent_inputs["irr_certificate"])(
+                        alternative["cash_per_usd_10"], calendar["equity_dates"])
         else:
             calculate_cash = financed_cash if cash_engine is None else cash_engine
             result = calculate_cash(terms["context"], terms["cost"], cost_source,
@@ -814,9 +820,13 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
         period_ref = LIFECYCLE
     if integrated_screening:
         from worksheet_integrated_screening_D181 import screen_integrated
+        screening_options = {}
+        if "irr_certificate" in inputs:
+            from worksheet_irr_certificate_D270 import solver as certificate_solver
+            screening_options["irr_solver"] = certificate_solver(inputs["irr_certificate"])
         screening = screen_integrated(case, views, blockers, definition_screening=definition_screening,
                                       criteria_review=criteria_review, technical_acceptance=technical_acceptance,
-                                      scalar_engine=scalar_engine)
+                                      scalar_engine=scalar_engine, **screening_options)
     else:
         screening = screen(case, views, blockers, period_ref=period_ref)
     simulation = screening["simulation_result"]
@@ -957,6 +967,8 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
         pipeline["pipeline"]["version_tests"]["suite"] = "test_worksheet_critical_evidence_gate_D220.py"
         if case.get("schema") == "miniuw.synthetic-native-rental-inputs.v35":
             pipeline["pipeline"]["version_tests"]["suite"] = "test_worksheet_regulated_rent.py"
+        if "irr_certificate" in inputs:
+            pipeline["pipeline"]["version_tests"]["irr_certificate_suite"] = "test_worksheet_irr_certificate.py"
     inputs = object_or_empty(case.get("rent_inputs"))
     if "sensitivities" in inputs:
         from worksheet_sensitivities_D253 import evaluate_sensitivities

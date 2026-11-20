@@ -171,9 +171,11 @@ def read_case_source(raw):
         return _json(raw, MAX_CONSTRUCTION_PILOT_BYTES)
     inputs = case.get("rent_inputs") if isinstance(case, dict) else None
     sensitivity = inputs.get("sensitivities") if isinstance(inputs, dict) else None
+    certificate_support = (isinstance(case, dict) and case.get("schema") == WORKBOOK_VARIANT_EVIDENCE_SCHEMA
+                           and isinstance(inputs, dict) and "irr_certificate" in inputs)
     pdf_support = (isinstance(case, dict) and case.get("schema") in TECHNICAL_SCHEMAS
                    and isinstance(sensitivity, dict) and sensitivity.get("schema") in (CONSTRUCTION_SENSITIVITY_SCHEMA, PERMANENT_SENSITIVITY_SCHEMA, EXACT_PERMANENT_SENSITIVITY_SCHEMA))
-    if not pdf_support and len(raw) > MAX_INTEGRATED_PILOT_BYTES:
+    if not (pdf_support or certificate_support) and len(raw) > MAX_INTEGRATED_PILOT_BYTES:
         return _json(raw, MAX_INTEGRATED_PILOT_BYTES)
     return case
 
@@ -213,6 +215,10 @@ def build_results(raw, *, workbook_raw=None, downside_workbook_raw=None, current
     rent_inputs = case.get("rent_inputs") if isinstance(case, dict) else None
     require(not isinstance(rent_inputs, dict) or "regulated_rent" not in rent_inputs or schema == WORKBOOK_REGULATED_RENT_SCHEMA,
             "Regulated rent requires the explicit v35 profile")
+    require(not isinstance(rent_inputs, dict) or "irr_certificate" not in rent_inputs or (
+        schema in INDEPENDENT_EVIDENCE_SCHEMAS and isinstance(rent_inputs.get("holding_horizon"), dict)
+        and rent_inputs["holding_horizon"].get("profile") == "miniuw.synthetic-integrated-fiscal-holding-horizon.v2"),
+        "The optional IRR certificate requires the versioned integrated fiscal horizon")
     require(independent_reference_raw is None or schema in INDEPENDENT_EVIDENCE_SCHEMAS,
             "Independent source inventory requires the explicit v34 profile")
     require(not isinstance(rent_inputs, dict) or "sensitivities" not in rent_inputs or schema in TECHNICAL_SCHEMAS,

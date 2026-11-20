@@ -82,7 +82,7 @@ def refinance_capital(view):
                 new_debt_pointer="/construction_refinance/gross_proceeds")
 
 
-def collect_metrics(name, view, supplied):
+def collect_metrics(name, view, supplied, *, irr_solver=None):
     records = {}
 
     def record(metric, period, value, pointer, *blockers):
@@ -144,7 +144,9 @@ def collect_metrics(name, view, supplied):
                   f"{calendar['refinance_date']}/{calendar['sale_date']}")
     record("post_refi_CoC", coc_period, coc["value"], "post_refinance_coc/value", *coc["blockers"])
 
-    if "holding_horizon" in view:
+    if irr_solver is not None:
+        irr = irr_solver(cash, calendar["equity_dates"])
+    elif "holding_horizon" in view:
         from worksheet_holding_horizon_D266 import horizon_irr
         irr = horizon_irr(cash, calendar["equity_dates"])
     else:
@@ -215,9 +217,10 @@ def compare_pass_only(metric, criterion, enclosure):
 
 
 def screen_integrated(case, views, blockers, *, definition_screening=False, criteria_review=None,
-                      technical_acceptance=False, scalar_engine=None):
+                      technical_acceptance=False, scalar_engine=None, irr_solver=None):
     inputs = object_or_empty(object_or_empty(case.get("rent_inputs")).get("integrated_screening"))
-    collections = {name: collect_metrics(name, view, object_or_empty(inputs.get(name)))
+    collections = {name: (collect_metrics(name, view, object_or_empty(inputs.get(name))) if irr_solver is None else
+                         collect_metrics(name, view, object_or_empty(inputs.get(name)), irr_solver=irr_solver))
                    for name, view in views.items()}
     revision = case.get("criteria_revision")
     current_rules = synthetic_id(revision) and not any(reason.startswith("B12:") for reason in blockers)

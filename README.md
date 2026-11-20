@@ -419,3 +419,7 @@ El [ejecutor de 15 drivers](docs/workbook-scenario-program-D268.md) corre varian
 ## D269 · Renta regulada con AMI y deducción de servicios
 
 El [perfil v35](docs/workbook-regulated-rent-D269.md) recibe AMI, hogares, límites, unidades y utility allowance explícitos por ventana. Conecta renta limitada, NOI, capacidad y retorno por USD 10 con/sin refi en Base/Downside; un dato o unidad ausente deja PENDING. [Validación](docs/review/MiniUW_Validacion_D269.json) · [Pendientes](docs/review/MiniUW_Alcance_y_Pendientes_D269.json). Los valores del fixture son sólo de prueba; no se acredita elegibilidad legal ni beneficio fiscal.
+
+## D270 · TIR trimestral con inventario de raíces probado
+
+El [certificado numérico optativo](docs/workbook-irr-certificate-D270.md) resuelve las tres TIR de Downside refi pendientes de D268 sin cambiar ningún aporte o cobro por USD 10. Pasaron 13 pruebas dirigidas, 28 rutas de caja cotejadas y 16 TIR certificadas, incluida la integración AMI/M2. [Evidencia](docs/review/MiniUW_Validacion_D270.json) · [Alcance y pendientes](docs/review/MiniUW_Alcance_y_Pendientes_D270.json). Las revisiones D267–D269 siguen reproduciéndose. La batería general sobre el código congelado se registra por separado; no hay despliegue ni dictamen real.
