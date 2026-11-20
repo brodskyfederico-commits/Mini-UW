@@ -171,8 +171,9 @@ def verify(output):
     require(audit["vigencia"] == "VIGENTE" and "D203" in pdf_text(report), "Florida evidence did not replay")
     with patch("worksheet_documented_finance_D147.review_documents", reuse_documents):
         previous, _, prior_report = run(legacy, "prior-method")
-        require(prior_report == (ROOT / "docs/review/MiniUW_Informe_USD10_D200.pdf").read_bytes(),
-                "Archived D200 PDF changed")
+        # Display baseline already verified by D265/D266; the original D200 PDF stays archived.
+        require(prior_report == (ROOT / "templates/expected-D200-pdf-D267.pdf").read_bytes(),
+                "Verified D265/D266 legacy D200 PDF changed")
         checks = {name: check_calculated(model, view, name) for name, view in previous["scenarios"].items()}
         missing = [
             ("missing-opening", ("opening_assessment", "non_school_assessed_value"),

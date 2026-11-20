@@ -29,7 +29,7 @@ def cash_amount(value, ref):
 
 
 def staged_construction_financing(raw, name, review, context, development, budget, calendar, *, construction_quote=None,
-                                 initial_equity=INITIAL, initial_equity_ref=None):
+                                 initial_equity=INITIAL, initial_equity_ref=None, additional_uses=None):
     require(initial_equity > 0 and (initial_equity_ref is None or synthetic_id(initial_equity_ref)),
             "construction_initial_equity_missing_nonpositive_or_unsourced")
     source = object_or_empty(raw)
@@ -115,6 +115,22 @@ def staged_construction_financing(raw, name, review, context, development, budge
     uses[purchase] += land
     uses[first_work] += early_uses - land
     uses[finish] += project_uses - early_uses
+    if additional_uses is not None:
+        extra=object_or_empty(additional_uses)
+        entries=object_or_empty(extra.get("by_date"))
+        require(extra.keys()=={"source_ref","by_date"} and synthetic_id(extra["source_ref"])
+                and set(entries)==set(dates[1:]),"construction_additional_uses_inventory_or_source_unconfirmed")
+        total_extra=0
+        for day,item in entries.items():
+            item=object_or_empty(item)
+            value=_fraction(item.get("value"))
+            require(item.keys()=={"value","source_ref"} and value is not None and value>=0
+                    and isinstance(item["source_ref"],str) and item["source_ref"].startswith("sha256:"),
+                    "construction_additional_use_missing_invalid_or_unsourced:"+day)
+            uses[day]+=value
+            total_extra+=value
+        project_uses+=total_extra
+        evidence["additional_project_uses"]=extra|dict(total=rational(total_extra))
     draws = {row["start_date"]: _fraction(row["draw_at_start"]) for row in proof["periods"]}
     interest = {row["end_date"]: _fraction(row["interest_due_at_end"]) for row in proof["periods"]}
     balance = total_equity = 0

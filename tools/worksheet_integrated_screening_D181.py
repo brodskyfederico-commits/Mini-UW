@@ -52,6 +52,9 @@ def cost_basis(view, scope):
     tdc = parts["project_uses"] + parts["origination_fee_paid"] + parts["interest_paid"]
     applied = amount(funding["equity_funding_through_refinance"]) - amount(funding["free_cash_at_refinance"])
     budget = amount(view["construction_budget"]["total_development_cost"]) + amount(calendar["lease_up_funding"])
+    if "additional_project_uses" in funding:
+        extra=funding["additional_project_uses"]
+        budget+=amount(extra["total"])
     evidence = dict(scope=scope, components={key: rational(value) for key, value in parts.items()},
                     tdc_source="/construction_financing/cash_by_date",
                     funding_source="/construction_financing/equity_funding_through_refinance",

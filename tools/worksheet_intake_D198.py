@@ -69,8 +69,8 @@ def prepare(settings, registered):
         raise ValidationError("invalid_synthetic_registration")
     case = deepcopy(settings)
     if case["schema"] == WORKBOOK_CRITICAL_EVIDENCE_SCHEMA:
-        from audit_worksheet_critical_evidence_D219 import REFERENCE
-        case["critical_evidence_reference_sha256"] = sha(REFERENCE.read_bytes())
+        from worksheet_horizon_fiscal_D267 import reference_for
+        case["critical_evidence_reference_sha256"] = sha(reference_for(case).read_bytes())
     files = registered["files"]
 
     def expected(filename):

@@ -233,8 +233,17 @@ def run_rental_scenario(name, raw, review, rent_inputs, *, include_commercial=Fa
         horizon_config = None
         if has_horizon:
             from worksheet_holding_horizon_D266 import configuration
+            from worksheet_horizon_fiscal_D267 import PROFILE as FISCAL_HORIZON
+            if object_or_empty(rent_inputs["holding_horizon"]).get("profile")==FISCAL_HORIZON:
+                from worksheet_horizon_fiscal_D267 import configuration
             horizon_config = configuration(rent_inputs["holding_horizon"], name)
-            require(not florida_tax, "holding_M2_multi_year_cash_schedule_not_implemented_in_v1")
+            require(florida_tax or horizon_config["profile"]!=FISCAL_HORIZON,
+                    "holding_fiscal_horizon_requires_M2_profile")
+            require(not florida_tax or horizon_config["profile"]==FISCAL_HORIZON,
+                    "holding_M2_requires_versioned_fiscal_horizon")
+            if florida_tax:
+                require("property_tax" not in rent_inputs and "buyer_forward_property_tax" not in rent_inputs,
+                        "holding_conflicting_M2_and_proxy_tax_sources")
             require(include_calendar and include_construction_financing and include_permanent_loan
                     and include_growth and require_formula_review and require_debt_yield,
                     "holding_complete_financial_profile_required")
@@ -344,6 +353,11 @@ def run_rental_scenario(name, raw, review, rent_inputs, *, include_commercial=Fa
                 terms["cost"] += _fraction(calendar["lease_up_funding"])
             cost_source = f"sha256:{sha(encoded(budget))}#/equity_draws"
             draws = [draw | dict(source_ref=f"{cost_source}/{index}") for index, draw in enumerate(budget["equity_draws"])]
+        tax_by_period,post_refi_tax,horizon_fiscal={},None,None
+        if has_horizon and florida_tax:
+            from worksheet_horizon_fiscal_D267 import fiscal_cash
+            tax_by_period,post_refi_tax,horizon_fiscal=fiscal_cash(rent_inputs.get("florida_property_tax"),
+                rent_inputs.get("holding_tax_cash"),name,calendar)
         funding = None
         if include_construction_financing:
             from worksheet_construction_financing_D146 import staged_construction_financing
@@ -353,7 +367,8 @@ def run_rental_scenario(name, raw, review, rent_inputs, *, include_commercial=Fa
             funding = staged_construction_financing(rent_inputs.get("construction_financing"), name, review, terms["context"],
                                                     development, budget, calendar, construction_quote=construction_quote,
                                                     initial_equity=_fraction(horizon_config["initial_equity"]["value"]) if has_horizon else INITIAL,
-                                                    initial_equity_ref=horizon_config["initial_equity"]["source_ref"] if has_horizon else None)
+                                                    initial_equity_ref=horizon_config["initial_equity"]["source_ref"] if has_horizon else None,
+                                                    additional_uses=None if horizon_fiscal is None else horizon_fiscal["preopening_uses"])
             if funding["blockers"]:
                 evidence = dict(document_financial_binding=binding) if binding is not None else {}
                 return pending | dict(blockers=funding["blockers"], construction_financing=funding,
@@ -363,11 +378,11 @@ def run_rental_scenario(name, raw, review, rent_inputs, *, include_commercial=Fa
             draws = [draw | dict(source_ref=f"{cost_source}/{index}") for index, draw in enumerate(funding["equity_draws"])]
         periods = {}
 
-        tax_by_period, post_refi_tax = {}, None
         buyer_tax = None
         if florida_tax:
-            from worksheet_florida_tax_D203 import tax_inputs
-            tax_by_period, post_refi_tax = tax_inputs(rent_inputs.get("florida_property_tax"), name, calendar)
+            if horizon_fiscal is None:
+                from worksheet_florida_tax_D203 import tax_inputs
+                tax_by_period, post_refi_tax = tax_inputs(rent_inputs.get("florida_property_tax"), name, calendar)
             buyer_tax = tax_by_period[FORWARD_PERIOD]
         elif require_formula_review:
             from worksheet_formula_review_D173 import forward_buyer_tax
@@ -392,13 +407,19 @@ def run_rental_scenario(name, raw, review, rent_inputs, *, include_commercial=Fa
                 period=f"SYNTHETIC-D266-{name}-year-{index+1}"
                 start=offset(date.fromisoformat(calendar["stabilization_date"]),12*index).isoformat()
                 assembly,periods[period]=rental_noi(terms,cells,values,period,commercial,window_start=start,
-                                                  growth=project_window(growth_terms,start))
+                                                  growth=project_window(growth_terms,start),seller_tax=tax_by_period.get(period))
                 years.append(dict(assembly=assembly))
+            if horizon_fiscal is not None:
+                for index,year in enumerate(years):
+                    year["quarterly_taxes"]=horizon_fiscal["quarterly_taxes"][4*index:4*index+4]
+                from worksheet_horizon_fiscal_D267 import calculate as calculate_horizon
             require(not commercial["uses"] or all(object_or_empty(periods[key].get("commercial")).get("recognized_months") == 12
                         for key in [OPERATING_PERIOD]+[f"SYNTHETIC-D266-{name}-year-{i+1}" for i in range(1,len(years))]),
                     "holding_uniform_quarter_cash_requires_full_stabilized_commercial_years")
             result=calculate_horizon(terms["context"],name,horizon_config,calendar,funding,terms["principal"],
                 valuation_terms,permanent_terms,refinance_costs,reserve,buyer_tax,debt_yield_terms,noi_for,years)
+            if horizon_fiscal is not None:
+                result["holding_horizon"]["fiscal_cash"]=horizon_fiscal
         else:
             calculate_cash = financed_cash if cash_engine is None else cash_engine
             result = calculate_cash(terms["context"], terms["cost"], cost_source,
@@ -660,8 +681,11 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
     inputs = object_or_empty(case.get("rent_inputs"))
     horizon_requested = "holding_horizon" in inputs
     if horizon_requested:
-        from miniuw_worksheet_v1 import WORKBOOK_TECHNICAL_ACCEPTANCE_SCHEMA
-        if case.get("schema") != WORKBOOK_TECHNICAL_ACCEPTANCE_SCHEMA:
+        from miniuw_worksheet_v1 import WORKBOOK_TECHNICAL_ACCEPTANCE_SCHEMA,FLORIDA_TAX_SCHEMAS
+        from worksheet_horizon_fiscal_D267 import PROFILE as FISCAL_HORIZON
+        fiscal_horizon=object_or_empty(inputs["holding_horizon"]).get("profile")==FISCAL_HORIZON
+        if not ((case.get("schema")==WORKBOOK_TECHNICAL_ACCEPTANCE_SCHEMA and not fiscal_horizon)
+                or (case.get("schema") in FLORIDA_TAX_SCHEMAS and fiscal_horizon)):
             transport_blockers = ["holding_horizon_requires_declared_v31_intake"]
     if "cash_transport" in inputs or horizon_requested:
         from worksheet_integrated_transport_D264 import PROFILE as TRANSPORT_PROFILE, integrated_engines
@@ -759,6 +783,8 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
                                              revision=revision, documents=document_review, case_sha256=case_sha256)
     if horizon_requested:
         from worksheet_holding_horizon_D266 import render_horizon
+        if object_or_empty(inputs["holding_horizon"]).get("profile")==FISCAL_HORIZON:
+            from worksheet_horizon_fiscal_D267 import render_horizon
         pdf = render_horizon(views, screening, delivery_report=delivery_report)
     elif integrated_screening:
         from worksheet_integrated_screening_D181 import render_integrated

@@ -196,12 +196,20 @@ def audit(results, documents, current_revision, ref):
         and review_revision(case, current_revision)["state"] == "matched_synthetic_revision"
     )
     documents_ok = {name: digest(documents.get(name)) == sha for name, sha in ref["sources"].items()}
+    from worksheet_horizon_fiscal_D267 import fiscal_source_issues
+    fiscal_issues=fiscal_source_issues(case,ref,documents)
     rows = {}
-    for field in fields(ref):
+    inventory=list(fields(ref))
+    if "holding_fiscal" in ref:
+        from worksheet_horizon_fiscal_D267 import critical_fiscal_fields
+        inventory.extend(critical_fiscal_fields(ref))
+    for field in inventory:
         issues = []
         claimed = [claim for claim in field.claims if claim.green(results)]
         if claimed:
             issues.extend(issue for claim in claimed for issue in claim.check(results))
+            if ":fiscal:" in field.key:
+                issues.extend(fiscal_issues.get(field.key.split(":",1)[0],[]))
             issues.extend(dict(bot=bot, path=(file,), reason="fuente_ausente_o_huella_distinta")
                           for bot, file in sorted({(claim.bot, file) for claim in claimed for file in claim.sources})
                           if not documents_ok[file])

@@ -1,5 +1,5 @@
 {
-  "scope": "Preserved originals and versioned synthetic Mini-UW through D266: explicit five-year quarterly holding horizon and scoped verification; D265 historical frozen-code regression retained. No real decision, deployment or certification of all policies.",
+  "scope": "Preserved originals and synthetic Mini-UW through D267: integrated quarterly five-year fiscal holding and critical-evidence audit; prior versioned profiles and real/policy gates retained. No deployment, real decision or all-policy certification.",
   "files": [
     {
       "path": ".github/workflows/miniuw-integral-usd10.yml",
@@ -23,13 +23,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 92929,
-      "sha256": "f85ab4e855a282b3e6bed5c193871fcfff6b64436cd73be7cf8a78e29dad75ef"
+      "bytes": 93145,
+      "sha256": "65ba5cedb7f2db3881b8be543dfa9d2acfdeb840ccc6a18f694603a5d6e2dd5e"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 406292,
-      "sha256": "9b596780886226e0bf9a4019c4da004e2144db9239bda0fb443367443d17ca0f"
+      "bytes": 408517,
+      "sha256": "7f34177c751605605d060684621260155b69edf7c4bedbd7206dc335023c28c8"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -1007,6 +1007,11 @@
       "sha256": "52f3e0be4868fdb6c9591dabc3f50eab6fbb64d11d6bf14fbc604c527903a8e7"
     },
     {
+      "path": "docs/review/MiniUW_Alcance_y_Pendientes_D267.json",
+      "bytes": 4048,
+      "sha256": "3488ec218235f4202dc024a8d5458845962de2b350b21d661ff373f4e6099f81"
+    },
+    {
       "path": "docs/review/MiniUW_Cierre_Revision_Profesional_D180.md",
       "bytes": 18791,
       "sha256": "dd618c0e7b654d73d39f81916f7c184d6a197add081b4cc99202da5311e251c0"
@@ -1257,6 +1262,11 @@
       "sha256": "2c9dcab35fdccd0e2e7166b7545c9f9687cd91f3e59fe195ba40f11705fab03f"
     },
     {
+      "path": "docs/review/MiniUW_Horizonte_Fiscal_Auditado_D267.pdf",
+      "bytes": 8692,
+      "sha256": "ce0899a1fb6f9e2b37361998f00eeee9d78552717969353685e417eb29b2ed1e"
+    },
+    {
       "path": "docs/review/MiniUW_Informe_Integral_D250.pdf",
       "bytes": 184330,
       "sha256": "c8373d25268c9a0150f8b182b280099c11962d7b31b3a536bce351ddabd1ef04"
@@ -1385,6 +1395,11 @@
       "path": "docs/review/MiniUW_Validacion_D266.json",
       "bytes": 28910,
       "sha256": "2114d7ad8a7b81f55d8abc509975c5a9554771cc83a75b1293c8d61bb31023f6"
+    },
+    {
+      "path": "docs/review/MiniUW_Validacion_D267.json",
+      "bytes": 30116,
+      "sha256": "fb675bf42ad8272ad65cf5e719a351bfbdc8c8c6027776da78146b474924ea4c"
     },
     {
       "path": "docs/review/MiniUW_Verificacion_D181.json",
@@ -3642,6 +3657,11 @@
       "sha256": "a105df8de728dcd821f32772270ef7f4ac8080ced969f36947b6a10cb076bfa7"
     },
     {
+      "path": "docs/workbook-horizon-fiscal-audit-D267.md",
+      "bytes": 8332,
+      "sha256": "1002d64d84f3359b1512bdd683c4272d4168ded9abc1cddf3960a282b5552792"
+    },
+    {
       "path": "docs/workbook-independent-reconciliation-D179.md",
       "bytes": 3997,
       "sha256": "9eb5e39776d3649bb5d0ea46e12d22574c0b17b4573c6764a200fd973f75a3d9"
@@ -5507,6 +5527,11 @@
       "sha256": "1a0bc941927b2b5cde054590af7a48c4d853e14c4957c00c60f51bc2fa2300f4"
     },
     {
+      "path": "templates/expected-D200-pdf-D267.pdf",
+      "bytes": 5723,
+      "sha256": "ed0f2ad2b0061afd70230b4f7fa3661d9b82ae6b004b96bbba822cfe4f7a6ddd"
+    },
+    {
       "path": "templates/financial-link-review-D09-empty.json",
       "bytes": 4883,
       "sha256": "f42589d04cb1f08d484e4793a4dd9d615dc3db969ab10da3dc82cd6440979c8d"
@@ -6210,6 +6235,11 @@
       "path": "templates/synthetic-critical-evidence-D219.json",
       "bytes": 14969,
       "sha256": "de674e17cc16d4f2b6f4e76cc88413dfb1aac68eb8e81b28d279ac4d1b8fe283"
+    },
+    {
+      "path": "templates/synthetic-critical-evidence-D267.json",
+      "bytes": 124919,
+      "sha256": "9538241b1a864853b96f73f0930575fddf5ec48688a7e48fd1b62976c05a0df5"
     },
     {
       "path": "templates/synthetic-cropped-rotated-set-D138.pdf",
@@ -8357,6 +8387,11 @@
       "sha256": "b46b8f57b24c976c8d3b5bc2f848a25bac69e739a0ae9f9db0b9be930f0825d0"
     },
     {
+      "path": "tests/test_worksheet_horizon_fiscal.py",
+      "bytes": 15924,
+      "sha256": "db319ba71ea9ff43d9c7db21b4a9661c2f1505b93c5427269e698f7b6e2e2fa3"
+    },
+    {
       "path": "tests/test_worksheet_integrated_transport.py",
       "bytes": 8936,
       "sha256": "5e8dcce11eaf8b36d45ccabc7187c1e02d0c26864bd56c7a8fccbcbf29dd929b"
@@ -8433,8 +8468,8 @@
     },
     {
       "path": "tools/audit_worksheet_critical_evidence_D219.py",
-      "bytes": 12344,
-      "sha256": "ee72ab1635d77e17bf7e78785751095390f2042f96402297ea621c767a0d9fb7"
+      "bytes": 12778,
+      "sha256": "ad0c070199965b689c6d8840789d8ef90ef41adcc2634444f1a8c008d5bc7bb6"
     },
     {
       "path": "tools/capital_miniuw_v1.py",
@@ -8988,8 +9023,8 @@
     },
     {
       "path": "tools/check_worksheet_florida_tax_D203.py",
-      "bytes": 13295,
-      "sha256": "b33483d46eafb7e60794ea8f61c4fbb43575de3071edc8f447a16ae2743b5c1b"
+      "bytes": 13403,
+      "sha256": "27359339841a51472da4471aafc3ae32ee4910bd1cf3a3054fc48cea8a62ee6b"
     },
     {
       "path": "tools/check_worksheet_formula_review_D173.py",
@@ -9010,6 +9045,11 @@
       "path": "tools/check_worksheet_holding_horizon_D266.py",
       "bytes": 20730,
       "sha256": "784817a8c7f7658415f0fbabaa7fe8ae284e43d745b2c441d11b589f115497a5"
+    },
+    {
+      "path": "tools/check_worksheet_horizon_fiscal_D267.py",
+      "bytes": 25362,
+      "sha256": "5e05145cc1bdbe5b0cdbcf3ceaaae0f6fc64ab5096d96400e7a78f0a6b230a51"
     },
     {
       "path": "tools/check_worksheet_intake_case_D117.py",
@@ -9703,8 +9743,8 @@
     },
     {
       "path": "tools/miniuw_worksheet_v1.py",
-      "bytes": 46419,
-      "sha256": "6a7712568d31072389a42e8f541b9b90aac57b4b44286e4643b667e677b70a3c"
+      "bytes": 46424,
+      "sha256": "0c5e5e9824a54ba63b2df1e34f57a8b7a356e28bb15716fe7d99e61a590c1ffe"
     },
     {
       "path": "tools/onepage_pending_cases_D79.py",
@@ -9878,8 +9918,8 @@
     },
     {
       "path": "tools/worksheet_construction_financing_D146.py",
-      "bytes": 10042,
-      "sha256": "8a0f86831b4feace3332500a613b16683a8b6084a3fb2146a592810d2d0d7a5b"
+      "bytes": 11015,
+      "sha256": "e74f512975130719e3c5693c431ae9f59b4e882aa709c88f160bd5ca9088259c"
     },
     {
       "path": "tools/worksheet_construction_support_D257.py",
@@ -9988,8 +10028,8 @@
     },
     {
       "path": "tools/worksheet_florida_tax_D203.py",
-      "bytes": 8315,
-      "sha256": "5956420a06e13fa4196989af837a2d2054ee4fba85ab211ced2a1bcb1d8a6978"
+      "bytes": 8420,
+      "sha256": "ec46c12c9acf306728a7d9d6f0cde514f9c2c6be7643c0050275718f4cd5a3d5"
     },
     {
       "path": "tools/worksheet_formula_review_D173.py",
@@ -10007,9 +10047,14 @@
       "sha256": "bba535fd748b8f3fb6c982d4e8f9109e1db8dd36d64abce0ffb047a8f3b2c924"
     },
     {
+      "path": "tools/worksheet_horizon_fiscal_D267.py",
+      "bytes": 20135,
+      "sha256": "9fa14e91ea7bbe67652655a4bbc94c6e802ab638f9f4ce4b4bad7f00c5b96a2f"
+    },
+    {
       "path": "tools/worksheet_intake_D198.py",
-      "bytes": 6144,
-      "sha256": "af6b379da835a74a344c36b8d06d1a9abfe222c9c7afd5fe1166b1a12586c06d"
+      "bytes": 6149,
+      "sha256": "9436ce29f0ae0d848682f16c95f1621570671d6f8421ad6b8e8c2292a91f12c7"
     },
     {
       "path": "tools/worksheet_intake_case_D117.py",
@@ -10018,8 +10063,8 @@
     },
     {
       "path": "tools/worksheet_integrated_screening_D181.py",
-      "bytes": 28586,
-      "sha256": "99461ddd5c56928fc22131bf3273a05ef637ca36af8097cf38005bc2ad839826"
+      "bytes": 28719,
+      "sha256": "6178aca8ca39983504dade944a74d989ad0d5b7b6532569330ebe4404d860c3b"
     },
     {
       "path": "tools/worksheet_integrated_transport_D264.py",
@@ -10183,8 +10228,8 @@
     },
     {
       "path": "tools/worksheet_project_calendar_D145.py",
-      "bytes": 5863,
-      "sha256": "8fbeea94018a1a00f0b6cdab85b56a13c9570107065074d07c6ec41cadae8e09"
+      "bytes": 6144,
+      "sha256": "71ad22d26f58aafc82e9430b7c98e9a090f245d58195e498d012a7b21d7064b8"
     },
     {
       "path": "tools/worksheet_property_tax_D150.py",
@@ -10203,8 +10248,8 @@
     },
     {
       "path": "tools/worksheet_rental_inputs_D140.py",
-      "bytes": 65081,
-      "sha256": "6cfbd2203c98f23656522de508f8bca18341d05a926db9bd565c0543ce844442"
+      "bytes": 67110,
+      "sha256": "cf13e09a5d1160742743a096a5f8231b879fc965a6dfdab3bf6f1e1f84679cd8"
     },
     {
       "path": "tools/worksheet_replacement_reserve_D149.py",

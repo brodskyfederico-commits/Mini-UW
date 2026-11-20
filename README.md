@@ -4,6 +4,8 @@ Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pen
 
 ## Leer el paquete consolidado
 
+- D267 conecta el horizonte de cinco años con M2 fiscal y el auditor de datos críticos, con impuestos fechados y cuatro rutas por USD 10. [Contrato, matriz y límites](docs/workbook-horizon-fiscal-audit-D267.md).
+
 - La revisión D251 incorpora la matriz de las 33 políticas frente al informe D250, con sus observaciones y los puntos que requieren cotejo y aprobación. [Matriz y vínculos con el modelo](docs/worksheet-policy-review-D251.md).
 
 - D209 lleva las discrepancias de planos al checklist y a los cálculos que dependen de cada dato. [Bloqueos y pruebas](docs/workbook-plan-checklist-D209.md).

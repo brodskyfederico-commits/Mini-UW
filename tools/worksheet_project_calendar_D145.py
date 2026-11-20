@@ -32,6 +32,9 @@ def confirmed_months(rows, cell, minimum):
 
 def project_calendar(raw, name, review, purchase_date, *, sale_term=None, holding_horizon=None):
     if holding_horizon is not None:
+        if object_or_empty(holding_horizon).get("profile")=="miniuw.synthetic-integrated-fiscal-holding-horizon.v2":
+            from worksheet_horizon_fiscal_D267 import horizon_calendar
+            return horizon_calendar(raw,name,review,purchase_date,sale_term,holding_horizon)
         from worksheet_holding_horizon_D266 import horizon_calendar
         return horizon_calendar(raw, name, review, purchase_date, sale_term, holding_horizon)
     source = object_or_empty(raw)

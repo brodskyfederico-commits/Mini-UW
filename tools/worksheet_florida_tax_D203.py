@@ -99,8 +99,8 @@ def window_taxes(raw, name, sale, windows):
             (buyer_years if forward and year >= reset_year else seller_years).add(year)
     min_seller = min(seller_years)
     max_seller = max(seller_years)
-    max_buyer = max(buyer_years)
-    require(seed_year < min_seller and max(max_seller, max_buyer) - seed_year <= 20,
+    max_buyer = max(buyer_years) if buyer_years else None
+    require(seed_year < min_seller and max(seller_years | buyer_years) - seed_year <= 20,
             "M2:prior_assessment_outside_supported_roll_range")
 
     levy = {}
@@ -117,8 +117,9 @@ def window_taxes(raw, name, sale, windows):
         seed = assessed["non_school_assessed_value"]
         seller_rows[year] = assessed
     # In this sale profile the forward year contains exactly one post-sale January 1.
-    require(max_buyer == reset_year, "M2:buyer_forward_window_outside_supported_roll_range")
-    buyer_row = assessed_value(object_or_empty(buyer.get(str(reset_year))), reset_year, None, classification, "buyer", sale)
+    require(max_buyer is None or max_buyer == reset_year, "M2:buyer_forward_window_outside_supported_roll_range")
+    buyer_row = (assessed_value(object_or_empty(buyer.get(str(reset_year))), reset_year, None, classification, "buyer", sale)
+                 if max_buyer is not None else None)
 
     def window_tax(start, months, *, forward=False):
         parts = []

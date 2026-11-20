@@ -245,8 +245,8 @@ def build_results(raw, *, workbook_raw=None, downside_workbook_raw=None, current
                                                evidence_milestone=evidence_milestone)
         critical_evidence = None
         if schema == WORKBOOK_CRITICAL_EVIDENCE_SCHEMA:
-            from audit_worksheet_critical_evidence_D219 import REFERENCE
-            reference = REFERENCE.read_bytes()
+            from worksheet_horizon_fiscal_D267 import reference_for
+            reference = reference_for(case).read_bytes()
             require(case.get("critical_evidence_reference_sha256") == sha(reference),
                     "El inventario D219 no coincide con la revisión registrada")
             critical_evidence = (reference, {
