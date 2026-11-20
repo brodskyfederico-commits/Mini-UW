@@ -102,7 +102,7 @@ def terms_for(supplied, scenario, values, sheet, *, include_development=False, i
                 groups=groups, other_income=others, expenses=expenses, cost=cost, principal=principal, cap=cap)
 
 
-def rental_noi(terms, cells, values, period, commercial=None, *, window_start=None, growth=None, buyer_tax=None, seller_tax=None):
+def rental_noi(terms, cells, values, period, commercial=None, *, window_start=None, growth=None, buyer_tax=None, seller_tax=None, regulated_rent=None):
     growth_ref = None
     if growth is not None:
         from worksheet_growth_D154 import projected_expense_terms
@@ -128,6 +128,14 @@ def rental_noi(terms, cells, values, period, commercial=None, *, window_start=No
         for group in groups:
             group["rent"] = rational(_fraction(group["rent"]) * _fraction(growth["rent_factor"]))
             group["source_ref"] += f" and {growth_ref}#/rent_factor"
+    if regulated_rent is not None:
+        require(terms["basis"] == "per_unit_per_month" and regulated_rent["window_start"] == window_start,
+                "regulated_rent_basis_or_window_mismatch")
+        for group in groups:
+            capped = regulated_rent["groups"][group["group_id"]]
+            require(_fraction(group["units"]) == capped["units"], "regulated_rent_population_mismatch")
+            group["rent"] = capped["effective_per_unit_monthly_rent"]
+            group["source_ref"] += f" and sha256:{regulated_rent['source_sha256']}#/groups/{group['group_id']}"
     expense_terms = terms["expenses"]
     expenses = [dict(item_id=key, kind=kind, rate=expense_terms[key], currency="USD",
                      source_ref=expense_terms["source_ref"], policy_ref=policy["source_ref"])
@@ -180,10 +188,15 @@ def rental_noi(terms, cells, values, period, commercial=None, *, window_start=No
         spec["tax_coefficient"].update(value=property_tax["coefficient"], source_ref=f"{tax_source}#/coefficient")
     assembled = assemble_rental_noi(raw, producer, encoded(spec))
     rows = producer.payload
+    if regulated_rent is not None:
+        require(_fraction(rows["gross_potential_total"]) == _fraction(regulated_rent["annual_gross_potential"]),
+                "regulated_rent_gross_potential_does_not_reconcile")
     evidence = dict(gross_rent=rows["gross_potential_total"], effective_rent=rows["residential_effective_rent"],
                     other_income=rational(other_value), operating_expenses_excluding_tax=rows["operating_expenses_excluding_tax"],
                     noi=assembled.payload["computed_noi"], rental_source_sha256=sha(raw), rental_run_sha256=producer.sha256,
                     noi_assembly_sha256=assembled.sha256, groups=rows["groups"], loss_fraction=rational(loss))
+    if regulated_rent is not None:
+        evidence["regulated_rent"] = regulated_rent
     if commercial is not None:
         evidence["commercial"] = commercial_result
     if "utility_evidence" in terms:
@@ -357,16 +370,30 @@ def run_rental_scenario(name, raw, review, rent_inputs, *, include_commercial=Fa
         if has_horizon and florida_tax:
             from worksheet_horizon_fiscal_D267 import fiscal_cash
             if "stabilized_tax_stress" in rent_inputs:
-                require(case_schema == "miniuw.synthetic-native-rental-inputs.v34",
+                require(case_schema in ("miniuw.synthetic-native-rental-inputs.v34", "miniuw.synthetic-native-rental-inputs.v35"),
                         "tax_stress_requires_versioned_variant_profile")
                 from worksheet_variant_evidence_D268 import fiscal_cash as stressed_fiscal_cash
                 tax_by_period,post_refi_tax,horizon_fiscal=stressed_fiscal_cash(
                     rent_inputs.get("florida_property_tax"),rent_inputs.get("holding_tax_cash"),
                     rent_inputs["stabilized_tax_stress"],name,calendar)
             else:
-                require(case_schema != "miniuw.synthetic-native-rental-inputs.v34", "explicit_tax_stress_inventory_required")
+                require(case_schema not in ("miniuw.synthetic-native-rental-inputs.v34", "miniuw.synthetic-native-rental-inputs.v35"), "explicit_tax_stress_inventory_required")
                 tax_by_period,post_refi_tax,horizon_fiscal=fiscal_cash(rent_inputs.get("florida_property_tax"),
                     rent_inputs.get("holding_tax_cash"),name,calendar)
+        regulated_windows = {}
+        if case_schema == "miniuw.synthetic-native-rental-inputs.v35":
+            from worksheet_regulated_rent_D269 import configuration as regulated_configuration
+            require(has_horizon and florida_tax, "regulated_rent_integrated_fiscal_horizon_required")
+            regulated_configuration(rent_inputs.get("regulated_rent"), name, terms["groups"], calendar, rent_basis=terms["basis"])
+
+        def regulated_for(projection):
+            if case_schema != "miniuw.synthetic-native-rental-inputs.v35": return None
+            from worksheet_regulated_rent_D269 import project_window as regulated_window
+            proof = regulated_window(rent_inputs.get("regulated_rent"), name, terms["groups"], calendar,
+                                     values, projection, rent_basis=terms["basis"])
+            regulated_windows[proof["window_start"]] = proof
+            return proof
+
         funding = None
         if include_construction_financing:
             from worksheet_construction_financing_D146 import staged_construction_financing
@@ -403,7 +430,7 @@ def run_rental_scenario(name, raw, review, rent_inputs, *, include_commercial=Fa
             assembled, periods[period] = rental_noi(terms, cells, values, period, commercial,
                                                    window_start=window_start, growth=projection,
                                                    buyer_tax=buyer_tax if period == FORWARD_PERIOD else None,
-                                                   seller_tax=tax_by_period.get(period))
+                                                   seller_tax=tax_by_period.get(period), regulated_rent=regulated_for(projection))
             return assembled
 
         # The accrued operating result remains available when the refinance request is blocked.
@@ -416,7 +443,8 @@ def run_rental_scenario(name, raw, review, rent_inputs, *, include_commercial=Fa
                 period=f"SYNTHETIC-D266-{name}-year-{index+1}"
                 start=offset(date.fromisoformat(calendar["stabilization_date"]),12*index).isoformat()
                 assembly,periods[period]=rental_noi(terms,cells,values,period,commercial,window_start=start,
-                                                  growth=project_window(growth_terms,start),seller_tax=tax_by_period.get(period))
+                                                  growth=project_window(growth_terms,start),seller_tax=tax_by_period.get(period),
+                                                  regulated_rent=regulated_for(project_window(growth_terms,start)))
                 years.append(dict(assembly=assembly))
             if horizon_fiscal is not None:
                 for index,year in enumerate(years):
@@ -429,6 +457,12 @@ def run_rental_scenario(name, raw, review, rent_inputs, *, include_commercial=Fa
                 valuation_terms,permanent_terms,refinance_costs,reserve,buyer_tax,debt_yield_terms,noi_for,years)
             if horizon_fiscal is not None:
                 result["holding_horizon"]["fiscal_cash"]=horizon_fiscal
+            if case_schema == "miniuw.synthetic-native-rental-inputs.v35":
+                from worksheet_regulated_rent_D269 import annual_starts, PROFILE as REGULATED_PROFILE, RULES as REGULATED_RULES
+                require(set(regulated_windows) == set(annual_starts(calendar)), "regulated_rent_computed_window_inventory_incomplete")
+                result["holding_horizon"]["regulated_rents"] = dict(state="checked_synthetic", blockers=[],
+                    profile=REGULATED_PROFILE, rules=REGULATED_RULES, inputs_sha256=sha(encoded(rent_inputs["regulated_rent"])),
+                    windows=regulated_windows)
         else:
             calculate_cash = financed_cash if cash_engine is None else cash_engine
             result = calculate_cash(terms["context"], terms["cost"], cost_source,
@@ -921,6 +955,8 @@ def build_rental_case(case, case_sha256, workbooks, current_revision_raw, *, inc
             for name in SCENARIOS
         }
         pipeline["pipeline"]["version_tests"]["suite"] = "test_worksheet_critical_evidence_gate_D220.py"
+        if case.get("schema") == "miniuw.synthetic-native-rental-inputs.v35":
+            pipeline["pipeline"]["version_tests"]["suite"] = "test_worksheet_regulated_rent.py"
     inputs = object_or_empty(case.get("rent_inputs"))
     if "sensitivities" in inputs:
         from worksheet_sensitivities_D253 import evaluate_sensitivities

@@ -13,9 +13,9 @@ def withhold_unverified_cash(views, documents, revision, case_sha256, reference,
         from worksheet_variant_evidence_D268 import inventory_pending
         evidence = inventory_pending(["independent_reference_missing"])
     else:
-        from worksheet_variant_evidence_D268 import SCHEMA, reference_issues, inventory_pending
+        from worksheet_variant_evidence_D268 import SUPPORTED_SCHEMAS, reference_issues, inventory_pending
         case = json.loads(sources["case.json"])
-        issues = reference_issues(reference, case) if case.get("schema") == SCHEMA else []
+        issues = reference_issues(reference, case) if case.get("schema") in SUPPORTED_SCHEMAS else []
         evidence = inventory_pending(issues) if issues else audit(
             claims, sources, sources[CURRENT_REVISION_FILE], json.loads(reference))
     blockers = {name: [] for name in SCENARIOS}

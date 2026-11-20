@@ -16,6 +16,7 @@ from worksheet_local_sources_D127 import object_or_empty, synthetic_id
 
 
 SCHEMA = "miniuw.synthetic-native-rental-inputs.v34"
+SUPPORTED_SCHEMAS = (SCHEMA, "miniuw.synthetic-native-rental-inputs.v35")
 REFERENCE_FILE = "Independent_Reference.json"
 STRESS_PROFILE = "miniuw.synthetic-post-assessment-operating-tax-stress.v1"
 STRESS_RULE = "multiply_operating_and_forward_tax_once_after_M2_no_benefits_preopening_unchanged"
@@ -40,7 +41,9 @@ def reference_issues(raw, case):
         ref = _json(raw, 4_000_000)
         from audit_worksheet_critical_evidence_D219 import REFERENCE
         required = json.loads(REFERENCE.read_bytes())
-        require(set(ref) == set(required) | {"holding_fiscal", "inputs_sha256"},
+        regulated = case.get("schema") == "miniuw.synthetic-native-rental-inputs.v35"
+        extra = {"regulated_rents"} if regulated else set()
+        require(set(ref) == set(required) | {"holding_fiscal", "inputs_sha256"} | extra,
                 "independent_reference_top_level_inventory_incomplete")
         require(ref["schema"] == required["schema"] and synthetic_id(ref["deal_id"])
                 and ref["deal_id"] == case["rent_inputs"]["deal_id"]
@@ -77,6 +80,9 @@ def reference_issues(raw, case):
         # Window completeness and binding to the actual workbook are checked by D267.
         from worksheet_horizon_fiscal_D267 import critical_fiscal_fields
         list(critical_fiscal_fields(ref))
+        if regulated:
+            from worksheet_regulated_rent_D269 import validate_reference
+            validate_reference(case, ref)
     except (ValueError, TypeError, KeyError, AttributeError) as error:
         issues.append(str(error))
     return issues
@@ -138,7 +144,7 @@ def fiscal_cash(taxes_raw, cash_raw, stress_raw, name, calendar):
 def capacity_only_delivery(case, result, name):
     """A sourced no-refi alternative may be reported beside an explicitly blocked refi."""
     view = result["scenarios"][name]
-    if (case.get("schema") != SCHEMA or view.get("cash_per_usd_10") is not None
+    if (case.get("schema") not in SUPPORTED_SCHEMAS or view.get("cash_per_usd_10") is not None
             or view.get("blockers") != ["selected_principal_exceeds_declared_bank_capacity"]
             or result["critical_evidence_review"]["status"] != "PASSED"):
         return False

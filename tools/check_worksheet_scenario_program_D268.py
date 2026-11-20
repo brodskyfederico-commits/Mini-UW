@@ -344,9 +344,9 @@ def independently_verify(spec,sources,result):
     return checked
 
 
-def make_packet(base, base_sources, label, selected, driver_records, directory):
+def make_packet(base, base_sources, label, selected, driver_records, directory, *, revision=None):
     spec = deepcopy(base)
-    spec["local_sources"]["revision"] = "SYNTHETIC-D268-" + label
+    spec["local_sources"]["revision"] = "SYNTHETIC-D268-" + label if revision is None else revision
     sources = dict(base_sources)
     changes = {}
     for name, argument in zip(("Base", "Downside"), ("workbook_raw", "downside_workbook_raw"), strict=True):

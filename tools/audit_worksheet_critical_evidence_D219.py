@@ -181,7 +181,7 @@ def audit(results, documents, current_revision, ref):
         raise ValueError("Se requiere un expediente sintético con dictamen real PENDING")
     case_raw = documents.get("case.json")
     case = json.loads(case_raw) if case_raw is not None else None
-    if case is not None and case.get("schema") == "miniuw.synthetic-native-rental-inputs.v34":
+    if case is not None and case.get("schema") in ("miniuw.synthetic-native-rental-inputs.v34", "miniuw.synthetic-native-rental-inputs.v35"):
         from worksheet_variant_evidence_D268 import reference_issues, inventory_pending
         issues = reference_issues((json.dumps(ref) + "\n").encode(), case)
         if issues:
@@ -208,6 +208,9 @@ def audit(results, documents, current_revision, ref):
     if "holding_fiscal" in ref:
         from worksheet_horizon_fiscal_D267 import critical_fiscal_fields
         inventory.extend(critical_fiscal_fields(ref))
+    if case is not None and case.get("schema") == "miniuw.synthetic-native-rental-inputs.v35":
+        from worksheet_regulated_rent_D269 import critical_fields
+        inventory.extend(critical_fields(ref))
     for field in inventory:
         issues = []
         claimed = [claim for claim in field.claims if claim.green(results)]

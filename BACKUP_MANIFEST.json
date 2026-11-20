@@ -1,5 +1,5 @@
 {
-  "scope": "Preserved originals and synthetic Mini-UW through D268: explicit fifteen-driver source-packet program, M2 post-assessment tax stress and independent reference intake; prior versioned profiles and real/policy gates retained. No activated defaults, deployment, real decision or all-policy certification.",
+  "scope": "Preserved originals and synthetic Mini-UW through D269: explicit annual per-unit AMI rent caps, utility allowances, complete independent source inventory and integrated USD10 cash under opt-in v35. Prior profiles and policy/real-use gates retained; no eligibility, conditional benefit, deployment or real decision authorized.",
   "files": [
     {
       "path": ".github/workflows/miniuw-integral-usd10.yml",
@@ -23,13 +23,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 93785,
-      "sha256": "48df51d3f76815c5920feb9ab21df5638843c3ca6bd43f7576bdedad5b57df78"
+      "bytes": 94339,
+      "sha256": "35571f24800ba7c877ef686755c4db09140e072ac78915a17bc4de72310850ec"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 410037,
-      "sha256": "753261ba8b378716e10a347392c60c6e515f5ac1b7e70ebaa682b880a8ae2dfb"
+      "bytes": 411605,
+      "sha256": "f6cc493902bbb2a17f747ae24581e28cffecc45dd3c75a4338166c840a548737"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -1017,6 +1017,11 @@
       "sha256": "53982ec5983c6ae36d5abb7d06990f8b6b95dc037900ea0d584be39cfa1ea5b2"
     },
     {
+      "path": "docs/review/MiniUW_Alcance_y_Pendientes_D269.json",
+      "bytes": 5843,
+      "sha256": "086547b03b7de23edb927b11b8a3f7d7915e059bd7c105907d2aef911b8a2b66"
+    },
+    {
       "path": "docs/review/MiniUW_Cierre_Revision_Profesional_D180.md",
       "bytes": 18791,
       "sha256": "dd618c0e7b654d73d39f81916f7c184d6a197add081b4cc99202da5311e251c0"
@@ -1372,6 +1377,11 @@
       "sha256": "49293bb76206fc1df04544e765e096a1079ab63580f6c1e3bd80d9e53809d234"
     },
     {
+      "path": "docs/review/MiniUW_Renta_Regulada_D269.pdf",
+      "bytes": 8689,
+      "sha256": "e8bd0d472e0763b51ff49cd1078b773d6669a6b44d4d5578ef40f1503b9122c4"
+    },
+    {
       "path": "docs/review/MiniUW_Reporte_Procesos_y_Avance_D196_Corregido.pdf",
       "bytes": 86018,
       "sha256": "d0ed059449b9e66313dc0caea98283633d6ef737038967e0beffbe323c10724a"
@@ -1415,6 +1425,11 @@
       "path": "docs/review/MiniUW_Validacion_D268.json",
       "bytes": 72214,
       "sha256": "4db1b105461933245ef12d4ca564e30c1b7973d996f3be0af8a0b4b89361d47b"
+    },
+    {
+      "path": "docs/review/MiniUW_Validacion_D269.json",
+      "bytes": 155802,
+      "sha256": "4209125b3e1472cc5150ba5ef94914e4d125017ea4b5d15a8d1fe2d3db20aa08"
     },
     {
       "path": "docs/review/MiniUW_Verificacion_D181.json",
@@ -3875,6 +3890,11 @@
       "path": "docs/workbook-refinance-costs-D153.md",
       "bytes": 4274,
       "sha256": "7dbbd6022102e5dd4d54778bfc7ed3dfdf59acd3b4c0c7db14a001f0b2373260"
+    },
+    {
+      "path": "docs/workbook-regulated-rent-D269.md",
+      "bytes": 6121,
+      "sha256": "d8cd71b69c6c19c30a3bb15defb762431842630f1d91f0b0501621197f76da1d"
     },
     {
       "path": "docs/workbook-rental-inputs-D140.md",
@@ -7007,6 +7027,11 @@
       "sha256": "31e90cdc5c50ab69cd5c33605ba1a27bbf020aa0141fda7c17f80126e25daa47"
     },
     {
+      "path": "templates/synthetic-regulated-rent-D269.json",
+      "bytes": 47870,
+      "sha256": "c5e4b7242be43f3c3b7688de46f77e6518492479f94780e48d519a071ea9eab9"
+    },
+    {
       "path": "templates/synthetic-rental-base-D140.xlsx",
       "bytes": 8878,
       "sha256": "e17a3e415107e43945323e9619783fb4e4a2fdb8e9062377259766189caa30fc"
@@ -8457,6 +8482,11 @@
       "sha256": "4d42633cca92dd0f1ca2258efe10ac4b3d4983adcf15fe8b79ba2f47e5d5fd40"
     },
     {
+      "path": "tests/test_worksheet_regulated_rent.py",
+      "bytes": 10490,
+      "sha256": "253fe2c50a0b7962f644fb7b296a04e59a022b814c460aebe6175c6f67a1fad5"
+    },
+    {
       "path": "tests/test_worksheet_reserve_sensitivities.py",
       "bytes": 11573,
       "sha256": "ff354dac13e6d164aac79dfe11286cdcba1746b9a581a102c7fd3cac4087d169"
@@ -8498,8 +8528,8 @@
     },
     {
       "path": "tools/audit_worksheet_critical_evidence_D219.py",
-      "bytes": 13100,
-      "sha256": "68a615d0b54a650655877e370f41c1f8054bc82cd65313fec291a48f9a770e74"
+      "bytes": 13355,
+      "sha256": "1e658efb5d9be13780b3b428fc64058d0bc86b9c4abc363a35e7e1416435f1c9"
     },
     {
       "path": "tools/capital_miniuw_v1.py",
@@ -9287,6 +9317,11 @@
       "sha256": "3e2f7a4a2776167469551c53076f493337d25b3b22517ba6125fff9863e13881"
     },
     {
+      "path": "tools/check_worksheet_regulated_rent_D269.py",
+      "bytes": 25695,
+      "sha256": "d59e353add46eef146958aef9915634273822d5efbabedc880b0a2b69bea0c36"
+    },
+    {
       "path": "tools/check_worksheet_rental_inputs_D140.py",
       "bytes": 11412,
       "sha256": "499375a77a63db5102000dab0d2357e371e4a0b61afe9be29d2570000aa18226"
@@ -9318,8 +9353,8 @@
     },
     {
       "path": "tools/check_worksheet_scenario_program_D268.py",
-      "bytes": 34439,
-      "sha256": "68d30642c7156a2881764d2404af19b90361075f86b5ddd9cd9bfc00302df59b"
+      "bytes": 34491,
+      "sha256": "29c4eb434877abe0a7e6eb6359e7d887ab17bf053a1446ecf34195c40a124e2e"
     },
     {
       "path": "tools/check_worksheet_scope_D174.py",
@@ -9778,8 +9813,8 @@
     },
     {
       "path": "tools/miniuw_worksheet_v1.py",
-      "bytes": 47776,
-      "sha256": "30e5929a83329c0b7967fc413cb205507677ad505f863e49915cccb074779f62"
+      "bytes": 48376,
+      "sha256": "10cd2a376e9f258c9a5bd2290de4850e71ffce932dab12d81dcac939aeaab9ce"
     },
     {
       "path": "tools/onepage_pending_cases_D79.py",
@@ -9973,8 +10008,8 @@
     },
     {
       "path": "tools/worksheet_critical_evidence_D220.py",
-      "bytes": 1965,
-      "sha256": "c96a988b5aaa95c4455c577af84401f16f592447e50cda4d607e8cc673036179"
+      "bytes": 1987,
+      "sha256": "1852622bba71c2d572ec70a10f9141530dbafd525500667be7a45b9594e417bb"
     },
     {
       "path": "tools/worksheet_debt_yield_D178.py",
@@ -10088,8 +10123,8 @@
     },
     {
       "path": "tools/worksheet_intake_D198.py",
-      "bytes": 6992,
-      "sha256": "ea4022276425b560813da85c4d498bd9e13b39375918de25ec3970f902c12448"
+      "bytes": 7014,
+      "sha256": "4f172e20a26b9d690551e2a214c3e4709e1b190d9269e834631a34302b509ecd"
     },
     {
       "path": "tools/worksheet_intake_case_D117.py",
@@ -10282,9 +10317,14 @@
       "sha256": "92517532c67d1d5d4687ecc52fad0fcdf35591ebdcef1514f815faa1b25bda5e"
     },
     {
+      "path": "tools/worksheet_regulated_rent_D269.py",
+      "bytes": 11307,
+      "sha256": "9748669a2be3db270f90796a51754c2104e39ea41152ece6b4447a8d2c4379b6"
+    },
+    {
       "path": "tools/worksheet_rental_inputs_D140.py",
-      "bytes": 67870,
-      "sha256": "dafc2c41cc6fcccf61a5cef28f531a3993b256ac9d8f0703179adc6d10438958"
+      "bytes": 70750,
+      "sha256": "971eb7cda656647a45e79b9ffecd41aa11ad35c0f2e34792d43caf4980c92820"
     },
     {
       "path": "tools/worksheet_replacement_reserve_D149.py",
@@ -10343,8 +10383,8 @@
     },
     {
       "path": "tools/worksheet_variant_evidence_D268.py",
-      "bytes": 8695,
-      "sha256": "c1fce9a453c1fb2d5f6200c85a10f6c169079408f09e9ee3da404471b4adcb91"
+      "bytes": 9075,
+      "sha256": "55c54843a898de3bc442f456d8f23c9db0c9f79a38725e8758748d2f41b2f83e"
     },
     {
       "path": "tools/worksheet_yoc_spread_D123.py",

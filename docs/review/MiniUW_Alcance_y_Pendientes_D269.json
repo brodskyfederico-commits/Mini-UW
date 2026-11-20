@@ -1,0 +1,96 @@
+{
+  "deployment_enabled": false,
+  "implementation_validation": "MiniUW_Validacion_D269.json",
+  "known_gaps": [
+    {
+      "id": "TEC-01",
+      "impact": "A missing fiscal value/source or false green blocks affected cash and delivery. No proxy fallback, inherited criterion, loan extension or blank-as-zero.",
+      "remaining": [
+        "Monthly/irregular schedules and financial conventions outside the explicitly supported quarterly contract"
+      ],
+      "requirement": "Calendario integrado general de cinco años desde estabilización y duración documentada",
+      "source": "docs/workbook-horizon-fiscal-audit-D267.md; tools/worksheet_horizon_fiscal_D267.py; tests/test_worksheet_horizon_fiscal.py",
+      "state": "implemented_and_validated_for_quarterly_v31_v32_v33",
+      "supported": "Explicit five-year integrated Base/Downside with/without refi; M2 preopening/operating/forward fiscal cash; 116 critical facts; three-year zero/maturity component and archived v1 compatibility."
+    },
+    {
+      "blocked_policy": "CUR-01/REQ-06: no activar shocks históricos por defecto",
+      "id": "TEC-02",
+      "impact": "D253–D263 prueban grupos y conjuntos compatibles; no un único escenario derivado por los 15 defaults",
+      "remaining": [
+        "No historical shock defaults activated; source authority and exceptions await approved policy",
+        "C14 is stressed as documented combined loss; physical vacancy is not inferred from an undocumented decomposition",
+        "Conditional tax-benefit ordering remains POL-02",
+        "Monthly construction accrual is outside the explicitly supported quarterly contract"
+      ],
+      "requirement": "Un orquestador para todos los drivers, excepciones y Upside",
+      "source": "D252 políticas 3, 18–33; tools/worksheet_sensitivities_D253.py evaluate_trial/evaluate_sensitivities",
+      "state": "implemented_and_validated_for_explicit_synthetic_v34",
+      "supported": "15 isolated drivers, joint and informative Upside; exceptions require sources; post-M2 no-benefits tax stress; complete reference inventories; dated USD10 cash with capacity guard"
+    },
+    {
+      "id": "TEC-03",
+      "impact": "No deducir renta asequible de los gastos de servicios ni calcular un beneficio sin regla acreditada",
+      "requirement": "Renta asequible regulada con AMI, tope y utility allowance",
+      "source": "docs/workbook-regulated-rent-D269.md; tools/worksheet_regulated_rent_D269.py; tests/test_worksheet_regulated_rent.py",
+      "state": "implemented_and_validated_for_annual_per_unit_v35",
+      "supported": "Explicit AMI, household basis, income/rent fractions, tenant utility allowance and reconciled unit mix; six annual windows including forward exit; both routes Base/Downside; independent 130-fact inventory",
+      "remaining": [
+        "Real program applicability and current official source authentication",
+        "PER_SF or changes within an annual window require an explicit separate contract; no silent conversion or averaging",
+        "Conditional tax benefits remain POL-02; no eligibility, exemption or density bonus is inferred"
+      ]
+    },
+    {
+      "id": "POL-01",
+      "impact": "El área no respaldada bloquea los cálculos dependientes",
+      "requirement": "GBA derivado, materialidad y autoridad de fuente",
+      "source": "D252 política 4; docs/requirements-conflicts.md SRC-01",
+      "state": "decision_then_implementation"
+    },
+    {
+      "id": "POL-02",
+      "impact": "El perfil actual no acredita un beneficio o excepción fiscal real",
+      "requirement": "Beneficios fiscales condicionales y stress de incertidumbre/orden de reglas",
+      "source": "D252 políticas 5, 6 y 29; tools/worksheet_scope_D174.py",
+      "state": "evidence_policy_then_implementation"
+    },
+    {
+      "id": "POL-03",
+      "impact": "Conservar banda PENDING y no adoptar propuestas ni umbrales históricos sin alcance confirmado",
+      "requirement": "Criterios por versión, RLV por estrategia, equity bajo y precedencia con faltantes",
+      "source": "D252 políticas 11, 13, 14 y 17; docs/pending-band-policy-decision.json",
+      "state": "approval_and_scoped_implementation_pending"
+    },
+    {
+      "id": "PIL-01",
+      "impact": "Datos no documentados quedan vacíos/PENDING; retorno personal requiere reparto real",
+      "requirement": "Fuentes y términos reales, roles y cotejo independiente del caso",
+      "source": "docs/review/piloto-real-D190/README.md",
+      "state": "await_real_case_and_confirmations"
+    },
+    {
+      "id": "VAL-01",
+      "impact": "Las pruebas sintéticas no certifican cero falsos verdes en documentos reales",
+      "requirement": "Validación empírica del OCR, backtest y corridas en paralelo",
+      "source": "docs/MiniUW_Informe_Integral_D250.md",
+      "state": "real_validation_pending"
+    },
+    {
+      "id": "TEC-04",
+      "impact": "Three individual Downside refi variants keep IRR PENDING under the existing root-inventory resource limit; cash is independently reconciled and no root is selected",
+      "requirement": "Improve complete IRR certification for high-complexity nonconventional cash polynomials",
+      "source": "MiniUW_Validacion_D268.json arithmetic_pending_IRR",
+      "state": "technical_improvement_pending"
+    }
+  ],
+  "parent_commit": "b47e199e7adbbba1ab90c08bba41801a8db47e1d",
+  "previous_record": "MiniUW_Alcance_y_Pendientes_D268.json",
+  "readiness": {
+    "all_33_policies": "not_certified",
+    "production": "not_authorized",
+    "receive_real_case": "piloto_asistido_con_procedencia_y_dictamen_PENDIENTE"
+  },
+  "real_decisions_enabled": false,
+  "scope": "D269: explicit per-unit AMI rent-limit forecasts integrated with M2, NOI, financing and dated USD10 cash under v35; actual eligibility and benefit policies are not adopted"
+}

@@ -94,7 +94,9 @@ WORKBOOK_CRITICAL_EVIDENCE_SCHEMA = "miniuw.synthetic-native-rental-inputs.v33"
 WORKBOOK_CRITICAL_EVIDENCE_PROFILE = "synthetic_documented_florida_tax_with_critical_evidence"
 WORKBOOK_VARIANT_EVIDENCE_SCHEMA = "miniuw.synthetic-native-rental-inputs.v34"
 VARIANT_REFERENCE_FILE = "Independent_Reference.json"
-CRITICAL_EVIDENCE_SCHEMAS = (WORKBOOK_CRITICAL_EVIDENCE_SCHEMA, WORKBOOK_VARIANT_EVIDENCE_SCHEMA)
+WORKBOOK_REGULATED_RENT_SCHEMA = "miniuw.synthetic-native-rental-inputs.v35"
+INDEPENDENT_EVIDENCE_SCHEMAS = (WORKBOOK_VARIANT_EVIDENCE_SCHEMA, WORKBOOK_REGULATED_RENT_SCHEMA)
+CRITICAL_EVIDENCE_SCHEMAS = (WORKBOOK_CRITICAL_EVIDENCE_SCHEMA, *INDEPENDENT_EVIDENCE_SCHEMAS)
 FLORIDA_TAX_SCHEMAS = (WORKBOOK_FLORIDA_TAX_SCHEMA, *CRITICAL_EVIDENCE_SCHEMAS)
 TECHNICAL_SCHEMAS = (WORKBOOK_TECHNICAL_ACCEPTANCE_SCHEMA, *FLORIDA_TAX_SCHEMAS)
 DEFINITION_SCHEMAS = (WORKBOOK_DEFINITION_SCREENING_SCHEMA, *TECHNICAL_SCHEMAS)
@@ -155,13 +157,18 @@ MAX_FILE_BYTES = 4 * 1024 * 1024
 MAX_EXTENDED_PILOT_BYTES = 32 * 1024
 MAX_INTEGRATED_PILOT_BYTES = 48 * 1024
 MAX_CONSTRUCTION_PILOT_BYTES = 96 * 1024
+MAX_REGULATED_RENT_BYTES = 256 * 1024
 CONSTRUCTION_SENSITIVITY_SCHEMA = "miniuw.synthetic-worksheet-sensitivities.v5"
 PERMANENT_SENSITIVITY_SCHEMA = "miniuw.synthetic-worksheet-sensitivities.v10"
 EXACT_PERMANENT_SENSITIVITY_SCHEMA = "miniuw.synthetic-worksheet-sensitivities.v11"
 
 
 def read_case_source(raw):
-    case = _json(raw, MAX_CONSTRUCTION_PILOT_BYTES)
+    case = _json(raw, MAX_REGULATED_RENT_BYTES)
+    if isinstance(case, dict) and case.get("schema") == WORKBOOK_REGULATED_RENT_SCHEMA:
+        return case
+    if len(raw) > MAX_CONSTRUCTION_PILOT_BYTES:
+        return _json(raw, MAX_CONSTRUCTION_PILOT_BYTES)
     inputs = case.get("rent_inputs") if isinstance(case, dict) else None
     sensitivity = inputs.get("sensitivities") if isinstance(inputs, dict) else None
     pdf_support = (isinstance(case, dict) and case.get("schema") in TECHNICAL_SCHEMAS
@@ -204,7 +211,9 @@ def build_results(raw, *, workbook_raw=None, downside_workbook_raw=None, current
     case = read_case_source(raw)
     schema = case.get("schema") if isinstance(case, dict) else None
     rent_inputs = case.get("rent_inputs") if isinstance(case, dict) else None
-    require(independent_reference_raw is None or schema == WORKBOOK_VARIANT_EVIDENCE_SCHEMA,
+    require(not isinstance(rent_inputs, dict) or "regulated_rent" not in rent_inputs or schema == WORKBOOK_REGULATED_RENT_SCHEMA,
+            "Regulated rent requires the explicit v35 profile")
+    require(independent_reference_raw is None or schema in INDEPENDENT_EVIDENCE_SCHEMAS,
             "Independent source inventory requires the explicit v34 profile")
     require(not isinstance(rent_inputs, dict) or "sensitivities" not in rent_inputs or schema in TECHNICAL_SCHEMAS,
             "Las sensibilidades requieren un expediente sintético de aceptación técnica")
@@ -250,7 +259,7 @@ def build_results(raw, *, workbook_raw=None, downside_workbook_raw=None, current
                                                evidence_milestone=evidence_milestone)
         critical_evidence = None
         if schema in CRITICAL_EVIDENCE_SCHEMAS:
-            if schema == WORKBOOK_VARIANT_EVIDENCE_SCHEMA:
+            if schema in INDEPENDENT_EVIDENCE_SCHEMAS:
                 reference = independent_reference_raw
             else:
                 from worksheet_horizon_fiscal_D267 import reference_for
@@ -585,7 +594,7 @@ def deliver_package(directory, output, current_revision):
             f'La revisión no está vigente: {", ".join(review["revision_blockers"])}')
     unavailable = [name for name in ("Base", "Downside")
                    if not (result["scenarios"].get(name, {}).get("cash_per_usd_10") or {}).get("events")]
-    if read_case_source(files["case.json"]).get("schema") == WORKBOOK_VARIANT_EVIDENCE_SCHEMA:
+    if read_case_source(files["case.json"]).get("schema") in INDEPENDENT_EVIDENCE_SCHEMAS:
         from worksheet_variant_evidence_D268 import capacity_only_delivery
         case = read_case_source(files["case.json"])
         unavailable = [name for name in unavailable if not capacity_only_delivery(case, result, name)]

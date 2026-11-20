@@ -10,7 +10,7 @@ from miniuw_foundation.scheduled_expense_case import sha
 from miniuw_worksheet_v1 import (
     CRITERIA_FILE, DOWNSIDE_WORKBOOK_FILE, EVIDENCE_FILE, MAX_FILE_BYTES, PLAN_FILE, WORKBOOK_FILE,
     TECHNICAL_SCHEMAS, WORKBOOK_CRITICAL_EVIDENCE_SCHEMA, WORKBOOK_VARIANT_EVIDENCE_SCHEMA,
-    VARIANT_REFERENCE_FILE, encoded, write_package,
+    VARIANT_REFERENCE_FILE, INDEPENDENT_EVIDENCE_SCHEMAS, encoded, write_package,
 )
 from preview_lorena_criteria_D192 import read_cells
 from worksheet_local_sources_D127 import synthetic_id
@@ -72,14 +72,14 @@ def prepare(settings, registered):
     if settings.get("schema") not in TECHNICAL_SCHEMAS:
         raise ValidationError("explicit_synthetic_worksheet_settings_required")
     if not synthetic_id(registered.get("revision")) or set(registered["files"]) != (set(SOURCES.values()) |
-            ({VARIANT_REFERENCE_FILE} if settings["schema"] == WORKBOOK_VARIANT_EVIDENCE_SCHEMA else set())):
+            ({VARIANT_REFERENCE_FILE} if settings["schema"] in INDEPENDENT_EVIDENCE_SCHEMAS else set())):
         raise ValidationError("invalid_synthetic_registration")
     case = deepcopy(settings)
     if case["schema"] == WORKBOOK_CRITICAL_EVIDENCE_SCHEMA:
         from worksheet_horizon_fiscal_D267 import reference_for
         case["critical_evidence_reference_sha256"] = sha(reference_for(case).read_bytes())
     files = registered["files"]
-    if case["schema"] == WORKBOOK_VARIANT_EVIDENCE_SCHEMA:
+    if case["schema"] in INDEPENDENT_EVIDENCE_SCHEMAS:
         reference = files[VARIANT_REFERENCE_FILE]
         case["critical_evidence_reference_sha256"] = None if reference is None else reference["sha256"]
 

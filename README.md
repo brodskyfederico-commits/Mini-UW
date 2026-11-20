@@ -415,3 +415,7 @@ T105 observa riesgos de caja de las hipótesis T104, con moneda/ventana/UTC expl
 ## D268 · Programa de sensibilidades con fuentes independientes
 
 El [ejecutor de 15 drivers](docs/workbook-scenario-program-D268.md) corre variantes individuales, conjuntas y Upside informativo desde seis fuentes registradas v34. El cotejo cubre 19 expedientes, 71 rutas de caja calculadas y cinco bloqueadas. No activa defaults ni ajusta el préstamo para producir PASS. [Validación dirigida](docs/review/MiniUW_Validacion_D268.json) · [Pendientes](docs/review/MiniUW_Alcance_y_Pendientes_D268.json). Tres TIR conservan PENDING por el límite del aislador; la batería general consolidada y las confirmaciones reales siguen separadas.
+
+## D269 · Renta regulada con AMI y deducción de servicios
+
+El [perfil v35](docs/workbook-regulated-rent-D269.md) recibe AMI, hogares, límites, unidades y utility allowance explícitos por ventana. Conecta renta limitada, NOI, capacidad y retorno por USD 10 con/sin refi en Base/Downside; un dato o unidad ausente deja PENDING. [Validación](docs/review/MiniUW_Validacion_D269.json) · [Pendientes](docs/review/MiniUW_Alcance_y_Pendientes_D269.json). Los valores del fixture son sólo de prueba; no se acredita elegibilidad legal ni beneficio fiscal.
