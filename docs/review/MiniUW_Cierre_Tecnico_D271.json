@@ -1,0 +1,1645 @@
+{
+  "milestone": "D271",
+  "status": "technical_closure_passed_within_explicit_supported_v1_contracts",
+  "source_commit": "da4358d594b4717db78a9ab68c1cdaca4de5b70e",
+  "source_manifest_sha256": "aa9e8f2357773aa3dab19d0347bb7152a6a9ad993410b33790a72ef965d6cc43",
+  "rows": [
+    {
+      "id": "TEC-01",
+      "requirement": "Horizonte integrado de cinco años desde estabilización",
+      "source": "D252, políticas 15–16; D265, TEC-01",
+      "definition": "Duración explícita de años completos, grilla trimestral. Cinco años y alternativa de tres años; sin default automático.",
+      "code": [
+        "tools/worksheet_holding_horizon_D266.py",
+        "tools/worksheet_horizon_fiscal_D267.py"
+      ],
+      "validation": [
+        "docs/review/MiniUW_Validacion_D266.json",
+        "docs/review/MiniUW_Validacion_D267.json"
+      ],
+      "result": "Implementado y cotejado en su contrato",
+      "remaining": "Calendario mensual/irregular y devengo distinto requieren contrato y validación propios."
+    },
+    {
+      "id": "TEC-02",
+      "requirement": "Sensibilidades aisladas y conjuntas, con Upside informativo",
+      "source": "D252, políticas 3 y 18–33; D265, TEC-02",
+      "definition": "15 drivers tipados, fuentes propias, Base preservado, cambios de configuración inventariados. Upside no rescata un Base que no cumple.",
+      "code": [
+        "tools/worksheet_scenario_program_D268.py",
+        "tools/worksheet_variant_evidence_D268.py"
+      ],
+      "validation": [
+        "docs/review/MiniUW_Validacion_D268.json"
+      ],
+      "result": "Implementado con parámetros explícitos",
+      "remaining": "Sin autorización de defaults históricos, materialidad ni orden de beneficios fiscales. C14 combinado no se convierte en vacancia física."
+    },
+    {
+      "id": "TEC-03",
+      "requirement": "Renta regulada: AMI, tope y utility allowance",
+      "source": "D252, observación adicional del Input Sheet; D265, TEC-03",
+      "definition": "AMI, hogar imputado, fracciones, deducción y unidades conciliadas por ventana anual. Renta cobrada = menor mercado/tope neto; no segunda deducción de servicios en Opex.",
+      "code": [
+        "tools/worksheet_regulated_rent_D269.py",
+        "tools/worksheet_rental_inputs_D140.py"
+      ],
+      "validation": [
+        "docs/review/MiniUW_Validacion_D269.json"
+      ],
+      "result": "Implementado anual por unidad",
+      "remaining": "Autenticación de aplicabilidad real. PER SF y cambios dentro de la ventana anual requieren contrato separado; no se infieren beneficios."
+    },
+    {
+      "id": "TEC-04",
+      "requirement": "Tres TIR de D268 pendientes por recurso numérico",
+      "source": "D268, arithmetic_pending_IRR; D269, TEC-04",
+      "definition": "Extensión optativa con huella del algoritmo: inventario exacto de raíces positivas y TIR anual acotada sólo si hay raíz única probada.",
+      "code": [
+        "tools/worksheet_irr_certificate_D270.py",
+        "tools/worksheet_integrated_screening_D181.py"
+      ],
+      "validation": [
+        "docs/review/MiniUW_Validacion_D270.json"
+      ],
+      "result": "Tres casos resueltos sin cambiar la caja",
+      "remaining": "Raíz múltiple/no demostrada, dato ausente o recurso insuficiente: TIR PENDING; no elegir una tasa favorable."
+    }
+  ],
+  "process": [
+    {
+      "stage": "D01 / B01–B03",
+      "task": "Ingreso y registro",
+      "action": "Identificar expediente/revisión, registrar originales y huellas, clasificar páginas y fuentes.",
+      "blocker": "No mezclar fuentes o revisiones; inventario incompleto identifica faltantes."
+    },
+    {
+      "stage": "D02 / B04",
+      "task": "55 campos de planilla",
+      "action": "Tipar dato, unidad, celda, escenario, confirmación y aplicabilidad.",
+      "blocker": "Vacío no es cero. N/A necesita alcance explícito. Un cero fuera del dominio se rechaza con motivo."
+    },
+    {
+      "stage": "D03 / B05–B09",
+      "task": "Planos, GC, banco y mercado",
+      "action": "B05/B06 leen y B07 concilia. B08 aporta evidencia financiera; B09 espera B07 y B08 para cotejar costo/área/alcance.",
+      "blocker": "Ausencia, OCR discrepante, hoja duplicada o área no respaldada bloquean el cálculo dependiente."
+    },
+    {
+      "stage": "D04 / B10–B11",
+      "task": "Evidencia oficial",
+      "action": "Copia local, cita, fecha, jurisdicción, base y vigencia. M2 separa escolar/no escolar y resets declarados.",
+      "blocker": "Lo sintético prueba el mecanismo; no acredita vigencia ni elegibilidad real."
+    },
+    {
+      "stage": "D05 / B12–B14",
+      "task": "Dependencias y cálculo",
+      "action": "Programa → renta/NOI → presupuesto/calendario → obra/interés → refi/capacidad → operación/venta → retorno y criterio.",
+      "blocker": "El préstamo elegido no supera el menor límite aplicable. Sin refi conserva sus propias fuentes y vencimiento."
+    },
+    {
+      "stage": "D06 / B15",
+      "task": "Informe del deal",
+      "action": "Cuatro rutas Base/Downside con/sin refi; aportes, cobros brutos, fechas, saldo sin recuperar, múltiplo, TIR y CoC aplicable por USD 10.",
+      "blocker": "Base = aporte inicial verificado; aportes posteriores se muestran separados. Retorno personal necesita reparto documentado."
+    },
+    {
+      "stage": "D07 / B16–B17",
+      "task": "Auditoría y calidad",
+      "action": "B16 reconstruye fuentes/cálculo/PDF y comprueba vigencia antes de entregar. B17 corre la batería por versión.",
+      "blocker": "Falso verde y revisión anterior bloquean entrega. Una prueba sintética no aprueba una inversión."
+    },
+    {
+      "stage": "Carril humano",
+      "task": "Responsabilidad y autorización",
+      "action": "Custodio de evidencia, revisor financiero, responsable de criterios y aprobador con identidad/alcance acreditados.",
+      "blocker": "Sin firmas y evidencia aplicables, dictamen real e histórico PENDING; despliegue deshabilitado."
+    }
+  ],
+  "limits": [
+    {
+      "id": "TEC-01",
+      "impact": "A missing fiscal value/source or false green blocks affected cash and delivery. No proxy fallback, inherited criterion, loan extension or blank-as-zero.",
+      "remaining": [
+        "Monthly/irregular schedules and financial conventions outside the explicitly supported quarterly contract"
+      ],
+      "requirement": "Calendario integrado general de cinco años desde estabilización y duración documentada",
+      "source": "docs/workbook-horizon-fiscal-audit-D267.md; tools/worksheet_horizon_fiscal_D267.py; tests/test_worksheet_horizon_fiscal.py",
+      "state": "implemented_and_validated_for_quarterly_v31_v32_v33",
+      "supported": "Explicit five-year integrated Base/Downside with/without refi; M2 preopening/operating/forward fiscal cash; 116 critical facts; three-year zero/maturity component and archived v1 compatibility."
+    },
+    {
+      "blocked_policy": "CUR-01/REQ-06: no activar shocks históricos por defecto",
+      "id": "TEC-02",
+      "impact": "Orquestador explícito de 15 drivers implementado y cotejado; los defaults históricos siguen sin activar por CUR-01/REQ-06.",
+      "remaining": [
+        "No historical shock defaults activated; source authority and exceptions await approved policy",
+        "C14 is stressed as documented combined loss; physical vacancy is not inferred from an undocumented decomposition",
+        "Conditional tax-benefit ordering remains POL-02",
+        "Monthly construction accrual is outside the explicitly supported quarterly contract"
+      ],
+      "requirement": "Un orquestador para todos los drivers, excepciones y Upside",
+      "source": "D252 políticas 3, 18–33; tools/worksheet_sensitivities_D253.py evaluate_trial/evaluate_sensitivities",
+      "state": "implemented_and_validated_for_explicit_synthetic_v34",
+      "supported": "15 isolated drivers, joint and informative Upside; exceptions require sources; post-M2 no-benefits tax stress; complete reference inventories; dated USD10 cash with capacity guard"
+    },
+    {
+      "id": "TEC-03",
+      "impact": "No deducir renta asequible de los gastos de servicios ni calcular un beneficio sin regla acreditada",
+      "requirement": "Renta asequible regulada con AMI, tope y utility allowance",
+      "source": "docs/workbook-regulated-rent-D269.md; tools/worksheet_regulated_rent_D269.py; tests/test_worksheet_regulated_rent.py",
+      "state": "implemented_and_validated_for_annual_per_unit_v35",
+      "supported": "Explicit AMI, household basis, income/rent fractions, tenant utility allowance and reconciled unit mix; six annual windows including forward exit; both routes Base/Downside; independent 130-fact inventory",
+      "remaining": [
+        "Real program applicability and current official source authentication",
+        "PER_SF or changes within an annual window require an explicit separate contract; no silent conversion or averaging",
+        "Conditional tax benefits remain POL-02; no eligibility, exemption or density bonus is inferred"
+      ]
+    },
+    {
+      "id": "POL-01",
+      "impact": "El área no respaldada bloquea los cálculos dependientes",
+      "requirement": "GBA derivado, materialidad y autoridad de fuente",
+      "source": "D252 política 4; docs/requirements-conflicts.md SRC-01",
+      "state": "decision_then_implementation"
+    },
+    {
+      "id": "POL-02",
+      "impact": "El perfil actual no acredita un beneficio o excepción fiscal real",
+      "requirement": "Beneficios fiscales condicionales y stress de incertidumbre/orden de reglas",
+      "source": "D252 políticas 5, 6 y 29; tools/worksheet_scope_D174.py",
+      "state": "evidence_policy_then_implementation"
+    },
+    {
+      "id": "POL-03",
+      "impact": "Conservar banda PENDING y no adoptar propuestas ni umbrales históricos sin alcance confirmado",
+      "requirement": "Criterios por versión, RLV por estrategia, equity bajo y precedencia con faltantes",
+      "source": "D252 políticas 11, 13, 14 y 17; docs/pending-band-policy-decision.json",
+      "state": "approval_and_scoped_implementation_pending"
+    },
+    {
+      "id": "PIL-01",
+      "impact": "Datos no documentados quedan vacíos/PENDING; retorno personal requiere reparto real",
+      "requirement": "Fuentes y términos reales, roles y cotejo independiente del caso",
+      "source": "docs/review/piloto-real-D190/README.md",
+      "state": "await_real_case_and_confirmations"
+    },
+    {
+      "id": "VAL-01",
+      "impact": "Las pruebas sintéticas no certifican cero falsos verdes en documentos reales",
+      "requirement": "Validación empírica del OCR, backtest y corridas en paralelo",
+      "source": "docs/MiniUW_Informe_Integral_D250.md",
+      "state": "real_validation_pending"
+    },
+    {
+      "id": "TEC-04",
+      "impact": "The three known incomplete Downside refi IRRs now have a complete unique-root certificate with identical financial cash. No root chosen from multiple/unknown cases.",
+      "requirement": "Improve complete IRR certification for high-complexity nonconventional cash polynomials",
+      "source": "docs/workbook-irr-certificate-D270.md; tools/worksheet_irr_certificate_D270.py; tests/test_worksheet_irr_certificate.py",
+      "state": "implemented_and_validated_for_opt_in_quarterly_certificate",
+      "remaining": [
+        "Mathematically unproved, multiple, missing or out-of-budget cases remain explicitly PENDING; no financial root-selection policy is invented"
+      ]
+    }
+  ],
+  "all_33_policies_certified": false,
+  "real_decisions_enabled": false,
+  "deployment_enabled": false,
+  "historical_return": "PENDING",
+  "regression": {
+    "milestone": "D271",
+    "state": "passed",
+    "mode": "synthetic_frozen_v1_regression",
+    "source_commit": "da4358d594b4717db78a9ab68c1cdaca4de5b70e",
+    "source_manifest_sha256": "aa9e8f2357773aa3dab19d0347bb7152a6a9ad993410b33790a72ef965d6cc43",
+    "started_utc": "2026-11-20T13:19:51Z",
+    "finished_utc": "2026-11-20T15:56:44Z",
+    "elapsed_seconds": 9413,
+    "host": "ubuntu-dallas-2gb",
+    "python": "Python 3.12.3",
+    "real_decision": "PENDING",
+    "historical_return": "PENDING",
+    "deployment_enabled": false,
+    "all_33_policies_certified": false,
+    "real_document_empirical_acceptance": false,
+    "phases": {
+      "vacios": {
+        "command": "python3 tools/check_worksheet_blanks_and_zero_D171.py",
+        "exit_status": 0,
+        "started_utc": "2026-11-20T13:19:51Z",
+        "finished_utc": "2026-11-20T13:23:34Z",
+        "elapsed_seconds": 223,
+        "log_sha256": "8801aa5af0812df796fa49ad0610ba8dca163d72ffd344b961420ef9f3d72135",
+        "result": {
+          "decision": "PENDING",
+          "empty_cases": 440,
+          "fields": 55,
+          "integrated_explicit_zero_cases": 2,
+          "integrated_pending_cases": 6,
+          "nonnumeric_zero_rejections": 12,
+          "not_applicable_empty_cases": 4,
+          "numeric_zero_cases": 98,
+          "page_count": 1,
+          "pdf_sha256": "3e485462c5eb0ad63ffc7a38aa0fe9f555408589e2d149f3fd46e7fe29ad6795",
+          "pending_empty_cases": 436,
+          "scenarios": [
+            "Base",
+            "Downside"
+          ],
+          "status": "passed"
+        }
+      },
+      "unitarias": {
+        "command": "python3 -m unittest discover -s tests -v",
+        "exit_status": 0,
+        "started_utc": "2026-11-20T13:23:34Z",
+        "finished_utc": "2026-11-20T15:50:22Z",
+        "elapsed_seconds": 8808,
+        "log_sha256": "b1dc7475aa7ac21bd2e592096d073851ef519565ac6fc96a0bbbb48eac254c66",
+        "tests": 1766,
+        "reported_seconds": 8803.107,
+        "outcome": "OK",
+        "errors": []
+      },
+      "referencias": {
+        "command": "python3 tools/check_reference_package.py",
+        "exit_status": 0,
+        "started_utc": "2026-11-20T15:50:22Z",
+        "finished_utc": "2026-11-20T15:51:03Z",
+        "elapsed_seconds": 41,
+        "log_sha256": "a4c9d7333c242ce7dcc33dc472c24be02c3a0b6519d3f2d20bc3e6a53dba5453",
+        "result": {
+          "files_checked": 2087,
+          "unique_originals_checked": 16,
+          "coverage_rows": 398,
+          "status": "passed",
+          "reference_suites": 26,
+          "results": [
+            {
+              "script": "references/validate_m2_algebra.py",
+              "status": "passed",
+              "count": 186
+            },
+            {
+              "script": "references/validate_m34_allocation.py",
+              "status": "passed",
+              "count": 22
+            },
+            {
+              "script": "references/validate_m5_algebra.py",
+              "status": "passed",
+              "count": 36
+            },
+            {
+              "script": "references/validate_m6_refinance.py",
+              "status": "passed",
+              "count": 128
+            },
+            {
+              "script": "references/validate_m7_returns.py",
+              "status": "passed",
+              "count": 65
+            },
+            {
+              "script": "references/validate_m8_scenarios_price.py",
+              "status": "passed",
+              "count": 99
+            },
+            {
+              "script": "references/validate_m9_comparisons.py",
+              "status": "passed",
+              "count": 46
+            },
+            {
+              "script": "references/validate_integrated_bridge.py",
+              "status": "passed",
+              "count": 14
+            },
+            {
+              "script": "references/validate_revision_integrity.py",
+              "status": "passed",
+              "count": 29
+            },
+            {
+              "script": "references/validate_interface_contracts.py",
+              "status": "passed",
+              "count": 75
+            },
+            {
+              "script": "references/validate_calendar_ledger.py",
+              "status": "passed",
+              "count": 60
+            },
+            {
+              "script": "references/validate_cost_scope.py",
+              "status": "passed",
+              "count": 29
+            },
+            {
+              "script": "references/validate_evidence_locators.py",
+              "status": "passed",
+              "count": 21
+            },
+            {
+              "script": "references/validate_budget_payment_bridge.py",
+              "status": "passed",
+              "count": 41
+            },
+            {
+              "script": "references/validate_calculation_lineage.py",
+              "status": "passed",
+              "count": 48
+            },
+            {
+              "script": "references/validate_periodic_irr_isolation.py",
+              "status": "passed",
+              "count": 64
+            },
+            {
+              "script": "references/validate_investor_return_bridge.py",
+              "status": "passed",
+              "count": 43
+            },
+            {
+              "script": "references/validate_return_metric_bridge.py",
+              "status": "passed",
+              "count": 31
+            },
+            {
+              "script": "references/validate_operating_cash_bridge.py",
+              "status": "passed",
+              "count": 26
+            },
+            {
+              "script": "references/validate_settlement_bridge.py",
+              "status": "passed",
+              "count": 43
+            },
+            {
+              "script": "references/validate_financing_timeline.py",
+              "status": "passed",
+              "count": 50
+            },
+            {
+              "script": "references/validate_price_grid_catalogue.py",
+              "status": "passed",
+              "count": 52
+            },
+            {
+              "script": "references/validate_sensitivity_ranking.py",
+              "status": "passed",
+              "count": 33
+            },
+            {
+              "script": "references/validate_affine_price_support.py",
+              "status": "passed",
+              "count": 42
+            },
+            {
+              "script": "references/validate_refinance_capacity_bridge.py",
+              "status": "passed",
+              "count": 46
+            },
+            {
+              "script": "references/validate_structure_closeout.py",
+              "status": "passed",
+              "count": 31
+            }
+          ],
+          "production_ready": false,
+          "scope": "Package integrity and scoped synthetic references only; no independent financial audit, deal decision or production release."
+        }
+      },
+      "integral": {
+        "command": "python3 tools/check_integral_miniuw_D102.py",
+        "exit_status": 0,
+        "started_utc": "2026-11-20T15:51:03Z",
+        "finished_utc": "2026-11-20T15:52:00Z",
+        "elapsed_seconds": 57,
+        "log_sha256": "c6d5bd4e9bc4f5cd37ab88de3247570ec0e6e64927fb5e9f6ecc54241a91f2da",
+        "result": {
+          "status": "passed",
+          "decision": "PENDING",
+          "cash_cases": 2,
+          "recovery_probes": 6,
+          "blocked_inputs": 2,
+          "sale_only_verified": true,
+          "funding_cases": 9,
+          "one_page_report": true,
+          "pdf_sha256": "2560fe8707a8d9029f0c4923fa83bd3398c99b5e8c58ddd2f3972cd0419aa9b7"
+        }
+      },
+      "aceptacion": {
+        "command": "python3 tools/check_worksheet_technical_acceptance_D200.py --output <directorio nuevo>",
+        "exit_status": 0,
+        "started_utc": "2026-11-20T15:52:00Z",
+        "finished_utc": "2026-11-20T15:56:40Z",
+        "elapsed_seconds": 280,
+        "log_sha256": "3e7d7120aeb2ba9fccc22145253b7da9559144c5e3d5d2b5033327a7b7fa1e15",
+        "result": {
+          "allocation_terms_sha256": "f0cdcde8c7185d94bcbfbfadcc5cfb9cb68bac4dbbbc956c1a3e9948bae6cc3f",
+          "cases": {
+            "adverse": "FAIL",
+            "complete": "PASS",
+            "corrected": "PASS",
+            "incomplete": "PENDING"
+          },
+          "decision": "PENDING",
+          "deployment_enabled": false,
+          "identical_replay_files": 10,
+          "independent_checks": {
+            "Base": {
+              "allocation": {
+                "participants": {
+                  "GP": {
+                    "own_initial_usd_10": {
+                      "additional": {
+                        "denominator": "24000",
+                        "numerator": "116809"
+                      },
+                      "capital_unreturned": {
+                        "denominator": "1",
+                        "numerator": "0"
+                      },
+                      "cash_unrecovered": {
+                        "denominator": "1",
+                        "numerator": "0"
+                      },
+                      "initial": {
+                        "denominator": "1",
+                        "numerator": "10"
+                      },
+                      "preference_paid": {
+                        "denominator": "1",
+                        "numerator": "0"
+                      },
+                      "total_received": {
+                        "denominator": "2100000000",
+                        "numerator": "34868409133"
+                      }
+                    },
+                    "project_usd_10": {
+                      "additional": {
+                        "denominator": "120000",
+                        "numerator": "116809"
+                      },
+                      "capital_unreturned": {
+                        "denominator": "1",
+                        "numerator": "0"
+                      },
+                      "cash_unrecovered": {
+                        "denominator": "1",
+                        "numerator": "0"
+                      },
+                      "initial": {
+                        "denominator": "1",
+                        "numerator": "2"
+                      },
+                      "preference_paid": {
+                        "denominator": "1",
+                        "numerator": "0"
+                      },
+                      "total_received": {
+                        "denominator": "10500000000",
+                        "numerator": "34868409133"
+                      }
+                    }
+                  },
+                  "LP": {
+                    "own_initial_usd_10": {
+                      "additional": {
+                        "denominator": "24000",
+                        "numerator": "116809"
+                      },
+                      "capital_unreturned": {
+                        "denominator": "1",
+                        "numerator": "0"
+                      },
+                      "cash_unrecovered": {
+                        "denominator": "1",
+                        "numerator": "0"
+                      },
+                      "initial": {
+                        "denominator": "1",
+                        "numerator": "10"
+                      },
+                      "preference_paid": {
+                        "denominator": "16000",
+                        "numerator": "29107"
+                      },
+                      "total_received": {
+                        "denominator": "2100000000",
+                        "numerator": "38688702883"
+                      }
+                    },
+                    "project_usd_10": {
+                      "additional": {
+                        "denominator": "30000",
+                        "numerator": "116809"
+                      },
+                      "capital_unreturned": {
+                        "denominator": "1",
+                        "numerator": "0"
+                      },
+                      "cash_unrecovered": {
+                        "denominator": "1",
+                        "numerator": "0"
+                      },
+                      "initial": {
+                        "denominator": "1",
+                        "numerator": "8"
+                      },
+                      "preference_paid": {
+                        "denominator": "20000",
+                        "numerator": "29107"
+                      },
+                      "total_received": {
+                        "denominator": "2625000000",
+                        "numerator": "38688702883"
+                      }
+                    }
+                  }
+                },
+                "reconciled_dates": [
+                  "2028-09-30",
+                  "2028-12-30"
+                ]
+              },
+              "cash_per_usd_10": {
+                "additional": 4.87,
+                "events": [
+                  {
+                    "category": "initial_capital",
+                    "date": "2027-03-30",
+                    "usd": 10.0
+                  },
+                  {
+                    "category": "additional_capital",
+                    "date": "2027-09-30",
+                    "usd": 4.66
+                  },
+                  {
+                    "category": "additional_capital",
+                    "date": "2027-12-30",
+                    "usd": 0.05
+                  },
+                  {
+                    "category": "additional_capital",
+                    "date": "2028-03-30",
+                    "usd": 0.05
+                  },
+                  {
+                    "category": "additional_capital",
+                    "date": "2028-06-30",
+                    "usd": 0.05
+                  },
+                  {
+                    "category": "additional_capital",
+                    "date": "2028-09-30",
+                    "usd": 0.05
+                  },
+                  {
+                    "category": "net_refinance_distribution",
+                    "date": "2028-09-30",
+                    "usd": 2.85
+                  },
+                  {
+                    "category": "operating_distribution",
+                    "date": "2028-12-30",
+                    "usd": 1.43
+                  },
+                  {
+                    "category": "net_sale_distribution",
+                    "date": "2028-12-30",
+                    "usd": 13.78
+                  }
+                ],
+                "received": 18.06,
+                "unrecovered": 0.0
+              },
+              "independent_lines": 351,
+              "last_before_fail": 7350000,
+              "last_pass": 3200000,
+              "sources_and_uses_periods": 10
+            },
+            "Downside": {
+              "allocation": {
+                "participants": {
+                  "GP": {
+                    "own_initial_usd_10": {
+                      "additional": {
+                        "denominator": "120000",
+                        "numerator": "982721"
+                      },
+                      "capital_unreturned": {
+                        "denominator": "2520000000",
+                        "numerator": "30523846973"
+                      },
+                      "cash_unrecovered": {
+                        "denominator": "2520000000",
+                        "numerator": "30523846973"
+                      },
+                      "initial": {
+                        "denominator": "1",
+                        "numerator": "10"
+                      },
+                      "preference_paid": {
+                        "denominator": "1",
+                        "numerator": "0"
+                      },
+                      "total_received": {
+                        "denominator": "2520000000",
+                        "numerator": "15313294027"
+                      }
+                    },
+                    "project_usd_10": {
+                      "additional": {
+                        "denominator": "600000",
+                        "numerator": "982721"
+                      },
+                      "capital_unreturned": {
+                        "denominator": "12600000000",
+                        "numerator": "30523846973"
+                      },
+                      "cash_unrecovered": {
+                        "denominator": "12600000000",
+                        "numerator": "30523846973"
+                      },
+                      "initial": {
+                        "denominator": "1",
+                        "numerator": "2"
+                      },
+                      "preference_paid": {
+                        "denominator": "1",
+                        "numerator": "0"
+                      },
+                      "total_received": {
+                        "denominator": "12600000000",
+                        "numerator": "15313294027"
+                      }
+                    }
+                  },
+                  "LP": {
+                    "own_initial_usd_10": {
+                      "additional": {
+                        "denominator": "120000",
+                        "numerator": "982721"
+                      },
+                      "capital_unreturned": {
+                        "denominator": "2520000000",
+                        "numerator": "30523846973"
+                      },
+                      "cash_unrecovered": {
+                        "denominator": "2520000000",
+                        "numerator": "30523846973"
+                      },
+                      "initial": {
+                        "denominator": "1",
+                        "numerator": "10"
+                      },
+                      "preference_paid": {
+                        "denominator": "1",
+                        "numerator": "0"
+                      },
+                      "total_received": {
+                        "denominator": "2520000000",
+                        "numerator": "15313294027"
+                      }
+                    },
+                    "project_usd_10": {
+                      "additional": {
+                        "denominator": "150000",
+                        "numerator": "982721"
+                      },
+                      "capital_unreturned": {
+                        "denominator": "3150000000",
+                        "numerator": "30523846973"
+                      },
+                      "cash_unrecovered": {
+                        "denominator": "3150000000",
+                        "numerator": "30523846973"
+                      },
+                      "initial": {
+                        "denominator": "1",
+                        "numerator": "8"
+                      },
+                      "preference_paid": {
+                        "denominator": "1",
+                        "numerator": "0"
+                      },
+                      "total_received": {
+                        "denominator": "3150000000",
+                        "numerator": "15313294027"
+                      }
+                    }
+                  }
+                },
+                "reconciled_dates": [
+                  "2029-03-30",
+                  "2029-06-30"
+                ]
+              },
+              "cash_per_usd_10": {
+                "additional": 8.19,
+                "events": [
+                  {
+                    "category": "initial_capital",
+                    "date": "2027-03-30",
+                    "usd": 10.0
+                  },
+                  {
+                    "category": "additional_capital",
+                    "date": "2027-06-30",
+                    "usd": 0.76
+                  },
+                  {
+                    "category": "additional_capital",
+                    "date": "2027-09-30",
+                    "usd": 0.04
+                  },
+                  {
+                    "category": "additional_capital",
+                    "date": "2027-12-30",
+                    "usd": 7.03
+                  },
+                  {
+                    "category": "additional_capital",
+                    "date": "2028-03-30",
+                    "usd": 0.07
+                  },
+                  {
+                    "category": "additional_capital",
+                    "date": "2028-06-30",
+                    "usd": 0.07
+                  },
+                  {
+                    "category": "additional_capital",
+                    "date": "2028-09-30",
+                    "usd": 0.07
+                  },
+                  {
+                    "category": "additional_capital",
+                    "date": "2028-12-30",
+                    "usd": 0.07
+                  },
+                  {
+                    "category": "additional_capital",
+                    "date": "2029-03-30",
+                    "usd": 0.07
+                  },
+                  {
+                    "category": "net_refinance_distribution",
+                    "date": "2029-03-30",
+                    "usd": 2.45
+                  },
+                  {
+                    "category": "operating_distribution",
+                    "date": "2029-06-30",
+                    "usd": 0.55
+                  },
+                  {
+                    "category": "net_sale_distribution",
+                    "date": "2029-06-30",
+                    "usd": 3.08
+                  }
+                ],
+                "received": 6.08,
+                "unrecovered": 12.11
+              },
+              "independent_lines": 385,
+              "last_before_fail": 4140000,
+              "last_pass": 2720000,
+              "sources_and_uses_periods": 12
+            }
+          },
+          "package_hashes": {
+            "Criterios_Lorena.xlsx": "bf73287a310f339514f106d56f840c697b0d65460d366582b7d96e9a4bce0c79",
+            "Downside_Inputs.xlsx": "d1c8306c896ac4c1ae92c7b9d61b7dc5eeb1b9137e70b3b2b04df16edaf062e0",
+            "Evidence.pdf": "a8ad0c3a6e9bc7f05549afaded130b5b0390730a879ae507d8b3f11f8da91777",
+            "Inputs.xlsx": "408cfef08a08c4171a5f73f89c58559942f186220b3e11a6216e8d555e4fa96a",
+            "MiniUW_Resumen.pdf": "ed0f2ad2b0061afd70230b4f7fa3661d9b82ae6b004b96bbba822cfe4f7a6ddd",
+            "Plan.pdf": "8aa93ce770b565dd956e2fd37e1f2bbc55821d8ee9c2d757b7338aa84f41766a",
+            "case.json": "94aa8571d330dff6ee2b9410e59afe3b1a18b86ce946ee5ff3b3ba426e3f6d92",
+            "current_revision.json": "33567772b4f89a34b6ef8be6f13dbba5ebc6d24c330edf346687e73df74c0b41",
+            "package.json": "27c79d0f52bd504467da7e54a15743dd2f7b9b7d53aa5c13da7ccf00dc654ca1",
+            "results.json": "d1d83d99ff9279bc6a4a5c340abdd0acb969579f1bbef3b4de3930d1d560db0d"
+          },
+          "pilot_real": "PENDING",
+          "real_decisions_enabled": false,
+          "routes": {
+            "Base": {
+              "interest_only_then_amortize": {
+                "additional": 4.88,
+                "last_receipt": "2029-03-30",
+                "received": 16.64,
+                "unrecovered": 0.0
+              },
+              "sell_without_refinance": {
+                "additional": 4.87,
+                "last_receipt": "2028-12-30",
+                "received": 18.23,
+                "unrecovered": 0.0
+              }
+            },
+            "Downside": {
+              "interest_only_then_amortize": {
+                "additional": 8.33,
+                "last_receipt": "2029-09-30",
+                "received": 5.01,
+                "unrecovered": 13.33
+              },
+              "sell_without_refinance": {
+                "additional": 8.25,
+                "last_receipt": "2029-06-30",
+                "received": 6.47,
+                "unrecovered": 11.79
+              }
+            }
+          },
+          "status": "passed",
+          "technical_checklist": "16/16"
+        }
+      },
+      "integridad": {
+        "command": "python3 preparar.py verify",
+        "exit_status": 0,
+        "started_utc": "2026-11-20T15:56:40Z",
+        "finished_utc": "2026-11-20T15:56:44Z",
+        "elapsed_seconds": 4,
+        "log_sha256": "3637f671a562f2aed3eb070b792b413f50ec6265582daaadb02443e0758a21cc",
+        "result": {
+          "commit": "da4358d594b4717db78a9ab68c1cdaca4de5b70e",
+          "manifest_sha256": "aa9e8f2357773aa3dab19d0347bb7152a6a9ad993410b33790a72ef965d6cc43",
+          "files_verified": 2086,
+          "workspace_and_snapshot_match": true
+        }
+      }
+    },
+    "source_files_in_manifest": 2086,
+    "source_copy_kind": "manifest_verified_clean_source_copy_not_a_git_checkout",
+    "historical_full_regression": "D265 is historical only; D271 tests this exact D270 code",
+    "interruption_record": "First attached shell ended with exit 143 before any test result; orphan terminated by exact PID and complete run restarted in supervised detached process. Interrupted logs retained separately, not counted as passing evidence.",
+    "expected_collected_tests": 1766,
+    "environment": {
+      "host": "ubuntu-dallas-2gb",
+      "python": "3.12.3",
+      "packages": {
+        "PyMuPDF": "2.0",
+        "pillow": "13.0.0",
+        "pypdf": "6.21.4"
+      },
+      "ocr": "tesseract 5.3.4"
+    },
+    "additional_missing_quarter_check": {
+      "status": "passed",
+      "case": "both_cash_and_declared_dates_omit_intermediate_quarter",
+      "result": {
+        "state": "PENDING",
+        "annual_enclosure": null,
+        "blockers": [
+          "IRR_certificate_cash_outside_declared_quarterly_grid"
+        ],
+        "period_ref": "2027-01-01/2027-07-01"
+      }
+    },
+    "frozen_code_sha256": {
+      "references/validate_affine_price_support.py": "f94d1dfde24b5dadf315cc3fa559ce8e5b5d186e2f6190859d6b7237047f448a",
+      "references/validate_budget_payment_bridge.py": "34a5e0f68b9e78d465b220b461084816b0b7a2a6d7d85e9315a97f2954b9278b",
+      "references/validate_calculation_lineage.py": "dd431c2612d33a870d15dfc8402cd399d8cf8f478780fd29c19bc41b9335ab7c",
+      "references/validate_calendar_ledger.py": "d19f06c0ef8ccdb2c55d8f8a68d14dbbd2c9d8e2cc69b1950acbd928f81faf27",
+      "references/validate_cost_scope.py": "6cf8187f5aca8849c857c5c11723d23a33d37a8ed5c2d99aadf860c2c896901c",
+      "references/validate_evidence_locators.py": "482b8c3fa0c61dbb0ac13706ac12de69cb5b63dfdede5e3ed547195e52cad9e8",
+      "references/validate_financing_timeline.py": "5582d96704f295093f074613876bce70b1b1e0658c076c2cfddec3a71fca5f70",
+      "references/validate_integrated_bridge.py": "0b1a665d1466bc6138e095531adc4aadf48d047bbdd6aa3daff4da28ffbf53c2",
+      "references/validate_interface_contracts.py": "51200cff4f04dab3806b69a93fc2af23f1721e67c735d41e6f0e1b36a01f2920",
+      "references/validate_investor_return_bridge.py": "0535e95918f042f996671fa916b4b769b3554740dd01745a510ea2f49b67f657",
+      "references/validate_m2_algebra.py": "6b82cea9197fd977d78f88dadbb36fb620114d5684054738183a88297e014f3f",
+      "references/validate_m34_allocation.py": "8d62db30ba2d7526e8ad611feb055c2547becc76a188c17366471f5b6bf59c13",
+      "references/validate_m5_algebra.py": "6999083a40fab8ad9d269b158f1c4f673c35ba62c21554f66315d9eb0f7eb2fb",
+      "references/validate_m6_refinance.py": "eaac79d9e23aec13d9e29c73a1be4a5d40d8c2d692bb08f2dbde1b2fde7731d8",
+      "references/validate_m7_returns.py": "92a813e8a92060a9fe09246ba7bf7d0df37393e128b8b9a10fcefe0c22b6e1c1",
+      "references/validate_m8_scenarios_price.py": "4f10701c26e776dff311bfde8680fc76431ec13ae26a19d64cde80400ef939cc",
+      "references/validate_m9_comparisons.py": "a47d50c320558cbca2e7b0bd2543368446b7fab298f8dac840d9b2bda0fbe3bb",
+      "references/validate_operating_cash_bridge.py": "b995ec196b580d03293e9b0ee730d1990e847d16c676a9e9d0ee6c2e0f2639bd",
+      "references/validate_periodic_irr_isolation.py": "b7f62f866581f25bfa7be23073d862e739c13fa92eabf1a9cce82f6f76897692",
+      "references/validate_price_grid_catalogue.py": "21966585f42ad73d106e603a0760bd3405ef6759b5c4fd288d17c509395f2bd0",
+      "references/validate_refinance_capacity_bridge.py": "c140509d924229b6e4687d3c79b08e46b4060e111b0d3d8072bbbbebd37a63ee",
+      "references/validate_return_metric_bridge.py": "74090ec3723b8f21b3a5bd1c784e9b1b0389fe0c057683c78f998b55f293d8d9",
+      "references/validate_revision_integrity.py": "b723c19f2d5fff5f0a747035705e975364a1b15f6703ad9cf1eb4ed4757b6161",
+      "references/validate_sensitivity_ranking.py": "72056c5fea4767468131fed146df3e077ad9226ce595726f91bee068afff9f56",
+      "references/validate_settlement_bridge.py": "9130a7575205b2cda4dc34eb4d3d6095c5c1d569dd90dfb477f6beee36f224ac",
+      "references/validate_structure_closeout.py": "384455bd2742a64eb0932d1c2604a86416093d5ee3ccb0eccbd1dfbd143b4c6e",
+      "src/miniuw_foundation/__init__.py": "fd28e9e74d4ed9b6554b1bf87e20b9b9e5e317f8ddb796ca9e50a13962d2eb8c",
+      "src/miniuw_foundation/archive.py": "54bf3b65c28a784d56944c87ecd60ec36edd558a5a2e58bfdf5aebb85a755a41",
+      "src/miniuw_foundation/bounded_exit_sale.py": "eb0e65a57c98d373d2850732944fb2f76de1d5e13e286c852ab4b2cae6e03505",
+      "src/miniuw_foundation/bounded_sale_costs.py": "1bf80e111a2dfbea8144d9fa27a779227c507a339a1a41e6bcbdd564aecd879e",
+      "src/miniuw_foundation/bounded_sale_recovery.py": "d7308d51262d2e68d327c59066582d67c54ba20889d668e9c4ad653d9b941f6a",
+      "src/miniuw_foundation/calculations.py": "ee79e0683eb9c5c5dc2ce740ab1ca4e1c2e17c3e94145b2aabfa9b2abf599e99",
+      "src/miniuw_foundation/capacity_project_returns.py": "6004b8146431c235abc05677a7ecc2906a73e1439f16794040895e7554f50c21",
+      "src/miniuw_foundation/capital_checked_output.py": "cd34fc11cb06b39f29613b26f4fc1732d4a832fd35f7dc99c4e6d57f63229803",
+      "src/miniuw_foundation/cash_participation.py": "f2e1e28c4b37032ff70f24b4ad7fe82ec35dbba1958c3b7abad92f463c790c7a",
+      "src/miniuw_foundation/cash_participation_artifacts.py": "544fb52918bebc6efa23d53aa302060ad6c4221df106583d28ecda15b87653c0",
+      "src/miniuw_foundation/cash_risk.py": "570785ab8fa2547d3ced2076dbcd8df0750725e7cb814f04c871adf8beadde24",
+      "src/miniuw_foundation/closing_cash.py": "7053bbdba91ad38d55909308fc6aef809449944ebae02c1ec387b1bfd810487b",
+      "src/miniuw_foundation/closing_returns.py": "59c090460087d46f82fd9930c004a12dcc4368dc521fae7959c802587fc1df64",
+      "src/miniuw_foundation/construction_bundle.py": "a5e0d80508276538822c3e10ff5ce6096b39084414b4407524219eb8598ccf9b",
+      "src/miniuw_foundation/construction_cash.py": "b8a69672179278950fdaf82e6b257043b526cd8c7c944dcb1490cd13d06f352b",
+      "src/miniuw_foundation/construction_draws.py": "623c2892168854d3c0e00434120b36217bb3d9f934854c07aaf5e73f61d1da45",
+      "src/miniuw_foundation/costed_exit_sale.py": "0281d9221745ad3e474e39926822b9027062ddfe67acaea015c0226ef5730f2e",
+      "src/miniuw_foundation/current_bounded_exit_output.py": "ca7a01d43867430a1525bc8dc86a5fba88e58b979edfed4d7d827bf2bbdc2cc2",
+      "src/miniuw_foundation/current_bounded_recovery.py": "a668e00153ea3888a4bf07377ced975671c90ebab2add3ed7eec08972796d331",
+      "src/miniuw_foundation/current_construction_cash.py": "50d1798ac8619eaa79f1283198fed2e44964eb47b1fb25373750203868010128",
+      "src/miniuw_foundation/current_exit_output.py": "1bdd108274fe9022d7eafefd5b4f64dc3aa533eec8d0b76bb342729f3303511b",
+      "src/miniuw_foundation/current_expense_lifecycle.py": "82fee3c9344127fdfbcfcb9b38492234695375558f4f4b16e9a915faa4323fb7",
+      "src/miniuw_foundation/current_hold_sale.py": "b04420d84aa41fbf495604a349294fc1d8320d77974c605bff430a7f5c38c2b5",
+      "src/miniuw_foundation/current_lifecycle.py": "a0efea0a9520bc5a4776fab7c73849bc53b4ef7c3a8b2ca9dfcab0f7e0fe6490",
+      "src/miniuw_foundation/current_phased_rental.py": "0ff27b2e2ebe1785f717cd20c0e51dec07e4f26f99358fb439c5e3bd5a8fb21f",
+      "src/miniuw_foundation/current_recovery_case.py": "f4db6a03b8910bed7f1521d07998deb9807f6c918c07c4cd167dd5521f9e3061",
+      "src/miniuw_foundation/current_rental_lifecycle.py": "de9a1d79706be3ecfef5affb16c241d2fcfa10f4b1d2cb92518df2a725380da4",
+      "src/miniuw_foundation/current_settled_case.py": "68afc9c3ca4d30b33a85f6c522ead777c70decbdfce1ecfe9a23aeaaca4bcec2",
+      "src/miniuw_foundation/debt_closing.py": "1cba940c460b048132c57668ff893e2f4bdc68ab93f286be20a0f81b163f1947",
+      "src/miniuw_foundation/debt_closing_returns.py": "e1468355b29c00f7304e34a6ecb356e7dfd27201329a1c3d8e1459dc408df76d",
+      "src/miniuw_foundation/debt_dscr.py": "5a6557352fa2871afd6b25dbd54407be0b263cd2fb4617d8d48ec5a07364b83c",
+      "src/miniuw_foundation/debt_service.py": "04d34f9479ebc802bc255d3a47c267469bdaadfee61871d174b2d0eee43d170f",
+      "src/miniuw_foundation/deferred_insurance_artifacts.py": "90e9e0c5f0cd2bac2cc7618f6d59f67d557e7203417b2d771de77329f858b730",
+      "src/miniuw_foundation/deferred_insurance_settlement.py": "8cc1980e490bfcc8c04af28ab9e246342065a1002fad626e680e622ff6f91207",
+      "src/miniuw_foundation/drafts.py": "babe6de12ad98ecbde5585dd7b46dceadd3f447cde790757585ab4ba0e4592d6",
+      "src/miniuw_foundation/evidence_currency.py": "50f72838cdd9df157057a5fda6cb4069aa29b9500e17c7e5527e603347186d55",
+      "src/miniuw_foundation/execution.py": "575513986a934e1d13d00e88315c23e0dbffd799cd817b50a103ffbff850ed03",
+      "src/miniuw_foundation/exit_sale_bridge.py": "2e1095bf115f923b154cbf65c05365d4af595977f69e1267cd42cfeb4ab9f594",
+      "src/miniuw_foundation/exit_value.py": "4885e792dc30dc2846bb66abdc98582f3ac45256d66db4ceba23f35b4038f9b4",
+      "src/miniuw_foundation/expense_cash_detail.py": "78bf5aaafcf20c257436284cd2d4d968845fd49dbe9a60d117e52527eda136e5",
+      "src/miniuw_foundation/expense_checked_lifecycle.py": "3f81f3b297968910a2c553957c40ec8408daed22aef1c45d9ac4c51ace14e42e",
+      "src/miniuw_foundation/expense_schedule.py": "0ccb1428ab2cfac66493466b58014a6ca20dde0cecbd08fd37c765d450378dc4",
+      "src/miniuw_foundation/hold_sale_bundle.py": "f56db8b5a008c35ddbaa1fb89233b0b7d7e16a0c7b757d3df6c84bc539d41f0e",
+      "src/miniuw_foundation/hold_sale_cash.py": "d49f94f77edceef7b3cedf132ec0cc2b5d8c937d78ebe554f27b924758f76b13",
+      "src/miniuw_foundation/hold_sale_opening.py": "e5df87d2709d8eb504ae2087874a2aad610d74832cdba26caa4b85a698cde61c",
+      "src/miniuw_foundation/hold_sale_returns.py": "bea9889b68c9b5b70b2be923d520406f4441b7b16e7a3d83ed75a8cc2e3cdcb5",
+      "src/miniuw_foundation/holding_cash.py": "d7f427eeb3e24cb03aaccc344e0fc9bf22a99ee00b199d88a638438b3e6ba602",
+      "src/miniuw_foundation/holding_returns.py": "79b682587ff90501e85afa425f81cefe04c416458075c80d3cc34a4e4f49ede6",
+      "src/miniuw_foundation/inputsheet.py": "7009c2c07573741ed51dcbd3b38b1ef11210afd932d6e5d916cb74d37325ae26",
+      "src/miniuw_foundation/insurance_renewals.py": "f30e1c1746e16eb3b77552c7c7a2138c05a4f7b99db3d4581a52218b9d2264fd",
+      "src/miniuw_foundation/insurance_terminal_artifacts.py": "32ac0f0646e9da633e5301ecb91611108ced92b30476470c28e05efbca2067d2",
+      "src/miniuw_foundation/insurance_terminal_closing.py": "37ce6d1f9503873b991df88fde1218603d17c74f56dbbed397777b0ef53673f3",
+      "src/miniuw_foundation/intake.py": "65c81e7916f28d2c8429b4bfce293cbc7046f232fa2c9dbdb895b6fed8885a5f",
+      "src/miniuw_foundation/investor_onepage.py": "9166655c5ad08802e270897afd619cff0caf28afc92e7d7387a4095fb686bd9e",
+      "src/miniuw_foundation/investor_output_artifacts.py": "e0125f13036f1a49763ecec36d9e03900981eeee6f4055c44cee6295048d9c86",
+      "src/miniuw_foundation/investor_returns.py": "b64f5bae914ce97edebc4a86849935952eea4a25e271068d92b0f2197843b036",
+      "src/miniuw_foundation/investor_review.py": "49b4be61631ce86e7aa026906ad0972711fd7711968cc2417ae19ea16bde8b12",
+      "src/miniuw_foundation/irr_checked_artifacts.py": "d3e599692b0c6eb1e5e237203e669d3c563a88d7fff1bd1227628be6dae9022d",
+      "src/miniuw_foundation/irr_checked_output.py": "1e48f07bc41a7abe8af01ec88f4edb1501a8f9c5176f6ccfa0602dd7ffc9ed6b",
+      "src/miniuw_foundation/irr_interval_artifacts.py": "72968aa9fa2220dae0e5e7b4b281415285b6e3494dce8545ebbbb34fa4eef993",
+      "src/miniuw_foundation/irr_interval_output.py": "c3f9dfb600ebe749dac6ef16d97afbff1ddb59bc59bb67bd18a36bb91d4945a0",
+      "src/miniuw_foundation/irr_review_artifacts.py": "31b3fe387d1776010a7515693618a63e863dcf86b96de7b487894b43ce064545",
+      "src/miniuw_foundation/irr_revision_review.py": "049c7e89830f41f868e8e27daf4af0ff6f4e1f4ec6393fea3858caf196ac7843",
+      "src/miniuw_foundation/lifecycle_bundle.py": "68abecf3a0dc87018ddb4f14592105c6bfac48d629e81dfb4377b844aab67ffe",
+      "src/miniuw_foundation/lifecycle_returns.py": "2a981d5e4da67fff5f164b2abb28a634d1be22e9aefc1abd2743a77f0d15a88b",
+      "src/miniuw_foundation/lifecycle_review.py": "617a42d0e4cb865bfd35c7c47f4d1933b7781ddea797f23bed9c0af2b7936d4d",
+      "src/miniuw_foundation/long_horizon_artifacts.py": "2acc493c8bb3f8cab6dc5173d3e47ccb6d31eabdd5278297d5e28a4fe3d8be87",
+      "src/miniuw_foundation/long_horizon_report.py": "13553de154016edcb8b78c3a963577453eeab750c7adde5e8bc7d7b2b5b6ebdb",
+      "src/miniuw_foundation/lorena_screening.py": "f17dd86ac508e3976998cbfeb6c1e2599b7fbe73d93dd7fb5ef63a5cd7b37724",
+      "src/miniuw_foundation/nominal_policy_book.py": "49d040eb1192d73adf72a303f051e61349f6ac434061082f156404077d97d6eb",
+      "src/miniuw_foundation/normalization.py": "582f318182971e79cd48fbcd43a00c3e4ecc8505450eab87762782ed8af70c0a",
+      "src/miniuw_foundation/opening_debt.py": "601f9e8a9ff6d48dc68318e642750f167cd371e0cfe077ccb71ae55738c12465",
+      "src/miniuw_foundation/operating_cash.py": "1c23d1c6d629e98eb2448f2ab697bf2970dda501275c072ac64109d4f36ef6f1",
+      "src/miniuw_foundation/operating_debt_phase.py": "7f875a0f0fbe3ffe8003f9963f4474f45cb257bfab87b22b0af11d2630faff6b",
+      "src/miniuw_foundation/operating_dscr.py": "a3df43cf92b8a3fac0465f8a5e4db9c420fc3b44f5587c50a9048b9a8f8be0bd",
+      "src/miniuw_foundation/operating_noi.py": "034fda6791ce3386d2345fa7015d9a9ca6f2003e0e71664216d3939d268eaafd",
+      "src/miniuw_foundation/operating_returns.py": "c0e62855b6bbcf91fe19f454535c6aae1eca0d965ad7002c9b721d977bb40547",
+      "src/miniuw_foundation/participant_cash_risk.py": "3f40895c2270d555d758f8693b7395f31d7bf98c4193826a33751fd61d1c41fe",
+      "src/miniuw_foundation/participant_cash_risk_artifacts.py": "64800ce38a27c53a2893b29cf89443f81975dc47988c46a1eba9318d72cc3c0f",
+      "src/miniuw_foundation/periodic_returns.py": "eac518ac1fe44b196ba047965a28aef1e60067c48f8b7876963bab857257e4e2",
+      "src/miniuw_foundation/phased_rental.py": "3fba8e990dc417ddf53dda7d6e3dd8065e5efc3dbc5f842f58fdf23010076e9d",
+      "src/miniuw_foundation/phased_rental_lifecycle.py": "f46dde3d968f2cb70e54b6ebdd065ffc2bb5d2382cdb4dafaeef2c88cdc66ec9",
+      "src/miniuw_foundation/phased_settled_artifacts.py": "9cde0cba7f725f0539a997e77e8dc8876e08647459c7096f13ae4b386c497f94",
+      "src/miniuw_foundation/phased_settled_output.py": "1f0c1bfad58d4b7ae4d8679f028deca28b4cc7b2a97679a6dc21d37b858ace4d",
+      "src/miniuw_foundation/phased_settled_report.py": "af66217fbe21393121be6c4391b332b7decd20455dad5a1a92566fb5ec64b894",
+      "src/miniuw_foundation/policy_renewal_artifacts.py": "c3f6ef1b9de08e68b12ea78996295e83596aff70fa8ac2d39426946bb0c76cbb",
+      "src/miniuw_foundation/policy_renewal_case.py": "7f1bf0c2fcd861f8fffcaba12ea12524f6c271be96c2af4ac44be0016c0c35a3",
+      "src/miniuw_foundation/preopening_cash.py": "c49e83c2bdabcbb4948fb343600b6b4165ef66c7cefb167b388c531a7b526e41",
+      "src/miniuw_foundation/primitive_periodic_returns.py": "2f01214d43bd4e921603227ac17732235bef498b1af62ef8b42a8c1f1b89fd69",
+      "src/miniuw_foundation/project_cash.py": "ed906e56cb9a59fb5b28a3693b44bc993bdd8bb1da80b2e361fd5b2399d243d2",
+      "src/miniuw_foundation/project_returns.py": "761a34c27c3b7b79283283ac682520a317e2ac443d1d51fcc2d297e3e8518a65",
+      "src/miniuw_foundation/project_sale_comparison.py": "9c609ab47f466124b7257a7e8c0447828c193bb68be9fc91d90c946ad1e6e198",
+      "src/miniuw_foundation/project_sale_revision.py": "087ed71dd0217cdedd0ef478ffcad6369bb643dde223f7c0164ca43f01ad28c7",
+      "src/miniuw_foundation/proposal_queue.py": "3a0af7fd5b74f88762f16a2be8acc25dae9ed4e4e0d07e7354f605b6ca7f6763",
+      "src/miniuw_foundation/recovery_case_check.py": "6a95ac57f16bfadd167527c7132d4bcbd26b05dbec44e559295afcad3e5138dc",
+      "src/miniuw_foundation/recovery_case_inventory.py": "4ce1e377d42dfa841beb5305ec378235cd400f6b8cee07324175401c8200af95",
+      "src/miniuw_foundation/refinance_capacity.py": "b3250d05ecf4af5c15596d271770bb5f2ec99b73acb022efe96ea5e40be977bf",
+      "src/miniuw_foundation/rental_calendar.py": "0339c2d4fb3e223e03265eaa95255e30b636246e80b85595ad102e93c78de974",
+      "src/miniuw_foundation/rental_checked_lifecycle.py": "39ff3281768799afdb7cd1b756e080d2c65bf78108eb668e6d4d81432b40e714",
+      "src/miniuw_foundation/rental_noi.py": "873f0687ab622d3a48c06e14446cc79374f1e5da63df7881348301f394f28ab3",
+      "src/miniuw_foundation/rental_operations.py": "b1df13991edfe8a3b22988a70611d308eed76635cef88eb5aecff53e219d3085",
+      "src/miniuw_foundation/review_proposals.py": "b232c7caa62aaf1b70a59fbf9e4c3afa47e62483547c9a9a064e9c829a994e9f",
+      "src/miniuw_foundation/sale_costs.py": "5da82d3838b56b869c0392b2c7ccfb57e7dcb1b2720c2270e8103491019802fe",
+      "src/miniuw_foundation/sale_recovery.py": "ccc13f85c216874e45376657dc4fd7c37a3451854e3182195f3bf3d4b9a8bc60",
+      "src/miniuw_foundation/sale_sensitivity.py": "3f92ce8af5f3722a8a74186967216dc4bf9d05ae25ca84322d934006a60bfd78",
+      "src/miniuw_foundation/scenario_review.py": "dbb6054b1e4d9e13ba842caf3dd57fca30585decd62f78f35d9524596ae35ed4",
+      "src/miniuw_foundation/scenario_threshold_rehearsal.py": "0f0e4fee3d0d6c34c93634c24a4a1c5f19d7a8bf43a65a5a25e0be396c47d7f1",
+      "src/miniuw_foundation/scheduled_expense_artifacts.py": "21c085adba184f902955570a3d54bf49ba6e145c0da7f181a69fbac7a74eb7ef",
+      "src/miniuw_foundation/scheduled_expense_case.py": "39d1130aa1b424c7ec333389718279b3ba8974a182194620fa25a069a4baa647",
+      "src/miniuw_foundation/scoped_profiles.py": "09ae05bd0ed27649b6182bf6138707a2dd31c1fcb27ace30bcc674bcd28a8d69",
+      "src/miniuw_foundation/screening.py": "52701de576e82c52d0d156ecc8b5801132250427ef5b02dc2393bbdcc6538137",
+      "src/miniuw_foundation/settled_case.py": "cd4d346dbb6af1c980efc10e7dbcc1dca11ad61b352ea4b13ea6617b1b38e8d8",
+      "src/miniuw_foundation/settled_case_artifacts.py": "50c4d3ee7ce2d48c440023fd033f4cc94001097f468c5153a33108c8e23bf7be",
+      "src/miniuw_foundation/settled_expense_boundary.py": "126aa3cd82a4e164c3c624a6dd0fb77c4fca4b78ed205f394cd3b417e8cd06d4",
+      "src/miniuw_foundation/settled_hold_sale.py": "95cce059bd65fd0a0704c3165b71a753e48805e4279e17cd199a0682c6fc9084",
+      "src/miniuw_foundation/settled_lifecycle_returns.py": "3130b3102dcac1f856d952df0ff318f2ae39df05a90d3367a39a629ec6b74fc8",
+      "src/miniuw_foundation/settled_operating_window.py": "268ca9c625220152e278d3df273f22e6d76eedd1bbe3b224ad5758acc61d25e0",
+      "src/miniuw_foundation/settled_output_artifacts.py": "e82d006c4c0380dbf27097864b8d12614c7d9c641a5607a6d3aed865f99a2d60",
+      "src/miniuw_foundation/settled_output_report.py": "919b2f2d0f049e90cc6983df19a3d6b3ce61b85cb8f7946320b7e33d85938b13",
+      "src/miniuw_foundation/sheets.py": "b3ef61d0bbef33652572c0caf3095931c3c157154c21780b962058f458f367af",
+      "src/miniuw_foundation/sources.py": "4a9747a6623f20b5528f836fdc63c083750d727693d533bdbe796cd9a114a370",
+      "src/miniuw_foundation/staged_lifecycle_bundle.py": "49b658b5cc7de1c1a70ebb1af47afed77a30ad58dd198584017f295734f67892",
+      "src/miniuw_foundation/staged_lifecycle_returns.py": "2dd366642eb025e358418115e017bdf774ac70160f9517b618f76745e18c4353",
+      "src/miniuw_foundation/staged_operating_window.py": "20b394cc8dab2d4c78d719d0572b38025c474d3e3c97ff3e0bc6cf8044e3b731",
+      "src/miniuw_foundation/store.py": "b054aaef2c69e9b42eb57e1a8bc330d9c00008c22abd88e4971bb39f040141bf",
+      "src/miniuw_foundation/synthetic_onepager.py": "d1e388ffc7c848157971e9c58c8745b858af21d1e52fb7093d9ba65ba2dd6753",
+      "src/miniuw_foundation/threshold_rehearsal.py": "a3de520e268867e0247583d0047209ff89b7e0f8cb347a9cccbeba646b81425e",
+      "src/miniuw_foundation/v1_artifacts.py": "65f375bbfe450e6fff8c08befd4e57337c082cfef59e44ec026fc1ae9dd2998d",
+      "src/miniuw_foundation/v1_case.py": "490add260ae8d2314030c7e36ebb00ff3fd8d3edf9c69f839a86ba6c15269f93",
+      "src/miniuw_foundation/v1_contracts.py": "cbd584f93bef7222df6b98cdc6ea0ab7eda11ba3ffa1876643495e27baf76f2f",
+      "src/miniuw_foundation/v1_projection.py": "16e4574b1c18feb1b53d2579287fc2262310e42eabd970621d42cec152a99aef",
+      "src/miniuw_foundation/v1_report.py": "3b63ad76e5c7f818523dad51ad4c1e9ab196ad993a0cce1d246d60bd4df4b907",
+      "src/miniuw_foundation/v1_revision.py": "7aade287213b6a0ea318134901c43788845127ff9fc8251230fb72e406a6cb47",
+      "src/miniuw_foundation/v1_revision_bundle.py": "8f89820de28189448521503d211c1f3f47da329aab4856b5e8a63b2fe0291e9d",
+      "src/miniuw_foundation/workbooks.py": "cd301d7b4758b5c80628f0e6515e01da81671ecccf0d36c9c7c4ec670f470529",
+      "src/miniuw_foundation/worksheet_case_artifacts.py": "f1cd5033ea1771b94bbe73f998e600d6cdd720521967246d3ac31a70b7aff2f1",
+      "src/miniuw_foundation/worksheet_case_output.py": "0f04f9a0ce17e8d2429d47cdc146672e37e0c623816817a766047e44e8172306",
+      "src/miniuw_foundation/worksheet_settled_artifacts.py": "efb23a6f99d3d08fcdaa580e08a47dc1d8603a2e0ccab0c923cfeefc426bbc3a",
+      "src/miniuw_foundation/worksheet_settled_output.py": "f004532782ea335d52d8971eb0c342b232396f3ba71f7c88d9a7c3e403c800eb",
+      "src/miniuw_foundation/worksheet_settled_report.py": "897572db03f685e0cd4a102c1386fce1bcd3604799692fea3db9725f0b1dd1be",
+      "tests/bounded_cost_test_support.py": "2be8659ca6ab6954375dec379b7a41d37bab2bdc528a111ea201e8da1d17fd7b",
+      "tests/capacity_test_support.py": "95059aeec17193e7df12363dc579a3670bc0f452a689dbd1eea395ed41328532",
+      "tests/debt_closing_test_support.py": "a16dac035959a383b2baf73adf391b12fd15db00ac3da4a9039ef3e660214d7e",
+      "tests/evidence_currency_test_support.py": "751e8b1b6908808693c48f9c74e9f92f6edf07f56b9a5aa7725c80b65edd0ada",
+      "tests/holding_test_support.py": "88448d26f461a19f74a6f61edd987a85821a23e95133d4efb9f4e2b331d66260",
+      "tests/inputsheet_fixture.py": "d441222d44195c1339bf9183b464f1fc4f3d30c1d43e99d340983a2bf0f8b896",
+      "tests/loan_fixture.py": "7e566a56a690f98fc65e952bbb8f9c01a9fb62e97bc9c24391b8028143eb6a29",
+      "tests/piecewise_recovery_test_support.py": "82395913370c3d050a985567923e0d2917bc81e47ba849602b2b0eabcdfcf602",
+      "tests/project_test_support.py": "692dd62ff7a1402771b0a2d61312a42823e3cbee3fc861c3c4756437be037eaf",
+      "tests/recovery_case_test_support.py": "26dc2502f226070096e5f7312a8bb5db97072ee36fed507868d1d336b9448672",
+      "tests/sale_cost_test_support.py": "c2da593c481e89ff23825398f6d358ecec8f8d0350c3d3c4464cdecd687426c5",
+      "tests/sale_revision_test_support.py": "f8ac660428694de9118fcf8ef7890c89aea62b2111938007ba2457e3107b386d",
+      "tests/test_archive.py": "eae6a3f355fbe3e3358932fd1407d88f9159b0ce8a5bc1a0b9cc6db05e8ede6c",
+      "tests/test_bounded_exit_sale.py": "a5722c961f943d6f41403fb1ff8a989178bae3422983414d2da0442abe9472fb",
+      "tests/test_bounded_sale_costs.py": "ed3be8189e0328b24cd5b692fc75d1ae638bb71cc72178baf950cf4e6fc2ce83",
+      "tests/test_bounded_sale_recovery.py": "d51a30eb52b9c9be5df1eb675f42eb9f6fb438cc7369964a055d6729e8568e8a",
+      "tests/test_calculations.py": "7e93ec2a88323ef8864d1404c630c3c360ac43da85d3d60a9d9364e6696e0bbc",
+      "tests/test_capacity_project_returns.py": "d3ccb8bddc43faaf42dab7de367b055e2c4f647686c2b9e461a79be4073dd959",
+      "tests/test_capital_checked_output.py": "3e663823f0af6139ef1b09f9f57ca39f0085de9d47070dc19c864c348a375db3",
+      "tests/test_cash_participation.py": "d5877430c508caa385575cbcb2724ac18ec402802edb339ac0ba0e2e43b22009",
+      "tests/test_cash_risk.py": "9c9486607bd7a40fac1dfa968351ab227d5d3bee2bd291ccc19619b9633d7ff1",
+      "tests/test_closing_cash.py": "3f0da1b4435f3986378d49e848d801b5a2844811d038d694b6592fbb8e1413b1",
+      "tests/test_closing_returns.py": "c728ffb018bd74772060569172c6bfdd241bebb1f341bd8207a01a76ed3ec514",
+      "tests/test_construction_draws.py": "ac6da97bba012a63f1105df25b8342554e4de6a8baf9b2c2de53d556f8d8c53c",
+      "tests/test_costed_exit_sale.py": "a137ac9b78eb2f59216b0b8ef258d4ef5e9134173398addf4bdc7c55fce94c5c",
+      "tests/test_current_bounded_exit_output.py": "5386e7daaefed9a9e526fea37e389f643712841a1c096301127e118aead85fa7",
+      "tests/test_current_bounded_recovery.py": "08ccc55f9e23cb177270d4d797b766b0dca7770323a7cd0b62078a34eebb8bb6",
+      "tests/test_current_exit_output.py": "cb66b80b35609628dbac3c30e692396f0f738073ff10023a3c00ad351788b00e",
+      "tests/test_current_lifecycle.py": "5174a43d8591c8108e035667d96ea36302552b39856563d014439a76b31a1c57",
+      "tests/test_current_recovery_case.py": "5b9f30be3c6f8cd2f07030b84999b58e554002f1efe198fffcce5ba69c9e3f7e",
+      "tests/test_current_settled_output.py": "89cdd54523e6750064695e3d1642ef0d4dfcb86cb10adb22a83f34b730c9cded",
+      "tests/test_debt_closing.py": "9194a7ab39b4ec1929d3545728c46c9a64927e9635ef4c3f197e805e8917d8d6",
+      "tests/test_debt_closing_returns.py": "6cccc875bd66d83978795036a22b9e05a41ef0f117dbde2c85fbfa8fc239cb12",
+      "tests/test_debt_service.py": "a0072fda153fe3b38b6f077f5454fa1a808ac7e2d4a6de7d5b3acd96e97cfbdc",
+      "tests/test_deferred_insurance_settlement.py": "2fcaa95f7c711fa5489550b09399f4528352b22bac94f8d9a4bfa640850df934",
+      "tests/test_evidence_currency.py": "0e8de89dc0dacec774a855723e8d0fa267754801cf001519376d1ebf5ea42e33",
+      "tests/test_execution.py": "13011978322ec05bb7f632208686bfbdb31dabda7ee2558b6b1ce1570f757944",
+      "tests/test_exit_sale_bridge.py": "7305bb17f8c87044b0942f8ba1172de8869e90127cc1da51a44dadaa05b3cebd",
+      "tests/test_exit_value.py": "4dde5e9e9866364a482a6bec601049cffe28540f76e30cb36025777ae38c8b6d",
+      "tests/test_expense_cash_detail.py": "d74ccce48c2792eeb800c9ba15a84c0dd6a40f2f707d9c87defa01448a8db96c",
+      "tests/test_expense_checked_lifecycle.py": "f599cfe1312dc5e70189bfdf3eb2a8628895118b82a35fcac8abb73260d00a44",
+      "tests/test_foundation.py": "52c74047a9f6f18aaf912ece0afb6012ba831cd8aad45bd53252e248e9036621",
+      "tests/test_hold_sale.py": "386ff28c79a32eb67ded1ff0ddef2697a8633ce75c5e18e2499f9f74b5e55576",
+      "tests/test_holding_cash.py": "8fac7145a77a36ac6a5fcfd362be387026ca1505be4c387c77f60ab903592883",
+      "tests/test_holding_returns.py": "36e815fca125c57b66edd65e225b0f688aa907c76e3fd8b47c8bf9e80cae074a",
+      "tests/test_inputsheet.py": "fc68be29bf98bec010e6c3df62ff7c3875e99eb369d7c0afed76530f61b0cbac",
+      "tests/test_insurance_terminal_closing.py": "00647a9c18a5d3437568ce6d50b5ab31263bae15008cb4225c6f9aa4a1295f58",
+      "tests/test_intake.py": "fe18fefdc9a9002f67fd4bb9b0eab7ef9883fd92bcf5098bc34209256b65dabe",
+      "tests/test_investor_onepage.py": "3349d7133565183d05efab767d3e7bd97f7b726a3f10ca84a6fe51882b44544c",
+      "tests/test_investor_output_artifacts.py": "5954f50dce320c8a2cee47a8dee855853021f2585bfb4cd07cfa762b7bae5b6e",
+      "tests/test_investor_returns.py": "7e92a428575c7fe45fa0dc09d86557bd6b49047bede8fdedcccd163b4fa10573",
+      "tests/test_investor_review.py": "a984c2aa9a92d9c22ec59cef90787a03a96d0e38edbc79347e0be25d8dbd297a",
+      "tests/test_irr_checked_output.py": "4ec628763ee5006cb6f7d9bc8c7e2497edac9afe9057e061f5d1b28893a8e59b",
+      "tests/test_irr_interval_logic.py": "c56a8d21c95432b27bfede2a8d0afd71ae2a73a0d4bd12668ccc1d48f952df05",
+      "tests/test_irr_interval_output.py": "1b4f8cecd2c1f162a5460b76783daa71710cb9fa311b9c7f80f5721b8c38366d",
+      "tests/test_irr_revision_review.py": "2fda2fcdced9ec680d5343a94390114f57b8316fec5906945ffe1b2e35a669d1",
+      "tests/test_lifecycle_returns.py": "4273e2f1ef2e5d887f51ee0f11ba77e967374dbda9bcd20e010a99ef6455ad23",
+      "tests/test_long_horizon_output.py": "030a7e51814a9cb8663f4540521052a1f99b49c4f7aafef5ad09327a8117e578",
+      "tests/test_lorena_screening.py": "847d3fa90ad545afea7ac599cf56533a4ac69c6f8a94c2e50e78812baece5252",
+      "tests/test_miniuw_v1.py": "0b0c17a06418d971e08100c9b6d5ae2ea224e16119dcff451167295f8090a8c9",
+      "tests/test_normalization.py": "1131920b5d665b32d269fd28f664279d4050dd33ed5d1ec71312f1d3d40d9acb",
+      "tests/test_operating_cash.py": "618061c38e48c912090cf2d1033bca59ea3d1c05d2fbcbc6742c4dba0f9facae",
+      "tests/test_operating_debt_phase.py": "22f34b418a1cc500b16c5e74fe96243237ad11e5992895313768041203962c24",
+      "tests/test_operating_dscr.py": "333814f8fe5ba2a1f8cc1a9f9acb265ef824a7c3335e016ad766fe2821130b94",
+      "tests/test_operating_noi.py": "31d4122c43a2369ffeef503cf4a23c5433466025cd7fb0ba4906b94badd29a9f",
+      "tests/test_operating_returns.py": "dec2f648b906c1c843e4aeffb30dfea8a68b6cb97a3e51586d1485eab6eae243",
+      "tests/test_participant_cash_risk.py": "025fb14c96b5cfc100b73896a1a88e19f1eb4cbccf0d6800a6aac98a37381581",
+      "tests/test_periodic_returns.py": "9cab563a872fc9ad4336785d6ff6745987ff8467b4740c7ebdb2dbc065a62e38",
+      "tests/test_phased_rental.py": "f9093b00f63650b665e132a212a3dd4218aaa4d64976563aef899f43825bd8c6",
+      "tests/test_phased_rental_lifecycle.py": "955498af879b5dcf371feb5900fc3be00a4a59045f38e0faee7ebab3c26e8131",
+      "tests/test_phased_settled_output.py": "33eb564ec864245e0e5594a72caec8d1c46cd4cbfae080be50e161f933f264cd",
+      "tests/test_policy_renewals.py": "029778e66241fa71ec07a79011a2ddb7a4d5d722714627ffd196ba5e962e4c17",
+      "tests/test_preliminary_initial_equity_D213.py": "4e49190d8e653a0a723b225bcc372a18db8c3bb811855c2bd31b73f8188ec752",
+      "tests/test_preopening_cash.py": "1c45e0db2e8f835b7b388a0317a8184b7f5d671fd439531fd31dec4914aa6749",
+      "tests/test_primitive_periodic_returns.py": "03231092fd359058e2c9f0a7c2ee29b454a236a3c1dd2fa50f15d580c681eff0",
+      "tests/test_project_cash.py": "02d48c610e87b2a31c4cb42c85952f75f59849158bb01d51032593298b6637c0",
+      "tests/test_project_returns.py": "bcc11ddcc31ebac913c1d42cc6526e322f517872816b55ca9e2d7a402de64ff9",
+      "tests/test_project_sale_comparison.py": "1ef3245d385c74580b856bcfe5f7cf4f4105136a196d032c6cafbbdd54fac72c",
+      "tests/test_project_sale_revision.py": "2624c73a35bc8049fe01b539ab47857f7e636dbb526239d2605b4fb4b6e3a385",
+      "tests/test_proposal_queue.py": "0dfb5476aec14c09914ac1ca4fd1598cd97dde2700fd61ea688ac304b1f0988d",
+      "tests/test_recovery_case_check.py": "9ba31e0d73bcaf44da3a71538eda3261f480ad3706f660f710a18b9e16c79ef0",
+      "tests/test_recovery_case_inventory.py": "a8a885fe336387634ac223949f350c3dd1f06bdce74c9b07c22aec6448b7f986",
+      "tests/test_refinance_capacity.py": "5acd331f7670def390ad33246b7989cb1a7afbce34053653f94829c8e2402b9b",
+      "tests/test_rental_calendar.py": "8cb6d2ee3bf36967b1362e0f665dc63c3c7645eb421ac85f223b9ffa8b7a7ceb",
+      "tests/test_rental_checked_lifecycle.py": "42ef7040904a5d44caa98fe654ea4bf83ef1b12309ced60a9edb5d73ab0577eb",
+      "tests/test_rental_noi.py": "5823473d6e76f26f4021d24f4565b582e92b8d35a9752b9aef2e88ee6ee01349",
+      "tests/test_rental_operations.py": "292d01bcd6701034e629ff89626e038f63a9a4690066ea743e19935b17831148",
+      "tests/test_review_proposals.py": "4be12acde9cd49db6fb601b6bc69f5af67d57d94088e073c69b7b2627ac10f3d",
+      "tests/test_sale_costs.py": "8ecda618799d6f64e5127ee84a5d6d79a901d6dbdd6b230ee1716882c5726a26",
+      "tests/test_sale_recovery.py": "a2e122a30e5c8ae3ffe59571d8418dc48b42ca888043455dae587364e6d80d80",
+      "tests/test_sale_sensitivity.py": "89834ad70c5f84e2488f94c50155d02aaf8114385eadc54a07a4998d3aa53bbd",
+      "tests/test_scenario_review.py": "1ef74bb63148932150384c64ebfca48bf37ea665bcfc43f9abb2800b80ac205e",
+      "tests/test_scenario_threshold_rehearsal.py": "365c9350ffec9e39bf4eb9051e206abab9944061959738a7cabd06c3ed6dc2ff",
+      "tests/test_scheduled_expenses.py": "b27600cb8d7a3189309823de525f1bc63b76599872d4e319eaa4f224a22aa203",
+      "tests/test_scoped_profiles.py": "74239a326ae849be664dae7fe298e1cc859c94e858c23f2b5b6c877651433fbc",
+      "tests/test_screening.py": "a8217759cb0ad47723e05e3a11233c718eb7b6534214e46b362c8e7c08f6cc7c",
+      "tests/test_settled_lifecycle.py": "092abb59c1e1270956105b19790fc67790a0670bef18802e855316676aa1983d",
+      "tests/test_sheets.py": "272634c6f8e9cbe2e32b98684b2ca101cdc0e60a53c2a6983fb43ef3eb18a3ae",
+      "tests/test_synthetic_onepager.py": "98a9625007bbe67e1e80b75fbd785132ecdb6fda20458f29faa0938959894401",
+      "tests/test_threshold_rehearsal.py": "30884ff04769ba5c8e5df1de4d7161a966e2e6e181ce46672b80f9a8d4fda35e",
+      "tests/test_v1_revision.py": "6da4b42fcbd048a58454531df844536475166f4ec2c17180120632c0860ec526",
+      "tests/test_verdict_matrix_D212.py": "2bbdafc693e58954054f2cd8b0473a3a92cc256accf3374b8e160d9a4a33021c",
+      "tests/test_workbooks.py": "58efdeb4e8f3535f8a55a1a09f802dc873c0e6f06011ffa5b5abb59d04a3a85c",
+      "tests/test_worksheet_annual_coc.py": "a7d42c682351d6a7ee5e1f3e0c6c80813c137fba7d84d8cfb74a6a42fc1ecdb1",
+      "tests/test_worksheet_annual_comparison.py": "a7efa70b94795e758ba8e5cb8d24326455203c42f762e498539060c4226305d2",
+      "tests/test_worksheet_annual_holding.py": "78b3ae90c71d5d1a24ec7e2226b4263bef2051266c4dd032460556d6b9851e3a",
+      "tests/test_worksheet_annual_sale_without_refi.py": "8a805f8bd3a9686aeaf9897d53b1bf5555855277b2ba8bd93663a5adbc15ae52",
+      "tests/test_worksheet_budget_sensitivities.py": "5f33f83b25f667373983dab76880dc2d66d700a7eb863ad2d1f3be3946859aed",
+      "tests/test_worksheet_calendar_sensitivities.py": "31eef8c1203cfaf6394cb831f0d55d5dc0e5523f5c18f94bd0912f28ad754949",
+      "tests/test_worksheet_case.py": "9e1699e417b87698f385a9afae55c92890a30024c5e6330252a47cf8cd1923f1",
+      "tests/test_worksheet_cash_revision_D217.py": "194a29053a36b09b2c931136aeab0ecee382e347828430cd4b66374fff6ac435",
+      "tests/test_worksheet_combined_citation_orders_D225.py": "42b386fc1069593d0dd30f7e344714bf41b1407b4dbf930e72b633f95c5696e6",
+      "tests/test_worksheet_construction_sensitivities.py": "652919fe6367dd3345d1c207e1267837beb14873e681eb61683ff55c0884d617",
+      "tests/test_worksheet_critical_evidence_D219.py": "8a0ba2365e8ea0501b3a23d91d19f9d5d4a1d2e76e457053c6dc71c18c450a9d",
+      "tests/test_worksheet_critical_evidence_gate_D220.py": "df6031db8c25fd5411c694df5b3c5f67dfbe54fa2a4e76a7419ddb8c4df4d908",
+      "tests/test_worksheet_delivery_D216.py": "35cf78d0235c2c674bd95cec61b88d61d632a91fe3dd4af1418024cbe83a2c74",
+      "tests/test_worksheet_delivery_snapshot_D227.py": "8f775a6468a4bc8509d4e2f19ab6c9e690a38099884ddade755e785960377849",
+      "tests/test_worksheet_dscr_citation_recovery_D221.py": "5a9a9dc8ccbe83b421daf007f7f102e6a520675ccacbb4bc4affee7ccb6a9b28",
+      "tests/test_worksheet_exact_cash.py": "a0acf2d0583319b467a7392dccc0aa30c19cd292fed287945aedba7374eeed62",
+      "tests/test_worksheet_expense_sensitivities.py": "ac660b2ca18a8fee9e81a97a1ef9ba2edc0305ebb4b81a8870ea9813d63798c9",
+      "tests/test_worksheet_holding_horizon.py": "b46b8f57b24c976c8d3b5bc2f848a25bac69e739a0ae9f9db0b9be930f0825d0",
+      "tests/test_worksheet_horizon_fiscal.py": "db319ba71ea9ff43d9c7db21b4a9661c2f1505b93c5427269e698f7b6e2e2fa3",
+      "tests/test_worksheet_integrated_transport.py": "5e8dcce11eaf8b36d45ccabc7187c1e02d0c26864bd56c7a8fccbcbf29dd929b",
+      "tests/test_worksheet_irr_certificate.py": "b8f5b64c0a37045c3b7fffa38f7cb9ed0f9772120cfb2e58417ec331833df047",
+      "tests/test_worksheet_lorena_annual_route.py": "548c6112aff8b11b126c44c3bd982db9fdeab5c01ee1d1a87ed3302984d88d3c",
+      "tests/test_worksheet_lorena_screening.py": "a3f7abf534da0f0b22d3562a1ef047d84c137ebcbee7886768bee83f0265b256",
+      "tests/test_worksheet_operating_sensitivities.py": "97574df9c0b897f67f6c5cc9adf1851ff46510fdee21d5836ff2fcee6b3417cf",
+      "tests/test_worksheet_permanent_sensitivities.py": "43b584c26b0e876297fe0ec474261e5ca4e34c3e7dd2edf0c1ba3cd666c2173b",
+      "tests/test_worksheet_plan_citation_recovery_D222.py": "d198876cdc282c2f9df46d98a3376b9ce383c2bd874c58babc4b78110c38e930",
+      "tests/test_worksheet_pricing_sensitivities.py": "12e845272e1016e0d4816a3f076b218cf493ed2fd9b03b3ca16d91f17f3ef8af",
+      "tests/test_worksheet_professional_proposals_D218.py": "4d42633cca92dd0f1ca2258efe10ac4b3d4983adcf15fe8b79ba2f47e5d5fd40",
+      "tests/test_worksheet_regulated_rent.py": "253fe2c50a0b7962f644fb7b296a04e59a022b814c460aebe6175c6f67a1fad5",
+      "tests/test_worksheet_reserve_sensitivities.py": "ff354dac13e6d164aac79dfe11286cdcba1746b9a581a102c7fd3cac4087d169",
+      "tests/test_worksheet_reverse_citation_recovery_D224.py": "991d7482cf910e3a6b14596ba6c2211f8d49b2cca54a87ee14718b24fd09f0cc",
+      "tests/test_worksheet_scenario_program.py": "94780b9242a2a2795f7d3f13819c0d6b61a7d5a0ed17adcc59a0eaee67c6f4b8",
+      "tests/test_worksheet_sensitivities.py": "642872e3597f0c2a4f37223960a24df52b8983ba355836084cae66ad1533933b",
+      "tests/test_worksheet_sequential_citation_recovery_D223.py": "08655f570cd1f0e3786142353e2d0df7cbdcb613acbefe7722b95d4a57ac8013",
+      "tests/test_worksheet_settled_output.py": "4613a7a695290e80db8604e303824201b1bf8be8681f50faf9aab530a915a472",
+      "tests/test_worksheet_tax_sensitivities.py": "43e9f42a982f209f2c3b4ff7f4aafb62e68fdf6d0f32573bb3468d1245add6a9",
+      "tests/xlsx_fixture.py": "2b1c6449a1d5cfc288fe2bd00a04be5dea6513d9d8eea3a85381cfa49860dd62",
+      "tools/audit_worksheet_critical_evidence_D219.py": "1e658efb5d9be13780b3b428fc64058d0bc86b9c4abc363a35e7e1416435f1c9",
+      "tools/capital_miniuw_v1.py": "89f6d470e0ef44d40224154153765a2b0f504a96909258b10a6c0fd83b03bc2a",
+      "tools/cash_participation_miniuw_v1.py": "8323c8222c77898a29c9bab2c1d8ff864cc3af5e3d1dc1a98a0673c9021fc4b9",
+      "tools/check_IRR_interval_T101.py": "3b022072719929bade99c0ea24958b2cb59110a1968973120cf11d40f0ab2b96",
+      "tools/check_IRR_output_T100.py": "0b5ec2f2b507f0eaa6ada9daad7b11cf5d515a72d0fdc63185414b92aa84966f",
+      "tools/check_IRR_revision_review_T102.py": "f11242c6b76b0c5539fe73afca7beec5966f1c92e5602c2cc71fb4e97e451743",
+      "tools/check_annual_return_replay_D24.py": "6a78dec6d4a3dad4deab3979955e6d6c54741dbeef6fc534e48103c6e6e4957f",
+      "tools/check_bank_noi_capacity_order_D36.py": "bf1e7f8d31f565f0f2bdd5eefad8d0cca25516ca088b371eb04fd95d5758e7c3",
+      "tools/check_blocking_structure_D06.py": "8491f2d033854b380c4113893fd514e9d841a4e26bb50b5ee4471d146a13de28",
+      "tools/check_breakeven_occupancy_D72.py": "babe1ca8ec3098d15db39b5789c643f5cda8a2390ca313921b5a80cfd8cf1fa7",
+      "tools/check_capital_coc_replay_D27.py": "ddee687a55f72d417a9663628b66874f935511887edb502d7e2509f0547c2f16",
+      "tools/check_capital_output_T98.py": "26d7ac7a620e2f05b8a72080d8de7f903dc74c1c1001c3d4d09baa4e38b63e25",
+      "tools/check_cash_participation_T104.py": "03712ab2f3ea26d0547f2ccccc1ca72da27782abca559068408baa31895b652b",
+      "tools/check_costed_sale_diagnostics_D67.py": "d7f07a3ee1143c37795a93c438c7a9a39defbb5830ce5883f17afa633f2fd64b",
+      "tools/check_cotejo_corrections_D56.py": "1a4cab293540924a3f6afe8c24d65e2289d7282db444d659899d3068221f9335",
+      "tools/check_cotejo_diagnostics_D55.py": "26ee62957467200f658b9f8d81c72d56682ed32165b6fec77de3c07641d99b29",
+      "tools/check_cotejo_review_D53.py": "8762791b8ad88e582083edf91a5274e66090498e9e1b336de266ea7bdc642956",
+      "tools/check_cotejo_revision_D57.py": "a9a6dcb7f35436cb14ffec878066f9a9ad5e032a6c3b8a93a6ca90c20f3a0833",
+      "tools/check_current_cotejo_D59.py": "63e1e6fe470d20f2f75860abc126ef2d675a07175cdcb65dd38e4b2b2c7743dd",
+      "tools/check_current_publication_D60.py": "5f5485b06b39873565815bb3881de04ed77ddad38b11bafcaee020df7dd0d97a",
+      "tools/check_current_settled_T109.py": "0f0397a047be9da584943e44924cab1f69ce7b4d982781cf5e622f29c0cee7db",
+      "tools/check_current_structure_D04.py": "308c4553f8e582f34795eb09f49f5a355af589d779f6972eb2ab971292c18a7d",
+      "tools/check_debt_sale_replay_D21.py": "a29632510918c5a0c3623f1e5994ab827e9145037c704fb41a2e0695137c5a6e",
+      "tools/check_deferred_insurance_T106.py": "411e80d6cd756249b3ff91c98c109257ccc65eaebcbd7225fb620ec227f4e9e3",
+      "tools/check_dependency_structure_D05.py": "b7d7abf6e6cc6ea14651069118102c357ddf939f97a802182de115cacb6fb8f9",
+      "tools/check_discount_rate_crossover_D35.py": "564a2f5d34eef7bf4c82d4551e8344e3acf24c1f816bb6fc93b0b4d70f6f1689",
+      "tools/check_discounted_sale_recovery_D34.py": "8a5beb549f4702a29c1202c9d44f77fb94dc9198a3b274ebb13e3eda4aadba4d",
+      "tools/check_discounted_scenario_recovery_D83.py": "a3a7e12b8d33819b9ea80e9e84fae9985418e84a12a6be89273d13240ba150df",
+      "tools/check_discounted_worksheet_sale_D64.py": "c984530bd2df49ac900f8dc9969dc6c7b18bc2ee6e6868f6a8ee7fc3f5d28389",
+      "tools/check_dots_bots_onepage_ROLES01.py": "20f049ab0b80207ed0424cfc9c2e90271bff7d61d127b8ff733fa11ca1579ae6",
+      "tools/check_downside_threshold_revision_D58.py": "ce5e01a93a77a5ec8911a03579b1162f42f328f1aede5381c925c80d4fdc1fc6",
+      "tools/check_equity_tdc_D71.py": "0682a31c66211b8fd7f88ef0ed8551239d289d502d26b988d1814b1968e7fc54",
+      "tools/check_first_pilot_D49.py": "3d26c7a3bc1db2508dcad769b99d15c6864cfe1eab7808bab4e75dd919ef0a30",
+      "tools/check_historical_cotejo_D61.py": "7bbb20a09d575885d8739ac95bf21e07b42bc7cf135e6f88e7fdf1cb989b7996",
+      "tools/check_initial_equity_basis_D80.py": "4595fbfeadd074cf4123c802dc6c5f20eaa65df77715f30670a8f88c8d77f943",
+      "tools/check_insurance_terminal_T107.py": "adf1d58313f0b02cd3bca219bae1f41f246b6817d7ce5eb0f2604e5e5a0e2bb2",
+      "tools/check_integral_miniuw_D102.py": "f54803a5f73ef3286010a7bd7eb4abba4e937f22c738c9a40d9a12f903331632",
+      "tools/check_integrated_participation_D28.py": "604f99b2eb31ad3325b6ca8a6ad80ad2f18130818201a8fa47f2ee1b198fb80b",
+      "tools/check_integrated_replay_D22.py": "9c2e19f95c98ed7f7e20fa8e0813aa7378b5014786acb430cb40b90f6fa94418",
+      "tools/check_investor_answers_D77.py": "9cccd50f464bd63388c2f6acb25c19318a28624d0a258d13baa466bf25492bd6",
+      "tools/check_investor_output_D07.py": "7215b12dbd2535d4d439f03720bb59df000762d655b1c86c2484e325abf30e05",
+      "tools/check_investor_package_T97.py": "2479187cbdfa0f2b758de7e8d5caaf85eafaef55c03438e47e77fd990238f36b",
+      "tools/check_investor_scenarios_D75.py": "2d2f236c227973237c72753126285c1854a2ebed0afd4ae8efbe7e92d0d4bab5",
+      "tools/check_joint_noi_capacity_D38.py": "8b8ad2db3673617be295dcc4ea2446dbb95b13c135bd2f4412eaca7ca6fee5f7",
+      "tools/check_joint_noi_discounted_returns_D41.py": "6e116c23e30a30c0192ea31894fab3feed640bf43ee730d4ee3d3769b8516c7a",
+      "tools/check_joint_noi_investor_returns_D39.py": "d49508c20413797b2177575f8c12d2c99fc4f1946702efe2f8915c3be0e73343",
+      "tools/check_joint_noi_recovery_prices_D42.py": "67b875542ee40b745184d1748656e8bf273df34a5e729d2ac4079c864407592a",
+      "tools/check_joint_noi_sale_returns_D40.py": "dcf4dbfb5c451c909cbe2364a1a3696964766f71ee3d994557c0d70652816164",
+      "tools/check_linked_cotejo_D54.py": "dfb7ad12e0fea533316a01365758e97d480f1ed741c172b6a5a33af0819f0feb",
+      "tools/check_long_output_T99.py": "c625d27511050a74e8c3c0bbafb8fbe13ef6256e7f69ca4ca906ffaa6ae4c13b",
+      "tools/check_lorena_criteria_D192.py": "c895cde5465da4ea81064ed7888c79baccf65c23bff199134feab91aea914219",
+      "tools/check_ltv_capacity_order_D37.py": "252a624b5a03d291fcf3b6e2ebd390cfa17446be0bd0f43e6726105e3cd65fcf",
+      "tools/check_operating_replay_D20.py": "77cbbb721e9abcf2aa172cecb071787eb4c2c706f7ae8ec750b72e82f71131c2",
+      "tools/check_participant_cash_risk_T105.py": "7069fe773a19253e89cb09afbb24b42c309aaddb05f33b99a55c13e39e4fc06c",
+      "tools/check_participant_funding_risk_D29.py": "c42b8f6859ff1c84e345e0fc1e2ff0436323ff6cafccc67e630a4acff38b7997",
+      "tools/check_participant_joint_exit_D32.py": "3812645d8bff22ecab00a30a5f363ac74c31174c10d7643503e94a7c356169c7",
+      "tools/check_participant_refinance_variants_D31.py": "17268649b9d3445a9bc23a5e978a36719b83b4e9c787d70f854198a481ea5a24",
+      "tools/check_participant_sale_revisions_D30.py": "2508e5dcb9317f51d9a2c4c3bdd6547f697244d689efe7fd7014a4a404a32cd7",
+      "tools/check_pending_investor_answers_D78.py": "d94c183266cd60935fb8757013cf5651c10c8a77fa9dfc9c503c637328d5fd65",
+      "tools/check_phased_settled_T110.py": "6e635103a011cdf8081084792687cdc712e041b01b095c91ad3deda92861360b",
+      "tools/check_pilot_intake_D191.py": "6ac7f653ec014365231bbd0f49d89cddbf50cd2f7a42cbec9fa7e994e217f8af",
+      "tools/check_plan_discount_D112.py": "c5d7ca47037ded0fc16c2c6f01cf89029171fcb79e147310b3a79805c6201898",
+      "tools/check_plan_refinance_request_D109.py": "98ee7ad09b8da0a794c2a378da46b1611a2f315c7ca99567827859130442b337",
+      "tools/check_plan_sale_recovery_D113.py": "048269eca243fd8540b61afde67d39eec78a2a1b6ec0d4fde7724f73dcaf59e2",
+      "tools/check_preliminary_pilot_readiness_D189.py": "c0d03f8513da60406929e7b81903ab591503a4d3a9190c741cbc2da846cf17ab",
+      "tools/check_reference_package.py": "85fa024e6718f2adae6e4dba2f23a0568dfcacc28bdc14c8e668f79ca3bbb148",
+      "tools/check_refinance_pilot_D50.py": "947f90b4224005b9b3c1eeb4ac79f239239c7a4836b1eaedd68c593a607ce02b",
+      "tools/check_refinance_return_replay_D26.py": "74e734a226302c52079fe2dbca0225a6427d0608d2edcbf760bc333a4f47cc17",
+      "tools/check_return_handoff_faults_D25.py": "24b856bdc4f59751a47bd2fe3149abc455a50d320e26c148b3b35fbae331af13",
+      "tools/check_return_replay_D23.py": "72d61804c742ad9b4d0a2d67d57541dd1f11634791d6da0425577708c17ec912",
+      "tools/check_sale_cash_recovery_D33.py": "e3d170e566cbf8e48280ed74b9639301d4bdd1e8236a4ac6679af5b33002713d",
+      "tools/check_sale_gap_D85.py": "6d3b43f6a4b079889417c3c8ffb29e8cca6582477bc35ceb5d95dd7c737ee286",
+      "tools/check_sale_rate_grid_D84.py": "bdd692fbab6418f5b5055c10423c260abc3ad413dff48f6390cc8f189c0e480f",
+      "tools/check_scenario_availability_D104.py": "9fa8e713d3ed5e34ce33a9b88e03c4ce9b005567298d545c704fd08a7105bd87",
+      "tools/check_scenario_package_D52.py": "bdac59ddf72f4b7dcea78d9f6fe5342dcc02dc512fe3a04dfbea37f0911f53e6",
+      "tools/check_scenario_pilot_D51.py": "8511b26d0729f0824e18fb3306944ed467e68878676992ae61c5f104c2f98973",
+      "tools/check_scenario_recovery_D82.py": "b22b57d09ff469dbdbf90c5ce805ad67c73b8cb43fefbc4a8aba6560685e9f29",
+      "tools/check_settled_lifecycle_T108.py": "acc98d25cdf327c8442a1cf98861979c5fd7e4bf0c67d83c77c1e229db2fd2d9",
+      "tools/check_structure_faults.py": "ef657ee6d978353dbbdaadd306ec4134835b911665e05a6935eae4e956b85775",
+      "tools/check_unified_costed_sale_D65.py": "dd4546e3d1714b185d0624f8b40e62bea47cdda2524b3330b8e3bd1f3ad0eca0",
+      "tools/check_unified_worksheet_D48.py": "67260d28fd3287192639316b51a81b470858050491d8c877416d4b4d81fccfc5",
+      "tools/check_worksheet_alternatives_D155.py": "d4ae23cc0220a0b38159060fc8533379fc7dba7380cf2764cf08ce96f42b633b",
+      "tools/check_worksheet_blanks_and_zero_D171.py": "c0b4ac28fa2e945935603e1fad1e7ef8b94d5fb8c7960e659bce2510c425cf7e",
+      "tools/check_worksheet_capacity_case_D118.py": "aee7c93999f8644188b5ad212ec58d0d5fe8f06d634de39d8099cb409a9be3d8",
+      "tools/check_worksheet_case_T103.py": "f9d408ad9371cc68545482aa573a11731d4b794438314f02268b043a0a7e5dcb",
+      "tools/check_worksheet_commercial_inputs_D141.py": "11994779fd9b173ab6ac7b2eeb1ee47cfa3fa1442b8987a521152b644c6c9920",
+      "tools/check_worksheet_complete_pilot_D126.py": "b1bafd06a05085202dacfcf3169ef6706703bf0107e19aa952077e0954be6b41",
+      "tools/check_worksheet_construction_budget_D144.py": "079f3bd848ab0eb8f461ecd14758d576cb21e389b00851665c9bfad5709b5977",
+      "tools/check_worksheet_construction_financing_D146.py": "e985e95db46b3988d5ece56e7b3e5e9f618b744aba67f9fc8a0baac0b67ae9f5",
+      "tools/check_worksheet_construction_pdf_D157.py": "25edea1b5d554a20f02ef03eeb4b7eab846542a92f221cb561b5eaa6f08f0777",
+      "tools/check_worksheet_current_chain_D128.py": "c0009bc3ec30a103ff0d08ecd9ff62f2d21d417bdfa09a6110d714655d1f3879",
+      "tools/check_worksheet_debt_yield_D178.py": "633b5e1505e93ab88079269e8f0eb13d72a26c0e1515d466d104e3bf0eb63876",
+      "tools/check_worksheet_definition_screening_D193.py": "220dcb3f775e689df47b37ffe91763a678f18df21c3de452cc6e17c22591dc65",
+      "tools/check_worksheet_development_inputs_D143.py": "fce5f963375f1b2e872647547a819d08535398f9bebfcb3593294245077901f5",
+      "tools/check_worksheet_document_currency_D201.py": "84fcd6762d31f9f4a190a6ba5d518e4babcae8f764f311887a23fc174c8b29fb",
+      "tools/check_worksheet_document_pages_D202.py": "a0ae520b27df2db745e8a3480e64f85ba30f5cd1f60e0a0428bdb1e3f35cb04c",
+      "tools/check_worksheet_documentary_intake.py": "27cc2c663ec74b64d07314f0a997ecf10aac4a2cdbe13d7237b9ddb76e0fc5a8",
+      "tools/check_worksheet_documented_finance_D147.py": "c810ffdeefa93a977d40a24e965a05c3d3e1f0738f31a1dc7fe895a3d1af4220",
+      "tools/check_worksheet_downside_pass_only_D196.py": "3c018ac9fac003a11e8256dee3eb8b1611fb82d98bf9611cd8851ae36c6a4f2c",
+      "tools/check_worksheet_equity_limit_revision_D129.py": "185ac802bbd0a5c3409a22283424a8dc4d4354d0b2b76df8ffb9b584e9397d11",
+      "tools/check_worksheet_equity_tdc_D124.py": "8b0432a664da6512cebe0064f66f3ad82fdcb0277ed579f9a9791369763c94a9",
+      "tools/check_worksheet_evidence_color_D160.py": "15af6a3df31c875815ea178b25b0df8c56fc4e5b955d6cd76af8cf877218e0f8",
+      "tools/check_worksheet_evidence_jpeg_D161.py": "4a562157a9aae80efc2f6d35fc45d1b4da4b6cabf36e1fedbc0a6d66089eed87",
+      "tools/check_worksheet_evidence_oriented_D159.py": "87a31b60622ffcbacb57acc51e7cb3df71c2b120d787d553a37f7b8b728f11ba",
+      "tools/check_worksheet_evidence_pdf_D156.py": "7ff48ff8c81389c8592a59a40283c09c936cd1cae4279cce5d3e17dc68756cb1",
+      "tools/check_worksheet_evidence_progressive_D162.py": "00a6fd949ea37a3853f33a9cdbab58717375a49ad261441ade36853029bfecc5",
+      "tools/check_worksheet_evidence_progressive_crop_D163.py": "8d621d938e0d8dbab5be2e5c446a7502924fc46f77b869f5c7eb7498ef5e5abe",
+      "tools/check_worksheet_evidence_progressive_order_D164.py": "57bc2689a91c760a52278c9009ce8417e2ef1409f373f6426d3414c56e2ebda7",
+      "tools/check_worksheet_evidence_scan_D158.py": "cac1963eacef5d6e5e063cad7aaa3a0b4ffa83ea5d3cbe29eb46008c604b7cfa",
+      "tools/check_worksheet_exit_D62.py": "b108560e49ab3ec46d1cc14cd2692c52f10cd6476c973344325b51fcb3e618c1",
+      "tools/check_worksheet_exit_pricing_D151.py": "82b302e246a255871d8eea79dca104a6b0e527c3150a0ca10a7629e829f94a64",
+      "tools/check_worksheet_florida_tax_D203.py": "27359339841a51472da4471aafc3ae32ee4910bd1cf3a3054fc48cea8a62ee6b",
+      "tools/check_worksheet_formula_review_D173.py": "a1ad4d69f31c2007ab91fbd14833d04aa41f3a224523907159329c7933971522",
+      "tools/check_worksheet_gp_catch_up_D170.py": "8290b78af277ce11d5212971854130d48753b7fd538c3db98993dba7a91535ad",
+      "tools/check_worksheet_growth_D154.py": "e346272bf97d02767ec90f67ae717824280e21a98f95d45632bef9bf4b8fb9b8",
+      "tools/check_worksheet_holding_horizon_D266.py": "784817a8c7f7658415f0fbabaa7fe8ae284e43d745b2c441d11b589f115497a5",
+      "tools/check_worksheet_horizon_fiscal_D267.py": "5e05145cc1bdbe5b0cdbcf3ceaaae0f6fc64ab5096d96400e7a78f0a6b230a51",
+      "tools/check_worksheet_intake_case_D117.py": "0a64eee4c8966978028e8c6a0ef49542d3e74c0a929385ecd8f3c3a04973375a",
+      "tools/check_worksheet_integrated_screening_D181.py": "9a8c8219ccee713a722b4baa0f10cf9b0fc8acacafcf54370ba4db6da81e4bf0",
+      "tools/check_worksheet_investor_D74.py": "9003942b4836c68e48bf187c14c242100d718a4bff8ddc3f61aedb84a4f13228",
+      "tools/check_worksheet_irr_D122.py": "0eda837dff49c228eca15efd9fa5783da774454d6c5c7343a48c3dca1dae97c8",
+      "tools/check_worksheet_irr_certificate_D270.py": "4769f47fe01743913e515cf042993e1810bd3198c2462dd083b8b9c29fb93478",
+      "tools/check_worksheet_local_chain_D127.py": "d18ee80ecf0c2a84a1038cf63f45a6cb85d9475506f62caebf2841ea222b8365",
+      "tools/check_worksheet_lorena_screening_D194.py": "ccd055462482f15d7a35403f3cf94033f0a8ef79ffd9b2475bd66073e05434c2",
+      "tools/check_worksheet_lp_gp_D168.py": "5841b45fd8f8d7e91faaa7cb9f27ca8610cfc8d0b112fe5db208cce058d4d140",
+      "tools/check_worksheet_ltv_case_D119.py": "ebffd4ced5f99fdaad4941b48293f44b250d8bae918f34a5f24c228a2a4914ed",
+      "tools/check_worksheet_market_evidence_D166.py": "31c9cd64f19236cc6ef5854a2ce6518ad580a2d68e57eb89027b5dd913c3d236",
+      "tools/check_worksheet_native_mapping_D139.py": "46e2a672fc1317ccd9f3ae0eaaa17ccf8f3f229f69a1b75914ec828f23e1a85c",
+      "tools/check_worksheet_occupancy_D125.py": "079ea5dd6069087532e677a0ee0755c0e760e761457878ad68450df99469d7a3",
+      "tools/check_worksheet_operating_costs_D148.py": "b4abfeaed1a5414510c428d8697185f70f122e7b8e0978fbc66a00d87033893c",
+      "tools/check_worksheet_participation_D68.py": "8f31ec3d22d30b9bd416d38d4a29c1fb321cf8a800bba9a1a308cf709bc60b0a",
+      "tools/check_worksheet_performance_policy_D184.py": "b8fcad2b3813f0214d8399840444817fd723ba7ce9e9731cbc6e4548f6d47747",
+      "tools/check_worksheet_permanent_loan_D152.py": "283b1ad4633cfab00f6ece59b2767faa0347a546e86cbbaeca6d286ae22b6ea3",
+      "tools/check_worksheet_plan_cropped_set_D138.py": "0b5938d3beeeb693cf7210c3c06f3f73cb6e6848109543f2cee7ed5ce4598d84",
+      "tools/check_worksheet_plan_dual_rotation_D137.py": "6321ad469aecfb7f1e0cd4280637b4c83d68865b12ef0d3e5e6812e619dfdd03",
+      "tools/check_worksheet_plan_mixed_D132.py": "fd2f8f3e2f4c469b325b803821db41671d7df3abef350dfa2bd8720877e44d47",
+      "tools/check_worksheet_plan_overlay_D133.py": "806f4347dc6823bb7438d233165bd206efda71e88d6ec7e29109b273ab016ad0",
+      "tools/check_worksheet_plan_pdf_D130.py": "2c481c0c4db24a2598738ab0d3cff77641d8f545244a48df32a58fdf0ac9bcc7",
+      "tools/check_worksheet_plan_rotated_set_D136.py": "d4fb521056abd99bee202667a058acf5e897091a583f5d84efd465ff92f05147",
+      "tools/check_worksheet_plan_rotation_D134.py": "7064ffb86230b157984fcdddcb3615ed56f813074f4c48b5c7feb248b8497053",
+      "tools/check_worksheet_plan_scan_D131.py": "02b082b637fe53f732f86c6f7db47760441a2c19d3534f37fef1081bdad00144",
+      "tools/check_worksheet_plan_set_D135.py": "eda12a0c55417d6023cc0e5d0fca1465c312f225e185d8a50459d4c6d20366a8",
+      "tools/check_worksheet_preferred_lp_gp_D169.py": "231591539e120602b40e095f9fd3bbed4d2336996bfd3badb9756e203d25910d",
+      "tools/check_worksheet_preflight_D116.py": "cca61135c39f867d5a61b6836709fdeeda34f8a256b8d5c604e29123a7a08e5a",
+      "tools/check_worksheet_preliminary_D185.py": "7f032e193b8aac2af1fb7e1f0b1629f848f81d13b572e4b04566376d0c105249",
+      "tools/check_worksheet_preliminary_finance_D187.py": "93b606ab44e44f28e98b197c1a3ff2be5dc94e57365e8af09d7f634a85b1367f",
+      "tools/check_worksheet_preliminary_pdf_D206.py": "6deed4797209fab091b82aa97dfeac92b6a70b742252008044f384b9d3c658af",
+      "tools/check_worksheet_preliminary_pilot_D205.py": "f6b57a601f467af9678a3b5df7fce9c4149eeadcaf2497d9b6ced2e872d5a168",
+      "tools/check_worksheet_preliminary_stages_D188.py": "47d2ca06a3e9e43622593c239789eba6b86cb34efd0d602e932eea4dd2dba005",
+      "tools/check_worksheet_preliminary_tax_D204.py": "97e7e3e4377bb025e34ba1b12100c3f092bd199dd2c510ca2fe8e907b650244a",
+      "tools/check_worksheet_preliminary_workbook_D186.py": "689fc1f1c58e7ee27a00d03780b3f7f0ad8589f08c6c6d91826f5add910cc11a",
+      "tools/check_worksheet_project_calendar_D145.py": "b598eeb09401e22383b23c394b338e21877a4250d1673f0ddbc30a663be8f7f0",
+      "tools/check_worksheet_property_tax_D150.py": "40df7e95708f6241fbc84917aee53a7a22f4fafe9d14b81bdc5e3d766e91b0e3",
+      "tools/check_worksheet_reconciliation_D179.py": "9b6683fa69cf080065d7f72a7fba659ce6e86e9f7eb1fc51d728a067136c6a87",
+      "tools/check_worksheet_recovery_page_D44.py": "3f230b9ad7ab3de022d8550580a879fa859fbbf28d7f5b37572d8c64fe1f57e7",
+      "tools/check_worksheet_reference_metrics_D121.py": "0205031ca3e7b0dd632617c67e339712d2a522163dc0756941bf74fb5c192ad0",
+      "tools/check_worksheet_refinance_D45.py": "e74e6be863d1ccdcae04baf16fc73bc830dcb0a7d50bed03ddecd68a52d660bd",
+      "tools/check_worksheet_refinance_costs_D153.py": "8d2a899239fa457a34f87c9c0710848c38749d7d18243ba09131f4917b2d6ab7",
+      "tools/check_worksheet_refinance_recovery_D46.py": "3e2f7a4a2776167469551c53076f493337d25b3b22517ba6125fff9863e13881",
+      "tools/check_worksheet_regulated_rent_D269.py": "d59e353add46eef146958aef9915634273822d5efbabedc880b0a2b69bea0c36",
+      "tools/check_worksheet_rental_inputs_D140.py": "499375a77a63db5102000dab0d2357e371e4a0b61afe9be29d2570000aa18226",
+      "tools/check_worksheet_replacement_reserve_D149.py": "94373750964c1711591d19992356ea229cb9fc9532274923182a300bba913128",
+      "tools/check_worksheet_return_metrics_D167.py": "f49bf7cb694cbc0bc208481dabcd39fb80ae66c965713f1931c510ce27988d9e",
+      "tools/check_worksheet_revision_audit_D195.py": "8123d4fae9eaed28a83eb6999c06dc82a8b3ee39255cd3048680c59daeb5892f",
+      "tools/check_worksheet_sale_costs_D63.py": "b45116c41e4b18717a140d26dfa89584b4df57ddbb3f5f9a7b05ff2179eae8c6",
+      "tools/check_worksheet_sale_recovery_D43.py": "17623ba29030161d226b4d1eb988f555936c9eb885a2190eda24b465b028d0fc",
+      "tools/check_worksheet_scenario_program_D268.py": "29c4eb434877abe0a7e6eb6359e7d887ab17bf053a1446ecf34195c40a124e2e",
+      "tools/check_worksheet_scope_D174.py": "b610479ef62e7701bafa5aad6bd678f346fd2057da633296985b5d8a4369a73e",
+      "tools/check_worksheet_screening_pilot_D120.py": "46af4d86b84a5027af9ce971ebabcd8490ac62e007aae10e1a2e0ab8fb0e732b",
+      "tools/check_worksheet_settled_T111.py": "bf4446c454d18e29d5f6fc14d672c6edc44d838da932bde6ec51a6a37dcea4f7",
+      "tools/check_worksheet_technical_acceptance_D200.py": "c260d8f6847ecac454b489538868d7fc502ab99c0e5a2912f78884b4342dcbb6",
+      "tools/check_worksheet_template_version_D176.py": "0d36527a64e2bce1337a7feec9128993dc4946d25830c50eb2a3eeef89348c31",
+      "tools/check_worksheet_utility_inputs_D142.py": "487f6e91fd0ae43946c2dd449cee7b4ab52dda4c30eb7e8554f6ad272ff825eb",
+      "tools/check_worksheet_verdict_options_D211.py": "5e6cc37205f504c8b63f91f0fa35c61bf53613c552c2578482dddeb25995635f",
+      "tools/check_worksheet_yoc_spread_D123.py": "3728fe15f0a5d1a4f45de39cad9fd82ef1aca534f63a7e94c0432b8c90c92348",
+      "tools/check_yoc_spread_D70.py": "adced9ccd22f034f83be3144e9f7f629ca5f56e928d81cb865d73d1763cc85d3",
+      "tools/compare_miniuw_v1.py": "38ba3e3d9b91d27be61b9c803eccf4285af26e965e55fd3aaf9afe7b9fd92d45",
+      "tools/compare_refinance_discount_D111.py": "eb9f4b3d5212cd111aa1d0bc864fb6decc373c260ef1bcc9e077883c52b05c94",
+      "tools/compare_revised_plan_D110.py": "13d3a20b74bf3a08e95391ec4136e35517caf67f625a99640fd9bbec84b7cfe8",
+      "tools/compare_sale_to_minimum_D114.py": "25676022736434d880f5e1dc1afa77adb6aa7017702b45046df652f159a97b1f",
+      "tools/compare_sale_uplift_D115.py": "294472fbd214bf3395225934e267455b180e53604dcb5f7f5f640499e2a36a61",
+      "tools/construction_demo_support.py": "d6ee1826357d7af1c13095ef111d16f2e1f43e27bccc10067464ebdac732ec84",
+      "tools/current_settled_miniuw_v1.py": "196fe137129417720db4720ee669466285b81cc5e606f223fb0e21ad4afa3c92",
+      "tools/deferred_insurance_miniuw_v1.py": "50c7f57d091bde2c266afbfd68db1a1d1cfcf0bb687ce2a8f9c4417d9f880c9d",
+      "tools/delayed_exit_combinations_D96.py": "bf850bf51b207a16e1e13477b1382f6ed49ccba043f64267ceb4c8276365824c",
+      "tools/delayed_sale_carry_D93.py": "5604af9eb886382e957efde0b4843fd5df2d5d6dd76567d164de3e30d1f3b20f",
+      "tools/delayed_sale_recovery_D94.py": "327c43df19499fad61272f58947c636e652bcbfda156a67c5de1e983ffd2b161",
+      "tools/delayed_sale_refinance_reduction_D95.py": "18ec86b2da7b64fa80f63c393da6f03cc6503d598a4ae7fd10bae3dce5738470",
+      "tools/demo_bounded_exit_sale.py": "26fced7d10849c07cb8608480213a97b578a080b5d66b42b17993e529bd18a8d",
+      "tools/demo_bounded_sale_recovery.py": "d4e6fba3792ffb7d69f87e8aa8bbab751443248d727c651c8ab2649bd9344c1b",
+      "tools/demo_cash_risk.py": "6628c465f38e4cdb63dd70e79f098c61a46437537d49cf7f44d823bbe26565e1",
+      "tools/demo_closing_cash_returns.py": "6c05e40a69734e3cd690ee2eb6cac98981eec2099838699baa78e60fb30f10d5",
+      "tools/demo_computed_noi_dscr.py": "21edb66a306f74270a19f08ed1d3490d175cba18d58c4b9943cad1b6d747a150",
+      "tools/demo_construction_draws.py": "f55013a36a07a41194ee9a22149d5196c8b4ff7a2379763a6a8af9c5241d5c30",
+      "tools/demo_costed_exit_sale.py": "03cadcaa98605fe43c12625474f973e5af0007e1fceeff0cf54a183be75f134d",
+      "tools/demo_current_lifecycle.py": "ff9db3a0195918ee9e5c54a687bd8924146167b9729cf35e98dd9f5d23d1f058",
+      "tools/demo_current_recovery_case.py": "7a400ce3be554426523007ba72adab9231df1612737605cb94007b85be313fc5",
+      "tools/demo_debt_checked_closing_returns.py": "100da551b4da9271aa1dd2c79b4b8e55c219633eb2c7d4d2e17323e78d57f826",
+      "tools/demo_documented_threshold_rehearsal.py": "903ced684c4276ca4fe741bc92feb49ea6616fae8525d60cdfdc84248b14590e",
+      "tools/demo_evidence_currency.py": "affe8305f5aef7f2497777518f23f33accbdf7116fce71a41ecfd62b55a36b7e",
+      "tools/demo_exit_value_to_sale.py": "597f9ee5eac2026b1c833e657f23fb45f297979d2da2e585c4002a8709cd8260",
+      "tools/demo_expense_cash_detail.py": "efb642ebe7dcdf2948bc4b870aad8595759abe803de7f7bd4cd1b871035597e5",
+      "tools/demo_expense_checked_lifecycle.py": "50b88392a016eb6018ddd5d29109717a2bc2a78e6d58e97627be6ad494ade13e",
+      "tools/demo_hold_sale.py": "f8cf43e34a27b5addecde6cead60a3818e3896fed3db40d2ccd0498bab245dbc",
+      "tools/demo_holding_cash_returns.py": "341167c3380e3de194b5ad456d104ac42ca79df6289bdf912596f1e3551c9a19",
+      "tools/demo_integrated_project_cash_returns.py": "8e009c77a2b43c465efcf61971ccc83b614d31b110c1e6aa6ce48bc8a3698f97",
+      "tools/demo_integrated_synthetic_review.py": "6df552431042f73a6840cf79b0e745921fe1a468220922f27e8e0fd0165befa9",
+      "tools/demo_investor_review.py": "f93675e3701e14b65e9e6e2b655f822f0155fadc7dcbe6c848483fb437d7ed6d",
+      "tools/demo_lifecycle_returns.py": "023a49e94298bab28521faccded106f6478f15746ca0dec470a947feb814621a",
+      "tools/demo_operating_cash_returns.py": "a474026134e8b372c505008f0b21a06f32ab50f2b27553709e393868cf88cc16",
+      "tools/demo_phased_rental.py": "7136f74465959eea43b74bf5ce109521c740755c1f5d706ce357603ce81e645b",
+      "tools/demo_preopening_cash.py": "d8dfd9ca01f991ab1efc583d0b1cf6de156a2b72cd51c9095823d846b7c2bb90",
+      "tools/demo_project_sale_revisions.py": "c8fa6a89420a186d0cfb3d5a182dc6ce83fd4d69a38467b8d4662bd3a28e6d48",
+      "tools/demo_recovery_case_check.py": "4c9b446a12e7b3377b9d33f0d6c4a8ad087e783166964551dde2a80a33df154e",
+      "tools/demo_recovery_case_inventory.py": "045541b5439c26df36ff6c06f4b00b93317cc79ebc2f74216de358241b128bca",
+      "tools/demo_refinance_capacity.py": "f20060a436cefe18df5c5ee029c489c225bfd6cc73b422a2ba83d1fc5e902f20",
+      "tools/demo_rental_checked_lifecycle.py": "cdee15ab83cb108c7bb2cc17a04126a99d3b2536381ed47803b6ae996ecb6ca1",
+      "tools/demo_residential_noi_chain.py": "57ea254f74e7c132e237d924843c11a60587497610a061aa01852b0675e842db",
+      "tools/demo_sale_recovery.py": "47a9e47ca4fe42792130a6062e9ebb5b58df904c2b8bea3fbd3a6326b176a677",
+      "tools/demo_sale_sensitivity.py": "3a912940fb31721707041d83476686c75737ee00cd3d4816c4bbf66f7546c8ff",
+      "tools/demo_scenario_threshold_rehearsal.py": "ecddcb31a5484762fcbde5cb7f1fecf9b2bba40107bd54b047c57dc465cc6fcb",
+      "tools/demo_staged_operating_debt.py": "ab266e3ad81f702ae8463b8eb7af7a790e9667a3d134797d33b7bd4f04c7d335",
+      "tools/demo_synthetic_archive.py": "54347de7ff5f45a7b7aee7530474be8fafd19c0589e0c96154c290cf70a9f8fb",
+      "tools/demo_synthetic_calculation.py": "985c9a43baa162d4a9485c9ca464cb981c648761cfb28f2f7fe74cc8873c74cf",
+      "tools/demo_synthetic_debt_service.py": "f558539c73a04ac8d3e0a7a03bd2166d7b3e34e4d500e4a87e447249a2763bd6",
+      "tools/demo_synthetic_dependencies.py": "17160f5baaf301f7424b17c26c12dfd48a72e05173aeaf5e0b0d5439f3b0ed1b",
+      "tools/demo_synthetic_dscr.py": "7074c4a6ca4bd4531f2c9212f8826ef3dd284b70db99141644d94655d0b517ff",
+      "tools/demo_synthetic_input_sheet.py": "a25606d618c18f31671b63f6f1917777ecee7e9e25e9a4fa152fd3db914eeebb",
+      "tools/demo_synthetic_investor_returns.py": "a39f803f84fb7b287f3a970000d7a7cd49b2db220fe10f86acbe8c5b020073d7",
+      "tools/demo_synthetic_normalization.py": "dca23d87027854ed05ba210fe845d2187654678009c56131af0768bb299f02a4",
+      "tools/demo_synthetic_operating_noi.py": "058c1ca2d60666ad23b5434a7294631eaa840dbfe02f8cd920fa868f2e66608a",
+      "tools/demo_synthetic_review_proposals.py": "f1d31e2c1d68c02b64d0195ffb8483128d743f742734d7ceacfac8bbcafbda68",
+      "tools/demo_synthetic_screening.py": "7413f781453c5dfce7f94aa5bb87fa4bc58b215ad54e1fd9c26e7061912a20e0",
+      "tools/demo_synthetic_sheet.py": "5fc5901fd26deaf898b73e7dca695f0fa3a072d97991aca79e67436294e29daf",
+      "tools/demo_synthetic_workbook.py": "531bfdab248c6ac8b46b01393632dccaf96ab177a3fc21a7f0bcbc230ba9d5f5",
+      "tools/discounted_costed_sale_D64.py": "81f7f057af53708387255412b225c3dd2583c1a3ecb0606df45d8ab5d080e87c",
+      "tools/expense_lifecycle_demo_support.py": "01b458d45c7a778d3b4de180a587dbcd79c5be18c45ae6f56bdc854d34e83ce4",
+      "tools/extended_holding_sale_D99.py": "80b308480e7d754e7c5f6222cd9d3cd35452501bd6d33400bb7221350ae6c503",
+      "tools/fixed_extended_sale_D100.py": "e167c762d495ba5c2db34f5cf60c121e12f3002775f269132a1026f18ff42b21",
+      "tools/fixed_sale_cash_D90.py": "b99d3413c1e46f040120763cb583a58bebc250eb4b87caf10b7eb86ec1a6645e",
+      "tools/fixed_sale_delay_D92.py": "a0bd73aaaf4a332a282596bcd45cdb0c5a97e693f89f9b1b84f01f1bce98e35a",
+      "tools/fixed_sale_holding_grid_D98.py": "a942877ea74e61a8e1fd2f167bba3f29db3f76a3af100017a35593095c423439",
+      "tools/fixed_sale_refinance_limit_D91.py": "643321fa94dd24b204fe43f29eb94c271171e351b4bf7b21fd686ba8714ac913",
+      "tools/hold_sale_demo_support.py": "c9f0f618a169d63c9290b9d7c1abd28c5c17adfde788567eeeef5f0d86c25396",
+      "tools/holding_cash_funding_boundary_D101.py": "658a9c6dc8a2b0f32483a910ca383efd50f0a1db3f48c3975e645c8ddcbcf743",
+      "tools/holding_cost_sale_recovery_D97.py": "2f605dec0f7a98f0d5c0335100c306b484f1ccca3998ff9945f344b4bebaccac",
+      "tools/insurance_terminal_miniuw_v1.py": "5d6290f6444c84dd2c95f29ede16cc40ddac065544da04d14e5cd4e0018d4925",
+      "tools/investor_miniuw_v1.py": "832bd29520d603c5ec45339df3d9f88279c2da0da209101986084df45e528138",
+      "tools/irr_interval_miniuw_v1.py": "8b4b1edfcccdad6334ae5efb1f55c1f4185353cdad977d02df4782b96c4ac31b",
+      "tools/irr_miniuw_v1.py": "719177712b1c0e46e64ea616e1c6b426da38c88e5e24333f95a8f87daeee333d",
+      "tools/irr_review_miniuw_v1.py": "9b01905a43684a9754e10904fad7da8f3c1868e1d3b6c875fb84707574430ad2",
+      "tools/lifecycle_demo_support.py": "36072b52ab4a8f981c34b658ccca73b55093327d7ee469d2c250dd62ae32604b",
+      "tools/long_miniuw_v1.py": "c586b45088b13de2abef3f475811cc922f45e1a261a4c628f8fe5ebf55631db7",
+      "tools/lorena_screening.py": "01b1ec06309ff8e16ad5430956b7c4445727f5c4ec20a0ff91b68756e980f826",
+      "tools/miniuw_current_cotejo_D59.py": "ce716c0c6c8214fe1fe3605555d1f54f35554f00a79492c2e94b1a97be014887",
+      "tools/miniuw_linked_cotejo_D54.py": "5e965df4b3061d87e759e8e5a9ffe4cf267c4028cc914ed9000b9087886afd1f",
+      "tools/miniuw_scenario_package_D52.py": "2ca5758046b66f7895d62a7be69e4a097e0cd659bc0b11449091caf9436a353f",
+      "tools/miniuw_v1.py": "0fbb233d201940630388854f34169bbafc4e1f5780121bbdd3bcbef6a70c9b48",
+      "tools/miniuw_worksheet_v1.py": "9af08fadebd4c23b43a006f1e53f428a077f5d567eb65983775e56a0ee5e5359",
+      "tools/onepage_pending_cases_D79.py": "a0615d683cad0ff87c1c24bb5f61f7864ebc0912df7f02377f5a5788ec1bc57a",
+      "tools/participant_cash_risk_miniuw_v1.py": "a750601ccddc6f144d247b492be93c5283241ab02ffa4691ad9d7222d26bae02",
+      "tools/phased_rental_demo_support.py": "b8a5dcab0c7756c3f8a6ec9adcab24c3cb239d3ff755bca4afaf4d72530f5231",
+      "tools/phased_settled_miniuw_v1.py": "4c1dea3147ca47bd48d6e11b0474ca41c98e229dca686753f754f0559b7cb5a5",
+      "tools/pilot_workbook_D49.py": "f64321df776f640231322e01d84c291bc47a1d514bd89a09b4a5e02218c8a6c0",
+      "tools/plan_impact_D106.py": "d4ff4236e22ce5f7bd99ac55ce3123a5b95c79b804add229ca03420fa537e57b",
+      "tools/plan_refinance_D108.py": "3a789dbd81a52221ac16b7617e5c9e3967dbfb65101fae5735475e6c420afd7d",
+      "tools/plan_return_D107.py": "acda5f1b863c9538619b6dbebbbf95b20f099f36523da1239c27fc6347c74f8d",
+      "tools/plan_schedule_D105.py": "6aa0db2696f9f12f56efe44d8f3ca4c1e7244b1778ee62fb7798daa5440d51ba",
+      "tools/preview_lorena_criteria_D192.py": "cc31219dd8535a2b3b4237b4ac2be6920ccc894b318584e8df69c25aea66a884",
+      "tools/price_linked_sale_cost_D88.py": "ecd723594df9e991bdfef9b8d7ad7e914073fa1e78d84afd4f0d6e5e7e00648c",
+      "tools/reconcile_worksheet_D179.py": "17b2fa388ea75976adb2e464f6f25da1cfffbf654b4c8db2d5e79b5602fdc613",
+      "tools/refinance_cost_recovery_D86.py": "19c72b44c5b51055bc56c6cefc6b77b8d795e43f5254573760086a66f1f47652",
+      "tools/refinance_sale_combinations_D87.py": "42551e089997af0f55670f1ec646ed9eb6e5b62f748b1f759438c8802b24076e",
+      "tools/reissue_investor_reports_D76.py": "7ab7c352c3bb852ec6a712f5e44e312ea196f30536a17718475fef802bd465d0",
+      "tools/renewal_miniuw_v1.py": "5f0a13cd90bcba42f678ea98ba4fff80a918923210b412019ad95ff1f82c7e1d",
+      "tools/rental_lifecycle_demo_support.py": "bd5cde6a714adffa99e2151c55d4d957d2011d3a493f0af51a8ee1f1b4417ee9",
+      "tools/revise_pending_investor_reports_D81.py": "19c9e02c32cef745511f9e4552d330b9a89727b276543d4b01eaca638b9d262e",
+      "tools/sale_cost_rate_grid_D89.py": "66e5e946c6e46728c0b3ab37c4ec305aacdc8cae4243ed11f473572e45f150d1",
+      "tools/scheduled_miniuw_v1.py": "57f00bf482afbce443e8d44ebb931d3fb22743f37966daf31f55f6196ac86791",
+      "tools/settled_miniuw_v1.py": "cd92f3684d7ac2e85c4659205b05f2ba61b9bf3a09c135cd70467cd306d1417d",
+      "tools/staged_phase_demo_support.py": "98f46cf846638a537f7313d1a22242054fc6dcffe13fbedfcf5317c9ac8f6415",
+      "tools/worksheet_alternatives_D155.py": "0c9c9c8f4c166471725d880d536e134458d253cd58757a806401b54b00dde49e",
+      "tools/worksheet_annual_coc.py": "c00e7e9a293eb77a27134dd3d122714f07deaa757f5af8d181a381ae8011c990",
+      "tools/worksheet_annual_comparison.py": "59aa9daecd46e8a1d98152ffa9f1213e213afec83a1bd6becd2b308ac341282e",
+      "tools/worksheet_annual_crossover_construction.py": "fa4f1fdba304a850f909bdff802f9ba9948e8d570501875ffaea1265af7e4829",
+      "tools/worksheet_annual_crossover_sale_price.py": "7898d4eabcd98f768dfebd36407ef82c3b41f64244f353fa9027063e47fe55b1",
+      "tools/worksheet_annual_discount_crossover.py": "83f62b1e960a1f1293f64fc4bf4d5c86f17bc7895b664e4e58f2b50f550efd36",
+      "tools/worksheet_annual_route_report.py": "1e17717daee413aadf2ffbf035e583ffa6b42ee9475e64b404055d2a1a34c14e",
+      "tools/worksheet_calendar_routes_D199.py": "b3eaad8f9cedc2209b043b9691831255803b306716b844fccb5078e9551cd587",
+      "tools/worksheet_calendar_support_D256.py": "78ce1883645644879614cbf743bd2582f9521df7b4b76c64070f510139af2df4",
+      "tools/worksheet_case_miniuw_v1.py": "92f47b8bded9fd15d9e7b3940bccc1fb117d8cb5966ea4353c1171fbf3f907ae",
+      "tools/worksheet_commercial_inputs_D141.py": "0e0587e9be4e25d807645fc7ae37c0a439d9f6c45cfcc456e33eb6549233776c",
+      "tools/worksheet_construction_budget_D144.py": "648bd56ea1715853da3ca607b4ac301463d9fd79abcd7999e8eb09e2905125ff",
+      "tools/worksheet_construction_financing_D146.py": "e74f512975130719e3c5693c431ae9f59b4e882aa709c88f160bd5ca9088259c",
+      "tools/worksheet_construction_support_D257.py": "438ad254c8c17e0d585931968ce22161922b5a64a4139aa1268497b2a6f98d9e",
+      "tools/worksheet_costed_case_D65.py": "ae8273021f01e6c6cf0fa32ad7ac40126099e18f55404a9b7cd9aabdf3af8ee6",
+      "tools/worksheet_criteria_intake_D194.py": "fb0bba7692befc92f37219216378543be5d60063fe831590eb213b869cd5b9b3",
+      "tools/worksheet_critical_evidence_D220.py": "1852622bba71c2d572ec70a10f9141530dbafd525500667be7a45b9594e417bb",
+      "tools/worksheet_debt_yield_D178.py": "b40ce242d3f8f5a436a09fb304d3b74459d5865bd3eee6fdbe5846312ac6e0eb",
+      "tools/worksheet_definition_screening_D193.py": "567479d913f01140ce2289e604f433dabfa9c7fa4b306fcf669fe0af6147e40a",
+      "tools/worksheet_development_inputs_D143.py": "ed41ecdc80246c4d94e536a38c1247dfdb60af0dfbe0a25aac6a48df4e37d8ab",
+      "tools/worksheet_discounted_recovery_D83.py": "ec83895f19d169b8cf63a00e0211e769d36eb250cc46658ed909a87d3834d6f4",
+      "tools/worksheet_documentary_intake.py": "c87668ba70e5d5b9c0c9ca1ef1cb45a440619632c27849553dde2e3df6d15a5b",
+      "tools/worksheet_documented_finance_D147.py": "2b69cf6dc95f4a9fb08f67c09301daa6d943ca8510927d0481cabe02fdfa9076",
+      "tools/worksheet_downside_construction_sale.py": "1e2e023f284bb09bb71bcdceae01e6b7abb1483ed017d59b5683a9480b317ac1",
+      "tools/worksheet_downside_fixed_sale_balance.py": "02edf6bc0bbef120839a6df093e2803ff425ed2306d29ffb056f77b2c638da0c",
+      "tools/worksheet_downside_fixed_sale_construction.py": "f27775e852d9386ba80935d1b19f1ed766eec45ef480a01733b7853996b07572",
+      "tools/worksheet_equity_tdc_D124.py": "df733f88b3942fb01dcebc0818178157f956b15975c53da87223ae6e753d93bc",
+      "tools/worksheet_evidence_jpeg_D161.py": "186864aa21aeaf50c39b9163a3f5ad09dacb277df53770328d2cc3fcb36b027d",
+      "tools/worksheet_evidence_pdf_D156.py": "79e4a7b0d8bf66c76ad0c6fedede4aaead14620c37d87fa6966fdf448cb7e718",
+      "tools/worksheet_evidence_scan_D158.py": "9307bc14f2f93600b4448082dd126f99a82fbcd2593e7c4ea953f9f277e24d99",
+      "tools/worksheet_exact_cash_D263.py": "75f6f011cc5b6165fd0299a47affd20454cc3691dfb9ad2bbe25261bc071cb9e",
+      "tools/worksheet_exit_pricing_D151.py": "f913c36e717bb1109f1d4d8c8230e48c4e1deb436e46a8bd9afde9a93f6a6a5a",
+      "tools/worksheet_expense_support_D258.py": "2829ee1bcf01f3b22c831b66780d281aca29680e38fc52b18782d152485719fc",
+      "tools/worksheet_final_metrics_D126.py": "a39cabeaa4f9ebbeced3f7e949cc3a440a0dea50f0e4bbab7dd1614ee3b386a0",
+      "tools/worksheet_florida_tax_D203.py": "ec46c12c9acf306728a7d9d6f0cde514f9c2c6be7643c0050275718f4cd5a3d5",
+      "tools/worksheet_formula_review_D173.py": "5ce4434b2f89fad034fe38d2ae1d680ec5dbba1ac17883595269142c35e3c931",
+      "tools/worksheet_growth_D154.py": "debd49bfd36fb616a580e24f5ae45fb0530920145137aa87658752bd230d4e63",
+      "tools/worksheet_holding_horizon_D266.py": "bba535fd748b8f3fb6c982d4e8f9109e1db8dd36d64abce0ffb047a8f3b2c924",
+      "tools/worksheet_horizon_fiscal_D267.py": "9fa14e91ea7bbe67652655a4bbc94c6e802ab638f9f4ce4b4bad7f00c5b96a2f",
+      "tools/worksheet_intake_D198.py": "4f172e20a26b9d690551e2a214c3e4709e1b190d9269e834631a34302b509ecd",
+      "tools/worksheet_intake_case_D117.py": "d2f6cae11ea8f85b407105f6272e194a93aef936611fa5b813702e237914f906",
+      "tools/worksheet_integrated_screening_D181.py": "f979fd927f9fe79eb4b8528c64cc22e863fc0859f991d7418bdf2b1147ffdd1a",
+      "tools/worksheet_integrated_transport_D264.py": "78f244cfa3a15264f967e234a188dcb1700edc58aafc35a57609e9528c866b15",
+      "tools/worksheet_investor_D74.py": "c54dd07e75ecd10c594e094085781311ce33953a971f2fc5a9f20e59a1e58c96",
+      "tools/worksheet_investor_scenarios_D75.py": "032d657a1b59825a7376aa96c4c07931b089a8ba00e14bb1e0e345b0207bd3ff",
+      "tools/worksheet_irr_D122.py": "ad52af9c2ccc2727acf338bce2c46f6f8a60973544087674c62bac4da1e6504c",
+      "tools/worksheet_irr_certificate_D270.py": "6ca6d34c726d36be60ae1943e51dbf671cfc90bc9b94c18204dfb4a180483aad",
+      "tools/worksheet_local_sources_D127.py": "793ecd91b9fcc37ae27553c5da05ec155dfa28ea010b3a6bb271932c2f9b74ab",
+      "tools/worksheet_lorena_annual_route.py": "58c05a9e7397281eec68b2c40d0298673f5dfdaebeb37e6391f5ec671480eb5c",
+      "tools/worksheet_lorena_screening.py": "41d23fda702591d2b877694979c876ee64e67b777d7c39fc9cf09f35b8ff9ae8",
+      "tools/worksheet_market_evidence_D166.py": "c50f55d531123aa5a031acee851eee256ae0b051e817157dcac63f96448609a5",
+      "tools/worksheet_native_mapping_D139.py": "5c98b6504883a5b4da64a8de66f5b872569c768e8cda81d8339fdeda14f3a2e5",
+      "tools/worksheet_occupancy_D125.py": "70d918b6c0cf69d8b73798291f508e47bb6a67a3371e330eb97c9f5b8ee70bfc",
+      "tools/worksheet_operating_costs_D148.py": "6b9a562b49dbf5f71436c4bfebcc23120924e4f7ef6ca7a6fa0aad392ee79c62",
+      "tools/worksheet_participation_D68.py": "04c7677bc76c8cf3f255c1ed7cf768a1ecd39747e43868090a0b469a757739d7",
+      "tools/worksheet_performance_policy_D184.py": "ed7f7ee000517986ef2dd40bc416bc606f355442267aa778e776b90a78e4af52",
+      "tools/worksheet_permanent_loan_D152.py": "9bc7118e687b8e23ac040f04e75fe20d0d03bd5d8289cc9bbec3c8e03a9bb669",
+      "tools/worksheet_permanent_support_D262.py": "c83cf5b5758d2809d5f47a7e6169d1178f2a7c7d945e7fc40160ee7e5201a8b0",
+      "tools/worksheet_plan_checklist.py": "6cf8d97aa9c1c0afa5f7d3a0cad97f49976746cf02ff2c6a6b2bcd8c4a84c890",
+      "tools/worksheet_plan_crop_D138.py": "15fcfd4022c30b71b796a1779b0a0c387978b0c4efb4c4942883e62a4922f03d",
+      "tools/worksheet_plan_discount_D112.py": "40bdf31a4db62424c034e0a212a85ffa11771ed2baa65e1ee5e2c1b0fd6ef170",
+      "tools/worksheet_plan_mixed_D132.py": "e9d23531e368e63f46f82adc7c97acc7f1bdb259995f1eecf49bb804b74a16b6",
+      "tools/worksheet_plan_overlay_D133.py": "d5024b835ea9b5b4bccc37fccaa264ee7cf10bdf7f50a4484bd77181e9786930",
+      "tools/worksheet_plan_pdf_D130.py": "8a746b7a7d4d4d218404883afd32f62af78489764521b27ea3f036ec8e308dc6",
+      "tools/worksheet_plan_refinance_D109.py": "4a811ed32f854584c4aa0bc10fdc4dcd754210afc8be63ef7fecfdfa3c253384",
+      "tools/worksheet_plan_sale_recovery_D113.py": "3c8e4b4d2f88f082e46eec5e3ea87e27fd408279ef8025fa9792d21e9e4409a7",
+      "tools/worksheet_plan_scan_D131.py": "5fcf1a3e1f3bdfb7f59193dc4f407639f31b56a0fdc588edfa50f47b1d58d62a",
+      "tools/worksheet_plan_set_D135.py": "e77d28496955b1e899ea19ffb966883a4197f9190d2322c6adaeb89c66bff5ec",
+      "tools/worksheet_preflight_D116.py": "8574a388bd4c02bcdba5c996e407603f81e1a8bbc4e30838808f1ee04ddb0c5f",
+      "tools/worksheet_preliminary_D185.py": "70736bf3d14a1bd8e670072f06202db138edcb73fbb879b9332ee8135fddd102",
+      "tools/worksheet_preliminary_finance_D187.py": "2787f39c1db373933172cc9f2fde4831761311664e4ee922143f2e9d55712039",
+      "tools/worksheet_preliminary_pdf_D206.py": "bc41348e20f28e3bdfe76d9f6165ca8ea182caf7bebef97a8e96314d563fe6dd",
+      "tools/worksheet_preliminary_pilot_D205.py": "514e17cacc1b3ddaa35fd8481c63b4997bdf19c8acfc59cf8dca68c68e6fcaa9",
+      "tools/worksheet_preliminary_stages_D188.py": "5121a25b9f8914554ead8ce06c931b1d00b10e7d6e65e8c625e34303587f8ab6",
+      "tools/worksheet_preliminary_workbook_D186.py": "556bb974979e2bc7d194fc7c94de475bfd777f2fe5787a04536091970d1271e0",
+      "tools/worksheet_project_calendar_D145.py": "71ad22d26f58aafc82e9430b7c98e9a090f245d58195e498d012a7b21d7064b8",
+      "tools/worksheet_property_tax_D150.py": "c8dee78c87a19339bf49c9d5068eebcbfc78fda34469920b899c68d66be38018",
+      "tools/worksheet_reference_metrics_D121.py": "893f4dc62baca3591bd99727203c802d4a17293e633a9e2787e229c32f2c31d0",
+      "tools/worksheet_refinance_costs_D153.py": "92517532c67d1d5d4687ecc52fad0fcdf35591ebdcef1514f815faa1b25bda5e",
+      "tools/worksheet_regulated_rent_D269.py": "9748669a2be3db270f90796a51754c2104e39ea41152ece6b4447a8d2c4379b6",
+      "tools/worksheet_rental_inputs_D140.py": "94c4b22263e0159e1fdad4bb9ef446d12aed224478caa34b679aa9f5480c78ab",
+      "tools/worksheet_replacement_reserve_D149.py": "c840f5b1c75ec583f272278ee80333fb79d43c90dc15dbe99ba6110a6597d769",
+      "tools/worksheet_revision_D128.py": "3f390abf5d5afaed281edb87fabe34b54b65ee690c531b8ef63b5b0cafaf1b8a",
+      "tools/worksheet_sale_gap_D85.py": "8e447f14535036ec7443d2f1863adc320fc55a7c385db83656f3b7ddcee22c13",
+      "tools/worksheet_sale_rate_grid_D84.py": "7e776d236d50ac8cb9c8740148c1a6250b3ea20d3f29a0d6e89be241abc6cfb6",
+      "tools/worksheet_scenario_program_D268.py": "136333a838f1348ccfafad37bee81871e22054d6f78410377c4685ce44ca381e",
+      "tools/worksheet_scenario_recovery_D82.py": "c013e3f869931bad2c64a2c0e335c3f334afd275a49216ecebfbda894200ae5b",
+      "tools/worksheet_scope_D174.py": "b8c469f7684adae43d78fcf9deabfc749a9dd0fb70b71ba5e3c6353479645d5e",
+      "tools/worksheet_screening_pilot_D120.py": "f38f16ed6bf3ecae6b61c02d517bd4a0fc20a50a931c2981ea7d18b81e4fc21e",
+      "tools/worksheet_sensitivities_D253.py": "b52e07ef39a42ae52ba4e20248a58eb5bae39ba10832248c8478a15f0bee940e",
+      "tools/worksheet_settled_miniuw_v1.py": "95ea004ccbff079068bfd90c352aa8f5c3c08b5a22cbefb96fcd20327498784d",
+      "tools/worksheet_utility_inputs_D142.py": "6a6ad8794d63f39fc972b5e1e2a93564245916651329643a4cddfed169f3ca00",
+      "tools/worksheet_variant_evidence_D268.py": "55c54843a898de3bc442f456d8f23c9db0c9f79a38725e8758748d2f41b2f83e",
+      "tools/worksheet_yoc_spread_D123.py": "003f1ae5ef18ed8798357294e308d1d099e1f9c59a72ee4c2ae1c89f1985efbb"
+    },
+    "current_code_unchanged_from_D270": true
+  },
+  "directed_evidence": {
+    "D266": {
+      "status": "passed",
+      "milestone": "D266"
+    },
+    "D267": {
+      "status": "passed",
+      "milestone": "D267"
+    },
+    "D268": {
+      "status": "passed",
+      "milestone": "D268",
+      "source_parent_commit": "832342dc11331a9f775eabb0d0b13b46b566a2c2",
+      "financial_routes_checked": 71
+    },
+    "D269": {
+      "status": "passed",
+      "milestone": "D269",
+      "pdf_sha256": "e8bd0d472e0763b51ff49cd1078b773d6669a6b44d4d5578ef40f1503b9122c4",
+      "source_parent_commit": "b47e199e7adbbba1ab90c08bba41801a8db47e1d",
+      "directed_unit_tests": {
+        "tests": 10,
+        "outcome": "OK",
+        "log_sha256": "24f3cfc69702fa8f71ca191031fa081a2cb505da95367882f3323a1214d871fc"
+      },
+      "critical_fields_per_case": 130,
+      "financial_routes_checked": 8
+    },
+    "D270": {
+      "status": "passed",
+      "milestone": "D270",
+      "pdf_sha256": "480c3392de2b066eaa09f1a07b3c9243b8e445ccd0a467a3e354acb738a61faa",
+      "source_parent_commit": "20972666f5ba994e9e1c56728fcefbe68a12d180",
+      "directed_unit_tests": [
+        {
+          "tests": 12,
+          "outcome": "OK",
+          "log_sha256": "7cfeaaa360648c7460b6a005bf6b64363450c2343e9c199b51fd10a915918a4f"
+        },
+        {
+          "tests": 1,
+          "outcome": "OK",
+          "log_sha256": "c515bac6627aa3068aa7e25edf561cc36a764ad9a6a1556e8d5f47587c9b752f"
+        }
+      ],
+      "current_certified_routes": 16,
+      "financial_routes_reconciled": 28
+    }
+  },
+  "pdf_sha256": "4b223ca6d7b18a226e33d1842508725e6a3dfc6e9cba64464ccfcbcbea03d4a1",
+  "regression_source_files": 2086,
+  "publication_changes": "Documentation only after the frozen D270 regression; no financial code, input, criterion or policy modified",
+  "source_catalog": "docs/MiniUW_Informe_Integral_D250.md; D266–D270 versioned specifications and validations",
+  "real_use": "PENDING until case evidence, applicable criteria/terms, named roles and authenticated authorization; unsupported contracts require separate definition/implementation/validation",
+  "full_uw": "deferred; no v2 scope added"
+}

@@ -1,6 +1,6 @@
 # Mini-UW — diseño y consolidación sintética v1
 
-Repositorio privado de fuentes, diseño y referencias. [Estructura vigente y pendientes D04](docs/current-structure/MiniUW_Estructura_Vigente_D04.md), con [matriz de los 55 campos](docs/current-structure/MiniUW_55_campos_D04.csv). [Mini-UW v1 consolidado](docs/MiniUW_v1_Consolidado.md): entrada única JSON, corrida local integrada para el perfil de obra/renta/tenencia/venta y [PDF sintético de una página](docs/review/miniuw-v1-example/MiniUW_v1_Resumen.pdf). [Contratos de siete Dots y 17 bots](docs/MiniUW_v1_Dots_y_Bots.md). La consolidación del armado independiente se verifica por ocho entregables explícitos; la validación financiera, los datos reales, las decisiones expertas y la implementación completa conservan sus puertas abiertas. Producción, evaluación de deals y despliegue siguen pausados.
+Repositorio privado de fuentes, diseño y referencias. **Cierre técnico actual: [D271](docs/MiniUW_Cierre_Tecnico_D271.md)** · [PDF](docs/review/MiniUW_Cierre_Tecnico_D271.pdf) · [Constancia](docs/review/MiniUW_Cierre_Tecnico_D271.json). Pasaron 1.766 pruebas unitarias, 26 suites de referencia, verificación integral y aceptación 16/16 en una copia limpia cotejada con D270. El cierre cubre los contratos trimestrales explícitos, M2, 15 sensibilidades, renta regulada anual por unidad y TIR con prueba optativa de unicidad. Las decisiones de política, contratos fuera de alcance y validación real siguen identificados; no se certifican las 33 políticas ni se habilitan producción o dictámenes reales. Los enlaces y registros históricos de recuperación conservan sus cortes propios. [Catálogo de procesos y fórmulas D250](docs/MiniUW_Informe_Integral_D250.md) · [Siete Dots y 17 bots](docs/MiniUW_v1_Dots_y_Bots.md).
 
 ## Leer el paquete consolidado
 
@@ -423,3 +423,7 @@ El [perfil v35](docs/workbook-regulated-rent-D269.md) recibe AMI, hogares, lími
 ## D270 · TIR trimestral con inventario de raíces probado
 
 El [certificado numérico optativo](docs/workbook-irr-certificate-D270.md) resuelve las tres TIR de Downside refi pendientes de D268 sin cambiar ningún aporte o cobro por USD 10. Pasaron 13 pruebas dirigidas, 28 rutas de caja cotejadas y 16 TIR certificadas, incluida la integración AMI/M2. [Evidencia](docs/review/MiniUW_Validacion_D270.json) · [Alcance y pendientes](docs/review/MiniUW_Alcance_y_Pendientes_D270.json). Las revisiones D267–D269 siguen reproduciéndose. La batería general sobre el código congelado se registra por separado; no hay despliegue ni dictamen real.
+
+## D271 · Regresión completa y cierre del alcance técnico
+
+La [constancia de cierre](docs/review/MiniUW_Cierre_Tecnico_D271.json) registra seis fases con código 0, 440 vacíos nulos, 98 ceros numéricos preservados, 681 archivos de código sin cambios y cuatro estados simulados de aceptación. El [informe](docs/review/MiniUW_Cierre_Tecnico_D271.pdf) separa implementación, pruebas, decisiones pendientes y puerta al piloto real. Sin despliegue, decisiones reales ni cambios de política financiera.
