@@ -181,6 +181,11 @@ def audit(results, documents, current_revision, ref):
         raise ValueError("Se requiere un expediente sintético con dictamen real PENDING")
     case_raw = documents.get("case.json")
     case = json.loads(case_raw) if case_raw is not None else None
+    if case is not None and case.get("schema") == "miniuw.synthetic-native-rental-inputs.v34":
+        from worksheet_variant_evidence_D268 import reference_issues, inventory_pending
+        issues = reference_issues((json.dumps(ref) + "\n").encode(), case)
+        if issues:
+            return inventory_pending(issues)
     if case is not None and get(case, ("rent_inputs", "deal_id")) != ref["deal_id"]:
         raise ValueError("El inventario de cotejo corresponde a otro expediente sintético")
     revision = ("revision_review",)

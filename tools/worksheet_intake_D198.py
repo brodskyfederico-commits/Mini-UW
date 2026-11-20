@@ -9,7 +9,8 @@ from miniuw_foundation.inputsheet import inspect_synthetic_input_sheet
 from miniuw_foundation.scheduled_expense_case import sha
 from miniuw_worksheet_v1 import (
     CRITERIA_FILE, DOWNSIDE_WORKBOOK_FILE, EVIDENCE_FILE, MAX_FILE_BYTES, PLAN_FILE, WORKBOOK_FILE,
-    TECHNICAL_SCHEMAS, WORKBOOK_CRITICAL_EVIDENCE_SCHEMA, encoded, write_package,
+    TECHNICAL_SCHEMAS, WORKBOOK_CRITICAL_EVIDENCE_SCHEMA, WORKBOOK_VARIANT_EVIDENCE_SCHEMA,
+    VARIANT_REFERENCE_FILE, encoded, write_package,
 )
 from preview_lorena_criteria_D192 import read_cells
 from worksheet_local_sources_D127 import synthetic_id
@@ -21,9 +22,14 @@ SOURCES = dict(workbook_raw=WORKBOOK_FILE, downside_workbook_raw=DOWNSIDE_WORKBO
                plan_raw=PLAN_FILE, evidence_raw=EVIDENCE_FILE, criteria_raw=CRITERIA_FILE)
 
 
+def source_inventory(sources):
+    return SOURCES | ({"independent_reference_raw": VARIANT_REFERENCE_FILE}
+                      if "independent_reference_raw" in sources else {})
+
+
 def fingerprints(sources):
     result = {}
-    for argument, filename in SOURCES.items():
+    for argument, filename in source_inventory(sources).items():
         raw = sources.get(argument)
         if raw is None:
             result[filename] = None
@@ -65,13 +71,17 @@ def prepare(settings, registered):
     # Compare observed bytes separately. Bind the case only to the declared registration.
     if settings.get("schema") not in TECHNICAL_SCHEMAS:
         raise ValidationError("explicit_synthetic_worksheet_settings_required")
-    if not synthetic_id(registered.get("revision")) or set(registered["files"]) != set(SOURCES.values()):
+    if not synthetic_id(registered.get("revision")) or set(registered["files"]) != (set(SOURCES.values()) |
+            ({VARIANT_REFERENCE_FILE} if settings["schema"] == WORKBOOK_VARIANT_EVIDENCE_SCHEMA else set())):
         raise ValidationError("invalid_synthetic_registration")
     case = deepcopy(settings)
     if case["schema"] == WORKBOOK_CRITICAL_EVIDENCE_SCHEMA:
         from worksheet_horizon_fiscal_D267 import reference_for
         case["critical_evidence_reference_sha256"] = sha(reference_for(case).read_bytes())
     files = registered["files"]
+    if case["schema"] == WORKBOOK_VARIANT_EVIDENCE_SCHEMA:
+        reference = files[VARIANT_REFERENCE_FILE]
+        case["critical_evidence_reference_sha256"] = None if reference is None else reference["sha256"]
 
     def expected(filename):
         return files[filename]["sha256"] if files[filename] is not None else None
@@ -97,9 +107,10 @@ def assemble(settings, registered, sources, output):
     return report | dict(registration_sha256=sha(encoded(registered)), source_blockers=issues)
 
 
-def read_source_directory(path):
+def read_source_directory(path, *, include_reference=False):
     result = {}
-    for argument, filename in SOURCES.items():
+    inventory = SOURCES | ({"independent_reference_raw": VARIANT_REFERENCE_FILE} if include_reference else {})
+    for argument, filename in inventory.items():
         source = path / filename
         if not source.exists():
             result[argument] = None
@@ -118,11 +129,12 @@ def main():
     for command in (receipt, replay):
         command.add_argument("source_directory", type=Path)
         command.add_argument("registration", type=Path)
+        command.add_argument("--include-reference", action="store_true")
     receipt.add_argument("--revision", required=True)
     replay.add_argument("--settings", type=Path, required=True)
     replay.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
-    sources = read_source_directory(args.source_directory)
+    sources = read_source_directory(args.source_directory, include_reference=args.include_reference)
     if args.command == "register":
         with args.registration.open("xb") as stream:
             stream.write(encoded(register(sources, args.revision)))

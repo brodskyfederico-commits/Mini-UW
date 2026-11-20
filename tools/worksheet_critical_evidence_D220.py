@@ -9,7 +9,15 @@ from worksheet_native_mapping_D139 import SCENARIOS
 def withhold_unverified_cash(views, documents, revision, case_sha256, reference, sources):
     claims = dict(case_sha256=case_sha256, local_review=documents, revision_review=revision,
                   scenarios=views, decision="PENDING", real_decisions_enabled=False, deployment_enabled=False)
-    evidence = audit(claims, sources, sources[CURRENT_REVISION_FILE], json.loads(reference))
+    if reference is None:
+        from worksheet_variant_evidence_D268 import inventory_pending
+        evidence = inventory_pending(["independent_reference_missing"])
+    else:
+        from worksheet_variant_evidence_D268 import SCHEMA, reference_issues, inventory_pending
+        case = json.loads(sources["case.json"])
+        issues = reference_issues(reference, case) if case.get("schema") == SCHEMA else []
+        evidence = inventory_pending(issues) if issues else audit(
+            claims, sources, sources[CURRENT_REVISION_FILE], json.loads(reference))
     blockers = {name: [] for name in SCENARIOS}
     for field, row in evidence["fields"].items():
         status = row["status"]

@@ -92,7 +92,10 @@ WORKBOOK_TECHNICAL_ACCEPTANCE_SCHEMA = "miniuw.synthetic-native-rental-inputs.v3
 WORKBOOK_FLORIDA_TAX_SCHEMA = "miniuw.synthetic-native-rental-inputs.v32"
 WORKBOOK_CRITICAL_EVIDENCE_SCHEMA = "miniuw.synthetic-native-rental-inputs.v33"
 WORKBOOK_CRITICAL_EVIDENCE_PROFILE = "synthetic_documented_florida_tax_with_critical_evidence"
-FLORIDA_TAX_SCHEMAS = (WORKBOOK_FLORIDA_TAX_SCHEMA, WORKBOOK_CRITICAL_EVIDENCE_SCHEMA)
+WORKBOOK_VARIANT_EVIDENCE_SCHEMA = "miniuw.synthetic-native-rental-inputs.v34"
+VARIANT_REFERENCE_FILE = "Independent_Reference.json"
+CRITICAL_EVIDENCE_SCHEMAS = (WORKBOOK_CRITICAL_EVIDENCE_SCHEMA, WORKBOOK_VARIANT_EVIDENCE_SCHEMA)
+FLORIDA_TAX_SCHEMAS = (WORKBOOK_FLORIDA_TAX_SCHEMA, *CRITICAL_EVIDENCE_SCHEMAS)
 TECHNICAL_SCHEMAS = (WORKBOOK_TECHNICAL_ACCEPTANCE_SCHEMA, *FLORIDA_TAX_SCHEMAS)
 DEFINITION_SCHEMAS = (WORKBOOK_DEFINITION_SCREENING_SCHEMA, *TECHNICAL_SCHEMAS)
 EVIDENCE_MILESTONES = {WORKBOOK_EVIDENCE_PDF_SCHEMA: "D156", WORKBOOK_CONSTRUCTION_PDF_SCHEMA: "D157",
@@ -197,10 +200,12 @@ def read_case(case):
 
 
 def build_results(raw, *, workbook_raw=None, downside_workbook_raw=None, current_revision_raw=None, plan_raw=None,
-                  evidence_raw=None, criteria_raw=None, delivery_report=False):
+                  evidence_raw=None, criteria_raw=None, independent_reference_raw=None, delivery_report=False):
     case = read_case_source(raw)
     schema = case.get("schema") if isinstance(case, dict) else None
     rent_inputs = case.get("rent_inputs") if isinstance(case, dict) else None
+    require(independent_reference_raw is None or schema == WORKBOOK_VARIANT_EVIDENCE_SCHEMA,
+            "Independent source inventory requires the explicit v34 profile")
     require(not isinstance(rent_inputs, dict) or "sensitivities" not in rent_inputs or schema in TECHNICAL_SCHEMAS,
             "Las sensibilidades requieren un expediente sintético de aceptación técnica")
     require(not delivery_report or schema in TECHNICAL_SCHEMAS,
@@ -244,10 +249,13 @@ def build_results(raw, *, workbook_raw=None, downside_workbook_raw=None, current
             document_review = review_documents(case, plan_raw, evidence_raw=evidence_raw,
                                                evidence_milestone=evidence_milestone)
         critical_evidence = None
-        if schema == WORKBOOK_CRITICAL_EVIDENCE_SCHEMA:
-            from worksheet_horizon_fiscal_D267 import reference_for
-            reference = reference_for(case).read_bytes()
-            require(case.get("critical_evidence_reference_sha256") == sha(reference),
+        if schema in CRITICAL_EVIDENCE_SCHEMAS:
+            if schema == WORKBOOK_VARIANT_EVIDENCE_SCHEMA:
+                reference = independent_reference_raw
+            else:
+                from worksheet_horizon_fiscal_D267 import reference_for
+                reference = reference_for(case).read_bytes()
+            require(case.get("critical_evidence_reference_sha256") == (None if reference is None else sha(reference)),
                     "El inventario D219 no coincide con la revisión registrada")
             critical_evidence = (reference, {
                 "case.json": raw, CURRENT_REVISION_FILE: current_revision_raw,
@@ -404,7 +412,7 @@ def encoded(value):
 
 
 def build_package(raw, *, workbook_raw=None, downside_workbook_raw=None, current_revision_raw=None, plan_raw=None,
-                  evidence_raw=None, criteria_raw=None, package_schema=None):
+                  evidence_raw=None, criteria_raw=None, independent_reference_raw=None, package_schema=None):
     if package_schema is None:
         case = read_case_source(raw)
         schema = case.get("schema") if isinstance(case, dict) else None
@@ -412,7 +420,8 @@ def build_package(raw, *, workbook_raw=None, downside_workbook_raw=None, current
     require(package_schema in (PACKAGE_SCHEMA, DELIVERY_PACKAGE_SCHEMA), "Formato de expediente desconocido")
     result, pdf = build_results(raw, workbook_raw=workbook_raw, downside_workbook_raw=downside_workbook_raw,
                                 current_revision_raw=current_revision_raw, plan_raw=plan_raw, evidence_raw=evidence_raw,
-                                criteria_raw=criteria_raw, delivery_report=package_schema == DELIVERY_PACKAGE_SCHEMA)
+                                criteria_raw=criteria_raw, independent_reference_raw=independent_reference_raw,
+                                delivery_report=package_schema == DELIVERY_PACKAGE_SCHEMA)
     files = {"case.json": raw, "results.json": encoded(result), "MiniUW_Resumen.pdf": pdf}
     if workbook_raw is not None:
         files[WORKBOOK_FILE] = workbook_raw
@@ -426,6 +435,8 @@ def build_package(raw, *, workbook_raw=None, downside_workbook_raw=None, current
         files[EVIDENCE_FILE] = evidence_raw
     if criteria_raw is not None:
         files[CRITERIA_FILE] = criteria_raw
+    if independent_reference_raw is not None:
+        files[VARIANT_REFERENCE_FILE] = independent_reference_raw
     files["package.json"] = encoded(dict(
         schema=package_schema, state=result["state"], decision=result["decision"],
         files=[dict(path=name, bytes=len(content), sha256=sha(content)) for name, content in sorted(files.items())],
@@ -438,7 +449,7 @@ def read_package(directory):
     require(not directory.is_symlink() and directory.is_dir(), "A regular output directory is required")
     paths = list(directory.iterdir())
     names = {p.name for p in paths}
-    require(FILES <= names <= FILES | {WORKBOOK_FILE, DOWNSIDE_WORKBOOK_FILE, CURRENT_REVISION_FILE, PLAN_FILE, EVIDENCE_FILE, CRITERIA_FILE}
+    require(FILES <= names <= FILES | {WORKBOOK_FILE, DOWNSIDE_WORKBOOK_FILE, CURRENT_REVISION_FILE, PLAN_FILE, EVIDENCE_FILE, CRITERIA_FILE, VARIANT_REFERENCE_FILE}
             and all(p.is_file() and not p.is_symlink() and p.stat().st_size <= MAX_FILE_BYTES for p in paths),
             "Exact regular case, results, PDF and manifest files are required")
     return {p.name: p.read_bytes() for p in paths}
@@ -457,6 +468,7 @@ def _audit_package(directory):
                                      downside_workbook_raw=saved.get(DOWNSIDE_WORKBOOK_FILE),
                                      current_revision_raw=saved.get(CURRENT_REVISION_FILE), plan_raw=saved.get(PLAN_FILE),
                                      evidence_raw=saved.get(EVIDENCE_FILE), criteria_raw=saved.get(CRITERIA_FILE),
+                                     independent_reference_raw=saved.get(VARIANT_REFERENCE_FILE),
                                      package_schema=_read_package_schema(saved))
     require(saved == expected, "Output does not match source-first replay")
     return expected, result
@@ -486,11 +498,11 @@ def status(operation, result):
 
 
 def write_package(raw, directory, *, workbook_raw=None, downside_workbook_raw=None, current_revision_raw=None, plan_raw=None,
-                  evidence_raw=None, criteria_raw=None):
+                  evidence_raw=None, criteria_raw=None, independent_reference_raw=None):
     saved = read_package(directory) if directory.exists() or directory.is_symlink() else None
     expected, result = build_package(raw, workbook_raw=workbook_raw, downside_workbook_raw=downside_workbook_raw,
                                      current_revision_raw=current_revision_raw, plan_raw=plan_raw, evidence_raw=evidence_raw,
-                                     criteria_raw=criteria_raw,
+                                     criteria_raw=criteria_raw, independent_reference_raw=independent_reference_raw,
                                      package_schema=_read_package_schema(saved) if saved is not None else None)
     if saved is not None:
         require(read_package(directory) == expected, "Existing output differs from the requested case")
@@ -573,6 +585,10 @@ def deliver_package(directory, output, current_revision):
             f'La revisión no está vigente: {", ".join(review["revision_blockers"])}')
     unavailable = [name for name in ("Base", "Downside")
                    if not (result["scenarios"].get(name, {}).get("cash_per_usd_10") or {}).get("events")]
+    if read_case_source(files["case.json"]).get("schema") == WORKBOOK_VARIANT_EVIDENCE_SCHEMA:
+        from worksheet_variant_evidence_D268 import capacity_only_delivery
+        case = read_case_source(files["case.json"])
+        unavailable = [name for name in unavailable if not capacity_only_delivery(case, result, name)]
     require(not unavailable, f'Flujos por USD 10 PENDING: {", ".join(unavailable)}')
     require(result["decision"] == "PENDING" and result["page_count"] == 1
             and not result["real_decisions_enabled"] and not result["deployment_enabled"],
