@@ -1,5 +1,7 @@
 # Mini-UW — diseño y consolidación sintética v1
 
+**Expediente integral para revisión profesional D272:** [PDF de 143 páginas](docs/review/MiniUW_Expediente_Integral_Revision_Profesional_D272.pdf) · [Texto](docs/MiniUW_Expediente_Integral_Revision_Profesional_D272.md) · [Control de integridad](docs/review/MiniUW_Validacion_Expediente_D272.json). Destaca criterios pendientes de Lorena frente a datos del equipo, e incorpora el código y los contratos íntegros como adjunto electrónico. No modifica ni activa reglas.
+
 Repositorio privado de fuentes, diseño y referencias. **Cierre técnico actual: [D271](docs/MiniUW_Cierre_Tecnico_D271.md)** · [PDF](docs/review/MiniUW_Cierre_Tecnico_D271.pdf) · [Constancia](docs/review/MiniUW_Cierre_Tecnico_D271.json). Pasaron 1.766 pruebas unitarias, 26 suites de referencia, verificación integral y aceptación 16/16 en una copia limpia cotejada con D270. El cierre cubre los contratos trimestrales explícitos, M2, 15 sensibilidades, renta regulada anual por unidad y TIR con prueba optativa de unicidad. Las decisiones de política, contratos fuera de alcance y validación real siguen identificados; no se certifican las 33 políticas ni se habilitan producción o dictámenes reales. Los enlaces y registros históricos de recuperación conservan sus cortes propios. [Catálogo de procesos y fórmulas D250](docs/MiniUW_Informe_Integral_D250.md) · [Siete Dots y 17 bots](docs/MiniUW_v1_Dots_y_Bots.md).
 
 ## Leer el paquete consolidado
