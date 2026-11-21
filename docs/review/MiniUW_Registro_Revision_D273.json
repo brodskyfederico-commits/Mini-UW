@@ -1,11 +1,11 @@
 {
-  "source_path": "outputs/Mini-UW/docs/MiniUW_Instrucciones_Codex_D273.md",
+  "source_path": "docs/MiniUW_Instrucciones_Codex_D273.md",
   "sha256": "3ce1174702cfbc53d2d90ad296494693d7204f1d0babf7e6e31e7f0b953a6c33",
   "kind": "expert_review_evidence_not_automatic_policy_authority",
   "tasks": [
     {
       "id": "T1",
-      "state": "implementado; 26 dirigidas aprobadas; cierre general del corte final en curso",
+      "state": "implementado y validado con batería general sintética",
       "criterion_adoption": false,
       "schema": "miniuw.synthetic-native-rental-inputs.v36",
       "directed_checker": "passed",
@@ -13,7 +13,8 @@
       "pipeline_binding": "caso v36 y PDF entregado; prueba independiente de huellas añadida",
       "cash_precision": "protocolo existente de 1300 dígitos, sin redondear ni completar vacíos",
       "capacity_control": "refi Downside PENDING; caja y PDF sin refi conservados",
-      "outside_horizon": "no es un cero observado"
+      "outside_horizon": "no es un cero observado",
+      "validation": "docs/review/MiniUW_Validacion_D273.json"
     },
     {
       "id": "T2",
@@ -116,7 +117,7 @@
   ],
   "deployment_enabled": false,
   "real_decision": "PENDING",
-  "review_status": "technical_changes_in_progress_not_all_14_closed",
+  "review_status": "T1 validado; T12 parcial por decisión del usuario; T2-T11 y T13-T14 pendientes",
   "libreoffice_available": false,
   "git_backups_authorized_by_user": true,
   "network_scope": "Only ordinary GitHub milestones under prior explicit authorization; no external financial/official-source queries or CI budget changes"

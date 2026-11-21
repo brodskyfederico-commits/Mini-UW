@@ -1,5 +1,5 @@
 {
-  "scope": "D273 T1 and user-confirmed joint RLV scope. Correct case/PDF trace, cash rational protocol alignment, capacity-blocked refinance with verified no-refi alternative, and outside-horizon periods distinguished from zero. 26 directed tests passed; final 1792-test general regression pending. No criteria adoption, real decision or deployment; other expert tasks remain open.",
+  "scope": "D273: T1 validated with full synthetic regression; opt-in all-applicable joint RLV scope confirmed by user. 1792 unit tests, 26 reference suites, D200 16/16, v25-v35 byte-identical. 686 tested Python files unchanged; documentary closeout additions only after testing. T12 partial; other professional-review tasks tracked, not claimed complete. No criteria adopted, deployment or real decision.",
   "files": [
     {
       "path": ".github/workflows/miniuw-integral-usd10.yml",
@@ -23,13 +23,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 96757,
-      "sha256": "71fdda7a81191510fa050e9c42ceabadb28b31db7be6659e1689aa511a9662a0"
+      "bytes": 97072,
+      "sha256": "ad80bd22e6c0bd41d4873713ef8f5f0415d68583c502dc54a315bdf734f9861f"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 422071,
-      "sha256": "0c00aecbe1b855fcd496ba5d4d59702e93b3057ff4fb5dd04902b94acaed62e8"
+      "bytes": 423991,
+      "sha256": "abf6b6441647db6d09d8d1da50e276726a467022759b34d1283e8dc66283435c"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -1067,6 +1067,11 @@
       "sha256": "3dbfd17f5353d63b929d07949a068cfa34b8f53c7dfa2fd265a109481260313a"
     },
     {
+      "path": "docs/review/MiniUW_Cobertura_Revision_D273.json",
+      "bytes": 43834,
+      "sha256": "42e0589b41762bbc8f171ad99d8d524d3ba9864ee1585542262bc9ad718df7a3"
+    },
+    {
       "path": "docs/review/MiniUW_Cotejo_Independiente_D179.csv",
       "bytes": 192983,
       "sha256": "4d91b73c40aa5148791ab32f4a74d7682ce0aefdee73e727d7439a92d6f30601"
@@ -1413,8 +1418,8 @@
     },
     {
       "path": "docs/review/MiniUW_Registro_Revision_D273.json",
-      "bytes": 4354,
-      "sha256": "a87c44e5271eb2d694f3ba968818c8874875274dc4570cdf56d7386db19738d0"
+      "bytes": 4411,
+      "sha256": "ad6e74bc348ffed3e31cb58062f98da88b530588097c67e8e9b6947a409f24d3"
     },
     {
       "path": "docs/review/MiniUW_Renta_Regulada_D269.pdf",
@@ -1485,6 +1490,11 @@
       "path": "docs/review/MiniUW_Validacion_D270.json",
       "bytes": 136719,
       "sha256": "5268c79a564c094cdd4aef733a58bb761ab40cc2a337216011c4e5e626e2424d"
+    },
+    {
+      "path": "docs/review/MiniUW_Validacion_D273.json",
+      "bytes": 51138,
+      "sha256": "17b6b1448a9660cea6609a6ce5d6fdbc154cb95510410b73dad2966650a4ee10"
     },
     {
       "path": "docs/review/MiniUW_Validacion_Expediente_D272.json",
@@ -3983,8 +3993,8 @@
     },
     {
       "path": "docs/workbook-return-summary-D273.md",
-      "bytes": 7149,
-      "sha256": "81a42ed16e187192b704a730e0535111d917bbe01e02046b42e203216eb3600d"
+      "bytes": 7934,
+      "sha256": "540e507777d5b32b7ffee8b06975c1373bdf0f1121cd7966230e5a84e1fcc7c8"
     },
     {
       "path": "docs/workbook-reverse-citation-recovery-D224.md",
