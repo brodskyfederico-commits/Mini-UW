@@ -59,10 +59,13 @@ def oracle(spec,sources,name):
   commercial[d]=totals
  budget_cfg=inputs['construction_budget']['scenarios'][name];basis=sheet['C34']['literal'];qty=units if basis=='$/UNIT' else Q(1) if basis=='TOTAL' else F(inputs['development']['scenarios'][name]['plan_gsf']['value']);vertical=c('C35')*qty;hard=vertical+c('C37')*budget_cfg['parking']['spaces']+c('C38');contingency=hard*c('C39');soft=(hard+contingency)*c('C40');area=sum(F(v['rentable_sf']) for v in inputs['commercial']['uses'].values() if v['applies']);land=c('C32')*(1+c('C33'));leaseup=F(inputs['project_calendar']['scenarios'][name]['lease_up_shortfall_per_month'])*c('C47');uses=defaultdict(Q);draws=defaultdict(Q);receipts=defaultdict(Q)
  uses[start]+=land;uses[finish]+=contingency+leaseup+c('C41')*area
- bank=inputs['construction_financing']['scenarios'][name];commitment=min(hard*c('C51'),F(bank['maximum_commitment']));fee=commitment*c('C53');uses[start]+=fee
+ bank=inputs['construction_financing']['scenarios'][name];eligible=land+hard+contingency+soft+c('C41')*area if spec.get('schema')=='miniuw.synthetic-native-rental-inputs.v38' else hard;commitment=min(eligible*c('C51'),F(bank['maximum_commitment']));fee=commitment*c('C53');uses[start]+=fee
  for row in cfg['hard_schedule']:
   d=date.fromisoformat(row['date']);amount=hard*F(row['fraction']);uses[d]+=amount;draws[d]+=amount*F(bank['requested_invoice_fraction'])
  for row in cfg['soft_schedule']:uses[date.fromisoformat(row['date'])]+=soft*F(row['fraction'])
+ if spec.get('schema')=='miniuw.synthetic-native-rental-inputs.v38':
+  share=F(bank['requested_invoice_fraction']);draws[start]+=land*share;draws[finish]+=(contingency+c('C41')*area)*share
+  for row in cfg['soft_schedule']:draws[date.fromisoformat(row['date'])]+=soft*F(row['fraction'])*share
  premium=F(cfg['builders_risk']['quoted_premium']);assert cfg['builders_risk']['premium_basis']=='quoted_premium' and not cfg['builders_risk']['included_in_gc'] and not cfg['builders_risk']['included_in_soft_percentage'];uses[date.fromisoformat(cfg['builders_risk']['payment_date'])]+=premium
  tax_accrual=Q()
  for i in range(pre):

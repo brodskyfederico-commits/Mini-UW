@@ -1,0 +1,92 @@
+{
+  "schema": "miniuw.expert-review-coverage.D277.v1",
+  "original": {
+    "path": "docs/review/MiniUW_Revision_D276_Original.pdf",
+    "sha256": "52c7da5e162c2d980359dc8faea0f9bdbbd03cf25d2043fb5ec9153087d6fb08",
+    "pages": 2
+  },
+  "rows": [
+    {
+      "id": "R1",
+      "source": "p.2, Instrucciones R1",
+      "state": "AWAITING_FINAL_FROZEN_REGRESSION",
+      "definition": "Complete final battery after all changes, restart whole battery if interrupted; tested Git commit and every phase must be recorded",
+      "evidence": []
+    },
+    {
+      "id": "R2",
+      "source": "p.1 finding1; p.2 R2",
+      "state": "DIRECTED_TESTED",
+      "definition": "Separate pre-refi/common closing, refinance cash-in and later operating calls. Base USD8.21111953525 occurs over20 operating calls2028-04-01..2033-01-01, not at refinance. Both strategies identical before refinance and for common closing project uses",
+      "code": [
+        "tools/worksheet_cash_attribution_D277.py"
+      ],
+      "tests": [
+        "tests/test_cash_attribution_D277.py"
+      ],
+      "evidence": [
+        "work-local R2-original-ledger-diagnostic.json"
+      ]
+    },
+    {
+      "id": "R3",
+      "source": "p.1 finding2; p.2 R3",
+      "state": "DIRECTED_TESTED",
+      "definition": "Ten Lorena metrics, historical references not current; cash-in/equity and asking/supported visible. House RLV and real decision remain PENDING without criteria",
+      "code": [
+        "tools/worksheet_decision_page_D277.py"
+      ],
+      "tests": [
+        "tests/test_review_D277.py"
+      ]
+    },
+    {
+      "id": "R4",
+      "source": "p.1 finding3; p.2 R4",
+      "state": "DIRECTED_TESTED",
+      "definition": "Each pending frontier or tornado identifies capacity/DSCR/LTV/DY, missing root or nonmonotonicity on the page; no resizing requested debt",
+      "code": [
+        "tools/worksheet_monthly_analysis_D277.py"
+      ],
+      "tests": [
+        "tests/test_analysis_reasons_D277.py"
+      ]
+    },
+    {
+      "id": "R5",
+      "source": "p.2 finding4; p.2 R5",
+      "state": "DIRECTED_TESTED_AWAITING_FINAL_RELEASE",
+      "definition": "New synthetic v3 calibrated to reviewer ranges; v1/v2 immutable. Opt-in v38 requires raw bank addendum for all five eligible M3 roles, not a reinterpretation of legacy C51",
+      "code": [
+        "tools/worksheet_project_financing_D277.py",
+        "tools/check_monthly_south_florida_D277.py"
+      ],
+      "tests": [
+        "tests/test_review_D277.py"
+      ],
+      "fixture": "templates/golden_case_v3"
+    },
+    {
+      "id": "R6",
+      "source": "p.2 finding5; p.2 R6",
+      "state": "DIRECTED_TESTED_AWAITING_FINAL_RELEASE",
+      "definition": "Source-bound explicit authored asking note, 21 points asking±30%, center marked. 15% annual target only mathematical; outside finite range explicit, never extrapolated/adopted as RLV. Fixed construction debt must also respect LTC at the evaluated price",
+      "code": [
+        "tools/worksheet_monthly_analysis_D277.py"
+      ],
+      "tests": [
+        "tests/test_review_D277.py",
+        "tests/test_analysis_reasons_D277.py"
+      ]
+    }
+  ],
+  "criteria_adopted": false,
+  "deployment_enabled": false,
+  "real_decision": "PENDING",
+  "external_gates": [
+    "Lorena40 confirmation cells E7:H16 +L01-L07 +date and applicable Downside FAIL",
+    "Four people/identity/authority",
+    "Real source evidence, empirical OCR labels and3–5 deal backtest",
+    "Actual LP/GP allocation terms;1101 discrepancies and10 missing cells remain separate"
+  ]
+}

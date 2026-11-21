@@ -48,7 +48,16 @@ def counterfactual(base,sources,result,driver,movement,*,only_scenario=None):
   contract['commercial']=deepcopy(commercial)
   calendar=i['project_calendar']['scenarios'][name];budget_cfg=i['construction_budget']['scenarios'][name];units=sum(g['units'] for g in i['groups'].values());vertical=cell('C35')*units;direct=vertical+cell('C37')*budget_cfg['parking']['spaces']+cell('C38');cont=direct*cell('C39');soft=(direct+cont)*cell('C40');contract['budget'].update(direct_hard=R(direct),contingency=R(cont),soft=R(soft),residential_leaseup=R(F(calendar['lease_up_shortfall_per_month'])*cell('C47')))
   old_direct=F(result['monthly_contracts'][name]['budget']['direct_hard']);old_soft=F(result['monthly_contracts'][name]['budget']['soft']);events=[deepcopy(e) for p in contract['construction']['periods'] for e in p['events']]
-  construction=contract['construction'];construction.update(stabilization=str(stable),annual_rate=R(cell('C52')),eligible_total=R(direct),periods=[dict(start=str(month(start,k)),end=str(month(start,k+1)),inventory_complete=True,source_ref='SYNTHETIC-D276-hypothetical-calendar',events=[]) for k in range(pre)])
+  construction=contract['construction'];project=spec.get('schema')=='miniuw.synthetic-native-rental-inputs.v38'
+  eligible=F(contract['budget']['land'])+direct+cont+soft+F(contract['budget']['ti_lc']) if project else direct
+  construction.update(stabilization=str(stable),annual_rate=R(cell('C52')),eligible_total=R(eligible),periods=[dict(start=str(month(start,k)),end=str(month(start,k+1)),inventory_complete=True,source_ref='SYNTHETIC-D276-hypothetical-calendar',events=[]) for k in range(pre)])
+  if project:
+   source_uses={e['id']:e for e in events if e['kind']=='use'}
+   for e in events:
+    if e['kind']=='draw':
+     u=source_uses[e['source_use_id']];factor=direct/old_direct if u['id'].startswith('hard-invoice-') else soft/old_soft if u['id'].startswith('soft-') else Q(1)
+     if u['id']=='contingency':factor=cont/F(result['monthly_contracts'][name]['budget']['contingency'])
+     e['amount']=R(F(e['amount'])*factor);e['eligible_invoice']=R(F(e['eligible_invoice'])*factor)
   for event in events:
    if event['id'].startswith(('hard-invoice-','hard-draw-')):
     event['amount']=R(F(event['amount'])*direct/old_direct)
@@ -121,9 +130,11 @@ def experiments(base,sources,result,progress=None):
      if p['state']!='CALCULATED':return dict(movement=R(x),state='PENDING',reason=p['reason'])
      v=p['scenarios'][s]
      if v['state']!='CALCULATED':return dict(movement=R(x),state='PENDING',reason=v.get('reason','Falta cálculo del escenario'))
-     r=v[key];cash=r.get('cash_per_usd_10');record=dict(movement=R(x),state=r['state'],within_capacity=v['capacity']['within_capacity'],capacity=v['capacity'],cash_sha256=None if cash is None else digest(cash))
+     r=v[key];cash=r.get('cash_per_usd_10');record=dict(movement=R(x),state=r['state'],within_capacity=v['capacity']['within_capacity'],capacity=v['capacity'],construction_principal=v['construction_financing']['terminal_principal'],cash_sha256=None if cash is None else digest(cash))
      if cash:record.update(capital_margin=R(F(cash['total_distributions'])-F(cash['total_contributions'])),total_contributions=cash['total_contributions'],total_receipts=cash['total_distributions'],irr_annual=r['return_summary']['irr_annual'],equity_multiple=cash['equity_multiple'])
-     else:record['reason']='Préstamo supera capacidad o estrategia bloqueada; no se interpreta como pérdida cero'
+     else:
+      limits=[k for k,value in v['capacity'].get('limits',{}).items() if F(v['capacity']['requested_principal'])>F(value)] if 'requested_principal' in v['capacity'] else v['capacity'].get('active_limits',[])
+      record['reason']='Capacidad '+('/'.join(limits) or 'DSCR/LTV/DY')+': préstamo fijo supera límite; no se reajusta';record['reason_code']='CAPACITY' if not v['capacity']['within_capacity'] else 'MISSING_CASH'
      return record
     adverse_rows=[row(x,p) for x,p in adverse];favorable_rows=[row(x,p) for x,p in favorable];baseline=adverse_rows[0];first=next((a for a in adverse_rows if a['state']=='CALCULATED' and F(a['capital_margin'])<0),None);recovery=next((a for a in favorable_rows if a['state']=='CALCULATED' and F(a['capital_margin'])>=0),None)
     output[s][route][driver]=dict(unit=DRIVERS[driver]['unit'],range_upper=R(stop),resolution=R(spacing),baseline_breached=baseline.get('capital_margin') is not None and F(baseline['capital_margin'])<0,adverse=adverse_rows,favorable=favorable_rows,first_sampled_capital_breach=first,first_sampled_recovery=recovery,recovery_state='RECOVERED_ON_DECLARED_GRID' if recovery else 'NOT_RECOVERED_OR_PENDING_WITHIN_DECLARED_GRID',monotonicity='No global monotonicity asserted; every declared point is displayed')

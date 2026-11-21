@@ -97,7 +97,8 @@ VARIANT_REFERENCE_FILE = "Independent_Reference.json"
 WORKBOOK_REGULATED_RENT_SCHEMA = "miniuw.synthetic-native-rental-inputs.v35"
 WORKBOOK_RETURN_SUMMARY_SCHEMA = "miniuw.synthetic-native-rental-inputs.v36"
 WORKBOOK_MONTHLY_INTEGRATION_SCHEMA = "miniuw.synthetic-native-rental-inputs.v37"
-INDEPENDENT_EVIDENCE_SCHEMAS = (WORKBOOK_VARIANT_EVIDENCE_SCHEMA, WORKBOOK_REGULATED_RENT_SCHEMA, WORKBOOK_MONTHLY_INTEGRATION_SCHEMA)
+WORKBOOK_PROJECT_FINANCING_SCHEMA = "miniuw.synthetic-native-rental-inputs.v38"
+INDEPENDENT_EVIDENCE_SCHEMAS = (WORKBOOK_VARIANT_EVIDENCE_SCHEMA, WORKBOOK_REGULATED_RENT_SCHEMA, WORKBOOK_MONTHLY_INTEGRATION_SCHEMA, WORKBOOK_PROJECT_FINANCING_SCHEMA)
 CRITICAL_EVIDENCE_SCHEMAS = (WORKBOOK_CRITICAL_EVIDENCE_SCHEMA, *INDEPENDENT_EVIDENCE_SCHEMAS)
 FLORIDA_TAX_SCHEMAS = (WORKBOOK_FLORIDA_TAX_SCHEMA, *CRITICAL_EVIDENCE_SCHEMAS)
 TECHNICAL_SCHEMAS = (WORKBOOK_TECHNICAL_ACCEPTANCE_SCHEMA, *FLORIDA_TAX_SCHEMAS)
@@ -167,7 +168,7 @@ EXACT_PERMANENT_SENSITIVITY_SCHEMA = "miniuw.synthetic-worksheet-sensitivities.v
 
 def read_case_source(raw):
     case = _json(raw, MAX_REGULATED_RENT_BYTES)
-    if isinstance(case, dict) and case.get("schema") in (WORKBOOK_REGULATED_RENT_SCHEMA, WORKBOOK_RETURN_SUMMARY_SCHEMA, WORKBOOK_MONTHLY_INTEGRATION_SCHEMA):
+    if isinstance(case, dict) and case.get("schema") in (WORKBOOK_REGULATED_RENT_SCHEMA, WORKBOOK_RETURN_SUMMARY_SCHEMA, WORKBOOK_MONTHLY_INTEGRATION_SCHEMA, WORKBOOK_PROJECT_FINANCING_SCHEMA):
         return case
     if len(raw) > MAX_CONSTRUCTION_PILOT_BYTES:
         return _json(raw, MAX_CONSTRUCTION_PILOT_BYTES)
@@ -214,7 +215,7 @@ def build_results(raw, *, workbook_raw=None, downside_workbook_raw=None, current
                   evidence_raw=None, criteria_raw=None, independent_reference_raw=None, delivery_report=False):
     case = read_case_source(raw)
     schema = case.get("schema") if isinstance(case, dict) else None
-    if schema == WORKBOOK_MONTHLY_INTEGRATION_SCHEMA:
+    if schema in (WORKBOOK_MONTHLY_INTEGRATION_SCHEMA, WORKBOOK_PROJECT_FINANCING_SCHEMA):
         from worksheet_monthly_native_D276 import build_case
         return build_case(case, raw, workbook_raw=workbook_raw, downside_workbook_raw=downside_workbook_raw, current_revision_raw=current_revision_raw, plan_raw=plan_raw, evidence_raw=evidence_raw, criteria_raw=criteria_raw, independent_reference_raw=independent_reference_raw, delivery_report=delivery_report)
     if schema == WORKBOOK_RETURN_SUMMARY_SCHEMA:
@@ -630,7 +631,7 @@ def deliver_package(directory, output, current_revision):
         delivery_case = baseline(delivery_case)
     if delivery_case.get("schema") in INDEPENDENT_EVIDENCE_SCHEMAS:
         from worksheet_variant_evidence_D268 import capacity_only_delivery
-        if delivery_case.get("schema") == WORKBOOK_MONTHLY_INTEGRATION_SCHEMA:
+        if delivery_case.get("schema") in (WORKBOOK_MONTHLY_INTEGRATION_SCHEMA, WORKBOOK_PROJECT_FINANCING_SCHEMA):
             unavailable = [name for name in unavailable if not (
                 result["scenarios"][name].get("state") == "CALCULATED"
                 and result["scenarios"][name].get("capacity", {}).get("within_capacity") is False

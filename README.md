@@ -448,3 +448,8 @@ The [v37 monthly profile](docs/workbook-monthly-integration-D276.md) now connect
 104 directed tests passed in the recorded batches. The D275 full run was interrupted and resumed on its frozen source cut; it is not presented as completed. The separate D276 general regression must also have its own final constance. Neither is inferred from the directed tests. See the [coverage matrix](docs/review/MiniUW_Cobertura_Revision_D276.json) and [validation](docs/review/MiniUW_Validacion_D276.json).
 
 The [8-page professional update](docs/review/MiniUW_Actualizacion_Profesional_D276.pdf), [Lorena annex](docs/review/MiniUW_Anexo_Lorena_D276.pdf) and [one-page outcome](docs/review/MiniUW_Resultado_Una_Pagina_D276.pdf) separate implementation, mathematical counterfactuals, regression and real-use gates. No criteria adoption, deployment, real decision, real-document accuracy claim or authenticated approval is implied. The 15% annual price target is a synthetic experiment, not a newly adopted Lorena threshold. Unsupported cost bases, per-use cap allocations or missing evidence stay PENDING.
+
+
+### D277 · Correcciones de la revisión D276 (candidato)
+
+La [matriz R1–R6](docs/review/MiniUW_Cobertura_Revision_D277.json) distingue atribución de aportes, diez métricas, causas visibles, grilla de precio pedido y nuevo [v3 sintético](templates/golden_case_v3/golden_manifest.json). V1/v2 se conservan. El perfil optativo v38 no cambia la base de financiación anterior. Criterios y dictamen real permanecen PENDING; la regresión final requiere constancia independiente antes del cierre.

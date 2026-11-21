@@ -1,5 +1,5 @@
 {
-  "scope": "D276: monthly source integration, corrected refinance cash-in CoC,104 directed tests,1828 exact baseline checks, four-route quarterly cash and CoC controls, current-only PDF delivery passed. General regressions D275 resumed/D276 queued; not claimed passed. Golden cases immutable; no adopted criteria, real decision or deployment.",
+  "scope": "D277 candidate: expert corrections R2-R6, new synthetic v3/v38. R1 requires final complete frozen regression; not yet claimed. No criteria adoption, real decision or deployment.",
   "files": [
     {
       "path": ".github/workflows/miniuw-integral-usd10.yml",
@@ -23,13 +23,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 100302,
-      "sha256": "a4083f03d513db67b936b69bc2448a48dc93154c1ed3ba22b63620fe4ecec497"
+      "bytes": 100801,
+      "sha256": "0ae2780335a2d0dbb0ae4eccf593dcdbda66a2b1b69dd5207e5ce57c616e5ac6"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 432863,
-      "sha256": "afb4d2ef881f0469a0c7e87a5ddc4fbae5b0a89e30b840413dc39cfcd288d539"
+      "bytes": 435891,
+      "sha256": "dda94f33301d9f82b16b1379e3bfcb356ab9584492bbd6c2a1c0ad13b11345af"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -1102,6 +1102,11 @@
       "sha256": "5fbd01410742df0467401e1d0dddc01fc709ac89f62311d4f79ae88b576893ba"
     },
     {
+      "path": "docs/review/MiniUW_Cobertura_Revision_D277.json",
+      "bytes": 3548,
+      "sha256": "e38e37ca2837195856bd6c895a055c5add8a8ff840d9b7ef2222ea8729c332f4"
+    },
+    {
       "path": "docs/review/MiniUW_Cotejo_Independiente_D179.csv",
       "bytes": 192983,
       "sha256": "4d91b73c40aa5148791ab32f4a74d7682ce0aefdee73e727d7439a92d6f30601"
@@ -1515,6 +1520,11 @@
       "path": "docs/review/MiniUW_Revision_D275_Original.pdf",
       "bytes": 88276,
       "sha256": "ed7b412fdc3df144629ee673b6fb4d8b7ee05775b8b455d45db3e6e625898767"
+    },
+    {
+      "path": "docs/review/MiniUW_Revision_D276_Original.pdf",
+      "bytes": 94889,
+      "sha256": "52c7da5e162c2d980359dc8faea0f9bdbbd03cf25d2043fb5ec9153087d6fb08"
     },
     {
       "path": "docs/review/MiniUW_Revision_Interna_Retorno_T56.md",
@@ -5922,6 +5932,51 @@
       "sha256": "ef1857a42f2a789c61fe19aabbdb368bf58d23577b67a5ef8d5aafd4a9412325"
     },
     {
+      "path": "templates/golden_case_v3/Criterios_Lorena.xlsx",
+      "bytes": 9652,
+      "sha256": "d1d992c6cd2cd7dec48498f3b3fc476730d6ad409dc9bce1155cb42a455b420e"
+    },
+    {
+      "path": "templates/golden_case_v3/Downside_Inputs.xlsx",
+      "bytes": 8827,
+      "sha256": "e9ff5f620a55405cd03620e3d9902eada5731cc8f2363fe2b4d0d18936e77694"
+    },
+    {
+      "path": "templates/golden_case_v3/Evidence.pdf",
+      "bytes": 899207,
+      "sha256": "5631f7801e04a78022876f980e6f9f1a2455c2cb1929a297b89ee497eb2a7304"
+    },
+    {
+      "path": "templates/golden_case_v3/Independent_Reference.json",
+      "bytes": 642,
+      "sha256": "bd985d7bdbfd8fd10fb5f732b0a943a14bc39cd865b2f600a95ff21e03f47f2c"
+    },
+    {
+      "path": "templates/golden_case_v3/Inputs.xlsx",
+      "bytes": 8813,
+      "sha256": "8ee987546804da0298c34340d88e1eeba73678748fba114069e810768cb9c3e4"
+    },
+    {
+      "path": "templates/golden_case_v3/Plan.pdf",
+      "bytes": 25278,
+      "sha256": "9bd384c0da7d911c06d276573db8e5a974aaca9c49dcbbc3cf36ed108639f0ff"
+    },
+    {
+      "path": "templates/golden_case_v3/expected_financials.json",
+      "bytes": 210684,
+      "sha256": "c6324357d2f5846568de37b32166028ae181a433fb905676fccd8b7557ea7e34"
+    },
+    {
+      "path": "templates/golden_case_v3/golden_manifest.json",
+      "bytes": 1047,
+      "sha256": "ccc972b7d1ae693dd79bb25f6a276ae777d19c3cc6b7ccb1359a51ba74f0d47f"
+    },
+    {
+      "path": "templates/golden_case_v3/settings.json",
+      "bytes": 78147,
+      "sha256": "200ed4c81eced8ec2975053c3d66ebb8edd81745c86518901bacff9fa0d25bf7"
+    },
+    {
       "path": "templates/handoff-review-D12-empty.json",
       "bytes": 3524,
       "sha256": "afd0f4da46da95af2d975e2946f26b8331e4a529ed31e2a5273256df85f74cb6"
@@ -8272,6 +8327,11 @@
       "sha256": "777a140373ee30a82e9c2aa2bec29bd59a4600a3ae7dd0a981bc4d263340a30a"
     },
     {
+      "path": "tests/test_analysis_reasons_D277.py",
+      "bytes": 1556,
+      "sha256": "df502d0042887d468c21bb45bffd11794b34226e4ccacf54e33fd02879b523ab"
+    },
+    {
       "path": "tests/test_archive.py",
       "bytes": 13264,
       "sha256": "eae6a3f355fbe3e3358932fd1407d88f9159b0ce8a5bc1a0b9cc6db05e8ede6c"
@@ -8305,6 +8365,11 @@
       "path": "tests/test_capital_checked_output.py",
       "bytes": 11287,
       "sha256": "3e663823f0af6139ef1b09f9f57ca39f0085de9d47070dc19c864c348a375db3"
+    },
+    {
+      "path": "tests/test_cash_attribution_D277.py",
+      "bytes": 3259,
+      "sha256": "01987a5f8c51bd565a30070510671257ff631270da55e121a19ddcc2a01c130e"
     },
     {
       "path": "tests/test_cash_participation.py",
@@ -8647,6 +8712,11 @@
       "sha256": "5acd331f7670def390ad33246b7989cb1a7afbce34053653f94829c8e2402b9b"
     },
     {
+      "path": "tests/test_regression_ocr_cache_D277.py",
+      "bytes": 2265,
+      "sha256": "c7a96f3f7ed1b31fc762d7d3f115fdab7bec7b501a95c73bec0f0ea9d0bb860b"
+    },
+    {
       "path": "tests/test_rental_calendar.py",
       "bytes": 8881,
       "sha256": "8cb6d2ee3bf36967b1362e0f665dc63c3c7645eb421ac85f223b9ffa8b7a7ceb"
@@ -8670,6 +8740,11 @@
       "path": "tests/test_review_D276.py",
       "bytes": 6814,
       "sha256": "0a6dbfaa356b7e62065eaf9b3a539b4fb5b3003d84e41cf62ead21d993cfe841"
+    },
+    {
+      "path": "tests/test_review_D277.py",
+      "bytes": 9079,
+      "sha256": "792e12314d9f2955f0a53787cd94f826a5e324e3c28f74f5e2f7c8ce171e04cc"
     },
     {
       "path": "tests/test_review_proposals.py",
@@ -9288,13 +9363,18 @@
     },
     {
       "path": "tools/check_monthly_oracle_D276.py",
-      "bytes": 16599,
-      "sha256": "def99937d0c8cf468154d44ac68653f5a47d1768e35ff9e4ae9ce0236ee6aeb2"
+      "bytes": 17023,
+      "sha256": "22e2632ace805dcd0b3c8463afc895f95130a94c2b6db64085a480e90ba322c8"
     },
     {
       "path": "tools/check_monthly_release_D276.py",
       "bytes": 4349,
       "sha256": "5684181430db2af0adba5c3987f0d4b55374a8d3e2712d8aef72cd12bae4b51e"
+    },
+    {
+      "path": "tools/check_monthly_south_florida_D277.py",
+      "bytes": 7641,
+      "sha256": "e215e201517df13ecd91c093649434df13aaeaf0a3d03882391745024c5754ea"
     },
     {
       "path": "tools/check_operating_replay_D20.py",
@@ -9385,6 +9465,11 @@
       "path": "tools/check_return_replay_D23.py",
       "bytes": 12663,
       "sha256": "72d61804c742ad9b4d0a2d67d57541dd1f11634791d6da0425577708c17ec912"
+    },
+    {
+      "path": "tools/check_review_release_D277.py",
+      "bytes": 4348,
+      "sha256": "e2f88e2fb1414406914eb6248ca77145a09acfa9ef185b65f14f58594d660a38"
     },
     {
       "path": "tools/check_sale_cash_recovery_D33.py",
@@ -10343,8 +10428,8 @@
     },
     {
       "path": "tools/miniuw_worksheet_v1.py",
-      "bytes": 51972,
-      "sha256": "cd479eae9c65b1fc822ef552bee2956929afb86381e198f58a0720af4b3fa49b"
+      "bytes": 52196,
+      "sha256": "3b19d7acc94331e4152dde810c6fe2f6833e1fe8dba934b14eba6f3af13ac9ae"
     },
     {
       "path": "tools/onepage_pending_cases_D79.py",
@@ -10415,6 +10500,11 @@
       "path": "tools/refinance_sale_combinations_D87.py",
       "bytes": 12965,
       "sha256": "42551e089997af0f55670f1ec646ed9eb6e5b62f748b1f759438c8802b24076e"
+    },
+    {
+      "path": "tools/regression_ocr_cache_D277.py",
+      "bytes": 2668,
+      "sha256": "572201b2f1a9d1d9ec25f62b2c783d4ed15b875ad171694b6cb0c115a847b0df"
     },
     {
       "path": "tools/reissue_investor_reports_D76.py",
@@ -10522,6 +10612,11 @@
       "sha256": "92f47b8bded9fd15d9e7b3940bccc1fb117d8cb5966ea4353c1171fbf3f907ae"
     },
     {
+      "path": "tools/worksheet_cash_attribution_D277.py",
+      "bytes": 8484,
+      "sha256": "cf93a50bda367a3557ab7c49e823121caa3a53fc996cd2c3ec1997d0afc5aa37"
+    },
+    {
       "path": "tools/worksheet_commercial_inputs_D141.py",
       "bytes": 4731,
       "sha256": "0e0587e9be4e25d807645fc7ae37c0a439d9f6c45cfcc456e33eb6549233776c"
@@ -10575,6 +10670,11 @@
       "path": "tools/worksheet_decision_page_D275.py",
       "bytes": 23002,
       "sha256": "be7f706d427eeb26e4377ac4c932f1fe6f8ea6842f8d6539280065384a51c138"
+    },
+    {
+      "path": "tools/worksheet_decision_page_D277.py",
+      "bytes": 14160,
+      "sha256": "3041b3d9e6303d85a59650907c923b1e6b008b344245286e8fc00ba79fb9a257"
     },
     {
       "path": "tools/worksheet_definition_screening_D193.py",
@@ -10758,13 +10858,18 @@
     },
     {
       "path": "tools/worksheet_monthly_analysis_D276.py",
-      "bytes": 6486,
-      "sha256": "0fe1e509e85b07ef97428e79357162bc457a637a08d475d575147910fab222bc"
+      "bytes": 6625,
+      "sha256": "77e17a09faa0385e25eba3004bb34db7e4d3275ab10a26818d680df39129b41d"
+    },
+    {
+      "path": "tools/worksheet_monthly_analysis_D277.py",
+      "bytes": 8596,
+      "sha256": "3d65b58a806126cb9f61e28b576300747a048b6339d41424163face7dc11e1aa"
     },
     {
       "path": "tools/worksheet_monthly_experiments_D276.py",
-      "bytes": 14826,
-      "sha256": "88dbb867417b1a0c368623b48b97b64f37e00588266e9df97691db9dff78a800"
+      "bytes": 15895,
+      "sha256": "d2963facf26f6d3de542b2a3217dbda073dbac2c5eb86cec06b4d73c3f6c35e3"
     },
     {
       "path": "tools/worksheet_monthly_integration_D276.py",
@@ -10773,8 +10878,8 @@
     },
     {
       "path": "tools/worksheet_monthly_native_D276.py",
-      "bytes": 32518,
-      "sha256": "f160e9da22e805dff46d9f2a634e726cd00ae33aa1f981e841fe6bca7dba966a"
+      "bytes": 33803,
+      "sha256": "59a48bdc422340cde4545f15f9feb72705d8b546bf6fbb638933b30badfb302f"
     },
     {
       "path": "tools/worksheet_native_mapping_D139.py",
@@ -10902,6 +11007,11 @@
       "sha256": "71ad22d26f58aafc82e9430b7c98e9a090f245d58195e498d012a7b21d7064b8"
     },
     {
+      "path": "tools/worksheet_project_financing_D277.py",
+      "bytes": 4185,
+      "sha256": "9daef5a709202797f2d3d09c9da7fc3de21339cf299a5356b439a0ea1af469d7"
+    },
+    {
       "path": "tools/worksheet_property_tax_D150.py",
       "bytes": 3765,
       "sha256": "c8dee78c87a19339bf49c9d5068eebcbfc78fda34469920b899c68d66be38018"
@@ -11026,13 +11136,5 @@
       "bytes": 5152,
       "sha256": "003f1ae5ef18ed8798357294e308d1d099e1f9c59a72ee4c2ae1c89f1985efbb"
     }
-  ],
-  "excluded": [
-    "Credentials, tokens, .env files, SSH/private keys",
-    "Raw live deal/client originals and attachments outside the registered repository",
-    "Local runtime databases and application sessions",
-    "LibreOffice/OCR runtimes, downloaded .deb binaries, profiles and temporary conversion directories",
-    "Scratch work, full test logs and reconstructed source copies in work/; these are retained locally on the VPS",
-    "Google Drive/email: no uploads or messages"
   ]
 }

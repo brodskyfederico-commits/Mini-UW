@@ -33,7 +33,7 @@ def bounded_grid(points,upper,step,unit):
  return result|dict(state='BOUNDED',safe_movement=R(points[index-1][0]),breached_movement=R(points[index][0]),safe_margin=R(points[index-1][1]),breached_margin=R(points[index][1]),resolution=R(step))
 
 
-def views(spec,sources,result,raw):
+def views(spec,sources,result,raw,*,principal_from_rows=False):
  matrix={};tornado={}
  for s in ('Base','Downside'):
   matrix[s]={};tornado[s]={};v=result['scenarios'][s];_,cell=source_cells(sources,s);base=result['monthly_contracts'][s]
@@ -42,7 +42,7 @@ def views(spec,sources,result,raw):
    for driver,record in raw['experiments'][s][route].items():
     series={f:[] for f in FRONTIERS};key='with_refinance' if route=='with_refinance' else 'horizon_without_refinance';baseline_calls=F(v[key]['cash_per_usd_10']['total_contributions']);direct=F(base['budget']['direct_hard']);vertical=F(v['development_costs']['vertical_cost'])
     for row in record['adverse']:
-     x=F(row['movement']);cash_ok=row['state']=='CALCULATED';capacity=row.get('capacity');principal=F(v['construction_financing']['terminal_principal'])*(1+(vertical/direct*x if driver=='vertical_cost' else 0));rate=F(base['construction']['annual_rate'])+(x/10000 if driver=='interest' else 0);annual=None if capacity is None else F(capacity['annual_service']) if route=='with_refinance' else principal*rate
+     x=F(row['movement']);cash_ok=row['state']=='CALCULATED';capacity=row.get('capacity');principal=F(row['construction_principal']) if principal_from_rows and row.get('construction_principal') is not None else F(v['construction_financing']['terminal_principal'])*(1+(vertical/direct*x if driver=='vertical_cost' else 0));rate=F(base['construction']['annual_rate'])+(x/10000 if driver=='interest' else 0);annual=None if capacity is None else F(capacity['annual_service']) if route=='with_refinance' else principal*rate
      margins={'F1':None if not cash_ok else F(row['equity_multiple'])-1,'F2':None if annual is None or annual<=0 else F(capacity['bank_noi'])/annual-1,'F3':None,'F4':None if not cash_ok else baseline_calls-F(row['total_contributions'])}
      if capacity is not None and route=='with_refinance':margins['F3']=F(capacity['maximum_principal_capacity'])-principal-F(base['permanent']['requested_principal'])*F(base['refinance']['cost_fraction'])-F(base['refinance']['reserve_amount'])
      for f in FRONTIERS:series[f].append((x,margins[f]))
