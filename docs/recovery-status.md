@@ -37,3 +37,7 @@ Current user direction (1 November 2026): Full UW will be delivered at the end. 
 ## Consolidación del armado I01
 
 Actualización I01: se consolidaron las referencias nuevas y el diseño disponible; no se recuperaron la aplicación/cloud históricos por ese trabajo. El cierre de armado no modifica los faltantes históricos ni las afirmaciones originales de recuperación.
+
+## D276 · Monthly synthetic profile
+
+v37 integrates the previously separate monthly construction, per-space commercial and builder-risk components. Frozen v1 is unchanged; v2 has a literal-source oracle and quarterly cash-equivalence control. This is new synthetic implementation, not recovered historical production. General regression and real-use gates remain separate from directed acceptance. See `docs/workbook-monthly-integration-D276.md` and the current D276 validation record; do not infer completed regression from D275's former “running” label.

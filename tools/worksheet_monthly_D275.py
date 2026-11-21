@@ -38,7 +38,7 @@ def construction(spec):
   periods=spec.get('periods')
   if not isinstance(periods,list) or len(periods)!=n:raise ValueError('Falta un mes; no se completa con cero')
   commitment=min(ltc*total,maximum);origination=commitment*fee
-  principal=accrued=interest_total=calls=drawn=uses_total=Q();cash=[];months=[];settlements={};invoice_ids=set();eligible_invoiced=Q()
+  principal=accrued=interest_total=calls=drawn=uses_total=Q();cash=[];months=[];settlements={};invoice_ids=set();eligible_invoiced=Q();receipts_total=Q();has_receipts=False
   # Opening cash and the initial contribution are explicit source values.
   free=initial;calls=initial
   cash.append(dict(event_id='monthly-initial',date=str(start),kind='contribution',amount=rational(initial),category='initial_capital',source_ref=spec['source_ref']))
@@ -50,9 +50,9 @@ def construction(spec):
    if not isinstance(period.get('events'),list):raise ValueError('Inventario de eventos mensual ausente')
    events=period['events'];bydate={};local_ids=[]
    for event in events:
-    if not isinstance(event,dict) or event.get('kind') not in ('draw','use') or not event.get('source_ref'):raise ValueError('Evento mensual sin clase o fuente')
+    if not isinstance(event,dict) or event.get('kind') not in ('draw','use','receipt') or not event.get('source_ref'):raise ValueError('Evento mensual sin clase o fuente')
     when=date.fromisoformat(event['date']);value=fraction(event.get('amount'))
-    if not a<=when<b or value<0:raise ValueError('Fecha o importe de evento fuera del mes')
+    if not (a<=when<b or i+1==n and when==b and (event['kind'] in ('use','receipt') or event['kind']=='draw' and spec.get('allow_final_date_draws') is True)) or value<0:raise ValueError('Fecha o importe de evento fuera del mes')
     if not isinstance(event.get('id'),str) or not event['id']:raise ValueError('Falta ID del evento')
     local_ids.append(event['id']);bydate.setdefault(when,[]).append(event)
    expected_sources.extend(local_ids)
@@ -60,7 +60,7 @@ def construction(spec):
    previous=a;monthly_interest=Q();opening_principal=principal
    for when,items in sorted(bydate.items()):
     monthly_interest+=principal*rate*day_fraction(previous,when,convention);previous=when
-    draw=use=Q()
+    draw=use=receipt=Q()
     for event in items:
      val=fraction(event['amount'])
      if event['kind']=='draw':
@@ -71,10 +71,13 @@ def construction(spec):
       if eligible_invoiced>total:raise ValueError('Facturas elegibles exceden el inventario fuente')
       if min(invoice,available)<0 or val>min(invoice*ltc,available,commitment-drawn-draw):raise ValueError('Desembolso supera elegibilidad, disponibilidad o compromiso')
       draw+=val
+     elif event['kind']=='receipt':receipt+=val;has_receipts=True
      else:use+=val
-    principal+=draw;drawn+=draw;uses_total+=use
+    principal+=draw;drawn+=draw;uses_total+=use;receipts_total+=receipt
     row=settlements.setdefault(when,dict(draw=Q(),uses=Q(),interest=Q(),source_refs=[]))
-    row['draw']+=draw;row['uses']+=use;row['source_refs'].append(period['source_ref'])
+    row['draw']+=draw;row['uses']+=use
+    if receipt or any(e['kind']=='receipt' for e in items):row['receipts']=row.get('receipts',Q())+receipt
+    row['source_refs'].append(period['source_ref'])
    monthly_interest+=principal*rate*day_fraction(previous,b,convention);interest_total+=monthly_interest;accrued+=monthly_interest
    pay=accrued if (i+1)%cadence==0 or i+1==n else Q()
    if pay:
@@ -88,19 +91,21 @@ def construction(spec):
   # would invent an intraday order and an unnecessary earlier capital call.
   free=initial;calls=initial;dated=[]
   for when,row in sorted(settlements.items()):
-   before=free+row['draw']-row['uses']-row['interest'];topup=max(Q(),-before);free=before+topup;calls+=topup
+   before=free+row['draw']+row.get('receipts',Q())-row['uses']-row['interest'];topup=max(Q(),-before);free=before+topup;calls+=topup
    if when==start and topup:raise ValueError('El aporte inicial verificado no cubre los usos iniciales; no se redefine en silencio')
    if topup:cash.append(dict(event_id='monthly-topup-'+str(when),date=str(when),kind='contribution',amount=rational(topup),category='additional_capital',source_ref=spec['source_ref']))
    dated.append(dict(date=str(when),loan_draw=rational(row['draw']),uses=rational(row['uses']),interest_paid=rational(row['interest']),equity_contribution=rational(topup),closing_free_cash=rational(free)))
+   if 'receipts' in row:dated[-1]['other_receipts']=rational(row['receipts'])
   for row in months:
    prior=[item for item in dated if item['date']<=row['end']]
    row['closing_free_cash']=prior[-1]['closing_free_cash'] if prior else rational(initial)
    row['cash_basis']='Todos los movimientos de la fecha agregados; no se supone orden intradía'
-  if calls+drawn!=uses_total+interest_total+free or accrued!=0:raise ValueError('No concilian fuentes, usos, intereses y caja')
+  if calls+drawn+receipts_total!=uses_total+interest_total+free or accrued!=0:raise ValueError('No concilian fuentes, usos, intereses y caja')
   return dict(schema=SCHEMA,state='CALCULATED',months=months,equity_events=cash,commitment=rational(commitment),drawn=rational(drawn),
    cash_by_date=dated,terminal_principal=rational(principal),interest_total=rational(interest_total),initial_equity=rational(initial),
    total_contributions=rational(calls),uses_total_including_fee=rational(uses_total),closing_free_cash=rational(free),
-   source_spec_sha256=digest(spec),day_count=convention,decision='PENDING',deployment_enabled=False)
+   source_spec_sha256=digest(spec),day_count=convention,decision='PENDING',deployment_enabled=False,
+   **(dict(other_sources=rational(receipts_total)) if has_receipts else {}))
  except (ValueError,KeyError,TypeError,ZeroDivisionError) as error:return dict(schema=SCHEMA,state='PENDING',reason=str(error),months=None,equity_events=None,decision='PENDING')
 
 

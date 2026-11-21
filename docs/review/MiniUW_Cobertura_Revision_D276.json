@@ -1,0 +1,541 @@
+{
+  "schema": "miniuw.expert-coverage.D276.v1",
+  "review_sha256": "ed7b412fdc3df144629ee673b6fb4d8b7ee05775b8b455d45db3e6e625898767",
+  "rows": [
+    {
+      "id": "R01",
+      "source": {
+        "document": "MiniUW_Revision_D275_Original.pdf",
+        "page": 1,
+        "location": "Estados / batería en ejecución; p2 Qué falta1"
+      },
+      "requirement": "Finalizar regresión D275",
+      "current_definition": "Se recuperan711 pruebas probadas;1.203 restantes en el mismo corte congelado. No se llama corrida ininterrumpida.",
+      "affected": {
+        "file": "tools/miniuw_worksheet_v1.py",
+        "symbol": "build_results",
+        "line": 213
+      },
+      "validation": {
+        "tests": [],
+        "evidence": "MiniUW_Validacion_D276.json#/general_regression/D275"
+      },
+      "state": "RUNNING",
+      "pending": "Original interrumpida; 711 pruebas recuperadas y 1083 adicionales completadas. Fases generales sin constancia final verde. No se declara cierre."
+    },
+    {
+      "id": "R02",
+      "source": {
+        "document": "MiniUW_Revision_D275_Original.pdf",
+        "page": 2,
+        "location": "T6–T8 sin integrar; Qué falta2"
+      },
+      "requirement": "Integrar calendario mensual T6",
+      "current_definition": "v37 enlaza planilla, M2, M3, M5, permanente y venta; convención y cadencias explícitas.",
+      "affected": {
+        "file": "tools/worksheet_monthly_native_D276.py",
+        "symbol": "scenario_contract",
+        "line": 67
+      },
+      "validation": {
+        "tests": [
+          "MonthlyNativeSourceTests",
+          "MonthlyIntegratedTests"
+        ],
+        "evidence": "MiniUW_Validacion_D276.json#/independent_oracle"
+      },
+      "state": "DIRECTED_SYNTHETIC_VALIDATED",
+      "pending": "Regresión general y puertas reales no se infieren de la validación dirigida."
+    },
+    {
+      "id": "R03",
+      "source": {
+        "document": "MiniUW_Revision_D275_Original.pdf",
+        "page": 2,
+        "location": "T6–T8 sin integrar"
+      },
+      "requirement": "Comercial por local T7",
+      "current_definition": "Calendarios individuales, free rent, gastos y recuperos; TI/LC con destino M3 u operación; C20 no cambia de base en silencio.",
+      "affected": {
+        "file": "tools/worksheet_commercial_leaseup_D275.py",
+        "symbol": "schedule",
+        "line": 15
+      },
+      "validation": {
+        "tests": [
+          "MonthlyIntegratedTests.test_partial_commercial_leaseup_changes_operations_and_sale_basis",
+          "MonthlyNativeSourceTests"
+        ],
+        "evidence": "MiniUW_Validacion_D276.json#/independent_oracle"
+      },
+      "state": "DIRECTED_SYNTHETIC_VALIDATED",
+      "pending": "Caps por uso sin asignaciones fiscales / reservas compatibles: PENDING. No se certifica lectura de contratos reales."
+    },
+    {
+      "id": "R04",
+      "source": {
+        "document": "MiniUW_Revision_D275_Original.pdf",
+        "page": 2,
+        "location": "T6–T8 sin integrar"
+      },
+      "requirement": "Builder’s risk T8",
+      "current_definition": "Prima / plazo citados; exclusión GC/soft; presupuesto, interés y aporte sin doble conteo.",
+      "affected": {
+        "file": "tools/worksheet_monthly_integration_D276.py",
+        "symbol": "integrate",
+        "line": 55
+      },
+      "validation": {
+        "tests": [
+          "MonthlyIntegratedTests.test_premium_enters_tdc_once_and_changes_cash_without_changing_operating_insurance"
+        ],
+        "evidence": "MiniUW_Validacion_D276.json#/independent_oracle"
+      },
+      "state": "DIRECTED_SYNTHETIC_VALIDATED",
+      "pending": "Regresión general y puertas reales no se infieren de la validación dirigida."
+    },
+    {
+      "id": "R05",
+      "source": {
+        "document": "MiniUW_Revision_D275_Original.pdf",
+        "page": 2,
+        "location": "Qué falta2"
+      },
+      "requirement": "Equivalencia trimestral",
+      "current_definition": "Mismos términos: cuatro rutas de aportes/cobros brutos exactas; no comparar sólo totales netos.",
+      "affected": {
+        "file": "tools/worksheet_monthly_integration_D276.py",
+        "symbol": "integrate",
+        "line": 55
+      },
+      "validation": {
+        "tests": [
+          "MonthlyIntegratedTests.test_quarter_equivalence_from_construction_to_sale_exact_gross_cash"
+        ],
+        "evidence": "MiniUW_Validacion_D276.json#/quarterly_equivalence"
+      },
+      "state": "DIRECTED_SYNTHETIC_VALIDATED",
+      "pending": "Regresión general y puertas reales no se infieren de la validación dirigida."
+    },
+    {
+      "id": "R06",
+      "source": {
+        "document": "MiniUW_Revision_D275_Original.pdf",
+        "page": 2,
+        "location": "Cambio propuesto · primer punto"
+      },
+      "requirement": "Mantener caso dorado v1",
+      "current_definition": "Ningún byte fuente del v1 modificado; se preserva el cotejo externo662 celdas.",
+      "affected": {
+        "file": "tools/check_monthly_release_D276.py",
+        "symbol": "run",
+        "line": 21
+      },
+      "validation": {
+        "tests": [
+          "MonthlyNativeSourceTests.test_all_frozen_v2_files_match_hash_and_v1_is_a_separate_case"
+        ],
+        "evidence": "MiniUW_Validacion_D276.json#/golden_v1_unchanged"
+      },
+      "state": "DIRECTED_SYNTHETIC_VALIDATED",
+      "pending": "Regresión general y puertas reales no se infieren de la validación dirigida."
+    },
+    {
+      "id": "R07",
+      "source": {
+        "document": "MiniUW_Revision_D275_Original.pdf",
+        "page": 2,
+        "location": "Cambio propuesto · segundo punto"
+      },
+      "requirement": "Caso apalancado v2",
+      "current_definition": "DSCR~1.252; permanente LTV61–62%. Draw/hard62.5%, draw/TDC35–37% explícitos. No se afirma LTC/TDC60–65%.",
+      "affected": {
+        "file": "tools/check_monthly_native_D276.py",
+        "symbol": "make_sources",
+        "line": 109
+      },
+      "validation": {
+        "tests": [
+          "MonthlyNativeSourceTests.test_realistic_debt_near_binding_dscr_with_unadopted_criteria",
+          "MonthlyNativeSourceTests.test_construction_currency_and_cost_base_cannot_be_silently_reinterpreted"
+        ],
+        "evidence": "templates/golden_case_v2/golden_manifest.json"
+      },
+      "state": "IMPLEMENTED_WITH_EXPLICIT_COST_BASIS",
+      "pending": "Si se exige60–65% sobre TDC, hace falta otra definición contractual de costo elegible y otra revisión del caso; no se adopta implícitamente."
+    },
+    {
+      "id": "R08",
+      "source": {
+        "document": "MiniUW_Revision_D275_Original.pdf",
+        "page": 2,
+        "location": "Cambio propuesto · ampliar rangos"
+      },
+      "requirement": "Seis rangos amplios",
+      "current_definition": "Renta−50%, cap+500bps, vertical+50%, tasas+500bps, lease-up+24meses, vacancia+30pp.",
+      "affected": {
+        "file": "tools/worksheet_monthly_experiments_D276.py",
+        "symbol": "experiments",
+        "line": 102
+      },
+      "validation": {
+        "tests": [
+          "MonthlyNativeSourceTests.test_interest_stress_keeps_requested_loan_and_blocks_refi_without_erasing_no_refi"
+        ],
+        "evidence": "MiniUW_Sensibilidades_D276.json"
+      },
+      "state": "SYNTHETIC_MATHEMATICAL_REPLAYED",
+      "pending": "Auditoría PDF/OCR del caso original; shocks son contrafactuales matemáticos, no cotizaciones nuevas ni ampliación de evidencia de mercado."
+    },
+    {
+      "id": "R09",
+      "source": {
+        "document": "MiniUW_Revision_D275_Original.pdf",
+        "page": 2,
+        "location": "Cambio propuesto · DownsideF1"
+      },
+      "requirement": "Mostrar mejoras si ya pierde capital",
+      "current_definition": "Se publican puntos favorables y primera recuperación en grilla, o bloqueo / ausencia en rango. Límite inválido en Base no oculta Downside.",
+      "affected": {
+        "file": "tools/worksheet_monthly_experiments_D276.py",
+        "symbol": "evaluate",
+        "line": 80
+      },
+      "validation": {
+        "tests": [
+          "MonthlyNativeSourceTests.test_favorable_outside_base_domain_does_not_hide_valid_downside"
+        ],
+        "evidence": "MiniUW_Sensibilidades_D276.json"
+      },
+      "state": "SYNTHETIC_MATHEMATICAL_REPLAYED",
+      "pending": "No se afirma monotonía global ni se extrapola fuera de dominio; capacidad bloqueada deja la ruta PENDING."
+    },
+    {
+      "id": "R10",
+      "source": {
+        "document": "MiniUW_Revision_D275_Original.pdf",
+        "page": 2,
+        "location": "Cambio propuesto · precio útil"
+      },
+      "requirement": "Precio con metaTIR15%",
+      "current_definition": "Grilla mensual USD0.2–3.5M /100k; cuatro rutas, deuda y futuros flujos fijos. Meta sintética, no RLV ni umbral adoptado.",
+      "affected": {
+        "file": "tools/worksheet_user_price_D275.py",
+        "symbol": "grid",
+        "line": 88
+      },
+      "validation": {
+        "tests": [
+          "MonthlyPriceTests",
+          "MonthlyAnalyticalDeliveryTests.test_request_is_bound_to_case_sources_and_allows_no_claimed_results"
+        ],
+        "evidence": "MiniUW_Sensibilidades_D276.json"
+      },
+      "state": "SYNTHETIC_MATHEMATICAL_REPLAYED",
+      "pending": "Ningún precio cumple en grilla ≠ faltante ≠ precio0; la meta no autoriza dictamen."
+    },
+    {
+      "id": "R11",
+      "source": {
+        "document": "MiniUW_Revision_D275_Original.pdf",
+        "page": 2,
+        "location": "Cambio propuesto · respaldo fiscal2033"
+      },
+      "requirement": "Completar ventanas sintéticas",
+      "current_definition": "Pronósticos v2 explícitos2027–2041 y retasación al vender. v1 conserva su faltante histórico.",
+      "affected": {
+        "file": "tools/check_monthly_native_D276.py",
+        "symbol": "make_sources",
+        "line": 109
+      },
+      "validation": {
+        "tests": [
+          "MonthlyNativeSourceTests.test_altered_amendment_and_missing_tax_never_use_original_quarter_cash",
+          "MonthlyNativeSourceTests.test_lease_up_stress_rebuilds_fiscal_sale_and_cash_windows"
+        ],
+        "evidence": "MiniUW_Validacion_D276.json#/independent_oracle"
+      },
+      "state": "DIRECTED_SYNTHETIC_VALIDATED",
+      "pending": "Regresión general y puertas reales no se infieren de la validación dirigida."
+    },
+    {
+      "id": "R12",
+      "source": {
+        "document": "MiniUW_Revision_D275_Original.pdf",
+        "page": 2,
+        "location": "Inconsistencias · GSF"
+      },
+      "requirement": "Mismo edificio, misma área",
+      "current_definition": "Dos declaraciones concordantes, plano verificado y neto≤GSF. No inferir GSF desde cantidad de costo ni copiar Downside a Base.",
+      "affected": {
+        "file": "tools/worksheet_decision_page_D275.py",
+        "symbol": "shared_gsf",
+        "line": 42
+      },
+      "validation": {
+        "tests": [
+          "PresentationReviewTests.test_same_building_area_requires_both_declarations_and_plan_binding"
+        ],
+        "evidence": "MiniUW_Validacion_D276.json#/one_page"
+      },
+      "state": "DIRECTED_SYNTHETIC_VALIDATED",
+      "pending": "Regresión general y puertas reales no se infieren de la validación dirigida."
+    },
+    {
+      "id": "R13",
+      "source": {
+        "document": "MiniUW_Revision_D275_Original.pdf",
+        "page": 2,
+        "location": "Inconsistencias · terreno"
+      },
+      "requirement": "Precio común y shock documentado",
+      "current_definition": "v2 usa USD1.1M en ambos; v1 permanece intacto y la presentación señala diferencias sin causa documentada.",
+      "affected": {
+        "file": "tools/worksheet_decision_page_D275.py",
+        "symbol": "render",
+        "line": 94
+      },
+      "validation": {
+        "tests": [
+          "MonthlyNativeSourceTests.test_all_frozen_v2_files_match_hash_and_v1_is_a_separate_case"
+        ],
+        "evidence": "templates/golden_case_v2/expected_financials.json"
+      },
+      "state": "DIRECTED_SYNTHETIC_VALIDATED",
+      "pending": "Regresión general y puertas reales no se infieren de la validación dirigida."
+    },
+    {
+      "id": "R14",
+      "source": {
+        "document": "MiniUW_Revision_D275_Original.pdf",
+        "page": 2,
+        "location": "Inconsistencias · LTC25%"
+      },
+      "requirement": "Rotular denominador",
+      "current_definition": "Draw/hard directo y draw/TDC separados; moneda / base distintas se bloquean.",
+      "affected": {
+        "file": "tools/worksheet_monthly_native_D276.py",
+        "symbol": "scenario_contract",
+        "line": 67
+      },
+      "validation": {
+        "tests": [
+          "MonthlyNativeSourceTests.test_construction_currency_and_cost_base_cannot_be_silently_reinterpreted"
+        ],
+        "evidence": "MiniUW_Validacion_D276.json#/one_page"
+      },
+      "state": "DIRECTED_SYNTHETIC_VALIDATED",
+      "pending": "Regresión general y puertas reales no se infieren de la validación dirigida."
+    },
+    {
+      "id": "R15",
+      "source": {
+        "document": "MiniUW_Revision_D275_Original.pdf",
+        "page": 2,
+        "location": "Inconsistencias · anexo"
+      },
+      "requirement": "Letter y pie único",
+      "current_definition": "Se genera Letter sin superponer texto blanco a la numeración anterior.",
+      "affected": {
+        "file": "tools/build_review_D276.py",
+        "symbol": "page",
+        "line": 39
+      },
+      "validation": {
+        "tests": [],
+        "evidence": "MiniUW_Validacion_Informe_D276.json"
+      },
+      "state": "DOCUMENT_QA_PASSED",
+      "pending": "No constituye adopción de criterios ni aprobación real."
+    },
+    {
+      "id": "R16",
+      "source": {
+        "document": "MiniUW_Revision_D275_Original.pdf",
+        "page": 2,
+        "location": "Precisión / formato"
+      },
+      "requirement": "EM2 / TIR1 / entero / bps",
+      "current_definition": "Redondeo certificado; intervalo completo en expediente. Unidades enteras; spreadbps; fronteras compactas sin cambiar números.",
+      "affected": {
+        "file": "tools/worksheet_decision_page_D275.py",
+        "symbol": "certified_irr_display",
+        "line": 29
+      },
+      "validation": {
+        "tests": [
+          "PresentationReviewTests",
+          "DecisionPageTests"
+        ],
+        "evidence": "MiniUW_Validacion_D276.json#/one_page"
+      },
+      "state": "DIRECTED_SYNTHETIC_VALIDATED",
+      "pending": "Regresión general y puertas reales no se infieren de la validación dirigida."
+    },
+    {
+      "id": "R17",
+      "source": {
+        "document": "MiniUW_Revision_D275_Original.pdf",
+        "page": 2,
+        "location": "Fila dependencia de venta"
+      },
+      "requirement": "Porcentaje del cobro en venta",
+      "current_definition": "Venta neta / total cobrado, por cada ruta; no se suma valor retenido como efectivo.",
+      "affected": {
+        "file": "tools/worksheet_decision_page_D275.py",
+        "symbol": "render",
+        "line": 94
+      },
+      "validation": {
+        "tests": [
+          "DecisionPageTests"
+        ],
+        "evidence": "MiniUW_Validacion_D276.json#/one_page"
+      },
+      "state": "DIRECTED_SYNTHETIC_VALIDATED",
+      "pending": "Regresión general y puertas reales no se infieren de la validación dirigida."
+    },
+    {
+      "id": "R18",
+      "source": {
+        "document": "MiniUW_Revision_D275_Original.pdf",
+        "page": 2,
+        "location": "Lectura con / sin refi"
+      },
+      "requirement": "Explicar tiempo vs múltiplo",
+      "current_definition": "Sólo si los intervalos prueban mayor TIR y menor EM con refi se imprime esa lectura; conserva caja, fechas y bloqueos.",
+      "affected": {
+        "file": "tools/worksheet_decision_page_D275.py",
+        "symbol": "render",
+        "line": 94
+      },
+      "validation": {
+        "tests": [
+          "DecisionPageTests",
+          "MonthlyNativeSourceTests.test_literal_source_oracle_and_frozen_expected_financials"
+        ],
+        "evidence": "MiniUW_Validacion_D276.json#/one_page"
+      },
+      "state": "DIRECTED_SYNTHETIC_VALIDATED",
+      "pending": "Regresión general y puertas reales no se infieren de la validación dirigida."
+    },
+    {
+      "id": "R19",
+      "source": {
+        "document": "MiniUW_Revision_D275_Original.pdf",
+        "page": 2,
+        "location": "Regla no doble hallazgo T12"
+      },
+      "requirement": "Agrupar causa probada sin quitar criterios",
+      "current_definition": "Evidencia causal citada y vinculada a comparaciones / revisión; se conservan ambas métricas, RLV conjunto y snapshot financiero.",
+      "affected": {
+        "file": "tools/worksheet_review_findings_D276.py",
+        "symbol": "findings",
+        "line": 16
+      },
+      "validation": {
+        "tests": [
+          "FindingsReviewTests",
+          "FindingsPlugIntegrationTests"
+        ],
+        "evidence": "MiniUW_Validacion_D276.json#/directed"
+      },
+      "state": "DIRECTED_SYNTHETIC_VALIDATED",
+      "pending": "Sin causa probada no se agrupa. No autentica criterios reales ni cambia precedencia de dictamen."
+    },
+    {
+      "id": "R20",
+      "source": {
+        "document": "MiniUW_Revision_D275_Original.pdf",
+        "page": 2,
+        "location": "Estados T10 / T11 / T13"
+      },
+      "requirement": "Mantener límites de validación real",
+      "current_definition": "Arneses no equivalen a backtest, tasa real de falsos verdes ni identidades acreditadas.",
+      "affected": {
+        "file": "tools/worksheet_monthly_native_D276.py",
+        "symbol": "build_case",
+        "line": 167
+      },
+      "validation": {
+        "tests": [
+          "MonthlyNativeSourceTests.test_realistic_debt_near_binding_dscr_with_unadopted_criteria"
+        ],
+        "evidence": "MiniUW_Validacion_D276.json"
+      },
+      "state": "REAL_INPUTS_AND_AUTHORIZATION_PENDING",
+      "pending": "Backtest3–5, verdad humana para OCR, roles, criterios, documentos reales y autorización siguen pendientes."
+    },
+    {
+      "id": "R21",
+      "source": {
+        "document": "MiniUW_Revision_D275_Original.pdf",
+        "page": 2,
+        "location": "Qué falta · batería y cadena"
+      },
+      "requirement": "Nueva regresión del corte integrado",
+      "current_definition": "Corte729Python independiente de714D275; queued después deD275. Dirigidas103 no son regresión general.",
+      "affected": {
+        "file": "tools/miniuw_worksheet_v1.py",
+        "symbol": "build_results",
+        "line": 213
+      },
+      "validation": {
+        "tests": [],
+        "evidence": "MiniUW_Validacion_D276.json#/general_regression/D276"
+      },
+      "state": "QUEUED_OR_RUNNING",
+      "pending": "No cerrar hasta constancia final de todas las fases; no sumar cortes como una sola corrida."
+    },
+    {
+      "id": "R22",
+      "source": {
+        "document": "MiniUW_Revision_D275_Original.pdf",
+        "page": 1,
+        "location": "T5 / T12 y estados honestos"
+      },
+      "requirement": "PDF vigente y cero explícito",
+      "current_definition": "Fuente→cálculo→PDF vigente; refi bloqueada conserva alternativa; falta crítica bloquea entrega. Nunca vacío=0.",
+      "affected": {
+        "file": "tools/miniuw_worksheet_v1.py",
+        "symbol": "deliver_package",
+        "line": 612
+      },
+      "validation": {
+        "tests": [
+          "MonthlyNativeSourceTests.test_blank_and_numeric_zero_for_all_55_cells_are_different_observations",
+          "MonthlyAnalyticalDeliveryTests"
+        ],
+        "evidence": "MiniUW_Validacion_D276.json#/source_delivery_acceptance"
+      },
+      "state": "DIRECTED_SYNTHETIC_VALIDATED",
+      "pending": "Regresión general y puertas reales no se infieren de la validación dirigida."
+    },
+    {
+      "id": "V23",
+      "source": {
+        "document": "MiniUW_Revision_D275_Original.pdf",
+        "page": 2,
+        "location": "Validación adicional de la integración, no propuesta de política del experto"
+      },
+      "requirement": "CoC incluye aporte al cierre de refi",
+      "current_definition": "Equity remanente = aportes pre-refi − refi neta con signo; cash-in aumenta capital. Coincide con el modelo trimestral y no cambia ningún flujo.",
+      "affected": {
+        "file": "tools/worksheet_monthly_integration_D276.py",
+        "symbol": "integrate",
+        "line": 55
+      },
+      "validation": {
+        "tests": [
+          "MonthlyIntegratedTests.test_refinance_cash_in_increases_coc_denominator_without_changing_other_flows"
+        ],
+        "evidence": "MiniUW_Validacion_D276.json#/coc_cash_in_quarterly_control"
+      },
+      "state": "DIRECTED_SYNTHETIC_VALIDATED",
+      "pending": "Regresión general y puertas reales no se infieren de la validación dirigida."
+    }
+  ],
+  "all_finally_closed": false,
+  "criteria_adopted": false,
+  "deployment_enabled": false
+}

@@ -96,7 +96,8 @@ WORKBOOK_VARIANT_EVIDENCE_SCHEMA = "miniuw.synthetic-native-rental-inputs.v34"
 VARIANT_REFERENCE_FILE = "Independent_Reference.json"
 WORKBOOK_REGULATED_RENT_SCHEMA = "miniuw.synthetic-native-rental-inputs.v35"
 WORKBOOK_RETURN_SUMMARY_SCHEMA = "miniuw.synthetic-native-rental-inputs.v36"
-INDEPENDENT_EVIDENCE_SCHEMAS = (WORKBOOK_VARIANT_EVIDENCE_SCHEMA, WORKBOOK_REGULATED_RENT_SCHEMA)
+WORKBOOK_MONTHLY_INTEGRATION_SCHEMA = "miniuw.synthetic-native-rental-inputs.v37"
+INDEPENDENT_EVIDENCE_SCHEMAS = (WORKBOOK_VARIANT_EVIDENCE_SCHEMA, WORKBOOK_REGULATED_RENT_SCHEMA, WORKBOOK_MONTHLY_INTEGRATION_SCHEMA)
 CRITICAL_EVIDENCE_SCHEMAS = (WORKBOOK_CRITICAL_EVIDENCE_SCHEMA, *INDEPENDENT_EVIDENCE_SCHEMAS)
 FLORIDA_TAX_SCHEMAS = (WORKBOOK_FLORIDA_TAX_SCHEMA, *CRITICAL_EVIDENCE_SCHEMAS)
 TECHNICAL_SCHEMAS = (WORKBOOK_TECHNICAL_ACCEPTANCE_SCHEMA, *FLORIDA_TAX_SCHEMAS)
@@ -166,7 +167,7 @@ EXACT_PERMANENT_SENSITIVITY_SCHEMA = "miniuw.synthetic-worksheet-sensitivities.v
 
 def read_case_source(raw):
     case = _json(raw, MAX_REGULATED_RENT_BYTES)
-    if isinstance(case, dict) and case.get("schema") in (WORKBOOK_REGULATED_RENT_SCHEMA, WORKBOOK_RETURN_SUMMARY_SCHEMA):
+    if isinstance(case, dict) and case.get("schema") in (WORKBOOK_REGULATED_RENT_SCHEMA, WORKBOOK_RETURN_SUMMARY_SCHEMA, WORKBOOK_MONTHLY_INTEGRATION_SCHEMA):
         return case
     if len(raw) > MAX_CONSTRUCTION_PILOT_BYTES:
         return _json(raw, MAX_CONSTRUCTION_PILOT_BYTES)
@@ -213,6 +214,9 @@ def build_results(raw, *, workbook_raw=None, downside_workbook_raw=None, current
                   evidence_raw=None, criteria_raw=None, independent_reference_raw=None, delivery_report=False):
     case = read_case_source(raw)
     schema = case.get("schema") if isinstance(case, dict) else None
+    if schema == WORKBOOK_MONTHLY_INTEGRATION_SCHEMA:
+        from worksheet_monthly_native_D276 import build_case
+        return build_case(case, raw, workbook_raw=workbook_raw, downside_workbook_raw=downside_workbook_raw, current_revision_raw=current_revision_raw, plan_raw=plan_raw, evidence_raw=evidence_raw, criteria_raw=criteria_raw, independent_reference_raw=independent_reference_raw, delivery_report=delivery_report)
     if schema == WORKBOOK_RETURN_SUMMARY_SCHEMA:
         from worksheet_return_summary_D273 import build_case
         return build_case(case, raw, workbook_raw=workbook_raw, downside_workbook_raw=downside_workbook_raw,
@@ -221,7 +225,7 @@ def build_results(raw, *, workbook_raw=None, downside_workbook_raw=None, current
                           delivery_report=delivery_report)
     rent_inputs = case.get("rent_inputs") if isinstance(case, dict) else None
     require(not isinstance(rent_inputs, dict) or not
-            ({"monthly_construction", "commercial_leaseup", "builders_risk", "review_extensions"} & rent_inputs.keys()),
+            ({"monthly_construction", "commercial_leaseup", "builders_risk", "review_extensions", "monthly_integration"} & rent_inputs.keys()),
             "PENDING: las extensiones experimentales requieren integración versionada; no se ignoran ni se consideran cero")
     require(not isinstance(rent_inputs, dict) or "regulated_rent" not in rent_inputs or schema == WORKBOOK_REGULATED_RENT_SCHEMA,
             "Regulated rent requires the explicit v35 profile")
@@ -626,7 +630,14 @@ def deliver_package(directory, output, current_revision):
         delivery_case = baseline(delivery_case)
     if delivery_case.get("schema") in INDEPENDENT_EVIDENCE_SCHEMAS:
         from worksheet_variant_evidence_D268 import capacity_only_delivery
-        unavailable = [name for name in unavailable if not capacity_only_delivery(delivery_case, result, name)]
+        if delivery_case.get("schema") == WORKBOOK_MONTHLY_INTEGRATION_SCHEMA:
+            unavailable = [name for name in unavailable if not (
+                result["scenarios"][name].get("state") == "CALCULATED"
+                and result["scenarios"][name].get("capacity", {}).get("within_capacity") is False
+                and result["scenarios"][name].get("horizon_without_refinance", {}).get("state") == "CALCULATED"
+                and result["scenarios"][name]["horizon_without_refinance"].get("cash_per_usd_10", {}).get("events"))]
+        else:
+            unavailable = [name for name in unavailable if not capacity_only_delivery(delivery_case, result, name)]
     require(not unavailable, f'Flujos por USD 10 PENDING: {", ".join(unavailable)}')
     require(result["decision"] == "PENDING" and result["page_count"] == 1
             and not result["real_decisions_enabled"] and not result["deployment_enabled"],

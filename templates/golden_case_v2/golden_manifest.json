@@ -1,0 +1,44 @@
+{
+  "schema": "miniuw.frozen-golden-case.v2",
+  "scope": "synthetic monthly source case; no real financing or criteria",
+  "design": {
+    "source": "seed capacity used solely to author synthetic bank quotes, never runtime resizing",
+    "requested": {
+      "Base": 4165000,
+      "Downside": 2134000
+    }
+  },
+  "files": {
+    "Criterios_Lorena.xlsx": "d1d992c6cd2cd7dec48498f3b3fc476730d6ad409dc9bce1155cb42a455b420e",
+    "Downside_Inputs.xlsx": "a15768d992a278fa955c865da719b1f31d0a81504761c8b3a6c8aad2afcaac13",
+    "Evidence.pdf": "5b08af07a25cc672692be1436d342f46cea3723f0205a5df442d402f87609259",
+    "Independent_Reference.json": "a56a1bc5af691a61ce655d7e539ace2ac495eabc21363adf9db554bafabcfe79",
+    "Inputs.xlsx": "614e5d68f15afcb19bb3f26987531312aa33a34c6eaf61e318bf88dcb71c60d8",
+    "Plan.pdf": "9bd384c0da7d911c06d276573db8e5a974aaca9c49dcbbc3cf36ed108639f0ff",
+    "case.json": "f4fdf1d8f5a35b5dcdbbe071e902f00e08f4b550d8c8e43713447abc203a066b",
+    "current_revision.json": "e68249e045424df29f00e01c942a0193c7eab01d938dae5f117055771df45d58",
+    "expected_financials.json": "9795056e0454f01c4cd2f0c321e9e3406539ae3e0655b468b3f4d78493609d16",
+    "settings.json": "ef1857a42f2a789c61fe19aabbdb368bf58d23577b67a5ef8d5aafd4a9412325"
+  },
+  "independent_comparisons": {
+    "Base": {
+      "exact_comparisons": 868,
+      "gross_dates": true,
+      "independent_amortization": true,
+      "irr_bracket_checked": true,
+      "monthly_tax": true,
+      "tdc": true
+    },
+    "Downside": {
+      "exact_comparisons": 958,
+      "gross_dates": true,
+      "independent_amortization": true,
+      "irr_bracket_checked": true,
+      "monthly_tax": true,
+      "tdc": true
+    }
+  },
+  "criteria_adopted": false,
+  "decision": "PENDING",
+  "deployment_enabled": false
+}

@@ -41,3 +41,9 @@ Current authority is the user's supplied handoff (sections shown below). Histori
 | REC-08 | Feedback p. 1 proposes seven Dots; Manual pp. 34/37 and roadmap p. 4 define 16 per-deal bots plus test bot 17; Process pp. 6–7 maps seven Dots to 17 roles. | Functional groupings can differ in granularity. This reconciles documentary counts, not deployed agents. No deployment evidence recovered; architecture remains proposed. |
 
 No findings above close historical PC-01–PC-07, certify Phase 0, authenticate expert decisions, or authorize production.
+
+## D276 · LTC base and review findings
+
+The reviewer requested a more leveraged example and correct LTC labels. The active source contract defines eligible construction cost as direct hard excluding contingency. v2 draws62.5% on that base (roughly35–37% of TDC), with permanent LTV61–62% and DSCR~1.252. It is not represented as60–65% debt/TDC. A broader eligible-cost basis is not silently adopted; unsupported basis/currency changes block v37. The independent oracle verifies the actual declared structure, not market availability.
+
+Grouping YoC/spread with a source-bound common cause only changes a review finding count. It never drops either comparison or any applicable joint RLV criterion. The hypothetical15% annual price target is not a new adopted criterion. General regression still requires its own final constance; interrupted and resumed work is labelled explicitly.

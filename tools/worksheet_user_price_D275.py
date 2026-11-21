@@ -10,6 +10,7 @@ from worksheet_frontiers_D275 import fraction,rational,digest
 from worksheet_irr_certificate_D270 import positive_inventory,annual_enclosure,ArithmeticBudget
 
 SCHEMA='miniuw.synthetic-user-target-price-grid.v1'
+MONTHLY_SCHEMA='miniuw.synthetic-monthly-user-target-price-grid.v1'
 RULE='fixed_debt_and_future_gross_events_delta_land_plus_closing_funded_at_initial_date'
 METRICS=('annual_irr','equity_multiple','yoc','equity_tdc')
 
@@ -30,12 +31,13 @@ def compare_enclosure(low,high,condition):
 
 def price_point(source,price,targets):
  try:
-  if source.get('schema')!=SCHEMA or source.get('rule')!=RULE or source.get('source_check')!='INDEPENDENTLY_VERIFIED':
+  if source.get('schema') not in (SCHEMA,MONTHLY_SCHEMA) or source.get('rule')!=RULE or source.get('source_check')!='INDEPENDENTLY_VERIFIED':
    raise ValueError('Falta contrato de precio con cotejo independiente de fuentes')
   if not source.get('source_ref') or not isinstance(source.get('source_sha256'),str) or len(source['source_sha256'])!=64:raise ValueError('Falta huella y ubicación de fuentes')
   if not isinstance(targets,dict) or not targets or not set(targets)<=set(METRICS):raise ValueError('Faltan metas explícitas del usuario')
   p0,c33,tdc,eq,debt,noi=(fraction(source.get(k)) for k in ('purchase_price','closing_fraction','tdc','applied_equity','fixed_debt','noi_uw'))
-  if not 0<=c33<=1 or debt<0 or tdc<=0 or eq<0 or eq+debt!=tdc:raise ValueError('No concilian costo, equity y deuda fija')
+  other_sources=fraction(source.get('fixed_other_sources')) if source.get('schema')==MONTHLY_SCHEMA else Q()
+  if not 0<=c33<=1 or debt<0 or other_sources<0 or tdc<=0 or eq<0 or eq+debt+other_sources!=tdc:raise ValueError('No concilian costo, equity y deuda fija')
   price=fraction(price);change=(price-p0)*(1+c33);cost=tdc+change;applied=eq+change
   if cost<=0 or applied<0:raise ValueError('Precio fuera del dominio de costo y equity')
   events=deepcopy(source.get('gross_events'));dates=source.get('dates');initial_id=source.get('initial_event_id')
@@ -43,8 +45,10 @@ def price_point(source,price,targets):
    raise ValueError('Falta inventario fechado completo; un hueco no se rellena')
   from datetime import date
   dd=[date.fromisoformat(d) for d in dates]
-  if any(d.day!=1 for d in dd) or [(d.year-dd[0].year)*12+d.month-dd[0].month for d in dd]!=list(range(0,3*len(dd),3)):
-   raise ValueError('Se requiere malla trimestral explícita y completa')
+  frequency=12 if source.get('schema')==MONTHLY_SCHEMA else 4;spacing=12//frequency
+  if source.get('schema')==MONTHLY_SCHEMA and source.get('periods_per_year')!=12:raise ValueError('El perfil mensual requiere períodos por año explícitos')
+  if any(d.day!=1 for d in dd) or [(d.year-dd[0].year)*12+d.month-dd[0].month for d in dd]!=list(range(0,spacing*len(dd),spacing)):
+   raise ValueError('Se requiere malla explícita y completa según el perfil de precio')
   initial=[e for e in events if e.get('id')==initial_id]
   if len(initial)!=1 or initial[0]['date']!=dates[0] or initial[0].get('kind')!='contribution':raise ValueError('Aporte inicial de precio ausente o ambiguo')
   initial[0]['amount']=rational(fraction(initial[0]['amount'])+change)
@@ -58,7 +62,11 @@ def price_point(source,price,targets):
    if val<0 or not event.get('source_ref') or event.get('kind') not in ('contribution','distribution'):raise ValueError('Movimiento bruto inválido o sin fuente')
    if event['kind']=='contribution':calls+=val;flows[event['date']]-=val
    else:receipts+=val;flows[event['date']]+=val
-  irr=exact_irr(list(flows.values()));multiple=receipts/calls
+  if frequency==12:
+   from worksheet_monthly_D275 import monthly_irr
+   irr=monthly_irr(dates,[rational(v) for v in flows.values()],source['source_ref'])
+  else:irr=exact_irr(list(flows.values()))
+  multiple=receipts/calls
   values=dict(yoc=rational(noi/cost),equity_tdc=rational(applied/cost),equity_multiple=rational(multiple),annual_irr=irr['annual_enclosure'])
   compared={}
   for key,condition in targets.items():
@@ -78,7 +86,7 @@ def price_point(source,price,targets):
 
 
 def grid(source,config):
- if not isinstance(config,dict) or config.get('schema')!=SCHEMA or not isinstance(config.get('source_ref'),str) or not config['source_ref'].strip():raise ValueError('Falta configuración explícita de grilla')
+ if not isinstance(config,dict) or config.get('schema') not in (SCHEMA,MONTHLY_SCHEMA) or config.get('schema')!=source.get('schema') or not isinstance(config.get('source_ref'),str) or not config['source_ref'].strip():raise ValueError('Falta configuración explícita de grilla')
  lo,hi,step=(fraction(config.get(k)) for k in ('lower','upper','step'))
  n=(hi-lo)/step if step>0 else -1
  if n.denominator!=1 or not 2<=n<=1000:raise ValueError('Grilla acotada no confirmada')
@@ -88,10 +96,12 @@ def grid(source,config):
  selected=[i for i,s in enumerate(states) if s=='MEETS_USER_TARGETS']
  maximum=dict(state='PENDING',price=None,reason='Ningún precio cumple las metas o hay observaciones sin resolver')
  if not monotone:maximum['reason']='No monotonía del cumplimiento en la grilla'
+ elif config['schema']==MONTHLY_SCHEMA and 'PENDING' not in states and not selected:
+  maximum=dict(state='NO_PRICE_IN_GRID',price=None,reason='Ningún precio de la grilla cumple; no se extrapola un precio fuera del dominio')
  elif 'PENDING' not in states and selected:
   index=selected[-1]
   if index==len(points)-1:maximum.update(state='BEYOND_GRID',reason='El límite superior aún cumple; no se afirma un máximo')
   else:maximum=dict(state='BOUNDED',price=points[index]['price'],next_price=points[index+1]['price'],resolution=rational(step),negative_price_flag=fraction(points[index]['price'])<0,
    reason='Máximo de la grilla declarada, no RLV de la casa')
- return dict(schema=SCHEMA,price_grid=points,max_price_for_targets=maximum,monotone_on_complete_grid=monotone,
+ return dict(schema=config['schema'],price_grid=points,max_price_for_targets=maximum,monotone_on_complete_grid=monotone,
   house_rlv=dict(state='PENDING',reason='Criterio por confirmar'),criteria_adopted=False,real_decision='PENDING',deployment_enabled=False)

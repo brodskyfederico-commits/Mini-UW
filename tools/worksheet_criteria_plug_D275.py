@@ -59,7 +59,7 @@ def relation(value,condition):
  return a if a==b else None
 
 
-def apply(snapshot,config,as_of,*,house_rlv_solver=None):
+def apply(snapshot,config,as_of,*,house_rlv_solver=None,common_causes=None,causal_documents=None):
  # No caller-owned structure is mutated, including optional pricing/IRR records.
  financial={k:deepcopy(snapshot[k]) for k in FINANCIAL_KEYS if k in snapshot}
  output=deepcopy(snapshot);rows=[]
@@ -95,5 +95,8 @@ def apply(snapshot,config,as_of,*,house_rlv_solver=None):
   criteria_plug_schema=SCHEMA,house_rlv=house,financial_snapshot_sha256=digest(financial),criteria_adopted=False,
   decision='PENDING',historical_return='PENDING',deployment_enabled=False,
   policy_note='El estado por métrica no autentica un dictamen; precedencia con faltantes y RLV real por confirmar')
+ if common_causes is not None:
+  from worksheet_review_findings_D276 import findings
+  output['review_findings']=findings(rows,common_causes,causal_documents,output['criteria_revision'])
  assert {k:output[k] for k in financial}==financial
  return output

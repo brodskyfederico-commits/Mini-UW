@@ -1,0 +1,64 @@
+{
+  "schema": "miniuw.documentation-validation.D276.v1",
+  "artifacts": {
+    "MiniUW_Actualizacion_Profesional_D276.pdf": {
+      "page_count": 8,
+      "letter": true,
+      "inside_page": true,
+      "sha256": "c36476f07deb35cd8ea6f3bf6d7f852699712390717c0ee603fdf5e8768f5645"
+    },
+    "MiniUW_Anexo_Lorena_D276.pdf": {
+      "page_count": 2,
+      "letter": true,
+      "inside_page": true,
+      "sha256": "11e10fc5926cb1fa2122d6eec0fe9ca845483ed0e7f34d6f6eec24daf713c115"
+    },
+    "MiniUW_Resultado_Una_Pagina_D276.pdf": {
+      "page_count": 1,
+      "letter": true,
+      "inside_page": true,
+      "sha256": "a57b8fb1ba6bf8736bdbbd24b6ba5126ff2692ce2088c7bcd55b7bd5825fac89"
+    }
+  },
+  "source_and_render_qa": {
+    "actual_one_page_sha256": "a57b8fb1ba6bf8736bdbbd24b6ba5126ff2692ce2088c7bcd55b7bd5825fac89",
+    "criteria_adopted": false,
+    "current_code_source_replay": {
+      "archived_revision": "SYNTHETIC-D276-REVIEW-CURRENT",
+      "archived_simulation_result": "PENDING",
+      "audit_bot": "B16",
+      "critical_evidence": {
+        "affected_scenarios": [],
+        "counts": {
+          "FALSE_GREEN": 0,
+          "PENDING": 0,
+          "VERIFIED_GREEN": 958
+        },
+        "status": "PASSED"
+      },
+      "current_revision": "SYNTHETIC-D276-REVIEW-CURRENT",
+      "decision": "PENDING",
+      "page_count": 1,
+      "pdf_sha256": "e750647ff889e09837ba7606a1b60760891b02101800cc8f6a9b4f09faa8738a",
+      "profile": "synthetic_documented_florida_tax_with_critical_evidence",
+      "revision_blockers": [],
+      "simulation_result": "PENDING",
+      "state": "PENDING",
+      "status": "verified_source_first",
+      "vigencia": "VIGENTE"
+    },
+    "deployment_enabled": false,
+    "main_first_page_identical_to_standalone": true,
+    "pdf_rendered_again_identical": true,
+    "real_decision": "PENDING",
+    "recorded_fields": 146,
+    "state": "PASSED"
+  },
+  "visual_review": {
+    "state": "PASSED",
+    "scope": "All report/annex pages visually inspected; updated numerical counts and CoC note retain the validated layout. Letter pages, no clipping, one genuine footer."
+  },
+  "criteria_adopted": false,
+  "deployment_enabled": false,
+  "real_decision": "PENDING"
+}
