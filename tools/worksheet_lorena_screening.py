@@ -79,8 +79,14 @@ def base_rlv(view, evidence, metrics, pre_stab, equity_left, settings, configura
     def pending(reason):
         return None, dict(state="PENDING", blocker=reason)
 
+    from worksheet_rlv_scope_D273 import FIELD, scope_issues
+    joint_scope = settings.get(FIELD)
+    if FIELD in settings:
+        issues = scope_issues(settings, configuration)
+        if issues:
+            return pending(issues[0])
     if (settings.get("basis") != PRICE_BASIS or not synthetic_id(settings.get("source_ref"))
-            or settings.get("binding_yields") not in (["YoC"], ["spread"])):
+            or (FIELD not in settings and settings.get("binding_yields") not in (["YoC"], ["spread"]))):
         return pending("rlv_price_grid_or_binding_yield_unconfirmed")
     required = set(BASES) - {RLV}
     if not required <= metrics.keys():
@@ -133,6 +139,8 @@ def base_rlv(view, evidence, metrics, pre_stab, equity_left, settings, configura
     proof = dict(state="bounded_synthetic", price_lower=lower, price_upper_exclusive=upper,
                  binding_metrics=stopped, negative_limit=upper <= 0,
                  blocker="nonpositive_rlv_premium_undefined" if lower <= 0 else None)
+    if FIELD in settings:
+        proof[FIELD] = joint_scope
     if lower <= 0:
         return None, proof
     low, high = asking / upper - 1, asking / lower - 1

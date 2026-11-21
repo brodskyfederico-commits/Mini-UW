@@ -95,6 +95,7 @@ WORKBOOK_CRITICAL_EVIDENCE_PROFILE = "synthetic_documented_florida_tax_with_crit
 WORKBOOK_VARIANT_EVIDENCE_SCHEMA = "miniuw.synthetic-native-rental-inputs.v34"
 VARIANT_REFERENCE_FILE = "Independent_Reference.json"
 WORKBOOK_REGULATED_RENT_SCHEMA = "miniuw.synthetic-native-rental-inputs.v35"
+WORKBOOK_RETURN_SUMMARY_SCHEMA = "miniuw.synthetic-native-rental-inputs.v36"
 INDEPENDENT_EVIDENCE_SCHEMAS = (WORKBOOK_VARIANT_EVIDENCE_SCHEMA, WORKBOOK_REGULATED_RENT_SCHEMA)
 CRITICAL_EVIDENCE_SCHEMAS = (WORKBOOK_CRITICAL_EVIDENCE_SCHEMA, *INDEPENDENT_EVIDENCE_SCHEMAS)
 FLORIDA_TAX_SCHEMAS = (WORKBOOK_FLORIDA_TAX_SCHEMA, *CRITICAL_EVIDENCE_SCHEMAS)
@@ -165,7 +166,7 @@ EXACT_PERMANENT_SENSITIVITY_SCHEMA = "miniuw.synthetic-worksheet-sensitivities.v
 
 def read_case_source(raw):
     case = _json(raw, MAX_REGULATED_RENT_BYTES)
-    if isinstance(case, dict) and case.get("schema") == WORKBOOK_REGULATED_RENT_SCHEMA:
+    if isinstance(case, dict) and case.get("schema") in (WORKBOOK_REGULATED_RENT_SCHEMA, WORKBOOK_RETURN_SUMMARY_SCHEMA):
         return case
     if len(raw) > MAX_CONSTRUCTION_PILOT_BYTES:
         return _json(raw, MAX_CONSTRUCTION_PILOT_BYTES)
@@ -212,6 +213,12 @@ def build_results(raw, *, workbook_raw=None, downside_workbook_raw=None, current
                   evidence_raw=None, criteria_raw=None, independent_reference_raw=None, delivery_report=False):
     case = read_case_source(raw)
     schema = case.get("schema") if isinstance(case, dict) else None
+    if schema == WORKBOOK_RETURN_SUMMARY_SCHEMA:
+        from worksheet_return_summary_D273 import build_case
+        return build_case(case, raw, workbook_raw=workbook_raw, downside_workbook_raw=downside_workbook_raw,
+                          current_revision_raw=current_revision_raw, plan_raw=plan_raw, evidence_raw=evidence_raw,
+                          criteria_raw=criteria_raw, independent_reference_raw=independent_reference_raw,
+                          delivery_report=delivery_report)
     rent_inputs = case.get("rent_inputs") if isinstance(case, dict) else None
     require(not isinstance(rent_inputs, dict) or "regulated_rent" not in rent_inputs or schema == WORKBOOK_REGULATED_RENT_SCHEMA,
             "Regulated rent requires the explicit v35 profile")
@@ -428,10 +435,12 @@ def encoded(value):
 
 def build_package(raw, *, workbook_raw=None, downside_workbook_raw=None, current_revision_raw=None, plan_raw=None,
                   evidence_raw=None, criteria_raw=None, independent_reference_raw=None, package_schema=None):
+    case = read_case_source(raw)
+    schema = case.get("schema") if isinstance(case, dict) else None
     if package_schema is None:
-        case = read_case_source(raw)
-        schema = case.get("schema") if isinstance(case, dict) else None
-        package_schema = DELIVERY_PACKAGE_SCHEMA if schema in TECHNICAL_SCHEMAS else PACKAGE_SCHEMA
+        package_schema = DELIVERY_PACKAGE_SCHEMA if schema in (*TECHNICAL_SCHEMAS, WORKBOOK_RETURN_SUMMARY_SCHEMA) else PACKAGE_SCHEMA
+    if schema == WORKBOOK_RETURN_SUMMARY_SCHEMA:
+        require(package_schema == DELIVERY_PACKAGE_SCHEMA, "El resumen v36 requiere su paquete de entrega reproducible")
     require(package_schema in (PACKAGE_SCHEMA, DELIVERY_PACKAGE_SCHEMA), "Formato de expediente desconocido")
     result, pdf = build_results(raw, workbook_raw=workbook_raw, downside_workbook_raw=downside_workbook_raw,
                                 current_revision_raw=current_revision_raw, plan_raw=plan_raw, evidence_raw=evidence_raw,
@@ -568,6 +577,14 @@ def require_pdf_destination(directory, output, current_revision):
 
 
 def require_delivery_evidence(result):
+    if "return_summary" in result:
+        for name, routes in result["return_summary"]["scenarios"].items():
+            view = result["scenarios"][name]
+            for mode, route in (("with_refinance", view),
+                                ("without_refinance", view.get("horizon_without_refinance", {}))):
+                if route.get("cash_per_usd_10") is not None:
+                    require(not routes[mode]["blockers"],
+                            f"Resumen de caja {name} PENDING: no se verificó el ledger fechado")
     if result["profile"] == WORKBOOK_CRITICAL_EVIDENCE_PROFILE:
         evidence = result["critical_evidence_review"]
         require(evidence["status"] == "PASSED",
@@ -600,10 +617,13 @@ def deliver_package(directory, output, current_revision):
             f'La revisión no está vigente: {", ".join(review["revision_blockers"])}')
     unavailable = [name for name in ("Base", "Downside")
                    if not (result["scenarios"].get(name, {}).get("cash_per_usd_10") or {}).get("events")]
-    if read_case_source(files["case.json"]).get("schema") in INDEPENDENT_EVIDENCE_SCHEMAS:
+    delivery_case = read_case_source(files["case.json"])
+    if delivery_case.get("schema") == WORKBOOK_RETURN_SUMMARY_SCHEMA:
+        from worksheet_return_summary_D273 import baseline
+        delivery_case = baseline(delivery_case)
+    if delivery_case.get("schema") in INDEPENDENT_EVIDENCE_SCHEMAS:
         from worksheet_variant_evidence_D268 import capacity_only_delivery
-        case = read_case_source(files["case.json"])
-        unavailable = [name for name in unavailable if not capacity_only_delivery(case, result, name)]
+        unavailable = [name for name in unavailable if not capacity_only_delivery(delivery_case, result, name)]
     require(not unavailable, f'Flujos por USD 10 PENDING: {", ".join(unavailable)}')
     require(result["decision"] == "PENDING" and result["page_count"] == 1
             and not result["real_decisions_enabled"] and not result["deployment_enabled"],

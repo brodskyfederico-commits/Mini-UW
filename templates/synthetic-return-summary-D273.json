@@ -1,0 +1,16 @@
+{
+  "usage": "synthetic_test_only_no_investment_criterion",
+  "schema": "miniuw.synthetic-native-rental-inputs.v36",
+  "return_summary": {
+    "profile": "miniuw.synthetic-equity-return-summary.v1",
+    "rules": {
+      "basis": "verified_initial_project_equity_USD10",
+      "calendar": "complete_first_day_quarters_from_verified_fiscal_horizon",
+      "aggregation": "gross_calls_and_receipts_grouped_by_date_no_intraday_order",
+      "payback": "first_date_receipts_cover_calls_after_positive_initial_contribution",
+      "peak": "maximum_cumulative_calls_less_receipts_by_date",
+      "rate": "explicit_D270_certified_annual_IRR_or_PENDING"
+    },
+    "source_ref": "SYNTHETIC-D273-explicit-summary-definition"
+  }
+}

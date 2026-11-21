@@ -1,0 +1,123 @@
+{
+  "source_path": "outputs/Mini-UW/docs/MiniUW_Instrucciones_Codex_D273.md",
+  "sha256": "3ce1174702cfbc53d2d90ad296494693d7204f1d0babf7e6e31e7f0b953a6c33",
+  "kind": "expert_review_evidence_not_automatic_policy_authority",
+  "tasks": [
+    {
+      "id": "T1",
+      "state": "implementado; 26 dirigidas aprobadas; cierre general del corte final en curso",
+      "criterion_adoption": false,
+      "schema": "miniuw.synthetic-native-rental-inputs.v36",
+      "directed_checker": "passed",
+      "unit_tests": 18,
+      "pipeline_binding": "caso v36 y PDF entregado; prueba independiente de huellas añadida",
+      "cash_precision": "protocolo existente de 1300 dígitos, sin redondear ni completar vacíos",
+      "capacity_control": "refi Downside PENDING; caja y PDF sin refi conservados",
+      "outside_horizon": "no es un cero observado"
+    },
+    {
+      "id": "T2",
+      "state": "pendiente",
+      "criterion_adoption": false
+    },
+    {
+      "id": "T3",
+      "state": "pendiente",
+      "criterion_adoption": false
+    },
+    {
+      "id": "T4",
+      "state": "pendiente",
+      "criterion_adoption": false
+    },
+    {
+      "id": "T5",
+      "state": "pendiente",
+      "criterion_adoption": false
+    },
+    {
+      "id": "T6",
+      "state": "pendiente",
+      "criterion_adoption": false
+    },
+    {
+      "id": "T7",
+      "state": "pendiente",
+      "criterion_adoption": false
+    },
+    {
+      "id": "T8",
+      "state": "pendiente",
+      "criterion_adoption": false
+    },
+    {
+      "id": "T9",
+      "state": "pendiente",
+      "criterion_adoption": false
+    },
+    {
+      "id": "T10",
+      "state": "pendiente",
+      "criterion_adoption": false
+    },
+    {
+      "id": "T11",
+      "state": "pendiente",
+      "criterion_adoption": false
+    },
+    {
+      "id": "T12",
+      "state": "parcial: declaración versionada del alcance conjunto y ocho pruebas dirigidas; enchufe completo pendiente",
+      "criterion_adoption": false,
+      "joint_scope_profile": "miniuw.synthetic-joint-applicable-rlv-scope.v1",
+      "joint_scope_tests": 8,
+      "all_applicable_criteria_preserved": true
+    },
+    {
+      "id": "T13",
+      "state": "pendiente",
+      "criterion_adoption": false
+    },
+    {
+      "id": "T14",
+      "state": "pendiente",
+      "criterion_adoption": false
+    }
+  ],
+  "conflicts": [
+    {
+      "id": "REV-D273-01",
+      "source": "T12: YoC y spread no pueden ser vinculantes a la vez",
+      "existing_user_rule": "Evaluar todos los criterios aplicables conjuntamente para el RLV",
+      "handling": "Conservar todos los criterios aplicables conjuntamente, confirmado expresamente en este chat el 20/11/2026. No adoptar exclusión YoC/spread del archivo T12.",
+      "state": "resuelto_por_usuario",
+      "implementation": "Declaración versionada con YoC y spread juntos y las nueve métricas Base no RLV; ninguna se omite por falta de umbral. Se conserva el contrato histórico. La búsqueda conjunta existente ya compara ambos; la nueva declaración elimina la incompatibilidad del rótulo de alcance. No se adopta un RLV real."
+    },
+    {
+      "id": "REV-D273-02",
+      "source": "T12: todas las cifras iguales; house_rlv se llena con criterios",
+      "handling": "Invariancia de métricas independientes; house_rlv es resultado dependiente del criterio y permanece pendiente sin adopción"
+    },
+    {
+      "id": "REV-D273-03",
+      "source": "T2: tasa de obra C51–C53",
+      "handling": "La tasa es C52; C51 es LTC y C53 comisión. No estresar LTC/comisión como tasa."
+    },
+    {
+      "id": "REV-D273-04",
+      "source": "T9: recálculo LibreOffice",
+      "handling": "Runtime no encontrado; no certificar tie-out externo sin recalcular en motor disponible"
+    },
+    {
+      "id": "REV-D273-05",
+      "source": "Puerta T10/T11/T13",
+      "handling": "Proyectos cerrados, referencia humana y roles reales requieren evidencia del equipo; sólo construir arneses y ensayos sintéticos ahora"
+    }
+  ],
+  "deployment_enabled": false,
+  "real_decision": "PENDING",
+  "review_status": "technical_changes_in_progress_not_all_14_closed",
+  "libreoffice_available": false,
+  "git_backups_authorized_by_user": true,
+  "network_scope": "Only ordinary GitHub milestones under prior explicit authorization; no external financial/official-source queries or CI budget changes"
+}

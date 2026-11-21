@@ -15,6 +15,9 @@ FINANCIAL_SOURCES = ("worksheet_case", "irr_policy", "yield_inputs", "funding_in
 
 def case_revision(case):
     """Project the exact inputs for each gate independently of their revision labels."""
+    if case.get("schema") == "miniuw.synthetic-native-rental-inputs.v36":
+        from worksheet_return_summary_D273 import revision_projection
+        return revision_projection(case)
     local = object_or_empty(case.get("local_sources"))
     documents = object_or_empty(local.get("documents"))
     plans = {name: value for name, value in documents.items() if name != "official_snapshot"}

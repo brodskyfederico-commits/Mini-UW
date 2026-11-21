@@ -1,5 +1,5 @@
 {
-  "scope": "Preserved originals and synthetic Mini-UW through D272: complete professional-review dossier with integral code/contract annex embedded in PDF, historical Lorena references and explicit current-criterion/project-data blockers. Documentation only; financial code unchanged from fully tested D270/D271. No policy adoption, deployment or real decision.",
+  "scope": "D273 T1 and user-confirmed joint RLV scope. Correct case/PDF trace, cash rational protocol alignment, capacity-blocked refinance with verified no-refi alternative, and outside-horizon periods distinguished from zero. 26 directed tests passed; final 1792-test general regression pending. No criteria adoption, real decision or deployment; other expert tasks remain open.",
   "files": [
     {
       "path": ".github/workflows/miniuw-integral-usd10.yml",
@@ -23,13 +23,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 96084,
-      "sha256": "db10399e4c7e07560d55c6ffd2c2f2a5ecec91017871a86d3af4fa210bcf1ccc"
+      "bytes": 96757,
+      "sha256": "71fdda7a81191510fa050e9c42ceabadb28b31db7be6659e1689aa511a9662a0"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 417418,
-      "sha256": "d9c33bc91bd664405ce1a4bc5a86e859445e5250ee1cab7f6ca6d7ab2fc27aac"
+      "bytes": 422071,
+      "sha256": "0c00aecbe1b855fcd496ba5d4d59702e93b3057ff4fb5dd04902b94acaed62e8"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -65,6 +65,11 @@
       "path": "docs/MiniUW_Informe_Integral_D250.md",
       "bytes": 84412,
       "sha256": "9db65c049ca8675879293e5825b96bac9a87be60b469d5da006062ee071d73f7"
+    },
+    {
+      "path": "docs/MiniUW_Instrucciones_Codex_D273.md",
+      "bytes": 19263,
+      "sha256": "3ce1174702cfbc53d2d90ad296494693d7204f1d0babf7e6e31e7f0b953a6c33"
     },
     {
       "path": "docs/MiniUW_v1_Consolidado.md",
@@ -1407,6 +1412,11 @@
       "sha256": "49293bb76206fc1df04544e765e096a1079ab63580f6c1e3bd80d9e53809d234"
     },
     {
+      "path": "docs/review/MiniUW_Registro_Revision_D273.json",
+      "bytes": 4354,
+      "sha256": "a87c44e5271eb2d694f3ba968818c8874875274dc4570cdf56d7386db19738d0"
+    },
+    {
       "path": "docs/review/MiniUW_Renta_Regulada_D269.pdf",
       "bytes": 8689,
       "sha256": "e8bd0d472e0763b51ff49cd1078b773d6669a6b44d4d5578ef40f1503b9122c4"
@@ -1415,6 +1425,11 @@
       "path": "docs/review/MiniUW_Reporte_Procesos_y_Avance_D196_Corregido.pdf",
       "bytes": 86018,
       "sha256": "d0ed059449b9e66313dc0caea98283633d6ef737038967e0beffbe323c10724a"
+    },
+    {
+      "path": "docs/review/MiniUW_Resumen_Retorno_D273.pdf",
+      "bytes": 4928,
+      "sha256": "b6c7c4ed9d9fe7d982191cd5117b6bf626f042104cd76e924aa4cf31a2edef06"
     },
     {
       "path": "docs/review/MiniUW_Revision_Interna_Retorno_T56.md",
@@ -3965,6 +3980,11 @@
       "path": "docs/workbook-return-metrics-D167.md",
       "bytes": 3302,
       "sha256": "81863120441795f581e575846343df8243bceb3f8de468cf6141413d5bd7de7e"
+    },
+    {
+      "path": "docs/workbook-return-summary-D273.md",
+      "bytes": 7149,
+      "sha256": "81a42ed16e187192b704a730e0535111d917bbe01e02046b42e203216eb3600d"
     },
     {
       "path": "docs/workbook-reverse-citation-recovery-D224.md",
@@ -6677,6 +6697,11 @@
       "sha256": "64245c7d43806aeeb3e879db54471c538ef11d3e7e4220261337d29fe4932079"
     },
     {
+      "path": "templates/synthetic-joint-rlv-scope-D273.json",
+      "bytes": 533,
+      "sha256": "b7e9208c98343607cf55166c04e328aa1023b0fc9992b2b925da92e7f52c9671"
+    },
+    {
       "path": "templates/synthetic-jpeg-evidence-D161.pdf",
       "bytes": 693031,
       "sha256": "c2e19cdda19185de9db4ab6ae4e437bf1f1436172c0cacfc19565a52b4860b57"
@@ -7135,6 +7160,11 @@
       "path": "templates/synthetic-residential-operations.json",
       "bytes": 2250,
       "sha256": "1704c496be7e60afcebd68af91fef87d24418d41629fe1df969e59eb6eade356"
+    },
+    {
+      "path": "templates/synthetic-return-summary-D273.json",
+      "bytes": 721,
+      "sha256": "37444bcc6d3da9e532b4d88c371d2175c016c7c854e86103c7807d8a66afcd68"
     },
     {
       "path": "templates/synthetic-rotated-overlay-D134.pdf",
@@ -8507,6 +8537,11 @@
       "sha256": "b8f5b64c0a37045c3b7fffa38f7cb9ed0f9772120cfb2e58417ec331833df047"
     },
     {
+      "path": "tests/test_worksheet_joint_rlv_scope.py",
+      "bytes": 6893,
+      "sha256": "adecf4d53fc3cff66adec25bb8ddcb6a9e96cfa3bda1307c754ee8a7d0d80a83"
+    },
+    {
       "path": "tests/test_worksheet_lorena_annual_route.py",
       "bytes": 7886,
       "sha256": "548c6112aff8b11b126c44c3bd982db9fdeab5c01ee1d1a87ed3302984d88d3c"
@@ -8550,6 +8585,11 @@
       "path": "tests/test_worksheet_reserve_sensitivities.py",
       "bytes": 11573,
       "sha256": "ff354dac13e6d164aac79dfe11286cdcba1746b9a581a102c7fd3cac4087d169"
+    },
+    {
+      "path": "tests/test_worksheet_return_summary.py",
+      "bytes": 13580,
+      "sha256": "27afd6452cd3b7e04da67d0113c6350f81aa7b853263861cd71d19586f85d034"
     },
     {
       "path": "tests/test_worksheet_reverse_citation_recovery_D224.py",
@@ -9402,6 +9442,11 @@
       "sha256": "f49bf7cb694cbc0bc208481dabcd39fb80ae66c965713f1931c510ce27988d9e"
     },
     {
+      "path": "tools/check_worksheet_return_summary_D273.py",
+      "bytes": 18855,
+      "sha256": "1dfdca9d8038e3e92a8664dad9076cd66a47f2f8bc792b10f5a06499ebeadfd9"
+    },
+    {
       "path": "tools/check_worksheet_revision_audit_D195.py",
       "bytes": 6417,
       "sha256": "8123d4fae9eaed28a83eb6999c06dc82a8b3ee39255cd3048680c59daeb5892f"
@@ -9878,8 +9923,8 @@
     },
     {
       "path": "tools/miniuw_worksheet_v1.py",
-      "bytes": 49002,
-      "sha256": "9af08fadebd4c23b43a006f1e53f428a077f5d567eb65983775e56a0ee5e5359"
+      "bytes": 50506,
+      "sha256": "f382d57b5737e5270f671228afb5155f3bd83a6e001627bd6e4dd5f122eb14df"
     },
     {
       "path": "tools/onepage_pending_cases_D79.py",
@@ -10238,8 +10283,8 @@
     },
     {
       "path": "tools/worksheet_lorena_screening.py",
-      "bytes": 15848,
-      "sha256": "41d23fda702591d2b877694979c876ee64e67b777d7c39fc9cf09f35b8ff9ae8"
+      "bytes": 16174,
+      "sha256": "0cdbf3447ae9f59a392ed9af2f4650936b1c704775306c64a536e53826d74beb"
     },
     {
       "path": "tools/worksheet_market_evidence_D166.py",
@@ -10402,9 +10447,19 @@
       "sha256": "c840f5b1c75ec583f272278ee80333fb79d43c90dc15dbe99ba6110a6597d769"
     },
     {
+      "path": "tools/worksheet_return_summary_D273.py",
+      "bytes": 14690,
+      "sha256": "92ca79d3b2ed24f600581cfc829fdab254f592624685e349de3651924d738801"
+    },
+    {
       "path": "tools/worksheet_revision_D128.py",
-      "bytes": 7707,
-      "sha256": "3f390abf5d5afaed281edb87fabe34b54b65ee690c531b8ef63b5b0cafaf1b8a"
+      "bytes": 7892,
+      "sha256": "b152934e2b8ef0e7f6f47bec8ddc93182ad84230162b9011edd0401a36740b19"
+    },
+    {
+      "path": "tools/worksheet_rlv_scope_D273.py",
+      "bytes": 2248,
+      "sha256": "e14d5de972b98dbdafba1175879d5fc078aa169b0fc1f69bb1a208ca8711b900"
     },
     {
       "path": "tools/worksheet_sale_gap_D85.py",
