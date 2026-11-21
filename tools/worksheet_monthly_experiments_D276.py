@@ -108,6 +108,15 @@ def evaluate(base,sources,result,driver,x):
  return dict(state='CALCULATED',scenarios=computed,independent_check=independent['checks'],counterfactual_inputs_sha256=digest(spec),cash_sha256=digest({s:{r:v[k].get('cash_per_usd_10') for r,k in [('with_refinance','with_refinance'),('without_refinance','horizon_without_refinance')]} for s,v in computed.items()}),source_audit_scope='Baseline PDF/OCR only; hypothetical inputs independently reconciled, not newly quoted or adopted')
 
 
+def pending_reason(route,route_result,capacity):
+ blockers=route_result.get('blockers')
+ detail='; '.join(blockers) if isinstance(blockers,list) and blockers else route_result.get('reason') or 'Falta caja de la estrategia; no se supone cero'
+ if route=='with_refinance' and capacity.get('within_capacity') is False:
+  limits=[k for k,v in capacity.get('limits',{}).items() if capacity.get('requested_principal') is not None and F(capacity['requested_principal'])>F(v)]
+  return dict(reason='Capacidad '+('/'.join(limits) or 'DSCR/LTV/DY')+': préstamo fijo supera límite; no se reajusta',reason_code='CAPACITY',strategy_blockers=blockers)
+ return dict(reason=detail,reason_code='STRATEGY',strategy_blockers=blockers)
+
+
 def experiments(base,sources,result,progress=None):
  if result['critical_evidence_review']['status']!='PASSED':raise ValueError('Falta auditoría fuente del caso original')
  baseline_proof=verify(base,sources,result)
@@ -132,9 +141,7 @@ def experiments(base,sources,result,progress=None):
      if v['state']!='CALCULATED':return dict(movement=R(x),state='PENDING',reason=v.get('reason','Falta cálculo del escenario'))
      r=v[key];cash=r.get('cash_per_usd_10');record=dict(movement=R(x),state=r['state'],within_capacity=v['capacity']['within_capacity'],capacity=v['capacity'],construction_principal=v['construction_financing']['terminal_principal'],cash_sha256=None if cash is None else digest(cash))
      if cash:record.update(capital_margin=R(F(cash['total_distributions'])-F(cash['total_contributions'])),total_contributions=cash['total_contributions'],total_receipts=cash['total_distributions'],irr_annual=r['return_summary']['irr_annual'],equity_multiple=cash['equity_multiple'])
-     else:
-      limits=[k for k,value in v['capacity'].get('limits',{}).items() if F(v['capacity']['requested_principal'])>F(value)] if 'requested_principal' in v['capacity'] else v['capacity'].get('active_limits',[])
-      record['reason']='Capacidad '+('/'.join(limits) or 'DSCR/LTV/DY')+': préstamo fijo supera límite; no se reajusta';record['reason_code']='CAPACITY' if not v['capacity']['within_capacity'] else 'MISSING_CASH'
+     else:record.update(pending_reason(route,r,v['capacity']))
      return record
     adverse_rows=[row(x,p) for x,p in adverse];favorable_rows=[row(x,p) for x,p in favorable];baseline=adverse_rows[0];first=next((a for a in adverse_rows if a['state']=='CALCULATED' and F(a['capital_margin'])<0),None);recovery=next((a for a in favorable_rows if a['state']=='CALCULATED' and F(a['capital_margin'])>=0),None)
     output[s][route][driver]=dict(unit=DRIVERS[driver]['unit'],range_upper=R(stop),resolution=R(spacing),baseline_breached=baseline.get('capital_margin') is not None and F(baseline['capital_margin'])<0,adverse=adverse_rows,favorable=favorable_rows,first_sampled_capital_breach=first,first_sampled_recovery=recovery,recovery_state='RECOVERED_ON_DECLARED_GRID' if recovery else 'NOT_RECOVERED_OR_PENDING_WITHIN_DECLARED_GRID',monotonicity='No global monotonicity asserted; every declared point is displayed')

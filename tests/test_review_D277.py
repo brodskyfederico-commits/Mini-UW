@@ -81,3 +81,11 @@ class ReviewD277Tests(TestCase):
   from worksheet_monthly_analysis_D277 import guard_fixed_construction_capacity
   g=dict(price_grid=[dict(price=R(10),state='CALCULATED',values={'annual_irr':'not used'},target_status='MEETS_USER_TARGETS')],max_price_for_targets=dict(state='BOUNDED',price=R(10)))
   out=guard_fixed_construction_capacity(g,eligible=100,drawn=60,ltc='0.65',p0=100,c33=0);self.assertEqual(out['price_grid'][0]['state'],'PENDING');self.assertIsNone(out['price_grid'][0]['values']);self.assertIn('LTC',out['max_price_for_targets']['reason']);self.assertIsNone(out['max_price_for_targets']['price'])
+
+ def test_extreme_delay_keeps_separate_capacity_and_retained_debt_maturity(self):
+  from worksheet_monthly_experiments_D276 import evaluate,pending_reason
+  from worksheet_monthly_analysis_D277 import reason
+  out=evaluate(self.spec,self.sources,self.result,'lease_up',F(24));self.assertEqual(out['state'],'CALCULATED')
+  for s,v in out['scenarios'].items():
+   self.assertEqual(v['with_refinance']['state'],'PENDING');self.assertFalse(v['capacity']['within_capacity']);self.assertEqual(v['horizon_without_refinance']['state'],'PENDING');self.assertIsNone(v['horizon_without_refinance']['cash_per_usd_10']);self.assertIn('vence antes',v['horizon_without_refinance']['blockers'][0]);self.assertIn(s,out['independent_check'])
+   diagnosed=pending_reason('without_refinance',v['horizon_without_refinance'],v['capacity']);self.assertEqual(reason(diagnosed|dict(within_capacity=False,capacity=v['capacity'])),'vencimiento de deuda')

@@ -93,6 +93,11 @@ def oracle(spec,sources,name):
  for with_refi in (True,False):
   mode='with_refinance' if with_refi else 'without_refinance'
   if with_refi and requested>capacity:routes[mode]=dict(state='PENDING');continue
+  if not with_refi:
+   carry=inputs['holding_horizon']['scenarios'][name]['without_refinance'];maturity=bank.get('maturity_date')
+   if not carry.get('source_ref') or carry.get('retention_terms')!='same_committed_facility_C52_until_documented_maturity':routes[mode]=dict(state='PENDING',reason_code='UNCONFIRMED_RETENTION');continue
+   if not isinstance(maturity,str) or not maturity:routes[mode]=dict(state='PENDING',reason_code='MISSING_MATURITY');continue
+   if date.fromisoformat(maturity)<sale:routes[mode]=dict(state='PENDING',reason_code='RETAINED_LOAN_MATURITY',maturity=maturity,sale_date=str(sale));continue
   cf=defaultdict(lambda:dict(contribution=Q(),distribution=Q()))
   for d,amount in equity:cf[d]['contribution']+=amount
   if with_refi:net=requested+free-principal-requested*c('C73')-rsv;cf[stable]['distribution']+=max(Q(),net);cf[stable]['contribution']+=max(Q(),-net);debt=requested;held=Q()
@@ -132,7 +137,7 @@ def verify(spec,sources,result,*,scenario_names=('Base','Downside')):
   for row in contract['residential_monthly']:
    for role in ('operating','bank','refinance','sale'):equal(row[role+'_before_tax'],expected['residential'][row['start']][role],'NOI/'+row['start']+'/'+role)
   for mode,key in [('with_refinance','with_refinance'),('without_refinance','horizon_without_refinance')]:
-   route=actual[key];target=expected['routes'][mode];assert route['state']==target['state']
+   route=actual[key];target=expected['routes'][mode];assert route['state']==target['state'],('Independent source oracle state mismatch',name,mode,route['state'],target['state'])
    if target['state']=='PENDING':assert route['cash_per_usd_10'] is None;continue
    cash=route['cash_per_usd_10'];observed=defaultdict(lambda:dict(contribution=Q(),distribution=Q()))
    for e in cash['events']:observed[e['date']][e['kind']]+=F(e['amount'])

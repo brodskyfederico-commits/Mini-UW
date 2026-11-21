@@ -1,0 +1,64 @@
+{
+  "schema": "miniuw.source-to-delivery-preflight.D277.v1",
+  "state": "PASSED",
+  "completed_UTC": "2026-11-21T14:15:55.109186+00:00",
+  "code_manifest_sha256": "8a945d5acf5cf8b681099c2309c07ea5e47cba397cd063d8846b72898932077c",
+  "python_files": 740,
+  "directed_tests": 56,
+  "source_acceptances": {
+    "v3": {
+      "all_gross_cash_unchanged": true,
+      "blocked_deliveries": [
+        "stale",
+        "manual_analysis",
+        "edited_financial_results"
+      ],
+      "criteria_adopted": false,
+      "current_pdf_sha256": "a687227ff4c20aef1d3e3c44d5099be6477a4c42dd201e1d79e6de2807ad1fec",
+      "deployment_enabled": false,
+      "independent_checks": {
+        "Base": {
+          "exact_comparisons": 1094,
+          "gross_dates": true,
+          "independent_amortization": true,
+          "irr_bracket_checked": true,
+          "monthly_tax": true,
+          "tdc": true
+        },
+        "Downside": {
+          "exact_comparisons": 1124,
+          "gross_dates": true,
+          "independent_amortization": true,
+          "irr_bracket_checked": true,
+          "monthly_tax": true,
+          "tdc": true
+        }
+      },
+      "initial_equity_normalization": 10,
+      "real_decision": "PENDING",
+      "rendered_fields": 136,
+      "state": "PASSED"
+    },
+    "v2": {
+      "state": "DELIVERED_SYNTHETIC",
+      "pdf_sha256": "88090c6624022ec61e1c8bf2b495db639b3c09ffba167657a509772e2f981b9b",
+      "source_results_sha256": "99532fd6bf753116ea245e14ddfc26fb98370778f455273be65dbe23ad7f956c",
+      "rendered_fields": 136
+    }
+  },
+  "artifact_sha256": {
+    "final-release/MiniUW_Resultado_Una_Pagina_D277.pdf": "a687227ff4c20aef1d3e3c44d5099be6477a4c42dd201e1d79e6de2807ad1fec",
+    "final-release/delivery.json": "584a39d551829b51e98d496b720f321d4c0449d5dbf716b5e1c914e903eba4f1",
+    "final-release/validation.json": "2f5e1304f3e90967d6c8b9692ad7ed436f02dfb0d8cfecf1263e5dc9044ae045",
+    "final-release/oracle.json": "29a8346e228f508db2b4a297fc1f7324f6d95d1fcf7d78d6bee2c082e7b96053",
+    "final-release/analysis.json": "9dc2ae68e6336e56e92476037cf59e1efce8f34043f49c58793ff61378e31d7e",
+    "final-release/package/case.json": "8ebe17ac0379d48223074da3c137d2a2c6ca93faaf107181be3849b33130bc3d",
+    "final-release/package/results.json": "9652905705119dea23e59848fab5daf8d0588830a64b6dca9c962a5bd6fcebe8",
+    "final-v2/MiniUW_Resultado_v2_D277.pdf": "88090c6624022ec61e1c8bf2b495db639b3c09ffba167657a509772e2f981b9b",
+    "final-v2/delivery.json": "25108e5f52700f3c863dd639b4b789f803bd58149c10295433a13a95320b929e"
+  },
+  "scope": "Completed after all corrections and before final full regression; source files and Python code must remain identical. No financial-result cache used. OCR byte cache only.",
+  "criteria_adopted": false,
+  "deployment_enabled": false,
+  "real_decision": "PENDING"
+}

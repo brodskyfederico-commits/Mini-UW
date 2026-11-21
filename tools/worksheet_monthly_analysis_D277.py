@@ -37,10 +37,11 @@ def request(case_raw,sources,note):
 
 
 def reason(record):
- if record.get('reason_code')=='CAPACITY' or record.get('within_capacity') is False:
+ if record.get('reason_code')=='CAPACITY' or record.get('reason_code') is None and record.get('within_capacity') is False:
   c=record.get('capacity',{});limits=[k for k,v in c.get('limits',{}).items() if c.get('requested_principal') is not None and F(c['requested_principal'])>F(v)]
   return '/'.join(limits) or 'capacidad DSCR/LTV/DY'
  text=record.get('reason','')
+ if any(v in text.lower() for v in ('vence','vencimiento','maturity')):return 'vencimiento de deuda'
  if 'monoton' in text.lower():return 'no monotonía'
  if any(v in text.lower() for v in ('raíz','tir','root')):return 'TIR sin raíz certificada'
  return text or 'faltan caja / evidencia'

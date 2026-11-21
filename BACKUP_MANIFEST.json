@@ -1,5 +1,5 @@
 {
-  "scope": "D277 candidate: expert corrections R2-R6, new synthetic v3/v38. R1 requires final complete frozen regression; not yet claimed. No criteria adoption, real decision or deployment.",
+  "scope": "D277 corrected candidate:56 directed tests and v2/v3 source-to-PDF acceptance passed on identical code. Oracle honors retained-loan maturity; actual cash unchanged. R1 restarts entirely; not yet claimed passed. No criteria adoption, real decision or deployment.",
   "files": [
     {
       "path": ".github/workflows/miniuw-integral-usd10.yml",
@@ -28,8 +28,8 @@
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 435891,
-      "sha256": "dda94f33301d9f82b16b1379e3bfcb356ab9584492bbd6c2a1c0ad13b11345af"
+      "bytes": 436772,
+      "sha256": "f1d16d2169f9511b5f5d691e6da43288c5ef085af079d18aa3272cc73b481ed4"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -997,6 +997,11 @@
       "sha256": "914abdc75e94dfd058351e062e4e7ed00dfc3a024b43fd09446a546f92f46923"
     },
     {
+      "path": "docs/review/MiniUW_Aceptacion_Previa_D277.json",
+      "bytes": 2829,
+      "sha256": "e545c68eb18088a94b7e421bddcded8ec41bf8ca601e49e22d8f77ffb2c4234b"
+    },
+    {
       "path": "docs/review/MiniUW_Actualizacion_Profesional_D274.pdf",
       "bytes": 79754,
       "sha256": "4f2c990be099db80a26f4c5015b85df7abdd722f22f419cf55d8103052473488"
@@ -1103,8 +1108,8 @@
     },
     {
       "path": "docs/review/MiniUW_Cobertura_Revision_D277.json",
-      "bytes": 3548,
-      "sha256": "e38e37ca2837195856bd6c895a055c5add8a8ff840d9b7ef2222ea8729c332f4"
+      "bytes": 4183,
+      "sha256": "4feb1780318db01e4d94d7e6278a9de87cd6a4655d4fcedf518bba4618c7ebb8"
     },
     {
       "path": "docs/review/MiniUW_Cotejo_Independiente_D179.csv",
@@ -8328,8 +8333,8 @@
     },
     {
       "path": "tests/test_analysis_reasons_D277.py",
-      "bytes": 1556,
-      "sha256": "df502d0042887d468c21bb45bffd11794b34226e4ccacf54e33fd02879b523ab"
+      "bytes": 2254,
+      "sha256": "4c8376b21b78d28c4789db1fa1d12731bd6e6e1783c669365f930f6bd7b1d733"
     },
     {
       "path": "tests/test_archive.py",
@@ -8743,8 +8748,8 @@
     },
     {
       "path": "tests/test_review_D277.py",
-      "bytes": 9079,
-      "sha256": "792e12314d9f2955f0a53787cd94f826a5e324e3c28f74f5e2f7c8ce171e04cc"
+      "bytes": 10008,
+      "sha256": "efca20c0174518d817537077557adcdb2ce4c0e36f81d1da06f97bef8e67c3f8"
     },
     {
       "path": "tests/test_review_proposals.py",
@@ -9363,8 +9368,8 @@
     },
     {
       "path": "tools/check_monthly_oracle_D276.py",
-      "bytes": 17023,
-      "sha256": "22e2632ace805dcd0b3c8463afc895f95130a94c2b6db64085a480e90ba322c8"
+      "bytes": 17727,
+      "sha256": "af1b8f6d4469bd2c8007106e09598ff902da7ea651d3cd68489bf80fe499cded"
     },
     {
       "path": "tools/check_monthly_release_D276.py",
@@ -10863,13 +10868,13 @@
     },
     {
       "path": "tools/worksheet_monthly_analysis_D277.py",
-      "bytes": 8596,
-      "sha256": "3d65b58a806126cb9f61e28b576300747a048b6339d41424163face7dc11e1aa"
+      "bytes": 8735,
+      "sha256": "378348c4cdd93358685da3a17cb1d5195932e645ef0a55a527ec77d741e17905"
     },
     {
       "path": "tools/worksheet_monthly_experiments_D276.py",
-      "bytes": 15895,
-      "sha256": "d2963facf26f6d3de542b2a3217dbda073dbac2c5eb86cec06b4d73c3f6c35e3"
+      "bytes": 16244,
+      "sha256": "2c0b969c693fe4f6c110348eb8267f4c82563490824d3026f3240a1ed4ae9ed9"
     },
     {
       "path": "tools/worksheet_monthly_integration_D276.py",

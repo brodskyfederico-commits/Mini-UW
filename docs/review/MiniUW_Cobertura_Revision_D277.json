@@ -44,12 +44,13 @@
       "id": "R4",
       "source": "p.1 finding3; p.2 R4",
       "state": "DIRECTED_TESTED",
-      "definition": "Each pending frontier or tornado identifies capacity/DSCR/LTV/DY, missing root or nonmonotonicity on the page; no resizing requested debt",
+      "definition": "Each pending frontier or tornado identifies capacity/DSCR/LTV/DY, missing root or nonmonotonicity on the page; no resizing requested debt Route-specific maturity is distinct from permanent-loan capacity; the independent oracle must match both PENDING gates without assuming an extension.",
       "code": [
         "tools/worksheet_monthly_analysis_D277.py"
       ],
       "tests": [
-        "tests/test_analysis_reasons_D277.py"
+        "tests/test_analysis_reasons_D277.py",
+        "tests/test_review_D277.py::test_extreme_delay_keeps_separate_capacity_and_retained_debt_maturity"
       ]
     },
     {
@@ -88,5 +89,13 @@
     "Four people/identity/authority",
     "Real source evidence, empirical OCR labels and3–5 deal backtest",
     "Actual LP/GP allocation terms;1101 discrepancies and10 missing cells remain separate"
+  ],
+  "attempts": [
+    {
+      "state": "SUPERSEDED_AFTER_ADDITIONAL_ORACLE_FAILURE",
+      "commit": "0982b0f7499634277e48e144fd2ece54c3f3132e",
+      "not_final_acceptance": true,
+      "description": "Source oracle omitted retained-loan maturity under extreme delay; actual motor correctly PENDING. Snapshot preserved unchanged; final regression restarts entirely."
+    }
   ]
 }
