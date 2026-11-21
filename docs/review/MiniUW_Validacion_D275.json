@@ -1,0 +1,52 @@
+{
+  "schema": "miniuw.validation.D275.v1",
+  "state": "DIRECTED_CHECKS_PASSED_FULL_REGRESSION_RUNNING",
+  "host": "ubuntu-dallas-2gb",
+  "user": "miniuw",
+  "source_cut": "ff619761e1c8bc2fc92c75cfaef61b5ca03d538514b7a8418fe97424a737fe95",
+  "python_files": 714,
+  "directed_unit_tests": 122,
+  "directed_unit_tests_seconds": "6.113",
+  "directed_tests_sha256": "410e331f4ec76573a312b7ba2ce316cd62b4428e15cbfbbb3200db0d0f6d42a0",
+  "full_regression": "RUNNING",
+  "full_regression_started_utc": "2026-11-21T02:56:27Z",
+  "external_spreadsheet": {
+    "state": "passed",
+    "version": "LibreOffice 24.2.7.2 420(Build:2)",
+    "source": "official Ubuntu apt repositories; user-authorized isolated download, no system installation",
+    "cells_compared": 662,
+    "mutations_detected": 3,
+    "validation": "docs/review/MiniUW_Validacion_Excel_D275.json",
+    "source_golden": "templates/golden_case_v1/golden_manifest.json",
+    "workbook_source": "docs/review/golden_case_tieout_D275.xlsx",
+    "workbook_recalculated": "docs/review/MiniUW_Cotejo_Recalculado_D275.xlsx"
+  },
+  "native_source_packets": 12,
+  "native_source_validation": "docs/review/MiniUW_Analisis_Reproducido_D275.json",
+  "criteria_plug": "docs/review/MiniUW_Validacion_Enchufe_D275.json",
+  "all_expert_tasks_closed": false,
+  "criteria_adopted": false,
+  "deployment_enabled": false,
+  "real_decision": "PENDING",
+  "historical_return": "PENDING",
+  "personal_return_without_terms": "PENDING",
+  "pending_technical": [
+    "T6: complete monthly fiscal/operating/refinance/sale integration",
+    "T7: connect per-space commercial leaseup to native worksheet pipeline",
+    "T8: builder risk funding integration"
+  ],
+  "pending_external": [
+    "T10 real closed project observations",
+    "T11 independently labelled real documents",
+    "T13 identities, roles and authority",
+    "Lorena current criteria and policy confirmations"
+  ],
+  "decision_page": {
+    "state": "SOURCE_REPLAY_DELIVERED_SYNTHETIC",
+    "displayed_fields": 140,
+    "evidence": "docs/review/MiniUW_Validacion_Hoja_D275.json",
+    "golden_and_D269_one_page": true,
+    "stale_revision_blocked": true,
+    "unsourced_analysis_blocked": true
+  }
+}

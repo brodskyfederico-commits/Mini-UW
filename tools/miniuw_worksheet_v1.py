@@ -220,6 +220,9 @@ def build_results(raw, *, workbook_raw=None, downside_workbook_raw=None, current
                           criteria_raw=criteria_raw, independent_reference_raw=independent_reference_raw,
                           delivery_report=delivery_report)
     rent_inputs = case.get("rent_inputs") if isinstance(case, dict) else None
+    require(not isinstance(rent_inputs, dict) or not
+            ({"monthly_construction", "commercial_leaseup", "builders_risk", "review_extensions"} & rent_inputs.keys()),
+            "PENDING: las extensiones experimentales requieren integración versionada; no se ignoran ni se consideran cero")
     require(not isinstance(rent_inputs, dict) or "regulated_rent" not in rent_inputs or schema == WORKBOOK_REGULATED_RENT_SCHEMA,
             "Regulated rent requires the explicit v35 profile")
     require(not isinstance(rent_inputs, dict) or "irr_certificate" not in rent_inputs or (

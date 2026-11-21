@@ -434,3 +434,9 @@ El [certificado numérico optativo](docs/workbook-irr-certificate-D270.md) resue
 ## D271 · Regresión completa y cierre del alcance técnico
 
 La [constancia de cierre](docs/review/MiniUW_Cierre_Tecnico_D271.json) registra seis fases con código 0, 440 vacíos nulos, 98 ceros numéricos preservados, 681 archivos de código sin cambios y cuatro estados simulados de aceptación. El [informe](docs/review/MiniUW_Cierre_Tecnico_D271.pdf) separa implementación, pruebas, decisiones pendientes y puerta al piloto real. Sin despliegue, decisiones reales ni cambios de política financiera.
+
+### D275 review cut — synthetic, not a completed real-use release
+
+The independent LibreOffice tie-out of `templates/golden_case_v1` passed: 662 cells and three source mutations. The new 122 directed tests passed. The 1,914-test general regression is separately tracked and must not be inferred from that result. See `docs/review/MiniUW_Validacion_D275.json` and the updated expert coverage matrix.
+
+The monthly construction, commercial lease-up and builder-risk modules are tested components awaiting full native worksheet integration; unsupported extension keys are explicitly blocked. Financial criteria remain unadopted, roles unassigned, and real/historical decisions PENDING. Updated professional documents distinguish those boundaries. No deployment or real deal is authorized by a synthetic test.

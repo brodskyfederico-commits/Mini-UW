@@ -1,0 +1,2721 @@
+{
+  "schema": "miniuw.expert-review-coverage.D275.v1",
+  "source_sha256": "3ce1174702cfbc53d2d90ad296494693d7204f1d0babf7e6e31e7f0b953a6c33",
+  "user_override": {
+    "task": "T12",
+    "source": "respuesta explícita del usuario en el chat, 20/11/2026",
+    "rule": "Conservar todos los criterios aplicables, incluidos YoC y spread; no adoptar la exclusión simultánea del experto"
+  },
+  "coverage_rule": "Literal requirements are retained with original location. Task-level evidence does not automatically close every requirement or acceptance condition; component/partial states remain partial. D275 is current, prior_cut_D273 is archived context.",
+  "tasks": [
+    {
+      "id": "T1",
+      "title": "TIR y fecha de recupero en la caja resumida",
+      "source": {
+        "path": "docs/MiniUW_Instrucciones_Codex_D273.md",
+        "first_line": 46,
+        "last_line": 60
+      },
+      "requirements": [
+        {
+          "line": 48,
+          "text": "**Problema:** la tabla resumen del ejemplo vigente (sección 15 del D272) muestra el múltiplo pero no la TIR, que es la métrica más relevante para decidir. Recalculada desde los flujos publicados, la Base da alrededor de 15,2% con refi y 14,4% sin refi, justo alrededor de la referencia histórica de 15%."
+        },
+        {
+          "line": 50,
+          "text": "**Cambios:**"
+        },
+        {
+          "line": 51,
+          "text": "- Agregar a `results.json` y al resumen, por ruta (Base o Downside, con o sin refi): `irr_annual` (intervalo certificado D270 o PENDING), `payback_date` (primera fecha en que los cobros acumulados ≥ los aportes acumulados; si no ocurre, `null` con el motivo «capital no recuperado en el horizonte») y `peak_equity` (aporte acumulado máximo neto de cobros)."
+        },
+        {
+          "line": 52,
+          "text": "- Si la TIR no está certificada: mostrar «PENDING · raíz no probada», nunca una aproximación."
+        },
+        {
+          "line": 54,
+          "text": "**Aceptación:**"
+        },
+        {
+          "line": 55,
+          "text": "- En el fixture D269/D270 la TIR aparece en las cuatro rutas, con el intervalo de la prueba de unicidad."
+        },
+        {
+          "line": 56,
+          "text": "- `payback_date` se verifica de forma independiente sumando los eventos."
+        },
+        {
+          "line": 57,
+          "text": "- Un caso con raíces múltiples sigue en PENDING."
+        }
+      ],
+      "current_definition": "Real criteria and personal allocation pending.",
+      "affected_modules": [
+        {
+          "path": "tools/worksheet_return_summary_D273.py",
+          "line": 69,
+          "sha256": "92ca79d3b2ed24f600581cfc829fdab254f592624685e349de3651924d738801",
+          "role": "referencia o punto afectado; no prueba de cierre por sí sola"
+        },
+        {
+          "path": "tools/check_worksheet_return_summary_D273.py",
+          "line": 74,
+          "sha256": "1dfdca9d8038e3e92a8664dad9076cd66a47f2f8bc792b10f5a06499ebeadfd9",
+          "role": "referencia o punto afectado; no prueba de cierre por sí sola"
+        }
+      ],
+      "validation_evidence": {
+        "general": "docs/review/MiniUW_Validacion_D275.json",
+        "code": [
+          {
+            "path": "tools/worksheet_return_summary_D273.py",
+            "sha256": "92ca79d3b2ed24f600581cfc829fdab254f592624685e349de3651924d738801",
+            "definitions": [
+              {
+                "line": 24,
+                "text": "def cash_fraction(value):"
+              },
+              {
+                "line": 32,
+                "text": "def definition(raw):"
+              },
+              {
+                "line": 39,
+                "text": "def baseline(case):"
+              },
+              {
+                "line": 52,
+                "text": "def revision_projection(case):"
+              },
+              {
+                "line": 62,
+                "text": "def missing(reason):"
+              },
+              {
+                "line": 69,
+                "text": "def ledger_summary(cash, dates, certificate):"
+              },
+              {
+                "line": 144,
+                "text": "def summarize(result, base, config):"
+              },
+              {
+                "line": 159,
+                "text": "def render(result):"
+              },
+              {
+                "line": 223,
+                "text": "def build_case(case, raw, *, current_revision_raw=None, delivery_report=False, **sources):"
+              }
+            ]
+          }
+        ],
+        "tests": [],
+        "full_regression": "RUNNING; not passed by inference"
+      },
+      "state": "VALIDATED_SYNTHETIC",
+      "criterion_adopted": false,
+      "D275_state": "VALIDATED_SYNTHETIC",
+      "D275_scope_limit": "Real criteria and personal allocation pending.",
+      "D275_code": [
+        {
+          "path": "tools/worksheet_return_summary_D273.py",
+          "sha256": "92ca79d3b2ed24f600581cfc829fdab254f592624685e349de3651924d738801",
+          "definitions": [
+            {
+              "line": 24,
+              "text": "def cash_fraction(value):"
+            },
+            {
+              "line": 32,
+              "text": "def definition(raw):"
+            },
+            {
+              "line": 39,
+              "text": "def baseline(case):"
+            },
+            {
+              "line": 52,
+              "text": "def revision_projection(case):"
+            },
+            {
+              "line": 62,
+              "text": "def missing(reason):"
+            },
+            {
+              "line": 69,
+              "text": "def ledger_summary(cash, dates, certificate):"
+            },
+            {
+              "line": 144,
+              "text": "def summarize(result, base, config):"
+            },
+            {
+              "line": 159,
+              "text": "def render(result):"
+            },
+            {
+              "line": 223,
+              "text": "def build_case(case, raw, *, current_revision_raw=None, delivery_report=False, **sources):"
+            }
+          ]
+        }
+      ],
+      "D275_tests": [],
+      "D275_validation": "docs/review/MiniUW_Validacion_D275.json",
+      "prior_cut_D273": {
+        "state": "implementado y validado en sintético",
+        "current_definition": "Implementación v36; cuatro rutas cotejadas desde celdas y fuentes. TIR certificada o PENDING, primer recupero y pico por fecha. Cierre general aprobado en el corte indicado en la constancia.",
+        "validation_evidence": [
+          {
+            "path": "tests/test_worksheet_return_summary.py",
+            "type": "18 pruebas: incluyen traza del PDF, precisión racional, capacidad y años fuera de horizonte; batería general final aún en curso"
+          },
+          {
+            "path": "work/review/D273/aceptacion-final/validation.json",
+            "type": "cotejo independiente de cuatro rutas y exportación vigente"
+          },
+          {
+            "path": "docs/review/MiniUW_Validacion_D273.json",
+            "type": "1792 unitarias, 26 suites, aceptación D200 16/16, once perfiles preservados e integridad de fuentes"
+          }
+        ]
+      }
+    },
+    {
+      "id": "T2",
+      "title": "Distancia a la quiebra (fronteras matemáticas)",
+      "source": {
+        "path": "docs/MiniUW_Instrucciones_Codex_D273.md",
+        "first_line": 61,
+        "last_line": 97
+      },
+      "requirements": [
+        {
+          "line": 63,
+          "text": "**Objetivo:** responder «cuánto puede empeorar cada variable antes de que el deal se rompa», sin usar umbrales de inversión."
+        },
+        {
+          "line": 65,
+          "text": "**Drivers** (movimiento adverso desde Base y desde Downside):"
+        },
+        {
+          "line": 67,
+          "text": "| Driver | Celdas | Unidad del movimiento |"
+        },
+        {
+          "line": 68,
+          "text": "|---|---|---|"
+        },
+        {
+          "line": 69,
+          "text": "| Renta residencial | C8–C11 | % relativo |"
+        },
+        {
+          "line": 70,
+          "text": "| Cap de salida | C67 | puntos básicos |"
+        },
+        {
+          "line": 71,
+          "text": "| Sobrecosto de obra (hard) | costo vertical M3 | % relativo |"
+        },
+        {
+          "line": 72,
+          "text": "| Tasa de interés (obra y permanente) | C51–C53, C69 | puntos básicos |"
+        },
+        {
+          "line": 73,
+          "text": "| Retraso de lease-up | calendario M4 | meses |"
+        },
+        {
+          "line": 74,
+          "text": "| Vacancia y pérdida | C14 | puntos porcentuales |"
+        },
+        {
+          "line": 76,
+          "text": "**Fronteras** (todas matemáticas, ver regla 0.5):"
+        },
+        {
+          "line": 77,
+          "text": "- **F1 · Pérdida de capital:** múltiplo sobre todos los aportes = 1,00x."
+        },
+        {
+          "line": 78,
+          "text": "- **F2 · Cobertura del servicio:** DSCR del permanente = 1,00x en el primer año completo."
+        },
+        {
+          "line": 79,
+          "text": "- **F3 · Refi insuficiente:** la capacidad de refi (mínimo de LTV, DSCR y debt yield del term sheet) es menor que el saldo de obra más los costos de cierre."
+        },
+        {
+          "line": 80,
+          "text": "- **F4 · Aporte adicional:** el primer movimiento que exige equity adicional por encima del caso original (informativa)."
+        },
+        {
+          "line": 82,
+          "text": "**Método:**"
+        },
+        {
+          "line": 83,
+          "text": "- Bisección sobre el driver con recálculo completo del motor; cada punto pasa por B12 y B16."
+        },
+        {
+          "line": 84,
+          "text": "- Sonda de monotonía en m* ± ε. Si no es monótona, se reporta un intervalo o PENDING, nunca un punto elegido."
+        },
+        {
+          "line": 85,
+          "text": "- El rango de búsqueda se declara en la configuración. Si no se alcanza la frontera, el resultado es «> límite de búsqueda», no 0 ni infinito."
+        },
+        {
+          "line": 86,
+          "text": "- Una corrida bloqueada por evidencia deja PENDING esa celda."
+        },
+        {
+          "line": 88,
+          "text": "**Salida:** `breakeven_matrix` en `results.json` (driver × frontera × escenario), con el valor, la unidad, el rango buscado, la monotonía verificada y la referencia del expediente de cada corrida."
+        },
+        {
+          "line": 90,
+          "text": "**Aceptación:**"
+        },
+        {
+          "line": 91,
+          "text": "- El verificador independiente reproduce cada frontera con una tolerancia declarada."
+        },
+        {
+          "line": 92,
+          "text": "- Una prueba con un driver no monótono sintético da PENDING."
+        },
+        {
+          "line": 93,
+          "text": "- Una prueba con evidencia faltante da PENDING."
+        },
+        {
+          "line": 94,
+          "text": "- Los ceros explícitos se respetan."
+        }
+      ],
+      "current_definition": "Ranges/resolution explicit; sampled monotonicity only. Missing source remains PENDING.",
+      "affected_modules": [
+        {
+          "path": "tools/worksheet_scenario_program_D268.py",
+          "line": 238,
+          "sha256": "136333a838f1348ccfafad37bee81871e22054d6f78410377c4685ce44ca381e",
+          "role": "referencia o punto afectado; no prueba de cierre por sí sola"
+        }
+      ],
+      "validation_evidence": {
+        "general": "docs/review/MiniUW_Validacion_D275.json",
+        "code": [
+          {
+            "path": "tools/worksheet_frontiers_D275.py",
+            "sha256": "69a7b18b577eed6523ee27c058d5752582fecaddc77a197d9a8bf4d020b95d13",
+            "definitions": [
+              {
+                "line": 22,
+                "text": "def fraction(raw):"
+              },
+              {
+                "line": 39,
+                "text": "def rational(value):"
+              },
+              {
+                "line": 42,
+                "text": "def digest(value):return sha256(json.dumps(value,sort_keys=True,separators=(',',':'),ensure_ascii=False).encode()).hexdigest()"
+              },
+              {
+                "line": 44,
+                "text": "def pending(reason,**kw):return dict(state='PENDING',reason=reason,value=None,**kw)"
+              },
+              {
+                "line": 46,
+                "text": "def search(config,evaluator,*,scenario,route,frontier):"
+              },
+              {
+                "line": 110,
+                "text": "def matrix(configuration,evaluator):"
+              }
+            ]
+          },
+          {
+            "path": "tools/check_worksheet_frontiers_D275.py",
+            "sha256": "e2cb13be0458bd784f16730f90dbbd10c810aaefc60f89bd71b85d7ef91f825b",
+            "definitions": [
+              {
+                "line": 23,
+                "text": "class AuditedSourceRuns:"
+              },
+              {
+                "line": 109,
+                "text": "def configuration():"
+              },
+              {
+                "line": 116,
+                "text": "def main():"
+              }
+            ]
+          },
+          {
+            "path": "tools/worksheet_analysis_replay_D275.py",
+            "sha256": "224ea50da045bf996f8cbcbc5c6d970ba35afedb211b7523e7d489130724bed3",
+            "definitions": [
+              {
+                "line": 18,
+                "text": "def key(driver,movement):return 'baseline' if movement==0 else driver+'-'+str(movement).replace('/','_').replace('-','m')"
+              },
+              {
+                "line": 20,
+                "text": "def validate_changes(base,sources,spec,current,driver,movement):"
+              },
+              {
+                "line": 43,
+                "text": "def price_source(spec,sources,result,scenario,record):"
+              },
+              {
+                "line": 54,
+                "text": "def replay(report_path):"
+              }
+            ]
+          }
+        ],
+        "tests": [
+          {
+            "path": "tests/test_worksheet_frontiers.py",
+            "sha256": "d2a0b881cb96f3f224e95129460ad36daf4f1bff17d595bf35f26145f2855bdc",
+            "definitions": [
+              {
+                "line": 8,
+                "text": "def config(driver='exit_cap'):"
+              },
+              {
+                "line": 10,
+                "text": "def adapter(margin):"
+              },
+              {
+                "line": 15,
+                "text": "def run(c,fn):return search(c,fn,scenario='Base',route='with_refinance',frontier='F1')"
+              },
+              {
+                "line": 17,
+                "text": "class FrontierTests(TestCase):"
+              },
+              {
+                "line": 55,
+                "text": "class RouteApplicabilityTests(TestCase):"
+              },
+              {
+                "line": 60,
+                "text": "class NumericSafetyTests(TestCase):"
+              },
+              {
+                "line": 66,
+                "text": "class InitialBreachTests(TestCase):"
+              }
+            ]
+          }
+        ],
+        "full_regression": "RUNNING; not passed by inference"
+      },
+      "state": "SOURCE_INTEGRATED_SYNTHETIC",
+      "criterion_adopted": false,
+      "D275_state": "SOURCE_INTEGRATED_SYNTHETIC",
+      "D275_scope_limit": "Ranges/resolution explicit; sampled monotonicity only. Missing source remains PENDING.",
+      "D275_code": [
+        {
+          "path": "tools/worksheet_frontiers_D275.py",
+          "sha256": "69a7b18b577eed6523ee27c058d5752582fecaddc77a197d9a8bf4d020b95d13",
+          "definitions": [
+            {
+              "line": 22,
+              "text": "def fraction(raw):"
+            },
+            {
+              "line": 39,
+              "text": "def rational(value):"
+            },
+            {
+              "line": 42,
+              "text": "def digest(value):return sha256(json.dumps(value,sort_keys=True,separators=(',',':'),ensure_ascii=False).encode()).hexdigest()"
+            },
+            {
+              "line": 44,
+              "text": "def pending(reason,**kw):return dict(state='PENDING',reason=reason,value=None,**kw)"
+            },
+            {
+              "line": 46,
+              "text": "def search(config,evaluator,*,scenario,route,frontier):"
+            },
+            {
+              "line": 110,
+              "text": "def matrix(configuration,evaluator):"
+            }
+          ]
+        },
+        {
+          "path": "tools/check_worksheet_frontiers_D275.py",
+          "sha256": "e2cb13be0458bd784f16730f90dbbd10c810aaefc60f89bd71b85d7ef91f825b",
+          "definitions": [
+            {
+              "line": 23,
+              "text": "class AuditedSourceRuns:"
+            },
+            {
+              "line": 109,
+              "text": "def configuration():"
+            },
+            {
+              "line": 116,
+              "text": "def main():"
+            }
+          ]
+        },
+        {
+          "path": "tools/worksheet_analysis_replay_D275.py",
+          "sha256": "224ea50da045bf996f8cbcbc5c6d970ba35afedb211b7523e7d489130724bed3",
+          "definitions": [
+            {
+              "line": 18,
+              "text": "def key(driver,movement):return 'baseline' if movement==0 else driver+'-'+str(movement).replace('/','_').replace('-','m')"
+            },
+            {
+              "line": 20,
+              "text": "def validate_changes(base,sources,spec,current,driver,movement):"
+            },
+            {
+              "line": 43,
+              "text": "def price_source(spec,sources,result,scenario,record):"
+            },
+            {
+              "line": 54,
+              "text": "def replay(report_path):"
+            }
+          ]
+        }
+      ],
+      "D275_tests": [
+        {
+          "path": "tests/test_worksheet_frontiers.py",
+          "sha256": "d2a0b881cb96f3f224e95129460ad36daf4f1bff17d595bf35f26145f2855bdc",
+          "definitions": [
+            {
+              "line": 8,
+              "text": "def config(driver='exit_cap'):"
+            },
+            {
+              "line": 10,
+              "text": "def adapter(margin):"
+            },
+            {
+              "line": 15,
+              "text": "def run(c,fn):return search(c,fn,scenario='Base',route='with_refinance',frontier='F1')"
+            },
+            {
+              "line": 17,
+              "text": "class FrontierTests(TestCase):"
+            },
+            {
+              "line": 55,
+              "text": "class RouteApplicabilityTests(TestCase):"
+            },
+            {
+              "line": 60,
+              "text": "class NumericSafetyTests(TestCase):"
+            },
+            {
+              "line": 66,
+              "text": "class InitialBreachTests(TestCase):"
+            }
+          ]
+        }
+      ],
+      "D275_validation": "docs/review/MiniUW_Validacion_D275.json",
+      "prior_cut_D273": {
+        "state": "pendiente",
+        "current_definition": "D268 aporta recálculo de sensibilidades desde fuentes; no acredita aún una matriz F1–F4 ni su búsqueda/monotonía. Rango, resolución, paquetes por punto y referencia independiente pendientes.",
+        "validation_evidence": []
+      }
+    },
+    {
+      "id": "T3",
+      "title": "Grilla de precio y precio máximo con metas configurables",
+      "source": {
+        "path": "docs/MiniUW_Instrucciones_Codex_D273.md",
+        "first_line": 98,
+        "last_line": 114
+      },
+      "requirements": [
+        {
+          "line": 100,
+          "text": "**Objetivo:** que la hoja muestre cómo cambia el retorno con el precio del terreno sin depender del RLV oficial."
+        },
+        {
+          "line": 102,
+          "text": "**Cambios:**"
+        },
+        {
+          "line": 103,
+          "text": "- Grilla de precio del terreno (por ejemplo −20% a +20% en pasos configurables) × {TIR, múltiplo, YoC, equity/TDC}, en Base y Downside. Deuda fija y ΔTDC = ΔP × (1 + C33), según lo acordado en SRC-03."
+        },
+        {
+          "line": 104,
+          "text": "- `max_price_for_targets`: el precio máximo que cumple **metas que define el usuario en la configuración** (por ejemplo TIR ≥ x, múltiplo ≥ y). Rotularlo «precio para metas del usuario», no RLV."
+        },
+        {
+          "line": 105,
+          "text": "- Slot `house_rlv` = PENDING («criterio por confirmar»), que se llena sólo con el archivo de criterios aprobado."
+        },
+        {
+          "line": 106,
+          "text": "- Si el precio sale negativo, se conserva con bandera. Si no hay precio alcanzable, PENDING."
+        },
+        {
+          "line": 108,
+          "text": "**Aceptación:**"
+        },
+        {
+          "line": 109,
+          "text": "- Prueba de monotonía."
+        },
+        {
+          "line": 110,
+          "text": "- El verificador recalcula dos puntos de la grilla desde las celdas."
+        },
+        {
+          "line": 111,
+          "text": "- `house_rlv` nunca se completa sin un criterio adoptado."
+        }
+      ],
+      "current_definition": "Fixed-debt analytical grid; house RLV criteria remain pending.",
+      "affected_modules": [
+        {
+          "path": "tools/worksheet_performance_policy_D184.py",
+          "line": 65,
+          "sha256": "ed7f7ee000517986ef2dd40bc416bc606f355442267aa778e776b90a78e4af52",
+          "role": "referencia o punto afectado; no prueba de cierre por sí sola"
+        }
+      ],
+      "validation_evidence": {
+        "general": "docs/review/MiniUW_Validacion_D275.json",
+        "code": [
+          {
+            "path": "tools/worksheet_user_price_D275.py",
+            "sha256": "174dae8c61743c8b03101f1ccf81efd464df7d9134fc0c66a76de7d84731c183",
+            "definitions": [
+              {
+                "line": 17,
+                "text": "def exact_irr(flows):"
+              },
+              {
+                "line": 24,
+                "text": "def compare_enclosure(low,high,condition):"
+              },
+              {
+                "line": 31,
+                "text": "def price_point(source,price,targets):"
+              },
+              {
+                "line": 80,
+                "text": "def grid(source,config):"
+              }
+            ]
+          }
+        ],
+        "tests": [
+          {
+            "path": "tests/test_worksheet_user_price.py",
+            "sha256": "ac3b14067adc2f2b3bf9d8cecd2c15703352250a1721c5fc360b2564798336df",
+            "definitions": [
+              {
+                "line": 8,
+                "text": "def source(c33='0'):"
+              },
+              {
+                "line": 10,
+                "text": "def config():return dict(schema=SCHEMA,source_ref='SYNTHETIC-user-targets',lower='0',upper='60',step='10',user_targets=dict(equity_multiple=dict(operator='>=',value='1')))"
+              },
+              {
+                "line": 12,
+                "text": "class UserPriceTests(TestCase):"
+              }
+            ]
+          }
+        ],
+        "full_regression": "RUNNING; not passed by inference"
+      },
+      "state": "VALIDATED_SYNTHETIC",
+      "criterion_adopted": false,
+      "D275_state": "VALIDATED_SYNTHETIC",
+      "D275_scope_limit": "Fixed-debt analytical grid; house RLV criteria remain pending.",
+      "D275_code": [
+        {
+          "path": "tools/worksheet_user_price_D275.py",
+          "sha256": "174dae8c61743c8b03101f1ccf81efd464df7d9134fc0c66a76de7d84731c183",
+          "definitions": [
+            {
+              "line": 17,
+              "text": "def exact_irr(flows):"
+            },
+            {
+              "line": 24,
+              "text": "def compare_enclosure(low,high,condition):"
+            },
+            {
+              "line": 31,
+              "text": "def price_point(source,price,targets):"
+            },
+            {
+              "line": 80,
+              "text": "def grid(source,config):"
+            }
+          ]
+        }
+      ],
+      "D275_tests": [
+        {
+          "path": "tests/test_worksheet_user_price.py",
+          "sha256": "ac3b14067adc2f2b3bf9d8cecd2c15703352250a1721c5fc360b2564798336df",
+          "definitions": [
+            {
+              "line": 8,
+              "text": "def source(c33='0'):"
+            },
+            {
+              "line": 10,
+              "text": "def config():return dict(schema=SCHEMA,source_ref='SYNTHETIC-user-targets',lower='0',upper='60',step='10',user_targets=dict(equity_multiple=dict(operator='>=',value='1')))"
+            },
+            {
+              "line": 12,
+              "text": "class UserPriceTests(TestCase):"
+            }
+          ]
+        }
+      ],
+      "D275_validation": "docs/review/MiniUW_Validacion_D275.json",
+      "prior_cut_D273": {
+        "state": "pendiente",
+        "current_definition": "Existe búsqueda de precio ligada a criterios; no es todavía la grilla y el precio máximo para metas configurables del usuario. No se reutiliza como RLV oficial por defecto.",
+        "validation_evidence": []
+      }
+    },
+    {
+      "id": "T4",
+      "title": "Tornado de sensibilidades",
+      "source": {
+        "path": "docs/MiniUW_Instrucciones_Codex_D273.md",
+        "first_line": 115,
+        "last_line": 127
+      },
+      "requirements": [
+        {
+          "line": 117,
+          "text": "**Cambios:**"
+        },
+        {
+          "line": 118,
+          "text": "- Reusar el programa D268 (15 drivers). Para los 6 drivers de T2 con un shock simétrico declarado en la configuración (no son defaults históricos), calcular ΔTIR y Δmúltiplo, y ordenar de mayor a menor impacto."
+        },
+        {
+          "line": 119,
+          "text": "- Salida `tornado` en `results.json`. Las corridas sin caja quedan como NOT_EXECUTED o PENDING, visibles."
+        },
+        {
+          "line": 121,
+          "text": "**Aceptación:**"
+        },
+        {
+          "line": 122,
+          "text": "- El orden es reproducible."
+        },
+        {
+          "line": 123,
+          "text": "- Los empates comparten posición."
+        },
+        {
+          "line": 124,
+          "text": "- Las corridas bloqueadas no desaparecen del gráfico."
+        }
+      ],
+      "current_definition": "Favourable leaseup lacks buyer tax roll 2033; shown PENDING, never imputed.",
+      "affected_modules": [
+        {
+          "path": "tools/worksheet_scenario_program_D268.py",
+          "line": 208,
+          "sha256": "136333a838f1348ccfafad37bee81871e22054d6f78410377c4685ce44ca381e",
+          "role": "referencia o punto afectado; no prueba de cierre por sí sola"
+        }
+      ],
+      "validation_evidence": {
+        "general": "docs/review/MiniUW_Validacion_D275.json",
+        "code": [
+          {
+            "path": "tools/worksheet_tornado_D275.py",
+            "sha256": "63d7d85472800dcda4cb38421e64817153e0b179f1404fd941e155641bdc742d",
+            "definitions": [
+              {
+                "line": 11,
+                "text": "def enclosure(raw):"
+              },
+              {
+                "line": 17,
+                "text": "def delta_enclosure(current,baseline):"
+              },
+              {
+                "line": 21,
+                "text": "def impact_interval(values):"
+              },
+              {
+                "line": 27,
+                "text": "def ranked(rows):"
+              },
+              {
+                "line": 36,
+                "text": "def tornado(config,evaluator):"
+              }
+            ]
+          }
+        ],
+        "tests": [
+          {
+            "path": "tests/test_worksheet_tornado.py",
+            "sha256": "344e3405008411aaa13e536bbe72b3ae119825e1c5a1ae09f29d804f2a20b3b8",
+            "definitions": [
+              {
+                "line": 8,
+                "text": "def config():return dict(schema=SCHEMA,drivers={k:dict(unit=v['unit'],magnitude='3' if k=='lease_up' else '1',source_ref='SYNTHETIC-shock') for k,v in DRIVERS.items()})"
+              },
+              {
+                "line": 9,
+                "text": "def evaluator(driver,x,s,r):"
+              },
+              {
+                "line": 14,
+                "text": "class TornadoTests(TestCase):"
+              }
+            ]
+          }
+        ],
+        "full_regression": "RUNNING; not passed by inference"
+      },
+      "state": "SOURCE_INTEGRATED_SYNTHETIC",
+      "criterion_adopted": false,
+      "D275_state": "SOURCE_INTEGRATED_SYNTHETIC",
+      "D275_scope_limit": "Favourable leaseup lacks buyer tax roll 2033; shown PENDING, never imputed.",
+      "D275_code": [
+        {
+          "path": "tools/worksheet_tornado_D275.py",
+          "sha256": "63d7d85472800dcda4cb38421e64817153e0b179f1404fd941e155641bdc742d",
+          "definitions": [
+            {
+              "line": 11,
+              "text": "def enclosure(raw):"
+            },
+            {
+              "line": 17,
+              "text": "def delta_enclosure(current,baseline):"
+            },
+            {
+              "line": 21,
+              "text": "def impact_interval(values):"
+            },
+            {
+              "line": 27,
+              "text": "def ranked(rows):"
+            },
+            {
+              "line": 36,
+              "text": "def tornado(config,evaluator):"
+            }
+          ]
+        }
+      ],
+      "D275_tests": [
+        {
+          "path": "tests/test_worksheet_tornado.py",
+          "sha256": "344e3405008411aaa13e536bbe72b3ae119825e1c5a1ae09f29d804f2a20b3b8",
+          "definitions": [
+            {
+              "line": 8,
+              "text": "def config():return dict(schema=SCHEMA,drivers={k:dict(unit=v['unit'],magnitude='3' if k=='lease_up' else '1',source_ref='SYNTHETIC-shock') for k,v in DRIVERS.items()})"
+            },
+            {
+              "line": 9,
+              "text": "def evaluator(driver,x,s,r):"
+            },
+            {
+              "line": 14,
+              "text": "class TornadoTests(TestCase):"
+            }
+          ]
+        }
+      ],
+      "D275_validation": "docs/review/MiniUW_Validacion_D275.json",
+      "prior_cut_D273": {
+        "state": "pendiente",
+        "current_definition": "Existen variantes y deltas de caja; faltan el tornado de seis shocks simétricos, delta TIR/múltiplo y manejo reproducible de empates/bloqueos.",
+        "validation_evidence": []
+      }
+    },
+    {
+      "id": "T5",
+      "title": "Hoja de decisión de una página (nuevo renderer B15, esquema v36)",
+      "source": {
+        "path": "docs/MiniUW_Instrucciones_Codex_D273.md",
+        "first_line": 128,
+        "last_line": 165
+      },
+      "requirements": [
+        {
+          "line": 130,
+          "text": "**Formato:** Letter, una página, en español, generada sólo desde `results.json` reproducido por B16. El renderer anterior queda intacto para los perfiles anteriores."
+        },
+        {
+          "line": 132,
+          "text": "**Bloques en este orden:**"
+        },
+        {
+          "line": 133,
+          "text": "1. **Encabezado:**"
+        },
+        {
+          "line": 134,
+          "text": "   - Proyecto, dirección, unidades por tipo, GSF/NRSF y área comercial."
+        },
+        {
+          "line": 135,
+          "text": "   - Fecha de corte, revisión y huella abreviada."
+        },
+        {
+          "line": 136,
+          "text": "   - Ruta (PRELIMINAR o integrada)."
+        },
+        {
+          "line": 137,
+          "text": "   - **Cobertura de datos**: «n de 55 campos respaldados · m supuestos · k PENDING»."
+        },
+        {
+          "line": 138,
+          "text": "2. **Caja por USD 10:** aportes iniciales y adicionales, cobros, sin recuperar, múltiplo, TIR (T1) y fecha de recupero. Base y Downside, con y sin refi, en 4 columnas."
+        },
+        {
+          "line": 139,
+          "text": "3. **Métricas clave:**"
+        },
+        {
+          "line": 140,
+          "text": "   - Filas: YoC (NOI_uw), spread contra cap (base compatible), DSCR, debt yield, LTC, LTV, ocupación de equilibrio (económica; la física PENDING si C14 no tiene desglose), equity/TDC, CoC posrefi y equity recuperado en refi."
+        },
+        {
+          "line": 141,
+          "text": "   - Columnas: **Base · Downside · Referencia · Estado**."
+        },
+        {
+          "line": 142,
+          "text": "   - Sin criterios adoptados, **Referencia** muestra la tabla histórica en gris con la leyenda «referencia histórica, no vigente» y **Estado** dice «criterio por confirmar»."
+        },
+        {
+          "line": 143,
+          "text": "4. **Distancia a la quiebra (T2):** matriz compacta de drivers × F1–F3, en Base y Downside."
+        },
+        {
+          "line": 144,
+          "text": "5. **Precio (T3):** una mini-grilla de 5 puntos y el precio para las metas del usuario. «RLV de la casa: criterio por confirmar»."
+        },
+        {
+          "line": 145,
+          "text": "6. **Tornado (T4):** los 6 drivers sobre la TIR."
+        },
+        {
+          "line": 146,
+          "text": "7. **Fuentes y usos:**"
+        },
+        {
+          "line": 147,
+          "text": "   - TDC total, por unidad y por SF."
+        },
+        {
+          "line": 148,
+          "text": "   - Deuda de obra, permanente y equity."
+        },
+        {
+          "line": 149,
+          "text": "   - Barra de calendario: compra, obra, TCO, estabilización, refi y venta."
+        },
+        {
+          "line": 150,
+          "text": "8. **Banderas:** discrepancias abiertas, supuestos sin respaldo y campos PENDING, cada uno con su responsable (del registro T13)."
+        },
+        {
+          "line": 151,
+          "text": "9. **Pie:** revisión, fuentes y la leyenda «No es un dictamen de inversión»."
+        },
+        {
+          "line": 153,
+          "text": "**Reglas de presentación:**"
+        },
+        {
+          "line": 154,
+          "text": "- Nunca mostrar «PASS» ni «FAIL» hacia afuera. Usar «cumple criterios», «no cumple criterios», «criterio por confirmar» y «PENDING · motivo»."
+        },
+        {
+          "line": 155,
+          "text": "- Ninguna celda vacía se muestra como 0."
+        },
+        {
+          "line": 156,
+          "text": "- Las cifras se redondean sólo en la presentación."
+        },
+        {
+          "line": 158,
+          "text": "**Aceptación:**"
+        },
+        {
+          "line": 159,
+          "text": "- Una sola página con el caso dorado (T9) y con el fixture D269."
+        },
+        {
+          "line": 160,
+          "text": "- Prueba de desborde con nombres largos y 4 rutas."
+        },
+        {
+          "line": 161,
+          "text": "- B16 coteja cada cifra del PDF contra `results.json`."
+        },
+        {
+          "line": 162,
+          "text": "- Una revisión anterior queda bloqueada."
+        }
+      ],
+      "current_definition": "One Letter page, golden and D269; 140 displayed fields; old revision and manual analyses blocked. Real acceptance remains external PENDING.",
+      "affected_modules": [
+        {
+          "path": "tools/worksheet_return_summary_D273.py",
+          "line": 159,
+          "sha256": "92ca79d3b2ed24f600581cfc829fdab254f592624685e349de3651924d738801",
+          "role": "referencia o punto afectado; no prueba de cierre por sí sola"
+        }
+      ],
+      "validation_evidence": {
+        "general": "docs/review/MiniUW_Validacion_D275.json",
+        "code": [
+          {
+            "path": "tools/worksheet_decision_page_D275.py",
+            "sha256": "9b428b18435e52120abe40787c17298f3fd203a4bb195fea041f4e4b7c7a0ad4",
+            "definitions": [
+              {
+                "line": 20,
+                "text": "def amount(v,digits=2):"
+              },
+              {
+                "line": 29,
+                "text": "def ratio(a,b):"
+              },
+              {
+                "line": 35,
+                "text": "def report_view(result,case,analysis,roles):"
+              },
+              {
+                "line": 66,
+                "text": "def render(data):"
+              },
+              {
+                "line": 204,
+                "text": "def deliver(package,output,current_revision,analysis,roles):"
+              }
+            ]
+          }
+        ],
+        "tests": [
+          {
+            "path": "tests/test_worksheet_decision_page.py",
+            "sha256": "653c0a6a3b5a989194aca177f1bb2f1d70f67ab3f95b724a84b20a19e178ebb1",
+            "definitions": [
+              {
+                "line": 9,
+                "text": "def view():"
+              },
+              {
+                "line": 12,
+                "text": "class DecisionPageTests(TestCase):"
+              }
+            ]
+          }
+        ],
+        "full_regression": "RUNNING; not passed by inference",
+        "source_page": "docs/review/MiniUW_Validacion_Hoja_D275.json"
+      },
+      "state": "SOURCE_REPLAY_DELIVERED_SYNTHETIC",
+      "criterion_adopted": false,
+      "D275_state": "SOURCE_REPLAY_DELIVERED_SYNTHETIC",
+      "D275_scope_limit": "Real acceptance and actual criteria remain PENDING. Missing analyses on D269 are visible PENDING, not zero.",
+      "D275_code": [
+        {
+          "path": "tools/worksheet_decision_page_D275.py",
+          "sha256": "9b428b18435e52120abe40787c17298f3fd203a4bb195fea041f4e4b7c7a0ad4",
+          "definitions": [
+            {
+              "line": 20,
+              "text": "def amount(v,digits=2):"
+            },
+            {
+              "line": 29,
+              "text": "def ratio(a,b):"
+            },
+            {
+              "line": 35,
+              "text": "def report_view(result,case,analysis,roles):"
+            },
+            {
+              "line": 66,
+              "text": "def render(data):"
+            },
+            {
+              "line": 204,
+              "text": "def deliver(package,output,current_revision,analysis,roles):"
+            }
+          ]
+        }
+      ],
+      "D275_tests": [
+        {
+          "path": "tests/test_worksheet_decision_page.py",
+          "sha256": "653c0a6a3b5a989194aca177f1bb2f1d70f67ab3f95b724a84b20a19e178ebb1",
+          "definitions": [
+            {
+              "line": 9,
+              "text": "def view():"
+            },
+            {
+              "line": 12,
+              "text": "class DecisionPageTests(TestCase):"
+            }
+          ]
+        }
+      ],
+      "D275_validation": "docs/review/MiniUW_Validacion_D275.json",
+      "prior_cut_D273": {
+        "state": "pendiente",
+        "current_definition": "T1 añade un resumen nuevo de caja. No implementa los nueve bloques Letter de T5 ni integra T2–T4 y el registro de responsables.",
+        "validation_evidence": []
+      }
+    },
+    {
+      "id": "T6",
+      "title": "Calendario mensual de obra y deuda (esquema v36-monthly)",
+      "source": {
+        "path": "docs/MiniUW_Instrucciones_Codex_D273.md",
+        "first_line": 166,
+        "last_line": 182
+      },
+      "requirements": [
+        {
+          "line": 168,
+          "text": "**Problema:** el horizonte D266/D267 acepta sólo calendarios trimestrales y los préstamos de obra reales desembolsan e intereses devengan por mes."
+        },
+        {
+          "line": 170,
+          "text": "**Cambios:**"
+        },
+        {
+          "line": 171,
+          "text": "- Grilla mensual para M4 (calendario), M5 (desembolsos, intereses y saldo), equity y caja. La operación estabilizada puede seguir siendo trimestral, con un puente declarado."
+        },
+        {
+          "line": 172,
+          "text": "- Tasa mensual = convención declarada en el term sheet (por ejemplo actual/360 o 30/360). Sin convención declarada, PENDING."
+        },
+        {
+          "line": 173,
+          "text": "- TIR con flujos mensuales: extender el certificado D270 a la grilla mensual (z^12) con la misma prueba de unicidad."
+        },
+        {
+          "line": 175,
+          "text": "**Aceptación:**"
+        },
+        {
+          "line": 176,
+          "text": "- **Prueba de equivalencia:** un caso cuyos eventos caen sólo en fin de trimestre reproduce exactamente la caja del perfil trimestral."
+        },
+        {
+          "line": 177,
+          "text": "- Prueba de un desembolso a mitad de trimestre."
+        },
+        {
+          "line": 178,
+          "text": "- Prueba de cierre de obra que cruza el 1 de enero (§192.042)."
+        },
+        {
+          "line": 179,
+          "text": "- Los perfiles trimestrales anteriores siguen idénticos byte por byte."
+        }
+      ],
+      "current_definition": "Full monthly/fiscal/operation/refi/sale bridge not connected.",
+      "affected_modules": [
+        {
+          "path": "tools/worksheet_project_calendar_D145.py",
+          "line": 1,
+          "sha256": "71ad22d26f58aafc82e9430b7c98e9a090f245d58195e498d012a7b21d7064b8",
+          "role": "referencia o punto afectado; no prueba de cierre por sí sola"
+        },
+        {
+          "path": "tools/worksheet_construction_financing_D146.py",
+          "line": 1,
+          "sha256": "e74f512975130719e3c5693c431ae9f59b4e882aa709c88f160bd5ca9088259c",
+          "role": "referencia o punto afectado; no prueba de cierre por sí sola"
+        }
+      ],
+      "validation_evidence": {
+        "general": "docs/review/MiniUW_Validacion_D275.json",
+        "code": [
+          {
+            "path": "tools/worksheet_monthly_D275.py",
+            "sha256": "00f4f4b4859acdc7f339bbd969f053802fe63138b6313946d819f6544da2b63e",
+            "definitions": [
+              {
+                "line": 16,
+                "text": "def month(d,n):"
+              },
+              {
+                "line": 19,
+                "text": "def day_fraction(a,b,convention):"
+              },
+              {
+                "line": 24,
+                "text": "def construction(spec):"
+              },
+              {
+                "line": 107,
+                "text": "def monthly_irr(dates,net_flows,source_ref):"
+              }
+            ]
+          }
+        ],
+        "tests": [
+          {
+            "path": "tests/test_worksheet_monthly.py",
+            "sha256": "6156e057235310be652ba0bc52c7a04616ceee269bc4c469539001f3d033fc35",
+            "definitions": [
+              {
+                "line": 9,
+                "text": "def fixture():"
+              },
+              {
+                "line": 12,
+                "text": "class MonthlyTests(TestCase):"
+              },
+              {
+                "line": 49,
+                "text": "class MonthlySettlementTests(TestCase):"
+              },
+              {
+                "line": 59,
+                "text": "class ExplicitOpeningTermsTests(TestCase):"
+              }
+            ]
+          }
+        ],
+        "full_regression": "RUNNING; not passed by inference"
+      },
+      "state": "COMPONENT_ONLY",
+      "criterion_adopted": false,
+      "D275_state": "COMPONENT_ONLY",
+      "D275_scope_limit": "Full monthly/fiscal/operation/refi/sale bridge not connected.",
+      "D275_code": [
+        {
+          "path": "tools/worksheet_monthly_D275.py",
+          "sha256": "00f4f4b4859acdc7f339bbd969f053802fe63138b6313946d819f6544da2b63e",
+          "definitions": [
+            {
+              "line": 16,
+              "text": "def month(d,n):"
+            },
+            {
+              "line": 19,
+              "text": "def day_fraction(a,b,convention):"
+            },
+            {
+              "line": 24,
+              "text": "def construction(spec):"
+            },
+            {
+              "line": 107,
+              "text": "def monthly_irr(dates,net_flows,source_ref):"
+            }
+          ]
+        }
+      ],
+      "D275_tests": [
+        {
+          "path": "tests/test_worksheet_monthly.py",
+          "sha256": "6156e057235310be652ba0bc52c7a04616ceee269bc4c469539001f3d033fc35",
+          "definitions": [
+            {
+              "line": 9,
+              "text": "def fixture():"
+            },
+            {
+              "line": 12,
+              "text": "class MonthlyTests(TestCase):"
+            },
+            {
+              "line": 49,
+              "text": "class MonthlySettlementTests(TestCase):"
+            },
+            {
+              "line": 59,
+              "text": "class ExplicitOpeningTermsTests(TestCase):"
+            }
+          ]
+        }
+      ],
+      "D275_validation": "docs/review/MiniUW_Validacion_D275.json",
+      "prior_cut_D273": {
+        "state": "pendiente",
+        "current_definition": "El contrato integrado vigente es trimestral. Grilla mensual, convención documental, puente, certificado mensual y conciliación fiscal pendientes. No se presume una convención.",
+        "validation_evidence": []
+      }
+    },
+    {
+      "id": "T7",
+      "title": "Uso mixto con comercial en lease-up (esquema v37)",
+      "source": {
+        "path": "docs/MiniUW_Instrucciones_Codex_D273.md",
+        "first_line": 183,
+        "last_line": 199
+      },
+      "requirements": [
+        {
+          "line": 185,
+          "text": "**Problema:** el perfil actual rechaza el comercial parcialmente estabilizado, y el 1101 tiene alrededor de 34.228–35.493 ft² comerciales (discrepancia abierta de 1.265 ft²)."
+        },
+        {
+          "line": 187,
+          "text": "**Cambios:**"
+        },
+        {
+          "line": 188,
+          "text": "- Módulo comercial separado dentro de M2: área por local, renta base por ft², escalones, free rent, TI/LC, comisiones, NNN y recuperaciones, vacancia comercial y calendario de lease-up propio."
+        },
+        {
+          "line": 189,
+          "text": "- NOI dividido en residencial y comercial. El sizing del banco y la valoración aplican la base que el term sheet declare. Si falta, PENDING."
+        },
+        {
+          "line": 190,
+          "text": "- Cap de valoración y de salida por uso cuando la evidencia lo provea. Si no, se declara un cap combinado con su fuente."
+        },
+        {
+          "line": 191,
+          "text": "- TI/LC entran en el presupuesto M3 o en el capex según el calendario."
+        },
+        {
+          "line": 193,
+          "text": "**Aceptación:**"
+        },
+        {
+          "line": 194,
+          "text": "- Un caso sintético sólo residencial reproduce idéntico al perfil anterior."
+        },
+        {
+          "line": 195,
+          "text": "- Un caso mixto con el verificador independiente."
+        },
+        {
+          "line": 196,
+          "text": "- Un área comercial con discrepancia entre planos bloquea los dependientes, como hoy."
+        }
+      ],
+      "current_definition": "Native worksheet / sizing / valuation pipeline not connected.",
+      "affected_modules": [
+        {
+          "path": "tools/worksheet_commercial_inputs_D141.py",
+          "line": 1,
+          "sha256": "0e0587e9be4e25d807645fc7ae37c0a439d9f6c45cfcc456e33eb6549233776c",
+          "role": "referencia o punto afectado; no prueba de cierre por sí sola"
+        }
+      ],
+      "validation_evidence": {
+        "general": "docs/review/MiniUW_Validacion_D275.json",
+        "code": [
+          {
+            "path": "tools/worksheet_commercial_leaseup_D275.py",
+            "sha256": "b76564ef9e452ef50e2269e5c99f52287e2c314b2b8b69b44255494a675e3c93",
+            "definitions": [
+              {
+                "line": 15,
+                "text": "def schedule(spec):"
+              },
+              {
+                "line": 79,
+                "text": "def combine_residential_noi(residential,commercial):"
+              }
+            ]
+          }
+        ],
+        "tests": [
+          {
+            "path": "tests/test_worksheet_commercial_leaseup.py",
+            "sha256": "fb2b84f6aadd5f9a1377d4600647a6beca77bcfd24c5a0dbce9f28c865896ba1",
+            "definitions": [
+              {
+                "line": 6,
+                "text": "def fixture():return dict(schema=SCHEMA,currency='USD',inventory_complete=True,source_ref='SYNTHETIC-commercial',area_reconciliation='RECONCILED',reconciled_area_sf='120',owner_cost_scope='commercial_only_excluding_M2_property_tax_insurance_and_residential',start='2027-01-01',end='2027-07-01',spaces=[dict(id='SYNTHETIC-SHOP',source_ref='SYNTHETIC-lease',area_sf='120',annual_rent_per_sf='12',collection_loss_fraction='0.1',owner_cost_per_month='20',recovery_fraction='0.5',lease_start='2027-02-01',lease_end='2027-07-01',free_rent_months=1,recoveries_waived_during_free_rent=False,noi_bases=dict(bank='collected_net',refinance_valuation='contractual_net',sale_valuation='collected_net'),rent_steps=[dict(effective_date='2027-04-01',relative_increase='0.1',source_ref='SYNTHETIC-step')],ti_lc_events=[dict(date='2027-01-15',kind='TI',budget_location='M3',amount='50',source_ref='SYNTHETIC-TI'),dict(date='2027-03-15',kind='LC',budget_location='operating_capex',amount='5',source_ref='SYNTHETIC-LC')])])"
+              },
+              {
+                "line": 8,
+                "text": "class CommercialLeaseupTests(TestCase):"
+              }
+            ]
+          }
+        ],
+        "full_regression": "RUNNING; not passed by inference"
+      },
+      "state": "COMPONENT_ONLY",
+      "criterion_adopted": false,
+      "D275_state": "COMPONENT_ONLY",
+      "D275_scope_limit": "Native worksheet / sizing / valuation pipeline not connected.",
+      "D275_code": [
+        {
+          "path": "tools/worksheet_commercial_leaseup_D275.py",
+          "sha256": "b76564ef9e452ef50e2269e5c99f52287e2c314b2b8b69b44255494a675e3c93",
+          "definitions": [
+            {
+              "line": 15,
+              "text": "def schedule(spec):"
+            },
+            {
+              "line": 79,
+              "text": "def combine_residential_noi(residential,commercial):"
+            }
+          ]
+        }
+      ],
+      "D275_tests": [
+        {
+          "path": "tests/test_worksheet_commercial_leaseup.py",
+          "sha256": "fb2b84f6aadd5f9a1377d4600647a6beca77bcfd24c5a0dbce9f28c865896ba1",
+          "definitions": [
+            {
+              "line": 6,
+              "text": "def fixture():return dict(schema=SCHEMA,currency='USD',inventory_complete=True,source_ref='SYNTHETIC-commercial',area_reconciliation='RECONCILED',reconciled_area_sf='120',owner_cost_scope='commercial_only_excluding_M2_property_tax_insurance_and_residential',start='2027-01-01',end='2027-07-01',spaces=[dict(id='SYNTHETIC-SHOP',source_ref='SYNTHETIC-lease',area_sf='120',annual_rent_per_sf='12',collection_loss_fraction='0.1',owner_cost_per_month='20',recovery_fraction='0.5',lease_start='2027-02-01',lease_end='2027-07-01',free_rent_months=1,recoveries_waived_during_free_rent=False,noi_bases=dict(bank='collected_net',refinance_valuation='contractual_net',sale_valuation='collected_net'),rent_steps=[dict(effective_date='2027-04-01',relative_increase='0.1',source_ref='SYNTHETIC-step')],ti_lc_events=[dict(date='2027-01-15',kind='TI',budget_location='M3',amount='50',source_ref='SYNTHETIC-TI'),dict(date='2027-03-15',kind='LC',budget_location='operating_capex',amount='5',source_ref='SYNTHETIC-LC')])])"
+            },
+            {
+              "line": 8,
+              "text": "class CommercialLeaseupTests(TestCase):"
+            }
+          ]
+        }
+      ],
+      "D275_validation": "docs/review/MiniUW_Validacion_D275.json",
+      "prior_cut_D273": {
+        "state": "pendiente",
+        "current_definition": "El carril vigente no acredita el nuevo programa comercial por local con lease-up, free rent, TI/LC y bases de banco/valoración separadas. La discrepancia del 1101 no se resuelve por modelado.",
+        "validation_evidence": []
+      }
+    },
+    {
+      "id": "T8",
+      "title": "Builder's risk como partida propia",
+      "source": {
+        "path": "docs/MiniUW_Instrucciones_Codex_D273.md",
+        "first_line": 200,
+        "last_line": 213
+      },
+      "requirements": [
+        {
+          "line": 202,
+          "text": "**Cambios:**"
+        },
+        {
+          "line": 203,
+          "text": "- En M3: `builders_risk` como partida explícita (base, tasa o prima, plazo, fuente), separada del soft cost porcentual y del seguro operativo de M2."
+        },
+        {
+          "line": 204,
+          "text": "- Evitar el doble conteo: si la cotización del GC lo incluye, se declara y no se suma."
+        },
+        {
+          "line": 205,
+          "text": "- Sin dato, PENDING. Nunca va escondido dentro del soft %."
+        },
+        {
+          "line": 207,
+          "text": "**Aceptación:**"
+        },
+        {
+          "line": 208,
+          "text": "- Prueba de doble conteo."
+        },
+        {
+          "line": 209,
+          "text": "- Prueba de ausencia (PENDING)."
+        },
+        {
+          "line": 210,
+          "text": "- El TDC reconcilia con fuentes = usos."
+        }
+      ],
+      "current_definition": "Funding pipeline not connected.",
+      "affected_modules": [
+        {
+          "path": "tools/worksheet_construction_budget_D144.py",
+          "line": 1,
+          "sha256": "648bd56ea1715853da3ca607b4ac301463d9fd79abcd7999e8eb09e2905125ff",
+          "role": "referencia o punto afectado; no prueba de cierre por sí sola"
+        }
+      ],
+      "validation_evidence": {
+        "general": "docs/review/MiniUW_Validacion_D275.json",
+        "code": [
+          {
+            "path": "tools/worksheet_builders_risk_D275.py",
+            "sha256": "1918e35c934c93fcd0d30de8e4369f685523743d29d8b873b4113b8c29613226",
+            "definitions": [
+              {
+                "line": 10,
+                "text": "def proof(source,documents):"
+              },
+              {
+                "line": 15,
+                "text": "def line(spec,documents):"
+              },
+              {
+                "line": 48,
+                "text": "def budget_extension(budget,spec,documents):"
+              }
+            ]
+          }
+        ],
+        "tests": [
+          {
+            "path": "tests/test_worksheet_builders_risk.py",
+            "sha256": "0f29834f20b8afdba238131b6ea5a24428c5f03afaac6de297182cc3a3d9a652",
+            "definitions": [
+              {
+                "line": 9,
+                "text": "def backed(s):"
+              },
+              {
+                "line": 11,
+                "text": "def included(s):"
+              },
+              {
+                "line": 13,
+                "text": "def spec():return backed(dict(schema=SCHEMA,currency='USD',term_start='2027-01-01',term_end='2028-01-01',payment_date='2027-01-01',premium_basis='quoted_premium',base=None,rate=None,quoted_premium='30',quote_source=None,included_in_gc=False,included_in_soft_percentage=False,gc_inclusion_source=None))"
+              },
+              {
+                "line": 15,
+                "text": "class BuildersRiskTests(TestCase):"
+              },
+              {
+                "line": 37,
+                "text": "class QuoteBindingTests(TestCase):"
+              }
+            ]
+          }
+        ],
+        "full_regression": "RUNNING; not passed by inference"
+      },
+      "state": "COMPONENT_ONLY",
+      "criterion_adopted": false,
+      "D275_state": "COMPONENT_ONLY",
+      "D275_scope_limit": "Funding pipeline not connected.",
+      "D275_code": [
+        {
+          "path": "tools/worksheet_builders_risk_D275.py",
+          "sha256": "1918e35c934c93fcd0d30de8e4369f685523743d29d8b873b4113b8c29613226",
+          "definitions": [
+            {
+              "line": 10,
+              "text": "def proof(source,documents):"
+            },
+            {
+              "line": 15,
+              "text": "def line(spec,documents):"
+            },
+            {
+              "line": 48,
+              "text": "def budget_extension(budget,spec,documents):"
+            }
+          ]
+        }
+      ],
+      "D275_tests": [
+        {
+          "path": "tests/test_worksheet_builders_risk.py",
+          "sha256": "0f29834f20b8afdba238131b6ea5a24428c5f03afaac6de297182cc3a3d9a652",
+          "definitions": [
+            {
+              "line": 9,
+              "text": "def backed(s):"
+            },
+            {
+              "line": 11,
+              "text": "def included(s):"
+            },
+            {
+              "line": 13,
+              "text": "def spec():return backed(dict(schema=SCHEMA,currency='USD',term_start='2027-01-01',term_end='2028-01-01',payment_date='2027-01-01',premium_basis='quoted_premium',base=None,rate=None,quoted_premium='30',quote_source=None,included_in_gc=False,included_in_soft_percentage=False,gc_inclusion_source=None))"
+            },
+            {
+              "line": 15,
+              "text": "class BuildersRiskTests(TestCase):"
+            },
+            {
+              "line": 37,
+              "text": "class QuoteBindingTests(TestCase):"
+            }
+          ]
+        }
+      ],
+      "D275_validation": "docs/review/MiniUW_Validacion_D275.json",
+      "prior_cut_D273": {
+        "state": "pendiente",
+        "current_definition": "No se acredita la nueva partida propia de builder’s risk ni su exclusión por cobertura explícita del GC. El soft porcentual no la sustituye.",
+        "validation_evidence": []
+      }
+    },
+    {
+      "id": "T9",
+      "title": "Caso dorado y tie-out en Excel",
+      "source": {
+        "path": "docs/MiniUW_Instrucciones_Codex_D273.md",
+        "first_line": 214,
+        "last_line": 226
+      },
+      "requirements": [
+        {
+          "line": 216,
+          "text": "**Cambios:**"
+        },
+        {
+          "line": 217,
+          "text": "- Fijar **un** caso sintético de referencia, `golden_case_v1`, que se corre en cada versión y no cambia entre cortes. Cada cambio de resultado tiene que explicarse en la constancia."
+        },
+        {
+          "line": 218,
+          "text": "- Generar `golden_case_tieout.xlsx` con **fórmulas vivas** (no valores pegados), construido desde las celdas fuente y no desde el motor: programa, NOI, TDC, deuda, refi, venta, caja trimestral o mensual, múltiplo y TIR (función IRR o XIRR de Excel)."
+        },
+        {
+          "line": 219,
+          "text": "- Recalcular con LibreOffice y comparar con `results.json` dentro de una tolerancia declarada (por ejemplo USD 0,01 por USD 10 y 1 pb de TIR)."
+        },
+        {
+          "line": 221,
+          "text": "**Aceptación:**"
+        },
+        {
+          "line": 222,
+          "text": "- El tie-out cierra."
+        },
+        {
+          "line": 223,
+          "text": "- Una alteración inyectada en una celda fuente hace fallar la comparación."
+        }
+      ],
+      "current_definition": "662 cells within declared tolerances; three source mutations detected; synthetic golden only.",
+      "affected_modules": [
+        {
+          "path": "tools/check_worksheet_return_summary_D273.py",
+          "line": 74,
+          "sha256": "1dfdca9d8038e3e92a8664dad9076cd66a47f2f8bc792b10f5a06499ebeadfd9",
+          "role": "referencia o punto afectado; no prueba de cierre por sí sola"
+        }
+      ],
+      "validation_evidence": {
+        "general": "docs/review/MiniUW_Validacion_D275.json",
+        "code": [
+          {
+            "path": "tools/worksheet_golden_D275.py",
+            "sha256": "71eaacc91288468a19e480ab399c45c7ee50c447dde2a435b2a31ded14287647",
+            "definitions": [
+              {
+                "line": 24,
+                "text": "def _numeric(text):"
+              },
+              {
+                "line": 30,
+                "text": "def workbook(spec,sources):"
+              },
+              {
+                "line": 193,
+                "text": "def freeze(package,output):"
+              },
+              {
+                "line": 202,
+                "text": "def run(root,output,*,soffice=None):"
+              },
+              {
+                "line": 232,
+                "text": "def main():"
+              }
+            ]
+          },
+          {
+            "path": "tools/check_golden_excel_D275.py",
+            "sha256": "b6ed55d1265b3cbb988033266f49d17b983c5c66ede524f1fdb02a98667919c2",
+            "definitions": [
+              {
+                "line": 17,
+                "text": "def read_cells(raw):"
+              },
+              {
+                "line": 40,
+                "text": "def compare(raw,result,tolerances):"
+              },
+              {
+                "line": 90,
+                "text": "def mutate(raw,mode):"
+              },
+              {
+                "line": 110,
+                "text": "def recalculate(executable,book,output):"
+              },
+              {
+                "line": 120,
+                "text": "def main():"
+              }
+            ]
+          }
+        ],
+        "tests": [
+          {
+            "path": "tests/test_worksheet_golden.py",
+            "sha256": "7601068b1a5a9a9e28bc2ffe7e4a69e5ebc49c8ff8b631c94754f7fe0126ee05",
+            "definitions": [
+              {
+                "line": 13,
+                "text": "class GoldenSourceTests(TestCase):"
+              }
+            ]
+          }
+        ],
+        "full_regression": "RUNNING; not passed by inference",
+        "external_tieout": "docs/review/MiniUW_Validacion_Excel_D275.json"
+      },
+      "state": "EXTERNAL_TIEOUT_PASSED",
+      "criterion_adopted": false,
+      "D275_state": "EXTERNAL_TIEOUT_PASSED",
+      "D275_scope_limit": "662 cells within declared tolerances; three source mutations detected; synthetic golden only.",
+      "D275_code": [
+        {
+          "path": "tools/worksheet_golden_D275.py",
+          "sha256": "71eaacc91288468a19e480ab399c45c7ee50c447dde2a435b2a31ded14287647",
+          "definitions": [
+            {
+              "line": 24,
+              "text": "def _numeric(text):"
+            },
+            {
+              "line": 30,
+              "text": "def workbook(spec,sources):"
+            },
+            {
+              "line": 193,
+              "text": "def freeze(package,output):"
+            },
+            {
+              "line": 202,
+              "text": "def run(root,output,*,soffice=None):"
+            },
+            {
+              "line": 232,
+              "text": "def main():"
+            }
+          ]
+        },
+        {
+          "path": "tools/check_golden_excel_D275.py",
+          "sha256": "b6ed55d1265b3cbb988033266f49d17b983c5c66ede524f1fdb02a98667919c2",
+          "definitions": [
+            {
+              "line": 17,
+              "text": "def read_cells(raw):"
+            },
+            {
+              "line": 40,
+              "text": "def compare(raw,result,tolerances):"
+            },
+            {
+              "line": 90,
+              "text": "def mutate(raw,mode):"
+            },
+            {
+              "line": 110,
+              "text": "def recalculate(executable,book,output):"
+            },
+            {
+              "line": 120,
+              "text": "def main():"
+            }
+          ]
+        }
+      ],
+      "D275_tests": [
+        {
+          "path": "tests/test_worksheet_golden.py",
+          "sha256": "7601068b1a5a9a9e28bc2ffe7e4a69e5ebc49c8ff8b631c94754f7fe0126ee05",
+          "definitions": [
+            {
+              "line": 13,
+              "text": "class GoldenSourceTests(TestCase):"
+            }
+          ]
+        }
+      ],
+      "D275_validation": "docs/review/MiniUW_Validacion_D275.json",
+      "prior_cut_D273": {
+        "state": "pendiente",
+        "current_definition": "La referencia financiera independiente existente no sustituye un XLSX con fórmulas vivas recalculado. Falta fijar golden_case_v1, generar el libro y verificarlo con motor externo. LibreOffice no está disponible en el entorno revisado.",
+        "validation_evidence": []
+      }
+    },
+    {
+      "id": "T10",
+      "title": "Arnés de backtest con proyectos cerrados",
+      "source": {
+        "path": "docs/MiniUW_Instrucciones_Codex_D273.md",
+        "first_line": 227,
+        "last_line": 240
+      },
+      "requirements": [
+        {
+          "line": 229,
+          "text": "**Cambios:**"
+        },
+        {
+          "line": 230,
+          "text": "- La plantilla `backtest_case_template.xlsx` tiene, por proyecto, los inputs tal como se conocían al momento de decidir y los resultados reales (costo final, fechas, rentas logradas, refi, venta y caja real del equity)."
+        },
+        {
+          "line": 231,
+          "text": "- El comando `backtest run` corre el Mini-UW con los inputs originales y produce un reporte de diferencias por categoría: fuente, plazo, costo, NOI, servicio de deuda, venta y aportes o cobros."
+        },
+        {
+          "line": 232,
+          "text": "- Métricas de error: diferencia de TIR, de múltiplo y de TDC y desvío del calendario."
+        },
+        {
+          "line": 234,
+          "text": "**Aceptación:**"
+        },
+        {
+          "line": 235,
+          "text": "- Un proyecto sintético con «real» conocido."
+        },
+        {
+          "line": 236,
+          "text": "- El reporte explica el 100% de la diferencia en categorías, con «no explicada» visible si queda resto."
+        },
+        {
+          "line": 237,
+          "text": "- Los datos reales los carga el equipo; Codex no inventa ninguno."
+        }
+      ],
+      "current_definition": "3-5 real projects not supplied.",
+      "affected_modules": [],
+      "validation_evidence": {
+        "general": "docs/review/MiniUW_Validacion_D275.json",
+        "code": [
+          {
+            "path": "tools/worksheet_backtest_D275.py",
+            "sha256": "e5b1a00d986dbac646ef239e9d67c074166d72994fe69d5bc251356f149ee16f",
+            "definitions": [
+              {
+                "line": 20,
+                "text": "def interval(value):"
+              },
+              {
+                "line": 27,
+                "text": "def compare_metric(predicted,actual,unit,explanations):"
+              },
+              {
+                "line": 48,
+                "text": "def compare_case(spec):"
+              },
+              {
+                "line": 103,
+                "text": "def predictions(result):"
+              },
+              {
+                "line": 122,
+                "text": "def run(spec,package,observed_raw):"
+              },
+              {
+                "line": 149,
+                "text": "def main():"
+              }
+            ]
+          }
+        ],
+        "tests": [
+          {
+            "path": "tests/test_worksheet_backtest.py",
+            "sha256": "30d377691e47fde8d7f086cc4d02813410403aea67b2a5ec297f304c649dcef8",
+            "definitions": [
+              {
+                "line": 7,
+                "text": "def fixture():return dict(schema=SCHEMA,project_id='SYNTHETIC-CLOSED',population='synthetic_test',input_as_of='2020-01-01',observed_as_of='2026-01-01',original_inputs_sha256='a'*64,audited_results_sha256='b'*64,observed_source_sha256='c'*64,measurements=[dict(scenario=s,route=r,metric=m,unit=u,predicted='10',actual='12',actual_source_ref='SYNTHETIC-closed-ledger',explanations=[dict(category='costo',amount='2',source_ref='SYNTHETIC-verified-cost-delta')]) for s in ('Base','Downside') for r in ('with_refinance','without_refinance') for m,u in METRICS.items()],expected_calendar_milestones=['sale'],calendar_comparisons=[dict(milestone='sale',predicted_date='2025-01-01',actual_date='2025-02-01')])"
+              },
+              {
+                "line": 9,
+                "text": "class BacktestTests(TestCase):"
+              },
+              {
+                "line": 35,
+                "text": "class ObservationBindingTests(TestCase):"
+              },
+              {
+                "line": 40,
+                "text": "class RealHistoryScopeTests(TestCase):"
+              },
+              {
+                "line": 50,
+                "text": "class CalendarCompletenessTests(TestCase):"
+              }
+            ]
+          }
+        ],
+        "full_regression": "RUNNING; not passed by inference"
+      },
+      "state": "HARNESS_ONLY",
+      "criterion_adopted": false,
+      "D275_state": "HARNESS_ONLY",
+      "D275_scope_limit": "3-5 real projects not supplied.",
+      "D275_code": [
+        {
+          "path": "tools/worksheet_backtest_D275.py",
+          "sha256": "e5b1a00d986dbac646ef239e9d67c074166d72994fe69d5bc251356f149ee16f",
+          "definitions": [
+            {
+              "line": 20,
+              "text": "def interval(value):"
+            },
+            {
+              "line": 27,
+              "text": "def compare_metric(predicted,actual,unit,explanations):"
+            },
+            {
+              "line": 48,
+              "text": "def compare_case(spec):"
+            },
+            {
+              "line": 103,
+              "text": "def predictions(result):"
+            },
+            {
+              "line": 122,
+              "text": "def run(spec,package,observed_raw):"
+            },
+            {
+              "line": 149,
+              "text": "def main():"
+            }
+          ]
+        }
+      ],
+      "D275_tests": [
+        {
+          "path": "tests/test_worksheet_backtest.py",
+          "sha256": "30d377691e47fde8d7f086cc4d02813410403aea67b2a5ec297f304c649dcef8",
+          "definitions": [
+            {
+              "line": 7,
+              "text": "def fixture():return dict(schema=SCHEMA,project_id='SYNTHETIC-CLOSED',population='synthetic_test',input_as_of='2020-01-01',observed_as_of='2026-01-01',original_inputs_sha256='a'*64,audited_results_sha256='b'*64,observed_source_sha256='c'*64,measurements=[dict(scenario=s,route=r,metric=m,unit=u,predicted='10',actual='12',actual_source_ref='SYNTHETIC-closed-ledger',explanations=[dict(category='costo',amount='2',source_ref='SYNTHETIC-verified-cost-delta')]) for s in ('Base','Downside') for r in ('with_refinance','without_refinance') for m,u in METRICS.items()],expected_calendar_milestones=['sale'],calendar_comparisons=[dict(milestone='sale',predicted_date='2025-01-01',actual_date='2025-02-01')])"
+            },
+            {
+              "line": 9,
+              "text": "class BacktestTests(TestCase):"
+            },
+            {
+              "line": 35,
+              "text": "class ObservationBindingTests(TestCase):"
+            },
+            {
+              "line": 40,
+              "text": "class RealHistoryScopeTests(TestCase):"
+            },
+            {
+              "line": 50,
+              "text": "class CalendarCompletenessTests(TestCase):"
+            }
+          ]
+        }
+      ],
+      "D275_validation": "docs/review/MiniUW_Validacion_D275.json",
+      "prior_cut_D273": {
+        "state": "pendiente",
+        "current_definition": "Falta el arnés nuevo y su plantilla. El equipo debe aportar inputs conocidos al decidir y resultados observados de proyectos cerrados; no se fabrican backtests reales.",
+        "validation_evidence": []
+      }
+    },
+    {
+      "id": "T11",
+      "title": "Medición de falsos verdes con documentos reales",
+      "source": {
+        "path": "docs/MiniUW_Instrucciones_Codex_D273.md",
+        "first_line": 241,
+        "last_line": 253
+      },
+      "requirements": [
+        {
+          "line": 243,
+          "text": "**Cambios:**"
+        },
+        {
+          "line": 244,
+          "text": "- `false_green_study`: definición de la muestra (documentos, datos críticos), una plantilla de referencia independiente que llena una persona y el cálculo de la tasa = falsos verdes ÷ datos críticos, con su intervalo de confianza (Wilson o Clopper-Pearson)."
+        },
+        {
+          "line": 245,
+          "text": "- Reporte por tipo de documento (plano, cotización GC, term sheet, fiscal) y por bot."
+        },
+        {
+          "line": 246,
+          "text": "- Meta declarada: 0 falsos verdes. El reporte muestra el tamaño de muestra necesario para afirmar una tasa máxima con un 95% de confianza."
+        },
+        {
+          "line": 248,
+          "text": "**Aceptación:**"
+        },
+        {
+          "line": 249,
+          "text": "- Prueba sintética con falsos verdes inyectados que el estudio detecta."
+        },
+        {
+          "line": 250,
+          "text": "- Ningún dato verde sin cita entra al conteo como correcto."
+        }
+      ],
+      "current_definition": "Real independent labels/sample not supplied; no real false-green claim.",
+      "affected_modules": [
+        {
+          "path": "tools/audit_worksheet_critical_evidence_D219.py",
+          "line": 1,
+          "sha256": "1e658efb5d9be13780b3b428fc64058d0bc86b9c4abc363a35e7e1416435f1c9",
+          "role": "referencia o punto afectado; no prueba de cierre por sí sola"
+        }
+      ],
+      "validation_evidence": {
+        "general": "docs/review/MiniUW_Validacion_D275.json",
+        "code": [
+          {
+            "path": "tools/worksheet_review_controls_D275.py",
+            "sha256": "71be2cc10a5c8122e1c5cbd50ea74e35c755ac32f14421aa06ea1e0172707513",
+            "definitions": [
+              {
+                "line": 15,
+                "text": "def empty_roles():return dict(schema=ROLE_SCHEMA,roles={r:{k:None for k in ROLE_FIELDS} for r in ROLES})"
+              },
+              {
+                "line": 17,
+                "text": "def review_roles(registry,as_of,documents):"
+              },
+              {
+                "line": 47,
+                "text": "def wilson(successes,n,confidence):"
+              },
+              {
+                "line": 55,
+                "text": "def zero_event_sample_size(maximum_rate,confidence):"
+              },
+              {
+                "line": 65,
+                "text": "def false_green_study(spec,documents):"
+              }
+            ]
+          }
+        ],
+        "tests": [
+          {
+            "path": "tests/test_worksheet_review_controls.py",
+            "sha256": "94279e53b9c9095edac5c6ee10f94b4f83262a5a9e28de1fefc71e7f73a2aa70",
+            "definitions": [
+              {
+                "line": 7,
+                "text": "def fixture():"
+              },
+              {
+                "line": 11,
+                "text": "class ReviewControlTests(TestCase):"
+              },
+              {
+                "line": 58,
+                "text": "class ExactCitationTests(TestCase):"
+              },
+              {
+                "line": 62,
+                "text": "class ReviewMissingnessTests(TestCase):"
+              }
+            ]
+          }
+        ],
+        "full_regression": "RUNNING; not passed by inference"
+      },
+      "state": "AUDITOR_ONLY",
+      "criterion_adopted": false,
+      "D275_state": "AUDITOR_ONLY",
+      "D275_scope_limit": "Real independent labels/sample not supplied; no real false-green claim.",
+      "D275_code": [
+        {
+          "path": "tools/worksheet_review_controls_D275.py",
+          "sha256": "71be2cc10a5c8122e1c5cbd50ea74e35c755ac32f14421aa06ea1e0172707513",
+          "definitions": [
+            {
+              "line": 15,
+              "text": "def empty_roles():return dict(schema=ROLE_SCHEMA,roles={r:{k:None for k in ROLE_FIELDS} for r in ROLES})"
+            },
+            {
+              "line": 17,
+              "text": "def review_roles(registry,as_of,documents):"
+            },
+            {
+              "line": 47,
+              "text": "def wilson(successes,n,confidence):"
+            },
+            {
+              "line": 55,
+              "text": "def zero_event_sample_size(maximum_rate,confidence):"
+            },
+            {
+              "line": 65,
+              "text": "def false_green_study(spec,documents):"
+            }
+          ]
+        }
+      ],
+      "D275_tests": [
+        {
+          "path": "tests/test_worksheet_review_controls.py",
+          "sha256": "94279e53b9c9095edac5c6ee10f94b4f83262a5a9e28de1fefc71e7f73a2aa70",
+          "definitions": [
+            {
+              "line": 7,
+              "text": "def fixture():"
+            },
+            {
+              "line": 11,
+              "text": "class ReviewControlTests(TestCase):"
+            },
+            {
+              "line": 58,
+              "text": "class ExactCitationTests(TestCase):"
+            },
+            {
+              "line": 62,
+              "text": "class ReviewMissingnessTests(TestCase):"
+            }
+          ]
+        }
+      ],
+      "D275_validation": "docs/review/MiniUW_Validacion_D275.json",
+      "prior_cut_D273": {
+        "state": "pendiente",
+        "current_definition": "El auditor existente detecta falsos verdes por dato crítico en ensayos sintéticos. Falta el estudio estadístico por muestra independiente, documento y bot. Las etiquetas humanas y documentos reales requieren al equipo.",
+        "validation_evidence": []
+      }
+    },
+    {
+      "id": "T12",
+      "title": "Prueba del enchufe de criterios",
+      "source": {
+        "path": "docs/MiniUW_Instrucciones_Codex_D273.md",
+        "first_line": 254,
+        "last_line": 268
+      },
+      "requirements": [
+        {
+          "line": 256,
+          "text": "**Objetivo:** demostrar que cargar los criterios de Lorena no cambia ningún número."
+        },
+        {
+          "line": 258,
+          "text": "**Cambios:**"
+        },
+        {
+          "line": 259,
+          "text": "- Dos archivos de criterios **ficticios y opuestos**, `criteria_fixture_strict.json` y `criteria_fixture_lenient.json`, rotulados `synthetic_plug_test_only`."
+        },
+        {
+          "line": 260,
+          "text": "- Una prueba que corre el caso dorado con: sin criterios, el estricto y el permisivo."
+        },
+        {
+          "line": 262,
+          "text": "**Aceptación:**"
+        },
+        {
+          "line": 263,
+          "text": "- Entre las tres corridas, **todas las cifras** de `results.json` (caja, métricas, fronteras, grilla y tornado) son idénticas byte por byte. Sólo cambian los campos de estado y la columna Estado de la hoja."
+        },
+        {
+          "line": 264,
+          "text": "- `house_rlv` se calcula sólo cuando el archivo trae una definición de RLV y queda PENDING en la corrida sin criterios."
+        },
+        {
+          "line": 265,
+          "text": "- El loader de criterios valida operador, unidad, base de NOI, escenario y vigencia. YoC y spread no pueden ser vinculantes a la vez para el RLV."
+        }
+      ],
+      "current_definition": "Strict/lenient fixtures are synthetic; all applicable RLV criteria preserved; no adoption.",
+      "affected_modules": [
+        {
+          "path": "tools/worksheet_rlv_scope_D273.py",
+          "line": 15,
+          "sha256": "e14d5de972b98dbdafba1175879d5fc078aa169b0fc1f69bb1a208ca8711b900",
+          "role": "referencia o punto afectado; no prueba de cierre por sí sola"
+        },
+        {
+          "path": "tools/worksheet_lorena_screening.py",
+          "line": 77,
+          "sha256": "0cdbf3447ae9f59a392ed9af2f4650936b1c704775306c64a536e53826d74beb",
+          "role": "referencia o punto afectado; no prueba de cierre por sí sola"
+        },
+        {
+          "path": "tools/worksheet_performance_policy_D184.py",
+          "line": 65,
+          "sha256": "ed7f7ee000517986ef2dd40bc416bc606f355442267aa778e776b90a78e4af52",
+          "role": "referencia o punto afectado; no prueba de cierre por sí sola"
+        }
+      ],
+      "validation_evidence": {
+        "general": "docs/review/MiniUW_Validacion_D275.json",
+        "code": [
+          {
+            "path": "tools/worksheet_criteria_plug_D275.py",
+            "sha256": "9b4097d32012d325535b31a9a3b22f2e7f24e2d870494ccb28cad2c7dec9148b",
+            "definitions": [
+              {
+                "line": 18,
+                "text": "def validated(config,as_of):"
+              },
+              {
+                "line": 50,
+                "text": "def relation(value,condition):"
+              },
+              {
+                "line": 62,
+                "text": "def apply(snapshot,config,as_of,*,house_rlv_solver=None):"
+              }
+            ]
+          },
+          {
+            "path": "tools/check_worksheet_criteria_plug_D275.py",
+            "sha256": "0f59346dcba38a05c58eab6c446aaf80efcda9df94b3f35521f3411cf342ca10",
+            "definitions": [
+              {
+                "line": 16,
+                "text": "def joint_case(case):"
+              },
+              {
+                "line": 23,
+                "text": "def fixtures(case,strict):"
+              },
+              {
+                "line": 44,
+                "text": "def legacy_configuration(config):"
+              },
+              {
+                "line": 56,
+                "text": "def rehearse(result,case,analysis):"
+              },
+              {
+                "line": 87,
+                "text": "def main():"
+              }
+            ]
+          }
+        ],
+        "tests": [
+          {
+            "path": "tests/test_worksheet_criteria_plug.py",
+            "sha256": "145307a87fade4441fc914cceb9b008503ded7a15b22f5a9840b08ce0e6bad34",
+            "definitions": [
+              {
+                "line": 7,
+                "text": "def config(strict=False):"
+              },
+              {
+                "line": 9,
+                "text": "def configuration(strict=False):"
+              },
+              {
+                "line": 14,
+                "text": "def snapshot():"
+              },
+              {
+                "line": 17,
+                "text": "class CriteriaPlugTests(TestCase):"
+              }
+            ]
+          }
+        ],
+        "full_regression": "RUNNING; not passed by inference"
+      },
+      "state": "SOURCE_PLUG_SYNTHETIC",
+      "criterion_adopted": false,
+      "D275_state": "SOURCE_PLUG_SYNTHETIC",
+      "D275_scope_limit": "Strict/lenient fixtures are synthetic; all applicable RLV criteria preserved; no adoption.",
+      "D275_code": [
+        {
+          "path": "tools/worksheet_criteria_plug_D275.py",
+          "sha256": "9b4097d32012d325535b31a9a3b22f2e7f24e2d870494ccb28cad2c7dec9148b",
+          "definitions": [
+            {
+              "line": 18,
+              "text": "def validated(config,as_of):"
+            },
+            {
+              "line": 50,
+              "text": "def relation(value,condition):"
+            },
+            {
+              "line": 62,
+              "text": "def apply(snapshot,config,as_of,*,house_rlv_solver=None):"
+            }
+          ]
+        },
+        {
+          "path": "tools/check_worksheet_criteria_plug_D275.py",
+          "sha256": "0f59346dcba38a05c58eab6c446aaf80efcda9df94b3f35521f3411cf342ca10",
+          "definitions": [
+            {
+              "line": 16,
+              "text": "def joint_case(case):"
+            },
+            {
+              "line": 23,
+              "text": "def fixtures(case,strict):"
+            },
+            {
+              "line": 44,
+              "text": "def legacy_configuration(config):"
+            },
+            {
+              "line": 56,
+              "text": "def rehearse(result,case,analysis):"
+            },
+            {
+              "line": 87,
+              "text": "def main():"
+            }
+          ]
+        }
+      ],
+      "D275_tests": [
+        {
+          "path": "tests/test_worksheet_criteria_plug.py",
+          "sha256": "145307a87fade4441fc914cceb9b008503ded7a15b22f5a9840b08ce0e6bad34",
+          "definitions": [
+            {
+              "line": 7,
+              "text": "def config(strict=False):"
+            },
+            {
+              "line": 9,
+              "text": "def configuration(strict=False):"
+            },
+            {
+              "line": 14,
+              "text": "def snapshot():"
+            },
+            {
+              "line": 17,
+              "text": "class CriteriaPlugTests(TestCase):"
+            }
+          ]
+        }
+      ],
+      "D275_validation": "docs/review/MiniUW_Validacion_D275.json",
+      "prior_cut_D273": {
+        "state": "parcial",
+        "current_definition": "Parcial: ocho pruebas y contrato optativo de alcance conjunto de nueve métricas Base no RLV. YoC y spread permanecen juntos por confirmación expresa del usuario. Faltan los dos fixtures opuestos y el enchufe sobre caso dorado, fronteras, grilla y tornado. RLV de la casa depende de criterios y no puede prometerse invariancia numérica de ese resultado.",
+        "validation_evidence": [
+          {
+            "path": "tests/test_worksheet_joint_rlv_scope.py",
+            "type": "8 pruebas dirigidas aprobadas; no es el T12 completo"
+          }
+        ]
+      }
+    },
+    {
+      "id": "T13",
+      "title": "Registro de roles",
+      "source": {
+        "path": "docs/MiniUW_Instrucciones_Codex_D273.md",
+        "first_line": 269,
+        "last_line": 278
+      },
+      "requirements": [
+        {
+          "line": 271,
+          "text": "**Cambios:**"
+        },
+        {
+          "line": 272,
+          "text": "- `roles_registry.json` con un esquema y campos **vacíos**: custodio de evidencia oficial, responsable de criterios, revisor financiero y aprobador autorizado. Cada rol lleva nombre, alcance, vigencia y fecha de designación."
+        },
+        {
+          "line": 273,
+          "text": "- La hoja (T5) y las banderas usan este registro. Si un rol está vacío, se muestra «responsable por designar» y el dictamen formal queda bloqueado, como hoy."
+        },
+        {
+          "line": 275,
+          "text": "**Aceptación:** prueba con un registro vacío y con un registro completo ficticio de prueba."
+        }
+      ],
+      "current_definition": "Names alone cannot authenticate authority; real designations outstanding.",
+      "affected_modules": [],
+      "validation_evidence": {
+        "general": "docs/review/MiniUW_Validacion_D275.json",
+        "code": [
+          {
+            "path": "tools/worksheet_review_controls_D275.py",
+            "sha256": "71be2cc10a5c8122e1c5cbd50ea74e35c755ac32f14421aa06ea1e0172707513",
+            "definitions": [
+              {
+                "line": 15,
+                "text": "def empty_roles():return dict(schema=ROLE_SCHEMA,roles={r:{k:None for k in ROLE_FIELDS} for r in ROLES})"
+              },
+              {
+                "line": 17,
+                "text": "def review_roles(registry,as_of,documents):"
+              },
+              {
+                "line": 47,
+                "text": "def wilson(successes,n,confidence):"
+              },
+              {
+                "line": 55,
+                "text": "def zero_event_sample_size(maximum_rate,confidence):"
+              },
+              {
+                "line": 65,
+                "text": "def false_green_study(spec,documents):"
+              }
+            ]
+          }
+        ],
+        "tests": [
+          {
+            "path": "tests/test_worksheet_review_controls.py",
+            "sha256": "94279e53b9c9095edac5c6ee10f94b4f83262a5a9e28de1fefc71e7f73a2aa70",
+            "definitions": [
+              {
+                "line": 7,
+                "text": "def fixture():"
+              },
+              {
+                "line": 11,
+                "text": "class ReviewControlTests(TestCase):"
+              },
+              {
+                "line": 58,
+                "text": "class ExactCitationTests(TestCase):"
+              },
+              {
+                "line": 62,
+                "text": "class ReviewMissingnessTests(TestCase):"
+              }
+            ]
+          }
+        ],
+        "full_regression": "RUNNING; not passed by inference"
+      },
+      "state": "EMPTY_STRUCTURAL_REGISTRY",
+      "criterion_adopted": false,
+      "D275_state": "EMPTY_STRUCTURAL_REGISTRY",
+      "D275_scope_limit": "Names alone cannot authenticate authority; real designations outstanding.",
+      "D275_code": [
+        {
+          "path": "tools/worksheet_review_controls_D275.py",
+          "sha256": "71be2cc10a5c8122e1c5cbd50ea74e35c755ac32f14421aa06ea1e0172707513",
+          "definitions": [
+            {
+              "line": 15,
+              "text": "def empty_roles():return dict(schema=ROLE_SCHEMA,roles={r:{k:None for k in ROLE_FIELDS} for r in ROLES})"
+            },
+            {
+              "line": 17,
+              "text": "def review_roles(registry,as_of,documents):"
+            },
+            {
+              "line": 47,
+              "text": "def wilson(successes,n,confidence):"
+            },
+            {
+              "line": 55,
+              "text": "def zero_event_sample_size(maximum_rate,confidence):"
+            },
+            {
+              "line": 65,
+              "text": "def false_green_study(spec,documents):"
+            }
+          ]
+        }
+      ],
+      "D275_tests": [
+        {
+          "path": "tests/test_worksheet_review_controls.py",
+          "sha256": "94279e53b9c9095edac5c6ee10f94b4f83262a5a9e28de1fefc71e7f73a2aa70",
+          "definitions": [
+            {
+              "line": 7,
+              "text": "def fixture():"
+            },
+            {
+              "line": 11,
+              "text": "class ReviewControlTests(TestCase):"
+            },
+            {
+              "line": 58,
+              "text": "class ExactCitationTests(TestCase):"
+            },
+            {
+              "line": 62,
+              "text": "class ReviewMissingnessTests(TestCase):"
+            }
+          ]
+        }
+      ],
+      "D275_validation": "docs/review/MiniUW_Validacion_D275.json",
+      "prior_cut_D273": {
+        "state": "pendiente",
+        "current_definition": "Faltan el nuevo registro estructurado vacío y su ensayo ficticio. Designaciones y autenticación reales corresponden al equipo; un nombre aislado no concede aprobación.",
+        "validation_evidence": []
+      }
+    },
+    {
+      "id": "T14",
+      "title": "Expediente en tres piezas y limpieza editorial",
+      "source": {
+        "path": "docs/MiniUW_Instrucciones_Codex_D273.md",
+        "first_line": 279,
+        "last_line": 300
+      },
+      "requirements": [
+        {
+          "line": 281,
+          "text": "**Cambios:**"
+        },
+        {
+          "line": 282,
+          "text": "1. Generar tres salidas en lugar de un único PDF de 143 páginas:"
+        },
+        {
+          "line": 283,
+          "text": "   - **Resumen para el responsable de criterios** (≤ 8 páginas): las secciones 2–4 actuales, la caja anualizada, la hoja T5 de ejemplo y los pendientes."
+        },
+        {
+          "line": 284,
+          "text": "   - **Expediente técnico** (alrededor de 40 páginas): flujo, Dots y bots, módulos, catálogo de fórmulas vigente y evidencia de pruebas."
+        },
+        {
+          "line": 285,
+          "text": "   - **Anexo electrónico**: contratos históricos, índice de hashes, ledger completo de eventos y código."
+        },
+        {
+          "line": 286,
+          "text": "2. El ledger de caja en el PDF va **anualizado** y sin filas en cero. El detalle completo, incluidos los ceros explícitos, queda en el JSON y el anexo."
+        },
+        {
+          "line": 287,
+          "text": "3. El párrafo «Procedencia del catálogo: D250…» va una sola vez."
+        },
+        {
+          "line": 288,
+          "text": "4. Títulos de las secciones D25x según su contenido (no «Si invierto USD 10…» repetido) y sin duplicados («D260 · D260», «D267 · D267», etc.)."
+        },
+        {
+          "line": 289,
+          "text": "5. Sección de pendientes en español: mapear los estados técnicos (`implemented_and_validated_for_…`, `await_real_case_…`) a frases de negocio. TEC-04 en español."
+        },
+        {
+          "line": 290,
+          "text": "6. Una línea que reconcilie los hashes: el commit documentado frente al commit probado, y que la diferencia es sólo de documentación (o lo que corresponda)."
+        },
+        {
+          "line": 291,
+          "text": "7. Glosario externo: «cumple criterios / no cumple criterios / criterio por confirmar» en lugar de PASS/FAIL."
+        },
+        {
+          "line": 293,
+          "text": "**Aceptación:**"
+        },
+        {
+          "line": 294,
+          "text": "- Conteo de páginas por pieza."
+        },
+        {
+          "line": 295,
+          "text": "- Una prueba de que no queda ningún estado en snake_case en el texto visible."
+        },
+        {
+          "line": 296,
+          "text": "- Una prueba de que no hay títulos duplicados."
+        },
+        {
+          "line": 297,
+          "text": "- El manifiesto lista las tres piezas con su huella."
+        }
+      ],
+      "current_definition": "8-page report, separate Lorena annex and electronic sources; compact full technical dossier remains outstanding.",
+      "affected_modules": [
+        {
+          "path": "docs/MiniUW_Expediente_Integral_Revision_Profesional_D272.md",
+          "line": 1,
+          "sha256": "3638436fef3239ec5335bdae399a6d86d93b0ab03b2064f288825606b9f76875",
+          "role": "referencia o punto afectado; no prueba de cierre por sí sola"
+        }
+      ],
+      "validation_evidence": {
+        "general": "docs/review/MiniUW_Validacion_D275.json",
+        "code": [],
+        "tests": [],
+        "full_regression": "RUNNING; not passed by inference"
+      },
+      "state": "PARTIAL_DOCUMENTATION",
+      "criterion_adopted": false,
+      "D275_state": "PARTIAL_DOCUMENTATION",
+      "D275_scope_limit": "8-page report, separate Lorena annex and electronic sources; compact full technical dossier remains outstanding.",
+      "D275_code": [],
+      "D275_tests": [],
+      "D275_validation": "docs/review/MiniUW_Validacion_D275.json",
+      "prior_cut_D273": {
+        "state": "pendiente",
+        "current_definition": "El expediente actual sigue en un PDF integral de 143 páginas. Faltan la división y todos los cotejos editoriales y de manifiesto solicitados; no se marcan cubiertos porque el texto los enumere.",
+        "validation_evidence": []
+      }
+    }
+  ],
+  "real_decision": "PENDING",
+  "deployment_enabled": false,
+  "complete_review_closed": false,
+  "source_authority": "Devolución profesional para evaluar e incorporar; no sustituye instrucciones expresas del usuario ni acredita aprobación de criterios o de inversión.",
+  "global_sections": [
+    {
+      "title": "Reglas generales",
+      "source": {
+        "path": "docs/MiniUW_Instrucciones_Codex_D273.md",
+        "first_line": 12,
+        "last_line": 24
+      },
+      "requirements": [
+        {
+          "line": 14,
+          "text": "1. **No activar criterios.** No completar `'Criterios PASS FAIL'!E7:H16`, no cambiar `criteria_adopted=False`, no elegir la definición del RLV de la casa, no resolver la precedencia de un FAIL con faltantes, no definir la regla de ranking real. Esos puntos son L01–L07 y quedan PENDING."
+        },
+        {
+          "line": 15,
+          "text": "2. **No inventar datos ni nombres.** Vacío ≠ cero. No rellenar campos con defaults, promedios ni copias de Base. Los roles se registran con campos vacíos que llena el equipo."
+        },
+        {
+          "line": 16,
+          "text": "3. **Versionar, no pisar.** Cada contrato nuevo lleva su propio esquema (v36, v37, …). Los perfiles anteriores (v25–v35, D200, D266–D270) tienen que reproducirse **byte por byte** con sus fixtures actuales."
+        },
+        {
+          "line": 17,
+          "text": "4. **Referencia independiente.** Cada cálculo nuevo tiene un verificador que parte de celdas y fuentes literales, nunca de resultados del motor."
+        },
+        {
+          "line": 18,
+          "text": "5. **Fronteras matemáticas ≠ criterios.** Los límites de la tarea T2 (múltiplo 1,00x, DSCR 1,00x, cobertura de refi) son fronteras matemáticas. Se rotulan así y no producen PASS ni FAIL."
+        },
+        {
+          "line": 19,
+          "text": "6. **Sin despliegue y sin acceso externo.** No usar red ni servicios externos y no modificar presupuestos de CI."
+        },
+        {
+          "line": 20,
+          "text": "7. **Batería completa al cierre de cada tarea:** 1.766 unitarias actuales más las nuevas, las 26 suites, la aceptación D200 16/16 y la preservación de fuentes. Dejar la constancia en `docs/review/MiniUW_Validacion_D27x.json`."
+        },
+        {
+          "line": 21,
+          "text": "8. **Idioma:** todo lo que ve una persona (PDF, expediente y mensajes de PENDING) va en español. Los identificadores de código pueden quedar en inglés."
+        }
+      ],
+      "state": "Cotejo de T1 documentado en la constancia; su aplicación a las demás tareas se acreditará al implementarlas"
+    },
+    {
+      "title": "Puerta de aceptación real",
+      "source": {
+        "path": "docs/MiniUW_Instrucciones_Codex_D273.md",
+        "first_line": 301,
+        "last_line": 314
+      },
+      "requirements": [
+        {
+          "line": 303,
+          "text": "Se considera listo cuando se cumple **todo** esto:"
+        },
+        {
+          "line": 305,
+          "text": "- [ ] T1–T14 implementadas con la batería completa en verde y constancia."
+        },
+        {
+          "line": 306,
+          "text": "- [ ] La hoja de una página (T5) sale con el caso dorado y con un caso real en modo PRELIMINAR."
+        },
+        {
+          "line": 307,
+          "text": "- [ ] El tie-out en Excel del caso dorado cierra (T9)."
+        },
+        {
+          "line": 308,
+          "text": "- [ ] Backtest con 3–5 proyectos cerrados, cada diferencia explicada (T10)."
+        },
+        {
+          "line": 309,
+          "text": "- [ ] Tasa de falsos verdes medida con documentos reales y su intervalo (T11)."
+        },
+        {
+          "line": 310,
+          "text": "- [ ] La prueba del enchufe de criterios pasa (T12)."
+        },
+        {
+          "line": 311,
+          "text": "- [ ] El registro de roles está completo, llenado por el equipo (T13)."
+        },
+        {
+          "line": 313,
+          "text": "**Después de la puerta**, lo único que se pide al responsable de criterios es completar `'Criterios PASS FAIL'!E7:H16` y responder L01–L07 en una sola reunión, con la planilla ya armada."
+        }
+      ],
+      "state": "PENDING: no se cumple con ensayos sintéticos ni con T1 solamente"
+    },
+    {
+      "title": "Exclusiones",
+      "source": {
+        "path": "docs/MiniUW_Instrucciones_Codex_D273.md",
+        "first_line": 315,
+        "last_line": 320
+      },
+      "requirements": [
+        {
+          "line": 317,
+          "text": "- No adopta umbrales ni el RLV de la casa, y no resuelve L01–L07."
+        },
+        {
+          "line": 318,
+          "text": "- No corre un dictamen real del 1101 ni de otro proyecto."
+        },
+        {
+          "line": 319,
+          "text": "- No calcula retorno personal sin términos de reparto documentados."
+        },
+        {
+          "line": 320,
+          "text": "- No despliega nada ni toma decisiones de inversión."
+        }
+      ],
+      "state": "Se mantienen sin adopción, despliegue o decisión real"
+    }
+  ],
+  "network_scope_resolution": {
+    "original": "D273 §0.6 no external access",
+    "exception": "Explicit user approval: official Ubuntu LibreOffice runtime download and local recalculation; standing GitHub milestone backup authorization",
+    "no_project_document_upload": true,
+    "no_deployment": true
+  }
+}

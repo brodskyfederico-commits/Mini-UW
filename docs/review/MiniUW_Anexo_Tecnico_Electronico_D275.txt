@@ -1,0 +1,145 @@
+MINI-UW D275 — ANEXO TÉCNICO ELECTRÓNICO
+Corte sintético; no criterio adoptado, despliegue o decisión real.
+Este anexo amplía el expediente técnico D272; no lo sustituye ni reescribe fuentes originales.
+
+1. Cadena conservada
+B01 contexto; B02 originales/hash; B03 clasificación; B04 planilla;
+B05/B06 lectura y contraste de planos; B07 conciliación; B08 lectura GC/banco;
+B09 cruce plano/presupuesto después de B08; B10 copia oficial; B11 cita;
+B12 puertas; B13 cálculo; B14 criterios; B15 borrador; B16 auditoría vigente.
+B17 es regresión por versión, fuera de la corrida ordinaria por deal.
+El carril humano no se sustituye con nombres, hashes, un PASS o una bandera approved.
+
+2. Contrato de datos
+Los 55 campos mantienen mapa, unidad, período, fuente y escenario.
+Valor ausente, vacío, bool o tipo incompatible no equivale a cero numérico.
+El cero numérico explícito se conserva cuando el dominio lo permite.
+N/A requiere aplicabilidad explícita. Un mes sin inventario no es un mes con eventos cero.
+Los perfiles trimestrales conservados no aceptan silenciosamente extensiones mensuales,
+comerciales o de seguro: se rechazan hasta tener integración versionada.
+Normalización: k = 10 / aporte inicial verificado. No dividir por todos los aportes.
+Aportes extra y cobros permanecen brutos, separados y fechados; valor retenido no es cobro.
+Sin reparto real: retorno personal PENDING; las cifras del ejemplo son equity agregado.
+
+3. Fronteras — tools/worksheet_frontiers_D275.py
+F1 = múltiplo - 1; múltiplo = cobros / todos los aportes.
+F2 = DSCR - 1; DSCR usa NOI bancario / servicio anual de sizing.
+F3 = capacidad de refi - payoff de obra - costos de cierre.
+F4 = aportes adicionales de referencia - aportes adicionales de la variante.
+Cada driver cambia la celda fuente y vuelve a generar el expediente, no sólo una etiqueta.
+Drivers: renta residencial C8:C11, cap salida C67, vertical C35, tasas C52/C69,
+lease-up C47, vacancia C14. C51 y C53 no se usan como tasas de interés.
+Puntos, rangos, paso, unidades, presupuesto y fuentes son explícitos.
+Bisección racional en retícula finita; monotonía observada se rotula muestreada.
+Margen negativo en el original => BASELINE_BREACHED, no raíz inventada.
+Rango agotado sin cruce => BEYOND_SEARCH_RANGE y cota, no infinito o cero.
+Fuente ausente, no monotonía detectada o presupuesto agotado => PENDING.
+F3 sin refi es N/A explícito, no capacidad cero.
+
+4. Grilla de precio — tools/worksheet_user_price_D275.py
+Delta TDC = (P - P0) * (1 + C33), deuda y eventos futuros fijos.
+El cambio de precio se aplica al aporte inicial en su fecha; vuelve a calcularse k.
+Recalcular YoC = NOI_uw/TDC; equity/TDC; múltiplo; intervalo certificado de TIR.
+Cada meta tiene operador y valor explícitos; no es un criterio adoptado de Lorena.
+Precio negativo factible se publica con bandera; ningún precio cumple => PENDING.
+Si aún cumple en el límite superior, se informa BEYOND_GRID, no un máximo probado.
+RLV de la casa requiere sus definiciones y todos los criterios aplicables juntos;
+se conserva la decisión explícita del usuario de incluir YoC y spread cuando apliquen.
+
+5. Tornado — tools/worksheet_tornado_D275.py
+Aplicar shocks favorables/adversos simétricos en fuentes, con unidades declaradas.
+Delta TIR = intervalo variante menos intervalo base, sin elegir raíz o punto medio.
+Impacto = máximo absoluto de ambos shocks; ranking por límites de intervalos.
+Impactos solapados no reciben un orden artificial; pendientes permanecen visibles.
+Un shock favorable de lease-up del ensayo necesita roll fiscal del comprador 2033:
+no se generó ese respaldo y el resultado permanece PENDING.
+
+6. Calendario mensual — tools/worksheet_monthly_D275.py (COMPONENTE)
+ACT/360: días naturales/360. 30E/360: [360*dAño + 30*dMes + min(día2,30)-min(día1,30)]/360.
+"30/360" ambiguo no se interpreta por defecto.
+Interés = suma por tramos del principal vivo * tasa anual * fracción declarada.
+No capitalización implícita: interés pagado en cadencia explícita y al estabilizar.
+Draw <= factura elegible*LTC, disponibilidad y compromiso remanente; IDs únicos.
+Se agregan todos los movimientos de la misma fecha antes de pedir equity extra.
+Fuentes = aportes + draws; usos = costos + fee + interés pagado + caja final.
+Saldo inicial/principal cero exige un cero explícito. Inventario mensual completo obligatorio.
+TIR mensual: sum(CF_m*z^m)=0; sólo raíz admisible única probada;
+TIR anual = z^(-12)-1. Falta un mes o hay raíces múltiples => PENDING.
+Falta integrar este componente con fiscalidad, operación, refi y venta del perfil nativo.
+
+7. Comercial — tools/worksheet_commercial_leaseup_D275.py (COMPONENTE)
+Inventario por local debe conciliar con área del plano. Área discrepante bloquea.
+Renta contractual mensual = SF * renta anual/SF / 12 * escalones, dentro del contrato.
+Free rent y regla de recuperos en esos meses deben estar declarados.
+Recuperos = gasto propietario * fracción recuperable; cobro neto aplica pérdidas explícitas.
+NOI comercial = renta cobrada + recuperos cobrados - gastos propios comerciales.
+NOI bancario y de valoración usan sus bases declaradas contractual_net / collected_net.
+TI/LC se separan entre presupuesto M3 y capex operativo; no se restan dos veces del NOI.
+Sin comercial, inventario [] y área 0 deben ser explícitos; no se supone cap combinado.
+Falta conectar el componente al presupuesto, sizing y valoración del perfil nativo.
+
+8. Seguro de obra — tools/worksheet_builders_risk_D275.py (COMPONENTE)
+Prima = cotización o base*tasa para el plazo completo declarado, nunca anualización tácita.
+Cotización JSON fuente y localizador/hash deben coincidir con los campos usados.
+Si GC lo incluye, requiere prueba fuente de inclusión y prima; incremento de presupuesto 0.
+No incluido: prima como uso fechado; soft porcentual debe excluirla expresamente.
+Seguro operativo de M2 permanece separado. Ausencia o doble aplicación => PENDING.
+Falta conectar el uso al calendario de financiación del perfil nativo.
+
+9. Caso dorado — tools/worksheet_golden_D275.py / check_golden_excel_D275.py
+Un único golden_case_v1, fuentes sintéticas congeladas y huellas esperadas de caja.
+Workbook desde XLSX/contratos originales; no pegar como entrada resultados del motor.
+18 hojas; impuestos, presupuesto, deuda, operación y venta con fórmulas vivas.
+Guardias COUNT/texto: vacío => #N/A; cero numérico explícito sigue siendo numérico.
+LibreOffice 24.2.7.2 oficial Ubuntu aislado, autorizado por el usuario; no envío de documentos.
+662 celdas cotejadas: resúmenes, aportes/cobros por fecha, servicio/balloon y operación.
+Tolerancias del ensayo: USD0,01, múltiplo0,000001, TIR anual0,0001.
+Mutaciones fuente: C8 cambiado, C8 vacío, C53 cero numérico; las tres detectadas.
+El IRR de Calc contrasta este caso de raíz única, no reemplaza el certificado del motor.
+Comando desde repo, con dependencias y OCR preparados y destino NUEVO:
+python tools/worksheet_golden_D275.py run templates/golden_case_v1 /tmp/miniuw-golden-NUEVO --soffice /ruta/local/soffice
+No regenerar golden_case_v1 para esconder un cambio: explicar y versionar la diferencia.
+
+10. Backtest — tools/worksheet_backtest_D275.py
+Predicción original ligada al paquete y sus fuentes; observado a bytes fuente independientes.
+Comparación por escenario/ruta de TDC, NOI, servicio, venta, aportes, cobros, EM y TIR.
+Desvío = observado - previsto. Atribución por categorías y residual no explicado visible.
+Calendario exige inventario esperado y fechas fuente; ausencia no se informa como demora0.
+Un historial real sólo tiene una estrategia ejecutada; rutas no ejecutadas son N/A,
+no se inventan cobros reales para ambas alternativas o ambos escenarios.
+Faltan 3–5 proyectos cerrados reales: arnés sintético no es backtest empírico.
+
+11. Falsos verdes / roles — tools/worksheet_review_controls_D275.py
+Comparar dato, bot, documento, escenario, unidad, base, valor, cita y hash con verdad humana.
+Un verde sin respaldo válido es falso aunque acierte el número por casualidad.
+Etiquetas humanas faltantes no se cuentan como aciertos; tasa global PENDING.
+Reportar cobertura de verdes, abstenciones y Wilson bilateral, confianza declarada.
+Wilson: centro=(p+z²/(2n))/(1+z²/n), radio=z*sqrt[p(1-p)/n+z²/(4n²)]/(1+z²/n).
+Con cero errores y confianza95%, cota objetivo1% exige381 observaciones independientes;
+es diseño muestral, no certificación de error real ni promesa de cero fallos futuros.
+Cuatro roles vacíos: custodio, responsable criterios, revisor financiero y aprobador.
+Fuente de designación/alcance/vigencia no autentica por sí sola identidad o autoridad.
+
+12. Enchufe de criterios — tools/worksheet_criteria_plug_D275.py
+Configuración completa, versionada, con escenarios, unidades, períodos, fuentes y operadores.
+Sin criterios => PENDING. Estrictos/laxos ficticios permiten probar FAIL/PASS simulados.
+Se comparan 18 métricas no RLV por fixture; la instantánea financiera debe ser idéntica.
+RLV se recalcula sólo con contrato propio completo y alcance conjunto explícito.
+Referencia histórica y fixture sintético no son aprobación de Lorena.
+
+13. Entrega — tools/worksheet_decision_page_D275.py / worksheet_analysis_replay_D275.py
+Letter horizontal, nueve bloques, una página. Resultado fuente auditado y revisión vigente.
+No se acepta tabla manual de sensibilidades; se reproducen expedientes fuente correspondientes.
+Metadatos conservan nombre largo; magnitudes faltantes visibles, no cero.
+La misma vista debe regenerar PDF y registro de cifras idénticos; publicación atómica vigente.
+B16/controles de evidencia bloquean revisión antigua, falso verde y análisis sin fuente.
+Salida externa usa "criterio por confirmar"; no es un dictamen de inversión.
+
+14. Pruebas y límites del corte
+122 nuevas pruebas dirigidas pasadas; 1.914 descubiertas en total. La regresión completa
+se registra por fases en MiniUW_Validacion_D275.json; "en ejecución" no significa pasada.
+Corte congelado714 Python; SHA-256 inventario ff619761e1c8bc2fc92c75cfaef61b5ca03d538514b7a8418fe97424a737fe95.
+Ningún cambio de regla real; despliegue deshabilitado; 1101/One Hollywood reales e histórico PENDING.
+Pendientes técnicos T6–T8 se mantienen abiertos; T5 probado con golden y D269; sin porcentaje ficticio.
+Los PDFs resumen decisiones y fórmulas principales; este índice y el código/test con sus hashes
+permiten revisar el detalle sin confundir un componente con su conexión completa.
