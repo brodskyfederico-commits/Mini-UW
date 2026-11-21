@@ -2183,3 +2183,10 @@ El código probado corresponde al manifiesto b90c01b94c623d7bd2ae4663fcbcdddb154
 T1 validado no significa T1–T14 terminados. T12 tiene el contrato conjunto y ocho pruebas por confirmación del usuario; no está completo su enchufe estricto/permisivo. Continúan pendientes los otros cambios y las puertas de datos reales, recálculo externo, referencia humana y roles. No se adoptan criterios, RLV real, ranking real ni precedencia de políticas pendientes. Sin despliegue o decisiones reales.
 
 Commit remoto del código del corte probado: add76fe0f369e9ef3d29b146feed3e74a3c3e287; árbol 58a4f9f7ffce7c1076403e920337571fcef1e32f. Sus 17 cambios se cotejaron contra D272 y el manifiesto coincide con la copia probada. El commit posterior de cierre agrega sólo documentación y sus huellas, sin modificar los 686 archivos Python.
+
+
+## D274 · Actualización profesional y resultado de una página (21 noviembre 2026 UTC)
+
+Se entregan ocho páginas en español: resultado sintético de cuatro rutas por USD 10, flujo vectorial de decisiones y carril humano, 26 pasos A–Z, siete Dots/17 bots, conexiones M1–M9 y fórmulas principales, estado de las 14 tareas y confirmaciones L01–L07. La primera página también se entrega por separado, con numeración 1/1. Los importes se extraen de los bytes de la aceptación final D273; se comprobaron exactamente las sumas de eventos brutos y el redondeo exterior de la TIR certificada. Se distingue FAIL simulado de PENDING real, histórico y personal sin reparto; no se activan criterios.
+
+Se revisaron las ocho páginas renderizadas y a tamaño completo el diagrama y la hoja de resultado; se verificaron límites de texto, páginas, IDs, fuentes y coincidencia de la primera página con el archivo independiente. Los 686 Python del corte probado siguen idénticos. No se reejecuta una regresión financiera para este cambio documental. D273 conserva su constancia de 1.792 unitarias, 26 referencias y D200 16/16; T12 permanece parcial, T5 no queda cerrado y T14 sólo avanza en el resumen editorial. Código probado add76fe0f369e9ef3d29b146feed3e74a3c3e287; cierre de fuentes e13dbeacdeca85db205e447b00a5a3169c516409. Sin despliegue ni decisiones reales.

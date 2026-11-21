@@ -1,0 +1,144 @@
+{
+  "schema": "miniuw.documentation-validation.D274.v1",
+  "artifact_kind": "professional_summary_not_model_change",
+  "language": "es",
+  "source_code_commit": "add76fe0f369e9ef3d29b146feed3e74a3c3e287",
+  "source_document_commit": "e13dbeacdeca85db205e447b00a5a3169c516409",
+  "pages": 8,
+  "standalone_outcome_pages": 1,
+  "procedure_steps": 26,
+  "dots": 7,
+  "bots": 17,
+  "financial_values": "derived from tested D273 results; four synthetic routes; initial verified equity USD10; gross event sums checked exactly",
+  "source_sha256": {
+    "work/review/D273/aceptacion-final/package/results.json": "17b7d0ea47a17c5f8debbb965e4fc82ec121a3fcdcdefeafb9d58fd8ee625645",
+    "outputs/Mini-UW/docs/review/MiniUW_Validacion_D273.json": "17b6b1448a9660cea6609a6ce5d6fdbc154cb95510410b73dad2966650a4ee10",
+    "outputs/Mini-UW/docs/review/MiniUW_Registro_Revision_D273.json": "ad6e74bc348ffed3e31cb58062f98da88b530588097c67e8e9b6947a409f24d3",
+    "outputs/Mini-UW/docs/review/MiniUW_Cobertura_Revision_D273.json": "42e0589b41762bbc8f171ad99d8d524d3ba9864ee1585542262bc9ad718df7a3",
+    "outputs/Mini-UW/docs/MiniUW_Expediente_Integral_Revision_Profesional_D272.md": "3638436fef3239ec5335bdae399a6d86d93b0ab03b2064f288825606b9f76875",
+    "outputs/Mini-UW/docs/MiniUW_v1_Dots_y_Bots.md": "be3737728613d1ad6d41cdf7045113904f889588d3f153e8611f4f5eda84ddf6"
+  },
+  "artifacts": {
+    "docs/review/MiniUW_Actualizacion_Profesional_D274.pdf": "4f2c990be099db80a26f4c5015b85df7abdd722f22f419cf55d8103052473488",
+    "docs/review/MiniUW_Resultado_Una_Pagina_D274.pdf": "68f138cde6765968a211eb5356a0c35bb51dea395bd72fb2439afc712639b95c"
+  },
+  "numeric_comparison": {
+    "Base / with_refinance": {
+      "total_contributions": {
+        "denominator": "192000",
+        "numerator": "2837297"
+      },
+      "total_distributions": {
+        "denominator": "187891479583416050955092970941795347083422789594797886273703117510318755800323005286979232583900236400471921142606435462733176467888943509167715519844000625000000000000",
+        "numerator": "5318839064257663940960758153916501087727688562787162047286489027852601730916610015135468738320900965421726548504495493531346666215913333652911811460379916221290320552373"
+      },
+      "net_cash_profit": {
+        "denominator": "563674438750248152865278912825386041250268368784393658821109352530956267400969015860937697751700709201415763427819306388199529403666830527503146559532001875000000000000",
+        "numerator": "7626768265466935399027080380901954624218155834471622730441982174141010272812500952723120032578290567540964326104833175608001664385054129837938063423220632393392446032119"
+      },
+      "unrecovered_after_sale": {
+        "denominator": "1",
+        "numerator": "0"
+      },
+      "equity_multiple": {
+        "denominator": "8329748927306056423855194080847548638964909853889863411417484909416794919937329092683286182384412328724215319408653304986038334262685871120797370957919116270478515625000",
+        "numerator": "15956517192772991822882274461749503263183065688361486141859467083557805192749830045406406214962702896265179645513486480594039998647740000958735434381139748663870961657119"
+      },
+      "annual_irr_display_outward": "15,18 a 15,19 %",
+      "payback_date": "2033-01-01"
+    },
+    "Base / without_refinance": {
+      "total_contributions": {
+        "denominator": "192000",
+        "numerator": "2837297"
+      },
+      "total_distributions": {
+        "denominator": "13125000000000000",
+        "numerator": "371661720655196633"
+      },
+      "net_cash_profit": {
+        "denominator": "4375000000000000",
+        "numerator": "59235290348607211"
+      },
+      "unrecovered_after_sale": {
+        "denominator": "1",
+        "numerator": "0"
+      },
+      "equity_multiple": {
+        "denominator": "193955849609375000",
+        "numerator": "371661720655196633"
+      },
+      "annual_irr_display_outward": "14,43 a 14,44 %",
+      "payback_date": "2033-01-01"
+    },
+    "Downside / with_refinance": {
+      "total_contributions": {
+        "denominator": "960000",
+        "numerator": "17400493"
+      },
+      "total_distributions": {
+        "denominator": "505354108112058144683385827624806236318032362108357258119832229361634937115453888688034716480067772243553409505585623059521013632000000000000000",
+        "numerator": "4213990824892948077437343095622768182506481110088106684887833965768993012985648546426003153169476427824371936315170330067979297579406046134902967"
+      },
+      "net_cash_profit": {
+        "denominator": "505354108112058144683385827624806236318032362108357258119832229361634937115453888688034716480067772243553409505585623059521013632000000000000000",
+        "numerator": "-4945811905029042508142075977173739673127131275995159681167722146920093645173617684760379417526777645560571185797408935502681099354469553865097033"
+      },
+      "unrecovered_after_sale": {
+        "denominator": "505354108112058144683385827624806236318032362108357258119832229361634937115453888688034716480067772243553409505585623059521013632000000000000000",
+        "numerator": "4945811905029042508142075977173739673127131275995159681167722146920093645173617684760379417526777645560571185797408935502681099354469553865097033"
+      },
+      "equity_multiple": {
+        "denominator": "9159802729921990585579419072796507855633612386083266366055556112689086658159266231186382570696254073384943122112579265570660396933875600000000000",
+        "numerator": "4213990824892948077437343095622768182506481110088106684887833965768993012985648546426003153169476427824371936315170330067979297579406046134902967"
+      },
+      "annual_irr_display_outward": "-13,89 a -13,88 %",
+      "payback_date": null
+    },
+    "Downside / without_refinance": {
+      "total_contributions": {
+        "denominator": "960000",
+        "numerator": "17400493"
+      },
+      "total_distributions": {
+        "denominator": "2688000000000000000",
+        "numerator": "22440416527503125453"
+      },
+      "net_cash_profit": {
+        "denominator": "2688000000000000000",
+        "numerator": "-26280963872496874547"
+      },
+      "unrecovered_after_sale": {
+        "denominator": "2688000000000000000",
+        "numerator": "26280963872496874547"
+      },
+      "equity_multiple": {
+        "denominator": "48721380400000000000",
+        "numerator": "22440416527503125453"
+      },
+      "annual_irr_display_outward": "-13,67 a -13,66 %",
+      "payback_date": null
+    }
+  },
+  "checks": {
+    "page_count": true,
+    "complete_A_Z": true,
+    "all_17_bot_ids": true,
+    "all_14_task_ids": true,
+    "text_inside_pages": true,
+    "no_replacement_characters": true,
+    "dated_gross_cash_sums": true,
+    "irr_outward_rounding": true,
+    "visual_review": "passed: all eight rendered pages reviewed, flowchart and result sheet inspected at full size; no clipped text or crossed decision paths",
+    "standalone_body_matches_included_page": true,
+    "all_686_tested_python_files_unchanged": true
+  },
+  "criteria_adopted": false,
+  "deployment_enabled": false,
+  "real_decision": "PENDING",
+  "historical_return": "PENDING",
+  "personal_return_without_terms": "PENDING",
+  "all_expert_tasks_closed": false,
+  "full_regression_rerun": false,
+  "full_regression_reason": "documentation only; reports existing D273 validation"
+}

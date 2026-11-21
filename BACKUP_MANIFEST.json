@@ -1,5 +1,5 @@
 {
-  "scope": "D273: T1 validated with full synthetic regression; opt-in all-applicable joint RLV scope confirmed by user. 1792 unit tests, 26 reference suites, D200 16/16, v25-v35 byte-identical. 686 tested Python files unchanged; documentary closeout additions only after testing. T12 partial; other professional-review tasks tracked, not claimed complete. No criteria adopted, deployment or real decision.",
+  "scope": "D274: documentation-only professional update (8 pages), separate one-page synthetic outcome and document QA; model code unchanged from D273 tested cut. T1 validated synthetically, T12 partial, other expert work and real approvals remain pending. No criteria adopted, deployment or real decision.",
   "files": [
     {
       "path": ".github/workflows/miniuw-integral-usd10.yml",
@@ -23,13 +23,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 97072,
-      "sha256": "ad80bd22e6c0bd41d4873713ef8f5f0415d68583c502dc54a315bdf734f9861f"
+      "bytes": 97763,
+      "sha256": "7b21554e996513e4381903c34c4940c94b1ce50fbb524e4382c023bc688eed46"
     },
     {
       "path": "WORK_LOG.md",
-      "bytes": 423991,
-      "sha256": "abf6b6441647db6d09d8d1da50e276726a467022759b34d1283e8dc66283435c"
+      "bytes": 425364,
+      "sha256": "cd4ca0e120285d5fc009697e856c7b9fe094f054d7366c42cdd57ba3626e94ad"
     },
     {
       "path": "docs/Especificacion_Integral_Armado_I01.md",
@@ -1012,6 +1012,11 @@
       "sha256": "914abdc75e94dfd058351e062e4e7ed00dfc3a024b43fd09446a546f92f46923"
     },
     {
+      "path": "docs/review/MiniUW_Actualizacion_Profesional_D274.pdf",
+      "bytes": 79754,
+      "sha256": "4f2c990be099db80a26f4c5015b85df7abdd722f22f419cf55d8103052473488"
+    },
+    {
       "path": "docs/review/MiniUW_Alcance_y_Pendientes_D265.json",
       "bytes": 3660,
       "sha256": "1cb96a56062e0e2aca03b0d6fb95f716667e1dfea97eabb148ed794e18ecab4e"
@@ -1432,6 +1437,11 @@
       "sha256": "d0ed059449b9e66313dc0caea98283633d6ef737038967e0beffbe323c10724a"
     },
     {
+      "path": "docs/review/MiniUW_Resultado_Una_Pagina_D274.pdf",
+      "bytes": 47954,
+      "sha256": "68f138cde6765968a211eb5356a0c35bb51dea395bd72fb2439afc712639b95c"
+    },
+    {
       "path": "docs/review/MiniUW_Resumen_Retorno_D273.pdf",
       "bytes": 4928,
       "sha256": "b6c7c4ed9d9fe7d982191cd5117b6bf626f042104cd76e924aa4cf31a2edef06"
@@ -1455,6 +1465,11 @@
       "path": "docs/review/MiniUW_USD10_Ocho_Casos_D79.pdf",
       "bytes": 7097,
       "sha256": "99a2278d52390390d5b6bf7f5cb82b4f7b93c77547e3564c145c9e948cf2168f"
+    },
+    {
+      "path": "docs/review/MiniUW_Validacion_Actualizacion_D274.json",
+      "bytes": 7318,
+      "sha256": "e2fdad9adbe3d11e336ecc37275767cb423c62d9f4e4fefd4e852f9fcc636613"
     },
     {
       "path": "docs/review/MiniUW_Validacion_D250.json",
